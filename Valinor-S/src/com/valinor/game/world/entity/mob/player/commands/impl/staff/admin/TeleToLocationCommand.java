@@ -19,7 +19,7 @@ public class TeleToLocationCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return (player.getPlayerRights().isAdminOrGreater(player) || player.getUsername().equalsIgnoreCase("Chase"));
+        return (player.getPlayerRights().isAdminOrGreater(player));
     }
 
 }

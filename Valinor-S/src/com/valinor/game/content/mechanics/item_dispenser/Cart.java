@@ -164,7 +164,7 @@ public enum Cart {
     }
 
     /**
-     * The item that will be dispensed into Ferox coins.
+     * The item that will be dispensed into Valinor coins.
      */
     public final int item;
 

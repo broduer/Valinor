@@ -54,62 +54,12 @@ public class CommandManager {
     }
 
     public static void loadCmds() {
-
-        /*
-         * Player commands in exact order of ::commands
-         */
-
-        commands.put("fup", new FuckupCommand());
-
         //PVP commands
-        commands.put("combo", new ComboCommand());
         SkullCommand skullCommand = new SkullCommand();
         commands.put("skull", skullCommand);
         commands.put("redskull", skullCommand);
         commands.put("kdr", new KDRCommand());
-        commands.put("pots", new PotsCommand());
-        SaraBrewCommand sarabrewCommand = new SaraBrewCommand();
-        commands.put("sarabrew", sarabrewCommand);
-        commands.put("sbrew", sarabrewCommand);
-        commands.put("brew", sarabrewCommand);
-        RestorePotCommand restorePotCommand = new RestorePotCommand();
-        commands.put("superrestore", restorePotCommand);
-        commands.put("srestore", restorePotCommand);
-        commands.put("restore", restorePotCommand);
-        commands.put("rest", restorePotCommand);
-        MagicPotCommand magicPotCommand = new MagicPotCommand();
-        commands.put("magicpot", magicPotCommand);
-        commands.put("magic", magicPotCommand);
-        commands.put("magicp", magicPotCommand);
-        RangePotCommand rangePotCommand = new RangePotCommand();
-        commands.put("rangepot", rangePotCommand);
-        commands.put("range", rangePotCommand);
-        commands.put("rpot", rangePotCommand);
-        commands.put("food", new FoodCommand());
-        commands.put("runes", new RunesCommand());
-        commands.put("barrage", new BarrageCommand());
-        commands.put("veng", new VengCommand());
-        commands.put("tb", new TBCommand());
-        commands.put("chins", new ChinsCommand());
-        commands.put("revs", new RevsCommand());
-        commands.put("mb",new MageBankCommand());
-        commands.put("50s", new Wilderness50TeleportCommand());
         commands.put("cp", new ClanOutpostCommand());
-        //commands.put("gamble", new GambleCommand());
-        commands.put("44s", new Wilderness44TeleportCommand());
-        commands.put("graves", new GravesTeleportCommand());
-        commands.put("wests", new WestsTeleportCommand());
-        commands.put("easts", new EastsTeleportCommand());
-        commands.put("kraken", new KrakenCommand());
-        commands.put("kbd",new KbdCommand());
-        commands.put("corp", new CorpCommand());
-        commands.put("cerberus", new CerberusCommand());
-        commands.put("callisto", new CallistoCommand());
-        commands.put("jad", new JadCommand());
-        commands.put("zulrah", new ZulrahCommand());
-        //DuelArenaCommand duelArenaCommand = new DuelArenaCommand();
-        //commands.put("duel", duelArenaCommand);
-        //commands.put("duelarena", duelArenaCommand);
         //Regular commands
         commands.put("changepassword", new ChangePasswordCommand());
         commands.put("changepass", new ChangePasswordCommand());
@@ -127,9 +77,7 @@ public class CommandManager {
         commands.put("showdidyouknow", new ShowDidYouKnowCommand());
         commands.put("home", new HomeCommand());
         commands.put("exit", new ExitCommand());
-        commands.put("shops", new ShopsCommand());
         commands.put("staff", new StaffCommand());
-        commands.put("creationdate", new CreationDateCommand());
         PlayersOnlineCommand playersOnlineCommand = new PlayersOnlineCommand();
         commands.put("players", playersOnlineCommand);
         commands.put("playersonline", playersOnlineCommand);
@@ -139,16 +87,10 @@ public class CommandManager {
         commands.put("leavelobby", new LeaveTournamentCommand());
         commands.put("empty", new EmptyCommand());
         commands.put("clearbank", new ClearBankCommand());
-        //render -> client command
-        //viewrender -> client command
-        commands.put("togglevialsmash", new ToggleVialSmashCommand());
-        commands.put("levelup", new ToggleLevelUpCommand());
         commands.put("commands", new CommandsCommand());
         commands.put("niffler", new BankNifflerCommand());
         commands.put("claimvote", new ClaimVoteCommand());
         commands.put("redeem", new RedeemCommand());
-        commands.put("raids", new RaidsTeleportCommand());
-        commands.put("riskzone", new RiskzoneCommand());
         commands.put("vekers", new VekeRSCommand());
         commands.put("fpkmerk", new FpkMerkCommand());
         commands.put("capalot", new CapalotCommand());
@@ -162,9 +104,7 @@ public class CommandManager {
         commands.put("sipsick", new SipSickCommand());
         commands.put("walkchaos", new WalkchaosCommand());
         commands.put("tidus", new TidusCommand());
-        commands.put("slayerguide", new SlayerGuideCommand());
         commands.put("features", new FeaturesCommand());
-        commands.put("raidsguide", new RaidsGuideCommand());
         commands.put("promocode", new PromoCodeCommand());
 
         /*
@@ -236,11 +176,9 @@ public class CommandManager {
         commands.put("resetslayertask", new ResetSlayerTask());
         commands.put("setslayerstreak", new SetSlayerStreakCommand());
         commands.put("giveslayerpoints", new GiveSlayerPointsCommand());
-        commands.put("spawnkey", new WildernessKeyCommand());
         commands.put("vanish", new VanishCommand());
         commands.put("unvanish", new UnVanishCommand());
         commands.put("tele", new TeleToLocationCommand());
-        commands.put("getip", new GetIpCommand());
         commands.put("kill", new KillCommand());
         commands.put("osrsbroadcast", new OsrsBroadcastCommand());
         commands.put("dismissosrsbroadcast", new DismissBroadcastCommand());
@@ -251,8 +189,6 @@ public class CommandManager {
         commands.put("changepassother", new ChangeOtherPasswordCommand());
         commands.put("setmember", new SetMemberRightsCommand());
         commands.put("promote", new PromoteCommand());
-        commands.put("alert", new AlertCommand());
-        commands.put("globalmsg", new GlobalMsgCommand());
         commands.put("checkbank", new CheckBankCommand());
         commands.put("checkinv", new CheckInventoryCommand());
         commands.put("giveitem", new GiveItemCommand());
@@ -286,7 +222,6 @@ public class CommandManager {
         ItemSpawnCommand itemSpawnCommand = new ItemSpawnCommand();
         commands.put("item", itemSpawnCommand);
         commands.put("objt", new ObjTypeCommand());
-        commands.put("pt", new PlayTimeCommand());
         commands.put("alwayshit", new AlwaysHitCommand());
         commands.put("onehit", new OneBangCommand());
         commands.put("copy", new CopyCommand());
@@ -295,7 +230,6 @@ public class CommandManager {
         commands.put("infpray", new InfPrayCommand());
         commands.put("max", new MaxCommand());
         commands.put("pets", new PetsCommand());
-        commands.put("fillbank", new FillBankCommand());
         commands.put("debugnpcs", new DebugNpcsCommand());
         commands.put("object", new ObjectCommand());
         commands.put("door", new DoorCommand());
@@ -303,7 +237,6 @@ public class CommandManager {
         commands.put("saveall", new SaveAllCommand());
         commands.put("slayer", new SlayerActionCommand());
         commands.put("killstreak", new KillstreakCommand());
-        commands.put("bmm", new BMMultiplierCommand());
         commands.put("task", new TaskCommand());
         commands.put("reload", new ReloadCommand());
         commands.put("setlevel", new SetLevelCommand());
@@ -367,7 +300,6 @@ public class CommandManager {
         commands.put("setstaffonlylogin", new SetStaffOnlyLoginCommand());
         commands.put("reset", new EcoResetCommand());
         commands.put("tradepost", new TradingPostCommand());
-        commands.put("savepost", new SaveTradingPostCommand());
         LazyCommands.init();
         KtCommands.INSTANCE.init();
     }

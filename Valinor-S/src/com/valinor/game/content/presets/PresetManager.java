@@ -51,7 +51,7 @@ public class PresetManager {
         PLATINUM_TOKEN,
         BLOOD_MONEY,
         BLOODY_TOKEN,
-        CustomItemIdentifiers.FEROX_COINS,
+        CustomItemIdentifiers.VALINOR_COINS,
         CustomItemIdentifiers.VOTE_TICKET
     };
 

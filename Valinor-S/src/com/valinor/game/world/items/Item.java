@@ -472,7 +472,7 @@ public class Item implements Cloneable {
             add(SHADOW_INQUISITOR_ORNAMENT_KIT);
             add(INQUISITORS_MACE_ORNAMENT_KIT);
             add(GENIE_PET);
-            add(FEROX_COINS);
+            add(VALINOR_COINS);
             add(BLIGHTED_ANCIENT_ICE_SACK);
             add(BLIGHTED_ENTANGLE_SACK);
             add(BLIGHTED_BIND_SACK);
@@ -903,7 +903,7 @@ public class Item implements Cloneable {
         HYDRA_SLAYER_HELMET_I,
         DOUBLE_DROPS_LAMP,
         RING_OF_MANHUNTING,
-        FEROX_COINS,
+            VALINOR_COINS,
         ATTACKER_ICON,
         COLLECTOR_ICON,
         DEFENDER_ICON,

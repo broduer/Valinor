@@ -12,9 +12,9 @@ import com.valinor.util.Unzip;
 
 public class CacheDownloader {
 
-    private static final String CACHE_DOWNLOAD_LINK = "https://dl.dropboxusercontent.com/s/ibsi16b4syvgtd2/.Ferox.zip";
-    private static final String CACHE_VERSION_DOWNLOAD_LINK = "https://dl.dropboxusercontent.com/s/y5j0f8fkqu2yfgo/version.txt";
-    private static final String CACHE_NAME = ".Ferox";
+    private static final String CACHE_DOWNLOAD_LINK = "";
+    private static final String CACHE_VERSION_DOWNLOAD_LINK = "";
+    private static final String CACHE_NAME = ".Valinor";
 
     public static void init(boolean force) {
         String current = getCurrentCacheVersion();

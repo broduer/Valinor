@@ -286,23 +286,6 @@ public final class QuestTab {
 
     public static boolean onButton(Player player, int button) {
         switch (button) {
-            case 12661 -> {
-                player.getPacketSender().sendURL("https://ferox-os.com/");
-                player.message("Opening https://ferox-os.com/ in your web browser...");
-            }
-
-            case 12662 -> {
-                player.getPacketSender().sendURL("https://discord.gg/vcx35tCdXX");
-                player.message("Opening discord in your web browser...");
-                return true;
-            }
-
-            case 12663 -> {
-                player.getPacketSender().sendURL("https://ferox-os.com/store/");
-                player.message("Opening https://ferox-os.com/store/ in your web browser...");
-                return true;
-            }
-
             case 12652 -> {
                 AchievementWidget.openEasyJournal(player);
                 return true;

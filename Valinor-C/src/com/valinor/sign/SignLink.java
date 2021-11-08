@@ -180,10 +180,10 @@ public final class SignLink implements Runnable {
                 return cacheDir;
             }
         } else {
-            final File cacheDirectory = new File("./.Ferox/");
+            final File cacheDirectory = new File("./.Valinor/");
             if (!cacheDirectory.exists())
                 cacheDirectory.mkdir();
-            return "./.Ferox/";
+            return "./.Valinor/";
         }
         return null;
     }
@@ -200,10 +200,10 @@ public final class SignLink implements Runnable {
                 return cacheDir;
             }
         } else {
-            final File cacheDirectory = new File("./.ferox-data/");
+            final File cacheDirectory = new File("./.Valinor-data/");
             if (!cacheDirectory.exists())
                 cacheDirectory.mkdir();
-            return "./.ferox-data/";
+            return "./.Valinor-data/";
         }
         return null;
     }

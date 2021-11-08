@@ -15,8 +15,11 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class GameConstants {
 
-    public static final String VOTE_URL = "https://ferox-os.com/vote/";
-    public static final String WEBSITE_URL = "https://ferox-os.com/";
+    public static final String VOTE_URL = "https://valinor-os.com/vote/";
+    public static final String STORE_URL = "https://valinor-os.com/store/";
+    public static final String DONATOR_FEATURES_URL = "https://valinor-os.com/features/";
+    public static final String WEBSITE_URL = "https://valinor-os.com/";
+    public static final String RULES_URL = "";
 
     /**
      * Starter items for game mode.
@@ -44,7 +47,7 @@ public class GameConstants {
 
     public static String CURRENCY_STRING = GameServer.properties().pvpMode ? "BM" : "coins";
 
-    public static final String SERVER_NAME = "Ferox";
+    public static final String SERVER_NAME = "Valinor";
 
     public static final int[] DONATOR_ITEMS = {DARK_CRAB, DARK_CRAB + 1, ItemIdentifiers.ANGLERFISH, ItemIdentifiers.ANGLERFISH + 1, ItemIdentifiers.SUPER_COMBAT_POTION1, ItemIdentifiers.SUPER_COMBAT_POTION2, ItemIdentifiers.SUPER_COMBAT_POTION3, ItemIdentifiers.SUPER_COMBAT_POTION4, ItemIdentifiers.SUPER_COMBAT_POTION1 + 1, ItemIdentifiers.SUPER_COMBAT_POTION2 + 1, ItemIdentifiers.SUPER_COMBAT_POTION3 + 1, ItemIdentifiers.SUPER_COMBAT_POTION4 + 1};
 

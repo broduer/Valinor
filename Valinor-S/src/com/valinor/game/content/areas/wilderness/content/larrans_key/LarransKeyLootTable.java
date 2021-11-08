@@ -175,7 +175,7 @@ public class LarransKeyLootTable {
         new Item(ELDRITCH_ORB),
         new Item(HARMONISED_ORB),
         new Item(GHRAZI_RAPIER),
-        new Item(FEROX_COINS, 500),
+        new Item(VALINOR_COINS, 500),
         new Item(BARRELCHEST_PET),
         new Item(SANGUINESTI_STAFF),
         new Item(KODAI_WAND),

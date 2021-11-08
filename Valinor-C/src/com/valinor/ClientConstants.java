@@ -20,7 +20,7 @@ public final class ClientConstants {
     public static final boolean production = false;
     public static final boolean test = false;
 
-    public static final String CLIENT_VERSION = "1.1.4";
+    public static final String CLIENT_VERSION = "1.0.0";
     public static final int OSRS_DATA_VERSION = 192;
     public static final int OSRS_DATA_SUB_VERSION = 0;
 
@@ -110,8 +110,8 @@ public final class ClientConstants {
     public static final boolean OBJECT_DEFINITION_LOW_MEMORY = false;
 
     //We could always add the version here for the production cache folder if we wanted to.
-    public static final String CACHE_NAME = ".Ferox/";
-    public static final String DATA_NAME = ".ferox-data/";
+    public static final String CACHE_NAME = ".Valinor/";
+    public static final String DATA_NAME = ".Valinor-data/";
 
     public static boolean JAGCACHED_ENABLED = false;
 
@@ -123,7 +123,7 @@ public final class ClientConstants {
     /**
      * A string which indicates the Client's name.
      */
-    public static final String CLIENT_NAME = "Ferox";
+    public static final String CLIENT_NAME = "Valinor";
 
     /**
      * Dumps map region images when new regions are loaded.

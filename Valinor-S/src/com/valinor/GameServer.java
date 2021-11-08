@@ -23,7 +23,7 @@ import static io.netty.util.ResourceLeakDetector.Level.DISABLED;
 import static io.netty.util.ResourceLeakDetector.Level.PARANOID;
 
 /**
- * The starting point of Ferox.
+ * The starting point of Valinor.
  * Starts the game server.
  *
  * @author Professor Oak

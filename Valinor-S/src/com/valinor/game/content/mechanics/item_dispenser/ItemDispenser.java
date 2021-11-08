@@ -22,7 +22,7 @@ import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS;
 import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS_TOTAL_VALUE;
 
 /**
- * The item dispenser is an object which crushes all your items into Ferox coins.
+ * The item dispenser is an object which crushes all your items into Valinor coins.
  *
  * @author Patrick van Elderen | February, 14, 2021, 23:12
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
@@ -191,7 +191,7 @@ public class ItemDispenser {
     }
 
     private void dispense() {
-        if(!player.inventory().hasCapacityFor(new Item(CustomItemIdentifiers.FEROX_COINS))) {
+        if(!player.inventory().hasCapacityFor(new Item(CustomItemIdentifiers.VALINOR_COINS))) {
             player.message("You have no room for any "+GameConstants.SERVER_NAME+" coins!");
            return;
         }
@@ -205,7 +205,7 @@ public class ItemDispenser {
         var totalCartValue = player.<Integer>getAttribOr(CART_ITEMS_TOTAL_VALUE,0);
 
         //Add coins to inv
-        player.inventory().add(new Item(CustomItemIdentifiers.FEROX_COINS, totalCartValue),true);
+        player.inventory().add(new Item(CustomItemIdentifiers.VALINOR_COINS, totalCartValue),true);
 
         //Clear items after we received the coins not before!
         var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());

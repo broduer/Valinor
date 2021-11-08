@@ -595,7 +595,7 @@ public enum Collection {
         new Item(ELDRITCH_ORB),
         new Item(HARMONISED_ORB),
         new Item(NIGHTMARE_STAFF),
-        new Item(FEROX_COINS),
+        new Item(VALINOR_COINS),
         new Item(BARRELCHEST_PET),
         new Item(SANGUINESTI_STAFF)
     ),

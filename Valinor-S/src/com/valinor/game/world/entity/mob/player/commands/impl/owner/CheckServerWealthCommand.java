@@ -192,7 +192,7 @@ public class CheckServerWealthCommand implements Command {
         public AtomicLong sumPegOR = new AtomicLong(0L);
         public AtomicLong sumEternalOR = new AtomicLong(0L);
         public AtomicLong sumCorruptedBoots = new AtomicLong(0L);
-        public AtomicLong sumLuxCoins = new AtomicLong(0L);
+        public AtomicLong sumValinorCoins = new AtomicLong(0L);
         public AtomicLong sumAncestralHat = new AtomicLong(0L);
         public AtomicLong sumAncestralTop = new AtomicLong(0L);
         public AtomicLong sumAncestralBottom = new AtomicLong(0L);
@@ -450,8 +450,8 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == CORRUPTED_BOOTS) {
                                         storage.sumCorruptedBoots.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == FEROX_COINS) {
-                                        storage.sumLuxCoins.addAndGet(1L * item.getAmount());
+                                    if(item.getId() == VALINOR_COINS) {
+                                        storage.sumValinorCoins.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == ANCESTRAL_HAT) {
                                         storage.sumAncestralHat.addAndGet(1L * item.getAmount());

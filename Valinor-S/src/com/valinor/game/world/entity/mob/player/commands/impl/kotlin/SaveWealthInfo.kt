@@ -71,7 +71,7 @@ object SaveWealthInfo {
         str += ("The total PEGASIAN OR for all " + goal + " players is: " + Utils.formatNumber(storage.sumPegOR.get())+"\n")
         str += ("The total ETERNAL OR for all " + goal + " players is: " + Utils.formatNumber(storage.sumEternalOR.get())+"\n")
         str += ("The total CORRUPTED BOOTS for all " + goal + " players is: " + Utils.formatNumber(storage.sumCorruptedBoots.get())+"\n")
-        str += ("The total FEROX COINS for all " + goal + " players is: " + Utils.formatNumber(storage.sumLuxCoins.get())+"\n")
+        str += ("The total VALINOR COINS for all " + goal + " players is: " + Utils.formatNumber(storage.sumValinorCoins.get())+"\n")
         str += ("The total ANCETSTRAL HAT for all " + goal + " players is: " + Utils.formatNumber(storage.sumAncestralHat.get())+"\n")
         str += ("The total ANCESTRAL TOP for all " + goal + " players is: " + Utils.formatNumber(storage.sumAncestralTop.get())+"\n")
         str += ("The total ANCESTRAL BOTTOM for all " + goal + " players is: " + Utils.formatNumber(storage.sumAncestralBottom.get())+"\n")

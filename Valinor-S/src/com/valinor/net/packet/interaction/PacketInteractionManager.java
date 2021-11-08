@@ -45,7 +45,7 @@ public final class PacketInteractionManager {
 
     private static void loadRecursive() throws IOException {
         ClassPath classPath = ClassPath.from(Thread.currentThread().getContextClassLoader());
-        Set<Class<?>> clazzes = classPath.getTopLevelClassesRecursive("com.ferox.game").stream().map(ClassPath.ClassInfo::load).collect(Collectors.toSet());
+        Set<Class<?>> clazzes = classPath.getTopLevelClassesRecursive("com.valinor.game").stream().map(ClassPath.ClassInfo::load).collect(Collectors.toSet());
         clazzes.forEach(PacketInteractionManager::load);
     }
 

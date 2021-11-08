@@ -18,7 +18,7 @@ public enum CurrencyType {
     COINS(new ItemCurrency(ItemIdentifiers.COINS_995)),
     DONATOR_TICKETS(new ItemCurrency(CustomItemIdentifiers.DONATOR_TICKET)),
     MARK_OF_GRACE(new ItemCurrency(ItemIdentifiers.MARK_OF_GRACE)),
-    FEROX_COINS(new ItemCurrency(CustomItemIdentifiers.FEROX_COINS)),
+    VALINOR_COINS(new ItemCurrency(CustomItemIdentifiers.VALINOR_COINS)),
     BLOOD_MONEY(new ItemCurrency(ItemIdentifiers.BLOOD_MONEY)),
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
     TARGET_POINTS(new TargetPointsCurrency()),
@@ -47,8 +47,8 @@ public enum CurrencyType {
             case MARK_OF_GRACE:
                 value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.MARK_OF_GRACE) ? player.inventory().count(ItemIdentifiers.MARK_OF_GRACE) : 0);
                 break;
-            case FEROX_COINS:
-                value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.FEROX_COINS) ? player.inventory().count(CustomItemIdentifiers.FEROX_COINS) : 0);
+            case VALINOR_COINS:
+                value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.VALINOR_COINS) ? player.inventory().count(CustomItemIdentifiers.VALINOR_COINS) : 0);
                 break;
             case BLOOD_MONEY:
                 value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.BLOOD_MONEY) ? player.inventory().count(ItemIdentifiers.BLOOD_MONEY) : 0);
