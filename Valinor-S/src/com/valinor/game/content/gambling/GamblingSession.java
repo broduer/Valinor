@@ -459,28 +459,6 @@ public class GamblingSession {
                 return;
             }
 
-            if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(donator_item -> donator_item == gambleItem.getId())) {
-                player.message("You cannot gamble that item.");
-                return;
-            }
-
-            for (Item bankItem : GameConstants.BANK_ITEMS) {
-                if (bankItem.unnote().getId() == gambleItem.getId()) {
-                    player.message("You can't gamble spawnable items.");
-                    return;
-                }
-            }
-
-            if (gambleItem.unnote().definition(World.getWorld()).pvpAllowed) {
-                player.message("You can't gamble spawnable items.");
-                return;
-            }
-
-            if (gambleItem.getValue() <= 0) {
-                player.message("You can't gamble spawnable items.");
-                return;
-            }
-
             //Set the item delay to 5 seconds at least.
             item_delay.start(5);
             player.getPacketSender().sendString(16223, "<col=ca0d0d>GAMBLE MODIFIED!");

@@ -7,7 +7,6 @@ import com.valinor.game.content.syntax.impl.TradingPostSearchItem;
 import com.valinor.game.content.syntax.impl.TradingPostSearchName;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
-import com.valinor.game.world.definition.BloodMoneyPrices;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -103,7 +102,7 @@ public class TradingPost {
         }
     }
 
-    private static final int SALES_REQUIRED_FOR_AVERAGE_PRICE = 4;
+    private static final int SALES_REQUIRED_FOR_AVERAGE_PRICE = 1;
 
     /**
      * calculates the average of first 5 available prices of a specific item in the GE
@@ -146,12 +145,6 @@ public class TradingPost {
             }
         }
         //System.out.println("prices: "+prices.size());
-        if (prices.isEmpty() || prices.size() < SALES_REQUIRED_FOR_AVERAGE_PRICE) {
-            BloodMoneyPrices bm = new Item(itemId).definition(World.getWorld()).bm;
-            if (bm == null)
-                return 0;
-            return bm.value();
-        }
 
         List<Long> paidPrices = Lists.newArrayList();
 
@@ -706,33 +699,6 @@ public class TradingPost {
 
             if (!offerItem.rawtradable()) {
                 player.message("<col=ff0000>You can't offer this item.");
-                return false;
-            }
-
-            //Pker accounts can't offer free items.
-            if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(donator_item -> donator_item == itemId)) {
-                player.message("<col=ff0000>You can't offer this item.");
-                return false;
-            }
-
-            for (Item bankItem : GameConstants.BANK_ITEMS) {
-                if (bankItem.note().getId() == itemId) {
-                    player.message("You can't sell this item.");
-                    return false;
-                }
-                if (bankItem.getId() == itemId) {
-                    player.message("You can't sell this item.");
-                    return false;
-                }
-            }
-
-            if (offerItem.unnote().definition(World.getWorld()).pvpAllowed) {
-                player.message("You can't trade spawnable items.");
-                return false;
-            }
-
-            if (offerItem.getValue() <= 0) {
-                player.message("You can't sell spawnable items.");
                 return false;
             }
 

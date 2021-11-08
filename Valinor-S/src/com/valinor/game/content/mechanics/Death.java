@@ -125,19 +125,6 @@ public class Death {
         player.runOnceTask(4, r -> {
             player.stopActions(true);
 
-            Mob lastAttacker = player.getAttrib(AttributeKey.LAST_DAMAGER);
-
-            //Handle player dying to a bot.
-            if (lastAttacker != null && lastAttacker.isNpc() && lastAttacker.getAsNpc().getBotHandler() != null) {
-                Npc bot = (Npc) lastAttacker;
-                bot.stopActions(true);
-                int botDeaths = player.getAttribOr(AttributeKey.BOT_DEATHS, 0);
-                botDeaths++;
-                player.putAttrib(AttributeKey.BOT_DEATHS, botDeaths);
-                player.message("You now have " + botDeaths + " bot " + Utils.pluralOrNot("death", botDeaths) + ".");
-                DailyTaskManager.increase(DailyTasks.BOTS, player);
-            }
-
             //Minigame logic
             if (killer != null && killer.getMinigame() != null) {
                 killer.getMinigame().killed(killer, player);

@@ -1,7 +1,5 @@
 package com.valinor.game.world.position.areas.impl;
 
-import com.valinor.game.content.areas.riskzone.RiskFightArea;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.world.World;
@@ -9,7 +7,6 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
-import com.valinor.game.world.entity.combat.bountyhunter.EarningPotential;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,7 +15,6 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.Controller;
-import com.valinor.util.CustomItemIdentifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,14 +32,6 @@ public class WildernessArea extends Controller {
 
     public static int wildernessLevel(Tile tile) {
         int z = (tile.y > 6400) ? tile.y - 6400 : tile.y;
-
-        if(tile.region() == 9369 || tile.region() == 9370) { // Wilderness cave member zone)
-            return 40;
-        }
-
-        if(tile.inArea(RiskFightArea.NH_AREA) || tile.inArea(RiskFightArea.ONE_V_ONE_1) || tile.inArea(RiskFightArea.ONE_V_ONE_2) || tile.inArea(RiskFightArea.ONE_V_ONE_3)) {
-            return 1;
-        }
 
         if (!(tile.x > 2941 && tile.x < 3392 && tile.y > 3524 && tile.y < 3968) && !inUndergroundWilderness(tile))
             return 0;
@@ -67,11 +55,6 @@ public class WildernessArea extends Controller {
         if (region == 12701 || region == 12702 || region == 12703 || region == 12957 || region == 12958 || region == 12959) return true;
 
         return region == 12192 || region == 12193 || region == 12961 || region == 11937 || region == 12443 || region == 12190;
-    }
-
-    // A small custom area between 1-4 wilderness were range is disabled in an attempt to stop raggers. Note: may not be in use.
-    public static boolean inRestrictedRangeZone(Tile tile) {
-        return tile.inArea(3041, 3548, 3069, 3561);
     }
 
     /**
@@ -112,12 +95,6 @@ public class WildernessArea extends Controller {
             Player player = mob.getAsPlayer();
             //Clear the damage map when entering wilderness
             player.getCombat().getDamageMap().clear();
-            /*String playerEnteringMac = player.getAttribOr(AttributeKey.MAC_ADDRESS, "invalid");
-            if (BountyHunter.PLAYERS_IN_WILD.stream().anyMatch(p -> p.<String>getAttribOr(AttributeKey.MAC_ADDRESS, "invalid").equalsIgnoreCase(playerEnteringMac))) {
-                World.getWorld().sendStaffMessage(Color.RED.wrap(player.getUsername()+" is multi logging in the wilderness!"));
-            }*/
-            player.getRisk().update();
-            EarningPotential.increasePotential(player);
         }
     }
 
@@ -133,16 +110,9 @@ public class WildernessArea extends Controller {
             player.getInterfaceManager().openWalkable(-1);
             player.getPacketSender().sendInteractionOption("null", 2, true);
             BountyHunter.PLAYERS_IN_WILD.remove(player);
-            player.clearAttrib(AttributeKey.SPECIAL_ATTACK_USED);
             player.clearAttrib(AttributeKey.INWILD);
             player.clearAttrib(AttributeKey.PVP_WILDY_AGGRESSION_TRACKER);
-            player.clearAttrib(AttributeKey.PLAYER_KILLS_WITHOUT_LEAVING_WILD);
             player.getPacketSender().sendString(PLAYERS_PKING.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_PKING.childId).fetchLineData(player));
-
-            if (player.inventory().contains(CustomItemIdentifiers.WILDERNESS_KEY)) {
-                log.info("{} - escaped with the Wilderness key.", player.getUsername());
-                WildernessKeyPlugin.announceKeyEscape(player);
-            }
         }
     }
 
@@ -153,15 +123,6 @@ public class WildernessArea extends Controller {
             if (!inWilderness(player.tile())) {
                 leave(player);
                 return;
-            }
-
-            //If player is in the wilderness whilst holding a wildy key broadcast it!
-            if(WildernessKeyPlugin.hasKey(player)) {
-                if(!WildernessKeyPlugin.ESCAPED) {
-                    var wildy_lvl = WildernessArea.wildernessLevel(player.tile());
-                    var message = player.getUsername()+" is holding wilderness key at wilderness level ("+wildy_lvl+")";
-                    World.getWorld().sendBroadcast(message);
-                }
             }
 
             if (Transmogrify.isTransmogrified(player)) {
@@ -253,9 +214,6 @@ public class WildernessArea extends Controller {
 
     @Override
     public void defeated(Player killer, Mob mob) {
-        if (mob.isPlayer()) {
-            killer.getRisk().update(); // Make sure wealth attribs are up to date!
-        }
     }
 
     @Override

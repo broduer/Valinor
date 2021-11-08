@@ -1,7 +1,6 @@
 package com.valinor.game.content.packet_actions.interactions.items;
 
 import com.valinor.game.content.EffectTimer;
-import com.valinor.game.content.areas.wilderness.content.activity.ActivityRewardsHandler;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.consumables.FoodConsumable;
 import com.valinor.game.content.consumables.potions.Potions;
@@ -205,11 +204,6 @@ public class ItemActionOne {
         if (id == RUNE_POUCH_I) {
             player.getRunePouch().open(RUNE_POUCH_I);
             player.putAttrib(VIEWING_RUNE_POUCH_I,true);
-            return;
-        }
-
-        if(id == ACTIVITY_CASKET_3) {
-            ActivityRewardsHandler.open(player);
             return;
         }
 

@@ -3,8 +3,6 @@ package com.valinor;
 import com.valinor.game.GameBuilder;
 import com.valinor.game.content.announcements.dyk.DidYouKnowTask;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
-import com.valinor.game.content.areas.wilderness.content.todays_top_pkers.TopPkers;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
@@ -58,11 +56,6 @@ public final class Bootstrap {
         HostBlacklist.loadBlacklist();
         if (GameServer.properties().enableDidYouKnowMessages) {
             TaskManager.submit(new DidYouKnowTask());
-        }
-        if (GameServer.properties().enableWildernessBossEvents && GameServer.properties().pvpMode) {// Events only on PvP.
-            WildernessBossEvent.onServerStart();
-            WildernessKeyPlugin.onServerStart();
-            TopPkers.SINGLETON.init();
         }
         Item.onServerStart();
     }

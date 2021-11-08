@@ -5,16 +5,16 @@ import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
-import com.valinor.game.world.definition.BloodMoneyPrices;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Set;
 
-import static com.valinor.game.GameConstants.PVP_ALLOWED_SPAWNS;
 import static com.valinor.game.content.mechanics.break_items.BreakItemsOnDeath.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -105,9 +105,6 @@ public class Item implements Cloneable {
         };
         for (int i : tradeable_special_items) {
             World.getWorld().definitions().get(ItemDefinition.class, i).tradeable_special_items = true;
-        }
-        for (int i : PVP_ALLOWED_SPAWNS) {
-            World.getWorld().definitions().get(ItemDefinition.class, i).pvpAllowed = true;
         }
     }
 
@@ -318,10 +315,6 @@ public class Item implements Cloneable {
      */
     public final void incrementAmount() {
         incrementAmountBy(1);
-    }
-
-    public BloodMoneyPrices getBloodMoneyPrice() {
-        return definition(World.getWorld()).bm;
     }
 
     public boolean isTwoHanded() {
@@ -934,9 +927,7 @@ public class Item implements Cloneable {
      */
     public int getValue() {
         final ItemDefinition def = definition(World.getWorld());
-        if (def.pvpAllowed)
-            return 0;
-        return TradingPost.TRADING_POST_VALUE_ENABLED ? TradingPost.getProtectionPrice(id) : getBloodMoneyPrice() == null ? 0 : getBloodMoneyPrice().value();
+        return TradingPost.TRADING_POST_VALUE_ENABLED ? TradingPost.getProtectionPrice(id) : def.cost;
     }
 
     /**

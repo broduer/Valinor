@@ -4,8 +4,6 @@ import com.valinor.GameServer;
 import com.valinor.game.content.account.ChangeAccountTypeDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.*;
 import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
-import com.valinor.game.content.areas.wilderness.content.todays_top_pkers.TopPkers;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
 import com.valinor.game.content.item_forging.ItemForgingCategory;
 import com.valinor.game.content.mechanics.MagicalAltarDialogue;
@@ -25,12 +23,14 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.*;
+import com.valinor.game.world.entity.mob.player.ForceMovement;
+import com.valinor.game.world.entity.mob.player.MagicSpellbook;
+import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
@@ -240,11 +240,6 @@ public class Edgevile extends PacketInteraction {
                     return true;
                 }
 
-                if (WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile())) {
-                    player.message("You cannot teleport outside the Wilderness with the Wilderness key.");
-                    return true;
-                }
-
                 player.lockNoDamage();
                 GameObject spawned = new GameObject(88, obj.tile(), obj.getType(), obj.getRotation());
                 player.runFn(1, () -> {
@@ -344,10 +339,6 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
         } else if (option == 2) {
-            if (obj.getId() == SCOREBOARD) {
-                TopPkers.SINGLETON.openLeaderboard(player);
-                return true;
-            }
 
             if (obj.getId() == MINE_CART) {
                 player.getItemDispenser().loadValueList();

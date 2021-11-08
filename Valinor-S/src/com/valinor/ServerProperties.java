@@ -133,17 +133,11 @@ public final class ServerProperties {
         production = false;
         test = false;
         displayCycleLag = false;
-        enableWildernessActivities = true;
-        enableWildernessBossEvents = true;
         refreshQuestTabCycles = 100;
         hitPredictorEnabled = true;
-        riskManagementVeryRareRollRange = "100-90";
-        riskManagementRareRollRange = "90-75";
-        riskManagementUncommonRollRange = "75-45";
         tournamentsEnabled = true;
         enableSql = sqlOn;
         linuxOnlyDisplayCycleLag = false;
-        enableStarterTasks = true;
         ignoreGameLagDetectionMilliseconds = 10000;
         clearQuestInterfaceStrings = false;
         warnSlowPackets = false;
@@ -172,7 +166,6 @@ public final class ServerProperties {
         enableDidYouKnowMessages = true;
         enableLoadLastDuelPreset = true;
         enablePasswordChangeLogging = true;
-        enableMoneyPouch = false;
         venomVsPlayersOn = false;
         venomFromAdminsOn = false;
         fileStore = "";
@@ -209,11 +202,8 @@ public final class ServerProperties {
         redirectOutStream = false;
         teleToMeInWildOk = false;
         teleToWildyPlayedDisabled = false;
-        brewCap = 14;
         newAccsBMTime = 3000;
         pkTelesAfterSetupSet = 50;
-        jailOres = 167;
-        brewDroppingBlocked = true;
         stakingStaffOnly = false;
         edgeDitch10secondPjTimerEnabled = true;
         punishmentsToDatabase = false;
@@ -380,34 +370,9 @@ public final class ServerProperties {
     public final boolean displayCycleLag;
 
     /**
-     * If we want to enable wilderness activities to encourage more people to use the wilderness, set this to true.
-     */
-    public final boolean enableWildernessActivities;
-
-    /**
-     * If we want to enable wilderness boss events to encourage more people to use the wilderness, set this to true.
-     */
-    public final boolean enableWildernessBossEvents;
-
-    /**
      * If we want to enable the hit predictor for all players, set this to true. Make sure to match the client constant for this to not confuse players.
      */
     public final boolean hitPredictorEnabled;
-
-    /**
-     * This is the range that the risk management very rare items will roll. It must be expressed as two numbers with a hyphen.
-     */
-    public final String riskManagementVeryRareRollRange;
-
-    /**
-     * This is the range that the risk management rare items will roll. It must be expressed as two numbers with a hyphen.
-     */
-    public final String riskManagementRareRollRange;
-
-    /**
-     * This is the range that the risk management uncommon items will roll. It must be expressed as two numbers with a hyphen.
-     */
-    public final String riskManagementUncommonRollRange;
 
     /**
      * If we want to disable PvP tournaments, set this to false.
@@ -423,11 +388,6 @@ public final class ServerProperties {
      * If we want to only display cycle lag messages on Linux, set this to true.
      */
     public final boolean linuxOnlyDisplayCycleLag;
-
-    /**
-     * If we want to enable starter tasks, set this to true.
-     */
-    public final boolean enableStarterTasks;
 
     /**
      * This is the value for how many milliseconds we want to wait for calculating game lag.
@@ -574,11 +534,6 @@ public final class ServerProperties {
      */
     public final boolean enablePasswordChangeLogging;
 
-    /**
-     * If we want to enable the money pouch, set this to true.
-     */
-    public final boolean enableMoneyPouch;
-
     // Disabled until fully coded
     public final boolean venomVsPlayersOn;
 
@@ -639,7 +594,6 @@ public final class ServerProperties {
      * This is the logout web hook URL for Discord.
      */
     public final String logoutWebHookUrl;
-
     /**
      * This is the sanctions web hook URL for Discord.
      */
@@ -714,20 +668,11 @@ public final class ServerProperties {
     // Stops non-admins doing 'teleto' if the target is in the wilderness ft. hybrid abuse x2 in 1 hour
     public final boolean teleToWildyPlayedDisabled;
 
-    // maximum brews you can take into the wilderness via teleports. You can still jump the ditch and run up to 30+ but who does that :)
-    public final int brewCap;
-
     // Game ticks before new accounts drop blood money (stops farming)
     public final int newAccsBMTime;
 
     // How many seconds you have to wait before using teleports (tabs, spellbook, wizard)
     public final int pkTelesAfterSetupSet;
-
-    // How many ores need to be mined before you can escape from the jail.
-    public final int jailOres;
-
-    // If food that is dropped in wild should be hidden to others.
-    public final boolean brewDroppingBlocked;
 
     // If duel arena can only be used when you're a mod.
     public final boolean stakingStaffOnly;

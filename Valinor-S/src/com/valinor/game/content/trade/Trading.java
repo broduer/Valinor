@@ -393,8 +393,6 @@ public class Trading {
                 //Send successful trade message!
                 player.message("Trade accepted!");
                 partner.getPacketSender().sendMessage("Trade accepted!");
-                player.getRisk().update();
-                partner.getRisk().update();
             }
         }
         button_delay.start(1);
@@ -439,27 +437,6 @@ public class Trading {
         Item tradeItem = new Item(id, amount);
         if (!tradeItem.rawtradable()) {
             player.message("You cannot trade that item.");
-            return;
-        }
-
-        for (Item bankItem : GameConstants.BANK_ITEMS) {
-            if (bankItem.note().getId() == tradeItem.getId()) {
-                player.message("You can't trade this item.");
-                return;
-            }
-            if (bankItem.getId() == tradeItem.getId()) {
-                player.message("You can't trade this item.");
-                return;
-            }
-        }
-
-        if (tradeItem.unnote().definition(World.getWorld()).pvpAllowed) {
-            player.message("You can't trade spawnable items.");
-            return;
-        }
-
-        if (tradeItem.getValue() <= 0) {
-            player.message("You can't trade spawnable items.");
             return;
         }
 

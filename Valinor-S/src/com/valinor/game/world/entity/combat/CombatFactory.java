@@ -596,21 +596,6 @@ public class CombatFactory {
             return false;
         }
 
-        if (entity.isNpc() && entity.getAsNpc().getBotHandler() != null) {
-            if (!(WildernessArea.inWilderness(entity.tile())) || !(WildernessArea.inWilderness(other.tile()))) {
-                //Only reset combat if NPC is trying to attack player outside of wilderness. Don't reset players combat regardless of if they are attacker or target.
-                Debugs.CMB.debug(entity, "bots cannot attack outside of wilderness.", other, true);
-                return false;
-            }
-        }
-
-        if (other.isNpc() && other.getAsNpc().getBotHandler() != null) {
-            if (!(WildernessArea.inWilderness(entity.tile())) || !(WildernessArea.inWilderness(other.tile()))) {
-                Debugs.CMB.debug(entity, "bots cannot be attacked outside of wilderness.", other, true);
-                return false;
-            }
-        }
-
         if (!MemberZone.canAttack(entity, other)) {
             Debugs.CMB.debug(entity, "cant attack member zone npc", other, true);
             return false;
@@ -933,23 +918,6 @@ public class CombatFactory {
         // Check immune npcs..
         if (other.isNpc()) {
             Npc npc = (Npc) other;
-            if (npc.getBotHandler() != null) {
-                if (entity.isPlayer()) {
-                    var oppWithinLvl = entity.skills().combatLevel() >= getLowestLevel(entity, npc) &&
-                        entity.skills().combatLevel() <= getHighestLevel(entity, npc);
-
-                    if (!oppWithinLvl) {
-                        entity.message((!WildernessArea.inWilderness(entity.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
-                        return false;
-                    } else {
-                        var withinLvl = npc.def().combatlevel >= getLowestLevel(entity, npc) && npc.def().combatlevel <= getHighestLevel(entity, npc);
-                        if (!withinLvl) {
-                            entity.message((!WildernessArea.inWilderness(entity.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
-                            return false;
-                        }
-                    }
-                }
-            }
 
             if (npc.getTimers().has(TimerKey.ATTACK_IMMUNITY)) {
                 if (entity.isPlayer()) {
@@ -1051,7 +1019,7 @@ public class CombatFactory {
                 if (spell != null && spell.name().equalsIgnoreCase("Avada Kedavra")) {
                     if (target.isNpc()) {
                         boolean insideAnyRaids = false;
-                        if(player.getRaids() != null) {
+                        if (player.getRaids() != null) {
                             insideAnyRaids = player.getRaids().raiding(player);
                         }
                         hit.setDamage(npc.isWorldBoss() || insideAnyRaids || npc.id() == THE_NIGHTMARE ? 500 : npc.hp());
@@ -1202,7 +1170,7 @@ public class CombatFactory {
         if (target.isNpc() && attacker.isPlayer()) {
             Player player = attacker.getAsPlayer();
             Npc npcTarget = target.getAsNpc();
-            if(player.getRaids() != null) {
+            if (player.getRaids() != null) {
                 if (player.getRaids().raiding(player)) {
                     player.getRaids().addDamagePoints(player, npcTarget, hit.getDamage());
                 }
@@ -1234,10 +1202,10 @@ public class CombatFactory {
 
             Player attackerAsPlayer = attacker.getAsPlayer();
 
-            if(attackerAsPlayer.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS) && target.isNpc() && target.getAsNpc().id() != LORD_VOLDEMORT) {
+            if (attackerAsPlayer.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS) && target.isNpc() && target.getAsNpc().id() != LORD_VOLDEMORT) {
                 attackerAsPlayer.message(Color.RED.wrap("Your elder wand crumbles to dust."));
                 attackerAsPlayer.getEquipment().remove(new Item(ELDER_WAND_RAIDS), true);
-                Autocasting.setAutocast(attackerAsPlayer,null); // Set auto-cast to default; 0
+                Autocasting.setAutocast(attackerAsPlayer, null); // Set auto-cast to default; 0
                 WeaponInterfaces.updateWeaponInterface(attackerAsPlayer); //Update the weapon interface
             }
 
@@ -1408,27 +1376,6 @@ public class CombatFactory {
             if (hasVengeance && !hit.reflected) {
                 handleVengeance(target, attacker, hit.getDamage());
             }
-
-            //Set the dmg at the bottom after are effects have been calculated for.
-            if (attacker.isPlayer()) {
-                Player player = attacker.getAsPlayer();
-                if (hit.getCombatType() == CombatType.MELEE) {
-                    player.putAttrib(AttributeKey.MELEE_DAMAGE, player.<Integer>getAttribOr(AttributeKey.MELEE_DAMAGE, 0) + damage);
-                    player.putAttrib(AttributeKey.LAST_ATTACK_WAS_MELEE, true);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_RANGED);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_MAGIC);
-                } else if (hit.getCombatType() == CombatType.RANGED) {
-                    player.putAttrib(AttributeKey.RANGED_DAMAGE, player.<Integer>getAttribOr(AttributeKey.RANGED_DAMAGE, 0) + damage);
-                    player.putAttrib(AttributeKey.LAST_ATTACK_WAS_RANGED, true);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_MELEE);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_MAGIC);
-                } else if (hit.getCombatType() == CombatType.MAGIC) {
-                    player.putAttrib(AttributeKey.MAGIC_DAMAGE, player.<Integer>getAttribOr(AttributeKey.MAGIC_DAMAGE, 0) + damage);
-                    player.putAttrib(AttributeKey.LAST_ATTACK_WAS_MAGIC, true);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_MELEE);
-                    player.clearAttrib(AttributeKey.LAST_ATTACK_WAS_RANGED);
-                }
-            }
         }
 
         // Auto-retaliate
@@ -1468,31 +1415,24 @@ public class CombatFactory {
         //PvM protection prayers
         if (damage > 0) {
             if (target.isPlayer() && attacker.isNpc()) {
-                // 'bots' are npcs but are fake players so use prayer ratio
-                if (attacker.getAsNpc().getBotHandler() != null) {
-                    if (Prayers.usingPrayer(target, Prayers.getProtectingPrayer(hit.getCombatType()))) {
+                Npc npc = attacker.getAsNpc();
+                if (hit.getCombatType() == CombatType.MELEE && Prayers.usingPrayer(target, PROTECT_FROM_MELEE)) {
+                    if (npc.id() == VANGUARD_7527 || npc.id() == TEKTON_ENRAGED_7544) {
                         hit.setDamage((int) (damage * 0.6));
+                    } else {
+                        hit.setDamage(0);
                     }
-                } else {
-                    Npc npc = attacker.getAsNpc();
-                    if (hit.getCombatType() == CombatType.MELEE && Prayers.usingPrayer(target, PROTECT_FROM_MELEE)) {
-                        if(npc.id() == VANGUARD_7527 || npc.id() == TEKTON_ENRAGED_7544) {
-                            hit.setDamage((int) (damage * 0.6));
-                        } else {
-                            hit.setDamage(0);
-                        }
-                    } else if (hit.getCombatType() == CombatType.RANGED && Prayers.usingPrayer(target, PROTECT_FROM_MISSILES)) {
-                        if(npc.id() == VANGUARD_7528 || npc.id() == VESPULA || npc.id() == VESPULA_7532) {
-                            hit.setDamage((int) (damage * 0.6));
-                        } else {
-                            hit.setDamage(0);
-                        }
-                    } else if (hit.getCombatType() == CombatType.MAGIC && Prayers.usingPrayer(target, PROTECT_FROM_MAGIC)) {
-                        if(npc.id() == LORD_VOLDEMORT || npc.id() == VANGUARD_7529) {
-                            hit.setDamage((int) (damage * 0.6));
-                        } else {
-                            hit.setDamage(0);
-                        }
+                } else if (hit.getCombatType() == CombatType.RANGED && Prayers.usingPrayer(target, PROTECT_FROM_MISSILES)) {
+                    if (npc.id() == VANGUARD_7528 || npc.id() == VESPULA || npc.id() == VESPULA_7532) {
+                        hit.setDamage((int) (damage * 0.6));
+                    } else {
+                        hit.setDamage(0);
+                    }
+                } else if (hit.getCombatType() == CombatType.MAGIC && Prayers.usingPrayer(target, PROTECT_FROM_MAGIC)) {
+                    if (npc.id() == LORD_VOLDEMORT || npc.id() == VANGUARD_7529) {
+                        hit.setDamage((int) (damage * 0.6));
+                    } else {
+                        hit.setDamage(0);
                     }
                 }
             }
@@ -1806,9 +1746,6 @@ public class CombatFactory {
                         removePoints += boost;
                     }
                     victim.skills().alterSkill(Skills.PRAYER, -removePoints);
-
-                    int smiteDmg = (Integer) playerAttacker.getAttribOr(AttributeKey.SMITE_DAMAGE, 0) + removePoints;
-                    playerAttacker.putAttrib(AttributeKey.SMITE_DAMAGE, smiteDmg);
                 }
             }
         }

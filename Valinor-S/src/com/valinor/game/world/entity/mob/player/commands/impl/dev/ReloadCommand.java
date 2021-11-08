@@ -4,7 +4,6 @@ import com.valinor.game.content.seasonal_events.halloween.Halloween;
 import com.valinor.game.content.skill.impl.fishing.Fishing;
 import com.valinor.game.world.World;
 import com.valinor.game.world.definition.loader.impl.ObjectSpawnDefinitionLoader;
-import com.valinor.game.world.definition.loader.impl.BloodMoneyPriceLoader;
 import com.valinor.game.world.definition.loader.impl.PresetLoader;
 import com.valinor.game.world.definition.loader.impl.ShopLoader;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -25,11 +24,7 @@ public class ReloadCommand implements Command {
     @Override
     public void execute(Player player, String command, String[] parts) {
         String reload = parts[1];
-        if (reload.equalsIgnoreCase("bm")) {
-            player.message("Reloading blood money prices...");
-            new BloodMoneyPriceLoader().run();
-            player.message("Finished.");
-        } else if (reload.equalsIgnoreCase("shops")) {
+        if (reload.equalsIgnoreCase("shops")) {
             player.message("Reloading shops...");
             new ShopLoader().run();
             player.message("Finished.");

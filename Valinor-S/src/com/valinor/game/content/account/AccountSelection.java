@@ -10,8 +10,6 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.timers.TimerKey;
 
-import static com.valinor.game.GameConstants.BANK_ITEMS;
-import static com.valinor.game.GameConstants.TAB_AMOUNT;
 import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -166,13 +164,6 @@ public class AccountSelection extends PacketInteraction {
         //Remove tutorial flag.
         player.clearAttrib(AttributeKey.TUTORIAL);
         player.getUpdateFlag().flag(Flag.APPEARANCE);
-
-        //Setup bank
-        if(!player.ironMode().isIronman() && !player.ironMode().isHardcoreIronman()) {
-            player.getBank().addAll(BANK_ITEMS);
-            System.arraycopy(TAB_AMOUNT, 0, player.getBank().tabAmounts, 0, TAB_AMOUNT.length);
-            player.getBank().shift();
-        }
     }
 
     public boolean confirm(Player player) {

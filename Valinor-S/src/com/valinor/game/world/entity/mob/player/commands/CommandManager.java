@@ -236,7 +236,6 @@ public class CommandManager {
         commands.put("unlockprayers", new UnlockPrayersCommands());
         commands.put("saveall", new SaveAllCommand());
         commands.put("slayer", new SlayerActionCommand());
-        commands.put("killstreak", new KillstreakCommand());
         commands.put("task", new TaskCommand());
         commands.put("reload", new ReloadCommand());
         commands.put("setlevel", new SetLevelCommand());

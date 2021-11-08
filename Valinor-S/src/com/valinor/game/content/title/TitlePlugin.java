@@ -4,9 +4,6 @@ import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.title.req.TitleRequirement;
 import com.valinor.game.content.title.req.impl.other.*;
-import com.valinor.game.content.title.req.impl.pk.DeathRequirement;
-import com.valinor.game.content.title.req.impl.pk.KillRequirement;
-import com.valinor.game.content.title.req.impl.pk.KillstreakRequirement;
 import com.valinor.game.content.title.req.impl.pvm.BossRequirement;
 import com.valinor.game.content.title.req.impl.pvm.SlayerTaskRequirement;
 import com.valinor.game.content.title.req.impl.pvm.WildernessBossRequirement;
@@ -232,7 +229,6 @@ public class TitlePlugin extends PacketInteraction {
     }
 
     public void init() {
-        categorizedTitles.add(new CategorizedTitles(PKING, killTitles(), killstreakTitles(), deathTitles()));
         categorizedTitles.add(new CategorizedTitles(PVMING, wildernessBosses(), slayerTasks(), bossKills()));
         categorizedTitles.add(new CategorizedTitles(OTHER, otherTitles()));
         colours.add(new TitleColour("Orange", "<col=ff7000>"));
@@ -290,30 +286,6 @@ public class TitlePlugin extends PacketInteraction {
             50, "The Valiant",
             100, "Punisher",
             250, "The Butcher");
-    }
-
-    private List<AvailableTitle> deathTitles() {
-        return create(DeathRequirement.class, PKING,
-            100, "The Respawner",
-            100, "Dirt Eater");
-    }
-
-    private List<AvailableTitle> killstreakTitles() {
-        return create(KillstreakRequirement.class, PKING,
-            10, "Duelist",
-            15, "Undying",
-            25, "Immortal");
-    }
-
-    private List<AvailableTitle> killTitles() {
-        return create(KillRequirement.class, PKING,
-            25, "Cutthroat",
-            50, "Warmonger",
-            75, "Assassin",
-            125, "Tyrant",
-            175, "Warlord",
-            250, "Reaper",
-            500, "Overlord");
     }
 
     private AvailableTitle create(String name, TitleCategory category) {

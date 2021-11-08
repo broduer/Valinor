@@ -336,18 +336,11 @@ public class PlayerSave {
                 player.putAttrib(AttributeKey.BOT_DEATHS, details.botDeaths);
                 player.putAttrib(PLAYER_KILLS, details.kills);
                 player.putAttrib(PLAYER_DEATHS, details.deaths);
-                player.putAttrib(ALLTIME_KILLS, details.allTimeKills);
-                player.putAttrib(ALLTIME_DEATHS, details.allTimeDeaths);
-                player.putAttrib(KILLSTREAK, details.killstreak);
-                player.putAttrib(KILLSTREAK_RECORD, details.highestKillstreak);
-                player.putAttrib(WILDERNESS_KILLSTREAK, details.wildernessStreak);
-                player.putAttrib(SHUTDOWN_RECORD, details.shutdownRecord);
                 if (details.recentKills != null) {
                     for (String kills : details.recentKills) {
                         player.getRecentKills().add(kills);
                     }
                 }
-                player.putAttrib(FIRST_KILL_OF_THE_DAY, details.firstKillOfTheDay);
                 player.putAttrib(TARGET_KILLS, details.targetKills);
                 player.putAttrib(KING_BLACK_DRAGONS_KILLED, details.kingBlackDragonsKilled);
                 player.putAttrib(VETIONS_KILLED, details.vetionsKilled);
@@ -467,7 +460,6 @@ public class PlayerSave {
                 player.putAttrib(TASK_COMPLETE_AMOUNT, details.taskCompletionAmount);
                 player.putAttrib(TASKS_COMPLETED, details.totalTasksCompleted);
                 player.putAttrib(CAN_CLAIM_TASK_REWARD, details.canClaimTaskReward);
-                player.putAttrib(PLAYER_KILLS_WITHOUT_LEAVING_WILD, details.playerKillsWithoutLeavingWild);
                 player.putAttrib(TREASURE_CHESTS_OPENED, details.treasuresOpened);
                 player.putAttrib(REFERRAL_MILESTONE_10HOURS, details.referalMilestone10hoursPassed);
                 player.putAttrib(REFERRAL_MILESTONE_1_DAY, details.referalMilestone1dayPassed);
@@ -885,14 +877,7 @@ public class PlayerSave {
         private final int botDeaths;
         private final int kills;
         private final int deaths;
-        private final int allTimeKills;
-        private final int allTimeDeaths;
-        private final int killstreak;
-        private final int highestKillstreak;
-        private final int wildernessStreak;
-        private final int shutdownRecord;
         private final List<String> recentKills;
-        private final long firstKillOfTheDay;
 
         //counts
         private final int targetKills;
@@ -1004,7 +989,6 @@ public class PlayerSave {
         private final int taskCompletionAmount;
         private final int totalTasksCompleted;
         private final boolean canClaimTaskReward;
-        private final int playerKillsWithoutLeavingWild;
         private final int treasuresOpened;
         private final boolean referalMilestone10hoursPassed;
         private final boolean referalMilestone1dayPassed;
@@ -1436,14 +1420,7 @@ public class PlayerSave {
             botDeaths = Player.getAttribIntOr(player, AttributeKey.BOT_DEATHS, 0);
             kills = Player.getAttribIntOr(player, PLAYER_KILLS, 0);
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
-            allTimeKills = Player.getAttribIntOr(player, ALLTIME_KILLS, 0);
-            allTimeDeaths = Player.getAttribIntOr(player, ALLTIME_DEATHS, 0);
-            killstreak = Player.getAttribIntOr(player, KILLSTREAK, 0);
-            highestKillstreak = Player.getAttribIntOr(player, KILLSTREAK_RECORD, 0);
-            wildernessStreak = Player.getAttribIntOr(player, WILDERNESS_KILLSTREAK, 0);
-            shutdownRecord = Player.getAttribIntOr(player, SHUTDOWN_RECORD, 0);
             recentKills = player.getRecentKills();
-            firstKillOfTheDay = Player.getAttribLongOr(player, FIRST_KILL_OF_THE_DAY, 0L);
             targetKills = Player.getAttribIntOr(player, TARGET_KILLS, 0);
             kingBlackDragonsKilled = Player.getAttribIntOr(player, KING_BLACK_DRAGONS_KILLED, 0);
             vetionsKilled = Player.getAttribIntOr(player, VETIONS_KILLED, 0);
@@ -1551,7 +1528,6 @@ public class PlayerSave {
             taskCompletionAmount = Player.getAttribIntOr(player, TASK_COMPLETE_AMOUNT, 0);
             totalTasksCompleted = Player.getAttribIntOr(player, TASKS_COMPLETED, 0);
             canClaimTaskReward = Player.getAttribBooleanOr(player, CAN_CLAIM_TASK_REWARD, false);
-            playerKillsWithoutLeavingWild = Player.getAttribIntOr(player, PLAYER_KILLS_WITHOUT_LEAVING_WILD, 0);
             treasuresOpened = Player.getAttribIntOr(player, TREASURE_CHESTS_OPENED, 0);
             referalMilestone10hoursPassed = Player.getAttribBooleanOr(player, REFERRAL_MILESTONE_10HOURS, false);
             referalMilestone1dayPassed = Player.getAttribBooleanOr(player, REFERRAL_MILESTONE_1_DAY, false);

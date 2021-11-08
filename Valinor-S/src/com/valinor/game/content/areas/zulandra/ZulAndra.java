@@ -1,6 +1,5 @@
 package com.valinor.game.content.areas.zulandra;
 
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.zulandra.dialogue.*;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -26,11 +25,6 @@ public class ZulAndra extends PacketInteraction {
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
             if (obj.getId() == SACRIFICIAL_BOAT) {
-
-                if (WildernessKeyPlugin.hasKey(player)) {
-                    player.message("Nice try, you should keep walking because the boat is leaving.");
-                    return false;
-                }
 
                 player.getDialogueManager().start(new Dialogue() {
                     @Override

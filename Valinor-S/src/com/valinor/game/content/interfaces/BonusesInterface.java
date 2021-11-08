@@ -26,17 +26,9 @@ public class BonusesInterface {
         sendBonuses(player);
 
         var dropRateBonus = player.dropRateBonus();
-        var target = player.getCombat().getTarget();
-        var bloodMoneyDrop = 0;
-
-        if(target != null && target.isPlayer()) {
-            bloodMoneyDrop = player.bloodMoneyAmount(target.getAsPlayer());
-        } else {
-            bloodMoneyDrop = player.bloodMoneyAmount(null);
-        }
 
         player.getInterfaceManager().open(InterfaceConstants.EQUIPMENT_SCREEN_INTERFACE_ID);
-        player.getPacketSender().sendInterfaceDisplayState(15150,true).sendString(15122, "Drop rate bonus: "+ Color.GREEN.wrap("+"+dropRateBonus)+"<col=65280>%</col>").sendString(15123, "Blood money rate: "+ Color.GREEN.wrap("+"+bloodMoneyDrop));
+        player.getPacketSender().sendInterfaceDisplayState(15150,true).sendString(15122, "Drop rate bonus: "+ Color.GREEN.wrap("+"+dropRateBonus)+"<col=65280>%</col>");
         player.getUpdateFlag().flag(Flag.APPEARANCE); //Update the players looks
     }
 

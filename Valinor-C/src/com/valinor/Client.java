@@ -10125,11 +10125,6 @@ public class Client extends GameApplet {
             if ((mask & 0x2) != 0) {//Transform
                 npc.desc = NpcDefinition.get(stream.readLEUShortA());
                 if (npc.desc != null) {
-                    String[] matchingNames = {"pure bot", "maxed bot", "f2p bot", "archer bot", "pure archer bot"};
-                    if (Arrays.stream(matchingNames).anyMatch(npcName -> npc.desc.name.toLowerCase().contains(npcName))) {
-                        npc.headIcon = stream.readUByte();
-                        //System.out.println("client icon received: "+npc.headIcon);
-                    }
                     npc.occupied_tiles = npc.desc.occupied_tiles;
                     npc.rotation = npc.desc.rotation;
                     npc.walk_animation_id = npc.desc.walkingAnimation;

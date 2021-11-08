@@ -3,9 +3,7 @@ package com.valinor.game.world.entity.mob.player;
 import com.valinor.GameServer;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
-import com.valinor.game.content.areas.wilderness.content.EloRating;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -128,8 +126,7 @@ public final class QuestTab {
         ELO_RATING(12677) {
             @Override
             public String fetchLineData(Player player) {
-                int rating = player.getAttribOr(AttributeKey.ELO_RATING, EloRating.DEFAULT_ELO_RATING);
-                return "Elo Rating: <col=ffffff>" + Utils.formatNumber(rating);
+                return "Elo Rating: <col=ffffff> 0";
             }
         },
 
@@ -167,24 +164,21 @@ public final class QuestTab {
         CURRENT_KILLSTREAK(12682) {
             @Override
             public String fetchLineData(Player player) {
-                int killstreak = player.getAttribOr(AttributeKey.KILLSTREAK, 0);
-                return "Killstreak: <col=ffffff>" + Utils.formatNumber(killstreak);
+                return "Killstreak: <col=ffffff> 0";
             }
         },
 
         KILLSTREAK_RECORD(12684) {
             @Override
             public String fetchLineData(Player player) {
-                int record = player.getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0);
-                return "Highest killstreak: <col=ffffff>" + Utils.formatNumber(record);
+                return "Highest killstreak: <col=ffffff> 0";
             }
         },
 
         TARGET_KILLS(12683) {
             @Override
             public String fetchLineData(Player player) {
-                int wildernessStreak = player.getAttribOr(AttributeKey.WILDERNESS_KILLSTREAK, 0);
-                return "Wilderness streak: <col=ffffff>" + Utils.formatNumber(wildernessStreak);
+                return "Wilderness streak: <col=ffffff> 0";
             }
         },
 
@@ -207,7 +201,7 @@ public final class QuestTab {
         WILDERNESS_KEY(12687) {
             @Override
             public String fetchLineData(Player player) {
-                return "Next Wildy Key: <col=ffffff>" + WildernessKeyPlugin.timeTill(false);
+                return "Next Wildy Key: <col=ffffff> 0";
             }
         },
 

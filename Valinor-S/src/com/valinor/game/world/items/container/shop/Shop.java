@@ -323,27 +323,6 @@ public abstract class Shop {
             return;
         }
 
-        for (Item bankItem : GameConstants.BANK_ITEMS) {
-            if (bankItem.note().getId() == item.getId()) {
-                player.message("You can't sell this item.");
-                return;
-            }
-            if (bankItem.getId() == item.getId()) {
-                player.message("You can't sell this item.");
-                return;
-            }
-        }
-
-        if (item.unnote().definition(World.getWorld()).pvpAllowed) {
-            player.message("You can't trade spawnable items.");
-            return;
-        }
-
-        if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(id -> id == item.getId())) {
-            player.message("You can't sell this item.");
-            return;
-        }
-
         if (sellType() == SellType.ANY && name.equalsIgnoreCase("General store")) {
             if (item.getValue() <= 0) {
                 player.message("You can't sell items to this shop that have no value.");
@@ -442,39 +421,18 @@ public abstract class Shop {
             return;
         }
 
-        /*if (!item.rawtradable()) {
+        if (!item.rawtradable()) {
             player.message("This item can't be sold to shops.");
             return;
-        }*/
+        }
 
         if (item.getId() == BLOOD_MONEY_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
             player.message("This item can't be sold to shops.");
             return;
         }
 
-        for (Item bankItem : GameConstants.BANK_ITEMS) {
-            if (bankItem.note().getId() == item.getId()) {
-                player.message("You can't sell this item.");
-                return;
-            }
-            if (bankItem.getId() == item.getId()) {
-                player.message("You can't sell this item.");
-                return;
-            }
-        }
-
-        if (item.unnote().definition(World.getWorld()).pvpAllowed) {
-            player.message("You can't trade spawnable items.");
-            return;
-        }
-
         if (item.getValue() <= 0) {
             player.message("You can't sell items to this shop that have no value.");
-            return;
-        }
-
-        if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(id -> id == item.getId())) {
-            player.message("This item can't be sold to shops.");
             return;
         }
 

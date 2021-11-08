@@ -15,8 +15,6 @@ import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
 
-import static com.valinor.game.GameConstants.BANK_ITEMS;
-import static com.valinor.game.GameConstants.TAB_AMOUNT;
 import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 
 public class Tutorial extends Dialogue {
@@ -159,10 +157,6 @@ public class Tutorial extends Dialogue {
                     };
                     player.getInventory().addAll(training_equipment);
                 }
-
-                player.getBank().addAll(BANK_ITEMS);
-                System.arraycopy(TAB_AMOUNT, 0, player.getBank().tabAmounts, 0, TAB_AMOUNT.length);
-                player.getBank().shift();
 
                 send(DialogueType.NPC_STATEMENT, NpcIdentifiers.COMBAT_INSTRUCTOR, Expression.HAPPY, "Let me show you how to get started in " + GameConstants.SERVER_NAME + ".");
                 setPhase(7);

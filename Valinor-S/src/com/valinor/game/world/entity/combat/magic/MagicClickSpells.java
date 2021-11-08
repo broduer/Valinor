@@ -121,11 +121,6 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().insideRiskArea()) {
-                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
-                        return false;
-                    }
-
                     if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSuperMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
@@ -239,11 +234,6 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().insideRiskArea()) {
-                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
-                        return false;
-                    }
-
                     if(targetFor.get().tile().memberCave() && !player.getMemberRights().isRegularMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
@@ -354,11 +344,6 @@ public class MagicClickSpells {
                 if (targetFor.isPresent()) {
                     if (!WildernessArea.inWilderness(targetFor.get().tile())) {
                         player.message("Your target is currently not in the Wilderness.");
-                        return false;
-                    }
-
-                    if(targetFor.get().tile().insideRiskArea()) {
-                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
                         return false;
                     }
 

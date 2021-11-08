@@ -19,7 +19,6 @@ public class CategorizedTitles {
         Arrays.stream(collections).forEach(titles::addAll);
     }
 
-
     public TitleCategory getCategory() {
         return category;
     }

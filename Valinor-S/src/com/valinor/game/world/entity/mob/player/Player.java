@@ -6,10 +6,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
-import com.valinor.game.content.areas.wilderness.content.RiskManagement;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
-import com.valinor.game.content.areas.wilderness.content.todays_top_pkers.TopPkers;
 import com.valinor.game.content.bank_pin.BankPin;
 import com.valinor.game.content.bank_pin.BankPinSettings;
 import com.valinor.game.content.clan.Clan;
@@ -146,7 +143,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.valinor.game.content.areas.wilderness.content.EloRating.DEFAULT_ELO_RATING;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
 import static com.valinor.game.content.tournaments.TournamentUtils.TOURNAMENT_REGION;
@@ -366,76 +362,6 @@ public class Player extends Mob {
         return percent;
     }
 
-    private int base() {
-        return switch (getMemberRights()) {
-            case NONE -> GameServer.properties().baseBMValue;
-            case MEMBER -> 550;
-            case SUPER_MEMBER -> 600;
-            case ELITE_MEMBER -> 650;
-            case EXTREME_MEMBER -> 700;
-            case LEGENDARY_MEMBER -> 750;
-            case VIP -> 800;
-            case SPONSOR_MEMBER -> 850;
-        };
-    }
-
-    public int shutdownValueOf(int streak) {
-        int bonus = 100 * streak;
-        return bonus;
-    }
-
-    private int killstreakValueOf(int streak) {
-        int bonus = 50 * streak;
-        return bonus;
-    }
-
-    private int firstKillOfTheDay() {
-        if (System.currentTimeMillis() >= (long) getAttribOr(AttributeKey.FIRST_KILL_OF_THE_DAY, 0L)) {
-            putAttrib(AttributeKey.FIRST_KILL_OF_THE_DAY, System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24));
-            return 1500;
-        }
-        return 0;
-    }
-
-    public int bloodMoneyAmount(Player target) {
-        // Declare base value for our kill.
-        int bm = base();
-
-        // Double BM, if enabled. Can be toggled with ::bmm <int>. Default 1.
-        bm *= World.getWorld().bmMultiplier;
-
-        //Being a trained account gives a +100 BM boost to the base value
-        if (mode() == GameMode.TRAINED_ACCOUNT)
-            bm += 100;
-
-        //Slayer helm bonus
-        Item helm = getEquipment().get(EquipSlot.HEAD);
-        boolean slayer_helmet_i = getEquipment().hasAt(EquipSlot.HEAD, SLAYER_HELMET_I);
-        boolean special_slayer_helmet_i = helm != null && (helm.getId() == RED_SLAYER_HELMET_I || helm.getId() == TWISTED_SLAYER_HELMET_I || helm.getId() == TWISTED_SLAYER_HELMET_I_KBD_HEADS || helm.getId() == PURPLE_SLAYER_HELMET_I || helm.getId() == HYDRA_SLAYER_HELMET_I);
-
-        bm += slayer_helmet_i ? 25 : special_slayer_helmet_i ? 50 : 0;
-
-        // Ruin his kill streak. Only when dying to a player.
-        var target_killstreak = target == null ? 0 : target.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0);
-        var killstreak = this.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0) + 1;
-
-        // Apply target's killstreak on our reward. Oh, and our streak.
-        bm += shutdownValueOf(target_killstreak); //Add the shutdown value bonus to the BM reward
-        bm += killstreakValueOf(killstreak); //Add the killstreak value bonus to the BM reward
-        bm += WildernessArea.wildernessLevel(tile()) * 2; //Add the wilderness level bonus to the reward
-
-        bm += firstKillOfTheDay();
-
-        if (pet() != null && pet().def().name.equalsIgnoreCase("Blood firebird")) {
-            bm += 500;
-        }
-
-        //Edgevile hotspot always bm x2
-        if (tile().inArea(new Area(2993, 3523, 3124, 3597, 0))) {
-            bm *= 2;
-        }
-        return bm;
-    }
 
     public void healPlayer() {
         hp(Math.max(skills().level(Skills.HITPOINTS), skills().xpLevel(Skills.HITPOINTS)), 20); //Set hitpoints to 100%
@@ -1499,14 +1425,6 @@ public class Player extends Mob {
             TaskManager.cancelTasks(this);
             looks().hide(true);
             Hunter.abandon(this, null, true);
-            if (WildernessArea.inWilderness(this.tile())) {
-                if (this.inventory().contains(CustomItemIdentifiers.WILDERNESS_KEY)) {
-                    this.inventory().remove(CustomItemIdentifiers.WILDERNESS_KEY, Integer.MAX_VALUE);
-                    World.getWorld().clearBroadcast();
-                    respawn(Item.of(CustomItemIdentifiers.WILDERNESS_KEY), tile, 3);
-                    WildernessKeyPlugin.announceKeySpawn(tile);
-                }
-            }
             if (getClan() != null) {
                 ClanManager.leave(this, true);
             }
@@ -1521,11 +1439,6 @@ public class Player extends Mob {
         setLastLogin(new Timestamp(new Date().getTime()));
 
         if (GameServer.properties().enableSql) {
-            GameServer.getDatabaseService().submit(new UpdateKillsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_KILLS, 0), username));
-            GameServer.getDatabaseService().submit(new UpdateDeathsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_DEATHS, 0), username));
-            GameServer.getDatabaseService().submit(new UpdateKdrDatabaseTransaction(Double.parseDouble(getKillDeathRatio()), username));
-            GameServer.getDatabaseService().submit(new UpdateTargetKillsDatabaseTransaction(getAttribOr(AttributeKey.TARGET_KILLS, 0), username));
-            GameServer.getDatabaseService().submit(new UpdateKillstreakRecordDatabaseTransaction(getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0), username));
             GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), mode().toName()));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
@@ -1641,9 +1554,6 @@ public class Player extends Mob {
             if (memberRights.isSponsorOrGreater(this)) {
                 MemberFeatures.checkForMonthlySponsorRewards(this);
             }
-
-            //Check for players that were offline
-            TopPkers.SINGLETON.checkForReward(this);
 
             //Update info
             restartTasks();
@@ -1922,7 +1832,6 @@ public class Player extends Mob {
         getUnlockedTitles().clear();
         getRelations().getFriendList().clear();
         getRelations().getIgnoreList().clear();
-        putAttrib(AttributeKey.ELO_RATING, DEFAULT_ELO_RATING);
         getRecentKills().clear();
 
         setTile(GameServer.properties().defaultTile.copy());
@@ -2784,12 +2693,6 @@ public class Player extends Mob {
         return bankPinSettings;
     }
 
-    private final RiskManagement risk_management = new RiskManagement(this);
-
-    public RiskManagement getRisk() {
-        return risk_management;
-    }
-
     boolean inTournamentLobby, tournamentSpectating;
 
     Tournament participatingTournament;
@@ -3330,7 +3233,6 @@ public class Player extends Mob {
 
             LocalDateTime now = LocalDateTime.now();
             long minutesTillWildyBoss = now.until(WildernessBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
-            long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
 
             // Refresh the quest tab every minute (every 100 ticks)
             if (GameServer.properties().autoRefreshQuestTab && getPlayerQuestTabCycleCount() == GameServer.properties().refreshQuestTabCycles) {
@@ -3346,13 +3248,6 @@ public class Player extends Mob {
                     if (!WildernessBossEvent.ANNOUNCE_5_MIN_TIMER) {
                         WildernessBossEvent.ANNOUNCE_5_MIN_TIMER = true;
                         World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
-                    }
-                }
-
-                if (minutesTillWildyKey == 5) {
-                    if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
-                        WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
                     }
                 }
 

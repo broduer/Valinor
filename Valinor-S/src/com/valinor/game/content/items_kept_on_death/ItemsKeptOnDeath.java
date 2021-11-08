@@ -135,15 +135,9 @@ public class ItemsKeptOnDeath {
 
                 if (def != null) {
                     v1 = o1.getValue();
-                    if (v1 <= 0 && !GameServer.properties().pvpMode) {
-                        v1 = o1.getBloodMoneyPrice().value();
-                    }
                 }
                 if (def2 != null) {
                     v2 = o2.getValue();
-                    if (v2 <= 0 && !GameServer.properties().pvpMode) {
-                        v2 = o2.getBloodMoneyPrice().value();
-                    }
                 }
 
                 return Integer.compare(v2, v1);

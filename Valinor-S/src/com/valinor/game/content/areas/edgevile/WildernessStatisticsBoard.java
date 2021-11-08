@@ -21,13 +21,6 @@ public class WildernessStatisticsBoard extends PacketInteraction {
                 int deaths = player.getAttribOr(AttributeKey.BOT_KILLS, 0);
                 int targetKills = player.getAttribOr(AttributeKey.TARGET_KILLS, 0);
                 player.message("You have " + targetKills + " target " + Utils.pluralOrNot("kill", kills) + ", " + kills + " player " + Utils.pluralOrNot("kill", kills) + ", and " + deaths + " " + Utils.pluralOrNot("death", deaths) + ". Your KD ratio is " + player.getKillDeathRatio() + ".");
-                int killsteak = player.getAttribOr(AttributeKey.KILLSTREAK, 0);
-                int record = player.getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0);
-                if (killsteak > 0) {
-                    player.message("You are currently on a " + killsteak + " and your highest kill streak is " + record + ".");
-                } else {
-                    player.message("You are not currently on a kill streak and your highest kill streak is " + record + ".");
-                }
                 return true;
             }
         } else if(option == 2) {

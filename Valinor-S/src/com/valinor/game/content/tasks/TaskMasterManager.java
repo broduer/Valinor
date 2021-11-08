@@ -64,13 +64,6 @@ public class TaskMasterManager {
             int after = player.<Integer>getAttribOr(TASK_AMOUNT, 0);
 
             if (after != before) {
-                if (task.isPvpTask() || task.isPvmTask()) {
-                    var taskType = task.isPvpTask() ? "PVP" : "PVM";
-                    player.message(Color.GRASS.wrap("Your kill counts towards your " + Color.BLUE.wrap(taskType) + " <col=03700C>task. Kills left: <col=A30072>" + current + "</col> <col=03700C>/ <col=A30072>" + completeAmount + "</col><col=03700C>."));
-                } else if (task.isSkillingTask()) {
-                    player.message(Color.GRASS.wrap("This actions counts towards your " + Color.BLUE.wrap("skilling") + " <col=03700C>task. Actions left: <col=A30072>" + current + "</col> <col=03700C>/ <col=A30072>" + completeAmount + "</col><col=03700C>."));
-                }
-
                 //Task completed
                 if (after >= completeAmount) {
                     player.message("You've completed your task, you can now claim your reward!");
@@ -105,15 +98,7 @@ public class TaskMasterManager {
         }
 
         //Randomize a task
-        Tasks randomTask = Tasks.NONE;
-
-        if(pvpTask) {
-            randomTask = Tasks.randomPVPTask();
-        } else if(skillingTask) {
-            randomTask = Tasks.randomSkillingTask();
-        } else if(pvmTask) {
-            randomTask = Tasks.randomPVMTask();
-        }
+        Tasks randomTask = Tasks.randomTask();
 
         if(randomTask != null) {
             //Save the enum type

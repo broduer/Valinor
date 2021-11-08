@@ -30,7 +30,6 @@ import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Direction;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.NpcMovementCoordinator.CoordinateState;
-import com.valinor.game.world.entity.mob.npc.bots.NPCBotHandler;
 import com.valinor.game.world.entity.mob.npc.impl.MaxHitDummyNpc;
 import com.valinor.game.world.entity.mob.npc.impl.UndeadMaxHitDummy;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -128,13 +127,6 @@ public class Npc extends Mob {
             if (id == types) {
                 setPoisonImmune(true);
             }
-        }
-
-        try {
-            NPCBotHandler.assignBotHandler(this);
-        } catch (Exception e) {
-            logger.catching(e);
-            logger.error("NPC {} might not have an NPC definition entry.", box(id));
         }
 
         if (combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
@@ -356,10 +348,6 @@ public class Npc extends Mob {
         if (id == 8063)
             TargetRoute.afterMovement(this);
         movementCoordinator.process();
-        //Process the bot handler!
-        if (getBotHandler() != null) {
-            getBotHandler().process();
-        }
         getCombat().process();
         ControllerManager.process(this);
     }
@@ -412,11 +400,6 @@ public class Npc extends Mob {
 
                 //Handle combat
                 accumulateRuntimeTo(() -> {
-                    //Process the bot handler!
-                    if (getBotHandler() != null) {
-                        getBotHandler().process();
-                    }
-
                     getCombat().process();
 
                     // Process areas..
@@ -502,7 +485,7 @@ public class Npc extends Mob {
         if (hp() > 0 && ((wrTarget == null || wrTarget.get() == null)) && !locked() && inViewport && !getTimers().has(TimerKey.COMBAT_ATTACK)) {
             boolean wilderness = (WildernessArea.wildernessLevel(tile()) >= 1) && !WildernessArea.inside_rouges_castle(tile()) && !Chinchompas.hunterNpc(id);
             //NPCs should only aggro if you can attack them.
-            if (combatInfo != null && (combatInfo.aggressive || (wilderness && getBotHandler() == null))) {
+            if (combatInfo != null && (combatInfo.aggressive || wilderness)) {
                 if (method == null)
                     method = CombatFactory.getMethod(this);
                 CombatMethod finalMethod = method;
@@ -590,19 +573,6 @@ public class Npc extends Mob {
         this.PKBotHeadIcon = PKBotHeadIcon;
         //We used to flag APPEARANCE, now we flag TRANSFORM.
         getUpdateFlag().flag(Flag.TRANSFORM);
-    }
-
-    /**
-     * The npc bot handler.
-     */
-    private NPCBotHandler botHandler;
-
-    public NPCBotHandler getBotHandler() {
-        return botHandler;
-    }
-
-    public void setBotHandler(NPCBotHandler botHandler) {
-        this.botHandler = botHandler;
     }
 
     public CombatMethod getCombatMethod() {

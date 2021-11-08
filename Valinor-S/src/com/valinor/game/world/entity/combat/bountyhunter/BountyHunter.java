@@ -3,8 +3,6 @@ package com.valinor.game.world.entity.combat.bountyhunter;
 import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
-import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
-import com.valinor.game.content.areas.wilderness.content.todays_top_pkers.TopPkers;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Death;
@@ -23,6 +21,8 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.EMBLEM_WEALTH;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.DEATHS;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.KILLS;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1;
 import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.Utils.formatNumber;
@@ -88,11 +88,6 @@ public class BountyHunter {
                                 continue;
                             }
 
-                            //Skip risk arena
-                            if(potential.tile().insideRiskArea() || player.tile().insideRiskArea()) {
-                                continue;
-                            }
-
                             //Check if we aren't looping ourselves..
                             if (player.equals(potential)) {
                                 continue;
@@ -150,10 +145,6 @@ public class BountyHunter {
             //Send hints..
             player.getPacketSender().sendEntityHint(target);
             target.getPacketSender().sendEntityHint(player);
-
-            //Reset attributes
-            player.clearAttrib(AttributeKey.SPECIAL_ATTACK_USED);
-            target.clearAttrib(AttributeKey.SPECIAL_ATTACK_USED);
         }
     }
 
@@ -254,11 +245,20 @@ public class BountyHunter {
         }
 
         if (rewardPlayer) {
-            TopPkers.SINGLETON.increase(killer.getUsername());
 
             //Other rewards
-            if(WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
-                PlayerKillingRewards.reward(killer, killed,true);
+            if(WildernessArea.inWilderness(killer.tile()) && target.isPresent()) { // Only reward if in wild
+                // Add a death. Only when dying to a player.
+                int dc = (Integer) target.get().getAttribOr(AttributeKey.PLAYER_DEATHS, 0) + 1;
+                target.get().putAttrib(AttributeKey.PLAYER_DEATHS, dc);
+
+                //Increase the player killcount
+                int killcount = (Integer) killer.getAttribOr(AttributeKey.PLAYER_KILLS, 0) + 1;
+                killer.putAttrib(AttributeKey.PLAYER_KILLS, killcount);
+
+                //Update the kills and deaths
+                killer.getPacketSender().sendString(KILLS.childId, QuestTab.InfoTab.INFO_TAB.get(KILLS.childId).fetchLineData(killer));
+                target.get().getPacketSender().sendString(DEATHS.childId, QuestTab.InfoTab.INFO_TAB.get(DEATHS.childId).fetchLineData(target.get()));
             }
         } else {
             killer.message("You don't get any rewards for that kill.");

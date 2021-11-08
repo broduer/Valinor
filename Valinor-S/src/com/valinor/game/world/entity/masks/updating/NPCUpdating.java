@@ -198,10 +198,6 @@ public class NPCUpdating {
         }*/
         if (flag.flagged(Flag.TRANSFORM)) {
             block.putShort(npc.transmog() <= 0 ? npc.id() : npc.transmog(), ValueType.A, ByteOrder.LITTLE);
-            if (npc.getBotHandler() != null) {
-                //Changes the npc's headicon.
-                block.put(npc.getPKBotHeadIcon());
-            }
         }
         if (flag.flagged(Flag.FACE_TILE) && npc.getFaceTile() != null) {
             final Tile tile = npc.getFaceTile();

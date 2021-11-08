@@ -98,8 +98,6 @@ public class ClientToServerPackets {
     public static final int INPUT_FIELD_OPCODE = 142;
     public static final int CONFIRM_OPCODE = 213;
 
-    public static final int SPAWN_TAB_ACTION_OPCODE = 187;
-
     /*
      * The packets are -1 or -2 for variable length/size, other numbers for fixed sizes.
      * These are the client packets
@@ -109,7 +107,6 @@ public class ClientToServerPackets {
             PACKETS[i] = new SilencedPacketListener();
         }
         Arrays.fill(PACKET_NAMES, "unknown");
-        PACKETS[SPAWN_TAB_ACTION_OPCODE] = new SpawnTabPacketListener();
         PACKETS[CONFIRM_OPCODE] = new ConfirmPacketListener();
         PACKETS[SPECIAL_ATTACK_OPCODE] = new SpecialAttackPacketListener();
         PACKETS[BUTTON_CLICK_OPCODE] = new ButtonClickPacketListener();

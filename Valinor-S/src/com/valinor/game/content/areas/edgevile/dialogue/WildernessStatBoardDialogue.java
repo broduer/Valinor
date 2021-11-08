@@ -1,7 +1,5 @@
 package com.valinor.game.content.areas.edgevile.dialogue;
 
-import com.valinor.GameServer;
-import com.valinor.db.transactions.*;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -49,19 +47,9 @@ public class WildernessStatBoardDialogue extends Dialogue {
                     return;
                 }
 
-                // Store into all time record
-                player.putAttrib(AttributeKey.ALLTIME_KILLS,player.<Integer>getAttribOr(AttributeKey.ALLTIME_KILLS,0) + player.<Integer>getAttribOr(AttributeKey.PLAYER_KILLS,0));
-                player.putAttrib(AttributeKey.ALLTIME_DEATHS,player.<Integer>getAttribOr(AttributeKey.ALLTIME_DEATHS,0) + player.<Integer>getAttribOr(AttributeKey.PLAYER_DEATHS,0));
-
                 // Reset current
                 player.putAttrib(AttributeKey.PLAYER_KILLS,0);
                 player.putAttrib(AttributeKey.PLAYER_DEATHS,0);
-                player.putAttrib(AttributeKey.KILLSTREAK,0);
-                if (GameServer.properties().enableSql) {
-                    GameServer.getDatabaseService().submit(new UpdateKillsDatabaseTransaction(player.getAttribOr(AttributeKey.PLAYER_KILLS, 0), player.getUsername()));
-                    GameServer.getDatabaseService().submit(new UpdateDeathsDatabaseTransaction(player.getAttribOr(AttributeKey.PLAYER_DEATHS, 0), player.getUsername()));
-                    GameServer.getDatabaseService().submit(new UpdateKdrDatabaseTransaction(Double.parseDouble(player.getKillDeathRatio()), player.getUsername()));
-                }
                 player.message("You have reset your K/D and Kill streak for 1000 BM.");
                 stop();
             } else if(option == 2) {

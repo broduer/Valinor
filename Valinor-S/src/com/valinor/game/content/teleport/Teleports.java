@@ -1,7 +1,5 @@
 package com.valinor.game.content.teleport;
 
-import com.valinor.GameServer;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.tournaments.TournamentManager;
@@ -15,14 +13,10 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.TournamentArea;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.util.ItemIdentifiers;
-import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import java.util.concurrent.TimeUnit;
-
-import static com.valinor.game.content.presets.PresetManager.lastTimeDied;
 
 /**
  * @author Patrick van Elderen | January, 10, 2021, 11:08
@@ -36,11 +30,6 @@ public class Teleports {
      * if we so wish to.
      */
     public static boolean canTeleport(Player player, boolean inform, TeleportType teletype) {
-        if ((WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile()) && !player.getPlayerRights().isDeveloperOrGreater(player))) {
-            player.message("You cannot teleport outside the Wilderness with the Wilderness key.");
-            return false;
-        }
-
         //Put most important safety in this method just to be sure
         if (TournamentManager.teleportBlocked(player,true)) {
             return false;
@@ -162,26 +151,8 @@ public class Teleports {
                 player.message("You can't use commands when Jailed.");
                 return false;
             }
-            if (!wildernessTeleportAntiragOk(x, z, player, preventQuickRespawn)) {
-                return false;
-            }
         } else {
             player.message("As an admin you bypass pk-tele restrictions.");
-        }
-        return true;
-    }
-
-    public static boolean wildernessTeleportAntiragOk(int x, int z, Player player, boolean preventQuickRespawn) {
-        if (WildernessArea.inWilderness(new Tile(x, z))) {
-            if (preventQuickRespawn && lastTimeDied(player, GameServer.properties().pkTelesAfterSetupSet)) {
-                player.message("Quick wilderness teleports are off limits %ds <col=FF0000>after death.</col>", (int)Utils.ticksToSeconds(GameServer.properties().pkTelesAfterSetupSet));
-                return false;
-            }
-
-            if (player.inventory().count(ItemIdentifiers.SARADOMIN_BREW4) > GameServer.properties().brewCap) {
-                player.message("You cannot take more than " + GameServer.properties().brewCap + " Saradomin brews into the wilderness.");
-                return false;
-            }
         }
         return true;
     }

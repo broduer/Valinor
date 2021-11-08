@@ -1,7 +1,6 @@
 package com.valinor.fs;
 
 import com.valinor.game.GameConstants;
-import com.valinor.game.world.definition.BloodMoneyPrices;
 import com.valinor.game.world.items.Item;
 import com.valinor.io.RSBuffer;
 import com.valinor.util.ItemIdentifiers;
@@ -77,8 +76,6 @@ public class ItemDefinition implements Definition {
     public boolean tradeable_special_items;
     public boolean changes;
     public boolean autoKeptOnDeath;
-    public BloodMoneyPrices bm;
-    public boolean pvpAllowed;
 
     public ItemDefinition(int id, byte[] data) {
         this.id = id;
@@ -992,7 +989,6 @@ public class ItemDefinition implements Definition {
         if (id == 6808) {
             name = "Scroll of Imbuement";
         }
-        bm = new BloodMoneyPrices();
     }
 
     public int highAlchValue() {

@@ -53,14 +53,13 @@ public class EquipmentWidget extends Widget {
         addText(15119, "Undead: 0%", font, 1, 0xff981f, false, true);
         addText(15120, "Slayer: 0%", font, 1, 0xff981f, false, true);
         addText(15122, "Drop rate bonus: +30%", font, 1, 0xff981f, false, true);
-        addText(15123, "Blood money rate: +25", font, 1, 0xff981f, false, true);
         for (int i = 1675; i <= 1684; i++) {
             textSize(i, font, 1);
         }
         textSize(1686, font, 1);
         textSize(1687, font, 1);
         addCharacterToInterface(15125, 560);
-        widget.totalChildren(51);
+        widget.totalChildren(50);
         widget.child(0, 15107, 6, 6);
         widget.child(1, 15210, 476, 14);
         widget.child(2, 15111, 17, 16);
@@ -114,7 +113,6 @@ public class EquipmentWidget extends Widget {
         widget.child(47, 15117, 333, 251); // Magic damage
         widget.child(48, 15122, 35, 265); // Weight text
         widget.child(49, 15150, 20, 22); // Bank equipment widget
-        widget.child(50, 15123, 35, 280); // Drop rate
         for (int childs = 1675; childs <= 1684; childs++) {
             Widget rsi = cache[childs];
             rsi.textColour = 0xff981f; // Attack bonuses Color

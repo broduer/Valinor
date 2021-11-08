@@ -660,7 +660,6 @@ public enum AttributeKey {
     TASK_COMPLETE_AMOUNT("pvp_task_complet_amount", AttribType.INTEGER),
     TASKS_COMPLETED("pvp_tasks_completed", AttribType.INTEGER),
     CAN_CLAIM_TASK_REWARD("can_claim_pvp_scroll_reward", AttribType.BOOLEAN),
-    PLAYER_KILLS_WITHOUT_LEAVING_WILD("player_kills_in_wild", AttribType.INTEGER),
 
     ALWAYS_HIT,
 
@@ -1166,64 +1165,16 @@ public enum AttributeKey {
 
     GROUP_SPAWN_MAP,
 
-    FIRST_KILL_OF_THE_DAY("first_kill_otd", AttribType.LONG),
     TOURNAMENT_COUNTDOWN("tourny_countdown_last", AttribType.INTEGER),
     TUTORIAL("tutorial", AttribType.BOOLEAN),
-    FISHING_ACTIVITY("fishing_activity_npc", AttribType.BOOLEAN),
     ARMOUR_PIERCING("armour_piercing", AttribType.BOOLEAN),
     TENTACLES_DISTURBED("tentacles_disturbed", AttribType.INTEGER),
-    TARGET_IMMUNITY("target_immunity", AttribType.INTEGER),
-    SMITE_DAMAGE("smite_dmg", AttribType.INTEGER),
-    LAST_ATTACK_WAS_MELEE("last_attack_was_melee", AttribType.BOOLEAN),
-    LAST_ATTACK_WAS_RANGED("last_attack_was_ranged", AttribType.BOOLEAN),
-    LAST_ATTACK_WAS_MAGIC("last_attack_was_magic", AttribType.BOOLEAN),
-    SPECIAL_ATTACK_USED("special_attack_used", AttribType.BOOLEAN),
-    RANGED_DAMAGE("ranged_dmg", AttribType.INTEGER),
-    MELEE_DAMAGE("melee_dmg", AttribType.INTEGER),
-    MAGIC_DAMAGE("magic_dmg", AttribType.INTEGER),
-
 
     // the perk used to toggle the ROL effect from the cape
     DEFENCE_PERK_TOGGLE("defence_perk_toggle", AttribType.INTEGER),
 
     // the perk used to toggle the ROL effect from the cape
     MAXCAPE_ROL_ON("max_cape_perk_toggle", AttribType.INTEGER),
-
-    /**
-     * Number of players killed in the wilderness without leaving.
-     */
-    WILDERNESS_KILLSTREAK("wilderness_killstreak", AttribType.INTEGER),
-
-    /**
-     * Number of players killed in the process of murdering.
-     */
-    KILLSTREAK("killstreak", AttribType.INTEGER),
-
-    /**
-     * Highest shutdown player ever achieved. Doesn't get replaced unless it's superceded.
-     */
-    KILLSTREAK_RECORD("ksrec", AttribType.INTEGER),
-
-    /**
-     * The highest shutdown this player has ever achieved. Does not get cleared upon death and is permanent until it's superceded.
-     */
-    SHUTDOWN_RECORD("sdrec", AttribType.INTEGER),
-
-    /**
-     * When you reset your K/D, its added to this var to track all kills forever.
-     */
-    ALLTIME_KILLS("alltime_kills", AttribType.INTEGER),
-
-    /**
-     * When you reset your K/D, its added to this var to track all deaths forever.
-     */
-    ALLTIME_DEATHS("alltime_deaths", AttribType.INTEGER),
-
-    // The total amount of blood money (w2) risked including our +1 when entering the wilderness. Anti-rag mechanic.
-    RISKED_WEALTH("risked_wealth", AttribType.LONG),
-
-    // Wealth total of untradeables that you keep under 20 wild, >= 20 you lose em!
-    RISKED_WEALTH_UNTRADBLES_PROTECTED_UNDER20,
 
     // NPC killcounts shown on the slayer log of the Slayer gem.
     KC_CRAWL_HAND("npckc1", AttribType.INTEGER),
@@ -1279,8 +1230,6 @@ public enum AttributeKey {
     VOLATILE_NIGHTMARE_STAFF_QUESTION("volatile_nightmare_staff_question", AttribType.BOOLEAN),
     ELDRITCH_NIGHTMARE_STAFF_QUESTION("eldritch_nightmare_staff_question", AttribType.BOOLEAN),
     HARMONISED_NIGHTMARE_STAFF_QUESTION("harmonised_nightmare_staff_question", AttribType.BOOLEAN),
-    BOT_KILLS("bot_kills", AttribType.INTEGER),
-    BOT_DEATHS("bot_deaths", AttribType.INTEGER),
     VORKATH_CB_COOLDOWN,
     VORKATH_LINEAR_ATTACKS,
     VORKATH_NORMAL_ATTACK_COUNT,

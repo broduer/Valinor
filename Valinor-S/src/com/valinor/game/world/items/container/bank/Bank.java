@@ -202,7 +202,6 @@ public class Bank extends ItemContainer {
         player.inventory().refresh();
         player.getEquipment().refresh();
         player.getRunePouch().refresh();
-        player.getRisk().update();
     }
 
     public int getTabForItem(int item) {

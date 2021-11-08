@@ -1,7 +1,6 @@
 package com.valinor.game;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.areas.wilderness.content.activity.WildernessActivityManager;
 import com.valinor.game.content.clan.ClanRepository;
 import com.valinor.game.content.items.mystery_box.MysteryBox;
 import com.valinor.game.content.items.mystery_box.impl.ClanBox;
@@ -78,12 +77,7 @@ public class GameBuilder {
         tasks.add(PlayerPunishment::init);
         tasks.add(PacketInteractionManager::init);
 
-        if (GameServer.properties().enableWildernessActivities && GameServer.properties().pvpMode) {
-            tasks.add(WildernessActivityManager.getSingleton()::init);
-        }
-
         //Load definitions..
-        tasks.add(new BloodMoneyPriceLoader());
         tasks.add(TradingPost::init);
         tasks.add(MysteryBox::load);
         tasks.add(new Slayer()::loadMasters);

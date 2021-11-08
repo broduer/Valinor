@@ -173,8 +173,6 @@ public class DropItemPacketListener implements PacketListener {
     }
 
     private void dropItem(Player player, Item item) {
-        player.getRisk().update();
-
         playerDropLogs.log(PLAYER_DROPS, "Player " + player.getUsername() + " dropped item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: " + player.getX() + ", Y: " + player.getY());
         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " dropped item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: " + player.getX() + ", Y: " + player.getY(), "playerdrops");
 

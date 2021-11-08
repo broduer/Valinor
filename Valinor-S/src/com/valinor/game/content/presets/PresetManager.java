@@ -282,11 +282,6 @@ public class PresetManager {
                 continue;
             }
 
-            if (item.definition(World.getWorld()).pvpAllowed) {
-                player.getEquipment().manualWear(item, true, false);
-                continue;
-            }
-
             item = item.copy();
 
             // retroactive fix until the cause of non-stackables somehow being saved in stacks is found
@@ -375,11 +370,6 @@ public class PresetManager {
 
             final Item presetItem = item;
             if (Arrays.stream(ILLEGAL_ITEMS).anyMatch(id -> id == presetItem.getId())) {
-                continue;
-            }
-
-            if (item.definition(World.getWorld()).pvpAllowed) {
-                player.inventory().add(item.copy(), index, false);
                 continue;
             }
 

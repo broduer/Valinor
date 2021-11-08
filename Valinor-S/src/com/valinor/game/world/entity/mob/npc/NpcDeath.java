@@ -21,7 +21,6 @@ import com.valinor.game.content.treasure.TreasureRewardCaskets;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.combat.bountyhunter.EarningPotential;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.KalphiteQueenFirstForm;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.KalphiteQueenSecondForm;
@@ -632,11 +631,6 @@ public class NpcDeath {
                     killer.getController().defeated(killer, npc);
                 }
 
-                //Do bots death
-                if (npc.getBotHandler() != null) {
-                    npc.getBotHandler().onDeath(killer);
-                }
-
                 var killerOpp = killer.<Mob>getAttribOr(AttributeKey.LAST_DAMAGER, null);
                 if (killer.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 0 && killerOpp != null && killerOpp == npc) { // Last fighting with this dead npc.
                     killer.clearAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME); // Allow instant aggro from other npcs/players.
@@ -881,8 +875,6 @@ public class NpcDeath {
                     if (npc.combatInfo() != null && npc.combatInfo().scripts != null && npc.combatInfo().scripts.droptable_ != null) {
                         npc.combatInfo().scripts.droptable_.reward(npc, killer);
                     }
-
-                    EarningPotential.increaseByKill(killer, npc);
                 }
 
                 // Post-death scripts

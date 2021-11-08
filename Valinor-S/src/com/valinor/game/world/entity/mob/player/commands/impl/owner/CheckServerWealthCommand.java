@@ -1,10 +1,5 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.owner;
 
-/**
- * @author Patrick van Elderen | June, 03, 2021, 13:17
- * @see <a href="https://github.com/PVE95">Github profile</a>
- */
-
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.content.tradingpost.TradingPostListing;
@@ -40,15 +35,9 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class CheckServerWealthCommand implements Command {
 
     private static final Logger logger = LogManager.getLogger(CheckServerWealthCommand.class);
-    int itemsCount;
-    long bloodMoneyItemWealth;
-    long bloodMoney;
     long votePoints;
-    long untradeableBloodMoneyWealth;
     HashSet<String> checkedPlayers = new HashSet<>();
-    Map<String, Long> playersValues = new HashMap<>();
     int topPlayers = 0;
-    String topWealthString = "";
 
     @Override
     public void execute(Player dev, String command, String[] parts) {
@@ -57,14 +46,8 @@ public class CheckServerWealthCommand implements Command {
             return;
         }
         //Make sure to clear the values because we have sync tasks.
-        itemsCount = 0;
-        bloodMoneyItemWealth = 0;
-        bloodMoney = 0;
         votePoints = 0;
-        untradeableBloodMoneyWealth = 0;
         topPlayers = 0;
-        topWealthString = "";
-        playersValues.clear();
         checkedPlayers.clear();
         boolean checkOffline = false;
         if (parts.length > 1) {
@@ -86,11 +69,6 @@ public class CheckServerWealthCommand implements Command {
         //Since we aren't mutating any state of the game, we can just execute everything on a different thread.
         GameEngine.getInstance().submitLowPriority(() -> {
             for (Player opp : onlineToScan) { // this is the online players section
-                long playerBloodMoneyWealth = 0;
-                if (opp == null) continue;
-                //if (opp.getUsername().toLowerCase().equals("box test")) continue;
-                //if(opp.getPlayerRights().isAdminOrGreater(opp)) continue;
-                //if(opp.getPlayerRights().isDeveloperOrGreater(opp)) continue;
                 checkedPlayers.add(opp.getUsername());
 
                 votePoints += opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0);
@@ -108,36 +86,7 @@ public class CheckServerWealthCommand implements Command {
                 for(TradingPostListing tradingPostListing : list) {
                     allItems.add(tradingPostListing.getSaleItem());
                 }
-
-                for (Item item : allItems) {
-                    if (item == null)
-                        continue;
-                    itemsCount++;
-                    if (item.getId() == BLOOD_MONEY) {
-                        bloodMoneyItemWealth += (long) item.getAmount();
-                        playerBloodMoneyWealth += (long) item.getAmount();
-                    } else {
-                        bloodMoneyItemWealth += (long) item.getBloodMoneyPrice().value() * (long) item.getAmount();
-                        playerBloodMoneyWealth += (long) item.getBloodMoneyPrice().value() * (long) item.getAmount();
-                    }
-                }
-                playersValues.put(opp.getUsername() + " " + opp.getAttribOr(MAC_ADDRESS, "invalid") + " ", playerBloodMoneyWealth);
             }
-
-            // online scan complete. feedback.
-            //This used to be nested sync tasks.
-            GameEngine.getInstance().addSyncTask(() -> {
-                Map<String, Long> sortedValues = Utils.sortByComparator(playersValues, false);
-                sortedValues.forEach((key, value) -> {
-                    if (topPlayers++ < 10) {
-                        topWealthString += key + "= " + Utils.formatNumber(value) + " " + "bm" + "; ";
-                    }
-                });
-                dev.message("The players with the most wealth are: " + topWealthString);
-                dev.message("There are " + World.getWorld().getPlayers().size() + " online players and " + (checkedPlayers.size() - World.getWorld().getPlayers().size()) + " offline players.");
-                dev.message("The total bm wealth for all " + checkedPlayers.size() + " players is: " + Utils.formatNumber(bloodMoneyItemWealth));
-                dev.message("The total item count for all " + checkedPlayers.size() + " players is: " + Utils.formatNumber(itemsCount));
-            });
         });
         // kick off offline scanning
         if (checkOffline) {
@@ -147,9 +96,6 @@ public class CheckServerWealthCommand implements Command {
 
     public static class AtomicStorage {
         public AtomicInteger topPlayers = new AtomicInteger(0);
-        public AtomicInteger itemsCount = new AtomicInteger(0);
-        public AtomicLong sumBloodMoneyItemWealth = new AtomicLong(0L);
-        public AtomicLong sumBloodMoneyWealth = new AtomicLong(0L);
         public AtomicLong sumRefersByName = new AtomicLong(0L);
         public AtomicLong sumVotePoints = new AtomicLong(0L);
         public AtomicLong sumEly = new AtomicLong(0L);
@@ -245,12 +191,9 @@ public class CheckServerWealthCommand implements Command {
         public AtomicLong sumDarkArmadylChestplate = new AtomicLong(0L);
         public AtomicLong sumDarkArmadylChainskirt = new AtomicLong(0L);
         public AtomicLong sumBowOfFaerdhinen = new AtomicLong(0L);
-        public ConcurrentHashMap<String, Long> playersValues = new ConcurrentHashMap<>();
         public AtomicInteger toScanAmt = new AtomicInteger(0);
         public AtomicInteger scannedCount = new AtomicInteger(0);
         public ConcurrentLinkedQueue<Player> loaded = new ConcurrentLinkedQueue<>();
-        public ConcurrentHashMap<Player, Long> playerBMTotal = new ConcurrentHashMap<>();
-        public ConcurrentHashMap<Player, ArrayList<Item>> playerBmItems = new ConcurrentHashMap<>();
 
         public long vp(Player opp) {
             return 1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0L);
@@ -258,10 +201,6 @@ public class CheckServerWealthCommand implements Command {
 
         public long refc(Player opp) {
             return 1L * opp.<Integer>getAttribOr(AttributeKey.REFERRALS_COUNT, 0L);
-        }
-
-        public long BMtotal(Player opp) {
-            return 1L * playerBMTotal.getOrDefault(opp, 0L);
         }
 
     }
@@ -305,7 +244,6 @@ public class CheckServerWealthCommand implements Command {
                                 storage.loaded.add(opp);
                                 //We don't really need to check the container's on the game thread since we aren't modifying anything.
                                 //GameEngine.getInstance().addSyncTask(() -> {
-                                long playerBloodMoneyWealth = 0;
 
                                 storage.sumVotePoints.addAndGet(1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0));
                                 storage.sumRefersByName.addAndGet(1L * opp.<Integer>getAttribOr(AttributeKey.REFERRALS_COUNT, 0));
@@ -327,9 +265,6 @@ public class CheckServerWealthCommand implements Command {
                                 }
 
                                 for (Item item : allItems) {
-                                    if(item.getBloodMoneyPrice() == null) continue;
-                                    storage.itemsCount.addAndGet(1);
-
                                     if(item.getId() == ELYSIAN_SPIRIT_SHIELD) {
                                         storage.sumEly.addAndGet(1L * item.getAmount());
                                     }
@@ -610,46 +545,12 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == BOW_OF_FAERDHINEN || (item.getId() >= BOW_OF_FAERDHINEN_1 && item.getId() <= BOW_OF_FAERDHINEN_7)) {
                                         storage.sumBowOfFaerdhinen.addAndGet(1L * item.getAmount());
                                     }
-                                    if (item.getBloodMoneyPrice().value() > 0)
-                                        storage.playerBmItems.compute(opp, (k, v) -> {
-                                            if (v == null)
-                                                v = new ArrayList<>();
-                                            v.add(item);
-                                            return v;
-                                        });
-                                    if (item.getId() == BLOOD_MONEY) {
-                                        storage.sumBloodMoneyItemWealth.addAndGet(1L * item.getAmount());
-                                        storage.sumBloodMoneyWealth.addAndGet(1L * item.getAmount());
-                                        playerBloodMoneyWealth += 1L * item.getAmount();
-                                    } else if (item.getId() == BLOODY_TOKEN) {
-                                        storage.sumBloodMoneyItemWealth.addAndGet(1L * item.getAmount() * 1000);
-                                        storage.sumBloodMoneyWealth.addAndGet(1L * item.getAmount() * 1000);
-                                        playerBloodMoneyWealth += 1L * item.getAmount() * 1000;
-                                    } else {
-                                        storage.sumBloodMoneyItemWealth.addAndGet(1L * item.getBloodMoneyPrice().value() * 1L * item.getAmount());
-                                        playerBloodMoneyWealth += 1L * item.getBloodMoneyPrice().value() * 1L * item.getAmount();
-                                    }
                                 }
-
-                                storage.playerBMTotal.put(opp, playerBloodMoneyWealth);
-
-                                if (storage.playerBmItems.containsKey(opp))
-                                    storage.playerBmItems.get(opp).sort(new Comparator<Item>() {
-                                        @Override
-                                        public int compare(Item o2, Item o1) {
-                                            return Long.compare(1L * o1.getBloodMoneyPrice().value() * o1.getAmount(), 1L * o2.getBloodMoneyPrice().value() * o2.getAmount());
-                                        }
-                                    });
 
                                 // store a message to the wealth amount used for printing to file
                                 String mac = opp.getAttribOr(MAC_ADDRESS, "invalid");
                                 if (mac == null || mac.length() < 2)
                                     mac = "invalid";
-                                storage.playersValues.put(opp.getUsername() + " " + mac + " ", playerBloodMoneyWealth);
-
-                                //player.message("The total gold wealth for player " + plr2.getUsername() + " is: " + Misc.formatNumber(goldWealth));
-                                //player.message("The total blood money wealth for player " + plr2.getUsername() + " is: " + Misc.formatNumber(bloodMoneyWealth));
-                                //player.message("The total item count for player " + plr2.getUsername() + " is: " + Misc.formatNumber(itemsCount));
 
                                 // println every 20 files scanned for progress updates
                                 int current = storage.scannedCount.addAndGet(1);

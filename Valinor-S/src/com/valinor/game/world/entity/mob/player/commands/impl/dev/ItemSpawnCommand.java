@@ -1,8 +1,5 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
-import com.valinor.GameServer;
-import com.valinor.game.world.World;
-import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -12,11 +9,6 @@ public class ItemSpawnCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if (player.ironMode() != IronMode.NONE) {
-            player.message("As an ironman you cannot use this command.");
-            return;
-        }
-
         int amount = 1;
         if (parts.length < 1 || (!StringUtils.isNumeric(parts[1]) || (parts.length > 2 && !StringUtils.isNumeric(parts[2])))) {
             player.message("Invalid syntax. Please use: ::item [ID] (amount)");
@@ -40,7 +32,7 @@ public class ItemSpawnCommand implements Command {
             return;
         }
 
-        if (Item.valid(item) && (player.getPlayerRights().isDeveloperOrGreater(player) || GameServer.properties().test || item.definition(World.getWorld()).pvpAllowed)) {
+        if (Item.valid(item)) {
             player.getInventory().add(new Item(id, amount));
             player.message("You have just spawned x"+amount+" "+new Item(Integer.parseInt(parts[1])).unnote().name()+".");
         }
@@ -48,9 +40,6 @@ public class ItemSpawnCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        if (!GameServer.properties().pvpMode) {
-            return (player.getPlayerRights().isDeveloperOrGreater(player));
-        }
-        return true;
+        return (player.getPlayerRights().isDeveloperOrGreater(player));
     }
 }

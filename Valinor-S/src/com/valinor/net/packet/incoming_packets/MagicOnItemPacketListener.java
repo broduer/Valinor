@@ -138,10 +138,6 @@ public class MagicOnItemPacketListener implements PacketListener {
                         }
 
                         Item finalItem1 = item;
-                        if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(donator_item -> donator_item == finalItem1.getId())) {
-                            player.message("You cannot alch that item.");
-                            return;
-                        }
 
                         if (!spell.canCast(player, null, spell.deleteRunes())) {
                             return;
@@ -168,10 +164,6 @@ public class MagicOnItemPacketListener implements PacketListener {
                         }
 
                         Item finalItem = item;
-                        if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(donator_item -> donator_item == finalItem.getId())) {
-                            player.message("You cannot alch that item.");
-                            return;
-                        }
 
                         if (!spell.canCast(player, null, spell.deleteRunes())) {
                             return;

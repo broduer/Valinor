@@ -15,20 +15,8 @@ object SaveWealthInfo {
     fun saveWealth(pFeedback: Player, storage: CheckServerWealthCommand.AtomicStorage) {
         // kotlin syntax is just easier to deal with than java
         var str = ""
-        var topWealthString = ""
-        var topPlayers = 0
-        val sortedValues = Utils.sortByComparator(storage.playersValues, false)
-        sortedValues.forEach { (key: String, value: Long) ->
-            if (topPlayers++ < 10) {
-                topWealthString += key + "=" + Utils.formatNumber(value) + " " + "bm" + "\n"
-            }
-        }
         val goal = storage.toScanAmt.get()
-        str += ("The players with the most wealth are: \n$topWealthString \n")
         str += ("Scanned " + (goal) + " offline players.\n")
-        str += ("The total BM cash for all " + goal + " players is: " + Utils.formatNumber(storage.sumBloodMoneyWealth.get())+"\n")
-        str += ("The total BM wealth for all " + goal + " players is: " + Utils.formatNumber(storage.sumBloodMoneyItemWealth.get())+"\n")
-        str += ("The total item count for all " + goal + " players is: " + Utils.formatNumber(storage.itemsCount.toLong())+"\n")
         str += ("The total REFERRAL by name count for all " + goal + " players is: " + Utils.formatNumber(storage.sumRefersByName.toLong())+"\n")
         str += ("The total VOTES count for all " + goal + " players is: " + Utils.formatNumber(storage.sumVotePoints.toLong())+"\n")
         str += ("The total ELY for all " + goal + " players is: " + Utils.formatNumber(storage.sumEly.get())+"\n")
@@ -130,22 +118,8 @@ object SaveWealthInfo {
             File("./data/eco scan - summary.txt").writeText(str)
         }
 
-        fullbm(storage)
         fullvotes(storage)
         fullRefByName(storage)
-        fullitems(storage)
-    }
-
-    fun fullbm(storage: CheckServerWealthCommand.AtomicStorage) {
-        val sortedValues = Utils.sortByComparator(storage.playersValues, false)
-        var str = "full breakdown is:\n"
-        sortedValues.forEach { (key: String, value: Long) ->
-            str += key + "=" + Utils.formatNumber(value) + " " + "bm" + "\n"
-        }
-        GameEngine.getInstance().submitLowPriority {
-            File("./data/eco scan - bm.txt").createNewFile()
-            File("./data/eco scan - bm.txt").writeText(str)
-        }
     }
 
     fun fullvotes(storage: CheckServerWealthCommand.AtomicStorage) {
@@ -173,32 +147,6 @@ object SaveWealthInfo {
         GameEngine.getInstance().submitLowPriority {
             File("./data/eco scan - ref by name.txt").createNewFile()
             File("./data/eco scan - ref by name.txt").writeText(str)
-        }
-    }
-
-    fun fullitems(storage: CheckServerWealthCommand.AtomicStorage) {
-        println("bm items starting")
-        val sortedValues = storage.loaded.toMutableList().filter { storage.BMtotal(it) > 0 }.sortedByDescending {
-            storage.BMtotal(it)
-        }
-        var str = "full breakdown is:\n"
-        sortedValues.forEachIndexed { ix, p ->
-            val items = storage.playerBmItems.get(p)?.filterNotNull()
-            str += "${p.mobName} has ${Utils.formatNumber(storage.BMtotal(p))} bm on account from ${items?.size?: 0} items\n"
-            items?.forEachIndexed { index, it ->
-                if (it.amount > 0)
-                // if (index < 20) // only record 20 items to file, otherwise it takes a long ass time to save the txt file...
-                    str += "${it.name()} x ${it.amount} = ${it.amount * 1L * it.bloodMoneyPrice.value()} bm\n"
-            }
-            str += "\n\n"
-            if (ix % 50 == 0)
-                println("done ${(ix.toDouble()/sortedValues.size.toDouble())*100.0}% bm scans...")
-        }
-        println("bm items save done, submit to save")
-        GameEngine.getInstance().submitLowPriority {
-            File("./data/eco scan - player all bm items.txt").createNewFile()
-            File("./data/eco scan - player all bm items.txt").writeText(str)
-            println("bm items save complete")
         }
     }
 }

@@ -180,9 +180,6 @@ public enum CombatSpecial {
         if (mob.isPlayer()) {
             Player player = mob.getAsPlayer();
             CombatSpecial.updateBar(player);
-
-            //The special attack bar had already been drained so ofc we used a special attack.
-            player.putAttrib(AttributeKey.SPECIAL_ATTACK_USED, true);
         }
     }
 

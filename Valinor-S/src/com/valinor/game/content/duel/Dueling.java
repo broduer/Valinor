@@ -426,32 +426,6 @@ public class Dueling {
                 return;
             }
 
-            if (Arrays.stream(GameConstants.DONATOR_ITEMS).anyMatch(donator_item -> donator_item == stakeItem.getId())) {
-                player.message("You cannot stake that item.");
-                return;
-            }
-
-            for (Item bankItem : GameConstants.BANK_ITEMS) {
-                if (bankItem.note().getId() == stakeItem.getId()) {
-                    player.message("You can't stake spawnable items.");
-                    return;
-                }
-                if (bankItem.getId() == stakeItem.getId()) {
-                    player.message("You can't stake spawnable items.");
-                    return;
-                }
-            }
-
-            if (stakeItem.unnote().definition(World.getWorld()).pvpAllowed) {
-                player.message("You can't gamble spawnable items.");
-                return;
-            }
-
-            if (stakeItem.getValue() <= 0) {
-                player.message("You can't stake spawnable items.");
-                return;
-            }
-
             //Check if the duel was previously accepted (and now modified)...
             if (state == DuelState.ACCEPTED_DUEL_SCREEN) {
                 state = DuelState.DUEL_SCREEN;
