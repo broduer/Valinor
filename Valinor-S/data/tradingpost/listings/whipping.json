@@ -1,0 +1,129 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "whipping",
+      "lastBuyerName": "Binu Bald Af",
+      "saleItem": {
+        "id": 11802,
+        "amount": 5
+      },
+      "price": 90000,
+      "timeListed": 1635283701125,
+      "amountSold": 4,
+      "profit": 360000,
+      "transactionTime": 1635300442431,
+      "buyersInfo": [
+        "Re Ve R Se",
+        "Billybob",
+        "Binu Bald Af"
+      ]
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 13237,
+        "amount": 3
+      },
+      "price": 140000,
+      "timeListed": 1635283738320,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 24271,
+        "amount": 2
+      },
+      "price": 400000,
+      "timeListed": 1635283720917,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 16278,
+        "amount": 2
+      },
+      "price": 1500000,
+      "timeListed": 1635283775525,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 16263,
+        "amount": 2
+      },
+      "price": 3400000,
+      "timeListed": 1635283766525,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "lastBuyerName": "Jadluvr9",
+      "saleItem": {
+        "id": 22323,
+        "amount": 1
+      },
+      "price": 1200000,
+      "timeListed": 1635360080614,
+      "amountSold": 1,
+      "profit": 1200000,
+      "transactionTime": 1635362179476,
+      "buyersInfo": [
+        "Jadluvr9"
+      ]
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 21024,
+        "amount": 1
+      },
+      "price": 1700000,
+      "timeListed": 1635360102814,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 12926,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1635360168221,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "whipping",
+      "saleItem": {
+        "id": 30228,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635360179616,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

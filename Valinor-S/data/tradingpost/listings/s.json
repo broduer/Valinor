@@ -1,0 +1,22 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "s",
+      "lastBuyerName": "07",
+      "saleItem": {
+        "id": 21817,
+        "amount": 3
+      },
+      "price": 15000,
+      "timeListed": 1633206511195,
+      "amountSold": 3,
+      "profit": 45000,
+      "transactionTime": 1633986183248,
+      "buyersInfo": [
+        "Sipsick",
+        "War Pur3",
+        "07"
+      ]
+    }
+  ]
+}

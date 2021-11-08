@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "jd",
+      "saleItem": {
+        "id": 11335,
+        "amount": 1
+      },
+      "price": 2000000,
+      "timeListed": 1633889382022,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

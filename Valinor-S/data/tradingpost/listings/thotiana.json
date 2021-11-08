@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "thotiana",
+      "lastBuyerName": "Whipping",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 35000,
+      "timeListed": 1633899625919,
+      "amountSold": 4,
+      "profit": 140000,
+      "transactionTime": 1633910009610,
+      "buyersInfo": [
+        "Coats",
+        "Whipping"
+      ]
+    }
+  ]
+}

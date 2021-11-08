@@ -1,0 +1,59 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bless",
+      "saleItem": {
+        "id": 13237,
+        "amount": 3
+      },
+      "price": 145000,
+      "timeListed": 1635255615256,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bless",
+      "lastBuyerName": "Mangomen",
+      "saleItem": {
+        "id": 22653,
+        "amount": 1
+      },
+      "price": 325000,
+      "timeListed": 1635255497647,
+      "amountSold": 1,
+      "profit": 325000,
+      "transactionTime": 1635363623112,
+      "buyersInfo": [
+        "Mangomen"
+      ]
+    },
+    {
+      "sellerName": "bless",
+      "saleItem": {
+        "id": 30074,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1635256088067,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bless",
+      "saleItem": {
+        "id": 30077,
+        "amount": 1
+      },
+      "price": 1750000,
+      "timeListed": 1635256100072,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

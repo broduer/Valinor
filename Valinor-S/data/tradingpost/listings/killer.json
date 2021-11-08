@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "killer",
+      "saleItem": {
+        "id": 12821,
+        "amount": 1
+      },
+      "price": 248999,
+      "timeListed": 1634807457274,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "killer",
+      "saleItem": {
+        "id": 12832,
+        "amount": 3
+      },
+      "price": 199999,
+      "timeListed": 1634807553861,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "killer",
+      "saleItem": {
+        "id": 12834,
+        "amount": 2
+      },
+      "price": 499999,
+      "timeListed": 1634807570671,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "killer",
+      "saleItem": {
+        "id": 22645,
+        "amount": 1
+      },
+      "price": 999999,
+      "timeListed": 1635092098112,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

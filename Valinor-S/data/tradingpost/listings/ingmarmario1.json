@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ingmarmario1",
+      "lastBuyerName": "Entrance",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 43000,
+      "timeListed": 1634233128775,
+      "amountSold": 4,
+      "profit": 172000,
+      "transactionTime": 1634385270115,
+      "buyersInfo": [
+        "Entrance"
+      ]
+    }
+  ]
+}

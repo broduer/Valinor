@@ -1,0 +1,19 @@
+[30 Oct 2021, 1:55:10 pm] [Ferox GameThread] Player Patrick dropped item 1x Sanfew serum(4) (id 10925) at X: 1210, Y: 3552
+[31 Oct 2021, 2:14:29 pm] [Ferox GameThread] Player Patrick dropped item 1x Sanfew serum(4) (id 10925) at X: 3080, Y: 3511
+[01 Nov 2021, 4:10:20 pm] [Ferox GameThread] Player Patrick dropped item 1x Sanfew serum(4) (id 10925) at X: 3080, Y: 3510
+[01 Nov 2021, 4:10:20 pm] [Ferox GameThread] Player Patrick dropped item 1x Sanfew serum(4) (id 10925) at X: 3080, Y: 3510
+[01 Nov 2021, 4:15:03 pm] [Ferox GameThread] Player Patrick dropped item 1x Saradomin brew(4) (id 6685) at X: 3314, Y: 5292
+[01 Nov 2021, 4:16:47 pm] [Ferox GameThread] Player Patrick dropped item 679000x Blood money (id 13307) at X: 3311, Y: 5279
+[01 Nov 2021, 6:28:10 pm] [Ferox GameThread] Player Patrick dropped item 1x Vial (id 229) at X: 3308, Y: 5290
+[01 Nov 2021, 6:28:11 pm] [Ferox GameThread] Player Patrick dropped item 1x Vial (id 229) at X: 3308, Y: 5290
+[01 Nov 2021, 6:56:46 pm] [Ferox GameThread] Player Patrick dropped item 1x Saradomin brew(4) (id 6685) at X: 3301, Y: 5193
+[01 Nov 2021, 7:13:50 pm] [Ferox GameThread] Player Patrick dropped item 1x Staff of balance (id 24144) at X: 1246, Y: 3560
+[01 Nov 2021, 7:14:29 pm] [Ferox GameThread] Player Patrick dropped item 1x Saradomin brew(4) (id 6685) at X: 1246, Y: 3560
+[02 Nov 2021, 10:30:48 am] [Ferox GameThread] Player Patrick dropped item 1x null (id 16464) at X: 3080, Y: 3508
+[02 Nov 2021, 11:02:07 am] [Ferox GameThread] Player Patrick dropped item 1x Snow sprite (id 21864) at X: 3081, Y: 3504
+[02 Nov 2021, 11:02:46 am] [Ferox GameThread] Player Patrick dropped item 123x Snowball (id 10501) at X: 3081, Y: 3504
+[02 Nov 2021, 11:05:37 am] [Ferox GameThread] Player Patrick dropped item 1x Green cape (id 1027) at X: 3081, Y: 3504
+[02 Nov 2021, 1:27:48 pm] [Ferox GameThread] Player Patrick dropped item 1x Orange dye (id 1769) at X: 3087, Y: 3508
+[02 Nov 2021, 2:07:04 pm] [Ferox GameThread] Player Patrick dropped item 1x Yellow dye (id 1765) at X: 3100, Y: 3509
+[02 Nov 2021, 2:54:32 pm] [Ferox GameThread] Player Patrick dropped item 1x Armadyl chainskirt (id 11830) at X: 3310, Y: 5277
+[02 Nov 2021, 2:54:32 pm] [Ferox GameThread] Player Patrick dropped item 1x Armadyl chestplate (id 11828) at X: 3310, Y: 5277

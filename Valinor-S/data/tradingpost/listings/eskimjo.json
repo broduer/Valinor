@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "eskimjo",
+      "lastBuyerName": "Thunderboom7",
+      "saleItem": {
+        "id": 16278,
+        "amount": 1
+      },
+      "price": 2000000,
+      "timeListed": 1634585968784,
+      "amountSold": 1,
+      "profit": 2000000,
+      "transactionTime": 1634762767068,
+      "buyersInfo": [
+        "Thunderboom7"
+      ]
+    }
+  ]
+}

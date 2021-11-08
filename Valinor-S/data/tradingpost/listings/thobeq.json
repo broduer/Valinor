@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "thobeq",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 22650,
+        "amount": 1
+      },
+      "price": 195000,
+      "timeListed": 1633704951156,
+      "amountSold": 1,
+      "profit": 195000,
+      "transactionTime": 1634043779516,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    },
+    {
+      "sellerName": "thobeq",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 145000,
+      "timeListed": 1633704975761,
+      "amountSold": 1,
+      "profit": 145000,
+      "transactionTime": 1634045438541,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "rsalex1",
+      "lastBuyerName": "B0rn 4 Pk",
+      "saleItem": {
+        "id": 11830,
+        "amount": 1
+      },
+      "price": 65000,
+      "timeListed": 1633276236145,
+      "amountSold": 1,
+      "profit": 65000,
+      "transactionTime": 1633615778157,
+      "buyersInfo": [
+        "B0rn 4 Pk"
+      ]
+    },
+    {
+      "sellerName": "rsalex1",
+      "lastBuyerName": "Toronto",
+      "saleItem": {
+        "id": 11920,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1633276290141,
+      "amountSold": 1,
+      "profit": 100000,
+      "transactionTime": 1634476670077,
+      "buyersInfo": [
+        "Toronto"
+      ]
+    },
+    {
+      "sellerName": "rsalex1",
+      "saleItem": {
+        "id": 12605,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1633299382857,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "rsalex1",
+      "lastBuyerName": "THOUXAN",
+      "saleItem": {
+        "id": 13197,
+        "amount": 1
+      },
+      "price": 140000,
+      "timeListed": 1633374595498,
+      "amountSold": 1,
+      "profit": 140000,
+      "transactionTime": 1633415852471,
+      "buyersInfo": [
+        "THOUXAN"
+      ]
+    }
+  ]
+}

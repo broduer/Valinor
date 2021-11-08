@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Ferox-C/Valinor-C.iml" filepath="$PROJECT_DIR$/../Ferox-C/Valinor-C.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Ferox-L/Valinor-L.iml" filepath="$PROJECT_DIR$/../Ferox-L/Valinor-L.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Valinor-S.iml" filepath="$PROJECT_DIR$/Valinor-S.iml" />
+    </modules>
+  </component>
+</project>

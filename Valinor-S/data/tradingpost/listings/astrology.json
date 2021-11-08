@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "astrology",
+      "saleItem": {
+        "id": 10586,
+        "amount": 1
+      },
+      "price": 2500000,
+      "timeListed": 1634564993207,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "astrology",
+      "saleItem": {
+        "id": 11808,
+        "amount": 1
+      },
+      "price": 190000,
+      "timeListed": 1634584746570,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

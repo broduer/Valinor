@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "jesseca",
+      "saleItem": {
+        "id": 12692,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634038246273,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

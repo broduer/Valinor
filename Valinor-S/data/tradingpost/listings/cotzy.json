@@ -1,0 +1,95 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 22636,
+        "amount": 100
+      },
+      "price": 90000,
+      "timeListed": 1634943200008,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 22002,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635077553380,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 6914,
+        "amount": 1
+      },
+      "price": 50000,
+      "timeListed": 1635077585187,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 12424,
+        "amount": 1
+      },
+      "price": 370000,
+      "timeListed": 1635103443609,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 1046,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1635173639975,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 16278,
+        "amount": 1
+      },
+      "price": 2200000,
+      "timeListed": 1635173777969,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "cotzy",
+      "saleItem": {
+        "id": 11830,
+        "amount": 1
+      },
+      "price": 170000,
+      "timeListed": 1635173926183,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

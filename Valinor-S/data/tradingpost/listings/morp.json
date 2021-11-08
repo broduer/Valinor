@@ -1,0 +1,50 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "morp",
+      "lastBuyerName": "Bless",
+      "saleItem": {
+        "id": 17000,
+        "amount": 400
+      },
+      "price": 1000,
+      "timeListed": 1633807532846,
+      "amountSold": 176,
+      "profit": 176000,
+      "transactionTime": 1635259457764,
+      "buyersInfo": [
+        "Momo",
+        "Bless"
+      ]
+    },
+    {
+      "sellerName": "morp",
+      "lastBuyerName": "Venereal",
+      "saleItem": {
+        "id": 11824,
+        "amount": 1
+      },
+      "price": 150000,
+      "timeListed": 1633978956780,
+      "amountSold": 1,
+      "profit": 150000,
+      "transactionTime": 1634082662454,
+      "buyersInfo": [
+        "Venereal"
+      ]
+    },
+    {
+      "sellerName": "morp",
+      "saleItem": {
+        "id": 12809,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1633919526879,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

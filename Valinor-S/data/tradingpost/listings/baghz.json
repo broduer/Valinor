@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "baghz",
+      "lastBuyerName": "Mangomen",
+      "saleItem": {
+        "id": 22657,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635360797624,
+      "amountSold": 1,
+      "profit": 400000,
+      "transactionTime": 1635363626709,
+      "buyersInfo": [
+        "Mangomen"
+      ]
+    }
+  ]
+}

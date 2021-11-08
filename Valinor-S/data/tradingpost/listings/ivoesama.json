@@ -1,0 +1,49 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ivoesama",
+      "lastBuyerName": "THOUXAN",
+      "saleItem": {
+        "id": 22638,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1633441382565,
+      "amountSold": 1,
+      "profit": 250000,
+      "transactionTime": 1633836998477,
+      "buyersInfo": [
+        "THOUXAN"
+      ]
+    },
+    {
+      "sellerName": "ivoesama",
+      "saleItem": {
+        "id": 22656,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1633441397574,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "ivoesama",
+      "lastBuyerName": "Dirox",
+      "saleItem": {
+        "id": 22613,
+        "amount": 1
+      },
+      "price": 1850000,
+      "timeListed": 1633447472630,
+      "amountSold": 1,
+      "profit": 1850000,
+      "transactionTime": 1634055155019,
+      "buyersInfo": [
+        "Dirox"
+      ]
+    }
+  ]
+}

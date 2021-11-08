@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "known bandit",
+      "lastBuyerName": "Murphin",
+      "saleItem": {
+        "id": 22656,
+        "amount": 1
+      },
+      "price": 650000,
+      "timeListed": 1633544575939,
+      "amountSold": 1,
+      "profit": 650000,
+      "transactionTime": 1633905452578,
+      "buyersInfo": [
+        "Murphin"
+      ]
+    }
+  ]
+}

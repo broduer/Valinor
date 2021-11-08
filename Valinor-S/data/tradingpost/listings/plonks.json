@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "plonks",
+      "lastBuyerName": "Chaotic Jr",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1634700812843,
+      "amountSold": 1,
+      "profit": 100000,
+      "transactionTime": 1634719123202,
+      "buyersInfo": [
+        "Chaotic Jr"
+      ]
+    }
+  ]
+}

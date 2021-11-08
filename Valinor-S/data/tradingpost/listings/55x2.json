@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "55x2",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 9000,
+      "timeListed": 1633371404069,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "55x2",
+      "saleItem": {
+        "id": 22634,
+        "amount": 75
+      },
+      "price": 5000,
+      "timeListed": 1633514543876,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

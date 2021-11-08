@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "annie x",
+      "saleItem": {
+        "id": 6734,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1633262213397,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

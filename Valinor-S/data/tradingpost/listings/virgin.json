@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "virgin",
+      "saleItem": {
+        "id": 13197,
+        "amount": 5
+      },
+      "price": 180000,
+      "timeListed": 1635206897070,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "virgin",
+      "saleItem": {
+        "id": 19547,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635094108730,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "virgin",
+      "saleItem": {
+        "id": 30232,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635098024964,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "virgin",
+      "saleItem": {
+        "id": 30235,
+        "amount": 200752
+      },
+      "price": 104,
+      "timeListed": 1635328810678,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

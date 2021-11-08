@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "fuckme",
+      "saleItem": {
+        "id": 12424,
+        "amount": 2
+      },
+      "price": 1000000,
+      "timeListed": 1634000741161,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "fuckme",
+      "saleItem": {
+        "id": 12426,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634003043383,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

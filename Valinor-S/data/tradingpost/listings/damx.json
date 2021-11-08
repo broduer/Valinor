@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "damx",
+      "saleItem": {
+        "id": 21810,
+        "amount": 1
+      },
+      "price": 3500,
+      "timeListed": 1633917222860,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

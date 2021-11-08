@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bort lorn",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 22622,
+        "amount": 1
+      },
+      "price": 190000,
+      "timeListed": 1634510795963,
+      "amountSold": 1,
+      "profit": 190000,
+      "transactionTime": 1634650490129,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "waggy",
+      "lastBuyerName": "Expint",
+      "saleItem": {
+        "id": 619,
+        "amount": 8
+      },
+      "price": 60000,
+      "timeListed": 1633203139758,
+      "amountSold": 8,
+      "profit": 480000,
+      "transactionTime": 1633242413773,
+      "buyersInfo": [
+        "Mad Killer",
+        "Expint"
+      ]
+    }
+  ]
+}

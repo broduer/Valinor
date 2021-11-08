@@ -1,0 +1,82 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 22555,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634844406177,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 13235,
+        "amount": 1
+      },
+      "price": 325000,
+      "timeListed": 1635111414074,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 21015,
+        "amount": 2
+      },
+      "price": 150000,
+      "timeListed": 1635111422493,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 21003,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1635111658869,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 12931,
+        "amount": 1
+      },
+      "price": 175000,
+      "timeListed": 1635261713836,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "wonton",
+      "saleItem": {
+        "id": 13197,
+        "amount": 1
+      },
+      "price": 175000,
+      "timeListed": 1635261718633,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "sussy",
+      "saleItem": {
+        "id": 30044,
+        "amount": 1
+      },
+      "price": 5000000,
+      "timeListed": 1634665990354,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "sussy",
+      "lastBuyerName": "13r01y",
+      "saleItem": {
+        "id": 30235,
+        "amount": 4468
+      },
+      "price": 90,
+      "timeListed": 1635019586913,
+      "amountSold": 4468,
+      "profit": 402120,
+      "transactionTime": 1635019963721,
+      "buyersInfo": [
+        "13r01y",
+        "13r01y"
+      ]
+    }
+  ]
+}

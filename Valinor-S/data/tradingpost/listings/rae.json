@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "rae",
+      "lastBuyerName": "Coats",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 30000,
+      "timeListed": 1634259836809,
+      "amountSold": 4,
+      "profit": 120000,
+      "transactionTime": 1634270943503,
+      "buyersInfo": [
+        "Coats"
+      ]
+    }
+  ]
+}

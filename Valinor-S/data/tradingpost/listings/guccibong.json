@@ -1,0 +1,25 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "guccibong",
+      "lastBuyerName": "SWlPE",
+      "saleItem": {
+        "id": 30235,
+        "amount": 11642
+      },
+      "price": 100,
+      "timeListed": 1634935765350,
+      "amountSold": 11642,
+      "profit": 1400,
+      "transactionTime": 1634966840207,
+      "buyersInfo": [
+        "Korayplays",
+        "Korayplays",
+        "Korayplays",
+        "Yana",
+        "SLAVE SHIPS",
+        "SWlPE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nieveisbad",
+      "saleItem": {
+        "id": 11808,
+        "amount": 1
+      },
+      "price": 180000,
+      "timeListed": 1634586891587,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

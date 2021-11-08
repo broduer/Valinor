@@ -1,0 +1,33 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "22",
+      "lastBuyerName": "Danny Jones",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 40000,
+      "timeListed": 1635333250810,
+      "amountSold": 1,
+      "profit": 40000,
+      "transactionTime": 1635346730215,
+      "buyersInfo": [
+        "Danny Jones"
+      ]
+    },
+    {
+      "sellerName": "22",
+      "saleItem": {
+        "id": 30235,
+        "amount": 1263
+      },
+      "price": 85,
+      "timeListed": 1635333737415,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

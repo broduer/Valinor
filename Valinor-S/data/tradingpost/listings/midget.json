@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "midget",
+      "lastBuyerName": "Respire",
+      "saleItem": {
+        "id": 619,
+        "amount": 6
+      },
+      "price": 40000,
+      "timeListed": 1633453758282,
+      "amountSold": 6,
+      "profit": 240000,
+      "transactionTime": 1633503463570,
+      "buyersInfo": [
+        "THOUXAN",
+        "Respire"
+      ]
+    }
+  ]
+}

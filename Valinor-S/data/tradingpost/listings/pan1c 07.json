@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "pan1c 07",
+      "lastBuyerName": "Kronic Koala",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 600000,
+      "timeListed": 1633724997329,
+      "amountSold": 1,
+      "profit": 600000,
+      "transactionTime": 1633725332742,
+      "buyersInfo": [
+        "Kronic Koala"
+      ]
+    }
+  ]
+}

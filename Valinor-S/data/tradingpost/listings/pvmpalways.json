@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "pvmpalways",
+      "lastBuyerName": "Gh0stt",
+      "saleItem": {
+        "id": 4067,
+        "amount": 100
+      },
+      "price": 700,
+      "timeListed": 1635288979677,
+      "amountSold": 100,
+      "profit": 70000,
+      "transactionTime": 1635298466575,
+      "buyersInfo": [
+        "Gh0stt"
+      ]
+    }
+  ]
+}

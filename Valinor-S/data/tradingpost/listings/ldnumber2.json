@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ldnumber2",
+      "saleItem": {
+        "id": 11862,
+        "amount": 1
+      },
+      "price": 5000000,
+      "timeListed": 1634435666941,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

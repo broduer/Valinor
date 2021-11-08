@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ragger",
+      "lastBuyerName": "Mad Killer",
+      "saleItem": {
+        "id": 619,
+        "amount": 1
+      },
+      "price": 50000,
+      "timeListed": 1633220816552,
+      "amountSold": 1,
+      "profit": 50000,
+      "transactionTime": 1633228366428,
+      "buyersInfo": [
+        "Mad Killer"
+      ]
+    },
+    {
+      "sellerName": "ragger",
+      "lastBuyerName": "Collector",
+      "saleItem": {
+        "id": 13263,
+        "amount": 1
+      },
+      "price": 50000,
+      "timeListed": 1633220820150,
+      "amountSold": 1,
+      "profit": 50000,
+      "transactionTime": 1634768023718,
+      "buyersInfo": [
+        "Collector"
+      ]
+    }
+  ]
+}

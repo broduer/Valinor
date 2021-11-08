@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "1 tick gmaul",
+      "saleItem": {
+        "id": 11830,
+        "amount": 1
+      },
+      "price": 130000,
+      "timeListed": 1633900138329,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

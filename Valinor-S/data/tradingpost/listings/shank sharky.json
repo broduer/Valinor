@@ -1,0 +1,62 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "shank sharky",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 13197,
+        "amount": 2
+      },
+      "price": 150000,
+      "timeListed": 1634836880928,
+      "amountSold": 2,
+      "profit": 300000,
+      "transactionTime": 1635017093299,
+      "buyersInfo": [
+        "Classified"
+      ]
+    },
+    {
+      "sellerName": "shank sharky",
+      "saleItem": {
+        "id": 11804,
+        "amount": 5
+      },
+      "price": 35000,
+      "timeListed": 1634836892922,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "shank sharky",
+      "saleItem": {
+        "id": 11808,
+        "amount": 4
+      },
+      "price": 35000,
+      "timeListed": 1634836909117,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "shank sharky",
+      "lastBuyerName": "Dharok Obama",
+      "saleItem": {
+        "id": 19553,
+        "amount": 1
+      },
+      "price": 345000,
+      "timeListed": 1634837008113,
+      "amountSold": 1,
+      "profit": 345000,
+      "transactionTime": 1635031351808,
+      "buyersInfo": [
+        "Dharok Obama"
+      ]
+    }
+  ]
+}

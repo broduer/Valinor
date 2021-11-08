@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "337",
+      "saleItem": {
+        "id": 20368,
+        "amount": 2
+      },
+      "price": 725000,
+      "timeListed": 1635130502624,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "337",
+      "saleItem": {
+        "id": 26503,
+        "amount": 1
+      },
+      "price": 12500000,
+      "timeListed": 1635130477430,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "337",
+      "saleItem": {
+        "id": 30297,
+        "amount": 1
+      },
+      "price": 17500000,
+      "timeListed": 1635022789733,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "337",
+      "saleItem": {
+        "id": 16169,
+        "amount": 1
+      },
+      "price": 20000000,
+      "timeListed": 1635286652213,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

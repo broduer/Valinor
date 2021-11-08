@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "froggers",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 5000,
+      "timeListed": 1633391825795,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "froggers",
+      "saleItem": {
+        "id": 22557,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1633391800001,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "froggers",
+      "saleItem": {
+        "id": 22638,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1633391805991,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "froggers",
+      "saleItem": {
+        "id": 12806,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1633441348967,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "facist",
+      "lastBuyerName": "337",
+      "saleItem": {
+        "id": 19553,
+        "amount": 2
+      },
+      "price": 230000,
+      "timeListed": 1634238627224,
+      "amountSold": 2,
+      "profit": 230000,
+      "transactionTime": 1634254918565,
+      "buyersInfo": [
+        "Jesus",
+        "337"
+      ]
+    },
+    {
+      "sellerName": "facist",
+      "lastBuyerName": "NFT",
+      "saleItem": {
+        "id": 21295,
+        "amount": 1
+      },
+      "price": 800000,
+      "timeListed": 1634250985534,
+      "amountSold": 1,
+      "profit": 800000,
+      "transactionTime": 1634253438347,
+      "buyersInfo": [
+        "NFT"
+      ]
+    }
+  ]
+}

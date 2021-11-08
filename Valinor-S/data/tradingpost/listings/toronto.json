@@ -1,0 +1,46 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "toronto",
+      "saleItem": {
+        "id": 27004,
+        "amount": 1
+      },
+      "price": 1500000,
+      "timeListed": 1634947305831,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "toronto",
+      "saleItem": {
+        "id": 30226,
+        "amount": 1
+      },
+      "price": 4000000,
+      "timeListed": 1634947225448,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "toronto",
+      "lastBuyerName": "Got Cleaned",
+      "saleItem": {
+        "id": 16278,
+        "amount": 1
+      },
+      "price": 1500000,
+      "timeListed": 1634967922004,
+      "amountSold": 1,
+      "profit": 1500000,
+      "transactionTime": 1634984305136,
+      "buyersInfo": [
+        "Got Cleaned"
+      ]
+    }
+  ]
+}

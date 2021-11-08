@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bill",
+      "saleItem": {
+        "id": 12691,
+        "amount": 1
+      },
+      "price": 80000,
+      "timeListed": 1634877449058,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

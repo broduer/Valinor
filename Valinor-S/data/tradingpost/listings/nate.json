@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nate",
+      "saleItem": {
+        "id": 22634,
+        "amount": 75
+      },
+      "price": 9000,
+      "timeListed": 1633410057627,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.launchButton {
+	-fx-background-color: #ff0000;
+}
+
+.launchButton:hover {
+	-fx-background-color: #c60000;
+	-fx-text-fill:  #ffffff;
+	-fx-border-color: #c60000;
+}
+
+.linkButtons {
+	-fx-text-fill:  #990100;
+}
+
+.linkButtons:hover {
+	-fx-text-fill: #c60000;
+}
+
+.linkTooltip {
+	-fx-text-fill:  #ffffff;
+}

@@ -1,0 +1,46 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "croky",
+      "lastBuyerName": "Diarrhea",
+      "saleItem": {
+        "id": 11785,
+        "amount": 1
+      },
+      "price": 85000,
+      "timeListed": 1633448276645,
+      "amountSold": 1,
+      "profit": 85000,
+      "transactionTime": 1633492996488,
+      "buyersInfo": [
+        "Diarrhea"
+      ]
+    },
+    {
+      "sellerName": "croky",
+      "saleItem": {
+        "id": 22636,
+        "amount": 255
+      },
+      "price": 7000,
+      "timeListed": 1633448286842,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "croky",
+      "saleItem": {
+        "id": 22650,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1633448297640,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

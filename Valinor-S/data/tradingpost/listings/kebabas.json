@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "kebabas",
+      "saleItem": {
+        "id": 12002,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1635071330736,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "kebabas",
+      "saleItem": {
+        "id": 27001,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634714660350,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "kebabas",
+      "saleItem": {
+        "id": 27002,
+        "amount": 1
+      },
+      "price": 1850000,
+      "timeListed": 1634714666355,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "kebabas",
+      "saleItem": {
+        "id": 28642,
+        "amount": 1
+      },
+      "price": 1500000,
+      "timeListed": 1635194950947,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "harm1999",
+      "saleItem": {
+        "id": 1038,
+        "amount": 1
+      },
+      "price": 2000000,
+      "timeListed": 1634688827733,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

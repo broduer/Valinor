@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "gh",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 4999,
+      "timeListed": 1634853255048,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "gh",
+      "saleItem": {
+        "id": 11889,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1634853334849,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

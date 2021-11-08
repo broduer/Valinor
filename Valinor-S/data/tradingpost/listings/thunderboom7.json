@@ -1,0 +1,51 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "thunderboom7",
+      "lastBuyerName": "Got Cleaned",
+      "saleItem": {
+        "id": 13188,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1635074299558,
+      "amountSold": 1,
+      "profit": 750000,
+      "transactionTime": 1635364076730,
+      "buyersInfo": [
+        "Got Cleaned"
+      ]
+    },
+    {
+      "sellerName": "thunderboom7",
+      "saleItem": {
+        "id": 22622,
+        "amount": 1
+      },
+      "price": 225000,
+      "timeListed": 1635077516179,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "thunderboom7",
+      "lastBuyerName": "Cookie",
+      "saleItem": {
+        "id": 4067,
+        "amount": 2000
+      },
+      "price": 845,
+      "timeListed": 1635147663368,
+      "amountSold": 1900,
+      "profit": 1183000,
+      "transactionTime": 1635316998126,
+      "buyersInfo": [
+        "SWlPE",
+        "Gh0stt",
+        "Cookie"
+      ]
+    }
+  ]
+}

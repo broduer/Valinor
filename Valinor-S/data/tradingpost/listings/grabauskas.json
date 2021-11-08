@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "grabauskas",
+      "lastBuyerName": "Awawawawawww",
+      "saleItem": {
+        "id": 19481,
+        "amount": 1
+      },
+      "price": 45000,
+      "timeListed": 1633632374545,
+      "amountSold": 1,
+      "profit": 45000,
+      "transactionTime": 1633633696956,
+      "buyersInfo": [
+        "Awawawawawww"
+      ]
+    }
+  ]
+}

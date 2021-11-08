@@ -1,0 +1,39 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "n",
+      "lastBuyerName": "KPNS God",
+      "saleItem": {
+        "id": 30235,
+        "amount": 25682
+      },
+      "price": 100,
+      "timeListed": 1635001171891,
+      "amountSold": 25682,
+      "profit": 368200,
+      "transactionTime": 1635006317683,
+      "buyersInfo": [
+        "Danny",
+        "Kbd",
+        "Kbd",
+        "KPNS God"
+      ]
+    },
+    {
+      "sellerName": "n",
+      "lastBuyerName": "99 All Stars",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635002090490,
+      "amountSold": 1,
+      "profit": 400000,
+      "transactionTime": 1635021500325,
+      "buyersInfo": [
+        "99 All Stars"
+      ]
+    }
+  ]
+}

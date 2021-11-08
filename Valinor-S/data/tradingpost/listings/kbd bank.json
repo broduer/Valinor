@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "kbd bank",
+      "saleItem": {
+        "id": 1046,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635302435091,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

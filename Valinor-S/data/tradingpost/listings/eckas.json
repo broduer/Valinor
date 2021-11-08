@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "eckas",
+      "lastBuyerName": "1 2 Be Rich",
+      "saleItem": {
+        "id": 11802,
+        "amount": 1
+      },
+      "price": 80000,
+      "timeListed": 1634737234413,
+      "amountSold": 1,
+      "profit": 80000,
+      "transactionTime": 1634832691078,
+      "buyersInfo": [
+        "1 2 Be Rich"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "1312pk",
+      "saleItem": {
+        "id": 11809,
+        "amount": 1
+      },
+      "price": 165000,
+      "timeListed": 1634597055674,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "1312pk",
+      "saleItem": {
+        "id": 22626,
+        "amount": 1
+      },
+      "price": 490000,
+      "timeListed": 1634597076072,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

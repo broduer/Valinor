@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "skg 069",
+      "lastBuyerName": "Chaotic Jr",
+      "saleItem": {
+        "id": 619,
+        "amount": 6
+      },
+      "price": 45000,
+      "timeListed": 1633292341802,
+      "amountSold": 6,
+      "profit": 270000,
+      "transactionTime": 1633435441915,
+      "buyersInfo": [
+        "Chaotic Jr",
+        "Chaotic Jr"
+      ]
+    }
+  ]
+}

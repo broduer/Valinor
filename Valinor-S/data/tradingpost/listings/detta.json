@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "detta",
+      "lastBuyerName": "Morp",
+      "saleItem": {
+        "id": 619,
+        "amount": 8
+      },
+      "price": 50000,
+      "timeListed": 1633258591159,
+      "amountSold": 8,
+      "profit": 400000,
+      "transactionTime": 1633269761468,
+      "buyersInfo": [
+        "Morp"
+      ]
+    }
+  ]
+}

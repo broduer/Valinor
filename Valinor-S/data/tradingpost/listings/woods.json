@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "woods",
+      "saleItem": {
+        "id": 4067,
+        "amount": 11000
+      },
+      "price": 1000,
+      "timeListed": 1635272145170,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "woods",
+      "saleItem": {
+        "id": 23389,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1634940244974,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "woods",
+      "saleItem": {
+        "id": 12426,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1635070794923,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "woods",
+      "saleItem": {
+        "id": 2944,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635017123890,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "woods",
+      "saleItem": {
+        "id": 20368,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635017144298,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "inept",
+      "lastBuyerName": "Hong Kong",
+      "saleItem": {
+        "id": 22616,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1633820384950,
+      "amountSold": 1,
+      "profit": 450000,
+      "transactionTime": 1634536535572,
+      "buyersInfo": [
+        "Hong Kong"
+      ]
+    },
+    {
+      "sellerName": "inept",
+      "lastBuyerName": "Birdbrain",
+      "saleItem": {
+        "id": 22656,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1633864103116,
+      "amountSold": 1,
+      "profit": 400000,
+      "transactionTime": 1633885855200,
+      "buyersInfo": [
+        "Birdbrain"
+      ]
+    }
+  ]
+}

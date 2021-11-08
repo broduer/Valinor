@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "t213t233",
+      "lastBuyerName": "Danny Jones",
+      "saleItem": {
+        "id": 30235,
+        "amount": 3810
+      },
+      "price": 89,
+      "timeListed": 1635326640404,
+      "amountSold": 200,
+      "profit": 17800,
+      "transactionTime": 1635333685813,
+      "buyersInfo": [
+        "Danny Jones"
+      ]
+    }
+  ]
+}

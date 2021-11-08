@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "dag a stan69",
+      "saleItem": {
+        "id": 21006,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635203085823,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dag a stan69",
+      "saleItem": {
+        "id": 30235,
+        "amount": 671
+      },
+      "price": 90000,
+      "timeListed": 1635203730825,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "dezero",
+      "lastBuyerName": "Vex",
+      "saleItem": {
+        "id": 11235,
+        "amount": 1
+      },
+      "price": 5000,
+      "timeListed": 1633785494048,
+      "amountSold": 1,
+      "profit": 5000,
+      "transactionTime": 1634203839619,
+      "buyersInfo": [
+        "Vex"
+      ]
+    }
+  ]
+}

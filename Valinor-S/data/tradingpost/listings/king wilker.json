@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "king wilker",
+      "lastBuyerName": "Vex",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 900,
+      "timeListed": 1633920984291,
+      "amountSold": 75,
+      "profit": 67500,
+      "transactionTime": 1634382400291,
+      "buyersInfo": [
+        "Jarfix",
+        "Vex"
+      ]
+    }
+  ]
+}

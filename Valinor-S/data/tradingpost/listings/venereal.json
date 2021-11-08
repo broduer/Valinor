@@ -1,0 +1,134 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 22296,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635343455909,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 12904,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635343464305,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 22638,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635343476306,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 16171,
+        "amount": 1
+      },
+      "price": 650000,
+      "timeListed": 1635343487119,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 12436,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1635343496109,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 28643,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1635343505720,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 21006,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635343514113,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 30225,
+        "amount": 1
+      },
+      "price": 1099000,
+      "timeListed": 1635343523711,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 22323,
+        "amount": 1
+      },
+      "price": 1999000,
+      "timeListed": 1635343533320,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "venereal",
+      "saleItem": {
+        "id": 12424,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1635344232929,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

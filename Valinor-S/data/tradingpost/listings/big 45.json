@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "big 45",
+      "saleItem": {
+        "id": 22328,
+        "amount": 1
+      },
+      "price": 800000,
+      "timeListed": 1634587954204,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

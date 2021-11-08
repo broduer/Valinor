@@ -1,0 +1,38 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "mortem tyler",
+      "lastBuyerName": "Venereal",
+      "saleItem": {
+        "id": 11830,
+        "amount": 3
+      },
+      "price": 55000,
+      "timeListed": 1634939043765,
+      "amountSold": 2,
+      "profit": 0,
+      "transactionTime": 1634969424422,
+      "buyersInfo": [
+        "Big Lez",
+        "Venereal"
+      ]
+    },
+    {
+      "sellerName": "mortem tyler",
+      "lastBuyerName": "SWlPE",
+      "saleItem": {
+        "id": 30235,
+        "amount": 11149
+      },
+      "price": 100,
+      "timeListed": 1635119344331,
+      "amountSold": 11149,
+      "profit": 14900,
+      "transactionTime": 1635217083331,
+      "buyersInfo": [
+        "Swapcity",
+        "SWlPE"
+      ]
+    }
+  ]
+}

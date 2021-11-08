@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "o may ef ski",
+      "lastBuyerName": "Tidus Cross",
+      "saleItem": {
+        "id": 6586,
+        "amount": 5
+      },
+      "price": 19000,
+      "timeListed": 1633215215487,
+      "amountSold": 5,
+      "profit": 95000,
+      "transactionTime": 1633552989804,
+      "buyersInfo": [
+        "Tidus Cross"
+      ]
+    }
+  ]
+}

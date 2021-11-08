@@ -1,0 +1,108 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 22647,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1635169058343,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 30232,
+        "amount": 1
+      },
+      "price": 600000,
+      "timeListed": 1635204255236,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 30231,
+        "amount": 1
+      },
+      "price": 670000,
+      "timeListed": 1635204264225,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 24988,
+        "amount": 1
+      },
+      "price": 850000,
+      "timeListed": 1635204114825,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 16171,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1635206543651,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 20366,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635250530100,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 27000,
+        "amount": 1
+      },
+      "price": 1500000,
+      "timeListed": 1635204132222,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigdraco",
+      "saleItem": {
+        "id": 30225,
+        "amount": 1
+      },
+      "price": 4000000,
+      "timeListed": 1635204169434,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

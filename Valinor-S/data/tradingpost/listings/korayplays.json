@@ -1,0 +1,114 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "korayplays",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 13199,
+        "amount": 1
+      },
+      "price": 175000,
+      "timeListed": 1634333537123,
+      "amountSold": 1,
+      "profit": 175000,
+      "transactionTime": 1635060264841,
+      "buyersInfo": [
+        "Classified"
+      ]
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 21633,
+        "amount": 9
+      },
+      "price": 375000,
+      "timeListed": 1634674896818,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "korayplays",
+      "lastBuyerName": "Ferocious",
+      "saleItem": {
+        "id": 12926,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1634850438626,
+      "amountSold": 1,
+      "profit": 450000,
+      "transactionTime": 1635214488313,
+      "buyersInfo": [
+        "Ferocious"
+      ]
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 22631,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1634490644198,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 24144,
+        "amount": 2
+      },
+      "price": 700000,
+      "timeListed": 1634580881352,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 30241,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634947871043,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 1046,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1634947877651,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "korayplays",
+      "saleItem": {
+        "id": 1042,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1634947880639,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

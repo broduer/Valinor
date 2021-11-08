@@ -1,0 +1,54 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ronan",
+      "lastBuyerName": "Free Da Guys",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1635102698995,
+      "amountSold": 1,
+      "profit": 250000,
+      "transactionTime": 1635118461737,
+      "buyersInfo": [
+        "Free Da Guys"
+      ]
+    },
+    {
+      "sellerName": "ronan",
+      "lastBuyerName": "Bigbog",
+      "saleItem": {
+        "id": 21003,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1635102703205,
+      "amountSold": 1,
+      "profit": 250000,
+      "transactionTime": 1635105006618,
+      "buyersInfo": [
+        "Bigbog"
+      ]
+    },
+    {
+      "sellerName": "ronan",
+      "lastBuyerName": "Got Cleaned",
+      "saleItem": {
+        "id": 619,
+        "amount": 13
+      },
+      "price": 50000,
+      "timeListed": 1635103485607,
+      "amountSold": 13,
+      "profit": 650000,
+      "transactionTime": 1635144447338,
+      "buyersInfo": [
+        "Danny Jones",
+        "Wonton",
+        "Got Cleaned"
+      ]
+    }
+  ]
+}

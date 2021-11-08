@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "darkd00d",
+      "lastBuyerName": "Ketamine",
+      "saleItem": {
+        "id": 6585,
+        "amount": 1
+      },
+      "price": 8000,
+      "timeListed": 1633863102894,
+      "amountSold": 1,
+      "profit": 8000,
+      "transactionTime": 1633863329700,
+      "buyersInfo": [
+        "Ketamine"
+      ]
+    },
+    {
+      "sellerName": "darkd00d",
+      "lastBuyerName": "Ketamine",
+      "saleItem": {
+        "id": 24225,
+        "amount": 1
+      },
+      "price": 4000,
+      "timeListed": 1633863144905,
+      "amountSold": 1,
+      "profit": 4000,
+      "transactionTime": 1633863441910,
+      "buyersInfo": [
+        "Ketamine"
+      ]
+    }
+  ]
+}

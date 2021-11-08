@@ -1,0 +1,37 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ongslaught",
+      "lastBuyerName": "Mortem Tyler",
+      "saleItem": {
+        "id": 22636,
+        "amount": 74
+      },
+      "price": 475,
+      "timeListed": 1634423236651,
+      "amountSold": 74,
+      "profit": 11400,
+      "transactionTime": 1634843709576,
+      "buyersInfo": [
+        "Stake",
+        "Mortem Tyler"
+      ]
+    },
+    {
+      "sellerName": "ongslaught",
+      "lastBuyerName": "Tidus Cross",
+      "saleItem": {
+        "id": 30235,
+        "amount": 9080
+      },
+      "price": 135,
+      "timeListed": 1634623577696,
+      "amountSold": 9000,
+      "profit": 1215000,
+      "transactionTime": 1634659631805,
+      "buyersInfo": [
+        "Tidus Cross"
+      ]
+    }
+  ]
+}

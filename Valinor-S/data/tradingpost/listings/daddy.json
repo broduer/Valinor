@@ -1,0 +1,102 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "daddy",
+      "lastBuyerName": "1 2 Be Rich",
+      "saleItem": {
+        "id": 11830,
+        "amount": 3
+      },
+      "price": 40000,
+      "timeListed": 1635105712818,
+      "amountSold": 3,
+      "profit": 120000,
+      "transactionTime": 1635353177398,
+      "buyersInfo": [
+        "1 2 Be Rich"
+      ]
+    },
+    {
+      "sellerName": "daddy",
+      "saleItem": {
+        "id": 11828,
+        "amount": 1
+      },
+      "price": 83000,
+      "timeListed": 1635105954032,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "daddy",
+      "saleItem": {
+        "id": 13652,
+        "amount": 3
+      },
+      "price": 169000,
+      "timeListed": 1635105777025,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "daddy",
+      "lastBuyerName": "Gh0stt",
+      "saleItem": {
+        "id": 12931,
+        "amount": 3
+      },
+      "price": 180000,
+      "timeListed": 1635105744033,
+      "amountSold": 2,
+      "profit": 0,
+      "transactionTime": 1635255521649,
+      "buyersInfo": [
+        "Gh0stt",
+        "Gh0stt"
+      ]
+    },
+    {
+      "sellerName": "daddy",
+      "saleItem": {
+        "id": 22002,
+        "amount": 4
+      },
+      "price": 200000,
+      "timeListed": 1635106442428,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "daddy",
+      "saleItem": {
+        "id": 22327,
+        "amount": 1
+      },
+      "price": 600000,
+      "timeListed": 1635115092702,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "daddy",
+      "saleItem": {
+        "id": 21003,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635114963701,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

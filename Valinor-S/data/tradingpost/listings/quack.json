@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "quack",
+      "saleItem": {
+        "id": 13263,
+        "amount": 1
+      },
+      "price": 98000,
+      "timeListed": 1634942919805,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

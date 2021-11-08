@@ -1,0 +1,101 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "elromerever",
+      "lastBuyerName": "NFT",
+      "saleItem": {
+        "id": 22622,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1634200503590,
+      "amountSold": 1,
+      "profit": 200000,
+      "transactionTime": 1634255943372,
+      "buyersInfo": [
+        "NFT"
+      ]
+    },
+    {
+      "sellerName": "elromerever",
+      "saleItem": {
+        "id": 22634,
+        "amount": 75
+      },
+      "price": 500,
+      "timeListed": 1634200583986,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "elromerever",
+      "saleItem": {
+        "id": 12806,
+        "amount": 1
+      },
+      "price": 50000,
+      "timeListed": 1634202528011,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "elromerever",
+      "saleItem": {
+        "id": 12807,
+        "amount": 2
+      },
+      "price": 75000,
+      "timeListed": 1634202552010,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "elromerever",
+      "saleItem": {
+        "id": 12603,
+        "amount": 2
+      },
+      "price": 20000,
+      "timeListed": 1634202580804,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "elromerever",
+      "saleItem": {
+        "id": 19478,
+        "amount": 1
+      },
+      "price": 40000,
+      "timeListed": 1634202593406,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "elromerever",
+      "lastBuyerName": "Entrance",
+      "saleItem": {
+        "id": 11828,
+        "amount": 1
+      },
+      "price": 70000,
+      "timeListed": 1634251278938,
+      "amountSold": 1,
+      "profit": 70000,
+      "transactionTime": 1634476885479,
+      "buyersInfo": [
+        "Entrance"
+      ]
+    }
+  ]
+}

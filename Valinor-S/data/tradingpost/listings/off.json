@@ -1,0 +1,121 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 13576,
+        "amount": 1
+      },
+      "price": 99000,
+      "timeListed": 1635283080480,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 13652,
+        "amount": 1
+      },
+      "price": 180000,
+      "timeListed": 1634839880353,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 22610,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634840050149,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 1046,
+        "amount": 1
+      },
+      "price": 1300000,
+      "timeListed": 1634840018350,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 24491,
+        "amount": 1
+      },
+      "price": 2300000,
+      "timeListed": 1635204313430,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 11863,
+        "amount": 1
+      },
+      "price": 3500000,
+      "timeListed": 1634820134182,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 24981,
+        "amount": 1
+      },
+      "price": 10000000,
+      "timeListed": 1635356087488,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 25913,
+        "amount": 1
+      },
+      "price": 9500000,
+      "timeListed": 1635363552909,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "off",
+      "saleItem": {
+        "id": 12081,
+        "amount": 1
+      },
+      "price": 3700000,
+      "timeListed": 1635364851956,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "1dontpvp",
+      "saleItem": {
+        "id": 22628,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1633609554086,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

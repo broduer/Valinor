@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "tomer",
+      "saleItem": {
+        "id": 19710,
+        "amount": 1
+      },
+      "price": 160000,
+      "timeListed": 1635355855894,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "tomer",
+      "saleItem": {
+        "id": 22975,
+        "amount": 1
+      },
+      "price": 190000,
+      "timeListed": 1635355876284,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

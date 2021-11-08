@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bigbog",
+      "saleItem": {
+        "id": 22555,
+        "amount": 1
+      },
+      "price": 150000,
+      "timeListed": 1635197171563,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigbog",
+      "saleItem": {
+        "id": 11235,
+        "amount": 2
+      },
+      "price": 50000,
+      "timeListed": 1635197211168,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigbog",
+      "saleItem": {
+        "id": 24225,
+        "amount": 2
+      },
+      "price": 15000,
+      "timeListed": 1635197242365,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bigbog",
+      "saleItem": {
+        "id": 20849,
+        "amount": 9
+      },
+      "price": 20000,
+      "timeListed": 1635197309572,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

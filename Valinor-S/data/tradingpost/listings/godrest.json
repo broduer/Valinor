@@ -1,0 +1,78 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "godrest",
+      "lastBuyerName": "Duty",
+      "saleItem": {
+        "id": 22002,
+        "amount": 3
+      },
+      "price": 275000,
+      "timeListed": 1634796519177,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1634864229743,
+      "buyersInfo": [
+        "Duty"
+      ]
+    },
+    {
+      "sellerName": "godrest",
+      "saleItem": {
+        "id": 19547,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1634764379877,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "godrest",
+      "saleItem": {
+        "id": 20372,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1634800836811,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "godrest",
+      "lastBuyerName": "Yana",
+      "saleItem": {
+        "id": 21006,
+        "amount": 1
+      },
+      "price": 375000,
+      "timeListed": 1634790665530,
+      "amountSold": 1,
+      "profit": 375000,
+      "transactionTime": 1635115190507,
+      "buyersInfo": [
+        "Yana"
+      ]
+    },
+    {
+      "sellerName": "godrest",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 13199,
+        "amount": 1
+      },
+      "price": 119000,
+      "timeListed": 1634876372653,
+      "amountSold": 1,
+      "profit": 119000,
+      "transactionTime": 1635017085499,
+      "buyersInfo": [
+        "Classified"
+      ]
+    }
+  ]
+}

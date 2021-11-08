@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "easy",
+      "saleItem": {
+        "id": 21295,
+        "amount": 1
+      },
+      "price": 7000000,
+      "timeListed": 1634588466607,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "easy",
+      "saleItem": {
+        "id": 30228,
+        "amount": 3
+      },
+      "price": 2000000,
+      "timeListed": 1634839223344,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

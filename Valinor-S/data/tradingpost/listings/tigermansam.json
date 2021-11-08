@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "tigermansam",
+      "lastBuyerName": "SLAVE SHIPS",
+      "saleItem": {
+        "id": 30235,
+        "amount": 17388
+      },
+      "price": 100,
+      "timeListed": 1634775776391,
+      "amountSold": 17388,
+      "profit": 1738800,
+      "transactionTime": 1634780946030,
+      "buyersInfo": [
+        "Swapcity",
+        "SLAVE SHIPS"
+      ]
+    }
+  ]
+}

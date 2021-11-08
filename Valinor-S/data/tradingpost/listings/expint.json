@@ -1,0 +1,39 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "expint",
+      "lastBuyerName": "Danny Jones",
+      "saleItem": {
+        "id": 619,
+        "amount": 5
+      },
+      "price": 50000,
+      "timeListed": 1634905737482,
+      "amountSold": 5,
+      "profit": 250000,
+      "transactionTime": 1634996154048,
+      "buyersInfo": [
+        "Eco",
+        "Danny Jones",
+        "Danny Jones"
+      ]
+    },
+    {
+      "sellerName": "expint",
+      "lastBuyerName": "Momma",
+      "saleItem": {
+        "id": 30235,
+        "amount": 4518
+      },
+      "price": 100,
+      "timeListed": 1634909582924,
+      "amountSold": 4518,
+      "profit": 331800,
+      "transactionTime": 1634930488896,
+      "buyersInfo": [
+        "Stake",
+        "Momma"
+      ]
+    }
+  ]
+}

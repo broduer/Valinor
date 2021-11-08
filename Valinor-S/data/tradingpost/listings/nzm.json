@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nzm",
+      "lastBuyerName": "Mortem Tyler",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 350,
+      "timeListed": 1634691376557,
+      "amountSold": 75,
+      "profit": 26250,
+      "transactionTime": 1634765645892,
+      "buyersInfo": [
+        "Mortem Tyler"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="1000.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUIController">
+   <children>
+      <ImageView fitHeight="573.0" fitWidth="1007.0" layoutX="-1.0" layoutY="-2.0">
+         <image>
+            <Image url="@css/bg.png" />
+         </image></ImageView>
+      <AnchorPane prefHeight="25.0" prefWidth="1000.0" style="-fx-background-color: #2c2f33;">
+         <children>
+            <Label fx:id="closeButton" alignment="CENTER" layoutX="974.0" onMousePressed="#handleClicks" prefHeight="22.0" prefWidth="19.0" text="⨉" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="450.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ManicPS Client Launcher">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-5.0" layoutY="489.0" prefHeight="35.0" prefWidth="1007.0" style="-fx-background-color: #23272a;">
+         <children>
+            <JFXButton fx:id="launchButton" onMousePressed="#handleClicks" prefHeight="37.0" prefWidth="122.0" ripplerFill="RED" styleClass="launchButton" text="Launch" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="468.0" layoutY="9.0" style="-fx-text-fill: #9C2827;" text="Click Launch to Play Manic!">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Text fill="WHITE" layoutX="14.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We are currently">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <!-- fill="#29ff00" -->
+      <Text fx:id="hostCheck" fill="WHITE" layoutX="120.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Label id="reportBug" fx:id="reportLabel" layoutX="886.0" layoutY="411.0" onMouseMoved="#handleClicks" prefHeight="47.0" prefWidth="34.0" styleClass="linkButtons" text="Bug" />
+      <Label id="voteServer" fx:id="voteLabel" layoutX="828.0" layoutY="411.0" onMouseMoved="#handleClicks" prefHeight="47.0" prefWidth="41.0" styleClass="linkButtons" text="Report" />
+      <Label id="openStore" fx:id="donationLabel" layoutX="765.0" layoutY="411.0" onMouseMoved="#handleClicks" prefHeight="47.0" prefWidth="41.0" styleClass="linkButtons" text="Store" />
+      <Label id="openLeader" fx:id="hiscoreLabel" layoutX="704.0" layoutY="411.0" onMouseMoved="#handleClicks" prefHeight="47.0" prefWidth="41.0" styleClass="linkButtons" text="Leader" />
+      <Label id="openForum" fx:id="forumLabel" layoutX="635.0" layoutY="411.0" onMouseMoved="#handleClicks" prefHeight="47.0" prefWidth="41.0" styleClass="linkButtons" text="Community" />
+      <Label id="linkTooltip" fx:id="linkTooltip" layoutX="765.0" layoutY="383.0" style="-fx-font-size: 20;" styleClass="linkTooltip" />
+
+      <ImageView fitHeight="150.0" fitWidth="320.0" layoutX="110.0" layoutY="25.0">
+         <image>
+            <Image url="@css/logo.png" />
+         </image></ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "death gun",
+      "saleItem": {
+        "id": 16173,
+        "amount": 1
+      },
+      "price": 6000000,
+      "timeListed": 1635191321522,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

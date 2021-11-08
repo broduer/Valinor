@@ -1,0 +1,160 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 11921,
+        "amount": 3
+      },
+      "price": 75000,
+      "timeListed": 1635341674466,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 11889,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635341609651,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 13199,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635341654664,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 13235,
+        "amount": 1
+      },
+      "price": 170000,
+      "timeListed": 1635341663664,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 22648,
+        "amount": 3
+      },
+      "price": 175000,
+      "timeListed": 1635341634855,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 22975,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635341623464,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 22611,
+        "amount": 1
+      },
+      "price": 220000,
+      "timeListed": 1635341601861,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 22641,
+        "amount": 1
+      },
+      "price": 370000,
+      "timeListed": 1635347164618,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 2944,
+        "amount": 2
+      },
+      "price": 650000,
+      "timeListed": 1635346618614,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 28643,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635347216831,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 275000,
+      "timeListed": 1635359415198,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "danny jones",
+      "saleItem": {
+        "id": 30235,
+        "amount": 5000
+      },
+      "price": 93,
+      "timeListed": 1635363464705,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

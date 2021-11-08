@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "u wont tho",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 12422,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1634820229576,
+      "amountSold": 1,
+      "profit": 300000,
+      "transactionTime": 1635050821963,
+      "buyersInfo": [
+        "Classified"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "togepi",
+      "lastBuyerName": "Nuski2x",
+      "saleItem": {
+        "id": 12926,
+        "amount": 1
+      },
+      "price": 380000,
+      "timeListed": 1634901269250,
+      "amountSold": 1,
+      "profit": 380000,
+      "transactionTime": 1635041145681,
+      "buyersInfo": [
+        "Nuski2x"
+      ]
+    },
+    {
+      "sellerName": "togepi",
+      "saleItem": {
+        "id": 22653,
+        "amount": 1
+      },
+      "price": 470000,
+      "timeListed": 1634901319060,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "togepi",
+      "saleItem": {
+        "id": 16263,
+        "amount": 1
+      },
+      "price": 3900000,
+      "timeListed": 1634901287258,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

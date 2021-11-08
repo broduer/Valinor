@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "swlpe",
+      "saleItem": {
+        "id": 21295,
+        "amount": 3
+      },
+      "price": 3295000,
+      "timeListed": 1635354301839,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "swlpe",
+      "saleItem": {
+        "id": 30240,
+        "amount": 1
+      },
+      "price": 14500000,
+      "timeListed": 1635355762891,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "swlpe",
+      "saleItem": {
+        "id": 24514,
+        "amount": 1
+      },
+      "price": 3250000,
+      "timeListed": 1635361190040,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "swlpe",
+      "saleItem": {
+        "id": 29002,
+        "amount": 1
+      },
+      "price": 5000000,
+      "timeListed": 1635361193045,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "swlpe",
+      "saleItem": {
+        "id": 24424,
+        "amount": 1
+      },
+      "price": 4500000,
+      "timeListed": 1635361199047,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

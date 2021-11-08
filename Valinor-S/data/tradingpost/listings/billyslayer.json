@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "billyslayer",
+      "saleItem": {
+        "id": 12931,
+        "amount": 1
+      },
+      "price": 325000,
+      "timeListed": 1635025127956,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billyslayer",
+      "saleItem": {
+        "id": 13235,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635160258671,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billyslayer",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1635286230200,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billyslayer",
+      "saleItem": {
+        "id": 24988,
+        "amount": 1
+      },
+      "price": 800000,
+      "timeListed": 1635286245790,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billyslayer",
+      "saleItem": {
+        "id": 22545,
+        "amount": 3
+      },
+      "price": 150000,
+      "timeListed": 1635349018678,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "chaotic jr",
+      "saleItem": {
+        "id": 12809,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1633350586860,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "chaotic jr",
+      "saleItem": {
+        "id": 21275,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634288385042,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "chaotic jr",
+      "saleItem": {
+        "id": 12904,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635263521690,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "chaotic jr",
+      "saleItem": {
+        "id": 30233,
+        "amount": 1
+      },
+      "price": 800000,
+      "timeListed": 1635270232299,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "chaotic jr",
+      "saleItem": {
+        "id": 20724,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1635273415994,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

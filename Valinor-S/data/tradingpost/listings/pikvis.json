@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "pikvis",
+      "saleItem": {
+        "id": 21015,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1633533760850,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "pikvis",
+      "saleItem": {
+        "id": 27004,
+        "amount": 1
+      },
+      "price": 4750000,
+      "timeListed": 1634478398104,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

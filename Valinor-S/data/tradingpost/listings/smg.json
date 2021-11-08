@@ -1,0 +1,33 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "smg",
+      "saleItem": {
+        "id": 12002,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635023080737,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "smg",
+      "lastBuyerName": "Tweetmykills",
+      "saleItem": {
+        "id": 22249,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1635023072336,
+      "amountSold": 1,
+      "profit": 900000,
+      "transactionTime": 1635284019123,
+      "buyersInfo": [
+        "Tweetmykills"
+      ]
+    }
+  ]
+}

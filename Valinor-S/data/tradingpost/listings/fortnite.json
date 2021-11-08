@@ -1,0 +1,33 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "fortnite",
+      "saleItem": {
+        "id": 12806,
+        "amount": 1
+      },
+      "price": 35000,
+      "timeListed": 1634656495580,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "fortnite",
+      "lastBuyerName": "Coats",
+      "saleItem": {
+        "id": 12807,
+        "amount": 1
+      },
+      "price": 35000,
+      "timeListed": 1634656497377,
+      "amountSold": 1,
+      "profit": 35000,
+      "transactionTime": 1635302261083,
+      "buyersInfo": [
+        "Coats"
+      ]
+    }
+  ]
+}

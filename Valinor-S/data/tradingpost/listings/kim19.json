@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "kim19",
+      "saleItem": {
+        "id": 12601,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1634834818706,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "kim19",
+      "saleItem": {
+        "id": 12904,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635287974653,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

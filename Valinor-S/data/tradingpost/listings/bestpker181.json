@@ -1,0 +1,94 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "bestpker181",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 22327,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1634986001361,
+      "amountSold": 1,
+      "profit": 400000,
+      "transactionTime": 1635050622766,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    },
+    {
+      "sellerName": "bestpker181",
+      "lastBuyerName": "Entrance",
+      "saleItem": {
+        "id": 22328,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1634986004956,
+      "amountSold": 1,
+      "profit": 400000,
+      "transactionTime": 1635045509518,
+      "buyersInfo": [
+        "Entrance"
+      ]
+    },
+    {
+      "sellerName": "bestpker181",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 22557,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1634986012748,
+      "amountSold": 1,
+      "profit": 200000,
+      "transactionTime": 1635050586772,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    },
+    {
+      "sellerName": "bestpker181",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 13239,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634986021160,
+      "amountSold": 1,
+      "profit": 250000,
+      "transactionTime": 1635013742862,
+      "buyersInfo": [
+        "Classified"
+      ]
+    },
+    {
+      "sellerName": "bestpker181",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 499000,
+      "timeListed": 1634986027153,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "bestpker181",
+      "saleItem": {
+        "id": 12900,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1634986053558,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "cocopuffs",
+      "lastBuyerName": "Jesus",
+      "saleItem": {
+        "id": 22619,
+        "amount": 2
+      },
+      "price": 300000,
+      "timeListed": 1634074039189,
+      "amountSold": 2,
+      "profit": 600000,
+      "transactionTime": 1634168995534,
+      "buyersInfo": [
+        "N0trico",
+        "Jesus"
+      ]
+    }
+  ]
+}

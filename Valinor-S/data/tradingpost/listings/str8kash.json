@@ -1,0 +1,33 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "str8kash",
+      "saleItem": {
+        "id": 22625,
+        "amount": 1
+      },
+      "price": 150000,
+      "timeListed": 1635317404927,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "str8kash",
+      "lastBuyerName": "Ivar",
+      "saleItem": {
+        "id": 619,
+        "amount": 14
+      },
+      "price": 45000,
+      "timeListed": 1635317413934,
+      "amountSold": 3,
+      "profit": 135000,
+      "transactionTime": 1635328818475,
+      "buyersInfo": [
+        "Ivar"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "p e t",
+      "saleItem": {
+        "id": 21047,
+        "amount": 1
+      },
+      "price": 4000000,
+      "timeListed": 1634703580060,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "p e t",
+      "saleItem": {
+        "id": 12904,
+        "amount": 3
+      },
+      "price": 930000,
+      "timeListed": 1635137198681,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "p e t",
+      "saleItem": {
+        "id": 1046,
+        "amount": 1
+      },
+      "price": 600000,
+      "timeListed": 1635139511100,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

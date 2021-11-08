@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ninja turtle",
+      "saleItem": {
+        "id": 30186,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635136171479,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

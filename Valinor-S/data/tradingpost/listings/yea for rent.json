@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "yea for rent",
+      "lastBuyerName": "Entrance",
+      "saleItem": {
+        "id": 11920,
+        "amount": 1
+      },
+      "price": 25000,
+      "timeListed": 1634830519667,
+      "amountSold": 1,
+      "profit": 25000,
+      "transactionTime": 1634867305366,
+      "buyersInfo": [
+        "Entrance"
+      ]
+    }
+  ]
+}

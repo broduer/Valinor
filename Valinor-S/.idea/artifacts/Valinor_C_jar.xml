@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Valinor-C:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Valinor_C_jar</output-path>
+    <root id="archive" name="Ferox-C.jar">
+      <element id="module-output" name="Valinor-C" />
+    </root>
+  </artifact>
+</component>

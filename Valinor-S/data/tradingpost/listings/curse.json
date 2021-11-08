@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "curse",
+      "saleItem": {
+        "id": 21932,
+        "amount": 22
+      },
+      "price": 999999999000000,
+      "timeListed": 1635114681705,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

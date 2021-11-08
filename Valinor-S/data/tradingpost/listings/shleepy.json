@@ -1,0 +1,56 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "shleepy",
+      "saleItem": {
+        "id": 2581,
+        "amount": 2
+      },
+      "price": 100000,
+      "timeListed": 1634616885238,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "shleepy",
+      "saleItem": {
+        "id": 11824,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1634616610441,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "shleepy",
+      "saleItem": {
+        "id": 11807,
+        "amount": 5
+      },
+      "price": 250000,
+      "timeListed": 1634616857633,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "shleepy",
+      "saleItem": {
+        "id": 11809,
+        "amount": 4
+      },
+      "price": 250000,
+      "timeListed": 1634616869038,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "phix",
+      "saleItem": {
+        "id": 12931,
+        "amount": 1
+      },
+      "price": 240000,
+      "timeListed": 1635099101370,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

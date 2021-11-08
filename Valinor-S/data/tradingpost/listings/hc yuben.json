@@ -1,0 +1,46 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "hc yuben",
+      "lastBuyerName": "THOUXAN",
+      "saleItem": {
+        "id": 21018,
+        "amount": 1
+      },
+      "price": 690000,
+      "timeListed": 1634656484174,
+      "amountSold": 1,
+      "profit": 690000,
+      "transactionTime": 1634789563906,
+      "buyersInfo": [
+        "THOUXAN"
+      ]
+    },
+    {
+      "sellerName": "hc yuben",
+      "saleItem": {
+        "id": 12877,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1634666750559,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "hc yuben",
+      "saleItem": {
+        "id": 11804,
+        "amount": 1
+      },
+      "price": 71000,
+      "timeListed": 1634668524780,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

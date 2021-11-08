@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "binu bald af",
+      "saleItem": {
+        "id": 22641,
+        "amount": 1
+      },
+      "price": 550000,
+      "timeListed": 1635300182012,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu bald af",
+      "saleItem": {
+        "id": 2944,
+        "amount": 2
+      },
+      "price": 450000,
+      "timeListed": 1635350440125,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu bald af",
+      "saleItem": {
+        "id": 12825,
+        "amount": 1
+      },
+      "price": 2000000,
+      "timeListed": 1635350453326,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu bald af",
+      "saleItem": {
+        "id": 21003,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635350464720,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu bald af",
+      "saleItem": {
+        "id": 11773,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635350515120,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

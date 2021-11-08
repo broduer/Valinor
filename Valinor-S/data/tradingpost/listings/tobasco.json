@@ -1,0 +1,85 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "tobasco",
+      "saleItem": {
+        "id": 21015,
+        "amount": 1
+      },
+      "price": 215000,
+      "timeListed": 1634265964658,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "tobasco",
+      "saleItem": {
+        "id": 20370,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1634265989255,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "tobasco",
+      "saleItem": {
+        "id": 23995,
+        "amount": 1
+      },
+      "price": 930000,
+      "timeListed": 1634475272675,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "tobasco",
+      "saleItem": {
+        "id": 21012,
+        "amount": 1
+      },
+      "price": 650000,
+      "timeListed": 1634475286474,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "tobasco",
+      "lastBuyerName": "Chaotic Jr",
+      "saleItem": {
+        "id": 22002,
+        "amount": 1
+      },
+      "price": 130000,
+      "timeListed": 1634520039045,
+      "amountSold": 1,
+      "profit": 130000,
+      "transactionTime": 1634547645266,
+      "buyersInfo": [
+        "Chaotic Jr"
+      ]
+    },
+    {
+      "sellerName": "tobasco",
+      "saleItem": {
+        "id": 12806,
+        "amount": 1
+      },
+      "price": 40000,
+      "timeListed": 1634520048040,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

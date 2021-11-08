@@ -1,0 +1,43 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "low key",
+      "saleItem": {
+        "id": 30186,
+        "amount": 3
+      },
+      "price": 200000,
+      "timeListed": 1635300963838,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "low key",
+      "saleItem": {
+        "id": 2944,
+        "amount": 5
+      },
+      "price": 1500000,
+      "timeListed": 1635300981249,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "low key",
+      "saleItem": {
+        "id": 30228,
+        "amount": 1
+      },
+      "price": 2500000,
+      "timeListed": 1635300989641,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

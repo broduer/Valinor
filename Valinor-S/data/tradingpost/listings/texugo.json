@@ -1,0 +1,43 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "texugo",
+      "saleItem": {
+        "id": 11840,
+        "amount": 2
+      },
+      "price": 25000,
+      "timeListed": 1635350723934,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "texugo",
+      "saleItem": {
+        "id": 11235,
+        "amount": 2
+      },
+      "price": 20000,
+      "timeListed": 1635350741935,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "texugo",
+      "saleItem": {
+        "id": 22636,
+        "amount": 75
+      },
+      "price": 20000,
+      "timeListed": 1635350762333,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

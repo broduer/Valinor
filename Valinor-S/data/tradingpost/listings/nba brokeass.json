@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nba brokeass",
+      "lastBuyerName": "Jadluvr9",
+      "saleItem": {
+        "id": 22323,
+        "amount": 1
+      },
+      "price": 1500000,
+      "timeListed": 1635354984665,
+      "amountSold": 1,
+      "profit": 1500000,
+      "transactionTime": 1635362250283,
+      "buyersInfo": [
+        "Jadluvr9"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nuski",
+      "saleItem": {
+        "id": 22634,
+        "amount": 75
+      },
+      "price": 400,
+      "timeListed": 1634668547577,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski",
+      "saleItem": {
+        "id": 21301,
+        "amount": 1
+      },
+      "price": 220000,
+      "timeListed": 1634668596763,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

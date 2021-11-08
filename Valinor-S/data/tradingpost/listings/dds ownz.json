@@ -1,0 +1,112 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 12426,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1634512683582,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 12422,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1634512687789,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 22326,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1634815970141,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 22319,
+        "amount": 1
+      },
+      "price": 600000,
+      "timeListed": 1634815982741,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 19710,
+        "amount": 1
+      },
+      "price": 240000,
+      "timeListed": 1634837815130,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 27001,
+        "amount": 1
+      },
+      "price": 550000,
+      "timeListed": 1635187136496,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dds ownz",
+      "lastBuyerName": "Gh0stt",
+      "saleItem": {
+        "id": 22631,
+        "amount": 3
+      },
+      "price": 250000,
+      "timeListed": 1635200440391,
+      "amountSold": 2,
+      "profit": 0,
+      "transactionTime": 1635255733460,
+      "buyersInfo": [
+        "Gh0stt",
+        "Gh0stt"
+      ]
+    },
+    {
+      "sellerName": "dds ownz",
+      "saleItem": {
+        "id": 16012,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635200452390,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

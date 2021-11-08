@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "springtide",
+      "lastBuyerName": "B0rn 4 Pk",
+      "saleItem": {
+        "id": 11283,
+        "amount": 1
+      },
+      "price": 49000,
+      "timeListed": 1633354722108,
+      "amountSold": 1,
+      "profit": 49000,
+      "transactionTime": 1633615755351,
+      "buyersInfo": [
+        "B0rn 4 Pk"
+      ]
+    }
+  ]
+}

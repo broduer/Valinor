@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "allmine",
+      "saleItem": {
+        "id": 12875,
+        "amount": 1
+      },
+      "price": 35000,
+      "timeListed": 1633470724903,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "allmine",
+      "saleItem": {
+        "id": 12873,
+        "amount": 3
+      },
+      "price": 35000,
+      "timeListed": 1633520962132,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

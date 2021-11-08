@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "none",
+      "lastBuyerName": "Completion",
+      "saleItem": {
+        "id": 22638,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1633961337026,
+      "amountSold": 1,
+      "profit": 300000,
+      "transactionTime": 1634836938519,
+      "buyersInfo": [
+        "Completion"
+      ]
+    }
+  ]
+}

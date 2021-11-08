@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "edvinas",
+      "lastBuyerName": "Korayplays",
+      "saleItem": {
+        "id": 13239,
+        "amount": 1
+      },
+      "price": 480000,
+      "timeListed": 1633759621226,
+      "amountSold": 1,
+      "profit": 480000,
+      "transactionTime": 1634244574482,
+      "buyersInfo": [
+        "Korayplays"
+      ]
+    },
+    {
+      "sellerName": "edvinas",
+      "lastBuyerName": "Priest",
+      "saleItem": {
+        "id": 22002,
+        "amount": 1
+      },
+      "price": 170000,
+      "timeListed": 1633759749026,
+      "amountSold": 1,
+      "profit": 170000,
+      "transactionTime": 1633825972180,
+      "buyersInfo": [
+        "Priest"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "greazy69",
+      "lastBuyerName": "Dds Ownz",
+      "saleItem": {
+        "id": 12806,
+        "amount": 1
+      },
+      "price": 20000,
+      "timeListed": 1633456187105,
+      "amountSold": 1,
+      "profit": 20000,
+      "transactionTime": 1633630800727,
+      "buyersInfo": [
+        "Dds Ownz"
+      ]
+    }
+  ]
+}

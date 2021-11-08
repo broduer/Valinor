@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "p",
+      "lastBuyerName": "Billybob",
+      "saleItem": {
+        "id": 30235,
+        "amount": 8962
+      },
+      "price": 90,
+      "timeListed": 1634970944838,
+      "amountSold": 8962,
+      "profit": 86580,
+      "transactionTime": 1634992527612,
+      "buyersInfo": [
+        "Swapcity",
+        "Billybob"
+      ]
+    }
+  ]
+}

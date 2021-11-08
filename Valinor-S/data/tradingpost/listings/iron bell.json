@@ -1,0 +1,99 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 13188,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1634933109115,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 6722,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1634933133121,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 27005,
+        "amount": 1
+      },
+      "price": 3000000,
+      "timeListed": 1634933159523,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 27004,
+        "amount": 2
+      },
+      "price": 1500000,
+      "timeListed": 1634933175129,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "iron bell",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 4067,
+        "amount": 2000
+      },
+      "price": 950,
+      "timeListed": 1634933197926,
+      "amountSold": 1900,
+      "profit": 190000,
+      "transactionTime": 1635341571856,
+      "buyersInfo": [
+        "SMG",
+        "Primatol"
+      ]
+    },
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 27003,
+        "amount": 1
+      },
+      "price": 3400000,
+      "timeListed": 1634933286729,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "iron bell",
+      "saleItem": {
+        "id": 24491,
+        "amount": 2
+      },
+      "price": 2400000,
+      "timeListed": 1634933304724,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

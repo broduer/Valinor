@@ -1,0 +1,121 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 13576,
+        "amount": 1
+      },
+      "price": 150000,
+      "timeListed": 1634986877963,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 21018,
+        "amount": 1
+      },
+      "price": 400000,
+      "timeListed": 1635340374818,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 21003,
+        "amount": 2
+      },
+      "price": 500000,
+      "timeListed": 1635340406024,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 24988,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634986928358,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 30074,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1634986943364,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 14901,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635340355015,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 27004,
+        "amount": 2
+      },
+      "price": 1100000,
+      "timeListed": 1634986831166,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 23444,
+        "amount": 1
+      },
+      "price": 1600000,
+      "timeListed": 1635340419824,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "mvp",
+      "saleItem": {
+        "id": 24983,
+        "amount": 1
+      },
+      "price": 5000000,
+      "timeListed": 1635340267409,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

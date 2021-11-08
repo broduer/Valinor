@@ -1,0 +1,95 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 11283,
+        "amount": 1
+      },
+      "price": 40000,
+      "timeListed": 1635176701796,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 21047,
+        "amount": 1
+      },
+      "price": 3000000,
+      "timeListed": 1635244471717,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 24144,
+        "amount": 1
+      },
+      "price": 80000,
+      "timeListed": 1635280184198,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 22327,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1635283989734,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 1048,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1635284001735,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 11920,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635330429518,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "waja",
+      "saleItem": {
+        "id": 22555,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635336240697,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

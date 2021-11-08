@@ -1,0 +1,208 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "slave ships",
+      "lastBuyerName": "Lyria",
+      "saleItem": {
+        "id": 12821,
+        "amount": 5
+      },
+      "price": 175000,
+      "timeListed": 1634955002707,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1635073237545,
+      "buyersInfo": [
+        "Lyria"
+      ]
+    },
+    {
+      "sellerName": "slave ships",
+      "lastBuyerName": "Ill Rush You",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 275000,
+      "timeListed": 1635295867886,
+      "amountSold": 1,
+      "profit": 275000,
+      "transactionTime": 1635321851062,
+      "buyersInfo": [
+        "Ill Rush You"
+      ]
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 6722,
+        "amount": 2
+      },
+      "price": 400000,
+      "timeListed": 1634763785274,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "lastBuyerName": "Gary9",
+      "saleItem": {
+        "id": 21018,
+        "amount": 2
+      },
+      "price": 500000,
+      "timeListed": 1635106066230,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1635143541938,
+      "buyersInfo": [
+        "Gary9"
+      ]
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 27001,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1634763799680,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 16171,
+        "amount": 2
+      },
+      "price": 1000000,
+      "timeListed": 1634763374869,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 28643,
+        "amount": 1
+      },
+      "price": 1200000,
+      "timeListed": 1634763794875,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 28642,
+        "amount": 1
+      },
+      "price": 2250000,
+      "timeListed": 1634692984565,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 24491,
+        "amount": 1
+      },
+      "price": 2600000,
+      "timeListed": 1634782293050,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 27003,
+        "amount": 1
+      },
+      "price": 3500000,
+      "timeListed": 1634693005561,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 26502,
+        "amount": 2
+      },
+      "price": 4000000,
+      "timeListed": 1635213969305,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 20693,
+        "amount": 1
+      },
+      "price": 6000000,
+      "timeListed": 1635214047313,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 25887,
+        "amount": 1
+      },
+      "price": 6000000,
+      "timeListed": 1635300439428,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 24984,
+        "amount": 1
+      },
+      "price": 12000000,
+      "timeListed": 1635214013716,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "slave ships",
+      "saleItem": {
+        "id": 30177,
+        "amount": 1
+      },
+      "price": 14000000,
+      "timeListed": 1635214002916,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

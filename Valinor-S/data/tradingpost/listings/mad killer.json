@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "mad killer",
+      "lastBuyerName": "Kbd",
+      "saleItem": {
+        "id": 11889,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1633273814518,
+      "amountSold": 1,
+      "profit": 100000,
+      "transactionTime": 1634757283614,
+      "buyersInfo": [
+        "Kbd"
+      ]
+    }
+  ]
+}

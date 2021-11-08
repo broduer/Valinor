@@ -1,0 +1,88 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "life",
+      "saleItem": {
+        "id": 13271,
+        "amount": 1
+      },
+      "price": 10000,
+      "timeListed": 1634864724751,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "life",
+      "saleItem": {
+        "id": 11806,
+        "amount": 2
+      },
+      "price": 30000,
+      "timeListed": 1634648781320,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "life",
+      "lastBuyerName": "Lyria",
+      "saleItem": {
+        "id": 12821,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1634864715748,
+      "amountSold": 1,
+      "profit": 100000,
+      "transactionTime": 1634991138604,
+      "buyersInfo": [
+        "Lyria"
+      ]
+    },
+    {
+      "sellerName": "life",
+      "saleItem": {
+        "id": 21301,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634619628460,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "life",
+      "saleItem": {
+        "id": 22625,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1634844937787,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "life",
+      "lastBuyerName": "Like My Peep",
+      "saleItem": {
+        "id": 22327,
+        "amount": 1
+      },
+      "price": 510000,
+      "timeListed": 1634864658751,
+      "amountSold": 1,
+      "profit": 510000,
+      "transactionTime": 1635109618265,
+      "buyersInfo": [
+        "Like My Peep"
+      ]
+    }
+  ]
+}

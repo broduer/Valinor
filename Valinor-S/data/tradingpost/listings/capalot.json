@@ -1,0 +1,43 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "capalot",
+      "saleItem": {
+        "id": 27000,
+        "amount": 1
+      },
+      "price": 1400000,
+      "timeListed": 1635215280931,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "capalot",
+      "saleItem": {
+        "id": 16265,
+        "amount": 1
+      },
+      "price": 7000000,
+      "timeListed": 1635224563115,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "capalot",
+      "saleItem": {
+        "id": 13190,
+        "amount": 2
+      },
+      "price": 750000,
+      "timeListed": 1635290098721,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

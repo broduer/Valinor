@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "pat",
+      "lastBuyerName": "Bless",
+      "saleItem": {
+        "id": 16278,
+        "amount": 2
+      },
+      "price": 1600000,
+      "timeListed": 1634997182450,
+      "amountSold": 2,
+      "profit": 3200000,
+      "transactionTime": 1635149628384,
+      "buyersInfo": [
+        "Got Cleaned",
+        "Bless"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 13197,
+        "amount": 3
+      },
+      "price": 140000,
+      "timeListed": 1635286120390,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 12931,
+        "amount": 4
+      },
+      "price": 150000,
+      "timeListed": 1635286134190,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 12601,
+        "amount": 1
+      },
+      "price": 285000,
+      "timeListed": 1635125961793,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 16012,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1635286165399,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 30074,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1635335413277,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 22653,
+        "amount": 1
+      },
+      "price": 800000,
+      "timeListed": 1635286102396,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "billybob",
+      "saleItem": {
+        "id": 19548,
+        "amount": 5
+      },
+      "price": 130000,
+      "timeListed": 1635348884275,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

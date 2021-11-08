@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "kazmatic",
+      "lastBuyerName": "B0rn 4 Pk",
+      "saleItem": {
+        "id": 11802,
+        "amount": 1
+      },
+      "price": 115000,
+      "timeListed": 1633316240019,
+      "amountSold": 1,
+      "profit": 115000,
+      "transactionTime": 1633615672547,
+      "buyersInfo": [
+        "B0rn 4 Pk"
+      ]
+    },
+    {
+      "sellerName": "kazmatic",
+      "lastBuyerName": "VekeRS",
+      "saleItem": {
+        "id": 12904,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1633395641193,
+      "amountSold": 1,
+      "profit": 300000,
+      "transactionTime": 1633440469351,
+      "buyersInfo": [
+        "VekeRS"
+      ]
+    }
+  ]
+}

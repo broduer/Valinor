@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "v2",
+      "saleItem": {
+        "id": 22545,
+        "amount": 1
+      },
+      "price": 500000,
+      "timeListed": 1635354948662,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

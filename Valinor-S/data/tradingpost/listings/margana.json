@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "margana",
+      "saleItem": {
+        "id": 13199,
+        "amount": 1
+      },
+      "price": 145000,
+      "timeListed": 1635137685278,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

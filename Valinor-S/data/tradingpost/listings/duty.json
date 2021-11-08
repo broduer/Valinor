@@ -1,0 +1,37 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "duty",
+      "lastBuyerName": "Got Cleaned",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 40000,
+      "timeListed": 1635183808856,
+      "amountSold": 4,
+      "profit": 160000,
+      "transactionTime": 1635224806120,
+      "buyersInfo": [
+        "Coats",
+        "Got Cleaned"
+      ]
+    },
+    {
+      "sellerName": "duty",
+      "lastBuyerName": "Bless",
+      "saleItem": {
+        "id": 22002,
+        "amount": 1
+      },
+      "price": 120000,
+      "timeListed": 1635184233669,
+      "amountSold": 1,
+      "profit": 120000,
+      "transactionTime": 1635191494932,
+      "buyersInfo": [
+        "Bless"
+      ]
+    }
+  ]
+}

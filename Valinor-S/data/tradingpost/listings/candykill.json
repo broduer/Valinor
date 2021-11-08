@@ -1,0 +1,69 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "candykill",
+      "saleItem": {
+        "id": 12809,
+        "amount": 1
+      },
+      "price": 190000,
+      "timeListed": 1634484362148,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "candykill",
+      "saleItem": {
+        "id": 22625,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635063230070,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "candykill",
+      "saleItem": {
+        "id": 19550,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1634830390058,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "candykill",
+      "saleItem": {
+        "id": 28642,
+        "amount": 1
+      },
+      "price": 2000000,
+      "timeListed": 1635063042872,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "candykill",
+      "saleItem": {
+        "id": 29000,
+        "amount": 1
+      },
+      "price": 4000000,
+      "timeListed": 1635062214266,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

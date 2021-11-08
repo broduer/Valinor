@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "fook",
+      "saleItem": {
+        "id": 22324,
+        "amount": 1
+      },
+      "price": 3000000,
+      "timeListed": 1633257637749,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

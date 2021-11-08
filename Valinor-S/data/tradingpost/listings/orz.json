@@ -1,0 +1,21 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "orz",
+      "lastBuyerName": "VekeRS",
+      "saleItem": {
+        "id": 12931,
+        "amount": 2
+      },
+      "price": 90000,
+      "timeListed": 1633613026316,
+      "amountSold": 2,
+      "profit": 180000,
+      "transactionTime": 1633632898346,
+      "buyersInfo": [
+        "Gonorrhea",
+        "VekeRS"
+      ]
+    }
+  ]
+}

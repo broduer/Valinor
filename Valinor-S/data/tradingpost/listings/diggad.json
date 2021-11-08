@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "diggad",
+      "saleItem": {
+        "id": 11808,
+        "amount": 1
+      },
+      "price": 25000,
+      "timeListed": 1634672862198,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "436x",
+      "lastBuyerName": "Awawawawawww",
+      "saleItem": {
+        "id": 11828,
+        "amount": 1
+      },
+      "price": 60000,
+      "timeListed": 1633632884542,
+      "amountSold": 1,
+      "profit": 60000,
+      "transactionTime": 1633633633358,
+      "buyersInfo": [
+        "Awawawawawww"
+      ]
+    }
+  ]
+}

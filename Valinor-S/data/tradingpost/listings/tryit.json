@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "tryit",
+      "lastBuyerName": "Primatol",
+      "saleItem": {
+        "id": 22002,
+        "amount": 1
+      },
+      "price": 180000,
+      "timeListed": 1634494910837,
+      "amountSold": 1,
+      "profit": 180000,
+      "transactionTime": 1634650655725,
+      "buyersInfo": [
+        "Primatol"
+      ]
+    }
+  ]
+}

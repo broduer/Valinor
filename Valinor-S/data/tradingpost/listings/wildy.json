@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "wildy",
+      "lastBuyerName": "Dds Ownz",
+      "saleItem": {
+        "id": 619,
+        "amount": 4
+      },
+      "price": 40000,
+      "timeListed": 1635271545138,
+      "amountSold": 4,
+      "profit": 160000,
+      "transactionTime": 1635278320521,
+      "buyersInfo": [
+        "Dds Ownz"
+      ]
+    }
+  ]
+}

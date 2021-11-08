@@ -1,0 +1,85 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "free da guys",
+      "saleItem": {
+        "id": 19544,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635106147838,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "free da guys",
+      "saleItem": {
+        "id": 22644,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1635106165830,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "free da guys",
+      "saleItem": {
+        "id": 12399,
+        "amount": 1
+      },
+      "price": 3000000,
+      "timeListed": 1635116072511,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "free da guys",
+      "lastBuyerName": "Classified",
+      "saleItem": {
+        "id": 12102,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1635125150586,
+      "amountSold": 1,
+      "profit": 700000,
+      "transactionTime": 1635217617337,
+      "buyersInfo": [
+        "Classified"
+      ]
+    },
+    {
+      "sellerName": "free da guys",
+      "saleItem": {
+        "id": 13237,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635125182376,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "free da guys",
+      "saleItem": {
+        "id": 22324,
+        "amount": 1
+      },
+      "price": 900000,
+      "timeListed": 1635205273432,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

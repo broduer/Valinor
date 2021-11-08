@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "damakos",
+      "lastBuyerName": "Gh0stt",
+      "saleItem": {
+        "id": 22628,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635174343787,
+      "amountSold": 1,
+      "profit": 200000,
+      "transactionTime": 1635203214826,
+      "buyersInfo": [
+        "Gh0stt"
+      ]
+    }
+  ]
+}

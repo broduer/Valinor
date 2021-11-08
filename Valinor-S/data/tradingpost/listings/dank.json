@@ -1,0 +1,30 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "dank",
+      "saleItem": {
+        "id": 23685,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1633260650973,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "dank",
+      "saleItem": {
+        "id": 20849,
+        "amount": 2
+      },
+      "price": 900000,
+      "timeListed": 1633260726567,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

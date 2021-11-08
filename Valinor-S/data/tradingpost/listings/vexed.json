@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "vexed",
+      "lastBuyerName": "BILL",
+      "saleItem": {
+        "id": 6914,
+        "amount": 1
+      },
+      "price": 12500,
+      "timeListed": 1634672676815,
+      "amountSold": 1,
+      "profit": 12500,
+      "transactionTime": 1634981448512,
+      "buyersInfo": [
+        "BILL"
+      ]
+    }
+  ]
+}

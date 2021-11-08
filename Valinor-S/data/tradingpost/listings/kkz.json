@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "kkz",
+      "saleItem": {
+        "id": 21015,
+        "amount": 1
+      },
+      "price": 190000,
+      "timeListed": 1635102272993,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

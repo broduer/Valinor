@@ -1,0 +1,43 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "ling xiaoyu",
+      "saleItem": {
+        "id": 22628,
+        "amount": 1
+      },
+      "price": 450000,
+      "timeListed": 1634769798529,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "ling xiaoyu",
+      "saleItem": {
+        "id": 22631,
+        "amount": 1
+      },
+      "price": 299000,
+      "timeListed": 1634771968149,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "ling xiaoyu",
+      "saleItem": {
+        "id": 22653,
+        "amount": 1
+      },
+      "price": 700000,
+      "timeListed": 1634824627617,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

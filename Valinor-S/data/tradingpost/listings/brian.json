@@ -1,0 +1,104 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "brian",
+      "saleItem": {
+        "id": 22545,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635027546584,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "brian",
+      "lastBuyerName": "Vrex",
+      "saleItem": {
+        "id": 12899,
+        "amount": 2
+      },
+      "price": 250000,
+      "timeListed": 1635027588585,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1635086459866,
+      "buyersInfo": [
+        "Vrex"
+      ]
+    },
+    {
+      "sellerName": "brian",
+      "lastBuyerName": "Bigbog",
+      "saleItem": {
+        "id": 22550,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1635027604181,
+      "amountSold": 1,
+      "profit": 350000,
+      "transactionTime": 1635190542110,
+      "buyersInfo": [
+        "Bigbog"
+      ]
+    },
+    {
+      "sellerName": "brian",
+      "lastBuyerName": "K O O P A",
+      "saleItem": {
+        "id": 10586,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635027659382,
+      "amountSold": 1,
+      "profit": 1000000,
+      "transactionTime": 1635188186488,
+      "buyersInfo": [
+        "K O O P A"
+      ]
+    },
+    {
+      "sellerName": "brian",
+      "saleItem": {
+        "id": 24144,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635027702577,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "brian",
+      "saleItem": {
+        "id": 21018,
+        "amount": 1
+      },
+      "price": 1000000,
+      "timeListed": 1635064707883,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "brian",
+      "saleItem": {
+        "id": 15331,
+        "amount": 1
+      },
+      "price": 4500000,
+      "timeListed": 1635064719272,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

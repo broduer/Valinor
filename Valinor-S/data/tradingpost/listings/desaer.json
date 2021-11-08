@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "desaer",
+      "lastBuyerName": "Binu 2 Da 22",
+      "saleItem": {
+        "id": 11802,
+        "amount": 1
+      },
+      "price": 130000,
+      "timeListed": 1633720404292,
+      "amountSold": 1,
+      "profit": 130000,
+      "transactionTime": 1633723229717,
+      "buyersInfo": [
+        "Binu 2 Da 22"
+      ]
+    },
+    {
+      "sellerName": "desaer",
+      "lastBuyerName": "Null",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1633720409091,
+      "amountSold": 1,
+      "profit": 100000,
+      "transactionTime": 1633913255012,
+      "buyersInfo": [
+        "Null"
+      ]
+    }
+  ]
+}

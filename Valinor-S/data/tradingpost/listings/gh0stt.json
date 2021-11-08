@@ -1,0 +1,35 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "gh0stt",
+      "lastBuyerName": "Hyzt",
+      "saleItem": {
+        "id": 30235,
+        "amount": 5729
+      },
+      "price": 80,
+      "timeListed": 1635351428358,
+      "amountSold": 5729,
+      "profit": 458320,
+      "transactionTime": 1635362439279,
+      "buyersInfo": [
+        "Danny Jones",
+        "Danny Jones",
+        "Hyzt"
+      ]
+    },
+    {
+      "sellerName": "gh0stt",
+      "saleItem": {
+        "id": 21295,
+        "amount": 1
+      },
+      "price": 3400000,
+      "timeListed": 1635354168627,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

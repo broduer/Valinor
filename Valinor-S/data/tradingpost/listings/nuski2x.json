@@ -1,0 +1,82 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 22557,
+        "amount": 1
+      },
+      "price": 350000,
+      "timeListed": 1634741208273,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 12899,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635128915007,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 27005,
+        "amount": 1
+      },
+      "price": 2500000,
+      "timeListed": 1635213791102,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 30342,
+        "amount": 1
+      },
+      "price": 3000000,
+      "timeListed": 1635296032298,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 13238,
+        "amount": 2
+      },
+      "price": 120000,
+      "timeListed": 1635338013741,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "nuski2x",
+      "saleItem": {
+        "id": 19548,
+        "amount": 5
+      },
+      "price": 140000,
+      "timeListed": 1635338022147,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

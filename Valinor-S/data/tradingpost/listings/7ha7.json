@@ -1,0 +1,38 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "7ha7",
+      "lastBuyerName": "God Of Rng",
+      "saleItem": {
+        "id": 11826,
+        "amount": 1
+      },
+      "price": 49999,
+      "timeListed": 1633204468178,
+      "amountSold": 1,
+      "profit": 49999,
+      "transactionTime": 1633691827230,
+      "buyersInfo": [
+        "God Of Rng"
+      ]
+    },
+    {
+      "sellerName": "7ha7",
+      "lastBuyerName": "THOUXAN",
+      "saleItem": {
+        "id": 12877,
+        "amount": 3
+      },
+      "price": 49999,
+      "timeListed": 1633206795608,
+      "amountSold": 3,
+      "profit": 149997,
+      "transactionTime": 1633817935143,
+      "buyersInfo": [
+        "T0pdawg",
+        "T0pdawg",
+        "THOUXAN"
+      ]
+    }
+  ]
+}

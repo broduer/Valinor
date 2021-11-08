@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "rasmus koch",
+      "saleItem": {
+        "id": 12807,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1633225488802,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

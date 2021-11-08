@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "depression",
+      "lastBuyerName": "SLAVE SHIPS",
+      "saleItem": {
+        "id": 30235,
+        "amount": 11612
+      },
+      "price": 105,
+      "timeListed": 1634786355087,
+      "amountSold": 11612,
+      "profit": 1219260,
+      "transactionTime": 1634787239486,
+      "buyersInfo": [
+        "SLAVE SHIPS"
+      ]
+    }
+  ]
+}

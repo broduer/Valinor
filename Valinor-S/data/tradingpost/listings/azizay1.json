@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "azizay1",
+      "lastBuyerName": "Saint Vains",
+      "saleItem": {
+        "id": 21633,
+        "amount": 1
+      },
+      "price": 85000,
+      "timeListed": 1633799643961,
+      "amountSold": 1,
+      "profit": 85000,
+      "transactionTime": 1633883393376,
+      "buyersInfo": [
+        "Saint Vains"
+      ]
+    }
+  ]
+}

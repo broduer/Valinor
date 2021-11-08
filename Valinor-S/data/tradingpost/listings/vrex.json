@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "vrex",
+      "saleItem": {
+        "id": 13576,
+        "amount": 1
+      },
+      "price": 100000,
+      "timeListed": 1635059282031,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

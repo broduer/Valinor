@@ -1,0 +1,17 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "completion",
+      "saleItem": {
+        "id": 30235,
+        "amount": 1365
+      },
+      "price": 100,
+      "timeListed": 1635265926576,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

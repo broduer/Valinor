@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "stoned",
+      "lastBuyerName": "Virgin",
+      "saleItem": {
+        "id": 30185,
+        "amount": 1
+      },
+      "price": 300000,
+      "timeListed": 1635076467370,
+      "amountSold": 1,
+      "profit": 300000,
+      "transactionTime": 1635081371812,
+      "buyersInfo": [
+        "Virgin"
+      ]
+    }
+  ]
+}

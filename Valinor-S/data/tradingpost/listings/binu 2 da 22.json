@@ -1,0 +1,85 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "binu 2 da 22",
+      "lastBuyerName": "Randomzerker",
+      "saleItem": {
+        "id": 19481,
+        "amount": 3
+      },
+      "price": 90000,
+      "timeListed": 1634825979431,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1634850781240,
+      "buyersInfo": [
+        "Randomzerker"
+      ]
+    },
+    {
+      "sellerName": "binu 2 da 22",
+      "saleItem": {
+        "id": 23995,
+        "amount": 1
+      },
+      "price": 750000,
+      "timeListed": 1634653654553,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu 2 da 22",
+      "saleItem": {
+        "id": 11828,
+        "amount": 1
+      },
+      "price": 65000000,
+      "timeListed": 1634560204571,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu 2 da 22",
+      "saleItem": {
+        "id": 22647,
+        "amount": 1
+      },
+      "price": 200000000,
+      "timeListed": 1634082198662,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu 2 da 22",
+      "saleItem": {
+        "id": 22557,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1635119950338,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "binu 2 da 22",
+      "saleItem": {
+        "id": 13652,
+        "amount": 1
+      },
+      "price": 150000,
+      "timeListed": 1635119965948,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "rambos",
+      "lastBuyerName": "Priest",
+      "saleItem": {
+        "id": 21295,
+        "amount": 1
+      },
+      "price": 1200000,
+      "timeListed": 1634056480419,
+      "amountSold": 1,
+      "profit": 1200000,
+      "transactionTime": 1634165019892,
+      "buyersInfo": [
+        "Priest"
+      ]
+    },
+    {
+      "sellerName": "rambos",
+      "lastBuyerName": "Maularious",
+      "saleItem": {
+        "id": 19553,
+        "amount": 1
+      },
+      "price": 200000,
+      "timeListed": 1634056488232,
+      "amountSold": 1,
+      "profit": 200000,
+      "transactionTime": 1634068256936,
+      "buyersInfo": [
+        "Maularious"
+      ]
+    }
+  ]
+}

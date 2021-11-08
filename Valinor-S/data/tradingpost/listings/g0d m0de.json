@@ -1,0 +1,20 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "g0d m0de",
+      "lastBuyerName": "Ling Xiaoyu",
+      "saleItem": {
+        "id": 11283,
+        "amount": 2
+      },
+      "price": 75000,
+      "timeListed": 1634475753280,
+      "amountSold": 1,
+      "profit": 0,
+      "transactionTime": 1634661304021,
+      "buyersInfo": [
+        "Ling Xiaoyu"
+      ]
+    }
+  ]
+}

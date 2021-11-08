@@ -1,0 +1,46 @@
+{
+  "listedItems": [
+    {
+      "sellerName": "guan yu",
+      "saleItem": {
+        "id": 30342,
+        "amount": 1
+      },
+      "price": 3300000,
+      "timeListed": 1634858908302,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "guan yu",
+      "saleItem": {
+        "id": 19547,
+        "amount": 1
+      },
+      "price": 250000,
+      "timeListed": 1634863707748,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
+    },
+    {
+      "sellerName": "guan yu",
+      "lastBuyerName": "K O O P A",
+      "saleItem": {
+        "id": 16278,
+        "amount": 1
+      },
+      "price": 1200000,
+      "timeListed": 1634963867774,
+      "amountSold": 1,
+      "profit": 1200000,
+      "transactionTime": 1634964367576,
+      "buyersInfo": [
+        "K O O P A"
+      ]
+    }
+  ]
+}
