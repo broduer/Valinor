@@ -1,5 +1,5 @@
 {
-  "gameVersion": "1.1.4",
+  "gameVersion": "1.0.0",
   "definitionsDirectory": "./data/def/",
   "clippingDirectory": "./data/clipping/",
   "debugMode": true,

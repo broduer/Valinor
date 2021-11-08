@@ -1,0 +1,7 @@
+[08 Nov 2021, 7:30:40 pm] [pool-8-thread-2] First Login response code for Patrick is 30
+[08 Nov 2021, 7:31:43 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[08 Nov 2021, 7:31:43 pm] [Valinor GameThread] Login successful for player Patrick.
+[08 Nov 2021, 7:33:28 pm] [pool-8-thread-2] First Login response code for Patrick is 2
+[08 Nov 2021, 7:33:28 pm] [Valinor GameThread] Login successful for player Patrick.
+[08 Nov 2021, 7:35:42 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[08 Nov 2021, 7:35:42 pm] [Valinor GameThread] Login successful for player Patrick.

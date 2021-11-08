@@ -969,11 +969,6 @@ public class Client extends GameApplet {
                 inputString = "";
                 this.resetInputFieldFocus();
             }
-            if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                SpawnTabAllItems.searchingSpawnTab = false;
-            } else {
-                SpawnTab.searchingSpawnTab = false;
-            }
         }
 
         if (messagePromptRaised) {
@@ -5822,32 +5817,6 @@ public class Client extends GameApplet {
                 // Handle radio buttons
                 switch (second_menu_action) {
 
-                    case 72004:
-                        if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                            SpawnTabAllItems.searchingSpawnTab = true;
-                        } else {
-                            SpawnTab.searchingSpawnTab = true;
-                        }
-                        break;
-                    case 72007:
-                        if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                            SpawnTabAllItems.spawnType = SpawnTabType.INVENTORY;
-                            SpawnTabAllItems.searchingSpawnTab = true;
-                        } else {
-                            SpawnTab.spawnType = SpawnTabType.INVENTORY;
-                            SpawnTab.searchingSpawnTab = true;
-                        }
-                        break;
-                    case 72011:
-                        if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                            SpawnTabAllItems.spawnType = SpawnTabType.BANK;
-                            SpawnTabAllItems.searchingSpawnTab = true;
-                        } else {
-                            SpawnTab.spawnType = SpawnTabType.BANK;
-                            SpawnTab.searchingSpawnTab = true;
-                        }
-                        break;
-
                     case 12697: // Drag Setting.
                         enter_amount_title = "Please enter your desired Drag Setting <col=A10081>(5 is OSRS):";
                         enter_amount_title2 = "This setting goes hand in hand with switching, choose wisely and test!";
@@ -6013,29 +5982,6 @@ public class Client extends GameApplet {
         // Pressed button, this used to be 647 but is now 648 for presets text and 649
         // for spawning text because we add choice to the action in buildInterfaceMenu.
         if (action == 647 || action == 648) {
-            // Spawn tab?
-            if (second_menu_action >= 72031 && second_menu_action <= 73475) {
-                int index = second_menu_action - 72031;
-                if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                    int item = SpawnTabAllItems.getResultsArray()[index];
-                    if (item > 0) {
-                        packetSender.sendSpawnTabSelection(item, first_menu_action == 1, SpawnTabAllItems.spawnType == SpawnTabType.BANK);
-                    }
-                    if (first_menu_action == 0) {
-                        SpawnTabAllItems.searchingSpawnTab = true;
-                    }
-                } else {
-                    int item = SpawnTab.getResultsArray()[index];
-                    if (item > 0) {
-                        packetSender.sendSpawnTabSelection(item, first_menu_action == 1, SpawnTab.spawnType == SpawnTabType.BANK);
-                    }
-                    if (first_menu_action == 0) {
-                        SpawnTab.searchingSpawnTab = true;
-                    }
-                }
-                return;
-            }
-
             // Key bindings?
             if (widget_overlay_id == 53000) {
                 for (int i = 0; i < 14; i++) {
@@ -7334,30 +7280,6 @@ public class Client extends GameApplet {
 
             if (key == -1)
                 break;
-
-            if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                if (SpawnTabAllItems.searchingSpawnTab && sidebarId == 13 && inputDialogState != 1) {
-                    if (key == 8 && SpawnTabAllItems.searchSyntax.length() > 0) {
-                        SpawnTabAllItems.searchSyntax = SpawnTabAllItems.searchSyntax.substring(0, SpawnTabAllItems.searchSyntax.length() - 1);
-                    }
-                    if (key >= 32 && key <= 122 && SpawnTabAllItems.searchSyntax.length() < 15) {
-                        SpawnTabAllItems.searchSyntax += (char) key;
-                    }
-                    SpawnTabAllItems.fetchSearchResults = true;
-                    return;
-                }
-            } else {
-                if (SpawnTab.searchingSpawnTab && sidebarId == 13 && inputDialogState != 1) {
-                    if (key == 8 && SpawnTab.searchSyntax.length() > 0) {
-                        SpawnTab.searchSyntax = SpawnTab.searchSyntax.substring(0, SpawnTab.searchSyntax.length() - 1);
-                    }
-                    if (key >= 32 && key <= 122 && SpawnTab.searchSyntax.length() < 15) {
-                        SpawnTab.searchSyntax += (char) key;
-                    }
-                    SpawnTab.fetchSearchResults = true;
-                    return;
-                }
-            }
 
             /**
              * @author Suic Continue a dialogue with space bar (spacebar)
@@ -8863,21 +8785,6 @@ public class Client extends GameApplet {
                         && tabInterfaceIDs[i] != -1) {
                         sidebarId = i;
                         update_tab_producer = true;
-                        if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                            // Spawn tab
-                            if (sidebarId == 2) {
-                                SpawnTabAllItems.searchingSpawnTab = true;
-                            } else {
-                                SpawnTabAllItems.searchingSpawnTab = false;
-                            }
-                        } else {
-                            // Spawn tab
-                            if (sidebarId == 2) {
-                                SpawnTab.searchingSpawnTab = true;
-                            } else {
-                                SpawnTab.searchingSpawnTab = false;
-                            }
-                        }
                         break;
                     }
                 }
@@ -11551,14 +11458,6 @@ public class Client extends GameApplet {
             widget.height = 503;
             x = 455;
             y = 285;
-        }
-
-        if (widget.id == 72000) {
-            if (ClientConstants.SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED) {
-                SpawnTabAllItems.processSpawnTab();
-            } else {
-                SpawnTab.processSpawnTab();
-            }
         }
 
         int clipLeft = Rasterizer2D.clip_left;

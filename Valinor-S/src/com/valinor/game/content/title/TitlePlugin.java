@@ -49,7 +49,7 @@ public class TitlePlugin extends PacketInteraction {
     }
 
     public void onLogin(Player player) {
-        displayTitles(player, PKING);
+        displayTitles(player, PVMING);
         displayColours(player);
 
         player.getPacketSender().sendString(61396, getPreview(player));

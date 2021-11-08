@@ -29,12 +29,6 @@ public final class ClientConstants {
     public static final boolean DEBUG_INTERFACES = false;
 
     /**
-     * If we want to pre-populate the spawn tab with all item names, set this to true.
-     * We probably want this set to false.
-     */
-    public static final boolean SPAWN_TAB_DISPLAY_ALL_ITEMS_PRELOADED = false;
-
-    /**
      * Used for change world button on login screen
      */
     public static boolean CAN_SWITCH_WORLD = false;

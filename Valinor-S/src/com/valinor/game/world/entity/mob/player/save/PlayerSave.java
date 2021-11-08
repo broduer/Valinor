@@ -332,8 +332,6 @@ public class PlayerSave {
                 player.putAttrib(PRESERVE, details.preserve);
                 player.putAttrib(RIGOUR, details.rigour);
                 player.putAttrib(AUGURY, details.augury);
-                player.putAttrib(AttributeKey.BOT_KILLS, details.botKills);
-                player.putAttrib(AttributeKey.BOT_DEATHS, details.botDeaths);
                 player.putAttrib(PLAYER_KILLS, details.kills);
                 player.putAttrib(PLAYER_DEATHS, details.deaths);
                 if (details.recentKills != null) {
@@ -873,8 +871,6 @@ public class PlayerSave {
         private final boolean augury;
 
         //Pvp
-        private final int botKills;
-        private final int botDeaths;
         private final int kills;
         private final int deaths;
         private final List<String> recentKills;
@@ -1416,8 +1412,6 @@ public class PlayerSave {
             preserve = Player.getAttribBooleanOr(player, PRESERVE, false);
             rigour = Player.getAttribBooleanOr(player, RIGOUR, false);
             augury = Player.getAttribBooleanOr(player, AUGURY, false);
-            botKills = Player.getAttribIntOr(player, AttributeKey.BOT_KILLS, 0);
-            botDeaths = Player.getAttribIntOr(player, AttributeKey.BOT_DEATHS, 0);
             kills = Player.getAttribIntOr(player, PLAYER_KILLS, 0);
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
             recentKills = player.getRecentKills();

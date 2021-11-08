@@ -105,3 +105,200 @@
 [08 Nov 2021, 4:00:07 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (Hybrid) scheduled for 08 Nov 2021 8:00:00 pm
 [08 Nov 2021, 4:31:01 pm] [Valinor GameThread] [WildernessBossEvent] [INFO] The wilderness event boss has been despawned
 [08 Nov 2021, 5:31:01 pm] [Valinor GameThread] [WildernessBossEvent] [INFO] The wilderness event boss has been despawned
+[08 Nov 2021, 7:13:52 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Server properties file (./data/LocalProperties.json) was not found, loaded with default settings.
+[08 Nov 2021, 7:13:52 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Loaded server properties file (./data/properties.json) successfully.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded filestore @ (./data/filestore) successfully.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loading definition repository...
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 25154 item definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 10507 npc definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 40430 object definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 11714 varbit definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3496 enum definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1837 spotanim definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 658 area definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2730 struct definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 416 varclient definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 0 varclientstring definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2852 varplayer definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3804 runscript definitions.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2822 sprites.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1 textures.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2577 skeletons.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1939 skins.
+[08 Nov 2021, 7:13:53 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 671 interfaces.
+[08 Nov 2021, 7:13:54 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 35154 item examines.
+[08 Nov 2021, 7:13:54 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 40430 object examines.
+[08 Nov 2021, 7:13:54 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 20507 npc examines.
+[08 Nov 2021, 7:13:54 pm] [ValinorInitializationThread] [GameServer] [INFO] Initializing the Bootstrap...
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [Slayer] [INFO] Loaded slayer masters for ./data/def/slayermasters.json. It took 7ms.
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/shops.json. It took 44ms.
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/object_spawns.json. It took 216ms.
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/presets.json. It took 6ms.
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/door_definitions.json. It took 23ms.
+[08 Nov 2021, 7:13:57 pm] [ValinorLoaderThread] [TournamentManager] [INFO] Config path: C:\Users\patri\Documents\Valinor\Valinor-S\data\def\tournaments.conf
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3589 equipment information definitions.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 423 equipment render pairs.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3155 equipment bonuses.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 760 weapon types.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 746 weapon speeds.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 1194 item requirements.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [World] [INFO] Loaded 467 NPC combat info sheets.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [Halloween] [INFO] Loaded halloween npcs.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 184ms.
+[08 Nov 2021, 7:13:58 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 74ms.
+[08 Nov 2021, 7:13:59 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 250ms.
+[08 Nov 2021, 7:13:59 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 1070ms.
+[08 Nov 2021, 7:14:00 pm] [ValinorLoaderThread] [World] [INFO] Loaded 7438 NPC spawns.
+[08 Nov 2021, 7:14:00 pm] [ValinorLoaderThread] [World] [INFO] Loaded 188 item spawns.
+[08 Nov 2021, 7:14:00 pm] [ValinorLoaderThread] [ItemWeight] [INFO] Loaded definitions for ./data/list/item_weight.txt. It took 95ms.
+[08 Nov 2021, 7:14:06 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded Valinor in PVP mode on port 43597 version v1.1.4.
+[08 Nov 2021, 7:14:06 pm] [ValinorInitializationThread] [GameServer] [INFO] The Bootstrap has been bound, Valinor is now online (it took 13394ms).
+[08 Nov 2021, 7:14:10 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (Hybrid) scheduled for 08 Nov 2021 8:00:00 pm
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Server properties file (./data/LocalProperties.json) was not found, loaded with default settings.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Loaded server properties file (./data/properties.json) successfully.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded filestore @ (./data/filestore) successfully.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loading definition repository...
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 25154 item definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 10507 npc definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 40430 object definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 11714 varbit definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3496 enum definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1837 spotanim definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 658 area definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2730 struct definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 416 varclient definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 0 varclientstring definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2852 varplayer definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3804 runscript definitions.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2822 sprites.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1 textures.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2577 skeletons.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1939 skins.
+[08 Nov 2021, 7:30:07 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 671 interfaces.
+[08 Nov 2021, 7:30:08 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 35154 item examines.
+[08 Nov 2021, 7:30:08 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 40430 object examines.
+[08 Nov 2021, 7:30:08 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 20507 npc examines.
+[08 Nov 2021, 7:30:08 pm] [ValinorInitializationThread] [GameServer] [INFO] Initializing the Bootstrap...
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [Slayer] [INFO] Loaded slayer masters for ./data/def/slayermasters.json. It took 14ms.
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/shops.json. It took 110ms.
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/object_spawns.json. It took 216ms.
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/presets.json. It took 5ms.
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/door_definitions.json. It took 23ms.
+[08 Nov 2021, 7:30:10 pm] [ValinorLoaderThread] [TournamentManager] [INFO] Config path: C:\Users\patri\Documents\Valinor\Valinor-S\data\def\tournaments.conf
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3589 equipment information definitions.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 423 equipment render pairs.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3155 equipment bonuses.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 760 weapon types.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 746 weapon speeds.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 1194 item requirements.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [World] [INFO] Loaded 467 NPC combat info sheets.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [Halloween] [INFO] Loaded halloween npcs.
+[08 Nov 2021, 7:30:11 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 375ms.
+[08 Nov 2021, 7:30:12 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 76ms.
+[08 Nov 2021, 7:30:12 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 100ms.
+[08 Nov 2021, 7:30:12 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 1104ms.
+[08 Nov 2021, 7:30:12 pm] [ValinorLoaderThread] [World] [INFO] Loaded 7438 NPC spawns.
+[08 Nov 2021, 7:30:12 pm] [ValinorLoaderThread] [World] [INFO] Loaded 188 item spawns.
+[08 Nov 2021, 7:30:13 pm] [ValinorLoaderThread] [ItemWeight] [INFO] Loaded definitions for ./data/list/item_weight.txt. It took 74ms.
+[08 Nov 2021, 7:30:15 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded Valinor in PVP mode on port 43597 version v1.1.4.
+[08 Nov 2021, 7:30:15 pm] [ValinorInitializationThread] [GameServer] [INFO] The Bootstrap has been bound, Valinor is now online (it took 7759ms).
+[08 Nov 2021, 7:30:17 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (NH) scheduled for 08 Nov 2021 8:00:00 pm
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Server properties file (./data/LocalProperties.json) was not found, loaded with default settings.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Loaded server properties file (./data/properties.json) successfully.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded filestore @ (./data/filestore) successfully.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loading definition repository...
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 25154 item definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 10507 npc definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 40430 object definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 11714 varbit definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3496 enum definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1837 spotanim definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 658 area definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2730 struct definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 416 varclient definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 0 varclientstring definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2852 varplayer definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3804 runscript definitions.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2822 sprites.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1 textures.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2577 skeletons.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1939 skins.
+[08 Nov 2021, 7:31:05 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 671 interfaces.
+[08 Nov 2021, 7:31:06 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 35154 item examines.
+[08 Nov 2021, 7:31:06 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 40430 object examines.
+[08 Nov 2021, 7:31:06 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 20507 npc examines.
+[08 Nov 2021, 7:31:07 pm] [ValinorInitializationThread] [GameServer] [INFO] Initializing the Bootstrap...
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [Slayer] [INFO] Loaded slayer masters for ./data/def/slayermasters.json. It took 9ms.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/shops.json. It took 54ms.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/object_spawns.json. It took 167ms.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/presets.json. It took 4ms.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/door_definitions.json. It took 23ms.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [TournamentManager] [INFO] Config path: C:\Users\patri\Documents\Valinor\Valinor-S\data\def\tournaments.conf
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3589 equipment information definitions.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 423 equipment render pairs.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3155 equipment bonuses.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 760 weapon types.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 746 weapon speeds.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 1194 item requirements.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [World] [INFO] Loaded 467 NPC combat info sheets.
+[08 Nov 2021, 7:31:09 pm] [ValinorLoaderThread] [Halloween] [INFO] Loaded halloween npcs.
+[08 Nov 2021, 7:31:10 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 178ms.
+[08 Nov 2021, 7:31:10 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 72ms.
+[08 Nov 2021, 7:31:10 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 89ms.
+[08 Nov 2021, 7:31:10 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 713ms.
+[08 Nov 2021, 7:31:11 pm] [ValinorLoaderThread] [World] [INFO] Loaded 7438 NPC spawns.
+[08 Nov 2021, 7:31:11 pm] [ValinorLoaderThread] [World] [INFO] Loaded 188 item spawns.
+[08 Nov 2021, 7:31:11 pm] [ValinorLoaderThread] [ItemWeight] [INFO] Loaded definitions for ./data/list/item_weight.txt. It took 20ms.
+[08 Nov 2021, 7:31:13 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded Valinor in PVP mode on port 43597 version v1.0.0.
+[08 Nov 2021, 7:31:13 pm] [ValinorInitializationThread] [GameServer] [INFO] The Bootstrap has been bound, Valinor is now online (it took 7272ms).
+[08 Nov 2021, 7:31:14 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (Dharok) scheduled for 08 Nov 2021 8:00:00 pm
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Server properties file (./data/LocalProperties.json) was not found, loaded with default settings.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [ServerProperties] [INFO] Loaded server properties file (./data/properties.json) successfully.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded filestore @ (./data/filestore) successfully.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loading definition repository...
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 25154 item definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 10507 npc definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 40430 object definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 11714 varbit definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3496 enum definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1837 spotanim definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 658 area definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2730 struct definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 416 varclient definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 0 varclientstring definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2852 varplayer definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 3804 runscript definitions.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2822 sprites.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1 textures.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 2577 skeletons.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 1939 skins.
+[08 Nov 2021, 7:34:59 pm] [ValinorInitializationThread] [DefinitionRepository] [INFO] Loaded 671 interfaces.
+[08 Nov 2021, 7:35:00 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 35154 item examines.
+[08 Nov 2021, 7:35:00 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 40430 object examines.
+[08 Nov 2021, 7:35:00 pm] [ValinorInitializationThread] [ExamineRepository] [INFO] Loaded 20507 npc examines.
+[08 Nov 2021, 7:35:00 pm] [ValinorInitializationThread] [GameServer] [INFO] Initializing the Bootstrap...
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [Slayer] [INFO] Loaded slayer masters for ./data/def/slayermasters.json. It took 4ms.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/shops.json. It took 43ms.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/object_spawns.json. It took 135ms.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/presets.json. It took 3ms.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [DefinitionLoader] [INFO] Loaded definitions for ./data/def/door_definitions.json. It took 34ms.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [TournamentManager] [INFO] Config path: C:\Users\patri\Documents\Valinor\Valinor-S\data\def\tournaments.conf
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3589 equipment information definitions.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 423 equipment render pairs.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 3155 equipment bonuses.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 760 weapon types.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 746 weapon speeds.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [EquipmentInfo] [INFO] Loaded 1194 item requirements.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [World] [INFO] Loaded 467 NPC combat info sheets.
+[08 Nov 2021, 7:35:02 pm] [ValinorLoaderThread] [Halloween] [INFO] Loaded halloween npcs.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 163ms.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 47ms.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 125ms.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO]   Loaded definitions for ./data/map/npcs. It took 695ms.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO] Loaded 7438 NPC spawns.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [World] [INFO] Loaded 188 item spawns.
+[08 Nov 2021, 7:35:03 pm] [ValinorLoaderThread] [ItemWeight] [INFO] Loaded definitions for ./data/list/item_weight.txt. It took 38ms.
+[08 Nov 2021, 7:35:05 pm] [ValinorInitializationThread] [GameServer] [INFO] Loaded Valinor in PVP mode on port 43597 version v1.0.0.
+[08 Nov 2021, 7:35:05 pm] [ValinorInitializationThread] [GameServer] [INFO] The Bootstrap has been bound, Valinor is now online (it took 5880ms).
+[08 Nov 2021, 7:35:07 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (NH) scheduled for 08 Nov 2021 8:00:00 pm
+[08 Nov 2021, 8:00:04 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (Hybrid) scheduled for 09 Nov 2021 12:00:00 am

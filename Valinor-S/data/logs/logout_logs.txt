@@ -1,0 +1,2 @@
+[08 Nov 2021, 7:33:19 pm] [Valinor GameThread] [Logout] Deregistering player - Patrick
+[08 Nov 2021, 7:34:54 pm] [Thread-1] [Logout] Deregistering player - Patrick
