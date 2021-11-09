@@ -10702,7 +10702,7 @@ public class Client extends GameApplet {
     }
 
     void startUp() {
-        System.out.println("Loading " + ClientConstants.CLIENT_NAME + " " + ((ClientConstants.PVP_MODE) ? "in PVP mode " : "in economy mode ") + "on port " + ClientConstants.SERVER_PORT + ".");
+        System.out.println("Loading " + ClientConstants.CLIENT_NAME + " on port " + ClientConstants.SERVER_PORT + ".");
 
         try {
             long clientLoadStart = System.currentTimeMillis();
@@ -13372,8 +13372,6 @@ public class Client extends GameApplet {
                     adv_font_small.draw("Coords: " + playerX + ", " + playerY, x, y + 15, 0xffff00, 40);
                     adv_font_small.draw("Resolution: " + window_width + "x" + window_height, x, y + 30, 0xffff00, 40);
                     adv_font_small.draw("Build: " + ClientConstants.CLIENT_VERSION, x, y + 45, 0xffff00, 40);
-                    String world = ClientConstants.PVP_MODE ? "PvP" : "Eco";
-                    adv_font_small.draw("World: " + world, x, y + 60, 0xffff00, 40);
                     adv_font_small.draw("Mouse X: " + cursor_x, x, y + 75, 0xffff00, 40);
                     adv_font_small.draw("Mouse Y: " + cursor_y, x, y + 90, 0xffff00, 40);
                     adv_font_small.draw("Frame Width: " + window_width + ", Frame Height: " + window_height, x, y + 105, 0xffff00, 40);

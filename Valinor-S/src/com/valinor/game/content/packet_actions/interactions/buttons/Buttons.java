@@ -168,10 +168,10 @@ public class Buttons {
                 break;
 
             case 15151:
-                if(WildernessArea.inWilderness(player.tile())) {
+                if (WildernessArea.inWilderness(player.tile())) {
                     return;
                 }
-                player.getPacketSender().sendInterfaceDisplayState(15150,true);
+                player.getPacketSender().sendInterfaceDisplayState(15150, true);
                 player.getBank().open();
                 break;
 
@@ -181,7 +181,7 @@ public class Buttons {
                     return;
                 }
                 Tile tile = GameServer.properties().defaultTile;
-                if (Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
+                if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     Teleports.basicTeleport(player, tile);
                     player.message("You have been teleported to home.");
                 }
@@ -271,68 +271,57 @@ public class Buttons {
                 break;
 
             case AUTOCAST_BUTTON_1:
-                player.putAttrib(AttributeKey.DEFENSIVE_AUTOCAST,false);
-                if (!GameServer.properties().rightClickAutocast) {
-                    if (player.getSpellbook() == MagicSpellbook.LUNAR) {
-                        player.message("You can't autocast lunar magic.");
-                        return;
-                    }
+                player.putAttrib(AttributeKey.DEFENSIVE_AUTOCAST, false);
+                if (player.getSpellbook() == MagicSpellbook.LUNAR) {
+                    player.message("You can't autocast lunar magic.");
+                    return;
+                }
 
-                    Item staff = player.getEquipment().get(EquipSlot.WEAPON);
-                    boolean full_ahrim_effect = CombatFactory.fullAhrims(player) && Equipment.hasAmmyOfDamned(player);
-                    if (staff != null && ANCIENT_SPELL_AUTOCAST_STAFFS.contains(staff.getId()) && !full_ahrim_effect) {
-                        if (player.getSpellbook() == MagicSpellbook.ANCIENT) {
-                            //It can autocast offensive standard spells, but cannot autocast Ancient Magicks unlike its other variants.
-                            if (player.getEquipment().getWeapon().getId() != HARMONISED_NIGHTMARE_STAFF) {
-                                player.getInterfaceManager().setSidebar(0, 1689);
-                            } else {
-                                player.message("You can only autocast regular offensive spells with this staff.");
-                                return;
-                            }
+                Item staff = player.getEquipment().get(EquipSlot.WEAPON);
+                boolean full_ahrim_effect = CombatFactory.fullAhrims(player) && Equipment.hasAmmyOfDamned(player);
+                if (staff != null && ANCIENT_SPELL_AUTOCAST_STAFFS.contains(staff.getId()) && !full_ahrim_effect) {
+                    if (player.getSpellbook() == MagicSpellbook.ANCIENT) {
+                        //It can autocast offensive standard spells, but cannot autocast Ancient Magicks unlike its other variants.
+                        if (player.getEquipment().getWeapon().getId() != HARMONISED_NIGHTMARE_STAFF) {
+                            player.getInterfaceManager().setSidebar(0, 1689);
                         } else {
-                            if (player.getEquipment().getWeapon().getId() != ANCIENT_STAFF) {
-                                player.getInterfaceManager().setSidebar(0, 1829);
-                            } else {
-                                player.message("You can only autocast ancient magicks with that.");
-                                return;
-                            }
+                            player.message("You can only autocast regular offensive spells with this staff.");
+                            return;
                         }
                     } else {
-                        if (player.getSpellbook() == MagicSpellbook.NORMAL) {
+                        if (player.getEquipment().getWeapon().getId() != ANCIENT_STAFF) {
                             player.getInterfaceManager().setSidebar(0, 1829);
                         } else {
-                            player.message("You can only autocast normal magic with that.");
+                            player.message("You can only autocast ancient magicks with that.");
                             return;
                         }
                     }
                 } else {
-                    player.getPacketSender().sendMessage("A spell can be autocast by simply right-clicking on it in your Magic spellbook and ").sendMessage("selecting the \"Autocast\" option.");
+                    if (player.getSpellbook() == MagicSpellbook.NORMAL) {
+                        player.getInterfaceManager().setSidebar(0, 1829);
+                    } else {
+                        player.message("You can only autocast normal magic with that.");
+                        return;
+                    }
                 }
                 break;
 
             case AUTOCAST_BUTTON_2:
-                player.putAttrib(AttributeKey.DEFENSIVE_AUTOCAST,true);
-                if (!GameServer.properties().rightClickAutocast) {
-                    if (player.getSpellbook() == MagicSpellbook.LUNAR) {
-                        player.message("You can't autocast lunar spells.");
+                player.putAttrib(AttributeKey.DEFENSIVE_AUTOCAST, true);
+                if (player.getSpellbook() == MagicSpellbook.LUNAR) {
+                    player.message("You can't autocast lunar spells.");
+                    player.getPacketSender().setDefensiveAutocastState(0);
+                    return;
+                }
+                if (player.getEquipment().get(3) != null && player.getEquipment().containsAny(ANCIENT_STAFF, MASTER_WAND, STAFF_OF_THE_DEAD, TOXIC_STAFF_UNCHARGED, TOXIC_STAFF_OF_THE_DEAD, KODAI_WAND, ELDER_WAND, ELDER_WAND_RAIDS, TOXIC_STAFF_OF_THE_DEAD_C)) {
+                    player.getInterfaceManager().setSidebar(0, 1689);
+                } else {
+                    if (player.getSpellbook() != MagicSpellbook.NORMAL) {
+                        player.message("You can't autocast ancient magicks with this staff.");
                         player.getPacketSender().setDefensiveAutocastState(0);
                         return;
                     }
-                    if (player.getEquipment().get(3) != null && player.getEquipment().containsAny(ANCIENT_STAFF, MASTER_WAND, STAFF_OF_THE_DEAD, TOXIC_STAFF_UNCHARGED, TOXIC_STAFF_OF_THE_DEAD, KODAI_WAND, ELDER_WAND, ELDER_WAND_RAIDS, TOXIC_STAFF_OF_THE_DEAD_C)) {
-                        player.getInterfaceManager().setSidebar(0, 1689);
-                    } else {
-                        if (player.getSpellbook() != MagicSpellbook.NORMAL) {
-                            player.message("You can't autocast ancient magicks with this staff.");
-                            player.getPacketSender().setDefensiveAutocastState(0);
-                            return;
-                        }
-                        player.getInterfaceManager().setSidebar(0, 1829);
-                    }
-                } else {
-                    player.getPacketSender()
-                        .sendMessage(
-                            "A spell can be autocast by simply right-clicking on it in your Magic spellbook and ")
-                        .sendMessage("selecting the \"Autocast\" option.");
+                    player.getInterfaceManager().setSidebar(0, 1829);
                 }
                 break;
 
@@ -356,7 +345,7 @@ public class Buttons {
             case DESTROY_ITEM:
                 int id = player.getDestroyItem();
                 Item itemToDestroy = new Item(id);
-                if(!player.inventory().contains(itemToDestroy)) {
+                if (!player.inventory().contains(itemToDestroy)) {
                     return;
                 }
                 player.inventory().remove(itemToDestroy, true);
@@ -402,41 +391,41 @@ public class Buttons {
                 if (TradingPost.handleButtons(player, button))
                     return;
 
-                if(player.getSlayerRewards().handleButtonInteraction(player, button)) {
+                if (player.getSlayerRewards().handleButtonInteraction(player, button)) {
                     return;
                 }
-                if(player.getRunePouch().onButton(button)) {
+                if (player.getRunePouch().onButton(button)) {
                     return;
                 }
 
-                if(player.getMysteryBox().onButton(button)) {
+                if (player.getMysteryBox().onButton(button)) {
                     return;
                 }
-                if(player.skills().pressedSkill(button)) {
+                if (player.skills().pressedSkill(button)) {
                     return;
                 }
-                if(QuestTab.onButton(player, button)) {
+                if (QuestTab.onButton(player, button)) {
                     return;
                 }
-                if(PetAI.onButton(player, button)) {
+                if (PetAI.onButton(player, button)) {
                     return;
                 }
                 if (Smelting.handleButton(player, button)) {
                     return;
                 }
-                if(BonusesInterface.bonusesButtons(player, button)) {
+                if (BonusesInterface.bonusesButtons(player, button)) {
                     return;
                 }
-                if(CollectionLogButtons.onButtonClick(player, button)) {
+                if (CollectionLogButtons.onButtonClick(player, button)) {
                     return;
                 }
-                if(OrnateJewelleryBox.teleport(player, button)) {
+                if (OrnateJewelleryBox.teleport(player, button)) {
                     return;
                 }
-                if(DropsDisplay.clickActions(player, button)) {
+                if (DropsDisplay.clickActions(player, button)) {
                     return;
                 }
-                if(AchievementButtons.handleButtons(player, button)) {
+                if (AchievementButtons.handleButtons(player, button)) {
                     return;
                 }
                 if (player.getBank().buttonAction(button)) {
@@ -452,7 +441,7 @@ public class Buttons {
                     }
                 }
 
-                if(ItemActionDialogue.clickButton(player, button)) {
+                if (ItemActionDialogue.clickButton(player, button)) {
                     return;
                 }
 
@@ -487,7 +476,7 @@ public class Buttons {
                 if (player.getDueling().checkRule(button)) {
                     return;
                 }
-                if (player.getPresetManager().handleButton(button,0)) {
+                if (player.getPresetManager().handleButton(button, 0)) {
                     return;
                 }
                 if (TournamentManager.handleWidgetButton(player, button)) {

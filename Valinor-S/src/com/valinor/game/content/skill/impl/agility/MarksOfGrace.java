@@ -20,15 +20,7 @@ public class MarksOfGrace {
     private static final int MARK_LIFETIME = 10 * 60 * 1000; // 10 minutes
 
     public static void trySpawn(Player player, List<Tile> tiles, int rarity, int threshold) {
-        // Base odds depend on the player's game mode
-        int odds = switch (player.mode()) {
-            case TRAINED_ACCOUNT, DARK_LORD -> 3;
-            case INSTANT_PKER -> 1;
-        };
-
-        if(!GameServer.properties().pvpMode) {
-            odds = 1;
-        }
+        int odds = 1;
 
         // Donator perks grant extra odds
         switch (player.getMemberRights()) {

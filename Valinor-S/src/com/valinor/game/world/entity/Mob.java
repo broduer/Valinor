@@ -1348,15 +1348,6 @@ public abstract class Mob extends Entity {
 
         if (isPlayer()) {
             Player p = (Player) this;
-            //Zulrah pet is resistant vs venom
-            boolean snakelingPetout = p.hasPetOut("Snakeling");
-            boolean petTamerII = p.<Boolean>getAttribOr(AttributeKey.VENOM_RESISTANT, false);
-
-            //System.out.println(snakelingPetout);
-            //System.out.println(petTamerII);
-            if (snakelingPetout && petTamerII) {
-                return;
-            }
 
             if (Equipment.venomHelm(p) && !scorpiosPetOut) { // Serp helm stops venom.
                 return;

@@ -325,3 +325,5 @@
 [08 Nov 2021, 7:35:43 pm] [Valinor GameThread] [PacketListener] [TRACE] player Player: Patrick, 127.0.0.1, [3094, 3503, 0], not in wild report: Server login response code 0
 [08 Nov 2021, 7:35:43 pm] [Valinor GameThread] [PacketListener] [TRACE] player Player: Patrick, 127.0.0.1, [3094, 3503, 0], not in wild report: Server login response code is now 2
 [08 Nov 2021, 8:00:04 pm] [Valinor GameThread] [TournamentManager] [INFO] Next torn (Hybrid) scheduled for 09 Nov 2021 12:00:00 am
+[08 Nov 2021, 8:16:18 pm] [Valinor GameThread] [PacketListener] [TRACE] player Player: Patrick, 127.0.0.1, [3094, 3503, 0], not in wild report: It took longer than 20 ms to read packets
+[09 Nov 2021, 11:15:45 am] [Thread-1] [LogoutLogs] [LOGOUT] [Logout] Deregistering player - Patrick

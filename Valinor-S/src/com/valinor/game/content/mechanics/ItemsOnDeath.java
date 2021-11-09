@@ -161,11 +161,7 @@ public class ItemsOnDeath {
         for (Item item : alwaysLostSpecial) {
             toDrop.remove(item); // not included in kept-3 if unskulled
             Item currency;
-            if(GameServer.properties().pvpMode) {
-                currency = new Item(BLOOD_MONEY, item.getId() == LOOTING_BAG || item.getId() == LOOTING_BAG_22586 ? 1250 : 2500);
-            } else {
-                currency = new Item(COINS_995, item.getId() == LOOTING_BAG || item.getId() == LOOTING_BAG_22586 ? 1_250_000 : 2_500_000);
-            }
+            currency = new Item(COINS_995, item.getId() == LOOTING_BAG || item.getId() == LOOTING_BAG_22586 ? 1_250_000 : 2_500_000);
 
             outputDrop.add(currency); // this list isn't whats dropped its for logging
             GroundItemHandler.createGroundItem(new GroundItem(currency, player.tile(), theKiller)); // manually drop it here
@@ -232,17 +228,15 @@ public class ItemsOnDeath {
             }
         }
         for (Item item : keep) {
-            if(GameServer.properties().pvpMode) {//Only in PvP worlds
-                // Handle item breaking..
-                BrokenItem brokenItem = BrokenItem.get(item.getId());
-                if (brokenItem != null) {
-                    player.getPacketSender().sendMessage("Your " + item.unnote().name() + " has been broken. You can fix it by talking to").sendMessage("Perdu who is located in Edgevile at the furnace.");
-                    item.setId(brokenItem.brokenItem);
+            // Handle item breaking..
+            BrokenItem brokenItem = BrokenItem.get(item.getId());
+            if (brokenItem != null) {
+                player.getPacketSender().sendMessage("Your " + item.unnote().name() + " has been broken. You can fix it by talking to").sendMessage("Perdu who is located in Edgevile at the furnace.");
+                item.setId(brokenItem.brokenItem);
 
-                    //Drop bm for the killer
-                    GroundItem groundItem = new GroundItem(new Item(BLOOD_MONEY, (int) brokenItem.bmDrop), player.tile(), theKiller);
-                    GroundItemHandler.createGroundItem(groundItem);
-                }
+                //Drop bm for the killer
+                GroundItem groundItem = new GroundItem(new Item(BLOOD_MONEY, (int) brokenItem.bmDrop), player.tile(), theKiller);
+                GroundItemHandler.createGroundItem(groundItem);
             }
             player.inventory().add(item, true);
         }

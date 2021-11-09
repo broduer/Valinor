@@ -362,7 +362,6 @@ public class Widget {
             }
         }
         interfaceLoader = interfaces;
-        WildernessWidget.unpack(font);
         RaidsWidget.unpack(font);
         DailyTasksWidget.unpack(font);
         EnchantBoltsWidget.unpack(font);
@@ -394,7 +393,6 @@ public class Widget {
         CollectionLogWidget.unpack(font);
         LootingBagWidget.unpack(font);
         EquipmentWidget.unpack(font);
-        UnmorphWidget.unpack(font);
         LogoutWidget.unpack(font);
         PrayerSidebarWidget.unpack(font);
         ShopWidget.unpack(font);
@@ -404,7 +402,6 @@ public class Widget {
         RunePouchWidget.unpack(font);
         WeaponInterfacesWidget.unpack(font);
         TournamentWidget.unpack(font);
-        ForgeWidget.unpack(font);
         KillCountWidget.unpack(font);
         AchievementWidget.unpack(font);
         DropInterfaceWidget.unpack(font);

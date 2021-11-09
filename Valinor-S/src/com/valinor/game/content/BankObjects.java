@@ -1,6 +1,5 @@
 package com.valinor.game.content;
 
-import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.items.tools.ItemPacks;
 import com.valinor.game.world.World;
@@ -15,8 +14,8 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.valinor.util.CustomItemIdentifiers.BLOODY_TOKEN;
-import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.PLATINUM_TOKEN;
 
 /**
  * @author PVE
@@ -45,18 +44,13 @@ public class BankObjects extends PacketInteraction {
     }
 
     public static void noteLogic(Player player, int itemid, int slot, ItemDefinition def) {
-        if ((def.id == COINS_995 || def.id == PLATINUM_TOKEN) && GameServer.properties().pvpMode) {
-            player.itemBox("You may not exchange this item in this world.", def.id);
-            return;
-        }
-
         // Coins!
-        if (def.id == BLOOD_MONEY || def.id == COINS_995) {
+        if (def.id == COINS_995) {
             var coins = def.id;
-            var tokens = coins == BLOOD_MONEY ? BLOODY_TOKEN : PLATINUM_TOKEN;
+            var tokens = PLATINUM_TOKEN;
 
-            var name = coins == COINS_995 ? "coins" : "blood money";
-            var tokensName = tokens == PLATINUM_TOKEN ? "platinum" : "blood";
+            var name = "coins";
+            var tokensName = "platinum";
 
             if (player.inventory().count(coins) < 1000) {
                 player.messageBox("You need at least 1,000 " + name + " to exchange them for " + tokensName + " tokens.");
@@ -78,13 +72,13 @@ public class BankObjects extends PacketInteraction {
                     }
                 }
             });
-            // Plat tokens, Blood tokens
-        } else if (def.id == PLATINUM_TOKEN || def.id == BLOODY_TOKEN) {
+            // Plat tokens
+        } else if (def.id == PLATINUM_TOKEN) {
             var tokens = def.id;
-            var coins = tokens == BLOODY_TOKEN ? BLOOD_MONEY : COINS_995;
+            var coins = COINS_995;
 
-            var name = coins == COINS_995 ? "coins" : "blood money";
-            var tokensName = tokens == PLATINUM_TOKEN ? "platinum" : "blood";
+            var name = "coins";
+            var tokensName = "platinum";
 
             player.optionsTitled("Exchange your " + tokensName + " tokens for " + name + "?", "Yes", "No", () -> {
                 var amount = player.inventory().count(tokens);

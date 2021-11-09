@@ -47,7 +47,6 @@ public class RoguesCastle extends PacketInteraction {
 
                     // Grabs a reward from our array lists
                     Item eco_reward = Utils.randomElement(eco_rewards);
-                    Item pvp_reward = Utils.randomElement(pvp_rewards);
 
                     // For every level 135 Rogue inside the Rogues Castle we..
                     World.getWorld().getNpcs().forEach(npc -> {
@@ -61,15 +60,8 @@ public class RoguesCastle extends PacketInteraction {
                         GameObject old = new GameObject(CHEST_26757, obj.tile(), obj.getType(), obj.getRotation());
                         GameObject spawned = new GameObject(closed_chest, obj.tile(), obj.getType(), obj.getRotation());
                         ObjectManager.replace(old, spawned, 60);
-                        String name = GameServer.properties().pvpMode ? pvp_reward.name() : eco_reward.name();
-
-                        // If our player is on the PVP world, give them the appropriate reward.
-                        if (GameServer.properties().pvpMode) {
-                            player.inventory().addOrDrop(pvp_reward);
-                        } else {
-                            // Else we must be on the economy server..
-                            player.inventory().addOrDrop(eco_reward);
-                        }
+                        String name = eco_reward.name();
+                        player.inventory().addOrDrop(eco_reward);
                         player.message("You find some " + name + " inside.");
                     });
                 }
@@ -96,17 +88,6 @@ public class RoguesCastle extends PacketInteraction {
         new Item(441, 13), //Iron ore
         new Item(386, 10), //Shark
         new Item(1616, 3)}; //Dragonstone
-
-    //Array used to store the chest rewards.
-    private final Item[] pvp_rewards = {
-        new Item(BLOOD_MONEY, 80),
-        new Item(BLOOD_MONEY, 100),
-        new Item(BLOOD_MONEY, 120),
-        new Item(23583, 5), //Stam Pot
-        new Item(22124, 5), //Superior Bones
-        new Item(22124, 10), //Superior Bones
-        new Item(6585, 1) //Fury
-    };
 
     private void generateHit(Player player) {
         int current_hp = player.hp();

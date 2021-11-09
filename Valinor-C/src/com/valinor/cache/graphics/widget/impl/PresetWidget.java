@@ -26,51 +26,18 @@ public class PresetWidget extends Widget {
         addSprite(62501, 1252);
         closeButton(62502, 24, 25, false);
 
-        rsi.totalChildren(ClientConstants.PVP_MODE ? 134 : 131);
+        rsi.totalChildren(131);
         rsi.child(frame++, 62501, 5, 5);
         rsi.child(frame++, 62502, 486, 10);
 
-        if(ClientConstants.PVP_MODE) {
-            addText(childId, "Default Presets:", 0xFFFF32, true, true, 52, font, 1);
-            setBounds(childId++, 71, 29, frame++, rsi);
-        }
+        addText(childId, "My Presets", 0xFFFF32, true, true, 52, font, 1);
+        setBounds(childId++, 55, 26, frame++, rsi);
 
-        addText(childId, ClientConstants.PVP_MODE ? "Custom Presets:" : "My Presets", 0xFFFF32, true, true, 52, font, 1);
-        setBounds(childId++, ClientConstants.PVP_MODE ? 71 : 55, ClientConstants.PVP_MODE ? 123 : 26, frame++, rsi);
-
-        if(ClientConstants.PVP_MODE) {
-            new DrawLine(62634, 94, 0xFFFF32, 255, DrawLine.LineType.HORIZONTAL);
-        }
         new DrawLine(62635, 93, 0xFFFF32, 255, DrawLine.LineType.HORIZONTAL);
+        setBounds(62635, 25, 43, frame++, rsi);
+        setBounds(62507, 20, 46, frame++, rsi);
 
-        if(ClientConstants.PVP_MODE) {
-            setBounds(62634, 24, 43, frame++, rsi);
-        }
-        setBounds(62635, 25, ClientConstants.PVP_MODE ? 137 : 43, frame++, rsi);
-
-        if(ClientConstants.PVP_MODE) {
-            setBounds(62506, 20, 46, frame++, rsi);
-        }
-        setBounds(62507, 20, ClientConstants.PVP_MODE ? 142 : 46, frame++, rsi);
-
-        if(ClientConstants.PVP_MODE) {
-            final Widget globalPresetScrollbar = createWidget(62506, 92, 73);
-
-            int globalPresetFrames = 0;
-
-            globalPresetScrollbar.scrollMax = 150;
-
-            globalPresetScrollbar.totalChildren(10);
-
-            startY = 1;
-            for (int i = 62712; i < 62722; i++) {
-                addCustomClickableText(i, "", "Select", font, 0, 0xcc8400, false, false, 150, 10);
-                setBounds(i, 0, startY, globalPresetFrames++, globalPresetScrollbar);
-                startY += 15;
-            }
-        }
-
-        final Widget customPresetScrollbar = createWidget(62507, 92, ClientConstants.PVP_MODE ? 73 : 170);
+        final Widget customPresetScrollbar = createWidget(62507, 92, 170);
 
         int customPresetFrames = 0;
 
@@ -80,7 +47,7 @@ public class PresetWidget extends Widget {
 
         startY = 3;
 
-        for (int i = ClientConstants.PVP_MODE ? 62722 : 62712; i < 62742; i++) {
+        for (int i = 62722; i < 62742; i++) {
             addCustomClickableText(i, "Test", "Select", font, 0, 0xcc8400, false, false, 150, 10);
             setBounds(i, 0, startY, customPresetFrames++, customPresetScrollbar);
             startY += 14;

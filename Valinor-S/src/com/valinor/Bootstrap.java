@@ -1,8 +1,6 @@
 package com.valinor;
 
 import com.valinor.game.GameBuilder;
-import com.valinor.game.content.announcements.dyk.DidYouKnowTask;
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
@@ -54,9 +52,6 @@ public final class Bootstrap {
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
         HostBlacklist.loadBlacklist();
-        if (GameServer.properties().enableDidYouKnowMessages) {
-            TaskManager.submit(new DidYouKnowTask());
-        }
         Item.onServerStart();
     }
 }

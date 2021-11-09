@@ -193,16 +193,6 @@ public class Vorkath extends CommonCombatMethod {
             var superAntifire = player.<Boolean>getAttribOr(AttributeKey.SUPER_ANTIFIRE_POTION, false);
             var prayerProtection = Prayers.usingPrayer(player, Prayers.PROTECT_FROM_MAGIC);
 
-            var vorkiPetout = player.hasPetOut("Vorki");
-            var petTamerI = player.<Boolean>getAttribOr(AttributeKey.ANTI_FIRE_RESISTANT,false);
-
-            //System.out.println(vorkiPetout);
-            //System.out.println(petTamerI);
-            if(vorkiPetout && petTamerI) {
-                player.message("Your Vorki pet protects you completely from the heat of the dragon's breath!");
-                max = 0;
-            }
-
             //If player is wearing a anti-dragon shield max hit is 20
             if(hasShield) {
                 max = 20;

@@ -1,6 +1,5 @@
 package com.valinor.game.content.areas.wilderness;
 
-import com.valinor.GameServer;
 import com.valinor.game.content.skill.impl.mining.Mining;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
@@ -22,7 +21,6 @@ import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.PILES;
 import static com.valinor.util.NpcIdentifiers.ROCKS_6601;
@@ -34,8 +32,8 @@ public class ResourceArena extends PacketInteraction {
     public static int[] ALLOWED_EXCHANGE = new int[] {440, 453, 444, 447, 449, 451, 1515, 1513, 11936, 11934, 2349, 2351, 2353, 2355, 2357, 2359, 2361, 2363, 451, 13439, 10138};
 
     private void swap(Player player, int original, int result) {
-        int currency = GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995;
-        String name = GameServer.properties().pvpMode ? "bm" : "coins";
+        int currency = COINS_995;
+        String name = "coins";
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
@@ -154,9 +152,9 @@ public class ResourceArena extends PacketInteraction {
         if(obj.getId() == GATE_26760) {
             if (option == 1) {
                 player.faceObj(obj);
-                String name = GameServer.properties().pvpMode ? "BM" : "coins";
-                int itemId = GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995;
-                int amount = GameServer.properties().pvpMode ? 100 : 7500;
+                String name = "coins";
+                int itemId = COINS_995;
+                int amount = 7500;
 
                 if (player.tile().y == 3945 && player.tile().y > obj.tile().y) {
                     if (player.inventory().count(itemId) < amount) {

@@ -70,7 +70,7 @@ public class PresetManager {
     }
 
     /**
-     * The max amount of premade/custom presets.
+     * The max amount of custom presets.
      */
     public static final int MAX_PRESETS = 20;
 
@@ -78,11 +78,6 @@ public class PresetManager {
      * The presets interface id.
      */
     private static final int INTERFACE_ID = 62500;
-
-    /**
-     * Pre-made sets by the server which everyone can use.
-     */
-    public static final Presetable[] GLOBAL_PRESETS = new Presetable[MAX_PRESETS];
 
     private boolean saveLevels = false;
 
@@ -207,16 +202,8 @@ public class PresetManager {
                 });
         }
 
-        // Send all available global presets
-        if (GameServer.properties().pvpMode) {
-            for (int i = 0; i < MAX_PRESETS; i++) {
-                player.getPacketSender().sendString(62712 + i,
-                    GLOBAL_PRESETS[i] == null ? "Empty" : GLOBAL_PRESETS[i].getName());
-            }
-        }
-
         for (int index = 0; index < MAX_PRESETS; index++) {
-            player.getPacketSender().sendString(GameServer.properties().pvpMode ? 62722 + index : 62712 + index, player.getPresets()[index] == null ? "[Create Preset]" : player.getPresets()[index].getName());
+            player.getPacketSender().sendString(62722 + index, player.getPresets()[index] == null ? "[Create Preset]" : player.getPresets()[index].getName());
         }
 
         // Send on death toggle
@@ -509,17 +496,6 @@ public class PresetManager {
         if (player.locked() || player.dead() || player.hp() < 0 || player.finished())
             return;
 
-        //Global presets only work in PvP world.
-        if (!GameServer.properties().pvpMode && preset.isGlobal()) {
-            if (!(player.getPlayerRights().isDeveloperOrGreater(player))) {
-                return;
-            }
-            if (player.ironMode() != IronMode.NONE) {
-                player.message("As ironman you cannot load global presets.");
-                return;
-            }
-        }
-
         // More security
         if (inPresetBypassable(player, "You can't use presets in this area.", true)) {
             return;
@@ -639,12 +615,7 @@ public class PresetManager {
                     if (player.getLastPreset() != null) {
                         final boolean isGlobal = (boolean) player.getLastPreset()[0];
                         final Double index = (Double) player.getLastPreset()[1];
-                        if (GameServer.properties().pvpMode) {
-                            player.getPresetManager().load(isGlobal ? GLOBAL_PRESETS[index.intValue()] : player.getPresets()[index.intValue()]);
-                        } else {
-                            //In eco mode we only have custom presets
-                            player.getPresetManager().load(player.getPresets()[index.intValue()]);
-                        }
+                        player.getPresetManager().load(player.getPresets()[index.intValue()]);
                     } else {
                         player.message("You have not loaded a preset yet.");
                     }
@@ -697,28 +668,8 @@ public class PresetManager {
             }
         }
 
-        //Global presets selection, this only applies in the pvp mode.
-        if (GameServer.properties().pvpMode) {
-            if (button >= 62712 && button <= 62721) {
-                final int index = button - 62712;
-
-                if (GLOBAL_PRESETS[index] == null) {
-                    player.message("That preset is currently unavailable.");
-                    return true;
-                }
-
-                //Check if already in set, no need to re-open
-                if (player.getCurrentPreset() != null && player.getCurrentPreset() == GLOBAL_PRESETS[index]) {
-                    return true;
-                }
-
-                open(GLOBAL_PRESETS[index]);
-                return true;
-            }
-        }
-
         //Custom presets selection
-        var startIndex = GameServer.properties().pvpMode ? 62722 : 62712;
+        var startIndex = 62722;
         if (button >= startIndex && button <= 62741) {
             final int index = button - startIndex;
             player.setPresetIndex(index);

@@ -422,23 +422,6 @@ object KtCommands {
         cmd("cia9") {
             PlayerDeathDropResult.DEBUG = !PlayerDeathDropResult.DEBUG // toggle
         }
-        cmd("cia10") {
-            // lets fuck it up on purpose to see what happens yeah? nice
-            player.presets[0].equipment[EquipSlot.WEAPON].amount = 2
-            player.presetManager.load(player.presets[0])
-        }
-        cmd("cia11") {
-            // lets fuck it up on purpose to see what happens yeah? nice
-            player.presets[0].equipment[EquipSlot.WEAPON].amount = 2
-            player.presets[0].inventory[0].amount = 11
-        }
-        cmd("cia12") {
-            World.getWorld().players.filterNotNull()
-                .filter { it != player && it.getAttribOr(AttributeKey.IS_BOT, false) }.forEach {
-                it.presetManager.load(PresetManager.GLOBAL_PRESETS[0])
-                it.teleport(player.tile())
-            }
-        }
         cmd("cia13") {
             // nuffler testing: have max stack of the noted item, and then some of the unnoted.
             // stacking > Integer.max should be tested

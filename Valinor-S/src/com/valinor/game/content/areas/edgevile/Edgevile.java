@@ -5,7 +5,6 @@ import com.valinor.game.content.account.ChangeAccountTypeDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.*;
 import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
-import com.valinor.game.content.item_forging.ItemForgingCategory;
 import com.valinor.game.content.mechanics.MagicalAltarDialogue;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.ReferralD;
@@ -188,10 +187,6 @@ public class Edgevile extends PacketInteraction {
             }
             if(obj.getId() == 34752) {
                 Teleports.basicTeleport(player, GameServer.properties().defaultTile);
-                return true;
-            }
-            if (obj.getId() == 33020) {
-                player.getItemForgingTable().open(player, ItemForgingCategory.WEAPON);
                 return true;
             }
 

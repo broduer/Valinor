@@ -2,8 +2,7 @@ package com.valinor.game;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.clan.ClanRepository;
-import com.valinor.game.content.items.mystery_box.MysteryBox;
-import com.valinor.game.content.items.mystery_box.impl.ClanBox;
+import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.content.new_players.StarterBox;
 import com.valinor.game.content.skill.impl.crafting.Crafting;
 import com.valinor.game.content.skill.impl.fletching.Fletching;
@@ -72,22 +71,18 @@ public class GameBuilder {
         Queue<Runnable> tasks = new ArrayDeque<>();
         tasks.add(ClanRepository::load);
         tasks.add(StarterBox::init);
-        tasks.add(ClanBox::init);
         tasks.add(PromoCodeCommand::init);
         tasks.add(PlayerPunishment::init);
         tasks.add(PacketInteractionManager::init);
 
         //Load definitions..
         tasks.add(TradingPost::init);
-        tasks.add(MysteryBox::load);
+        tasks.add(Mbox::load);
         tasks.add(new Slayer()::loadMasters);
         tasks.add(Crafting::load);
         tasks.add(Fletching::load);
         tasks.add(new ShopLoader());
         tasks.add(new ObjectSpawnDefinitionLoader());
-        if(GameServer.properties().pvpMode) {
-            tasks.add(new PresetLoader());
-        }
         tasks.add(new DoorDefinitionLoader());
         if (GameServer.properties().tournamentsEnabled) {
             tasks.add(TournamentManager::initalizeTournaments);

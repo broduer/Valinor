@@ -304,9 +304,6 @@ public class Skills {
             }
         }
 
-        //Double exp in wilderness is only in the pvp world.
-        amt *= inWilderness && GameServer.properties().pvpMode ? 2.0 : 1.0;
-
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS,0) > 0;
 
         var donator_zone = player.tile().memberZone() || player.tile().memberCave();

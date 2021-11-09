@@ -57,7 +57,7 @@ public class AchievementWidget {
 
     public static void openEasyJournal(Player player) {
         AchievementWidget.open(player, Difficulty.EASY);
-        AchievementWidget.sendInterfaceForAchievement(player, Achievements.AMPUTEE_ANNIHILATION_I);
+        //AchievementWidget.sendInterfaceForAchievement(player, Achievements.AMPUTEE_ANNIHILATION_I);
         player.putAttrib(AttributeKey.ACHIEVEMENT_DIFFICULTY, Difficulty.EASY);
         player.getPacketSender().sendConfig(1160, 1);
         player.getPacketSender().sendConfig(1161, 0);

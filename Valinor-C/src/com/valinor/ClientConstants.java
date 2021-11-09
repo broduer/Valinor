@@ -11,9 +11,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public final class ClientConstants {
 
-    //Make sure that this PVP_MODE matches Server.properties().pvpMode either in the ServerProperties class or properties json file for the world that is running.
-    public static final boolean PVP_MODE = true;
-
     /*
      * This determines if we are going to connect to the live server or local server.
      */
@@ -50,12 +47,6 @@ public final class ClientConstants {
      */
     public static boolean LOGIN_MUSIC_ENABLED = true;
 
-    /**
-     * To enable restarting the login song on toggling the login song,
-     * set this to true.
-     */
-    public static boolean ENABLE_RESTARTING_LOGIN_SONG = true;
-
     public static final String SPRITE_FILE_NAME = "main_file_sprites";
 
     /**
@@ -87,7 +78,7 @@ public final class ClientConstants {
 
     public static final String SERVER_ADDRESS = production ? "141.95.17.57" : test ? "51.195.44.182" : "localhost";
 
-    public static int SERVER_PORT = (PVP_MODE ? 43597 : 43596);
+    public static int SERVER_PORT = 43596;
     public static final int FILE_SERVER_PORT = 43598;
 
     //Set dynamic map crosshair to true for a world map crosshair that moves or false for a static one that doesn't move.

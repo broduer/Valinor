@@ -49,18 +49,8 @@ public class BrutalDragons extends CommonCombatMethod {
             boolean hasShield = CombatConstants.hasAntiFireShield(player);
             boolean hasPotion = antifire_charges > 0;
 
-            boolean vorkiPetout = player.hasPetOut("Vorki");
-            boolean petTamerI = player.<Boolean>getAttribOr(AttributeKey.ANTI_FIRE_RESISTANT,false);
-
-            //System.out.println(vorkiPetout);
-            //System.out.println(petTamerI);
-            if(vorkiPetout && petTamerI) {
-                player.message("Your Vorki pet protects you completely from the heat of the dragon's breath!");
-                max = 0.0;
-            }
-
             boolean memberEffect = player.getMemberRights().isExtremeMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile());
-            if (max > 0 && player.<Boolean>getAttribOr(AttributeKey.SUPER_ANTIFIRE_POTION, false) || memberEffect) {
+            if (player.<Boolean>getAttribOr(AttributeKey.SUPER_ANTIFIRE_POTION, false) || memberEffect) {
                 player.message("Your super antifire potion protects you completely from the heat of the dragon's breath!");
                 max = 0.0;
             }

@@ -154,8 +154,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         item = new Item(item.getId(), 1);
 
                         player.inventory().remove(item, slot);
-                        if (!GameServer.properties().pvpMode)
-                            player.inventory().add(COINS_995, coinAmountToGive);
+                        player.inventory().add(COINS_995, coinAmountToGive);
                         return;
                     case HIGH_ALCHEMY:
                         if (!item.rawtradable() || item.getId() == BLOOD_MONEY || item.getId() == COINS_995) {
@@ -181,9 +180,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         item = new Item(item.getId(), 1);
 
                         player.inventory().remove(item, slot);
-
-                        if (!GameServer.properties().pvpMode)
-                            player.inventory().add(COINS_995, coinAmountToGive);
+                        player.inventory().add(COINS_995, coinAmountToGive);
                         return;
                 }
             }

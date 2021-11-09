@@ -1,11 +1,9 @@
 package com.valinor.game.content.items.mystery_box.impl;
 
-import com.valinor.GameServer;
+import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.content.items.mystery_box.MboxItem;
-import com.valinor.game.content.items.mystery_box.MysteryBox;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
 
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ import java.util.Arrays;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class RegularMysteryBox extends MysteryBox {
+public class MysteryBox extends Mbox {
 
     @Override
     protected String name() {
@@ -30,65 +28,6 @@ public class RegularMysteryBox extends MysteryBox {
     private static final int UNCOMMON_ROLL = 20;
 
     private static final MboxItem[] EXTREMELY_RARE = new MboxItem[]{
-        new MboxItem(CustomItemIdentifiers.GRIM_REAPER_PET),
-        new MboxItem(CustomItemIdentifiers.BARRELCHEST_PET),
-        new MboxItem(ARCANE_SPIRIT_SHIELD),
-        new MboxItem(ELDER_MAUL),
-    };
-
-    private static final MboxItem[] RARE = new MboxItem[]{
-        new MboxItem(DRAGON_CLAWS),
-        new MboxItem(ARMADYL_GODSWORD),
-        new MboxItem(GHRAZI_RAPIER),
-        new MboxItem(SPECTRAL_SPIRIT_SHIELD),
-        new MboxItem(HEAVY_BALLISTA),
-        new MboxItem(TOXIC_STAFF_OF_THE_DEAD),
-        new MboxItem(SERPENTINE_HELM),
-    };
-
-    private static final MboxItem[] UNCOMMON = new MboxItem[]{
-        new MboxItem(DRAGON_HUNTER_CROSSBOW),
-        new MboxItem(DRAGON_CROSSBOW),
-        new MboxItem(BANDOS_GODSWORD),
-        new MboxItem(SARADOMIN_GODSWORD),
-        new MboxItem(ZAMORAK_GODSWORD),
-        new MboxItem(LIGHT_BALLISTA),
-        new MboxItem(STAFF_OF_THE_DEAD),
-        new MboxItem(PRIMORDIAL_BOOTS),
-        new MboxItem(PEGASIAN_BOOTS),
-        new MboxItem(ETERNAL_BOOTS),
-        new MboxItem(DRAGON_DEFENDER),
-        new MboxItem(ANTIVENOM4 + 1, 100),
-    };
-
-    private static final MboxItem[] COMMON = new MboxItem[]{
-        new MboxItem(BERSERKER_RING_I),
-        new MboxItem(ARCHERS_RING_I),
-        new MboxItem(SEERS_RING_I),
-        new MboxItem(WARRIOR_RING_I),
-        new MboxItem(BERSERKER_RING),
-        new MboxItem(ARCHERS_RING),
-        new MboxItem(SEERS_RING),
-        new MboxItem(WARRIOR_RING),
-        new MboxItem(BERSERKER_NECKLACE),
-        new MboxItem(FIGHTER_HAT),
-        new MboxItem(FIGHTER_TORSO),
-        new MboxItem(AMULET_OF_FURY),
-        new MboxItem(RANGER_BOOTS),
-        new MboxItem(ROBIN_HOOD_HAT),
-        new MboxItem(DRAGON_JAVELIN, 50),
-        new MboxItem(DRAGON_DART, 25),
-        new MboxItem(GRANITE_MAUL_24225),
-        new MboxItem(ABYSSAL_TENTACLE),
-        new MboxItem(OBSIDIAN_HELMET),
-        new MboxItem(OBSIDIAN_PLATEBODY),
-        new MboxItem(OBSIDIAN_PLATELEGS),
-        new MboxItem(MAGES_BOOK),
-        new MboxItem(STAFF_OF_LIGHT),
-        new MboxItem(DARK_BOW),
-    };
-
-    private static final MboxItem[] EXTREMELY_RARE_ECO = new MboxItem[]{
         new MboxItem(1053).broadcastWorldMessage(true), //Green halloween mask
         new MboxItem(1055).broadcastWorldMessage(true), //Blue halloween mask
         new MboxItem(1057).broadcastWorldMessage(true), //Red halloween mask
@@ -125,7 +64,7 @@ public class RegularMysteryBox extends MysteryBox {
         new MboxItem(10352).broadcastWorldMessage(true), // 3rd age kiteshield
     };
 
-    private static final MboxItem[] RARE_ECO = new MboxItem[]{
+    private static final MboxItem[] RARE = new MboxItem[]{
         new MboxItem(12825).broadcastWorldMessage(true), //Arcane spirit shield
         new MboxItem(12821).broadcastWorldMessage(true), //Spectral spirit shield
         new MboxItem(22981).broadcastWorldMessage(true), //Ferocious gloves
@@ -152,7 +91,7 @@ public class RegularMysteryBox extends MysteryBox {
         new MboxItem(13442, World.getWorld().random(4000, 5000)).broadcastWorldMessage(true) //5000 Anglerfish
     };
 
-    private static final MboxItem[] UNCOMMON_ECO = new MboxItem[]{
+    private static final MboxItem[] UNCOMMON = new MboxItem[]{
         new MboxItem(6737), //Berserker ring
         new MboxItem(6731), //Seers ring
         new MboxItem(13271), //Abyssal dagger
@@ -184,7 +123,7 @@ public class RegularMysteryBox extends MysteryBox {
         new MboxItem(20050), // Obsidian cape (f)
     };
 
-    private static final MboxItem[] COMMON_ECO = new MboxItem[]{
+    private static final MboxItem[] COMMON = new MboxItem[]{
         new MboxItem(4708), //Ahrim's hood
         new MboxItem(4712), //Ahrim's robetop
         new MboxItem(4714), //Ahrim's robeskirt
@@ -275,17 +214,10 @@ public class RegularMysteryBox extends MysteryBox {
     public MboxItem[] allPossibleRewards() {
         if (allRewardsCached == null) {
             ArrayList<MboxItem> mboxItems = new ArrayList<>();
-            if (GameServer.properties().pvpMode) {
-                mboxItems.addAll(Arrays.asList(EXTREMELY_RARE));
-                mboxItems.addAll(Arrays.asList(RARE));
-                mboxItems.addAll(Arrays.asList(UNCOMMON));
-                mboxItems.addAll(Arrays.asList(COMMON));
-            } else {
-                mboxItems.addAll(Arrays.asList(EXTREMELY_RARE_ECO));
-                mboxItems.addAll(Arrays.asList(RARE_ECO));
-                mboxItems.addAll(Arrays.asList(UNCOMMON_ECO));
-                mboxItems.addAll(Arrays.asList(COMMON_ECO));
-            }
+            mboxItems.addAll(Arrays.asList(EXTREMELY_RARE));
+            mboxItems.addAll(Arrays.asList(RARE));
+            mboxItems.addAll(Arrays.asList(UNCOMMON));
+            mboxItems.addAll(Arrays.asList(COMMON));
             allRewardsCached = mboxItems.toArray(new MboxItem[0]);
         }
         return allRewardsCached;

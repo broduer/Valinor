@@ -54,14 +54,11 @@ public class BountyHunter {
         //Get our target..
         Optional<Player> target = getTargetfor(player);
 
-        target.ifPresent(value -> player.getPacketSender().sendString(53723, "Target: <col=65280>" + value.getUsername() + " (" + WildernessArea.wildernessLevel(value.tile()) + ")"));
-
         //Is player in the wilderness?
         if (WildernessArea.inWilderness(player.tile())) {
             //Check if the player has a target.
             //If not, search for a new one.
             if (target.isEmpty()) {
-                player.getPacketSender().sendString(53723, "Target: <col=65280>None");
                 //Only search for a target every {@code TARGET_DELAY_SECONDS}.
                 if (!player.getTargetSearchTimer().active()) {
                     //Make sure we're a valid target..
@@ -137,10 +134,7 @@ public class BountyHunter {
 
             //Send messages..
             player.getPacketSender().sendMessage("You've been assigned "+target.getUsername()+" as your target!");
-
-            player.getPacketSender().sendString(53723, "Target: <col=65280>"+target.getUsername()+" ("+WildernessArea.wildernessLevel(target.tile())+")");
             target.getPacketSender().sendMessage("You've been assigned "+player.getUsername()+" as your target!");
-            target.getPacketSender().sendString(53723, "Target: <col=65280>"+player.getUsername()+" ("+WildernessArea.wildernessLevel(target.tile())+")");
 
             //Send hints..
             player.getPacketSender().sendEntityHint(target);
@@ -163,10 +157,6 @@ public class BountyHunter {
             //Reset hints..
             p1.getPacketSender().sendEntityHintRemoval(true);
             p2.getPacketSender().sendEntityHintRemoval(true);
-
-            //Reset name
-            p2.getPacketSender().sendString(53723, "Target: <col=65280>None");
-            p1.getPacketSender().sendString(53723, "Target: <col=65280>None");
 
             //Set timers
             p2.getTargetSearchTimer().start(TARGET_SEARCH_DELAY_SECONDS);
@@ -307,10 +297,6 @@ public class BountyHunter {
                 } else {
                     killer.inventory().addOrBank(new Item(ANTIQUE_EMBLEM_TIER_1));
                 }
-
-                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);
-                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_II, 1);
-                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_III, 1);
             }
         }
 

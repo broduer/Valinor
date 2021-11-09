@@ -136,9 +136,6 @@ public class DamageSimulators {
         // setup p2
         CommandManager.commands.get("master").execute(p2, "master", null);
 
-        p1.getPresetManager().load(PresetManager.GLOBAL_PRESETS[2]); // tribird
-        p2.getPresetManager().load(PresetManager.GLOBAL_PRESETS[2]); // tribird
-
         assert p1.skills().level(5) == 99; // 99 prayer
         assert p1.getEquipment().get(EquipSlot.WEAPON).matchesId(4675); // staff
 
@@ -159,8 +156,6 @@ public class DamageSimulators {
         // setup p2
         CommandManager.commands.get("master").execute(p2, "master", null);
 
-        p1.getPresetManager().load(PresetManager.GLOBAL_PRESETS[2]); // tribird
-        p2.getPresetManager().load(PresetManager.GLOBAL_PRESETS[2]); // tribird
         p1.inventory().remove(385, 10);
         p2.inventory().remove(385, 10);
         p1.getEquipment().manualWear(new Item(9185), true);

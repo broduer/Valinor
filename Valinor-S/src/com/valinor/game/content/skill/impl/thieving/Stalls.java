@@ -74,48 +74,26 @@ public class Stalls extends PacketInteraction {
 
         Chain.bound(player).runFn(1, () -> {
             replaceStall(stall, object, replacementID, player);
-            var bloodMoney = 0;
 
             if (stall == Stall.CRAFTING_STALL) {
-                bloodMoney = World.getWorld().random(15, 25);
                 AchievementsManager.activate(player, Achievements.THIEF_I, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
             } else if (stall == Stall.MONKEY_GENERAL_STALL) {
-                bloodMoney = World.getWorld().random(15, 37);
                 AchievementsManager.activate(player, Achievements.THIEF_II, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
             } else if (stall == Stall.MAGIC_STALL) {
-                bloodMoney = World.getWorld().random(15, 50);
                 AchievementsManager.activate(player, Achievements.THIEF_III, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
             } else if (stall == Stall.SCIMITAR_STALL) {
-                bloodMoney = World.getWorld().random(15, 100);
                 AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
                 player.getTaskMasterManager().increase(Tasks.STEAL_FROM_SCIMITAR_STALL);
             } else if (stall == Stall.SPICE_STALL) {
-                bloodMoney = World.getWorld().random(15, 175);
                 AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
             } else if (stall == Stall.GEM_STALL) {
-                bloodMoney = World.getWorld().random(15, 300);
                 AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
                 AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            }
-
-            var thievingBoostPerk = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.MORE_BM_THIEVING);
-            if (thievingBoostPerk) {
-                bloodMoney *= 10.0 / 100;
-            }
-
-            var blood_reaper = player.hasPetOut("Blood Reaper pet");
-            if(blood_reaper) {
-                int extraBM = bloodMoney * 10 / 100;
-                bloodMoney += extraBM;
-            }
-
-            if (GameServer.properties().pvpMode) {
-                player.inventory().add(new Item(BLOOD_MONEY, bloodMoney), true);
             }
 
             var slayerUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_LAMPS);

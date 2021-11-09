@@ -66,11 +66,7 @@ public final class ServerProperties {
             }
             //Since the static initializer is called after the constructor, we can set the game port here if we don't want to override the game port.
             if (!current.overrideGamePort) {
-                if (current.pvpMode) {
-                    current.gamePort = 43597;
-                } else {
-                    current.gamePort = 43596;
-                }
+                current.gamePort = 43596;
             }
         } catch (IOException e) {
             throw new ExceptionInInitializerError(e);
@@ -117,8 +113,6 @@ public final class ServerProperties {
         defaultTile = new Tile(3094, 3503, 0);
         duelTile = new Tile(3369, 3266);
         defaultClanChat = "";
-        queueSwitchingRefresh = true;
-        rightClickAutocast = false;
         autosaveMinutes = 15;
         afkLogoutMinutes = 15;
         baseBMValue = 500;
@@ -146,7 +140,6 @@ public final class ServerProperties {
         tournamentMinDevParticipants = 2;
         logSuccessfulPackets = false;
         logUnderflowPacketsProduction = false;
-        enableNpcDropListInterface = true;
         connectionLimit = 4;
         maxAlts = 2;
         pidIntervalTicks = 100;
@@ -161,9 +154,7 @@ public final class ServerProperties {
         soundsEnabled = false;
         enableDueling = true;
         enableGambling = true;
-        playerKillFillsSpec = false;
         maintenanceMode = false;
-        enableDidYouKnowMessages = true;
         enableLoadLastDuelPreset = true;
         enablePasswordChangeLogging = true;
         venomVsPlayersOn = false;
@@ -216,8 +207,6 @@ public final class ServerProperties {
         doubleSlayerRewardPointsEvent = false;
         doubleBMEvent = false;
         doubleVotePointsEvent = false;
-        pvpMode = true;
-        nerfDropRateBoxes = false;
     }
 
     public final String fileStore;
@@ -296,15 +285,6 @@ public final class ServerProperties {
      * if they aren't in one already.
      */
     public final String defaultClanChat;
-
-    /**
-     * Should the inventory be refreshed immediately
-     * on switching items or should it be delayed
-     * until next game cycle?
-     */
-    public final boolean queueSwitchingRefresh;
-
-    public final boolean rightClickAutocast;
 
     public final int autosaveMinutes;
 
@@ -433,11 +413,6 @@ public final class ServerProperties {
     public final boolean logUnderflowPacketsProduction;
 
     /**
-     * If we want to enable the NPC drop list interface (uses the same interface as commands list, set this to true.
-     */
-    public final boolean enableNpcDropListInterface;
-
-    /**
      * a map of ip:count of connections open in netty. not 1:1 with attempting to login because the client
      * might send a js5 or cache request or something else
      */
@@ -510,19 +485,9 @@ public final class ServerProperties {
     public final boolean enableGambling;
 
     /**
-     * If we want player kills to fill spec, set this to true.
-     */
-    public final boolean playerKillFillsSpec;
-
-    /**
      * If we want to enable maintenance mode at startup, set this to true.
      */
     public final boolean maintenanceMode;
-
-    /**
-     * If we want to enable did you know messages, set this to true.
-     */
-    public final boolean enableDidYouKnowMessages;
 
     /**
      * If we want to enable did you know messages, set this to true.
@@ -704,9 +669,6 @@ public final class ServerProperties {
     public final boolean doubleSlayerRewardPointsEvent;
     public final boolean doubleBMEvent;
     public final boolean doubleVotePointsEvent;
-
-    public final boolean pvpMode;
-    public final boolean nerfDropRateBoxes;
 
 }
 

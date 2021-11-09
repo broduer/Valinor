@@ -197,22 +197,14 @@ public abstract class Shop {
         if (player.getInventory().remaining() >= item.getAmount() && !item.stackable()
             || player.getInventory().remaining() >= 1 && item.stackable()
             || player.getInventory().contains(item.getId()) && item.stackable()) {
-            boolean canNote = item.noteable();
-            int giveNotedItemOrUnnoted = canNote && item.getAmount() > 1 ? item.note().getId() : item.getId();
 
-            if (GameServer.properties().pvpMode) {
-                item = new Item(giveNotedItemOrUnnoted, item.getAmount());
-            } else {
-                item = new Item(item.getId(), item.getAmount());
-            }
+            item = new Item(item.getId(), item.getAmount());
 
             if (value > 0 && !currencyType.currency.takeCurrency(player, item.getAmount() * value)) {
                 return;
             }
 
-            boolean ignore_amount = (GameServer.properties().pvpMode || shopId == 2) && shopId != 16;
-
-            if (itemCache.containsKey(item.getId()) && container.retrieve(slot).isPresent() && !ignore_amount) {
+            if (itemCache.containsKey(item.getId()) && container.retrieve(slot).isPresent()) {
                 if (decrementStock()) {
                     container.retrieve(slot).get().decrementAmountBy(item.getAmount());
                 }
@@ -260,10 +252,10 @@ public abstract class Shop {
         }
 
         if (item.getId() == ItemIdentifiers.HERB_BOX) {
-            player.putAttrib(AttributeKey.HERB_BOX_CHARGES,20);
+            player.putAttrib(AttributeKey.HERB_BOX_CHARGES, 20);
         }
 
-        if(shopId == 4) {
+        if (shopId == 4) {
             if (item.getId() == ANGLERFISH) {
                 item.setId(ANGLERFISH + 1);
                 item.setAmount(100);
@@ -279,7 +271,7 @@ public abstract class Shop {
             }
         }
 
-        if(shopId == 47) {
+        if (shopId == 47) {
             if (item.getId() == CANNONBALL) {
                 item.setAmount(1000);
             }
@@ -380,15 +372,11 @@ public abstract class Shop {
         }
         StoreItem converted = new StoreItem(item.getId(), item.getAmount());
 
-        boolean dontAddToContainer = GameServer.properties().pvpMode && shopId != 16;
-
-        if (!dontAddToContainer) {
-            if (find.isPresent()) {
-                Item found = find.get();
-                found.setAmount(found.getAmount() + item.getAmount());
-            } else {
-                container.add(converted);
-            }
+        if (find.isPresent()) {
+            Item found = find.get();
+            found.setAmount(found.getAmount() + item.getAmount());
+        } else {
+            container.add(converted);
         }
 
         //Don't refresh the shop for one player, refresh it for all players.

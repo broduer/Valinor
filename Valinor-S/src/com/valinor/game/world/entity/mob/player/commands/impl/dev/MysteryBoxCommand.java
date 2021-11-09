@@ -1,9 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.game.content.items.mystery_box.MboxItem;
-import com.valinor.game.content.items.mystery_box.MysteryBox;
-import com.valinor.game.content.items.mystery_box.impl.EpicPetMysteryBox;
-import com.valinor.game.content.items.mystery_box.impl.GrandMysteryBox;
+import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -11,6 +9,7 @@ import com.valinor.game.world.items.Item;
 import java.util.Optional;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.MYSTERY_BOX;
 
 public class MysteryBoxCommand implements Command {
 
@@ -25,67 +24,17 @@ public class MysteryBoxCommand implements Command {
         int amount = Integer.parseInt(parts[1]);
         String box_name = parts[2];
 
-        switch (box_name) {
-            case "armour_box":
-                for (int i = 0; i < amount; i++) {
-                    Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(ARMOUR_MYSTERY_BOX);
-                    if (mBox.isPresent()) {
-                        player.getMysteryBox().box = mBox.get();
-                        MboxItem mboxItem = mBox.get().rollReward().copy();
-                        player.getMysteryBox().reward = mboxItem;
-                        player.getMysteryBox().broadcast = mboxItem.broadcastItem;
-                        player.getMysteryBox().reward();
-                    }
+        if (box_name.equals("mbox")) {
+            for (int i = 0; i < amount; i++) {
+                Optional<Mbox> mBox = Mbox.getMysteryBox(MYSTERY_BOX);
+                if (mBox.isPresent()) {
+                    player.getMysteryBox().box = mBox.get();
+                    MboxItem mboxItem = mBox.get().rollReward().copy();
+                    player.getMysteryBox().reward = mboxItem;
+                    player.getMysteryBox().broadcast = mboxItem.broadcastItem;
+                    player.getMysteryBox().reward();
                 }
-                break;
-            case "donator_box":
-                for (int i = 0; i < amount; i++) {
-                    Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(DONATOR_MYSTERY_BOX);
-                    if (mBox.isPresent()) {
-                        player.getMysteryBox().box = mBox.get();
-                        MboxItem mboxItem = mBox.get().rollReward().copy();
-                        player.getMysteryBox().reward = mboxItem;
-                        player.getMysteryBox().broadcast = mboxItem.broadcastItem;
-                        player.getMysteryBox().reward();
-                    }
-                }
-                break;
-            case "grand_box":
-                player.inventory().add(new Item(GRAND_MYSTERY_BOX, amount));
-                for (int i = 0; i < amount; i++) {
-                    GrandMysteryBox.reward(player);
-                }
-                break;
-            case "epic_pet_box":
-                player.inventory().add(new Item(EPIC_PET_BOX, amount));
-                for (int i = 0; i < amount; i++) {
-                    EpicPetMysteryBox.open(player);
-                }
-                break;
-            case "legendary_box":
-                for (int i = 0; i < amount; i++) {
-                    Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(LEGENDARY_MYSTERY_BOX);
-                    if (mBox.isPresent()) {
-                        player.getMysteryBox().box = mBox.get();
-                        MboxItem mboxItem = mBox.get().rollReward().copy();
-                        player.getMysteryBox().reward = mboxItem;
-                        player.getMysteryBox().broadcast = mboxItem.broadcastItem;
-                        player.getMysteryBox().reward();
-                    }
-                }
-                break;
-            case "weapon_box":
-                for (int i = 0; i < amount; i++) {
-                    Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(WEAPON_MYSTERY_BOX);
-                    if (mBox.isPresent()) {
-                        player.getMysteryBox().box = mBox.get();
-                        MboxItem mboxItem = mBox.get().rollReward().copy();
-                        player.getMysteryBox().reward = mboxItem;
-                        player.getMysteryBox().broadcast = mboxItem.broadcastItem;
-                        player.getMysteryBox().reward();
-                    }
-                }
-                break;
+            }
         }
         player.message("You have opened "+amount+" "+box_name.replaceAll("_", " ")+"'s.");
     }

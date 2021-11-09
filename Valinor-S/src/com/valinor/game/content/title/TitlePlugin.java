@@ -250,8 +250,6 @@ public class TitlePlugin extends PacketInteraction {
         titles.add(create("Maxed", category).addRequirement(maxRequirement));
         titles.add(create("Completionist", category).addRequirement(maxRequirement).addRequirement(new AllAchievementsRequirement()));
         titles.add(create("The Skiller", category).addRequirement(new MasteryNonCombat()));
-        RockyBalboaRequirement rockyBalboaRequirement = new RockyBalboaRequirement();
-        titles.add(create("Rocky balboa", category).addRequirement(rockyBalboaRequirement));
 
         titles.addAll(create(WinStakeRequirement.class, category,
             50, "The Staker",

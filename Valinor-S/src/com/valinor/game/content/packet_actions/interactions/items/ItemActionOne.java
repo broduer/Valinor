@@ -8,7 +8,7 @@ import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.items.MithrilSeeds;
 import com.valinor.game.content.items.RockCake;
 import com.valinor.game.content.items.mystery_box.MboxItem;
-import com.valinor.game.content.items.mystery_box.MysteryBox;
+import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.content.items.tools.ItemPacks;
 import com.valinor.game.content.skill.impl.herblore.Cleaning;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
@@ -212,7 +212,7 @@ public class ItemActionOne {
                 if (player.inventory().contains(item)) {
                     player.inventory().remove(new Item(item), true);
 
-                    Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(item.getId());
+                    Optional<Mbox> mBox = Mbox.getMysteryBox(item.getId());
 
                     if (mBox.isEmpty()) {
                         return;

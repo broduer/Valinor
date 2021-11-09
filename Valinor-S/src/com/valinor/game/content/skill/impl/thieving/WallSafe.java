@@ -35,7 +35,7 @@ public class WallSafe extends PacketInteraction {
     }
 
     private static final LootTable table = new LootTable().addTable(1,
-        new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 50 : 5000, GameServer.properties().pvpMode ? 200 : 20000, 295),
+        new LootItem(COINS_995, 5000, 20000, 295),
         new LootItem(1623, 1, 100),     //sapphire 1/5
         new LootItem(1621, 1, 50),      //emerald 1/10
         new LootItem(1619, 1, 33),      //ruby 1/15

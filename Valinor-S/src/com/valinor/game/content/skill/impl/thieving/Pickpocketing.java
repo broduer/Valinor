@@ -119,11 +119,11 @@ public class Pickpocketing extends PacketInteraction {
 
         MAN(1, 8.0, 422, 5, 1, 52000, "man's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 5 : 500, GameServer.properties().pvpMode ? 7 : 700, 1)  //Coins
+                new LootItem(COINS_995, 500, 700, 1)  //Coins
             )),
         FARMER(10, 14.5, 433, 5, 1,43500,"farmer's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 6 : 600, GameServer.properties().pvpMode ? 10 : 1000, 6), //Coins
+                new LootItem(COINS_995, 600, 1000, 6), //Coins
                 new LootItem(5318, 1, 1) //Potato seed
             )),
         HAM(15, 18.5, 433, 4, 1, 43500,"H.A.M member's",
@@ -144,7 +144,7 @@ public class Pickpocketing extends PacketInteraction {
                 new LootItem(4306, 1, 1), //Coins
                 new LootItem(4308, 1, 1), //Coins
                 new LootItem(4310, 1, 1), //Coins
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 12 : 1200, 1), //Coins
+                new LootItem(COINS_995, 1200, 1), //Coins
                 new LootItem(319, 1, 1), //Coins
                 new LootItem(2138, 1, 1), //Coins
                 new LootItem(453, 1, 1), //Coins
@@ -164,11 +164,11 @@ public class Pickpocketing extends PacketInteraction {
             )),
         WARRIOR(25, 26.0, 386, 5, 2, 39000,"warrior's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 9 : 900, GameServer.properties().pvpMode ? 12 : 1200, 1) //Coins
+                new LootItem(COINS_995, 900, 1200, 1) //Coins
             )),
         ROGUE(32, 35.5, 422, 5, 2, 34500,"rogue's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 25 : 2500, GameServer.properties().pvpMode ? 50 : 5000, 10), //Coins
+                new LootItem(COINS_995, 2500, 5000, 10), //Coins
                 new LootItem(556, 8, 5),  //Air runes
                 new LootItem(1933, 1, 4), //Jug of wine
                 new LootItem(1219, 1, 3), //Iron dagger(p)
@@ -204,26 +204,26 @@ public class Pickpocketing extends PacketInteraction {
             )),
         GUARD(40, 46.8, 386, 5, 2, 23000,"guard's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 15 : 1500, GameServer.properties().pvpMode ? 20 : 2000, 1) //Coins
+                new LootItem(COINS_995, 1500, 2000, 1) //Coins
             )),
         BANDIT(53, 79.5, 422, 5, 3, 23000,"bandit's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 20 : 2000, GameServer.properties().pvpMode ? 28 : 2800, 8), //Coins
+                new LootItem(COINS_995, 2000, 2800, 8), //Coins
                 new LootItem(175, 1, 3),  //Antipoison
                 new LootItem(1523, 1, 1)  //Lockpick
             )),
         KNIGHT(55, 84.3, 386, 5, 3, 19000,"knight's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 30 : 3000, GameServer.properties().pvpMode ? 40 : 4000, 1) //Coins
+                new LootItem(COINS_995, 3000, 4000, 1) //Coins
             )),
         PALADIN(70, 151.75, 386, 5, 3, 12000,"paladin's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 40 : 4000, GameServer.properties().pvpMode ? 45 : 4500, 6), //Coins
+                new LootItem(COINS_995, 4000, 4500, 6), //Coins
                 new LootItem(562, 2, 3)   //Chaos runes
             )),
         GNOME(75, 198.5, 201, 5, 1, 11540,"gnome's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 40 : 4000, GameServer.properties().pvpMode ? 45 : 4500, 16), //Coins
+                new LootItem(COINS_995, 4000, 4500, 16), //Coins
                 new LootItem(5321, 3, 8),   //Watermelon seed
                 new LootItem(5100, 1, 8),   //Limpwurt seed
                 new LootItem(5295, 1, 7),   //Ranarr seed
@@ -249,7 +249,7 @@ public class Pickpocketing extends PacketInteraction {
             )),
         HERO(80, 275.0, 386, 6, 4, 9700,"hero's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 50 : 5000, GameServer.properties().pvpMode ? 60 : 6000, 16),  //Coins
+                new LootItem(COINS_995, 5000, 6000, 16),  //Coins
                 new LootItem(565, 1, 5),  //Blood rune
                 new LootItem(560, 2, 5),  //Death runes
                 new LootItem(1933, 1, 2), //Jug of wine
@@ -259,7 +259,7 @@ public class Pickpocketing extends PacketInteraction {
             )),
         ELF(85, 353.0, 422, 6, 5, 8500,"elf's",
             new LootTable().addTable(1,
-                new LootItem(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, GameServer.properties().pvpMode ? 55 : 5500, GameServer.properties().pvpMode ? 65 : 6500, 16), //Coins
+                new LootItem(COINS_995, 5500,6500, 16), //Coins
                 new LootItem(561, 3, 5),  //Nature runes
                 new LootItem(560, 2, 5),  //Death runes
                 new LootItem(1933, 1, 2), //Jug of wine

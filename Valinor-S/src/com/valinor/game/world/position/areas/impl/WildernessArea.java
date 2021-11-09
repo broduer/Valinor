@@ -137,12 +137,10 @@ public class WildernessArea extends Controller {
                 if (lvl > 0) {
                     // ONLY SET THIS WHEN ENTERING not 24.7 ever tick
                     player.putAttrib(AttributeKey.INWILD, World.getWorld().cycleCount());
-                    player.getPacketSender().sendString(53722, "Earning Potential: <col=65280>" + player.<Integer>getAttribOr(AttributeKey.EARNING_POTENTIAL, 0) + "%");
-                    player.getPacketSender().sendString(53724, "Wilderness Level: <col=65280>" + lvl);
                     player.getPacketSender().sendString(199, "Level: " + lvl);
                     player.getPacketSender().sendInteractionOption("Attack", 2, true);
                 }
-                player.getInterfaceManager().openWalkable(53720);
+                player.getInterfaceManager().openWalkable(197);
             }
 
             if (!BountyHunter.PLAYERS_IN_WILD.contains(player)) {

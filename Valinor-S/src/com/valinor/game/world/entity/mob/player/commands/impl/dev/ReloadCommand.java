@@ -4,7 +4,6 @@ import com.valinor.game.content.seasonal_events.halloween.Halloween;
 import com.valinor.game.content.skill.impl.fishing.Fishing;
 import com.valinor.game.world.World;
 import com.valinor.game.world.definition.loader.impl.ObjectSpawnDefinitionLoader;
-import com.valinor.game.world.definition.loader.impl.PresetLoader;
 import com.valinor.game.world.definition.loader.impl.ShopLoader;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -73,10 +72,6 @@ public class ReloadCommand implements Command {
                 }
             });*/
             new ObjectSpawnDefinitionLoader().run();
-            player.message("Finished.");
-        } else if (reload.equalsIgnoreCase("presets")) {
-            player.message("Reloading presets...");
-            new PresetLoader().run();
             player.message("Finished.");
         }
     }

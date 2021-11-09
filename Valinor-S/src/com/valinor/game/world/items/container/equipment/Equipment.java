@@ -439,10 +439,6 @@ public final class Equipment extends ItemContainer {
         }
 
         if (MAX_CAPES.contains(equip.getId()) || MAX_HOODES.contains(equip.getId())) {
-            if(player.mode() == GameMode.INSTANT_PKER && GameServer.properties().pvpMode) {
-                player.message("<col=FF0000>Only trained accounts can wear the max cape and hood.");
-                return false;
-            }
             if(!MaxCape.hasTotalLevel(player)) {
                 player.message("You need a Total Level of " + Mac.TOTAL_LEVEL_FOR_MAXED + " to wear this cape or hood.");
                 return false;

@@ -40,7 +40,7 @@ public class MysteryBoxManager {
     private int count;
     private boolean isSpinning = false;
     public Item reward;
-    public MysteryBox box;
+    public Mbox box;
     public boolean broadcast = false;
 
     public boolean isSpinning() {
@@ -52,7 +52,7 @@ public class MysteryBoxManager {
     }
 
     public boolean onItemonItem(Item use, Item with) {
-        Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(with.getId());
+        Optional<Mbox> mBox = Mbox.getMysteryBox(with.getId());
 
         if (mBox.isEmpty()) {
             return false;
@@ -76,7 +76,7 @@ public class MysteryBoxManager {
     }
 
     public boolean open(Item item) {
-        Optional<MysteryBox> mBox = MysteryBox.getMysteryBox(item.getId());
+        Optional<Mbox> mBox = Mbox.getMysteryBox(item.getId());
 
         if (mBox.isEmpty()) {
             return false;

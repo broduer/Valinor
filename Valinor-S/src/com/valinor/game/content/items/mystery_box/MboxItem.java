@@ -17,7 +17,7 @@ public class MboxItem extends Item {
     }
 
     /**
-     * optional rarity type override beyond {@link MysteryBox#}
+     * optional rarity type override beyond {@link Mbox#}
      * @param rarity
      * @return
      */

@@ -14,8 +14,6 @@ public class ObjectSpawnDefinition {
     private int id;
     private Tile tile;
     private boolean enabled = true;
-    public boolean PVPWorldExclusive = false;
-    public boolean economyExclusive = false;
 
     public void setFace(int face) {
         this.face = face;

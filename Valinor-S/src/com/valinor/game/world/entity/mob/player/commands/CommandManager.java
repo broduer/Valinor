@@ -73,8 +73,6 @@ public class CommandManager {
         commands.put("yell", new YellCommand());
         commands.put("master", new MasterCommand());
         commands.put("claimpet", new ClaimPet());
-        commands.put("toggledidyouknow", new ToggleDidYouKnowCommand());
-        commands.put("showdidyouknow", new ShowDidYouKnowCommand());
         commands.put("home", new HomeCommand());
         commands.put("exit", new ExitCommand());
         commands.put("staff", new StaffCommand());

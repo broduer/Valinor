@@ -18,14 +18,6 @@ public class ObjectSpawnDefinitionLoader extends DefinitionLoader {
             for (ObjectSpawnDefinition def : defs) {
                 if (!def.isEnabled())
                     continue;
-                if (!GameServer.properties().pvpMode && def.PVPWorldExclusive) {
-                    //Skip PVP objects in eco world.
-                    continue;
-                }
-                if (GameServer.properties().pvpMode && def.economyExclusive) {
-                    //Skip eco objects in PVP world.
-                    continue;
-                }
                 ObjectManager.addObj(new GameObject(def.getId(), def.getTile(), def.getType(), def.getFace()));
             }
         }

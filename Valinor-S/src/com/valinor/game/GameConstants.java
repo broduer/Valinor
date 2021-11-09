@@ -37,15 +37,7 @@ public class GameConstants {
         new Item(FIRE_RUNE, 1000), new Item(WATER_RUNE, 1000), new Item(AIR_RUNE, 1000), new Item(EARTH_RUNE, 1000), new Item(MIND_RUNE, 1000),
         //Food (Lobsters, noted)
         new Item(LOBSTER+1, 50)
-
     };
-
-    /**
-     * The server currency
-     */
-    public static int CURRENCY = GameServer.properties().pvpMode ? BLOOD_MONEY : ItemIdentifiers.COINS_995;
-
-    public static String CURRENCY_STRING = GameServer.properties().pvpMode ? "BM" : "coins";
 
     public static final String SERVER_NAME = "Valinor";
 

@@ -25,5 +25,5 @@ public class AchievementUtility {
     public static final String ORANGE = "<col=FF9900>";
     public static final String GREEN = "<col=00FF00>";
 
-    public static final Item DEFAULT_REWARD = GameServer.properties().pvpMode ? new Item(BLOOD_MONEY, 1_000) : new Item(COINS_995, 2_500_000);
+    public static final Item DEFAULT_REWARD = new Item(COINS_995, 2_500_000);
 }

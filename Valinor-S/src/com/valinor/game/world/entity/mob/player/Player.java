@@ -22,7 +22,6 @@ import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.impl.AlchemicalHydraInstance;
 import com.valinor.game.content.instance.impl.VorkathInstance;
 import com.valinor.game.content.instance.impl.ZulrahInstance;
-import com.valinor.game.content.item_forging.ItemForgingTable;
 import com.valinor.game.content.items.mystery_box.MysteryBoxManager;
 import com.valinor.game.content.kill_logs.BossKillLog;
 import com.valinor.game.content.kill_logs.SlayerKillLog;
@@ -2702,12 +2701,6 @@ public class Player extends Mob {
     }
 
     Player tournamentOpponent;
-
-    private final ItemForgingTable itemForgingTable = new ItemForgingTable();
-
-    public ItemForgingTable getItemForgingTable() {
-        return itemForgingTable;
-    }
 
     private final HashMap<Achievements, Integer> achievements = new HashMap<>(Achievements.values().length) {
         @Serial

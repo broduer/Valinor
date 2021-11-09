@@ -314,7 +314,6 @@ public class PlayerSave {
                 player.putAttrib(ZGS_GFX_GOLD, details.gold_zgs_spec);
                 player.putAttrib(XP_LOCKED, details.xpLocked);
                 player.putAttrib(LEVEL_UP_INTERFACE, details.levelUpMessages);
-                player.putAttrib(DID_YOU_KNOW, details.enableDidYouKnow);
                 player.putAttrib(DEBUG_MESSAGES, details.enableDebugMessages);
                 player.getPresetManager().setSaveLevels(details.savePresetLevels);
                 player.getPresetManager().setOpenOnDeath(details.openPresetsOnDeath);
@@ -448,9 +447,6 @@ public class PlayerSave {
                     player.achievements().putAll(details.achievements);
                 }
                 player.putAttrib(ACHIEVEMENTS_COMPLETED, details.achievementsCompleted);
-                player.putAttrib(ANTI_FIRE_RESISTANT, details.antiFireResistant);
-                player.putAttrib(VENOM_RESISTANT, details.venomResistant);
-                player.putAttrib(ROCKY_BALBOA_TITLE_UNLOCKED, details.rockyBalboaTitle);
                 if (details.task != null) {
                     player.putAttrib(TASK, details.task);
                 }
@@ -849,7 +845,6 @@ public class PlayerSave {
         private final boolean gold_zgs_spec;
         private final boolean xpLocked;
         private final boolean levelUpMessages;
-        private final boolean enableDidYouKnow;
         private final boolean enableDebugMessages;
         private final boolean savePresetLevels;
         private final boolean openPresetsOnDeath;
@@ -977,9 +972,6 @@ public class PlayerSave {
         private final HashMap<Collection, ArrayList<Item>> collectionLog;
         private final HashMap<Achievements, Integer> achievements;
         private final int achievementsCompleted;
-        private final boolean antiFireResistant;
-        private final boolean venomResistant;
-        private final boolean rockyBalboaTitle;
         private final Tasks task;
         private final int taskAmount;
         private final int taskCompletionAmount;
@@ -1396,7 +1388,6 @@ public class PlayerSave {
             gold_zgs_spec = Player.getAttribBooleanOr(player, ZGS_GFX_GOLD, false);
             xpLocked = Player.getAttribBooleanOr(player, XP_LOCKED, false);
             levelUpMessages = Player.getAttribBooleanOr(player, LEVEL_UP_INTERFACE, true);
-            enableDidYouKnow = Player.getAttribBooleanOr(player, DID_YOU_KNOW, true);
             enableDebugMessages = Player.getAttribBooleanOr(player, DEBUG_MESSAGES, true);
             savePresetLevels = player.getPresetManager().saveLevels();
             openPresetsOnDeath = player.getPresetManager().openOnDeath();
@@ -1514,9 +1505,6 @@ public class PlayerSave {
             collectionLog = player.getCollectionLog().collectionLog;
             achievements = player.achievements();
             achievementsCompleted = Player.getAttribIntOr(player, ACHIEVEMENTS_COMPLETED, 0);
-            antiFireResistant = Player.getAttribBooleanOr(player, ANTI_FIRE_RESISTANT, false);
-            venomResistant = Player.getAttribBooleanOr(player, VENOM_RESISTANT, false);
-            rockyBalboaTitle = Player.getAttribBooleanOr(player, ROCKY_BALBOA_TITLE_UNLOCKED, false);
             task = player.getAttribOr(TASK, Tasks.NONE);
             taskAmount = Player.getAttribIntOr(player, TASK_AMOUNT, 0);
             taskCompletionAmount = Player.getAttribIntOr(player, TASK_COMPLETE_AMOUNT, 0);

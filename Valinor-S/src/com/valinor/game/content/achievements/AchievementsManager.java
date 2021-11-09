@@ -84,15 +84,6 @@ public class AchievementsManager {
                 player.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, slayerPoints);
                 player.getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(player));
                 break;
-            case PET_TAMER_I:
-                player.putAttrib(AttributeKey.ANTI_FIRE_RESISTANT,true);
-                break;
-            case PET_TAMER_II:
-                player.putAttrib(AttributeKey.VENOM_RESISTANT,true);
-                break;
-            case PUNCHING_BAGS_III:
-                player.putAttrib(AttributeKey.ROCKY_BALBOA_TITLE_UNLOCKED,true);
-                break;
         }
     }
 

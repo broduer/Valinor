@@ -35,10 +35,6 @@ public class Mac extends PacketInteraction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if(npc.id() == MAC) {
-                if(GameServer.properties().pvpMode && player.mode() == GameMode.INSTANT_PKER) {
-                    player.message("Instant pkers cannot purchase a Max cape.");
-                    return true;
-                }
                 npc.face(player.tile());
                 initiate(player);
                 return true;
@@ -103,8 +99,8 @@ public class Mac extends PacketInteraction {
     }
 
     private void onSuccess(Player player) {
-        String currency = GameServer.properties().pvpMode ? "bm" : "coins";
-        int amount = GameServer.properties().pvpMode ? 50_000 : 50_000_000;
+        String currency = "coins";
+        int amount = 50_000_000;
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
@@ -119,11 +115,11 @@ public class Mac extends PacketInteraction {
                     setPhase(1);
                 } else if(isPhase(2)) {
                     var canAfford = false;
-                    int currencyInInventory = player.inventory().count(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995);
+                    int currencyInInventory = player.inventory().count(COINS_995);
                     if (currencyInInventory > 0) {
                         if(currencyInInventory >= amount) {
                             canAfford = true;
-                            player.inventory().remove(new Item(GameServer.properties().pvpMode ? BLOOD_MONEY : COINS_995, amount),true);
+                            player.inventory().remove(new Item(COINS_995, amount),true);
                         }
                     }
 
@@ -146,7 +142,7 @@ public class Mac extends PacketInteraction {
 
             @Override
             protected void select(int option) {
-                String currency = GameServer.properties().pvpMode ? "bm" : "coins";
+                String currency = "coins";
                 if(isPhase(1)) {
                     if(option == 1) {
                         send(DialogueType.PLAYER_STATEMENT, HAPPY, "Yes, I understand. Take my "+currency+".");

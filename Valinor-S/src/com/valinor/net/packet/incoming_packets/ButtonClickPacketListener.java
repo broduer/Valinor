@@ -123,15 +123,6 @@ public class ButtonClickPacketListener implements PacketListener {
             }
         }
 
-        //If the player accepts their appearance then they can continue making their account.
-        if (player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT,false) && button == 3651) {
-            if (GameServer.properties().pvpMode) {
-                //Tutorial.start(player);
-                AccountSelection.open(player);
-            }
-            return;
-        }
-
         if(player.locked()) {
             // unique case: since prayers always 'activate' when clicked client side, we'll try to just wait until
             // we unlock and trigger the button so the client stays in sync.

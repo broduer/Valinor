@@ -375,10 +375,6 @@ public enum AttributeKey {
      */
     SCORPIA_GUARDIANS_SPAWNED,
 
-    ROCKY_BALBOA_TITLE_UNLOCKED("rocky_balboa_title_unlocked", AttribType.BOOLEAN),
-    ANTI_FIRE_RESISTANT("anti_fire_resistant", AttribType.BOOLEAN),
-    VENOM_RESISTANT("venom_resistant", AttribType.BOOLEAN),
-
     /**
      * The items stored in the cart from the item dispenser.
      */
@@ -985,7 +981,6 @@ public enum AttributeKey {
 
     SOUND_VOLUME,
 
-    DID_YOU_KNOW("did_you_know_activated", AttribType.BOOLEAN),
     DEBUG_MESSAGES("debug_messages_activated", AttribType.BOOLEAN),
 
     /**
