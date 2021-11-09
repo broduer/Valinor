@@ -441,13 +441,6 @@ public class PacketSender {
         buffer.writeShort(playerIndex);
     }
 
-    public void sendSpawnTabSelection(int item, boolean spawnX, boolean toBank) {
-        buffer.writeOpcode(187);
-        buffer.writeInt(item);
-        buffer.writeByte(spawnX ? 1 : 0);
-        buffer.writeByte(toBank ? 1 : 0);
-    }
-
     public void sendSpecialAttackToggle(int interfaceId) {
         buffer.writeOpcode(184);
         buffer.writeInt(interfaceId);
