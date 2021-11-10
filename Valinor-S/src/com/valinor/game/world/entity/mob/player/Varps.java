@@ -1,7 +1,6 @@
 package com.valinor.game.world.entity.mob.player;
 
 import com.valinor.fs.VarbitDefinition;
-import com.valinor.game.content.skill.impl.farming.patch.Farmbit;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.util.Varp;
@@ -131,20 +130,5 @@ public class Varps {
 
     public boolean varpBool(int varp) {
         return varp(varp) == 1;
-    }
-
-    //TODO need Jak
-    public int farmbit(Farmbit farmbit) {
-        var value = player().<Integer>getAttribOr(farmbit.attrib, 0);
-        return 0;/*value.shr(farmbit.bitStart).and(0xFF);*/
-    }
-
-     public void farmbit(Farmbit farmbit, int v) {
-        /*var value = player().<Integer>getAttribOr(farmbit.attrib, 0);
-         var newval = value.and(0xFF.shl(farmbit.bitStart).inv()).or(v.shl(farmbit.bitStart));
-        player().putAttrib(farmbit.attrib, newval);
-
-        // Synch that one. Only updates if in the correct region.
-        Farming.synch(player(), farmbit,false);*/
     }
 }

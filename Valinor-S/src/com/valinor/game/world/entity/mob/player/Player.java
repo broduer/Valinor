@@ -40,8 +40,6 @@ import com.valinor.game.content.raids.Raids;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
 import com.valinor.game.content.skill.Skillable;
-import com.valinor.game.content.skill.impl.farming.Farming;
-import com.valinor.game.content.skill.impl.farming.patch.Farmbit;
 import com.valinor.game.content.skill.impl.farmingOld.FarmingOld;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
@@ -3268,15 +3266,6 @@ public class Player extends Mob {
 
         if (lastregion != tile.region() || lastChunk != tile.chunk()) {
             MultiwayCombat.refresh(this, lastregion, lastChunk);
-
-            //TODO Have Jak check
-            // Register the unique farmbit regions
-            var uniqueRegions = Arrays.stream(Farmbit.values()).map(fb -> fb.visibleRegion).collect(Collectors.toList());
-            for (int region : uniqueRegions) {
-                if(lastregion == region) {
-                    Farming.synchRegion(this);
-                }
-            }
         }
 
         // Update last region and chunk ids
