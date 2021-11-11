@@ -111,40 +111,39 @@ public class Farming {
      * Updates all the crop's timers.
      */
     public void updateCropStages(Player player) {
-
-        patch_states.keySet().stream().forEach(patch_name -> {
+        System.out.println("Enter updateCropStages");
+        patch_states.keySet().forEach(patch_name -> {
+            //System.out.println("Enter loop");
 
             Patches data = Patches.get(patch_name);
             PatchState patch = patch_states.get(patch_name);
 
             if (data == null || patch == null) {
+                System.out.println("data null.");
                 return;
             }
 
             if (patch.isDead()) {
+                System.out.println("dead patch.");
                 return;
             }
 
+            System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
             if (System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed()) {
-
+                System.out.println("ticking");
                 if (!FarmingConstants.isFullyGrown(patch)) {
-
+                    System.out.println("Not fully grown yet");
                     if (FarmingConstants.inGrowthInterval(patch)) {
-
+                        System.out.println("enter interval");
                         patch.resetLastStageGrowthMoment();
-
                         if (patch.getProtection() == PatchProtection.NOT_PROTECTED && patch.getDiseaseState() == DiseaseState.NOT_PRESENT &&
                             FarmingConstants.hasToApplyDisease(patch) && patch.getStage() + 1 < patch.getSeed().getMaxGrowth() &&
                             patch.getStage() > patch.getSeed().getMinGrowth() + 1) {
-
                             patch.setDiseaseState(DiseaseState.PRESENT);
-
                         } else if (patch.getDiseaseState() == DiseaseState.PRESENT) {
-
                             patch.setDead(true);
-
                         } else {
-
+                            System.out.println("Update stage");
                             patch.setStage(patch.getStage() + 1);
                             if (!FarmingConstants.isFullyGrown(patch)) {
                                 patch.setWatered(patch.getProtection() != PatchProtection.NOT_PROTECTED);
@@ -152,17 +151,13 @@ public class Farming {
                                 player.message("One or more farming crops have fully grown.");
                             }
                             patch.setLivesAmount(3 + patch.getTreatment().getLivesIncrease());
-
                         }
                     }
                 }
             } else if (!patch.isUsed()) {
-
                 if (patch.getWeedStage() > 0 && (System.currentTimeMillis() - patch.getLastStageChangeMoment() >= 2 * 60_000)) {
-
                     patch.resetLastStageGrowthMoment();
                     patch.setWeedStage(patch.getWeedStage() - 1);
-
                 }
             }
         });
@@ -172,8 +167,8 @@ public class Farming {
      * Updates all the patches for the player.
      */
     public void updatePatches(Player player) {
+        //System.out.println("Enter updatePatches");
         final Map<Integer, BitConfigBuilder> configMap = new HashMap<>();
-
         patch_states.keySet().stream().filter(patch_name -> {
             Patches data = Patches.get(patch_name);
 
@@ -183,14 +178,14 @@ public class Farming {
 
             for (Tile tile : data.getAllotmentTile()) {
                 if (player.tile().getDistance(tile) <= 56) {
-                    System.out.println("ALLOW "+player.getUsername());
+                    //System.out.println("ALLOW "+player.getUsername());
                     return true;
                 }
             }
-            System.out.println("FILTER "+player.getUsername());
+            //System.out.println("FILTER "+player.getUsername());
             return false;
         }).forEach(patch_name -> {
-            System.out.println("Looking for patches");
+            //System.out.println("Looking for patches");
             Patches data = Patches.get(patch_name);
             PatchState patch = patch_states.get(patch_name);
             BitConfigBuilder config = configMap.getOrDefault(data.getConfigId(), new BitConfigBuilder(data.getConfigId()));
@@ -207,11 +202,11 @@ public class Farming {
                     config.set(0xAB, data.getPatchBitOffset());
                 }
             } else if (patch.getDiseaseState() == DiseaseState.PRESENT) {
-                System.out.println("Patch isn't dead, continue looking");
+                //System.out.println("Patch isn't dead, continue looking");
                 if (data.getPatchType() == FarmingPatchType.ALLOTMENT || data.getPatchType() == FarmingPatchType.FLOWER_PATCH) {
                     config.set(2 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
                 } else if (data.getPatchType() == FarmingPatchType.HERB_PATCH) {
-                    System.out.println("Found herb patch");
+                    //System.out.println("Found herb patch");
                     config.set(1 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
                 }
             }

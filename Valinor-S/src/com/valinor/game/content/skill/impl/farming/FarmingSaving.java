@@ -32,12 +32,12 @@ public class FarmingSaving {
 
         if (!Files.isDirectory(SAVE_DIRECTORY)) {
             if (Files.exists(SAVE_DIRECTORY)) {
-                log.error("Path [{}] exists, but is NOT a directory. Save games will not work.", SAVE_DIRECTORY);
+                log.error("Path [{}] exists, but is NOT a directory. Save farming will not work.", SAVE_DIRECTORY);
             } else {
                 try {
                     Files.createDirectories(SAVE_DIRECTORY);
                 } catch (IOException | SecurityException e) {
-                    log.error("Unable to create savegame directory: {}", SAVE_DIRECTORY, e);
+                    log.error("Unable to create save farming directory: {}", SAVE_DIRECTORY, e);
                 }
             }
         }
@@ -67,7 +67,6 @@ public class FarmingSaving {
      * @return if it was successful
      */
     public static boolean save(Player player) {
-        System.out.println("Save farming");
 
         File file = getPathToSaveFile(player.getUsername()).toFile();
 

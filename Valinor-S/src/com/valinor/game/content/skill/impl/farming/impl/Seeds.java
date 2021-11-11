@@ -15,7 +15,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 public enum Seeds {
 
-    HERB_GUAM(FarmingPatchType.HERB_PATCH, 9, 12, 5291, 199, 249, 0x04, 0x08, 5, 7, 10),
+    HERB_GUAM(FarmingPatchType.HERB_PATCH, 9, 12, 5291, 199, 249, 0x04, 0x08, 5, 7, 1),
     HERB_MARRENTILL(FarmingPatchType.HERB_PATCH, 14, 15, 5292, 201, 251, 0x0b, 0x0f, 5, 7, 10),
     HERB_TARROMIN(FarmingPatchType.HERB_PATCH, 19, 18, 5293, 203, 253, 0x12, 0x16, 5, 7, 10),
     HERB_HARRALANDER(FarmingPatchType.HERB_PATCH, 26, 24, 5294, 205, 255, 0x19, 0x1d, 5, 7, 10),
@@ -96,7 +96,7 @@ public enum Seeds {
     /**
      * The clean product item ID.
      */
-    private int cleanItemId;
+    private final int cleanItemId;
 
     /**
      * The bit of minimum growth.

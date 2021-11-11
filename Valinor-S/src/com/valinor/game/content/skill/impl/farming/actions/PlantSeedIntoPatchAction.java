@@ -32,12 +32,12 @@ public class PlantSeedIntoPatchAction extends PlayerTask {
             var aAn = Utils.getAOrAn(new Item(seed_data.getSeedItemId()).name().toLowerCase());
             player.message("You plant "+aAn+" "+World.getWorld().definitions().get(ItemDefinition.class, seed_data.getSeedItemId()).name.toLowerCase()+" in the herb patch.");
             player.skills().addXp(Skills.FARMING, seed_data.getExperience());
-            player.getFarming().updatePatches(player);//update varbit, //TODO doesn't seem to work
             //Update farming attribs
             state.resetLastStageGrowthMoment();
             state.setStage(seed_data.getMinGrowth());
             state.setDiseaseState(DiseaseState.getImmunity(player, seed_data.getSeedItemId(), data));
             state.setSeed(seed_data);
+            player.getFarming().updatePatches(player);//update varbit
             player.endCurrentTask();
         });
 
@@ -89,7 +89,6 @@ public class PlantSeedIntoPatchAction extends PlayerTask {
             player.message("You must be a Level "+seed.getLevelReq()+" Farmer to plant those.");
             return true;
         }
-
 
         // Plant the seeds
         player.face(tile);
