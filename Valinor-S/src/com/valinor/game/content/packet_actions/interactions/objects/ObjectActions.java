@@ -1,10 +1,13 @@
 package com.valinor.game.content.packet_actions.interactions.objects;
 
+import com.valinor.game.content.skill.impl.farming.Farming;
+import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.smithing.Bar;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteractionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -31,6 +34,7 @@ public class ObjectActions {
         }
 
         final String name = object.definition().name;
+        Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
 
         final boolean bank = object.getId() == OPEN_CHEST_3194 || name.equalsIgnoreCase("Bank booth") || name.equalsIgnoreCase("Bank chest") || name.equalsIgnoreCase("Grand Exchange booth");
         if (clickAction == 1) {
@@ -77,9 +81,13 @@ public class ObjectActions {
                 return;
             }
 
-            if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),1)) {
+            if (Farming.handleActions(player, FarmingConstants.FIRST_CLICK_OBJECT, tile, -1)) {
                 return;
             }
+
+            /*if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),1)) {
+                return;
+            }*/
         }
 
         if (clickAction == 2) {
@@ -108,13 +116,17 @@ public class ObjectActions {
                 return;
             }
 
-            if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),2)) {
+            /*if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),2)) {
                 //System.out.println("object option 2, farming old system.");
                 return;
-            }
+            }*/
 
             if (PacketInteractionManager.checkObjectInteraction(player, object, 2)) {
                 //System.out.println("object option 2, checkObjectInteraction.");
+                return;
+            }
+
+            if (Farming.handleActions(player, FarmingConstants.SECOND_CLICK_OBJECT, tile, -1)) {
                 return;
             }
             return;

@@ -337,6 +337,26 @@ public final class PacketSender {
         return this;
     }
 
+    public PacketSender sendConfigInt(int id, int state) {
+        PacketBuilder builder = new PacketBuilder(87);
+        builder.putShort(id, ByteOrder.LITTLE);
+        builder.putInt(state, ByteOrder.MIDDLE);
+        player.getSession().write(builder);
+        return this;
+    }
+
+    public PacketSender sendConfigByte(int id, int state) {
+        if (state > 0xFF) {
+            sendConfigInt(id, state);
+            return this;
+        }
+        PacketBuilder builder = new PacketBuilder(36);
+        builder.putShort(id, ByteOrder.LITTLE);
+        builder.put(state);
+        player.getSession().write(builder);
+        return this;
+    }
+
     /**
      * Sends a configuration button's state.
      *

@@ -4,8 +4,13 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.duel.DuelRule;
+import com.valinor.game.content.skill.impl.farming.impl.DiseaseState;
+import com.valinor.game.content.skill.impl.farming.impl.PatchState;
+import com.valinor.game.content.skill.impl.farming.impl.Patches;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
+import com.valinor.game.task.Task;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
@@ -1448,6 +1453,42 @@ public class MagicClickSpells {
 
         if (!spell.get().getSpell().canCast(player, null,true)) {
             return false;
+        }
+
+        if (spell.get() == MagicSpells.CURE_PLANT) {
+
+            Patches patch = Patches.get(tile.getX(), tile.getY());
+
+            if (patch == null) {
+                return false;
+            }
+
+            PatchState state = player.getFarming().getPatchStates().get(patch.name());
+
+            if (state == null || state.getDiseaseState() != DiseaseState.PRESENT) {
+                player.message("This patch has no disease on it.");
+                return true;
+            }
+
+            if (state.getDiseaseState() == DiseaseState.IMMUNE) {
+                player.message("This patch is already immune to diseases.");
+                return true;
+            }
+
+            player.face(tile);
+            player.animate(4413);
+            player.graphic(748, 100,0);
+            player.message("Your spell starts to cure the plant...");
+
+            TaskManager.submit(new Task("cure_plant_spell_task", 3) {
+                @Override
+                protected void execute() {
+                    state.setDiseaseState(DiseaseState.NOT_PRESENT);
+                    player.getFarming().updatePatches(player);
+                    player.message("The plant is fully cured from the disease.");
+                    this.stop();
+                }
+            });
         }
         return true;
     }

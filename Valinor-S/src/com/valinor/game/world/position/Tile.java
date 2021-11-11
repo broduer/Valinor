@@ -199,6 +199,19 @@ public class Tile implements Cloneable {
     }
 
     /**
+     * Gets the distance between this position and another position. Only X and
+     * Y are considered (i.e. 2 dimensions).
+     *
+     * @param other The other position.
+     * @return The distance.
+     */
+    public int getDistance(Tile other) {
+        int deltaX = x - other.x;
+        int deltaY = y - other.y;
+        return (int) Math.ceil(Math.sqrt(deltaX * deltaX + deltaY * deltaY));
+    }
+
+    /**
      * Checks if this location is within range of another.
      * @param other The other location.
      * @return <code>true</code> if the location is in range,

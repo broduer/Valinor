@@ -4,6 +4,7 @@ package com.valinor.net.login;
 import com.valinor.GameServer;
 import com.valinor.db.transactions.GetBanStatusDatabaseTransaction;
 import com.valinor.db.transactions.verifyOrInsertUserDatabaseTransaction;
+import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -186,6 +187,7 @@ public final class LoginResponses {
         if (player.getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
             // save the profile immediately
             PlayerSave.save(player);
+            FarmingSaving.save(player);
         }
         return LOGIN_SUCCESSFUL;
     }

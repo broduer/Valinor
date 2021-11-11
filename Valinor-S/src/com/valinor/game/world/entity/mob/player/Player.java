@@ -1,7 +1,8 @@
 package com.valinor.game.world.entity.mob.player;
 
 import com.valinor.GameServer;
-import com.valinor.db.transactions.*;
+import com.valinor.db.transactions.InsertPlayerIPDatabaseTransaction;
+import com.valinor.db.transactions.UpdatePlayerInfoDatabaseTransaction;
 import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
@@ -20,6 +21,7 @@ import com.valinor.game.content.gambling.GambleState;
 import com.valinor.game.content.gambling.GamblingSession;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.impl.AlchemicalHydraInstance;
+import com.valinor.game.content.instance.impl.KrakenInstance;
 import com.valinor.game.content.instance.impl.VorkathInstance;
 import com.valinor.game.content.instance.impl.ZulrahInstance;
 import com.valinor.game.content.items.mystery_box.MysteryBoxManager;
@@ -39,7 +41,10 @@ import com.valinor.game.content.presets.Presetable;
 import com.valinor.game.content.raids.Raids;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
+import com.valinor.game.content.security.impl.EnterAccountPin;
 import com.valinor.game.content.skill.Skillable;
+import com.valinor.game.content.skill.impl.farming.Farming;
+import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.farmingOld.FarmingOld;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
@@ -48,7 +53,6 @@ import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.sound.CombatSounds;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.security.impl.EnterAccountPin;
 import com.valinor.game.content.tasks.TaskMasterManager;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.content.teleport.world_teleport_manager.TeleportInterface;
@@ -74,17 +78,19 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.magic.CombatSpells;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.VorkathState;
-import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
-import com.valinor.game.world.entity.combat.skull.SkullType;
-import com.valinor.game.world.entity.combat.hit.Hit;
-import com.valinor.game.content.instance.impl.KrakenInstance;
-import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
+import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
-import com.valinor.game.world.entity.dialogue.*;
+import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.masks.chat.ChatMessage;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -132,20 +138,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serial;
 import java.sql.Timestamp;
-import java.time.*;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
 import static com.valinor.game.content.tournaments.TournamentUtils.TOURNAMENT_REGION;
 import static com.valinor.game.world.entity.AttributeKey.*;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
-import static com.valinor.net.packet.incoming_packets.PickupItemPacketListener.respawn;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.UPTIME;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WORLD_BOSS_SPAWN;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -156,6 +161,19 @@ public class Player extends Mob {
 
     static {
         LOGOUT = Level.getLevel("LOGOUT");
+    }
+
+    /**
+     * The player's instance for farming.
+     */
+    private Farming farming_instance = new Farming();
+
+    /**
+     * Returns the player's farming instance.
+     * @return the instance
+     */
+    public Farming getFarming() {
+        return farming_instance;
     }
 
     /**
@@ -1228,6 +1246,7 @@ public class Player extends Mob {
     public void synchronousSave() {
         if (session.getState() == SessionState.LOGGED_IN || session.getState() == SessionState.LOGGING_OUT) {
             PlayerSave.save(this);
+            FarmingSaving.save(this);
         }
     }
 
@@ -1420,6 +1439,7 @@ public class Player extends Mob {
             PetAI.despawnOnLogout(this);
             getInterfaceManager().close();
             TaskManager.cancelTasks(this);
+            getFarming().resetLogActionMoment();
             looks().hide(true);
             Hunter.abandon(this, null, true);
             if (getClan() != null) {
@@ -1458,6 +1478,7 @@ public class Player extends Mob {
             double energy = this.getAttribOr(RUN_ENERGY, 0.0);
             // configs...
             varps.syncNonzero();// Sync varps
+            Farming.onLogin(this);
             packetSender.sendConfig(708, Prayers.canUse(this, DefaultPrayerData.PRESERVE, false) ? 1 : 0).sendConfig(710, Prayers.canUse(this, DefaultPrayerData.RIGOUR, false) ? 1 : 0).sendConfig(712, Prayers.canUse(this, DefaultPrayerData.AUGURY, false) ? 1 : 0).sendConfig(172, this.getCombat().autoRetaliate() ? 1 : 0).updateSpecialAttackOrb().sendRunStatus().sendRunEnergy((int) energy);
             Prayers.closeAllPrayers(this);
             setHeadHint(-1);
