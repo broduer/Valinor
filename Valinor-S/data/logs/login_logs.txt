@@ -5,3 +5,89 @@
 [08 Nov 2021, 7:33:28 pm] [Valinor GameThread] Login successful for player Patrick.
 [08 Nov 2021, 7:35:42 pm] [pool-8-thread-1] First Login response code for Patrick is 2
 [08 Nov 2021, 7:35:42 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:11:23 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:11:23 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:11:50 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[10 Nov 2021, 10:11:50 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:12:01 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:12:01 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:13:06 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:13:06 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:15:43 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[10 Nov 2021, 10:15:43 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:19:53 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:19:53 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:20:59 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:20:59 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:38:44 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:38:44 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:40:37 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:40:37 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:43:10 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 10:43:10 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 10:43:22 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[10 Nov 2021, 10:43:22 am] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:21:55 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 4:21:55 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:42:45 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 4:42:45 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:43:36 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 4:43:36 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:48:01 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 4:48:01 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:52:56 pm] [pool-8-thread-2] First Login response code for Patrick is 2
+[10 Nov 2021, 4:52:57 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:55:22 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 4:55:22 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 4:56:33 pm] [pool-8-thread-2] First Login response code for Patrick is 2
+[10 Nov 2021, 4:56:33 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 5:02:46 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 5:02:46 pm] [Valinor GameThread] Login successful for player Patrick.
+[10 Nov 2021, 5:04:17 pm] [pool-8-thread-1] First Login response code for Patrick is 2
+[10 Nov 2021, 5:04:17 pm] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 9:46:59 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 9:47:00 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 9:53:29 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 9:53:29 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 9:57:08 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 9:57:09 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 9:59:03 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 9:59:04 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 9:59:25 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 9:59:26 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:02:05 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:02:05 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:05:18 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:05:19 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:06:10 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:06:10 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:08:25 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:08:25 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:10:38 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:10:39 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:14:07 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:14:07 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:16:39 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:16:39 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:20:16 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:20:16 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:20:49 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:20:49 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:21:21 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:21:22 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:22:42 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:22:42 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:28:02 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:28:02 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:28:53 am] [pool-8-thread-1] First Login response code for Patrick is 13
+[11 Nov 2021, 10:28:56 am] [pool-8-thread-2] First Login response code for Patrick is 13
+[11 Nov 2021, 10:29:12 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:29:12 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:29:52 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:29:53 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:31:41 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:31:41 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:33:23 am] [pool-8-thread-1] First Login response code for Patrick is 2
+[11 Nov 2021, 10:33:23 am] [Valinor GameThread] Login successful for player Patrick.
+[11 Nov 2021, 10:34:00 am] [pool-8-thread-2] First Login response code for Patrick is 2
+[11 Nov 2021, 10:34:00 am] [Valinor GameThread] Login successful for player Patrick.
