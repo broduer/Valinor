@@ -60,3 +60,5 @@
 [11 Nov 2021, 10:32:11 am] [Valinor GameThread] Patrick used command ::getid compost
 [11 Nov 2021, 10:32:16 am] [Valinor GameThread] Command received: item 6032 12
 [11 Nov 2021, 10:32:16 am] [Valinor GameThread] Patrick used command ::item 6032 12
+[11 Nov 2021, 10:54:56 am] [Valinor GameThread] Command received: test
+[11 Nov 2021, 10:54:56 am] [Valinor GameThread] Patrick used command ::test
