@@ -13,19 +13,17 @@ public class FarmingTask extends Task {
     private final Player player;
 
     public FarmingTask(Player player) {
-        super("FarmingTask",1, player, false);
+        super("FarmingTask",501, player, false);
         this.player = player;
     }
 
     @Override
     protected void execute() {
         if (player == null) {
-            System.out.println("stop");
             stop();
             return;
         }
 
-        System.out.println("updating");
         player.getFarming().updateCropStages(player);
         player.getFarming().updatePatches(player);
     }

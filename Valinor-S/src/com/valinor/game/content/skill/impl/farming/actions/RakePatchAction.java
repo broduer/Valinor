@@ -28,18 +28,15 @@ public class RakePatchAction extends PlayerTask {
             player.face(tile);
             player.animate(FarmingConstants.RAKING_ANIM);
 
-            // Did we succeed?
-            if (World.getWorld().rollDie(255, 100 + player.skills().level(Skills.FARMING))) {
-                state.setWeedStage(state.getWeedStage() + 1);
-                player.getFarming().updatePatches(player);
-                player.skills().addXp(Skills.FARMING, 4.0); // Yeah, you get 4 xp... #worth
-                player.inventory().add(new Item(6055), true); // Free weed :)
+            state.setWeedStage(state.getWeedStage() + 1);
+            player.getFarming().updatePatches(player);
+            player.skills().addXp(Skills.FARMING, 4.0); // Yeah, you get 4 xp... #worth
+            player.inventory().add(new Item(6055), true); // Free weed :)
 
-                if (state.getWeedStage() >= 3) {
-                    state.resetLastStageGrowthMoment();
-                    state.setWeedStage(3);
-                    player.endCurrentTask();
-                }
+            if (state.getWeedStage() >= 3) {
+                state.resetLastStageGrowthMoment();
+                state.setWeedStage(3);
+                player.endCurrentTask();
             }
         });
 
@@ -64,7 +61,7 @@ public class RakePatchAction extends PlayerTask {
         }
 
         // Does this patch need weeding?
-        if(state.getWeedStage() > 2) {
+        if (state.getWeedStage() > 2) {
             player.message("This patch doesn't need weeding right now.");
             return;
         }

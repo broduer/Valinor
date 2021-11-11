@@ -111,7 +111,7 @@ public class Farming {
      * Updates all the crop's timers.
      */
     public void updateCropStages(Player player) {
-        System.out.println("Enter updateCropStages");
+        //System.out.println("Enter updateCropStages");
         patch_states.keySet().forEach(patch_name -> {
             //System.out.println("Enter loop");
 
@@ -128,7 +128,7 @@ public class Farming {
                 return;
             }
 
-            System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
+            //System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
             if (System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed()) {
                 System.out.println("ticking");
                 if (!FarmingConstants.isFullyGrown(patch)) {
