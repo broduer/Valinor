@@ -550,7 +550,7 @@ public class PresetManager {
             player.skills().update();
             player.heal();
 
-            if (player.getMemberRights().isEliteMemberOrGreater(player)) {
+            if (player.getMemberRights().isRubyMemberOrGreater(player)) {
                 player.restoreSpecialAttack(100);
             }
             player.getPacketSender().updateSpecialAttackOrb();

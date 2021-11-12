@@ -37,13 +37,13 @@ public class RangedData {
     private static int boltSpecialChance(MemberRights memberRights, boolean always_spec) {
         int percentage = 10;
         switch (memberRights) {
-            case MEMBER -> percentage = 11;
-            case SUPER_MEMBER -> percentage = 12;
-            case ELITE_MEMBER -> percentage = 13;
-            case EXTREME_MEMBER -> percentage = 14;
-            case LEGENDARY_MEMBER -> percentage = 15;
-            case VIP -> percentage = 18;
-            case SPONSOR_MEMBER -> percentage = 20;
+            case SAPHIRE_MEMBER -> percentage = 11;
+            case EMERALD_MEMBER -> percentage = 12;
+            case RUBY_MEMBER -> percentage = 13;
+            case DIAMOND_MEMBER -> percentage = 14;
+            case DRAGONSTONE_MEMBER -> percentage = 15;
+            case ONYX_MEMBER -> percentage = 18;
+            case ZENYTE_MEMBER -> percentage = 20;
         }
         return always_spec ? 100 : percentage;
     }

@@ -1,0 +1,187 @@
+{
+  "points": 1,
+  "items": [],
+  "petItem": 12654,
+  "petRarity": 1200,
+  "npcs": [
+	6501
+  ],
+  "guaranteed": [
+	{
+	  "id": 3138,
+	  "min": 1,
+	  "max": 3
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Common",
+	  "points": 250,
+	  "items": [
+		{
+		  "id": 1113,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 42,
+		  "amount": 200,
+		  "points": 3
+		},
+		{
+		  "id": 12695,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 2444,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 7946,
+		  "amount": 3,
+		  "points": 3
+		},
+		{
+		  "id": 385,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 565,
+		  "amount": 100,
+		  "points": 3
+		},
+		{
+		  "id": 246,
+		  "amount": 60,
+		  "points": 3
+		},
+		{
+		  "id": 3139,
+		  "amount": 100,
+		  "points": 3
+		}
+	  ]
+	},
+	{
+	  "name": "Uncommon",
+	  "points": 100,
+	  "items": [
+		{
+		  "id": 3053,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 2501,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 892,
+		  "amount": 250,
+		  "points": 3
+		},
+		{
+		  "id": 6685,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 3024,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 2434,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5940,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11936,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 2999,
+		  "amount": 25,
+		  "points": 3
+		},
+		{
+		  "id": 208,
+		  "amount": 25,
+		  "points": 3
+		},
+		{
+		  "id": 5321,
+		  "amount": 25,
+		  "points": 3
+		},
+		{
+		  "id": 5304,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 560,
+		  "amount": 150,
+		  "points": 3
+		},
+		{
+		  "id": 995,
+		  "min": 25000,
+		  "max": 50000,
+		  "points": 2
+		},
+		{
+		  "id": 2364,
+		  "amount": 3,
+		  "points": 3
+		},
+		{
+		  "id": 1514,
+		  "amount": 60,
+		  "points": 3
+		},
+		{
+		  "id": 445,
+		  "amount": 250,
+		  "points": 3
+		}
+	  ]
+	},
+	{
+	  "name": "Rares",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 7158,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 3140,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 7981,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 12885,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ]
+	}
+  ]
+}

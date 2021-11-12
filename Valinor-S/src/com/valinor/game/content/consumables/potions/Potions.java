@@ -514,7 +514,7 @@ public class Potions {
                     Chain.bound(null).name("overloadTask").runFn(i * 2, () -> {
                         player.animate(3170);
                         player.graphic(560);
-                        if(!player.getMemberRights().isEliteMemberOrGreater(player)) {
+                        if(!player.getMemberRights().isRubyMemberOrGreater(player)) {
                             player.hit(player,10);
                         }
                     });

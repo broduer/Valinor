@@ -1,0 +1,150 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	2211,
+	2242,
+	3160,
+	3167,
+	3169,
+	3170,
+	3171,
+	3172,
+	3173,
+	3174,
+	3175,
+	3176,
+	3178,
+	3179,
+	3180,
+	3181,
+	3182,
+	3183
+  ],
+  "tables": [
+	{
+	  "name": "Ammo",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 5619,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 886,
+		  "min": 1,
+		  "max": 12,
+		  "points": 1
+		},
+		{
+		  "id": 884,
+		  "min": 1,
+		  "max": 24,
+		  "points": 1
+		},
+		{
+		  "id": 882,
+		  "min": 1,
+		  "max": 58,
+		  "points": 1
+		},
+		{
+		  "id": 5616,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 559,
+		  "min": 1,
+		  "max": 12,
+		  "points": 1
+		},
+		{
+		  "id": 892,
+		  "min": 1,
+		  "max": 5,
+		  "points": 1
+		},
+		{
+		  "id": 890,
+		  "amount": 3,
+		  "points": 1
+		},
+		{
+		  "id": 5626,
+		  "min": 1,
+		  "max": 15,
+		  "points": 1
+		},
+		{
+		  "id": 2538,
+		  "min": 3,
+		  "max": 4,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 53,
+		  "amount": 12,
+		  "points": 2
+		},
+		{
+		  "id": 40,
+		  "amount": 5,
+		  "points": 1
+		},
+		{
+		  "id": 43,
+		  "min": 1,
+		  "max": 13,
+		  "points": 1
+		},
+		{
+		  "id": 1777,
+		  "amount": 7,
+		  "points": 1
+		},
+		{
+		  "id": 687,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 57,
+		  "min": 1,
+		  "max": 12,
+		  "points": 1
+		},
+		{
+		  "id": 843,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 9179,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 851,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 862,
+		  "min": 1,
+		  "max": 2,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

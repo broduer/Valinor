@@ -1,0 +1,155 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	6915,
+	6916,
+	6918
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Talisman",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 13392,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Seeds",
+	  "points": 200,
+	  "items": [
+		{
+		  "id": 5292,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5294,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5100,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5104,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5321,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5323,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5311,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5106,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5105,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5297,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5282,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5321,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5281,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5299,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5298,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5300,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5295,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5304,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5303,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5301,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5302,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 13383,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 13391,
+		  "amount": 1,
+		  "points": 3
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

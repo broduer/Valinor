@@ -110,13 +110,13 @@ object CollectVotes {
                             message("You have claimed your vote points.")
 
                             val changeForDonatorMysteryBox: Int = when (memberRights) {
-                                MemberRights.SPONSOR_MEMBER -> 7
-                                MemberRights.VIP -> 6
-                                MemberRights.LEGENDARY_MEMBER -> 5
-                                MemberRights.EXTREME_MEMBER -> 4
-                                MemberRights.ELITE_MEMBER -> 3
-                                MemberRights.SUPER_MEMBER -> 2
-                                MemberRights.MEMBER -> 1
+                                MemberRights.ZENYTE_MEMBER -> 7
+                                MemberRights.ONYX_MEMBER -> 6
+                                MemberRights.DRAGONSTONE_MEMBER -> 5
+                                MemberRights.DIAMOND_MEMBER -> 4
+                                MemberRights.RUBY_MEMBER -> 3
+                                MemberRights.EMERALD_MEMBER -> 2
+                                MemberRights.SAPHIRE_MEMBER -> 1
                                 else -> 0
                             }
 

@@ -364,7 +364,7 @@ public class LootingBag extends ItemContainer {
         }
 
         // Is the player inside the wilderness?
-        if (!WildernessArea.inWilderness(player.tile()) && !player.getMemberRights().isEliteMemberOrGreater(player)) {
+        if (!WildernessArea.inWilderness(player.tile()) && !player.getMemberRights().isRubyMemberOrGreater(player)) {
             player.message("You can't put items in the looting bag unless you're in the Wilderness.");
             return false;
         }

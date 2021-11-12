@@ -1,0 +1,151 @@
+{
+  "points": 0,
+  "items": [],
+  "petItem": 12650,
+  "petRarity": 2000,
+  "npcs": [
+	2215
+  ],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Bandos",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 11832,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11834,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11836,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11812,
+		  "amount": 1,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Ores",
+	  "points": 25,
+	  "items": [
+		{
+		  "id": 450,
+		  "min": 15,
+		  "max": 20,
+		  "points": 1
+		},
+		{
+		  "id": 454,
+		  "min": 115,
+		  "max": 120,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Nats",
+	  "points": 12,
+	  "items": [
+		{
+		  "id": 561,
+		  "min": 60,
+		  "max": 70,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Crap",
+	  "points": 40,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 19581,
+		  "max": 21000,
+		  "points": 30
+		},
+		{
+		  "id": 5300,
+		  "amount": 1,
+		  "points": 20
+		},
+		{
+		  "id": 1514,
+		  "min": 15,
+		  "max": 20,
+		  "points": 20
+		},
+		{
+		  "id": 3024,
+		  "amount": 3,
+		  "points": 20
+		},
+		{
+		  "id": 3052,
+		  "amount": 3,
+		  "points": 20
+		},
+		{
+		  "id": 11818,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 11820,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 11822,
+		  "amount": 1,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Weapons",
+	  "points": 25,
+	  "items": [
+		{
+		  "id": 1319,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1275,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1303,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1289,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

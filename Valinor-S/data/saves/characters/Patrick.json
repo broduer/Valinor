@@ -4,17 +4,17 @@
   "title": "",
   "titleColor": "",
   "tile": {
-    "x": 2816,
-    "y": 3459,
+    "x": 2835,
+    "y": 3457,
     "level": 0,
-    "firstChunkX": 352,
+    "firstChunkX": 354,
     "firstChunkY": 432
   },
-  "gameTime": 196888,
+  "gameTime": 206158,
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
-  "memberRights": "MEMBER",
+  "memberRights": "NONE",
   "expMode": "GLADIATOR",
   "ironMode": "NONE",
   "lastIP": "127.0.0.1",
@@ -25,7 +25,7 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
-  "lastLogin": "Nov 12, 2021, 11:31:17 AM",
+  "lastLogin": "Nov 12, 2021, 13:13:51 PM",
   "muted": false,
   "newPlayer": false,
   "isBetaTester": false,
@@ -173,7 +173,7 @@
     0.0,
     0.0,
     0.0,
-    12760.0,
+    12820.0,
     0.0,
     0.0,
     0.0
@@ -194,6 +194,61 @@
   "slayerUnlocks": {},
   "slayerExtensionsList": {},
   "inventory": [
+    {
+      "id": 199,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "equipment": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "bank": [
     {
       "id": 14479,
       "amount": 1
@@ -216,113 +271,23 @@
     },
     {
       "id": 1925,
-      "amount": 1
-    },
-    {
-      "id": 1925,
-      "amount": 1
+      "amount": 2
     },
     {
       "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
-    },
-    {
-      "id": 6032,
-      "amount": 1
+      "amount": 10
     },
     {
       "id": 6055,
-      "amount": 1
-    },
-    {
-      "id": 6055,
-      "amount": 1
-    },
-    {
-      "id": 6055,
-      "amount": 1
-    },
-    {
-      "id": 6055,
-      "amount": 1
-    },
-    {
-      "id": 6055,
-      "amount": 1
-    },
-    {
-      "id": 6055,
-      "amount": 1
+      "amount": 6
     },
     {
       "id": 199,
-      "amount": 1
-    },
-    {
-      "id": 199,
-      "amount": 1
-    },
-    {
-      "id": 199,
-      "amount": 1
-    },
-    {
-      "id": 199,
-      "amount": 1
-    },
-    null
+      "amount": 5
+    }
   ],
-  "equipment": [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
-  ],
-  "bank": [],
   "tabAmounts": [
-    0,
+    9,
     0,
     0,
     0,

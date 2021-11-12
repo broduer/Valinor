@@ -1,0 +1,235 @@
+{
+  "npcs": [
+	-494
+  ],
+  // Manually loaded, that's why
+  "points": 0,
+  "items": [],
+  "petItem": 12655,
+  "petRarity": 1500,
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 4111,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 4113,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 1403,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 7114,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 1303,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 1347,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 11905,
+		  // full trident
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 555,
+		  "amount": 400,
+		  "points": 1
+		},
+		{
+		  "id": 4695,
+		  "min": 100,
+		  "max": 250,
+		  "points": 1
+		},
+		{
+		  "id": 562,
+		  "amount": 250,
+		  "points": 1
+		},
+		{
+		  "id": 560,
+		  "amount": 150,
+		  "points": 1
+		},
+		{
+		  "id": 565,
+		  "amount": 60,
+		  "points": 1
+		},
+		{
+		  "id": 566,
+		  "amount": 50,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Seeds",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 5321,
+		  "amount": 24,
+		  "points": 1
+		},
+		{
+		  "id": 5304,
+		  "amount": 2,
+		  "points": 1
+		},
+		{
+		  "id": 5316,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Materials",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 402,
+		  "amount": 125,
+		  "points": 3
+		},
+		{
+		  "id": 1392,
+		  "amount": 10,
+		  "points": 1
+		},
+		{
+		  "id": 568,
+		  "amount": 50,
+		  "points": 1
+		},
+		{
+		  "id": 1602,
+		  "amount": 8,
+		  "points": 1
+		},
+		{
+		  "id": 8779,
+		  "amount": 60,
+		  "points": 1
+		},
+		{
+		  "id": 2363,
+		  "amount": 2,
+		  "points": 1
+		},
+		{
+		  "id": 384,
+		  "amount": 50,
+		  "points": 1
+		},
+		{
+		  "id": 7945,
+		  "amount": 100,
+		  "points": 1
+		},
+		{
+		  "id": 3052,
+		  "amount": 6,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 10000,
+		  "max": 19999,
+		  "points": 283
+		},
+		{
+		  "id": 385,
+		  "amount": 5,
+		  "points": 283
+		},
+		{
+		  "id": 403,
+		  "amount": 5,
+		  "points": 283
+		},
+		{
+		  "id": 311,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1925,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 10925,
+		  "amount": 2,
+		  "points": 100
+		},
+		{
+		  "id": 989,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 686,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 5953,
+		  "amount": 2,
+		  "points": 100
+		},
+		{
+		  "id": 12007,
+		  "amount": 1,
+		  "points": 8
+		},
+		{
+		  "id": 1645,
+		  "amount": 1,
+		  "points": 55
+		},
+		{
+		  "id": 12004,
+		  "amount": 1,
+		  "points": 19
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

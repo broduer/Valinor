@@ -1,0 +1,375 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	-492,
+	-493
+  ],
+  // Manually loaded, that's why
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 2,
+	  "items": [],
+	  "tables": [
+		{
+		  "name": "Rare",
+		  "points": 1,
+		  "items": [
+			{
+			  "id": 12004,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 11908,
+			  // Trident (uncharged)
+			  "amount": 1,
+			  "points": 2
+			}
+		  ],
+		  "tables": []
+		},
+		{
+		  "name": "Normal",
+		  "points": 75,
+		  "items": [
+			{
+			  "id": 1383,
+			  "amount": 1,
+			  "points": 2
+			},
+			{
+			  "id": 1245,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 1347,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 1391,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 1395,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 1403,
+			  "amount": 1,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Armour",
+	  "points": 2,
+	  "items": [],
+	  "tables": [
+		{
+		  "name": "1147",
+		  "points": 1,
+		  "items": [],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Runes",
+	  "points": 2,
+	  "items": [
+		{
+		  "id": 4694,
+		  "amount": 7,
+		  "points": 2
+		},
+		{
+		  "id": 554,
+		  "amount": 30,
+		  "points": 2
+		},
+		{
+		  "id": 560,
+		  "amount": 30,
+		  "points": 2
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Water",
+		  "points": 2,
+		  "items": [
+			{
+			  "id": 555,
+			  "amount": 15,
+			  "points": 1
+			},
+			{
+			  "id": 555,
+			  "amount": 30,
+			  "points": 1
+			},
+			{
+			  "id": 555,
+			  "amount": 75,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		},
+		{
+		  "name": "Chaos",
+		  "points": 2,
+		  "items": [
+			{
+			  "id": 562,
+			  "amount": 30,
+			  "points": 1
+			},
+			{
+			  "id": 562,
+			  "amount": 50,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		},
+		{
+		  "name": "Blood",
+		  "points": 1,
+		  "items": [
+			{
+			  "id": 565,
+			  "amount": 5,
+			  "points": 1
+			},
+			{
+			  "id": 565,
+			  "amount": 15,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Seeds",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 5281,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5296,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5297,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5298,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5299,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5302,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5301,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5106,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5300,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5304,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Herbs",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Misc",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 685,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 402,
+		  "amount": 30,
+		  "points": 3
+		},
+		{
+		  "id": 995,
+		  "min": 123,
+		  "max": 18912,
+		  "points": 2
+		},
+		{
+		  "id": 1925,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 378,
+		  "amount": 3,
+		  "points": 2
+		},
+		{
+		  "id": 572,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 1444,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 1452,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 407,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 373,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 5953,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 228,
+		  "amount": 50,
+		  "points": 2
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Tar",
+		  "points": 3,
+		  "items": [
+			{
+			  "id": 1939,
+			  "amount": 30,
+			  "points": 1
+			},
+			{
+			  "id": 1939,
+			  "amount": 60,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	}
+  ]
+}

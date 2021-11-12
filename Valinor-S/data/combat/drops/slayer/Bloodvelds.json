@@ -1,0 +1,131 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	3138,
+	484,
+	485,
+	486,
+	487,
+	7397
+  ],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1157,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1325,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1181,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 1109,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 4125,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1147,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 2,
+	  "items": [
+		{
+		  "id": 554,
+		  "amount": 60,
+		  "points": 3
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Blood",
+		  "points": 1,
+		  "items": [
+			{
+			  "id": 565,
+			  "amount": 3,
+			  "points": 1
+			},
+			{
+			  "id": 565,
+			  "amount": 10,
+			  "points": 1
+			},
+			{
+			  "id": 565,
+			  "amount": 30,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Other",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 10,
+		  "max": 460,
+		  "points": 2
+		},
+		{
+		  "id": 526,
+		  "min": 1,
+		  "max": 3,
+		  "points": 1
+		},
+		{
+		  "id": 532,
+		  "min": 1,
+		  "max": 5,
+		  "points": 1
+		},
+		{
+		  "id": 444,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2293,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

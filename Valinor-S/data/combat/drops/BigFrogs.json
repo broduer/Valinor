@@ -1,0 +1,69 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "npcs": [
+	2144
+  ],
+  "tables": [
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 555,
+		  "amount": 12,
+		  "points": 1
+		},
+		{
+		  "id": 557,
+		  "amount": 12,
+		  "points": 1
+		},
+		{
+		  "id": 564,
+		  "amount": 2,
+		  "points": 1
+		},
+		{
+		  "id": 561,
+		  "amount": 4,
+		  "points": 1
+		},
+		{
+		  "id": 1440,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1444,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 5,
+		  "max": 15,
+		  "points": 1
+		},
+		{
+		  "id": 7908,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

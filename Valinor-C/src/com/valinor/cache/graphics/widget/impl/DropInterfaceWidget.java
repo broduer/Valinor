@@ -19,7 +19,7 @@ public class DropInterfaceWidget extends Widget {
         addText(55147, "Item", font, 0, 0xB27300, true, true);
         addText(55148, "Name", font, 0, 0xB27300, true, true);
         addText(55149, "Amount", font, 0, 0xB27300, true, true);
-        addText(55150, "BM", font, 0, 0xB27300, true, true);
+        addText(55150, "Value", font, 0, 0xB27300, true, true);
         addText(55151, "Chance", font, 0, 0xB27300, true, true);
         closeButton(55152, 24, 25, true);
         addText(55154, "Viewing drop table for:", font, 2, 0xffb000, true, true);

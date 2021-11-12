@@ -15,7 +15,7 @@ public class CustomRequirement extends TitleRequirement {
 
     @Override
     public boolean satisfies(Player player) {
-        return player.getMemberRights().isEliteMemberOrGreater(player);
+        return player.getMemberRights().isRubyMemberOrGreater(player);
     }
 
 }

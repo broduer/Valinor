@@ -1,0 +1,176 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "npcs": [
+	2075,
+	2077
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1181,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1393,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1333,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Ammo",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 554,
+		  "min": 37,
+		  "max": 150,
+		  "points": 6
+		},
+		{
+		  "id": 562,
+		  "min": 5,
+		  "max": 15,
+		  "points": 6
+		},
+		{
+		  "id": 565,
+		  "amount": 5,
+		  "points": 6
+		},
+		{
+		  "id": 563,
+		  "amount": 2,
+		  "points": 1
+		},
+		{
+		  "id": 892,
+		  "amount": 12,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Herbs",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 15,
+		  "max": 300,
+		  "points": 12
+		},
+		{
+		  "id": 2353,
+		  "amount": 1,
+		  "points": 12
+		},
+		{
+		  "id": 379,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 117,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 10976,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 10977,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

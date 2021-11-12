@@ -23,13 +23,13 @@ public class DoubleDropLamp extends PacketInteraction {
         int ticks = 0;
         switch (memberRights) {
             case NONE -> ticks = 6000;//One hour
-            case MEMBER -> ticks = 6500;//One hour and 5 minutes
-            case SUPER_MEMBER -> ticks = 7000;//One and 10 minutes
-            case ELITE_MEMBER -> ticks = 7500;//One hour and 15 minutes
-            case EXTREME_MEMBER -> ticks = 9000;//One hour and 30 minutes
-            case LEGENDARY_MEMBER -> ticks = 10500;//One hour and 45 minutes
-            case VIP -> ticks = 11000;//One hour and 50 minutes
-            case SPONSOR_MEMBER -> ticks = 11500;//One hour and 55 minutes
+            case SAPHIRE_MEMBER -> ticks = 6500;//One hour and 5 minutes
+            case EMERALD_MEMBER -> ticks = 7000;//One and 10 minutes
+            case RUBY_MEMBER -> ticks = 7500;//One hour and 15 minutes
+            case DIAMOND_MEMBER -> ticks = 9000;//One hour and 30 minutes
+            case DRAGONSTONE_MEMBER -> ticks = 10500;//One hour and 45 minutes
+            case ONYX_MEMBER -> ticks = 11000;//One hour and 50 minutes
+            case ZENYTE_MEMBER -> ticks = 11500;//One hour and 55 minutes
         }
         return ticks;
     }

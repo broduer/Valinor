@@ -39,7 +39,6 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
-import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -124,11 +123,11 @@ public class NpcDeath {
             if (killer != null) {
                 respawnTimer -= switch (killer.getMemberRights()) {
                     case NONE -> 0;
-                    case MEMBER -> Utils.secondsToTicks(2);
-                    case SUPER_MEMBER -> Utils.secondsToTicks(4);
-                    case ELITE_MEMBER -> Utils.secondsToTicks(6);
-                    case EXTREME_MEMBER -> Utils.secondsToTicks(8);
-                    case LEGENDARY_MEMBER, VIP, SPONSOR_MEMBER -> Utils.secondsToTicks(10);
+                    case SAPHIRE_MEMBER -> Utils.secondsToTicks(2);
+                    case EMERALD_MEMBER -> Utils.secondsToTicks(4);
+                    case RUBY_MEMBER -> Utils.secondsToTicks(6);
+                    case DIAMOND_MEMBER -> Utils.secondsToTicks(8);
+                    case DRAGONSTONE_MEMBER, ONYX_MEMBER, ZENYTE_MEMBER -> Utils.secondsToTicks(10);
                 };
 
                 var biggest_and_baddest_perk = killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.BIGGEST_AND_BADDEST) && Slayer.creatureMatches(killer, npc.id());
@@ -138,9 +137,9 @@ public class NpcDeath {
                 var reduction = ancientRevSpawnRoll * killer.memberAncientRevBonus() / 100;
                 ancientRevSpawnRoll -= reduction;
 
-                var legendaryInsideCave = killer.tile().memberCave() && killer.getMemberRights().isLegendaryMemberOrGreater(killer);
-                var VIPInsideCave = killer.tile().memberCave() && killer.getMemberRights().isLegendaryMemberOrGreater(killer);
-                var SponsorInsideCave = killer.tile().memberCave() && killer.getMemberRights().isLegendaryMemberOrGreater(killer);
+                var legendaryInsideCave = killer.tile().memberCave() && killer.getMemberRights().isDragonstoneMemberOrGreater(killer);
+                var VIPInsideCave = killer.tile().memberCave() && killer.getMemberRights().isDragonstoneMemberOrGreater(killer);
+                var SponsorInsideCave = killer.tile().memberCave() && killer.getMemberRights().isDragonstoneMemberOrGreater(killer);
                 if(legendaryInsideCave)
                     respawnTimer = 34;
                 if(VIPInsideCave)
@@ -995,19 +994,19 @@ public class NpcDeath {
         }
 
         int treasureCasketChance;
-        if (killer.getMemberRights().isSponsorOrGreater(killer))
+        if (killer.getMemberRights().isZenyteMemberOrGreater(killer))
             treasureCasketChance = 95;
-        else if (killer.getMemberRights().isVIPOrGreater(killer))
+        else if (killer.getMemberRights().isOnyxMemberOrGreater(killer))
             treasureCasketChance = 100;
-        else if (killer.getMemberRights().isLegendaryMemberOrGreater(killer))
+        else if (killer.getMemberRights().isDragonstoneMemberOrGreater(killer))
             treasureCasketChance = 105;
-        else if (killer.getMemberRights().isExtremeMemberOrGreater(killer))
+        else if (killer.getMemberRights().isDiamondMemberOrGreater(killer))
             treasureCasketChance = 110;
-        else if (killer.getMemberRights().isEliteMemberOrGreater(killer))
+        else if (killer.getMemberRights().isRubyMemberOrGreater(killer))
             treasureCasketChance = 115;
-        else if (killer.getMemberRights().isSuperMemberOrGreater(killer))
+        else if (killer.getMemberRights().isEmeraldMemberOrGreater(killer))
             treasureCasketChance = 120;
-        else if (killer.getMemberRights().isRegularMemberOrGreater(killer))
+        else if (killer.getMemberRights().isSaphireMemberOrGreater(killer))
             treasureCasketChance = 125;
         else
             treasureCasketChance = 128;

@@ -14,7 +14,7 @@ public class NewTaskCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(!player.getMemberRights().isLegendaryMemberOrGreater(player)) {
+        if(!player.getMemberRights().isDragonstoneMemberOrGreater(player)) {
             player.message("You have to be at least an legendary member to use this command.");
             return;
         }

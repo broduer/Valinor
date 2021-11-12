@@ -10,7 +10,7 @@ public class YellColourCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(!player.getMemberRights().isSuperMemberOrGreater(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+        if(!player.getMemberRights().isEmeraldMemberOrGreater(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("<col=ca0d0d>Only Super Members may use this feature.");
             return;
         }

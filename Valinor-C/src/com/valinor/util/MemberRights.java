@@ -6,13 +6,13 @@ import java.util.Map;
 public enum MemberRights {
 
     NONE(null),
-    MEMBER(ChatCrown.MEMBER),
-    SUPER_MEMBER(ChatCrown.SUPER_MEMBER),
-    ELITE_MEMBER(ChatCrown.ELITE_MEMBER),
-    EXTREME_MEMBER(ChatCrown.EXTREME_MEMBER),
-    LEGENDARY_MEMBER(ChatCrown.LEGENDARY_MEMBER),
-    VIP(ChatCrown.VIP),
-    SPONSOR_MEMBER(ChatCrown.SPONSOR_MEMBER),
+    SAPHIRE_MEMBER(ChatCrown.SAPHIRE_MEMBER),
+    EMERALD_MEMBER(ChatCrown.EMERALD_MEMBER),
+    RUBY_MEMBER(ChatCrown.RUBY_MEMBER),
+    DIAMOND_MEMBER(ChatCrown.DIAMOND_MEMBER),
+    DRAGONSTONE_MEMBER(ChatCrown.DRAGONSTONE_MEMBER),
+    ONYX_MEMBER(ChatCrown.ONYX_MEMBER),
+    ZENYTE_MEMBER(ChatCrown.ZENYTE_MEMBER),
     ;
 
     private final ChatCrown crown;

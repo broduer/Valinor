@@ -1,0 +1,259 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	6604
+  ],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Ammo",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 886,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 884,
+		  "amount": 200,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Herbs",
+	  "points": 2,
+	  "items": [
+		{
+		  "id": 249,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 251,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 253,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 255,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 259,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 261,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 263,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 265,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 267,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 257,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2481,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Seeds",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 5312,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5310,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5101,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5305,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5324,
+		  "min": 1,
+		  "max": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5102,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 5308,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5309,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5283,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5320,
+		  "amount": 3,
+		  "points": 3
+		},
+		{
+		  "id": 5322,
+		  "amount": 3,
+		  "points": 3
+		},
+		{
+		  "id": 2126,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 5319,
+		  "amount": 3,
+		  "points": 3
+		},
+		{
+		  "id": 5306,
+		  "amount": 4,
+		  "points": 3
+		},
+		{
+		  "id": 5100,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 5104,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 5284,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 5323,
+		  "amount": 3,
+		  "points": 2
+		},
+		{
+		  "id": 5287,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5105,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 5106,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 5285,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5286,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5288,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5321,
+		  "amount": 3,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 30,
+		  "max": 3000,
+		  "points": 4
+		},
+		{
+		  "id": 143,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 379,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 11940,
+		  "amount": 12,
+		  "points": 2
+		},
+		{
+		  "id": 10976,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

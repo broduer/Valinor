@@ -1,6 +1,5 @@
 package com.valinor.game.content.skill.impl.agility;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -24,11 +23,11 @@ public class MarksOfGrace {
 
         // Donator perks grant extra odds
         switch (player.getMemberRights()) {
-            case VIP -> odds += 15;
-            case LEGENDARY_MEMBER -> odds += 10;
-            case EXTREME_MEMBER -> odds += 8;
-            case SUPER_MEMBER -> odds += 4;
-            case MEMBER -> odds += 2;
+            case ONYX_MEMBER -> odds += 15;
+            case DRAGONSTONE_MEMBER -> odds += 10;
+            case DIAMOND_MEMBER -> odds += 8;
+            case EMERALD_MEMBER -> odds += 4;
+            case SAPHIRE_MEMBER -> odds += 2;
         }
 
         if (player.skills().level(Skills.AGILITY) > threshold + 20) {

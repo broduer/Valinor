@@ -1,0 +1,126 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	260,
+	263,
+	264
+  ],
+  "guaranteed": [
+	{
+	  "id": 536
+	},
+	{
+	  "id": 1753
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Herbs",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Weaponry",
+	  "points": 2,
+	  "items": [
+		{
+		  "id": 1365,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1069,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1355,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1243,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1197,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1161,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1213,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 11,
+		  "max": 440,
+		  "points": 1
+		},
+		{
+		  "id": 365,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 555,
+		  "amount": 75,
+		  "points": 1
+		},
+		{
+		  "id": 554,
+		  "amount": 37,
+		  "points": 1
+		},
+		{
+		  "id": 561,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 563,
+		  "amount": 3,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

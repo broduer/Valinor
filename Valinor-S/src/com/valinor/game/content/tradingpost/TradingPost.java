@@ -668,11 +668,11 @@ public class TradingPost {
             var totalSalesAllowed = 8;
 
             switch (player.getMemberRights()) {
-                case MEMBER -> totalSalesAllowed = 10;
-                case SUPER_MEMBER -> totalSalesAllowed = 12;
-                case ELITE_MEMBER -> totalSalesAllowed = 14;
-                case EXTREME_MEMBER -> totalSalesAllowed = 16;
-                case LEGENDARY_MEMBER, VIP, SPONSOR_MEMBER -> totalSalesAllowed = 25;
+                case SAPHIRE_MEMBER -> totalSalesAllowed = 10;
+                case EMERALD_MEMBER -> totalSalesAllowed = 12;
+                case RUBY_MEMBER -> totalSalesAllowed = 14;
+                case DIAMOND_MEMBER -> totalSalesAllowed = 16;
+                case DRAGONSTONE_MEMBER, ONYX_MEMBER, ZENYTE_MEMBER -> totalSalesAllowed = 25;
             }
 
             //Developers can hold 25 sales by default.

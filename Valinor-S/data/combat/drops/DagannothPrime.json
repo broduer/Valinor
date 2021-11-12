@@ -1,0 +1,215 @@
+{
+  "points": 0,
+  "items": [],
+  "petItem": 12644,
+  "petRarity": 2000,
+  "guaranteed": [
+	{
+	  "id": 6729
+	},
+	{
+	  "id": 6155
+	}
+  ],
+  "npcs": [
+	2266
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1397,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1399,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1395,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1392,
+		  "min": 1,
+		  "max": 10,
+		  "points": 2
+		},
+		{
+		  "id": 6562,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 6739,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1439,
+		  "min": 1,
+		  "max": 80,
+		  "points": 1
+		},
+		{
+		  "id": 1441,
+		  "min": 1,
+		  "max": 80,
+		  "points": 1
+		},
+		{
+		  "id": 1445,
+		  "min": 1,
+		  "max": 80,
+		  "points": 1
+		},
+		{
+		  "id": 556,
+		  "amount": 155,
+		  "points": 1
+		},
+		{
+		  "id": 4698,
+		  "amount": 32,
+		  "points": 1
+		},
+		{
+		  "id": 560,
+		  "min": 22,
+		  "max": 85,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Armour",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 3758,
+		  "amount": 1,
+		  "points": 7
+		},
+		{
+		  "id": 3748,
+		  "amount": 1,
+		  "points": 7
+		},
+		{
+		  "id": 6139,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 6141,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 3755,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 6731,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Seeds",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 5281,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5106,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5297,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5296,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5298,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5299,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5301,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5302,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5303,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Others",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 972,
+		  "max": 3000,
+		  "points": 1
+		},
+		{
+		  "id": 7937,
+		  "amount": 150,
+		  "points": 1
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

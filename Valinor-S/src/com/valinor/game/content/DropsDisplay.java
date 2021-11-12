@@ -42,7 +42,6 @@ public class DropsDisplay {
      * These are the NPCs which do not have NPC drops for the purpose of this interface.
      */
     public static final int[] NPCS_DROPS_EXCLUDED = {
-        //NpcIdentifiers.SKOTIZO, NpcIdentifiers.TEKTON_7542, NpcIdentifiers.ZOMBIES_CHAMPION,
         NpcIdentifiers.ANIMATED_BRONZE_ARMOUR, NpcIdentifiers.ANIMATED_IRON_ARMOUR,
         NpcIdentifiers.ANIMATED_STEEL_ARMOUR, NpcIdentifiers.ANIMATED_BLACK_ARMOUR,
         NpcIdentifiers.ANIMATED_MITHRIL_ARMOUR, NpcIdentifiers.ANIMATED_ADAMANT_ARMOUR,
@@ -122,7 +121,7 @@ public class DropsDisplay {
                                 if (!npc.contains(npcDefinition.name)) {
                                     npc.add(npcDefinition.name);
                                     id.add(k);
-                                    System.out.printf("%s vs %s%n", npcDefinition.name, finalContext);
+                                    //System.out.printf("%s vs %s%n", npcDefinition.name, finalContext);
                                 }
                             }
                         });
@@ -144,9 +143,6 @@ public class DropsDisplay {
             //Clear any previous entries.
             for (int index = 0; index < 430; index++) {
                 player.getPacketSender().sendString(55510 + index, "");
-                //Probably redundant code
-                //if (index >= 55940)//Max 430 npcs
-                //    break;
             }
             Collections.sort(npc);
             id.sort(Comparator.comparing(a -> World.getWorld().definitions().get(NpcDefinition.class, a).name));
@@ -223,10 +219,6 @@ public class DropsDisplay {
         if(petId != -1)
             drops.add(0, new Integer[]{petId, 1, 1, player.hasPetOut("Jawa") ? petAverage / 2 : petAverage}); //"pet" specifically identified by minAmount == -1
 
-        if(def.name.equalsIgnoreCase("Great Olm")) {
-            drops.add(0, new Integer[]{ItemIdentifiers.OLMLET, 1, 1, 650});
-        }
-
         var larransLuck = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.LARRANS_LUCK);
         var combatLvl = def.combatlevel;
         var roll = combatLvl < 50 ? larransLuck ? 875 : 1000 : larransLuck ? 350 : 400;
@@ -264,14 +256,15 @@ public class DropsDisplay {
                         //nothingPercentage = tableChance * 100D;
                     } else {
                         for (ScalarLootTable.TableItem item : table.items) {
-                            Integer[] drop = new Integer[4];
+                            Integer[] drop = new Integer[5];
                             drop[0] = item.id;
-                            drop[1] = item.min;
-                            drop[2] = item.max;
+                            drop[1] = item.min == 0 ? item.amount : item.min;
+                            drop[2] = item.max == 0 ? item.amount : item.max;
                             if (item.points == 0)
                                 drop[3] = (int) (1D / tableChance);
                             else
                                 drop[3] = (int) (1D / (item.computedFraction.doubleValue()));
+                            drop[4] = item.amount;
                             drops.add(drop);
                         }
                     }
@@ -283,8 +276,8 @@ public class DropsDisplay {
             Integer[] drop = drops.get(index);
 
             int itemId = drop[0];
-            int minAmount = drop[1];
-            int maxAmount = drop[2];
+            int minAmount = drop[1] == 0 ? 1 : drop[1];
+            int maxAmount = drop[2] == 0 ? 1 : drop[2];
             int average = drop[3];
 
             if (player.hasPetOut("Jaltok-jad pet") && (npc == TZTOKJAD || npc == TZTOKJAD_6506)) {

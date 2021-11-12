@@ -13,13 +13,13 @@ public enum ChatCrown {
     DEVELOPER("<img=4</img>", 497),
 
     //Members
-    MEMBER("<img=5</img>", 1427),
-    SUPER_MEMBER("<img=6</img>", 500),
-    ELITE_MEMBER("<img=22</img>", 1077),
-    EXTREME_MEMBER("<img=7</img>", 1078),
-    LEGENDARY_MEMBER("<img=24</img>", 1425),
-    VIP("<img=15</img>", 1426),
-    SPONSOR_MEMBER("<img=23</img>", 1048),
+    SAPHIRE_MEMBER("<img=5</img>", 1871),
+    EMERALD_MEMBER("<img=6</img>", 1875),
+    RUBY_MEMBER("<img=22</img>", 1872),
+    DIAMOND_MEMBER("<img=7</img>", 1874),
+    DRAGONSTONE_MEMBER("<img=24</img>", 1876),
+    ONYX_MEMBER("<img=15</img>", 1877),
+    ZENYTE_MEMBER("<img=23</img>", 1873),
 
     BRONZE_YOUTUBER("<img=8</img>", 1087),
     SILVER_YOUTUBER("<img=16</img>", 1088),

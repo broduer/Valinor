@@ -1,0 +1,107 @@
+{
+  "npcs": [
+	2206,
+	2207,
+	2208
+  ],
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Rares",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 11838,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Shards",
+		  "points": 14,
+		  "items": [
+			{
+			  "id": 11818,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 11820,
+			  "amount": 1,
+			  "points": 1
+			},
+			{
+			  "id": 11822,
+			  "amount": 1,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Resources",
+	  "points": 196,
+	  "items": [
+		{
+		  "id": 563,
+		  "min": 7,
+		  "max": 10,
+		  "points": 2
+		},
+		{
+		  "id": 886,
+		  "min": 97,
+		  "max": 100,
+		  "points": 2
+		},
+		{
+		  "id": 995,
+		  "min": 1300,
+		  "max": 2000,
+		  "points": 2
+		},
+		{
+		  "id": 232,
+		  "amount": 5,
+		  "points": 2
+		},
+		{
+		  "id": 808,
+		  "min": 95,
+		  "max": 100,
+		  "points": 2
+		},
+		{
+		  "id": 208,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 7218,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 238,
+		  "amount": 6,
+		  "points": 1
+		},
+		{
+		  "id": 7946,
+		  "amount": 3,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

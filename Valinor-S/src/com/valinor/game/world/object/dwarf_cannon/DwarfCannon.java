@@ -126,7 +126,7 @@ public class DwarfCannon extends OwnedObject {
     public void fill() {
         if(getOwner().isPlayer()) {
             Player player = getOwner().getAsPlayer();
-            MAX_AMMO = player.getMemberRights().isExtremeMemberOrGreater(player) ? 50 : MAX_AMMO;
+            MAX_AMMO = player.getMemberRights().isDiamondMemberOrGreater(player) ? 50 : MAX_AMMO;
         }
         if (getAmmo() < MAX_AMMO && getOwner().inventory().count(CANNON_BALL) > 0) {
             int needed = MAX_AMMO - getAmmo();

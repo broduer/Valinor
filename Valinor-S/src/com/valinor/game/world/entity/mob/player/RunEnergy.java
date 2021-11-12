@@ -37,7 +37,7 @@ public class RunEnergy {
         }
 
         //Being an extreme member grants you infinite run outside of the wilderness.
-        if (player.getMemberRights().isExtremeMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile())) {
+        if (player.getMemberRights().isDiamondMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile())) {
             return;
         }
 
@@ -47,7 +47,7 @@ public class RunEnergy {
         }
 
         //Being an V.I.P member grants you infinite run anywhere.
-        if (player.getMemberRights().isVIPOrGreater(player)) {
+        if (player.getMemberRights().isOnyxMemberOrGreater(player)) {
             return;
         }
 

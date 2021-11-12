@@ -1,0 +1,104 @@
+{
+  "points": 0,
+  "npcs": [
+	433,
+	434,
+	435,
+	436,
+	3139,
+	7394
+  ],
+  "guaranteed": [
+	{
+	  "id": 592
+	}
+	// Bones = 526, amount is by default 1 unless specified
+  ],
+  "items": [
+	{
+	  "id": 444,
+	  "amount": 1,
+	  "points": 1
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1157,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1109,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1387,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1145,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 4123,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 554,
+		  "min": 30,
+		  "max": 60,
+		  "points": 3
+		},
+		{
+		  "id": 562,
+		  "amount": 12,
+		  "points": 3
+		},
+		{
+		  "id": 560,
+		  "amount": 3,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 10,
+		  "max": 450,
+		  "points": 1
+		},
+		{
+		  "id": 1993,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

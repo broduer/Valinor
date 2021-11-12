@@ -441,7 +441,7 @@ public class SlayerRewards {
     public void block() {
         int pts = player.getAttribOr(SLAYER_REWARD_POINTS, 0);
         int required = 100;
-        boolean extremeMember = player.getMemberRights().isExtremeMemberOrGreater(player);
+        boolean extremeMember = player.getMemberRights().isDiamondMemberOrGreater(player);
 
         if (pts < 100 && !extremeMember) {
             player.message("You need " + required + " points to block your task.");

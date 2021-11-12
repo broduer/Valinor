@@ -1,0 +1,170 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	417
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+	// Bones = 526, amount is by default 1 unless specified
+  ],
+  "tables": [
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 555,
+		  "amount": 75,
+		  "points": 6
+		},
+		{
+		  "id": 561,
+		  "min": 3,
+		  "max": 37,
+		  "points": 3
+		},
+		{
+		  "id": 563,
+		  "amount": 3,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Armour",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1365,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 1243,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1355,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1197,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1161,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 830,
+		  "amount": 5,
+		  "points": 1
+		},
+		{
+		  "id": 1213,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 4109,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Herbs",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 11,
+		  "max": 440,
+		  "points": 6
+		},
+		{
+		  "id": 449,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 7977,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

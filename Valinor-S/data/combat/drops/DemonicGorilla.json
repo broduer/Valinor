@@ -1,0 +1,197 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	7144
+  ],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Rare",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 19529,
+		  "amount": 1,
+		  "points": 5
+		},
+		{
+		  "id": 19592,
+		  "amount": 1,
+		  "points": 5
+		},
+		{
+		  "id": 19601,
+		  "amount": 1,
+		  "points": 5
+		},
+		{
+		  "id": 19586,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 19589,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 19610,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Misc",
+	  "points": 59,
+	  "items": [
+		{
+		  "id": 1079,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1093,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1113,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 563,
+		  "min": 50,
+		  "max": 75,
+		  "points": 3
+		},
+		{
+		  "id": 560,
+		  "min": 50,
+		  "max": 75,
+		  "points": 3
+		},
+		{
+		  "id": 139,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 6689,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 214,
+		  "min": 7,
+		  "max": 12,
+		  "points": 3
+		},
+		{
+		  "id": 216,
+		  "min": 7,
+		  "max": 12,
+		  "points": 3
+		},
+		{
+		  "id": 2486,
+		  "min": 7,
+		  "max": 12,
+		  "points": 3
+		},
+		{
+		  "id": 995,
+		  "min": 5366,
+		  "max": 9999,
+		  "points": 3
+		},
+		{
+		  "id": 19584,
+		  "min": 266,
+		  "max": 1238,
+		  "points": 3
+		},
+		{
+		  "id": 9144,
+		  "min": 100,
+		  "max": 150,
+		  "points": 2
+		},
+		{
+		  "id": 4587,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 385,
+		  "min": 2,
+		  "max": 3,
+		  "points": 2
+		},
+		{
+		  "id": 218,
+		  "min": 7,
+		  "max": 12,
+		  "points": 2
+		},
+		{
+		  "id": 5321,
+		  "amount": 30,
+		  "points": 2
+		},
+		{
+		  "id": 5295,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 5300,
+		  "amount": 2,
+		  "points": 2
+		},
+		{
+		  "id": 5304,
+		  "min": 1,
+		  "max": 2,
+		  "points": 2
+		},
+		{
+		  "id": 1602,
+		  "min": 4,
+		  "max": 6,
+		  "points": 2
+		},
+		{
+		  "id": 2362,
+		  "amount": 6,
+		  "points": 2
+		},
+		{
+		  "id": 2364,
+		  "amount": 3,
+		  "points": 2
+		},
+		{
+		  "id": 19580,
+		  "min": 30,
+		  "max": 55,
+		  "points": 2
+		},
+		{
+		  "id": 19582,
+		  "min": 5,
+		  "max": 45,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

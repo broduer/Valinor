@@ -1,0 +1,145 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	3129
+  ],
+  "petItem": 12652,
+  "petRarity": 2000,
+  "guaranteed": [
+	{
+	  "id": 592
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Normal",
+	  "points": 30,
+	  "items": [
+		{
+		  "id": 890,
+		  "min": 295,
+		  "max": 300,
+		  "points": 3
+		},
+		{
+		  "id": 1079,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1123,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 145,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 157,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 3026,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 189,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 560,
+		  "min": 120,
+		  "max": 125,
+		  "points": 3
+		},
+		{
+		  "id": 995,
+		  "min": 19350,
+		  "max": 20075,
+		  "points": 3
+		},
+		{
+		  "id": 1333,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 5698,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 565,
+		  "min": 80,
+		  "max": 90,
+		  "points": 2
+		},
+		{
+		  "id": 2482,
+		  "min": 7,
+		  "max": 13,
+		  "points": 2
+		},
+		{
+		  "id": 5302,
+		  "amount": 3,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Rare",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 11818,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 11820,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 11822,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 11816,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 11787,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11824,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 11791,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1289,
+		  "amount": 1,
+		  "points": 2
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

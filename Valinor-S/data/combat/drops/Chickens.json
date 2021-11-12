@@ -1,0 +1,48 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	},
+	{
+	  "id": 2138
+	}
+  ],
+  "npcs": [
+	2692,
+	2693,
+	2821,
+	2820
+  ],
+  "tables": [
+	{
+	  "name": "Feathers",
+	  "points": 7,
+	  "items": [
+		{
+		  "id": 314,
+		  "amount": 5,
+		  "points": 1
+		},
+		{
+		  "id": 314,
+		  "amount": 10,
+		  "points": 1
+		},
+		{
+		  "id": 314,
+		  "amount": 15,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Nothing",
+	  "points": 1,
+	  "items": [],
+	  "tables": []
+	}
+  ]
+}

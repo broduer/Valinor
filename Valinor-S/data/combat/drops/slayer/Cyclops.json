@@ -1,0 +1,390 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	2464,
+	2465,
+	2235,
+	2236
+  ],
+  "guaranteed": [
+	{
+	  "id": 532
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 10,
+	  "items": [
+		{
+		  "id": 1309,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1101,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1217,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 869,
+		  "min": 4,
+		  "max": 19,
+		  "points": 1
+		},
+		{
+		  "id": 1283,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1297,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1207,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1424,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1281,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1365,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1105,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1311,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1295,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1141,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1313,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1295,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1141,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1313,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1209,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1299,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1430,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1317,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 10,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 3,
+		  "max": 473,
+		  "points": 1
+		},
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5292,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5295,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5296,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5282,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5323,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5321,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 10976,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 10977,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Rare",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "amount": 3000,
+		  "points": 1
+		},
+		{
+		  "id": 1623,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 987,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 985,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1621,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1619,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1462,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1452,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 561,
+		  "amount": 67,
+		  "points": 1
+		},
+		{
+		  "id": 2363,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1247,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1373,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1319,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1617,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 830,
+		  "amount": 5,
+		  "points": 1
+		},
+		{
+		  "id": 443,
+		  "amount": 100,
+		  "points": 1
+		},
+		{
+		  "id": 829,
+		  "amount": 20,
+		  "points": 1
+		},
+		{
+		  "id": 1185,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 886,
+		  "amount": 150,
+		  "points": 1
+		},
+		{
+		  "id": 892,
+		  "amount": 42,
+		  "points": 1
+		},
+		{
+		  "id": 563,
+		  "amount": 45,
+		  "points": 1
+		},
+		{
+		  "id": 560,
+		  "amount": 45,
+		  "points": 1
+		},
+		{
+		  "id": 1615,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1201,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1149,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2366,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1249,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

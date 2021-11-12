@@ -26,7 +26,7 @@ public class SpecCommand implements Command {
             return;
         }
 
-        boolean legendaryMember = player.getMemberRights().isLegendaryMemberOrGreater(player);
+        boolean legendaryMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
         if(!legendaryMember && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("You need to be at least a legendary member to use this command.");
             return;

@@ -11,7 +11,6 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -215,13 +214,13 @@ public class Slayer {
                         //Legendary account bonus
                         base += switch (killer.getMemberRights()) {
                             case NONE -> 0;
-                            case MEMBER -> 5;
-                            case SUPER_MEMBER -> 10;
-                            case ELITE_MEMBER -> 15;
-                            case EXTREME_MEMBER -> 20;
-                            case LEGENDARY_MEMBER -> 30;
-                            case VIP -> 35;
-                            case SPONSOR_MEMBER -> 40;
+                            case SAPHIRE_MEMBER -> 5;
+                            case EMERALD_MEMBER -> 10;
+                            case RUBY_MEMBER -> 15;
+                            case DIAMOND_MEMBER -> 20;
+                            case DRAGONSTONE_MEMBER -> 30;
+                            case ONYX_MEMBER -> 35;
+                            case ZENYTE_MEMBER -> 40;
                         };
 
                         //Weekend bonus

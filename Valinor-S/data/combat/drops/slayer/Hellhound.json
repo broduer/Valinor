@@ -1,0 +1,44 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	104,
+	105,
+	3133
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Armour",
+	  "points": 9999,
+	  "items": [
+		{
+		  "id": 1113,
+		  "amount": 1,
+		  "points": 120
+		},
+		{
+		  "id": 1147,
+		  "amount": 1,
+		  "points": 120
+		},
+		{
+		  "id": 13233,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 995,
+		  "min": 1,
+		  "max": 1500,
+		  "points": 3000
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

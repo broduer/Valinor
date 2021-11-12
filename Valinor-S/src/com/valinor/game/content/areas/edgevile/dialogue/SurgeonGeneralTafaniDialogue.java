@@ -43,7 +43,7 @@ public class SurgeonGeneralTafaniDialogue extends Dialogue {
                 Poison.cure(player);
                 Venom.cure(2, player, false);
 
-                if(player.getMemberRights().isEliteMemberOrGreater(player)) {
+                if(player.getMemberRights().isRubyMemberOrGreater(player)) {
                     if (player.getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
                         player.message("Special attack energy can only be restored every couple of minutes.");
                     } else {

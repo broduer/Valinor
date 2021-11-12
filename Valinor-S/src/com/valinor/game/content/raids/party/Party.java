@@ -159,11 +159,11 @@ public class Party {
     public void addPersonalPoints(Player player, int points) {
         boolean centaurPet = player.hasPetOut("Centaur");
         boolean olmletPet = player.hasPetOut("Olmlet");
-        boolean eliteMember = player.getMemberRights().isEliteMemberOrGreater(player);
-        boolean extremeMember = player.getMemberRights().isExtremeMemberOrGreater(player);
-        boolean LegendaryMember = player.getMemberRights().isLegendaryMemberOrGreater(player);
-        boolean vipMember = player.getMemberRights().isVIPOrGreater(player);
-        boolean sponsorMember = player.getMemberRights().isSponsorOrGreater(player);
+        boolean eliteMember = player.getMemberRights().isRubyMemberOrGreater(player);
+        boolean extremeMember = player.getMemberRights().isDiamondMemberOrGreater(player);
+        boolean LegendaryMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
+        boolean vipMember = player.getMemberRights().isOnyxMemberOrGreater(player);
+        boolean sponsorMember = player.getMemberRights().isZenyteMemberOrGreater(player);
 
         var percentageBoost = 0;
         if(centaurPet || olmletPet) {

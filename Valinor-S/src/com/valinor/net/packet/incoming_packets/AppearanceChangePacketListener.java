@@ -35,37 +35,37 @@ public class AppearanceChangePacketListener implements PacketListener {
             final int feetColor = packet.readByte();
             final int skinColor = packet.readByte();
 
-            if (skinColor == 10 && !player.getMemberRights().isRegularMemberOrGreater(player)) {
+            if (skinColor == 10 && !player.getMemberRights().isSaphireMemberOrGreater(player)) {
                 player.message("You need to be a Member to use this skin!");
                 return;
             }
 
-            if (skinColor == 11 && !player.getMemberRights().isSuperMemberOrGreater(player)) {
+            if (skinColor == 11 && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                 player.message("You need to be a Super member to use this skin!");
                 return;
             }
 
-            if (skinColor == 12 && !player.getMemberRights().isEliteMemberOrGreater(player)) {
+            if (skinColor == 12 && !player.getMemberRights().isRubyMemberOrGreater(player)) {
                 player.message("You need to be a Elite member to use this skin!");
                 return;
             }
 
-            if (skinColor == 13 && !player.getMemberRights().isExtremeMemberOrGreater(player)) {
+            if (skinColor == 13 && !player.getMemberRights().isDiamondMemberOrGreater(player)) {
                 player.message("You need to be a Extreme member to use this skin!");
                 return;
             }
 
-            if (skinColor == 14 && !player.getMemberRights().isLegendaryMemberOrGreater(player)) {
+            if (skinColor == 14 && !player.getMemberRights().isDragonstoneMemberOrGreater(player)) {
                 player.message("You need to be a Legendary member to use this skin!");
                 return;
             }
 
-            if (skinColor == 15 && !player.getMemberRights().isVIPOrGreater(player)) {
+            if (skinColor == 15 && !player.getMemberRights().isOnyxMemberOrGreater(player)) {
                 player.message("You need to be a V.I.P member to use this skin!");
                 return;
             }
 
-            if (skinColor == 16 && !player.getMemberRights().isSponsorOrGreater(player)) {
+            if (skinColor == 16 && !player.getMemberRights().isZenyteMemberOrGreater(player)) {
                 player.message("You need to be a Sponsor member to use this skin!");
                 return;
             }

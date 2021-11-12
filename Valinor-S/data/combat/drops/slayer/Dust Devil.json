@@ -1,0 +1,216 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	423,
+	7404
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weaponry",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 892,
+		  "amount": 12,
+		  "points": 3
+		},
+		{
+		  "id": 1213,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 2489,
+		  "amount": 1,
+		  "points": 200
+		},
+		{
+		  "id": 1399,
+		  "amount": 1,
+		  "points": 400
+		},
+		{
+		  "id": 3140,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 562,
+		  "amount": 5,
+		  "points": 1
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Fire ",
+		  "points": 2,
+		  "items": [
+			{
+			  "id": 554,
+			  "amount": 15,
+			  "points": 1
+			},
+			{
+			  "id": 554,
+			  "amount": 37,
+			  "points": 1
+			},
+			{
+			  "id": 554,
+			  "amount": 150,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		},
+		{
+		  "name": "Soul",
+		  "points": 1,
+		  "items": [
+			{
+			  "id": 566,
+			  "amount": 2,
+			  "points": 1
+			},
+			{
+			  "id": 566,
+			  "amount": 5,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Herbs",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 207,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1883,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2359,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Coins",
+		  "points": 3,
+		  "items": [
+			{
+			  "id": 995,
+			  "amount": 15,
+			  "points": 1
+			},
+			{
+			  "id": 995,
+			  "amount": 25,
+			  "points": 1
+			},
+			{
+			  "id": 995,
+			  "amount": 50,
+			  "points": 1
+			},
+			{
+			  "id": 995,
+			  "amount": 60,
+			  "points": 1
+			},
+			{
+			  "id": 995,
+			  "amount": 300,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	}
+  ]
+}

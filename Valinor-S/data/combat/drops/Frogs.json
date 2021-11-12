@@ -1,0 +1,20 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "npcs": [
+	2145
+  ],
+  "tables": [
+	{
+	  "name": "Nothing",
+	  "points": 1,
+	  "items": [],
+	  "tables": []
+	}
+  ]
+}

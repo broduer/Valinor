@@ -16,7 +16,6 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.task.impl.TickableTask;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
@@ -31,7 +30,6 @@ import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
-import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
@@ -298,7 +296,7 @@ public class Edgevile extends PacketInteraction {
 
                     if (player.tile().region() != 13386) {
                         player.message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-                        if (player.getMemberRights().isRegularMemberOrGreater(player)) {
+                        if (player.getMemberRights().isSaphireMemberOrGreater(player)) {
                             if (player.getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
                                 player.message("Special attack energy can be restored in " + player.getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
                             } else {
@@ -306,11 +304,11 @@ public class Edgevile extends PacketInteraction {
                                 player.setSpecialActivated(false);
                                 CombatSpecial.updateBar(player);
                                 int time = 0;
-                                if (player.getMemberRights().isRegularMemberOrGreater(player))
+                                if (player.getMemberRights().isSaphireMemberOrGreater(player))
                                     time = 300;//3 minutes
-                                if (player.getMemberRights().isSuperMemberOrGreater(player))
+                                if (player.getMemberRights().isEmeraldMemberOrGreater(player))
                                     time = 100;//1 minute
-                                if (player.getMemberRights().isEliteMemberOrGreater(player))
+                                if (player.getMemberRights().isRubyMemberOrGreater(player))
                                     time = 0;//always
                                 player.getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
                                 player.message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");

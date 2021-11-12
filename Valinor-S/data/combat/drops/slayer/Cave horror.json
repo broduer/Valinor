@@ -1,0 +1,269 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "npcs": [
+	3209,
+	7401
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1355,
+		  "amount": 1,
+		  "points": 14
+		},
+		{
+		  "id": 1197,
+		  "amount": 1,
+		  "points": 8
+		},
+		{
+		  "id": 1213,
+		  "amount": 1,
+		  "points": 8
+		},
+		{
+		  "id": 1161,
+		  "amount": 1,
+		  "points": 8
+		},
+		{
+		  "id": 8901,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Seeds",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 5281,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5324,
+		  "min": 1,
+		  "max": 3,
+		  "points": 1
+		},
+		{
+		  "id": 5296,
+		  "min": 1,
+		  "max": 4,
+		  "points": 1
+		},
+		{
+		  "id": 5318,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5297,
+		  "min": 1,
+		  "max": 3,
+		  "points": 1
+		},
+		{
+		  "id": 5319,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5299,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5106,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 5301,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5323,
+		  "min": 1,
+		  "max": 2,
+		  "points": 1
+		},
+		{
+		  "id": 5320,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5298,
+		  "min": 1,
+		  "max": 2,
+		  "points": 1
+		},
+		{
+		  "id": 5322,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5321,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5300,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5303,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5302,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5304,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Herbs",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 199,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 201,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 203,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 205,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 207,
+		  "min": 1,
+		  "max": 2,
+		  "points": 1
+		},
+		{
+		  "id": 209,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 211,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 213,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 215,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2485,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 217,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 561,
+		  "min": 3,
+		  "max": 6,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 44,
+		  "max": 495,
+		  "points": 1
+		},
+		{
+		  "id": 225,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 6334,
+		  "amount": 4,
+		  "points": 1
+		},
+		{
+		  "id": 6332,
+		  "min": 2,
+		  "max": 4,
+		  "points": 3
+		},
+		{
+		  "id": 10976,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 10977,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

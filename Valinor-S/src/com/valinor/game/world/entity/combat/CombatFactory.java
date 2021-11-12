@@ -984,7 +984,7 @@ public class CombatFactory {
         boolean isRevenant = attacker.isNpc() && attacker.getAsNpc().def().name.toLowerCase().contains("revenant");
         if (isRevenant && target.isPlayer()) {
             Player playerTarget = target.getAsPlayer();
-            var memberCave = playerTarget.tile().memberCave() && playerTarget.getMemberRights().isExtremeMemberOrGreater(playerTarget);
+            var memberCave = playerTarget.tile().memberCave() && playerTarget.getMemberRights().isDiamondMemberOrGreater(playerTarget);
             if (playerTarget.getEquipment().hasAt(EquipSlot.HANDS, BRACELET_OF_ETHEREUM) || memberCave) {
                 int newDamage = hit.getDamage() * 25 / 100;
                 //Wearing the bracelet of ethereum no longer gives complete immunity of revenant attacks, now reducing incoming damage from them by 75%.

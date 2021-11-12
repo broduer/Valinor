@@ -1,0 +1,78 @@
+{
+  "points": 0,
+  "name": "root",
+  "npcs": [
+	1610,
+	1611,
+	1612
+  ],
+  "guaranteed": [
+	{
+	  "id": 526,
+	  "amount": 1
+	}
+	// Bones
+  ],
+  "tables": [
+	{
+	  "name": "Main",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 2579,
+		  "amount": 1,
+		  "points": 10
+		},
+		// Wizard Boots
+		{
+		  "id": 6916,
+		  "amount": 1,
+		  "points": 3
+		},
+		// Infinity top
+		{
+		  "id": 6918,
+		  "amount": 1,
+		  "points": 5
+		},
+		// Infinity hat
+		{
+		  "id": 6920,
+		  "amount": 1,
+		  "points": 1
+		},
+		// Infinity boots
+		{
+		  "id": 6922,
+		  "amount": 1,
+		  "points": 5
+		},
+		// Infinity gloves
+		{
+		  "id": 6924,
+		  "amount": 1,
+		  "points": 3
+		},
+		// Infinity bottom
+		{
+		  "id": 6889,
+		  "amount": 1,
+		  "points": 1
+		},
+		// Mages book
+		{
+		  "id": 6914,
+		  "amount": 1,
+		  "points": 1
+		}
+		//Masters wand
+	  ]
+	},
+	{
+	  "name": "nothing",
+	  "points": 60,
+	  "items": [],
+	  "tables": []
+	}
+  ]
+}

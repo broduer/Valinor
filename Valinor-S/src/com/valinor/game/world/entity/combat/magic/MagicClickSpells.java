@@ -126,7 +126,7 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSuperMemberOrGreater(player)) {
+                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
                     }
@@ -239,7 +239,7 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isRegularMemberOrGreater(player)) {
+                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSaphireMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
                     }
@@ -352,7 +352,7 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSuperMemberOrGreater(player)) {
+                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
                     }

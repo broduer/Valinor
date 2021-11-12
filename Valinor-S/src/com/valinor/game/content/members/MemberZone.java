@@ -38,8 +38,8 @@ public class MemberZone extends PacketInteraction {
             Player player = (Player) attacker;
             Npc npc = (Npc) target;
 
-            var elite_member = player.getMemberRights().isEliteMemberOrGreater(player);
-            var extreme_member = player.getMemberRights().isExtremeMemberOrGreater(player);
+            var elite_member = player.getMemberRights().isRubyMemberOrGreater(player);
+            var extreme_member = player.getMemberRights().isDiamondMemberOrGreater(player);
 
             //Make sure we're in the member zone
             if (player.tile().memberZone()) {
@@ -62,7 +62,7 @@ public class MemberZone extends PacketInteraction {
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
             if (obj.getId() == CAVE_ENTRANCE_31606 || obj.getId() == PORTAL_OF_LEGENDS) {
-                if (!player.getMemberRights().isRegularMemberOrGreater(player)) {
+                if (!player.getMemberRights().isSaphireMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least an Member to enter the member zone."));
                     return true;
                 }
@@ -110,7 +110,7 @@ public class MemberZone extends PacketInteraction {
                     return true;
                 }
 
-                if(player.getMemberRights().isRegularMemberOrGreater(player)) {
+                if(player.getMemberRights().isSaphireMemberOrGreater(player)) {
                     Teleports.basicTeleport(player, new Tile(2457, 2858));
                 } else {
                     Teleports.basicTeleport(player, GameServer.properties().defaultTile);
@@ -224,7 +224,7 @@ public class MemberZone extends PacketInteraction {
                 return true;
             }
             if (obj.getId() == STAIRS_31610) {
-                if (!player.getMemberRights().isRegularMemberOrGreater(player)) {
+                if (!player.getMemberRights().isSaphireMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least an Member to enter the member zone."));
                     return true;
                 }
@@ -270,7 +270,7 @@ public class MemberZone extends PacketInteraction {
             }
 
             if(obj.getId() == ROW_BOAT) {
-                if(!player.getMemberRights().isSuperMemberOrGreater(player)) {
+                if(!player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least a super member to travel with this boat."));
                     return true;
                 }

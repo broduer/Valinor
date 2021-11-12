@@ -1,0 +1,164 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	8,
+	7411
+  ],
+  "guaranteed": [
+	{
+	  "id": 592
+	}
+  ],
+  "items": [],
+  "tables": [
+	{
+	  "name": "Seeds",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 5281,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5280,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5297,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5296,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5298,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 5301,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5299,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5106,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5302,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5303,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5300,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 5304,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Armour",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1197,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1073,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1163,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 4131,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 1,
+		  "max": 460,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1311,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1365,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 560,
+		  "min": 5,
+		  "max": 10,
+		  "points": 1
+		},
+		{
+		  "id": 562,
+		  "min": 1,
+		  "max": 37,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

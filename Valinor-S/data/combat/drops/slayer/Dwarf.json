@@ -1,0 +1,158 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	292
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Ore/bar",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 1265,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 438,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 2349,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 436,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 440,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 1267,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 453,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2351,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 562,
+		  "amount": 2,
+		  "points": 3
+		},
+		{
+		  "id": 561,
+		  "amount": 2,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Weaponry",
+	  "points": 2,
+	  "items": [
+		{
+		  "id": 1139,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 1375,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1363,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Bronze bolts",
+		  "points": 1,
+		  "items": [
+			{
+			  "id": 877,
+			  "amount": 2,
+			  "points": 2
+			},
+			{
+			  "id": 877,
+			  "amount": 11,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	},
+	{
+	  "name": "Other",
+	  "points": 3,
+	  "items": [
+		{
+		  "id": 2347,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1913,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": [
+		{
+		  "name": "Coins",
+		  "points": 2,
+		  "items": [
+			{
+			  "id": 995,
+			  "amount": 4,
+			  "points": 2
+			},
+			{
+			  "id": 995,
+			  "amount": 10,
+			  "points": 2
+			},
+			{
+			  "id": 995,
+			  "amount": 30,
+			  "points": 1
+			}
+		  ],
+		  "tables": []
+		}
+	  ]
+	}
+  ]
+}

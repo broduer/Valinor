@@ -1,0 +1,84 @@
+{
+  "points": 0,
+  "items": [],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "npcs": [
+	2143
+  ],
+  "tables": [
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 2,
+		  "max": 37,
+		  "points": 200
+		},
+		{
+		  "id": 4517,
+		  "amount": 1,
+		  "points": 200
+		},
+		{
+		  "id": 561,
+		  "min": 1,
+		  "max": 9,
+		  "points": 200
+		},
+		{
+		  "id": 884,
+		  "amount": 22,
+		  "points": 100
+		},
+		{
+		  "id": 886,
+		  "amount": 45,
+		  "points": 100
+		},
+		{
+		  "id": 565,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 564,
+		  "min": 1,
+		  "max": 10,
+		  "points": 100
+		},
+		{
+		  "id": 453,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1243,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 1969,
+		  "amount": 1,
+		  "points": 100
+		},
+		{
+		  "id": 10976,
+		  "amount": 1,
+		  "points": 20
+		},
+		{
+		  "id": 10977,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

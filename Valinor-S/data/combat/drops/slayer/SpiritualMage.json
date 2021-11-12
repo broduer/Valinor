@@ -1,0 +1,107 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	3161,
+	2212,
+	2244,
+	3168
+  ],
+  "tables": [
+	{
+	  "name": "Runes",
+	  "points": 99,
+	  "items": [
+		{
+		  "id": 556,
+		  "min": 30,
+		  "max": 50,
+		  "points": 2
+		},
+		{
+		  "id": 555,
+		  "min": 15,
+		  "max": 50,
+		  "points": 2
+		},
+		{
+		  "id": 561,
+		  "min": 18,
+		  "max": 25,
+		  "points": 2
+		},
+		{
+		  "id": 562,
+		  "min": 10,
+		  "max": 25,
+		  "points": 1
+		},
+		{
+		  "id": 560,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 9075,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 563,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 4695,
+		  "amount": 20,
+		  "points": 1
+		},
+		{
+		  "id": 4696,
+		  "amount": 15,
+		  "points": 1
+		},
+		{
+		  "id": 4698,
+		  "amount": 20,
+		  "points": 1
+		},
+		{
+		  "id": 559,
+		  "min": 25,
+		  "max": 35,
+		  "points": 1
+		},
+		{
+		  "id": 558,
+		  "amount": 50,
+		  "points": 1
+		},
+		{
+		  "id": 554,
+		  "min": 50,
+		  "max": 65,
+		  "points": 1
+		},
+		{
+		  "id": 565,
+		  "amount": 10,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "D boots",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 11840,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

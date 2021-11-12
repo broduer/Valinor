@@ -1,0 +1,106 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	448,
+	449,
+	450,
+	451,
+	452,
+	453,
+	454,
+	455,
+	456,
+	457,
+	7388
+  ],
+  "guaranteed": [
+	{
+	  "id": 526
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1059,
+		  "amount": 1,
+		  "points": 24
+		},
+		{
+		  "id": 2922,
+		  "amount": 1,
+		  "points": 30
+		},
+		{
+		  "id": 2912,
+		  "amount": 1,
+		  "points": 30
+		},
+		{
+		  "id": 2932,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 2942,
+		  "amount": 1,
+		  "points": 6
+		},
+		{
+		  "id": 4105,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Jewellery",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1637,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1639,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1635,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 5,
+		  "max": 442,
+		  "points": 1
+		},
+		{
+		  "id": 592,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 4133,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

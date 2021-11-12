@@ -11,7 +11,7 @@ public class BankCommandCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(!player.getMemberRights().isLegendaryMemberOrGreater(player) && (!player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().test)) {
+        if(!player.getMemberRights().isDragonstoneMemberOrGreater(player) && (!player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().test)) {
             player.message("You need to be at least a Legendary member to use this command.");
             return;
         }

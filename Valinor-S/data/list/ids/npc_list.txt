@@ -96,8 +96,8 @@
 95: Ghost
 96: Ghost
 97: Ghost
-98: null
-99: Death wing
+98: Ghost
+99: Ghost
 100: Rock Crab
 101: Rocks
 102: Rock Crab
@@ -239,12 +239,12 @@
 238: Butterfly
 239: King Black Dragon
 240: Black demon
-241: Baby dragon
-242: Baby dragon
-243: Baby dragon
-244: Baby dragon
-245: Baby dragon
-246: Baby dragon
+241: Baby blue dragon
+242: Baby blue dragon
+243: Baby blue dragon
+244: Baby red dragon
+245: Baby red dragon
+246: Baby red dragon
 247: Red dragon
 248: Red dragon
 249: Red dragon
@@ -291,7 +291,7 @@
 290: Dwarf
 291: Chaos dwarf
 292: Dwarf
-293: Dwarf
+293: Adventurer Jon
 294: Dwarf
 295: Dwarf
 296: Dwarf
@@ -306,16 +306,16 @@
 305: Jennifer
 306: Lumbridge Guide
 307: Dr Jekyll
-308: null
+308: Emblem Trader
 309: Reacher
 310: Ayesha
-311: Adam
+311: Iron Man tutor
 312: Frog
 313: Reacher
 314: Dr Jekyll
-315: Emblem Trader
-316: Emblem Trader
-317: Paul
+315: Leagues Tutor
+316: Leagues Tutor
+317: null
 318: Dark core
 319: Corporeal Beast
 320: Dark energy core
@@ -323,7 +323,7 @@
 322: Drunken Dwarf
 323: Strange plant
 324: null
-325: 
+325:
 326: Genie
 327: Genie
 328: Reacher
@@ -470,9 +470,9 @@
 469: Killerwatt
 470: Killerwatt
 471: null
-472: Dark wizard
-473: Invrigar the Necromancer
-474: Dark wizard
+472: Ghost
+473: Ghost
+474: Ghost
 475: Hole in the wall
 476: Wall beast
 477: Giant frog
@@ -503,34 +503,34 @@
 502: Vanessa
 503: Richard
 504: Alice
-505: Mugger
-506: Witch
-507: Witch
-508: Black Knight
-509: Black Knight
-510: Highwayman
-511: Highwayman
-512: Chaos druid
-513: Pirate
-514: Pirate
-515: Pirate
-516: Pirate
-517: Thug
-518: Rogue
-519: Monk of Zamorak
-520: Monk of Zamorak
-521: Monk of Zamorak
-522: Tribesman
-523: Dark warrior
-524: Chaos druid warrior
-525: Necromancer
-526: Bandit
-527: Guard Bandit
-528: Barbarian guard
-529: 
-530: <col=00ffff>Portal</col>
-531: null
-532: <col=00efef>Portal</col>
+505: Ghost
+506: Ghost
+507: Ghost
+508: Soulless
+509: Death wing
+510: Dark wizard
+511: Invrigar the Necromancer
+512: Dark wizard
+513: Mugger
+514: Witch
+515: Witch
+516: Black Knight
+517: Black Knight
+518: Highwayman
+519: Highwayman
+520: Chaos druid
+521: Pirate
+522: Pirate
+523: Pirate
+524: Pirate
+525: Thug
+526: Rogue
+527: Monk of Zamorak
+528: Monk of Zamorak
+529: Monk of Zamorak
+530: Tribesman
+531: Dark warrior
+532: Chaos druid warrior
 533: Fungi
 534: Thessalia
 535: Fungi
@@ -1023,18 +1023,18 @@
 1022: Rat
 1023: null
 1024: Zygomite
-1025: null
-1026: null
-1027: Banker
-1028: Banker
-1029: Banker
-1030: Banker
-1031: Banker
-1032: Banker
-1033: Banker
-1034: Banker
-1035: Banker
-1036: Banker
+1025: Necromancer
+1026: Bandit
+1027: Guard Bandit
+1028: Barbarian guard
+1029: Sleepwalker
+1030: Sleepwalker
+1031: Sleepwalker
+1032: Sleepwalker
+1033: null
+1034: null
+1035: null
+1036: null
 1037: Snake
 1038: Monkey
 1039: Albino bat
@@ -1119,11 +1119,11 @@
 1118: Man
 1119: Woman
 1120: Dominic Onion
-1121: 
-1122: 
-1123: 
-1124: 
-1125: 
+1121:
+1122:
+1123:
+1124:
+1125:
 1126: Barrelchest (hard)
 1127: Giant scarab (hard)
 1128: Dessous (hard)
@@ -1170,7 +1170,7 @@
 1169: Monk of Entrana
 1170: Monk of Entrana
 1171: Monk
-1172: 
+1172:
 1173: Chicken
 1174: Chicken
 1175: Rooster
@@ -1326,13 +1326,13 @@
 1325: Hari
 1326: Barfy Bill
 1327: Tyras guard
-1328: Trader Stan
-1329: Trader Crewmember
-1330: Trader Crewmember
-1331: Trader Crewmember
-1332: Trader Crewmember
-1333: Trader Crewmember
-1334: Trader Crewmember
+1328: null
+1329: null
+1330: null
+1331: null
+1332: null
+1333: null
+1334: null
 1335: Jack Seagull
 1336: Longbow Ben
 1337: Ahab
@@ -1611,12 +1611,12 @@
 1610: Battle mage
 1611: Battle mage
 1612: Battle mage
-1613: null
+1613: Banker
 1614: Phials
 1615: Banknote Exchange Merchant
 1616: High Priestess Zul-Harcinqa
 1617: Priestess Zul-Gwenwynig
-1618: null
+1618: Banker
 1619: Cat
 1620: Cat
 1621: Cat
@@ -1631,8 +1631,8 @@
 1630: Lazy cat
 1631: Lazy cat
 1632: Lazy hellcat
-1633: null
-1634: null
+1633: Banker
+1634: Banker
 1635: Baby impling
 1636: Young impling
 1637: Gourmet impling
@@ -1869,8 +1869,8 @@
 1868: null
 1869: Sir Amik Varze
 1870: Evil Chicken
-1871: Baby dragon
-1872: Baby dragon
+1871: Baby black dragon
+1872: Baby black dragon
 1873: K'klik
 1874: Ice troll runt
 1875: Ice troll male
@@ -2151,7 +2151,7 @@
 2150: Grand Exchange Clerk
 2151: Grand Exchange Clerk
 2152: Brugsen Bursen
-2153: Melee Shop
+2153: Gunnjorn
 2154: TzHaar-Mej
 2155: TzHaar-Mej
 2156: TzHaar-Mej
@@ -2887,7 +2887,7 @@
 2886: Aubury
 2887: Asyff
 2888: Shop keeper
-2889: Skilling Store
+2889: Grum
 2890: Wydin
 2891: Gerrant
 2892: Brian
@@ -3075,44 +3075,44 @@
 3074: Goblin
 3075: Goblin
 3076: Goblin
-3077: Hans
-3078: Man
-3079: Man
-3080: Man
-3081: Man
-3082: Man
-3083: Woman
-3084: Woman
-3085: Woman
-3086: Farmer
-3087: Farmer
-3088: Farmer
-3089: Farmer
-3090: Farmer
-3091: Farmer
-3092: Thief
-3093: Thief
-3094: Guard
-3095: Tramp
-3096: Barbarian
-3097: Wizard
-3098: Druid
+3077: Phoenix
+3078: Phoenix
+3079: Phoenix
+3080: Phoenix
+3081: Phoenix
+3082: Phoenix
+3083: Phoenix
+3084: Phoenix
+3085:
+3086: <col=00ffff>Portal</col>
+3087: null
+3088: <col=00efef>Portal</col>
+3089: Banker
+3090: Banker
+3091: Banker
+3092: Banker
+3093: Banker
+3094: Banker
+3095: Chief servant
+3096: Taxidermist
+3097: Estate agent
+3098: Stonemason
 3099: Hellpuppy
-3100: Warrior woman
-3101: Man
-3102: Barbarian
-3103: Al-Kharid warrior
-3104: Paladin
-3105: Paladin
-3106: Hero
-3107: Forester
-3108: Knight of Ardougne
+3100: Sir Renitee
+3101: Sawmill operator
+3102: Garden supplier
+3103: Garden supplier
+3104: null
+3105: Hans
+3106: Man
+3107: Man
+3108: Man
 3109: Man
-3110: Woman
-3111: Knight of Ardougne
-3112: Archer
-3113: Zoo keeper
-3114: Chuck
+3110: Man
+3111: Woman
+3112: Woman
+3113: Woman
+3114: Farmer
 3115: Farid Morrisane (ores and bars)
 3116: Tz-Kih
 3117: Tz-Kih
@@ -3241,26 +3241,26 @@
 3240: Tree
 3241: Blandebir
 3242: Metarialus
-3243: Barman
-3244: Priest
-3245: Guard
+3243: Farmer
+3244: Farmer
+3245: Farmer
 3246: Wizard Frumscone
 3247: Wizard Akutha
 3248: Wizard Distentor
 3249: Wizard Sinina
-3250: Door man
-3251: Watchman
-3252: Soldier
-3253: Wyson the gardener
-3254: Sigbert the Adventurer
-3255: Shipyard worker
-3256: Shipyard worker
-3257: Master Farmer
-3258: Master Farmer
-3259: Market Guard
-3260: Man
-3261: Gee
-3262: Donie
+3250: Farmer
+3251: Farmer
+3252: Thief
+3253: Thief
+3254: Guard
+3255: Tramp
+3256: Barbarian
+3257: Wizard
+3258: Druid
+3259: Druid
+3260: Warrior woman
+3261: Man
+3262: Barbarian
 3263: Drunken man
 3264: Man
 3265: Man
@@ -3290,19 +3290,19 @@
 3289: Hobgoblin
 3290: Frog
 3291: Postie Pete
-3292: null
-3293: null
-3294: null
-3295: null
-3296: null
-3297: null
-3298: null
-3299: null
-3300: null
-3301: null
-3302: null
-3303: null
-3304: null
+3292: Al-Kharid warrior
+3293: Paladin
+3294: Paladin
+3295: Hero
+3296: Forester
+3297: Knight of Ardougne
+3298: Man
+3299: Woman
+3300: Knight of Ardougne
+3301: Archer
+3302: Zoo keeper
+3303: Chuck
+3304: Barman
 3305: Master Chef
 3306: Henja
 3307: Combat Instructor
@@ -3486,8 +3486,8 @@
 3485: Monk of Zamorak
 3486: Monk of Zamorak
 3487: null
-3488: Drezel
-3489: Drezel
+3488: null
+3489: null
 3490: Jorral
 3491: Melina
 3492: Melina
@@ -3773,7 +3773,7 @@
 3772: Old Man Ral
 3773: null
 3774: Aeonisig Raispher
-3775: Safalaan
+3775: Safalaan Hallow
 3776: Sarius Guile
 3777: Elemental balance
 3778: Sarius Guile
@@ -3807,16 +3807,16 @@
 3806: Meiyerditch citizen
 3807: Meiyerditch citizen
 3808: Meiyerditch citizen
-3809: A Meiyerditch child
-3810: A Meiyerditch child
-3811: A Meiyerditch child
-3812: A Meiyerditch child
-3813: A Meiyerditch child
-3814: A Meiyerditch child
-3815: A Meiyerditch child
-3816: A Meiyerditch child
-3817: A Meiyerditch child
-3818: A Meiyerditch child
+3809: Child
+3810: Child
+3811: Child
+3812: Child
+3813: Child
+3814: Child
+3815: Child
+3816: Child
+3817: Child
+3818: Child
 3819: Meiyerditch miner
 3820: Meiyerditch miner
 3821: Meiyerditch miner
@@ -3831,7 +3831,7 @@
 3830: Stray dog
 3831: Cat
 3832: Cat
-3833: Boat
+3833: <col=00ffff>Boat</col>
 3834: Boat
 3835: Oneiromancer
 3836: House
@@ -5045,20 +5045,20 @@
 5044: Sanfew
 5045: Kaqemeex
 5046: Cyreg Paddlehorn
-5047: Curpile Fyod
+5047: null
 5048: Veliaf Hurtz
-5049: Sani Piliu
-5050: Harold Evans
-5051: Shop
+5049: null
+5050: null
+5051: Radigad Ponfit
 5052: Polmafi Ferdygris
 5053: Ivan Strom
 5054: Skeleton Hellhound
 5055: Stranger
 5056: Vanstrom Klause
 5057: Mist
-5058: Vanstrom Klause
-5059: Vanstrom Klause
-5060: Vanstrom Klause
+5058: null
+5059: null
+5060: null
 5061: Sea slug
 5062: Kennith
 5063: Kennith
@@ -5079,7 +5079,7 @@
 5078: Fisherman
 5079: Delrith
 5080: Weakened Delrith
-5081: Magic Shop
+5081: Traiborn
 5082: Gypsy Aris
 5083: Sir Prysin
 5084: Sir Prysin
@@ -5192,7 +5192,7 @@
 5191: Captain Lawgof
 5192: Goblin
 5193: Goblin
-5194: Baby dragon
+5194: Baby green dragon
 5195: Goblin
 5196: Goblin
 5197: Goblin
@@ -5415,13 +5415,13 @@
 5414: Combat stone
 5415: Combat stone
 5416: Combat stone
-5417: Chief servant
-5418: Taxidermist
-5419: Estate agent
-5420: Stonemason
-5421: Sir Renitee
-5422: Sawmill operator
-5423: Garden supplier
+5417: Priest
+5418: Guard
+5419: Door man
+5420: Watchman
+5421: Soldier
+5422: Wyson the gardener
+5423: Sigbert the Adventurer
 5424: null
 5425: null
 5426: Capt' Arnav
@@ -5455,7 +5455,7 @@
 5454: Thumpy
 5455: Thomdril
 5456: Kendall
-5457: Druid
+5457: Shipyard worker
 5458: Suspect
 5459: Suspect
 5460: Suspect
@@ -5519,7 +5519,7 @@
 5518: Elder Gnome child
 5519: Two-pints
 5520: Jarr
-5521: Le-sabr?
+5521: Le-sabr￨
 5522: Flax keeper
 5523: Hatius Cosaintus
 5524: Sir Rebral
@@ -5727,13 +5727,13 @@
 5726: Sheep
 5727: Rabbit
 5728: Imp
-5729: null
-5730: null
-5731: null
-5732: null
+5729: Shipyard worker
+5730: Master Farmer
+5731: Master Farmer
+5732: Market Guard
 5733: null
 5734: Elnock Inquisitor
-5735: Impling
+5735: Immenizz
 5736: Fairy Aeryka
 5737: Wandering impling
 5738: Imp defender
@@ -5858,8 +5858,8 @@
 5857: null
 5858: null
 5859: null
-5860: 
-5861: 
+5860:
+5861:
 5862: Cerberus
 5863: Cerberus
 5864: Captain Ned
@@ -5870,8 +5870,8 @@
 5869: Summoned Soul
 5870: Key Master
 5871: King Arthur
-5872: Baby dragon
-5873: Baby dragon
+5872: Baby green dragon
+5873: Baby green dragon
 5874: Black demon
 5875: Black demon
 5876: Black demon
@@ -5929,7 +5929,7 @@
 5928: Werewolf
 5929: Knight
 5930: null
-5931: 
+5931:
 5932: Egg
 5933: Egg
 5934: Egg
@@ -6176,7 +6176,7 @@
 6175: null
 6176: null
 6177: Scion
-6178: 
+6178:
 6179: null
 6180: null
 6181: null
@@ -6488,8 +6488,8 @@
 6487: null
 6488: Fishing spot
 6489: null
-6490: 
-6491: 
+6490:
+6491:
 6492: Kree'arra
 6493: Commander Zilyana
 6494: General Graardor
@@ -6589,11 +6589,11 @@
 6588: Bandosian guard
 6589: Dr Ford
 6590: Sister Scarophia
-6591: 
-6592: 
+6591:
+6592:
 6593: Lava dragon
 6594: Ent
-6595: <col=00ffff>Ent trunk</col>
+6595: Prifddinas guard
 6596: Zombie
 6597: Zombie
 6598: Zombie
@@ -6695,7 +6695,7 @@
 6694: Wily cat
 6695: Wily cat
 6696: Wily hellcat
-6697: 
+6697:
 6698: Ghost guard
 6699: Guard
 6700: Guard
@@ -6760,7 +6760,7 @@
 6759: Baby Chinchompa
 6760: null
 6761: null
-6762: 
+6762: Pyrelord
 6763: null
 6764: null
 6765: null
@@ -6790,15 +6790,15 @@
 6789: null
 6790: null
 6791: null
-6792: 
+6792:
 6793: Hell-Rat Behemoth
 6794: Monkey Archer
-6795: null
+6795: Pyrelord
 6796: null
 6797: Nieve
 6798: Steve
 6799: Steve
-6800: 
+6800:
 6801: Pieve
 6802: Combat Test
 6803: Maniacal monkey
@@ -6813,14 +6813,14 @@
 6812: Awowogei
 6813: Monkey Archer
 6814: Lammy Langle
-6815: Ghost
-6816: Ghost
-6817: Ghost
-6818: Ghost
-6819: Ghost
-6820: Ghost
-6821: Ghost
-6822: Ghost
+6815: Man
+6816: Gee
+6817: Donie
+6818: Man
+6819: null
+6820: null
+6821: null
+6822: null
 6823: Town crier
 6824: Giant bat
 6825: Rod Fishing spot
@@ -7062,7 +7062,7 @@
 7061: Batt Mellamy
 7062: Freald
 7063: Cob
-7064: Portal Mage
+7064: Dark wizard
 7065: Dark wizard
 7066: Wizard
 7067: Wizard
@@ -7488,8 +7488,8 @@
 7487: Zombie
 7488: Zombie
 7489: null
-7490: 
-7491: 
+7490:
+7491:
 7492: null
 7493: null
 7494: null
@@ -7545,15 +7545,15 @@
 7544: Tekton (enraged)
 7545: Tekton
 7546: Bartender
-7547: Man
+7547: null
 7548: Scavenger beast
 7549: Scavenger beast
 7550: Great Olm (Right claw)
 7551: Great Olm
 7552: Great Olm (Left claw)
-7553: Basilisk (Right claw)
-7554: Basilisk
-7555: Basilisk (Left claw)
+7553: Great Olm (Right claw)
+7554: Great Olm
+7555: Great Olm (Left claw)
 7556: null
 7557: null
 7558: <col=00ffff>Fire</col>
@@ -7727,7 +7727,7 @@
 7726: Dwarven Boatman
 7727: Kylie Minnow
 7728: Kylie Minnow
-7729: 
+7729:
 7730: Fishing spot
 7731: Fishing spot
 7732: Fishing spot
@@ -7747,7 +7747,7 @@
 7746: Wizard Mizgog
 7747: Wizard Mizgog
 7748: Fairy
-7749: 
+7749:
 7750: Armoured Foe
 7751: Well-armed Foe
 7752: Dark Mage
@@ -7939,9 +7939,9 @@
 7938: Revenant dark beast
 7939: Revenant knight
 7940: Revenant dragon
-7941: Emblem Trader
-7942: Emblem Trader
-7943: null
+7941: Iron Man tutor
+7942: null
+7943: Emblem Trader
 7944: null
 7945: null
 7946: Fishing spot
@@ -7953,7 +7953,7 @@
 7952: Erdan
 7953: Primula
 7954: Mysterious Adventurer
-7955: Baby dragon
+7955: Baby black dragon
 7956: Captain Tock
 7957: Captain Tock
 7958: Captain Tock
@@ -8130,8 +8130,6 @@
 8129: Robert the Strong
 8130: Odysseus
 8131: Torfinn
-8132: Torfinn
-8133: Torfinn
 8134: Sarah
 8135: Dragonkin
 8136: Zorgoth
@@ -8214,10 +8212,10 @@
 8213: Mercenary
 8214: Mercenary
 8215: Mercenary
-8216: Safalaan
-8217: Safalaan
-8218: Safalaan
-8219: Safalaan
+8216: Safalaan Hallow
+8217: Safalaan Hallow
+8218: Safalaan Hallow
+8219: Safalaan Hallow
 8220: Vertida Sefalatis
 8221: Vertida Sefalatis
 8222: Vertida Sefalatis
@@ -8270,31 +8268,31 @@
 8269: Yenrab
 8270: Lahsram
 8271: Erodoeht
-8272: Carl
+8272: null
 8273: Lector Gura
 8274: Sister Sevi
 8275: Sister Toen
 8276: Sister Yram
-8277: Hameln the Jester
-8278: Hanchen the Hound
-8279: Kroy
-8280: Damien Leucurte
-8281: Lord Crombwick
-8282: Painted One
-8283: Kurt
-8284: Don
-8285: Debra
-8286: Tanya
+8277: null
+8278: null
+8279: null
+8280: null
+8281: null
+8282: null
+8283: null
+8284: null
+8285: null
+8286: null
 8287: Lady Crombwick
 8288: Nemishka
-8289: Christopher
-8290: Child
-8291: Child
-8292: Child
-8293: Child
-8294: Child
-8295: Child
-8296: Child
+8289: null
+8290: null
+8291: null
+8292: null
+8293: null
+8294: null
+8295: null
+8296: null
 8297: Swamp Crab
 8298: Swamp Crab
 8299: Swampy log
@@ -8514,7 +8512,7 @@
 8513: Tormented Soul
 8514: Trapped Soul
 8515: Alyssa
-8516: Garden supplier
+8516: null
 8517: Ikkle Hydra
 8518: Ikkle Hydra
 8519: Ikkle Hydra
@@ -8732,7 +8730,7 @@
 8731: Smolcano
 8732: Mugger
 8733: Crab
-8734: Soulless
+8734: null
 8735: null
 8736: Moss Giant
 8737: Youngllef
@@ -9296,44 +9294,1113 @@
 9295: Typhor
 9296: Typhor
 9297: Vritra
-9333: Kaal-Ket-Jor jr
-9337: null
-9338: Fluffy Jr
-9339: Fenrir Greyback Jr
-9340: Zriawk
-15000: Founder Imp
-15001: Corrupted Nechryarch
-15002: Pet Corrupted Nechryarch
-15003: Necromancer
-15004: Unstable Corrupted Skeleton
-15005: Mini Necromancer
-15006: Abyssal Orphan
-15007: Hellpuppy
-15008: JalTok-Jad
-15009: Stuart
-15010: Money
-15011: Money
-15012: Money
-15013: Money
-15014: Money
-15015: Money
-15016: Brutal Lava Dragon
-15017: Baby Lava Dragon
-15018: Fishing Spot
-15019: Brutal Lava Dragon
-15020: Aragog
-15021: Kaal-Ket-Jor
-15022: Kaal-Ket-Jor jr
-15023: Summer pet
-15026: Fluffy
-15028: Dementor
-15030: Centaur
-15032: Centaur
-15034: Hungarian horntail
-15040: Centaur
-15042: Centaur
-15044: Dementor
-15050: Fenrir Greyback
-20000: Founder Imp
-20001: Corrupted Nechryarch
-20002: Pet Corrupted Nechryarch
+9298: Maz
+9299: Trader Stan
+9300: Trader Stan
+9301: Trader Stan
+9302: Trader Stan
+9303: Trader Stan
+9304: Trader Stan
+9305: Trader Stan
+9306: Lokar Searunner
+9307: Trader Stan
+9308: Trader Stan
+9309: Trader Stan
+9310: Trader Stan
+9311: Trader Stan
+9312: Trader Crewmember
+9313: Trader Crewmember
+9314: Trader Crewmember
+9315: Trader Crewmember
+9316: Trader Crewmember
+9317: Trader Crewmember
+9318: Trader Crewmember
+9319: Trader Crewmember
+9320: Trader Crewmember
+9321: Trader Crewmember
+9322: Trader Crewmember
+9323: Trader Crewmember
+9324: Trader Crewmember
+9325: Trader Crewmember
+9326: Trader Crewmember
+9327: Trader Crewmember
+9328: Trader Crewmember
+9329: Trader Crewmember
+9330: Trader Crewmember
+9331: Trader Crewmember
+9332: Trader Crewmember
+9333: Trader Crewmember
+9334: Trader Crewmember
+9335: Trader Crewmember
+9336: Trader Crewmember
+9337: Trader Crewmember
+9338: Trader Crewmember
+9339: Trader Crewmember
+9340: Trader Crewmember
+9341: Trader Crewmember
+9342: Trader Crewmember
+9343: Trader Crewmember
+9344: Trader Crewmember
+9345: Trader Crewmember
+9346: Trader Crewmember
+9347: Trader Crewmember
+9348: Trader Crewmember
+9349: Trader Crewmember
+9350: Trader Crewmember
+9351: Trader Crewmember
+9352: Trader Crewmember
+9353: Trader Crewmember
+9354: Trader Crewmember
+9355: Trader Crewmember
+9356: Trader Crewmember
+9357: Trader Crewmember
+9358: Trader Crewmember
+9359: Trader Crewmember
+9360: Trader Crewmember
+9361: Trader Crewmember
+9362: Trader Crewmember
+9363: Trader Crewmember
+9364: Trader Crewmember
+9365: Trader Crewmember
+9366: Trader Crewmember
+9367: Trader Crewmember
+9368: Trader Crewmember
+9369: Trader Crewmember
+9370: Trader Crewmember
+9371: Trader Crewmember
+9372: Trader Crewmember
+9373: Trader Crewmember
+9374: Trader Crewmember
+9375: Trader Crewmember
+9376: Trader Crewmember
+9377: Trader Crewmember
+9378: Trader Crewmember
+9379: Trader Crewmember
+9380: Trader Crewmember
+9381: Trader Crewmember
+9382: Trader Crewmember
+9383: Trader Crewmember
+9384: null
+9385: null
+9386: null
+9387: null
+9388: null
+9389: null
+9390: null
+9391: null
+9392: null
+9393: null
+9394: null
+9395: null
+9396: null
+9397: null
+9398: Little Nightmare
+9399: Little Nightmare
+9400: Oath Lord D'rows
+9401: Oathbreaker M'als
+9402: Oathbreaker E'piws
+9403: Oathbreaker B'ats
+9404: Lithil
+9405: Sister Aseret
+9406: Sister Naoj
+9407: Sister Salohcin
+9408: Lumiere
+9409: Daer Krand
+9410: Strong Ronny
+9411: null
+9412: null
+9413: Shura
+9414: Shura
+9415: Acorn
+9416: Phosani's Nightmare
+9417: Phosani's Nightmare
+9418: Phosani's Nightmare
+9419: Phosani's Nightmare
+9420: Phosani's Nightmare
+9421: Phosani's Nightmare
+9422: Phosani's Nightmare
+9423: Phosani's Nightmare
+9424: Phosani's Nightmare
+9425: The Nightmare
+9426: The Nightmare
+9427: The Nightmare
+9428: The Nightmare
+9429: The Nightmare
+9430: The Nightmare
+9431: The Nightmare
+9432: The Nightmare
+9433: The Nightmare
+9434: <col=00ffff>Totem</col>
+9435: <col=00ffff>Totem</col>
+9436: <col=00ffff>Totem</col>
+9437: <col=00ffff>Totem</col>
+9438: <col=00ffff>Totem</col>
+9439: <col=00ffff>Totem</col>
+9440: <col=00ffff>Totem</col>
+9441: <col=00ffff>Totem</col>
+9442: <col=00ffff>Totem</col>
+9443: <col=00ffff>Totem</col>
+9444: <col=00ffff>Totem</col>
+9445: <col=00ffff>Totem</col>
+9446: Sleepwalker
+9447: Sleepwalker
+9448: Sleepwalker
+9449: Sleepwalker
+9450: Sleepwalker
+9451: Sleepwalker
+9452: Parasite
+9453: Parasite
+9454: Husk
+9455: Husk
+9456: null
+9457: null
+9458: null
+9459: null
+9460: The Nightmare
+9461: The Nightmare
+9462: The Nightmare
+9463: The Nightmare
+9464: The Nightmare
+9465: Infernal pyrelord
+9466: Husk
+9467: Husk
+9468: Parasite
+9469: Parasite
+9470: Sleepwalker
+9471: Sister Senga
+9472: Sister Senga
+9473: null
+9474: <col=00ffff>Ent trunk</col>
+9475: null
+9476: Gielinor Guide
+9477: Survival Expert
+9478: Fishing spot
+9479: Master Navigator
+9480: Quest Guide
+9481: Mining Instructor
+9482: Combat Instructor
+9483: Giant rat
+9484: Banker
+9485: Brother Brace
+9486: Iron Man tutor
+9487: Magic Instructor
+9488: Chicken
+9489: Veliaf Hurtz
+9490: Hameln the Jester
+9491: Hanchen the Hound
+9492: Tangleroot
+9493: Tangleroot
+9494: Tangleroot
+9495: Tangleroot
+9496: Tangleroot
+9497: Tangleroot
+9498: Tangleroot
+9499: Tangleroot
+9500: Tangleroot
+9501: Tangleroot
+9502: Iorwerth Warrior
+9503: Iorwerth Warrior
+9504: Account security tutor
+9505: Hameln the Jester
+9506: Hanchen the Hound
+9507: null
+9508: null
+9509: null
+9510: null
+9511: Enraged Tektiny
+9512: Flying Vespina
+9513: Enraged Tektiny
+9514: Flying Vespina
+9515: null
+9516: null
+9517: null
+9518: null
+9519: null
+9520: null
+9521: Veliaf Hurtz
+9522: Veliaf Hurtz
+9523: Veliaf Hurtz
+9524: Veliaf Hurtz
+9525: Veliaf Hurtz
+9526: Veliaf Hurtz
+9527: Veliaf Hurtz
+9528: Veliaf Hurtz
+9529: Veliaf Hurtz
+9530: Ivan Strom
+9531: Ivan Strom
+9532: Ivan Strom
+9533: Ivan Strom
+9534: Ivan Strom
+9535: Ivan Strom
+9536: Ivan Strom
+9537: Safalaan Hallow
+9538: Safalaan Hallow
+9539: Safalaan Hallow
+9540: Safalaan Hallow
+9541: Safalaan Hallow
+9542: Safalaan Hallow
+9543: Kael Forshaw
+9544: Kael Forshaw
+9545: Kael Forshaw
+9546: Kael Forshaw
+9547: Vertida Sefalatis
+9548: Vertida Sefalatis
+9549: Vertida Sefalatis
+9550: Vertida Sefalatis
+9551: Radigad Ponfit
+9552: Radigad Ponfit
+9553: Radigad Ponfit
+9554: Polmafi Ferdygris
+9555: Polmafi Ferdygris
+9556: Polmafi Ferdygris
+9557: Carl
+9558: Carl
+9559: Kroy
+9560: Kroy
+9561: Damien Leucurte
+9562: Damien Leucurte
+9563: Damien Leucurte
+9564: Damien Leucurte
+9565: Lord Crombwick
+9566: Vanstrom Klause
+9567: Vanstrom Klause
+9568: Vanstrom Klause
+9569: Vanstrom Klause
+9570: Vanstrom Klause
+9571: Vanstrom Klause
+9572: Mist
+9573: Acidic Bloodveld
+9574: Vanescula Drakan
+9575: Vanescula Drakan
+9576: Vanescula Drakan
+9577: Vanescula Drakan
+9578: Lord Alexei Jovkai
+9579: Lowerniel Drakan
+9580: Werewolf
+9581: Werewolf
+9582: Werewolf
+9583: Prisoner
+9584: Prisoner
+9585: Prisoner
+9586: Vampyre Juvinate
+9587: Vampyre Juvinate
+9588: Desmodus Lasiurus
+9589: Mordan Nikazsi
+9590: Vyrewatch
+9591: Vyrewatch
+9592: Prisoner
+9593: Prisoner
+9594: Maria Gadderanks
+9595: Maria Gadderanks
+9596: Ron Gadderanks
+9597: Ron Gadderanks
+9598: Sarius Guile
+9599: Vyrewatch Sentinel
+9600: Vyrewatch Sentinel
+9601: Vyrewatch Sentinel
+9602: Vyrewatch Sentinel
+9603: Vyrewatch Sentinel
+9604: Vyrewatch Sentinel
+9605: Vyrewatch
+9606: Vyrewatch
+9607: Vyrewatch
+9608: Vyrewatch
+9609: Seagull
+9610: Mutated Bloodveld
+9611: Mutated Bloodveld
+9612: Nail beast
+9613: Nail beast
+9614: Vampyre Juvinate
+9615: Vampyre Juvinate
+9616: Vampyre Juvinate
+9617: Vampyre Juvinate
+9618: null
+9619: Curpile Fyod
+9620: null
+9621: Veliaf Hurtz
+9622: Sani Piliu
+9623: Sani Piliu
+9624: Harold Evans
+9625: Harold Evans
+9626: null
+9627: Radigad Ponfit
+9628: null
+9629: Polmafi Ferdygris
+9630: null
+9631: Ivan Strom
+9632: Vanstrom Klause
+9633: Veliaf Hurtz
+9634: Wiskit
+9635: Gadderanks
+9636: Drezel
+9637: Dark Squirrel
+9638: Dark Squirrel
+9639: Mysterious Stranger
+9640: Mysterious Stranger
+9641: Bat
+9642: Bat
+9643: Spider
+9644: Spider
+9645: Fish
+9646: Fish
+9647: null
+9648: Knight of the Owl
+9649: null
+9650: Knight of the Unicorn
+9651: null
+9652: Knight of the Wolf
+9653: null
+9654: Knight of the Lion
+9655: null
+9656: Archpriest of the Unicorn
+9657: Darkmeyer Slave
+9658: Darkmeyer Slave
+9659: mad melvin96
+9660: r2t2pnsh0Ty
+9661: Jyn
+9662: c4ssi4n
+9663: fishrunner82
+9664: weast side49
+9665: c0lect0r890
+9666: Giant Squirrel
+9667: Owl
+9668: Owl
+9669: null
+9670: null
+9671: null
+9672: null
+9673: null
+9674: null
+9675: Noranna Tytanin
+9676: Noranna Tytanin
+9677: Slave
+9678: Slave
+9679: Slave
+9680: Slave
+9681: Slave
+9682: Slave
+9683: Vampyre Juvinate
+9684: Vampyre Juvinate
+9685: Valentin Rasputin
+9686: Von van Von
+9687: Vlad Bechstein
+9688: Draconis Sanguine
+9689: Mort Nightshade
+9690: Vampyrus Diaemus
+9691: Carnivus Belamorta
+9692: Vormar Vakan
+9693: Misdrievus Shadum
+9694: Vlad Diaemus
+9695: Noctillion Lugosi
+9696: Alek Constantine
+9697: Grigor Rasputin
+9698: Haemas Lamescus
+9699: Remus Kaninus
+9700: Vallessia Dracyula
+9701: Violetta Sanguine
+9702: Diphylla Bechstein
+9703: Episcula Helsing
+9704: Vampyressa van Von
+9705: Vallessia von Pitt
+9706: Vonnetta Varnis
+9707: Natalidae Shadum
+9708: Mortina Daubenton
+9709: Lasenna Rasputin
+9710: Caninelle Draynar
+9711: Valentina Diaemus
+9712: Nakasa Jovkai
+9713: Crimsonette van Marr
+9714: Pipistrelle Draynar
+9715: Lady Nadezhda Shadum
+9716: Lord Mischa Myrmel
+9717: Lord Alexei Jovkai
+9718: Banker
+9719: Banker
+9720: Grinka Krast
+9721: Drasdan Ranor
+9722: Despoina Callidra
+9723: Lenyig Karna
+9724: Varrian Sobak
+9725: Slave
+9726: Slave
+9727: Vampyre Juvinate
+9728: Vampyre Juvinate
+9729: Vampyre Juvinate
+9730: Vampyre Juvinate
+9731: Vampyre Juvenile
+9732: Vampyre Juvenile
+9733: Vampyre Juvenile
+9734: Vampyre Juvenile
+9735: Vyrewatch
+9736: Vyrewatch
+9737: Vyrewatch
+9738: Vyrewatch
+9739: Vyrewatch
+9740: Vyrewatch
+9741: Vyrewatch
+9742: Vyrewatch
+9743: Werewolf
+9744: Werewolf
+9745: Werewolf
+9746: Auctioneer
+9747: null
+9748: null
+9749: Frank
+9750: Spectator
+9751: Spectator
+9752: Spectator
+9753: Spectator
+9754: Spectator
+9755: Spectator
+9756: Vyrewatch Sentinel
+9757: Vyrewatch Sentinel
+9758: Vyrewatch Sentinel
+9759: Vyrewatch Sentinel
+9760: Vyrewatch Sentinel
+9761: Vyrewatch Sentinel
+9762: Vyrewatch Sentinel
+9763: Vyrewatch Sentinel
+9764: Yenrab
+9765: Lahsram
+9766: Erodoeht
+9767: Carl
+9768: Roy
+9769: Lector Gura
+9770: Sister Sevi
+9771: Sister Toen
+9772: Sister Yram
+9773: Kroy
+9774: Damien Leucurte
+9775: Lord Crombwick
+9776: Painted One
+9777: Painted One
+9778: Kurt
+9779: Don
+9780: Debra
+9781: Tanya
+9782: Kurt
+9783: Don
+9784: Debra
+9785: Tanya
+9786: Child
+9787: Child
+9788: Child
+9789: Child
+9790: Child
+9791: Child
+9792: Child
+9793: Child
+9794: Child
+9795: Child
+9796: Child
+9797: Child
+9798: Child
+9799: Child
+9800:
+9801: Sleepwalker
+9802: Sleepwalker
+9803: null
+9804: null
+9805: null
+9806: null
+9807: null
+9808: null
+9809: null
+9810: null
+9811: null
+9812: null
+9813: null
+9814: null
+9815: null
+9816: null
+9817: null
+9818: null
+9819: null
+9820: null
+9821: null
+9822: null
+9823: null
+9824: null
+9825: null
+9826: null
+9827: null
+9828: null
+9829: null
+9830: null
+9831: null
+9832: null
+9833: null
+9834: null
+9835: null
+9836: null
+9837: null
+9838: null
+9839: null
+9840: null
+9841: null
+9842: null
+9843: null
+9844: null
+9845: null
+9846: null
+9847: null
+9848: null
+9849: null
+9850: Red
+9851: Ziggy
+9852: Red
+9853: Ziggy
+9854: null
+9855: Death
+9856: Grave
+9857: Grave
+9858: null
+9859: null
+9860: null
+9861: null
+9862: null
+9863: null
+9864: null
+9865: null
+9866: null
+9867: null
+9868: null
+9869: null
+9870: null
+9871: null
+9872: null
+9873: null
+9874: null
+9875: null
+9876: null
+9877: null
+9878: null
+9879: null
+9880: null
+9881: null
+9882: null
+9883: null
+9884: null
+9885: null
+9886: null
+9887: null
+9888: null
+9889: null
+9890: null
+9891: null
+9892: null
+9893: null
+9894: null
+9895: null
+9896: null
+9897: null
+9898: null
+9899: null
+9900: null
+9901: null
+9902: null
+9903: null
+9904: null
+9905: null
+9906: null
+9907: null
+9908: null
+9909: null
+9910: null
+9911: null
+9912: null
+9913: null
+9914: null
+9915: null
+9916: null
+9917: null
+9918: null
+9919: null
+9920: null
+9921: null
+9922: null
+9923: null
+9924: null
+9925: null
+9926: null
+9927: null
+9928: null
+9929: null
+9930: null
+9931: null
+9932: null
+9933: null
+9934: null
+9935: null
+9936: null
+9937: null
+9938: null
+9939: null
+9940: null
+9941: null
+9942: null
+9943: null
+9944: null
+9945: null
+9946: null
+9947: null
+9948: null
+9949: null
+9950: null
+9951: null
+9952: null
+9953: null
+9954: null
+9955: null
+9956: null
+9957: null
+9958: null
+9959: null
+9960: null
+9961: null
+9962: null
+9963: null
+9964: null
+9965: null
+9966: null
+9967: null
+9968: null
+9969: null
+9970: null
+9971: null
+9972: null
+9973: null
+9974: null
+9975: null
+9976: null
+9977: null
+9978: null
+9979: null
+9980: null
+9981: null
+9982: null
+9983: null
+9984: null
+9985: null
+9986: null
+9987: null
+9988: null
+9989: null
+9990: null
+9991: null
+9992: null
+9993: null
+9994: null
+9995: null
+9996: null
+9997: null
+9998: null
+9999: null
+10000: null
+10001: null
+10002: null
+10003: null
+10004: null
+10005: null
+10006: null
+10007: null
+10008: null
+10009: null
+10010: null
+10011: null
+10012: null
+10013: null
+10014: null
+10015: null
+10016: null
+10017: null
+10018: null
+10019: null
+10020: null
+10021: null
+10022: null
+10023: null
+10024: null
+10025: null
+10026: null
+10027: null
+10028: null
+10029: null
+10030: null
+10031: null
+10032: null
+10033: null
+10034: null
+10035: null
+10036: null
+10037: null
+10038: null
+10039: null
+10040: null
+10041: null
+10042: null
+10043: null
+10044: null
+10045: null
+10046: null
+10047: null
+10048: null
+10049: null
+10050: null
+10051: null
+10052: null
+10053: null
+10054: null
+10055: null
+10056: null
+10057: null
+10058: null
+10059: null
+10060: null
+10061: null
+10062: null
+10063: null
+10064: null
+10065: null
+10066: null
+10067: null
+10068: null
+10069: null
+10070: null
+10071: null
+10072: null
+10073: null
+10074: null
+10075: null
+10076: null
+10077: null
+10078: null
+10079: null
+10080: null
+10081: null
+10082: null
+10083: null
+10084: null
+10085: null
+10086: null
+10087: null
+10088: null
+10089: null
+10090: null
+10091: null
+10092: null
+10093: null
+10094: null
+10095: null
+10096: null
+10097: null
+10098: null
+10099: null
+10100: null
+10101: null
+10102: null
+10103: null
+10104: null
+10105: null
+10106: null
+10107: null
+10108: null
+10109: null
+10110: null
+10111: null
+10112: null
+10113: null
+10114: null
+10115: null
+10116: null
+10117: null
+10118: null
+10119: null
+10120: null
+10121: null
+10122: null
+10123: null
+10124: null
+10125: null
+10126: null
+10127: null
+10128: null
+10129: null
+10130: null
+10131: null
+10132: null
+10133: null
+10134: null
+10135: null
+10136: null
+10137: null
+10138: null
+10139: null
+10140: null
+10141: null
+10142: null
+10143: null
+10144: null
+10145: null
+10146: null
+10147: null
+10148: null
+10149: null
+10150: null
+10151: null
+10152: null
+10153: null
+10154: null
+10155: null
+10156: null
+10157: null
+10158: null
+10159: null
+10160: null
+10161: null
+10162: null
+10163: null
+10164: null
+10165: null
+10166: null
+10167: null
+10168: null
+10169: null
+10170: null
+10171: null
+10172: null
+10173: null
+10174: null
+10175: null
+10176: null
+10177: null
+10178: null
+10179: null
+10180: null
+10181: null
+10182: null
+10183: null
+10184: null
+10185: null
+10186: null
+10187: null
+10188: null
+10189: null
+10190: null
+10191: null
+10192: null
+10193: null
+10194: null
+10195: null
+10196: null
+10197: null
+10198: null
+10199: null
+10200: null
+10201: null
+10202: null
+10203: null
+10204: null
+10205: null
+10206: null
+10207: null
+10208: null
+10209: null
+10210: null
+10211: null
+10212: null
+10213: null
+10214: null
+10215: null
+10216: null
+10217: null
+10218: null
+10219: null
+10220: null
+10221: null
+10222: null
+10223: null
+10224: null
+10225: null
+10226: null
+10227: null
+10228: null
+10229: null
+10230: null
+10231: null
+10232: null
+10233: null
+10234: null
+10235: null
+10236: null
+10237: null
+10238: null
+10239: null
+10240: null
+10241: null
+10242: null
+10243: null
+10244: null
+10245: null
+10246: null
+10247: null
+10248: null
+10249: null
+10250: null
+10251: null
+10252: null
+10253: null
+10254: null
+10255: null
+10256: null
+10257: null
+10258: null
+10259: null
+10260: null
+10261: null
+10262: null
+10263: null
+10264: null
+10265: null
+10266: null
+10267: null
+10268: null
+10269: null
+10270: null
+10271: null
+10272: null
+10273: null
+10274: null
+10275: null
+10276: null
+10277: null
+10278: null
+10279: null
+10280: null
+10281: null
+10282: null
+10283: null
+10284: null
+10285: null
+10286: null
+10287: null
+10288: null
+10289: null
+10290: null
+10291: null
+10292: null
+10293: null
+10294: null
+10295: null
+10296: null
+10297: null
+10298: null
+10299: null
+10300: null
+10301: null
+10302: null
+10303: null
+10304: null
+10305: null
+10306: null
+10307: null
+10308: null
+10309: null
+10310: null
+10311: null
+10312: null
+10313: null
+10314: null
+10315: null
+10316: null
+10317: null
+10318: null
+10319: null
+10320: null
+10321: null
+10322: null
+10323: null
+10324: null
+10325: null
+10326: null
+10327: null
+10328: null
+10329: null
+10330: null
+10331: null
+10332: null
+10333: null
+10334: null
+10335: null
+10336: null
+10337: null
+10338: null
+10339: null
+10340: null
+10341: null
+10342: null
+10343: null
+10344: null
+10345: null
+10346: null
+10347: null
+10348: null
+10349: null
+10350: null
+10351: null
+10352: null
+10353: null
+10354: null
+10355: null
+10356: null
+10357: null
+10358: null
+10359: null
+10360: null
+10361: null
+10362: null
+10363: null
+10364: null
+10365: null
+10366: null
+10367: null
+10368: Squire
+10369: Bobawu
+10370: Marten
+10371: Wizard
+10372: Wizard
+10373: Wizard
+10374: Hill Giant
+10375: Hill Giant
+10376: Hill Giant
+10377: Ferox
+10378: Sigismund
+10379: Zamorakian Acolyte
+10380: Zamorakian Acolyte
+10381: Zamorakian Acolyte
+10382: Refugee
+10383: Refugee
+10384: Refugee
+10385: Refugee
+10386: Phabelle Bile
+10387: Derse Venator
+10388: Andros Mai
+10389: Banker
+10390: Mercenary
+10391: Financial Wizard
+10392: Camarst
+10393: Warrior of Murahs
+10394: Warrior of Murahs
+10395: Warrior of Murahs
+10396: null
+10397: Spiked Turoth
+10398: Shadow Wyrm
+10399: Shadow Wyrm
+10400: Guardian Drake
+10401: Guardian Drake
+10402: Colossal Hydra
+10403: Torfinn
+10404: Torfinn
+10405: Torfinn
+10406: Torfinn
+10407: Jarvald

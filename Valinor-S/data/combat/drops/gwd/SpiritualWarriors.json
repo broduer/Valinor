@@ -1,0 +1,112 @@
+{
+  "npcs": [
+	2210,
+	2243,
+	3159,
+	3166
+  ],
+  "points": 0,
+  "items": [
+	{
+	  "id": 1059,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1279,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1323,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1071,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1295,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1105,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1161,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1281,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1195,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1341,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1428,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1217,
+	  "amount": 1,
+	  "points": 3
+	},
+	{
+	  "id": 1257,
+	  "amount": 1,
+	  "points": 2
+	},
+	{
+	  "id": 1371,
+	  "amount": 1,
+	  "points": 2
+	},
+	{
+	  "id": 1355,
+	  "amount": 1,
+	  "points": 2
+	},
+	{
+	  "id": 1081,
+	  "amount": 1,
+	  "points": 2
+	},
+	{
+	  "id": 1317,
+	  "amount": 1,
+	  "points": 1
+	},
+	{
+	  "id": 1303,
+	  "amount": 1,
+	  "points": 1
+	},
+	{
+	  "id": 1201,
+	  "amount": 1,
+	  "points": 1
+	},
+	{
+	  "id": 3202,
+	  "amount": 1,
+	  "points": 1
+	}
+  ],
+  "tables": []
+}

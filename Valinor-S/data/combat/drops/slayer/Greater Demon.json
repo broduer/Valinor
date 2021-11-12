@@ -1,0 +1,112 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	2025,
+	2026,
+	2027
+  ],
+  "guaranteed": [
+	{
+	  "id": 592
+	}
+  ],
+  "tables": [
+	{
+	  "name": "Weapons",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 1353,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1365,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1311,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1073,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1197,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1163,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Runes",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 554,
+		  "min": 37,
+		  "max": 75,
+		  "points": 1
+		},
+		{
+		  "id": 562,
+		  "min": 1,
+		  "max": 15,
+		  "points": 1
+		},
+		{
+		  "id": 560,
+		  "min": 1,
+		  "max": 5,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Other",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 995,
+		  "min": 11,
+		  "max": 460,
+		  "points": 1
+		},
+		{
+		  "id": 2357,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1734,
+		  "min": 1,
+		  "max": 10,
+		  "points": 1
+		},
+		{
+		  "id": 361,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 1452,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}

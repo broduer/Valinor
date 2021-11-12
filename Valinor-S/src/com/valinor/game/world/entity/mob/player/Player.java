@@ -46,7 +46,6 @@ import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.farmingOld.FarmingOld;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
-import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.SlayerKey;
 import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
@@ -202,7 +201,7 @@ public class Player extends Mob {
         Venom.cure(2, this);
 
         message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-        if (memberRights.isRegularMemberOrGreater(this)) {
+        if (memberRights.isSaphireMemberOrGreater(this)) {
             if (getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
                 message("Special attack energy can be restored in " + getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
             } else {
@@ -210,11 +209,11 @@ public class Player extends Mob {
                 setSpecialActivated(false);
                 CombatSpecial.updateBar(this);
                 int time = 0;
-                if (memberRights.isRegularMemberOrGreater(this))
+                if (memberRights.isSaphireMemberOrGreater(this))
                     time = 300;//3 minutes
-                if (memberRights.isSuperMemberOrGreater(this))
+                if (memberRights.isEmeraldMemberOrGreater(this))
                     time = 100;//1 minute
-                if (memberRights.isEliteMemberOrGreater(this))
+                if (memberRights.isRubyMemberOrGreater(this))
                     time = 0;//always
                 getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
                 message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");
@@ -270,28 +269,28 @@ public class Player extends Mob {
 
     public int extraItemRollChance() {
         return switch (getMemberRights()) {
-            case NONE, MEMBER, SUPER_MEMBER -> 0;
-            case ELITE_MEMBER -> 1;
-            case EXTREME_MEMBER -> 3;
-            case LEGENDARY_MEMBER -> 5;
-            case VIP -> 8;
-            case SPONSOR_MEMBER -> 10;
+            case NONE, SAPHIRE_MEMBER, EMERALD_MEMBER -> 0;
+            case RUBY_MEMBER -> 1;
+            case DIAMOND_MEMBER -> 3;
+            case DRAGONSTONE_MEMBER -> 5;
+            case ONYX_MEMBER -> 8;
+            case ZENYTE_MEMBER -> 10;
         };
     }
 
     public int totemDropRateBonus() {
         var extraPercentageChance = 0;
-        if (getMemberRights().isSponsorOrGreater(this) && tile().memberCave())
+        if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 50;
-        else if (getMemberRights().isVIPOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isOnyxMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 30;
-        else if (getMemberRights().isLegendaryMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDragonstoneMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 25;
-        else if (getMemberRights().isExtremeMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDiamondMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 20;
-        else if (getMemberRights().isEliteMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isRubyMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 15;
-        else if (getMemberRights().isSuperMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isEmeraldMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 10;
 
         return extraPercentageChance;
@@ -299,19 +298,19 @@ public class Player extends Mob {
 
     public int memberAncientRevBonus() {
         var extraPercentageChance = 0;
-        if (getMemberRights().isSponsorOrGreater(this) && tile().memberCave())
+        if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 95;
-        else if (getMemberRights().isVIPOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isOnyxMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 80;
-        else if (getMemberRights().isLegendaryMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDragonstoneMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 70;
-        else if (getMemberRights().isExtremeMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDiamondMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 60;
-        else if (getMemberRights().isEliteMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isRubyMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 55;
-        else if (getMemberRights().isSuperMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isEmeraldMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 50;
-        else if (getMemberRights().isRegularMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isSaphireMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 45;
 
         return extraPercentageChance;
@@ -319,17 +318,17 @@ public class Player extends Mob {
 
     public int masterCasketMemberBonus() {
         var extraPercentageChance = 0;
-        if (getMemberRights().isSponsorOrGreater(this) && tile().memberCave())
+        if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 25;
-        else if (getMemberRights().isVIPOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isOnyxMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 15;
-        else if (getMemberRights().isLegendaryMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDragonstoneMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 10;
-        else if (getMemberRights().isExtremeMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isDiamondMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 7;
-        else if (getMemberRights().isEliteMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isRubyMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 4;
-        else if (getMemberRights().isSuperMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isEmeraldMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 2;
 
         return extraPercentageChance;
@@ -338,36 +337,22 @@ public class Player extends Mob {
     public int dropRateBonus() {
         var percent = switch (getMemberRights()) {
             case NONE -> 0;
-            case MEMBER -> 1;
-            case SUPER_MEMBER -> 3;
-            case ELITE_MEMBER -> 5;
-            case EXTREME_MEMBER -> 7;
-            case LEGENDARY_MEMBER -> 9;
-            case VIP -> 11;
-            case SPONSOR_MEMBER -> 13;
+            case SAPHIRE_MEMBER -> 1;
+            case EMERALD_MEMBER -> 2;
+            case RUBY_MEMBER -> 4;
+            case DIAMOND_MEMBER -> 6;
+            case DRAGONSTONE_MEMBER -> 8;
+            case ONYX_MEMBER -> 10;
+            case ZENYTE_MEMBER -> 14;
         };
 
-        if (hasPetOut("Skeleton hellhound pet")) {
-            percent += 7.5;
-        }
+        if(mode == ExpMode.CHALLENGER)
+            percent += 5;
 
-        var dropRateBoostPerk = getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
-
-        if (dropRateBoostPerk) {
-            percent += 3;
-        }
-
-        var petBoostPerk = getSlayerRewards().getUnlocks().containsKey(SlayerConstants.ZRIAWK_BOOST);
-        if (pet() != null && pet().def().name.equalsIgnoreCase("Zriawk pet")) {
-            percent += petBoostPerk ? 20 : 15;
-        }
-
-        var cap = 50;
+        if(mode == ExpMode.GLADIATOR)
+            percent += 10;
 
         //Drop rate percentage boost can't go over cap%
-        if (percent > cap) {
-            percent = cap;
-        }
         return percent;
     }
 
@@ -1549,7 +1534,7 @@ public class Player extends Mob {
             //Reset daily tasks
             DailyTaskManager.onLogin(this);
 
-            if (memberRights.isSponsorOrGreater(this)) {
+            if (memberRights.isZenyteMemberOrGreater(this)) {
                 MemberFeatures.checkForMonthlySponsorRewards(this);
             }
 

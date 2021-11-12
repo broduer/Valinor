@@ -15,7 +15,7 @@ public class HealCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        boolean extremeMember = player.getMemberRights().isEliteMemberOrGreater(player);
+        boolean extremeMember = player.getMemberRights().isRubyMemberOrGreater(player);
         if(!extremeMember && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("You need to be at least a elite member to use this command.");
             return;

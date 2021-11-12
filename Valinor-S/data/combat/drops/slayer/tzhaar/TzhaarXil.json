@@ -1,0 +1,82 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+	2167,
+	2168,
+	2169,
+	2170,
+	2171,
+	2172
+  ],
+  "tables": [
+	{
+	  "name": "Tokkul",
+	  "points": 25,
+	  "items": [
+		{
+		  "id": 6529,
+		  "min": 1,
+		  "max": 57,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Gems",
+	  "points": 6,
+	  "items": [
+		{
+		  "id": 1623,
+		  "amount": 1,
+		  "points": 4
+		},
+		{
+		  "id": 1621,
+		  "amount": 1,
+		  "points": 3
+		},
+		{
+		  "id": 1619,
+		  "amount": 1,
+		  "points": 2
+		},
+		{
+		  "id": 1617,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	},
+	{
+	  "name": "Rares",
+	  "points": 1,
+	  "items": [
+		{
+		  "id": 6522,
+		  "min": 9,
+		  "max": 29,
+		  "points": 1
+		},
+		{
+		  "id": 6523,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 6568,
+		  "amount": 1,
+		  "points": 1
+		},
+		{
+		  "id": 6525,
+		  "amount": 1,
+		  "points": 1
+		}
+	  ],
+	  "tables": []
+	}
+  ]
+}
