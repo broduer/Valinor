@@ -296,7 +296,7 @@ public class Edgevile extends PacketInteraction {
 
                     if (player.tile().region() != 13386) {
                         player.message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-                        if (player.getMemberRights().isSaphireMemberOrGreater(player)) {
+                        if (player.getMemberRights().isSapphireMemberOrGreater(player)) {
                             if (player.getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
                                 player.message("Special attack energy can be restored in " + player.getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
                             } else {
@@ -304,7 +304,7 @@ public class Edgevile extends PacketInteraction {
                                 player.setSpecialActivated(false);
                                 CombatSpecial.updateBar(player);
                                 int time = 0;
-                                if (player.getMemberRights().isSaphireMemberOrGreater(player))
+                                if (player.getMemberRights().isSapphireMemberOrGreater(player))
                                     time = 300;//3 minutes
                                 if (player.getMemberRights().isEmeraldMemberOrGreater(player))
                                     time = 100;//1 minute

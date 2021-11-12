@@ -13,7 +13,7 @@ public enum ChatCrown {
     DEVELOPER("<img=4</img>", 497),
 
     //Members
-    SAPHIRE_MEMBER("<img=5</img>", 1871),
+    SAPPHIRE_MEMBER("<img=5</img>", 1871),
     EMERALD_MEMBER("<img=6</img>", 1875),
     RUBY_MEMBER("<img=22</img>", 1872),
     DIAMOND_MEMBER("<img=7</img>", 1874),

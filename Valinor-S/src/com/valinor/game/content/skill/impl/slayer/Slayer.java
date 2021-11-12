@@ -214,7 +214,7 @@ public class Slayer {
                         //Legendary account bonus
                         base += switch (killer.getMemberRights()) {
                             case NONE -> 0;
-                            case SAPHIRE_MEMBER -> 5;
+                            case SAPPHIRE_MEMBER -> 5;
                             case EMERALD_MEMBER -> 10;
                             case RUBY_MEMBER -> 15;
                             case DIAMOND_MEMBER -> 20;

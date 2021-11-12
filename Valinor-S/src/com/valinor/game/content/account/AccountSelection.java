@@ -213,10 +213,12 @@ public class AccountSelection extends PacketInteraction {
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
             player.getPacketSender().sendRights();
         }
-        player.getInterfaceManager().close();
-        player.putAttrib(AttributeKey.NEW_ACCOUNT,false);
         player.unlock();
-        player.looks().hide(false);
+        player.getInterfaceManager().close();
+        player.putAttrib(AttributeKey.CONTINUE_STARTER_TUTORIAL, true);
+        if (player.getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+            player.getDialogueManager().start(new Tutorial());
+        }
         return true;
     }
 }

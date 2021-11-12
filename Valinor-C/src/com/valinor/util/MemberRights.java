@@ -6,7 +6,7 @@ import java.util.Map;
 public enum MemberRights {
 
     NONE(null),
-    SAPHIRE_MEMBER(ChatCrown.SAPHIRE_MEMBER),
+    SAPPHIRE_MEMBER(ChatCrown.SAPPHIRE_MEMBER),
     EMERALD_MEMBER(ChatCrown.EMERALD_MEMBER),
     RUBY_MEMBER(ChatCrown.RUBY_MEMBER),
     DIAMOND_MEMBER(ChatCrown.DIAMOND_MEMBER),

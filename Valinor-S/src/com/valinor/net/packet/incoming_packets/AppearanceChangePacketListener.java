@@ -1,5 +1,7 @@
 package com.valinor.net.packet.incoming_packets;
 
+import com.valinor.game.content.account.Tutorial;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.Packet;
@@ -16,7 +18,7 @@ public class AppearanceChangePacketListener implements PacketListener {
         if (player.dead()) {
             return;
         }
-        
+
         player.afkTimer.reset();
 
         try {
@@ -35,48 +37,51 @@ public class AppearanceChangePacketListener implements PacketListener {
             final int feetColor = packet.readByte();
             final int skinColor = packet.readByte();
 
-            if (skinColor == 10 && !player.getMemberRights().isSaphireMemberOrGreater(player)) {
-                player.message("You need to be a Member to use this skin!");
+            if (skinColor == 10 && !player.getMemberRights().isSapphireMemberOrGreater(player)) {
+                player.message("You need to be a Sapphire to use this skin!");
                 return;
             }
 
             if (skinColor == 11 && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
-                player.message("You need to be a Super member to use this skin!");
+                player.message("You need to be a Emerald member to use this skin!");
                 return;
             }
 
             if (skinColor == 12 && !player.getMemberRights().isRubyMemberOrGreater(player)) {
-                player.message("You need to be a Elite member to use this skin!");
+                player.message("You need to be a Ruby member to use this skin!");
                 return;
             }
 
             if (skinColor == 13 && !player.getMemberRights().isDiamondMemberOrGreater(player)) {
-                player.message("You need to be a Extreme member to use this skin!");
+                player.message("You need to be a Diamond member to use this skin!");
                 return;
             }
 
             if (skinColor == 14 && !player.getMemberRights().isDragonstoneMemberOrGreater(player)) {
-                player.message("You need to be a Legendary member to use this skin!");
+                player.message("You need to be a Dragonstone member to use this skin!");
                 return;
             }
 
             if (skinColor == 15 && !player.getMemberRights().isOnyxMemberOrGreater(player)) {
-                player.message("You need to be a V.I.P member to use this skin!");
+                player.message("You need to be a Onyx member to use this skin!");
                 return;
             }
 
             if (skinColor == 16 && !player.getMemberRights().isZenyteMemberOrGreater(player)) {
-                player.message("You need to be a Sponsor member to use this skin!");
+                player.message("You need to be a Zenyte member to use this skin!");
                 return;
             }
 
             player.looks().female(gender);
-            player.looks().looks(new int[] {head, jaw, torso, arms, hands, legs, feet});
-            player.looks().colors(new int[] {hairColor, torsoColor, legsColor, feetColor, skinColor});
+            player.looks().looks(new int[]{head, jaw, torso, arms, hands, legs, feet});
+            player.looks().colors(new int[]{hairColor, torsoColor, legsColor, feetColor, skinColor});
             player.getUpdateFlag().flag(Flag.APPEARANCE);
             player.stopActions(true);
             player.getInterfaceManager().close();
-        } catch(Exception e) {
+            if (player.getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+                player.getDialogueManager().start(new Tutorial());
+            }
+        } catch (Exception e) {
             logger.catching(e);
         }
     }

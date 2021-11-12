@@ -116,7 +116,7 @@ object CollectVotes {
                                 MemberRights.DIAMOND_MEMBER -> 4
                                 MemberRights.RUBY_MEMBER -> 3
                                 MemberRights.EMERALD_MEMBER -> 2
-                                MemberRights.SAPHIRE_MEMBER -> 1
+                                MemberRights.SAPPHIRE_MEMBER -> 1
                                 else -> 0
                             }
 

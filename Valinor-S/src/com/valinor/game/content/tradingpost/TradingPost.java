@@ -668,7 +668,7 @@ public class TradingPost {
             var totalSalesAllowed = 8;
 
             switch (player.getMemberRights()) {
-                case SAPHIRE_MEMBER -> totalSalesAllowed = 10;
+                case SAPPHIRE_MEMBER -> totalSalesAllowed = 10;
                 case EMERALD_MEMBER -> totalSalesAllowed = 12;
                 case RUBY_MEMBER -> totalSalesAllowed = 14;
                 case DIAMOND_MEMBER -> totalSalesAllowed = 16;

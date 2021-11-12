@@ -123,7 +123,7 @@ public class NpcDeath {
             if (killer != null) {
                 respawnTimer -= switch (killer.getMemberRights()) {
                     case NONE -> 0;
-                    case SAPHIRE_MEMBER -> Utils.secondsToTicks(2);
+                    case SAPPHIRE_MEMBER -> Utils.secondsToTicks(2);
                     case EMERALD_MEMBER -> Utils.secondsToTicks(4);
                     case RUBY_MEMBER -> Utils.secondsToTicks(6);
                     case DIAMOND_MEMBER -> Utils.secondsToTicks(8);
@@ -1006,7 +1006,7 @@ public class NpcDeath {
             treasureCasketChance = 115;
         else if (killer.getMemberRights().isEmeraldMemberOrGreater(killer))
             treasureCasketChance = 120;
-        else if (killer.getMemberRights().isSaphireMemberOrGreater(killer))
+        else if (killer.getMemberRights().isSapphireMemberOrGreater(killer))
             treasureCasketChance = 125;
         else
             treasureCasketChance = 128;

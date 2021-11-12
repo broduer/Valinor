@@ -16,7 +16,7 @@ public class YellCommand implements Command {
         MemberRights memberRights = player.getMemberRights();
 
         switch (memberRights) {
-            case SAPHIRE_MEMBER -> yellTimer = 50;
+            case SAPPHIRE_MEMBER -> yellTimer = 50;
             case EMERALD_MEMBER -> yellTimer = 40;
             case RUBY_MEMBER -> yellTimer = 30;
             case DIAMOND_MEMBER -> yellTimer = 15;
@@ -36,7 +36,7 @@ public class YellCommand implements Command {
             return;
         }
         int kc = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
-        if (player.getMemberRights().getRightValue() < MemberRights.SAPHIRE_MEMBER.getRightValue() && player.getPlayerRights() == PlayerRights.PLAYER && kc < 50) {
+        if (player.getMemberRights().getRightValue() < MemberRights.SAPPHIRE_MEMBER.getRightValue() && player.getPlayerRights() == PlayerRights.PLAYER && kc < 50) {
             player.message("Only Members and players with over 50 kills in the wilderness can yell.");
             return;
         }

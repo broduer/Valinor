@@ -163,7 +163,7 @@ public class Player extends Mob {
     /**
      * The player's instance for farming.
      */
-    private Farming farming_instance = new Farming();
+    private final Farming farming_instance = new Farming();
 
     /**
      * Returns the player's farming instance.
@@ -201,7 +201,7 @@ public class Player extends Mob {
         Venom.cure(2, this);
 
         message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-        if (memberRights.isSaphireMemberOrGreater(this)) {
+        if (memberRights.isSapphireMemberOrGreater(this)) {
             if (getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
                 message("Special attack energy can be restored in " + getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
             } else {
@@ -209,7 +209,7 @@ public class Player extends Mob {
                 setSpecialActivated(false);
                 CombatSpecial.updateBar(this);
                 int time = 0;
-                if (memberRights.isSaphireMemberOrGreater(this))
+                if (memberRights.isSapphireMemberOrGreater(this))
                     time = 300;//3 minutes
                 if (memberRights.isEmeraldMemberOrGreater(this))
                     time = 100;//1 minute
@@ -269,7 +269,7 @@ public class Player extends Mob {
 
     public int extraItemRollChance() {
         return switch (getMemberRights()) {
-            case NONE, SAPHIRE_MEMBER, EMERALD_MEMBER -> 0;
+            case NONE, SAPPHIRE_MEMBER, EMERALD_MEMBER -> 0;
             case RUBY_MEMBER -> 1;
             case DIAMOND_MEMBER -> 3;
             case DRAGONSTONE_MEMBER -> 5;
@@ -310,7 +310,7 @@ public class Player extends Mob {
             extraPercentageChance = 55;
         else if (getMemberRights().isEmeraldMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 50;
-        else if (getMemberRights().isSaphireMemberOrGreater(this) && tile().memberCave())
+        else if (getMemberRights().isSapphireMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 45;
 
         return extraPercentageChance;
@@ -337,7 +337,7 @@ public class Player extends Mob {
     public int dropRateBonus() {
         var percent = switch (getMemberRights()) {
             case NONE -> 0;
-            case SAPHIRE_MEMBER -> 1;
+            case SAPPHIRE_MEMBER -> 1;
             case EMERALD_MEMBER -> 2;
             case RUBY_MEMBER -> 4;
             case DIAMOND_MEMBER -> 6;

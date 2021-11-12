@@ -62,7 +62,7 @@ public class MemberZone extends PacketInteraction {
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
             if (obj.getId() == CAVE_ENTRANCE_31606 || obj.getId() == PORTAL_OF_LEGENDS) {
-                if (!player.getMemberRights().isSaphireMemberOrGreater(player)) {
+                if (!player.getMemberRights().isSapphireMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least an Member to enter the member zone."));
                     return true;
                 }
@@ -110,7 +110,7 @@ public class MemberZone extends PacketInteraction {
                     return true;
                 }
 
-                if(player.getMemberRights().isSaphireMemberOrGreater(player)) {
+                if(player.getMemberRights().isSapphireMemberOrGreater(player)) {
                     Teleports.basicTeleport(player, new Tile(2457, 2858));
                 } else {
                     Teleports.basicTeleport(player, GameServer.properties().defaultTile);
@@ -224,7 +224,7 @@ public class MemberZone extends PacketInteraction {
                 return true;
             }
             if (obj.getId() == STAIRS_31610) {
-                if (!player.getMemberRights().isSaphireMemberOrGreater(player)) {
+                if (!player.getMemberRights().isSapphireMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least an Member to enter the member zone."));
                     return true;
                 }

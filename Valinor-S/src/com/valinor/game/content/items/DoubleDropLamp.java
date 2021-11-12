@@ -23,7 +23,7 @@ public class DoubleDropLamp extends PacketInteraction {
         int ticks = 0;
         switch (memberRights) {
             case NONE -> ticks = 6000;//One hour
-            case SAPHIRE_MEMBER -> ticks = 6500;//One hour and 5 minutes
+            case SAPPHIRE_MEMBER -> ticks = 6500;//One hour and 5 minutes
             case EMERALD_MEMBER -> ticks = 7000;//One and 10 minutes
             case RUBY_MEMBER -> ticks = 7500;//One hour and 15 minutes
             case DIAMOND_MEMBER -> ticks = 9000;//One hour and 30 minutes

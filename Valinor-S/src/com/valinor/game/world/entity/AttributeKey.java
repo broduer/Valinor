@@ -527,6 +527,8 @@ public enum AttributeKey {
      */
     NEW_ACCOUNT,
 
+    CONTINUE_STARTER_TUTORIAL,
+
     /**
      * This attribute stores the latest damage being dealt to a player
      */
@@ -1033,8 +1035,6 @@ public enum AttributeKey {
      * Key used to indicate which shop we currently are viewing.
      */
     SHOP,
-
-    CUSTOM_SHOP_ACTION,
 
     GROUP_SPAWN_MAP,
 

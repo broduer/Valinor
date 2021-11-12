@@ -15,7 +15,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 public enum MemberRights {
 
     NONE(0, "None", -1, -1, 0, Color.BLACK.tag(), 1.0, 1.0, 1.0),
-    SAPHIRE_MEMBER(10, "Saphire Member", 1871, 5, 1, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
+    SAPPHIRE_MEMBER(10, "Saphire Member", 1871, 5, 1, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
     EMERALD_MEMBER(50, "Emerald Member", 1875, 6, 2, Color.BLUE.tag(), 1.07, 1.025, 1.025),
     RUBY_MEMBER(100, "Ruby Member", 1872, 22, 3, Color.PURPLE.tag(), 1.15, 1.025, 1.025),
     DIAMOND_MEMBER(250, "Diamond Member", 1874, 7, 4, Color.YELLOW.tag(), 1.20, 1.025, 1.025),
@@ -97,8 +97,8 @@ public enum MemberRights {
     /**
      * Checks if the player has saphire member status or higher.
      */
-    public boolean isSaphireMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= SAPHIRE_MEMBER.getRightValue();
+    public boolean isSapphireMemberOrGreater(Player player) {
+        return player.getMemberRights().getRightValue() >= SAPPHIRE_MEMBER.getRightValue();
     }
 
     /**
@@ -148,11 +148,11 @@ public enum MemberRights {
 
         boolean memberUnlocked = player.getAttribOr(AttributeKey.MEMBER_UNLOCKED, false);
         if (totalAmountPaid >= 10.00 && !memberUnlocked) {
-            player.setMemberRights(MemberRights.SAPHIRE_MEMBER);
+            player.setMemberRights(MemberRights.SAPPHIRE_MEMBER);
             player.putAttrib(AttributeKey.MEMBER_UNLOCKED, true);
             player.inventory().addOrBank(new Item(WEAPON_MYSTERY_BOX));
             if (!silent)
-                World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has been promoted to <col=" + Color.HOTPINK.getColorValue() + "><img=" + SAPHIRE_MEMBER.spriteId + ">Member</col>!");
+                World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has been promoted to <col=" + Color.HOTPINK.getColorValue() + "><img=" + SAPPHIRE_MEMBER.spriteId + ">Member</col>!");
         }
 
         boolean superMemberUnlocked = player.getAttribOr(AttributeKey.SUPER_MEMBER_UNLOCKED, false);

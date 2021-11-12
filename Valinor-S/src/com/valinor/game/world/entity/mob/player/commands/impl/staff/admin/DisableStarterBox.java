@@ -1,6 +1,6 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
 
-import com.valinor.game.content.new_players.StarterBox;
+import com.valinor.game.content.account.StarterBox;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 

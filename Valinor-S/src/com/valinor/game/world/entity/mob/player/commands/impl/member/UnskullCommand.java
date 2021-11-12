@@ -11,7 +11,7 @@ public class UnskullCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        boolean member = player.getMemberRights().isSaphireMemberOrGreater(player);
+        boolean member = player.getMemberRights().isSapphireMemberOrGreater(player);
         if(!member && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("You need to be at least a regular member to use this command.");
             return;

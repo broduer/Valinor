@@ -27,7 +27,7 @@ public class MarksOfGrace {
             case DRAGONSTONE_MEMBER -> odds += 10;
             case DIAMOND_MEMBER -> odds += 8;
             case EMERALD_MEMBER -> odds += 4;
-            case SAPHIRE_MEMBER -> odds += 2;
+            case SAPPHIRE_MEMBER -> odds += 2;
         }
 
         if (player.skills().level(Skills.AGILITY) > threshold + 20) {

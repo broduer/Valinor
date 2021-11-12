@@ -149,28 +149,12 @@ public final class DefaultShop extends Shop {
 
         players.add(player);
         player.inventory().refresh();
-        refresh(player, true);
+        refresh(player);
 
         int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
         player.getPacketSender().sendString(64014, "Reward Points: " + Utils.formatNumber(rewardPoints));
-        var showButtons = shopId == 4 || shopId == 5 || shopId == 18 || shopId == 43 || shopId == 44 || shopId == 45;
-        player.getPacketSender().sendInterfaceDisplayState(28060, !showButtons);
         player.getPacketSender().sendString(shopId == 7 ? 64005 : ShopUtility.NAME_INTERFACE_CHILD_ID, name);
         player.getInterfaceManager().openInventory(shopId == 7 ? 64000 : ShopUtility.INTERFACE_ID, InterfaceConstants.SHOP_INVENTORY - 1);
-
-        if(shopId == 4 || shopId == 5 || shopId == 18) {
-            player.putAttrib(AttributeKey.CUSTOM_SHOP_ACTION,1);
-            player.getPacketSender().sendString(28064, "BM Wares");
-            player.getPacketSender().sendString(28065, "Barrows");
-            player.getPacketSender().sendString(28066, "Other");
-        } else if(shopId == 43 || shopId == 44 || shopId == 45) {
-            player.putAttrib(AttributeKey.CUSTOM_SHOP_ACTION,2);
-            player.getPacketSender().sendString(28064, "General");
-            player.getPacketSender().sendString(28065, "Cosmetic");
-            player.getPacketSender().sendString(28066, "Other");
-        } else {
-            player.putAttrib(AttributeKey.CUSTOM_SHOP_ACTION,0);
-        }
     }
 
     @Override
@@ -180,35 +164,7 @@ public final class DefaultShop extends Shop {
     }
 
     @Override
-    public void refresh(Player player, boolean redrawStrings) {
-        //Empty out the cost strings here at the top, that way it's cleared if it should be, and can be overwritten down below if necessary.
-        if (redrawStrings) {
-            for (int index = 0; index < MAX_SHOP_ITEMS; index++) {
-                player.getPacketSender().sendString(AMOUNT_STRING_ID + index, "");
-            }
-        }
-        final Item[] items = container.toArray();
-        for (int index = 0; index < items.length; index++) {
-            Item item = items[index];
-
-            if (item == null) {
-                continue;
-            }
-
-            if (item instanceof StoreItem) {
-                if (redrawStrings) {
-                    // Write the item cost string
-                    final StoreItem storeItem = (StoreItem) items[index];
-
-                    if (storeItem != null) {
-                        int value = storeItem.getShopValue();
-                        player.getPacketSender().sendString(shopId == 7 ? SLAYER_BUY_AMOUNT_STRING_ID + index : ShopUtility.AMOUNT_STRING_ID + index, value == 0 ? "FREE" : "" + Utils.formatRunescapeStyle(value));
-                    }
-                }
-            }
-        }
-
-        player.getPacketSender().sendScrollbarHeight(shopId == 7 ? 64015 : ShopUtility.SCROLL_BAR_INTERFACE_ID, scroll);
+    public void refresh(Player player) {
         player.getPacketSender().sendItemOnInterface(3823, player.inventory().toArray());
         players.stream().filter(Objects::nonNull).forEach(p -> player.getPacketSender().sendItemOnInterface(shopId == 7 ? ShopUtility.SLAYER_BUY_ITEM_CHILD_ID : 3900, container.toArray()));
         if (restock) {
@@ -219,7 +175,6 @@ public final class DefaultShop extends Shop {
             startAddStock();
             startRemoveStock();
         }
-
     }
 
     @Override

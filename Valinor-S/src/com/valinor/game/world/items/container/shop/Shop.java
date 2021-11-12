@@ -160,11 +160,6 @@ public abstract class Shop {
 
         StoreItem storeItem = (StoreItem) find.get();
 
-        if (petAlreadyUnlocked(player, item)) {
-            player.message("You already have this pet unlocked.");
-            return;
-        }
-
         if (storeItem.getAmount() < 1) {
             player.message("There is none of this item left in stock!");
             return;
@@ -229,28 +224,11 @@ public abstract class Shop {
 
         //Don't refresh the shop for one player, refresh it for all players.
         for (Player player1 : this.players) {
-            refresh(player1, false);
+            refresh(player1);
         }
-    }
-
-    public boolean petAlreadyUnlocked(Player player, Item item) {
-        Pet pet = Pet.getPetByItem(item.getId());
-        return pet != null && player.isPetUnlocked(pet.varbit) && pet.varbit != -1;
     }
 
     public void onPurchase(Player player, Item item) {
-        if (item.getId() == ItemIdentifiers.BABY_CHINCHOMPA_13326) {
-            if (!player.isPetUnlocked(Pet.BABY_CHINCHOMPA_YELLOW.varbit)) {
-                player.addUnlockedPet(Pet.BABY_CHINCHOMPA_YELLOW.varbit);
-            }
-        }
-
-        if (item.getId() == ItemIdentifiers.PET_SMOKE_DEVIL) {
-            if (!player.isPetUnlocked(Pet.PET_SMOKE_DEVIL.varbit)) {
-                player.addUnlockedPet(Pet.PET_SMOKE_DEVIL.varbit);
-            }
-        }
-
         if (item.getId() == ItemIdentifiers.HERB_BOX) {
             player.putAttrib(AttributeKey.HERB_BOX_CHARGES, 20);
         }
@@ -380,13 +358,12 @@ public abstract class Shop {
         }
 
         //Don't refresh the shop for one player, refresh it for all players.
-        //refresh(player);
         for (Player player1 : this.players) {
-            refresh(player1, false);
+            refresh(player1);
         }
     }
 
-    public abstract void refresh(Player player, boolean redrawStrings);
+    public abstract void refresh(Player player);
 
     public void startAddStock() {
         if (addStockTask == null) {

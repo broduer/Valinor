@@ -2,7 +2,7 @@ package com.valinor.game;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.clan.ClanRepository;
-import com.valinor.game.content.new_players.StarterBox;
+import com.valinor.game.content.account.StarterBox;
 import com.valinor.game.content.skill.impl.crafting.Crafting;
 import com.valinor.game.content.skill.impl.fletching.Fletching;
 import com.valinor.game.content.skill.impl.slayer.Slayer;

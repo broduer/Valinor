@@ -239,7 +239,7 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSaphireMemberOrGreater(player)) {
+                    if(targetFor.get().tile().memberCave() && !player.getMemberRights().isSapphireMemberOrGreater(player)) {
                         player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
                     }

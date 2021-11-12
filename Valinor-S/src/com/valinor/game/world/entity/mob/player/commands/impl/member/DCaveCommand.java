@@ -61,6 +61,6 @@ public class DCaveCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return player.getMemberRights().isSaphireMemberOrGreater(player) || player.getPlayerRights().isStaffMember(player);
+        return player.getMemberRights().isSapphireMemberOrGreater(player) || player.getPlayerRights().isStaffMember(player);
     }
 }

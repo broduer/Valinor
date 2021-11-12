@@ -1,4 +1,4 @@
-package com.valinor.game.content.new_players;
+package com.valinor.game.content.account;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;

@@ -124,7 +124,7 @@ public class ChamberOfSecretsReward {
     private static int doubleChestRoll(Player player) {
         int chance;
         chance = switch (player.getMemberRights()) {
-            case NONE, EMERALD_MEMBER, SAPHIRE_MEMBER -> 0;
+            case NONE, EMERALD_MEMBER, SAPPHIRE_MEMBER -> 0;
             case RUBY_MEMBER -> 1;
             case DIAMOND_MEMBER -> 2;
             case DRAGONSTONE_MEMBER -> 3;

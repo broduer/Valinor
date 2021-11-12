@@ -3,7 +3,7 @@
     "shopId": 1,
     "name": "General store",
     "noiron": false,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": false,
     "sellType": "ANY",
     "scroll": 0,
@@ -99,397 +99,6 @@
       {
         "id": 13431,
         "amount": 100000000
-      }
-    ]
-  },
-  {
-    "shopId": 4,
-    "name": "<col=FF0000>Blood Money Wares",
-    "currency": "BLOOD_MONEY",
-    "noiron": true,
-    "restock": true,
-    "sellType": "NONE",
-    "scroll": 350,
-    "items": [
-      {
-        "id": 11808,
-        "amount": 100
-      },
-      // Zamorak godsword
-      {
-        "id": 11806,
-        "amount": 100
-      },
-      // Saradomin godsword
-      {
-        "id": 11804,
-        "amount": 100
-      },
-      // Bandos godsword
-      {
-        "id": 11802,
-        "amount": 100
-      },
-      // Armadyl godsword
-      {
-        "id": 13271,
-        "amount": 100
-      },
-      // Abyssal dagger
-      {
-        "id": 11832,
-        "amount": 100
-      },
-      // Bandos chestplate
-      {
-        "id": 11834,
-        "amount": 100
-      },
-      // Bandos tassets
-      {
-        "id": 11826,
-        "amount": 100
-      },
-      // Armadyl helmet
-      {
-        "id": 11828,
-        "amount": 100
-      },
-      // Armadyl chestplate
-      {
-        "id": 11830,
-        "amount": 100
-      },
-      // Armadyl chainskirt
-      {
-        "id": 6918,
-        "amount": 100
-      },
-      // Infinity hat
-      {
-        "id": 6916,
-        "amount": 100
-      },
-      // Infinity top
-      {
-        "id": 6924,
-        "amount": 100
-      },
-      // Infinity bottoms
-      {
-        "id": 6920,
-        "amount": 100
-      },
-      // Infinity boots
-      {
-        "id": 6922,
-        "amount": 100
-      },
-      // Infinity gloves
-      {
-        "id": 11283,
-        "amount": 100
-      },
-      // Dragonfire shield
-      {
-        "id": 11924,
-        "amount": 100
-      },
-      // Malediction ward
-      {
-        "id": 11926,
-        "amount": 100
-      },
-      // Odium ward
-      {
-        "id": 12831,
-        "amount": 100
-      },
-      // Odium ward
-      {
-        "id": 11791,
-        "amount": 100
-      },
-      // Staff of the dead
-      {
-        "id": 11785,
-        "amount": 100
-      },
-      //Armadyl Crossbow
-      {
-        "id": 21902,
-        "amount": 100
-      },
-      // Dragon CBow
-      {
-        "id": 21932,
-        "amount": 100000
-      },
-      // Opal Dragon Bolts (e)
-      {
-        "id": 21948,
-        "amount": 100000
-      },
-      // Dragon Dragonstone bolts
-      {
-        "id": 21944,
-        "amount": 100000
-      },
-      // Ruby Dragonbolts(e)
-      {
-        "id": 78,
-        "amount": 100000
-      },
-      // Ice Arrows
-      {
-        "id": 2866,
-        "amount": 100000
-      },
-      // Earth Arrow
-      {
-        "id": 4160,
-        "amount": 100000
-      },
-      // Fire Arrow
-      {
-        "id": 19484,
-        "amount": 100000
-      },
-      // Dragon javelin
-      {
-        "id": 22804,
-        "amount": 100000
-      },
-      // Dragon knife
-      {
-        "id": 22810,
-        "amount": 100000
-      },
-      // Dragon knife (p++)
-      {
-        "id": 20849,
-        "amount": 100000
-      },
-      // Dragon thrownaxe
-      {
-        "id": 12006,
-        "amount": 100
-      },
-      // Abyssal tentacle
-      {
-        "id": 11235,
-        "amount": 100
-      },
-      // Dark bow
-      {
-        "id": 23246,
-        "amount": 100
-      },
-      //Freminik skirt
-      {
-        "id": 23389,
-        "amount": 100
-      },
-      // Spiked Manacles
-      {
-        "id": 6585,
-        "amount": 100
-      },
-      // Amulet of fury
-      {
-        "id": 12002,
-        "amount": 100
-      },
-      // Occult necklace
-      {
-        "id": 11840,
-        "amount": 100
-      },
-      // Dragon boots
-      {
-        "id": 2577,
-        "amount": 100
-      },
-      // Ranger boots
-      {
-        "id": 6889,
-        "amount": 100
-      },
-      // Mage's book
-      {
-        "id": 6914,
-        "amount": 100
-      },
-      // Master wand
-      {
-        "id": 24225,
-        "amount": 100
-      },
-      // Granite Maul
-      {
-        "id": 6733,
-        "amount": 100000
-      },
-      //Archer Ring
-      {
-        "id": 6731,
-        "amount": 100
-      },
-      //Seer's Ring
-      {
-        "id": 6737,
-        "amount": 100
-      },
-      //Berserker ring
-      {
-        "id": 20714,
-        "amount": 100
-      },
-      //Tome of fire
-      {
-        "id": 1249,
-        "amount": 100
-      },
-      //Dragon spear
-      {
-        "id": 2550,
-        "amount": 100
-      }
-      //Ring of recoil
-    ]
-  },
-  {
-    "shopId": 5,
-    "name": "<col=FF0000>Barrows Shop",
-    "currency": "BLOOD_MONEY",
-    "noiron": true,
-    "restock": true,
-    "sellType": "NONE",
-    "scroll": 0,
-    "items": [
-      {
-        "id": 4716,
-        "amount": 100000
-      },
-      {
-        "id": 4720,
-        "amount": 100000
-      },
-      {
-        "id": 4722,
-        "amount": 100000
-      },
-      {
-        "id": 4718,
-        "amount": 100000
-      },
-      {
-        "id": 4708,
-        "amount": 100000
-      },
-      {
-        "id": 4712,
-        "amount": 100000
-      },
-      {
-        "id": 4714,
-        "amount": 100000
-      },
-      {
-        "id": 4710,
-        "amount": 100000
-      },
-      {
-        "id": 4753,
-        "amount": 100000
-      },
-      {
-        "id": 4757,
-        "amount": 100000
-      },
-      {
-        "id": 4759,
-        "amount": 100000
-      },
-      {
-        "id": 4755,
-        "amount": 100000
-      },
-      {
-        "id": 4732,
-        "amount": 100000
-      },
-      {
-        "id": 4736,
-        "amount": 100000
-      },
-      {
-        "id": 4738,
-        "amount": 100000
-      },
-      {
-        "id": 4734,
-        "amount": 100000
-      },
-      {
-        "id": 4745,
-        "amount": 100000
-      },
-      {
-        "id": 4749,
-        "amount": 100000
-      },
-      {
-        "id": 4751,
-        "amount": 100000
-      },
-      {
-        "id": 4747,
-        "amount": 100000
-      },
-      {
-        "id": 4724,
-        "amount": 100000
-      },
-      {
-        "id": 4728,
-        "amount": 100000
-      },
-      {
-        "id": 4730,
-        "amount": 100000
-      },
-      {
-        "id": 4726,
-        "amount": 100000
-      },
-      {
-        "id": 4740,
-        "amount": 100000
-      },
-      {
-        "id": 12877,
-        "amount": 100000
-      },
-      {
-        "id": 12881,
-        "amount": 100000
-      },
-      {
-        "id": 12875,
-        "amount": 100000
-      },
-      {
-        "id": 12883,
-        "amount": 100000
-      },
-      {
-        "id": 12879,
-        "amount": 100000
-      },
-      {
-        "id": 12873,
-        "amount": 100000
       }
     ]
   },
@@ -789,7 +398,7 @@
     "shopId": 9,
     "name": "Skilling Supplies",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 850,
@@ -1316,7 +925,7 @@
     "shopId": 10,
     "name": "<col=09FF00>Range Supplies</col>",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 600,
@@ -1674,7 +1283,7 @@
     "shopId": 11,
     "name": "<col=006BFF>Magic Supplies",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 700,
@@ -2121,7 +1730,7 @@
     "shopId": 12,
     "name": "<col=FF0000>Melee Supplies",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 400,
@@ -2360,7 +1969,7 @@
     "shopId": 13,
     "name": "Food and Potions",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 250,
@@ -2529,7 +2138,7 @@
     "shopId": 14,
     "name": "Slayer Equipment",
     "noiron": false,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 0,
@@ -2774,957 +2383,17 @@
     "shopId": 16,
     "name": "Ironman Store",
     "noiron": false,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 500,
     "items": [
-      {
-        "id": 590,
-        "amount": 100000000,
-        "value": 5
-      },
-      {
-        "id": 330,
-        "amount": 100000000,
-        "value": 5
-      },
-      {
-        "id": 1540,
-        "amount": 100000000,
-        "value": 500
-      },
-      {
-        "id": 7458,
-        "amount": 100000000,
-        "value": 500
-      },
-      {
-        "id": 7462,
-        "amount": 100000000,
-        "value": 1000
-      },
-      {
-        "id": 10499,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 1725,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 1731,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 2347,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 1755,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 946,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 313,
-        "amount": 100000000,
-        "value": 5
-      },
-      {
-        "id": 309,
-        "amount": 100000000,
-        "value": 500
-      },
-      {
-        "id": 303,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 307,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 301,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 311,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 10006,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 10008,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 1733,
-        "amount": 100000
-      },
-      {
-        "id": 1734,
-        "amount": 100000,
-        "value": 25
-      },
-      {
-        "id": 314,
-        "amount": 100000,
-        "value": 5
-      },
-      {
-        "id": 952,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 5341,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 5343,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 5325,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 6035,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 233,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 11879,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 1267,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 1273,
-        "amount": 100000,
-        "value": 1250
-      },
-      {
-        "id": 1349,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 1355,
-        "amount": 100000,
-        "value": 1250
-      },
-      {
-        "id": 10010,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 11260,
-        "amount": 100000,
-        "value": 250
-      },
-      {
-        "id": 1592,
-        "amount": 100000,
-        "value": 250
-      },
-      {
-        "id": 1595,
-        "amount": 100000,
-        "value": 250
-      },
-      {
-        "id": 8013,
-        "amount": 100000
-      },
-      {
-        "id": 8008,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 8007,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 8009,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 8010,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 8011,
-        "amount": 100000,
-        "value": 50
-      },
-      {
-        "id": 533,
-        "amount": 100000,
-        "value": 25
-      },
-      {
-        "id": 1760,
-        "amount": 100000,
-        "value": 25
-      },
-      {
-        "id": 222,
-        "amount": 100000,
-        "value": 5
-      },
-      {
-        "id": 232,
-        "amount": 100000,
-        "value": 25
-      },
-      {
-        "id": 224,
-        "amount": 100000,
-        "value": 25
-      },
-      {
-        "id": 7510,
-        "amount": 100000
-      },
-      {
-        "id": 1359,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 1275,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 1436,
-        "amount": 100000,
-        "value": 3
-      },
-      {
-        "id": 7936,
-        "amount": 100000,
-        "value": 5
-      },
-      {
-        "id": 12728,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 12730,
-        "amount": 100000,
-        "value": 100
-      },
-      {
-        "id": 12732,
-        "amount": 100000,
-        "value": 100
-      },
-      {
-        "id": 12734,
-        "amount": 100000,
-        "value": 100
-      },
-      {
-        "id": 12736,
-        "amount": 100000,
-        "value": 100
-      },
-      {
-        "id": 12738,
-        "amount": 100000,
-        "value": 250
-      },
-      {
-        "id": 564,
-        "amount": 1000,
-        "value": 5
-      },
-      {
-        "id": 561,
-        "amount": 100000,
-        "value": 5
-      },
-      {
-        "id": 563,
-        "amount": 10000,
-        "value": 5
-      },
-      {
-        "id": 560,
-        "amount": 10000,
-        "value": 5
-      },
-      {
-        "id": 565,
-        "amount": 10000,
-        "value": 15
-      },
-      {
-        "id": 566,
-        "amount": 10000,
-        "value": 15
-      },
-      {
-        "id": 9075,
-        "amount": 100000,
-        "value": 15
-      },
-      {
-        "id": 21880,
-        "amount": 10000,
-        "value": 15
-      },
-      {
-        "id": 882,
-        "amount": 10000,
-        "value": 1
-      },
-      {
-        "id": 884,
-        "amount": 10000,
-        "value": 2
-      },
-      {
-        "id": 886,
-        "amount": 10000,
-        "value": 3
-      },
-      {
-        "id": 890,
-        "amount": 10000,
-        "value": 5
-      },
-      {
-        "id": 892,
-        "amount": 10000,
-        "value": 10
-      },
-      {
-        "id": 11212,
-        "amount": 10000,
-        "value": 20
-      },
-      {
-        "id": 9143,
-        "amount": 10000,
-        "value": 5
-      },
-      {
-        "id": 9144,
-        "amount": 10000,
-        "value": 10
-      },
-      {
-        "id": 9185,
-        "amount": 1000,
-        "value": 25000
-      },
-      {
-        "id": 1540,
-        "amount": 1000,
-        "value": 2500
-      },
-      {
-        "id": 8839,
-        "amount": 10,
-        "value": 25000
-      },
-      {
-        "id": 8840,
-        "amount": 10,
-        "value": 25000
-      },
-      {
-        "id": 8842,
-        "amount": 10,
-        "value": 7500
-      },
-      {
-        "id": 11663,
-        "amount": 10,
-        "value": 10000
-      },
-      {
-        "id": 11664,
-        "amount": 10,
-        "value": 10000
-      },
-      {
-        "id": 11665,
-        "amount": 10,
-        "value": 10000
-      },
-      {
-        "id": 13072,
-        "amount": 10,
-        "value": 100000
-      },
-      {
-        "id": 13073,
-        "amount": 10,
-        "value": 100000
-      },
-      {
-        "id": 10551,
-        "amount": 10,
-        "value": 50000
-      },
-      {
-        "id": 12954,
-        "amount": 10,
-        "value": 10000
-      },
-      {
-        "id": 4587,
-        "amount": 1000,
-        "value": 10000
-      },
-      {
-        "id": 22993,
-        "amount": 1000,
-        "value": 5000
-      },
-      {
-        "id": 11738,
-        "amount": 1000,
-        "value": 5000
-      },
-      {
-        "id": 19473,
-        "amount": 1000,
-        "value": 5000
-      }
-    ]
-  },
-  {
-    "shopId": 17,
-    "name": "Target points store",
-    "noiron": false,
-    "currency": "TARGET_POINTS",
-    "restock": false,
-    "sellType": "NONE",
-    "scroll": 0,
-    "items": [
-      {
-        "id": 12788,
-        "amount": 100000,
-        "value": 10
-      },
-      // magic shortbow (I)
-      {
-        "id": 24271,
-        "amount": 100000,
-        "value": 75
-      },
-      // Neitiznot faceguard
-      {
-        "id": 12931,
-        "amount": 100000,
-        "value": 32
-      },
-      // Serpentine helmet
-      {
-        "id": 19553,
-        "amount": 100000,
-        "value": 75
-      },
-      // Amulet of torture
-      {
-        "id": 19547,
-        "amount": 100000,
-        "value": 75
-      },
-      // Anguish necklace
-      {
-        "id": 19544,
-        "amount": 100000,
-        "value": 65
-      },
-      // Tormented bracelet
-      {
-        "id": 19550,
-        "amount": 100000,
-        "value": 65
-      },
-      // Ring of suffering
-      {
-        "id": 22613,
-        "amount": 100000,
-        "value": 75
-      },
-      // vesta longsword
-      {
-        "id": 22622,
-        "amount": 100000,
-        "value": 75
-      },
-      // statius warhammer
-      {
-        "id": 21003,
-        "amount": 100000,
-        "value": 110
-      },
-      // Elder maul
-      {
-        "id": 21006,
-        "amount": 100000,
-        "value": 95
-      },
-      // Kodai wand
-      {
-        "id": 21015,
-        "amount": 100000,
-        "value": 95
-      },
-      // Dinh's bulwark
-      {
-        "id": 19481,
-        "amount": 100000,
-        "value": 95
-      },
-      // Heavy ballista
-      {
-        "id": 12809,
-        "amount": 100000,
-        "value": 35
-      },
-      //Saradomin's blessed sword
-      {
-        "id": 23995,
-        "amount": 100000,
-        "value": 35
-      },
-      //Blade of Saeldor
-      {
-        "id": 22324,
-        "amount": 100000,
-        "value": 35
-      },
-      //Ghrazi rapier
-      {
-        "id": 12904,
-        "amount": 100000,
-        "value": 35
-      },
-      //Toxic staff of the dead
-      {
-        "id": 22322,
-        "amount": 100000,
-        "value": 375
-      },
-      //Avernic defender
-      {
-        "id": 22981,
-        "amount": 100000,
-        "value": 275
-      },
-      //ferocios gloves
-      {
-        "id": 24985,
-        "amount": 100000,
-        "value": 275
-      },
-      //ancient warrior clamp
-      {
-        "id": 24984,
-        "amount": 100000,
-        "value": 400
-      },
-      //ancient facegaurd
-      {
-        "id": 16458,
-        "amount": 100000,
-        "value": 400
-      },
-      //epic pet mystery box
-      {
-        "id": 16455,
-        "amount": 100000,
-        "value": 275
-      }
-      //grand mystery box
-    ]
-  },
-  {
-    "shopId": 18,
-    "name": "<col=FF0000>Other",
-    "noiron": false,
-    "currency": "BLOOD_MONEY",
-    "restock": false,
-    "sellType": "NONE",
-    "scroll": 0,
-    "items": [
-      {
-        "id": 6570,
-        "amount": 100000
-      },
-      // Fire cape
-      {
-        "id": 12954,
-        "amount": 100000
-      },
-      // Dragon defender
-      {
-        "id": 11663,
-        "amount": 100000
-      },
-      // Mage helm
-      {
-        "id": 11664,
-        "amount": 100000
-      },
-      // Range helm
-      {
-        "id": 11665,
-        "amount": 100000
-      },
-      // Melee helm
-      {
-        "id": 8839,
-        "amount": 100000
-      },
-      // Void top
-      {
-        "id": 8840,
-        "amount": 100000
-      },
-      // Void robe
-      {
-        "id": 8842,
-        "amount": 100000
-      },
-      // Void gloves
-      {
-        "id": 10547,
-        "amount": 100000
-      },
-      // Healing hat
-      {
-        "id": 10548,
-        "amount": 100000
-      },
-      // Fighter hat
-      {
-        "id": 10549,
-        "amount": 100000
-      },
-      // Runner hat
-      {
-        "id": 10550,
-        "amount": 100000
-      },
-      // Ranger hat
-      {
-        "id": 10551,
-        "amount": 100000
-      },
-      // Fighter torso
-      {
-        "id": 10552,
-        "amount": 100000
-      },
-      // Runner boots
-      {
-        "id": 10555,
-        "amount": 100000
-      },
-      // Penance skirt
-      {
-        "id": 13072,
-        "amount": 100000
-      },
-      // ELITE VOID TOP
-      {
-        "id": 13073,
-        "amount": 100000
-      },
-      // ELITE VOID BOTTOM
-      {
-        "id": 11941,
-        "amount": 100000
-      },
-      // Looting bag
-      {
-        "id": 12791,
-        "amount": 100000
-      },
-      // Rune pouch
-      {
-        "id": 20238,
-        "amount": 100
-      },
-      //Imbuement scroll
-      {
-        "id": 15300,
-        "amount": 100
-      },
-      //Recover special (4)
-      {
-        "id": 537,
-        "amount": 1000
-      },
-      //Dragon bones
-      {
-        "id": 12625,
-        "amount": 10000
-      },
-      //Stamina potion (4)
-      {
-        "id": 24615,
-        "amount": 10000
-      },
-      //Blighted teleport sack
-      {
-        "id": 24607,
-        "amount": 10000
-      },
-      //Blighted ancient sack
-      {
-        "id": 24609,
-        "amount": 10000
-      },
-      //Blighted bind sack
-      {
-        "id": 24611,
-        "amount": 10000
-      },
-      //Blighted snare sack
-      {
-        "id": 24613,
-        "amount": 10000
-      },
-      //Blighted entangle sack
-      {
-        "id": 299,
-        "amount": 10000
-      }
-    ]
-  },
-  {
-    "shopId": 19,
-    "name": "<col=FF0000>Blood Money Weapons",
-    "currency": "BLOOD_MONEY",
-    "noiron": true,
-    "restock": true,
-    "sellType": "NONE",
-    "scroll": 0,
-    "items": [
-      {
-        "id": 11808,
-        "amount": 100000,
-        "value": 35000
-      },
-      // Zamorak godsword
-      {
-        "id": 11806,
-        "amount": 100000,
-        "value": 35000
-      },
-      // Saradomin godsword
-      {
-        "id": 11804,
-        "amount": 100000,
-        "value": 35000
-      },
-      // Bandos godsword
-      {
-        "id": 11802,
-        "amount": 100000
-      },
-      // Armadyl godsword
-      {
-        "id": 13652,
-        "amount": 100000
-      },
-      // Dragon claws
-      {
-        "id": 10887,
-        "amount": 100000
-      },
-      // Barrelchest anchor
-      {
-        "id": 13271,
-        "amount": 100000
-      },
-      // Abyssal dagger
-      {
-        "id": 11791,
-        "amount": 100000
-      },
-      // Staff of the dead
-      {
-        "id": 22296,
-        "amount": 100000
-      },
-      // Staff of light
-      {
-        "id": 21902,
-        "amount": 100000
-      },
-      // Dragon crossbow
-      {
-        "id": 11785,
-        "amount": 100000
-      },
-      // Armadyl crossbow
-      {
-        "id": 12006,
-        "amount": 100000
-      },
-      // Abyssal tentacle
-      {
-        "id": 11235,
-        "amount": 100000
-      },
-      // Dark bow
-      {
-        "id": 6914,
-        "amount": 100000
-      },
-      // Master wand
-      {
-        "id": 24225,
-        "amount": 100000
-      },
-      // Granite maul
-      {
-        "id": 11838,
-        "amount": 100000
-      },
-      // Saradomin sword
-      {
-        "id": 11824,
-        "amount": 100000
-      },
-      // Zamorakian spear
-      {
-        "id": 11889,
-        "amount": 100000
-      },
-      // Zamorakian hasta
-      {
-        "id": 7158,
-        "amount": 100000
-      },
-      // Dragon 2h sword
-      {
-        "id": 1249,
-        "amount": 100000
-      },
-      // Dragon spear
-      {
-        "id": 11230,
-        "amount": 100000
-      },
-      // Dragon darts
-      {
-        "id": 22804,
-        "amount": 100000
-      },
-      // Dragon knifes
-      {
-        "id": 20849,
-        "amount": 100000
-      },
-      // Dragon thrownaxe
-      {
-        "id": 19484,
-        "amount": 100000
-      },
-      // Dragon javelin
-      {
-        "id": 22636,
-        "amount": 100000
-      },
-      // Morrigan's javelin
-      {
-        "id": 22634,
-        "amount": 100000
-      },
-      // Morrigan's throwing axe
-      {
-        "id": 21948,
-        "amount": 100000
-      },
-      {
-        "id": 21950,
-        "amount": 100000
-      },
-      {
-        "id": 21946,
-        "amount": 100000
-      },
-      {
-        "id": 21944,
-        "amount": 100000
-      },
-      {
-        "id": 21942,
-        "amount": 100000
-      },
-      {
-        "id": 21940,
-        "amount": 100000
-      },
-      {
-        "id": 21938,
-        "amount": 100000
-      },
-      {
-        "id": 21934,
-        "amount": 100000
-      },
-      {
-        "id": 21936,
-        "amount": 100000
-      },
-      {
-        "id": 21932,
-        "amount": 100000
-      }
     ]
   },
   {
     "shopId": 20,
     "name": "Skillcape",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "noiron": false,
     "restock": true,
     "sellType": "NONE",
@@ -4031,7 +2700,7 @@
   {
     "shopId": 22,
     "name": "Martin Thwait's Lost and Found",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4086,7 +2755,7 @@
   {
     "shopId": 23,
     "name": "Aubury's Rune Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4187,7 +2856,7 @@
   {
     "shopId": 24,
     "name": "Warrior Guild Armoury",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4350,7 +3019,7 @@
   {
     "shopId": 25,
     "name": "Warrior Guild Food Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4381,7 +3050,7 @@
   {
     "shopId": 26,
     "name": "Warrior Guild Potion Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4404,7 +3073,7 @@
   {
     "shopId": 27,
     "name": "Sigmund The Merchant",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "ANY",
@@ -4415,7 +3084,7 @@
   {
     "shopId": 28,
     "name": "Pelters' Veg Stall",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4430,7 +3099,7 @@
   {
     "shopId": 29,
     "name": "Magic Armor Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -4503,7 +3172,7 @@
   {
     "shopId": 30,
     "name": "Magic Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -4599,7 +3268,7 @@
   {
     "shopId": 31,
     "name": "Ironman Magic Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4724,7 +3393,7 @@
   {
     "shopId": 32,
     "name": "Melee Armour Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -4807,7 +3476,7 @@
   {
     "shopId": 33,
     "name": "Melee Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -4854,7 +3523,7 @@
   {
     "shopId": 34,
     "name": "Ironman Melee Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -4903,7 +3572,7 @@
   {
     "shopId": 35,
     "name": "Ranged Armour Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -4982,7 +3651,7 @@
   {
     "shopId": 36,
     "name": "Ranged Weapons & Ammo Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": true,
     "sellType": "NONE",
@@ -5138,7 +3807,7 @@
   {
     "shopId": 37,
     "name": "Ironman Ranged Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -5157,7 +3826,7 @@
   {
     "shopId": 38,
     "name": "Skilling Store",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -5258,7 +3927,7 @@
   {
     "shopId": 39,
     "name": "Ironman Store",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -5341,7 +4010,7 @@
   {
     "shopId": 40,
     "name": "Herblore Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -5459,7 +4128,7 @@
   {
     "shopId": 42,
     "name": "Fairy Fixit Shop",
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "noiron": false,
     "sellType": "NONE",
@@ -5720,7 +4389,7 @@
     "shopId": 46,
     "name": "Fishing Supplies",
     "noiron": true,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 0,
@@ -5884,7 +4553,7 @@
     "shopId": 49,
     "name": "Ironman Store",
     "noiron": false,
-    "currency": "BLOOD_MONEY",
+    "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
     "scroll": 0,
