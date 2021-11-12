@@ -11,7 +11,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -201,8 +201,6 @@ public class Slayer {
                         // Give points
                         var doublePointsUnlocked = killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_SLAYER_POINTS);
                         var weekendBonus = World.getWorld().slayerRewardPointsMultiplier > 1;
-                        var trainedAccount = killer.mode() == GameMode.TRAINED_ACCOUNT;
-                        var darklordAccount = killer.mode() == GameMode.DARK_LORD;
                         int base = 30;
 
                         if(taskdef.bossTask) {
@@ -212,16 +210,6 @@ public class Slayer {
                         //If you have the double perk unlocked base * 2
                         if (doublePointsUnlocked) {
                             base *= 2;
-                        }
-
-                        //Trained accounts get + 30 slayer points on the total points reward
-                        if (trainedAccount) {
-                            base += 30;
-                        }
-
-                        //Dark lord accounts get + 40 slayer points on the total points reward
-                        if (darklordAccount) {
-                            base += 40;
                         }
 
                         //Legendary account bonus

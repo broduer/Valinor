@@ -76,8 +76,6 @@ public class RedeemableBonds extends PacketInteraction {
         //Check if we can update the rank
         player.getMemberRights().update(player,false);
 
-        checkForOldRankRewards(player);
-
         if(BONDS_GIVE_REWARDS) {
             //Add the tickets
             player.inventory().addOrBank(new Item(DONATOR_TICKET, bond.donatorTicketReward));
@@ -124,42 +122,6 @@ public class RedeemableBonds extends PacketInteraction {
                 this.stop();
             }
         });
-    }
-
-    private void checkForOldRankRewards(Player player) {
-        if(player.<Boolean>getAttribOr(CLAIMED_DONATOR_REWARDS,false)) {
-            return;
-        }
-
-        if(player.<Boolean>getAttribOr(MEMBER_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(WEAPON_MYSTERY_BOX));
-        }
-
-        if(player.<Boolean>getAttribOr(SUPER_MEMBER_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(ARMOUR_MYSTERY_BOX));
-        }
-
-        if(player.<Boolean>getAttribOr(ELITE_MEMBER_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX));
-        }
-
-        if(player.<Boolean>getAttribOr(EXTREME_MEMBER_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(LEGENDARY_MYSTERY_BOX));
-        }
-
-        if(player.<Boolean>getAttribOr(LEGENDARY_MEMBER_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(GRAND_MYSTERY_BOX));
-        }
-
-        if(player.<Boolean>getAttribOr(VIP_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(MYSTERY_TICKET,5));
-        }
-
-        if(player.<Boolean>getAttribOr(SPONSOR_UNLOCKED,false)) {
-            player.inventory().addOrBank(new Item(MYSTERY_CHEST));
-        }
-
-        player.putAttrib(CLAIMED_DONATOR_REWARDS,true);
     }
 
     @Override

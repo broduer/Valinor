@@ -23,7 +23,7 @@ public class CorpCave extends PacketInteraction {
                 // from inside to outside to wildy
                 if (obj.tile().equals(3201, 3679)) {
                     //Check to see if the player is teleblocked
-                    if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                    if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                         player.teleblockMessage();
                         return true;
                     }

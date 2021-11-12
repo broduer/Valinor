@@ -105,7 +105,7 @@ public class MemberZone extends PacketInteraction {
             }
             if (obj.getId() == EXIT_30844) {
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }

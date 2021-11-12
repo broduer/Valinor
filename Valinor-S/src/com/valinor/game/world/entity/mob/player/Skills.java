@@ -55,66 +55,12 @@ public class Skills {
         levels[3] = 10;
     }
 
-    private double expModifiers(int skill) {
-        switch(skill) {
-            case PRAYER -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 50.0;
-            }
-            case COOKING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case WOODCUTTING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case FLETCHING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case FISHING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 40.0;
-            }
-            case FIREMAKING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case CRAFTING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case SMITHING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 60.0;
-            }
-            case MINING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 35 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 50 : 50.0;
-            }
-            case HERBLORE -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case AGILITY -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-            case THIEVING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 35.0;
-            }
-            case SLAYER -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 25.0;
-            }
-            case FARMING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 55.0;
-            }
-            case RUNECRAFTING -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 50.0;
-            }
-            case HUNTER -> {
-                return player.<Boolean>getAttribOr(AttributeKey.HARD_EXP_MODE,false) ? 15 : player.ironMode() != IronMode.NONE || player.mode().isDarklord() ? 20 : 30.0;
-            }
-        }
-        return 1.0;
-    }
-
     public void update() {
         update(false);
     }
 
     public void update(boolean ignore) {
-        if(!ignore) {
+        if (!ignore) {
             for (int skill = 0; skill < SKILL_COUNT; skill++) {
                 //Send the skill
                 player.getPacketSender().updateSkill(skill, levels[skill], (int) xps[skill]);
@@ -124,12 +70,12 @@ public class Skills {
             recalculateCombat();
 
             //Update prayer orb
-            player.getPacketSender().sendString(4012, "" + levels[PRAYER]+"");
-            player.getPacketSender().sendString(4013, "" + xpToLevel((int) xps[PRAYER])+"");
+            player.getPacketSender().sendString(4012, "" + levels[PRAYER] + "");
+            player.getPacketSender().sendString(4013, "" + xpToLevel((int) xps[PRAYER]) + "");
 
             //Update hp orb
-            player.getPacketSender().sendString(4016, "" + levels[HITPOINTS]+"");
-            player.getPacketSender().sendString(4017, "" + xpToLevel((int) xps[HITPOINTS])+"");
+            player.getPacketSender().sendString(4016, "" + levels[HITPOINTS] + "");
+            player.getPacketSender().sendString(4017, "" + xpToLevel((int) xps[HITPOINTS]) + "");
 
             //Send total level
             player.getPacketSender().sendString(10121, "" + totalLevel());
@@ -139,7 +85,7 @@ public class Skills {
     public void updatePrayerText() {
         int currentLevel = levels[PRAYER];
         int maxLevel = xpToLevel((int) xps[PRAYER]);
-        player.getPacketSender().sendString(687,Color.ORANGE.tag()+currentLevel + "/" + maxLevel);
+        player.getPacketSender().sendString(687, Color.ORANGE.tag() + currentLevel + "/" + maxLevel);
     }
 
     public void syncDirty() {
@@ -152,7 +98,7 @@ public class Skills {
     }
 
     public void makeDirty(int skill) {
-        this.makeDirty(skill,false);
+        this.makeDirty(skill, false);
     }
 
     public void makeDirty(int skill, boolean ignore) {
@@ -162,35 +108,15 @@ public class Skills {
             player.getPacketSender().updateSkill(skill, levels[skill], (int) xps[skill]);
         }
 
-        if (player.skills().combatLevel() >= 126 && player.mode() == GameMode.TRAINED_ACCOUNT) {
-            player.putAttrib(AttributeKey.COMBAT_MAXED, true);
-        }
-
-        //Only unlockable for trained accounts.
-        if(player.mode() == GameMode.TRAINED_ACCOUNT) {
-            if (totalLevel() >= 750) {
-                AchievementsManager.activate(player, Achievements.SKILLER_I, 1);
-            }
-            if (totalLevel() >= 1000) {
-                AchievementsManager.activate(player, Achievements.SKILLER_II, 1);
-            }
-            if (totalLevel() >= 1500) {
-                AchievementsManager.activate(player, Achievements.SKILLER_III, 1);
-            }
-            if (totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED) {
-                AchievementsManager.activate(player, Achievements.SKILLER_IV, 1);
-            }
-        }
-
         //Update prayer orb
-        player.getPacketSender().sendString(4012, "" + levels[PRAYER]+"");
-        player.getPacketSender().sendString(4013, "" + xpToLevel((int) xps[PRAYER])+"");
+        player.getPacketSender().sendString(4012, "" + levels[PRAYER] + "");
+        player.getPacketSender().sendString(4013, "" + xpToLevel((int) xps[PRAYER]) + "");
 
         //Update hp orb
-        player.getPacketSender().sendString(4016, "" + levels[HITPOINTS]+"");
-        player.getPacketSender().sendString(4017, "" + xpToLevel((int) xps[HITPOINTS])+"");
+        player.getPacketSender().sendString(4016, "" + levels[HITPOINTS] + "");
+        player.getPacketSender().sendString(4017, "" + xpToLevel((int) xps[HITPOINTS]) + "");
 
-        if(!ignore) {
+        if (!ignore) {
             player.skills().updatePrayerText();
         }
     }
@@ -230,7 +156,7 @@ public class Skills {
     }
 
     public void setXp(int skill, double amt) {
-        this.setXp(skill, amt,false);
+        this.setXp(skill, amt, false);
     }
 
     public void setXp(int skill, double amt, boolean ignore) {
@@ -238,19 +164,19 @@ public class Skills {
         int newLevel = xpToLevel((int) xps[skill]);
         levels[skill] = newLevel;
 
-        if(!ignore) {
+        if (!ignore) {
             recalculateCombat();
             makeDirty(skill);
         }
     }
 
     public void setLevel(int skill, int lvtemp) {
-        this.setLevel(skill, lvtemp,false);
+        this.setLevel(skill, lvtemp, false);
     }
 
     public void setLevel(int skill, int lvtemp, boolean ignore) {
         levels[skill] = lvtemp;
-        if(!ignore) {
+        if (!ignore) {
             makeDirty(skill);
         }
     }
@@ -269,8 +195,6 @@ public class Skills {
         boolean pvp = target != null && target.isPlayer() && target.getIndex() + 32768 == (int) player.getAttribOr(AttributeKey.LAST_FACE_ENTITY_IDX, 0);
         boolean combatxp = skill == ATTACK || skill == STRENGTH || skill == DEFENCE || skill == RANGED || skill == MAGIC || skill == HITPOINTS;
         boolean xplocked = player.getAttribOr(AttributeKey.XP_LOCKED, false);
-        boolean x1xp = player.getAttribOr(AttributeKey.X1XP, false);
-        boolean inWilderness = WildernessArea.inWilderness(player.tile());
 
         if (combatxp && xplocked) { // don't get combat exp when locked.
             return false;
@@ -289,22 +213,10 @@ public class Skills {
         boolean geniePet = player.hasPetOut("Genie pet");
 
         if (multiplied) {
-            if (player.ironMode() == IronMode.NONE) {
-                if (combatxp) {
-                    if (!x1xp) {//if x1, no multiplier is applied.
-                        amt *= player.mode().combatXpRate();
-                    }
-                } else {
-                    amt *= expModifiers(skill);
-                }
-            } else { // Iron Man mode is always x20.
-                if (!(combatxp && x1xp)) {//iron men, if x1 set, don't get multipler.
-                    amt *= player.ironMode() != IronMode.NONE ? 20 : player.mode().combatXpRate();
-                }
-            }
+            amt *= player.expmode().getExpMultiplier();
         }
 
-        var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS,0) > 0;
+        var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
 
         var donator_zone = player.tile().memberZone() || player.tile().memberCave();
 
@@ -339,79 +251,73 @@ public class Skills {
                 player.message("Congratulations, you just advanced %d %s levels.", levels, SKILL_NAMES[skill]);
             }
 
-            if(newLevel == 99 && player.mode() != GameMode.INSTANT_PKER) {
+            if (newLevel == 99) {
                 player.graphic(1388, 124, 0);
                 player.message(Color.ORANGE_RED.tag() + "Congratulations on achieving level 99 in " + SKILL_NAMES[skill] + "!");
                 player.message(Color.ORANGE_RED.tag() + "You may now purchase a skillcape from Mac who can be found at home.");
-                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just achieved level 99 in "+Color.BLUE.tag()+"" + SKILL_NAMES[skill] + "</col> on a "+Color.BLUE.tag()+" "+ Utils.gameModeToString(player)+"</col>!");
+                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just achieved level 99 in " + Color.BLUE.tag() + "" + SKILL_NAMES[skill] + "</col> on a " + Color.BLUE.tag() + " " + Utils.gameModeToString(player) + "</col>!");
             }
 
-            if(totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED && player.mode() != GameMode.INSTANT_PKER) {
-                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just maxed out on a "+Color.BLUE.tag()+" "+ Utils.gameModeToString(player)+"</col>!");
+            if (totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED) {
+                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just maxed out on a " + Color.BLUE.tag() + " " + Utils.gameModeToString(player) + "</col>!");
             }
 
             recalculateCombat();
 
-            if (player.skills().combatLevel() >= 126 && player.mode() == GameMode.TRAINED_ACCOUNT) {
+            if (player.skills().combatLevel() >= 126) {
                 player.putAttrib(AttributeKey.COMBAT_MAXED, true);
             }
 
             //Only unlockable for trained accounts.
-            if(player.mode() == GameMode.TRAINED_ACCOUNT) {
-                if (totalLevel() >= 750) {
-                    AchievementsManager.activate(player, Achievements.SKILLER_I, 1);
-                }
-                if (totalLevel() >= 1000) {
-                    AchievementsManager.activate(player, Achievements.SKILLER_II, 1);
-                }
-                if (totalLevel() >= 1500) {
-                    AchievementsManager.activate(player, Achievements.SKILLER_III, 1);
-                }
-                if (totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED) {
-                    AchievementsManager.activate(player, Achievements.SKILLER_IV, 1);
-                }
+            if (totalLevel() >= 750) {
+                AchievementsManager.activate(player, Achievements.SKILLER_I, 1);
+            }
+            if (totalLevel() >= 1000) {
+                AchievementsManager.activate(player, Achievements.SKILLER_II, 1);
+            }
+            if (totalLevel() >= 1500) {
+                AchievementsManager.activate(player, Achievements.SKILLER_III, 1);
+            }
+            if (totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED) {
+                AchievementsManager.activate(player, Achievements.SKILLER_IV, 1);
             }
 
-            var levelUpActive = player.<Boolean>getAttribOr(AttributeKey.LEVEL_UP_INTERFACE, false);
+            //Send custom interfaces 377 doesn't have these
+            if (skill == FARMING) {
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... options) {
+                        send(DialogueType.ITEM_STATEMENT, new Item(5340), "", "Congratulations! You've just advanced Farming level!", "You have reached level " + newLevel + "!");
+                        setPhase(0);
+                    }
+                });
+            } else if (skill == CONSTRUCTION) {
 
-            if(levelUpActive) {
-                //Send custom interfaces 377 doesn't have these
-                if (skill == FARMING) {
-                    player.getDialogueManager().start(new Dialogue() {
-                        @Override
-                        protected void start(Object... options) {
-                            send(DialogueType.ITEM_STATEMENT, new Item(5340), "", "Congratulations! You've just advanced Farming level!", "You have reached level " + newLevel + "!");
-                            setPhase(0);
-                        }
-                    });
-                } else if (skill == CONSTRUCTION) {
+            } else if (skill == HUNTER) {
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... options) {
+                        send(DialogueType.ITEM_STATEMENT, new Item(9951), "", "Congratulations! You've just advanced Hunter level!", "You have reached level " + newLevel + "!");
+                        setPhase(0);
+                    }
+                });
+            } else {
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... parameters) {
+                        player.getPacketSender().sendString(LEVEL_UP[skill][1], "<col=128>Congratulations, you just advanced a " + SKILL_NAMES[skill] + " level!");
+                        player.getPacketSender().sendString(LEVEL_UP[skill][2], "Your " + SKILL_NAMES[skill] + " level is now " + newLevel + ".");
+                        player.getPacketSender().sendChatboxInterface(LEVEL_UP[skill][0]);
+                        setPhase(0);
+                    }
 
-                } else if (skill == HUNTER) {
-                    player.getDialogueManager().start(new Dialogue() {
-                        @Override
-                        protected void start(Object... options) {
-                            send(DialogueType.ITEM_STATEMENT, new Item(9951), "", "Congratulations! You've just advanced Hunter level!", "You have reached level " + newLevel + "!");
-                            setPhase(0);
+                    @Override
+                    protected void next() {
+                        if (isPhase(0)) {
+                            stop();
                         }
-                    });
-                } else {
-                    player.getDialogueManager().start(new Dialogue() {
-                        @Override
-                        protected void start(Object... parameters) {
-                            player.getPacketSender().sendString(LEVEL_UP[skill][1], "<col=128>Congratulations, you just advanced a " + SKILL_NAMES[skill] + " level!");
-                            player.getPacketSender().sendString(LEVEL_UP[skill][2], "Your " + SKILL_NAMES[skill] + " level is now " + newLevel + ".");
-                            player.getPacketSender().sendChatboxInterface(LEVEL_UP[skill][0]);
-                            setPhase(0);
-                        }
-
-                        @Override
-                        protected void next() {
-                            if (isPhase(0)) {
-                                stop();
-                            }
-                        }
-                    });
-                }
+                    }
+                });
             }
         }
         update();//Force an update
@@ -552,7 +458,7 @@ public class Skills {
     }
 
     public long getTotalExperience() {
-        return Arrays.stream(xps).mapToLong(e -> (long)e).sum();
+        return Arrays.stream(xps).mapToLong(e -> (long) e).sum();
     }
 
 
@@ -694,7 +600,7 @@ public class Skills {
         if (skill != null) {
             boolean isCombatMaxed = player.getAttribOr(AttributeKey.COMBAT_MAXED, false);
             //Players can set there combat stats to 99, except for trained accounts they have to be maxed first.
-            if (!player.getPlayerRights().isDeveloperOrGreater(player) && (player.mode() == GameMode.TRAINED_ACCOUNT && !isCombatMaxed && skill.canSetLevel())) {
+            if (!player.getPlayerRights().isDeveloperOrGreater(player) && (!isCombatMaxed && skill.canSetLevel())) {
                 player.message("As a trained account you have to max out your combat stats first.");
                 return false;
             }
@@ -706,7 +612,7 @@ public class Skills {
             if (!skill.canSetLevel() && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                 return true;
             }
-            if ((player.mode() == GameMode.INSTANT_PKER || isCombatMaxed) || player.getPlayerRights().isDeveloperOrGreater(player)) {
+            if (isCombatMaxed || player.getPlayerRights().isDeveloperOrGreater(player)) {
                 if (CombatFactory.inCombat(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You can't change your levels during combat.");
                     return true;
@@ -764,9 +670,9 @@ public class Skills {
         player.skills().recalculateCombat();
 
         if (skill == PRAYER) {
-            player.getPacketSender().sendConfig(708, Prayers.canUse(player, DefaultPrayerData.PRESERVE,false) ? 1 : 0);
-            player.getPacketSender().sendConfig(710, Prayers.canUse(player, DefaultPrayerData.RIGOUR,false) ? 1 : 0);
-            player.getPacketSender().sendConfig(712, Prayers.canUse(player, DefaultPrayerData.AUGURY,false) ? 1 : 0);
+            player.getPacketSender().sendConfig(708, Prayers.canUse(player, DefaultPrayerData.PRESERVE, false) ? 1 : 0);
+            player.getPacketSender().sendConfig(710, Prayers.canUse(player, DefaultPrayerData.RIGOUR, false) ? 1 : 0);
+            player.getPacketSender().sendConfig(712, Prayers.canUse(player, DefaultPrayerData.AUGURY, false) ? 1 : 0);
         }
 
         //Update weapon tab to send combat level etc.
@@ -778,6 +684,7 @@ public class Skills {
 
     /**
      * Starts the {@link Skillable} skill.
+     *
      * @param skill
      */
     public void startSkillable(Skillable skill) {
@@ -802,7 +709,7 @@ public class Skills {
      */
     public void stopSkillable() {
         //Stop any previous skill..
-        player.getSkillable().ifPresent(e-> e.cancel(player));
+        player.getSkillable().ifPresent(e -> e.cancel(player));
         player.setSkillable(Optional.empty());
     }
 
@@ -842,7 +749,7 @@ public class Skills {
     }
 
     public boolean check(int skill, int levelReq, String action) {
-        if(!check(skill, levelReq)) {
+        if (!check(skill, levelReq)) {
             player.message("You need " + Skills.SKILL_NAMES[skill] + " level of " + levelReq + " or higher to " + action + ".");
             return false;
         }
@@ -850,7 +757,7 @@ public class Skills {
     }
 
     public boolean check(int skill, int lvlReq, int itemId, String action) {
-        if(!check(skill, lvlReq)) {
+        if (!check(skill, lvlReq)) {
             player.getDialogueManager().start(new Dialogue() {
                 @Override
                 protected void start(Object... parameters) {
@@ -860,7 +767,7 @@ public class Skills {
 
                 @Override
                 protected void next() {
-                    if(isPhase(0)) {
+                    if (isPhase(0)) {
                         stop();
                     }
                 }
@@ -871,17 +778,17 @@ public class Skills {
     }
 
     public boolean check(int skill, int lvlReq, int itemId1, int itemId2, String action) {
-        if(!check(skill, lvlReq)) {
+        if (!check(skill, lvlReq)) {
             player.getDialogueManager().start(new Dialogue() {
                 @Override
                 protected void start(Object... parameters) {
-                    send(DialogueType.DOUBLE_ITEM_STATEMENT,new Item(itemId1), new Item(itemId2), "You need " + Skills.SKILL_NAMES[skill] + " level of " + lvlReq + " or higher to " + action + ".");
+                    send(DialogueType.DOUBLE_ITEM_STATEMENT, new Item(itemId1), new Item(itemId2), "You need " + Skills.SKILL_NAMES[skill] + " level of " + lvlReq + " or higher to " + action + ".");
                     setPhase(0);
                 }
 
                 @Override
                 protected void next() {
-                    if(isPhase(0)) {
+                    if (isPhase(0)) {
                         stop();
                     }
                 }

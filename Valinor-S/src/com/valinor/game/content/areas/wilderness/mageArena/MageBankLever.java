@@ -22,7 +22,7 @@ public class MageBankLever extends PacketInteraction {
             if (obj.getId() == 5959) {
                 player.faceObj(obj);
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }
@@ -64,7 +64,7 @@ public class MageBankLever extends PacketInteraction {
 
                 player.faceObj(obj);
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }

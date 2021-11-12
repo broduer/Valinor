@@ -10,7 +10,7 @@
     "firstChunkX": 351,
     "firstChunkY": 432
   },
-  "gameTime": 97024,
+  "gameTime": 190761,
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
@@ -26,7 +26,7 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
-  "lastLogin": "Nov 11, 2021, 10:57:14 AM",
+  "lastLogin": "Nov 12, 2021, 09:46:52 AM",
   "muted": false,
   "lastBMClaim": 0,
   "isCombatMaxed": false,
@@ -158,7 +158,7 @@
     1,
     1,
     1,
-    19,
+    29,
     1,
     1,
     1
@@ -183,7 +183,7 @@
     0.0,
     0.0,
     0.0,
-    4400.0,
+    12760.0,
     0.0,
     0.0,
     0.0
@@ -222,7 +222,11 @@
     },
     {
       "id": 5291,
-      "amount": 120
+      "amount": 117
+    },
+    {
+      "id": 1925,
+      "amount": 1
     },
     {
       "id": 1925,
@@ -269,19 +273,45 @@
       "amount": 1
     },
     {
-      "id": 6032,
+      "id": 6055,
       "amount": 1
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 6055,
+      "amount": 1
+    },
+    {
+      "id": 6055,
+      "amount": 1
+    },
+    {
+      "id": 6055,
+      "amount": 1
+    },
+    {
+      "id": 6055,
+      "amount": 1
+    },
+    {
+      "id": 6055,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
+    {
+      "id": 199,
+      "amount": 1
+    },
     null
   ],
   "equipment": [

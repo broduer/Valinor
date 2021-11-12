@@ -7,8 +7,6 @@ import com.valinor.game.content.consumables.potions.Potions;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.items.MithrilSeeds;
 import com.valinor.game.content.items.RockCake;
-import com.valinor.game.content.items.mystery_box.MboxItem;
-import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.content.items.tools.ItemPacks;
 import com.valinor.game.content.skill.impl.herblore.Cleaning;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
@@ -205,26 +203,6 @@ public class ItemActionOne {
             player.getRunePouch().open(RUNE_POUCH_I);
             player.putAttrib(VIEWING_RUNE_POUCH_I,true);
             return;
-        }
-
-        switch (id) {
-            case MYSTERY_BOX, ARMOUR_MYSTERY_BOX, WEAPON_MYSTERY_BOX, DONATOR_MYSTERY_BOX, HWEEN_MYSTERY_BOX, LEGENDARY_MYSTERY_BOX -> {
-                if (player.inventory().contains(item)) {
-                    player.inventory().remove(new Item(item), true);
-
-                    Optional<Mbox> mBox = Mbox.getMysteryBox(item.getId());
-
-                    if (mBox.isEmpty()) {
-                        return;
-                    }
-
-                    player.getMysteryBox().box = mBox.get();
-                    MboxItem mboxItem = mBox.get().rollReward().copy();
-                    player.getMysteryBox().reward = mboxItem;
-                    player.getMysteryBox().broadcast = mboxItem.broadcastItem;
-                    player.getMysteryBox().reward();
-                }
-            }
         }
     }
 }

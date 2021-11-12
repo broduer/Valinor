@@ -2,7 +2,6 @@ package com.valinor.game;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.clan.ClanRepository;
-import com.valinor.game.content.items.mystery_box.Mbox;
 import com.valinor.game.content.new_players.StarterBox;
 import com.valinor.game.content.skill.impl.crafting.Crafting;
 import com.valinor.game.content.skill.impl.fletching.Fletching;
@@ -77,7 +76,6 @@ public class GameBuilder {
 
         //Load definitions..
         tasks.add(TradingPost::init);
-        tasks.add(Mbox::load);
         tasks.add(new Slayer()::loadMasters);
         tasks.add(Crafting::load);
         tasks.add(Fletching::load);

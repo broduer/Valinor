@@ -374,7 +374,6 @@ public class Widget {
         SlayerRewardWidget.unpack(font);
         ScrollWidget.unpack(font);
         ReferralWidget.unpack(font);
-        MysteryBoxWidget.unpack(font);
         TeleportWidget.unpack(font);
         DuelArenaWidget.unpack(font);
         QuestTabSidebarWidget.unpack(font);

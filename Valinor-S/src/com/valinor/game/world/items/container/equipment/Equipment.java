@@ -1,6 +1,5 @@
 package com.valinor.game.world.items.container.equipment;
 
-import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.edgevile.Mac;
 import com.valinor.game.content.duel.DuelRule;
@@ -233,16 +232,6 @@ public final class Equipment extends ItemContainer {
         return false;
     }
 
-    public boolean wearingBeginnerWeapon() {
-        List<Integer> beginner_weapons = Arrays.asList(BEGINNER_DRAGON_CLAWS, BEGINNER_AGS, BEGINNER_CHAINMACE, BEGINNER_CRAWS_BOW);
-        for (int weapon : beginner_weapons) {
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, weapon)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean corpbeastArmour(Item weapon) {
         return (weapon != null && (World.getWorld().equipmentInfo().weaponType(weapon.getId()) != WeaponType.SPEAR)) || player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.ZAMORAKIAN_HASTA);
     }
@@ -406,14 +395,6 @@ public final class Equipment extends ItemContainer {
         if (needsreq[0]) {
             player.message("<col=FF0000>You don't have the level requirements to wear: %s.", World.getWorld().definitions().get(ItemDefinition.class, equip.getId()).name);
             return false;
-        }
-
-        //For dark lord accounts check if we unlocked this item
-        if(player.mode().isDarklord()) {
-            if(player.getCollectionLog().unlocked(equip.getId()) == 1) {
-                player.message(Color.RED.wrap("You have not unlocked this item yet."));
-                return false;
-            }
         }
 
         if(equip.getId() == HARDCORE_IRONMAN_HELM || equip.getId() == HARDCORE_IRONMAN_PLATEBODY || equip.getId() == HARDCORE_IRONMAN_PLATELEGS) {

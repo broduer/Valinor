@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    COMBAT_MAXED("combat_maxed", AttribType.INTEGER),
+
     /**
      * Key used to store amount of compost we can collect
      */
@@ -23,7 +25,6 @@ public enum AttributeKey {
     HP_EVENT_ACTIVE,
     MUTTADILE_EATING_STATE,
     MUTTADILE_HEAL_COUNT,
-    CLAIMED_DONATOR_REWARDS("claimed_donator_rewards", AttribType.BOOLEAN),
 
     EVENT_REWARD_1_CLAIMED,
     EVENT_REWARD_2_CLAIMED,
@@ -118,40 +119,16 @@ public enum AttributeKey {
     VORKATH_LOG_CLAIMED,
     ZOMBIES_CHAMPION_LOG_CLAIMED,
     ZULRAH_LOG_CLAIMED,
-    ARMOUR_MYSTERY_BOX_LOG_CLAIMED,
-    DONATOR_MYSTERY_BOX_LOG_CLAIMED,
-    EPIC_PET_MYSTERY_BOX_LOG_CLAIMED,
-    MYSTERY_CHEST_LOG_CLAIMED,
-    RAIDS_MYSTERY_BOX_LOG_CLAIMED,
-    WEAPON_MYSTERY_BOX_LOG_CLAIMED,
-    LEGENDARY_MYSTERY_BOX_LOG_CLAIMED,
-    ZENYTE_MYSTERY_BOX_LOG_CLAIMED,
-    CRYSTAL_KEY_LOG_CLAIMED,
-    LARRANS_KEY_TIER_I_LOG_CLAIMED,
-    LARRANS_KEY_TIER_II_LOG_CLAIMED,
-    LARRANS_KEY_TIER_III_LOG_CLAIMED,
-    SLAYER_KEY_LOG_CLAIMED,
-    WILDERNESS_KEY_LOG_CLAIMED,
     ANCIENT_REVENANTS_LOG_CLAIMED,
     CHAMBER_OF_SECRETS_LOG_CLAIMED,
     REVENANTS_LOG_CLAIMED,
     SLAYER_LOG_CLAIMED,
 
-    PLAYTIME_GIFT_CLAIMED("playtime_gift_claimed", AttribType.BOOLEAN),
-    VETERAN_GIFT_CLAIMED("veteran_gift_claimed", AttribType.BOOLEAN),
     VETERAN("veteran", AttribType.BOOLEAN),
 
     IS_BETA_TESTER("is_beta_tester", AttribType.BOOLEAN),
 
-    DARK_LORD_LIVES("dark_lord_lives", AttribType.INTEGER),
-
     HERB_BOX_CHARGES("herb_box_charges", AttribType.INTEGER),
-
-    TOP_PKER_REWARD_UNCLAIMED("top_pker_unclaimed_reward", AttribType.BOOLEAN),
-
-    TOP_PKER_POSITION("top_pker_position", AttribType.INTEGER),
-
-    TOP_PKER_REWARD,
 
     RECEIVED_MONTHLY_SPONSOR_REWARDS("received_monthly_sponsor_rewards", AttribType.BOOLEAN),
 
@@ -166,8 +143,6 @@ public enum AttributeKey {
     WHIP_AND_DDS,
 
     STARTER_BOX_CLAIMED("starter_box_claimed", AttribType.BOOLEAN),
-
-    CLAN_BOX_OPENED("clan_box_opened", AttribType.BOOLEAN),
 
     PROMO_CODE_CLAIMED("promo_code_claimed", AttribType.BOOLEAN),
 
@@ -190,18 +165,6 @@ public enum AttributeKey {
     AUTOCAST_SELECTED("autocast_selected", AttribType.BOOLEAN),
 
     EARNING_POTENTIAL("earning_potential", AttribType.INTEGER),
-
-    SANGUINE_TWISTED_BOW_ATTEMTPS("sanguine_twisted_bow_attempts", AttribType.INTEGER),
-
-    CORRUPTED_BOOTS_ATTEMTPS("corrupted_boots_attempts", AttribType.INTEGER),
-
-    ANCIENT_FACEGUARD_ATTEMPTS("ancient_facegaurd_attempts", AttribType.INTEGER),
-
-    TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS("toxic_staff_of_the_dead_c_attempts", AttribType.INTEGER),
-
-    BLOOD_MONEY_PET_ATTEMTPS("blood_money_pet_attempts", AttribType.INTEGER),
-
-    RING_OF_ELYSIAN_ATTEMTPS("ring_of_elysian_attempts", AttribType.INTEGER),
 
     // How much BM we last died with. Used to combat raggers/no risk suicide accounts.
     LASTDEATH_VALUE,
@@ -424,8 +387,6 @@ public enum AttributeKey {
      */
     DEATH_TELEPORT_TIMER("lastSpawnSetupTime", AttribType.STRING),
 
-    LEVEL_UP_INTERFACE("level_up_interface", AttribType.BOOLEAN),
-
     /**
      * Save's the NPC's spawned in the for the Abyssal Sire
      */
@@ -545,73 +506,6 @@ public enum AttributeKey {
 
     STORE_X("store_x", AttribType.INTEGER),
 
-    ARMADYL_GODSWORD_OR_ATTEMPTS("armadyl_godsword_or_attempts", AttribType.INTEGER),
-
-    BANDOS_GODSWORD_OR_ATTEMPTS("bandos_godsword_or_attempts", AttribType.INTEGER),
-
-    SARADOMIN_GODSWORD_OR_ATTEMPTS("sardomin_godsword_or_attempts", AttribType.INTEGER),
-
-    ZAMORAK_GODSWORD_OR_ATTEMPTS("zamorak_godsword_or_attempts", AttribType.INTEGER),
-
-    FURY_OR_ATTEMPTS("amulet_of_fury_or_attempts", AttribType.INTEGER),
-
-    OCCULT_OR_ATTEMPTS("occult_necklace_or_attempts", AttribType.INTEGER),
-
-    TORTURE_OR_ATTEMPTS("amulet_of_torture_or_attempts", AttribType.INTEGER),
-
-    ANGUISH_OR_ATTEMPTS("amulet_of_anguish_or_attempts", AttribType.INTEGER),
-
-    BERSERKER_NECKLACE_OR_ATTEMPTS("berserker_necklace_or_attempts", AttribType.INTEGER),
-
-    TORMENTED_BRACELET_OR_ATTEMPTS("tormented_bracelet_or_attempts", AttribType.INTEGER),
-
-    GRANITE_MAUL_OR_ATTEMPTS("granite_maul_or_attempts", AttribType.INTEGER),
-
-    DRAGON_DEFENDER_T_ATTEMPTS("dragon_defender_t_attempts", AttribType.INTEGER),
-
-    DRAGON_BOOTS_G_ATTEMPTS("dragon_boots_g_attempts", AttribType.INTEGER),
-
-    RUNE_POUCH_I_ATTEMPTS("rune_pouch_i_attempts", AttribType.INTEGER),
-
-    DRAGON_CLAWS_OR_ATTEMPTS("dragon_claws_or_attempts", AttribType.INTEGER),
-
-    RING_OF_MANHUNTING_ATTEMPTS("ring_of_manhunting_attempts", AttribType.INTEGER),
-
-    RING_OF_SORCERY_ATTEMPTS("ring_of_sorcery_attempts", AttribType.INTEGER),
-
-    RING_OF_PRECISION_ATTEMPTS("ring_of_precision_attempts", AttribType.INTEGER),
-
-    RING_OF_TRINITY_ATTEMPTS("ring_of_trinity_attempts", AttribType.INTEGER),
-
-    SLAYER_HELMET_I_ATTEMPTS("slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    BLACK_SLAYER_HELMET_I_ATTEMPTS("black_slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    GREEN_SLAYER_HELMET_I_ATTEMPTS("green_slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    RED_SLAYER_HELMET_I_ATTEMPTS("red_slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    TURQUOISE_SLAYER_HELMET_I_ATTEMPTS("turquoise_slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    TWISTED_SLAYER_HELMET_I_ATTEMPTS("twisted_slayer_helmet_i_attempts", AttribType.INTEGER),
-
-    LARRANS_KEY_II_ATTEMPTS("larrans_key_II_attempts", AttribType.INTEGER),
-    LARRANS_KEY_III_ATTEMPTS("larrans_key_III_attempts", AttribType.INTEGER),
-    ANCESTRAL_HAT_I_ATTEMPTS("ancestral_hat_I_attempts", AttribType.INTEGER),
-    ANCESTRAL_ROBE_TOP_I_ATTEMPTS("ancestral_top_I_attempts", AttribType.INTEGER),
-    ANCESTRAL_ROBE_BOTTOM_I_ATTEMPTS("ancestral_bottom_I_attempts", AttribType.INTEGER),
-    PRIMORDIAL_BOOTS_OR_ATTEMPTS("primordial_boots_or_attempts", AttribType.INTEGER),
-    INFERNAL_CAPE_ATTEMPTS("infernal_cape_attempts", AttribType.INTEGER),
-    MAGMA_BLOWPIPE_ATTEMPTS("magma_blowpipe_attempts", AttribType.INTEGER),
-    HOLY_SANGUINESTI_STAFF_ATTEMPTS("holy_sanguinesti_attempts", AttribType.INTEGER),
-    HOLY_GHRAZI_RAPIER_ATTEMPTS("holy_ghrazi_raper_attempts", AttribType.INTEGER),
-    SANGUINE_SCYTHE_OF_VITUR_ATTEMPTS("sanguine_scythe_of_vitur_attempts", AttribType.INTEGER),
-    PEGASIAN_BOOTS_OR_ATTEMPTS("pegasian_boots_or_attempts", AttribType.INTEGER),
-    ETERNAL_BOOTS_OR_ATTEMPTS("eternal_boots_or_attempts", AttribType.INTEGER),
-    CORRUPTED_VIGGORAS_CHAINMACE_ATTEMPTS("corrupted_viggoras_chainmace_attempts", AttribType.INTEGER),
-    CORRUPTED_CRAWS_BOW_ATTEMPTS("corrupted_craws_bow_attempts", AttribType.INTEGER),
-    CORRUPTED_THAMMARONS_STAFF_ATTEMPTS("corrupted_thammarons_staff_attempts", AttribType.INTEGER),
-
     /**
      * 0 = bosses
      * 1 = pvm and training
@@ -627,25 +521,15 @@ public enum AttributeKey {
 
     PROMO_ITEMS_UNLOCKED("promo_items_unlocked", AttribType.INTEGER),
 
-    COMBAT_MAXED("combat_maxed", AttribType.BOOLEAN),
-
     /**
      * Boolean key indicating if the account was freshly made (used for introductory dialogue).
      */
     NEW_ACCOUNT,
 
-    PICKING_PVM_STARTER_WEAPON,
-
-    PICKING_PVP_STARTER_WEAPON,
-
-    STARTER_WEAPON_DAMAGE("starter_weapon_damage", AttribType.INTEGER),
-
     /**
      * This attribute stores the latest damage being dealt to a player
      */
     LATEST_DAMAGE("latest_damage", AttribType.INTEGER),
-
-    TARGET_POINTS("target_points", AttribType.INTEGER),
 
     SLAYER_KEYS_RECEIVED("slayer_keys_received", AttribType.INTEGER),
     SLAYER_KEYS_OPENED("slayer_keys_opened", AttribType.INTEGER),
@@ -694,7 +578,6 @@ public enum AttributeKey {
     POSSIBLE_FISH_TILES,
 
     XP_LOCKED("lock_exp", AttribType.BOOLEAN),
-    X1XP("x1xp", AttribType.BOOLEAN),
 
     // The value of the face-entity mask.
     LAST_FACE_ENTITY_IDX,
@@ -952,7 +835,6 @@ public enum AttributeKey {
 
     MAGEBANK_MAGIC_ONLY("mage_bank_magic_only", AttribType.BOOLEAN),
     RING_OF_RECOIL_CHARGES("recoil_charges", AttribType.INTEGER),
-    ELO_RATING("elo_rating", AttribType.INTEGER),
     ALLOWED_TO_LOGOUT("can_logout", AttribType.BOOLEAN),
     DEATH_SPAWNS_SPAWNED,
     MEMBER_UNLOCKED,
@@ -987,11 +869,6 @@ public enum AttributeKey {
      * Used to store the GWD varbit
      */
     GOD_WARS_DUNGEON("godwars_dungeon", AttribType.BOOLEAN),
-
-    /**
-     * A key used to track the time a player last claimed their blood money reward.
-     */
-    YOUTUBER_BM_CLAIM("last_bm_claim", AttribType.LONG),
 
     /**
      * Key used to check if the kandarin hard diary has been completed
@@ -1315,18 +1192,6 @@ public enum AttributeKey {
     LARRANS_KEYS_TIER_TWO_USED("larrans_keys_tier2_used", AttribType.INTEGER),
     LARRANS_KEYS_TIER_THREE_USED("larrans_keys_tier3_used", AttribType.INTEGER),
     MBOX_REWARDS_VISIBLE,
-    ARMOUR_MYSTERY_BOXES_OPENED("armour_mystery_boxes_opened", AttribType.INTEGER),
-    DONATOR_MYSTERY_BOXES_OPENED("donator_mystery_boxes_opened", AttribType.INTEGER),
-    LEGENDARY_MYSTERY_BOXES_OPENED("legendary_mystery_boxes_opened", AttribType.INTEGER),
-    PET_MYSTERY_BOXES_OPENED("pet_mystery_boxes_opened", AttribType.INTEGER),
-    REGULAR_MYSTERY_BOXES_OPENED("regular_mystery_boxes_opened", AttribType.INTEGER),
-    WEAPON_MYSTERY_BOXES_OPENED("weapon_mystery_boxes_opened", AttribType.INTEGER),
-    PRESENT_MYSTERY_BOXES_OPENED("present_mystery_boxes_opened", AttribType.INTEGER),
-    EPIC_PET_MYSTERY_BOXES_OPENED("epic_pet_mystery_boxes_opened", AttribType.INTEGER),
-    RAIDS_MYSTERY_BOXES_OPENED("raids_mystery_boxes_opened", AttribType.INTEGER),
-    ZENYTE_MYSTERY_BOXES_OPENED("zenyte_mystery_boxes_opened", AttribType.INTEGER),
-    MYSTERY_CHESTS_OPENED("promo_chests_opened", AttribType.INTEGER),
-    TOTAL_RARES_FROM_MYSTERY_BOX("total_rares_from_mystery_box", AttribType.INTEGER),
     FILLER_AMT, RC_DIALOGUE, RUNECRAFTING,
     VENOM_TASK_RUNNING, PRAYER_DELAYED_ACTIVATION_TASK, PRAYER_DELAYED_ACTIVATION_CLICKS, MOVEMENT_PACKET_STEPS,
     IS_BOT, OVERLOAD_TASK_RUNNING, ANTIFIRE_TASK_RUNNING, DIVINE_BASTION_POTION_TASK_RUNNING, DIVINE_BATTLEMAGE_POTION_TASK_RUNNING, DIVINE_RANGING_POTION_TASK_RUNNING,

@@ -108,12 +108,6 @@ public class Trading {
             return;
         }
 
-        //Check to see if the player is special teleblocked
-        if (player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
-            player.teleblockMessage();
-            return;
-        }
-
         if (player.inventory().contains(WILDERNESS_KEY) && WildernessArea.inWilderness(player.tile())) {
             player.message(Color.RED.wrap("You can't send trade requests when holding the wilderness key."));
             return;
@@ -128,18 +122,6 @@ public class Trading {
         // Ironman? fuck off lol!!
         if (otherPlayer.ironMode() != IronMode.NONE && !(player.getPlayerRights().isDeveloperOrGreater(player) || player.ironMode().isGroupIronman())) {
             player.message(otherPlayer.getUsername() + " is an Iron Man. They stand alone.");
-            return;
-        }
-
-        // Dark lord? fuck off lol!!
-        if (player.mode().isDarklord() && !otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer)) {
-            player.message("You are an Dark Lord, you stand alone.");
-            return;
-        }
-
-        // Dark lord? fuck off lol!!
-        if (otherPlayer.mode().isDarklord() && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-            player.message(otherPlayer.getUsername() + " is an Dark Lord, they stand alone.");
             return;
         }
 

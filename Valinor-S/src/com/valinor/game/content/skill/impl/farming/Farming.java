@@ -21,7 +21,7 @@ import java.util.Map;
  * @author Gabriel || Wolfsdarker
  */
 public class Farming {
-    
+
 
     /**
      * The last moment the player logged in or out.
@@ -129,13 +129,13 @@ public class Farming {
                 return;
             }
 
-            System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
+            //System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
             if (System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed()) {
-                System.out.println("ticking");
+                //System.out.println("ticking");
                 if (!FarmingConstants.isFullyGrown(patch)) {
-                    System.out.println("Not fully grown yet");
+                    //System.out.println("Not fully grown yet");
                     if (FarmingConstants.inGrowthInterval(patch)) {
-                        System.out.println("enter interval");
+                        //System.out.println("enter interval");
                         patch.resetLastStageGrowthMoment();
                         if (patch.getProtection() == PatchProtection.NOT_PROTECTED && patch.getDiseaseState() == DiseaseState.NOT_PRESENT &&
                             FarmingConstants.hasToApplyDisease(patch) && patch.getStage() + 1 < patch.getSeed().getMaxGrowth() &&
@@ -144,7 +144,7 @@ public class Farming {
                         } else if (patch.getDiseaseState() == DiseaseState.PRESENT) {
                             patch.setDead(true);
                         } else {
-                            System.out.println("Update stage");
+                            //System.out.println("Update stage");
                             patch.setStage(patch.getStage() + 1);
                             if (!FarmingConstants.isFullyGrown(patch)) {
                                 patch.setWatered(patch.getProtection() != PatchProtection.NOT_PROTECTED);

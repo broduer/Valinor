@@ -22,7 +22,7 @@ public class DesertedKeepLever extends PacketInteraction {
                 player.faceObj(obj);
 
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }

@@ -255,11 +255,6 @@ public class TitlePlugin extends PacketInteraction {
             50, "The Staker",
             100, "Addict"));
 
-        titles.addAll(create(MysteryBoxRequirement.class, category,
-            25, "Boxer",
-            50, "The Unknown",
-            100, "Anonymous"));
-
         TitleUnlockRequirement.UnlockableTitle.SET.stream().map(title -> create(title.getName(), category).addRequirement(new TitleUnlockRequirement(title))).forEach(titles::add);
         return titles;
     }

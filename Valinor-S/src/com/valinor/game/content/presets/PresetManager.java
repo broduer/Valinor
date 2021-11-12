@@ -1,6 +1,5 @@
 package com.valinor.game.content.presets;
 
-import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
@@ -257,12 +256,6 @@ public class PresetManager {
                 continue;
             }
 
-            //Global presets, have no checks.
-            if (preset.isGlobal()) {
-                player.getEquipment().manualWear(item, true, false);
-                continue;
-            }
-
             final Item presetItem = item;
             // Dont allow illegal items to be obtained from an existing preset.
             if (Arrays.stream(ILLEGAL_ITEMS).anyMatch(id -> id == presetItem.getId())) {
@@ -346,12 +339,6 @@ public class PresetManager {
 
             //Skip an item if the slot was already occupied
             if(player.inventory().isSlotOccupied(index)) {
-                continue;
-            }
-
-            //Global presets go over anything, they have no checks, all spawnies.
-            if (preset.isGlobal()) {
-                player.inventory().add(item.copy(), index, false);
                 continue;
             }
 
@@ -516,13 +503,6 @@ public class PresetManager {
             return;
         }
 
-        //Trained accounts; block global preset until we've reached maxed combat.
-        var maxedCombat = player.<Boolean>getAttribOr(AttributeKey.COMBAT_MAXED, false);
-        if (player.mode() == GameMode.TRAINED_ACCOUNT && !maxedCombat && preset.isGlobal()) {
-            player.message("You can only use presets when you've maxed out your combat stats.");
-            return;
-        }
-
         player.stopActions(true);
 
         //Turn off prayers when applying a new preset.
@@ -543,7 +523,7 @@ public class PresetManager {
 
         player.message("Loading preset...");
         //Only load levels when we have this enabled.
-        if(player.getPresetManager().saveLevels() && !preset.isGlobal()) {
+        if(player.getPresetManager().saveLevels()) {
             IntStream.range(0, preset.getStats().length).forEach(i -> {
                 if (i < preset.getStats().length) {
                     int level = preset.getStats()[i];
@@ -582,10 +562,7 @@ public class PresetManager {
 
             //Store last preset
             if (player.getCurrentPreset() != null) {
-                player.setLastPreset(new Object[]{
-                    player.getCurrentPreset().isGlobal(),
-                    (double) player.getCurrentPreset().getIndex()
-                });
+                player.setLastPreset(new Object[]{(double) player.getCurrentPreset().getIndex()});
             }
         }
     }
@@ -647,10 +624,6 @@ public class PresetManager {
             case 62583 -> {
                 if (player.getCurrentPreset() == null) {
                     player.message("You haven't selected a preset yet.");
-                    return true;
-                }
-                if (player.getCurrentPreset().isGlobal()) {
-                    player.message("You can only edit your own presets.");
                     return true;
                 }
                 edit(player.getCurrentPreset().getIndex());

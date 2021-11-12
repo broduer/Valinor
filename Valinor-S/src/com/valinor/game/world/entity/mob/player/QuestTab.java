@@ -185,8 +185,7 @@ public final class QuestTab {
         TARGET_POINTS(12685) {
             @Override
             public String fetchLineData(Player player) {
-                int targetPoints = player.getAttribOr(AttributeKey.TARGET_POINTS, 0);
-                return "Target points: <col=ffffff>" + Utils.formatNumber(targetPoints);
+                return "Target points: <col=ffffff> 0";
             }
         },
 

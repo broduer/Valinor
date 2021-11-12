@@ -5,9 +5,6 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.util.Utils;
 
-import static com.valinor.game.world.entity.AttributeKey.PICKING_PVM_STARTER_WEAPON;
-import static com.valinor.game.world.entity.AttributeKey.PICKING_PVP_STARTER_WEAPON;
-
 /**
  * Contains information about the state of interfaces enter in the client.
  */
@@ -110,8 +107,6 @@ public class InterfaceManager {
     }
 
     public void closeDialogue() {
-        player.clearAttrib(PICKING_PVM_STARTER_WEAPON);
-        player.clearAttrib(PICKING_PVP_STARTER_WEAPON);
         player.clearAttrib(AttributeKey.DIALOGUE_PHASE);
         player.getDialogueManager().interrupt();
         player.getPacketSender().closeDialogue();
@@ -164,7 +159,6 @@ public class InterfaceManager {
         player.putAttrib(AttributeKey.USING_TRADING_POST,false);
         player.lastTradingPostItemSearch = null;
         player.lastTradingPostUserSearch = null;
-        player.getMysteryBox().onClose(player.getMysteryBox().isSpinning());
         if(player.getStatus() != PlayerStatus.GAMBLING) {
             player.setStatus(PlayerStatus.NONE);
         }

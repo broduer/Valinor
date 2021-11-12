@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
-import static com.valinor.game.world.entity.AttributeKey.MYSTERY_CHESTS_OPENED;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -48,8 +47,6 @@ public class MysteryChest extends PacketInteraction {
 
         if (reward != null) {
             Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a " + reward.name() + " from a Mystery chest.", "box_and_tickets");
-            var timesOpened = player.<Integer>getAttribOr(MYSTERY_CHESTS_OPENED, 0) + 1;
-            player.putAttrib(MYSTERY_CHESTS_OPENED, timesOpened);
             //The user box test doesn't yell.
             if (player.getUsername().equalsIgnoreCase("Box test")) {
                 return;

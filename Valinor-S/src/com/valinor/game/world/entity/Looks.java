@@ -3,7 +3,7 @@ package com.valinor.game.world.entity;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
-import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.PacketBuilder;
@@ -113,18 +113,8 @@ public class Looks {
         packetBuilder.put(target.getHeadHint());
 
         //Skull icon
-        if(target.mode() == GameMode.DARK_LORD) {
-            var lives = target.<Integer>getAttribOr(AttributeKey.DARK_LORD_LIVES,3);
-            var code = switch (lives) {
-                case 1 -> 4;
-                case 2 -> 3;
-                default -> 2;
-            };
-            System.out.println("lives: "+lives+" code: "+code);
-            packetBuilder.put(code);
-        } else {
-            packetBuilder.put(target.getSkullType().getCode());
-        }
+        packetBuilder.put(target.getSkullType().getCode());
+
         //System.out.println("Sending skull icon " + target.getSkullType().getCode() + "for " + target);
 
         //Some sort of headhint (arrow over head)

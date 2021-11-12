@@ -244,11 +244,6 @@ public class TradingPost {
             return;
         }
 
-        if (player.mode().isDarklord()) {
-            player.message("You are an Dark Lord, you stand alone.");
-            return;
-        }
-
         //printRecentTransactions();
         player.getInterfaceManager().close();
         resetInterface(player);

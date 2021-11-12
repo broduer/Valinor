@@ -1,14 +1,12 @@
 package com.valinor.game.world.entity.combat.bountyhunter;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.achievements.Achievements;
-import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
-import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
@@ -273,17 +271,6 @@ public class BountyHunter {
                 int targetKills = (Integer) killer.getAttribOr(AttributeKey.TARGET_KILLS, 0) + 1;
                 killer.putAttrib(AttributeKey.TARGET_KILLS, targetKills);
 
-                boolean trainedAccount = killer.mode() == GameMode.TRAINED_ACCOUNT;
-                if (trainedAccount) {
-                    killer.message("(" + Color.RED.tag() + "+1</col>) Extra target point received! (Trained account bonus)");
-                }
-                var increaseBy = trainedAccount ? 2 : 1;
-                var targetPoints = killer.<Integer>getAttribOr(AttributeKey.TARGET_POINTS, 0) + increaseBy;
-                killer.putAttrib(AttributeKey.TARGET_POINTS, targetPoints);
-
-                killer.message("You now have " + Color.BLUE.tag() + "" + targetPoints + "</col> target points. (" + Color.RED.tag() + "+" + increaseBy + "</col>)");
-                killer.getPacketSender().sendString(QuestTab.InfoTab.TARGET_KILLS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.TARGET_KILLS.childId).fetchLineData(killer));
-
                 Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
 
                 if (emblem.isPresent()) {
@@ -333,13 +320,6 @@ public class BountyHunter {
                         return 0;
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
-                    var increaseTargetPointsBy = player.<Integer>getAttribOr(AttributeKey.TARGET_POINTS,0) + targetPoints;
-                    player.putAttrib(AttributeKey.TARGET_POINTS, increaseTargetPointsBy);
-                    var blood_reaper = player.hasPetOut("Blood Reaper pet");
-                    if(blood_reaper) {
-                        int extraBM = value * 10 / 100;
-                        value += extraBM;
-                    }
                     player.inventory().add(new Item(BLOOD_MONEY, value));
                     player.clearAttrib(EMBLEM_WEALTH);
                 }

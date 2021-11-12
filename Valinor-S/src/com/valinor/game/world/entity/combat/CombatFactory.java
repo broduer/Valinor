@@ -74,7 +74,6 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 
 import static com.valinor.game.world.InterfaceConstants.BARROWS_REWARD_WIDGET;
-import static com.valinor.game.world.entity.AttributeKey.STARTER_WEAPON_DAMAGE;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.KRAKEN_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.TENTACLE_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
@@ -1207,29 +1206,6 @@ public class CombatFactory {
                 attackerAsPlayer.getEquipment().remove(new Item(ELDER_WAND_RAIDS), true);
                 Autocasting.setAutocast(attackerAsPlayer, null); // Set auto-cast to default; 0
                 WeaponInterfaces.updateWeaponInterface(attackerAsPlayer); //Update the weapon interface
-            }
-
-            if (attackerAsPlayer.getEquipment().wearingBeginnerWeapon()) {
-                var hitsLeft = attackerAsPlayer.<Integer>getAttribOr(STARTER_WEAPON_DAMAGE, 500) - 1;
-                attackerAsPlayer.putAttrib(STARTER_WEAPON_DAMAGE, hitsLeft);
-
-                Item weapon = attackerAsPlayer.getEquipment().getWeapon();
-                if (weapon != null && hitsLeft == 100)
-                    attackerAsPlayer.message(Color.RED.wrap("You have 100 hits left on your " + weapon.name() + "."));
-                if (weapon != null && hitsLeft == 50)
-                    attackerAsPlayer.message(Color.RED.wrap("You have 50 hits left on your " + weapon.name() + "."));
-                if (weapon != null && hitsLeft == 25)
-                    attackerAsPlayer.message(Color.RED.wrap("You have 25 hits left on your " + weapon.name() + "."));
-
-                if (weapon != null && hitsLeft <= 0) {
-                    attackerAsPlayer.message(Color.RED.wrap("Your " + weapon.name() + " crumbles to dust."));
-                    attackerAsPlayer.getEquipment().remove(weapon, EquipSlot.WEAPON, true);
-
-                    //Always reset ranged weapon when unequipping weapon
-                    if (attackerAsPlayer.getCombat().getRangedWeapon() != null) {
-                        attackerAsPlayer.getCombat().setRangedWeapon(null);
-                    }
-                }
             }
 
             if (target.isNpc()) {

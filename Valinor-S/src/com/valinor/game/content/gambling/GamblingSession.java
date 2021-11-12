@@ -298,11 +298,6 @@ public class GamblingSession {
             return;
         }
 
-        if (requestee.mode().isDarklord()) {
-            player.message("That player is an darklord and can not gamble.");
-            return;
-        }
-
         if (player.getUsername().equalsIgnoreCase("Box test")) {
             player.message("This account can't gamble other players.");
             return;

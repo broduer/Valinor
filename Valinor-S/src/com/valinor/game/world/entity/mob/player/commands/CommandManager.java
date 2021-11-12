@@ -129,11 +129,6 @@ public class CommandManager {
         commands.put("newtask", new NewTaskCommand());
 
         /*
-         * Youtuber commands
-         */
-        commands.put("youtuber", new YoutuberCommand());
-
-        /*
         * Support commands
          */
         commands.put("teleto", new TeleToPlayerCommand());
@@ -212,7 +207,6 @@ public class CommandManager {
         /*
          * Dev commands
          */
-        commands.put("box", new MysteryBoxCommand());
         commands.put("disabletp", new DisableTradingPostCommand());
         commands.put("disabletplisting", new DisableTpItemListingCommand());
         commands.put("infhp", new InvulnerableCommand());
@@ -295,7 +289,6 @@ public class CommandManager {
         commands.put("csw", new CheckServerWealthCommand());
         commands.put("kickall", new KickAllCommand());
         commands.put("setstaffonlylogin", new SetStaffOnlyLoginCommand());
-        commands.put("reset", new EcoResetCommand());
         commands.put("tradepost", new TradingPostCommand());
         LazyCommands.init();
         KtCommands.INSTANCE.init();

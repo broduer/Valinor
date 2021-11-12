@@ -193,11 +193,6 @@ public enum TimerKey {
     FARMING_GUILD_HERBS(48),
 
     /**
-     * Key used to manage the special teleblock timer that isn't removed on logout
-     */
-    SPECIAL_TELEBLOCK(49, false),
-
-    /**
      * Key used to manage the teleblock immunity timer
      */
     TELEBLOCK_IMMUNITY(50, false);

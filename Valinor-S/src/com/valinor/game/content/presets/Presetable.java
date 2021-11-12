@@ -40,11 +40,6 @@ public class Presetable {
      */
     private final int index;
 
-    /**
-     * Is this a global preset?
-     */
-    private final boolean isGlobal;
-
     public Item[] getRunePouch() {
         return runePouch;
     }
@@ -66,14 +61,13 @@ public class Presetable {
      * @param runePouch
      */
     public Presetable(String name, int index, Item[] inventory, Item[] equipment, int[] stats,
-                      MagicSpellbook spellbook, boolean isGlobal, Item[] runePouch) {
+                      MagicSpellbook spellbook, Item[] runePouch) {
         this.name = name;
         this.inventory = inventory;
         this.equipment = equipment;
         this.stats = stats;
         this.spellbook = spellbook;
         this.index = index;
-        this.isGlobal = isGlobal;
         this.runePouch = runePouch;
     }
 
@@ -115,10 +109,6 @@ public class Presetable {
 
     public void setSpellbook(MagicSpellbook spellbook) {
         this.spellbook = spellbook;
-    }
-
-    public boolean isGlobal() {
-        return isGlobal;
     }
 
     public int getIndex() {

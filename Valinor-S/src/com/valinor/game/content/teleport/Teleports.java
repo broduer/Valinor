@@ -50,14 +50,6 @@ public class Teleports {
             return false;
         }
 
-        if (player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
-            if(inform) {
-                long millis = player.getTimers().left(TimerKey.SPECIAL_TELEBLOCK) * 600L;
-                player.message(String.format("A teleport block has been cast on you. It should wear off in %d minutes, %d seconds.", TimeUnit.MILLISECONDS.toMinutes(millis), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
-            }
-            return false;
-        }
-
         if (player.getTimers().has(TimerKey.TELEBLOCK)) {
             if (inform) {
                 player.teleblockMessage();

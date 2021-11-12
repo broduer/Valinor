@@ -1,12 +1,10 @@
 package com.valinor.game.content.areas.edgevile;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -14,7 +12,6 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 
 import static com.valinor.game.world.entity.dialogue.Expression.HAPPY;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**

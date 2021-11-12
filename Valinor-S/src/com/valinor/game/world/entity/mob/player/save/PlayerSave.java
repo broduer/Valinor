@@ -21,7 +21,6 @@ import com.valinor.game.world.entity.mob.player.rights.MemberRights;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
-import com.valinor.util.timers.TimerKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mindrot.BCrypt;
@@ -120,14 +119,13 @@ public class PlayerSave {
                     player.setPlayerRights(PlayerRights.valueOf(details.playerRights));
                 if (details.memberRights != null)
                     player.setMemberRights(MemberRights.valueOf(details.memberRights));
-                if (details.gameMode != null)
-                    player.mode(details.gameMode);
+                if (details.expMode != null)
+                    player.expmode(details.expMode);
                 if (details.ironMode == null) {
                     player.ironMode(IronMode.NONE);
                 } else {
                     player.ironMode(details.ironMode);
                 }
-                player.putAttrib(DARK_LORD_LIVES, details.darkLordLives);
                 if(details.lastIP != null) {
                     player.setHostAddress(details.lastIP);
                 }
@@ -145,23 +143,13 @@ public class PlayerSave {
                 if (details.lastLogin != null)
                     player.setLastLogin(details.lastLogin);
                 player.putAttrib(MUTED, details.muted);
-                player.putAttrib(YOUTUBER_BM_CLAIM, details.lastBMClaim);
-                player.putAttrib(COMBAT_MAXED, details.isCombatMaxed);
-                player.putAttrib(STARTER_WEAPON_DAMAGE, details.starterWeaponDamage);
                 player.putAttrib(NEW_ACCOUNT, details.newPlayer);
                 player.putAttrib(IS_BETA_TESTER, details.isBetaTester);
                 player.putAttrib(VETERAN, details.veteran);
-                player.putAttrib(VETERAN_GIFT_CLAIMED, details.veteranGiftClaimed);
-                player.putAttrib(PLAYTIME_GIFT_CLAIMED, details.playtimeGiftClaimed);
                 player.putAttrib(GAMBLER, details.gambler);
                 player.putAttrib(STARTER_BOX_CLAIMED, details.starterboxClaimed);
-                player.putAttrib(CLAN_BOX_OPENED, details.clanBoxOpened);
                 player.putAttrib(PROMO_CODE_CLAIMED, details.promoCodeClaimed);
                 player.putAttrib(RECEIVED_MONTHLY_SPONSOR_REWARDS, details.receivedMonthlySponsorRewards);
-                player.putAttrib(TOP_PKER_REWARD_UNCLAIMED, details.receivedTopPkerReward);
-                player.putAttrib(TOP_PKER_POSITION, details.topPkerPosition);
-                if (details.topPkerReward != null)
-                    player.putAttrib(TOP_PKER_REWARD, details.topPkerReward);
                 player.looks().female(details.female);
                 if (details.looks != null)
                     player.looks().looks(details.looks);
@@ -196,7 +184,6 @@ public class PlayerSave {
                 if (details.lastPreset != null) {
                     player.setLastPreset(details.lastPreset);
                 }
-                player.getTimers().register(TimerKey.SPECIAL_TELEBLOCK, details.specialTeleblockTimer);
                 player.putAttrib(TOTAL_PAYMENT_AMOUNT, details.totalAmountPaid);
                 player.putAttrib(PROMO_PAYMENT_AMOUNT, details.promoPaymentAmount);
                 player.putAttrib(PROMO_ITEMS_UNLOCKED, details.promoItemsClaimed);
@@ -284,14 +271,14 @@ public class PlayerSave {
                 if (details.nifflerItems != null) {
                     player.putAttrib(NIFFLER_ITEMS_STORED, details.nifflerItems);
                 }
-                if (details.newFriends == null)
-                    details.newFriends = new ArrayList<>(200);
-                for (String friend : details.newFriends) {
+                if (details.friends == null)
+                    details.friends = new ArrayList<>(200);
+                for (String friend : details.friends) {
                     player.getRelations().getFriendList().add(friend);
                 }
-                if (details.newIgnores == null)
-                    details.newIgnores = new ArrayList<>(100);
-                for (String ignore : details.newIgnores) {
+                if (details.ignores == null)
+                    details.ignores = new ArrayList<>(100);
+                for (String ignore : details.ignores) {
                     player.getRelations().getIgnoreList().add(ignore);
                 }
                 if (details.clan != null)
@@ -313,7 +300,6 @@ public class PlayerSave {
                 player.putAttrib(SGS_GFX_GOLD, details.gold_sgs_spec);
                 player.putAttrib(ZGS_GFX_GOLD, details.gold_zgs_spec);
                 player.putAttrib(XP_LOCKED, details.xpLocked);
-                player.putAttrib(LEVEL_UP_INTERFACE, details.levelUpMessages);
                 player.putAttrib(DEBUG_MESSAGES, details.enableDebugMessages);
                 player.getPresetManager().setSaveLevels(details.savePresetLevels);
                 player.getPresetManager().setOpenOnDeath(details.openPresetsOnDeath);
@@ -324,8 +310,6 @@ public class PlayerSave {
                 player.putAttrib(VOTE_POINS, details.votePoints);
                 player.putAttrib(AttributeKey.PEST_CONTROL_POINTS, details.pestControlPoints);
                 player.putAttrib(SLAYER_REWARD_POINTS, details.slayerRewardPoints);
-                player.putAttrib(TARGET_POINTS, details.targetPoints);
-                player.putAttrib(ELO_RATING, details.eloRating);
                 player.putAttrib(BOSS_POINTS, details.bossPoints);
                 player.putAttrib(BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, details.teleportToTargetUnlocked);
                 player.putAttrib(PRESERVE, details.preserve);
@@ -467,63 +451,6 @@ public class PlayerSave {
                 player.putAttrib(SUPER_ANTIFIRE_POTION, details.superAntiFire);
                 player.putAttrib(LARRANS_KEYS_TIER_ONE_USED, details.larranKeysUsed);
                 player.putAttrib(EARNING_POTENTIAL, details.earningPotential);
-                player.putAttrib(ARMADYL_GODSWORD_OR_ATTEMPTS, details.enchantedAGSAttempts);
-                player.putAttrib(BANDOS_GODSWORD_OR_ATTEMPTS, details.enchantedBGSAttempts);
-                player.putAttrib(SARADOMIN_GODSWORD_OR_ATTEMPTS, details.enchantedSGSAttempts);
-                player.putAttrib(ZAMORAK_GODSWORD_OR_ATTEMPTS, details.enchantedZGSAttempts);
-                player.putAttrib(FURY_OR_ATTEMPTS, details.enchantedFuryAttempts);
-                player.putAttrib(OCCULT_OR_ATTEMPTS, details.enchantedOccultAttempts);
-                player.putAttrib(TORTURE_OR_ATTEMPTS, details.enchantedTortureAttempts);
-                player.putAttrib(ANGUISH_OR_ATTEMPTS, details.enchantedAnguishAttempts);
-                player.putAttrib(BERSERKER_NECKLACE_OR_ATTEMPTS, details.enchantedBNeckAttempts);
-                player.putAttrib(TORMENTED_BRACELET_OR_ATTEMPTS, details.enchantedTBraceAttempts);
-                player.putAttrib(GRANITE_MAUL_OR_ATTEMPTS, details.enchantedGmaulAttempts);
-                player.putAttrib(DRAGON_DEFENDER_T_ATTEMPTS, details.enchantedDDefAttempts);
-                player.putAttrib(DRAGON_BOOTS_G_ATTEMPTS, details.enchantedDBootsAttempts);
-                player.putAttrib(RUNE_POUCH_I_ATTEMPTS, details.enchantedRunePouchAttempts);
-                player.putAttrib(DRAGON_CLAWS_OR_ATTEMPTS, details.enchantedDClawsAttempts);
-                player.putAttrib(RING_OF_MANHUNTING_ATTEMPTS, details.enchantedROMAttempts);
-                player.putAttrib(RING_OF_SORCERY_ATTEMPTS, details.enchantedROSAttempts);
-                player.putAttrib(RING_OF_PRECISION_ATTEMPTS, details.enchantedROPAttempts);
-                player.putAttrib(RING_OF_TRINITY_ATTEMPTS, details.enchantedROTAttempts);
-                player.putAttrib(SLAYER_HELMET_I_ATTEMPTS, details.enchantedSlayerHelmIAttempts);
-                player.putAttrib(GREEN_SLAYER_HELMET_I_ATTEMPTS, details.enchantedGreenSlayerHelmIAttempts);
-                player.putAttrib(TURQUOISE_SLAYER_HELMET_I_ATTEMPTS, details.enchantedTurquoiseSlayerHelmIAttempts);
-                player.putAttrib(RED_SLAYER_HELMET_I_ATTEMPTS, details.enchantedRedSlayerHelmIAttempts);
-                player.putAttrib(BLACK_SLAYER_HELMET_I_ATTEMPTS, details.enchantedBlackSlayerHelmIAttempts);
-                player.putAttrib(TWISTED_SLAYER_HELMET_I_ATTEMPTS, details.enchantedTwistedSlayerHelmIAttempts);
-                player.putAttrib(LARRANS_KEY_II_ATTEMPTS, details.larransKeyIIAttempts);
-                player.putAttrib(LARRANS_KEY_III_ATTEMPTS, details.larransKeyIIIAttempts);
-                player.putAttrib(MAGMA_BLOWPIPE_ATTEMPTS, details.blowpipeAttempts);
-                player.putAttrib(SANGUINE_TWISTED_BOW_ATTEMTPS, details.twistedBowAttempts);
-                player.putAttrib(ANCESTRAL_HAT_I_ATTEMPTS, details.ancestralHatAttempts);
-                player.putAttrib(ANCESTRAL_ROBE_TOP_I_ATTEMPTS, details.ancestralTopAttempts);
-                player.putAttrib(ANCESTRAL_ROBE_BOTTOM_I_ATTEMPTS, details.ancestralBottomAttempts);
-                player.putAttrib(PRIMORDIAL_BOOTS_OR_ATTEMPTS, details.primordialBootsAttempts);
-                player.putAttrib(INFERNAL_CAPE_ATTEMPTS, details.infernalCapeAttempts);
-                player.putAttrib(HOLY_SANGUINESTI_STAFF_ATTEMPTS, details.sanguistiStaffAttempts);
-                player.putAttrib(HOLY_GHRAZI_RAPIER_ATTEMPTS, details.ghraziRapierAttempts);
-                player.putAttrib(SANGUINE_SCYTHE_OF_VITUR_ATTEMPTS, details.scytheOfViturAttempts);
-                player.putAttrib(PEGASIAN_BOOTS_OR_ATTEMPTS, details.pegasianBootsAttempts);
-                player.putAttrib(ETERNAL_BOOTS_OR_ATTEMPTS, details.eternalBootsAttempts);
-                player.putAttrib(CORRUPTED_VIGGORAS_CHAINMACE_ATTEMPTS, details.viggorasChainmaceAttempts);
-                player.putAttrib(CORRUPTED_CRAWS_BOW_ATTEMPTS, details.crawsBowAttempts);
-                player.putAttrib(CORRUPTED_THAMMARONS_STAFF_ATTEMPTS, details.thammaronsStaffAttempts);
-                player.putAttrib(CORRUPTED_BOOTS_ATTEMTPS, details.corruptedBootsAttempts);
-                player.putAttrib(ANCIENT_FACEGUARD_ATTEMPTS, details.ancientFaceguardAttempts);
-                player.putAttrib(TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, details.toxicStaffOfTheDeadAttempts);
-                player.putAttrib(ARMOUR_MYSTERY_BOXES_OPENED, details.armourMysteryBoxesOpened);
-                player.putAttrib(DONATOR_MYSTERY_BOXES_OPENED, details.donatorMysteryBoxesOpened);
-                player.putAttrib(LEGENDARY_MYSTERY_BOXES_OPENED, details.legendaryMysteryBoxesOpened);
-                player.putAttrib(PET_MYSTERY_BOXES_OPENED, details.petMysteryBoxesOpened);
-                player.putAttrib(REGULAR_MYSTERY_BOXES_OPENED, details.regularMysteryBoxesOpened);
-                player.putAttrib(WEAPON_MYSTERY_BOXES_OPENED, details.weaponMysteryBoxesOpened);
-                player.putAttrib(PRESENT_MYSTERY_BOXES_OPENED, details.presentMysteryBoxesOpened);
-                player.putAttrib(EPIC_PET_MYSTERY_BOXES_OPENED, details.epicPetMysteryBoxesOpened);
-                player.putAttrib(RAIDS_MYSTERY_BOXES_OPENED, details.raidsMysteryBoxesOpened);
-                player.putAttrib(ZENYTE_MYSTERY_BOXES_OPENED, details.zenyteMysteryBoxesOpened);
-                player.putAttrib(MYSTERY_CHESTS_OPENED, details.mysteryChestsOpened);
-                player.putAttrib(TOTAL_RARES_FROM_MYSTERY_BOX, details.raresFromMysteryBox);
                 player.putAttrib(SLAYER_KEYS_OPENED, details.slayerKeysOpened);
                 player.putAttrib(SLAYER_KEYS_RECEIVED, details.slayerKeysReceived);
                 player.putAttrib(DOUBLE_EXP_TICKS, details.doubleExpTicks);
@@ -636,20 +563,6 @@ public class PlayerSave {
                 player.putAttrib(VORKATH_LOG_CLAIMED, details.vorkathLogClaimed);
                 player.putAttrib(ZOMBIES_CHAMPION_LOG_CLAIMED, details.zombiesChampionLogClaimed);
                 player.putAttrib(ZULRAH_LOG_CLAIMED, details.zulrahLogClaimed);
-                player.putAttrib(ARMOUR_MYSTERY_BOX_LOG_CLAIMED, details.armourMysteryBoxLogClaimed);
-                player.putAttrib(DONATOR_MYSTERY_BOX_LOG_CLAIMED, details.donatorMysteryBoxLogClaimed);
-                player.putAttrib(EPIC_PET_MYSTERY_BOX_LOG_CLAIMED, details.epicPetMysteryBoxLogClaimed);
-                player.putAttrib(MYSTERY_CHEST_LOG_CLAIMED, details.mysteryChestLogClaimed);
-                player.putAttrib(RAIDS_MYSTERY_BOX_LOG_CLAIMED, details.raidsMysteryBoxLogClaimed);
-                player.putAttrib(WEAPON_MYSTERY_BOX_LOG_CLAIMED, details.weaponMysteryBoxLogClaimed);
-                player.putAttrib(LEGENDARY_MYSTERY_BOX_LOG_CLAIMED, details.legendaryMysteryBoxLogClaimed);
-                player.putAttrib(ZENYTE_MYSTERY_BOX_LOG_CLAIMED, details.zenyteLogClaimed);
-                player.putAttrib(CRYSTAL_KEY_LOG_CLAIMED, details.crystalKeyLogClaimed);
-                player.putAttrib(LARRANS_KEY_TIER_I_LOG_CLAIMED, details.larransKeyTierILogClaimed);
-                player.putAttrib(LARRANS_KEY_TIER_II_LOG_CLAIMED, details.larransKeyTierIILogClaimed);
-                player.putAttrib(LARRANS_KEY_TIER_III_LOG_CLAIMED, details.larransKeyTierIIILogClaimed);
-                player.putAttrib(SLAYER_KEY_LOG_CLAIMED, details.slayerKeyLogClaimed);
-                player.putAttrib(WILDERNESS_KEY_LOG_CLAIMED, details.wildernessKeyLogClaimed);
                 player.putAttrib(ANCIENT_REVENANTS_LOG_CLAIMED, details.ancientRevenantsLogClaimed);
                 player.putAttrib(CHAMBER_OF_SECRETS_LOG_CLAIMED, details.chamberOfSecretsLogClaimed);
                 player.putAttrib(REVENANTS_LOG_CLAIMED, details.revenantsLogClaimed);
@@ -703,7 +616,7 @@ public class PlayerSave {
                 player.putAttrib(EVENT_REWARD_44_CLAIMED, details.eventReward44Claimed);
                 player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, details.hweenEventTokensSpent);
                 player.putAttrib(HERB_BOX_CHARGES, details.herbBoxCharges);
-                player.putAttrib(CLAIMED_DONATOR_REWARDS, details.claimedDonatorRewards);
+                player.putAttrib(COMBAT_MAXED, details.combatMaxed);
                 return true;
             }
         }
@@ -719,9 +632,8 @@ public class PlayerSave {
         private final boolean running;
         private final String playerRights;
         private final String memberRights;
-        private final GameMode gameMode;
+        private final ExpMode expMode;
         private final IronMode ironMode;
-        private final int darkLordLives;
         private final String lastIP;
         private final String mac;
         private final int accountPin;
@@ -732,22 +644,13 @@ public class PlayerSave {
         private final String creationIp;
         private final Timestamp lastLogin;
         private final boolean muted;
-        private final long lastBMClaim;
-        private final boolean isCombatMaxed;
-        private final int starterWeaponDamage;
         private final boolean newPlayer;
         private final boolean isBetaTester;
         private final boolean veteran;
-        private final boolean veteranGiftClaimed;
-        private final boolean playtimeGiftClaimed;
         private final boolean gambler;
         private final boolean starterboxClaimed;
-        private final boolean clanBoxOpened;
         private final boolean promoCodeClaimed;
         private final boolean receivedMonthlySponsorRewards;
-        private final boolean receivedTopPkerReward;
-        private final int topPkerPosition;
-        private final Item topPkerReward;
         private final boolean female;
         private final int[] looks;
         private final int[] colors;
@@ -770,7 +673,6 @@ public class PlayerSave {
         private final DefaultPrayerData[] quickPrayers;
         private final Presetable[] presets;
         private final Object[] lastPreset;
-        private final int specialTeleblockTimer;
 
         //Member attribs
         private final double totalAmountPaid;
@@ -824,10 +726,10 @@ public class PlayerSave {
         private final ArrayList<Item> cartItems;
 
         //Friends
-        private List<String> newFriends;
+        private List<String> friends;
 
         //Ignores
-        private List<String> newIgnores;
+        private List<String> ignores;
 
         //Clan
         private final String clan;
@@ -844,7 +746,6 @@ public class PlayerSave {
         private final boolean gold_sgs_spec;
         private final boolean gold_zgs_spec;
         private final boolean xpLocked;
-        private final boolean levelUpMessages;
         private final boolean enableDebugMessages;
         private final boolean savePresetLevels;
         private final boolean openPresetsOnDeath;
@@ -855,8 +756,6 @@ public class PlayerSave {
         private final int votePoints;
         private final int pestControlPoints;
         private final int slayerRewardPoints;
-        private final int targetPoints;
-        private final int eloRating;
         private final int bossPoints;
 
         //Unlocks
@@ -991,64 +890,6 @@ public class PlayerSave {
         private final int larranKeysUsed;
         private final int earningPotential;
 
-        private final int enchantedAGSAttempts;
-        private final int enchantedBGSAttempts;
-        private final int enchantedSGSAttempts;
-        private final int enchantedZGSAttempts;
-        private final int enchantedFuryAttempts;
-        private final int enchantedOccultAttempts;
-        private final int enchantedTortureAttempts;
-        private final int enchantedAnguishAttempts;
-        private final int enchantedBNeckAttempts;
-        private final int enchantedGmaulAttempts;
-        private final int enchantedTBraceAttempts;
-        private final int enchantedDDefAttempts;
-        private final int enchantedDBootsAttempts;
-        private final int enchantedRunePouchAttempts;
-        private final int enchantedDClawsAttempts;
-        private final int enchantedROMAttempts;
-        private final int enchantedROSAttempts;
-        private final int enchantedROPAttempts;
-        private final int enchantedROTAttempts;
-        private final int enchantedSlayerHelmIAttempts;
-        private final int enchantedGreenSlayerHelmIAttempts;
-        private final int enchantedTurquoiseSlayerHelmIAttempts;
-        private final int enchantedRedSlayerHelmIAttempts;
-        private final int enchantedBlackSlayerHelmIAttempts;
-        private final int enchantedTwistedSlayerHelmIAttempts;
-        private final int larransKeyIIAttempts;
-        private final int larransKeyIIIAttempts;
-        private final int blowpipeAttempts;
-        private final int twistedBowAttempts;
-        private final int ancestralHatAttempts;
-        private final int ancestralTopAttempts;
-        private final int ancestralBottomAttempts;
-        private final int primordialBootsAttempts;
-        private final int infernalCapeAttempts;
-        private final int sanguistiStaffAttempts;
-        private final int ghraziRapierAttempts;
-        private final int scytheOfViturAttempts;
-        private final int pegasianBootsAttempts;
-        private final int eternalBootsAttempts;
-        private final int viggorasChainmaceAttempts;
-        private final int crawsBowAttempts;
-        private final int thammaronsStaffAttempts;
-        private final int corruptedBootsAttempts;
-        private final int ancientFaceguardAttempts;
-        private final int toxicStaffOfTheDeadAttempts;
-
-        private final int armourMysteryBoxesOpened;
-        private final int donatorMysteryBoxesOpened;
-        private final int legendaryMysteryBoxesOpened;
-        private final int petMysteryBoxesOpened;
-        private final int regularMysteryBoxesOpened;
-        private final int weaponMysteryBoxesOpened;
-        private final int presentMysteryBoxesOpened;
-        private final int epicPetMysteryBoxesOpened;
-        private final int raidsMysteryBoxesOpened;
-        private final int zenyteMysteryBoxesOpened;
-        private final int mysteryChestsOpened;
-        private final int raresFromMysteryBox;
         private final int slayerKeysOpened;
         private final int slayerKeysReceived;
 
@@ -1187,20 +1028,6 @@ public class PlayerSave {
         private final boolean vorkathLogClaimed;
         private final boolean zombiesChampionLogClaimed;
         private final boolean zulrahLogClaimed;
-        private final boolean armourMysteryBoxLogClaimed;
-        private final boolean donatorMysteryBoxLogClaimed;
-        private final boolean epicPetMysteryBoxLogClaimed;
-        private final boolean mysteryChestLogClaimed;
-        private final boolean raidsMysteryBoxLogClaimed;
-        private final boolean weaponMysteryBoxLogClaimed;
-        private final boolean legendaryMysteryBoxLogClaimed;
-        private final boolean zenyteLogClaimed;
-        private final boolean crystalKeyLogClaimed;
-        private final boolean larransKeyTierILogClaimed;
-        private final boolean larransKeyTierIILogClaimed;
-        private final boolean larransKeyTierIIILogClaimed;
-        private final boolean slayerKeyLogClaimed;
-        private final boolean wildernessKeyLogClaimed;
         private final boolean ancientRevenantsLogClaimed;
         private final boolean chamberOfSecretsLogClaimed;
         private final boolean revenantsLogClaimed;
@@ -1254,7 +1081,7 @@ public class PlayerSave {
         private final boolean eventReward44Claimed;
         private final int hweenEventTokensSpent;
         private final int herbBoxCharges;
-        private final boolean claimedDonatorRewards;
+        private final boolean combatMaxed;
 
         public String password() {
             return password;
@@ -1279,9 +1106,8 @@ public class PlayerSave {
             running = Player.getAttribBooleanOr(player, IS_RUNNING, false);
             playerRights = player.getPlayerRights().name();
             memberRights = player.getMemberRights().name();
-            gameMode = player.mode();
+            expMode = player.expmode();
             ironMode = player.ironMode();
-            darkLordLives = Player.getAttribIntOr(player, DARK_LORD_LIVES,3);
             lastIP = player.getHostAddress();
             mac = player.getAttribOr(MAC_ADDRESS, "invalid");
             accountPin = Player.getAttribIntOr(player, ACCOUNT_PIN,0);
@@ -1292,22 +1118,13 @@ public class PlayerSave {
             creationIp = player.getCreationIp();
             lastLogin = player.getLastLogin();
             muted = Player.getAttribBooleanOr(player, MUTED, false);
-            isCombatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
-            lastBMClaim = Player.getAttribLongOr(player, YOUTUBER_BM_CLAIM, 0L);
-            starterWeaponDamage = Player.getAttribIntOr(player, STARTER_WEAPON_DAMAGE,0);
             newPlayer = Player.getAttribBooleanOr(player, NEW_ACCOUNT, false);
             isBetaTester = Player.getAttribBooleanOr(player, IS_BETA_TESTER, false);
             veteran = Player.getAttribBooleanOr(player, VETERAN, false);
-            veteranGiftClaimed = Player.getAttribBooleanOr(player, VETERAN_GIFT_CLAIMED, false);
-            playtimeGiftClaimed = Player.getAttribBooleanOr(player, PLAYTIME_GIFT_CLAIMED, false);
             gambler = Player.getAttribBooleanOr(player, GAMBLER, false);
             starterboxClaimed = Player.getAttribBooleanOr(player, STARTER_BOX_CLAIMED, false);
-            clanBoxOpened = Player.getAttribBooleanOr(player, CLAN_BOX_OPENED, false);
             promoCodeClaimed = Player.getAttribBooleanOr(player, PROMO_CODE_CLAIMED, false);
             receivedMonthlySponsorRewards = Player.getAttribBooleanOr(player, RECEIVED_MONTHLY_SPONSOR_REWARDS, false);
-            receivedTopPkerReward = Player.getAttribBooleanOr(player, TOP_PKER_REWARD_UNCLAIMED, false);
-            topPkerPosition = Player.getAttribIntOr(player, TOP_PKER_POSITION, 0);
-            topPkerReward = player.<Item>getAttribOr(TOP_PKER_REWARD, null);
             female = player.looks().female();
             looks = player.looks().looks();
             colors = player.looks().colors();
@@ -1328,7 +1145,6 @@ public class PlayerSave {
             quickPrayers = player.getQuickPrayers().getPrayers();
             presets = player.getPresets();
             lastPreset = player.getLastPreset();
-            specialTeleblockTimer = player.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
             totalAmountPaid = Player.getAttribDoubleOr(player, TOTAL_PAYMENT_AMOUNT, 0D);
             promoPaymentAmount = Player.getAttribDoubleOr(player, PROMO_PAYMENT_AMOUNT, 0D);
             promoItemsClaimed = Player.getAttribIntOr(player, PROMO_ITEMS_UNLOCKED, 0);
@@ -1373,8 +1189,8 @@ public class PlayerSave {
             totalCartValue = Player.getAttribIntOr(player, CART_ITEMS_TOTAL_VALUE, 0);
             cartItems = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
             nifflerItems = player.<ArrayList<Item>>getAttribOr(NIFFLER_ITEMS_STORED, new ArrayList<Item>());
-            newFriends = player.getRelations().getFriendList();
-            newIgnores = player.getRelations().getIgnoreList();
+            friends = player.getRelations().getFriendList();
+            ignores = player.getRelations().getIgnoreList();
             clan = player.getClanChat();
             yellColour = Player.getAttribStringOr(player, YELL_COLOUR, "000000");
             dontAskAgainEldritch = Player.getAttribBooleanOr(player, ELDRITCH_NIGHTMARE_STAFF_QUESTION, false);
@@ -1387,7 +1203,6 @@ public class PlayerSave {
             gold_sgs_spec = Player.getAttribBooleanOr(player, SGS_GFX_GOLD, false);
             gold_zgs_spec = Player.getAttribBooleanOr(player, ZGS_GFX_GOLD, false);
             xpLocked = Player.getAttribBooleanOr(player, XP_LOCKED, false);
-            levelUpMessages = Player.getAttribBooleanOr(player, LEVEL_UP_INTERFACE, true);
             enableDebugMessages = Player.getAttribBooleanOr(player, DEBUG_MESSAGES, true);
             savePresetLevels = player.getPresetManager().saveLevels();
             openPresetsOnDeath = player.getPresetManager().openOnDeath();
@@ -1396,8 +1211,6 @@ public class PlayerSave {
             votePoints = Player.getAttribIntOr(player, VOTE_POINS, 0);
             pestControlPoints = Player.getAttribIntOr(player, AttributeKey.PEST_CONTROL_POINTS, 0);
             slayerRewardPoints = Player.getAttribIntOr(player, SLAYER_REWARD_POINTS, 0);
-            targetPoints = Player.getAttribIntOr(player, TARGET_POINTS, 0);
-            eloRating = Player.getAttribIntOr(player, ELO_RATING, 1300);
             bossPoints = Player.getAttribIntOr(player, BOSS_POINTS, 0);
             teleportToTargetUnlocked = Player.getAttribBooleanOr(player, BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, false);
             preserve = Player.getAttribBooleanOr(player, PRESERVE, false);
@@ -1523,63 +1336,6 @@ public class PlayerSave {
             superAntiFire = Player.getAttribBooleanOr(player, SUPER_ANTIFIRE_POTION, false);
             larranKeysUsed = Player.getAttribIntOr(player, LARRANS_KEYS_TIER_ONE_USED, 0);
             earningPotential = Player.getAttribIntOr(player, EARNING_POTENTIAL, 0);
-            enchantedAGSAttempts = Player.getAttribIntOr(player, ARMADYL_GODSWORD_OR_ATTEMPTS, 0);
-            enchantedBGSAttempts = Player.getAttribIntOr(player, BANDOS_GODSWORD_OR_ATTEMPTS, 0);
-            enchantedSGSAttempts = Player.getAttribIntOr(player, SARADOMIN_GODSWORD_OR_ATTEMPTS, 0);
-            enchantedZGSAttempts = Player.getAttribIntOr(player, ZAMORAK_GODSWORD_OR_ATTEMPTS, 0);
-            enchantedFuryAttempts = Player.getAttribIntOr(player, FURY_OR_ATTEMPTS, 0);
-            enchantedOccultAttempts = Player.getAttribIntOr(player, OCCULT_OR_ATTEMPTS, 0);
-            enchantedTortureAttempts = Player.getAttribIntOr(player, TORTURE_OR_ATTEMPTS, 0);
-            enchantedAnguishAttempts = Player.getAttribIntOr(player, ANGUISH_OR_ATTEMPTS, 0);
-            enchantedBNeckAttempts = Player.getAttribIntOr(player, BERSERKER_NECKLACE_OR_ATTEMPTS, 0);
-            enchantedGmaulAttempts = Player.getAttribIntOr(player, GRANITE_MAUL_OR_ATTEMPTS, 0);
-            enchantedTBraceAttempts = Player.getAttribIntOr(player, TORMENTED_BRACELET_OR_ATTEMPTS, 0);
-            enchantedDDefAttempts = Player.getAttribIntOr(player, DRAGON_DEFENDER_T_ATTEMPTS, 0);
-            enchantedDBootsAttempts = Player.getAttribIntOr(player, DRAGON_BOOTS_G_ATTEMPTS, 0);
-            enchantedRunePouchAttempts = Player.getAttribIntOr(player, RUNE_POUCH_I_ATTEMPTS, 0);
-            enchantedDClawsAttempts = Player.getAttribIntOr(player, DRAGON_CLAWS_OR_ATTEMPTS, 0);
-            enchantedROMAttempts = Player.getAttribIntOr(player, RING_OF_MANHUNTING_ATTEMPTS, 0);
-            enchantedROSAttempts = Player.getAttribIntOr(player, RING_OF_SORCERY_ATTEMPTS, 0);
-            enchantedROPAttempts = Player.getAttribIntOr(player, RING_OF_PRECISION_ATTEMPTS, 0);
-            enchantedROTAttempts = Player.getAttribIntOr(player, RING_OF_TRINITY_ATTEMPTS, 0);
-            enchantedSlayerHelmIAttempts = Player.getAttribIntOr(player, SLAYER_HELMET_I_ATTEMPTS, 0);
-            enchantedGreenSlayerHelmIAttempts = Player.getAttribIntOr(player, GREEN_SLAYER_HELMET_I_ATTEMPTS, 0);
-            enchantedTurquoiseSlayerHelmIAttempts = Player.getAttribIntOr(player, TURQUOISE_SLAYER_HELMET_I_ATTEMPTS, 0);
-            enchantedRedSlayerHelmIAttempts = Player.getAttribIntOr(player, RED_SLAYER_HELMET_I_ATTEMPTS, 0);
-            enchantedBlackSlayerHelmIAttempts = Player.getAttribIntOr(player, BLACK_SLAYER_HELMET_I_ATTEMPTS, 0);
-            enchantedTwistedSlayerHelmIAttempts = Player.getAttribIntOr(player, TWISTED_SLAYER_HELMET_I_ATTEMPTS, 0);
-            larransKeyIIAttempts = Player.getAttribIntOr(player, LARRANS_KEY_II_ATTEMPTS, 0);
-            larransKeyIIIAttempts = Player.getAttribIntOr(player, LARRANS_KEY_III_ATTEMPTS, 0);
-            blowpipeAttempts = Player.getAttribIntOr(player, MAGMA_BLOWPIPE_ATTEMPTS, 0);
-            twistedBowAttempts = Player.getAttribIntOr(player, SANGUINE_TWISTED_BOW_ATTEMTPS, 0);
-            ancestralHatAttempts = Player.getAttribIntOr(player, ANCESTRAL_HAT_I_ATTEMPTS, 0);
-            ancestralTopAttempts = Player.getAttribIntOr(player, ANCESTRAL_ROBE_TOP_I_ATTEMPTS, 0);
-            ancestralBottomAttempts = Player.getAttribIntOr(player, ANCESTRAL_ROBE_BOTTOM_I_ATTEMPTS, 0);
-            primordialBootsAttempts = Player.getAttribIntOr(player, PRIMORDIAL_BOOTS_OR_ATTEMPTS, 0);
-            infernalCapeAttempts = Player.getAttribIntOr(player, INFERNAL_CAPE_ATTEMPTS, 0);
-            sanguistiStaffAttempts = Player.getAttribIntOr(player, HOLY_SANGUINESTI_STAFF_ATTEMPTS, 0);
-            ghraziRapierAttempts = Player.getAttribIntOr(player, HOLY_GHRAZI_RAPIER_ATTEMPTS, 0);
-            scytheOfViturAttempts = Player.getAttribIntOr(player, SANGUINE_SCYTHE_OF_VITUR_ATTEMPTS, 0);
-            pegasianBootsAttempts = Player.getAttribIntOr(player, PEGASIAN_BOOTS_OR_ATTEMPTS, 0);
-            eternalBootsAttempts = Player.getAttribIntOr(player, ETERNAL_BOOTS_OR_ATTEMPTS, 0);
-            viggorasChainmaceAttempts = Player.getAttribIntOr(player, CORRUPTED_VIGGORAS_CHAINMACE_ATTEMPTS, 0);
-            crawsBowAttempts = Player.getAttribIntOr(player, CORRUPTED_CRAWS_BOW_ATTEMPTS, 0);
-            thammaronsStaffAttempts = Player.getAttribIntOr(player, CORRUPTED_THAMMARONS_STAFF_ATTEMPTS, 0);
-            corruptedBootsAttempts = Player.getAttribIntOr(player, CORRUPTED_BOOTS_ATTEMTPS, 0);
-            ancientFaceguardAttempts = Player.getAttribIntOr(player, ANCIENT_FACEGUARD_ATTEMPTS, 0);
-            toxicStaffOfTheDeadAttempts = Player.getAttribIntOr(player, TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, 0);
-            armourMysteryBoxesOpened = Player.getAttribIntOr(player, ARMOUR_MYSTERY_BOXES_OPENED, 0);
-            donatorMysteryBoxesOpened = Player.getAttribIntOr(player, DONATOR_MYSTERY_BOXES_OPENED, 0);
-            legendaryMysteryBoxesOpened = Player.getAttribIntOr(player, LEGENDARY_MYSTERY_BOXES_OPENED, 0);
-            petMysteryBoxesOpened = Player.getAttribIntOr(player, PET_MYSTERY_BOXES_OPENED, 0);
-            regularMysteryBoxesOpened = Player.getAttribIntOr(player, REGULAR_MYSTERY_BOXES_OPENED, 0);
-            weaponMysteryBoxesOpened = Player.getAttribIntOr(player, WEAPON_MYSTERY_BOXES_OPENED, 0);
-            presentMysteryBoxesOpened = Player.getAttribIntOr(player, PRESENT_MYSTERY_BOXES_OPENED, 0);
-            epicPetMysteryBoxesOpened = Player.getAttribIntOr(player, EPIC_PET_MYSTERY_BOXES_OPENED, 0);
-            raidsMysteryBoxesOpened = Player.getAttribIntOr(player, RAIDS_MYSTERY_BOXES_OPENED, 0);
-            zenyteMysteryBoxesOpened = Player.getAttribIntOr(player, ZENYTE_MYSTERY_BOXES_OPENED, 0);
-            mysteryChestsOpened = Player.getAttribIntOr(player, MYSTERY_CHESTS_OPENED, 0);
-            raresFromMysteryBox = Player.getAttribIntOr(player, TOTAL_RARES_FROM_MYSTERY_BOX, 0);
             slayerKeysOpened = Player.getAttribIntOr(player, SLAYER_KEYS_OPENED, 0);
             slayerKeysReceived = Player.getAttribIntOr(player, SLAYER_KEYS_RECEIVED, 0);
             doubleExpTicks = Player.getAttribIntOr(player, DOUBLE_EXP_TICKS,0);
@@ -1692,20 +1448,6 @@ public class PlayerSave {
             vorkathLogClaimed = Player.getAttribBooleanOr(player, VORKATH_LOG_CLAIMED, false);
             zombiesChampionLogClaimed = Player.getAttribBooleanOr(player, ZOMBIES_CHAMPION_LOG_CLAIMED, false);
             zulrahLogClaimed = Player.getAttribBooleanOr(player, ZULRAH_LOG_CLAIMED, false);
-            armourMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, ARMOUR_MYSTERY_BOX_LOG_CLAIMED, false);
-            donatorMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, DONATOR_MYSTERY_BOX_LOG_CLAIMED, false);
-            epicPetMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, EPIC_PET_MYSTERY_BOX_LOG_CLAIMED, false);
-            mysteryChestLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_CHEST_LOG_CLAIMED, false);
-            raidsMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, RAIDS_MYSTERY_BOX_LOG_CLAIMED, false);
-            weaponMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, WEAPON_MYSTERY_BOX_LOG_CLAIMED, false);
-            legendaryMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, LEGENDARY_MYSTERY_BOX_LOG_CLAIMED, false);
-            zenyteLogClaimed = Player.getAttribBooleanOr(player, ZENYTE_MYSTERY_BOX_LOG_CLAIMED, false);
-            crystalKeyLogClaimed = Player.getAttribBooleanOr(player, CRYSTAL_KEY_LOG_CLAIMED, false);
-            larransKeyTierILogClaimed = Player.getAttribBooleanOr(player, LARRANS_KEY_TIER_I_LOG_CLAIMED, false);
-            larransKeyTierIILogClaimed = Player.getAttribBooleanOr(player, LARRANS_KEY_TIER_II_LOG_CLAIMED, false);
-            larransKeyTierIIILogClaimed = Player.getAttribBooleanOr(player, LARRANS_KEY_TIER_III_LOG_CLAIMED, false);
-            slayerKeyLogClaimed = Player.getAttribBooleanOr(player, SLAYER_KEY_LOG_CLAIMED, false);
-            wildernessKeyLogClaimed = Player.getAttribBooleanOr(player, WILDERNESS_KEY_LOG_CLAIMED, false);
             ancientRevenantsLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_REVENANTS_LOG_CLAIMED, false);
             chamberOfSecretsLogClaimed = Player.getAttribBooleanOr(player, CHAMBER_OF_SECRETS_LOG_CLAIMED, false);
             revenantsLogClaimed = Player.getAttribBooleanOr(player, REVENANTS_LOG_CLAIMED, false);
@@ -1759,7 +1501,7 @@ public class PlayerSave {
             eventReward44Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_44_CLAIMED, false);
             hweenEventTokensSpent = Player.getAttribIntOr(player, HWEEN_EVENT_TOKENS_SPENT, 0);
             herbBoxCharges = Player.getAttribIntOr(player, HERB_BOX_CHARGES, 0);
-            claimedDonatorRewards = Player.getAttribBooleanOr(player, CLAIMED_DONATOR_REWARDS, false);
+            combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
         }
 
         public void parseDetails() throws Exception {

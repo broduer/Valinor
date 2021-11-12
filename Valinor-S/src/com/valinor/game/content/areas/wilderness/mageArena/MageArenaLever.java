@@ -17,7 +17,7 @@ public class MageArenaLever extends PacketInteraction {
             if (obj.getId() == 9706) {
                 player.faceObj(obj);
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }
@@ -41,7 +41,7 @@ public class MageArenaLever extends PacketInteraction {
             //Inside magebank.. to outside
             if (obj.getId() == 9707) {
                 //Check to see if the player is teleblocked
-                if (!player.getTimers().has(TimerKey.TELEBLOCK) || !player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (!player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.lockDelayDamage();
                     player.faceObj(obj);
                     Chain.bound(null).runFn(1, () -> {

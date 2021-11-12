@@ -30,10 +30,6 @@ public class ItemActionTwo {
             return;
         }
 
-        if (player.getMysteryBox().open(item)) {
-            return;
-        }
-
         if(Potions.onItemOption2(player, item)) {
             return;
         }

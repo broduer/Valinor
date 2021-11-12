@@ -68,48 +68,10 @@ public class ItemActionDialogue {
     public static boolean clickButton(Player player, int button) {
         switch (button) {
             case 8874 -> {
-                if (player.<Boolean>getAttribOr(PICKING_PVM_STARTER_WEAPON,false)) {
-                    if(!player.inventory().contains(BEGINNER_WEAPON_PACK)) {
-                       return true;
-                    }
-                    player.inventory().remove(new Item(BEGINNER_WEAPON_PACK));
-                    player.inventory().addOrBank(new Item(BEGINNER_CHAINMACE));
-                    player.putAttrib(STARTER_WEAPON_DAMAGE, 500);
-                    player.getInterfaceManager().close();
-                }
-
-                if (player.<Boolean>getAttribOr(PICKING_PVP_STARTER_WEAPON,false)) {
-                    if(!player.inventory().contains(BEGINNER_WEAPON_PACK)) {
-                        return true;
-                    }
-                    player.inventory().remove(new Item(BEGINNER_WEAPON_PACK));
-                    player.inventory().addOrBank(new Item(BEGINNER_DRAGON_CLAWS));
-                    player.putAttrib(STARTER_WEAPON_DAMAGE, 500);
-                    player.getInterfaceManager().close();
-                }
                 return true;
             }
 
             case 8878 -> {
-                if (player.<Boolean>getAttribOr(PICKING_PVM_STARTER_WEAPON,false)) {
-                    if(!player.inventory().contains(BEGINNER_WEAPON_PACK)) {
-                        return true;
-                    }
-                    player.inventory().remove(new Item(BEGINNER_WEAPON_PACK));
-                    player.inventory().addOrBank(new Item(BEGINNER_CRAWS_BOW));
-                    player.putAttrib(STARTER_WEAPON_DAMAGE, 500);
-                    player.getInterfaceManager().close();
-                }
-
-                if (player.<Boolean>getAttribOr(PICKING_PVP_STARTER_WEAPON,false)) {
-                    if(!player.inventory().contains(BEGINNER_WEAPON_PACK)) {
-                        return true;
-                    }
-                    player.inventory().remove(new Item(BEGINNER_WEAPON_PACK));
-                    player.inventory().addOrBank(new Item(BEGINNER_AGS));
-                    player.putAttrib(STARTER_WEAPON_DAMAGE, 500);
-                    player.getInterfaceManager().close();
-                }
                 return true;
             }
 

@@ -230,11 +230,6 @@ public class Dueling {
             return;
         }
 
-        if (t_.mode().isDarklord()) {
-            player.message("Your partner is an Dark Lord, and cannot stake.");
-            return;
-        }
-
         if (state == DuelState.NONE || state == DuelState.REQUESTED_DUEL) {
 
             //Make sure to not allow flooding!

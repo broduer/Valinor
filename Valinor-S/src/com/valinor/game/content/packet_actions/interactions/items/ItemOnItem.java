@@ -41,10 +41,6 @@ public class ItemOnItem {
             return;
         }
 
-        if(player.getMysteryBox().onItemonItem(use, with)) {
-            return;
-        }
-
         if(PetPaint.paintPet(player, use, with)) {
             return;
         }

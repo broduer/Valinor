@@ -39,7 +39,7 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
-import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -1026,11 +1026,7 @@ public class NpcDeath {
         Item smallCasket = new Item(ItemIdentifiers.CASKET_7956);
         Item bigChest = new Item(CustomItemIdentifiers.BIG_CHEST);
         int combat = killer.skills().combatLevel();
-        int mul;
-
-        if ((killer.mode() == GameMode.TRAINED_ACCOUNT))
-            mul = 2;
-        else mul = 1;
+        int mul = 1;
 
         int chance;
 

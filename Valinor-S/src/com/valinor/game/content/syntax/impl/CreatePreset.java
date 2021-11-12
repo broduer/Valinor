@@ -65,7 +65,7 @@ public class CreatePreset implements EnterSyntax {
             }
             presetLogs.log(PRESET, "Player: "+ player.getUsername() + " successfully made a preset with the following items -> equipment: " + Arrays.toString(equipment)+" inventory: "+ Arrays.toString(inventory));
 
-            player.getPresets()[presetIndex] = new Presetable(input, presetIndex, inventory, equipment, stats, player.getSpellbook(), false, player.getRunePouch().stream().filter(Objects::nonNull).map(Item::copy).toArray(Item[]::new));
+            player.getPresets()[presetIndex] = new Presetable(input, presetIndex, inventory, equipment, stats, player.getSpellbook(), player.getRunePouch().stream().filter(Objects::nonNull).map(Item::copy).toArray(Item[]::new));
             player.setCurrentPreset(player.getPresets()[presetIndex]);
             player.getPresetManager().open();
         }

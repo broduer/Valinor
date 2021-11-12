@@ -24,7 +24,6 @@ import com.valinor.game.content.instance.impl.AlchemicalHydraInstance;
 import com.valinor.game.content.instance.impl.KrakenInstance;
 import com.valinor.game.content.instance.impl.VorkathInstance;
 import com.valinor.game.content.instance.impl.ZulrahInstance;
-import com.valinor.game.content.items.mystery_box.MysteryBoxManager;
 import com.valinor.game.content.kill_logs.BossKillLog;
 import com.valinor.game.content.kill_logs.SlayerKillLog;
 import com.valinor.game.content.mechanics.*;
@@ -85,7 +84,6 @@ import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
-import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -348,10 +346,6 @@ public class Player extends Mob {
             case VIP -> 11;
             case SPONSOR_MEMBER -> 13;
         };
-
-        if (mode() == GameMode.TRAINED_ACCOUNT) {
-            percent += 5;
-        }
 
         if (hasPetOut("Skeleton hellhound pet")) {
             percent += 7.5;
@@ -952,17 +946,6 @@ public class Player extends Mob {
     }
 
     public void teleblockMessage() {
-        if (!getTimers().has(TimerKey.SPECIAL_TELEBLOCK))
-            return;
-
-        long special_timer = getTimers().left(TimerKey.SPECIAL_TELEBLOCK) * 600L;
-
-        message(String.format("A teleport block has been cast on you. It should wear off in %d minutes, %d seconds.",
-            TimeUnit.MILLISECONDS.toMinutes(special_timer),
-            TimeUnit.MILLISECONDS.toSeconds(special_timer) -
-                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(special_timer))
-        ));
-
         if (!getTimers().has(TimerKey.TELEBLOCK))
             return;
 
@@ -1456,7 +1439,7 @@ public class Player extends Mob {
         setLastLogin(new Timestamp(new Date().getTime()));
 
         if (GameServer.properties().enableSql) {
-            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), mode().toName()));
+            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName()));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
     }
@@ -1545,9 +1528,6 @@ public class Player extends Mob {
             if (newAccount) {
                 //Join new players to help channel.
                 ClanManager.join(this, "help");
-
-                //Check on account creation if the player should receive a gift
-                gift();
                 interfaceManager.open(3559);
                 setNewPassword("");
                 setRunningEnergy(100.0, true);
@@ -1636,40 +1616,6 @@ public class Player extends Mob {
         }
     }
 
-    private void gift() {
-        var playtime = this.<Integer>getAttribOr(GAME_TIME, 0);
-        var IP = hostAddress;
-        var MAC = this.<String>getAttribOr(MAC_ADDRESS, "invalid");
-
-        if (GameServer.properties().production) {
-            GameEngine.getInstance().submitLowPriority(() -> {
-                var claimedGift = this.<Boolean>getAttribOr(AttributeKey.VETERAN_GIFT_CLAIMED, false);
-                var claimed = FileUtil.claimed(IP, MAC, "./data/saves/veteranGiftsClaimed.txt");
-                Timestamp ts = creationDate;
-                var isVeteran = ts.toLocalDateTime().getMonthValue() == 12 || ts.toLocalDateTime().getMonthValue() == 1 || ts.toLocalDateTime().getMonthValue() == 2;//Vets are from jan and feb
-                if (isVeteran && !claimedGift && !claimed) {
-                    FileUtil.addAddressToClaimedList(IP, MAC, veteranGiftClaimedIP, veteranGiftClaimedMAC, "./data/saves/veteranGiftsClaimed.txt");
-                    putAttrib(AttributeKey.VETERAN_GIFT_CLAIMED, true);
-                    putAttrib(AttributeKey.VETERAN, true);
-                    inventory().addOrBank(new Item(VETERAN_PARTYHAT, 1), new Item(VETERAN_HWEEN_MASK, 1), new Item(VETERAN_SANTA_HAT, 1));
-                    message(Color.BLUE.tag() + "You are officially an veteran, take this custom set as token of appreciation.");
-                }
-
-                var hours = Utils.ticksToHours(playtime);
-                if (hours >= 48) {
-                    claimedGift = this.<Boolean>getAttribOr(PLAYTIME_GIFT_CLAIMED, false);
-                    claimed = FileUtil.claimed(IP, MAC, "./data/saves/playtimeGiftsClaimed.txt");
-                    if (!claimedGift && !claimed) {
-                        FileUtil.addAddressToClaimedList(IP, MAC, veteranGiftClaimedIP, veteranGiftClaimedMAC, "./data/saves/playtimeGiftsClaimed.txt");
-                        putAttrib(PLAYTIME_GIFT_CLAIMED, true);
-                        inventory().addOrBank(new Item(PET_MYSTERY_BOX, 1), new Item(BLOOD_FIREBIRD, 1));
-                        message(Color.BLUE.tag() + "Thank you for returning to " + GameConstants.SERVER_NAME + "! Take this gift as a sign of appreciation.");
-                    }
-                }
-            });
-        }
-    }
-
     private void restartTasks() {
         decreaseStats.start(60);
         increaseStats.start(60);
@@ -1692,11 +1638,6 @@ public class Player extends Mob {
         if (staminaPotionTicks > 0) {
             int seconds = (int) Utils.ticksToSeconds(staminaPotionTicks);
             packetSender.sendEffectTimer(seconds, EffectTimer.STAMINA);
-        }
-
-        int specialTeleblockTicks = this.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
-        if (specialTeleblockTicks > 0) {
-            teleblock(specialTeleblockTicks, true);
         }
 
         int dropRateLampTicks = this.getAttribOr(AttributeKey.DOUBLE_DROP_LAMP_TICKS, 0);
@@ -1804,127 +1745,7 @@ public class Player extends Mob {
             skills.setXp(skillId, Skills.levelToXp(1));
         }
         skills.setXp(3, Skills.levelToXp(10));
-        putAttrib(COMBAT_MAXED, false);
         skills.update();
-    }
-
-    public void resetDefault() {
-        //Reset the account status to brand new
-        mode(GameMode.INSTANT_PKER);
-        if (ironMode != IronMode.NONE) {
-            //De rank all irons
-            setPlayerRights(PlayerRights.PLAYER);
-        }
-        //Deiron
-        ironMode(IronMode.NONE);
-        //Reset member rank otherwise people get free ranks
-        setMemberRights(MemberRights.NONE);
-        putAttrib(AttributeKey.NEW_ACCOUNT, true);
-        setRunningEnergy(100.0, true);//Set energy to 100%
-        putAttrib(GAME_TIME, 0);
-        putAttrib(IS_RUNNING, false);
-        Arrays.fill(getPresets(), null);
-        //place player at edge
-        setTile(GameServer.properties().defaultTile.copy());
-
-        //Save player save to re-index
-        PlayerSave.save(this);
-    }
-
-    /**
-     * Resets the player's entire account to default.
-     */
-    public void completelyResetAccount() {
-        //Clear all attributes
-        clearAttribs();
-
-        //Reset the account status to brand new
-        putAttrib(AttributeKey.NEW_ACCOUNT, true);
-        setRunningEnergy(100.0, true);//Set energy to 100%
-        putAttrib(IS_RUNNING, false);
-        getHostAddressMap().clear();
-        putAttrib(COMBAT_MAXED, false);
-        Skulling.unskull(this);
-        getUnlockedPets().clear();
-        getInsuredPets().clear();
-        getUnlockedTitles().clear();
-        getRelations().getFriendList().clear();
-        getRelations().getIgnoreList().clear();
-        getRecentKills().clear();
-
-        setTile(GameServer.properties().defaultTile.copy());
-
-        //Reset skills
-        for (int skill = 0; skill < Skills.SKILL_COUNT; skill++) {
-            skills().setLevel(skill, 1, true);
-            skills.setXp(skill, Skills.levelToXp(1), true);
-            if (skill == Skills.HITPOINTS) {
-                skills().setLevel(Skills.HITPOINTS, 10, true);
-                skills.setXp(Skills.HITPOINTS, Skills.levelToXp(10), true);
-            }
-            skills.update(true);
-        }
-
-        //Clear slayer blocks
-        getSlayerRewards().getBlocked().clear();
-
-        //Clear slayer unlocks
-        getSlayerRewards().getUnlocks().clear();
-
-        //Clear slayer extends
-        getSlayerRewards().getExtendable().clear();
-
-        //Clear the collection log
-        getCollectionLog().collectionLog.clear();
-
-        //Clear boss timers
-        getBossTimers().getTimes().clear();
-
-        //Clear bank
-        getBank().clear(false);
-        getBank().tabAmounts = new int[10];
-        getBank().placeHolderAmount = 0;
-
-        //Clear inventory
-        inventory().clear(false);
-
-        //Clear equipment
-        getEquipment().clear(false);
-
-        //Clear rune pouch
-        getRunePouch().clear(false);
-
-        //Clear looting bag
-        getLootingBag().clear(false);
-
-        //Clear the niffler
-        putAttrib(NIFFLER_ITEMS_STORED, new ArrayList<Item>());
-
-        //Clear all achievements
-        achievements().clear();
-
-        //Clear presets
-        Arrays.fill(getPresets(), null);
-
-        //Reset spellbook and prayer book
-        setSpellbook(MagicSpellbook.NORMAL);
-
-        //Reset member ranks
-        setMemberRights(MemberRights.NONE);
-
-        //Make sure these points have been reset
-        putAttrib(AttributeKey.VOTE_POINS, 0);
-        putAttrib(SLAYER_REWARD_POINTS, 0);
-        putAttrib(REFERRER_USERNAME, "");
-
-        //Put back special attack
-        setSpecialAttackPercentage(100);
-        setSpecialActivated(false);//Disable special attack
-
-        //No idea why this is here
-        getMovementQueue().setBlockMovement(false).clear();
-
-        PlayerSave.save(this);
     }
 
     public void resetContainers() {
@@ -2548,13 +2369,13 @@ public class Player extends Mob {
         this.regionHeight = regionHeight;
     }
 
-    private GameMode mode = GameMode.TRAINED_ACCOUNT;
+    private ExpMode mode = ExpMode.ROOKIE;
 
-    public GameMode mode() {
+    public ExpMode expmode() {
         return mode;
     }
 
-    public void mode(GameMode mode) {
+    public void expmode(ExpMode mode) {
         this.mode = mode;
     }
 
@@ -2929,12 +2750,6 @@ public class Player extends Mob {
                 }
             }
         }
-    }
-
-    private final MysteryBoxManager mysteryBox = new MysteryBoxManager(this);
-
-    public MysteryBoxManager getMysteryBox() {
-        return mysteryBox;
     }
 
     public boolean muted() {

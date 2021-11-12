@@ -1,6 +1,5 @@
 package com.valinor.game.content.mechanics;
 
-import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
@@ -14,7 +13,7 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
-import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
@@ -22,13 +21,10 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.net.packet.incoming_packets.PickupItemPacketListener;
 import com.valinor.test.unit.IKODTest;
 import com.valinor.test.unit.PlayerDeathConvertResult;
 import com.valinor.test.unit.PlayerDeathDropResult;
 import com.valinor.util.Color;
-import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -85,10 +81,6 @@ public class ItemsOnDeath {
         var raids_area = player.getRaids() != null && player.getRaids().raiding(player);
         var minigame_safe_death = player.getMinigame() != null && player.getMinigame().getType().equals(MinigameManager.ItemType.SAFE);
         var hunleff_area = player.tile().region() == 6810;
-
-        if(player.mode() == GameMode.DARK_LORD) {
-            stripDarkLordRank(player);
-        }
 
         // If we're in FFA clan wars, don't drop our items.
         // Have these safe area checks before we do some expensive code ... looking for who killed us.
@@ -204,7 +196,7 @@ public class ItemsOnDeath {
         if (reaper && protection_prayer) {
             keptItems++;
         }
-        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.mode().isDarklord()) {
+        if (player.getSkullType().equals(SkullType.RED_SKULL)) {
             keptItems = 0;
         }
         IKODTest.debug("keeping " + keptItems + " items");
@@ -382,19 +374,5 @@ public class ItemsOnDeath {
         }
         World.getWorld().sendWorldMessage("<img=504>"+Color.RED.wrap("[Hardcore fallen]:")+" "+Color.BLUE.wrap(player.getUsername())+" has fallen as a Hardcore Iron Man!");
         player.message("You have fallen as a Hardcore Iron Man', your Hardcore status has been revoked.");
-    }
-
-    private static void stripDarkLordRank(Player player) {
-        var lives = player.<Integer>getAttribOr(AttributeKey.DARK_LORD_LIVES,3) - 1;
-        player.putAttrib(AttributeKey.DARK_LORD_LIVES, lives);
-        if(lives == 0) {
-            if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                player.setPlayerRights(PlayerRights.PLAYER);
-                player.getPacketSender().sendRights();
-            }
-            player.mode(GameMode.TRAINED_ACCOUNT);
-            player.message("You have fallen as a Dark Lord', your status has been revoked.");
-            World.getWorld().sendWorldMessage("<img=1081>" + Color.PURPLE.wrap(player.getUsername()) + Color.RED.wrap("has fallen as a Dark Lord!"));
-        }
     }
 }

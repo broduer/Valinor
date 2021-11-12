@@ -397,10 +397,6 @@ public class Buttons {
                 if (player.getRunePouch().onButton(button)) {
                     return;
                 }
-
-                if (player.getMysteryBox().onButton(button)) {
-                    return;
-                }
                 if (player.skills().pressedSkill(button)) {
                     return;
                 }

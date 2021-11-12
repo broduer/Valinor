@@ -35,7 +35,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
                 player.ironMode(IronMode.REGULAR);
-                player.mode(GameMode.TRAINED_ACCOUNT);
             }
             case 42403 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -44,7 +43,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
                 player.ironMode(IronMode.HARDCORE);
-                player.mode(GameMode.TRAINED_ACCOUNT);
             }
             case 42423 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -53,7 +51,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
                 player.ironMode(IronMode.NONE);
-                player.mode(GameMode.TRAINED_ACCOUNT);
             }
             case 42405 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -62,7 +59,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
                 player.ironMode(IronMode.NONE);
-                player.mode(GameMode.INSTANT_PKER);
             }
             case 42406 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -71,8 +67,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 2);
                 player.ironMode(IronMode.REGULAR);
-                player.mode(GameMode.DARK_LORD);
-                player.putAttrib(AttributeKey.DARK_LORD_LIVES,3);
             }
         }
     }
@@ -215,15 +209,8 @@ public class AccountSelection extends PacketInteraction {
         }
         player.getInterfaceManager().close();
         player.putAttrib(AttributeKey.NEW_ACCOUNT,false);
-
-        player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
         player.unlock();
         player.looks().hide(false);
-        if (player.mode() == GameMode.INSTANT_PKER) {
-            player.getPresetManager().open();
-            player.message("Pick a preset to load to get started.");
-        }
-        player.message("You can also spawn items with the spawn tab in the bottom right.");
         return true;
     }
 }

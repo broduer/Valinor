@@ -290,14 +290,6 @@ public final class GroundItemHandler {
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");
                     return;
                 }
-            } else if (player.mode().isDarklord()) {
-                if (different_owner && !groundItemPked) { // Owner different? It could be pked!
-                    player.message("You're an Dark Lord, so you can't take items that other players have dropped.");
-                    return;
-                } else if (groundItem.pkedFrom() != null && !groundItem.pkedFrom().equalsIgnoreCase(player.getUsername())) {
-                    player.message("You're an Dark Lord, so you can't take items that other players have dropped.");
-                    return;
-                }
             }
 
             if (different_owner && Dueling.in_duel(player)) {

@@ -29,7 +29,7 @@ public class KBDCage extends PacketInteraction {
 
             if (obj.getId() == LEVER_1816) {//KBD lever
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }

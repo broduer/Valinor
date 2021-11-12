@@ -1,7 +1,6 @@
 package com.valinor.game.content.areas.edgevile;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.account.ChangeAccountTypeDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.*;
 import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
@@ -55,7 +54,7 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
             if(npc.id() == IRON_MAN_TUTOR) {
-                player.getDialogueManager().start(new ChangeAccountTypeDialogue());
+                System.out.println("TODO");
                 return true;
             }
             if (npc.id() == GRAND_EXCHANGE_CLERK || npc.id() == GRAND_EXCHANGE_CLERK_2149) {
@@ -119,12 +118,6 @@ public class Edgevile extends PacketInteraction {
             }
             if (npc.id() == AUBURY) {
                 World.getWorld().shop(23).open(player);
-                return true;
-            }
-            if (npc.id() == 315) {
-                World.getWorld().shop(17).open(player);
-                var targetPoints = player.<Integer>getAttribOr(AttributeKey.TARGET_POINTS,0);
-                player.message(Color.RED.wrap("You currently have "+ Utils.formatNumber(targetPoints)+" target points."));
                 return true;
             }
         } else if (option == 3) {
@@ -230,7 +223,7 @@ public class Edgevile extends PacketInteraction {
                 player.faceObj(obj);
 
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                     player.teleblockMessage();
                     return true;
                 }

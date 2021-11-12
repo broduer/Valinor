@@ -21,7 +21,6 @@ public enum CurrencyType {
     VALINOR_COINS(new ItemCurrency(CustomItemIdentifiers.VALINOR_COINS)),
     BLOOD_MONEY(new ItemCurrency(ItemIdentifiers.BLOOD_MONEY)),
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
-    TARGET_POINTS(new TargetPointsCurrency()),
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
     BOSS_POINTS(new BossPointsCurrency());
@@ -52,10 +51,6 @@ public enum CurrencyType {
                 break;
             case BLOOD_MONEY:
                 value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.BLOOD_MONEY) ? player.inventory().count(ItemIdentifiers.BLOOD_MONEY) : 0);
-                break;
-            case TARGET_POINTS:
-                var targetPoints = player.<Integer>getAttribOr(AttributeKey.TARGET_POINTS, 0);
-                value = Utils.formatNumber(targetPoints);
                 break;
             case SLAYER_REWARD_POINTS:
                 int slayerRewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
