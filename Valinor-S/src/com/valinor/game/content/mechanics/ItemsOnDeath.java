@@ -196,7 +196,8 @@ public class ItemsOnDeath {
         if (reaper && protection_prayer) {
             keptItems++;
         }
-        if (player.getSkullType().equals(SkullType.RED_SKULL)) {
+        // On Ultimate Iron Man, you drop everything!
+        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.ironMode() == IronMode.ULTIMATE) {
             keptItems = 0;
         }
         IKODTest.debug("keeping " + keptItems + " items");

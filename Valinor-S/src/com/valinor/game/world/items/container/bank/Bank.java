@@ -162,11 +162,11 @@ public class Bank extends ItemContainer {
      * Opens the bank itemcontainer.
      */
     public void open() {
-        if (!player.getBankPin().enterPin(this::open)) {
+        if (player.ironMode() == IronMode.ULTIMATE) {
+            player.messageBox("As an Ultimate Iron Man, you cannot use the bank.");
             return;
         }
-        if (player.ironMode() == IronMode.ULTIMATE) {
-            player.message("As an Ultimate Iron Man, you cannot use the bank.");
+        if (!player.getBankPin().enterPin(this::open)) {
             return;
         }
         if(player.inActiveTournament() || player.isInTournamentLobby()) {
