@@ -10,7 +10,6 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.timers.TimerKey;
 
-import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -23,10 +22,11 @@ public class AccountSelection extends PacketInteraction {
 
     public static void open(Player player) {
         player.getInterfaceManager().open(42400);
-        refreshOptions(player);
+        refreshMode(player);
+        refreshExpMode(player);
     }
 
-    private static void refreshOptions(Player player) {
+    private static void refreshMode(Player player) {
         switch (player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED, 42405)) {
             case 42402 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 2);
@@ -71,6 +71,29 @@ public class AccountSelection extends PacketInteraction {
         }
     }
 
+    private static void refreshExpMode(Player player) {
+        switch (player.<Integer>getAttribOr(AttributeKey.EXP_MODE_SELECTED, 42425)) {
+            case 42425 -> {
+                player.getPacketSender().sendChangeSprite(42425, (byte) 2);
+                player.getPacketSender().sendChangeSprite(42426, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42427, (byte) 0);
+                player.expmode(ExpMode.ROOKIE);
+            }
+            case 42426 -> {
+                player.getPacketSender().sendChangeSprite(42425, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42426, (byte) 2);
+                player.getPacketSender().sendChangeSprite(42427, (byte) 0);
+                player.expmode(ExpMode.CHALLENGER);
+            }
+            case 42427 -> {
+                player.getPacketSender().sendChangeSprite(42425, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42426, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42427, (byte) 2);
+                player.expmode(ExpMode.GLADIATOR);
+            }
+        }
+    }
+
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         for (AccountType type : AccountType.values()) {
@@ -83,24 +106,45 @@ public class AccountSelection extends PacketInteraction {
                     player.message("You've already selected this option.");
                 } else {
                     if (button == 42402) {
-                        player.message(Color.RED.wrap("Your levels will be reset if you choose this game mode!"));
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42402);
                     } else if (button == 42403) {
-                        player.message(Color.RED.wrap("Your levels will be reset if you choose this game mode!"));
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42403);
                     } else if (button == 42423) {
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42423);
                     } else if (button == 42405) {
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42405);
-                    } else if (button == 42406) {
-                        player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42406);
                     }
                     player.getTimers().register(TimerKey.CLICK_DELAY,2);
-                    refreshOptions(player);
+                    refreshMode(player);
                 }
                 return true;
             }
         }
+
+        if(button > 42424 && button < 42428) {
+            if(player.getTimers().has(TimerKey.CLICK_DELAY)) {
+                return true;
+            }
+
+            if (player.<Integer>getAttribOr(AttributeKey.EXP_MODE_SELECTED,42425) == button) {
+                player.message("You've already selected this option.");
+            } else {
+                if (button == 42425) {
+                    player.putAttrib(AttributeKey.EXP_MODE_SELECTED,42425);
+                    player.expmode(ExpMode.ROOKIE);
+                } else if (button == 42426) {
+                    player.putAttrib(AttributeKey.EXP_MODE_SELECTED,42426);
+                    player.expmode(ExpMode.CHALLENGER);
+                } else {
+                    player.putAttrib(AttributeKey.EXP_MODE_SELECTED,42427);
+                    player.expmode(ExpMode.GLADIATOR);
+                }
+                player.getTimers().register(TimerKey.CLICK_DELAY,2);
+                refreshExpMode(player);
+            }
+            return true;
+        }
+
         if(button == 42419) {
             if(player.getTimers().has(TimerKey.CLICK_DELAY)) {
                 return true;
@@ -112,51 +156,32 @@ public class AccountSelection extends PacketInteraction {
         return false;
     }
 
-    private void starter_package(Player player, int type) {
+    private void gearUp(Player player, IronMode type) {
         switch (type) {
-            case 0 -> {
+            case REGULAR -> {
                 player.resetSkills();
                 player.getInventory().add(new Item(IRONMAN_HELM, 1), true);
                 player.getInventory().add(new Item(IRONMAN_PLATEBODY, 1), true);
                 player.getInventory().add(new Item(IRONMAN_PLATELEGS, 1), true);
-                player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-                player.message("You have been given some training equipment.");
             }
-            case 1 -> {
+            case ULTIMATE -> {
                 player.resetSkills();
+                player.getInventory().add(new Item(ULTIMATE_IRONMAN_HELM, 1), true);
+                player.getInventory().add(new Item(ULTIMATE_IRONMAN_PLATEBODY, 1), true);
+                player.getInventory().add(new Item(ULTIMATE_IRONMAN_PLATELEGS, 1), true);
+            }
+            case HARDCORE -> {
                 player.getInventory().add(new Item(HARDCORE_IRONMAN_HELM, 1), true);
                 player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATEBODY, 1), true);
                 player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATELEGS, 1), true);
-                player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-                player.message("You have been given some training equipment.");
-            }
-            case 2 -> {
-                player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
-                player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-                player.message("You have been given some training equipment.");
-            }
-            case 3 -> {
-                player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
-                //Max out combat
-                for (int skill = 0; skill < 7; skill++) {
-                    player.skills().setXp(skill, Skills.levelToXp(99));
-                    player.skills().update();
-                    player.skills().recalculateCombat();
-                }
-            }
-            case 4 -> {
-                player.getInventory().add(new Item(HARDCORE_IRONMAN_HELM, 1), true);
-                player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATEBODY, 1), true);
-                player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATELEGS, 1), true);
-                player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-                player.message("You have been given some training equipment.");
             }
         }
 
+        player.getInventory().addAll(GameConstants.STARTER_ITEMS);
+        player.message("You have been given some training equipment.");
+
         //Set default spellbook
         player.setSpellbook(MagicSpellbook.NORMAL);
-        //Remove tutorial flag.
-        player.clearAttrib(AttributeKey.TUTORIAL);
         player.getUpdateFlag().flag(Flag.APPEARANCE);
     }
 
@@ -165,43 +190,24 @@ public class AccountSelection extends PacketInteraction {
             return false;
         }
 
-        boolean validButtons = player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED, 42405) >= 42402 && player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED, 42405) <= 42406 || player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED, 42405) == 42423;
-
-        if (!validButtons) {
-            player.message("You have yet to select an game mode.");
-            return false;
-        }
-
         switch (player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED, 42405)) {
             case 42402 -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.IRON_MAN);
                 }
-                starter_package(player, 0);
+                gearUp(player, IronMode.REGULAR);
             }
             case 42403 -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                    player.setPlayerRights(PlayerRights.HARDCORE_IRON_MAN);
+                    player.setPlayerRights(PlayerRights.ULTIMATE_IRON_MAN);
                 }
-                starter_package(player, 1);
+                gearUp(player, IronMode.ULTIMATE);
             }
             case 42423 -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                    player.setPlayerRights(PlayerRights.PLAYER);
+                    player.setPlayerRights(PlayerRights.HARDCORE_IRON_MAN);
                 }
-                starter_package(player, 2);
-            }
-            case 42405 -> {
-                if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                    player.setPlayerRights(PlayerRights.PLAYER);
-                }
-                starter_package(player, 3);
-            }
-            case 42406 -> {
-                if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                    player.setPlayerRights(PlayerRights.DARK_LORD);
-                }
-                starter_package(player, 4);
+                gearUp(player, IronMode.HARDCORE);
             }
         }
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {

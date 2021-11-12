@@ -119,52 +119,51 @@ public class IronmanWidget extends Widget {
         addClickableSprites(42403, "Toggle", 490, 491, 547);
         addClickableSprites(42423, "Toggle", 490, 491, 547);
         addClickableSprites(42405, "Toggle", 490, 491, 547);
-        addClickableSprites(42406, "Toggle", 490, 491, 547);
+        addClickableSprites(42425, "Toggle", 490, 491, 547);
+        addClickableSprites(42426, "Toggle", 490, 491, 547);
+        addClickableSprites(42427, "Toggle", 490, 491, 547);
+        addText(42428, "Rookie: X75 experience, no drop rate bonus.", font, 0, 0xFD851A, false, true);
+        addText(42429, "Challenger: X30 experience, 5% drop rate bonus.", font, 0, 0xFD851A, false, true);
+        addText(42430, "Gladiator: X7.5 experience, 10% drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42407, "An Iron Man can't receive items or assistance from other players.<br>" + "They cannot trade, stake, receive PVP loot or pickup dropped items.", font, 0, 0xFD851A, false, true);
-        addText(42408, "A hardcore ironman account loses its status upon death.", font, 0, 0xFD851A, false, true);
+        addText(42408, "In addition, an Ultimate Iron Man cannot use banks.", font, 0, 0xFD851A, false, true);
         addText(42409, "Account Selection", font, 2, 0xFD851A, false, true);
-        addText(42424, "No Iron man restrictions will be applied to this account.",font, 0, 0xFD851A, false, true);
+        addText(42424, "A hardcore ironman account loses its status upon death.",font, 0, 0xFD851A, false, true);
         addText(42412, "Standard Iron Man", font, 0, 0xFFFFFF, false, true);
-        addText(42413, "Hardcore Iron Man", font, 0, 0xFFFFFF, false, true);
-        addText(42422, "Trained account", font, 0, 0xFFFFFF, false, true);
-        addText(42410, "Play as a PvP account, you will start out as a combat level 126.", font, 0, 0xFD851A, false, true);
-        addText(42411, "Play as an Darklord with trained account bonuses. The mode is a<br>combination of the hardcore and ironman modes, but you have 3 lives!", font, 0, 0xFD851A, false, true);
-        addText(42415, "PvP account", font, 0, 0xFFFFFF, false, true);
-        addText(42416, "Darklord account", font, 0, 0xFFFFFF, false, true);
+        addText(42413, "Ultimate Iron Man", font, 0, 0xFFFFFF, false, true);
+        addText(42422, "Hardcore Iron Man", font, 0, 0xFFFFFF, false, true);
+        addText(42410, "No Iron man restrictions will be applied to this account.", font, 0, 0xFD851A, false, true);
+        addText(42415, "Regular account", font, 0, 0xFFFFFF, false, true);
 
         addText(42417, "Select your game mode", font, 1, 0xFFFFFF, false, true);
-        addText(42418, "Once you pick your game mode it can never be changed!", font, 1, 0xFFFFFF, false, true);
+        addText(42418, "Select your experience mode", font, 1, 0xFFFFFF, false, true);
         addHoverButton(42419,1767, 23, 23, "Confirm and Continue", 0, 42420, 1);
         addHoveredButton(42420,1768, 23, 23, 42421);
 
-        setChildren(21, widget);
-
+        setChildren(24, widget);
         setBounds(42401, 15, 28, 0, widget);
-
-        setBounds(42402, 30, 104, 1, widget);
-        setBounds(42403, 30, 137, 2, widget);
-        setBounds(42423, 30, 168, 3, widget);
-
-        setBounds(42405, 110, 239, 4, widget);
-        setBounds(42406, 110, 265, 5, widget);
-
-        setBounds(42407, 50, 102, 6, widget);
-        setBounds(42408, 50, 145, 7, widget);
-        setBounds(42424, 50, 178, 8, widget);
-
-        setBounds(42410, 130, 246, 9, widget);
-        setBounds(42411, 130, 272, 10, widget);
-
-        setBounds(42412, 50, 92, 11, widget);
-        setBounds(42413, 50, 135, 12, widget);
-        setBounds(42422, 50, 168, 13, widget);
-
-        setBounds(42415, 130, 236, 14, widget);
-        setBounds(42416, 130, 262, 15, widget);
-        setBounds(42417, 150, 69, 16, widget);
-        setBounds(42418, 125, 210, 17, widget);
-        setBounds(42419, 465, 34, 18, widget);
-        setBounds(42420, 465, 34, 19, widget);
-        setBounds(42409, 200, 35, 20, widget);
+        setBounds(42402, 30, 88, 1, widget);
+        setBounds(42403, 30, 123, 2, widget);
+        setBounds(42423, 30, 150, 3, widget);
+        setBounds(42405, 30, 178, 4, widget);
+        setBounds(42407, 50, 99, 5, widget);
+        setBounds(42408, 50, 135, 6, widget);
+        setBounds(42424, 50, 163, 7, widget);
+        setBounds(42410, 50, 191, 8, widget);
+        setBounds(42412, 50, 89, 9, widget);
+        setBounds(42413, 50, 125, 10, widget);
+        setBounds(42422, 50, 153, 11, widget);
+        setBounds(42415, 50, 180, 12, widget);
+        setBounds(42417, 150, 69, 13, widget);
+        setBounds(42418, 125, 210, 14, widget);
+        setBounds(42419, 465, 34, 15, widget);
+        setBounds(42420, 465, 34, 16, widget);
+        setBounds(42409, 200, 35, 17, widget);
+        setBounds(42425, 110, 235, 18, widget);
+        setBounds(42426, 110, 256, 19, widget);
+        setBounds(42427, 110, 278, 20, widget);
+        setBounds(42428, 130, 239, 21, widget);
+        setBounds(42429, 130, 259, 22, widget);
+        setBounds(42430, 130, 281, 23, widget);
     }
 }

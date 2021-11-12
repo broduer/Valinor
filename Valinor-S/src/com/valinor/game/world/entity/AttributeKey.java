@@ -79,6 +79,7 @@ public enum AttributeKey {
     HUNLESS_PREVIOUS_STYLE,
 
     GAME_MODE_SELECTED,
+    EXP_MODE_SELECTED,
 
     VIEWING_COLLECTION_LOG,
 

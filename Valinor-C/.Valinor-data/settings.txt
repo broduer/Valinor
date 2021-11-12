@@ -1,5 +1,5 @@
 cameraSpeed = SLOW
-zoom_distance = 315
+zoom_distance = 420
 drag_item_value = 10
 player_attack_priority = 0
 npc_attack_priority = 2
