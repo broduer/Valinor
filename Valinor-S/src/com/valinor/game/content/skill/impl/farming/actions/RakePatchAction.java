@@ -11,12 +11,15 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.incoming_packets.MovementPacketListener;
 
+import static com.valinor.util.ItemIdentifiers.WEEDS;
+
 /**
  * Handles the action of removing weeds from patches.
  *
  * @author Gabriel || Wolfsdarker
  */
 public class RakePatchAction extends PlayerTask {
+
     /**
      * Constructor for the action.
      *
@@ -27,15 +30,12 @@ public class RakePatchAction extends PlayerTask {
         super(3, player, () -> {
             player.face(tile);
             player.animate(FarmingConstants.RAKING_ANIM);
-
             state.setWeedStage(state.getWeedStage() + 1);
             player.getFarming().updatePatches(player);
             player.skills().addXp(Skills.FARMING, 4.0); // Yeah, you get 4 xp... #worth
-            player.inventory().add(new Item(6055), true); // Free weed :)
-
+            player.inventory().add(new Item(WEEDS)); // Free weed :)
             if (state.getWeedStage() >= 3) {
                 state.resetLastStageGrowthMoment();
-                state.setWeedStage(3);
                 player.endCurrentTask();
             }
         });

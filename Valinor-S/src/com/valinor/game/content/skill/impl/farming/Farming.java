@@ -21,6 +21,7 @@ import java.util.Map;
  * @author Gabriel || Wolfsdarker
  */
 public class Farming {
+    
 
     /**
      * The last moment the player logged in or out.
@@ -128,7 +129,7 @@ public class Farming {
                 return;
             }
 
-            //System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
+            System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
             if (System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed()) {
                 System.out.println("ticking");
                 if (!FarmingConstants.isFullyGrown(patch)) {

@@ -24,12 +24,10 @@ public class ClearPatchAction extends PlayerTask {
      */
     public ClearPatchAction(Player player, PatchState state) {
         super(2, player, () -> {
-
             player.message("You clear the farming patch.");
             state.resetPatch();
             player.getFarming().updatePatches(player);
             player.endCurrentTask();
-
         });
     }
 

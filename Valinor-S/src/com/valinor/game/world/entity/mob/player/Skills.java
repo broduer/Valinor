@@ -380,7 +380,7 @@ public class Skills {
                     player.getDialogueManager().start(new Dialogue() {
                         @Override
                         protected void start(Object... options) {
-                            send(DialogueType.ITEM_STATEMENT, 5340, "", "Congratulations! You've just advanced Farming level!", "You have reached level " + newLevel + "!");
+                            send(DialogueType.ITEM_STATEMENT, new Item(5340), "", "Congratulations! You've just advanced Farming level!", "You have reached level " + newLevel + "!");
                             setPhase(0);
                         }
                     });
@@ -390,7 +390,7 @@ public class Skills {
                     player.getDialogueManager().start(new Dialogue() {
                         @Override
                         protected void start(Object... options) {
-                            send(DialogueType.ITEM_STATEMENT, 9951, "", "Congratulations! You've just advanced Hunter level!", "You have reached level " + newLevel + "!");
+                            send(DialogueType.ITEM_STATEMENT, new Item(9951), "", "Congratulations! You've just advanced Hunter level!", "You have reached level " + newLevel + "!");
                             setPhase(0);
                         }
                     });
