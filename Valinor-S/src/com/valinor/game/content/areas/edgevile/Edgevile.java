@@ -144,26 +144,6 @@ public class Edgevile extends PacketInteraction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
-        if (obj.getId() == SUPPLIES) {
-            if (option == 1) {
-                World.getWorld().shop(4).open(player);
-                player.getPacketSender().sendConfig(1125, 1);
-                player.getPacketSender().sendConfig(1126, 0);
-                player.getPacketSender().sendConfig(1127, 0);
-                return true;
-            }
-            if (option == 2) {
-                World.getWorld().shop(6).open(player);
-                return true;
-            }
-            if (option == 3) {
-                World.getWorld().shop(43).open(player);
-                player.getPacketSender().sendConfig(1125, 1);
-                player.getPacketSender().sendConfig(1126, 0);
-                player.getPacketSender().sendConfig(1127, 0);
-                return true;
-            }
-        }
         if (obj.getId() == ALTAR_6552) {
             if (option == 1) {
                 player.getDialogueManager().start(new MagicalAltarDialogue());
