@@ -206,7 +206,7 @@ public class RangeMaxHit {
 
         //The base modifier
         if (player.isSpecialActivated()) {
-            baseSpecialModifier *= player.getCombatSpecial().getBaseSpecialMultiplier();
+            baseSpecialModifier *= player.getCombatSpecial().getspecialMultiplier();
             //System.out.println("base spec mod: "+baseSpecialModifier);
 
             var ammoId = player.getEquipment().getId(EquipSlot.AMMO);

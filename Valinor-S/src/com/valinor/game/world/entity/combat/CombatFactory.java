@@ -288,11 +288,6 @@ public class CombatFactory {
                                 damage = 87;
                             }
                         }
-                        if (player.getCombatSpecial() == CombatSpecial.ARMADYL_GODSWORD_OR) {
-                            if (damage > 88) {
-                                damage = 88;
-                            }
-                        }
                         if (player.getCombatSpecial() == CombatSpecial.ANCIENT_WARRIOR_MAUL) {
                             if (damage > 86) {
                                 damage = player.getEquipment().hasAt(EquipSlot.WEAPON, ANCIENT_WARRIOR_MAUL_C) ? 89 : 86;

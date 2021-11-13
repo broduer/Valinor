@@ -233,38 +233,26 @@ public class MeleeMaxHit {
             D *= 1.50;
         }
 
-        //System.out.println("After multipliers: "+D);
+        //System.out.println("Damage before rounding: "+D);
 
-        double baseSpecialModifier = 1.0;
-        double extraModifier = 1.0;
+        int damage = (int) D;
+
+        //System.out.println("After multipliers: "+damage);
+
+        double specialModifier = 1.0;
 
         //The base modifier
         if(player.isSpecialActivated()) {
-            baseSpecialModifier *= player.getCombatSpecial().getBaseSpecialMultiplier();
-            //System.out.println("base spec mod: "+baseSpecialModifier);
-
-            //Some weapons have bonus modifiers, * Armadyl godsword: 1.25
-            if(player.getEquipment().hasAt(EquipSlot.WEAPON, ARMADYL_GODSWORD)) {
-                extraModifier *= 0.25;
-            }
-
-            //Some weapons have bonus modifiers, * Bandos godsword: 1.10
-            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BANDOS_GODSWORD)) {
-                extraModifier *= 0.10;
-            }
-
-            double totalSpecMod = baseSpecialModifier + extraModifier;
-            //System.out.println("total spec mod: "+totalSpecMod);
-            D *= totalSpecMod;
+            specialModifier *= player.getCombatSpecial().getspecialMultiplier();
+            damage *= specialModifier;
         }
 
-        //System.out.println("After special multipliers: "+D);
+        //System.out.println("After special multipliers: "+damage);
 
         //• Dharok's set: multiply by: 1+ lost hp/100 * max hp/100
         if (CombatFactory.fullDharoks(player)) {
             double lostHp = player.maxHp() - player.hp();
-            System.out.println(lostHp);
-            D *= 1 + (lostHp /100 * player.maxHp() / 100);
+            damage *= 1 + (lostHp /100 * player.maxHp() / 100);
         }
 
         //Up this far its the OSRS calculation
@@ -329,7 +317,7 @@ public class MeleeMaxHit {
         }
 
         //All custom modifiers combined
-        int maxHit = (int) Math.round(D * petBonus * weaponBonus * armourBonus * slayerPerkBonus);
+        int maxHit = (int) Math.round(damage * petBonus * weaponBonus * armourBonus * slayerPerkBonus);
 
         List<Integer> increaseMaxHitbyOne = new ArrayList<>(List.of(GRANITE_MAUL_12848, ARMADYL_GODSWORD_OR, BANDOS_GODSWORD_OR, SARADOMIN_GODSWORD_OR, ZAMORAK_GODSWORD_OR, DRAGON_CLAWS_OR));
         if (increaseMaxHitbyOne.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {

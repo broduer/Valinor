@@ -67,9 +67,8 @@ public enum CombatSpecial {
     DRAGON_LONGSWORD(new int[]{ItemIdentifiers.DRAGON_LONGSWORD}, 25, 1.25, 1.25, new DragonLongsword(), WeaponType.LONGSWORD),
     DRAGON_DAGGER(new int[]{ItemIdentifiers.DRAGON_DAGGER, ItemIdentifiers.DRAGON_DAGGERP, ItemIdentifiers.DRAGON_DAGGERP_5680, ItemIdentifiers.DRAGON_DAGGERP_5698, ItemIdentifiers.DRAGON_DAGGER_20407, DRAGON_DAGGERP_24949}, 25, 1.15, 1.15, new DragonDagger(), WeaponType.DAGGER),
     ABYSSAL_DAGGER(new int[]{ItemIdentifiers.ABYSSAL_DAGGER, ItemIdentifiers.ABYSSAL_DAGGER_P, ItemIdentifiers.ABYSSAL_DAGGER_P_13269, ItemIdentifiers.ABYSSAL_DAGGER_P_13271}, 50, 0.85, 1.25, new AbyssalDagger(), WeaponType.DAGGER),
-    ARMADYL_GODSWORD(new int[]{ItemIdentifiers.ARMADYL_GODSWORD, 20593, BEGINNER_AGS, HWEEN_ARMADYL_GODSWORD}, 50, 1.10, 1.35, new ArmadylGodsword(), WeaponType.TWOHANDED),
-    ARMADYL_GODSWORD_OR(new int[]{ItemIdentifiers.ARMADYL_GODSWORD_OR}, 50, 1.10, 1.60, new ArmadylGodsword(), WeaponType.TWOHANDED),
-    BANDOS_GODSWORD(new int[]{ItemIdentifiers.BANDOS_GODSWORD, ItemIdentifiers.BANDOS_GODSWORD_OR}, 50, 1.10, 1.0, new BandosGodsword(), WeaponType.TWOHANDED),
+    ARMADYL_GODSWORD(new int[]{ItemIdentifiers.ARMADYL_GODSWORD, ItemIdentifiers.ARMADYL_GODSWORD_OR, 20593, BEGINNER_AGS, HWEEN_ARMADYL_GODSWORD}, 50, 1.35, 1.35, new ArmadylGodsword(), WeaponType.TWOHANDED),
+    BANDOS_GODSWORD(new int[]{ItemIdentifiers.BANDOS_GODSWORD, ItemIdentifiers.BANDOS_GODSWORD_OR}, 50, 1.20, 1.0, new BandosGodsword(), WeaponType.TWOHANDED),
     SARADOMIN_GODSWORD(new int[]{ItemIdentifiers.SARADOMIN_GODSWORD, ItemIdentifiers.SARADOMIN_GODSWORD_OR}, 50, 1.10, 1.1, new SaradominGodsword(), WeaponType.TWOHANDED),
     ZAMORAK_GODSWORD(new int[]{ItemIdentifiers.ZAMORAK_GODSWORD, ItemIdentifiers.ZAMORAK_GODSWORD_OR}, 50, 1.10, 1.1, new ZamorakGodsword(), WeaponType.TWOHANDED),
     DRAGON_SCIMITAR(new int[]{ItemIdentifiers.DRAGON_SCIMITAR, ItemIdentifiers.DRAGON_SCIMITAR_OR, ItemIdentifiers.DRAGON_SCIMITAR_20406}, 55, 1.0, 1.25, new DragonScimitar(), WeaponType.LONGSWORD),
@@ -443,7 +442,7 @@ public enum CombatSpecial {
      *
      * @return the strength bonus when performing this special attack.
      */
-    public double getBaseSpecialMultiplier() {
+    public double getspecialMultiplier() {
         return baseSpecialMultiplier;
     }
 
