@@ -65,7 +65,7 @@ public final class AddStockTask extends Task {
             int newAmount = Math.min( 1 + item.getAmount(), initialAmount);
             item.setAmount(newAmount);
             for (Player player : shop.players) {
-                shop.refresh(player, false);
+                shop.refresh(player);
             }
             return true;
         }
