@@ -34,7 +34,7 @@ public final class verifyOrInsertUserDatabaseTransaction extends VoidDatabaseTra
             }
         }
         if (count == 0) {
-            try (NamedPreparedStatement statement = prepareStatement(connection, "INSERT INTO users (username, password, last_login_ip, creation_ip, first_login_date, email, created_at, updated_at, last_login_mac, game_mode, playtime) VALUES (:username, :password, :last_login_ip, :creation_ip, :first_login_date, :email, :created_at, :updated_at, :mac, :game_mode, :playtime)")) {
+            try (NamedPreparedStatement statement = prepareStatement(connection, "INSERT INTO users (username, password, last_login_ip, creation_ip, first_login_date, email, created_at, updated_at, last_login_mac, iron_mode, playtime) VALUES (:username, :password, :last_login_ip, :creation_ip, :first_login_date, :email, :created_at, :updated_at, :mac, :iron_mode, :playtime)")) {
                 statement.setString("username", player.getUsername());
                 statement.setString("last_login_ip", player.getHostAddress());
                 statement.setString("creation_ip", player.getCreationIp());
@@ -44,7 +44,7 @@ public final class verifyOrInsertUserDatabaseTransaction extends VoidDatabaseTra
                 statement.setTimestamp("created_at", new Timestamp(new Date().getTime()));
                 statement.setTimestamp("updated_at", new Timestamp(new Date().getTime()));
                 statement.setString("mac", player.getAttribOr(MAC_ADDRESS, "invalid"));
-                statement.setString("game_mode", player.expmode().toName());
+                statement.setString("iron_mode", player.ironMode().name);
                 statement.setInt("playtime", player.getAttribOr(GAME_TIME, 0));
                 //logger.info("Executing query: " + statement.toString());
                 statement.executeUpdate();

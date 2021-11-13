@@ -1424,7 +1424,7 @@ public class Player extends Mob {
         setLastLogin(new Timestamp(new Date().getTime()));
 
         if (GameServer.properties().enableSql) {
-            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName()));
+            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), ironMode().name));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
     }
