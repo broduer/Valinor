@@ -19,9 +19,10 @@ public class UpdatePlayerInfoDatabaseTransaction extends VoidDatabaseTransaction
     String ip;
     String mac;
     int playtime;
+    String expMode;
     String ironMode;
 
-    public UpdatePlayerInfoDatabaseTransaction(int id, String ip, String mac, int playtime, String ironMode) {
+    public UpdatePlayerInfoDatabaseTransaction(int id, String ip, String mac, int playtime, String expMode, String ironMode) {
         this.id = id;
         this.ip = ip;
         this.mac = mac;
@@ -31,11 +32,12 @@ public class UpdatePlayerInfoDatabaseTransaction extends VoidDatabaseTransaction
 
     @Override
     public void executeVoid(Connection connection) throws SQLException {
-        try (NamedPreparedStatement statement = prepareStatement(connection,"UPDATE users SET last_login_ip=:ip, last_login_mac=:mac, playtime=:playtime, iron_mode=:iron_mode WHERE id=:id")) {
+        try (NamedPreparedStatement statement = prepareStatement(connection,"UPDATE users SET last_login_ip=:ip, last_login_mac=:mac, playtime=:playtime, exp_mode=:exp_mode, iron_mode=:iron_mode WHERE id=:id")) {
             statement.setInt("id", id);
             statement.setString("ip", ip);
             statement.setString("mac", mac);
             statement.setInt("playtime", playtime);
+            statement.setString("exp_mode", expMode);
             statement.setString("iron_mode", ironMode);
             //logger.info("Executing query: " + statement.toString());
             statement.executeUpdate();

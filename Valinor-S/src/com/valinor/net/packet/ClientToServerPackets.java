@@ -64,6 +64,7 @@ public class ClientToServerPackets {
     public static final int MAGIC_ON_GROUND_ITEM_OPCODE = 181;
     public static final int TRADE_REQUEST_OPCODE = 139;
     public static final int CREATION_MENU_OPCODE = 166;
+    public static final int GROUP_INVITE_ACCEPT = 125;
     public static final int GAMBLE_REQUEST_ACCEPT = 127;
     public static final int CUSTOM_CLIENT_REPORT = 160;
     public static final int DISCONNECTED_BY_PACKET = 161;
@@ -188,6 +189,8 @@ public class ClientToServerPackets {
 
         PACKETS[GAMBLE_REQUEST_ACCEPT] = new GambleRequestAccept();
 
+        PACKETS[GROUP_INVITE_ACCEPT] = new GroupInviteAccept();
+
         PACKETS[CUSTOM_CLIENT_REPORT] = new PacketListener() {
             private final Logger logger = LogManager.getLogger(PacketListener.class);
             @Override
@@ -208,6 +211,7 @@ public class ClientToServerPackets {
 
         PACKET_NAMES[187] = "SPAWN_TAB_ACTION_OPCODE";
         PACKET_NAMES[35] = "MAGIC_ON_OBJECT";
+        PACKET_NAMES[125] = "GROUP_INVITE_ACCEPT";
         PACKET_NAMES[127] = "GAMBLE_REQUEST_ACCEPT";
         PACKET_NAMES[177] = "WIDGET_SLOT_CHANGE";
         PACKET_NAMES[184] = "SPECIAL_ATTACK_OPCODE";
@@ -406,7 +410,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[122] = 6;
         PACKET_SIZES[123] = -3;
         PACKET_SIZES[124] = -3;
-        PACKET_SIZES[125] = -3;
+        PACKET_SIZES[125] = 2;
         PACKET_SIZES[126] = -1;
         PACKET_SIZES[128] = 2;
         PACKET_SIZES[129] = 8;

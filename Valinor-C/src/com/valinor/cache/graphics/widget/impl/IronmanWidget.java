@@ -103,7 +103,7 @@ public class IronmanWidget extends Widget {
             recent_section++;
             addSprite(i, recent_section % 2 == 0 ? 1782 : 1783);
             addText(i + 1, "Group Name", font, 2, 0xff0000);
-            addText(i + 2, "Henkie, Patrick,<br>Malefique, Wezel", font, 0, 16750623);
+            addText(i + 2, "Henkie, Patrick, Malefique, Wezel", font, 0, 16750623);
 
             recent.child(recent_child++, i, 0, recent_y);
             recent.child(recent_child++, i + 1, 3, recent_y + 6);

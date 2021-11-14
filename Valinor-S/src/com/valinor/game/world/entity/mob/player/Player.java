@@ -19,6 +19,8 @@ import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GambleState;
 import com.valinor.game.content.gambling.GamblingSession;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.impl.AlchemicalHydraInstance;
 import com.valinor.game.content.instance.impl.KrakenInstance;
@@ -158,6 +160,10 @@ public class Player extends Mob {
 
     static {
         LOGOUT = Level.getLevel("LOGOUT");
+    }
+
+    public Optional<IronmanGroup> getIronmanTeam() {
+        return IronmanGroupHandler.getPlayersGroup(this);
     }
 
     /**
@@ -1372,6 +1378,10 @@ public class Player extends Mob {
         });
 
         runExceptionally(() -> {
+            IronmanGroupHandler.handleLogout(this);
+        });
+
+        runExceptionally(() -> {
             var minigame = this.getMinigame();
             if (minigame != null) {
                 minigame.end(this);
@@ -1424,7 +1434,7 @@ public class Player extends Mob {
         setLastLogin(new Timestamp(new Date().getTime()));
 
         if (GameServer.properties().enableSql) {
-            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), ironMode().name));
+            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName(), ironMode().name));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
     }

@@ -1299,20 +1299,6 @@ public class CustomItems {
             def.color_to_replace_with = new int[]{34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770};
         }
 
-        if (id == 12810) {
-            def.name = "<col=65280>Darklord helm";
-            def.modelCustomColor4 = 33785;
-        }
-
-        if (id == 12811) {
-            def.name = "<col=65280>Darklord platebody";
-            def.modelCustomColor4 = 33785;
-        }
-
-        if (id == 12812) {
-            def.name = "<col=65280>Darklord platelegs";
-        }
-
         if (id == 28013) {
             def.name = "<col=65280>Veteran partyhat";
             def.inventory_model = 2635;

@@ -1262,6 +1262,25 @@ public class Client extends GameApplet {
                             }
                         }
                     }
+                    if (type == 41) {
+                        if (chatTypeView == 5 || chatTypeView == 0) {
+                            boolean onIgnore = false;
+                            if (name != null) {
+                                for (int count = 0; count < ignoreCount; count++) {
+                                    if (ignoreListAsLongs[count] != Utils.longForName(name)) {
+                                        continue;
+                                    }
+                                    onIgnore = true;
+                                    break;
+                                }
+                            }
+                            if (!onIgnore) {
+                                adv_font_regular.draw(name + " " + message, 10, y + yOffset, 0x00a7e0, shadow);
+                                totalMessages++;
+                                playerChatRows++;
+                            }
+                        }
+                    }
                 }
             }
             Rasterizer2D.set_default_size();
@@ -6064,13 +6083,13 @@ public class Client extends GameApplet {
                 atInventoryInterfaceType = 3;
             }
         }
-        if (action == 484 || action == 6 || action == 525) {
+        if (action == 484 || action == 6 || action == 525 || action == 526) {
             try {
                 String string = menuActionText[id];
                 int indexOf = string.indexOf(">");
                 if (indexOf != -1) {
                     //System.out.println("Username string is actually: " + string);
-                    if (string.contains("Accept trade") || string.contains("Accept challenge") || string.contains("Accept gamble")) {
+                    if (string.contains("Accept trade") || string.contains("Accept challenge") || string.contains("Accept gamble") || string.contains("Accept invite")) {
                         string = string.substring(indexOf + 1).trim();
                     } else {
                         string = string.substring(indexOf + 5).trim();
@@ -6094,6 +6113,11 @@ public class Client extends GameApplet {
                         // accepting gamble
                         if (action == 525) {
                             packetSender.sendGambleRequest(local_players[count]);
+                        }
+
+                        // accepting group invite
+                        if (action == 526) {
+                            packetSender.sendGroupInvite(local_players[count]);
                         }
 
                         // accepting a challenge
@@ -8066,6 +8090,14 @@ public class Client extends GameApplet {
                 }
                 index++;
             }
+            if (chatTypeView == 3 && chatType == 41 && (tradeMode == 0 || tradeMode == 1 && check_username(name))) {
+                if (chatIndex > scrollAmount - 14 && chatIndex <= scrollAmount) {
+                    menuActionText[menuActionRow] = "Accept invite <col=FFFFFF>" + name;
+                    menuActionTypes[menuActionRow] = 526;
+                    menuActionRow++;
+                }
+                index++;
+            }
         }
     }
 
@@ -8184,6 +8216,15 @@ public class Client extends GameApplet {
                 if (j > scrollAmount - 14 && j <= scrollAmount) {
                     menuActionText[menuActionRow] = "Accept gamble <col=FFFFFF>" + chatName;
                     menuActionTypes[menuActionRow] = 525;
+                    menuActionRow++;
+                }
+                index++;
+            }
+
+            if (chatType == 41 && (tradeMode == 0 || tradeMode == 1 && check_username(chatName))) {
+                if (j > scrollAmount - 14 && j <= scrollAmount) {
+                    menuActionText[menuActionRow] = "Accept invite <col=FFFFFF>" + chatName;
+                    menuActionTypes[menuActionRow] = 526;
                     menuActionRow++;
                 }
                 index++;
@@ -16588,18 +16629,21 @@ public class Client extends GameApplet {
                     return true;
                 }
 
-                if (message.endsWith(":invite:")) {
+                if (message.endsWith(":groupinvite:")) {
                     String name = message.substring(0, message.indexOf(":"));
                     long encodedName = StringUtils.encodeBase37(name);
                     boolean ignored = false;
-                    for (int index = 0; index < ignoreCount; index++) {
-                        if (ignoreListAsLongs[index] != encodedName)
+                    for (int count = 0; count < ignoreCount; count++) {
+                        if (ignoreListAsLongs[count] != encodedName)
                             continue;
                         ignored = true;
 
                     }
-                    if (!ignored && onTutorialIsland == 0)
-                        sendMessage("wishes to invite you to join their ironman group.", 4, name);
+                    if (!ignored && onTutorialIsland == 0) {
+                        if (message.endsWith(":groupinvite:")) {
+                            sendMessage("wishes to invite you to their ironman group.", 41, name);
+                        }
+                    }
                 } else if (message.endsWith(":tradereq:")) {
                     String name = message.substring(0, message.indexOf(":"));
                     long encodedName = StringUtils.encodeBase37(name);

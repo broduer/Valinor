@@ -289,7 +289,7 @@ public enum AttributeKey {
 
     TEMP_ACCOUNT_PIN("temp_account_pin", AttribType.INTEGER),
 
-    TEAM_NAME_SET("group_name_set", AttribType.BOOLEAN),
+    GROUP_NAME_SET("group_name_set", AttribType.BOOLEAN),
 
     IRONMAN_INTERFACE("ironman_interface", AttribType.BOOLEAN),
 

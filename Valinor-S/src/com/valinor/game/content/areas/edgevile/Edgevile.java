@@ -4,6 +4,7 @@ import com.valinor.GameServer;
 import com.valinor.game.content.areas.edgevile.dialogue.*;
 import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
+import com.valinor.game.content.group_ironman.GroupIronmanInterface;
 import com.valinor.game.content.mechanics.MagicalAltarDialogue;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.ReferralD;
@@ -52,7 +53,7 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
             if(npc.id() == IRON_MAN_TUTOR) {
-                System.out.println("TODO");
+                GroupIronmanInterface.open(player);
                 return true;
             }
             if (npc.id() == GRAND_EXCHANGE_CLERK || npc.id() == GRAND_EXCHANGE_CLERK_2149) {
@@ -103,7 +104,7 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
             if(npc.id() == IRON_MAN_TUTOR) {
-                World.getWorld().shop(16).open(player);
+                //TODO armour refund
                 return true;
             }
             if (npc.id() == VANNAKA) {
@@ -119,10 +120,6 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
         } else if (option == 3) {
-            if(npc.id() == IRON_MAN_TUTOR) {
-                World.getWorld().shop(49).open(player);
-                return true;
-            }
             if (npc.id() == AUBURY) {
                 npc.forceChat("Seventhior Distine Molenko!");
                 player.graphic(110, 124, 100);
@@ -134,10 +131,6 @@ public class Edgevile extends PacketInteraction {
                 return true;
             }
         } else if (option == 4) {
-            if(npc.id() == IRON_MAN_TUTOR) {
-                World.getWorld().shop(47).open(player);
-                return true;
-            }
         }
         return false;
     }

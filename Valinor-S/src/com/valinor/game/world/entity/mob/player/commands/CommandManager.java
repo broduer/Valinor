@@ -87,6 +87,7 @@ public class CommandManager {
         commands.put("clearbank", new ClearBankCommand());
         commands.put("commands", new CommandsCommand());
         commands.put("niffler", new BankNifflerCommand());
+        commands.put("setteamname", new SetTeamNameCommand());
         commands.put("claimvote", new ClaimVoteCommand());
         commands.put("redeem", new RedeemCommand());
         commands.put("vekers", new VekeRSCommand());

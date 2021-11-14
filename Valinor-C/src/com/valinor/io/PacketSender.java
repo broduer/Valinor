@@ -441,6 +441,11 @@ public class PacketSender {
         buffer.writeShort(playerIndex);
     }
 
+    public void sendGroupInvite(int playerIndex) {
+        buffer.writeOpcode(125);
+        buffer.writeShort(playerIndex);
+    }
+
     public void sendSpecialAttackToggle(int interfaceId) {
         buffer.writeOpcode(184);
         buffer.writeInt(interfaceId);

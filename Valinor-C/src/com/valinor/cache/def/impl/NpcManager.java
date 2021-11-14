@@ -73,13 +73,6 @@ public class NpcManager {
                 definition.actions = new String[]{"Talk-to", null, "Claim-cape", null, null};
                 break;
 
-            case IRON_MAN_TUTOR:
-                definition.actions[0] = "Change-game-mode";
-                definition.actions[2] = "Ironman-supplies";
-                definition.actions[3] = "Ironman-herblore-supplies";
-                definition.actions[4] = "Boss-points";
-                break;
-
             case FANCY_DAN:
                 definition.name = "Vote Manager";
                 definition.actions[0] = "Trade";
