@@ -42,6 +42,7 @@ public class GroupIronmanInterface extends PacketInteraction {
      * Opens the interface for a player
      */
     public static void open(Player player) {
+        System.out.println("huh");
         clear(player);
         List<IronmanGroup> best = IronmanGroupHandler.getBestIronmenGroups(10);
         for (int i = 0; i < best.size(); i++) {
@@ -83,9 +84,8 @@ public class GroupIronmanInterface extends PacketInteraction {
                 return true;
             }
 
-            boolean alreadyExists = IronmanGroupHandler.getGroupByName(player.getUsername()).isPresent() || IronmanGroupHandler.getPlayersGroup(player).isPresent();
-            if(alreadyExists) {
-                player.message(Color.RED.wrap("You cannot change the name of this group."));
+            if(!IronmanGroupHandler.isGroupLeader(player)) {
+                player.message(Color.RED.wrap("You are not the leader of this group."));
                 return true;
             }
 
@@ -102,6 +102,12 @@ public class GroupIronmanInterface extends PacketInteraction {
                 player.message(Color.RED.wrap("You're not a ironman."));
                 return true;
             }
+
+            if(!IronmanGroupHandler.isGroupLeader(player)) {
+                player.message(Color.RED.wrap("You are not the leader of this group."));
+                return true;
+            }
+
             if (player.skills().totalLevel() > 500) {
                 player.messageBox("You may not delete your group and form a new one, your total level is over 500!");
                 return true;

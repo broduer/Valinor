@@ -57,6 +57,7 @@ public class IronmanGroup {
             this.groupName = groupName;
         }
     }
+
     /**
      * Updates the player
      *
@@ -136,6 +137,11 @@ public class IronmanGroup {
 
         if(!leaderName.equalsIgnoreCase(inviter.getUsername())) {
             inviter.message("<col=FF0000>You have to be group leader to invite others.");
+            return false;
+        }
+
+        if(inviter.ironMode() != target.ironMode()) {
+            inviter.message("<col=FF0000>"+target.getUsername()+" cannot join your group as they are not a "+inviter.ironMode().name);
             return false;
         }
 

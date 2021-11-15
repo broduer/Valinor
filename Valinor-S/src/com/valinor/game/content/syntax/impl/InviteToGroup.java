@@ -42,10 +42,11 @@ public class InviteToGroup implements EnterSyntax {
                     other.get().message(Color.RED.wrap("If you wish to be in their team, delete your group and have them invite you again!"));
                     return;
                 }
-                Optional<IronmanGroup> create = IronmanGroupHandler.createIronmanGroup(player);
-                if (create.isPresent()) {
-                    if (create.get().canInvite(player, other.get())) {
-                        create.get().sendInvitation(player, other.get());
+
+                Optional<IronmanGroup> group = IronmanGroupHandler.createIronmanGroup(player);
+                if (group.isPresent()) {
+                    if (group.get().canInvite(player, other.get())) {
+                        group.get().sendInvitation(player, other.get());
                     }
                 }
             }

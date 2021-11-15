@@ -9,8 +9,7 @@ public enum IronMode {
     NONE(""),
     REGULAR("Ironman"),
     ULTIMATE("Ultimate Ironman"),
-    HARDCORE("Hardcore Ironman"),
-    GROUP("Group Ironman");
+    HARDCORE("Hardcore Ironman");
 
     public String name;
 
@@ -47,14 +46,5 @@ public enum IronMode {
      */
     public boolean isHardcoreIronman() {
         return name.equals("Hardcore Ironman");
-    }
-
-    /**
-     * Determines if the {@link #name} is equal to {@link IronMode#GROUP}
-     *
-     * @return {@code true} if the player is of this type, otherwise {@code false}
-     */
-    public boolean isGroupIronman() {
-        return name.equals("Group Ironman");
     }
 }

@@ -38,6 +38,17 @@ public final class IronmanGroupHandler {
         return ironManGroups.stream().filter(e -> e.playerExists(player)).findFirst();
     }
 
+    public static boolean isGroupLeader(Player player) {
+        for (IronmanGroup group : ironManGroups) {
+            return player.getUsername().equalsIgnoreCase(group.getLeaderName());
+        }
+        return false;
+    }
+
+    public static boolean isGroupIronman(Player player) {
+        return getGroupByName(player.getUsername()).isPresent() || getPlayersGroup(player).isPresent();
+    }
+
     /**
      * Handles the logout of a player
      */
@@ -45,6 +56,7 @@ public final class IronmanGroupHandler {
         Optional<IronmanGroup> getGroup = getPlayersGroup(player);
         getGroup.ifPresent(ironmanGroup -> ironmanGroup.updatePlayer(player));
         saveIronmanGroups();
+        clearInvitation(player);
     }
 
     /**
@@ -107,6 +119,16 @@ public final class IronmanGroupHandler {
         return Optional.empty();
     }
 
+    public static void clearInvitation(Player player) {
+        for (IronmanGroup group : ironManGroups) {
+            Optional<String> invitation = group.getInvitation();
+            if (invitation.isPresent()) {
+                if(player.getUsername().equalsIgnoreCase(group.getInvitation().get())) {
+                    group.setInvitation(Optional.empty());
+                }
+            }
+        }
+    }
 
     /**
      * Returns a list of the latest ironman groups created
