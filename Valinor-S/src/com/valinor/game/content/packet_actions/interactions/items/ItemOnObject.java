@@ -33,10 +33,6 @@ public class ItemOnObject {
 
         Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
 
-        /*if (player.farming().handleItemOnObjectInteraction(object.getId(), item.getId(), object.getX(), object.getY())) {
-            return;
-        }*/
-
         if (PacketInteractionManager.checkItemOnObjectInteraction(player, item, object)) {
             return;
         }

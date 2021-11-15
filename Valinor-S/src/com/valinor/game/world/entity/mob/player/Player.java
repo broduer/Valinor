@@ -46,7 +46,6 @@ import com.valinor.game.content.security.impl.EnterAccountPin;
 import com.valinor.game.content.skill.Skillable;
 import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.content.skill.impl.farming.FarmingSaving;
-import com.valinor.game.content.skill.impl.farmingOld.FarmingOld;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.slayer.SlayerKey;
 import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
@@ -435,50 +434,6 @@ public class Player extends Mob {
 
     public boolean jailed() {
         return (int) getAttribOr(AttributeKey.JAILED, 0) == 1;
-    }
-
-    private int[] farmingSeedId = new int[FarmingOld.MAX_PATCHES], farmingTime = new int[FarmingOld.MAX_PATCHES],
-        farmingState = new int[FarmingOld.MAX_PATCHES], farmingHarvest = new int[FarmingOld.MAX_PATCHES];
-
-    public int getFarmingSeedId(int index) {
-        return farmingSeedId[index];
-    }
-
-    public void setFarmingSeedId(int index, int farmingSeedId) {
-        this.farmingSeedId[index] = farmingSeedId;
-    }
-
-    public int getFarmingTime(int index) {
-        return this.farmingTime[index];
-    }
-
-    public void setFarmingTime(int index, int farmingTime) {
-        this.farmingTime[index] = farmingTime;
-    }
-
-    public int getFarmingState(int index) {
-        return farmingState[index];
-    }
-
-    public void setFarmingState(int index, int farmingState) {
-        this.farmingState[index] = farmingState;
-    }
-
-    public int getFarmingHarvest(int index) {
-        return farmingHarvest[index];
-    }
-
-    public void setFarmingHarvest(int index, int farmingHarvest) {
-        this.farmingHarvest[index] = farmingHarvest;
-    }
-
-    private FarmingOld farmingOld = new FarmingOld(this);
-
-    public FarmingOld farming() {
-        if (farmingOld == null) {
-            farmingOld = new FarmingOld(this);
-        }
-        return farmingOld;
     }
 
     /**
@@ -3162,10 +3117,6 @@ public class Player extends Mob {
                 decreaseStats.start((Prayers.usingPrayer(this, Prayers.PRESERVE) ? 90 : 60));
             }
         }
-
-        //Section 15 process farming
-        section[15] = true;
-        farmingOld.farmingProcess();
     };
 
     private void replaceItems() {

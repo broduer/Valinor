@@ -84,10 +84,6 @@ public class ObjectActions {
             if (Farming.handleActions(player, FarmingConstants.FIRST_CLICK_OBJECT, tile, -1)) {
                 return;
             }
-
-            /*if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),1)) {
-                return;
-            }*/
         }
 
         if (clickAction == 2) {
@@ -115,11 +111,6 @@ public class ObjectActions {
                 player.getPacketSender().sendChatboxInterface(2400);
                 return;
             }
-
-            /*if (player.farming().handleObjectInteraction(object.getId(), object.getX(), object.getY(),2)) {
-                //System.out.println("object option 2, farming old system.");
-                return;
-            }*/
 
             if (PacketInteractionManager.checkObjectInteraction(player, object, 2)) {
                 //System.out.println("object option 2, checkObjectInteraction.");
