@@ -167,6 +167,7 @@ public class IronmanGroup {
         invitation = Optional.of(target.getUsername());
         target.message(inviter.getUsername() + ":groupinvite:");
         inviter.message("Request sent to " + target.getUsername());
+        inviter.getInterfaceManager().close();
     }
 
     public boolean isGroupFull() {

@@ -42,7 +42,6 @@ public class GroupIronmanInterface extends PacketInteraction {
      * Opens the interface for a player
      */
     public static void open(Player player) {
-        System.out.println("huh");
         clear(player);
         List<IronmanGroup> best = IronmanGroupHandler.getBestIronmenGroups(10);
         for (int i = 0; i < best.size(); i++) {

@@ -126,6 +126,7 @@ public class PlayerSave {
                 } else {
                     player.ironMode(details.ironMode);
                 }
+                player.putAttrib(GROUP_NAME_SET, details.groupNameSet);
                 if(details.lastIP != null) {
                     player.setHostAddress(details.lastIP);
                 }
@@ -634,6 +635,7 @@ public class PlayerSave {
         private final String memberRights;
         private final ExpMode expMode;
         private final IronMode ironMode;
+        private final boolean groupNameSet;
         private final String lastIP;
         private final String mac;
         private final int accountPin;
@@ -1108,6 +1110,7 @@ public class PlayerSave {
             memberRights = player.getMemberRights().name();
             expMode = player.expmode();
             ironMode = player.ironMode();
+            groupNameSet = Player.getAttribBooleanOr(player, GROUP_NAME_SET,false);
             lastIP = player.getHostAddress();
             mac = player.getAttribOr(MAC_ADDRESS, "invalid");
             accountPin = Player.getAttribIntOr(player, ACCOUNT_PIN,0);

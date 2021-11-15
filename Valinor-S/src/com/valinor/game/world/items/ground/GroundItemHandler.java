@@ -198,7 +198,6 @@ public final class GroundItemHandler {
     public static boolean createGroundItem(GroundItem item) {
         Player player = item.getPlayer();
         if (item.getItem().getId() < 0) {
-            System.out.println("huh");
             return false;
         }
 

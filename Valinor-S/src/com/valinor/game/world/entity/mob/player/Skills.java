@@ -599,9 +599,8 @@ public class Skills {
 
         if (skill != null) {
             boolean isCombatMaxed = player.getAttribOr(AttributeKey.COMBAT_MAXED, false);
-            //Players can set there combat stats to 99, except for trained accounts they have to be maxed first.
             if (!player.getPlayerRights().isDeveloperOrGreater(player) && (!isCombatMaxed && skill.canSetLevel())) {
-                player.message("As a trained account you have to max out your combat stats first.");
+                player.message("You can set your levels after you've maxed out your combat.");
                 return false;
             }
 
