@@ -31,7 +31,7 @@ public class IronmanWidget extends Widget {
         addButton(67014, 1786,"Delete group");
         addText(67015, "Invite", font, 2, 0xff981f, false, true);
         addText(67016, "Set name", font, 2, 0xff981f, false, true);
-        addText(67017, "Delete", font, 2, 0xff981f, false, true);
+        addText(67017, "Disband", font, 2, 0xff981f, false, true);
         addButton(67018, 1786,"Create");
         addText(67019, "Create", font, 2, 0xff981f, false, true);
         setChildren(19, widget);

@@ -1,7 +1,9 @@
 package com.valinor.game.content.group_ironman;
 
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.time.Instant;
@@ -36,12 +38,17 @@ public class IronmanGroup {
             .setMembers(members);
     }
 
-
     public void acceptInvitation(Player player) {
         invitation = Optional.empty();
-        if(!members.contains(new IronmanGroupMember(player))) {
-            members.add(new IronmanGroupMember(player));
+        IronmanGroupMember member = new IronmanGroupMember(player);
+        if(!members.contains(member)) {
+            members.add(member);
         }
+    }
+
+    public void leaveGroup(Player player) {
+        IronmanGroupMember member = new IronmanGroupMember(player);
+        members.remove(member);
     }
 
     public boolean isOnline() {
@@ -61,7 +68,7 @@ public class IronmanGroup {
     /**
      * Updates the player
      *
-     * @param player - the player too update
+     * @param player - the player to update
      */
     public void updatePlayer(Player player) {
         Optional<IronmanGroupMember> member = getMember(player.getUsername());
@@ -109,52 +116,64 @@ public class IronmanGroup {
     }
 
     /**
-     * A method to try and invite a player to a clan
-     * @param inviter - the person inviting
-     * @param target - the target to invite
+     * Group leaders have the option to create a group, set a group name, and invite players. Up to 4 additional players can be invited in the group.
+     * The group member that creates the group by default will be the group leader. Leaders can only invite fresh accounts to the group.
+     * This is to prevent unfair advantages to groups by inviting experienced players to the group.
+     * Groups will be automatically disbanded if there are no more members in the group and the leader leaves.
+     *
+     * @param leader - the group leader
+     * @param playerToInv - the player to invite
      * @return - true if the target can be invited
      */
-    public boolean canInvite(Player inviter, Player target) {
-        if(target.skills().totalLevel() > 500) {
-            inviter.message("<col=FF0000>You can't invite this player, they need to be below 500 total level.");
+    public boolean canInvite(Player leader, Player playerToInv) {
+        //Check if the player is the leader of the group
+        if(!leaderName.equalsIgnoreCase(leader.getUsername())) {
+            leader.message(Color.RED.wrap("You have to be group leader to invite others."));
             return false;
         }
 
-        if(target.ironMode() == IronMode.NONE) {
-            inviter.message("<col=FF0000>This player isn't a ironman.");
-            return false;
-        }
-
-        if(IronmanGroupHandler.hasInvitation(target)) {
-            inviter.message("<col=FF0000>This player already has a pending request.");
-            return false;
-        }
-
-        if(isGroupMember(target)) {
-            inviter.message("<col=FF0000>This player is already on your group.");
-            return false;
-        }
-
-        if(!leaderName.equalsIgnoreCase(inviter.getUsername())) {
-            inviter.message("<col=FF0000>You have to be group leader to invite others.");
-            return false;
-        }
-
-        if(inviter.ironMode() != target.ironMode()) {
-            inviter.message("<col=FF0000>"+target.getUsername()+" cannot join your group as they are not a "+inviter.ironMode().name);
-            return false;
-        }
-
+        //Check if our group is already full
         if(isGroupFull()) {
-            inviter.message("<col=FF0000>Your group is already full.");
+            leader.message(Color.RED.wrap("Your group is already full."));
             return false;
         }
 
-        if(IronmanGroupHandler.getPlayersGroup(target).isPresent()) {
-            inviter.message("<col=FF0000>This player already has a group.");
+        //Check if the player isn't already part of another ironman group
+        if(IronmanGroupHandler.getPlayersGroup(playerToInv).isPresent()) {
+            leader.message(Color.RED.wrap("This player already has a group."));
             return false;
         }
 
+        //Check if the player being invited is an ironman
+        if(playerToInv.ironMode() == IronMode.NONE) {
+            leader.message(Color.RED.wrap("This player isn't a ironman."));
+            return false;
+        }
+
+        //Check if the player already has a pending invitation
+        if(IronmanGroupHandler.hasInvitation(playerToInv)) {
+            leader.message(Color.RED.wrap("This player already has a pending request."));
+            return false;
+        }
+
+        //Check if the player is already part of your group
+        if(isGroupMember(playerToInv)) {
+            leader.message(Color.RED.wrap("This player is already in your group."));
+            return false;
+        }
+
+        //You can only invite freshly made accounts, total level of 32 and max 30 minutes of game time.
+        var isNewPlayer = playerToInv.skills().totalLevel() <= 32 && playerToInv.<Integer>getAttribOr(AttributeKey.GAME_TIME,0) < 3000;
+        if(!isNewPlayer) {
+            leader.message(Color.RED.wrap("You can't invite this player."));
+            return false;
+        }
+
+        //You can only invite players with the same ironman mode
+        if(leader.ironMode() != playerToInv.ironMode()) {
+            leader.message(Color.RED.wrap(playerToInv.getUsername()+" cannot join your group as they are not a "+leader.ironMode().name));
+            return false;
+        }
         return true;
     }
 

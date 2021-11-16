@@ -73,6 +73,11 @@ public class GroupIronmanInterface extends PacketInteraction {
                 return true;
             }
 
+            if(!IronmanGroupHandler.isGroupLeader(player)) {
+                player.message(Color.RED.wrap("You are not the leader of this group."));
+                return true;
+            }
+
             player.setEnterSyntax(new InviteToGroup());
             player.getPacketSender().sendEnterInputPrompt("Who would you like to invite to your group?");
             return true;
@@ -101,18 +106,7 @@ public class GroupIronmanInterface extends PacketInteraction {
                 player.message(Color.RED.wrap("You're not a ironman."));
                 return true;
             }
-
-            if(!IronmanGroupHandler.isGroupLeader(player)) {
-                player.message(Color.RED.wrap("You are not the leader of this group."));
-                return true;
-            }
-
-            if (player.skills().totalLevel() > 500) {
-                player.messageBox("You may not delete your group and form a new one, your total level is over 500!");
-                return true;
-            }
-            IronmanGroupHandler.deleteGroup(player);
-            player.messageBox("You have successfully deleted your group. <br>Form a new one by accepting or sending an invite.");
+            player.getDialogueManager().start(new DisbandDialogue());
             return true;
         }
         if (button == 67018) {

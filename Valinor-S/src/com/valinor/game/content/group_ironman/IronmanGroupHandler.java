@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupAverageSort;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupDateSort;
+import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.Color;
 import org.slf4j.Logger;
@@ -66,6 +67,12 @@ public final class IronmanGroupHandler {
      * @return - true if created
      */
     public static Optional<IronmanGroup> createIronmanGroup(Player player) {
+        //Ultimate ironmans cannot create a group
+        if(player.ironMode() == IronMode.ULTIMATE) {
+            player.message("You cannot create a group as an ultimate ironman.");
+            return Optional.empty();
+        }
+
         IronmanGroup newGroup = IronmanGroup.createGroup(player);
         boolean alreadyExists = getGroupByName(player.getUsername()).isPresent() || getPlayersGroup(player).isPresent();
         if(alreadyExists) {
@@ -155,10 +162,38 @@ public final class IronmanGroupHandler {
         player.message("You have deleted your group.");
     }
 
-
     public static void deleteGroup(Player player) {
         Optional<IronmanGroup> getGroup = getPlayersGroup(player);
         getGroup.ifPresent(ironmanGroup -> deleteGroup(ironmanGroup, player));
+    }
+
+    public static void leaveGroup(Player player) {
+        Optional<IronmanGroup> getGroup = getPlayersGroup(player);
+        getGroup.ifPresent(ironmanGroup -> ironmanGroup.leaveGroup(player));
+        player.message(Color.PURPLE.wrap("You have left the group."));
+        saveIronmanGroups();
+    }
+
+    public static void kick(Player leader, Player memberToKick) {
+        Optional<IronmanGroup> getGroup = getPlayersGroup(memberToKick);
+        if(getGroup.isPresent()) {
+            getGroup.get().leaveGroup(memberToKick);
+            memberToKick.message(Color.PURPLE.wrap("You have been kicked from the group."));
+            saveIronmanGroups();
+        } else {
+            leader.message(Color.RED.wrap("Unable to find player in group."));
+        }
+    }
+
+    public static void changeGroupLeader(Player leader, Player newLeader) {
+        Optional<IronmanGroup> getGroup = getPlayersGroup(newLeader);
+        if(getGroup.isPresent()) {
+            getGroup.get().setLeaderName(newLeader.getUsername());
+            newLeader.message(Color.PURPLE.wrap("You're the new leader of the group."));
+            saveIronmanGroups();
+        } else {
+            leader.message(Color.RED.wrap("Unable to find player in group."));
+        }
     }
 
     /**
