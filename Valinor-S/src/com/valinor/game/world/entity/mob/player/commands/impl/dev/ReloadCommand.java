@@ -35,7 +35,7 @@ public class ReloadCommand implements Command {
                 }
                 World.getWorld().unregisterNpc(worldNpcs);
             }
-            Halloween.loadNpcs();
+            //Halloween.loadNpcs();
             World.loadNpcSpawns(new File("data/map/npcs"));
             try {
                 Fishing.respawnAllSpots(World.getWorld());

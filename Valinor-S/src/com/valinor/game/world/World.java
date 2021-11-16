@@ -724,7 +724,7 @@ public class World {
 
         try {
             //Seasonal spawns
-            Halloween.loadNpcs();
+            //Halloween.loadNpcs();
             loadNpcSpawns(new File("data/map/npcs"));
         } catch (Exception e) {
             e.printStackTrace();
