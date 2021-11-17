@@ -1,4 +1,4 @@
-package com.valinor.game.content;
+package com.valinor.game.content.items.keys;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
@@ -9,13 +9,14 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.CustomItemIdentifiers;
-import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.valinor.game.content.collection_logs.LogType.KEYS;
-import static com.valinor.util.ItemIdentifiers.CRYSTAL_KEY;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -25,9 +26,9 @@ public class CrystalKey extends PacketInteraction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
-        if ((use.getId() == ItemIdentifiers.LOOP_HALF_OF_KEY && usedWith.getId() == ItemIdentifiers.TOOTH_HALF_OF_KEY) || (use.getId() == ItemIdentifiers.TOOTH_HALF_OF_KEY && usedWith.getId() == ItemIdentifiers.LOOP_HALF_OF_KEY)) {
-            player.inventory().remove(new Item(ItemIdentifiers.LOOP_HALF_OF_KEY), true);
-            player.inventory().remove(new Item(ItemIdentifiers.TOOTH_HALF_OF_KEY), true);
+        if ((use.getId() == LOOP_HALF_OF_KEY && usedWith.getId() == TOOTH_HALF_OF_KEY) || (use.getId() == TOOTH_HALF_OF_KEY && usedWith.getId() == LOOP_HALF_OF_KEY)) {
+            player.inventory().remove(new Item(LOOP_HALF_OF_KEY), true);
+            player.inventory().remove(new Item(TOOTH_HALF_OF_KEY), true);
             player.inventory().add(new Item(CRYSTAL_KEY), true);
             return true;
         }
@@ -84,49 +85,15 @@ public class CrystalKey extends PacketInteraction {
         return false;
     }
 
-    private enum PvpRewards {
-        FIRST(80, new Item[]{new Item(ItemIdentifiers.BLOOD_MONEY, 15_000)}),
-        SECOND(60, new Item[]{new Item(CustomItemIdentifiers.BLOOD_MONEY_CASKET, 1)}),
-        THIRD(50, new Item[]{new Item(ItemIdentifiers.DRAGONFIRE_SHIELD, 1)}),
-        FOURTH(40, new Item[]{new Item(CustomItemIdentifiers.ARMOUR_MYSTERY_BOX, 1)}),
-        FIFTH(30, new Item[]{new Item(CustomItemIdentifiers.WEAPON_MYSTERY_BOX, 1)}),
-        SIXTH(20, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 1)}),
-        EIGHT(10, new Item[]{new Item(ItemIdentifiers.BERSERKER_RING_I, 1)}),
-        NINTH(8, new Item[]{new Item(ItemIdentifiers.SEERS_RING_I, 1)}),
-        TENTH(7, new Item[]{new Item(ItemIdentifiers.ARCHERS_RING_I, 1)}),
-        ELEVENTH(6, new Item[]{new Item(ItemIdentifiers.ARMADYL_CROSSBOW, 1)}),
-        TWELFTH(5, new Item[]{new Item(ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, 1)}),
-        THIRTEENTH(2, new Item[]{new Item(ItemIdentifiers.ARMADYL_GODSWORD, 1)}),
-        FOURTEENTH(1, new Item[]{new Item(ItemIdentifiers.DRAGON_CLAWS, 1)});
-
-        private final int chance;
-        private final Item[] rewards;
-
-        PvpRewards(int chance, Item[] rewards) {
-            this.chance = chance;
-            this.rewards = rewards;
-        }
-    }
-
-    private static void reward(Player player) {
-        Item[] rewards = generateReward();
-        
-        Item drop = null;
-
-        for (Item item : rewards) {
-            player.getInventory().addOrDrop(item);
-            KEYS.log(player, CRYSTAL_KEY, item);
-            drop = item;
+    private void reward(Player player) {
+        int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
+        for (int i = 0; i < rolls; i++) {
+            Item reward = generateReward();
+            player.getInventory().addOrDrop(reward);
+            KEYS.log(player, CRYSTAL_KEY, reward);
         }
 
-        if(drop != null) {
-            //The user box test doesn't yell.
-            if(player.getUsername().equalsIgnoreCase("Box test")) {
-                return;
-            }
-            System.out.println(drop.toString());
-            World.getWorld().sendWorldMessage("<img=1081>" + player.getUsername() + " received <col=A30072>" + drop.name() + " </col>from the crystal key.");
-        }
+        player.getInventory().addOrDrop(new Item(UNCUT_DRAGONSTONE));
 
         int keysUsed = player.<Integer>getAttribOr(AttributeKey.CRYSTAL_KEYS_OPENED, 0) + 1;
         player.putAttrib(AttributeKey.CRYSTAL_KEYS_OPENED, keysUsed);
@@ -137,16 +104,45 @@ public class CrystalKey extends PacketInteraction {
         AchievementsManager.activate(player, Achievements.CRYSTAL_LOOTER_III, 1);
     }
 
-    private static Item[] generateReward() {
-        int randomReward = Utils.random(80);
-        Item[] rewardItem;
-        for (PvpRewards reward : PvpRewards.values()) {
-            if (reward.chance <= randomReward) {
-                return reward.rewards;
-            }
+    private Item generateReward() {
+        if(World.getWorld().rollDie(5,1)) {
+            return Utils.randomElement(UNCOMMON);
+        } else {
+            return Utils.randomElement(COMMON);
         }
-        rewardItem = PvpRewards.FIRST.rewards;
-        return rewardItem;
     }
+
+    private final List<Item> COMMON = Arrays.asList(
+        new Item(UNCUT_DIAMOND+1, 25),
+        new Item(DRAGON_ARROWTIPS, 50 + World.getWorld().random(150)),
+        new Item(RAW_SEA_TURTLE+1, 50),
+        new Item(SHARK+1, 50),
+        new Item(COINS_995, 2_500_000),
+        new Item(RAW_DARK_CRAB, 30),
+        new Item(GRIMY_RANARR_WEED+1, 25),
+        new Item(RANARR_SEED, 25),
+        new Item(GRIMY_SNAPDRAGON+1, 25),
+        new Item(GRIMY_TOADFLAX+1, 25),
+        new Item(SNAPDRAGON_SEED, 25));
+
+    private final List<Item> UNCOMMON = Arrays.asList(
+        new Item(COINS_995, 5_000_000),
+        new Item(DRAGON_LONGSWORD, 1),
+        new Item(MAGIC_LOGS+1, 100),
+        new Item(DRAGON_BATTLEAXE, 1),
+        new Item(SHIELD_LEFT_HALF, 1),
+        new Item(SHIELD_RIGHT_HALF, 1),
+        new Item(CLUE_SCROLL_HARD, 1),
+        new Item(COOKED_KARAMBWAN+1, 15),
+        new Item(DRAGON_SCIMITAR, 1),
+        new Item(DRAGON_BOOTS, 1),
+        new Item(RUNITE_BAR+1, 25),
+        new Item(DRAGON_BONES+1, 35),
+        new Item(RUNITE_ORE+2, 25),
+        new Item(DRAGONSTONE_BOLTS_E, 100),
+        new Item(RUBY_BOLTS_E, 75),
+        new Item(SUPERIOR_DRAGON_BONES+1, 5 + World.getWorld().random(10)),
+        new Item(DAGANNOTH_BONES+1, 20 + World.getWorld().random(20)),
+        new Item(SUPER_COMBAT_POTION4+1, 10));
 
 }

@@ -119,7 +119,7 @@ public class HomeArea extends PacketInteraction {
             }
         }
         if(option == 3) {
-            if (object.getId() == 31858) {
+            if (object.getId() == ALTAR_OF_THE_OCCULT) {
                 player.animate(645);
                 player.message("Your mind fills with knowledge.");
                 MagicSpellbook.changeSpellbook(player, MagicSpellbook.LUNAR, true);

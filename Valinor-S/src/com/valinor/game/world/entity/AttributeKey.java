@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    BRIMSTONE_KEYS_OPENED("brimstone_keys_opened", AttribType.INTEGER),
+
     COMBAT_MAXED("combat_maxed", AttribType.INTEGER),
 
     /**
@@ -164,8 +166,6 @@ public enum AttributeKey {
     DEFENSIVE_AUTOCAST("defensive_autocast", AttribType.BOOLEAN),
 
     AUTOCAST_SELECTED("autocast_selected", AttribType.BOOLEAN),
-
-    EARNING_POTENTIAL("earning_potential", AttribType.INTEGER),
 
     // How much BM we last died with. Used to combat raggers/no risk suicide accounts.
     LASTDEATH_VALUE,
@@ -1189,9 +1189,7 @@ public enum AttributeKey {
     DATABASE_PLAYER_ID("database_player_id", AttribType.INTEGER),
     REFERRAL_MILESTONE_THREE_REFERRALS("referral_milestone_three_refs", AttribType.BOOLEAN),
     LAST_ENCHANT_SELECTED,
-    LARRANS_KEYS_TIER_ONE_USED("larrans_keys_tier1_used", AttribType.INTEGER),
-    LARRANS_KEYS_TIER_TWO_USED("larrans_keys_tier2_used", AttribType.INTEGER),
-    LARRANS_KEYS_TIER_THREE_USED("larrans_keys_tier3_used", AttribType.INTEGER),
+    LARRANS_KEYS_OPENED("larrans_keys_opened", AttribType.INTEGER),
     MBOX_REWARDS_VISIBLE,
     FILLER_AMT, RC_DIALOGUE, RUNECRAFTING,
     VENOM_TASK_RUNNING, PRAYER_DELAYED_ACTIVATION_TASK, PRAYER_DELAYED_ACTIVATION_CLICKS, MOVEMENT_PACKET_STEPS,

@@ -450,8 +450,8 @@ public class PlayerSave {
                 player.putAttrib(OVERLOAD_POTION, details.overloadTicks);
                 player.putAttrib(ANTIFIRE_POTION, details.antifireTicks);
                 player.putAttrib(SUPER_ANTIFIRE_POTION, details.superAntiFire);
-                player.putAttrib(LARRANS_KEYS_TIER_ONE_USED, details.larranKeysUsed);
-                player.putAttrib(EARNING_POTENTIAL, details.earningPotential);
+                player.putAttrib(LARRANS_KEYS_OPENED, details.larranKeysUsed);
+                player.putAttrib(BRIMSTONE_KEYS_OPENED, details.brimstoneKeysOpened);
                 player.putAttrib(SLAYER_KEYS_OPENED, details.slayerKeysOpened);
                 player.putAttrib(SLAYER_KEYS_RECEIVED, details.slayerKeysReceived);
                 player.putAttrib(DOUBLE_EXP_TICKS, details.doubleExpTicks);
@@ -890,7 +890,7 @@ public class PlayerSave {
         private final int antifireTicks;
         private final boolean superAntiFire;
         private final int larranKeysUsed;
-        private final int earningPotential;
+        private final int brimstoneKeysOpened;
 
         private final int slayerKeysOpened;
         private final int slayerKeysReceived;
@@ -1337,8 +1337,8 @@ public class PlayerSave {
             overloadTicks = Player.getAttribIntOr(player, OVERLOAD_POTION, 0);
             antifireTicks = Player.getAttribIntOr(player, ANTIFIRE_POTION, 0);
             superAntiFire = Player.getAttribBooleanOr(player, SUPER_ANTIFIRE_POTION, false);
-            larranKeysUsed = Player.getAttribIntOr(player, LARRANS_KEYS_TIER_ONE_USED, 0);
-            earningPotential = Player.getAttribIntOr(player, EARNING_POTENTIAL, 0);
+            larranKeysUsed = Player.getAttribIntOr(player, LARRANS_KEYS_OPENED, 0);
+            brimstoneKeysOpened = Player.getAttribIntOr(player, BRIMSTONE_KEYS_OPENED, 0);
             slayerKeysOpened = Player.getAttribIntOr(player, SLAYER_KEYS_OPENED, 0);
             slayerKeysReceived = Player.getAttribIntOr(player, SLAYER_KEYS_RECEIVED, 0);
             doubleExpTicks = Player.getAttribIntOr(player, DOUBLE_EXP_TICKS,0);

@@ -211,9 +211,6 @@ public class CustomItemIdentifiers {
     public static final int JAWA_PET = 16173;
     public static final int BABY_ARAGOG = 16172;
     public static final int WAMPA = 16171;
-    public static final int LARRANS_KEY_TIER_I = LARRANS_KEY;
-    public static final int LARRANS_KEY_TIER_II = 14900;
-    public static final int LARRANS_KEY_TIER_III = 14901;
     public static final int DHAROK_PET = 16020;
     public static final int TWISTED_SLAYER_HELMET_I_KBD_HEADS = 24445;
     public static final int TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE = 25913;

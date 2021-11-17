@@ -121,14 +121,6 @@ public class NPCActions extends NpcIdentifiers {
                     player.getDialogueManager().start(new TwiggyOKorn());
                     break;
 
-                case NpcIdentifiers.SUROK_MAGIS:
-                    npc.face(player.tile());
-                    player.getPacketSender().sendString(29078, "World Teleports - Recent");
-                    player.setCurrentTabIndex(2);
-                    player.getTeleportInterface().displayRecent();
-                    player.getInterfaceManager().open(29050);
-                    break;
-
                 case SHOP_KEEPER:
                 case SHOP_ASSISTANT_2818:
                     npc.face(player.tile());

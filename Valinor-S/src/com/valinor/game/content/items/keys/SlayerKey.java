@@ -1,6 +1,7 @@
-package com.valinor.game.content.skill.impl.slayer;
+package com.valinor.game.content.items.keys;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -27,8 +28,8 @@ import static com.valinor.util.ItemIdentifiers.SUPER_ANTIFIRE_POTION4;
  */
 public class SlayerKey {
 
-    private static final int RARE_ROLL = 35;
-    private static final int UNCOMMON_ROLL = 10;
+    private static final int RARE_ROLL = 100;
+    private static final int UNCOMMON_ROLL = 25;
 
     private final Player player;
 
@@ -98,64 +99,37 @@ public class SlayerKey {
         new Item(STAMINA_POTION4 + 1, 10),
         new Item(ANTIVENOM4 + 1, 10),
         new Item(SUPER_ANTIFIRE_POTION4 + 1, 10),
-        new Item(REGEN_BRACELET + 1, 1),
-        new Item(WARRIOR_RING + 1, 1),
-        new Item(ARCHERS_RING + 1, 1),
-        new Item(BERSERKER_RING + 1, 1),
-        new Item(SEERS_RING + 1, 1),
-        new Item(BLOOD_MONEY, World.getWorld().random(1_000, 2_000)),
-        new Item(ABYSSAL_WHIP, 1),
-        new Item(AMULET_OF_FURY, 1),
-        new Item(DARK_BOW, 1),
-        new Item(ABYSSAL_TENTACLE, 1),
-        new Item(GRANITE_MAUL_24225, 1),
-        new Item(OCCULT_NECKLACE, 1),
-        new Item(DRAGON_BOOTS, 1),
-        new Item(RANGER_BOOTS),
-        new Item(ROBIN_HOOD_HAT),
-        new Item(RANGER_GLOVES, 1),
-        new Item(RANGERS_TIGHTS, 1),
-        new Item(RANGERS_TUNIC, 1),
-        new Item(SPIKED_MANACLES, 1),
-        new Item(FREMENNIK_KILT, 1),
-        new Item(DRAGON_CROSSBOW, 1),
-        new Item(MYSTERY_BOX, 1),
-        new Item(WEAPON_MYSTERY_BOX),
-        new Item(ARMOUR_MYSTERY_BOX)
+        new Item(GRIMY_DWARF_WEED + 1, 25),
+        new Item(GRIMY_TORSTOL + 1, 25),
+        new Item(GRIMY_RANARR_WEED + 1, 25),
+        new Item(GRIMY_SNAPDRAGON + 1, 25),
+        new Item(GREEN_DRAGONHIDE + 1, 25),
+        new Item(BLUE_DRAGONHIDE + 1, 25),
+        new Item(RED_DRAGONHIDE + 1, 25),
+        new Item(BLACK_DRAGONHIDE + 1, 25),
+        new Item(DRAGON_BONES + 1, 25),
+        new Item(BABYDRAGON_BONES + 1, 25),
+        new Item(UNCUT_DRAGONSTONE + 1, 25),
+        new Item(ADAMANT_ARROW, 200 + World.getWorld().random(400)),
+        new Item(RUNE_ARROW, 200 + World.getWorld().random(300))
     );
 
     private static final List<Item> UNCOMMON = Arrays.asList(
-        new Item(DONATOR_MYSTERY_BOX),
-        new Item(DIVINE_SUPER_COMBAT_POTION4 + 1, 50),
-        new Item(STAMINA_POTION4 + 1, 25),
-        new Item(SUPER_ANTIFIRE_POTION4 + 1, 25),
-        new Item(BLOOD_MONEY, World.getWorld().random(3_000, 5_000)),
-        new Item(ABYSSAL_DAGGER_P_13271),
-        new Item(SARADOMIN_GODSWORD),
-        new Item(ZAMORAK_GODSWORD),
-        new Item(BANDOS_GODSWORD),
-        new Item(BANDOS_CHESTPLATE),
-        new Item(BANDOS_TASSETS),
-        new Item(ARMADYL_CHAINSKIRT),
-        new Item(ARMADYL_CHAINSKIRT),
-        new Item(ARMADYL_HELMET),
-        new Item(DRAGONFIRE_SHIELD),
-        new Item(ODIUM_WARD),
-        new Item(MALEDICTION_WARD)
+        new Item(DRAGON_DART, 100 + World.getWorld().random(400)),
+        new Item(DRAGON_ARROW, 100 + World.getWorld().random(400)),
+        new Item(DRAGON_PLATELEGS, 1),
+        new Item(DRAGON_PLATESKIRT, 1),
+        new Item(DRAGON_BOOTS, 1),
+        new Item(DRAGON_AXE, 1),
+        new Item(DRAGON_CHAINBODY_3140, 1)
     );
 
     private static final List<Item> RARE = Arrays.asList(
-        new Item(ARMADYL_GODSWORD),
-        new Item(DRAGON_CLAWS),
-        new Item(ABYSSAL_BLUDGEON),
-        new Item(ARMADYL_CROSSBOW),
-        new Item(PEGASIAN_BOOTS),
-        new Item(ETERNAL_BOOTS),
-        new Item(PRIMORDIAL_BOOTS),
-        new Item(BLOOD_MONEY, World.getWorld().random(10_000, 75_000)),
-        new Item(SERPENTINE_HELM),
-        new Item(TOXIC_STAFF_OF_THE_DEAD),
-        new Item(TOXIC_BLOWPIPE),
-        new Item(TRIDENT_OF_THE_SWAMP)
+        new Item(DRAGONSTONE_FULL_HELM, 1),
+        new Item(DRAGONSTONE_PLATEBODY, 1),
+        new Item(DRAGONSTONE_PLATELEGS, 1),
+        new Item(DRAGONSTONE_GAUNTLETS, 1),
+        new Item(DRAGONSTONE_BOOTS, 1),
+        new Item(UNCUT_ONYX, 1)
     );
 }

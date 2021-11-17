@@ -47,7 +47,7 @@ import com.valinor.game.content.skill.Skillable;
 import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
-import com.valinor.game.content.skill.impl.slayer.SlayerKey;
+import com.valinor.game.content.items.keys.SlayerKey;
 import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.sound.CombatSounds;
