@@ -177,7 +177,7 @@ public final class IronmanGroupHandler {
     public static void kick(Player leader, Player memberToKick) {
         Optional<IronmanGroup> getGroup = getPlayersGroup(memberToKick);
         if(getGroup.isPresent()) {
-            getGroup.get().leaveGroup(memberToKick);
+            getGroup.ifPresent(ironmanGroup -> ironmanGroup.kickFromGroup(memberToKick));
             memberToKick.message(Color.PURPLE.wrap("You have been kicked from the group."));
             saveIronmanGroups();
         } else {

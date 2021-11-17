@@ -47,7 +47,12 @@ public class IronmanGroup {
     }
 
     public void leaveGroup(Player player) {
-        IronmanGroupMember member = new IronmanGroupMember(player);
+        final IronmanGroupMember member = members.stream().filter(e -> e.getUsername().equalsIgnoreCase(player.getUsername())).findFirst().get();
+        members.remove(member);
+    }
+
+    public void kickFromGroup(Player player) {
+        final IronmanGroupMember member = members.stream().filter(e -> e.getUsername().equalsIgnoreCase(player.getUsername())).findFirst().get();
         members.remove(member);
     }
 
