@@ -152,22 +152,22 @@ public enum Collection {
 
     KERBEROS(AttributeKey.KERBEROS_KILLED, LogType.BOSSES, "Kerberos", new int[]{CustomNpcIdentifiers.KERBEROS}, AttributeKey.KERBEROS_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(LARRANS_KEY_TIER_III), new Item(VAMPYRE_DUST), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(PHARAOHS_HILT)
+        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(VAMPYRE_DUST), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(PHARAOHS_HILT)
     ),
 
     SKORPIOS(AttributeKey.SKORPIOS_KILLED, LogType.BOSSES, "Skorpios", new int[]{CustomNpcIdentifiers.SKORPIOS}, AttributeKey.SKORPIOS_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(LARRANS_KEY_TIER_III), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_HELMET), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_HELMET), new Item(BOW_OF_FAERDHINEN_3)
     ),
 
     ARACHNE(AttributeKey.ARACHNE_KILLED, LogType.BOSSES, "Arachne", new int[]{CustomNpcIdentifiers.ARACHNE}, AttributeKey.ARACHNE_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(LARRANS_KEY_TIER_III), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHAINSKIRT), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHAINSKIRT), new Item(BOW_OF_FAERDHINEN_3)
     ),
 
     ARTIO(AttributeKey.ARTIO_KILLED, LogType.BOSSES, "Artio", new int[]{CustomNpcIdentifiers.ARTIO}, AttributeKey.ARTIO_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(LARRANS_KEY_TIER_III), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHESTPLATE), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(KEY_OF_DROPS), new Item(EPIC_PET_BOX), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHESTPLATE), new Item(BOW_OF_FAERDHINEN_3)
     ),
 
     THE_NIGHTMARE(AttributeKey.THE_NIGHTMARE_KC, LogType.BOSSES, "The nightmare", new int[]{THE_NIGHTMARE_9430}, AttributeKey.THE_NIGTHMARE_LOG_CLAIMED, new Item[]{new Item(SHADOW_INQUISITOR_ORNAMENT_KIT), new Item(INQUISITORS_MACE_ORNAMENT_KIT)},

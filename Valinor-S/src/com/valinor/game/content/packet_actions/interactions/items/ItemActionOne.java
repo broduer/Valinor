@@ -31,8 +31,6 @@ import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
 
-import java.util.Optional;
-
 import static com.valinor.game.world.entity.AttributeKey.VIEWING_RUNE_POUCH_I;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -93,14 +91,14 @@ public class ItemActionOne {
             return;
         }
 
-        if(id == BLOOD_MONEY_CASKET_PROMO) {
+        if(id == TASK_REWARD_CHEST) {
             int amt = World.getWorld().random(100_000, 250_000);
             var blood_reaper = player.hasPetOut("Blood Reaper pet");
             if(blood_reaper) {
                 int extraBM = amt * 10 / 100;
                 amt += extraBM;
             }
-            player.inventory().remove(new Item(BLOOD_MONEY_CASKET_PROMO));
+            player.inventory().remove(new Item(TASK_REWARD_CHEST));
             player.inventory().add(new Item(BLOOD_MONEY, amt));
             player.message(Color.PURPLE.wrap("You've received x "+Utils.formatNumber(amt)+" blood money from the casket!"));
             return;

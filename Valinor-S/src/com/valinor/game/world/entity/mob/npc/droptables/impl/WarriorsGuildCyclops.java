@@ -1,6 +1,8 @@
 package com.valinor.game.world.entity.mob.npc.droptables.impl;
 
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -10,6 +12,8 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.Utils;
+
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen | March, 26, 2021, 18:59
@@ -37,6 +41,17 @@ public class WarriorsGuildCyclops implements Droptable {
                 drop(killed, killer, new Item(defender));
                 killer.message("<col=804080>The Cyclops drops " + aOrAn + " " + def.name + ". Be sure to show this to Kamfreena to unlock");
                 killer.message("<col=804080>the next tier Defender!");
+
+                switch (defender) {
+                    case BRONZE_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_I, 1);
+                    case IRON_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_II, 1);
+                    case STEEL_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_III, 1);
+                    case BLACK_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_IV, 1);
+                    case MITHRIL_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_V, 1);
+                    case ADAMANT_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_VI, 1);
+                    case RUNE_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_VII, 1);
+                    case DRAGON_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_IX, 1);
+                }
             }
 
             //Normal drop

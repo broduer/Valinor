@@ -1446,7 +1446,8 @@ public class Player extends Mob {
             if (tile().region() == 9551) {
                 //restart the wave on login
                 heal(maxHp());
-                MinigameManager.playMinigame(this, new FightCavesMinigame(63));
+                int wave = getAttribOr(AttributeKey.FIGHT_CAVES_WAVE, 1);
+                MinigameManager.playMinigame(this, new FightCavesMinigame(wave));
             }
 
             //Move player out Zulrah area on login

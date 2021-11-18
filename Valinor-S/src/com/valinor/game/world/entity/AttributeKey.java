@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    FIGHT_CAVES_WAVE("current_fightcave_wave", AttribType.INTEGER),
+
     BRIMSTONE_KEYS_OPENED("brimstone_keys_opened", AttribType.INTEGER),
 
     COMBAT_MAXED("combat_maxed", AttribType.INTEGER),
@@ -718,6 +720,8 @@ public enum AttributeKey {
     LOOT_DROP_THRESHOLD_VALUE("loot_drop_threshold_value", AttribType.INTEGER),
 
     ACHIEVEMENTS_COMPLETED("achievements_completed", AttribType.INTEGER),
+
+    ACHIEVEMENT_POINTS("achievements_points", AttribType.INTEGER),
 
     ACHIEVEMENT_DIFFICULTY,
 

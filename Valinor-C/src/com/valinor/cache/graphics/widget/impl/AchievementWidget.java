@@ -48,12 +48,12 @@ public class AchievementWidget extends Widget {
         widget.child(14, 39416, 275, 167);
         widget.child(15, 39417, 335, 110);
         widget.child(16, 39418, 190, 230);
-        widget.child(17, 39430, 20, 53);
+        widget.child(17, 39430, 12, 53);
 
         Widget scrollInterface = addTabInterface(39430);
         scrollInterface.scrollPosition = 0;
         scrollInterface.contentType = 0;
-        scrollInterface.width = 130;
+        scrollInterface.width = 138;
         scrollInterface.height = 255;
         scrollInterface.scrollMax = 1800;
         int x = 5, y = 5;
@@ -61,7 +61,7 @@ public class AchievementWidget extends Widget {
         scrollInterface.totalChildren(amountOfLines);
         for (int index = 0; index < amountOfLines; index++) {
             addText(39431 + index, "test", font, 1, 0xff0000, false, false, 0xffffff, "Select achievement", 150);
-            textClicked(39431 + index, 1137, 1, 2);
+            textClicked(39431 + index, 1137, 1, 0);
             scrollInterface.child(index, 39431 + index, x, y);
             y += 18;
         }

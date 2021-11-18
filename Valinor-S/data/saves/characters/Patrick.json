@@ -4,19 +4,20 @@
   "title": "",
   "titleColor": "",
   "tile": {
-    "x": 3083,
-    "y": 3502,
+    "x": 3104,
+    "y": 3506,
     "level": 0,
-    "firstChunkX": 385,
-    "firstChunkY": 437
+    "firstChunkX": 388,
+    "firstChunkY": 438
   },
-  "gameTime": 323663,
+  "gameTime": 514037,
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
   "memberRights": "ZENYTE_MEMBER",
   "expMode": "GLADIATOR",
   "ironMode": "NONE",
+  "groupNameSet": false,
   "lastIP": "127.0.0.1",
   "mac": "D0-37-45-FF-1B-CD",
   "accountPin": 0,
@@ -25,7 +26,7 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
-  "lastLogin": "Nov 14, 2021, 12:43:11 PM",
+  "lastLogin": "Nov 18, 2021, 12:26:08 PM",
   "muted": false,
   "newPlayer": false,
   "isBetaTester": false,
@@ -52,7 +53,7 @@
     0
   ],
   "spellBook": "NORMAL",
-  "fightType": "TWOHANDEDSWORD_SLASH",
+  "fightType": "UNARMED_KICK",
   "fightTypeVarp": 43,
   "fightTypeVarpState": 1,
   "autoRetaliate": false,
@@ -195,23 +196,29 @@
   "slayerExtensionsList": {},
   "inventory": [
     {
-      "id": 199,
+      "id": 452,
       "amount": 1
     },
     {
-      "id": 199,
+      "id": 11280,
       "amount": 1
     },
     {
-      "id": 199,
+      "id": 20720,
       "amount": 1
     },
     {
-      "id": 13265,
+      "id": 11849,
       "amount": 1
     },
-    null,
-    null,
+    {
+      "id": 20208,
+      "amount": 1
+    },
+    {
+      "id": 11937,
+      "amount": 1
+    },
     null,
     null,
     null,
@@ -239,10 +246,7 @@
     null,
     null,
     null,
-    {
-      "id": 11802,
-      "amount": 1
-    },
+    null,
     null,
     null,
     null,
@@ -256,44 +260,164 @@
   ],
   "bank": [
     {
-      "id": 14479,
-      "amount": 1
+      "id": 451,
+      "amount": 375
     },
     {
-      "id": 5341,
-      "amount": 1
+      "id": 11232,
+      "amount": 5575
     },
     {
-      "id": 5343,
-      "amount": 1
+      "id": 1127,
+      "amount": 8
     },
     {
-      "id": 5340,
-      "amount": 1
+      "id": 995,
+      "amount": 103272290
     },
     {
-      "id": 5291,
-      "amount": 117
+      "id": 1079,
+      "amount": 17
     },
     {
-      "id": 1925,
+      "id": 1617,
+      "amount": 348
+    },
+    {
+      "id": 9242,
+      "amount": 75
+    },
+    {
+      "id": 1163,
+      "amount": 12
+    },
+    {
+      "id": 5295,
+      "amount": 376
+    },
+    {
+      "id": 3051,
+      "amount": 899
+    },
+    {
+      "id": 453,
+      "amount": 8865
+    },
+    {
+      "id": 11237,
+      "amount": 4966
+    },
+    {
+      "id": 5300,
+      "amount": 675
+    },
+    {
+      "id": 1619,
+      "amount": 620
+    },
+    {
+      "id": 383,
+      "amount": 700
+    },
+    {
+      "id": 395,
+      "amount": 3357
+    },
+    {
+      "id": 23053,
       "amount": 2
     },
     {
-      "id": 6032,
-      "amount": 10
+      "id": 207,
+      "amount": 1692
     },
     {
-      "id": 6055,
-      "amount": 6
+      "id": 440,
+      "amount": 9702
     },
     {
-      "id": 199,
-      "amount": 5
+      "id": 2353,
+      "amount": 9486
+    },
+    {
+      "id": 7944,
+      "amount": 1386
+    },
+    {
+      "id": 7936,
+      "amount": 91332
+    },
+    {
+      "id": 3049,
+      "amount": 834
+    },
+    {
+      "id": 21934,
+      "amount": 200
+    },
+    {
+      "id": 11934,
+      "amount": 2672
+    },
+    {
+      "id": 389,
+      "amount": 3940
+    },
+    {
+      "id": 21940,
+      "amount": 100
+    },
+    {
+      "id": 21938,
+      "amount": 100
+    },
+    {
+      "id": 23050,
+      "amount": 1
+    },
+    {
+      "id": 23047,
+      "amount": 2
+    },
+    {
+      "id": 536,
+      "amount": 50
+    },
+    {
+      "id": 22973,
+      "amount": 1
+    },
+    {
+      "id": 12695,
+      "amount": 62
+    },
+    {
+      "id": 22951,
+      "amount": 1
+    },
+    {
+      "id": 21948,
+      "amount": 300
+    },
+    {
+      "id": 21936,
+      "amount": 100
+    },
+    {
+      "id": 6729,
+      "amount": 67
+    },
+    {
+      "id": 11840,
+      "amount": 1
+    },
+    {
+      "id": 22969,
+      "amount": 1
     }
   ],
   "tabAmounts": [
-    9,
+    39,
     0,
     0,
     0,
@@ -305,7 +429,7 @@
     0
   ],
   "placeholdersActive": false,
-  "placeHolderAmount": 0,
+  "placeHolderAmount": 4,
   "hashedBankPin": "No bank pin.",
   "bankPinLength": 0,
   "recoveryDelay": 3,
@@ -468,102 +592,89 @@
   "menInBlackKills": 0,
   "bossTimers": {},
   "recentTeleports": [
+    "WARRIORS_GUILD",
     "FARMING_AREA"
   ],
   "favoriteTeleports": [],
   "collectionLog": {},
   "achievements": {
     "null": 0,
-    "BARROWS_V": 0,
-    "SQUIDWARD_II": 0,
-    "THIEF_III": 0,
-    "DRAGON_SLAYER_IV": 0,
-    "LORD_OF_THE_RINGS_II": 0,
-    "BARK_SCORPION_III": 0,
-    "MAGE_ARENA_I": 0,
-    "SKILLER_I": 0,
-    "MASTER_THIEF": 0,
-    "DRAGON_SLAYER_I": 0,
-    "SNAKE_CHARMER_II": 0,
-    "COMPLETIONIST": 0,
-    "TASK_MASTER_II": 0,
-    "SQUIDWARD_III": 0,
-    "DR_CURT_CONNORS_III": 0,
-    "CRYSTAL_LOOTER_III": 0,
-    "FLUFFY_I": 0,
-    "BARROWS_III": 0,
-    "SAND_CRAB_HUNTER": 0,
-    "BEAR_GRYLLS_II": 0,
-    "BUG_EXTERMINATOR_I": 0,
-    "WHATS_IN_THE_BOX_I": 0,
-    "DR_CURT_CONNORS_II": 0,
-    "REVENANT_HUNTER_II": 0,
-    "FLUFFY_II": 0,
-    "SKILLER_IV": 0,
-    "BEAR_GRYLLS_III": 0,
-    "VORKY_III": 0,
-    "ROCK_CRAB_HUNTER": 0,
+    "CORPOREAL_CRITTER": 0,
+    "BUG_EXTERMINATOR": 0,
+    "REVENANT_HUNTER": 0,
+    "DEFENDER_HUNT_VI": 0,
+    "FISHERMAN": 0,
+    "CHEF": 0,
     "DRAGON_SLAYER_III": 0,
-    "THIEF_IV": 0,
-    "WHATS_IN_THE_BOX_II": 0,
+    "RUNE_MYSTERIES": 0,
+    "VOTE_FOR_US_II": 0,
+    "SKILLER_I": 0,
+    "SKILLER_IV": 0,
     "LARRANS_LOOTER_II": 0,
-    "REVENANT_HUNTER_I": 0,
-    "BARROWS_IV": 0,
+    "ULTIMATE_CHAOS": 0,
+    "DRAGON_SLAYER_I": 0,
+    "DEFENDER_HUNT_IX": 0,
+    "SQUIDWARD": 0,
+    "CRYSTAL_LOOTER_III": 0,
+    "SKILLER_III": 0,
+    "MASTER_THIEF": 0,
+    "LORD_OF_THE_RINGS": 0,
+    "FARMER": 0,
+    "FIGHT_CAVES_I": 0,
+    "PARKOUR": 0,
+    "EXPERIMENTS_HUNTER": 0,
+    "FLUFFY": 0,
+    "BRIMSTONE_LOOTER_I": 10,
+    "YAK_HUNTER": 0,
+    "BREWING": 0,
+    "LARRANS_LOOTER_I": 0,
+    "BARROWS_I": 0,
+    "BRIMSTONE_LOOTER_II": 50,
+    "TASK_MASTER_II": 0,
+    "VENENATIS": 0,
+    "GOLDSMITH": 0,
+    "BARROWS_II": 0,
+    "DEFENDER_HUNT_II": 0,
+    "LAPIDARIST": 0,
+    "PIZZA_BAKER": 0,
+    "COMPLETIONIST": 0,
+    "BARK_SCORPION": 0,
+    "MINER": 0,
+    "DR_CURT_CONNORS": 0,
+    "BAKER": 0,
+    "DRAGON_SLAYER_IV": 0,
+    "LARRANS_LOOTER_III": 0,
+    "PYROMANCER": 0,
+    "SAND_CRAB_HUNTER": 0,
+    "TASK_MASTER_III": 0,
+    "GODWAR": 0,
+    "DRAGON_SLAYER_II": 0,
+    "BEAR_GRYLLS": 0,
+    "CRYSTAL_LOOTER_I": 0,
+    "VORKY": 0,
+    "OWN_A_HOUSE": 0,
+    "BRIMSTONE_LOOTER_III": 100,
+    "LUMBERJACK": 0,
+    "FLETCHER": 0,
+    "BARROWS_III": 0,
+    "COOK": 0,
+    "DEFENDER_HUNT_III": 0,
+    "ROCK_CRAB_HUNTER": 0,
+    "DEFENDER_HUNT_IV": 0,
+    "VOTE_FOR_US_III": 0,
+    "CONSTRUCTION_WORKER": 0,
+    "TSJERNOBYL": 0,
+    "SKILLER_II": 0,
     "CRYSTAL_LOOTER_II": 0,
     "TASK_MASTER_I": 0,
-    "VETION_I": 0,
-    "WHATS_IN_THE_BOX_III": 0,
-    "TSJERNOBYL_II": 0,
-    "ULTIMATE_CHAOS_III": 0,
-    "CORPOREAL_CRITTER": 0,
-    "VETION_II": 0,
-    "BABY_ARAGOG_II": 0,
-    "REVENANT_HUNTER_III": 0,
-    "MAGE_ARENA_III": 0,
-    "HOLEY_MOLEY_I": 0,
-    "GODWAR": 0,
-    "BUG_EXTERMINATOR_II": 0,
-    "MAGE_ARENA_II": 0,
-    "DRAGON_SLAYER_II": 0,
-    "LARRANS_LOOTER_I": 0,
     "FIGHT_CAVES_II": 0,
-    "SKILLER_II": 0,
-    "YAK_HUNTER": 0,
-    "TSJERNOBYL_III": 0,
-    "SQUIDWARD_I": 0,
-    "THIEF_II": 0,
-    "EXPERIMENTS_HUNTER": 0,
-    "HOLEY_MOLEY_II": 0,
-    "VOTE_FOR_US_II": 0,
-    "LORD_OF_THE_RINGS_I": 0,
-    "SNAKE_CHARMER_III": 0,
-    "FIGHT_CAVES_III": 0,
-    "CRYSTAL_LOOTER_I": 0,
-    "SKILLER_III": 0,
-    "REVENANT_HUNTER_IV": 0,
-    "VETION_III": 0,
-    "MAGE_ARENA_IV": 0,
-    "BABY_ARAGOG_III": 0,
-    "LARRANS_LOOTER_III": 0,
-    "TASK_MASTER_III": 0,
-    "BARK_SCORPION_I": 0,
-    "THIEF_I": 0,
+    "SNAKE_CHARMER": 0,
+    "DEFENDER_HUNT_I": 0,
+    "DEFENDER_HUNT_VII": 0,
+    "VETION": 0,
+    "DEFENDER_HUNT_V": 0,
     "VOTE_FOR_US_I": 0,
-    "VORKY_I": 0,
-    "ULTIMATE_CHAOS_I": 0,
-    "DR_CURT_CONNORS_I": 0,
-    "VOTE_FOR_US_III": 0,
-    "TSJERNOBYL_I": 0,
-    "BARROWS_II": 0,
-    "FIGHT_CAVES_I": 0,
-    "SNAKE_CHARMER_I": 0,
-    "BARROWS_I": 0,
-    "HOLEY_MOLEY_III": 0,
-    "BABY_ARAGOG_I": 0,
-    "BEAR_GRYLLS_I": 0,
-    "ULTIMATE_CHAOS_II": 0,
-    "BARK_SCORPION_II": 0,
-    "VORKY_II": 0
+    "MASTER_IN_CONSTRUCTION": 0
   },
   "achievementsCompleted": 0,
   "task": "NONE",
@@ -583,7 +694,7 @@
   "antifireTicks": 0,
   "superAntiFire": false,
   "larranKeysUsed": 0,
-  "earningPotential": 0,
+  "brimstoneKeysOpened": 240,
   "slayerKeysOpened": 0,
   "slayerKeysReceived": 0,
   "doubleExpTicks": 0,
@@ -706,7 +817,7 @@
   "chamberOfSecretsLogClaimed": false,
   "revenantsLogClaimed": false,
   "slayerLogClaimed": false,
-  "lastDailyReset": 14,
+  "lastDailyReset": 18,
   "finishedHalloweenDialogue": false,
   "candiesTraded": -1,
   "eventReward1Claimed": false,
@@ -755,5 +866,7 @@
   "eventReward44Claimed": false,
   "hweenEventTokensSpent": 0,
   "herbBoxCharges": 0,
-  "combatMaxed": false
+  "combatMaxed": false,
+  "fightCaveWave": 0,
+  "achievementPoints": 0
 }

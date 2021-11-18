@@ -318,8 +318,6 @@ public class Barrows extends PacketInteraction {
         AchievementsManager.activate(player, Achievements.BARROWS_I, 1);
         AchievementsManager.activate(player, Achievements.BARROWS_II, 1);
         AchievementsManager.activate(player, Achievements.BARROWS_III, 1);
-        AchievementsManager.activate(player, Achievements.BARROWS_IV, 1);
-        AchievementsManager.activate(player, Achievements.BARROWS_V, 1);
     }
 
     /**

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
+import static com.valinor.game.world.entity.AttributeKey.ACHIEVEMENT_POINTS;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_POINTS;
 import static java.lang.String.format;
 
@@ -56,10 +57,11 @@ public class AchievementsManager {
 
             if(achievement.otherRewardString() != null) {
                 checkForOtherReward(player, achievement);
+                var points = player.<Integer>getAttribOr(ACHIEVEMENT_POINTS, 0) + achievement.points();
+                player.putAttrib(ACHIEVEMENT_POINTS, points);
             }
 
             Item[] reward = achievement.getReward();
-
             if (reward != null) {
                 player.inventory().addOrBank(reward.clone());
                 Utils.sendDiscordInfoLog(player.getUsername()+" has completed " + achievement.getName() + " and got " + Arrays.toString(reward.clone()), "achievements");
@@ -69,21 +71,7 @@ public class AchievementsManager {
 
     private static void checkForOtherReward(Player player, Achievements achievement) {
         switch(achievement) {
-            case LARRANS_LOOTER_I:
-                int slayerPoints = (Integer) player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0) + 10;
-                player.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, slayerPoints);
-                player.getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(player));
-                break;
-            case LARRANS_LOOTER_II:
-                slayerPoints = (Integer) player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0) + 50;
-                player.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, slayerPoints);
-                player.getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(player));
-                break;
-            case LARRANS_LOOTER_III:
-                slayerPoints = (Integer) player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0) + 100;
-                player.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, slayerPoints);
-                player.getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(player));
-                break;
+
         }
     }
 

@@ -74,27 +74,7 @@ public class Stalls extends PacketInteraction {
 
         Chain.bound(player).runFn(1, () -> {
             replaceStall(stall, object, replacementID, player);
-
-            if (stall == Stall.CRAFTING_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_I, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            } else if (stall == Stall.MONKEY_GENERAL_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_II, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            } else if (stall == Stall.MAGIC_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_III, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            } else if (stall == Stall.SCIMITAR_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-                player.getTaskMasterManager().increase(Tasks.STEAL_FROM_SCIMITAR_STALL);
-            } else if (stall == Stall.SPICE_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            } else if (stall == Stall.GEM_STALL) {
-                AchievementsManager.activate(player, Achievements.THIEF_IV, 1);
-                AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
-            }
+            AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
 
             var slayerUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_LAMPS);
             if (World.getWorld().rollDie(200, 1) && slayerUnlock) {

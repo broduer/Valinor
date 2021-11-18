@@ -139,6 +139,7 @@ public class FightCavesMinigame extends Minigame {
             monster.walkRadius(200);
             monster.respawns(false);
             monster.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);
+            player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE, wave);
             World.getWorld().registerNpc(monster);
 
             //player.message(npc.tile().toString()+" vs "+player.tile().toString());
@@ -184,6 +185,7 @@ public class FightCavesMinigame extends Minigame {
             player.inventory().addOrDrop(new Item(FIRE_CAPE, 1));
             AchievementsManager.activate(player, Achievements.FIGHT_CAVES_I, 1);
             AchievementsManager.activate(player, Achievements.FIGHT_CAVES_II, 1);
+            player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE,1);
         }
         npcSet.forEach(npc -> World.getWorld().unregisterNpc(npc));
         player.setMinigame(null);

@@ -233,7 +233,7 @@ public class ItemDefinition implements Definition {
             name = "Mystery ticket";
             stackable = true;
         } else if (id == 30223) {
-            name = "Blood money casket (100-250k)";
+            name = "Task reward chest";
         } else if (id == 30315) {
             name = "Darklord bow";
         } else if (id == 30309) {
@@ -425,33 +425,13 @@ public class ItemDefinition implements Definition {
             countco = new int[]{2, 3, 4, 5, 25, 100, 250, 1000, 10000, 0};
             countobj = new int[]{17001, 17002, 17003, 17004, 17005, 17006, 17007, 17008, 17009, 0};
             stackable = true;
-        } else if (id == 23490) {
-            name = "Larran's key tier I";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-            countco = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            countobj = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        } else if (id == 14900) {
-            name = "Larran's key tier II";
-            stackable = true;
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 14901) {
-            name = "Larran's key tier III";
-            stackable = true;
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 25902 || id == 25907 || id == 24445 || id == 25913) {
-            name = "Twisted slayer helmet (i)";
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
         } else if (id == 12791) {
-            ioptions = new String[]{"Open", null, "Quick-Fill", "Empty", "Drop"};
+            ioptions = new String[]{"Open", null, null, "Empty", "Drop"};
         } else if (id == 14525) {
             name = "Mystery chest";
         } else if (id == 20238) {
             name = "Imbuement scroll";
             ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == BIG_CHEST) {
-            name = "Blood money chest";
-        } else if (id == 7956) {
-            name = "Small blood money casket";
         } else if (id == 13302) {
             name = "Wilderness key";
             ioptions = new String[]{null, null, null, null, "Drop"};
@@ -494,45 +474,11 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{"Open", null, null, "Empty", "Destroy"};
         } else if (id == 4447) {
             name = "Double drops lamp";
-        } else if (id == 6199) {
-            ioptions = new String[]{"Quick-open", null, "Open", null, null};
-        } else if (id == 16451) {
-            name = "Weapon Mystery Box";
-            stackable = false;
-        } else if (id == 16452) {
-            name = "Armour Mystery Box";
-            stackable = false;
         } else if (id == 30185) {
             name = "Donator Mystery Box";
             stackable = false;
-        } else if (id == 30186) {
-            name = "H'ween Mystery Box";
-            stackable = false;
-        } else if (id == 30242) {
-            name = "H'ween item casket";
-        } else if (id == 16454) {
-            name = "Legendary Mystery Box";
-            stackable = false;
-        } else if (id == 16455) {
-            name = "Grand Mystery Box";
-            stackable = false;
-        } else if (id == 16456) {
-            name = "Pet Mystery Box";
-            stackable = false;
-        } else if (id == 16458) {
-            name = "Epic Pet Mystery Box";
-            stackable = false;
-        } else if (id == 16459) {
-            name = "Raids Mystery Box";
-            stackable = false;
-        } else if (id == 16460) {
-            name = "Zenyte Mystery Box";
-            stackable = false;
         } else if (id == 16461) {
             name = "Starter Box";
-            stackable = false;
-        } else if (id == 16462) {
-            name = "Clan Box";
             stackable = false;
         } else if (id == 6722) {
             name = "Zombies champion pet";
@@ -719,8 +665,6 @@ public class ItemDefinition implements Definition {
             name = "Barrelchest pet";
             ioptions = new String[]{null, null, null, null, "Drop"};
             stackable = false;
-        } else if (id == 30049) {
-            name = "Magma blowpipe";
         } else if (id == 16171) {
             name = "Wampa pet";
             ioptions = new String[]{null, null, null, null, "Drop"};
@@ -733,10 +677,6 @@ public class ItemDefinition implements Definition {
             name = "Pet zilyana (white)";
             stackable = false;
             ioptions = new String[]{null, null, null, "Wipe-off paint", null};
-        } else if (id == 29102) {
-            name = "Scythe of vitur kit";
-        } else if (id == 29103) {
-            name = "Twisted bow kit";
         } else if (id == 16015) {
             name = "Pet general graardor (black)";
             stackable = false;
@@ -748,36 +688,6 @@ public class ItemDefinition implements Definition {
         } else if (id == 12873 || id == 12875 || id == 12877 || id == 12879 || id == 12881 || id == 12883) {
             ioptions = new String[5];
             ioptions[0] = "Open";
-        } else if (id == 14500) {
-            name = "Rune pouch (i) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14501) {
-            name = "Amulet of fury (or) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14502) {
-            name = "Occult necklace (or) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14503) {
-            name = "Amulet of torture (or) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14504) {
-            name = "Necklace of anguish (or) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14505) {
-            name = "Tormented bracelet (or) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
-        } else if (id == 14506) {
-            name = "Dragon defender (t) (broken)";
-        } else if (id == 14507) {
-            name = "Dragon boots (g) (broken)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, null, "Destroy"};
         } else if (id == ELDER_WAND_HANDLE) {
             name = "Elder wand handle";
         } else if (id == ELDER_WAND_STICK) {
@@ -845,8 +755,6 @@ public class ItemDefinition implements Definition {
             name = "Veteran santa hat";
         } else if (id == MAGMA_BLOWPIPE) {
             name = "Magma blowpipe";
-            ioptions = new String[]{null, "Wield", null, null, "Drop"};
-        } else if (id == ELDER_MAUL_21205 || id == ItemIdentifiers.ARMADYL_GODSWORD_OR || id == ItemIdentifiers.BANDOS_GODSWORD_OR || id == ItemIdentifiers.SARADOMIN_GODSWORD_OR || id == ItemIdentifiers.ZAMORAK_GODSWORD_OR || id == ItemIdentifiers.GRANITE_MAUL_12848) {
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
         } else if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON || id == ItemIdentifiers.AMULET_OF_FURY_OR || id == ItemIdentifiers.OCCULT_NECKLACE_OR || id == ItemIdentifiers.NECKLACE_OF_ANGUISH_OR || id == ItemIdentifiers.AMULET_OF_TORTURE_OR || id == ItemIdentifiers.BERSERKER_NECKLACE_OR || id == ItemIdentifiers.TORMENTED_BRACELET_OR || id == ItemIdentifiers.DRAGON_DEFENDER_T || id == ItemIdentifiers.DRAGON_BOOTS_G) {
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};

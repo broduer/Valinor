@@ -62,7 +62,7 @@ public class CustomItemIdentifiers {
     public static final int HWEEN_ITEM_CHEST = 30242;
     public static final int HWEEN_MYSTERY_BOX = 30186;
     public static final int MYSTERY_TICKET = 30222;
-    public static final int BLOOD_MONEY_CASKET_PROMO = 30223;
+    public static final int TASK_REWARD_CHEST = 30223;
     public static final int REVENANT_MYSTER_BOX = 30244;
     public static final int BLOOD_REAPER = 32102;
     public static final int CORRUPTED_RANGER_GAUNTLETS = 30048;

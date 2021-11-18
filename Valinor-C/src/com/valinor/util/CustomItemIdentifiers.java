@@ -58,7 +58,7 @@ public class CustomItemIdentifiers {
     public static final int HAUNTED_CROSSBOW = 30240;
     public static final int HAUNTED_DRAGONFIRE_SHIELD = 30241;
     public static final int MYSTERY_TICKET = 30222;
-    public static final int BLOOD_MONEY_CASKET_PROMO = 30223;
+    public static final int TASK_REWARD_CHEST = 30223;
     public static final int REVENANT_MYSTER_BOX = 30244;
     public static final int BLOOD_REAPER = 32102;
     public static final int CORRUPTED_RANGER_GAUNTLETS = 30048;

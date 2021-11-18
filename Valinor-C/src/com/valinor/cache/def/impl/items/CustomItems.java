@@ -315,7 +315,7 @@ public class CustomItems {
         }
 
         if (id == 30223) {
-            def.name = "<col=65280>Blood money casket (100-250k)";
+            def.name = "<col=65280>Task reward chest";
             def.inventory_model = 55568;
             def.model_zoom = 2640;
             def.rotation_y = 114;
@@ -1480,50 +1480,6 @@ public class CustomItems {
             def.color_to_replace_with = new int[]{685, 924};
         }
 
-        if (id == 23490) {
-            def.name = "<col=65280>Larran's key tier I";
-            def.widget_actions = new String[]{null, null, null, null, "Drop"};
-            def.stack_variant_size = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            def.stack_variant_id = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-        }
-
-        if (id == 14900) {
-            def.name = "<col=65280>Larran's key tier II";
-            def.animateInventory = true;
-            def.inventory_model = 55560;
-            def.color_to_replace = new int[]{8784, 2974, 8640};
-            def.color_to_replace_with = new int[]{8107, 8103, 9129};
-            def.model_zoom = 968;
-            def.rotation_y = 512;
-            def.rotation_x = 741;
-            def.rotation_z = 1980;
-            def.translate_x = -7;
-            def.translate_y = 3;
-            def.stackable = true;
-            def.widget_actions = new String[]{null, null, null, null, "Drop"};
-            def.color_to_replace = new int[]{8784, 2974, 8640};
-            def.color_to_replace_with = new int[]{8107, 8103, 9129};
-        }
-
-        if (id == 14901) {
-            def.name = "<col=65280>Larran's key tier III";
-            def.animateInventory = true;
-            def.inventory_model = 55561;
-            def.color_to_replace = new int[]{8784, 2974, 8640};
-            def.color_to_replace_with = new int[]{8107, 8103, 9129};
-            def.model_zoom = 968;
-            def.rotation_y = 512;
-            def.rotation_x = 741;
-            def.rotation_z = 1980;
-            def.translate_x = -7;
-            def.translate_y = 3;
-            def.stackable = true;
-            def.widget_actions = new String[]{null, null, null, null, "Drop"};
-            def.color_to_replace = new int[]{8784, 2974, 8640};
-            def.color_to_replace_with = new int[]{8107, 8103, 9129};
-        }
-
         if (id == 16020) {
             def.name = "<col=65280>Dharok pet";
             def.widget_actions = new String[]{null, null, null, null, "Drop"};
@@ -1534,10 +1490,6 @@ public class CustomItems {
             def.translate_y = 100;
             NpcDefinition npcInstance = NpcDefinition.get(NpcIdentifiers.DHAROK_THE_WRETCHED);
             def.inventory_model = npcInstance.model_id[0];
-        }
-
-        if (id == ItemIdentifiers.ARMADYL_GODSWORD_OR || id == ItemIdentifiers.BANDOS_GODSWORD_OR || id == ItemIdentifiers.SARADOMIN_GODSWORD_OR || id == ItemIdentifiers.ZAMORAK_GODSWORD_OR || id == ItemIdentifiers.GRANITE_MAUL_12848 || id == DRAGON_CLAWS_OR) {
-            def.widget_actions = new String[]{null, "Wield", null, null, "Drop"};
         }
 
         if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON || id == ItemIdentifiers.AMULET_OF_FURY_OR || id == ItemIdentifiers.OCCULT_NECKLACE_OR || id == ItemIdentifiers.NECKLACE_OF_ANGUISH_OR || id == ItemIdentifiers.AMULET_OF_TORTURE_OR || id == ItemIdentifiers.BERSERKER_NECKLACE_OR || id == ItemIdentifiers.TORMENTED_BRACELET_OR || id == ItemIdentifiers.DRAGON_DEFENDER_T || id == ItemIdentifiers.DRAGON_BOOTS_G) {

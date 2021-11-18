@@ -38,7 +38,7 @@ public class HomeArea extends PacketInteraction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if(option == 1) {
-            if(object.getId() == 31675) {
+            if(object.getId() == CLOSED_CHEST_2996) {
                 player.faceObj(object);
                 player.getSlayerKey().open();
                 return true;

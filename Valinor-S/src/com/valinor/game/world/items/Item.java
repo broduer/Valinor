@@ -425,7 +425,7 @@ public class Item implements Cloneable {
             add(ANCESTRAL_ROBE_TOP_I);
             add(ANCESTRAL_ROBE_BOTTOM_I);
             add(MYSTERY_TICKET);
-            add(BLOOD_MONEY_CASKET_PROMO);
+            add(TASK_REWARD_CHEST);
             add(JALNIBREK);
             add(BLOOD_REAPER);
             add(YOUNGLLEF);
@@ -514,8 +514,6 @@ public class Item implements Cloneable {
             add(EPIC_PET_BOX);
             add(IMBUED_HEART);
             add(BERSERKER_NECKLACE_OR);
-            add(LARRANS_KEY_TIER_II);
-            add(LARRANS_KEY_TIER_III);
             add(AMULET_OF_TORTURE_OR);
             add(NECKLACE_OF_ANGUISH_OR);
             add(TORMENTED_BRACELET_OR);

@@ -200,10 +200,7 @@ public class NpcDeath {
                 }
 
                 if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant")) {
-                    AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER_I, 1);
-                    AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER_II, 1);
-                    AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER_III, 1);
-                    AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER_IV, 1);
+                    AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER, 1);
                     killer.getTaskMasterManager().increase(Tasks.REVENANTS);
                     DailyTaskManager.increase(DailyTasks.REVENANTS, killer);
                 }
@@ -269,9 +266,7 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Chaos Elemental")) {
                     killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_I, 1);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_II, 1);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_III, 1);
+                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
                     DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if (World.getWorld().rollDie(10, 1)) {
@@ -283,9 +278,7 @@ public class NpcDeath {
 
                 if (npc.id() == ANCIENT_CHAOS_ELEMENTAL) {
                     killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_I, 1);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_II, 1);
-                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS_III, 1);
+                    AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
                     DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if(!npc.ancientSpawn()) {
@@ -315,15 +308,11 @@ public class NpcDeath {
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Dagannoth Supreme") || npc.def().name.equalsIgnoreCase("Dagannoth Prime") || npc.def().name.equalsIgnoreCase("Dagannoth Rex")) {
-                    AchievementsManager.activate(killer, Achievements.LORD_OF_THE_RINGS_I, 1);
-                    AchievementsManager.activate(killer, Achievements.LORD_OF_THE_RINGS_II, 1);
+                    AchievementsManager.activate(killer, Achievements.LORD_OF_THE_RINGS, 1);
                     killer.getTaskMasterManager().increase(Tasks.DAGANNOTH_KINGS);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Giant Mole")) {
-                    AchievementsManager.activate(killer, Achievements.HOLEY_MOLEY_I, 1);
-                    AchievementsManager.activate(killer, Achievements.HOLEY_MOLEY_II, 1);
-                    AchievementsManager.activate(killer, Achievements.HOLEY_MOLEY_III, 1);
                     killer.getTaskMasterManager().increase(Tasks.GIANT_MOLE);
                 }
 
@@ -385,9 +374,7 @@ public class NpcDeath {
                     }
 
                     case KrakenBoss.KRAKEN_NPCID -> {// Kraken boss transmogged KC
-                        AchievementsManager.activate(killer, Achievements.SQUIDWARD_I, 1);
-                        AchievementsManager.activate(killer, Achievements.SQUIDWARD_II, 1);
-                        AchievementsManager.activate(killer, Achievements.SQUIDWARD_III, 1);
+                        AchievementsManager.activate(killer, Achievements.SQUIDWARD, 1);
                         killer.getTaskMasterManager().increase(Tasks.KRAKEN);
                     }
 
@@ -399,8 +386,7 @@ public class NpcDeath {
 
                     case CERBERUS, CERBERUS_5863, CERBERUS_5866 -> {
                         killer.getTaskMasterManager().increase(Tasks.CERBERUS);
-                        AchievementsManager.activate(killer, Achievements.FLUFFY_I, 1);
-                        AchievementsManager.activate(killer, Achievements.FLUFFY_II, 1);
+                        AchievementsManager.activate(killer, Achievements.FLUFFY, 1);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                             npc.respawns(false);//Cerberus can no longer spawn his superior spawns in 1 minute.
@@ -415,34 +401,24 @@ public class NpcDeath {
                     });
 
                     case KALPHITE_QUEEN_6501 -> {
-                        AchievementsManager.activate(killer, Achievements.BUG_EXTERMINATOR_I, 1);
-                        AchievementsManager.activate(killer, Achievements.BUG_EXTERMINATOR_II, 1);
+                        AchievementsManager.activate(killer, Achievements.BUG_EXTERMINATOR, 1);
                     }
 
                     case LIZARDMAN_SHAMAN_6767 -> {
-                        AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS_I, 1);
-                        AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS_II, 1);
-                        AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS_III, 1);
+                        AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS, 1);
                     }
 
                     case THERMONUCLEAR_SMOKE_DEVIL -> {
-                        AchievementsManager.activate(killer, Achievements.TSJERNOBYL_I, 1);
-                        AchievementsManager.activate(killer, Achievements.TSJERNOBYL_II, 1);
-                        AchievementsManager.activate(killer, Achievements.TSJERNOBYL_III, 1);
+                        AchievementsManager.activate(killer, Achievements.TSJERNOBYL, 1);
                     }
 
                     case VETION, VETION_REBORN -> {
-                        AchievementsManager.activate(killer, Achievements.VETION_I, 1);
-                        AchievementsManager.activate(killer, Achievements.VETION_II, 1);
-                        AchievementsManager.activate(killer, Achievements.VETION_III, 1);
+                        AchievementsManager.activate(killer, Achievements.VETION, 1);
                         DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
                     }
 
                     case VENENATIS_6610 -> {
                         killer.getTaskMasterManager().increase(Tasks.VENENATIS);
-                        AchievementsManager.activate(killer, Achievements.BABY_ARAGOG_I, 1);
-                        AchievementsManager.activate(killer, Achievements.BABY_ARAGOG_II, 1);
-                        AchievementsManager.activate(killer, Achievements.BABY_ARAGOG_III, 1);
                         DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
@@ -459,9 +435,7 @@ public class NpcDeath {
 
                     case CALLISTO_6609 -> {
                         killer.getTaskMasterManager().increase(Tasks.CALLISTO);
-                        AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS_I, 1);
-                        AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS_II, 1);
-                        AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS_III, 1);
+                        AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS, 1);
                         DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
@@ -562,22 +536,14 @@ public class NpcDeath {
                     }
 
                     case ZULRAH, ZULRAH_2043, ZULRAH_2044 -> {
-                        AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER_I, 1);
-                        AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER_II, 1);
-                        AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER_III, 1);
+                        AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER, 1);
                     }
 
                     case VORKATH_8061 -> {
-                        AchievementsManager.activate(killer, Achievements.VORKY_I, 1);
-                        AchievementsManager.activate(killer, Achievements.VORKY_II, 1);
-                        AchievementsManager.activate(killer, Achievements.VORKY_III, 1);
+                        AchievementsManager.activate(killer, Achievements.VORKY, 1);
                     }
 
                     case BATTLE_MAGE, BATTLE_MAGE_1611, BATTLE_MAGE_1612 -> {
-                        AchievementsManager.activate(killer, Achievements.MAGE_ARENA_I, 1);
-                        AchievementsManager.activate(killer, Achievements.MAGE_ARENA_II, 1);
-                        AchievementsManager.activate(killer, Achievements.MAGE_ARENA_III, 1);
-                        AchievementsManager.activate(killer, Achievements.MAGE_ARENA_IV, 1);
                         DailyTaskManager.increase(DailyTasks.BATTLE_MAGE, killer);
                     }
 
@@ -595,9 +561,7 @@ public class NpcDeath {
                 if (npc.id() == SCORPIA) {
                     killer.getTaskMasterManager().increase(Tasks.SCORPIA);
                     npc.clearAttrib(AttributeKey.SCORPIA_GUARDIANS_SPAWNED);
-                    AchievementsManager.activate(killer, Achievements.BARK_SCORPION_I, 1);
-                    AchievementsManager.activate(killer, Achievements.BARK_SCORPION_II, 1);
-                    AchievementsManager.activate(killer, Achievements.BARK_SCORPION_III, 1);
+                    AchievementsManager.activate(killer, Achievements.BARK_SCORPION, 1);
                     DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
                     World.getWorld().getNpcs().forEachInArea(new Area(3219, 3248, 10329, 10353), n -> {
                         if (n.id() == SCORPIAS_GUARDIAN) {

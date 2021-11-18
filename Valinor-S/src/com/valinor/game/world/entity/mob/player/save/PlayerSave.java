@@ -618,6 +618,8 @@ public class PlayerSave {
                 player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, details.hweenEventTokensSpent);
                 player.putAttrib(HERB_BOX_CHARGES, details.herbBoxCharges);
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
+                player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
+                player.putAttrib(ACHIEVEMENT_POINTS, details.achievementPoints);
                 return true;
             }
         }
@@ -1084,6 +1086,8 @@ public class PlayerSave {
         private final int hweenEventTokensSpent;
         private final int herbBoxCharges;
         private final boolean combatMaxed;
+        private final int fightCaveWave;
+        private final int achievementPoints;
 
         public String password() {
             return password;
@@ -1505,6 +1509,8 @@ public class PlayerSave {
             hweenEventTokensSpent = Player.getAttribIntOr(player, HWEEN_EVENT_TOKENS_SPENT, 0);
             herbBoxCharges = Player.getAttribIntOr(player, HERB_BOX_CHARGES, 0);
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
+            fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);
+            achievementPoints = Player.getAttribIntOr(player, ACHIEVEMENT_POINTS, 0);
         }
 
         public void parseDetails() throws Exception {

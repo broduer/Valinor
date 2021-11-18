@@ -19,13 +19,13 @@ public class AchievementWidget {
         player.getPacketSender().sendString(AchievementUtility.ACHIEVEMENT_PROGRESS_ID, "<col=ffffff>Progress:</col><col=ffffff>" + " (" + progress + "%) " + Utils.format(completed) + " / " + Utils.format(achievement.getCompleteAmount()));
         player.getPacketSender().sendProgressBar(AchievementUtility.PROGRESS_BAR_CHILD, progress);
         player.getPacketSender().sendString(AchievementUtility.ACHIEVEMENT_DESCRIPTION_ID, "<col=ffffff>" + achievement.getDescription());
-        player.getPacketSender().sendItemOnInterface(AchievementUtility.CONTAINER_ID, achievement.getReward());
-        String rewardString = achievement.otherRewardString();
-        if (rewardString.isEmpty()) {
-            player.getPacketSender().sendString(AchievementUtility.REWARD_STRING, "");//Empty string
-        } else {
-            player.getPacketSender().sendString(AchievementUtility.REWARD_STRING, rewardString);
+        if(achievement.getReward() != null) {
+            player.getPacketSender().sendItemOnInterface(AchievementUtility.CONTAINER_ID, achievement.getReward());
         }
+
+        String pointsString = "- "+achievement.points()+" Achievement points";
+        String rewardString = pointsString + "<br>"+achievement.otherRewardString();
+        player.getPacketSender().sendString(AchievementUtility.REWARD_STRING, rewardString);
     }
 
     public static void open(Player player, Difficulty difficulty) {
@@ -34,9 +34,9 @@ public class AchievementWidget {
         int totalAchievements = list.size();
 
         switch (difficulty) {
-            case EASY -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 1000);
-            case MED -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 980);
-            case HARD -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 1160);
+            case EASY -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 415);
+            case MED -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 415);
+            case HARD -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 540);
         }
 
         player.getPacketSender().sendString(AchievementUtility.ACHIEVEMENTS_COMPLETED, "Achievements Completed (" + player.achievementsCompleted() + "/" + Achievements.getTotal() + ")");
@@ -57,7 +57,7 @@ public class AchievementWidget {
 
     public static void openEasyJournal(Player player) {
         AchievementWidget.open(player, Difficulty.EASY);
-        //AchievementWidget.sendInterfaceForAchievement(player, Achievements.AMPUTEE_ANNIHILATION_I);
+        AchievementWidget.sendInterfaceForAchievement(player, Achievements.BAKER);
         player.putAttrib(AttributeKey.ACHIEVEMENT_DIFFICULTY, Difficulty.EASY);
         player.getPacketSender().sendConfig(1160, 1);
         player.getPacketSender().sendConfig(1161, 0);
