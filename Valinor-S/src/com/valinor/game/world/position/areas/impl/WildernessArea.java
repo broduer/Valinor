@@ -20,8 +20,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PLAYERS_PKING;
-
 public class WildernessArea extends Controller {
 
     private static final Logger log = LoggerFactory.getLogger(WildernessArea.class);
@@ -112,7 +110,6 @@ public class WildernessArea extends Controller {
             BountyHunter.PLAYERS_IN_WILD.remove(player);
             player.clearAttrib(AttributeKey.INWILD);
             player.clearAttrib(AttributeKey.PVP_WILDY_AGGRESSION_TRACKER);
-            player.getPacketSender().sendString(PLAYERS_PKING.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_PKING.childId).fetchLineData(player));
         }
     }
 
@@ -145,7 +142,6 @@ public class WildernessArea extends Controller {
 
             if (!BountyHunter.PLAYERS_IN_WILD.contains(player)) {
                 BountyHunter.PLAYERS_IN_WILD.add(player);
-                player.getPacketSender().sendString(PLAYERS_PKING.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_PKING.childId).fetchLineData(player));
             }
         }
     }

@@ -46,7 +46,7 @@ public class Utils {
         if (player.ironMode() != IronMode.NONE) {
             return player.ironMode().name;
         } else {
-            return player.expmode().toName();
+            return "Regular";
         }
     }
 

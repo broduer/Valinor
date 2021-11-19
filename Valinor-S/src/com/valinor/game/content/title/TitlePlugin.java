@@ -88,7 +88,7 @@ public class TitlePlugin extends PacketInteraction {
 
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
-        if (button == 12750) {
+        if (button == 73113) {
             player.getInterfaceManager().open(61380);
             return true; //Opens player titles
         }

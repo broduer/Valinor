@@ -59,6 +59,7 @@ public class AchievementsManager {
                 checkForOtherReward(player, achievement);
                 var points = player.<Integer>getAttribOr(ACHIEVEMENT_POINTS, 0) + achievement.points();
                 player.putAttrib(ACHIEVEMENT_POINTS, points);
+                player.getPacketSender().sendString(QuestTab.InfoTab.ACHIEVEMENT_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.ACHIEVEMENT_POINTS.childId).fetchLineData(player));
             }
 
             Item[] reward = achievement.getReward();

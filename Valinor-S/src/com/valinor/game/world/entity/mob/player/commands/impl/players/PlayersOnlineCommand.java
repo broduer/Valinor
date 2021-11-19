@@ -10,8 +10,7 @@ import java.util.stream.Collectors;
 
 public class PlayersOnlineCommand implements Command {
 
-    @Override
-    public void execute(Player player, String command, String[] parts) {
+    public static void playersOnline(Player player) {
         List<Player> players = World.getWorld().getPlayers().stream().collect(Collectors.toList());
         StringBuilder playersOnline = new StringBuilder("<col=800000>Players:");
 
@@ -25,6 +24,11 @@ public class PlayersOnlineCommand implements Command {
             }
         }
         player.sendScroll(Color.MAROON.wrap("Players online: "+World.getWorld().getPlayers().size()), playersOnline.toString());
+    }
+
+    @Override
+    public void execute(Player player, String command, String[] parts) {
+       playersOnline(player);
     }
 
     @Override

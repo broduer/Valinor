@@ -362,6 +362,7 @@ public class Widget {
             }
         }
         interfaceLoader = interfaces;
+        QuestTabSidebarWidget.unpack(font);
         RaidsWidget.unpack(font);
         DailyTasksWidget.unpack(font);
         EnchantBoltsWidget.unpack(font);
@@ -376,9 +377,6 @@ public class Widget {
         ReferralWidget.unpack(font);
         TeleportWidget.unpack(font);
         DuelArenaWidget.unpack(font);
-        QuestTabSidebarWidget.unpack(font);
-        QuestTabSidebarWidget.unpackInfo(font);
-        QuestTabSidebarWidget.unpackInfo(font);
         PresetWidget.unpack(font);
         TaskWidget.unpack(font);
         MagicSidebarWidget.unpack(font);
@@ -435,6 +433,7 @@ public class Widget {
     public SimpleImage enabledSprite;
     public SimpleImage disabledHover;
     public SimpleImage[] sprites;
+    public SimpleImage spriteClicked;
 
     //Dropdown menu
     public DropdownMenu dropdown;
@@ -536,6 +535,7 @@ public class Widget {
     public int[] buttons;
 
     //Booleans
+    public boolean isClicked;
     public boolean isInFocus;
     public boolean displayAsterisks;
     public boolean updatesEveryInput;
@@ -1545,6 +1545,26 @@ public class Widget {
         rsi.height = 334;
 
         return rsi;
+    }
+
+    public static void addSpriteComplete(int interfaceId, int child, int spriteId, int x, int y, Widget interfaces, boolean add) {
+        if (add) {
+            Widget.addSprite(interfaceId, spriteId);
+        }
+        Widget.setBounds(interfaceId, x, y, child, interfaces);
+    }
+
+    public static void addHoverButtonComplete(int interfaceId, int child, int x, int y, int normalSprite, int hoverSprite, int buttonWidth, int buttonHeight, String buttonHoverText, Widget interfaces, boolean add) {
+        if (add) {
+            Widget.addHoverButtonLatest(interfaceId, interfaceId + 1, interfaceId + 2, normalSprite, hoverSprite, buttonWidth, buttonHeight, buttonHoverText);
+        }
+        Widget.setBounds(interfaceId, x, y, child, interfaces);
+        Widget.setBounds(interfaceId + 1, x, y, child + 1, interfaces);
+    }
+
+    public static void addHoverButtonLatest(int buttonId1, int buttonId2, int buttonId3, int spriteId1, int spriteId2, int buttonWidth, int buttonHeight, String buttonHoverText) {
+        addHoverButton(buttonId1, spriteId1, buttonWidth, buttonHeight, buttonHoverText, -1, buttonId2, 1);
+        addHoveredButton(buttonId2, spriteId2, buttonWidth, buttonHeight, buttonId3);
     }
 
     public static void addText(int id, String text, AdvancedFont[] tda, int idx, int color, boolean centered) {
@@ -2624,6 +2644,25 @@ public class Widget {
             spriteCache.put(sprite, l);
         } catch (Exception exception) {
             exception.printStackTrace();
+            return null;
+        }
+        return sprite;
+    }
+
+    public static void setSpriteClicked(int id, int spriteClickedId) {
+        cache[id].spriteClicked = imageLoaderNew(spriteClickedId);
+    }
+
+    static SimpleImage imageLoaderNew(int spriteId) {
+        SimpleImage sprite;
+
+        try {
+            if (spriteId == -1) {
+                return null;
+            }
+            sprite = Client.spriteCache.get(spriteId);
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
         return sprite;

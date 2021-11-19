@@ -1,3 +1,4 @@
+questTabOpenedTab = 1
 cameraSpeed = SLOW
 zoom_distance = 1100
 drag_item_value = 10

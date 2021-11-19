@@ -94,6 +94,34 @@ public class Client extends GameApplet {
 
     private final List<ImageDescription> teleportImageDescriptions = new ArrayList<>();
 
+    /**
+     * Have a specific interface button to have the clicked sprite.
+     * @param interfaceId
+     * @param clicked
+     * @param linkedButtons TODO
+     */
+    public static void setInterfaceClicked(int parentInterfaceId, int interfaceId, boolean clicked, boolean linkedButtons) {
+        if (linkedButtons) {
+            for (int index = 0; index < interfaceClickedList.size(); index++) {
+                String[] parse = interfaceClickedList.get(index).split(" ");
+                int parentIdParse = Integer.parseInt(parse[0]);
+                int interfaceIdParse = Integer.parseInt(parse[1]);
+                if (parentInterfaceId == parentIdParse) {
+                    if (Widget.cache[interfaceIdParse] == null) {
+                        continue;
+                    }
+                    Widget.cache[interfaceIdParse].isClicked = false;
+                    interfaceClickedList.remove(index);
+                    break;
+                }
+            }
+        }
+        Widget.cache[interfaceId].isClicked = clicked;
+        if (clicked) {
+            interfaceClickedList.add(parentInterfaceId + " " + interfaceId);
+        }
+    }
+
     private String getImageDescription(int index) {
         ImageDescription desc = null;
         if (teleportCategoryIndex == 1 || teleportCategoryIndex == 2) {
@@ -5782,7 +5810,8 @@ public class Client extends GameApplet {
 
         // widget action
         if (action == 315) {
-            Widget widget = Widget.cache[second_menu_action];
+            int buttonId = second_menu_action;
+            Widget widget = Widget.cache[buttonId];
             boolean flag8 = true;
             if (widget.type == Widget.TYPE_CONFIG || widget.id == 26101 || widget.id == 26102) { // Placeholder (or
                 // search) bank button
@@ -5821,20 +5850,25 @@ public class Client extends GameApplet {
                 flag8 = promptUserForInput(widget);
             }
 
-            if (setting.click(this, second_menu_action)) {
+            if (setting.click(this, buttonId)) {
                 return;
             }
 
-            if (setting.settingButtons(second_menu_action)) {
+            if (setting.settingButtons(buttonId)) {
                 return;
             }
 
+            // Quest tab buttons, the panels for Eco.
+            if (buttonId == 72985 || buttonId == 72989 || buttonId == 72993) {
+                setInterfaceClicked(72980, buttonId, true, true);
+                showCorrectQuestTab(false);
+            }
             if (flag8) {
-                OptionTabWidget.optionTabButtons(second_menu_action);
+                OptionTabWidget.optionTabButtons(buttonId);
 
                 /** Faster spec bars toggle **/
                 // Handle radio buttons
-                switch (second_menu_action) {
+                switch (buttonId) {
 
                     case 12697: // Drag Setting.
                         enter_amount_title = "Please enter your desired Drag Setting <col=A10081>(5 is OSRS):";
@@ -5880,40 +5914,40 @@ public class Client extends GameApplet {
                     case 7637:
                     case 12311:
                     case 155:
-                        packetSender.sendSpecialAttackToggle(second_menu_action);
+                        packetSender.sendSpecialAttackToggle(buttonId);
                         break;
                     default:
-                        if (Widget.radioButtons.contains(second_menu_action)) {
-                            checkRadioOptions(second_menu_action);
+                        if (Widget.radioButtons.contains(buttonId)) {
+                            checkRadioOptions(buttonId);
                         }
-                        if (Widget.cache[second_menu_action].clickable && Widget.cache[second_menu_action].serverCheck) {
+                        if (Widget.cache[buttonId].clickable && Widget.cache[buttonId].serverCheck) {
                             packetSender.sendConfirm(2, 0);
-                            widgetId = second_menu_action;
-                            Widget.cache[second_menu_action].disabledSprite = spriteCache
-                                .get(Widget.cache[second_menu_action].clickSprite2); // change this to add a variable stored in
+                            widgetId = buttonId;
+                            Widget.cache[buttonId].disabledSprite = spriteCache
+                                .get(Widget.cache[buttonId].clickSprite2); // change this to add a variable stored in
                             // clickable buttons that can store the
                             // sprite ids
-                            Widget.cache[second_menu_action].enabledSprite = spriteCache.get(Widget.cache[second_menu_action].clickSprite2);
+                            Widget.cache[buttonId].enabledSprite = spriteCache.get(Widget.cache[buttonId].clickSprite2);
                         }
-                        if (Widget.cache[second_menu_action].clickable && !Widget.cache[second_menu_action].serverCheck) {
-                            if (Widget.cache[second_menu_action].disabledSprite == spriteCache
-                                .get(Widget.cache[second_menu_action].clickSprite1)) {
-                                Widget.cache[second_menu_action].disabledSprite = spriteCache
-                                    .get(Widget.cache[second_menu_action].clickSprite2);
-                                Widget.cache[second_menu_action].enabledSprite = spriteCache
-                                    .get(Widget.cache[second_menu_action].clickSprite2);
+                        if (Widget.cache[buttonId].clickable && !Widget.cache[buttonId].serverCheck) {
+                            if (Widget.cache[buttonId].disabledSprite == spriteCache
+                                .get(Widget.cache[buttonId].clickSprite1)) {
+                                Widget.cache[buttonId].disabledSprite = spriteCache
+                                    .get(Widget.cache[buttonId].clickSprite2);
+                                Widget.cache[buttonId].enabledSprite = spriteCache
+                                    .get(Widget.cache[buttonId].clickSprite2);
                                 break;
                             }
-                            if (Widget.cache[second_menu_action].disabledSprite == spriteCache
-                                .get(Widget.cache[second_menu_action].clickSprite1)) {
-                                Widget.cache[second_menu_action].disabledSprite = spriteCache
-                                    .get(Widget.cache[second_menu_action].clickSprite2);
-                                Widget.cache[second_menu_action].enabledSprite = spriteCache
-                                    .get(Widget.cache[second_menu_action].clickSprite2);
+                            if (Widget.cache[buttonId].disabledSprite == spriteCache
+                                .get(Widget.cache[buttonId].clickSprite1)) {
+                                Widget.cache[buttonId].disabledSprite = spriteCache
+                                    .get(Widget.cache[buttonId].clickSprite2);
+                                Widget.cache[buttonId].enabledSprite = spriteCache
+                                    .get(Widget.cache[buttonId].clickSprite2);
                                 break;
                             }
                         }
-                        packetSender.sendButtonClick(second_menu_action);
+                        packetSender.sendButtonClick(buttonId);
                 }
             }
         }
@@ -12153,6 +12187,21 @@ public class Client extends GameApplet {
                         }
                     }
 
+                    boolean clicked = false;
+                    if (child.isClicked) {
+                        sprite = child.spriteClicked;
+                        clicked = true;
+                    } else {
+                        if (child.id - 2 < 0) {
+                            return;
+                        }
+                        if (Widget.cache[child.id - 2] != null) {
+                            if (Widget.cache[child.id - 2].isClicked) {
+                                clicked = true;
+                                sprite = Widget.cache[child.id - 2].spriteClicked;
+                            }
+                        }
+                    }
                     if (widget_highlighted == 1 && child.id == spellId && spellId != 0 && sprite != null) {
                         sprite.drawSpriteWithOutline(child_x_in_bounds, child_y_in_bounds, 0xffffff, true);
                     } else {
@@ -15538,6 +15587,11 @@ public class Client extends GameApplet {
         public AdvancedFont font;
     }
 
+    public void setSidebarInterface(int sidebarID, int interfaceID) {
+        tabInterfaceIDs[sidebarID] = interfaceID;
+        update_tab_producer = true;
+    }
+
     /**
      * Sends a string
      */
@@ -16606,6 +16660,7 @@ public class Client extends GameApplet {
 
                 if (message.endsWith(":cleartextclicked:")) {
                     clearTextClicked();
+                    return true;
                 }
 
                 if (message.endsWith(":settextclicked:")) {
@@ -16613,6 +16668,16 @@ public class Client extends GameApplet {
                     int id = Integer.parseInt(args[1]);
                     boolean state = Boolean.parseBoolean(args[2]);
                     setTextClicked(id, state);
+                    return true;
+                }
+
+                if (message.startsWith("setclicked")) {
+                    String[] args = message.split(" ");
+                    int parentInterfaceId = Integer.parseInt(args[1]);
+                    int id = Integer.parseInt(args[2]);
+                    boolean state = Boolean.parseBoolean(args[3]);
+                    setInterfaceClicked(parentInterfaceId, id, state, true);
+                    return true;
                 }
 
                 if (message.startsWith("npcpetid")) {
@@ -18692,10 +18757,63 @@ public class Client extends GameApplet {
     }
 
     /**
+     * Which tab on the quest tab is opened? Economy used.
+     */
+    public static int questTabOpenedTab = 1;
+
+    /**
+     * Show the correct clicked tab on the Quest tab.
+     */
+    public void showCorrectQuestTab(boolean logInUpdate) {
+        if (logInUpdate) {
+            int[] interfaceId = { 72985, 72989, 72993 };
+            setInterfaceClicked(72980, interfaceId[questTabOpenedTab - 1], true, true);
+        }
+        for (String s : interfaceClickedList) {
+            String[] parse = s.split(" ");
+            int parentIdParse = Integer.parseInt(parse[0]);
+            int interfaceIdParse = Integer.parseInt(parse[1]);
+            if (parentIdParse != 72980) {
+                continue;
+            }
+
+            switch (interfaceIdParse) {
+                // Information tab on the Eco Quest Interface.
+                case 72985:
+                    sendString("Information", 72984);
+                    setSidebarInterface(2, 72980);
+                    questTabOpenedTab = 1;
+                    break;
+                // Panel tab on the Eco Quest Interface.
+                case 72989:
+                    sendString("Panels", 72984);
+                    setSidebarInterface(2, 73089);
+                    questTabOpenedTab = 2;
+                    break;
+                // Activities tab on the Eco Quest Interface.
+                case 72993:
+                    sendString("Activities", 72984);
+                    setSidebarInterface(2, 73180);
+                    questTabOpenedTab = 3;
+                    break;
+            }
+            if (!logInUpdate) {
+                setting.save();
+            }
+        }
+    }
+
+    /**
      * Used for storing all the clicked texts set to true. So when a new clicked interface is changed to true, the ones stored here
      * can be reset.
      */
     public static ArrayList<String> textClickedList = new ArrayList<String>();
+
+    /**
+     * Used for storing all the clicked interfaces set to true. So when a new clicked interface is changed to true, the ones stored here
+     * can be reset.
+     */
+    public static ArrayList<String> interfaceClickedList = new ArrayList<String>();
 
     public static void clearTextClicked() {
         for (int index = 0; index < textClickedList.size(); index++) {

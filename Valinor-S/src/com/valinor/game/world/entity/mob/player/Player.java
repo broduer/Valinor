@@ -2978,9 +2978,6 @@ public class Player extends Mob {
     },
         qtStuff = () -> {
             setPlayerQuestTabCycleCount(getPlayerQuestTabCycleCount() + 1);
-            //Update the players online regardless of the cycle count, this is the most important number, otherwise players might see "0" if they log in too soon. Can always remove this later.
-            GlobalStrings.PLAYERS_ONLINE.send(this, World.getWorld().getPlayers().size());
-
             var gametime = (Integer) getAttribOr(GAME_TIME, 0) + 1;
             putAttrib(GAME_TIME, gametime);// Increment ticks we've played for
 
@@ -3028,8 +3025,6 @@ public class Player extends Mob {
                         World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
                     }
                 }
-
-                this.getPacketSender().sendString(QuestTab.InfoTab.WILDERNESS_KEY.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_KEY.childId).fetchLineData(this));
             }
         }, timers = () -> {
         getTimers().cycle(this);

@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.EMBLEM_WEALTH;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.DEATHS;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.KILLS;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1;
 import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.Utils.formatNumber;
@@ -243,10 +241,6 @@ public class BountyHunter {
                 //Increase the player killcount
                 int killcount = (Integer) killer.getAttribOr(AttributeKey.PLAYER_KILLS, 0) + 1;
                 killer.putAttrib(AttributeKey.PLAYER_KILLS, killcount);
-
-                //Update the kills and deaths
-                killer.getPacketSender().sendString(KILLS.childId, QuestTab.InfoTab.INFO_TAB.get(KILLS.childId).fetchLineData(killer));
-                target.get().getPacketSender().sendString(DEATHS.childId, QuestTab.InfoTab.INFO_TAB.get(DEATHS.childId).fetchLineData(target.get()));
             }
         } else {
             killer.message("You don't get any rewards for that kill.");
