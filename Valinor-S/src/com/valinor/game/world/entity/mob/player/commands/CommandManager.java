@@ -125,11 +125,6 @@ public class CommandManager {
         commands.put("spec", new SpecCommand());
 
         /*
-         * Extreme member commands
-         */
-        commands.put("newtask", new NewTaskCommand());
-
-        /*
         * Support commands
          */
         commands.put("teleto", new TeleToPlayerCommand());
@@ -228,7 +223,6 @@ public class CommandManager {
         commands.put("door", new DoorCommand());
         commands.put("unlockprayers", new UnlockPrayersCommands());
         commands.put("saveall", new SaveAllCommand());
-        commands.put("slayer", new SlayerActionCommand());
         commands.put("task", new TaskCommand());
         commands.put("reload", new ReloadCommand());
         commands.put("setlevel", new SetLevelCommand());

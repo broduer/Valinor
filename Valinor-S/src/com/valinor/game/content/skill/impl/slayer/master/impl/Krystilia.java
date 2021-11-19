@@ -3,6 +3,7 @@ package com.valinor.game.content.skill.impl.slayer.master.impl;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.master.SlayerMaster;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
+import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerTaskDef;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -10,21 +11,15 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.QuestTab;
-import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.PacketInteraction;
 
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.TASK_STREAK;
-import static com.valinor.util.NpcIdentifiers.DURADEL;
 import static com.valinor.util.NpcIdentifiers.KRYSTILIA;
 
 /**
- * @author Patrick van Elderen | May, 30, 2021, 18:43
- * @see <a href="https://github.com/PVE95">Github profile</a>
+ * @author Patrick van Elderen <https://github.com/PVE95>
+ * @Since November 18, 2021
  */
-public class Krystalia extends PacketInteraction {
-
-    public static final int BM_CANCEL_FEE = 2_500;
+public class Krystilia extends PacketInteraction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
@@ -36,7 +31,7 @@ public class Krystalia extends PacketInteraction {
         }
         if(option == 2) {
             if (npc.id() == KRYSTILIA) {
-                taskOptions(player);
+                warn(player);
                 return true;
             }
         }
@@ -55,14 +50,14 @@ public class Krystalia extends PacketInteraction {
         return false;
     }
 
-    private static void assignTask(Player player, String taskType) {
+    private void assignTask(Player player) {
         int numleft = player.slayerTaskAmount();
 
         if (numleft > 0) {
             player.getDialogueManager().start(new Dialogue() {
                 @Override
                 protected void start(Object... parameters) {
-                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "You're still hunting " + Slayer.taskName(player.slayerTaskId()) + "; you have " + numleft + " to go.", "Come back when you've finished your task.");
+                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "You're still hunting " + Slayer.taskName(player.slayerTaskId()) + "; you have " + numleft + " to go. Come", "back when you've finished your task.");
                     setPhase(0);
                 }
 
@@ -72,19 +67,33 @@ public class Krystalia extends PacketInteraction {
                         send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Come back to me when you've completed your task", "for a new one.");
                         setPhase(1);
                     } else if (isPhase(1)) {
-                        stop();
+                        displayTips(player);
                     }
                 }
             });
             return;
         }
 
-        if(taskType.equalsIgnoreCase("boss")) {
-            SlayerMaster.assign(player, DURADEL);
-        } else {
-            SlayerMaster.assign(player, KRYSTILIA);
+        SlayerMaster master = Slayer.master(Slayer.KRYSTILIA_ID);
+        if(master == null) {
+            System.out.println("no such slayer master available.");
+            return;
         }
 
+        SlayerTaskDef def = master.randomTask(player);
+        if(def == null) {
+            System.out.println("no task available.");
+            return;
+        }
+
+        player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, true);
+        player.putAttrib(AttributeKey.SLAYER_MASTER, Slayer.KRYSTILIA_ID);
+        player.putAttrib(AttributeKey.SLAYER_TASK_ID, def.getCreatureUid());
+        int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);
+        player.putAttrib(AttributeKey.SLAYER_TASK_AMT, task_amt);
+
+        //TODO quest tab
+        Slayer.displayCurrentAssignment(player);
         SlayerCreature task = SlayerCreature.lookup(player.slayerTaskId());
         int num = player.slayerTaskAmount();
         player.getDialogueManager().start(new Dialogue() {
@@ -98,16 +107,48 @@ public class Krystalia extends PacketInteraction {
             protected void next() {
                 if (isPhase(0)) {
                     stop();
+                    displayTips(player);
                 }
             }
         });
     }
 
-    private static void taskOptions(Player player) {
+    private static void displayTips(Player player) {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "I'd like a boss task, please.", "I'd like a regular task, please.", "Nothing");
+                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Got any tips for me?", "Ok, thanks!");
+                setPhase(0);
+            }
+
+            @Override
+            protected void next() {
+                if (isPhase(1)) {
+                    stop();
+                }
+            }
+
+            @Override
+            protected void select(int option) {
+                if (isPhase(0)) {
+                    if (option == 1) {
+                        String tip = Slayer.tipFor(SlayerCreature.lookup(player.slayerTaskId()));
+                        send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, tip);
+                        setPhase(1);
+                    } else if (option == 2) {
+                        send(DialogueType.PLAYER_STATEMENT, Expression.HAPPY, "Ok, thanks!");
+                        setPhase(1);
+                    }
+                }
+            }
+        });
+    }
+
+    private void displayOptions(Player player) {
+        player.getDialogueManager().start(new Dialogue() {
+            @Override
+            protected void start(Object... parameters) {
+                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "What is 'Wilderness Slayer'?", "I'd like a task, please.", "Nothing");
                 setPhase(0);
             }
 
@@ -116,10 +157,10 @@ public class Krystalia extends PacketInteraction {
                 if (isPhase(0)) {
                     if (option == 1) {
                         stop();
-                        assignTask(player, "boss");
+                        describeWildernessSlayer(player);
                     } else if (option == 2) {
                         stop();
-                        assignTask(player, "regular");
+                        warn(player);
                     } else if (option == 3) {
                         stop();
                     }
@@ -128,63 +169,48 @@ public class Krystalia extends PacketInteraction {
         });
     }
 
-    private static void displayOptions(Player player) {
+    private void describeWildernessSlayer(Player player) {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "I'd like a boss task, please.", "I'd like a regular task, please.", "Can you cancel my current task for blood money?", "Nothing");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if (isPhase(0)) {
-                    if (option == 1) {
-                        stop();
-                        assignTask(player, "boss");
-                    } else if (option == 2) {
-                        stop();
-                        assignTask(player, "regular");
-                    } else if (option == 3) {
-                        stop();
-                        boolean hasTask = player.slayerTaskAmount() > 0;
-                        if(!hasTask) {
-                            player.message("It appears that you do not have a slayer task.");
-                           return;
-                        }
-                        cancelForBloodMoney(player);
-                    } else if (option == 4) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private static void cancelForBloodMoney(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.PLAYER_STATEMENT, Expression.HAPPY, "I'd like to cancel my current slayer task with", "blood money.");
+                send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Wilderness Slayer is an activity that can be carried out", "by slaying selective monsters in the wilderness. Every task", "you complete will be rewarded with 25 slayer points and");
                 setPhase(0);
             }
 
             @Override
             protected void next() {
                 if (isPhase(0)) {
-                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Certainly, just as a reminder, the fee is " + BM_CANCEL_FEE + " blood money.", "This action is irreversible.");
+                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "these points can be exchanged within a shop of mine.", "If you are unable to complete your slayer task or simply", "wish to change it you can do so by speaking to me.", "However, there is a fee to this service.");
                     setPhase(1);
                 } else if (isPhase(1)) {
-                    send(DialogueType.OPTION, "Cancel current slayer task?", "Yes, pay the " + BM_CANCEL_FEE + " blood money cancel fee.", "Nevermind, I'll keep my money.");
+                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "The point you earn from slayer tasks can be used", "for various goods in my shop. Lastly, remember, ALL of these", "tasks are in the wilderness so beware!");
+                    setPhase(2);
+                } else if (isPhase(2)) {
+                    stop();
+                }
+            }
+        });
+    }
+
+    private void warn(Player player) {
+        player.getDialogueManager().start(new Dialogue() {
+            @Override
+            protected void start(Object... parameters) {
+                send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Before I assign you anything, I want to make something", "clear. My tasks have to be done in the wilderness.", "Only kills inside the wilderness will count.");
+                setPhase(0);
+            }
+
+            @Override
+            protected void next() {
+                if (isPhase(0)) {
+                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "If you don't like my tasks, you can come back", "to me and cancel your task for a fee.");
+                    setPhase(1);
+                } else if (isPhase(1)) {
+                    send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes, I understand I must kill it in the Wilderness.", "No thanks, I don't want tasks from you.");
                     setPhase(2);
                 } else if (isPhase(3)) {
-                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "There you go. Your current slayer task has been cleared.", "Come speak to me when you're ready for a new one.");
-                    setPhase(4);
-                } else if (isPhase(4)) {
                     stop();
-                } else if (isPhase(5)) {
-                    send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Come speak to me when you have enough blood money.");
-                    setPhase(4);
+                    assignTask(player);
                 }
             }
 
@@ -192,18 +218,8 @@ public class Krystalia extends PacketInteraction {
             protected void select(int option) {
                 if (isPhase(2)) {
                     if (option == 1) {
-                        if (player.getInventory().contains(new Item(13307)) && player.getInventory().byId(13307).getAmount() >= BM_CANCEL_FEE) {
-                            player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
-                            player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
-                            player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);
-                            player.getPacketSender().sendString(TASK_STREAK.childId, QuestTab.InfoTab.INFO_TAB.get(TASK_STREAK.childId).fetchLineData(player));
-                            player.getInventory().remove(new Item(13307, BM_CANCEL_FEE), true);
-                            send(DialogueType.ITEM_STATEMENT, new Item(13307,2500), "", "You hand over the blood money to Krystilia.", "She swiftly takes the money and performs her service.");
-                            setPhase(3);
-                        } else {
-                            send(DialogueType.NPC_STATEMENT, KRYSTILIA, Expression.HAPPY, "Sorry, but it appears you do not have enough blood money", "to cover the cancellation fee.");
-                            setPhase(5);
-                        }
+                        send(DialogueType.PLAYER_STATEMENT, Expression.HAPPY, "Yes, I understand I must kill it in the Wilderness.");
+                        setPhase(3);
                     } else if (option == 2) {
                         stop();
                     }
@@ -211,5 +227,4 @@ public class Krystalia extends PacketInteraction {
             }
         });
     }
-
 }

@@ -298,49 +298,9 @@
     "scroll": 300,
     "items": [
       {
-        "id": 11864,
+        "id": 11137,
         "amount": 1,
-        "value": 700
-      },
-      {
-        "id": 21888,
-        "amount": 1,
-        "value": 800
-      },
-      {
-        "id": 19643,
-        "amount": 1,
-        "value": 800
-      },
-      {
-        "id": 19647,
-        "amount": 1,
-        "value": 800
-      },
-      {
-        "id": 19639,
-        "amount": 1,
-        "value": 900
-      },
-      {
-        "id": 13326,
-        "amount": 1,
-        "value": 1000
-      },
-      {
-        "id": 12648,
-        "amount": 1,
-        "value": 1000
-      },
-      {
-        "id": 7999,
-        "amount": 1,
-        "value": 600
-      },
-      {
-        "id": 8000,
-        "amount": 1,
-        "value": 600
+        "value": 250
       },
       {
         "id": 11941,

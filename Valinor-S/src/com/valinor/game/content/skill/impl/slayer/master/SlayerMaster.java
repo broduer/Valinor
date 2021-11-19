@@ -27,7 +27,7 @@ public class SlayerMaster {
 
     public final List<SlayerTaskDef> defs = new ArrayList<>();
 
-    private SlayerTaskDef randomTask(Player player) {
+    public SlayerTaskDef randomTask(Player player) {
         // Grab our last task and exclude it to avoid b2b
         int last = player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0);
 
@@ -52,22 +52,5 @@ public class SlayerMaster {
         Range<Integer> range = build.span();
         int rnd = World.getWorld().random(range.upperEndpoint() - 1);
         return build.get(rnd);
-    }
-
-    public static void assign(Player player, int id) {
-        var master = Slayer.master(id);
-        if (master == null) return;
-        SlayerTaskDef def = master.randomTask(player);
-        if(def == null) {
-            System.out.println("no task available.");
-            return;
-        }
-
-        player.putAttrib(AttributeKey.SLAYER_TASK_ID, def.getCreatureUid());
-        int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);
-
-        player.putAttrib(AttributeKey.SLAYER_TASK_AMT, task_amt);
-        player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
-        Slayer.displayCurrentAssignment(player);
     }
 }

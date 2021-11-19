@@ -75,7 +75,7 @@ public final class DefaultShop extends Shop {
      * @return {@code true} if the items need to be restocked, {@code false}
      * otherwise.
      */
-    protected boolean needsRestock() {
+    private boolean needsRestock() {
         return container.stream().filter(Objects::nonNull).anyMatch(i -> !itemCache.containsKey(i.getId()) || (itemCache.containsKey(i.getId()) && i.getAmount() < itemCache.get(i.getId())));
     }
 
@@ -167,6 +167,26 @@ public final class DefaultShop extends Shop {
     public void refresh(Player player) {
         player.getPacketSender().sendItemOnInterface(3823, player.inventory().toArray());
         players.stream().filter(Objects::nonNull).forEach(p -> player.getPacketSender().sendItemOnInterface(shopId == 7 ? ShopUtility.SLAYER_BUY_ITEM_CHILD_ID : 3900, container.toArray()));
+        //Slayer shop
+        if(shopId == 7) {
+            final Item[] items = container.toArray();
+            for (int index = 0; index < items.length; index++) {
+                Item item = items[index];
+
+                if (item == null) {
+                    continue;
+                }
+
+                if (item instanceof StoreItem) {
+                    // Write the item cost string
+                    final StoreItem storeItem = (StoreItem) items[index];
+                    if (storeItem != null) {
+                        int value = storeItem.getShopValue();
+                        player.getPacketSender().sendString(64017 + index, "" + Utils.formatRunescapeStyle(value));
+                    }
+                }
+            }
+        }
         if (restock) {
             if (!needsRestock()) {
                 return;

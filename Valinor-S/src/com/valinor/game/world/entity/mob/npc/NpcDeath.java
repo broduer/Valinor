@@ -831,7 +831,7 @@ public class NpcDeath {
                             }
                         }
 
-                        treasure(killer, npc, tile);
+                        treasure(killer, npc);
                     }
 
                     // Custom drop tables
@@ -948,7 +948,7 @@ public class NpcDeath {
         }
     }
 
-    private static void treasure(Player killer, Npc npc, Tile tile) {
+    private static void treasure(Player killer, Npc npc) {
         if (!killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.TREASURE_HUNT)) {
             return;
         }
