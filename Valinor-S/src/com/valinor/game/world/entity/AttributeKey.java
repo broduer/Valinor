@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    EXP_LAMP_SKILL_SELECTED,
+
     FIGHT_CAVES_WAVE("current_fightcave_wave", AttribType.INTEGER),
 
     BRIMSTONE_KEYS_OPENED("brimstone_keys_opened", AttribType.INTEGER),
