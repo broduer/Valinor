@@ -71,7 +71,7 @@ public class RangeMaxHit {
         //The base damage
         double D = (0.5 + ((A * (B + 64d)) / 640d));
 
-        System.out.println("before tbow: "+D);
+        //System.out.println("before tbow: "+D);
 
         if ((TWISTED_BOWS.contains(weapon)) && target != null && target.isNpc()) {
             int magicLevel = 0;
@@ -88,7 +88,7 @@ public class RangeMaxHit {
                 D += 10;
         }
 
-        System.out.println("D: "+D);
+        //System.out.println("D: "+D);
 
         // Void effect adds 10%.
         if (FormulaUtils.voidRanger(player)) {
@@ -202,7 +202,6 @@ public class RangeMaxHit {
         //System.out.println("After multipliers: "+D);
 
         double baseSpecialModifier = 1.0;
-        double extraModifier = 1.0;
 
         //The base modifier
         if (player.isSpecialActivated()) {
@@ -212,10 +211,10 @@ public class RangeMaxHit {
             var ammoId = player.getEquipment().getId(EquipSlot.AMMO);
             var ammoName = ammoId == -1 ? "" : new Item(ammoId).definition(World.getWorld()).name.toLowerCase();
             if (Equipment.darkbow(weapon) && ammoName.contains("dragon arrow")) {
-                extraModifier *= 0.20;//• Dark bow (dragon arrows): 1.50
+                baseSpecialModifier += 0.20;//• Dark bow (dragon arrows): 1.50
             }
 
-            double totalSpecMod = baseSpecialModifier + extraModifier;
+            double totalSpecMod = baseSpecialModifier;
             //System.out.println("total spec mod: "+totalSpecMod);
             D *= totalSpecMod;
         }
@@ -269,7 +268,7 @@ public class RangeMaxHit {
         //All custom modifiers combined
         int maxHit = (int) Math.round(D * petBonus * weaponBonus * armourBonus * slayerPerkBonus);
 
-        System.out.println("Max hit before additions: "+maxHit);
+        //System.out.println("Max hit before additions: "+maxHit);
 
         if (player.hasPetOut("Little Nightmare")) {
             maxHit += 1;
@@ -296,7 +295,7 @@ public class RangeMaxHit {
             maxHit += 2;
         }
 
-        System.out.println("final max hit "+maxHit);
+        //System.out.println("final max hit "+maxHit);
 
         return maxHit;
     }
