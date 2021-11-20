@@ -24,14 +24,10 @@ public class TradingPostWidget extends Widget {
         closeButton(66002, 107, 108, true);
         addText(66003, ClientConstants.CLIENT_NAME + " Marketplace", font, 2, 0xdb9c22, true, true);
         addText(66004, "Your sales", font, 2, 0xdb9c22, true, true);
-        addHoverButton(66008, 1456, 103, 62, "History", -1, 66009, 1);
-        addHoveredButton(66009, 1457, 103, 62, 66010);
-        addHoverButton(66011, 1452, 103, 34, "Search item", -1, 66012, 1);
-        addHoveredButton(66012, 1453, 103, 34, 66013);
-        addHoverButton(66014, 1452, 103, 34, "Search user", -1, 66015, 1);
-        addHoveredButton(66015, 1453, 103, 34, 66016);
-        addHoverButton(66017, 1452, 103, 34, "Recent sales", -1, 66018, 1);
-        addHoveredButton(66018, 1453, 103, 34, 66019);
+        hoverButton(66008, "History", 1456, 1457);
+        hoverButton(66011, "Search item", 1452, 1453);
+        hoverButton(66014, "Search user", 1452, 1453);
+        hoverButton(66017, "Recent sales", 1452, 1453);
         addText(66021, "History", font, 2, 0xdb9c22, true, true);
         addText(66022, "Search item", font, 2, 0xdb9c22, true, true);
         addText(66023, "Search user", font, 2, 0xdb9c22, true, true);
@@ -71,24 +67,20 @@ public class TradingPostWidget extends Widget {
             y += 53;
         }
 
-        widget.totalChildren(17);
+        widget.totalChildren(13);
         widget.child(0, 66001, 50, 25);//background sprite
         widget.child(1, 66002, 433, 32);//close button
         widget.child(2, 66003, 260, 35);//UI title
         widget.child(3, 66004, 380, 62);//Sales title
         widget.child(4, 66008, 130, 75);//History button
-        widget.child(5, 66009, 130, 75);//History hover button
-        widget.child(6, 66011, 125, 150);//Search item button
-        widget.child(7, 66012, 125, 150);//Search item hover button
-        widget.child(8, 66014, 125, 195);//Search user button
-        widget.child(9, 66015, 125, 195);//Search user hover button
-        widget.child(10, 66017, 125, 240);//Recent sales button
-        widget.child(11, 66018, 125, 240);//Recent sales hover button
-        widget.child(12, 66021, 198, 98);//History title
-        widget.child(13, 66022, 188, 158);//Search item title
-        widget.child(14, 66023, 188, 203);//Search user title
-        widget.child(15, 66024, 190, 248);//Recent sales title
-        widget.child(16, 66026, 305, 85);//Recent sales title
+        widget.child(5, 66011, 125, 150);//Search item button
+        widget.child(6, 66014, 125, 195);//Search user button
+        widget.child(7, 66017, 125, 240);//Recent sales button
+        widget.child(8, 66021, 198, 98);//History title
+        widget.child(9, 66022, 188, 158);//Search item title
+        widget.child(10, 66023, 188, 203);//Search user title
+        widget.child(11, 66024, 190, 248);//Recent sales title
+        widget.child(12, 66026, 305, 85);//Recent sales title
     }
 
     private static void history(AdvancedFont[] font) {
@@ -103,12 +95,10 @@ public class TradingPostWidget extends Widget {
         addText(66307, "Date", font, 0, 0xdb9c22, true, true);
 
         //Move these at least 220 childs further so we don't have to shift the scroll widget.
-        addHoverButton(66550, 1477, 41, 18, "Back", -1, 66551, 1);
-        addHoveredButton(66551, 1478, 41, 18, 66552);
-        addHoverButton(66553, 1869, 41, 18, "Next page", -1, 66554, 1);
-        addHoveredButton(66555, 1870, 41, 18, 66556);
+        hoverButton(66550, "Back", 1477, 1478);
+        hoverButton(66553, "Next page", 1869, 1870);
 
-        widget.totalChildren(12);
+        widget.totalChildren(10);
         widget.child(0, 66301, 50, 25);//background sprite
         widget.child(1, 66302, 433, 32);//close button
         widget.child(2, 66303, 260, 35);//UI title
@@ -118,9 +108,7 @@ public class TradingPostWidget extends Widget {
         widget.child(6, 66307, 425, 56);//Date title
         widget.child(7, 66310, 55, 70);//Scroll interface
         widget.child(8, 66550, 60, 33);//Back button
-        widget.child(9, 66551, 60, 33);//Back hover button
-        widget.child(10, 66553, 80, 33);//Next page button
-        widget.child(11, 66555, 80, 33);//Next page button
+        widget.child(9, 66553, 80, 33);//Next page button
 
         Widget scroll_widget = addTabInterface(66310);
         scroll_widget.scrollPosition = 0;
@@ -165,14 +153,11 @@ public class TradingPostWidget extends Widget {
         addText(66605, "Item", font, 0, 0xdb9c22, true, true);
         addText(66606, "Price (ea)", font, 0, 0xdb9c22, true, true);
         addText(66607, "Seller", font, 0, 0xdb9c22, true, true);
-        addHoverButton(66608, 1477, 18, 18, "Back", -1, 66609, 1);
-        addHoveredButton(66609, 1478, 18, 18, 66610);
-        addHoverButton(66851, 1869, 31, 21, "Next page", -1, 66852, 1);
-        addHoveredButton(66852, 1870, 31, 21, 66853);
-        addHoverButton(66854, 1778, 31, 21, "Refresh", -1, 66855, 1);
-        addHoveredButton(66855, 1779, 31, 21, 66856);
+        hoverButton(66608, "Back", 1477, 1478);
+        hoverButton(66851, "Next page", 1869, 1870);
+        hoverButton(66854, "Refresh", 1778, 1779);
 
-        widget.totalChildren(14);
+        widget.totalChildren(11);
         widget.child(0, 66601, 50, 25);//background sprite
         widget.child(1, 66602, 433, 32);//close button
         widget.child(2, 66603, 260, 35);//UI title
@@ -181,12 +166,9 @@ public class TradingPostWidget extends Widget {
         widget.child(5, 66606, 255, 56);//Price (ea) title
         widget.child(6, 66607, 365, 56);//Seller title
         widget.child(7, 66608, 60, 33);//Back button
-        widget.child(8, 66609, 60, 33);//Back hover button
-        widget.child(9, 66851, 80, 33);//Next page button
-        widget.child(10, 66852, 80, 33);//Next page hover button
-        widget.child(11, 66612, 55, 70);//Scroll widget
-        widget.child(12, 66854, 395, 31);//Refresh button
-        widget.child(13, 66855, 395, 31);//Refresh hover button
+        widget.child(8, 66851, 80, 33);//Next page button
+        widget.child(9, 66612, 55, 70);//Scroll widget
+        widget.child(10, 66854, 395, 31);//Refresh button
 
         Widget scroll_widget = addTabInterface(66612);
         scroll_widget.scrollPosition = 0;

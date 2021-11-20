@@ -11564,17 +11564,19 @@ public class Client extends GameApplet {
             }
 
             if (child.type == Widget.TYPE_CONTAINER) {
-                if (child.scrollPosition > child.scrollMax - child.height)
-                    child.scrollPosition = child.scrollMax - child.height;
-                if (child.scrollPosition < 0)
+                int scrollMax = child.scrollMax;
+                if (child.scrollPosition > scrollMax - child.height) {
+                    child.scrollPosition = scrollMax - child.height;
+                }
+                if (child.scrollPosition < 0) {
                     child.scrollPosition = 0;
+                }
                 drawInterface(child, child_x_in_bounds, child_y_in_bounds, child.scrollPosition);
-                if (child.scrollMax > child.height) {
+                if (scrollMax > child.height) {
                     if (child.id == 36350 || child.newScroller) {
                         draw508Scrollbar(child.height, child.scrollPosition, child_y_in_bounds, child_x_in_bounds + child.width, child.scrollMax, false);
                     } else {
-                        drawScrollbar(child.height, child.scrollPosition, child_y_in_bounds, child_x_in_bounds + child.width, child.scrollMax,
-                            false);
+                        drawScrollbar(child.height, child.scrollPosition, child_y_in_bounds, child_x_in_bounds + child.width, child.scrollMax, false);
                     }
                 }
             } else if (child.type != 1)

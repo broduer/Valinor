@@ -2287,23 +2287,6 @@ public class Widget {
         tab.tooltip = text;
     }
 
-    public static void addHoveredButton(final int id, final String imageName, final int j, final int w, final int h, final int IMAGEID) {
-        final Widget tab = addTabInterface(id);
-        tab.parent = id;
-        tab.id = id;
-        tab.type = 0;
-        tab.optionType = 0;
-        tab.width = w;
-        tab.height = h;
-        tab.invisible = true;
-        tab.opacity = 0;
-        tab.hoverType = -1;
-        tab.scrollMax = 0;
-        addHoverImage(IMAGEID, j, j, imageName);
-        tab.totalChildren(1);
-        tab.child(0, IMAGEID, 0, 0);
-    }
-
     private static int getFreeIndex() {
         for (int i = 0; i < cache.length; i++) {
             if (cache[i] == null) {
@@ -2441,8 +2424,8 @@ public class Widget {
         tab.contentType = contentType;
         tab.opacity = 0;
         tab.hoverType = hoverType;
-        tab.enabledSprite = spriteId < 0 ? null : Client.spriteCache.get(spriteId);
-        tab.disabledSprite = spriteId < 0 ? null : Client.spriteCache.get(spriteId);
+        tab.enabledSprite = imageLoaderNew(spriteId);
+        tab.disabledSprite = imageLoaderNew(spriteId);
         tab.width = width;
         tab.height = height;
         tab.tooltip = text;
@@ -2461,7 +2444,7 @@ public class Widget {
         tab.opacity = 0;
         tab.hoverType = -1;
         tab.scrollMax = 0;
-        addHoverImage_sprite_loader(imageId, spriteId);
+        addHoverImage(imageId, spriteId);
         tab.totalChildren(1);
         tab.child(0, imageId, 0, 0);
     }
@@ -2552,7 +2535,7 @@ public class Widget {
         widget.height = 334;
     }
 
-    public static void addHoverImage(int i, int j, int k, String name) {
+    public static void addHoverImage(int i, int spriteId) {
         Widget tab = addTabInterface(i);
         tab.id = i;
         tab.parent = i;
@@ -2564,8 +2547,8 @@ public class Widget {
         tab.height = 334;
         tab.opacity = 0;
         tab.hoverType = 52;
-        tab.enabledSprite = imageLoader(j, name);
-        tab.disabledSprite = imageLoader(k, name);
+        tab.enabledSprite = imageLoaderNew(spriteId);
+        tab.disabledSprite = imageLoaderNew(spriteId);
     }
 
     private static Widget createInterface(int id) {
