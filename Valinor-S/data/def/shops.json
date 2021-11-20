@@ -305,22 +305,22 @@
       {
         "id": 11941,
         "amount": 1,
-        "value": 10
+        "value": 250
       },
       {
         "id": 20238,
         "amount": 1,
-        "value": 30
+        "value": 50
       },
       {
         "id": 12846,
         "amount": 1,
-        "value": 100
+        "value": 350
       },
       {
         "id": 12017,
         "amount": 1,
-        "value": 450
+        "value": 750
       },
       {
         "id": 24780,
@@ -328,29 +328,14 @@
         "value": 4000
       },
       {
-        "id": 20724,
-        "amount": 1,
-        "value": 1500
-      },
-      {
         "id": 19564,
         "amount": 1,
-        "value": 450
-      },
-      {
-        "id": 964,
-        "amount": 1,
-        "value": 900
-      },
-      {
-        "id": 19550,
-        "amount": 1,
-        "value": 450
+        "value": 750
       },
       {
         "id": 28663,
         "amount": 1,
-        "value": 4500
+        "value": 7500
       }
     ]
   },
