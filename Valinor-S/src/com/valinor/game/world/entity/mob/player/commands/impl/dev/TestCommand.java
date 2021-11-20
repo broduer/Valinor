@@ -1,15 +1,19 @@
 
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
-import com.valinor.game.content.group_ironman.GroupIronmanInterface;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
+import com.valinor.game.world.items.Item;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class TestCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        GroupIronmanInterface.open(player);
+        List<Item> test = Arrays.asList(new Item(4151), new Item(4151), new Item(4151), new Item(4151), new Item(4151), new Item(4151), new Item(4151));
+        player.getPacketSender().sendItemOnInterface(41419, test);
         //System.out.println(player.pet().def().name);
         player.message("Test command has been activated.");
     }

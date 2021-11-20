@@ -212,7 +212,7 @@ public final class QuestTab {
             }
 
             case 73118 -> {
-                PlayersOnlineCommand.playersOnline(player);
+                player.getCollectionLog().open(LogType.BOSSES);
                 return true;
             }
 

@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 
 /**
  * @author PVE
@@ -129,36 +128,6 @@ public class Slayer {
             protected void select(int option) {
                 if (isPhase(0)) {
                     if (option == 1) {
-                        send(DialogueType.OPTION, "Reset slayer task with BM or Slayer points?", "BM. (5.000)", "Slayer Points. (10)");
-                        setPhase(1);
-                    } else {
-                        stop();
-                    }
-                } else if (isPhase(1)) {
-                    if (option == 1) {
-                        boolean canReset = false;
-                        int resetAmount = 5000;
-                        int bmInInventory = player.inventory().count(BLOOD_MONEY);
-                        if (bmInInventory > 0) {
-                            if (bmInInventory >= resetAmount) {
-                                canReset = true;
-                                player.inventory().remove(BLOOD_MONEY, resetAmount);
-                            }
-                        }
-
-                        if (!canReset) {
-                            player.message("You do not have enough BM to do this.");
-                            stop();
-                            return;
-                        }
-                        player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
-                        player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
-                        player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);
-                        player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
-                        player.getPacketSender().sendString(TASK_STREAK.childId, QuestTab.InfoTab.INFO_TAB.get(TASK_STREAK.childId).fetchLineData(player));
-                        Slayer.displayCurrentAssignment(player);
-                        player.message("You have successfully cancelled your task.");
-                    } else {
                         int pts = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
                         int required = 10;
 

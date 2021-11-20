@@ -465,36 +465,6 @@ public class PlayerSave {
                 player.putAttrib(TOURNAMENT_POINTS, details.tournamentPoints);
                 player.putAttrib(LOST_CANNON, details.lostCannon);
                 player.putAttrib(WILDY_COURSE_STATE, details.wildernessCourseState);
-                player.putAttrib(EDGE_PVP_DAILY_TASK_COMPLETION_AMOUNT, details.edgePvpDailyAmount);
-                player.putAttrib(EDGE_PVP_DAILY_TASK_COMPLETED, details.edgePvpDailyCompleted);
-                player.putAttrib(EDGE_PVP_DAILY_TASK_REWARD_CLAIMED, details.edgePvpDailyRewardClaimed);
-                player.putAttrib(REVENANT_CAVE_PVP_DAILY_TASK_COMPLETION_AMOUNT, details.revCavePvpDailyAmount);
-                player.putAttrib(REVENANT_CAVE_PVP_DAILY_TASK_COMPLETED, details.revCavePvpDailyCompleted);
-                player.putAttrib(REVENANT_CAVE_PVP_DAILY_TASK_REWARD_CLAIMED, details.revCavePvpDailyRewardClaimed);
-                player.putAttrib(DEEP_WILD_PVP_DAILY_TASK_COMPLETION_AMOUNT, details.deepWildPvpDailyAmount);
-                player.putAttrib(DEEP_WILD_PVP_DAILY_TASK_COMPLETED, details.deepWildPvpDailyCompleted);
-                player.putAttrib(DEEP_WILD_PVP_DAILY_TASK_REWARD_CLAIMED, details.deepWildPvpDailyRewardClaimed);
-                player.putAttrib(PURE_PVP_DAILY_TASK_COMPLETION_AMOUNT, details.purePvpeDailyAmount);
-                player.putAttrib(PURE_PVP_DAILY_TASK_COMPLETED, details.purePvpDailyCompleted);
-                player.putAttrib(PURE_PVP_DAILY_TASK_REWARD_CLAIMED, details.purePvpDailyRewardClaimed);
-                player.putAttrib(ZERKER_PVP_DAILY_TASK_COMPLETION_AMOUNT, details.zekerPvpDailyAmount);
-                player.putAttrib(ZERKER_PVP_DAILY_TASK_COMPLETED, details.zekerPvpDailyCompleted);
-                player.putAttrib(ZERKER_PVP_DAILY_TASK_REWARD_CLAIMED, details.zekerPVPDailyRewardClaimed);
-                player.putAttrib(TIER_UPGRADE_DAILY_TASK_COMPLETION_AMOUNT, details.tierUpgradePvpDailyAmount);
-                player.putAttrib(TIER_UPGRADE_DAILY_TASK_COMPLETED, details.tierUpgradePvpDailyCompleted);
-                player.putAttrib(TIER_UPGRADE_DAILY_TASK_REWARD_CLAIMED, details.tierUpgradePvpDailyRewardClaimed);
-                player.putAttrib(NO_ARM_DAILY_TASK_COMPLETION_AMOUNT, details.noArmPvpDailyAmount);
-                player.putAttrib(NO_ARM_DAILY_TASK_COMPLETED, details.noArmPvpDailyCompleted);
-                player.putAttrib(NO_ARM_DAILY_TASK_REWARD_CLAIMED, details.noArmPvpDailyRewardClaimed);
-                player.putAttrib(DHAROK_DAILY_TASK_COMPLETION_AMOUNT, details.dharokPvpDailyAmount);
-                player.putAttrib(DHAROK_DAILY_TASK_COMPLETED, details.dharokPvpDailyCompleted);
-                player.putAttrib(DHAROK_DAILY_TASK_REWARD_CLAIMED, details.dharokPvpDailyRewardClaimed);
-                player.putAttrib(BOTS_DAILY_TASK_COMPLETION_AMOUNT, details.botsPvpDailyAmount);
-                player.putAttrib(BOTS_DAILY_TASK_COMPLETED, details.botsPvpDailyCompleted);
-                player.putAttrib(BOTS_DAILY_TASK_REWARD_CLAIMED, details.botsPvpDailyRewardClaimed);
-                player.putAttrib(TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETION_AMOUNT, details.tourneyParticipationDailyAmount);
-                player.putAttrib(TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETED, details.tourneyParticipationDailyCompleted);
-                player.putAttrib(TOURNEY_PARTICIPATION_DAILY_TASK_REWARD_CLAIMED, details.tourneyParticipationDailyRewardClaimed);
                 player.putAttrib(DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyRaidsDailyAmount);
                 player.putAttrib(DAILY_RAIDS_DAILY_TASK_COMPLETED, details.dailyRaidsDailyCompleted);
                 player.putAttrib(DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, details.dailyRaidsDailyRewardClaimed);
@@ -912,46 +882,6 @@ public class PlayerSave {
         private final int wildernessCourseState;
 
         //Daily task save attributes
-        private final int edgePvpDailyAmount;
-        private final boolean edgePvpDailyCompleted;
-        private final boolean edgePvpDailyRewardClaimed;
-
-        private final int revCavePvpDailyAmount;
-        private final boolean revCavePvpDailyCompleted;
-        private final boolean revCavePvpDailyRewardClaimed;
-
-        private final int deepWildPvpDailyAmount;
-        private final boolean deepWildPvpDailyCompleted;
-        private final boolean deepWildPvpDailyRewardClaimed;
-
-        private final int purePvpeDailyAmount;
-        private final boolean purePvpDailyCompleted;
-        private final boolean purePvpDailyRewardClaimed;
-
-        private final int zekerPvpDailyAmount;
-        private final boolean zekerPvpDailyCompleted;
-        private final boolean zekerPVPDailyRewardClaimed;
-
-        private final int tierUpgradePvpDailyAmount;
-        private final boolean tierUpgradePvpDailyCompleted;
-        private final boolean tierUpgradePvpDailyRewardClaimed;
-
-        private final int noArmPvpDailyAmount;
-        private final boolean noArmPvpDailyCompleted;
-        private final boolean noArmPvpDailyRewardClaimed;
-
-        private final int dharokPvpDailyAmount;
-        private final boolean dharokPvpDailyCompleted;
-        private final boolean dharokPvpDailyRewardClaimed;
-
-        private final int botsPvpDailyAmount;
-        private final boolean botsPvpDailyCompleted;
-        private final boolean botsPvpDailyRewardClaimed;
-
-        private final int tourneyParticipationDailyAmount;
-        private final boolean tourneyParticipationDailyCompleted;
-        private final boolean tourneyParticipationDailyRewardClaimed;
-
         private final int dailyRaidsDailyAmount;
         private final boolean dailyRaidsDailyCompleted;
         private final boolean dailyRaidsDailyRewardClaimed;
@@ -1356,36 +1286,6 @@ public class PlayerSave {
             tournamentPoints = Player.getAttribIntOr(player, TOURNAMENT_POINTS, 0);
             lostCannon = Player.getAttribBooleanOr(player, LOST_CANNON, false);
             wildernessCourseState = Player.getAttribIntOr(player, WILDY_COURSE_STATE, 0);
-            edgePvpDailyAmount = Player.getAttribIntOr(player, EDGE_PVP_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            edgePvpDailyCompleted = Player.getAttribBooleanOr(player, EDGE_PVP_DAILY_TASK_COMPLETED, false);
-            edgePvpDailyRewardClaimed = Player.getAttribBooleanOr(player, EDGE_PVP_DAILY_TASK_REWARD_CLAIMED, false);
-            revCavePvpDailyAmount = Player.getAttribIntOr(player, REVENANT_CAVE_PVP_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            revCavePvpDailyCompleted = Player.getAttribBooleanOr(player, REVENANT_CAVE_PVP_DAILY_TASK_COMPLETED, false);
-            revCavePvpDailyRewardClaimed = Player.getAttribBooleanOr(player, REVENANT_CAVE_PVP_DAILY_TASK_REWARD_CLAIMED, false);
-            deepWildPvpDailyAmount = Player.getAttribIntOr(player, DEEP_WILD_PVP_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            deepWildPvpDailyCompleted = Player.getAttribBooleanOr(player, DEEP_WILD_PVP_DAILY_TASK_COMPLETED, false);
-            deepWildPvpDailyRewardClaimed = Player.getAttribBooleanOr(player, DEEP_WILD_PVP_DAILY_TASK_REWARD_CLAIMED, false);
-            purePvpeDailyAmount = Player.getAttribIntOr(player, PURE_PVP_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            purePvpDailyCompleted = Player.getAttribBooleanOr(player, PURE_PVP_DAILY_TASK_COMPLETED, false);
-            purePvpDailyRewardClaimed = Player.getAttribBooleanOr(player, PURE_PVP_DAILY_TASK_REWARD_CLAIMED, false);
-            zekerPvpDailyAmount = Player.getAttribIntOr(player, ZERKER_PVP_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            zekerPvpDailyCompleted = Player.getAttribBooleanOr(player, ZERKER_PVP_DAILY_TASK_COMPLETED, false);
-            zekerPVPDailyRewardClaimed = Player.getAttribBooleanOr(player, ZERKER_PVP_DAILY_TASK_REWARD_CLAIMED, false);
-            tierUpgradePvpDailyAmount = Player.getAttribIntOr(player, TIER_UPGRADE_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            tierUpgradePvpDailyCompleted = Player.getAttribBooleanOr(player, TIER_UPGRADE_DAILY_TASK_COMPLETED, false);
-            tierUpgradePvpDailyRewardClaimed = Player.getAttribBooleanOr(player, TIER_UPGRADE_DAILY_TASK_REWARD_CLAIMED, false);
-            noArmPvpDailyAmount = Player.getAttribIntOr(player, NO_ARM_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            noArmPvpDailyCompleted = Player.getAttribBooleanOr(player, NO_ARM_DAILY_TASK_COMPLETED, false);
-            noArmPvpDailyRewardClaimed = Player.getAttribBooleanOr(player, NO_ARM_DAILY_TASK_REWARD_CLAIMED, false);
-            dharokPvpDailyAmount = Player.getAttribIntOr(player, DHAROK_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dharokPvpDailyCompleted = Player.getAttribBooleanOr(player, DHAROK_DAILY_TASK_COMPLETED, false);
-            dharokPvpDailyRewardClaimed = Player.getAttribBooleanOr(player, DHAROK_DAILY_TASK_REWARD_CLAIMED, false);
-            botsPvpDailyAmount = Player.getAttribIntOr(player, BOTS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            botsPvpDailyCompleted = Player.getAttribBooleanOr(player, BOTS_DAILY_TASK_COMPLETED, false);
-            botsPvpDailyRewardClaimed = Player.getAttribBooleanOr(player, BOTS_DAILY_TASK_REWARD_CLAIMED, false);
-            tourneyParticipationDailyAmount = Player.getAttribIntOr(player, TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            tourneyParticipationDailyCompleted = Player.getAttribBooleanOr(player, TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETED, false);
-            tourneyParticipationDailyRewardClaimed = Player.getAttribBooleanOr(player, TOURNEY_PARTICIPATION_DAILY_TASK_REWARD_CLAIMED, false);
             dailyRaidsDailyAmount = Player.getAttribIntOr(player, DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyRaidsDailyCompleted = Player.getAttribBooleanOr(player, DAILY_RAIDS_DAILY_TASK_COMPLETED, false);
             dailyRaidsDailyRewardClaimed = Player.getAttribBooleanOr(player, DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, false);

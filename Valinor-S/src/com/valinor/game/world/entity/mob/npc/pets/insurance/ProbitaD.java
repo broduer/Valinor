@@ -10,7 +10,7 @@ import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.PROBITA;
 
 /**
@@ -24,7 +24,7 @@ public class ProbitaD extends Dialogue {
 
     private int petId;
 
-    private final int INSURANCE_FEE = 35_000;
+    private final int INSURANCE_FEE = 35_000_000;
 
     private boolean canInsure(int id) {
         if(Pet.fromNpc(id).isEmpty()) {
@@ -104,11 +104,11 @@ public class ProbitaD extends Dialogue {
             switch (option) {
                 case 1 -> {
                     boolean canClaimPet = false;
-                    int bmInInventory = player.inventory().count(BLOOD_MONEY);
-                    if (bmInInventory > 0) {
-                        if (bmInInventory >= INSURANCE_FEE) {
+                    int inInventory = player.inventory().count(COINS_995);
+                    if (inInventory > 0) {
+                        if (inInventory >= INSURANCE_FEE) {
                             canClaimPet = true;
-                            player.inventory().remove(new Item(BLOOD_MONEY, INSURANCE_FEE), true);
+                            player.inventory().remove(new Item(COINS_995, INSURANCE_FEE), true);
                         }
                     }
 

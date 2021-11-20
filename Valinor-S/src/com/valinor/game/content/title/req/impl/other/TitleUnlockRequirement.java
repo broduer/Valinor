@@ -7,12 +7,12 @@ import com.valinor.util.Utils;
 import java.util.EnumSet;
 import java.util.Set;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 public class TitleUnlockRequirement extends TitleRequirement {
 
     public enum UnlockableTitle {
-        MILLIONAIRE(10000), BILLIONAIRE(10000), KING(10000), QUEEN(10000), SIR(10000), MR(10000), MISS(10000), MRS(10000), THE_IDIOT(10000), LAZY(10000), NOOB(10000), DRUNKEN(10000), THE_MAGNIFICENT(10000), THE_AWESOME(10000), COWARDLY(10000);
+        MILLIONAIRE(10_000_000), BILLIONAIRE(10_000_000), KING(10_000_000), QUEEN(10_000_000), SIR(10_000_000), MR(10_000_000), MISS(10_000_000), MRS(10_000_000), THE_IDIOT(10_000_000), LAZY(10_000_000), NOOB(10_000_000), DRUNKEN(10_000_000), THE_MAGNIFICENT(10_000_000), THE_AWESOME(10_000_000), COWARDLY(10_000_000);
 
         public static final Set<UnlockableTitle> SET = EnumSet.allOf(UnlockableTitle.class);
 
@@ -40,10 +40,10 @@ public class TitleUnlockRequirement extends TitleRequirement {
     public boolean satisfies(Player player) {
         if (!player.getUnlockedTitles().contains(title)) {
 
-            int bmInInventory = player.inventory().count(BLOOD_MONEY);
+            int bmInInventory = player.inventory().count(COINS_995);
             if (bmInInventory > 0) {
                 if(bmInInventory >= title.cost) {
-                    player.inventory().remove(BLOOD_MONEY, title.cost);
+                    player.inventory().remove(COINS_995, title.cost);
                     player.getUnlockedTitles().add(title);
                 }
             } else {

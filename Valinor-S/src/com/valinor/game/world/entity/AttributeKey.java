@@ -192,40 +192,6 @@ public enum AttributeKey {
 
     VIEWING_RUNE_POUCH_I,
 
-    //PvP tasks
-    EDGE_PVP_DAILY_TASK_COMPLETION_AMOUNT("edge_daily_daily_task_completion_amount", AttribType.INTEGER),
-    REVENANT_CAVE_PVP_DAILY_TASK_COMPLETION_AMOUNT("revenant_cave_daily_daily_task_completion_amount", AttribType.INTEGER),
-    DEEP_WILD_PVP_DAILY_TASK_COMPLETION_AMOUNT("deep_wild_daily_task_completion_amount", AttribType.INTEGER),
-    PURE_PVP_DAILY_TASK_COMPLETION_AMOUNT("pure_daily_task_completion_amount", AttribType.INTEGER),
-    ZERKER_PVP_DAILY_TASK_COMPLETION_AMOUNT("zerker_daily_task_completion_amount", AttribType.INTEGER),
-    TIER_UPGRADE_DAILY_TASK_COMPLETION_AMOUNT("tier_upgrade_task_completion_amount", AttribType.INTEGER),
-    NO_ARM_DAILY_TASK_COMPLETION_AMOUNT("no_arm_task_completion_amount", AttribType.INTEGER),
-    DHAROK_DAILY_TASK_COMPLETION_AMOUNT("dharok_task_completion_amount", AttribType.INTEGER),
-    BOTS_DAILY_TASK_COMPLETION_AMOUNT("bots_task_completion_amount", AttribType.INTEGER),
-    TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETION_AMOUNT("tourney_participation_task_completion_amount", AttribType.INTEGER),
-
-    EDGE_PVP_DAILY_TASK_COMPLETED("edge_daily_daily_task_completed", AttribType.BOOLEAN),
-    REVENANT_CAVE_PVP_DAILY_TASK_COMPLETED("revenant_cave_daily_daily_task_completed", AttribType.BOOLEAN),
-    DEEP_WILD_PVP_DAILY_TASK_COMPLETED("deep_wild_daily_task_completed", AttribType.BOOLEAN),
-    PURE_PVP_DAILY_TASK_COMPLETED("pure_daily_task_completed", AttribType.BOOLEAN),
-    ZERKER_PVP_DAILY_TASK_COMPLETED("zerker_daily_task_completed", AttribType.BOOLEAN),
-    TIER_UPGRADE_DAILY_TASK_COMPLETED("tier_upgrade_task_completed", AttribType.BOOLEAN),
-    NO_ARM_DAILY_TASK_COMPLETED("no_arm_task_completed", AttribType.BOOLEAN),
-    DHAROK_DAILY_TASK_COMPLETED("dharok_task_completed", AttribType.BOOLEAN),
-    BOTS_DAILY_TASK_COMPLETED("bots_task_completed", AttribType.BOOLEAN),
-    TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETED("tourney_participation_task_completed", AttribType.BOOLEAN),
-
-    EDGE_PVP_DAILY_TASK_REWARD_CLAIMED("edge_daily_daily_task_reward_claimed", AttribType.BOOLEAN),
-    REVENANT_CAVE_PVP_DAILY_TASK_REWARD_CLAIMED("revenant_cave_daily_daily_task_reward_claimed", AttribType.BOOLEAN),
-    DEEP_WILD_PVP_DAILY_TASK_REWARD_CLAIMED("deep_wild_daily_task_reward_claimed", AttribType.BOOLEAN),
-    PURE_PVP_DAILY_TASK_REWARD_CLAIMED("pure_daily_task_reward_claimed", AttribType.BOOLEAN),
-    ZERKER_PVP_DAILY_TASK_REWARD_CLAIMED("zerker_daily_task_reward_claimed", AttribType.BOOLEAN),
-    TIER_UPGRADE_DAILY_TASK_REWARD_CLAIMED("tier_upgrade_task_reward_claimed", AttribType.BOOLEAN),
-    NO_ARM_DAILY_TASK_REWARD_CLAIMED("no_arm_task_reward_claimed", AttribType.BOOLEAN),
-    DHAROK_DAILY_TASK_REWARD_CLAIMED("dharok_task_reward_claimed", AttribType.BOOLEAN),
-    BOTS_DAILY_TASK_REWARD_CLAIMED("bots_task_reward_claimed", AttribType.BOOLEAN),
-    TOURNEY_PARTICIPATION_DAILY_TASK_REWARD_CLAIMED("tourney_participation_task_reward_claimed", AttribType.BOOLEAN),
-
     //PvM tasks
     DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT("daily_raids_task_completion_amount", AttribType.INTEGER),
     WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT("daily_world_bosses_task_completion_amount", AttribType.INTEGER),

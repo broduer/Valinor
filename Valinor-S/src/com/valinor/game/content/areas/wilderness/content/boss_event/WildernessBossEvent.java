@@ -124,8 +124,8 @@ public class WildernessBossEvent {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(HWEEN_TOKENS, World.getWorld().random(500, 5000)), npc.tile(), player));
                 }
 
-                //Always drop random BM
-                GroundItemHandler.createGroundItem(new GroundItem(new Item(BLOOD_MONEY, World.getWorld().random(10_000, 15_000)), npc.tile(), player));
+                //Always drop random coins
+                GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(1_000_000, 5_000_000)), npc.tile(), player));
 
                 //Always log kill timers
                 player.getBossTimers().submit(npc.def().name, (int) player.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), player);

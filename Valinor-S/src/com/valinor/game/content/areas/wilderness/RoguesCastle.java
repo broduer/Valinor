@@ -1,6 +1,5 @@
 package com.valinor.game.content.areas.wilderness;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -12,7 +11,6 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ObjectIdentifiers.CHEST_26757;
 
 public class RoguesCastle extends PacketInteraction {
@@ -46,7 +44,7 @@ public class RoguesCastle extends PacketInteraction {
                     });
 
                     // Grabs a reward from our array lists
-                    Item eco_reward = Utils.randomElement(eco_rewards);
+                    Item eco_reward = Utils.randomElement(rewards);
 
                     // For every level 135 Rogue inside the Rogues Castle we..
                     World.getWorld().getNpcs().forEach(npc -> {
@@ -71,8 +69,7 @@ public class RoguesCastle extends PacketInteraction {
         return false;
     }
 
-    //Array used to store the economy server chest rewards.
-    private static final Item[] eco_rewards = {new Item(1622, 5), //Uncut emerald
+    private static final Item[] rewards = {new Item(1622, 5), //Uncut emerald
         new Item(1624, 6), //Uncut sapphire
         new Item(995, 1000), //Coins
         new Item(360, 15), //Raw Tuna

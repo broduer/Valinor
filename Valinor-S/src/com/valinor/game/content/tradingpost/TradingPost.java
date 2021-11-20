@@ -62,7 +62,6 @@ public class TradingPost {
     public static boolean TRADING_POST_LISTING_ENABLED = true;
     public static boolean TRADING_POST_VALUE_ENABLED = false;
     public static final boolean TESTING = false;
-    public static final boolean BLOOD_MONEY_CURRENCY = true;
 
     private static final int INTERFACE_ID = 66000, HISTORY_ID = 66300, BUY_ID = 66600;
 
@@ -1049,9 +1048,9 @@ public class TradingPost {
 
     public static void finishPurchase(Player player, TradingPostListing selected, long totalPrice, int amount, boolean noted) {
         try {
-            long currency = player.inventory().count(BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995);
+            long currency = player.inventory().count(COINS_995);
 
-            long tokens = player.inventory().count(BLOOD_MONEY_CURRENCY ? BLOODY_TOKEN : PLATINUM_TOKEN);
+            long tokens = player.inventory().count(PLATINUM_TOKEN);
 
             long totalPriceInPlat = tokens * 1_000;
 
@@ -1113,11 +1112,11 @@ public class TradingPost {
             }
 
             if (coinsToRemove > 0) {
-                player.inventory().remove(BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995, coinsToRemove);
+                player.inventory().remove(COINS_995, coinsToRemove);
             }
 
             if (platTokensToRemove > 0) {
-                player.inventory().remove(BLOOD_MONEY_CURRENCY ? BLOODY_TOKEN : PLATINUM_TOKEN, platTokensToRemove);
+                player.inventory().remove(PLATINUM_TOKEN, platTokensToRemove);
             }
 
             if (noted) {
@@ -1203,17 +1202,17 @@ public class TradingPost {
         if (profit > Integer.MAX_VALUE) {
             var profitInPlatTokens = profit / 1000;
             var remainingCoins = profit - profitInPlatTokens * 1000;
-            p.inventory().addOrBank(new Item(BLOOD_MONEY_CURRENCY ? BLOODY_TOKEN : PLATINUM_TOKEN, (int) profitInPlatTokens));
+            p.inventory().addOrBank(new Item(PLATINUM_TOKEN, (int) profitInPlatTokens));
             tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profitInPlatTokens + " bloody tokens");
 
             if (remainingCoins >= 1) {
-                p.inventory().addOrBank(new Item(BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995, (int) remainingCoins));
+                p.inventory().addOrBank(new Item(COINS_995, (int) remainingCoins));
                 tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) remainingCoins + " blood money");
             }
         } else {
             //Below max int add coins.
             if (profit > 0) {
-                p.inventory().addOrBank(new Item(BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995, (int) profit));
+                p.inventory().addOrBank(new Item(COINS_995, (int) profit));
                 tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profit + " blood money");
             }
         }
@@ -1385,7 +1384,7 @@ public class TradingPost {
 
             long unclaimedProfit = offer.profit;
 
-            int inventoryAmount = player.inventory().getAmountOf(BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995);
+            int inventoryAmount = player.inventory().getAmountOf(COINS_995);
 
             long total = inventoryAmount + unclaimedProfit;
 
@@ -1401,7 +1400,7 @@ public class TradingPost {
 
             if (unclaimedProfit > 0) {
                 boolean isOver = total > Integer.MAX_VALUE;
-                int refundId = isOver ? BLOOD_MONEY_CURRENCY ? BLOODY_TOKEN : PLATINUM_TOKEN : BLOOD_MONEY_CURRENCY ? BLOOD_MONEY : COINS_995;
+                int refundId = isOver ? PLATINUM_TOKEN : COINS_995;
                 Item item = new Item(refundId, isOver ? (int) (unclaimedProfit / 1_000) : (int) unclaimedProfit);
                 player.inventory().addOrBank(item);
                 tradingPostLogs.log(TRADING_POST, player.getUsername() + " After canceling the offer there was already some unclaimed profits for: " + refund.unnote().name() + " Received: " + item.getAmount() + " blood money!");

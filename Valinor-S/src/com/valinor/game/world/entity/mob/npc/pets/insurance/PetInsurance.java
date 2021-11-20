@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.PROBITA;
 
 /**
@@ -36,7 +36,7 @@ public class PetInsurance {
     private static final int SCROLL_WIDGET_INSURED = 29010;
     private static final int SCROLL_WIDGET_RECLAIM = 29012;
 
-    public static final int RECLAIM_FEE = 35_000;
+    public static final int RECLAIM_FEE = 5_000_000;
 
     public void openInsuranceInterface() {
         if (player.getInsuredPets() == null || player.getInsuredPets().isEmpty()) {
@@ -94,11 +94,11 @@ public class PetInsurance {
 
         if (getReclaimablePets().contains(id)) {
             boolean canClaimPet = false;
-            int currencyInInventory = player.inventory().count(BLOOD_MONEY);
+            int currencyInInventory = player.inventory().count(COINS_995);
             if (currencyInInventory > 0) {
                 if(currencyInInventory >= RECLAIM_FEE) {
                     canClaimPet = true;
-                    player.inventory().remove(new Item(BLOOD_MONEY, RECLAIM_FEE),true);
+                    player.inventory().remove(new Item(COINS_995, RECLAIM_FEE),true);
                 }
             }
 

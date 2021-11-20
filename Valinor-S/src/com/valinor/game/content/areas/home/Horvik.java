@@ -45,9 +45,9 @@ public class Horvik extends PacketInteraction {
         int currencyId;
         String currencyName;
         int price;
-        currencyId = BLOOD_MONEY;
-        currencyName = "bm";
-        price = bmPrice(player);
+        currencyId = COINS_995;
+        currencyName = "coins";
+        price = price(player);
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
@@ -91,7 +91,7 @@ public class Horvik extends PacketInteraction {
         });
     }
 
-    private int bmPrice(Player player) {
+    private int price(Player player) {
         double smithingLevel = player.skills().level(Skills.SMITHING);
         double smithingMultiplier = 1D - (smithingLevel / 200D);
         return (int) (smithingMultiplier * 25000);

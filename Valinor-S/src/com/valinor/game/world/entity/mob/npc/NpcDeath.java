@@ -66,7 +66,6 @@ import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.HWEEN_TOKENS;
 import static com.valinor.util.CustomNpcIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -803,34 +802,6 @@ public class NpcDeath {
                         // Pets, anyone?! :)
                         Optional<Pet> pet = checkForPet(killer, table);
                         pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
-
-                        //Only give BM when the npc is flagged as boss and we have the perk unlocked
-                        if (npc.combatInfo().boss && killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.BLOOD_MONEY_FROM_KILLING_BOSSES)) {
-                            int combat = def.combatlevel;
-
-                            var amount = 0;
-                            if (combat > 200) {
-                                amount = Utils.random(350, 750);
-                            } else {
-                                amount = Utils.random(125, 350);
-                            }
-
-                            var blood_reaper = killer.hasPetOut("Blood Reaper pet");
-                            if(blood_reaper) {
-                                int extraBM = amount * 10 / 100;
-                                amount += extraBM;
-                            }
-
-                            Item BM = new Item(BLOOD_MONEY, amount);
-
-                            //Niffler should only pick up items of monsters and players that you've killed.
-                            if(killer.nifflerPetOut() && killer.nifflerCanStore()) {
-                                killer.nifflerStore(BM);
-                            } else {
-                                GroundItemHandler.createGroundItem(new GroundItem(BM, tile, killer));
-                            }
-                        }
-
                         treasure(killer, npc);
                     }
 
@@ -1174,9 +1145,6 @@ public class NpcDeath {
 
                     //Always increase kill counts
                     player.getBossKillLog().addKill(npc);
-
-                    //Always drop random BM
-                    GroundItemHandler.createGroundItem(new GroundItem(new Item(BLOOD_MONEY, World.getWorld().random(500, 5_500)), npc.tile(), player));
 
                     //Random drop from the table
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());

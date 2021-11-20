@@ -17,7 +17,7 @@ import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers
 import com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP
-import com.valinor.util.ItemIdentifiers.BLOOD_MONEY
+import com.valinor.util.ItemIdentifiers.COINS_995
 import com.valinor.util.Utils
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -127,9 +127,9 @@ object CollectVotes {
                                 Utils.sendDiscordInfoLog("$username was lucky and received a Donator mystery box from voting!")
                             }
 
-                            val bm = World.getWorld().random(500, 5000)
-                            inventory().addOrBank(Item(BLOOD_MONEY, bm))
-                            message("You have received "+Utils.formatNumber(bm)+" blood money for voting.")
+                            val coins = World.getWorld().random(500_000, 2_000_000)
+                            inventory().addOrBank(Item(COINS_995, coins))
+                            message("You have received "+Utils.formatNumber(coins)+" coins for voting.")
 
                             inventory().addOrBank(Item(DOUBLE_DROPS_LAMP, 1))
                             message("You have received x1 double drops lamp for voting.")

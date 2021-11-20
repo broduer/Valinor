@@ -1,6 +1,5 @@
 package com.valinor.game.content.skill.impl.thieving;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -13,7 +12,6 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.ObjectIdentifiers.WALL_SAFE;
 
@@ -87,7 +85,7 @@ public class WallSafe extends PacketInteraction {
 
     private Item getLoot(Player player) {
         Item item = table.rollItem();
-        if (item.getId() == BLOOD_MONEY) {
+        if (item.getId() == COINS_995) {
             item.setAmount((int) (item.getAmount() * ((1 + (player.skills().xpLevel(Skills.THIEVING) - 49) * 0.02))));
         }
         return item;

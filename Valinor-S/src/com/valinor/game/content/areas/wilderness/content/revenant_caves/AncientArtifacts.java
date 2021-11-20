@@ -6,7 +6,7 @@ import com.valinor.util.CustomItemIdentifiers;
 
 import java.util.ArrayList;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
  * It can be given to the Emblem Trader wandering around in the Revenant Caves
@@ -20,18 +20,18 @@ import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
  */
 public enum AncientArtifacts {
     
-    ANCIENT_EMBLEM(21807,2_000),
-    ANCIENT_TOTEM(21810,5_000),
-    ANCIENT_STATUETTE(21813,8_000),
-    ANCIENT_MEDALLION(22299,14_000),
-    ANCIENT_EFFIGY(22302,20_000),
-    ANCIENT_RELIC(22305,30_000),
-    DARK_ANCIENT_EMBLEM(CustomItemIdentifiers.DARK_ANCIENT_EMBLEM,4_000),
-    DARK_ANCIENT_TOTEM(CustomItemIdentifiers.DARK_ANCIENT_TOTEM,10_000),
-    DARK_ANCIENT_STATUETTE(CustomItemIdentifiers.DARK_ANCIENT_STATUETTE,16_000),
-    DARK_ANCIENT_MEDALLION(CustomItemIdentifiers.DARK_ANCIENT_MEDALLION,28_000),
-    DARK_ANCIENT_EFFIGY(CustomItemIdentifiers.DARK_ANCIENT_EFFIGY,40_000),
-    DARK_ANCIENT_RELIC(CustomItemIdentifiers.DARK_ANCIENT_RELIC,60_000);
+    ANCIENT_EMBLEM(21807,2_000_000),
+    ANCIENT_TOTEM(21810,5_000_000),
+    ANCIENT_STATUETTE(21813,8_000_000),
+    ANCIENT_MEDALLION(22299,14_000_000),
+    ANCIENT_EFFIGY(22302,20_000_000),
+    ANCIENT_RELIC(22305,30_000_000),
+    DARK_ANCIENT_EMBLEM(CustomItemIdentifiers.DARK_ANCIENT_EMBLEM,4_000_000),
+    DARK_ANCIENT_TOTEM(CustomItemIdentifiers.DARK_ANCIENT_TOTEM,10_000_000),
+    DARK_ANCIENT_STATUETTE(CustomItemIdentifiers.DARK_ANCIENT_STATUETTE,16_000_000),
+    DARK_ANCIENT_MEDALLION(CustomItemIdentifiers.DARK_ANCIENT_MEDALLION,28_000_000),
+    DARK_ANCIENT_EFFIGY(CustomItemIdentifiers.DARK_ANCIENT_EFFIGY,40_000_000),
+    DARK_ANCIENT_RELIC(CustomItemIdentifiers.DARK_ANCIENT_RELIC,60_000_000);
     
     /**
      * The emblem item
@@ -92,12 +92,7 @@ public enum AncientArtifacts {
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
                     int increase = emblem.getRewardAmount() * amount;
-                    var blood_reaper = player.hasPetOut("Blood Reaper pet");
-                    if(blood_reaper) {
-                        int extraBM = increase * 10 / 100;
-                        increase += extraBM;
-                    }
-                    player.inventory().addOrDrop(new Item(BLOOD_MONEY, increase));
+                    player.inventory().addOrDrop(new Item(COINS_995, increase));
                 }
                 value += (emblem.getRewardAmount() * amount);
             }

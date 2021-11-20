@@ -1,9 +1,7 @@
 package com.valinor.game.content.achievements;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.items.Item;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**

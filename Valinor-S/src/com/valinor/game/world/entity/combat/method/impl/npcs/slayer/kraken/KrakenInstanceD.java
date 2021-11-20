@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.items.Item;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -12,12 +12,12 @@ import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
  */
 public class KrakenInstanceD extends Dialogue {
 
-    String currency = "BM";
-    int currencyReq = 1000;
+    String currency = "Coins";
+    int currencyReq = 15_000;
 
     @Override
     protected void start(Object... parameters) {
-        send(DialogueType.ITEM_STATEMENT, new Item(BLOOD_MONEY), "", "Would you like to pay the fee to enter an instanced area?", "<col=FF0000>Warning: any items dropped on death are permanently lost.", "When you leave, you'll have to pay again to enter.");
+        send(DialogueType.ITEM_STATEMENT, new Item(COINS_995), "", "Would you like to pay the fee to enter an instanced area?", "<col=FF0000>Warning: any items dropped on death are permanently lost.", "When you leave, you'll have to pay again to enter.");
         setPhase(0);
     }
 
@@ -34,11 +34,11 @@ public class KrakenInstanceD extends Dialogue {
         if(getPhase() == 1) {
             if(option == 1) {
                 boolean canEnter = false;
-                int bmInInventory = player.inventory().count(BLOOD_MONEY);
+                int bmInInventory = player.inventory().count(COINS_995);
                 if (bmInInventory > 0) {
                     if(bmInInventory >= currencyReq) {
                         canEnter = true;
-                        player.inventory().remove(BLOOD_MONEY, currencyReq);
+                        player.inventory().remove(COINS_995, currencyReq);
                     }
                 }
 
