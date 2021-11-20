@@ -19,85 +19,14 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum DailyTasks {
 
-
-    EDGEVILE_KILLS("Edge PvP", "Kill 15 players in Edgevile.", 15, EDGE_PVP_DAILY_TASK_COMPLETION_AMOUNT, EDGE_PVP_DAILY_TASK_COMPLETED, EDGE_PVP_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 50_000)) {
+    DAILY_RAIDS("Daily Raiding", "Complete 5 raids.", 5, DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, DAILY_RAIDS_DAILY_TASK_COMPLETED, DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(DONATOR_MYSTERY_BOX, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    REV_CAVE_KILLS("Rev Cave PvP", "Kill 15 players in the Revenant<br>cave.", 15, REVENANT_CAVE_PVP_DAILY_TASK_COMPLETION_AMOUNT, REVENANT_CAVE_PVP_DAILY_TASK_COMPLETED, REVENANT_CAVE_PVP_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(ANCIENT_MEDALLION, 1), new Item(ANCIENT_STATUETTE, 1)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    DEEP_WILDERNESS("Deep Wild", "Kill 15 players above level 30<br>wilderness.", 15, DEEP_WILD_PVP_DAILY_TASK_COMPLETION_AMOUNT, DEEP_WILD_PVP_DAILY_TASK_COMPLETED, DEEP_WILD_PVP_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(DONATOR_MYSTERY_BOX, 1), new Item(BLOOD_MONEY, 35_000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    PURE_KILLS("Pure PvP", "Kill 15 players as a pure in<br>Edgevile.", 15, PURE_PVP_DAILY_TASK_COMPLETION_AMOUNT, PURE_PVP_DAILY_TASK_COMPLETED, PURE_PVP_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 75_000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    ZERKER_KILLS("Zerker PvP", "Kill 15 players as a zerker in<br>Edgevile.", 15, ZERKER_PVP_DAILY_TASK_COMPLETION_AMOUNT, ZERKER_PVP_DAILY_TASK_COMPLETED, ZERKER_PVP_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 75_000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    TIER_UPGRADE("Target Hunt", "Upgrade 3 emblems to a tier<br>10 emblem.", 3, TIER_UPGRADE_DAILY_TASK_COMPLETION_AMOUNT, TIER_UPGRADE_DAILY_TASK_COMPLETED, TIER_UPGRADE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(DONATOR_MYSTERY_BOX, 1), new Item(ANTIQUE_EMBLEM_TIER_10, 1)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    NO_ARM("Armourless", "Kill 15 players without wearing a<br>body and legs.", 15, NO_ARM_DAILY_TASK_COMPLETION_AMOUNT, NO_ARM_DAILY_TASK_COMPLETED, NO_ARM_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 15000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    DHAROK("Dharok", "Kill 10 players using Dharok's<br>armour. You do not have to wield<br>the greataxe.", 10, DHAROK_DAILY_TASK_COMPLETION_AMOUNT, DHAROK_DAILY_TASK_COMPLETED, DHAROK_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WEAPON_MYSTERY_BOX, 1)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    BOTS("Bots", "Kill 50 bots.", 50, BOTS_DAILY_TASK_COMPLETION_AMOUNT, BOTS_DAILY_TASK_COMPLETED, BOTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 10_000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    TOURNEY_PARTICIPATION("Tourney", "Participate in 2 daily tournaments.", 2, TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETION_AMOUNT, TOURNEY_PARTICIPATION_DAILY_TASK_COMPLETED, TOURNEY_PARTICIPATION_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(BLOOD_MONEY, 10000)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    DAILY_RAIDS("Daily Raiding", "Complete 5 raids.", 5, DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, DAILY_RAIDS_DAILY_TASK_COMPLETED, DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(WEAPON_MYSTERY_BOX, 1)) {
-        @Override
-        public boolean canIncrease(Player player) {
-            return !player.<Boolean>getAttribOr(completed, false);
-        }
-    },
-
-    WORLD_BOSS("Daily World boss", "Kill 3 world bosses.", 3, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WORLD_BOSS_DAILY_TASK_COMPLETED, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(BLOOD_MONEY, 15000)) {
+    WORLD_BOSS("Daily World boss", "Kill 3 world bosses.", 3, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WORLD_BOSS_DAILY_TASK_COMPLETED, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(COINS_995, 10_000_000)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

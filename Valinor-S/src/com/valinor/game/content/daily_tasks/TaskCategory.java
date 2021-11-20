@@ -6,5 +6,5 @@ package com.valinor.game.content.daily_tasks;
  */
 public enum TaskCategory {
 
-    PVP, PVM, OTHER
+    PVM, OTHER
 }

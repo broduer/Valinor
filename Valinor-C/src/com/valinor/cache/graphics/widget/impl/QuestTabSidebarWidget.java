@@ -221,7 +221,7 @@ public class QuestTabSidebarWidget extends Widget {
         child++;
 
         String[] buttonNames =
-            {"Achievements", "Titles", "Players", "Npc drops", "Presets", "Daily tasks", "Guide"};
+            {"Achievements", "Titles", "Collection log", "Npc drops", "Presets", "Daily tasks", "Guide"};
         int[][] iconData = {
             // @formatter:off
             {
@@ -232,7 +232,7 @@ public class QuestTabSidebarWidget extends Widget {
             1899, 12, 6 },
             {
                 // Profile
-                1896, 13, 9 },
+                1398, 13, 9 },
             {
                 // Npc drops
                 1897, 11, 5 },

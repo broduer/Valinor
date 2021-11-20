@@ -12243,7 +12243,21 @@ public class Client extends GameApplet {
                             } else if (!highDetail) {
                                 sprite.drawSprite(child_x_in_bounds, child_y_in_bounds);
                             } else {
-                                sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
+                                if (child.hoverScrollBar) {
+                                    if (child.hoverHasText) {
+                                        if (!clicked) {
+                                            if (!Widget.cache[child.id + 1].defaultText.isEmpty()) {
+                                                Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
+                                                sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        //if an id is a hover id, this is needed so when the hover image is at the end of the scroll bar height, it will crop it. This fixed the hover images on scrollbar bug.
+                                        Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
+                                        sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
+                                    }
+                                }
                             }
                         }
                     }
@@ -14881,10 +14895,10 @@ public class Client extends GameApplet {
             adv_font_regular.draw("" + myUsername + (((this.loginScreenCursorPos == 0 ? 1 : 0) & (game_tick % 40 < 20 ? 1 : 0)) != 0 ? "|" : ""), 283, 215, 16777215, false);
             adv_font_regular.draw("" + StringUtils.passwordAsterisks(myPassword) + (((this.loginScreenCursorPos == 1 ? 1 : 0) & (game_tick % 40 < 20 ? 1 : 0)) != 0 ? "|" : ""), 283, 273, 16777215, true);
             if ((this.cursor_x >= 305) && (this.cursor_x <= 461) && (this.cursor_y >= 290) && (this.cursor_y <= 329)) {
-                this.loginHover.drawSprite(315, 299);
+                this.loginHover.drawSprite(315, 296);
             }
             if ((this.cursor_x >= 337) && (this.cursor_x <= 432) && (this.cursor_y >= 328) && (this.cursor_y <= 348)) {
-                this.saveButton.drawSprite(342, 328);
+                this.saveButton.drawSprite(343, 325);
             }
         }
 

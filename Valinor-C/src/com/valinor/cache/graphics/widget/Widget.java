@@ -535,6 +535,8 @@ public class Widget {
     public int[] buttons;
 
     //Booleans
+    public boolean hoverHasText;
+    public boolean hoverScrollBar;
     public boolean isClicked;
     public boolean isInFocus;
     public boolean displayAsterisks;
@@ -800,6 +802,27 @@ public class Widget {
         widget.height = widget.enabledSprite.height;
         widget.toggled = false;
         widget.spriteOpacity = opacity;
+    }
+
+    /**
+     * Draws a hover button with no text
+     *
+     * @param id             The widget id
+     * @param tooltip        The tooltip text
+     * @param enabledSprite  The main sprite
+     * @param disabledSprite The hover sprite
+     */
+    public static void hoverButton(int id, String tooltip, int enabledSprite, int disabledSprite) {
+        Widget widget = addInterface(id);
+        widget.tooltip = tooltip;
+        widget.optionType = 1;
+        widget.type = TYPE_HOVER;
+        widget.disabledSprite = Client.spriteCache.get(enabledSprite);
+        widget.enabledSprite = Client.spriteCache.get(disabledSprite);
+        widget.width = widget.disabledSprite.width;
+        widget.height = widget.enabledSprite.height;
+        widget.toggled = false;
+        widget.spriteOpacity = 255;
     }
 
     /**
@@ -2537,6 +2560,7 @@ public class Widget {
         tab.optionType = 0;
         tab.contentType = 0;
         tab.width = 512;
+        tab.hoverScrollBar = true;
         tab.height = 334;
         tab.opacity = 0;
         tab.hoverType = 52;

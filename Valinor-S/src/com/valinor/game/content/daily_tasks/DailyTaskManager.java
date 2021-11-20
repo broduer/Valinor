@@ -139,13 +139,6 @@ public class DailyTaskManager {
         player.message("<col=ca0d0d>You have claimed the reward from task: " + dailyTask.taskName + ".");
     }
 
-    public static void pvpTasks(Player player) {
-        openCategory(player, TaskCategory.PVP);
-        displayTaskInfo(player, DailyTasks.BOTS);
-        player.putAttrib(AttributeKey.DAILY_TASK_CATEGORY, TaskCategory.PVP);
-        player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
-    }
-
     public static void pvmTasks(Player player) {
         openCategory(player, TaskCategory.PVM);
         displayTaskInfo(player, DailyTasks.BATTLE_MAGE);
