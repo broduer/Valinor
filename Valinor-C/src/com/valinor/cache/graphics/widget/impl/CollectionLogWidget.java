@@ -26,13 +26,12 @@ public class CollectionLogWidget extends Widget {
         cache[61017].rightText = true;
         addSprite(61018,1846);
         addText(61019, "<img=1048></img>Rewards for completing the collection log:", advancedFonts, 0, 0xff981f, false, true);
-        addHoverButton(61020,1844, 70, 39, "Collect", -1, 61021, 1);
-        addHoveredButton(61021, 1845, 70, 39, 61022);
+        hoverButton(61020, "Collect", 1844, 1845);
         addText(61023, "Claim", advancedFonts, 2, 0xff981f, false, true);
         addContainer(61024, 5, 1, 7, 5, false);
 
         int x = 10, y = 10, child = 0;
-        tab.totalChildren(22);
+        tab.totalChildren(21);
         tab.child(child++, 61001, x, y);
         tab.child(child++, 55152, 476+x, 10+y);
         tab.child(child++, 61002, 250+x, 10+y);
@@ -48,7 +47,6 @@ public class CollectionLogWidget extends Widget {
         tab.child(child++, 61018, 216+x, 255+y);
         tab.child(child++, 61019, 216+x, 242+y);
         tab.child(child++, 61020, 415+x, 259+y);
-        tab.child(child++, 61021, 415+x, 259+y);
         tab.child(child++, 61023, 432+x, 276+y);
         tab.child(child++, 61024, 222+x, 260+y);
 
@@ -64,8 +62,7 @@ public class CollectionLogWidget extends Widget {
         Widget scroll = addInterface(61050);
         scroll.totalChildren(150);
         for (int i = 0; i < 50; ++i) {
-            addHoverButton(61051 + i, i % 2 == 0 ? 1841 : 1843, 186, 15, "View", -1, 61101 + i, 1);
-            addHoveredButton(61101 + i, 1842, 186, 15, 61049);
+            hoverButton(61051 + i, "View", i % 2 == 0 ? 1841 : 1843, 1842);
             addText(61151 + i, "Abyssal sire", advancedFonts, 1, 0xff981f, false, true);
             scroll.child(i, 61051 + i, 0, i * 15);
             scroll.child(i + 50, 61101 + i, 0, i * 25);

@@ -137,10 +137,9 @@ public class IronmanWidget extends Widget {
 
         addText(42417, "Select your game mode", font, 1, 0xFFFFFF, false, true);
         addText(42418, "Select your experience mode", font, 1, 0xFFFFFF, false, true);
-        addHoverButton(42419,1767, 23, 23, "Confirm and Continue", 0, 42420, 1);
-        addHoveredButton(42420,1768, 23, 23, 42421);
+        hoverButton(42419, "Confirm and Continue", 1767, 1768);
 
-        setChildren(24, widget);
+        setChildren(23, widget);
         setBounds(42401, 15, 28, 0, widget);
         setBounds(42402, 30, 88, 1, widget);
         setBounds(42403, 30, 123, 2, widget);
@@ -157,13 +156,12 @@ public class IronmanWidget extends Widget {
         setBounds(42417, 150, 69, 13, widget);
         setBounds(42418, 125, 210, 14, widget);
         setBounds(42419, 465, 34, 15, widget);
-        setBounds(42420, 465, 34, 16, widget);
-        setBounds(42409, 200, 35, 17, widget);
-        setBounds(42425, 110, 235, 18, widget);
-        setBounds(42426, 110, 256, 19, widget);
-        setBounds(42427, 110, 278, 20, widget);
-        setBounds(42428, 130, 239, 21, widget);
-        setBounds(42429, 130, 259, 22, widget);
-        setBounds(42430, 130, 281, 23, widget);
+        setBounds(42409, 200, 35, 16, widget);
+        setBounds(42425, 110, 235, 17, widget);
+        setBounds(42426, 110, 256, 18, widget);
+        setBounds(42427, 110, 278, 19, widget);
+        setBounds(42428, 130, 239, 20, widget);
+        setBounds(42429, 130, 259, 21, widget);
+        setBounds(42430, 130, 281, 22, widget);
     }
 }

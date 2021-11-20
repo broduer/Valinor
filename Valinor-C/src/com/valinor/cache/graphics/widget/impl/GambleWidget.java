@@ -29,10 +29,8 @@ public class GambleWidget extends Widget {
         addConfigButton(16209, 16200, 491, 547, "Select", GAMBLE_55X2_OPPONENT_HOST, 0, OPTION_OK);
         addText(16210, "Dice duel", font, 1, 0xF7AA25, true, true);
         addConfigButton(16211, 16200, 491, 547, "Select", GAMBLE_DICE_DUEL, 0, OPTION_OK);*/
-        addHoverButton(16212, 1433, 114, 25, "Accept", -1, 16213, 1);
-        addHoveredButton(16213, 1432, 114, 25, 16214);
-        addHoverButton(16215, 1431, 114, 25, "Decline", -1, 16216, 1);
-        addHoveredButton(16216, 1430, 114, 25, 16217);
+        hoverButton(16212, "Accept", 1433, 1432);
+        hoverButton(16215, "Decline", 1431, 1430);
         addText(16218, "Select game mode...", font, 2, 0xF7AA25, true, true);
         addText(16219, "Tutorial", font, 2, 0xF7AA25, true, true);
         addText(16222, "Lorem ipsum dolor sit amet, consectetur<br>adipiscing elit, sed do eiusmod tempor<br>incididunt ut labore et dolore magna aliqua.", font, 2, 0xF7AA25, false, true);
@@ -72,7 +70,7 @@ public class GambleWidget extends Widget {
         scroll.child(0, 16232, 1, 1);
         scroll.child(1, 16233, 1, 15);
 
-        widget.totalChildren(15);
+        widget.totalChildren(13);
         widget.child(0, 16201, 12,10);
         widget.child(1, 16202, 475,20);
         widget.child(2, 16203, 255,20);
@@ -85,25 +83,21 @@ public class GambleWidget extends Widget {
         widget.child(9, 16210, 68,278);
         widget.child(10, 16211, 20,277);*/
         widget.child(5, 16212, 210,60);
-        widget.child(6, 16213, 210,60);
-        widget.child(7, 16215, 210,110);
-        widget.child(8, 16216, 210,110);
-        widget.child(9, 16218, 90,185);
-        widget.child(10, 16219, 230,185);
-        widget.child(11, 16222, 200,215);
-        widget.child(12, 16223, 257,149);
-        widget.child(13, 16228, 20,45);
-        widget.child(14, 16231, 340,45);
+        widget.child(6, 16215, 210,110);
+        widget.child(7, 16218, 90,185);
+        widget.child(8, 16219, 230,185);
+        widget.child(9, 16222, 200,215);
+        widget.child(10, 16223, 257,149);
+        widget.child(11, 16228, 20,45);
+        widget.child(12, 16231, 340,45);
     }
 
     private static void secondScreen(AdvancedFont[] font) {
         Widget widget = addTabInterface(15350);
         addSprite(15351, 1429);
         addText(15352, "Gambling with: Patrick89123 - Are you sure you wish to gamble?", font, 2, 0xF7AA25, false, true);
-        addHoverButton(15353, 1433, 114, 25, "Accept", -1, 15354, 1);
-        addHoveredButton(15354, 1432, 114, 25, 15355);
-        addHoverButton(15356, 1431, 114, 25, "Decline", -1, 15357, 1);
-        addHoveredButton(15357, 1430, 114, 25, 15358);
+        hoverButton(15353, "Decline", 1431, 1430);
+        hoverButton(15356, "Decline", 1431, 1430);
         addText(15359, "Other player has accepted!", font, 1, 0xFFFFFF, false, true);
         addText(15360, "Game Mode:<br>Flower Poker", font, 2, 0xF7AA25, false, true);
         addText(15361, "Your items:<br>(100K pkp)", font, 1, 0xF7AA25, false, true);
@@ -136,18 +130,16 @@ public class GambleWidget extends Widget {
             y1 += 18;
         }
 
-        widget.totalChildren(12);
+        widget.totalChildren(10);
         widget.child(0, 15351, 12,50);
         widget.child(1, 15352, 48,59);
         widget.child(2, 15353, 210,100);
-        widget.child(3, 15354, 210,100);
-        widget.child(4, 15356, 210,160);
-        widget.child(5, 15357, 210,160);
-        widget.child(6, 15359, 180,202);
-        widget.child(7, 15360, 215,238);
-        widget.child(8, 15361, 60,90);
-        widget.child(9, 15362, 365,90);
-        widget.child(10,15365, 20,125);
-        widget.child(11,15425, 350,125);
+        widget.child(3, 15356, 210,160);
+        widget.child(4, 15359, 180,202);
+        widget.child(5, 15360, 215,238);
+        widget.child(6, 15361, 60,90);
+        widget.child(7, 15362, 365,90);
+        widget.child(8,15365, 20,125);
+        widget.child(9,15425, 350,125);
     }
 }

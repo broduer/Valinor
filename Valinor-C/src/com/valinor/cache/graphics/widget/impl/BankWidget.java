@@ -45,8 +45,11 @@ public class BankWidget extends Widget {
             bank.child(child++, interfaceId + 33 + tab, 55 + 40 * (tab / 4), 37);
         }
         addSprite(interfaceId + 1, 106);
-        addHoverButton(interfaceId + 2, 107, 25, 25, "Close", -1, interfaceId + 3, 1);
-        addHoveredButton(interfaceId + 3, 108, 25, 25, interfaceId + 4);
+        closeButton(interfaceId + 2, 107, 108, true);
+
+        //Replace with empty text used to be hover button but I don't understand these childs
+        addText(interfaceId + 3, "", font, 0, 0xFE9624, true, true);
+
         addText(interfaceId + 5, "The Bank of "+ ClientConstants.CLIENT_NAME, font, 2, 0xFE9624, true, true);
 
         SimpleImage disabled = Client.spriteCache.get(766);

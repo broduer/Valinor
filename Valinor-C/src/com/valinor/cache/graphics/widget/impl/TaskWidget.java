@@ -40,13 +40,12 @@ public class TaskWidget extends Widget {
         drawProgressBar(54760, 285, 15, 0);
         addText(54762, "0% (0/100)", font, 0, 0, true, false);
 
-        addHoverButton(54763, 1238, 70, 13, "Collect reward", -1, 54764, 1);
-        addHoveredButton(54764, 1239, 70, 13, 54765);
+        hoverButton(54763, "Collect reward", 1238, 1239);
 
         addText(54766, "<col=ffff00>Collect", font, 0, 0, true, true);
         closeButton(54767, 107, 108, false);
 
-        widget.totalChildren(12);
+        widget.totalChildren(11);
         widget.child(0, 54732, 20, 26);
         widget.child(1, 54733, 263, 35);
         widget.child(2, 54734, 100, 75);
@@ -56,9 +55,8 @@ public class TaskWidget extends Widget {
         widget.child(6, 54760, 135, 262);
         widget.child(7, 54762, 267, 264);
         widget.child(8, 54763, 225, 280);
-        widget.child(9, 54764, 225, 280);
-        widget.child(10, 54766, 253, 281);
-        widget.child(11, 54767, 463, 33);
+        widget.child(9, 54766, 253, 281);
+        widget.child(10, 54767, 463, 33);
 
     }
 }

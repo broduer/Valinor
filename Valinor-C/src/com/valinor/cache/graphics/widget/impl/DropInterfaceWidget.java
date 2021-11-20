@@ -12,8 +12,7 @@ public class DropInterfaceWidget extends Widget {
     private static void dropInterface(AdvancedFont[] font) {
         Widget main = addInterface(55140);
         addSpriteLoader(55141, 1067);
-        addHoverButton(55143, 1058, 171, 16, "Search", -1, 55144, 1);
-        addHoveredButton(55144, 1057, 171, 16, 55145);
+        hoverButton(55143, "Search", 1058, 1057);
         addText(55146, "Search", font, 0, 0xB27300, false, true);
 
         addText(55147, "Item", font, 0, 0xB27300, true, true);
@@ -24,22 +23,21 @@ public class DropInterfaceWidget extends Widget {
         closeButton(55152, 24, 25, true);
         addText(55154, "Viewing drop table for:", font, 2, 0xffb000, true, true);
         addText(55155, "<col=ffff00>Note:</col> Only base drop rates are displayed, and do not account for drop rate bonuses", font, 0, 0xffffff, true, true);
-        main.totalChildren(14);
+        main.totalChildren(13);
         main.child(0, 55141, 6, 2);
-        main.child(55143, 17, 64);
-        main.child(55144, 17, 64);
-        main.child(3, 55146, 69, 46);
+        main.child(1,55143, 17, 64);
+        main.child(2, 55146, 69, 46);
 
-        main.child(4, 55147, 189, 46);
-        main.child(5, 55148, 255, 46);
-        main.child(6, 55149, 329, 46);
-        main.child(7, 55150, 380, 46);
-        main.child(8, 55151, 437, 46);
-        main.child(9, 55153, 55 + 107, 67);
-        main.child(10, 55152, 480, 12);
-        main.child(11, 55200, 10, 84);
-        main.child(12, 55154, 275, 11);
-        main.child(13, 55155, 257, 313);
+        main.child(3, 55147, 189, 46);
+        main.child(4, 55148, 255, 46);
+        main.child(5, 55149, 329, 46);
+        main.child(6, 55150, 380, 46);
+        main.child(7, 55151, 437, 46);
+        main.child(8, 55153, 55 + 107, 67);
+        main.child(9, 55152, 480, 12);
+        main.child(10, 55200, 10, 84);
+        main.child(11, 55154, 275, 11);
+        main.child(12, 55155, 257, 313);
 
         int childStart = 0;
         int yPos = 0;

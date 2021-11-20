@@ -144,32 +144,21 @@ public class EquipmentWidget extends Widget {
 
         main_widget = addInterface(27650);
 
-        addHoverButton(27651, 146, 40, 40, "View guide prices", -1, 27652, 1);
-        addHoveredButton(27652, 147, 40, 40, 27658);
+        hoverButton(27651, "View guide prices", 146, 147);
+        hoverButton(27653, "View equipment stats", 144, 145);
+        hoverButton(27654, "View items kept on death", 148, 149);
+        hoverButton(27668, "Call follower", 872, 873);
 
-        addHoverButton(27653, 144, 40, 40, "View equipment stats", -1, 27655, 1);
-        addHoveredButton(27655, 145, 40, 40, 27665);
-
-        addHoverButton(27654, 148, 40, 40, "View items kept on death", -1, 27657, 1);
-        addHoveredButton(27657, 149, 40, 40, 27666);
-
-        addHoverButton(27668, 872, 40, 40, "Call follower", -1, 27669, 1);
-        addHoveredButton(27669, 873, 40, 40, 27670);
-
-        setChildren(8, main_widget);
+        setChildren(4, main_widget);
 
         // Prices
         setBounds(27651, 52, 205, 0, main_widget);
-        setBounds(27652, 52, 205, 1, main_widget);
         // Death
-        setBounds(27657, 98, 205, 5, main_widget);
-        setBounds(27654, 98, 205, 3, main_widget);
+        setBounds(27654, 98, 205, 1, main_widget);
         // Follower
-        setBounds(27668, 143, 205, 6, main_widget);
-        setBounds(27669, 143, 205, 7, main_widget);
+        setBounds(27668, 143, 205, 2, main_widget);
         // Equip
-        setBounds(27655, 6, 205, 4, main_widget);
-        setBounds(27653, 6, 205, 2, main_widget);
+        setBounds(27653, 6, 205, 3, main_widget);
     }
 
 }

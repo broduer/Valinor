@@ -12208,7 +12208,6 @@ public class Client extends GameApplet {
                         sprite.drawSpriteWithOutline(child_x_in_bounds, child_y_in_bounds, 0xffffff, true);
                     } else {
                         if (sprite != null) {
-
                             switch (child.id) {
                                 case 13035:
                                 case 1164:
@@ -12253,13 +12252,13 @@ public class Client extends GameApplet {
                                                 sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
                                             }
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         //if an id is a hover id, this is needed so when the hover image is at the end of the scroll bar height, it will crop it. This fixed the hover images on scrollbar bug.
                                         Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
                                         sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
                                     }
                                 }
+                                sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
                             }
                         }
                     }

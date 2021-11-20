@@ -41,10 +41,9 @@ public class PrayerSidebarWidget extends Widget {
             addConfigButton(child++, 17200, 133, 134, "Select", config++, 0, 1);
         }
 
-        addHoverButton(17232, 135, 190, 24, "Confirm Selection", -1, 17233, 1);
-        addHoveredButton(17233, 136, 190, 24, 17234);
+        hoverButton(17232, "Confirm Selection", 135, 136);
 
-        setChildren(64, tab);
+        setChildren(63, tab);
         setBounds(5632, 5, 8 + 20, frame++, tab);
         setBounds(5633, 44, 8 + 20, frame++, tab);
         setBounds(5634, 79, 11 + 20, frame++, tab);
@@ -122,7 +121,6 @@ public class PrayerSidebarWidget extends Widget {
 
         setBounds(17231, 5, 5, frame++, tab);// text
         setBounds(17232, 0, 237, frame++, tab);// confirm
-        setBounds(17233, 0, 237, frame++, tab);// Confirm hover
     }
 
 }

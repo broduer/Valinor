@@ -22,18 +22,16 @@ public class TeleportWidget extends Widget {
         //Teleport names (for spacing) would likely need to be changed as well.
         Widget main = addInterface(29050);
         addSpriteLoader(29051, 974);
-        addHoverButton(29063, 981, 115, 24, "Settings", -1, 29064, 1);
-        addHoveredButton(29064, 982, 115, 24, 29065);
+        hoverButton(29063, "Settings", 981, 982);
         addSpriteLoader(29066, 990);
         closeButton(29175, 107,108,false);
-        main.totalChildren(21);
+        main.totalChildren(20);
         main.child(0, 29051, 7, 7);
         main.child(8, 29090, 216 - 100, 62);
         main.child(9, 29063, 19, 281);
-        main.child(10, 29064, 19, 281);
-        main.child(11, 29066, 150, 273);
-        main.child(19, 29078, 213, 17);
-        main.child(20, 29175, 478, 13);
+        main.child(10, 29066, 150, 273);
+        main.child(18, 29078, 213, 17);
+        main.child(19, 29175, 478, 13);
 
         final int[] CATEGORY_IDS = new int[]{991, 985, 986, 987, 980, 989, 988};
         final String[] CATEGORY_NAMES = new String[]{"Favourite", "Recent", "PvP", "PvM", "Bossing", "Minigames", "Other"};
