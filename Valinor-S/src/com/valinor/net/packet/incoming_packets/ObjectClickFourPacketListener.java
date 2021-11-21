@@ -1,5 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
+import com.valinor.GameServer;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
@@ -29,7 +30,9 @@ public class ObjectClickFourPacketListener implements PacketListener {
         final int id = packet.readShortA();
         final int y = packet.readLEShortA();
 
-        if (player == null || player.dead()) {
+        Tile tile = new Tile(x, y, player.tile().getLevel());
+        Optional<GameObject> object = MapObjects.get(id, tile);
+        if (player.dead()) {
             return;
         }
 
@@ -40,9 +43,6 @@ public class ObjectClickFourPacketListener implements PacketListener {
 
         player.afkTimer.reset();
 
-        Tile tile = new Tile(x, y, player.tile().getLevel());
-        Optional<GameObject> object = MapObjects.get(id, tile);
-
         //Fix object not found for instances
         if (object.isEmpty() && tile.getLevel() > 3) {
             tile = new Tile(x, y, player.tile().getLevel() % 4);
@@ -50,25 +50,35 @@ public class ObjectClickFourPacketListener implements PacketListener {
             player.debugMessage(String.format("found real mapobj %s from %s", object.orElse(null), player.tile().level));
         }
 
-        player.debugMessage("click4 " + String.format("objectId=%d, x=%d, y=%d", id, x, y));
+        object.ifPresent(gameObject -> player.debugMessage("op 4 " + gameObject.toString()));
 
         //Make sure the object actually exists in the region...
         if (object.isEmpty()) {
-            //logger.info("Object with id {} does not exist for player " + player.toString() + " !", box(id));
-           // Utils.sendDiscordInfoLog("Object op1 with id " + id + " does not exist for player " + player.toString() + "!");
+            logger.info("Object with id {} does not exist for player " + player.toString() + " !", box(id));
             return;
         }
 
-        GameObject gameObject = object.get();
+        if (!player.getBankPin().hasEnteredPin() && GameServer.properties().requireBankPinOnLogin) {
+            player.getBankPin().openIfNot();
+            return;
+        }
+
+        if(player.askForAccountPin()) {
+            player.sendAccountPinMessage();
+            return;
+        }
+
+        final GameObject gameObject = object.get();
 
         if (gameObject.definition() == null) {
             logger.error("ObjectDefinition for object {} is null for player " + player.toString() + ".", box(id));
             return;
         }
 
-        if (player.locked() || player.dead()) {
+        if (player.locked()) {
             return;
         }
+
         player.stopActions(false);
         player.putAttrib(AttributeKey.INTERACTION_OBJECT, gameObject);
         player.putAttrib(AttributeKey.INTERACTION_OPTION, 4);
@@ -76,6 +86,6 @@ public class ObjectClickFourPacketListener implements PacketListener {
         //Do actions...
         player.faceObj(gameObject);
 
-        pathToAndTrigger(player, gameObject, tile, 4);
+        pathToAndTrigger(player, gameObject, 4);
     }
 }

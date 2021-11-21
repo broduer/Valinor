@@ -6023,7 +6023,7 @@ public class Client extends GameApplet {
         if (action == 1062) {
             clickObject(local_player_index, second_menu_action, first_menu_action);
             // object option 4
-            packetSender.sendObjectOption4(get_object_key(local_player_index), second_menu_action + next_region_end, first_menu_action + next_region_start);
+            packetSender.sendObjectOption4(first_menu_action + next_region_start, get_object_key(local_player_index), second_menu_action + next_region_end);
         }
 
         // continue dialogue

@@ -75,6 +75,6 @@ public class ObjectClickThreePacketListener implements PacketListener {
 
         player.faceObj(gameObject);
 
-        pathToAndTrigger(player, gameObject, tile, 3);
+        pathToAndTrigger(player, gameObject, 3);
     }
 }

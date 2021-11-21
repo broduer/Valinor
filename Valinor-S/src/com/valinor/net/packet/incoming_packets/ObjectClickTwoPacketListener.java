@@ -78,6 +78,6 @@ public class ObjectClickTwoPacketListener implements PacketListener {
         //Do actions...
         player.faceObj(gameObject);
 
-        pathToAndTrigger(player, gameObject, tile, 2);
+        pathToAndTrigger(player, gameObject, 2);
     }
 }
