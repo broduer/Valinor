@@ -1,6 +1,8 @@
 package com.valinor;
 
 import com.valinor.game.GameBuilder;
+import com.valinor.game.content.skill.impl.hunter.Impling;
+import com.valinor.game.content.skill.impl.hunter.PuroPuro;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
@@ -53,5 +55,6 @@ public final class Bootstrap {
         GwdLogic.onServerStart();
         HostBlacklist.loadBlacklist();
         Item.onServerStart();
+        Impling.onServerStartup();
     }
 }

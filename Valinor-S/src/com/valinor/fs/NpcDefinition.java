@@ -128,6 +128,7 @@ public class NpcDefinition implements Definition {
         gwdRoomNpc = ArrayUtils.contains(GWD_ROOM_NPCIDS, id);
         inferno = id >= 7677 && id <= 7710;
         roomBoss = name != null && ((id >= 2042 && id <= 2044 || inferno) || gwdRoomNpc);
+        flightClipping = name != null && (name.toLowerCase().contains("impling") || name.toLowerCase().contains("butterfly"));
     }
 
     void decode(RSBuffer buffer) {

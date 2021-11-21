@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.hunter;
 
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.items.ImplingLoot;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -72,6 +74,11 @@ public enum Impling {
         if(!player.tile().isWithinDistance(npc.tile(), 1))
             return;
 
+        if(player.inventory().getFreeSlots() != 1) {
+            player.message("You don't have enough inventory space to do that.");
+            return;
+        }
+
         player.runFn(1, () -> {
             player.lock();
             if(barehands) {
@@ -92,14 +99,16 @@ public enum Impling {
                             player.inventory().add(new Item(impling.jarId));
                         }
                     } else {
-                        int slot = player.getAttribOr(AttributeKey.ITEM_SLOT,-1);
-                        player.inventory().add(new Item(impling.jarId), slot, true);
+                        player.inventory().remove(new Item(IMPLING_JAR));
+                        Item jar = new Item(impling.jarId);
+                        player.inventory().add(jar);
                     }
 
                     despawnImpling(npc);
                     player.skills().addXp(Skills.HUNTER, player.tile().inArea(PURO_PURO) ? impling.puroExp : impling.worldExp,true);
                     var counter = player.<Integer>getAttribOr(AttributeKey.IMPLINGS_CAUGHT, 0) + 1;
                     player.putAttrib(AttributeKey.IMPLINGS_CAUGHT, counter);
+                    DailyTaskManager.increase(DailyTasks.IMPLING, player);
                 }
                 player.unlock();
             });
@@ -118,12 +127,15 @@ public enum Impling {
      * Impling spawning
      */
     private static final int PURO_PURO_STATIC_RESPAWN_DELAY = 50; // respawn time for static spawns in puro puro (baby, young gourmet, earth, eclectic)
+    private static final int PURO_PURO_RANDOM_SPAWN_DELAY = 20; // respawn time for random spawns in puro puro (other implings)
+    private static final int PURO_PURO_MAX_RANDOM_IMPLINGS = 50; // maximum number of random spawns that can be active at a time
     private static final int PURO_PURO_TOTAL_SPAWN_WEIGHT = Arrays.stream(values()).mapToInt(imp -> imp.puroPuroSpawnWeight).sum();
 
     private static final int OVERWORLD_SPAWN_DELAY = 200; // spawn time for random spawns in the overworld (implings will attempt to spawn at this interval, if the active number is below maximum)
     private static final int OVERWORLD_MAX_IMPLINGS = 200; // maximum number of overworld spawns that can be active at one time
     private static final int OVERWORLD_TOTAL_SPAWN_WEIGHT = Arrays.stream(values()).mapToInt(imp -> imp.overworldSpawnWeight).sum();
 
+    private static int ACTIVE_PURO_PURO_IMPLINGS = 0;
     private static int ACTIVE_OVERWORLD_IMPLINGS = 0;
 
     private static void despawnImpling(Npc npc) {
@@ -135,11 +147,14 @@ public enum Impling {
                 npc.runUninterruptable(1, () -> {
                     World.getWorld().unregisterNpc(npc);
                     Chain.bound(null).runFn(PURO_PURO_STATIC_RESPAWN_DELAY, () -> {
+                        npc.hidden(true);
                         World.getWorld().registerNpc(npc);
                         npc.teleport(npc.spawnTile());
+                        npc.hidden(false);
                     });
                 });
             } else {
+                ACTIVE_PURO_PURO_IMPLINGS--;
                 World.getWorld().unregisterNpc(npc);
             }
         } else {
@@ -158,6 +173,28 @@ public enum Impling {
 
     private static boolean isInPuroPuro(Mob mob) {
         return mob.tile().region() == 10307; // puro puro region
+    }
+
+    private static Impling getRandomPuroPuroSpawn() {
+        int roll = World.getWorld().random(PURO_PURO_TOTAL_SPAWN_WEIGHT);
+        for (Impling impling : values()) {
+            if (impling.puroPuroSpawnWeight == 0)
+                continue;
+            roll -= impling.puroPuroSpawnWeight;
+            if (roll <= 0) {
+                return impling;
+            }
+        }
+        return World.getWorld().random(values()); // should be unreachable
+    }
+
+    private static void spawnRandomImplingPuroPuro() {
+        Impling type = getRandomPuroPuroSpawn();
+        Tile tile = World.getWorld().random(PURO_PURO_RANDOM_SPAWN_TILES);
+        Npc impling = new Npc(type.npcId, new Tile(tile.getX(), tile.getY(), tile.getZ()));
+        impling.walkRadius(16);
+        World.getWorld().registerNpc(impling);
+        ACTIVE_PURO_PURO_IMPLINGS++;
     }
 
     private static Impling getRandomOverworldSpawn() {
@@ -185,7 +222,16 @@ public enum Impling {
 
     public static void onServerStartup() {
         //spawn a few on startup
-        for (int index = 0; index < 50; index++)
+        for (int index = 0; index < 4; index++)
+            spawnRandomImplingPuroPuro();
+        Chain.bound(null).name("PuroPuroImplingTask").repeatingTask(PURO_PURO_RANDOM_SPAWN_DELAY, t -> {
+            if (ACTIVE_PURO_PURO_IMPLINGS < PURO_PURO_MAX_RANDOM_IMPLINGS) {
+                spawnRandomImplingPuroPuro();
+            }
+        });
+
+        //spawn a few on startup
+        for (int index = 0; index < 8; index++)
             spawnRandomImplingOverworld();
 
         Chain.bound(null).name("ImplingTask").repeatingTask(OVERWORLD_SPAWN_DELAY, t -> {
@@ -195,9 +241,14 @@ public enum Impling {
         });
     }
 
+    private static final Tile[] PURO_PURO_RANDOM_SPAWN_TILES = {
+        new Tile(2569, 4342, 0), //nw
+        new Tile(2614, 4297, 0), //se
+    };
+
     private static final Tile[] OVERWORLD_RANDOM_SPAWN_TILES = {
 
-        new Tile(3079, 3503, 0), //edgeville spawns
+        //edgeville spawns
         new Tile(3104, 3506, 0),
         new Tile(3087, 3485, 0),
         new Tile(3126, 3498, 0),

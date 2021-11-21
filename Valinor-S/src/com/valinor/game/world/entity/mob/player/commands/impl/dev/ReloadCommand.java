@@ -39,7 +39,6 @@ public class ReloadCommand implements Command {
             }
             //Halloween.loadNpcs();
             Impling.onServerStartup();
-            PuroPuro.onServerStart();
             World.loadNpcSpawns(new File("data/map/npcs"));
             try {
                 Fishing.respawnAllSpots(World.getWorld());

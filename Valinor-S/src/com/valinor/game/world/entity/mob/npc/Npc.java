@@ -292,6 +292,10 @@ public class Npc extends Mob {
         this.poisonImmune = poisonImmune;
     }
 
+    public Area getSpawnArea() {
+        return spawnArea;
+    }
+
     /**
      * The npc's movement coordinator.
      * Handles random walking.

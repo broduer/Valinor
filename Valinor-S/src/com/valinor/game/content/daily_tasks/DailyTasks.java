@@ -83,8 +83,7 @@ public enum DailyTasks {
         }
     },
 
-    //TODO coords and location
-    IMPLING("Impling catching", "Catch 35 implings", "Any!", "Safe", null, 35, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, IMPLING_DAILY_TASK_COMPLETED, IMPLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 10_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
+    IMPLING("Impling catching", "Catch 35 implings", "Any!", "Safe", new Tile(2592,4317), 35, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, IMPLING_DAILY_TASK_COMPLETED, IMPLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 10_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
