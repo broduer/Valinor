@@ -24,7 +24,7 @@
   "hitPredictorEnabled": true,
   "drawShopCostText": true,
   "tournamentsEnabled": true,
-  "enableSql": false,
+  "enableSql": true,
   "linuxOnlyDisplayCycleLag": false,
   "ignoreGameLagDetectionMilliseconds": 35000,
   "clearQuestInterfaceStrings": true,

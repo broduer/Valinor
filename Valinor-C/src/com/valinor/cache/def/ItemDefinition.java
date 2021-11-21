@@ -408,10 +408,6 @@ public final class ItemDefinition {
             def.widget_actions = new String[]{null, "Wear", null, "Disassemble", "Drop"};
         }
 
-        if(id == 6199) {
-            def.widget_actions = new String[]{"Quick-open", null, null, "Open", null};
-        }
-
         if(id == 24225) {
             def.widget_actions = new String[]{null, "Wield", null, null, null};
         }

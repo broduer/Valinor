@@ -2,6 +2,8 @@ package com.valinor.game.content.skill.impl.thieving;
 
 import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -79,6 +81,7 @@ public class Pickpocketing extends PacketInteraction {
                     }
                     player.inventory().add(pickpocket.lootTable.rollItem());
                     player.skills().addXp(Skills.THIEVING, pickpocket.exp, true);
+                    DailyTaskManager.increase(DailyTasks.THIEVING, player);
                 });
             } else {
                 player.runFn(1, () -> {

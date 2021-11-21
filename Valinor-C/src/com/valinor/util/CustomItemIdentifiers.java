@@ -5,6 +5,12 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
+    public static final int XMAS_TOKENS = 30191;
+    public static final int POINTS_MYSTERY_BOX = 30186;
+    public static final int BARROWS_MYSTERY_BOX = 30188;
+    public static final int POINTS_MYSTERY_CHEST = 30189;
+    public static final int DOUBLE_DROPS_SCROLL = 30190;
+    public static final int SLAYER_TELEPORT_SCROLL = 30195;
     public static final int TWISTED_BOW_ORANGE = 30036;
     public static final int TWISTED_BOW_PURPLE = 30037;
     public static final int TOTEMIC_HELMET = 30196;

@@ -22,6 +22,10 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(DOUBLE_DROPS_SCROLL, new HoverMenu("Grants @gre@2x@whi@ drop rolls per kill for the cost of token."));
+        menus.put(POINTS_MYSTERY_CHEST, new HoverMenu("Contains random points!"));
+        menus.put(POINTS_MYSTERY_BOX, new HoverMenu("Contains random points!"));
+        menus.put(BARROWS_MYSTERY_BOX, new HoverMenu("Opens for a random barrows piece!"));
         menus.put(PURPLE_DYE, new HoverMenu("Using this dye on a twisted bow colors it purple."));
         menus.put(ORANGE_DYE, new HoverMenu("Using this dye on a twisted bow colors it orange."));
         menus.put(TOTEMIC_HELMET, new HoverMenu("@red@+10%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));

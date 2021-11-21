@@ -136,7 +136,7 @@ public class ChamberOfSecrets extends Raids {
                 party.totalPoints(), p.<Integer>getAttribOr(PERSONAL_POINTS, 0), (double) (p.<Integer>getAttribOr(PERSONAL_POINTS, 0) / party.totalPoints()) * 100));
 
             //Daily raids task
-            DailyTaskManager.increase(DailyTasks.DAILY_RAIDS, p);
+            DailyTaskManager.increase(DailyTasks.RAIDING, p);
 
             //Roll a reward for each individual player
             ChamberOfSecretsReward.giveRewards(p);

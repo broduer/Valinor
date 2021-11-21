@@ -1754,12 +1754,12 @@ public class CustomItems {
         }
 
         if (id == 12791) {
-            def.widget_actions = new String[]{"Open", null, "Quick-Fill", "Empty", "Drop"};
+            def.widget_actions = new String[]{"Open", null, null, "Empty", "Drop"};
         }
 
         if (id == 23650) {
             ItemDefinition.copyInventory(def, 12791);
-            def.widget_actions = new String[]{"Open", null, "Quick-Fill", "Empty", "Destroy"};
+            def.widget_actions = new String[]{"Open", null, null, "Empty", "Destroy"};
             def.name = "<col=65280>Rune pouch (i)";
             def.ambient = 120;
         }
@@ -1840,7 +1840,74 @@ public class CustomItems {
             def.name = "<col=65280>Present Mystery Box";
         }
 
-        if (id == 30185 || id == 30186 || id == 16451 || id == 16452 || id == 16453 || id == 16454 || id == 16455 || id == 16456 || id == 16457 || id == 16458 || id == 16459 || id == 16460 || id == 16461 || id == 16462 || id == 30244) {
+        if(id == 30189) {
+            def.name = "<col=65280>Points mystery chest";
+            def.widget_actions = new String[]{"Open", null, null, null, null};
+            def.color_to_replace = new int[]{49, 6466, 24, 5545};
+            def.color_to_replace_with = new int[]{49, 302770, 24, 296770};
+            def.inventory_model = 12146;
+            def.rotation_y = 114;
+            def.rotation_x = 1883;
+            def.model_zoom = 2640;
+        }
+
+        if(id == 30190) {
+            def.name = "<col=65280>Double drop scroll";
+            def.widget_actions = new String[]{null, null, null, null, null};
+            def.stackable = true;
+            def.inventory_model = 10347;
+            def.translate_x = -1;
+            def.translate_y = 11;
+            def.rotation_y = 344;
+            def.rotation_x = 656;
+            def.model_zoom = 1020;
+            def.modelCustomColor4 = 22222;
+        }
+
+        if (id == 30191) {
+            ItemDefinition.copyInventory(def, 13204);
+            def.name = "<col=65280>X'mas token";
+            def.color_to_replace = new int[]{5813, 9139, 26006};
+            def.color_to_replace_with = new int[]{127,155,374770};
+            def.stack_variant_size = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
+            def.stack_variant_id = new int[]{30192, 30193, 30194, 30194, 0, 0, 0, 0, 0, 0};
+        }
+
+        if (id == 30192) {
+            ItemDefinition.copyInventory(def, 3985);
+            def.name = "<col=65280>X'mas Token";
+            def.color_to_replace = new int[]{5813, 9139, 26006};
+            def.color_to_replace_with = new int[]{127,155,374770};
+        }
+
+        if (id == 30193) {
+            ItemDefinition.copyInventory(def, 3987);
+            def.name = "<col=65280>X'mas Token";
+            def.color_to_replace = new int[]{5813, 9139, 26006};
+            def.color_to_replace_with = new int[]{127,155,374770};
+        }
+
+        if (id == 30194) {
+            ItemDefinition.copyInventory(def, 3989);
+            def.name = "<col=65280>X'mas Token";
+            def.color_to_replace = new int[]{5813, 9139, 26006};
+            def.color_to_replace_with = new int[]{127,155,374770};
+        }
+
+        if (id == 30195) {
+            def.name = "<col=65280>Slayer teleport scroll";
+            def.widget_actions = new String[]{"Tear", null, null, null, null};
+            def.stackable = true;
+            def.inventory_model = 10347;
+            def.translate_x = -1;
+            def.translate_y = 11;
+            def.rotation_y = 344;
+            def.rotation_x = 656;
+            def.model_zoom = 1020;
+            def.modelCustomColor4 = 12222;
+        }
+
+        if (id == 30185 || id == 30186 || id == 30187 || id == 30188) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case 30185:
@@ -1852,91 +1919,21 @@ public class CustomItems {
                     break;
 
                 case 30186:
-                    def.name = "<col=65280>Halloween mystery box";
-                    def.inventory_model = 55605;
-                    def.animateInventory = true;
-                    def.color_to_replace = new int[]{2999, 22410};
-                    def.color_to_replace_with = new int[]{524, 13};
-                break;
-
-                case 16451:
-                    def.name = "<col=65280>Weapon Mystery Box";
+                    def.name = "<col=65280>Point mystery box";
                     def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{-21568, 127};
+                    def.color_to_replace_with = new int[]{302770, 296770};
                     break;
-                case 16452:
-                    def.name = "<col=65280>Armour Mystery Box";
+
+                case 30187:
+                    def.unnoted_item_id = 30186;
+                    def.noted_item_id = 799;
+                    def.stackable = true;
+                    break;
+
+                case 30188:
+                    def.name = "<col=65280>Barrows Mystery Box";
                     def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{22464, 127};
-                    break;
-                case 16453:
-                    def.name = "<col=65280>Donator Mystery Box";
-                    def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{926, 127};
-                    break;
-
-                case 16454:
-                    def.name = "<col=65280>Legendary Mystery Box";
-                    def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{9152, 127};
-                    break;
-
-                case 16455:
-                    def.name = "<col=65280>Grand Mystery Box";
-                    def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{0, 9152};
-                    break;
-
-                case 16456:
-                    def.name = "<col=65280>Pet Mystery Box";
-                    def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{127, 0};
-                    break;
-
-                case 16457:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Fancy Mystery Box";
-                    def.modelCustomColor4 = 125;
-                    break;
-
-                case 16458:
-                    def.name = "<col=65280>Epic Pet Mystery Box";
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.animateInventory = true;
-                    def.inventory_model = 55567;
-                    break;
-
-                case 16459:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Raids Mystery Box";
-                    def.modelCustomColor4 = 125;
-                    break;
-
-                case 16460:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Zenyte Mystery Box";
-                    def.modelCustomColor4 = 31575;
-                    break;
-
-                case 16461:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Starter Box";
-                    def.animateInventory = true;
-                    def.inventory_model = 55574;
-                    break;
-
-                case 16462:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Clan Box";
-                    def.animateInventory = true;
-                    def.inventory_model = 55575;
-                    break;
-
-                case 30244:
-                    def.widget_actions = new String[]{"Open", null, null, null, null};
-                    def.name = "<col=65280>Revenant mystery box";
-                    def.color_to_replace = new int[]{22410, 2999};
-                    def.color_to_replace_with = new int[]{391770, 100};
+                    def.color_to_replace_with = new int[]{356770, 266770};
                     break;
             }
         }

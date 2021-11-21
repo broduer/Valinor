@@ -201,7 +201,6 @@ public class NpcDeath {
                 if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant")) {
                     AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER, 1);
                     killer.getTaskMasterManager().increase(Tasks.REVENANTS);
-                    DailyTaskManager.increase(DailyTasks.REVENANTS, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Alchemical Hydra")) {
@@ -214,7 +213,6 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Corporeal Beast")) {
                     AchievementsManager.activate(killer, Achievements.CORPOREAL_CRITTER, 1);
-                    DailyTaskManager.increase(DailyTasks.CORPOREAL_BEAST, killer);
                     killer.getTaskMasterManager().increase(Tasks.CORPOREAL_BEAST);
                 }
 
@@ -242,7 +240,6 @@ public class NpcDeath {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
                     killer.getTaskMasterManager().increase(Tasks.KING_BLACK_DRAGON);
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
                     if(!npc.ancientSpawn()) {
                         Chain.bound(null).runFn(30, () -> {
                             var kingBlackDragon = new Npc(KING_BLACK_DRAGON, npc.spawnTile());
@@ -266,7 +263,6 @@ public class NpcDeath {
                 if (npc.def().name.equalsIgnoreCase("Chaos Elemental")) {
                     killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if (World.getWorld().rollDie(10, 1)) {
                         npc.respawns(false);//Chaos elemental can no longer spawn his ancient version spawns.
@@ -278,7 +274,6 @@ public class NpcDeath {
                 if (npc.id() == ANCIENT_CHAOS_ELEMENTAL) {
                     killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if(!npc.ancientSpawn()) {
                         Chain.bound(null).runFn(30, () -> {
@@ -290,12 +285,10 @@ public class NpcDeath {
 
                 if (npc.def().name.contains("Zulrah")) {
                     killer.getTaskMasterManager().increase(Tasks.ZULRAH);
-                    DailyTaskManager.increase(DailyTasks.ZULRAH, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Vorkath")) {
                     killer.getTaskMasterManager().increase(Tasks.VORKATH);
-                    DailyTaskManager.increase(DailyTasks.VORKATH, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Zombies Champion") || npc.def().name.equalsIgnoreCase("Skotizo") || npc.def().name.equalsIgnoreCase("Tekton")) {
@@ -315,8 +308,11 @@ public class NpcDeath {
                     killer.getTaskMasterManager().increase(Tasks.GIANT_MOLE);
                 }
 
+                if (npc.def().name.contains("green dragon")) {
+                    DailyTaskManager.increase(DailyTasks.GREEN_DRAGONS, killer);
+                }
+
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if (World.getWorld().rollDie(10, 1)) {
                         npc.respawns(false);//Barrelchest can no longer spawn his ancient version spawns.
@@ -326,7 +322,6 @@ public class NpcDeath {
                 }
 
                 if (npc.id() == ANCIENT_BARRELCHEST) {
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                     if(!npc.ancientSpawn()) {
                         Chain.bound(null).runFn(30, () -> {
@@ -377,10 +372,6 @@ public class NpcDeath {
                         killer.getTaskMasterManager().increase(Tasks.KRAKEN);
                     }
 
-                    case CORRUPTED_NECHRYARCH -> {
-                        DailyTaskManager.increase(DailyTasks.CORRUPTED_NECHRYARCHS, killer);
-                    }
-
                     case ADAMANT_DRAGON, ADAMANT_DRAGON_8090, RUNE_DRAGON, RUNE_DRAGON_8031, RUNE_DRAGON_8091 -> AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_IV, 1);
 
                     case CERBERUS, CERBERUS_5863, CERBERUS_5866 -> {
@@ -413,12 +404,10 @@ public class NpcDeath {
 
                     case VETION, VETION_REBORN -> {
                         AchievementsManager.activate(killer, Achievements.VETION, 1);
-                        DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
                     }
 
                     case VENENATIS_6610 -> {
                         killer.getTaskMasterManager().increase(Tasks.VENENATIS);
-                        DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                             npc.respawns(false);//Venenatis can no longer spawn his superior spawns in 1 minute.
@@ -435,7 +424,6 @@ public class NpcDeath {
                     case CALLISTO_6609 -> {
                         killer.getTaskMasterManager().increase(Tasks.CALLISTO);
                         AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS, 1);
-                        DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                             npc.respawns(false);//Callisto can no longer spawn his superior spawns in 1 minute.
@@ -536,14 +524,23 @@ public class NpcDeath {
 
                     case ZULRAH, ZULRAH_2043, ZULRAH_2044 -> {
                         AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER, 1);
+                        DailyTaskManager.increase(DailyTasks.ZULRAH, killer);
                     }
 
                     case VORKATH_8061 -> {
                         AchievementsManager.activate(killer, Achievements.VORKY, 1);
                     }
 
-                    case BATTLE_MAGE, BATTLE_MAGE_1611, BATTLE_MAGE_1612 -> {
-                        DailyTaskManager.increase(DailyTasks.BATTLE_MAGE, killer);
+                    case ROCK_CRAB -> {
+                        DailyTaskManager.increase(DailyTasks.ROCK_CRABS, killer);
+                    }
+
+                    case EXPERIMENT, EXPERIMENT_1274, EXPERIMENT_1275 -> {
+                        DailyTaskManager.increase(DailyTasks.EXPERIMENTS, killer);
+                    }
+
+                    case CORRUPTED_NECHRYARCH -> {
+                        DailyTaskManager.increase(DailyTasks.CORRUPTED_NECHRYARCH, killer);
                     }
 
                 }
@@ -561,7 +558,6 @@ public class NpcDeath {
                     killer.getTaskMasterManager().increase(Tasks.SCORPIA);
                     npc.clearAttrib(AttributeKey.SCORPIA_GUARDIANS_SPAWNED);
                     AchievementsManager.activate(killer, Achievements.BARK_SCORPION, 1);
-                    DailyTaskManager.increase(DailyTasks.WILDERNESS_BOSS, killer);
                     World.getWorld().getNpcs().forEachInArea(new Area(3219, 3248, 10329, 10353), n -> {
                         if (n.id() == SCORPIAS_GUARDIAN) {
                             World.getWorld().unregisterNpc(n);

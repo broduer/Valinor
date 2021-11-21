@@ -12,7 +12,7 @@ public class DailyTasksWidget extends Widget {
     public static void unpack(AdvancedFont[] font) {
         Widget widget = addTabInterface(41400);
         addSprite(41401, 1903);
-        closeButton(41402, 107, 108, true);
+        closeButton(41402, 107, 108, false);
         addText(41403, "Daily Money Activities", font, 2, 0xF7AA25, true, true);
         addText(41404, "Activities", font, 2, 0xF7AA25, true, true);
         addText(41405, "Activity (Expires: <col=ffff00>13h 52m 53s)", font, 1, 0xF7AA25, true, true);

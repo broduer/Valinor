@@ -5,6 +5,9 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.util.Utils;
 
+import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_CATEGORY;
+import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_SELECTED;
+
 /**
  * Contains information about the state of interfaces enter in the client.
  */
@@ -159,6 +162,8 @@ public class InterfaceManager {
         player.putAttrib(AttributeKey.USING_TRADING_POST,false);
         player.lastTradingPostItemSearch = null;
         player.lastTradingPostUserSearch = null;
+        player.clearAttrib(DAILY_TASK_CATEGORY);
+        player.clearAttrib(DAILY_TASK_SELECTED);
         if(player.getStatus() != PlayerStatus.GAMBLING) {
             player.setStatus(PlayerStatus.NONE);
         }

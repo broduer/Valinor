@@ -250,6 +250,7 @@ public class Slayer {
                             }
 
                             //TODO achivements here
+                            DailyTaskManager.increase(DailyTasks.SLAYER, killer);
 
                             if (killer.getAttribOr(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false)) {
                                 killer.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false);

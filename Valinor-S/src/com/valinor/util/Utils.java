@@ -571,6 +571,19 @@ public class Utils {
         return (sb);
     }
 
+    public static String convertSecondsToDurationShort(long time) {
+        if (time < 0) {
+            throw new IllegalArgumentException("Duration must be greater than zero!");
+        }
+
+        long days = (int) TimeUnit.SECONDS.toDays(time);
+        long hours = TimeUnit.SECONDS.toHours(time) - (days * 24);
+        long minutes = TimeUnit.SECONDS.toMinutes(time) - (TimeUnit.SECONDS.toHours(time) * 60);
+        long seconds = TimeUnit.SECONDS.toSeconds(time) - (TimeUnit.SECONDS.toMinutes(time) * 60);
+
+        return (hours + ("h ") + minutes + ("m ") + seconds + ("s"));
+    }
+
     public static String convertSecondsToDuration(long time, boolean showDaysAndHours) {
         if (time < 0) {
             throw new IllegalArgumentException("Duration must be greater than zero!");

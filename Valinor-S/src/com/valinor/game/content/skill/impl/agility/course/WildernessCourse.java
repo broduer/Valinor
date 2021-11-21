@@ -189,7 +189,6 @@ public class WildernessCourse extends PacketInteraction {
                         //System.out.println("stage is now: "+stage);
                         if (stage == 5) {
                             player.getTaskMasterManager().increase(Tasks.WILDERNESS_COURSE);
-                            DailyTaskManager.increase(DailyTasks.WILDY_AGLITY, player);
 
                             // Woo! A pet!
                             var odds = (int) (18000 * player.getMemberRights().petRateMultiplier());

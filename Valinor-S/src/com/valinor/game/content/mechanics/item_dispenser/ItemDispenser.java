@@ -1,6 +1,8 @@
 package com.valinor.game.content.mechanics.item_dispenser;
 
 import com.valinor.game.GameConstants;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.item_simulator.ItemSimulatorUtility;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -206,6 +208,10 @@ public class ItemDispenser {
 
         //Add coins to inv
         player.inventory().add(new Item(CustomItemIdentifiers.VALINOR_COINS, totalCartValue),true);
+
+        if(totalCartValue >= 1000) {
+            DailyTaskManager.increase(DailyTasks.VALINOR_COINS, player);
+        }
 
         //Clear items after we received the coins not before!
         var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());

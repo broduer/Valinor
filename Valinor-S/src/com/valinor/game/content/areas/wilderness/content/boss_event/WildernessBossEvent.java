@@ -133,8 +133,6 @@ public class WildernessBossEvent {
                 //Always increase kill counts
                 player.getBossKillLog().addKill(npc);
 
-                DailyTaskManager.increase(DailyTasks.WORLD_BOSS, player);
-
                 //Random drop from the table
                 ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                 if (table != null) {

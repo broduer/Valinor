@@ -324,6 +324,7 @@ public class PlayerSave {
                     }
                 }
                 player.putAttrib(TARGET_KILLS, details.targetKills);
+                player.putAttrib(KILLSTREAK_RECORD, details.killstreakRecord);
                 player.putAttrib(KING_BLACK_DRAGONS_KILLED, details.kingBlackDragonsKilled);
                 player.putAttrib(VETIONS_KILLED, details.vetionsKilled);
                 player.putAttrib(CRAZY_ARCHAEOLOGISTS_KILLED, details.crazyArchaeologistsKilled);
@@ -465,39 +466,30 @@ public class PlayerSave {
                 player.putAttrib(TOURNAMENT_POINTS, details.tournamentPoints);
                 player.putAttrib(LOST_CANNON, details.lostCannon);
                 player.putAttrib(WILDY_COURSE_STATE, details.wildernessCourseState);
-                player.putAttrib(DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyRaidsDailyAmount);
-                player.putAttrib(DAILY_RAIDS_DAILY_TASK_COMPLETED, details.dailyRaidsDailyCompleted);
-                player.putAttrib(DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, details.dailyRaidsDailyRewardClaimed);
-                player.putAttrib(WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, details.worldBossDailyDailyAmount);
-                player.putAttrib(WORLD_BOSS_DAILY_TASK_COMPLETED, details.worldBossDailyDailyCompleted);
-                player.putAttrib(WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, details.worldBossDailyRewardClaimed);
-                player.putAttrib(DAILY_REVENANTS_TASK_COMPLETION_AMOUNT, details.revenantsDailyAmount);
-                player.putAttrib(DAILY_REVENANTS_TASK_COMPLETED, details.revenantsDailyCompleted);
-                player.putAttrib(DAILY_REVENANTS_TASK_REWARD_CLAIMED, details.revenantsDailyRewardClaimed);
-                player.putAttrib(BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, details.battleMageDailyAmount);
-                player.putAttrib(BATTLE_MAGE_DAILY_TASK_COMPLETED, details.battleMageDailyCompleted);
-                player.putAttrib(BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, details.battleMageDailyRewardClaimed);
-                player.putAttrib(WILDERNESS_BOSS_DAILY_TASK_COMPLETION_AMOUNT, details.wildernessBossDailyAmount);
-                player.putAttrib(WILDERNESS_BOSS_DAILY_TASK_COMPLETED, details.wildernessBossDailyCompleted);
-                player.putAttrib(WILDERNESS_BOSS_DAILY_TASK_REWARD_CLAIMED, details.wildernessBossDailyRewardClaimed);
-                player.putAttrib(ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, details.zulrahDailyAmount);
-                player.putAttrib(ZULRAH_DAILY_TASK_COMPLETED, details.zulrahDailyCompleted);
-                player.putAttrib(ZULRAH_DAILY_TASK_REWARD_CLAIMED, details.zulrahDailyRewardClaimed);
-                player.putAttrib(SLAYER_DAILY_TASK_COMPLETION_AMOUNT, details.slayerDailyAmount);
-                player.putAttrib(SLAYER_DAILY_TASK_COMPLETED, details.slayerDailyCompleted);
-                player.putAttrib(SLAYER_DAILY_TASK_REWARD_CLAIMED, details.slayerDailyRewardClaimed);
-                player.putAttrib(CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETION_AMOUNT, details.corruptedNechryarchDailyAmount);
-                player.putAttrib(CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETED, details.corruptedNechryarchDailyCompleted);
-                player.putAttrib(CORRUPTED_NECHRYARCHS_DAILY_TASK_REWARD_CLAIMED, details.corruptedNechryarchDailyRewardClaimed);
-                player.putAttrib(VORKATH_DAILY_TASK_COMPLETION_AMOUNT, details.vorkathDailyAmount);
-                player.putAttrib(VORKATH_DAILY_TASK_COMPLETED, details.vorkathDailyCompleted);
-                player.putAttrib(VORKATH_DAILY_TASK_REWARD_CLAIMED, details.vorkathDailyRewardClaimed);
-                player.putAttrib(CORPOREAL_BEAST_DAILY_TASK_COMPLETION_AMOUNT, details.corporealBeastDailyAmount);
-                player.putAttrib(CORPOREAL_BEAST_DAILY_TASK_COMPLETED, details.corporealBeastDailyCompleted);
-                player.putAttrib(CORPOREAL_BEAST_DAILY_TASK_REWARD_CLAIMED, details.corporealBeastDailyRewardClaimed);
-                player.putAttrib(WILDY_RUNNER_DAILY_TASK_COMPLETION_AMOUNT, details.wildyRunnerDailyAmount);
-                player.putAttrib(WILDY_RUNNER_DAILY_TASK_COMPLETED, details.wildyRunnerDailyCompleted);
-                player.putAttrib(WILDY_RUNNER_DAILY_TASK_REWARD_CLAIMED, details.wildyRunnerDailyRewardClaimed);
+                player.putAttrib(ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyRockCrabsAmount);
+                player.putAttrib(ROCK_CRABS_DAILY_TASK_COMPLETED, details.dailyRockCrabsCompleted);
+                player.putAttrib(ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, details.dailyRockCrabsRewardClaimed);
+                player.putAttrib(THIEVING_DAILY_TASK_COMPLETION_AMOUNT, details.dailyThievingAmount);
+                player.putAttrib(THIEVING_DAILY_TASK_COMPLETED, details.dailyThievingCompleted);
+                player.putAttrib(THIEVING_DAILY_TASK_REWARD_CLAIMED, details.dailyThievingRewardClaimed);
+                player.putAttrib(VOTING_DAILY_TASK_COMPLETION_AMOUNT, details.dailyVotingAmount);
+                player.putAttrib(VOTING_DAILY_TASK_COMPLETED, details.dailyVotingCompleted);
+                player.putAttrib(VOTING_DAILY_TASK_REWARD_CLAIMED, details.dailyVotingRewardClaimed);
+                player.putAttrib(BARROWS_TASK_COMPLETION_AMOUNT, details.dailyBarrowsAmount);
+                player.putAttrib(BARROWS_DAILY_TASK_COMPLETED, details.dailyBarrowsCompleted);
+                player.putAttrib(BARROWS_DAILY_TASK_REWARD_CLAIMED, details.dailyBarrowsRewardClaimed);
+                player.putAttrib(SLAYER_DAILY_TASK_COMPLETION_AMOUNT, details.dailySlayerAmount);
+                player.putAttrib(SLAYER_DAILY_TASK_COMPLETED, details.dailySlayerCompleted);
+                player.putAttrib(SLAYER_DAILY_TASK_REWARD_CLAIMED, details.dailySlayerRewardClaimed);
+                player.putAttrib(GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyGreenDragonsAmount);
+                player.putAttrib(GREEN_DRAGONS_DAILY_TASK_COMPLETED, details.dailyGreenDragonsCompleted);
+                player.putAttrib(GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, details.dailyGreenDragonsRewardClaimed);
+                player.putAttrib(RAIDS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyRaidsAmount);
+                player.putAttrib(RAIDS_DAILY_TASK_COMPLETED, details.dailyRaidsCompleted);
+                player.putAttrib(RAIDS_DAILY_TASK_REWARD_CLAIMED, details.dailyRaidsRewardClaimed);
+                player.putAttrib(ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, details.dailyZulrahAmount);
+                player.putAttrib(ZULRAH_DAILY_TASK_COMPLETED, details.dailyZulrahCompleted);
+                player.putAttrib(ZULRAH_DAILY_TASK_REWARD_CLAIMED, details.dailyZulrahRewardClaimed);
                 player.putAttrib(ALCHEMICAL_HYDRA_LOG_CLAIMED, details.alchemicalHydraLogClaimed);
                 player.putAttrib(ANCIENT_BARRELCHEST_LOG_CLAIMED, details.ancientBarrelchestLogClaimed);
                 player.putAttrib(ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, details.ancientChaosElementalLogClaimed);
@@ -745,6 +737,7 @@ public class PlayerSave {
 
         //counts
         private final int targetKills;
+        private final int killstreakRecord;
         private final int kingBlackDragonsKilled;
         private final int vetionsKilled;
         private final int crazyArchaeologistsKilled;
@@ -882,49 +875,61 @@ public class PlayerSave {
         private final int wildernessCourseState;
 
         //Daily task save attributes
-        private final int dailyRaidsDailyAmount;
-        private final boolean dailyRaidsDailyCompleted;
-        private final boolean dailyRaidsDailyRewardClaimed;
+        private final int dailyRockCrabsAmount;
+        private final boolean dailyRockCrabsCompleted;
+        private final boolean dailyRockCrabsRewardClaimed;
 
-        private final int worldBossDailyDailyAmount;
-        private final boolean worldBossDailyDailyCompleted;
-        private final boolean worldBossDailyRewardClaimed;
+        private final int dailyExperimentsAmount;
+        private final boolean dailyExperimentsCompleted;
+        private final boolean dailyExperimentsRewardClaimed;
 
-        private final int revenantsDailyAmount;
-        private final boolean revenantsDailyCompleted;
-        private final boolean revenantsDailyRewardClaimed;
+        private final int dailyThievingAmount;
+        private final boolean dailyThievingCompleted;
+        private final boolean dailyThievingRewardClaimed;
 
-        private final int battleMageDailyAmount;
-        private final boolean battleMageDailyCompleted;
-        private final boolean battleMageDailyRewardClaimed;
+        private final int dailyVotingAmount;
+        private final boolean dailyVotingCompleted;
+        private final boolean dailyVotingRewardClaimed;
 
-        private final int wildernessBossDailyAmount;
-        private final boolean wildernessBossDailyCompleted;
-        private final boolean wildernessBossDailyRewardClaimed;
+        private final int dailySkillingAmount;
+        private final boolean dailySkillingCompleted;
+        private final boolean dailySkillingRewardClaimed;
 
-        private final int zulrahDailyAmount;
-        private final boolean zulrahDailyCompleted;
-        private final boolean zulrahDailyRewardClaimed;
+        private final int dailyPvmingAmount;
+        private final boolean dailyPvmingCompleted;
+        private final boolean dailyPvmingRewardClaimed;
 
-        private final int slayerDailyAmount;
-        private final boolean slayerDailyCompleted;
-        private final boolean slayerDailyRewardClaimed;
+        private final int dailyBarrowsAmount;
+        private final boolean dailyBarrowsCompleted;
+        private final boolean dailyBarrowsRewardClaimed;
 
-        private final int corruptedNechryarchDailyAmount;
-        private final boolean corruptedNechryarchDailyCompleted;
-        private final boolean corruptedNechryarchDailyRewardClaimed;
+        private final int dailySlayerAmount;
+        private final boolean dailySlayerCompleted;
+        private final boolean dailySlayerRewardClaimed;
 
-        private final int vorkathDailyAmount;
-        private final boolean vorkathDailyCompleted;
-        private final boolean vorkathDailyRewardClaimed;
+        private final int dailyGreenDragonsAmount;
+        private final boolean dailyGreenDragonsCompleted;
+        private final boolean dailyGreenDragonsRewardClaimed;
 
-        private final int corporealBeastDailyAmount;
-        private final boolean corporealBeastDailyCompleted;
-        private final boolean corporealBeastDailyRewardClaimed;
+        private final int dailyImplingAmount;
+        private final boolean dailyImplingCompleted;
+        private final boolean dailyImplingRewardClaimed;
 
-        private final int wildyRunnerDailyAmount;
-        private final boolean wildyRunnerDailyCompleted;
-        private final boolean wildyRunnerDailyRewardClaimed;
+        private final int dailyRaidsAmount;
+        private final boolean dailyRaidsCompleted;
+        private final boolean dailyRaidsRewardClaimed;
+
+        private final int dailyZulrahAmount;
+        private final boolean dailyZulrahCompleted;
+        private final boolean dailyZulrahRewardClaimed;
+
+        private final int dailyCorruptedNechryarchAmount;
+        private final boolean dailyCorruptedNechryarchCompleted;
+        private final boolean dailyCorruptedNechryarchRewardClaimed;
+
+        private final int dailyValinorCoinsAmount;
+        private final boolean dailyValinorCoinsCompleted;
+        private final boolean dailyValinorCoinsRewardClaimed;
 
         private final boolean alchemicalHydraLogClaimed;
         private final boolean ancientBarrelchestLogClaimed;
@@ -1157,6 +1162,7 @@ public class PlayerSave {
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
             recentKills = player.getRecentKills();
             targetKills = Player.getAttribIntOr(player, TARGET_KILLS, 0);
+            killstreakRecord = Player.getAttribIntOr(player, KILLSTREAK_RECORD, 0);
             kingBlackDragonsKilled = Player.getAttribIntOr(player, KING_BLACK_DRAGONS_KILLED, 0);
             vetionsKilled = Player.getAttribIntOr(player, VETIONS_KILLED, 0);
             crazyArchaeologistsKilled = Player.getAttribIntOr(player, CRAZY_ARCHAEOLOGISTS_KILLED, 0);
@@ -1286,39 +1292,48 @@ public class PlayerSave {
             tournamentPoints = Player.getAttribIntOr(player, TOURNAMENT_POINTS, 0);
             lostCannon = Player.getAttribBooleanOr(player, LOST_CANNON, false);
             wildernessCourseState = Player.getAttribIntOr(player, WILDY_COURSE_STATE, 0);
-            dailyRaidsDailyAmount = Player.getAttribIntOr(player, DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dailyRaidsDailyCompleted = Player.getAttribBooleanOr(player, DAILY_RAIDS_DAILY_TASK_COMPLETED, false);
-            dailyRaidsDailyRewardClaimed = Player.getAttribBooleanOr(player, DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, false);
-            worldBossDailyDailyAmount = Player.getAttribIntOr(player, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            worldBossDailyDailyCompleted = Player.getAttribBooleanOr(player, WORLD_BOSS_DAILY_TASK_COMPLETED, false);
-            worldBossDailyRewardClaimed = Player.getAttribBooleanOr(player, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, false);
-            revenantsDailyAmount = Player.getAttribIntOr(player, DAILY_REVENANTS_TASK_COMPLETION_AMOUNT, 0);
-            revenantsDailyCompleted = Player.getAttribBooleanOr(player, DAILY_REVENANTS_TASK_COMPLETED, false);
-            revenantsDailyRewardClaimed = Player.getAttribBooleanOr(player, DAILY_REVENANTS_TASK_REWARD_CLAIMED, false);
-            battleMageDailyAmount = Player.getAttribIntOr(player, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            battleMageDailyCompleted = Player.getAttribBooleanOr(player, BATTLE_MAGE_DAILY_TASK_COMPLETED, false);
-            battleMageDailyRewardClaimed = Player.getAttribBooleanOr(player, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, false);
-            wildernessBossDailyAmount = Player.getAttribIntOr(player, WILDERNESS_BOSS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            wildernessBossDailyCompleted = Player.getAttribBooleanOr(player, WILDERNESS_BOSS_DAILY_TASK_COMPLETED, false);
-            wildernessBossDailyRewardClaimed = Player.getAttribBooleanOr(player, WILDERNESS_BOSS_DAILY_TASK_REWARD_CLAIMED, false);
-            zulrahDailyAmount = Player.getAttribIntOr(player, ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            zulrahDailyCompleted = Player.getAttribBooleanOr(player, ZULRAH_DAILY_TASK_COMPLETED, false);
-            zulrahDailyRewardClaimed = Player.getAttribBooleanOr(player, ZULRAH_DAILY_TASK_REWARD_CLAIMED, false);
-            slayerDailyAmount = Player.getAttribIntOr(player, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            slayerDailyCompleted = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_COMPLETED, false);
-            slayerDailyRewardClaimed = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_REWARD_CLAIMED, false);
-            corruptedNechryarchDailyAmount = Player.getAttribIntOr(player, CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            corruptedNechryarchDailyCompleted = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETED, false);
-            corruptedNechryarchDailyRewardClaimed = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCHS_DAILY_TASK_REWARD_CLAIMED, false);
-            vorkathDailyAmount = Player.getAttribIntOr(player, VORKATH_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            vorkathDailyCompleted = Player.getAttribBooleanOr(player, VORKATH_DAILY_TASK_COMPLETED, false);
-            vorkathDailyRewardClaimed = Player.getAttribBooleanOr(player, VORKATH_DAILY_TASK_REWARD_CLAIMED, false);
-            corporealBeastDailyAmount = Player.getAttribIntOr(player, CORPOREAL_BEAST_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            corporealBeastDailyCompleted = Player.getAttribBooleanOr(player, CORPOREAL_BEAST_DAILY_TASK_COMPLETED, false);
-            corporealBeastDailyRewardClaimed = Player.getAttribBooleanOr(player, CORPOREAL_BEAST_DAILY_TASK_REWARD_CLAIMED, false);
-            wildyRunnerDailyAmount = Player.getAttribIntOr(player, WILDY_RUNNER_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            wildyRunnerDailyCompleted = Player.getAttribBooleanOr(player, WILDY_RUNNER_DAILY_TASK_COMPLETED, false);
-            wildyRunnerDailyRewardClaimed = Player.getAttribBooleanOr(player, WILDY_RUNNER_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyRockCrabsAmount = Player.getAttribIntOr(player, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyRockCrabsCompleted = Player.getAttribBooleanOr(player, ROCK_CRABS_DAILY_TASK_COMPLETED, false);
+            dailyRockCrabsRewardClaimed = Player.getAttribBooleanOr(player, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyExperimentsAmount = Player.getAttribIntOr(player, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyExperimentsCompleted = Player.getAttribBooleanOr(player, EXPERIMENTS_DAILY_TASK_COMPLETED, false);
+            dailyExperimentsRewardClaimed = Player.getAttribBooleanOr(player, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyThievingAmount = Player.getAttribIntOr(player, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyThievingCompleted = Player.getAttribBooleanOr(player, THIEVING_DAILY_TASK_COMPLETED, false);
+            dailyThievingRewardClaimed = Player.getAttribBooleanOr(player, THIEVING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyVotingAmount = Player.getAttribIntOr(player, VOTING_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyVotingCompleted = Player.getAttribBooleanOr(player, VOTING_DAILY_TASK_COMPLETED, false);
+            dailyVotingRewardClaimed = Player.getAttribBooleanOr(player, VOTING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailySkillingAmount = Player.getAttribIntOr(player, SKILLING_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailySkillingCompleted = Player.getAttribBooleanOr(player, SKILLING_DAILY_TASK_COMPLETED, false);
+            dailySkillingRewardClaimed = Player.getAttribBooleanOr(player, SKILLING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyPvmingAmount = Player.getAttribIntOr(player, PVMING_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyPvmingCompleted = Player.getAttribBooleanOr(player, PVMING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyPvmingRewardClaimed = Player.getAttribBooleanOr(player, PVMING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyBarrowsAmount = Player.getAttribIntOr(player, BARROWS_TASK_COMPLETION_AMOUNT, 0);
+            dailyBarrowsCompleted = Player.getAttribBooleanOr(player, BARROWS_DAILY_TASK_COMPLETED, false);
+            dailyBarrowsRewardClaimed = Player.getAttribBooleanOr(player, BARROWS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailySlayerAmount = Player.getAttribIntOr(player, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailySlayerCompleted = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_COMPLETED, false);
+            dailySlayerRewardClaimed = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyGreenDragonsAmount = Player.getAttribIntOr(player, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyGreenDragonsCompleted = Player.getAttribBooleanOr(player, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyGreenDragonsRewardClaimed = Player.getAttribBooleanOr(player, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyImplingAmount = Player.getAttribIntOr(player, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyImplingCompleted = Player.getAttribBooleanOr(player, IMPLING_DAILY_TASK_COMPLETED, false);
+            dailyImplingRewardClaimed = Player.getAttribBooleanOr(player, IMPLING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyRaidsAmount = Player.getAttribIntOr(player, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyRaidsCompleted = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_COMPLETED, false);
+            dailyRaidsRewardClaimed = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyZulrahAmount = Player.getAttribIntOr(player, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyZulrahCompleted = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_COMPLETED, false);
+            dailyZulrahRewardClaimed = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyCorruptedNechryarchAmount = Player.getAttribIntOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyCorruptedNechryarchCompleted = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETED, false);
+            dailyCorruptedNechryarchRewardClaimed = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyValinorCoinsAmount = Player.getAttribIntOr(player, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyValinorCoinsCompleted = Player.getAttribBooleanOr(player, VALINOR_COINS_DAILY_TASK_COMPLETED, false);
+            dailyValinorCoinsRewardClaimed = Player.getAttribBooleanOr(player, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, false);
             alchemicalHydraLogClaimed = Player.getAttribBooleanOr(player, ALCHEMICAL_HYDRA_LOG_CLAIMED, false);
             ancientBarrelchestLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_BARRELCHEST_LOG_CLAIMED, false);
             ancientChaosElementalLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, false);

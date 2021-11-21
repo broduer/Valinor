@@ -3,6 +3,7 @@ package com.valinor.game.content.daily_tasks;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.position.Tile;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -19,85 +20,112 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum DailyTasks {
 
-    DAILY_RAIDS("Daily Raiding", "Complete 5 raids.", 5, DAILY_RAIDS_DAILY_TASK_COMPLETION_AMOUNT, DAILY_RAIDS_DAILY_TASK_COMPLETED, DAILY_RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(DONATOR_MYSTERY_BOX, 1)) {
+    ROCK_CRABS("Rock crabs", "Kill 20 rock crabs", "Any!", "Safe", new Tile(2706, 3713), 20, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, ROCK_CRABS_DAILY_TASK_COMPLETED, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 10_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    WORLD_BOSS("Daily World boss", "Kill 3 world bosses.", 3, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WORLD_BOSS_DAILY_TASK_COMPLETED, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(COINS_995, 10_000_000)) {
+    EXPERIMENTS("Experiments", "Kill 20 experiments", "25+", "Safe", new Tile(3556, 9944), 20, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, EXPERIMENTS_DAILY_TASK_COMPLETED, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 10_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    REVENANTS("Daily Revenants", "Kill 100 revenants", 100, DAILY_REVENANTS_TASK_COMPLETION_AMOUNT, DAILY_REVENANTS_TASK_COMPLETED, DAILY_REVENANTS_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(ANCIENT_RELIC, 1), new Item(ANCIENT_EFFIGY, 1)) {
+    THIEVING("Thieving", "Steal from 100 stalls or pick-pockets", "Any!", "Safe", new Tile(3084,3475), 100, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, THIEVING_DAILY_TASK_COMPLETED, THIEVING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 10_000_000), new Item(DOUBLE_DROPS_SCROLL, 15)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    BATTLE_MAGE("Daily Battle mage", "Kill 100 battle mages.", 100, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, BATTLE_MAGE_DAILY_TASK_COMPLETED, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(STAFF_OF_THE_DEAD, 1), new Item(OCCULT_NECKLACE, 1)) {
+    VOTING("Voting", "Vote for us on 3 top list sites", "Any!", "Safe", null, 1, VOTING_DAILY_TASK_COMPLETION_AMOUNT, VOTING_DAILY_TASK_COMPLETED, VOTING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    WILDERNESS_BOSS("Daily Wildy Boss", "Kill 50 wilderness bosses.<br>The following bosses count:<br>Callisto, Venenatis, Scorpia,<br>Chaos Ele, Barrelchest,<br>and Vet'ion.", 50, WILDERNESS_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WILDERNESS_BOSS_DAILY_TASK_COMPLETED, WILDERNESS_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(WEAPON_MYSTERY_BOX, 1), new Item(ARMOUR_MYSTERY_BOX, 1)) {
+    SKILLING_TASKS("Skilling tasks", "Complete 3 skilling tasks", "Any!", "Safe", new Tile(3083,3488), 3, SKILLING_DAILY_TASK_COMPLETION_AMOUNT, SKILLING_DAILY_TASK_COMPLETED, SKILLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    ZULRAH("Daily Zulrah", "Kill 25 Zulrah.", 25, ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, ZULRAH_DAILY_TASK_COMPLETED, ZULRAH_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(BLOOD_MONEY, 20000)) {
+    SLAYER("Slayer", "Complete 5 slayer tasks","25+", "Safe", null, 5, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 10_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(POINTS_MYSTERY_CHEST, 1), new Item(SLAYER_TELEPORT_SCROLL, 5)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    SLAYER("Daily Slayer", "Complete 15 wilderness tasks.", 15, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(SLAYER_KEY, 5)) {
+    PVM_TASKS("PvMing tasks", "Complete 3 pvming tasks", "75+", "Safe", new Tile(3083,3488), 3, PVMING_DAILY_TASK_COMPLETION_AMOUNT, PVMING_DAILY_TASK_COMPLETED, PVMING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    CORRUPTED_NECHRYARCHS("Daily Nechryarch", "Kill 10 Corrupted Nechryarchs.", 10, CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETION_AMOUNT, CORRUPTED_NECHRYARCHS_DAILY_TASK_COMPLETED, CORRUPTED_NECHRYARCHS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(WEAPON_MYSTERY_BOX, 1)) {
+    BARROWS("Barrows", "Complete 3 barrows runs", "70+", "Safe", new Tile(3565, 3306), 3, BARROWS_TASK_COMPLETION_AMOUNT, BARROWS_DAILY_TASK_COMPLETED, BARROWS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 15_000_000), new Item(BARROWS_MYSTERY_BOX)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    VORKATH("Daily Vorkath", "Kill 10 Vorkaths.", 10, VORKATH_DAILY_TASK_COMPLETION_AMOUNT, VORKATH_DAILY_TASK_COMPLETED, VORKATH_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM, new Item(BLOOD_MONEY, 30000)) {
+    GREEN_DRAGONS("Green dragons", "Kill 30 green dragons", "70+", "Dangerous", new Tile(3343, 3664), 30, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, GREEN_DRAGONS_DAILY_TASK_COMPLETED, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 10_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    CORPOREAL_BEAST("Daily Corp", "Kill 10 Corporeal Beasts.", 10, CORPOREAL_BEAST_DAILY_TASK_COMPLETION_AMOUNT, CORPOREAL_BEAST_DAILY_TASK_COMPLETED, CORPOREAL_BEAST_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVM,new Item(DONATOR_MYSTERY_BOX), new Item(BLESSED_SPIRIT_SHIELD, 1)) {
+    //TODO coords and location
+    IMPLING("Impling catching", "Catch 35 implings", "Any!", "Safe", null, 35, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, IMPLING_DAILY_TASK_COMPLETED, IMPLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 10_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    WILDY_AGLITY("Wildy Runner", "Complete 25 laps of wilderness<br>agility.", 25, WILDY_RUNNER_DAILY_TASK_COMPLETION_AMOUNT, WILDY_RUNNER_DAILY_TASK_COMPLETED, WILDY_RUNNER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.OTHER, new Item(BLOOD_MONEY, 25000)) {
+    RAIDING("Raids", "Complete 5 raids of any type", "126+", "Safe", new Tile(1245, 3561), 5, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, RAIDS_DAILY_TASK_COMPLETED, RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 2500), new Item(COINS_995, 25_000_000), new Item(POINTS_MYSTERY_BOX+1,5), new Item(POINTS_MYSTERY_CHEST)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
-    };
+    },
+
+    ZULRAH("Zulrah", "Kill 15 Zulrah", "90+", "Safe", new Tile(2204, 3056), 15, ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, ZULRAH_DAILY_TASK_COMPLETED, ZULRAH_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 1000), new Item(COINS_995, 15_000_000), new Item(POINTS_MYSTERY_BOX+1,3)) {
+        @Override
+        public boolean canIncrease(Player player) {
+            return !player.<Boolean>getAttribOr(completed, false);
+        }
+    },
+
+    CORRUPTED_NECHRYARCH("Corrupted Nechryarch", "Kill 15 Corrupted Nechryarch", "90+", "Safe", new Tile(1885, 3865), 15, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETION_AMOUNT, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETED, CORRUPTED_NECHRYARCH_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 1000), new Item(COINS_995, 15_000_000), new Item(DONATOR_MYSTERY_BOX)) {
+        @Override
+        public boolean canIncrease(Player player) {
+            return !player.<Boolean>getAttribOr(completed, false);
+        }
+    },
+
+    VALINOR_COINS("Valinor coins", "Exchange items for 1000 Valinor coins", "Any!", "Safe", null, 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 500), new Item(DONATOR_MYSTERY_BOX,1)) {
+        @Override
+        public boolean canIncrease(Player player) {
+            return !player.<Boolean>getAttribOr(completed, false);
+        }
+    },
+
+    ;
 
     public final String taskName;
     public final String taskDescription;
+    public final String combatRequirement;
+    public final String location;
+    public final Tile tile;
     public final int completionAmount;
     public final AttributeKey key;
     public final AttributeKey completed;
@@ -105,9 +133,12 @@ public enum DailyTasks {
     public final TaskCategory category;
     public final Item[] rewards;
 
-    DailyTasks(String taskName, String taskDescription, int completionAmount, AttributeKey key, AttributeKey completed, AttributeKey rewardClaimed, TaskCategory category, Item... rewards) {
+    DailyTasks(String taskName, String taskDescription, String combatRequirement, String location, Tile tile, int completionAmount, AttributeKey key, AttributeKey completed, AttributeKey rewardClaimed, TaskCategory category, Item... rewards) {
         this.taskName = taskName;
         this.taskDescription = taskDescription;
+        this.combatRequirement = combatRequirement;
+        this.location = location;
+        this.tile = tile;
         this.completionAmount = completionAmount;
         this.key = key;
         this.completed = completed;

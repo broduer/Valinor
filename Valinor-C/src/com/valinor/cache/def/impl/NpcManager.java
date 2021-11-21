@@ -163,7 +163,9 @@ public class NpcManager {
             case 1642:
             case 1643:
             case 1644:
+            case 1654:
             case 7233:
+            case 7302:
                 impling = true;
                 break;
 

@@ -1,10 +1,10 @@
 package com.valinor.game.content.skill.impl.thieving;
 
-import com.valinor.GameServer;
-import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
-import com.valinor.game.content.tasks.impl.Tasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
@@ -22,7 +22,6 @@ import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 
 /**
  * @author Patrick van Elderen | April, 21, 2021, 11:44
@@ -75,6 +74,7 @@ public class Stalls extends PacketInteraction {
         Chain.bound(player).runFn(1, () -> {
             replaceStall(stall, object, replacementID, player);
             AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
+            DailyTaskManager.increase(DailyTasks.THIEVING, player);
 
             var slayerUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_LAMPS);
             if (World.getWorld().rollDie(200, 1) && slayerUnlock) {

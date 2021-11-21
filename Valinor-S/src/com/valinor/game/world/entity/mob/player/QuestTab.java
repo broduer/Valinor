@@ -227,7 +227,7 @@ public final class QuestTab {
             }
 
             case 73133 -> {
-                DailyTaskManager.pvmTasks(player);
+                DailyTaskManager.openEasyList(player);
                 return true;
             }
 

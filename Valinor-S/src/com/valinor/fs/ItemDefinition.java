@@ -568,6 +568,9 @@ public class ItemDefinition implements Definition {
         } else if (id == 30235) {
             name = "H'ween token";
             ioptions = new String[]{null, null, null, null, "Drop"};
+        } else if (id == 30191) {
+            name = "X'mas token";
+            ioptions = new String[]{null, null, null, null, "Drop"};
         } else if (id == 30297) {
             name = "Corrupted boots";
         } else if (id == 27644) {
@@ -916,7 +919,7 @@ public class ItemDefinition implements Definition {
     public Map<Integer, Object> clientScriptData;
 
     public boolean stackable() {
-        return stackable || noteModel > 0 || id == 13215 || id == 30235;
+        return stackable || noteModel > 0 || id == 13215 || id == 30235 || id == 30191;
     }
 
     public boolean noted() {

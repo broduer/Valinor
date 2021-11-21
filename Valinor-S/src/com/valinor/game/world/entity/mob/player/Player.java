@@ -171,6 +171,7 @@ public class Player extends Mob {
 
     /**
      * Returns the player's farming instance.
+     *
      * @return the instance
      */
     public Farming getFarming() {
@@ -350,10 +351,10 @@ public class Player extends Mob {
             case ZENYTE_MEMBER -> 14;
         };
 
-        if(mode == ExpMode.CHALLENGER)
+        if (mode == ExpMode.CHALLENGER)
             percent += 5;
 
-        if(mode == ExpMode.GLADIATOR)
+        if (mode == ExpMode.GLADIATOR)
             percent += 10;
 
         //Drop rate percentage boost can't go over cap%
@@ -1465,13 +1466,13 @@ public class Player extends Mob {
                 TournamentManager.onLogin(this);
             }
 
-            if(getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS)) {
+            if (getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS)) {
                 getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
-            } else if(getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
+            } else if (getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
                 getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
             } else if (getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
                 getCombat().setAutoCastSpell(CombatSpells.SANGUINESTI_STAFF.getSpell());
-            } else if(getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND)) {
+            } else if (getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND)) {
                 getCombat().setCastSpell(CombatSpells.CRUCIATUS_CURSE.getSpell());
             }
 
@@ -2608,7 +2609,7 @@ public class Player extends Mob {
             getMovementQueue().clear();
 
         if (interfaceManager.getMain() > 0) {
-            if(interfaceManager.isInterfaceOpen(16200)) {
+            if (interfaceManager.isInterfaceOpen(16200)) {
                 gamblingSession.abortGambling();
             }
             interfaceManager.close();
@@ -2992,9 +2993,7 @@ public class Player extends Mob {
             }
 
             if (interfaceManager.isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE)) {
-                var dailyTask = this.<DailyTasks>getAttribOr(DAILY_TASK_SELECTED, null);
-                if (dailyTask != null)
-                    getPacketSender().sendString(TIME_FRAME_TEXT_ID, DailyTaskManager.timeLeft());
+                getPacketSender().sendString(TIME_FRAME_TEXT_ID, "Activity (Expires: <col=ffff00>" + DailyTaskManager.timeLeft() + ")");
             }
 
             var staminaTicks = this.<Integer>getAttribOr(STAMINA_POTION_TICKS, 0);

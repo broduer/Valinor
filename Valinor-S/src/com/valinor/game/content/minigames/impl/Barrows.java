@@ -2,6 +2,8 @@ package com.valinor.game.content.minigames.impl;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -136,6 +138,7 @@ public class Barrows extends PacketInteraction {
                     player.message("Congratulations.");
                     player.putAttrib(AttributeKey.BARROWS_CHESTS_OPENED, 1 + player.<Integer>getAttribOr(AttributeKey.BARROWS_CHESTS_OPENED, 0));
                     player.message("Your Barrows chest count is: <col=FF0000>" + player.getAttribOr(AttributeKey.BARROWS_CHESTS_OPENED, 0) + "</col>.");
+                    DailyTaskManager.increase(DailyTasks.BARROWS, player);
 
                     //Generate three items as a reward from the chest..
                     giveloot(player);
