@@ -26,7 +26,7 @@ object CollectPayments {
             val list = mutableListOf<DonationRow>()
             prepareStatement(
                     connection,
-                    "SELECT * FROM wpwo_rs_orders WHERE lower(username)=:user AND lower(claimed)='unclaimed'"
+                    "SELECT * FROM DoAIIDlB_rs_orders WHERE lower(username)=:user AND lower(claimed)='unclaimed'"
             ).apply {
                 setString("user", username)
                 execute()

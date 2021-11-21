@@ -260,7 +260,7 @@ public class GameServer {
                 logger.catching(t);
                 System.exit(1);
             }
-            try {
+            /*try {
                 votesDb = new DatabaseServiceBuilder()
                     .dataSource(DatabaseService.create(ServerProperties.localProperties.db2))
                     .build();
@@ -269,7 +269,7 @@ public class GameServer {
                 logger.fatal("There was an error initializing the SQL database service, are you sure you have SQL configured?");
                 logger.catching(t);
                 System.exit(1);
-            }
+            }*/
         } else {
             databaseService = new DatabaseService.DisabledDatabaseService();
         }

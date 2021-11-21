@@ -73,7 +73,6 @@ public final class ServerProperties {
         }
     }
 
-
     public static class LocalProperties {
         public final String db1, db2;
         public final boolean sqlOn, discordLoggingOn;

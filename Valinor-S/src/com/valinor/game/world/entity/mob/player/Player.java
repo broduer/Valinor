@@ -1,8 +1,7 @@
 package com.valinor.game.world.entity.mob.player;
 
 import com.valinor.GameServer;
-import com.valinor.db.transactions.InsertPlayerIPDatabaseTransaction;
-import com.valinor.db.transactions.UpdatePlayerInfoDatabaseTransaction;
+import com.valinor.db.transactions.*;
 import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
@@ -1390,6 +1389,12 @@ public class Player extends Mob {
 
         if (GameServer.properties().enableSql) {
             GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName(), ironMode().name));
+            GameServer.getDatabaseService().submit(new UpdatePlayerSkillsDatabaseTransaction(this));
+            GameServer.getDatabaseService().submit(new UpdateKillsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_KILLS, 0), username));
+            GameServer.getDatabaseService().submit(new UpdateDeathsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_DEATHS, 0), username));
+            GameServer.getDatabaseService().submit(new UpdateKdrDatabaseTransaction(Double.parseDouble(getKillDeathRatio()), username));
+            GameServer.getDatabaseService().submit(new UpdateTargetKillsDatabaseTransaction(getAttribOr(AttributeKey.TARGET_KILLS, 0), username));
+            GameServer.getDatabaseService().submit(new UpdateKillstreakDatabaseTransaction(getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0), username));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
     }
@@ -2989,7 +2994,7 @@ public class Player extends Mob {
             if (interfaceManager.isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE)) {
                 var dailyTask = this.<DailyTasks>getAttribOr(DAILY_TASK_SELECTED, null);
                 if (dailyTask != null)
-                    getPacketSender().sendString(TIME_FRAME_TEXT_ID, DailyTaskManager.timeLeft(this, dailyTask));
+                    getPacketSender().sendString(TIME_FRAME_TEXT_ID, DailyTaskManager.timeLeft());
             }
 
             var staminaTicks = this.<Integer>getAttribOr(STAMINA_POTION_TICKS, 0);

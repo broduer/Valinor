@@ -27,6 +27,7 @@ public class UpdatePlayerInfoDatabaseTransaction extends VoidDatabaseTransaction
         this.ip = ip;
         this.mac = mac;
         this.playtime = playtime;
+        this.expMode = expMode;
         this.ironMode = ironMode;
     }
 

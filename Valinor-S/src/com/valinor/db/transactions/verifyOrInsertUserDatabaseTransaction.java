@@ -34,7 +34,7 @@ public final class verifyOrInsertUserDatabaseTransaction extends VoidDatabaseTra
             }
         }
         if (count == 0) {
-            try (NamedPreparedStatement statement = prepareStatement(connection, "INSERT INTO users (username, password, last_login_ip, creation_ip, first_login_date, email, created_at, updated_at, last_login_mac, exp_mode, iron_mode, playtime) VALUES (:username, :password, :last_login_ip, :creation_ip, :first_login_date, :email, :created_at, :updated_at, :mac, :exp_mode:, :iron_mode, :playtime)")) {
+            try (NamedPreparedStatement statement = prepareStatement(connection, "INSERT INTO users (username, password, last_login_ip, creation_ip, first_login_date, email, created_at, updated_at, last_login_mac, exp_mode, iron_mode, playtime) VALUES (:username, :password, :last_login_ip, :creation_ip, :first_login_date, :email, :created_at, :updated_at, :mac, :exp_mode, :iron_mode, :playtime)")) {
                 statement.setString("username", player.getUsername());
                 statement.setString("last_login_ip", player.getHostAddress());
                 statement.setString("creation_ip", player.getCreationIp());

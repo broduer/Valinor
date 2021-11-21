@@ -7,6 +7,8 @@ import com.valinor.db.query
 import com.valinor.game.GameEngine
 import com.valinor.game.content.achievements.Achievements
 import com.valinor.game.content.achievements.AchievementsManager
+import com.valinor.game.content.daily_tasks.DailyTaskManager
+import com.valinor.game.content.daily_tasks.DailyTasks
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants
 import com.valinor.game.world.World
 import com.valinor.game.world.entity.AttributeKey
@@ -138,6 +140,8 @@ object CollectVotes {
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_I, votes.toInt())
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_II, votes.toInt())
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_III, votes.toInt())
+
+                            DailyTaskManager.increase(DailyTasks.VOTING, this)
 
                             if(electionDay) {
                                 World.getWorld().sendWorldMessage("<img=1081>" + Color.PURPLE.wrap(username.toString()) + " just activated his "+Color.RED.wrap("Election day")+" perk and doubled their vote points!")
