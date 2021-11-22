@@ -1409,8 +1409,8 @@ public class Player extends Mob {
             equipment.refresh();
             WeaponInterfaces.updateWeaponInterface(this);
 
-            teleportMenuHandler.updateFavorites();
             teleportMenuHandler.load();
+            teleportMenuHandler.updateFavorites();
 
             // Force fix any remaining bugged accounts
             if (this.<Integer>getAttribOr(MULTIWAY_AREA, -1) == 1 && !MultiwayCombat.includes(this.tile())) {

@@ -1131,8 +1131,6 @@ public final class PacketSender {
      */
     public PacketSender sendOptionMenuInterface(final int childId, final Collection<ClientOptionMenu> optionMenus) {
         PacketBuilder out = new PacketBuilder(223, PacketType.VARIABLE_SHORT);
-        System.out.println(childId);
-        System.out.println(optionMenus);
         out.putInt(childId);
         if (optionMenus.isEmpty()) {
             out.put(0);

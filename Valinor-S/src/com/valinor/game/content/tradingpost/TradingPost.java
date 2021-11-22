@@ -523,11 +523,9 @@ public class TradingPost {
 
             list.sort(Comparator.comparingLong(TradingPostListing::getTimeListed));
             Collections.reverse(list);
-            player.putAttrib(AttributeKey.RECENT_LISTING_RESULTS, list);
-            final var tradingPostListings = list.subList(0, 25);
-            //System.out.println("display "+Arrays.toString(tradingPostListings.stream().map(e -> e.getSaleItem().unnote().name()+"by "+e.getSellerName()+", ").toArray()));
+            //System.out.println("display "+Arrays.toString(list.stream().map(e -> e.getSaleItem().unnote().name()+"by "+e.getSellerName()+", ").toArray()));
             player.putAttrib(TRADING_POST_RECENT_PAGE, 1);
-            displayRecentPage(player, tradingPostListings);
+            displayRecentPage(player, list);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -835,9 +833,8 @@ public class TradingPost {
      * @param player
      * @param list
      */
-    public static void displayQuery(Player player, List<TradingPostListing> list) { // cos the list isnt being trimmed anywheres its the same list everytime so it'll alwaays do the first 25 did we trim the other list in recent? I dont recall
+    public static void displayQuery(Player player, List<TradingPostListing> list) {
         try {
-            //This list is populated but, it some how doesn't send properly when switching pages
             player.putAttrib(AttributeKey.BUY_LISTING_RESULTS, list);
             player.putAttrib(TRADING_POST_BUY_PAGE, 1);
             displayBuyPage(player, list);
@@ -1058,7 +1055,7 @@ public class TradingPost {
 
             //System.out.println("Enough=" + (totalPrice > totalAmount) + " coins=" + coins + " platTokens=" + platTokens + " totalPriceInPlat=" + totalPriceInPlat);
             if (totalPrice > totalAmount) {
-                player.message("You don't have enough <col=ff0000>Blood money</col> to complete this transaction...");
+                player.message("You don't have enough <col=ff0000>coins</col> to complete this transaction...");
                 player.message(".. You need a combined value of <col=ff0000>" + Utils.formatRunescapeStyle(totalPrice) + "</col> to complete this transaction.");
                 return;
             }
@@ -1207,13 +1204,13 @@ public class TradingPost {
 
             if (remainingCoins >= 1) {
                 p.inventory().addOrBank(new Item(COINS_995, (int) remainingCoins));
-                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) remainingCoins + " blood money");
+                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) remainingCoins + " coins");
             }
         } else {
             //Below max int add coins.
             if (profit > 0) {
                 p.inventory().addOrBank(new Item(COINS_995, (int) profit));
-                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profit + " blood money");
+                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profit + " coins");
             }
         }
 
@@ -1403,8 +1400,8 @@ public class TradingPost {
                 int refundId = isOver ? PLATINUM_TOKEN : COINS_995;
                 Item item = new Item(refundId, isOver ? (int) (unclaimedProfit / 1_000) : (int) unclaimedProfit);
                 player.inventory().addOrBank(item);
-                tradingPostLogs.log(TRADING_POST, player.getUsername() + " After canceling the offer there was already some unclaimed profits for: " + refund.unnote().name() + " Received: " + item.getAmount() + " blood money!");
-                player.message("<col=ff0000>You also had " + Utils.formatNumber(unclaimedProfit) + " blood money unclaimed..");
+                tradingPostLogs.log(TRADING_POST, player.getUsername() + " After canceling the offer there was already some unclaimed profits for: " + refund.unnote().name() + " Received: " + item.getAmount() + " coins!");
+                player.message("<col=ff0000>You also had " + Utils.formatNumber(unclaimedProfit) + " coins unclaimed..");
             }
             refresh(player);
             save(listing);
