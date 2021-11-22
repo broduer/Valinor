@@ -705,7 +705,7 @@ public class TournamentManager extends PacketInteraction {
         }
 
         @Override
-        protected void execute() {
+        public void execute() {
             for (Iterator<Tournament> it = tournaments.iterator(); it.hasNext(); ) {
                 final Tournament next = it.next();
 
@@ -797,7 +797,7 @@ public class TournamentManager extends PacketInteraction {
          * Performs this task's action.
          */
         @Override
-        protected void execute() {
+        public void execute() {
             run();
         }
     }

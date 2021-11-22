@@ -79,7 +79,7 @@ public class ItemCreationSkillable extends DefaultSkillable {
         }
         Task animLoopTask = new Task("ItemCreationAnimationTask", animLoop.get().getLoopDelay(), player, true) {
             @Override
-            protected void execute() {
+            public void execute() {
                 player.animate(animLoop.get().getAnim());
             }
         };

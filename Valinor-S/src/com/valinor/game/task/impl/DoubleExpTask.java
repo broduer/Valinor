@@ -20,7 +20,7 @@ public class DoubleExpTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         int ticksLeft = player.getAttribOr(DOUBLE_EXP_TICKS, 0);
 
         if(ticksLeft > 0) {

@@ -23,7 +23,7 @@ public class DivineSuperDefencePotion {
         TaskManager.submit(new Task("DivineSuperDefencePotionTask", 1, false) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 int ticks = player.<Integer>getAttribOr(AttributeKey.DIVINE_SUPER_DEFENCE_POTION_TICKS, 0);
                 boolean potionEffectActive = player.getAttribOr(AttributeKey.DIVINE_SUPER_DEFENCE_POTION_EFFECT_ACTIVE, false);
 

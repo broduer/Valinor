@@ -21,6 +21,10 @@ public class InputFieldPacketListener implements PacketListener {
         player.debugMessage("[InputField] - Text: " + context + " Component: " + component);
         
         switch (component) {
+            case 72152:
+                player.getTeleportMenuHandler().handleTeleportInput(context);
+                break;
+
             /* Clan Chat */
             case 47828:
                 ClanManager.kickMember(player, context);

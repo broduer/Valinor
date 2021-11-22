@@ -18,7 +18,7 @@ public class FarmingTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         if (player == null) {
             stop();
             return;

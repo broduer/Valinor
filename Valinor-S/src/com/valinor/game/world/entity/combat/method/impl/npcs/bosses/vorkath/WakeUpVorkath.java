@@ -28,7 +28,7 @@ public class WakeUpVorkath extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         if (player == null || player.dead()) {
             this.stop();
             return;

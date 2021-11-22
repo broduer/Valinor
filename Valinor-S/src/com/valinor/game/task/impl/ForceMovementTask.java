@@ -30,7 +30,7 @@ public class ForceMovementTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         int x = start.getX() + end.getX();
         int y = start.getY() + end.getY();
         player.teleport(new Tile(x, y, player.tile().getLevel()));

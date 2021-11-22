@@ -27,10 +27,6 @@ public class TextClickPacketListener implements PacketListener {
             return;
         }
 
-        if (player.getTeleportInterface().handleButton(textFrame, action)) {
-            return;
-        }
-
         if (player.getBank().buttonAction(textFrame)) {
             return;
         }

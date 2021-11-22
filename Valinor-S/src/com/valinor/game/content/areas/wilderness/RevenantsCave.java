@@ -230,7 +230,7 @@ public class RevenantsCave extends PacketInteraction {
                 int ticks = 0;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     ticks++;
                     player.getMovementQueue().clear();
                     if (ticks == 1) {
@@ -262,7 +262,7 @@ public class RevenantsCave extends PacketInteraction {
                     int ticks = 0;
 
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         ticks++;
                         player.getMovementQueue().clear();
                         if (ticks == 1) {
@@ -296,7 +296,7 @@ public class RevenantsCave extends PacketInteraction {
                 int ticks = 0;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     ticks++;
                     player.getMovementQueue().clear();
                     if (ticks == 1) {
@@ -328,7 +328,7 @@ public class RevenantsCave extends PacketInteraction {
                     int ticks = 0;
 
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         ticks++;
                         player.getMovementQueue().clear();
                         if (ticks == 1) {
@@ -362,7 +362,7 @@ public class RevenantsCave extends PacketInteraction {
                 int ticks = 0;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     ticks++;
                     player.getMovementQueue().clear();
                     if (ticks == 1) {
@@ -394,7 +394,7 @@ public class RevenantsCave extends PacketInteraction {
                     int ticks = 0;
 
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         ticks++;
                         player.getMovementQueue().clear();
                         if (ticks == 1) {
@@ -428,7 +428,7 @@ public class RevenantsCave extends PacketInteraction {
                 int ticks = 0;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     ticks++;
                     player.getMovementQueue().clear();
                     if (ticks == 1) {
@@ -460,7 +460,7 @@ public class RevenantsCave extends PacketInteraction {
                     int ticks = 0;
 
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         ticks++;
                         player.getMovementQueue().clear();
                         if (ticks == 1) {
@@ -494,7 +494,7 @@ public class RevenantsCave extends PacketInteraction {
                 int ticks = 0;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     ticks++;
                     player.getMovementQueue().clear();
                     if (ticks == 1) {
@@ -526,7 +526,7 @@ public class RevenantsCave extends PacketInteraction {
                     int ticks = 0;
 
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         ticks++;
                         player.getMovementQueue().clear();
                         if (ticks == 1) {

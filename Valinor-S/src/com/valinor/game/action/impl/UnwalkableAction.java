@@ -9,6 +9,7 @@ import com.valinor.game.world.entity.Mob;
  * @Since september 04, 2020
  */
 public abstract class UnwalkableAction extends Action<Mob> {
+
     public UnwalkableAction(Mob mob, int delay, boolean instant) {
         super(mob, delay, instant);
     }

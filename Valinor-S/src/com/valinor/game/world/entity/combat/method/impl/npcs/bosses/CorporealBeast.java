@@ -31,7 +31,7 @@ public class CorporealBeast extends CommonCombatMethod {
         if (stompTask == null) {
             stompTask = new Task("checkStompTask",7) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     if (mob.dead() || !mob.isRegistered() || !target.tile().inArea(CORPOREAL_BEAST_AREA)) {
                         stop();
                         return;

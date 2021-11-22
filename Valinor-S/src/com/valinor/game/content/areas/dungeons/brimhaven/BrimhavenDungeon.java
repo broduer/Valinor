@@ -142,7 +142,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                                 int ticks = 0;
 
                                 @Override
-                                protected void execute() {
+                                public void execute() {
                                     ticks++;
                                     if (ticks == 1) {
                                         player.face(player.getX() + 1, player.getY());
@@ -178,7 +178,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                                 int ticks = 0;
 
                                 @Override
-                                protected void execute() {
+                                public void execute() {
                                     ticks++;
                                     if (ticks == 1) {
                                         player.face(player.getX() - 1, player.getY());
@@ -214,7 +214,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                                 int ticks = 0;
 
                                 @Override
-                                protected void execute() {
+                                public void execute() {
                                     ticks++;
                                     if (ticks == 1) {
                                         player.face(player.getX(), player.getY() - 1);
@@ -251,7 +251,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                                 int ticks = 0;
 
                                 @Override
-                                protected void execute() {
+                                public void execute() {
                                     ticks++;
                                     if (ticks == 1) {
                                         player.face(player.getX(), player.getY() + 1);
@@ -354,7 +354,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                         int ticks = 0;
 
                         @Override
-                        protected void execute() {
+                        public void execute() {
                             ticks++;
                             if (ticks == 1) {
                                 player.face(player.tile().x, player.tile().y - 1);
@@ -405,7 +405,7 @@ public class BrimhavenDungeon extends PacketInteraction {
                         int ticks = 0;
 
                         @Override
-                        protected void execute() {
+                        public void execute() {
                             ticks++;
                             if (ticks == 1) {
                                 player.face(player.tile().x, player.tile().y + 1);

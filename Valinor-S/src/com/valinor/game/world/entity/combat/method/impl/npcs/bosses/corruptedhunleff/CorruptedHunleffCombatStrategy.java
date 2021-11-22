@@ -27,7 +27,7 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
         if (stompTask == null) {
             stompTask = new Task("checkHunleffStompTask", 7) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     if (mob.dead() || !mob.isRegistered() || !mob.getAsNpc().canSeeTarget(mob, target)) {
                         stop();
                         return;

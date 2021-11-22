@@ -234,7 +234,7 @@ public class Chain<T> {
         } else {
             task = new Task(name != null ? name : "", cycleDelay, false) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     attemptWork();
                     if (!repeats)
                         stop();

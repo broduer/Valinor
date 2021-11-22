@@ -17,7 +17,7 @@ public class RemoveStockTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         boolean cancelTask = true;
         for (Item item : shop.container.getItems()) {
             if (item != null && removeStock(item)) {

@@ -252,7 +252,7 @@ public abstract class Task {
      * Performs this task's action after the {@link Task#countdown} reaches zero, aka the delay between executions.
      * NOT the same as {@link Task#onTick()} which runs every game cycle regardless of remaining countdown.
      */
-    protected abstract void execute();
+    public abstract void execute();
 
     /**
      * Changes the delay of this task.

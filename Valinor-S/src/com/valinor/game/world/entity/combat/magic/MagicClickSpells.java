@@ -1482,7 +1482,7 @@ public class MagicClickSpells {
 
             TaskManager.submit(new Task("cure_plant_spell_task", 3) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     state.setDiseaseState(DiseaseState.NOT_PRESENT);
                     player.getFarming().updatePatches(player);
                     player.message("The plant is fully cured from the disease.");

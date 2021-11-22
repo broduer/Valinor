@@ -35,7 +35,7 @@ public abstract class DefaultSkillable implements Skillable {
         Task task = new Task("SkillableProcessTask", 1, player, true) {
             int cycle = 0;
             @Override
-            protected void execute() {
+            public void execute() {
                 //Make sure we still have the requirements to keep skilling..
                 if (loopRequirements()) {
                     if (!hasRequirements(player)) {

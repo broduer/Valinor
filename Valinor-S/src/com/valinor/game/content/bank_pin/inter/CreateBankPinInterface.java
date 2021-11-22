@@ -49,7 +49,7 @@ public final class CreateBankPinInterface extends BankPinInterface {
             player.message("Thank you. Now please confirm the PIN you entered.");
             TaskManager.submit(new Task("BankPinConfirmTask", 1) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     player.getMovementQueue().clear();
                     bankPin.setPinInterface(new ConfirmBankPinInterface(player, pinLength, integers));
                     bankPin.getPinInterface().open();

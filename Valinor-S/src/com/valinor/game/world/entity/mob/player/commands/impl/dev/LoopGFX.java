@@ -23,7 +23,7 @@ public class LoopGFX implements Command {
             int gfx = startId;
 
             @Override
-            protected void execute() {
+            public void execute() {
                 player.graphic(gfx, 100, 0);
                 player.forceChat(""+gfx);
                 gfx++;

@@ -334,7 +334,7 @@ public class Vorkath extends CommonCombatMethod {
             int loops = 25;
 
             @Override
-            protected void execute() {
+            public void execute() {
                 if (Vorkath.finished(mob)) {
                     stop();
                     return;

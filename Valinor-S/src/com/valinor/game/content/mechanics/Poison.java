@@ -52,7 +52,7 @@ public class Poison {
         TaskManager.submit(new Task("PoisonTask", 30, false) {//Every 18 seconds
 
             @Override
-            protected void execute() {
+            public void execute() {
                 if(!mob.isRegistered() || mob.dead()) {
                     stop();
                     mob.clearAttrib(AttributeKey.POISON_TASK_RUNNING);

@@ -20,7 +20,7 @@ public class OverloadPotion {
         TaskManager.submit(new Task("OverloadTask", 1, false) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 int ticks = player.getAttribOr(AttributeKey.OVERLOAD_POTION, 0);
 
                 if (!player.isRegistered() || player.dead() || ticks == 0 || WildernessArea.inWilderness(player.tile())) {

@@ -20,7 +20,7 @@ public class DropRateLampTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         int ticksLeft = player.getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0);
 
         if(ticksLeft > 0) {

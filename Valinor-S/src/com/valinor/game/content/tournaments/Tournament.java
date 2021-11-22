@@ -301,7 +301,7 @@ public class Tournament {
         TaskManager.submit(new Task() {
             // does this repeat or is it a 1 time thing? Task one time thing
             @Override
-            protected void execute() {
+            public void execute() {
 
                 if (player.getIndex() < 0) {
                     logger.error("Player index less than 0 for prepareMatch");

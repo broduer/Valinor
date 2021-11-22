@@ -20,7 +20,7 @@ public class AutoSaveTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         if (!player.isRegistered()) {
             stop();
             return;

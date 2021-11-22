@@ -21,7 +21,7 @@ public class CyclopsRoom {
                 int internalTimer = 100;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     //Player is offline
                     if (!player.isRegistered()) {
                         stop();
@@ -51,7 +51,7 @@ public class CyclopsRoom {
                 int internalTimer = 100;
 
                 @Override
-                protected void execute() {
+                public void execute() {
                     //Player is offline
                     if (!player.isRegistered()) {
                         stop();

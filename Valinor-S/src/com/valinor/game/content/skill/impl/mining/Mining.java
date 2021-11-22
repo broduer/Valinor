@@ -165,7 +165,7 @@ public class Mining extends PacketInteraction {
         Rock finalRock = rock;
         player.action.execute(new UnwalkableAction(player, 4) {
             @Override
-            protected void execute() {
+            public void execute() {
                 // check obj
                 if (!ObjectManager.objWithTypeExists(10, obj.tile()) && !ObjectManager.objWithTypeExists(11, obj.tile())) {
                     player.animate(-1);

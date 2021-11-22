@@ -26,7 +26,7 @@ public class AntifirePotion {
         TaskManager.submit(new Task("AntifireTask", 1, false) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 int ticks = player.getAttribOr(AttributeKey.ANTIFIRE_POTION, 0);
 
                 if (!player.isRegistered() || player.dead() || ticks == 0) {

@@ -32,7 +32,7 @@ public class Shanomi extends Dialogue {
     public static void shoutMessage(Npc npc) {
         TaskManager.submit(new Task("shanomi_shout_task", 5) {
             @Override
-            protected void execute() {
+            public void execute() {
                 npc.forceChat(message.get(Utils.random(message.size() - 1)));
             }
         });

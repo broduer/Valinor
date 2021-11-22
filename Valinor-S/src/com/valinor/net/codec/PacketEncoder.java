@@ -301,7 +301,7 @@ public class PacketEncoder extends MessageToByteEncoder<Packet> {
         PACKET_SIZES[189] = 4;
         PACKET_SIZES[190] = -3;
         PACKET_SIZES[191] = 4;
-        PACKET_SIZES[192] = -2;
+        PACKET_SIZES[192] = -3;
         PACKET_SIZES[193] = 6;
         PACKET_SIZES[194] = -3;
         PACKET_SIZES[195] = -3;
@@ -332,7 +332,7 @@ public class PacketEncoder extends MessageToByteEncoder<Packet> {
         PACKET_SIZES[220] = 0;
         PACKET_SIZES[221] = 1;
         PACKET_SIZES[222] = -2;
-        PACKET_SIZES[223] = -3;
+        PACKET_SIZES[223] = -2;
         PACKET_SIZES[224] = -3;
         PACKET_SIZES[225] = -3;
         PACKET_SIZES[226] = -3;

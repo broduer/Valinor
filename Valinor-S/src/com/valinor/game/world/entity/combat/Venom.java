@@ -48,7 +48,7 @@ public class Venom {
         TaskManager.submit(new Task("VenomTask", 34, false) {//Every 20 seconds
 
             @Override
-            protected void execute() {
+            public void execute() {
                 int ticks = mob.getAttribOr(AttributeKey.VENOM_TICKS, 0);
 
                 if(!mob.isRegistered() || mob.dead()) {

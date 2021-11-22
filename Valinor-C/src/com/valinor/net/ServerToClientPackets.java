@@ -221,7 +221,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[189] = 4;
         PACKET_SIZES[190] = -3;
         PACKET_SIZES[191] = 4;
-        PACKET_SIZES[192] = -2;
+        PACKET_SIZES[192] = -3;
         PACKET_SIZES[193] = 6;
         PACKET_SIZES[194] = -3;
         PACKET_SIZES[195] = -3;
@@ -252,7 +252,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[220] = 0;
         PACKET_SIZES[221] = 1;
         PACKET_SIZES[222] = -2;
-        PACKET_SIZES[223] = -3;
+        PACKET_SIZES[223] = -2;
         PACKET_SIZES[224] = -3;
         PACKET_SIZES[225] = -3;
         PACKET_SIZES[226] = -3;
@@ -372,7 +372,6 @@ public final class ServerToClientPackets {
     public static final int SET_DEFENSIVE_AUTOCAST_STATE = 188;
     public static final int UPDATE_TAB = 189;
     public static final int SEND_WEAPON = 191;
-    public static final int SEND_TELEPORT = 192;
     public static final int SEND_SPRITE_CHANGE = 193;
     public static final int SEND_RECEIVED_PRIVATE_MESSAGE = 196;
     public static final int SEND_ANIMATE_INTERFACE = 200;
@@ -391,6 +390,7 @@ public final class ServerToClientPackets {
     public static final int CLOSE_DIALOGUE_INTERFACE = 220;
     public static final int SET_FRIENDSERVER_STATUS = 221;
     public static final int RECEIVE_BROADCAST = 222;
+    public static final int SET_OPTION_MENU = 223;
     public static final int SET_MODEL_INTERFACE_ZOOM = 230;
     public static final int PROGRESS_BAR = 237;
     public static final int CLEAR_CLICKED_TEXT = 238;

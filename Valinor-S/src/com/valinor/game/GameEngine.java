@@ -171,7 +171,7 @@ public final class GameEngine implements Runnable {
 
         TaskManager.submit(new Task("GameEngineGracefulShutdownTask", 1, true) {
             @Override
-            protected void execute() {
+            public void execute() {
 
                 // Keep checking until all players have disconnected, and the logout service completes.
                 if (World.getWorld().getPlayers().size() == 0 && World.getWorld().ls.ONLINE.isEmpty()) {

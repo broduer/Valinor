@@ -10,8 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.*;
-import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_CATEGORY;
-import static com.valinor.game.world.entity.AttributeKey.LAST_DAILY_RESET;
+import static com.valinor.game.world.entity.AttributeKey.*;
 
 /**
  * @author Patrick van Elderen | June, 15, 2021, 16:15
@@ -96,6 +95,7 @@ public class DailyTaskManager {
         player.getPacketSender().sendString(LOCATION_TEXT_ID, task.location);
         player.getPacketSender().sendItemOnInterface(REWARD_CONTAINER, task.rewards);
         player.getPacketSender().sendString(REWARDS_TEXT, "Fill up the bar for rewards!");
+        player.putAttrib(DAILY_TASK_SELECTED, task);
     }
 
     public static void open(Player player, TaskCategory category) {

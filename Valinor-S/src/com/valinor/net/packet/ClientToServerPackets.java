@@ -18,6 +18,7 @@ public class ClientToServerPackets {
     public static final String[] PACKET_NAMES = new String[257];
     public static final int[] PACKET_SIZES = new int[256];
 
+    public static final int OPTION_MENU_OPCODE = 172;
     public static final int MAGIC_ON_OBJECT_OPCODE = 35;
     public static final int WIDGET_SLOT_CHANGE = 177;
     public static final int SPECIAL_ATTACK_OPCODE = 184;
@@ -108,6 +109,7 @@ public class ClientToServerPackets {
             PACKETS[i] = new SilencedPacketListener();
         }
         Arrays.fill(PACKET_NAMES, "unknown");
+        PACKETS[OPTION_MENU_OPCODE] = new OptionMenuPacketListener();
         PACKETS[CONFIRM_OPCODE] = new ConfirmPacketListener();
         PACKETS[SPECIAL_ATTACK_OPCODE] = new SpecialAttackPacketListener();
         PACKETS[BUTTON_CLICK_OPCODE] = new ButtonClickPacketListener();
@@ -281,6 +283,7 @@ public class ClientToServerPackets {
         PACKET_NAMES[141] = "MODIFIABLE_X_OPCODE";
         PACKET_NAMES[142] = "INPUT_FIELD_OPCODE";
         PACKET_NAMES[213] = "CONFIRM_OPCODE";
+        PACKET_NAMES[172] = "OPTION_MENU_OPCODE";
         PACKET_NAMES[160] = "CUSTOM_LAG_REPORT";
         PACKET_NAMES[161] = "DISCONENCTED_BY_PACKET";
 
@@ -456,7 +459,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[169] = -3;
         PACKET_SIZES[170] = -3;
         PACKET_SIZES[171] = -3;
-        PACKET_SIZES[172] = -3;
+        PACKET_SIZES[172] = 6;
         PACKET_SIZES[173] = -3;
         PACKET_SIZES[174] = -3;
         PACKET_SIZES[175] = -3;

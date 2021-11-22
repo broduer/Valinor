@@ -18,8 +18,9 @@ import com.valinor.cache.graphics.fading_screen.FadingScreen;
 import com.valinor.cache.graphics.font.AdvancedFont;
 import com.valinor.cache.graphics.widget.*;
 import com.valinor.cache.graphics.widget.impl.OptionTabWidget;
-import com.valinor.cache.graphics.widget.impl.TeleportWidget;
 import com.valinor.cache.graphics.widget.impl.WeaponInterfacesWidget;
+import com.valinor.cache.graphics.widget.option_menu.OptionMenu;
+import com.valinor.cache.graphics.widget.option_menu.OptionMenuInterface;
 import com.valinor.collection.LinkedList;
 import com.valinor.collection.Node;
 import com.valinor.draw.ProducingGraphicsBuffer;
@@ -79,6 +80,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import static com.valinor.cache.graphics.widget.Widget.OPTION_MENU;
+
 public class Client extends GameApplet {
 
     public static int npcPetId = -1;
@@ -91,8 +94,6 @@ public class Client extends GameApplet {
      * Speed of camera rotation.
      */
     public static String cameraSpeed = "SLOW";
-
-    private final List<ImageDescription> teleportImageDescriptions = new ArrayList<>();
 
     /**
      * Have a specific interface button to have the clicked sprite.
@@ -121,70 +122,6 @@ public class Client extends GameApplet {
             interfaceClickedList.add(parentInterfaceId + " " + interfaceId);
         }
     }
-
-    private String getImageDescription(int index) {
-        ImageDescription desc = null;
-        if (teleportCategoryIndex == 1 || teleportCategoryIndex == 2) {
-            if (this.teleportSprites == null) {
-                return null;
-            }
-
-            if (index >= this.teleportSprites.length) {
-                return null;
-            }
-
-            for (int i = 0; i < teleportImageDescriptions.size(); i++) {
-                desc = teleportImageDescriptions.get(i);
-
-                if (desc.getSpriteID() == teleportSprites[index]) {
-                    //System.out.println("Found match: " + desc.getDescription());
-                    return desc.getDescription();
-                }
-            }
-
-        } else {
-            for (int i = 0; i < teleportImageDescriptions.size(); i++) {
-                desc = teleportImageDescriptions.get(i);
-                if (desc.getCategoryIndex() == teleportCategoryIndex) {
-                    if (desc.getImageIndex() == index) {
-                        return desc.getDescription();
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    public int[] teleportSprites = null;
-    public String[] teleportNames = null;
-
-    public int teleportCategoryIndex = 1;
-
-    private void loadImageDescriptions() {
-        Path path = Paths.get(SignLink.findCacheDir() + "imagedescriptions.txt");
-        //Given an example of 999>3>2>And Even More Text, we know a few things.
-        //We know that 999 is the sprite id, and it is the 2nd teleport of the 3rd category.
-        if (!path.toFile().exists()) {
-            return;
-        }
-        try (Stream<String> lines = Files.lines(path)) {
-            lines.forEach(line -> {
-                //We could have any delimiter here, we could have > or
-                //even >>> if we wanted our descriptions to have > in them.
-                String[] split = line.split(">");
-                int spriteID = Integer.parseInt(split[0]);
-                int categoryIndex = Integer.parseInt(split[1]);
-                int imageIndex = Integer.parseInt(split[2]);
-                String description = split[3];
-                teleportImageDescriptions.add(new ImageDescription(spriteID, description, categoryIndex, imageIndex));
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
 
     public static String osName = "";
     public String tooltip;
@@ -2024,29 +1961,6 @@ public class Client extends GameApplet {
                 if (child.hoverType >= 0) {
                     frameFocusedInterface = child.hoverType;
                     if (child.hoverType == 17) {
-                        if (withinRange(child.id, TeleportWidget.STARTING_IMAGE_INDEX, TeleportWidget.ENDING_IMAGE_INDEX)) {
-                            String description = getImageDescription(child.id - TeleportWidget.STARTING_IMAGE_INDEX);
-                            int xPos = 0;
-                            int yPos = 0;
-                            if (description != null) {
-                                if (screen == ScreenMode.FIXED) {
-                                    xPos = 180;
-                                    yPos = 295;
-                                } else { // :[)
-                                    // System.err.println("Extended state: " + this.gameFrame.getExtendedState());
-                                    if (this.gameFrame.getExtendedState() == JFrame.MAXIMIZED_BOTH) {
-                                        //System.out.println("Frame is Maximized");
-                                        xPos = 790;
-                                        yPos = 575 + 15;
-                                    } else {
-                                        //System.out.println("Frame is not Maximized");
-                                        xPos = 180 + 28; // i love magic numbers (no)
-                                        yPos = 295 + 50; // yes
-                                    }
-                                }
-                                adv_font_regular.draw(description, xPos, yPos, 0xffffee, child.textShadow ? 0 : -1);
-                            }
-                        }
                     }
                 } else {
                     frameFocusedInterface = child.id;
@@ -2112,15 +2026,12 @@ public class Client extends GameApplet {
 
                     if ((myPrivilege >= 2 && myPrivilege <= 4 && ClientConstants.DEBUG_MODE)) {
                         menuActionText[menuActionRow] = s + " <col=65280>" + child.spellName + " " + child.id;
-                        menuActionTypes[menuActionRow] = USE_SPELL;
-                        secondMenuAction[menuActionRow] = child.id;
-                        menuActionRow++;
                     } else {
                         menuActionText[menuActionRow] = s + " <col=65280>" + child.spellName;
-                        menuActionTypes[menuActionRow] = USE_SPELL;
-                        secondMenuAction[menuActionRow] = child.id;
-                        menuActionRow++;
                     }
+                    menuActionTypes[menuActionRow] = USE_SPELL;
+                    secondMenuAction[menuActionRow] = child.id;
+                    menuActionRow++;
                 }
                 if (child.optionType == Widget.OPTION_CLOSE && cursor_x >= childX && cursor_y >= childY
                     && cursor_x < childX + child.width && cursor_y < childY + child.height) {
@@ -2142,10 +2053,7 @@ public class Client extends GameApplet {
                 }
                 if (child.optionType == Widget.OPTION_RESET_SETTING && cursor_x >= childX && cursor_y >= childY
                     && cursor_x < childX + child.width && cursor_y < childY + child.height) {
-                    boolean flag = false;
-                    if (child.tooltip == null || child.tooltip.length() == 0) {
-                        flag = true;
-                    }
+                    boolean flag = child.tooltip == null || child.tooltip.length() == 0;
                     if (!flag) {
                         if (child.id == 433) {
                             if (widget.id == 24899) {
@@ -2191,6 +2099,109 @@ public class Client extends GameApplet {
                     menuActionRow++;
                 }
 
+                if (child.optionType == OPTION_MENU) {
+                    if (child instanceof OptionMenuInterface) {
+                        OptionMenuInterface optionInter = (OptionMenuInterface) child;
+
+                        if (cursor_x >= childX && cursor_y >= childY + scrollPosition && cursor_x < childX + child.width && cursor_y < childY + scrollPosition + child.height) {
+
+                            if (!optionInter.getOptionMenus().isEmpty()) {
+                                int drawX = childX;
+                                int drawY = childY;
+                                final int boxWidth = optionInter.width - 4;
+                                final int boxHeight = 40;
+
+                                for (OptionMenu menu : optionInter.getOptionMenus()) {
+                                    if (menu == null) {
+                                        continue;
+                                    }
+                                    final boolean isHighlighted = super.cursor_x >= drawX && super.cursor_x <= drawX + boxWidth && super.cursor_y >= drawY && super.cursor_y <= drawY + boxHeight;
+                                    menu.setHighlighted(isHighlighted);
+                                    if (isHighlighted) {
+
+                                        // Teleport menu only
+                                        if (optionInter.id == 72156) {
+
+                                            final int addFavoriteXPosition = drawX + boxWidth - optionInter.getSprites()[0].width - 4;
+                                            final int addFavoriteYPosition = drawY + 3;
+                                            final boolean withinFavoritePosition = super.cursor_x >= addFavoriteXPosition && super.cursor_x <= addFavoriteXPosition + optionInter.getSprites()[0].width && super.cursor_y >= addFavoriteYPosition && super.cursor_y <= addFavoriteYPosition + optionInter.getSprites()[0].height;
+
+                                            if (withinFavoritePosition) {
+                                                menuActionText[menuActionRow] = "Add Favorite: " + menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 1;
+                                                menuActionRow++;
+                                            } else {
+                                                menuActionText[menuActionRow] = menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 0;
+                                                menuActionRow++;
+                                            }
+
+                                        } else if (optionInter.id == 72206) {
+                                            final int addFavoriteXPosition = drawX + boxWidth - optionInter.getSprites()[0].width - 4;
+                                            final int addFavoriteYPosition = drawY + 3;
+
+                                            final int moveUpXPosition = drawX + boxWidth - optionInter.getSprites()[1].width - 6;
+                                            final int moveUpYPosition = drawY + 17;
+
+                                            final int moveDownXPosition = drawX + boxWidth - optionInter.getSprites()[2].width - 6;
+                                            final int moveDownYPosition = drawY + 28;
+
+                                            final boolean withinFavoritePosition = super.cursor_x >= addFavoriteXPosition && super.cursor_x <= addFavoriteXPosition + optionInter.getSprites()[0].width && super.cursor_y >= addFavoriteYPosition && super.cursor_y <= addFavoriteYPosition + optionInter.getSprites()[0].height;
+                                            final boolean withinMoveUpPosition = super.cursor_x >= moveUpXPosition && super.cursor_x <= moveUpXPosition + optionInter.getSprites()[1].width && super.cursor_y >= moveUpYPosition && super.cursor_y <= moveUpYPosition + optionInter.getSprites()[1].height;
+                                            final boolean withinMoveDownPosition = super.cursor_x >= moveDownXPosition && super.cursor_x <= moveDownXPosition + optionInter.getSprites()[2].width && super.cursor_y >= moveDownYPosition && super.cursor_y <= moveDownYPosition + optionInter.getSprites()[2].height;
+
+                                            if (withinFavoritePosition) {
+                                                menuActionText[menuActionRow] = "Remove Favorite: " + menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 1;
+                                                menuActionRow++;
+                                            } else if (withinMoveUpPosition) {
+                                                menuActionText[menuActionRow] = "Move Up: " + menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 2;
+                                                menuActionRow++;
+                                            } else if (withinMoveDownPosition) {
+                                                menuActionText[menuActionRow] = "Move Down: " + menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 3;
+                                                menuActionRow++;
+                                            } else {
+                                                menuActionText[menuActionRow] = menu.getOptionName();
+                                                menuActionTypes[menuActionRow] = 72000;
+                                                secondMenuAction[menuActionRow] = child.id;
+                                                firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                                selectedMenuActions[menuActionRow] = 0;
+                                                menuActionRow++;
+                                            }
+                                        } else {
+                                            menuActionText[menuActionRow] = menu.getOptionName();
+                                            menuActionTypes[menuActionRow] = 72000;
+                                            secondMenuAction[menuActionRow] = child.id;
+                                            firstMenuAction[menuActionRow] = menu.getIdentifier();
+                                            selectedMenuActions[menuActionRow] = 0;
+                                            menuActionRow++;
+                                        }
+                                        break;
+                                    }
+                                    drawY += 42;
+                                }
+                            }
+                        }
+                    }
+                }
+                
                 if (child.optionType == Widget.OPTION_DROPDOWN) {
 
                     boolean flag = false;
@@ -2260,11 +2271,6 @@ public class Client extends GameApplet {
 
                     if (!child.invisible) {
                         if (child.actions != null && !child.drawingDisabled) {
-
-                            if (withinRange(child.id, TeleportWidget.STARTING_IMAGE_INDEX, TeleportWidget.ENDING_IMAGE_INDEX)) {
-                                menuActionRow = 1;
-                            }
-
                             if (!(child.contentType == 206 && interfaceIsSelected(child))) {
                                 if ((child.type == 4 && child.defaultText.length() > 0) || child.type == 5 || !child.invisible) {
 
@@ -3395,13 +3401,11 @@ public class Client extends GameApplet {
                 if (tabInterfaceIDs[fixed_tab_id[tab]] != -1) {
                     if (fixed_side_icon[tab] != -1) {
                         SimpleImage sprite = sideIcons[fixed_side_icon[tab]];
-                        // Replace music tab icon with pvp icon
-                        //if (ClientConstants.PVP_MODE) {
+                        // Replace music tab icon
                         if (tab == 13) {
-                            spriteCache.get(336).drawAdvancedSprite(fixed_side_icon_x[tab] + x, fixed_side_icon_y[tab] + y);
+                            spriteCache.get(1912).drawAdvancedSprite(fixed_side_icon_x[tab] + x, fixed_side_icon_y[tab] + y);
                             continue;
                         }
-                        //}
                         if (tab == 2) {
                             if (questTabId == 0) {
                                 sprite.drawSprite(fixed_side_icon_x[tab] + x + 1, fixed_side_icon_y[tab] + y + 1);
@@ -3439,7 +3443,7 @@ public class Client extends GameApplet {
                     if (resizable_side_icon[tab] != -1) {
                         SimpleImage sprite = sideIcons[resizable_side_icon[tab]];
                         if (tab == 13) {
-                            spriteCache.get(336).drawAdvancedSprite(window_width - resizable_side_icon_x[tab], window_height - resizable_side_icon_y[tab]);
+                            spriteCache.get(1912).drawAdvancedSprite(window_width - resizable_side_icon_x[tab], window_height - resizable_side_icon_y[tab]);
                             continue;
                         }
                         if (tab == 2) {
@@ -3480,7 +3484,7 @@ public class Client extends GameApplet {
                     if (fullscreen_resizable_side_icon[tab] != -1) {
                         SimpleImage sprite = sideIcons[fullscreen_resizable_side_icon[tab]];
                         if (tab == 13) {
-                            spriteCache.get(336).drawAdvancedSprite(
+                            spriteCache.get(1912).drawAdvancedSprite(
                                 window_width - 461 + fullscreen_resizable_side_icon_x[tab],
                                 window_height - fullscreen_resizable_side_icon_y[tab]);
                             continue;
@@ -5558,6 +5562,11 @@ public class Client extends GameApplet {
         long local_player_index = selectedMenuActions[id];
         //System.out.println("menu action " + first_menu_action + ", " + second_menu_action + ", " + action +", " + local_player_index);
 
+        if (action == 72000) {
+            // Option menu actionId.
+            packetSender.writeOptionMenuPacket(second_menu_action, first_menu_action, (int) local_player_index);
+        }
+
         // 317 BELOW
         if (action >= 2000) {
             action -= 2000;
@@ -5585,44 +5594,6 @@ public class Client extends GameApplet {
         //System.err.println(Widget.cache[y]);
 
         //System.out.println("Action: " + y);
-
-        if (withinRange(second_menu_action, 29055, 29061)) {
-            Widget.cache[29078].defaultText = "World Teleports - " + Widget.cache[second_menu_action + TEXT_CHILD_OFFSET].defaultText;
-        }
-
-        if (second_menu_action == 29055) {
-            teleportCategoryIndex = 1;
-        }
-
-        if (second_menu_action == 29056) {
-            teleportCategoryIndex = 2;
-        }
-
-        if (second_menu_action == 29057 || second_menu_action == 30106 || second_menu_action == 13061 || second_menu_action == 1174) {//PK tps
-            teleportCategoryIndex = 3;
-            TeleportWidget.handleTeleportTab(1);
-        }
-
-        if (second_menu_action == 29058 || second_menu_action == 30075 || second_menu_action == 13045 || second_menu_action == 1167) {//Pvm tps
-            teleportCategoryIndex = 4;
-            TeleportWidget.handleTeleportTab(2);
-        }
-
-        if (second_menu_action == 29059 || second_menu_action == 30083 || second_menu_action == 13053 || second_menu_action == 1170) {//Boss tps
-            teleportCategoryIndex = 5;
-            TeleportWidget.handleTeleportTab(3);
-        }
-
-        if (second_menu_action == 29060) {
-            teleportCategoryIndex = 6;
-            TeleportWidget.handleTeleportTab(4);
-        }
-
-        if (second_menu_action == 29061) {
-            teleportCategoryIndex = 7;
-            TeleportWidget.handleTeleportTab(5);
-        }
-
         if (action == 1895) {
             //System.out.println("lol hi");
             resetSplitPrivateChatMessages();
@@ -10752,7 +10723,6 @@ public class Client extends GameApplet {
         OptionTabWidget.updateSettings();
         Keybinding.updateInterface();
         Save.load();
-        loadImageDescriptions();
 
         try {
             macAddress = new HardwareAddress(InetAddress.getLocalHost()).toString();
@@ -12729,7 +12699,39 @@ public class Client extends GameApplet {
                             Rasterizer2D.drawTransparentVerticalLine(child_x_in_bounds, child_y_in_bounds, localHeight, child.textColour, child.opacity2);
                         }
                     }
+                } else if (child.type == OPTION_MENU && child instanceof OptionMenuInterface) {
+                final OptionMenuInterface inter = (OptionMenuInterface) child;
+                if (!inter.getOptionMenus().isEmpty()) {
+                    int drawX = child_x_in_bounds + 2;
+                    int drawY = child_y_in_bounds + 2;
+                    final int boxWidth = inter.width - 4;
+                    final int boxHeight = 40;
+                    for (OptionMenu menu : inter.getOptionMenus()) {
+                        if (menu == null) {
+                            continue;
+                        }
+                        Rasterizer2D.drawPixels(boxHeight, drawY, drawX, menu.isHighlighted() ? 0x695B36 : 0x3B3629, boxWidth);
+                        Rasterizer2D.fillPixels(drawX, boxWidth, boxHeight, 0, drawY);
+
+                        adv_font_regular.draw(menu.getOptionName(), drawX + 5, drawY + 17, 0xFF981F, -1);
+                        adv_font_small.draw(menu.getOptionTooltip(), drawX + 5, drawY + 33, 0xFFA945, -1);
+
+                        // Teleport menu only
+                        if (inter.id == 72156) {
+                            inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
+                        } else if (inter.id == 72206) {
+                            inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
+                            inter.getSprites()[1].drawSprite(drawX + boxWidth - inter.getSprites()[1].width - 6, drawY + 17);
+                            inter.getSprites()[2].drawSprite(drawX + boxWidth - inter.getSprites()[2].width - 6, drawY + 28);
+                        }
+                        menu.setHighlighted(false);
+                        drawY += 42;
+                    }
                 }
+                if (inter.defaultText.length() > 0) {
+                    adv_font_regular.draw_centered(inter.defaultText, 5 + child_x_in_bounds + inter.width / 2, child_y_in_bounds + inter.height / 2, 0xFF981F, -1);
+                }
+            }
         }
         Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
     }
@@ -15960,26 +15962,6 @@ public class Client extends GameApplet {
                 return true;
             }
 
-            if (opcode == ServerToClientPackets.SEND_TELEPORT) {
-                int length = incoming.readUShort(); // reads an unsigned short as the length of teleports
-                //System.out.println("Read length: " + length);
-                boolean recent = incoming.readUByte() == 1; // reads a signed byte to determine whether to update recent or favourites tab
-                //System.out.println("Update recent tab: " + recent);
-                //If it's not recent then it's favorite.
-                teleportCategoryIndex = recent ? 2 : 1;
-                final int[] sprites = new int[length];
-                String[] names = new String[length];
-                for (int i = 0; i < length; i++) {
-                    sprites[i] = incoming.readUShort(); // reads unsigned short(no point really to make it read a signed short, even tho sprite ids will never exceed 32767, they will also never be negative.
-                    names[i] = incoming.readString();
-                }
-                this.teleportSprites = sprites;
-                this.teleportNames = names;
-                TeleportWidget.updateTeleportsTab(recent);
-                opcode = -1;
-                return true;
-            }
-
             if (opcode == ServerToClientPackets.SEND_SPRITE_CHANGE) {
                 int interfaceID = incoming.readInt();
                 int spriteID = incoming.readShort();
@@ -17376,6 +17358,36 @@ public class Client extends GameApplet {
                 Widget.cache[id].modelRotation1 = pitch;
                 Widget.cache[id].modelRotation2 = roll;
                 Widget.cache[id].modelZoom = scale;
+                opcode = -1;
+                return true;
+            }
+
+            /**
+             * Packet 223:
+             *
+             * Used to set OptionMenuInterfaces.
+             */
+            if (opcode == ServerToClientPackets.SET_OPTION_MENU) {
+                final int childId = incoming.readInt();
+                final int optionAmount = incoming.readUnsignedByte();
+                final Collection<OptionMenu> optionMenus = new ArrayList<OptionMenu>();
+                if (optionAmount > 0) {
+                    for (int index = 0; index < optionAmount; index++) {
+                        final int identifier = incoming.readUnsignedByte();
+                        final String optionName = incoming.readString();
+                        final String optionTooltip = incoming.readString();
+                        optionMenus.add(new OptionMenu(identifier, optionName, optionTooltip));
+                    }
+                }
+                final Widget optionInterface = Widget.cache[childId];
+                if (optionInterface instanceof OptionMenuInterface) {
+                    final OptionMenuInterface inter_1 = (OptionMenuInterface) optionInterface;
+                    if (optionAmount > 0) {
+                        inter_1.setOptionMenus(optionMenus);
+                    } else {
+                        inter_1.getOptionMenus().clear();
+                    }
+                }
                 opcode = -1;
                 return true;
             }

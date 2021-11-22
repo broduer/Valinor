@@ -15,7 +15,7 @@ public class WildernessBossEventTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         WildernessBossEvent wildernessBossEvent = WildernessBossEvent.getINSTANCE();
         wildernessBossEvent.startBossEvent();
     }

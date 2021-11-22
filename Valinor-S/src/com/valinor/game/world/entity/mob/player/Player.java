@@ -35,6 +35,7 @@ import com.valinor.game.content.members.MemberFeatures;
 import com.valinor.game.content.minigames.Minigame;
 import com.valinor.game.content.minigames.MinigameManager;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
+import com.valinor.game.content.option_menu.TeleportMenuHandler;
 import com.valinor.game.content.packet_actions.GlobalStrings;
 import com.valinor.game.content.presets.PresetManager;
 import com.valinor.game.content.presets.Presetable;
@@ -53,7 +54,6 @@ import com.valinor.game.content.sound.CombatSounds;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.TaskMasterManager;
 import com.valinor.game.content.teleport.Teleports;
-import com.valinor.game.content.teleport.world_teleport_manager.TeleportInterface;
 import com.valinor.game.content.title.AvailableTitle;
 import com.valinor.game.content.title.TitleCategory;
 import com.valinor.game.content.title.TitleColour;
@@ -158,6 +158,23 @@ public class Player extends Mob {
 
     static {
         LOGOUT = Level.getLevel("LOGOUT");
+    }
+
+    private final TeleportMenuHandler teleportMenuHandler = new TeleportMenuHandler(this);
+
+    public TeleportMenuHandler getTeleportMenuHandler() {
+        return teleportMenuHandler;
+    }
+
+
+    private ArrayList<Integer> favoriteTeleports = new ArrayList<Integer>();
+
+    public ArrayList<Integer> getFavoriteTeleports() {
+        return favoriteTeleports;
+    }
+
+    public void setFavoriteTeleports(ArrayList<Integer> favoriteTeleports) {
+        this.favoriteTeleports = favoriteTeleports;
     }
 
     public Optional<IronmanGroup> getIronmanTeam() {
@@ -500,43 +517,6 @@ public class Player extends Mob {
 
     public void ironMode(IronMode mode) {
         ironMode = mode;
-    }
-
-    private final TeleportInterface teleportInterface = new TeleportInterface(this);
-
-    public TeleportInterface getTeleportInterface() {
-        return teleportInterface;
-    }
-
-    private List<TeleportInterface.TeleportData> recentTeleports = new ArrayList<>();
-
-    public List<TeleportInterface.TeleportData> getRecentTeleports() {
-        return recentTeleports;
-    }
-
-    public void setRecentTeleports(List<TeleportInterface.TeleportData> recentTeleports) {
-        this.recentTeleports = recentTeleports;
-    }
-
-    private List<TeleportInterface.TeleportData> favorites = new ArrayList<>();
-
-    public List<TeleportInterface.TeleportData> getFavorites() {
-        return favorites;
-    }
-
-    public void setFavorites(List<TeleportInterface.TeleportData> favorites) {
-        this.favorites = favorites;
-    }
-
-
-    private int currentTabIndex;
-
-    public int getCurrentTabIndex() {
-        return currentTabIndex;
-    }
-
-    public void setCurrentTabIndex(int currentTabIndex) {
-        this.currentTabIndex = currentTabIndex;
     }
 
     private final GamblingSession gamblingSession = new GamblingSession(this);
@@ -1428,6 +1408,9 @@ public class Player extends Mob {
             inventory.refresh();
             equipment.refresh();
             WeaponInterfaces.updateWeaponInterface(this);
+
+            teleportMenuHandler.updateFavorites();
+            teleportMenuHandler.load();
 
             // Force fix any remaining bugged accounts
             if (this.<Integer>getAttribOr(MULTIWAY_AREA, -1) == 1 && !MultiwayCombat.includes(this.tile())) {

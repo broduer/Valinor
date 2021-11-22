@@ -74,7 +74,7 @@ public class RuneEssenceMining extends PacketInteraction {
         player.action.execute(new UnwalkableAction(player, 1) {
             int ticks = 1; // ticks at start
             @Override
-            protected void execute() {
+            public void execute() {
                 ticks--;
 
                 if (ticks == 0) {

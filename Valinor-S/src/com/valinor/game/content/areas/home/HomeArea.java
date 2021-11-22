@@ -44,10 +44,7 @@ public class HomeArea extends PacketInteraction {
                 return true;
             }
             if(object.getId() == TELEPORT_PLATFORM_36062) {
-                player.getPacketSender().sendString(29078, "World Teleports - Recent");
-                player.setCurrentTabIndex(2);
-                player.getTeleportInterface().displayRecent();
-                player.getInterfaceManager().open(29050);
+
                 return true;
             }
             if (object.getId() == ALTAR) {

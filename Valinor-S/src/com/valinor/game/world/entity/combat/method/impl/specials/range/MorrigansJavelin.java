@@ -42,7 +42,7 @@ public class MorrigansJavelin extends CommonCombatMethod {
                 final int damage = hit.getDamage();
                 int damageDealt = 0;
                 @Override
-                protected void execute() {
+                public void execute() {
                     if(playerTarget.dead() || !playerTarget.isRegistered()) {
                         this.stop();
                     }

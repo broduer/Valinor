@@ -94,7 +94,7 @@ public class ResourceArena extends PacketInteraction {
 
                         int internalTimer = 1;
                         @Override
-                        protected void execute() {
+                        public void execute() {
                             player.animate(pick.get().anim);
 
                             if (internalTimer-- == 0) {

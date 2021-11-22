@@ -60,7 +60,7 @@ public class PestleAndMortar {
                         private int iterations = 0;
 
                         @Override
-                        protected void execute() {
+                        public void execute() {
                             //If the items required aren't in the players inventory, break the while..
                             if (!player.inventory().contains(c.before) || !player.inventory().contains(PESTLE_AND_MORTAR)) {
                                 stop();

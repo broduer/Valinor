@@ -197,7 +197,7 @@ public class ObjectManager {
         TaskManager.submit(new Task("open_door_task", 2) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 //System.out.println("Opening door...");
                 addObj(opendoor);
                 stop();
@@ -207,7 +207,7 @@ public class ObjectManager {
         TaskManager.submit(new Task("close_door_task", 3) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 //System.out.println("closing door...");
                 addObj(closedoor);
                 stop();

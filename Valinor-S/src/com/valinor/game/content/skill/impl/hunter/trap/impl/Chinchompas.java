@@ -119,7 +119,7 @@ public final class Chinchompas extends Trap {
 
         TaskManager.submit(new Task("catch_box_trap_task", 1, true) {
             @Override
-            protected void execute() {
+            public void execute() {
                 npc.smartPathTo(new Tile(getObject().getX(), getObject().getY()));
                 //npc.forceChat("going to trap");
                 if (isAbandoned()) {

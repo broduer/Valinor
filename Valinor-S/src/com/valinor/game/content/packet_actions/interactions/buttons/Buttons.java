@@ -106,65 +106,13 @@ public class Buttons {
      */
     public static void handleButton(Player player, int button) {
         switch (button) {
-
-            case 36668:
-                Transmogrify.hardReset(player);
-                break;
-            case 29095:
-                player.getTeleportInterface().teleport(0);
+            // Teleports tab favorite button
+            case 72154:
+                player.getInterfaceManager().setSidebar(13, 72200);
                 break;
 
-            case 29096:
-                player.getTeleportInterface().teleport(1);
-                break;
-
-            case 29097:
-                player.getTeleportInterface().teleport(2);
-                break;
-
-            case 29098:
-                player.getTeleportInterface().teleport(3);
-                break;
-
-            case 30075://PVM
-            case 13045:
-            case 1167:
-                player.setCurrentTabIndex(4);
-                player.getInterfaceManager().open(29050);
-                break;
-
-            case 30083://Bosses
-            case 13053:
-            case 1170:
-                player.setCurrentTabIndex(5);
-                player.getInterfaceManager().open(29050);
-                break;
-
-            case 30106://PK
-            case 13061:
-            case 1174:
-                player.setCurrentTabIndex(3);
-                player.getInterfaceManager().open(29050);
-                break;
-
-            /*
-             * Tabs [Make constants later]
-             */
-            case 29055:
-            case 29056:
-            case 29057:
-            case 29058:
-            case 29059:
-            case 29060:
-            case 29061:
-                player.setCurrentTabIndex(button - 29055 + 1);
-                //player.getPacketSender().sendMessage("Current tab index: " + player.getCurrentTabIndex());
-
-                if (button == 29055) {
-                    player.getTeleportInterface().displayFavorites();
-                } else if (button == 29056) {
-                    player.getTeleportInterface().displayRecent();
-                }
+            case 72203:
+                player.getInterfaceManager().setSidebar(13, 72150);
                 break;
 
             case 15151:

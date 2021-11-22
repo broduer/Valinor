@@ -28,7 +28,7 @@ public final class AddStockTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         boolean cancelTask = true;
         for (Item item : shop.container.getItems()) {
             if (item != null && restock(item)) {

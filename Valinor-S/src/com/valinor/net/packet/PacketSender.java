@@ -3,6 +3,7 @@ package com.valinor.net.packet;
 import com.valinor.GameServer;
 import com.valinor.game.GameConstants;
 import com.valinor.game.content.EffectTimer;
+import com.valinor.game.content.option_menu.ClientOptionMenu;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Entity;
 import com.valinor.game.world.entity.masks.animations.Animation;
@@ -99,20 +100,6 @@ public final class PacketSender {
     public PacketSender clearClickedText() {
         PacketBuilder out = new PacketBuilder(238);
         player.getSession().write(out);
-        return this;
-    }
-
-    public PacketSender sendTeleportData(int length, boolean recent, int[] sprites, String[] names) {
-
-        PacketBuilder out = new PacketBuilder(192, PacketType.VARIABLE_SHORT);
-        out.putShort(length);
-        out.put(recent ? 1 : 0);
-        for (int i = 0; i < length; i++) {
-            out.putShort(sprites[i]);
-            out.putString(names[i]);
-        }
-        player.getSession().write(out);
-
         return this;
     }
 
@@ -536,13 +523,10 @@ public final class PacketSender {
     /**
      * read the method name
      */
-
     public PacketSender sendInterfaceSpriteChange(int interfaceID, int spriteID) {
-
         PacketBuilder out = new PacketBuilder(193);
         out.putInt(interfaceID);
         out.putShort(spriteID);
-
         player.getSession().write(out);
         return this;
     }
@@ -1132,6 +1116,37 @@ public final class PacketSender {
         out.putShort(childId);
         out.putShort(scrollPosition);
         out.putShort(scrollMax);
+        player.getSession().write(out);
+        return this;
+    }
+
+    /**
+     * Sends a new Option menu packet.
+     *
+     * @param childId
+     *            The childId of the option menu interface.
+     * @param optionMenus
+     *            A {@link Collection} of {@link ClientOptionMenu}s containing
+     *            the updates.
+     */
+    public PacketSender sendOptionMenuInterface(final int childId, final Collection<ClientOptionMenu> optionMenus) {
+        PacketBuilder out = new PacketBuilder(223, PacketType.VARIABLE_SHORT);
+        System.out.println(childId);
+        System.out.println(optionMenus);
+        out.putInt(childId);
+        if (optionMenus.isEmpty()) {
+            out.put(0);
+        } else {
+            out.put(optionMenus.size());
+            for (ClientOptionMenu menu : optionMenus) {
+                if (menu == null) {
+                    continue;
+                }
+                out.put(menu.getIdentifier());
+                out.putString(menu.getOptionName());
+                out.putString(menu.getOptionTooltip());
+            }
+        }
         player.getSession().write(out);
         return this;
     }

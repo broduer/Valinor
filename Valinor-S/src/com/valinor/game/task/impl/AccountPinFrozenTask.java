@@ -22,7 +22,7 @@ public class AccountPinFrozenTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         int ticksLeft = player.getAttribOr(ACCOUNT_PIN_FREEZE_TICKS, 0);
 
         if(ticksLeft > 0) {

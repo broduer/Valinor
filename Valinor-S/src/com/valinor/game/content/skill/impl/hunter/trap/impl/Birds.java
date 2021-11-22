@@ -113,7 +113,7 @@ public final class Birds extends Trap {
         TaskManager.submit(new Task("snare_task", 1, true) {
 
             @Override
-            protected void execute() {
+            public void execute() {
                 //System.out.println("Enter task...");
                 npc.smartPathTo(new Tile(getObject().getX(), getObject().getY()));
 

@@ -54,7 +54,7 @@ public class PickupItemPacketListener implements PacketListener {
     public static void respawn(Item item, Tile position, int ticks) {
         TaskManager.submit(new Task("PickupItemPacketListener_respawn_task", ticks) {
             @Override
-            protected void execute() {
+            public void execute() {
                 GroundItem next = new GroundItem(item, position.copy(), null);
                 GroundItemHandler.createGroundItem(next);
                 stop();

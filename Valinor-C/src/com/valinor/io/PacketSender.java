@@ -17,6 +17,13 @@ public class PacketSender {
         buffer.writeOpcode(0);
     }
 
+    public void writeOptionMenuPacket(final int childId, final int identifier, final int optionType) {
+        buffer.writeOpcode(172);
+        buffer.writeInt(childId);
+        buffer.writeByte(identifier);
+        buffer.writeByte(optionType);
+    }
+
     public void sendTestPacket(long test) {
         buffer.writeOpcode(255);
         buffer.writeLong(test);

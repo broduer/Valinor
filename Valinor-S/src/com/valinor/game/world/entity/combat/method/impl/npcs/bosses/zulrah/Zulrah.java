@@ -36,7 +36,7 @@ public class Zulrah {
     public static void runFn(Object mob, int startAfterTicks, Runnable r) {
         TaskManager.submit(new Task("zulrahCbTask", startAfterTicks, false) {
             @Override
-            protected void execute() {
+            public void execute() {
                 if (instanceFinished(mob)) {
                     stop();
                     return;
@@ -64,7 +64,7 @@ public class Zulrah {
     public static void startZulrahBattle(Npc npc, Mob target) {
         TaskManager.submit(new Task() {
             @Override
-            protected void execute() {
+            public void execute() {
                 if (instanceFinished(npc)) {
                     stop();
                     return;
@@ -83,7 +83,7 @@ public class Zulrah {
                             ZulrahPattern rot = ZulrahPattern.PATTERN_1; // randomize when you add new ones
                             int cooldown = 1;
                             @Override
-                            protected void execute() {
+                            public void execute() {
                                 if (instanceFinished(npc)) {
                                     stop();
                                     return;
@@ -542,7 +542,7 @@ public class Zulrah {
                 TaskManager.submit(new Task() {
                     int internalCounter = 30;
                     @Override
-                    protected void execute() {
+                    public void execute() {
                         if (instanceFinished(npc)) {
                             ObjectManager.removeObj(obj);
                             stop();
@@ -595,7 +595,7 @@ public class Zulrah {
                     });
                     TaskManager.submit(new Task() { // despawn when no longer valid
                         @Override
-                        protected void execute() {
+                        public void execute() {
                             if (instanceFinished(npc) || snakeling.dead() || !snakeling.isRegistered()) {
                                 World.getWorld().unregisterNpc(snakeling);
                                 stop();

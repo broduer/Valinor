@@ -30,7 +30,7 @@ public class ScorpiaGuardian {
         TaskManager.submit(new Task("ScorpiaGuardianTask", 1) {
             int no_heal_ticks = 0;
             @Override
-            protected void execute() {
+            public void execute() {
                 if(minion.dead() || minion.finished() || scorpia.dead() || scorpia.finished()) {
                     stop();
                     return;

@@ -142,7 +142,7 @@ public class DemonicGorilla extends Npc {
 
             TaskManager.submit(new Task("boulderTossTask",8) {
                 @Override
-                protected void execute() {
+                public void execute() {
                     if (target.tile().inSqRadius(boulderTile, 1))
                         target.hit(mob, (int) Math.ceil(target.maxHp() * 0.33));
                     World.getWorld().tileGraphic(305, boulderTile, 5, 0);

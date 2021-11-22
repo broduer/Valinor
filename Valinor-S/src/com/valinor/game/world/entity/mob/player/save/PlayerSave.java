@@ -11,7 +11,6 @@ import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
 import com.valinor.game.content.presets.Presetable;
 import com.valinor.game.content.tasks.impl.Tasks;
-import com.valinor.game.content.teleport.world_teleport_manager.TeleportInterface;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.skull.SkullType;
@@ -417,14 +416,11 @@ public class PlayerSave {
                 player.putAttrib(HYDRA, details.hydraKills);
                 player.putAttrib(BASILISK_KNIGHT, details.basiliskKnightKills);
                 player.putAttrib(MEN_IN_BLACK_KILLED, details.menInBlackKills);
+                if(details.favoriteTeleports != null) {
+                    player.setFavoriteTeleports(details.favoriteTeleports);
+                }
                 if (details.bossTimers != null) {
                     player.getBossTimers().setTimes(details.bossTimers);
-                }
-                if (details.recentTeleports != null) {
-                    player.setRecentTeleports(details.recentTeleports);
-                }
-                if (details.favoriteTeleports != null) {
-                    player.setFavorites(details.favoriteTeleports);
                 }
                 if (details.collectionLog != null) {
                     player.getCollectionLog().collectionLog = details.collectionLog;
@@ -832,9 +828,8 @@ public class PlayerSave {
         private final int menInBlackKills;
 
         //Content
+        private final ArrayList<Integer> favoriteTeleports;
         private final Map<String, Integer> bossTimers;
-        private final List<TeleportInterface.TeleportData> recentTeleports;
-        private final List<TeleportInterface.TeleportData> favoriteTeleports;
         private final HashMap<Collection, ArrayList<Item>> collectionLog;
         private final HashMap<Achievements, Integer> achievements;
         private final int achievementsCompleted;
@@ -1256,8 +1251,7 @@ public class PlayerSave {
             basiliskKnightKills = Player.getAttribIntOr(player, BASILISK_KNIGHT, 0);
             menInBlackKills = Player.getAttribIntOr(player, MEN_IN_BLACK_KILLED, 0);
             bossTimers = player.getBossTimers().getTimes();
-            recentTeleports = player.getRecentTeleports();
-            favoriteTeleports = player.getFavorites();
+            favoriteTeleports = player.getFavoriteTeleports();
             collectionLog = player.getCollectionLog().collectionLog;
             achievements = player.achievements();
             achievementsCompleted = Player.getAttribIntOr(player, ACHIEVEMENTS_COMPLETED, 0);

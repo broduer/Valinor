@@ -66,6 +66,7 @@ public class Widget {
     public static final int COLOR = 26;
     public static final int DRAW_LINE = 27;
     public static final int TYPE_RADIO_BUTTON = 28;
+    public static final int OPTION_MENU = 29;
 
     public boolean hide;
 

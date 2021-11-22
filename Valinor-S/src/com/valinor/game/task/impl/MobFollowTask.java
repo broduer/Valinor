@@ -28,7 +28,7 @@ public class MobFollowTask extends Task {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         if (mob.isNpc() && mob.getAsNpc().finished()) {
             stop();
             return;
