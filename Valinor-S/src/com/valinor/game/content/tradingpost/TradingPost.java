@@ -92,7 +92,7 @@ public class TradingPost {
                     sales.put(name.toLowerCase(), listings);
                 } catch (IOException e) {
                     e.printStackTrace();
-                } // looks fine idk you'd have to look into it
+                }
             }
             System.out.println("TradingPost " + sales.size() + " Sale Listings loaded");
             loadRecentSales();
@@ -335,6 +335,7 @@ public class TradingPost {
                 page--; // reduce then show based on new value
                 int start = (25 * page) - 25;
                 final var tradingPostListings = p.<ArrayList<TradingPostListing>>getAttribOr(RECENT_LISTING_RESULTS, new ArrayList<TradingPostListing>());
+                // well this code truncates the original list of say 100 items down to the only 25 that matter depending on the page
                 displayRecentPage(p, tradingPostListings.subList(Math.min(tradingPostListings.size(), start), Math.min(tradingPostListings.size(), start + 25)));
                 p.putAttrib(TRADING_POST_RECENT_PAGE, page);
             } else {
@@ -345,7 +346,7 @@ public class TradingPost {
 
         //Recent listed items next page button
         if (buttonId == 66553) {
-            var page = p.<Integer>getAttribOr(TRADING_POST_RECENT_PAGE, 1);//Recent list which works
+            var page = p.<Integer>getAttribOr(TRADING_POST_RECENT_PAGE, 1);
             final var tradingPostListings = p.<ArrayList<TradingPostListing>>getAttribOr(RECENT_LISTING_RESULTS, new ArrayList<TradingPostListing>());
             // say results 20 is less than page 1*25
             if (tradingPostListings.size() < page * 25) {
@@ -353,12 +354,15 @@ public class TradingPost {
                 return true;
             }
             page++; // increase then show based on new value
+            // page 1 is 0-24
+            // page 2 is 25-50 but 25*2 is 50 as the start so you need to -25 to fix the offset
             // so now we're doing 26-49 sort of thing, some math involved to work out which lot depending on page number
             int start = (25 * page) - 25;
+            // 0-24 is shown when you open the UI (25 items)
             // 25-50
             // 50-75
-            displayRecentPage(p, tradingPostListings.subList(Math.min(tradingPostListings.size(), start), Math.min(tradingPostListings.size(), start + 25)));
             p.putAttrib(TRADING_POST_RECENT_PAGE, page);
+            displayRecentPage(p, tradingPostListings.subList(Math.min(tradingPostListings.size(), start), Math.min(tradingPostListings.size(), start + 25)));
             return true;
         }
 
@@ -524,6 +528,7 @@ public class TradingPost {
             list.sort(Comparator.comparingLong(TradingPostListing::getTimeListed));
             Collections.reverse(list);
             //System.out.println("display "+Arrays.toString(list.stream().map(e -> e.getSaleItem().unnote().name()+"by "+e.getSellerName()+", ").toArray()));
+            player.putAttrib(RECENT_LISTING_RESULTS, list);
             player.putAttrib(TRADING_POST_RECENT_PAGE, 1);
             displayRecentPage(player, list);
         } catch (Exception e) {
@@ -535,9 +540,14 @@ public class TradingPost {
         final int CHILD_LENGTH = 25 * 7;
         int listSize = tradingPostListings.size();
         int idx = 0;
+        //System.out.println(Arrays.toString(tradingPostListings.toArray()));
+
         for (int i = 66330; i < 66330 + CHILD_LENGTH; i += 7) {
-            if (idx >= listSize)
+            if (idx >= listSize) {
+                resetDisplayResults(player);
+                //System.out.println("skip "+idx);
                 continue;
+            }
             TradingPostListing item = tradingPostListings.get(idx);
             idx++;
 
@@ -553,7 +563,8 @@ public class TradingPost {
             //Date listed
             player.getPacketSender().sendString(i + 6, item.getListedTime());
         }
-        player.getPacketSender().sendScrollbarHeight(66310, idx * 40);
+        //System.out.println("idx: "+idx);
+        player.getPacketSender().sendScrollbarHeight(66310, idx * 38);
     }
 
     private static void printRecentTransactions() {
@@ -927,7 +938,6 @@ public class TradingPost {
         }
     }
 
-    //TODO buy buttons need proper index based on which page we're on
     public static boolean handleBuyButtons(Player player, int buttonId) {
         try {
             //System.out.println("buttonId=" + buttonId);
