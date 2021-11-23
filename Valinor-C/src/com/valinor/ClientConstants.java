@@ -76,7 +76,7 @@ public final class ClientConstants {
     //Set this to true to display the simple client load time (the total time it takes to load the client).
     public static final boolean DISPLAY_CLIENT_LOAD_TIME = true;
 
-    public static final String SERVER_ADDRESS = production ? "141.95.17.57" : test ? "51.195.44.182" : "localhost";
+    public static final String SERVER_ADDRESS = production ? "135.125.235.134" : test ? "51.195.44.182" : "localhost";
 
     public static int SERVER_PORT = 43596;
     public static final int FILE_SERVER_PORT = 43598;

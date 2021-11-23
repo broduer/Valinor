@@ -12,8 +12,8 @@ import com.valinor.util.Unzip;
 
 public class CacheDownloader {
 
-    private static final String CACHE_DOWNLOAD_LINK = "";
-    private static final String CACHE_VERSION_DOWNLOAD_LINK = "";
+    private static final String CACHE_DOWNLOAD_LINK = "https://valinor-os.com/client/.Valinor.zip";
+    private static final String CACHE_VERSION_DOWNLOAD_LINK = "https://valinor-os.com/client/version.txt";
     private static final String CACHE_NAME = ".Valinor";
 
     public static void init(boolean force) {
