@@ -21,10 +21,7 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.ForceMovement;
-import com.valinor.game.world.entity.mob.player.MagicSpellbook;
-import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.entity.mob.player.*;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
@@ -55,10 +52,6 @@ public class Edgevile extends PacketInteraction {
         } else if (option == 2) {
             if (npc.id() == EMBLEM_TRADER) {
                 World.getWorld().shop(17).open(player);
-                return true;
-            }
-            if (npc.id() == AUBURY) {
-                World.getWorld().shop(23).open(player);
                 return true;
             }
         } else if (option == 3) {

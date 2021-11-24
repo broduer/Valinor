@@ -24,7 +24,8 @@ public class Main {
             UIManager.put("ProgressBar.selectionForeground",Config.BACKGROUND);
 
             frame = new JFrame(Config.NAME);
-            ImageIcon icon = new ImageIcon(Main.class.getResource("logo.png"));
+            URL url = new URL("https://valinor-os.com/client/logo.png");
+            ImageIcon icon = new ImageIcon(url);
 
             progress = new JProgressBar();
             progress.setForeground(Config.FOREGROUND);

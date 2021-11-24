@@ -32,8 +32,8 @@ public class Config {
     /*
      * image dimensions of your logo.png
      */
-    public static final int LOGO_WIDTH = 753;
-    public static final int LOGO_HEIGHT = 424;
+    public static final int LOGO_WIDTH = 604;
+    public static final int LOGO_HEIGHT = 340;
 
     /*
      * Colors for the progress bar and progress text

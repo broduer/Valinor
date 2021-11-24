@@ -81,7 +81,6 @@ public class BankWidget extends Widget {
         addHoverButton(interfaceId + 20, 124, 0, 0, "", -1, interfaceId + 21, 1);
         addHoveredButton(interfaceId + 21, 124, 0, 0, interfaceId + 22);
         addSprite(interfaceId + 29, 208);
-        addContainer(39414, TYPE_CONTAINER, 3, 2, 10, 8, 0, false, true, true);
 
         addContainer(5382, 109, 8, 102, "Withdraw-1", "Withdraw-5", "Withdraw-10", "Withdraw-All", "Withdraw-X", null,
                 "Withdraw-All but one");

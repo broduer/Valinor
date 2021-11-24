@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
+import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
 
@@ -42,7 +43,11 @@ public class AuburyDialogue extends Dialogue {
     protected void select(int option) {
         if(isPhase(1)) {
             if(option == 1) {
-                World.getWorld().shop(23).open(player);
+                if(player.ironMode() == IronMode.NONE) {
+                    World.getWorld().shop(11).open(player);
+                } else {
+                    World.getWorld().shop(23).open(player);
+                }
             }
             if(option == 2) {
                 send(DialogueType.PLAYER_STATEMENT,Expression.HAPPY, "Oh, it's a rune shop. No thank you, then.");

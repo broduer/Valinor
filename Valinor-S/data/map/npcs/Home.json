@@ -194,6 +194,15 @@
     "walkRange": 0
   },
   {
+    "name": "Food and Potion supplies",
+    "id": 225,
+    "x": 3077,
+    "y": 3484,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 0
+  },
+  {
     "name": "Weapons and armour",
     "id": 2879,
     "x": 3088,

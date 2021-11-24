@@ -143,8 +143,6 @@ public class DonatorMysteryBox extends PacketInteraction {
         new Item(INFINITY_HAT),
         new Item(INFINITY_TOP),
         new Item(INFINITY_BOTTOMS),
-        new Item(TZHAARKETOM),
-        new Item(TOKTZXILEK),
         new Item(ABYSSAL_WHIP),
         new Item(GRANITE_MAUL_24225),
         new Item(INFINITY_BOOTS),

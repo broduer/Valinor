@@ -15,6 +15,7 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -149,6 +150,18 @@ public class HomeArea extends PacketInteraction {
                 }
                 return true;
             }
+            if(npc.id() == COOK) {
+                World.getWorld().shop(13).open(player);
+                return true;
+            }
+            if(npc.id() == DOMMIK) {
+                World.getWorld().shop(12).open(player);
+                return true;
+            }
+            if(npc.id() == LOWE) {
+                World.getWorld().shop(10).open(player);
+                return true;
+            }
             if(npc.id() == SHOP_ASSISTANT_2820) {
                 World.getWorld().shop(1).open(player);
                 return true;
@@ -171,6 +184,22 @@ public class HomeArea extends PacketInteraction {
             }
         }
         if(option == 2) {
+            if(npc.id() == DOMMIK) {
+                World.getWorld().shop(12).open(player);
+                return true;
+            }
+            if(npc.id() == LOWE) {
+                World.getWorld().shop(10).open(player);
+                return true;
+            }
+            if (npc.id() == AUBURY) {
+                if(player.ironMode() == IronMode.NONE) {
+                    World.getWorld().shop(11).open(player);
+                } else {
+                    World.getWorld().shop(23).open(player);
+                }
+                return true;
+            }
             if (npc.id() == VANNAKA) {
                 player.getTaskMasterManager().open();
                 return true;
