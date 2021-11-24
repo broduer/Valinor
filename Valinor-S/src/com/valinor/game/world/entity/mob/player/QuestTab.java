@@ -6,15 +6,8 @@ import com.valinor.game.content.achievements.AchievementWidget;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
-import com.valinor.game.content.presets.PresetManager;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
-import com.valinor.game.content.title.TitlePlugin;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.dialogue.Dialogue;
-import com.valinor.game.world.entity.dialogue.DialogueType;
-import com.valinor.game.world.entity.mob.player.commands.impl.players.PlayersOnlineCommand;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -106,7 +99,7 @@ public final class QuestTab {
         VOTE_POINTS(73007) {
             @Override
             public String fetchLineData(Player player) {
-                int votePoints = player.getAttribOr(AttributeKey.VOTE_POINS, 0);
+                int votePoints = player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
                 return "Vote Points: <col=ffffff>" + votePoints;
             }
         },
@@ -127,7 +120,15 @@ public final class QuestTab {
             }
         },
 
-        REFERRALS(73010) {
+        PK_POINTS(73010) {
+            @Override
+            public String fetchLineData(Player player) {
+                int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
+                return "Pk Points: <col=ffffff>" + Utils.formatNumber(pkPoints);
+            }
+        },
+
+        REFERRALS(73011) {
             @Override
             public String fetchLineData(Player player) {
                 int referralCount = player.getAttribOr(AttributeKey.REFERRALS_COUNT, 0);
@@ -135,7 +136,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_TASK(73011) {
+        SLAYER_TASK(73012) {
             @Override
             public String fetchLineData(Player player) {
                 String name = Slayer.taskName(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
@@ -148,7 +149,7 @@ public final class QuestTab {
             }
         },
 
-        TASK_STREAK(73012) {
+        TASK_STREAK(73013) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0);
@@ -156,7 +157,7 @@ public final class QuestTab {
             }
         },
 
-        TASKS_COMPLETED(73013) {
+        TASKS_COMPLETED(73014) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
@@ -164,7 +165,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_KEYS_RECEIVED(73014) {
+        SLAYER_KEYS_RECEIVED(73015) {
             @Override
             public String fetchLineData(Player player) {
                 var keys = player.<Integer>getAttribOr(AttributeKey.SLAYER_KEYS_RECEIVED, 0);
@@ -172,7 +173,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_POINTS(73015) {
+        SLAYER_POINTS(73016) {
             @Override
             public String fetchLineData(Player player) {
                 int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);

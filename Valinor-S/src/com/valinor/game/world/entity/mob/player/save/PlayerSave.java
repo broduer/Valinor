@@ -307,10 +307,11 @@ public class PlayerSave {
                     player.setSavedDuelConfig(details.savedDuelConfig);
                 }
                 player.putAttrib(REPAIR_BROKEN_ITEMS_ON_DEATH, details.autoRepairBrokenItems);
-                player.putAttrib(VOTE_POINS, details.votePoints);
+                player.putAttrib(VOTE_POINTS, details.votePoints);
                 player.putAttrib(AttributeKey.PEST_CONTROL_POINTS, details.pestControlPoints);
                 player.putAttrib(SLAYER_REWARD_POINTS, details.slayerRewardPoints);
                 player.putAttrib(BOSS_POINTS, details.bossPoints);
+                player.putAttrib(PK_POINTS, details.pkPoints);
                 player.putAttrib(BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, details.teleportToTargetUnlocked);
                 player.putAttrib(PRESERVE, details.preserve);
                 player.putAttrib(RIGOUR, details.rigour);
@@ -719,6 +720,7 @@ public class PlayerSave {
         private final int pestControlPoints;
         private final int slayerRewardPoints;
         private final int bossPoints;
+        private final int pkPoints;
 
         //Unlocks
         private final boolean teleportToTargetUnlocked;
@@ -1145,10 +1147,11 @@ public class PlayerSave {
             openPresetsOnDeath = player.getPresetManager().openOnDeath();
             savedDuelConfig = player.getSavedDuelConfig();
             autoRepairBrokenItems = Player.getAttribBooleanOr(player, REPAIR_BROKEN_ITEMS_ON_DEATH, false);
-            votePoints = Player.getAttribIntOr(player, VOTE_POINS, 0);
+            votePoints = Player.getAttribIntOr(player, VOTE_POINTS, 0);
             pestControlPoints = Player.getAttribIntOr(player, AttributeKey.PEST_CONTROL_POINTS, 0);
             slayerRewardPoints = Player.getAttribIntOr(player, SLAYER_REWARD_POINTS, 0);
             bossPoints = Player.getAttribIntOr(player, BOSS_POINTS, 0);
+            pkPoints = Player.getAttribIntOr(player, PK_POINTS, 0);
             teleportToTargetUnlocked = Player.getAttribBooleanOr(player, BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, false);
             preserve = Player.getAttribBooleanOr(player, PRESERVE, false);
             rigour = Player.getAttribBooleanOr(player, RIGOUR, false);

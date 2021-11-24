@@ -18,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -71,7 +70,7 @@ public class CheckServerWealthCommand implements Command {
             for (Player opp : onlineToScan) { // this is the online players section
                 checkedPlayers.add(opp.getUsername());
 
-                votePoints += opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0);
+                votePoints += opp.<Integer>getAttribOr(AttributeKey.VOTE_POINTS, 0);
 
                 ArrayList<Item> allItems = new ArrayList<>();
                 allItems.addAll(Arrays.asList(opp.getEquipment().toNonNullArray()));
@@ -196,7 +195,7 @@ public class CheckServerWealthCommand implements Command {
         public ConcurrentLinkedQueue<Player> loaded = new ConcurrentLinkedQueue<>();
 
         public long vp(Player opp) {
-            return 1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0L);
+            return 1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINTS, 0L);
         }
 
         public long refc(Player opp) {
@@ -245,7 +244,7 @@ public class CheckServerWealthCommand implements Command {
                                 //We don't really need to check the container's on the game thread since we aren't modifying anything.
                                 //GameEngine.getInstance().addSyncTask(() -> {
 
-                                storage.sumVotePoints.addAndGet(1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINS, 0));
+                                storage.sumVotePoints.addAndGet(1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINTS, 0));
                                 storage.sumRefersByName.addAndGet(1L * opp.<Integer>getAttribOr(AttributeKey.REFERRALS_COUNT, 0));
 
                                 ArrayList<Item> allItems = new ArrayList<>();

@@ -23,7 +23,8 @@ public enum CurrencyType {
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
-    BOSS_POINTS(new BossPointsCurrency());
+    BOSS_POINTS(new BossPointsCurrency()),
+    PK_POINTS(new PkPointsCurrency());
 
     private static final ImmutableSet<CurrencyType> VALUES = ImmutableSet.copyOf(values());
 
@@ -40,32 +41,28 @@ public enum CurrencyType {
     public static String getValue(Player player, CurrencyType currency) {
         String value = "";
         switch (currency) {
-            case DONATOR_TICKETS:
-                value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.DONATOR_TICKET) ? player.inventory().count(CustomItemIdentifiers.DONATOR_TICKET) : 0);
-                break;
-            case MARK_OF_GRACE:
-                value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.MARK_OF_GRACE) ? player.inventory().count(ItemIdentifiers.MARK_OF_GRACE) : 0);
-                break;
-            case VALINOR_COINS:
-                value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.VALINOR_COINS) ? player.inventory().count(CustomItemIdentifiers.VALINOR_COINS) : 0);
-                break;
-            case BLOOD_MONEY:
-                value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.BLOOD_MONEY) ? player.inventory().count(ItemIdentifiers.BLOOD_MONEY) : 0);
-                break;
-            case SLAYER_REWARD_POINTS:
+            case DONATOR_TICKETS -> value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.DONATOR_TICKET) ? player.inventory().count(CustomItemIdentifiers.DONATOR_TICKET) : 0);
+            case MARK_OF_GRACE -> value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.MARK_OF_GRACE) ? player.inventory().count(ItemIdentifiers.MARK_OF_GRACE) : 0);
+            case VALINOR_COINS -> value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.VALINOR_COINS) ? player.inventory().count(CustomItemIdentifiers.VALINOR_COINS) : 0);
+            case BLOOD_MONEY -> value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.BLOOD_MONEY) ? player.inventory().count(ItemIdentifiers.BLOOD_MONEY) : 0);
+            case SLAYER_REWARD_POINTS -> {
                 int slayerRewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
                 value = Utils.formatNumber(slayerRewardPoints);
-                break;
-            case VOTE_POINTS:
-                int votePoints = player.getAttribOr(AttributeKey.VOTE_POINS, 0);
+            }
+            case VOTE_POINTS -> {
+                int votePoints = player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
                 value = Utils.formatNumber(votePoints);
-                break;
-            case BOSS_POINTS:
+            }
+            case BOSS_POINTS -> {
                 int bossPoints = player.getAttribOr(AttributeKey.BOSS_POINTS, 0);
                 value = Utils.formatNumber(bossPoints);
-                break;
-            default:
-                break;
+            }
+            case PK_POINTS -> {
+                int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
+                value = Utils.formatNumber(pkPoints);
+            }
+            default -> {
+            }
         }
         return value.equals("0") ? "None!" : value;
     }

@@ -2,10 +2,13 @@ package com.valinor.game.world.items.container.shop.currency.impl;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.container.shop.currency.Currency;
 
-public final class VotePointsCurrency implements Currency {
+/**
+ * @author Patrick van Elderen <https://github.com/PVE95>
+ * @Since November 24, 2021
+ */
+public class PkPointsCurrency implements Currency {
 
     @Override
     public boolean tangible() {
@@ -14,13 +17,12 @@ public final class VotePointsCurrency implements Currency {
 
     @Override
     public boolean takeCurrency(Player player, int amount) {
-        int votePoints = player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
-        if (votePoints >= amount) {
-            player.putAttrib(AttributeKey.VOTE_POINTS, votePoints - amount);
-            player.getPacketSender().sendString(QuestTab.InfoTab.VOTE_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.VOTE_POINTS.childId).fetchLineData(player));
+        int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
+        if (pkPoints >= amount) {
+            player.putAttrib(AttributeKey.PK_POINTS, pkPoints - amount);
             return true;
         } else {
-            player.message("You do not have enough vote points.");
+            player.message("You do not have enough pk points.");
             return false;
         }
     }
@@ -32,7 +34,7 @@ public final class VotePointsCurrency implements Currency {
 
     @Override
     public int currencyAmount(Player player, int cost) {
-        return player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
+        return player.getAttribOr(AttributeKey.PK_POINTS, 0);
     }
 
     @Override
@@ -42,6 +44,6 @@ public final class VotePointsCurrency implements Currency {
 
     @Override
     public String toString() {
-        return "Vote points";
+        return "pk points";
     }
 }

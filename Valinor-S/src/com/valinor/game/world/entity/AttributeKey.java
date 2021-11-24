@@ -241,6 +241,8 @@ public enum AttributeKey {
 
     BOSS_POINTS("boss_points", AttribType.INTEGER),
 
+    PK_POINTS("pk_points", AttribType.INTEGER),
+
     // The original amount being listed for this specific listing. (Before any edits were done)
     TRADING_POST_ORIGINAL_AMOUNT,
 
@@ -754,7 +756,7 @@ public enum AttributeKey {
      */
     GIVE_EMPTY_POTION_VIALS("remove_potions", AttribType.BOOLEAN),
 
-    VOTE_POINS("vote_points", AttribType.INTEGER),
+    VOTE_POINTS("vote_points", AttribType.INTEGER),
 
     /**
      * Key used in callisto combat which keeps track of when to use the healing when he gets hit.

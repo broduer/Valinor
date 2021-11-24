@@ -2,6 +2,7 @@ package com.valinor.game.world.items.container.shop.currency.impl;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.container.shop.currency.Currency;
 
 /**
@@ -20,6 +21,7 @@ public class BossPointsCurrency implements Currency {
         int bossPoints = player.getAttribOr(AttributeKey.BOSS_POINTS, 0);
         if (bossPoints >= amount) {
             player.putAttrib(AttributeKey.BOSS_POINTS, bossPoints - amount);
+            player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
             return true;
         } else {
             player.message("You do not have enough boss points.");

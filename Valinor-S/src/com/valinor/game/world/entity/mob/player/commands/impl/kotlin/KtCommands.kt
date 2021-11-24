@@ -272,10 +272,10 @@ object KtCommands {
             }
         }*/
         cmd("avp1") {
-            player.putAttrib(AttributeKey.VOTE_POINS, player.getAttribOr<Int>(AttributeKey.VOTE_POINS, 0) + 100)
+            player.putAttrib(AttributeKey.VOTE_POINTS, player.getAttribOr<Int>(AttributeKey.VOTE_POINTS, 0) + 100)
         }
         cmd("avp2") {
-            player.putAttrib(AttributeKey.VOTE_POINS, 0)
+            player.putAttrib(AttributeKey.VOTE_POINTS, 0)
         }
         cmd("livenpefind") {
             tempLoggingOfNPE = !tempLoggingOfNPE

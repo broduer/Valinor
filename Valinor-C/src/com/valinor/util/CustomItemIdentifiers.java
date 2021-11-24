@@ -47,13 +47,15 @@ public class CustomItemIdentifiers {
     public static final int THIEVING_MASTER_CAPE = 30272;
     public static final int WOODCUTTING_MASTER_CAPE = 30274;
     public static final int NAGINI = 30250;
+    public static final int TOM_RIDDLE_DIARY = 30251;
+    public static final int MARVOLO_GAUNTS_RING = 30252;
+    public static final int CLOAK_OF_INVISIBILITY = 30253;
     public static final int HWEEN_ITEM_CHEST = 30242;
     public static final int GRIM_HWEEN_MASK = 30224;
     public static final int GRIM_PARTYHAT = 30225;
     public static final int GRIM_SCYTHE = 30226;
     public static final int HWEEN_MYSTERY_CHEST = 30227;
     public static final int SKELETON_HELLHOUND_PET = 30228;
-    public static final int HWEEN_MYSTERY_BOX = 30186;
     public static final int HWEEN_ARMADYL_GODSWORD = 30229;
     public static final int HWEEN_BLOWPIPE = 30230;
     public static final int HWEEN_DRAGON_CLAWS = 30231;
@@ -187,9 +189,6 @@ public class CustomItemIdentifiers {
     public static final int PRIMORDIAL_BOOTS_OR = 30038;
     public static final int PEGASIAN_BOOTS_OR = 30180;
     public static final int ETERNAL_BOOTS_OR = 30182;
-    public static final int EPIC_PET_BOX = 16458;
-    public static final int RAIDS_MYSTERY_BOX = 16459;
-    public static final int ZENYTE_MYSTERY_BOX = 16460;
     public static final int BLOODY_TOKEN = 13215;
     public static final int CORRUPTED_BOOTS = 30297;
     public static final int SALAZAR_SLYTHERINS_LOCKET = 27644;

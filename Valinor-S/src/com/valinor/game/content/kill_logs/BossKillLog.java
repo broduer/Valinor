@@ -4,6 +4,7 @@ import com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.util.Color;
 import com.valinor.util.CustomNpcIdentifiers;
 import com.valinor.util.NpcIdentifiers;
@@ -49,6 +50,7 @@ public class BossKillLog {
 
                 var points = player.<Integer>getAttribOr(BOSS_POINTS,0) + boss.points;
                 player.putAttrib(BOSS_POINTS, points);
+                player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
                 player.message(Color.PURPLE.wrap("You have received +"+boss.points+" boss points, you now have a total of "+Utils.formatNumber(points)+" boss points."));
 
                 if(npc.combatInfo() == null) return;

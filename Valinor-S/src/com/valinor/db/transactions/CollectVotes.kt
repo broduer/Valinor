@@ -148,8 +148,8 @@ object CollectVotes {
                             }
 
                             // and here is reward inside the loop for 1 vote. so this code runs x times how many votes
-                            val increaseBy = getAttribOr<Int>(AttributeKey.VOTE_POINS, 0) + points
-                            putAttrib(AttributeKey.VOTE_POINS, increaseBy)
+                            val increaseBy = getAttribOr<Int>(AttributeKey.VOTE_POINTS, 0) + points
+                            putAttrib(AttributeKey.VOTE_POINTS, increaseBy)
                             packetSender.sendString(QuestTab.InfoTab.VOTE_POINTS.childId, QuestTab.InfoTab.INFO_TAB[QuestTab.InfoTab.VOTE_POINTS.childId]!!.fetchLineData(this))
 
                             voteHistory.add(VoteLog(hostAddress, currentMac, now))

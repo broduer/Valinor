@@ -129,6 +129,17 @@ public class ItemDefinition implements Definition {
             unprotectable = true;
         } else if (id == 4564) {
             stackable = true;
+        } else if (id == 30186) {
+            name = "Points mystery box";
+        } else if (id == 30187) {
+            name = "Points mystery box";
+        } else if (id == 30188) {
+            name = "Barrows mystery box";
+        } else if (id == 30189) {
+            name = "Points mystery chest";
+        } else if (id == 30190) {
+            name = "Double drop scroll";
+            stackable = true;
         } else if (id == 30196) {
             name = "Totemic helmet";
         } else if (id == 30199) {

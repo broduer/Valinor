@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.CustomItemIdentifiers.WAMPA;
+import static com.valinor.util.CustomItemIdentifiers.CLOAK_OF_INVISIBILITY;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class HoverMenuManager {
@@ -130,196 +130,22 @@ public class HoverMenuManager {
 
         menus.put(MYSTERY_TICKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
-                MYSTERY_CHEST,
-                EPIC_PET_BOX,
-                LEGENDARY_MYSTERY_BOX,
-                DONATOR_MYSTERY_BOX,
-                ARMADYL_GODSWORD_OR,
-                DRAGON_CLAWS_OR,
-                CRAWS_BOW_C,
-                VIGGORAS_CHAINMACE_C,
-                THAMMARONS_STAFF_C,
-                TOXIC_STAFF_OF_THE_DEAD_C,
-                RING_OF_PRECISION,
-                RING_OF_SORCERY,
-                RING_OF_MANHUNTING,
-                ANCIENT_FACEGAURD,
-                AMULET_OF_TORTURE_OR,
-                NECKLACE_OF_ANGUISH_OR,
-                OCCULT_NECKLACE_OR,
-                PEGASIAN_BOOTS_OR,
-                PRIMORDIAL_BOOTS_OR,
-                ETERNAL_BOOTS_OR
-            )));
-
-        menus.put(16459, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                CustomItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR,
-                CustomItemIdentifiers.SANGUINE_TWISTED_BOW,
-                CustomItemIdentifiers.HOLY_GHRAZI_RAPIER,
-                CustomItemIdentifiers.HOLY_SANGUINESTI_STAFF,
-                CustomItemIdentifiers.HOLY_SCYTHE_OF_VITUR,
-                CustomItemIdentifiers.TWISTED_BOW_I,
-                ItemIdentifiers.TWISTED_BOW,
-                ItemIdentifiers.SCYTHE_OF_VITUR,
-                ItemIdentifiers.GHRAZI_RAPIER,
-                ItemIdentifiers.ANCESTRAL_ROBE_TOP,
-                ItemIdentifiers.ANCESTRAL_ROBE_BOTTOM,
-                ItemIdentifiers.DRAGON_CLAWS,
-                ItemIdentifiers.KODAI_WAND,
-                ItemIdentifiers.ANCESTRAL_HAT,
-                ItemIdentifiers.SANGUINESTI_STAFF
-            )));
-
-        menus.put(16460, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                ItemIdentifiers.HEAVY_BALLISTA,
-                ItemIdentifiers.LIGHT_BALLISTA,
-                ItemIdentifiers.AMULET_OF_TORTURE,
-                ItemIdentifiers.NECKLACE_OF_ANGUISH,
-                ItemIdentifiers.RING_OF_SUFFERING,
-                ItemIdentifiers.NECKLACE_OF_ANGUISH,
-                ItemIdentifiers.AMULET_OF_TORTURE_OR,
-                ItemIdentifiers.NECKLACE_OF_ANGUISH_OR,
-                ItemIdentifiers.NECKLACE_OF_ANGUISH_OR
-            )));
-
-        menus.put(16458, new HoverMenu("Has a chance to give some of the most valuable pets in the game!",
-            Arrays.asList(
-                CustomItemIdentifiers.JAWA_PET,
-                CustomItemIdentifiers.CENTAUR_FEMALE,
-                CustomItemIdentifiers.CENTAUR_MALE,
-                CustomItemIdentifiers.DEMENTOR_PET,
-                CustomItemIdentifiers.FENRIR_GREYBACK_JR,
-                CustomItemIdentifiers.FLUFFY_JR,
-                CustomItemIdentifiers.ANCIENT_KING_BLACK_DRAGON_PET,
-                CustomItemIdentifiers.ANCIENT_CHAOS_ELEMENTAL_PET,
-                CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET,
-                CustomItemIdentifiers.ZRIAWK,
-                CustomItemIdentifiers.FAWKES,
-                CustomItemIdentifiers.BARRELCHEST_PET,
-                CustomItemIdentifiers.WAMPA,
-                CustomItemIdentifiers.NIFFLER,
-                CustomItemIdentifiers.BABY_ARAGOG,
-                CustomItemIdentifiers.FOUNDER_IMP,
-                CustomItemIdentifiers.BABY_LAVA_DRAGON,
-                CustomItemIdentifiers.JALTOK_JAD,
-                CustomItemIdentifiers.MINI_NECROMANCER,
-                CustomItemIdentifiers.PET_CORRUPTED_NECHRYARCH,
-                ItemIdentifiers.TZREKZUK,
-                CustomItemIdentifiers.GRIM_REAPER_PET,
-                CustomItemIdentifiers.GENIE_PET,
-                CustomItemIdentifiers.DHAROK_PET,
-                CustomItemIdentifiers.PET_ZOMBIES_CHAMPION,
-                CustomItemIdentifiers.BABY_ABYSSAL_DEMON,
-                CustomItemIdentifiers.BABY_DARK_BEAST_EGG,
-                CustomItemIdentifiers.BABY_SQUIRT
+                MYSTERY_CHEST, DONATOR_MYSTERY_BOX, BANDOS_TASSETS, BANDOS_CHESTPLATE, ARMADYL_CHESTPLATE, ARMADYL_CHAINSKIRT, SARADOMIN_GODSWORD,
+                ARMADYL_GODSWORD, DRAGON_WARHAMMER, DRAGON_HUNTER_LANCE, SPECTRAL_SPIRIT_SHIELD
             )));
 
         menus.put(DONATOR_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
-                STATIUSS_PLATEBODY,
-                STATIUSS_PLATELEGS,
-                MORRIGANS_LEATHER_BODY,
-                MORRIGANS_LEATHER_CHAPS,
-                _3RD_AGE_LONGSWORD,
-                _3RD_AGE_BOW,
-                _3RD_AGE_WAND,
-                MORRIGANS_COIF,
-                ZURIELS_ROBE_TOP,
-                ZURIELS_ROBE_BOTTOM,
-                VESTAS_SPEAR,
-                STATIUSS_FULL_HELM,
-                STATIUSS_WARHAMMER,
-                TOXIC_BLOWPIPE,
-                NEITIZNOT_FACEGUARD,
-                TOXIC_STAFF_OF_THE_DEAD
-            )));
-
-        menus.put(HWEEN_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                STATIUSS_PLATEBODY,
-                STATIUSS_PLATELEGS,
-                MORRIGANS_LEATHER_BODY,
-                MORRIGANS_LEATHER_CHAPS,
-                _3RD_AGE_LONGSWORD,
-                _3RD_AGE_BOW,
-                _3RD_AGE_WAND,
-                MORRIGANS_COIF,
-                ZURIELS_ROBE_TOP,
-                ZURIELS_ROBE_BOTTOM,
-                VESTAS_SPEAR,
-                STATIUSS_FULL_HELM,
-                STATIUSS_WARHAMMER,
-                TOXIC_BLOWPIPE,
-                NEITIZNOT_FACEGUARD,
-                TOXIC_STAFF_OF_THE_DEAD
-            )));
-
-        menus.put(WEAPON_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                STATIUSS_WARHAMMER,
-                TOXIC_STAFF_OF_THE_DEAD,
-                BLADE_OF_SAELDOR,
-                ARMADYL_GODSWORD,
-                ZURIELS_STAFF,
-                VESTAS_SPEAR
-            )));
-
-        menus.put(ARMOUR_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                ARMADYL_CHESTPLATE,
-                ARMADYL_CHAINSKIRT,
-                BANDOS_CHESTPLATE,
-                BANDOS_TASSETS,
-                GUARDIAN_BOOTS,
-                TWISTED_BUCKLER,
-                DHAROKS_ARMOUR_SET
-            )));
-
-        menus.put(LEGENDARY_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-                ARCANE_SPIRIT_SHIELD,
-                AVERNIC_DEFENDER,
-                INFERNAL_CAPE,
-                FEROCIOUS_GLOVES,
-                VESTAS_CHAINBODY,
-                VESTAS_PLATESKIRT,
-                AMULET_OF_TORTURE_OR,
-                NECKLACE_OF_ANGUISH_OR,
-                TORMENTED_BRACELET_OR,
-                INQUISITORS_MACE,
-                INQUISITORS_GREAT_HELM,
-                INQUISITORS_HAUBERK,
-                INQUISITORS_PLATESKIRT
-            )));
-
-        menus.put(MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
-            Arrays.asList(
-
-                //Ext rare
-                CustomItemIdentifiers.GRIM_REAPER_PET,
-                CustomItemIdentifiers.BARRELCHEST_PET,
-                ARCANE_SPIRIT_SHIELD,
-                ELDER_MAUL,
-
-                //Rare
-                DRAGON_CLAWS,
-                ARMADYL_GODSWORD,
-                GHRAZI_RAPIER,
-                SPECTRAL_SPIRIT_SHIELD,
-                HEAVY_BALLISTA,
-                TOXIC_STAFF_OF_THE_DEAD,
-                SERPENTINE_HELM
+                GREEN_HALLOWEEN_MASK, _3RD_AGE_BOW, BLACK_SANTA_HAT, BLUE_PARTYHAT, ARCANE_SPIRIT_SHIELD, SPECTRAL_SPIRIT_SHIELD, FEROCIOUS_GLOVES, DRAGON_HUNTER_LANCE, ARMADYL_GODSWORD, DRAGON_WARHAMMER, ARMADYL_CROSSBOW, TOXIC_STAFF_OF_THE_DEAD, PRIMORDIAL_BOOTS, BANDOS_TASSETS, ARMADYL_CHESTPLATE
             )));
 
         menus.put(MYSTERY_CHEST, new HoverMenu("Has a chance to give some of the most rare items in the game!",
-            Arrays.asList(SANGUINE_SCYTHE_OF_VITUR, SANGUINE_TWISTED_BOW, ELYSIAN_SPIRIT_SHIELD, TWISTED_BOW, SCYTHE_OF_VITUR, ANCIENT_WARRIOR_AXE_C, ANCIENT_WARRIOR_MAUL_C, ANCIENT_WARRIOR_SWORD_C, SALAZAR_SLYTHERINS_LOCKET, SWORD_OF_GRYFFINDOR, TALONHAWK_CROSSBOW, ANCESTRAL_HAT_I, ANCESTRAL_ROBE_BOTTOM_I, ANCESTRAL_ROBE_TOP_I, LAVA_DHIDE_BODY, LAVA_DHIDE_CHAPS, LAVA_DHIDE_COIF, CORRUPTED_BOOTS, RING_OF_TRINITY,
-                CRAWS_BOW_C, VIGGORAS_CHAINMACE_C, BOW_OF_FAERDHINEN_3, DARK_ARMADYL_HELMET, DARK_ARMADYL_CHESTPLATE, DARK_ARMADYL_CHAINSKIRT)));
-
-        menus.put(HWEEN_MYSTERY_CHEST, new HoverMenu("Has a chance to give some of the most rare items in the game!",
-            Arrays.asList(SANGUINE_SCYTHE_OF_VITUR, SANGUINE_TWISTED_BOW, ELYSIAN_SPIRIT_SHIELD, TWISTED_BOW, SCYTHE_OF_VITUR, ANCIENT_WARRIOR_AXE_C, ANCIENT_WARRIOR_MAUL_C, ANCIENT_WARRIOR_SWORD_C, SALAZAR_SLYTHERINS_LOCKET, SWORD_OF_GRYFFINDOR, TALONHAWK_CROSSBOW, ANCESTRAL_HAT_I, ANCESTRAL_ROBE_BOTTOM_I, ANCESTRAL_ROBE_TOP_I, LAVA_DHIDE_BODY, LAVA_DHIDE_CHAPS, LAVA_DHIDE_COIF, CORRUPTED_BOOTS, RING_OF_TRINITY,
-                CRAWS_BOW_C, VIGGORAS_CHAINMACE_C, BOW_OF_FAERDHINEN_3, DARK_ARMADYL_HELMET, DARK_ARMADYL_CHESTPLATE, DARK_ARMADYL_CHAINSKIRT)));
+            Arrays.asList(
+                ELYSIAN_SPIRIT_SHIELD, TWISTED_BOW, SCYTHE_OF_VITUR, DARK_BANDOS_CHESTPLATE, DARK_BANDOS_TASSETS, BLADE_OF_SAELDOR_8,
+                ANCESTRAL_ROBE_BOTTOM_I, ANCESTRAL_ROBE_TOP_I, SALAZAR_SLYTHERINS_LOCKET,CORRUPTED_BOOTS, RING_OF_TRINITY, ANCIENT_WARRIOR_AXE_C, ANCIENT_WARRIOR_MAUL_C, ANCIENT_WARRIOR_SWORD_C,
+                DARK_ARMADYL_CHESTPLATE, TOM_RIDDLE_DIARY, CLOAK_OF_INVISIBILITY, DARK_ARMADYL_CHAINSKIRT, BOW_OF_FAERDHINEN_3, DARK_ARMADYL_HELMET, ELDER_WAND_HANDLE, ELDER_WAND_STICK, SWORD_OF_GRYFFINDOR, TALONHAWK_CROSSBOW, ANCESTRAL_HAT_I, LAVA_DHIDE_BODY,
+                LAVA_DHIDE_CHAPS, LAVA_DHIDE_COIF
+            )));
 
         System.out.println(ClientConstants.CLIENT_NAME + " has loaded " + menus.size() + "x menu hovers.");
     }

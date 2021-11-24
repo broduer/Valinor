@@ -10,24 +10,24 @@ public class Config {
     /*
      * The name that appears on the task bar
      */
-    public static final String NAME = "Ferox Launcher";
+    public static final String NAME = "Valinor Launcher";
 
     /*
      * Connection address of where to obtain the jar
      */
-    public static final String URL = "https://dl.dropboxusercontent.com/s/qla2vpvbwmt3ezz/Ferox.jar";
+    public static final String URL = "https://valinor-os.com/client/Valinor.jar";
 
     /*
      * The name of the jar to launch once downloaded
      */
-    public static final String FILE_NAME = "Ferox.jar";
+    public static final String FILE_NAME = "Valinor.jar";
 
     /*
      * The path to save the jar once it's downloaded.
      * Leaving it at user home is a safe bet,
      * change "example" to the name of your organization
      */
-    public static String CLIENT_PATH = System.getProperty("user.home") + File.separator + "Ferox" + File.separator;
+    public static String CLIENT_PATH = System.getProperty("user.home") + File.separator + "Valinor" + File.separator;
 
     /*
      * image dimensions of your logo.png

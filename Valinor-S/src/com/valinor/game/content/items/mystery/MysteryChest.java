@@ -1,4 +1,4 @@
-package com.valinor.game.content.items;
+package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;

@@ -4,13 +4,13 @@
   "title": "",
   "titleColor": "",
   "tile": {
-    "x": 3105,
-    "y": 3504,
+    "x": 3095,
+    "y": 3500,
     "level": 0,
-    "firstChunkX": 388,
-    "firstChunkY": 438
+    "firstChunkX": 386,
+    "firstChunkY": 437
   },
-  "gameTime": 1111729,
+  "gameTime": 1230271,
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
@@ -26,7 +26,7 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
-  "lastLogin": "Nov 23, 2021, 10:18:25 AM",
+  "lastLogin": "Nov 24, 2021, 12:12:03 PM",
   "muted": false,
   "newPlayer": false,
   "isBetaTester": false,
@@ -53,7 +53,7 @@
     0
   ],
   "spellBook": "NORMAL",
-  "fightType": "SPEAR_SWIPE",
+  "fightType": "UNARMED_KICK",
   "fightTypeVarp": 43,
   "fightTypeVarpState": 1,
   "autoRetaliate": false,
@@ -195,118 +195,39 @@
   "slayerUnlocks": {},
   "slayerExtensionsList": {},
   "inventory": [
-    {
-      "id": 452,
-      "amount": 1
-    },
-    {
-      "id": 11280,
-      "amount": 1
-    },
-    {
-      "id": 20720,
-      "amount": 1
-    },
-    {
-      "id": 11849,
-      "amount": 1
-    },
-    {
-      "id": 20208,
-      "amount": 1
-    },
-    {
-      "id": 11937,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 995,
-      "amount": 2600000
-    },
-    {
-      "id": 30186,
-      "amount": 1
-    },
-    {
-      "id": 30188,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 30189,
-      "amount": 1
-    },
-    {
-      "id": 30190,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 11137,
-      "amount": 1
-    },
-    {
-      "id": 30191,
-      "amount": 7
-    },
-    {
-      "id": 30195,
-      "amount": 1
-    },
     null,
     null,
     null,
-    {
-      "id": 11256,
-      "amount": 1
-    },
-    {
-      "id": 11238,
-      "amount": 1
-    }
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
   ],
   "equipment": [
     null,
     null,
     null,
-    {
-      "id": 11259,
-      "amount": 1
-    },
     null,
     null,
     null,
@@ -316,171 +237,217 @@
     null,
     null,
     null,
-    {
-      "id": 19484,
-      "amount": 122
-    }
+    null,
+    null
   ],
   "bank": [
     {
-      "id": 451,
-      "amount": 375
-    },
-    {
-      "id": 11232,
-      "amount": 5575
-    },
-    {
-      "id": 1127,
-      "amount": 8
-    },
-    {
-      "id": 995,
-      "amount": 103272290
-    },
-    {
-      "id": 1079,
-      "amount": 17
-    },
-    {
-      "id": 1617,
-      "amount": 348
-    },
-    {
-      "id": 9242,
-      "amount": 75
-    },
-    {
-      "id": 1163,
-      "amount": 12
-    },
-    {
-      "id": 5295,
-      "amount": 376
-    },
-    {
-      "id": 3051,
-      "amount": 899
-    },
-    {
-      "id": 453,
-      "amount": 8865
-    },
-    {
-      "id": 11237,
-      "amount": 4966
-    },
-    {
-      "id": 5300,
-      "amount": 675
-    },
-    {
-      "id": 1619,
-      "amount": 620
-    },
-    {
-      "id": 383,
-      "amount": 700
-    },
-    {
-      "id": 395,
-      "amount": 3357
-    },
-    {
-      "id": 23053,
+      "id": 4722,
       "amount": 2
     },
     {
-      "id": 207,
-      "amount": 1692
-    },
-    {
-      "id": 440,
-      "amount": 9702
-    },
-    {
-      "id": 2353,
-      "amount": 9486
-    },
-    {
-      "id": 7944,
-      "amount": 1386
-    },
-    {
-      "id": 7936,
-      "amount": 91332
-    },
-    {
-      "id": 3049,
-      "amount": 834
-    },
-    {
-      "id": 21934,
-      "amount": 200
-    },
-    {
-      "id": 11934,
-      "amount": 2672
-    },
-    {
-      "id": 389,
-      "amount": 3940
-    },
-    {
-      "id": 21940,
-      "amount": 100
-    },
-    {
-      "id": 21938,
-      "amount": 100
-    },
-    {
-      "id": 23050,
+      "id": 11896,
       "amount": 1
     },
     {
-      "id": 23047,
+      "id": 12377,
       "amount": 2
     },
     {
-      "id": 536,
-      "amount": 50
+      "id": 6665,
+      "amount": 2
     },
     {
-      "id": 22973,
+      "id": 10334,
+      "amount": 1
+    },
+    {
+      "id": 12769,
+      "amount": 2
+    },
+    {
+      "id": 4566,
+      "amount": 1
+    },
+    {
+      "id": 12301,
+      "amount": 2
+    },
+    {
+      "id": 20032,
+      "amount": 1
+    },
+    {
+      "id": 12430,
+      "amount": 1
+    },
+    {
+      "id": 11828,
+      "amount": 1
+    },
+    {
+      "id": 12006,
+      "amount": 3
+    },
+    {
+      "id": 11773,
+      "amount": 1
+    },
+    {
+      "id": 12363,
+      "amount": 2
+    },
+    {
+      "id": 12771,
+      "amount": 1
+    },
+    {
+      "id": 4720,
+      "amount": 2
+    },
+    {
+      "id": 13182,
+      "amount": 2
+    },
+    {
+      "id": 12956,
+      "amount": 1
+    },
+    {
+      "id": 6525,
+      "amount": 1
+    },
+    {
+      "id": 6918,
       "amount": 1
     },
     {
       "id": 12695,
-      "amount": 62
+      "amount": 8250
     },
     {
-      "id": 22951,
+      "id": 24225,
       "amount": 1
     },
     {
-      "id": 21948,
-      "amount": 300
-    },
-    {
-      "id": 21936,
-      "amount": 100
-    },
-    {
-      "id": 6729,
-      "amount": 67
-    },
-    {
-      "id": 11840,
+      "id": 1419,
       "amount": 1
     },
     {
-      "id": 22969,
+      "id": 11770,
+      "amount": 2
+    },
+    {
+      "id": 12957,
+      "amount": 2
+    },
+    {
+      "id": 13441,
+      "amount": 7750
+    },
+    {
+      "id": 12365,
+      "amount": 1
+    },
+    {
+      "id": 20110,
+      "amount": 2
+    },
+    {
+      "id": 20517,
+      "amount": 1
+    },
+    {
+      "id": 13237,
+      "amount": 1
+    },
+    {
+      "id": 12757,
+      "amount": 1
+    },
+    {
+      "id": 6922,
+      "amount": 2
+    },
+    {
+      "id": 12379,
+      "amount": 1
+    },
+    {
+      "id": 12524,
+      "amount": 1
+    },
+    {
+      "id": 12637,
+      "amount": 1
+    },
+    {
+      "id": 11898,
+      "amount": 1
+    },
+    {
+      "id": 11897,
+      "amount": 1
+    },
+    {
+      "id": 12638,
+      "amount": 1
+    },
+    {
+      "id": 12829,
+      "amount": 1
+    },
+    {
+      "id": 11832,
+      "amount": 1
+    },
+    {
+      "id": 12759,
+      "amount": 1
+    },
+    {
+      "id": 12518,
+      "amount": 1
+    },
+    {
+      "id": 11830,
+      "amount": 1
+    },
+    {
+      "id": 2581,
+      "amount": 1
+    },
+    {
+      "id": 4708,
+      "amount": 1
+    },
+    {
+      "id": 19484,
+      "amount": 122
+    },
+    {
+      "id": 17000,
+      "amount": 1820
+    },
+    {
+      "id": 30190,
+      "amount": 42
+    },
+    {
+      "id": 4745,
+      "amount": 1
+    },
+    {
+      "id": 11849,
+      "amount": 15
+    },
+    {
+      "id": 11259,
       "amount": 1
     }
   ],
   "tabAmounts": [
-    39,
+    51,
     0,
     0,
     0,
@@ -492,7 +459,7 @@
     0
   ],
   "placeholdersActive": false,
-  "placeHolderAmount": 4,
+  "placeHolderAmount": 5,
   "hashedBankPin": "No bank pin.",
   "bankPinLength": 0,
   "recoveryDelay": 3,
@@ -549,10 +516,11 @@
     false
   ],
   "autoRepairBrokenItems": false,
-  "votePoints": 0,
+  "votePoints": 8,
   "pestControlPoints": 0,
-  "slayerRewardPoints": 0,
-  "bossPoints": 0,
+  "slayerRewardPoints": 71,
+  "bossPoints": 84,
+  "pkPoints": 183,
   "teleportToTargetUnlocked": false,
   "preserve": false,
   "rigour": false,
@@ -660,83 +628,83 @@
   "bossTimers": {},
   "collectionLog": {},
   "achievements": {
-    "REVENANT_HUNTER": 0,
+    "COMPLETIONIST": 0,
+    "DRAGON_SLAYER_II": 0,
     "null": 0,
-    "PARKOUR": 0,
-    "BARROWS_I": 0,
-    "BUG_EXTERMINATOR": 0,
-    "DR_CURT_CONNORS": 0,
-    "SKILLER_I": 1,
-    "DRAGON_SLAYER_IV": 0,
-    "DEFENDER_HUNT_V": 0,
-    "VOTE_FOR_US_II": 0,
-    "BRIMSTONE_LOOTER_III": 100,
-    "LARRANS_LOOTER_II": 0,
-    "DEFENDER_HUNT_VI": 0,
-    "ROCK_CRAB_HUNTER": 0,
-    "LAPIDARIST": 0,
-    "MASTER_THIEF": 0,
-    "YAK_HUNTER": 0,
-    "TASK_MASTER_III": 0,
-    "VETION": 0,
-    "MINER": 0,
-    "LARRANS_LOOTER_I": 0,
-    "TASK_MASTER_II": 0,
-    "VENENATIS": 0,
-    "SKILLER_IV": 0,
-    "FIGHT_CAVES_I": 0,
-    "SAND_CRAB_HUNTER": 0,
-    "COOK": 0,
-    "SKILLER_III": 0,
-    "VORKY": 0,
-    "SKILLER_II": 0,
-    "BARROWS_II": 0,
-    "TSJERNOBYL": 0,
-    "OWN_A_HOUSE": 0,
-    "DEFENDER_HUNT_IX": 0,
-    "MASTER_IN_CONSTRUCTION": 0,
-    "SQUIDWARD": 0,
-    "TASK_MASTER_I": 0,
-    "GOLDSMITH": 0,
-    "LORD_OF_THE_RINGS": 0,
-    "CORPOREAL_CRITTER": 0,
+    "CONSTRUCTION_WORKER": 0,
     "FISHERMAN": 0,
     "ULTIMATE_CHAOS": 0,
-    "FLUFFY": 0,
-    "COMPLETIONIST": 0,
-    "BRIMSTONE_LOOTER_I": 10,
-    "DEFENDER_HUNT_I": 0,
-    "LARRANS_LOOTER_III": 0,
-    "GODWAR": 0,
-    "CHEF": 0,
-    "FIGHT_CAVES_II": 0,
-    "EXPERIMENTS_HUNTER": 0,
-    "DRAGON_SLAYER_I": 0,
     "RUNE_MYSTERIES": 0,
-    "LUMBERJACK": 0,
-    "CRYSTAL_LOOTER_I": 0,
+    "LAPIDARIST": 0,
+    "DRAGON_SLAYER_IV": 0,
     "BREWING": 0,
-    "DRAGON_SLAYER_III": 0,
     "FLETCHER": 0,
-    "CRYSTAL_LOOTER_II": 0,
-    "DEFENDER_HUNT_II": 0,
-    "BAKER": 0,
-    "VOTE_FOR_US_I": 0,
-    "DEFENDER_HUNT_IV": 0,
-    "BRIMSTONE_LOOTER_II": 50,
-    "PYROMANCER": 0,
-    "DRAGON_SLAYER_II": 0,
-    "BEAR_GRYLLS": 0,
-    "VOTE_FOR_US_III": 0,
-    "BARROWS_III": 0,
-    "SNAKE_CHARMER": 0,
-    "DEFENDER_HUNT_III": 0,
-    "DEFENDER_HUNT_VII": 0,
-    "CRYSTAL_LOOTER_III": 0,
     "FARMER": 0,
+    "LARRANS_LOOTER_III": 0,
+    "FIGHT_CAVES_II": 0,
+    "FLUFFY": 0,
+    "PYROMANCER": 0,
+    "BRIMSTONE_LOOTER_II": 50,
+    "BEAR_GRYLLS": 0,
+    "VETION": 0,
+    "COOK": 0,
+    "VOTE_FOR_US_I": 0,
+    "BRIMSTONE_LOOTER_III": 100,
+    "BAKER": 0,
+    "DEFENDER_HUNT_IX": 0,
+    "SKILLER_III": 0,
+    "FIGHT_CAVES_I": 0,
+    "SQUIDWARD": 0,
+    "VORKY": 0,
+    "DR_CURT_CONNORS": 0,
+    "BUG_EXTERMINATOR": 0,
+    "LARRANS_LOOTER_II": 0,
+    "DEFENDER_HUNT_I": 0,
+    "MASTER_THIEF": 0,
+    "BARROWS_II": 0,
+    "OWN_A_HOUSE": 0,
+    "EXPERIMENTS_HUNTER": 0,
+    "SNAKE_CHARMER": 0,
+    "PARKOUR": 0,
+    "DEFENDER_HUNT_VII": 0,
+    "SKILLER_I": 1,
+    "SKILLER_IV": 0,
+    "DRAGON_SLAYER_III": 0,
+    "BARROWS_III": 0,
+    "DEFENDER_HUNT_VI": 0,
+    "MINER": 0,
+    "BRIMSTONE_LOOTER_I": 10,
+    "CHEF": 0,
+    "DRAGON_SLAYER_I": 0,
+    "REVENANT_HUNTER": 0,
+    "TASK_MASTER_I": 0,
+    "TSJERNOBYL": 0,
+    "SAND_CRAB_HUNTER": 0,
+    "TASK_MASTER_II": 0,
+    "LORD_OF_THE_RINGS": 0,
+    "TASK_MASTER_III": 0,
+    "ROCK_CRAB_HUNTER": 0,
+    "SKILLER_II": 0,
+    "DEFENDER_HUNT_IV": 0,
+    "CRYSTAL_LOOTER_I": 0,
+    "LUMBERJACK": 0,
     "BARK_SCORPION": 0,
-    "CONSTRUCTION_WORKER": 0,
-    "PIZZA_BAKER": 0
+    "LARRANS_LOOTER_I": 0,
+    "GODWAR": 0,
+    "PIZZA_BAKER": 0,
+    "CRYSTAL_LOOTER_II": 0,
+    "VENENATIS": 0,
+    "CRYSTAL_LOOTER_III": 0,
+    "MASTER_IN_CONSTRUCTION": 0,
+    "GOLDSMITH": 0,
+    "VOTE_FOR_US_II": 0,
+    "DEFENDER_HUNT_III": 0,
+    "BARROWS_I": 0,
+    "DEFENDER_HUNT_V": 0,
+    "VOTE_FOR_US_III": 0,
+    "YAK_HUNTER": 0,
+    "DEFENDER_HUNT_II": 0,
+    "CORPOREAL_CRITTER": 0
   },
   "achievementsCompleted": 0,
   "task": "NONE",
@@ -858,7 +826,7 @@
   "chamberOfSecretsLogClaimed": false,
   "revenantsLogClaimed": false,
   "slayerLogClaimed": false,
-  "lastDailyReset": 23,
+  "lastDailyReset": 24,
   "finishedHalloweenDialogue": false,
   "candiesTraded": -1,
   "eventReward1Claimed": false,
