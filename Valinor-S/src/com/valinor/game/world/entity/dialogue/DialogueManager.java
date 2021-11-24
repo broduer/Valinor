@@ -1,11 +1,14 @@
 package com.valinor.game.world.entity.dialogue;
 
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.google.common.collect.Iterables;
 
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
+
+import static com.valinor.game.world.entity.AttributeKey.CONTINUE_STARTER_TUTORIAL;
 
 /**
  *
@@ -49,8 +52,11 @@ public class DialogueManager {
 
     public void interrupt() {
         if (dialogue != null) {
-            dialogue.finish();
-            dialogue = null;
+            boolean inTutorial = player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT,false) && player.<Boolean>getAttribOr(CONTINUE_STARTER_TUTORIAL,false);
+            if(!inTutorial) {
+                dialogue.finish();
+                dialogue = null;
+            }
         }
     }
 

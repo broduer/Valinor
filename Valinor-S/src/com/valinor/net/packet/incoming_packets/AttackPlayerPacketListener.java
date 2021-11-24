@@ -10,6 +10,8 @@ import com.valinor.net.packet.PacketListener;
 
 import java.lang.ref.WeakReference;
 
+import static com.valinor.game.world.entity.AttributeKey.CONTINUE_STARTER_TUTORIAL;
+
 /**
  * @author PVE
  * @Since augustus 26, 2020
@@ -20,7 +22,8 @@ public class AttackPlayerPacketListener implements PacketListener {
     public void handleMessage(Player player, Packet packet) {
         player.afkTimer.reset();
 
-        if (player.busy()) {
+        boolean inTutorial = player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT,false) && player.<Boolean>getAttribOr(CONTINUE_STARTER_TUTORIAL,false);
+        if (player.busy() || inTutorial) {
             return;
         }
 

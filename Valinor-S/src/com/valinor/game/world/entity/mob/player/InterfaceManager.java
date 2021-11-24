@@ -5,8 +5,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.util.Utils;
 
-import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_CATEGORY;
-import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_SELECTED;
+import static com.valinor.game.world.entity.AttributeKey.*;
 
 /**
  * Contains information about the state of interfaces enter in the client.
