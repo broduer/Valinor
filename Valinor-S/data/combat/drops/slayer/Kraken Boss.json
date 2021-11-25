@@ -1,235 +1,75 @@
 {
-  "npcs": [
-	-494
-  ],
-  // Manually loaded, that's why
-  "points": 0,
-  "items": [],
-  "petItem": 12655,
-  "petRarity": 1500,
-  "tables": [
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 494 ],
+	"petItem": 12655,
+	"petRarity": 1500,
+	"tables": [
 		{
-		  "id": 4111,
-		  "amount": 1,
-		  "points": 4
+			"name": "Weapons/Armour",
+			"points": 1,
+			"items": [
+				{ "id": 7114, "min": 1, "max": 1, "points": 18}, //Pirate boots
+				{ "id": 1403, "min": 1, "max": 1, "points": 18}, //Mystic water staff
+				{ "id": 1347, "min": 1, "max": 1, "points": 18 }, //Rune warhammer
+				{ "id": 1303, "min": 1, "max": 1, "points": 9 }, //Rune longsword
+				{ "id": 4091, "min": 1, "max": 1, "points": 9 }, //Mystic robe top (blue)
+				{ "id": 4093, "min": 1, "max": 1, "points": 2 }, //Mystic robe bottom (blue)
+				{ "id": 11905, "min": 1, "max": 1, "points": 1 } //Trident of the seas (full)
+			]
 		},
 		{
-		  "id": 4113,
-		  "amount": 1,
-		  "points": 4
+			"name": "Runes/Ammunition",
+			"points": 1,
+			"items": [
+				{ "id": 555, "min": 400, "max": 400, "points": 6 }, //Water rune
+				{ "id": 4695, "min": 100, "max": 100, "points": 3 }, //Mist rune
+				{ "id": 562, "min": 250, "max": 250, "points": 3 }, //Chaos rune
+				{ "id": 560, "min": 150, "max": 150, "points": 3 }, //Death rune
+				{ "id": 565, "min": 60, "max": 60, "points": 1 }, //Blood rune
+				{ "id": 566, "min": 50, "max": 50, "points": 1 } //Soul rune
+			]
 		},
 		{
-		  "id": 1403,
-		  "amount": 1,
-		  "points": 4
+			"name": "Seeds",
+			"points": 1,
+			"items": [
+				{ "id": 5321, "min": 24, "max": 24, "points": 3 }, //Watermelon seed
+				{ "id": 5304, "min": 2, "max": 2, "points": 3 }, //Torstol seed
+				{ "id": 5316, "min": 1, "max": 1, "points": 1 } //Magic seed
+			]
 		},
 		{
-		  "id": 7114,
-		  "amount": 1,
-		  "points": 4
+			"name": "Materials",
+			"points": 1,
+			"items": [
+				{ "id": 402, "min": 125, "max": 125, "points": 9 }, //Seaweed (noted)
+				{ "id": 1392, "min": 10, "max": 20, "points": 6 }, //Battlestaff (noted)
+				{ "id": 568, "min": 50, "max": 50, "points": 6 }, //Unpowered orb (noted)
+				{ "id": 1602, "min": 8, "max": 8, "points": 6 }, //Diamond (noted)
+				{ "id": 8779, "min": 60, "max": 60, "points": 3 }, //Oak plank (noted)
+				{ "id": 2363, "min": 2, "max": 2, "points": 3 }, //Runite bar
+				{ "id": 384, "min": 50, "max": 50, "points": 1 }, //Raw shark (noted)
+				{ "id": 7945, "min": 100, "max": 100, "points": 1 }, //Raw monkfish (noted)
+				{ "id": 3052, "min": 6, "max": 6, "points": 1 } //Grimy snapdragon (noted)
+			]
 		},
 		{
-		  "id": 1303,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 1347,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 11905,
-		  // full trident
-		  "amount": 1,
-		  "points": 1
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 10000, "max": 19999, "points": 10 }, //Coins
+				{ "id": 385, "min": 5, "max": 5, "points": 100 }, //Shark
+				{ "id": 403, "min": 5, "max": 5, "points": 100 }, //Edible seaweed
+				{ "id": 311, "min": 1, "max": 1, "points": 60 }, //Harpoon
+				{ "id": 1925, "min": 1, "max": 1, "points": 40 }, //Bucket
+				{ "id": 10925, "min": 2, "max": 2, "points": 60 }, //Sanfew serum(4)
+				{ "id": 989, "min": 1, "max": 1, "points": 30 }, //Crystal key
+				{ "id": 686, "min": 1, "max": 1, "points": 30 }, //Rusty sword
+				{ "id": 5953, "min": 2, "max": 2, "points": 30 }, //Antidote++(4) (noted)
+				{ "id": 1645, "min": 1, "max": 1, "points": 30 }, //Dragonstone ring
+				{ "id": 12004, "min": 1, "max": 1, "points": 11 }, //Kraken tentacle
+				{ "id": 12073, "min": 1, "max": 1, "points": 12 }, //Clue scroll (elite)
+				{ "id": 12007, "min": 1, "max": 1, "points": 1 } //Jar of dirt
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 555,
-		  "amount": 400,
-		  "points": 1
-		},
-		{
-		  "id": 4695,
-		  "min": 100,
-		  "max": 250,
-		  "points": 1
-		},
-		{
-		  "id": 562,
-		  "amount": 250,
-		  "points": 1
-		},
-		{
-		  "id": 560,
-		  "amount": 150,
-		  "points": 1
-		},
-		{
-		  "id": 565,
-		  "amount": 60,
-		  "points": 1
-		},
-		{
-		  "id": 566,
-		  "amount": 50,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Seeds",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 5321,
-		  "amount": 24,
-		  "points": 1
-		},
-		{
-		  "id": 5304,
-		  "amount": 2,
-		  "points": 1
-		},
-		{
-		  "id": 5316,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Materials",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 402,
-		  "amount": 125,
-		  "points": 3
-		},
-		{
-		  "id": 1392,
-		  "amount": 10,
-		  "points": 1
-		},
-		{
-		  "id": 568,
-		  "amount": 50,
-		  "points": 1
-		},
-		{
-		  "id": 1602,
-		  "amount": 8,
-		  "points": 1
-		},
-		{
-		  "id": 8779,
-		  "amount": 60,
-		  "points": 1
-		},
-		{
-		  "id": 2363,
-		  "amount": 2,
-		  "points": 1
-		},
-		{
-		  "id": 384,
-		  "amount": 50,
-		  "points": 1
-		},
-		{
-		  "id": 7945,
-		  "amount": 100,
-		  "points": 1
-		},
-		{
-		  "id": 3052,
-		  "amount": 6,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 10000,
-		  "max": 19999,
-		  "points": 283
-		},
-		{
-		  "id": 385,
-		  "amount": 5,
-		  "points": 283
-		},
-		{
-		  "id": 403,
-		  "amount": 5,
-		  "points": 283
-		},
-		{
-		  "id": 311,
-		  "amount": 1,
-		  "points": 100
-		},
-		{
-		  "id": 1925,
-		  "amount": 1,
-		  "points": 100
-		},
-		{
-		  "id": 10925,
-		  "amount": 2,
-		  "points": 100
-		},
-		{
-		  "id": 989,
-		  "amount": 1,
-		  "points": 100
-		},
-		{
-		  "id": 686,
-		  "amount": 1,
-		  "points": 100
-		},
-		{
-		  "id": 5953,
-		  "amount": 2,
-		  "points": 100
-		},
-		{
-		  "id": 12007,
-		  "amount": 1,
-		  "points": 8
-		},
-		{
-		  "id": 1645,
-		  "amount": 1,
-		  "points": 55
-		},
-		{
-		  "id": 12004,
-		  "amount": 1,
-		  "points": 19
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }
