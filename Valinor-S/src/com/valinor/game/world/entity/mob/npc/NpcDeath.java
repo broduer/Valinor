@@ -36,6 +36,7 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Nechryael;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.nechryarch.NechryarchDeathSpawn;
 import com.valinor.game.world.entity.combat.skull.SkullType;
+import com.valinor.game.world.entity.mob.npc.droptables.ItemDrops;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
@@ -672,133 +673,22 @@ public class NpcDeath {
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //Drop loot, but the first form of KQ, Runite golem and world bosses do not drop anything.
                     if (table != null && (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && npc.id() != THE_NIGHTMARE_9430)) {
-                        boolean dropUnderPlayer = npc.id() == NpcIdentifiers.KRAKEN || npc.id() == NpcIdentifiers.CAVE_KRAKEN || npc.id() >= NpcIdentifiers.ZULRAH && npc.id() <= NpcIdentifiers.ZULRAH_2044 || npc.id() >= NpcIdentifiers.VORKATH_8059 && npc.id() <= NpcIdentifiers.VORKATH_8061;
-                        boolean jad = npc.id() == TZTOKJAD;
-                        boolean doubleDropsLampActive = (Integer) killer.getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0) > 0;
-                        boolean founderImp = killer.pet() != null && killer.pet().def().name.equalsIgnoreCase("Founder Imp");
-                        boolean rolledDoubleDrop = World.getWorld().rollDie(10, 1);
+                        //Always drops such as bones
+                        ItemDrops.dropAlwaysItems(killer, npc);
 
-                        Tile tile = jad ? new Tile(2438, 5169, 0) : dropUnderPlayer ? killer.tile() : npc.tile();
+                        //Roll for an actual drop of the table
+                        ItemDrops.rollTheDropTable(killer, npc);
 
+                        //Custom drops
+                        ItemDrops.treasure(killer, npc);
+                        ItemDrops.dropCoins(killer, npc);
+                        killer.getSlayerKey().drop(npc);
                         table.rollForLarransKey(npc, killer);
+                        table.rollForBrimstoneKey(npc, killer);
                         table.rollForKeyOfDrops(killer, npc);
                         table.rollForTotemBase(killer);
                         table.rollForTotemMiddle(killer);
                         table.rollForTotemTop(killer);
-
-                        if (!customDrops.contains(npc.id())) {
-                            table.getGuaranteedDrops().forEach(tableItem -> {
-                                if (killer.inventory().contains(13116)) {
-                                    int[] BONES = new int[]{526, 528, 530, 2859, 532, 10976, 10977, 3125, 534, 536, 4812,
-                                        4834, 6812, 6729, 11943};
-                                    for (int bone : BONES) {
-                                        if (tableItem.convert().getId() == bone) {
-                                            Bone bones = Bone.get(tableItem.convert().getId());
-                                            if (bones != null)
-                                                killer.skills().addXp(Skills.PRAYER, bones.xp);
-                                        }
-                                    }
-                                } else {
-                                    if (tableItem.min > 0) {
-                                        // not fixed-amount drop, amount has a min/max amount randomly given
-                                        Item dropped = new Item(tableItem.id, Utils.random(tableItem.min, tableItem.max));
-
-                                        if(dropped.getId() == HWEEN_TOKENS) {
-                                            if(WildernessArea.inWilderness(killer.tile())) {
-                                                int extraTokens = dropped.getAmount() * 50 / 100;
-                                                dropped.setAmount(dropped.copy().getAmount() + extraTokens);
-
-                                                if(killer.getSkullType() != SkullType.NO_SKULL) {
-                                                    dropped.setAmount(dropped.copy().getAmount() * 2);
-                                                }
-                                            }
-                                        }
-
-                                        if ((dropped.getId() == ItemIdentifiers.DRAGON_BONES || dropped.getId() == ItemIdentifiers.LAVA_DRAGON_BONES && killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NOTED_DRAGON_BONES)) && WildernessArea.inWilderness(killer.tile())) {
-                                            dropped = dropped.note();
-                                        }
-
-                                        if (killer.nifflerPetOut() && killer.nifflerCanStore() && dropped.getValue() > 0) {
-                                            killer.nifflerStore(dropped);
-                                        } else {
-                                            GroundItemHandler.createGroundItem(new GroundItem(dropped, tile, killer));
-                                        }
-                                    } else {
-                                        // fixed amount items
-                                        if ((tableItem.convert().getId() == ItemIdentifiers.DRAGON_BONES || tableItem.convert().getId() == ItemIdentifiers.LAVA_DRAGON_BONES && killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NOTED_DRAGON_BONES)) && WildernessArea.inWilderness(killer.tile())) {
-                                            tableItem.convert().setId(tableItem.convert().note().getId());
-                                        }
-
-                                        if (killer.nifflerPetOut() && killer.nifflerCanStore() && tableItem.convert().getValue() > 0) {
-                                            killer.nifflerStore(tableItem.convert());
-                                        } else {
-                                            GroundItemHandler.createGroundItem(new GroundItem(tableItem.convert(), tile, killer));
-                                        }
-                                    }
-                                }
-                            });
-                        }
-
-                        int dropRolls = npc.combatInfo().droprolls;
-
-                        if (killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_CHANCE) && World.getWorld().rollDie(100, 1)) {
-                            dropRolls += 1;
-                            killer.message("The Double drops perk grants you a second drop!");
-                        }
-
-                        for (int i = 0; i < dropRolls; i++) {
-                            Item reward = table.randomItem(World.getWorld().random());
-                            if (reward != null) {
-                                boolean canDoubleDrop = doubleDropsLampActive || founderImp;
-                                if (canDoubleDrop) {
-                                    if (rolledDoubleDrop) {
-                                        //Drop the item to the ground instead of editing the item instance
-                                        GroundItem doubleDrop = new GroundItem(reward, tile, killer);
-
-                                        if (killer.nifflerPetOut() && killer.nifflerCanStore() && reward.getValue() > 0) {
-                                            killer.nifflerStore(doubleDrop.getItem());
-                                        } else {
-                                            GroundItemHandler.createGroundItem(doubleDrop);
-                                        }
-                                        killer.message("The double drop effect doubled your drop.");
-                                    }
-                                }
-
-                                // bosses, find npc ID, find item ID
-                                BOSSES.log(killer, npc.id(), reward);
-                                BOSSES.log(killer, RAIDS_KEY, reward);
-                                OTHER.log(killer, npc.id(), reward);
-
-                                if ((reward.getId() == ItemIdentifiers.DRAGON_BONES || reward.getId() == ItemIdentifiers.LAVA_DRAGON_BONES && killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NOTED_DRAGON_BONES)) && WildernessArea.inWilderness(killer.tile())) {
-                                    reward = reward.note();
-                                }
-
-                                if (killer.nifflerPetOut() && killer.nifflerCanStore() && reward.getValue() > 0) {
-                                    killer.nifflerStore(reward);
-                                } else {
-                                    GroundItemHandler.createGroundItem(new GroundItem(reward, tile, killer));
-                                }
-
-                                killer.getSlayerKey().drop(npc);
-                                ServerAnnouncements.tryBroadcastDrop(killer, npc, reward);
-                                npcDropLogs.log(NPC_DROPS, "Player " + killer.getUsername() + " got drop item " + reward.unnote().name());
-                                Utils.sendDiscordInfoLog("Player " + killer.getUsername() + " got drop item " + reward.unnote().name(), "npcdrops");
-
-                                // Corp beast drops are displayed to surrounding players.
-                                if (npc.id() == 319) {
-                                    Item finalReward = reward;
-                                    World.getWorld().getPlayers().forEachInArea(new Area(2944, 4352, 3007, 4415), p -> {
-                                        String amtString = finalReward.unnote().getAmount() == 1 ? finalReward.unnote().name() : "" + finalReward.getAmount() + " x " + finalReward.unnote().getAmount() + ".";
-                                        p.message("<col=0B610B>" + killer.getUsername() + " received a drop: " + amtString);
-                                    });
-                                }
-                            }
-                        }
-
-                        // Pets, anyone?! :)
-                        Optional<Pet> pet = checkForPet(killer, table);
-                        pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
-                        treasure(killer, npc);
                     }
 
                     // Custom drop tables
@@ -898,9 +788,6 @@ public class NpcDeath {
                         npc.setController(null);
                     }
 
-                    // Remove from instance..
-                    //TODO
-
                     Chain.bound(null).runFn(finalRespawnTimer, () -> {
                         GwdLogic.onRespawn(npc);
                         respawn(npc);
@@ -912,92 +799,6 @@ public class NpcDeath {
             });
         } catch (Exception e) {
             logger.catching(e);
-        }
-    }
-
-    private static void treasure(Player killer, Npc npc) {
-        if (!killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.TREASURE_HUNT)) {
-            return;
-        }
-
-        if(!Slayer.creatureMatches(killer, npc.id())) {
-            return;
-        }
-
-        int treasureCasketChance;
-        if (killer.getMemberRights().isZenyteMemberOrGreater(killer))
-            treasureCasketChance = 95;
-        else if (killer.getMemberRights().isOnyxMemberOrGreater(killer))
-            treasureCasketChance = 100;
-        else if (killer.getMemberRights().isDragonstoneMemberOrGreater(killer))
-            treasureCasketChance = 105;
-        else if (killer.getMemberRights().isDiamondMemberOrGreater(killer))
-            treasureCasketChance = 110;
-        else if (killer.getMemberRights().isRubyMemberOrGreater(killer))
-            treasureCasketChance = 115;
-        else if (killer.getMemberRights().isEmeraldMemberOrGreater(killer))
-            treasureCasketChance = 120;
-        else if (killer.getMemberRights().isSapphireMemberOrGreater(killer))
-            treasureCasketChance = 125;
-        else
-            treasureCasketChance = 128;
-
-        var reduction = treasureCasketChance * killer.masterCasketMemberBonus() / 100;
-        treasureCasketChance -= reduction;
-
-        if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {
-            Item clueItem = new Item(TreasureRewardCaskets.MASTER_CASKET);
-            killer.inventory().addOrDrop(clueItem);
-            notification(killer, clueItem);
-            killer.message("<col=0B610B>You have received a treasure casket drop!");
-        }
-
-        boolean inWilderness = WildernessArea.inWilderness(killer.tile());
-        Item smallCasket = new Item(ItemIdentifiers.CASKET_7956);
-        Item bigChest = new Item(CustomItemIdentifiers.BIG_CHEST);
-        int combat = killer.skills().combatLevel();
-        int mul = 1;
-
-        int chance;
-
-        if (combat <= 10)
-            chance = 1;
-        else if (combat <= 20)
-            chance = 2;
-        else if (combat <= 80)
-            chance = 3;
-        else if (combat <= 120)
-            chance = 4;
-        else
-            chance = 5;
-
-        int regularOdds = 100;
-
-        chance *= mul;
-
-        //If the player is in the wilderness, they have an increased chance at a casket drop
-        if ((npc.maxHp() > 20 || inWilderness)) {
-            if (inWilderness && Utils.random(regularOdds - 15) < chance) {
-                if (npc.combatInfo() != null && npc.combatInfo().boss && Utils.random(3) == 2) {
-                    killer.message("<col=0B610B>You have received a Big chest drop!");
-                    killer.inventory().addOrDrop(bigChest);
-                    notification(killer, bigChest);
-                } else {
-                    killer.message("<col=0B610B>You have received a small casket drop!");
-                    killer.inventory().addOrDrop(smallCasket);
-                    notification(killer, smallCasket);
-                }
-            } else if (!inWilderness && Utils.random(regularOdds) < chance) {
-                if (npc.combatInfo() != null && npc.combatInfo().boss && Utils.random(5) == 2) {
-                    killer.message("<col=0B610B>You have received a Big chest drop!");
-                    killer.inventory().addOrDrop(bigChest);
-                    notification(killer, bigChest);
-                } else {
-                    killer.message("<col=0B610B>You have received a small casket drop!");
-                    killer.inventory().addOrDrop(smallCasket);
-                    notification(killer, smallCasket);
-                }
-            }
         }
     }
 

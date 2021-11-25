@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.mob.npc.droptables;
 
 import com.valinor.fs.DefinitionRepository;
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.World;
@@ -9,6 +10,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
@@ -308,7 +310,7 @@ public class ScalarLootTable {
 
     public void rollForTotemBase(Player player) {
         var inMemberCave = player.tile().memberCave();
-        if(inMemberCave) {
+        if (inMemberCave) {
             var roll = 100;
             var reduction = roll * player.totemDropRateBonus() / 100;
             roll -= reduction;
@@ -320,7 +322,7 @@ public class ScalarLootTable {
 
     public void rollForTotemMiddle(Player player) {
         var inMemberCave = player.tile().memberCave();
-        if(inMemberCave) {
+        if (inMemberCave) {
             var roll = 100;
             var reduction = roll * player.totemDropRateBonus() / 100;
             roll -= reduction;
@@ -333,7 +335,7 @@ public class ScalarLootTable {
 
     public void rollForTotemTop(Player player) {
         var inMemberCave = player.tile().memberCave();
-        if(inMemberCave) {
+        if (inMemberCave) {
             var roll = 100;
             var reduction = roll * player.totemDropRateBonus() / 100;
             roll -= reduction;
@@ -346,24 +348,49 @@ public class ScalarLootTable {
 
     public void rollForLarransKey(Npc npc, Player player) {
         var inWilderness = WildernessArea.inWilderness(player.tile());
+        SlayerCreature task = SlayerCreature.lookup(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
+
         if (inWilderness) {
-            var larransLuck = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.LARRANS_LUCK);
+            var isSlayerTask = task != null && task.matches(npc.id());
             var combatLvl = npc.def().combatlevel;
-            var roll = combatLvl < 50 ? larransLuck ? 875 : 1000 : larransLuck ? 350 : 400;
-            if (World.getWorld().rollDie(roll, 1)) {
+            var dropRate = combatLvl >= 1 && combatLvl <= 80 ? 1972 : 99;
+
+            //if players are assigned to kill slayer monsters, the drop chance is increased by 25%
+            if (isSlayerTask) {
+                var reduction = dropRate * 25 / 100;
+                dropRate -= reduction;
+            }
+
+            var larransLuck = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.LARRANS_LUCK);
+            if (larransLuck) {
+                var reduction = dropRate * 15 / 100;
+                dropRate -= reduction;
+            }
+
+            if (World.getWorld().rollDie(dropRate, 1)) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.LARRANS_KEY), player.tile(), player));
             }
         }
     }
 
-    public void rollForKeyOfDrops(Player player, Npc npc) {
-        boolean inWilderness = WildernessArea.inWilderness(player.tile());
+    public void rollForBrimstoneKey(Npc npc, Player player) {
         SlayerCreature task = SlayerCreature.lookup(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
+        var isSlayerTask = task != null && task.matches(npc.id());
+        var master = Math.max(1, player.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
+        if(master == Slayer.KONAR_QUO_MATEN_ID && isSlayerTask) {
+            var combatLvl = npc.def().combatlevel;
+            var dropRate = combatLvl >= 100 ? 120 - (combatLvl / 5) : 100 + (100 - combatLvl) / 40;
+            if (World.getWorld().rollDie(dropRate, 1)) {
+                GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.BRIMSTONE_KEY), player.tile(), player));
+            }
+        }
+    }
 
-        if (inWilderness && task != null && task.matches(npc.id()) && player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KEY_OF_DROPS)) {
+    public void rollForKeyOfDrops(Player player, Npc npc) {
+        SlayerCreature task = SlayerCreature.lookup(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
+        if (task != null && task.matches(npc.id()) && player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KEY_OF_DROPS)) {
             int roll = 1000;
-
-            if (Utils.rollDie(roll, 1)) {
+            if (World.getWorld().rollDie(roll, 1)) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(CustomItemIdentifiers.KEY_OF_DROPS), player.tile(), player));
             }
         }
