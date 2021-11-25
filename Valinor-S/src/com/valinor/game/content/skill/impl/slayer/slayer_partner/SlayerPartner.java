@@ -266,7 +266,6 @@ public class SlayerPartner {
                         requestee.putAttrib(AttributeKey.SLAYER_TASK_ID, requester.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
                         requestee.putAttrib(AttributeKey.SLAYER_TASK_AMT, requester.getAttribOr(AttributeKey.SLAYER_TASK_AMT, 0));
                         requestee.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(requestee));
-                        Slayer.displayCurrentAssignment(requestee);
 
                         SlayerCreature task = SlayerCreature.lookup(requestee.slayerTaskId());
                         int num = requestee.slayerTaskAmount();

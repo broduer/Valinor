@@ -36,13 +36,13 @@ public class RunEnergy {
             return;
         }
 
-        //Being an extreme member grants you infinite run outside of the wilderness.
+        //Being an extreme member grants you infinite run outside the wilderness.
         if (player.getMemberRights().isDiamondMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile())) {
             return;
         }
 
-        //Having the perk runaway unlocked grants you infinite run outside of the wilderness.
-        if(player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.RUNAWAY) && WildernessArea.inWilderness(player.tile())) {
+        //Having the perk runaway unlocked grants you infinite run outside the wilderness.
+        if(player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.RUNAWAY) && !WildernessArea.inWilderness(player.tile())) {
             return;
         }
 

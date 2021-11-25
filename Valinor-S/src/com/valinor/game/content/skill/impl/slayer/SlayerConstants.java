@@ -7,29 +7,29 @@ package com.valinor.game.content.skill.impl.slayer;
 public class SlayerConstants {
 
     //Unlockables
-    public final static int DOUBLE_SLAYER_POINTS = 63406;
-    public final static int BLOOD_MONEY_FROM_KILLING_BOSSES = 63407;
+    public final static int BONUS_SLAYER_POINTS = 63406;
+    public final static int MONEY_FROM_KILLING_BOSSES = 63407;
     public final static int DOUBLE_DROP_CHANCE = 63408;
     public final static int KILL_BLOW = 63409;
     public final static int BIGGER_AND_BADDER = 63410;
     public final static int REVENANT_TELEPORT = 63411;
     public final static int LARRANS_LUCK = 63412;
     public final static int NO_SLAYER_REQ = 63413;
-    public final static int MORE_BM_THIEVING = 63414;
+    public final static int MORE_COINS_THIEVING = 63414;
     public final static int DROP_RATE_BOOST = 63415;
-    public final static int ZRIAWK_BOOST = 63416;
+    public final static int SUPPLY_DROP = 63416;//TODO
     public final static int DOUBLE_DROP_LAMPS = 63417;
     public final static int LIKE_A_BOSS = 63418;
     public final static int KEY_OF_DROPS = 63419;
     public final static int NOTED_DRAGON_BONES = 63420;
-    public final static int GODWARS_ENTRY = 63421;
+    public final static int EXP_BOOSTER = 63421;
     public final static int WORLD_BOSS_TELEPORT = 63422;
     public final static int RUNAWAY = 63423;
     public final static int TREASURE_HUNT = 63424;
-    public final static int TZTOK_JAD = 63425;
+    public final static int TELEPORT_TO_TASK = 63425;//TODO
     public final static int BIGGEST_AND_BADDEST = 63426;
     public final static int ELECTION_DAY = 63427;
-    public final static int WHOS_KEYS_ARE_THESE = 63428;
+    public final static int MALEVOLENT_MASQUERADE = 63428;
     public final static int WEAK_SPOT = 63429;
     public final static int DIGGING_FOR_TREASURE = 63430;
 

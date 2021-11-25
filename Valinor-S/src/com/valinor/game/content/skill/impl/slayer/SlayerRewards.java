@@ -151,22 +151,7 @@ public class SlayerRewards {
     }
 
     public boolean canAssign(SlayerTaskDef task) {
-        if (!player.getSlayerRewards().unlocks.containsKey(GOD_WAR) && task.getCreatureUid() == 130) {
-            return false;
-        }
-        if (!player.getSlayerRewards().unlocks.containsKey(SlayerConstants.GOD_WAR) && task.getCreatureUid() == 137) {
-            return false;
-        }
-        if (!player.getSlayerRewards().unlocks.containsKey(SlayerConstants.GOD_WAR) && task.getCreatureUid() == 133) {
-            return false;
-        }
-        if (!player.getSlayerRewards().unlocks.containsKey(SlayerConstants.GOD_WAR) && task.getCreatureUid() == 127) {
-            return false;
-        }
         if (!player.getSlayerRewards().unlocks.containsKey(SlayerConstants.LIKE_A_BOSS) && task.getCreatureUid() == 145) {
-            return false;
-        }
-        if (!player.getSlayerRewards().unlocks.containsKey(SlayerConstants.TZTOK_JAD) && task.getCreatureUid() == 97) {
             return false;
         }
         return true;

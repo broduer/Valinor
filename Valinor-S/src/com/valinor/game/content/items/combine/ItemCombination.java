@@ -8,7 +8,6 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.Color;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,26 +23,10 @@ public class ItemCombination extends PacketInteraction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
-        ItemDefinition def = item.definition(World.getWorld());
         if(option == 1) {
             if(item.getId() == VORKATHS_HEAD_21907) {
                 player.message("This blue dragon smells like it's been dead for a remarkably long time. Even by my...");
                 player.message("standards, it smells awful.");
-                return true;
-            }
-        }
-        if(option == 2) {
-            if(def != null && def.name.contains("Twisted slayer")) {
-                if(item.getId() == TWISTED_SLAYER_HELMET_I) {
-                    player.message("You can't disassemble this helmet.");
-                    return true;
-                }
-                player.optionsTitled("Are you sure you want to remove the attachment", "Remove attachment. ("+ Color.RED.wrap("attachment will be lost")+")", "Nevermind.", () -> {
-                    if(player.inventory().contains(item.getId())) {
-                        player.inventory().remove(item);
-                        player.inventory().add(new Item(TWISTED_SLAYER_HELMET_I));
-                    }
-                });
                 return true;
             }
         }
@@ -77,38 +60,8 @@ public class ItemCombination extends PacketInteraction {
             return true;
         }
 
-        if ((use.getId() == KBD_HEADS || usedWith.getId() == KBD_HEADS) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedKBD(player);
-            return true;
-        }
-
-        if ((use.getId() == BLOOD_MONEY || usedWith.getId() == BLOOD_MONEY) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedJad(player);
-            return true;
-        }
-
-        if ((use.getId() == INFERNAL_CAPE || usedWith.getId() == INFERNAL_CAPE) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedZuk(player);
-            return true;
-        }
-
-        if ((use.getId() == VAMPYRE_DUST || usedWith.getId() == VAMPYRE_DUST) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedVamp(player);
-            return true;
-        }
-
         if ((use.getId() == SAELDOR_SHARD || usedWith.getId() == SAELDOR_SHARD) && (use.getId() == BLADE_OF_SAELDOR || usedWith.getId() == BLADE_OF_SAELDOR)) {
             combineBladeOfSaeldor(player);
-            return true;
-        }
-
-        if ((use.getId() == DARK_CLAW || usedWith.getId() == DARK_CLAW) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedSkot(player);
-            return true;
-        }
-
-        if ((use.getId() == ALCHEMICAL_HYDRA_HEADS || usedWith.getId() == ALCHEMICAL_HYDRA_HEADS) && (use.getId() == TWISTED_SLAYER_HELMET_I || usedWith.getId() == TWISTED_SLAYER_HELMET_I)) {
-            combineTwistedHydra(player);
             return true;
         }
 
@@ -231,181 +184,6 @@ public class ItemCombination extends PacketInteraction {
                         player.inventory().add(new Item(DRAGON_HUNTER_CROSSBOW_T), true);
                         player.message("You carefully attach the Vorkath's head to the device and create the dragon hunter");
                         player.message("crossbow (t).");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedKBD(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice kbd's head.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(KBD_HEADS, TWISTED_SLAYER_HELMET_I)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(KBD_HEADS), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(TWISTED_SLAYER_HELMET_I_KBD_HEADS), true);
-                        player.message("You carefully attach the kbd's head to the helmet to give it an outstanding look.");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedJad(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice 1 million BM.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(new Item(BLOOD_MONEY,1_000_000), new Item(TWISTED_SLAYER_HELMET_I))) {
-                            player.message("You did not have 1 million blood money.");
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(BLOOD_MONEY,1_000_000), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(TWISTED_SLAYER_HELMET_I_JAD), true);
-                        player.message("You carefully load helmet with blood money to give it an outstanding look.");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedZuk(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice the infernal cape.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(INFERNAL_CAPE, TWISTED_SLAYER_HELMET_I)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(INFERNAL_CAPE), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE), true);
-                        player.message("You carefully attach the infernal cape to the helmet to give it an outstanding look.");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedVamp(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice the vampyre dust.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(VAMPYRE_DUST, TWISTED_SLAYER_HELMET_I)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(VAMPYRE_DUST), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(TWISTED_SLAYER_HELMET_I_VAMP_DUST), true);
-                        player.message("You carefully attach the vampyre dust to the helmet to give it an outstanding look.");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedSkot(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice Dark claw.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(DARK_CLAW, TWISTED_SLAYER_HELMET_I)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(DARK_CLAW), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(HYDRA_SLAYER_HELMET_I), true);
-                        player.message("You carefully attach Dark claw to the helmet to give it an outstanding look.");
-                        stop();
-                    } else if(option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedHydra(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted slayer helmet (i)?", "Yes, sacrifice hydra's head.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if(isPhase(0)) {
-                    if(option == 1) {
-                        if(!player.inventory().containsAll(ALCHEMICAL_HYDRA_HEADS, TWISTED_SLAYER_HELMET_I)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(new Item(ALCHEMICAL_HYDRA_HEADS), true);
-                        player.inventory().remove(new Item(TWISTED_SLAYER_HELMET_I), true);
-                        player.inventory().add(new Item(HYDRA_SLAYER_HELMET_I), true);
-                        player.message("You carefully attach hydra's head to the helmet to give it an outstanding look.");
                         stop();
                     } else if(option == 2) {
                         stop();

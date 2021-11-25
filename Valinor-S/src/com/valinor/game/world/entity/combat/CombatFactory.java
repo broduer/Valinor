@@ -1022,7 +1022,7 @@ public class CombatFactory {
 
                 //One in 175 chance of dealing the finishing blow. This does not count towards world bosses
                 boolean ignore = npc.isWorldBoss() || npc.id() == NpcIdentifiers.TZTOKJAD || npc.id() == NpcIdentifiers.CORPOREAL_BEAST || npc.isCombatDummy() || (player.getRaids() != null && player.getRaids().raiding(player)) || npc.id() == THE_NIGHTMARE_9430;
-                if (player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KILL_BLOW) && World.getWorld().rollDie(175, 1) && !ignore && !npc.locked()) {
+                if (player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KILL_BLOW) && World.getWorld().rollDie(300, 1) && !ignore && !npc.locked()) {
                     hit.setDamage(npc.hp());
                 }
 

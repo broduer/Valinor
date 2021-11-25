@@ -14,8 +14,10 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.net.packet.interaction.PacketInteraction;
 
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
 import static com.valinor.util.NpcIdentifiers.DURADEL;
 import static com.valinor.util.NpcIdentifiers.KONAR_QUO_MATEN;
 
@@ -72,8 +74,7 @@ public class KonarQuoMaten extends PacketInteraction {
         int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);
         player.putAttrib(AttributeKey.SLAYER_TASK_AMT, task_amt);
 
-        //TODO quest tab
-        Slayer.displayCurrentAssignment(player);
+        player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
     }
 
     public static void giveTask(Player player) {

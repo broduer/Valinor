@@ -48,6 +48,7 @@ import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.items.keys.SlayerKey;
+import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.sound.CombatSounds;
@@ -373,6 +374,10 @@ public class Player extends Mob {
 
         if (mode == ExpMode.GLADIATOR)
             percent += 10;
+
+        var dropRateBoostUnlock = slayerRewards.getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
+        if(dropRateBoostUnlock)
+            percent += 3;
 
         //Drop rate percentage boost can't go over cap%
         return percent;

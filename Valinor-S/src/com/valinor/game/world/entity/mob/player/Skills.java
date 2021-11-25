@@ -6,6 +6,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.edgevile.Mac;
 import com.valinor.game.content.skill.Skillable;
+import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.syntax.impl.SetLevel;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -214,6 +215,15 @@ public class Skills {
 
         if (multiplied) {
             amt *= player.expmode().getExpMultiplier();
+        }
+
+        var dropRateBoostUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.EXP_BOOSTER);
+        if(dropRateBoostUnlock) {
+            switch (player.expmode()) {
+                case ROOKIE -> amt *= .10;
+                case GLADIATOR -> amt *= .5;
+                case CHALLENGER -> amt *= .3;
+            }
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;

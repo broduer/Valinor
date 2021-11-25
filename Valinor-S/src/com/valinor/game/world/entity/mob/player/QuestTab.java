@@ -179,6 +179,14 @@ public final class QuestTab {
                 int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
                 return "Slayer Points: <col=ffffff>" + Utils.formatNumber(rewardPoints);
             }
+        },
+
+        SLAYER_TASKS_COMPLETED(73017) {
+            @Override
+            public String fetchLineData(Player player) {
+                int slayerTasksCompleted = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
+                return "Slayer Tasks Completed: <col=ffffff>" + Utils.formatNumber(slayerTasksCompleted);
+            }
         };
 
         public final int childId;

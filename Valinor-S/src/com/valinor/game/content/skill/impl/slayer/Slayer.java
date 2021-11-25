@@ -5,8 +5,6 @@ import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.master.SlayerMaster;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.skill.impl.slayer.superior_slayer.SuperiorSlayer;
-import com.valinor.game.content.tasks.impl.Tasks;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -155,15 +153,18 @@ public class Slayer {
         if (killer.slayerTaskAmount() > 0) {
 
             // Check our task. Decrease. Reward. leggo
-            int task = killer.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0);
-            int amt = killer.getAttribOr(AttributeKey.SLAYER_TASK_AMT, 0);
+            var task = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_ID, 0);
+            var amt = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_AMT, 0);
+            var wildernessSlayerActive = killer.<Boolean>getAttribOr(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false);
+            var inWilderness = WildernessArea.inWilderness(npc.tile());
+            var bonusPoints = killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.BONUS_SLAYER_POINTS);
 
             if (task > 0) {
                 // Resolve taskdef
                 SlayerCreature taskdef = SlayerCreature.lookup(task);
                 if (taskdef != null && taskdef.matches(npc.id())) {
 
-                    if (killer.<Boolean>getAttribOr(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false) && SlayerCreature.lookup(task) != null && SlayerCreature.lookup(task).matches(npc.id()) && !WildernessArea.inWilderness(npc.tile())) {
+                    if (wildernessSlayerActive && !inWilderness) {
                         killer.message("<col=FF0000>You must kill your slayer assignment within the wilderness to receive experience!");
                         amt = 0;
                     }
@@ -176,14 +177,11 @@ public class Slayer {
                     //Update quest tab
                     killer.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(killer));
 
-                    // Update the slayer interface with the proper assignment amt
-                    Slayer.displayCurrentAssignment(killer);
-
                     // Finished?
                     if (amt == 0) {
                         // Give points
-                        int spree = (int) killer.getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0) + 1;
-                        int master = Math.max(1, killer.getAttribOr(AttributeKey.SLAYER_MASTER, 0));
+                        var spree = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0) + 1;
+                        var master = Math.max(1, killer.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
                         if (master == Slayer.TURAEL_ID) {
                             killer.message("<col=7F00FF>You have completed your task; return to a Slayer master.");
                         } else {
@@ -244,21 +242,27 @@ public class Slayer {
                                 }
                             }
 
+                            if (bonusPoints) {
+                                ptsget += 15;
+                            }
+
                             if (ptsget > 0) {
                                 killer.message("<col=7F00FF>You've completed " + spree + " tasks in a row and received " + (int) ptsget + " points; return to a Slayer Master.");
                                 killer.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, Math.min(65535, (int) killer.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0) + (int) ptsget));
+                                killer.getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(killer));
                             }
 
-                            //TODO achivements here
+                            //TODO achievements here
                             DailyTaskManager.increase(DailyTasks.SLAYER, killer);
 
-                            if (killer.getAttribOr(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false)) {
+                            if (wildernessSlayerActive) {
                                 killer.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false);
                             }
                         }
 
                         killer.putAttrib(AttributeKey.SLAYER_TASK_SPREE, spree);
                         killer.putAttrib(AttributeKey.COMPLETED_SLAYER_TASKS, (int) killer.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0) + 1);
+                        killer.getPacketSender().sendString(SLAYER_TASKS_COMPLETED.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASKS_COMPLETED.childId).fetchLineData(killer));
                     } else {
                         // Chance to spawn a superior slayer one if unlocked.
                         SuperiorSlayer.trySpawn(killer, taskdef, npc);

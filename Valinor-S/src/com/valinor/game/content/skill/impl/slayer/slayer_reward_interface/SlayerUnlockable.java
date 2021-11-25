@@ -17,11 +17,11 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum SlayerUnlockable {
 
-    DOUBLE_SLAYER_POINTS(63406, new Item(SLAYER_TOME), 750, "Double slayer points", "Automatically doubles your points when" + "<br>completing any slayer task. <col=ca0d0d>(750 points)</col>"),
+    BONUS_SLAYER_POINTS(63406, new Item(SLAYER_TOME), 750, "Bonus slayer points", "Automatically adds +15 bonus points when" + "<br>completing any slayer task. <col=ca0d0d>(750 points)</col>"),
 
-    BLOOD_MONEY_FROM_KILLING_BOSSES(63407, new Item(BLOOD_MONEY, 500), 750, "BM from killing bosses", "Generate BM whilst killing bosses.<col=ca0d0d>(750 <br><col=ca0d0d>points)"),
+    MONEY_FROM_KILLING_BOSSES(63407, new Item(COINS_995, 5000), 100, "Coins from killing bosses", "Generate coins whilst killing bosses.<col=ca0d0d>(100 <br><col=ca0d0d>points)"),
 
-    DOUBLE_DROP_CHANCE(63408, new Item(DOUBLE_DROPS_LAMP), 400, "Double drops", "Have a chance at rolling double drops when" + "<br>killing bosses. 1/25 chance <col=ca0d0d>400 points)"),
+    DOUBLE_DROP_CHANCE(63408, new Item(DOUBLE_DROPS_LAMP), 400, "Double drops", "Have a chance at rolling double drops when" + "<br>killing bosses. 1/100 chance <col=ca0d0d>400 points)"),
 
     KILL_BLOW(63409, new Item(ARMADYL_GODSWORD), 750, "Kill blow", "Have a chance at dealing a finishing blow" + "<br>on any monster.<col=ca0d0d>(750 points)"),
 
@@ -29,25 +29,25 @@ public enum SlayerUnlockable {
 
     REVENANT_TELEPORT(63411, new Item(REVENANT_CAVE_TELEPORT), 300, "Revenants cave teleport", "Learn to teleport directly to the revenants." + "<br><col=ca0d0d>(300 points)"),
 
-    LARRANS_LUCK(63412, new Item(LARRANS_KEY, 10), 250, "Larrans luck", "Extra chance of receiving Larrans keys" + "<br>during your slayer tasks. Larrans key" + "<br>drop rate = 1/400 This perk gives you 12.5% <br>more chance. <col=ca0d0d>(250 points)"),
+    LARRANS_LUCK(63412, new Item(LARRANS_KEY, 10), 250, "Larrans luck", "Extra chance of receiving Larrans keys" + "<br>during your slayer tasks. +15%." + "<br><col=ca0d0d>(250 points)"),
 
     NO_SLAYER_REQ(63413, new Item(SLAYERS_RESPITE), 400, "No slayer requirement", "You can kill any monster without the slayer<br>level requirement. <col=ca0d0d>(400 points)"),
 
-    MORE_BM_THIEVING(63414, new Item(BLOOD_MONEY, 5000), 350, "Thieving boost", "Gives 10% more blood money whilst<br>thieving. <col=ca0d0d>(350 points)"),
+    MORE_COINS_THIEVING(63414, new Item(COINS_995, 5000), 100, "Thieving boost", "Gives 10% more coins whilst<br>thieving. <col=ca0d0d>(100 points)"),
 
-    DROP_RATE_BOOST(63415, new Item(SPELL_SCROLL), 700, "Drop rate boost", "Boosts your drop rate by 3%. <br><col=ca0d0d>(700 points)"),
+    DROP_RATE_BOOST(63415, new Item(SPELL_SCROLL), 1250, "Drop rate boost", "Boosts your drop rate by 3%.<br><col=ca0d0d>(1250 points)"),
 
-    ZRIAWK_BOOST(63416, new Item(ZRIAWK), 3000, "Zriawk boost", "Gives an additional 5% boost to the<br>Zriawk pet. <col=ca0d0d>(3000 points)"),
+    SUPPLY_DROP(63416, new Item(SUPPLY_CRATE), 500, "Supply drop", "Drops supplies during slayer tasks.<br><col=ca0d0d>(500 points)"),
 
     DOUBLE_DROP_LAMPS(63417, new Item(DOUBLE_DROPS_LAMP), 150, "Double drops lamp", "Ability to receive double drops lamps<br>whilst thieving. <col=ca0d0d>(150 points)"),
 
     LIKE_A_BOSS(63418, new Item(3064), 100, "Like a boss", "Slayer master will be able to assign<br>World boss monsters as your task. <col=ca0d0d>(100 <br><col=ca0d0d>points)"),
 
-    KEY_OF_DROPS(63419, new Item(CustomItemIdentifiers.KEY_OF_DROPS), 250, "Key of drops", "Random chance of receiving the key of<br>drops. During your slayer task in the" + "<br>wilderness. Drop rate = 1/1000 <col=ca0d0d> (250 points)"),
+    KEY_OF_DROPS(63419, new Item(CustomItemIdentifiers.KEY_OF_DROPS), 250, "Key of drops", "Random chance of receiving the key of<br>drops. During your slayer task" + "<br>Drop rate = 1/1000 <col=ca0d0d> (250 points)"),
 
-    NOTED_DRAGON_BONES(63420, new Item(LAVA_DRAGON_BONES + 1), 250, "Noted dragon bones", "Dragons drop dragon bones in banknote" + "<br>form while killed inside the wilderness." + "<br><col=ca0d0d>(250 points)"),
+    NOTED_DRAGON_BONES(63420, new Item(LAVA_DRAGON_BONES + 1), 250, "Noted dragon bones", "Dragons drop dragon bones in banknote" + "<br>when killing dragons on task." + "<br><col=ca0d0d>(250 points)"),
 
-    GODWARS_ENTRY(63421, new Item(KREEARRA), 50, "Godwars dungeon entry", "Learn how to access the godwars dungeon.<br><col=ca0d0d>(50 points)"),
+    EXP_BOOSTER(63421, new Item(TOME_OF_EXPERIENCE), 650, "Experience booster", "Boosts your exp based on your game mode.<br>10% for rookie, 5% for gladiator, 3%<br>for challenger<col=ca0d0d>(650 points)"),
 
     WORLD_BOSS_TELEPORT(63422, new Item(SKOTOS), 250, "World Boss Teleport", "Ability to teleport directly to the world<br>boss. <col=ca0d0d>(250 points)"),
 
@@ -55,13 +55,13 @@ public enum SlayerUnlockable {
 
     TREASURE_HUNT(63424, new Item(CASKET), 300, "Treasure hunt", "Learn how to find treasures whilst pvming.<br><col=ca0d0d>(300 points)"),
 
-    TZTOK_JAD(63425, new Item(TZREKJAD), 100, "TzTok-Jad", "You unlock the ability to kill TzTok-Jad. <col=ca0d0d>(100 <br><col=ca0d0d>points)"),
+    TELEPORT_TO_TASK(63425, new Item(TELEPORT_CARD), 100, "Task teleportation", "Unlock the ability to teleport straight to tasks. <col=ca0d0d>(100 <br><col=ca0d0d>points)"),
 
     BIGGEST_AND_BADDEST(63426, new Item(SUPERIOR_DRAGON_BONES), 500, "Biggest and baddest", "Better chance to get a superior boss," + "<br>while on slayer task <col=ca0d0d>(500 points)"),
 
-    ELECTION_DAY(63427, new Item(VOTE_TICKET), 750, "Election day", "20% Chance for double vote points when" + "<br>voting <col=ca0d0d>(750 points)"),
+    ELECTION_DAY(63427, new Item(VOTE_TICKET), 750, "Election day", "10% Chance for double vote points when" + "<br>voting <col=ca0d0d>(750 points)"),
 
-    WHOS_KEYS_ARE_THESE(63428, new Item(CustomItemIdentifiers.KEY_OF_DROPS), 500, "Who's keys are these", "Chance for PK's to drop a key of drops" + "<br> <col=ca0d0d>(500 points)"),
+    MALEVOLENT_MASQUERADE(63428, new Item(SLAYER_HELMET), 400, "Malevolent masquerade", "Learn to combine the protective Slayer<br>headgear and Slayer gem into one<br>universal helmet, with level 55 Crafting.<br><col=ca0d0d>(400 points)"),
 
     WEAK_SPOT(63429, new Item(BANDOS_GODSWORD), 650, "Weak spot", "10% Increased damage to the task monster." + "<br><col=ca0d0d>(650 points)"),
 

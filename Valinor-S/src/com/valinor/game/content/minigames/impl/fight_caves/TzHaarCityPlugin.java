@@ -41,10 +41,6 @@ public class TzHaarCityPlugin extends PacketInteraction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int type) {
         if (object.getId() == 11833) { //Fight caves entrance
-            if(!player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.TZTOK_JAD) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-                player.message("You need the Tztok Jad Slayer Reward unlocked before you can enter this cave.");
-                return true;
-            }
             MinigameManager.playMinigame(player, new FightCavesMinigame(1));
             return true;
         } else if (object.getId() == 11834) { //Fight caves leaving
