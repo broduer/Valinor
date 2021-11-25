@@ -220,7 +220,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(2273, 4049, 0))));
 
         teleportOptions.put(50, new OptionMenu("World Boss", new String[] { "Boss", "World Boss" },
-            new TeleportAction(player, null)));
+            new TeleportAction(player, null,true, "World Boss")));
 
         teleportOptions.put(51, new OptionMenu("Alchemical Hydra", new String[] { "Boss", "Alchemical Hydra" },
             new TeleportAction(player, new Tile(1354, 10258,0))));
@@ -231,44 +231,47 @@ public class TeleportMenuConstants {
         teleportOptions.put(53, new OptionMenu("Corrupted Nechryarch", new String[] { "Boss", "Corrupted Nechryarch" },
             new TeleportAction(player, new Tile(1885, 3865,0))));
 
-        teleportOptions.put(54, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
+        teleportOptions.put(54, new OptionMenu("<img=1049>Revenants", new String[] { "Revenants", "revs", "rev cave" },
+            new TeleportAction(player, new Tile(3127, 3832,0))));
+
+        teleportOptions.put(55, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
             new TeleportAction(player, new Tile(3565, 3306,0))));
 
-        teleportOptions.put(55, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
+        teleportOptions.put(56, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
             new TeleportAction(player, new Tile(3365, 3265, 0))));
 
-        teleportOptions.put(56, new OptionMenu("Barrows", new String[] { "Minigames", "Barrows" },
+        teleportOptions.put(57, new OptionMenu("Barrows", new String[] { "Minigames", "Barrows" },
             new TeleportAction(player, new Tile(3565, 3316, 0))));
 
-        teleportOptions.put(57, new OptionMenu("Fight Caves", new String[] { "Minigames", "Fight Caves", "Fire Cape" },
+        teleportOptions.put(58, new OptionMenu("Fight Caves", new String[] { "Minigames", "Fight Caves", "Fire Cape" },
             new TeleportAction(player, new Tile(2480, 5175, 0))));
 
-        teleportOptions.put(58,
+        teleportOptions.put(59,
             new OptionMenu("Warrior's Guild", new String[] { "Minigames", "Warrior Guild", "Defender" },
                 new TeleportAction(player, new Tile(2841, 3538, 0))));
 
-        teleportOptions.put(59, new OptionMenu("Pest Control", new String[] { "Minigames", "Pest Control", "Void" },
+        teleportOptions.put(60, new OptionMenu("Pest Control", new String[] { "Minigames", "Pest Control", "Void" },
             new TeleportAction(player, new Tile(2658, 2649, 0))));
 
-        teleportOptions.put(60, new OptionMenu("Brimhaven Agility", new String[] { "Minigames", "Brimhaven Agility" },
+        teleportOptions.put(61, new OptionMenu("Brimhaven Agility", new String[] { "Minigames", "Brimhaven Agility" },
             new TeleportAction(player, new Tile(0, 0))));
 
-        teleportOptions.put(61, new OptionMenu("Varrock", new String[] { "Cities", "Varrock" },
+        teleportOptions.put(62, new OptionMenu("Varrock", new String[] { "Cities", "Varrock" },
             new TeleportAction(player, new Tile(3110, 3424))));
 
-        teleportOptions.put(62, new OptionMenu("Falador", new String[] { "Cities", "Falador" },
+        teleportOptions.put(63, new OptionMenu("Falador", new String[] { "Cities", "Falador" },
             new TeleportAction(player, new Tile(2965, 3380))));
 
-        teleportOptions.put(63, new OptionMenu("Lumbridge", new String[] { "Cities", "Lumbridge" },
+        teleportOptions.put(64, new OptionMenu("Lumbridge", new String[] { "Cities", "Lumbridge" },
             new TeleportAction(player, new Tile(3223, 3218))));
 
-        teleportOptions.put(64, new OptionMenu("Draynor", new String[] { "Cities", "Draynor" },
+        teleportOptions.put(65, new OptionMenu("Draynor", new String[] { "Cities", "Draynor" },
             new TeleportAction(player, new Tile(3093, 3244))));
 
-        teleportOptions.put(65, new OptionMenu("Camelot", new String[] { "Cities", "Camelot" },
+        teleportOptions.put(66, new OptionMenu("Camelot", new String[] { "Cities", "Camelot" },
             new TeleportAction(player, new Tile(2757, 3477))));
 
-        teleportOptions.put(66, new OptionMenu("Wintertodt", new String[] { "Wintertodt", "Minigames", "Firemaking" },
+        teleportOptions.put(67, new OptionMenu("Wintertodt", new String[] { "Wintertodt", "Minigames", "Firemaking" },
             new TeleportAction(player, new Tile(1630, 3947))));
 
         return teleportOptions;
