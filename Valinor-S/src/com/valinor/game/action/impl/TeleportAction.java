@@ -74,7 +74,7 @@ public class TeleportAction extends Action<Mob> {
                 player.message("Something went wrong, couldn't find tile to teleport too.");
                 return;
             }
-            
+
             if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                 Teleports.basicTeleport(player, tile);
             }

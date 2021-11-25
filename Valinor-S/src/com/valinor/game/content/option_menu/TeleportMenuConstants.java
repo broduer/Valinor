@@ -152,7 +152,7 @@ public class TeleportMenuConstants {
                 new TeleportAction(player, new Tile(3366, 3634))));
 
         teleportOptions.put(29, new OptionMenu("Corporeal Beast Lair", new String[] { "Boss", "Corporal Beast" },
-            new TeleportAction(player, new Tile(2945, 4384, 2))));
+            new TeleportAction(player, new Tile(2969, 4382, 2))));
 
         teleportOptions.put(30,
             new OptionMenu("<img=1049>Rogue's Castle", new String[] { "Boss", "Wilderness", "Chaos Elemental" },
@@ -190,7 +190,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(3723, 5798, 0))));
 
         teleportOptions.put(40, new OptionMenu("Zulrah's Island", new String[] { "Boss", "Zulrah" },
-            new TeleportAction(player, new Tile(2267, 3069, 0))));
+            new TeleportAction(player, new Tile(2204, 3056, 0))));
 
         teleportOptions.put(41, new OptionMenu("<img=1049>Callisto", new String[] { "Boss", "Callisto" },
             new TeleportAction(player, new Tile(3307, 3837, 0))));
@@ -235,7 +235,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(3127, 3832,0))));
 
         teleportOptions.put(55, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
-            new TeleportAction(player, new Tile(3565, 3306,0))));
+            new TeleportAction(player, new Tile(1245, 3561,0))));
 
         teleportOptions.put(56, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
             new TeleportAction(player, new Tile(3365, 3265, 0))));
