@@ -1,391 +1,121 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	2916
-  ],
-  "guaranteed": [
-	{
-	  "id": 555
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 2916, 2917 ],
+	"guaranteed": [
+		{ "id": 555, "min": 1, "max": 1 } //Water rune
+	],
+	"tables": [
 		{
-		  "id": 555,
-		  "min": 1,
-		  "max": 91,
-		  "points": 1
+			"name": "Runes",
+			"": 3,
+			"items": [
+				{ "id": 555, "min": 150, "max": 150, "": 3 }, //Water rune
+				{ "id": 565, "min": 4, "max": 20, "": 3 }, //Blood rune
+				{ "id": 560, "min": 9, "max": 23, "": 3 }, //Death rune
+				{ "id": 4695, "min": 3, "max": 72, "": 1 }, //Mist rune
+				{ "id": 4698, "min": 2, "max": 100, "": 1 }, //Mud rune
+				{ "id": 4694, "min": 3, "max": 59, "": 1 } //Steam rune
+			]
 		},
 		{
-		  "id": 565,
-		  "min": 4,
-		  "max": 12,
-		  "points": 1
+			"name": "Seeds",
+			"": 1,
+			"items": [
+				{ "id": 5298, "min": 1, "max": 1, "": 3 }, //Avantoe seed
+				{ "id": 5281, "min": 1, "max": 1, "": 3 }, //Belladonna seed
+				{ "id": 5280, "min": 1, "max": 1, "": 3 }, //Cactus seed
+				{ "id": 5301, "min": 1, "max": 1, "": 3 }, //Cadantine seed
+				{ "id": 5294, "min": 1, "max": 1, "": 3 }, //Harralander seed
+				{ "id": 5297, "min": 1, "max": 1, "": 3 }, //Irit seed
+				{ "id": 5104, "min": 1, "max": 1, "": 3 }, //Jangerberry seed
+				{ "id": 5299, "min": 1, "max": 1, "": 3 }, //Kwuarm seed
+				{ "id": 5302, "min": 1, "max": 1, "": 3 }, //Lantadyme seed
+				{ "id": 5100, "min": 1, "max": 1, "": 3 }, //Limpwurt seed
+				{ "id": 5292, "min": 1, "max": 1, "": 3 }, //Marrentill seed
+				{ "id": 5282, "min": 1, "max": 1, "": 3 }, //Mushroom spore
+				{ "id": 5106, "min": 1, "max": 1, "": 3 }, //Poison ivy seed
+				{ "id": 5323, "min": 1, "max": 1, "": 3 }, //Strawberry seed
+				{ "id": 5293, "min": 1, "max": 1, "": 3 }, //Tarromin seed
+				{ "id": 5296, "min": 1, "max": 1, "": 3 }, //Toadflax seed
+				{ "id": 5105, "min": 1, "max": 1, "": 3 }, //Whiteberry seed
+				{ "id": 5311, "min": 1, "max": 1, "": 3 }, //Wildblood seed
+				{ "id": 5321, "min": 1, "max": 14, "": 3 }, //Watermelon seed
+				{ "id": 5295, "min": 1, "max": 1, "": 3 }, //Ranarr seed
+				{ "id": 5303, "min": 1, "max": 1, "": 1 }, //Dwarf weed seed
+				{ "id": 5300, "min": 1, "max": 1, "": 1 }, //Snapdragon seed
+				{ "id": 5304, "min": 1, "max": 1, "": 1 } //Torstol seed
+			]
 		},
 		{
-		  "id": 560,
-		  "min": 9,
-		  "max": 19,
-		  "points": 1
+			"name": "Weapons/Armour",
+			"": 3,
+			"items": [
+				{ "id": 888, "min": 90, "max": 90, "": 30 }, //Mithril arrow
+				{ "id": 1383, "min": 1, "max": 1, "": 30 }, //Staff of water
+				{ "id": 1111, "min": 1, "max": 1, "": 20 }, //Adamant chainbody
+				{ "id": 1345, "min": 1, "max": 1, "": 20 }, //Adamant warhammer
+				{ "id": 1147, "min": 1, "max": 1, "": 20 }, //Rune med helm
+				{ "id": 1395, "min": 1, "max": 1, "": 20 }, //Water battlestaff
+				{ "id": 1403, "min": 1, "max": 1, "": 20 }, //Mystic water staff
+				{ "id": 9337, "min": 15, "max": 15, "": 10 }, //Sapphire bolts
+				{ "id": 2487, "min": 1, "max": 1, "": 10 }, //Blue d'hide vamb
+				{ "id": 1123, "min": 1, "max": 1, "": 10 }, //Adamant platebody
+				{ "id": 1163, "min": 1, "max": 1, "": 10 }, //Rune full helm
+				{ "id": 20730, "min": 1, "max": 1, "": 1 } //Mist battlestaff
+			]
 		},
 		{
-		  "id": 4695,
-		  "min": 3,
-		  "max": 10,
-		  "points": 1
+			"name": "Herbs",
+			"": 3,
+			"items": [
+				{ "id": 199, "min": 1, "max": 1, "": 15 }, //Grimy guam leaf
+				{ "id": 201, "min": 1, "max": 1, "": 15 }, //Grimy marrentill
+				{ "id": 203, "min": 1, "max": 1, "": 15 }, //Grimy tarromin
+				{ "id": 205, "min": 1, "max": 1, "": 10 }, //Grimy harralander
+				{ "id": 207, "min": 1, "max": 1, "": 10 }, //Grimy ranarr weed
+				{ "id": 209, "min": 1, "max": 1, "": 10 }, //Grimy irit leaf
+				{ "id": 211, "min": 1, "max": 1, "": 10 }, //Grimy avantoe
+				{ "id": 213, "min": 1, "max": 1, "": 5 }, //Grimy kwuarm
+				{ "id": 215, "min": 1, "max": 1, "": 5 }, //Grimy cadantine
+				{ "id": 2485, "min": 1, "max": 1, "": 5 }, //Grimy lantadyme
+				{ "id": 217, "min": 1, "max": 1, "": 1 } //Grimy dwarf weed
+			]
 		},
 		{
-		  "id": 4698,
-		  "min": 2,
-		  "max": 9,
-		  "points": 1
+			"name": "Gems/Ores/Bars",
+			"": 3,
+			"items": [
+				{ "id": 447, "min": 1, "max": 1, "": 6 }, //Mithril ore
+				{ "id": 448, "min": 1, "max": 19, "": 6 }, //Mithril ore (noted)
+				{ "id": 2360, "min": 2, "max": 15, "": 3 }, //Mithril bar (noted)
+				{ "id": 1624, "min": 1, "max": 4, "": 3 }, //Uncut sapphire (noted)
+				{ "id": 1622, "min": 1, "max": 3, "": 3 }, //Uncut emerald (noted)
+				{ "id": 1620, "min": 3, "max": 3, "": 3 }, //Uncut ruby (noted)
+				{ "id": 1618, "min": 1, "max": 3, "": 1 } //Uncut diamond (noted)
+			]
 		},
 		{
-		  "id": 4694,
-		  "min": 3,
-		  "max": 12,
-		  "points": 1
+			"name": "Fish",
+			"": 1,
+			"items": [
+				{ "id": 378, "min": 4, "max": 18, "": 1 }, //Raw lobster (noted)
+				{ "id": 384, "min": 3, "max": 8, "": 1 }, //Raw shark (noted)
+				{ "id": 385, "min": 1, "max": 2, "": 1 } //Shark
+			]
+		},
+		{
+			"name": "Other",
+			"": 3,
+			"items": [
+				{ "id": 995, "min": 1, "max": 2978, "": 12 }, //Coins
+				{ "id": 572, "min": 1, "max": 16, "": 12 }, //Water orb (noted)
+				{ "id": 232, "min": 3, "max": 29, "": 6 }, //Snape grass (noted)
+				{ "id": 407, "min": 1, "max": 3, "": 6 }, //Oyster
+				{ "id": 402, "min": 10, "max": 29, "": 6 }, //Seaweed (noted)
+				{ "id": 1444, "min": 1, "max": 1, "": 6 }, //Water talisman
+				{ "id": 228, "min": 5, "max": 50, "": 6 }, //Vial of water (noted)
+				{ "id": 6668, "min": 1, "max": 1, "": 6 }, //Fishbowl
+				{ "id": 2722, "min": 1, "max": 1, "": 1 } //Clue scroll (hard)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Seeds",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 5298,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5281,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5280,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5301,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5294,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5297,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5104,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5299,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5302,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5100,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5292,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5282,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5106,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5323,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5293,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5296,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5105,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5311,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5321,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5295,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5303,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 888,
-		  "min": 1,
-		  "max": 90,
-		  "points": 1
-		},
-		{
-		  "id": 1111,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1159,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1343,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1147,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1383,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1395,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 9337,
-		  "min": 1,
-		  "max": 15,
-		  "points": 1
-		},
-		{
-		  "id": 2487,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1123,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Herbs",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 199,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 201,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 203,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 205,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 207,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 209,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 211,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 213,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 215,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 2485,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 217,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Supplies",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 447,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 448,
-		  "min": 1,
-		  "max": 5,
-		  "points": 1
-		},
-		{
-		  "id": 2359,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1624,
-		  "min": 1,
-		  "max": 4,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Fish",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 378,
-		  "min": 4,
-		  "max": 12,
-		  "points": 1
-		},
-		{
-		  "id": 384,
-		  "min": 3,
-		  "max": 6,
-		  "points": 1
-		},
-		{
-		  "id": 385,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 1,
-		  "max": 692,
-		  "points": 1
-		},
-		{
-		  "id": 571,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 231,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 407,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 401,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1444,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 227,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 6668,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

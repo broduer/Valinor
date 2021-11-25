@@ -7,13 +7,12 @@
 	485,
 	486,
 	487,
+	3138,
 	7397
   ],
-  "guaranteed": [
-	{
-	  "id": 532
-	}
-  ],
+	"guaranteed": [
+		{ "id": 526, "min": 1, "max": 1 } //Bones
+	],
   "tables": [
 	{
 	  "name": "Weapons",

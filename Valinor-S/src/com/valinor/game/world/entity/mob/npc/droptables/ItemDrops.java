@@ -205,6 +205,25 @@ public class ItemDrops {
         }
     }
 
+    public static void supplyCrateDrops(Player player, Npc npc) {
+        if (!player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.SUPPLY_DROP)) {
+            return;
+        }
+
+        if (!Slayer.creatureMatches(player, npc.id())) {
+            return;
+        }
+
+        int roll = 100;
+        if (World.getWorld().rollDie(roll, 1)) {
+            Item supplyCrate = new Item(SUPPLY_CRATE);
+            GroundItem groundItem = new GroundItem(supplyCrate, player.tile(), player);
+            GroundItemHandler.createGroundItem(groundItem);
+            notification(player, supplyCrate);
+            player.message("<col=0B610B>You have received a supply crate drop!");
+        }
+    }
+
     public static void treasure(Player killer, Npc npc) {
         if (!killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.TREASURE_HUNT)) {
             return;

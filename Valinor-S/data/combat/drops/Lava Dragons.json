@@ -1,230 +1,71 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	6593
-  ],
-  "guaranteed": [
-	{
-	  "id": 11943,
-	  "amount": 1
-	},
-	{
-	  "id": 1747,
-	  "amount": 1
-	},
-	{
-	  "id": 11992,
-	  "amount": 1
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Vissy",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 6593 ],
+	"guaranteed": [
+		{ "id": 11943, "min": 1, "max": 1 }, //Lava dragon bones
+		{ "id": 1747, "min": 1, "max": 1 }, //Black dragonhide
+		{ "id": 11992, "min": 1, "max": 1 } //Lava scale
+	],
+	"tables": [
 		{
-		  "id": 11286,
-		  "amount": 1,
-		  "points": 1
+			"name": "Runes/Ammunition",
+			"points": 10,
+			"items": [
+				{ "id": 811, "min": 12, "max": 12, "points": 9 }, //Rune dart
+				{ "id": 830, "min": 20, "max": 20, "points": 9 }, //Rune javelin
+				{ "id": 554, "min": 75, "max": 75, "points": 9 }, //Fire rune
+				{ "id": 4699, "min": 15, "max": 30, "points": 6 }, //Lava rune
+				{ "id": 868, "min": 8, "max": 8, "points": 3 }, //Rune knife
+				{ "id": 9144, "min": 30, "max": 30, "points": 3 }, //Runite bolts
+				{ "id": 560, "min": 20, "max": 20, "points": 3 }, //Death rune
+				{ "id": 565, "min": 20, "max": 20, "points": 3 }, //Blood rune
+				{ "id": 563, "min": 20, "max": 20, "points": 3 }, //Law rune
+				{ "id": 9194, "min": 12, "max": 12, "points": 1 }, //Onyx bolt tips
+				{ "id": 19582, "min": 15, "max": 15, "points": 1 } //Dragon javelin heads
+			]
+		},
+		{
+			"name": "Weapons/Armour",
+			"points": 10,
+			"items": [
+				{ "id": 1317, "min": 1, "max": 1, "points": 9 }, //Adamant 2h sword
+				{ "id": 1303, "min": 1, "max": 1, "points": 6 }, //Rune longsword
+				{ "id": 3053, "min": 1, "max": 1, "points": 6 }, //Lava battlestaff
+				{ "id": 1359, "min": 1, "max": 1, "points": 6 }, //Rune axe
+				{ "id": 1123, "min": 1, "max": 1, "points": 3 }, //Adamant platebody
+				{ "id": 1201, "min": 1, "max": 1, "points": 3 }, //Rune kiteshield
+				{ "id": 1147, "min": 1, "max": 1, "points": 1 }, //Rune med helm
+				{ "id": 1163, "min": 1, "max": 1, "points": 1 } //Rune full helm
+			]
+		},
+		{
+			"name": "Herbs",
+			"points": 10,
+			"items": [
+				{ "id": 199, "min": 1, "max": 1, "points": 12 }, //Grimy guam leaf
+				{ "id": 201, "min": 1, "max": 1, "points": 9 }, //Grimy marrentill
+				{ "id": 203, "min": 1, "max": 1, "points": 6 }, //Grimy tarromin
+				{ "id": 205, "min": 1, "max": 1, "points": 6 }, //Grimy harralander
+				{ "id": 207, "min": 1, "max": 1, "points": 6 }, //Grimy ranarr weed
+				{ "id": 209, "min": 1, "max": 1, "points": 3 }, //Grimy irit leaf
+				{ "id": 211, "min": 1, "max": 1, "points": 3 }, //Grimy avantoe
+				{ "id": 213, "min": 1, "max": 1, "points": 3 }, //Grimy kwuarm
+				{ "id": 215, "min": 1, "max": 1, "points": 1 }, //Grimy cadantine
+				{ "id": 2485, "min": 1, "max": 1, "points": 1 }, //Grimy lantadyme
+				{ "id": 217, "min": 1, "max": 1, "points": 1 } //Grimy dwarf weed
+			]
+		},
+		{
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 66, "max": 3000, "points": 50 }, //Coins
+				{ "id": 1442, "min": 1, "max": 1, "points": 25 }, //Fire talisman
+				{ "id": 570, "min": 15, "max": 15, "points": 12 }, //Fire orb (noted)
+				{ "id": 1897, "min": 3, "max": 3, "points": 12 }, //Chocolate cake
+				{ "id": 2361, "min": 2, "max": 2, "points": 6 }, //Adamantite bar
+				{ "id": 12073, "min": 1, "max": 1, "points": 3 }, //Clue scroll (elite)
+				{ "id": 11286, "min": 1, "max": 1, "points": 1 } //Draconic visage
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Common",
-	  "points": 7700,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 66,
-		  "max": 3000,
-		  "points": 3
-		},
-		{
-		  "id": 811,
-		  "amount": 12,
-		  "points": 2
-		},
-		{
-		  "id": 830,
-		  "amount": 20,
-		  "points": 2
-		},
-		{
-		  "id": 554,
-		  "amount": 75,
-		  "points": 2
-		},
-		{
-		  "id": 4699,
-		  "min": 15,
-		  "max": 30,
-		  "points": 2
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Uncommon",
-	  "points": 2200,
-	  "items": [
-		{
-		  "id": 868,
-		  "amount": 8,
-		  "points": 3
-		},
-		{
-		  "id": 9144,
-		  "amount": 30,
-		  "points": 3
-		},
-		{
-		  "id": 560,
-		  "amount": 20,
-		  "points": 3
-		},
-		{
-		  "id": 565,
-		  "amount": 20,
-		  "points": 3
-		},
-		{
-		  "id": 563,
-		  "amount": 20,
-		  "points": 3
-		},
-		{
-		  "id": 9194,
-		  "amount": 12,
-		  "points": 2
-		},
-		{
-		  "id": 1317,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1303,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1359,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1123,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1201,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1147,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1163,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1442,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 570,
-		  "amount": 15,
-		  "points": 3
-		},
-		{
-		  "id": 1897,
-		  "amount": 3,
-		  "points": 3
-		},
-		{
-		  "id": 2361,
-		  "amount": 2,
-		  "points": 3
-		}
-	  ],
-	  "tables": [
-		{
-		  "name": "Herbs",
-		  "points": 5,
-		  "items": [
-			{
-			  "id": 199,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 201,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 203,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 205,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 207,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 209,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 211,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 213,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 215,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 2485,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 217,
-			  "amount": 1,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		}
-	  ]
-	},
-	{
-	  "name": "Rare",
-	  "points": 99,
-	  "items": [],
-	  "tables": []
-	}
-  ]
+	]
 }

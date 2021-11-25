@@ -682,6 +682,7 @@ public class NpcDeath {
                         //Custom drops
                         ItemDrops.treasure(killer, npc);
                         ItemDrops.dropCoins(killer, npc);
+                        ItemDrops.supplyCrateDrops(killer, npc);
                         killer.getSlayerKey().drop(npc);
                         table.rollForLarransKey(npc, killer);
                         table.rollForBrimstoneKey(npc, killer);

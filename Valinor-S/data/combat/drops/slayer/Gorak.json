@@ -1,0 +1,27 @@
+ {
+    "npcs": [ 1834, 3141 ],
+    "guaranteed": [
+      { "id": 532, "min": 1, "max": 1 } //Big bones
+    ],
+    "tables": [
+      {
+        "name": "Gems",
+        "points": 1,
+        "items": [
+          { "id": 1623, "min": 1, "max": 1, "points": 6 }, //Uncut sapphire
+          { "id": 1621, "min": 1, "max": 1, "points": 6 }, //Uncut emerald
+          { "id": 1619, "min": 1, "max": 1, "points": 3 }, //Uncut ruby
+          { "id": 1617, "min": 1, "max": 1, "points": 1 } //Uncut diamond
+        ]
+      },
+      {
+        "name": "Other",
+        "points": 1,
+        "items": [
+          { "id": 9016, "min": 1, "max": 1, "points": 30 }, //Gorak claws
+          { "id": 1462, "min": 1, "max": 1, "points": 30 },  //Nature talisman
+          { "id": 1249, "min": 1, "max": 1, "points": 1 } //Dragon spear
+        ]
+      }
+    ]
+  }

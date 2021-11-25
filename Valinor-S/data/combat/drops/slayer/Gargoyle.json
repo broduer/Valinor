@@ -1,115 +1,44 @@
 {
-  "npcs": [
-	412,
-	413,
-	1543
-  ],
-  "guaranteed": [],
-  "points": 0,
-  "items": [],
-  "tables": [
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 412, 413, 1543 ],
+	"tables": [
 		{
-		  "id": 1311,
-		  "amount": 1,
-		  "points": 40
+			"name": "Weapons/Armour",
+			"points": 1,
+			"items": [
+				{ "id": 1073, "min": 1, "max": 1, "points": 40 }, //Adamant platelegs
+				{ "id": 1163, "min": 1, "max": 1, "points": 40 }, //Rune full helm
+				{ "id": 4129, "min": 1, "max": 1, "points": 15 }, //Adamant boots
+				{ "id": 1319, "min": 1, "max": 1, "points": 10 }, //Rune 2h sword
+				{ "id": 1373, "min": 1, "max": 1, "points": 10 }, //Rune battleaxe
+				{ "id": 1079, "min": 1, "max": 1, "points": 1 }, //Rune platelegs
+				{ "id": 4153, "min": 1, "max": 1, "points": 1 }, //Granite maul
+				{ "id": 4101, "min": 1, "max": 1, "points": 1 } //Mystic robe top (dark)
+			]
 		},
 		{
-		  "id": 1353,
-		  "amount": 1,
-		  "points": 40
+			"name": "Runes",
+			"points": 1,
+			"items": [
+				{ "id": 554, "min": 75, "max": 75, "points": 1 }, //Fire rune
+				{ "id": 554, "min": 150, "max": 150, "points": 1 }, //Fire rune
+				{ "id": 562, "min": 30, "max": 30, "points": 1 }, //Chaos rune
+				{ "id": 560, "min": 15, "max": 15, "points": 1 } //Death rune
+			]
 		},
 		{
-		  "id": 1365,
-		  "amount": 1,
-		  "points": 40
-		},
-		{
-		  "id": 4129,
-		  "amount": 1,
-		  "points": 40
-		},
-		{
-		  "id": 1163,
-		  "amount": 1,
-		  "points": 40
-		},
-		{
-		  "id": 4153,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 4101,
-		  "amount": 1,
-		  "points": 1
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 400, "max": 1000, "points": 6 }, //Coins
+				{ "id": 995, "min": 10000, "max": 10000, "points": 6 }, //Coins
+				{ "id": 7937, "min": 150, "max": 150, "points": 6 }, //Pure essence (noted)
+				{ "id": 445, "min": 10, "max": 20, "points": 3 }, //Gold ore (noted)
+				{ "id": 2354, "min": 15, "max": 15, "points": 3 }, //Steel bar (noted)
+				{ "id": 2358, "min": 10, "max": 15, "points": 3 }, //Gold bar (noted)
+				{ "id": 2360, "min": 15, "max": 15, "points": 1 }, //Mithril bar (noted)
+				{ "id": 451, "min": 1, "max": 1, "points": 1 }, //Runite ore
+				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 554,
-		  "min": 37,
-		  "max": 75,
-		  "points": 12
-		},
-		{
-		  "id": 562,
-		  "amount": 15,
-		  "points": 1
-		},
-		{
-		  "id": 560,
-		  "amount": 15,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 11,
-		  "max": 460,
-		  "points": 12
-		},
-		{
-		  "id": 2353,
-		  "amount": 3,
-		  "points": 12
-		},
-		{
-		  "id": 2359,
-		  "amount": 3,
-		  "points": 12
-		},
-		{
-		  "id": 2357,
-		  "amount": 3,
-		  "points": 12
-		},
-		{
-		  "id": 7937,
-		  "amount": 35,
-		  "points": 12
-		},
-		{
-		  "id": 1734,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

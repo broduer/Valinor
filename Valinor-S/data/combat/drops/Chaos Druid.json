@@ -1,183 +1,60 @@
 {
-  "points": 0,
-  "items": [],
-  "guaranteed": [
-	{
-	  "id": 526
-	}
-  ],
-  "npcs": [
-	2878
-  ],
-  "tables": [
-	{
-	  "name": "Herbs",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 520 ],
+	"guaranteed": [
+		{ "id": 526, "min": 1, "max": 1 } //Bones
+	],
+	"tables": [
 		{
-		  "id": 199,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
+			"name": "Herbs",
+			"": 1,
+			"items": [
+				{ "id": 199, "min": 1, "max": 2, "": 3 }, //Grimy guam leaf
+				{ "id": 201, "min": 1, "max": 2, "": 3 }, //Grimy marrentill
+				{ "id": 203, "min": 1, "max": 2, "": 3 }, //Grimy tarromin
+				{ "id": 205, "min": 1, "max": 2, "": 3 }, //Grimy harralander
+				{ "id": 211, "min": 1, "max": 2, "": 3 }, //Grimy avantoe
+				{ "id": 209, "min": 1, "max": 2, "": 3 }, //Grimy irit leaf
+				{ "id": 213, "min": 1, "max": 2, "": 1 }, //Grimy kwuarm
+				{ "id": 207, "min": 1, "max": 2, "": 1 }, //Grimy ranarr weed
+				{ "id": 2485, "min": 1, "max": 2, "": 1 }, //Grimy lantadyme
+				{ "id": 217, "min": 1, "max": 2, "": 1 }, //Grimy dwarf weed
+				{ "id": 215, "min": 1, "max": 2, "": 1 } //Grimy cadantine
+			]
 		},
 		{
-		  "id": 201,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
+			"name": "Runes",
+			"": 1,
+			"items": [
+				{ "id": 556, "min": 36, "max": 36, "": 9 }, //Air rune
+				{ "id": 557, "min": 9, "max": 9, "": 6 }, //Earth rune
+				{ "id": 559, "min": 9, "max": 9, "": 6 }, //Body rune
+				{ "id": 558, "min": 12, "max": 12, "": 3 }, //Mind rune
+				{ "id": 563, "min": 2, "max": 2, "": 3 }, //Law rune
+				{ "id": 561, "min": 2, "max": 2, "": 3 }, //Nature rune
+				{ "id": 561, "min": 3, "max": 3, "": 1 } //Nature rune
+			]
 		},
 		{
-		  "id": 203,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
+			"name": "Armour/Weapons",
+			"": 1,
+			"items": [
+				{ "id": 9142, "min": 2, "max": 12, "": 1 }, //Mithril bolts
+				{ "id": 1291, "min": 1, "max": 1, "": 1 } //Bronze longsword
+			]
 		},
 		{
-		  "id": 205,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 211,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 209,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 213,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 3051,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 3049,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 207,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 2485,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 217,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
-		},
-		{
-		  "id": 215,
-		  "min": 1,
-		  "max": 1,
-		  "points": 1
+			"name": "Other",
+			"": 1,
+			"items": [
+				{ "id": 227, "min": 1, "max": 1, "": 6 }, //Vial of water
+				{ "id": 995, "min": 3, "max": 3, "": 6 }, //Coins
+				{ "id": 995, "min": 8, "max": 8, "": 6 }, //Coins
+				{ "id": 995, "min": 29, "max": 29, "": 3 }, //Coins
+				{ "id": 995, "min": 35, "max": 35, "": 3 }, //Coins
+				{ "id": 13472, "min": 1, "max": 1, "": 1 }, //Ensouled chaos druid head
+				{ "id": 231, "min": 1, "max": 1, "": 1 }, //Snape grass
+				{ "id": 1594, "min": 1, "max": 1, "": 1 } //Unholy mould
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 556,
-		  "amount": 36,
-		  "points": 1
-		},
-		{
-		  "id": 557,
-		  "amount": 9,
-		  "points": 1
-		},
-		{
-		  "id": 559,
-		  "amount": 9,
-		  "points": 6
-		},
-		{
-		  "id": 558,
-		  "amount": 12,
-		  "points": 1
-		},
-		{
-		  "id": 563,
-		  "amount": 2,
-		  "points": 1
-		},
-		{
-		  "id": 561,
-		  "min": 2,
-		  "max": 3,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 9142,
-		  "min": 2,
-		  "max": 12,
-		  "points": 1
-		},
-		{
-		  "id": 1291,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 3,
-		  "max": 35,
-		  "points": 1
-		},
-		{
-		  "id": 227,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 231,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1594,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

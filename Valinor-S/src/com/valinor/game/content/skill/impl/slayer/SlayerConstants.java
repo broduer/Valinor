@@ -17,7 +17,7 @@ public class SlayerConstants {
     public final static int NO_SLAYER_REQ = 63413;
     public final static int MORE_COINS_THIEVING = 63414;
     public final static int DROP_RATE_BOOST = 63415;
-    public final static int SUPPLY_DROP = 63416;//TODO
+    public final static int SUPPLY_DROP = 63416;
     public final static int DOUBLE_DROP_LAMPS = 63417;
     public final static int LIKE_A_BOSS = 63418;
     public final static int KEY_OF_DROPS = 63419;

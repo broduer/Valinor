@@ -1,290 +1,85 @@
 {
-  "points": 0,
-  "items": [],
-  "guaranteed": [
-	{
-	  "id": 532
-	}
-  ],
-  "npcs": [
-	2098,
-	2099,
-	2100,
-	2101,
-	2102,
-	2103
-  ],
-  "tables": [
-	{
-	  "name": "Weapons",
-	  "points": 3,
-	  "items": [
+	"npcs": [ 2098, 2099, 2100, 2101, 2102, 2103, 7261 ],
+	"guaranteed": [
+		{ "id": 532, "min": 1, "max": 1 } //Big bones
+	],
+	"tables": [
 		{
-		  "id": 884,
-		  "amount": 3,
-		  "points": 12
+			"name": "Weapons/Armour",
+			"points": 1,
+			"items": [
+				{ "id": 884, "min": 3, "max": 3, "points": 12 }, //Iron arrow
+				{ "id": 1203, "min": 1, "max": 1, "points": 9 }, //Iron dagger
+				{ "id": 1153, "min": 1, "max": 1, "points": 9 }, //Iron full helm
+				{ "id": 1191, "min": 1, "max": 1, "points": 6 }, //Iron kiteshield
+				{ "id": 1295, "min": 1, "max": 1, "points": 6 }, //Steel longsword
+				{ "id": 886, "min": 10, "max": 10, "points": 6 }, //Steel arrow
+				{ "id": 1207, "min": 1, "max": 1, "points": 3 }, //Steel dagger
+				{ "id": 1309, "min": 1, "max": 1, "points": 3 }, //Iron 2h sword
+				{ "id": 1119, "min": 1, "max": 1, "points": 1 }, //Steel platebody
+				{ "id": 888, "min": 3, "max": 3, "points": 1 }, //Mithril arrow
+				{ "id": 890, "min": 1, "max": 5, "points": 1 } //Adamant arrow
+			]
 		},
 		{
-		  "id": 1203,
-		  "amount": 1,
-		  "points": 3
+			"name": "Runes",
+			"points": 1,
+			"items": [
+				{ "id": 555, "min": 7, "max": 7, "points": 9 }, //Water rune
+				{ "id": 564, "min": 2, "max": 2, "points": 9 }, //Cosmic rune
+				{ "id": 554, "min": 15, "max": 15, "points": 6 }, //Fire rune
+				{ "id": 558, "min": 3, "max": 3, "points": 6 }, //Mind rune
+				{ "id": 561, "min": 6, "max": 6, "points": 3 }, //Nature rune
+				{ "id": 563, "min": 2, "max": 2, "points": 3 }, //Law rune
+				{ "id": 562, "min": 2, "max": 2, "points": 3 }, //Chaos rune
+				{ "id": 560, "min": 2, "max": 2, "points": 1 } //Death rune
+			]
 		},
 		{
-		  "id": 1153,
-		  "amount": 1,
-		  "points": 6
+			"name": "Herbs (members only)",
+			"points": 1,
+			"items": [
+				{ "id": 199, "min": 1, "max": 1, "points": 6 }, //Grimy guam leaf
+				{ "id": 201, "min": 1, "max": 1, "points": 6 }, //Grimy marrentill
+				{ "id": 203, "min": 1, "max": 1, "points": 6 }, //Grimy tarromin
+				{ "id": 205, "min": 1, "max": 1, "points": 6 }, //Grimy harralander
+				{ "id": 207, "min": 1, "max": 1, "points": 6 }, //Grimy ranarr weed
+				{ "id": 209, "min": 1, "max": 1, "points": 6 }, //Grimy irit leaf
+				{ "id": 211, "min": 1, "max": 1, "points": 3 }, //Grimy avantoe
+				{ "id": 213, "min": 1, "max": 1, "points": 3 }, //Grimy kwuarm
+				{ "id": 215, "min": 1, "max": 1, "points": 1 }, //Grimy cadantine
+				{ "id": 2485, "min": 1, "max": 1, "points": 1 }, //Grimy lantadyme
+				{ "id": 217, "min": 1, "max": 1, "points": 1 } //Grimy dwarf weed
+			]
 		},
 		{
-		  "id": 886,
-		  "min": 10,
-		  "max": 15,
-		  "points": 6
+			"name": "Seeds (members only)",
+			"points": 1,
+			"items": [
+				{ "id": 5318, "min": 4, "max": 4, "points": 3 }, //Potato seed
+				{ "id": 5319, "min": 4, "max": 4, "points": 3 }, //Onion seed
+				{ "id": 5322, "min": 1, "max": 3, "points": 3 }, //Tomato seed
+				{ "id": 5324, "min": 4, "max": 4, "points": 3 }, //Cabbage seed
+				{ "id": 5323, "min": 2, "max": 2, "points": 3 }, //Strawberry seed
+				{ "id": 5320, "min": 3, "max": 3, "points": 3 }, //Sweetcorn seed
+				{ "id": 5100, "min": 1, "max": 1, "points": 3 }, //Limpwurt seed
+				{ "id": 5321, "min": 1, "max": 4, "points": 1 } //Watermelon seed
+			]
 		},
 		{
-		  "id": 1191,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 1295,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 1309,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 888,
-		  "min": 10,
-		  "max": 15,
-		  "points": 3
-		},
-		{
-		  "id": 1207,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1119,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 890,
-		  "min": 1,
-		  "max": 5,
-		  "points": 1
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 8, "max": 8, "points": 12 }, //Coins
+				{ "id": 995, "min": 15, "max": 15, "points": 6 }, //Coins
+				{ "id": 995, "min": 38, "max": 38, "points": 6 }, //Coins
+				{ "id": 995, "min": 52, "max": 52, "points": 6 }, //Coins
+				{ "id": 995, "min": 88, "max": 88, "points": 3 }, //Coins
+				{ "id": 225, "min": 1, "max": 1, "points": 1 }, //Limpwurt root
+				{ "id": 1917, "min": 1, "max": 1, "points": 1 }, //Beer
+				{ "id": 1446, "min": 1, "max": 1, "points": 1 }, //Body talisman
+				{ "id": 13475, "min": 1, "max": 1, "points": 1 } //Ensouled giant head
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 555,
-		  "amount": 7,
-		  "points": 4
-		},
-		{
-		  "id": 554,
-		  "amount": 15,
-		  "points": 4
-		},
-		{
-		  "id": 564,
-		  "amount": 2,
-		  "points": 4
-		},
-		{
-		  "id": 563,
-		  "min": 2,
-		  "max": 3,
-		  "points": 4
-		},
-		{
-		  "id": 561,
-		  "min": 2,
-		  "max": 6,
-		  "points": 4
-		},
-		{
-		  "id": 558,
-		  "amount": 3,
-		  "points": 4
-		},
-		{
-		  "id": 560,
-		  "min": 2,
-		  "max": 3,
-		  "points": 1
-		},
-		{
-		  "id": 562,
-		  "amount": 2,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Herbs",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 562,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 201,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 203,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 205,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 207,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 209,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 211,
-		  "amount": 1,
-		  "points": 6
-		},
-		{
-		  "id": 213,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 215,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 2485,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 217,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Seeds",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 5322,
-		  "min": 1,
-		  "max": 3,
-		  "points": 6
-		},
-		{
-		  "id": 5318,
-		  "min": 1,
-		  "max": 4,
-		  "points": 6
-		},
-		{
-		  "id": 5319,
-		  "min": 4,
-		  "max": 8,
-		  "points": 6
-		},
-		{
-		  "id": 5323,
-		  "amount": 2,
-		  "points": 6
-		},
-		{
-		  "id": 5324,
-		  "amount": 4,
-		  "points": 6
-		},
-		{
-		  "id": 5100,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5321,
-		  "min": 1,
-		  "max": 4,
-		  "points": 1
-		},
-		{
-		  "id": 5320,
-		  "amount": 3,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 8,
-		  "max": 88,
-		  "points": 1
-		},
-		{
-		  "id": 225,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1917,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1446,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1452,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 10976,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 10977,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

@@ -1,277 +1,71 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	319
-  ],
-  "petItem": 12816,
-  "petRarity": 1200,
-  "tables": [
-	{
-	  "name": "Sigils",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 319 ],
+	"tables": [
 		{
-		  "id": 12823,
-		  "amount": 1,
-		  "points": 3
+			"name": "Equipment",
+			"points": 35,
+			"items": [
+				{ "id": 890, "min": 750, "max": 750, "points": 12 }, //Adamant arrow
+				{ "id": 9144, "min": 250, "max": 250, "points": 12 }, //Runite bolts
+				{ "id": 1405, "min": 1, "max": 1, "points": 6 }, //Mystic air staff
+				{ "id": 1403, "min": 1, "max": 1, "points": 6 }, //Mystic water staff
+				{ "id": 1407, "min": 1, "max": 1, "points": 6 }, //Mystic earth staff
+				{ "id": 1401, "min": 1, "max": 1, "points": 6 }, //Mystic fire staff
+				{ "id": 4091, "min": 1, "max": 1, "points": 3 }, //Mystic robe top (blue)
+				{ "id": 4093, "min": 1, "max": 1, "points": 3 }, //Mystic robe bottom (blue)
+				{ "id": 9245, "min": 175, "max": 175, "points": 1 }, //Onyx bolts (e)
+				{ "id": 2, "min": 2000, "max": 2000, "points": 1 }, //Cannonball
+				{ "id": 12829, "min": 1, "max": 1, "points": 1 } //Spirit shield
+			]
 		},
 		{
-		  "id": 12827,
-		  "amount": 1,
-		  "points": 3
+			"name": "Unique",
+			"points": 1,
+			"items": [
+				{ "id": 12827, "min": 1, "max": 1, "points": 3 }, //Spectral
+				{ "id": 12823, "min": 1, "max": 1, "points": 3 }, //Arcane
+				{ "id": 12819, "min": 1, "max": 1, "points": 1 },  //Ely
+				{ "id": 30187, "min": 1, "max": 1, "points": 1 }  //Divine
+			]
 		},
 		{
-		  "id": 12819,
-		  "amount": 1,
-		  "points": 1
+			"name": "Essence and runes",
+			"points": 45,
+			"items": [
+				{ "id": 7937, "min": 2500, "max": 2500, "points": 3 }, //Pure essence (noted)
+				{ "id": 563, "min": 250, "max": 250, "points": 3 }, //Law rune
+				{ "id": 564, "min": 500, "max": 500, "points": 1 }, //Cosmic rune
+				{ "id": 560, "min": 300, "max": 300, "points": 1 }, //Death rune
+				{ "id": 566, "min": 250, "max": 250, "points": 1 } //Soul rune
+			]
+		},
+		{
+			"name": "Materials",
+			"points": 45,
+			"items": [
+				{ "id": 450, "min": 125, "max": 125, "points": 12 }, //Adamantite ore (noted)
+				{ "id": 452, "min": 20, "max": 20, "points": 6 }, //Runite ore (noted)
+				{ "id": 2362, "min": 35, "max": 35, "points": 6 }, //Adamantite bar (noted)
+				{ "id": 8781, "min": 100, "max": 100, "points": 3 }, //Teak plank (noted)
+				{ "id": 8836, "min": 150, "max": 150, "points": 3 }, //Mahogany logs (noted)
+				{ "id": 1514, "min": 75, "max": 75, "points": 1 }, //Magic logs (noted)
+				{ "id": 1754, "min": 100, "max": 100, "points": 1 } //Green dragonhide (noted)
+			]
+		},
+		{
+			"name": "Other",
+			"points": 45,
+			"items": [
+				{ "id": 5321, "min": 24, "max": 24, "points": 6 }, //Watermelon seed
+				{ "id": 384, "min": 70, "max": 70, "points": 6 }, //Raw shark (noted)
+				{ "id": 240, "min": 120, "max": 120, "points": 6 }, //White berries (noted)
+				{ "id": 9738, "min": 120, "max": 120, "points": 6 }, //Desert goat horn (noted)
+				{ "id": 7060, "min": 30, "max": 30, "points": 3 }, //Tuna potato
+				{ "id": 5953, "min": 40, "max": 40, "points": 3 }, //Antidote++(4) (noted)
+				{ "id": 5295, "min": 10, "max": 10, "points": 3 }, //Ranarr seed
+				{ "id": 12833, "min": 1, "max": 1, "points": 1 }, //Holy elixir
+				{ "id": 12073, "min": 1, "max": 1, "points": 1 } //Clue scroll (elite)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Non-sigil",
-	  "points": 198,
-	  "items": [],
-	  "tables": [
-		{
-		  "name": "Uncuts",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 1623,
-			  "min": 1,
-			  "max": 10,
-			  "points": 14
-			},
-			{
-			  "id": 1621,
-			  "min": 1,
-			  "max": 8,
-			  "points": 14
-			},
-			{
-			  "id": 1619,
-			  "min": 1,
-			  "max": 6,
-			  "points": 8
-			},
-			{
-			  "id": 1617,
-			  "min": 1,
-			  "max": 6,
-			  "points": 8
-			},
-			{
-			  "id": 995,
-			  "min": 20000,
-			  "max": 50000,
-			  "points": 6
-			},
-			{
-			  "id": 1462,
-			  "min": 1,
-			  "max": 6,
-			  "points": 6
-			},
-			{
-			  "id": 2366,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 1249,
-			  "amount": 1,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		},
-		{
-		  "name": "Equipment",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 890,
-			  "amount": 750,
-			  "points": 1
-			},
-			{
-			  "id": 9144,
-			  "amount": 250,
-			  "points": 1
-			},
-			{
-			  "id": 2,
-			  "amount": 2000,
-			  "points": 1
-			},
-			{
-			  "id": 1405,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 1403,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 1407,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 1401,
-			  "amount": 1,
-			  "points": 2
-			},
-			{
-			  "id": 4091,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 4093,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 9245,
-			  "amount": 175,
-			  "points": 1
-			},
-			{
-			  "id": 12829,
-			  "amount": 1,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		},
-		{
-		  "name": "Runes",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 7937,
-			  "amount": 2500,
-			  "points": 1
-			},
-			{
-			  "id": 563,
-			  "amount": 250,
-			  "points": 1
-			},
-			{
-			  "id": 564,
-			  "amount": 500,
-			  "points": 1
-			},
-			{
-			  "id": 560,
-			  "min": 209,
-			  "max": 300,
-			  "points": 1
-			},
-			{
-			  "id": 566,
-			  "amount": 259,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		},
-		{
-		  "name": "Materials",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 450,
-			  "amount": 125,
-			  "points": 1
-			},
-			{
-			  "id": 452,
-			  "amount": 20,
-			  "points": 1
-			},
-			{
-			  "id": 2362,
-			  "amount": 35,
-			  "points": 1
-			},
-			{
-			  "id": 8781,
-			  "amount": 100,
-			  "points": 1
-			},
-			{
-			  "id": 6334,
-			  "amount": 150,
-			  "points": 1
-			},
-			{
-			  "id": 1514,
-			  "amount": 75,
-			  "points": 1
-			},
-			{
-			  "id": 1754,
-			  "amount": 100,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		},
-		{
-		  "name": "Other",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 384,
-			  "amount": 70,
-			  "points": 1
-			},
-			{
-			  "id": 240,
-			  "amount": 120,
-			  "points": 3
-			},
-			{
-			  "id": 9738,
-			  "amount": 120,
-			  "points": 3
-			},
-			{
-			  "id": 5321,
-			  "amount": 24,
-			  "points": 3
-			},
-			{
-			  "id": 7061,
-			  "amount": 30,
-			  "points": 3
-			},
-			{
-			  "id": 5295,
-			  "amount": 10,
-			  "points": 3
-			},
-			{
-			  "id": 5953,
-			  "amount": 40,
-			  "points": 3
-			},
-			{
-			  "id": 12833,
-			  "amount": 1,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		}
-	  ]
-	}
-  ]
+	]
 }

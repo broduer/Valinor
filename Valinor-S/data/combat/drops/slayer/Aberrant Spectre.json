@@ -1,6 +1,5 @@
 {
   "points": 0,
-  "items": [],
   "npcs": [
 	2,
 	3,
@@ -10,7 +9,6 @@
 	7,
 	7402
   ],
-  "items": [],
   "tables": [
 	{
 	  "name": "Seeds",

@@ -1,144 +1,27 @@
 {
-  "points": 0,
-  "items": [],
-  "guaranteed": [
-	{
-	  "id": 532
-	}
-  ],
-  "npcs": [
-	3141
-  ],
-  "items": [],
-  "tables": [
-	{
-	  "name": "Gems",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 1834, 3141 ],
+	"guaranteed": [
+		{ "id": 532, "min": 1, "max": 1 } //Big bones
+	],
+	"tables": [
 		{
-		  "id": 1624,
-		  "min": 1,
-		  "max": 6,
-		  "points": 1
+			"name": "Gems",
+			"points": 1,
+			"items": [
+				{ "id": 1623, "min": 1, "max": 1, "points": 6 }, //Uncut sapphire
+				{ "id": 1621, "min": 1, "max": 1, "points": 6 }, //Uncut emerald
+				{ "id": 1619, "min": 1, "max": 1, "points": 3 }, //Uncut ruby
+				{ "id": 1617, "min": 1, "max": 1, "points": 1 } //Uncut diamond
+			]
 		},
 		{
-		  "id": 1622,
-		  "min": 1,
-		  "max": 6,
-		  "points": 1
-		},
-		{
-		  "id": 1620,
-		  "min": 1,
-		  "max": 3,
-		  "points": 1
-		},
-		{
-		  "id": 1618,
-		  "min": 1,
-		  "max": 3,
-		  "points": 1
-		},
-		{
-		  "id": 1462,
-		  "min": 1,
-		  "max": 2,
-		  "points": 1
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 9016, "min": 1, "max": 1, "points": 30 }, //Gorak claws
+				{ "id": 1462, "min": 1, "max": 1, "points": 30 },  //Nature talisman
+				{ "id": 1249, "min": 1, "max": 1, "points": 1 } //Dragon spear
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Armour",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 1199,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1083,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1069,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1147,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1113,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 3192,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1205,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1309,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 802,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1365,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 803,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 27,
-		  "max": 286,
-		  "points": 1
-		},
-		{
-		  "id": 9016,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 2570,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

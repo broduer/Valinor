@@ -1,140 +1,50 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	270,
-	271
-  ],
-  "guaranteed": [
-	{
-	  "id": 536
-	},
-	{
-	  "id": 2349,
-	  "amt": 5
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Weapon",
-	  "points": 2,
-	  "items": [
+	"npcs": [ 270, 271, 7253 ],
+	"guaranteed": [
+		{ "id": 536, "min": 1, "max": 1 }, //Dragon bones
+		{ "id": 2349, "min": 5, "max": 5 } //Bronze bar
+	],
+	"tables": [
 		{
-		  "id": 829,
-		  "min": 1,
-		  "max": 30,
-		  "points": 160
+			"name": "Weapons/Armour",
+			"points": 1,
+			"items": [
+				{ "id": 1123, "min": 1, "max": 1, "points": 12 }, //Adamant platebody
+				{ "id": 1315, "min": 1, "max": 1, "points": 12 }, //Mithril 2h sword
+				{ "id": 1355, "min": 1, "max": 1, "points": 6 }, //Mithril axe
+				{ "id": 1369, "min": 1, "max": 1, "points": 6 }, //Mithril battleaxe
+				{ "id": 1197, "min": 1, "max": 1, "points": 6 }, //Mithril kiteshield
+				{ "id": 868, "min": 2, "max": 2, "points": 3 }, //Rune knife
+				{ "id": 868, "min": 4, "max": 4, "points": 3 }, //Rune knife
+				{ "id": 1303, "min": 1, "max": 1, "points": 1 }, //Rune longsword
+				{ "id": 4585, "min": 1, "max": 1, "points": 1 }, //Dragon plateskirt
+				{ "id": 4087, "min": 1, "max": 1, "points": 1 } //Dragon platelegs
+			]
 		},
 		{
-		  "id": 1123,
-		  "amount": 1,
-		  "points": 60
+			"name": "Runes/Ammunition",
+			"points": 1,
+			"items": [
+				{ "id": 829, "min": 30, "max": 30, "points": 6 }, //Adamant javelin
+				{ "id": 554, "min": 50, "max": 50, "points": 6 }, //Fire rune
+				{ "id": 563, "min": 10, "max": 10, "points": 6 }, //Law rune
+				{ "id": 9142, "min": 2, "max": 11, "points": 3 }, //Mithril bolts
+				{ "id": 816, "min": 16, "max": 16, "points": 3 }, //Adamant dart(p)
+				{ "id": 565, "min": 3, "max": 3, "points": 3 }, //Blood rune
+				{ "id": 565, "min": 15, "max": 15, "points": 1 }, //Blood rune
+				{ "id": 560, "min": 25, "max": 25, "points": 1 } //Death rune
+			]
 		},
 		{
-		  "id": 1355,
-		  "amount": 1,
-		  "points": 60
-		},
-		{
-		  "id": 1197,
-		  "amount": 1,
-		  "points": 60
-		},
-		{
-		  "id": 1315,
-		  "amount": 1,
-		  "points": 60
-		},
-		{
-		  "id": 1303,
-		  "amount": 1,
-		  "points": 30
-		},
-		{
-		  "id": 4585,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 4087,
-		  "amount": 1,
-		  "points": 2
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 196, "max": 196, "points": 12 }, //Coins
+				{ "id": 995, "min": 330, "max": 330, "points": 12 }, //Coins
+				{ "id": 2361, "min": 1, "max": 1, "points": 3 }, //Adamantite bar
+				{ "id": 373, "min": 1, "max": 2, "points": 1 }, //Swordfish
+				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 554,
-		  "min": 1,
-		  "max": 50,
-		  "points": 1
-		},
-		{
-		  "id": 9142,
-		  "min": 4,
-		  "max": 10,
-		  "points": 1
-		},
-		{
-		  "id": 563,
-		  "min": 1,
-		  "max": 10,
-		  "points": 1
-		},
-		{
-		  "id": 560,
-		  "min": 1,
-		  "max": 25,
-		  "points": 1
-		},
-		{
-		  "id": 565,
-		  "min": 3,
-		  "max": 15,
-		  "points": 1
-		},
-		{
-		  "id": 868,
-		  "min": 2,
-		  "max": 4,
-		  "points": 1
-		},
-		{
-		  "id": 810,
-		  "min": 1,
-		  "max": 16,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 196,
-		  "max": 330,
-		  "points": 1
-		},
-		{
-		  "id": 373,
-		  "min": 1,
-		  "max": 2,
-		  "points": 1
-		},
-		{
-		  "id": 2361,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

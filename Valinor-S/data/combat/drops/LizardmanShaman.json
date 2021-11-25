@@ -1,237 +1,74 @@
 {
-  "points": 0,
-  "items": [],
-  "guaranteed": [
-	{
-	  "id": 532
-	}
-  ],
-  "npcs": [
-	6767
-  ],
-  "tables": [
-	{
-	  "name": "Armour",
-	  "points": 2,
-	  "items": [
+	"npcs": [ 6766, 6767, 7744, 7745 ],
+	"guaranteed": [
+		{ "id": 532, "min": 1, "max": 1 } //Big bones
+	],
+	"tables": [
 		{
-		  "id": 2489,
-		  "amount": 1,
-		  "points": 500
+			"name": "Equipment",
+			"points": 1,
+			"items": [
+				{ "id": 2489, "min": 1, "max": 1, "points": 180 }, //Red d'hide vamb
+				{ "id": 1407, "min": 1, "max": 1, "points": 180 }, //Mystic earth staff
+				{ "id": 1399, "min": 1, "max": 1, "points": 30 }, //Earth battlestaff
+				{ "id": 1147, "min": 1, "max": 1, "points": 30 }, //Rune med helm
+				{ "id": 1113, "min": 1, "max": 1, "points": 30 }, //Rune chainbody
+				{ "id": 1347, "min": 1, "max": 1, "points": 30 }, //Rune warhammer
+				{ "id": 13576, "min": 1, "max": 1, "points": 1 } //Dragon warhammer
+			]
 		},
 		{
-		  "id": 1407,
-		  "amount": 1,
-		  "points": 52
+			"name": "Ores",
+			"points": 1,
+			"items": [
+				{ "id": 441, "min": 24, "max": 35, "points": 3 }, //Iron ore (noted)
+				{ "id": 454, "min": 20, "max": 25, "points": 3 }, //Coal (noted)
+				{ "id": 452, "min": 3, "max": 6, "points": 1 } //Runite ore (noted)
+			]
 		},
 		{
-		  "id": 1399,
-		  "amount": 1,
-		  "points": 51
+			"name": "Herbs/Seeds",
+			"points": 1,
+			"items": [
+				{ "id": 214, "min": 1, "max": 3, "points": 9 }, //Grimy kwuarm (noted)
+				{ "id": 218, "min": 1, "max": 3, "points": 9 }, //Grimy dwarf weed (noted)
+				{ "id": 2486, "min": 1, "max": 3, "points": 9 }, //Grimy lantadyme (noted)
+				{ "id": 216, "min": 1, "max": 3, "points": 6 }, //Grimy cadantine (noted)
+				{ "id": 5313, "min": 1, "max": 1, "points": 6 }, //Willow seed
+				{ "id": 5295, "min": 1, "max": 1, "points": 6 }, //Ranarr seed
+				{ "id": 5300, "min": 1, "max": 1, "points": 6 }, //Snapdragon seed
+				{ "id": 5321, "min": 15, "max": 15, "points": 6 }, //Watermelon seed
+				{ "id": 5304, "min": 1, "max": 1, "points": 3 }, //Torstol seed
+				{ "id": 5314, "min": 1, "max": 1, "points": 3 }, //Maple seed
+				{ "id": 5288, "min": 1, "max": 1, "points": 3 }, //Papaya tree seed
+				{ "id": 5289, "min": 1, "max": 1, "points": 3 }, //Palm tree seed
+				{ "id": 5315, "min": 1, "max": 1, "points": 1 }, //Yew seed
+				{ "id": 5316, "min": 1, "max": 1, "points": 1 }, //Magic seed
+				{ "id": 5317, "min": 1, "max": 1, "points": 1 } //Spirit seed
+			]
 		},
 		{
-		  "id": 1147,
-		  "amount": 1,
-		  "points": 51
+			"name": "Runes",
+			"points": 1,
+			"items": [
+				{ "id": 556, "min": 60, "max": 80, "points": 3 }, //Air rune
+				{ "id": 562, "min": 40, "max": 60, "points": 3 }, //Chaos rune
+				{ "id": 554, "min": 66, "max": 80, "points": 1 }, //Fire rune
+				{ "id": 560, "min": 20, "max": 30, "points": 1 } //Death rune
+			]
 		},
 		{
-		  "id": 1113,
-		  "amount": 1,
-		  "points": 51
-		},
-		{
-		  "id": 1347,
-		  "amount": 1,
-		  "points": 51
-		},
-		{
-		  "id": 1373,
-		  "amount": 1,
-		  "points": 11
-		},
-		{
-		  "id": 13576,
-		  "amount": 1,
-		  "points": 2
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 100, "max": 6000, "points": 100 }, //Coins
+				{ "id": 13383, "min": 2, "max": 2, "points": 50 }, //Xerician fabric
+				{ "id": 13391, "min": 10, "max": 14, "points": 30 }, //Lizardman fang
+				{ "id": 7054, "min": 2, "max": 2, "points": 20 }, //Chilli potato
+				{ "id": 2722, "min": 1, "max": 1, "points": 20 }, //Clue scroll (hard)
+				{ "id": 13392, "min": 1, "max": 1, "points": 20 }, //Xeric's talisman (inert)
+				{ "id": 12073, "min": 1, "max": 1, "points": 1 } //Clue scroll (elite)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Ores",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 441,
-		  "min": 24,
-		  "max": 35,
-		  "points": 2
-		},
-		{
-		  "id": 454,
-		  "min": 20,
-		  "max": 23,
-		  "points": 2
-		},
-		{
-		  "id": 452,
-		  "min": 3,
-		  "max": 5,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Herbs",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 214,
-		  "min": 1,
-		  "max": 3,
-		  "points": 3
-		},
-		{
-		  "id": 218,
-		  "min": 1,
-		  "max": 3,
-		  "points": 3
-		},
-		{
-		  "id": 2486,
-		  "min": 1,
-		  "max": 3,
-		  "points": 3
-		},
-		{
-		  "id": 216,
-		  "min": 1,
-		  "max": 3,
-		  "points": 3
-		},
-		{
-		  "id": 5313,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 5295,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 5300,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 5321,
-		  "amount": 15,
-		  "points": 1
-		},
-		{
-		  "id": 5304,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5314,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5288,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5289,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5315,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5316,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 5317,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 556,
-		  "min": 71,
-		  "max": 80,
-		  "points": 3
-		},
-		{
-		  "id": 562,
-		  "min": 45,
-		  "max": 57,
-		  "points": 2
-		},
-		{
-		  "id": 554,
-		  "min": 66,
-		  "max": 74,
-		  "points": 2
-		},
-		{
-		  "id": 560,
-		  "min": 22,
-		  "max": 24,
-		  "points": 2
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Misc",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 100,
-		  "max": 6000,
-		  "points": 10
-		},
-		{
-		  "id": 13383,
-		  "amount": 2,
-		  "points": 8
-		},
-		{
-		  "id": 13391,
-		  "min": 10,
-		  "max": 14,
-		  "points": 8
-		},
-		{
-		  "id": 7054,
-		  "amount": 2,
-		  "points": 5
-		},
-		{
-		  "id": 13392,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

@@ -1,44 +1,22 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	104,
-	105,
-	3133
-  ],
-  "guaranteed": [
-	{
-	  "id": 526
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Armour",
-	  "points": 9999,
-	  "items": [
+	"npcs": [ 104, 105, 135, 7256, 3133 ],
+	"guaranteed": [
+		{ "id": 526, "min": 1, "max": 1 } //Bones
+	],
+	"tables": [
 		{
-		  "id": 1113,
-		  "amount": 1,
-		  "points": 120
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 2722, "min": 1, "max": 1, "points": 100 }, //Clue scroll (hard)
+				{ "id": 13233, "min": 1, "max": 1, "points": 1 } //Smouldering stone
+			]
 		},
 		{
-		  "id": 1147,
-		  "amount": 1,
-		  "points": 120
-		},
-		{
-		  "id": 13233,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 995,
-		  "min": 1,
-		  "max": 1500,
-		  "points": 3000
+			"name": "Empty",
+			"points": 250,
+			"items": [
+			]
 		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }

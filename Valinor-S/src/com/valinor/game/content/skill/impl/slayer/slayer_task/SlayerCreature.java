@@ -108,6 +108,7 @@ public enum SlayerCreature {
     SEA_SNAKES(71, 1, 40, null, NpcIdentifiers.GIANT_SEA_SNAKE, NpcIdentifiers.SEA_SNAKE_YOUNG, NpcIdentifiers.SEA_SNAKE_HATCHLING),
     WYVERN(72, 72, 70, null, NpcIdentifiers.SKELETAL_WYVERN, NpcIdentifiers.SKELETAL_WYVERN_466, NpcIdentifiers.SKELETAL_WYVERN_467, NpcIdentifiers.SKELETAL_WYVERN_468, NpcIdentifiers.TALONED_WYVERN, NpcIdentifiers.SPITTING_WYVERN, NpcIdentifiers.LONGTAILED_WYVERN, NpcIdentifiers.ANCIENT_WYVERN),
     KILLERWATTS(73, 37, 50, null, NpcIdentifiers.KILLERWATT, NpcIdentifiers.KILLERWATT_470),
+    //TODO
     MUTATED_ZYGOMITES(74, 57, 60, null, NpcIdentifiers.ZYGOMITE),
     ICEFIENDS(75, 1, 20, null, NpcIdentifiers.ICEFIEND, NpcIdentifiers.ICEFIEND_4813, NpcIdentifiers.ICEFIEND_7586),
     MINOTAURS(76, 1, 7, null, NpcIdentifiers.MINOTAUR, NpcIdentifiers.MINOTAUR_2482, NpcIdentifiers.MINOTAUR_2483),
@@ -140,6 +141,7 @@ public enum SlayerCreature {
     ALCHEMICAL_HYDRA(103, 95, 85,true, new Tile(1354, 10258), NpcIdentifiers.ALCHEMICAL_HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA_8616, NpcIdentifiers.ALCHEMICAL_HYDRA_8617, NpcIdentifiers.ALCHEMICAL_HYDRA_8618, NpcIdentifiers.ALCHEMICAL_HYDRA_8619, NpcIdentifiers.ALCHEMICAL_HYDRA_8620, NpcIdentifiers.ALCHEMICAL_HYDRA_8621, NpcIdentifiers.ALCHEMICAL_HYDRA_8622, NpcIdentifiers.ALCHEMICAL_HYDRA_8634),
     LAVA_DRAGONS(104, 1, 85, new Tile(3198, 3851), NpcIdentifiers.LAVA_DRAGON),
     CHAOS_DRUID(105, 1, 3, null, NpcIdentifiers.CHAOS_DRUID, NpcIdentifiers.ELDER_CHAOS_DRUID, NpcIdentifiers.ELDER_CHAOS_DRUID_7995),
+    //TODO
     FOSSIL_ISLAND_WYVERNS(106, 66, 60, null, NpcIdentifiers.TALONED_WYVERN, NpcIdentifiers.SPITTING_WYVERN, NpcIdentifiers.LONGTAILED_WYVERN, NpcIdentifiers.ANCIENT_WYVERN),
     REVENANTS(107, 1, 50, new Tile(3244, 10145), NpcIdentifiers.REVENANT_IMP, NpcIdentifiers.REVENANT_GOBLIN, NpcIdentifiers.REVENANT_PYREFIEND, NpcIdentifiers.REVENANT_HOBGOBLIN, NpcIdentifiers.REVENANT_CYCLOPS, NpcIdentifiers.REVENANT_HELLHOUND, NpcIdentifiers.REVENANT_CYCLOPS, NpcIdentifiers.REVENANT_DEMON, NpcIdentifiers.REVENANT_ORK, NpcIdentifiers.REVENANT_DARK_BEAST, NpcIdentifiers.REVENANT_DRAGON, NpcIdentifiers.REVENANT_KNIGHT, CustomNpcIdentifiers.ANCIENT_REVENANT_DARK_BEAST, CustomNpcIdentifiers.ANCIENT_REVENANT_ORK, CustomNpcIdentifiers.ANCIENT_REVENANT_CYCLOPS, CustomNpcIdentifiers.ANCIENT_REVENANT_DRAGON, CustomNpcIdentifiers.ANCIENT_REVENANT_KNIGHT),
     ADAMANT_DRAGONS(108, 1, 75, null, NpcIdentifiers.ADAMANT_DRAGON, NpcIdentifiers.ADAMANT_DRAGON_8090),

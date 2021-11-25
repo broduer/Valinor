@@ -1,126 +1,54 @@
 {
-  "points": 0,
-  "items": [],
-  "npcs": [
-	260,
-	263,
-	264
-  ],
-  "guaranteed": [
-	{
-	  "id": 536
-	},
-	{
-	  "id": 1753
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Herbs",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 260, 261, 262, 263, 264, 7868, 7869, 7870  ],
+	"guaranteed": [
+		{ "id": 536, "min": 1, "max": 1 }, //Dragon bones
+		{ "id": 1753, "min": 1, "max": 1 } //Green dragonhide
+	],
+	"tables": [
 		{
-		  "id": 199,
-		  "amount": 1,
-		  "points": 2
+			"name": "Herbs",
+			"points": 1,
+			"items": [
+				{ "id": 209, "min": 1, "max": 1, "points": 6 }, //Grimy irit leaf
+				{ "id": 205, "min": 1, "max": 1, "points": 6 }, //Grimy harralander
+				{ "id": 199, "min": 1, "max": 1, "points": 6 }, //Grimy guam leaf
+				{ "id": 211, "min": 1, "max": 1, "points": 3 }, //Grimy avantoe
+				{ "id": 215, "min": 1, "max": 1, "points": 3 }, //Grimy cadantine
+				{ "id": 201, "min": 1, "max": 1, "points": 3 }, //Grimy marrentill
+				{ "id": 203, "min": 1, "max": 1, "points": 3 }, //Grimy tarromin
+				{ "id": 207, "min": 1, "max": 1, "points": 3 }, //Grimy ranarr weed
+				{ "id": 213, "min": 1, "max": 1, "points": 1 }, //Grimy kwuarm
+				{ "id": 2485, "min": 1, "max": 1, "points": 1 }, //Grimy lantadyme
+				{ "id": 217, "min": 1, "max": 1, "points": 1 } //Grimy dwarf weed
+			]
 		},
 		{
-		  "id": 205,
-		  "amount": 1,
-		  "points": 1
+			"name": "Weapons/Armour",
+			"points": 1,
+			"items": [
+				{ "id": 1365, "min": 1, "max": 1, "points": 6 }, //Steel battleaxe
+				{ "id": 1069, "min": 1, "max": 1, "points": 6 }, //Steel platelegs
+				{ "id": 1355, "min": 1, "max": 1, "points": 3 }, //Mithril axe
+				{ "id": 1243, "min": 1, "max": 1, "points": 3 }, //Mithril spear
+				{ "id": 1197, "min": 1, "max": 1, "points": 3 }, //Mithril kiteshield
+				{ "id": 1161, "min": 1, "max": 1, "points": 1 }, //Adamant full helm
+				{ "id": 1213, "min": 1, "max": 1, "points": 1 } //Rune dagger
+			]
 		},
 		{
-		  "id": 207,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 201,
-		  "amount": 1,
-		  "points": 2
+			"name": "Other",
+			"points": 1,
+			"items": [
+				{ "id": 995, "min": 11, "max": 440, "points": 12 }, //Coins
+				{ "id": 365, "min": 1, "max": 1, "points": 12 }, //Bass
+				{ "id": 555, "min": 75, "max": 75, "points": 6 }, //Water rune
+				{ "id": 554, "min": 37, "max": 37, "points": 6 }, //Fire rune
+				{ "id": 561, "min": 15, "max": 15, "points": 6 }, //Nature rune
+				{ "id": 563, "min": 3, "max": 3, "points": 6 }, //Law rune
+				{ "id": 13511, "min": 1, "max": 1, "points": 1 }, //Ensouled dragon head
+				{ "id": 449, "min": 1, "max": 1, "points": 3 }, //Adamantite ore
+				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Weaponry",
-	  "points": 2,
-	  "items": [
-		{
-		  "id": 1365,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1069,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1355,
-		  "amount": 1,
-		  "points": 3
-		},
-		{
-		  "id": 1243,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1197,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1161,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1213,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 11,
-		  "max": 440,
-		  "points": 1
-		},
-		{
-		  "id": 365,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 555,
-		  "amount": 75,
-		  "points": 1
-		},
-		{
-		  "id": 554,
-		  "amount": 37,
-		  "points": 1
-		},
-		{
-		  "id": 561,
-		  "amount": 15,
-		  "points": 1
-		},
-		{
-		  "id": 563,
-		  "amount": 3,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
-  ]
+	]
 }
