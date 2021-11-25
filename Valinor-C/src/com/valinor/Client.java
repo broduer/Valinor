@@ -12184,21 +12184,6 @@ public class Client extends GameApplet {
                                 case 30064:
                                     sprite = spriteCache.get(1298);
                                     break;
-                                case 1167:
-                                case 13045:
-                                case 30075:
-                                    sprite = spriteCache.get(713);
-                                    break;
-                                case 1170:
-                                case 13053:
-                                case 30083:
-                                    sprite = spriteCache.get(710);
-                                    break;
-                                case 1174:
-                                case 13061:
-                                case 30106:
-                                    sprite = spriteCache.get(712);
-                                    break;
                             }
 
                             boolean drawTransparent = child.drawsTransparent;
