@@ -187,7 +187,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(2280, 10016, 0))));
 
         teleportOptions.put(39, new OptionMenu("Smoke Devil Cave", new String[] { "Boss", "Thermonuclear Smoke Devil" },
-            new TeleportAction(player, new Tile(3723, 5798, 0))));
+            new TeleportAction(player, new Tile(2404, 9417, 0))));
 
         teleportOptions.put(40, new OptionMenu("Zulrah's Island", new String[] { "Boss", "Zulrah" },
             new TeleportAction(player, new Tile(2204, 3056, 0))));
