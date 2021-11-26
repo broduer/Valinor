@@ -1,0 +1,134 @@
+[
+  {
+    "name": "Oneiromancer",
+    "id": 3835,
+    "x": 2150,
+    "y": 3867,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Captain Bentley",
+    "id": 6650,
+    "x": 2138,
+    "y": 3900,
+    "z": 2,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Sirsal Banker",
+    "id": 3843,
+    "x": 2098,
+    "y": 3921,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Sirsal Banker",
+    "id": 3843,
+    "x": 2097,
+    "y": 3921,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2124,
+    "y": 3941,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2120,
+    "y": 3943,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2114,
+    "y": 3948,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2110,
+    "y": 3950,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2103,
+    "y": 3951,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2097,
+    "y": 3943,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2108,
+    "y": 3936,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2114,
+    "y": 3938,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2110,
+    "y": 3943,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2116,
+    "y": 3955,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2122,
+    "y": 3951,
+    "z": 0,
+    "walkRange": 3
+  },
+  {
+    "name": "Suqah",
+    "id": 793,
+    "x": 2105,
+    "y": 3940,
+    "z": 0,
+    "walkRange": 3
+  }
+]

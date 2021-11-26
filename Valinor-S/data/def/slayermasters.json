@@ -18,13 +18,6 @@
         "max": 50,
         "creatureUid": 8
       },
-      //Birds
-      {
-        "weighing": 6,
-        "min": 15,
-        "max": 50,
-        "creatureUid": 5
-      },
       //Bears
       {
         "weighing": 7,
@@ -67,13 +60,6 @@
         "max": 50,
         "creatureUid": 39
       },
-      //Dogs
-      {
-        "weighing": 7,
-        "min": 15,
-        "max": 50,
-        "creatureUid": 22
-      },
       //Dwarves
       {
         "weighing": 7,
@@ -108,20 +94,6 @@
         "min": 15,
         "max": 50,
         "creatureUid": 53
-      },
-      //Lizards
-      {
-        "weighing": 8,
-        "min": 15,
-        "max": 50,
-        "creatureUid": 68
-      },
-      // Minotaurs
-      {
-        "weighing": 7,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 76
       },
       //Monkeys
       {
@@ -186,13 +158,6 @@
         "max": 130,
         "creatureUid": 79
       },
-      //Aviansie
-      {
-        "weighing": 7,
-        "min": 80,
-        "max": 150,
-        "creatureUid": 94
-      },
       //Bandits
       {
         "weighing": 4,
@@ -226,13 +191,6 @@
         "min": 75,
         "max": 125,
         "creatureUid": 111
-      },
-      //Bloodveld
-      {
-        "weighing": 4,
-        "min": 90,
-        "max": 140,
-        "creatureUid": 48
       },
       //Chaos druid
       {
@@ -290,13 +248,6 @@
         "max": 200,
         "creatureUid": 31
       },
-      //Hill giant
-      {
-        "weighing": 3,
-        "min": 100,
-        "max": 150,
-        "creatureUid": 14
-      },
       //Ice giant
       {
         "weighing": 6,
@@ -325,20 +276,6 @@
         "max": 120,
         "creatureUid": 28
       },
-      //Magic axes
-      {
-        "weighing": 7,
-        "min": 70,
-        "max": 125,
-        "creatureUid": 91
-      },
-      //Mammoth
-      {
-        "weighing": 6,
-        "min": 75,
-        "max": 125,
-        "creatureUid": 113
-      },
       //Moss giant
       {
         "weighing": 4,
@@ -360,13 +297,6 @@
         "max": 75,
         "creatureUid": 107
       },
-      //Rogue
-      {
-        "weighing": 5,
-        "min": 75,
-        "max": 125,
-        "creatureUid": 116
-      },
       //Scorpion
       {
         "weighing": 6,
@@ -380,20 +310,6 @@
         "min": 60,
         "max": 100,
         "creatureUid": 11
-      },
-      //Spider
-      {
-        "weighing": 6,
-        "min": 60,
-        "max": 100,
-        "creatureUid": 4
-      },
-      //Spirtual creatures
-      {
-        "weighing": 6,
-        "min": 100,
-        "max": 150,
-        "creatureUid": 89
       },
       {
         "weighing": 3,
@@ -481,13 +397,6 @@
         "max": 70,
         "creatureUid": 13
       },
-      //Catablepon
-      {
-        "weighing": 8,
-        "min": 20,
-        "max": 30,
-        "creatureUid": 78
-      },
       //Cave bugs
       {
         "weighing": 8,
@@ -522,20 +431,6 @@
         "min": 40,
         "max": 70,
         "creatureUid": 39
-      },
-      //Lizards
-      {
-        "weighing": 8,
-        "min": 40,
-        "max": 70,
-        "creatureUid": 68
-      },
-      //Dogs
-      {
-        "weighing": 7,
-        "min": 40,
-        "max": 70,
-        "creatureUid": 22
       },
       //Earth warrior
       {
@@ -593,20 +488,6 @@
         "max": 70,
         "creatureUid": 53
       },
-      //Killerwatt
-      {
-        "weighing": 8,
-        "min": 30,
-        "max": 80,
-        "creatureUid": 73
-      },
-      //Mogres
-      {
-        "weighing": 8,
-        "min": 40,
-        "max": 70,
-        "creatureUid": 67
-      },
       //Pyrefiend
       {
         "weighing": 8,
@@ -641,20 +522,6 @@
         "min": 40,
         "max": 70,
         "creatureUid": 11
-      },
-      //Vampyres
-      {
-        "weighing": 6,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 34
-      },
-      //Wall beast
-      {
-        "weighing": 7,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 61
       },
       //Wolves
       {
@@ -775,13 +642,6 @@
         "max": 120,
         "creatureUid": 39
       },
-      //Crocodile
-      {
-        "weighing": 6,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 65
-      },
       //Dagannoth
       {
         "weighing": 7,
@@ -802,20 +662,6 @@
         "min": 40,
         "max": 80,
         "creatureUid": 54
-      },
-      //Elves
-      {
-        "weighing": 7,
-        "min": 40,
-        "max": 100,
-        "creatureUid": 56
-      },
-      //Fever spiders
-      {
-        "weighing": 7,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 69
       },
       //Fire giants
       {
@@ -844,13 +690,6 @@
         "min": 40,
         "max": 80,
         "creatureUid": 24
-      },
-      //Harpie Bug Swarm
-      {
-        "weighing": 7,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 70
       },
       //Hellhounds
       {
@@ -901,26 +740,12 @@
         "max": 120,
         "creatureUid": 50
       },
-      //Jungle horrors
-      {
-        "weighing": 8,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 81
-      },
       //Kalphites
       {
         "weighing": 7,
         "min": 60,
         "max": 120,
         "creatureUid": 53
-      },
-      //Killerwatts
-      {
-        "weighing": 6,
-        "min": 30,
-        "max": 80,
-        "creatureUid": 73
       },
       //Kurask
       {
@@ -935,27 +760,6 @@
         "min": 60,
         "max": 120,
         "creatureUid": 28
-      },
-      //Lizards
-      {
-        "weighing": 7,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 68
-      },
-      //Mogres
-      {
-        "weighing": 7,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 67
-      },
-      //Molanisk
-      {
-        "weighing": 7,
-        "min": 39,
-        "max": 50,
-        "creatureUid": 87
       },
       //Moss giant
       {
@@ -999,13 +803,6 @@
         "max": 120,
         "creatureUid": 51
       },
-      //Sea snakes
-      {
-        "weighing": 6,
-        "min": 60,
-        "max": 120,
-        "creatureUid": 71
-      },
       //Shades
       {
         "weighing": 8,
@@ -1013,26 +810,12 @@
         "max": 120,
         "creatureUid": 64
       },
-      //Shadow warriors
-      {
-        "weighing": 8,
-        "min": 40,
-        "max": 80,
-        "creatureUid": 32
-      },
       //Spiritual creatures
       {
         "weighing": 8,
         "min": 60,
         "max": 120,
         "creatureUid": 89
-      },
-      //Terror dogs
-      {
-        "weighing": 6,
-        "min": 20,
-        "max": 45,
-        "creatureUid": 86
       },
       //Trolls
       {
@@ -1047,20 +830,6 @@
         "min": 60,
         "max": 120,
         "creatureUid": 36
-      },
-      //Vampyre
-      {
-        "weighing": 7,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 34
-      },
-      //Wall beast
-      {
-        "weighing": 6,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 61
       },
       //Werewolf
       {
@@ -1195,20 +964,6 @@
         "max": 170,
         "creatureUid": 49
       },
-      //Elves
-      {
-        "weighing": 8,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 56
-      },
-      //Fever spiders
-      {
-        "weighing": 7,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 69
-      },
       //Fire giants
       {
         "weighing": 12,
@@ -1236,13 +991,6 @@
         "min": 110,
         "max": 170,
         "creatureUid": 29
-      },
-      //Harpie Bug Swarm
-      {
-        "weighing": 6,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 70
       },
       //Hellhounds
       {
@@ -1272,13 +1020,6 @@
         "max": 170,
         "creatureUid": 50
       },
-      //Jungle horrors
-      {
-        "weighing": 10,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 81
-      },
       //Kalphites
       {
         "weighing": 11,
@@ -1306,27 +1047,6 @@
         "min": 70,
         "max": 90,
         "creatureUid": 90
-      },
-      //Lizards
-      {
-        "weighing": 5,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 68
-      },
-      //Mogres
-      {
-        "weighing": 6,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 67
-      },
-      //Molanisk
-      {
-        "weighing": 6,
-        "min": 39,
-        "max": 50,
-        "creatureUid": 87
       },
       //Mutated zygomites
       {
@@ -1404,20 +1124,6 @@
         "min": 90,
         "max": 150,
         "creatureUid": 96
-      },
-      //Vampyre
-      {
-        "weighing": 6,
-        "min": 80,
-        "max": 120,
-        "creatureUid": 34
-      },
-      //Wall beast
-      {
-        "weighing": 6,
-        "min": 10,
-        "max": 20,
-        "creatureUid": 61
       },
       //Wyrm
       {
@@ -1551,13 +1257,6 @@
         "min": 3,
         "max": 35,
         "creatureUid": 131
-      },
-      //Grotesque Guardians
-      {
-        "weighing": 8,
-        "min": 3,
-        "max": 35,
-        "creatureUid": 132
       },
       //K'ril Tsutsaroth
       {
@@ -1817,13 +1516,6 @@
         "min": 120,
         "max": 170,
         "creatureUid": 36
-      },
-      //Vampyres
-      {
-        "weighing": 4,
-        "min": 100,
-        "max": 160,
-        "creatureUid": 34
       },
       //Waterfiends
       {
@@ -2091,13 +1783,6 @@
         "max": 185,
         "creatureUid": 49
       },
-      //Elves
-      {
-        "weighing": 4,
-        "min": 60,
-        "max": 90,
-        "creatureUid": 56
-      },
       //Fire giant
       {
         "weighing": 9,
@@ -2160,13 +1845,6 @@
         "min": 90,
         "max": 120,
         "creatureUid": 90
-      },
-      //Minions of Scabaras
-      {
-        "weighing": 4,
-        "min": 30,
-        "max": 60,
-        "creatureUid": 85
       },
       //Mithril dragons
       {
@@ -2258,13 +1936,6 @@
         "min": 110,
         "max": 180,
         "creatureUid": 96
-      },
-      //Vampyre
-      {
-        "weighing": 6,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 34
       },
       //Wyrm
       {
@@ -2525,13 +2196,6 @@
         "max": 185,
         "creatureUid": 49
       },
-      //Elves
-      {
-        "weighing": 4,
-        "min": 60,
-        "max": 90,
-        "creatureUid": 56
-      },
       //Fire giant
       {
         "weighing": 9,
@@ -2692,13 +2356,6 @@
         "min": 110,
         "max": 180,
         "creatureUid": 96
-      },
-      //Vampyre
-      {
-        "weighing": 6,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 34
       },
       //Wyrm
       {
@@ -2952,13 +2609,6 @@
         "max": 200,
         "creatureUid": 49
       },
-      //Elves
-      {
-        "weighing": 4,
-        "min": 100,
-        "max": 170,
-        "creatureUid": 56
-      },
       //Fire giant
       {
         "weighing": 7,
@@ -3105,13 +2755,6 @@
         "min": 130,
         "max": 199,
         "creatureUid": 96
-      },
-      //Vampyre
-      {
-        "weighing": 8,
-        "min": 100,
-        "max": 210,
-        "creatureUid": 34
       },
       //Waterfiends
       {

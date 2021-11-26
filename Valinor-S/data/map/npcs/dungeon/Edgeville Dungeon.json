@@ -74,6 +74,114 @@
   { "id": 2093, "x": 3158, "y": 9898, "z": 0, "walkRange": 2 }, // Moss giant
   { "id": 2093, "x": 3166, "y": 9883, "z": 0, "walkRange": 3 }, // Moss giant
   { "id": 2098, "x": 3117, "y": 9852, "z": 0, "direction": "N" }, // Hill Giant
+  {
+    "name": "Hill Giant",
+    "id": 2098,
+    "x": 3118,
+    "y": 9849,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2100,
+    "x": 3120,
+    "y": 9845,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2099,
+    "x": 3116,
+    "y": 9845,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2101,
+    "x": 3110,
+    "y": 9843,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2098,
+    "x": 3111,
+    "y": 9840,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2102,
+    "x": 3117,
+    "y": 9835,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2102,
+    "x": 3116,
+    "y": 9832,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2103,
+    "x": 3112,
+    "y": 9832,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2101,
+    "x": 3108,
+    "y": 9833,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2103,
+    "x": 3106,
+    "y": 9828,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2099,
+    "x": 3102,
+    "y": 9831,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Hill Giant",
+    "id": 2100,
+    "x": 3100,
+    "y": 9834,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
   { "id": 2840, "x": 3120, "y": 9977, "z": 0, "walkRange": 4 }, // Earth warrior
   { "id": 2840, "x": 3123, "y": 9974, "z": 0, "walkRange": 6 }, // Earth warrior
   { "id": 2840, "x": 3116, "y": 9991, "z": 0, "walkRange": 3 }, // Earth warrior

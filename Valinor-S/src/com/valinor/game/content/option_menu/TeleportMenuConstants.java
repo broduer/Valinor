@@ -162,7 +162,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(3039, 4772, 0))));
 
         teleportOptions.put(32, new OptionMenu("Cerberus Lair", new String[] { "Boss", "Cerberus" },
-            new TeleportAction(player, new Tile(1240, 1226, 0))));
+            new TeleportAction(player, new Tile(1292,1252, 0))));
 
         teleportOptions.put(33,
             new OptionMenu("Godwars Dungeon",

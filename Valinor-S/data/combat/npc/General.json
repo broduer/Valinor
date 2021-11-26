@@ -21,6 +21,29 @@
     }
   },
   {
+    // Monkey
+    "ids": [
+      2848, 1038, 5279, 5280
+    ],
+    "slayerxp": 6,
+    "slayerlvl": 1,
+    "maxhit": 2,
+    "deathlen": 2,
+    "stats": {
+      "hitpoints": 6,
+      "attack": 2,
+      "strength": 3,
+      "defence": 2,
+      "magic": 1,
+      "ranged": 1
+    },
+    "animations": {
+      "attack": 6565,
+      "block": 6563,
+      "death": 6564
+    }
+  },
+  {
     // Unicorns
     "ids": [
       2849
@@ -43,9 +66,69 @@
       "magicdefence": 0
     },
     "animations": {
-      "attack": 6376,
-      "block": 6375,
-      "death": 6377
+      "attack": 220,
+      "block": 221,
+      "death": 223
+    }
+  },
+  {
+    // Dark warrior
+    "ids": [
+      531
+    ],
+    "slayerxp": 17,
+    "slayerlvl": 1,
+    "maxhit": 2,
+    "deathlen": 2,
+    "stats": {
+      "hitpoints": 17,
+      "attack": 1,
+      "strength": 1,
+      "defence": 1,
+      "ranged": 1,
+      "magic": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 422,
+      "block": 424,
+      "death": 836
+    }
+  },
+  {
+    // Dark warrior
+    "ids": [
+      6606
+    ],
+    "slayerxp": 182,
+    "slayerlvl": 1,
+    "maxhit": 17,
+    "deathlen": 2,
+    "stats": {
+      "hitpoints": 165,
+      "attack": 75,
+      "strength": 75,
+      "defence": 55,
+      "ranged": 1,
+      "magic": 1
+    },
+    "bonuses": {
+      "stabdefence": 106,
+      "slashdefence": 109,
+      "crushdefence": 139,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 422,
+      "block": 424,
+      "death": 836
     }
   },
   {
@@ -2257,6 +2340,69 @@
     },
     "scripts": {
       //"droptable": "droptables.Ent"
+    }
+  },
+  {
+    // Ents (Wilderness)
+    "ids": [
+      6594
+    ],
+    "maxhit": 10,
+    "attackspeed": 4,
+    "aggressive": true,
+    "respawntime": 100,
+    "stats": {
+      "attack": 80,
+      "strength": 95,
+      "defence": 75,
+      "hitpoints": 105
+    },
+    "bonuses": {
+      "attack": 35,
+      "stabdefence": 50,
+      "slashdefence": 70,
+      "crushdefence": 70,
+      "rangeddefence": 30,
+      "magicdefence": 40
+    },
+    "animations": {
+      "attack": 7145,
+      "block": 7144,
+      "death": 7146
+    },
+    "scripts": {
+      //"droptable": "droptables.Ent"
+    }
+  },
+  {
+    // Ogre
+    "ids": [
+      2095, 2096
+    ],
+    "slayerxp": 60,
+    "slayerlvl": 1,
+    "maxhit": 7,
+    "attackspeed": 6,
+    "aggressive": true,
+    "respawntime": 100,
+    "stats": {
+      "attack": 43,
+      "strength": 43,
+      "defence": 43,
+      "hitpoints": 60
+    },
+    "bonuses": {
+      "attack": 22,
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 359,
+      "block": 360,
+      "death": 361
     }
   },
   {
