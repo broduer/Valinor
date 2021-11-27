@@ -143,7 +143,8 @@ public class CustomPets {
         YOUNGLLEF,
         CORRUPTED_YOUNGLLEF,
         BLOOD_REAPER,
-        NAGINI
+        NAGINI,
+        SRARACHA
     };
 
     private static boolean isPet(int id) {

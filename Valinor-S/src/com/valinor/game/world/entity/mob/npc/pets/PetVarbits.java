@@ -57,4 +57,6 @@ public class PetVarbits {
     public static final int UNLOCKED_PET_HERBI = 5735;
     public static final int UNLOCKED_PET_SKOTOS = 5632;
     public static final int UNLOCKED_PET_VORKI = 6102;
+    public static final int UNLOCKED_PET_ALCHY = 12000;
+    public static final int UNLOCKED_PET_SARACHNIS = 12001;
 }

@@ -331,6 +331,11 @@ public class CombatFactory {
             Npc npc = target.getAsNpc();
             Player player = (Player) attacker;
 
+            if (npc.getCombatMethod() != null && npc.getCombatMethod() instanceof CommonCombatMethod) {
+                CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
+                commonCombatMethod.onHit(npc, player);
+            }
+
             //Disturb the whirlpools
             if (npc.id() == TENTACLE_WHIRLPOOL) {
                 EnormousTentacle.onHit(player, npc);

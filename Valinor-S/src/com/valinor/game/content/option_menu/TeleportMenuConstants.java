@@ -274,6 +274,9 @@ public class TeleportMenuConstants {
         teleportOptions.put(67, new OptionMenu("Wintertodt", new String[] { "Wintertodt", "Minigames", "Firemaking" },
             new TeleportAction(player, new Tile(1630, 3947))));
 
+        teleportOptions.put(68, new OptionMenu("Sarachnis", new String[] { "Sarachnis", "boss" },
+            new TeleportAction(player, new Tile(1847,9922))));
+
         return teleportOptions;
     }
 

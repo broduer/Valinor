@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    SARACHNIS_RANDOM_MOVE_TILE,
+
     EXP_LAMP_SKILL_SELECTED,
 
     FIGHT_CAVES_WAVE("current_fightcave_wave", AttribType.INTEGER),

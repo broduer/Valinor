@@ -67,7 +67,7 @@ public class Chain<T> {
     public Task task;
 
     /**
-     * Same as {@link Task#delay}
+     * Same as {@link Task#getDelay()}
      */
     public int cycleDelay = 1;
 
@@ -130,8 +130,6 @@ public class Chain<T> {
 
     /**
      * repeats forever every 1 tick. Only stops when CONDITION evaluates to true or {@link Mob#stopActions(boolean)} or {@link Mob#interruptChains()} is called
-     * @param tickBetweenLoop
-     * @param condition
      * @return
      */
     public Chain<T> waitForTile(Tile tile, Runnable work) {
@@ -139,7 +137,7 @@ public class Chain<T> {
             nextNode = bound(owner); // make a new one
             nextNode.work = work; // init work
             nextNode.name = name; // re-use the name
-            nextNode.executeCondition = () -> ((Player)owner).tile().x == tile.x && ((Player)owner).tile().y == tile.y;
+            nextNode.executeCondition = () -> ((Mob)owner).tile().x == tile.x && ((Mob)owner).tile().y == tile.y;
             nextNode.cycleDelay = 1;
             nextNode.repeats = true;
             nextNode.findSource();
@@ -182,7 +180,6 @@ public class Chain<T> {
      * repeats forever every tickBetweenLoop ticks. Must be stopped MANUALLY by calling task.stop from the consumer.
      * <br> Check usages for examples.
      * @param tickBetweenLoop
-     * @param shouldRepeatCondition
      * @return
      */
     public Chain<T> repeatingTask(int tickBetweenLoop, Consumer<Task> work) {

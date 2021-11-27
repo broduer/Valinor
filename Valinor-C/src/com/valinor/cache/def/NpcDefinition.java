@@ -106,6 +106,10 @@ public final class NpcDefinition {
         npcDefinition.interfaceType = id;
         npcDefinition.decode(buffer);
 
+        if(id == 8713) {
+            npcDefinition.isClickable = true;
+        }
+
         /*if(id == 8492) {
             System.out.println("Actions: " + Arrays.toString(npcDefinition.actions));
         }*/

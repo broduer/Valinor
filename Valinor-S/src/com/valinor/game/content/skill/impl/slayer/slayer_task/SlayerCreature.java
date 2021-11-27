@@ -174,7 +174,7 @@ public enum SlayerCreature {
     KING_BLACK_DRAGON(135, 1, 85,true, new Tile(3016, 3849), NpcIdentifiers.KING_BLACK_DRAGON, NpcIdentifiers.KING_BLACK_DRAGON_6502, CustomNpcIdentifiers.ANCIENT_KING_BLACK_DRAGON),
     KRAKEN(136, 87, 85,true, new Tile(3344, 3822), NpcIdentifiers.KRAKEN),
     KREE_ARRA(137, 1, 100,true, new Tile(2841, 5291, 2), NpcIdentifiers.KREEARRA),
-    SARACHNIS(138, 1, 3, new Tile(1842,9912), NpcIdentifiers.SARACHNIS),
+    SARACHNIS(138, 1, 3, new Tile(1847,9922), NpcIdentifiers.SARACHNIS),
     SCORPIA(139, 1, 3,true, new Tile(3232, 3950), new Tile(3232,3950), NpcIdentifiers.SCORPIA),
     THERMONUCLEAR_SMOKE_DEVIL(140, 93, 100,true, new Tile(2369,9449), NpcIdentifiers.THERMONUCLEAR_SMOKE_DEVIL),
     VENENATIS(141, 1, 100,true, new Tile(3319, 3745), new Tile(3338,3730), NpcIdentifiers.VENENATIS, NpcIdentifiers.VENENATIS_6610),

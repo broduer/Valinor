@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.route.routes.DumbRoute;
@@ -74,6 +75,10 @@ public abstract class CommonCombatMethod implements CombatMethod {
      * player only
      */
     public void postAttack() {
+
+    }
+
+    public void onHit(Npc npc, Player player) {
 
     }
 

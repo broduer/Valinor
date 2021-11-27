@@ -1,5 +1,119 @@
 [
   {
+    // Sarachnis
+    "ids": [
+      8713
+    ],
+    "maxhit": 31,
+    "attackspeed": 4,
+    "aggroradius": 5,
+    "aggressive": true,
+    "boss": true,
+    "slayerxp": 430,
+    "slayerlvl": 1,
+    "deathlen": 2,
+    "stats": {
+      "attack": 200,
+      "strength": 200,
+      "magic": 150,
+      "ranged": 300,
+      "defence": 150,
+      "hitpoints": 400
+    },
+    "bonuses": {
+      "ranged": 15,
+      "attack": 30,
+      "stabdefence": 60,
+      "slashdefence": 40,
+      "crushdefence": 10,
+      "rangeddefence": 300,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": 8147,
+      "block": -1,
+      "death": 8318
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.sarachnis.Sarachnis"
+    }
+  },
+  {
+    // Sarachnis melee minion
+    "ids": [
+      8714
+    ],
+    "maxhit": 13,
+    "attackspeed": 3,
+    "aggroradius": 5,
+    "aggressive": true,
+    "boss": true,
+    "slayerxp": 30.7,
+    "slayerlvl": 1,
+    "deathlen": 2,
+    "stats": {
+      "attack": 150,
+      "strength": 120,
+      "magic": 1,
+      "ranged": 1,
+      "defence": 50,
+      "hitpoints": 30
+    },
+    "bonuses": {
+      "attack": 50,
+      "stabdefence": 50,
+      "slashdefence": 50,
+      "crushdefence": 20,
+      "rangeddefence": 150,
+      "magicdefence": -10
+    },
+    "animations": {
+      "attack": 8147,
+      "block": -1,
+      "death": 8318
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.sarachnis.SarachnisMeleeMinion"
+    }
+  },
+  {
+    // Sarachnis magic minion
+    "ids": [
+      8715
+    ],
+    "maxhit": 11,
+    "attackspeed": 4,
+    "aggroradius": 5,
+    "aggressive": true,
+    "boss": true,
+    "slayerxp": 30,
+    "slayerlvl": 1,
+    "deathlen": 2,
+    "stats": {
+      "attack": 10,
+      "strength": 10,
+      "magic": 100,
+      "ranged": 1,
+      "defence": 50,
+      "hitpoints": 30
+    },
+    "bonuses": {
+      "stabdefence": 50,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "rangeddefence": 0,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": 8147,
+      "block": -1,
+      "death": 8318
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.sarachnis.SarachnisMagicMinion"
+    }
+  },
+  {
     // Kalphite Queen (Stage 1)
     "ids": [
       6500

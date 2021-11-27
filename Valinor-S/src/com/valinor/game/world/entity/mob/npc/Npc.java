@@ -146,6 +146,12 @@ public class Npc extends Mob {
             walkTo = tile.transform(1, 0);
     }
 
+    public Npc spawn(boolean respawns) {
+        World.getWorld().registerNpc(this);
+        this.respawns = respawns;
+        return this;
+    }
+
     /**
      * Returns a new instance of the npc with its respective extension.
      *

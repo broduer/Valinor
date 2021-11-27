@@ -1,0 +1,308 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+    8713
+  ],
+  "petItem": 23495,
+  "petRarity": 2250,
+  "tables": [
+    {
+      "name": "Common",
+      "points": 185,
+      "items": [
+        {
+          "id": 995,
+          "min": 17500,
+          "max": 25000,
+          "points": 1
+        },
+        {
+          "id": 537,
+          "min": 10,
+          "max": 15,
+          "points": 1
+        },
+        {
+          "id": 7056,
+          "min": 5,
+          "max": 8,
+          "points": 1
+        },
+        {
+          "id": 565,
+          "min": 80,
+          "max": 100,
+          "points": 1
+        },
+        {
+          "id": 562,
+          "min": 175,
+          "max": 200,
+          "points": 1
+        },
+        {
+          "id": 564,
+          "min": 125,
+          "max": 150,
+          "points": 1
+        },
+        {
+          "id": 560,
+          "min": 80,
+          "max": 100,
+          "points": 1
+        },
+        {
+          "id": 566,
+          "min": 80,
+          "max": 100,
+          "points": 1
+        },
+        {
+          "id": 448,
+          "min": 60,
+          "max": 90,
+          "points": 1
+        },
+        {
+          "id": 1750,
+          "min": 15,
+          "max": 25,
+          "points": 1
+        },
+        {
+          "id": 1624,
+          "min": 20,
+          "max": 30,
+          "points": 1
+        },
+        {
+          "id": 449,
+          "min": 30,
+          "max": 40,
+          "points": 1
+        },
+        {
+          "id": 1622,
+          "min": 20,
+          "max": 30,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Uncomm",
+      "points": 100,
+      "items": [
+        {
+          "id": 888,
+          "min": 450,
+          "max": 600,
+          "points": 3
+        },
+        {
+          "id": 9142,
+          "min": 175,
+          "max": 225,
+          "points": 3
+        },
+        {
+          "id": 5941,
+          "min": 4,
+          "max": 6,
+          "points": 3
+        },
+        {
+          "id": 1392,
+          "min": 8,
+          "max": 10,
+          "points": 3
+        },
+        {
+          "id": 1127,
+          "amount": 1,
+          "points": 3
+        },
+        {
+          "id": 1147,
+          "amount": 1,
+          "points": 3
+        },
+        {
+          "id": 1319,
+          "amount": 1,
+          "points": 3
+        },
+        {
+          "id": 9194,
+          "min": 8,
+          "max": 10,
+          "points": 3
+        },
+        {
+          "id": 1620,
+          "min": 20,
+          "max": 30,
+          "points": 3
+        },
+        {
+          "id": 452,
+          "min": 4,
+          "max": 6,
+          "points": 3
+        },
+        {
+          "id": 1618,
+          "min": 20,
+          "max": 30,
+          "points": 3
+        },
+        {
+          "id": 214,
+          "min": 10,
+          "max": 15,
+          "points": 3
+        },
+        {
+          "id": 216,
+          "min": 10,
+          "max": 15,
+          "points": 3
+        },
+        {
+          "id": 218,
+          "min": 10,
+          "max": 15,
+          "points": 3
+        },
+        {
+          "id": 212,
+          "min": 5,
+          "max": 10,
+          "points": 3
+        },
+        {
+          "id": 2486,
+          "min": 10,
+          "max": 15,
+          "points": 3
+        },
+        {
+          "id": 208,
+          "min": 5,
+          "max": 10,
+          "points": 2
+        },
+        {
+          "id": 3052,
+          "min": 5,
+          "max": 10,
+          "points": 2
+        },
+        {
+          "id": 220,
+          "min": 5,
+          "max": 10,
+          "points": 2
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Rare",
+      "points": 12,
+      "items": [
+        {
+          "id": 5314,
+          "amount": 2,
+          "points": 1
+        },
+        {
+          "id": 5288,
+          "amount": 2,
+          "points": 1
+        },
+        {
+          "id": 5315,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 989,
+          "amount": 1,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Unique",
+      "points": 13,
+      "items": [
+        {
+          "id": 5296,
+          "amount": 3,
+          "points": 8
+        },
+        {
+          "id": 5297,
+          "amount": 3,
+          "points": 8
+        },
+        {
+          "id": 5289,
+          "amount": 1,
+          "points": 8
+        },
+        {
+          "id": 5299,
+          "amount": 3,
+          "points": 8
+        },
+        {
+          "id": 5300,
+          "amount": 3,
+          "points": 7
+        },
+        {
+          "id": 5301,
+          "amount": 3,
+          "points": 6
+        },
+        {
+          "id": 5302,
+          "amount": 3,
+          "points": 5
+        },
+        {
+          "id": 5303,
+          "amount": 3,
+          "points": 5
+        },
+        {
+          "id": 5304,
+          "amount": 3,
+          "points": 5
+        },
+        {
+          "id": 1149,
+          "amount": 1,
+          "points": 8
+        },
+        {
+          "id": 23528,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 23525,
+          "amount": 1,
+          "points": 1
+        }
+      ],
+      "tables": []
+    }
+  ]
+}
