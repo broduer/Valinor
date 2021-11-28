@@ -72,7 +72,6 @@ public class KalphiteQueenSecondForm extends CommonCombatMethod {
             spawn.respawns(false);
             World.getWorld().registerNpc(spawn);
             npc.animate(6240);
-            //here? not sure show ingame again
         });
     }
 

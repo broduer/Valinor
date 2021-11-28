@@ -66,7 +66,12 @@ public class Sarachnis extends CommonCombatMethod {
             mob.getCombat().reset();
             mob.lock();
             walk(mob);
-        }).waitUntil(1, () -> !mob.tile().equals(mob.<Tile>getAttrib(AttributeKey.SARACHNIS_RANDOM_MOVE_TILE)), () -> {
+        }).waitUntil(1, () -> {
+                //System.out.println("eval "+mob.tile()+" vs "+mob.<Tile>getAttrib(AttributeKey.SARACHNIS_RANDOM_MOVE_TILE));
+                mob.smartPathTo(mob.<Tile>getAttrib(AttributeKey.SARACHNIS_RANDOM_MOVE_TILE));
+             return mob.tile().equals(mob.<Tile>getAttrib(AttributeKey.SARACHNIS_RANDOM_MOVE_TILE));
+            }
+            , () -> {
             Player p = findPlayerInRoom();
             mob.face(p.tile());
             mob.getCombat().attack(p);
