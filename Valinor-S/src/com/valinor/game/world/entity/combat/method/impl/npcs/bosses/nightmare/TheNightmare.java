@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.method.impl.npcs.bosses;
+package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;

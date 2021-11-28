@@ -1,0 +1,81 @@
+{
+  "npcs": [ 9425, 9426, 9427, 9428, 9429, 9430, 9431, 9432  ],
+  "petItem": 24491,
+  "petRarity": 3000,
+  "guaranteed": [
+    { "id": 592, "min": 1, "max": 1 } //Ashes
+  ],
+  "tables": [
+    {
+      "name": "Always Drop",
+      "points": 1,
+      "items": [
+        { "id": 532, "min": 1, "max": 1, "points": 1 } //Big bones
+      ]
+    },
+    {
+      "name": "Weapons",
+      "points": 20,
+      "items": [
+        { "id": 1319, "min": 1, "max": 1, "points": 3 }, //Rune 2h sword
+        { "id": 1275, "min": 1, "max": 1, "points": 3 }, //Rune pickaxe
+        { "id": 1303, "min": 1, "max": 1, "points": 2 }, //Rune longsword
+        { "id": 1289, "min": 1, "max": 1, "points": 2 } //Rune sword
+      ]
+    },
+    {
+      "name": "Armour",
+      "points": 20,
+      "items": [
+        { "id": 1127, "min": 1, "max": 1, "points": 3 } //Rune platebody
+      ]
+    },
+    {
+      "name": "Runes",
+      "points": 20,
+      "items": [
+        { "id": 561, "min": 60, "max": 70, "points": 5 } //Nature rune
+      ]
+    },
+    {
+      "name": "Gems and ores",
+      "points": 20,
+      "items": [
+        { "id": 450, "min": 15, "max": 20, "points": 4 }, //Adamantite ore (noted)
+        { "id": 454, "min": 115, "max": 120, "points": 3 } //Coal (noted)
+      ]
+    },
+    {
+      "name": "Other",
+      "points": 20,
+      "items": [
+        { "id": 995, "min": 19581, "max": 25000, "points": 3 }, //Coins
+        { "id": 5300, "min": 1, "max": 1, "points": 3 }, //Snapdragon seed
+        { "id": 1514, "min": 15, "max": 20, "points": 3 }, //Magic logs (noted)
+        { "id": 3024, "min": 3, "max": 3, "points": 1 }, //Super restore(4)
+        { "id": 3052, "min": 3, "max": 3, "points": 2 }, //Grimy snapdragon (noted)
+        { "id": 12073, "min": 1, "max": 1, "points": 2 } //Clue scroll (elite)
+      ]
+    },
+    {
+      "name": "Inquisitors",
+      "points": 1,
+      "items": [
+        { "id": 24420, "min": 1, "max": 1, "points": 1 }, //Inquisitor hauberk
+        { "id": 24421, "min": 1, "max": 1, "points": 1 }, //Inquisitor plateskirt
+        { "id": 24419, "min": 1, "max": 1, "points": 1 }, //Inquisitor helmet
+        { "id": 24417, "min": 1, "max": 1, "points": 1 } //Inquisitor mace
+      ]
+    },
+    {
+      "name": "Staff",
+      "points": 1,
+      "items": [
+        { "id": 24514, "min": 1, "max": 1, "points": 1 }, //Volatile Orb
+        { "id": 24517, "min": 1, "max": 1, "points": 1 }, //Eldritch Orb
+        { "id": 24511, "min": 1, "max": 1, "points": 1 }, //Harmonised Orb
+        { "id": 24422, "min": 1, "max": 1, "points": 4 } //Nightmare Staff
+      ]
+    }
+  ]
+}

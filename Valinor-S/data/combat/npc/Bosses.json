@@ -1266,13 +1266,13 @@
   {
     // The nightmare
     "ids": [
-      9430
+      9424, 9425, 9426, 9427, 9428, 9429, 9430, 9431, 9432
     ],
-    "maxhit": 33,
+    "maxhit": 51,
     "attackspeed": 6,
     "aggroradius": 0,
     "respawntime": 50,
-    "deathlen": 2,
+    "deathlen": 5,
     "aggressive": false,
     "stats": {
       "attack": 150,
@@ -1292,12 +1292,120 @@
       "magicdefence": 600
     },
     "animations": {
-      "attack": -1,
+      "attack": 8595,
       "block": -1,
       "death": 8612
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.TheNightmare"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.TheNightmare"
+    }
+  },
+  {
+    // The Nightmare - Husk
+    "ids": [
+      9466, 9467
+    ],
+    "maxhit": 16,
+    "attackspeed": 6,
+    "aggroradius": 0,
+    "respawntime": 50,
+    "deathlen": 5,
+    "aggressive": false,
+    "stats": {
+      "attack": 150,
+      "strength": 150,
+      "magic": 150,
+      "ranged": 150,
+      "defence": 150,
+      "hitpoints": 100
+    },
+    "bonuses": {
+      "attack": 208,
+      "stabdefence": 60,
+      "slashdefence": 90,
+      "crushdefence": 40,
+      "rangeddefence": 60,
+      "magicdefence": 60
+    },
+    "animations": {
+      "attack": 8564,
+      "block": -1,
+      "death": 8566
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Husk"
+    }
+  },
+  {
+    // The Nightmare - Parasite
+    "ids": [
+      9469, 9468
+    ],
+    "maxhit": 20,
+    "attackspeed": 6,
+    "aggroradius": 0,
+    "respawntime": 50,
+    "deathlen": 5,
+    "aggressive": false,
+    "stats": {
+      "attack": 150,
+      "strength": 150,
+      "magic": 150,
+      "ranged": 150,
+      "defence": 150,
+      "hitpoints": 100
+    },
+    "bonuses": {
+      "attack": 208,
+      "stabdefence": 120,
+      "slashdefence": 180,
+      "crushdefence": 40,
+      "rangeddefence": 60,
+      "magicdefence": 60
+    },
+    "animations": {
+      "attack": 8555,
+      "block": -1,
+      "death": 8559
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Parasite"
+    }
+  },
+  {
+    // The Nightmare - Totem
+    "ids": [
+      9446, 9447, 9448, 9449, 9450, 9451
+    ],
+    "maxhit": 10,
+    "attackspeed": 6,
+    "aggroradius": 0,
+    "respawntime": 50,
+    "deathlen": 5,
+    "aggressive": false,
+    "stats": {
+      "attack": 150,
+      "strength": 150,
+      "magic": 150,
+      "ranged": 150,
+      "defence": 150,
+      "hitpoints": 10
+    },
+    "bonuses": {
+      "attack": 208,
+      "stabdefence": 12,
+      "slashdefence": 18,
+      "crushdefence": 4,
+      "rangeddefence": 6,
+      "magicdefence": 6
+    },
+    "animations": {
+      "attack": 1077,
+      "block": -1,
+      "death": 836
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Totem"
     }
   },
   {

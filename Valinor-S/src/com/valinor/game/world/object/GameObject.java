@@ -480,4 +480,9 @@ public class GameObject extends Entity implements Cloneable {
         }
         return newobj;
     }
+
+    public GameObject spawn() {
+        ObjectManager.addObj(this);
+        return this;
+    }
 }

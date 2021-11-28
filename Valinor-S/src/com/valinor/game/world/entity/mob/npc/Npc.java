@@ -87,7 +87,7 @@ public class Npc extends Mob {
     public String spawnStack = "";
 
     private int id;
-    private final Tile spawnTile;
+    private Tile spawnTile;
     private boolean ancientSpawn;
     private int walkRadius;
     private int spawnDirection;
@@ -107,6 +107,15 @@ public class Npc extends Mob {
     // A list of npc-ids such as Bosses that are immune to venom.
     public static final int[] venom_immunes = new int[]{NpcIdentifiers.COMBAT_DUMMY, NpcIdentifiers.UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
     public static final int[] poison_immunes = new int[]{NpcIdentifiers.COMBAT_DUMMY, NpcIdentifiers.UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
+
+    public Npc(int id) {
+        this.id = id;
+        setSize(def.size);
+
+        if (combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
+            setCombatMethod(combatInfo().scripts.newCombatInstance());
+        }
+    }
 
     public Npc(int id, Tile tile) {
         super(NodeType.NPC, tile);
