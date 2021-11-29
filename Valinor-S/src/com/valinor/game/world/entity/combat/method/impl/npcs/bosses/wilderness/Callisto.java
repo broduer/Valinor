@@ -15,6 +15,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -38,22 +39,19 @@ public class Callisto extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         Npc npc = (Npc) mob;
+        // At all times, callisto can initiate the heal.
+        if (World.getWorld().rollDie(12, 1)) {
+            prepareHeal(npc);
+        }
 
-        //All attacks are melee
-        if (CombatFactory.canReach(npc, CombatFactory.MELEE_COMBAT, target)) {
-            // At all times, callisto can initiate the heal.
-            if (Utils.rollDie(18, 1)) {
-                prepareHeal(npc);
-            }
-            // Determine if we do a special hit, or a regular hit.
-            if (Utils.rollDie(18, 1)) {
-                fury(npc, target);
-            /*} else if (Utils.rollDie(6, 1) && !npc.<Boolean>getAttribOr(AttributeKey.CALLISTO_ROAR, false)) {
-                roar(npc, target);*/
-            } else {
-                target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
-                npc.animate(npc.attackAnimation());
-            }
+        // Determine if we do a special hit, or a regular hit.
+        if (CombatFactory.canReach(npc, CombatFactory.MELEE_COMBAT, target) && Utils.percentageChance(80)) {
+            target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
+            npc.animate(npc.attackAnimation());
+        } else if (Utils.percentageChance(80)) {
+            fury(npc, target);
+        } else {
+            roar(npc, target);
         }
     }
 
@@ -90,29 +88,72 @@ public class Callisto extends CommonCombatMethod {
      */
     private void roar(Npc npc, Mob target) {
         npc.putAttrib(AttributeKey.CALLISTO_ROAR, true);
-        if (target.isPlayer()) {
-            Direction direction = Direction.of(target.tile().x - npc.tile().x, target.tile().y - npc.tile().y);
+        npc.animate(npc.attackAnimation());
+        int vecX = (target.getAbsX() - getClosestX(mob));
+        if (vecX != 0)
+            vecX /= Math.abs(vecX); // determines X component for knockback
+        int vecY = (target.getAbsY() - getClosestY(mob));
+        if (vecY != 0)
+            vecY /= Math.abs(vecY); // determines Y component for knockback
+        int endX = target.getAbsX();
+        int endY = target.getAbsY();
+        for (int i = 0; i < 4; i++) {
+            if (DumbRoute.getDirection(endX, endY, npc.getZ(), target.getSize(), endX + vecX, endY + vecY) != null) { // we can take this step!
+                endX += vecX;
+                endY += vecY;
+            } else
+                break; // cant take the step, stop here
+        }
+        Direction dir;
+        if (vecX == -1)
+            dir = Direction.EAST;
+        else if (vecX == 1)
+            dir = Direction.WEST;
+        else if (vecY == -1)
+            dir = Direction.NORTH;
+        else
+            dir = Direction.SOUTH;
 
-            Tile tile = target.tile().transform(direction.x() * 3, direction.y() * 3);
-
-            FaceDirection face = FaceDirection.forTargetTile(npc.tile(), target.tile());
-
-            int[][] area = World.getWorld().clipAround(tile, 3);
-
-            for (int[] array : area) {
-                for (int value : array) {
-                    if (value != 0) {
-                        npc.clearAttrib(AttributeKey.CALLISTO_ROAR);
-                        return;
-                    }
-                }
+        if (endX != target.getAbsX() || endY != target.getAbsY()) { // only do movement if we can take at least one step
+            if(target.isPlayer()) {
+                int finalEndX = endX;
+                int finalEndY = endY;
+                Chain.bound(null).runFn(1, () -> {
+                    final Player p = target.getAsPlayer();
+                    p.lock();
+                    p.animate(1157);
+                    p.graphic(245, 5, 124);
+                    p.hit(mob, 3);
+                    p.stun(2, true);
+                    int diffX = finalEndX - p.getAbsX();
+                    int diffY = finalEndY - p.getAbsY();
+                    TaskManager.submit(new ForceMovementTask(p, 3, new ForceMovement(p.tile().clone(), new Tile(diffX, diffY), 10, 60, dir.toInteger())));
+                   /* target.getMovement().teleport(finalEndX, finalEndY, npc.getHeight());
+                    target.getMovement().force(diffX, diffY, 0, 0, 10, 60, dir);*/
+                    p.message("Callisto's roar throws you backwards.");
+                    p.unlock();
+                });
             }
-            ((Player)target).message("Callisto's roar throws you backwards.");
-            target.animate(846);
-            TaskManager.submit(new ForceMovementTask(target.getAsPlayer(), 3, new ForceMovement(target.getAsPlayer().tile().clone(), new Tile(direction.x() * 3, direction.y() * 3), 0, 15, face.direction)));
-            Chain.bound(null).name("CallistoRoarTask").runFn(3, () -> target.hit(npc, 3, CombatType.MELEE).checkAccuracy().submit());
         }
         npc.clearAttrib(AttributeKey.CALLISTO_ROAR);
+    }
+
+    private int getClosestX(Mob mob) { // is this already added somewhere else? it's very useful, should be available somewhere public
+        if (target.getAbsX() < mob.getAbsX())
+            return mob.getAbsX();
+        else if (target.getAbsX() >= mob.getAbsX() && target.getAbsX() <= mob.getAbsX() + mob.getSize() - 1)
+            return target.getAbsX();
+        else
+            return mob.getAbsX() + mob.getSize() - 1;
+    }
+
+    private int getClosestY(Mob mob) { // is this already added somewhere else? it's very useful, should be available somewhere public
+        if (target.getAbsY() < mob.getAbsY())
+            return mob.getAbsY();
+        else if (target.getAbsY() >= mob.getAbsY() && target.getAbsY() <= mob.getAbsY() + mob.getSize() - 1)
+            return target.getAbsY();
+        else
+            return mob.getAbsY() + mob.getSize() - 1;
     }
 
 }
