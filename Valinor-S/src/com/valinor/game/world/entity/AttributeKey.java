@@ -328,11 +328,6 @@ public enum AttributeKey {
     IN_ANTIRAG_ZONE,
 
     /**
-     * Key used in scorpia's combat script to define whether the minions had been spawned.
-     */
-    SCORPIA_GUARDIANS_SPAWNED,
-
-    /**
      * The items stored in the cart from the item dispenser.
      */
     CART_ITEMS,

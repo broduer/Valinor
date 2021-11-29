@@ -4,13 +4,13 @@
   "title": "",
   "titleColor": "",
   "tile": {
-    "x": 3107,
-    "y": 3504,
+    "x": 3230,
+    "y": 10340,
     "level": 0,
-    "firstChunkX": 388,
-    "firstChunkY": 438
+    "firstChunkX": 403,
+    "firstChunkY": 1292
   },
-  "gameTime": 1799381,
+  "gameTime": 1906532,
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
@@ -26,7 +26,7 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
-  "lastLogin": "Nov 28, 2021, 21:20:49 PM",
+  "lastLogin": "Nov 29, 2021, 16:00:23 PM",
   "muted": false,
   "newPlayer": false,
   "isBetaTester": false,
@@ -53,7 +53,7 @@
     0
   ],
   "spellBook": "LUNAR",
-  "fightType": "SCYTHE_CHOP",
+  "fightType": "UNARMED_KICK",
   "fightTypeVarp": 43,
   "fightTypeVarpState": 1,
   "autoRetaliate": false,
@@ -62,7 +62,7 @@
   "poisonTicks": 0,
   "specPercentage": 100,
   "recoilCharges": 40,
-  "targetSearchTimer": 0,
+  "targetSearchTimer": 2,
   "specialAttackRestoreTimer": 0,
   "skullTimer": 0,
   "skullType": "NO_SKULL",
@@ -155,11 +155,11 @@
     99
   ],
   "skillXP": [
-    1.3034431E7,
-    1.3034431E7,
-    1.3152577E7,
-    1.3073811E7,
-    1.3034431E7,
+    1.3041071E7,
+    1.3041071E7,
+    1.3189157E7,
+    1.3098161E7,
+    1.3057621E7,
     1.3034431E7,
     1.3034431E7,
     1.3034431E7,
@@ -196,71 +196,41 @@
   "slayerExtensionsList": {},
   "inventory": [
     {
-      "id": 950,
+      "id": 21295,
       "amount": 1
     },
     {
-      "id": 1891,
+      "id": 22981,
       "amount": 1
     },
     {
-      "id": 995,
-      "amount": 16225
-    },
-    {
-      "id": 1619,
+      "id": 11785,
       "amount": 1
     },
     {
-      "id": 2007,
+      "id": 24271,
       "amount": 1
     },
     {
       "id": 11832,
       "amount": 1
     },
-    {
-      "id": 4732,
-      "amount": 1
-    },
-    {
-      "id": 4734,
-      "amount": 1
-    },
-    {
-      "id": 11834,
-      "amount": 1
-    },
-    {
-      "id": 11832,
-      "amount": 1
-    },
-    {
-      "id": 30187,
-      "amount": 1
-    },
-    {
-      "id": 4151,
-      "amount": 1
-    },
-    {
-      "id": 22947,
-      "amount": 1
-    },
-    {
-      "id": 22761,
-      "amount": 1
-    },
     null,
     null,
     null,
     null,
     null,
     null,
-    {
-      "id": 13652,
-      "amount": 1
-    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
@@ -270,46 +240,19 @@
     null
   ],
   "equipment": [
-    {
-      "id": 24271,
-      "amount": 1
-    },
-    {
-      "id": 21295,
-      "amount": 1
-    },
-    {
-      "id": 19553,
-      "amount": 1
-    },
-    {
-      "id": 25739,
-      "amount": 1
-    },
-    {
-      "id": 4736,
-      "amount": 1
-    },
     null,
     null,
-    {
-      "id": 4738,
-      "amount": 1
-    },
     null,
-    {
-      "id": 22981,
-      "amount": 1
-    },
-    {
-      "id": 30038,
-      "amount": 1
-    },
     null,
-    {
-      "id": 11773,
-      "amount": 1
-    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     null
   ],
   "bank": [
@@ -591,7 +534,7 @@
   "votePoints": 8,
   "pestControlPoints": 0,
   "slayerRewardPoints": 71,
-  "bossPoints": 88,
+  "bossPoints": 100,
   "pkPoints": 183,
   "teleportToTargetUnlocked": false,
   "preserve": false,
@@ -616,7 +559,7 @@
   "ancientBarrelchestsKilled": 0,
   "kerberosKilled": 0,
   "arachneKilled": 0,
-  "skorpiosKilled": 0,
+  "skorpiosKilled": 1,
   "artioKilled": 0,
   "jadsKilled": 0,
   "chaosElementalsKilled": 0,
@@ -632,8 +575,8 @@
   "dementorsKilled": 0,
   "hungarianHorntailsKilled": 0,
   "fenrirGreybacksKilled": 0,
-  "scorpiasKilled": 0,
-  "callistosKilled": 0,
+  "scorpiasKilled": 3,
+  "callistosKilled": 1,
   "molesKilled": 0,
   "nightmaresKilled": 0,
   "rexKilled": 0,
@@ -698,85 +641,92 @@
     2
   ],
   "bossTimers": {},
-  "collectionLog": {},
+  "collectionLog": {
+    "SCORPIA": [
+      {
+        "id": 11930,
+        "amount": 1
+      }
+    ]
+  },
   "achievements": {
     "null": 0,
-    "FISHERMAN": 0,
-    "DRAGON_SLAYER_IV": 0,
-    "FIGHT_CAVES_II": 0,
-    "YAK_HUNTER": 0,
-    "SAND_CRAB_HUNTER": 0,
-    "SQUIDWARD": 0,
-    "VOTE_FOR_US_I": 0,
-    "TASK_MASTER_II": 0,
-    "CHEF": 0,
-    "FIGHT_CAVES_I": 0,
-    "CRYSTAL_LOOTER_III": 0,
-    "CORPOREAL_CRITTER": 0,
-    "LARRANS_LOOTER_I": 0,
-    "DEFENDER_HUNT_III": 0,
-    "FARMER": 0,
-    "DEFENDER_HUNT_V": 0,
-    "DEFENDER_HUNT_IX": 0,
-    "CRYSTAL_LOOTER_I": 0,
-    "VORKY": 0,
-    "MINER": 0,
-    "BRIMSTONE_LOOTER_III": 100,
-    "COOK": 0,
-    "VOTE_FOR_US_III": 0,
-    "DRAGON_SLAYER_II": 0,
-    "OWN_A_HOUSE": 0,
-    "BEAR_GRYLLS": 0,
-    "SKILLER_I": 1,
-    "FLETCHER": 0,
-    "REVENANT_HUNTER": 0,
-    "PARKOUR": 0,
-    "BARROWS_I": 0,
-    "TASK_MASTER_I": 0,
-    "EXPERIMENTS_HUNTER": 0,
-    "DEFENDER_HUNT_I": 0,
-    "LARRANS_LOOTER_II": 0,
-    "BARK_SCORPION": 0,
-    "SKILLER_II": 0,
-    "PYROMANCER": 0,
-    "CRYSTAL_LOOTER_II": 0,
-    "PIZZA_BAKER": 0,
-    "ULTIMATE_CHAOS": 0,
-    "GOLDSMITH": 0,
-    "TSJERNOBYL": 0,
-    "LUMBERJACK": 0,
-    "DRAGON_SLAYER_I": 0,
-    "SKILLER_III": 0,
-    "VENENATIS": 0,
-    "BARROWS_II": 0,
-    "LAPIDARIST": 0,
-    "VETION": 0,
-    "RUNE_MYSTERIES": 0,
-    "BRIMSTONE_LOOTER_I": 10,
-    "DR_CURT_CONNORS": 0,
-    "CONSTRUCTION_WORKER": 0,
-    "SKILLER_IV": 0,
-    "FLUFFY": 0,
-    "DEFENDER_HUNT_VI": 0,
-    "BREWING": 0,
-    "MASTER_THIEF": 9,
-    "TASK_MASTER_III": 0,
     "DRAGON_SLAYER_III": 0,
-    "ROCK_CRAB_HUNTER": 0,
-    "VOTE_FOR_US_II": 0,
-    "BUG_EXTERMINATOR": 0,
-    "BRIMSTONE_LOOTER_II": 50,
-    "SNAKE_CHARMER": 0,
+    "BEAR_GRYLLS": 1,
     "GODWAR": 0,
-    "LORD_OF_THE_RINGS": 0,
+    "PARKOUR": 0,
+    "BARROWS_III": 0,
+    "SAND_CRAB_HUNTER": 0,
+    "FLUFFY": 0,
+    "ULTIMATE_CHAOS": 0,
+    "BARK_SCORPION": 3,
+    "BRIMSTONE_LOOTER_II": 50,
+    "CHEF": 0,
+    "DRAGON_SLAYER_II": 0,
+    "TASK_MASTER_II": 0,
+    "FIGHT_CAVES_II": 0,
+    "BARROWS_II": 0,
+    "YAK_HUNTER": 0,
+    "BRIMSTONE_LOOTER_III": 100,
+    "VORKY": 0,
+    "DEFENDER_HUNT_IX": 0,
+    "SKILLER_I": 1,
+    "PYROMANCER": 0,
+    "VOTE_FOR_US_III": 0,
+    "LARRANS_LOOTER_II": 0,
+    "DEFENDER_HUNT_I": 0,
+    "DRAGON_SLAYER_I": 0,
+    "SQUIDWARD": 0,
+    "FIGHT_CAVES_I": 0,
+    "CONSTRUCTION_WORKER": 0,
+    "RUNE_MYSTERIES": 0,
+    "LAPIDARIST": 0,
+    "GOLDSMITH": 0,
     "BAKER": 0,
+    "DR_CURT_CONNORS": 0,
+    "SKILLER_II": 0,
+    "DEFENDER_HUNT_VI": 0,
+    "FISHERMAN": 0,
+    "CRYSTAL_LOOTER_I": 0,
+    "TASK_MASTER_III": 0,
+    "BREWING": 0,
+    "SNAKE_CHARMER": 0,
+    "ROCK_CRAB_HUNTER": 0,
+    "VENENATIS": 0,
+    "SKILLER_III": 0,
+    "DRAGON_SLAYER_IV": 0,
+    "TSJERNOBYL": 0,
+    "TASK_MASTER_I": 0,
+    "VOTE_FOR_US_I": 0,
+    "COOK": 0,
     "DEFENDER_HUNT_II": 0,
-    "COMPLETIONIST": 0,
+    "BARROWS_I": 0,
+    "FARMER": 0,
     "LARRANS_LOOTER_III": 0,
-    "DEFENDER_HUNT_IV": 0,
+    "DEFENDER_HUNT_III": 0,
+    "MASTER_THIEF": 9,
+    "EXPERIMENTS_HUNTER": 0,
+    "BUG_EXTERMINATOR": 0,
+    "CORPOREAL_CRITTER": 0,
+    "PIZZA_BAKER": 0,
     "DEFENDER_HUNT_VII": 0,
+    "DEFENDER_HUNT_V": 0,
     "MASTER_IN_CONSTRUCTION": 0,
-    "BARROWS_III": 0
+    "COMPLETIONIST": 0,
+    "FLETCHER": 0,
+    "LARRANS_LOOTER_I": 0,
+    "DEFENDER_HUNT_IV": 0,
+    "OWN_A_HOUSE": 0,
+    "LUMBERJACK": 0,
+    "VOTE_FOR_US_II": 0,
+    "BRIMSTONE_LOOTER_I": 10,
+    "VETION": 0,
+    "REVENANT_HUNTER": 0,
+    "CRYSTAL_LOOTER_II": 0,
+    "CRYSTAL_LOOTER_III": 0,
+    "SKILLER_IV": 0,
+    "LORD_OF_THE_RINGS": 0,
+    "MINER": 0
   },
   "achievementsCompleted": 0,
   "task": "NONE",
@@ -898,7 +848,7 @@
   "chamberOfSecretsLogClaimed": false,
   "revenantsLogClaimed": false,
   "slayerLogClaimed": false,
-  "lastDailyReset": 28,
+  "lastDailyReset": 29,
   "finishedHalloweenDialogue": false,
   "candiesTraded": -1,
   "eventReward1Claimed": false,

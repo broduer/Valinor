@@ -69,6 +69,11 @@ public class Npc extends Mob {
 
     private static final Logger logger = LogManager.getLogger(Npc.class);
 
+    public Npc remove() {
+      World.getWorld().unregisterNpc(this);
+      return this;
+    }
+
     public boolean isRandomWalkAllowed() {
         return spawnArea != null && !hidden() && getMovement().isAtDestination() && !locked() && !isMovementBlocked(false, false);
     }

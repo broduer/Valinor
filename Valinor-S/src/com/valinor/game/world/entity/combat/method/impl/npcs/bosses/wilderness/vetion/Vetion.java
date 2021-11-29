@@ -68,7 +68,7 @@ public class Vetion extends CommonCombatMethod {
             World.getWorld().tileGraphic(281, lightning_three, 0, 10 * tileDist);
         }).then(3, () -> {
             if (target.tile() == (lightning_one) || target.tile() == (lightning_one.transform(1, 0)) || target.tile() == (lightning_one.transform(1, 1))) {
-                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), CombatType.MAGIC).checkAccuracy().submit();
+                target.hit(mob, World.getWorld().random(30));
             }
         });
         mob.getCombat().delayAttack(6);

@@ -309,7 +309,7 @@
       "death": 4495
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.superiorbosses.Kerberos"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.cerberus.Cerberus"
     }
   },
   //Zamorak God Wars

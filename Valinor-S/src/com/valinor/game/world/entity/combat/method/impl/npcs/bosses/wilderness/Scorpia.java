@@ -1,46 +1,97 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness;
 
+import com.valinor.fs.NpcDefinition;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.NpcIdentifiers;
+import com.valinor.util.TickDelay;
+import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.util.NpcIdentifiers.SCORPIA;
+import static com.valinor.util.NpcIdentifiers.SCORPIAS_GUARDIAN;
 
 public class Scorpia extends CommonCombatMethod {
 
+    static {
+        World.getWorld().definitions().get(NpcDefinition.class, SCORPIA).ignoreOccupiedTiles = true; // so she doesnt get stuck on her babies
+        World.getWorld().definitions().get(NpcDefinition.class, SCORPIAS_GUARDIAN).ignoreOccupiedTiles = true;
+    }
+
+    private boolean spawnedGuardians = false;
+    private final Npc[] guardians = new Npc[2];
+
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        //If Scorpia is below 50% HP & hasn't summoned offspring that heal we..
-        var summoned_guardians = mob.<Boolean>getAttribOr(AttributeKey.SCORPIA_GUARDIANS_SPAWNED, false);
-        if (mob.hp() < 100 && !summoned_guardians) {
-            summon_guardian((Npc) mob);
-            summon_guardian((Npc) mob);
-            mob.putAttrib(AttributeKey.SCORPIA_GUARDIANS_SPAWNED, true);
-        }
-
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
-            if (World.getWorld().rollDie(4, 1)) {
-                target.poison(20);
-            }
-
             target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
             mob.animate(mob.attackAnimation());
+            if (World.getWorld().rollDie(6, 1))
+                target.hit(mob, 20, SplatType.POISON_HITSPLAT);
         }
     }
 
-    private void summon_guardian(Npc scorpia) {
-        var guardian = new Npc(NpcIdentifiers.SCORPIAS_GUARDIAN, new Tile(scorpia.tile().x + World.getWorld().random(2), scorpia.tile().y + World.getWorld().random(2)));
-        guardian.respawns(false);
-        guardian.noRetaliation(true);
-        World.getWorld().registerNpc(guardian);
-        guardian.setEntityInteraction(scorpia);
+    private void spawnGuardians(Mob mob) {
+        if (!spawnedGuardians && mob.hp() < 100) {
+            spawnedGuardians = true;
+            Area bounds = new Area(mob.getAbsX(), mob.getAbsY(), mob.getAbsX() + mob.getSize() - 1, mob.getAbsY() + mob.getSize() - 1, 0);
+            for (int i = 0; i < guardians.length; i++) {
+                guardians[i] = new Npc(SCORPIAS_GUARDIAN, new Tile(bounds.randomX(), bounds.randomY(), bounds.level)).spawn(false);
+                Npc guardian = guardians[i];
+                guardian.face(mob.tile());
+                guardian.graphic(144, 20, 0);
+                Chain.bound(null).name("ScorpiaGuardiansTask").repeatingTask(4, t -> {
 
-        // Execute script
-        ScorpiaGuardian.heal(scorpia, guardian);
+                    if (guardian.dead() || target.dead() || !mob.getCombat().inCombat()) {
+                        t.stop();
+                        return;
+                    }
+
+                    var ticksNoHeal = 0;
+                    var distanceTo = guardian.tile().distanceTo(mob.tile());
+                    if(distanceTo > 5) {
+                        ticksNoHeal++;
+                    }
+
+                    if(ticksNoHeal == 25) {
+                        t.stop();
+                        return;
+                    }
+
+                    guardian.getMovement().follow(mob);
+                    guardian.animate(guardian.attackAnimation());
+                    new Projectile(guardian, mob, 109, 30, 100, 43, 31, 0).sendProjectile();
+                    mob.heal(World.getWorld().random(1, 10));
+                });
+            }
+        }
+    }
+
+    @Override
+    public void onHit(Npc npc, Player player) {
+        if (npc.id() == SCORPIA) {
+            spawnGuardians(npc);
+        }
+    }
+
+    @Override
+    public void onDeath() {
+        spawnedGuardians = false;
+        for (Npc guardian : guardians) {
+            if (guardian != null && !guardian.dead())
+                guardian.hit(guardian, guardian.hp());
+        }
+        super.onDeath();
     }
 
     @Override

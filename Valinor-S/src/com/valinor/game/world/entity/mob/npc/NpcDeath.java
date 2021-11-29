@@ -550,13 +550,7 @@ public class NpcDeath {
                 //Make sure spawns are killed on boss death
                 if (npc.id() == SCORPIA) {
                     killer.getTaskMasterManager().increase(Tasks.SCORPIA);
-                    npc.clearAttrib(AttributeKey.SCORPIA_GUARDIANS_SPAWNED);
                     AchievementsManager.activate(killer, Achievements.BARK_SCORPION, 1);
-                    World.getWorld().getNpcs().forEachInArea(new Area(3219, 3248, 10329, 10353), n -> {
-                        if (n.id() == SCORPIAS_GUARDIAN) {
-                            World.getWorld().unregisterNpc(n);
-                        }
-                    });
 
                     if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                         npc.respawns(false);//Cerberus can no longer spawn his superior spawns in 1 minute.

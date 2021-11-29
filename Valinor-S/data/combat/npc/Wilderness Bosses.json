@@ -140,7 +140,7 @@
       "death": 4929
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.superiorbosses.Artio",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.Callisto",
       "aggression": "com.valinor.game.content.members.MemberCaveAgro"
     }
   },
@@ -151,7 +151,7 @@
     ],
     "aggressive": true,
     "boss": true,
-    "maxhit": 50,
+    "maxhit": 40,
     "slayerlvl": 1,
     "slayerxp": 388,
     "aggroradius": 4,
@@ -217,7 +217,7 @@
       "death": 5321
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.superiorbosses.Arachne",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.Venenatis",
       "aggression": "com.valinor.game.content.members.MemberCaveAgro"
     }
   },
@@ -329,8 +329,7 @@
       "death": 6256
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.Scorpia",
-      "death": "nl.bartpelle.veteres.content.npcs.bosses.wilderness.Scorpia.deathScript"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.Scorpia"
     }
   },
   {
@@ -366,7 +365,7 @@
       "death": 6256
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.superiorbosses.Skorpios"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.Scorpia"
     }
   },
   {
@@ -374,9 +373,9 @@
     "ids": [
       6617
     ],
-    "retaliates": true,
+    "retaliates": false,
     "aggressive": false,
-    "aggroradius": 10,
+    "aggroradius": 0,
     "maxhit": 4,
     "stats": {
       "magic": 30,
