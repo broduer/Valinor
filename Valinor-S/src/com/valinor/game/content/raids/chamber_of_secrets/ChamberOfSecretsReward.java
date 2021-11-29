@@ -11,7 +11,7 @@ import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import static com.valinor.game.content.collection_logs.CollectionLog.RAIDS_KEY;
+import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.util.CustomItemIdentifiers.*;
@@ -24,7 +24,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class ChamberOfSecretsReward {
 
     public static void unlockNagini(Player player) {
-        BOSSES.log(player, RAIDS_KEY, new Item(Pet.NAGINI.item));
+        BOSSES.log(player, COS_RAIDS_KEY, new Item(Pet.NAGINI.item));
 
         // RS tries to add it as follower first. That only works if you don't have one.
         var currentPet = player.pet();
@@ -157,7 +157,7 @@ public class ChamberOfSecretsReward {
             for (int i = 0; i < rolls; i++) {
                 Item item = rollUnique();
                 boolean added = player.getRaidRewards().add(item);
-                OTHER.log(player, RAIDS_KEY, item);
+                OTHER.log(player, COS_RAIDS_KEY, item);
                 Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Secrets! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "raids");
                 rare = player;
             }

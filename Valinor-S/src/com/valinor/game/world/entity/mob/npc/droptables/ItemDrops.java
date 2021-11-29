@@ -25,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.valinor.game.content.collection_logs.CollectionLog.RAIDS_KEY;
+import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
@@ -163,7 +163,7 @@ public class ItemDrops {
 
                 // bosses, find npc ID, find item ID
                 BOSSES.log(player, npc.id(), reward);
-                BOSSES.log(player, RAIDS_KEY, reward);
+                BOSSES.log(player, COS_RAIDS_KEY, reward);
                 OTHER.log(player, npc.id(), reward);
 
                 if (player.nifflerPetOut() && player.nifflerCanStore() && reward.getValue() > 0) {

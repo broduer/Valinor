@@ -24,8 +24,7 @@
 			"items": [
 				{ "id": 12827, "min": 1, "max": 1, "points": 3 }, //Spectral
 				{ "id": 12823, "min": 1, "max": 1, "points": 3 }, //Arcane
-				{ "id": 12819, "min": 1, "max": 1, "points": 1 },  //Ely
-				{ "id": 30187, "min": 1, "max": 1, "points": 1 }  //Divine
+				{ "id": 12819, "min": 1, "max": 1, "points": 1 }  //Ely
 			]
 		},
 		{

@@ -17,7 +17,9 @@ import static com.valinor.game.content.collection_logs.CollectionLogUtility.*;
  */
 public class CollectionLog {
 
-    public static final int RAIDS_KEY = 100_000;
+    public static final int COS_RAIDS_KEY = 100_000;
+    public static final int COX_RAIDS_KEY = 100_001;
+    public static final int TOB_RAIDS_KEY = 100_002;
 
     private final Player player;
 
@@ -99,6 +101,10 @@ public class CollectionLog {
 
     public void open(LogType logType) {
         final List<Collection> log = Collection.getAsList(logType);
+        if(log.size() == 0) {
+            player.message("This category has no options yet.");
+            return;
+        }
         final int total = log.size();
         for (int index = 0; index < 60; index++) {
             //Clear old data first

@@ -1,6 +1,5 @@
 package com.valinor.game.world.entity.mob.npc;
 
-import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
@@ -12,12 +11,10 @@ import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.Phases;
 import com.valinor.game.content.raids.party.Party;
-import com.valinor.game.content.skill.impl.prayer.Bone;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.tasks.impl.Tasks;
-import com.valinor.game.content.treasure.TreasureRewardCaskets;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -35,13 +32,11 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Gargoyle;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Nechryael;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.nechryarch.NechryarchDeathSpawn;
-import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.droptables.ItemDrops;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
@@ -49,7 +44,6 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.*;
 import com.valinor.util.chainedwork.Chain;
 import org.apache.logging.log4j.Level;
@@ -61,11 +55,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static com.valinor.game.content.collection_logs.CollectionLog.RAIDS_KEY;
+import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.*;
-import static com.valinor.util.CustomItemIdentifiers.HWEEN_TOKENS;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -895,11 +888,11 @@ public class NpcDeath {
 
             //Special collection log unlocks
             switch (pet.get()) {
-                case CENTAUR_MALE -> BOSSES.log(killer, RAIDS_KEY, new Item(Pet.CENTAUR_MALE.item));
-                case CENTAUR_FEMALE -> BOSSES.log(killer, RAIDS_KEY, new Item(Pet.CENTAUR_FEMALE.item));
-                case DEMENTOR -> BOSSES.log(killer, RAIDS_KEY, new Item(Pet.DEMENTOR.item));
-                case FLUFFY_JR -> BOSSES.log(killer, RAIDS_KEY, new Item(Pet.FLUFFY_JR.item));
-                case FENRIR_GREYBACK_JR -> BOSSES.log(killer, RAIDS_KEY, new Item(Pet.FENRIR_GREYBACK_JR.item));
+                case CENTAUR_MALE -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.CENTAUR_MALE.item));
+                case CENTAUR_FEMALE -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.CENTAUR_FEMALE.item));
+                case DEMENTOR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.DEMENTOR.item));
+                case FLUFFY_JR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.FLUFFY_JR.item));
+                case FENRIR_GREYBACK_JR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.FENRIR_GREYBACK_JR.item));
                 case SKELETON_HELLHOUND_PET -> OTHER.log(killer, KILLER, new Item(Pet.SKELETON_HELLHOUND_PET.item));
             }
 

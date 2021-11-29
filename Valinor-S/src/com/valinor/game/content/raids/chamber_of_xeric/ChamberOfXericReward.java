@@ -11,10 +11,9 @@ import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import static com.valinor.game.content.collection_logs.CollectionLog.RAIDS_KEY;
+import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
-import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -24,7 +23,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class ChamberOfXericReward {
 
     public static void unlockOlmlet(Player player) {
-        BOSSES.log(player, RAIDS_KEY, new Item(Pet.OLMLET.item));
+        BOSSES.log(player, COS_RAIDS_KEY, new Item(Pet.OLMLET.item));
         if (!PetAI.hasUnlocked(player, Pet.OLMLET)) {
             // Unlock the varbit. Just do it, rather safe than sorry.
             player.addUnlockedPet(Pet.OLMLET.varbit);
@@ -163,7 +162,7 @@ public class ChamberOfXericReward {
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
-            OTHER.log(player, RAIDS_KEY, item);
+            OTHER.log(player, COS_RAIDS_KEY, item);
             Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "raids");
             rare = player;
         }
