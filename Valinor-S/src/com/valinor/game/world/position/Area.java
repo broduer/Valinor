@@ -1,5 +1,6 @@
 package com.valinor.game.world.position;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 
 /**
@@ -7,38 +8,46 @@ import com.valinor.game.world.entity.Mob;
  */
 public class Area {
 
-    public final int x1;
-    public final int x2;
-    public final int y1;
-    public final int y2;
+    public final int swX;
+    public final int neX;
+    public final int swY;
+    public final int neY;
     public int level;
     private boolean largeViewPort;
 
-    public Area(int x1, int y1, int x2, int y2) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.y1 = y1;
-        this.y2 = y2;
+    public Area(int swX, int swY, int neX, int neY) {
+        this.swX = swX;
+        this.neX = neX;
+        this.swY = swY;
+        this.neY = neY;
     }
 
-    public Area(int x1, int y1, int x2, int y2, int level) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.y1 = y1;
-        this.y2 = y2;
+    public Area(int swX, int swY, int neX, int neY, int level) {
+        this.swX = swX;
+        this.neX = neX;
+        this.swY = swY;
+        this.neY = neY;
         this.level = level;
     }
 
     public Area(int rid) {
-        x1 = (rid >> 8) * 64;
-        x2 = x1 + 63;
-        y1 = (rid & 0xFF) * 64;
-        y2 = x1 + 63;
+        swX = (rid >> 8) * 64;
+        neX = swX + 63;
+        swY = (rid & 0xFF) * 64;
+        neY = swX + 63;
         level = 0;
     }
 
     public Area(Tile spawnTile, int radius) {
         this(spawnTile.x - radius, spawnTile.y - radius, spawnTile.x + radius, spawnTile.y + radius, spawnTile.level);
+    }
+
+    public int randomX() {
+        return World.getWorld().get(swX, neX);
+    }
+
+    public int randomY() {
+        return World.getWorld().get(swY, neY);
     }
 
     public Area(Tile botleft, Tile topright) {
@@ -50,11 +59,11 @@ public class Area {
     }
 
     public Area(Area area) {
-        this(area.x1, area.y1, area.x2, area.y2, area.level);
+        this(area.swX, area.swY, area.neX, area.neY, area.level);
     }
 
     public Area(Area area, int level) {
-        this(area.x1, area.y1, area.x2, area.y2, level);
+        this(area.swX, area.swY, area.neX, area.neY, level);
     }
 
     public boolean contains(Tile t) {
@@ -62,7 +71,7 @@ public class Area {
     }
 
     public boolean contains(Tile t, boolean checkZ) {
-        if (t.x >= x1 && t.x <= x2 && t.y >= y1 && t.y <= y2) {
+        if (t.x >= swX && t.x <= neX && t.y >= swY && t.y <= neY) {
             if (checkZ) {
                 return t.level == level;
             } else {
@@ -87,7 +96,7 @@ public class Area {
     }
 
     public boolean containsClosed(Tile t, boolean checkHeight) {
-        return t.x >= x1 && t.x < x2 && t.y >= y1 && t.y < y2 && (!checkHeight || t.level == level);
+        return t.x >= swX && t.x < neX && t.y >= swY && t.y < neY && (!checkHeight || t.level == level);
     }
 
     public boolean contains(Mob e) {
@@ -99,19 +108,19 @@ public class Area {
     }
 
     public int x1() {
-        return x1;
+        return swX;
     }
 
     public int x2() {
-        return x2;
+        return neX;
     }
 
     public int z1() {
-        return y1;
+        return swY;
     }
 
     public int z2() {
-        return y2;
+        return neY;
     }
 
     public int level() {
@@ -119,52 +128,52 @@ public class Area {
     }
 
     public int width() {
-        return x2 - x1;
+        return neX - swX;
     }
 
     public int length() {
-        return y2 - y1;
+        return neY - swY;
     }
 
     public Tile center() {
-        return new Tile(x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2, level);
+        return new Tile(swX + (neX - swX) / 2, swY + (neY - swY) / 2, level);
     }
 
     public Tile bottomLeft() {
-        return new Tile(x1, y1, level);
+        return new Tile(swX, swY, level);
     }
 
     public Tile bottomRight() {
-        return new Tile(x2, y1, level);
+        return new Tile(neX, swY, level);
     }
 
     public Tile topRight() {
-        return new Tile(x2, y2, level);
+        return new Tile(neX, neY, level);
     }
 
     public Tile topLeft() {
-        return new Tile(x1, y2, level);
+        return new Tile(swX, neY, level);
     }
 
     public Area enlarge(int tiles) {
-        return new Area(x1 - tiles, y1 - tiles, x2 + tiles, y2 + tiles, level);
+        return new Area(swX - tiles, swY - tiles, neX + tiles, neY + tiles, level);
     }
 
     public Tile randomTile() {
-        double wx = x2 - x1;
-        double wz = y2 - y1;
-        return new Tile(x1 + (int) Math.round(wx * Math.random()), y1 + (int) Math.round(wz * Math.random()), level);
+        double wx = neX - swX;
+        double wz = neY - swY;
+        return new Tile(swX + (int) Math.round(wx * Math.random()), swY + (int) Math.round(wz * Math.random()), level);
     }
 
     public boolean within(Tile other, int size, int distance) {
         if (other == null)
             return false;
         final Tile otherEnd = new Tile(other.getX() + size - 1, other.getY() + size - 1);
-        return !(x1 - otherEnd.getX() - distance > 0) && !(x2 - other.getX() + distance < 0) && !(y2 - other.getY() + distance < 0) && !(y1 - otherEnd.getY() - distance > 0);
+        return !(swX - otherEnd.getX() - distance > 0) && !(neX - other.getX() + distance < 0) && !(neY - other.getY() + distance < 0) && !(swY - otherEnd.getY() - distance > 0);
     }
 
     public boolean inBounds(Tile p) {
-        return p.getX() >= x1 && p.getX() <= x2 && p.getY() >= y1 && p.getY() <= y2;
+        return p.getX() >= swX && p.getX() <= neX && p.getY() >= swY && p.getY() <= neY;
     }
 
     public Tile relative(Tile tile) {
@@ -172,19 +181,19 @@ public class Area {
     }
 
     public Area relative(Area area) {
-        return new Area(x1 + area.x1, y1 + area.y1, x1 + area.x2, y1 + area.y2, level + area.level);
+        return new Area(swX + area.swX, swY + area.swY, swX + area.neX, swY + area.neY, level + area.level);
     }
 
     public Area toArea() {
-        return new Area(x1, y1, x2, y2, level);
+        return new Area(swX, swY, neX, neY, level);
     }
 
     public Area transform(int minX, int minY, int maxX, int maxY, int level) {
-        return new Area(this.x1 + minX, this.y1 + minY, this.x2 + maxX, this.y2 + maxY, this.level + level);
+        return new Area(this.swX + minX, this.swY + minY, this.neX + maxX, this.neY + maxY, this.level + level);
     }
 
     public boolean overlaps(Area other) {
-        return Tile.overlaps(x1, y1, x2 - x1 + 1, y2 - y1 + 1, other.x1, other.y1, other.x2 - other.x1 + 1, other.y2 - other.y1 + 1);
+        return Tile.overlaps(swX, swY, neX - swX + 1, neY - swY + 1, other.swX, other.swY, other.neX - other.swX + 1, other.neY - other.swY + 1);
     }
 
     public Area setLargeViewPort(boolean largeViewPort) {
@@ -198,6 +207,6 @@ public class Area {
 
     @Override
     public String toString() {
-        return "Area[" + x1 + ".." + y1 + ", " + x2 + ".." + y2 + "]";
+        return "Area[" + swX + ".." + swY + ", " + neX + ".." + neY + "]";
     }
 }

@@ -54,6 +54,7 @@ import java.io.FileReader;
 import java.security.SecureRandom;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 import static com.valinor.util.NpcIdentifiers.SHANOMI;
@@ -909,6 +910,18 @@ public class World {
     public int random(final int min, final int max) {
         final int n = Math.abs(max - min);
         return Math.min(min, max) + (n == 0 ? 0 : random.nextInt(n + 1));
+    }
+
+    public int get(int minRange, int maxRange) {
+        return minRange + get(maxRange - minRange);
+    }
+
+    public int get(int maxRange) {
+        return (int) (get() * (maxRange + 1D));
+    }
+
+    public double get() {
+        return ThreadLocalRandom.current().nextDouble();
     }
 
     public double randomDouble() {

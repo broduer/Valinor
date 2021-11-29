@@ -192,7 +192,8 @@ public enum Impling {
         Impling type = getRandomPuroPuroSpawn();
         Tile tile = World.getWorld().random(PURO_PURO_RANDOM_SPAWN_TILES);
         Npc impling = new Npc(type.npcId, new Tile(tile.getX(), tile.getY(), tile.getZ()));
-        impling.walkRadius(16);
+        impling.walkRadius(12);
+        impling.getRouteFinder().routeAbsolute(impling.getSpawnArea().randomX(), impling.getSpawnArea().randomY());
         World.getWorld().registerNpc(impling);
         ACTIVE_PURO_PURO_IMPLINGS++;
     }
@@ -215,6 +216,7 @@ public enum Impling {
         Tile tile = Utils.randomElement(OVERWORLD_RANDOM_SPAWN_TILES);
         Npc impling = new Npc(type.npcId, new Tile(tile.getX(), tile.getY(), tile.getZ()));
         impling.walkRadius(16);
+        impling.getRouteFinder().routeAbsolute(impling.getSpawnArea().randomX(), impling.getSpawnArea().randomY());
         impling.def().flightClipping = true;
         World.getWorld().registerNpc(impling);
         ACTIVE_OVERWORLD_IMPLINGS++;
@@ -222,7 +224,7 @@ public enum Impling {
 
     public static void onServerStartup() {
         //spawn a few on startup
-        for (int index = 0; index < 4; index++)
+        for (int index = 0; index < 10; index++)
             spawnRandomImplingPuroPuro();
         Chain.bound(null).name("PuroPuroImplingTask").repeatingTask(PURO_PURO_RANDOM_SPAWN_DELAY, t -> {
             if (ACTIVE_PURO_PURO_IMPLINGS < PURO_PURO_MAX_RANDOM_IMPLINGS) {
@@ -247,11 +249,6 @@ public enum Impling {
     };
 
     private static final Tile[] OVERWORLD_RANDOM_SPAWN_TILES = {
-
-        //edgeville spawns
-        new Tile(3104, 3506, 0),
-        new Tile(3087, 3485, 0),
-        new Tile(3126, 3498, 0),
 
         new Tile(3170, 3454, 0), // varrock spawns
         new Tile(3208, 3434, 0),

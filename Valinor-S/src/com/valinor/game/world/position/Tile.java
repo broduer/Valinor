@@ -392,11 +392,11 @@ public class Tile implements Cloneable {
     }
 
     public boolean inArea(Area area) {
-        return x >= area.x1 && y >= area.y1 && x <= area.x2 && y <= area.y2;
+        return x >= area.swX && y >= area.swY && x <= area.neX && y <= area.neY;
     }
 
     public boolean inAreaZ(Area area) {
-        return x >= area.x1 && y >= area.y1 && x <= area.x2 && y <= area.y2 && level == area.level;
+        return x >= area.swX && y >= area.swY && x <= area.neX && y <= area.neY && level == area.level;
     }
 
     /**
@@ -412,7 +412,7 @@ public class Tile implements Cloneable {
                     continue;
                 }
             }
-            if (player.getX() >= a.x1 && player.getX() <= a.x2 && player.getY() >= a.y1 && player.getY() <= a.y2) {
+            if (player.getX() >= a.swX && player.getX() <= a.neX && player.getY() >= a.swY && player.getY() <= a.neY) {
                 return true;
             }
         }
