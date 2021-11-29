@@ -157,6 +157,7 @@ public class MultiwayCombat {
         8023, //Gnome Stronghold crash site (monkey madness)
         13972, // Kalphite queen lair
         7322, // Sarachnis
+        12955, // Bryophyta
 
         /* Wildy: (uses 8x8 chunks for some sections as well as chunks) **/
         5789,

@@ -183,12 +183,9 @@ public final class MobList<E extends Mob> implements Iterable<E> {
     @SuppressWarnings("unchecked")
     @SafeVarargs
     public final void forEachInArea(Area area, Consumer<? super E>... actions) {
-        int size = mobs.length;
-
         for (Consumer<? super E> a : actions) {
-            for (int i = 0; i < size; i++) {
-                Entity e = mobs[i];
-                if (e != null && area.contains(e.tile(),false))
+            for (Entity e : mobs) {
+                if (e != null && e.tile().inArea(area))
                     ((Consumer<? super Entity>) a).accept(e);
             }
         }

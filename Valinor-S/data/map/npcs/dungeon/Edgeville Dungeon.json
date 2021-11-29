@@ -218,7 +218,6 @@
   { "id": 3021, "x": 3173, "y": 9885, "z": 0, "walkRange": 2 }, // Deadlz red spider
   { "id": 3021, "x": 3178, "y": 9887, "z": 0, "walkRange": 12 }, // Deadlz red spider
   { "id": 3021, "x": 3179, "y": 9887, "z": 0, "walkRange": 8 }, // Deadlz red spider
-  { "id": 3021, "x": 3180, "y": 9893, "z": 0, "walkRange": 5 }, // Deadlz red spider
   { "id": 3021, "x": 3118, "y": 9953, "z": 0, "walkRange": 13 }, // Deadlz red spider
   { "id": 3021, "x": 3117, "y": 9954, "z": 0, "walkRange": 12 }, // Deadlz red spider
   { "id": 3023, "x": 3084, "y": 9938, "z": 0, "walkRange": 5 }, // Poison spider

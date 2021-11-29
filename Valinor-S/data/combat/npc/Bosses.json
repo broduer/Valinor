@@ -938,6 +938,7 @@
       2045,
       2046
     ],
+    "boss": false,
     "maxhit": 15,
     "attackspeed": 4,
     "aggroradius": 25,
@@ -1010,11 +1011,11 @@
     "ids": [
       6768
     ],
+    "boss": false,
     "maxhit": 0,
     "attackspeed": 6,
     "aggroradius": 10,
     "aggressive": false,
-    "boss": false,
     "stats": {
       "attack": 0,
       "strength": 0,
@@ -1040,6 +1041,7 @@
       7145,
       7146
     ],
+    "boss": true,
     "maxhit": 31,
     "slayerxp": 408.5,
     "slayerlvl": 1,
@@ -1075,6 +1077,7 @@
     "ids": [
       8063
     ],
+    "boss": false,
     "maxhit": 0,
     "attackspeed": 4,
     "aggroradius": 20,
@@ -1112,6 +1115,7 @@
     "ids": [
       8061
     ],
+    "boss": true,
     "maxhit": 32,
     "slayerxp": 1000,
     "slayerlvl": 1,
@@ -1195,6 +1199,7 @@
     "ids": [
       5779
     ],
+    "boss": true,
     "maxhit": 21,
     "slayerxp": 215,
     "slayerlvl": 1,
@@ -1231,6 +1236,7 @@
     "ids": [
       15001
     ],
+    "boss": true,
     "maxhit": 27,
     "attackspeed": 4,
     "aggroradius": 0,
@@ -1268,6 +1274,7 @@
     "ids": [
       9424, 9425, 9426, 9427, 9428, 9429, 9430, 9431, 9432
     ],
+    "boss": true,
     "maxhit": 51,
     "attackspeed": 6,
     "aggroradius": 0,
@@ -1305,6 +1312,7 @@
     "ids": [
       9466, 9467
     ],
+    "boss": true,
     "maxhit": 16,
     "attackspeed": 6,
     "aggroradius": 0,
@@ -1333,7 +1341,7 @@
       "death": 8566
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Husk"
+      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Husk"
     }
   },
   {
@@ -1341,6 +1349,7 @@
     "ids": [
       9469, 9468
     ],
+    "boss": true,
     "maxhit": 20,
     "attackspeed": 6,
     "aggroradius": 0,
@@ -1369,7 +1378,7 @@
       "death": 8559
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Parasite"
+      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Parasite"
     }
   },
   {
@@ -1377,6 +1386,7 @@
     "ids": [
       9446, 9447, 9448, 9449, 9450, 9451
     ],
+    "boss": true,
     "maxhit": 10,
     "attackspeed": 6,
     "aggroradius": 0,
@@ -1405,7 +1415,7 @@
       "death": 836
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Totem"
+      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Totem"
     }
   },
   {
@@ -1413,6 +1423,7 @@
     "ids": [
       9035, 9036, 9037
     ],
+    "boss": true,
     "maxhit": 35,
     "attackspeed": 5,
     "aggroradius": 0,
@@ -1440,6 +1451,79 @@
       "attack": 8419,
       "block": -1,
       "death": 8421
+    }
+  },
+  {
+    // Bryophyta
+    "ids": [
+      8195
+    ],
+    "boss": true,
+    "slayerxp": 115,
+    "slayerlvl": 1,
+    "maxhit": 16,
+    "attackspeed": 6,
+    "aggroradius": 0,
+    "respawntime": 0,
+    "deathlen": 2,
+    "aggressive": false,
+    "stats": {
+      "attack": 130,
+      "strength": 100,
+      "magic": 90,
+      "ranged": 1,
+      "defence": 100,
+      "hitpoints": 115
+    },
+    "bonuses": {
+      "attack": 64,
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 4658,
+      "block": 4657,
+      "death": 4659
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.Bryophyta"
+    }
+  },
+  {
+    // Growthling
+    "ids": [
+      8194
+    ],
+    "boss": false,
+    "maxhit": 5,
+    "attackspeed": 4,
+    "aggroradius": 12,
+    "respawntime": 0,
+    "deathlen": 2,
+    "aggressive": true,
+    "stats": {
+      "attack": 40,
+      "strength": 38,
+      "magic": 1,
+      "ranged": 1,
+      "defence": 40,
+      "hitpoints": 10
+    },
+    "bonuses": {
+      "attack": 0,
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 3262,
+      "block": 3260,
+      "death": 3263
     }
   }
 ]

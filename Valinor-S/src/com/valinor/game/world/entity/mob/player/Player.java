@@ -14,17 +14,13 @@ import com.valinor.game.content.clan.ClanManager;
 import com.valinor.game.content.collection_logs.CollectionLog;
 import com.valinor.game.content.consumables.potions.impl.*;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GambleState;
 import com.valinor.game.content.gambling.GamblingSession;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.impl.AlchemicalHydraInstance;
-import com.valinor.game.content.instance.impl.KrakenInstance;
-import com.valinor.game.content.instance.impl.VorkathInstance;
-import com.valinor.game.content.instance.impl.ZulrahInstance;
+import com.valinor.game.content.instance.impl.*;
 import com.valinor.game.content.kill_logs.BossKillLog;
 import com.valinor.game.content.kill_logs.SlayerKillLog;
 import com.valinor.game.content.mechanics.*;
@@ -962,6 +958,14 @@ public class Player extends Mob {
         if (alchemicalHydraInstance == null)
             alchemicalHydraInstance = new AlchemicalHydraInstance();
         return alchemicalHydraInstance;
+    }
+
+    private BryophytaInstance bryophytaInstance;
+
+    public BryophytaInstance getBryophytaInstance() {
+        if (bryophytaInstance == null)
+            bryophytaInstance = new BryophytaInstance();
+        return bryophytaInstance;
     }
 
     /**
@@ -2582,10 +2586,10 @@ public class Player extends Mob {
             InstancedAreaManager.getSingleton().disposeOf(vorkathInstance.getInstance());
         }
 
-        if (alchemicalHydraInstance != null && alchemicalHydraInstance.getInstance() != null) {
-            alchemicalHydraInstance.clear();
+        if (bryophytaInstance != null && bryophytaInstance.getInstance() != null) {
+            bryophytaInstance.clear();
             this.getPacketSender().sendEffectTimer(0, EffectTimer.MONSTER_RESPAWN);
-            InstancedAreaManager.getSingleton().disposeOf(alchemicalHydraInstance.getInstance());
+            InstancedAreaManager.getSingleton().disposeOf(bryophytaInstance.getInstance());
         }
     }
 
