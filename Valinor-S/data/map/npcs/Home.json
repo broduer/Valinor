@@ -144,9 +144,55 @@
   {
     "name": "Krystilia",
     "id": 7663,
-    "x": 3104,
+    "x": 3103,
     "y": 3508,
     "z": 0,
+    "direction": "E",
+    "walkRange": 0
+  },
+  {
+    "name": "Turael",
+    "id": 401,
+    "x": 3104,
+    "y": 3509,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Mazchna",
+    "id": 402,
+    "x": 3106,
+    "y": 3509,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Chaeldar",
+    "id": 404,
+    "x": 3108,
+    "y": 3509,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Nieve",
+    "id": 6797,
+    "x": 3110,
+    "y": 3509,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Konar quo Maten",
+    "id": 8623,
+    "x": 3111,
+    "y": 3508,
+    "z": 0,
+    "direction": "W",
     "walkRange": 0
   },
   {

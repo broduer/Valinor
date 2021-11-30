@@ -37,7 +37,7 @@ public class Nieve extends PacketInteraction {
         }
         if (option == 2) {
             if (npc.id() == NIEVE) {
-                assignTask(player);
+                giveTask(player);
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class Nieve extends PacketInteraction {
     }
 
     private static void assignTask(Player player) {
-        SlayerMaster master = Slayer.master(Slayer.NIEVE_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.NIEVE_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;
@@ -68,7 +68,6 @@ public class Nieve extends PacketInteraction {
             System.out.println("no task available.");
             return;
         }
-
         player.putAttrib(AttributeKey.SLAYER_MASTER, Slayer.NIEVE_ID);
         player.putAttrib(AttributeKey.SLAYER_TASK_ID, def.getCreatureUid());
         int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);
@@ -93,7 +92,8 @@ public class Nieve extends PacketInteraction {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.NPC_STATEMENT, NIEVE, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", "" + num + " " + Slayer.taskName(task.uid) + ".");
+                send(DialogueType.NPC_STATEMENT, NIEVE, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", "" + num + " "
+                    + Slayer.taskName(task.uid) + ".");
                 setPhase(0);
             }
 

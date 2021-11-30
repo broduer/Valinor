@@ -35,7 +35,7 @@ public class Vannaka extends PacketInteraction {
         }
         if(option == 2) {
             if (npc.id() == VANNAKA) {
-                assignTask(player);
+                giveTask(player);
                 return true;
             }
         }
@@ -55,7 +55,7 @@ public class Vannaka extends PacketInteraction {
     }
 
     private static void assignTask(Player player) {
-        SlayerMaster master = Slayer.master(Slayer.VANNAKA_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.VANNAKA_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;

@@ -26,7 +26,7 @@ public class SlayerConstants {
     public final static int WORLD_BOSS_TELEPORT = 63422;
     public final static int RUNAWAY = 63423;
     public final static int TREASURE_HUNT = 63424;
-    public final static int TELEPORT_TO_TASK = 63425;//TODO
+    public final static int TELEPORT_TO_TASK = 63425;
     public final static int BIGGEST_AND_BADDEST = 63426;
     public final static int ELECTION_DAY = 63427;
     public final static int MALEVOLENT_MASQUERADE = 63428;

@@ -42,15 +42,6 @@ public class Slayer {
     public static int KRYSTILIA_ID = 7;
     public static int KONAR_QUO_MATEN_ID = 8;
 
-    public static SlayerMaster master(int npc) {
-        for (SlayerMaster master : masters) {
-            if (master.npcId == npc) {
-                return master;
-            }
-        }
-        return null;
-    }
-
     public static int findIdByMaster(int npc) {
         for (SlayerMaster master : masters) {
             if (master.npcId == npc) {

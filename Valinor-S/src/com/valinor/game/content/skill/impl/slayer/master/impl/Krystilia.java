@@ -76,7 +76,7 @@ public class Krystilia extends PacketInteraction {
             return;
         }
 
-        SlayerMaster master = Slayer.master(Slayer.KRYSTILIA_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.KRYSTILIA_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;

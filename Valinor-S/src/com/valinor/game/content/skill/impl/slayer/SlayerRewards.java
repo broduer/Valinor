@@ -2,7 +2,6 @@ package com.valinor.game.content.skill.impl.slayer;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.skill.impl.slayer.slayer_reward_interface.SlayerExtendable;
-import com.valinor.game.content.skill.impl.slayer.slayer_reward_interface.SlayerRewardActions;
 import com.valinor.game.content.skill.impl.slayer.slayer_reward_interface.SlayerRewardButtons;
 import com.valinor.game.content.skill.impl.slayer.slayer_reward_interface.SlayerUnlockable;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
@@ -337,11 +336,9 @@ public class SlayerRewards {
             case UNLOCK_BUTTON:
                 player.debugMessage("Button: " + button + " trying to open interface " + slayerRewardButtons.getInterface());
                 if (player.getSlayerRewards().getUnlocks().containsKey(button)) {
-                    if (slayerRewardButtons.getAction() == SlayerRewardActions.UNLOCK_BUTTON) {
-                        player.getPacketSender().sendConfig(750 + (slayerRewardButtons.ordinal() - 10), 1);
-                        player.message("You cannot undo this purchase!");
-                        return false;
-                    }
+                    player.getPacketSender().sendConfig(750 + (slayerRewardButtons.ordinal() - 10), 1);
+                    player.message("You cannot undo this purchase!");
+                    return false;
                 }
 
                 openUnlockWidget(button);

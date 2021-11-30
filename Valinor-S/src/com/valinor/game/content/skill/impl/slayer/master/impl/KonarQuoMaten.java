@@ -37,7 +37,7 @@ public class KonarQuoMaten extends PacketInteraction {
         }
         if(option == 2) {
             if (npc.id() == KONAR_QUO_MATEN) {
-                assignTask(player);
+                giveTask(player);
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class KonarQuoMaten extends PacketInteraction {
     }
 
     private static void assignTask(Player player) {
-        SlayerMaster master = Slayer.master(Slayer.KONAR_QUO_MATEN_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.KONAR_QUO_MATEN_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;

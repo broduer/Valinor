@@ -37,7 +37,7 @@ public class Mazchna extends PacketInteraction {
         }
         if(option == 2) {
             if (npc.id() == MAZCHNA) {
-                assignTask(player);
+                giveTask(player);
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class Mazchna extends PacketInteraction {
     }
 
     private static void assignTask(Player player) {
-        SlayerMaster master = Slayer.master(Slayer.MAZCHNA_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.MAZCHNA_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;

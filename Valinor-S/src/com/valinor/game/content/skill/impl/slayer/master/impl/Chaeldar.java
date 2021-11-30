@@ -37,7 +37,7 @@ public class Chaeldar extends PacketInteraction {
         }
         if(option == 2) {
             if (npc.id() == CHAELDAR) {
-                assignTask(player);
+                giveTask(player);
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class Chaeldar extends PacketInteraction {
     }
 
     private static void assignTask(Player player) {
-        SlayerMaster master = Slayer.master(Slayer.CHAELDAR_ID);
+        SlayerMaster master = Slayer.lookup(Slayer.CHAELDAR_ID);
         if(master == null) {
             System.out.println("no such slayer master available.");
             return;

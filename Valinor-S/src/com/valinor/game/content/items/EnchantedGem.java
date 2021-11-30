@@ -1,6 +1,7 @@
 package com.valinor.game.content.items;
 
 import com.valinor.game.content.skill.impl.slayer.Slayer;
+import com.valinor.game.content.skill.impl.slayer.content.EnchantedGemD;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.entity.AttributeKey;
@@ -29,7 +30,7 @@ public class EnchantedGem extends PacketInteraction {
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if (option == 1) {
             if (item.getId() == ENCHANTED_GEM) {
-                player.message("The activate feature is currently not available.");
+                player.getDialogueManager().start(new EnchantedGemD());
                 return true;
             }
         }
