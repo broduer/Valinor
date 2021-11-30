@@ -10,7 +10,6 @@ import com.valinor.util.Color;
 import java.util.Calendar;
 
 import static com.valinor.util.CustomItemIdentifiers.KEY_OF_DROPS;
-import static com.valinor.util.CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX;
 
 public class MemberFeatures {
 
@@ -25,7 +24,6 @@ public class MemberFeatures {
 
         if(World.getWorld().getCalendar().get(Calendar.DAY_OF_MONTH) == 1) {
             player.putAttrib(AttributeKey.RECEIVED_MONTHLY_SPONSOR_REWARDS, true);
-            player.inventory().addOrBank(new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX));
             player.message(Color.PURPLE.wrap("You have received your monthly sponsor rewards. Thank you for supporting "+ GameConstants.SERVER_NAME+"!"));
         }
     }

@@ -88,7 +88,6 @@ public class ChamberOfSecretsReward {
 
     private static final LootTable uniqueTable = new LootTable()
         .addTable(1,
-            new LootItem(LEGENDARY_MYSTERY_BOX, 1, 8),
             new LootItem(KEY_OF_DROPS, 1, 7),
             new LootItem(SWORD_OF_GRYFFINDOR, 1, 6),
             new LootItem(SWORD_OF_GRYFFINDOR, 1, 6),
@@ -106,19 +105,15 @@ public class ChamberOfSecretsReward {
             new LootItem(ARMADYL_GODSWORD, 1, 1),
             new LootItem(ARMADYL_CROSSBOW, 1, 1),
             new LootItem(DONATOR_MYSTERY_BOX, 1, 1),
-            new LootItem(WEAPON_MYSTERY_BOX, World.getWorld().random(1, 3), 3),
-            new LootItem(BLOOD_MONEY, World.getWorld().random(15000, 35000), 6),
             new LootItem(DRAGON_CROSSBOW, 1, 6),
             new LootItem(DRAGON_THROWNAXE, World.getWorld().random(125, 250), 5),
             new LootItem(DRAGON_KNIFE, World.getWorld().random(125, 250), 5),
             new LootItem(BANDOS_GODSWORD, 1, 4),
             new LootItem(ZAMORAK_GODSWORD, 1, 4),
             new LootItem(SARADOMIN_GODSWORD, 1, 4),
-            new LootItem(ARMOUR_MYSTERY_BOX, World.getWorld().random(1, 7), 3),
             new LootItem(DRAGONFIRE_SHIELD, 1, 3),
             new LootItem(ABYSSAL_DAGGER_P_13271, 1, 5),
-            new LootItem(IMBUEMENT_SCROLL, 5, 4),
-            new LootItem(TORN_PRAYER_SCROLL, 1, 3)
+            new LootItem(IMBUEMENT_SCROLL, 5, 4)
         );
 
     private static int doubleChestRoll(Player player) {

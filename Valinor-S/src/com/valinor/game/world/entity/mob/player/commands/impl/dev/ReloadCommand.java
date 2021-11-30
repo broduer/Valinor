@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.game.content.seasonal_events.halloween.Halloween;
+import com.valinor.game.content.seasonal_events.xmas.Christmas;
 import com.valinor.game.content.skill.impl.fishing.Fishing;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.content.skill.impl.hunter.PuroPuro;
@@ -38,6 +39,7 @@ public class ReloadCommand implements Command {
                 World.getWorld().unregisterNpc(worldNpcs);
             }
             //Halloween.loadNpcs();
+            Christmas.loadNpcs();
             Impling.onServerStartup();
             World.loadNpcSpawns(new File("data/map/npcs"));
             try {

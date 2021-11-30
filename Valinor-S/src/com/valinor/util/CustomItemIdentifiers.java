@@ -191,9 +191,6 @@ public class CustomItemIdentifiers {
     public static final int PRIMORDIAL_BOOTS_OR = 30038;
     public static final int PEGASIAN_BOOTS_OR = 30180;
     public static final int ETERNAL_BOOTS_OR = 30182;
-    public static final int EPIC_PET_BOX = 16458;
-    public static final int RAIDS_MYSTERY_BOX = 16459;
-    public static final int ZENYTE_MYSTERY_BOX = 16460;
     public static final int BLOODY_TOKEN = 13215;
     public static final int CORRUPTED_BOOTS = 30297;
     public static final int SALAZAR_SLYTHERINS_LOCKET = 27644;
@@ -241,11 +238,6 @@ public class CustomItemIdentifiers {
     public static final int MAGMA_BLOWPIPE = 30049;
     public static final int RUNE_POUCH_I = 23650;
     public static final int DOUBLE_DROPS_LAMP = 4447;
-    public static final int WEAPON_MYSTERY_BOX = 16451;
-    public static final int ARMOUR_MYSTERY_BOX = 16452;
-    public static final int LEGENDARY_MYSTERY_BOX = 16454;
-    public static final int GRAND_MYSTERY_BOX = 16455;
-    public static final int PET_MYSTERY_BOX = 16456;
     public static final int ANCIENT_SCROLL = 10278;
     public static final int VENGEANCE_SKULL = 964;
     public static final int PET_PAINT_BLACK = 7999;

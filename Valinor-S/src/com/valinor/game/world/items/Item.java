@@ -472,8 +472,6 @@ public class Item implements Cloneable {
             add(BLIGHTED_TELEPORT_SPELL_SACK);
             add(BLIGHTED_VENGEANCE_SACK);
             add(BLIGHTED_SNARE_SACK);
-            add(ZENYTE_MYSTERY_BOX);
-            add(RAIDS_MYSTERY_BOX);
             add(SANGUINE_TWISTED_BOW);
             add(DARK_ELDER_MAUL);
             add(ANCIENT_WARRIOR_AXE_C);
@@ -511,7 +509,6 @@ public class Item implements Cloneable {
             add(CENTAUR_MALE);
             add(CENTAUR_FEMALE);
             add(TZREKZUK);
-            add(EPIC_PET_BOX);
             add(IMBUED_HEART);
             add(BERSERKER_NECKLACE_OR);
             add(AMULET_OF_TORTURE_OR);
@@ -617,12 +614,7 @@ public class Item implements Cloneable {
             add(HEAVY_CASKET);
             add(BLOOD_MONEY);
             //Custom items that are not in the OSRS cache
-            add(WEAPON_MYSTERY_BOX);
-            add(ARMOUR_MYSTERY_BOX);
-            add(LEGENDARY_MYSTERY_BOX);
             add(DONATOR_MYSTERY_BOX);
-            add(GRAND_MYSTERY_BOX);
-            add(PET_MYSTERY_BOX);
             add(PET_PAINT_BLACK);
             add(PET_PAINT_WHITE);
             add(FIVE_DOLLAR_BOND);
