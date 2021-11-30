@@ -630,6 +630,28 @@ public class Bank extends ItemContainer {
         return passed;
     }
 
+    public void removeFromBank(Item item) {
+        int tabSlot = player.getBank().getSlot(item.getId());
+        int tab = player.getBank().tabForSlot(tabSlot);
+        item = player.getBank().get(tabSlot);
+        //Item cannot be found
+        if (item == null || tabSlot <= -1 || tab <= -1 || item.getAmount() <= 0) {
+            return;
+        }
+
+        //Item was found, remove.
+        if (player.getBank().remove(item, tabSlot, true)) {
+            if (!player.getBank().indexOccupied(tabSlot)) {
+                player.getBank().changeTabAmount(tab, -1);
+                player.getBank().shift();
+            }
+
+            if (item.getAmount() < item.getAmount()) {
+                item.setAmount(item.getAmount());
+            }
+        }
+    }
+
     @Override
     public void clear() {
         // reset tabs to all 0

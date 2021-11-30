@@ -72,11 +72,7 @@ public class ChamberOfSecrets extends Raids {
             player.message(Color.RED.wrap("Your elder wand crumbles to dust as you exit the chamber."));
         }
 
-        if(player.inventory().contains(ELDER_WAND_RAIDS))
-            player.inventory().removeAll(new Item(ELDER_WAND_RAIDS));
-
-        if(player.getEquipment().contains(ELDER_WAND_RAIDS))
-            player.getEquipment().remove(new Item(ELDER_WAND_RAIDS), true);
+        player.removeAll(new Item(ELDER_WAND_RAIDS));
 
         Party party = player.raidsParty;
 

@@ -157,6 +157,21 @@ public class Player extends Mob {
         LOGOUT = Level.getLevel("LOGOUT");
     }
 
+    public void removeAll(Item item) {
+        int inventoryCount = inventory.count(item.getId());
+        for (int i = 0; i < inventoryCount; i++) {
+            inventory.remove(item, true);
+        }
+
+        //Equipment can only have one item in a slot
+        equipment.remove(item, true);
+
+        int bankCount = bank.count(item.getId());
+        for (int i = 0; i < bankCount; i++) {
+            bank.removeFromBank(item);
+        }
+    }
+
     private final TeleportMenuHandler teleportMenuHandler = new TeleportMenuHandler(this);
 
     public TeleportMenuHandler getTeleportMenuHandler() {
