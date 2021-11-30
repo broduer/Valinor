@@ -5,11 +5,8 @@ import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
-import com.valinor.game.task.TaskManager;
-import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
-import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -17,10 +14,8 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
-import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP;
@@ -301,14 +296,6 @@ public class Stalls extends PacketInteraction {
                     loot.setAmount(loot.getAmount() + World.getWorld().random(2500, 5500));
                     player.message(Color.RED.wrap("Thieving slayer perk activated."));
                 }
-            }
-
-            if (Utils.percentageChance(5)) {
-                TaskManager.submit(new ForceMovementTask(player, 3, new ForceMovement(player.tile().clone(), new Tile(0, 3), 0, 70, 2)));
-                player.animate(3130);
-                player.getMovementQueue().clear();
-                player.stun(10);
-                player.message("A mysterious force knocks you back.");
             }
 
             // Woo! A pet!

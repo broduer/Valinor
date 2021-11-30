@@ -139,7 +139,7 @@ public enum Achievements {
     CHEF("Chef", "Complete all cooking achievements to become a chef!", 1, Difficulty.HARD, new Item(GOLDEN_CHEFS_HAT)),
 
     /*Firemaking */
-    PYROMANCER("Pyromancer", "Burn 1000 logs.", 1000, Difficulty.EASY, new Item(ItemIdentifiers.PYROMANCER_BOOTS), new Item(ItemIdentifiers.PYROMANCER_HOOD), new Item(ItemIdentifiers.PYROMANCER_GARB), new Item(ItemIdentifiers.PYROMANCER_ROBE), new Item(ItemIdentifiers.BRUMA_TORCH)),
+    PYROMANCER("Pyromancer", "Burn 1000 logs.", 1000, Difficulty.EASY, new Item(ItemIdentifiers.PYROMANCER_BOOTS), new Item(ItemIdentifiers.PYROMANCER_HOOD), new Item(ItemIdentifiers.PYROMANCER_GARB), new Item(ItemIdentifiers.PYROMANCER_ROBE), new Item(WARM_GLOVES), new Item(ItemIdentifiers.BRUMA_TORCH)),
 
     /* Woodcutting */
     LUMBERJACK("Lumberjack", "Cut 1000 logs.", 1000, Difficulty.EASY, new Item(ItemIdentifiers.LUMBERJACK_BOOTS), new Item(ItemIdentifiers.LUMBERJACK_HAT), new Item(ItemIdentifiers.LUMBERJACK_TOP), new Item(ItemIdentifiers.LUMBERJACK_LEGS)),
