@@ -50,6 +50,10 @@ public class ObjectManager {
             definition.width = 2;
         }
 
+        if (id == 31858) {
+            definition.scene_actions = new String[] {"Swap-spellbook", null, null, null, null};
+        }
+
         if (id == 31621) {
             definition.name = "50s";
         }

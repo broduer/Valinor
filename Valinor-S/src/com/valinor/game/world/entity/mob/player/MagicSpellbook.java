@@ -80,6 +80,7 @@ public enum MagicSpellbook {
         if (notify) {
             //Send notification message
             player.message("You have changed your magic spellbook.");
+            player.animate(645);
         }
 
         //Send the new spellbook interface to the client side tabs

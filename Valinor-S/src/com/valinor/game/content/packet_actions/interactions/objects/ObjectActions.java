@@ -87,7 +87,6 @@ public class ObjectActions {
         }
 
         if (clickAction == 2) {
-
             // Areas
             if (player.getController() != null) {
                 if (player.getController().handleObjectClick(player, object, 2)) {
@@ -148,6 +147,7 @@ public class ObjectActions {
                     return;
                 }
             }
+
             if (PacketInteractionManager.checkObjectInteraction(player, object, 4)) {
                 return;
             }

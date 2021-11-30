@@ -52,10 +52,7 @@ public class FarmingLoading {
      * @return if a file was found
      */
     public static boolean loadCrops(String username, Farming farming) {
-
         File file = FarmingSaving.getPathToSaveFile(username).toFile();
-
-
         try (InputStreamReader in = openReader(file)) {
             JsonParser fileParser = new JsonParser();
             Gson builder = FarmingSaving.gson;
