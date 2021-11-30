@@ -214,9 +214,9 @@ public class ItemDrops {
             return;
         }
 
-        int roll = 100;
+        int roll = 25;
         if (World.getWorld().rollDie(roll, 1)) {
-            Item supplyCrate = new Item(SUPPLY_CRATE);
+            Item supplyCrate = (npc.def() != null && npc.def().combatlevel > 100) ? new Item(SUPPLY_CRATE) : new Item(EXTRA_SUPPLY_CRATE);
             GroundItem groundItem = new GroundItem(supplyCrate, player.tile(), player);
             GroundItemHandler.createGroundItem(groundItem);
             notification(player, supplyCrate);
