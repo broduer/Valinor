@@ -1,5 +1,6 @@
 package com.valinor.game.content.seasonal_events.halloween;
 
+import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -173,35 +174,38 @@ public class Halloween extends PacketInteraction {
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 73307) {
-            player.optionsTitled("Exchange your 5,000 H'ween tokens for a reward?", "Yes", "No", () -> {
-                if (!player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
-                    return;
-                }
+            if (UnlockEventRewards.HALLOWEEN) {
+                player.optionsTitled("Exchange your 5,000 H'ween tokens for a reward?", "Yes", "No", () -> {
+                    if (!player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
+                        return;
+                    }
 
-                final List<AttributeKey> keyList = Arrays.asList(EVENT_REWARD_1_CLAIMED, EVENT_REWARD_2_CLAIMED, EVENT_REWARD_3_CLAIMED, EVENT_REWARD_4_CLAIMED, EVENT_REWARD_5_CLAIMED, EVENT_REWARD_6_CLAIMED, EVENT_REWARD_7_CLAIMED, EVENT_REWARD_8_CLAIMED, EVENT_REWARD_9_CLAIMED, EVENT_REWARD_10_CLAIMED, EVENT_REWARD_11_CLAIMED, EVENT_REWARD_12_CLAIMED, EVENT_REWARD_13_CLAIMED, EVENT_REWARD_14_CLAIMED, EVENT_REWARD_15_CLAIMED, EVENT_REWARD_16_CLAIMED, EVENT_REWARD_17_CLAIMED, EVENT_REWARD_18_CLAIMED, EVENT_REWARD_19_CLAIMED, EVENT_REWARD_20_CLAIMED, EVENT_REWARD_21_CLAIMED, EVENT_REWARD_22_CLAIMED, EVENT_REWARD_23_CLAIMED, EVENT_REWARD_24_CLAIMED, EVENT_REWARD_25_CLAIMED, EVENT_REWARD_26_CLAIMED, EVENT_REWARD_27_CLAIMED, EVENT_REWARD_28_CLAIMED, EVENT_REWARD_29_CLAIMED, EVENT_REWARD_30_CLAIMED, EVENT_REWARD_31_CLAIMED, EVENT_REWARD_32_CLAIMED, EVENT_REWARD_33_CLAIMED, EVENT_REWARD_34_CLAIMED, EVENT_REWARD_35_CLAIMED, EVENT_REWARD_36_CLAIMED, EVENT_REWARD_37_CLAIMED, EVENT_REWARD_38_CLAIMED, EVENT_REWARD_39_CLAIMED, EVENT_REWARD_40_CLAIMED, EVENT_REWARD_41_CLAIMED, EVENT_REWARD_42_CLAIMED, EVENT_REWARD_43_CLAIMED, EVENT_REWARD_44_CLAIMED);
-                var unlockedAllRewards = keyList.stream().allMatch(key -> player.<Boolean>getAttribOr(key, false));
-                if (unlockedAllRewards) {
-                    player.message(Color.RED.wrap("You have already unlocked all rewards."));
-                    return;
-                }
+                    var unlockedAllRewards = player.getEventRewards().rewardsUnlocked().values().stream().allMatch(r -> r);
+                    if (unlockedAllRewards) {
+                        player.message(Color.RED.wrap("You have already unlocked all rewards."));
+                        return;
+                    }
 
-                Item reward = player.getEventRewards().generateReward();
-                if (reward == null) {
-                    return;
-                }
+                    Item reward = player.getEventRewards().generateReward();
+                    if (reward == null) {
+                        return;
+                    }
 
-                if (player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
-                    player.getEventRewards().refreshItems();
-                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(),0);
-                    player.getEventRewards().rollForReward(HWEEN_TOKENS, 5000, reward.copy());
-                } else {
-                    player.message(Color.RED.wrap("You do not have enough H'ween tokens to roll for a reward."));
-                }
-            });
+                    if (player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
+                        player.getEventRewards().refreshItems();
+                        player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(), 0);
+                        player.getEventRewards().rollForReward(HWEEN_TOKENS, 5000, reward.copy(), "H'ween");
+                    } else {
+                        player.message(Color.RED.wrap("You do not have enough H'ween tokens to roll for a reward."));
+                    }
+                });
+            }
             return true;
         }
         if (button == 73310) {
-            player.getEventRewards().reset("H'ween");
+            if (UnlockEventRewards.HALLOWEEN) {
+                player.getEventRewards().reset("H'ween");
+            }
             return true;
         }
         return false;
@@ -211,7 +215,9 @@ public class Halloween extends PacketInteraction {
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
             if (object.getId() == 2654) {
-                player.getEventRewards().open();
+                if (UnlockEventRewards.HALLOWEEN) {
+                    player.getEventRewards().open("H'ween");
+                }
                 return true;
             }
         }

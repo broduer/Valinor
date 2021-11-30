@@ -17,6 +17,21 @@ public class NpcManager {
 
         switch (id) {
 
+            case 11112:
+                definition.name = "Santa";
+                definition.model_id = new int[]{235, 189, 299, 4226, 4218, 162, 4924, 4925, 4926};
+                definition.actions = new String[]{"Talk-to", null, null, null, null};
+                definition.additionalModels = new int[]{7380, 69, 53};//Beard, santa hat, head
+                definition.description = "Also known as Father christmas.";
+                definition.walkingAnimation = 819;
+                definition.halfTurnAnimation = 819;
+                definition.quarterClockwiseTurnAnimation = 819;
+                definition.quarterAnticlockwiseTurnAnimation = 819;
+                definition.standingAnimation = 808;
+                definition.src_color = new int[]{6798, 8078, 8741, 25238, 6587, 5400};
+                definition.dst_color = new int[]{86, 10351, 933, 933, 10351, 0};
+                break;
+
             case 3443:
                 definition.name = "Lord voldemort";
                 definition.cmb_level = 1433;

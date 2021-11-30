@@ -2,6 +2,9 @@ package com.valinor.cache.def.impl;
 
 import com.valinor.cache.def.ObjectDefinition;
 
+import static com.valinor.ClientConstants.CHRISTMAS;
+import static com.valinor.ClientConstants.HALLOWEEN;
+
 public class ObjectManager {
 
     public static void get(int id) {
@@ -134,13 +137,27 @@ public class ObjectManager {
         }
 
         if(id == 2654) {
-            definition.name = "Blood fountain";
+            definition.name = HALLOWEEN ? "Blood fountain" : "Snow fountain";
             definition.width = 3;
             definition.height = 3;
             definition.scene_actions[0] = "Rewards";
             definition.scene_actions[1] = null;
-            definition.src_color = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
-            definition.dst_color = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
+            if(HALLOWEEN) {
+                definition.src_color = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
+                definition.dst_color = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
+            } else if(CHRISTMAS) {
+                definition.src_color = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
+                definition.dst_color = new int[]{10266, 10270, 10279, 10275, 10283, 127, 126};
+            }
+        }
+
+        if(id == 1276 || id == 1278 || id == 1279) { //christmas prep
+            if (CHRISTMAS) {
+                definition.model_ids = new int[] {20491, 20492, 20493, 20494};
+                definition.animation = 5058;
+                definition.ambient = 30;
+                definition.contrast = 30;
+            }
         }
     }
 }

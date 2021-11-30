@@ -1,16 +1,16 @@
 package com.valinor.game.content.seasonal_events.rewards;
 
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
-import static com.valinor.game.world.entity.AttributeKey.*;
+import static com.valinor.game.world.entity.AttributeKey.HWEEN_EVENT_TOKENS_SPENT;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -26,46 +26,46 @@ public class UnlockEventRewards {
         this.player = player;
     }
 
+    private HashMap<EventRewards, Boolean> eventRewardsUnlocked = new HashMap<>();
+
+    public HashMap<EventRewards, Boolean> rewardsUnlocked() {
+        return eventRewardsUnlocked;
+    }
+
+    public void setEventRewardsUnlocked(HashMap<EventRewards, Boolean> eventRewardsUnlocked) {
+        this.eventRewardsUnlocked = eventRewardsUnlocked;
+    }
+
     public Item generateReward() {
         var randomReward = World.getWorld().random(210);
-        final List<AttributeKey> keyList = Arrays.asList(EVENT_REWARD_1_CLAIMED, EVENT_REWARD_2_CLAIMED, EVENT_REWARD_3_CLAIMED, EVENT_REWARD_4_CLAIMED, EVENT_REWARD_5_CLAIMED, EVENT_REWARD_6_CLAIMED, EVENT_REWARD_7_CLAIMED, EVENT_REWARD_8_CLAIMED, EVENT_REWARD_9_CLAIMED, EVENT_REWARD_10_CLAIMED, EVENT_REWARD_11_CLAIMED, EVENT_REWARD_12_CLAIMED, EVENT_REWARD_13_CLAIMED, EVENT_REWARD_14_CLAIMED, EVENT_REWARD_15_CLAIMED, EVENT_REWARD_16_CLAIMED, EVENT_REWARD_17_CLAIMED, EVENT_REWARD_18_CLAIMED, EVENT_REWARD_19_CLAIMED, EVENT_REWARD_20_CLAIMED, EVENT_REWARD_21_CLAIMED, EVENT_REWARD_22_CLAIMED, EVENT_REWARD_23_CLAIMED, EVENT_REWARD_24_CLAIMED, EVENT_REWARD_25_CLAIMED, EVENT_REWARD_26_CLAIMED, EVENT_REWARD_27_CLAIMED, EVENT_REWARD_28_CLAIMED, EVENT_REWARD_29_CLAIMED, EVENT_REWARD_30_CLAIMED, EVENT_REWARD_31_CLAIMED, EVENT_REWARD_32_CLAIMED, EVENT_REWARD_33_CLAIMED, EVENT_REWARD_34_CLAIMED, EVENT_REWARD_35_CLAIMED, EVENT_REWARD_36_CLAIMED, EVENT_REWARD_37_CLAIMED, EVENT_REWARD_38_CLAIMED, EVENT_REWARD_39_CLAIMED, EVENT_REWARD_40_CLAIMED, EVENT_REWARD_41_CLAIMED, EVENT_REWARD_42_CLAIMED, EVENT_REWARD_43_CLAIMED, EVENT_REWARD_44_CLAIMED);
-        var unlockedAllRewards = keyList.stream().allMatch(key -> player.<Boolean>getAttribOr(key, false));
-        if (unlockedAllRewards) {
-            return null;//Extra safety
-        }
 
         for (EventRewards reward : EventRewards.values()) {
             //System.out.println(reward.name()+" -> "+player.<Boolean>getAttribOr(reward.key,false));
-            if (player.<Boolean>getAttribOr(reward.key, false)) {
+            var unlocked = player.getEventRewards().rewardsUnlocked().get(reward);
+            if (unlocked) {
                 continue;
             }
             if (reward.chance <= randomReward) {
-                player.putAttrib(reward.key, true);
+                player.getEventRewards().rewardsUnlocked().put(reward, true);
                 return reward.reward;
             }
         }
-        final EventRewards eventRewards = Arrays.stream(EventRewards.values()).filter(r -> !player.<Boolean>getAttribOr(r.key, false)).findAny().get();
-        player.putAttrib(eventRewards.key, true);
+        final EventRewards eventRewards = Arrays.stream(EventRewards.values()).filter(r -> !player.getEventRewards().rewardsUnlocked().get(r)).findAny().get();
+        player.getEventRewards().rewardsUnlocked().put(eventRewards, true);
         return eventRewards.reward;
     }
 
     public void reset(String event) {
-        final List<AttributeKey> keyList = Arrays.asList(EVENT_REWARD_1_CLAIMED, EVENT_REWARD_2_CLAIMED, EVENT_REWARD_3_CLAIMED, EVENT_REWARD_4_CLAIMED, EVENT_REWARD_5_CLAIMED, EVENT_REWARD_6_CLAIMED, EVENT_REWARD_7_CLAIMED, EVENT_REWARD_8_CLAIMED, EVENT_REWARD_9_CLAIMED, EVENT_REWARD_10_CLAIMED, EVENT_REWARD_11_CLAIMED, EVENT_REWARD_12_CLAIMED, EVENT_REWARD_13_CLAIMED, EVENT_REWARD_14_CLAIMED, EVENT_REWARD_15_CLAIMED, EVENT_REWARD_16_CLAIMED, EVENT_REWARD_17_CLAIMED, EVENT_REWARD_18_CLAIMED, EVENT_REWARD_19_CLAIMED, EVENT_REWARD_20_CLAIMED, EVENT_REWARD_21_CLAIMED, EVENT_REWARD_22_CLAIMED, EVENT_REWARD_23_CLAIMED, EVENT_REWARD_24_CLAIMED, EVENT_REWARD_25_CLAIMED, EVENT_REWARD_26_CLAIMED, EVENT_REWARD_27_CLAIMED, EVENT_REWARD_28_CLAIMED, EVENT_REWARD_29_CLAIMED, EVENT_REWARD_30_CLAIMED, EVENT_REWARD_31_CLAIMED, EVENT_REWARD_32_CLAIMED, EVENT_REWARD_33_CLAIMED, EVENT_REWARD_34_CLAIMED, EVENT_REWARD_35_CLAIMED, EVENT_REWARD_36_CLAIMED, EVENT_REWARD_37_CLAIMED, EVENT_REWARD_38_CLAIMED, EVENT_REWARD_39_CLAIMED, EVENT_REWARD_40_CLAIMED, EVENT_REWARD_41_CLAIMED, EVENT_REWARD_42_CLAIMED, EVENT_REWARD_43_CLAIMED, EVENT_REWARD_44_CLAIMED);
-        var unlockedAllRewards = keyList.stream().allMatch(key -> player.<Boolean>getAttribOr(key, false));
+        var unlockedAllRewards = player.getEventRewards().rewardsUnlocked().values().stream().allMatch(r -> r);
 
         //We've unlock all rewards we can go ahead and reset them as requested.
         if (unlockedAllRewards) {
             player.optionsTitled("Would you like to reset all the rewards?", "Yes", "No", () -> {
-
-                for (AttributeKey key : keyList) {
-                    player.putAttrib(key, false);
-                }
-
+                player.getEventRewards().rewardsUnlocked().clear();
                 player.putAttrib(HWEEN_EVENT_TOKENS_SPENT,0);
                 player.inventory().addOrBank(COMPLETED_EVENT_REWARD);
                 //Let the world know this play has finished the rewards and goes for them again
                 World.getWorld().sendWorldMessage("<img=505><shad=0>" + Color.MEDRED.wrap("[" + event + "]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " has just reset the " + Color.PURPLE.wrap(event) + " Event Rewards!");
-
                 player.getInterfaceManager().close();
             });
         } else {
@@ -74,15 +74,24 @@ public class UnlockEventRewards {
     }
 
     private final List<Integer> items_to_shout = Arrays.asList(
-        DONATOR_MYSTERY_BOX, ARMADYL_GODSWORD, LEGENDARY_MYSTERY_BOX, ZENYTE_MYSTERY_BOX, RAIDS_MYSTERY_BOX, MYSTERY_TICKET, KEY_OF_DROPS, REVENANT_MYSTER_BOX, CHRISTMAS_CRACKER, HWEEN_ITEM_CHEST);
+        DONATOR_MYSTERY_BOX, DRACONIC_VISAGE, FIVE_DOLLAR_BOND, KEY_OF_DROPS, MYSTERY_TICKET, CHRISTMAS_CRACKER, PURPLE_HWEEN_MASK, CYAN_PARTYHAT);
 
-    public void rollForReward(int tokens, int amount, Item reward) {
+    public void rollForReward(int tokens, int amount, Item reward, String event) {
         player.inventory().remove(tokens, amount);
         player.inventory().addOrBank(reward);
 
-        final int tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
-        player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
-        final var progress = (int) (tokensSpent * 100 / (double) 220_000);
+        int tokensSpent = 0;
+        if(event.equalsIgnoreCase("H'ween")) {
+            tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
+            player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
+        } else if(event.equalsIgnoreCase("X'mas")) {
+            tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
+            player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
+        }
+
+        int totalToSpent = event.equalsIgnoreCase("H'ween") ? 220_000 : 220_000;
+
+        final var progress = (int) (tokensSpent * 100 / (double) totalToSpent);
 
         player.getPacketSender().sendProgressBar(73313, progress);
         player.getPacketSender().sendString(73314, "Tokens spent: " +tokensSpent);
@@ -102,15 +111,18 @@ public class UnlockEventRewards {
         }
     }
 
+    public static final boolean HALLOWEEN = false;
+    public static final boolean CHRISTMAS = true;
+
     private static final int INTERFACE_ID = 73300;
     private static final int COMPLETED_EVENT_REWARD_SLOT = 73315;
     private static final int TOKEN_REQUIREMENT_SLOT = 73316;
     public static final int UNLOCKED_ITEM_SLOT = 73317;
     private static final int UNLOCKABLE_ITEMS_CONTAINER = 73318;
 
-    private static final Item COMPLETED_EVENT_REWARD = new Item(BLOOD_MONEY, 100_000);
+    private static final Item COMPLETED_EVENT_REWARD = HALLOWEEN ? new Item(BLOOD_MONEY, 1) : new Item(MYSTERY_TICKET,2);
 
-    private static final Item TOKEN_REQUIREMENT = new Item(HWEEN_TOKENS, 5000);
+    private static final Item TOKEN_REQUIREMENT = HALLOWEEN ? new Item(HWEEN_TOKENS, 5000) : new Item(XMAS_TOKENS, 10_000);
 
     private static final ArrayList<Item> items = new ArrayList<>();
 
@@ -121,7 +133,13 @@ public class UnlockEventRewards {
         }
     }
 
-    public void open() {
+    public void open(String event) {
+        if(event.equalsIgnoreCase("H'ween")) {
+            player.getPacketSender().sendString(73304, "Halloween event 2021");
+        } else if(event.equalsIgnoreCase("X'mas")) {
+            player.getPacketSender().sendString(73304, "Christmas event 2021");
+        }
+
         setAllItemsTrans();
 
         //Refresh them
@@ -145,6 +163,11 @@ public class UnlockEventRewards {
 
         //Clear the rolled item slot
         player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, null, 0);
+
+        //X'mas event has no reset button
+        if(event.equalsIgnoreCase("X'mas")) {
+            player.getPacketSender().sendInterfaceDisplayState(73310, true);
+        }
     }
 
     private void setAllItemsTrans() {
@@ -155,7 +178,12 @@ public class UnlockEventRewards {
 
     public void refreshItems() {
         for (EventRewards reward : EventRewards.values()) {
-            var unlocked = player.<Boolean>getAttribOr(reward.key, false);
+            //List empty, we haven't unlocked anything
+            if(player.getEventRewards().rewardsUnlocked().isEmpty()) {
+                continue;
+            }
+
+            var unlocked = player.getEventRewards().rewardsUnlocked().get(reward);
             if (unlocked) {
                 reward.reward.setAmount(1);
                 player.getPacketSender().sendItemOnInterface(UNLOCKABLE_ITEMS_CONTAINER, items);

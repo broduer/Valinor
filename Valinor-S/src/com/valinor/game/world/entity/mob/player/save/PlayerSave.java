@@ -10,6 +10,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
 import com.valinor.game.content.presets.Presetable;
+import com.valinor.game.content.seasonal_events.rewards.EventRewards;
 import com.valinor.game.content.tasks.impl.Tasks;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
@@ -50,7 +51,7 @@ public class PlayerSave {
 
     private static final Logger logger = LogManager.getLogger(PlayerSave.class);
 
-    static final Map<Type, InstanceCreator<?>> instanceCreators = Collections.<Type, InstanceCreator<?>>emptyMap();
+    static final Map<Type, InstanceCreator<?>> instanceCreators = Collections.emptyMap();
 
     public static final Gson SERIALIZE = new GsonBuilder().setDateFormat("MMM d, yyyy, HH:mm:ss a").setPrettyPrinting().registerTypeAdapterFactory(new MapTypeAdapterFactoryNulls(new ConstructorConstructor(instanceCreators), false)).disableHtmlEscaping().create();
 
@@ -97,7 +98,7 @@ public class PlayerSave {
 
         public static boolean loadDetails(Player player) throws Exception {
             final File file = new File("./data/saves/characters/" + player.getUsername() + ".json");
-            if (!file.exists()) { ;
+            if (!file.exists()) {
                 return false;
             }
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -120,11 +121,7 @@ public class PlayerSave {
                     player.setMemberRights(MemberRights.valueOf(details.memberRights));
                 if (details.expMode != null)
                     player.expmode(details.expMode);
-                if (details.ironMode == null) {
-                    player.ironMode(IronMode.NONE);
-                } else {
-                    player.ironMode(details.ironMode);
-                }
+                player.ironMode(Objects.requireNonNullElse(details.ironMode, IronMode.NONE));
                 player.putAttrib(GROUP_NAME_SET, details.groupNameSet);
                 if(details.lastIP != null) {
                     player.setHostAddress(details.lastIP);
@@ -243,8 +240,7 @@ public class PlayerSave {
                     }
                 }
                 if (details.tabAmounts != null) {
-                    if (details.tabAmounts.length >= 0)
-                        System.arraycopy(details.tabAmounts, 0, player.getBank().tabAmounts, 0, details.tabAmounts.length);
+                    System.arraycopy(details.tabAmounts, 0, player.getBank().tabAmounts, 0, details.tabAmounts.length);
                 }
                 player.getBank().placeHolder = details.placeholdersActive;
                 player.getBank().placeHolderAmount = details.placeHolderAmount;
@@ -417,6 +413,9 @@ public class PlayerSave {
                 player.putAttrib(HYDRA, details.hydraKills);
                 player.putAttrib(BASILISK_KNIGHT, details.basiliskKnightKills);
                 player.putAttrib(MEN_IN_BLACK_KILLED, details.menInBlackKills);
+                if(details.eventRewards != null) {
+                    player.getEventRewards().setEventRewardsUnlocked(details.eventRewards);
+                }
                 if(details.favoriteTeleports != null) {
                     player.setFavoriteTeleports(details.favoriteTeleports);
                 }
@@ -487,6 +486,24 @@ public class PlayerSave {
                 player.putAttrib(ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, details.dailyZulrahAmount);
                 player.putAttrib(ZULRAH_DAILY_TASK_COMPLETED, details.dailyZulrahCompleted);
                 player.putAttrib(ZULRAH_DAILY_TASK_REWARD_CLAIMED, details.dailyZulrahRewardClaimed);
+                player.putAttrib(EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyExperimentsAmount);
+                player.putAttrib(EXPERIMENTS_DAILY_TASK_COMPLETED, details.dailyExperimentsCompleted);
+                player.putAttrib(EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, details.dailyExperimentsRewardClaimed);
+                player.putAttrib(SKILLING_DAILY_TASK_COMPLETION_AMOUNT, details.dailySkillingAmount);
+                player.putAttrib(SKILLING_DAILY_TASK_COMPLETED, details.dailySkillingCompleted);
+                player.putAttrib(SKILLING_DAILY_TASK_REWARD_CLAIMED, details.dailySkillingRewardClaimed);
+                player.putAttrib(PVMING_DAILY_TASK_COMPLETION_AMOUNT, details.dailyPvmingAmount);
+                player.putAttrib(PVMING_DAILY_TASK_COMPLETED, details.dailyPvmingCompleted);
+                player.putAttrib(PVMING_DAILY_TASK_REWARD_CLAIMED, details.dailyPvmingRewardClaimed);
+                player.putAttrib(IMPLING_DAILY_TASK_COMPLETION_AMOUNT, details.dailyImplingAmount);
+                player.putAttrib(IMPLING_DAILY_TASK_COMPLETED, details.dailyImplingCompleted);
+                player.putAttrib(IMPLING_DAILY_TASK_REWARD_CLAIMED, details.dailyImplingRewardClaimed);
+                player.putAttrib(CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETION_AMOUNT, details.dailyCorruptedNechryarchAmount);
+                player.putAttrib(CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETED, details.dailyCorruptedNechryarchCompleted);
+                player.putAttrib(CORRUPTED_NECHRYARCH_DAILY_TASK_REWARD_CLAIMED, details.dailyCorruptedNechryarchRewardClaimed);
+                player.putAttrib(VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyValinorCoinsAmount);
+                player.putAttrib(VALINOR_COINS_DAILY_TASK_COMPLETED, details.dailyValinorCoinsCompleted);
+                player.putAttrib(VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, details.dailyValinorCoinsRewardClaimed);
                 player.putAttrib(ALCHEMICAL_HYDRA_LOG_CLAIMED, details.alchemicalHydraLogClaimed);
                 player.putAttrib(ANCIENT_BARRELCHEST_LOG_CLAIMED, details.ancientBarrelchestLogClaimed);
                 player.putAttrib(ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, details.ancientChaosElementalLogClaimed);
@@ -530,50 +547,6 @@ public class PlayerSave {
                 player.putAttrib(LAST_DAILY_RESET, details.lastDailyReset);
                 player.putAttrib(FINISHED_HALLOWEEN_TEACHER_DIALOGUE, details.finishedHalloweenDialogue);
                 player.putAttrib(CANDIES_TRADED, details.candiesTraded);
-                player.putAttrib(EVENT_REWARD_1_CLAIMED, details.eventReward1Claimed);
-                player.putAttrib(EVENT_REWARD_2_CLAIMED, details.eventReward2Claimed);
-                player.putAttrib(EVENT_REWARD_3_CLAIMED, details.eventReward3Claimed);
-                player.putAttrib(EVENT_REWARD_4_CLAIMED, details.eventReward4Claimed);
-                player.putAttrib(EVENT_REWARD_5_CLAIMED, details.eventReward5Claimed);
-                player.putAttrib(EVENT_REWARD_6_CLAIMED, details.eventReward6Claimed);
-                player.putAttrib(EVENT_REWARD_7_CLAIMED, details.eventReward7Claimed);
-                player.putAttrib(EVENT_REWARD_8_CLAIMED, details.eventReward8Claimed);
-                player.putAttrib(EVENT_REWARD_9_CLAIMED, details.eventReward9Claimed);
-                player.putAttrib(EVENT_REWARD_10_CLAIMED, details.eventReward10Claimed);
-                player.putAttrib(EVENT_REWARD_11_CLAIMED, details.eventReward11Claimed);
-                player.putAttrib(EVENT_REWARD_12_CLAIMED, details.eventReward12Claimed);
-                player.putAttrib(EVENT_REWARD_13_CLAIMED, details.eventReward13Claimed);
-                player.putAttrib(EVENT_REWARD_14_CLAIMED, details.eventReward14Claimed);
-                player.putAttrib(EVENT_REWARD_15_CLAIMED, details.eventReward15Claimed);
-                player.putAttrib(EVENT_REWARD_16_CLAIMED, details.eventReward16Claimed);
-                player.putAttrib(EVENT_REWARD_17_CLAIMED, details.eventReward17Claimed);
-                player.putAttrib(EVENT_REWARD_18_CLAIMED, details.eventReward18Claimed);
-                player.putAttrib(EVENT_REWARD_19_CLAIMED, details.eventReward19Claimed);
-                player.putAttrib(EVENT_REWARD_20_CLAIMED, details.eventReward20Claimed);
-                player.putAttrib(EVENT_REWARD_21_CLAIMED, details.eventReward21Claimed);
-                player.putAttrib(EVENT_REWARD_22_CLAIMED, details.eventReward22Claimed);
-                player.putAttrib(EVENT_REWARD_23_CLAIMED, details.eventReward23Claimed);
-                player.putAttrib(EVENT_REWARD_24_CLAIMED, details.eventReward24Claimed);
-                player.putAttrib(EVENT_REWARD_25_CLAIMED, details.eventReward25Claimed);
-                player.putAttrib(EVENT_REWARD_26_CLAIMED, details.eventReward26Claimed);
-                player.putAttrib(EVENT_REWARD_27_CLAIMED, details.eventReward27Claimed);
-                player.putAttrib(EVENT_REWARD_28_CLAIMED, details.eventReward28Claimed);
-                player.putAttrib(EVENT_REWARD_29_CLAIMED, details.eventReward29Claimed);
-                player.putAttrib(EVENT_REWARD_30_CLAIMED, details.eventReward30Claimed);
-                player.putAttrib(EVENT_REWARD_31_CLAIMED, details.eventReward31Claimed);
-                player.putAttrib(EVENT_REWARD_32_CLAIMED, details.eventReward32Claimed);
-                player.putAttrib(EVENT_REWARD_33_CLAIMED, details.eventReward33Claimed);
-                player.putAttrib(EVENT_REWARD_34_CLAIMED, details.eventReward34Claimed);
-                player.putAttrib(EVENT_REWARD_35_CLAIMED, details.eventReward35Claimed);
-                player.putAttrib(EVENT_REWARD_36_CLAIMED, details.eventReward36Claimed);
-                player.putAttrib(EVENT_REWARD_37_CLAIMED, details.eventReward37Claimed);
-                player.putAttrib(EVENT_REWARD_38_CLAIMED, details.eventReward38Claimed);
-                player.putAttrib(EVENT_REWARD_39_CLAIMED, details.eventReward39Claimed);
-                player.putAttrib(EVENT_REWARD_40_CLAIMED, details.eventReward40Claimed);
-                player.putAttrib(EVENT_REWARD_41_CLAIMED, details.eventReward41Claimed);
-                player.putAttrib(EVENT_REWARD_42_CLAIMED, details.eventReward42Claimed);
-                player.putAttrib(EVENT_REWARD_43_CLAIMED, details.eventReward43Claimed);
-                player.putAttrib(EVENT_REWARD_44_CLAIMED, details.eventReward44Claimed);
                 player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, details.hweenEventTokensSpent);
                 player.putAttrib(HERB_BOX_CHARGES, details.herbBoxCharges);
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
@@ -830,6 +803,7 @@ public class PlayerSave {
         private final int menInBlackKills;
 
         //Content
+        private final HashMap<EventRewards, Boolean> eventRewards;
         private final ArrayList<Integer> favoriteTeleports;
         private final Map<String, Integer> bossTimers;
         private final HashMap<Collection, ArrayList<Item>> collectionLog;
@@ -971,50 +945,6 @@ public class PlayerSave {
         private final int lastDailyReset;
         private final boolean finishedHalloweenDialogue;
         private final int candiesTraded;
-        private final boolean eventReward1Claimed;
-        private final boolean eventReward2Claimed;
-        private final boolean eventReward3Claimed;
-        private final boolean eventReward4Claimed;
-        private final boolean eventReward5Claimed;
-        private final boolean eventReward6Claimed;
-        private final boolean eventReward7Claimed;
-        private final boolean eventReward8Claimed;
-        private final boolean eventReward9Claimed;
-        private final boolean eventReward10Claimed;
-        private final boolean eventReward11Claimed;
-        private final boolean eventReward12Claimed;
-        private final boolean eventReward13Claimed;
-        private final boolean eventReward14Claimed;
-        private final boolean eventReward15Claimed;
-        private final boolean eventReward16Claimed;
-        private final boolean eventReward17Claimed;
-        private final boolean eventReward18Claimed;
-        private final boolean eventReward19Claimed;
-        private final boolean eventReward20Claimed;
-        private final boolean eventReward21Claimed;
-        private final boolean eventReward22Claimed;
-        private final boolean eventReward23Claimed;
-        private final boolean eventReward24Claimed;
-        private final boolean eventReward25Claimed;
-        private final boolean eventReward26Claimed;
-        private final boolean eventReward27Claimed;
-        private final boolean eventReward28Claimed;
-        private final boolean eventReward29Claimed;
-        private final boolean eventReward30Claimed;
-        private final boolean eventReward31Claimed;
-        private final boolean eventReward32Claimed;
-        private final boolean eventReward33Claimed;
-        private final boolean eventReward34Claimed;
-        private final boolean eventReward35Claimed;
-        private final boolean eventReward36Claimed;
-        private final boolean eventReward37Claimed;
-        private final boolean eventReward38Claimed;
-        private final boolean eventReward39Claimed;
-        private final boolean eventReward40Claimed;
-        private final boolean eventReward41Claimed;
-        private final boolean eventReward42Claimed;
-        private final boolean eventReward43Claimed;
-        private final boolean eventReward44Claimed;
         private final int hweenEventTokensSpent;
         private final int herbBoxCharges;
         private final boolean combatMaxed;
@@ -1126,8 +1056,8 @@ public class PlayerSave {
             storeAsMany = player.getLootingBag().storeAsMany();
             runePouch = player.getRunePouch().toArray();
             totalCartValue = Player.getAttribIntOr(player, CART_ITEMS_TOTAL_VALUE, 0);
-            cartItems = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
-            nifflerItems = player.<ArrayList<Item>>getAttribOr(NIFFLER_ITEMS_STORED, new ArrayList<Item>());
+            cartItems = player.getAttribOr(CART_ITEMS, new ArrayList<Item>());
+            nifflerItems = player.getAttribOr(NIFFLER_ITEMS_STORED, new ArrayList<Item>());
             friends = player.getRelations().getFriendList();
             ignores = player.getRelations().getIgnoreList();
             clan = player.getClanChat();
@@ -1254,6 +1184,7 @@ public class PlayerSave {
             basiliskKnightKills = Player.getAttribIntOr(player, BASILISK_KNIGHT, 0);
             menInBlackKills = Player.getAttribIntOr(player, MEN_IN_BLACK_KILLED, 0);
             bossTimers = player.getBossTimers().getTimes();
+            eventRewards = player.getEventRewards().rewardsUnlocked();
             favoriteTeleports = player.getFavoriteTeleports();
             collectionLog = player.getCollectionLog().collectionLog;
             achievements = player.achievements();
@@ -1374,50 +1305,6 @@ public class PlayerSave {
             lastDailyReset = Player.getAttribIntOr(player, LAST_DAILY_RESET, -1);
             finishedHalloweenDialogue = Player.getAttribBooleanOr(player, FINISHED_HALLOWEEN_TEACHER_DIALOGUE, false);
             candiesTraded = Player.getAttribIntOr(player, CANDIES_TRADED, -1);
-            eventReward1Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_1_CLAIMED, false);
-            eventReward2Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_2_CLAIMED, false);
-            eventReward3Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_3_CLAIMED, false);
-            eventReward4Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_4_CLAIMED, false);
-            eventReward5Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_5_CLAIMED, false);
-            eventReward6Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_6_CLAIMED, false);
-            eventReward7Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_7_CLAIMED, false);
-            eventReward8Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_8_CLAIMED, false);
-            eventReward9Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_9_CLAIMED, false);
-            eventReward10Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_10_CLAIMED, false);
-            eventReward11Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_11_CLAIMED, false);
-            eventReward12Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_12_CLAIMED, false);
-            eventReward13Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_13_CLAIMED, false);
-            eventReward14Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_14_CLAIMED, false);
-            eventReward15Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_15_CLAIMED, false);
-            eventReward16Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_16_CLAIMED, false);
-            eventReward17Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_17_CLAIMED, false);
-            eventReward18Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_18_CLAIMED, false);
-            eventReward19Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_19_CLAIMED, false);
-            eventReward20Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_20_CLAIMED, false);
-            eventReward21Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_21_CLAIMED, false);
-            eventReward22Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_22_CLAIMED, false);
-            eventReward23Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_23_CLAIMED, false);
-            eventReward24Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_24_CLAIMED, false);
-            eventReward25Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_25_CLAIMED, false);
-            eventReward26Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_26_CLAIMED, false);
-            eventReward27Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_27_CLAIMED, false);
-            eventReward28Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_28_CLAIMED, false);
-            eventReward29Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_29_CLAIMED, false);
-            eventReward30Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_30_CLAIMED, false);
-            eventReward31Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_31_CLAIMED, false);
-            eventReward32Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_32_CLAIMED, false);
-            eventReward33Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_33_CLAIMED, false);
-            eventReward34Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_34_CLAIMED, false);
-            eventReward35Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_35_CLAIMED, false);
-            eventReward36Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_36_CLAIMED, false);
-            eventReward37Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_37_CLAIMED, false);
-            eventReward38Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_38_CLAIMED, false);
-            eventReward39Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_39_CLAIMED, false);
-            eventReward40Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_40_CLAIMED, false);
-            eventReward41Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_41_CLAIMED, false);
-            eventReward42Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_42_CLAIMED, false);
-            eventReward43Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_43_CLAIMED, false);
-            eventReward44Claimed = Player.getAttribBooleanOr(player, EVENT_REWARD_44_CLAIMED, false);
             hweenEventTokensSpent = Player.getAttribIntOr(player, HWEEN_EVENT_TOKENS_SPENT, 0);
             herbBoxCharges = Player.getAttribIntOr(player, HERB_BOX_CHARGES, 0);
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);

@@ -1,6 +1,7 @@
 package com.valinor.game.world;
 
 import com.valinor.game.content.seasonal_events.halloween.Halloween;
+import com.valinor.game.content.seasonal_events.xmas.Christmas;
 import com.valinor.game.world.items.Item;
 import com.google.common.collect.Maps;
 import com.google.gson.Gson;
@@ -726,6 +727,7 @@ public class World {
         try {
             //Seasonal spawns
             //Halloween.loadNpcs();
+            Christmas.loadNpcs();
             loadNpcSpawns(new File("data/map/npcs"));
         } catch (Exception e) {
             e.printStackTrace();

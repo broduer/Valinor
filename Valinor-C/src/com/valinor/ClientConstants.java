@@ -11,6 +11,9 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public final class ClientConstants {
 
+    public static boolean HALLOWEEN = false;
+    public static boolean CHRISTMAS = true;
+
     /*
      * This determines if we are going to connect to the live server or local server.
      */

@@ -138,7 +138,6 @@ public class CollectionLog {
 
     public int unlocked(int id) {
         int[] unlocked = new int[] {-1};//default -1
-        System.out.println(player.getCollectionLog().getUnlockableItems());
 
         player.getCollectionLog().collectionLog.forEach((key, value) -> {
             if (unlocked[0] == 1) return; // continue@foreach
