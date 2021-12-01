@@ -482,12 +482,11 @@ public enum AttributeKey {
     SLAYER_KEYS_RECEIVED("slayer_keys_received", AttribType.INTEGER),
     SLAYER_KEYS_OPENED("slayer_keys_opened", AttribType.INTEGER),
 
-    TASK,
-    PREVIOUS_TASK,
-    TASK_AMOUNT("pvp_task_amount", AttribType.INTEGER),
-    TASK_COMPLETE_AMOUNT("pvp_task_complet_amount", AttribType.INTEGER),
-    TASKS_COMPLETED("pvp_tasks_completed", AttribType.INTEGER),
-    CAN_CLAIM_TASK_REWARD("can_claim_pvp_scroll_reward", AttribType.BOOLEAN),
+    BOTTLE_TASK,
+    BOTTLE_TASK_AMOUNT("bottle_task_amount", AttribType.INTEGER),
+    TASK_COMPLETE_AMOUNT("bottle_task_complete_amount", AttribType.INTEGER),
+    TASKS_COMPLETED("bottle_tasks_completed", AttribType.INTEGER),
+    CAN_CLAIM_TASK_REWARD("can_claim_bottle_scroll_reward", AttribType.BOOLEAN),
 
     ALWAYS_HIT,
 

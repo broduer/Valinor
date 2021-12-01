@@ -5,6 +5,10 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
+    public static final int SKILLING_SCROLL = 30383;
+    public static final int PVMING_SCROLL = 30384;
+    public static final int TASK_BOTTLE_SKILLING = 30385;
+    public static final int TASK_BOTTLE_PVMING = 30386;
     public static final int XMAS_TOKENS = 30191;
     public static final int POINTS_MYSTERY_BOX = 30186;
     public static final int BARROWS_MYSTERY_BOX = 30188;
@@ -66,7 +70,6 @@ public class CustomItemIdentifiers {
     public static final int HAUNTED_CROSSBOW = 30240;
     public static final int HAUNTED_DRAGONFIRE_SHIELD = 30241;
     public static final int MYSTERY_TICKET = 30222;
-    public static final int TASK_REWARD_CHEST = 30223;
     public static final int REVENANT_MYSTER_BOX = 30244;
     public static final int BLOOD_REAPER = 32102;
     public static final int CORRUPTED_RANGER_GAUNTLETS = 30048;
@@ -168,7 +171,7 @@ public class CustomItemIdentifiers {
     public static final int DARK_ANCIENT_RELIC = 24994;
     public static final int ANCIENT_VESTAS_LONGSWORD = 24995;
     public static final int ANCIENT_STATIUSS_WARHAMMER = 24996;
-    public static final int BLOOD_MONEY_CASKET = 24999;
+    public static final int TASK_BOTTLE_CASKET = 24999;
     public static final int BLOOD_FIREBIRD = 28000;
     public static final int VIGGORAS_CHAINMACE_C = 29000;
     public static final int CRAWS_BOW_C = 29001;

@@ -127,8 +127,8 @@ object Referrals {
                 }
             }
             REFEREE_TEN_HOURS_PLAYTIME -> {
-                inventory.addOrBank(Item(WEAPON_MYSTERY_BOX), Item(ARMOUR_MYSTERY_BOX))
-                message("You've been awarded a weapon and armour box for referring a player who passed 10 hours playtime.")
+                inventory.addOrBank(Item(DONATOR_MYSTERY_BOX, 3))
+                message("You've been awarded 3 donator mystery boxes for referring a player who passed 10 hours playtime.")
                 Utils.sendDiscordInfoLog(
                         this.username + " has received a weapon and armour box for referring a player who passed 10 hours playtime.",
                         "referrals"

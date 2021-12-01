@@ -14,9 +14,61 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
-        if(id == 30253) {
+        if (id == 30383) {
+            def.name = "<col=65280>Skilling scroll";
+            def.widget_actions = new String[]{"Read", null, null, null, "Destroy"};
+            def.inventory_model = 3374;
+            def.rotation_y = 360;
+            def.rotation_x = 672;
+            def.translate_x = 1;
+            def.translate_y = 0;
+            def.model_zoom = 1010;
+            def.modelCustomColor4 = 22222;
+        }
+
+        if (id == 30384) {
+            def.name = "<col=65280>Pvming scroll";
+            def.color_to_replace = new int[]{6583, 6604, 6608, 6587, 6464, 6740};
+            def.color_to_replace_with = new int[]{933, 926, 926, 926, 933, 926};
+            def.widget_actions = new String[]{"Read", null, null, null, "Destroy"};
+            def.inventory_model = 3374;
+            def.rotation_y = 360;
+            def.rotation_x = 672;
+            def.translate_x = 1;
+            def.translate_y = 0;
+            def.model_zoom = 1010;
+            def.modelCustomColor4 = 12222;
+        }
+
+        if (id == 30385) {
+            def.name = "<col=65280>Task bottle (skilling)";
+            def.model_zoom = 1114;
+            def.rotation_y = 0;
+            def.rotation_x = 1093;
+            def.translate_x = 0;
+            def.translate_y = 0;
+            def.scene_actions = new String[]{null, null, "Take", null, null};
+            def.widget_actions = new String[]{"Open", null, null, null, "Drop"};
+            def.inventory_model = 31044;
+            def.modelCustomColor4 = 22222;
+        }
+
+        if (id == 30386) {
+            def.name = "<col=65280>Task bottle (pvming)";
+            def.model_zoom = 1114;
+            def.rotation_y = 0;
+            def.rotation_x = 1093;
+            def.translate_x = 0;
+            def.translate_y = 0;
+            def.scene_actions = new String[]{null, null, "Take", null, null};
+            def.widget_actions = new String[]{"Open", null, null, null, "Drop"};
+            def.inventory_model = 31044;
+            def.modelCustomColor4 = 12222;
+        }
+
+        if (id == 30253) {
             def.name = "<col=65280>Cloak of invisibility";
-            def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+            def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
             def.female_equip_main = 37051;
             def.inventory_model = 37197;
             def.male_equip_main = 37019;
@@ -28,9 +80,9 @@ public class CustomItems {
             def.modelCustomColor4 = 490;
         }
 
-        if(id == 30252) {
+        if (id == 30252) {
             def.name = "<col=65280>Marvolo Gaunts Ring";
-            def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+            def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
             def.inventory_model = 29141;
             def.translate_x = -1;
             def.translate_y = -1;
@@ -40,11 +92,11 @@ public class CustomItems {
             def.modelCustomColor3 = 3020;
         }
 
-        if(id == 30251) {
+        if (id == 30251) {
             def.name = "<col=65280>Tom Riddle's Diary";
             def.ambient = 15;
             def.female_equip_main = 10699;
-            def.widget_actions = new String[] {null, "Wield", null, null, "Drop"};
+            def.widget_actions = new String[]{null, "Wield", null, null, "Drop"};
             def.inventory_model = 10573;
             def.male_equip_main = 10698;
             def.translate_x = 2;
@@ -55,7 +107,7 @@ public class CustomItems {
             def.modelCustomColor4 = 490;
         }
 
-        if(id == 30250) {
+        if (id == 30250) {
             def.name = "<col=65280>Nagini";
             def.widget_actions = new String[]{null, null, null, null, "Drop"};
             def.inventory_model = 13556;
@@ -312,18 +364,6 @@ public class CustomItems {
             def.rotation_y = 308;
             def.rotation_x = 1888;
             def.model_zoom = 1160;
-        }
-
-        if (id == 30223) {
-            def.name = "<col=65280>Task reward chest";
-            def.inventory_model = 55568;
-            def.model_zoom = 2640;
-            def.rotation_y = 114;
-            def.rotation_x = 1883;
-            def.animateInventory = true;
-            def.widget_actions = new String[]{"Open", null, null, null, "Drop"};
-            def.color_to_replace = new int[]{24, 49, 4510, 4502, 8128, 7093};
-            def.color_to_replace_with = new int[]{933, 933, 933, 933, 933, 933};
         }
 
         if (id == 30122) {
@@ -1087,7 +1127,7 @@ public class CustomItems {
         }
 
         if (id == 24999) {
-            def.name = "<col=65280>Blood money casket (5-50k)";
+            def.name = "<col=65280>Task bottle casket";
             def.inventory_model = 55568;
             def.model_zoom = 2640;
             def.rotation_y = 114;
@@ -1840,7 +1880,7 @@ public class CustomItems {
             def.name = "<col=65280>Present Mystery Box";
         }
 
-        if(id == 30189) {
+        if (id == 30189) {
             def.name = "<col=65280>Points mystery chest";
             def.widget_actions = new String[]{"Open", null, null, null, null};
             def.color_to_replace = new int[]{49, 6466, 24, 5545};
@@ -1851,7 +1891,7 @@ public class CustomItems {
             def.model_zoom = 2640;
         }
 
-        if(id == 30190) {
+        if (id == 30190) {
             def.name = "<col=65280>Double drop scroll";
             def.widget_actions = new String[]{null, null, null, null, null};
             def.stackable = true;
@@ -1868,7 +1908,7 @@ public class CustomItems {
             ItemDefinition.copyInventory(def, 13204);
             def.name = "<col=65280>X'mas token";
             def.color_to_replace = new int[]{5813, 9139, 26006};
-            def.color_to_replace_with = new int[]{127,155,374770};
+            def.color_to_replace_with = new int[]{127, 155, 374770};
             def.stack_variant_size = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
             def.stack_variant_id = new int[]{30192, 30193, 30194, 30194, 0, 0, 0, 0, 0, 0};
         }
@@ -1877,21 +1917,21 @@ public class CustomItems {
             ItemDefinition.copyInventory(def, 3985);
             def.name = "<col=65280>X'mas Token";
             def.color_to_replace = new int[]{5813, 9139, 26006};
-            def.color_to_replace_with = new int[]{127,155,374770};
+            def.color_to_replace_with = new int[]{127, 155, 374770};
         }
 
         if (id == 30193) {
             ItemDefinition.copyInventory(def, 3987);
             def.name = "<col=65280>X'mas Token";
             def.color_to_replace = new int[]{5813, 9139, 26006};
-            def.color_to_replace_with = new int[]{127,155,374770};
+            def.color_to_replace_with = new int[]{127, 155, 374770};
         }
 
         if (id == 30194) {
             ItemDefinition.copyInventory(def, 3989);
             def.name = "<col=65280>X'mas Token";
             def.color_to_replace = new int[]{5813, 9139, 26006};
-            def.color_to_replace_with = new int[]{127,155,374770};
+            def.color_to_replace_with = new int[]{127, 155, 374770};
         }
 
         if (id == 30195) {
@@ -2825,7 +2865,7 @@ public class CustomItems {
             case 30196:
                 def.name = "<col=65280>Totemic helmet";
                 def.female_equip_main = 59029;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59030;
                 def.male_equip_main = 59031;
                 def.translate_y = -12;
@@ -2837,7 +2877,7 @@ public class CustomItems {
             case 30199:
                 def.name = "<col=65280>Totemic platebody";
                 def.female_equip_main = 59028;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59025;
                 def.male_equip_main = 59035;
                 def.translate_y = -3;
@@ -2851,7 +2891,7 @@ public class CustomItems {
                 def.ambient = 30;
                 def.contrast = 20;
                 def.female_equip_main = 59033;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59032;
                 def.male_equip_main = 59034;
                 def.rotation_y = 496;
@@ -2862,7 +2902,7 @@ public class CustomItems {
             case 30000:
                 def.name = "<col=65280>Dark sage hat";
                 def.female_equip_main = 58915;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58914;
                 def.male_equip_main = 58913;
                 def.translate_y = -12;
@@ -2874,7 +2914,7 @@ public class CustomItems {
             case 30002:
                 def.name = "<col=65280>Dark sage robe top";
                 def.female_equip_main = 58911;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58919;
                 def.male_equip_main = 58912;
                 def.translate_y = -3;
@@ -2888,7 +2928,7 @@ public class CustomItems {
                 def.ambient = 30;
                 def.contrast = 20;
                 def.female_equip_main = 58918;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58917;
                 def.male_equip_main = 58909;
                 def.translate_x = -1;
@@ -2901,7 +2941,7 @@ public class CustomItems {
             case 30036:
                 def.name = "<col=65280>Twisted bow";
                 def.female_equip_main = 58973;
-                def.widget_actions = new String[] {null, "Wield", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wield", null, null, "Drop"};
                 def.inventory_model = 58974;
                 def.male_equip_main = 58973;
                 def.translate_x = -3;
@@ -2913,7 +2953,7 @@ public class CustomItems {
             case 30037:
                 def.name = "<col=65280>Twisted bow";
                 def.female_equip_main = 58965;
-                def.widget_actions = new String[] {null, "Wield", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wield", null, null, "Drop"};
                 def.inventory_model = 58964;
                 def.male_equip_main = 58965;
                 def.translate_x = -3;
@@ -2925,7 +2965,7 @@ public class CustomItems {
             case 30020:
                 def.name = "<col=65280>Sarkis dark coif";
                 def.female_equip_main = 58945;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58947;
                 def.male_equip_main = 58908;
                 def.translate_y = -12;
@@ -2937,7 +2977,7 @@ public class CustomItems {
             case 30021:
                 def.name = "<col=65280>Sarkis dark body";
                 def.female_equip_main = 58952;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58954;
                 def.male_equip_main = 58953;
                 def.translate_y = -3;
@@ -2951,7 +2991,7 @@ public class CustomItems {
                 def.ambient = 30;
                 def.contrast = 20;
                 def.female_equip_main = 58946;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 58951;
                 def.male_equip_main = 58950;
                 def.translate_y = 3;
@@ -2962,7 +3002,7 @@ public class CustomItems {
 
             case 30104:
                 def.name = "<col=65280>Resource pack";
-                def.widget_actions = new String[] {"Open", null, null, null, "Drop"};
+                def.widget_actions = new String[]{"Open", null, null, null, "Drop"};
                 def.inventory_model = 59006;
                 def.stackable = true;
                 def.translate_x = -3;
@@ -2974,7 +3014,7 @@ public class CustomItems {
 
             case 30219:
                 def.name = "<col=65280>Summer token";
-                def.widget_actions = new String[] {null, null, null, null, "Drop"};
+                def.widget_actions = new String[]{null, null, null, null, "Drop"};
                 def.inventory_model = 59047;
                 def.rotation_y = 468;
                 def.rotation_x = 56;
@@ -2984,10 +3024,10 @@ public class CustomItems {
 
             case 30280:
                 def.name = "<col=65280>Agility master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {677,801,-21996,-21993,-21990,-21987,-21986,-21984,-21982,-21978,-21978,-21978};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{677, 801, -21996, -21993, -21990, -21987, -21986, -21984, -21982, -21978, -21978, -21978};
                 def.female_equip_main = 59050;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59049;
                 def.male_equip_main = 59050;
                 def.translate_x = -26;
@@ -2999,10 +3039,10 @@ public class CustomItems {
 
             case 30282:
                 def.name = "<col=65280>Attack master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,37,22,20};
-                def.color_to_replace_with = new int[] {7104,9151,911,914,917,920,921,923,925,925,925,929};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 37, 22, 20};
+                def.color_to_replace_with = new int[]{7104, 9151, 911, 914, 917, 920, 921, 923, 925, 925, 925, 929};
                 def.female_equip_main = 59052;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59051;
                 def.male_equip_main = 59052;
                 def.translate_x = -26;
@@ -3014,10 +3054,10 @@ public class CustomItems {
 
             case 30284:
                 def.name = "<col=65280>Construction master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {6061,5945,6327,6330,6333,6336,6337,6339,6341,6345,6345,6345};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{6061, 5945, 6327, 6330, 6333, 6336, 6337, 6339, 6341, 6345, 6345, 6345};
                 def.female_equip_main = 59054;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59053;
                 def.male_equip_main = 59054;
                 def.translate_x = -26;
@@ -3029,10 +3069,10 @@ public class CustomItems {
 
             case 30286:
                 def.name = "<col=65280>Cooking master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {920,920,-13680,-13677,-13674,-13671,-13670,-13668,-13666,-13662,-13662,-13662};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{920, 920, -13680, -13677, -13674, -13671, -13670, -13668, -13666, -13662, -13662, -13662};
                 def.female_equip_main = 59056;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59055;
                 def.male_equip_main = 59056;
                 def.translate_x = -26;
@@ -3044,10 +3084,10 @@ public class CustomItems {
 
             case 30288:
                 def.name = "<col=65280>Crafting master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {9142,9152,4511,4514,4517,4520,4521,4523,4525,4529,4529,4529};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{9142, 9152, 4511, 4514, 4517, 4520, 4521, 4523, 4525, 4529, 4529, 4529};
                 def.female_equip_main = 59058;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59057;
                 def.male_equip_main = 59058;
                 def.translate_x = -26;
@@ -3059,10 +3099,10 @@ public class CustomItems {
 
             case 30290:
                 def.name = "<col=65280>Defence master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {10460,10473,-24126,-24123,-24120,-24117,-24116,-24114,-24112,-24108,-24108,-24108};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{10460, 10473, -24126, -24123, -24120, -24117, -24116, -24114, -24112, -24108, -24108, -24108};
                 def.female_equip_main = 59060;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59059;
                 def.male_equip_main = 59060;
                 def.translate_x = -26;
@@ -3074,10 +3114,10 @@ public class CustomItems {
 
             case 30292:
                 def.name = "<col=65280>Farming master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {14775,14792,22026,22029,22032,22035,22036,22038,22040,22044,22044,22044};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{14775, 14792, 22026, 22029, 22032, 22035, 22036, 22038, 22040, 22044, 22044, 22044};
                 def.female_equip_main = 59062;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59061;
                 def.male_equip_main = 59062;
                 def.translate_x = -26;
@@ -3089,10 +3129,10 @@ public class CustomItems {
 
             case 30294:
                 def.name = "<col=65280>Firemaking master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {8125,9152,4015,4018,4021,4024,4025,4027,4029,4033,4033,4033};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{8125, 9152, 4015, 4018, 4021, 4024, 4025, 4027, 4029, 4033, 4033, 4033};
                 def.female_equip_main = 59064;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59063;
                 def.male_equip_main = 59064;
                 def.translate_x = -26;
@@ -3104,10 +3144,10 @@ public class CustomItems {
 
             case 30246:
                 def.name = "<col=65280>Fishing master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {9144,9152,-27334,-27331,-27328,-27325,-27324,-27322,-27316,-27314,-27314,-27314};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{9144, 9152, -27334, -27331, -27328, -27325, -27324, -27322, -27316, -27314, -27314, -27314};
                 def.female_equip_main = 59066;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59065;
                 def.male_equip_main = 59066;
                 def.translate_x = -26;
@@ -3119,10 +3159,10 @@ public class CustomItems {
 
             case 30248:
                 def.name = "<col=65280>Fletching master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {6067,9152,-31866,-31863,-31860,-31857,-31856,-31854,-31852,-31848,-31848,-31848};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{6067, 9152, -31866, -31863, -31860, -31857, -31856, -31854, -31852, -31848, -31848, -31848};
                 def.female_equip_main = 59068;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59067;
                 def.male_equip_main = 59068;
                 def.translate_x = -26;
@@ -3134,10 +3174,10 @@ public class CustomItems {
 
             case 30298:
                 def.name = "<col=65280>Herblore master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {9145,9156,22414,22417,22420,22423,22424,22426,22428,22432,22432,22432};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{9145, 9156, 22414, 22417, 22420, 22423, 22424, 22426, 22428, 22432, 22432, 22432};
                 def.female_equip_main = 59070;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59069;
                 def.male_equip_main = 59070;
                 def.translate_x = -26;
@@ -3149,10 +3189,10 @@ public class CustomItems {
 
             case 30296:
                 def.name = "<col=65280>Hitpoints master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {818,951,8291,8294,8297,8300,8301,8303,8305,8309,8309,8309};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{818, 951, 8291, 8294, 8297, 8300, 8301, 8303, 8305, 8309, 8309, 8309};
                 def.female_equip_main = 59072;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59071;
                 def.male_equip_main = 59072;
                 def.translate_x = -26;
@@ -3164,10 +3204,10 @@ public class CustomItems {
 
             case 30254:
                 def.name = "<col=65280>Hunter master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {5262,6020,8472,8475,8478,8481,8482,8484,8486,8490,8490,8490};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{5262, 6020, 8472, 8475, 8478, 8481, 8482, 8484, 8486, 8490, 8490, 8490};
                 def.female_equip_main = 59074;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59073;
                 def.male_equip_main = 59074;
                 def.translate_x = -26;
@@ -3179,10 +3219,10 @@ public class CustomItems {
 
             case 30256:
                 def.name = "<col=65280>Magic master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {-21967,-21951,6336,6339,6342,6345,6346,6348,6350,6354,6354,6354};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{-21967, -21951, 6336, 6339, 6342, 6345, 6346, 6348, 6350, 6354, 6354, 6354};
                 def.female_equip_main = 59076;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59075;
                 def.male_equip_main = 59076;
                 def.translate_x = -26;
@@ -3194,10 +3234,10 @@ public class CustomItems {
 
             case 30258:
                 def.name = "<col=65280>Mining master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {-29240,-29257,10386,10389,10392,10395,10396,10398,10400,10404,10404,10404};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{-29240, -29257, 10386, 10389, 10392, 10395, 10396, 10398, 10400, 10404, 10404, 10404};
                 def.female_equip_main = 59078;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59077;
                 def.male_equip_main = 59078;
                 def.translate_x = -26;
@@ -3209,10 +3249,10 @@ public class CustomItems {
 
             case 30260:
                 def.name = "<col=65280>Prayer master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {9163,9168,117,120,123,126,127,127,127,127,127,127};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{9163, 9168, 117, 120, 123, 126, 127, 127, 127, 127, 127, 127};
                 def.female_equip_main = 59080;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59079;
                 def.male_equip_main = 59080;
                 def.translate_x = -26;
@@ -3224,10 +3264,10 @@ public class CustomItems {
 
             case 30262:
                 def.name = "<col=65280>Range master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {3755,3998,15122,15125,15128,15131,15132,15134,15136,15140,15140,15140};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{3755, 3998, 15122, 15125, 15128, 15131, 15132, 15134, 15136, 15140, 15140, 15140};
                 def.female_equip_main = 59082;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59081;
                 def.male_equip_main = 59082;
                 def.translate_x = -26;
@@ -3239,10 +3279,10 @@ public class CustomItems {
 
             case 30264:
                 def.name = "<col=65280>Runecrafting master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {9152,8128,10318,10321,10324,10327,10328,10330,10332,10336,10336,10336};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{9152, 8128, 10318, 10321, 10324, 10327, 10328, 10330, 10332, 10336, 10336, 10336};
                 def.female_equip_main = 59084;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59083;
                 def.male_equip_main = 59084;
                 def.translate_x = -26;
@@ -3254,10 +3294,10 @@ public class CustomItems {
 
             case 30266:
                 def.name = "<col=65280>Slayer master cape";
-                def.color_to_replace = new int[] {-8514,-16725};
-                def.color_to_replace_with = new int[] {912,920};
+                def.color_to_replace = new int[]{-8514, -16725};
+                def.color_to_replace_with = new int[]{912, 920};
                 def.female_equip_main = 59048;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59085;
                 def.male_equip_main = 59048;
                 def.translate_x = -26;
@@ -3269,10 +3309,10 @@ public class CustomItems {
 
             case 30268:
                 def.name = "<col=65280>Smithing master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {8115,9148,10380,10389,10392,10395,10396,10398,10400,10406,10406,10406};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{8115, 9148, 10380, 10389, 10392, 10395, 10396, 10398, 10400, 10406, 10406, 10406};
                 def.female_equip_main = 59093;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59086;
                 def.male_equip_main = 59093;
                 def.translate_x = -26;
@@ -3284,10 +3324,10 @@ public class CustomItems {
 
             case 30270:
                 def.name = "<col=65280>Strength master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {935,931,27538,27541,27544,27547,27548,27550,27552,27556,27556,27556};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{935, 931, 27538, 27541, 27544, 27547, 27548, 27550, 27552, 27556, 27556, 27556};
                 def.female_equip_main = 59088;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59087;
                 def.male_equip_main = 59088;
                 def.translate_x = -26;
@@ -3299,10 +3339,10 @@ public class CustomItems {
 
             case 30272:
                 def.name = "<col=65280>Thieving master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {11,1,-6757,-6754,-6751,-6748,-6747,-6745,-6743,-6739,-6739,-6739};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{11, 1, -6757, -6754, -6751, -6748, -6747, -6745, -6743, -6739, -6739, -6739};
                 def.female_equip_main = 59090;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59089;
                 def.male_equip_main = 59090;
                 def.translate_x = -26;
@@ -3314,10 +3354,10 @@ public class CustomItems {
 
             case 30274:
                 def.name = "<col=65280>Woodcutting master cape";
-                def.color_to_replace = new int[] {-8514,-16725,2,1029,1032,11,12,14,16,20,37,22};
-                def.color_to_replace_with = new int[] {25109,24088,6693,6696,6699,6702,6703,6705,6707,6711,6711,6711};
+                def.color_to_replace = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.color_to_replace_with = new int[]{25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711, 6711, 6711};
                 def.female_equip_main = 59092;
-                def.widget_actions = new String[] {null, "Wear", null, null, "Drop"};
+                def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventory_model = 59091;
                 def.male_equip_main = 59092;
                 def.translate_x = -26;

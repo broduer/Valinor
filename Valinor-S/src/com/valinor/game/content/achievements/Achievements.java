@@ -77,9 +77,9 @@ public enum Achievements {
     SKILLER_III("Skiller III", "Earn a total level of 1500.", 1, Difficulty.HARD, new Item(COINS_995, 7_500_000), new Item(DONATOR_MYSTERY_BOX, 1)),
     SKILLER_IV("Skiller IV", "Earn level 99 in all skills.", 1, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(MYSTERY_CHEST, 1)),
 
-    TASK_MASTER_I("Task master I", "Complete 10 tasks.", 10, Difficulty.EASY, new Item(TASK_REWARD_CHEST)),
-    TASK_MASTER_II("Task master II", "Complete 25 tasks.", 25, Difficulty.MED, new Item(TASK_REWARD_CHEST,2)),
-    TASK_MASTER_III("Task master III", "Complete 50 tasks.", 50, Difficulty.HARD, new Item(TASK_REWARD_CHEST,3)),
+    TASK_MASTER_I("Task master I", "Complete 10 tasks.", 10, Difficulty.EASY, new Item(TASK_BOTTLE_CASKET)),
+    TASK_MASTER_II("Task master II", "Complete 25 tasks.", 25, Difficulty.MED, new Item(TASK_BOTTLE_CASKET,2)),
+    TASK_MASTER_III("Task master III", "Complete 50 tasks.", 50, Difficulty.HARD, new Item(TASK_BOTTLE_CASKET,3)),
 
     //Minigames
     BARROWS_I("Barrows I", "Complete 10 barrows runs.", 10, Difficulty.EASY, new Item(COINS_995, 2_500_000), new Item(DHAROKS_GREATAXE, 1)),

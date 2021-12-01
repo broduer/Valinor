@@ -10,6 +10,8 @@ import com.valinor.util.Utils;
 
 import java.util.List;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 07, 2020
@@ -32,6 +34,11 @@ public class MarksOfGrace {
 
         if (player.skills().level(Skills.AGILITY) > threshold + 20) {
             odds = (int) Math.max(1, (odds * 0.7)); // You don't want to end up in this :)
+        }
+
+        if (Utils.rollDie(10, 1)) {
+            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+            GroundItemHandler.createGroundItem(item);
         }
 
         // Check for the odds. :)

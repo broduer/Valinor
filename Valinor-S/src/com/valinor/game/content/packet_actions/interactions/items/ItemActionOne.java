@@ -15,6 +15,7 @@ import com.valinor.game.content.skill.impl.hunter.trap.impl.Birds;
 import com.valinor.game.content.skill.impl.hunter.trap.impl.Chinchompas;
 import com.valinor.game.content.skill.impl.slayer.content.ImbuedHeart;
 import com.valinor.game.content.skill.impl.woodcutting.BirdNest;
+import com.valinor.game.content.tasks.rewards.TaskReward;
 import com.valinor.game.content.treasure.TreasureRewardCaskets;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -78,29 +79,9 @@ public class ItemActionOne {
             return;
         }
 
-        if(id == BLOOD_MONEY_CASKET) {
-            int amt = World.getWorld().random(5_000, 50_000);
-            var blood_reaper = player.hasPetOut("Blood Reaper pet");
-            if(blood_reaper) {
-                int extraBM = amt * 10 / 100;
-                amt += extraBM;
-            }
-            player.inventory().remove(new Item(BLOOD_MONEY_CASKET));
-            player.inventory().add(new Item(BLOOD_MONEY, amt));
-            player.message(Color.PURPLE.wrap("You've received x "+Utils.formatNumber(amt)+" blood money from the casket!"));
-            return;
-        }
-
-        if(id == TASK_REWARD_CHEST) {
-            int amt = World.getWorld().random(100_000, 250_000);
-            var blood_reaper = player.hasPetOut("Blood Reaper pet");
-            if(blood_reaper) {
-                int extraBM = amt * 10 / 100;
-                amt += extraBM;
-            }
-            player.inventory().remove(new Item(TASK_REWARD_CHEST));
-            player.inventory().add(new Item(BLOOD_MONEY, amt));
-            player.message(Color.PURPLE.wrap("You've received x "+Utils.formatNumber(amt)+" blood money from the casket!"));
+        if(id == TASK_BOTTLE_CASKET) {
+            player.inventory().remove(new Item(TASK_BOTTLE_CASKET));
+            TaskReward.reward(player);
             return;
         }
 

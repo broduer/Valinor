@@ -1,9 +1,11 @@
 package com.valinor.game.content.skill.impl.mining;
 
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.util.Color;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
@@ -26,6 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -208,7 +211,7 @@ public class Mining extends PacketInteraction {
                     }
 
                     if(finalRock == Rock.RUNE) {
-                        player.getTaskMasterManager().increase(Tasks.MINE_RUNITE_ORE);
+                        player.getTaskBottleManager().increase(BottleTasks.MINE_RUNITE_ORE);
                     }
 
                     player.sound(3600, 0);
@@ -230,6 +233,11 @@ public class Mining extends PacketInteraction {
 
                     if (!player.jailed()) {
                         player.skills().addXp(Skills.MINING, finalRock.xp);
+                    }
+
+                    if (World.getWorld().rollDie(125, 1)) {
+                        GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                        GroundItemHandler.createGroundItem(item);
                     }
 
                     //Caskets Money, money, money..

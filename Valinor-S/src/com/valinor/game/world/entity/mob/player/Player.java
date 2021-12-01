@@ -49,7 +49,7 @@ import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.sound.CombatSounds;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.TaskMasterManager;
+import com.valinor.game.content.tasks.TaskBottleManager;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.content.title.AvailableTitle;
 import com.valinor.game.content.title.TitleCategory;
@@ -708,10 +708,10 @@ public class Player extends Mob {
         return this.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0);
     }
 
-    private final TaskMasterManager taskMasterManager = new TaskMasterManager(this);
+    private final TaskBottleManager taskBottleManager = new TaskBottleManager(this);
 
-    public TaskMasterManager getTaskMasterManager() {
-        return taskMasterManager;
+    public TaskBottleManager getTaskBottleManager() {
+        return taskBottleManager;
     }
 
     private Varps varps;

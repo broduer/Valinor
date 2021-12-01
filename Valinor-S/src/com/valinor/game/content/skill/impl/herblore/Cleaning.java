@@ -1,13 +1,18 @@
 package com.valinor.game.content.skill.impl.herblore;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.util.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -83,5 +88,10 @@ public class Cleaning {
         player.sound(Utils.randomElement(new int[] {3920, 3921}), 0);
         player.message("You clean the "+herb.herbName+".");
         player.skills().addXp(Skills.HERBLORE, herb.exp);
+
+        if (World.getWorld().rollDie(350, 1)) {
+            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+            GroundItemHandler.createGroundItem(item);
+        }
     }
 }

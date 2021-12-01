@@ -11,7 +11,7 @@ import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
 import com.valinor.game.content.presets.Presetable;
 import com.valinor.game.content.seasonal_events.rewards.EventRewards;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.skull.SkullType;
@@ -430,9 +430,9 @@ public class PlayerSave {
                 }
                 player.putAttrib(ACHIEVEMENTS_COMPLETED, details.achievementsCompleted);
                 if (details.task != null) {
-                    player.putAttrib(TASK, details.task);
+                    player.putAttrib(BOTTLE_TASK, details.task);
                 }
-                player.putAttrib(TASK_AMOUNT, details.taskAmount);
+                player.putAttrib(BOTTLE_TASK_AMOUNT, details.taskAmount);
                 player.putAttrib(TASK_COMPLETE_AMOUNT, details.taskCompletionAmount);
                 player.putAttrib(TASKS_COMPLETED, details.totalTasksCompleted);
                 player.putAttrib(CAN_CLAIM_TASK_REWARD, details.canClaimTaskReward);
@@ -810,7 +810,7 @@ public class PlayerSave {
         private final HashMap<Collection, ArrayList<Item>> collectionLog;
         private final HashMap<Achievements, Integer> achievements;
         private final int achievementsCompleted;
-        private final Tasks task;
+        private final BottleTasks task;
         private final int taskAmount;
         private final int taskCompletionAmount;
         private final int totalTasksCompleted;
@@ -1191,8 +1191,8 @@ public class PlayerSave {
             collectionLog = player.getCollectionLog().collectionLog;
             achievements = player.achievements();
             achievementsCompleted = Player.getAttribIntOr(player, ACHIEVEMENTS_COMPLETED, 0);
-            task = player.getAttribOr(TASK, Tasks.NONE);
-            taskAmount = Player.getAttribIntOr(player, TASK_AMOUNT, 0);
+            task = player.getAttribOr(BOTTLE_TASK, null);
+            taskAmount = Player.getAttribIntOr(player, BOTTLE_TASK_AMOUNT, 0);
             taskCompletionAmount = Player.getAttribIntOr(player, TASK_COMPLETE_AMOUNT, 0);
             totalTasksCompleted = Player.getAttribIntOr(player, TASKS_COMPLETED, 0);
             canClaimTaskReward = Player.getAttribBooleanOr(player, CAN_CLAIM_TASK_REWARD, false);

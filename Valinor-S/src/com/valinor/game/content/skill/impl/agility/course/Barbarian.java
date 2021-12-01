@@ -10,11 +10,16 @@ import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * Created by Jak on 13/06/2016.
@@ -200,6 +205,11 @@ public class Barbarian extends PacketInteraction {
                             if (end && stage == 15) {
                                 player.putAttrib(AttributeKey.BARBARIAN_COURSE_STATE, 0);
                                 player.skills().addXp(Skills.AGILITY, 46.2);
+
+                                if (World.getWorld().rollDie(10, 1)) {
+                                    GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                                    GroundItemHandler.createGroundItem(item);
+                                }
 
                                 // Woo! A pet!
                                 var odds = (int) (22000.00 * player.getMemberRights().petRateMultiplier());

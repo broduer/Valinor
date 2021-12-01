@@ -8,7 +8,6 @@ import com.valinor.game.content.group_ironman.GroupIronmanInterface;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.ReferralD;
 import com.valinor.game.content.mechanics.referrals.Referrals;
-import com.valinor.game.content.tasks.TaskMasterD;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.CombatSpecial;
@@ -16,7 +15,6 @@ import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.IronMode;
-import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
@@ -162,10 +160,6 @@ public class HomeArea extends PacketInteraction {
                 player.getDialogueManager().start(new AuburyDialogue());
                 return true;
             }
-            if (npc.id() == VANNAKA) {
-                player.getDialogueManager().start(new TaskMasterD());
-                return true;
-            }
             if (npc.id() == DRUNKEN_DWARF_2408) {
                 player.getDialogueManager().start(new DrunkenDwarfDialogue());
                 return true;
@@ -189,7 +183,7 @@ public class HomeArea extends PacketInteraction {
                 return true;
             }
             if (npc.id() == VANNAKA) {
-                player.getTaskMasterManager().open();
+                player.getTaskBottleManager().open();
                 return true;
             }
             if (npc.id() == HANS) {

@@ -3,7 +3,8 @@ package com.valinor.game.content.skill.impl.cooking;
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -12,6 +13,8 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.ItemIdentifiers;
@@ -20,6 +23,7 @@ import com.valinor.util.Utils;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -129,7 +133,6 @@ public class Cooking extends PacketInteraction {
         return false;
     }
 
-    private static boolean dry_out_meat = false;
     private final static int SINEW = 9436;
 
     private void startCooking(Player player, Cookable food, GameObject obj) {
@@ -146,7 +149,6 @@ public class Cooking extends PacketInteraction {
                 protected void select(int option) {
                     if (isPhase(0)) {
                         if (option == 1) {
-                            dry_out_meat = true;
                             stop();
                             player.action.execute(cook(player, food, obj, 1), true);
                         } else if (option == 2) {
@@ -217,11 +219,8 @@ public class Cooking extends PacketInteraction {
                     || player.getEquipment().wearingMaxCape()
                     || Utils.rollDie(100, cookingChance(player, food))
                     || food == Cookable.SEAWEED) {
-                    if (!dry_out_meat) {
-                        player.inventory().add(new Item(food.cooked), true);
-                    } else {
-                        player.inventory().add(new Item(SINEW), true);
-                    }
+
+                    player.inventory().add(new Item(food.cooked), true);
 
                     String msg = switch (food) {
                         case RAW_LOBSTER -> "You roast a lobster.";
@@ -232,7 +231,12 @@ public class Cooking extends PacketInteraction {
                     };
 
                     if(food == Cookable.RAW_SHARK) {
-                        player.getTaskMasterManager().increase(Tasks.COOK_SHARKS);
+                        player.getTaskBottleManager().increase(BottleTasks.COOK_SHARKS);
+                    }
+
+                    if (World.getWorld().rollDie(75, 1)) {
+                        GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                        GroundItemHandler.createGroundItem(item);
                     }
 
                     player.message(msg);

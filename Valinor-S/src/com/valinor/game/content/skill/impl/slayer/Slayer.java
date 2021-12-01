@@ -5,6 +5,7 @@ import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.master.SlayerMaster;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.skill.impl.slayer.superior_slayer.SuperiorSlayer;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -244,6 +245,7 @@ public class Slayer {
                             }
 
                             //TODO achievements here
+                            killer.getTaskBottleManager().increase(BottleTasks.COMPLETE_SLAYER_TASKS);
                             DailyTaskManager.increase(DailyTasks.SLAYER, killer);
 
                             if (wildernessSlayerActive) {

@@ -1,9 +1,11 @@
 package com.valinor.game.content.skill.impl.woodcutting;
 
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.util.Color;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
@@ -24,6 +26,7 @@ import com.valinor.util.Utils;
 
 import java.util.Optional;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
@@ -170,6 +173,11 @@ public class Woodcutting extends PacketInteraction {
                         ObjectManager.replace(old, spawned, tree.respawnTime);
                         player.skills().addXp(Skills.WOODCUTTING, tree.xp); // Xp as last, it can spawn a dialogue
 
+                        if (World.getWorld().rollDie(125, 1)) {
+                            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                            GroundItemHandler.createGroundItem(item);
+                        }
+
                         // Woo! A pet! The reason we do this BEFORE the item is because it's... quite some more valuable :)
                         // Rather have a pet than a clumsy log thing, right?
                         var odds = (int) (tree.petOdds * player.getMemberRights().petRateMultiplier());
@@ -199,11 +207,11 @@ public class Woodcutting extends PacketInteraction {
                     }
 
                     if (tree == Tree.YEW) {
-                        player.getTaskMasterManager().increase(Tasks.CUT_YEW_TREES);
+                        player.getTaskBottleManager().increase(BottleTasks.CUT_YEW_TREES);
                     }
 
                     if (tree == Tree.MAGIC) {
-                        player.getTaskMasterManager().increase(Tasks.CUT_MAGIC_TREES);
+                        player.getTaskBottleManager().increase(BottleTasks.CUT_MAGIC_TREES);
                     }
 
                     player.skills().addXp(Skills.WOODCUTTING, tree.xp); // Xp as last, it can spawn a dialogue

@@ -6,5 +6,5 @@ package com.valinor.game.content.daily_tasks;
  */
 public enum TaskCategory {
 
-    EASY, MED, HARD
+    EASY, MED, HARD, SKILLING_TASK, PVMING_TASK
 }

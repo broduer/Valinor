@@ -55,11 +55,11 @@ public enum Collection {
         //Drops
         new Item(PET_CHAOS_ELEMENTAL), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD), new Item(ELEMENTAL_BOW)),
 
-    CHAOS_FANATIC(AttributeKey.CHAOS_FANATICS_KILLED, LogType.BOSSES, "Chaos Fanatic", new int[]{NpcIdentifiers.CHAOS_FANATIC}, AttributeKey.CHAOS_FANATIC_LOG_CLAIMED, new Item[]{new Item(BLOOD_MONEY_CASKET, 2)},
+    CHAOS_FANATIC(AttributeKey.CHAOS_FANATICS_KILLED, LogType.BOSSES, "Chaos Fanatic", new int[]{NpcIdentifiers.CHAOS_FANATIC}, AttributeKey.CHAOS_FANATIC_LOG_CLAIMED, new Item[]{new Item(TASK_BOTTLE_CASKET, 2)},
         //Drops
         new Item(PET_CHAOS_ELEMENTAL), new Item(ODIUM_SHARD_1), new Item(MALEDICTION_SHARD_1)),
 
-    COMMANDER_ZILYANA(AttributeKey.COMMANDER_ZILYANA_KILLED, LogType.BOSSES, "Commander Zilyana", new int[]{NpcIdentifiers.COMMANDER_ZILYANA}, AttributeKey.COMMANDER_ZILYANA_LOG_CLAIMED, new Item[]{new Item(BLOOD_MONEY_CASKET, 2)},
+    COMMANDER_ZILYANA(AttributeKey.COMMANDER_ZILYANA_KILLED, LogType.BOSSES, "Commander Zilyana", new int[]{NpcIdentifiers.COMMANDER_ZILYANA}, AttributeKey.COMMANDER_ZILYANA_LOG_CLAIMED, new Item[]{new Item(TASK_BOTTLE_CASKET, 2)},
         //Drops
         new Item(PET_ZILYANA), new Item(ARMADYL_CROSSBOW), new Item(SARADOMIN_HILT), new Item(SARADOMIN_SWORD), new Item(SARADOMINS_LIGHT), new Item(GODSWORD_SHARD_1), new Item(GODSWORD_SHARD_2), new Item(GODSWORD_SHARD_3)),
 
@@ -176,18 +176,18 @@ public enum Collection {
         //Drops
         new Item(BABY_LAVA_DRAGON), new Item(DAGONHAI_HAT), new Item(DAGONHAI_ROBE_TOP), new Item(DAGONHAI_ROBE_BOTTOM), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(LAVA_WHIP), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT)),
 
-    CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(BLOOD_MONEY_CASKET, 4)},
+    CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(TASK_BOTTLE_CASKET, 4)},
         //Drops
         new Item(CORRUPTED_BOOTS)),
 
     ANCIENT_CHAOS_ELEMENTAL(AttributeKey.ANCIENT_CHAOS_ELEMENTALS_KILLED, LogType.BOSSES, "Ancient Chaos Elemental", new int[]{CustomNpcIdentifiers.ANCIENT_CHAOS_ELEMENTAL}, AttributeKey.ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, new Item[]{new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(CustomItemIdentifiers.ANCIENT_CHAOS_ELEMENTAL_PET), new Item(BLOOD_MONEY_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS)
+        new Item(CustomItemIdentifiers.ANCIENT_CHAOS_ELEMENTAL_PET), new Item(TASK_BOTTLE_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS)
     ),
 
     ANCIENT_BARRELCHEST(AttributeKey.ANCIENT_BARRELCHESTS_KILLED, LogType.BOSSES, "Ancient Barrelchest", new int[]{CustomNpcIdentifiers.ANCIENT_BARRELCHEST}, AttributeKey.ANCIENT_BARRELCHEST_LOG_CLAIMED, new Item[]{new Item(ANCIENT_WARRIOR_CLAMP)},
         //Drops
-        new Item(CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET), new Item(BLOOD_MONEY_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(ANCIENT_WARRIOR_CLAMP)
+        new Item(CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET), new Item(TASK_BOTTLE_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(ANCIENT_WARRIOR_CLAMP)
     ),
 
     ANCIENT_KING_BLACK_DRAGON(AttributeKey.ANCIENT_KING_BLACK_DRAGONS_KILLED, LogType.BOSSES, "Ancient King Black Dragon", new int[]{CustomNpcIdentifiers.ANCIENT_KING_BLACK_DRAGON}, AttributeKey.ANCIENT_KING_BLACK_DRAGON_LOG_CLAIMED, new Item[]{new Item(KEY_OF_DROPS)},

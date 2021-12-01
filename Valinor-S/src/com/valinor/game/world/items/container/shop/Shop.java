@@ -1,12 +1,9 @@
 package com.valinor.game.world.items.container.shop;
 
-import com.valinor.GameServer;
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
@@ -22,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 import static com.valinor.util.CustomItemIdentifiers.BIG_CHEST;
-import static com.valinor.util.CustomItemIdentifiers.BLOOD_MONEY_CASKET;
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_CASKET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -288,7 +285,7 @@ public abstract class Shop {
             return;
         }
 
-        if (item.getId() == BLOOD_MONEY_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
+        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
             player.message("You can't sell this item.");
             return;
         }
@@ -391,7 +388,7 @@ public abstract class Shop {
             return;
         }
 
-        if (item.getId() == BLOOD_MONEY_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
+        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
             player.message("This item can't be sold to shops.");
             return;
         }

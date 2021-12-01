@@ -1,18 +1,23 @@
 package com.valinor.game.content.skill;
 
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.masks.animations.AnimationLoop;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.RequiredItem;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * An implementation of {@link DefaultSkillable}.
@@ -117,11 +122,16 @@ public class ItemCreationSkillable extends DefaultSkillable {
         player.inventory().add(product);
 
         if(product.name().equalsIgnoreCase("Adamant platebody")) {
-            player.getTaskMasterManager().increase(Tasks.MAKE_ADAMANT_PLATEBODY);
+            player.getTaskBottleManager().increase(BottleTasks.MAKE_ADAMANT_PLATEBODY);
         }
 
         //Add exp..
         player.skills().addXp(skill, experience);
+
+        if (World.getWorld().rollDie(100, 1)) {
+            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+            GroundItemHandler.createGroundItem(item);
+        }
     }
 
     @Override

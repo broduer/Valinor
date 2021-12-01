@@ -10,7 +10,6 @@ import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.emote.Emotes;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
-import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.content.mechanics.referrals.Referrals;
 import com.valinor.game.content.skill.impl.smithing.Smelting;
 import com.valinor.game.content.teleport.OrnateJewelleryBox;
@@ -296,6 +295,27 @@ public class Buttons {
                 if (!player.inventory().contains(itemToDestroy)) {
                     return;
                 }
+
+                if(id == PVMING_SCROLL) {
+                    player.optionsTitled("Are you sure you wish to destroy this task?", "Yes.", "No.", () -> {
+                        if(!player.inventory().contains(PVMING_SCROLL))
+                            return;
+
+                        player.inventory().remove(PVMING_SCROLL);
+                        player.getTaskBottleManager().resetTask();
+                    });
+                    return;
+                } else if(id == SKILLING_SCROLL) {
+                    player.optionsTitled("Are you sure you wish to destroy this task?", "Yes.", "No.", () -> {
+                        if(!player.inventory().contains(SKILLING_SCROLL))
+                            return;
+
+                        player.inventory().remove(SKILLING_SCROLL);
+                        player.getTaskBottleManager().resetTask();
+                    });
+                    return;
+                }
+
                 player.inventory().remove(itemToDestroy, true);
                 player.getInterfaceManager().close();
                 break;
@@ -328,7 +348,7 @@ public class Buttons {
                 }
 
                 if (button == 54763) {
-                    player.getTaskMasterManager().claimReward();
+                    player.getTaskBottleManager().claimReward();
                     return;
                 }
 

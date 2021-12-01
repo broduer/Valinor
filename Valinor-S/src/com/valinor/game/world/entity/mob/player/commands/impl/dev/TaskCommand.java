@@ -1,5 +1,8 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
+import com.valinor.game.content.daily_tasks.TaskCategory;
+import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 
@@ -16,14 +19,20 @@ public class TaskCommand implements Command {
             return;
         }
         String cmd = parts[1];
-        if(cmd.equalsIgnoreCase("pvptask")) {
-            player.getTaskMasterManager().giveTask(true, false, false);
-        } else if(cmd.equalsIgnoreCase("skillingtask")) {
-            player.getTaskMasterManager().giveTask(false,true,false);
+        if(cmd.equalsIgnoreCase("skillingtask")) {
+            player.getTaskBottleManager().giveTask(TaskCategory.SKILLING_TASK);
         } else if(cmd.equalsIgnoreCase("pvmtask")) {
-            player.getTaskMasterManager().giveTask(false,false,true);
+            player.getTaskBottleManager().giveTask(TaskCategory.PVMING_TASK);
         } else if(cmd.equalsIgnoreCase("reset")) {
-            player.getTaskMasterManager().resetTask();
+            player.getTaskBottleManager().resetTask();
+        } else if(cmd.equalsIgnoreCase("finishtask")) {
+            BottleTasks bottleTask = player.getAttribOr(AttributeKey.BOTTLE_TASK, null);
+            if(bottleTask == null) {
+                player.message("You currently have no task to complete.");
+                return;
+            }
+            int completeAmount = bottleTask.getTaskAmount();
+            player.getTaskBottleManager().increase(bottleTask, completeAmount);
         }
     }
 

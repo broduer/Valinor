@@ -3,7 +3,7 @@ package com.valinor.game.content.skill.impl.hunter.trap.impl;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.trap.Trap;
 import com.valinor.game.content.skill.impl.hunter.trap.TrapProcessor;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -209,7 +209,7 @@ public final class Chinchompas extends Trap {
         };
 
         if(data.get() == BoxTrapData.BLACK_CHINCHOMPA) {
-            player.getTaskMasterManager().increase(Tasks.BLACK_CHINCHOMPAS);
+            player.getTaskBottleManager().increase(BottleTasks.BLACK_CHINCHOMPAS);
         }
 
         player.inventory().addOrDrop(reward);

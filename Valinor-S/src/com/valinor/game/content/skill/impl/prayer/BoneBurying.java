@@ -3,7 +3,7 @@ package com.valinor.game.content.skill.impl.prayer;
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
@@ -141,7 +141,7 @@ public class BoneBurying extends PacketInteraction {
                 player.animate(896);
 
                 //Tasks
-                player.getTaskMasterManager().increase(Tasks.BONES_ON_ALTAR);
+                player.getTaskBottleManager().increase(BottleTasks.BONES_ON_ALTAR);
 
                 World.getWorld().tileGraphic(624, obj.tile(), 0, 0);
                 if (ObjectManager.objById(13213, new Tile(3095, 3506)) != null &&

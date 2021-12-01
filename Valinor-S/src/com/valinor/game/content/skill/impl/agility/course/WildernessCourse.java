@@ -1,10 +1,8 @@
 package com.valinor.game.content.skill.impl.agility.course;
 
-import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
@@ -13,14 +11,18 @@ import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.game.world.entity.AttributeKey.WILDY_COURSE_STATE;
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * Created by Jak on 13/06/2016.
@@ -188,7 +190,12 @@ public class WildernessCourse extends PacketInteraction {
                         player.skills().addXp(Skills.AGILITY, 498.9);
                         //System.out.println("stage is now: "+stage);
                         if (stage == 5) {
-                            player.getTaskMasterManager().increase(Tasks.WILDERNESS_COURSE);
+                            player.getTaskBottleManager().increase(BottleTasks.WILDERNESS_COURSE);
+
+                            if (World.getWorld().rollDie(10, 1)) {
+                                GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                                GroundItemHandler.createGroundItem(item);
+                            }
 
                             // Woo! A pet!
                             var odds = (int) (18000 * player.getMemberRights().petRateMultiplier());

@@ -129,9 +129,17 @@ public class ItemDefinition implements Definition {
             unprotectable = true;
         } else if (id == 4564) {
             stackable = true;
-        } else if (id == 30186) {
-            name = "Points mystery box";
-        } else if (id == 30187) {
+        } else if (id == 30383) {
+            name = "Skilling scroll";
+            ioptions = new String[]{"Read", null, null, null, "Destroy"};
+        } else if (id == 30384) {
+            name = "Pvming scroll";
+            ioptions = new String[]{"Read", null, null, null, "Destroy"};
+        } else if (id == 30385) {
+            name = "Task bottle (skilling)";
+        } else if (id == 30386) {
+            name = "Task bottle (pvming)";
+        } else if (id == 30186 || id == 30187) {
             name = "Points mystery box";
         } else if (id == 30188) {
             name = "Barrows mystery box";
@@ -243,8 +251,6 @@ public class ItemDefinition implements Definition {
         } else if (id == 30222) {
             name = "Mystery ticket";
             stackable = true;
-        } else if (id == 30223) {
-            name = "Task reward chest";
         } else if (id == 30315) {
             name = "Darklord bow";
         } else if (id == 30309) {
@@ -393,7 +399,7 @@ public class ItemDefinition implements Definition {
         } else if(id == 24996) {
             name = "Ancient statius's warhammer";
         } else if (id == 24999) {
-            name = "Blood money casket (5-50k)";
+            name = "Task bottle casket";
             ioptions = new String[]{"Open", null, null, null, "Drop"};
         } else if (id == 28000) {
             name = "Blood firebird pet";

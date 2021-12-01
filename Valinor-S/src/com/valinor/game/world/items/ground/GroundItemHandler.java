@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
-import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
+import static com.valinor.util.CustomItemIdentifiers.*;
 
 /**
  * A handler for a collection of {@link GroundItem}s
@@ -38,7 +38,7 @@ public final class GroundItemHandler {
     private static final Logger logger = LogManager.getLogger(GroundItemHandler.class);
 
     /**
-     * A list containing all of the ground items
+     * A list containing all the ground items
      */
     private static final List<GroundItem> groundItems = new ArrayList<>();
 
@@ -198,6 +198,11 @@ public final class GroundItemHandler {
     public static boolean createGroundItem(GroundItem item) {
         Player player = item.getPlayer();
         if (item.getItem().getId() < 0) {
+            return false;
+        }
+
+        if (item.getItem().getId() >= 2412 && item.getItem().getId() <= 2414) {
+            player.message("The cape vanishes as it touches the ground.");
             return false;
         }
 

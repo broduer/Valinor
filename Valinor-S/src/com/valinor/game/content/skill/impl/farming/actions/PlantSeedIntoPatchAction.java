@@ -6,15 +6,20 @@ import com.valinor.game.content.skill.impl.farming.impl.DiseaseState;
 import com.valinor.game.content.skill.impl.farming.impl.PatchState;
 import com.valinor.game.content.skill.impl.farming.impl.Patches;
 import com.valinor.game.content.skill.impl.farming.impl.Seeds;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.PlayerTask;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.incoming_packets.MovementPacketListener;
 import com.valinor.util.Utils;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * Handles the action of planting the seed into the patch.
@@ -32,6 +37,15 @@ public class PlantSeedIntoPatchAction extends PlayerTask {
             var aAn = Utils.getAOrAn(new Item(seed_data.getSeedItemId()).name().toLowerCase());
             player.message("You plant "+aAn+" "+World.getWorld().definitions().get(ItemDefinition.class, seed_data.getSeedItemId()).name.toLowerCase()+" in the herb patch.");
             player.skills().addXp(Skills.FARMING, seed_data.getExperience());
+            if(seed_data == Seeds.HERB_TORSTOL) {
+                player.getTaskBottleManager().increase(BottleTasks.PLANT_TORSTOL_SEED);
+            }
+
+            if (World.getWorld().rollDie(75, 1)) {
+                GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                GroundItemHandler.createGroundItem(item);
+            }
+
             //Update farming attribs
             state.resetLastStageGrowthMoment();
             state.setStage(seed_data.getMinGrowth());

@@ -3,13 +3,17 @@ package com.valinor.game.content.skill.impl.herblore;
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -108,10 +112,15 @@ public class SuperCombatPotions {
                 player.inventory().add(new Item(SUPER_COMBAT_POTION4));
                 player.sound(2608, 0);
                 player.animate(363);
-                player.getTaskMasterManager().increase(Tasks.MAKE_SUPER_COMBAT_POTIONS);
+                player.getTaskBottleManager().increase(BottleTasks.MAKE_SUPER_COMBAT_POTIONS);
 
                 player.message("You mix the torstol into your potion.");
                 player.skills().addXp(Skills.HERBLORE, 150.0);
+
+                if (World.getWorld().rollDie(75, 1)) {
+                    GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                    GroundItemHandler.createGroundItem(item);
+                }
 
                 if (++ticks == amount) {
                     stop();

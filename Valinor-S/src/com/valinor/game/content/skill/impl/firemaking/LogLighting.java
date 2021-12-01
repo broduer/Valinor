@@ -1,6 +1,6 @@
 package com.valinor.game.content.skill.impl.firemaking;
 
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.TimedObjectSpawnTask;
 import com.valinor.game.world.World;
@@ -20,6 +20,7 @@ import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.FIRE_26185;
 
@@ -252,11 +253,16 @@ public class LogLighting {
             player.faceObj(fire);
 
             if(log == LightableLog.MAGIC) {
-                player.getTaskMasterManager().increase(Tasks.BURN_MAGIC_LOGS);
+                player.getTaskBottleManager().increase(BottleTasks.BURN_MAGIC_LOGS);
             }
 
             // Give us some xp now, because.. dialogue.
             player.skills().addXp(Skills.FIREMAKING, log.xp * pyromancerOutfitBonus(player));
+
+            if (World.getWorld().rollDie(75, 1)) {
+                GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                GroundItemHandler.createGroundItem(item);
+            }
         });
     }
 

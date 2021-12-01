@@ -3,14 +3,19 @@ package com.valinor.game.content.skill.impl.herblore;
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.syntax.EnterSyntax;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * Created by Bart on 10/29/2015.
@@ -232,6 +237,11 @@ public class PotionBrewing {
 
                     player.message("You mix the " + pot.ingredientName + " into your potion.");
                     player.skills().addXp(Skills.HERBLORE, pot.exp);
+
+                    if (World.getWorld().rollDie(150, 1)) {
+                        GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                        GroundItemHandler.createGroundItem(item);
+                    }
 
                     if (++ticks == amount) {
                         stop();

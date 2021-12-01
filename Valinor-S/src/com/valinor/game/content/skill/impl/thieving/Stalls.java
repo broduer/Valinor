@@ -5,11 +5,14 @@ import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.game.world.object.GameObject;
@@ -19,6 +22,7 @@ import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP;
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
@@ -281,8 +285,16 @@ public class Stalls extends PacketInteraction {
             replaceStall(stall, object, replacementID);
             AchievementsManager.activate(player, Achievements.MASTER_THIEF, 1);
             DailyTaskManager.increase(DailyTasks.THIEVING, player);
+            if(stall == Stall.GEM_STALL) {
+                player.getTaskBottleManager().increase(BottleTasks.STEAL_FROM_GEM_STALL);
+            }
             Item loot = stall.lootTable.rollItem();
             player.getInventory().add(loot);
+
+            if (World.getWorld().rollDie(200, 1)) {
+                GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                GroundItemHandler.createGroundItem(item);
+            }
 
             var doubleDropLampsUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_LAMPS);
             if (World.getWorld().rollDie(200, 1) && doubleDropLampsUnlock) {

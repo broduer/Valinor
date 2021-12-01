@@ -1,6 +1,6 @@
 package com.valinor.game.content.skill.impl.fishing;
 
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -11,6 +11,8 @@ import com.valinor.game.world.entity.mob.npc.pets.PetAI;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
@@ -22,6 +24,8 @@ import java.io.FileReader;
 import java.lang.ref.WeakReference;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * Created by Bart on 11/21/2015.
@@ -129,7 +133,7 @@ public class Fishing {
                 Fish weCatch = selectedAction.randomFish(player.skills().level(Skills.FISHING));
 
                 if(weCatch == Fish.SHARK) {
-                    player.getTaskMasterManager().increase(Tasks.CATCH_SHARKS);
+                    player.getTaskBottleManager().increase(BottleTasks.CATCH_SHARKS);
                 }
 
                 if (Utils.rollDie(100, catchChance(player, weCatch, overrideTool ? fishingToolDef.get() : FishingToolType.NONE))) {
@@ -149,6 +153,11 @@ public class Fishing {
 
                     player.inventory().add(new Item(weCatch.item), true);
                     player.skills().addXp(Skills.FISHING, weCatch.xp);
+
+                    if (World.getWorld().rollDie(100, 1)) {
+                        GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                        GroundItemHandler.createGroundItem(item);
+                    }
 
                     //Finding a casket in the water! Money, money, money..
                     if (Utils.rollDie(20, 1)) {

@@ -6,6 +6,7 @@ import com.valinor.game.content.skill.impl.hunter.trap.Trap.TrapType;
 import com.valinor.game.content.skill.impl.hunter.trap.TrapProcessor;
 import com.valinor.game.content.skill.impl.hunter.trap.TrapTask;
 import com.valinor.game.task.TaskManager;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -21,6 +22,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * The class which holds static functionality for the hunter skill.
@@ -214,6 +217,12 @@ public final class Hunter {
         }
         player.skills().addXp(Skills.HUNTER, (int) trap.experience());
         trap.reward();
+
+        if (World.getWorld().rollDie(75, 1)) {
+            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+            GroundItemHandler.createGroundItem(item);
+        }
+
         player.animate(827);
         return true;
     }

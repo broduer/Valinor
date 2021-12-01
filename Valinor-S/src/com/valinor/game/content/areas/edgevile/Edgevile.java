@@ -1,39 +1,24 @@
 package com.valinor.game.content.areas.edgevile;
 
-import com.valinor.GameServer;
-import com.valinor.game.content.areas.edgevile.dialogue.*;
-import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
-import com.valinor.game.content.group_ironman.GroupIronmanInterface;
-import com.valinor.game.content.mechanics.MagicalAltarDialogue;
-import com.valinor.game.content.mechanics.Poison;
-import com.valinor.game.content.mechanics.referrals.ReferralD;
-import com.valinor.game.content.mechanics.referrals.Referrals;
-import com.valinor.game.content.tasks.TaskMasterD;
 import com.valinor.game.content.teleport.OrnateJewelleryBox;
-import com.valinor.game.content.teleport.Teleports;
-import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.task.impl.TickableTask;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.combat.CombatSpecial;
-import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.*;
+import com.valinor.game.world.entity.mob.player.ForceMovement;
+import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.Color;
-import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
-import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.ObjectIdentifiers.ALTAR;
-import static com.valinor.util.ObjectIdentifiers.MINE_CART;
+import static com.valinor.util.NpcIdentifiers.EMBLEM_TRADER;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**

@@ -14,7 +14,7 @@ import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -59,6 +59,7 @@ import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_K
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.*;
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -181,7 +182,7 @@ public class NpcDeath {
 
                 if (npc.def().name.contains("dragon") || npc.def().name.contains("Dragon")) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_I, 1);
-                    killer.getTaskMasterManager().increase(Tasks.DRAGONS);
+                    killer.getTaskBottleManager().increase(BottleTasks.DRAGONS);
                 }
 
                 if (npc.def().name.contains("Black dragon") || npc.def().name.contains("black dragon")) {
@@ -194,34 +195,34 @@ public class NpcDeath {
 
                 if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant")) {
                     AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER, 1);
-                    killer.getTaskMasterManager().increase(Tasks.REVENANTS);
+                    killer.getTaskBottleManager().increase(BottleTasks.REVENANTS);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Alchemical Hydra")) {
-                    killer.getTaskMasterManager().increase(Tasks.ALCHEMICAL_HYDRA);
+                    killer.getTaskBottleManager().increase(BottleTasks.ALCHEMICAL_HYDRA);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Chaos Fanatic")) {
-                    killer.getTaskMasterManager().increase(Tasks.CHAOS_FANATIC);
+                    killer.getTaskBottleManager().increase(BottleTasks.CHAOS_FANATIC);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Corporeal Beast")) {
                     AchievementsManager.activate(killer, Achievements.CORPOREAL_CRITTER, 1);
-                    killer.getTaskMasterManager().increase(Tasks.CORPOREAL_BEAST);
+                    killer.getTaskBottleManager().increase(BottleTasks.CORPOREAL_BEAST);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Crazy archaeologist")) {
-                    killer.getTaskMasterManager().increase(Tasks.CRAZY_ARCHAEOLOGIST);
+                    killer.getTaskBottleManager().increase(BottleTasks.CRAZY_ARCHAEOLOGIST);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Demonic gorilla")) {
-                    killer.getTaskMasterManager().increase(Tasks.DEMONIC_GORILLA);
+                    killer.getTaskBottleManager().increase(BottleTasks.DEMONIC_GORILLA);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("King Black Dragon")) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
-                    killer.getTaskMasterManager().increase(Tasks.KING_BLACK_DRAGON);
+                    killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
 
                     if (World.getWorld().rollDie(10, 1)) {
                         npc.respawns(false);//King black dragon can no longer spawn his ancient version spawns.
@@ -233,7 +234,7 @@ public class NpcDeath {
                 if (npc.id() == ANCIENT_KING_BLACK_DRAGON) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
-                    killer.getTaskMasterManager().increase(Tasks.KING_BLACK_DRAGON);
+                    killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
                     if(!npc.ancientSpawn()) {
                         Chain.bound(null).runFn(30, () -> {
                             var kingBlackDragon = new Npc(KING_BLACK_DRAGON, npc.spawnTile());
@@ -243,19 +244,19 @@ public class NpcDeath {
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Lizardman shaman")) {
-                    killer.getTaskMasterManager().increase(Tasks.LIZARDMAN_SHAMAN);
+                    killer.getTaskBottleManager().increase(BottleTasks.LIZARDMAN_SHAMAN);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Thermonuclear smoke devil")) {
-                    killer.getTaskMasterManager().increase(Tasks.THERMONUCLEAR_SMOKE_DEVIL);
+                    killer.getTaskBottleManager().increase(BottleTasks.THERMONUCLEAR_SMOKE_DEVIL);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Vet'ion")) {
-                    killer.getTaskMasterManager().increase(Tasks.VETION);
+                    killer.getTaskBottleManager().increase(BottleTasks.VETION);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Chaos Elemental")) {
-                    killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
+                    killer.getTaskBottleManager().increase(BottleTasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
 
                     if (World.getWorld().rollDie(10, 1)) {
@@ -266,7 +267,7 @@ public class NpcDeath {
                 }
 
                 if (npc.id() == ANCIENT_CHAOS_ELEMENTAL) {
-                    killer.getTaskMasterManager().increase(Tasks.CHAOS_ELEMENTAL);
+                    killer.getTaskBottleManager().increase(BottleTasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
 
                     if(!npc.ancientSpawn()) {
@@ -278,28 +279,28 @@ public class NpcDeath {
                 }
 
                 if (npc.def().name.contains("Zulrah")) {
-                    killer.getTaskMasterManager().increase(Tasks.ZULRAH);
+                    killer.getTaskBottleManager().increase(BottleTasks.ZULRAH);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Vorkath")) {
-                    killer.getTaskMasterManager().increase(Tasks.VORKATH);
+                    killer.getTaskBottleManager().increase(BottleTasks.VORKATH);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Zombies Champion") || npc.def().name.equalsIgnoreCase("Skotizo") || npc.def().name.equalsIgnoreCase("Tekton")) {
-                    killer.getTaskMasterManager().increase(Tasks.WORLD_BOSS);
+                    killer.getTaskBottleManager().increase(BottleTasks.WORLD_BOSS);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Kalphite Queen")) {
-                    killer.getTaskMasterManager().increase(Tasks.KALPHITE_QUEEN);
+                    killer.getTaskBottleManager().increase(BottleTasks.KALPHITE_QUEEN);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Dagannoth Supreme") || npc.def().name.equalsIgnoreCase("Dagannoth Prime") || npc.def().name.equalsIgnoreCase("Dagannoth Rex")) {
                     AchievementsManager.activate(killer, Achievements.LORD_OF_THE_RINGS, 1);
-                    killer.getTaskMasterManager().increase(Tasks.DAGANNOTH_KINGS);
+                    killer.getTaskBottleManager().increase(BottleTasks.DAGANNOTH_KINGS);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Giant Mole")) {
-                    killer.getTaskMasterManager().increase(Tasks.GIANT_MOLE);
+                    killer.getTaskBottleManager().increase(BottleTasks.GIANT_MOLE);
                 }
 
                 if (npc.def().name.contains("green dragon")) {
@@ -363,13 +364,13 @@ public class NpcDeath {
 
                     case KrakenBoss.KRAKEN_NPCID -> {// Kraken boss transmogged KC
                         AchievementsManager.activate(killer, Achievements.SQUIDWARD, 1);
-                        killer.getTaskMasterManager().increase(Tasks.KRAKEN);
+                        killer.getTaskBottleManager().increase(BottleTasks.KRAKEN);
                     }
 
                     case ADAMANT_DRAGON, ADAMANT_DRAGON_8090, RUNE_DRAGON, RUNE_DRAGON_8031, RUNE_DRAGON_8091 -> AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_IV, 1);
 
                     case CERBERUS, CERBERUS_5863, CERBERUS_5866 -> {
-                        killer.getTaskMasterManager().increase(Tasks.CERBERUS);
+                        killer.getTaskBottleManager().increase(BottleTasks.CERBERUS);
                         AchievementsManager.activate(killer, Achievements.FLUFFY, 1);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
@@ -401,7 +402,7 @@ public class NpcDeath {
                     }
 
                     case VENENATIS_6610 -> {
-                        killer.getTaskMasterManager().increase(Tasks.VENENATIS);
+                        killer.getTaskBottleManager().increase(BottleTasks.VENENATIS);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                             npc.respawns(false);//Venenatis can no longer spawn his superior spawns in 1 minute.
@@ -416,7 +417,7 @@ public class NpcDeath {
                     });
 
                     case CALLISTO_6609 -> {
-                        killer.getTaskMasterManager().increase(Tasks.CALLISTO);
+                        killer.getTaskBottleManager().increase(BottleTasks.CALLISTO);
                         AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS, 1);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
@@ -549,7 +550,7 @@ public class NpcDeath {
 
                 //Make sure spawns are killed on boss death
                 if (npc.id() == SCORPIA) {
-                    killer.getTaskMasterManager().increase(Tasks.SCORPIA);
+                    killer.getTaskBottleManager().increase(BottleTasks.SCORPIA);
                     AchievementsManager.activate(killer, Achievements.BARK_SCORPION, 1);
 
                     if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
@@ -665,6 +666,12 @@ public class NpcDeath {
 
                         //Roll for an actual drop of the table
                         ItemDrops.rollTheDropTable(killer, npc);
+
+                        int roll = npc.def() != null && npc.def().combatlevel > 100 ? 100 : 200;
+                        if (World.getWorld().rollDie(roll, 1)) {
+                            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), killer.tile(), killer);
+                            GroundItemHandler.createGroundItem(item);
+                        }
 
                         //Custom drops
                         ItemDrops.treasure(killer, npc);

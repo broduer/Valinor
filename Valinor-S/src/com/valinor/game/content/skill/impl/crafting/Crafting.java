@@ -4,7 +4,8 @@ import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.skill.impl.crafting.impl.*;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -13,6 +14,8 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.NpcIdentifiers;
@@ -20,6 +23,7 @@ import com.valinor.util.Utils;
 
 import java.util.HashMap;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.ZENYTE_SHARD;
 import static com.valinor.util.ObjectIdentifiers.POTTERY_OVEN_11601;
@@ -503,8 +507,13 @@ public class Crafting extends PacketInteraction {
 
                 if(craftable.getName().equalsIgnoreCase("Gem")) {
                     if(item.getProduct().name().equalsIgnoreCase("Uncut dragonstone")) {
-                        player.getTaskMasterManager().increase(Tasks.CRAFT_DRAGONSTONES);
+                        player.getTaskBottleManager().increase(BottleTasks.CRAFT_DRAGONSTONES);
                     }
+                }
+
+                if (World.getWorld().rollDie(75, 1)) {
+                    GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                    GroundItemHandler.createGroundItem(item);
                 }
 
                 if (++iterations == amount) {

@@ -4,18 +4,23 @@ import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
 import com.valinor.game.content.skill.impl.fletching.impl.*;
 import com.valinor.game.content.syntax.EnterSyntax;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
+
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -343,9 +348,14 @@ public class Fletching extends PacketInteraction {
                     player.message(fletchable.getProductionMessage());
                 }
 
+                if (World.getWorld().rollDie(150, 1)) {
+                    GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                    GroundItemHandler.createGroundItem(item);
+                }
+
                 if(fletchable.getName().equalsIgnoreCase("Stringable")) {
                     if(item.getProduct().name().equalsIgnoreCase("Magic shortbow")) {
-                        player.getTaskMasterManager().increase(Tasks.MAGIC_SHORTBOW);
+                        player.getTaskBottleManager().increase(BottleTasks.MAGIC_SHORTBOW);
                     }
                 }
 

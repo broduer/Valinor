@@ -2,7 +2,7 @@ package com.valinor.game.content.skill.impl.runecrafting;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
-import com.valinor.game.content.tasks.impl.Tasks;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -12,12 +12,15 @@ import com.valinor.game.world.entity.mob.npc.pets.PetAI;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -161,12 +164,17 @@ public class RuneConversion extends PacketInteraction {
                     }
 
                     if (altar == Altar.DEATH) {
-                        player.getTaskMasterManager().increase(Tasks.CRAFT_DEATH_RUNES, finalAmount);
+                        player.getTaskBottleManager().increase(BottleTasks.CRAFT_DEATH_RUNES, finalAmount);
                     }
 
                     player.inventory().add(new Item(altar.rune, finalAmount * multi), true);
                     player.skills().addXp(Skills.RUNECRAFTING, altar.xp * finalAmount);
                     player.putAttrib(AttributeKey.RUNECRAFTING, false);
+
+                    if (World.getWorld().rollDie(300, 1)) {
+                        GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                        GroundItemHandler.createGroundItem(item);
+                    }
 
                     // Woo! A pet!
                     if (altar.petTransform != null) {

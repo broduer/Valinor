@@ -9,11 +9,16 @@ import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
+import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -160,6 +165,11 @@ public class GnomeStronghold extends PacketInteraction {
                         player.message("You successfully completed the course.");
                         player.putAttrib(AttributeKey.GNOME_COURSE_STATE, 0);
                         player.skills().addXp(Skills.AGILITY, 39.0);
+
+                        if (World.getWorld().rollDie(10, 1)) {
+                            GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
+                            GroundItemHandler.createGroundItem(item);
+                        }
 
                         // Woo! A pet!
                         var odds = (int) (37000.00 * player.getMemberRights().petRateMultiplier());

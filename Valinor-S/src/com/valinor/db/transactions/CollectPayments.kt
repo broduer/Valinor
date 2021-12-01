@@ -109,29 +109,9 @@ object CollectPayments {
                                 paymentAmount = 100.0 * row.itemAmt
                             }
 
-                            ARMOUR_MYSTERY_BOX -> {
-                                paymentAmount = 1.0 * row.itemAmt
-                                TOTAL_PAYMENT_AMOUNT.increment(this, 1.0 * row.itemAmt)
-                            }
-
-                            WEAPON_MYSTERY_BOX -> {
-                                paymentAmount = 3.0 * row.itemAmt
-                                TOTAL_PAYMENT_AMOUNT.increment(this, 3.0 * row.itemAmt)
-                            }
-
                             DONATOR_MYSTERY_BOX -> {
                                 paymentAmount = 10.0 * row.itemAmt
                                 TOTAL_PAYMENT_AMOUNT.increment(this, 10.0 * row.itemAmt)
-                            }
-
-                            LEGENDARY_MYSTERY_BOX -> {
-                                paymentAmount = 20.0 * row.itemAmt
-                                TOTAL_PAYMENT_AMOUNT.increment(this, 20.0 * row.itemAmt)
-                            }
-
-                            EPIC_PET_BOX -> {
-                                paymentAmount = 75.0 * row.itemAmt
-                                TOTAL_PAYMENT_AMOUNT.increment(this, 75.0 * row.itemAmt)
                             }
                         }
 

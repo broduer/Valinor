@@ -425,7 +425,6 @@ public class Item implements Cloneable {
             add(ANCESTRAL_ROBE_TOP_I);
             add(ANCESTRAL_ROBE_BOTTOM_I);
             add(MYSTERY_TICKET);
-            add(TASK_REWARD_CHEST);
             add(JALNIBREK);
             add(BLOOD_REAPER);
             add(YOUNGLLEF);
