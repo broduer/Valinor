@@ -86,12 +86,13 @@ public class MeleeMaxHit {
 
         var wearingAnyBlackMask = FormulaUtils.wearingBlackMask(player) || FormulaUtils.wearingBlackMaskImbued(player) || player.getEquipment().wearingSlayerHelm();
         //Special attacks
-        if(wearingAnyBlackMask && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+        if(wearingAnyBlackMask && target != null && target.isNpc() && includeNpcMax) {
+            Npc npc = target.getAsNpc();
+            if(npc.id() == NpcIdentifiers.COMBAT_DUMMY) {
                 D *= 1.1667;
             }
 
-            if(Slayer.creatureMatches(player, target.getAsNpc().id())) {
+            if(Slayer.creatureMatches(player, npc.id())) {
                 D *= 1.1667;
             }
         }
