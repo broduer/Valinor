@@ -31,11 +31,11 @@ import static com.valinor.util.NpcIdentifiers.THE_NIGHTMARE_9430;
 public enum Collection {
 
     // OSRS bosses
-    ABYSSAL_SIRE(AttributeKey.KC_ABYSSALSIRE, LogType.BOSSES,"Abyssal Sire", new int[]{NpcIdentifiers.ABYSSAL_SIRE}, AttributeKey.ABYSSALSIRE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX)},
+    ABYSSAL_SIRE(AttributeKey.KC_ABYSSALSIRE, LogType.BOSSES,"Abyssal Sire", new int[]{NpcIdentifiers.ABYSSAL_SIRE}, AttributeKey.ABYSSALSIRE_LOG_CLAIMED, new Item[]{new Item(COLLECTION_KEY)},
         //Drops
         new Item(ABYSSAL_ORPHAN), new Item(UNSIRED), new Item(ABYSSAL_HEAD), new Item(BLUDGEON_SPINE), new Item(BLUDGEON_CLAW), new Item(BLUDGEON_AXON), new Item(JAR_OF_MIASMA), new Item(ABYSSAL_DAGGER), new Item(ABYSSAL_WHIP)),
 
-    BARROWS(AttributeKey.BARROWS_CHESTS_OPENED, LogType.BOSSES, "Barrows", new int[]{-1},  AttributeKey.BARROWS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX)},
+    BARROWS(AttributeKey.BARROWS_CHESTS_OPENED, LogType.BOSSES, "Barrows", new int[]{-1},  AttributeKey.BARROWS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.CURSED_AMULET_OF_THE_DAMNED)},
         //Drops
         new Item(KARILS_COIF), new Item(AHRIMS_HOOD), new Item(DHAROKS_HELM),new Item(GUTHANS_HELM), new Item(TORAGS_HELM), new Item(VERACS_HELM), new Item(KARILS_LEATHERTOP), new Item(AHRIMS_ROBETOP), new Item(DHAROKS_PLATEBODY), new Item(GUTHANS_PLATEBODY), new Item(TORAGS_PLATEBODY), new Item(VERACS_BRASSARD), new Item(KARILS_LEATHERSKIRT), new Item(AHRIMS_ROBESKIRT), new Item(DHAROKS_PLATELEGS), new Item(GUTHANS_CHAINSKIRT), new Item(TORAGS_PLATELEGS), new Item(VERACS_PLATESKIRT), new Item(KARILS_CROSSBOW), new Item(AHRIMS_STAFF), new Item(DHAROKS_GREATAXE), new Item(GUTHANS_WARSPEAR), new Item(TORAGS_HAMMERS), new Item(VERACS_FLAIL), new Item(BOLT_RACK)),
 
@@ -159,7 +159,7 @@ public enum Collection {
         //Drops
         new Item(LITTLE_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(JAR_OF_DREAMS)),
 
-    SARACHNIS(AttributeKey.SARACHNIS, LogType.BOSSES, "Sarachnis", new int[]{NpcIdentifiers.SARACHNIS}, AttributeKey.SARACHNIS_LOG_CLAIMED, new Item[]{new Item(SHADOW_INQUISITOR_ORNAMENT_KIT), new Item(INQUISITORS_MACE_ORNAMENT_KIT)},
+    SARACHNIS(AttributeKey.SARACHNIS, LogType.BOSSES, "Sarachnis", new int[]{NpcIdentifiers.SARACHNIS}, AttributeKey.SARACHNIS_LOG_CLAIMED, new Item[]{new Item(SARACHNIS_CUDGEL)},
         //Drops
         new Item(SRARACHA), new Item(JAR_OF_EYES), new Item(GIANT_EGG_SACFULL), new Item(SARACHNIS_CUDGEL)),
 
@@ -230,18 +230,42 @@ public enum Collection {
         new Item(VESTAS_SPEAR), new Item(VESTAS_LONGSWORD), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(MORRIGANS_JAVELIN), new Item(MORRIGANS_THROWING_AXE), new Item(VIGGORAS_CHAINMACE), new Item(CRAWS_BOW), new Item(THAMMARONS_SCEPTRE), new Item(AMULET_OF_AVARICE), new Item(DARK_ANCIENT_EMBLEM), new Item(DARK_ANCIENT_RELIC), new Item(DARK_ANCIENT_EFFIGY), new Item(DARK_ANCIENT_MEDALLION), new Item(DARK_ANCIENT_STATUETTE), new Item(DARK_ANCIENT_TOTEM), new Item(DARK_ANCIENT_EMBLEM), new Item(ANCIENT_VESTAS_LONGSWORD), new Item(ANCIENT_STATIUSS_WARHAMMER)
     ),
 
-    CHAMBER_OF_SECRETS(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chamber Of Secrets", new int[]{COS_RAIDS_KEY}, AttributeKey.CHAMBER_OF_SECRETS_LOG_CLAIMED, new Item[]{new Item(DONATOR_MYSTERY_BOX, 3)},
-        //Custom
+    CHAMBER_OF_SECRETS(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chamber Of Secrets", new int[]{COS_RAIDS_KEY}, AttributeKey.CHAMBER_OF_SECRETS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 3)},
+        //Drops
         new Item(CustomItemIdentifiers.NAGINI), new Item(FENRIR_GREYBACK_JR), new Item(FLUFFY_JR), new Item(CENTAUR_MALE), new Item(CENTAUR_FEMALE), new Item(DEMENTOR_PET),
         new Item(TOM_RIDDLE_DIARY), new Item(MARVOLO_GAUNTS_RING), new Item(CLOAK_OF_INVISIBILITY), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(SALAZAR_SLYTHERINS_LOCKET)),
 
-    CHAMBER_OF_XERIC(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chambers of Xeric", new int[]{COX_RAIDS_KEY}, AttributeKey.CHAMBER_OF_SECRETS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 3)},
-        //Custom
+    CHAMBER_OF_XERIC(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chambers of Xeric", new int[]{COX_RAIDS_KEY}, AttributeKey.CHAMBER_OF_SECRETS_LOG_CLAIMED, new Item[]{new Item(RAIDS_MYSTERY_BOX, 2)},
+        //Drops
         new Item(OLMLET), new Item(METAMORPHIC_DUST), new Item(TWISTED_BOW), new Item(ELDER_MAUL), new Item(KODAI_INSIGNIA), new Item(DRAGON_CLAWS), new Item(ANCESTRAL_HAT), new Item(ANCESTRAL_ROBE_TOP), new Item(ANCESTRAL_ROBE_BOTTOM), new Item(DINHS_BULWARK), new Item(DEXTEROUS_PRAYER_SCROLL), new Item(ARCANE_PRAYER_SCROLL), new Item(DRAGON_HUNTER_CROSSBOW), new Item(TWISTED_BUCKLER), new Item(TORN_PRAYER_SCROLL), new Item(DARK_RELIC), new Item(ONYX), new Item(TWISTED_ANCESTRAL_COLOUR_KIT)),
 
-    THEATRE_OF_BLOOD(AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, LogType.BOSSES, "Theatre of Blood", new int[]{TOB_RAIDS_KEY}, AttributeKey.THEATRE_OF_BLOOD_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 3)},
-        //Custom
+    THEATRE_OF_BLOOD(AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, LogType.BOSSES, "Theatre of Blood", new int[]{TOB_RAIDS_KEY}, AttributeKey.THEATRE_OF_BLOOD_LOG_CLAIMED, new Item[]{new Item(RAIDS_MYSTERY_BOX, 2)},
+        //Drops
         new Item(LIL_ZIK), new Item(SCYTHE_OF_VITUR), new Item(GHRAZI_RAPIER), new Item(SANGUINESTI_STAFF), new Item(JUSTICIAR_FACEGUARD), new Item(JUSTICIAR_CHESTGUARD), new Item(JUSTICIAR_LEGGUARDS), new Item(AVERNIC_DEFENDER_HILT)),
+
+    //Mystery box
+    DONATOR_MYSTERY_BOX(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Donator Mystery Box", new int[]{CustomItemIdentifiers.DONATOR_MYSTERY_BOX}, AttributeKey.DONATOR_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 10)},
+        //Drops
+        new Item(GREEN_HALLOWEEN_MASK), new Item(BLUE_HALLOWEEN_MASK), new Item(RED_HALLOWEEN_MASK), new Item(BLACK_HWEEN_MASK), new Item(SANTA_HAT),
+        new Item(BLACK_SANTA_HAT), new Item(INVERTED_SANTA_HAT), new Item(RED_PARTYHAT), new Item(YELLOW_PARTYHAT), new Item(BLUE_PARTYHAT),
+        new Item(GREEN_PARTYHAT), new Item(PURPLE_PARTYHAT), new Item(WHITE_PARTYHAT), new Item(BLACK_PARTYHAT), new Item(RAINBOW_PARTYHAT),
+        new Item(PARTYHAT__SPECS), new Item(CHRISTMAS_CRACKER), new Item(_3RD_AGE_WAND), new Item(_3RD_AGE_BOW), new Item(_3RD_AGE_LONGSWORD),
+        new Item(_3RD_AGE_CLOAK), new Item(_3RD_AGE_RANGE_TOP), new Item(_3RD_AGE_RANGE_LEGS), new Item(_3RD_AGE_RANGE_COIF), new Item(_3RD_AGE_VAMBRACES),
+        new Item(_3RD_AGE_ROBE_TOP), new Item(_3RD_AGE_ROBE), new Item(_3RD_AGE_MAGE_HAT), new Item(_3RD_AGE_AMULET), new Item(_3RD_AGE_PLATELEGS),
+        new Item(_3RD_AGE_PLATEBODY), new Item(_3RD_AGE_FULL_HELMET), new Item(_3RD_AGE_KITESHIELD)),
+
+    //Mystery ticket
+    MYSTERY_TICKET(AttributeKey.MYSTERY_TICKETS_OPENED, LogType.MYSTERY_BOX, "Mystery Ticket", new int[]{CustomItemIdentifiers.MYSTERY_TICKET}, AttributeKey.MYSTERY_TICKET_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_TICKET, 2)},
+        //Drops
+        new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_CHEST), new Item(BANDOS_TASSETS), new Item(BANDOS_CHESTPLATE),
+        new Item(ARMADYL_CHESTPLATE), new Item(ARMADYL_CHAINSKIRT), new Item(SARADOMIN_GODSWORD), new Item(ARMADYL_GODSWORD), new Item(DRAGON_WARHAMMER),
+        new Item(DRAGON_HUNTER_LANCE), new Item(SPECTRAL_SPIRIT_SHIELD)),
+
+    //Mystery chest
+    MYSTERY_CHEST(AttributeKey.MYSTERY_CHESTS_OPENED, LogType.MYSTERY_BOX, "Mystery Chest", new int[]{CustomItemIdentifiers.MYSTERY_CHEST}, AttributeKey.MYSTERY_CHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1)},
+        //Drops
+        new Item(ELYSIAN_SPIRIT_SHIELD), new Item(TWISTED_BOW), new Item(SCYTHE_OF_VITUR), new Item(DARK_BANDOS_CHESTPLATE), new Item(DARK_BANDOS_TASSETS), new Item(BLADE_OF_SAELDOR_8),
+        new Item(ANCESTRAL_ROBE_BOTTOM_I), new Item(ANCESTRAL_ROBE_TOP_I), new Item(SALAZAR_SLYTHERINS_LOCKET)),
 
     //Other
     SLAYER(null, LogType.OTHER, "Slayer",

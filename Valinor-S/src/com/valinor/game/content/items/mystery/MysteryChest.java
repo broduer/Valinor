@@ -1,6 +1,7 @@
 package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.PacketInteraction;
@@ -42,9 +43,9 @@ public class MysteryChest extends PacketInteraction {
         reward = rewardRoll();
         MYSTERY_BOX.log(player, MYSTERY_CHEST, reward);
         player.inventory().addOrBank(reward);
-
         String chest = "Mystery chest";
-
+        var opened = player.<Integer>getAttribOr(AttributeKey.MYSTERY_CHESTS_OPENED, 0) + 1;
+        player.putAttrib(AttributeKey.MYSTERY_CHESTS_OPENED, opened);
         if (reward != null) {
             Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a " + reward.name() + " from a Mystery chest.", "box_and_tickets");
             //The user box test doesn't yell.

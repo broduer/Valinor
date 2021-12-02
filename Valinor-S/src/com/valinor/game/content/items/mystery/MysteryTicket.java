@@ -1,6 +1,7 @@
 package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.PacketInteraction;
@@ -10,6 +11,7 @@ import com.valinor.util.Utils;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -38,18 +40,23 @@ public class MysteryTicket extends PacketInteraction {
             if(item.getId() == MYSTERY_TICKET) {
                 String worldMessage = "";
                 player.inventory().remove(new Item(MYSTERY_TICKET));
+                var opened = player.<Integer>getAttribOr(AttributeKey.MYSTERY_TICKETS_OPENED, 0) + 1;
+                player.putAttrib(AttributeKey.MYSTERY_TICKETS_OPENED, opened);
                 if(World.getWorld().rollDie(40,1)) {
                     player.inventory().addOrBank(new Item(MYSTERY_CHEST));
+                    MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(MYSTERY_CHEST));
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a Mystery chest from a mystery ticket.", "box_and_tickets");
                     worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Mystery ticket</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>Mystery chest</shad>!";
                 } else if(World.getWorld().rollDie(10,1)) {
                     Item reward = rewardRoll();
+                    MYSTERY_BOX.log(player, MYSTERY_TICKET, reward);
                     player.inventory().addOrBank(reward);
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a "+reward.name()+" from a mystery ticket.", "box_and_tickets");
                     worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Mystery ticket</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>" + reward.name() + "</shad>!";
                 } else {
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received x3 Donator mystery box from a mystery ticket.", "box_and_tickets");
                     player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX,3));
+                    MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(DONATOR_MYSTERY_BOX,3));
                 }
                 if(!worldMessage.isEmpty() && !player.getUsername().equalsIgnoreCase("Box test")) {
                     World.getWorld().sendWorldMessage(worldMessage);

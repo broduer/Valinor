@@ -5,6 +5,10 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    DONATOR_MYSTERY_BOXES_OPENED("donator_mystery_boxes_opened", AttribType.INTEGER),
+    MYSTERY_TICKETS_OPENED("mystery_tickets_opened", AttribType.INTEGER),
+    MYSTERY_CHESTS_OPENED("mystery_chests_opened", AttribType.INTEGER),
+
     SARACHNIS_RANDOM_MOVE_TILE,
 
     EXP_LAMP_SKILL_SELECTED,
@@ -100,6 +104,9 @@ public enum AttributeKey {
     CHAMBER_OF_SECRETS_LOG_CLAIMED,
     CHAMBER_OF_XERIC_LOG_CLAIMED,
     THEATRE_OF_BLOOD_LOG_CLAIMED,
+    DONATOR_MYSTERY_BOX_LOG_CLAIMED,
+    MYSTERY_TICKET_LOG_CLAIMED,
+    MYSTERY_CHEST_LOG_CLAIMED,
     REVENANTS_LOG_CLAIMED,
     SLAYER_LOG_CLAIMED,
 

@@ -1,11 +1,13 @@
 package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Utils;
 
+import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -202,11 +204,15 @@ public class DonatorMysteryBox extends PacketInteraction {
                         World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a donator mystery box!");
                     }
                     player.inventory().addOrBank(reward);
+                    MYSTERY_BOX.log(player, DONATOR_MYSTERY_BOX, reward);
                     rare = false;
 
                     var amt = reward.getAmount();
                     player.message("You open the donator mystery box and found...");
                     player.message("x"+amt+" "+reward.unnote().name()+".");
+
+                    var opened = player.<Integer>getAttribOr(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, 0) + 1;
+                    player.putAttrib(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, opened);
                 }
                 return true;
             }
