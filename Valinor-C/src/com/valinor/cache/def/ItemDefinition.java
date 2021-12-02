@@ -513,6 +513,7 @@ public final class ItemDefinition {
     }
 
     private void set_defaults() {
+        widget_actions = new String[]{null, null, null, null, null};
         inventory_model = 0;
         name = null;
         description = null;

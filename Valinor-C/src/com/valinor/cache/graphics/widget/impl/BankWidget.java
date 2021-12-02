@@ -18,6 +18,7 @@ public class BankWidget extends Widget {
     public static void unpack(AdvancedFont[] font) {
         bank(font);
         bank_settings(font);
+        deposit_box(font);
     }
 
     private static void bank(AdvancedFont[] font) {
@@ -294,5 +295,46 @@ public class BankWidget extends Widget {
         setBounds(34000 + 37, 155, 280, 38, bank_settings);
         setBounds(34000 + 38, 254, 293, 39, bank_settings);
         setBounds(34000 + 100, 24, 19, 40, bank_settings);
+    }
+
+    private static void deposit_box(AdvancedFont[] font) {
+        Widget widget = addInterface(34400);
+
+        addSprite(34401, 1913);
+        closeButton(34402, 107, 108, false);
+        addText(34403, "The bank of "+ClientConstants.CLIENT_NAME+" - Deposit Box", font, 2, 0xFE9624, true, true);
+
+        addConfigButton(34404, 34400, 117, 118, "Default Quantity: 1", 1301, 0, OPTION_OK);
+        addText(34405, "1", font, 1, 0xFE9624, true, true);
+        addConfigButton(34406, 34400, 117, 118, "Default Quantity: 5", 1302, 0, OPTION_OK);
+        addText(34407, "5", font, 1, 0xFE9624, true, true);
+        addConfigButton(34408, 34400, 117, 118, "Default Quantity: 10", 1303, 0, OPTION_OK);
+        addText(34409, "10", font, 1, 0xFE9624, true, true);
+        addConfigButton(34410, 34400, 117, 118, "Set custom quantity", 1304, 0, OPTION_OK);
+        addText(34411, "X", font, 1, 0xFE9624, true, true);
+        addConfigButton(34412, 34400, 117, 118, "Default Quantity: All", 1305, 0, OPTION_OK);
+        addText(34413, "All", font, 1, 0xFE9624, true, true);
+        adjustableConfig(34414, "Deposit inventory", 730, 180, 728, 727);
+        adjustableConfig(34415, "Deposit worn items", 731, 180, 728, 727);
+        adjustableConfig(34416, "Deposit loot", 1914, 180, 728, 727);
+        addContainer(34417, TYPE_CONTAINER, 7, 4, 25, 15, 0, false, true, true, "Deposit-1", "Deposit-5", "Deposit-10", "Deposit-All", "Deposit-X");
+        widget.totalChildren(17);
+        widget.child(0, 34401, 30, 25);
+        widget.child(1, 34402, 455, 32);
+        widget.child(2, 34403, 250, 34);
+        widget.child(3, 34404, 45, 255);
+        widget.child(4, 34405, 63, 265);
+        widget.child(5, 34406, 85, 255);
+        widget.child(6, 34407, 103, 265);
+        widget.child(7, 34408, 130, 255);
+        widget.child(8, 34409, 148, 265);
+        widget.child(9, 34410, 175, 255);
+        widget.child(10, 34411, 193, 265);
+        widget.child(11, 34412, 220, 255);
+        widget.child(12, 34413, 238, 265);
+        widget.child(13, 34414, 315, 255);
+        widget.child(14, 34415, 370, 255);
+        widget.child(15, 34416, 425, 255);
+        widget.child(16, 34417, 60, 65);
     }
 }

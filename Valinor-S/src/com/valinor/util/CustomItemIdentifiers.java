@@ -5,6 +5,9 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
+    public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
+    public static final int GIANT_KEY_OF_DROPS = 30201;
+    public static final int COLLECTION_KEY = 30210;
     public static final int SKILLING_SCROLL = 30383;
     public static final int PVMING_SCROLL = 30384;
     public static final int TASK_BOTTLE_SKILLING = 30385;
@@ -15,6 +18,7 @@ public class CustomItemIdentifiers {
     public static final int POINTS_MYSTERY_CHEST = 30189;
     public static final int DOUBLE_DROPS_SCROLL = 30190;
     public static final int SLAYER_TELEPORT_SCROLL = 30195;
+    public static final int RAIDS_MYSTERY_BOX = 30200;
     public static final int TWISTED_BOW_ORANGE = 30036;
     public static final int TWISTED_BOW_PURPLE = 30037;
     public static final int TOTEMIC_HELMET = 30196;

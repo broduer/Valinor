@@ -129,6 +129,14 @@ public class ItemDefinition implements Definition {
             unprotectable = true;
         } else if (id == 4564) {
             stackable = true;
+        } else if (id == 30201) {
+            name = "Giant key of drops";
+        } else if (id == 30200) {
+            name = "Raids mystery box";
+        } else if (id == 30210) {
+            name = "Collection key";
+        } else if (id == 30211) {
+            name = "Cursed amulet of the damned";
         } else if (id == 30383) {
             name = "Skilling scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};

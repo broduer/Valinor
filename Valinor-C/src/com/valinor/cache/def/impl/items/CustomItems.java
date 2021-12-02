@@ -1055,6 +1055,7 @@ public class CustomItems {
             def.translate_x = -22;
             def.translate_y = -7;
             def.rotation_x = 0;
+            def.rotation_z = 1818;
             def.rotation_y = 0;
             def.stackable = false;
             def.animateInventory = true;
@@ -1947,12 +1948,57 @@ public class CustomItems {
             def.modelCustomColor4 = 12222;
         }
 
-        if (id == 30185 || id == 30186 || id == 30187 || id == 30188) {
+        if (id == 30201) {
+            def.name = "<col=65280>Giant key of drops";
+            def.widget_actions = new String[]{null, null, null, null, null};
+            def.inventory_model = 55611;
+            def.translate_x = -2;
+            def.translate_y = -2;
+            def.rotation_y = 512;
+            def.rotation_x = 40;
+            def.model_zoom = 740;
+            def.animateInventory = true;
+        }
+
+        if(id == 30210) {
+            def.name = "<col=65280>Collection key";
+            def.widget_actions = new String[]{null, null, null, null, null};
+            def.inventory_model = 55612;
+            def.translate_x = 1;
+            def.translate_y = 5;
+            def.rotation_y = 471;
+            def.rotation_x = 20;
+            def.model_zoom = 1296;
+        }
+
+        if(id == 30211) {
+            def.name = "<col=65280>Cursed amulet of the damned";
+            def.widget_actions = new String[]{null, "Wear", null, null, "Drop"};
+            def.inventory_model = 55613;
+            def.female_equip_main = 55614;
+            def.male_equip_main = 55614;
+            def.translate_x = -1;
+            def.translate_y = 2;
+            def.rotation_y = 512;
+            def.rotation_x = 108;
+            def.rotation_z = 2020;
+            def.model_zoom = 480;
+        }
+
+        if (id == 30185 || id == 30186 || id == 30187 || id == 30188 || id == 30200) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case 30185:
                     def.name = "<col=65280>Donator mystery box";
                     def.inventory_model = 55566;
+                    def.animateInventory = true;
+                    def.color_to_replace = new int[]{2999, 22410};
+                    def.color_to_replace_with = new int[]{524, 13};
+                    break;
+
+                case 30200:
+                    def.name = "<col=65280>Raids mystery box";
+                    def.inventory_model = 55610;
                     def.animateInventory = true;
                     def.color_to_replace = new int[]{2999, 22410};
                     def.color_to_replace_with = new int[]{524, 13};
