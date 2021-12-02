@@ -97,7 +97,7 @@ public class Bank extends ItemContainer {
     public boolean quantityOne = true;
 
     /**
-     * The place holder flag.
+     * The placeholder flag.
      */
     public boolean placeHolder;
 

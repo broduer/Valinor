@@ -90,20 +90,29 @@ public class FirstContainerAction {
 
         if (interfaceId == WITHDRAW_BANK) {
             if (player.getBank().quantityFive) {
-                // System.out.println("withdraw 5");
                 player.getBank().withdraw(id, slot, 5);
             } else if (player.getBank().quantityTen) {
-                // System.out.println("withdraw 10");
                 player.getBank().withdraw(id, slot, 10);
             } else if (player.getBank().quantityAll) {
-                // System.out.println("withdraw all");
                 player.getBank().withdraw(id, slot, Integer.MAX_VALUE);
             } else if (player.getBank().quantityX) {
-                // System.out.println("withdraw x: "+player.getBank().currentQuantityX);
                 player.getBank().withdraw(id, slot, player.getBank().currentQuantityX);
             } else {
-                // System.out.println("withdraw 1");
                 player.getBank().withdraw(id, slot, 1);
+            }
+        }
+
+        if (interfaceId == DEPOSIT_BOX_CONTAINER_ID) {
+            if (player.getDepositBox().quantityFive) {
+                player.getDepositBox().deposit(id, 5);
+            } else if (player.getDepositBox().quantityTen) {
+                player.getDepositBox().deposit(id, 10);
+            } else if (player.getDepositBox().quantityAll) {
+                player.getDepositBox().deposit(id, Integer.MAX_VALUE);
+            } else if (player.getDepositBox().quantityX) {
+                player.getDepositBox().deposit(id, player.getBank().currentQuantityX);
+            } else {
+                player.getDepositBox().deposit(id, 1);
             }
         }
 
@@ -115,7 +124,6 @@ public class FirstContainerAction {
             }
 
             boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
-
             if (priceChecking) {
                 player.getPriceChecker().deposit(slot, 1);
                 return;

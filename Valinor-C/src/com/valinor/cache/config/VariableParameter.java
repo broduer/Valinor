@@ -29,10 +29,10 @@ public final class VariableParameter {
 
         /**
          * Cache size is 725.
-         * But instead of setting array sizes to 725, we set it to 1200.
+         * But instead of setting array sizes to 725, we set it to 2200.
          * This leaves space for custom configs.
          */
-        int customSize = 1200;
+        int customSize = 2200;
 
         if (values == null) {
             values = new VariableParameter[customSize];

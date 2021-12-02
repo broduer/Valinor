@@ -98,6 +98,7 @@ import com.valinor.game.world.entity.mob.player.save.PlayerSave;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.bank.Bank;
+import com.valinor.game.world.items.container.bank.DepositBox;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.items.container.inventory.Inventory;
@@ -1884,6 +1885,10 @@ public class Player extends Mob {
             getLootingBag().sync();
             getLootingBag().dirty = false;
         }
+        if (getDepositBox().dirty) {
+            getDepositBox().sync();
+            getDepositBox().dirty = false;
+        }
     }
 
     // Combat
@@ -2223,6 +2228,12 @@ public class Player extends Mob {
 
     public final LootingBag getLootingBag() {
         return lootingBag;
+    }
+
+    private final DepositBox depositBox = new DepositBox(this);
+
+    public final DepositBox getDepositBox() {
+        return depositBox;
     }
 
     private final Bank bank = new Bank(this);

@@ -46,6 +46,14 @@ public class SecondContainerAction {
             }
         }
 
+        if (interfaceId == DEPOSIT_BOX_CONTAINER_ID) {
+            if (player.getDepositBox().quantityOne) {
+                player.getDepositBox().deposit(id, 5);
+            } else {
+                player.getDepositBox().deposit(id, 1);
+            }
+        }
+
         if (interfaceId == EQUIPMENT_DISPLAY_ID) {
             final Item item = player.getEquipment().get(slot);
 

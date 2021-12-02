@@ -84,6 +84,8 @@ import static com.valinor.cache.graphics.widget.Widget.OPTION_MENU;
 
 public class Client extends GameApplet {
 
+    private String depositBoxOptionFirst = "1";
+
     public static int npcPetId = -1;
 
     private AccountManager accountManager;
@@ -2492,7 +2494,30 @@ public class Client extends GameApplet {
                                             if (child.id == 5064 && lootingBag) {
                                                 child.actions = new String[]{"Check", null, null, null, null, null, null};
                                             } else if (child.id == 5064) {
-                                                child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
+                                                if(child.parent == 5063) {
+                                                    child.actions = new String[]{null, null, null, null, null, null, null};
+                                                } else {
+                                                    child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
+                                                }
+                                            }
+                                            if(child.parent == 34417) {
+                                                switch (depositBoxOptionFirst) {
+                                                    case "1":
+                                                        child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
+                                                        break;
+                                                    case "5":
+                                                        child.actions = new String[]{"Store 5", "Store 1", "Store 10", "Store All", "Store X", null, null};
+                                                        break;
+                                                    case "10":
+                                                        child.actions = new String[]{"Store 10", "Store 1", "Store 5", "Store All", "Store X", null, null};
+                                                        break;
+                                                    case "X":
+                                                        child.actions = new String[]{"Store X", "Store 1", "Store 5", "Store 10", "Store All", null, null};
+                                                        break;
+                                                    case "All":
+                                                        child.actions = new String[]{"Store All", "Store 1", "Store 5", "Store 10", "Store X", null, null};
+                                                        break;
+                                                }
                                             }
                                             if (child.parent == 5382) {
                                                 if (amount != 0) {
@@ -11805,7 +11830,9 @@ public class Client extends GameApplet {
                                             } else {
                                                 RuneType runeType = RuneType.forId(itemId);
                                                 int amount = child.inventoryAmounts[slot];
-                                                if (child.parent == 5382 && amount == 0) {
+                                                if (widget_overlay_id == 34400 && child.parent == 5063 && child.id == 5064) {
+                                                    itemSprite.draw_transparent(w, h, 110);
+                                                } else if (child.parent == 5382 && amount == 0) {
                                                     itemSprite.draw_transparent(w, h, 110);
                                                 } else if (child.parent == 3824 && amount == 0) {
                                                     itemSprite.draw_transparent(w, h, 110);
@@ -16624,6 +16651,13 @@ public class Client extends GameApplet {
                     }
                     sendMessage(text, 20, "");
                     isDisplayed = true;
+                    opcode = -1;
+                    return true;
+                }
+
+                if (message.startsWith("depositbox")) {
+                    String[] args = message.split(" ");
+                    depositBoxOptionFirst = args[1];
                     opcode = -1;
                     return true;
                 }

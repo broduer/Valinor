@@ -59,6 +59,9 @@ public class InterfaceConstants {
     
     public static final int LOOTING_BAG_BANK_CONTAINER_ID = 26907;
 
+    public static final int DEPOSIT_BOX_WIDGET_ID = 34400;
+    public static final int DEPOSIT_BOX_CONTAINER_ID = 34417;
+
     /** The price checker interface */
     public static final int PRICE_CHECKER = 49500;
 

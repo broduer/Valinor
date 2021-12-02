@@ -44,6 +44,10 @@ public class FifthContainerAction {
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?");
             }
         }
+        if (interfaceId == DEPOSIT_BOX_CONTAINER_ID) {
+            player.setEnterSyntax(new DepositBoxX(id, slot));
+            player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
+        }
 
         if (interfaceId == INVENTORY_STORE) {
             if (priceChecking) {

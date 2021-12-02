@@ -487,6 +487,9 @@ public class LootingBag extends ItemContainer {
      * Handles depositing the entire looting bag.
      */
     public void depositLootingBag() {
+        if(player.getLootingBag().isEmpty()) {
+            player.message("You have no items in your looting bag.");
+        }
         for (int i = 0; i <= 27; i++) {
             var itemAt = player.getLootingBag().get(i);
             if(itemAt == null) continue; // Get item or continue

@@ -39,6 +39,14 @@ public class FourthContainerAction {
             return;
         }
 
+        if (interfaceId == DEPOSIT_BOX_CONTAINER_ID) {
+            if (player.getDepositBox().quantityAll || player.getDepositBox().quantityX) {
+                player.getDepositBox().deposit(id, 10);
+            } else {
+                player.getDepositBox().deposit(id, player.inventory().count(id));
+            }
+        }
+
         /* Looting bag */
         if (interfaceId == LOOTING_BAG_BANK_CONTAINER_ID) {
             Item lootingBagItem = player.getLootingBag().get(slot);
@@ -70,6 +78,7 @@ public class FourthContainerAction {
         if (interfaceId == INVENTORY_STORE) {
             boolean banking = player.getAttribOr(AttributeKey.BANKING, false);
             boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
+
             if (priceChecking) {
                 player.getPriceChecker().deposit(slot, Integer.MAX_VALUE);
             }

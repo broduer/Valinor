@@ -431,6 +431,9 @@ public class Buttons {
                 if (player.getPriceChecker().buttonActions(button)) {
                     return;
                 }
+                if(player.getDepositBox().buttonActions(button)) {
+                    return;
+                }
                 if (Emotes.doEmote(player, button)) {
                     return;
                 }

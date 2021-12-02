@@ -38,6 +38,11 @@ public class ObjectActions {
 
         final boolean bank = object.getId() == OPEN_CHEST_3194 || name.equalsIgnoreCase("Bank booth") || name.equalsIgnoreCase("Bank chest") || name.equalsIgnoreCase("Grand Exchange booth");
         if (clickAction == 1) {
+            if(name.equalsIgnoreCase("Bank deposit box")) {
+                player.getDepositBox().open();
+                return;
+            }
+
             if (name.equalsIgnoreCase("anvil")) {
                 if (object.tile().equals(2794, 2793)) {
                     player.smartPathTo(object.tile());
