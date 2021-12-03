@@ -67,22 +67,24 @@ public final class IronmanGroupHandler {
      * @return - true if created
      */
     public static Optional<IronmanGroup> createIronmanGroup(Player player) {
-        //Ultimate ironmans cannot create a group
-        if(player.ironMode() == IronMode.ULTIMATE) {
-            player.message("You cannot create a group as an ultimate ironman.");
-            return Optional.empty();
-        }
+        IronmanGroup newTeam = IronmanGroup.createGroup(player);
 
-        IronmanGroup newGroup = IronmanGroup.createGroup(player);
-        boolean alreadyExists = getGroupByName(player.getUsername()).isPresent() || getPlayersGroup(player).isPresent();
-        if(alreadyExists) {
+        if(getGroupByName(player.getUsername()).isPresent()) {
             player.message("You already have an active ironman group.");
             return Optional.empty();
         }
 
-        ironManGroups.add(newGroup);
+        if(getPlayersGroup(player).isPresent()) {
+            player.message("You already have an active ironman group.");
+            return Optional.empty();
+        }
+
+        ironManGroups.add(newTeam);
         player.message("Your own group has been successfully made.");
-        return Optional.of(newGroup);
+        player.message("Your group will become visible once you start inviting members.");
+        saveIronmanGroups();
+        GroupIronmanInterface.open(player);
+        return Optional.of(newTeam);
     }
 
     /**

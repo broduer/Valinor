@@ -9,6 +9,7 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,7 +112,12 @@ public class GroupIronmanInterface extends PacketInteraction {
         }
         if (button == 67018) {
             if(player.ironMode() == IronMode.NONE) {
-                player.message(Color.RED.wrap("Only ironman can make a group."));
+                player.message(Color.RED.wrap("Only an ironman can make a group."));
+                return true;
+            }
+            //Ultimate ironmans cannot create a group
+            if(player.ironMode() == IronMode.ULTIMATE) {
+                player.message("You cannot create a group as an ultimate ironman.");
                 return true;
             }
             IronmanGroupHandler.createIronmanGroup(player);
