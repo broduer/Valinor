@@ -243,9 +243,6 @@ public class PotionBrewing {
                         GroundItemHandler.createGroundItem(item);
                     }
 
-                    if (++ticks == amount) {
-                        stop();
-                    }
                 } else {
                     int vial = (pot == BrewablePotion.ANTIDOTE_PLUS || pot == BrewablePotion.ANTIDOTE_PP) ? COCONUT_MILK : VIAL_OF_WATER;
                     if (!player.inventory().contains(pot.herb) || !player.inventory().contains(vial)) {
@@ -266,9 +263,9 @@ public class PotionBrewing {
                         player.message("You put the " + pot.potName + " into the coconut milk.");
                     }
 
-                    if (++ticks == amount) {
-                        stop();
-                    }
+                }
+                if (++ticks == amount) {
+                    stop();
                 }
             }
 

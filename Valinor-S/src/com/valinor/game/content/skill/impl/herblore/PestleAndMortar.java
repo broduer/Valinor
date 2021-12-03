@@ -26,8 +26,9 @@ public class PestleAndMortar {
         CHARCOAL(973, 704, "You grind the charcoal to a powder."),
         ASHES(592, 8865, "You grind down the ashes."),
         BLUE_DRAGON_SCALE(243, 241, "You grind the dragon scale to dust."),
-        LAVA_SCALE(11992, 11994, ""),
-        SUPERIOR_DRAGON_BONES(22124, 21975, "You grind the item.");
+        LAVA_SCALE(11992, 11994, null),
+        CRYSTAL_DUST(23866, 23804, "You grind the crystal shard to dust."),
+        SUPERIOR_DRAGON_BONES(22124, 21975, "You grind the superior bones to dust.");
 
         private final int before;
         private final int after;
