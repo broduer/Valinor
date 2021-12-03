@@ -52,6 +52,9 @@ public class Crafting extends PacketInteraction {
         for (Gem gem : Gem.values()) {
             Crafting.addCraftable(gem);
         }
+        for (Amethyst amethyst : Amethyst.values()) {
+            Crafting.addCraftable(amethyst);
+        }
         for (Hide hide : Hide.values()) {
             Crafting.addCraftable(hide);
         }
@@ -152,7 +155,6 @@ public class Crafting extends PacketInteraction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item first, Item second) {
-
         if (Stringing.useItem(player, first, second)) {
             return true;
         }
@@ -491,7 +493,7 @@ public class Crafting extends PacketInteraction {
     }
 
     private static Action<Player> craft(Player player, Craftable craftable, CraftableItem item, int index, int amount) {
-        return new Action<Player>(player, 2, true) {
+        return new Action<>(player, 2, true) {
             int iterations = 0;
 
             @Override
@@ -505,8 +507,8 @@ public class Crafting extends PacketInteraction {
                     player.message(craftable.getProductionMessage());
                 }
 
-                if(craftable.getName().equalsIgnoreCase("Gem")) {
-                    if(item.getProduct().name().equalsIgnoreCase("Uncut dragonstone")) {
+                if (craftable.getName().equalsIgnoreCase("Gem")) {
+                    if (item.getProduct().name().equalsIgnoreCase("Uncut dragonstone")) {
                         player.getTaskBottleManager().increase(BottleTasks.CRAFT_DRAGONSTONES);
                     }
                 }

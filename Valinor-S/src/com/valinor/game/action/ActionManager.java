@@ -66,7 +66,7 @@ public final class ActionManager {
         //finally submit the action.
         TaskManager.submit(currentAction = action);
         stopwatch.stop();
-        if (NpcPerformance.DETAL_LOG_ENABLED && stopwatch.elapsed().toNanos() > 100_000) {
+        if (NpcPerformance.DETAL_LOG_ENABLED && stopwatch.elapsed().toNanos() > 500_000) {
             System.err.println("sketchy "+stopwatch.elapsed().toNanos()+" ns by "+currentAction.keyOrOrigin());
         }
     }

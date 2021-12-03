@@ -52,46 +52,28 @@ public enum Stringable implements Fletchable {
 
     @Override
     public int getAnimation() {
-        switch (this) {
-            case SHORTBOW:
-                return 6678;
-            case LONGBOW:
-                return 6684;
-            case OAK_SHORTBOW:
-                return 6679;
-            case OAK_LONGBOWBOW:
-                return 6685;
-            case WILLOW_SHORTBOW:
-                return 6680;
-            case WILLOW_LONGBOWBOW:
-                return 6686;
-            case MAPLE_SHORTBOW:
-                return 6681;
-            case MAPLE_LONGBOWBOW:
-                return 6687;
-            case YEW_SHORTBOW:
-                return 6682;
-            case YEW_LONGBOWBOW:
-                return 6688;
-            case MAGIC_SHORTBOW:
-                return 6683;
-            case MAGIC_LONGBOWBOW:
-                return 6689;
-            case BRONZE_CROSSBOW:
-                return 9454;
-            case STEEL_CROSSBOW:
-                return 9457;
-            case IRON_CROSSBOW:
-                return 9459;
-            case MITHRIL_CROSSBOW:
-                return 9461;
-            case ADAMANT_CROSSBOW:
-                return 9463;
-            case RUNITE_CROSSBOW:
-                return 9465;
-            default:
-                return 6678;
-        }
+        return switch (this) {
+            case SHORTBOW -> 6678;
+            case LONGBOW -> 6684;
+            case OAK_SHORTBOW -> 6679;
+            case OAK_LONGBOWBOW -> 6685;
+            case WILLOW_SHORTBOW -> 6680;
+            case WILLOW_LONGBOWBOW -> 6686;
+            case MAPLE_SHORTBOW -> 6681;
+            case MAPLE_LONGBOWBOW -> 6687;
+            case YEW_SHORTBOW -> 6682;
+            case YEW_LONGBOWBOW -> 6688;
+            case MAGIC_SHORTBOW -> 6683;
+            case MAGIC_LONGBOWBOW -> 6689;
+            case BRONZE_CROSSBOW -> 6671;
+            case BLURITE_CROSSBOW -> 6672;
+            case STEEL_CROSSBOW -> 6673;
+            case IRON_CROSSBOW -> 6674;
+            case MITHRIL_CROSSBOW -> 6675;
+            case ADAMANT_CROSSBOW -> 6676;
+            case RUNITE_CROSSBOW -> 6677;
+            case DRAGON_CROSSBOW -> 7961;
+        };
     }
 
     @Override
@@ -111,7 +93,7 @@ public enum Stringable implements Fletchable {
 
     @Override
     public String getProductionMessage() {
-        return null;
+        return "You add a string to the crossbow";
     }
 
     @Override
