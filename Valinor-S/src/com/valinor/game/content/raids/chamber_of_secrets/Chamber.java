@@ -161,6 +161,11 @@ public class Chamber extends PacketInteraction {
             }
 
             if(obj.getId() == LARGE_GRAVE_32629) {
+                boolean alreadyHas = player.getEquipment().contains(ELDER_WAND_RAIDS) || player.inventory().contains(ELDER_WAND_RAIDS);
+                if(alreadyHas) {
+                    player.message("You cannot take more then one elder wand.");
+                    return true;
+                }
                 player.animate(536);
                 if(player.inventory().hasFreeSlots(1)) {
                     player.inventory().add(new Item(ELDER_WAND_RAIDS));
