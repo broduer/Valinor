@@ -47,6 +47,7 @@ public class ChaosElemental extends CommonCombatMethod {
         if (item != null && player.inventory().hasCapacityFor(item)) {
             player.getEquipment().remove(item, EquipSlot.WEAPON, true);
             player.getEquipment().unequip(EquipSlot.WEAPON);
+            player.getCombat().setRangedWeapon(null);
             WeaponInterfaces.updateWeaponInterface(player);
             CombatSpecial.updateBar(player);
             player.setSpecialActivated(false);
