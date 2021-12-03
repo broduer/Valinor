@@ -22,7 +22,7 @@ public interface Droptable {
     }
 
     default void drop(Npc npc, Tile tile, Player player, Item item) {
-        if (player.nifflerPetOut() && player.nifflerCanStore() && item.getValue() > 0) {
+        if (player.nifflerPetOut() && player.nifflerCanStore(npc) && item.getValue() > 0) {
             player.nifflerStore(item);
         } else {
             GroundItemHandler.createGroundItem(new GroundItem(item, tile, player));

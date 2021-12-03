@@ -590,6 +590,11 @@ public class CombatFactory {
             return false;
         }
 
+        if(entity.locked()) {
+            Debugs.CMB.debug(entity, "cant attack locked", other, true);
+            return false;
+        }
+
         if (other.tile().level != entity.tile().level) {
             Debugs.CMB.debug(entity, "cant attack not on the same height level", other, true);
             return false;

@@ -346,7 +346,7 @@ public class ItemsOnDeath {
             //System.out.println("nifflerShouldLoot "+nifflerShouldLoot);
 
             //Niffler should only pick up items of monsters and players that you've killed.
-            if(theKiller.nifflerPetOut() && theKiller.nifflerCanStore() && nifflerShouldLoot) {
+            if(theKiller.nifflerPetOut() && theKiller.nifflerCanStore(player) && nifflerShouldLoot) {
                 if (item.getValue() > 0) {
                     theKiller.nifflerStore(item);
                 }

@@ -96,7 +96,7 @@ public class ItemDrops {
                     }
 
                     //Niffler
-                    if (player.nifflerPetOut() && player.nifflerCanStore()) {
+                    if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
                         player.nifflerStore(dropped);
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(dropped, tile, player));
@@ -112,7 +112,7 @@ public class ItemDrops {
                         item = item.note();
                     }
 
-                    if (player.nifflerPetOut() && player.nifflerCanStore() && tableItem.convert().getValue() > 0) {
+                    if (player.nifflerPetOut() && player.nifflerCanStore(npc) && tableItem.convert().getValue() > 0) {
                         player.nifflerStore(item);
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(item, tile, player));
@@ -152,7 +152,7 @@ public class ItemDrops {
                         //Drop the item to the ground instead of editing the item instance
                         GroundItem doubleDrop = new GroundItem(reward, tile, player);
 
-                        if (player.nifflerPetOut() && player.nifflerCanStore()) {
+                        if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
                             player.nifflerStore(doubleDrop.getItem());
                         } else {
                             GroundItemHandler.createGroundItem(doubleDrop);
@@ -166,7 +166,7 @@ public class ItemDrops {
                 BOSSES.log(player, COS_RAIDS_KEY, reward);
                 OTHER.log(player, npc.id(), reward);
 
-                if (player.nifflerPetOut() && player.nifflerCanStore() && reward.getValue() > 0) {
+                if (player.nifflerPetOut() && player.nifflerCanStore(npc) && reward.getValue() > 0) {
                     player.nifflerStore(reward);
                 } else {
                     GroundItemHandler.createGroundItem(new GroundItem(reward, tile, player));

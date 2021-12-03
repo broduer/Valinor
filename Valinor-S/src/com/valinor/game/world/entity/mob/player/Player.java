@@ -2666,8 +2666,7 @@ public class Player extends Mob {
         return this.<ArrayList<Item>>getAttribOr(AttributeKey.NIFFLER_ITEMS_STORED, new ArrayList<Item>()).size();
     }
 
-    public boolean nifflerCanStore() {
-        Mob target = this.getCombat().lastTarget;
+    public boolean nifflerCanStore(Mob target) {
         if (target != null && target.isPlayer()) {
             Player playerTarg = (Player) target;
             var playerIsIron = ironMode.isIronman() || ironMode.isHardcoreIronman();
