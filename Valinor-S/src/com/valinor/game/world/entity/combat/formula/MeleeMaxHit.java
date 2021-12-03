@@ -193,19 +193,19 @@ public class MeleeMaxHit {
 
         if (player.getCombat().getFightType().getAttackType() == AttackType.CRUSH) {
             if (player.getEquipment().hasAt(EquipSlot.HEAD, INQUISITORS_GREAT_HELM)) {
-                D *= 0.05;//0.5% damage boost
+                D *= 1.05;//0.5% damage boost
             }
 
             if (player.getEquipment().hasAt(EquipSlot.BODY, INQUISITORS_HAUBERK)) {
-                D *= 0.05;//0.5% damage boost
+                D *= 1.05;//0.5% damage boost
             }
 
             if (player.getEquipment().hasAt(EquipSlot.LEGS, INQUISITORS_PLATESKIRT)) {
-                D *= 0.05;//0.5% damage boost
+                D *= 1.05;//0.5% damage boost
             }
 
             if (player.getEquipment().hasAt(EquipSlot.HEAD, INQUISITORS_GREAT_HELM) || player.getEquipment().hasAt(EquipSlot.BODY, INQUISITORS_HAUBERK) || player.getEquipment().hasAt(EquipSlot.LEGS, INQUISITORS_PLATESKIRT)) {
-                D *= 0.01;//1% damage boost for whole set
+                D *= 1.01;//1% damage boost for whole set
             }
         }
 
