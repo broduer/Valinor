@@ -8,6 +8,8 @@ import com.valinor.game.content.areas.edgevile.Mac;
 import com.valinor.game.content.skill.Skillable;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.syntax.impl.SetLevel;
+import com.valinor.game.content.teleport.TeleportType;
+import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -618,8 +620,62 @@ public class Skills {
                 player.message("Clicked skill: " + skill.toString());
             }
 
-            if (!skill.canSetLevel() && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-                return true;
+            if (!skill.canSetLevel()) {
+                if(player.getPlayerRights().isDeveloperOrGreater(player)) {
+                    player.getDialogueManager().start(new Dialogue() {
+                        @Override
+                        protected void start(Object... parameters) {
+                            send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Set level", "Teleport");
+                            setPhase(0);
+                        }
+
+                        @Override
+                        protected void select(int option) {
+                            if(isPhase(0)) {
+                                if(option == 1) {
+                                    player.getInterfaceManager().close();
+                                    player.setEnterSyntax(new SetLevel(skill.getId()));
+                                    player.getPacketSender().sendEnterAmountPrompt("Please enter your desired " + skill.getName() + " level below.");
+                                }
+                                if(option == 2) {
+                                    stop();
+                                    //Skills with no dialogues but a specific teleport.
+                                    if(skill.getDialogue() == null) {
+                                        if(skill == Skill.SLAYER) {
+                                            if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                                Teleports.basicTeleport(player, new Tile(3107,3506));
+                                            }
+                                            return;
+                                        }
+
+                                        if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                            Teleports.basicTeleport(player, new Tile(2791,3537));
+                                        }
+                                        return;
+                                    }
+                                    player.getDialogueManager().start(skill.getDialogue());
+                                }
+                            }
+                        }
+                    });
+                    return true;
+                } else {
+                    //Skills with no dialogues but a specific teleport.
+                    if(skill.getDialogue() == null) {
+                        if(skill == Skill.SLAYER) {
+                            if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                Teleports.basicTeleport(player, new Tile(3107,3506));
+                            }
+                            return true;
+                        }
+
+                        if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                            Teleports.basicTeleport(player, new Tile(2791,3537));
+                        }
+                        return true;
+                    }
+                    player.getDialogueManager().start(skill.getDialogue());
+                }
             }
             if (isCombatMaxed || player.getPlayerRights().isDeveloperOrGreater(player)) {
                 if (CombatFactory.inCombat(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {

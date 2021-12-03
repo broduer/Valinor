@@ -11,7 +11,7 @@
     "x": 2584,
     "y": 3419,
     "walkRange": 0,
-    "direction":"E"
+    "direction": "E"
   },
   // Banker
   {
@@ -19,7 +19,7 @@
     "x": 2584,
     "y": 3421,
     "walkRange": 0,
-    "direction":"E"
+    "direction": "E"
   },
   // Man
   {
@@ -338,6 +338,33 @@
     "id": 1520,
     "x": 2606,
     "y": 3410,
+    "walkRange": 0
+  },
+  {
+    "name": "Master fisher",
+    "id": 2913,
+    "x": 2611,
+    "y": 3392,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Kylie Minnow",
+    "id": 7727,
+    "x": 2599,
+    "y": 3425,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
+  },
+  {
+    "name": "Kylie Minnow",
+    "id": 7728,
+    "x": 2614,
+    "y": 3446,
+    "z": 0,
+    "direction": "S",
     "walkRange": 0
   }
 ]

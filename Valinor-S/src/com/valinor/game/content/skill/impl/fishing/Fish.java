@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.fishing;
 
+import com.valinor.util.ItemIdentifiers;
+
 import java.util.ArrayList;
 
 /**
@@ -33,7 +35,8 @@ public enum Fish {
     MANTA_RAY(81, 389, 146.0, "manta ray", "a", 1300), // Trawler
     ANGLERFISH(82, 13439, 120.0, "anglerfish", "an", 1200),
     DARK_CRAB(85, 11934, 130.0, "dark crab", "a", 1100),
-    SACRED_EEL(87, 13339, 105.0, "sacred eel", "an", 1000)
+    SACRED_EEL(87, 13339, 105.0, "sacred eel", "an", 1000),
+    MINNOWS(82, 21356, 26.0, "minnow", "a",1200),
     ;
 
     public int lvl;

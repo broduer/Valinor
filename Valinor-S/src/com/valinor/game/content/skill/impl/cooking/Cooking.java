@@ -31,8 +31,8 @@ import static com.valinor.util.ObjectIdentifiers.*;
  */
 public class Cooking extends PacketInteraction {
 
-    private static int cookingChance(Player player, Cookable type) {
-        int points = 60;
+    private static int cookingChance(Player player, Cookable type, GameObject obj) {
+        int points = obj.getId() == CLAY_OVEN_21302 ? 63 : 60;
         int diff = player.skills().levels()[Skills.COOKING] - type.lvl;
         return Math.min(100, points + diff);
     }
@@ -109,12 +109,13 @@ public class Cooking extends PacketInteraction {
         return false;
     }
 
-    private static final List<Integer> RANGES = Arrays.asList(RANGE_27517, COOKING_RANGE_16893, RANGE_26181, COOKING_RANGE_4172, FIRE_26185, FIREPLACE_8712, STOVE_12269, SULPHUR_VENT, COOKING_POT_26180, COOKING_POT_12969, COOKING_RANGE, RANGE_7183, BONFIRE, UNCOOKING_POT, FIRE_26185);
+    private static final List<Integer> RANGES = Arrays.asList(CLAY_OVEN_21302, RANGE_27517, COOKING_RANGE_16893, RANGE_26181, COOKING_RANGE_4172, FIRE_26185, FIREPLACE_8712, STOVE_12269, SULPHUR_VENT, COOKING_POT_26180, COOKING_POT_12969, COOKING_RANGE, RANGE_7183, BONFIRE, UNCOOKING_POT, FIRE_26185);
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
         for (int range : RANGES) {
             if (object.getId() == range) {
+                player.faceObj(object);
                 int id = player.getAttribOr(AttributeKey.ITEM_ID, -1);
                 GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
                 Cookable food = Cookable.get(id);
@@ -217,7 +218,7 @@ public class Cooking extends PacketInteraction {
                 // Cooking skillcape stops burning all food.
                 if (player.getEquipment().containsAny(9801, 9802, 10658)
                     || player.getEquipment().wearingMaxCape()
-                    || Utils.rollDie(100, cookingChance(player, food))
+                    || Utils.rollDie(100, cookingChance(player, food, obj))
                     || food == Cookable.SEAWEED) {
 
                     player.inventory().add(new Item(food.cooked), true);

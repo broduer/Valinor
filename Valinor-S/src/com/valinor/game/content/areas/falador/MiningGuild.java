@@ -7,6 +7,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.NpcIdentifiers;
@@ -17,6 +18,8 @@ import com.valinor.util.chainedwork.Chain;
  * mei 06, 2020
  */
 public class MiningGuild extends PacketInteraction {
+
+    public static final Area MINERAL_AREA = new Area(3013, 9691, 3059, 9756, 0);
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

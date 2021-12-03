@@ -22,6 +22,7 @@ public enum FishSpotType {
     DARK_CRAB(619, 301, "You need a Lobster Pot and Dark Bait to catch these Dark Crabs.", 11940, new ArrayList<>(List.of(Fish.DARK_CRAB)), "You attempt to catch a Dark Crab.", "You don't have any Dark Fishing Bait."),
     ANGLERGISH(623, 307, "You need a Fishing Rod to bait these fish.", 13431, new ArrayList<>(List.of(Fish.ANGLERFISH, Fish.RAINBOW)), "You cast our your line...", "You don't have any Fishing Bait left."),
     INFERNAL_EEL(623, 1585, "You need an Oily Fishing Rod to bait these fish.", 313, new ArrayList<>(List.of(Fish.INFERNAL_EEL)), "You cast out your line...", "You don't have any Fishing Bait left."),
+    MINNOWS(621, 303, "You need a net to catch these fish.", -1, new ArrayList<>(List.of(Fish.MINNOWS)), "You cast out your net...")
     ;
 
     public int anim;

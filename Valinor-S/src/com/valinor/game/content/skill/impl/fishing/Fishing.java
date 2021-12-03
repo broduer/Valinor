@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill.impl.fishing;
 
+import com.google.gson.Gson;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -17,7 +18,6 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
-import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,6 +26,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.NpcIdentifiers.FISHING_SPOT_7731;
 
 /**
  * Created by Bart on 11/21/2015.
@@ -41,9 +42,10 @@ public class Fishing {
     }
 
     public static boolean onNpcOption1(Player player, Npc npc) {
+
         for (FishSpotDef fishSpot : fishSpots) {
             if (npc.id() == fishSpot.spot.id) {
-                fish(player, fishSpot, fishSpot.spot.types.get(0));
+                fish(player, fishSpot.spot.types.get(0), npc);
                 return true;
             }
         }
@@ -53,7 +55,7 @@ public class Fishing {
     public static boolean onNpcOption2(Player player, Npc npc) {
         for (FishSpotDef fishSpot : fishSpots) {
             if (npc.id() == fishSpot.spot.id) {
-                fish(player, fishSpot, fishSpot.spot.types.get(1));
+                fish(player, fishSpot.spot.types.get(1), npc);
                 return true;
             }
         }
@@ -67,7 +69,7 @@ public class Fishing {
         return (int) Math.min(85, (points + diff * specialToolMod));
     }
 
-    public static void fish(Player player, FishSpotDef spotDef, FishSpotType selectedAction) {
+    public static void fish(Player player, FishSpotType selectedAction, Npc npc) {
 
         // Level requirement
         if (player.skills().level(Skills.FISHING) < selectedAction.levelReq()) {
@@ -132,12 +134,25 @@ public class Fishing {
 
                 Fish weCatch = selectedAction.randomFish(player.skills().level(Skills.FISHING));
 
-                if(weCatch == Fish.SHARK) {
-                    player.getTaskBottleManager().increase(BottleTasks.CATCH_SHARKS);
+                if(npc.id() == FISHING_SPOT_7731 && (npc.minnowsFish || (npc.minnowsFish = World.getWorld().rollDie(100)))) {
+                    npc.graphic(1387);
+
+                    if(player.inventory().contains(weCatch.item)) {
+                        player.getInventory().remove(weCatch.item, World.getWorld().random(20, 26));
+                        player.message("A flying fish jumps up and eats some of your minnows!");
+                    }
                 }
 
                 if (Utils.rollDie(100, catchChance(player, weCatch, overrideTool ? fishingToolDef.get() : FishingToolType.NONE))) {
-                    player.message("You catch "+weCatch.prefix+" "+weCatch.fishName+".");
+                    if(weCatch == Fish.MINNOWS) {
+                        player.message("You catch some minnows!");
+                    } else {
+                        player.message("You catch " + weCatch.prefix + " " + weCatch.fishName + ".");
+                    }
+
+                    if(weCatch == Fish.SHARK) {
+                        player.getTaskBottleManager().increase(BottleTasks.CATCH_SHARKS);
+                    }
 
                     // Do we need to remove bait?
                     if (selectedAction.baitItem != -1) {
@@ -151,7 +166,7 @@ public class Fishing {
                         unlockHeron(player);
                     }
 
-                    player.inventory().add(new Item(weCatch.item), true);
+                    player.inventory().add(new Item(weCatch.item, weCatch == Fish.MINNOWS ? World.getWorld().random(10, 26) : 1), true);
                     player.skills().addXp(Skills.FISHING, weCatch.xp);
 
                     if (World.getWorld().rollDie(100, 1)) {

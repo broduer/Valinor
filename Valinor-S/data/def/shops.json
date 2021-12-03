@@ -4530,5 +4530,29 @@
         "value": 5
       }
     ]
+  },
+  {
+    "shopId": 50,
+    "name": "Crafting Shop",
+    "currency": "COINS",
+    "restock": true,
+    "noiron": false,
+    "sellType": "NONE",
+    "scroll": 0,
+    "items": [
+
+    ]
+  },
+  {
+    "shopId": 51,
+    "name": "Fletching Shop",
+    "currency": "COINS",
+    "restock": true,
+    "noiron": false,
+    "sellType": "NONE",
+    "scroll": 0,
+    "items": [
+
+    ]
   }
 ]

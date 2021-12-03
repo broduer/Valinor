@@ -15,7 +15,8 @@ public enum FishSpot {
     DARK_CRAB(1536, new ArrayList<>(List.of(FishSpotType.DARK_CRAB))),
     MONKFISH(4316, new ArrayList<>(List.of(FishSpotType.MONKFISH, FishSpotType.HARPOON_SHARK))),
     ANGLERFISH(6825, new ArrayList<>(List.of(FishSpotType.ANGLERGISH))),
-    INFERNAL_EEL(7676, new ArrayList<>(List.of(FishSpotType.INFERNAL_EEL, FishSpotType.INFERNAL_EEL)));
+    INFERNAL_EEL(7676, new ArrayList<>(List.of(FishSpotType.INFERNAL_EEL, FishSpotType.INFERNAL_EEL))),
+    MINNOWS(7731, new ArrayList<>(List.of(FishSpotType.MINNOWS)));
 
     public int id;
     public ArrayList<FishSpotType> types;

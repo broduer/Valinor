@@ -560,6 +560,7 @@ public class PlayerSave {
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
                 player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
                 player.putAttrib(ACHIEVEMENT_POINTS, details.achievementPoints);
+                player.putAttrib(KYLIE_MINNOW_DIALOGUE_STARTED, details.kylieMinnowDialogueStarted);
                 return true;
             }
         }
@@ -966,6 +967,7 @@ public class PlayerSave {
         private final boolean combatMaxed;
         private final int fightCaveWave;
         private final int achievementPoints;
+        private final boolean kylieMinnowDialogueStarted;
 
         public String password() {
             return password;
@@ -1334,6 +1336,7 @@ public class PlayerSave {
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
             fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);
             achievementPoints = Player.getAttribIntOr(player, ACHIEVEMENT_POINTS, 0);
+            kylieMinnowDialogueStarted = Player.getAttribBooleanOr(player, KYLIE_MINNOW_DIALOGUE_STARTED, false);
         }
 
         public void parseDetails() throws Exception {

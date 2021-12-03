@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill.impl.mining;
 
+import com.valinor.game.content.areas.falador.MiningGuild;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -39,18 +40,19 @@ import static com.valinor.util.ObjectIdentifiers.*;
 public class Mining extends PacketInteraction {
 
     public enum Rock {
-        CLAY(434, "clay", 1, 15, 5.0, 3, 4160),
-        COPPER(436, "copper", 1, 35, 17.5, 5, 4160),
-        TIN(438, "tin", 1, 35, 17.5, 5, 4160),
-        IRON(440, "iron", 15, 75, 35.0, 10, 4160),
-        SILVER(442, "silver", 20, 85, 40.0, 20, 4160),
-        COAL(453, "coal", 30, 110, 50.0, 30, 2000),
-        GOLD(444, "gold", 40, 180, 65.0, 40, 2000),
-        MITHRIL(447, "mithril", 55, 210, 80.0, 60, 1500),
-        LOVAKITE(13356, "lovakite", 65, 210, 10.0, 40, 1300),
-        ADAMANT(449, "adamant", 70, 310, 95.0, 300, 1300),
-        RUNE(451, "rune", 85, 380, 125.0, 1500, 1000),
-        JAIL_BLURITE(668, "blurite", 1, 320, 0.0, 3, 1000000);
+        CLAY(434, "clay", 1, 15, 5.0, 3, 74160),
+        COPPER(436, "copper", 1, 35, 17.5, 5, 74160),
+        TIN(438, "tin", 1, 35, 17.5, 5, 74160),
+        IRON(440, "iron", 15, 75, 35.0, 10, 74160),
+        SILVER(442, "silver", 20, 85, 40.0, 20, 74160),
+        COAL(453, "coal", 30, 110, 50.0, 30, 29064),
+        GOLD(444, "gold", 40, 180, 65.0, 40, 29664),
+        MITHRIL(447, "mithril", 55, 210, 80.0, 60, 14832),
+        LOVAKITE(13356, "lovakite", 65, 210, 10.0, 40, 24556),
+        ADAMANT(449, "adamant", 70, 310, 95.0, 240, 9328),
+        RUNE(451, "rune", 85, 380, 125.0, 720, 4237),
+        JAIL_BLURITE(668, "blurite", 1, 320, 0.0, 3, 1000000),
+        AMETHYST(21347, "amethyst", 92, 1000, 246.0, 120, 2500);
 
         public int ore;
         public String rockName;
@@ -72,27 +74,30 @@ public class Mining extends PacketInteraction {
     }
 
     public enum Pickaxe {
-        BRONZE(1265, 5, 625, 1),
-        IRON(1267, 9, 626, 1),
-        STEEL(1269, 14, 627, 6),
-        BLACK(12297, 21, 3866, 11),
-        MITHRIL(1273, 26, 629, 21),
-        ADAMANT(1271, 30, 628, 31),
-        RUNE(1275, 36, 624, 41),
-        DRAGON(11920, 42, 7139, 61),
-        THIRD_AGE(20014, 42, 7283, 61),
-        DRAGON_OR(12797, 42, 642, 61),
-        INFERNAL(13243, 42, 4482, 61);
+        BRONZE(1265, 5, 625, 6753, 1),
+        IRON(1267, 9, 626, 6754, 1),
+        STEEL(1269, 14, 627, 6755, 6),
+        BLACK(12297, 21, 3866, 3866, 11),
+        MITHRIL(1273, 26, 629, 6757, 21),
+        ADAMANT(1271, 30, 628, 6756,31),
+        RUNE(1275, 36, 624,6752, 41),
+        DRAGON(11920, 42, 7139, 6758,61),
+        THIRD_AGE(20014, 42, 7283,7282, 61),
+        DRAGON_OR(12797, 42, 642,335, 61),
+        INFERNAL(13243, 42, 4482, 4481,61),
+        CRYSTAL(23680, 45, 8329, 8329,81);
 
         public int id;
         public int points;
         public int anim;
+        public int crystalAnim;
         public int level;
 
-        Pickaxe(int id, int points, int anim, int level) {
+        Pickaxe(int id, int points, int anim, int crystalAnim, int level) {
             this.id = id;
             this.points = points;
             this.anim = anim;
+            this.crystalAnim = crystalAnim;
             this.level = level;
         }
 
@@ -160,7 +165,8 @@ public class Mining extends PacketInteraction {
             DialogueManager.sendStatement(player, "You need a Mining level of " + rock.level + " to mine this rock.");
             return;
         }
-        player.animate(pick.get().anim);
+        player.faceObj(obj);
+        player.animate(rock == Rock.AMETHYST ? pick.get().crystalAnim : pick.get().anim);
         Chain.bound(player).runFn(1, () -> player.message("You swing your pick at the rock."));
 
         int gemOdds = player.getEquipment().containsAny(1706, 1708, 1710, 1712, 11976, 11978) ? 3 : 1;
@@ -170,7 +176,7 @@ public class Mining extends PacketInteraction {
             @Override
             public void execute() {
                 // check obj
-                if (!ObjectManager.objWithTypeExists(10, obj.tile()) && !ObjectManager.objWithTypeExists(11, obj.tile())) {
+                if (!ObjectManager.objWithTypeExists(10, obj.tile()) && !ObjectManager.objWithTypeExists(11, obj.tile()) && !ObjectManager.objWithTypeExists(0, obj.tile())) {
                     player.animate(-1);
                     stop();
                     return;
@@ -249,7 +255,7 @@ public class Mining extends PacketInteraction {
                     stop();
                     return;
                 }
-                player.animate(pick.get().anim);
+                player.animate(finalRock == Rock.AMETHYST ? pick.get().crystalAnim : pick.get().anim);
             }
         });
     }
@@ -400,27 +406,29 @@ public class Mining extends PacketInteraction {
 
     static {
         rocks = Arrays.asList(
-            new RegisterableRock(ROCKS_11362, Mining.Rock.CLAY),
-            new RegisterableRock(ROCKS_11161, Mining.Rock.COPPER, ROCKS_11391),
-            new RegisterableRock(ROCKS_10943, Mining.Rock.COPPER),
-            new RegisterableRock(ROCKS_11364, Mining.Rock.IRON),
-            new RegisterableRock(ROCKS_11365, Mining.Rock.IRON, ROCKS_11391),
-            new RegisterableRock(ROCKS_11360, Mining.Rock.TIN),
-            new RegisterableRock(ROCKS_11361, Mining.Rock.TIN, ROCKS_11391),
-            new RegisterableRock(ROCKS_11366, Mining.Rock.COAL, ROCKS_11391),
-            new RegisterableRock(ROCKS_11367, Mining.Rock.COAL),
-            new RegisterableRock(ROCKS_11368, Mining.Rock.SILVER),
-            new RegisterableRock(ROCKS_11369, Mining.Rock.SILVER, ROCKS_11391),
-            new RegisterableRock(ROCKS_11370, Mining.Rock.GOLD),
-            new RegisterableRock(ROCKS_11371, Mining.Rock.GOLD, ROCKS_11391),
-            new RegisterableRock(ROCKS_11372, Mining.Rock.MITHRIL),
-            new RegisterableRock(ROCKS_11373, Mining.Rock.MITHRIL, ROCKS_11391),
-            new RegisterableRock(ROCKS_28596, Mining.Rock.LOVAKITE),
-            new RegisterableRock(ROCKS_28597, Mining.Rock.LOVAKITE, ROCKS_11391),
-            new RegisterableRock(ROCKS_11374, Mining.Rock.ADAMANT),
-            new RegisterableRock(ROCKS_11375, Mining.Rock.ADAMANT, ROCKS_11391),
-            new RegisterableRock(ROCKS_11376, Mining.Rock.RUNE),
-            new RegisterableRock(ROCKS_11377, Mining.Rock.RUNE, ROCKS_11391));
+            new RegisterableRock(ROCKS_11362, Rock.CLAY),
+            new RegisterableRock(ROCKS_11161, Rock.COPPER, ROCKS_11391),
+            new RegisterableRock(ROCKS_10943, Rock.COPPER),
+            new RegisterableRock(ROCKS_11364, Rock.IRON),
+            new RegisterableRock(ROCKS_11365, Rock.IRON, ROCKS_11391),
+            new RegisterableRock(ROCKS_11360, Rock.TIN),
+            new RegisterableRock(ROCKS_11361, Rock.TIN, ROCKS_11391),
+            new RegisterableRock(ROCKS_11366, Rock.COAL, ROCKS_11391),
+            new RegisterableRock(ROCKS_11367, Rock.COAL),
+            new RegisterableRock(ROCKS_11368, Rock.SILVER),
+            new RegisterableRock(ROCKS_11369, Rock.SILVER, ROCKS_11391),
+            new RegisterableRock(ROCKS_11370, Rock.GOLD),
+            new RegisterableRock(ROCKS_11371, Rock.GOLD, ROCKS_11391),
+            new RegisterableRock(ROCKS_11372, Rock.MITHRIL),
+            new RegisterableRock(ROCKS_11373, Rock.MITHRIL, ROCKS_11391),
+            new RegisterableRock(ROCKS_28596, Rock.LOVAKITE),
+            new RegisterableRock(ROCKS_28597, Rock.LOVAKITE, ROCKS_11391),
+            new RegisterableRock(ROCKS_11374, Rock.ADAMANT),
+            new RegisterableRock(ROCKS_11375, Rock.ADAMANT, ROCKS_11391),
+            new RegisterableRock(ROCKS_11376, Rock.RUNE),
+            new RegisterableRock(ROCKS_11377, Rock.RUNE, ROCKS_11391),
+            new RegisterableRock(CRYSTALS, Rock.AMETHYST, EMPTY_WALL),
+            new RegisterableRock(CRYSTALS_11389, Rock.AMETHYST, EMPTY_WALL));
     }
 
     @Override

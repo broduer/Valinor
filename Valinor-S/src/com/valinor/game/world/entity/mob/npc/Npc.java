@@ -90,7 +90,7 @@ public class Npc extends Mob {
     public static boolean TARG_SWITCH_ON = true;
 
     public String spawnStack = "";
-
+    public boolean minnowsFish;
     private int id;
     private Tile spawnTile;
     private boolean ancientSpawn;
@@ -163,6 +163,11 @@ public class Npc extends Mob {
     public Npc spawn(boolean respawns) {
         World.getWorld().registerNpc(this);
         this.respawns = respawns;
+        return this;
+    }
+
+    public Npc spawn() {
+        World.getWorld().registerNpc(this);
         return this;
     }
 

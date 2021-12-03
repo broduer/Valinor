@@ -205,6 +205,34 @@ public class Pickpocketing extends PacketInteraction {
                 new LootItem(5303, 1, 1), //Dwarf weed seed
                 new LootItem(5304, 1, 1)  //Torstol seed
             )),
+        MARTIN_THE_MASTER_GARDENER(38, 43.0, 386, 5, 3, 27540,"Martin the Master Gardener",
+            new LootTable().addTable(1,
+                new LootItem(5318, 1, 4, 8), //Potato seed
+                new LootItem(5319, 1, 3, 5), //Onion seed
+                new LootItem(5324, 1, 3, 5), //Cabbage seed
+                new LootItem(5322, 1, 2, 5), //Tomato seed
+                new LootItem(5320, 1, 2, 5), //Sweetcorn seed
+                new LootItem(5096, 1, 5), //Marigold seed
+                new LootItem(5097, 1, 5), //Rosemary seed
+                new LootItem(5098, 1, 5), //Nasturtium seed
+                new LootItem(5291, 1, 5), //Guam seed
+                new LootItem(5292, 1, 5), //Marrentill seed
+                new LootItem(5293, 1, 5), //Tarromin seed
+                new LootItem(5294, 1, 5), //Harralander seed
+                new LootItem(5323, 1, 3), //Strawberry seed
+                new LootItem(5321, 1, 3), //Watermelon seed
+                new LootItem(5100, 1, 3), //Limpwurt seed
+                new LootItem(5295, 1, 2), //Ranarr seed
+                new LootItem(5296, 1, 2), //Toadflax seed
+                new LootItem(5297, 1, 2), //Irit seed
+                new LootItem(5298, 1, 1), //Avantoe seed
+                new LootItem(5299, 1, 1), //Kwuarm seed
+                new LootItem(5300, 1, 1), //Snapdragon seed
+                new LootItem(5301, 1, 1), //Cadantine seed
+                new LootItem(5302, 1, 1), //Lantadyme seed
+                new LootItem(5303, 1, 1), //Dwarf weed seed
+                new LootItem(5304, 1, 1)  //Torstol seed
+            )),
         GUARD(40, 46.8, 386, 5, 2, 23000,"guard's",
             new LootTable().addTable(1,
                 new LootItem(COINS_995, 1500, 2000, 1) //Coins

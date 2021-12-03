@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.mob.player;
 
+import com.valinor.game.content.teleport.skill_teles.*;
+import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.util.Utils;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
@@ -17,29 +19,29 @@ import java.util.stream.Collectors;
  */
 public enum Skill {
 
-    ATTACK(0,10001),
-    DEFENCE(1,10007),
-    STRENGTH(2,10004),
-    HITPOINTS(3,10002),
-    RANGED(4,10010),
-    PRAYER(5,10013),
-    MAGIC(6,10016),
-    COOKING(7,10012),
-    WOODCUTTING(8,10018),
-    FLETCHING(9,10017),
-    FISHING(10,10009),
-    FIREMAKING(11,10015),
-    CRAFTING(12,10014),
-    SMITHING(13,10006),
-    MINING(14,10003),
-    HERBLORE(15,10008),
-    AGILITY(16,10005),
-    THIEVING(17,10011),
-    SLAYER(18,10020),
-    FARMING(19,10021),
-    RUNECRAFTING(20,10019),
-    HUNTER(21,10023),
-    CONSTRUCTION(22,10022);
+    ATTACK(0,10001,null),
+    DEFENCE(1,10007,null),
+    STRENGTH(2,10004,null),
+    HITPOINTS(3,10002,null),
+    RANGED(4,10010,null),
+    PRAYER(5,10013,null),
+    MAGIC(6,10016,null),
+    COOKING(7,10012, new CookingTeleportsD()),
+    WOODCUTTING(8,10018, new WoodcuttingTeleportsD()),
+    FLETCHING(9,10017,null),
+    FISHING(10,10009, new FishingTeleportsD()),
+    FIREMAKING(11,10015,new FiremakingTeleportsD()),
+    CRAFTING(12,10014,null),
+    SMITHING(13,10006, new SmithingTeleportsD()),
+    MINING(14,10003, new MiningTeleportsD()),
+    HERBLORE(15,10008,null),
+    AGILITY(16,10005, new AgilityTeleportsD()),
+    THIEVING(17,10011, new ThievingTeleportsD()),
+    SLAYER(18,10020,null),
+    FARMING(19,10021, new FarmingTeleportsD()),
+    RUNECRAFTING(20,10019, new RunecraftingTeleportsD()),
+    HUNTER(21,10023, new HunterTeleportsD()),
+    CONSTRUCTION(22,10022,null);
 
     public static final Set<Skill> ALL = EnumSet.allOf(Skill.class);
     private static final Map<Integer, Skill> BUTTON_TO_SKILL = ALL.stream().collect(Collectors.toMap(Skill::getButton, Function.identity()));
@@ -91,9 +93,10 @@ public enum Skill {
         return id <= 6;
     }
 
-    Skill(int id, int button) {
+    Skill(int id, int button, Dialogue dialogue) {
         this.id = id;
         this.button = button;
+        this.dialogue = dialogue;
     }
 
     /** The identification for this skill in the skills array. */
@@ -120,6 +123,12 @@ public enum Skill {
      */
     public int getButton() {
         return button;
+    }
+
+    private final Dialogue dialogue;
+
+    public Dialogue getDialogue() {
+        return dialogue;
     }
 
     /**

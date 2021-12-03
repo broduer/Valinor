@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    KYLIE_MINNOW_DIALOGUE_STARTED("kylie_minnow_dialogue_started", AttribType.BOOLEAN),
+
     DONATOR_MYSTERY_BOXES_OPENED("donator_mystery_boxes_opened", AttribType.INTEGER),
     MYSTERY_TICKETS_OPENED("mystery_tickets_opened", AttribType.INTEGER),
     MYSTERY_CHESTS_OPENED("mystery_chests_opened", AttribType.INTEGER),

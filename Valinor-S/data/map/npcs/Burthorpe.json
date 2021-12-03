@@ -367,10 +367,24 @@
   },
   // Helemos
   {
-    "id": 6481,
+    "id": 5045,
+    "x": 2790,
+    "y": 3542,
+    "walkRange": 2
+  },
+  //Kaqemeex
+  {
+    "id": 5810,
     "x": 2791,
-    "y": 3540,
-    "walkRange": 3
+    "y": 3536,
+    "walkRange": 2
+  },
+  //Master crafter
+  {
+    "id": 3212,
+    "x": 2795,
+    "y": 3539,
+    "walkRange": 2
   }
-  //Mac
+  //Hickton
 ]
