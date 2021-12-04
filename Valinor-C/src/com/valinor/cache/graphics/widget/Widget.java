@@ -1,7 +1,6 @@
 package com.valinor.cache.graphics.widget;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -4382,8 +4381,8 @@ public class Widget {
     public static void addItemModel(int interfaceId, int itemId, int w, int h, int zoom) {
         Widget widget = cache[interfaceId] = new Widget();
         ItemDefinition itemDef = ItemDefinition.get(itemId);
-        widget.modelRotation1 = itemDef.rotation_y;
-        widget.modelRotation2 = itemDef.rotation_x;
+        widget.modelRotation1 = itemDef.xan2d;
+        widget.modelRotation2 = itemDef.yan2d;
         widget.type = 6;
         widget.model_type = 4;
         widget.model_id = itemId;

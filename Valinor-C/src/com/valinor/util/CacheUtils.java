@@ -186,18 +186,18 @@ public final class CacheUtils {
                 if (dumpByName) {
                     itemName = ItemDefinition.get(id).name;
                     if (itemInstance != null) {
-                        if (itemInstance.stackable) {
+                        if (itemInstance.stackable == 1) {
                             itemIsCoinType =  true;
                         }
                     }
                 }
                 dumpImage(image, itemName);
                 if (itemIsCoinType) {
-                    for (int index = 0; index < itemInstance.stack_variant_id.length; index ++) {
-                        if (itemInstance.stack_variant_id[index] <= 0) {
+                    for (int index = 0; index < itemInstance.countobj.length; index ++) {
+                        if (itemInstance.countobj[index] <= 0) {
                             continue;
                         }
-                        image = ItemSpriteFactory.get_item_sprite(itemInstance.stack_variant_id[index], 1, 0);
+                        image = ItemSpriteFactory.get_item_sprite(itemInstance.countobj[index], 1, 0);
                         if (image == null) {
                             continue;
                         }

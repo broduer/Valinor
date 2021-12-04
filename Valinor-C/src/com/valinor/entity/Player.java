@@ -121,7 +121,7 @@ public final class Player extends Entity {
             }
             
             if (this.player_appearance[bodyPart] >= 512 && this.player_appearance[bodyPart] - 512 < ItemDefinition.length) {
-                int team_cape = ItemDefinition.get(this.player_appearance[bodyPart] - 512).team_id;
+                int team_cape = ItemDefinition.get(this.player_appearance[bodyPart] - 512).team;
                 if (team_cape != 0) {
                     this.team_id = team_cape;
                 }

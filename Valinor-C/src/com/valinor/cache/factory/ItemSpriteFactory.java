@@ -52,14 +52,14 @@ public class ItemSpriteFactory {
                 //System.out.println("[ERROR] ItemSpriteFactory get_item_sprite - def == null! " + id);
             }
 
-            if (def.stack_variant_id == null)
+            if (def.countobj == null)
                 stack_size = -1;
 
             if (stack_size > 1) {
                 int stack_item_id = -1;
                 for (int index = 0; index < 10; index++)
-                    if (stack_size >= def.stack_variant_size[index] && def.stack_variant_size[index] != 0)
-                        stack_item_id = def.stack_variant_id[index];
+                    if (stack_size >= def.countco[index] && def.countco[index] != 0)
+                        stack_item_id = def.countobj[index];
 
                 if (stack_item_id != -1)
                     def = ItemDefinition.get(stack_item_id);
@@ -71,8 +71,8 @@ public class ItemSpriteFactory {
                 return null;
 
             SimpleImage noted_sprite = null;
-            if (def.noted_item_id != -1) {
-                noted_sprite = get_item_sprite(def.unnoted_item_id, 10, -1);
+            if (def.notedTemplate != -1) {
+                noted_sprite = get_item_sprite(def.note, 10, -1);
 
                 if (noted_sprite == null)
                     return null;
@@ -96,7 +96,7 @@ public class ItemSpriteFactory {
             Rasterizer2D.init(w, h, item.pixels, new float[w * h]);
             Rasterizer2D.draw_filled_rect(0, 0, w, h, 0);
             Rasterizer3D.set_clip();
-            int zoom2d = def.model_zoom;
+            int zoom2d = def.zoom2d;
 
             if (border == -1)
                 zoom2d = (int) ((double) zoom2d * 1.5D);
@@ -109,10 +109,10 @@ public class ItemSpriteFactory {
                 zoom2d *= 1.5D;
             }
 
-            int sine = Rasterizer3D.SINE[def.rotation_y] * zoom2d >> 16;
-            int cosine = Rasterizer3D.COSINE[def.rotation_y] * zoom2d >> 16;
+            int sine = Rasterizer3D.SINE[def.xan2d] * zoom2d >> 16;
+            int cosine = Rasterizer3D.COSINE[def.xan2d] * zoom2d >> 16;
 
-            model.render_2D(def.rotation_x, def.rotation_z, def.rotation_y, def.translate_x, sine + model.model_height / 2 + def.translate_y, cosine + def.translate_y);
+            model.render_2D(def.yan2d, def.zan2d, def.xan2d, def.xOffset2d, sine + model.model_height / 2 + def.yOffset2d, cosine + def.yOffset2d);
             item.highlight(1);
             if (border == 0xffffff) {
                 item.highlight(16777215);//16777215 = white
@@ -122,7 +122,7 @@ public class ItemSpriteFactory {
             }
 
             Rasterizer2D.init(w, h, item.pixels, new float[w * h]);
-            if (def.noted_item_id != -1) {
+            if (def.notedTemplate != -1) {
                 int old_w = noted_sprite.max_width;
                 int old_h = noted_sprite.max_height;
                 noted_sprite.max_width = w;
@@ -145,7 +145,7 @@ public class ItemSpriteFactory {
             Rasterizer3D.line_offsets = line_offsets;
 
             Rasterizer3D.mapped = true;
-            if (def.stackable)
+            if (def.stackable == 1)
                 item.max_width = w + 1;
             else
                 item.max_width = w;
@@ -189,14 +189,14 @@ public class ItemSpriteFactory {
                 System.out.println("[ERROR] ItemSpriteFactory get_item_sprite - def == null! " + id);
             }
 
-            if (def.stack_variant_id == null)
+            if (def.countobj == null)
                 stack_size = -1;
 
             if (stack_size > 1) {
                 int stack_item_id = -1;
                 for (int index = 0; index < 10; index++)
-                    if (stack_size >= def.stack_variant_size[index] && def.stack_variant_size[index] != 0)
-                        stack_item_id = def.stack_variant_id[index];
+                    if (stack_size >= def.countco[index] && def.countco[index] != 0)
+                        stack_item_id = def.countobj[index];
 
                 if (stack_item_id != -1)
                     def = ItemDefinition.get(stack_item_id);
@@ -208,8 +208,8 @@ public class ItemSpriteFactory {
                 return null;
 
             SimpleImage noted_sprite = null;
-            if (def.noted_item_id != -1) {
-                noted_sprite = get_item_sprite(def.unnoted_item_id, 10, -1);
+            if (def.notedTemplate != -1) {
+                noted_sprite = get_item_sprite(def.note, 10, -1);
 
                 if (noted_sprite == null)
                     return null;
@@ -233,16 +233,16 @@ public class ItemSpriteFactory {
             Rasterizer2D.init(32, 32, item.pixels, new float[32 * 32]);
             Rasterizer2D.draw_filled_rect(0, 0, 32, 32, 0);
             Rasterizer3D.set_clip();
-            int zoom = def.model_zoom;
+            int zoom = def.zoom2d;
             if (highlight == -1)
                 zoom = (int) ((double) zoom * 1.5D);
             if (highlight > 0)
                 zoom = (int) ((double) zoom * 1.04D);
 
-            int sine = Rasterizer3D.SINE[def.rotation_y] * zoom >> 16;
-            int cosine = Rasterizer3D.COSINE[def.rotation_y] * zoom >> 16;
+            int sine = Rasterizer3D.SINE[def.xan2d] * zoom >> 16;
+            int cosine = Rasterizer3D.COSINE[def.xan2d] * zoom >> 16;
 
-            model.render_2D(def.rotation_x, def.rotation_z, def.rotation_y, def.translate_x, sine + model.model_height / 2 + def.translate_y, cosine + def.translate_y);
+            model.render_2D(def.yan2d, def.zan2d, def.xan2d, def.xOffset2d, sine + model.model_height / 2 + def.yOffset2d, cosine + def.yOffset2d);
             item.highlight(1);
             if(highlight == 0xffffff) {
                 item.highlight(16777215);//16777215 = white
@@ -252,7 +252,7 @@ public class ItemSpriteFactory {
             }
 
             Rasterizer2D.init(32, 32, item.pixels, new float[32 * 32]);
-            if (def.noted_item_id != -1) {
+            if (def.notedTemplate != -1) {
                 int old_w = noted_sprite.max_width;
                 int old_h = noted_sprite.max_height;
                 noted_sprite.max_width = 32;
@@ -275,7 +275,7 @@ public class ItemSpriteFactory {
             Rasterizer3D.line_offsets = line_offsets;
 
             Rasterizer3D.mapped = true;
-            if (def.stackable)
+            if (def.stackable == 1)
                 item.max_width = 33;
             else
                 item.max_width = 32;

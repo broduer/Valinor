@@ -55,7 +55,6 @@ import com.valinor.sound.Track;
 import com.valinor.util.*;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -78,7 +77,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 import static com.valinor.cache.graphics.widget.Widget.OPTION_MENU;
 
@@ -1917,7 +1915,7 @@ public class Client extends GameApplet {
         for (Item item = (Item) list.first(); item != null; item = (Item) list.next()) {
             ItemDefinition itemDef = ItemDefinition.get(item.id);
             long value = itemDef.cost;
-            if (itemDef.stackable) {
+            if (itemDef.stackable == 1) {
                 value *= item.quantity + (long) 1;
             }
             if (value > value_priority) {
@@ -2410,9 +2408,9 @@ public class Client extends GameApplet {
                                     } else {
                                         if (child.hasActions) {
                                             for (int l3 = 4; l3 >= 3; l3--)
-                                                if (itemDef.widget_actions != null
-                                                    && itemDef.widget_actions[l3] != null) {
-                                                    menuActionText[menuActionRow] = itemDef.widget_actions[l3]
+                                                if (itemDef.inventoryActions != null
+                                                    && itemDef.inventoryActions[l3] != null) {
+                                                    menuActionText[menuActionRow] = itemDef.inventoryActions[l3]
                                                         + " <col=FF9040>" + itemDef.name;
                                                     if (l3 == 3)
                                                         menuActionTypes[menuActionRow] = 493;
@@ -2446,14 +2444,14 @@ public class Client extends GameApplet {
                                             secondMenuAction[menuActionRow] = child.id;
                                             menuActionRow++;
                                         }
-                                        if (child.hasActions && itemDef.widget_actions != null) {
+                                        if (child.hasActions && itemDef.inventoryActions != null) {
                                             for (int i4 = 2; i4 >= 0; i4--)
-                                                if (itemDef.widget_actions[i4] != null) {
-                                                    menuActionText[menuActionRow] = itemDef.widget_actions[i4] + " <col=FF9040>" + itemDef.name;
-                                                    if (itemDef.widget_actions[i4].contains("Wield")
-                                                        || itemDef.widget_actions[i4].contains("Wear")
-                                                        || itemDef.widget_actions[i4].contains("Value")
-                                                        || itemDef.widget_actions[i4].contains("Examine")) {
+                                                if (itemDef.inventoryActions[i4] != null) {
+                                                    menuActionText[menuActionRow] = itemDef.inventoryActions[i4] + " <col=FF9040>" + itemDef.name;
+                                                    if (itemDef.inventoryActions[i4].contains("Wield")
+                                                        || itemDef.inventoryActions[i4].contains("Wear")
+                                                        || itemDef.inventoryActions[i4].contains("Value")
+                                                        || itemDef.inventoryActions[i4].contains("Examine")) {
                                                         HoverMenuManager.showMenu = true;
                                                         HoverMenuManager.hintName = itemDef.name;
                                                         HoverMenuManager.hintId = itemDef.id;
@@ -7130,8 +7128,8 @@ public class Client extends GameApplet {
                             }
                         } else {
                             for (int j3 = 4; j3 >= 0; j3--)
-                                if (itemDef.scene_actions != null && itemDef.scene_actions[j3] != null) {
-                                    menuActionText[menuActionRow] = itemDef.scene_actions[j3] + " <col=FF9040>"
+                                if (itemDef.groundActions != null && itemDef.groundActions[j3] != null) {
+                                    menuActionText[menuActionRow] = itemDef.groundActions[j3] + " <col=FF9040>"
                                         + itemDef.name;
                                     if (j3 == 0)
                                         menuActionTypes[menuActionRow] = 652;
@@ -7766,7 +7764,7 @@ public class Client extends GameApplet {
                                     if (def == null) continue;
                                     //some checks
                                     Model model;
-                                    if (def.male_equip_main > 0) {
+                                    if (def.maleModel > 0) {
                                         model = def.get_equipped_model(0);
                                     } else {
                                         model = def.get_widget_model(0);
@@ -7798,7 +7796,7 @@ public class Client extends GameApplet {
                             ItemDefinition def = ItemDefinition.get(id);
                             //some checks
                             Model model;
-                            if (def.male_equip_main > 0) {
+                            if (def.maleModel > 0) {
                                 model = def.get_equipped_model(0);
                             } else {
                                 model = def.get_widget_model(0);
@@ -10656,7 +10654,7 @@ public class Client extends GameApplet {
             VariableParameter.init(config_archive);
             VariableBits.init(config_archive);
             ItemDefinition.init(config_archive);
-            ItemDefinition.membership_required = isMembers;
+            ItemDefinition.members = isMembers;
             long unpacking_configs_time_elapsed = System.currentTimeMillis() - unpacking_configs_start_time;
             if (ClientConstants.DISPLAY_CLIENT_LOAD_TIME_VERBOSE) {
                 System.out.println("It took " + unpacking_configs_time_elapsed + " ms to unpack the configs.");
@@ -12365,7 +12363,7 @@ public class Client extends GameApplet {
                                 ItemDefinition item = ItemDefinition.get(child.inventoryItemId[slot] - 1);
                                 bars.setConsume(StatusBars.Restore.get(item.id));
                                 String name = item.name;
-                                if (item.stackable || child.inventoryAmounts[slot] != 1)
+                                if (item.stackable == 1 || child.inventoryAmounts[slot] != 1)
                                     name = name + " x" + intToKOrMilLongName(child.inventoryAmounts[slot]);
                                 int spriteX = child_x_in_bounds + column * (115 + child.inventoryMarginX);
                                 int spriteY = child_y_in_bounds + row * (12 + child.inventoryMarginY);
@@ -13967,7 +13965,7 @@ public class Client extends GameApplet {
                     Widget other = Widget.cache[script[counter++]];
                     int item = script[counter++];
                     if (item >= 0 && item < ItemDefinition.length
-                        && (!ItemDefinition.get(item).membership_required || isMembers)) {
+                        && (!ItemDefinition.get(item).members || isMembers)) {
                         for (int slot = 0; slot < other.inventoryItemId.length; slot++) {
                             if (other.inventoryItemId[slot] == item + 1) {
                                 value += other.inventoryAmounts[slot];
@@ -17113,9 +17111,9 @@ public class Client extends GameApplet {
                     ItemDefinition definition = ItemDefinition.get(item);
                     Widget.cache[widget].model_type = 4;
                     Widget.cache[widget].model_id = item;
-                    Widget.cache[widget].modelRotation1 = definition.rotation_y;
-                    Widget.cache[widget].modelRotation2 = definition.rotation_x;
-                    Widget.cache[widget].modelZoom = (definition.model_zoom * 100 / scale);
+                    Widget.cache[widget].modelRotation1 = definition.xan2d;
+                    Widget.cache[widget].modelRotation2 = definition.yan2d;
+                    Widget.cache[widget].modelZoom = (definition.zoom2d * 100 / scale);
                 }
                 opcode = -1;
                 return true;
