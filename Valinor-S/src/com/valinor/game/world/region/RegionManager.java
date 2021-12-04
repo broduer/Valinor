@@ -553,7 +553,7 @@ public class RegionManager {
                 Buffer objectStream = new Buffer(oFileData);
                 int objectId = -1;
                 int incr;
-                while ((incr = objectStream.getUSmart()) != 0) {
+                while ((incr = objectStream.readUnsignedIntSmartShortCompat()) != 0) {
                     objectId += incr;
                     int location = 0;
                     int incr2;

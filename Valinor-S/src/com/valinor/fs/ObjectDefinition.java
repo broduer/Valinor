@@ -243,6 +243,8 @@ public class ObjectDefinition implements Definition {
             }
         } else if (code == 60) {
             anInt2286 = buffer.readUShort();
+        } else if (code == 61) {
+            buffer.readUShort();
         } else if (code == 62) {
             vflip = true;
         } else if (code == 64) {

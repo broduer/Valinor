@@ -656,6 +656,8 @@ public class NpcDefinition implements Definition {
             render5 = buffer.readUShort();
             render6 = buffer.readUShort();
             render7 = buffer.readUShort();
+        } else if (code == 18) {
+            buffer.readUShort();
         } else if (code >= 30 && code < 35) {
             options[code - 30] = buffer.readString();
             if (options[code - 30].equalsIgnoreCase(null)) {

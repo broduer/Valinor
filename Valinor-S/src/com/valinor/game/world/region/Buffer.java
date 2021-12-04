@@ -66,12 +66,26 @@ public class Buffer {
     }
 
     public int getUSmart() {
-        int i = buffer[offset] & 0xff;
-        if (i < 128) {
-            return getUByte();
-        } else {
-            return getUShort() - 32768;
+        int peek = buffer[offset] & 0xFF;
+        return peek < 128 ? getUByte() : getUShort() - 0x8000;
+    }
+
+    public int readUnsignedIntSmartShortCompat() {
+        int var1 = 0;
+
+        int var2;
+        for (var2 = readUnsignedShortSmart(); var2 == 32767; var2 = this.readUnsignedShortSmart())
+        {
+            var1 += 32767;
         }
+
+        var1 += var2;
+        return var1;
+    }
+
+    public int readUnsignedShortSmart() {
+        int peek = buffer[offset] & 0xFF;
+        return peek < 128 ? getUByte() : getUShort() - 0x8000;
     }
 
     public int readSmart() {

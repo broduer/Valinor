@@ -356,14 +356,6 @@ public class ItemDefinition implements Definition {
             name = "Artio pet";
         } else if(id == 22517) {
             name = "Saeldor shard";
-        } else if(id == 25887) {
-            name = "Bow of faerdhinen";
-        } else if(id == 25881) {
-            name = "Blade of saeldor (t)";
-        } else if(id == 25916) {
-            name = "Dragon hunter crossbow (t)";
-        } else if(id == 25936) {
-            name = "Pharaoh's hilt";
         } else if(id == 24950) {
             name = "Cyan partyhat";
         } else if(id == 24951) {
@@ -433,16 +425,6 @@ public class ItemDefinition implements Definition {
             name = "Pegasian boots (or)";
         } else if (id == 30182) {
             name = "Eternal boots (or)";
-        } else if (id == 24780) {
-            name = "Amulet of blood fury";
-        } else if (id == 25731) {
-            name = "Holy sanguinesti staff";
-        } else if (id == 25734) {
-            name = "Holy ghrazi rapier";
-        } else if (id == 25736) {
-            name = "Holy scythe of vitur";
-        } else if (id == 25739) {
-            name = "Sanguine scythe of vitur";
         } else if (id == 25753) {
             name = "99 lamp";
         } else if (id == 17000) {
@@ -868,10 +850,10 @@ public class ItemDefinition implements Definition {
             manhead2 = buffer.readUShort();
         } else if (code == 93) {
             womanhead2 = buffer.readUShort();
+        } else if (code == 94) {
+            buffer.readUShort();
         } else if (code == 95) {
             zan2d = buffer.readUShort();
-        } else if (code == 96) {
-            dummyitem = buffer.readByte() == 1;
         } else if (code == 97) {
             notelink = buffer.readUShort();
         } else if (code == 98) {
