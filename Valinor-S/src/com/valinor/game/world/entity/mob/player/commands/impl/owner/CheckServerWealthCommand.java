@@ -541,7 +541,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == DARK_ARMADYL_CHAINSKIRT) {
                                         storage.sumDarkArmadylChainskirt.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == BOW_OF_FAERDHINEN || (item.getId() >= BOW_OF_FAERDHINEN_1 && item.getId() <= BOW_OF_FAERDHINEN_7)) {
+                                    if(item.getId() == BOW_OF_FAERDHINEN || (item.getId() >= 25884 && item.getId() <= 25896)) {
                                         storage.sumBowOfFaerdhinen.addAndGet(1L * item.getAmount());
                                     }
                                 }

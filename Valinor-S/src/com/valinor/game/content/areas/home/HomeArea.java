@@ -56,7 +56,7 @@ public class HomeArea extends PacketInteraction {
                 }
                 return true;
             }
-            if (object.getId() == ORNATE_REJUVENATION_POOL) {
+            if (object.getId() == ORNATE_POOL_OF_REJUVENATION) {
                 Chain.bound(null).name("RejuvenationPoolTask").runFn(1, () -> player.animate(7305)).then(2, () -> {
                     player.lock();
                     player.message("<col=" + Color.BLUE.getColorValue() + ">You have restored your hitpoints, run energy and prayer.");

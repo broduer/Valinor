@@ -29,8 +29,15 @@ public class WaterbirthDungeon extends PacketInteraction {
                 return true;
             }
 
-            if (obj.getId() == KINGS_LADDER_10230 || obj.getId() == 3831) {
+            //Climb the ladder down into the boss room.
+            if (obj.getId() == 3831) {
                 Ladders.ladderDown(player, new Tile(2900, 4449, 0), true);
+                return true;
+            }
+
+            //Climb the ladder to get out of the boss room.
+            if(obj.getId() == KINGS_LADDER) {
+                Ladders.ladderUp(player, new Tile(1910, 4367),true);
                 return true;
             }
 

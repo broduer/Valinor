@@ -23,7 +23,7 @@ public class MysteryChest extends PacketInteraction {
 
     //1/10
     private final List<Item> RARE_REWARDS = Arrays.asList(
-        new Item(ELYSIAN_SPIRIT_SHIELD), new Item(TWISTED_BOW), new Item(SCYTHE_OF_VITUR), new Item(DARK_BANDOS_CHESTPLATE), new Item(DARK_BANDOS_TASSETS), new Item(BLADE_OF_SAELDOR_8),
+        new Item(ELYSIAN_SPIRIT_SHIELD), new Item(TWISTED_BOW), new Item(SCYTHE_OF_VITUR), new Item(DARK_BANDOS_CHESTPLATE), new Item(DARK_BANDOS_TASSETS), new Item(BLADE_OF_SAELDOR_C_25882),
         new Item(ANCESTRAL_ROBE_BOTTOM_I), new Item(ANCESTRAL_ROBE_TOP_I), new Item(SALAZAR_SLYTHERINS_LOCKET));
 
     //1/5
@@ -33,7 +33,7 @@ public class MysteryChest extends PacketInteraction {
 
     //rolls under 5
     private final List<Item> COMMON_REWARDS = Arrays.asList(
-        new Item(BOW_OF_FAERDHINEN_3), new Item(DARK_ARMADYL_HELMET), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(ANCESTRAL_HAT_I), new Item(LAVA_DHIDE_BODY),
+        new Item(BOW_OF_FAERDHINEN), new Item(DARK_ARMADYL_HELMET), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(ANCESTRAL_HAT_I), new Item(LAVA_DHIDE_BODY),
         new Item(LAVA_DHIDE_CHAPS), new Item(LAVA_DHIDE_COIF));
 
 

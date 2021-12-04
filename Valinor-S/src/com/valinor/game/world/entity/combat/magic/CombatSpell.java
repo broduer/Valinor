@@ -26,7 +26,6 @@ import com.valinor.util.timers.TimerKey;
 
 import java.util.Optional;
 
-import static com.valinor.util.CustomItemIdentifiers.HOLY_SANGUINESTI_STAFF;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**

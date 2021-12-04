@@ -18,6 +18,7 @@ import java.util.Set;
 import static com.valinor.game.content.mechanics.break_items.BreakItemsOnDeath.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.HOLY_SANGUINESTI_STAFF;
 
 /**
  * Represents an item.
@@ -684,8 +685,6 @@ public class Item implements Cloneable {
             add(SAELDOR_SHARD);
             add(PHARAOHS_HILT);
             add(DRAGON_HUNTER_CROSSBOW_T);
-            add(BOW_OF_FAERDHINEN_3);
-            add(BLADE_OF_SAELDOR_8);
             add(CRYSTAL_BODY);
             add(CRYSTAL_HELM);
             add(CRYSTAL_LEGS);

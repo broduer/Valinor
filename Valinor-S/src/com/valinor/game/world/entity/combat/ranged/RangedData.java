@@ -221,7 +221,7 @@ public class RangedData {
         ARMADYL_CROSSBOW(new int[]{ItemIdentifiers.ARMADYL_CROSSBOW}, RangedWeaponType.ARMADYL_CROSSBOW, true),
         DRAGON_CROSSBOW(new int[] {ItemIdentifiers.DRAGON_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         DRAGON_HUNTER_CROSSBOW(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
-        DRAGON_HUNTER_CROSSBOW_T(new int[] {CustomItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T}, RangedWeaponType.CROSSBOWS, true),
+        DRAGON_HUNTER_CROSSBOW_T(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T}, RangedWeaponType.CROSSBOWS, true),
 
         HUNTERS_CROSSBOW(new int[] {ItemIdentifiers.HUNTERS_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         KARILS_CROSSBOW(new int[]{ItemIdentifiers.KARILS_CROSSBOW}, RangedWeaponType.KARILS_CROSSBOW, true),
@@ -263,7 +263,7 @@ public class RangedData {
         
         CRAWS_BOW(new int[]{ItemIdentifiers.CRAWS_BOW_U, ItemIdentifiers.CRAWS_BOW, CRAWS_BOW_C, BEGINNER_CRAWS_BOW, HWEEN_CRAWS_BOW}, RangedWeaponType.CRAWS_BOW, false),
 
-        BOW_OF_FAERDHINEN(new int[]{CustomItemIdentifiers.BOW_OF_FAERDHINEN, BOW_OF_FAERDHINEN_1, BOW_OF_FAERDHINEN_2, BOW_OF_FAERDHINEN_3, BOW_OF_FAERDHINEN_4, BOW_OF_FAERDHINEN_5, BOW_OF_FAERDHINEN_6, BOW_OF_FAERDHINEN_7}, RangedWeaponType.BOW_OF_FAERDHINEN, false),
+        BOW_OF_FAERDHINEN(new int[]{ItemIdentifiers.BOW_OF_FAERDHINEN}, RangedWeaponType.BOW_OF_FAERDHINEN, false),
 
         CRYSTAL_BOW(new int[]{ItemIdentifiers.NEW_CRYSTAL_BOW, ItemIdentifiers.NEW_CRYSTAL_BOW_4213, ItemIdentifiers.CRYSTAL_BOW_FULL, ItemIdentifiers.CRYSTAL_BOW_910, ItemIdentifiers.CRYSTAL_BOW_810, ItemIdentifiers.CRYSTAL_BOW_710, ItemIdentifiers.CRYSTAL_BOW_610, ItemIdentifiers.CRYSTAL_BOW_510, ItemIdentifiers.CRYSTAL_BOW_410, ItemIdentifiers.CRYSTAL_BOW_310, ItemIdentifiers.CRYSTAL_BOW_210, ItemIdentifiers.CRYSTAL_BOW_110, ItemIdentifiers.NEW_CRYSTAL_BOW_I, ItemIdentifiers.CRYSTAL_BOW_FULL_I, ItemIdentifiers.CRYSTAL_BOW_910_I, ItemIdentifiers.CRYSTAL_BOW_810_I, ItemIdentifiers.CRYSTAL_BOW_710_I, ItemIdentifiers.CRYSTAL_BOW_610_I, ItemIdentifiers.CRYSTAL_BOW_510_I, ItemIdentifiers.CRYSTAL_BOW_410_I, ItemIdentifiers.CRYSTAL_BOW_310_I, ItemIdentifiers.CRYSTAL_BOW_210_I, ItemIdentifiers.CRYSTAL_BOW_110_I, ItemIdentifiers.NEW_CRYSTAL_BOW_16888, ItemIdentifiers.NEW_CRYSTAL_BOW_I_16889}, RangedWeaponType.CRYSTAL_BOW, false),
 

@@ -1745,11 +1745,11 @@ public class CombatFactory {
         var ammoName = ammoId == -1 ? "" : new Item(ammoId).definition(World.getWorld()).name.toLowerCase();
         var crystalBow = (weaponId >= 4212 && weaponId <= 4223);
         var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW || weaponId == HWEEN_CRAWS_BOW;
-        var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_1 && weaponId <= BOW_OF_FAERDHINEN_7);
+        var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= 25884 && weaponId <= 25896);
 
         WeaponType weaponType = player.getCombat().getWeaponType();
 
-        if (!bowOfFaerdhinen && !crawsBow && !crystalBow && ((weaponType == WeaponType.BOW || weaponType == WeaponType.CROSSBOW) && ammoName == "")) {
+        if (!bowOfFaerdhinen && !crawsBow && !crystalBow && ((weaponType == WeaponType.BOW || weaponType == WeaponType.CROSSBOW) && ammoName.equals(""))) {
             player.message("There's no ammo left in your quiver.");
             return false;
         }

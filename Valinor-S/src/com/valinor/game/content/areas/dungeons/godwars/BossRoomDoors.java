@@ -4,15 +4,13 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.PacketInteraction;
 
-import static com.valinor.util.ObjectIdentifiers.*;
-
 public class BossRoomDoors extends PacketInteraction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
             // Zamorak
-            if (obj.getId() == BIG_DOOR_26505) {
+            if (obj.getId() == 26505) {
                 if (player.tile().y > 5332) {
                     player.teleport(2925, 5331, 2);
                 } else if (player.tile().y == 5331) {
@@ -22,7 +20,7 @@ public class BossRoomDoors extends PacketInteraction {
             }
 
             // Bandos
-            if (obj.getId() == BIG_DOOR_26503) {
+            if (obj.getId() == 26503) {
                 if (player.tile().x < 2863) {
                     player.teleport(2864, 5354, 2);
                 } else if (player.tile().x == 2864) {
@@ -32,7 +30,7 @@ public class BossRoomDoors extends PacketInteraction {
             }
 
             // Saradomin
-            if (obj.getId() == BIG_DOOR_26504) {
+            if (obj.getId() == 26504) {
                 if (player.tile().x >= 2909) {
                     player.teleport(2907, 5265, 0);
                 } else if (player.tile().x == 2907) {
@@ -42,7 +40,7 @@ public class BossRoomDoors extends PacketInteraction {
             }
 
             // Armadyl
-            if (obj.getId() == BIG_DOOR_26502) {
+            if (obj.getId() == 26502) {
                 if (player.tile().y <= 5294) {
                     player.teleport(2839, 5296, 2);
                 } else if (player.tile().y == 5296) {

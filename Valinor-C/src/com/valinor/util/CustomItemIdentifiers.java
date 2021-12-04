@@ -141,22 +141,6 @@ public class CustomItemIdentifiers {
     public static final int ARTIO_PET = 27003;
     public static final int SAELDOR_SHARD = 22517;
     public static final int PHARAOHS_HILT = 25936;
-    public static final int DRAGON_HUNTER_CROSSBOW_T = 25916;
-    public static final int BOW_OF_FAERDHINEN = 25866;
-    public static final int BOW_OF_FAERDHINEN_1 = 25883;
-    public static final int BOW_OF_FAERDHINEN_2 = 25885;
-    public static final int BOW_OF_FAERDHINEN_3 = 25887;
-    public static final int BOW_OF_FAERDHINEN_4 = 25889;
-    public static final int BOW_OF_FAERDHINEN_5 = 25891;
-    public static final int BOW_OF_FAERDHINEN_6 = 25893;
-    public static final int BOW_OF_FAERDHINEN_7 = 25895;
-    public static final int BLADE_OF_SAELDOR_2 = 25870;
-    public static final int BLADE_OF_SAELDOR_3 = 25871;
-    public static final int BLADE_OF_SAELDOR_4 = 25873;
-    public static final int BLADE_OF_SAELDOR_5 = 25875;
-    public static final int BLADE_OF_SAELDOR_6 = 25877;
-    public static final int BLADE_OF_SAELDOR_7 = 25879;
-    public static final int BLADE_OF_SAELDOR_8 = 25881;
 
     public static final int DARK_ELDER_MAUL = 24956;
     public static final int DARK_ELDER_MAUL_UNTRADEABLE = 24958;
@@ -179,10 +163,6 @@ public class CustomItemIdentifiers {
     public static final int VIGGORAS_CHAINMACE_C = 29000;
     public static final int CRAWS_BOW_C = 29001;
     public static final int THAMMARONS_STAFF_C = 29002;
-    public static final int HOLY_SANGUINESTI_STAFF = 25731;
-    public static final int HOLY_GHRAZI_RAPIER = 25734;
-    public static final int HOLY_SCYTHE_OF_VITUR = 25736;
-    public static final int SANGUINE_SCYTHE_OF_VITUR = 25739;
     public static final int LVL_LAMP = 25753;
     public static final int ZRIAWK = 28663;
     public static final int LAVA_DHIDE_COIF = 30074;

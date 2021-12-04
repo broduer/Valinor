@@ -381,7 +381,7 @@ public class ItemCombination extends PacketInteraction {
                         }
                         player.inventory().remove(new Item(SAELDOR_SHARD,1000), true);
                         player.inventory().remove(new Item(BLADE_OF_SAELDOR), true);
-                        player.inventory().add(new Item(BLADE_OF_SAELDOR_8), true);
+                        player.inventory().add(new Item(BLADE_OF_SAELDOR_C_25882), true);
                         player.message("You carefully attach the shards to the blade to give it an additional boost.");
                         stop();
                     } else if(option == 2) {

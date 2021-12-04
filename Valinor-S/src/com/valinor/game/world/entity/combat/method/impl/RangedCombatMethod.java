@@ -62,7 +62,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             var ammoId = player.getEquipment().getId(EquipSlot.AMMO);
             var crystalBow = (weaponId >= 4212 && weaponId <= 4223);
             var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW || weaponId == HWEEN_CRAWS_BOW;
-            var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_1 && weaponId <= BOW_OF_FAERDHINEN_7);
+            var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= 25884 && weaponId <= 25896);
             var blowpipe = weaponId == 12926 || weaponId == 12924;
             var chins = weaponType == WeaponType.CHINCHOMPA;
             var ballista = weaponId == 19478 || weaponId == 19481;

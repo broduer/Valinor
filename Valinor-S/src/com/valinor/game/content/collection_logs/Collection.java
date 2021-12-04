@@ -22,6 +22,7 @@ import static com.valinor.util.CustomItemIdentifiers.NIFFLER;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T;
 import static com.valinor.util.NpcIdentifiers.THE_NIGHTMARE_9430;
 
 /**
@@ -143,7 +144,7 @@ public enum Collection {
         //Drops
         new Item(VETION_JR), new Item(RING_OF_THE_GODS), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD)),
 
-    VORKATH(AttributeKey.VORKATHS_KILLED, LogType.BOSSES, "Vorkath", new int[]{NpcIdentifiers.VORKATH}, AttributeKey.VORKATH_LOG_CLAIMED, new Item[]{new Item(VORKATHS_HEAD_21907), new Item(DRAGON_HUNTER_CROSSBOW_T)},
+    VORKATH(AttributeKey.VORKATHS_KILLED, LogType.BOSSES, "Vorkath", new int[]{NpcIdentifiers.VORKATH}, AttributeKey.VORKATH_LOG_CLAIMED, new Item[]{new Item(DRAGON_HUNTER_CROSSBOW_T)},
         //Drops
         new Item(VORKI), new Item(VORKATHS_HEAD), new Item(DRACONIC_VISAGE), new Item(SKELETAL_VISAGE), new Item(JAR_OF_DECAY), new Item(DRAGONBONE_NECKLACE)),
 
@@ -202,17 +203,17 @@ public enum Collection {
 
     SKORPIOS(AttributeKey.SKORPIOS_KILLED, LogType.BOSSES, "Skorpios", new int[]{CustomNpcIdentifiers.SKORPIOS}, AttributeKey.SKORPIOS_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_HELMET), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_HELMET)
     ),
 
     ARACHNE(AttributeKey.ARACHNE_KILLED, LogType.BOSSES, "Arachne", new int[]{CustomNpcIdentifiers.ARACHNE}, AttributeKey.ARACHNE_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHAINSKIRT), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHAINSKIRT)
     ),
 
     ARTIO(AttributeKey.ARTIO_KILLED, LogType.BOSSES, "Artio", new int[]{CustomNpcIdentifiers.ARTIO}, AttributeKey.ARTIO_LOG_CLAIMED, new Item[]{new Item(SAELDOR_SHARD, 100)},
         //Drops
-        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHESTPLATE), new Item(BOW_OF_FAERDHINEN_3)
+        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHESTPLATE)
     ),
 
     CORRUPTED_HUNLEFF(AttributeKey.CORRUPTED_HUNLEFFS_KILLED, LogType.BOSSES, "Corrupted Hunleff", new int[]{NpcIdentifiers.CORRUPTED_HUNLLEF, NpcIdentifiers.CORRUPTED_HUNLLEF_9036, NpcIdentifiers.CORRUPTED_HUNLLEF_9037}, AttributeKey.CORRUPTED_HUNLEFF_LOG_CLAIMED, new Item[]{new Item(KEY_OF_DROPS)},
@@ -264,7 +265,7 @@ public enum Collection {
     //Mystery chest
     MYSTERY_CHEST(AttributeKey.MYSTERY_CHESTS_OPENED, LogType.MYSTERY_BOX, "Mystery Chest", new int[]{CustomItemIdentifiers.MYSTERY_CHEST}, AttributeKey.MYSTERY_CHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1)},
         //Drops
-        new Item(ELYSIAN_SPIRIT_SHIELD), new Item(TWISTED_BOW), new Item(SCYTHE_OF_VITUR), new Item(DARK_BANDOS_CHESTPLATE), new Item(DARK_BANDOS_TASSETS), new Item(BLADE_OF_SAELDOR_8),
+        new Item(ELYSIAN_SPIRIT_SHIELD), new Item(TWISTED_BOW), new Item(SCYTHE_OF_VITUR), new Item(DARK_BANDOS_CHESTPLATE), new Item(DARK_BANDOS_TASSETS), new Item(BLADE_OF_SAELDOR_C_25882),
         new Item(ANCESTRAL_ROBE_BOTTOM_I), new Item(ANCESTRAL_ROBE_TOP_I), new Item(SALAZAR_SLYTHERINS_LOCKET)),
 
     //Other

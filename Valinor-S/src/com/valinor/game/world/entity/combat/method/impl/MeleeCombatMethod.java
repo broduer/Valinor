@@ -10,9 +10,7 @@ import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.CustomItemIdentifiers.HOLY_SCYTHE_OF_VITUR;
-import static com.valinor.util.CustomItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR;
-import static com.valinor.util.ItemIdentifiers.SCYTHE_OF_VITUR;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * Represents the combat method for melee attacks.

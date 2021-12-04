@@ -163,7 +163,7 @@ public class RangeMaxHit {
             D *= 1.10;
         }
 
-        var isBowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || weapon >= BOW_OF_FAERDHINEN_1 && weapon <= BOW_OF_FAERDHINEN_7;
+        var isBowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || weapon >= 25884 && weapon <= 25896;
         var isCrystalBow = weapon == NEW_CRYSTAL_BOW;
         var crystalArmourBoosted = isBowOfFaerdhinen || isCrystalBow;
 

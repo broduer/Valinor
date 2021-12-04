@@ -1478,7 +1478,7 @@ public class Player extends Mob {
                 getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
             } else if (getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
                 getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
-            } else if (getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
+            } else if (getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.HOLY_SANGUINESTI_STAFF)) {
                 getCombat().setAutoCastSpell(CombatSpells.SANGUINESTI_STAFF.getSpell());
             } else if (getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND)) {
                 getCombat().setCastSpell(CombatSpells.CRUCIATUS_CURSE.getSpell());

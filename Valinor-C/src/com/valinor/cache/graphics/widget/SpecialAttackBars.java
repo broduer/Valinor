@@ -153,7 +153,7 @@ public enum SpecialAttackBars {
     ABYSSAL_TENTACLE(12006,"Binding Tentacle: Bind your target for 5 seconds and increase the chance of them being poisoned.",50.0, 31448, 12323, 12335),
     ABYSSAL_TENTACLE_24948(24948,"Binding Tentacle: Bind your target for 5 seconds and increase the chance of them being poisoned.",50.0, 31448, 12323, 12335),
     DRAGON_SCIMITAR(4587,"Sever: Deal a slash with increased accuracy that prevents your target from using protection prayers for 5 seconds if it successfully hits.",55.0, 31449, 7599, 7611),
-    BLADE_OF_SAELDOR_T(BLADE_OF_SAELDOR_8,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
+    BLADE_OF_SAELDOR_T(25882,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     DRAGON_PICKAXE_OR(12797, "Rock Knocker: Increase your Mining level by 3.", 100.0, 31454, 7724, 7736),
     VESTAS_LONGSWORD_23615(23615, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 20% extra damage.", 25.0, 31455, 7599, 7611),
     VESTAS_LONGSWORD(22613, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 20% extra damage.", 25.0, 31455, 7599, 7611),
