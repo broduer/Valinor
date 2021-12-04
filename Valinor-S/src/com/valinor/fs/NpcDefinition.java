@@ -1,6 +1,5 @@
 package com.valinor.fs;
 
-import com.valinor.game.GameConstants;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.io.RSBuffer;
 import io.netty.buffer.Unpooled;
@@ -9,7 +8,15 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
+import static com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets.*;
+import static com.valinor.util.CustomItemIdentifiers.JAWA_PET;
 import static com.valinor.util.CustomNpcIdentifiers.*;
+import static com.valinor.util.CustomNpcIdentifiers.ARAGOG;
+import static com.valinor.util.CustomNpcIdentifiers.DEMENTOR;
+import static com.valinor.util.CustomNpcIdentifiers.FENRIR_GREYBACK;
+import static com.valinor.util.CustomNpcIdentifiers.FLUFFY;
+import static com.valinor.util.CustomNpcIdentifiers.HUNGARIAN_HORNTAIL;
+import static com.valinor.util.CustomNpcIdentifiers.ZOMBIES_CHAMPION_PET;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -148,258 +155,170 @@ public class NpcDefinition implements Definition {
                 break;
             }
         }
+
         if (id == 7632) {
             name = "Men in black";
             combatlevel = 80;
             options = new String[] {null, "Attack", null, null, null, null};
             size = 1;
-        }
-        if (id == NAGINI) {
+        } else if (id == NAGINI) {
             name = "Nagini";
-        }
-        if (id == LORD_VOLDEMORT) {
+        } else if (id == LORD_VOLDEMORT) {
             name = "Lord voldemort";
             combatlevel = 1433;
-        }
-        if (id == SKELETON_HELLHOUND_PET) {
-            name = "Skeleton hellhound pet";
-        }
-        if (id == 15021) {
+        } else if (id == SKELETON_HELLHOUND_PET) {
+            name = "Skeleton hellhound";
+        } else if (id == GRIM) {
             name = "Grim";
             size = 3;
             combatlevel = 1322;
-        }
-        if (id == BLOOD_REAPER) {
+        } else if (id == BLOOD_REAPER) {
             name = "Blood Reaper";
-        }
-        if (id == 15030) {
+        } else if (id == MALE_CENTAUR) {
             name = "Male centaur";
             size = 2;
-        }
-        if (id == 15032) {
+        } else if (id == FEMALE_CENTAUR) {
             name = "Female centaur";
             size = 2;
-        }
-        if (id == 15028) {
+        } else if (id == DEMENTOR) {
             name = "Dementor";
             size = 1;
-        }
-        if (id == 15020) {
+        } else if (id == ARAGOG) {
             name = "Aragog";
             size = 4;
-        }
-        if (id == 15026) {
+        } else if (id == FLUFFY) {
             name = "Fluffy";
             size = 5;
-        }
-        if (id == 15034) {
+        } else if (id == HUNGARIAN_HORNTAIL) {
             name = "Hungarian horntail";
             size = 4;
-        }
-        if (id == 15050) {
+        } else if (id == FENRIR_GREYBACK) {
             name = "Fenrir greyback";
             size = 1;
-        }
-        if (id == 15019 || id == 15016) {
+        } else if (id == BRUTAL_LAVA_DRAGON || id == BRUTAL_LAVA_DRAGON_FLYING) {
             name = "Brutal lava dragon";
             size = 4;
-        }
-        if (id == 9340) {
+        } else if (id == ZRIAWK) {
             name = "Zriawk";
-        }
-        if (id == 15040) {
+        } else if (id == CENTAUR_MALE_PET) {
             name = "Centaur male";
-        }
-        if (id == 15042) {
+        } else if (id == CENTAUR_FEMALE_PET) {
             name = "Centaur female";
-        }
-        if (id == 9338) {
+        } else if (id == FLUFFY_JR) {
             name = "Fluffy Jr";
-        }
-        if (id == 9339) {
+        } else if (id == FENRIR_GREYBACK_JR) {
             name = "Fenrir greyback Jr";
-        }
-        if (id == 15044) {
+        } else if (id == DEMENTOR_PET) {
             name = "Dementor";
-        }
-        if (id == 15000) {
+        } else if (id == FOUNDER_IMP) {
             name = "Founder imp";
-        }
-        if (id == 15001) {
+        } else if (id == CORRUPTED_NECHRYARCH) {
             name = "Corrupted nechryarch";
             size = 2;
-        }
-        if (id == 15002) {
+        } else if (id == CORRUPTED_NECHRYARCH_PET) {
             name = "Corrupted nechryarch";
-        }
-        if (id == 15005) {
+        } else if (id == MINI_NECROMANCER) {
             name = "Mini necromancer";
-        }
-        if (id == 15008) {
+        } else if (id == JALTOK_JAD) {
             name = "Jaltok-jad";
-        }
-        if (id == 15017) {
+        } else if (id == BABY_LAVA_DRAGON) {
             name = "Baby lava dragon";
-        }
-        if (id == 10981) {
+        } else if (id == FAWKES) {
             name = "Fawkes";
-        }
-        if (id == 7315) {
-            name = "Blood money";
-        }
-        if (id == 336) {
+        } else if (id == ELYSIAN_PET) {
             name = "Elysian";
-        }
-        if (id == 16008) {
+        } else if (id == KERBEROS) {
             name = "Kerberos";
             combatlevel = 318;
             size = 5;
-        }
-        if (id == 16009) {
+        } else if (id == SKORPIOS) {
             name = "Skorpios";
             combatlevel = 225;
             size = 5;
-        }
-        if (id == 16010) {
+        } else if (id == ARACHNE) {
             name = "Arachne";
             combatlevel = 464;
             size = 4;
-        }
-        if (id == 16011) {
+        } else if (id == ARTIO) {
             name = "Artio";
             combatlevel = 470;
             size = 5;
-        }
-        if (id == 16000) {
+        } else if (id == ANCIENT_REVENANT_DARK_BEAST) {
             name = "Ancient revenant dark beast";
             combatlevel = 120;
             size = 3;
-        }
-        if (id == 16001) {
+        } else if (id == ANCIENT_REVENANT_ORK) {
             name = "Ancient revenant ork";
             combatlevel = 105;
             size = 3;
-        }
-        if (id == 16002) {
+        } else if (id == ANCIENT_REVENANT_CYCLOPS) {
             name = "Ancient revenant cyclops";
             combatlevel = 82;
             size = 3;
-        }
-        if (id == 16003) {
+        } else if (id == ANCIENT_REVENANT_DRAGON) {
             name = "Ancient revenant dragon";
             combatlevel = 135;
             size = 5;
-        }
-        if (id == 16004) {
+        } else if (id == ANCIENT_REVENANT_KNIGHT) {
             name = "Ancient revenant knight";
             combatlevel = 126;
             size = 1;
-        }
-        if (id == 16005) {
+        } else if (id == ANCIENT_BARRELCHEST) {
             name = "Ancient barrelchest";
             combatlevel = 190;
             size = 3;
-        }
-        if (id == 16006) {
+        } else if (id == ANCIENT_KING_BLACK_DRAGON) {
             name = "Ancient king black dragon";
             combatlevel = 276;
             size = 5;
-        }
-        if (id == 16007) {
+        } else if (id == ANCIENT_CHAOS_ELEMENTAL) {
             name = "Ancient chaos elemental";
             combatlevel = 305;
             size = 3;
-        }
-        if (id == 9330) {
+        } else if (id == ANCIENT_KING_BLACK_DRAGON_PET) {
             name = "Ancient king black dragon";
-            size = 4;
-        }
-        if (id == 9331) {
+            size = 1;
+        } else if (id == ANCIENT_CHAOS_ELEMENTAL_PET) {
             name = "Ancient chaos elemental";
-            size = 3;
-        }
-        if (id == 9332) {
+            size = 1;
+        } else if (id == ANCIENT_BARRELCHEST_PET) {
             name = "Ancient barrelchest";
-            size = 5;
-        }
-        if (id == 7370) {
+            size = 1;
+        } else if (id == BLOOD_FIREBIRD) {
             name = "Blood firebird";
             size = 1;
-        }
-        if (id == 13000 || id == 13001) {
+        } else if (id == 13000 || id == 13001) {
             name = "Pure bot";
             size = 1;
             combatlevel = 80;
-        }
-        if (id == 13002 || id == 13003) {
+        } else if (id == 13002 || id == 13003) {
             name = "F2p bot";
             size = 1;
             combatlevel = 68;
-        }
-
-        if (id == 13004) {
+        } else if (id == 13004) {
             name = "Maxed bot";
             size = 1;
             combatlevel = 126;
-        }
-
-        if (id == 13005) {
+        } else if (id == 13005) {
             name = "Maxed bot";
             size = 1;
             combatlevel = 126;
-        }
-
-        if (id == 13006) {
+        } else if (id == 13006) {
             name = "Archer bot";
             size = 1;
             combatlevel = 90;
-        }
-
-        if (id == 13008 || id == 13009) {
+        } else if (id == 13008 || id == 13009) {
             name = "Pure Archer bot";
             size = 1;
             combatlevel = 80;
-        }
-        if (id == 15035) {
+        } else if (id == KERBEROS_PET) {
             name = "Kerberos";
-        }
-        if (id == 15036) {
+        } else if (id == SKORPIOS_PET) {
             name = "Skorpios";
-        }
-        if (id == 15037) {
+        } else if (id == ARACHNE_PET) {
             name = "Arachne";
-        }
-        if (id == 15038) {
+        } else if (id == ARTIO_PET) {
             name = "Artio";
-        }
-        if (id == 9413) {
-            name = "Referral Manager";
-        }
-        if (id == THORODIN_5526) {
-            name = "Boss slayer master";
-            options = new String[]{"Talk-to", null, "Slayer-Equipment", "Slayer-Rewards", null};
-        } else if (id == 3358) {
-            name = "Ket'ian";
-            combatlevel = 420;
-            width *= 2;
-            height *= 2;
-            size = 2;
-        } else if (id == 3329) {
-            name = "Sapphires Champion";
-            combatlevel = 600;
-            width *= 2;
-            height *= 2;
-            size = 2;
-        } else if (id == 3142) {
-            name = "Aragog";
-            options = new String[]{null, "Attack", null, null, null};
-            combatlevel = 1123;
-            models = new int[]{28294, 28295};
-            width = 190;
-            height = 190;
-            idleAnimation = 5318;
-            size = 4;
-            walkAnimation = 5317;
         } else if (id == TWIGGY_OKORN) {
             options = new String[]{"Talk-to", null, "Rewards", "Claim-cape", null};
         } else if (id == FANCY_DAN) {
@@ -429,205 +348,49 @@ public class NpcDefinition implements Definition {
             options[2] = "Title-unlocks";
             options[3] = null;
             options[4] = null;
-        } else if (id == FRANK) {
-            name = "Shop";
-            options[0] = "Untradeable";
-        } else if (id == CLAUS_THE_CHEF) {
-            name = "Shop";
-            options[0] = "Consumable";
-        } else if (id == RADIGAD_PONFIT) {
-            name = "Ranged Shop";
-            options = new String[]{"Weapons", null, "Armour", "Ironman", null};
-        } else if (id == TRAIBORN) {
-            name = "Magic Shop";
-            options = new String[]{"Weapons", null, "Armour", "Ironman", null};
-        } else if (id == GUNNJORN) {
-            name = "Melee Shop";
-            options = new String[]{"Weapons", null, "Armour", "Ironman", null};
-        } else if (id == SPICE_SELLER_4579) {
-            name = "Shop";
-            options[0] = "Misc";
         } else if (id == LISA) {
             name = "Tournament Manager";
             options = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", null, null, null};
-        } else if (id == VANNAKA) {
-            name = "Task master";
-            options = new String[]{"Talk-to", null, "Progress", null, null};
-        } else if (id == 6481) {
-            options = new String[]{"Talk-to", null, "Skillcape", null, null, null, null};
-        } else if (id == 9413) {
+        } else if (id == SHURA) {
             name = "Referral Manager";
-        } else if (id == 306) {
-            name = GameConstants.SERVER_NAME + " Guide";
-        } else if (id == 3359) {
-            combatlevel = 785;
-        } else if (id == 3254) {
-            options = new String[]{"Talk-to", null, "Trade", null, null};
-        } else if (id == 1220) {
+        } else if (id == WAMPA_PET) {
             name = "Wampa";
-        } else if (id == 6635) {
+        } else if (id == NIFFLER_PET) {
             name = "Niffler";
-        } else if (id == 4927) {
+        } else if (id == FAWKES_15981) {
             name = "Fawkes";
-        } else if (id == 3343) {
-            name = "Prayer & Hitpoints Healer";
-            options[0] = "Heal";
-        } else if (id == 1221) {
+        } else if (id == PET_ZILYANA_WHITE) {
             name = "Zilyana Jr";
-        } else if (id == 1222) {
+        } else if (id == PET_GENERAL_GRAARDOR_BLACK) {
             name = "General Graardor Jr";
-        } else if (id == 1223) {
+        } else if (id == PET_KREEARRA_WHITE) {
             name = "Kree'arra Jr";
-        } else if (id == 1224) {
+        } else if (id == PET_KRIL_TSUTSAROTH_BLACK) {
             name = "K'ril Tsutsaroth Jr";
-        } else if (id == 1225) {
+        } else if (id == BABY_SQUIRT) {
             name = "Baby Squirt";
-        } else if (id == 1182) {
+        } else if (id == BARRELCHEST_PET) {
             name = "Baby Barrelchest";
-        } else if (id == 1228) {
+        } else if (id == GRIM_REAPER_PET) {
             name = "Grim Reaper";
-        } else if (id == 1216) {
+        } else if (id == BABY_DARK_BEAST) {
             name = "Baby Dark Beast";
-        } else if (id == 1214) {
+        } else if (id == BABY_ARAGOG) {
             name = "Baby Aragog";
-        } else if (id == 1213) {
+        } else if (id == JAWA_PET) {
             name = "Jawa";
-        } else if (id == 1217) {
+        } else if (id == DHAROK_PET) {
             name = "Dharok the Wretched";
-        } else if (id == 6849) {
+        } else if (id == 15849) {
             name = "Genie";
-        } else if (id == 1218) {
+        } else if (id == BABY_ABYSSAL_DEMON) {
             name = "Baby Abyssal Demon";
-        } else if (id == 1219) {
+        } else if (id == ZOMBIES_CHAMPION_PET) {
             name = "Zombies champion";
-            models = new int[]{20949};
-            idleAnimation = 5573;
-            size = 1;
-            walkAnimation = 5582;
-            combatlevel = 0;
-            mapdot = false;
-            width = 63;
-            height = 63;
         }
 
         if(ispet) {
             this.name = this.name + " pet";
-        }
-
-        switch (id) {
-            case 9425 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39182, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            }
-            case 9426 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39186, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9427 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39188, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9428 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39196, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9429 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39185, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9430 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39195, 41454};
-                idleAnimation = 8593;
-                render5 = 8593;
-                render6 = 8593;
-                render7 = 8593;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9431 -> {
-                name = "The Nightmare";
-                options = new String[]{null, "Attack", null, null, null};
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39208, 41454};
-                idleAnimation = 8603;
-                render5 = 8603;
-                render6 = 8603;
-                render7 = 8603;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8592;
-            } case 9432, 9433 -> {
-                name = "The Nightmare";
-                anInt2242 = 15;
-                combatlevel = 814;
-                contrast = 100;
-                models = new int[]{39196, 41454};
-                idleAnimation = 8613;
-                render5 = 8613;
-                render6 = 8613;
-                render7 = 8613;
-                size = 5;
-                mapdot = true;
-                walkAnimation = 8613;
-            }
         }
     }
 

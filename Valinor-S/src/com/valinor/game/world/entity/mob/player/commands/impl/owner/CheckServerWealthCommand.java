@@ -493,9 +493,6 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == RING_OF_ELYSIAN) {
                                         storage.sumRingOfElysianPet.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == BLOOD_MONEY_PET) {
-                                        storage.sumBloodMoneyPet.addAndGet(1L * item.getAmount());
-                                    }
                                     if(item.getId() == GENIE_PET) {
                                         storage.sumGeniePet.addAndGet(1L * item.getAmount());
                                     }

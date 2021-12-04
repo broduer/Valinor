@@ -134,7 +134,6 @@ public class CustomItemIdentifiers {
     public static final int GRANITE_MAUL_24944 = 24944;
     public static final int TOXIC_STAFF_OF_THE_DEAD_C = 27006;
     public static final int RING_OF_ELYSIAN = 27005;
-    public static final int BLOOD_MONEY_PET = 27004;
     public static final int KERBEROS_PET = 27000;
     public static final int SKORPIOS_PET = 27001;
     public static final int ARACHNE_PET = 27002;

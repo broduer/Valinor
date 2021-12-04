@@ -659,7 +659,6 @@ public final class NpcDefinition {
     public int ambient;
     public int heightScale;
     public boolean drawMapDot;
-    public boolean pet;
     public int[] transforms;
     public String description;
     public int widthScale;

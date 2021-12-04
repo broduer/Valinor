@@ -38,7 +38,6 @@ public class HoverMenuManager {
         menus.put(SARKIS_DARK_BODY, new HoverMenu("@red@+20%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
         menus.put(SARKIS_DARK_LEGS, new HoverMenu("@red@+15%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
         menus.put(GAMBLER_SCROLL, new HoverMenu("Claiming this item makes you gambler! As a gambler, you can host games and play flower poker at @yel@::gambling!"));
-        menus.put(BLOOD_MONEY_PET, new HoverMenu("A cosmetic blood money pet, whoever owns this pet is very rich."));
         menus.put(TOXIC_STAFF_OF_THE_DEAD_C, new HoverMenu("A much stronger version of the toxic staff of the dead."));
         menus.put(RING_OF_ELYSIAN, new HoverMenu("When dropping this ring it becomes an elysian pet. When wearing this ring, you turn into either a elysian sigil or shield."));
         menus.put(CORRUPTED_BOOTS, new HoverMenu("The best in slots boots, combined effects of all fused boots."));

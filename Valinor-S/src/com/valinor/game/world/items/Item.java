@@ -691,7 +691,6 @@ public class Item implements Cloneable {
             add(ARTIO_PET);
             add(ARACHNE_PET);
             add(SKORPIOS_PET);
-            add(BLOOD_MONEY_PET);
             add(TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE);
             add(TWISTED_SLAYER_HELMET_I_VAMP_DUST);
             add(TWISTED_SLAYER_HELMET_I_JAD);

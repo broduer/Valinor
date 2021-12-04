@@ -3,6 +3,10 @@ package com.valinor.cache.def.impl.npcs;
 import com.valinor.cache.def.NpcDefinition;
 import com.valinor.util.NpcIdentifiers;
 
+import static com.valinor.util.CustomItemIdentifiers.CENTAUR_FEMALE;
+import static com.valinor.util.CustomItemIdentifiers.CENTAUR_MALE;
+import static com.valinor.util.CustomNpcIdentifiers.*;
+
 /**
  * @author Patrick van Elderen | April, 07, 2021, 15) {49
  * @see <a href="https) {//www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
@@ -12,7 +16,7 @@ public class CustomBosses {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
-        if (id == 15021) {
+        if (id == GRIM) {
             definition.name = "Grim";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 1322;
@@ -30,7 +34,7 @@ public class CustomBosses {
             definition.heightScale = 250;
         }
 
-        if (id == 15016) {
+        if (id == BRUTAL_LAVA_DRAGON_FLYING) {
             definition.name = "Brutal Lava Dragon";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 420;
@@ -42,7 +46,7 @@ public class CustomBosses {
             definition.walkingAnimation = 7870;
         }
 
-        if (id == 15019) {
+        if (id == BRUTAL_LAVA_DRAGON) {
             definition.name = "Brutal Lava Dragon";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 420;
@@ -54,7 +58,7 @@ public class CustomBosses {
             definition.walkingAnimation = 79;
         }
 
-        if (id == 15001) {
+        if (id == CORRUPTED_NECHRYARCH) {
             definition.name = "Corrupted Nechryarch";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 300;
@@ -64,7 +68,7 @@ public class CustomBosses {
             definition.walkingAnimation = 6372;
         }
 
-        if (id == 15003) {
+        if (id == NECROMANCER) {
             definition.name = "Necromancer";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.recolorFrom = new int[]{-26527, -24618, -26073, 5018, 61, 10351, 33, 24};
@@ -78,7 +82,7 @@ public class CustomBosses {
             definition.walkingAnimation = 819;
         }
 
-        if (id == 15020) {
+        if (id == ARAGOG) {
             definition.name = "Aragog";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.recolorFrom = new int[]{138, 908, 794, 912, 916, 0, 103, 107};
@@ -92,7 +96,7 @@ public class CustomBosses {
             definition.walkingAnimation = 5317;
         }
 
-        if (id == 15026) {
+        if (id == FLUFFY) {
             definition.name = "Fluffy";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.recolorFrom = new int[]{929, 960, 1981, 0, 931, 4029, 926, 902, 922, 918, 924, 904, 916, 912, 935, 939, 906, 920, 955, 910, 914, 7101, 11200, 957, 9149, 908, 4, 5053, 8125, 6069};
@@ -106,7 +110,7 @@ public class CustomBosses {
             definition.heightScale = 100;
         }
 
-        if (id == 15028) {
+        if (id == DEMENTOR) {
             definition.name = "Dementor";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.ambient = 20;
@@ -120,7 +124,7 @@ public class CustomBosses {
             definition.walkingAnimation = 5539;
         }
 
-        if (id == 15030) {
+        if (id == CENTAUR_MALE) {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;
@@ -131,7 +135,7 @@ public class CustomBosses {
             definition.walkingAnimation = 4310;
         }
 
-        if (id == 15032) {
+        if (id == CENTAUR_FEMALE) {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;
@@ -142,7 +146,7 @@ public class CustomBosses {
             definition.walkingAnimation = 4310;
         }
 
-        if (id == 15034) {
+        if (id == HUNGARIAN_HORNTAIL) {
             definition.name = "Hungarian horntail";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.ambient = 30;
@@ -157,7 +161,7 @@ public class CustomBosses {
             definition.walkingAnimation = 79;
         }
 
-        if (id == 15050) {
+        if (id == FENRIR_GREYBACK) {
             definition.name = "Fenrir greyback";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 655;
@@ -167,25 +171,25 @@ public class CustomBosses {
             definition.walkingAnimation = 6541;
         }
 
-        if (id == 16008) {
+        if (id == KERBEROS) {
             NpcDefinition.copy(definition, NpcIdentifiers.CERBERUS);
             definition.name = "Kerberos";
             definition.modelCustomColor4 = 125;
         }
 
-        if (id == 16009) {
+        if (id == SKORPIOS) {
             NpcDefinition.copy(definition, NpcIdentifiers.SCORPIA);
             definition.name = "Skorpios";
             definition.modelCustomColor4 = 125;
         }
 
-        if (id == 16010) {
+        if (id == ARACHNE) {
             NpcDefinition.copy(definition, NpcIdentifiers.VENENATIS);
             definition.name = "Arachne";
             definition.modelCustomColor4 = 125;
         }
 
-        if (id == 16011) {
+        if (id == ARTIO) {
             NpcDefinition.copy(definition, NpcIdentifiers.CALLISTO);
             definition.name = "Artio";
             definition.modelCustomColor4 = 115;
