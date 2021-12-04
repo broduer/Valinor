@@ -44,170 +44,168 @@ public final class ObjectDefinition {
             if (opcode == 1) {
                 int length = buffer.readUByte();
                 if (length > 0) {
-                    if (model_ids == null || low_detail) {
-                        model_group = new int[length];
-                        model_ids = new int[length];
-                        for (int index = 0; index < length; index++) {
-                            model_ids[index] = buffer.readUShort();
-                            model_group[index] = buffer.readUByte();
-                        }
-                    } else {
+                    if (modelIds != null && !isLowDetail) {
                         buffer.pos += length * 3;
+                    } else {
+                        models = new int[length];
+                        modelIds = new int[length];
+                        for (int index = 0; index < length; index++) {
+                            modelIds[index] = buffer.readUShort();
+                            models[index] = buffer.readUByte();
+                        }
                     }
                 }
-            } else if (opcode == 2)
+            } else if (opcode == 2) {
                 name = buffer.readString();
-            else if (opcode == 3)
+            } else if (opcode == 3) {
                 description = buffer.readString();
-            else if (opcode == 5) {
+            } else if (opcode == 5) {
                 int length = buffer.readUByte();
                 if (length > 0) {
-                    if (model_ids == null || low_detail) {
-                        model_group = null;
-                        model_ids = new int[length];
-                        for (int index = 0; index < length; index++)
-                            model_ids[index] = buffer.readUShort();
+                    if (modelIds != null && !isLowDetail) {
+                        buffer.pos += 2 * length;
                     } else {
-                        buffer.pos += length * 2;
+                        models = null;
+                        modelIds = new int[length];
+
+                        for (int index = 0; index < length; ++index) {
+                            modelIds[index] = buffer.readUShort();
+                        }
                     }
                 }
-            } else if (opcode == 14)
-                width = buffer.readUByte();
-            else if (opcode == 15)
-                height = buffer.readUByte();
-            else if (opcode == 17)
+            } else if (opcode == 14) {
+                sizeX = buffer.readUByte();
+            } else if (opcode == 15) {
+                sizeY = buffer.readUByte();
+            } else if (opcode == 17) {
                 solid = false;
-            else if (opcode == 18)
+            } else if (opcode == 18) {
                 walkable = false;
-            else if (opcode == 19)
-                interact_state = buffer.readUByte();//(buffer.readUnsignedByte() == 1);
-            else if (opcode == 21)
+            } else if (opcode == 19) {
+                interact_state = buffer.readUByte();
+            } else if (opcode == 21) {
                 contour_to_tile = true;
-            else if (opcode == 22)
-                gouraud_shading = false;
-            else if (opcode == 23)
-                occlude = true;
-            else if (opcode == 24) {
-                animation = buffer.readUShort();
-                if (animation == 65535)
-                    animation = -1;
+            } else if (opcode == 22) {
+                nonFlatShading = false;
+            } else if (opcode == 23) {
+                modelClipped = true;
+            } else if (opcode == 24) {
+                animationId = buffer.readUShort();
+                if (animationId == 65535) {
+                    animationId = -1;
+                }
             } else if (opcode == 27) {
                 solid = true;
-            } else if (opcode == 28)
+            } else if (opcode == 28) {
                 decor_offset = buffer.readUByte();
-            else if (opcode == 29)
+            } else if (opcode == 29) {
                 ambient = buffer.readSignedByte();
-            else if (opcode == 39)
-                contrast = buffer.readSignedByte();
-            else if (opcode >= 30 && opcode < 35) {
-                if (scene_actions == null)
-                    scene_actions = new String[5];
-                scene_actions[opcode - 30] = buffer.readString();
-                if (scene_actions[opcode - 30].equalsIgnoreCase("hidden"))
-                    scene_actions[opcode - 30] = null;
+            } else if (opcode == 39) {
+                contrast = buffer.readSignedByte() * 25;
+            } else if (opcode >= 30 && opcode < 35) {
+                actions[opcode - 30] = buffer.readString();
+                if (actions[opcode - 30].equalsIgnoreCase("Hidden")) {
+                    actions[opcode - 30] = null;
+                }
             } else if (opcode == 40) {
                 int length = buffer.readUByte();
-                src_color = new int[length];
-                dst_color = new int[length];
+                recolorFrom = new int[length];
+                recolorTo = new int[length];
                 for (int index = 0; index < length; index++) {
-                    src_color[index] = buffer.readUShort();
-                    dst_color[index] = buffer.readUShort();
+                    recolorFrom[index] = buffer.readUShort();
+                    recolorTo[index] = buffer.readUShort();
                 }
             } else if (opcode == 41) {
                 int length = buffer.readUByte();
-                src_texture = new short[length];
-                dst_texture = new short[length];
+                retextureFrom = new short[length];
+                retextureTo = new short[length];
                 for (int index = 0; index < length; index++) {
-                    src_texture[index] = (short) buffer.readUShort();
-                    dst_texture[index] = (short) buffer.readUShort();
+                    retextureFrom[index] = (short) buffer.readUShort();
+                    retextureTo[index] = (short) buffer.readUShort();
                 }
-            } else if (opcode == 82) {
-                minimap_function_id = buffer.readUShort();
-                if (minimap_function_id == 0xFFFF) {
-                    minimap_function_id = -1;
-                } else if (minimap_function_id == 13)
-                    minimap_function_id = 86;
-            } else if (opcode == 62)
+            } else if (opcode == 61) {
+                buffer.readUShort();
+            } else if (opcode == 62) {
                 rotated = true;
-            else if (opcode == 64)
-                cast_shadow = false;
-            else if (opcode == 65)
-                model_scale_x = buffer.readUShort();
-            else if (opcode == 66)
-                model_scale_y = buffer.readUShort();
-            else if (opcode == 67)
-                model_scale_z = buffer.readUShort();
-            else if (opcode == 68)
-                map_scene_id = buffer.readUShort();
-            else if (opcode == 69)
+            } else if (opcode == 64) {
+                clipped = false;
+            } else if (opcode == 65) {
+                modelSizeX = buffer.readUShort();
+            } else if (opcode == 66) {
+                modelHeight = buffer.readUShort();
+            } else if (opcode == 67) {
+                modelSizeY = buffer.readUShort();
+            } else if (opcode == 68) {
+                mapSceneId = buffer.readUShort();
+            } else if (opcode == 69) {
                 orientation = buffer.readUByte();
-            else if (opcode == 70)
-                translate_x = buffer.readSignedShort();
-            else if (opcode == 71)
-                translate_y = buffer.readSignedShort();
-            else if (opcode == 72)
-                translate_z = buffer.readSignedShort();
-            else if (opcode == 73)
+            } else if (opcode == 70) {
+                offsetX = buffer.readSignedShort();
+            } else if (opcode == 71) {
+                offsetHeight = buffer.readSignedShort();
+            } else if (opcode == 72) {
+                offsetY = buffer.readSignedShort();
+            } else if (opcode == 73) {
                 obstructs_ground = true;
-            else if (opcode == 74)
-                unwalkable = true;
-            else if (opcode == 75)
+            } else if (opcode == 74) {
+                isSolid = true;
+            } else if (opcode == 75) {
                 merge_interact_state = buffer.readUByte();
-            else if (opcode == 77) {
-                varbit_id = buffer.readUShort();
-                if (varbit_id == 65535)
-                    varbit_id = -1;
+            } else if (opcode != 77 && opcode != 92) {
+                if (opcode == 78) {
+                    ambientSoundId = buffer.readUShort();
+                    int7 = buffer.readUByte();
+                } else if (opcode == 79) {
+                    int5 = buffer.readUShort();
+                    int6 = buffer.readUShort();
+                    int7 = buffer.readUByte();
+                    int length = buffer.readUByte();
+                    soundEffectIds = new int[length];
 
-                varp_id = buffer.readUShort();
-                if (varp_id == 65535)
-                    varp_id = -1;
-
-                int length = buffer.readUByte();
-                configs = new int[length + 2];//+ 1
-                for (int index = 0; index <= length; index++) {
-                    configs[index] = buffer.readUShort();
-                    if (configs[index] == 65535)
-                        configs[index] = -1;
+                    for (int var4 = 0; var4 < length; ++var4) {
+                        soundEffectIds[var4] = buffer.readUShort();
+                    }
+                } else if (opcode == 81) {
+                    clipType = buffer.readUByte() * 256;
+                } else if (opcode == 82) {
+                    mapIconId = buffer.readUShort();
+                } else if (opcode == 89) {
+                    boolean3 = false;
+                } else if (opcode == 249) {
+                    //Empty
                 }
-                configs[length + 1] = -1;
-            } else if (opcode == 78) {
-                opcode_78_1 = buffer.readUShort();
-                opcode_78_and_79 = buffer.readUByte();
-            } else if (opcode == 79) {
-                opcode_79_1 = buffer.readUShort();
-                opcode_79_2 = buffer.readUShort();
-                opcode_78_and_79 = buffer.readUByte();
-                int length = buffer.readUByte();
-                opcode_79_3 = new int[length];
-                for (int index = 0; index < length; index++) {
-                    opcode_79_3[index] = buffer.readUShort();
+            } else {
+                transformVarbit = buffer.readUShort();
+                if (transformVarbit == 65535) {
+                    transformVarbit = -1;
                 }
-            } else if (opcode == 81) {
-                buffer.readUByte();// * 256;
-            } else if (opcode == 92) {
-                varbit_id = buffer.readUShort();
-                if (varbit_id == 65535)
-                    varbit_id = -1;
 
-                varp_id = buffer.readUShort();
-                if (varp_id == 65535)
-                    varp_id = -1;
-
-                int var = buffer.readUShort();
-                if (var == 65535)
-                    var = -1;
-
-                int length = buffer.readUByte();
-                configs = new int[length + 2];
-                for (int index = 0; index <= length; index++) {
-                    configs[index] = buffer.readUShort();
-                    if (configs[index] == 65535)
-                        configs[index] = -1;
+                transformVarp = buffer.readUShort();
+                if (transformVarp == 65535) {
+                    transformVarp = -1;
                 }
-                configs[length + 1] = var;
+
+                int var3 = -1;
+                if (opcode == 92) {
+                    var3 = buffer.readUShort();
+                    if (var3 == 65535) {
+                        var3 = -1;
+                    }
+                }
+
+                int var4 = buffer.readUnsignedByte();
+                transforms = new int[var4 + 2];
+
+                for (int var5 = 0; var5 <= var4; ++var5) {
+                    transforms[var5] = buffer.readUShort();
+                    if (transforms[var5] == 65535) {
+                        transforms[var5] = -1;
+                    }
+                }
+
+                transforms[var4 + 1] = var3;
             }
         } while (true);
-
         post_decode();
     }
 
@@ -215,15 +213,15 @@ public final class ObjectDefinition {
         if (interact_state == -1) {
             interact_state = 0;
             if (name != null && !name.equalsIgnoreCase("null")) {
-                if (model_ids != null && (model_group == null || model_group[0] == 10))
+                if (modelIds != null && (models == null || models[0] == 10))
                     interact_state = 1;//1
 
-                if (scene_actions != null)
+                if (actions != null)
                     interact_state = 1;
 
             }
         }
-        if (unwalkable) {
+        if (isSolid) {
             solid = false;
             walkable = false;
         }
@@ -260,21 +258,21 @@ public final class ObjectDefinition {
         def.decode(data_buffer);
 
         if (def.id == 29308)//wintertoldt snow storm 1639 // 3997 cheap fix
-            def.gouraud_shading = false;
+            def.nonFlatShading = false;
 
         if (def.id >= 29167 && def.id <= 29225) {
-            def.width = 1;
+            def.sizeX = 1;
             def.solid = false;
-            def.scene_actions = new String[]{"Take", null, null, null, null};
+            def.actions = new String[]{"Take", null, null, null, null};
         }
 
         if (def.id == 14924) {
-            def.width = 1;
+            def.sizeX = 1;
         }
 
         if (ClientConstants.WILDERNESS_DITCH_DISABLED) {
             if (id == 23271) {
-                def.model_ids = null;
+                def.modelIds = null;
                 def.interact_state = 0;
                 def.solid = false;
                 return def;
@@ -296,63 +294,63 @@ public final class ObjectDefinition {
     }
 
     public void set_defaults() {
-        model_ids = null;
-        model_group = null;
+        modelIds = null;
+        models = null;
         name = null;
         description = null;
-        src_color = null;
-        dst_color = null;
-        dst_texture = null;
-        src_texture = null;
-        width = 1;
-        height = 1;
+        recolorFrom = null;
+        recolorTo = null;
+        retextureTo = null;
+        retextureFrom = null;
+        sizeX = 1;
+        sizeY = 1;
         solid = true;
         walkable = true;
         interact_state = -1;
         contour_to_tile = false;
-        gouraud_shading = false;
-        occlude = false;
-        animation = -1;
+        nonFlatShading = false;
+        modelClipped = false;
+        animationId = -1;
         decor_offset = 16;
         ambient = 0;
         contrast = 0;
-        scene_actions = null;
-        minimap_function_id = -1;
-        map_scene_id = -1;
+        actions = new String[5];
+        mapIconId = -1;
+        mapSceneId = -1;
         rotated = false;
-        cast_shadow = true;
-        model_scale_x = 128;
-        model_scale_y = 128;
-        model_scale_z = 128;
+        clipped = true;
+        modelSizeX = 128;
+        modelHeight = 128;
+        modelSizeY = 128;
         orientation = 0;
-        translate_x = 0;
-        translate_y = 0;
-        translate_z = 0;
+        offsetX = 0;
+        offsetHeight = 0;
+        offsetY = 0;
         obstructs_ground = false;
-        unwalkable = false;
+        isSolid = false;
         merge_interact_state = -1;
-        varbit_id = -1;
-        varp_id = -1;
-        configs = null;
+        transformVarbit = -1;
+        transformVarp = -1;
+        transforms = null;
     }
 
     public void passive_request_load(ResourceProvider provider) {
-        if (model_ids == null)
+        if (modelIds == null)
             return;
 
-        for (int index = 0; index < model_ids.length; index++)
-            provider.passive_request(model_ids[index] & 0xffff, 0);
+        for (int modelId : modelIds) provider.passive_request(modelId & 0xffff, 0);
 
     }
 
-    public Model get_object(int type, int orientation, int cosine_y, int sine_y, int cosine_x, int sine_x, int animation_id) {
+    public Model get_object(int type, int orientation, int cosine_y, int sine_y, int cosine_x, int sine_x,
+                            int animation_id) {
         Model model = get_animated_model(type, animation_id, orientation);
 
         if (model == null)
             return null;
 
-        if (contour_to_tile || gouraud_shading) {
-            model = new Model(contour_to_tile, gouraud_shading, model);
+        if (contour_to_tile || nonFlatShading) {
+            model = new Model(contour_to_tile, nonFlatShading, model);
         }
 
         if (contour_to_tile) {
@@ -371,58 +369,58 @@ public final class ObjectDefinition {
     }
 
     public boolean group_cached(int type) {
-        if (model_group == null) {
-            if (model_ids == null)
+        if (models == null) {
+            if (modelIds == null)
                 return true;
 
             if (type != 10)
                 return true;
 
             boolean cached = true;
-            for (int index = 0; index < model_ids.length; index++)
-                cached &= Model.cached(model_ids[index]);
+            for (int index = 0; index < modelIds.length; index++)
+                cached &= Model.cached(modelIds[index]);
 
             return cached;
         }
-        for (int index = 0; index < model_group.length; index++)
-            if (model_group[index] == type)
-                return Model.cached(model_ids[index]);
+        for (int index = 0; index < models.length; index++)
+            if (models[index] == type)
+                return Model.cached(modelIds[index]);
 
         return true;
     }
 
     public boolean cached() {
-        if (model_ids == null)
+        if (modelIds == null)
             return true;
 
         boolean cached = true;
-        for (int model_id : model_ids) cached &= Model.cached(model_id);
+        for (int model_id : modelIds) cached &= Model.cached(model_id);
 
         return cached;
     }
 
     public ObjectDefinition get_configs() {
         int setting_id = -1;
-        if (varbit_id != -1) {
-            VariableBits bit = VariableBits.cache[varbit_id];
+        if (transformVarbit != -1) {
+            VariableBits bit = VariableBits.cache[transformVarbit];
             int setting = bit.configId;
             int low = bit.leastSignificantBit;
             int high = bit.mostSignificantBit;
             int mask = Client.BIT_MASKS[high - low];
             setting_id = Client.singleton.settings[setting] >> low & mask;
-        } else if (varp_id != -1)
-            setting_id = Client.singleton.settings[varp_id];
+        } else if (transformVarp != -1)
+            setting_id = Client.singleton.settings[transformVarp];
 
-        if (setting_id < 0 || setting_id >= configs.length || configs[setting_id] == -1)
+        if (setting_id < 0 || setting_id >= transforms.length || transforms[setting_id] == -1)
             return null;
         else
-            return get(configs[setting_id]);
+            return get(transforms[setting_id]);
     }
 
     public Model get_animated_model(int type, int animation_id, int orientation) {
         Model model = null;
         long key;
-        if (model_group == null) {
+        if (models == null) {
             if (type != 10)
                 return null;
 
@@ -431,13 +429,13 @@ public final class ObjectDefinition {
             if (cached != null)
                 return cached;
 
-            if (model_ids == null)
+            if (modelIds == null)
                 return null;
 
             boolean invert = rotated ^ (orientation > 3);
-            int length = model_ids.length;
+            int length = modelIds.length;
             for (int index = 0; index < length; index++) {
-                int invert_id = model_ids[index];
+                int invert_id = modelIds[index];
                 if (invert)
                     invert_id += 0x10000;
 
@@ -453,16 +451,16 @@ public final class ObjectDefinition {
                     animated_model_cache.put(model, invert_id);
                 }
                 if (length > 1)
-                    models[index] = model;
+                    modelData[index] = model;
 
             }
             if (length > 1)
-                model = new Model(length, models, true);//fixes rotating textures on objects
+                model = new Model(length, modelData, true);//fixes rotating textures on objects
 
         } else {
             int model_id = -1;
-            for (int index = 0; index < model_group.length; index++) {
-                if (model_group[index] != type)
+            for (int index = 0; index < models.length; index++) {
+                if (models[index] != type)
                     continue;
 
                 model_id = index;
@@ -476,7 +474,7 @@ public final class ObjectDefinition {
             if (cached != null)
                 return cached;
 
-            model_id = model_ids[model_id];
+            model_id = modelIds[model_id];
             boolean invert = rotated ^ (orientation > 3);
             if (invert)
                 model_id += 0x10000;
@@ -493,9 +491,9 @@ public final class ObjectDefinition {
                 animated_model_cache.put(model, model_id);
             }
         }
-        boolean scale = model_scale_x != 128 || model_scale_y != 128 || model_scale_z != 128;
-        boolean translate = translate_x != 0 || translate_y != 0 || translate_z != 0;
-        Model animated_model = new Model(src_color == null, Animation.validate(animation_id), orientation == 0 && animation_id == -1 && !scale && !translate, src_texture == null, model);
+        boolean scale = modelSizeX != 128 || modelHeight != 128 || modelSizeY != 128;
+        boolean translate = offsetX != 0 || offsetHeight != 0 || offsetY != 0;
+        Model animated_model = new Model(recolorFrom == null, Animation.validate(animation_id), orientation == 0 && animation_id == -1 && !scale && !translate, retextureFrom == null, model);
         if (animation_id != -1) {
             animated_model.skin();
             animated_model.interpolate(animation_id);
@@ -505,24 +503,24 @@ public final class ObjectDefinition {
         while (orientation-- > 0)
             animated_model.rotate_90();
 
-        if (src_color != null) {
-            for (int index = 0; index < src_color.length; index++)
-                animated_model.recolor(src_color[index], dst_color[index]);
+        if (recolorFrom != null) {
+            for (int index = 0; index < recolorFrom.length; index++)
+                animated_model.recolor(recolorFrom[index], recolorTo[index]);
 
         }
-        if (src_texture != null) {
-            for (int index = 0; index < src_texture.length; index++) {
-                animated_model.retexture(src_texture[index], dst_texture[index]);
+        if (retextureFrom != null) {
+            for (int index = 0; index < retextureFrom.length; index++) {
+                animated_model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
 
         if (scale)
-            animated_model.scale(model_scale_x, model_scale_z, model_scale_y);
+            animated_model.scale(modelSizeX, modelSizeY, modelHeight);
 
         if (translate)
-            animated_model.translate(translate_x, translate_y, translate_z);
+            animated_model.translate(offsetX, offsetHeight, offsetY);
 
-        animated_model.light(60 + this.ambient, 768 + this.contrast, -50, -10, -50, !this.gouraud_shading); // LocoPk
+        animated_model.light(60 + ambient, 768 + contrast, -50, -10, -50, !nonFlatShading); // LocoPk
         if (merge_interact_state == 1) {
             animated_model.obj_height = animated_model.model_height;
         }
@@ -544,47 +542,54 @@ public final class ObjectDefinition {
 
     public static int length;
     public static int cache_index;
-    public static boolean low_detail = ClientConstants.OBJECT_DEFINITION_LOW_MEMORY;
+    public static boolean isLowDetail = ClientConstants.OBJECT_DEFINITION_LOW_MEMORY;
     public static Buffer data_buffer;
     public static ObjectDefinition[] cache;
     public static int[] stream_indices;
-    public static final Model[] models = new Model[4];
+    public static final Model[] modelData = new Model[4];
     public static TempCache model_cache = new TempCache(500);
     public static TempCache animated_model_cache = new TempCache(30);
 
     public int id;
-    public int width;
-    public int height;
-    public int animation;
+    public int sizeX;
+    public int sizeY;
+    public int animationId;
     public int orientation;
 
-    public int model_scale_x;
-    public int model_scale_y;
-    public int model_scale_z;
-    public int translate_x;
-    public int translate_y;
-    public int translate_z;
-    public int minimap_function_id;
-    public int map_scene_id;
+    public int modelSizeX;
+    public int modelHeight;
+    public int modelSizeY;
+    public int offsetX;
+    public int offsetHeight;
+    public int offsetY;
+    public int mapIconId;
+    public int mapSceneId;
     public int interact_state;
-    public int decor_offset;//
-    public int merge_interact_state;//
-    public int varp_id;
-    public int varbit_id;
+    public int decor_offset;
+    public int merge_interact_state;
+    public int transformVarp;
+    public int transformVarbit;
+    public int ambientSoundId;
+    public int int7;
+    public int int5;
+    public int int6;
+    public int[] soundEffectIds;
+    int clipType;
+    public boolean boolean3;
 
-    public int[] model_ids;
-    public int[] configs;
-    public int[] model_group;
+    public int[] modelIds;
+    public int[] transforms;
+    public int[] models;
 
-    public int[] src_color;
-    public int[] dst_color;
+    public int[] recolorFrom;
+    public int[] recolorTo;
 
-    public short[] src_texture;
-    public short[] dst_texture;
+    public short[] retextureFrom;
+    public short[] retextureTo;
 
     public String name;
     public String description;
-    public String[] scene_actions;
+    public String[] actions;
 
     public int contrast;
     public byte ambient;
@@ -592,11 +597,11 @@ public final class ObjectDefinition {
     public boolean rotated;
     public boolean walkable;
     public boolean contour_to_tile;
-    public boolean occlude;
-    public boolean unwalkable;
+    public boolean modelClipped;
+    public boolean isSolid;
     public boolean solid;
-    public boolean cast_shadow;
-    public boolean gouraud_shading;//
+    public boolean clipped;
+    public boolean nonFlatShading;//
     public boolean obstructs_ground;
 
     /**

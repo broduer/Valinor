@@ -3,10 +3,6 @@ package com.valinor.cache.def.impl;
 import com.valinor.ClientConstants;
 import com.valinor.cache.def.NpcDefinition;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import static com.valinor.util.NpcIdentifiers.*;
 
 public class NpcManager {
@@ -19,22 +15,22 @@ public class NpcManager {
 
             case 11112:
                 definition.name = "Santa";
-                definition.model_id = new int[]{235, 189, 299, 4226, 4218, 162, 4924, 4925, 4926};
+                definition.models = new int[]{235, 189, 299, 4226, 4218, 162, 4924, 4925, 4926};
                 definition.actions = new String[]{"Talk-to", null, null, null, null};
                 definition.additionalModels = new int[]{7380, 69, 53};//Beard, santa hat, head
                 definition.description = "Also known as Father christmas.";
                 definition.walkingAnimation = 819;
-                definition.halfTurnAnimation = 819;
-                definition.quarterClockwiseTurnAnimation = 819;
-                definition.quarterAnticlockwiseTurnAnimation = 819;
+                definition.rotate180Animation = 819;
+                definition.rotate90LeftAnimation = 819;
+                definition.rotate90RightAnimation = 819;
                 definition.standingAnimation = 808;
-                definition.src_color = new int[]{6798, 8078, 8741, 25238, 6587, 5400};
-                definition.dst_color = new int[]{86, 10351, 933, 933, 10351, 0};
+                definition.recolorFrom = new int[]{6798, 8078, 8741, 25238, 6587, 5400};
+                definition.recolorTo = new int[]{86, 10351, 933, 933, 10351, 0};
                 break;
 
             case 3443:
                 definition.name = "Lord voldemort";
-                definition.cmb_level = 1433;
+                definition.combatLevel = 1433;
                 definition.actions = new String[] {null, "Attack", null, null, null, null};
                 break;
 
@@ -44,7 +40,7 @@ public class NpcManager {
 
             case 7632:
                 definition.name = "Men in black";
-                definition.cmb_level = 80;
+                definition.combatLevel = 80;
                 definition.actions = new String[] {null, "Attack", null, null, null, null};
                 break;
 
@@ -60,11 +56,11 @@ public class NpcManager {
             case 9413:
                 definition.name = "<col=00ACFF>Referral Manager</col>";
                 definition.actions = new String[]{"Talk-to", null, null, null, null};
-                definition.cmb_level = 0;
-                definition.model_id = new int[] {39207};
+                definition.combatLevel = 0;
+                definition.models = new int[] {39207};
                 definition.additionalModels = new int[] {39485};
                 definition.standingAnimation = 8551;
-                definition.renderOnMinimap = true;
+                definition.drawMapDot = true;
                 definition.walkingAnimation = 8552;
                 break;
 
@@ -159,11 +155,11 @@ public class NpcManager {
 
             case COMBAT_DUMMY:
                 definition.actions = new String[]{null, "Attack", null, null, null};
-                definition.render_priority = true;
+                definition.hasRenderPriority = true;
                 break;
             case ROCK_CRAB:
             case ROCK_CRAB_102:
-                definition.render_priority = true;
+                definition.hasRenderPriority = true;
                 break;
             case 6481:
                 definition.actions = new String[]{"Talk-to", null, "Skillcape", null, null, null, null};
@@ -204,7 +200,7 @@ public class NpcManager {
                 break;
             // Zombies Champion
             case 3359:
-                definition.cmb_level = 785;
+                definition.combatLevel = 785;
                 break;
             //Vorkath
             case 319:

@@ -104,8 +104,8 @@ public final class SceneObject extends Renderable {
             }
         }
         ObjectDefinition def = ObjectDefinition.get(object_id);
-        this.varbit_id = def.varbit_id;
-        this.config_id = def.varp_id;
-        this.configs = def.configs;
+        this.varbit_id = def.transformVarbit;
+        this.config_id = def.transformVarp;
+        this.configs = def.transforms;
     }
 }

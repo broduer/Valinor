@@ -15,43 +15,43 @@ public class ObjectManager {
         }
 
         if(id == 32629) {
-            definition.scene_actions = new String[]{"Loot", null, null, null, null};
+            definition.actions = new String[]{"Loot", null, null, null, null};
         }
 
         if (id == 2341 || id == 2342 || id == 17977) {
-            definition.scene_actions = new String[]{null, null, null, null, null};
+            definition.actions = new String[]{null, null, null, null, null};
         }
 
         if (id == 6437) {
             definition.name = "Tom Riddle’s gravestone";
-            definition.scene_actions = new String[]{"Reward", null, null, null, null};
+            definition.actions = new String[]{"Reward", null, null, null, null};
         }
 
         if (id == 33456) {
             definition.name = "Portkey";
-            definition.scene_actions = new String[]{"Apparate", null, null, null, null};
+            definition.actions = new String[]{"Apparate", null, null, null, null};
         }
 
         if (id == 13503) {
-            definition.scene_actions = new String[]{"Leave", null, null, null, null};
+            definition.actions = new String[]{"Leave", null, null, null, null};
         }
 
         if (id == 50004) {
             definition.name = "Dark rejuvenation pool";
-            definition.scene_actions = new String[]{"Drink", null, null, null, null};
+            definition.actions = new String[]{"Drink", null, null, null, null};
             definition.ambient = 40;
-            definition.animation = 7304;
+            definition.animationId = 7304;
             definition.solid = true;
             definition.interact_state = 1;
-            definition.height = 2;
-            definition.model_ids = new int[]{58959};
-            definition.gouraud_shading = true;
+            definition.sizeY = 2;
+            definition.modelIds = new int[]{58959};
+            definition.nonFlatShading = true;
             definition.merge_interact_state = 1;
-            definition.width = 2;
+            definition.sizeX = 2;
         }
 
         if (id == 31858) {
-            definition.scene_actions = new String[] {"Swap-spellbook", null, null, null, null};
+            definition.actions = new String[] {"Swap-spellbook", null, null, null, null};
         }
 
         if (id == 31621) {
@@ -67,51 +67,51 @@ public class ObjectManager {
         }
 
         if(id == 2515) {
-            definition.scene_actions = new String[] {"Travel", null, null, null, null};
+            definition.actions = new String[] {"Travel", null, null, null, null};
         }
 
         if(id == 10060 || id == 7127 || id == 31626 || id == 4652 || id == 4653) {
-            definition.scene_actions = new String[] {null, null, null, null, null};
+            definition.actions = new String[] {null, null, null, null, null};
         }
 
         if(id == 562 || id == 3192) {
-            definition.scene_actions = new String[] {"Live scoreboard", "Todays top pkers", null, null, null};
+            definition.actions = new String[] {"Live scoreboard", "Todays top pkers", null, null, null};
         }
 
         if(id == 6552) {
-            definition.scene_actions = new String[] {"Change spellbook", null, null, null, null};
+            definition.actions = new String[] {"Change spellbook", null, null, null, null};
         }
 
         if (id == 29165) {
             definition.name = "Pile Of Coins";
-            definition.scene_actions[0] = null;
-            definition.scene_actions[1] = null;
-            definition.scene_actions[2] = null;
-            definition.scene_actions[3] = null;
-            definition.scene_actions[4] = null;
+            definition.actions[0] = null;
+            definition.actions[1] = null;
+            definition.actions[2] = null;
+            definition.actions[3] = null;
+            definition.actions[4] = null;
         }
 
         if(id == 33020) {
             definition.name = "Forging table";
-            definition.scene_actions = new String[] {"Forge", null, null, null, null};
+            definition.actions = new String[] {"Forge", null, null, null, null};
         }
 
         if(id == 8878) {
             definition.name = "Item dispenser";
-            definition.scene_actions = new String[] {"Dispense", "Exchange coins", null, null, null};
+            definition.actions = new String[] {"Dispense", "Exchange coins", null, null, null};
         }
 
         if(id == 637) {
             definition.name = "Item cart";
-            definition.scene_actions = new String[] {"Check cart", "Item list", "Clear cart", null, null};
+            definition.actions = new String[] {"Check cart", "Item list", "Clear cart", null, null};
         }
 
         if (id == 13291) {
-            definition.scene_actions = new String[] {"Open", null, null, null, null};
+            definition.actions = new String[] {"Open", null, null, null, null};
         }
 
         if (id == 23709) {
-            definition.scene_actions[0] = "Use";
+            definition.actions[0] = "Use";
         }
 
         if (id == 2156) {
@@ -127,38 +127,38 @@ public class ObjectManager {
 
             ObjectDefinition deadmanChest = ObjectDefinition.get(27269);
 
-            definition.model_ids = deadmanChest.model_ids;
-            definition.src_color = deadmanChest.src_color;
-            definition.scene_actions = deadmanChest.scene_actions;
-            definition.dst_color = deadmanChest.dst_color;
+            definition.modelIds = deadmanChest.modelIds;
+            definition.recolorFrom = deadmanChest.recolorFrom;
+            definition.actions = deadmanChest.actions;
+            definition.recolorTo = deadmanChest.recolorTo;
         }
 
         if (id == 7811) {
             definition.name = "Supplies";
-            definition.scene_actions[0] = "Blood money supplies";
-            definition.scene_actions[1] = "Vote-rewards";
-            definition.scene_actions[2] = "Donator-store";
+            definition.actions[0] = "Blood money supplies";
+            definition.actions[1] = "Vote-rewards";
+            definition.actions[2] = "Donator-store";
         }
 
         if(id == 2654) {
             definition.name = HALLOWEEN ? "Blood fountain" : "Snow fountain";
-            definition.width = 3;
-            definition.height = 3;
-            definition.scene_actions[0] = "Rewards";
-            definition.scene_actions[1] = null;
+            definition.sizeX = 3;
+            definition.sizeY = 3;
+            definition.actions[0] = "Rewards";
+            definition.actions[1] = null;
             if(HALLOWEEN) {
-                definition.src_color = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
-                definition.dst_color = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
+                definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
+                definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
             } else if(CHRISTMAS) {
-                definition.src_color = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
-                definition.dst_color = new int[]{10266, 10270, 10279, 10275, 10283, 127, 126};
+                definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
+                definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 127, 126};
             }
         }
 
         if(id == 1276 || id == 1278 || id == 1279) { //christmas prep
             if (CHRISTMAS) {
-                definition.model_ids = new int[] {20491, 20492, 20493, 20494};
-                definition.animation = 5058;
+                definition.modelIds = new int[] {20491, 20492, 20493, 20494};
+                definition.animationId = 5058;
                 definition.ambient = 30;
                 definition.contrast = 30;
             }

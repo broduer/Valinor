@@ -23,7 +23,7 @@ public final class Npc extends Entity {
     public int getHeadIcon() {
         if (headIcon == -1) {
             if (desc != null) {
-                return desc.headIcon;
+                return desc.headIconPrayer;
             }
         }
         return headIcon;
@@ -75,7 +75,7 @@ public final class Npc extends Entity {
                 animated = new Model(build);
             }
         }
-        if (desc.occupied_tiles == 1)
+        if (desc.size == 1)
             animated.within_tile = true;
 
         return animated;

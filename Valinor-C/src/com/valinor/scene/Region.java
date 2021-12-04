@@ -511,11 +511,11 @@ public final class Region {
         int obj_size_offset_a;
         int obj_size_offset_b;
         if (orientation == 1 || orientation == 3) {
-            obj_size_offset_a = def.height;
-            obj_size_offset_b = def.width;
+            obj_size_offset_a = def.sizeY;
+            obj_size_offset_b = def.sizeX;
         } else {
-            obj_size_offset_a = def.width;
-            obj_size_offset_b = def.height;
+            obj_size_offset_a = def.sizeX;
+            obj_size_offset_b = def.sizeY;
         }
 
         int obj_x_factor_a;
@@ -647,10 +647,10 @@ public final class Region {
                 return;
             }
             Object ground_map_scene_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 ground_map_scene_decor = def.get_object(22, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                ground_map_scene_decor = new SceneObject(object_id, orientation, 22, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                ground_map_scene_decor = new SceneObject(object_id, orientation, 22, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_ground_decor(plane, avg, y, ((Renderable) (ground_map_scene_decor)), key, x);
             if (def.solid && def.interact_state == 1 && map != null)
@@ -660,10 +660,10 @@ public final class Region {
         }
         if (type == 10 || type == 11) {
             Object scene_objects;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 scene_objects = def.get_object(10, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                scene_objects = new SceneObject(object_id, orientation, 10, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                scene_objects = new SceneObject(object_id, orientation, 10, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             if (scene_objects != null) {
                 int obj_rotation = 0;
@@ -673,13 +673,13 @@ public final class Region {
                 int size_offset_a;
                 int size_offset_b;
                 if (orientation == 1 || orientation == 3) {
-                    size_offset_a = def.height;
-                    size_offset_b = def.width;
+                    size_offset_a = def.sizeY;
+                    size_offset_b = def.sizeX;
                 } else {
-                    size_offset_a = def.width;
-                    size_offset_b = def.height;
+                    size_offset_a = def.sizeX;
+                    size_offset_b = def.sizeY;
                 }
-                if (scene.add_entity(key, avg, size_offset_b, ((Renderable) (scene_objects)), size_offset_a, plane, obj_rotation, y, x) && def.cast_shadow) {
+                if (scene.add_entity(key, avg, size_offset_b, ((Renderable) (scene_objects)), size_offset_a, plane, obj_rotation, y, x) && def.clipped) {
                     Model model;
                     if (scene_objects instanceof Model)
                         model = (Model) scene_objects;
@@ -701,64 +701,64 @@ public final class Region {
                 }
             }
             if (def.solid && map != null)
-                map.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                map.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
         if (type >= 12) {
             Object roofs;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 roofs = def.get_object(type, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                roofs = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                roofs = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_entity(key, avg, 1, ((Renderable) (roofs)), 1, plane, 0, y, x);
             if (type >= 12 && type <= 17 && type != 13 && plane > 0)
                 tile_culling_bitsets[plane][x][y] |= 0x924;
 
             if (def.solid && map != null)
-                map.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                map.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
         if (type == 0) {
             Object straight_wall;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 straight_wall = def.get_object(0, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                straight_wall = new SceneObject(object_id, orientation, 0, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                straight_wall = new SceneObject(object_id, orientation, 0, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall(wall_corner_orientations[orientation], ((Renderable) (straight_wall)), key, y, x, null, avg, 0, plane);
             if (orientation == 0) {
-                if (def.cast_shadow) {
+                if (def.clipped) {
                     tile_shadow_intensity[plane][x][y] = 50;
                     tile_shadow_intensity[plane][x][y + 1] = 50;
                 }
-                if (def.occlude)
+                if (def.modelClipped)
                     tile_culling_bitsets[plane][x][y] |= 0x249;
 
             } else if (orientation == 1) {
-                if (def.cast_shadow) {
+                if (def.clipped) {
                     tile_shadow_intensity[plane][x][y + 1] = 50;
                     tile_shadow_intensity[plane][x + 1][y + 1] = 50;
                 }
-                if (def.occlude)
+                if (def.modelClipped)
                     tile_culling_bitsets[plane][x][y + 1] |= 0x492;
 
             } else if (orientation == 2) {
-                if (def.cast_shadow) {
+                if (def.clipped) {
                     tile_shadow_intensity[plane][x + 1][y] = 50;
                     tile_shadow_intensity[plane][x + 1][y + 1] = 50;
                 }
-                if (def.occlude)
+                if (def.modelClipped)
                     tile_culling_bitsets[plane][x + 1][y] |= 0x249;
 
             } else if (orientation == 3) {
-                if (def.cast_shadow) {
+                if (def.clipped) {
                     tile_shadow_intensity[plane][x][y] = 50;
                     tile_shadow_intensity[plane][x + 1][y] = 50;
                 }
-                if (def.occlude)
+                if (def.modelClipped)
                     tile_culling_bitsets[plane][x][y] |= 0x492;
 
             }
@@ -772,13 +772,13 @@ public final class Region {
         }
         if (type == 1) {
             Object diagonal_wall_connector;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_wall_connector = def.get_object(1, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_wall_connector = new SceneObject(object_id, orientation, 1, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_wall_connector = new SceneObject(object_id, orientation, 1, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall(wall_orientations[orientation], ((Renderable) (diagonal_wall_connector)), key, y, x, null, avg, 0, plane);
-            if (def.cast_shadow)
+            if (def.clipped)
                 if (orientation == 0)
                     tile_shadow_intensity[plane][x][y + 1] = 50;
 
@@ -800,15 +800,15 @@ public final class Region {
             int orientation_offset = orientation + 1 & 3;
             Object wall;
             Object corner;
-            if (def.animation == -1 && def.configs == null) {
+            if (def.animationId == -1 && def.transforms == null) {
                 wall = def.get_object(2, 4 + orientation, v_sw, v_se, v_ne, v_nw, -1);
                 corner = def.get_object(2, orientation_offset, v_sw, v_se, v_ne, v_nw, -1);
             } else {
-                wall = new SceneObject(object_id, 4 + orientation, 2, v_se, v_ne, v_sw, v_nw, def.animation, true);
-                corner = new SceneObject(object_id, orientation_offset, 2, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                wall = new SceneObject(object_id, 4 + orientation, 2, v_se, v_ne, v_sw, v_nw, def.animationId, true);
+                corner = new SceneObject(object_id, orientation_offset, 2, v_se, v_ne, v_sw, v_nw, def.animationId, true);
             }
             scene.add_wall(wall_corner_orientations[orientation], ((Renderable) (wall)), key, y, x, ((Renderable) (corner)), avg, wall_corner_orientations[orientation_offset], plane);
-            if (def.occlude)
+            if (def.modelClipped)
                 if (orientation == 0) {
                     tile_culling_bitsets[plane][x][y] |= 0x249;
                     tile_culling_bitsets[plane][x][y + 1] |= 0x492;
@@ -833,13 +833,13 @@ public final class Region {
         }
         if (type == 3) {
             Object straight_corner_connector;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 straight_corner_connector = def.get_object(3, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                straight_corner_connector = new SceneObject(object_id, orientation, 3, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                straight_corner_connector = new SceneObject(object_id, orientation, 3, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall(wall_orientations[orientation], ((Renderable) (straight_corner_connector)), key, y, x, null, avg, 0, plane);
-            if (def.cast_shadow)
+            if (def.clipped)
                 if (orientation == 0)
                     tile_shadow_intensity[plane][x][y + 1] = 50;
                 else if (orientation == 1)
@@ -856,14 +856,14 @@ public final class Region {
         }
         if (type == 9) {
             Object diagonal_walls;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_walls = def.get_object(type, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_walls = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_walls = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_entity(key, avg, 1, ((Renderable) (diagonal_walls)), 1, plane, 0, y, x);
             if (def.solid && map != null)
-                map.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                map.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
@@ -890,10 +890,10 @@ public final class Region {
             }
         if (type == 4) {
             Object inner_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 inner_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                inner_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                inner_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation * 512, plane, 0, avg, ((Renderable) (inner_wall_decor)), x, 0, wall_corner_orientations[orientation]);
             return;
@@ -905,40 +905,40 @@ public final class Region {
                 offset = ObjectDefinition.get(((int) (wall_uid >>> 32) & 0x7fffffff)/*k4 >> 14 & 0x7fff*/).decor_offset;
 
             Object outer_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 outer_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                outer_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                outer_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation * 512, plane, decor_x_offsets[orientation] * offset, avg, ((Renderable) (outer_wall_decor)), x, decor_y_offsets[orientation] * offset, wall_corner_orientations[orientation]);
             return;
         }
         if (type == 6) {
             Object outer_diagonal_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 outer_diagonal_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                outer_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                outer_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, plane, 0, avg, ((Renderable) (outer_diagonal_wall_decor)), x, 0, 256);
             return;
         }
         if (type == 7) {
             Object inner_diagonal_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 inner_diagonal_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                inner_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                inner_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, plane, 0, avg, ((Renderable) (inner_diagonal_wall_decor)), x, 0, 512);
             return;
         }
         if (type == 8) {
             Object diagonal_window_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_window_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_window_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_window_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, plane, 0, avg, ((Renderable) (diagonal_window_decor)), x, 0, 768);
         }
@@ -1102,8 +1102,8 @@ public final class Region {
                     int orientation = hash & 3;
                     if (plane == sub_plane && region_x >= width && region_x < width + 8 && region_y >= height && region_y < height + 8) {
                         ObjectDefinition def = ObjectDefinition.get(object_id);
-                        int x = x_offset + ChunkUtil.get_rotated_landscape_x(rotation, def.height, region_x & 7, region_y & 7, def.width);
-                        int y = y_offset + ChunkUtil.get_rotated_landscape_y(region_y & 7, def.height, rotation, def.width, region_x & 7);
+                        int x = x_offset + ChunkUtil.get_rotated_landscape_x(rotation, def.sizeY, region_x & 7, region_y & 7, def.sizeX);
+                        int y = y_offset + ChunkUtil.get_rotated_landscape_y(region_y & 7, def.sizeY, rotation, def.sizeX, region_x & 7);
                         if (x > 0 && y > 0 && x < 103 && y < 103) {
                             int marking_plane = plane;
                             if ((tile_flags[1][x][y] & 2) == 2)
@@ -1209,11 +1209,11 @@ public final class Region {
         int obj_size_offset_a;
         int obj_size_offset_b;
         if (orientation == 1 || orientation == 3) {
-            obj_size_offset_a = def.height;
-            obj_size_offset_b = def.width;
+            obj_size_offset_a = def.sizeY;
+            obj_size_offset_b = def.sizeX;
         } else {
-            obj_size_offset_a = def.width;
-            obj_size_offset_b = def.height;
+            obj_size_offset_a = def.sizeX;
+            obj_size_offset_b = def.sizeY;
         }
 
         int obj_x_factor_a;
@@ -1256,10 +1256,10 @@ public final class Region {
         key |= (long) object_id << 32;
         if (type == 22) {
             Object ground_map_scene_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 ground_map_scene_decor = def.get_object(22, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                ground_map_scene_decor = new SceneObject(object_id, orientation, 22, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                ground_map_scene_decor = new SceneObject(object_id, orientation, 22, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_ground_decor(z, avg, y, ((Renderable) (ground_map_scene_decor)), key, x);
 
@@ -1270,10 +1270,10 @@ public final class Region {
         }
         if (type == 10 || type == 11) {
             Object scecne_object;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 scecne_object = def.get_object(10, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                scecne_object = new SceneObject(object_id, orientation, 10, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                scecne_object = new SceneObject(object_id, orientation, 10, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             if (scecne_object != null) {
                 int rotation = 0;
@@ -1283,38 +1283,38 @@ public final class Region {
                 int size_offset_a;
                 int size_offset_b;
                 if (orientation == 1 || orientation == 3) {
-                    size_offset_a = def.height;
-                    size_offset_b = def.width;
+                    size_offset_a = def.sizeY;
+                    size_offset_b = def.sizeX;
                 } else {
-                    size_offset_a = def.width;
-                    size_offset_b = def.height;
+                    size_offset_a = def.sizeX;
+                    size_offset_b = def.sizeY;
                 }
                 scene.add_entity(key, avg, size_offset_b, ((Renderable) (scecne_object)), size_offset_a, z, rotation, y, x);
             }
             if (def.solid)
-                collision.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                collision.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
         if (type >= 12) {
             Object roofs;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 roofs = def.get_object(type, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                roofs = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                roofs = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_entity(key, avg, 1, ((Renderable) (roofs)), 1, z, 0, y, x);
             if (def.solid)
-                collision.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                collision.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
         if (type == 0) {
             Object straight_wall;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 straight_wall = def.get_object(0, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                straight_wall = new SceneObject(object_id, orientation, 0, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                straight_wall = new SceneObject(object_id, orientation, 0, v_se, v_ne, v_sw, v_nw, def.animationId, true);
             scene.add_wall(wall_corner_orientations[orientation], ((Renderable) (straight_wall)), key, y, x, null, avg, 0, z);
 
             if (def.solid)
@@ -1324,10 +1324,10 @@ public final class Region {
         }
         if (type == 1) {
             Object diagonal_wall_connector;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_wall_connector = def.get_object(1, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_wall_connector = new SceneObject(object_id, orientation, 1, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_wall_connector = new SceneObject(object_id, orientation, 1, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall(wall_orientations[orientation], ((Renderable) (diagonal_wall_connector)), key, y, x, null, avg, 0, z);
             if (def.solid)
@@ -1339,12 +1339,12 @@ public final class Region {
             int orientation_offset = orientation + 1 & 3;
             Object wall;
             Object corner;
-            if (def.animation == -1 && def.configs == null) {
+            if (def.animationId == -1 && def.transforms == null) {
                 wall = def.get_object(2, 4 + orientation, v_sw, v_se, v_ne, v_nw, -1);
                 corner = def.get_object(2, orientation_offset, v_sw, v_se, v_ne, v_nw, -1);
             } else {
-                wall = new SceneObject(object_id, 4 + orientation, 2, v_se, v_ne, v_sw, v_nw, def.animation, true);
-                corner = new SceneObject(object_id, orientation_offset, 2, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                wall = new SceneObject(object_id, 4 + orientation, 2, v_se, v_ne, v_sw, v_nw, def.animationId, true);
+                corner = new SceneObject(object_id, orientation_offset, 2, v_se, v_ne, v_sw, v_nw, def.animationId, true);
             }
             scene.add_wall(wall_corner_orientations[orientation], ((Renderable) (wall)), key, y, x, ((Renderable) (corner)), avg, wall_corner_orientations[orientation_offset], z);
             if (def.solid)
@@ -1354,10 +1354,10 @@ public final class Region {
         }
         if (type == 3) {
             Object straight_corner_connector;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 straight_corner_connector = def.get_object(3, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                straight_corner_connector = new SceneObject(object_id, orientation, 3, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                straight_corner_connector = new SceneObject(object_id, orientation, 3, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall(wall_orientations[orientation], ((Renderable) (straight_corner_connector)), key, y, x, null, avg, 0, z);
             if (def.solid)
@@ -1367,14 +1367,14 @@ public final class Region {
         }
         if (type == 9) {
             Object diagonal_walls;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_walls = def.get_object(type, orientation, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_walls = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_walls = new SceneObject(object_id, orientation, type, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_entity(key, avg, 1, ((Renderable) (diagonal_walls)), 1, z, 0, y, x);
             if (def.solid)
-                collision.mark_interactive_obj(def.walkable, def.width, def.height, x, y, orientation);
+                collision.mark_interactive_obj(def.walkable, def.sizeX, def.sizeY, x, y, orientation);
 
             return;
         }
@@ -1401,10 +1401,10 @@ public final class Region {
             }
         if (type == 4) {
             Object straight_inner_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 straight_inner_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                straight_inner_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                straight_inner_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation * 512, z, 0, avg, ((Renderable) (straight_inner_decor)), x, 0, wall_corner_orientations[orientation]);
             return;
@@ -1416,40 +1416,40 @@ public final class Region {
                 offset = ObjectDefinition.get(((int) (wall_uid >>> 32) & 0x7fffffff)/*l4 >> 14 & 0x7fff*/).decor_offset;
 
             Object outer_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 outer_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                outer_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                outer_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation * 512, z, decor_x_offsets[orientation] * offset, avg, ((Renderable) (outer_wall_decor)), x, decor_y_offsets[orientation] * offset, wall_corner_orientations[orientation]);
             return;
         }
         if (type == 6) {
             Object outer_diagonal_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 outer_diagonal_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                outer_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                outer_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, z, 0, avg, ((Renderable) (outer_diagonal_wall_decor)), x, 0, 256);
             return;
         }
         if (type == 7) {
             Object inner_diagonal_wall_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 inner_diagonal_wall_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                inner_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                inner_diagonal_wall_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, z, 0, avg, ((Renderable) (inner_diagonal_wall_decor)), x, 0, 512);
             return;
         }
         if (type == 8) {
             Object diagonal_window_decor;
-            if (def.animation == -1 && def.configs == null)
+            if (def.animationId == -1 && def.transforms == null)
                 diagonal_window_decor = def.get_object(4, 0, v_sw, v_se, v_ne, v_nw, -1);
             else
-                diagonal_window_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animation, true);
+                diagonal_window_decor = new SceneObject(object_id, 0, 4, v_se, v_ne, v_sw, v_nw, def.animationId, true);
 
             scene.add_wall_decor(key, y, orientation, z, 0, avg, ((Renderable) (diagonal_window_decor)), x, 0, 768);
         }

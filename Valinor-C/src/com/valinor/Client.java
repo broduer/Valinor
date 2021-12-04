@@ -1710,7 +1710,7 @@ public class Client extends GameApplet {
             for (int y = 0; y < 104; y++) {
                 long id = scene.get_ground_decor_uid(plane, x, y);
                 if (id != 0L) {
-                    int index = ObjectDefinition.get(get_object_key(id)).minimap_function_id;
+                    int index = ObjectDefinition.get(get_object_key(id)).mapIconId;
                     //Debugging code, useful for finding objects for hardcoding map IDs
                     //To test if the object is invisible (and thus likely used for map functions)
                     //Make sure to spawn with ::object and see if it's invisible.
@@ -1874,7 +1874,7 @@ public class Client extends GameApplet {
         for (int index = 0; index < npcs_in_region; index++) {
             Npc npc = npcs[local_npcs[index]];
             long k = 0x20000000L | (long) local_npcs[index] << 32;
-            if (npc == null || !npc.visible() || npc.desc.render_priority != flag)
+            if (npc == null || !npc.visible() || npc.desc.hasRenderPriority != flag)
                 continue;
             int x = npc.world_x >> 7;
             int y = npc.world_y >> 7;
@@ -3122,7 +3122,7 @@ public class Client extends GameApplet {
 
                 if (entity instanceof Npc) {
                     NpcDefinition entityDef = ((Npc) entity).desc;
-                    if (entityDef.configs != null) {
+                    if (entityDef.transforms != null) {
                         entityDef = entityDef.get_configs();
                     }
                     if (entityDef == null) {
@@ -3180,17 +3180,17 @@ public class Client extends GameApplet {
                     get_entity_scene_pos(entity, entity.height + 15);
                     if (scene_draw_x > -1) {
                         if (npc.game_tick_status > game_tick) {
-                            if (setting.toggle_npc_overhead_hp && def.cmb_level > 0) {
+                            if (setting.toggle_npc_overhead_hp && def.combatLevel > 0) {
                                 offset = 5;
                                 adv_font_small.draw_centered("<trans=220>" + npc.current_hitpoints + "/" + npc.maximum_hitpoints, scene_draw_x, scene_draw_y - offset, calcHitpointColor(npc), 1);
                                 offset += (setting.toggle_npc_overhead_names ? 12 : 35);
                             }
                         }
                         if (setting.toggle_npc_overhead_names) {
-                            if (!setting.toggle_npc_overhead_hp || def.cmb_level == 0 || npc.game_tick_status < game_tick)
+                            if (!setting.toggle_npc_overhead_hp || def.combatLevel == 0 || npc.game_tick_status < game_tick)
                                 offset = 5;
 
-                            adv_font_small.draw_centered("<trans=140>" + (def.cmb_level == 0 ? def.name : def.name + get_level_diff(local_player.combat_level, def.cmb_level) + " (level-" + def.cmb_level + ")"), scene_draw_x, scene_draw_y - offset, 0xffff33, 1);
+                            adv_font_small.draw_centered("<trans=140>" + (def.combatLevel == 0 ? def.name : def.name + get_level_diff(local_player.combat_level, def.combatLevel) + " (level-" + def.combatLevel + ")"), scene_draw_x, scene_draw_y - offset, 0xffff33, 1);
                             offset += 35;
                         }
                     }
@@ -3269,7 +3269,7 @@ public class Client extends GameApplet {
                                     continue;
                                 }
                                 if (npc.desc.largeHpBar)
-                                    drawingWidth = npc.desc.occupied_tiles * 30;
+                                    drawingWidth = npc.desc.size * 30;
                             }
                             int filledPixels = (entity.current_hitpoints * drawingWidth) / entity.maximum_hitpoints;
                             if (filledPixels > drawingWidth) {
@@ -4119,12 +4119,12 @@ public class Client extends GameApplet {
             int updateRequired = stream.readBits(1);
             if (updateRequired == 1)
                 mobsAwaitingUpdate[mobsAwaitingUpdateCount++] = k;
-            npc.occupied_tiles = npc.desc.occupied_tiles;
+            npc.occupied_tiles = npc.desc.size;
             npc.rotation = npc.desc.rotation;
             npc.walk_animation_id = npc.desc.walkingAnimation;
-            npc.turn_around_animation_id = npc.desc.halfTurnAnimation;
-            npc.pivot_right_animation_id = npc.desc.quarterClockwiseTurnAnimation;
-            npc.pivot_left_animation_id = npc.desc.quarterAnticlockwiseTurnAnimation;
+            npc.turn_around_animation_id = npc.desc.rotate180Animation;
+            npc.pivot_right_animation_id = npc.desc.rotate90LeftAnimation;
+            npc.pivot_left_animation_id = npc.desc.rotate90RightAnimation;
             npc.idle_animation_id = npc.desc.standingAnimation;
             npc.setPos(local_player.waypoint_x[0] + i1, local_player.waypoint_y[0] + l, j1 == 1);
             // Facing
@@ -4294,12 +4294,12 @@ public class Client extends GameApplet {
             int k4 = 24624 + l * 4 + (103 - i) * 512 * 4;
             int object_id = get_object_key(id);
             ObjectDefinition def = ObjectDefinition.get(object_id);
-            if (def.map_scene_id != -1) {
-                IndexedImage background_2 = mapScenes[def.map_scene_id];
+            if (def.mapSceneId != -1) {
+                IndexedImage background_2 = mapScenes[def.mapSceneId];
                 if (background_2 != null) {
-                    int i6 = (def.width * 4 - background_2.width) / 2;
-                    int j6 = (def.height * 4 - background_2.height) / 2;
-                    background_2.draw(48 + l * 4 + i6, 48 + (104 - i - def.height) * 4 + j6);
+                    int i6 = (def.sizeX * 4 - background_2.width) / 2;
+                    int j6 = (def.sizeY * 4 - background_2.height) / 2;
+                    background_2.draw(48 + l * 4 + i6, 48 + (104 - i - def.sizeY) * 4 + j6);
                 }
             } else {
                 if (object_type == 0 || object_type == 2)
@@ -4363,12 +4363,12 @@ public class Client extends GameApplet {
             int object_type = get_object_type(id);
             int object_id = get_object_key(id);
             ObjectDefinition class46_1 = ObjectDefinition.get(object_id);
-            if (class46_1.map_scene_id != -1) {
-                IndexedImage background_1 = mapScenes[class46_1.map_scene_id];
+            if (class46_1.mapSceneId != -1) {
+                IndexedImage background_1 = mapScenes[class46_1.mapSceneId];
                 if (background_1 != null) {
-                    int j5 = (class46_1.width * 4 - background_1.width) / 2;
-                    int k5 = (class46_1.height * 4 - background_1.height) / 2;
-                    background_1.draw(48 + l * 4 + j5, 48 + (104 - i - class46_1.height) * 4 + k5);
+                    int j5 = (class46_1.sizeX * 4 - background_1.width) / 2;
+                    int k5 = (class46_1.sizeY * 4 - background_1.height) / 2;
+                    background_1.draw(48 + l * 4 + j5, 48 + (104 - i - class46_1.sizeY) * 4 + k5);
                 }
             } else if (object_type == 9) {
                 int l4 = 0xeeeeee;
@@ -4393,12 +4393,12 @@ public class Client extends GameApplet {
         if (id != 0L) {
             int object_id = get_object_key(id);
             ObjectDefinition def = ObjectDefinition.get(object_id);
-            if (def.map_scene_id != -1) {
-                IndexedImage background = mapScenes[def.map_scene_id];
+            if (def.mapSceneId != -1) {
+                IndexedImage background = mapScenes[def.mapSceneId];
                 if (background != null) {
-                    int i4 = (def.width * 4 - background.width) / 2;
-                    int j4 = (def.height * 4 - background.height) / 2;
-                    background.draw(48 + l * 4 + i4, 48 + (104 - i - def.height) * 4 + j4);
+                    int i4 = (def.sizeX * 4 - background.width) / 2;
+                    int j4 = (def.sizeY * 4 - background.height) / 2;
+                    background.draw(48 + l * 4 + i4, 48 + (104 - i - def.sizeY) * 4 + j4);
                 }
             }
         }
@@ -4480,7 +4480,7 @@ public class Client extends GameApplet {
         Rasterizer3D.low_detail = false;
         low_detail = false;
         Region.low_detail = false;
-        ObjectDefinition.low_detail = false;
+        ObjectDefinition.isLowDetail = false;
     }
 
     static {
@@ -5347,11 +5347,11 @@ public class Client extends GameApplet {
             int w;
             int h;
             if (orientation == 0 || orientation == 2) {
-                w = class46.width;
-                h = class46.height;
+                w = class46.sizeX;
+                h = class46.sizeY;
             } else {
-                w = class46.height;
-                h = class46.width;
+                w = class46.sizeY;
+                h = class46.sizeX;
             }
             int k2 = class46.orientation;
             if (orientation != 0)
@@ -6593,7 +6593,7 @@ public class Client extends GameApplet {
             Npc npc = npcs[(int) local_player_index];
             if (npc != null) {
                 NpcDefinition entityDef = npc.desc;
-                if (entityDef.configs != null)
+                if (entityDef.transforms != null)
                     entityDef = entityDef.get_configs();
                 if (entityDef != null) {
                     packetSender.sendExamineNPC(entityDef.id);
@@ -6984,7 +6984,7 @@ public class Client extends GameApplet {
             previous = current;
             if (opcode == 2 && scene.get_object(plane, x, y, current)) {
                 ObjectDefinition def = ObjectDefinition.get(uid);
-                if (def.configs != null)
+                if (def.transforms != null)
                     def = def.get_configs();
 
                 if (def == null)
@@ -7006,10 +7006,10 @@ public class Client extends GameApplet {
                         menuActionRow++;
                     }
                 } else {
-                    if (def.scene_actions != null) {
+                    if (def.actions != null) {
                         for (int type = 4; type >= 0; type--)
-                            if (def.scene_actions[type] != null) {
-                                menuActionText[menuActionRow] = def.scene_actions[type] + " <col=00FFFF>" + def.name;
+                            if (def.actions[type] != null) {
+                                menuActionText[menuActionRow] = def.actions[type] + " <col=00FFFF>" + def.name;
                                 if (type == 0)
                                     menuActionTypes[menuActionRow] = 502;
                                 if (type == 1)
@@ -7046,10 +7046,10 @@ public class Client extends GameApplet {
                 Npc npc = npcs[uid];
 
                 try {
-                    if (npc.desc.occupied_tiles == 1 && (npc.world_x & 0x7f) == 64 && (npc.world_y & 0x7f) == 64) {
+                    if (npc.desc.size == 1 && (npc.world_x & 0x7f) == 64 && (npc.world_y & 0x7f) == 64) {
                         for (int j2 = 0; j2 < npcs_in_region; j2++) {
                             Npc npc2 = npcs[local_npcs[j2]];
-                            if (npc2 != null && npc2 != npc && npc2.desc.occupied_tiles == 1
+                            if (npc2 != null && npc2 != npc && npc2.desc.size == 1
                                 && npc2.world_x == npc.world_x && npc2.world_y == npc.world_y) {
                                 if (npc2.showActions()) {
                                     buildAtNPCMenu(npc2.desc, local_npcs[j2], y, x);
@@ -7077,7 +7077,7 @@ public class Client extends GameApplet {
                     for (int k2 = 0; k2 < npcs_in_region; k2++) {
                         Npc npc = npcs[local_npcs[k2]];
                         try {
-                            if (npc != null && npc.desc.occupied_tiles == 1 && npc.world_x == playerOnTop.world_x && npc.world_y == playerOnTop.world_y) {
+                            if (npc != null && npc.desc.size == 1 && npc.world_x == playerOnTop.world_x && npc.world_y == playerOnTop.world_y) {
                                 buildAtNPCMenu(npc.desc, local_npcs[k2], y, x);
                             }
                         } catch (Exception e) {
@@ -7820,8 +7820,8 @@ public class Client extends GameApplet {
                         if (inputString.toLowerCase().equals("::debugobj")) {
                             int objectToDebug = 34895;
                             ObjectDefinition data = ObjectDefinition.get(objectToDebug);
-                            for (int i = 0; i < data.model_ids.length; i++) {
-                                System.out.println("objectDef.modelIds[" + i + "] = " + data.model_ids[i] + ";");
+                            for (int i = 0; i < data.modelIds.length; i++) {
+                                System.out.println("objectDef.modelIds[" + i + "] = " + data.modelIds[i] + ";");
                             }
                         }
                         if (inputString.toLowerCase().equals("::chatcomp")) {
@@ -10101,12 +10101,12 @@ public class Client extends GameApplet {
             if ((mask & 0x2) != 0) {//Transform
                 npc.desc = NpcDefinition.get(stream.readLEUShortA());
                 if (npc.desc != null) {
-                    npc.occupied_tiles = npc.desc.occupied_tiles;
+                    npc.occupied_tiles = npc.desc.size;
                     npc.rotation = npc.desc.rotation;
                     npc.walk_animation_id = npc.desc.walkingAnimation;
-                    npc.turn_around_animation_id = npc.desc.halfTurnAnimation;
-                    npc.pivot_right_animation_id = npc.desc.quarterClockwiseTurnAnimation;
-                    npc.pivot_left_animation_id = npc.desc.quarterAnticlockwiseTurnAnimation;
+                    npc.turn_around_animation_id = npc.desc.rotate180Animation;
+                    npc.pivot_right_animation_id = npc.desc.rotate90LeftAnimation;
+                    npc.pivot_left_animation_id = npc.desc.rotate90RightAnimation;
                     npc.idle_animation_id = npc.desc.standingAnimation;
                 }
             }
@@ -10123,7 +10123,7 @@ public class Client extends GameApplet {
         }
         if (menuActionRow >= 400)
             return;
-        if (npcDefinition.configs != null)
+        if (npcDefinition.transforms != null)
             npcDefinition = npcDefinition.get_configs();
         if (npcDefinition == null)
             return;
@@ -10131,8 +10131,8 @@ public class Client extends GameApplet {
             return;
         String name = npcDefinition.name;
 
-        if (npcDefinition.cmb_level != 0)
-            name = name + get_level_diff(local_player.combat_level, npcDefinition.cmb_level) + " (level-" + npcDefinition.cmb_level + ")";
+        if (npcDefinition.combatLevel != 0)
+            name = name + get_level_diff(local_player.combat_level, npcDefinition.combatLevel) + " (level-" + npcDefinition.combatLevel + ")";
 
         // If pet does not belong to me, then do not show pick up option or anything at all.
         if (npcDefinition.actions != null) {
@@ -10209,7 +10209,7 @@ public class Client extends GameApplet {
                     if (npcDefinition.actions[i1] != null && npcDefinition.actions[i1].equalsIgnoreCase("attack")) {
                         char c = '\0';
                         if (setting.npc_attack_priority == 0) {
-                            if (npcDefinition.cmb_level > local_player.combat_level)
+                            if (npcDefinition.combatLevel > local_player.combat_level)
                                 c = '\u07D0';
                         } else if (setting.npc_attack_priority == 1) {
                             c = '\u07D0';
@@ -14319,10 +14319,10 @@ public class Client extends GameApplet {
             Npc npc = npcs[local_npcs[n]];
             if (npc != null && npc.visible()) {
                 NpcDefinition entityDef = npc.desc;
-                if (entityDef.configs != null) {
+                if (entityDef.transforms != null) {
                     entityDef = entityDef.get_configs();
                 }
-                if (entityDef != null && entityDef.renderOnMinimap && entityDef.isClickable) {
+                if (entityDef != null && entityDef.drawMapDot && entityDef.isClickable) {
                     int mapX = npc.world_x / 32 - local_player.world_x / 32;
                     int mapY = npc.world_y / 32 - local_player.world_y / 32;
                     markMinimap(mapDotNPC, mapX, mapY);
@@ -15175,11 +15175,11 @@ public class Client extends GameApplet {
                     player.transform_delay = startDelay + game_tick;
                     player.transform_duration = stopDelay + game_tick;
                     player.transformed_model = model;
-                    int playerSizeX = objectDefinition.width;
-                    int playerSizeY = objectDefinition.height;
+                    int playerSizeX = objectDefinition.sizeX;
+                    int playerSizeY = objectDefinition.sizeY;
                     if (objectFace == 1 || objectFace == 3) {
-                        playerSizeX = objectDefinition.height;
-                        playerSizeY = objectDefinition.width;
+                        playerSizeX = objectDefinition.sizeY;
+                        playerSizeY = objectDefinition.sizeX;
                     }
                     player.x_offset = xLoc * 128 + playerSizeX * 64;
                     player.y_offset = yLoc * 128 + playerSizeY * 64;
@@ -15483,11 +15483,11 @@ public class Client extends GameApplet {
                 if (group == 2) {
                     scene.remove_object(z, x, y);
                     ObjectDefinition objectDef = ObjectDefinition.get(object_id);
-                    if (x + objectDef.width > 103 || y + objectDef.width > 103 || x + objectDef.height > 103
-                        || y + objectDef.height > 103)
+                    if (x + objectDef.sizeX > 103 || y + objectDef.sizeX > 103 || x + objectDef.sizeY > 103
+                        || y + objectDef.sizeY > 103)
                         return;
                     if (objectDef.solid)
-                        collisionMaps[z].clear_interactive_obj(orientation, objectDef.width, x, y, objectDef.height,
+                        collisionMaps[z].clear_interactive_obj(orientation, objectDef.sizeX, x, y, objectDef.sizeY,
                             objectDef.walkable);
                 }
                 if (group == 3) {

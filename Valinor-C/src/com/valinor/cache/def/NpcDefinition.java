@@ -19,8 +19,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class NpcDefinition {
 
@@ -54,7 +52,7 @@ public final class NpcDefinition {
 
     public static int getModelIds(final int id, final int models) {
         final NpcDefinition npcDefinition = get(id);
-        return npcDefinition.model_id[models];
+        return npcDefinition.models[models];
     }
 
     public static int getadditionalModels(final int id, final int models) {
@@ -64,7 +62,7 @@ public final class NpcDefinition {
 
     public static int getModelColorIds(final int id, final int color) {
         final NpcDefinition npcDefinition = get(id);
-        return npcDefinition.src_color[color];
+        return npcDefinition.recolorFrom[color];
     }
 
     public static int getStandAnim(final int id) {
@@ -79,17 +77,17 @@ public final class NpcDefinition {
 
     public static int getHalfTurnAnimation(final int id) {
         final NpcDefinition entityDef = get(id);
-        return entityDef.halfTurnAnimation;
+        return entityDef.rotate180Animation;
     }
 
     public static int getQuarterClockwiseTurnAnimation(final int id) {
         final NpcDefinition entityDef = get(id);
-        return entityDef.quarterClockwiseTurnAnimation;
+        return entityDef.rotate90LeftAnimation;
     }
 
     public static int getQuarterAnticlockwiseTurnAnimation(final int id) {
         final NpcDefinition entityDef = get(id);
-        return entityDef.quarterAnticlockwiseTurnAnimation;
+        return entityDef.rotate90RightAnimation;
     }
 
     public static NpcDefinition get(int id) {
@@ -106,21 +104,13 @@ public final class NpcDefinition {
         npcDefinition.interfaceType = id;
         npcDefinition.decode(buffer);
 
-        if(id == 8713) {
-            npcDefinition.isClickable = true;
-        }
-
-        /*if(id == 8492) {
-            System.out.println("Actions: " + Arrays.toString(npcDefinition.actions));
-        }*/
-
         if(id == 1612) {
             npcDefinition.name = "Battle mage";
             npcDefinition.actions = new String[]{null, "Attack", null, null, null};
-            npcDefinition.src_color = new int[]{22426, 926};
-            npcDefinition.dst_color = new int[]{8090, 22426};
-            npcDefinition.cmb_level = 54;
-            npcDefinition.model_id = new int[]{2909, 2898, 2920};
+            npcDefinition.recolorFrom = new int[]{22426, 926};
+            npcDefinition.recolorTo = new int[]{8090, 22426};
+            npcDefinition.combatLevel = 54;
+            npcDefinition.models = new int[]{2909, 2898, 2920};
             npcDefinition.standingAnimation = 195;
             npcDefinition.walkingAnimation = 189;
         }
@@ -154,13 +144,13 @@ public final class NpcDefinition {
 
                 bf.write("definition[id].name = " + definition.name + ";");
                 bf.write(System.getProperty("line.separator"));
-                if (definition.model_id != null) {
+                if (definition.models != null) {
                     bf.write("definition[id].model_id = new int[] "
-                        + Arrays.toString(definition.model_id).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.models).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.occupied_tiles != 1) {
-                    bf.write("definition[id].occupied_tiles = " + definition.occupied_tiles + ";");
+                if (definition.size != 1) {
+                    bf.write("definition[id].occupied_tiles = " + definition.size + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.standingAnimation != -1) {
@@ -171,16 +161,16 @@ public final class NpcDefinition {
                     bf.write("definition[id].walkingAnimation = " + definition.walkingAnimation + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.halfTurnAnimation != -1) {
-                    bf.write("definition[id].halfTurnAnimation = " + definition.halfTurnAnimation + ";");
+                if (definition.rotate180Animation != -1) {
+                    bf.write("definition[id].halfTurnAnimation = " + definition.rotate180Animation + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.quarterClockwiseTurnAnimation != -1) {
-                    bf.write("definition[id].quarterClockwiseTurnAnimation = " + definition.quarterClockwiseTurnAnimation + ";");
+                if (definition.rotate90LeftAnimation != -1) {
+                    bf.write("definition[id].quarterClockwiseTurnAnimation = " + definition.rotate90LeftAnimation + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.quarterAnticlockwiseTurnAnimation != -1) {
-                    bf.write("definition[id].quarterAnticlockwiseTurnAnimation = " + definition.quarterAnticlockwiseTurnAnimation + ";");
+                if (definition.rotate90RightAnimation != -1) {
+                    bf.write("definition[id].quarterAnticlockwiseTurnAnimation = " + definition.rotate90RightAnimation + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.actions != null) {
@@ -188,24 +178,24 @@ public final class NpcDefinition {
                         + Arrays.toString(definition.actions).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.src_color != null) {
+                if (definition.recolorFrom != null) {
                     bf.write("definition[id].src_color = new int[] "
-                        + Arrays.toString(definition.src_color).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.recolorFrom).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.dst_color != null) {
+                if (definition.recolorTo != null) {
                     bf.write("definition[id].dst_color = new int[] "
-                        + Arrays.toString(definition.dst_color).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.recolorTo).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.src_texture != null) {
+                if (definition.retextureFrom != null) {
                     bf.write("definition[id].src_texture = new int[] "
-                        + Arrays.toString(definition.src_texture).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.retextureFrom).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.dst_texture != null) {
+                if (definition.retextureTo != null) {
                     bf.write("definition[id].dst_texture = new int[] "
-                        + Arrays.toString(definition.dst_texture).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.retextureTo).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.additionalModels != null) {
@@ -213,20 +203,20 @@ public final class NpcDefinition {
                         + Arrays.toString(definition.additionalModels).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.cmb_level != -1) {
-                    bf.write("definition[id].cmb_level = " + definition.cmb_level + ";");
+                if (definition.combatLevel != -1) {
+                    bf.write("definition[id].cmb_level = " + definition.combatLevel + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.resizeX != 128) {
-                    bf.write("definition[id].model_scale_xy = " + definition.resizeX + ";");
+                if (definition.widthScale != 128) {
+                    bf.write("definition[id].model_scale_xy = " + definition.widthScale + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.resizeY != 128) {
-                    bf.write("definition[id].model_scale_z = " + definition.resizeY + ";");
+                if (definition.heightScale != 128) {
+                    bf.write("definition[id].model_scale_z = " + definition.heightScale + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (!definition.render_priority) {
-                    bf.write("definition[id].render_priority = " + definition.render_priority + ";");
+                if (!definition.hasRenderPriority) {
+                    bf.write("definition[id].render_priority = " + definition.hasRenderPriority + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.ambient != -1) {
@@ -237,25 +227,25 @@ public final class NpcDefinition {
                     bf.write("definition[id].contrast = " + definition.contrast + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.headIcon != -1) {
-                    bf.write("definition[id].headIcon = " + definition.headIcon + ";");
+                if (definition.headIconPrayer != -1) {
+                    bf.write("definition[id].headIcon = " + definition.headIconPrayer + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.rotation != 32) {
                     bf.write("definition[id].rotation = " + definition.rotation + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.varbit != -1) {
-                    bf.write("definition[id].varbit = " + definition.varbit + ";");
+                if (definition.transformVarbit != -1) {
+                    bf.write("definition[id].varbit = " + definition.transformVarbit + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.varp != -1) {
-                    bf.write("definition[id].varp = " + definition.varp + ";");
+                if (definition.transformVarp != -1) {
+                    bf.write("definition[id].varp = " + definition.transformVarp + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (definition.configs != null) {
+                if (definition.transforms != null) {
                     bf.write("definition[id].configs = new int[] "
-                        + Arrays.toString(definition.configs).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.transforms).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 bf.write("break;");
@@ -270,34 +260,34 @@ public final class NpcDefinition {
 
     public static void copy(NpcDefinition definition, int id) {
         NpcDefinition copy = NpcDefinition.get(id);
-        definition.occupied_tiles = copy.occupied_tiles;
+        definition.size = copy.size;
         definition.rotation = copy.rotation;
         definition.standingAnimation = copy.standingAnimation;
         definition.walkingAnimation = copy.walkingAnimation;
-        definition.halfTurnAnimation = copy.halfTurnAnimation;
-        definition.quarterClockwiseTurnAnimation = copy.quarterClockwiseTurnAnimation;
-        definition.quarterAnticlockwiseTurnAnimation = copy.quarterAnticlockwiseTurnAnimation;
-        definition.varbit = copy.varbit;
-        definition.varp = copy.varp;
-        definition.cmb_level = copy.cmb_level;
+        definition.rotate180Animation = copy.rotate180Animation;
+        definition.rotate90LeftAnimation = copy.rotate90LeftAnimation;
+        definition.rotate90RightAnimation = copy.rotate90RightAnimation;
+        definition.transformVarbit = copy.transformVarbit;
+        definition.transformVarp = copy.transformVarp;
+        definition.combatLevel = copy.combatLevel;
         definition.name = copy.name;
         definition.description = copy.description;
-        definition.headIcon = copy.headIcon;
+        definition.headIconPrayer = copy.headIconPrayer;
         definition.isClickable = copy.isClickable;
         definition.ambient = copy.ambient;
-        definition.resizeY = copy.resizeY;
-        definition.resizeX = copy.resizeX;
-        definition.renderOnMinimap = copy.renderOnMinimap;
+        definition.heightScale = copy.heightScale;
+        definition.widthScale = copy.widthScale;
+        definition.drawMapDot = copy.drawMapDot;
         definition.contrast = copy.contrast;
         definition.actions = new String[copy.actions.length];
         System.arraycopy(copy.actions, 0, definition.actions, 0, definition.actions.length);
-        definition.model_id = new int[copy.model_id.length];
-        System.arraycopy(copy.model_id, 0, definition.model_id, 0, definition.model_id.length);
-        definition.render_priority = copy.render_priority;
+        definition.models = new int[copy.models.length];
+        System.arraycopy(copy.models, 0, definition.models, 0, definition.models.length);
+        definition.hasRenderPriority = copy.hasRenderPriority;
     }
 
     public Model get_dialogue_model() {
-        if (configs != null) {
+        if (transforms != null) {
             NpcDefinition entityDef = get_configs();
             if (entityDef == null)
                 return null;
@@ -339,14 +329,14 @@ public final class NpcDefinition {
             dialogue_model.shadingRecolor3(modelSetColor);
         }
 
-        if (src_color != null) {
-            for (int k = 0; k < src_color.length; k++)
-                dialogue_model.recolor(src_color[k], dst_color[k]);
+        if (recolorFrom != null) {
+            for (int k = 0; k < recolorFrom.length; k++)
+                dialogue_model.recolor(recolorFrom[k], recolorTo[k]);
         }
         
-        if (src_texture != null) {
-            for (int index = 0; index < src_texture.length; index++)
-                dialogue_model.retexture(src_texture[index], dst_texture[index]);
+        if (retextureFrom != null) {
+            for (int index = 0; index < retextureFrom.length; index++)
+                dialogue_model.retexture(retextureFrom[index], retextureTo[index]);
         }
 
         return dialogue_model;
@@ -356,19 +346,19 @@ public final class NpcDefinition {
         //Ken comment: Added try catch to get_configs method to catch any config errors
         try {
             int j = -1;
-            if (varbit != -1) {
-                VariableBits varBit = VariableBits.cache[varbit];
+            if (transformVarbit != -1) {
+                VariableBits varBit = VariableBits.cache[transformVarbit];
                 int k = varBit.configId;
                 int l = varBit.leastSignificantBit;
                 int i1 = varBit.mostSignificantBit;
                 int j1 = Client.BIT_MASKS[i1 - l];
                 j = clientInstance.settings[k] >> l & j1;
-            } else if (varp != -1)
-                j = clientInstance.settings[varp];
-            if (j < 0 || j >= configs.length || configs[j] == -1)
+            } else if (transformVarp != -1)
+                j = clientInstance.settings[transformVarp];
+            if (j < 0 || j >= transforms.length || transforms[j] == -1)
                 return null;
             else
-                return get(configs[j]);
+                return get(transforms[j]);
         } catch (Exception e) {
             System.err.println("There was an error getting configs for NPC " + id);
             e.printStackTrace();
@@ -385,7 +375,7 @@ public final class NpcDefinition {
     }
 
     public Model get_animated_model(int animation, int current, int[] label) {
-        if (configs != null) {
+        if (transforms != null) {
             final NpcDefinition def = get_configs();
             if (def == null) {
                 return null;
@@ -396,10 +386,10 @@ public final class NpcDefinition {
         Model model = (Model) model_cache.get(interfaceType);
         if (model == null) {
             boolean cached = false;
-            if(model_id == null) {
+            if(models == null) {
                 return null;
             }
-            for (int i : model_id) {
+            for (int i : models) {
                 if (!Model.cached(i)) {
                     cached = true;
                 }
@@ -407,23 +397,23 @@ public final class NpcDefinition {
             if (cached) {
                 return null;
             }
-            final Model[] models = new Model[model_id.length];
-            for (int index = 0; index < model_id.length; index++) {
-                models[index] = Model.get(model_id[index]);
+            final Model[] models = new Model[this.models.length];
+            for (int index = 0; index < this.models.length; index++) {
+                models[index] = Model.get(this.models[index]);
             }
             if (models.length == 1) {
                 model = models[0];
             } else {
                 model = new Model(models.length, models, true);
             }
-            if (src_color != null) {
-                for (int k1 = 0; k1 < src_color.length; k1++) {
-                    model.recolor(src_color[k1], dst_color[k1]);
+            if (recolorFrom != null) {
+                for (int k1 = 0; k1 < recolorFrom.length; k1++) {
+                    model.recolor(recolorFrom[k1], recolorTo[k1]);
                 }
             }
-            if (src_texture != null) {
-                for (int index = 0; index < src_texture.length; index++)
-                    model.retexture(src_texture[index], dst_texture[index]);
+            if (retextureFrom != null) {
+                for (int index = 0; index < retextureFrom.length; index++)
+                    model.retexture(retextureFrom[index], retextureTo[index]);
             }
 
             if (modelCustomColor > 0) {
@@ -453,14 +443,14 @@ public final class NpcDefinition {
         else if (current != -1)
             animated_model.interpolate(current);
         
-        if (resizeX != 128 || resizeY != 128) {
-            animated_model.scale(resizeX, resizeY, resizeX);
+        if (widthScale != 128 || heightScale != 128) {
+            animated_model.scale(widthScale, heightScale, widthScale);
         }
         
         animated_model.calc_diagonals();
         animated_model.face_skin = null;
         animated_model.vertex_skin = null;
-        if (occupied_tiles == 1) {
+        if (size == 1) {
             animated_model.within_tile = true;
         }
         return animated_model;
@@ -473,62 +463,58 @@ public final class NpcDefinition {
                 return;
             } else if (opcode == 1) {
                 int len = buffer.readUByte();
-                model_id = new int[len];
+                models = new int[len];
                 for (int i = 0; i < len; i++) {
-                    model_id[i] = buffer.readUShort();
+                    models[i] = buffer.readUShort();
                 }
             } else if (opcode == 2) {
                 name = buffer.readString();
             } else if (opcode == 12) {
-                occupied_tiles = buffer.readUByte();
+                size = buffer.readUByte();
             } else if (opcode == 13) {
                 standingAnimation = buffer.readUShort();
             } else if (opcode == 14) {
                 walkingAnimation = buffer.readUShort();
             } else if (opcode == 15) {
-                buffer.readUShort(); //rotate left anim
+                turnLeftSequence = buffer.readUShort(); //rotate left anim
             } else if (opcode == 16) {
-                buffer.readUShort(); //rotate right anim
+                turnRightSequence = buffer.readUShort(); //rotate right anim
             } else if (opcode == 17) {
                 walkingAnimation = buffer.readUShort();
-                halfTurnAnimation = buffer.readUShort();
-                quarterClockwiseTurnAnimation = buffer.readUShort();
-                quarterAnticlockwiseTurnAnimation = buffer.readUShort();
-                if (halfTurnAnimation == 65535) {
-                    halfTurnAnimation = walkingAnimation;
+                rotate180Animation = buffer.readUShort();
+                rotate90LeftAnimation = buffer.readUShort();
+                rotate90RightAnimation = buffer.readUShort();
+                if (rotate180Animation == 65535) {
+                    rotate180Animation = walkingAnimation;
                 }
-                if (quarterClockwiseTurnAnimation == 65535) {
-                    quarterClockwiseTurnAnimation = walkingAnimation;
+                if (rotate90LeftAnimation == 65535) {
+                    rotate90LeftAnimation = walkingAnimation;
                 }
-                if (quarterAnticlockwiseTurnAnimation == 65535) {
-                    quarterAnticlockwiseTurnAnimation = walkingAnimation;
+                if (rotate90RightAnimation == 65535) {
+                    rotate90RightAnimation = walkingAnimation;
                 }
+            } else if (opcode == 18) {
+                buffer.readUShort();
             } else if (opcode >= 30 && opcode < 35) {
-                if (actions == null) {
-                    actions = new String[5];
-                }
-
                 actions[opcode - 30] = buffer.readString();
-
                 if (actions[opcode - 30].equalsIgnoreCase("Hidden")) {
                     actions[opcode - 30] = null;
                 }
             } else if (opcode == 40) {
                 int len = buffer.readUByte();
-                src_color = new int[len];
-                dst_color = new int[len];
+                recolorFrom = new int[len];
+                recolorTo = new int[len];
                 for (int i = 0; i < len; i++) {
-                    src_color[i] = buffer.readUShort();
-                    dst_color[i] = buffer.readUShort();
+                    recolorFrom[i] = buffer.readUShort();
+                    recolorTo[i] = buffer.readUShort();
                 }
-
             } else if (opcode == 41) {
                 int length = buffer.readUByte();
-                src_texture = new short[length];
-                dst_texture = new short[length];
+                retextureFrom = new short[length];
+                retextureTo = new short[length];
                 for (int index = 0; index < length; index++) {
-                    src_texture[index] = (short) buffer.readUShort();
-                    dst_texture[index] = (short) buffer.readUShort();
+                    retextureFrom[index] = (short) buffer.readUShort();
+                    retextureTo[index] = (short) buffer.readUShort();
                 }
             } else if (opcode == 60) {
                 int len = buffer.readUByte();
@@ -539,127 +525,99 @@ public final class NpcDefinition {
             } else if (opcode == 93) {
                 //Make sure to draw PK bots in the minimap (NPC IDs 13000 to 13009)
                 if (id < 13000 || id > 13009)
-                    renderOnMinimap = false; //isMinimapVisible
-            } else if (opcode == 95)
-                cmb_level = buffer.readUShort();
-            else if (opcode == 97)
-                resizeX = buffer.readUShort(); //widthScale
-            else if (opcode == 98)
-                resizeY = buffer.readUShort();
-            else if (opcode == 99)
-                render_priority = true;
-            else if (opcode == 100)
+                    drawMapDot = false;
+            } else if (opcode == 95) {
+                combatLevel = buffer.readUShort();
+            } else if (opcode == 97) {
+                widthScale = buffer.readUShort(); //widthScale
+            } else if (opcode == 98) {
+                heightScale = buffer.readUShort();
+            } else if (opcode == 99) {
+                hasRenderPriority = true;
+            } else if (opcode == 100) {
                 ambient = buffer.readSignedByte();
-            else if (opcode == 101)
-                contrast = buffer.readSignedByte();
-            else if (opcode == 102)
-                headIcon = buffer.readUShort();
-            else if (opcode == 103)
+            } else if (opcode == 101) {
+                contrast = buffer.readSignedByte() * 5;
+            } else if (opcode == 102) {
+                headIconPrayer = buffer.readUShort();
+            } else if (opcode == 103) {
                 rotation = buffer.readUShort();
-            else if (opcode == 106) {
-                varbit = buffer.readUShort();
-                if (varbit == 65535) {
-                    varbit = -1;
+            } else if (opcode != 106 && opcode != 118) {
+                if (opcode == 107) { // L: 153
+                    isInteractable = false;
+                } else if (opcode == 109) {
+                    isClickable = false;
+                } else if (opcode == 111) {
+                    isFollower = true;
+                } else if (opcode == 249) {
+
+                }
+            } else {
+                transformVarbit = buffer.readUShort();
+                if (transformVarbit == 65535) {
+                    transformVarbit = -1;
                 }
 
-                varp = buffer.readUShort();
-                if (varp == 65535) {
-                    varp = -1;
+                transformVarp = buffer.readUShort();
+                if (transformVarp == 65535) {
+                    transformVarp = -1;
                 }
 
-                int length = buffer.readUnsignedByte();
-                configs = new int[length + 2];
-
-                for (int index = 0; index <= length; ++index) {
-                    configs[index] = buffer.readUShort();
-                    if (configs[index] == 65535) {
-                        configs[index] = -1;
+                int var3 = -1;
+                if (opcode == 118) {
+                    var3 = buffer.readUShort();
+                    if (var3 == 65535) {
+                        var3 = -1;
                     }
                 }
 
-                configs[length + 1] = -1;
-            }
-            else if (opcode == 107) {
-                //isInteractable = false;
-            }
-            else if (opcode == 109) {
-                isClickable = false; //rotationFlag
-            } else if (opcode == 111) {
-                //isPet = true;
-            }
-            else if (opcode == 118) {
-                varbit = buffer.readUShort();
-                if (varbit == 65535) {
-                    varbit = -1;
-                }
+                int var4 = buffer.readUnsignedByte();
+                transforms = new int[var4 + 2];
 
-                varp = buffer.readUShort();
-                if (varp == 65535) {
-                    varp = -1;
-                }
-
-                int var = buffer.readUShort();
-                if (var == 0xFFFF) {
-                    var = -1;
-                }
-
-                int length = buffer.readUnsignedByte();
-                configs = new int[length + 2];
-
-                for (int index = 0; index <= length; ++index) {
-                    configs[index] = buffer.readUShort();
-                    if (configs[index] == 65535) {
-                        configs[index] = -1;
+                for (int var5 = 0; var5 <= var4; ++var5) {
+                    transforms[var5] = buffer.readUShort();
+                    if (transforms[var5] == 65535) {
+                        transforms[var5] = -1;
                     }
                 }
 
-                configs[length + 1] = var;
-            } else if (opcode == 249) {
-                int length = buffer.readUnsignedByte();
-
-                this.params = new HashMap<>(length);
-
-                for (int index = 0; index < length; index++) {
-                    boolean isString = buffer.readUnsignedByte() == 1;
-                    int key = buffer.read24Int();
-                    Object value;
-
-                    if (isString) {
-                        value = buffer.readString();
-                    } else {
-                        value = buffer.readInt();
-                    }
-
-                    this.params.put(key, value);
-                }
+                transforms[var4 + 1] = var3;
             }
         }
     }
 
     public NpcDefinition() {
+        name = "null";
+        size = 1;
+        standingAnimation = -1;
+        turnLeftSequence = -1;
+        turnRightSequence = -1;
+        walkingAnimation = -1;
+        rotate180Animation = -1;
+        rotate90LeftAnimation = -1;
+        rotate90RightAnimation = -1;
+        actions = new String[5];
+        drawMapDot = true;
+        combatLevel = -1;
+        widthScale = 128;
+        heightScale = 128;
+        hasRenderPriority = false;
+        ambient = 0;
+        contrast = 0;
+        headIconPrayer = -1;
+        rotation = 32;
+        transformVarbit = -1;
+        transformVarp = -1;
+        isInteractable = true;
+        isClickable = true;
+        isFollower = false;
+        modelSetColor = 0;
+        anInt64 = 1834;
+        interfaceType = -1L;
         modelCustomColor = 0;
         modelCustomColor2 = 0;
         modelCustomColor3 = 0;
         modelCustomColor4 = 0;
-        modelSetColor = 0;
-        quarterAnticlockwiseTurnAnimation = -1;
-        varbit = -1;
-        halfTurnAnimation = -1;
-        varp = -1;
-        cmb_level = -1;
-        anInt64 = 1834;
-        walkingAnimation = -1;
-        occupied_tiles = 1;
-        headIcon = -1;
-        standingAnimation = -1;
-        interfaceType = -1L;
-        rotation = 32;
-        quarterClockwiseTurnAnimation = -1;
-        isClickable = true;
-        resizeY = 128;
-        renderOnMinimap = true;
-        resizeX = 128;
-        render_priority = false;
     }
 
     public int modelCustomColor;
@@ -667,45 +625,48 @@ public final class NpcDefinition {
     public int modelCustomColor3;
     public int modelCustomColor4;
     public int modelSetColor;
-    public int quarterAnticlockwiseTurnAnimation;
+    public int rotate90RightAnimation;
     public static int cache_index;
-    public int varbit;
-    public int halfTurnAnimation;
-    public int varp;
+    public int transformVarbit;
+    public int rotate180Animation;
+    public int transformVarp;
     public static Buffer buffer;
-    public int cmb_level;
+    public int combatLevel;
     public boolean largeHpBar;
     public final int anInt64;
     public String name;
     public String[] actions;
     public int walkingAnimation;
-    public int occupied_tiles;
-    public int[] dst_color;
+    public int turnLeftSequence;
+    public int turnRightSequence;
+    public int size;
+    public int[] recolorTo;
     public static int[] offsets;
     public int[] additionalModels;
-    public int headIcon;
-    public short[] src_texture;
-    public short[] dst_texture;
-    public int[] src_color;
+    public int headIconPrayer;
+    public short[] retextureFrom;
+    public short[] retextureTo;
+    public int[] recolorFrom;
     public int standingAnimation;
     public long interfaceType;
     public int rotation;
     public static NpcDefinition[] cache;
     public static Client clientInstance;
-    public int quarterClockwiseTurnAnimation;
+    public int rotate90LeftAnimation;
     public boolean isClickable;
+    public boolean isInteractable;
+    public boolean isFollower;
     public int ambient;
-    public int resizeY;
-    public boolean renderOnMinimap;
+    public int heightScale;
+    public boolean drawMapDot;
     public boolean pet;
-    public int[] configs;
+    public int[] transforms;
     public String description;
-    public int resizeX;
+    public int widthScale;
     public int contrast;
-    public boolean render_priority;
-    public int[] model_id;
+    public boolean hasRenderPriority;
+    public int[] models;
     public int interfaceZoom = 0;
     public int id;
     public static TempCache model_cache = new TempCache(30);
-    private Map<Integer, Object> params = null;
 }
