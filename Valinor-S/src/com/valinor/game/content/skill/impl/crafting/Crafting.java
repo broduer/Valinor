@@ -55,6 +55,9 @@ public class Crafting extends PacketInteraction {
         for (Amethyst amethyst : Amethyst.values()) {
             Crafting.addCraftable(amethyst);
         }
+        for (Battlestaff battlestaff : Battlestaff.values()) {
+            Crafting.addCraftable(battlestaff);
+        }
         for (Hide hide : Hide.values()) {
             Crafting.addCraftable(hide);
         }
