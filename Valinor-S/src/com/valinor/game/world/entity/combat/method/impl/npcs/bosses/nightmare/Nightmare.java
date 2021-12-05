@@ -33,10 +33,121 @@ public class Nightmare extends Npc {
         this.base = base;
     }
 
+    //TODO
+    /*static {
+        NPCAction.register(9461, "disturb", (player, npc) -> {
+            player.startEvent(event -> {
+                player.dialogue(new MessageDialogue("" + player.getName() + ", would you like to fight The Nightmare?"), new OptionsDialogue("Choose an option",
+                    new Option("Start a new instance", () -> {
+                        ArrayList<Player> team = new ArrayList<Player>();
+                        team.add(player);
+                        NightmareEvent.createInstance(team);
+                    }),
+                    new Option("Join a friends instance", () -> {
+                        player.nameInput("Enter friend's name:", key -> {
+                            NightmareEvent.joinInstance(key, player);
+                        });
+                    }),
+                    new Option("No thanks.")));
+                return;
+            });
+
+        });
+    }*/
+
     @Override
     public int maxHp() {//TODO
-        return 2400;//shield ? 80 * getPosition().getRegion().players.size() : 2400
+        return 2400;//TODO shield ? 80 * getPosition().getRegion().players.size() : 2400
     }
+
+    public ArrayList<Tile> getSleepwalkerPositions() {
+        ArrayList<Tile> tiles = new ArrayList<Tile>();
+        int[][] spots = new int[][] { { 26, 24 }, { 28, 24 }, { 36, 24 }, { 38, 24 }, { 41, 21 }, { 41, 19 }, { 41, 11 }, { 41, 9 }, { 38, 6 }, { 36, 6 }, { 28, 6 }, { 26, 6 }, { 23, 9 }, { 23, 11 }, { 23, 19 }, { 23, 21 }, { 23, 14 }, { 23, 16 }, { 41, 16 }, { 41, 14 }, { 31, 5 }, { 33, 5 }, { 31, 25 }, { 33, 25 }  };
+        for (int i = 0; i < spots.length; i++) {
+            tiles.add(getBase().transform(spots[i][0], spots[i][1], 0));
+        }
+        return tiles;
+    }
+
+    //TODO
+   /* @Override
+    public int hit(Hit... hits) {
+        if(queuedHits == null)
+            queuedHits = new ArrayList<>();
+        int damage = 0;
+        boolean process = true;
+        boolean dead = false;
+        for(Hit hit : hits) {
+            Entity attacker = hit.attacker;
+
+            if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
+                stageDelta = 6;
+                toggleShield();
+                process = false;
+            } else if ((attacker instanceof TotemPlugin) && stage < 2) {
+                process = false;
+                queuedHits.add(hit);
+            } else if (attacker instanceof TotemPlugin) {
+                if (stage >= 2) {
+                    dead = true;
+                }
+            }
+
+            if (attacker instanceof Parasite) {
+                hit.type = HitType.HEAL;
+                hit.damage = (Misc.random(100));
+            }
+
+            if (attacker.isPlayer() && !isShield()) {
+                process = false;
+            }
+
+            if(process && hit.defend(this)) {
+                if (!isLocked(LockType.FULL_NULLIFY_DAMAGE))
+                    queuedHits.add(hit);
+                damage += hit.damage;
+            }
+
+            //attacker.forceText(stage + ": " + damage + "/" + getCombat().getStat(StatType.Hitpoints).currentLevel);
+
+            if (shield && 40 >= getCombat().getStat(StatType.Hitpoints).currentLevel && stage <= 2) {
+                toggleShield();
+                for (Player p : getPosition().getRegion().players) {
+                    p.sendMessage("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!");
+                }
+                process = false;
+            }
+
+        }
+        Hit baseHit = hits[0];
+        if (process) {
+            if(baseHit.type.resetActions) {
+                if(player != null)
+                    player.resetActions(true, false, false);
+                else
+                    npc.resetActions(false, false);
+            }
+            if(baseHit.attacker != null) {
+                if(baseHit.attacker.player != null && baseHit.attackStyle != null) {
+                    if(player != null) //important that this happens here for things that hit multiple targets
+                        baseHit.attacker.player.getCombat().skull(player);
+                    if(baseHit.attackSpell == null)
+                        CombatUtils.addXp(baseHit.attacker.player, this, baseHit.attackStyle, baseHit.attackType, damage);
+                }
+                getCombat().updateLastDefend(baseHit.attacker);
+            }
+        }
+        if (getCombat().getStat(StatType.Hitpoints).currentLevel <= 0) {
+            for (TotemPlugin t : totems) {
+                t.setChargeable(false);
+            }
+        }
+        if (dead && getCombat().getStat(StatType.Hitpoints).currentLevel > 0) {
+            super.hit(new Hit().fixedDamage(getCombat().getStat(StatType.Hitpoints).currentLevel));
+            getCombat().getStat(StatType.Hitpoints).currentLevel = 0;
+        }
+        return damage;
+    }*/
 
     @Override
     public CombatMethod getCombatMethod() {
@@ -197,6 +308,14 @@ public class Nightmare extends Npc {
             //TODO
             //totem.setChargeable(!isShield());
         }
+    }
+
+    @Override
+    public void animate(int id) {
+        if (id() == 9431 && id != 8604 && id > 0) {
+            super.animate(0);
+        }
+        super.animate(id);
     }
 
     public boolean isShield() {

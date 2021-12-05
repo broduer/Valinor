@@ -5,6 +5,10 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    NIGHTMARE_CURSE,
+    NIGHTMARE_BABY_DADY,
+    NIGHTMARE_SPORE,
+
     KYLIE_MINNOW_DIALOGUE_STARTED("kylie_minnow_dialogue_started", AttribType.BOOLEAN),
 
     DONATOR_MYSTERY_BOXES_OPENED("donator_mystery_boxes_opened", AttribType.INTEGER),

@@ -1,18 +1,23 @@
 package com.valinor.game.world.entity.combat.method.impl;
 
 import com.valinor.game.content.duel.DuelRule;
+import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
+import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.Skill;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Debugs;
+import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND;
@@ -32,6 +37,13 @@ public abstract class CommonCombatMethod implements CombatMethod {
     public void set(Mob mob, Mob target) {
         this.mob = mob;
         this.target = target;
+    }
+
+    public void restore() {
+        mob.heal(mob.maxHp());
+        mob.putAttrib(AttributeKey.POISON_TICKS,0);
+        Venom.cure(2, mob);
+        mob.getTimers().cancel(TimerKey.FROZEN);
     }
 
     protected boolean withinDistance(int distance) {

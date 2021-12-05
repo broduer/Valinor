@@ -1,8 +1,10 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
+import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
@@ -19,13 +21,13 @@ import java.util.List;
 public enum SpecialAttacks {
 
     GRASPING_CLAWS(8598, Nightmare.NO_TELEPORT) {
-
         @Override
         public void run(Nightmare nm) {
 //			nm.forceText("Grasping claws " + System.currentTimeMillis());
-            /*ArrayList<Tile> tiles = new ArrayList<Tile>();
+            ArrayList<Tile> tiles = new ArrayList<Tile>();
             for (int x = 23; x < 41; x++) {
-                l: for (int y = 6; y < 24; y++) {
+                l:
+                for (int y = 6; y < 24; y++) {
                     Tile pos = nm.getBase().transform(x, y, 0);
                     for (Npc n : World.getWorld().getNpcs()) {
                         if (n.getCentrePosition().distance(pos) < (n.getSize() > 1 ? 2 : 1)) {
@@ -38,7 +40,7 @@ public enum SpecialAttacks {
                 }
             }
             for (Tile pos : tiles) {
-                World.getWorld().tileGraphic(1767, new Tile(pos.getX(), pos.getY(), pos.getZ()),0, 0);
+                World.getWorld().tileGraphic(1767, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 0);
             }
             nm.runFn(2, () -> {
                 for (Tile t : tiles) {
@@ -48,51 +50,47 @@ public enum SpecialAttacks {
                         }
                     }
                 }
-            });*/
+            });
         }
 
     },
 
     SLEEPWALKERS(-1, Nightmare.NO_TELEPORT) {
-
         @Override
         public void run(Nightmare nm) {
-           /* for (Player player : nm.tile().getRegion().players) {
+            /*for (Player player : nm.tile().getRegion().players) {
                 player.message("<col=ff0000>The Nightmare begins to charge up a devastating attack.");
             }
-            nm.addEvent(event -> {
-                event.delay(1);
+            nm.runFn(1, () -> {
                 int count = nm.tile().getRegion().players.size() < 24 ? nm.tile().getRegion().players.size() : 24;
                 ArrayList<Tile> spots = nm.getSleepwalkerTiles();
                 Collections.shuffle(spots);
                 for (int i = 0; i < count; i++) {
-                    int id = 9446 + Misc.random(5);
-                    Sleepwalker sw = new Sleepwalker(id);
-                    sw.spawn(spots.get(i).getX(), spots.get(i).getY(), spots.get(i).getZ());
+                    int id = 9446 + World.getWorld().random(5);
+                    Sleepwalker sw = new Sleepwalker(id, new Tile(spots.get(i).getX(), spots.get(i).getY(), spots.get(i).getZ()));
+                    sw.spawn(false);
                     sw.setNm(nm);
                 }
-                event.delay(2);
+            }).then(2, () -> {
                 nm.animate(8604);
-                event.delay(1);
+            }).then(1, () -> {
                 for (Player player : nm.tile().getRegion().players) {
-                    player.graphics(1782);
+                    player.graphic(1782);
                 }
-                event.delay(8);
+            }).then(8, () -> {
                 for (Player player : nm.tile().getRegion().players) {
-                    player.hit(new Hit().fixedDamage(nm.getSleepwalkerCount() * 5));
+                    player.hit(nm, nm.getSleepwalkerCount() * 5);
                 }
-                nm.transform(9425 + nm.getStage());
+                nm.transmog(9425 + nm.getStage());
                 nm.setSleepwalkerCount(0);
             });*/
         }
-
     },
 
     HUSKS(8599, Nightmare.NO_TELEPORT) {
-
         @Override
         public void run(Nightmare nm) {
-            /*int size = nm.tile().getRegion().players.size() > 1 ? nm.tile().getRegion().players.size() / 2 : nm.tile().getRegion().players.size();
+           /* int size = nm.tile().getRegion().players.size() > 1 ? nm.tile().getRegion().players.size() / 2 : nm.tile().getRegion().players.size();
             ArrayList<Mob> targets = nm.getPossibleTargets(64, true, false);
             Collections.shuffle(targets);
             for (int i = 0; i < size; i++) {
@@ -124,7 +122,6 @@ public enum SpecialAttacks {
     },
 
     FLOWER_POWER(8601, Nightmare.CENTER) {
-
         @Override
         public void run(Nightmare nm) {
             /*if (nm.getFlowerRotary() != -1) {
@@ -152,68 +149,59 @@ public enum SpecialAttacks {
                 darkFlower.spawn();
                 darkFlower2.spawn();
             }
-            nm.addEvent(event-> {
-                event.delay(1);
+            nm.runFn(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.animate(flower.definition().anInt2281 + 1);
                 }
-                event.delay(1);
+            }).then(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.setId(flower.getId() + 1);
                 }
-                event.delay(6);
+            }).then(6, () -> {
                 for (GameObject flower : flowers) {
                     flower.animate(flower.definition().anInt2281 + 1);
                 }
-                event.delay(1);
+            }).then(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.setId(flower.getId() + 1);
                 }
-                event.delay(10);
+            }).then(10, () -> {
                 for (GameObject flower : flowers) {
                     flower.animate(flower.definition().anInt2281 + 1);
                 }
                 for (Player p : nm.tile().getRegion().players) {
                     if (!pattern.safe(center, p.tile())) {
                         p.message("You failed to make it back to the safe area.");
-                        p.hit(new Hit().randDamage(50));
+                        p.hit(nm,50);
                     }
                 }
-                event.delay(1);
+            }).then(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.remove();
                 }
                 nm.setFlowerRotary(-1);
             });*/
-
         }
-
     },
 
     CURSE(8600, Nightmare.NO_TELEPORT) {
-
         @Override
         public void run(Nightmare nm) {
-            /*nm.addEvent(event -> {
-                event.delay(2);
+           /* nm.runFn(2, () -> {
                 for (Player p : nm.tile().getRegion().players) {
                     if (Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MISSILES)) {
-                        p.getPrayer().deactivate(Prayer.PROTECT_FROM_MISSILES);
-                        p.getPrayer().toggle(Prayer.PROTECT_FROM_MELEE);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MISSILES);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MELEE);
                     } else if (Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MELEE)) {
-                        p.getPrayer().deactivate(Prayer.PROTECT_FROM_MELEE);
-                        p.getPrayer().toggle(Prayer.PROTECT_FROM_MAGIC);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MELEE);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MAGIC);
                     } else if (Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MAGIC)) {
-                        p.getPrayer().deactivate(Prayer.PROTECT_FROM_MAGIC);
-                        p.getPrayer().toggle(Prayer.PROTECT_FROM_MISSILES);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MAGIC);
+                        Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MISSILES);
                     }
-                    p.set("nightmare_curse", System.currentTimeMillis() + 30000);
+                    p.putAttrib(AttributeKey.NIGHTMARE_CURSE, System.currentTimeMillis() + 30000);
                     p.message("<col=ff0000>The Nightmare has cursed you, shuffling your prayers!");
                 }
-                event.delay(1);
-//				for (Player p : nm.tile().getRegion().player) {
-//					p.getWidgetManager().close(Widget.NIGHTMARE_CURSE_OVERLAY);
-//				}
             });*/
         }
 
@@ -222,48 +210,45 @@ public enum SpecialAttacks {
     PARASITES(8606, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-           /* for (Mob victim : nm.getPossibleTargets()) {
+            for (Mob victim : nm.getPossibleTargets()) {
                 Player p = (Player) victim;
                 if (World.getWorld().random(6) == 3) continue;
-                Projectile pr = new Projectile(1770, 110, 90, 30, 56, 10, 10, 64);
-                pr.send(nm, victim);
+                Projectile pr = new Projectile(nm, victim, 1770, 30, 66, 110, 90, 0);
+                pr.sendProjectile();
                 p.message("<col=ff0000>The Nightmare has impregnated you with a deadly parasite!");
-                Config.IMPREGNANTED.set(p, 1);
-                p.set("nightmare_babydaddy", true);
+                //Config.IMPREGNANTED.set(p, 1);
+                p.putAttrib(AttributeKey.NIGHTMARE_BABY_DADY, true);
             }
             final List<Parasite> parasites = new ArrayList<Parasite>();
-            nm.addEvent(event -> {
-                event.delay(28);
-                for (Entity victim : nm.getPossibleTargets()) {
-                    if (victim.get("nightmare_babydaddy") != null) {
+            nm.runFn(28, () -> {
+                for (Mob victim : nm.getPossibleTargets()) {
+                    if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
                         Player p = (Player) victim;
                         p.message("<col=ff0000>The parasite bursts out of you, fully grown!");
-                        Config.IMPREGNANTED.set(p, 2);
-                        p.graphics(1779);
+                        //Config.IMPREGNANTED.set(p, 2);
+                        p.graphic(1779);
                     }
                 }
-                event.delay(2);
-                for (Entity victim : nm.getPossibleTargets()) {
-                    if (victim.get("nightmare_babydaddy") != null) {
-                        victim.graphics(1765);
-                        Parasite parasite = (Parasite) new Parasite(Misc.random(5) == 3 ? 9469 : 9468).spawn(victim.tile().copy());
+            }).then(2, () -> {
+                for (Mob victim : nm.getPossibleTargets()) {
+                    if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
+                        victim.graphic(1765);
+                        Parasite parasite = (Parasite) new Parasite(World.getWorld().random(5) == 3 ? 9469 : 9468, victim.tile().copy()).spawn(false);
                         parasites.add(parasite);
-                        victim.remove("nightmare_babydaddy");
+                        victim.clearAttrib(AttributeKey.NIGHTMARE_BABY_DADY);
                     }
                 }
-                event.delay(3);
+            }).then(3, () -> {
                 for (Parasite parasite : parasites) {
                     parasite.unlock();
                     parasite.getCombat().setTarget(nm);
-                    parasite.face(nm);
+                    parasite.face(nm.tile());
                 }
-            });*/
+            });
         }
     },
 
-
     SURGE(8597, Nightmare.EDGE) {
-
         @Override
         public void run(Nightmare nm) {
 //			ForceMovement forceMovement = ForceMovement.create(0, 10, 0, 18, 33, 60, WalkingQueue.NORTH);
@@ -285,19 +270,17 @@ public enum SpecialAttacks {
     },
 
     SPORES(8599, Nightmare.NO_TELEPORT) {
-
         @Override
         public void run(Nightmare nm) {
-           /* for (Player player : nm.tile().getRegion().players) {
+            /*for (Player player : nm.tile().getRegion().players) {
                 player.message("<col=ff0000>The Nightmare summons some infectious spores!");
             }
-            int[][] spores = { { 32, 23 }, { 37, 20 }, { 40, 15 }, { 37, 10 }, { 32, 7 }, { 27, 10 }, { 24, 15 }, { 28, 15 }, { 32, 18 }, { 36, 15 }, { 32, 12 } };
+            int[][] spores = {{32, 23}, {37, 20}, {40, 15}, {37, 10}, {32, 7}, {27, 10}, {24, 15}, {28, 15}, {32, 18}, {36, 15}, {32, 12}};
             for (int i = 0; i < spores.length; i++) {
                 Spore spore = new Spore(nm.getBase().transform(spores[i][0], spores[i][1], 0));
-                nm.addEvent(event -> {
-                    event.delay(1);
-                    spore.animate(spore.getDef().unknownOpcode24 + 1);
-                    event.delay(3);
+                nm.runFn(1, () -> {
+                    spore.animate(spore.definition().anInt2281 + 1);
+                }).then(3, () -> {
                     spore.setId(37739);
                     //spore.setId(37739, nm.getPossibleTargets()); PROPER ONE JUST NEED TO FIX THE ERROR
                 });
