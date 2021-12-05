@@ -36,7 +36,7 @@ public enum Cart {
     GRIM_REAPER_PET(CustomItemIdentifiers.GRIM_REAPER_PET,750),
     GENIE_PET(CustomItemIdentifiers.GENIE_PET,500),
     DHAROK_PET(CustomItemIdentifiers.DHAROK_PET,350),
-    PET_ZOMBIES_CHAMPION(CustomItemIdentifiers.PET_ZOMBIES_CHAMPION,350),
+    PET_ZOMBIES_CHAMPION(CustomItemIdentifiers.ZOMBIES_CHAMPION_PET,350),
     BABY_ABYSSAL_DEMON(CustomItemIdentifiers.BABY_ABYSSAL_DEMON,500),
     BABY_SQUIRT(CustomItemIdentifiers.BABY_SQUIRT,500),
     BABY_DARK_BEAST_EGG(CustomItemIdentifiers.BABY_DARK_BEAST_EGG,500),

@@ -423,7 +423,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == FAWKES) {
                                         storage.sumFawkesPet.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == FAWKES_24937
+                                    if(item.getId() == FAWKES_32937
                                     ) {
                                         storage.sumRecoloredFawkesPet.addAndGet(1L * item.getAmount());
                                     }
@@ -499,7 +499,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == DHAROK_PET) {
                                         storage.sumDharokPet.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == PET_ZOMBIES_CHAMPION) {
+                                    if(item.getId() == ZOMBIES_CHAMPION_PET) {
                                         storage.sumZombiesChampionPet.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == BABY_ABYSSAL_DEMON) {

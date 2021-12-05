@@ -14,7 +14,7 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
-        if (id == 30383) {
+        if (id == SKILLING_SCROLL) {
             def.name = "<col=65280>Skilling scroll";
             def.inventoryActions = new String[]{"Read", null, null, null, "Destroy"};
             def.inventoryModel = 3374;
@@ -26,7 +26,7 @@ public class CustomItems {
             def.modelCustomColor4 = 22222;
         }
 
-        if (id == 30384) {
+        if (id == PVMING_SCROLL) {
             def.name = "<col=65280>Pvming scroll";
             def.recolorFrom = new int[]{6583, 6604, 6608, 6587, 6464, 6740};
             def.recolorTo = new int[]{933, 926, 926, 926, 933, 926};
@@ -40,7 +40,7 @@ public class CustomItems {
             def.modelCustomColor4 = 12222;
         }
 
-        if (id == 30385) {
+        if (id == TASK_BOTTLE_SKILLING) {
             def.name = "<col=65280>Task bottle (skilling)";
             def.zoom2d = 1114;
             def.xan2d = 0;
@@ -53,7 +53,7 @@ public class CustomItems {
             def.modelCustomColor4 = 22222;
         }
 
-        if (id == 30386) {
+        if (id == TASK_BOTTLE_PVMING) {
             def.name = "<col=65280>Task bottle (pvming)";
             def.zoom2d = 1114;
             def.xan2d = 0;
@@ -66,7 +66,7 @@ public class CustomItems {
             def.modelCustomColor4 = 12222;
         }
 
-        if (id == 30253) {
+        if (id == CLOAK_OF_INVISIBILITY) {
             def.name = "<col=65280>Cloak of invisibility";
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             def.femaleModel = 37051;
@@ -80,7 +80,7 @@ public class CustomItems {
             def.modelCustomColor4 = 490;
         }
 
-        if (id == 30252) {
+        if (id == MARVOLO_GAUNTS_RING) {
             def.name = "<col=65280>Marvolo Gaunts Ring";
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             def.inventoryModel = 29141;
@@ -92,7 +92,7 @@ public class CustomItems {
             def.modelCustomColor3 = 3020;
         }
 
-        if (id == 30251) {
+        if (id == TOM_RIDDLE_DIARY) {
             def.name = "<col=65280>Tom Riddle's Diary";
             def.ambient = 15;
             def.femaleModel = 10699;
@@ -107,7 +107,7 @@ public class CustomItems {
             def.modelCustomColor4 = 490;
         }
 
-        if (id == 30250) {
+        if (id == NAGINI) {
             def.name = "<col=65280>Nagini";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 13556;
@@ -118,7 +118,7 @@ public class CustomItems {
             def.zoom2d = 2128;
         }
 
-        if (id == 30224) {
+        if (id == GRIM_HWEEN_MASK) {
             def.name = "<col=65280>Grim h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -136,7 +136,7 @@ public class CustomItems {
             def.recolorTo[1] = 9152; // Eyes colour
         }
 
-        if (id == 30225) {
+        if (id == GRIM_PARTYHAT) {
             def.name = "<col=65280>Grim partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -153,7 +153,7 @@ public class CustomItems {
             def.recolorTo[0] = 28;
         }
 
-        if (id == 30226) {
+        if (id == GRIM_SCYTHE) {
             def.name = "<col=65280>Grim scythe";
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
             def.inventoryModel = 2511;
@@ -168,7 +168,7 @@ public class CustomItems {
             def.recolorTo = new int[]{28, 61};
         }
 
-        if (id == 30227) {
+        if (id == HWEEN_MYSTERY_CHEST) {
             def.animateInventory = true;
             def.name = "<col=65280>H'ween mystery chest";
             def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
@@ -182,7 +182,7 @@ public class CustomItems {
             def.recolorTo = new int[]{24, 49, 374770, 374770, 87770, 87770};
         }
 
-        if (id == 30228) {
+        if (id == HAUNTED_HELLHOUND_PET) {
             def.name = "<col=65280>Haunted hellhound pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 26262;
@@ -193,7 +193,7 @@ public class CustomItems {
             def.yOffset2d = -329;
         }
 
-        if (id == 30229) {
+        if (id == HWEEN_ARMADYL_GODSWORD) {
             def.name = "<col=65280>H'ween armadyl godsword";
             def.femaleModel = 27649;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -207,7 +207,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30230) {
+        if (id == HWEEN_BLOWPIPE) {
             def.name = "<col=65280>H'ween blowpipe";
             def.femaleModel = 14403;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -221,7 +221,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30231) {
+        if (id == HWEEN_DRAGON_CLAWS) {
             def.name = "<col=65280>H'ween dragon claws";
             def.femaleModel = 29191;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -235,7 +235,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30232) {
+        if (id == HWEEN_CRAWS_BOW) {
             def.name = "<col=65280>H'ween craw's bow";
             def.femaleModel = 35769;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -250,7 +250,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30233) {
+        if (id == HWEEN_CHAINMACE) {
             def.name = "<col=65280>H'ween chainmace";
             def.femaleModel = 35771;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -264,14 +264,14 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30234) {
+        if (id == HWEEN_GRANITE_MAUL) {
             ItemDefinition.copyInventory(def, GRANITE_MAUL_24225);
             ItemDefinition.copyEquipment(def, GRANITE_MAUL_24225);
             def.name = "<col=65280>H'ween granite maul";
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30239) {
+        if (id == HAUNTED_SLED) {
             def.name = "<col=65280>Haunted sled";
             def.inventoryActions = new String[]{null, "Ride", null, null, "Drop"};
             def.femaleModel = 4946;
@@ -283,7 +283,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30240) {
+        if (id == HAUNTED_CROSSBOW) {
             def.name = "<col=65280>Haunted crossbow";
             def.femaleModel = 15472;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -297,7 +297,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30241) {
+        if (id == HAUNTED_DRAGONFIRE_SHIELD) {
             def.name = "<col=65280>Haunted dragonfire shield";
             def.ambient = 15;
             def.contrast = 15;
@@ -311,7 +311,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30242) {
+        if (id == HWEEN_ITEM_CHEST) {
             def.name = "<col=65280>H'ween item casket";
             def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
             def.inventoryModel = 2450;
@@ -323,7 +323,7 @@ public class CustomItems {
             def.modelCustomColor3 = 24;
         }
 
-        if (id == 30235) {
+        if (id == HWEEN_TOKENS) {
             ItemDefinition.copyInventory(def, 13204);
             def.name = "<col=65280>H'ween token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
@@ -353,7 +353,7 @@ public class CustomItems {
             def.recolorTo = new int[]{25, 26, 27};
         }
 
-        if (id == 30222) {
+        if (id == MYSTERY_TICKET) {
             def.animateInventory = true;
             def.name = "<col=65280>Mystery ticket";
             def.inventoryActions = new String[]{"Tear", null, null, null, null};
@@ -366,7 +366,7 @@ public class CustomItems {
             def.zoom2d = 1160;
         }
 
-        if (id == 30122) {
+        if (id == CORRUPT_TOTEM_BASE) {
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.name = "<col=65280>Corrupt totem base";
             def.inventoryModel = 31621;
@@ -378,7 +378,7 @@ public class CustomItems {
             def.recolorTo = new int[]{945, 582};
         }
 
-        if (id == 30123) {
+        if (id == CORRUPT_TOTEM_MIDDLE) {
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.name = "<col=65280>Corrupt totem middle";
             def.inventoryModel = 31622;
@@ -390,7 +390,7 @@ public class CustomItems {
             def.recolorTo = new int[]{945, 582};
         }
 
-        if (id == 30124) {
+        if (id == CORRUPT_TOTEM_TOP) {
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.name = "<col=65280>Corrupt totem top";
             def.inventoryModel = 31623;
@@ -403,7 +403,7 @@ public class CustomItems {
             def.recolorTo = new int[]{945, 582, 712, 728};
         }
 
-        if (id == 30125) {
+        if (id == CORRUPT_TOTEM) {
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.name = "<col=65280>Corrupt totem";
             def.inventoryModel = 31620;
@@ -420,78 +420,7 @@ public class CustomItems {
             def.name = "<col=65280>" + def.name + " pet";
         }
 
-        if (id == 25731) {
-            def.femaleModel = 42276;
-            def.inventoryActions = new String[]{null, "Wield", null, null, null};
-            def.inventoryModel = 42292;
-            def.maleModel = 42271;
-            def.name = "<col=65280>Holy sanguinesti staff";
-            def.xOffset2d = -5;
-            def.yOffset2d = 3;
-            def.cost = 5000000;
-            def.xan2d = 552;
-            def.yan2d = 1558;
-            def.zoom2d = 2258;
-        }
-
-        if (id == 25734) {
-            def.recolorFrom = new int[]{90};
-            def.recolorTo = new int[]{-9762};
-            def.femaleModel = 42278;
-            def.inventoryActions = new String[]{null, "Wield", null, null, null};
-            def.inventoryModel = 42294;
-            def.maleModel = 42273;
-            def.name = "<col=65280>Holy ghrazi rapier";
-            def.xOffset2d = 5;
-            def.yOffset2d = -18;
-            def.cost = 5000000;
-            def.xan2d = 1603;
-            def.yan2d = 552;
-            def.zoom2d = 2064;
-        }
-
-        if (id == 25736) {
-            def.femaleModel = 42270;
-            def.inventoryActions = new String[]{null, "Wield", null, null, null};
-            def.inventoryModel = 42293;
-            def.maleModel = 42277;
-            def.name = "<col=65280>Holy scythe of vitur";
-            def.xOffset2d = 1;
-            def.yOffset2d = 17;
-            def.cost = 4000000;
-            def.xan2d = 327;
-            def.yan2d = 23;
-            def.zoom2d = 2105;
-        }
-
-        if (id == 25739) {
-            def.femaleModel = 42272;
-            def.inventoryActions = new String[]{null, "Wield", null, null, null};
-            def.inventoryModel = 42295;
-            def.maleModel = 42279;
-            def.name = "<col=65280>Sanguine scythe of vitur";
-            def.xOffset2d = 1;
-            def.yOffset2d = 17;
-            def.cost = 4000000;
-            def.xan2d = 327;
-            def.yan2d = 23;
-            def.zoom2d = 2105;
-        }
-
-        if (id == 25753) {
-            def.recolorFrom = new int[]{11191, 11183};
-            def.recolorTo = new int[]{580, 557};
-            def.inventoryActions = new String[]{"Rub", null, null, null, "Drop"};
-            def.inventoryModel = 3348;
-            def.name = "<col=65280>99 lamp";
-            def.xOffset2d = 2;
-            def.yOffset2d = -2;
-            def.xan2d = 28;
-            def.yan2d = 228;
-            def.zoom2d = 840;
-        }
-
-        if (id == 30315) {
+        if (id == DARKLORD_BOW) {
             def.name = "<col=65280>Darklord bow";
             def.femaleModel = 59109;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -504,7 +433,7 @@ public class CustomItems {
             def.zoom2d = 2061;
         }
 
-        if (id == 30309) {
+        if (id == DARKLORD_SWORD) {
             def.name = "<col=65280>Darklord sword";
             def.femaleModel = 59113;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -517,7 +446,7 @@ public class CustomItems {
             def.zoom2d = 2061;
         }
 
-        if (id == 30312) {
+        if (id == DARKLORD_STAFF) {
             def.name = "<col=65280>Darklord staff";
             def.femaleModel = 59111;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -530,7 +459,7 @@ public class CustomItems {
             def.zoom2d = 2061;
         }
 
-        if (id == 30175) {
+        if (id == ANCESTRAL_HAT_I) {
             def.name = "<col=65280>Ancestral hat (i)";
             def.recolorFrom = new int[]{6323, 6331, 6340, 6348, 6356, 6364, -21992, -22235};
             def.recolorTo = new int[]{15, 17, 19, 23, 25, 27, 29, 524};
@@ -546,7 +475,7 @@ public class CustomItems {
             def.zoom2d = 1236;
         }
 
-        if (id == 30177) {
+        if (id == ANCESTRAL_ROBE_TOP_I) {
             def.name = "<col=65280>Ancestral robe top (i)";
             def.recolorFrom = new int[]{6348, -16318, 6331, -22225, 7108, -22235, -16327, -22231, -16339, 6323};
             def.recolorTo = new int[]{12, 19, 14, 534, 27, 536, 15, 538, 17, 8};
@@ -562,7 +491,7 @@ public class CustomItems {
             def.zoom2d = 1358;
         }
 
-        if (id == 30179) {
+        if (id == ANCESTRAL_ROBE_BOTTOM_I) {
             def.name = "<col=65280>Ancestral robe bottom (i)";
             def.ambient = 30;
             def.recolorFrom = new int[]{-16339, 6348, -16327, 6331, -16318, -22225, -22235, 6323, -22231};
@@ -579,7 +508,7 @@ public class CustomItems {
             def.zoom2d = 1690;
         }
 
-        if (id == 30183) {
+        if (id == TWISTED_BOW_I) {
             def.name = "<col=65280>Twisted bow (i)";
             def.recolorFrom = new int[]{10318, 10334, 14236, 13223};
             def.recolorTo = new int[]{524, 527, 524, 527};
@@ -593,7 +522,7 @@ public class CustomItems {
             def.yan2d = 1500;
         }
 
-        if (id == 30049) {
+        if (id == MAGMA_BLOWPIPE) {
             def.name = "<col=65280>Magma blowpipe";
             def.femaleModel = 58976;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -606,74 +535,38 @@ public class CustomItems {
             def.zoom2d = 1158;
         }
 
-        if (id == 15331) {
+        if (id == RING_OF_MANHUNTING) {
             def.name = "<col=65280>Ring of manhunting";
             ItemDefinition.copyInventory(def, TYRANNICAL_RING);
             ItemDefinition.copyInventory(def, TYRANNICAL_RING);
             def.modelCustomColor4 = 233333;
         }
 
-        if (id == 15300) {
-            def.name = "<col=65280>Recover special (4)";
-            ItemDefinition.copyInventory(def, 2436);
-            def.recolorTo = new int[]{38222};
-            def.recolorFrom = new int[]{61};
-        }
-
-        if (id == 15301) {
-            def.name = "<col=65280>Recover special (3)";
-            ItemDefinition.copyInventory(def, 145);
-            def.recolorTo = new int[]{38222};
-            def.recolorFrom = new int[]{61};
-        }
-
-        if (id == 15302) {
-            def.name = "<col=65280>Recover special (2)";
-            ItemDefinition.copyInventory(def, 147);
-            def.recolorTo = new int[]{38222};
-            def.recolorFrom = new int[]{61};
-        }
-
-        if (id == 15303) {
-            def.name = "<col=65280>Recover special (1)";
-            ItemDefinition.copyInventory(def, 149);
-            def.recolorTo = new int[]{38222};
-            def.recolorFrom = new int[]{61};
-        }
-
-        if (id == 27000) {
+        if (id == KERBEROS_PET) {
             ItemDefinition.copyInventory(def, HELLPUPPY);
             def.name = "<col=65280>Kerberos pet";
             def.modelCustomColor4 = 125;
         }
 
-        if (id == 27001) {
+        if (id == SKORPIOS_PET) {
             ItemDefinition.copyInventory(def, SCORPIAS_OFFSPRING);
             def.name = "<col=65280>Skorpios pet";
             def.modelCustomColor4 = 125;
         }
 
-        if (id == 27002) {
+        if (id == ARACHNE_PET) {
             ItemDefinition.copyInventory(def, VENENATIS_SPIDERLING);
             def.name = "<col=65280>Arachne pet";
             def.modelCustomColor4 = 125;
         }
 
-        if (id == 27003) {
+        if (id == ARTIO_PET) {
             ItemDefinition.copyInventory(def, CALLISTO_CUB);
             def.name = "<col=65280>Artio pet";
             def.modelCustomColor4 = 125;
         }
 
-        if (id == 27004) {
-            def.name = "<col=65280>Blood money pet";
-            ItemDefinition.copyInventory(def, 13316);
-            def.stackable = 0;
-            def.recolorFrom = new int[]{8128};
-            def.recolorTo = new int[]{947};
-        }
-
-        if (id == 27005) {
+        if (id == RING_OF_ELYSIAN) {
             def.name = "<col=65280>Ring of elysian";
             ItemDefinition.copyInventory(def, 23185);
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -681,21 +574,21 @@ public class CustomItems {
             def.recolorTo = new int[]{-29116, -29019, -29125, -29110};
         }
 
-        if (id == 27006) {
+        if (id == TOXIC_STAFF_OF_THE_DEAD_C) {
             def.name = "<col=65280>Toxic staff of the dead (c)";
             ItemDefinition.copyInventory(def, TOXIC_STAFF_OF_THE_DEAD);
             ItemDefinition.copyEquipment(def, TOXIC_STAFF_OF_THE_DEAD);
             def.modelCustomColor4 = 222200;
         }
 
-        if (id == 15304) {
+        if (id == RING_OF_VIGOUR) {
             def.name = "<col=65280>Ring of vigour";
             ItemDefinition.copyInventory(def, LUNAR_RING);
             ItemDefinition.copyEquipment(def, LUNAR_RING);
             def.modelCustomColor4 = 222200;
         }
 
-        if (id == 26500) {
+        if (id == DARK_BANDOS_CHESTPLATE) {
             def.name = "<col=65280>Dark bandos chestplate";
             def.inventoryModel = 28042;
             def.zoom2d = 984;
@@ -713,7 +606,7 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 272, 0, 274, 20, 4, 8, 142, 968, 272, 0, 274, 20, 968, 968};
         }
 
-        if (id == 26501) {
+        if (id == DARK_BANDOS_TASSETS) {
             def.name = "<col=65280>Dark bandos tassets";
             def.inventoryModel = 28047;
             def.zoom2d = 854;
@@ -729,7 +622,7 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8};
         }
 
-        if (id == 26502) {
+        if (id == DARK_ARMADYL_HELMET) {
             def.name = "<col=65280>Dark armadyl helmet";
             def.inventoryModel = 28043;
             def.zoom2d = 789;
@@ -747,7 +640,7 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8, 20};
         }
 
-        if (id == 26503) {
+        if (id == DARK_ARMADYL_CHESTPLATE) {
             def.name = "<col=65280>Dark armadyl chestplate";
             def.inventoryModel = 28039;
             def.zoom2d = 854;
@@ -765,7 +658,7 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 968, 0, 274, 968, 968};
         }
 
-        if (id == 26504) {
+        if (id == DARK_ARMADYL_CHAINSKIRT) {
             def.name = "<col=65280>Dark armadyl chainskirt";
             def.inventoryModel = 28046;
             def.zoom2d = 1957;
@@ -780,116 +673,19 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8, 20};
         }
 
-        if (id == 24937) {
-            ItemDefinition.copyInventory(def, FAWKES);
+        if (id == FAWKES) {
             def.name = "<col=65280>Fawkes pet";
             def.modelCustomColor4 = 222200;
+            def.ambient = 40;
+            def.inventoryModel = 26852;
+            def.xOffset2d = -8;
+            def.yOffset2d = -13;
+            def.xan2d = 141;
+            def.yan2d = 1790;
+            def.zoom2d = 2768;
         }
 
-        if (id == 24938) {
-            ItemDefinition.copyInventory(def, VOID_KNIGHT_GLOVES);
-            ItemDefinition.copyEquipment(def, VOID_KNIGHT_GLOVES);
-            def.name = "<col=65280>Void knight gloves";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24939) {
-            ItemDefinition.copyInventory(def, VOID_RANGER_HELM);
-            ItemDefinition.copyEquipment(def, VOID_RANGER_HELM);
-            def.name = "<col=65280>Void ranger helm";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24940) {
-            ItemDefinition.copyInventory(def, VOID_MAGE_HELM);
-            ItemDefinition.copyEquipment(def, VOID_MAGE_HELM);
-            def.name = "<col=65280>Void mage helm";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24941) {
-            ItemDefinition.copyInventory(def, VOID_MELEE_HELM);
-            ItemDefinition.copyEquipment(def, VOID_MELEE_HELM);
-            def.name = "<col=65280>Void melee helm";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24942) {
-            ItemDefinition.copyInventory(def, ELITE_VOID_ROBE);
-            ItemDefinition.copyEquipment(def, ELITE_VOID_ROBE);
-            def.name = "<col=65280>Elite void robe";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24943) {
-            ItemDefinition.copyInventory(def, ELITE_VOID_TOP);
-            ItemDefinition.copyEquipment(def, ELITE_VOID_TOP);
-            def.name = "<col=65280>Elite void top";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24944) {
-            ItemDefinition.copyInventory(def, GRANITE_MAUL_24225);
-            ItemDefinition.copyEquipment(def, GRANITE_MAUL_24225);
-            def.name = "<col=65280>Granite maul";
-            def.modelCustomColor4 = 23523;
-        }
-
-        if (id == 24945) {
-            ItemDefinition.copyInventory(def, PARTYHAT__SPECS);
-            ItemDefinition.copyEquipment(def, PARTYHAT__SPECS);
-            def.name = "<col=65280>Partyhat & specs";
-            def.modelCustomColor4 = 235;
-        }
-
-        if (id == 24946) {
-            ItemDefinition.copyInventory(def, FREMENNIK_KILT);
-            ItemDefinition.copyEquipment(def, FREMENNIK_KILT);
-            def.name = "<col=65280>Fremennik kilt";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24947) {
-            ItemDefinition.copyInventory(def, SPIKED_MANACLES);
-            ItemDefinition.copyEquipment(def, SPIKED_MANACLES);
-            def.name = "<col=65280>Spiked manacles";
-            def.modelCustomColor4 = 222222;
-        }
-
-        if (id == 24948) {
-            ItemDefinition.copyInventory(def, ABYSSAL_TENTACLE);
-            ItemDefinition.copyEquipment(def, ABYSSAL_TENTACLE);
-            def.name = "<col=65280>Abyssal tentacle";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24949) {
-            def.name = "<col=65280>Dragon dagger(p++)";
-            ItemDefinition.copyInventory(def, DRAGON_DAGGERP_5698);
-            ItemDefinition.copyEquipment(def, DRAGON_DAGGERP_5698);
-            def.modelCustomColor4 = 22459;
-        }
-
-        if (id == 18336) {
-            def.name = "<col=65280>Dragon's partyhat";
-            def.inventoryActions = new String[5];
-            def.inventoryActions[1] = "Wear";
-            def.zoom2d = 440;
-            def.inventoryModel = 55602;
-            def.animateInventory = true;
-            def.xOffset2d = 1;
-            def.yOffset2d = 1;
-            def.yan2d = 1852;
-            def.xan2d = 76;
-            def.maleModel = 55603;
-            def.femaleModel = 55604;
-            def.recolorFrom = new int[]{926};
-            def.recolorTo = new int[]{926};
-            def.retextureFrom = new short[]{926};
-            def.retextureTo = new short[]{54};
-        }
-
-        if (id == 24950) {
+        if (id == CYAN_PARTYHAT) {
             def.name = "<col=65280>Cyan partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -906,7 +702,7 @@ public class CustomItems {
             def.recolorTo[0] = 34770;
         }
 
-        if (id == 24951) {
+        if (id == LIME_PARTYHAT) {
             def.name = "<col=65280>Lime partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -923,7 +719,7 @@ public class CustomItems {
             def.recolorTo[0] = 17350;
         }
 
-        if (id == 24952) {
+        if (id == ORANGE_PARTYHAT) {
             def.name = "<col=65280>Orange partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -940,7 +736,7 @@ public class CustomItems {
             def.recolorTo[0] = 6073;
         }
 
-        if (id == 24953) {
+        if (id == WHITE_HWEEN_MASK) {
             def.name = "<col=65280>White h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -958,7 +754,7 @@ public class CustomItems {
             def.recolorTo[1] = 933; // Eyes colour
         }
 
-        if (id == 24954) {
+        if (id == PURPLE_HWEEN_MASK) {
             def.name = "<col=65280>Purple h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -976,7 +772,7 @@ public class CustomItems {
             def.recolorTo[1] = 0; // Eyes colour
         }
 
-        if (id == 24955) {
+        if (id == LIME_GREEN_HWEEN_MASK) {
             def.name = "<col=65280>Lime green h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -994,14 +790,14 @@ public class CustomItems {
             def.recolorTo[1] = 0; // Eyes colour
         }
 
-        if (id == 24956) {
+        if (id == ELDER_MAUL) {
             ItemDefinition.copyInventory(def, ELDER_MAUL);
             ItemDefinition.copyEquipment(def, ELDER_MAUL);
             def.name = "<col=65280>Dark elder maul";
             def.modelCustomColor4 = 222200;
         }
 
-        if (id == 28957) {
+        if (id == SANGUINE_TWISTED_BOW) {
             ItemDefinition.copyInventory(def, TWISTED_BOW);
             ItemDefinition.copyEquipment(def, TWISTED_BOW);
             def.name = "<col=65280>Sanguine twisted bow";
@@ -1009,14 +805,7 @@ public class CustomItems {
             def.stackable = 0;
         }
 
-        if (id == 24958) {
-            ItemDefinition.copyInventory(def, ELDER_MAUL);
-            ItemDefinition.copyEquipment(def, ELDER_MAUL);
-            def.name = "<col=65280>Dark elder maul";
-            def.modelCustomColor4 = 222200;
-        }
-
-        if (id == 24981) {
+        if (id == ANCIENT_WARRIOR_AXE_C) {
             ItemDefinition.copyInventory(def, 7807);
             ItemDefinition.copyEquipment(def, 7807);
             def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
@@ -1024,7 +813,7 @@ public class CustomItems {
             def.modelCustomColor3 = 23532;
         }
 
-        if (id == 24982) {
+        if (id == ANCIENT_WARRIOR_MAUL_C) {
             ItemDefinition.copyInventory(def, 7808);
             ItemDefinition.copyEquipment(def, 7808);
             def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
@@ -1032,7 +821,7 @@ public class CustomItems {
             def.modelCustomColor3 = 23532;
         }
 
-        if (id == 24983) {
+        if (id == ANCIENT_WARRIOR_SWORD_C) {
             ItemDefinition.copyInventory(def, 7806);
             ItemDefinition.copyEquipment(def, 7806);
             def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
@@ -1040,14 +829,14 @@ public class CustomItems {
             def.modelCustomColor3 = 23532;
         }
 
-        if (id == 24984) {
+        if (id == ANCIENT_FACEGAURD) {
             ItemDefinition.copyInventory(def, NEITIZNOT_FACEGUARD);
             ItemDefinition.copyEquipment(def, NEITIZNOT_FACEGUARD);
             def.name = "<col=65280>Ancient faceguard";
             def.modelCustomColor4 = 222200;
         }
 
-        if (id == 24985) {
+        if (id == ANCIENT_WARRIOR_CLAMP) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Ancient warrior clamp";
             def.inventoryModel = 55580;
@@ -1061,73 +850,73 @@ public class CustomItems {
             def.animateInventory = true;
         }
 
-        if (id == 786) {
+        if (id == GAMBLER_SCROLL) {
             def.name = "<col=65280>Gambler scroll";
             def.inventoryActions = new String[]{"Redeem", null, null, null, "Drop"};
         }
 
-        if (id == 24986) {
+        if (id == ANCIENT_KING_BLACK_DRAGON_PET) {
             ItemDefinition.copyInventory(def, PRINCE_BLACK_DRAGON);
             def.name = "<col=65280>Ancient king black dragon pet";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 24987) {
+        if (id == ANCIENT_CHAOS_ELEMENTAL_PET) {
             ItemDefinition.copyInventory(def, CHAOS_ELEMENTAL);
             def.name = "<col=65280>Ancient chaos elemental pet";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 24988) {
+        if (id == ANCIENT_BARRELCHEST_PET) {
             ItemDefinition.copyInventory(def, BARRELCHEST_PET);
             def.name = "<col=65280>Ancient barrelchest pet";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 24989) {
+        if (id == DARK_ANCIENT_EMBLEM) {
             ItemDefinition.copyInventory(def, ANCIENT_EMBLEM);
             def.name = "<col=65280>Dark ancient emblem";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24990) {
+        if (id == ANCIENT_TOTEM) {
             ItemDefinition.copyInventory(def, ANCIENT_TOTEM);
             def.name = "<col=65280>Dark ancient totem";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24991) {
+        if (id == ANCIENT_STATUETTE) {
             ItemDefinition.copyInventory(def, ANCIENT_STATUETTE);
             def.name = "<col=65280>Dark ancient statuette";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24992) {
+        if (id == ANCIENT_MEDALLION) {
             ItemDefinition.copyInventory(def, ANCIENT_MEDALLION);
             def.name = "<col=65280>Dark ancient medallion";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24993) {
+        if (id == ANCIENT_EFFIGY) {
             ItemDefinition.copyInventory(def, ANCIENT_EFFIGY);
             def.name = "<col=65280>Dark ancient effigy";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24994) {
+        if (id == ANCIENT_RELIC) {
             ItemDefinition.copyInventory(def, ANCIENT_RELIC);
             def.name = "<col=65280>Dark ancient relic";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24995) {
+        if (id == ANCIENT_VESTAS_LONGSWORD) {
             ItemDefinition.copyInventory(def, VESTAS_LONGSWORD);
             ItemDefinition.copyEquipment(def, VESTAS_LONGSWORD);
             def.name = "<col=65280>Ancient vesta's longsword";
             def.modelCustomColor4 = 235;
         }
-        if (id == 24996) {
+        if (id == ANCIENT_STATIUSS_WARHAMMER) {
             ItemDefinition.copyInventory(def, STATIUSS_WARHAMMER);
             ItemDefinition.copyEquipment(def, STATIUSS_WARHAMMER);
             def.name = "<col=65280>Ancient statius's warhammer";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 24999) {
+        if (id == TASK_BOTTLE_CASKET) {
             def.name = "<col=65280>Task bottle casket";
             def.inventoryModel = 55568;
             def.zoom2d = 2640;
@@ -1139,7 +928,7 @@ public class CustomItems {
             def.recolorTo = new int[]{933, 933, 933, 933, 933, 933};
         }
 
-        if (id == 28000) {
+        if (id == BLOOD_FIREBIRD) {
             def.name = "<col=65280>Blood firebird pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 26853;
@@ -1152,7 +941,7 @@ public class CustomItems {
             def.recolorTo = new int[]{933, 933, 933, 933, 933, 933, 4391, 8, 29867, 4011, 4013, 2733, 2735, 4399, 914, 20, 8150, 10167, 1946, 23483, 28, 5053};
         }
 
-        if (id == 28001) {
+        if (id == SHADOW_MACE) {
             def.ambient = 15;
             def.contrast = 35;
             def.femaleModel = 55555;
@@ -1168,55 +957,28 @@ public class CustomItems {
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 28002) {
+        if (id == SHADOW_GREAT_HELM) {
             ItemDefinition.copyInventory(def, INQUISITORS_GREAT_HELM);
             ItemDefinition.copyEquipment(def, INQUISITORS_GREAT_HELM);
             def.name = "<col=65280>Shadow great helm";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 28003) {
+        if (id == SHADOW_HAUBERK) {
             ItemDefinition.copyInventory(def, INQUISITORS_HAUBERK);
             ItemDefinition.copyEquipment(def, INQUISITORS_HAUBERK);
             def.name = "<col=65280>Shadow hauberk";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 28004) {
+        if (id == SHADOW_PLATESKIRT) {
             ItemDefinition.copyInventory(def, INQUISITORS_PLATESKIRT);
             ItemDefinition.copyEquipment(def, INQUISITORS_PLATESKIRT);
             def.name = "<col=65280>Shadow plateskirt";
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 28005) {
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.name = "<col=65280>Shadow inquisitor ornament kit";
-            def.zoom2d = 1616;
-            def.yan2d = 1943;
-            def.xan2d = 564;
-            def.xOffset2d = -10;
-            def.yOffset2d = 20;
-            def.inventoryModel = 31973;
-            def.recolorTo = new int[]{10, 0, 1, 1, 1, 1, 1, 1, 1, 1};
-            def.recolorFrom = new int[]{7607, 0, 908, 54162, 41137, 41149, 41143, 6998, 40107, 14734};
-        }
-
-        if (id == 28006) {
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.name = "<col=65280>Inquisitor's mace ornament kit";
-            def.zoom2d = 1616;
-            def.yan2d = 1943;
-            def.xan2d = 564;
-            def.xOffset2d = -10;
-            def.yOffset2d = 20;
-            def.inventoryModel = 55556;
-            def.animateInventory = true;
-            def.recolorTo = new int[]{10, 0, 1, 1, 1, 1, 1, 1, 1, 1};
-            def.recolorFrom = new int[]{7607, 0, 908, 54162, 41137, 41149, 41143, 6998, 40107, 14734};
-        }
-
-        if (id == 28007) {
+        if (id == ETHEREAL_PARTYHAT) {
             def.name = "<col=65280>Ethereal partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -1233,7 +995,7 @@ public class CustomItems {
             def.recolorTo[0] = 374770;
         }
 
-        if (id == 28008) {
+        if (id == ETHEREAL_HWEEN_MASK) {
             def.name = "<col=65280>Ethereal h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -1251,7 +1013,7 @@ public class CustomItems {
             def.recolorTo[1] = 933; // Eyes colour
         }
 
-        if (id == 28009) {
+        if (id == ETHEREAL_SANTA_HAT) {
             def.name = "<col=65280>Ethereal santa hat";
             def.inventoryModel = 2537;
             def.zoom2d = 540;
@@ -1268,7 +1030,7 @@ public class CustomItems {
             def.recolorTo = new int[]{374770, 10351};
         }
 
-        if (id == 14479) {
+        if (id == BEGINNER_WEAPON_PACK) {
             def.name = "<col=65280>Beginner weapon pack";
             def.inventoryModel = 20587;
             def.xOffset2d = 0;
@@ -1279,7 +1041,7 @@ public class CustomItems {
             def.inventoryActions = new String[]{"Open", null, null, null, "Destroy"};
         }
 
-        if (id == 14486) {
+        if (id == BEGINNER_DRAGON_CLAWS) {
             def.name = "<col=65280>Beginner dragon claws";
             def.femaleModel = 29191;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
@@ -1294,7 +1056,7 @@ public class CustomItems {
             def.recolorTo = new int[]{34770, 34770, 34770, 34770};
         }
 
-        if (id == 14487) {
+        if (id == BEGINNER_AGS) {
             def.name = "<col=65280>Beginner AGS";
             def.femaleModel = 27649;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
@@ -1309,7 +1071,7 @@ public class CustomItems {
             def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770};
         }
 
-        if (id == 14488) {
+        if (id == BEGINNER_CHAINMACE) {
             def.name = "<col=65280>Beginner chainmace";
             def.femaleModel = 35771;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
@@ -1324,7 +1086,7 @@ public class CustomItems {
             def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770};
         }
 
-        if (id == 14489) {
+        if (id == BEGINNER_CRAWS_BOW) {
             def.name = "<col=65280>Beginner craw's bow";
             def.femaleModel = 35769;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
@@ -1340,7 +1102,7 @@ public class CustomItems {
             def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770};
         }
 
-        if (id == 28013) {
+        if (id == VETERAN_PARTYHAT) {
             def.name = "<col=65280>Veteran partyhat";
             def.inventoryModel = 2635;
             def.maleModel = 187;
@@ -1357,7 +1119,7 @@ public class CustomItems {
             def.recolorTo[0] = 614770;
         }
 
-        if (id == 28014) {
+        if (id == VETERAN_HWEEN_MASK) {
             def.name = "<col=65280>Veteran h'ween mask";
             def.inventoryModel = 2438;
             def.maleModel = 3188;
@@ -1375,7 +1137,7 @@ public class CustomItems {
             def.recolorTo[1] = 933; // Eyes colour
         }
 
-        if (id == 28015) {
+        if (id == VETERAN_SANTA_HAT) {
             def.name = "<col=65280>Veteran santa hat";
             def.inventoryModel = 2537;
             def.zoom2d = 540;
@@ -1392,7 +1154,7 @@ public class CustomItems {
             def.recolorTo = new int[]{614770, 10351};
         }
 
-        if (id == 30180) {
+        if (id == PEGASIAN_BOOTS_OR) {
             ItemDefinition.copyInventory(def, PEGASIAN_BOOTS);
             ItemDefinition.copyEquipment(def, PEGASIAN_BOOTS);
             def.name = "<col=65280>Pegasian boots (or)";
@@ -1400,7 +1162,7 @@ public class CustomItems {
             def.recolorTo = new int[]{7114, 7114, 15252, 7114, 7114, 17294};
         }
 
-        if (id == 30182) {
+        if (id == ETERNAL_BOOTS_OR) {
             ItemDefinition.copyInventory(def, ETERNAL_BOOTS);
             ItemDefinition.copyEquipment(def, ETERNAL_BOOTS);
             def.name = "<col=65280>Eternal boots (or)";
@@ -1408,7 +1170,7 @@ public class CustomItems {
             def.recolorTo = new int[]{9152, -22242, 7114, 7114, 7114, 695, 7114, -22510};
         }
 
-        if (id == 29000) {
+        if (id == VIGGORAS_CHAINMACE_C) {
             ItemDefinition.copyInventory(def, VIGGORAS_CHAINMACE);
             ItemDefinition.copyEquipment(def, VIGGORAS_CHAINMACE);
             def.name = "<col=65280>Viggora's chainmace (c)";
@@ -1416,7 +1178,7 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 1255, 1255, 5, 5, 1255};
         }
 
-        if (id == 29001) {
+        if (id == CRAWS_BOW_C) {
             ItemDefinition.copyInventory(def, CRAWS_BOW);
             ItemDefinition.copyEquipment(def, CRAWS_BOW);
             def.name = "<col=65280>Craw's bow (c)";
@@ -1424,46 +1186,12 @@ public class CustomItems {
             def.recolorTo = new int[]{7, 1, 7, 1255, 10, 1255, 1255, 10, 5, 1255, 1255, 1255, 10};
         }
 
-        if (id == 29002) {
+        if (id == THAMMARONS_STAFF_C) {
             ItemDefinition.copyInventory(def, THAMMARONS_SCEPTRE);
             ItemDefinition.copyEquipment(def, THAMMARONS_SCEPTRE);
             def.name = "<col=65280>Thammaron's sceptre (c)";
             def.recolorFrom = new int[]{960, 33, 417, 20, 53, 555, 939, 12, 28, 284};
             def.recolorTo = new int[]{10, 15, 1, 15, 1400, 5, 1, 10, 1400, 1400};
-        }
-
-        if (id == 2396) {
-            def.name = "<col=65280>3% drop rate boost scroll";
-        }
-
-        if (id == 13215) {
-            ItemDefinition.copyInventory(def, 13204);
-            def.name = "<col=65280>Bloody Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{947, 948, 949};
-            def.countco = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
-            def.countobj = new int[]{13216, 13217, 13218, 13218, 0, 0, 0, 0, 0, 0};
-        }
-
-        if (id == 13216) {
-            ItemDefinition.copyInventory(def, 3985);
-            def.name = "<col=65280>Bloody Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{947, 948, 949};
-        }
-
-        if (id == 13217) {
-            ItemDefinition.copyInventory(def, 3987);
-            def.name = "<col=65280>Bloody Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{947, 948, 949};
-        }
-
-        if (id == 13218) {
-            ItemDefinition.copyInventory(def, 3989);
-            def.name = "<col=65280>Bloody Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{947, 948, 949};
         }
 
         if (id == ItemIdentifiers.TOXIC_BLOWPIPE || id == ItemIdentifiers.SERPENTINE_HELM || id == ItemIdentifiers.TRIDENT_OF_THE_SWAMP || id == ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD
@@ -1474,7 +1202,7 @@ public class CustomItems {
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
         }
 
-        if (id == 16167) {
+        if (id == RING_OF_SORCERY) {
             ItemDefinition.copyInventory(def, 24731);
             ItemDefinition.copyEquipment(def, 24731);
             def.name = "<col=65280>Ring of sorcery";
@@ -1482,7 +1210,7 @@ public class CustomItems {
             def.modelCustomColor4 = 235;
         }
 
-        if (id == 16168) {
+        if (id == RING_OF_PRECISION) {
             def.name = "<col=65280>Ring of Precision";
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             ItemDefinition.copyInventory(def, 12601);
@@ -1490,7 +1218,7 @@ public class CustomItems {
             def.modelCustomColor4 = 33785;
         }
 
-        if (id == 16169) {
+        if (id == RING_OF_TRINITY) {
             def.name = "<col=65280>Ring of Trinity";
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             ItemDefinition.copyInventory(def, 12603);
@@ -1498,30 +1226,21 @@ public class CustomItems {
             def.modelCustomColor4 = 3433;
         }
 
-        if (id == 16172) {
+        if (id == BABY_ARAGOG) {
             def.name = "<col=65280>Baby Aragog";
             ItemDefinition.copyInventory(def, VENENATIS_SPIDERLING);
             def.recolorFrom = new int[]{912, 0, 916, 103, 138, 794, 107, 908};
             def.recolorTo = new int[]{138, 908, 4769, 4769, 4769, 0, 0, 0};
         }
 
-        if (id == 16173) {
+        if (id == JAWA_PET) {
             def.name = "<col=65280>Jawa pet";
             ItemDefinition.copyInventory(def, ATTACK_HOOD);
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.modelCustomColor = 4769;
         }
 
-        if (id == 21205) {
-            ItemDefinition.copyInventory(def, 21003);
-            ItemDefinition.copyEquipment(def, 21003);
-            def.name = "<col=65280>Elder maul";
-            def.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
-            def.recolorFrom = new int[]{5056, 8125};
-            def.recolorTo = new int[]{685, 924};
-        }
-
-        if (id == 16020) {
+        if (id == DHAROK_PET) {
             def.name = "<col=65280>Dharok pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.zoom2d = 1000;
@@ -1537,47 +1256,27 @@ public class CustomItems {
             def.inventoryActions = new String[]{null, "Wear", null, null, "Destroy"};
         }
 
-        if (id == 2944) {
-            def.name = "<col=65280>Key of drops";
-        }
-
-        if (id == 24445) {
-            def.name = "<col=65280>Twisted slayer helmet (i)";
-            def.femaleHeadModel = 38997;
-            def.femaleModel = 38970;
-            def.inventoryActions = new String[]{null, "Wear", null, "Disassemble", "Drop"};
-            def.inventoryModel = 38958;
-            def.maleHeadModel = 38997;
-            def.maleModel = 38960;
-            def.xOffset2d = -4;
-            def.yOffset2d = -3;
-            def.xan2d = 30;
-            def.yan2d = 1773;
-            def.zoom2d = 779;
-            def.recolorFrom = new int[]{16, 14272, 33, 10306, 37, 4550, 10343, 24, 10312, 12, 10334, 10318};
-            def.recolorTo = new int[]{8, 6073, 8, 10306, 8, 4550, 10343, 8, 10312, 8, 10334, 10318};
-        }
-
         if (id == ItemIdentifiers.BANK_KEY) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
         }
 
-        if (id == 20238) {
+        if (id == IMBUEMENT_SCROLL) {
             def.name = "<col=65280>Imbuement scroll";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.description = "Use this scroll to imbue certain items.";
         }
 
-        if (id == 12646) {
+        if (id == NIFFLER) {
             def.modelCustomColor4 = 33785;
             def.name = "<col=65280>Niffler pet";
+            def.inventoryModel = 12073;
+            def.yOffset2d = 20;
+            def.xan2d = 369;
+            def.yan2d = 1874;
+            def.zoom2d = 2256;
         }
 
-        if (id == 20693) {
-            def.name = "<col=65280>Fawkes pet";
-        }
-
-        if (id == 28663) {
+        if (id == ZRIAWK) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Zriawk pet";
             def.modelCustomColor4 = 33235;
@@ -1590,7 +1289,7 @@ public class CustomItems {
             def.zoom2d = 2768;
         }
 
-        if (id == 28639) {
+        if (id == ELDER_WAND_HANDLE) {
             def.name = "<col=65280>Elder wand handle";
             def.recolorFrom = new int[]{-19153, 33, -19145, -19500};
             def.recolorTo = new int[]{530, 540, 529, 10};
@@ -1603,7 +1302,7 @@ public class CustomItems {
             def.zoom2d = 716;
         }
 
-        if (id == 28640) {
+        if (id == ELDER_WAND_STICK) {
             def.name = "<col=65280>Elder wand stick";
             def.recolorFrom = new int[]{9024, 9009, 5652, 8070, 9015, 7050, 4634, -22413, 8877, 3614};
             def.recolorTo = new int[]{530, 540, 529, 10, 13, 16, 19, 22, 25, 28};
@@ -1616,7 +1315,7 @@ public class CustomItems {
             def.zoom2d = 540;
         }
 
-        if (id == 28641) {
+        if (id == TALONHAWK_CROSSBOW) {
             def.name = "<col=65280>Talonhawk crossbow";
             def.recolorFrom = new int[]{49, 10471, 10475};
             def.recolorTo = new int[]{-32518, 25, -32518};
@@ -1631,7 +1330,7 @@ public class CustomItems {
             def.zoom2d = 1104;
         }
 
-        if (id == 28642) {
+        if (id == FLUFFY_JR) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Fluffy Jr pet";
             def.recolorFrom = new int[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
@@ -1642,7 +1341,7 @@ public class CustomItems {
             def.zoom2d = 1616;
         }
 
-        if (id == 30338) {
+        if (id == CENTAUR_MALE) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Centaur pet";
             def.inventoryModel = 16213;
@@ -1652,7 +1351,7 @@ public class CustomItems {
             def.yOffset2d = -10;
         }
 
-        if (id == 30016) {
+        if (id == FOUNDER_IMP) {
             def.name = "<col=65280>Founder imp";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 58916;
@@ -1663,7 +1362,7 @@ public class CustomItems {
             def.zoom2d = 1424;
         }
 
-        if (id == 30018) {
+        if (id == PET_CORRUPTED_NECHRYARCH) {
             def.name = "<col=65280>Corrupted nechryarch pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 58922;
@@ -1673,7 +1372,7 @@ public class CustomItems {
             def.yOffset2d = -10;
         }
 
-        if (id == 30033) {
+        if (id == MINI_NECROMANCER) {
             def.name = "<col=65280>Mini necromancer";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 58979;
@@ -1683,7 +1382,7 @@ public class CustomItems {
             def.zoom2d = 1136;
         }
 
-        if (id == 30048) {
+        if (id == CORRUPTED_RANGER_GAUNTLETS) {
             def.name = "<col=65280>Corrupted ranger gauntlets";
             def.femaleModel = 36335;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -1697,25 +1396,25 @@ public class CustomItems {
             def.recolorTo = new int[]{350780, 30643, 347770, 13493, -32630, 8, 24, 350700, 12};
         }
 
-        if (id == 21291) {
+        if (id == JALNIBREK) {
             def.name = "<col=65280>Jal-nib-rek pet";
         }
 
-        if (id == 23757) {
+        if (id == YOUNGLLEF) {
             def.name = "<col=65280>Yougnleff pet";
         }
 
-        if (id == 23759) {
+        if (id == CORRUPTED_YOUNGLLEF) {
             def.name = "<col=65280>Corrupted yougnleff pet";
         }
 
-        if (id == 8788) {
+        if (id == CORRUPTING_STONE) {
             def.name = "<col=65280>Corrupting stone";
             def.recolorFrom = new int[]{-22297, 127};
             def.recolorTo = new int[]{945, 582};
         }
 
-        if (id == 30044) {
+        if (id == JALTOK_JAD) {
             def.name = "<col=65280>Jaltok-jad pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 33012;
@@ -1725,7 +1424,7 @@ public class CustomItems {
             def.zoom2d = 12000;
         }
 
-        if (id == 30131) {
+        if (id == BABY_LAVA_DRAGON) {
             def.name = "<col=65280>Baby lava dragon";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 58995;
@@ -1736,14 +1435,14 @@ public class CustomItems {
             def.zoom2d = 2541;
         }
 
-        if (id == 16171) {
+        if (id == WAMPA) {
             def.name = "<col=65280>Wampa pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 21802;
             def.zoom2d = 4380;
         }
 
-        if (id == 30340) {
+        if (id == CENTAUR_FEMALE) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Centaur pet";
             def.inventoryModel = 16212;
@@ -1753,7 +1452,7 @@ public class CustomItems {
             def.yOffset2d = -10;
         }
 
-        if (id == 30342) {
+        if (id == DEMENTOR_PET) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Dementor pet";
             def.recolorFrom = new int[]{3346, 6371};
@@ -1766,7 +1465,7 @@ public class CustomItems {
             def.zoom2d = 530;
         }
 
-        if (id == 28643) {
+        if (id == FENRIR_GREYBACK_JR) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Fenrir Greyback Jr";
             def.recolorFrom = new int[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
@@ -1778,16 +1477,12 @@ public class CustomItems {
             def.zoom2d = 1000;
         }
 
-        if (id == 10858) {
-            def.name = "<col=65280>Sword of gryffindor";
-        }
-
         if (id == 12873 || id == 12875 || id == 12877 || id == 12879 || id == 12881 || id == 12883 || id == 6759 || id == DWARF_CANNON_SET) {
             def.inventoryActions = new String[5];
             def.inventoryActions[0] = "Open";
         }
 
-        if (id == 13188) {
+        if (id == DRAGON_CLAWS_OR) {
             ItemDefinition.copyInventory(def, 13652);
             def.name = "<col=65280>Dragon claws (or)";
             def.recolorFrom = new int[]{929, 914, 918, 922};
@@ -1798,90 +1493,23 @@ public class CustomItems {
             def.inventoryActions = new String[]{"Open", null, null, "Empty", "Drop"};
         }
 
-        if (id == 23650) {
+        if (id == RUNE_POUCH_I) {
             ItemDefinition.copyInventory(def, 12791);
             def.inventoryActions = new String[]{"Open", null, null, "Empty", "Destroy"};
             def.name = "<col=65280>Rune pouch (i)";
             def.ambient = 120;
         }
 
-        if (id == 14500) {
-            ItemDefinition.copyInventory(def, 23650);
-            def.name = "<col=65280>Rune pouch (i) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14501) {
-            ItemDefinition.copyInventory(def, 12436);
-            def.name = "<col=65280>Amulet of fury (or) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14502) {
-            ItemDefinition.copyInventory(def, 19720);
-            def.name = "<col=65280>Occult necklace (or) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14503) {
-            ItemDefinition.copyInventory(def, 20366);
-            def.name = "<col=65280>Amulet of torture (or) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14504) {
-            ItemDefinition.copyInventory(def, 22249);
-            def.name = "<col=65280>Necklace of anguish (or) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14505) {
-            ItemDefinition.copyInventory(def, 23444);
-            def.name = "<col=65280>Tormented bracelet (or) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14506) {
-            ItemDefinition.copyInventory(def, 19722);
-            def.name = "<col=65280>Dragon defender (t) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 14507) {
-            ItemDefinition.copyInventory(def, 22234);
-            def.name = "<col=65280>Dragon boots (g) (broken)";
-            def.ambient = -25;
-            def.inventoryActions = new String[]{null, null, null, null, "Destroy"};
-        }
-
-        if (id == 4447) {
+        if (id == DOUBLE_DROPS_LAMP) {
             def.name = "<col=65280>Double drops lamp";
             def.description = "Receive double drops when killing bosses. (for 1 hour)";
         }
 
-        if (id == 7956) {
-            ItemDefinition.copyInventory(def, ItemIdentifiers.CASKET);
-            def.name = "<col=65280>Small blood money casket";
-            def.recolorFrom = new int[]{13248, 7062, -22477};
-            def.recolorTo = new int[]{7114, 929, 929};
-        }
-
-        if (id == 13302) {
+        if (id == WILDERNESS_KEY) {
             def.name = "<col=65280><col=65280>Wilderness key</col>";
         }
 
-        if (id == 6542) {
-            def.name = "<col=65280>Present Mystery Box";
-        }
-
-        if (id == 30189) {
+        if (id == POINTS_MYSTERY_CHEST) {
             def.name = "<col=65280>Points mystery chest";
             def.inventoryActions = new String[]{"Open", null, null, null, null};
             def.recolorFrom = new int[]{49, 6466, 24, 5545};
@@ -1892,7 +1520,7 @@ public class CustomItems {
             def.zoom2d = 2640;
         }
 
-        if (id == 30190) {
+        if (id == DOUBLE_DROPS_SCROLL) {
             def.name = "<col=65280>Double drop scroll";
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.stackable = 1;
@@ -1905,7 +1533,7 @@ public class CustomItems {
             def.modelCustomColor4 = 22222;
         }
 
-        if (id == 30191) {
+        if (id == XMAS_TOKENS) {
             ItemDefinition.copyInventory(def, 13204);
             def.name = "<col=65280>X'mas token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
@@ -1935,7 +1563,7 @@ public class CustomItems {
             def.recolorTo = new int[]{127, 155, 374770};
         }
 
-        if (id == 30195) {
+        if (id == SLAYER_TELEPORT_SCROLL) {
             def.name = "<col=65280>Slayer teleport scroll";
             def.inventoryActions = new String[]{"Tear", null, null, null, null};
             def.stackable = 1;
@@ -1948,7 +1576,7 @@ public class CustomItems {
             def.modelCustomColor4 = 12222;
         }
 
-        if (id == 30201) {
+        if (id == GIANT_KEY_OF_DROPS) {
             def.name = "<col=65280>Giant key of drops";
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.inventoryModel = 55611;
@@ -1960,7 +1588,7 @@ public class CustomItems {
             def.animateInventory = true;
         }
 
-        if(id == 30210) {
+        if(id == COLLECTION_KEY) {
             def.name = "<col=65280>Collection key";
             def.inventoryActions = new String[]{null, null, null, null, null};
             def.inventoryModel = 55612;
@@ -1971,7 +1599,7 @@ public class CustomItems {
             def.zoom2d = 1296;
         }
 
-        if(id == 30211) {
+        if(id == CURSED_AMULET_OF_THE_DAMNED) {
             def.name = "<col=65280>Cursed amulet of the damned";
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             def.inventoryModel = 55613;
@@ -1988,7 +1616,7 @@ public class CustomItems {
         if (id == 30185 || id == 30186 || id == 30187 || id == 30188 || id == 30200) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
-                case 30185:
+                case DONATOR_MYSTERY_BOX:
                     def.name = "<col=65280>Donator mystery box";
                     def.inventoryModel = 55566;
                     def.animateInventory = true;
@@ -1996,7 +1624,7 @@ public class CustomItems {
                     def.recolorTo = new int[]{524, 13};
                     break;
 
-                case 30200:
+                case RAIDS_MYSTERY_BOX:
                     def.name = "<col=65280>Raids mystery box";
                     def.inventoryModel = 55610;
                     def.animateInventory = true;
@@ -2004,7 +1632,7 @@ public class CustomItems {
                     def.recolorTo = new int[]{524, 13};
                     break;
 
-                case 30186:
+                case POINTS_MYSTERY_BOX:
                     def.name = "<col=65280>Point mystery box";
                     def.recolorFrom = new int[]{22410, 2999};
                     def.recolorTo = new int[]{302770, 296770};
@@ -2016,7 +1644,7 @@ public class CustomItems {
                     def.stackable = 1;
                     break;
 
-                case 30188:
+                case BARROWS_MYSTERY_BOX:
                     def.name = "<col=65280>Barrows Mystery Box";
                     def.recolorFrom = new int[]{22410, 2999};
                     def.recolorTo = new int[]{356770, 266770};
@@ -2024,27 +1652,22 @@ public class CustomItems {
             }
         }
 
-        if (id == 10858) {
+        if (id == SWORD_OF_GRYFFINDOR) {
+            def.name = "<col=65280>Sword of gryffindor";
             def.recolorFrom = new int[]{10258, 10291, 10275, 10262, 10266, 10283};
             def.recolorTo = new int[]{82, 125, 125, 121, 125, 125};
         }
 
-        if (id == 3269) {
-            def.recolorFrom = new int[]{57, 49};
-            def.recolorTo = new int[]{926, 9152};
-            def.animateInventory = true;
-        }
-
-        if (id == 962) {
+        if (id == CHRISTMAS_CRACKER) {
             def.inventoryActions = new String[]{"Open", null, null, null, null};
         }
 
-        if (id == 6722) {
+        if (id == ZOMBIES_CHAMPION_PET) {
             def.name = "<col=65280>Zombies champion pet";
             def.inventoryActions = new String[]{null, null, null, null, null};
         }
 
-        if (id == 23818) {
+        if (id == BARRELCHEST_PET) {
             def.name = "<col=65280>Barrelchest pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 22790;
@@ -2056,33 +1679,9 @@ public class CustomItems {
             def.stackable = 0;
         }
 
-        if (id == 29102) {
-            def.name = "<col=65280>Scythe of vitur kit";
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.inventoryModel = 12841;
-            def.xOffset2d = -10;
-            def.yOffset2d = 20;
-            def.xan2d = 564;
-            def.yan2d = 1943;
-            def.zoom2d = 1616;
-            def.modelCustomColor4 = 235;
-        }
-
-        if (id == 29103) {
-            def.name = "<col=65280>Twisted bow kit";
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.inventoryModel = 12841;
-            def.xOffset2d = -10;
-            def.yOffset2d = 20;
-            def.xan2d = 564;
-            def.yan2d = 1943;
-            def.zoom2d = 1616;
-            def.modelCustomColor4 = 31575;
-        }
-
         switch (id) {
 
-            case 30074:
+            case LAVA_DHIDE_COIF:
                 def.name = "<col=65280>Lava dhide coif";
                 def.femaleModel = 58987;
                 def.femaleModel1 = 403;
@@ -2096,7 +1695,7 @@ public class CustomItems {
                 def.zoom2d = 789;
                 break;
 
-            case 30077:
+            case LAVA_DHIDE_BODY:
                 def.name = "<col=65280>Lava dhide body";
                 def.femaleModel = 58986;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2108,7 +1707,7 @@ public class CustomItems {
                 def.zoom2d = 1180;
                 break;
 
-            case 30080:
+            case LAVA_DHIDE_CHAPS:
                 def.name = "<col=65280>Lava dhide chaps";
                 def.femaleModel = 58988;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2120,7 +1719,7 @@ public class CustomItems {
                 def.zoom2d = 1827;
                 break;
 
-            case 30038:
+            case PRIMORDIAL_BOOTS_OR:
                 def.name = "<col=65280>Primordial boots (or)";
                 def.femaleModel = 58967;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2133,7 +1732,7 @@ public class CustomItems {
                 def.zoom2d = 976;
                 break;
 
-            case 30297:
+            case CORRUPTED_BOOTS:
                 def.name = "<col=65280>Corrupted boots";
                 def.femaleModel = 59096;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2146,8 +1745,8 @@ public class CustomItems {
                 def.zoom2d = 976;
                 break;
 
-            case 30181:
-            case 30184:
+            case ELDER_WAND:
+            case ELDER_WAND_RAIDS:
                 def.name = "<col=65280>Elder wand";
                 def.recolorFrom = new int[]{-19153, -19500, -19145, 37, -16339, -16331};
                 def.recolorTo = new int[]{530, 540, 529, 10, 13, 16};
@@ -2162,12 +1761,7 @@ public class CustomItems {
                 def.zoom2d = 668;
                 break;
 
-            case 2572:
-                ItemDefinition.copyInventory(def, RING_OF_WEALTH_1);
-                def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-                break;
-
-            case 16012:
+            case BABY_DARK_BEAST_EGG:
                 def.name = "<col=65280>Baby Dark Beast";
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 def.zoom2d = 550;
@@ -2180,35 +1774,35 @@ public class CustomItems {
                 def.recolorTo = new int[]{54444};
                 break;
 
-            case 16013:
+            case PET_KREE_ARRA_WHITE:
                 ItemDefinition.copyInventory(def, 12649);
                 def.name = "<col=65280>Pet kree'arra (white)";
                 def.inventoryActions = new String[]{null, null, null, "Wipe-off paint", null};
                 def.modelCustomColor4 = 31575;
                 break;
 
-            case 16014:
+            case PET_ZILYANA_WHITE:
                 ItemDefinition.copyInventory(def, 12651);
                 def.name = "<col=65280>Pet zilyana (white)";
                 def.inventoryActions = new String[]{null, null, null, "Wipe-off paint", null};
                 def.modelCustomColor4 = 33785;
                 break;
 
-            case 16015:
+            case PET_GENERAL_GRAARDOR_BLACK:
                 ItemDefinition.copyInventory(def, 12650);
                 def.name = "<col=65280>Pet general graardor (black)";
                 def.inventoryActions = new String[]{null, null, null, "Wipe-off paint", null};
                 def.modelCustomColor4 = 235;
                 break;
 
-            case 16016:
+            case PET_KRIL_TSUTSAROTH_BLACK:
                 ItemDefinition.copyInventory(def, 12652);
                 def.name = "<col=65280>Pet k'ril tsutsaroth (black)";
                 def.inventoryActions = new String[]{null, null, null, "Wipe-off paint", null};
                 def.modelCustomColor4 = 235;
                 break;
 
-            case 16024:
+            case BABY_ABYSSAL_DEMON:
                 def.name = "<col=65280>Baby Abyssal demon";
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 def.zoom2d = 550;
@@ -2220,7 +1814,7 @@ public class CustomItems {
                 def.modelCustomColor3 = 1343;
                 break;
 
-            case 964:
+            case VENGEANCE_SKULL:
                 def.inventoryActions = new String[]{"Cast", null, null, null, "Destroy"};
                 def.name = "<col=65280>Vengeance";
                 def.description = "Rebound damage to an opponent.";
@@ -2228,32 +1822,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{130770};
                 break;
 
-            case 2685:
-                def.name = "<col=65280>PvP task scroll";
-                def.inventoryActions = new String[]{"Read", null, "Skip task", null, "Destroy"};
-                def.recolorFrom = new int[]{6464, 6608, 22305, 22034, 6740, 22422, 6583, 6587, 6604};
-                def.recolorTo = new int[]{933, 926, 926, 926, 933, 926, 926, 926, 933};
-                break;
-
-            case 16755:
-                ItemDefinition.copyInventory(def, 13648);
-                def.name = "<col=65280>PvP task bottle";
-                def.ambient = 20;
-                def.recolorFrom = new int[]{22422};
-                def.recolorTo = new int[]{933};
-                def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
-                break;
-
-            case 14524:
-                ItemDefinition.copyInventory(def, 8151);
-                def.name = "<col=65280>Blood money chest";
-                def.description = "Opens for 10.000 blood money.";
-                def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
-                def.recolorFrom = new int[]{24, 49, 4510, 4502, 8128, 7093};
-                def.recolorTo = new int[]{926, 926, 926, 926, 926, 926};
-                break;
-
-            case 14525:
+            case MYSTERY_CHEST:
                 def.inventoryModel = 55570;
                 def.zoom2d = 2640;
                 def.xan2d = 114;
@@ -2265,14 +1834,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{24, 49, 184770, 184770, 87770, 87770};
                 break;
 
-            case 7237:
-                def.name = "<col=65280>PvP reward casket";
-                def.recolorFrom = new int[]{13248, 7062, -22477};
-                def.recolorTo = new int[]{13248, 563, -22477};
-                def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
-                break;
-
-            case 16005:
+            case BABY_SQUIRT:
                 def.name = "<col=65280>Baby Squirt pet";
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 def.zoom2d = 550;
@@ -2285,37 +1847,24 @@ public class CustomItems {
                 def.recolorTo = new int[]{246770};
                 break;
 
-            case 7999:
+            case PET_PAINT_BLACK:
                 def.modelCustomColor4 = 155;
                 def.name = "<col=65280>Pet paint (black)";
                 def.description = "Changes color of baby K'ril and baby Graardor.";
                 break;
 
-            case 8000:
+            case PET_PAINT_WHITE:
                 def.modelCustomColor4 = 2;
                 def.name = "<col=65280>Pet paint (white)";
                 def.description = "Changes color of baby Kree'Arra and baby Zilyana.";
                 break;
 
-            case 14222:
-                def.name = "<col=65280>X2 PK Points (+30)";
-                def.zoom2d = 1020;
-                def.xan2d = 344;
-                def.yan2d = 656;
-                def.xOffset2d = -1;
-                def.yOffset2d = 11;
-                def.inventoryModel = 10347;
-                def.inventoryActions[1] = "Claim";
-                def.stackable = 1;
-                def.description = "+30 minutes of 2x PkP.";
-                break;
-
-            case 13190:
+            case FIVE_DOLLAR_BOND:
                 def.name = "<col=65280>$5 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
                 break;
 
-            case 16278:
+            case TEN_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$10 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
@@ -2323,7 +1872,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{32416, 34451, 23224, 34181, 34449, 34305, 33435, 21164, 23092, 21152, 19087, 44821, 44846, 19997, 20117, 44829, 44838, 34464};
                 break;
 
-            case 16263:
+            case TWENTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$20 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
@@ -2331,7 +1880,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{63316, 65351, 54124, 65081, 65349, 65205, 64335, 52064, 53992, 52052, 49987, 75721, 75746, 50897, 51017, 75729, 75738, 65364};
                 break;
 
-            case 16264:
+            case FORTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$40 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
@@ -2339,7 +1888,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{25416, 27451, 16224, 27181, 27449, 27305, 26435, 14164, 16092, 14152, 12087, 37821, 37846, 12997, 13117, 37829, 37838, 27464};
                 break;
 
-            case 16265:
+            case FIFTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$50 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
@@ -2347,7 +1896,7 @@ public class CustomItems {
                 def.recolorTo = new int[]{35416, 37451, 26224, 37181, 37449, 37305, 36435, 24164, 26092, 24152, 22087, 47821, 47846, 22997, 23117, 47829, 47838, 37464};
                 break;
 
-            case 16266:
+            case ONE_HUNDRED_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$100 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
@@ -2355,35 +1904,35 @@ public class CustomItems {
                 def.recolorTo = new int[]{77316, 79351, 68124, 79081, 79349, 79205, 78335, 66064, 67992, 66052, 63987, 89721, 89746, 64897, 65017, 89729, 89738, 79364};
                 break;
 
-            case 2866:
+            case EARTH_ARROWS:
                 def.name = "<col=65280>Earth arrows";
                 break;
 
-            case 4160:
+            case FIRE_ARROWS:
                 def.name = "<col=65280>Fire arrows";
                 def.recolorFrom = new int[]{57, 61, 5012, 926};
                 def.recolorTo = new int[]{57, 61, 5012, 926};
                 break;
 
-            case 7806:
+            case ANCIENT_WARRIOR_SWORD:
                 def.name = "<col=65280>Ancient warrior sword";
                 def.recolorFrom = new int[]{920, 0, 103};
                 def.recolorTo = new int[]{391770, 0, 110};
                 break;
 
-            case 7808:
+            case ANCIENT_WARRIOR_MAUL:
                 def.name = "<col=65280>Ancient warrior maul";
                 def.recolorFrom = new int[]{78, 103, 920};
                 def.recolorTo = new int[]{391470, 391470, 100, 100};
                 break;
 
-            case 7807:
+            case ANCIENT_WARRIOR_AXE:
                 def.name = "<col=65280>Ancient warrior axe";
                 def.recolorFrom = new int[]{0, 78, 920};
                 def.recolorTo = new int[]{191770, 191770, 110};
                 break;
 
-            case 17000:
+            case VALINOR_COINS:
                 ItemDefinition.copyInventory(def, 995);
                 def.countco = new int[]{2, 3, 4, 5, 25, 100, 250, 1000, 10000, 0};
                 def.countobj = new int[]{17001, 17002, 17003, 17004, 17005, 17006, 17007, 17008, 17009, 0};
@@ -2446,24 +1995,25 @@ public class CustomItems {
                 def.recolorTo = new int[]{5706};
                 break;
 
-            case 2944:
+            case KEY_OF_DROPS:
+                def.name = "<col=65280>Key of drops";
                 def.modelCustomColor3 = 54325;
                 break;
 
-            case 12773:
+            case LAVA_WHIP:
                 def.name = "<col=65280>Lava whip";
                 break;
 
-            case 12774:
+            case FROST_WHIP:
                 def.name = "<col=65280>Frost whip";
                 break;
 
-            case 10586:
+            case GENIE_PET:
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 def.name = "<col=65280>Genie pet";
                 break;
 
-            case 12102:
+            case GRIM_REAPER_PET:
                 def.name = "<col=65280>Grim Reaper pet";
                 def.zoom2d = 1010;
                 def.xan2d = 0;
@@ -2474,7 +2024,7 @@ public class CustomItems {
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 break;
 
-            case 32102:
+            case BLOOD_REAPER:
                 def.name = "<col=65280>Blood Reaper pet";
                 def.zoom2d = 1010;
                 def.xan2d = 0;
@@ -2486,7 +2036,7 @@ public class CustomItems {
                 def.modelCustomColor4 = 964;
                 break;
 
-            case 12081:
+            case ELEMENTAL_BOW:
                 def.name = "<col=65280>Elemental bow";
                 def.zoom2d = 1862;
                 def.xan2d = 456;
@@ -2502,25 +2052,17 @@ public class CustomItems {
                 def.femaleModel = 28622;
                 break;
 
-            case 12082:
-                ItemDefinition.copyInventory(def, 12373);
-                ItemDefinition.copyEquipment(def, 12373);
-                def.name = "<col=65280>Elemental staff";
-                def.recolorTo = new int[]{311770, 347770, 347770, 37};
-                def.recolorFrom = new int[]{924, 0, 43164, 37};
-                break;
-
-            case 4067:
+            case DONATOR_TICKET:
                 def.name = "<col=65280>Donator ticket";
                 break;
 
-            case 619:
+            case VOTE_TICKET:
                 def.name = "<col=65280>Vote ticket";
                 def.stackable = 1;
                 def.inventoryActions = new String[]{"Convert to Points", null, null, null, "Drop"};
                 break;
 
-            case 18335:
+            case LAVA_PARTYHAT:
                 def.name = "<col=65280>Lava Party hat";
                 def.inventoryActions = new String[5];
                 def.inventoryActions[1] = "Wear";
@@ -2548,27 +2090,12 @@ public class CustomItems {
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 break;
 
-            case 22517:
+            case SAELDOR_SHARD:
                 def.name = "<col=65280>Saeldor shard";
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 break;
 
-            case 25600:
-                def.name = "<col=65280>Ranger gloves";
-                def.inventoryModel = 24569;
-                def.recolorFrom = new int[]{14658, 14649, 14645, 14637, 16536, 13716};
-                def.recolorTo = new int[]{43059, 43055, 43051, 43047, 43030, 43030};
-                def.zoom2d = 917;
-                def.xan2d = 408;
-                def.yan2d = 150;
-                def.xOffset2d = 0;
-                def.stackable = 0;
-                def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-                def.maleModel = 55558;
-                def.femaleModel = 29056;
-                break;
-
-            case 27644:
+            case SALAZAR_SLYTHERINS_LOCKET:
                 def.name = "<col=65280>Salazar Slytherin's locket";
                 def.inventoryModel = 55562;
                 def.zoom2d = 590;
@@ -2583,9 +2110,10 @@ public class CustomItems {
                 def.femaleModel = 55564;
                 break;
 
-            case 3269:
+            case SLAYER_KEY:
                 def.name = "<col=65280>Slayer key";
                 def.inventoryModel = 55565;
+                def.animateInventory = true;
                 def.recolorFrom = new int[]{57, 49};
                 def.recolorTo = new int[]{6453, 6569};
                 def.zoom2d = 860;
@@ -2595,11 +2123,12 @@ public class CustomItems {
                 def.yOffset2d = -2;
                 def.stackable = 1;
                 break;
-            case 24670:
+
+            case TWISTED_ANCESTRAL_COLOUR_KIT:
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 break;
 
-            case 30196:
+            case TOTEMIC_HELMET:
                 def.name = "<col=65280>Totemic helmet";
                 def.femaleModel = 59029;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2611,7 +2140,7 @@ public class CustomItems {
                 def.zoom2d = 1236;
                 break;
 
-            case 30199:
+            case TOTEMIC_PLATEBODY:
                 def.name = "<col=65280>Totemic platebody";
                 def.femaleModel = 59028;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2623,7 +2152,7 @@ public class CustomItems {
                 def.zoom2d = 1358;
                 break;
 
-            case 30202:
+            case TOTEMIC_PLATELEGS:
                 def.name = "<col=65280>Totemic platelegs";
                 def.ambient = 30;
                 def.contrast = 20;
@@ -2636,7 +2165,7 @@ public class CustomItems {
                 def.zoom2d = 2061;
                 break;
 
-            case 30000:
+            case DARK_SAGE_HAT:
                 def.name = "<col=65280>Dark sage hat";
                 def.femaleModel = 58915;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2648,7 +2177,7 @@ public class CustomItems {
                 def.zoom2d = 1236;
                 break;
 
-            case 30002:
+            case DARK_SAGE_ROBE_TOP:
                 def.name = "<col=65280>Dark sage robe top";
                 def.femaleModel = 58911;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2660,7 +2189,7 @@ public class CustomItems {
                 def.zoom2d = 1358;
                 break;
 
-            case 30004:
+            case DARK_SAGE_ROBE_BOTTOM:
                 def.name = "<col=65280>Dark sage robe bottoms";
                 def.ambient = 30;
                 def.contrast = 20;
@@ -2675,7 +2204,7 @@ public class CustomItems {
                 def.zoom2d = 1690;
                 break;
 
-            case 30036:
+            case TWISTED_BOW_ORANGE:
                 def.name = "<col=65280>Twisted bow";
                 def.femaleModel = 58973;
                 def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -2687,7 +2216,7 @@ public class CustomItems {
                 def.yan2d = 1500;
                 break;
 
-            case 30037:
+            case TWISTED_BOW_PURPLE:
                 def.name = "<col=65280>Twisted bow";
                 def.femaleModel = 58965;
                 def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
@@ -2699,7 +2228,7 @@ public class CustomItems {
                 def.yan2d = 1500;
                 break;
 
-            case 30020:
+            case SARKIS_DARK_COIF:
                 def.name = "<col=65280>Sarkis dark coif";
                 def.femaleModel = 58945;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2711,7 +2240,7 @@ public class CustomItems {
                 def.zoom2d = 1236;
                 break;
 
-            case 30021:
+            case SARKIS_DARK_BODY:
                 def.name = "<col=65280>Sarkis dark body";
                 def.femaleModel = 58952;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -2723,7 +2252,7 @@ public class CustomItems {
                 def.zoom2d = 1358;
                 break;
 
-            case 30022:
+            case SARKIS_DARK_LEGS:
                 def.name = "<col=65280>Sarkis dark legs";
                 def.ambient = 30;
                 def.contrast = 20;
@@ -2737,7 +2266,7 @@ public class CustomItems {
                 def.zoom2d = 1979;
                 break;
 
-            case 30104:
+            case RESOURCE_PACK:
                 def.name = "<col=65280>Resource pack";
                 def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
                 def.inventoryModel = 59006;
@@ -2749,7 +2278,7 @@ public class CustomItems {
                 def.zoom2d = 951;
                 break;
 
-            case 30219:
+            case SUMMER_TOKEN:
                 def.name = "<col=65280>Summer token";
                 def.inventoryActions = new String[]{null, null, null, null, "Drop"};
                 def.inventoryModel = 59047;
@@ -2759,7 +2288,7 @@ public class CustomItems {
                 def.zoom2d = 450;
                 break;
 
-            case 30280:
+            case AGILITY_MASTER_CAPE:
                 def.name = "<col=65280>Agility master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{677, 801, -21996, -21993, -21990, -21987, -21986, -21984, -21982, -21978, -21978, -21978};
@@ -2774,7 +2303,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30282:
+            case ATTACK_MASTER_CAPE:
                 def.name = "<col=65280>Attack master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 37, 22, 20};
                 def.recolorTo = new int[]{7104, 9151, 911, 914, 917, 920, 921, 923, 925, 925, 925, 929};
@@ -2789,7 +2318,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30284:
+            case CONSTRUCCTION_MASTER_CAPE:
                 def.name = "<col=65280>Construction master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{6061, 5945, 6327, 6330, 6333, 6336, 6337, 6339, 6341, 6345, 6345, 6345};
@@ -2804,7 +2333,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30286:
+            case COOKING_MASTER_CAPE:
                 def.name = "<col=65280>Cooking master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{920, 920, -13680, -13677, -13674, -13671, -13670, -13668, -13666, -13662, -13662, -13662};
@@ -2819,7 +2348,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30288:
+            case CRAFTING_MASTER_CAPE:
                 def.name = "<col=65280>Crafting master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{9142, 9152, 4511, 4514, 4517, 4520, 4521, 4523, 4525, 4529, 4529, 4529};
@@ -2834,7 +2363,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30290:
+            case DEFENCE_MASTER_CAPE:
                 def.name = "<col=65280>Defence master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{10460, 10473, -24126, -24123, -24120, -24117, -24116, -24114, -24112, -24108, -24108, -24108};
@@ -2849,7 +2378,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30292:
+            case FARMING_MASTER_CAPE:
                 def.name = "<col=65280>Farming master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{14775, 14792, 22026, 22029, 22032, 22035, 22036, 22038, 22040, 22044, 22044, 22044};
@@ -2864,7 +2393,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30294:
+            case FIREMAKING_MASTER_CAPE:
                 def.name = "<col=65280>Firemaking master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{8125, 9152, 4015, 4018, 4021, 4024, 4025, 4027, 4029, 4033, 4033, 4033};
@@ -2879,7 +2408,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30246:
+            case FISHING_MASTER_CAPE:
                 def.name = "<col=65280>Fishing master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{9144, 9152, -27334, -27331, -27328, -27325, -27324, -27322, -27316, -27314, -27314, -27314};
@@ -2894,7 +2423,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30248:
+            case FLETCHING_MASTER_CAPE:
                 def.name = "<col=65280>Fletching master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{6067, 9152, -31866, -31863, -31860, -31857, -31856, -31854, -31852, -31848, -31848, -31848};
@@ -2909,7 +2438,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30298:
+            case HERBLORE_MASTER_CAPE:
                 def.name = "<col=65280>Herblore master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{9145, 9156, 22414, 22417, 22420, 22423, 22424, 22426, 22428, 22432, 22432, 22432};
@@ -2924,7 +2453,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30296:
+            case HITPOINTS_MASTER_CAPE:
                 def.name = "<col=65280>Hitpoints master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{818, 951, 8291, 8294, 8297, 8300, 8301, 8303, 8305, 8309, 8309, 8309};
@@ -2939,7 +2468,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30254:
+            case HUNTER_MASTER_CAPE:
                 def.name = "<col=65280>Hunter master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{5262, 6020, 8472, 8475, 8478, 8481, 8482, 8484, 8486, 8490, 8490, 8490};
@@ -2954,7 +2483,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30256:
+            case MAGIC_MASTER_CAPE:
                 def.name = "<col=65280>Magic master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{-21967, -21951, 6336, 6339, 6342, 6345, 6346, 6348, 6350, 6354, 6354, 6354};
@@ -2969,7 +2498,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30258:
+            case MINING_MASTER_CAPE:
                 def.name = "<col=65280>Mining master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{-29240, -29257, 10386, 10389, 10392, 10395, 10396, 10398, 10400, 10404, 10404, 10404};
@@ -2984,7 +2513,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30260:
+            case PRAYER_MASTER_CAPE:
                 def.name = "<col=65280>Prayer master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{9163, 9168, 117, 120, 123, 126, 127, 127, 127, 127, 127, 127};
@@ -2999,7 +2528,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30262:
+            case RANGE_MASTER_CAPE:
                 def.name = "<col=65280>Range master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{3755, 3998, 15122, 15125, 15128, 15131, 15132, 15134, 15136, 15140, 15140, 15140};
@@ -3014,7 +2543,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30264:
+            case RUNECRAFTING_MASTER_CAPE:
                 def.name = "<col=65280>Runecrafting master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{9152, 8128, 10318, 10321, 10324, 10327, 10328, 10330, 10332, 10336, 10336, 10336};
@@ -3029,7 +2558,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30266:
+            case SLAYER_MASTER_CAPE:
                 def.name = "<col=65280>Slayer master cape";
                 def.recolorFrom = new int[]{-8514, -16725};
                 def.recolorTo = new int[]{912, 920};
@@ -3044,7 +2573,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30268:
+            case SMITHING_MASTER_CAPE:
                 def.name = "<col=65280>Smithing master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{8115, 9148, 10380, 10389, 10392, 10395, 10396, 10398, 10400, 10406, 10406, 10406};
@@ -3059,7 +2588,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30270:
+            case STRENGTH_MASTER_CAPE:
                 def.name = "<col=65280>Strength master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{935, 931, 27538, 27541, 27544, 27547, 27548, 27550, 27552, 27556, 27556, 27556};
@@ -3074,7 +2603,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30272:
+            case THIEVING_MASTER_CAPE:
                 def.name = "<col=65280>Thieving master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{11, 1, -6757, -6754, -6751, -6748, -6747, -6745, -6743, -6739, -6739, -6739};
@@ -3089,7 +2618,7 @@ public class CustomItems {
                 def.zoom2d = 2461;
                 break;
 
-            case 30274:
+            case WOODCUTTING_MASTER_CAPE:
                 def.name = "<col=65280>Woodcutting master cape";
                 def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
                 def.recolorTo = new int[]{25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711, 6711, 6711};

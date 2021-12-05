@@ -5779,7 +5779,7 @@
 12900:1.0:Uncharged toxic trident
 12902:1.0:Toxic staff (uncharged)
 12904:1.0:Toxic staff of the dead
-27006:1.0:Toxic staff of the dead (c)
+32006:1.0:Toxic staff of the dead (c)
 12905:0.0:Anti-venom(4)
 12907:0.0:Anti-venom(3)
 12909:0.0:Anti-venom(2)

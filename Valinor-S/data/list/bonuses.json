@@ -24943,7 +24943,7 @@
     "magestr": 0,
     "pray": 3
   },
-  "24983": {
+  "32983": {
     "stab": 90,
     "slash": 85,
     "crush": -4,
@@ -24975,7 +24975,7 @@
     "magestr": 0,
     "pray": 3
   },
-  "24981": {
+  "32984": {
     "stab": 90,
     "slash": 130,
     "crush": 55,
@@ -25007,7 +25007,7 @@
     "magestr": 0,
     "pray": 3
   },
-  "24982": {
+  "32985": {
     "stab": 0,
     "slash": 0,
     "crush": 165,
@@ -46351,23 +46351,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "24956": {
-    "stab": 0,
-    "slash": 0,
-    "crush": 165,
-    "range": 0,
-    "mage": 0,
-    "stabdef": 0,
-    "slashdef": 0,
-    "crushdef": 0,
-    "rangedef": 0,
-    "magedef": 0,
-    "str": 157,
-    "rangestr": 0,
-    "magestr": 0,
-    "pray": 0
-  },
-  "24958": {
+  "32956": {
     "stab": 0,
     "slash": 0,
     "crush": 165,
@@ -46511,7 +46495,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "28957": {
+  "32957": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -48351,7 +48335,7 @@
     "magestr": 0,
     "pray": 3
   },
-  "24984": {
+  "32982": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -48671,7 +48655,7 @@
     "magestr": 0,
     "pray": 2
   },
-  "28001": {
+  "32701": {
     //Inquisitor's mace
     "stab": 95,
     "slash": 65,
@@ -48688,7 +48672,7 @@
     "magestr": 0,
     "pray": 5
   },
-  "28002": {
+  "32702": {
     //Inquisitor's great helm
     "stab": 5,
     "slash": 5,
@@ -48705,7 +48689,7 @@
     "magestr": 0,
     "pray": 1
   },
-  "28003": {
+  "32703": {
     //Inquisitor's hauberk
     "stab": 6,
     "slash": 8,
@@ -48722,7 +48706,7 @@
     "magestr": 0,
     "pray": 2
   },
-  "28004": {
+  "32704": {
     //Inquisitor's plateskirt
     "stab": 5,
     "slash": 7,
@@ -48790,7 +48774,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "24995": {
+  "32995": {
     //ancient vesta's longsword
     "stab": 126,
     "slash": 131,
@@ -48892,7 +48876,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "24996": {
+  "32996": {
     //ancient statius's warhammer
     "stab": -2,
     "slash": -2,
@@ -49111,7 +49095,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "29001": {
+  "32706": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -49143,7 +49127,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "29002": {
+  "32707": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -49207,7 +49191,7 @@
     "magestr": 0,
     "pray": 2
   },
-  "29000": {
+  "32705": {
     "stab": 63,
     "slash": -1,
     "crush": 77,
@@ -49703,7 +49687,7 @@
     "magestr": 15,
     "pray": 2
   },
-  "28641": {
+  "32641": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -49719,7 +49703,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "27644": {
+  "32644": {
     "stab": 15,
     "slash": 15,
     "crush": 15,
@@ -49898,7 +49882,7 @@
     "magestr": 0,
     "pray": 2
   },
-  "26502": {
+  "32502": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -49914,7 +49898,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "26503": {
+  "32503": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -49930,7 +49914,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "26504": {
+  "32504": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -50042,7 +50026,7 @@
     "magestr": 0,
     "pray": 5
   },
-  "27006": {
+  "32006": {
     "stab": 60,
     "slash": 75,
     "crush": 0,
@@ -50058,7 +50042,7 @@
     "magestr": 20,
     "pray": 0
   },
-  "15304": {
+  "32304": {
     "stab": 0,
     "slash": 0,
     "crush": -0,
@@ -50074,7 +50058,7 @@
     "magestr": 0,
     "pray": 0
   },
-  "26500": {
+  "32500": {
     "stab": 0,
     "slash": 0,
     "crush": 0,
@@ -50090,7 +50074,7 @@
     "magestr": 0,
     "pray": 2
   },
-  "26501": {
+  "32501": {
     "stab": 0,
     "slash": 0,
     "crush": 0,

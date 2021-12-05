@@ -102,7 +102,7 @@ public class Item implements Cloneable {
             TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE, TWISTED_SLAYER_HELMET_I_VAMP_DUST, RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY,
             SLAYER_HELMET_I, GREEN_SLAYER_HELMET_I, TURQUOISE_SLAYER_HELMET_I, RED_SLAYER_HELMET_I, BLACK_SLAYER_HELMET_I,
             DRAGON_DAGGERP_24949, ELITE_VOID_TOP_24943, ELITE_VOID_ROBE_24942, VOID_MELEE_HELM_24941, VOID_MAGE_HELM_24940, VOID_RANGER_HELM_24939,
-            VOID_KNIGHT_GLOVES_24938, GRANITE_MAUL_24944, PARTYHAT__SPECS_24945, ABYSSAL_TENTACLE_24948, FREMENNIK_KILT_24946, SPIKED_MANACLES_24947, FAWKES_24937,
+            VOID_KNIGHT_GLOVES_24938, GRANITE_MAUL_24944, PARTYHAT__SPECS_24945, ABYSSAL_TENTACLE_24948, FREMENNIK_KILT_24946, SPIKED_MANACLES_24947, FAWKES_32937,
         };
         for (int i : tradeable_special_items) {
             World.getWorld().definitions().get(ItemDefinition.class, i).tradeable_special_items = true;
@@ -420,7 +420,7 @@ public class Item implements Cloneable {
             add(GRIM_PARTYHAT);
             add(GRIM_SCYTHE);
             add(HWEEN_MYSTERY_CHEST);
-            add(SKELETON_HELLHOUND_PET);
+            add(HAUNTED_HELLHOUND_PET);
             add(HWEEN_MYSTERY_BOX);
             add(ANCESTRAL_HAT_I);
             add(ANCESTRAL_ROBE_TOP_I);
@@ -437,7 +437,7 @@ public class Item implements Cloneable {
             add(WHITE_HWEEN_MASK);
             add(PURPLE_HWEEN_MASK);
             add(LIME_GREEN_HWEEN_MASK);
-            add(FAWKES_24937);
+            add(FAWKES_32937);
             add(GAMBLER_SCROLL);
             add(CORRUPTING_STONE);
             add(CORRUPTED_RANGER_GAUNTLETS);
@@ -500,7 +500,7 @@ public class Item implements Cloneable {
             add(FOUNDER_IMP);
             add(DHAROK_PET);
             add(JALTOK_JAD);
-            add(PET_ZOMBIES_CHAMPION);
+            add(ZOMBIES_CHAMPION_PET);
             add(BABY_DARK_BEAST_EGG);
             add(BABY_ABYSSAL_DEMON);
             add(FENRIR_GREYBACK_JR);
@@ -635,10 +635,6 @@ public class Item implements Cloneable {
             add(DONATOR_TICKET);
             add(VOTE_TICKET);
             add(LAVA_PARTYHAT);
-            add(RECOVER_SPECIAL_4);
-            add(RECOVER_SPECIAL_3);
-            add(RECOVER_SPECIAL_2);
-            add(RECOVER_SPECIAL_1);
             add(TWISTED_ANCESTRAL_COLOUR_KIT);
             add(RAINBOW_PARTYHAT);
             add(BLACK_PARTYHAT);
@@ -883,12 +879,11 @@ public class Item implements Cloneable {
         HYDRA_SLAYER_HELMET_I,
         DOUBLE_DROPS_LAMP,
         RING_OF_MANHUNTING,
-            VALINOR_COINS,
+        VALINOR_COINS,
         ATTACKER_ICON,
         COLLECTOR_ICON,
         DEFENDER_ICON,
         HEALER_ICON,
-        DARK_ELDER_MAUL_UNTRADEABLE,
         MAGIC_SHORTBOW_I,
     };
 

@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomItemIdentifiers.CLOAK_OF_INVISIBILITY;
+import static com.valinor.util.CustomNpcIdentifiers.SKELETON_HELLHOUND_PET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class HoverMenuManager {
@@ -48,7 +49,6 @@ public class HoverMenuManager {
         menus.put(HOLY_SANGUINESTI_STAFF, new HoverMenu("@red@+10@whi@ extra damage, no accuracy boost."));
         menus.put(HOLY_GHRAZI_RAPIER, new HoverMenu("A much more powerful version of the ghrazi rapier."));
         menus.put(SANGUINE_SCYTHE_OF_VITUR, new HoverMenu("A stronger version then the scythe of Vitur."));
-        menus.put(LVL_LAMP, new HoverMenu("Ability to make a skill of choice level 99."));
         menus.put(SWORD_OF_GRYFFINDOR, new HoverMenu("@red@+25%@whi@ damage and accuracy boost against any monster."));
         menus.put(ARMADYL_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@ and accuracy by @red@+25%@whi@."));
         menus.put(BANDOS_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
@@ -78,14 +78,13 @@ public class HoverMenuManager {
         menus.put(MAGMA_BLOWPIPE, new HoverMenu("A recolored version of the Toxic blowpipe! +3 max hit and better accuracy <col=65535>Untradeable and auto-keep."));
         menus.put(VENGEANCE_SKULL, new HoverMenu("With this item in your inventory, you won't need the required runes for vengeance! <col=65535>Untradeable and auto-keep."));
         menus.put(KEY_OF_DROPS, new HoverMenu("When using the Key of drops on a mystery box you will be guaranteed a rare drop. And 20% chance of a extreme rare drop."));
-        menus.put(GRAND_MYSTERY_BOX, new HoverMenu("Gives random mystery boxes in return."));
         menus.put(ANCESTRAL_HAT_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));
         menus.put(ANCESTRAL_ROBE_TOP_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));
         menus.put(ANCESTRAL_ROBE_BOTTOM_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));
         menus.put(PRIMORDIAL_BOOTS_OR, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@8@whi@ strength bonus."));
 
         menus.put(NAGINI, new HoverMenu("+@red@10%@whi@ magic accuracy, +@red@10@whi@ damage vs npcs and +@red@1@whi@ damage vs players."));
-        menus.put(SKELETON_HELLHOUND_PET, new HoverMenu("+@red@7.5%@whi@ drop rate, +@red@5%@whi@ damage and +@red@5%@whi@ accuracy."));
+        menus.put(SKELETON_HELLHOUND_PET, new HoverMenu("+@red@5%@whi@ damage and +@red@5%@whi@ accuracy vs H'ween npcs."));
         menus.put(JALNIBREK, new HoverMenu("Acts as a ring of recoil and +@red@10%@whi@ special attack accuracy."));
         menus.put(BLOOD_REAPER, new HoverMenu("Keep one extra item on death. This doesn't work while @red@ smited or red skulled@whi@. And @red@+10%@whi@ extra blood money during any activity including chests."));
         menus.put(YOUNGLLEF, new HoverMenu("@red@+1@whi@ max hit and @red@7.5%@whi@ accuracy for all attack styles."));
@@ -108,7 +107,7 @@ public class HoverMenuManager {
         menus.put(ZRIAWK, new HoverMenu("@red@15%@whi@ extra drop rate."));
         menus.put(JAWA_PET, new HoverMenu("When having the Jawa pet out you have @red@50%@whi@ more chance on receiving a pet drop."));
         menus.put(FAWKES, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
-        menus.put(FAWKES_24937, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
+        menus.put(FAWKES_32937, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
         menus.put(BARRELCHEST_PET, new HoverMenu("@red@+1@whi@ Max hit And @red@+10%@whi@ attack bonus accuracy."));
         menus.put(WAMPA, new HoverMenu("Has a @red@10%@whi@ chance to freeze your opponent."));
         menus.put(NIFFLER, new HoverMenu("Niffler stores items that you've received from a player kill or pvm drop into his pouch."));
@@ -120,7 +119,7 @@ public class HoverMenuManager {
         menus.put(TZREKZUK, new HoverMenu("Gives @red@+5%@whi@ damage reduction."));
         menus.put(GENIE_PET, new HoverMenu("Whilst having this pet out your experience is always boosted by @red@X2@whi@ Does not stack with other exp boosts."));
         menus.put(DHAROK_PET, new HoverMenu("Increases your Dharok's axe accuracy by @red@+10%@whi@."));
-        menus.put(PET_ZOMBIES_CHAMPION, new HoverMenu("Deals @red@+10%@whi@ extra damage and accuracy to the boss version."));
+        menus.put(ZOMBIES_CHAMPION_PET, new HoverMenu("Deals @red@+10%@whi@ extra damage and accuracy to the boss version."));
         menus.put(BABY_ABYSSAL_DEMON, new HoverMenu("Changes the dragon dagger special attack requirement to @red@-20%@whi@ instead of @red@-25%@whi@."));
         menus.put(BABY_DARK_BEAST_EGG, new HoverMenu("Makes the dark bow @red@+10%@whi@ more accurate."));
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));

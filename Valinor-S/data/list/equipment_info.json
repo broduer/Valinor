@@ -2299,7 +2299,7 @@
     "type": 0,
     "showBeard": true
   },
-  "28007": {
+  "32007": {
     "slot": 0,
     "type": 0,
     "showBeard": true
@@ -2354,7 +2354,7 @@
     "type": 0,
     "showBeard": true
   },
-  "28009": {
+  "32009": {
     "slot": 0,
     "type": 0,
     "showBeard": true
@@ -2404,7 +2404,7 @@
     "type": 8,
     "showBeard": false
   },
-  "28008": {
+  "32008": {
     "slot": 0,
     "type": 8,
     "showBeard": false
@@ -6444,7 +6444,7 @@
     "type": 8,
     "showBeard": true
   },
-  "24984": {
+  "32982": {
     "slot": 0,
     "type": 8,
     "showBeard": true
@@ -8594,7 +8594,7 @@
     "type": 8,
     "showBeard": true
   },
-  "26502": {
+  "32502": {
     "slot": 0,
     "type": 8,
     "showBeard": true
@@ -8604,7 +8604,7 @@
     "type": 6,
     "showBeard": false
   },
-  "26503": {
+  "32503": {
     "slot": 4,
     "type": 6,
     "showBeard": false
@@ -8619,7 +8619,7 @@
     "type": 0,
     "showBeard": false
   },
-  "26504": {
+  "32504": {
     "slot": 7,
     "type": 0,
     "showBeard": false
@@ -8639,12 +8639,12 @@
     "type": 0,
     "showBeard": false
   },
-  "26500": {
+  "32500": {
     "slot": 4,
     "type": 6,
     "showBeard": false
   },
-  "26501": {
+  "32501": {
     "slot": 7,
     "type": 0,
     "showBeard": false
@@ -11619,7 +11619,7 @@
     "type": 0,
     "showBeard": false
   },
-  "15304": {
+  "32304": {
     "slot": 12,
     "type": 0,
     "showBeard": false
@@ -12089,7 +12089,7 @@
     "type": 8,
     "showBeard": false
   },
-  "28957": {
+  "32957": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -12154,12 +12154,7 @@
     "type": 5,
     "showBeard": false
   },
-  "24956": {
-    "slot": 3,
-    "type": 5,
-    "showBeard": false
-  },
-  "24958": {
+  "32956": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -12509,7 +12504,7 @@
     "type": 0,
     "showBeard": false
   },
-  "27006": {
+  "32006": {
     "slot": 3,
     "type": 0,
     "showBeard": false
@@ -16704,17 +16699,17 @@
     "type": 5,
     "showBeard": false
   },
-  "24981": {
+  "32984": {
     "slot": 3,
     "type": 5,
     "showBeard": false
   },
-  "24982": {
+  "32985": {
     "slot": 3,
     "type": 5,
     "showBeard": false
   },
-  "24983": {
+  "32983": {
     "slot": 3,
     "type": 0,
     "showBeard": false
@@ -17084,7 +17079,7 @@
     "type": 5,
     "showBeard": false
   },
-  "29001": {
+  "32706": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -17094,7 +17089,7 @@
     "type": 0,
     "showBeard": false
   },
-  "29002": {
+  "32707": {
     "slot": 3,
     "type": 0,
     "showBeard": false
@@ -17114,7 +17109,7 @@
     "type": 0,
     "showBeard": false
   },
-  "29000": {
+  "32705": {
     "slot": 3,
     "type": 0,
     "showBeard": false
@@ -17143,25 +17138,25 @@
     "type": 0,
     "showBeard": false
   },
-  "28001": {
+  "32701": {
     //inquisitor's mace
     "slot": 3,
     "type": 0,
     "showBeard": false
   },
-  "28002": {
+  "32702": {
     //inquisitor's great helm
     "slot": 0,
     "type": 8,
     "showBeard": false
   },
-  "28003": {
+  "32703": {
     //inquisitor's hauberk
     "slot": 4,
     "type": 6,
     "showBeard": false
   },
-  "28004": {
+  "32704": {
     //inquisitor's plateskirt
     "slot": 7,
     "type": 0,
@@ -17191,7 +17186,7 @@
     "type": 0,
     "showBeard": false
   },
-  "24996": {
+  "32996": {
     //ancient statius's warhammer
     "slot": 3,
     "type": 0,
@@ -17215,7 +17210,7 @@
     "type": 0,
     "showBeard": false
   },
-  "24995": {
+  "32995": {
     //ancient vesta's longsword
     "slot": 3,
     "type": 0,
@@ -17604,12 +17599,12 @@
     "type": 0,
     "showBeard": false
   },
-  "28641": {
+  "32641": {
     "slot": 3,
     "type": 0,
     "showBeard": false
   },
-  "27644": {
+  "32644": {
     "slot": 2,
     "type": 0,
     "showBeard": false
@@ -17687,32 +17682,32 @@
     "type": 0,
     "showBeard": false
   },
-  "24950": {
+  "32550": {
     "slot": 0,
     "type": 0,
     "showBeard": true
   },
-  "24951": {
+  "32551": {
     "slot": 0,
     "type": 0,
     "showBeard": true
   },
-  "24952": {
+  "32552": {
     "slot": 0,
     "type": 0,
     "showBeard": true
   },
-  "24953": {
+  "32553": {
     "slot": 0,
     "type": 8,
     "showBeard": false
   },
-  "24954": {
+  "32554": {
     "slot": 0,
     "type": 8,
     "showBeard": false
   },
-  "24955": {
+  "32555": {
     "slot": 0,
     "type": 8,
     "showBeard": false
@@ -17732,7 +17727,7 @@
     "type": 0,
     "showBeard": false
   },
-  "27005": {
+  "32005": {
     "slot": -1,
     "type": 0,
     "showBeard": false

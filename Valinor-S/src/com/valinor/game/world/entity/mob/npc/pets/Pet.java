@@ -18,11 +18,11 @@ public enum Pet {
 
     //Custom
     NAGINI(CustomItemIdentifiers.NAGINI, CustomNpcIdentifiers.NAGINI, -1),
-    SKELETON_HELLHOUND_PET(CustomItemIdentifiers.SKELETON_HELLHOUND_PET, CustomNpcIdentifiers.SKELETON_HELLHOUND_PET,-1),
+    SKELETON_HELLHOUND_PET(CustomItemIdentifiers.HAUNTED_HELLHOUND_PET, CustomNpcIdentifiers.SKELETON_HELLHOUND_PET,-1),
     BLOOD_REAPER(CustomItemIdentifiers.BLOOD_REAPER, CustomNpcIdentifiers.BLOOD_REAPER,-1),
     YOUNGLLEF(ItemIdentifiers.YOUNGLLEF, NpcIdentifiers.YOUNGLLEF,-1),
     CORRUPTED_YOUNGLLEF(ItemIdentifiers.CORRUPTED_YOUNGLLEF, NpcIdentifiers.CORRUPTED_YOUNGLLEF,-1),
-    FAWKES_RECOLOR(CustomItemIdentifiers.FAWKES_24937, CustomNpcIdentifiers.FAWKES_15981,-1),
+    FAWKES_RECOLOR(CustomItemIdentifiers.FAWKES_32937, CustomNpcIdentifiers.FAWKES_15981,-1),
     THE_NIGHTMARE(ItemIdentifiers.LITTLE_NIGHTMARE, LITTLE_NIGHTMARE_9399,-1),
     ELYSIAN_PET(CustomItemIdentifiers.RING_OF_ELYSIAN, CustomNpcIdentifiers.ELYSIAN_PET,-1),
     KERBEROS(CustomItemIdentifiers.KERBEROS_PET, CustomNpcIdentifiers.KERBEROS_PET,-1),
@@ -54,7 +54,7 @@ public enum Pet {
     GRIM_REAPER(CustomItemIdentifiers.GRIM_REAPER_PET, CustomNpcIdentifiers.GRIM_REAPER_PET, -1),
     BABY_DARK_BEAST(CustomItemIdentifiers.BABY_DARK_BEAST_EGG, CustomNpcIdentifiers.BABY_DARK_BEAST,-1 , UNLOCKED_PET_BABY_DARK_BEAST),
     BABY_ABYSSAL_DEMON(CustomItemIdentifiers.BABY_ABYSSAL_DEMON,CustomNpcIdentifiers.BABY_ABYSSAL_DEMON, UNLOCKED_PET_BABY_ABYSSAL_DEMON),
-    ZOMBIES_CHAMPION(CustomItemIdentifiers.PET_ZOMBIES_CHAMPION, CustomNpcIdentifiers.ZOMBIES_CHAMPION_PET, -1),
+    ZOMBIES_CHAMPION(CustomItemIdentifiers.ZOMBIES_CHAMPION_PET, CustomNpcIdentifiers.ZOMBIES_CHAMPION_PET, -1),
     BARRLECHEST_PET(CustomItemIdentifiers.BARRELCHEST_PET, CustomNpcIdentifiers.BARRELCHEST_PET, -1),
     NIFFLER(CustomItemIdentifiers.NIFFLER, CustomNpcIdentifiers.NIFFLER_PET, -1),
     DHAROK_PET(CustomItemIdentifiers.DHAROK_PET, CustomNpcIdentifiers.DHAROK_PET, -1),

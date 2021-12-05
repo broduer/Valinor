@@ -529,7 +529,6 @@ public class EquipmentInfo {
                     return 7328;
                 case 21003: // Elder maul
                 case DARK_ELDER_MAUL:
-                case DARK_ELDER_MAUL_UNTRADEABLE:
                 case 21205:
                 case 7808: // Ancient warrior maul
                 case ANCIENT_WARRIOR_MAUL_C:
@@ -767,7 +766,6 @@ public class EquipmentInfo {
                 return -1;
             case 21003: // Elder maul
             case DARK_ELDER_MAUL:
-            case DARK_ELDER_MAUL_UNTRADEABLE:
             case 21205:
                 return 7517;
             case 21015: // Dinh's Bulwark

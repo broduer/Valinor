@@ -127,625 +127,304 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
-        } else if (id == 4564) {
+        } else if (id == PINK_SWEETS) {
             stackable = true;
-        } else if (id == 30201) {
+        } else if (id == GIANT_KEY_OF_DROPS) {
             name = "Giant key of drops";
-        } else if (id == 30200) {
+        } else if (id == RAIDS_MYSTERY_BOX) {
             name = "Raids mystery box";
-        } else if (id == 30210) {
+        } else if (id == COLLECTION_KEY) {
             name = "Collection key";
-        } else if (id == 30211) {
+        } else if (id == CURSED_AMULET_OF_THE_DAMNED) {
             name = "Cursed amulet of the damned";
-        } else if (id == 30383) {
+        } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};
-        } else if (id == 30384) {
+        } else if (id == PVMING_SCROLL) {
             name = "Pvming scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};
-        } else if (id == 30385) {
+        } else if (id == TASK_BOTTLE_SKILLING) {
             name = "Task bottle (skilling)";
-        } else if (id == 30386) {
+        } else if (id == TASK_BOTTLE_PVMING) {
             name = "Task bottle (pvming)";
-        } else if (id == 30186 || id == 30187) {
+        } else if (id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX + 1) {
             name = "Points mystery box";
-        } else if (id == 30188) {
+        } else if (id == BARROWS_MYSTERY_BOX) {
             name = "Barrows mystery box";
-        } else if (id == 30189) {
+        } else if (id == POINTS_MYSTERY_CHEST) {
             name = "Points mystery chest";
-        } else if (id == 30190) {
+        } else if (id == DOUBLE_DROPS_SCROLL) {
             name = "Double drop scroll";
             stackable = true;
-        } else if (id == 30196) {
+        } else if (id == TOTEMIC_HELMET) {
             name = "Totemic helmet";
-        } else if (id == 30199) {
+        } else if (id == TOTEMIC_PLATEBODY) {
             name = "Totemic platebody";
-        } else if (id == 30202) {
+        } else if (id == TOTEMIC_PLATELEGS) {
             name = "Totemic platelegs";
-        } else if (id == 30000) {
+        } else if (id == DARK_SAGE_HAT) {
             name = "Dark sage hat";
-        } else if (id == 30002) {
+        } else if (id == DARK_SAGE_ROBE_TOP) {
             name = "Dark sage robe top";
-        } else if (id == 30004) {
+        } else if (id == DARK_SAGE_ROBE_BOTTOM) {
             name = "Dark sage robe bottoms";
-        } else if (id == 30036 || id == 30037) {
+        } else if (id == TWISTED_BOW_ORANGE || id == TWISTED_BOW_PURPLE) {
             name = "Twisted bow";
-        } else if (id == 30020) {
+        } else if (id == SARKIS_DARK_COIF) {
             name = "Sarkis dark coif";
-        } else if (id == 30021) {
+        } else if (id == SARKIS_DARK_BODY) {
             name = "Sarkis dark body";
-        } else if (id == 30022) {
+        } else if (id == SARKIS_DARK_LEGS) {
             name = "Sarkis dark legs";
-        } else if (id == 30104) {
+        } else if (id == RESOURCE_PACK) {
             name = "Resource pack";
-        } else if (id == 30219) {
+        } else if (id == SUMMER_TOKEN) {
             name = "Summer token";
-        } else if (id == 30280) {
+        } else if (id == AGILITY_MASTER_CAPE) {
             name = "Agility master cape";
-        } else if (id == 30282) {
+        } else if (id == ATTACK_MASTER_CAPE) {
             name = "Attack master cape";
-        } else if (id == 30284) {
+        } else if (id == CONSTRUCCTION_MASTER_CAPE) {
             name = "Construction master cape";
-        } else if (id == 30286) {
+        } else if (id == COOKING_MASTER_CAPE) {
             name = "Cooking master cape";
-        } else if (id == 30288) {
+        } else if (id == CRAFTING_MASTER_CAPE) {
             name = "Crafting master cape";
-        } else if (id == 30290) {
+        } else if (id == DEFENCE_MASTER_CAPE) {
             name = "Defence master cape";
-        } else if (id == 30292) {
+        } else if (id == FARMING_MASTER_CAPE) {
             name = "Farming master cape";
-        } else if (id == 30294) {
+        } else if (id == FIREMAKING_MASTER_CAPE) {
             name = "Firemaking master cape";
-        } else if (id == 30246) {
+        } else if (id == FISHING_MASTER_CAPE) {
             name = "Fishing master cape";
-        } else if (id == 30248) {
+        } else if (id == FLETCHING_MASTER_CAPE) {
             name = "Fletching master cape";
-        } else if (id == 30298) {
+        } else if (id == HERBLORE_MASTER_CAPE) {
             name = "Herblore master cape";
-        } else if (id == 30296) {
+        } else if (id == HITPOINTS_MASTER_CAPE) {
             name = "Hitpoints master cape";
-        } else if (id == 30254) {
+        } else if (id == HUNTER_MASTER_CAPE) {
             name = "Hunter master cape";
-        } else if (id == 30256) {
+        } else if (id == MAGIC_MASTER_CAPE) {
             name = "Magic master cape";
-        } else if (id == 30258) {
+        } else if (id == MINING_MASTER_CAPE) {
             name = "Mining master cape";
-        } else if (id == 30260) {
+        } else if (id == PRAYER_MASTER_CAPE) {
             name = "Prayer master cape";
-        } else if (id == 30262) {
+        } else if (id == RANGE_MASTER_CAPE) {
             name = "Range master cape";
-        } else if (id == 30264) {
+        } else if (id == RUNECRAFTING_MASTER_CAPE) {
             name = "Runecrafting master cape";
-        } else if (id == 30266) {
+        } else if (id == SLAYER_MASTER_CAPE) {
             name = "Slayer master cape";
-        } else if (id == 30268) {
+        } else if (id == SMITHING_MASTER_CAPE) {
             name = "Smithing master cape";
-        } else if (id == 30270) {
+        } else if (id == STRENGTH_MASTER_CAPE) {
             name = "Strength master cape";
-        } else if (id == 30272) {
+        } else if (id == THIEVING_MASTER_CAPE) {
             name = "Thieving master cape";
-        } else if (id == 30274) {
+        } else if (id == WOODCUTTING_MASTER_CAPE) {
             name = "Woodcutting master cape";
-        } else if (id == 30244) {
-            name = "Revenant mystery box";
-        } else if (id == 30224) {
+        } else if (id == GRIM_HWEEN_MASK) {
             name = "Grim h'ween mask";
-        } else if (id == 30225) {
+        } else if (id == GRIM_PARTYHAT) {
             name = "Grim partyhat";
-        } else if (id == 30226) {
+        } else if (id == GRIM_SCYTHE) {
             name = "Grim scythe";
-        } else if (id == 30227) {
+        } else if (id == HWEEN_MYSTERY_CHEST) {
             name = "H'ween mystery chest";
-        } else if (id == 30228) {
+        } else if (id == HAUNTED_HELLHOUND_PET) {
             name = "Haunted hellhound pet";
-        } else if (id == 30229) {
+        } else if (id == HWEEN_ARMADYL_GODSWORD) {
             name = "H'ween armadyl godsword";
-        } else if (id == 30230) {
+        } else if (id == HWEEN_BLOWPIPE) {
             name = "H'ween blowpipe";
-        } else if (id == 30231) {
+        } else if (id == HWEEN_DRAGON_CLAWS) {
             name = "H'ween dragon claws";
-        } else if (id == 30232) {
+        } else if (id == HWEEN_CRAWS_BOW) {
             name = "H'ween craw's bow";
-        } else if (id == 30233) {
+        } else if (id == HWEEN_CHAINMACE) {
             name = "H'ween chainmace";
-        } else if (id == 30234) {
+        } else if (id == HWEEN_GRANITE_MAUL) {
             name = "H'ween granite maul";
-        } else if (id == 30239) {
+        } else if (id == HAUNTED_SLED) {
             name = "Haunted sled";
-        } else if (id == 30240) {
+        } else if (id == HAUNTED_CROSSBOW) {
             name = "Haunted crossbow";
-        } else if (id == 30241) {
+        } else if (id == HAUNTED_DRAGONFIRE_SHIELD) {
             name = "Haunted dragonfire shield";
-        } else if (id == 30222) {
+        } else if (id == MYSTERY_TICKET) {
             name = "Mystery ticket";
             stackable = true;
-        } else if (id == 30315) {
+        } else if (id == DARKLORD_BOW) {
             name = "Darklord bow";
-        } else if (id == 30309) {
+        } else if (id == DARKLORD_SWORD) {
             name = "Darklord sword";
-        } else if (id == 30312) {
+        } else if (id == DARKLORD_STAFF) {
             name = "Darklord staff";
-        } else if (id == 16475) {
-            name = "Activity casket";
-        } else if (id == 3269) {
+        } else if (id == SLAYER_KEY) {
             name = "Slayer key";
             stackable = true;
-        } else if(id == 3325) {
+        } else if(id == VAMPYRE_DUST) {
             notelink = -1;
             noteModel = -1;
-        } else if(id == 28013) {
+        } else if(id == VETERAN_PARTYHAT) {
             name = "Veteran partyhat";
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == 28014) {
+        } else if(id == VETERAN_HWEEN_MASK) {
             name = "Veteran halloween mask";
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == 28015) {
+        } else if(id == VETERAN_SANTA_HAT) {
             name = "Veteran santa hat";
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == 14479) {
+        } else if(id == BEGINNER_WEAPON_PACK) {
             name = "Beginner weapon pack";
             ioptions = new String[]{"Open", null, null, null, "Destroy"};
-        } else if(id == 14486) {
+        } else if(id == BEGINNER_DRAGON_CLAWS) {
             name = "Beginner dragon claws";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == 14487) {
+        } else if(id == BEGINNER_AGS) {
             name = "Beginner AGS";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == 14488) {
+        } else if(id == BEGINNER_CHAINMACE) {
             name = "Beginner chainmace";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == 14489) {
+        } else if(id == BEGINNER_CRAWS_BOW) {
             name = "Beginner craw's bow";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == 28663) {
+        } else if(id == ZRIAWK) {
             name = "Zriawk pet";
-        } else if(id == 786) {
+        } else if(id == GAMBLER_SCROLL) {
             name = "Gambler scroll";
-        } else if(id == 24937) {
+        } else if(id == FAWKES_32937) {
             name = "Fawkes pet";
-        } else if(id == 24938) {
-            name = "Void knight gloves";
-        } else if(id == 24939) {
-            name = "Void ranger helm";
-        } else if(id == 24940) {
-            name = "Void mage helm";
-        } else if(id == 24941) {
-            name = "Void melee helm";
-        } else if(id == 24942) {
-            name = "Elite void robe";
-        } else if(id == 24943) {
-            name = "Elite void top";
-        } else if(id == 24949) {
-            name = "Dragon dagger(p++)";
-            stackable = false;
-        } else if(id == 24948) {
-            name = "Abyssal tentacle";
-        } else if(id == 24947) {
-            name = "Spiked manacles";
-        } else if(id == 24946) {
-            name = "Fremennik kilt";
-        } else if(id == 24945) {
-            name = "Partyhat & specs";
-        } else if(id == 24944) {
-            name = "Granite maul";
-        } else if(id == 15304) {
+        } else if(id == RING_OF_VIGOUR) {
             name = "Ring of vigour";
-        } else if(id == 26500) {
+        } else if(id == DARK_BANDOS_CHESTPLATE) {
             name = "Dark bandos chestplate";
-        } else if(id == 26501) {
+        } else if(id == DARK_BANDOS_TASSETS) {
             name = "Dark bandos tassets";
-        } else if(id == 26502) {
+        } else if(id == DARK_ARMADYL_HELMET) {
             name = "Dark armadyl helmet";
-        } else if(id == 26503) {
+        } else if(id == DARK_ARMADYL_CHESTPLATE) {
             name = "Dark armadyl chestplate";
-        } else if(id == 26504) {
+        } else if(id == DARK_ARMADYL_CHAINSKIRT) {
             name = "Dark armadyl chainskirt";
-        } else if(id == 27004) {
-            name = "Blood money pet";
-        } else if(id == 27005) {
+        } else if(id == RING_OF_ELYSIAN) {
             name = "Ring of elysian";
-        } else if(id == 27006) {
+        } else if(id == TOXIC_STAFF_OF_THE_DEAD_C) {
             name = "Toxic staff of the dead (c)";
-        } else if(id == 27000) {
+        } else if(id == KERBEROS_PET) {
             name = "Kerberos pet";
-        } else if(id == 27001) {
+        } else if(id == SKORPIOS_PET) {
             name = "Skorpios pet";
-        } else if(id == 27002) {
+        } else if(id == ARACHNE_PET) {
             name = "Arachne pet";
-        } else if(id == 27003) {
+        } else if(id == ARTIO_PET) {
             name = "Artio pet";
-        } else if(id == 22517) {
+        } else if(id == SAELDOR_SHARD) {
             name = "Saeldor shard";
-        } else if(id == 24950) {
+        } else if(id == CYAN_PARTYHAT) {
             name = "Cyan partyhat";
-        } else if(id == 24951) {
+        } else if(id == LIME_PARTYHAT) {
             name = "Lime partyhat";
-        } else if(id == 24952) {
+        } else if(id == ORANGE_PARTYHAT) {
             name = "Orange partyhat";
-        } else if(id == 24953) {
+        } else if(id == WHITE_HWEEN_MASK) {
             name = "White h'ween mask";
-        } else if(id == 24954) {
+        } else if(id == PURPLE_HWEEN_MASK) {
             name = "Purple h'ween mask";
-        } else if(id == 24955) {
+        } else if(id == LIME_GREEN_HWEEN_MASK) {
             name = "Lime green h'ween mask";
-        } else if(id == 24956 || id == 24958) {
+        } else if(id == DARK_ELDER_MAUL) {
             name = "Dark elder maul";
-        } else if(id == 28957) {
+        } else if(id == SANGUINE_TWISTED_BOW) {
             name = "Sanguine twisted bow";
-        } else if(id == 24984) {
+        } else if(id == ANCIENT_FACEGAURD) {
             name = "Ancient facegaurd";
-        } else if(id == 24985) {
+        } else if(id == ANCIENT_WARRIOR_CLAMP) {
             name = "Ancient warrior clamp";
-        } else if(id == 24986) {
+        } else if(id == ANCIENT_KING_BLACK_DRAGON_PET) {
             name = "Ancient king black dragon pet";
-        } else if(id == 24987) {
+        } else if(id == ANCIENT_CHAOS_ELEMENTAL_PET) {
             name = "Ancient chaos elemental pet";
-        } else if(id == 24988) {
+        } else if(id == ANCIENT_BARRELCHEST_PET) {
             name = "Ancient barrelchest pet";
-        } else if(id == 24989) {
+        } else if(id == DARK_ANCIENT_EMBLEM) {
             name = "Dark ancient emblem";
-        } else if(id == 24990) {
+        } else if(id == DARK_ANCIENT_TOTEM) {
             name = "Dark ancient totem";
-        } else if(id == 24991) {
+        } else if(id == DARK_ANCIENT_STATUETTE) {
             name = "Dark ancient statuette";
-        } else if(id == 24992) {
+        } else if(id == DARK_ANCIENT_MEDALLION) {
             name = "Dark ancient medallion";
-        } else if(id == 24993) {
+        } else if(id == DARK_ANCIENT_EFFIGY) {
             name = "Dark ancient effigy";
-        } else if(id == 24994) {
+        } else if(id == DARK_ANCIENT_RELIC) {
             name = "Dark ancient relic";
-        } else if(id == 24995) {
+        } else if(id == ANCIENT_VESTAS_LONGSWORD) {
             name = "Ancient vesta's longsword";
-        } else if(id == 24996) {
+        } else if(id == ANCIENT_STATIUSS_WARHAMMER) {
             name = "Ancient statius's warhammer";
-        } else if (id == 24999) {
+        } else if (id == TASK_BOTTLE_CASKET) {
             name = "Task bottle casket";
             ioptions = new String[]{"Open", null, null, null, "Drop"};
-        } else if (id == 28000) {
+        } else if (id == BLOOD_FIREBIRD) {
             name = "Blood firebird pet";
-        } else if (id == 28001) {
+        } else if (id == SHADOW_MACE) {
             name = "Shadow mace";
-        } else if (id == 28002) {
+        } else if (id == SHADOW_GREAT_HELM) {
             name = "Shadow great helm";
-        } else if (id == 28003) {
+        } else if (id == SHADOW_HAUBERK) {
             name = "Shadow hauberk";
-        } else if (id == 28004) {
+        } else if (id == SHADOW_PLATESKIRT) {
             name = "Shadow plateskirt";
-        } else if (id == 28005) {
-            name = "Shadow inquisitor ornament kit";
-        } else if (id == 28006) {
-            name = "Inquisitor's mace ornament kit";
-        } else if (id == 29000) {
+        } else if (id == VIGGORAS_CHAINMACE_C) {
             name = "Viggora's chainmace (c)";
-        } else if (id == 29001) {
+        } else if (id == CRAWS_BOW_C) {
             name = "Craw's bow (c)";
-        } else if (id == 29002) {
+        } else if (id == THAMMARONS_STAFF_C) {
             name = "Thammaron's sceptre (c)";
-        } else if (id == 30180) {
+        } else if (id == PEGASIAN_BOOTS_OR) {
             name = "Pegasian boots (or)";
-        } else if (id == 30182) {
+        } else if (id == ETERNAL_BOOTS_OR) {
             name = "Eternal boots (or)";
-        } else if (id == 25753) {
-            name = "99 lamp";
-        } else if (id == 17000) {
+        } else if (id == VALINOR_COINS) {
             name = GameConstants.SERVER_NAME + " coins";
             countco = new int[]{2, 3, 4, 5, 25, 100, 250, 1000, 10000, 0};
             countobj = new int[]{17001, 17002, 17003, 17004, 17005, 17006, 17007, 17008, 17009, 0};
             stackable = true;
-        } else if (id == 12791) {
-            ioptions = new String[]{"Open", null, null, "Empty", "Drop"};
-        } else if (id == 14525) {
+        } else if (id == MYSTERY_CHEST) {
             name = "Mystery chest";
-        } else if (id == 20238) {
+        } else if (id == IMBUEMENT_SCROLL) {
             name = "Imbuement scroll";
             ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 13302) {
+        } else if (id == WILDERNESS_KEY) {
             name = "Wilderness key";
             ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 12646) {
+        } else if (id == NIFFLER) {
             name = "Niffler pet";
-        } else if (id == 20693) {
+        } else if (id == FAWKES) {
             name = "Fawkes pet";
-        } else if (id == 619) {
+        } else if (id == VOTE_TICKET) {
             name = "Vote ticket";
             stackable = true;
             ioptions = new String[]{"Convert to Points", null, null, null, "Drop"};
-        } else if (id == 13188) {
+        } else if (id == DRAGON_CLAWS_OR) {
             name = "Dragon claws (or)";
-        } else if (id == 28007) {
+        } else if (id == ETHEREAL_PARTYHAT) {
             name = "Ethereal partyhat";
-        } else if (id == 28008) {
+        } else if (id == ETHEREAL_HWEEN_MASK) {
             name = "Ethereal halloween mask";
-        } else if (id == 28009) {
+        } else if (id == ETHEREAL_SANTA_HAT) {
             name = "Ethereal santa hat";
-        } else if (id == 30074) {
-            name = "Lava d'hide coif";
-        } else if (id == 30077) {
-            name = "Lava d'hide body";
-        } else if (id == 30080) {
-            name = "Lava d'hide chaps";
-        } else if (id == 30183) {
-            name = "Twisted bow (i)";
-        } else if (id == 30175) {
-            name = "Ancestral hat (i)";
-        } else if (id == 30177) {
-            name = "Ancestral robe top (i)";
-        } else if (id == 30179) {
-            name = "Ancestral robe bottom (i)";
-        } else if (id == 30038) {
-            name = "Primordial boots (or)";
-        } else if (id == 23650) {
-            notelink = -1;
-            noteModel = -1;
-            name = "Rune pouch (i)";
-            ioptions = new String[]{"Open", null, null, "Empty", "Destroy"};
-        } else if (id == 4447) {
-            name = "Double drops lamp";
-        } else if (id == 30185) {
-            name = "Donator Mystery Box";
-            stackable = false;
-        } else if (id == 16461) {
-            name = "Starter Box";
-            stackable = false;
-        } else if (id == 6722) {
-            name = "Zombies champion pet";
-        } else if (id == 2866) {
-            name = "Earth arrows";
-        } else if (id == 4160) {
-            name = "Fire arrows";
-        } else if (id == 7806) {
-            name = "Ancient warrior sword";
-        } else if (id == 7807) {
-            name = "Ancient warrior axe";
-        } else if (id == 7808) {
-            name = "Ancient warrior maul";
-        } else if (id == 24983) {
-            name = "Ancient warrior sword (c)";
-        } else if (id == 24981) {
-            name = "Ancient warrior axe (c)";
-        } else if (id == 24982) {
-            name = "Ancient warrior maul (c)";
-        } else if (id == 2944) {
-            name = "Key of Drops";
-        } else if (id == 12773) {
-            name = "Lava whip";
-        } else if (id == 12774) {
-            name = "Frost whip";
-        } else if (id == 10586) {
-            ioptions = new String[]{null, null, null, null, "Drop"};
-            name = "Genie pet";
-        } else if (id == 12102) {
-            name = "Grim Reaper pet";
-        } else if (id == 12081) {
-            name = "Elemental bow";
-        } else if (id == 4067) {
-            name = "Donator ticket";
-            stackable = true;
-        } else if (id == 13190) {
-            name = "5$ bond";
-        } else if (id == 8013) {
-            name = "Home teleport";
-        } else if (id == 964) {
-            name = "Vengeance";
-        } else if (id == 18335) {
-            stackable = false;
-            name = "Lava Party hat";
-        } else if (id == 16278) {
-            stackable = false;
-            name = "$10 bond";
-        } else if (id == 16263) {
-            stackable = false;
-            name = "$20 bond";
-        } else if (id == 16264) {
-            stackable = false;
-            name = "$40 bond";
-        } else if (id == 16265) {
-            stackable = false;
-            name = "$50 bond";
-        } else if (id == 16266) {
-            stackable = false;
-            name = "$100 bond";
-        } else if (id == 16012) {
-            stackable = false;
-            name = "Baby Dark Beast pet";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 16024) {
-            stackable = false;
-            name = "Baby Abyssal demon pet";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 15331) {
-            stackable = false;
-            name = "Ring of manhunting";
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
-        } else if (id == 16167) {
-            stackable = false;
-            name = "Ring of sorcery";
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
-        } else if (id == 16168) {
-            stackable = false;
-            name = "Ring of precision";
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
-        } else if (id == 16169) {
-            stackable = false;
-            name = "Ring of trinity";
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
-        } else if (id == 13215) {
-            name = "Bloody Token";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 30235) {
-            name = "H'ween token";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 30191) {
-            name = "X'mas token";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-        } else if (id == 30297) {
-            name = "Corrupted boots";
-        } else if (id == 27644) {
-            name = "Salazar slytherins locket";
-        } else if (id == 28643) {
-            name = "Fenrir greyback Jr. pet";
-        } else if (id == 28642) {
-            name = "Fluffy Jr. pet";
-        } else if (id == 28641) {
-            name = "Talonhawk crossbow";
-        } else if (id == 28640) {
-            name = "Elder wand stick";
-        } else if (id == 28639) {
-            name = "Elder wand handle";
-        } else if (id == 30181 || id == 30184) {
-            name = "Elder wand";
-        } else if (id == 30253) {
-            name = "Cloak of invisibility";
-        } else if (id == 30252) {
-            name = "Marvolo Gaunts Ring";
-        } else if (id == 30251) {
-            name = "Tom Riddle's Diary";
-        } else if (id == 30250) {
-            name = "Nagini";
-        } else if (id == 10858) {
-            name = "Sword of gryffindor";
-        } else if (id == 30338) {
-            name = "Male centaur pet";
-        } else if (id == 30340) {
-            name = "Female centaur pet";
-        } else if (id == 30342) {
-            name = "Dementor pet";
-        } else if(id == 21291) {
-            name = "Jal-nib-rek pet";
-        } else if(id == 8788) {
-            name = "Corrupting stone";
-        } else if(id == 30048) {
-            name = "Corrupted ranger gauntlets";
-        } else if(id == 32102) {
-            name = "Blood Reaper pet";
-        } else if (id == 23757) {
-            name = "Yougnleff pet";
-        } else if (id == 23759) {
-            name = "Corrupted yougnleff pet";
-        } else if (id == 30016) {
-            name = "Founder imp pet";
-        } else if (id == 30018) {
-            name = "Corrupted nechryarch pet";
-        } else if (id == 30033) {
-            name = "Mini necromancer pet";
-        } else if (id == 30044) {
-            name = "Jaltok-jad pet";
-        } else if (id == 30131) {
-            name = "Baby lava dragon pet";
-        } else if (id == 16173) {
-            name = "Jawa pet";
-        } else if (id == 16172) {
-            name = "Baby aragog pet";
-        } else if (id == 16020) {
-            name = "Dharok pet";
-        } else if (id == 22319) {
-            name = "TzRek-Zuk pet";
-        } else if (id == 24491) {
-            name = "Little nightmare pet";
-        } else if (id == 23759) {
-            name = "Corrupted youngllef pet";
-        } else if (id == 30122) {
-            name = "Corrupt totem base";
-        } else if (id == 30123) {
-            name = "Corrupt totem middle";
-        } else if (id == 30124) {
-            name = "Corrupt totem top";
-        } else if (id == 30125) {
-            name = "Corrupt totem";
-        } else if (id == 16005) {
-            name = "Baby Squirt pet";
-            stackable = false;
-        } else if (id == 7999) {
-            name = "Pet paint (black)";
-        } else if (id == 8000) {
-            name = "Pet paint (white)";
-        } else if (id == 15300) {
-            stackable = false;
-            name = "Recover special (4)";
-        } else if (id == 15301) {
-            stackable = false;
-            name = "Recover special (3)";
-        } else if (id == 15302) {
-            stackable = false;
-            name = "Recover special (2)";
-        } else if (id == 15303) {
-            stackable = false;
-            name = "Recover special (1)";
-        } else if (id == 23818) {
-            name = "Barrelchest pet";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-            stackable = false;
-        } else if (id == 16171) {
-            name = "Wampa pet";
-            ioptions = new String[]{null, null, null, null, "Drop"};
-            stackable = false;
-        } else if (id == 16013) {
-            name = "Pet kree'arra (white)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
-        } else if (id == 16014) {
-            name = "Pet zilyana (white)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
-        } else if (id == 16015) {
-            name = "Pet general graardor (black)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
-        } else if (id == 16016) {
-            name = "Pet k'ril tsutsaroth (black)";
-            stackable = false;
-            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
-        } else if (id == 12873 || id == 12875 || id == 12877 || id == 12879 || id == 12881 || id == 12883) {
-            ioptions = new String[5];
-            ioptions[0] = "Open";
-        } else if (id == ELDER_WAND_HANDLE) {
-            name = "Elder wand handle";
-        } else if (id == ELDER_WAND_STICK) {
-            name = "Elder wand stick";
-        } else if (id == ELDER_WAND || id == ELDER_WAND_RAIDS) {
-            name = "Elder wand";
-        } else if (id == TALONHAWK_CROSSBOW) {
-            name = "Talonhawk crossbow";
-        } else if (id == SALAZAR_SLYTHERINS_LOCKET) {
-            name = "Salazar slytherins locket";
-        } else if (id == CORRUPTED_BOOTS) {
-            name = "Corrupted boots";
-        } else if (id == FENRIR_GREYBACK_JR) {
-            name = "Fenrir greyback Jr pet";
-        } else if (id == FLUFFY_JR) {
-            name = "Fluffy Jr pet";
-        } else if (id == CENTAUR_MALE) {
-            name = "Centaur male pet";
-        } else if (id == CENTAUR_FEMALE) {
-            name = "Centaur female pet";
-        } else if (id == DEMENTOR_PET) {
-            name = "Dementor pet";
-        } else if (id == FOUNDER_IMP) {
-            name = "Founder imp pet";
-        } else if (id == PET_CORRUPTED_NECHRYARCH) {
-            name = "Corrupted nechryarch pet";
-        } else if (id == MINI_NECROMANCER) {
-            name = "Mini necromancer";
-        } else if (id == JALTOK_JAD) {
-            name = "Jaltok-jad";
-        } else if (id == BABY_LAVA_DRAGON) {
-            name = "Baby lava dragon";
-        } else if (id == JAWA_PET) {
-            name = "Jawa pet";
-        } else if (id == BABY_ARAGOG) {
-            name = "Baby aragog pet";
-        } else if (id == WAMPA) {
-            name = "Wampa pet";
-        } else if (id == DHAROK_PET) {
-            name = "Dharok pet";
-        } else if (id == MYSTERY_CHEST) {
-            name = "Mystery chest";
         } else if (id == LAVA_DHIDE_COIF) {
-            name = "Lava dhide coif";
+            name = "Lava d'hide coif";
         } else if (id == LAVA_DHIDE_BODY) {
-            name = "Lava dhide body";
+            name = "Lava d'hide body";
         } else if (id == LAVA_DHIDE_CHAPS) {
-            name = "Lava dhide chaps";
+            name = "Lava d'hide chaps";
         } else if (id == TWISTED_BOW_I) {
             name = "Twisted bow (i)";
         } else if (id == ANCESTRAL_HAT_I) {
@@ -754,15 +433,212 @@ public class ItemDefinition implements Definition {
             name = "Ancestral robe top (i)";
         } else if (id == ANCESTRAL_ROBE_BOTTOM_I) {
             name = "Ancestral robe bottom (i)";
+        } else if (id == PRIMORDIAL_BOOTS_OR) {
+            name = "Primordial boots (or)";
+        } else if (id == RUNE_POUCH_I) {
+            notelink = -1;
+            noteModel = -1;
+            name = "Rune pouch (i)";
+            ioptions = new String[]{"Open", null, null, "Empty", "Destroy"};
+        } else if (id == DOUBLE_DROPS_LAMP) {
+            name = "Double drops lamp";
+        } else if (id == DONATOR_MYSTERY_BOX) {
+            name = "Donator Mystery Box";
+            stackable = false;
+        } else if (id == ZOMBIES_CHAMPION_PET) {
+            name = "Zombies champion pet";
+        } else if (id == EARTH_ARROWS) {
+            name = "Earth arrows";
+        } else if (id == FIRE_ARROWS) {
+            name = "Fire arrows";
+        } else if (id == ANCIENT_WARRIOR_SWORD) {
+            name = "Ancient warrior sword";
+        } else if (id == ANCIENT_WARRIOR_AXE) {
+            name = "Ancient warrior axe";
+        } else if (id == ANCIENT_WARRIOR_MAUL) {
+            name = "Ancient warrior maul";
+        } else if (id == ANCIENT_WARRIOR_SWORD_C) {
+            name = "Ancient warrior sword (c)";
+        } else if (id == ANCIENT_WARRIOR_AXE_C) {
+            name = "Ancient warrior axe (c)";
+        } else if (id == ANCIENT_WARRIOR_MAUL_C) {
+            name = "Ancient warrior maul (c)";
+        } else if (id == KEY_OF_DROPS) {
+            name = "Key of Drops";
+        } else if (id == LAVA_WHIP) {
+            name = "Lava whip";
+        } else if (id == FROST_WHIP) {
+            name = "Frost whip";
+        } else if (id == GENIE_PET) {
+            ioptions = new String[]{null, null, null, null, "Drop"};
+            name = "Genie pet";
+        } else if (id == GRIM_REAPER_PET) {
+            name = "Grim Reaper pet";
+        } else if (id == ELEMENTAL_BOW) {
+            name = "Elemental bow";
+        } else if (id == DONATOR_TICKET) {
+            name = "Donator ticket";
+            stackable = true;
+        } else if (id == FIVE_DOLLAR_BOND) {
+            name = "5$ bond";
+        } else if (id == HOME_TELEPORT) {
+            name = "Home teleport";
+        } else if (id == VENGEANCE_SKULL) {
+            name = "Vengeance";
+        } else if (id == LAVA_PARTYHAT) {
+            stackable = false;
+            name = "Lava Party hat";
+        } else if (id == TEN_DOLLAR_BOND) {
+            stackable = false;
+            name = "$10 bond";
+        } else if (id == TWENTY_DOLLAR_BOND) {
+            stackable = false;
+            name = "$20 bond";
+        } else if (id == FORTY_DOLLAR_BOND) {
+            stackable = false;
+            name = "$40 bond";
+        } else if (id == FIFTY_DOLLAR_BOND) {
+            stackable = false;
+            name = "$50 bond";
+        } else if (id == ONE_HUNDRED_DOLLAR_BOND) {
+            stackable = false;
+            name = "$100 bond";
+        } else if (id == BABY_DARK_BEAST_EGG) {
+            stackable = false;
+            name = "Baby Dark Beast pet";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+        } else if (id == BABY_ABYSSAL_DEMON) {
+            stackable = false;
+            name = "Baby Abyssal demon pet";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+        } else if (id == RING_OF_MANHUNTING) {
+            stackable = false;
+            name = "Ring of manhunting";
+            ioptions = new String[]{null, "Wear", null, null, "Drop"};
+        } else if (id == RING_OF_SORCERY) {
+            stackable = false;
+            name = "Ring of sorcery";
+            ioptions = new String[]{null, "Wear", null, null, "Drop"};
+        } else if (id == RING_OF_PRECISION) {
+            stackable = false;
+            name = "Ring of precision";
+            ioptions = new String[]{null, "Wear", null, null, "Drop"};
+        } else if (id == RING_OF_TRINITY) {
+            stackable = false;
+            name = "Ring of trinity";
+            ioptions = new String[]{null, "Wear", null, null, "Drop"};
+        } else if (id == HWEEN_TOKENS) {
+            name = "H'ween token";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+        } else if (id == XMAS_TOKENS) {
+            name = "X'mas token";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+        } else if (id == CORRUPTED_BOOTS) {
+            name = "Corrupted boots";
+        } else if (id == SALAZAR_SLYTHERINS_LOCKET) {
+            name = "Salazar slytherins locket";
+        } else if (id == FENRIR_GREYBACK_JR) {
+            name = "Fenrir greyback Jr. pet";
+        } else if (id == FLUFFY_JR) {
+            name = "Fluffy Jr. pet";
+        } else if (id == TALONHAWK_CROSSBOW) {
+            name = "Talonhawk crossbow";
+        } else if (id == ELDER_WAND_STICK) {
+            name = "Elder wand stick";
+        } else if (id == ELDER_WAND_HANDLE) {
+            name = "Elder wand handle";
+        } else if (id == ELDER_WAND || id == ELDER_WAND_RAIDS) {
+            name = "Elder wand";
+        } else if (id == CLOAK_OF_INVISIBILITY) {
+            name = "Cloak of invisibility";
+        } else if (id == MARVOLO_GAUNTS_RING) {
+            name = "Marvolo Gaunts Ring";
+        } else if (id == TOM_RIDDLE_DIARY) {
+            name = "Tom Riddle's Diary";
+        } else if (id == NAGINI) {
+            name = "Nagini";
         } else if (id == SWORD_OF_GRYFFINDOR) {
             name = "Sword of gryffindor";
-            ioptions = new String[]{null, "Wield", null, null, "Drop"};
-        } else if (id == VETERAN_PARTYHAT) {
-            name = "Veteran partyhat";
-        } else if (id == VETERAN_HWEEN_MASK) {
-            name = "Veteran h'ween mask";
-        } else if (id == VETERAN_SANTA_HAT) {
-            name = "Veteran santa hat";
+        } else if (id == CENTAUR_MALE) {
+            name = "Male centaur pet";
+        } else if (id == CENTAUR_FEMALE) {
+            name = "Female centaur pet";
+        } else if (id == DEMENTOR_PET) {
+            name = "Dementor pet";
+        } else if(id == JALNIBREK) {
+            name = "Jal-nib-rek pet";
+        } else if(id == CORRUPTING_STONE) {
+            name = "Corrupting stone";
+        } else if(id == CORRUPTED_RANGER_GAUNTLETS) {
+            name = "Corrupted ranger gauntlets";
+        } else if(id == BLOOD_REAPER) {
+            name = "Blood Reaper pet";
+        } else if (id == YOUNGLLEF) {
+            name = "Yougnleff pet";
+        } else if (id == CORRUPTED_YOUNGLLEF) {
+            name = "Corrupted yougnleff pet";
+        } else if (id == FOUNDER_IMP) {
+            name = "Founder imp pet";
+        } else if (id == PET_CORRUPTED_NECHRYARCH) {
+            name = "Corrupted nechryarch pet";
+        } else if (id == MINI_NECROMANCER) {
+            name = "Mini necromancer pet";
+        } else if (id == JALTOK_JAD) {
+            name = "Jaltok-jad pet";
+        } else if (id == BABY_LAVA_DRAGON) {
+            name = "Baby lava dragon pet";
+        } else if (id == JAWA_PET) {
+            name = "Jawa pet";
+        } else if (id == BABY_ARAGOG) {
+            name = "Baby aragog pet";
+        } else if (id == DHAROK_PET) {
+            name = "Dharok pet";
+        } else if (id == TZREKZUK) {
+            name = "TzRek-Zuk pet";
+        } else if (id == LITTLE_NIGHTMARE) {
+            name = "Little nightmare pet";
+        } else if (id == CORRUPT_TOTEM_BASE) {
+            name = "Corrupt totem base";
+        } else if (id == CORRUPT_TOTEM_MIDDLE) {
+            name = "Corrupt totem middle";
+        } else if (id == CORRUPT_TOTEM_TOP) {
+            name = "Corrupt totem top";
+        } else if (id == CORRUPT_TOTEM) {
+            name = "Corrupt totem";
+        } else if (id == BABY_SQUIRT) {
+            name = "Baby Squirt pet";
+            stackable = false;
+        } else if (id == PET_PAINT_BLACK) {
+            name = "Pet paint (black)";
+        } else if (id == PET_PAINT_WHITE) {
+            name = "Pet paint (white)";
+        } else if (id == BARRELCHEST_PET) {
+            name = "Barrelchest pet";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+            stackable = false;
+        } else if (id == WAMPA) {
+            name = "Wampa pet";
+            ioptions = new String[]{null, null, null, null, "Drop"};
+            stackable = false;
+        } else if (id == PET_KREE_ARRA_WHITE) {
+            name = "Pet kree'arra (white)";
+            stackable = false;
+            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
+        } else if (id == PET_ZILYANA_WHITE) {
+            name = "Pet zilyana (white)";
+            stackable = false;
+            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
+        } else if (id == PET_GENERAL_GRAARDOR_BLACK) {
+            name = "Pet general graardor (black)";
+            stackable = false;
+            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
+        } else if (id == PET_KRIL_TSUTSAROTH_BLACK) {
+            name = "Pet k'ril tsutsaroth (black)";
+            stackable = false;
+            ioptions = new String[]{null, null, null, "Wipe-off paint", null};
+        } else if (id == GUTHANS_ARMOUR_SET || id == VERACS_ARMOUR_SET || id == DHAROKS_ARMOUR_SET || id == TORAGS_ARMOUR_SET || id == AHRIMS_ARMOUR_SET || id == KARILS_ARMOUR_SET) {
+            ioptions = new String[5];
+            ioptions[0] = "Open";
         } else if (id == MAGMA_BLOWPIPE) {
             name = "Magma blowpipe";
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
