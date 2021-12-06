@@ -3,6 +3,7 @@ package com.valinor.game.content.skill.impl.farming;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.valinor.game.GameEngine;
 import com.valinor.game.world.entity.mob.player.Player;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -67,25 +68,25 @@ public class FarmingSaving {
      * @return if it was successful
      */
     public static boolean save(Player player) {
+        GameEngine.getInstance().submitLowPriority(() -> {
+            File file = getPathToSaveFile(player.getUsername()).toFile();
 
-        File file = getPathToSaveFile(player.getUsername()).toFile();
+            JsonObject object = new JsonObject();
 
-        JsonObject object = new JsonObject();
+            object.addProperty("log_action", player.getFarming().getLastLogAction());
 
-        object.addProperty("log_action", player.getFarming().getLastLogAction());
+            object.add("tools_stored", gson.toJsonTree(player.getFarming().getToolStored()));
 
-        object.add("tools_stored", gson.toJsonTree(player.getFarming().getToolStored()));
+            object.add("patch_states", gson.toJsonTree(player.getFarming().getPatchStates()));
 
-        object.add("patch_states", gson.toJsonTree(player.getFarming().getPatchStates()));
+            object.add("compost_bins", gson.toJsonTree(player.getFarming().getCompostManager().getCompostBins()));
 
-        object.add("compost_bins", gson.toJsonTree(player.getFarming().getCompostManager().getCompostBins()));
-
-        try (OutputStreamWriter out = openWriter(file)) {
-            gson.toJson(object, out);
-        } catch (IOException e) {
-            log.error("Could not save character: {}.", file.getName(), e);
-        }
-
+            try (OutputStreamWriter out = openWriter(file)) {
+                gson.toJson(object, out);
+            } catch (IOException e) {
+                log.error("Could not save character: {}.", file.getName(), e);
+            }
+        });
         return true;
     }
 

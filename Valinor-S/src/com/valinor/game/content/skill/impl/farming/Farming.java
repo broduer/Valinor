@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill.impl.farming;
 
+import com.valinor.game.GameEngine;
 import com.valinor.game.content.skill.impl.farming.actions.*;
 import com.valinor.game.content.skill.impl.farming.compostbin.CompostBin;
 import com.valinor.game.content.skill.impl.farming.compostbin.CompostBinManager;
@@ -245,18 +246,17 @@ public class Farming {
      * @return the instance
      */
     public static void loadFarming(Player player) {
+        GameEngine.getInstance().submitLowPriority(() -> {
+            boolean file_found = FarmingLoading.loadCrops(player.getUsername(), player.getFarming());
 
-        boolean file_found = FarmingLoading.loadCrops(player.getUsername(), player.getFarming());
+            if (!file_found || player.getFarming().getPatchStates().isEmpty()) {
+                Arrays.stream(Patches.values()).forEach(data -> player.getFarming().getPatchStates().put(data.name(), new PatchState()));
+            }
 
-        if (!file_found || player.getFarming().getPatchStates().isEmpty()) {
-            Arrays.stream(Patches.values()).forEach(data -> player.getFarming().getPatchStates().put(data.name(),
-                new PatchState()));
-        }
-
-        if (!file_found || player.getFarming().getCompostManager().getCompostBins().isEmpty()) {
-            Arrays.stream(CompostBinTiles.values()).forEach(data -> player.getFarming().getCompostManager().getCompostBins()
-                .add(new CompostBin(data)));
-        }
+            if (!file_found || player.getFarming().getCompostManager().getCompostBins().isEmpty()) {
+                Arrays.stream(CompostBinTiles.values()).forEach(data -> player.getFarming().getCompostManager().getCompostBins().add(new CompostBin(data)));
+            }
+        });
     }
 
     /**
