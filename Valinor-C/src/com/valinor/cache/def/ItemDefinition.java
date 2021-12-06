@@ -102,11 +102,11 @@ public final class ItemDefinition {
             } else if (opcode == 40) {
                 int length = buffer.readUByte();
                 //if models aren't recoloring properly, typically switch the position of src with dst
-                recolorFrom = new int[length];
-                recolorTo = new int[length];
+                recolorFrom = new short[length];
+                recolorTo = new short[length];
                 for (int index = 0; index < length; index++) {
-                    recolorTo[index] = buffer.readUShort();
-                    recolorFrom[index] = buffer.readUShort();
+                    recolorTo[index] = (short) buffer.readUShort();
+                    recolorFrom[index] = (short) buffer.readUShort();
                 }
             } else if (opcode == 41) {
                 int length = buffer.readUByte();
@@ -929,8 +929,8 @@ public final class ItemDefinition {
     public int contrast;
     public int[] countobj;
     public int[] countco;
-    public int[] recolorFrom;
-    public int[] recolorTo;
+    public short[] recolorFrom;
+    public short[] recolorTo;
     public short[] retextureFrom;
     public short[] retextureTo;
 

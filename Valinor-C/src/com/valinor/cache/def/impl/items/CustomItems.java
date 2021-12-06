@@ -28,8 +28,8 @@ public class CustomItems {
 
         if (id == PVMING_SCROLL) {
             def.name = "<col=65280>Pvming scroll";
-            def.recolorFrom = new int[]{6583, 6604, 6608, 6587, 6464, 6740};
-            def.recolorTo = new int[]{933, 926, 926, 926, 933, 926};
+            def.recolorFrom = new short[]{6583, 6604, 6608, 6587, 6464, 6740};
+            def.recolorTo = new short[]{933, 926, 926, 926, 933, 926};
             def.inventoryActions = new String[]{"Read", null, null, null, "Destroy"};
             def.inventoryModel = 3374;
             def.xan2d = 360;
@@ -128,10 +128,10 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
+            def.recolorTo = new short[2];
             def.recolorTo[0] = 28; // Background colour
             def.recolorTo[1] = 9152; // Eyes colour
         }
@@ -147,9 +147,9 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
+            def.recolorTo = new short[1];
             def.recolorTo[0] = 28;
         }
 
@@ -164,8 +164,8 @@ public class CustomItems {
             def.xan2d = 336;
             def.yan2d = 20;
             def.zoom2d = 1930;
-            def.recolorFrom = new int[]{7073, 61};
-            def.recolorTo = new int[]{28, 61};
+            def.recolorFrom = new short[]{7073, 61};
+            def.recolorTo = new short[]{28, 61};
         }
 
         if (id == HWEEN_MYSTERY_CHEST) {
@@ -178,8 +178,6 @@ public class CustomItems {
             def.xan2d = 114;
             def.yan2d = 1883;
             def.zoom2d = 2640;
-            def.recolorFrom = new int[]{24, 49, 4510, 4502, 8128, 7093};
-            def.recolorTo = new int[]{24, 49, 374770, 374770, 87770, 87770};
         }
 
         if (id == HAUNTED_HELLHOUND_PET) {
@@ -326,8 +324,8 @@ public class CustomItems {
         if (id == HWEEN_TOKENS) {
             ItemDefinition.copyInventory(def, 13204);
             def.name = "<col=65280>H'ween token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{25, 26, 27};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{25, 26, 27};
             def.countco = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
             def.countobj = new int[]{30236, 30237, 30238, 30238, 0, 0, 0, 0, 0, 0};
         }
@@ -335,30 +333,28 @@ public class CustomItems {
         if (id == 30236) {
             ItemDefinition.copyInventory(def, 3985);
             def.name = "<col=65280>H'ween Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{25, 26, 27};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{25, 26, 27};
         }
 
         if (id == 30237) {
             ItemDefinition.copyInventory(def, 3987);
             def.name = "<col=65280>H'ween Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{25, 26, 27};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{25, 26, 27};
         }
 
         if (id == 30238) {
             ItemDefinition.copyInventory(def, 3989);
             def.name = "<col=65280>H'ween Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{25, 26, 27};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{25, 26, 27};
         }
 
         if (id == MYSTERY_TICKET) {
             def.animateInventory = true;
             def.name = "<col=65280>Mystery ticket";
             def.inventoryActions = new String[]{"Tear", null, null, null, null};
-            def.recolorFrom = new int[]{7364, 11078, -327, -329, 7496, 7500};
-            def.recolorTo = new int[]{374770, 374770, -327, -329, 374770, 374770};
             def.inventoryModel = 55601;
             def.stackable = 1;
             def.xan2d = 308;
@@ -374,8 +370,8 @@ public class CustomItems {
             def.xan2d = 188;
             def.yan2d = 108;
             def.zoom2d = 530;
-            def.recolorFrom = new int[]{22290, -26664};
-            def.recolorTo = new int[]{945, 582};
+            def.recolorFrom = new short[]{22290, -26664};
+            def.recolorTo = new short[]{945, 582};
         }
 
         if (id == CORRUPT_TOTEM_MIDDLE) {
@@ -386,8 +382,8 @@ public class CustomItems {
             def.xan2d = 188;
             def.yan2d = 664;
             def.zoom2d = 480;
-            def.recolorFrom = new int[]{-26664, -27417};
-            def.recolorTo = new int[]{945, 582};
+            def.recolorFrom = new short[]{-26664, -27417};
+            def.recolorTo = new short[]{945, 582};
         }
 
         if (id == CORRUPT_TOTEM_TOP) {
@@ -399,8 +395,8 @@ public class CustomItems {
             def.xan2d = 111;
             def.yan2d = 194;
             def.zoom2d = 724;
-            def.recolorFrom = new int[]{-26808, -26664, -26713, -26825};
-            def.recolorTo = new int[]{945, 582, 712, 728};
+            def.recolorFrom = new short[]{-26808, -26664, -26713, -26825};
+            def.recolorTo = new short[]{945, 582, 712, 728};
         }
 
         if (id == CORRUPT_TOTEM) {
@@ -412,8 +408,8 @@ public class CustomItems {
             def.xan2d = 152;
             def.yan2d = 111;
             def.zoom2d = 1150;
-            def.recolorFrom = new int[]{22290, -26808, -26664, -26713, -26825, -27417};
-            def.recolorTo = new int[]{945, 582, 152, 712, 728, -77};
+            def.recolorFrom = new short[]{22290, -26808, -26664, -26713, -26825, -27417};
+            def.recolorTo = new short[]{945, 582, 152, 712, 728, -77};
         }
 
         if (id == 23759 || id == 22319 || id == 24491) {
@@ -461,8 +457,8 @@ public class CustomItems {
 
         if (id == ANCESTRAL_HAT_I) {
             def.name = "<col=65280>Ancestral hat (i)";
-            def.recolorFrom = new int[]{6323, 6331, 6340, 6348, 6356, 6364, -21992, -22235};
-            def.recolorTo = new int[]{15, 17, 19, 23, 25, 27, 29, 524};
+            def.recolorFrom = new short[]{6323, 6331, 6340, 6348, 6356, 6364, -21992, -22235};
+            def.recolorTo = new short[]{15, 17, 19, 23, 25, 27, 29, 524};
             def.femaleHeadModel = 34263;
             def.femaleModel = 32663;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -477,8 +473,8 @@ public class CustomItems {
 
         if (id == ANCESTRAL_ROBE_TOP_I) {
             def.name = "<col=65280>Ancestral robe top (i)";
-            def.recolorFrom = new int[]{6348, -16318, 6331, -22225, 7108, -22235, -16327, -22231, -16339, 6323};
-            def.recolorTo = new int[]{12, 19, 14, 534, 27, 536, 15, 538, 17, 8};
+            def.recolorFrom = new short[]{6348, -16318, 6331, -22225, 7108, -22235, -16327, -22231, -16339, 6323};
+            def.recolorTo = new short[]{12, 19, 14, 534, 27, 536, 15, 538, 17, 8};
             def.femaleModel = 32664;
             def.femaleModel1 = 32665;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -494,8 +490,8 @@ public class CustomItems {
         if (id == ANCESTRAL_ROBE_BOTTOM_I) {
             def.name = "<col=65280>Ancestral robe bottom (i)";
             def.ambient = 30;
-            def.recolorFrom = new int[]{-16339, 6348, -16327, 6331, -16318, -22225, -22235, 6323, -22231};
-            def.recolorTo = new int[]{17, 12, 15, 14, 25, 534, 537, 13, 532};
+            def.recolorFrom = new short[]{-16339, 6348, -16327, 6331, -16318, -22225, -22235, 6323, -22231};
+            def.recolorTo = new short[]{17, 12, 15, 14, 25, 534, 537, 13, 532};
             def.contrast = 20;
             def.femaleModel = 32662;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
@@ -510,8 +506,8 @@ public class CustomItems {
 
         if (id == TWISTED_BOW_I) {
             def.name = "<col=65280>Twisted bow (i)";
-            def.recolorFrom = new int[]{10318, 10334, 14236, 13223};
-            def.recolorTo = new int[]{524, 527, 524, 527};
+            def.recolorFrom = new short[]{10318, 10334, 14236, 13223};
+            def.recolorTo = new short[]{524, 527, 524, 527};
             def.femaleModel = 32674;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
             def.inventoryModel = 32799;
@@ -570,8 +566,8 @@ public class CustomItems {
             def.name = "<col=65280>Ring of elysian";
             ItemDefinition.copyInventory(def, 23185);
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[]{7378, 8289, 8282, 7244};
-            def.recolorTo = new int[]{-29116, -29019, -29125, -29110};
+            def.recolorFrom = new short[]{7378, 8289, 8282, 7244};
+            def.recolorTo = new short[]{-29116, -29019, -29125, -29110};
         }
 
         if (id == TOXIC_STAFF_OF_THE_DEAD_C) {
@@ -602,8 +598,8 @@ public class CustomItems {
             def.maleModel1 = 28826;
             def.femaleModel = 27644;
             def.femaleModel1 = 28827;
-            def.recolorFrom = new int[]{8384, 163, 10275, 10502, 4550, 9515, 8076, 142, 8367, 9523, 22, 8375, 10266, 9403, 8379};
-            def.recolorTo = new int[]{16, 272, 0, 274, 20, 4, 8, 142, 968, 272, 0, 274, 20, 968, 968};
+            def.recolorFrom = new short[]{8384, 163, 10275, 10502, 4550, 9515, 8076, 142, 8367, 9523, 22, 8375, 10266, 9403, 8379};
+            def.recolorTo = new short[]{16, 272, 0, 274, 20, 4, 8, 142, 968, 272, 0, 274, 20, 968, 968};
         }
 
         if (id == DARK_BANDOS_TASSETS) {
@@ -618,8 +614,8 @@ public class CustomItems {
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             def.maleModel = 27625;
             def.femaleModel = 27640;
-            def.recolorFrom = new int[]{163, 9523, 4550, 22, 8390, 39, 154};
-            def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8};
+            def.recolorFrom = new short[]{163, 9523, 4550, 22, 8390, 39, 154};
+            def.recolorTo = new short[]{16, 968, 0, 274, 20, 4, 8};
         }
 
         if (id == DARK_ARMADYL_HELMET) {
@@ -636,8 +632,8 @@ public class CustomItems {
             def.femaleModel = 27639;
             def.maleHeadModel = 27699;
             def.femaleHeadModel = 27700;
-            def.recolorFrom = new int[]{0, -22452, 4550, -22456, -22506, 8650, -22460, -22448};
-            def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8, 20};
+            def.recolorFrom = new short[]{0, -22452, 4550, -22456, -22506, 8650, -22460, -22448};
+            def.recolorTo = new short[]{16, 968, 0, 274, 20, 4, 8, 20};
         }
 
         if (id == DARK_ARMADYL_CHESTPLATE) {
@@ -654,8 +650,8 @@ public class CustomItems {
             def.maleModel1 = 27629;
             def.femaleModel = 27645;
             def.femaleModel1 = 28828;
-            def.recolorFrom = new int[]{8658, 4550, -22440, -22489, 8650, -22448};
-            def.recolorTo = new int[]{16, 968, 0, 274, 968, 968};
+            def.recolorFrom = new short[]{8658, 4550, -22440, -22489, 8650, -22448};
+            def.recolorTo = new short[]{16, 968, 0, 274, 968, 968};
         }
 
         if (id == DARK_ARMADYL_CHAINSKIRT) {
@@ -669,8 +665,8 @@ public class CustomItems {
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
             def.maleModel = 27627;
             def.femaleModel = 27641;
-            def.recolorFrom = new int[]{-22485, -22440, -22456, -22489, -22473, 8650, -22448, -22464};
-            def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8, 20};
+            def.recolorFrom = new short[]{-22485, -22440, -22456, -22489, -22473, 8650, -22448, -22464};
+            def.recolorTo = new short[]{16, 968, 0, 274, 20, 4, 8, 20};
         }
 
         if (id == FAWKES) {
@@ -696,10 +692,10 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
-            def.recolorTo[0] = 34770;
+            def.recolorTo = new short[1];
+            def.recolorTo[0] = -30246;
         }
 
         if (id == LIME_PARTYHAT) {
@@ -713,9 +709,9 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
+            def.recolorTo = new short[1];
             def.recolorTo[0] = 17350;
         }
 
@@ -730,9 +726,9 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
+            def.recolorTo = new short[1];
             def.recolorTo[0] = 6073;
         }
 
@@ -746,10 +742,10 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
+            def.recolorTo = new short[2];
             def.recolorTo[0] = 124; // Background colour
             def.recolorTo[1] = 933; // Eyes colour
         }
@@ -764,11 +760,11 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
-            def.recolorTo[0] = 51136; // Background colour
+            def.recolorTo = new short[2];
+            def.recolorTo[0] = -14400; // Background colour
             def.recolorTo[1] = 0; // Eyes colour
         }
 
@@ -782,10 +778,10 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
+            def.recolorTo = new short[2];
             def.recolorTo[0] = 17350; // Background colour
             def.recolorTo[1] = 0; // Eyes colour
         }
@@ -924,8 +920,8 @@ public class CustomItems {
             def.yan2d = 1883;
             def.animateInventory = true;
             def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
-            def.recolorFrom = new int[]{24, 49, 4510, 4502, 8128, 7093};
-            def.recolorTo = new int[]{933, 933, 933, 933, 933, 933};
+            def.recolorFrom = new short[]{24, 49, 4510, 4502, 8128, 7093};
+            def.recolorTo = new short[]{933, 933, 933, 933, 933, 933};
         }
 
         if (id == BLOOD_FIREBIRD) {
@@ -937,8 +933,8 @@ public class CustomItems {
             def.xan2d = 10;
             def.xOffset2d = -2;
             def.yOffset2d = 9;
-            def.recolorFrom = new int[]{10176, 2880, 6082, 6084, 23492, 2983, 4391, 8, 29867, 4011, 4013, 2733, 2735, 4399, 914, 20, 8150, 10167, 1946, 23483, 28, 5053};
-            def.recolorTo = new int[]{933, 933, 933, 933, 933, 933, 4391, 8, 29867, 4011, 4013, 2733, 2735, 4399, 914, 20, 8150, 10167, 1946, 23483, 28, 5053};
+            def.recolorFrom = new short[]{10176, 2880, 6082, 6084, 23492, 2983, 4391, 8, 29867, 4011, 4013, 2733, 2735, 4399, 914, 20, 8150, 10167, 1946, 23483, 28, 5053};
+            def.recolorTo = new short[]{933, 933, 933, 933, 933, 933, 4391, 8, 29867, 4011, 4013, 2733, 2735, 4399, 914, 20, 8150, 10167, 1946, 23483, 28, 5053};
         }
 
         if (id == SHADOW_MACE) {
@@ -989,10 +985,10 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
-            def.recolorTo[0] = 374770;
+            def.recolorTo = new short[1];
+            def.recolorTo[0] = 24770;
         }
 
         if (id == ETHEREAL_HWEEN_MASK) {
@@ -1005,11 +1001,11 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
-            def.recolorTo[0] = 374770; // Background colour
+            def.recolorTo = new short[2];
+            def.recolorTo[0] = 24770; // Background colour
             def.recolorTo[1] = 933; // Eyes colour
         }
 
@@ -1026,8 +1022,8 @@ public class CustomItems {
             def.femaleModel = 366;
             def.maleHeadModel = 69;
             def.femaleHeadModel = 127;
-            def.recolorFrom = new int[]{933, 10351};
-            def.recolorTo = new int[]{374770, 10351};
+            def.recolorFrom = new short[]{933, 10351};
+            def.recolorTo = new short[]{24770, 10351};
         }
 
         if (id == BEGINNER_WEAPON_PACK) {
@@ -1052,8 +1048,8 @@ public class CustomItems {
             def.xan2d = 349;
             def.yan2d = 15;
             def.zoom2d = 886;
-            def.recolorFrom = new int[]{929, 914, 918, 922};
-            def.recolorTo = new int[]{34770, 34770, 34770, 34770};
+            def.recolorFrom = new short[]{929, 914, 918, 922};
+            def.recolorTo = new short[]{-30246, -30246, -30246, -30246};
         }
 
         if (id == BEGINNER_AGS) {
@@ -1067,8 +1063,8 @@ public class CustomItems {
             def.xan2d = 498;
             def.yan2d = 484;
             def.zoom2d = 1957;
-            def.recolorFrom = new int[]{-22419, -24279, -22423, -22444, -22477, -24271, -22415, -22208, -22464};
-            def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770};
+            def.recolorFrom = new short[]{-22419, -24279, -22423, -22444, -22477, -24271, -22415, -22208, -22464};
+            def.recolorTo = new short[]{-30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246};
         }
 
         if (id == BEGINNER_CHAINMACE) {
@@ -1082,8 +1078,8 @@ public class CustomItems {
             def.xan2d = 1495;
             def.yan2d = 256;
             def.zoom2d = 1488;
-            def.recolorFrom = new int[]{16, -11234, -11238, -11242, -11246, -10719};
-            def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770};
+            def.recolorFrom = new short[]{16, -11234, -11238, -11242, -11246, -10719};
+            def.recolorTo = new short[]{-30246, -30246, -30246, -30246, -30246, -30246};
         }
 
         if (id == BEGINNER_CRAWS_BOW) {
@@ -1098,8 +1094,8 @@ public class CustomItems {
             def.yan2d = 510;
             def.zan2d = 835;
             def.zoom2d = 1979;
-            def.recolorFrom = new int[]{-22242, -6087, -22440, 6602, 6699, -22448, 6736, -22225, 3346, -6099, 7124, 6709, -22431};
-            def.recolorTo = new int[]{34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770, 34770};
+            def.recolorFrom = new short[]{-22242, -6087, -22440, 6602, 6699, -22448, 6736, -22225, 3346, -6099, 7124, 6709, -22431};
+            def.recolorTo = new short[]{-30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246, -30246};
         }
 
         if (id == VETERAN_PARTYHAT) {
@@ -1113,10 +1109,10 @@ public class CustomItems {
             def.xOffset2d = 1;
             def.yOffset2d = 1;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[1];
+            def.recolorFrom = new short[1];
             def.recolorFrom[0] = 926;
-            def.recolorTo = new int[1];
-            def.recolorTo[0] = 614770;
+            def.recolorTo = new short[1];
+            def.recolorTo[0] = 14770;
         }
 
         if (id == VETERAN_HWEEN_MASK) {
@@ -1129,11 +1125,11 @@ public class CustomItems {
             def.yan2d = 0;
             def.yOffset2d = -10;
             def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
-            def.recolorFrom = new int[2];
+            def.recolorFrom = new short[2];
             def.recolorFrom[0] = 926;
             def.recolorFrom[1] = 0;
-            def.recolorTo = new int[2];
-            def.recolorTo[0] = 614770; // Background colour
+            def.recolorTo = new short[2];
+            def.recolorTo[0] = 14770; // Background colour
             def.recolorTo[1] = 933; // Eyes colour
         }
 
@@ -1150,48 +1146,48 @@ public class CustomItems {
             def.femaleModel = 366;
             def.maleHeadModel = 69;
             def.femaleHeadModel = 127;
-            def.recolorFrom = new int[]{933, 10351};
-            def.recolorTo = new int[]{614770, 10351};
+            def.recolorFrom = new short[]{933, 10351};
+            def.recolorTo = new short[]{14770, 10351};
         }
 
         if (id == PEGASIAN_BOOTS_OR) {
             ItemDefinition.copyInventory(def, PEGASIAN_BOOTS);
             ItemDefinition.copyEquipment(def, PEGASIAN_BOOTS);
             def.name = "<col=65280>Pegasian boots (or)";
-            def.recolorFrom = new int[]{8481, 17746, 15252, 16549, 8493, 17294};
-            def.recolorTo = new int[]{7114, 7114, 15252, 7114, 7114, 17294};
+            def.recolorFrom = new short[]{8481, 17746, 15252, 16549, 8493, 17294};
+            def.recolorTo = new short[]{7114, 7114, 15252, 7114, 7114, 17294};
         }
 
         if (id == ETERNAL_BOOTS_OR) {
             ItemDefinition.copyInventory(def, ETERNAL_BOOTS);
             ItemDefinition.copyEquipment(def, ETERNAL_BOOTS);
             def.name = "<col=65280>Eternal boots (or)";
-            def.recolorFrom = new int[]{9152, -22242, -22326, -10839, -22248, 695, -22361, -22510};
-            def.recolorTo = new int[]{9152, -22242, 7114, 7114, 7114, 695, 7114, -22510};
+            def.recolorFrom = new short[]{9152, -22242, -22326, -10839, -22248, 695, -22361, -22510};
+            def.recolorTo = new short[]{9152, -22242, 7114, 7114, 7114, 695, 7114, -22510};
         }
 
         if (id == VIGGORAS_CHAINMACE_C) {
             ItemDefinition.copyInventory(def, VIGGORAS_CHAINMACE);
             ItemDefinition.copyEquipment(def, VIGGORAS_CHAINMACE);
             def.name = "<col=65280>Viggora's chainmace (c)";
-            def.recolorFrom = new int[]{16, -11234, -11238, -11242, -11246, -10719};
-            def.recolorTo = new int[]{16, 1255, 1255, 5, 5, 1255};
+            def.recolorFrom = new short[]{16, -11234, -11238, -11242, -11246, -10719};
+            def.recolorTo = new short[]{16, 1255, 1255, 5, 5, 1255};
         }
 
         if (id == CRAWS_BOW_C) {
             ItemDefinition.copyInventory(def, CRAWS_BOW);
             ItemDefinition.copyEquipment(def, CRAWS_BOW);
             def.name = "<col=65280>Craw's bow (c)";
-            def.recolorFrom = new int[]{-22242, -6087, -22440, 6602, 6699, -22448, 6736, -22225, 3346, -6099, 7124, 6709, -22431};
-            def.recolorTo = new int[]{7, 1, 7, 1255, 10, 1255, 1255, 10, 5, 1255, 1255, 1255, 10};
+            def.recolorFrom = new short[]{-22242, -6087, -22440, 6602, 6699, -22448, 6736, -22225, 3346, -6099, 7124, 6709, -22431};
+            def.recolorTo = new short[]{7, 1, 7, 1255, 10, 1255, 1255, 10, 5, 1255, 1255, 1255, 10};
         }
 
         if (id == THAMMARONS_STAFF_C) {
             ItemDefinition.copyInventory(def, THAMMARONS_SCEPTRE);
             ItemDefinition.copyEquipment(def, THAMMARONS_SCEPTRE);
             def.name = "<col=65280>Thammaron's sceptre (c)";
-            def.recolorFrom = new int[]{960, 33, 417, 20, 53, 555, 939, 12, 28, 284};
-            def.recolorTo = new int[]{10, 15, 1, 15, 1400, 5, 1, 10, 1400, 1400};
+            def.recolorFrom = new short[]{960, 33, 417, 20, 53, 555, 939, 12, 28, 284};
+            def.recolorTo = new short[]{10, 15, 1, 15, 1400, 5, 1, 10, 1400, 1400};
         }
 
         if (id == ItemIdentifiers.TOXIC_BLOWPIPE || id == ItemIdentifiers.SERPENTINE_HELM || id == ItemIdentifiers.TRIDENT_OF_THE_SWAMP || id == ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD
@@ -1229,8 +1225,8 @@ public class CustomItems {
         if (id == BABY_ARAGOG) {
             def.name = "<col=65280>Baby Aragog";
             ItemDefinition.copyInventory(def, VENENATIS_SPIDERLING);
-            def.recolorFrom = new int[]{912, 0, 916, 103, 138, 794, 107, 908};
-            def.recolorTo = new int[]{138, 908, 4769, 4769, 4769, 0, 0, 0};
+            def.recolorFrom = new short[]{912, 0, 916, 103, 138, 794, 107, 908};
+            def.recolorTo = new short[]{138, 908, 4769, 4769, 4769, 0, 0, 0};
         }
 
         if (id == JAWA_PET) {
@@ -1291,8 +1287,8 @@ public class CustomItems {
 
         if (id == ELDER_WAND_HANDLE) {
             def.name = "<col=65280>Elder wand handle";
-            def.recolorFrom = new int[]{-19153, 33, -19145, -19500};
-            def.recolorTo = new int[]{530, 540, 529, 10};
+            def.recolorFrom = new short[]{-19153, 33, -19145, -19500};
+            def.recolorTo = new short[]{530, 540, 529, 10};
             def.inventoryActions = new String[]{"Inspect", null, null, null, "Drop"};
             def.inventoryModel = 32805;
             def.xOffset2d = -1;
@@ -1304,8 +1300,8 @@ public class CustomItems {
 
         if (id == ELDER_WAND_STICK) {
             def.name = "<col=65280>Elder wand stick";
-            def.recolorFrom = new int[]{9024, 9009, 5652, 8070, 9015, 7050, 4634, -22413, 8877, 3614};
-            def.recolorTo = new int[]{530, 540, 529, 10, 13, 16, 19, 22, 25, 28};
+            def.recolorFrom = new short[]{9024, 9009, 5652, 8070, 9015, 7050, 4634, -22413, 8877, 3614};
+            def.recolorTo = new short[]{530, 540, 529, 10, 13, 16, 19, 22, 25, 28};
             def.inventoryActions = new String[]{"Inspect", null, null, null, "Drop"};
             def.inventoryModel = 10565;
             def.xOffset2d = 6;
@@ -1317,8 +1313,8 @@ public class CustomItems {
 
         if (id == TALONHAWK_CROSSBOW) {
             def.name = "<col=65280>Talonhawk crossbow";
-            def.recolorFrom = new int[]{49, 10471, 10475};
-            def.recolorTo = new int[]{-32518, 25, -32518};
+            def.recolorFrom = new short[]{49, 10471, 10475};
+            def.recolorTo = new short[]{-32518, 25, -32518};
             def.femaleModel = 15472;
             def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
             def.inventoryModel = 15493;
@@ -1333,8 +1329,8 @@ public class CustomItems {
         if (id == FLUFFY_JR) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Fluffy Jr pet";
-            def.recolorFrom = new int[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
-            def.recolorTo = new int[]{4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 0, 4769, 0, 0, 4769, 4769};
+            def.recolorFrom = new short[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
+            def.recolorTo = new short[]{4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 0, 4769, 0, 0, 4769, 4769};
             def.inventoryModel = 29240;
             def.xan2d = 3;
             def.yan2d = 213;
@@ -1392,8 +1388,7 @@ public class CustomItems {
             def.xan2d = 420;
             def.yan2d = 1082;
             def.zoom2d = 917;
-            def.recolorFrom = new int[]{16, 30643, 12484, 13493, -32630, 8, 24, 10411, 12};
-            def.recolorTo = new int[]{350780, 30643, 347770, 13493, -32630, 8, 24, 350700, 12};
+            def.modelCustomColor4 = 31243;
         }
 
         if (id == JALNIBREK) {
@@ -1410,8 +1405,8 @@ public class CustomItems {
 
         if (id == CORRUPTING_STONE) {
             def.name = "<col=65280>Corrupting stone";
-            def.recolorFrom = new int[]{-22297, 127};
-            def.recolorTo = new int[]{945, 582};
+            def.recolorFrom = new short[]{-22297, 127};
+            def.recolorTo = new short[]{945, 582};
         }
 
         if (id == JALTOK_JAD) {
@@ -1455,8 +1450,8 @@ public class CustomItems {
         if (id == DEMENTOR_PET) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Dementor pet";
-            def.recolorFrom = new int[]{3346, 6371};
-            def.recolorTo = new int[]{0, 0};
+            def.recolorFrom = new short[]{3346, 6371};
+            def.recolorTo = new short[]{0, 0};
             def.inventoryModel = 14992;
             def.xOffset2d = -1;
             def.yOffset2d = -10;
@@ -1468,8 +1463,8 @@ public class CustomItems {
         if (id == FENRIR_GREYBACK_JR) {
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.name = "<col=65280>Fenrir Greyback Jr";
-            def.recolorFrom = new int[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
-            def.recolorTo = new int[]{4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 0, 4769, 0, 0, 4769, 4769};
+            def.recolorFrom = new short[]{0, 11200, 929, 931, 9542, 902, 262, 906, 910, 914, 918, 922, 955, 9149, 7101, 8125, 6077, 4029, 957, 1981, 926};
+            def.recolorTo = new short[]{4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 0, 4769, 0, 0, 4769, 4769};
             def.inventoryModel = 26177;
             def.yOffset2d = 100;
             def.xan2d = 100;
@@ -1485,8 +1480,8 @@ public class CustomItems {
         if (id == DRAGON_CLAWS_OR) {
             ItemDefinition.copyInventory(def, 13652);
             def.name = "<col=65280>Dragon claws (or)";
-            def.recolorFrom = new int[]{929, 914, 918, 922};
-            def.recolorTo = new int[]{929, 7114, 7114, 7114};
+            def.recolorFrom = new short[]{929, 914, 918, 922};
+            def.recolorTo = new short[]{929, 7114, 7114, 7114};
         }
 
         if (id == 12791) {
@@ -1512,8 +1507,8 @@ public class CustomItems {
         if (id == POINTS_MYSTERY_CHEST) {
             def.name = "<col=65280>Points mystery chest";
             def.inventoryActions = new String[]{"Open", null, null, null, null};
-            def.recolorFrom = new int[]{49, 6466, 24, 5545};
-            def.recolorTo = new int[]{49, 302770, 24, 296770};
+            def.recolorFrom = new short[]{49, 6466, 24, 5545};
+            def.recolorTo = new short[]{49, 524, 24, 13};
             def.inventoryModel = 12146;
             def.xan2d = 114;
             def.yan2d = 1883;
@@ -1536,8 +1531,8 @@ public class CustomItems {
         if (id == XMAS_TOKENS) {
             ItemDefinition.copyInventory(def, 13204);
             def.name = "<col=65280>X'mas token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{127, 155, 374770};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{127, 155, 24770};
             def.countco = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
             def.countobj = new int[]{30192, 30193, 30194, 30194, 0, 0, 0, 0, 0, 0};
         }
@@ -1545,22 +1540,22 @@ public class CustomItems {
         if (id == 30192) {
             ItemDefinition.copyInventory(def, 3985);
             def.name = "<col=65280>X'mas Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{127, 155, 374770};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{127, 155, 24770};
         }
 
         if (id == 30193) {
             ItemDefinition.copyInventory(def, 3987);
             def.name = "<col=65280>X'mas Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{127, 155, 374770};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{127, 155, 24770};
         }
 
         if (id == 30194) {
             ItemDefinition.copyInventory(def, 3989);
             def.name = "<col=65280>X'mas Token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{127, 155, 374770};
+            def.recolorFrom = new short[]{5813, 9139, 26006};
+            def.recolorTo = new short[]{127, 155, 24770};
         }
 
         if (id == SLAYER_TELEPORT_SCROLL) {
@@ -1620,22 +1615,22 @@ public class CustomItems {
                     def.name = "<col=65280>Donator mystery box";
                     def.inventoryModel = 55566;
                     def.animateInventory = true;
-                    def.recolorFrom = new int[]{2999, 22410};
-                    def.recolorTo = new int[]{524, 13};
+                    def.recolorFrom = new short[]{2999, 22410};
+                    def.recolorTo = new short[]{524, 13};
                     break;
 
                 case RAIDS_MYSTERY_BOX:
                     def.name = "<col=65280>Raids mystery box";
                     def.inventoryModel = 55610;
                     def.animateInventory = true;
-                    def.recolorFrom = new int[]{2999, 22410};
-                    def.recolorTo = new int[]{524, 13};
+                    def.recolorFrom = new short[]{2999, 22410};
+                    def.recolorTo = new short[]{524, 13};
                     break;
 
                 case POINTS_MYSTERY_BOX:
                     def.name = "<col=65280>Point mystery box";
-                    def.recolorFrom = new int[]{22410, 2999};
-                    def.recolorTo = new int[]{302770, 296770};
+                    def.recolorFrom = new short[]{22410, 2999};
+                    def.recolorTo = new short[]{524,13};
                     break;
 
                 case 30187:
@@ -1646,16 +1641,16 @@ public class CustomItems {
 
                 case BARROWS_MYSTERY_BOX:
                     def.name = "<col=65280>Barrows Mystery Box";
-                    def.recolorFrom = new int[]{22410, 2999};
-                    def.recolorTo = new int[]{356770, 266770};
+                    def.recolorFrom = new short[]{22410, 2999};
+                    def.recolorTo = new short[]{26770, 13};
                     break;
             }
         }
 
         if (id == SWORD_OF_GRYFFINDOR) {
             def.name = "<col=65280>Sword of gryffindor";
-            def.recolorFrom = new int[]{10258, 10291, 10275, 10262, 10266, 10283};
-            def.recolorTo = new int[]{82, 125, 125, 121, 125, 125};
+            def.recolorFrom = new short[]{10258, 10291, 10275, 10262, 10266, 10283};
+            def.recolorTo = new short[]{82, 125, 125, 121, 125, 125};
         }
 
         if (id == CHRISTMAS_CRACKER) {
@@ -1748,8 +1743,8 @@ public class CustomItems {
             case ELDER_WAND:
             case ELDER_WAND_RAIDS:
                 def.name = "<col=65280>Elder wand";
-                def.recolorFrom = new int[]{-19153, -19500, -19145, 37, -16339, -16331};
-                def.recolorTo = new int[]{530, 540, 529, 10, 13, 16};
+                def.recolorFrom = new short[]{-19153, -19500, -19145, 37, -16339, -16331};
+                def.recolorTo = new short[]{530, 540, 529, 10, 13, 16};
                 def.femaleModel = 32669;
                 def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
                 def.inventoryModel = 32789;
@@ -1770,8 +1765,8 @@ public class CustomItems {
                 def.xOffset2d = 0;
                 def.yOffset2d = 0;
                 def.inventoryModel = 7171;
-                def.recolorFrom = new int[]{476};
-                def.recolorTo = new int[]{54444};
+                def.recolorFrom = new short[]{476};
+                def.recolorTo = new short[]{4444};
                 break;
 
             case PET_KREE_ARRA_WHITE:
@@ -1818,8 +1813,8 @@ public class CustomItems {
                 def.inventoryActions = new String[]{"Cast", null, null, null, "Destroy"};
                 def.name = "<col=65280>Vengeance";
                 def.description = "Rebound damage to an opponent.";
-                def.recolorFrom = new int[]{5231};
-                def.recolorTo = new int[]{130770};
+                def.recolorFrom = new short[]{5231};
+                def.recolorTo = new short[]{960};
                 break;
 
             case MYSTERY_CHEST:
@@ -1830,8 +1825,6 @@ public class CustomItems {
                 def.animateInventory = true;
                 def.name = "<col=65280>Mystery chest";
                 def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
-                def.recolorFrom = new int[]{24, 49, 4510, 4502, 8128, 7093};
-                def.recolorTo = new int[]{24, 49, 184770, 184770, 87770, 87770};
                 break;
 
             case BABY_SQUIRT:
@@ -1843,8 +1836,8 @@ public class CustomItems {
                 def.xOffset2d = 0;
                 def.yOffset2d = 0;
                 def.inventoryModel = 7171;
-                def.recolorFrom = new int[]{476};
-                def.recolorTo = new int[]{246770};
+                def.recolorFrom = new short[]{476};
+                def.recolorTo = new short[]{26770};
                 break;
 
             case PET_PAINT_BLACK:
@@ -1868,40 +1861,40 @@ public class CustomItems {
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$10 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{32416, 34451, 23224, 34181, 34449, 34305, 33435, 21164, 23092, 21152, 19087, 44821, 44846, 19997, 20117, 44829, 44838, 34464};
+                def.recolorFrom = new short[] {20416,22451,22181,22449,22305,21435,22464};
+                def.recolorTo = new short[] {920,922,924,926,928,930,932};
                 break;
 
             case TWENTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$20 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{63316, 65351, 54124, 65081, 65349, 65205, 64335, 52064, 53992, 52052, 49987, 75721, 75746, 50897, 51017, 75729, 75738, 65364};
+                def.recolorFrom = new short[] {20416,22451,22181,22449,22305,21435,22464};
+                def.recolorTo = new short[] {118,120,122,124,126,127,127};
                 break;
 
             case FORTY_DOLLAR_BOND:
+                def.recolorFrom = new short[] {20416,22451,22181,22449,22305,21435,22464};
+                def.recolorTo = new short[] {-11596,-11594,-11592,-11590,-11588,-11586,-11584};
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$40 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{25416, 27451, 16224, 27181, 27449, 27305, 26435, 14164, 16092, 14152, 12087, 37821, 37846, 12997, 13117, 37829, 37838, 27464};
                 break;
 
             case FIFTY_DOLLAR_BOND:
+                def.recolorFrom = new short[] {20416,22451,22181,22449,22305,21435,22464};
+                def.recolorTo = new short[] {0,3,6,8,11,13,15};
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$50 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{35416, 37451, 26224, 37181, 37449, 37305, 36435, 24164, 26092, 24152, 22087, 47821, 47846, 22997, 23117, 47829, 47838, 37464};
                 break;
 
             case ONE_HUNDRED_DOLLAR_BOND:
+                def.recolorFrom = new short[] {20416,22451,22181,22449,22305,21435,22464};
+                def.recolorTo = new short[] {6074,6076,6078,6080,6082,6084,6086};
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$100 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{77316, 79351, 68124, 79081, 79349, 79205, 78335, 66064, 67992, 66052, 63987, 89721, 89746, 64897, 65017, 89729, 89738, 79364};
                 break;
 
             case EARTH_ARROWS:
@@ -1910,26 +1903,26 @@ public class CustomItems {
 
             case FIRE_ARROWS:
                 def.name = "<col=65280>Fire arrows";
-                def.recolorFrom = new int[]{57, 61, 5012, 926};
-                def.recolorTo = new int[]{57, 61, 5012, 926};
+                def.recolorFrom = new short[]{57, 61, 5012, 926};
+                def.recolorTo = new short[]{57, 61, 5012, 926};
                 break;
 
             case ANCIENT_WARRIOR_SWORD:
                 def.name = "<col=65280>Ancient warrior sword";
-                def.recolorFrom = new int[]{920, 0, 103};
-                def.recolorTo = new int[]{391770, 0, 110};
+                def.recolorFrom = new short[]{920, 0, 103};
+                def.recolorTo = new short[]{31770, 0, 110};
                 break;
 
             case ANCIENT_WARRIOR_MAUL:
                 def.name = "<col=65280>Ancient warrior maul";
-                def.recolorFrom = new int[]{78, 103, 920};
-                def.recolorTo = new int[]{391470, 391470, 100, 100};
+                def.recolorFrom = new short[]{78, 103, 920};
+                def.recolorTo = new short[]{31770, 31770, 100, 100};
                 break;
 
             case ANCIENT_WARRIOR_AXE:
                 def.name = "<col=65280>Ancient warrior axe";
-                def.recolorFrom = new int[]{0, 78, 920};
-                def.recolorTo = new int[]{191770, 191770, 110};
+                def.recolorFrom = new short[]{0, 78, 920};
+                def.recolorTo = new short[]{31770, 31770, 110};
                 break;
 
             case VALINOR_COINS:
@@ -1937,62 +1930,62 @@ public class CustomItems {
                 def.countco = new int[]{2, 3, 4, 5, 25, 100, 250, 1000, 10000, 0};
                 def.countobj = new int[]{17001, 17002, 17003, 17004, 17005, 17006, 17007, 17008, 17009, 0};
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17001:
                 ItemDefinition.copyInventory(def, 996);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17002:
                 ItemDefinition.copyInventory(def, 997);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17003:
                 ItemDefinition.copyInventory(def, 998);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17004:
                 ItemDefinition.copyInventory(def, 999);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17005:
                 ItemDefinition.copyInventory(def, 1000);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17006:
                 ItemDefinition.copyInventory(def, 1001);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17007:
                 ItemDefinition.copyInventory(def, 1002);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17008:
                 ItemDefinition.copyInventory(def, 1003);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
             case 17009:
                 ItemDefinition.copyInventory(def, 1004);
                 def.name = ClientConstants.CLIENT_NAME + " coins";
-                def.recolorFrom = new int[]{8128};
-                def.recolorTo = new int[]{5706};
+                def.recolorFrom = new short[]{8128};
+                def.recolorTo = new short[]{5706};
                 break;
 
             case KEY_OF_DROPS:
@@ -2043,8 +2036,8 @@ public class CustomItems {
                 def.yan2d = 1232;
                 def.xOffset2d = 13;
                 def.yOffset2d = -7;
-                def.recolorTo = new int[]{311770, 74, 10283, 374770, 311770, 311770, 10299, 66, 127};
-                def.recolorFrom = new int[]{26772, 74, 10283, 41, 26780, 26776, 10299, 66, 127};
+                def.recolorTo = new short[]{11770, 74, 10283, 24770, 11770, 11770, 10299, 66, 127};
+                def.recolorFrom = new short[]{26772, 74, 10283, 41, 26780, 26776, 10299, 66, 127};
                 def.groundActions = new String[]{null, null, "Take", null, null};
                 def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
                 def.inventoryModel = 28678;
@@ -2075,8 +2068,8 @@ public class CustomItems {
                 def.xan2d = 76;
                 def.maleModel = 55572;
                 def.femaleModel = 55573;
-                def.recolorFrom = new int[]{926};
-                def.recolorTo = new int[]{926};
+                def.recolorFrom = new short[]{926};
+                def.recolorTo = new short[]{926};
                 def.retextureFrom = new short[]{926};
                 def.retextureTo = new short[]{31};
                 break;
@@ -2114,8 +2107,8 @@ public class CustomItems {
                 def.name = "<col=65280>Slayer key";
                 def.inventoryModel = 55565;
                 def.animateInventory = true;
-                def.recolorFrom = new int[]{57, 49};
-                def.recolorTo = new int[]{6453, 6569};
+                def.recolorFrom = new short[]{57, 49};
+                def.recolorTo = new short[]{6453, 6569};
                 def.zoom2d = 860;
                 def.xan2d = 460;
                 def.yan2d = 20;
@@ -2290,8 +2283,8 @@ public class CustomItems {
 
             case AGILITY_MASTER_CAPE:
                 def.name = "<col=65280>Agility master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{677, 801, -21996, -21993, -21990, -21987, -21986, -21984, -21982, -21978, -21978, -21978};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{677, 801, -21996, -21993, -21990, -21987, -21986, -21984, -21982, -21978, -21978, -21978};
                 def.femaleModel = 59050;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59049;
@@ -2305,8 +2298,8 @@ public class CustomItems {
 
             case ATTACK_MASTER_CAPE:
                 def.name = "<col=65280>Attack master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 37, 22, 20};
-                def.recolorTo = new int[]{7104, 9151, 911, 914, 917, 920, 921, 923, 925, 925, 925, 929};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 37, 22, 20};
+                def.recolorTo = new short[]{7104, 9151, 911, 914, 917, 920, 921, 923, 925, 925, 925, 929};
                 def.femaleModel = 59052;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59051;
@@ -2320,8 +2313,8 @@ public class CustomItems {
 
             case CONSTRUCCTION_MASTER_CAPE:
                 def.name = "<col=65280>Construction master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{6061, 5945, 6327, 6330, 6333, 6336, 6337, 6339, 6341, 6345, 6345, 6345};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{6061, 5945, 6327, 6330, 6333, 6336, 6337, 6339, 6341, 6345, 6345, 6345};
                 def.femaleModel = 59054;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59053;
@@ -2335,8 +2328,8 @@ public class CustomItems {
 
             case COOKING_MASTER_CAPE:
                 def.name = "<col=65280>Cooking master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{920, 920, -13680, -13677, -13674, -13671, -13670, -13668, -13666, -13662, -13662, -13662};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{920, 920, -13680, -13677, -13674, -13671, -13670, -13668, -13666, -13662, -13662, -13662};
                 def.femaleModel = 59056;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59055;
@@ -2350,8 +2343,8 @@ public class CustomItems {
 
             case CRAFTING_MASTER_CAPE:
                 def.name = "<col=65280>Crafting master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{9142, 9152, 4511, 4514, 4517, 4520, 4521, 4523, 4525, 4529, 4529, 4529};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{9142, 9152, 4511, 4514, 4517, 4520, 4521, 4523, 4525, 4529, 4529, 4529};
                 def.femaleModel = 59058;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59057;
@@ -2365,8 +2358,8 @@ public class CustomItems {
 
             case DEFENCE_MASTER_CAPE:
                 def.name = "<col=65280>Defence master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{10460, 10473, -24126, -24123, -24120, -24117, -24116, -24114, -24112, -24108, -24108, -24108};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{10460, 10473, -24126, -24123, -24120, -24117, -24116, -24114, -24112, -24108, -24108, -24108};
                 def.femaleModel = 59060;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59059;
@@ -2380,8 +2373,8 @@ public class CustomItems {
 
             case FARMING_MASTER_CAPE:
                 def.name = "<col=65280>Farming master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{14775, 14792, 22026, 22029, 22032, 22035, 22036, 22038, 22040, 22044, 22044, 22044};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{14775, 14792, 22026, 22029, 22032, 22035, 22036, 22038, 22040, 22044, 22044, 22044};
                 def.femaleModel = 59062;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59061;
@@ -2395,8 +2388,8 @@ public class CustomItems {
 
             case FIREMAKING_MASTER_CAPE:
                 def.name = "<col=65280>Firemaking master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{8125, 9152, 4015, 4018, 4021, 4024, 4025, 4027, 4029, 4033, 4033, 4033};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{8125, 9152, 4015, 4018, 4021, 4024, 4025, 4027, 4029, 4033, 4033, 4033};
                 def.femaleModel = 59064;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59063;
@@ -2410,8 +2403,8 @@ public class CustomItems {
 
             case FISHING_MASTER_CAPE:
                 def.name = "<col=65280>Fishing master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{9144, 9152, -27334, -27331, -27328, -27325, -27324, -27322, -27316, -27314, -27314, -27314};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{9144, 9152, -27334, -27331, -27328, -27325, -27324, -27322, -27316, -27314, -27314, -27314};
                 def.femaleModel = 59066;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59065;
@@ -2425,8 +2418,8 @@ public class CustomItems {
 
             case FLETCHING_MASTER_CAPE:
                 def.name = "<col=65280>Fletching master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{6067, 9152, -31866, -31863, -31860, -31857, -31856, -31854, -31852, -31848, -31848, -31848};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{6067, 9152, -31866, -31863, -31860, -31857, -31856, -31854, -31852, -31848, -31848, -31848};
                 def.femaleModel = 59068;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59067;
@@ -2440,8 +2433,8 @@ public class CustomItems {
 
             case HERBLORE_MASTER_CAPE:
                 def.name = "<col=65280>Herblore master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{9145, 9156, 22414, 22417, 22420, 22423, 22424, 22426, 22428, 22432, 22432, 22432};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{9145, 9156, 22414, 22417, 22420, 22423, 22424, 22426, 22428, 22432, 22432, 22432};
                 def.femaleModel = 59070;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59069;
@@ -2455,8 +2448,8 @@ public class CustomItems {
 
             case HITPOINTS_MASTER_CAPE:
                 def.name = "<col=65280>Hitpoints master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{818, 951, 8291, 8294, 8297, 8300, 8301, 8303, 8305, 8309, 8309, 8309};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{818, 951, 8291, 8294, 8297, 8300, 8301, 8303, 8305, 8309, 8309, 8309};
                 def.femaleModel = 59072;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59071;
@@ -2470,8 +2463,8 @@ public class CustomItems {
 
             case HUNTER_MASTER_CAPE:
                 def.name = "<col=65280>Hunter master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{5262, 6020, 8472, 8475, 8478, 8481, 8482, 8484, 8486, 8490, 8490, 8490};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{5262, 6020, 8472, 8475, 8478, 8481, 8482, 8484, 8486, 8490, 8490, 8490};
                 def.femaleModel = 59074;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59073;
@@ -2485,8 +2478,8 @@ public class CustomItems {
 
             case MAGIC_MASTER_CAPE:
                 def.name = "<col=65280>Magic master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{-21967, -21951, 6336, 6339, 6342, 6345, 6346, 6348, 6350, 6354, 6354, 6354};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{-21967, -21951, 6336, 6339, 6342, 6345, 6346, 6348, 6350, 6354, 6354, 6354};
                 def.femaleModel = 59076;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59075;
@@ -2500,8 +2493,8 @@ public class CustomItems {
 
             case MINING_MASTER_CAPE:
                 def.name = "<col=65280>Mining master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{-29240, -29257, 10386, 10389, 10392, 10395, 10396, 10398, 10400, 10404, 10404, 10404};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{-29240, -29257, 10386, 10389, 10392, 10395, 10396, 10398, 10400, 10404, 10404, 10404};
                 def.femaleModel = 59078;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59077;
@@ -2515,8 +2508,8 @@ public class CustomItems {
 
             case PRAYER_MASTER_CAPE:
                 def.name = "<col=65280>Prayer master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{9163, 9168, 117, 120, 123, 126, 127, 127, 127, 127, 127, 127};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{9163, 9168, 117, 120, 123, 126, 127, 127, 127, 127, 127, 127};
                 def.femaleModel = 59080;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59079;
@@ -2530,8 +2523,8 @@ public class CustomItems {
 
             case RANGE_MASTER_CAPE:
                 def.name = "<col=65280>Range master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{3755, 3998, 15122, 15125, 15128, 15131, 15132, 15134, 15136, 15140, 15140, 15140};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{3755, 3998, 15122, 15125, 15128, 15131, 15132, 15134, 15136, 15140, 15140, 15140};
                 def.femaleModel = 59082;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59081;
@@ -2545,8 +2538,8 @@ public class CustomItems {
 
             case RUNECRAFTING_MASTER_CAPE:
                 def.name = "<col=65280>Runecrafting master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{9152, 8128, 10318, 10321, 10324, 10327, 10328, 10330, 10332, 10336, 10336, 10336};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{9152, 8128, 10318, 10321, 10324, 10327, 10328, 10330, 10332, 10336, 10336, 10336};
                 def.femaleModel = 59084;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59083;
@@ -2560,8 +2553,8 @@ public class CustomItems {
 
             case SLAYER_MASTER_CAPE:
                 def.name = "<col=65280>Slayer master cape";
-                def.recolorFrom = new int[]{-8514, -16725};
-                def.recolorTo = new int[]{912, 920};
+                def.recolorFrom = new short[]{-8514, -16725};
+                def.recolorTo = new short[]{912, 920};
                 def.femaleModel = 59048;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59085;
@@ -2575,8 +2568,8 @@ public class CustomItems {
 
             case SMITHING_MASTER_CAPE:
                 def.name = "<col=65280>Smithing master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{8115, 9148, 10380, 10389, 10392, 10395, 10396, 10398, 10400, 10406, 10406, 10406};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{8115, 9148, 10380, 10389, 10392, 10395, 10396, 10398, 10400, 10406, 10406, 10406};
                 def.femaleModel = 59093;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59086;
@@ -2590,8 +2583,8 @@ public class CustomItems {
 
             case STRENGTH_MASTER_CAPE:
                 def.name = "<col=65280>Strength master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{935, 931, 27538, 27541, 27544, 27547, 27548, 27550, 27552, 27556, 27556, 27556};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{935, 931, 27538, 27541, 27544, 27547, 27548, 27550, 27552, 27556, 27556, 27556};
                 def.femaleModel = 59088;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59087;
@@ -2605,8 +2598,8 @@ public class CustomItems {
 
             case THIEVING_MASTER_CAPE:
                 def.name = "<col=65280>Thieving master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{11, 1, -6757, -6754, -6751, -6748, -6747, -6745, -6743, -6739, -6739, -6739};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{11, 1, -6757, -6754, -6751, -6748, -6747, -6745, -6743, -6739, -6739, -6739};
                 def.femaleModel = 59090;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59089;
@@ -2620,8 +2613,8 @@ public class CustomItems {
 
             case WOODCUTTING_MASTER_CAPE:
                 def.name = "<col=65280>Woodcutting master cape";
-                def.recolorFrom = new int[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
-                def.recolorTo = new int[]{25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711, 6711, 6711};
+                def.recolorFrom = new short[]{-8514, -16725, 2, 1029, 1032, 11, 12, 14, 16, 20, 37, 22};
+                def.recolorTo = new short[]{25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711, 6711, 6711};
                 def.femaleModel = 59092;
                 def.inventoryActions = new String[]{null, "Wear", null, null, "Drop"};
                 def.inventoryModel = 59091;
