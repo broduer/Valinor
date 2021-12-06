@@ -91,11 +91,6 @@ public class ItemsOnDeath {
             return null;
         }
 
-        // If it's not a safe death, turn a Hardcore Ironman into a regular.
-        if (player.ironMode() == IronMode.HARDCORE) {
-            stripHardcoreRank(player);
-        }
-
         // Past this point.. we're in a dangerous zone! Drop our items....
 
         Player theKiller = killer == null || killer.isNpc() ? player : killer.getAsPlayer();
@@ -365,15 +360,5 @@ public class ItemsOnDeath {
         //Reset last attacked by, since we already handled it above, and the player is already dead.
         player.clearAttrib(AttributeKey.LAST_DAMAGER);
         return new PlayerDeathDropResult(theKiller, outputDrop, outputKept, outputDeleted, outputConverted);
-    }
-
-    private static void stripHardcoreRank(Player player) {
-        player.ironMode(IronMode.REGULAR); // Revert mode
-        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            player.setPlayerRights(PlayerRights.IRON_MAN);
-            player.getPacketSender().sendRights();
-        }
-        World.getWorld().sendWorldMessage("<img=504>"+Color.RED.wrap("[Hardcore fallen]:")+" "+Color.BLUE.wrap(player.getUsername())+" has fallen as a Hardcore Iron Man!");
-        player.message("You have fallen as a Hardcore Iron Man', your Hardcore status has been revoked.");
     }
 }

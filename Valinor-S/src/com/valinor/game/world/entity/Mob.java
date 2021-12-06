@@ -472,7 +472,7 @@ public abstract class Mob extends Entity {
 
     public abstract Mob setHitpoints(int hitpoints);
 
-    protected abstract void die();
+    protected abstract void die(Hit killHit);
 
     public abstract int getBaseAttackSpeed();
 
@@ -671,9 +671,11 @@ public abstract class Mob extends Entity {
         int outcome = hp() - hit.getDamage();
         if (outcome < 0) {
             outcome = 0;
-            putAttrib(AttributeKey.KILLING_BLOW_HIT, hit);
         }
         setHitpoints(outcome);
+        if (hp() < 1 && !locked()) {
+            die(hit);
+        }
     }
 
     public Boundary getBoundary() {

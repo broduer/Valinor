@@ -1028,9 +1028,9 @@ public class Player extends Mob {
     }
 
     @Override
-    public void die() {
+    public void die(Hit killHit) {
         stopActions(true);
-        Death.death(this);
+        Death.death(this, killHit);
     }
 
     @Override
@@ -1058,9 +1058,6 @@ public class Player extends Mob {
         }
         skills.setLevel(Skills.HITPOINTS, hitpoints);
         skills.makeDirty(Skills.HITPOINTS);//Force refresh
-        if (hp() < 1 && !locked()) {
-            die();
-        }
         return this;
     }
 
@@ -1517,6 +1514,9 @@ public class Player extends Mob {
             if (memberRights.isZenyteMemberOrGreater(this)) {
                 MemberFeatures.checkForMonthlySponsorRewards(this);
             }
+
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(this);
+            group.ifPresent(ironmanGroup -> ironmanGroup.checkForDemote(this));
 
             //Update info
             restartTasks();
@@ -3100,7 +3100,7 @@ public class Player extends Mob {
 
         if (hp() < 1 && System.currentTimeMillis() - lockTime > 30_000) {
             logger.error("player has been locked for 30s while 0hp.. how tf did that happen");
-            die();
+            die(null);
         }
 
         if (queuedAppearanceUpdate()) {

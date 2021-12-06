@@ -3,6 +3,7 @@ package com.valinor.game.content.group_ironman;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -12,6 +13,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.game.content.group_ironman.IronmanGroupHandler.saveIronmanGroups;
+import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
+
 /**
  * Represents an ironman group
  *
@@ -20,7 +24,9 @@ import java.util.Optional;
 public class IronmanGroup {
 
     private String groupName;
-    public String leaderName;
+    private String leaderName;
+    private boolean hardcoreGroup;
+    private int hardcoreLives;
     private List<IronmanGroupMember> members;
     private Date dateStated;
     private Optional<String> invitation = Optional.empty();
@@ -34,26 +40,57 @@ public class IronmanGroup {
         members.add(new IronmanGroupMember(player));
         return new IronmanGroup().setDateStated(Date.from(Instant.now()))
             .setLeaderName(player.getUsername())
+            .setHardcoreGroup(player.ironMode() == IronMode.HARDCORE)
+            .setHardcoreLives(1)
             .setGroupName(player.getUsername())
             .setMembers(members);
     }
 
-    public void acceptInvitation(Player player) {
+    public void acceptInvitation(Player leader, Player player) {
         invitation = Optional.empty();
         IronmanGroupMember member = new IronmanGroupMember(player);
         if(!members.contains(member)) {
             members.add(member);
         }
+
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
+        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+            group.get().setHardcoreLives(group.get().getHardcoreLives() + 1);
+        }
     }
 
-    public void leaveGroup(Player player) {
-        final IronmanGroupMember member = members.stream().filter(e -> e.getUsername().equalsIgnoreCase(player.getUsername())).findFirst().get();
-        members.remove(member);
+    public void checkForDemote(Player player) {
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if(group.isPresent() && group.get().isHardcoreGroup() && player.ironMode() == IronMode.HARDCORE && !player.<Boolean>getAttribOr(HARDCORE_GROUP_FALLEN,false)) {
+            var lives = group.get().getHardcoreLives();
+            if(lives == 0) {
+                player.ironMode(IronMode.REGULAR);
+                player.setPlayerRights(PlayerRights.IRON_MAN);
+                player.getPacketSender().sendRights();
+                player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
+                player.putAttrib(HARDCORE_GROUP_FALLEN,true);
+            }
+        }
     }
 
-    public void kickFromGroup(Player player) {
+    public void leaveGroup(Player leader, Player player) {
         final IronmanGroupMember member = members.stream().filter(e -> e.getUsername().equalsIgnoreCase(player.getUsername())).findFirst().get();
         members.remove(member);
+
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
+        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+            group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
+        }
+    }
+
+    public void kickFromGroup(Player leader, Player player) {
+        final IronmanGroupMember member = members.stream().filter(e -> e.getUsername().equalsIgnoreCase(player.getUsername())).findFirst().get();
+        members.remove(member);
+
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
+        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+            group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
+        }
     }
 
     public boolean isOnline() {
@@ -232,6 +269,25 @@ public class IronmanGroup {
     public IronmanGroup setLeaderName(String leaderName) {
         this.leaderName = leaderName;
         return this;
+    }
+
+    public IronmanGroup setHardcoreGroup(boolean hardcoreGroup) {
+        this.hardcoreGroup = hardcoreGroup;
+        return this;
+    }
+
+    public boolean isHardcoreGroup() {
+        return hardcoreGroup;
+    }
+
+    public IronmanGroup setHardcoreLives(int hardcoreLives) {
+        this.hardcoreLives = hardcoreLives;
+        saveIronmanGroups();//When changing lives, update json.
+        return this;
+    }
+
+    public int getHardcoreLives() {
+        return hardcoreLives;
     }
 
     public List<IronmanGroupMember> getMembers() {

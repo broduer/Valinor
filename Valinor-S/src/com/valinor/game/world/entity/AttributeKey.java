@@ -1167,7 +1167,8 @@ public enum AttributeKey {
     // Attribute used by doors/gates to record what cycles they were opened/closed on.
     DOOR_USES,
 
-    KILLING_BLOW_HIT, RECENT_LISTING_RESULTS, BUY_LISTING_RESULTS;
+    RECENT_LISTING_RESULTS, BUY_LISTING_RESULTS,
+    HARDCORE_GROUP_FALLEN("hardcore_group_fallen", AttribType.BOOLEAN);
 
     private String saveName;
     private AttribType type;

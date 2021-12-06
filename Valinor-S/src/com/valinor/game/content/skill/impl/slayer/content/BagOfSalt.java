@@ -29,7 +29,7 @@ public class BagOfSalt {
                         player.animate(1574);
                         npc.graphic(327);
                         npc.hp(0, 0);
-                        npc.die();
+                        npc.die(null);
                     } else {
                         player.message("You use the bag of salt, but the rockslug is not weak enough.");
                     }

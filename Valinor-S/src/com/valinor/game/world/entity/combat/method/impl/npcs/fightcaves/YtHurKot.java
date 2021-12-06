@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatFactory;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 
@@ -58,12 +59,12 @@ public class YtHurKot extends Npc {
     }
 
     @Override
-    public void die() {
+    public void die(Hit killHit) {
         if (jad != null) {
             jad.removeHealer(this);
         }
         jad = null;
-        super.die();
+        super.die(killHit);
     }
 
 

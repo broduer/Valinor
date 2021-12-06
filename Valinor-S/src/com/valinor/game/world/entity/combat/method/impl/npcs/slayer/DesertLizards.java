@@ -35,7 +35,7 @@ public class DesertLizards extends CommonCombatMethod {
         npc.graphic(85);
         player.inventory().remove(new Item(ItemIdentifiers.ICE_COOLER, 1));
         npc.hp(0, 0);
-        npc.die();
+        npc.die(null);
     }
 
     private void basicAttack(Mob mob, Mob target) {

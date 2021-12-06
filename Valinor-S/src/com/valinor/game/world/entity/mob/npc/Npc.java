@@ -743,7 +743,7 @@ public class Npc extends Mob {
     }
 
     @Override
-    public void die() {
+    public void die(Hit killHit) {
         NpcDeath.execute(this);
     }
 
@@ -774,8 +774,6 @@ public class Npc extends Mob {
             // Set local hp variable to 1 to prevent it from reaching statement below.
             this.hp = 1;
         }
-        if (this.hp <= 0)
-            die();
         return this;
     }
 

@@ -76,7 +76,7 @@ public class GroupInviteAccept implements PacketListener {
                     if (invited.tile().distance(requester.tile()) < 3) {
                         if (IronmanGroupHandler.hasInvitation(invited)) {
                             requester.message(Color.PURPLE.wrap(invited.getUsername()+" has accepted your invitation and joined your group!"));
-                            IronmanGroupHandler.acceptInvitation(invited);
+                            IronmanGroupHandler.acceptInvitation(requester, invited);
                         }
                     }
                 }

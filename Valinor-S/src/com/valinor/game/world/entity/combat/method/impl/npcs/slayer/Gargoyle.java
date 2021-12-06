@@ -40,7 +40,7 @@ public class Gargoyle extends CommonCombatMethod {
         String plural = player.getEquipment().containsAny(ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225) ? "granite maul" : "rock hammer";
         player.message("You smash the Gargoyle with the "+plural+".");
         npc.hp(0, 0);
-        npc.die();
+        npc.die(null);
         npc.transmog(getCrumblingId());
         npc.animate(1520);
     }

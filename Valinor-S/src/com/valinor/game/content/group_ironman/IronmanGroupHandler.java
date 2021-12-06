@@ -2,8 +2,10 @@ package com.valinor.game.content.group_ironman;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.valinor.game.GameEngine;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupAverageSort;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupDateSort;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.Color;
@@ -22,7 +24,7 @@ import java.util.stream.Collectors;
  */
 public final class IronmanGroupHandler {
 
-    private static final Logger log = LoggerFactory.getLogger( IronmanGroupHandler.class );
+    private static final Logger log = LoggerFactory.getLogger(IronmanGroupHandler.class);
 
     /**
      * The full list of ironmen
@@ -33,6 +35,7 @@ public final class IronmanGroupHandler {
 
     /**
      * Gets a players group
+     *
      * @param player - the player we are getting group for
      */
     public static Optional<IronmanGroup> getPlayersGroup(Player player) {
@@ -69,18 +72,18 @@ public final class IronmanGroupHandler {
     public static Optional<IronmanGroup> createIronmanGroup(Player player) {
         IronmanGroup newTeam = IronmanGroup.createGroup(player);
 
-        if(getGroupByName(player.getUsername()).isPresent()) {
+        if (getGroupByName(player.getUsername()).isPresent()) {
             player.message("You already have an active ironman group.");
             return Optional.empty();
         }
 
-        if(getPlayersGroup(player).isPresent()) {
+        if (getPlayersGroup(player).isPresent()) {
             player.message("You already have an active ironman group.");
             return Optional.empty();
         }
 
         ironManGroups.add(newTeam);
-        player.message("Your own group has been successfully made.");
+        player.message("Your own group has been successfully created.");
         player.message("Your group will become visible once you start inviting members.");
         saveIronmanGroups();
         GroupIronmanInterface.open(player);
@@ -89,6 +92,7 @@ public final class IronmanGroupHandler {
 
     /**
      * Gets a group by it's name
+     *
      * @param name - the group name
      */
     public static Optional<IronmanGroup> getGroupByName(String name) {
@@ -97,6 +101,7 @@ public final class IronmanGroupHandler {
 
     /**
      * Checks if a person already has invitation
+     *
      * @param player - the player to check for invitation
      * @return - true if the person has an invitation
      */
@@ -105,13 +110,14 @@ public final class IronmanGroupHandler {
     }
 
     /**
-     * Accepts a ironman's invitation
+     * Accepts an ironman's invitation
+     *
      * @param player - the player accepted
      */
-    public static void acceptInvitation(Player player) {
+    public static void acceptInvitation(Player leader, Player player) {
         Optional<IronmanGroup> invitation = getInvitation(player);
-        if(invitation.isPresent()) {
-            invitation.get().acceptInvitation(player);
+        if (invitation.isPresent()) {
+            invitation.get().acceptInvitation(leader, player);
             player.message(Color.PURPLE.wrap("You've accepted the invitation and joined the group!"));
         }
     }
@@ -120,7 +126,7 @@ public final class IronmanGroupHandler {
         for (IronmanGroup group : ironManGroups) {
             Optional<String> invitation = group.getInvitation();
             if (invitation.isPresent()) {
-                if(player.getUsername().equalsIgnoreCase(group.getInvitation().get())) {
+                if (player.getUsername().equalsIgnoreCase(group.getInvitation().get())) {
                     return Optional.of(group);
                 }
             }
@@ -132,7 +138,7 @@ public final class IronmanGroupHandler {
         for (IronmanGroup group : ironManGroups) {
             Optional<String> invitation = group.getInvitation();
             if (invitation.isPresent()) {
-                if(player.getUsername().equalsIgnoreCase(group.getInvitation().get())) {
+                if (player.getUsername().equalsIgnoreCase(group.getInvitation().get())) {
                     group.setInvitation(Optional.empty());
                 }
             }
@@ -170,16 +176,24 @@ public final class IronmanGroupHandler {
     }
 
     public static void leaveGroup(Player player) {
-        Optional<IronmanGroup> getGroup = getPlayersGroup(player);
-        getGroup.ifPresent(ironmanGroup -> ironmanGroup.leaveGroup(player));
-        player.message(Color.PURPLE.wrap("You have left the group."));
-        saveIronmanGroups();
+        Optional<IronmanGroup> group = getPlayersGroup(player);
+        Optional<Player> leader = Optional.empty();
+        if (group.isPresent()) {
+            leader = World.getWorld().getPlayerByName(group.get().getLeaderName());
+        }
+
+        Optional<Player> finalLeader = leader;
+        if (finalLeader.isPresent()) {
+            group.ifPresent(ironmanGroup -> ironmanGroup.leaveGroup(finalLeader.get(), player));
+            player.message(Color.PURPLE.wrap("You have left the group."));
+            saveIronmanGroups();
+        }
     }
 
     public static void kick(Player leader, Player memberToKick) {
-        Optional<IronmanGroup> getGroup = getPlayersGroup(memberToKick);
-        if(getGroup.isPresent()) {
-            getGroup.ifPresent(ironmanGroup -> ironmanGroup.kickFromGroup(memberToKick));
+        Optional<IronmanGroup> group = getPlayersGroup(memberToKick);
+        if (group.isPresent()) {
+            group.ifPresent(ironmanGroup -> ironmanGroup.kickFromGroup(leader, memberToKick));
             memberToKick.message(Color.PURPLE.wrap("You have been kicked from the group."));
             saveIronmanGroups();
         } else {
@@ -189,7 +203,7 @@ public final class IronmanGroupHandler {
 
     public static void changeGroupLeader(Player leader, Player newLeader) {
         Optional<IronmanGroup> getGroup = getPlayersGroup(newLeader);
-        if(getGroup.isPresent()) {
+        if (getGroup.isPresent()) {
             getGroup.get().setLeaderName(newLeader.getUsername());
             newLeader.message(Color.PURPLE.wrap("You're the new leader of the group."));
             saveIronmanGroups();
@@ -202,28 +216,34 @@ public final class IronmanGroupHandler {
      * Loads all the groups
      */
     public static void loadIronmanGroups() {
-        try {
-            File loadDirectory = new File(SAVE_FILE);
-            List<String> contents = Files.readAllLines(loadDirectory.toPath());
-            ironManGroups = GSON.fromJson(contents.get(0), new TypeToken<List<IronmanGroup>>(){}.getType());
-            log.info("Loaded " + ironManGroups.size() + "ironmen groups");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        GameEngine.getInstance().submitLowPriority(() -> {
+            try {
+                File loadDirectory = new File(SAVE_FILE);
+                List<String> contents = Files.readAllLines(loadDirectory.toPath());
+                ironManGroups = GSON.fromJson(contents.get(0), new TypeToken<List<IronmanGroup>>() {
+                }.getType());
+                log.info("Loaded " + ironManGroups.size() + "ironmen groups");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     /**
      * Saves all groups to the designated file
      */
     public static void saveIronmanGroups() {
-        try {
-            File loadDirectory = new File(SAVE_FILE);
-            String contents = GSON.toJson(ironManGroups);
-            Files.write(loadDirectory.toPath(), contents.getBytes());
-            ironManGroups = GSON.fromJson(contents, new TypeToken<List<IronmanGroup>>(){}.getType());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        GameEngine.getInstance().submitLowPriority(() -> {
+            try {
+                File loadDirectory = new File(SAVE_FILE);
+                String contents = GSON.toJson(ironManGroups);
+                Files.write(loadDirectory.toPath(), contents.getBytes());
+                ironManGroups = GSON.fromJson(contents, new TypeToken<List<IronmanGroup>>() {
+                }.getType());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
     private IronmanGroupHandler() throws IllegalAccessException {

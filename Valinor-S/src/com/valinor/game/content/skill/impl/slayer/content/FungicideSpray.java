@@ -74,7 +74,7 @@ public class FungicideSpray {
                         }
                         if (npc.hp() <= 1) {
                             npc.hp(0, 0);
-                            npc.die();
+                            npc.die(null);
                         } else {
                             player.message("You use the fungicide spray, but the zygomite is not weak enough.");
                         }

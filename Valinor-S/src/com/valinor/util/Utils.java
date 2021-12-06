@@ -2084,4 +2084,23 @@ public class Utils {
         }
         return bldr.toString();
     }
+
+    public static String formatMoneyString(int amount){
+        String rawString = String.format("%d",amount);
+        int length = rawString.length();
+
+        String result = rawString;
+        if(length >= 13){
+            result = rawString.substring(0, rawString.length()-12) + "," + rawString.substring(rawString.length()-12, rawString.length()-9) + "," +rawString.substring(rawString.length()-9, rawString.length()-6) + "," + rawString.substring(rawString.length()-6, rawString.length()-3) + "," + rawString.substring(rawString.length()-3, rawString.length());
+        }else if(length >= 10){
+            result = rawString.substring(0, rawString.length()-9) + "," +rawString.substring(rawString.length()-9, rawString.length()-6) + "," + rawString.substring(rawString.length()-6, rawString.length()-3) + "," + rawString.substring(rawString.length()-3, rawString.length());
+
+        }else if(length >= 7){
+            result = rawString.substring(0, rawString.length()-6) + "," + rawString.substring(rawString.length()-6, rawString.length()-3) + "," + rawString.substring(rawString.length()-3, rawString.length());
+
+        }else if(length >= 4){
+            result = rawString.substring(0, rawString.length()-3) + "," + rawString.substring(rawString.length()-3, rawString.length());
+        }
+        return result;
+    }
 }

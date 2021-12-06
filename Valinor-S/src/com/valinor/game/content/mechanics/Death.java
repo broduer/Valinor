@@ -5,6 +5,8 @@ import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.mechanics.break_items.BreakItemsOnDeath;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.tournaments.TournamentManager;
@@ -12,6 +14,8 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
+import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.magic.Autocasting;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.Skulling;
@@ -19,10 +23,14 @@ import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Color;
+import com.valinor.util.Icon;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
@@ -32,6 +40,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.RETRIBUTION;
@@ -97,7 +106,7 @@ public class Death {
         }
     }
 
-    public static void death(Player player) {
+    public static void death(Player player, Hit killHit) {
         player.lock(); //Lock the player
 
         Chain.bound(null).name("check_double_death_task").runFn(3, () -> {// Finish the proper delay after death (2 ticks)
@@ -184,6 +193,13 @@ public class Death {
             } else {
                 player.teleport(GameServer.properties().defaultTile); //Teleport the player to Varrock square
                 player.message("Oh dear, you are dead!"); //Send the death message
+            }
+
+            /**
+             * HCIM - revoke status
+             */
+            if (player.ironMode() == IronMode.HARDCORE) {
+                hardcoreDeath(player, killHit);
             }
 
             if(player.<Boolean>getAttribOr(HP_EVENT_ACTIVE,false)) {
@@ -288,6 +304,55 @@ public class Death {
 
             // Shout something.
             pet.forceChat(SHOUTS.get(World.getWorld().random(SHOUTS.size() - 1)));
+        }
+    }
+
+    public static void hardcoreDeath(Player player, Hit killHit) {
+        //Check if the player is in a group
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if (group.isPresent()) {
+            var lives = group.get().getHardcoreLives();
+            group.get().setHardcoreLives(lives - 1);
+            var newLives = group.get().getHardcoreLives();
+            if(newLives == 0) {
+                for (Player member : group.get().getOnlineMembers()) {
+                    member.ironMode(IronMode.REGULAR);
+                    member.setPlayerRights(PlayerRights.IRON_MAN);
+                    member.getPacketSender().sendRights();
+                }
+                player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
+            } else {
+                String plural = newLives == 1 ? "life" : "lives";
+                player.message(Color.PURPLE.wrap("Your group has " + newLives + " " + plural + " left."));
+            }
+        }
+
+        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+            player.setPlayerRights(PlayerRights.IRON_MAN);
+            player.getPacketSender().sendRights();
+        }
+        player.ironMode(IronMode.REGULAR);
+        player.message(Color.RED.wrap("You have fallen as a Hardcore Ironman, your Hardcore status has been revoked."));
+        if (player.skills().totalLevel() >= 100) {
+            String overall = Utils.formatMoneyString(player.skills().totalLevel());
+            if (killHit == null) {
+                World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + "!"));
+            } else if (killHit.getAttacker() != null) {
+                if (killHit.getAttacker() instanceof Player) {
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + ", losing a fight to " + killHit.getAttacker().getAsPlayer().getUsername() +"!"));
+                } else {
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + ", brutally"));
+                    World.getWorld().sendWorldMessage(Color.RED.wrap("executed by " + killHit.getAttacker().getAsNpc().def().name +"!"));
+                }
+            } else {
+                if (killHit.splatType == SplatType.POISON_HITSPLAT) {
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has been poisoned to death as a Hardcore Ironman with a total level of " + overall + "!"));
+                } else if (killHit.splatType == SplatType.VENOM_HITSPLAT) {
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has succumbed to venom as a Hardcore Ironman with a total level of " + overall + "!"));
+                } else { // not sure if this can happen? can't think of anything
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + "!"));
+                }
+            }
         }
     }
 }

@@ -123,6 +123,7 @@ public class PlayerSave {
                     player.expmode(details.expMode);
                 player.ironMode(Objects.requireNonNullElse(details.ironMode, IronMode.NONE));
                 player.putAttrib(GROUP_NAME_SET, details.groupNameSet);
+                player.putAttrib(HARDCORE_GROUP_FALLEN, details.hardcoreGroupFallen);
                 if(details.lastIP != null) {
                     player.setHostAddress(details.lastIP);
                 }
@@ -579,6 +580,7 @@ public class PlayerSave {
         private final ExpMode expMode;
         private final IronMode ironMode;
         private final boolean groupNameSet;
+        private final boolean hardcoreGroupFallen;
         private final String lastIP;
         private final String mac;
         private final int accountPin;
@@ -995,6 +997,7 @@ public class PlayerSave {
             expMode = player.expmode();
             ironMode = player.ironMode();
             groupNameSet = Player.getAttribBooleanOr(player, GROUP_NAME_SET,false);
+            hardcoreGroupFallen = Player.getAttribBooleanOr(player, HARDCORE_GROUP_FALLEN,false);
             lastIP = player.getHostAddress();
             mac = player.getAttribOr(MAC_ADDRESS, "invalid");
             accountPin = Player.getAttribIntOr(player, ACCOUNT_PIN,0);

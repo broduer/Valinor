@@ -42,7 +42,7 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.HARDCORE);
+                player.ironMode(IronMode.ULTIMATE);
             }
             case 42423 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -50,7 +50,7 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.NONE);
+                player.ironMode(IronMode.HARDCORE);
             }
             case 42405 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -59,14 +59,6 @@ public class AccountSelection extends PacketInteraction {
                 player.getPacketSender().sendChangeSprite(42405, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
                 player.ironMode(IronMode.NONE);
-            }
-            case 42406 -> {
-                player.getPacketSender().sendChangeSprite(42402, (byte) 0);
-                player.getPacketSender().sendChangeSprite(42403, (byte) 0);
-                player.getPacketSender().sendChangeSprite(42423, (byte) 0);
-                player.getPacketSender().sendChangeSprite(42405, (byte) 0);
-                player.getPacketSender().sendChangeSprite(42406, (byte) 2);
-                player.ironMode(IronMode.REGULAR);
             }
         }
     }
