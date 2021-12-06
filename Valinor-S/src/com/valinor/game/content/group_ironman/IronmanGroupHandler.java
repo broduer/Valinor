@@ -19,6 +19,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
+import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_IRON_MAN;
+
 /**
  * @author optimum on 14/05/2020
  */
@@ -83,6 +86,10 @@ public final class IronmanGroupHandler {
         }
 
         ironManGroups.add(newTeam);
+        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+            player.setPlayerRights(player.ironMode() == IronMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
+            player.getPacketSender().sendRights();
+        }
         player.message("Your own group has been successfully created.");
         player.message("Your group will become visible once you start inviting members.");
         saveIronmanGroups();

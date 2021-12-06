@@ -15,6 +15,8 @@ import java.util.Optional;
 
 import static com.valinor.game.content.group_ironman.IronmanGroupHandler.saveIronmanGroups;
 import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
+import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
+import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_IRON_MAN;
 
 /**
  * Represents an ironman group
@@ -51,6 +53,11 @@ public class IronmanGroup {
         IronmanGroupMember member = new IronmanGroupMember(player);
         if(!members.contains(member)) {
             members.add(member);
+        }
+
+        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+            player.setPlayerRights(player.ironMode() == IronMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
+            player.getPacketSender().sendRights();
         }
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);

@@ -316,9 +316,11 @@ public class Death {
             var newLives = group.get().getHardcoreLives();
             if(newLives == 0) {
                 for (Player member : group.get().getOnlineMembers()) {
+                    if(!member.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                        member.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
+                        member.getPacketSender().sendRights();
+                    }
                     member.ironMode(IronMode.REGULAR);
-                    member.setPlayerRights(PlayerRights.IRON_MAN);
-                    member.getPacketSender().sendRights();
                 }
                 player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
             } else {
@@ -328,7 +330,7 @@ public class Death {
         }
 
         if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            player.setPlayerRights(PlayerRights.IRON_MAN);
+            player.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
         player.ironMode(IronMode.REGULAR);

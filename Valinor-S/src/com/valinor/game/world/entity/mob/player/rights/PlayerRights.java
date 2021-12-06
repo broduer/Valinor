@@ -44,9 +44,9 @@ public enum PlayerRights {
 
     GOLD_YOUTUBER("Gold Youtuber", 1089, 19, 1),
 
-    ELITE_IRON_MAN("Elite Iron Man", 1769, 16, 0),
+    GROUP_IRON_MAN("Group Iron Man", 1915, 16, 0),
 
-    GROUP_IRON_MAN("Group Iron Man", 1770, 17, 0),
+    GROUP_HARDCORE_IRONMAN("Group Hardcore Iron Man", 1916, 17, 0),
 
     DARK_LORD("Dark Lord", 1838, 18, 0),
 
