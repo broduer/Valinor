@@ -2492,7 +2492,7 @@ public class Client extends GameApplet {
                                             if (child.id == 5064 && lootingBag) {
                                                 child.actions = new String[]{"Check", null, null, null, null, null, null};
                                             } else if (child.id == 5064) {
-                                                if(child.parent == 5063) {
+                                                if(child.parent == 5063 && widget_overlay_id == 34400) {
                                                     child.actions = new String[]{null, null, null, null, null, null, null};
                                                 } else {
                                                     child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
