@@ -1,6 +1,7 @@
 package com.valinor.cache.graphics.widget.impl;
 
 import com.valinor.cache.graphics.font.AdvancedFont;
+import com.valinor.cache.graphics.widget.DrawLine;
 import com.valinor.cache.graphics.widget.Widget;
 
 /**
@@ -13,6 +14,7 @@ public class IronmanWidget extends Widget {
     public static void unpack(AdvancedFont[] font) {
         ironman_widget_new(font);
         ironmanLeaderboard(font);
+        ironmanStorage(font);
     }
 
     public static void ironmanLeaderboard(AdvancedFont[] font) {
@@ -103,13 +105,101 @@ public class IronmanWidget extends Widget {
             recent_section++;
             addSprite(i, recent_section % 2 == 0 ? 1782 : 1783);
             addText(i + 1, "Group Name", font, 2, 0xff0000);
-            addText(i + 2, "Henkie, Patrick, Malefique, Wezel", font, 0, 16750623);
+            addText(i + 2, "Henkie, Patrick, Malefique, Wezel, Rakka rakka", font, 0, 16750623);
 
             recent.child(recent_child++, i, 0, recent_y);
             recent.child(recent_child++, i + 1, 3, recent_y + 6);
             recent.child(recent_child++, i + 2, 130, recent_y + 2);
             recent_y += 30;
         }
+    }
+
+    public static void ironmanStorage(AdvancedFont[] font) {
+        Widget widget = addInterface(67500);
+        addSprite(67501, 1921);
+        closeButton(67502, 107, 108,false);
+        addText(67503, "Group Storage", font, 2, 0xff981f, false, true);
+        addText(67504, "0", font, 0, 0xff981f, false, true);
+        new DrawLine(67505, 12, 0xFE9624, 255, DrawLine.LineType.HORIZONTAL);
+        addText(67506, "80", font, 0, 0xff981f, false, true);
+        addButton(67507, 1922, "Back to bank");
+        addSprite(67508, 1924);
+        addText(67509, "1,234,567", font, 0, 0xff9933, false, true);
+        adjustableConfig(67510, "Shuffle items up", 1923, 180, 728, 727);
+        adjustableConfig(67511, "Search", 729, 180, 728, 727);
+        adjustableConfig(67512, "Deposit inventory", 730, 180, 728, 727);
+        addConfigButton(67513, 67500, 122, 121, "1", 1455, 1, 5);
+        addConfigButton(67514, 67500, 122, 121,"5", 1456, 0, 5);
+        addConfigButton(67515, 67500, 122, 121,"10", 1457, 0, 5);
+        addConfigButton(67516, 67500, 122, 121,"X", 1458, 0, 5);
+        addConfigButton(67517, 67500, 122, 121,"All", 1459, 0, 5);
+        addText(67518, "1", font, 1, 0xff981f, false, true);
+        addText(67519, "5", font, 1, 0xff981f, false, true);
+        addText(67520, "10", font, 1, 0xff981f, false, true);
+        addText(67521, "X", font, 1, 0xff981f, false, true);
+        addText(67522, "All", font, 1, 0xff981f, false, true);
+        addText(67523, "Quantity:", font, 1, 0xff981f, false, true);
+        addText(67524, "Rearrange mode:", font, 1, 0xff981f, false, true);
+        addText(67525, "Withdraw as:", font, 1, 0xff981f, false, true);
+        addConfigButton(67526, 67500, 1926, 1925, "Swap", 1460, 0, 5);
+        addConfigButton(67527, 67500, 1926, 1925,"Insert", 1461, 0, 5);
+        addText(67528, "Swap", font, 1, 0xff981f, false, true);
+        addText(67529, "Insert", font, 1, 0xff981f, false, true);
+        addConfigButton(67530, 67500, 1928, 1927, "Item", 1462, 0, 5);
+        addConfigButton(67531, 67500, 1928, 1927,"Note", 1463, 0, 5);
+        addText(67532, "Item", font, 1, 0xff981f, false, true);
+        addText(67533, "Note", font, 1, 0xff981f, false, true);
+        addText(67534, "Save your changes", font, 0, 0xffffff, false, true);
+        addButton(67535, 1929,"Save");
+        addHoverText(67536, "Save", "Save", font, 2, 0xff981f, false, true, 67, 0xffffff);
+        addHoverText(67537, "Back to the bank", "Back to the bank", font, 1, 0xff981f, false, true, 67, 0xffffff);
+
+        Widget container = addTabInterface(67540);
+        container.width = 390;
+        container.height = 245;
+        container.scrollMax = 300;
+        addContainer(67541, TYPE_CONTAINER,8,10,15,20,0,false,true,true, "Remove", "Remove-5", "Remove-10", "Remove-All", "Remove-X");
+        container.totalChildren(1);
+        container.child(0, 67541, 0, -4);
+
+        setChildren(37, widget);
+        setBounds(67501, 12, 1, 0, widget);
+        setBounds(67502, 473, 8, 1, widget);
+        setBounds(67503, 200, 10, 2, widget);
+        setBounds(67504, 25, 6, 3, widget);
+        setBounds(67505, 23, 16, 4, widget);
+        setBounds(67506, 22, 17, 5, widget);
+        setBounds(67507, 50, 7, 6, widget);
+        setBounds(67508, 395, 10, 7, widget);
+        setBounds(67509, 415, 12, 8, widget);
+        setBounds(67510, 25, 125, 9, widget);
+        setBounds(67511, 25, 175, 10, widget);
+        setBounds(67512, 25, 225, 11, widget);
+        setBounds(67513, 345, 297, 12, widget);
+        setBounds(67514, 375, 297, 13, widget);
+        setBounds(67515, 405, 297, 14, widget);
+        setBounds(67516, 435, 297, 15, widget);
+        setBounds(67517, 465, 297, 16, widget);
+        setBounds(67518, 353, 302, 17, widget);
+        setBounds(67519, 383, 302, 18, widget);
+        setBounds(67520, 410, 302, 19, widget);
+        setBounds(67521, 443, 302, 20, widget);
+        setBounds(67522, 470, 302, 21, widget);
+        setBounds(67523, 390, 282, 22, widget);
+        setBounds(67524, 28, 281, 23, widget);
+        setBounds(67525, 140, 282, 24, widget);
+        setBounds(67526, 23, 297, 25, widget);
+        setBounds(67527, 78, 297, 26, widget);
+        setBounds(67528, 32, 301, 27, widget);
+        setBounds(67529, 87, 301, 28, widget);
+        setBounds(67530, 133, 297, 29, widget);
+        setBounds(67531, 178, 297, 30, widget);
+        setBounds(67532, 141, 301, 31, widget);
+        setBounds(67533, 184, 301, 32, widget);
+        setBounds(67534, 233, 282, 33, widget);
+        setBounds(67535, 232, 297, 34, widget);
+        setBounds(67536, 265, 301, 35, widget);
+        setBounds(67540, 72, 40, 36, widget);
     }
 
     private static void ironman_widget_new(AdvancedFont[] font) {

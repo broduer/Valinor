@@ -24,7 +24,7 @@ public class BankWidget extends Widget {
     private static void bank(AdvancedFont[] font) {
         int interfaceId = 26000;
         Widget bank = addInterface(interfaceId);
-        bank.totalChildren(71);
+        bank.totalChildren(72);
         int child = 9;
         for (int tab = 0; tab < 40; tab += 4) {
             addButton(interfaceId + 31 + tab, Client.spriteCache.get(109), Client.spriteCache.get(109),
@@ -136,6 +136,7 @@ public class BankWidget extends Widget {
         bank.child(68, interfaceId + 117, 229, 310);
         bank.child(69, interfaceId + 118, 300, 14);
         bank.child(70, interfaceId + 119, 25, 43);
+        bank.child(71, interfaceId + 120, 50, 8);
 
         int[] interfaces = new int[] { 5386, 5387, 8130, 8131 };
 
@@ -187,6 +188,7 @@ public class BankWidget extends Widget {
         addText(interfaceId + 117, "1", font, 1, 0xff981f, true, true);
         addText(interfaceId + 118, "", font, 0, 0xFF981F, false, true);
         addButton(interfaceId + 119,1419,"Show worn items");
+        addButton(interfaceId + 120, 1931,"Group storage");
     }
 
     private static void bank_settings(AdvancedFont[] font) {
