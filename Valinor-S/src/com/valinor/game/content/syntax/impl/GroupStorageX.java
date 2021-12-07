@@ -1,8 +1,12 @@
 package com.valinor.game.content.syntax.impl;
 
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.entity.mob.player.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -30,10 +34,15 @@ public class GroupStorageX implements EnterSyntax {
         if (item_id < 0 || slot_id < 0 || input <= 0) {
             return;
         }
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         if (deposit) {
-            player.getGroupStorage().deposit(slot_id, (int) input);
+            if(group.isPresent()) {
+                group.get().getGroupStorage().deposit(slot_id, (int) input);
+            }
         } else {
-            player.getGroupStorage().withdraw(item_id, slot_id, (int) input);
+            if(group.isPresent()) {
+                group.get().getGroupStorage().withdraw(item_id, slot_id, (int) input);
+            }
         }
     }
 

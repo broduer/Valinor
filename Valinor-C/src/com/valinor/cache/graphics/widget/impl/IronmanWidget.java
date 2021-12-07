@@ -160,7 +160,7 @@ public class IronmanWidget extends Widget {
         container.scrollMax = 300;
         addContainer(67541, TYPE_CONTAINER,8,10,15,20,0,false,true,true, "Remove", "Remove-5", "Remove-10", "Remove-All", "Remove-X");
         container.totalChildren(1);
-        container.child(0, 67541, 0, -4);
+        container.child(0, 67541, 0, -1);
 
         setChildren(37, widget);
         setBounds(67501, 12, 1, 0, widget);

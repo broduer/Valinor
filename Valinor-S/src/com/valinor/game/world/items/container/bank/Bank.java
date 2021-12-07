@@ -2,6 +2,7 @@ package com.valinor.game.world.items.container.bank;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.content.duel.Dueling;
+import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.InterfaceConstants;
@@ -732,7 +733,10 @@ public class Bank extends ItemContainer {
 
             case 26120://group storage
                 player.getInterfaceManager().close();//Close bank
-                player.getGroupStorage().open();//Open group storage
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if(group.isPresent()) {
+                    group.get().getGroupStorage().open();//Open group storage
+                }
                 return true;
 
             case 26102:

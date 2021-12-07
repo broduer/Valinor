@@ -2,6 +2,8 @@ package com.valinor.game.content.packet_actions.interactions.container;
 
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GamblingSession;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.syntax.impl.LootingBagX;
 import com.valinor.game.content.trade.Trading;
 import com.valinor.game.content.tradingpost.TradingPost;
@@ -12,6 +14,8 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
 import com.valinor.net.packet.interaction.PacketInteractionManager;
+
+import java.util.Optional;
 
 import static com.valinor.game.world.InterfaceConstants.*;
 
@@ -78,7 +82,10 @@ public class FourthContainerAction {
         if(interfaceId == GROUP_STORAGE_CONTAINER) {
             boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
             if(usingGroupStorage) {
-                player.getBank().withdraw(id, slot, Integer.MAX_VALUE);
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if(group.isPresent()) {
+                    group.get().getGroupStorage().withdraw(id, slot, Integer.MAX_VALUE);
+                }
                 return;
             }
         }
@@ -93,7 +100,10 @@ public class FourthContainerAction {
 
             boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
             if(usingGroupStorage) {
-                player.getGroupStorage().deposit(slot, count);
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if(group.isPresent()) {
+                    group.get().getGroupStorage().deposit(slot, count);
+                }
                 return;
             }
 

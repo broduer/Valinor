@@ -2,6 +2,8 @@ package com.valinor.game.content.packet_actions.interactions.container;
 
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GamblingSession;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.packet_actions.interactions.equipment.EquipmentActions;
 import com.valinor.game.content.skill.impl.crafting.impl.Jewellery;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
@@ -14,6 +16,8 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
 import com.valinor.net.packet.interaction.PacketInteractionManager;
+
+import java.util.Optional;
 
 import static com.valinor.game.content.skill.impl.smithing.EquipmentMaking.*;
 import static com.valinor.game.world.InterfaceConstants.*;
@@ -99,7 +103,10 @@ public class SecondContainerAction {
         if(interfaceId == GROUP_STORAGE_CONTAINER) {
             boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
             if(usingGroupStorage) {
-                player.getBank().withdraw(id, slot, 5);
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if(group.isPresent()) {
+                    group.get().getGroupStorage().withdraw(id, slot, 5);
+                }
                 return;
             }
         }
@@ -113,7 +120,10 @@ public class SecondContainerAction {
 
             boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
             if(usingGroupStorage) {
-                player.getGroupStorage().deposit(slot, 5);
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if(group.isPresent()) {
+                    group.get().getGroupStorage().deposit(slot, 5);
+                }
                 return;
             }
 

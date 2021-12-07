@@ -4,6 +4,8 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.container.bank.GroupStorage;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -32,6 +34,7 @@ public class IronmanGroup {
     private List<IronmanGroupMember> members;
     private Date dateStated;
     private Optional<String> invitation = Optional.empty();
+    private GroupStorage groupStorage;
 
     /**
      * Creates a new group from a player
@@ -45,7 +48,8 @@ public class IronmanGroup {
             .setHardcoreGroup(player.ironMode() == IronMode.HARDCORE)
             .setHardcoreLives(1)
             .setGroupName(player.getUsername())
-            .setMembers(members);
+            .setMembers(members)
+            .setGroupStorage(new Item[0]);
     }
 
     public void acceptInvitation(Player leader, Player player) {
@@ -297,6 +301,17 @@ public class IronmanGroup {
         return hardcoreLives;
     }
 
+    public IronmanGroup setGroupStorage(Item[] storage) {
+        for (int i = 0; i < storage.length; i++) {
+            this.groupStorage.set(i, storage[i], false);
+        }
+        return this;
+    }
+
+    public GroupStorage getGroupStorage() {
+        return this.groupStorage;
+    }
+
     public List<IronmanGroupMember> getMembers() {
         return members;
     }
@@ -314,7 +329,6 @@ public class IronmanGroup {
         this.dateStated = dateStated;
         return this;
     }
-
 
     public Optional<String> getInvitation() {
         return invitation;

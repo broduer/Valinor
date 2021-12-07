@@ -8,6 +8,8 @@ import com.valinor.game.content.clan.ClanButtons;
 import com.valinor.game.content.collection_logs.CollectionLogButtons;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.emote.Emotes;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
 import com.valinor.game.content.mechanics.referrals.Referrals;
@@ -36,6 +38,7 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.incoming_packets.ButtonClickPacketListener;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static com.valinor.game.world.entity.combat.magic.Autocasting.ANCIENT_SPELL_AUTOCAST_STAFFS;
 import static com.valinor.net.packet.incoming_packets.ButtonClickPacketListener.LOGOUT;
@@ -395,7 +398,8 @@ public class Buttons {
                 if (player.getBank().buttonAction(button)) {
                     return;
                 }
-                if (player.getGroupStorage().buttonAction(button)) {
+                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+                if (group.isPresent() && group.get().getGroupStorage().buttonAction(button)) {
                     return;
                 }
                 if (Referrals.INSTANCE.handleButton(player, button)) {

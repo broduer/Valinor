@@ -1,8 +1,8 @@
 package com.valinor.game.world.items.container.bank;
 
+import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.world.InterfaceConstants;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
@@ -69,13 +69,17 @@ public class GroupStorage extends ItemContainer {
             return;
         }
 
-        player.putAttrib(USING_GROUP_STORAGE,true);
-        player.getPacketSender().sendString(67504, Integer.toString(this.size()));
-        player.getPacketSender().sendString(67506, Integer.toString(SIZE));
-        player.getPacketSender().sendString(67509,"Infinity");
-        player.getInterfaceManager().openInventory(InterfaceConstants.GROUP_STORAGE_WIDGET, InterfaceConstants.INVENTORY_STORE - 1);
-        refresh();
-        refreshConfigs();
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if(group.isPresent()) {
+            player.putAttrib(USING_GROUP_STORAGE,true);
+            player.getPacketSender().sendString(67504, Integer.toString(group.get().getGroupStorage().size()));
+            player.getPacketSender().sendString(67506, Integer.toString(SIZE));
+            player.getPacketSender().sendString(67509,"Infinity");
+            player.getInterfaceManager().openInventory(InterfaceConstants.GROUP_STORAGE_WIDGET, InterfaceConstants.INVENTORY_STORE - 1);
+            refresh();
+            refreshConfigs();
+        }
+
     }
 
     private void refreshConfigs() {
@@ -90,6 +94,7 @@ public class GroupStorage extends ItemContainer {
      */
     public void close() {
         player.putAttrib(USING_GROUP_STORAGE, false);
+        save();
     }
 
     /**
@@ -97,9 +102,12 @@ public class GroupStorage extends ItemContainer {
      */
     @Override
     public void sync() {
-        player.inventory().refresh(player, InterfaceConstants.INVENTORY_STORE);
-        player.getPacketSender().sendItemOnInterface(InterfaceConstants.GROUP_STORAGE_CONTAINER, toArray());
-        player.inventory().refresh();
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if(group.isPresent()) {
+            player.inventory().refresh(player, InterfaceConstants.INVENTORY_STORE);
+            player.getPacketSender().sendItemOnInterface(InterfaceConstants.GROUP_STORAGE_CONTAINER, group.get().getGroupStorage().toArray());
+            player.inventory().refresh();
+        }
     }
 
     public void deposit(int slot, int amount) {
@@ -217,6 +225,12 @@ public class GroupStorage extends ItemContainer {
         refresh();
     }
 
+    public void save() {
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        group.ifPresent(ironmanGroup -> ironmanGroup.setGroupStorage(group.get().getGroupStorage().toArray()));
+        IronmanGroupHandler.saveIronmanGroups();
+    }
+
     /**
      * Handles depositing the entire inventory.
      */
@@ -273,6 +287,7 @@ public class GroupStorage extends ItemContainer {
             return true;
         }
         if(button == 67535 || button == 67536) {//Save
+            save();
             return true;
         }
         if(button == 67513) {//1

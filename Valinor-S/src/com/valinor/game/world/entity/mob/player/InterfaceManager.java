@@ -1,9 +1,13 @@
 package com.valinor.game.world.entity.mob.player;
 
 import com.valinor.game.GameConstants;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.util.Utils;
+
+import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.*;
 
@@ -123,7 +127,10 @@ public class InterfaceManager {
         }
 
         if (player.hasAttrib(USING_GROUP_STORAGE)) {
-            player.getGroupStorage().close();
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if(group.isPresent()) {
+                group.get().getGroupStorage().close();
+            }
         }
 
         if (player.hasAttrib(AttributeKey.BANKING)) {

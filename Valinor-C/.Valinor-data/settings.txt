@@ -1,6 +1,6 @@
 questTabOpenedTab = 2
 cameraSpeed = SLOW
-zoom_distance = 490
+zoom_distance = 875
 drag_item_value = 10
 player_attack_priority = 0
 npc_attack_priority = 2

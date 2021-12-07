@@ -1862,6 +1862,13 @@ public class Player extends Mob {
     }
 
     public void syncContainers() {
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(this);
+        if(group.isPresent()) {
+            if (group.get().getGroupStorage().dirty) {
+                group.get().getGroupStorage().sync();
+                group.get().getGroupStorage().dirty = false;
+            }
+        }
         if (getBank().dirty) {
             getBank().sync();
             getBank().dirty = false;
@@ -2241,12 +2248,6 @@ public class Player extends Mob {
 
     public final Bank getBank() {
         return bank;
-    }
-
-    private final GroupStorage groupStorage = new GroupStorage(this);
-
-    public final GroupStorage getGroupStorage() {
-        return groupStorage;
     }
 
     public PriceChecker getPriceChecker() {
