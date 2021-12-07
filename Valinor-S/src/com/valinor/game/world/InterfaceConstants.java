@@ -29,6 +29,8 @@ public class InterfaceConstants {
 
     public static final int WITHDRAW_BANK = 5382;
 
+    public static final int GROUP_STORAGE_CONTAINER = 67541;
+
     /**
      * The inventory interface id, used to set the items right click values
      * to 'sell'.
@@ -44,6 +46,7 @@ public class InterfaceConstants {
     public static final int BARROWS_REWARD_CONTAINER = 25406;
     public static final int CLAN_CHAT = 33800;
     public static final int BANK_WIDGET = 26000;
+    public static final int GROUP_STORAGE_WIDGET = 67500;
     public static final int DISPLAY_NAME_WIDGET = 27100;
 
     /** The looting bag display widget identifier. */

@@ -99,6 +99,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.bank.Bank;
 import com.valinor.game.world.items.container.bank.DepositBox;
+import com.valinor.game.world.items.container.bank.GroupStorage;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.items.container.inventory.Inventory;
@@ -2240,6 +2241,12 @@ public class Player extends Mob {
 
     public final Bank getBank() {
         return bank;
+    }
+
+    private final GroupStorage groupStorage = new GroupStorage(this);
+
+    public final GroupStorage getGroupStorage() {
+        return groupStorage;
     }
 
     public PriceChecker getPriceChecker() {

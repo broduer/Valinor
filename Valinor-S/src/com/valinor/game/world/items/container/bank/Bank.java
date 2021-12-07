@@ -2,6 +2,7 @@ package com.valinor.game.world.items.container.bank;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.content.duel.Dueling;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.entity.AttributeKey;
@@ -156,6 +157,7 @@ public class Bank extends ItemContainer {
         player.getPacketSender().sendConfig(317, quantityFive ? 1 : 0);
         player.getPacketSender().sendConfig(320, quantityOne ? 1 : 0);
         player.getPacketSender().setWidgetActive(26101, player.getBank().placeHolder);
+        player.getPacketSender().sendInterfaceDisplayState(26120, !IronmanGroupHandler.isGroupIronman(player));
     }
 
     /**
@@ -727,6 +729,12 @@ public class Bank extends ItemContainer {
             return true;
         }
         switch (button) {
+
+            case 26120://group storage
+                player.getInterfaceManager().close();//Close bank
+                player.getGroupStorage().open();//Open group storage
+                return true;
+
             case 26102:
                 // client sided search btn does nothing here.
                 return true;

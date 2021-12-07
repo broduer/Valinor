@@ -395,6 +395,9 @@ public class Buttons {
                 if (player.getBank().buttonAction(button)) {
                     return;
                 }
+                if (player.getGroupStorage().buttonAction(button)) {
+                    return;
+                }
                 if (Referrals.INSTANCE.handleButton(player, button)) {
                     return;
                 }

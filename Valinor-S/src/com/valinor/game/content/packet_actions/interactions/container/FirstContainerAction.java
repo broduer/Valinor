@@ -5,6 +5,7 @@ import com.valinor.game.content.gambling.GamblingSession;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.content.skill.impl.crafting.impl.Jewellery;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
+import com.valinor.game.content.syntax.impl.GroupStorageX;
 import com.valinor.game.content.trade.Trading;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
@@ -88,6 +89,14 @@ public class FirstContainerAction {
             player.getLootingBag().deposit(item, 1, null);
         }
 
+        if(interfaceId == GROUP_STORAGE_CONTAINER) {
+            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
+            if(usingGroupStorage) {
+                player.getBank().withdraw(id, slot, 1);
+                return;
+            }
+        }
+
         if (interfaceId == WITHDRAW_BANK) {
             if (player.getBank().quantityFive) {
                 player.getBank().withdraw(id, slot, 5);
@@ -126,6 +135,12 @@ public class FirstContainerAction {
             boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
             if (priceChecking) {
                 player.getPriceChecker().deposit(slot, 1);
+                return;
+            }
+
+            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
+            if(usingGroupStorage) {
+                player.getGroupStorage().deposit(slot, 1);
                 return;
             }
 

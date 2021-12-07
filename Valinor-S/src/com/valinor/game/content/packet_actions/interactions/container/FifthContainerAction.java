@@ -25,6 +25,7 @@ public class FifthContainerAction {
     public static void fifthAction(Player player, int interfaceId, int slot, int id) {
         boolean banking = player.getAttribOr(AttributeKey.BANKING, false);
         boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
+        boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
         if(PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 5)) {
             return;
         }
@@ -44,6 +45,15 @@ public class FifthContainerAction {
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?");
             }
         }
+
+        if(interfaceId == GROUP_STORAGE_CONTAINER) {
+            if(usingGroupStorage) {
+                player.setEnterSyntax(new GroupStorageX(id, slot, false));
+                player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?");
+                return;
+            }
+        }
+
         if (interfaceId == DEPOSIT_BOX_CONTAINER_ID) {
             player.setEnterSyntax(new DepositBoxX(id, slot));
             player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
@@ -53,10 +63,19 @@ public class FifthContainerAction {
             if (priceChecking) {
                 player.setEnterSyntax(new PriceCheckX(id, slot, true));
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
-                /* Bank store x */
-            } else if (banking) {
+                return;
+            }
+
+            if (banking) {
                 player.setEnterSyntax(new BankX(id, slot, true));
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
+                return;
+            }
+
+            if(usingGroupStorage) {
+                player.setEnterSyntax(new GroupStorageX(id, slot, true));
+                player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
+                return;
             }
         }
 

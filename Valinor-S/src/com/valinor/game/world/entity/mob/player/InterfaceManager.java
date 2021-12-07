@@ -122,6 +122,10 @@ public class InterfaceManager {
             Shop.closeShop(player);
         }
 
+        if (player.hasAttrib(USING_GROUP_STORAGE)) {
+            player.getGroupStorage().close();
+        }
+
         if (player.hasAttrib(AttributeKey.BANKING)) {
             player.getBank().close();
         }

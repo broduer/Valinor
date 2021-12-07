@@ -75,12 +75,26 @@ public class FourthContainerAction {
             player.getBank().withdraw(id, slot, Integer.MAX_VALUE);
         }
 
+        if(interfaceId == GROUP_STORAGE_CONTAINER) {
+            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
+            if(usingGroupStorage) {
+                player.getBank().withdraw(id, slot, Integer.MAX_VALUE);
+                return;
+            }
+        }
+
         if (interfaceId == INVENTORY_STORE) {
             boolean banking = player.getAttribOr(AttributeKey.BANKING, false);
             boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
 
             if (priceChecking) {
                 player.getPriceChecker().deposit(slot, Integer.MAX_VALUE);
+            }
+
+            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
+            if(usingGroupStorage) {
+                player.getGroupStorage().deposit(slot, count);
+                return;
             }
 
             if (banking) {
