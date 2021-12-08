@@ -34,7 +34,15 @@ public class IronmanGroup {
     private List<IronmanGroupMember> members;
     private Date dateStated;
     private Optional<String> invitation = Optional.empty();
-    private GroupStorage groupStorage;
+    private Item[] groupStorage;
+
+    //TODO for Jak
+    //#1 store the items of the container GroupStorage inside a array in this json
+    //#2 create a getter for the container to withdraw and remove items from the container and add
+    //Example, other containers are like player.inv.add, here we need group(gets the group) group.groupStorage.add (groupStorage being the container not items array)
+    //This container is used by a group, and not a single player.
+    //So essentially it should save the json when a player clicks (save) when done or when closing the interface, already has a save method.
+    //But I can't seem to connect the dots together so the items array is stored in the json, and the getter does all the container work.
 
     /**
      * Creates a new group from a player
@@ -302,14 +310,14 @@ public class IronmanGroup {
     }
 
     public IronmanGroup setGroupStorage(Item[] storage) {
-        for (int i = 0; i < storage.length; i++) {
+        /*for (int i = 0; i < storage.length; i++) {
             this.groupStorage.set(i, storage[i], false);
-        }
+        }*/
         return this;
     }
 
     public GroupStorage getGroupStorage() {
-        return this.groupStorage;
+        return null;
     }
 
     public List<IronmanGroupMember> getMembers() {
