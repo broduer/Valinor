@@ -41,7 +41,7 @@ public class Sleepwalker extends Npc {
         if (nm != null) {
             DumbRoute.route(this, nm.getCentrePosition().getX(), nm.getCentrePosition().getY());
             if (tile().distance(nm.getCentrePosition()) < 4) {
-                //TODO hit(new Hit().fixedDamage(100));
+                hit(this, 100);
                 nm.setSleepwalkerCount(nm.getSleepwalkerCount() + 1);
             }
         }

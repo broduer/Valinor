@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -21,7 +22,7 @@ public class TotemPlugin extends Npc {
         spawnId = id;
         spawn(false);
         lock();
-        //TODO getCombat().getStat(StatType.Hitpoints).alter(1);
+        setHitpoints(1);
         //TODO skipMovementCheck = true;
     }
 
@@ -81,13 +82,12 @@ public class TotemPlugin extends Npc {
         return rt;
     }*/
 
-    //TODO
     public void breakCombat() {
-        /*for (Player player : getPosition().getRegion().players) {
+        World.getWorld().getPlayers().forEachInRegion(tile().region(), player -> {
             if (player.getCombat().getTarget() == this) {
                 player.getCombat().reset();
             }
-        }*/
+        });
     }
 
     public Nightmare getNightmare() {

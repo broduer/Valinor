@@ -19,6 +19,7 @@ import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Debugs;
 import com.valinor.util.timers.TimerKey;
 
+import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
@@ -42,7 +43,9 @@ public abstract class CommonCombatMethod implements CombatMethod {
     public void restore() {
         mob.heal(mob.maxHp());
         mob.putAttrib(AttributeKey.POISON_TICKS,0);
-        Venom.cure(2, mob);
+        mob.putAttrib(AttributeKey.VENOM_TICKS, 0);
+        mob.putAttrib(AttributeKey.POISON_TICKS, 0);
+        mob.clearAttrib(VENOMED_BY);
         mob.getTimers().cancel(TimerKey.FROZEN);
     }
 

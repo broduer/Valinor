@@ -2,7 +2,6 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -10,6 +9,7 @@ import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
 
+import static com.valinor.game.world.entity.AttributeKey.NEXT_ATTACK;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -24,12 +24,12 @@ public class Nightmare extends Npc {
 
     private TotemPlugin[] totems;
 
-    private Tile base;
+    private final Tile base;
 
     private boolean shield;
 
     public Nightmare(int id, Tile base) {
-        super(id);
+        super(id, base);
         this.base = base;
     }
 
@@ -56,15 +56,15 @@ public class Nightmare extends Npc {
     }*/
 
     @Override
-    public int maxHp() {//TODO
-        return 2400;//TODO shield ? 80 * getPosition().getRegion().players.size() : 2400
+    public int maxHp() {
+        return shield ? 80 * playersInRegion() : 2400;
     }
 
-    public ArrayList<Tile> getSleepwalkerPositions() {
-        ArrayList<Tile> tiles = new ArrayList<Tile>();
+    public ArrayList<Tile> getSleepwalkerTiles() {
+        ArrayList<Tile> tiles = new ArrayList<>();
         int[][] spots = new int[][] { { 26, 24 }, { 28, 24 }, { 36, 24 }, { 38, 24 }, { 41, 21 }, { 41, 19 }, { 41, 11 }, { 41, 9 }, { 38, 6 }, { 36, 6 }, { 28, 6 }, { 26, 6 }, { 23, 9 }, { 23, 11 }, { 23, 19 }, { 23, 21 }, { 23, 14 }, { 23, 16 }, { 41, 16 }, { 41, 14 }, { 31, 5 }, { 33, 5 }, { 31, 25 }, { 33, 25 }  };
-        for (int i = 0; i < spots.length; i++) {
-            tiles.add(getBase().transform(spots[i][0], spots[i][1], 0));
+        for (int[] spot : spots) {
+            tiles.add(getBase().transform(spot[0], spot[1], 0));
         }
         return tiles;
     }
@@ -149,8 +149,7 @@ public class Nightmare extends Npc {
         return damage;
     }*/
 
-    @Override
-    public CombatMethod getCombatMethod() {
+    public NightmareCombat getCombatMethod() {
         return new NightmareCombat();
     }
 
@@ -165,8 +164,7 @@ public class Nightmare extends Npc {
             getCombat().reset();
             transmog(9431);
             animate(-1);
-            //TODO
-            //getCombatMethod().setSpecial(SpecialAttacks.SLEEPWALKERS);
+            getCombatMethod().setSpecial(SpecialAttacks.SLEEPWALKERS);
             getCombatMethod().prepareAttack(this, null);
             specialDelta = 30;
             stage++;
@@ -239,18 +237,15 @@ public class Nightmare extends Npc {
                 Tile dest = spawnTile().transform(diffX, diffY, this.tile.level);
                 teleportAction(dest);
             }
-            //TODO
-            //set("next_attack", nextAttack);
+            putAttrib(NEXT_ATTACK, nextAttack);
             getCombat().delayAttack(12);
         }
         if (specialDelta == -4) {
-            //TODO
-            //getCombatMethod().setSpecial(remove("next_attack"));
+            getCombatMethod().setSpecial(getAttrib(NEXT_ATTACK));
             getCombatMethod().prepareAttack(this, null);
         }
         if (--specialDelta == -10) {
-            //TODO
-            //getCombatMethod().setSpecial(null);
+            getCombatMethod().setSpecial(null);
             specialDelta = 60;
         }
         super.sequence();
@@ -261,12 +256,9 @@ public class Nightmare extends Npc {
     }
 
     public ArrayList<Mob> getPossibleTargets(int ratio, boolean players, boolean npcs) {
-        ArrayList<Mob> possibleTargets = new ArrayList<Mob>();
+        ArrayList<Mob> possibleTargets = new ArrayList<>();
         if (players) {
             for (Player player : World.getWorld().getPlayers()) {
-                if (player == null) {
-                    continue;
-                }
                 if (player == null || player.dead() || player.tile().distance(this.getCentrePosition()) > ratio) {
                     continue;
                 }
@@ -291,9 +283,7 @@ public class Nightmare extends Npc {
     private void teleportAction(Tile dest) {
         animate(8607);
         getCombat().reset();
-        Chain.bound(null).runFn(1, () -> {
-            this.teleport(dest);
-        }).then(1, () -> {
+        Chain.bound(null).runFn(1, () -> this.teleport(dest)).then(1, () -> {
             transmog(stageDelta == -1 ? THE_NIGHTMARE + getStage() : THE_NIGHTMARE_9431);
             animate(8609);
         });
@@ -301,13 +291,19 @@ public class Nightmare extends Npc {
 
     public void toggleShield() {
         shield = !shield;
-        //TODO
-        setHitpoints(2400 - (800 * stage));
-        //getCombat().getStat(StatType.Hitpoints).alter(shield ? 200 + (220 * tile().getRegion().players.size()) : 2400 - (800 * stage));
+        setHitpoints(shield ? 200 + (220 * playersInRegion()) : 2400 - (800 * stage));
         for (TotemPlugin totem : totems) {
-            //TODO
-            //totem.setChargeable(!isShield());
+            totem.setChargeable(!isShield());
         }
+    }
+
+    public int playersInRegion() {
+        int count = 0;
+        for (Player p : World.getWorld().getPlayers()) {
+            if (p != null && p.tile().region() == tile().region())
+                count++;
+        }
+        return count;
     }
 
     @Override

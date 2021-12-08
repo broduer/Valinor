@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.npc;
 
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Wyrm;
 import com.google.common.base.Stopwatch;
 import com.valinor.GameServer;
@@ -193,6 +194,7 @@ public class Npc extends Mob {
             case NpcIdentifiers.CORRUPTED_HUNLLEF,
                 NpcIdentifiers.CORRUPTED_HUNLLEF_9036,
                 NpcIdentifiers.CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
+            case NpcIdentifiers.THE_NIGHTMARE_9430 -> new Nightmare(id,tile);
             default -> new Npc(id, tile);
         };
     }

@@ -4,10 +4,11 @@ import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatFactory;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
-import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.ProjectileRoute;
 
@@ -27,12 +28,8 @@ public class NightmareCombat extends CommonCombatMethod {
             restoreTask = new Task("checkRestoreTask",3) {
                 @Override
                 public void execute() {
-                    if (mob.dead() || !mob.isRegistered()) {
+                    if (mob.dead() || !mob.isRegistered() && (mob.getLocalPlayers().isEmpty() || mob.getLocalPlayers().stream().noneMatch(p -> ProjectileRoute.allow(mob, p)))) {
                         stop();
-                        return;
-                    }
-
-                    if (!mob.dead() && (mob.getLocalPlayers().isEmpty() || mob.getLocalPlayers().stream().noneMatch(p -> ProjectileRoute.allow(mob, p)))) {// no players in sight, reset
                         restore();
                     }
                 }
@@ -84,7 +81,7 @@ public class NightmareCombat extends CommonCombatMethod {
                 } else {
                     delay = 120;
                 }
-                throttleFarcast(nightmare, (Player) victim, delay, dest, Prayers.PROTECT_FROM_MAGIC);
+                victim.hit(nightmare, CombatFactory.calcDamageFromType(nightmare, victim, CombatType.MAGIC), (delay / 20) - 1, CombatType.MAGIC).checkAccuracy().submit();
             }
         } else {
             for (Mob victim : nightmare.getPossibleTargets(64, true, false)) {
@@ -105,16 +102,9 @@ public class NightmareCombat extends CommonCombatMethod {
                 } else {
                     delay = 120;
                 }
-                throttleFarcast(nightmare, victim, delay, dest, Prayers.PROTECT_FROM_MISSILES);
+                victim.hit(nightmare, CombatFactory.calcDamageFromType(nightmare, victim, CombatType.RANGED), (delay / 20) - 1, CombatType.RANGED).checkAccuracy().submit();
             }
         }
-    }
-
-    private void throttleFarcast(Mob nightmare, Mob victim, int delay, Tile dest, int prayer) {
-        nightmare.runFn((delay / 20) + 1, () -> {
-            int max = Prayers.usingPrayer(victim, prayer) ? 35 : 0;
-            victim.hit(nightmare, max);
-        });
     }
 
     public void setSpecial(SpecialAttacks attack) {

@@ -58,11 +58,11 @@ public enum SpecialAttacks {
     SLEEPWALKERS(-1, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-            /*for (Player player : nm.tile().getRegion().players) {
+            World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                 player.message("<col=ff0000>The Nightmare begins to charge up a devastating attack.");
-            }
+            });
             nm.runFn(1, () -> {
-                int count = nm.tile().getRegion().players.size() < 24 ? nm.tile().getRegion().players.size() : 24;
+                int count = Math.min(nm.playersInRegion(), 24);
                 ArrayList<Tile> spots = nm.getSleepwalkerTiles();
                 Collections.shuffle(spots);
                 for (int i = 0; i < count; i++) {
@@ -74,40 +74,40 @@ public enum SpecialAttacks {
             }).then(2, () -> {
                 nm.animate(8604);
             }).then(1, () -> {
-                for (Player player : nm.tile().getRegion().players) {
+                World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                     player.graphic(1782);
-                }
+                });
             }).then(8, () -> {
-                for (Player player : nm.tile().getRegion().players) {
+                World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                     player.hit(nm, nm.getSleepwalkerCount() * 5);
-                }
+                });
                 nm.transmog(9425 + nm.getStage());
                 nm.setSleepwalkerCount(0);
-            });*/
+            });
         }
     },
 
     HUSKS(8599, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-           /* int size = nm.tile().getRegion().players.size() > 1 ? nm.tile().getRegion().players.size() / 2 : nm.tile().getRegion().players.size();
+            int size = nm.playersInRegion() > 1 ? nm.playersInRegion() / 2 : nm.playersInRegion();
             ArrayList<Mob> targets = nm.getPossibleTargets(64, true, false);
             Collections.shuffle(targets);
             for (int i = 0; i < size; i++) {
                 Player target = (Player) targets.get(i);
-                int rX = ((target.tile().getRegion().id >> 8) << 6), rY = ((target.tile().getRegion().id & 0xFF) << 6);
+                int rX = ((target.tile().region() >> 8) << 6), rY = ((target.tile().region() & 0xFF) << 6);
                 Tile[] pos = null;
                 if (target.tile().getX() - rX >= 23 || (target.tile().getX() - rX <= 41) || target.tile().getY() - rY >= 6 || (target.tile().getY() - rY <= 24)) {
                     if (target.tile().getY() - rY >= 6 || (target.tile().getY() - rY <= 24)) {
-                        pos = new Tile[] { target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0) };
+                        pos = new Tile[]{target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0)};
                     } else {
-                        pos = new Tile[] { target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0) };
+                        pos = new Tile[]{target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0)};
                     }
                 } else {
                     if (World.getWorld().random(10) > 5) {
-                        pos = new Tile[] { target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0) };
+                        pos = new Tile[]{target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0)};
                     } else {
-                        pos = new Tile[] { target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0) };
+                        pos = new Tile[]{target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0)};
                     }
                 }
                 if (pos != null) {
@@ -116,7 +116,7 @@ public enum SpecialAttacks {
                     Husk husk2 = new Husk(9467, pos[1], target, nm);
                     husk2.spawn(false);
                 }
-            }*/
+            }
         }
 
     },
@@ -124,13 +124,13 @@ public enum SpecialAttacks {
     FLOWER_POWER(8601, Nightmare.CENTER) {
         @Override
         public void run(Nightmare nm) {
-            /*if (nm.getFlowerRotary() != -1) {
+            if (nm.getFlowerRotary() != -1) {
                 return;
             }
             int rand = World.getWorld().random(FlowerRotary.values().length - 1);
-            for (Player p : nm.tile().getRegion().players) {
+            World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), p -> {
                 p.message("<col=ff0000>The Nightmare splits the area into segments!");
-            }
+            });
             nm.setFlowerRotary(rand);
             FlowerRotary pattern = FlowerRotary.values()[rand];
             Tile center = nm.getBase().transform(32, 15, 0);
@@ -169,26 +169,26 @@ public enum SpecialAttacks {
                 for (GameObject flower : flowers) {
                     flower.animate(flower.definition().anInt2281 + 1);
                 }
-                for (Player p : nm.tile().getRegion().players) {
+                World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), p -> {
                     if (!pattern.safe(center, p.tile())) {
                         p.message("You failed to make it back to the safe area.");
-                        p.hit(nm,50);
+                        p.hit(nm, 50);
                     }
-                }
+                });
             }).then(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.remove();
                 }
                 nm.setFlowerRotary(-1);
-            });*/
+            });
         }
     },
 
     CURSE(8600, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-           /* nm.runFn(2, () -> {
-                for (Player p : nm.tile().getRegion().players) {
+            nm.runFn(2, () -> {
+                World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), p -> {
                     if (Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MISSILES)) {
                         Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MISSILES);
                         Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MELEE);
@@ -201,8 +201,8 @@ public enum SpecialAttacks {
                     }
                     p.putAttrib(AttributeKey.NIGHTMARE_CURSE, System.currentTimeMillis() + 30000);
                     p.message("<col=ff0000>The Nightmare has cursed you, shuffling your prayers!");
-                }
-            });*/
+                });
+            });
         }
 
     },
@@ -272,9 +272,9 @@ public enum SpecialAttacks {
     SPORES(8599, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-            /*for (Player player : nm.tile().getRegion().players) {
+            World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                 player.message("<col=ff0000>The Nightmare summons some infectious spores!");
-            }
+            });
             int[][] spores = {{32, 23}, {37, 20}, {40, 15}, {37, 10}, {32, 7}, {27, 10}, {24, 15}, {28, 15}, {32, 18}, {36, 15}, {32, 12}};
             for (int i = 0; i < spores.length; i++) {
                 Spore spore = new Spore(nm.getBase().transform(spores[i][0], spores[i][1], 0));
@@ -285,7 +285,7 @@ public enum SpecialAttacks {
                     //spore.setId(37739, nm.getPossibleTargets()); PROPER ONE JUST NEED TO FIX THE ERROR
                 });
                 spore.spawn();
-            }*/
+            }
         }
 
     };

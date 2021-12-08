@@ -5,6 +5,7 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    NEXT_ATTACK,
     NIGHTMARE_CURSE,
     NIGHTMARE_BABY_DADY,
     NIGHTMARE_SPORE,
