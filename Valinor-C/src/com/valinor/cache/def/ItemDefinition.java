@@ -214,8 +214,8 @@ public final class ItemDefinition {
         printStatement("definition.inventory_model = " + definition.inventoryModel);
         printStatement("definition.male_equip_main = " + definition.maleModel);
         printStatement("definition.female_equip_main = " + definition.femaleModel);
-        printStatement("definition.color_to_replace = " + Arrays.toString(definition.recolorFrom));
-        printStatement("definition.color_to_replace_with = " + Arrays.toString(definition.recolorTo));
+        printStatement("definition.recolorFrom = " + Arrays.toString(definition.recolorFrom));
+        printStatement("definition.recolorTo = " + Arrays.toString(definition.recolorTo));
     }
 
     public static void dump() {
@@ -238,22 +238,22 @@ public final class ItemDefinition {
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.recolorFrom != null) {
-                    bf.write("definition[id].color_to_replace = new int[] "
+                    bf.write("definition[id].recolorFrom = new int[] "
                         + Arrays.toString(definition.recolorFrom).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.recolorTo != null) {
-                    bf.write("definition[id].color_to_replace_with = new int[] "
+                    bf.write("definition[id].recolorTo = new int[] "
                         + Arrays.toString(definition.recolorTo).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.retextureFrom != null) {
-                    bf.write("definition[id].src_texture = new int[] "
+                    bf.write("definition[id].retextureFrom = new int[] "
                         + Arrays.toString(definition.retextureFrom).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.retextureTo != null) {
-                    bf.write("definition[id].dst_texture = new int[] "
+                    bf.write("definition[id].retextureTo = new int[] "
                         + Arrays.toString(definition.retextureTo).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
@@ -561,6 +561,8 @@ public final class ItemDefinition {
         modelCustomColor3 = 0;
         modelCustomColor4 = 0;
         modelSetColor = 0;
+        recolorFrom = null;
+        recolorTo = null;
     }
 
     private void updateNote() {
@@ -618,7 +620,7 @@ public final class ItemDefinition {
         }
         if (resizeX != 128 || resizeY != 128 || resizeZ != 128)
             model.scale(resizeX, resizeZ, resizeY);
-        //System.err.println("Color to replace: " + color_to_replace + " | for id: " + id);
+        //System.err.println("Color to replace: " + recolorFrom + " | for id: " + id);
         if (recolorFrom != null) {
             //System.out.println("ISNT for model: " + id);
             for (int index = 0; index < recolorFrom.length; index++) {
@@ -630,13 +632,13 @@ public final class ItemDefinition {
                 model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-        /*if (color_to_replace != null && color_to_replace_with != null) {
-            if (src_texture != null && dst_texture != null) {
-                for (int index = 0; index < color_to_replace.length; index++) {
-                    model.color_to_texture(model, src_texture[index], dst_texture[index], false);
+        if (recolorFrom != null && recolorTo != null) {
+            if (retextureFrom != null && retextureTo != null) {
+                for (int index = 0; index < recolorFrom.length; index++) {
+                    model.color_to_texture(model, retextureFrom[index], retextureTo[index], false);
                 }
             }
-        }*/
+        }
         if (modelCustomColor > 0) {
             model.completelyRecolor(modelCustomColor);
         }
@@ -673,7 +675,7 @@ public final class ItemDefinition {
         Model widget_model = Model.get(inventoryModel);
         if (widget_model == null)
             return null;
-        //System.err.println("Color to replace: " + color_to_replace + " | for id: " + id);
+        //System.err.println("Color to replace: " + recolorFrom + " | for id: " + id);
         if (recolorFrom != null) {
             //System.out.println("ISNT for model: " + id);
             for (int index = 0; index < recolorFrom.length; index++) {
@@ -686,15 +688,16 @@ public final class ItemDefinition {
                 widget_model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-        /*if (color_to_replace != null && color_to_replace_with != null) {
-            if (src_texture != null && dst_texture != null) {
-                for (int index = 0; index < color_to_replace.length; index++) {
-                    widget_model.color_to_texture(widget_model, src_texture[index], dst_texture[index], false);
+        
+        if (recolorFrom != null && recolorTo != null) {
+            if (retextureFrom != null && retextureTo != null) {
+                for (int index = 0; index < recolorFrom.length; index++) {
+                    widget_model.color_to_texture(widget_model, retextureFrom[index], retextureTo[index], false);
                 }
             }
-        }*/
+        }
 
-        //System.err.println("Color to replace: " + color_to_replace + " | for id: " + id);
+        //System.err.println("Color to replace: " + recolorFrom + " | for id: " + id);
 
         if (modelCustomColor > 0) {
             widget_model.completelyRecolor(modelCustomColor);
@@ -764,13 +767,14 @@ public final class ItemDefinition {
                 equipped_model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-       /* if (color_to_replace != null && color_to_replace_with != null) {
-            if (src_texture != null && dst_texture != null) {
-                for (int index = 0; index < color_to_replace.length; index++) {
-                    equipped_model.color_to_texture(equipped_model, src_texture[index], dst_texture[index], true);
+
+        if (recolorFrom != null && recolorTo != null) {
+            if (retextureFrom != null && retextureTo != null) {
+                for (int index = 0; index < recolorFrom.length; index++) {
+                    equipped_model.color_to_texture(equipped_model, retextureFrom[index], retextureTo[index], true);
                 }
             }
-        }*/
+        }
         if (modelCustomColor > 0) {
             equipped_model.completelyRecolor(modelCustomColor);
         }
@@ -844,13 +848,14 @@ public final class ItemDefinition {
                 dialogue_model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-       /* if (color_to_replace != null && color_to_replace_with != null) {
-            if (src_texture != null && dst_texture != null) {
-                for (int index = 0; index < color_to_replace.length; index++) {
-                    dialogue_model.color_to_texture(dialogue_model, src_texture[index], dst_texture[index], false);
+
+        if (recolorFrom != null && recolorTo != null) {
+            if (retextureFrom != null && retextureTo != null) {
+                for (int index = 0; index < recolorFrom.length; index++) {
+                    dialogue_model.color_to_texture(dialogue_model, retextureFrom[index], retextureTo[index], false);
                 }
             }
-        }*/
+        }
         return dialogue_model;
     }
 

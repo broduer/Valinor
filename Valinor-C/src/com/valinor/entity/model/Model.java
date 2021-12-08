@@ -79,12 +79,12 @@ public class Model extends Renderable {
     public int render_type[];
     public byte face_render_priorities[];
     public int face_alpha[];
-    public int[] face_color;
+    public short[] face_color;
     public byte face_priority = 0;
     public int texture_faces;
-    public int[] triangle_texture_edge_a;
-    public int[] triangle_texture_edge_b;
-    public int[] triangle_texture_edge_c;
+    public short[] triangle_texture_edge_a;
+    public short[] triangle_texture_edge_b;
+    public short[] triangle_texture_edge_c;
     public int min_x;
     public int max_x;
     public int max_z;
@@ -192,7 +192,7 @@ public class Model extends Renderable {
             triangle_edge_c = new int[faces];
             repeatTexture = new boolean[faces];
             if (color_flag) {
-                face_color = new int[faces];
+                face_color = new short[faces];
                 repeatTexture = new boolean[faces];
             }
 
@@ -216,9 +216,9 @@ public class Model extends Renderable {
 
             if (texture_faces > 0) {
                 texture_map = new byte[texture_faces];
-                triangle_texture_edge_a = new int[texture_faces];
-                triangle_texture_edge_b = new int[texture_faces];
-                triangle_texture_edge_c = new int[texture_faces];
+                triangle_texture_edge_a = new short[texture_faces];
+                triangle_texture_edge_b = new short[texture_faces];
+                triangle_texture_edge_c = new short[texture_faces];
             }
 
             vertices = 0;
@@ -339,9 +339,9 @@ public class Model extends Renderable {
         faceHslA = new int[faces];
         faceHslB = new int[faces];
         faceHslC = new int[faces];
-        triangle_texture_edge_a = new int[texture_faces];
-        triangle_texture_edge_b = new int[texture_faces];
-        triangle_texture_edge_c = new int[texture_faces];
+        triangle_texture_edge_a = new short[texture_faces];
+        triangle_texture_edge_b = new short[texture_faces];
+        triangle_texture_edge_c = new short[texture_faces];
         if (flag1)
             render_type = new int[faces];
         if (flag2)
@@ -349,7 +349,7 @@ public class Model extends Renderable {
         if (flag3)
             face_alpha = new int[faces];
         if (flag4) {
-            face_color = new int[faces];
+            face_color = new short[faces];
             repeatTexture = new boolean[faces];
         }
         if (texture_flag)
@@ -472,7 +472,7 @@ public class Model extends Renderable {
             face_color = model.face_color;
             repeatTexture = model.repeatTexture;
         } else {
-            face_color = new int[faces];
+            face_color = new short[faces];
             repeatTexture = new boolean[faces];
             for (int face = 0; face < faces; face++) {
                 face_color[face] = model.face_color[face];
@@ -801,9 +801,9 @@ public class Model extends Renderable {
         triangle_edge_c = new int[faces];
         if (texture_faces > 0) {
             texture_map = new byte[texture_faces];
-            triangle_texture_edge_a = new int[texture_faces];
-            triangle_texture_edge_b = new int[texture_faces];
-            triangle_texture_edge_c = new int[texture_faces];
+            triangle_texture_edge_a = new short[texture_faces];
+            triangle_texture_edge_b = new short[texture_faces];
+            triangle_texture_edge_c = new short[texture_faces];
         }
 
         if (vSkin_opcode == 1)
@@ -826,7 +826,7 @@ public class Model extends Renderable {
         if (tSkin_opcode == 1)
             muscle_skin = new int[faces];
 
-        face_color = new int[faces];
+        face_color = new short[faces];
         repeatTexture = new boolean[faces];
         stream.pos = i_259_;
         stream1.pos = i_269_;
@@ -1004,7 +1004,7 @@ public class Model extends Renderable {
         int texture_ = 0;
         int texture__ = 0;
         int face;
-        face_color = new int[faces];
+        face_color = new short[faces];
         repeatTexture = new boolean[faces];
         if (texture_faces > 0) {
             texture_map = new byte[texture_faces];
@@ -1121,9 +1121,9 @@ public class Model extends Renderable {
             face_texture = new byte[faces];
 
         if (texture_faces > 0) {
-            triangle_texture_edge_a = new int[texture_faces];
-            triangle_texture_edge_b = new int[texture_faces];
-            triangle_texture_edge_c = new int[texture_faces];
+            triangle_texture_edge_a = new short[texture_faces];
+            triangle_texture_edge_b = new short[texture_faces];
+            triangle_texture_edge_c = new short[texture_faces];
         }
         nc1.pos = vertexMod_offset;
         nc2.pos = vertexX_offset;
@@ -1333,24 +1333,7 @@ public class Model extends Renderable {
         face_material = model.face_material;
     }
 
-    public void convertNPCTexture(int originalId, int targetId) {
-        int assigned = 0;
-        this.texture_faces = this.faces;
-        triangle_texture_edge_a = new int[faces];
-        triangle_texture_edge_b = new int[faces];
-        triangle_texture_edge_c = new int[faces];
-        for(int i = 0; i < this.faces; ++i) { // loops through all the triangle faces
-            if (this.face_color[i] == originalId) {
-                this.face_color[i] = targetId; // sets triangleColours[i] to targetId
-                this.triangle_texture_edge_a[assigned] = this.triangle_edge_a[i]; // pretty much updates
-                this.triangle_texture_edge_b[assigned] = this.triangle_edge_b[i];
-                this.triangle_texture_edge_c[assigned] = this.triangle_edge_c[i];
-                assigned++;
-            }
-        }
-    }
-
-    private final int method465(Model model, int face) {
+    private int method465(Model model, int face) {
         int vertex = -1;
         int x = model.vertex_x[face];
         int y = model.vertex_y[face];
@@ -1876,10 +1859,13 @@ public class Model extends Renderable {
     }
 
     public void recolor(int found, int replace) {
-        if (face_color != null)
-            for (int face = 0; face < faces; face++)
-                if (face_color[face] == (short) found)
+        if(face_color != null) {
+            for (int face = 0; face < faces; face++) {
+                if (face_color[face] == (short) found) {
                     face_color[face] = (short) replace;
+                }
+            }
+        }
     }
 
     public void retexture(short found, short replace) {
@@ -1940,9 +1926,9 @@ public class Model extends Renderable {
                 }
 
                 texture_map = new byte[model.faces];
-                triangle_texture_edge_a = new int[model.faces];
-                triangle_texture_edge_b = new int[model.faces];
-                triangle_texture_edge_c = new int[model.faces];
+                triangle_texture_edge_a = new short[model.faces];
+                triangle_texture_edge_b = new short[model.faces];
+                triangle_texture_edge_c = new short[model.faces];
                 for(int face = 0; face < model.faces; face++) {
                     if(model.face_color[face] == src) {
                         model.face_texture[face] = (byte) 2;
@@ -2881,47 +2867,6 @@ public class Model extends Renderable {
 
     public float[][] getFaceTextureVCoordinates() {
         return new float[][]{};
-    }
-
-    public void addTextureWithCoordinate(int[] originalIds, int[] targetIds, TextureCoordinate coordinate) {
-        texture_faces = originalIds.length;
-        triangle_texture_edge_a = new int[texture_faces];
-        triangle_texture_edge_b = new int[texture_faces];
-        triangle_texture_edge_c = new int[texture_faces];
-        face_texture = new byte[faces];
-        texture_map = new byte[texture_faces];
-        face_material = new int[faces];
-        if (render_type == null) {
-            render_type = new int[faces];
-        }
-
-        for (int i = 0; i < texture_faces; i++) {
-            this.triangle_texture_edge_a[i] = coordinate.getA();
-            this.triangle_texture_edge_b[i] = coordinate.getB();
-            this.triangle_texture_edge_c[i] = coordinate.getC();
-        }
-
-        /*this.triangle_texture_edge_a[1] = 12;
-        this.triangle_texture_edge_b[1] = 4;
-        this.triangle_texture_edge_c[1] = 1;*/
-
-        Arrays.fill(face_texture, (byte) -1);
-        for (int i = 0; i < this.faces; i++) {
-            for (int index = 0; index < originalIds.length; index++) {
-                if (this.face_color[i] == originalIds[index]) {
-                    this.face_texture[i] = (byte) index;
-                    this.render_type[i] = 2;
-                    this.face_material[i] = (short) targetIds[index];
-                }
-            }
-        }
-
-        for (int i = 0; i < faces; i++) {
-            if (face_texture[i] == -1) {
-                face_material[i] = -1;
-                render_type[i] = 0;
-            }
-        }
     }
 
     public void completelyRecolor(int j) {
