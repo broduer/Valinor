@@ -210,6 +210,11 @@ public final class Buffer extends Cacheable {
         return ((payload[pos - 3] & 0xff) << 16) + ((payload[pos - 2] & 0xff) << 8) + (payload[pos - 1] & 0xff);
     }
 
+    public int readMedium() {
+        pos += 3;
+        return ((payload[pos - 3] & 255) << 16) + (payload[pos - 1] & 255) + ((payload[pos - 2] & 255) << 8);
+    }
+
     public long readLong() {
         long msi = (long) readInt() & 0xffffffffL;
         long lsi = (long) readInt() & 0xffffffffL;

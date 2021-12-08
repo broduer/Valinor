@@ -1709,42 +1709,40 @@ public class Client extends GameApplet {
         for (int x = 0; x < 104; x++) {
             for (int y = 0; y < 104; y++) {
                 long id = scene.get_ground_decor_uid(plane, x, y);
-                if (id != 0L) {
-                    int index = ObjectDefinition.get(get_object_key(id)).mapIconId;
-                    //Debugging code, useful for finding objects for hardcoding map IDs
-                    //To test if the object is invisible (and thus likely used for map functions)
-                    //Make sure to spawn with ::object and see if it's invisible.
-                   /* if (ObjectDefinition.get(get_object_key(id)).minimap_function_id != -1) {
-                        //Uncomment for finding invisible objects for map functions.
-                        //System.out.println("Displaying Objects attached to MapFunctions, Object ID: " + id + ", MapFunction ID: " + ObjectDefinition.get(id).mapIcon);
-                    }
-                        System.out.println("Displaying Objects attached to MapFunctions, Object ID: " + get_object_key(id) + ", MapFunction ID: " + ObjectDefinition.get(get_object_key(id)).minimap_function_id);
-                    */
-                    //Invisible object near slayer tower basement dungeon
-                    /*if (id == 14108) {
-                        index = 86;
-                    }*/
-                    if (index >= 0) {
-                        int hintX = x;
-                        int hintY = y;
-                        if (index >= 15 && index <= 67) {
-                            index -= 2;
-                        } else if (index >= 68 && index <= 84) {
-                            index -= 1;
-                        }
-                        // Custom ken code, fix lumbridge crash, coords 3261, 3271 the array index is
-                        // like 619 for some reason, so set it to 0.
-                        else if (index > 100) {
-                            index = 0;
-                        }
-                        minimapHint[objectIconCount] = mapFunctions[index];
-                        minimapHintX[objectIconCount] = hintX;
-                        minimapHintY[objectIconCount] = hintY;
+                int function = ObjectDefinition.get(get_object_key(id)).mapIconId;
+
+                if (function != -1) {
+                    int sprite = AreaDefinition.lookup(function).spriteId;
+                    if(sprite != -1) {
+                        int viewportX = x;
+                        int viewportY = y;
+                        minimapHint[objectIconCount] = AreaDefinition.getImage(sprite);
+                        minimapHintX[objectIconCount] = viewportX;
+                        minimapHintY[objectIconCount] = viewportY;
                         objectIconCount++;
                     }
                 }
             }
         }
+        /*for (int x = 0; x < 104; x++) {
+            for (int y = 0; y < 104; y++) {
+                long id = scene.get_ground_decor_uid(plane, x, y);
+                if (id != 0L) {
+                    int function = ObjectDefinition.get(get_object_key(id)).mapIconId;
+                    if (function >= -1) {
+                        int sprite = AreaDefinition.lookup(function).spriteId;
+                        if(sprite != -1) {
+                            int viewportX = x;
+                            int viewportY = y;
+                            minimapHint[objectIconCount] = AreaDefinition.getImage(sprite);
+                            minimapHintX[objectIconCount] = viewportX;
+                            minimapHintY[objectIconCount] = viewportY;
+                            objectIconCount++;
+                        }
+                    }
+                }
+            }
+        }*/
 
         if (ClientConstants.DUMP_MAP_REGIONS) {
 
@@ -7290,6 +7288,7 @@ public class Client extends GameApplet {
         ObjectDefinition.release();
         NpcDefinition.clear();
         ItemDefinition.release();
+        AreaDefinition.clear();
         FloDefinition.underlay = null;
         FloDefinition.overlay = null;
         IdentityKit.cache = null;
@@ -10465,11 +10464,13 @@ public class Client extends GameApplet {
         }
     }
 
+    public Archive mediaStreamLoader;
     private void unpackingMedia() {
         try {
             long unpacking_media_start_time = System.currentTimeMillis();
 
             Archive media_archive = request_archive(4, "2d graphics", "media", 40);
+            this.mediaStreamLoader = media_archive;
             backgroundFix = spriteCache.get(1847);
             accountManager = new AccountManager(this, spriteCache.get(1850));
             accountManager.loadAccounts();
@@ -10648,6 +10649,7 @@ public class Client extends GameApplet {
             Sequence.init(config_archive);
             ObjectDefinition.init(config_archive);
             FloDefinition.init(config_archive);
+            AreaDefinition.init(config_archive);
             NpcDefinition.init(config_archive);
             IdentityKit.init(config_archive);
             SpotAnimation.init(config_archive);
@@ -18069,7 +18071,7 @@ public class Client extends GameApplet {
         openWalkableInterface = -1;
         camera_horizontal_speed = new int[5];
         updateCharacterCreation = false;
-        mapFunctions = new SimpleImage[91]; // 116 new, revert back to 88 untill further notice
+        mapFunctions = new SimpleImage[118];
         dialogueId = -1;
         maximumLevels = new int[SkillConstants.SKILL_COUNT];
         anIntArray1045 = new int[2_000];

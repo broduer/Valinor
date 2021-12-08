@@ -11,6 +11,13 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public final class ClientConstants {
 
+    /**
+     * Used to repack indexes Index 1 = Models Index 2 = Animations Index 3 =
+     * Sounds/Music Index 4 = Maps
+     */
+    public static boolean repackIndexOne = false, repackIndexTwo = false, repackIndexThree = false,
+        repackIndexFour = false;
+
     public static boolean HALLOWEEN = false;
     public static boolean CHRISTMAS = true;
 
@@ -164,13 +171,6 @@ public final class ClientConstants {
     public static boolean SHIFT_CLICK_TELEPORT = true;
 
     public static boolean RIGHT_CLICK_AUTOCAST = false;
-
-    /**
-     * Used to repack indexes Index 1 = Models Index 2 = Animations Index 3 =
-     * Sounds/Music Index 4 = Maps
-     */
-    public static boolean repackIndexOne = false, repackIndexTwo = false, repackIndexThree = false,
-        repackIndexFour = false;
 
     /**
      * npcBits can be changed to what your server's bits are set to.
