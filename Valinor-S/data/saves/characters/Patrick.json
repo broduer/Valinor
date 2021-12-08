@@ -4,13 +4,22 @@
   "title": "",
   "titleColor": "",
   "tile": {
+<<<<<<< HEAD
     "x": 3093,
     "y": 3495,
+=======
+    "x": 3091,
+    "y": 3488,
+>>>>>>> parent of 730536f (OSRS color should be short.)
     "level": 0,
     "firstChunkX": 386,
     "firstChunkY": 436
   },
+<<<<<<< HEAD
   "gameTime": 2741693,
+=======
+  "gameTime": 2532611,
+>>>>>>> parent of 730536f (OSRS color should be short.)
   "runEnergy": 100.0,
   "running": true,
   "playerRights": "ADMINISTRATOR",
@@ -18,7 +27,6 @@
   "expMode": "GLADIATOR",
   "ironMode": "NONE",
   "groupNameSet": false,
-  "hardcoreGroupFallen": false,
   "lastIP": "127.0.0.1",
   "mac": "D0-37-45-FF-1B-CD",
   "accountPin": 0,
@@ -27,7 +35,11 @@
   "accountPinFrozenTicks": 0,
   "creationDate": "Nov 8, 2021, 19:31:43 PM",
   "creationIp": "127.0.0.1",
+<<<<<<< HEAD
   "lastLogin": "Dec 8, 2021, 10:35:23 AM",
+=======
+  "lastLogin": "Dec 5, 2021, 21:47:57 PM",
+>>>>>>> parent of 730536f (OSRS color should be short.)
   "muted": false,
   "newPlayer": false,
   "isBetaTester": false,
@@ -54,7 +66,11 @@
     0
   ],
   "spellBook": "NORMAL",
+<<<<<<< HEAD
   "fightType": "TWOHANDEDSWORD_SLASH",
+=======
+  "fightType": "PICKAXE_IMPALE",
+>>>>>>> parent of 730536f (OSRS color should be short.)
   "fightTypeVarp": 43,
   "fightTypeVarpState": 1,
   "autoRetaliate": false,
@@ -168,7 +184,7 @@
     1.3034431E7,
     1.3038331E7,
     1.3034431E7,
-    1.30372435E7,
+    1.303621225E7,
     1.3034431E7,
     1.3040296E7,
     1.3034431E7,
@@ -199,10 +215,17 @@
   "slayerExtensionsList": {},
   "inventory": [
     {
+<<<<<<< HEAD
       "id": 11834,
+=======
+      "id": 1395,
+>>>>>>> parent of 730536f (OSRS color should be short.)
       "amount": 1
     },
+    null,
+    null,
     {
+<<<<<<< HEAD
       "id": 24271,
       "amount": 1
     },
@@ -228,10 +251,27 @@
     },
     {
       "id": 2415,
+=======
+      "id": 1397,
       "amount": 1
     },
-    null,
-    null,
+    {
+      "id": 1391,
+      "amount": 1
+    },
+    {
+      "id": 573,
+      "amount": 1
+    },
+    {
+      "id": 25744,
+      "amount": 1
+    },
+    {
+      "id": 25742,
+>>>>>>> parent of 730536f (OSRS color should be short.)
+      "amount": 1
+    },
     null,
     null,
     null,
@@ -256,7 +296,11 @@
     null,
     null,
     {
+<<<<<<< HEAD
       "id": 11802,
+=======
+      "id": 11920,
+>>>>>>> parent of 730536f (OSRS color should be short.)
       "amount": 1
     },
     null,
@@ -272,68 +316,88 @@
   ],
   "bank": [
     {
+<<<<<<< HEAD
       "id": 554,
       "amount": 123
+=======
+      "id": 4151,
+      "amount": 10
+>>>>>>> parent of 730536f (OSRS color should be short.)
     },
     {
-      "id": 563,
-      "amount": 2
+      "id": 24271,
+      "amount": 1
     },
     {
-      "id": 21880,
-      "amount": 36
+      "id": 30211,
+      "amount": 1
     },
     {
+<<<<<<< HEAD
       "id": 555,
       "amount": 150
+=======
+      "id": 11832,
+      "amount": 1
+>>>>>>> parent of 730536f (OSRS color should be short.)
     },
     {
-      "id": 558,
+      "id": 11834,
       "amount": 1
     },
     {
-      "id": 559,
-      "amount": 1
-    },
-    {
-      "id": 560,
-      "amount": 1
-    },
-    {
-      "id": 9075,
-      "amount": 1
-    },
-    {
-      "id": 557,
-      "amount": 1
-    },
-    {
-      "id": 556,
-      "amount": 1223
-    },
-    {
-      "id": 561,
-      "amount": 1
-    },
-    {
-      "id": 562,
-      "amount": 1
-    },
-    {
-      "id": 564,
-      "amount": 1
-    },
-    {
-      "id": 565,
-      "amount": 101
-    },
-    {
-      "id": 566,
+      "id": 22981,
       "amount": 1
     },
     {
       "id": 21295,
       "amount": 1
+    },
+    {
+      "id": 555,
+      "amount": 27
+    },
+    {
+      "id": 995,
+      "amount": 22504517
+    },
+    {
+<<<<<<< HEAD
+      "id": 556,
+      "amount": 1223
+=======
+      "id": 4447,
+      "amount": 2
+>>>>>>> parent of 730536f (OSRS color should be short.)
+    },
+    {
+      "id": 4718,
+      "amount": 1
+    },
+    {
+      "id": 32641,
+      "amount": 1
+    },
+    {
+      "id": 5098,
+      "amount": 2
+    },
+    {
+<<<<<<< HEAD
+      "id": 565,
+      "amount": 101
+=======
+      "id": 5318,
+      "amount": 1
+>>>>>>> parent of 730536f (OSRS color should be short.)
+    },
+    {
+      "id": 22118,
+      "amount": 1
+    },
+    {
+      "id": 21880,
+      "amount": 36
     },
     {
       "id": 1621,
@@ -374,6 +438,7 @@
     {
       "id": 1444,
       "amount": 1
+<<<<<<< HEAD
     },
     {
       "id": 1395,
@@ -466,6 +531,12 @@
   ],
   "tabAmounts": [
     48,
+=======
+    }
+  ],
+  "tabAmounts": [
+    26,
+>>>>>>> parent of 730536f (OSRS color should be short.)
     0,
     0,
     0,
@@ -654,6 +725,7 @@
     ]
   },
   "achievements": {
+<<<<<<< HEAD
     "null": 0,
     "FIGHT_CAVES_I": 0,
     "GODWAR": 0,
@@ -731,6 +803,85 @@
     "COOK": 0,
     "BRIMSTONE_LOOTER_III": 100,
     "LAPIDARIST": 0
+=======
+    "BRIMSTONE_LOOTER_III": 100,
+    "SNAKE_CHARMER": 0,
+    "CONSTRUCTION_WORKER": 0,
+    "null": 0,
+    "FARMER": 0,
+    "LARRANS_LOOTER_II": 0,
+    "DEFENDER_HUNT_VI": 0,
+    "FIGHT_CAVES_I": 0,
+    "BAKER": 0,
+    "BEAR_GRYLLS": 1,
+    "DEFENDER_HUNT_III": 0,
+    "PIZZA_BAKER": 0,
+    "CRYSTAL_LOOTER_III": 0,
+    "DEFENDER_HUNT_V": 0,
+    "DEFENDER_HUNT_VII": 0,
+    "MINER": 0,
+    "TSJERNOBYL": 0,
+    "TASK_MASTER_II": 4,
+    "VETION": 0,
+    "CRYSTAL_LOOTER_II": 0,
+    "BUG_EXTERMINATOR": 0,
+    "VOTE_FOR_US_III": 0,
+    "DRAGON_SLAYER_III": 0,
+    "DEFENDER_HUNT_II": 0,
+    "FISHERMAN": 0,
+    "BRIMSTONE_LOOTER_II": 50,
+    "TASK_MASTER_III": 4,
+    "GOLDSMITH": 0,
+    "DRAGON_SLAYER_II": 0,
+    "DRAGON_SLAYER_IV": 0,
+    "SKILLER_I": 1,
+    "BARK_SCORPION": 3,
+    "LARRANS_LOOTER_III": 0,
+    "VOTE_FOR_US_I": 0,
+    "MASTER_IN_CONSTRUCTION": 0,
+    "ULTIMATE_CHAOS": 0,
+    "LORD_OF_THE_RINGS": 0,
+    "FLETCHER": 0,
+    "SKILLER_II": 1,
+    "SKILLER_III": 1,
+    "LUMBERJACK": 0,
+    "SAND_CRAB_HUNTER": 0,
+    "ROCK_CRAB_HUNTER": 0,
+    "CHEF": 0,
+    "DEFENDER_HUNT_I": 0,
+    "CRYSTAL_LOOTER_I": 0,
+    "OWN_A_HOUSE": 0,
+    "LAPIDARIST": 0,
+    "DEFENDER_HUNT_IV": 0,
+    "BARROWS_II": 0,
+    "FLUFFY": 0,
+    "YAK_HUNTER": 0,
+    "TASK_MASTER_I": 4,
+    "SQUIDWARD": 0,
+    "MASTER_THIEF": 27,
+    "VORKY": 0,
+    "VOTE_FOR_US_II": 0,
+    "REVENANT_HUNTER": 0,
+    "BARROWS_I": 0,
+    "FIGHT_CAVES_II": 0,
+    "PYROMANCER": 0,
+    "CORPOREAL_CRITTER": 0,
+    "BARROWS_III": 0,
+    "PARKOUR": 0,
+    "SKILLER_IV": 1,
+    "EXPERIMENTS_HUNTER": 0,
+    "LARRANS_LOOTER_I": 0,
+    "COOK": 0,
+    "DEFENDER_HUNT_IX": 0,
+    "COMPLETIONIST": 0,
+    "GODWAR": 0,
+    "RUNE_MYSTERIES": 0,
+    "BREWING": 0,
+    "BRIMSTONE_LOOTER_I": 10,
+    "DR_CURT_CONNORS": 0,
+    "VENENATIS": 0,
+    "DRAGON_SLAYER_I": 0
+>>>>>>> parent of 730536f (OSRS color should be short.)
   },
   "achievementsCompleted": 0,
   "taskAmount": 0,
@@ -858,7 +1009,11 @@
   "bryophytaLogClaimed": false,
   "revenantsLogClaimed": false,
   "slayerLogClaimed": false,
+<<<<<<< HEAD
   "lastDailyReset": 8,
+=======
+  "lastDailyReset": 5,
+>>>>>>> parent of 730536f (OSRS color should be short.)
   "finishedHalloweenDialogue": false,
   "candiesTraded": -1,
   "hweenEventTokensSpent": 0,
