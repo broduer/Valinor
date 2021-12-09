@@ -97,6 +97,10 @@ object CollectPayments {
                                 paymentAmount = 20.0 * row.itemAmt
                             }
 
+                            THIRTY_DOLLAR_BOND -> {
+                                paymentAmount = 30.0 * row.itemAmt
+                            }
+
                             FORTY_DOLLAR_BOND -> {
                                 paymentAmount = 40.0 * row.itemAmt
                             }
@@ -105,21 +109,12 @@ object CollectPayments {
                                 paymentAmount = 50.0 * row.itemAmt
                             }
 
+                            SEVENTY_FIVE_DOLLAR_BOND -> {
+                                paymentAmount = 75.0 * row.itemAmt
+                            }
+
                             ONE_HUNDRED_DOLLAR_BOND -> {
                                 paymentAmount = 100.0 * row.itemAmt
-                            }
-
-                            DONATOR_MYSTERY_BOX -> {
-                                paymentAmount = 10.0 * row.itemAmt
-                                TOTAL_PAYMENT_AMOUNT.increment(this, 10.0 * row.itemAmt)
-                            }
-                        }
-
-                        if(GameServer.properties().donatorPromo) {
-                            val mysteryTickets = paymentAmount.toInt() / 15
-                            if (mysteryTickets > 0) {
-                                inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
-                                World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
                             }
                         }
 
@@ -133,12 +128,6 @@ object CollectPayments {
                         } else {
                             //No promo active, give the purchase items without bonus
                             inventory.addOrBank(Item(row.itemId, row.itemAmt))
-                        }
-
-                        //println(increaseForPromo)
-
-                        if (GameServer.properties().promoEnabled) {
-                            this.paymentPromo.checkForPromoReward(paymentAmount)
                         }
                     }
                 }
