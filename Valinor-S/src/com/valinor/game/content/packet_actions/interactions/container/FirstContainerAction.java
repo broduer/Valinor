@@ -98,7 +98,7 @@ public class FirstContainerAction {
             if(usingGroupStorage) {
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
                 if(group.isPresent()) {
-                    group.get().getGroupStorage().withdraw(id, slot, 1);
+                    group.get().getGroupStorage(player).withdraw(id, slot, 1);
                 }
                 return;
             }
@@ -149,7 +149,7 @@ public class FirstContainerAction {
             if(usingGroupStorage) {
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
                 if(group.isPresent()) {
-                    group.get().getGroupStorage().deposit(slot, 1);
+                    group.get().getGroupStorage(player).deposit(slot, 1);
                 }
                 return;
             }

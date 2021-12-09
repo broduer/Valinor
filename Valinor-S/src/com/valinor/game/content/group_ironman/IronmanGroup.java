@@ -1,5 +1,6 @@
 package com.valinor.game.content.group_ironman;
 
+import com.google.gson.annotations.Expose;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -10,10 +11,7 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static com.valinor.game.content.group_ironman.IronmanGroupHandler.saveIronmanGroups;
 import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
@@ -27,22 +25,24 @@ import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP
  */
 public class IronmanGroup {
 
+    @Expose
     private String groupName;
+    @Expose
     private String leaderName;
+    @Expose
     private boolean hardcoreGroup;
+    @Expose
     private int hardcoreLives;
-    private List<IronmanGroupMember> members;
+    @Expose
+    private List<IronmanGroupMember> members = List.of();
+    @Expose
     private Date dateStated;
     private Optional<String> invitation = Optional.empty();
-    private Item[] groupStorage;
 
-    //TODO for Jak
-    //#1 store the items of the container GroupStorage inside a array in this json
-    //#2 create a getter for the container to withdraw and remove items from the container and add
-    //Example, other containers are like player.inv.add, here we need group(gets the group) group.groupStorage.add (groupStorage being the container not items array)
-    //This container is used by a group, and not a single player.
-    //So essentially it should save the json when a player clicks (save) when done or when closing the interface, already has a save method.
-    //But I can't seem to connect the dots together so the items array is stored in the json, and the getter does all the container work.
+    private final GroupStorage groupStorage = new GroupStorage(null);
+
+    @Expose
+    public Item[] loadSaveTemp;
 
     /**
      * Creates a new group from a player
@@ -56,8 +56,7 @@ public class IronmanGroup {
             .setHardcoreGroup(player.ironMode() == IronMode.HARDCORE)
             .setHardcoreLives(1)
             .setGroupName(player.getUsername())
-            .setMembers(members)
-            .setGroupStorage(new Item[0]);
+            .setMembers(members);
     }
 
     public void acceptInvitation(Player leader, Player player) {
@@ -150,12 +149,12 @@ public class IronmanGroup {
      * @return true if the player exists
      */
     public boolean playerExists(Player player) {
-        return members.stream().anyMatch(
+        return members.stream().filter(Objects::nonNull).anyMatch(
             e -> e.getUsername().equalsIgnoreCase(player.getUsername()));
     }
 
     public boolean isGroupMember(String name) {
-        return members.stream().anyMatch(e -> e.getUsername().equalsIgnoreCase(name));
+        return members.stream().filter(Objects::nonNull).anyMatch(e -> e.getUsername().equalsIgnoreCase(name));
     }
 
     public boolean isGroupMember(Player player) {
@@ -309,15 +308,13 @@ public class IronmanGroup {
         return hardcoreLives;
     }
 
-    public IronmanGroup setGroupStorage(Item[] storage) {
-        /*for (int i = 0; i < storage.length; i++) {
-            this.groupStorage.set(i, storage[i], false);
-        }*/
-        return this;
+    public GroupStorage getGroupStorage() {
+        return groupStorage;
     }
 
-    public GroupStorage getGroupStorage() {
-        return null;
+    public GroupStorage getGroupStorage(Player player) {
+        groupStorage.setPlayer(player); // that'll fix contextual calls
+        return groupStorage;
     }
 
     public List<IronmanGroupMember> getMembers() {

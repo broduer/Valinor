@@ -37,11 +37,11 @@ public class GroupStorageX implements EnterSyntax {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         if (deposit) {
             if(group.isPresent()) {
-                group.get().getGroupStorage().deposit(slot_id, (int) input);
+                group.get().getGroupStorage(player).deposit(slot_id, (int) input);
             }
         } else {
             if(group.isPresent()) {
-                group.get().getGroupStorage().withdraw(item_id, slot_id, (int) input);
+                group.get().getGroupStorage(player).withdraw(item_id, slot_id, (int) input);
             }
         }
     }

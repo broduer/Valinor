@@ -1,5 +1,6 @@
 package com.valinor.game.world.items;
 
+import com.google.gson.annotations.Expose;
 import com.valinor.fs.DefinitionRepository;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
@@ -64,11 +65,13 @@ public class Item implements Cloneable {
     /**
      * The item id.
      */
+    @Expose
     private int id;
 
     /**
      * Amount of the item.
      */
+    @Expose
     private int amount;
 
     public static void onServerStart() {
@@ -491,7 +494,7 @@ public class Item implements Cloneable {
             add(CRAWS_BOW_C);
             add(THAMMARONS_STAFF_C);
             add(VENGEANCE_SKULL);
-            add(WAMPA);
+            add(ICELORD_PET);
             add(BABY_SQUIRT);
             add(BABY_LAVA_DRAGON);
             add(ZRIAWK);

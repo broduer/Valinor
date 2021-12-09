@@ -129,7 +129,7 @@ public class InterfaceManager {
         if (player.hasAttrib(USING_GROUP_STORAGE)) {
             Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
             if(group.isPresent()) {
-                group.get().getGroupStorage().close();
+                group.get().getGroupStorage(player).close();
             }
         }
 

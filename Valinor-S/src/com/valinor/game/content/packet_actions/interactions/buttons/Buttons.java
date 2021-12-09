@@ -399,7 +399,7 @@ public class Buttons {
                     return;
                 }
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if (group.isPresent() && group.get().getGroupStorage().buttonAction(button)) {
+                if (group.isPresent() && group.get().getGroupStorage(player).buttonAction(button)) {
                     return;
                 }
                 if (Referrals.INSTANCE.handleButton(player, button)) {

@@ -735,7 +735,7 @@ public class Bank extends ItemContainer {
                 player.getInterfaceManager().close();//Close bank
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
                 if(group.isPresent()) {
-                    group.get().getGroupStorage().open();//Open group storage
+                    group.get().getGroupStorage(player).open();//Open group storage
                 }
                 return true;
 

@@ -1864,9 +1864,9 @@ public class Player extends Mob {
     public void syncContainers() {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(this);
         if(group.isPresent()) {
-            if (group.get().getGroupStorage().dirty) {
-                group.get().getGroupStorage().sync();
-                group.get().getGroupStorage().dirty = false;
+            if (group.get().getGroupStorage(this).dirty) {
+                group.get().getGroupStorage(this).sync();
+                group.get().getGroupStorage(this).dirty = false;
             }
         }
         if (getBank().dirty) {

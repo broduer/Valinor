@@ -1,5 +1,6 @@
 package com.valinor.game.content.group_ironman;
 
+import com.google.gson.annotations.Expose;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 
@@ -12,9 +13,13 @@ import java.util.Optional;
  */
 public class IronmanGroupMember {
 
+    @Expose
     private String username;
+    @Expose
     private int combatLevel;
+    @Expose
     private long totalXp;
+    @Expose
     private int totalLevel;
 
     /**

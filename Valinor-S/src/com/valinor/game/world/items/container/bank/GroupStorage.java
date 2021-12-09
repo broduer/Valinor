@@ -9,6 +9,7 @@ import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.ItemContainerAdapter;
 import com.valinor.util.Color;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.USING_GROUP_STORAGE;
@@ -22,7 +23,11 @@ public class GroupStorage extends ItemContainer {
     /**
      * The player instance.
      */
-    private final Player player;
+    private Player player;
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
     /**
      * The noting flag.
@@ -72,7 +77,7 @@ public class GroupStorage extends ItemContainer {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         if(group.isPresent()) {
             player.putAttrib(USING_GROUP_STORAGE,true);
-            player.getPacketSender().sendString(67504, Integer.toString(group.get().getGroupStorage().size()));
+            player.getPacketSender().sendString(67504, Integer.toString(group.get().getGroupStorage(player).size()));
             player.getPacketSender().sendString(67506, Integer.toString(SIZE));
             player.getPacketSender().sendString(67509,"Infinity");
             player.getInterfaceManager().openInventory(InterfaceConstants.GROUP_STORAGE_WIDGET, InterfaceConstants.INVENTORY_STORE - 1);
@@ -105,7 +110,8 @@ public class GroupStorage extends ItemContainer {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         if(group.isPresent()) {
             player.inventory().refresh(player, InterfaceConstants.INVENTORY_STORE);
-            player.getPacketSender().sendItemOnInterface(InterfaceConstants.GROUP_STORAGE_CONTAINER, group.get().getGroupStorage().toArray());
+            //System.out.println("gi inv sync "+Arrays.toString(group.get().getGroupStorage(player).toArray()));
+            player.getPacketSender().sendItemOnInterface(InterfaceConstants.GROUP_STORAGE_CONTAINER, group.get().getGroupStorage(player).toArray());
             player.inventory().refresh();
         }
     }
@@ -227,7 +233,7 @@ public class GroupStorage extends ItemContainer {
 
     public void save() {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-        group.ifPresent(ironmanGroup -> ironmanGroup.setGroupStorage(group.get().getGroupStorage().toArray()));
+        group.ifPresent(ironmanGroup -> ironmanGroup.loadSaveTemp = ironmanGroup.getGroupStorage().toArray());
         IronmanGroupHandler.saveIronmanGroups();
     }
 

@@ -1,6 +1,7 @@
 package com.valinor.game.content.group_ironman;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupAverageSort;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,7 +35,7 @@ public final class IronmanGroupHandler {
      * The full list of ironmen
      */
     private static List<IronmanGroup> ironManGroups = new ArrayList<>();
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().disableHtmlEscaping().create();
     private static final String SAVE_FILE = "./data/saves/groups/all_groups.json";
 
     /**
@@ -226,9 +228,14 @@ public final class IronmanGroupHandler {
         GameEngine.getInstance().submitLowPriority(() -> {
             try {
                 File loadDirectory = new File(SAVE_FILE);
+                if (!loadDirectory.exists())
+                    return;
                 List<String> contents = Files.readAllLines(loadDirectory.toPath());
                 ironManGroups = GSON.fromJson(contents.get(0), new TypeToken<List<IronmanGroup>>() {
                 }.getType());
+                ironManGroups.forEach(g -> {
+                    g.getGroupStorage().set(Arrays.copyOf(g.loadSaveTemp, g.loadSaveTemp.length));
+                });
                 log.info("Loaded " + ironManGroups.size() + "ironmen groups");
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -240,13 +247,15 @@ public final class IronmanGroupHandler {
      * Saves all groups to the designated file
      */
     public static void saveIronmanGroups() {
+        ironManGroups.forEach(g -> {
+            g.loadSaveTemp = g.getGroupStorage().toArray();
+        });
         GameEngine.getInstance().submitLowPriority(() -> {
             try {
                 File loadDirectory = new File(SAVE_FILE);
                 String contents = GSON.toJson(ironManGroups);
                 Files.write(loadDirectory.toPath(), contents.getBytes());
-                ironManGroups = GSON.fromJson(contents, new TypeToken<List<IronmanGroup>>() {
-                }.getType());
+
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

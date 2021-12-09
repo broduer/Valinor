@@ -93,7 +93,7 @@ public class ThirdContainerAction {
             if(usingGroupStorage) {
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
                 if(group.isPresent()) {
-                    group.get().getGroupStorage().withdraw(id, slot, 10);
+                    group.get().getGroupStorage(player).withdraw(id, slot, 10);
                 }
                 return;
             }
@@ -112,7 +112,7 @@ public class ThirdContainerAction {
             if(usingGroupStorage) {
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
                 if(group.isPresent()) {
-                    group.get().getGroupStorage().deposit(slot, 10);
+                    group.get().getGroupStorage(player).deposit(slot, 10);
                 }
                 return;
             }
