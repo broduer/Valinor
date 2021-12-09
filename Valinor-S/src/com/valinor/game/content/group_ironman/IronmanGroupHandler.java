@@ -9,16 +9,15 @@ import com.valinor.game.content.group_ironman.sorts.IronmanGroupDateSort;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.Color;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileReader;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
@@ -230,8 +229,7 @@ public final class IronmanGroupHandler {
                 File loadDirectory = new File(SAVE_FILE);
                 if (!loadDirectory.exists())
                     return;
-                List<String> contents = Files.readAllLines(loadDirectory.toPath());
-                ironManGroups = GSON.fromJson(contents.get(0), new TypeToken<List<IronmanGroup>>() {
+                ironManGroups = GSON.fromJson(new FileReader(loadDirectory), new TypeToken<List<IronmanGroup>>() {
                 }.getType());
                 ironManGroups.forEach(g -> {
                     g.getGroupStorage().set(Arrays.copyOf(g.loadSaveTemp, g.loadSaveTemp.length));
