@@ -18,39 +18,27 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 
 public class RedeemableBonds extends PacketInteraction {
 
-    private static final int FIVE_DOLLAR_BOND = 13190;
-    private static final int TEN_DOLLAR_BOND = 16278;
-    private static final int TWENTY_DOLLAR_BOND = 16263;
-    private static final int FORTY_DOLLAR_BOND = 16264;
-    private static final int FIFTY_DOLLAR_BOND = 16265;
-    private static final int ONE_HUNDRED_DOLLAR_BOND = 16266;
-
     private enum Bond {
 
         FIVE_DOLLAR(5.0, 500, FIVE_DOLLAR_BOND),
         TEN_DOLLAR(10.0, 1000, TEN_DOLLAR_BOND),
         TWENTY_DOLLAR(20.0, 2000, TWENTY_DOLLAR_BOND),
+        THIRTY_DOLLAR(30.0, 3000, THIRTY_DOLLAR_BOND),
         FORTY_DOLLAR(40.0, 4000, FORTY_DOLLAR_BOND),
         FIFTY_DOLLAR(50.0, 5000, FIFTY_DOLLAR_BOND),
-        ONE_HUNDRED_DOLLAR(100.0, 10000, ONE_HUNDRED_DOLLAR_BOND, new Item[]{new Item(DONATOR_MYSTERY_BOX), new Item(DONATOR_MYSTERY_BOX), new Item(DONATOR_MYSTERY_BOX)});
+        SEVENTY_FIVE(75.0, 7500, SEVENTY_FIVE_DOLLAR_BOND, new Item(DONATOR_MYSTERY_BOX, 3)),
+        ONE_HUNDRED_DOLLAR(100.0, 10000, ONE_HUNDRED_DOLLAR_BOND, new Item(DONATOR_MYSTERY_BOX, 5));
 
         private final double increasePaidAmountBy;
         private final int donatorTicketReward;
         private final int bondId;
-        private final Item[] extraRewards;
+        private final Item[] extra;
 
-        Bond(double increasePaidAmountBy, int donatorTicketReward, int bondId) {
+        Bond(double increasePaidAmountBy, int donatorTicketReward, int bondId, Item... extra) {
             this.increasePaidAmountBy = increasePaidAmountBy;
             this.donatorTicketReward = donatorTicketReward;
             this.bondId = bondId;
-            this.extraRewards = null;
-        }
-
-        Bond(double increasePaidAmountBy, int donatorTicketReward, int bondId, Item[] extraRewards) {
-            this.increasePaidAmountBy = increasePaidAmountBy;
-            this.donatorTicketReward = donatorTicketReward;
-            this.bondId = bondId;
-            this.extraRewards = extraRewards;
+            this.extra = extra;
         }
 
         public static Bond getByBond(int id) {
@@ -80,10 +68,8 @@ public class RedeemableBonds extends PacketInteraction {
             //Add the tickets
             player.inventory().addOrBank(new Item(DONATOR_TICKET, bond.donatorTicketReward));
 
-            Item[] reward = bond.extraRewards;
-
-            if (reward != null) {
-                player.inventory().addOrBank(reward.clone());
+            if (bond.extra != null) {
+                player.inventory().addOrBank(bond.extra.clone());
             }
         }
     }
