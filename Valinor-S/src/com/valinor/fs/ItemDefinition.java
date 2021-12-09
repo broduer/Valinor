@@ -616,8 +616,8 @@ public class ItemDefinition implements Definition {
             name = "Barrelchest pet";
             ioptions = new String[]{null, null, null, null, "Drop"};
             stackable = false;
-        } else if (id == WAMPA) {
-            name = "Wampa pet";
+        } else if (id == ICELORD_PET) {
+            name = "Icelord pet";
             ioptions = new String[]{null, null, null, null, "Drop"};
             stackable = false;
         } else if (id == PET_KREE_ARRA_WHITE) {

@@ -98,5 +98,7 @@
   "doubleExperienceEvent": false,
   "doubleSlayerRewardPointsEvent": false,
   "doubleBMEvent": false,
-  "doubleVotePointsEvent": false
+  "doubleVotePointsEvent": false,
+  "halloween": false,
+  "christmas": true
 }

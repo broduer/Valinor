@@ -2,6 +2,8 @@ package com.valinor.cache.def.impl;
 
 import com.valinor.ClientConstants;
 import com.valinor.cache.def.NpcDefinition;
+import com.valinor.util.CustomNpcIdentifiers;
+import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -12,20 +14,80 @@ public class NpcManager {
         boolean impling = false;
 
         switch (id) {
-
-            case 11112:
+                
+            case 15114:
                 definition.name = "Santa";
-                definition.models = new int[]{235, 189, 299, 4226, 4218, 162, 4924, 4925, 4926};
-                definition.actions = new String[]{"Talk-to", null, null, null, null};
-                definition.additionalModels = new int[]{7380, 69, 53};//Beard, santa hat, head
-                definition.description = "Also known as Father christmas.";
-                definition.walkingAnimation = 819;
-                definition.rotate180Animation = 819;
-                definition.rotate90LeftAnimation = 819;
-                definition.rotate90RightAnimation = 819;
-                definition.standingAnimation = 808;
-                definition.recolorFrom = new int[]{6798, 8078, 8741, 25238, 6587, 5400};
-                definition.recolorTo = new int[]{86, 10351, 933, 933, 10351, 0};
+                definition.actions = new String[] {"Talk-to", null, null, null, null};
+                definition.combatLevel = 0;
+                definition.models = new int[] {62598};
+                definition.additionalModels = new int[] {69682};
+                definition.rotate180Animation = 8535;
+                definition.rotate90LeftAnimation = 8536;
+                definition.rotate90RightAnimation = 8537;
+                definition.standingAnimation = 8538;
+                definition.size = 2;
+                definition.drawMapDot = true;
+                definition.walkingAnimation = 8534;
+                break;
+                
+            case 15115:
+                definition.name = "Anti-Santa";
+                definition.actions = new String[] {"Talk-to", null, null, null, null};
+                definition.combatLevel = 0;
+                definition.models = new int[] {62597};
+                definition.additionalModels = new int[] {69681};
+                definition.rotate180Animation = 8542;
+                definition.rotate90LeftAnimation = 8543;
+                definition.rotate90RightAnimation = 8544;
+                definition.standingAnimation = 8545;
+                definition.size = 2;
+                definition.drawMapDot = true;
+                definition.walkingAnimation = 8541;
+                break;
+                
+            case 15116:
+                definition.name = "Anti-Santa";
+                definition.combatLevel = 0;
+                definition.models = new int[] {69686};
+                definition.additionalModels = new int[] {69718};
+                definition.standingAnimation = 7175;
+                definition.size = 2;
+                break;
+                
+            case 15117:
+                definition.name = "Icelord";
+                definition.combatLevel = 981;
+                definition.models = new int[] {21804,21801};
+                definition.standingAnimation = 5722;
+                definition.size = 2;
+                definition.drawMapDot = true;
+                definition.walkingAnimation = 5721;
+                definition.actions = new String[] {null, "Attack", null, null, null, null};
+                break;
+
+            case 15118:
+                NpcDefinition.copy(definition, IMP);
+                definition.name = "Ice imp";
+                definition.combatLevel = 77;
+                definition.modelCustomColor4 = 31575;
+                break;
+
+            case 15119:
+                NpcDefinition.copy(definition, IMP);
+                definition.name = "Ice imp";
+                definition.combatLevel = 127;
+                definition.widthScale = 155;
+                definition.heightScale = 155;
+                definition.modelCustomColor4 = 31575;
+                break;
+
+            case 15120:
+                NpcDefinition.copy(definition, IMP);
+                definition.name = "Ice imp";
+                definition.combatLevel = 188;
+                definition.widthScale = 190;
+                definition.heightScale = 190;
+                definition.modelCustomColor4 = 31575;
                 break;
 
             case 3443:

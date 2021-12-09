@@ -206,6 +206,8 @@ public final class ServerProperties {
         doubleSlayerRewardPointsEvent = false;
         doubleBMEvent = false;
         doubleVotePointsEvent = false;
+        halloween = false;
+        christmas = false;
     }
 
     public final String fileStore;
@@ -668,6 +670,7 @@ public final class ServerProperties {
     public final boolean doubleSlayerRewardPointsEvent;
     public final boolean doubleBMEvent;
     public final boolean doubleVotePointsEvent;
-
+    public final boolean halloween;
+    public final boolean christmas;
 }
 

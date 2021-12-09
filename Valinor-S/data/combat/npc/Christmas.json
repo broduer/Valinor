@@ -1,0 +1,135 @@
+[
+  {
+    // Ice imp
+    "ids": [
+      15118
+    ],
+    "maxhit": 7,
+    "aggressive": false,
+    "attackspeed": 4,
+    "deathlen": 3,
+    "stats": {
+      "attack": 55,
+      "strength": 55,
+      "magic": 55,
+      "ranged": 55,
+      "defence": 23,
+      "hitpoints": 65
+    },
+    "bonuses": {
+      "stabdefence": 5,
+      "slashdefence": 5,
+      "crushdefence": 5,
+      "rangeddefence": 5,
+      "magicdefence": 5
+    },
+    "animations": {
+      "attack": 169,
+      "block": 170,
+      "death": 172
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.IceImpAgro"
+    }
+  },
+  {
+    // Ice imp
+    "ids": [
+      15119
+    ],
+    "maxhit": 10,
+    "aggressive": false,
+    "attackspeed": 4,
+    "deathlen": 3,
+    "stats": {
+      "attack": 75,
+      "strength": 75,
+      "magic": 75,
+      "ranged": 75,
+      "defence": 30,
+      "hitpoints": 100
+    },
+    "bonuses": {
+      "stabdefence": 10,
+      "slashdefence": 10,
+      "crushdefence": 10,
+      "rangeddefence": 10,
+      "magicdefence": 10
+    },
+    "animations": {
+      "attack": 169,
+      "block": 170,
+      "death": 172
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.IceImpAgro"
+    }
+  },
+  {
+    // Ice imp
+    "ids": [
+      15120
+    ],
+    "maxhit": 15,
+    "aggressive": false,
+    "attackspeed": 4,
+    "deathlen": 3,
+    "stats": {
+      "attack": 90,
+      "strength": 90,
+      "magic": 90,
+      "ranged": 90,
+      "defence": 43,
+      "hitpoints": 150
+    },
+    "bonuses": {
+      "stabdefence": 25,
+      "slashdefence": 25,
+      "crushdefence": 25,
+      "rangeddefence": 25,
+      "magicdefence": 25
+    },
+    "animations": {
+      "attack": 169,
+      "block": 170,
+      "death": 172
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.IceImpAgro"
+    }
+  },
+  {
+    // Icelord
+    "ids": [
+      15117
+    ],
+    "maxhit": 45,
+    "attackspeed": 6,
+    "aggressive": true,
+    "stats": {
+      "attack": 320,
+      "strength": 220,
+      "defence": 150,
+      "magic": 268,
+      "ranged": 268,
+      "hitpoints": 4000
+    },
+    "bonuses": {
+      "attack": 320,
+      "strength": 200,
+      "stabdefence": 200,
+      "slashdefence": 200,
+      "crushdefence": 200,
+      "rangeddefence": 200,
+      "magicdefence": 200
+    },
+    "animations": {
+      "attack": 8056,
+      "block": 435,
+      "death": 836
+    },
+    "scripts": {
+      "combat": "com.valinor.game.content.seasonal_events.christmas.boss.IcelordCombatScript"
+    }
+  }
+]

@@ -192,13 +192,14 @@ public class CustomItemIdentifiers {
     public static final int DEMENTOR_PET = 30342;
     public static final int DONATOR_MYSTERY_BOX = 30185;
     public static final int FOUNDER_IMP = 30016;
+    public static final int ICE_IMP = 30017;
     public static final int PET_CORRUPTED_NECHRYARCH = 30018;
     public static final int MINI_NECROMANCER = 30033;
     public static final int JALTOK_JAD = 30044;
     public static final int BABY_LAVA_DRAGON = 30131;
     public static final int JAWA_PET = 16173;
     public static final int BABY_ARAGOG = 16172;
-    public static final int WAMPA = 16171;
+    public static final int ICELORD_PET = 16171;
     public static final int DHAROK_PET = 16020;
     public static final int TWISTED_SLAYER_HELMET_I_KBD_HEADS = 24445;
     public static final int TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE = 25913;
@@ -230,8 +231,10 @@ public class CustomItemIdentifiers {
     public static final int FIVE_DOLLAR_BOND = 13190;
     public static final int TEN_DOLLAR_BOND = 16278;
     public static final int TWENTY_DOLLAR_BOND = 16263;
+    public static final int THIRTY_DOLLAR_BOND = 16267;
     public static final int FORTY_DOLLAR_BOND = 16264;
     public static final int FIFTY_DOLLAR_BOND = 16265;
+    public static final int SEVENTY_FIVE_DOLLAR_BOND = 16268;
     public static final int ONE_HUNDRED_DOLLAR_BOND = 16266;
     public static final int EARTH_ARROWS = 2866;
     public static final int FIRE_ARROWS = 4160;

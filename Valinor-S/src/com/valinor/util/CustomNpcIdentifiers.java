@@ -6,6 +6,14 @@ package com.valinor.util;
  */
 public class CustomNpcIdentifiers {
 
+    public static final int SANTA = 15114;
+    public static final int ANTI_SANTA = 15115;
+    public static final int ANTI_SANTA_15116 = 15116;
+    public static final int ICELORD = 15117;
+    public static final int ICE_IMP = 15118;
+    public static final int ICE_IMP_15119 = 15119;
+    public static final int ICE_IMP_15120 = 15120;
+    public static final int ICE_IMP_PET = 15121;
     public static final int NAGINI = 15025;
     public static final int BLOOD_REAPER = 15229;
     public static final int FAWKES_15981 = 15981;
@@ -46,7 +54,7 @@ public class CustomNpcIdentifiers {
     public static final int BABY_LAVA_DRAGON = 15017;
     public static final int JAWA_PET = 15213;
     public static final int BABY_ARAGOG = 15214;
-    public static final int WAMPA_PET = 15220;
+    public static final int ICELORD_PET = 15220;
     public static final int NIFFLER_PET = 16635;
     public static final int FAWKES = 14927;
     public static final int BABY_SQUIRT = 15225;

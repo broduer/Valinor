@@ -1,5 +1,6 @@
 package com.valinor.game.content.seasonal_events.rewards;
 
+import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
@@ -111,18 +112,15 @@ public class UnlockEventRewards {
         }
     }
 
-    public static final boolean HALLOWEEN = false;
-    public static final boolean CHRISTMAS = true;
-
     private static final int INTERFACE_ID = 73300;
     private static final int COMPLETED_EVENT_REWARD_SLOT = 73315;
     private static final int TOKEN_REQUIREMENT_SLOT = 73316;
     public static final int UNLOCKED_ITEM_SLOT = 73317;
     private static final int UNLOCKABLE_ITEMS_CONTAINER = 73318;
 
-    private static final Item COMPLETED_EVENT_REWARD = HALLOWEEN ? new Item(BLOOD_MONEY, 1) : new Item(MYSTERY_TICKET,2);
+    private static final Item COMPLETED_EVENT_REWARD = new Item(MYSTERY_TICKET,2);
 
-    private static final Item TOKEN_REQUIREMENT = HALLOWEEN ? new Item(HWEEN_TOKENS, 5000) : new Item(XMAS_TOKENS, 10_000);
+    private static final Item TOKEN_REQUIREMENT = GameServer.properties().halloween ? new Item(HWEEN_TOKENS, 5000) : new Item(XMAS_TOKENS, 10_000);
 
     private static final ArrayList<Item> items = new ArrayList<>();
 

@@ -6,7 +6,6 @@ import com.valinor.cache.factory.ItemSpriteFactory;
 import com.valinor.cache.graphics.SimpleImage;
 import com.valinor.draw.Rasterizer2D;
 import com.valinor.util.CustomItemIdentifiers;
-import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -109,7 +108,7 @@ public class HoverMenuManager {
         menus.put(FAWKES, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
         menus.put(FAWKES_32937, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
         menus.put(BARRELCHEST_PET, new HoverMenu("@red@+1@whi@ Max hit And @red@+10%@whi@ attack bonus accuracy."));
-        menus.put(WAMPA, new HoverMenu("Has a @red@10%@whi@ chance to freeze your opponent."));
+        menus.put(CustomItemIdentifiers.ICELORD_PET, new HoverMenu("Has a @red@10%@whi@ chance to freeze your opponent."));
         menus.put(NIFFLER, new HoverMenu("Niffler stores items that you've received from a player kill or pvm drop into his pouch."));
         menus.put(BABY_ARAGOG, new HoverMenu("Gives @red@5%@whi@ vs players and @red@10%@whi@ vs npcs more Ranged damage and @red@15%@whi@ more Ranged accuracy."));
         menus.put(BABY_LAVA_DRAGON, new HoverMenu("Gives Gives @red@5%@whi@ vs players and @red@10%@whi@ vs npcs Magic damage and @red@10%@whi@ more Magic accuracy."));

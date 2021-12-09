@@ -1,5 +1,6 @@
 package com.valinor.game.content.seasonal_events.halloween;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -174,7 +175,7 @@ public class Halloween extends PacketInteraction {
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 73307) {
-            if (UnlockEventRewards.HALLOWEEN) {
+            if (GameServer.properties().halloween) {
                 player.optionsTitled("Exchange your 5,000 H'ween tokens for a reward?", "Yes", "No", () -> {
                     if (!player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
                         return;
@@ -203,7 +204,7 @@ public class Halloween extends PacketInteraction {
             return true;
         }
         if (button == 73310) {
-            if (UnlockEventRewards.HALLOWEEN) {
+            if (GameServer.properties().halloween) {
                 player.getEventRewards().reset("H'ween");
             }
             return true;
@@ -215,7 +216,7 @@ public class Halloween extends PacketInteraction {
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
             if (object.getId() == 2654) {
-                if (UnlockEventRewards.HALLOWEEN) {
+                if (GameServer.properties().halloween) {
                     player.getEventRewards().open("H'ween");
                 }
                 return true;

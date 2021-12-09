@@ -74,7 +74,7 @@ object SaveWealthInfo {
         str += ("The total FAWKES PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumFawkesPet.get())+"\n")
         str += ("The total RECOLORED FAWKES PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumRecoloredFawkesPet.get())+"\n")
         str += ("The total NIFFLER PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumNifflerPet.get())+"\n")
-        str += ("The total WAMPA PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumWampaPet.get())+"\n")
+        str += ("The total ICELORD PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumIcelordPet.get())+"\n")
         str += ("The total BABY ARAGOG PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumBabyAragogPet.get())+"\n")
         str += ("The total MINI NECROMANCER PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumMiniNecromancerPet.get())+"\n")
         str += ("The total CORRUPTED NECHRYARCH PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumCorruptedNechryarchPet.get())+"\n")

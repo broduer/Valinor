@@ -26,6 +26,7 @@ import java.util.stream.Stream;
 
 import static com.valinor.game.world.entity.AttributeKey.MAC_ADDRESS;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomNpcIdentifiers.ICELORD_PET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -152,7 +153,7 @@ public class CheckServerWealthCommand implements Command {
         public AtomicLong sumFawkesPet = new AtomicLong(0L);
         public AtomicLong sumRecoloredFawkesPet = new AtomicLong(0L);
         public AtomicLong sumNifflerPet = new AtomicLong(0L);
-        public AtomicLong sumWampaPet = new AtomicLong(0L);
+        public AtomicLong sumIcelordPet = new AtomicLong(0L);
         public AtomicLong sumBabyAragogPet = new AtomicLong(0L);
         public AtomicLong sumMiniNecromancerPet = new AtomicLong(0L);
         public AtomicLong sumCorruptedNechryarchPet = new AtomicLong(0L);
@@ -430,8 +431,8 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == NIFFLER) {
                                         storage.sumNifflerPet.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == WAMPA) {
-                                        storage.sumWampaPet.addAndGet(1L * item.getAmount());
+                                    if(item.getId() == ICELORD_PET) {
+                                        storage.sumIcelordPet.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == BABY_ARAGOG) {
                                         storage.sumBabyAragogPet.addAndGet(1L * item.getAmount());

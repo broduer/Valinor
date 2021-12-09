@@ -17,6 +17,7 @@ import static com.valinor.util.NpcIdentifiers.LITTLE_NIGHTMARE_9399;
 public enum Pet {
 
     //Custom
+    ICE_IMP(CustomItemIdentifiers.ICE_IMP, CustomNpcIdentifiers.ICE_IMP_PET, -1),
     NAGINI(CustomItemIdentifiers.NAGINI, CustomNpcIdentifiers.NAGINI, -1),
     SKELETON_HELLHOUND_PET(CustomItemIdentifiers.HAUNTED_HELLHOUND_PET, CustomNpcIdentifiers.SKELETON_HELLHOUND_PET,-1),
     BLOOD_REAPER(CustomItemIdentifiers.BLOOD_REAPER, CustomNpcIdentifiers.BLOOD_REAPER,-1),
@@ -48,7 +49,7 @@ public enum Pet {
     BABY_LAVA_DRAGON(CustomItemIdentifiers.BABY_LAVA_DRAGON, CustomNpcIdentifiers.BABY_LAVA_DRAGON, -1),
     JAWA(CustomItemIdentifiers.JAWA_PET, CustomNpcIdentifiers.JAWA_PET, -1),
     BABY_ARAGOG(CustomItemIdentifiers.BABY_ARAGOG, CustomNpcIdentifiers.BABY_ARAGOG, -1),
-    WAMPA(CustomItemIdentifiers.WAMPA, CustomNpcIdentifiers.WAMPA_PET, -1),
+    ICELORD(CustomItemIdentifiers.ICELORD_PET, CustomNpcIdentifiers.ICELORD_PET, -1),
     FAWKES(CustomItemIdentifiers.FAWKES, CustomNpcIdentifiers.FAWKES,-1),
     BABY_SQUIRT(CustomItemIdentifiers.BABY_SQUIRT, CustomNpcIdentifiers.BABY_SQUIRT, UNLOCKED_PET_BABY_SQUIRT),
     GRIM_REAPER(CustomItemIdentifiers.GRIM_REAPER_PET, CustomNpcIdentifiers.GRIM_REAPER_PET, -1),

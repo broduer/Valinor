@@ -59,7 +59,7 @@ public final class Sequence {
             cache[animation].decode(buffer);
 
             //Fix Dagannoth Rex animation by reverting frames to older
-            if(animation == 2851) {
+            if (animation == 2851) {
                 cache[animation] = new Sequence();
                 cache[animation].frames = 6;
                 cache[animation].frame_length = new int[]{5, 5, 3, 6, 4, 3};
@@ -67,47 +67,134 @@ public final class Sequence {
                 cache[animation].appended_frames = 5;
                 cache[animation].reset = 1;
             }
+
+            if (ClientConstants.CHRISTMAS) {
+                if (animation == 8534) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157614162, 157614084, 157614094, 157614087, 157614082, 157614179, 157614135, 157614199, 157614183, 157614142, 157614160, 157614125, 157614090, 157614115, 157614149};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8535) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157614150, 157614124, 157614188, 157614146, 157614198, 157614164, 157614190, 157614112, 157614126, 157614151, 157614159, 157614095, 157614153, 157614178, 157614193};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8536) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157614117, 157614127, 157614139, 157614141, 157614106, 157614191, 157614128, 157614105, 157614111, 157614123, 157614140, 157614145, 157614143, 157614182, 157614186};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8537) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157614174, 157614201, 157614089, 157614176, 157614129, 157614166, 157614154, 157614200, 157614080, 157614180, 157614108, 157614148, 157614185, 157614114, 157614197};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8538) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 12;
+                    cache[animation].primary_frame = new int[]{157614163, 157614085, 157614131, 157614165, 157614181, 157614169, 157614081, 157614119, 157614133, 157614195, 157614196, 157614104};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 7175) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 92;
+                    cache[animation].primary_frame = new int[]{97124466, 97124467, 97124399, 97124357, 97124394, 97124430, 97124407, 97124443, 97124352, 97124405, 97124391, 97124397, 97124393, 97124436, 97124378, 97124454, 97124379, 97124390, 97124448, 97124442, 97124388, 97124363, 97124373, 97124406, 97124394, 97124450, 97124465, 97124365, 97124466, 97124415, 97124455, 97124418, 97124352, 97124425, 97124445, 97124392, 97124393, 97124385, 97124423, 97124371, 97124379, 97124384, 97124356, 97124410, 97124388, 97124457, 97124412, 97124354, 97124394, 97124421, 97124461, 97124449, 97124466, 97124395, 97124403, 97124382, 97124352, 97124464, 97124446, 97124416, 97124393, 97124377, 97124453, 97124459, 97124379, 97124429, 97124368, 97124435, 97124388, 97124426, 97124366, 97124452, 97124359, 97124381, 97124376, 97124386, 97124463, 97124469, 97124387, 97124355, 97124422, 97124361, 97124409, 97124370, 97124463, 97124441, 97124440, 97124402, 97124359, 97124375, 97124462, 97124358};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 5, 8, 5, 3, 3, 3, 3, 3, 6, 10, 7, 4, 4, 4, 4, 4, 7, 11, 8, 6, 5};
+                    cache[animation].step = 78;
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8541) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157548565, 157548716, 157548590, 157548714, 157548568, 157548754, 157548675, 157548637, 157548582, 157548760, 157548710, 157548650, 157548559, 157548828, 157548757};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8542) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157548773, 157548694, 157548548, 157548583, 157548771, 157548782, 157548587, 157548607, 157548776, 157548693, 157548649, 157548634, 157548767, 157548623, 157548783};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8543) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157548705, 157548713, 157548648, 157548699, 157548823, 157548666, 157548556, 157548630, 157548751, 157548758, 157548824, 157548835, 157548793, 157548646, 157548614};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8544) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 15;
+                    cache[animation].primary_frame = new int[]{157548749, 157548575, 157548644, 157548643, 157548809, 157548811, 157548804, 157548740, 157548605, 157548659, 157548555, 157548613, 157548678, 157548552, 157548794};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+
+                if (animation == 8545) {
+                    cache[animation] = new Sequence();
+                    cache[animation].frames = 41;
+                    cache[animation].primary_frame = new int[]{157548697, 157548731, 157548726, 157548766, 157548706, 157548731, 157548697, 157548719, 157548687, 157548825, 157548798, 157548668, 157548832, 157548586, 157548792, 157548826, 157548774, 157548580, 157548562, 157548586, 157548832, 157548668, 157548711, 157548664, 157548744, 157548593, 157548786, 157548698, 157548589, 157548764, 157548574, 157548546, 157548796, 157548546, 157548574, 157548764, 157548589, 157548698, 157548561, 157548593, 157548617};
+                    cache[animation].frame_list = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
+                    cache[animation].frame_length = new int[]{30, 4, 4, 4, 4, 4, 30, 4, 4, 4, 4, 19, 4, 4, 4, 4, 25, 4, 4, 4, 4, 23, 4, 4, 4, 4, 4, 4, 18, 4, 4, 4, 19, 4, 4, 4, 4, 4, 4, 4, 4};
+                    cache[animation].tempo = 0;
+                    cache[animation].priority = 0;
+                    cache[animation].reset = 2;
+                }
+            }
         }
 
-        while (animation < cache.length) {
-            if (animation == 11900) {
-                cache[animation] = new Sequence();
-                cache[animation].frames = 14;
-                cache[animation].primary_frame = new int[] {188285009, 188284950, 188284989, 188285162, 188284987, 188285107, 188285131, 188285085, 188285159, 188285041, 188285071, 188285204, 188285174, 188285152};
-                cache[animation].frame_list = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-                cache[animation].frame_length = new int[]{3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3};
-                cache[animation].tempo = 3;
-                cache[animation].priority = 1;
-            }
-            if (animation == 11901) {
-                cache[animation] = new Sequence();
-                cache[animation].frames = 13;
-                cache[animation].primary_frame = new int[] {19267601, 19267602, 19267603, 19267604, 19267605, 19267606, 19267607, 19267606, 19267605, 19267604, 19267603, 19267602, 19267601};
-                cache[animation].frame_length = new int[] {4, 3, 3, 4, 10, 10, 15, 10, 10, 4, 3, 3, 4};
-                cache[animation].frame_list = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-                cache[animation].flow_control = new int[] {1, 2, 9, 11, 13, 15, 17, 19, 37, 39, 41, 43, 45, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 183, 185, 191, 192, 9999999};
-                cache[animation].appended_frames = 6;
-                cache[animation].tempo = 2;
-                cache[animation].priority = 2;
-                cache[animation].reset = 1;
-            }
-            if (animation == 11902) {
-                cache[animation] = new Sequence();
-                cache[animation].frames = 31;
-                cache[animation].primary_frame  = new int[] {114295000, 114294953, 114295281, 114295193, 114295189, 114295249, 114295182, 114295061, 114295124, 114295007, 114295337, 114295102, 114294995, 114295283, 114295025, 114294899, 114295233, 114294879, 114295175, 114295169, 114294903, 114295091, 114295059, 114295267, 114295003, 114294981, 114294951, 114295031, 114294986, 114294820, 114295226};
-                cache[animation].frame_length  = new int[] {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3};
-                cache[animation].frame_list  = new int[] {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-                cache[animation].flow_control = new int[] {164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 183, 185, 193, 194, 196, 197, 198, 200, 202, 203, 204, 9999999};
-                cache[animation].stretch = true;
-                cache[animation].appended_frames = 6;
-                cache[animation].tempo = 2;
-                cache[animation].priority = 2;
-            }
-            //Custom animations unsupported by the OSRS rev
-            animation++;
-        }
-
-        /*System.out.println("frames "+cache[7644].frames);
+        /*
+        System.out.println("frames "+cache[7644].frames);
         System.out.println("primary_frame "+Arrays.toString(cache[7644].primary_frame));
         System.out.println("frame_length "+Arrays.toString(cache[7644].frame_length));
         System.out.println("frame_list "+Arrays.toString(cache[7644].frame_list));
@@ -120,12 +207,13 @@ public final class Sequence {
         System.out.println("loops "+cache[7644].loops);
         System.out.println("tempo "+cache[7644].tempo);
         System.out.println("priority "+cache[7644].priority);
-        System.out.println("reset "+cache[7644].reset);*/
+        System.out.println("reset "+cache[7644].reset);
+        */
         //System.out.println(findAnimFileId(2851));
         //System.out.println(findAnimFileId(6953));
 
         //dump(8763);
-        //dumpAnimations(9144);
+        //dumpAnimations(9160);
 
         // temp fix for wintertodt howling snowstorm
         cache[7322].step = 10;
@@ -138,7 +226,7 @@ public final class Sequence {
             BufferedWriter bf = new BufferedWriter(new FileWriter(f));
             for (int id = 0; id < amount; id++) {
                 bf.write(System.getProperty("line.separator"));
-                bf.write("animation "+id+" //fileID: " + (cache[id].primary_frame[0] >> 16));
+                bf.write("animation " + id + " //fileID: " + (cache[id].primary_frame[0] >> 16));
                 bf.write(System.getProperty("line.separator"));
             }
             bf.close();

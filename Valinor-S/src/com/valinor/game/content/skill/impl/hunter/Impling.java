@@ -248,7 +248,7 @@ public enum Impling {
         new Tile(2614, 4297, 0), //se
     };
 
-    private static final Tile[] OVERWORLD_RANDOM_SPAWN_TILES = {
+    public static final Tile[] OVERWORLD_RANDOM_SPAWN_TILES = {
 
         new Tile(3170, 3454, 0), // varrock spawns
         new Tile(3208, 3434, 0),

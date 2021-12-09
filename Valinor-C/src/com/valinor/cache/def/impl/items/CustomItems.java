@@ -1362,6 +1362,18 @@ public class CustomItems {
             def.zoom2d = 1424;
         }
 
+        if (id == ICE_IMP) {
+            def.name = "<col=65280>Ice imp";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.inventoryModel = 58916;
+            def.xOffset2d = 11;
+            def.yOffset2d = -1;
+            def.xan2d = 116;
+            def.yan2d = 1778;
+            def.zoom2d = 1424;
+            def.modelCustomColor4 = 31575;
+        }
+
         if (id == PET_CORRUPTED_NECHRYARCH) {
             def.name = "<col=65280>Corrupted nechryarch pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
@@ -1435,8 +1447,8 @@ public class CustomItems {
             def.zoom2d = 2541;
         }
 
-        if (id == WAMPA) {
-            def.name = "<col=65280>Wampa pet";
+        if (id == ICELORD_PET) {
+            def.name = "<col=65280>Icelord pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.inventoryModel = 21802;
             def.zoom2d = 4380;
@@ -1862,46 +1874,56 @@ public class CustomItems {
             case FIVE_DOLLAR_BOND:
                 def.name = "<col=65280>$5 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
+                def.modelCustomColor4 = 975;
                 break;
 
             case TEN_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$10 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{32416, 34451, 23224, 34181, 34449, 34305, 33435, 21164, 23092, 21152, 19087, 44821, 44846, 19997, 20117, 44829, 44838, 34464};
+                def.modelCustomColor4 = 13133;
                 break;
 
             case TWENTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$20 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{63316, 65351, 54124, 65081, 65349, 65205, 64335, 52064, 53992, 52052, 49987, 75721, 75746, 50897, 51017, 75729, 75738, 65364};
+                def.modelCustomColor4 = 233333;
+                break;
+
+            case THIRTY_DOLLAR_BOND:
+                ItemDefinition.copyInventory(def, 13190);
+                def.name = "<col=65280>$30 bond";
+                def.inventoryActions = new String[]{"Redeem", null, null, null, null};
+                def.modelCustomColor4 = 8999;
                 break;
 
             case FORTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$40 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{25416, 27451, 16224, 27181, 27449, 27305, 26435, 14164, 16092, 14152, 12087, 37821, 37846, 12997, 13117, 37829, 37838, 27464};
+                def.modelCustomColor4 = 490;
                 break;
 
             case FIFTY_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$50 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{35416, 37451, 26224, 37181, 37449, 37305, 36435, 24164, 26092, 24152, 22087, 47821, 47846, 22997, 23117, 47829, 47838, 37464};
+                def.modelCustomColor4 = 32222;
+                break;
+
+            case SEVENTY_FIVE_DOLLAR_BOND:
+                ItemDefinition.copyInventory(def, 13190);
+                def.name = "<col=65280>$75 bond";
+                def.inventoryActions = new String[]{"Redeem", null, null, null, null};
+                def.modelCustomColor4 = 22222;
                 break;
 
             case ONE_HUNDRED_DOLLAR_BOND:
                 ItemDefinition.copyInventory(def, 13190);
                 def.name = "<col=65280>$100 bond";
                 def.inventoryActions = new String[]{"Redeem", null, null, null, null};
-                def.recolorFrom = new int[]{20416, 22451, 11224, 22181, 22449, 22305, 21435, 9164, 11092, 9152, 7087, 32821, 32846, 7997, 8117, 32829, 32838, 22464};
-                def.recolorTo = new int[]{77316, 79351, 68124, 79081, 79349, 79205, 78335, 66064, 67992, 66052, 63987, 89721, 89746, 64897, 65017, 89729, 89738, 79364};
+                def.modelCustomColor4 = 964;
                 break;
 
             case EARTH_ARROWS:

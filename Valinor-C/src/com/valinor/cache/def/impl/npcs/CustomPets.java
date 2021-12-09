@@ -169,8 +169,8 @@ public class CustomPets {
             definition.description = "Tiny but deadly!";
         }
 
-        if (id == WAMPA) {
-            definition.name = "Wampa pet";
+        if (id == ICELORD_PET) {
+            definition.name = "Icelord pet";
             definition.widthScale = 63;
             definition.heightScale = 63;
             definition.models = new int[]{21802, 21801, 21806};
@@ -181,6 +181,20 @@ public class CustomPets {
             definition.drawMapDot = false;
             definition.size = 1;
             definition.description = "Tiny but deadly!";
+        }
+
+        if(id == 15121) {
+            NpcDefinition.copy(definition, IMP);
+            definition.name = "Ice imp pet";
+            definition.combatLevel = 188;
+            definition.widthScale = 75;
+            definition.heightScale = 75;
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+            definition.modelCustomColor4 = 31575;
         }
 
         if (id == PET_ZILYANA_WHITE) {
