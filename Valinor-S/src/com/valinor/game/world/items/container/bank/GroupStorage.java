@@ -233,7 +233,7 @@ public class GroupStorage extends ItemContainer {
 
     public void save() {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-        group.ifPresent(ironmanGroup -> ironmanGroup.loadSaveTemp = ironmanGroup.getGroupStorage().toArray());
+        group.ifPresent(ironmanGroup -> ironmanGroup.loadSaveTemp = ironmanGroup.getGroupStorage().toNonNullArray());
         IronmanGroupHandler.saveIronmanGroups();
     }
 

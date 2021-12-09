@@ -248,7 +248,7 @@ public final class IronmanGroupHandler {
      */
     public static void saveIronmanGroups() {
         ironManGroups.forEach(g -> {
-            g.loadSaveTemp = g.getGroupStorage().toArray();
+            g.loadSaveTemp = g.getGroupStorage().toNonNullArray();
         });
         GameEngine.getInstance().submitLowPriority(() -> {
             try {
