@@ -69,6 +69,11 @@ public class Nightmare extends Npc {
         return tiles;
     }
 
+
+    //This one
+    //This abstract method used in a few classes in this structure
+    //And this abstracct method is used in the combat show again was adfk
+    // ok yh overriding is possible ill do it my side later im off for now alr
     //TODO
    /* @Override
     public int hit(Hit... hits) {

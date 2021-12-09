@@ -18,7 +18,7 @@ public class Parasite extends Npc {
     public void sequence() {
         super.sequence();
         if (getCombat().getTarget() != null && !getTimers().has(TimerKey.COMBAT_ATTACK)) {
-            //TODO @ Jak its empty abstract ?? getCombat().attack();
+            getCombat().attack(getCombat().getTarget());
         }
     }
 }

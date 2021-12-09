@@ -1304,7 +1304,8 @@
       "death": 8612
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.TheNightmare"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.NightmareCombat",
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.NightmareAgro"
     }
   },
   {
@@ -1339,9 +1340,6 @@
       "attack": 8564,
       "block": -1,
       "death": 8566
-    },
-    "scripts": {
-      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Husk"
     }
   },
   {
@@ -1376,9 +1374,6 @@
       "attack": 8555,
       "block": -1,
       "death": 8559
-    },
-    "scripts": {
-      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Parasite"
     }
   },
   {
@@ -1413,9 +1408,6 @@
       "attack": 1077,
       "block": -1,
       "death": 836
-    },
-    "scripts": {
-      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Totem"
     }
   },
   {
