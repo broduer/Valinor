@@ -31,6 +31,7 @@ public class Settings {
     public boolean moving_prayers = false;
     public boolean ground_snow = true;
     public boolean shift_pet_options = false;
+    public boolean sky_snow = true;
 
     public int drag_item_value = 10;
     public boolean incinerator = false;
@@ -68,7 +69,7 @@ public class Settings {
 
     private String fileLine = "";
     public String location;
-    
+
     public void toggleVarbits() {
         Client.singleton.toggleConfig(169, sound_state);
         Client.singleton.toggleConfig(166, brightness);
@@ -230,6 +231,7 @@ public class Settings {
             writeLine("toggle_music", toggle_music, bw);
             writeLine("draw_fps", draw_fps, bw);
             writeLine("moving_prayers", moving_prayers, bw);
+            writeLine("sky_snow", sky_snow, bw);
             bw.flush();
             bw.close();
         } catch (IOException ioe) {
@@ -350,6 +352,8 @@ public class Settings {
                     draw_fps = readBoolean();
                 } else if (contains("moving_prayers")) {
                     moving_prayers = readBoolean();
+                } else if (contains("sky_snow")) {
+                    sky_snow = readBoolean();
                 }
             }
             file.close();

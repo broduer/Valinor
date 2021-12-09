@@ -4148,6 +4148,9 @@ public class Client extends GameApplet {
             processLoginScreenInput();
         } else {
             mainGameProcessor();
+            if (Client.singleton.setting.sky_snow) {
+                SnowFlake.processSnowflakes();
+            }
         }
         processOnDemandQueue();
 
@@ -7868,7 +7871,7 @@ public class Client extends GameApplet {
                     if (inputString.toLowerCase().equals("::dumpitemsprites")) {
                         //We need to run this dumpitemsprites command twice, likely to get the images into the cache.
                         System.out.println("Dumping item images.");
-                        CacheUtils.dumpItemImages(0, ItemDefinition.length - 1, 128, 128);
+                        CacheUtils.dumpItemImages(13180, 17000);
                         //CacheUtils.dumpItemImages( 0, ItemDefinition.length-1);
                         System.out.println("Dumped item images.");
                     }
@@ -10747,6 +10750,7 @@ public class Client extends GameApplet {
         setting.toggleVarbits();
         OptionTabWidget.updateSettings();
         Keybinding.updateInterface();
+        SnowFlake.createSnow();
         Save.load();
 
         try {
@@ -17774,6 +17778,10 @@ public class Client extends GameApplet {
         drawHeadIcon();
         render_animated_textures();
         draw3dScreen();
+
+        if (Client.singleton.setting.sky_snow) {
+            SnowFlake.drawSnowflakes(0, 0);
+        }
 
         if (screen != ScreenMode.FIXED) {
             drawChatArea();

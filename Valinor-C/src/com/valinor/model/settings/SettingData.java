@@ -228,6 +228,22 @@ public enum SettingData implements SettingsAction<Client> {
             Client.toggleSnow();
         }
     },
+
+    SNOW_FLAKES("Snow Flakes") {
+        @Override
+        public String name(Client client) {
+            return client.setting.sky_snow + setting;
+        }
+
+        public boolean status() {
+            return Client.singleton.setting.sky_snow;
+        }
+
+        @Override
+        public void handle(Client client) {
+            client.setting.sky_snow = !client.setting.sky_snow;
+        }
+    },
     ;
 
     /**
