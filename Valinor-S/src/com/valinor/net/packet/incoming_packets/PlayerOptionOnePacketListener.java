@@ -1,5 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
+import com.valinor.game.content.seasonal_events.christmas.Christmas;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -9,6 +10,8 @@ import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
 
 import java.lang.ref.WeakReference;
+
+import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 
 /**
  * @author PVE
@@ -31,10 +34,17 @@ public class PlayerOptionOnePacketListener implements PacketListener {
             if (player.locked() || player.dead()) {
                 return;
             }
+
             //Face the player that we will be interacting with.
             player.setEntityInteraction(other);
             player.putAttrib(AttributeKey.INTERACTION_OPTION, 1);
             player.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(other));
+
+            if(player.getEquipment().contains(SNOWBALL)) {
+                Christmas.throwSnow(player, other);
+                return;
+            }
+
             TargetRoute.set(player, other, () -> {
                 player.runFn(1, () -> {
                     player.face(other.tile());

@@ -3,12 +3,16 @@ package com.valinor.game.content.seasonal_events.christmas;
 import com.valinor.GameServer;
 import com.valinor.game.content.seasonal_events.halloween.Halloween;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.route.routes.TargetRoute;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
@@ -16,11 +20,15 @@ import com.valinor.util.chainedwork.Chain;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards.UNLOCKED_ITEM_SLOT;
 import static com.valinor.game.content.skill.impl.hunter.Impling.OVERWORLD_RANDOM_SPAWN_TILES;
 import static com.valinor.util.CustomItemIdentifiers.XMAS_TOKENS;
 import static com.valinor.util.CustomNpcIdentifiers.SANTA;
 import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP;
+import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -131,7 +139,7 @@ public class Christmas extends PacketInteraction {
 
                 if (player.inventory().contains(new Item(XMAS_TOKENS, 10_000))) {
                     player.getEventRewards().refreshItems();
-                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(),0);
+                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(), 0);
                     player.getEventRewards().rollForReward(XMAS_TOKENS, 10_000, reward.copy(), "X'mas");
                 } else {
                     player.message(Color.RED.wrap("You do not have enough X'mas tokens to roll for a reward."));
@@ -151,7 +159,80 @@ public class Christmas extends PacketInteraction {
                 }
                 return true;
             }
+
+            List<Integer> snow = Arrays.asList(SNOW, SNOW_15616, SNOW_15617, SNOW_19030);
+            if (snow.stream().anyMatch(s -> s == object.getId())) {
+                if (GameServer.properties().christmas) {
+                    takeSnow(player, object);
+                }
+                return true;
+            }
         }
         return false;
+    }
+
+    private void takeSnow(Player player, GameObject object) {
+        player.faceObj(object);
+        if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL))) {
+            player.message("You don't have enough room to carry snow!");
+            return;
+        }
+
+        Chain.bound(player).runFn(1, () -> {
+            player.message("You attempt to make some snowballs...");
+            player.animate(5067);
+            player.getInventory().add(SNOWBALL, 3);
+        }).repeatingTask(5, r -> {
+            if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL)))
+                return;
+
+            player.animate(5067);
+            player.getInventory().add(SNOWBALL, 3);
+        });
+    }
+
+    public static void throwSnow(Mob mob, Mob target) {
+        Player player = mob.getAsPlayer();
+        Player playerTarget = target.getAsPlayer();
+        if (target != null && target.isNpc()) {
+            player.message("I don't think they'd find this too amusing...");
+            return;
+        }
+
+        Chain.bound(mob).repeatingTask(1, r -> {
+            // Ran out of snowballs
+            if (!player.getEquipment().contains(SNOWBALL)) {
+                r.stop();
+                return;
+            }
+
+            // Begin by clearing the path queue
+            player.getMovementQueue().clear();
+
+            player.face(playerTarget.tile());
+
+            // Are we in range distance?
+            TargetRoute.set(player, target, 5);
+
+            // Are we stunned?
+            if (player.stunned()) {
+                return;
+            }
+
+            // Wait for cool down
+            if (!player.snowballCooldown.isDelayed()) {
+                // Throw
+                player.snowballCooldown.delay(4);
+                player.animate(5063);
+                playerTarget.graphic(862, 0, 50);
+                playerTarget.animate(EquipmentInfo.blockAnimationFor(playerTarget), 50);
+                player.getEquipment().remove(10501, 1);
+                if (player.getEquipment().count(10501) < 1) {
+                    player.getPacketSender().sendInteractionOption("null", 1, false); //Remove pelt option
+                }
+                Projectile projectile = new Projectile(player, playerTarget, 861, 50, 62, 30, 22, 0);
+                projectile.sendProjectile();
+            }
+        });
     }
 }

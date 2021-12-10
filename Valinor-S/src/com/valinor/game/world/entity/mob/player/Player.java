@@ -159,6 +159,8 @@ public class Player extends Mob {
         LOGOUT = Level.getLevel("LOGOUT");
     }
 
+    public TickDelay snowballCooldown = new TickDelay();
+
     public void removeAll(Item item) {
         int inventoryCount = inventory.count(item.getId());
         for (int i = 0; i < inventoryCount; i++) {
@@ -1414,6 +1416,9 @@ public class Player extends Mob {
         //Stuff that happens during login...
         Chain.bound(null).runFn(1, () -> {
             // Send simple player options
+            if(equipment.contains(SNOWBALL)) {
+                packetSender.sendInteractionOption("Pelt", 1, true);
+            }
             packetSender.sendInteractionOption("Follow", 3, false).sendInteractionOption("Trade with", 4, false);
             relations.setPrivateMessageId(1);
             getMovementQueue().clear();
@@ -3062,7 +3067,6 @@ public class Player extends Mob {
     }, tasks = () -> {
         TaskManager.sequenceForMob(this);
     }, beforemove = () -> {
-
         getCombat().preAttack(); // must be beforeMovement
         TargetRoute.beforeMovement(this); // must be after preAttack
     }, movement = () -> {

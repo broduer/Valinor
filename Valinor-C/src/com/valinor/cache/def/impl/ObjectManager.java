@@ -10,11 +10,11 @@ public class ObjectManager {
     public static void get(int id) {
         ObjectDefinition definition = ObjectDefinition.get(id);
 
-        if(id == 27095) {
+        if (id == 27095) {
             definition.name = "Portal";
         }
 
-        if(id == 32629) {
+        if (id == 32629) {
             definition.actions = new String[]{"Loot", null, null, null, null};
         }
 
@@ -36,22 +36,8 @@ public class ObjectManager {
             definition.actions = new String[]{"Leave", null, null, null, null};
         }
 
-        if (id == 50004) {
-            definition.name = "Dark rejuvenation pool";
-            definition.actions = new String[]{"Drink", null, null, null, null};
-            definition.ambient = 40;
-            definition.animationId = 7304;
-            definition.solid = true;
-            definition.interact_state = 1;
-            definition.sizeY = 2;
-            definition.modelIds = new int[]{58959};
-            definition.nonFlatShading = true;
-            definition.merge_interact_state = 1;
-            definition.sizeX = 2;
-        }
-
         if (id == 31858) {
-            definition.actions = new String[] {"Swap-spellbook", null, null, null, null};
+            definition.actions = new String[]{"Swap-spellbook", null, null, null, null};
         }
 
         if (id == 31621) {
@@ -66,20 +52,20 @@ public class ObjectManager {
             definition.name = "gdz";
         }
 
-        if(id == 2515) {
-            definition.actions = new String[] {"Travel", null, null, null, null};
+        if (id == 2515) {
+            definition.actions = new String[]{"Travel", null, null, null, null};
         }
 
-        if(id == 10060 || id == 7127 || id == 31626 || id == 4652 || id == 4653) {
-            definition.actions = new String[] {null, null, null, null, null};
+        if (id == 10060 || id == 7127 || id == 31626 || id == 4652 || id == 4653) {
+            definition.actions = new String[]{null, null, null, null, null};
         }
 
-        if(id == 562 || id == 3192) {
-            definition.actions = new String[] {"Live scoreboard", "Todays top pkers", null, null, null};
+        if (id == 562 || id == 3192) {
+            definition.actions = new String[]{"Live scoreboard", "Todays top pkers", null, null, null};
         }
 
-        if(id == 6552) {
-            definition.actions = new String[] {"Change spellbook", null, null, null, null};
+        if (id == 6552) {
+            definition.actions = new String[]{"Change spellbook", null, null, null, null};
         }
 
         if (id == 29165) {
@@ -91,23 +77,23 @@ public class ObjectManager {
             definition.actions[4] = null;
         }
 
-        if(id == 33020) {
+        if (id == 33020) {
             definition.name = "Forging table";
-            definition.actions = new String[] {"Forge", null, null, null, null};
+            definition.actions = new String[]{"Forge", null, null, null, null};
         }
 
-        if(id == 8878) {
+        if (id == 8878) {
             definition.name = "Item dispenser";
-            definition.actions = new String[] {"Dispense", "Exchange coins", null, null, null};
+            definition.actions = new String[]{"Dispense", "Exchange coins", null, null, null};
         }
 
-        if(id == 637) {
+        if (id == 637) {
             definition.name = "Item cart";
-            definition.actions = new String[] {"Check cart", "Item list", "Clear cart", null, null};
+            definition.actions = new String[]{"Check cart", "Item list", "Clear cart", null, null};
         }
 
         if (id == 13291) {
-            definition.actions = new String[] {"Open", null, null, null, null};
+            definition.actions = new String[]{"Open", null, null, null, null};
         }
 
         if (id == 23709) {
@@ -140,24 +126,24 @@ public class ObjectManager {
             definition.actions[2] = "Donator-store";
         }
 
-        if(id == 2654) {
+        if (id == 2654) {
             definition.name = HALLOWEEN ? "Blood fountain" : "Snow fountain";
             definition.sizeX = 3;
             definition.sizeY = 3;
             definition.actions[0] = "Rewards";
             definition.actions[1] = null;
-            if(HALLOWEEN) {
+            if (HALLOWEEN) {
                 definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
                 definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
-            } else if(CHRISTMAS) {
+            } else if (CHRISTMAS) {
                 definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
                 definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 127, 126};
             }
         }
 
-        if(id == 1276 || id == 1278 || id == 1279) { //christmas prep
+        if (id == 1276 || id == 1278 || id == 1279) { //christmas prep
             if (CHRISTMAS) {
-                definition.modelIds = new int[] {20491, 20492, 20493, 20494};
+                definition.modelIds = new int[]{20491, 20492, 20493, 20494};
                 definition.animationId = 5058;
                 definition.ambient = 30;
                 definition.contrast = 30;

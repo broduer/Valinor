@@ -440,6 +440,15 @@ public final class Equipment extends ItemContainer {
             Skulling.assignSkullState(player, SkullType.WHITE_SKULL);
         }
 
+        var snowball = equip.getId() == SNOWBALL;
+        if (snowball) {
+            player.getPacketSender().sendInteractionOption("Pelt", 1, true);
+        }
+
+        if (equip.getId() == DINHS_BULWARK) {
+            player.graphic(1336);
+        }
+
         if(equipmentSlot == EquipSlot.RING && id == ItemIdentifiers.RING_OF_RECOIL) {
             int charges = player.getAttribOr(AttributeKey.RING_OF_RECOIL_CHARGES, 40);
             if(charges <= 0) {
@@ -486,6 +495,10 @@ public final class Equipment extends ItemContainer {
         }
 
         if (current != null) { // TODO move maxcape code to here
+            // Take off the snowball.
+            if (current.getId() == SNOWBALL) {
+                player.getPacketSender().sendInteractionOption("null", 1, true);
+            }
             player.getEquipment().remove(current, equipmentSlot, true); // delete it
         }
         player.inventory().remove(equip, inventoryIndex, true);
@@ -592,6 +605,11 @@ public final class Equipment extends ItemContainer {
                 Autocasting.setAutocast(player, null);
             }
 
+            var snowball = unequip.getId() == SNOWBALL;
+            if (snowball) {
+                player.getPacketSender().sendInteractionOption("null", 1, true);
+            }
+
             player.getCombat().setCastSpell(null);
 
             //Always reset ranged weapon when unequipping weapon
@@ -610,6 +628,7 @@ public final class Equipment extends ItemContainer {
         if (player.getTimers().has(TimerKey.SOTD_DAMAGE_REDUCTION)) {
             player.getPacketSender().sendMessage("Your Staff of the dead special de-activated because you unequipped the staff.");
         }
+
         player.getCombat().setRangedWeapon(null);
         player.getTimers().cancel(TimerKey.SOTD_DAMAGE_REDUCTION);
         player.setSpecialActivated(false);

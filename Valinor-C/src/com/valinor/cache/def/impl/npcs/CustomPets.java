@@ -187,8 +187,8 @@ public class CustomPets {
             NpcDefinition.copy(definition, IMP);
             definition.name = "Ice imp pet";
             definition.combatLevel = 188;
-            definition.widthScale = 75;
-            definition.heightScale = 75;
+            definition.widthScale = 120;
+            definition.heightScale = 120;
             definition.actions = new String[]{"Pick-up", null, null, null, null};
             definition.isFollower = true;
             definition.drawMapDot = false;
