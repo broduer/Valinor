@@ -1,5 +1,8 @@
 package com.valinor.game.content.areas.home;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.areas.edgevile.Mac;
 import com.valinor.game.content.areas.edgevile.dialogue.AuburyDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.DrunkenDwarfDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.PerduDialogue;
@@ -17,13 +20,17 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
+import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.ALTAR;
@@ -103,9 +110,119 @@ public class HomeArea extends PacketInteraction {
                 player.getDialogueManager().start(new MagicalAltarD());
                 return true;
             }
+
+            if (object.getId() == ANTIDRAGON_SHIELD) {
+                Item item = new Item(ItemIdentifiers.ANTIDRAGON_SHIELD);
+                if(player.inventory().hasCapacityFor(item)) {
+                    player.animate(536);
+                    player.inventory().add(item);
+                } else {
+                    player.message("You do not have enough space in your inventory.");
+                }
+                return true;
+            }
+
+            if (object.getId() == BRONZE_PICKAXE) {
+                Item item = new Item(ItemIdentifiers.BRONZE_PICKAXE);
+                if(player.inventory().hasCapacityFor(item)) {
+                    player.animate(536);
+                    player.inventory().add(item);
+                } else {
+                    player.message("You do not have enough space in your inventory.");
+                }
+                return true;
+            }
+
+            if (object.getId() == BRONZE_AXE) {
+                Item item = new Item(ItemIdentifiers.BRONZE_AXE);
+                if(player.inventory().hasCapacityFor(item)) {
+                    player.animate(536);
+                    player.inventory().add(item);
+                } else {
+                    player.message("You do not have enough space in your inventory.");
+                }
+                return true;
+            }
+
+            if (object.getId() == MOUNTED_MUSIC_CAPE) {
+                Item cape = new Item(ItemIdentifiers.MUSIC_CAPE);
+                Item hood = new Item(ItemIdentifiers.MUSIC_HOOD);
+                if(player.inventory().hasCapacityFor(cape, hood)) {
+                    player.animate(536);
+                    player.inventory().addAll(cape, hood);
+                } else {
+                    player.message("You do not have enough space in your inventory.");
+                }
+                return true;
+            }
+            if (object.getId() == MOUNTED_MAX_CAPE_29170) {
+                if (Mac.success(player)) {
+                    Item cape = new Item(ItemIdentifiers.MAX_CAPE);
+                    Item hood = new Item(ItemIdentifiers.MAX_HOOD);
+                    if (player.inventory().hasCapacityFor(cape, hood)) {
+                        var canAfford = false;
+                        int currencyInInventory = player.inventory().count(COINS_995);
+                        if (currencyInInventory > 0) {
+                            if(currencyInInventory >= 50_000_000) {
+                                canAfford = true;
+                                player.inventory().remove(new Item(COINS_995, 50_000_000),true);
+                            }
+                        }
+
+                        if(canAfford) {
+                            player.animate(536);
+                            player.inventory().addAll(cape, hood);
+                        } else {
+                            player.message("Sorry, but it appears as if you do not have enough coins to afford this cape.");
+                        }
+                    } else {
+                        player.message("You do not have enough space in your inventory.");
+                    }
+                }
+                return true;
+            }
+            if (object.getId() == MOUNTED_QUEST_CAPE_29179) {
+                Item cape = new Item(ItemIdentifiers.QUEST_POINT_CAPE);
+                Item hood = new Item(ItemIdentifiers.QUEST_POINT_HOOD);
+                if(player.inventory().hasCapacityFor(cape, hood)) {
+                    player.animate(536);
+                    player.inventory().addAll(cape, hood);
+                } else {
+                    player.message("You do not have enough space in your inventory.");
+                }
+                return true;
+            }
+            if (object.getId() == MOUNTED_ACHIEVEMENT_DIARY_CAPE_29168) {
+                if (AchievementsManager.isCompleted(player, Achievements.COMPLETIONIST)) {
+                    Item cape = new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_CAPE);
+                    Item hood = new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_HOOD);
+                    if(player.inventory().hasCapacityFor(cape, hood)) {
+                        player.animate(536);
+                        player.inventory().addAll(cape, hood);
+                    } else {
+                        player.message("You do not have enough space in your inventory.");
+                    }
+                } else {
+                    player.message("You haven't completed all of the achievements yet.");
+                }
+                return true;
+            }
         }
         if(option == 2) {
+            if (object.getId() == ANTIDRAGON_SHIELD) {
+                Item item = new Item(ItemIdentifiers.ANTIDRAGON_SHIELD);
+                EquipmentInfo info = World.getWorld().equipmentInfo();
+                int targetSlot = info.slotFor(item.getId());
 
+                if (player.getEquipment().isSlotOccupied(targetSlot)) {
+                    player.message(Color.RED.wrap("You are already wearing a shield."));
+                    return true;
+                }
+
+                player.animate(536);
+                player.getEquipment().manualWear(item, true, true);
+                return true;
+            }
         }
         if(option == 3) {
 

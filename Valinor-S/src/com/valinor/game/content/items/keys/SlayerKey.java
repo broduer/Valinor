@@ -55,7 +55,7 @@ public class SlayerKey {
 
     public void open() {
         if(!player.inventory().contains(SLAYER_KEY)) {
-            player.message("This chest wont budge, I need some sort of key.");
+            player.message("This chest wont budge, I need some sort of Slayer key.");
             return;
         }
 
@@ -70,12 +70,13 @@ public class SlayerKey {
             KEYS.log(player, SLAYER_KEY, reward);
             player.inventory().addOrBank(reward);
 
-            var sendWorldMessage = reward.getValue() >= 30_000;
+            var sendWorldMessage = rare;
             var amount = reward.getAmount();
             var plural = amount > 1 ? "x" + amount : "x1";
             if (sendWorldMessage && !player.getUsername().equalsIgnoreCase("Box test")) {
                 String worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Slayer Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + plural + " <shad=0>" + reward.name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
+                rare = false;
             }
         }
 
@@ -84,8 +85,10 @@ public class SlayerKey {
         player.message(Color.PURPLE.wrap("You have now opened "+Utils.formatNumber(keysUsed)+" slayer keys!"));
     }
 
+    private boolean rare = false;
     private Item reward() {
         if (Utils.rollDie(RARE_ROLL, 1)) {
+            rare = true;
             return Utils.randomElement(RARE);
         } else if (Utils.rollDie(UNCOMMON_ROLL, 1)) {
             return Utils.randomElement(UNCOMMON);

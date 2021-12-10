@@ -191,20 +191,6 @@ public class NPCActions extends NpcIdentifiers {
             }
 
             switch (npc.id()) {
-                case NpcIdentifiers.TWIGGY_OKORN -> {
-                    if (AchievementsManager.isCompleted(player, Achievements.COMPLETIONIST)) {
-                        if (player.inventory().getFreeSlots() < 2) {
-                            player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_CAPE, 1));
-                            player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_HOOD, 1));
-                        } else {
-                            player.message("You need at least 2 free slots.");
-                        }
-                    } else {
-                        player.message("You haven't completed all of the achievements yet.");
-                    }
-                    //World.getWorld().shop(41).open(player);
-                }
-
                 case GUNDAI -> player.getBank().open();
 
                 case MAKEOVER_MAGE_1307 -> player.getInterfaceManager().open(61380);

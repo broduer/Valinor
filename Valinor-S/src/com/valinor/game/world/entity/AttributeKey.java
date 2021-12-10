@@ -496,6 +496,8 @@ public enum AttributeKey {
     SLAYER_KEYS_RECEIVED("slayer_keys_received", AttribType.INTEGER),
     SLAYER_KEYS_OPENED("slayer_keys_opened", AttribType.INTEGER),
 
+    COLLECTION_LOG_KEYS_OPENED("collection_log_keys_opened", AttribType.INTEGER),
+
     BOTTLE_TASK,
     BOTTLE_TASK_AMOUNT("bottle_task_amount", AttribType.INTEGER),
     TASK_COMPLETE_AMOUNT("bottle_task_complete_amount", AttribType.INTEGER),

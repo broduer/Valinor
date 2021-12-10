@@ -108,7 +108,7 @@ public class Mac extends PacketInteraction {
             @Override
             protected void next() {
                 if(isPhase(0)) {
-                    send(DialogueType.OPTION, "Pay Mac the fee?", "Yes, I understand. Take my BM.", "On second thought, I don't think I can afford that.");
+                    send(DialogueType.OPTION, "Pay Mac the fee?", "Yes, I understand. Take my coins.", "On second thought, I don't think I can afford that.");
                     setPhase(1);
                 } else if(isPhase(2)) {
                     var canAfford = false;
@@ -154,7 +154,7 @@ public class Mac extends PacketInteraction {
         });
     }
 
-    private boolean success(Player player) {
+    public static boolean success(Player player) {
         var counter = 0;
         for (int skillId = 0; skillId < Skills.SKILL_COUNT - 1; skillId++) {
             if (player.skills().xpLevel(skillId) < 99) {
