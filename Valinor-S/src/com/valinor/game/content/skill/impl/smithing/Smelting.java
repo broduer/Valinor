@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.smithing;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.ItemCreationSkillable;
 import com.valinor.game.content.syntax.impl.SmeltBarX;
 import com.valinor.game.world.entity.AttributeKey;
@@ -71,6 +73,7 @@ public class Smelting extends ItemCreationSkillable {
 
             // Add a bar or make the player cry about losing one precious metal piece :'(
             if (success) {
+                AchievementsManager.activate(player, Achievements.GOLDSMITH,1);
                 player.message("You retrieve a bar of iron.");
             } else {
                 //We still need to delete the ore and decrement amount.
@@ -79,6 +82,8 @@ public class Smelting extends ItemCreationSkillable {
                 player.message("The ore is too impure and you fail to refine it.");
                 return;
             }
+        } else {
+            AchievementsManager.activate(player, Achievements.GOLDSMITH,1);
         }
         super.finishedCycle(player);
     }

@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.rooftops;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.MarksOfGrace;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -292,6 +294,8 @@ public class FaladorRooftop extends PacketInteraction {
                 player.teleport(3029, 3333, 0);
                 player.skills().addXp(Skills.AGILITY, 180.0);
                 MarksOfGrace.trySpawn(player, MARK_SPOTS, 35, 50);
+
+                AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                 // Woo! A pet!
                 var odds = (int) (18000 * player.getMemberRights().petRateMultiplier());

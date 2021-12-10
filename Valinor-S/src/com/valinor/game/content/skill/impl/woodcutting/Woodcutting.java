@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.woodcutting;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -172,6 +174,7 @@ public class Woodcutting extends PacketInteraction {
                         GameObject spawned = new GameObject(trunkObjectId, obj.tile(), obj.getType(), obj.getRotation());
                         ObjectManager.replace(old, spawned, tree.respawnTime);
                         player.skills().addXp(Skills.WOODCUTTING, tree.xp); // Xp as last, it can spawn a dialogue
+                        AchievementsManager.activate(player, Achievements.LUMBERJACK,1);
 
                         if (World.getWorld().rollDie(125, 1)) {
                             GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);

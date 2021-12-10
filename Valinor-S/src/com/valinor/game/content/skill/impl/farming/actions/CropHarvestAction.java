@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.farming.actions;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.farming.impl.FarmingPatchType;
 import com.valinor.game.content.skill.impl.farming.impl.PatchState;
@@ -54,6 +56,7 @@ public class CropHarvestAction extends PlayerTask {
             player.face(tile);
             player.getInventory().add(new Item(state.getSeed().getProduct()));
             player.skills().addXp(Skills.FARMING, state.getSeed().getExperience() / 10);
+            AchievementsManager.activate(player, Achievements.FARMER,1);
 
             if (FarmingConstants.hasToLoseLife(state, player)) {
                 state.setLivesAmount(state.getLivesAmount() - 1);

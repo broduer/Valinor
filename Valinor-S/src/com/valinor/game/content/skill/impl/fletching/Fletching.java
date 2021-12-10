@@ -2,6 +2,8 @@ package com.valinor.game.content.skill.impl.fletching;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.fletching.impl.*;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.BottleTasks;
@@ -343,6 +345,12 @@ public class Fletching extends PacketInteraction {
                 player.skills().addXp(Skills.FLETCHING, item.getExperience() * item.getProduct().getAmount());
                 player.inventory().removeAll(fletchable.getIngediants());
                 player.inventory().add(item.getProduct());
+
+                if(fletchable.getName().equalsIgnoreCase("Carvable")) {
+                    if(item.getProduct().name().endsWith("(u)")) {
+                        AchievementsManager.activate(player, Achievements.FLETCHER, 1);
+                    }
+                }
 
                 if (fletchable.getProductionMessage() != null) {
                     player.message(fletchable.getProductionMessage());

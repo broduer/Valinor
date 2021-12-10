@@ -38,6 +38,7 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
+import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -179,6 +180,7 @@ public class Combat {
      * @param target The target to attack.
      */
     public void attack(Mob target) {
+
         //When certain conditions are met you can no longer attack.
         if (mob.dead() || target.dead() || mob.isNoAttackLocked()) {
             return;
@@ -716,6 +718,7 @@ public class Combat {
      * aka NPCCombat.follow0/follow in Runite
      */
     public void preAttack() {
+
         method = CombatFactory.getMethod(mob);
         checkLastTarget();
         checkGraniteMaul();

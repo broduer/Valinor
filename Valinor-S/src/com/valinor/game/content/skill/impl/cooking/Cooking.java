@@ -2,6 +2,8 @@ package com.valinor.game.content.skill.impl.cooking;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -233,6 +235,12 @@ public class Cooking extends PacketInteraction {
 
                     if(food == Cookable.RAW_SHARK) {
                         player.getTaskBottleManager().increase(BottleTasks.COOK_SHARKS);
+                    }
+
+                    if(food == Cookable.BREAD || food == Cookable.CAKE) {
+                        AchievementsManager.activate(player, Achievements.BAKER,1);
+                    } else {
+                        AchievementsManager.activate(player, Achievements.COOK,1);
                     }
 
                     if (World.getWorld().rollDie(75, 1)) {

@@ -2,6 +2,8 @@ package com.valinor.game.content.skill.impl.crafting;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.crafting.impl.*;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.BottleTasks;
@@ -501,6 +503,10 @@ public class Crafting extends PacketInteraction {
 
             @Override
             public void execute() {
+                if(craftable.getName().equalsIgnoreCase("Gem")) {
+                    AchievementsManager.activate(player, Achievements.LAPIDARIST, 1);
+                }
+
                 player.animate(craftable.getAnimation());
                 player.skills().addXp(Skills.CRAFTING, item.getExperience());
                 player.inventory().removeAll(craftable.getIngredients(index));

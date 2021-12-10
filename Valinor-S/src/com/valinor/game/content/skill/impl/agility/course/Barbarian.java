@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.course;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -85,6 +87,7 @@ public class Barbarian extends PacketInteraction {
                         player.getPacketSender().sendObjectAnimation(obj, 55);// make the rope go forwards while we swing
                         putStage(player, 1);
                         player.skills().addXp(Skills.AGILITY, 22.0);
+                        AchievementsManager.activate(player, Achievements.PARKOUR, 1);
                         player.unlock();
                     });
                 });

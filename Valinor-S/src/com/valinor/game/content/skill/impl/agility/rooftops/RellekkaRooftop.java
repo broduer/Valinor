@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.rooftops;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.MarksOfGrace;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -181,6 +183,8 @@ public class RellekkaRooftop extends PacketInteraction {
                 player.skills().addXp(Skills.AGILITY, 475.0);
                 MarksOfGrace.trySpawn(player, MARK_SPOTS, 42, 80);
                 player.getMovementQueue().step(Direction.WEST);
+
+                AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                 // Woo! A pet!
                 var odds = (int) (12000 * player.getMemberRights().petRateMultiplier());

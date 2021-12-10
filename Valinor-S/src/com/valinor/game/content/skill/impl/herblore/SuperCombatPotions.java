@@ -2,6 +2,8 @@ package com.valinor.game.content.skill.impl.herblore;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -113,6 +115,7 @@ public class SuperCombatPotions {
                 player.sound(2608, 0);
                 player.animate(363);
                 player.getTaskBottleManager().increase(BottleTasks.MAKE_SUPER_COMBAT_POTIONS);
+                AchievementsManager.activate(player, Achievements.BREWING, 1);
 
                 player.message("You mix the torstol into your potion.");
                 player.skills().addXp(Skills.HERBLORE, 150.0);

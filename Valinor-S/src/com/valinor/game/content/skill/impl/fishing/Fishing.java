@@ -1,6 +1,8 @@
 package com.valinor.game.content.skill.impl.fishing;
 
 import com.google.gson.Gson;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -168,6 +170,7 @@ public class Fishing {
 
                     player.inventory().add(new Item(weCatch.item, weCatch == Fish.MINNOWS ? World.getWorld().random(10, 26) : 1), true);
                     player.skills().addXp(Skills.FISHING, weCatch.xp);
+                    AchievementsManager.activate(player, Achievements.FISHERMAN,1);
 
                     if (World.getWorld().rollDie(100, 1)) {
                         GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);

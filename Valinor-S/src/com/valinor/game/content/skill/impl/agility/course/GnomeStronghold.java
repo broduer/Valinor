@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.course;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
@@ -165,6 +167,7 @@ public class GnomeStronghold extends PacketInteraction {
                         player.message("You successfully completed the course.");
                         player.putAttrib(AttributeKey.GNOME_COURSE_STATE, 0);
                         player.skills().addXp(Skills.AGILITY, 39.0);
+                        AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                         if (World.getWorld().rollDie(10, 1)) {
                             GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);

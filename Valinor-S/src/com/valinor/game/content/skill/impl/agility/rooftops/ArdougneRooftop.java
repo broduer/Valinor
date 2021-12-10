@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.rooftops;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.MarksOfGrace;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -196,6 +198,8 @@ public class ArdougneRooftop extends PacketInteraction {
                 MarksOfGrace.trySpawn(player, MARK_SPOTS, 35, 90);
                 player.unlock();
                 player.agilityWalk(true);
+
+                AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                 // Woo! A pet!
                 var odds = (int) (31000 * player.getMemberRights().petRateMultiplier());

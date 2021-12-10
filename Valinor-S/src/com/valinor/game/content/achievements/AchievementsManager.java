@@ -52,6 +52,11 @@ public class AchievementsManager {
                 activate(player, Achievements.COMPLETIONIST, 1);
             }
 
+            //Complete all cooking achievements to become a chef
+            if(isCompleted(player, Achievements.BAKER) && isCompleted(player, Achievements.COOK)) {
+                activate(player, Achievements.CHEF, 1);
+            }
+
             player.message("<col=297A29>Congratulations! You have completed the "+achievement.getName()+" achievement.");
             World.getWorld().sendWorldMessage(format("<img=1051>[<col="+ Color.MEDRED.getColorValue()+">Achievement</col>]: %s just completed the %s achievement.", (PlayerRights.getCrown(player) + player.getUsername()), achievement.getName()));
 

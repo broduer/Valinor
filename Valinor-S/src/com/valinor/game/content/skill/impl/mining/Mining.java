@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.mining;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.falador.MiningGuild;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -239,6 +241,7 @@ public class Mining extends PacketInteraction {
 
                     if (!player.jailed()) {
                         player.skills().addXp(Skills.MINING, finalRock.xp);
+                        AchievementsManager.activate(player, Achievements.MINER,1);
                     }
 
                     if (World.getWorld().rollDie(125, 1)) {

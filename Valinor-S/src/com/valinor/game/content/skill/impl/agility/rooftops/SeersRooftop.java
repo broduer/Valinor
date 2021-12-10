@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.rooftops;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.MarksOfGrace;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -153,6 +155,8 @@ public class SeersRooftop extends PacketInteraction {
                 if (stage == 5) {
                     player.putAttrib(AttributeKey.SEERS_ROOFTOP_COURSE_STATE, 0);
                     player.skills().addXp(Skills.AGILITY, 435.0);
+
+                    AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                     // Woo! A pet!
                     var odds = (int) (13000 * player.getMemberRights().petRateMultiplier());

@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.rooftops;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.skill.impl.agility.MarksOfGrace;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.task.TaskManager;
@@ -151,6 +153,8 @@ public class CanifisRooftop extends PacketInteraction {
                 player.unlock();
                 player.skills().addXp(Skills.AGILITY, 175);
                 MarksOfGrace.trySpawn(player, MARK_SPOTS, 40, 10);
+
+                AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                 // Woo! A pet!
                 var odds = (int) (32000 * player.getMemberRights().petRateMultiplier());

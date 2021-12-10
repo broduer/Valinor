@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.firemaking;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.TimedObjectSpawnTask;
@@ -258,6 +260,7 @@ public class LogLighting {
 
             // Give us some xp now, because.. dialogue.
             player.skills().addXp(Skills.FIREMAKING, log.xp * pyromancerOutfitBonus(player));
+            AchievementsManager.activate(player, Achievements.PYROMANCER,1);
 
             if (World.getWorld().rollDie(75, 1)) {
                 GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);

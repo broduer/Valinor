@@ -2,6 +2,7 @@ package com.valinor.game.content.skill.impl.runecrafting;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -20,6 +21,7 @@ import com.valinor.net.packet.interaction.PacketInteraction;
 import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
+import static com.valinor.game.content.achievements.Achievements.RUNE_MYSTERIES;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -171,6 +173,7 @@ public class RuneConversion extends PacketInteraction {
                     player.inventory().add(new Item(altar.rune, finalAmount * multi), true);
                     player.skills().addXp(Skills.RUNECRAFTING, altar.xp * finalAmount);
                     player.putAttrib(AttributeKey.RUNECRAFTING, false);
+                    AchievementsManager.activate(player, RUNE_MYSTERIES,finalAmount * multi);
 
                     if (World.getWorld().rollDie(300, 1)) {
                         GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);

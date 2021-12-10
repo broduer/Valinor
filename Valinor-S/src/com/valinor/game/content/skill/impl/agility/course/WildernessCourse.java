@@ -1,5 +1,7 @@
 package com.valinor.game.content.skill.impl.agility.course;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.content.skill.impl.agility.UnlockAgilityPet;
 import com.valinor.game.content.tasks.BottleTasks;
@@ -191,6 +193,7 @@ public class WildernessCourse extends PacketInteraction {
                         //System.out.println("stage is now: "+stage);
                         if (stage == 5) {
                             player.getTaskBottleManager().increase(BottleTasks.WILDERNESS_COURSE);
+                            AchievementsManager.activate(player, Achievements.PARKOUR, 1);
 
                             if (World.getWorld().rollDie(10, 1)) {
                                 GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
@@ -201,15 +204,6 @@ public class WildernessCourse extends PacketInteraction {
                             var odds = (int) (18000 * player.getMemberRights().petRateMultiplier());
                             if (World.getWorld().rollDie(odds, 1)) {
                                 UnlockAgilityPet.unlockGiantSquirrel(player);
-                            }
-
-                            //Finding blood money while skilling..
-                            if (WildernessArea.inWilderness(player.tile())) {
-                                if (World.getWorld().rollDie(5, 1)) {
-                                    if (player.inventory().add(new Item(13307, 5), true)) {
-                                        player.message("You find 5 blood money coin on the ground.");
-                                    }
-                                }
                             }
                         }
                         player.putAttrib(WILDY_COURSE_STATE, 0);

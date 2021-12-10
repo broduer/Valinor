@@ -221,7 +221,6 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("King Black Dragon")) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
-                    AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
 
                     if (World.getWorld().rollDie(10, 1)) {
@@ -233,7 +232,6 @@ public class NpcDeath {
 
                 if (npc.id() == ANCIENT_KING_BLACK_DRAGON) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
-                    AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
                     if(!npc.ancientSpawn()) {
                         Chain.bound(null).runFn(30, () -> {
@@ -367,7 +365,7 @@ public class NpcDeath {
                         killer.getTaskBottleManager().increase(BottleTasks.KRAKEN);
                     }
 
-                    case ADAMANT_DRAGON, ADAMANT_DRAGON_8090, RUNE_DRAGON, RUNE_DRAGON_8031, RUNE_DRAGON_8091 -> AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_IV, 1);
+                    case ADAMANT_DRAGON, ADAMANT_DRAGON_8090, RUNE_DRAGON, RUNE_DRAGON_8031, RUNE_DRAGON_8091 -> AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);
 
                     case CERBERUS, CERBERUS_5863, CERBERUS_5866 -> {
                         killer.getTaskBottleManager().increase(BottleTasks.CERBERUS);
@@ -385,10 +383,6 @@ public class NpcDeath {
                         World.getWorld().getNpcs().add(cerberus);
                     });
 
-                    case KALPHITE_QUEEN_6501 -> {
-                        AchievementsManager.activate(killer, Achievements.BUG_EXTERMINATOR, 1);
-                    }
-
                     case LIZARDMAN_SHAMAN_6767 -> {
                         AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS, 1);
                     }
@@ -403,6 +397,7 @@ public class NpcDeath {
 
                     case VENENATIS_6610 -> {
                         killer.getTaskBottleManager().increase(BottleTasks.VENENATIS);
+                        AchievementsManager.activate(killer, Achievements.VENENATIS, 1);
 
                         if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
                             npc.respawns(false);//Venenatis can no longer spawn his superior spawns in 1 minute.
