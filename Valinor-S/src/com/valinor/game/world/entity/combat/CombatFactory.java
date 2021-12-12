@@ -1218,7 +1218,8 @@ public class CombatFactory {
 
                 npc.onHit(hit);
 
-                if (npc.def().name.contains("turoth") || npc.def().name.contains("kurask")) {
+                // Just incase we forget to fill in the name in the NpcDefinitions
+                if (npc.def().name != null && (npc.def().name.contains("turoth") || npc.def().name.contains("kurask"))) {
                     boolean block = false;
                     boolean leafbladedWeapon = attackerAsPlayer.getEquipment().contains(ItemIdentifiers.LEAFBLADED_SWORD) || attackerAsPlayer.getEquipment().contains(ItemIdentifiers.LEAFBLADED_BATTLEAXE) || attackerAsPlayer.getEquipment().contains(ItemIdentifiers.LEAFBLADED_SPEAR);
                     boolean leafbladedAmmo = attackerAsPlayer.getEquipment().getId(EquipSlot.AMMO) == BROAD_BOLTS || attackerAsPlayer.getEquipment().getId(EquipSlot.AMMO) == AMETHYST_BROAD_BOLTS || attackerAsPlayer.getEquipment().getId(EquipSlot.AMMO) == BROAD_ARROWS_4160;

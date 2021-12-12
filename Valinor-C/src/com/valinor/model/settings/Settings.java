@@ -65,6 +65,8 @@ public class Settings {
     public boolean sideStonesArrangement = false;
     public boolean roofs = true;
     public boolean orbs = true;
+    public boolean sounds = false;
+    public boolean music = false;
 
     private String fileLine = "";
     public String location;
@@ -215,6 +217,8 @@ public class Settings {
             writeLine("sideStonesArrangement", sideStonesArrangement, bw);
             writeLine("roofs", roofs, bw);
             writeLine("orbs", orbs, bw);
+            writeLine("music", music, bw);
+            writeLine("sounds", sounds, bw);
             writeLine("draw_orb_arc", draw_orb_arc, bw);
             writeLine("draw_special_orb", draw_special_orb, bw);
             writeLine("draw_health_overlay", draw_health_overlay, bw);
@@ -317,6 +321,10 @@ public class Settings {
                     roofs = readBoolean();
                 } else if (contains("orbs")) {
                     orbs = readBoolean();
+                } else if (contains("music")) {
+                    music = readBoolean();
+                } else if (contains("sounds")) {
+                    sounds = readBoolean();
                 } else if (contains("draw_orb_arc")) {
                     draw_orb_arc = readBoolean();
                 } else if (contains("draw_orb_arc")) {

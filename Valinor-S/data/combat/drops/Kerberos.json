@@ -1,0 +1,214 @@
+{
+  "npcs": [ 16008 ],
+  "petItem": 32300,
+  "petRarity": 2500,
+  "guaranteed": [
+    {
+      "id": 592
+    }
+  ],
+  "items": [],
+  "tables": [
+    {
+      "name": "Weapons/Armour",
+      "points": 31,
+      "items": [
+        {
+          "id": 3053,
+          "amount": 1,
+          "points": 3
+        },
+        {
+          "id": 1392,
+          "amount": 6,
+          "points": 3
+        },
+        {
+          "id": 1319,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 3202,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 1163,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 2503,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 1359,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 1275,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 1113,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 1127,
+          "amount": 1,
+          "points": 2
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Runes/Ammunition",
+      "points": 32,
+      "items": [
+        {
+          "id": 7937,
+          "amount": 300,
+          "points": 3
+        },
+        {
+          "id": 554,
+          "amount": 300,
+          "points": 3
+        },
+        {
+          "id": 560,
+          "amount": 100,
+          "points": 3
+        },
+        {
+          "id": 566,
+          "amount": 100,
+          "points": 3
+        },
+        {
+          "id": 565,
+          "amount": 100,
+          "points": 2
+        },
+        {
+          "id": 9381,
+          "amount": 40,
+          "points": 2
+        },
+        {
+          "id": 2,
+          "amount": 50,
+          "points": 2
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Herbs/Potions/Seeds/Ore",
+      "points": 32,
+      "items": [
+        {
+          "id": 3024,
+          "amount": 2,
+          "points": 3
+        },
+        {
+          "id": 5304,
+          "amount": 3,
+          "points": 1
+        },
+        {
+          "id": 220,
+          "amount": 6,
+          "points": 2
+        },
+        {
+          "id": 454,
+          "amount": 120,
+          "points": 2
+        },
+        {
+          "id": 452,
+          "amount": 5,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Other",
+      "points": 32,
+      "items": [
+        {
+          "id": 995,
+          "min": 10000,
+          "max": 20000,
+          "points": 1
+        },
+        {
+          "id": 5304,
+          "amount": 3,
+          "points": 3
+        },
+        {
+          "id": 593,
+          "amount": 50,
+          "points": 3
+        },
+        {
+          "id": 537,
+          "amount": 20,
+          "points": 3
+        },
+        {
+          "id": 1618,
+          "amount": 10,
+          "points": 3
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Rare",
+      "points": 1,
+      "items": [
+        {
+          "id": 13231,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 13229,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 13227,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 13233,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 13245,
+          "amount": 1,
+          "points": 3
+        },
+        {
+          "id": 32504,
+          "amount": 1,
+          "points": 2
+        }
+      ],
+      "tables": []
+    }
+  ]
+}

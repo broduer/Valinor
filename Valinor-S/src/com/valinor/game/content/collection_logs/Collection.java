@@ -171,53 +171,53 @@ public enum Collection {
     // Custom bosses
     BARRELCHEST(AttributeKey.BARRELCHESTS_KILLED, LogType.BOSSES, "Barrelchests", new int[]{NpcIdentifiers.BARRELCHEST_6342}, AttributeKey.BARRELCHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 1), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL), new Item(KEY_OF_DROPS)),
+        new Item(BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL)),
 
     ZOMBIES_CHAMPION(AttributeKey.ZOMBIES_CHAMPIONS_KILLED, LogType.BOSSES, "Zombies Champion", new int[]{NpcIdentifiers.ZOMBIES_CHAMPION}, AttributeKey.ZOMBIES_CHAMPION_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2), new Item(KEY_OF_DROPS,3)},
         //Drops
-        new Item(CustomItemIdentifiers.ZOMBIES_CHAMPION_PET), new Item(ARMADYL_CROSSBOW), new Item(ARMADYL_GODSWORD), new Item(VESTAS_LONGSWORD), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM)),
+        new Item(CustomItemIdentifiers.ZOMBIES_CHAMPION_PET), new Item(VESTAS_LONGSWORD), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM)),
 
     BRUTAL_LAVA_DRAGON(AttributeKey.BRUTAL_LAVA_DRAGONS_KILLED, LogType.BOSSES, "Brutal Lava Dragon", new int[]{BRUTAL_LAVA_DRAGON_FLYING}, AttributeKey.BRUTAL_LAVA_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(BABY_LAVA_DRAGON), new Item(DAGONHAI_HAT), new Item(DAGONHAI_ROBE_TOP), new Item(DAGONHAI_ROBE_BOTTOM), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(LAVA_WHIP), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT)),
+        new Item(BABY_LAVA_DRAGON), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT)),
 
     CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1)},
         //Drops
-        new Item(CORRUPTED_BOOTS)),
+        new Item(KEY_OF_DROPS), new Item(CORRUPTED_BOOTS)),
 
     ANCIENT_CHAOS_ELEMENTAL(AttributeKey.ANCIENT_CHAOS_ELEMENTALS_KILLED, LogType.BOSSES, "Ancient Chaos Elemental", new int[]{CustomNpcIdentifiers.ANCIENT_CHAOS_ELEMENTAL}, AttributeKey.ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(CustomItemIdentifiers.ANCIENT_CHAOS_ELEMENTAL_PET), new Item(TASK_BOTTLE_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS)
+        new Item(CustomItemIdentifiers.ANCIENT_CHAOS_ELEMENTAL_PET), new Item(RING_OF_VIGOUR)
     ),
 
     ANCIENT_BARRELCHEST(AttributeKey.ANCIENT_BARRELCHESTS_KILLED, LogType.BOSSES, "Ancient Barrelchest", new int[]{CustomNpcIdentifiers.ANCIENT_BARRELCHEST}, AttributeKey.ANCIENT_BARRELCHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,3), new Item(TASK_BOTTLE_CASKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET), new Item(TASK_BOTTLE_CASKET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(ANCIENT_WARRIOR_CLAMP)
+        new Item(CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_CLAMP)
     ),
 
     ANCIENT_KING_BLACK_DRAGON(AttributeKey.ANCIENT_KING_BLACK_DRAGONS_KILLED, LogType.BOSSES, "Ancient King Black Dragon", new int[]{CustomNpcIdentifiers.ANCIENT_KING_BLACK_DRAGON}, AttributeKey.ANCIENT_KING_BLACK_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,3), new Item(TASK_BOTTLE_CASKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.ANCIENT_KING_BLACK_DRAGON_PET), new Item(DRAGONFIRE_SHIELD), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(KEY_OF_DROPS), new Item(ANCIENT_FACEGAURD)
+        new Item(CustomItemIdentifiers.ANCIENT_KING_BLACK_DRAGON_PET), new Item(ANCIENT_FACEGAURD)
     ),
 
     KERBEROS(AttributeKey.KERBEROS_KILLED, LogType.BOSSES, "Kerberos", new int[]{CustomNpcIdentifiers.KERBEROS}, AttributeKey.KERBEROS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,1), new Item(CustomItemIdentifiers.MYSTERY_CHEST,1), new Item(SAELDOR_SHARD, 500)},
         //Drops
-        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(VAMPYRE_DUST), new Item(KEY_OF_DROPS), new Item(PHARAOHS_HILT)
+        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(DARK_ARMADYL_CHAINSKIRT)
     ),
 
     SKORPIOS(AttributeKey.SKORPIOS_KILLED, LogType.BOSSES, "Skorpios", new int[]{CustomNpcIdentifiers.SKORPIOS}, AttributeKey.SKORPIOS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,1), new Item(SAELDOR_SHARD, 250)},
         //Drops
-        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_HELMET)
+        new Item(CustomItemIdentifiers.SKORPIOS_PET), new Item(KEY_OF_DROPS), new Item(SAELDOR_SHARD)
     ),
 
     ARACHNE(AttributeKey.ARACHNE_KILLED, LogType.BOSSES, "Arachne", new int[]{CustomNpcIdentifiers.ARACHNE}, AttributeKey.ARACHNE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHAINSKIRT)
+        new Item(CustomItemIdentifiers.ARACHNE_PET), new Item(DARK_ARMADYL_HELMET)
     ),
 
     ARTIO(AttributeKey.ARTIO_KILLED, LogType.BOSSES, "Artio", new int[]{CustomNpcIdentifiers.ARTIO}, AttributeKey.ARTIO_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(SAELDOR_SHARD), new Item(DARK_ARMADYL_CHESTPLATE)
+        new Item(CustomItemIdentifiers.ARTIO_PET), new Item(DARK_ARMADYL_CHESTPLATE)
     ),
 
     CORRUPTED_HUNLEFF(AttributeKey.CORRUPTED_HUNLEFFS_KILLED, LogType.BOSSES, "Corrupted Hunleff", new int[]{NpcIdentifiers.CORRUPTED_HUNLLEF, NpcIdentifiers.CORRUPTED_HUNLLEF_9036, NpcIdentifiers.CORRUPTED_HUNLLEF_9037}, AttributeKey.CORRUPTED_HUNLEFF_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},

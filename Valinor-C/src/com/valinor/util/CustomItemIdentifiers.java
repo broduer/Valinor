@@ -5,6 +5,8 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
+    //Be careful ids not allowed over 32,767!
+
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
     public static final int GIANT_KEY_OF_DROPS = 30201;
     public static final int COLLECTION_KEY = 30210;
@@ -143,24 +145,23 @@ public class CustomItemIdentifiers {
     public static final int ARACHNE_PET = 32302;
     public static final int ARTIO_PET = 32303;
     public static final int SAELDOR_SHARD = 22517;
-    public static final int PHARAOHS_HILT = 25936;
 
-    public static final int DARK_ELDER_MAUL = 32956;
-    public static final int SANGUINE_TWISTED_BOW = 32957;
-    public static final int ANCIENT_WARRIOR_CLAMP = 32985;
-    public static final int ANCIENT_FACEGAURD = 32982;
-    public static final int ANCIENT_KING_BLACK_DRAGON_PET = 32986;
-    public static final int ANCIENT_CHAOS_ELEMENTAL_PET = 32987;
-    public static final int ANCIENT_BARRELCHEST_PET = 32988;
-    public static final int DARK_ANCIENT_EMBLEM = 32989;
-    public static final int DARK_ANCIENT_TOTEM = 32990;
-    public static final int DARK_ANCIENT_STATUETTE = 32991;
-    public static final int DARK_ANCIENT_MEDALLION = 32992;
-    public static final int DARK_ANCIENT_EFFIGY = 32993;
-    public static final int DARK_ANCIENT_RELIC = 32994;
-    public static final int ANCIENT_VESTAS_LONGSWORD = 32995;
-    public static final int ANCIENT_STATIUSS_WARHAMMER = 32996;
-    public static final int TASK_BOTTLE_CASKET = 32999;
+    public static final int DARK_ELDER_MAUL = 31956;
+    public static final int SANGUINE_TWISTED_BOW = 31957;
+    public static final int ANCIENT_WARRIOR_CLAMP = 31985;
+    public static final int ANCIENT_FACEGAURD = 31982;
+    public static final int ANCIENT_KING_BLACK_DRAGON_PET = 31986;
+    public static final int ANCIENT_CHAOS_ELEMENTAL_PET = 31987;
+    public static final int ANCIENT_BARRELCHEST_PET = 31988;
+    public static final int DARK_ANCIENT_EMBLEM = 31989;
+    public static final int DARK_ANCIENT_TOTEM = 31990;
+    public static final int DARK_ANCIENT_STATUETTE = 31991;
+    public static final int DARK_ANCIENT_MEDALLION = 31992;
+    public static final int DARK_ANCIENT_EFFIGY = 31993;
+    public static final int DARK_ANCIENT_RELIC = 31994;
+    public static final int ANCIENT_VESTAS_LONGSWORD = 31995;
+    public static final int ANCIENT_STATIUSS_WARHAMMER = 31996;
+    public static final int TASK_BOTTLE_CASKET = 31999;
     public static final int BLOOD_FIREBIRD = 32700;
     public static final int VIGGORAS_CHAINMACE_C = 32705;
     public static final int CRAWS_BOW_C = 32706;
@@ -243,7 +244,7 @@ public class CustomItemIdentifiers {
     public static final int ANCIENT_WARRIOR_MAUL = 7808;
     public static final int ANCIENT_WARRIOR_AXE = 7807;
     public static final int ANCIENT_WARRIOR_SWORD_C = 32983;
-    public static final int ANCIENT_WARRIOR_MAUL_C = 32985;
+    public static final int ANCIENT_WARRIOR_MAUL_C = 31985;
     public static final int ANCIENT_WARRIOR_AXE_C = 32984;
     public static final int VALINOR_COINS = 17000;
     public static final int KEY_OF_DROPS = 2944;
@@ -262,3 +263,4 @@ public class CustomItemIdentifiers {
     public static final int RING_OF_TRINITY = 16169;
     public static final int SLAYER_KEY = 3269;
 }
+

@@ -101,19 +101,15 @@ public class ForthosDungeon extends PacketInteraction {
     }
 
     private void slashWeb(Player player, GameObject web) {
-        if (player.getEquipment().contains(WILDERNESS_SWORD_4) || World.getWorld().rollDie(2, 1)) {
-            player.lock();
-            player.message("You slash the web apart.");
-            Chain.bound(null).name("SlashWebTask").runFn(1, () -> {
-                ObjectManager.removeObj(web);
-                ObjectManager.addObj(new GameObject(734, web.tile(), web.getType(), web.getRotation()));
-            }).then(50, () -> {
-                ObjectManager.removeObj(new GameObject(734, web.tile(), web.getType(), web.getRotation()));
-                ObjectManager.addObj(web);
-            });
-            player.unlock();
-        } else {
-            player.message("You fail to cut through it.");
-        }
+        player.lock();
+        player.message("You slash the web apart.");
+        Chain.bound(null).name("SlashWebTask").runFn(1, () -> {
+            ObjectManager.removeObj(web);
+            ObjectManager.addObj(new GameObject(734, web.tile(), web.getType(), web.getRotation()));
+        }).then(50, () -> {
+            ObjectManager.removeObj(new GameObject(734, web.tile(), web.getType(), web.getRotation()));
+            ObjectManager.addObj(web);
+        });
+        player.unlock();
     }
 }

@@ -682,7 +682,6 @@ public class Item implements Cloneable {
             add(DEFENDER_ICON);
             add(HEALER_ICON);
             add(SAELDOR_SHARD);
-            add(PHARAOHS_HILT);
             add(DRAGON_HUNTER_CROSSBOW_T);
             add(CRYSTAL_BODY);
             add(CRYSTAL_HELM);

@@ -134,7 +134,6 @@ public class Client extends GameApplet {
     public boolean isDisplayed = true;
     public Announcement broadcast;
     public static String broadcastText;
-    public boolean soundsAreEnabled;
     String selectedMsg = "";
 
     public void changeColour(int id, int colour) {
@@ -223,7 +222,7 @@ public class Client extends GameApplet {
     private final SimpleImage[] skill_sprites = new SimpleImage[SkillConstants.SKILL_COUNT];
 
     public void playSong(int id) {
-        if (id != currentSong && musicEnabled && !low_detail && prevSong == 0) {
+        if (id != currentSong && setting.music && !low_detail && prevSong == 0) {
             nextSong = id;
             fadeMusic = true;
             resourceProvider.provide(2, nextSong);
@@ -297,7 +296,7 @@ public class Client extends GameApplet {
             prevSong -= 20;
             if (prevSong < 0)
                 prevSong = 0;
-            if (prevSong == 0 && musicEnabled && !low_detail) {
+            if (prevSong == 0 && setting.music && !low_detail) {
                 nextSong = currentSong;
                 fadeMusic = true;
                 resourceProvider.provide(2, nextSong);
@@ -3118,12 +3117,12 @@ public class Client extends GameApplet {
         }
 
         if (varpType == 3) {
-            boolean previousPlayingMusic = musicEnabled;
+            boolean previousPlayingMusic = setting.music;
             System.out.println("music state: "+state);
             if (state == 0) {
-                musicEnabled = false;
-                if (musicEnabled != previousPlayingMusic && !low_detail) {
-                    if (musicEnabled) {
+                setting.music = false;
+                if (setting.music != previousPlayingMusic && !low_detail) {
+                    if (setting.music) {
                         nextSong = currentSong;
                         fadeMusic = true;
                         resourceProvider.provide(2, nextSong);
@@ -3135,49 +3134,49 @@ public class Client extends GameApplet {
             }
             if (state == 1) {
                 if (SignLink.music != null) {
-                    adjustVolume(musicEnabled, 0);
+                    adjustVolume(setting.music, 0);
                 }
-                musicEnabled = true;
+                setting.music = true;
             }
             if (state == 2) {
                 if (SignLink.music != null) {
-                    adjustVolume(musicEnabled, 100);
+                    adjustVolume(setting.music, 100);
                 }
-                musicEnabled = true;
+                setting.music = true;
             }
             if (state == 3) {
                 if (SignLink.music != null) {
-                    adjustVolume(musicEnabled, 300);
+                    adjustVolume(setting.music, 300);
                 }
-                musicEnabled = true;
+                setting.music = true;
             }
             if (state == 4) {
                 if (SignLink.music != null) {
-                    adjustVolume(musicEnabled, 500);
+                    adjustVolume(setting.music, 500);
                 }
-                musicEnabled = true;
+                setting.music = true;
             }
         }
 
         if (varpType == 4) {
             SoundPlayer.setVolume(state);
             if (state == 0) {
-                soundsAreEnabled = false;
+                setting.sounds = false;
             }
             if (state == 1) {
-                soundsAreEnabled = true;
+                setting.sounds = true;
                 setWaveVolume(0);
             }
             if (state == 2) {
-                soundsAreEnabled = true;
+                setting.sounds = true;
                 setWaveVolume(-400);
             }
             if (state == 3) {
-                soundsAreEnabled = true;
+                setting.sounds = true;
                 setWaveVolume(-800);
             }
             if (state == 4) {
-                soundsAreEnabled = true;
+                setting.sounds = true;
                 setWaveVolume(-1200);
             }
         }
@@ -14948,7 +14947,7 @@ public class Client extends GameApplet {
         }
 
         if (ClientConstants.CAN_SWITCH_MUSIC) {
-            if (musicEnabled && !low_detail) {
+            if (setting.music && !low_detail) {
                 playSong(ClientConstants.CHRISTMAS ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
                 spriteCache.get(58).drawSprite(726, 464);
             } else {
@@ -15079,7 +15078,7 @@ public class Client extends GameApplet {
             int l11 = stream.readUnsignedByte();
             int i14 = l11 >> 4 & 0xf;
             int i16 = l11 & 7;
-            if (local_player.waypoint_x[0] >= k3 - i14 && local_player.waypoint_x[0] <= k3 + i14 && local_player.waypoint_y[0] >= j6 - i14 && local_player.waypoint_y[0] <= j6 + i14 && soundsAreEnabled && !low_detail && trackCount < 50) {
+            if (local_player.waypoint_x[0] >= k3 - i14 && local_player.waypoint_x[0] <= k3 + i14 && local_player.waypoint_y[0] >= j6 - i14 && local_player.waypoint_y[0] <= j6 + i14 && setting.sounds && !low_detail && trackCount < 50) {
                 tracks[trackCount] = i9;
                 trackLoops[trackCount] = i16;
                 soundDelay[trackCount] = Track.delays[i9];
@@ -15416,9 +15415,9 @@ public class Client extends GameApplet {
                         e.printStackTrace();
                     }
                 } else if (musicHover) {
-                    musicEnabled = !musicEnabled;
+                    setting.music = !setting.music;
                     setting.save();
-                    if (musicEnabled && !low_detail) {
+                    if (setting.music && !low_detail) {
                         prevSong = 0;
                         fadeMusic = true;
                         if (SignLink.music != null) {
@@ -16262,7 +16261,7 @@ public class Client extends GameApplet {
                 if (id == 65535)
                     id = -1;
 
-                if (id != currentSong && musicEnabled && !low_detail && prevSong == 0) {
+                if (id != currentSong && setting.music && !low_detail && prevSong == 0) {
                     nextSong = id;
                     fadeMusic = true;
                     resourceProvider.provide(2, nextSong);
@@ -16275,7 +16274,7 @@ public class Client extends GameApplet {
             if (opcode == ServerToClientPackets.NEXT_OR_PREVIOUS_SONG) {
                 int id = incoming.readLEUShortA();
                 int delay = incoming.readUShortA();
-                if (musicEnabled && !low_detail) {
+                if (setting.music && !low_detail) {
                     nextSong = id;
                     fadeMusic = false;
                     resourceProvider.provide(2, nextSong);
@@ -16290,7 +16289,7 @@ public class Client extends GameApplet {
                 int type = incoming.readUByte();
                 int delay = incoming.readUShort();
                 int volume = incoming.readUShort();
-                if (soundsAreEnabled && !low_detail && trackCount < 50) {
+                if (setting.sounds && !low_detail && trackCount < 50) {
                     tracks[trackCount] = id;
                     trackLoops[trackCount] = type;
                     soundDelay[trackCount] = delay + Track.delays[id];
@@ -18056,7 +18055,6 @@ public class Client extends GameApplet {
         chatBuffer = new Buffer(new byte[40_000]);
         outBuffer = new Buffer(new byte[40_000]);
         loginBuffer = new Buffer(new byte[40_000]);
-        soundsAreEnabled = true;
         // Buffer size 40k is supposedly what OSRS uses.
         incoming = new Buffer(new byte[40_000]);
         fullscreenInterfaceID = -1;
@@ -18168,7 +18166,6 @@ public class Client extends GameApplet {
         continuedDialogue = false;
         crosses = new SimpleImage[8];
         loggedIn = false;
-        musicEnabled = true;
         canMute = false;
         requestMapReconstruct = false;
         cutscene = false;
@@ -18514,7 +18511,6 @@ public class Client extends GameApplet {
     public boolean continuedDialogue;
     private SimpleImage[] crosses;
     private IndexedImage[] titleIndexedImages;
-    private boolean musicEnabled;
     private int unreadMessages;
     private static int anInt1155;
     private static boolean fpsOn;

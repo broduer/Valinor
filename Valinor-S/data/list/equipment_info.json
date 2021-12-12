@@ -6444,7 +6444,7 @@
     "type": 8,
     "showBeard": true
   },
-  "32982": {
+  "31982": {
     "slot": 0,
     "type": 8,
     "showBeard": true
@@ -12089,7 +12089,7 @@
     "type": 8,
     "showBeard": false
   },
-  "32957": {
+  "31957": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -12154,7 +12154,7 @@
     "type": 5,
     "showBeard": false
   },
-  "32956": {
+  "31956": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -16704,7 +16704,7 @@
     "type": 5,
     "showBeard": false
   },
-  "32985": {
+  "31985": {
     "slot": 3,
     "type": 5,
     "showBeard": false
@@ -17186,7 +17186,7 @@
     "type": 0,
     "showBeard": false
   },
-  "32996": {
+  "31996": {
     //ancient statius's warhammer
     "slot": 3,
     "type": 0,
@@ -17210,7 +17210,7 @@
     "type": 0,
     "showBeard": false
   },
-  "32995": {
+  "31995": {
     //ancient vesta's longsword
     "slot": 3,
     "type": 0,

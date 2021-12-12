@@ -1,0 +1,27 @@
+{
+  "npcs": [ 15001 ],
+  "guaranteed": [
+    { "id": 592, "min": 1, "max": 1 } //Ashes
+  ],
+  "petItem": 30018,
+  "petRarity": 2500,
+  "tables": [
+    {
+      "name": "Drop table",
+      "points": 1,
+      "items": [
+        { "id": 12914, "min": 5, "max": 10, "points": 50 }, //Anti-venom+(4) (noted)
+        { "id": 23686, "min": 2, "max": 10, "points": 50 }, //Divine super combat potion(4) (noted)
+        { "id": 21979, "min": 2, "max": 10, "points": 50 }, //Super antifire potion(4) (noted)
+        { "id": 30185, "min": 1, "max": 1, "points": 16 }, //Donator mystery box
+        { "id": 2944, "min": 1, "max": 1, "points": 3 }, //Key of drops
+        { "id": 30297, "min": 1, "max": 1, "points": 1 } //Corrupted boots
+      ]
+    },
+    {
+      "name": "Other",
+      "points": 7,
+      "items": []
+    }
+  ]
+}

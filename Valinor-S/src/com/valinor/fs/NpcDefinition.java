@@ -2,6 +2,7 @@ package com.valinor.fs;
 
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.io.RSBuffer;
+import com.valinor.util.CustomNpcIdentifiers;
 import io.netty.buffer.Unpooled;
 import nl.bartpelle.dawnguard.DataStore;
 import org.apache.commons.lang3.ArrayUtils;
@@ -156,10 +157,19 @@ public class NpcDefinition implements Definition {
             }
         }
 
-        if (id == 7632) {
+        if (id == ICE_IMP) {
+            name = "Ice imp";
+            combatlevel = 77;
+        } else if (id == ICE_IMP_15119) {
+            name = "Ice imp";
+            combatlevel = 127;
+        } else if (id == ICE_IMP_15120) {
+            name = "Ice imp";
+            combatlevel = 188;
+        } else if (id == 7632) {
             name = "Men in black";
             combatlevel = 80;
-            options = new String[] {null, "Attack", null, null, null, null};
+            options = new String[]{null, "Attack", null, null, null, null};
             size = 1;
         } else if (id == NAGINI) {
             name = "Nagini";
@@ -389,7 +399,7 @@ public class NpcDefinition implements Definition {
             name = "Zombies champion";
         }
 
-        if(ispet) {
+        if (ispet) {
             this.name = this.name + " pet";
         }
     }

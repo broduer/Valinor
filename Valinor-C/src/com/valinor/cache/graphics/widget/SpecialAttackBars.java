@@ -62,7 +62,7 @@ public enum SpecialAttackBars {
     ANCIENT_WARRIOR_MAUL(7808, "Ancient warrior: Deal an attack with 50% more accuracy, 25% more damage and hits guaranteed +35 damage.",50,24147,7474,7486),
     ANCIENT_WARRIOR_SWORD_C(32983,"Ancient warrior: Summons a powerful ancient warrior that can deal up to 55 damage.",100,24145,7599,7611),
     ANCIENT_WARRIOR_AXE_C(32984,"Ancient warrior: Deal an attack, with double accuracy, that inflicts 15% more damage and drains your target's prayer and defence by the damage dealt.", 50,24146,7499,7511),
-    ANCIENT_WARRIOR_MAUL_C(32985, "Ancient warrior: Deal an attack with 50% more accuracy, 25% more damage and hits guaranteed +35 damage.",50,24147,7474,7486),
+    ANCIENT_WARRIOR_MAUL_C(31985, "Ancient warrior: Deal an attack with 50% more accuracy, 25% more damage and hits guaranteed +35 damage.",50,24147,7474,7486),
     GRANITE_HAMMER(21742,"Hammer Blow: Deal an attack with 50% more accuracy and a guaranteed +5 damage.", 60.0,31450, 7474, 7486),
     DRAGON_2H_SWORD(7158, "Powerstab: Hit up to fourteen enemies surrounding you.",60.0, 31464, 7699, 7711),
     BONE_DAGGER(8872, "Backstab: Deal an attack with greatly increased accuracy on unsuspecting targets and that lowers your target's Defence level by the damage dealt.", 75.0, 31407, 7574, 7586),
@@ -157,11 +157,11 @@ public enum SpecialAttackBars {
     DRAGON_PICKAXE_OR(12797, "Rock Knocker: Increase your Mining level by 3.", 100.0, 31454, 7724, 7736),
     VESTAS_LONGSWORD_23615(23615, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 20% extra damage.", 25.0, 31455, 7599, 7611),
     VESTAS_LONGSWORD(22613, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 20% extra damage.", 25.0, 31455, 7599, 7611),
-    ANCIENT_VESTAS_LONGSWORD(32995, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 25% extra damage.", 25.0, 31455, 7599, 7611),
+    ANCIENT_VESTAS_LONGSWORD(31995, "Feint: Deal an attack which treats your target's defence as if it was reduced by 75%. It will deal an minimum of 25% extra damage.", 25.0, 31455, 7599, 7611),
     VESTAS_SPEAR(22610, "Spear Wall: All damage dealt by this attack is reduced by 50%, but will damage up to sixteen targets surrounding you. After using this attack, you will be immune from melee attacks for 5 seconds.", 50.0, 31456, 7674, 7686),
     STATIUS_WARHAMMER(22622, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
     STATIUS_WARHAMMER_23620(23620, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
-    ANCIENT_STATIUS_WARHAMMER(32996, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
+    ANCIENT_STATIUS_WARHAMMER(31996, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
 
     //We don't have the interface...
     IVANDIS_FLAIL(22398, "Retainer: Traps a vampyre juvenile or juvinate provided they have 50% or less hitpoints remaining.", 10.0, 31396, -1, -1),

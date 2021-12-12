@@ -7,6 +7,7 @@ import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomItemIdentifiers.DARK_ANCIENT_EFFIGY;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class CustomItems {
@@ -878,27 +879,27 @@ public class CustomItems {
             def.name = "<col=65280>Dark ancient emblem";
             def.modelCustomColor4 = 235;
         }
-        if (id == ANCIENT_TOTEM) {
+        if (id == DARK_ANCIENT_TOTEM) {
             ItemDefinition.copyInventory(def, ANCIENT_TOTEM);
             def.name = "<col=65280>Dark ancient totem";
             def.modelCustomColor4 = 235;
         }
-        if (id == ANCIENT_STATUETTE) {
+        if (id == DARK_ANCIENT_STATUETTE) {
             ItemDefinition.copyInventory(def, ANCIENT_STATUETTE);
             def.name = "<col=65280>Dark ancient statuette";
             def.modelCustomColor4 = 235;
         }
-        if (id == ANCIENT_MEDALLION) {
+        if (id == DARK_ANCIENT_MEDALLION) {
             ItemDefinition.copyInventory(def, ANCIENT_MEDALLION);
             def.name = "<col=65280>Dark ancient medallion";
             def.modelCustomColor4 = 235;
         }
-        if (id == ANCIENT_EFFIGY) {
+        if (id == DARK_ANCIENT_EFFIGY) {
             ItemDefinition.copyInventory(def, ANCIENT_EFFIGY);
             def.name = "<col=65280>Dark ancient effigy";
             def.modelCustomColor4 = 235;
         }
-        if (id == ANCIENT_RELIC) {
+        if (id == DARK_ANCIENT_RELIC) {
             ItemDefinition.copyInventory(def, ANCIENT_RELIC);
             def.name = "<col=65280>Dark ancient relic";
             def.modelCustomColor4 = 235;

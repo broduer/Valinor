@@ -14,6 +14,10 @@ public class NpcManager {
         boolean impling = false;
 
         switch (id) {
+
+            case SARACHNIS:
+                definition.isClickable = true;
+                break;
                 
             case 15114:
                 definition.name = "Santa";
