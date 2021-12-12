@@ -176,7 +176,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(3484, 9510, 2))));
 
         teleportOptions.put(36,
-            new OptionMenu("Dagannoth Dungeon", new String[] { "Boss", "Dagannoth", "Rex", "Prime", "Supreme" },
+            new OptionMenu("Dagannoth Dungeon", new String[] { "Slayer", "Dagannoth", "Rex", "Prime", "Supreme" },
                 new TeleportAction(player, new Tile(2442, 10147, 0))));
 
         teleportOptions.put(37,
@@ -279,6 +279,9 @@ public class TeleportMenuConstants {
 
         teleportOptions.put(69, new OptionMenu("Bryophyta", new String[] { "Bryophyta", "boss" },
             new TeleportAction(player, new Tile(3174, 9897))));
+
+        teleportOptions.put(70, new OptionMenu("Dagannoth kings", new String[] { "Dagannoth kings", "boss" },
+            new TeleportAction(player, new Tile(1910, 4367))));
 
         return teleportOptions;
     }

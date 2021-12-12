@@ -322,7 +322,7 @@ public abstract class Shop {
 
         Optional<Item> find = container.search(item.getId());
         int sellValue;
-        sellValue = item.getId() == 619 ? 1 : item.getSellValue();
+        sellValue = item.getId() == 619 ? 1 : item.unnote().getSellValue();
 
         final int amount = player.inventory().count(item.getId());
 
@@ -410,7 +410,7 @@ public abstract class Shop {
             return;
         }
 
-        int value = item.getId() == 619 ? 1 : item.getSellValue();
+        int value = item.getId() == 619 ? 1 : item.unnote().getSellValue();
 
         if (value <= 0) {
             if (this.sellType() != SellType.NONE) {

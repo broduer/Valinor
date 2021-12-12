@@ -910,8 +910,7 @@ public class Item implements Cloneable {
      * @return the value of this item.
      */
     public int getValue() {
-        final ItemDefinition def = definition(World.getWorld());
-        return TradingPost.TRADING_POST_VALUE_ENABLED ? TradingPost.getProtectionPrice(id) : def.cost;
+        return TradingPost.TRADING_POST_VALUE_ENABLED ? TradingPost.getProtectionPrice(id) : this.unnote().definition(World.getWorld()).cost;
     }
 
     /**
