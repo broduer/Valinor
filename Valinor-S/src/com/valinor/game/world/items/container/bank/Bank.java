@@ -732,11 +732,15 @@ public class Bank extends ItemContainer {
         switch (button) {
 
             case 26120://group storage
-                player.getInterfaceManager().close();//Close bank
                 Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).open();//Open group storage
+
+                if (group.isPresent() && group.get().storageInUse()) {
+                    player.message(Color.RED.wrap("Someone is already using the group storage."));
+                    return true;
                 }
+
+                player.getInterfaceManager().close();//Close bank
+                group.ifPresent(ironmanGroup -> ironmanGroup.getGroupStorage(player).open());//Open group storage
                 return true;
 
             case 26102:

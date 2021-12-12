@@ -9,10 +9,7 @@ import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.ItemContainerAdapter;
 import com.valinor.util.Color;
 
-import java.util.Arrays;
 import java.util.Optional;
-
-import static com.valinor.game.world.entity.AttributeKey.USING_GROUP_STORAGE;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -64,11 +61,6 @@ public class GroupStorage extends ItemContainer {
             return;
         }
 
-        if(player.<Boolean>getAttribOr(USING_GROUP_STORAGE,false)) {
-            player.message(Color.RED.wrap("Someone is already using the group storage."));
-            return;
-        }
-
         if(player.inActiveTournament() || player.isInTournamentLobby()) {
             player.message(Color.RED.wrap("You can't bank here."));
             return;
@@ -76,7 +68,7 @@ public class GroupStorage extends ItemContainer {
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         if(group.isPresent()) {
-            player.putAttrib(USING_GROUP_STORAGE,true);
+            group.get().storageInUse(true);
             player.getPacketSender().sendString(67504, Integer.toString(group.get().getGroupStorage(player).size()));
             player.getPacketSender().sendString(67506, Integer.toString(SIZE));
             player.getPacketSender().sendString(67509,"Infinity");
@@ -98,7 +90,6 @@ public class GroupStorage extends ItemContainer {
      * Closes the group storage item container
      */
     public void close() {
-        player.putAttrib(USING_GROUP_STORAGE, false);
         save();
     }
 

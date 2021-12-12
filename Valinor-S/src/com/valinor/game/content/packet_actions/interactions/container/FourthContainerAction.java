@@ -79,13 +79,10 @@ public class FourthContainerAction {
             player.getBank().withdraw(id, slot, Integer.MAX_VALUE);
         }
 
-        if(interfaceId == GROUP_STORAGE_CONTAINER) {
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).withdraw(id, slot, Integer.MAX_VALUE);
-                }
+        if (interfaceId == GROUP_STORAGE_CONTAINER) {
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).withdraw(id, slot, Integer.MAX_VALUE);
                 return;
             }
         }
@@ -98,12 +95,9 @@ public class FourthContainerAction {
                 player.getPriceChecker().deposit(slot, Integer.MAX_VALUE);
             }
 
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).deposit(slot, count);
-                }
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).deposit(slot, count);
                 return;
             }
 

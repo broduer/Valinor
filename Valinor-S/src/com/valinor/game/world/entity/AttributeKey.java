@@ -890,11 +890,6 @@ public enum AttributeKey {
     PRICE_CHECKING,
 
     /**
-     * Checks if the player is currently using the group storage.
-     */
-    USING_GROUP_STORAGE,
-
-    /**
      * The entity which froze use.
      */
     FROZEN_BY,

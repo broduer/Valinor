@@ -32,26 +32,26 @@ import static com.valinor.game.world.InterfaceConstants.*;
 public class FirstContainerAction {
 
     public static void firstAction(Player player, int interfaceId, int slot, int id) {
-        if(PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 1)) {
+        if (PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 1)) {
             return;
         }
 
         if (TradingPost.handleSellingItem(player, interfaceId, id, 1))
             return;
 
-        if(PetInsurance.onContainerAction(player, new Item(id), interfaceId,1)) {
+        if (PetInsurance.onContainerAction(player, new Item(id), interfaceId, 1)) {
             return;
         }
 
-        if(BonusesInterface.onContainerAction(player, interfaceId, slot)) {
+        if (BonusesInterface.onContainerAction(player, interfaceId, slot)) {
             return;
         }
 
-        if(player.getRunePouch().removeFromPouch(interfaceId, id, slot,1)) {
+        if (player.getRunePouch().removeFromPouch(interfaceId, id, slot, 1)) {
             return;
         }
 
-        if(player.getRunePouch().moveToRunePouch(interfaceId, id, slot,1)) {
+        if (player.getRunePouch().moveToRunePouch(interfaceId, id, slot, 1)) {
             return;
         }
 
@@ -93,13 +93,10 @@ public class FirstContainerAction {
             player.getLootingBag().deposit(item, 1, null);
         }
 
-        if(interfaceId == GROUP_STORAGE_CONTAINER) {
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).withdraw(id, slot, 1);
-                }
+        if (interfaceId == GROUP_STORAGE_CONTAINER) {
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).withdraw(id, slot, 1);
                 return;
             }
         }
@@ -145,12 +142,9 @@ public class FirstContainerAction {
                 return;
             }
 
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).deposit(slot, 1);
-                }
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).deposit(slot, 1);
                 return;
             }
 
@@ -185,7 +179,7 @@ public class FirstContainerAction {
         }
 
         if (interfaceId == SHOP_INVENTORY) {
-            int shop = player.getAttribOr(AttributeKey.SHOP,-1);
+            int shop = player.getAttribOr(AttributeKey.SHOP, -1);
             Shop store = World.getWorld().shops.get(shop);
             if (store != null) {
                 Shop.exchange(player, id, slot, 1, false);

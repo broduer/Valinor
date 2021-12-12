@@ -28,18 +28,18 @@ import static com.valinor.game.world.InterfaceConstants.*;
 public class ThirdContainerAction {
 
     public static void thirdAction(Player player, int interfaceId, int slot, int id) {
-        if(PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 3)) {
+        if (PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 3)) {
             return;
         }
 
-        if(player.getRunePouch().removeFromPouch(interfaceId, id, slot,3)) {
+        if (player.getRunePouch().removeFromPouch(interfaceId, id, slot, 3)) {
             return;
         }
 
         if (TradingPost.handleSellingItem(player, interfaceId, id, 10))
             return;
 
-        if(player.getRunePouch().moveToRunePouch(interfaceId, id, slot,3)) {
+        if (player.getRunePouch().moveToRunePouch(interfaceId, id, slot, 3)) {
             return;
         }
 
@@ -88,15 +88,12 @@ public class ThirdContainerAction {
             player.getBank().withdraw(id, slot, 10);
         }
 
-        if(interfaceId == GROUP_STORAGE_CONTAINER) {
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).withdraw(id, slot, 10);
-                }
-                return;
+        if (interfaceId == GROUP_STORAGE_CONTAINER) {
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).withdraw(id, slot, 10);
             }
+            return;
         }
 
         if (interfaceId == INVENTORY_STORE) {
@@ -108,12 +105,9 @@ public class ThirdContainerAction {
                 return;
             }
 
-            boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
-            if(usingGroupStorage) {
-                Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-                if(group.isPresent()) {
-                    group.get().getGroupStorage(player).deposit(slot, 10);
-                }
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
+                group.get().getGroupStorage(player).deposit(slot, 10);
                 return;
             }
 

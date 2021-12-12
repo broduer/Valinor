@@ -126,11 +126,10 @@ public class InterfaceManager {
             Shop.closeShop(player);
         }
 
-        if (player.hasAttrib(USING_GROUP_STORAGE)) {
-            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-            if(group.isPresent()) {
-                group.get().getGroupStorage(player).close();
-            }
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if (group.isPresent() && group.get().storageInUse()) {
+            group.get().storageInUse(false);
+            group.get().getGroupStorage(player).close();
         }
 
         if (player.hasAttrib(AttributeKey.BANKING)) {

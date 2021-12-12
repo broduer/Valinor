@@ -44,6 +44,9 @@ public class IronmanGroup {
     @Expose
     public Item[] loadSaveTemp;
 
+    @Expose
+    private boolean storageInUse;
+
     /**
      * Creates a new group from a player
      * @param player - the player creating the group
@@ -137,7 +140,6 @@ public class IronmanGroup {
         }
         member.get().update(player);
     }
-
 
     public Optional<IronmanGroupMember> getMember(String username) {
         return members.stream().filter(e -> e.getUsername().equalsIgnoreCase(username)).findFirst();
@@ -306,6 +308,15 @@ public class IronmanGroup {
 
     public int getHardcoreLives() {
         return hardcoreLives;
+    }
+
+    public IronmanGroup storageInUse(boolean storageInUse) {
+        this.storageInUse = storageInUse;
+        return this;
+    }
+
+    public boolean storageInUse() {
+        return storageInUse;
     }
 
     public GroupStorage getGroupStorage() {

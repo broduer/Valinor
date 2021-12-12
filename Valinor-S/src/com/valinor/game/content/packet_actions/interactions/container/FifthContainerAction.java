@@ -2,6 +2,8 @@ package com.valinor.game.content.packet_actions.interactions.container;
 
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GamblingSession;
+import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.syntax.impl.*;
 import com.valinor.game.content.trade.Trading;
 import com.valinor.game.content.tradingpost.TradingPost;
@@ -12,6 +14,8 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
 import com.valinor.net.packet.interaction.PacketInteractionManager;
+
+import java.util.Optional;
 
 import static com.valinor.game.world.InterfaceConstants.*;
 import static com.valinor.game.world.entity.AttributeKey.USING_TRADING_POST;
@@ -25,7 +29,6 @@ public class FifthContainerAction {
     public static void fifthAction(Player player, int interfaceId, int slot, int id) {
         boolean banking = player.getAttribOr(AttributeKey.BANKING, false);
         boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
-        boolean usingGroupStorage = player.getAttribOr(AttributeKey.USING_GROUP_STORAGE,false);
         if(PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 5)) {
             return;
         }
@@ -47,7 +50,8 @@ public class FifthContainerAction {
         }
 
         if(interfaceId == GROUP_STORAGE_CONTAINER) {
-            if(usingGroupStorage) {
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
                 player.setEnterSyntax(new GroupStorageX(id, slot, false));
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to withdraw?");
                 return;
@@ -72,7 +76,8 @@ public class FifthContainerAction {
                 return;
             }
 
-            if(usingGroupStorage) {
+            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+            if (group.isPresent() && group.get().storageInUse()) {
                 player.setEnterSyntax(new GroupStorageX(id, slot, true));
                 player.getPacketSender().sendEnterAmountPrompt("How many would you like to deposit?");
                 return;
