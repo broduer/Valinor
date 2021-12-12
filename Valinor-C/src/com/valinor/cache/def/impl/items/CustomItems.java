@@ -790,7 +790,7 @@ public class CustomItems {
             def.recolorTo[1] = 0; // Eyes colour
         }
 
-        if (id == ELDER_MAUL) {
+        if (id == DARK_ELDER_MAUL) {
             ItemDefinition.copyInventory(def, ELDER_MAUL);
             ItemDefinition.copyEquipment(def, ELDER_MAUL);
             def.name = "<col=65280>Dark elder maul";
@@ -1625,12 +1625,20 @@ public class CustomItems {
             def.zoom2d = 480;
         }
 
-        if (id == 30185 || id == 30186 || id == 30187 || id == 30188 || id == 30200) {
+        if (id == 30185 || id == 30186 || id == 30187 || id == 30188 || id == 30200 || id == 31200) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case DONATOR_MYSTERY_BOX:
                     def.name = "<col=65280>Donator mystery box";
                     def.inventoryModel = 55566;
+                    def.animateInventory = true;
+                    def.recolorFrom = new int[]{2999, 22410};
+                    def.recolorTo = new int[]{524, 13};
+                    break;
+
+                case SUPER_MYSTERY_BOX:
+                    def.name = "<col=65280>Super mystery box";
+                    def.inventoryModel = 55615;
                     def.animateInventory = true;
                     def.recolorFrom = new int[]{2999, 22410};
                     def.recolorTo = new int[]{524, 13};

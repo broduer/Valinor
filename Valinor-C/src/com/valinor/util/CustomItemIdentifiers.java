@@ -191,6 +191,7 @@ public class CustomItemIdentifiers {
     public static final int CENTAUR_FEMALE = 30340;
     public static final int DEMENTOR_PET = 30342;
     public static final int DONATOR_MYSTERY_BOX = 30185;
+    public static final int SUPER_MYSTERY_BOX = 31200;
     public static final int FOUNDER_IMP = 30016;
     public static final int ICE_IMP = 30017;
     public static final int PET_CORRUPTED_NECHRYARCH = 30018;
