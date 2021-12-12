@@ -9,6 +9,8 @@ import com.valinor.game.content.group_ironman.sorts.IronmanGroupDateSort;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
+import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.Color;
 import org.slf4j.Logger;
@@ -87,13 +89,12 @@ public final class IronmanGroupHandler {
         }
 
         ironManGroups.add(newTeam);
-        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+        if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
             player.setPlayerRights(player.ironMode() == IronMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
         player.message("Your own group has been successfully created.");
         player.message("Your group will become visible once you start inviting members.");
-        saveIronmanGroups();
         GroupIronmanInterface.open(player);
         return Optional.of(newTeam);
     }
@@ -180,7 +181,22 @@ public final class IronmanGroupHandler {
 
     public static void deleteGroup(Player player) {
         Optional<IronmanGroup> getGroup = getPlayersGroup(player);
-        getGroup.ifPresent(ironmanGroup -> deleteGroup(ironmanGroup, player));
+        getGroup.ifPresent(ironmanGroup -> {
+            demoteAll(player);
+            deleteGroup(ironmanGroup, player);
+        });
+    }
+
+    public static void demoteAll(Player player) {
+        Optional<IronmanGroup> group = getPlayersGroup(player);
+        if (group.isPresent()) {
+            for (Player member : group.get().getOnlineMembers()) {
+                if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    member.setPlayerRights(group.get().isHardcoreGroup() ? PlayerRights.HARDCORE_IRON_MAN : PlayerRights.IRON_MAN);
+                    member.getPacketSender().sendRights();
+                }
+            }
+        }
     }
 
     public static void leaveGroup(Player player) {
@@ -193,8 +209,11 @@ public final class IronmanGroupHandler {
         Optional<Player> finalLeader = leader;
         if (finalLeader.isPresent()) {
             group.ifPresent(ironmanGroup -> ironmanGroup.leaveGroup(finalLeader.get(), player));
+            if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                player.setPlayerRights(group.get().isHardcoreGroup() ? PlayerRights.HARDCORE_IRON_MAN : PlayerRights.IRON_MAN);
+                player.getPacketSender().sendRights();
+            }
             player.message(Color.PURPLE.wrap("You have left the group."));
-            saveIronmanGroups();
         }
     }
 
@@ -203,7 +222,10 @@ public final class IronmanGroupHandler {
         if (group.isPresent()) {
             group.ifPresent(ironmanGroup -> ironmanGroup.kickFromGroup(leader, memberToKick));
             memberToKick.message(Color.PURPLE.wrap("You have been kicked from the group."));
-            saveIronmanGroups();
+            if(!memberToKick.getPlayerRights().isStaffMemberOrYoutuber(memberToKick)) {
+                memberToKick.setPlayerRights(group.get().isHardcoreGroup() ? PlayerRights.HARDCORE_IRON_MAN : PlayerRights.IRON_MAN);
+                memberToKick.getPacketSender().sendRights();
+            }
         } else {
             leader.message(Color.RED.wrap("Unable to find player in group."));
         }
@@ -214,7 +236,6 @@ public final class IronmanGroupHandler {
         if (getGroup.isPresent()) {
             getGroup.get().setLeaderName(newLeader.getUsername());
             newLeader.message(Color.PURPLE.wrap("You're the new leader of the group."));
-            saveIronmanGroups();
         } else {
             leader.message(Color.RED.wrap("Unable to find player in group."));
         }
@@ -232,7 +253,11 @@ public final class IronmanGroupHandler {
                 ironManGroups = GSON.fromJson(new FileReader(loadDirectory), new TypeToken<List<IronmanGroup>>() {
                 }.getType());
                 ironManGroups.forEach(g -> {
-                    g.getGroupStorage().set(Arrays.copyOf(g.loadSaveTemp, g.loadSaveTemp.length));
+                    g.getGroupStorage().set(new Item[80]);
+                    //final Item[] items = Arrays.copyOf(g.loadSaveTemp, g.loadSaveTemp.length);
+                    for (int i = 0; i < Math.min(g.loadSaveTemp.length, g.getGroupStorage().getItems().length); i++) {
+                        g.getGroupStorage().getItems()[i] = g.loadSaveTemp[i];
+                    }
                 });
                 log.info("Loaded " + ironManGroups.size() + "ironmen groups");
             } catch (Exception ex) {

@@ -13,7 +13,6 @@ import com.valinor.util.Utils;
 import java.time.Instant;
 import java.util.*;
 
-import static com.valinor.game.content.group_ironman.IronmanGroupHandler.saveIronmanGroups;
 import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_IRON_MAN;
@@ -86,11 +85,22 @@ public class IronmanGroup {
             var lives = group.get().getHardcoreLives();
             if(lives == 0) {
                 player.ironMode(IronMode.REGULAR);
-                player.setPlayerRights(PlayerRights.IRON_MAN);
-                player.getPacketSender().sendRights();
+                if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    player.setPlayerRights(PlayerRights.IRON_MAN);
+                    player.getPacketSender().sendRights();
+                }
                 player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
                 player.putAttrib(HARDCORE_GROUP_FALLEN,true);
             }
+        }
+
+        if(group.isEmpty() && (player.getPlayerRights() == GROUP_IRON_MAN || player.getPlayerRights() == GROUP_HARDCORE_IRONMAN)) {
+            if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                player.setPlayerRights(player.getPlayerRights() == GROUP_IRON_MAN ? PlayerRights.IRON_MAN : PlayerRights.HARDCORE_IRON_MAN);
+                player.getPacketSender().sendRights();
+            }
+            String plural = player.getPlayerRights() == PlayerRights.IRON_MAN ? "regular" : "hardcore";
+            player.message(Color.BLUE.wrap("The ironman group has been lifted, you have been demoted to a "+plural+" ironman."));
         }
     }
 
@@ -302,7 +312,6 @@ public class IronmanGroup {
 
     public IronmanGroup setHardcoreLives(int hardcoreLives) {
         this.hardcoreLives = hardcoreLives;
-        saveIronmanGroups();//When changing lives, update json.
         return this;
     }
 

@@ -15,6 +15,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import static com.valinor.game.content.group_ironman.IronmanGroupHandler.saveIronmanGroups;
+
 /**
  * Created by Bart on 8/1/2015.
  * <p>
@@ -84,6 +86,7 @@ public class LoginService implements Service {
         try {
             boolean b = PlayerSave.save(request);
             FarmingSaving.save(request);
+            saveIronmanGroups();
             //logger.trace("save to disk complete for {} : {}", b, request);
             return b;
         } catch (Throwable t) {

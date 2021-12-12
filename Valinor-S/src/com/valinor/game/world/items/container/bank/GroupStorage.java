@@ -90,7 +90,7 @@ public class GroupStorage extends ItemContainer {
      * Closes the group storage item container
      */
     public void close() {
-        save();
+        saveGroupStorageContainer();
     }
 
     /**
@@ -146,9 +146,31 @@ public class GroupStorage extends ItemContainer {
         }
 
         setFiringEvents(false);
-        add(id, amount);
+
+        if (item.noted())
+            id = item.unnote().getId();
+        if (!contains(id)) {
+            if (size() + 1 > capacity()) {
+                player.message("The group storage is full! You need to clear some items from the group storage.");
+                setFiringEvents(true);
+                return;
+            }
+
+            int destinationSlot = nextFreeSlot();
+            add(new Item(id, amount), destinationSlot);
+        } else {
+            Item depositItem = get(getSlot(id));
+            if (depositItem == null) return;
+            if (Integer.MAX_VALUE - depositItem.getAmount() < amount) {
+                amount = Integer.MAX_VALUE - depositItem.getAmount();
+                player.message("Your bank didn't have enough space to deposit all that!");
+            }
+            depositItem.incrementAmountBy(amount);
+        }
+
         if (amount > 0)
             fromIc.remove(item.getId(), amount);
+
         setFiringEvents(true);
         refresh();
     }
@@ -222,10 +244,9 @@ public class GroupStorage extends ItemContainer {
         refresh();
     }
 
-    public void save() {
+    public void saveGroupStorageContainer() {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
         group.ifPresent(ironmanGroup -> ironmanGroup.loadSaveTemp = ironmanGroup.getGroupStorage().toNonNullArray());
-        IronmanGroupHandler.saveIronmanGroups();
     }
 
     /**
@@ -284,7 +305,7 @@ public class GroupStorage extends ItemContainer {
             return true;
         }
         if(button == 67535 || button == 67536) {//Save
-            save();
+            saveGroupStorageContainer();
             return true;
         }
         if(button == 67513) {//1
