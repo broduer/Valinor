@@ -47,7 +47,6 @@ public class Settings {
     public int counter_position;
     public boolean counter_group = true;
     public int sound_state = 4;
-    public boolean toggle_music = false;
     public boolean showHitPredictor = false;
     public boolean hidePrivateChat = false;
     public boolean loginLogoutNotification = false;
@@ -198,7 +197,6 @@ public class Settings {
             writeLine("counter_position", counter_position, bw);
             writeLine("counter_group", counter_group, bw);
             writeLine("sound_state", sound_state, bw);
-            writeLine("toggle_music", toggle_music, bw);
             writeLine("show_hit_predictor", show_hit_predictor, bw);
             writeLine("hidePrivateChat", hidePrivateChat, bw);
             writeLine("loginLogoutNotification", loginLogoutNotification, bw);
@@ -228,7 +226,6 @@ public class Settings {
             writeLine("toggle_npc_overhead_hp", toggle_npc_overhead_hp, bw);
             writeLine("ground_snow", ground_snow, bw);
             writeLine("show_pet_options", shift_pet_options, bw);
-            writeLine("toggle_music", toggle_music, bw);
             writeLine("draw_fps", draw_fps, bw);
             writeLine("moving_prayers", moving_prayers, bw);
             writeLine("sky_snow", sky_snow, bw);
@@ -286,8 +283,6 @@ public class Settings {
                     counter_group = readBoolean();
                 } else if (contains("sound_state")) {
                     sound_state = readInt();
-                } else if (contains("toggle_music")) {
-                    toggle_music = readBoolean();
                 } else if (contains("show_hit_predictor")) {
                     show_hit_predictor = readBoolean();
                 } else if (contains("hidePrivateChat")) {
@@ -346,8 +341,6 @@ public class Settings {
                     ground_snow = readBoolean();
                 } else if (contains("show_pet_options")) {
                     shift_pet_options = readBoolean();
-                } else if (contains("toggle_music")) {
-                    toggle_music = readBoolean();
                 } else if (contains("draw_fps")) {
                     draw_fps = readBoolean();
                 } else if (contains("moving_prayers")) {

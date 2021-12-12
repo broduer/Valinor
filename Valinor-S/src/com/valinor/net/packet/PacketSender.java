@@ -76,18 +76,6 @@ public final class PacketSender {
         return this;
     }
 
-    public PacketSender sendSound(int id, int type, int delay, int volume) {
-        if(player != null && id != -1 && GameServer.properties().soundsEnabled) {
-            PacketBuilder out = new PacketBuilder(174);
-            out.putShort(id);
-            out.put(type);
-            out.putShort(delay);
-            out.putShort(volume);
-            player.getSession().write(out);
-        }
-        return this;
-    }
-
     public PacketSender setWidgetActive(int child, boolean active) {
         PacketBuilder out = new PacketBuilder(143);
         out.put(active ? 1 : 0);
@@ -245,6 +233,13 @@ public final class PacketSender {
     public PacketSender sendSystemUpdate(int time) {
         PacketBuilder out = new PacketBuilder(114);
         out.putShort(time, ByteOrder.LITTLE);
+        player.getSession().write(out);
+        return this;
+    }
+
+    public PacketSender sendSound(int soundId, int type, int delay, int volume) {
+        PacketBuilder out = new PacketBuilder(174);
+        out.putShort(soundId).put(type).putShort(delay).putShort(volume);
         player.getSession().write(out);
         return this;
     }

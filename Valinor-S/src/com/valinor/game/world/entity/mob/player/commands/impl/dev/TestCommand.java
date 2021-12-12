@@ -87,6 +87,8 @@ public class TestCommand implements Command {
     public void execute(Player player, String command, String[] parts) {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
+        //player.sound(2401);
+        player.getPacketSender().sendSong(92);
         player.message("Test command has been activated.");
     }
 

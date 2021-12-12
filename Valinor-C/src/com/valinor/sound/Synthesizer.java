@@ -253,7 +253,7 @@ final class Synthesizer {
             return 0;
     }
 
-    public void decode(Buffer stream) {
+    public void load(Buffer stream) {
         pitch = new Envelope();
         pitch.decode(stream);
         volume = new Envelope();

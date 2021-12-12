@@ -44,7 +44,6 @@ public class PacketSender {
     public void sendDisconnectByPacket(boolean disconnected) {
         buffer.writeOpcode(161);
         buffer.writeByte(disconnected ? 1 : 0);
-        System.out.println(disconnected);
     }
 
     public void sendFriendDeletion(String friend) {

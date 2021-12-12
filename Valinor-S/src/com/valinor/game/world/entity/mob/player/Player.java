@@ -99,7 +99,6 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.bank.Bank;
 import com.valinor.game.world.items.container.bank.DepositBox;
-import com.valinor.game.world.items.container.bank.GroupStorage;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.items.container.inventory.Inventory;
@@ -2425,11 +2424,11 @@ public class Player extends Mob {
     }
 
     public void sound(int id) {
-        getPacketSender().sendSound(id, 0, 0, 8);
+        getPacketSender().sendSound(id, 0, 0,80);
     }
 
     public void sound(int id, int delay) {
-        getPacketSender().sendSound(id, 0, delay, 8);
+        getPacketSender().sendSound(id, 0, delay,8);
     }
 
     private Task distancedTask;

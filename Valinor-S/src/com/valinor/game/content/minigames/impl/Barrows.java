@@ -222,7 +222,6 @@ public class Barrows extends PacketInteraction {
                                 }
                             }
                             case 20721 -> {
-                                System.out.println("euhm");
                                 tile = new Tile(3567 + Utils.RANDOM_GEN.get().nextInt(5), 9684,
                                     player.tile().level);
                                 broId = TORAG_THE_CORRUPTED;

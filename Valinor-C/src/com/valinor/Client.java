@@ -134,12 +134,8 @@ public class Client extends GameApplet {
     public boolean isDisplayed = true;
     public Announcement broadcast;
     public static String broadcastText;
-    public static boolean soundsAreEnabled = true;
+    public boolean soundsAreEnabled;
     String selectedMsg = "";
-    private int current_track_length;
-    private long track_timer;
-    @SuppressWarnings("unused")
-    private int current_track_repeat;
 
     public void changeColour(int id, int colour) {
         int i19 = colour >> 10 & 0x1f;
@@ -224,8 +220,90 @@ public class Client extends GameApplet {
 
     private int widgetId = 0;
     public List<TradeOpacity> tradeSlot = new ArrayList<>();
-
     private final SimpleImage[] skill_sprites = new SimpleImage[SkillConstants.SKILL_COUNT];
+
+    public void playSong(int id) {
+        if (id != currentSong && musicEnabled && !low_detail && prevSong == 0) {
+            nextSong = id;
+            fadeMusic = true;
+            resourceProvider.provide(2, nextSong);
+            currentSong = id;
+        }
+    }
+
+    public void stopMidi() {
+        if (SignLink.music != null) {
+            SignLink.music.stop();
+        }
+        SignLink.fadeMidi = 0;
+        SignLink.midi = "stop";
+    }
+
+    private void saveMidi(boolean flag, byte abyte0[]) {
+        SignLink.fadeMidi = flag ? 1 : 0;
+        SignLink.saveMidi(abyte0, abyte0.length);
+    }
+
+    private void adjustVolume(boolean updateMidi, int volume) {
+        SignLink.setVolume(volume);
+        if (updateMidi) {
+            SignLink.midi = "voladjust";
+        }
+    }
+
+    private int currentTrackTime;
+    private long trackTimer;
+    @SuppressWarnings("unused")
+    private int currentTrackLoop;
+
+    private boolean saveWave(byte data[], int id) {
+        return data == null || SignLink.wavesave(data, id);
+    }
+
+    private void processTrackUpdates() {
+        for (int count = 0; count < trackCount; count++) {
+            boolean replay = false;
+            try {
+                Buffer stream = Track.data(trackLoops[count], tracks[count]);
+                new SoundPlayer((InputStream) new ByteArrayInputStream(stream.payload, 0, stream.pos),
+                    soundVolume[count], soundDelay[count]);
+                if (System.currentTimeMillis() + (long) (stream.pos / 22) > trackTimer + (long) (currentTrackTime / 22)) {
+                    currentTrackTime = stream.pos;
+                    trackTimer = System.currentTimeMillis();
+                    if (saveWave(stream.payload, stream.pos)) {
+                        currentTrackPlaying = tracks[count];
+                        currentTrackLoop = trackLoops[count];
+                    } else {
+                        replay = true;
+                    }
+                }
+            } catch (Exception exception) {
+            }
+            if (!replay || soundDelay[count] == -5) {
+                trackCount--;
+                for (int index = count; index < trackCount; index++) {
+                    tracks[index] = tracks[index + 1];
+                    trackLoops[index] = trackLoops[index + 1];
+                    soundDelay[index] = soundDelay[index + 1];
+                    soundVolume[index] = soundVolume[index + 1];
+                }
+                count--;
+            } else {
+                soundDelay[count] = -5;
+            }
+        }
+
+        if (prevSong > 0) {
+            prevSong -= 20;
+            if (prevSong < 0)
+                prevSong = 0;
+            if (prevSong == 0 && musicEnabled && !low_detail) {
+                nextSong = currentSong;
+                fadeMusic = true;
+                resourceProvider.provide(2, nextSong);
+            }
+        }
+    }
 
     // Timers
     public List<EffectTimer> effects_list = new ArrayList<>();
@@ -321,8 +399,6 @@ public class Client extends GameApplet {
 
     // When set to false all tab interfaces are hidden
     public static boolean showTabComponents = true;
-
-    public final int[] sound_effect_volume;
 
     private final NumberFormat format = NumberFormat.getInstance(Locale.US);
 
@@ -3042,43 +3118,68 @@ public class Client extends GameApplet {
         }
 
         if (varpType == 3) {
-            boolean flag1 = setting.toggle_music;
+            boolean previousPlayingMusic = musicEnabled;
+            System.out.println("music state: "+state);
             if (state == 0) {
-                if (SignLink.music != null)
-                    adjust_volume(setting.toggle_music, 500);
-                setting.toggle_music = true;
+                musicEnabled = false;
+                if (musicEnabled != previousPlayingMusic && !low_detail) {
+                    if (musicEnabled) {
+                        nextSong = currentSong;
+                        fadeMusic = true;
+                        resourceProvider.provide(2, nextSong);
+                    } else {
+                        stopMidi();
+                    }
+                    prevSong = 0;
+                }
             }
             if (state == 1) {
-                if (SignLink.music != null)
-                    adjust_volume(setting.toggle_music, 300);
-                setting.toggle_music = true;
+                if (SignLink.music != null) {
+                    adjustVolume(musicEnabled, 0);
+                }
+                musicEnabled = true;
             }
             if (state == 2) {
-                if (SignLink.music != null)
-                    adjust_volume(setting.toggle_music, 100);
-                setting.toggle_music = true;
+                if (SignLink.music != null) {
+                    adjustVolume(musicEnabled, 100);
+                }
+                musicEnabled = true;
             }
             if (state == 3) {
-                if (SignLink.music != null)
-                    adjust_volume(setting.toggle_music, 0);
-                setting.toggle_music = true;
-            }
-            if (state == 4)
-                setting.toggle_music = false;
-            if (setting.toggle_music != flag1 && !low_detail) {
-                if (setting.toggle_music) {
-                    next_track = current_track;
-                    fade_audio = true;
-                    resourceProvider.provide(2, next_track);
-                } else {
-                    stop_midi();
+                if (SignLink.music != null) {
+                    adjustVolume(musicEnabled, 300);
                 }
-                previous_track = 0;
+                musicEnabled = true;
+            }
+            if (state == 4) {
+                if (SignLink.music != null) {
+                    adjustVolume(musicEnabled, 500);
+                }
+                musicEnabled = true;
             }
         }
 
         if (varpType == 4) {
             SoundPlayer.setVolume(state);
+            if (state == 0) {
+                soundsAreEnabled = false;
+            }
+            if (state == 1) {
+                soundsAreEnabled = true;
+                setWaveVolume(0);
+            }
+            if (state == 2) {
+                soundsAreEnabled = true;
+                setWaveVolume(-400);
+            }
+            if (state == 3) {
+                soundsAreEnabled = true;
+                setWaveVolume(-800);
+            }
+            if (state == 4) {
+                soundsAreEnabled = true;
+                setWaveVolume(-1200);
+            }
         }
 
         if (varpType == 5) {
@@ -4064,14 +4165,10 @@ public class Client extends GameApplet {
         for (int i = 0; i < 4; i++)
             collisionMaps[i].init();
         Arrays.fill(chatMessages, null);
-        if (setting.toggle_music && !low_detail) {
-            playSong(SoundConstants.SCAPE_RUNE);
-        } else {
-            stop_midi();
-        }
-        current_track = -1;
-        next_track = -1;
-        previous_track = 0;
+        stopMidi();
+        currentSong = -1;
+        nextSong = -1;
+        prevSong = 0;
         clearTextClicked();
         frameValueW = 765;
         frameValueH = 503;
@@ -4762,8 +4859,10 @@ public class Client extends GameApplet {
                 if (resource.dataType == 1) {
                     Animation.load(resource.buffer, resource.ID);
                 }
-                if (resource.dataType == 2 && resource.ID == next_track && resource.buffer != null)
-                    saveMidi(fade_audio, resource.buffer);
+                if (resource.dataType == 2 && resource.ID == nextSong && resource.buffer != null) {
+                    saveMidi(fadeMusic, resource.buffer);
+                }
+
                 if (resource.dataType == 3 && loading_phase == 1) {
                     for (int i = 0; i < terrainData.length; i++) {
                         if (terrainIndices[i] == resource.ID) {
@@ -4992,7 +5091,7 @@ public class Client extends GameApplet {
 
         updatePlayerInstances();
         forceNPCUpdateBlock();
-        process_track_updates();
+        processTrackUpdates();
         processMobChatText();
         processLagReports();
         animation_step++;
@@ -5366,101 +5465,6 @@ public class Client extends GameApplet {
         crossType = 2;
         crossIndex = 0;
         return true;
-    }
-
-    //MUSIC
-    private void saveMidi(boolean flag, byte abyte0[]) {
-        SignLink.fadeMidi = flag ? 1 : 0;
-        SignLink.saveMidi(abyte0, abyte0.length);
-    }
-
-    private void setWaveVolume(int volume) {
-        SignLink.wavevol = volume;
-    }
-
-    public void playSong(int id) {
-        if (!ClientConstants.SOUNDS_ENABLED && !ClientConstants.LOGIN_MUSIC_ENABLED) {
-            return;
-        }
-        if (id != current_track && setting.toggle_music && !low_detail
-            && previous_track == 0) {
-            next_track = id;
-            fade_audio = true;
-            resourceProvider.provide(2, next_track);
-            current_track = id;
-        }
-    }
-
-    public void stop_midi() {
-        if (SignLink.music != null) {
-            SignLink.music.stop();
-        }
-        SignLink.fadeMidi = 0;
-        SignLink.midi = "stop";
-    }
-
-    private void adjust_volume(boolean updateMidi, int volume) {
-        if (!ClientConstants.SOUNDS_ENABLED) {
-            return;
-        }
-        SignLink.setVolume(volume);
-        if (updateMidi) {
-            SignLink.midi = "voladjust";
-        }
-    }
-
-    private boolean save_wav(byte data[], int id) {
-        return data == null || SignLink.wavesave(data, id);
-    }
-
-    private void process_track_updates() {
-        if (!ClientConstants.SOUNDS_ENABLED) {
-            return;
-        }
-        for (int count = 0; count < trackCount; count++) {
-            boolean replay = false;
-            try {
-                Buffer buffer = Track.data(track_loop[count], track_ids[count]);
-                //TODO: fix NullPointerException (NPE) here , randomly happens during playing audio
-                new SoundPlayer((InputStream) new ByteArrayInputStream(buffer.payload, 0, buffer.pos), sound_effect_volume[count], audio_delay[count]);
-                if (System.currentTimeMillis() + (long) (buffer.pos / 22) > track_timer + (long) (current_track_length / 22)) {
-                    current_track_length = buffer.pos;
-                    track_timer = System.currentTimeMillis();
-                    if (save_wav(buffer.payload, buffer.pos)) {
-                        current_track = track_ids[count];
-                        current_track_repeat = track_loop[count];
-                    } else {
-                        replay = true;
-                    }
-                }
-            } catch (Exception exception) {
-                exception.printStackTrace();
-                addReportToServer(exception.getMessage());
-            }
-            if (!replay || audio_delay[count] == -5) {
-                trackCount--;
-                for (int index = count; index < trackCount; index++) {
-                    track_ids[index] = track_ids[index + 1];
-                    track_loop[index] = track_loop[index + 1];
-                    audio_delay[index] = audio_delay[index + 1];
-                    sound_effect_volume[index] = sound_effect_volume[index + 1];
-                }
-                count--;
-            } else {
-                audio_delay[count] = -5;
-            }
-        }
-        if (previous_track > 0) {
-            previous_track -= 20;
-            if (previous_track < 0)
-                previous_track = 0;
-
-            if (previous_track == 0 && setting.toggle_music && !low_detail) {
-                next_track = current_track;
-                fade_audio = true;
-                resourceProvider.provide(2, next_track);
-            }
-        }
     }
 
     public Archive request_archive(int file, String requested, String name, int x) {
@@ -7198,10 +7202,10 @@ public class Client extends GameApplet {
             addReportToServer(e.getMessage());
         }
         socketStream = null;
-        stop_midi();
         //if (mouseDetection != null)
         //    mouseDetection.running = false;
         //mouseDetection = null;
+        stopMidi();
         if (resourceProvider != null)
             resourceProvider.disable();
         resourceProvider = null;
@@ -9602,6 +9606,7 @@ public class Client extends GameApplet {
                 regenHealthStart = System.currentTimeMillis();
                 regenSpecStart = System.currentTimeMillis();
                 loginTime = System.currentTimeMillis();
+                this.stopMidi();
                 updateGame();
                 resetImageProducers2();
                 return;
@@ -10467,6 +10472,14 @@ public class Client extends GameApplet {
         }
     }
 
+    private void unpackingSounds() {
+        Archive soundArchive = request_archive(8, "sound effects", "sounds", 55);
+
+        byte soundData[] = soundArchive.get("sounds.dat");
+        Buffer stream = new Buffer(soundData);
+        Track.unpack(stream);
+    }
+
     public Archive mediaStreamLoader;
     private void unpackingMedia() {
         try {
@@ -10702,7 +10715,7 @@ public class Client extends GameApplet {
         byte[] sound_data = sound_archive.get("sounds.dat");
 
         Buffer song_buffer = new Buffer(sound_data);
-        Track.init(song_buffer);
+        Track.unpack(song_buffer);
 
         for (int j6 = 0; j6 < 33; j6++) {
             int k6 = 999;
@@ -10786,9 +10799,11 @@ public class Client extends GameApplet {
             updateServer();
             draw_loadup(80, "Unpacking media");
             unpackingMedia();
-            draw_loadup(83, "Unpacking textures");
+            draw_loadup(83, "Unpacking sounds");
+            unpackingSounds();
+            draw_loadup(86, "Unpacking textures");
             unpackTextures();
-            draw_loadup(86, "Unpacking config");
+            draw_loadup(90, "Unpacking config");
             unpackConfigs();
             draw_loadup(95, "Unpacking interfaces");
             unpackInterfaces();
@@ -13322,6 +13337,10 @@ public class Client extends GameApplet {
         }
     }
 
+    private void setWaveVolume(int i) {
+        SignLink.wavevol = i;
+    }
+
     private void draw3dScreen() {
         try {
             boolean fixed = screen == ScreenMode.FIXED;
@@ -14892,12 +14911,14 @@ public class Client extends GameApplet {
     private SimpleImage passwordHover;
     public SimpleImage backgroundFix;
     private SimpleImage saveButton;
+    public boolean musicHover;
 
     private void drawLoginScreen() {
         //System.out.println("Drawing login screen");
         resetImageProducers();
         backgroundFix.drawAdvancedSprite(0, 0);
         titleScreen.init();
+        musicHover = (ClientConstants.CAN_SWITCH_MUSIC && mouseInRegion(726, 465, 764, 500));
 
         char c = '\u0168';
         if (loginScreenState == 0) {
@@ -14924,6 +14945,16 @@ public class Client extends GameApplet {
         if (ClientConstants.DEBUG_MODE) {
             adv_font_regular.draw("cursor_x: " + super.cursor_x, 10, 20, 0xFFFFFF, 0);
             adv_font_regular.draw("cursor_y: " + super.cursor_y, 10, 40, 0xFFFFFF, 0);
+        }
+
+        if (ClientConstants.CAN_SWITCH_MUSIC) {
+            if (musicEnabled && !low_detail) {
+                playSong(ClientConstants.CHRISTMAS ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
+                spriteCache.get(58).drawSprite(726, 464);
+            } else {
+                spriteCache.get(59).drawSprite(726, 464);
+                stopMidi();
+            }
         }
 
         accountManager.processAccountDrawing();
@@ -15049,9 +15080,9 @@ public class Client extends GameApplet {
             int i14 = l11 >> 4 & 0xf;
             int i16 = l11 & 7;
             if (local_player.waypoint_x[0] >= k3 - i14 && local_player.waypoint_x[0] <= k3 + i14 && local_player.waypoint_y[0] >= j6 - i14 && local_player.waypoint_y[0] <= j6 + i14 && soundsAreEnabled && !low_detail && trackCount < 50) {
-                track_ids[trackCount] = i9;
-                track_loop[trackCount] = i16;
-                audio_delay[trackCount] = Track.delays[i9];
+                tracks[trackCount] = i9;
+                trackLoops[trackCount] = i16;
+                soundDelay[trackCount] = Track.delays[i9];
                 trackCount++;
             }
         }
@@ -15383,6 +15414,26 @@ public class Client extends GameApplet {
                         accountManager.addAccount(myUsername, myPassword);
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }
+                } else if (musicHover) {
+                    musicEnabled = !musicEnabled;
+                    setting.save();
+                    if (musicEnabled && !low_detail) {
+                        prevSong = 0;
+                        fadeMusic = true;
+                        if (SignLink.music != null) {
+                            SignLink.music.start();
+                        }
+                        playSong(ClientConstants.CHRISTMAS ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
+                        spriteCache.get(58).drawSprite(726, 464);
+                    } else {
+                        spriteCache.get(59).drawSprite(726, 464);
+                        if (ClientConstants.ENABLE_RESTARTING_LOGIN_SONG) {
+                            prevSong = 0;
+                            currentSong = -1;
+                            nextSong = -1;
+                        }
+                        stopMidi();
                     }
                 }
             }
@@ -16210,12 +16261,13 @@ public class Client extends GameApplet {
                 int id = incoming.readLEUShort();
                 if (id == 65535)
                     id = -1;
-                if (ClientConstants.SOUNDS_ENABLED && id != current_track && setting.toggle_music && !low_detail && previous_track == 0) {
-                    next_track = id;
-                    fade_audio = true;
-                    resourceProvider.provide(2, next_track);
+
+                if (id != currentSong && musicEnabled && !low_detail && prevSong == 0) {
+                    nextSong = id;
+                    fadeMusic = true;
+                    resourceProvider.provide(2, nextSong);
                 }
-                current_track = id;
+                currentSong = id;
                 opcode = -1;
                 return true;
             }
@@ -16223,11 +16275,11 @@ public class Client extends GameApplet {
             if (opcode == ServerToClientPackets.NEXT_OR_PREVIOUS_SONG) {
                 int id = incoming.readLEUShortA();
                 int delay = incoming.readUShortA();
-                if (ClientConstants.SOUNDS_ENABLED && setting.toggle_music && !low_detail) {
-                    next_track = id;
-                    fade_audio = false;
-                    resourceProvider.provide(2, next_track);
-                    previous_track = delay;
+                if (musicEnabled && !low_detail) {
+                    nextSong = id;
+                    fadeMusic = false;
+                    resourceProvider.provide(2, nextSong);
+                    prevSong = delay;
                 }
                 opcode = -1;
                 return true;
@@ -16238,11 +16290,11 @@ public class Client extends GameApplet {
                 int type = incoming.readUByte();
                 int delay = incoming.readUShort();
                 int volume = incoming.readUShort();
-                if (ClientConstants.SOUNDS_ENABLED && !low_detail) {
-                    track_ids[trackCount] = id;
-                    track_loop[trackCount] = type;
-                    audio_delay[trackCount] = delay + Track.delays[id];
-                    sound_effect_volume[trackCount] = volume;
+                if (soundsAreEnabled && !low_detail && trackCount < 50) {
+                    tracks[trackCount] = id;
+                    trackLoops[trackCount] = type;
+                    soundDelay[trackCount] = delay + Track.delays[id];
+                    soundVolume[trackCount] = volume;
                     trackCount++;
                 }
                 opcode = -1;
@@ -18009,7 +18061,6 @@ public class Client extends GameApplet {
         incoming = new Buffer(new byte[40_000]);
         fullscreenInterfaceID = -1;
         chatRights = new int[500];
-        sound_effect_volume = new int[50];
         chatTypeView = 0;
         clanChatMode = 0;
         cButtonHPos = -1;
@@ -18051,7 +18102,7 @@ public class Client extends GameApplet {
         sideIcons = new SimpleImage[15];
         aBoolean954 = true;
         friendsListAsLongs = new long[200];
-        current_track = -1;
+        currentSong = -1;
         drawingFlames = false;
         scene_draw_x = -1;
         scene_draw_y = -1;
@@ -18117,6 +18168,7 @@ public class Client extends GameApplet {
         continuedDialogue = false;
         crosses = new SimpleImage[8];
         loggedIn = false;
+        musicEnabled = true;
         canMute = false;
         requestMapReconstruct = false;
         cutscene = false;
@@ -18130,18 +18182,19 @@ public class Client extends GameApplet {
         overlayInterfaceId = -1;
         menuActionText = new String[500];
         camera_vertical_speed = new int[5];
-        track_ids = new int[50];
+        tracks = new int[50];
         anInt1210 = 2;
         chatScrollHeight = 78;
         promptInput = "";
         sidebarId = 3;
         update_chat_producer = false;
-        fade_audio = true;
+        fadeMusic = true;
         collisionMaps = new CollisionMap[4];
         privateMessageIds = new int[100];
-        track_loop = new int[50];
+        trackLoops = new int[50];
         aBoolean1242 = false;
-        audio_delay = new int[50];
+        soundDelay = new int[50];
+        soundVolume = new int[50];
         rsAlreadyLoaded = false;
         update_producers = false;
         messagePromptRaised = false;
@@ -18263,7 +18316,7 @@ public class Client extends GameApplet {
     private String selectedSocialListName;
     private boolean aBoolean954;
     private long[] friendsListAsLongs;
-    private int current_track;
+    private int currentSong;
     private static int nodeID = 10;
     private static boolean isMembers = true;
     private static boolean low_detail = ClientConstants.CLIENT_LOW_MEMORY;
@@ -18461,6 +18514,7 @@ public class Client extends GameApplet {
     public boolean continuedDialogue;
     private SimpleImage[] crosses;
     private IndexedImage[] titleIndexedImages;
+    private boolean musicEnabled;
     private int unreadMessages;
     private static int anInt1155;
     private static boolean fpsOn;
@@ -18516,7 +18570,7 @@ public class Client extends GameApplet {
     public static final int[] SHIRT_SECONDARY_COLORS = {9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145,
         58654, 5027, 1457, 16565, 34991, 25486};
     private static boolean flagged;
-    public final int[] track_ids;
+    public final int[] tracks;
     private int map_rotation;
     public int anInt1210;
     static int chatScrollHeight;
@@ -18531,8 +18585,8 @@ public class Client extends GameApplet {
     public static boolean update_chat_producer;
     public int inputDialogState;
     private static int anInt1226;
-    public int next_track;
-    private boolean fade_audio;
+    public int nextSong;
+    private boolean fadeMusic;
     private final int[] minimapLineWidth;
     private CollisionMap[] collisionMaps;
     public static int BIT_MASKS[];
@@ -18543,7 +18597,7 @@ public class Client extends GameApplet {
     private int anInt1238;
     public final int anInt1239 = 100;
     private final int[] privateMessageIds;
-    public final int[] track_loop;
+    public final int[] trackLoops;
     private boolean aBoolean1242;
     private int item_container_cycle;
     private int atInventoryInterface;
@@ -18552,7 +18606,8 @@ public class Client extends GameApplet {
     private byte[][] objectData;
     private int tradeMode;
     private int showSpokenEffects;
-    public final int[] audio_delay;
+    public final int[] soundDelay;
+    private final int[] soundVolume;
     private int onTutorialIsland;
     private final boolean rsAlreadyLoaded;
     private int useOneMouseButton;
@@ -18560,7 +18615,7 @@ public class Client extends GameApplet {
     private boolean update_producers;
     public boolean messagePromptRaised;
     private byte[][][] tileFlags;
-    private int previous_track;
+    private int prevSong;
     private int travel_destination_x;
     private int travel_destination_y;
     private SimpleImage minimapImage;

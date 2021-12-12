@@ -83,7 +83,7 @@ import java.util.function.Predicate
 
 
 /**
- * by default all these commands are dev+ only, unless explicitilty given a rank
+ * by default all these commands are dev+ only, unless explicitly given a rank
  * <br>parts[0] = the command entered, such as ::bob >> is bob
  * <br>parts[1] = the first argument such as ::bob hello >> is hello
  *
@@ -97,7 +97,13 @@ object KtCommands {
     private val logger: Logger = LogManager.getLogger(KtCommands::class.java)
 
     fun init() {
-        cmd("dc", PLAYER) {
+        cmd("sound", DEV) {
+            player.sound(parts[1].toInt())
+        }
+        cmd("song", DEV) {
+            player.packetSender.sendSong(parts[1].toInt())
+        }
+        cmd("dc", DEV) {
             player.requestLogout()
         }
         cmd("refer", PLAYER) {

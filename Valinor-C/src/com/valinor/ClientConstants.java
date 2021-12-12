@@ -46,16 +46,16 @@ public final class ClientConstants {
     public static boolean CAN_SWITCH_MUSIC = true;
 
     /**
-     * Used to toggle sounds (other than the login screen).
-     * Sounds seem quite buggy so we should keep this set to false.
-     */
-    public static boolean SOUNDS_ENABLED = false;
-
-    /**
      * Used to toggle music for login screen at client level,
      * overriding the user's choice.
      */
     public static boolean LOGIN_MUSIC_ENABLED = true;
+
+    /**
+     * To enable restarting the login song on toggling the login song,
+     * set this to true.
+     */
+    public static boolean ENABLE_RESTARTING_LOGIN_SONG = true;
 
     public static final String SPRITE_FILE_NAME = "main_file_sprites";
 

@@ -45,7 +45,7 @@
   "BCryptPasswordRounds": 12,
   "BCryptPinRounds": 11,
   "logAccuracyChances": false,
-  "soundsEnabled": false,
+  "soundsEnabled": true,
   "enableDueling": false,
   "enableGambling": false,
   "maintenanceMode": false,

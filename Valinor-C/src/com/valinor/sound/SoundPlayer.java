@@ -51,7 +51,7 @@ public class SoundPlayer implements Runnable {
             sound.open(stream);
             FloatControl volume = (FloatControl) sound.getControl(FloatControl.Type.MASTER_GAIN);
             int soundLvl = soundLevel - getVolume();
-            System.out.println("sound level: "+soundLvl);
+            //System.out.println("sound level: "+soundLvl);
             volume.setValue(getDecibels(soundLvl));
             if (delay > 0) {
                 Thread.sleep(delay);

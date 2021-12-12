@@ -2,26 +2,22 @@ package com.valinor.sound;
 
 import com.valinor.io.Buffer;
 
-/**
- * Refactored reference:
- * http://www.rune-server.org/runescape-development/rs2-client/downloads/575183-almost-fully-refactored-317-client.html
- */
 public final class Track {
 
     private Track() {
-        synthesizers = new Synthesizer[10];
+        samples = new Synthesizer[10];
     }
 
-    public static void init(Buffer buffer) {
+    public static void unpack(Buffer incoming) {
         output = new byte[0x6baa8];
-        Track.riff = new Buffer(output);
+        riff = new Buffer(output);
         Synthesizer.init();
         do {
-            int id = buffer.readUShort();
+            int id = incoming.readUShort();
             if (id == 65535)
                 return;
             tracks[id] = new Track();
-            tracks[id].decode(buffer);
+            tracks[id].decode(incoming);
             delays[id] = tracks[id].calculateDelay();
         } while (true);
     }
@@ -40,32 +36,32 @@ public final class Track {
             int valid = stream.readUByte();
             if (valid != 0) {
                 stream.pos--;
-                synthesizers[synthesizer] = new Synthesizer();
-                synthesizers[synthesizer].decode(stream);
+                samples[synthesizer] = new Synthesizer();
+                samples[synthesizer].load(stream);
             }
         }
-        loop_start = stream.readUShort();
-        loop_end = stream.readUShort();
+        remaining = stream.readUShort();
+        length = stream.readUShort();
     }
 
     private int calculateDelay() {
         int offset = 0x98967f;
         for (int syntheziser = 0; syntheziser < 10; syntheziser++)
-            if (synthesizers[syntheziser] != null
-                    && synthesizers[syntheziser].offset / 20 < offset)
-                offset = synthesizers[syntheziser].offset / 20;
+            if (samples[syntheziser] != null
+                    && samples[syntheziser].offset / 20 < offset)
+                offset = samples[syntheziser].offset / 20;
 
-        if (loop_start < loop_end && loop_start / 20 < offset)
-            offset = loop_start / 20;
+        if (remaining < length && remaining / 20 < offset)
+            offset = remaining / 20;
         if (offset == 0x98967f || offset == 0)
             return 0;
         for (int synthesizer = 0; synthesizer < 10; synthesizer++)
-            if (synthesizers[synthesizer] != null)
-                synthesizers[synthesizer].offset -= offset * 20;
+            if (samples[synthesizer] != null)
+                samples[synthesizer].offset -= offset * 20;
 
-        if (loop_start < loop_end) {
-            loop_start -= offset * 20;
-            loop_end -= offset * 20;
+        if (remaining < length) {
+            remaining -= offset * 20;
+            length -= offset * 20;
         }
         return offset;
     }
@@ -93,15 +89,15 @@ public final class Track {
     private int mix(int loops) {
         int duration = 0;
         for (int synthesizer = 0; synthesizer < 10; synthesizer++)
-            if (synthesizers[synthesizer] != null
-                    && synthesizers[synthesizer].duration + synthesizers[synthesizer].offset > duration)
-                duration = synthesizers[synthesizer].duration + synthesizers[synthesizer].offset;
+            if (samples[synthesizer] != null
+                    && samples[synthesizer].duration + samples[synthesizer].offset > duration)
+                duration = samples[synthesizer].duration + samples[synthesizer].offset;
 
         if (duration == 0)
             return 0;
         int sampleCount = (22050 * duration) / 1000;
-        int loopStart = (22050 * this.loop_start) / 1000;
-        int loopEnd = (22050 * this.loop_end) / 1000;
+        int loopStart = (22050 * this.remaining) / 1000;
+        int loopEnd = (22050 * this.length) / 1000;
         if (loopStart < 0 || loopStart > sampleCount || loopEnd < 0 || loopEnd > sampleCount || loopStart >= loopEnd)
             loops = 0;
         int size = sampleCount + (loopEnd - loopStart) * (loops - 1);
@@ -109,14 +105,13 @@ public final class Track {
             output[offset] = -128;
 
         for (int synthesizer = 0; synthesizer < 10; synthesizer++)
-            if (synthesizers[synthesizer] != null) {
-                int synthDuration = (synthesizers[synthesizer].duration * 22050) / 1000;
-                int synthOffset = (synthesizers[synthesizer].offset * 22050) / 1000;
-                int samples[] = this.synthesizers[synthesizer].synthesize(synthDuration,
-                        this.synthesizers[synthesizer].duration);
+            if (samples[synthesizer] != null) {
+                int synthDuration = (samples[synthesizer].duration * 22050) / 1000;
+                int synthOffset = (samples[synthesizer].offset * 22050) / 1000;
+                int[] samples = this.samples[synthesizer].synthesize(synthDuration,
+                        this.samples[synthesizer].duration);
                 for (int sample = 0; sample < synthDuration; sample++)
                     output[sample + synthOffset + 44] += (byte) (samples[sample] >> 8);
-
             }
 
         if (loops > 1) {
@@ -124,13 +119,11 @@ public final class Track {
             loopEnd += 44;
             sampleCount += 44;
             int k2 = (size += 44) - sampleCount;
-            for (int j3 = sampleCount - 1; j3 >= loopEnd; j3--)
-                output[j3 + k2] = output[j3];
+            if (sampleCount - loopEnd >= 0) System.arraycopy(output, loopEnd, output, loopEnd + k2, sampleCount - loopEnd);
 
             for (int k3 = 1; k3 < loops; k3++) {
                 int l2 = (loopEnd - loopStart) * k3;
                 System.arraycopy(output, loopStart, output, loopStart + l2, loopEnd - loopStart);
-
             }
 
             size -= 44;
@@ -142,8 +135,8 @@ public final class Track {
     public static final int[] delays = new int[5000];
     private static byte[] output;
     private static Buffer riff;
-    private final Synthesizer[] synthesizers;
-    private int loop_start;
-    private int loop_end;
+    private final Synthesizer[] samples;
+    private int remaining;
+    private int length;
 
 }
