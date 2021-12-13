@@ -5,6 +5,11 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    /**
+     * Determines if Tztok Jad has spawned his healers or not
+     */
+    JAD_SPAWNED_HEALERS,
+
     NEXT_ATTACK,
     NIGHTMARE_CURSE,
     NIGHTMARE_BABY_DADY,

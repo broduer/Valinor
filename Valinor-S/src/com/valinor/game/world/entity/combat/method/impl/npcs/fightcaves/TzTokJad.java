@@ -2,6 +2,8 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves;
 
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -28,27 +30,31 @@ public class TzTokJad extends Npc {
     /**
      * Spawn healers.
      */
-    public void spawnHealers(Player player) {
+    public void spawnHealers(Mob mob) {
+        if(mob.isPlayer()) {
+            Player player = mob.getAsPlayer();
 
-        if(player.getMinigame() == null || !(player.getMinigame() instanceof FightCavesMinigame)) {
-            return;
+            if (player.getMinigame() == null || !(player.getMinigame() instanceof FightCavesMinigame)) {
+                return;
+            }
+
+            if (!healers.isEmpty()) {
+                return;
+            }
+
+            IntStream.range(0, 4 - healers.size()).forEach(i -> {
+                Tile tile = FightCavesMinigame.COORDINATES[random(FightCavesMinigame.COORDINATES.length)].transform(0, 0, tile().getLevel());
+                YtHurKot monster = new YtHurKot(NpcIdentifiers.YTHURKOT, tile, this);
+
+                healers.add(monster);
+                FightCavesMinigame minigame = (FightCavesMinigame) player.getMinigame();
+                minigame.addNpc(monster);
+                monster.walkRadius(100);
+                monster.respawns(false);
+                monster.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);
+                World.getWorld().registerNpc(monster);
+            });
         }
-
-        if (!healers.isEmpty()) {
-            return;
-        }
-
-        IntStream.range(0, 4 - healers.size()).forEach(i -> {
-            Tile tile = FightCavesMinigame.COORDINATES[random(FightCavesMinigame.COORDINATES.length)].transform(0, 0, tile().getLevel());
-
-            YtHurKot npc = new YtHurKot(NpcIdentifiers.YTHURKOT, tile,this);
-
-            healers.add(npc);
-            FightCavesMinigame minigame = (FightCavesMinigame) player.getMinigame();
-            minigame.addNpc(npc);
-            World.getWorld().registerNpc(npc);
-            npc.respawns(false);
-        });
     }
 
     /**

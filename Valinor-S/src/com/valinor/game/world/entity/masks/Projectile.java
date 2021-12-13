@@ -135,6 +135,10 @@ public final class Projectile {
         this(source.getCentrePosition(), victim.getCentrePosition(), victim.getProjectileLockonIndex(), projectileId, speed, delay, startHeight, endHeight, angle, slope, radius);
     }
 
+    public Projectile(Tile source, Mob to, int projectileId, int delay, int speed, int startHeight, int endHeight, int angle) {
+        this(source, to.tile(), to.getProjectileLockonIndex(), projectileId, speed, delay, startHeight, endHeight, angle, 16, 64);
+    }
+
     /**
      *
      * @param source

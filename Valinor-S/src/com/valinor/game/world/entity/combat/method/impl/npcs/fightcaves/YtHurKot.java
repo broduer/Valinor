@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
@@ -12,23 +13,18 @@ import com.valinor.game.world.position.Tile;
  */
 public class YtHurKot extends Npc {
 
-    private TzTokJad jad;
+    private TzTokJad tztokJad;
 
-    protected YtHurKot(int id, Tile tile, TzTokJad jad) {
+    protected YtHurKot(int id, Tile tile, TzTokJad tztokJad) {
         super(id, tile);
-        this.jad = jad;
-        respawns(false);
-        combatInfo().aggressive = false;
-        combatInfo().combatFollowDistance = 7;
-        walkRadius(5);
-        putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 12);
+        this.tztokJad = tztokJad;
     }
 
     @Override
     public void sequence() {
         super.sequence();
 
-        if (jad == null) {
+        if (tztokJad == null) {
             return;
         }
 
@@ -45,25 +41,29 @@ public class YtHurKot extends Npc {
             return;
         }
 
-        if (getInteractingEntity() != jad) {
-            setEntityInteraction(jad);
+        if (getInteractingEntity() != tztokJad) {
+            setEntityInteraction(tztokJad);
         }
 
-        if (this.tile.isWithinDistance(this, jad,1)) {
-            jad.graphic(444);
-            if (jad.hp() < jad.maxHp())
-                jad.setHitpoints(jad.hp() + 1);
+        var cycles = 0;
+        if (this.tile.isWithinDistance(this, tztokJad,1)) {
+            this.face(tztokJad.tile());
+            if (cycles % 4 == 0) {
+                tztokJad.graphic(444, 250, 5);
+                tztokJad.heal(World.getWorld().random(10));
+                this.animate(2639);
+            }
         } else {
-            getRouteFinder().routeAbsolute(jad.tile().x, jad.tile().y);
+            getRouteFinder().routeAbsolute(tztokJad.tile().x, tztokJad.tile().y);
         }
     }
 
     @Override
     public void die(Hit killHit) {
-        if (jad != null) {
-            jad.removeHealer(this);
+        if (tztokJad != null) {
+            tztokJad.removeHealer(this);
         }
-        jad = null;
+        tztokJad = null;
         super.die(killHit);
     }
 

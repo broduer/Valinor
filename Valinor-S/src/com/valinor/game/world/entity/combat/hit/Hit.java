@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.combat.formula.AccuracyFormula;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 
@@ -278,6 +279,11 @@ public class Hit {
 
     public Hit spell(CombatSpell spell) {
         this.spell = spell;
+        return this;
+    }
+
+    public Hit graphic(Graphic graphic) {
+        this.target.graphic(graphic.id(), graphic.height(), graphic.delay());
         return this;
     }
 

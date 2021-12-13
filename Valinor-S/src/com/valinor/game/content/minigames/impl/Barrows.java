@@ -27,6 +27,7 @@ import java.util.Optional;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * Created by Bart on 11/27/2015. <-- created literally the class name noob
@@ -35,8 +36,8 @@ import static com.valinor.util.NpcIdentifiers.*;
  **/
 public class Barrows extends PacketInteraction {
 
-    private static final List<Integer> possibles = Arrays.asList(20720, 20770, 20772, 20721, 20771, 20722);
-    private static final List<Integer> lootItemIds = Arrays.asList(ItemIdentifiers.DEATH_RUNE, ItemIdentifiers.BLOOD_RUNE, ItemIdentifiers.CHAOS_RUNE, ItemIdentifiers.MIND_RUNE, BOLT_RACK);
+    private static final List<Integer> possibles = Arrays.asList(SARCOPHAGUS_20720, SARCOPHAGUS_20770, SARCOPHAGUS_20772, SARCOPHAGUS_20721, SARCOPHAGUS_20771, SARCOPHAGUS_20722);
+    private static final List<Integer> lootItemIds = Arrays.asList(ItemIdentifiers.DEATH_RUNE, ItemIdentifiers.BLOOD_RUNE, ItemIdentifiers.CHAOS_RUNE, ItemIdentifiers.MIND_RUNE, BOLT_RACK, COINS_995);
     private static final List<Integer> lootItemAmts = Arrays.asList(180, 80, 270, 450, 120);
     private static final List<Integer> barrowsItemIds = Arrays.asList(AHRIMS_HOOD, AHRIMS_STAFF, AHRIMS_ROBETOP, AHRIMS_ROBESKIRT, DHAROKS_HELM, DHAROKS_GREATAXE, DHAROKS_PLATEBODY,
         DHAROKS_PLATELEGS, GUTHANS_HELM, GUTHANS_WARSPEAR, GUTHANS_PLATEBODY, GUTHANS_CHAINSKIRT, KARILS_COIF, KARILS_CROSSBOW, KARILS_LEATHERTOP, KARILS_LEATHERSKIRT, TORAGS_HELM,
@@ -283,9 +284,9 @@ public class Barrows extends PacketInteraction {
         for (int i = 1; i < 3; i++) {
             var rand = Utils.RANDOM_GEN.get();
             var idx = rand.nextInt(lootItemIds.size());
-            //var multiplier = lootItemAmts.get(idx) > 600 ? 2 : 1;
+            var multiplier = lootItemAmts.get(idx) > 600 ? 2 : 1;
 
-            var item = new Item(lootItemIds.get(idx), rand.nextInt(lootItemAmts.get(idx))/* * multiplier*/);
+            var item = new Item(lootItemIds.get(idx), rand.nextInt(lootItemAmts.get(idx)) * multiplier);
 
             player.inventory().addOrDrop(item);
 

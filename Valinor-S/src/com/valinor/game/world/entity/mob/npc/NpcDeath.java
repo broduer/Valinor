@@ -9,6 +9,7 @@ import com.valinor.game.content.areas.burthope.warriors_guild.MagicalAnimator;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.Phases;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -535,6 +536,15 @@ public class NpcDeath {
 
                 }
 
+                //If our player killed a Tz-Kek, spawn it's babies!
+                for (int fightCaveMonsters : List.of(3116, 3118, 3120, 3121, 3123, 3125, 3127, 3128)) {
+                    if (npc.id() == fightCaveMonsters) {
+                        if (killer.isPlayer()) {
+                            FightCavesMinigame.handleMonsterDeath(npc, killer);
+                        }
+                    }
+                }
+
                 if (isBarrowsBro) {
                     killer.clearAttrib(barrowsBroSpawned);
                     killer.putAttrib(BARROWS_MONSTER_KC, 1 + (int) killer.getAttribOr(BARROWS_MONSTER_KC, 0));
@@ -600,8 +610,6 @@ public class NpcDeath {
                     npc.transmog(8613);
                     npc.animate(8278);
                 });
-            } else if (npc instanceof TzTokJad) {
-                npc.graphic(453);
             } else {
                 npc.animate(npc.combatInfo() != null ? npc.combatInfo().animations.death : -1);
             }

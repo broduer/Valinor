@@ -115,6 +115,25 @@ public class FightCavesMinigame extends Minigame {
 
     private final Set<Npc> npcSet = new HashSet<>();
 
+    public static void handleMonsterDeath(Npc npc, Player player) {
+        //If the NPC was a TZ Kek, spawn its babies!
+        if (npc.id() == TZKEK) {
+            for (int i = 0; i < 2; i++) {
+                var baby = new Npc(TZKEK_2192, npc.tile());
+                baby.respawns(false);
+                baby.walkRadius(200);
+                baby.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);
+                World.getWorld().registerNpc(baby);
+                baby.getCombat().attack(player);
+            }
+        }
+
+        //If the NPC was Tztok Jad, end the minigame!
+        if (npc.id() == TZTOKJAD) {
+            npc.graphic(453);
+        }
+    }
+
     /**
      * Spawns a wave
      *
