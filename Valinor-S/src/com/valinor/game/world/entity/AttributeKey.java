@@ -1176,7 +1176,7 @@ public enum AttributeKey {
     DOOR_USES,
 
     RECENT_LISTING_RESULTS, BUY_LISTING_RESULTS,
-    HARDCORE_GROUP_FALLEN("hardcore_group_fallen", AttribType.BOOLEAN);
+    HARDCORE_GROUP_FALLEN("hardcore_group_fallen", AttribType.BOOLEAN), LOGGED_IN_AT_TIME;
 
     private String saveName;
     private AttribType type;

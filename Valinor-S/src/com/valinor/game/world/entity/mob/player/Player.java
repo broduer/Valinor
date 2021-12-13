@@ -192,7 +192,7 @@ public class Player extends Mob {
         this.favoriteTeleports = favoriteTeleports;
     }
 
-    public Optional<IronmanGroup> getIronmanTeam() {
+    public Optional<IronmanGroup> getIronmanGroup() {
         return IronmanGroupHandler.getPlayersGroup(this);
     }
 
@@ -1409,6 +1409,7 @@ public class Player extends Mob {
      */
     public void onLogin() {
         long startTime = System.currentTimeMillis();
+        putAttrib(AttributeKey.LOGGED_IN_AT_TIME, startTime);
         // Attempt to register the player..
         //logger.info("Registering player - [username, host] : [{}, {}]", getUsername(), getHostAddress());
 
@@ -3086,6 +3087,11 @@ public class Player extends Mob {
         putAttrib(AttributeKey.LAST_REGION, tile.region());
         putAttrib(AttributeKey.LAST_CHUNK, tile.chunk());
     }, controllers = () -> {
+        // ok so after 4 mins since logged in and tutorial still isn't complete, kick them
+        // don't rely on afk timer cos that can be reset easily by them just clicking move or w.e, this forces script to handle doing the entire tutorial, in future we can make new methods to kick
+        if (!this.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false) && System.currentTimeMillis() - this.<Long>getAttribOr(LOGGED_IN_AT_TIME, System.currentTimeMillis()) > 1000 * 60 * 4) {
+            this.putAttrib(AttributeKey.LOGOUT_CLICKED, true);
+        }
 
         Prayers.drainPrayer(this);
 
