@@ -158,7 +158,7 @@ public class Bank extends ItemContainer {
         player.getPacketSender().sendConfig(317, quantityFive ? 1 : 0);
         player.getPacketSender().sendConfig(320, quantityOne ? 1 : 0);
         player.getPacketSender().setWidgetActive(26101, player.getBank().placeHolder);
-        player.getPacketSender().sendInterfaceDisplayState(26120, !IronmanGroupHandler.isGroupIronman(player));
+        player.getPacketSender().sendInterfaceDisplayState(26120, IronmanGroupHandler.getPlayersGroup(player).isEmpty());
     }
 
     /**

@@ -126,7 +126,7 @@ public class GroupStorage extends ItemContainer {
             return;
 
         //Extra safety
-        if(!IronmanGroupHandler.isGroupIronman(player)) {
+        if(IronmanGroupHandler.getPlayersGroup(player).isEmpty()) {
             player.message(Color.RED.wrap("I shouldn't be in here, contact a Administrator."));
             return;
         }
@@ -192,7 +192,7 @@ public class GroupStorage extends ItemContainer {
             return;
 
         //Extra safety
-        if(!IronmanGroupHandler.isGroupIronman(player)) {
+        if(IronmanGroupHandler.getPlayersGroup(player).isEmpty()) {
             player.message(Color.RED.wrap("I shouldn't be in here, contact a Administrator."));
             return;
         }

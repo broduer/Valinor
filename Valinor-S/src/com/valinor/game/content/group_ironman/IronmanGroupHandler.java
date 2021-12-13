@@ -11,7 +11,6 @@ import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
-import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.Color;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,8 +51,19 @@ public final class IronmanGroupHandler {
         return ironManGroups.stream().anyMatch(e -> e.getLeaderName().equalsIgnoreCase(player.getUsername()));
     }
 
-    public static boolean isGroupIronman(Player player) {
-        return getGroupByName(player.getUsername()).isPresent() || getPlayersGroup(player).isPresent();
+    public static boolean isTradingPermitted(Player player, Player other) {
+        if (player == null || other == null) {
+            return false;
+        }
+
+        // and again, we have to get it's optional
+
+        Optional<IronmanGroup> group = player.getIronmanGroup();
+
+        //So now, because this is optional, it could be null
+
+        // If it has a value
+        return group.isPresent() && group.get().isGroupMember(other);
     }
 
     /**

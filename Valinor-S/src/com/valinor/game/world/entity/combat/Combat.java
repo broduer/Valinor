@@ -139,7 +139,7 @@ public class Combat {
             return mob.getAsNpc().combatInfo() == null ? 0 : mob.getAsNpc().combatInfo().maxhit;
         }
         Player player = mob.getAsPlayer();
-        if (mob.isPlayer() && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
+        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
             return MagicMaxHit.maxHit(player, false);
         }
         return MagicMaxHit.maxHit(player,true);

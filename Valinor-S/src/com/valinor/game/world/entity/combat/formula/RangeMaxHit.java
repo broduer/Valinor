@@ -102,8 +102,8 @@ public class RangeMaxHit {
 
         var wearingAnyBlackMask = FormulaUtils.wearingBlackMask(player) || FormulaUtils.wearingBlackMaskImbued(player) || player.getEquipment().wearingSlayerHelm();
         //Special attacks
-        if (wearingAnyBlackMask && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+        if (wearingAnyBlackMask && target != null && target.isNpc() && includeNpcMax) {
+            if (target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
                 D *= 1.15;
             }
 

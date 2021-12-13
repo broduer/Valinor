@@ -28,13 +28,13 @@ public class InviteToGroup implements EnterSyntax {
         Optional<Player> other = World.getWorld().getPlayerByName(username);
 
         if(other.isPresent()) {
-            Optional<IronmanGroup> getTeam = player.getIronmanTeam();
+            Optional<IronmanGroup> getTeam = player.getIronmanGroup();
             if (getTeam.isPresent()) {
                 if (getTeam.get().canInvite(player, other.get())) {
                     getTeam.get().sendInvitation(player, other.get());
                 }
             } else {
-                Optional<IronmanGroup> otherTeam = other.get().getIronmanTeam();
+                Optional<IronmanGroup> otherTeam = other.get().getIronmanGroup();
 
                 if (otherTeam.isPresent()) {
                     player.message(Color.RED.wrap("The person you're trying to invite is in a team already."));

@@ -6,6 +6,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
@@ -16,6 +17,7 @@ import java.util.List;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.ItemIdentifiers.PLATINUM_TOKEN;
+import static com.valinor.util.ObjectIdentifiers.OPEN_CHEST_3194;
 
 /**
  * @author PVE
@@ -23,22 +25,32 @@ import static com.valinor.util.ItemIdentifiers.PLATINUM_TOKEN;
  */
 public class BankObjects extends PacketInteraction {
 
-    private static final List<Integer> bankObjectIds = Arrays.asList(6944, 7409, 4483, 11744, 11748, 24101, 24347, 25808, 26707, 27249, 27251,
-        27264, 27253, 27291, 18491, 21301, 10058, 6943, 27718, 27719, 27720, 27721, 7478, 10060, 14886, 10562,
-        28861, 29321, 19051, 32666);
-
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject obj) {
-        for (int bank : bankObjectIds) {
-            if(obj.getId() == bank) {
-                int itemid = player.getAttribOr(AttributeKey.ITEM_ID, -1);
-                int slot = player.getAttribOr(AttributeKey.ITEM_SLOT, -1);
-                ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, itemid);
-                if (def == null) return false;
+        final boolean bank = obj.getId() == OPEN_CHEST_3194 || obj.definition().name.equalsIgnoreCase("Bank booth") || obj.definition().name.equalsIgnoreCase("Bank chest") || obj.definition().name.equalsIgnoreCase("Grand Exchange booth");
+        if (bank) {
+            int itemid = player.getAttribOr(AttributeKey.ITEM_ID, -1);
+            int slot = player.getAttribOr(AttributeKey.ITEM_SLOT, -1);
+            ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, itemid);
+            if (def == null) return false;
 
-                noteLogic(player, itemid, slot, def);
-                return true;
-            }
+            noteLogic(player, itemid, slot, def);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean handleItemOnNpc(Player player, Item item, Npc npc) {
+        final boolean banker = npc.def().name.equalsIgnoreCase("Banker");
+        if (banker) {
+            int itemid = player.getAttribOr(AttributeKey.ITEM_ID, -1);
+            int slot = player.getAttribOr(AttributeKey.ITEM_SLOT, -1);
+            ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, itemid);
+            if (def == null) return false;
+
+            noteLogic(player, itemid, slot, def);
+            return true;
         }
         return false;
     }
@@ -62,13 +74,13 @@ public class BankObjects extends PacketInteraction {
                 var amount = coinCount / 1000;
 
                 if (player.inventory().getFreeSlots() == 0 && coinCount - (amount * 1000) > 0) {
-                    player.message("You don't have enough room to carry the "+tokensName+" tokens.");
+                    player.message("You don't have enough room to carry the " + tokensName + " tokens.");
                     return;
                 }
                 if (amount >= 1) {
                     if (player.inventory().remove(new Item(itemid, amount * 1000), true)) {
                         player.inventory().add(new Item(tokens, amount), true);
-                        player.doubleItemBox("The bank exchanges your coins for "+tokensName+" tokens.", new Item(itemid, amount * 1000), new Item(tokens, amount));
+                        player.doubleItemBox("The bank exchanges your coins for " + tokensName + " tokens.", new Item(itemid, amount * 1000), new Item(tokens, amount));
                     }
                 }
             });
