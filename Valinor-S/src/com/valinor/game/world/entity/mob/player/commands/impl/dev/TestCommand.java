@@ -1,6 +1,7 @@
 
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -88,13 +89,12 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
         //player.sound(2401);
-        player.getPacketSender().sendSong(92);
         player.message("Test command has been activated.");
     }
 
     @Override
     public boolean canUse(Player player) {
-        return (player.getPlayerRights().isDeveloperOrGreater(player));
+        return !GameServer.properties().production;
     }
 
 }
