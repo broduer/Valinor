@@ -43,7 +43,6 @@ public class IronmanGroup {
     @Expose
     public Item[] loadSaveTemp;
 
-    @Expose
     private boolean storageInUse;
 
     /**

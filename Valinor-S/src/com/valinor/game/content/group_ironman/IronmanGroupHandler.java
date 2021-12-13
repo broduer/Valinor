@@ -49,10 +49,7 @@ public final class IronmanGroupHandler {
     }
 
     public static boolean isGroupLeader(Player player) {
-        for (IronmanGroup group : ironManGroups) {
-            return player.getUsername().equalsIgnoreCase(group.getLeaderName());
-        }
-        return false;
+        return ironManGroups.stream().anyMatch(e -> e.getLeaderName().equalsIgnoreCase(player.getUsername()));
     }
 
     public static boolean isGroupIronman(Player player) {
@@ -158,16 +155,14 @@ public final class IronmanGroupHandler {
      * Returns a list of the latest ironman groups created
      */
     public static List<IronmanGroup> getLatestIronmanGroups(int amount) {
-        List<IronmanGroup> groups = new ArrayList<>(ironManGroups);
-        groups.sort(IronmanGroupDateSort.DATE_SORT.reversed());
-        return groups.stream().filter(e -> e.getMembers().size() > 1)
+        ironManGroups.sort(IronmanGroupDateSort.DATE_SORT.reversed());
+        return ironManGroups.stream().filter(e -> e.getMembers().size() > 1)
             .limit(amount).collect(Collectors.toList());
     }
 
     public static List<IronmanGroup> getBestIronmenGroups(int count) {
-        List<IronmanGroup> groups = new ArrayList<>(ironManGroups);
-        groups.sort(IronmanGroupAverageSort.AVERAGE_SORT);
-        return groups.stream().filter(e -> e.getMembers().size() > 1)
+        ironManGroups.sort(IronmanGroupAverageSort.AVERAGE_SORT);
+        return ironManGroups.stream().filter(e -> e.getMembers().size() > 1)
             .limit(count).collect(Collectors.toList());
     }
 

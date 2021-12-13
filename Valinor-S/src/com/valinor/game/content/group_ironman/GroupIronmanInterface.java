@@ -45,18 +45,28 @@ public class GroupIronmanInterface extends PacketInteraction {
     public static void open(Player player) {
         clear(player);
         List<IronmanGroup> best = IronmanGroupHandler.getBestIronmenGroups(10);
-        for (int i = 0; i < best.size(); i++) {
-            player.getPacketSender().sendString(i + LEADERBOARD_GROUP_NAME, Utils.optimizeText(best.get(i).getGroupName()));
-            player.getPacketSender().sendString(i + LEADERBOARD_AVERAGE_COMBAT, "Level: " + best.get(i).getAverageCombatLevel());
-            player.getPacketSender().sendString(i + LEADERBOARD_ONLINE_STATUS, best.get(i).getOnlineStatusText());
-            player.getPacketSender().sendString(i + LEADERBOARD_AVERAGE_TOTAL, "Total Level: " + best.get(i).getAverageTotalLevel());
-            player.getPacketSender().sendString(i + LEADERBOARD_AVERAGE_XP, "Total Exp:" + Utils.getValueWithoutRepresentationK(best.get(i).getAverageTotalXp()));
+        //System.out.println("best size "+best.size());
+
+        int bestCount = 0;
+        int start = 67130, finish = (67130 + best.size() * 6);
+        for (int i = start; i < finish; i += 6) {
+            player.getPacketSender().sendString(i + 1, Utils.optimizeText(best.get(bestCount).getGroupName()));
+            player.getPacketSender().sendString(i + 2, "Level: " + best.get(bestCount).getAverageCombatLevel());
+            player.getPacketSender().sendString(i + 3, best.get(bestCount).getOnlineStatusText());
+            player.getPacketSender().sendString(i + 4, "Total Level: " + best.get(bestCount).getAverageTotalLevel());
+            player.getPacketSender().sendString(i + 5, "Total Exp:" + Utils.getValueWithoutRepresentationK(best.get(bestCount).getAverageTotalXp()));
+            bestCount++;
         }
 
         List<IronmanGroup> recent = IronmanGroupHandler.getLatestIronmanGroups(6);
-        for (int i = 0; i < recent.size(); i++) {
-            player.getPacketSender().sendString(i + RECENT_GROUP_NAME, Utils.optimizeText(recent.get(i).getGroupName()));
-            player.getPacketSender().sendString(i + RECENT_GROUP_MEMBERS, recent.get(i).getMembersAsString());
+        //System.out.println("recent size "+recent.size());
+
+        int recentCount = 0;
+        int recentStart = 67230, recentFinish = (67230 + recent.size() * 3);
+        for (int i = recentStart; i < recentFinish; i += 3) {
+            player.getPacketSender().sendString(i + 1, Utils.optimizeText(recent.get(recentCount).getGroupName()));
+            player.getPacketSender().sendString(i + 2, recent.get(recentCount).getMembersAsString());
+            recentCount++;
         }
         player.getInterfaceManager().open(INTERFACE_ID);
     }
