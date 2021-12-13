@@ -59,7 +59,8 @@ public class GameConstants {
             PRAYER_TAB = 5, MAGIC_TAB = 6, CLAN_TAB = 7, FRIENDS_TAB = 8, IGNORE_TAB = 9, LOGOUT_TAB = 10,
             WRENCH_TAB = 11, EMOTE_TAB = 12, MUSIC_TAB = 13;
 
-    public static final int PLAYERS_LIMIT = 2047; //This must be capped to 2047 because 11 bits - 1
+    //Capped at 1000, we wont ever reach more then 1000 players as RSPS anyways
+    public static final int PLAYERS_LIMIT = 1000; //This must be capped to 2047 because 11 bits - 1
     public static final int NPCS_LIMIT = 16383; //This must be capped to 16384 because 14 bits - 1
 
     /**

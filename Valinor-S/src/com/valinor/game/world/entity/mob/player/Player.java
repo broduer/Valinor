@@ -2382,7 +2382,7 @@ public class Player extends Mob {
 
     public void sendScroll(String title, String... lines) {
 
-        for (int counter = 21408; counter < 21609; counter++) {
+        for (int counter = 21408; counter < 21408; counter++) {
             packetSender.sendString(counter, "");
         }
 
@@ -3089,8 +3089,8 @@ public class Player extends Mob {
     }, controllers = () -> {
         // ok so after 4 mins since logged in and tutorial still isn't complete, kick them
         // don't rely on afk timer cos that can be reset easily by them just clicking move or w.e, this forces script to handle doing the entire tutorial, in future we can make new methods to kick
-        if (!this.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false) && System.currentTimeMillis() - this.<Long>getAttribOr(LOGGED_IN_AT_TIME, System.currentTimeMillis()) > 1000 * 60 * 4) {
-            this.putAttrib(AttributeKey.LOGOUT_CLICKED, true);
+        if (this.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false) && System.currentTimeMillis() - this.<Long>getAttribOr(LOGGED_IN_AT_TIME, System.currentTimeMillis()) > 1000 * 60 * 4) {
+            this.requestLogout();
         }
 
         Prayers.drainPrayer(this);

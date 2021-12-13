@@ -53,7 +53,6 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
             return v;
         });
 
-
         final int count = connections.get(host);
         if (count > GameServer.properties().connectionLimit) {
             //logger.trace("Maximum number of connections reached for: " + host+" : "+count);

@@ -11,6 +11,7 @@
   "defaultClanChat": "help",
   "autosaveMinutes": 15,
   "afkLogoutMinutes": 15,
+  "afkLogoutMinutesNewAccounts": 4,
   "requireBankPinOnLogin": false,
   "defaultBankPinRecoveryDays": 3,
   "displayCycleTime": false,

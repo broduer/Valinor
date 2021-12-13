@@ -114,6 +114,7 @@ public final class ServerProperties {
         defaultClanChat = "";
         autosaveMinutes = 15;
         afkLogoutMinutes = 15;
+        afkLogoutMinutesNewAccounts = 4;
         baseBMValue = 500;
         requireBankPinOnLogin = false;
         defaultBankPinRecoveryDays = 3;
@@ -291,6 +292,9 @@ public final class ServerProperties {
 
     // Idle packet called every 3 minutes, so the value should be a multiple of 3 for the most accurate timing.
     public final int afkLogoutMinutes;
+
+    // Idle packet called every 3 minutes, so the value should be a multiple of 3 for the most accurate timing.
+    public final int afkLogoutMinutesNewAccounts;
 
     //Should we display the Game Engine cycle time in the server log?
     public final boolean displayCycleTime;

@@ -33,25 +33,6 @@ public final class LoginResponses {
     public static int evaluateOnGamethread(Player player) {
         //logger.info("evaluating final login.");
         // Done on game thread.
-        if (GameServer.isStaffOnlyLogins() && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            return LOGIN_SERVER_MAINTENANCE;
-        }
-        if (GameServer.properties().maintenanceMode && !player.getPlayerRights().isAdminOrGreater(player)) {
-            return LOGIN_SERVER_MAINTENANCE;
-        }
-        if (World.getWorld().getPlayers().isFull()) {
-            return LOGIN_WORLD_FULL;
-        }
-        if (GameServer.properties().production) {
-            if (Arrays.stream(NetworkConstants.INVALID_USERNAMES).anyMatch(username -> username.equalsIgnoreCase(player.getUsername()))) {
-                return LOGIN_INVALID_USERNAME;
-            }
-            if (player.getUsername().toLowerCase().startsWith("testbot") && player.getSession().getChannel() != null) {
-                // reject people trying to log on to developer rights testbot accs on prod. u can still make dummy bots because channel will be null
-                return LOGIN_INVALID_USERNAME;
-            }
-        }
-
         String host = "";
         if(player.getSession().getChannel() != null) {
             host = ByteBufUtils.getHost(player.getSession().getChannel());
@@ -86,6 +67,7 @@ public final class LoginResponses {
         if (GameServer.isUpdating()) {
             return LOGIN_GAME_UPDATE;
         }
+
         if (player.getUsername().startsWith(" ") || player.getUsername().endsWith(" ") ||
             !Utils.isValidName(player.getUsername())) {
             return INVALID_CREDENTIALS_COMBINATION;
@@ -93,6 +75,27 @@ public final class LoginResponses {
 
         if (!msg.getClientVersion().equals(GameServer.properties().gameVersion)) {
             return OLD_CLIENT_VERSION;
+        }
+
+        if (GameServer.isStaffOnlyLogins() && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+            return LOGIN_SERVER_MAINTENANCE;
+        }
+        if (GameServer.properties().maintenanceMode && !player.getPlayerRights().isAdminOrGreater(player)) {
+            return LOGIN_SERVER_MAINTENANCE;
+        }
+
+        if (World.getWorld().getPlayers().isFull()) {
+            return LOGIN_WORLD_FULL;
+        }
+
+        if (GameServer.properties().production) {
+            if (Arrays.stream(NetworkConstants.INVALID_USERNAMES).anyMatch(username -> username.equalsIgnoreCase(player.getUsername()))) {
+                return LOGIN_INVALID_USERNAME;
+            }
+            if (player.getUsername().toLowerCase().startsWith("testbot") && player.getSession().getChannel() != null) {
+                // reject people trying to log on to developer rights testbot accs on prod. u can still make dummy bots because channel will be null
+                return LOGIN_INVALID_USERNAME;
+            }
         }
 
         if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
