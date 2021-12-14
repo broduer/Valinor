@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -17,7 +17,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | March, 26, 2021, 09:45
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class Basement extends PacketInteraction {
+public class Basement extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

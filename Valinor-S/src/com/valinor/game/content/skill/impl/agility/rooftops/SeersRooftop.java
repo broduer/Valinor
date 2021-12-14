@@ -15,7 +15,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -27,7 +27,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 14, 2020
  */
-public class SeersRooftop extends PacketInteraction {
+public class SeersRooftop extends Interaction {
 
     private static final List<Tile> MARK_SPOTS = Arrays.asList(new Tile(2726, 3492, 3), new Tile(2728, 3495, 3), new Tile(2707, 3493, 2), new Tile(2708, 3489, 2), new Tile(2712, 3481, 2), new Tile(2710, 3478, 2), new Tile(2710, 3472, 3), new Tile(2702, 3474, 3), new Tile(2698, 3462, 2));
 

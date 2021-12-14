@@ -15,7 +15,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Debugs;
 
 import java.util.Optional;
@@ -28,7 +28,7 @@ import static com.valinor.util.ItemIdentifiers.ROTTEN_POTATO;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 17, 2020
  */
-public class RottenPotato extends PacketInteraction {
+public class RottenPotato extends Interaction {
 
     public static boolean onItemOnMob(Player player, Mob target) {
         // Give you the name and distance to a target

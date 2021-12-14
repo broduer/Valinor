@@ -8,9 +8,9 @@ import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class MaxCape extends PacketInteraction {
+public class MaxCape extends Interaction {
 
     public final static int INFERNAL_MAX_CAPE = 21285;
     public final static int INFERNAL_MAX_HOOD = 21282;

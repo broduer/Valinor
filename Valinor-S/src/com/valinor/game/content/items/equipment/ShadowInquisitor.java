@@ -2,7 +2,7 @@ package com.valinor.game.content.items.equipment;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 
@@ -10,7 +10,7 @@ import static com.valinor.util.CustomItemIdentifiers.INQUISITORS_MACE_ORNAMENT_K
 import static com.valinor.util.CustomItemIdentifiers.SHADOW_INQUISITOR_ORNAMENT_KIT;
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class ShadowInquisitor extends PacketInteraction {
+public class ShadowInquisitor extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

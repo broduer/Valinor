@@ -13,7 +13,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.route.routes.TargetRoute;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import java.lang.ref.WeakReference;
 
@@ -65,7 +65,7 @@ public class ItemOnNpcPacketListener implements PacketListener {
         TargetRoute.set(player, npc, () -> {
             player.face(npc.tile());
 
-            if (PacketInteractionManager.checkItemOnNpcInteraction(player, item, npc)) {
+            if (InteractionManager.checkItemOnNpcInteraction(player, item, npc)) {
                 return;
             }
 

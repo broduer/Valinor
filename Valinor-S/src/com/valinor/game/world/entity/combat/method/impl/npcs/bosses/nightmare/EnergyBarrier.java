@@ -2,7 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.ENERGY_BARRIER_37730;
 
@@ -10,7 +10,7 @@ import static com.valinor.util.ObjectIdentifiers.ENERGY_BARRIER_37730;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 27, 2021
  */
-public class EnergyBarrier extends PacketInteraction {
+public class EnergyBarrier extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

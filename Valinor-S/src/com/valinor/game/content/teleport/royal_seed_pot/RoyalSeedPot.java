@@ -5,12 +5,12 @@ import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
-public class RoyalSeedPot extends PacketInteraction {
+public class RoyalSeedPot extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

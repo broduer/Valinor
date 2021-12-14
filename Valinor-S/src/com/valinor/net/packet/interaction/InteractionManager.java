@@ -18,18 +18,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Handles the packet interaction
+ * Handles the interaction
  *
  * @author 2012
  */
-public final class PacketInteractionManager {
+public final class InteractionManager {
 
-    private static final Logger log = LoggerFactory.getLogger(PacketInteractionManager.class);
+    private static final Logger log = LoggerFactory.getLogger(InteractionManager.class);
 
     /**
      * The packet interactions
      */
-    private static final List<PacketInteraction> interactions = new ArrayList<>();
+    private static final List<Interaction> interactions = new ArrayList<>();
 
     /**
      * Loads all the interaction
@@ -46,11 +46,11 @@ public final class PacketInteractionManager {
     private static void loadRecursive() throws IOException {
         ClassPath classPath = ClassPath.from(Thread.currentThread().getContextClassLoader());
         Set<Class<?>> clazzes = classPath.getTopLevelClassesRecursive("com.valinor.game").stream().map(ClassPath.ClassInfo::load).collect(Collectors.toSet());
-        clazzes.forEach(PacketInteractionManager::load);
+        clazzes.forEach(InteractionManager::load);
     }
 
     public static boolean onEquipItem(Player player, Item item) {
-        for(PacketInteraction interaction : interactions) {
+        for(Interaction interaction : interactions) {
             if(interaction.handleEquipment(player, item)) {
                 return true;
             }
@@ -59,7 +59,7 @@ public final class PacketInteractionManager {
     }
 
     public static boolean onEquipmentAction(Player player, Item item, int slot) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleEquipmentAction(player, item, slot)) {
                 return true;
             }
@@ -77,7 +77,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkButtonInteraction(Player player, int button) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleButtonInteraction(player, button)) {
                 //System.out.println("checkButtonInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -98,7 +98,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkItemInteraction(Player player, Item item, int option) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemInteraction(player, item, option)) {
                 //System.out.println("checkItemInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -119,7 +119,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkObjectInteraction(Player player, GameObject object, int type) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleObjectInteraction(player, object, type)) {
                 //System.out.println("checkObjectInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -140,7 +140,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkNpcInteraction(Player player, Npc npc, int type) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleNpcInteraction(player, npc, type)) {
                 //System.out.println("checkNpcInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -161,7 +161,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkItemOnItemInteraction(Player player, Item use, Item usedWith) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemOnItemInteraction(player, use, usedWith)) {
                 return true;
             }
@@ -181,7 +181,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkItemOnPlayerInteraction(Player player, Item use, Player usedWith) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemOnPlayer(player, use, usedWith)) {
                 return true;
             }
@@ -201,7 +201,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkItemOnObjectInteraction(Player player, Item item, GameObject gameObject) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemOnObject(player, item, gameObject)) {
                 //System.out.println("checkItemOnObjectInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -211,7 +211,7 @@ public final class PacketInteractionManager {
     }
 
     public static boolean checkItemOnNpcInteraction(Player player, Item item, Npc npc) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemOnNpc(player, item, npc)) {
                 //System.out.println("checkItemOnNpcInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
@@ -236,7 +236,7 @@ public final class PacketInteractionManager {
      * @return interaction
      */
     public static boolean checkItemContainerActionInteraction(Player player, Item item, int slot, int interfaceId, int type) {
-        for (PacketInteraction interaction : interactions) {
+        for (Interaction interaction : interactions) {
             if (interaction.handleItemContainerActionInteraction(player, item, slot, interfaceId, type)) {
                 return true;
             }
@@ -257,11 +257,11 @@ public final class PacketInteractionManager {
 
         // A valid interaction must extend PacketInteraction and have a default zero-parameters
         // constructor.
-        if (hasDefaultConstructor(clazz) && isSuperClass(clazz, PacketInteraction.class)) {
+        if (hasDefaultConstructor(clazz) && isSuperClass(clazz, Interaction.class)) {
             ////System.out.println("Enter class: "+clazz.getName());
             try {
                 // Try to create an instance of that type
-                PacketInteraction interaction = (PacketInteraction) clazz.getDeclaredConstructor().newInstance();
+                Interaction interaction = (Interaction) clazz.getDeclaredConstructor().newInstance();
 
                 if (!interactions.contains(interaction)) {
                     interactions.add(interaction);

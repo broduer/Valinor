@@ -4,14 +4,14 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class DonatorMysteryBox extends PacketInteraction {
+public class DonatorMysteryBox extends Interaction {
 
     private static final int EXTREME_ROLL = 33;
     private static final int RARE_ROLL = 20;

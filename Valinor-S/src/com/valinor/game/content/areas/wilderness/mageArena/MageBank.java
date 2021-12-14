@@ -13,13 +13,13 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
-public class MageBank extends PacketInteraction {
+public class MageBank extends Interaction {
 
     //TODO 2879 -> return to otherside
 

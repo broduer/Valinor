@@ -19,7 +19,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.Utils;
 
@@ -34,7 +34,7 @@ import static com.valinor.util.ObjectIdentifiers.POTTERY_OVEN_11601;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 16, 2020
  */
-public class Crafting extends PacketInteraction {
+public class Crafting extends Interaction {
 
     /**  The craftable map. */
     private final static HashMap<Integer, Craftable> CRAFTABLES = new HashMap<>();

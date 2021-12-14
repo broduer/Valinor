@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.BLURITE_ORE;
 import static com.valinor.util.ItemIdentifiers.BRONZE_PICKAXE;
@@ -16,7 +16,7 @@ import static com.valinor.util.NpcIdentifiers.IRENA;
 /**
  * Created by Jak on 19/01/2016. #Gundrilla
  */
-public class Jail extends PacketInteraction {
+public class Jail extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

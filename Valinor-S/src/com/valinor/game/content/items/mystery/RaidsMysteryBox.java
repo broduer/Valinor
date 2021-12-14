@@ -3,7 +3,7 @@ package com.valinor.game.content.items.mystery;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import static com.valinor.util.CustomItemIdentifiers.RAIDS_MYSTERY_BOX;
@@ -13,7 +13,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since December 01, 2021
  */
-public class RaidsMysteryBox extends PacketInteraction {
+public class RaidsMysteryBox extends Interaction {
 
     private static final int RARE_ROLL = 20;
     private static final int UNCOMMON_ROLL = 14;

@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.LinkedList;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.valinor.util.ObjectIdentifiers.IRON_WINCH;
 
-public class IronWinch extends PacketInteraction {
+public class IronWinch extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

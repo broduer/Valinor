@@ -4,13 +4,13 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * @author Patrick van Elderen | March, 16, 2021, 15:19
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class RingOfForging extends PacketInteraction {
+public class RingOfForging extends Interaction {
 
     private final static int RING_OF_FORGING = 2568;
 

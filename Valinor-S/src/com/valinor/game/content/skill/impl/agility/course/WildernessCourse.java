@@ -18,9 +18,7 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.Utils;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.game.world.entity.AttributeKey.WILDY_COURSE_STATE;
@@ -29,7 +27,7 @@ import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 /**
  * Created by Jak on 13/06/2016.
  */
-public class WildernessCourse extends PacketInteraction {
+public class WildernessCourse extends Interaction {
 
     public final static int LOWER_GATE = 23555;
     public final static int UPPERGATE_EAST = 23552;

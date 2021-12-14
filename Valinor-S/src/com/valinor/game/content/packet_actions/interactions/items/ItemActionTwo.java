@@ -9,7 +9,7 @@ import com.valinor.game.content.skill.impl.slayer.content.SlayerRing;
 import com.valinor.game.world.entity.mob.npc.pets.PetPaint;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -26,7 +26,7 @@ public class ItemActionTwo {
         PetPaint.wipePaint(player, item);
         ArdyCape.onItemOption2(player, item);
 
-        if (PacketInteractionManager.checkItemInteraction(player, item, 2)) {
+        if (InteractionManager.checkItemInteraction(player, item, 2)) {
             return;
         }
 

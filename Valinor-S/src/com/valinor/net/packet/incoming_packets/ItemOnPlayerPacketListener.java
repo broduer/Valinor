@@ -9,7 +9,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.ItemIdentifiers;
 
 import java.lang.ref.WeakReference;
@@ -62,7 +62,7 @@ public class ItemOnPlayerPacketListener implements PacketListener {
 
                     //Do actions...
 
-                    if (PacketInteractionManager.checkItemOnPlayerInteraction(player, item, other)) {
+                    if (InteractionManager.checkItemOnPlayerInteraction(player, item, other)) {
                         return;
                     }
 

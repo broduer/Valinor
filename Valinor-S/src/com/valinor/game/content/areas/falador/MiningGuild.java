@@ -9,7 +9,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 
@@ -17,7 +17,7 @@ import com.valinor.util.chainedwork.Chain;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 06, 2020
  */
-public class MiningGuild extends PacketInteraction {
+public class MiningGuild extends Interaction {
 
     public static final Area MINERAL_AREA = new Area(3013, 9691, 3059, 9756, 0);
 

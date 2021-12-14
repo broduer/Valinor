@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import static com.valinor.game.world.entity.AttributeKey.RIGOUR;
@@ -14,7 +14,7 @@ import static com.valinor.util.ItemIdentifiers.DEXTEROUS_PRAYER_SCROLL;
  * @author Patrick van Elderen | April, 29, 2021, 13:55
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class DexterousPrayerScroll extends PacketInteraction {
+public class DexterousPrayerScroll extends Interaction {
 
     private static class DexterousPrayerScrollDialogue extends Dialogue {
 

@@ -17,7 +17,7 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
@@ -29,7 +29,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * Created by Carl on 2015-08-26.
  * Edited & finished by Situations on 2015-09-12
  */
-public class RuneConversion extends PacketInteraction {
+public class RuneConversion extends Interaction {
 
     public enum Altar {
         AIR(1, 5.0, AIR_TALISMAN, AIR_RUNE, 34760, 34813, new Tile(2841, 4830), 34748, new Tile(2983, 3293), false, 11, 4800, Pet.RIFT_GUARDIAN_AIR),

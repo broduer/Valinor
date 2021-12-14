@@ -9,7 +9,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -18,7 +18,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date februari 29, 2020 19:45
  */
-public class SlayerTower extends PacketInteraction {
+public class SlayerTower extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

@@ -4,9 +4,9 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class Woodengates extends PacketInteraction {
+public class Woodengates extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

@@ -2,7 +2,6 @@ package com.valinor.game.content.skill.impl.slayer.master.impl;
 
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.master.SlayerMaster;
-import com.valinor.game.content.skill.impl.slayer.master.dialogues.DuradelD;
 import com.valinor.game.content.skill.impl.slayer.master.dialogues.KonarQuoMatenD;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerTaskDef;
@@ -15,17 +14,16 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
-import static com.valinor.util.NpcIdentifiers.DURADEL;
 import static com.valinor.util.NpcIdentifiers.KONAR_QUO_MATEN;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 18, 2021
  */
-public class KonarQuoMaten extends PacketInteraction {
+public class KonarQuoMaten extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

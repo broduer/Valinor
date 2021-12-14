@@ -5,7 +5,7 @@ import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ import java.util.Optional;
  * @version 1.0
  * @see <a href="https://github.com/Patrick9-10-1995">Github profile</a>
  */
-public class Tablet extends PacketInteraction {
+public class Tablet extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

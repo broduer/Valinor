@@ -10,7 +10,7 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.CREVICE_537;
 import static com.valinor.util.ObjectIdentifiers.CREVICE_538;
@@ -19,7 +19,7 @@ import static com.valinor.util.ObjectIdentifiers.CREVICE_538;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * april 26, 2020
  */
-public class KrakenCove extends PacketInteraction {
+public class KrakenCove extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

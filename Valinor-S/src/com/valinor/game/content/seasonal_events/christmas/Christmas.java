@@ -13,7 +13,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.TargetRoute;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
@@ -35,7 +35,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 30, 2021
  */
-public class Christmas extends PacketInteraction {
+public class Christmas extends Interaction {
 
     private static final Logger logger = LogManager.getLogger(Halloween.class);
 

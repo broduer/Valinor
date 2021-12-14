@@ -13,7 +13,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
 import static com.valinor.util.NpcIdentifiers.TURAEL;
@@ -22,7 +22,7 @@ import static com.valinor.util.NpcIdentifiers.TURAEL;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 18, 2021
  */
-public class Turael extends PacketInteraction {
+public class Turael extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

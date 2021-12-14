@@ -14,7 +14,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 14, 2020
  */
-public class RellekkaRooftop extends PacketInteraction {
+public class RellekkaRooftop extends Interaction {
 
     private static final List<Tile> MARK_SPOTS = Arrays.asList(new Tile(2622, 3676, 3), new Tile(2617, 3664, 3), new Tile(2618, 3660, 3), new Tile(2628, 3652, 3), new Tile(2628, 3655, 3), new Tile(2641, 3649, 3), new Tile(2643, 3651, 3), new Tile(2649, 3659, 3), new Tile(2644, 3662, 3), new Tile(2658, 3674, 3), new Tile(2656, 3681, 3));
 

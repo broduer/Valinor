@@ -14,11 +14,10 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
-import com.valinor.util.timers.TimerKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -116,7 +115,7 @@ public class DropItemPacketListener implements PacketListener {
 
                     boolean ignore_charged_actions = charged_item_ids.stream().anyMatch(charged_item_id -> charged_item_id == item.getId());
 
-                    if (PacketInteractionManager.checkItemInteraction(player, item, 4) && !ignore_charged_actions) {
+                    if (InteractionManager.checkItemInteraction(player, item, 4) && !ignore_charged_actions) {
                         return;
                     }
 

@@ -3,7 +3,7 @@ package com.valinor.game.content.tasks;
 import com.valinor.game.content.daily_tasks.TaskCategory;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.SKILLING_SCROLL;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
@@ -12,7 +12,7 @@ import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since December 01, 2021
  */
-public class SkillingTaskBottle extends PacketInteraction {
+public class SkillingTaskBottle extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

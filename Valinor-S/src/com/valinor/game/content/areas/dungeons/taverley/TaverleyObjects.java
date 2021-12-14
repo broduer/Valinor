@@ -8,12 +8,12 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.StepType;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ObjectIdentifiers.*;
 
-public class TaverleyObjects extends PacketInteraction {
+public class TaverleyObjects extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

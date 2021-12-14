@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +17,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * april 20, 2020
  */
-public class KalphitesDungeon extends PacketInteraction {
+public class KalphitesDungeon extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

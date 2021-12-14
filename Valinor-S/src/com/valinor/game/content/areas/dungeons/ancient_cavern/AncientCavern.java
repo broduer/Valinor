@@ -2,11 +2,11 @@ package com.valinor.game.content.areas.dungeons.ancient_cavern;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.*;
 
-public class AncientCavern extends PacketInteraction {
+public class AncientCavern extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

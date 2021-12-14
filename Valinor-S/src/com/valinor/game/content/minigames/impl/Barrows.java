@@ -15,7 +15,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Tuple;
 import com.valinor.util.Utils;
@@ -34,7 +34,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  *
  * @author Jak write 99.9% ty
  **/
-public class Barrows extends PacketInteraction {
+public class Barrows extends Interaction {
 
     private static final List<Integer> possibles = Arrays.asList(SARCOPHAGUS_20720, SARCOPHAGUS_20770, SARCOPHAGUS_20772, SARCOPHAGUS_20721, SARCOPHAGUS_20771, SARCOPHAGUS_20722);
     private static final List<Integer> lootItemIds = Arrays.asList(ItemIdentifiers.DEATH_RUNE, ItemIdentifiers.BLOOD_RUNE, ItemIdentifiers.CHAOS_RUNE, ItemIdentifiers.MIND_RUNE, BOLT_RACK, COINS_995);

@@ -13,7 +13,7 @@ import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import java.util.Optional;
 
@@ -28,7 +28,7 @@ public class FourthContainerAction {
     public static void fourthAction(Player player, int interfaceId, int slot, int id) {
         var count = player.inventory().count(id);
         Item item = new Item(id, count);
-        if(PacketInteractionManager.checkItemContainerActionInteraction(player, item, slot, interfaceId, 4)) {
+        if(InteractionManager.checkItemContainerActionInteraction(player, item, slot, interfaceId, 4)) {
             return;
         }
 

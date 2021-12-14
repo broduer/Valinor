@@ -7,7 +7,6 @@ import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.content.skill.impl.crafting.impl.Jewellery;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
-import com.valinor.game.content.syntax.impl.GroupStorageX;
 import com.valinor.game.content.trade.Trading;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
@@ -18,7 +17,7 @@ import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import java.util.Optional;
 
@@ -32,7 +31,7 @@ import static com.valinor.game.world.InterfaceConstants.*;
 public class FirstContainerAction {
 
     public static void firstAction(Player player, int interfaceId, int slot, int id) {
-        if (PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 1)) {
+        if (InteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 1)) {
             return;
         }
 

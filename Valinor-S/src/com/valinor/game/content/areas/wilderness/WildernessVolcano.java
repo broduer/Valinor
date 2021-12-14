@@ -13,9 +13,9 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class WildernessVolcano extends PacketInteraction {
+public class WildernessVolcano extends Interaction {
 
     private enum Shield {
         MALEDICTION_WARD(new Item(11931), new Item(11932), new Item(11933), new Item(11924), "Malediction"),

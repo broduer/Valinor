@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
@@ -22,7 +22,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | February, 17, 2021, 14:17
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class LarransChest extends PacketInteraction {
+public class LarransChest extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

@@ -7,13 +7,13 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ObjectIdentifiers.CHEST_26757;
 
-public class RoguesCastle extends PacketInteraction {
+public class RoguesCastle extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

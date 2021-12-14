@@ -11,7 +11,7 @@ import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
@@ -23,7 +23,7 @@ import static com.valinor.util.ItemIdentifiers.DRAGONFIRE_WARD;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date januari 31, 2020 09:41
  */
-public class DragonfireShield extends PacketInteraction {
+public class DragonfireShield extends Interaction {
 
     @Override
     public boolean handleEquipmentAction(Player player, Item item, int slot) {

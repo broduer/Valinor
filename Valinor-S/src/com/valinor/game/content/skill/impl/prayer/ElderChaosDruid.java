@@ -8,11 +8,11 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.NpcIdentifiers.ELDER_CHAOS_DRUID_7995;
 
-public class ElderChaosDruid extends PacketInteraction {
+public class ElderChaosDruid extends Interaction {
 
     private void swap(Player player, int original, int result) {
         var count = player.inventory().count(original);

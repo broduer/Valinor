@@ -7,7 +7,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import java.util.HashMap;
@@ -19,7 +19,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | March, 07, 2021, 00:05
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class BoltEnchantment extends PacketInteraction {
+public class BoltEnchantment extends Interaction {
 
     private static final HashMap<Integer, Integer> cosmic = new HashMap<>() {
         {

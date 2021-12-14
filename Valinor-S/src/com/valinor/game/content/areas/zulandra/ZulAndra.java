@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 
@@ -19,7 +19,7 @@ import static com.valinor.util.ObjectIdentifiers.ZULANDRA_TELEPORT;
  * no need to use custom region packet, the instance system simply changes the heightlevel and uses the real world-map coords for
  * areas.
  */
-public class ZulAndra extends PacketInteraction {
+public class ZulAndra extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

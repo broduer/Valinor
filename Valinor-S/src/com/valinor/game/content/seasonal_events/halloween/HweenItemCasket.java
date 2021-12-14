@@ -3,7 +3,7 @@ package com.valinor.game.content.seasonal_events.halloween;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -16,7 +16,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since October 14, 2021
  */
-public class HweenItemCasket extends PacketInteraction {
+public class HweenItemCasket extends Interaction {
 
     private final List<Item> items = Arrays.asList(
         new Item(HWEEN_ARMADYL_GODSWORD),

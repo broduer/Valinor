@@ -4,7 +4,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -21,7 +21,7 @@ import static com.valinor.util.ObjectIdentifiers.STONE_CHEST;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since December 10, 2021
  */
-public class CollectionKey extends PacketInteraction {
+public class CollectionKey extends Interaction {
 
     private static final int RARE_ROLL = 10;
     private static final int UNCOMMON_ROLL = 5;

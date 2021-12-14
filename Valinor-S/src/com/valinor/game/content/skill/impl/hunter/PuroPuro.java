@@ -10,7 +10,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.StepType;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -20,7 +20,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 21, 2021
  */
-public class PuroPuro extends PacketInteraction {
+public class PuroPuro extends Interaction {
 
     private final String[] PUSH_THROUGH_MESSAGE = {
         "You use your strength to push through the wheat in the most efficient fashion.",

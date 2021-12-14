@@ -3,7 +3,7 @@ package com.valinor.game.content.minigames;
 import com.valinor.game.task.Task;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.game.content.minigames.MinigameManager.MinigameType;
 import com.valinor.game.content.minigames.MinigameManager.ItemRestriction;
 import com.valinor.game.content.minigames.MinigameManager.ItemType;
@@ -14,7 +14,7 @@ import com.valinor.game.content.minigames.MinigameManager.ItemType;
  * @author 2012 <http://www.rune-server.org/members/dexter+morgan/>
  *
  */
-public abstract class Minigame extends PacketInteraction {
+public abstract class Minigame extends Interaction {
 
     /**
      * Starts the minigame

@@ -2,7 +2,7 @@ package com.valinor.game.content.items.combine;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 
@@ -10,7 +10,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
  * @author Patrick van Elderen | July, 12, 2021, 21:08
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class AncientWarriorClamp extends PacketInteraction {
+public class AncientWarriorClamp extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

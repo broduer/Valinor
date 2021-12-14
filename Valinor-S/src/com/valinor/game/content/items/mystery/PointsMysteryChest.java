@@ -4,7 +4,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.AttributeKey.PK_POINTS;
@@ -16,7 +16,7 @@ import static com.valinor.util.ItemIdentifiers.MARK_OF_GRACE;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 23, 2021
  */
-public class PointsMysteryChest extends PacketInteraction {
+public class PointsMysteryChest extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

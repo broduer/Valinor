@@ -5,7 +5,7 @@ import com.valinor.game.content.items.teleport.ArdyCape;
 import com.valinor.game.content.skill.impl.slayer.content.SlayerRing;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -18,7 +18,7 @@ public class ItemActionThree {
     public static void click(Player player, Item item) {
         int id = item.getId();
 
-        if (PacketInteractionManager.checkItemInteraction(player, item, 3)) {
+        if (InteractionManager.checkItemInteraction(player, item, 3)) {
             return;
         }
 

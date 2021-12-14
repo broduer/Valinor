@@ -11,7 +11,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.PetPaint;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -37,7 +37,7 @@ public class ItemOnItem {
     }
 
     public static void itemOnItem(Player player, Item use, Item with) {
-        if (PacketInteractionManager.checkItemOnItemInteraction(player, use, with)) {
+        if (InteractionManager.checkItemOnItemInteraction(player, use, with)) {
             return;
         }
 

@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author Patrick van Elderen
  * @date March 15, 2020, 20:52:24 PM
  */
-public class Obelisks extends PacketInteraction {
+public class Obelisks extends Interaction {
 
     /**
      * A single instance of this class

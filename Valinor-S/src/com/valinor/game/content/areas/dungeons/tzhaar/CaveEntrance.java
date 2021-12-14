@@ -3,11 +3,11 @@ package com.valinor.game.content.areas.dungeons.tzhaar;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.CAVE_EXIT_11836;
 
-public class CaveEntrance extends PacketInteraction {
+public class CaveEntrance extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

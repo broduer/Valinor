@@ -4,8 +4,7 @@ import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import java.util.HashMap;
@@ -18,7 +17,7 @@ import static com.valinor.game.world.entity.AttributeKey.DAILY_TASK_SELECTED;
  * @author Patrick van Elderen | June, 15, 2021, 16:05
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class DailyTaskButtons extends PacketInteraction {
+public class DailyTaskButtons extends Interaction {
 
     public static boolean REWARDS_DISABLED = false;
 

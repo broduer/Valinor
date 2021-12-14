@@ -17,7 +17,7 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
@@ -29,7 +29,7 @@ import static com.valinor.util.ItemIdentifiers.COINS_995;
  * @author Patrick van Elderen | April, 21, 2021, 11:44
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class Stalls extends PacketInteraction {
+public class Stalls extends Interaction {
 
     public enum Stall {
 

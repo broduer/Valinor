@@ -2,7 +2,7 @@ package com.valinor.game.content.items;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.IMBUEMENT_SCROLL;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -11,7 +11,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | December, 31, 2020, 18:53
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class ImbueScroll extends PacketInteraction {
+public class ImbueScroll extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

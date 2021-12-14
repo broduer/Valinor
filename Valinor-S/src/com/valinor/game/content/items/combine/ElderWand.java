@@ -2,7 +2,7 @@ package com.valinor.game.content.items.combine;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 
@@ -10,7 +10,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
  * @author Patrick van Elderen | May, 19, 2021, 18:05
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class ElderWand extends PacketInteraction {
+public class ElderWand extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

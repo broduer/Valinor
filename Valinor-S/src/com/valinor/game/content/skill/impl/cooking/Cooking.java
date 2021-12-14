@@ -18,7 +18,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 
@@ -31,7 +31,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
 /**
  * Created by Situations on 11/20/2015.
  */
-public class Cooking extends PacketInteraction {
+public class Cooking extends Interaction {
 
     private static int cookingChance(Player player, Cookable type, GameObject obj) {
         int points = obj.getId() == CLAY_OVEN_21302 ? 63 : 60;

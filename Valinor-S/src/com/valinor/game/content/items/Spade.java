@@ -3,7 +3,7 @@ package com.valinor.game.content.items;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.LARGE_SPADE;
 import static com.valinor.util.ItemIdentifiers.SPADE;
@@ -11,7 +11,7 @@ import static com.valinor.util.ItemIdentifiers.SPADE;
 /**
  * Created by Bart on 11/27/2015.
  */
-public class Spade extends PacketInteraction {
+public class Spade extends Interaction {
 
     private void crypt(Player player, Tile t) {
         player.message("You've broken into a crypt!");

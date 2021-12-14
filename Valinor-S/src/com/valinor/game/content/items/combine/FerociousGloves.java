@@ -2,7 +2,7 @@ package com.valinor.game.content.items.combine;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -11,7 +11,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date maart 23, 2021 13:35
  */
-public class FerociousGloves extends PacketInteraction {
+public class FerociousGloves extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

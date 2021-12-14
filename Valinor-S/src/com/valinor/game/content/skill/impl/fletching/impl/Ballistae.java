@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 
@@ -12,7 +12,7 @@ import com.valinor.util.chainedwork.Chain;
  * @author PVE
  * @Since augustus 01, 2020
  */
-public class Ballistae extends PacketInteraction {
+public class Ballistae extends Interaction {
 
     private static final int MONKEY_TAIL = ItemIdentifiers.MONKEY_TAIL;
     private static final int SPRING = ItemIdentifiers.BALLISTA_SPRING;

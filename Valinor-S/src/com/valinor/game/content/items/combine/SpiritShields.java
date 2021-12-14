@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -14,7 +14,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | March, 16, 2021, 15:04
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class SpiritShields extends PacketInteraction {
+public class SpiritShields extends Interaction {
 
     private final static int HOLY_ELIXIR = 12833;
     private final static int SPIRIT_SHIELD = 12829;

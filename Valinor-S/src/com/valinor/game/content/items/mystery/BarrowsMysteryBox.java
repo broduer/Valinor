@@ -2,21 +2,20 @@ package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 23, 2021
  */
-public class BarrowsMysteryBox extends PacketInteraction {
+public class BarrowsMysteryBox extends Interaction {
 
     private final List<Integer> barrowsItemIds = Arrays.asList(AHRIMS_HOOD, AHRIMS_STAFF, AHRIMS_ROBETOP, AHRIMS_ROBESKIRT, DHAROKS_HELM, DHAROKS_GREATAXE, DHAROKS_PLATEBODY,
         DHAROKS_PLATELEGS, GUTHANS_HELM, GUTHANS_WARSPEAR, GUTHANS_PLATEBODY, GUTHANS_CHAINSKIRT, KARILS_COIF, KARILS_CROSSBOW, KARILS_LEATHERTOP, KARILS_LEATHERSKIRT, TORAGS_HELM,

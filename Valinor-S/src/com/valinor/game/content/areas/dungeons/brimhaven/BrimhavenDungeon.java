@@ -11,7 +11,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.StepType;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -20,7 +20,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date maart 07, 2020 17:14
  */
-public class BrimhavenDungeon extends PacketInteraction {
+public class BrimhavenDungeon extends Interaction {
 
     private static void chopDown(Player player, GameObject vines) {
         Woodcutting.Hatchet axe = Woodcutting.findAxe(player).orElse(null);

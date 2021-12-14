@@ -4,9 +4,9 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class VorkathArea extends PacketInteraction {
+public class VorkathArea extends Interaction {
 
     public void poke(Player player) {
         if (player.getVorkathState() == VorkathState.AWAKE) {

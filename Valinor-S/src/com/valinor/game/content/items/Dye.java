@@ -2,7 +2,7 @@ package com.valinor.game.content.items;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -11,7 +11,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 02, 2021
  */
-public class Dye extends PacketInteraction {
+public class Dye extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

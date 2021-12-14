@@ -21,7 +21,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.ObjectIdentifiers;
 import com.valinor.util.Utils;
@@ -38,7 +38,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author PVE
  * @Since augustus 29, 2020
  */
-public class Woodcutting extends PacketInteraction {
+public class Woodcutting extends Interaction {
 
     public enum Tree {
         REGULAR(ItemIdentifiers.LOGS, "logs", 1, 55, 25.0, 75, true, 2764),

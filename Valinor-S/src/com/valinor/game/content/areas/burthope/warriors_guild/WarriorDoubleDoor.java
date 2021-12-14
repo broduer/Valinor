@@ -12,7 +12,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -23,7 +23,7 @@ import static com.valinor.util.ObjectIdentifiers.DOOR_24309;
  * @author Patrick van Elderen | March, 26, 2021, 09:54
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class WarriorDoubleDoor extends PacketInteraction {
+public class WarriorDoubleDoor extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

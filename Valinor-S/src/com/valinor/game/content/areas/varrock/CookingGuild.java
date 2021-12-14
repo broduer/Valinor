@@ -10,7 +10,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.object.doors.Door;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.game.world.object.doors.Doors.CACHE;
@@ -19,7 +19,7 @@ import static com.valinor.game.world.object.doors.Doors.CACHE;
  * @author Patrick van Elderen | April, 14, 2021, 19:20
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class CookingGuild extends PacketInteraction {
+public class CookingGuild extends Interaction {
 
     private final static int CHEF = 2658;
     private final static int CHEFS_HAT = 1949;

@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.IMPLING_JAR;
 
@@ -13,7 +13,7 @@ import static com.valinor.util.ItemIdentifiers.IMPLING_JAR;
  * @author Patrick van Elderen | March, 08, 2021, 09:03
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class ImplingLoot extends PacketInteraction {
+public class ImplingLoot extends Interaction {
 
     public enum ImplingJar {
 

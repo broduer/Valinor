@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
@@ -23,7 +23,7 @@ import static com.valinor.util.ObjectIdentifiers.BRIMSTONE_CHEST;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 17, 2021
  */
-public class BrimstoneKey extends PacketInteraction {
+public class BrimstoneKey extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

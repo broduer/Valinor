@@ -4,7 +4,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -19,7 +19,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | March, 21, 2021, 23:49
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class MysteryChest extends PacketInteraction {
+public class MysteryChest extends Interaction {
 
     //1/10
     private final List<Item> RARE_REWARDS = Arrays.asList(

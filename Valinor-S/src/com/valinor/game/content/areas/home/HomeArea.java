@@ -24,7 +24,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
@@ -39,7 +39,7 @@ import static com.valinor.util.ObjectIdentifiers.ALTAR;
  * @author Patrick van Elderen | April, 23, 2021, 10:49
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class HomeArea extends PacketInteraction {
+public class HomeArea extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

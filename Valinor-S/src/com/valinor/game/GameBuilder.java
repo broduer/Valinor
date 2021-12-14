@@ -13,7 +13,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.definition.loader.impl.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.players.PromoCodeCommand;
 import com.valinor.game.world.region.RegionManager;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.BackgroundLoader;
 import com.valinor.util.PlayerPunishment;
 
@@ -74,7 +74,7 @@ public class GameBuilder {
         tasks.add(StarterBox::init);
         tasks.add(PromoCodeCommand::init);
         tasks.add(PlayerPunishment::init);
-        tasks.add(PacketInteractionManager::init);
+        tasks.add(InteractionManager::init);
 
         //Load definitions..
         tasks.add(TradingPost::init);

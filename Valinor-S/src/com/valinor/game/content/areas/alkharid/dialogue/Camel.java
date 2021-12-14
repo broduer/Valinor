@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ import static com.valinor.util.NpcIdentifiers.OLLIE_THE_CAMEL;
  * @author Patrick van Elderen | April, 14, 2021, 18:20
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class Camel extends PacketInteraction {
+public class Camel extends Interaction {
 
     private final static List<Integer> CAMELS = Arrays.asList(OLLIE_THE_CAMEL, CAMEL);
 

@@ -13,7 +13,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
@@ -22,7 +22,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
 /**
  * Created by Carl on 2015-08-12.
  */
-public class BoneBurying extends PacketInteraction {
+public class BoneBurying extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

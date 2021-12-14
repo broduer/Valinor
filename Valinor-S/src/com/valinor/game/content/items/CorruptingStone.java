@@ -2,13 +2,13 @@ package com.valinor.game.content.items;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.CustomItemIdentifiers.CORRUPTING_STONE;
 import static com.valinor.util.ItemIdentifiers.CORRUPTED_YOUNGLLEF;
 import static com.valinor.util.ItemIdentifiers.YOUNGLLEF;
 
-public class CorruptingStone extends PacketInteraction {
+public class CorruptingStone extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

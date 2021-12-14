@@ -2,7 +2,7 @@ package com.valinor.game.content.items.combine;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class BrimstoneRing extends PacketInteraction {
+public class BrimstoneRing extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

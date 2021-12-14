@@ -4,7 +4,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 02, 2020
  */
-public class ChristmasCrackers extends PacketInteraction {
+public class ChristmasCrackers extends Interaction {
 
     private static final ArrayList<Item> normal_partyhat = new ArrayList<Item>(Arrays.asList(new Item(RED_PARTYHAT, 1), new Item(GREEN_PARTYHAT, 1), new Item(WHITE_PARTYHAT, 1), new Item(YELLOW_PARTYHAT, 1), new Item(BLUE_PARTYHAT, 1), new Item(PURPLE_PARTYHAT, 1)));
     private static final ArrayList<Item> rare_partyhat = new ArrayList<Item>(Arrays.asList(new Item(RAINBOW_PARTYHAT, 1), new Item(BLACK_PARTYHAT, 1), new Item(PARTYHAT__SPECS, 1)));

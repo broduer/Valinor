@@ -8,7 +8,7 @@ import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -82,7 +82,7 @@ public class ObjectActions {
                 return;
             }
 
-            if (PacketInteractionManager.checkObjectInteraction(player, object, 1)) {
+            if (InteractionManager.checkObjectInteraction(player, object, 1)) {
                 return;
             }
 
@@ -116,7 +116,7 @@ public class ObjectActions {
                 return;
             }
 
-            if (PacketInteractionManager.checkObjectInteraction(player, object, 2)) {
+            if (InteractionManager.checkObjectInteraction(player, object, 2)) {
                 //System.out.println("object option 2, checkObjectInteraction.");
                 return;
             }
@@ -140,7 +140,7 @@ public class ObjectActions {
                 }
             }
 
-            if (PacketInteractionManager.checkObjectInteraction(player, object, 3)) {
+            if (InteractionManager.checkObjectInteraction(player, object, 3)) {
                 return;
             }
             return;
@@ -153,7 +153,7 @@ public class ObjectActions {
                 }
             }
 
-            if (PacketInteractionManager.checkObjectInteraction(player, object, 4)) {
+            if (InteractionManager.checkObjectInteraction(player, object, 4)) {
                 return;
             }
 

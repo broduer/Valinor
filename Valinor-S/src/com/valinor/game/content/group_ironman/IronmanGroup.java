@@ -7,6 +7,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.bank.GroupStorage;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -22,7 +23,7 @@ import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP
  *
  * @author optimum on 14/05/2020
  */
-public class IronmanGroup {
+public class IronmanGroup extends Interaction {
 
     @Expose
     private String groupName;

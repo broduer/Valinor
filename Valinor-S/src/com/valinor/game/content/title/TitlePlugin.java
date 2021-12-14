@@ -9,9 +9,7 @@ import com.valinor.game.content.title.req.impl.pvm.SlayerTaskRequirement;
 import com.valinor.game.content.title.req.impl.pvm.WildernessBossRequirement;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.CustomItemIdentifiers;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -26,7 +24,7 @@ import java.util.stream.Collectors;
 
 import static com.valinor.game.content.title.TitleCategory.*;
 
-public class TitlePlugin extends PacketInteraction {
+public class TitlePlugin extends Interaction {
 
     private static final Logger log = LoggerFactory.getLogger(TitlePlugin.class);
 

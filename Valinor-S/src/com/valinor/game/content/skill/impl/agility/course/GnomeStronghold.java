@@ -16,8 +16,7 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.Utils;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
@@ -26,7 +25,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
 /**
  * Created by Situations on 10/28/2015
  */
-public class GnomeStronghold extends PacketInteraction {
+public class GnomeStronghold extends Interaction {
     
     private void putStage(Player player, int stageBit) {
         int stage = player.getAttribOr(AttributeKey.GNOME_COURSE_STATE, 0);

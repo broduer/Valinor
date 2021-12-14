@@ -5,7 +5,7 @@ import com.valinor.game.task.impl.TickAndStop;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.STATUE_27785;
 
@@ -13,7 +13,7 @@ import static com.valinor.util.ObjectIdentifiers.STATUE_27785;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date februari 29, 2020 22:03
  */
-public class Statue extends PacketInteraction {
+public class Statue extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

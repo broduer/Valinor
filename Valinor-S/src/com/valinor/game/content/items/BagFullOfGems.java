@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -16,7 +16,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | April, 02, 2021, 11:19
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class BagFullOfGems extends PacketInteraction {
+public class BagFullOfGems extends Interaction {
 
     private static final int NOTED_UNCUT_SAPPHIRE = UNCUT_SAPPHIRE + 1;
     private static final int NOTED_UNCUT_EMERALD = UNCUT_EMERALD + 1;

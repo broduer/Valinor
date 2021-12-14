@@ -1,7 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.account.AccountSelection;
 import com.valinor.game.content.packet_actions.interactions.buttons.Buttons;
 import com.valinor.game.task.Task;
 import com.valinor.game.world.entity.AttributeKey;
@@ -9,7 +8,7 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerD
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import io.netty.buffer.Unpooled;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -171,7 +170,7 @@ public class ButtonClickPacketListener implements PacketListener {
             return;
         }
 
-        if (PacketInteractionManager.checkButtonInteraction(player, button)) {
+        if (InteractionManager.checkButtonInteraction(player, button)) {
             return;
         }
 

@@ -4,7 +4,7 @@ import com.valinor.game.content.areas.varrock.CookingGuild;
 import com.valinor.game.content.skill.impl.agility.course.WildernessCourse;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
 /**
  * @author Heaven
  */
-public class Doors extends PacketInteraction {
+public class Doors extends Interaction {
 
     private final List<Integer> have_scripts = Arrays.asList(WildernessCourse.LOWER_GATE, WildernessCourse.UPPERGATE_EAST, WildernessCourse.UPPERGATE_WEST, CookingGuild.GUILD_DOOR, 11728, 24057,
         DOOR_24058, DOOR_11727, DOOR_24309, DOOR_24306, DOOR_24318, DOOR_2108, DOOR_2111, DOOR_2112, DOOR_2113, DOOR_10043, DOOR_1536);

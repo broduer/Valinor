@@ -9,7 +9,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
@@ -20,7 +20,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | May, 10, 2021, 11:09
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class Chamber extends PacketInteraction {
+public class Chamber extends Interaction {
 
     private static final String[] QUOTES = {
         "It's got horrible breath!",

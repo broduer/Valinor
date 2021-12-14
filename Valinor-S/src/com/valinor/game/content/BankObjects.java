@@ -10,10 +10,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
-
-import java.util.Arrays;
-import java.util.List;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.ItemIdentifiers.PLATINUM_TOKEN;
@@ -23,7 +20,7 @@ import static com.valinor.util.ObjectIdentifiers.OPEN_CHEST_3194;
  * @author PVE
  * @Since juli 19, 2020
  */
-public class BankObjects extends PacketInteraction {
+public class BankObjects extends Interaction {
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject obj) {

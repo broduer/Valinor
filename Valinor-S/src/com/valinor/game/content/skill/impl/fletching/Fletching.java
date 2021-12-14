@@ -15,7 +15,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +28,7 @@ import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 17, 2020
  */
-public class Fletching extends PacketInteraction {
+public class Fletching extends Interaction {
 
     private static final Logger logger = LogManager.getLogger();
 

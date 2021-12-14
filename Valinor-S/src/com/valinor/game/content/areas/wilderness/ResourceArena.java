@@ -16,7 +16,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import static com.valinor.util.NpcIdentifiers.PILES;
 import static com.valinor.util.NpcIdentifiers.ROCKS_6601;
 import static com.valinor.util.ObjectIdentifiers.GATE_26760;
 
-public class ResourceArena extends PacketInteraction {
+public class ResourceArena extends Interaction {
 
     private static final Area ARENA_BOUNDARIES = new Area(3174, 3924, 3196, 3944);
     public static int[] ALLOWED_EXCHANGE = new int[] {440, 453, 444, 447, 449, 451, 1515, 1513, 11936, 11934, 2349, 2351, 2353, 2355, 2357, 2359, 2361, 2363, 451, 13439, 10138};

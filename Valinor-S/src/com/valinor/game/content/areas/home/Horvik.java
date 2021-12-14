@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NumberUtils;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -16,7 +16,7 @@ import static com.valinor.util.NpcIdentifiers.HORVIK;
  * @author Patrick van Elderen | April, 23, 2021, 13:34
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class Horvik extends PacketInteraction {
+public class Horvik extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

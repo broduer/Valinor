@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.MemberRights;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -17,7 +17,7 @@ import static com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP;
  * @author Patrick van Elderen | January, 11, 2021, 13:26
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class DoubleDropLamp extends PacketInteraction {
+public class DoubleDropLamp extends Interaction {
 
     private int ticks(MemberRights memberRights) {
         int ticks = 0;

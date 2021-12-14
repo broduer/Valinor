@@ -15,7 +15,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -27,7 +27,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 07, 2020
  */
-public class AlKharidCourse extends PacketInteraction {
+public class AlKharidCourse extends Interaction {
 
     private static final List<Tile> MARK_SPOTS = Arrays.asList(
         new Tile(3276, 3188, 3),

@@ -1,15 +1,13 @@
 package com.valinor.game.content.seasonal_events.halloween;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards.UNLOCKED_ITEM_SLOT;
-import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.HWEEN_TOKENS;
 import static com.valinor.util.NpcIdentifiers.KILLER;
 import static com.valinor.util.NpcIdentifiers.TEACHER_AND_PUPIL_1922;
@@ -27,7 +24,7 @@ import static com.valinor.util.NpcIdentifiers.TEACHER_AND_PUPIL_1922;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since October 12, 2021
  */
-public class Halloween extends PacketInteraction {
+public class Halloween extends Interaction {
 
     private static final Logger logger = LogManager.getLogger(Halloween.class);
 

@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ItemIdentifiers.SHIELD_LEFT_HALF;
@@ -15,7 +15,7 @@ import static com.valinor.util.ItemIdentifiers.SHIELD_RIGHT_HALF;
  * @author Patrick van Elderen | March, 16, 2021, 14:24
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class DragonSquare extends PacketInteraction {
+public class DragonSquare extends Interaction {
 
     private static final int LEFT = 2366;
     private static final int RIGHT = 2368;

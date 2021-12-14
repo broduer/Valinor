@@ -15,7 +15,7 @@ import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import java.util.Optional;
 
@@ -29,7 +29,7 @@ import static com.valinor.game.world.InterfaceConstants.*;
 public class SecondContainerAction {
 
     public static void secondAction(Player player, int interfaceId, int slot, int id) {
-        if (PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 2)) {
+        if (InteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 2)) {
             return;
         }
 

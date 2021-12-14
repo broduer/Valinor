@@ -7,7 +7,7 @@ import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.ENCHANTED_GEM;
 
@@ -15,7 +15,7 @@ import static com.valinor.util.ItemIdentifiers.ENCHANTED_GEM;
  * @author Patrick van Elderen | December, 24, 2020, 13:05
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class EnchantedGem extends PacketInteraction {
+public class EnchantedGem extends Interaction {
 
     @Override
     public boolean handleEquipment(Player player, Item item) {

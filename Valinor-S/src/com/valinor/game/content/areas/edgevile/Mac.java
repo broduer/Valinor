@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import static com.valinor.game.world.entity.dialogue.Expression.HAPPY;
@@ -18,7 +18,7 @@ import static com.valinor.util.ItemIdentifiers.COINS_995;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 20, 2020
  */
-public class Mac extends PacketInteraction {
+public class Mac extends Interaction {
 
     // We're 1 skill short, Construction.
     public static int TOTAL_LEVEL_FOR_MAXED = 2178 + 1; // 22 99's and 1 last level you can't level up (construction)

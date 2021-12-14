@@ -3,7 +3,7 @@ package com.valinor.game.content.account;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.FileUtil;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.Level;
@@ -22,7 +22,7 @@ import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.STARTER_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class StarterBox extends PacketInteraction {
+public class StarterBox extends Interaction {
 
     private static final Logger starterBoxLogs = LogManager.getLogger("StarterBoxLogs");
     private static final Level STARTER_BOX_LOGS;

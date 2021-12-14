@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.HANDHOLDS;
 
@@ -16,7 +16,7 @@ import static com.valinor.util.ObjectIdentifiers.HANDHOLDS;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * april 20, 2020
  */
-public class HandHolds extends PacketInteraction {
+public class HandHolds extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

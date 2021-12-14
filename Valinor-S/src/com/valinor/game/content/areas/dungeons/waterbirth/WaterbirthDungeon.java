@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.DOOR_8963;
@@ -14,7 +14,7 @@ import static com.valinor.util.ObjectIdentifiers.DOOR_8963;
  * @author Patrick van Elderen | March, 04, 2021, 13:08
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class WaterbirthDungeon extends PacketInteraction {
+public class WaterbirthDungeon extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

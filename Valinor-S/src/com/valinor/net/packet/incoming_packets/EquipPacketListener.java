@@ -13,7 +13,7 @@ import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.items.container.looting_bag.LootingBag;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.ItemIdentifiers;
 
 /**
@@ -75,7 +75,7 @@ public class EquipPacketListener implements PacketListener {
 
                 Transmogrify.onItemEquip(player, item);
 
-                if(PacketInteractionManager.onEquipItem(player, item)) {
+                if(InteractionManager.onEquipItem(player, item)) {
                     return;
                 }
 

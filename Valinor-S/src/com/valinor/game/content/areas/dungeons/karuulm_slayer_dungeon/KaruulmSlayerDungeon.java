@@ -10,7 +10,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.Direction;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -22,7 +22,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | March, 04, 2021, 20:12
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class KaruulmSlayerDungeon extends PacketInteraction {
+public class KaruulmSlayerDungeon extends Interaction {
 
     private static final Area[] SLAYER_ONLY_AREA = {
         new Area(1251, 10147, 1279, 10170, 0), // Wyrms

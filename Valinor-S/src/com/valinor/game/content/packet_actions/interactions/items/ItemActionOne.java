@@ -17,7 +17,6 @@ import com.valinor.game.content.skill.impl.slayer.content.ImbuedHeart;
 import com.valinor.game.content.skill.impl.woodcutting.BirdNest;
 import com.valinor.game.content.tasks.rewards.TaskReward;
 import com.valinor.game.content.treasure.TreasureRewardCaskets;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.dialogue.TeleportToTargetScrollD;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
@@ -26,7 +25,7 @@ import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
@@ -40,7 +39,7 @@ public class ItemActionOne {
 
     public static void click(Player player, Item item) {
         int id = item.getId();
-        if (PacketInteractionManager.checkItemInteraction(player, item, 1)) {
+        if (InteractionManager.checkItemInteraction(player, item, 1)) {
             return;
         }
         if (TreasureRewardCaskets.openCasket(player, item)) {

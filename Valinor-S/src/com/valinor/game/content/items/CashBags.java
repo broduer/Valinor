@@ -2,13 +2,13 @@ package com.valinor.game.content.items;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * @author Patrick van Elderen | May, 26, 2021, 14:54
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class CashBags extends PacketInteraction {
+public class CashBags extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

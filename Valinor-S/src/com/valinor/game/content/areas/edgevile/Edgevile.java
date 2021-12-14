@@ -15,7 +15,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.NpcIdentifiers.EMBLEM_TRADER;
@@ -25,7 +25,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date februari 21, 2020 17:06
  */
-public class Edgevile extends PacketInteraction {
+public class Edgevile extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

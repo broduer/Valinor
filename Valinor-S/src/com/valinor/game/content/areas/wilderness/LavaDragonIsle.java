@@ -7,7 +7,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ObjectIdentifiers.STEPPING_STONE_14918;
@@ -16,7 +16,7 @@ import static com.valinor.util.ObjectIdentifiers.STEPPING_STONE_14918;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * mei 11, 2020
  */
-public class LavaDragonIsle extends PacketInteraction {
+public class LavaDragonIsle extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

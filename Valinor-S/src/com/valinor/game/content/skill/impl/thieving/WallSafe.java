@@ -8,7 +8,7 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -19,7 +19,7 @@ import static com.valinor.util.ObjectIdentifiers.WALL_SAFE;
  * @author Patrick van Elderen | March, 26, 2021, 10:56
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class WallSafe extends PacketInteraction {
+public class WallSafe extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

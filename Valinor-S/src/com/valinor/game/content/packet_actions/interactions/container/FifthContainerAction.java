@@ -13,7 +13,7 @@ import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 
 import java.util.Optional;
 
@@ -29,7 +29,7 @@ public class FifthContainerAction {
     public static void fifthAction(Player player, int interfaceId, int slot, int id) {
         boolean banking = player.getAttribOr(AttributeKey.BANKING, false);
         boolean priceChecking = player.getAttribOr(AttributeKey.PRICE_CHECKING, false);
-        if(PacketInteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 5)) {
+        if(InteractionManager.checkItemContainerActionInteraction(player, new Item(id), slot, interfaceId, 5)) {
             return;
         }
 

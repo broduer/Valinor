@@ -6,9 +6,9 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class IronGates extends PacketInteraction {
+public class IronGates extends Interaction {
 
     // 1 = north, 2 = east, 3 = south, 0 = west
 

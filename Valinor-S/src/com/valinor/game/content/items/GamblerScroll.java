@@ -3,12 +3,12 @@ package com.valinor.game.content.items;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import static com.valinor.util.CustomItemIdentifiers.GAMBLER_SCROLL;
 
-public class GamblerScroll extends PacketInteraction {
+public class GamblerScroll extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

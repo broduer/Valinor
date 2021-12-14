@@ -4,7 +4,7 @@ import com.valinor.game.content.areas.burthope.warriors_guild.dialogue.*;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -12,7 +12,7 @@ import static com.valinor.util.NpcIdentifiers.*;
  * @author Patrick van Elderen | April, 14, 2021, 18:30
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class WarriorsGuildNpcInteractions extends PacketInteraction {
+public class WarriorsGuildNpcInteractions extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

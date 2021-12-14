@@ -15,7 +15,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.StepType;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -27,7 +27,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 14, 2020
  */
-public class FaladorRooftop extends PacketInteraction {
+public class FaladorRooftop extends Interaction {
 
     private static final List<Tile> MARK_SPOTS = Arrays.asList(
         new Tile(3038, 3343, 3),

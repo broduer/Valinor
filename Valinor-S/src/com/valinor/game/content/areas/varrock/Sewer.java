@@ -2,7 +2,7 @@ package com.valinor.game.content.areas.varrock;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ItemIdentifiers.MOSSY_KEY;
 import static com.valinor.util.ObjectIdentifiers.GATE_32534;
@@ -12,7 +12,7 @@ import static com.valinor.util.ObjectIdentifiers.ROCK_PILE_32535;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 29, 2021
  */
-public class Sewer extends PacketInteraction {
+public class Sewer extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

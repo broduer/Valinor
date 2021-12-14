@@ -2,9 +2,9 @@ package com.valinor.game.content.areas.dungeons.godwars;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class BossRoomDoors extends PacketInteraction {
+public class BossRoomDoors extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

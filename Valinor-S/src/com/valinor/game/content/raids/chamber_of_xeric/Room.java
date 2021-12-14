@@ -5,7 +5,7 @@ import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -14,7 +14,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since October 29, 2021
  */
-public class Room extends PacketInteraction {
+public class Room extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

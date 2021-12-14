@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Patrick van Elderen | March, 16, 2021, 14:14
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class DragonEquipmentOrnamentKits extends PacketInteraction {
+public class DragonEquipmentOrnamentKits extends Interaction {
 
     // raw items
     private final static int SQSHIELD = 1187;

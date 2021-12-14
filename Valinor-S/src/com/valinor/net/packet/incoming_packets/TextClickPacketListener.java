@@ -3,7 +3,7 @@ package com.valinor.net.packet.incoming_packets;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +31,7 @@ public class TextClickPacketListener implements PacketListener {
             return;
         }
 
-        if (PacketInteractionManager.checkButtonInteraction(player, textFrame)) {
+        if (InteractionManager.checkButtonInteraction(player, textFrame)) {
             return;
         }
     }

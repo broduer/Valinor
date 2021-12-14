@@ -9,17 +9,16 @@ import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.StepType;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
-import static com.valinor.util.ItemIdentifiers.WILDERNESS_SWORD_4;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 27, 2021
  */
-public class ForthosDungeon extends PacketInteraction {
+public class ForthosDungeon extends Interaction {
 
     private static final Area SARACHNIS = new Area(1829, 9888, 1851, 9911, 0);
     public static int KNIFE = 946;

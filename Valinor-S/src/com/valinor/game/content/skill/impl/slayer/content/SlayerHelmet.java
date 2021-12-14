@@ -4,7 +4,7 @@ import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
 /**
@@ -13,7 +13,7 @@ import com.valinor.util.ItemIdentifiers;
  * @author Patrick van Elderen | 23 jan. 2017 : 19:32:54
  * @see <a href="https://www.rune-server.ee/members/_Patrick_/">Rune-Server profile</a>
  */
-public class SlayerHelmet extends PacketInteraction {
+public class SlayerHelmet extends Interaction {
 
     private static final int NOSE_PEG = ItemIdentifiers.NOSE_PEG;
     private static final int FACEMASK = ItemIdentifiers.FACEMASK;

@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -22,7 +22,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * april 18, 2020
  */
-public class CrystalKey extends PacketInteraction {
+public class CrystalKey extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

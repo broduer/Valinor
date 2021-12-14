@@ -8,15 +8,14 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import java.util.Arrays;
 
-import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
 
-public class RedeemableBonds extends PacketInteraction {
+public class RedeemableBonds extends Interaction {
 
     private enum Bond {
 

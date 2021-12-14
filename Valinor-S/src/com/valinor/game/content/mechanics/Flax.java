@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -12,7 +12,7 @@ import com.valinor.util.chainedwork.Chain;
  * @author Patrick van Elderen | May, 26, 2021, 08:50
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class Flax extends PacketInteraction {
+public class Flax extends Interaction {
 
     private static final int FLAX = 14896;
 

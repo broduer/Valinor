@@ -3,13 +3,13 @@ package com.valinor.game.content.items.combine;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * @author Patrick van Elderen | March, 16, 2021, 14:33
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class GodswordParts extends PacketInteraction {
+public class GodswordParts extends Interaction {
 
     private final static int SHARD1 = 11818;
     private final static int SHARD2 = 11820;

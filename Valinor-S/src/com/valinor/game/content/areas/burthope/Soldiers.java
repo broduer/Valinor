@@ -2,7 +2,7 @@ package com.valinor.game.content.areas.burthope;
 
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ import static com.valinor.util.NpcIdentifiers.*;
  * @author Patrick van Elderen | March, 26, 2021, 09:44
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class Soldiers extends PacketInteraction {
+public class Soldiers extends Interaction {
 
     private static final List<Integer> EATING_SOLDIERS = Arrays.asList(SOLDIER_4089, SOLDIER_4090, SOLDIER_4091);
 

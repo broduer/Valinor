@@ -7,14 +7,14 @@ import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
 /**
  * @author Patrick van Elderen | December, 28, 2020, 15:28
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class AchievementCape extends PacketInteraction {
+public class AchievementCape extends Interaction {
 
     private void teleport(Player player) {
         Tile tile = GameServer.properties().defaultTile;

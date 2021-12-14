@@ -10,13 +10,13 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
 
-public class Ladders extends PacketInteraction {
+public class Ladders extends Interaction {
 
     public static void ladderDown(Player player, Tile tile, boolean animate) {
         if (animate)

@@ -26,7 +26,7 @@ import com.valinor.game.world.entity.mob.npc.pets.insurance.PetInsurance;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
@@ -49,7 +49,7 @@ public class NPCActions extends NpcIdentifiers {
     public static void handleAction(Player player, Npc npc, int clickAction) {
         boolean handled = false;
         if (clickAction == 1) {
-            if (PacketInteractionManager.checkNpcInteraction(player, npc, 1)) {
+            if (InteractionManager.checkNpcInteraction(player, npc, 1)) {
                 return;
             }
 
@@ -157,7 +157,7 @@ public class NPCActions extends NpcIdentifiers {
         }
 
         if (clickAction == 2) {
-            if (PacketInteractionManager.checkNpcInteraction(player, npc, 2)) {
+            if (InteractionManager.checkNpcInteraction(player, npc, 2)) {
                 return;
             }
 
@@ -234,7 +234,7 @@ public class NPCActions extends NpcIdentifiers {
         }
 
         if (clickAction == 3) {
-            if (PacketInteractionManager.checkNpcInteraction(player, npc, 3)) {
+            if (InteractionManager.checkNpcInteraction(player, npc, 3)) {
                 return;
             }
 
@@ -274,7 +274,7 @@ public class NPCActions extends NpcIdentifiers {
             }
         }
         if (clickAction == 4) {
-            if (PacketInteractionManager.checkNpcInteraction(player, npc, 4)) {
+            if (InteractionManager.checkNpcInteraction(player, npc, 4)) {
                 return;
             }
 

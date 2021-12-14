@@ -17,7 +17,7 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -26,7 +26,7 @@ import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 /**
  * Created by Jak on 13/06/2016.
  */
-public class Barbarian extends PacketInteraction {
+public class Barbarian extends Interaction {
 
     private static final int ENTRANCE_PIPE = 20210;
     private static final int ROPE_SWING = 23131;

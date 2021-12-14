@@ -6,12 +6,12 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 
 /**
- * Represents the packet interaction
+ * Represents the interaction
  *
  * @author 2012
  *
  */
-public abstract class PacketInteraction {
+public abstract class Interaction {
 
     public boolean handleEquipment(Player player, Item item) { return false;}
 

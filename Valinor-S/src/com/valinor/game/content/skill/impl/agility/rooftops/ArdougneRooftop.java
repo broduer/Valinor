@@ -14,7 +14,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 14, 2020
  */
-public class ArdougneRooftop extends PacketInteraction {
+public class ArdougneRooftop extends Interaction {
 
     private static final List<Tile> MARK_SPOTS = Arrays.asList(new Tile(2671, 3304, 3), new Tile(2663, 3318, 3), new Tile(2654, 3318, 3), new Tile(2653, 3313, 3), new Tile(2653, 3302, 3));
 

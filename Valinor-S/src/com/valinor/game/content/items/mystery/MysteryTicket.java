@@ -4,7 +4,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -15,7 +15,7 @@ import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
-public class MysteryTicket extends PacketInteraction {
+public class MysteryTicket extends Interaction {
 
     //1/10
     private final List<Item> RARE_REWARDS = Arrays.asList(

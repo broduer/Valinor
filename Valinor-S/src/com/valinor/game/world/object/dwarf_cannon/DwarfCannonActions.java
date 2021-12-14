@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.ObjectIdentifiers;
 import com.valinor.util.chainedwork.Chain;
@@ -16,7 +16,7 @@ import static com.valinor.game.world.object.dwarf_cannon.DwarfCannon.*;
  * @author Patrick van Elderen | April, 18, 2021, 18:34
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class DwarfCannonActions extends PacketInteraction {
+public class DwarfCannonActions extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

@@ -2,7 +2,6 @@ package com.valinor.game.content.skill.impl.mining;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
-import com.valinor.game.content.areas.falador.MiningGuild;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -20,7 +19,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -39,7 +38,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * <p>
  * Handles the mining skill, as well as a few utility functions to add mining-like features elsewhere in the game.
  */
-public class Mining extends PacketInteraction {
+public class Mining extends Interaction {
 
     public enum Rock {
         CLAY(434, "clay", 1, 15, 5.0, 3, 74160),

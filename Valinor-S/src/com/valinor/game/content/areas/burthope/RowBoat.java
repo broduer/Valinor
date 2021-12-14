@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.ROW_BOAT_27066;
 
@@ -12,7 +12,7 @@ import static com.valinor.util.ObjectIdentifiers.ROW_BOAT_27066;
  * @author Patrick van Elderen | March, 26, 2021, 09:30
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class RowBoat extends PacketInteraction {
+public class RowBoat extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

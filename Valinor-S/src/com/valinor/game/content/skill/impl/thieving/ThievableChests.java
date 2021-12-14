@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Jak on 23/08/2016.
  */
-public class ThievableChests extends PacketInteraction {
+public class ThievableChests extends Interaction {
 
     static class Loot {
         private final int id;

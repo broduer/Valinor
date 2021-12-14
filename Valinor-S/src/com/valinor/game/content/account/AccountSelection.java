@@ -6,8 +6,7 @@ import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.*;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
-import com.valinor.util.Color;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -18,7 +17,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen | 24 sep. 2021 : 19:56:14
  * @see <a href="https://github.com/PVE95/">Github profile</a>
  */
-public class AccountSelection extends PacketInteraction {
+public class AccountSelection extends Interaction {
 
     public static void open(Player player) {
         player.getInterfaceManager().open(42400);

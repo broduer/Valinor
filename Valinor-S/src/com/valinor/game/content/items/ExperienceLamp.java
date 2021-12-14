@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -20,7 +20,7 @@ import static com.valinor.util.ItemIdentifiers.ANTIQUE_LAMP_11137;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 18, 2021
  */
-public class ExperienceLamp extends PacketInteraction {
+public class ExperienceLamp extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

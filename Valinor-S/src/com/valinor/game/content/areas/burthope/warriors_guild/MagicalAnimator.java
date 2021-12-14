@@ -12,7 +12,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Tuple;
 import com.valinor.util.chainedwork.Chain;
 
@@ -26,7 +26,7 @@ import static com.valinor.util.ObjectIdentifiers.MAGICAL_ANIMATOR;
  * @author Patrick van Elderen | March, 26, 2021, 09:51
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class MagicalAnimator extends PacketInteraction {
+public class MagicalAnimator extends Interaction {
 
     public enum ArmourSets {
         BRONZE(2450, new Item(1075), new Item(1117), new Item(1155)),

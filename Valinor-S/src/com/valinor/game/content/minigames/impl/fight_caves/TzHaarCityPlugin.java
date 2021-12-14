@@ -3,18 +3,17 @@ package com.valinor.game.content.minigames.impl.fight_caves;
 import com.valinor.game.content.bank_pin.dialogue.BankTellerDialogue;
 import com.valinor.game.content.minigames.MinigameManager;
 import com.valinor.game.content.minigames.impl.fight_caves.dialogue.TzHaarMejJalDialogue;
-import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.NpcIdentifiers;
 
 /**
  * Created by Kaleem on 19/08/2017.
  */
-public class TzHaarCityPlugin extends PacketInteraction {
+public class TzHaarCityPlugin extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

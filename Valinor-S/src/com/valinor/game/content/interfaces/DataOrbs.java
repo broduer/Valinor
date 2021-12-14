@@ -3,11 +3,11 @@ package com.valinor.game.content.interfaces;
 import com.valinor.game.content.areas.edgevile.BobBarter;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.SecondsTimer;
 
-public class DataOrbs extends PacketInteraction {
+public class DataOrbs extends Interaction {
 
     private final SecondsTimer button_delay = new SecondsTimer();
 

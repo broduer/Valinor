@@ -1,13 +1,11 @@
 package com.valinor.game.content.items.combine;
 
-import com.valinor.fs.ItemDefinition;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +17,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * juni 28, 2020
  */
-public class ItemCombination extends PacketInteraction {
+public class ItemCombination extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

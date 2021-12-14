@@ -5,13 +5,13 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * @author Patrick van Elderen | March, 16, 2021, 14:47
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class SmoulderingStone extends PacketInteraction {
+public class SmoulderingStone extends Interaction {
 
     private final static int SMOULDERING_STONE = 13233;
     private final static int INFERNAL_PICKAXE = 13243;

@@ -1,9 +1,9 @@
 package com.valinor.game.content.gambling;
 
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
-public class GambleInterface extends PacketInteraction {
+public class GambleInterface extends Interaction {
 
     @Override
     public boolean handleButtonInteraction(Player player, int button) {

@@ -5,18 +5,17 @@ import com.valinor.game.content.syntax.impl.SetGroupName;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 /**
  * @author optimum on 14/05/2020
  */
-public class GroupIronmanInterface extends PacketInteraction {
+public class GroupIronmanInterface extends Interaction {
 
     public static final int INTERFACE_ID = 67_000;
     public static final int LEADERBOARD_GROUP_NAME = 67131;

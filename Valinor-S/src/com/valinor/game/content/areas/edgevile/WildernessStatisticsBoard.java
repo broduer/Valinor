@@ -4,14 +4,14 @@ import com.valinor.game.content.areas.edgevile.dialogue.WildernessStatBoardDialo
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 /**
  * @author Patrick van Elderen | December, 09, 2020, 14:11
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class WildernessStatisticsBoard extends PacketInteraction {
+public class WildernessStatisticsBoard extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

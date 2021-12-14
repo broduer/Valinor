@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteractionManager;
+import com.valinor.net.packet.interaction.InteractionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -33,7 +33,7 @@ public class ItemOnObject {
 
         Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
 
-        if (PacketInteractionManager.checkItemOnObjectInteraction(player, item, object)) {
+        if (InteractionManager.checkItemOnObjectInteraction(player, item, object)) {
             return;
         }
 

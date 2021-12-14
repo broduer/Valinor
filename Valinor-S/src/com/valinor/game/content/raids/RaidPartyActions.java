@@ -11,7 +11,7 @@ import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +25,7 @@ import static com.valinor.util.ObjectIdentifiers.RECRUITING_BOARD;
  * @author Patrick van Elderen | April, 26, 2021, 17:25
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class RaidPartyActions extends PacketInteraction {
+public class RaidPartyActions extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {

@@ -3,11 +3,11 @@ package com.valinor.game.content.areas.wilderness;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.util.ObjectIdentifiers.*;
 
-public class DarkWarriorFortress extends PacketInteraction {
+public class DarkWarriorFortress extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

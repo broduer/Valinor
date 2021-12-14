@@ -5,12 +5,12 @@ import com.valinor.game.task.impl.TickAndStop;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * Created by Nick on 8/28/2016.
  */
-public class WildernessGodWarsDungeon extends PacketInteraction {
+public class WildernessGodWarsDungeon extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {

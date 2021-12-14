@@ -6,13 +6,13 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.CORRUPTED_HUNLLEF;
 
-public class CorruptTotem extends PacketInteraction {
+public class CorruptTotem extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {

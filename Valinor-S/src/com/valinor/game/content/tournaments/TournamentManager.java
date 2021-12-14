@@ -2,8 +2,6 @@ package com.valinor.game.content.tournaments;
 
 import com.valinor.GameServer;
 import com.valinor.game.GameEngine;
-import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -21,7 +19,7 @@ import com.valinor.game.world.items.container.inventory.Inventory;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
@@ -57,7 +55,7 @@ import static java.lang.String.format;
  * @author Shadowrs (tardisfan121@gmail.com)
  */
 @SuppressWarnings("ALL")
-public class TournamentManager extends PacketInteraction {
+public class TournamentManager extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject gameObject, int option) {

@@ -3,12 +3,12 @@ package com.valinor.game.content.areas.dungeons.fremennik_slayer_dungeon;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.PacketInteraction;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ObjectIdentifiers.CAVE_ENTRANCE_2123;
 
-public class SlayercaveEntrance extends PacketInteraction {
+public class SlayercaveEntrance extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
