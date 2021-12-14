@@ -39,7 +39,7 @@ public class MutePlayerCommand implements Command {
             if (playerToMute.isPresent()) {
                 if (playerToMute.get().getPlayerRights().isStaffMember(playerToMute.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You cannot mute this player.");
-                    logger.warn(player.getUsername() + " tried to mute " + playerToMute.get().getUsername(), "warning");
+                    //logger.warn(player.getUsername() + " tried to mute " + playerToMute.get().getUsername(), "warning");
                     return;
                 }
 
@@ -52,7 +52,6 @@ public class MutePlayerCommand implements Command {
             playerToMute.ifPresent(value -> value.putAttrib(AttributeKey.MUTED,true));
             PlayerPunishment.mute(username);
             player.message("Player " + username + " was successfully muted.");
-            Utils.sendDiscordInfoLog("Player " + username + " was muted by " + player.getUsername(), "sanctions");
         }
     }
 
@@ -136,21 +135,18 @@ public class MutePlayerCommand implements Command {
                     if (plr.isPresent()) {
                         if (plr.get().getPlayerRights().greater(player.getPlayerRights())) {
                             player.message("You cannot mute that player!");
-                            Utils.sendDiscordInfoLog(player.getUsername() + " tried to mute " + plr.get().getUsername(), "warning");
-                            logger.warn(player.getUsername() + " tried to mute " + plr.get().getUsername(), "warning");
+                            //logger.warn(player.getUsername() + " tried to mute " + plr.get().getUsername(), "warning");
                             return;
                         }
                         plr.get().putAttrib(AttributeKey.MUTED,true);
                         plr.get().message("You have been muted until " + unmuteTimestamp + " for: " + input);
                         GameServer.getDatabaseService().submit(new MutePlayerDatabaseTransaction(username, unmuteTimestamp, input));
                         player.message("Player " + username + " was successfully muted until " + unmuteTimestamp + " for: " + input);
-                        Utils.sendDiscordInfoLog("Player " + username + " was muted by " + player.getUsername() + " until " + unmuteTimestamp + " for: " + input, "sanctions");
                     } else {
                         final String player2Username = username;
                         if (Arrays.stream(player.getPlayerRights().getOwners()).anyMatch(name -> name.equalsIgnoreCase(player2Username))) {
                             player.message("You cannot mute that player!");
-                            Utils.sendDiscordInfoLog(player.getUsername() + " tried to mute " + username, "warning");
-                            logger.warn(player.getUsername() + " tried to mute " + username, "warning");
+                            //logger.warn(player.getUsername() + " tried to mute " + username, "warning");
                             return;
                         }
                         DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
@@ -159,7 +155,6 @@ public class MutePlayerCommand implements Command {
                             } else {
                                 GameServer.getDatabaseService().submit(new MutePlayerDatabaseTransaction(username, unmuteTimestamp, input));
                                 player.message("Player " + username + " was successfully muted until " + unmuteTimestamp + " for: " + input);
-                                Utils.sendDiscordInfoLog("Player " + username + " was muted by " + player.getUsername() + " until " + unmuteTimestamp + " for: " + input, "sanctions");
                             }
                         });
                     }

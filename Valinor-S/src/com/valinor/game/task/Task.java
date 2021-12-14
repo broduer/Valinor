@@ -305,8 +305,7 @@ public abstract class Task {
         runDuration++;
         if (runDuration >= 6100 && Arrays.stream(IGNORED_TASKS).noneMatch(task -> task.equals(getName()))) {
             stop();
-            logger.warn("Task " + getClassName() + " has been running for over an hour, and has been stopped! Source "+keyOrOrigin());
-            Utils.sendDiscordInfoLog("Task " + getClassName() + " has been running for over an hour, and has been stopped! Source "+keyOrOrigin(), "warning");
+            logger.error("Task " + getClassName() + " has been running for over an hour, and has been stopped! Source "+keyOrOrigin());
         }
     }
 

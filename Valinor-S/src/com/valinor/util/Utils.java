@@ -219,10 +219,6 @@ public class Utils {
                             GameServer.getCommandWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getCommandWebHook().execute();
                         }
-                        case "warning" -> {
-                            GameServer.getWarningWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getWarningWebHook().execute();
-                        }
                         case "trade" -> {
                             GameServer.getTradeWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getTradeWebHook().execute();
@@ -259,10 +255,6 @@ public class Utils {
                             GameServer.getLogoutWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getLogoutWebHook().execute();
                         }
-                        case "sanctions" -> {
-                            GameServer.getSanctionsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getSanctionsWebHook().execute();
-                        }
                         case "shops" -> {
                             GameServer.getShopsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getShopsWebHook().execute();
@@ -270,10 +262,6 @@ public class Utils {
                         case "playerdeaths" -> {
                             GameServer.getPlayerDeathsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getPlayerDeathsWebHook().execute();
-                        }
-                        case "passwordchange" -> {
-                            GameServer.getPasswordChangeWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPasswordChangeWebHook().execute();
                         }
                         case "tournaments" -> {
                             GameServer.getTournamentWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
@@ -303,10 +291,6 @@ public class Utils {
                             GameServer.getStarterBoxWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getStarterBoxWebHook().execute();
                         }
-                        case "clan_box_opened" -> {
-                            GameServer.getClanBoxWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getClanBoxWebHook().execute();
-                        }
                         case "gamble" -> {
                             GameServer.getGambleWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getGambleWebHook().execute();
@@ -315,9 +299,9 @@ public class Utils {
                             GameServer.getBoxAndTicketsWebHookUrl().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.getBoxAndTicketsWebHookUrl().execute();
                         }
-                        case "fpk_merk" -> {
-                            GameServer.getFpkMerkwebHookURL().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getFpkMerkwebHookURL().execute();
+                        case "promo_code" -> {
+                            GameServer.getPromoCodewebHookURL().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.getPromoCodewebHookURL().execute();
                         }
                     }
                 } catch (IOException e) {

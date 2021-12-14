@@ -32,7 +32,6 @@ public class UnIPMuteCommand implements Command {
 
                     PlayerPunishment.unIPMuteUser(IPToRemove);
                     player.message("The IP: " + IPToRemove + " was successfully removed from the mute list.");
-                    Utils.sendDiscordInfoLog("The IP: " + IPToRemove + " was successfully removed from the mute list and was unmuted by " + player.getUsername(), "sanctions");
                 });
             } catch (Exception e) {
                 e.printStackTrace();

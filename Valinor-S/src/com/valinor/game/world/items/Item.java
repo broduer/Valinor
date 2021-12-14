@@ -464,7 +464,6 @@ public class Item implements Cloneable {
             add(DARK_ARMADYL_HELMET);
             add(DARK_ARMADYL_CHESTPLATE);
             add(DARK_ARMADYL_CHAINSKIRT);
-            add(CLAN_BOX);
             add(SHADOW_INQUISITOR_ORNAMENT_KIT);
             add(INQUISITORS_MACE_ORNAMENT_KIT);
             add(GENIE_PET);

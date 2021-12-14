@@ -32,7 +32,6 @@ public class UnBanPlayerCommand implements Command {
             }
         }
         player.message("Player " + username + " was successfully unbanned.");
-        Utils.sendDiscordInfoLog("Player " + username + " was unbanned by " + player.getUsername(), "sanctions");
     }
 
     @Override

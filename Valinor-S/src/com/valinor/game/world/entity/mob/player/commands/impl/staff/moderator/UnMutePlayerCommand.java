@@ -46,7 +46,6 @@ public class UnMutePlayerCommand implements Command {
 
             player.message("Player " + username + " (" + username + ") was successfully unmuted.");
         }
-        Utils.sendDiscordInfoLog("Player " + username + " was unmuted by " + player.getUsername(), "sanctions");
     }
 
     @Override

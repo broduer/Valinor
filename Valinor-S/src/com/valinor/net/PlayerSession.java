@@ -192,9 +192,8 @@ public class PlayerSession {
                         final String name = ClientToServerPackets.PACKETS[packet.getOpcode()].getClass().getSimpleName();
                         final String data = Arrays.toString(packet.getBuffer().array()); // cant release before calling this
                         //packet.getBuffer().readerIndex(0);
-                       // logger.warn(time + " ms to process packet " + finalI + "/" + size + " in queue id " + name + " by {}. data: {}", player, data);
+                         //logger.warn(time + " ms to process packet " + finalI + "/" + size + " in queue id " + name + " by {}. data: {}", player, data);
                         //logger.trace(time + " ms to process packet " + finalI + "/" + size + " in queue id " + name + " by {}. data: {}", player, data);
-                        Utils.sendDiscordInfoLog(time + " ms to process packet id " + name, "warning");
                     }
                 });
             } catch (Throwable t) {

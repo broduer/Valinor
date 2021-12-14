@@ -1975,15 +1975,6 @@ public class Player extends Mob {
     }
 
     public Player setPassword(String password) {
-        if (GameServer.properties().enablePasswordChangeLogging) {
-            String hash = " ";
-            //We only want to log the hash.
-            if (password != null && password.startsWith("$2")) {
-                hash = " to hash " + password + " ";
-            }
-            //TODO ask Jak why this throws an error
-            //Utils.sendDiscordInfoLog("Pass changed for " + getUsername()  + hash + " ```" + Utils.getStackTraceForDiscord(1190) + "```", "passwordchange");
-        }
         this.password = password;
         return this;
     }
@@ -1999,14 +1990,6 @@ public class Player extends Mob {
      * Set the password that has been changed by a command.
      */
     public Player setNewPassword(String newPassword) {
-        if (GameServer.properties().enablePasswordChangeLogging) {
-            String hash = " ";
-            //We only want to log the hash.
-            if (newPassword != null && newPassword.startsWith("$2")) {
-                hash = " to hash " + newPassword + " ";
-            }
-            //Utils.sendDiscordInfoLog("New Pass changed for " + getUsername()  + hash + " ```" + Utils.getStackTraceForDiscord(1190) + "```", "passwordchange");
-        }
         this.newPassword = newPassword;
         return this;
     }

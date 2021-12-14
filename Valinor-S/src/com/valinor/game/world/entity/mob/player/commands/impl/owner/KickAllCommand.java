@@ -24,7 +24,6 @@ public class KickAllCommand implements Command {
             }
         }
         player.message("You have kicked all " + players + " non-staff players.");
-        Utils.sendDiscordInfoLog(GameServer.properties().discordNotifyId + " All " + players + " non-staff players have been kicked by " + player.getUsername(), "sanctions");
     }
 
     @Override

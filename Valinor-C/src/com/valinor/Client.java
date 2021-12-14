@@ -9508,7 +9508,7 @@ public class Client extends GameApplet {
                 socketStream.queueBytes(loginBuffer.pos, loginBuffer.payload);
                 response = socketStream.read();
             }
-            addReportToServer("Server login response code is now " + response);
+            //addReportToServer("Server login response code is now " + response);
             if (response == 1) {
                 try {
                     Thread.sleep(2000L);
@@ -9518,9 +9518,9 @@ public class Client extends GameApplet {
                 login(name, password, reconnecting);
                 return;
             }
-            addReportToServer("Server login response code is again now " + response);
+            //addReportToServer("Server login response code is again now " + response);
             if (response == 2) {
-                addReportToServer("Successful login (response code 2)");
+                //addReportToServer("Successful login (response code 2)");
                 int rights = myPrivilege;
                 rights = socketStream.read();
                 // flagged = socketStream.read() == 1;
@@ -9788,7 +9788,7 @@ public class Client extends GameApplet {
             e.printStackTrace();
             addReportToServer(e.getMessage());
         }
-        addReportToServer("Cannot connect to server, IP is " + ClientConstants.SERVER_ADDRESS + " with port " + ClientConstants.SERVER_PORT);
+        //addReportToServer("Cannot connect to server, IP is " + ClientConstants.SERVER_ADDRESS + " with port " + ClientConstants.SERVER_PORT);
         secondLoginMessage = "Error connecting to server.";
     }
 

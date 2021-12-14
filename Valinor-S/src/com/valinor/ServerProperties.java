@@ -156,7 +156,6 @@ public final class ServerProperties {
         enableGambling = true;
         maintenanceMode = false;
         enableLoadLastDuelPreset = true;
-        enablePasswordChangeLogging = true;
         venomVsPlayersOn = false;
         venomFromAdminsOn = false;
         fileStore = "";
@@ -164,7 +163,6 @@ public final class ServerProperties {
         discordNotifyId = "";
         enableDiscordLogging = discordLoggingOn;
         commandWebHookUrl = "";
-        warningWebHookUrl = "";
         chatWebHookUrl = "";
         stakeWebHookUrl = "";
         tradeWebHookUrl = "";
@@ -174,10 +172,8 @@ public final class ServerProperties {
         pickupsWebHookUrl = "";
         loginWebHookUrl = "";
         logoutWebHookUrl = "";
-        sanctionsWebHookUrl = "";
         shopsWebHookUrl = "";
         playerDeathsWebHookUrl = "";
-        passwordChangeWebHookUrl = "";
         tournamentsWebHookUrl = "";
         referralsWebHookUrl = "";
         achievementsWebHookUrl = "";
@@ -185,10 +181,9 @@ public final class ServerProperties {
         tradingPostPurchasesWebHook = "";
         raidsWebHook = "";
         starterBoxWebHook = "";
-        clanBoxWebHook = "";
         gambleWebHookUrl = "";
         boxAndTicketsWebHookUrl = "";
-        fpkMerkwebHookURL = "";
+        promoCodewebHookURL = "";
         wildernessDitchEnbabled = false;
         redirectOutStream = false;
         teleToMeInWildOk = false;
@@ -499,11 +494,6 @@ public final class ServerProperties {
      */
     public final boolean enableLoadLastDuelPreset;
 
-    /**
-     * If we want to enable password change logging for debugging password randomly changing, set this to true.
-     */
-    public final boolean enablePasswordChangeLogging;
-
     // Disabled until fully coded
     public final boolean venomVsPlayersOn;
 
@@ -524,10 +514,6 @@ public final class ServerProperties {
      * This is the command web hook URL for Discord.
      */
     public final String commandWebHookUrl;
-    /**
-     * This is the warning web hook URL for Discord.
-     */
-    public final String warningWebHookUrl;
     /**
      * This is the chat web hook URL for Discord.
      */
@@ -565,10 +551,6 @@ public final class ServerProperties {
      */
     public final String logoutWebHookUrl;
     /**
-     * This is the sanctions web hook URL for Discord.
-     */
-    public final String sanctionsWebHookUrl;
-    /**
      * This is the shops web hook URL for Discord.
      */
     public final String shopsWebHookUrl;
@@ -576,10 +558,6 @@ public final class ServerProperties {
      * This is the player deaths web hook URL for Discord.
      */
     public final String playerDeathsWebHookUrl;
-    /**
-     * This is the password change web hook URL for Discord.
-     */
-    public final String passwordChangeWebHookUrl;
     /**
      * This is the tournaments web hook URL for Discord.
      */
@@ -609,10 +587,6 @@ public final class ServerProperties {
      */
     public final String starterBoxWebHook;
     /**
-     * This is the clan box web hook URL for Discord.
-     */
-    public final String clanBoxWebHook;
-    /**
      * This is the gamble web hook URL for Discord.
      */
     public final String gambleWebHookUrl;
@@ -623,7 +597,7 @@ public final class ServerProperties {
     /**
      * This is the fpk merk web hook URL for Discord.
      */
-    public final String fpkMerkwebHookURL;
+    public final String promoCodewebHookURL;
     /**
      * Can we walk over the wilderness ditch.
      */

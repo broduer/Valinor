@@ -33,11 +33,11 @@ public class PromoCodeCommand implements Command {
 
     public static boolean PROMO_CODE_COMMAND_ENABLED = true;
 
-    private static final Logger fpkMerkLogs = LogManager.getLogger("FpkMerkLogs");
-    private static final Level FPK_MERK_LOGS;
+    private static final Logger promoCodeLogs = LogManager.getLogger("PromoCodeLogs");
+    private static final Level PROMO_CODE_LOGS;
 
     static {
-        FPK_MERK_LOGS = Level.getLevel("FPK_MERK");
+        PROMO_CODE_LOGS = Level.getLevel("PROMO_CODE");
     }
 
     private static final Set<String> promoCodeClaimedIP = new HashSet<>(), promoCodeClaimedMAC = new HashSet<>();
@@ -140,8 +140,8 @@ public class PromoCodeCommand implements Command {
 
                         player.inventory().addOrBank(ITEM_LIST);
 
-                        Utils.sendDiscordInfoLog(player.getUsername() + " claimed the fpk merk promo code.", "fpk_merk");
-                        fpkMerkLogs.log(FPK_MERK_LOGS, player.getUsername() + " claimed the fpk merk promo code.");
+                        Utils.sendDiscordInfoLog(player.getUsername() + " claimed the promo code.", "promo_code");
+                        promoCodeLogs.log(PROMO_CODE_LOGS, player.getUsername() + " claimed the promo code.");
 
                         //Mark as opened
                         player.putAttrib(AttributeKey.PROMO_CODE_CLAIMED, true);

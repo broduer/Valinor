@@ -79,7 +79,6 @@ public class GameServer {
         if (properties().enableDiscordLogging) {
             logger.info("Discord logging has been enabled.");
             commandWebHook = new DiscordWebhook(properties().commandWebHookUrl);
-            warningWebHook = new DiscordWebhook(properties().warningWebHookUrl);
             chatWebHook = new DiscordWebhook(properties().chatWebHookUrl);
             stakeWebHook = new DiscordWebhook(properties().stakeWebHookUrl);
             tradeWebHook = new DiscordWebhook(properties().tradeWebHookUrl);
@@ -89,10 +88,8 @@ public class GameServer {
             pickupsWebHook = new DiscordWebhook(properties().pickupsWebHookUrl);
             loginWebHook = new DiscordWebhook(properties().loginWebHookUrl);
             logoutWebHook = new DiscordWebhook(properties().logoutWebHookUrl);
-            sanctionsWebHook = new DiscordWebhook(properties().sanctionsWebHookUrl);
             shopsWebHook = new DiscordWebhook(properties().shopsWebHookUrl);
             playerDeathsWebHook = new DiscordWebhook(properties().playerDeathsWebHookUrl);
-            passwordChangeWebHook = new DiscordWebhook(properties().passwordChangeWebHookUrl);
             tournamentsWebHook = new DiscordWebhook(properties().tournamentsWebHookUrl);
             referralsWebHook = new DiscordWebhook(properties().referralsWebHookUrl);
             achievementsWebHook = new DiscordWebhook(properties().achievementsWebHookUrl);
@@ -100,10 +97,9 @@ public class GameServer {
             tradingPostPurchasesWebHook = new DiscordWebhook(properties().tradingPostPurchasesWebHook);
             raidsWebHook = new DiscordWebhook(properties().raidsWebHook);
             starterBoxWebHook = new DiscordWebhook(properties().starterBoxWebHook);
-            clanBoxWebHook = new DiscordWebhook(properties().clanBoxWebHook);
             gambleWebHook = new DiscordWebhook(properties().gambleWebHookUrl);
             boxAndTicketsWebHookUrl = new DiscordWebhook(properties().boxAndTicketsWebHookUrl);
-            fpkMerkwebHookURL = new DiscordWebhook(properties().fpkMerkwebHookURL);
+            promoCodewebHookURL = new DiscordWebhook(properties().promoCodewebHookURL);
         }
     }
 
@@ -132,7 +128,6 @@ public class GameServer {
     private static DatabaseService databaseService;
 
     private static DiscordWebhook commandWebHook;
-    private static DiscordWebhook warningWebHook;
     private static DiscordWebhook chatWebHook;
     private static DiscordWebhook stakeWebHook;
     private static DiscordWebhook tradeWebHook;
@@ -142,10 +137,8 @@ public class GameServer {
     private static DiscordWebhook pickupsWebHook;
     private static DiscordWebhook loginWebHook;
     private static DiscordWebhook logoutWebHook;
-    private static DiscordWebhook sanctionsWebHook;
     private static DiscordWebhook shopsWebHook;
     private static DiscordWebhook playerDeathsWebHook;
-    private static DiscordWebhook passwordChangeWebHook;
     private static DiscordWebhook tournamentsWebHook;
     private static DiscordWebhook referralsWebHook;
     private static DiscordWebhook achievementsWebHook;
@@ -153,10 +146,9 @@ public class GameServer {
     private static DiscordWebhook tradingPostPurchasesWebHook;
     private static DiscordWebhook raidsWebHook;
     private static DiscordWebhook starterBoxWebHook;
-    private static DiscordWebhook clanBoxWebHook;
     private static DiscordWebhook gambleWebHook;
     private static DiscordWebhook boxAndTicketsWebHookUrl;
-    private static DiscordWebhook fpkMerkwebHookURL;
+    private static DiscordWebhook promoCodewebHookURL;
 
     /**
      * The main method that will put the server online.
@@ -279,10 +271,6 @@ public class GameServer {
         return commandWebHook;
     }
 
-    public static DiscordWebhook getWarningWebHook() {
-        return warningWebHook;
-    }
-
     public static DiscordWebhook getChatWebHook() {
         return chatWebHook;
     }
@@ -319,20 +307,12 @@ public class GameServer {
         return logoutWebHook;
     }
 
-    public static DiscordWebhook getSanctionsWebHook() {
-        return sanctionsWebHook;
-    }
-
     public static DiscordWebhook getShopsWebHook() {
         return shopsWebHook;
     }
 
     public static DiscordWebhook getPlayerDeathsWebHook() {
         return playerDeathsWebHook;
-    }
-
-    public static DiscordWebhook getPasswordChangeWebHook() {
-        return passwordChangeWebHook;
     }
 
     public static DiscordWebhook getTournamentWebHook() {
@@ -363,10 +343,6 @@ public class GameServer {
         return starterBoxWebHook;
     }
 
-    public static DiscordWebhook getClanBoxWebHook() {
-        return clanBoxWebHook;
-    }
-
     public static DiscordWebhook getGambleWebHook() {
         return gambleWebHook;
     }
@@ -375,8 +351,8 @@ public class GameServer {
         return boxAndTicketsWebHookUrl;
     }
 
-    public static DiscordWebhook getFpkMerkwebHookURL() {
-        return fpkMerkwebHookURL;
+    public static DiscordWebhook getPromoCodewebHookURL() {
+        return promoCodewebHookURL;
     }
 
     public static boolean isStaffOnlyLogins() {

@@ -44,7 +44,7 @@ public class IPBanPlayerCommand implements Command {
             if (playerToBan.isPresent()) {
                 if(playerToBan.get().getPlayerRights().isStaffMember(playerToBan.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You cannot ip ban this player.");
-                    logger.warn(player.getUsername() + " tried to ip ban " + playerToBan.get().getUsername(), "warning");
+                    //logger.warn(player.getUsername() + " tried to ip ban " + playerToBan.get().getUsername(), "warning");
                     return;
                 }
 
@@ -74,7 +74,6 @@ public class IPBanPlayerCommand implements Command {
                 playerToBan.get().requestLogout();
 
                 player.message("Player " + username + " was successfully ip banned.");
-                Utils.sendDiscordInfoLog("Player " + username + " was ip banned by " + player.getUsername(), "sanctions");
             } else {
                 //offline
                 Player offlinePlayer = new Player();
@@ -98,7 +97,6 @@ public class IPBanPlayerCommand implements Command {
 
                                 PlayerPunishment.addToIPBanList(IPToBan);
                                 player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip banned.");
-                                Utils.sendDiscordInfoLog("Player " + offlinePlayer.getUsername() + " was offline ip banned by " + player.getUsername(), "sanctions");
                             });
                         } else {
                             player.message("Something went wrong trying to offline ip ban "+offlinePlayer.getUsername());
@@ -192,20 +190,17 @@ public class IPBanPlayerCommand implements Command {
                     if (plr.isPresent()) {
                         if (plr.get().getPlayerRights().greater(player.getPlayerRights())) {
                             player.message("You cannot ban that player!");
-                            Utils.sendDiscordInfoLog(player.getUsername() + " tried to ban " + plr.get().getUsername(), "warning");
-                            logger.warn(player.getUsername() + " tried to ban " + plr.get().getUsername(), "warning");
+                            //logger.warn(player.getUsername() + " tried to ban " + plr.get().getUsername(), "warning");
                             return;
                         }
                         plr.get().requestLogout();
                         MiscKotlin.INSTANCE.addIPBan(player, username, unbanTimestamp, reason, IPBanPlayerCommand.feedback(player));
                         player.message("Player " + username + " was successfully banned until " + unbanTimestamp + " for: " + reason);
-                        Utils.sendDiscordInfoLog("Player " + username + " was banned by " + player.getUsername() + " until " + unbanTimestamp + " for: " + reason, "sanctions");
                     } else {
                         final String player2Username = username;
                         if (Arrays.stream(player.getPlayerRights().getOwners()).anyMatch(name -> name.equalsIgnoreCase(player2Username))) {
                             player.message("You cannot ban that player!");
-                            Utils.sendDiscordInfoLog(player.getUsername() + " tried to ban " + username, "warning");
-                            logger.warn(player.getUsername() + " tried to ban " + username, "warning");
+                            //logger.warn(player.getUsername() + " tried to ban " + username, "warning");
                             return;
                         }
                         DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
@@ -214,7 +209,6 @@ public class IPBanPlayerCommand implements Command {
                             } else {
                                 MiscKotlin.INSTANCE.addIPBan(player, username, unbanTimestamp, reason, IPBanPlayerCommand.feedback(player));
                                 player.message("Player " + username + " was successfully banned until " + unbanTimestamp + " for: " + reason);
-                                Utils.sendDiscordInfoLog("Player " + username + " was banned by " + player.getUsername() + " until " + unbanTimestamp + " for: " + reason, "sanctions");
                             }
                         });
                     }

@@ -198,7 +198,7 @@ public class ClientToServerPackets {
             @Override
             public void handleMessage(Player player, Packet packet) {
                 final String text = packet.readString();
-                logger.trace("player {} report: {}", player, text);
+                logger.error("player {} report: {}", player, text);
             }
         };
 

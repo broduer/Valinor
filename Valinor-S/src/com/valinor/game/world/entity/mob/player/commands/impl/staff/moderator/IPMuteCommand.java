@@ -36,7 +36,7 @@ public class IPMuteCommand implements Command {
             if (playerToMute.isPresent()) {
                 if (playerToMute.get().getPlayerRights().isStaffMember(playerToMute.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You cannot ip mute this player.");
-                    logger.warn(player.getUsername() + " tried to ip mute " + playerToMute.get().getUsername(), "warning");
+                    //logger.warn(player.getUsername() + " tried to ip mute " + playerToMute.get().getUsername(), "warning");
                     return;
                 }
 
@@ -50,7 +50,6 @@ public class IPMuteCommand implements Command {
                 playerToMute.get().putAttrib(AttributeKey.MUTED, true);
                 PlayerPunishment.ipmute(IPToMute);
                 player.message("Player " + playerToMute.get().getUsername() + " was successfully ip muted.");
-                Utils.sendDiscordInfoLog("Player " + playerToMute.get().getUsername() + " was ip muted by " + player.getUsername(), "sanctions");
             } else {
                 //offline
                 Player offlinePlayer = new Player();
@@ -70,7 +69,6 @@ public class IPMuteCommand implements Command {
                                 offlinePlayer.putAttrib(AttributeKey.MUTED, true);
                                 PlayerPunishment.ipmute(IPToMute);
                                 player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip muted.");
-                                Utils.sendDiscordInfoLog("Player " + offlinePlayer.getUsername() + " was offline ip muted by " + player.getUsername(), "sanctions");
                             });
                         } else {
                             player.message("Something went wrong trying to offline ip mute "+offlinePlayer.getUsername());

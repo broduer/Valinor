@@ -20,13 +20,11 @@ public class KickPlayerCommand implements Command {
         if (plr.isPresent()) {
             if (plr.get().getPlayerRights().greater(player.getPlayerRights())) {
                 player.message("You cannot kick that player!");
-                logger.warn(player.getUsername() + " tried to kick " + plr.get().getUsername(), "warning");
-                Utils.sendDiscordInfoLog(player.getUsername() + " tried to kick " + plr.get().getUsername(), "warning");
+                //logger.warn(player.getUsername() + " tried to kick " + plr.get().getUsername(), "warning");
                 return;
             }
             plr.get().requestLogout();
             player.message("Player " + player2 + " ("+plr.get().getUsername()+") has been kicked.");
-            Utils.sendDiscordInfoLog(player.getUsername() + " has kicked " + plr.get().getUsername(), "sanctions");
         } else {
             player.message("Player " + player2 + " does not exist or is not online.");
         }

@@ -38,7 +38,6 @@ public class JailCommand implements Command {
                 other.putAttrib(AttributeKey.LOC_BEFORE_JAIL, other.tile());
                 Poison.cure(other);
                 player.message("Player " + opname + " ("+other.getUsername()+") has been jailed.");
-                Utils.sendDiscordInfoLog(player.getUsername() + " has jailed " + other.getUsername(), "sanctions");
             }
         } else {
             player.message("<col=FF0000>" + opname + "</col> does not exist or is not online.");
