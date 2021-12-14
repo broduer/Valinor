@@ -25,13 +25,13 @@ public class SetStaffOnlyLoginCommand implements Command {
                 GameServer.setStaffOnlyLogins(true);
                 player.message("You have now enabled staff only logins.");
                 player.message("Please remember to ::kickall if necessary.");
-                logger.info("Staff only login has been enabled by " + player.getUsername());
+                //logger.info("Staff only login has been enabled by " + player.getUsername());
             }
             default -> {
                 GameServer.setStaffOnlyLogins(false);
                 player.message("You have now disabled staff only logins.");
                 player.message("Please remember to ::kickall if necessary.");
-                logger.info("Staff only login has been disabled by " + player.getUsername());
+                //logger.info("Staff only login has been disabled by " + player.getUsername());
             }
         }
 

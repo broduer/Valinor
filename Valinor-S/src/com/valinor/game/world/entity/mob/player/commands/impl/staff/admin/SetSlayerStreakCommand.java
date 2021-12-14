@@ -36,7 +36,7 @@ public class SetSlayerStreakCommand implements Command {
             }
             plr.get().putAttrib(AttributeKey.SLAYER_TASK_SPREE, amount);
             plr.get().message(player.getPlayerRights().getName() + " " + player.getUsername() + " has set your slayer task streak to: " + amount + ".");
-            logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has set the slayer task streak of "+ player2 + " to: " + amount + ".");
+            //logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has set the slayer task streak of "+ player2 + " to: " + amount + ".");
             player.message("You have set the slayer task streak of " + player2 + " to: " + amount + ".");
             player.getPacketSender().sendString(TASK_STREAK.childId, QuestTab.InfoTab.INFO_TAB.get(TASK_STREAK.childId).fetchLineData(player));
         } else {

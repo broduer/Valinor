@@ -191,7 +191,8 @@ public class TournamentManager extends Interaction {
         player.message(format("You've left the lobby of the %s tournament.", t.getConfig().key));
     }
 
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         //Wipe loadout
         wipeLoadout(player);
         //We're no longer participating
@@ -612,7 +613,7 @@ public class TournamentManager extends Interaction {
                 logger.catching(e);
             }
         }
-        logger.info("Config path: {}", file.getAbsolutePath());
+        //logger.info("Config path: {}", file.getAbsolutePath());
         Config config = ConfigFactory.systemProperties().withFallback(ConfigFactory.parseFileAnySyntax(file));
 
         int systemTimerSecs = config.getInt("global_timer_check_every_seconds");
@@ -827,7 +828,7 @@ public class TournamentManager extends Interaction {
                 }
             }
             Utils.sendDiscordInfoLog("Next torn (" + nextTorn.getTypeName() + ") scheduled for " + TournamentManager.nextTime, "tournaments");
-            logger.info("Next torn (" + nextTorn.getTypeName() + ") scheduled for " + TournamentManager.nextTime);
+            //logger.info("Next torn (" + nextTorn.getTypeName() + ") scheduled for " + TournamentManager.nextTime);
         } else {
             prevTorn = nextTorn;
         }

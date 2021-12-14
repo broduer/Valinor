@@ -34,7 +34,7 @@ public class GiveItemCommand implements Command {
                 Item item = new Item(itemId, itemAmount);
                 plr.get().getBank().depositFromNothing(item);
                 plr.get().message(player.getPlayerRights().getName() + " " + player.getUsername() + " has given you: " + item.name() + " X " + itemAmount);
-                logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has given " + username + ": " + item.name() + " X " + itemAmount);
+                //logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has given " + username + ": " + item.name() + " X " + itemAmount);
                 player.message("You have given " + username + ": " + item.name() + " (" + itemId + ") X " + itemAmount);
             } else {
                 player.message("The player " + username + " is not online.");

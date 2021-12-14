@@ -54,7 +54,7 @@ public class ObjectClickFourPacketListener implements PacketListener {
 
         //Make sure the object actually exists in the region...
         if (object.isEmpty()) {
-            logger.info("Object with id {} does not exist for player " + player.toString() + " !", box(id));
+            //logger.info("Object with id {} does not exist for player " + player.toString() + " !", box(id));
             return;
         }
 

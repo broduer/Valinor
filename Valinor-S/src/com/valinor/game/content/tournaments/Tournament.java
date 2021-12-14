@@ -156,8 +156,10 @@ public class Tournament {
             winner.message("You have won the " + fullName() + " Tournament! You now have won "+Color.BLUE.wrap(""+wins)+" tournaments.");
             winner.message("You've received 1 tournament point! You now have won "+Color.BLUE.wrap(""+points)+" tournament points.");
             World.getWorld().sendWorldMessage(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
-            logger.info(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
-            logger.info("PvP tournament rewards: " + reward.toString());
+            //logger.info(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
+            //logger.info("PvP tournament rewards: " + reward.toString());
+            Utils.sendDiscordInfoLog("[Tournament</col>]: "+winner.getUsername()+" has won the "+fullName()+" tournament!", "tournaments");
+            Utils.sendDiscordInfoLog("PvP tournament rewards: " + reward.toString(), "tournaments");
 
             winner.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
             winner.getPacketSender().sendEntityHintRemoval(true);

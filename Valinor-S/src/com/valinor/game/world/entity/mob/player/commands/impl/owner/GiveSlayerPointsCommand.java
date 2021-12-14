@@ -39,7 +39,7 @@ public class GiveSlayerPointsCommand implements Command {
             plr.get().putAttrib(AttributeKey.SLAYER_REWARD_POINTS, newPoints);
             plr.get().getPacketSender().sendString(SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_POINTS.childId).fetchLineData(plr.get()));
             plr.get().message(player.getPlayerRights().getName() + " " + player.getUsername() + " has given you: " + amount+" slayer points.");
-            logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has given "+ player2 + ": " + amount+" slayer points.");
+            //logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has given "+ player2 + ": " + amount+" slayer points.");
             player.message("You have given " + player2 + ": " + amount+" slayer points.");
         } else {
             player.message("The player " + player2 + " is not online.");

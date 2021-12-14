@@ -28,7 +28,7 @@ public class CheckIpCommand implements Command {
                 foundPlayersString = foundPlayersString.concat(foundPlayer + ", ");
             }
             player.message("The players with IP: " + IP + " are: " + foundPlayersString.replaceAll(", $", ""));
-            logger.info("The players with IP: " + IP + " are: " + foundPlayersString.replaceAll(", $", ""));
+            //logger.info("The players with IP: " + IP + " are: " + foundPlayersString.replaceAll(", $", ""));
         });
     }
 

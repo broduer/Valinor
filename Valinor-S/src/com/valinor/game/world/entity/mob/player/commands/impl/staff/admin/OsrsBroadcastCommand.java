@@ -62,7 +62,7 @@ private static final Logger logger = LogManager.getLogger(OsrsBroadcastCommand.c
                 @Override
                 public void handleSyntax(Player player, String input) {
                     if (!url.equals(" ")) {
-                        logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " entered the URL: '" + url + "' for the ::osrsbroadcast command.");
+                        //logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " entered the URL: '" + url + "' for the ::osrsbroadcast command.");
                     }
                     World.getWorld().sendWorldMessage("osrsbroadcast##" + input + "%%" + url);
                 }

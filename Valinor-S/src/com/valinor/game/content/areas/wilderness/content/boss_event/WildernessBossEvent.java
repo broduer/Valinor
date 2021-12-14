@@ -244,7 +244,7 @@ public class WildernessBossEvent {
             if (despawned) {
                 currentSpawnPos = null; // reset current pos
                 Utils.sendDiscordInfoLog("The wilderness event boss has been despawned");
-                logger.info("The wilderness event boss has been despawned");
+                //logger.info("The wilderness event boss has been despawned");
                 World.getWorld().sendBroadcast(activeEvent.description + " has despawned");
             }
         }
