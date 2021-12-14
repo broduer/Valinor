@@ -1,6 +1,6 @@
 questTabOpenedTab = 2
 cameraSpeed = SLOW
-zoom_distance = 900
+zoom_distance = 1005
 drag_item_value = 10
 player_attack_priority = 0
 npc_attack_priority = 2
@@ -31,7 +31,7 @@ sideStonesArrangement = false
 roofs = true
 orbs = true
 music = false
-sounds = true
+sounds = false
 draw_orb_arc = true
 draw_special_orb = true
 draw_health_overlay = true

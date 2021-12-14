@@ -5,6 +5,7 @@ import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -12,9 +13,10 @@ import com.valinor.util.Utils;
  * @author Patrick van Elderen | November, 28, 2020, 13:19
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class DivineSuperStrengthPotion {
+public class DivineSuperStrengthPotion extends Interaction {
 
-    public static void onLogin(Player me) {
+    @Override
+    public void onLogin(Player me) {
         setTimer(me);
     }
 

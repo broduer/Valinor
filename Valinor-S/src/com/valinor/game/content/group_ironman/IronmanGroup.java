@@ -23,7 +23,7 @@ import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP
  *
  * @author optimum on 14/05/2020
  */
-public class IronmanGroup extends Interaction {
+public class IronmanGroup {
 
     @Expose
     private String groupName;
@@ -76,31 +76,6 @@ public class IronmanGroup extends Interaction {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
         if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() + 1);
-        }
-    }
-
-    public void checkForDemote(Player player) {
-        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-        if(group.isPresent() && group.get().isHardcoreGroup() && player.ironMode() == IronMode.HARDCORE && !player.<Boolean>getAttribOr(HARDCORE_GROUP_FALLEN,false)) {
-            var lives = group.get().getHardcoreLives();
-            if(lives == 0) {
-                player.ironMode(IronMode.REGULAR);
-                if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                    player.setPlayerRights(PlayerRights.IRON_MAN);
-                    player.getPacketSender().sendRights();
-                }
-                player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
-                player.putAttrib(HARDCORE_GROUP_FALLEN,true);
-            }
-        }
-
-        if(group.isEmpty() && (player.getPlayerRights() == GROUP_IRON_MAN || player.getPlayerRights() == GROUP_HARDCORE_IRONMAN)) {
-            if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-                player.setPlayerRights(player.getPlayerRights() == GROUP_IRON_MAN ? PlayerRights.IRON_MAN : PlayerRights.HARDCORE_IRON_MAN);
-                player.getPacketSender().sendRights();
-            }
-            String plural = player.getPlayerRights() == PlayerRights.IRON_MAN ? "regular" : "hardcore";
-            player.message(Color.BLUE.wrap("The ironman group has been lifted, you have been demoted to a "+plural+" ironman."));
         }
     }
 

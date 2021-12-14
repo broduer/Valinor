@@ -1,6 +1,7 @@
 package com.valinor.game.content.daily_tasks;
 
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -16,7 +17,7 @@ import static com.valinor.game.world.entity.AttributeKey.*;
  * @author Patrick van Elderen | June, 15, 2021, 16:15
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class DailyTaskManager {
+public class DailyTaskManager extends Interaction {
 
     public static String timeLeft() {
         LocalDateTime midnight = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 0, 0);
@@ -41,7 +42,8 @@ public class DailyTaskManager {
         }
     }
 
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         if (player.<Integer>getAttribOr(LAST_DAILY_RESET, -1) != ZonedDateTime.now().getDayOfMonth()) {
             player.putAttrib(LAST_DAILY_RESET, ZonedDateTime.now().getDayOfMonth());
             for (DailyTasks task : DailyTasks.values()) {

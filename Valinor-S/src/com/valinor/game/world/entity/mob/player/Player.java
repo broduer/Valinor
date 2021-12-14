@@ -117,6 +117,7 @@ import com.valinor.net.SessionState;
 import com.valinor.net.channel.ServerHandler;
 import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.packet.PacketSender;
+import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.net.packet.outgoing.UnnecessaryPacketDropper;
 import com.valinor.util.*;
 import com.valinor.util.chainedwork.Chain;
@@ -1320,6 +1321,8 @@ public class Player extends Mob {
         runExceptionally(() -> stopActions(true));
         runExceptionally(() -> onLogoutListeners.values().forEach(Runnable::run));
 
+        runExceptionally(() -> InteractionManager.onLogout(this));
+
         runExceptionally(() -> {
             //If we're in certain gamble states and we logout, return items.
             if (gamblingSession.state() != GambleState.NONE && !gamblingSession.matchActive()) {
@@ -1334,10 +1337,6 @@ public class Player extends Mob {
 
         runExceptionally(() -> {
             Party.onLogout(this);
-        });
-
-        runExceptionally(() -> {
-            IronmanGroupHandler.handleLogout(this);
         });
 
         runExceptionally(() -> {
@@ -1413,139 +1412,106 @@ public class Player extends Mob {
         // Attempt to register the player..
         //logger.info("Registering player - [username, host] : [{}, {}]", getUsername(), getHostAddress());
 
-        //Stuff that happens during login...
-        Chain.bound(null).runFn(1, () -> {
-            // Send simple player options
-            if(equipment.contains(SNOWBALL)) {
-                packetSender.sendInteractionOption("Pelt", 1, true);
-            }
-            packetSender.sendInteractionOption("Follow", 3, false).sendInteractionOption("Trade with", 4, false);
-            relations.setPrivateMessageId(1);
-            getMovementQueue().clear();
-            double energy = this.getAttribOr(RUN_ENERGY, 0.0);
-            // configs...
-            varps.syncNonzero();// Sync varps
-            Farming.onLogin(this);
-            packetSender.sendConfig(708, Prayers.canUse(this, DefaultPrayerData.PRESERVE, false) ? 1 : 0).sendConfig(710, Prayers.canUse(this, DefaultPrayerData.RIGOUR, false) ? 1 : 0).sendConfig(712, Prayers.canUse(this, DefaultPrayerData.AUGURY, false) ? 1 : 0).sendConfig(172, this.getCombat().autoRetaliate() ? 1 : 0).updateSpecialAttackOrb().sendRunStatus().sendRunEnergy((int) energy);
-            Prayers.closeAllPrayers(this);
-            setHeadHint(-1);
+        skills.update();
+        inventory.refresh();
+        equipment.refresh();
 
-            replaceItems();
+        // Send simple player options
+        packetSender.sendInteractionOption("Follow", 3, false).sendInteractionOption("Trade with", 4, false);
+        if (equipment.get(3) != null && equipment.get(3).getId() == SNOWBALL) // Snowball
+            packetSender.sendInteractionOption("Pelt", 1, true);
 
-            skills.update();
-            inventory.refresh();
-            equipment.refresh();
-            WeaponInterfaces.updateWeaponInterface(this);
+        // Trigger a scripting event
+        InteractionManager.onLogin(this);
 
-            teleportMenuHandler.load();
-            teleportMenuHandler.updateFavorites();
+        //Update player looks
+        getUpdateFlag().flag(Flag.APPEARANCE);
 
-            // Force fix any remaining bugged accounts
-            if (this.<Integer>getAttribOr(MULTIWAY_AREA, -1) == 1 && !MultiwayCombat.includes(this.tile())) {
-                putAttrib(MULTIWAY_AREA, 0);
-            }
+        // Sync varps
+        varps.syncNonzero();
+        double energy = this.getAttribOr(RUN_ENERGY, 0.0);
+        packetSender.sendConfig(708, Prayers.canUse(this, DefaultPrayerData.PRESERVE, false) ? 1 : 0).sendConfig(710, Prayers.canUse(this, DefaultPrayerData.RIGOUR, false) ? 1 : 0).sendConfig(712, Prayers.canUse(this, DefaultPrayerData.AUGURY, false) ? 1 : 0).sendConfig(172, this.getCombat().autoRetaliate() ? 1 : 0).updateSpecialAttackOrb().sendRunStatus().sendRunEnergy((int) energy);
+        Prayers.closeAllPrayers(this);
 
-            getUpdateFlag().flag(Flag.APPEARANCE); //Update the players looks
+        // Send simple player options
+        relations.setPrivateMessageId(1);
+        // Send friends and ignored players lists...
+        relations.onLogin();
+        getMovement().clear();
+        setHeadHint(-1);
+        teleportMenuHandler.load();
+        teleportMenuHandler.updateFavorites();
 
-            if (this.<Boolean>getAttribOr(ASK_FOR_ACCOUNT_PIN, false)) {
-                askForAccountPin();
-            }
-            //We're logged in now, we can now send data such as quest tab friends list etc.
-        }).then(1, () -> {
-            if (tile().region() == 10536) {
-                teleport(new Tile(2657, 2639, 0));
-            }
+        // Force fix any remaining bugged accounts
+        if (this.<Integer>getAttribOr(MULTIWAY_AREA, -1) == 1 && !MultiwayCombat.includes(this.tile())) {
+            putAttrib(MULTIWAY_AREA, 0);
+        }
 
-            if (jailed() && tile().region() != 13103) { // Safety since it was possible to escape.
-                Teleports.basicTeleport(this, new Tile(3290, 3017));
-            }
+        if (this.<Boolean>getAttribOr(ASK_FOR_ACCOUNT_PIN, false)) {
+            askForAccountPin();
+        }
 
-            if (tile().region() == 9551) {
-                //restart the wave on login
-                heal(maxHp());
-                int wave = getAttribOr(AttributeKey.FIGHT_CAVES_WAVE, 1);
-                MinigameManager.playMinigame(this, new FightCavesMinigame(wave));
-            }
+        moveFromRegionOnLogin();
 
-            //Move player out Zulrah area on login
-            if (tile().region() == 9008) {
-                teleport(2201, 3057, 0);
-            }
+        boolean newAccount = this.getAttribOr(NEW_ACCOUNT, false);
 
-            //Player inside the tournament region, remove them.
-            if (tile().region() == TOURNAMENT_REGION) {
-                TournamentManager.onLogin(this);
-            }
+        if (!newAccount && getBankPin().hasPin() && !getBankPin().hasEnteredPin() && GameServer.properties().requireBankPinOnLogin) {
+            getBankPin().enterPin();
+        }
 
-            if (getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS)) {
-                getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
-            } else if (getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
-                getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
-            } else if (getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.HOLY_SANGUINESTI_STAFF)) {
-                getCombat().setAutoCastSpell(CombatSpells.SANGUINESTI_STAFF.getSpell());
-            } else if (getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND)) {
-                getCombat().setCastSpell(CombatSpells.CRUCIATUS_CURSE.getSpell());
-            }
+        if (newAccount) {
+            //Join new players to help channel.
+            ClanManager.join(this, "help");
+            interfaceManager.open(3559);
+            setNewPassword("");
+            setRunningEnergy(100.0, true);
+            message("Welcome to " + GameConstants.SERVER_NAME + ".");
+        } else {
+            message("Welcome back to " + GameConstants.SERVER_NAME + ".");
+        }
 
-            boolean newAccount = this.getAttribOr(NEW_ACCOUNT, false);
+        if (clanChat != null && !clanChat.isEmpty()) {
+            ClanManager.join(this, clanChat);
+        }
 
-            if (!newAccount && getBankPin().hasPin() && !getBankPin().hasEnteredPin() && GameServer.properties().requireBankPinOnLogin) {
-                getBankPin().enterPin();
-            }
+        QuestTab.refreshInfoTab(this);
 
-            if (newAccount) {
-                //Join new players to help channel.
-                ClanManager.join(this, "help");
-                interfaceManager.open(3559);
-                setNewPassword("");
-                setRunningEnergy(100.0, true);
-                message("Welcome to " + GameConstants.SERVER_NAME + ".");
-            } else {
-                message("Welcome back to " + GameConstants.SERVER_NAME + ".");
-            }
+        //Update info
+        restartTasks();
 
-            if (clanChat != null && !clanChat.isEmpty()) {
-                ClanManager.join(this, clanChat);
-            }
+        auditTabs();
 
-            QuestTab.refreshInfoTab(this);
-        }).then(1, () -> {
+        if (Referrals.INSTANCE.getCOMMAND_ENABLED()) {
+            Referrals.INSTANCE.fetchDbId(this, true);
+            Referrals.INSTANCE.onLoginReferals(this);
+        }
 
-            // Send friends and ignored players lists...
-            relations.onLogin();
-
-            //Reset daily tasks
-            DailyTaskManager.onLogin(this);
-
-            if (memberRights.isZenyteMemberOrGreater(this)) {
-                MemberFeatures.checkForMonthlySponsorRewards(this);
-            }
-
-            Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(this);
-            group.ifPresent(ironmanGroup -> ironmanGroup.checkForDemote(this));
-
-            //Update info
-            restartTasks();
-            Prayers.onLogin(this);
-            SlayerPartner.onLogin(this);
-            Transmogrify.onLogin(this);
-            PetAI.spawnOnLogin(this);
-
-            auditTabs();
-
-            //3 seconds later we can reload stuff that doesn't require immediate attention
-        }).then(5, () -> {
-
-            if (Referrals.INSTANCE.getCOMMAND_ENABLED()) {
-                Referrals.INSTANCE.fetchDbId(this, true);
-                Referrals.INSTANCE.onLoginReferals(this);
-            }
-
-            TitlePlugin.SINGLETON.onLogin(this);
-        });
-
+        long endTime = System.currentTimeMillis() - startTime;
         GameEngine.profile.login = System.currentTimeMillis() - startTime;
         //logger.info("it took " + endTime + "ms for processing player login.");
+        //System.out.println("it took " + endTime + "ms for processing player login.");
+    }
+
+    private void moveFromRegionOnLogin() {
+        if (tile().region() == 10536) {
+            teleport(new Tile(2657, 2639, 0));
+        }
+
+        if (jailed() && tile().region() != 13103) { // Safety since it was possible to escape.
+            Teleports.basicTeleport(this, new Tile(3290, 3017));
+        }
+
+        if (tile().region() == 9551) {
+            //restart the wave on login
+            heal(maxHp());
+            int wave = getAttribOr(AttributeKey.FIGHT_CAVES_WAVE, 1);
+            MinigameManager.playMinigame(this, new FightCavesMinigame(wave));
+        }
+
+        //Move player out Zulrah area on login
+        if (tile().region() == 9008) {
+            teleport(2201, 3057, 0);
+        }
     }
 
     private static final Set<String> veteranGiftClaimedIP = new HashSet<>();
@@ -1590,16 +1556,6 @@ public class Player extends Mob {
     private void restartTasks() {
         decreaseStats.start(60);
         increaseStats.start(60);
-        Poison.onLogin(this);
-        Venom.onLogin(this);
-        AntifirePotion.onLogin(this);
-        DivineBastionPotion.onLogin(this);
-        DivineBattleMagePotion.onLogin(this);
-        DivineRangingPotion.onLogin(this);
-        DivineSuperAttackPotion.onLogin(this);
-        DivineSuperCombatPotion.onLogin(this);
-        DivineSuperDefencePotion.onLogin(this);
-        DivineSuperStrengthPotion.onLogin(this);
 
         if (this.getSpecialAttackPercentage() < 100) {
             TaskManager.submit(new RestoreSpecialAttackTask(this));
@@ -2382,7 +2338,7 @@ public class Player extends Mob {
 
     public void sendScroll(String title, String... lines) {
 
-        for (int counter = 21408; counter < 21408; counter++) {
+        for (int counter = 21408; counter < 21609; counter++) {
             packetSender.sendString(counter, "");
         }
 
@@ -2397,7 +2353,7 @@ public class Player extends Mob {
     }
 
     public void debug(String format, Object... params) {
-        if (rights.isAdminOrGreater(this)) {
+        if (rights.isDeveloperOrGreater(this)) {
             if (getAttribOr(AttributeKey.DEBUG_MESSAGES, false)) {
                 getPacketSender().sendMessage(params.length > 0 ? String.format(format, (Object[]) params) : format);
             }
@@ -3152,8 +3108,4 @@ public class Player extends Mob {
             }
         }
     };
-
-    private void replaceItems() {
-
-    }
 }

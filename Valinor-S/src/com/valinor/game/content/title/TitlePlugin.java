@@ -46,6 +46,7 @@ public class TitlePlugin extends Interaction {
         init();
     }
 
+    @Override
     public void onLogin(Player player) {
         displayTitles(player, PVMING);
         displayColours(player);

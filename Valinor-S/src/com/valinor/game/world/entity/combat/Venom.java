@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.InfectionType;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
 import static com.valinor.util.CustomItemIdentifiers.*;
@@ -31,9 +32,10 @@ import static com.valinor.util.ItemIdentifiers.*;
  * 2=18
  * 1=20 .. then on 1 it never reduces to 0, unless you die/take antivenom potion
  */
-public class Venom {
+public class Venom extends Interaction {
 
-    public static void onLogin(Player me) {
+    @Override
+    public void onLogin(Player me) {
         setTimer(me);
         int ticks = me.getAttribOr(AttributeKey.VENOM_TICKS, 0);
         if(ticks > 0) {

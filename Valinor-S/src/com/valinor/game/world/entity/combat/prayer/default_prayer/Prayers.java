@@ -13,6 +13,7 @@ import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
  *
  * @author Swiffy
  */
-public class Prayers {
+public class Prayers extends Interaction {
 
     public static boolean overheadPrayerActivated(Player player) {
         return usingPrayer(player, PROTECT_FROM_MAGIC) || usingPrayer(player, PROTECT_FROM_MISSILES) || usingPrayer(player, PROTECT_FROM_MELEE) || usingPrayer(player, RETRIBUTION) || usingPrayer(player, REDEMPTION) || usingPrayer(player, SMITE);
@@ -421,7 +422,8 @@ public class Prayers {
         return rate;
     }
 
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         player.getTimers().addOrSet(TimerKey.PRAYER_TICK, 1); // Drain 1 tick later.
     }
 

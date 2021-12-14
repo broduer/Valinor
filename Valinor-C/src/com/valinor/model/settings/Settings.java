@@ -46,7 +46,6 @@ public class Settings {
     public float counter_speed = 1.0f;
     public int counter_position;
     public boolean counter_group = true;
-    public int sound_state = 4;
     public boolean showHitPredictor = false;
     public boolean hidePrivateChat = false;
     public boolean loginLogoutNotification = false;
@@ -66,6 +65,7 @@ public class Settings {
     public boolean roofs = true;
     public boolean orbs = true;
     public boolean sounds = false;
+    public int sound_state = sounds ? 2 : 0;
     public boolean music = false;
 
     private String fileLine = "";

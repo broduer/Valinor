@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.combat.magic.Autocasting;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.CustomItemIdentifiers;
 
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.Optional;
 /**
  * Created by Mack on 10/23/2017.
  */
-public class Transmogrify {
+public class Transmogrify extends Interaction {
 
     private static final boolean ENABLED = true;
 
@@ -61,7 +62,8 @@ public class Transmogrify {
         });
     }
 
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         Optional<TransmogItems> transmogType = Arrays.stream(TransmogItems.values()).filter(type -> player.getEquipment().contains(type.id())).findAny();
         transmogType.ifPresent(type -> transmog(player, type));
     }

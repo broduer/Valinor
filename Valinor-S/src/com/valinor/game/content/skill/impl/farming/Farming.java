@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.BitConfig;
 import com.valinor.net.BitConfigBuilder;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
@@ -21,8 +22,7 @@ import java.util.Map;
  *
  * @author Gabriel || Wolfsdarker
  */
-public class Farming {
-
+public class Farming extends Interaction {
 
     /**
      * The last moment the player logged in or out.
@@ -226,7 +226,8 @@ public class Farming {
      *
      * @param player
      */
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         loadFarming(player);
         player.getFarming().updateCropStages(player);
         player.getFarming().resetLogActionMoment();

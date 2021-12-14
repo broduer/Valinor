@@ -49,9 +49,23 @@ public final class InteractionManager {
         clazzes.forEach(InteractionManager::load);
     }
 
+    public static void onLogin(Player player) {
+        for (Interaction interaction : interactions) {
+            interaction.onLogin(player);
+            return;
+        }
+    }
+
+    public static void onLogout(Player player) {
+        for (Interaction interaction : interactions) {
+            interaction.onLogout(player);
+            return;
+        }
+    }
+
     public static boolean onEquipItem(Player player, Item item) {
-        for(Interaction interaction : interactions) {
-            if(interaction.handleEquipment(player, item)) {
+        for (Interaction interaction : interactions) {
+            if (interaction.handleEquipment(player, item)) {
                 return true;
             }
         }
@@ -70,10 +84,8 @@ public final class InteractionManager {
     /**
      * Checks button interaction
      *
-     * @param player
-     *            the player
-     * @param button
-     *            the buttons
+     * @param player the player
+     * @param button the buttons
      * @return interaction
      */
     public static boolean checkButtonInteraction(Player player, int button) {
@@ -89,12 +101,9 @@ public final class InteractionManager {
     /**
      * Checks item interaction
      *
-     * @param player
-     *            player
-     * @param item
-     *            the item
-     * @param option
-     *            the type
+     * @param player player
+     * @param item   the item
+     * @param option the type
      * @return interaction
      */
     public static boolean checkItemInteraction(Player player, Item item, int option) {
@@ -110,12 +119,9 @@ public final class InteractionManager {
     /**
      * Checks object interaction
      *
-     * @param player
-     *            the player
-     * @param object
-     *            the object
-     * @param type
-     *            the type
+     * @param player the player
+     * @param object the object
+     * @param type   the type
      * @return interaction
      */
     public static boolean checkObjectInteraction(Player player, GameObject object, int type) {
@@ -131,12 +137,9 @@ public final class InteractionManager {
     /**
      * Checks npc interaction
      *
-     * @param player
-     *            the player
-     * @param npc
-     *            the npc
-     * @param type
-     *            the type
+     * @param player the player
+     * @param npc    the npc
+     * @param type   the type
      * @return interaction
      */
     public static boolean checkNpcInteraction(Player player, Npc npc, int type) {
@@ -152,12 +155,9 @@ public final class InteractionManager {
     /**
      * Checks item on item interaction
      *
-     * @param player
-     *            the player
-     * @param use
-     *            the use
-     * @param usedWith
-     *            the used with
+     * @param player   the player
+     * @param use      the use
+     * @param usedWith the used with
      * @return interaction
      */
     public static boolean checkItemOnItemInteraction(Player player, Item use, Item usedWith) {
@@ -172,12 +172,9 @@ public final class InteractionManager {
     /**
      * Checks item on player interaction
      *
-     * @param player
-     *            the player
-     * @param use
-     *            the use
-     * @param usedWith
-     *            the used with
+     * @param player   the player
+     * @param use      the use
+     * @param usedWith the used with
      * @return interaction
      */
     public static boolean checkItemOnPlayerInteraction(Player player, Item use, Player usedWith) {
@@ -192,12 +189,9 @@ public final class InteractionManager {
     /**
      * Checks item on object interaction
      *
-     * @param player
-     *            the player
-     * @param item
-     *            the item
-     * @param gameObject
-     *            the game object
+     * @param player     the player
+     * @param item       the item
+     * @param gameObject the game object
      * @return interaction
      */
     public static boolean checkItemOnObjectInteraction(Player player, Item item, GameObject gameObject) {
@@ -223,16 +217,11 @@ public final class InteractionManager {
     /**
      * Checks item container interaction
      *
-     * @param player
-     *            the player
-     * @param item
-     *            the item
-     * @param slot
-     *            the slot
-     * @param interfaceId
-     *            the interface id
-     * @param type
-     *            the type
+     * @param player      the player
+     * @param item        the item
+     * @param slot        the slot
+     * @param interfaceId the interface id
+     * @param type        the type
      * @return interaction
      */
     public static boolean checkItemContainerActionInteraction(Player player, Item item, int slot, int interfaceId, int type) {
@@ -282,7 +271,9 @@ public final class InteractionManager {
         return false;
     }
 
-    /** Recursive method to determine if a class has a given super class. */
+    /**
+     * Recursive method to determine if a class has a given super class.
+     */
     private static boolean isSuperClass(Class<?> clazz, Class<?> superClass) {
         if (clazz == null) return false;
         if (clazz.getSuperclass() == superClass) return true;

@@ -13,6 +13,14 @@ import com.valinor.game.world.object.GameObject;
  */
 public abstract class Interaction {
 
+    public void onLogin(Player player) {
+
+    }
+
+    public void onLogout(Player player) {
+
+    }
+
     public boolean handleEquipment(Player player, Item item) { return false;}
 
     public boolean handleEquipmentAction(Player player, Item item, int slot) { return false;}

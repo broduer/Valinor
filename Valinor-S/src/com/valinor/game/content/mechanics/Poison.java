@@ -9,11 +9,12 @@ import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.InfectionType;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.net.packet.interaction.Interaction;
 
 /**
  * Created by Bart on 11/18/2015.
  */
-public class Poison {
+public class Poison extends Interaction {
 
     private static int determineHit(int poisonticks) {
         return poisonticks / 5 + 1;
@@ -37,7 +38,8 @@ public class Poison {
         player.putAttrib(AttributeKey.POISON_TICKS, -immunityTicks);
     }
 
-    public static void onLogin(Player me) {
+    @Override
+    public void onLogin(Player me) {
         setTimer(me);
         int ticks = me.getAttribOr(AttributeKey.POISON_TICKS, 0);
         if(ticks > 0) {

@@ -193,17 +193,22 @@ public enum CombatSpecial {
 
         player.getPacketSender().updateSpecialAttackOrb();
 
-        if (player.getCombat().getWeaponType().getSpecialBar() == -1 || player.getCombat().getWeaponType().getSpecialMeter() == -1) {
+        WeaponType weaponType = player.getCombat().getWeaponType();
+        if(weaponType == null) {
+            return;
+        }
+
+        if (weaponType.getSpecialBar() == -1 || weaponType.getSpecialMeter() == -1) {
             return;
         }
         int specialCheck = 10;
-        int specialBar = player.getCombat().getWeaponType().getSpecialMeter();
+        int specialBar = weaponType.getSpecialMeter();
         int specialAmount = player.getSpecialAttackPercentage() / 10;
 
         // send one packet, not 10. @shadowrs
         player.getPacketSender().sendString(99900, "specbar:" + specialCheck + ":" + specialBar + ":" + specialAmount);
 
-        GlobalStrings.send(player.getCombat().getWeaponType().getSpecialMeter(),
+        GlobalStrings.send(weaponType.getSpecialMeter(),
             player.isSpecialActivated() ? ("<col=ffff00> Special Attack: " + player.getSpecialAttackPercentage() + "%") : ("</col> Special Attack: " + player.getSpecialAttackPercentage() + "%"),
             player);
     }

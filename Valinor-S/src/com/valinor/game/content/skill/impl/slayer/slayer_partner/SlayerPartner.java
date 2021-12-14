@@ -14,6 +14,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +28,7 @@ import static com.valinor.util.NpcIdentifiers.THORODIN_5526;
  * @author PVE
  * @Since juli 22, 2020
  */
-public class SlayerPartner {
+public class SlayerPartner extends Interaction {
 
     private static void task(Player player, int task, int amount) {
         player.putAttrib(AttributeKey.SLAYER_TASK_ID, task);
@@ -43,7 +44,8 @@ public class SlayerPartner {
     /**
      * Upon login always set the exact same task as your partner has.
      */
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         String partnerName = player.getAttribOr(AttributeKey.SLAYER_PARTNER, "None");
 
         //Don't do anything if we do not have a slayer partner.

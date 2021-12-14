@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.dialogue.NifflerD;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Tuple;
 import com.valinor.util.Utils;
@@ -17,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Created by Bart on 2/17/2016.
  */
-public class PetAI {
+public class PetAI extends Interaction {
 
     private static final Logger logger = LogManager.getLogger(PetAI.class);
 
@@ -220,7 +221,8 @@ public class PetAI {
         }
     }
 
-    public static void spawnOnLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         int petItemId = player.getAttribOr(AttributeKey.ACTIVE_PET_ITEM_ID, -1);
         if (petItemId != -1) {
             Pet petType = Pet.getPetByItem(petItemId);

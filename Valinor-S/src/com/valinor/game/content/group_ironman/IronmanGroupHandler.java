@@ -11,6 +11,7 @@ import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,13 +22,14 @@ import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_IRON_MAN;
 
 /**
  * @author optimum on 14/05/2020
  */
-public final class IronmanGroupHandler {
+public final class IronmanGroupHandler extends Interaction {
 
     private static final Logger log = LoggerFactory.getLogger(IronmanGroupHandler.class);
 
@@ -69,7 +71,8 @@ public final class IronmanGroupHandler {
     /**
      * Handles the logout of a player
      */
-    public static void handleLogout(Player player) {
+    @Override
+    public void onLogout(Player player) {
         Optional<IronmanGroup> getGroup = getPlayersGroup(player);
         getGroup.ifPresent(ironmanGroup -> ironmanGroup.updatePlayer(player));
         saveIronmanGroups();
@@ -201,6 +204,32 @@ public final class IronmanGroupHandler {
                     member.getPacketSender().sendRights();
                 }
             }
+        }
+    }
+
+    @Override
+    public void onLogin(Player player) {
+        Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
+        if(group.isPresent() && group.get().isHardcoreGroup() && player.ironMode() == IronMode.HARDCORE && !player.<Boolean>getAttribOr(HARDCORE_GROUP_FALLEN,false)) {
+            var lives = group.get().getHardcoreLives();
+            if(lives == 0) {
+                player.ironMode(IronMode.REGULAR);
+                if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    player.setPlayerRights(PlayerRights.IRON_MAN);
+                    player.getPacketSender().sendRights();
+                }
+                player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
+                player.putAttrib(HARDCORE_GROUP_FALLEN,true);
+            }
+        }
+
+        if(group.isEmpty() && (player.getPlayerRights() == GROUP_IRON_MAN || player.getPlayerRights() == GROUP_HARDCORE_IRONMAN)) {
+            if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                player.setPlayerRights(player.getPlayerRights() == GROUP_IRON_MAN ? PlayerRights.IRON_MAN : PlayerRights.HARDCORE_IRON_MAN);
+                player.getPacketSender().sendRights();
+            }
+            String plural = player.getPlayerRights() == PlayerRights.IRON_MAN ? "regular" : "hardcore";
+            player.message(Color.BLUE.wrap("The ironman group has been lifted, you have been demoted to a "+plural+" ironman."));
         }
     }
 

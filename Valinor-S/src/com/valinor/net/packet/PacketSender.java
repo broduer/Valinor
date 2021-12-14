@@ -19,7 +19,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -783,7 +785,55 @@ public final class PacketSender {
         player.getSession().write(out);
     }
 
+    public Map<Integer, InterfaceStore> interfaceText = new HashMap<Integer, InterfaceStore>();
+
+    public static class InterfaceStore {
+        public int id;
+
+        public String text;
+
+        public InterfaceStore(String s, int id) {
+            this.text = s;
+            this.id = id;
+        }
+    }
+
+    /**
+     * @return True, if the player already has the text in the interface id.
+     */
+    public boolean alreadyHasTextInFrame(String text, int id) {
+        // Dialogue option ids. It changes to Please wait client sided, so must update it here all the time.
+        if (id >= 2461 && id <= 2498) {
+            return false;
+        }
+
+        if (interfaceText.containsKey(id)) {
+            InterfaceStore t = interfaceText.get(id);
+            if (text.equals(t.text)) {
+                return true;
+            }
+            t.text = text;
+        } else {
+            interfaceText.put(id, new InterfaceStore(text, id));
+        }
+        return false;
+    }
+
     public PacketSender sendString(int id, String string) {
+        return sendString(id, string, true);
+    }
+
+    public PacketSender sendString(int id, String string, boolean store) {
+        if (player.<Boolean>getAttribOr(AttributeKey.IS_BOT, false)) {
+            return this;
+        }
+
+        if (store) {
+            if (alreadyHasTextInFrame(string, id)) {
+                return this;
+            }
+        }
+
         PacketBuilder out = new PacketBuilder(126, PacketType.VARIABLE_SHORT);
         out.putString(string);
         out.putInt(id);

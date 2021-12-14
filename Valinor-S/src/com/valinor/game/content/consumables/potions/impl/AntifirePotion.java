@@ -5,6 +5,7 @@ import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -12,9 +13,10 @@ import com.valinor.util.Utils;
  * @author PVE
  * @Since juli 28, 2020
  */
-public class AntifirePotion {
+public class AntifirePotion extends Interaction {
 
-    public static void onLogin(Player player) {
+    @Override
+    public void onLogin(Player player) {
         int ticks = player.getAttribOr(AttributeKey.ANTIFIRE_POTION, 0);
         setTimer(player);
         int seconds = (int) Utils.ticksToSeconds(ticks);
