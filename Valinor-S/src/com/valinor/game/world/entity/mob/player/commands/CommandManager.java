@@ -1,39 +1,26 @@
 package com.valinor.game.world.entity.mob.player.commands;
 
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.dev.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.KtCommands;
 import com.valinor.game.world.entity.mob.player.commands.impl.member.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.owner.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.players.*;
+import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.event_manager.HPEventCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.*;
-import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.IPMuteCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.JailCommand;
-import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.KickPlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.MutePlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.TeleToPlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.super_member.YellColourCommand;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CommandManager {
-
-    //Ken comment: For some reason, getLogger with a String parameter uses reflection but it doesn't cause an UnsupportedOperationException in Java 11 as long as the getLogger parameter isn't empty. In the future, may need to re-write this so it uses the class name but there isn't a getLogger that takes both logger name (i.e. PrivateMessageLogs) and class name (i.e. PlayerRelationPacketListener). Right now the only classes using the string are PlayerRelationPacketListener and ChatPacketListener and CommandPacketListener. The fix for this if this ever became a problem, in theory, would be LogManager.getLogger(CommandPacketListener.class);
-    //private static final Logger commandLogs = LogManager.getLogger(CommandPacketListener.class);
-    //ken comment, never-mind the UnsupportedOperationException Java 11 comment above, just use "Multi-Release: true" in MANIFEST.MF for the server jar manifest so log4j2 uses the proper Java 9+ API for Java 11 instead of the older Java 8 API.. LogManager.getLogger(ClassName.class) is not required anywhere if using multi-release jar properly. Probably will remove these two or three comments some time in the future.
-    private static final Logger commandLogs = LogManager.getLogger("CommandLogs");
-    private static final Level COMMAND;
-    static {
-        COMMAND = Level.getLevel("COMMAND");
-    }
 
     private static final Logger logger = LogManager.getLogger(CommandManager.class);
 
@@ -138,11 +125,7 @@ public class CommandManager {
         commands.put("unipmute", new UnIPMuteCommand());
         commands.put("unmute", new UnMutePlayerCommand());
         commands.put("ban", new BanPlayerCommand());
-        commands.put("macban", new MacBanPlayerCommand());
-        commands.put("ipban", new IPBanPlayerCommand());
         commands.put("unban", new UnBanPlayerCommand());
-        commands.put("unipban", new UnIPBanCommand());
-        commands.put("unmacban", new UnMacBanCommand());
         commands.put("teletome", new TeleToMePlayerCommand());
         commands.put("modzone", new ModZoneCommand());
         commands.put("unjail", new UnJailCommand());
@@ -151,6 +134,10 @@ public class CommandManager {
         /*
          * Admin commands
          */
+        commands.put("ipban", new IPBanPlayerCommand());
+        commands.put("unipban", new UnIPBanCommand());
+        commands.put("macban", new MacBanPlayerCommand());
+        commands.put("unmacban", new UnMacBanCommand());
         commands.put("killscorpia", new KillScorpiaCommand());
         commands.put("setlevelo", new SetLevelOther());
         commands.put("disablepromocode", new DisablePromoCodeCommand());
@@ -207,8 +194,7 @@ public class CommandManager {
         commands.put("disabletplisting", new DisableTpItemListingCommand());
         commands.put("infhp", new InvulnerableCommand());
         commands.put("invu", new InvulnerableCommand());
-        ItemSpawnCommand itemSpawnCommand = new ItemSpawnCommand();
-        commands.put("item", itemSpawnCommand);
+        commands.put("item", new ItemSpawnCommand());
         commands.put("objt", new ObjTypeCommand());
         commands.put("alwayshit", new AlwaysHitCommand());
         commands.put("onehit", new OneBangCommand());
@@ -303,19 +289,20 @@ public class CommandManager {
             if (c.canUse(player)) {
                 try {
                     c.execute(player, command, parts);
-                    commandLogs.log(COMMAND, "{} used command ::{}", player.getUsername(), command);
-                    Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::" + command, "command");
+                    System.out.println(command);
+                    List<String> ignore = Arrays.asList("teleto", "mute", "jail", "ipmute", "unipmute", "unmute", "ban", "macban", "ipban",
+                        "unban", "teletome", "modzone", "unjail", "kick", "ipban", "unipban", "macban", "unmacban", "claimvote", "redeem", "item", "giveitem");
+                    if(ignore.stream().noneMatch(command::startsWith)) {
+                        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::" + command, "player_cmd");
+                    }
                 } catch (Exception e) {
                     player.message("Something went wrong with the command ::" + command +". Perhaps you entered it wrong?");
                     player.debug("Error %s", e);
-                    //throw e;
                     logger.error("cmd ex", e);
                 }
             } else {
                 player.message("Invalid command.");
                 player.debugMessage("command canUse returned false for this cmd "+parts[0]+".");
-                commandLogs.log(COMMAND, player.getUsername() + " tried to use command ::" + command);
-                Utils.sendDiscordInfoLog(player.getUsername() + " tried to use command ::" + command, "command");
             }
         }
         Tile tele = locsTeles.get(parts[0]);
@@ -325,8 +312,6 @@ public class CommandManager {
             return;
         }
         if (c == null) {
-            commandLogs.log(COMMAND, player.getUsername() + " tried to use non-existent command ::" + command);
-            Utils.sendDiscordInfoLog(player.getUsername() + " tried to use non-existent command ::" + command, "command");
             player.message("Invalid command.");
         }
     }

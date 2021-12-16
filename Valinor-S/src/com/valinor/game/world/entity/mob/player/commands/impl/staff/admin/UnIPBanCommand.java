@@ -37,6 +37,7 @@ public class UnIPBanCommand implements Command {
                         PlayerPunishment.removeIpBan(IPToRemove);
                         PlayerPunishment.removeFromIPBanList(IPToRemove);
                         player.message("Player " + IPToRemove + " was successfully un IP banned.");
+                        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unipban "+IPToRemove, "staff_cmd");
                     } catch (IOException e) {
                         player.message("The IP could not be successfully removed from the file.");
                     }

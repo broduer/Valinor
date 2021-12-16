@@ -69,7 +69,7 @@ public enum DuelRule {
         return null;
     }
 
-    static DuelRule forButtonId(int buttonId) {
+    public static DuelRule forButtonId(int buttonId) {
         for (DuelRule r : DuelRule.values()) {
             if (r.getButtonId() == buttonId)
                 return r;

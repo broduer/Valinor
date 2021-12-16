@@ -162,28 +162,66 @@ public final class ServerProperties {
         definitionsLazy = true;
         discordNotifyId = "";
         enableDiscordLogging = discordLoggingOn;
-        commandWebHookUrl = "";
-        chatWebHookUrl = "";
-        stakeWebHookUrl = "";
-        tradeWebHookUrl = "";
-        pmWebHookUrl = "";
-        npcDropsWebHookUrl = "";
-        playerDropsWebHookUrl = "";
-        pickupsWebHookUrl = "";
-        loginWebHookUrl = "";
-        logoutWebHookUrl = "";
-        shopsWebHookUrl = "";
-        playerDeathsWebHookUrl = "";
-        tournamentsWebHookUrl = "";
+        publicChatWebHookUrl = "";
+        privateChatWebHookUrl = "";
+        staffCommandsWebHookUrl = "";
+        playerCommandsWebHookUrl = "";
+        votesClaimedWebHookUrl = "";
+        donationsClaimedWebHookUrl = "";
+        tradeFirstScreenDeclinedWebHookUrl = "";
+        tradeSecondScreenDeclinedWebHookUrl = "";
+        tradeFirstScreenAcceptedWebHookUrl = "";
+        tradeSecondScreenAcceptedWebHookUrl = "";
+        stakeFirstScreenDeclinedWebHookUrl = "";
+        stakeSecondScreenDeclinedWebHookUrl = "";
+        stakeFirstScreenAcceptedWebHookUrl = "";
+        stakeSecondScreenAcceptedWebHookUrl = "";
+        stakeItemsWonWebHookUrl = "";
+        stakeItemsLostWebHookUrl = "";
+        stakeRulesChangedWebHookUrl = "";
+        gambleItemsOfferedWebHookUrl = "";
+        gambleItemsWonWebHookUrl = "";
+        gambleItemsLostWebHookUrl = "";
+        yellItemDropsWebHookUrl = "";
+        slayerKeyDropsWebHookUrl = "";
+        brimstoneKeyDropsWebHookUrl = "";
+        crystalKeyDropsWebHookUrl = "";
+        slayerChestWebHookUrl = "";
+        brimstoneChestWebHookUrl = "";
+        crystalChestWebHookUrl = "";
+        collectionChestWebHookUrl = "";
+        rewardsClaimedColLogWebHookUrl = "";
+        itemsDroppedWebHookUrl = "";
+        playerPickupsWebHookUrl = "";
+        loginsWebHookUrl = "";
+        logoutsWebHookUrl = "";
+        logoutDuringTournyWebHookUrl = "";
+        itemsBoughtWebHookUrl = "";
+        itemsSoldWebHookUrl = "";
+        npcDeathWebHookUrl = "";
+        playerDeathWebHookUrl = "";
+        playersEnteredTournyWebHookUrl = "";
+        playersLeftTournyWebHookUrl = "";
+        tournyWinnersWebHookUrl = "";
         referralsWebHookUrl = "";
-        achievementsWebHookUrl = "";
-        tradingPostSalesWebHook = "";
-        tradingPostPurchasesWebHook = "";
-        raidsWebHook = "";
-        starterBoxWebHook = "";
-        gambleWebHookUrl = "";
-        boxAndTicketsWebHookUrl = "";
-        promoCodewebHookURL = "";
+        referralRewardsClaimedWebHookUrl = "";
+        itemSalesTPWebHookUrl = "";
+        itemsBoughtTPWebHookUrl = "";
+        itemsModifiedTPWebHookUrl = "";
+        itemsClaimedTPWebHookUrl = "";
+        itemsCanceledTPWebHookUrl = "";
+        coxRewardsClaimedWebHookUrl = "";
+        tobRewardsClaimedWebHookUrl = "";
+        cosRewardsClaimedWebHookUrl = "";
+        boxesOpenedWebHookUrl = "";
+        ticketsOpenedWebHookUrl = "";
+        fpkMerkPromoCodeClaimedWebHookUrl = "";
+        itemsAddedToCartDispenserWebHookUrl = "";
+        itemsDispensedWebHookUrl = "";
+        presetsLoadedWebHookUrl = "";
+        nifflerLootedWebHookUrl = "";
+        lootingBagLootedWebHookUrl = "";
+        lootingBagWithdrawnWebHookUrl = "";
         wildernessDitchEnbabled = false;
         redirectOutStream = false;
         teleToMeInWildOk = false;
@@ -510,94 +548,67 @@ public final class ServerProperties {
      */
     public boolean enableDiscordLogging;
 
-    /**
-     * This is the command web hook URL for Discord.
-     */
-    public final String commandWebHookUrl;
-    /**
-     * This is the chat web hook URL for Discord.
-     */
-    public final String chatWebHookUrl;
-    /**
-     * This is the trade web hook URL for Discord.
-     */
-    public final String tradeWebHookUrl;
-    /**
-     * This is the stake web hook URL for Discord.
-     */
-    public final String stakeWebHookUrl;
-    /**
-     * This is the pm web hook URL for Discord.
-     */
-    public final String pmWebHookUrl;
-    /**
-     * This is the NPC drops web hook URL for Discord.
-     */
-    public final String npcDropsWebHookUrl;
-    /**
-     * This is the player drops web hook URL for Discord.
-     */
-    public final String playerDropsWebHookUrl;
-    /**
-     * This is the pickups web hook URL for Discord.
-     */
-    public final String pickupsWebHookUrl;
-    /**
-     * This is the login web hook URL for Discord.
-     */
-    public final String loginWebHookUrl;
-    /**
-     * This is the logout web hook URL for Discord.
-     */
-    public final String logoutWebHookUrl;
-    /**
-     * This is the shops web hook URL for Discord.
-     */
-    public final String shopsWebHookUrl;
-    /**
-     * This is the player deaths web hook URL for Discord.
-     */
-    public final String playerDeathsWebHookUrl;
-    /**
-     * This is the tournaments web hook URL for Discord.
-     */
-    public final String tournamentsWebHookUrl;
-    /**
-     * This is the referrals web hook URL for Discord.
-     */
+    public final String publicChatWebHookUrl;
+    public final String privateChatWebHookUrl;
+    public final String staffCommandsWebHookUrl;
+    public final String playerCommandsWebHookUrl;
+    public final String votesClaimedWebHookUrl;
+    public final String donationsClaimedWebHookUrl;
+    public final String tradeFirstScreenDeclinedWebHookUrl;
+    public final String tradeSecondScreenDeclinedWebHookUrl;
+    public final String tradeFirstScreenAcceptedWebHookUrl;
+    public final String tradeSecondScreenAcceptedWebHookUrl;
+    public final String stakeFirstScreenDeclinedWebHookUrl;
+    public final String stakeSecondScreenDeclinedWebHookUrl;
+    public final String stakeFirstScreenAcceptedWebHookUrl;
+    public final String stakeSecondScreenAcceptedWebHookUrl;
+    public final String stakeItemsWonWebHookUrl;
+    public final String stakeItemsLostWebHookUrl;
+    public final String stakeRulesChangedWebHookUrl;
+    public final String gambleItemsOfferedWebHookUrl;
+    public final String gambleItemsWonWebHookUrl;
+    public final String gambleItemsLostWebHookUrl;
+    public final String yellItemDropsWebHookUrl;
+    public final String slayerKeyDropsWebHookUrl;
+    public final String brimstoneKeyDropsWebHookUrl;
+    public final String crystalKeyDropsWebHookUrl;
+    public final String slayerChestWebHookUrl;
+    public final String brimstoneChestWebHookUrl;
+    public final String crystalChestWebHookUrl;
+    public final String collectionChestWebHookUrl;
+    public final String rewardsClaimedColLogWebHookUrl;
+    public final String itemsDroppedWebHookUrl;
+    public final String playerPickupsWebHookUrl;
+    public final String loginsWebHookUrl;
+    public final String logoutsWebHookUrl;
+    public final String logoutDuringTournyWebHookUrl;
+    public final String itemsBoughtWebHookUrl;
+    public final String itemsSoldWebHookUrl;
+    public final String npcDeathWebHookUrl;
+    public final String playerDeathWebHookUrl;
+    public final String playersEnteredTournyWebHookUrl;
+    public final String playersLeftTournyWebHookUrl;
+    public final String tournyWinnersWebHookUrl;
     public final String referralsWebHookUrl;
-    /**
-     * This is the achievements web hook URL for Discord.
-     */
-    public final String achievementsWebHookUrl;
-    /**
-     * This is the trading post sales web hook URL for Discord.
-     */
-    public final String tradingPostSalesWebHook;
-    /**
-     * This is the trading post purchases web hook URL for Discord.
-     */
-    public final String tradingPostPurchasesWebHook;
-    /**
-     * This is the raids web hook URL for Discord.
-     */
-    public final String raidsWebHook;
-    /**
-     * This is the starter box web hook URL for Discord.
-     */
-    public final String starterBoxWebHook;
-    /**
-     * This is the gamble web hook URL for Discord.
-     */
-    public final String gambleWebHookUrl;
-    /**
-     * This is the box and tickets web hook URL for Discord.
-     */
-    public final String boxAndTicketsWebHookUrl;
-    /**
-     * This is the fpk merk web hook URL for Discord.
-     */
-    public final String promoCodewebHookURL;
+    public final String referralRewardsClaimedWebHookUrl;
+    public final String itemSalesTPWebHookUrl;
+    public final String itemsBoughtTPWebHookUrl;
+    public final String itemsModifiedTPWebHookUrl;
+    public final String itemsClaimedTPWebHookUrl;
+    public final String itemsCanceledTPWebHookUrl;
+    public final String coxRewardsClaimedWebHookUrl;
+    public final String tobRewardsClaimedWebHookUrl;
+    public final String cosRewardsClaimedWebHookUrl;
+    public final String boxesOpenedWebHookUrl;
+    public final String ticketsOpenedWebHookUrl;
+    public final String fpkMerkPromoCodeClaimedWebHookUrl;
+    public final String itemsAddedToCartDispenserWebHookUrl;
+    public final String itemsDispensedWebHookUrl;
+    public final String presetsLoadedWebHookUrl;
+    public final String nifflerLootedWebHookUrl;
+    public final String lootingBagLootedWebHookUrl;
+    public final String lootingBagWithdrawnWebHookUrl;
+
     /**
      * Can we walk over the wilderness ditch.
      */

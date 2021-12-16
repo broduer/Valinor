@@ -36,6 +36,7 @@ import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.incoming_packets.ButtonClickPacketListener;
+import com.valinor.util.Utils;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -320,6 +321,7 @@ public class Buttons {
                 }
 
                 player.inventory().remove(itemToDestroy, true);
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" destroyed item " + itemToDestroy.getAmount() + "x " + itemToDestroy.unnote().name() + " at " + player.tile().toString(), "item_dropped");
                 player.getInterfaceManager().close();
                 break;
 
@@ -448,6 +450,10 @@ public class Buttons {
                     return;
                 }
                 if (player.getDueling().checkRule(button)) {
+                    DuelRule rule = DuelRule.forButtonId(button);
+                    if(rule != null) {
+                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " tried changing the "+Utils.formatEnum(rule.name())+" rule in a stake.", "stake_rules");
+                    }
                     return;
                 }
                 if (player.getPresetManager().handleButton(button, 0)) {

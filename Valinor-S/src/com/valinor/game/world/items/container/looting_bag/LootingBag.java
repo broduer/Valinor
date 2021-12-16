@@ -30,13 +30,6 @@ import static com.valinor.util.ItemIdentifiers.LOOTING_BAG_22586;
  */
 public class LootingBag extends ItemContainer {
 
-    private static final Logger lootingBagLogs = LogManager.getLogger("LootingBagLogs");
-    private static final Level LOOTING_BAG_LOGS;
-
-    static {
-        LOOTING_BAG_LOGS = Level.getLevel("LOOTING_BAG");
-    }
-
     /**
      * The size of the container
      */
@@ -398,7 +391,7 @@ public class LootingBag extends ItemContainer {
         }
 
         player.getLootingBag().add(item, true);
-        lootingBagLogs.log(LOOTING_BAG_LOGS, "Player " + player.getUsername() + " added: " + item.unnote().name());
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " added: " + item.unnote().name(), "looting_bag_looted");
         return true;
     }
 
@@ -418,7 +411,7 @@ public class LootingBag extends ItemContainer {
         if (item.getAmount() > amount) {
             item = item.createWithAmount(amount);
         }
-        lootingBagLogs.log(LOOTING_BAG_LOGS, "Player " + player.getUsername() + " withdrawn: " + item.unnote().name());
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " withdrawn: " + item.unnote().name(), "looting_bag_withdrawn");
         player.getBank().depositFromNothing(item);
         player.getLootingBag().remove(item, slot, true);
         player.getBank().refresh();

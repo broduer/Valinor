@@ -39,6 +39,7 @@ public class UnJailCommand implements Command {
                     }
                 }
                 player.message("Player " + opname + " ("+other.getUsername()+") has been unjailed.");
+                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unjail "+other.getUsername(), "staff_cmd");
             } else {
                 player.message(opname + " is not jailed.");
             }

@@ -42,6 +42,7 @@ public class ChamberOfXericReward {
                 }
             }
 
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a: " + new Item(Pet.OLMLET.item).name() + ".", "yell_item_drop");
             World.getWorld().sendWorldMessage("<img=1081>" + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.OLMLET.item).name() + "</col>.");
         } else {
             player.message("You have a funny feeling like you would have been followed...");
@@ -54,14 +55,10 @@ public class ChamberOfXericReward {
             if (item == null)
                 continue;
             if (ChamberOfXericReward.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
-                Utils.sendDiscordInfoLog("Rare drop collected: " + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
-                if (item.getValue() > 50_000) {
-                    String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chambers of Xerics</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-                    World.getWorld().sendWorldMessage(worldMessage);
-                }
+                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chambers of Xerics</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                World.getWorld().sendWorldMessage(worldMessage);
             }
         }
-
         player.getRaidRewards().clear();
 
         //Roll for pet
@@ -163,7 +160,7 @@ public class ChamberOfXericReward {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
             OTHER.log(player, COS_RAIDS_KEY, item);
-            Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "raids");
+            Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cox_reward");
             rare = player;
         }
 
@@ -172,7 +169,7 @@ public class ChamberOfXericReward {
         if (player != rare) {
             Item item = rollRegular();
             player.getRaidRewards().add(item);
-            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "raids");
+            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
         }
     }
 

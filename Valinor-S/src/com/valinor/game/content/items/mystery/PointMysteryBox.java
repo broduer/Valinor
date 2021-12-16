@@ -5,6 +5,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.Utils;
 
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
@@ -42,33 +43,40 @@ public class PointMysteryBox extends Interaction {
                     var coins = World.getWorld().random(250, 1000);
                     player.inventory().addOrBank(new Item(VALINOR_COINS, coins));
                     World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + coins + " Valinor coins from a points mystery box!");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+coins+" Valinor coins.", "boxes_opened");
                 } else if (World.getWorld().rollDie(35, 1)) {
                     points = "vote points";
                     var votePts = player.<Integer>getAttribOr(VOTE_POINTS, 0) + votePoints;
                     player.putAttrib(VOTE_POINTS, votePts);
                     player.getPacketSender().sendString(QuestTab.InfoTab.VOTE_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.VOTE_POINTS.childId).fetchLineData(player));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+votePts+" vote points.", "boxes_opened");
                 } else if (World.getWorld().rollDie(25, 1)) {
                     points = "marks of grace";
                     player.inventory().addOrBank(new Item(MARK_OF_GRACE, amount));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" marks of grace.", "boxes_opened");
                 } else if (World.getWorld().rollDie(6, 1)) {
                     points = "slayer points";
                     var slayerRewardPoints = player.<Integer>getAttribOr(SLAYER_REWARD_POINTS, 0) + amount;
                     player.putAttrib(SLAYER_REWARD_POINTS, slayerRewardPoints);
                     player.getPacketSender().sendString(QuestTab.InfoTab.SLAYER_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.SLAYER_POINTS.childId).fetchLineData(player));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+slayerRewardPoints+" slayer points.", "boxes_opened");
                 } else if (World.getWorld().rollDie(5, 1)) {
                     points = "boss points";
                     var bossPoints = player.<Integer>getAttribOr(BOSS_POINTS, 0) + amount;
                     player.putAttrib(BOSS_POINTS, bossPoints);
                     player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
                     player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+bossPoints+" boss points.", "boxes_opened");
                 } else if (World.getWorld().rollDie(3, 1)) {
                     points = "double drops scroll";
                     player.inventory().addOrBank(new Item(DOUBLE_DROPS_SCROLL, amount));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" double drop scrolls.", "boxes_opened");
                 } else {
                     points = "pk points";
                     var pkPoints = player.<Integer>getAttribOr(PK_POINTS, 0) + amount;
                     player.putAttrib(PK_POINTS, pkPoints);
                     player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" pk points.", "boxes_opened");
                 }
 
                 if (amount > 5) {

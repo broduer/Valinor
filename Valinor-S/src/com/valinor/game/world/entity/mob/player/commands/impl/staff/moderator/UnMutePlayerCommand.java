@@ -24,6 +24,8 @@ public class UnMutePlayerCommand implements Command {
             plr.ifPresent(value -> value.putAttrib(AttributeKey.MUTED,false));
             GameServer.getDatabaseService().submit(new UnmutePlayerDatabaseTransaction(username));
             player.message("Player " + username + " was successfully unmuted.");
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unmute "+username, "staff_cmd");
+            return;
         }
 
         if (GameServer.properties().punishmentsToLocalFile) {
@@ -45,6 +47,7 @@ public class UnMutePlayerCommand implements Command {
             }
 
             player.message("Player " + username + " (" + username + ") was successfully unmuted.");
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unmute "+username, "staff_cmd");
         }
     }
 

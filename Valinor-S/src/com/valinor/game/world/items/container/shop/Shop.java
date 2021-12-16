@@ -29,13 +29,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public abstract class Shop {
 
-    private static final Logger shopLogs = LogManager.getLogger("ShopsLogs");
-    private static final Level SHOPS_LEVEL;
-
-    static {
-        SHOPS_LEVEL = Level.getLevel("SHOPS");
-    }
-
     AddStockTask addStockTask;
     RemoveStockTask removeStockTask;
 
@@ -216,8 +209,7 @@ public abstract class Shop {
             player.getPacketSender().sendString(64014, "Reward Points: " + Utils.formatNumber(slayerRewardPoints));
         }
 
-        shopLogs.log(SHOPS_LEVEL, player.getUsername() + " has bought " + item.unnote().name() + " from a shop for " + Utils.formatNumber((long) item.getAmount() * value) + " " + currencyType.currency.toString());
-        Utils.sendDiscordInfoLog(player.getUsername() + " has bought " + item.unnote().name() + " from a shop for " + Utils.formatNumber((long) item.getAmount() * value) + " " + currencyType.currency.toString(), "shops");
+        Utils.sendDiscordInfoLog(player.getUsername() + " has bought " + item.unnote().name() + " from a shop for " + Utils.formatNumber((long) item.getAmount() * value) + " " + currencyType.currency.toString(), "items_bought_store");
 
         //Don't refresh the shop for one player, refresh it for all players.
         for (Player player1 : this.players) {
@@ -342,8 +334,7 @@ public abstract class Shop {
         if (sellValue > 0) {
             currencyType.currency.recieveCurrency(player, item.getAmount() * sellValue);
             player.message("You sold your " + item.unnote().name() + " for " + Utils.formatNumber((long) item.getAmount() * sellValue) + " " + currencyType.currency.toString() + ".");
-            shopLogs.log(SHOPS_LEVEL, player.getUsername() + " has sold " + item.unnote().name() + " for " + Utils.formatNumber((long) item.getAmount() * sellValue) + " " + currencyType.currency.toString() + ".");
-            Utils.sendDiscordInfoLog(player.getUsername() + " has sold " + item.unnote().name() + " for " + Utils.formatNumber((long) item.getAmount() * sellValue) + " " + currencyType.currency.toString() + ".", "shops");
+            Utils.sendDiscordInfoLog(player.getUsername() + " has sold " + item.unnote().name() + " for " + Utils.formatNumber((long) item.getAmount() * sellValue) + " " + currencyType.currency.toString() + ".", "items_sold_store");
         }
         StoreItem converted = new StoreItem(item.getId(), item.getAmount());
 

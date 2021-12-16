@@ -38,13 +38,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class DropItemPacketListener implements PacketListener {
 
-    private static final Logger playerDropLogs = LogManager.getLogger("PlayerDropLogs");
-    private static final Level PLAYER_DROPS;
-
-    static {
-        PLAYER_DROPS = Level.getLevel("PLAYER_DROPS");
-    }
-
     @Override
     public void handleMessage(Player player, Packet packet) {
         int id = packet.readUnsignedShortA();
@@ -167,9 +160,6 @@ public class DropItemPacketListener implements PacketListener {
     }
 
     private void dropItem(Player player, Item item) {
-        playerDropLogs.log(PLAYER_DROPS, "Player " + player.getUsername() + " dropped item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: " + player.getX() + ", Y: " + player.getY());
-        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " dropped item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: " + player.getX() + ", Y: " + player.getY(), "playerdrops");
-
         //We probably don't need to duplicate item attributes/properties here,
         //since dropping loses charges in OSRS.
         GroundItem groundItem = new GroundItem(item, player.tile(), player);
@@ -181,6 +171,7 @@ public class DropItemPacketListener implements PacketListener {
 
         //Drop the item on the floor
         GroundItemHandler.createGroundItem(groundItem);
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" dropped item " + item.getAmount() + "x " + item.unnote().name() + " at " + player.tile().toString(), "item_dropped");
     }
 
     private void destroyOption(Player player, int invSlot, boolean destroyIt) {

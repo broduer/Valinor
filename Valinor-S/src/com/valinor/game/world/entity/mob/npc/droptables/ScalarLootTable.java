@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.mob.npc.droptables;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.valinor.fs.DefinitionRepository;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -10,7 +12,6 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
@@ -18,8 +19,6 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import nl.bartpelle.dawnguard.DataStore;
 import org.apache.commons.lang3.math.Fraction;
 
@@ -382,6 +381,7 @@ public class ScalarLootTable {
             var dropRate = combatLvl >= 100 ? 120 - (combatLvl / 5) : 100 + (100 - combatLvl) / 40;
             if (World.getWorld().rollDie(dropRate, 1)) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.BRIMSTONE_KEY), player.tile(), player));
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a brimstone key drop.", "brimstone_key_drop");
             }
         }
     }

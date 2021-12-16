@@ -40,13 +40,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class ItemDrops {
 
-    private static final Logger npcDropLogs = LogManager.getLogger("NpcDropLogs");
-    private static final Level NPC_DROPS;
-
-    static {
-        NPC_DROPS = Level.getLevel("NPC_DROPS");
-    }
-
     private static final Area CORPOREAL_BEAST_AREA = new Area(2944, 4352, 3007, 4415);
     private static final List<Integer> BONES = Arrays.asList(ItemIdentifiers.BONES, BURNT_BONES, BAT_BONES, BIG_BONES, BABYDRAGON_BONES, DRAGON_BONES, JOGRE_BONES, ZOGRE_BONES, OURG_BONES, WYVERN_BONES, DAGANNOTH_BONES, LONG_BONE, CURVED_BONE, LAVA_DRAGON_BONES, SUPERIOR_DRAGON_BONES, WYRM_BONES, DRAKE_BONES, HYDRA_BONES);
 
@@ -173,8 +166,9 @@ public class ItemDrops {
                 }
 
                 ServerAnnouncements.tryBroadcastDrop(player, npc, reward);
-                npcDropLogs.log(NPC_DROPS, "Player " + player.getUsername() + " got drop item " + reward.unnote().name());
-                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " got drop item " + reward.unnote().name(), "npcdrops");
+                if(reward.getId() == CRYSTAL_KEY) {
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a crystal key drop.", "crystal_key_drop");
+                }
 
                 // Corp beast drops are displayed to surrounding players.
                 if (npc.id() == 319) {

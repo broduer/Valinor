@@ -42,6 +42,7 @@ public class CollectionKey extends Interaction {
             Item reward = reward();
             KEYS.log(player, COLLECTION_KEY, reward);
             player.inventory().addOrBank(reward);
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the collection log chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "collection_chest");
 
             var sendWorldMessage = rare;
             var amount = reward.getAmount();

@@ -75,12 +75,6 @@ import static com.valinor.util.NpcIdentifiers.*;
 public class NpcDeath {
 
     private static final Logger logger = LogManager.getLogger(NpcDeath.class);
-    private static final Logger npcDropLogs = LogManager.getLogger("NpcDropLogs");
-    private static final Level NPC_DROPS;
-
-    static {
-        NPC_DROPS = Level.getLevel("NPC_DROPS");
-    }
 
     private static final List<Integer> customDrops = Arrays.asList(WHIRLPOOL_496, KRAKEN, CAVE_KRAKEN, WHIRLPOOL, ZULRAH, ZULRAH_2043, ZULRAH_2044);
 
@@ -664,11 +658,13 @@ public class NpcDeath {
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //Drop loot, but the first form of KQ, Runite golem and world bosses do not drop anything.
                     if (table != null && (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && npc.id() != THE_NIGHTMARE_9430)) {
-                        //Always drops such as bones
-                        ItemDrops.dropAlwaysItems(killer, npc);
+                        if(customDrops.stream().noneMatch(n -> n == npc.id())) {
+                            //Always drops such as bones
+                            ItemDrops.dropAlwaysItems(killer, npc);
 
-                        //Roll for an actual drop of the table
-                        ItemDrops.rollTheDropTable(killer, npc);
+                            //Roll for an actual drop of the table
+                            ItemDrops.rollTheDropTable(killer, npc);
+                        }
 
                         int roll = npc.def() != null && npc.def().combatlevel > 100 ? 100 : 200;
                         if (World.getWorld().rollDie(roll, 1)) {
@@ -900,8 +896,8 @@ public class NpcDeath {
                 case SKELETON_HELLHOUND_PET -> OTHER.log(killer, KILLER, new Item(Pet.SKELETON_HELLHOUND_PET.item));
             }
 
-            npcDropLogs.log(NPC_DROPS, "Player " + killer.getUsername() + " got pet " + new Item(pet.get().item).name());
             World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
+            Utils.sendDiscordInfoLog("Player " + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".", "yell_item_drop");
         }
         return pet;
     }

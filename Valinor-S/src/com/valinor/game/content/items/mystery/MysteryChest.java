@@ -47,7 +47,7 @@ public class MysteryChest extends Interaction {
         var opened = player.<Integer>getAttribOr(AttributeKey.MYSTERY_CHESTS_OPENED, 0) + 1;
         player.putAttrib(AttributeKey.MYSTERY_CHESTS_OPENED, opened);
         if (reward != null) {
-            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a " + reward.name() + " from a Mystery chest.", "box_and_tickets");
+            Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a mystery chest and received "+reward.unnote().name()+".", "boxes_opened");
             //The user box test doesn't yell.
             if (player.getUsername().equalsIgnoreCase("Box test")) {
                 return;

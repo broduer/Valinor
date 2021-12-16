@@ -153,6 +153,8 @@ object CollectVotes {
                             packetSender.sendString(QuestTab.InfoTab.VOTE_POINTS.childId, QuestTab.InfoTab.INFO_TAB[QuestTab.InfoTab.VOTE_POINTS.childId]!!.fetchLineData(this))
 
                             voteHistory.add(VoteLog(hostAddress, currentMac, now))
+
+                            Utils.sendDiscordInfoLog("$username used command: ::claimvote and claimed their vote reward.", "votes_claimed")
                         }
                     }
                 }

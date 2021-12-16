@@ -49,6 +49,7 @@ public class SlayerKey {
 
                 player.inventory().addOrBank(new Item(SLAYER_KEY));
                 player.message(Color.PURPLE.wrap("A slayer key appeared, you have now collected a total of "+keysReceived+ " slayer keys."));
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a slayer key drop.", "slayer_key_drop");
             }
         }
     }
@@ -69,6 +70,7 @@ public class SlayerKey {
             Item reward = reward();
             KEYS.log(player, SLAYER_KEY, reward);
             player.inventory().addOrBank(reward);
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the slayer chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "slayer_chest");
 
             var sendWorldMessage = rare;
             var amount = reward.getAmount();

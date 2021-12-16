@@ -114,7 +114,7 @@ object Referrals {
             REFEREE_ONE_DAY_PLAYTIME -> {
                 Utils.sendDiscordInfoLog(
                         this.username + " has received a 5$ bond for referring a player who passed 1 day playtime.",
-                        "referrals"
+                        "referral_reward"
                 )
                 inventory.addOrBank(Item(FIVE_DOLLAR_BOND))
                 message("You've been awarded a 5$ bond for referring a player who passed 1 day playtime.")
@@ -130,8 +130,8 @@ object Referrals {
                 inventory.addOrBank(Item(DONATOR_MYSTERY_BOX, 3))
                 message("You've been awarded 3 donator mystery boxes for referring a player who passed 10 hours playtime.")
                 Utils.sendDiscordInfoLog(
-                        this.username + " has received a weapon and armour box for referring a player who passed 10 hours playtime.",
-                        "referrals"
+                        this.username + " has received 3x donator mystery box for referring a player who passed 10 hours playtime.",
+                        "referral_reward"
                 )
                 result.success = true
                 if (!insertAsAlreadyDoneInsteadOfUpdate)
@@ -145,7 +145,7 @@ object Referrals {
                 inventory.addOrBank(Item(DONATOR_MYSTERY_BOX))
                 Utils.sendDiscordInfoLog(
                         this.username + " has received a donator mystery box for referring 3 players!",
-                        "referrals"
+                        "referral_reward"
                 )
                 message("You've been rewarded a donator mystery box for referring 3 players!")
                 result.success = true
@@ -455,7 +455,7 @@ object Referrals {
         // valid referrer. try to give reward.
         if (getAttribOr<String>(MAC_ADDRESS, "invalid").isNotEmpty()) {
             putAttrib(REFERRER_USERNAME, referrerName)
-            Utils.sendDiscordInfoLog(this.username + " has received a new referral: $referrerName", "referrals")
+            Utils.sendDiscordInfoLog(this.username + " has received a new referral: $referrerName", "referral")
             message("You have a new referral: $referrerName.")
             inventory.addOrBank(Item(DONATOR_MYSTERY_BOX))
             inventory.addOrBank(Item(DOUBLE_DROPS_LAMP))

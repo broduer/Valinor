@@ -3,6 +3,7 @@ package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
+import com.valinor.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 
 public class ItemSpawnCommand implements Command {
@@ -35,6 +36,7 @@ public class ItemSpawnCommand implements Command {
         if (Item.valid(item)) {
             player.getInventory().add(new Item(id, amount));
             player.message("You have just spawned x"+amount+" "+new Item(Integer.parseInt(parts[1])).unnote().name()+".");
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::item and spawned x"+amount+" "+new Item(Integer.parseInt(parts[1])).unnote().name()+".", "staff_cmd");
         }
     }
 

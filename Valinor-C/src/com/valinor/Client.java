@@ -7874,7 +7874,7 @@ public class Client extends GameApplet {
                     if (inputString.toLowerCase().equals("::dumpitemsprites")) {
                         //We need to run this dumpitemsprites command twice, likely to get the images into the cache.
                         System.out.println("Dumping item images.");
-                        CacheUtils.dumpItemImages(13180, 17000);
+                        CacheUtils.dumpItemImages(30180, 30220);
                         //CacheUtils.dumpItemImages( 0, ItemDefinition.length-1);
                         System.out.println("Dumped item images.");
                     }

@@ -13,13 +13,12 @@ import com.valinor.game.world.items.ground.GroundItem.State;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
-import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
 
 /**
  * A handler for a collection of {@link GroundItem}s
@@ -27,13 +26,6 @@ import static com.valinor.util.CustomItemIdentifiers.*;
  * @author Ryley Kimmel <ryley.kimmel@live.com>
  */
 public final class GroundItemHandler {
-
-    private static final Logger pickupLogs = LogManager.getLogger("PickupLogs");
-    private static final Level PICKUPS;
-
-    static {
-        PICKUPS = Level.getLevel("PICKUPS");
-    }
 
     private static final Logger logger = LogManager.getLogger(GroundItemHandler.class);
 
@@ -345,8 +337,8 @@ public final class GroundItemHandler {
 
                         // If we've made it here then it added to the inventory.
                         sendRemoveGroundItem(groundItem);
-                        pickupLogs.log(PICKUPS, "Player " + player.getUsername() + " picked up item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: "+groundItem.getTile().x+" Y: "+groundItem.getTile().y);
-                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " picked up item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ") at X: "+groundItem.getTile().x+" Y: "+groundItem.getTile().y, "pickups");player.getInventory().refresh();
+                        player.getInventory().refresh();
+                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" picked up item " + item.getAmount() + "x " + item.unnote().name() + " at: "+groundItem.getTile().toString(), "player_pickup");
                         stop();
 
                         // Does this ground item respawn?

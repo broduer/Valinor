@@ -74,6 +74,7 @@ public class BrimstoneKey extends Interaction {
         for (int i = 0; i < rolls; i++) {
             Item reward = generateReward();
             player.getInventory().addOrDrop(reward);
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the brimstone chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "brimstone_chest");
             KEYS.log(player, BRIMSTONE_KEY, reward);
 
             if(rareDrop) {

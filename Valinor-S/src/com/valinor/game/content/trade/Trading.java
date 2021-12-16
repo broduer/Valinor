@@ -1,11 +1,8 @@
 package com.valinor.game.content.trade;
 
-import com.valinor.GameServer;
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.InterfaceConstants;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,8 +15,6 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
 import com.valinor.util.SecondsTimer;
 import com.valinor.util.Utils;
-import com.valinor.util.timers.TimerKey;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,12 +33,6 @@ import static com.valinor.util.CustomItemIdentifiers.WILDERNESS_KEY;
 public class Trading {
 
     private static final Logger logger = LogManager.getLogger(Trading.class);
-    private static final Logger tradeLogs = LogManager.getLogger("TradeLogs");
-    private static final Level TRADE;
-
-    static {
-        TRADE = Level.getLevel("TRADE");
-    }
 
     //Interface data
     private static final int FIRST_TRADE_INTERFACE = 52000;
@@ -237,8 +226,12 @@ public class Trading {
             for (Item t : container.toNonNullArray()) {
                 player.inventory().addAll(t.clone());
             }
-            tradeLogs.log(TRADE, "Player " + player.getUsername() + " aborted the trade returning items: " + Arrays.toString(container.toNonNullArray()));
-            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " aborted the trade returning items: " + Arrays.toString(container.toNonNullArray()), "trade");
+
+            if(state == TradeState.TRADE_SCREEN) {
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP " + player.getHostAddress() + " aborted the trade returning items: " + Arrays.toString(container.toNonNullArray()), "trade_1st_declined");
+            } else if(state == TradeState.CONFIRM_SCREEN) {
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP " + player.getHostAddress() + " aborted the trade returning items: " + Arrays.toString(container.toNonNullArray()), "trade_2nd_declined");
+            }
 
             //Refresh inventory
             player.inventory().refresh();
@@ -293,6 +286,9 @@ public class Trading {
             return;
         }
 
+        StringBuilder playerItems = new StringBuilder();
+        StringBuilder interactItems = new StringBuilder();
+
         //Check which action to take..
         if (state == TradeState.TRADE_SCREEN) {
 
@@ -323,6 +319,18 @@ public class Trading {
                 //Go into confirm screen!
                 player.getTrading().confirmScreen();
                 partner.getTrading().confirmScreen();
+
+                //Log items accepted
+                for (Item item : partner.getTrading().getContainer().toNonNullArray()) {
+                    playerItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+                for (Item item : player.getTrading().getContainer().toNonNullArray()) {
+                    interactItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" gave " + interactItems + " in a trade to " + partner.getUsername(), "trade_1st_accepted");
+                Utils.sendDiscordInfoLog("Player " + partner.getUsername() + " with IP "+player.getHostAddress()+" gave " + playerItems + " in a trade to " + player.getUsername(), "trade_1st_accepted");
+
             }
         } else if (state == TradeState.CONFIRM_SCREEN) {
 
@@ -336,8 +344,6 @@ public class Trading {
             //Check if both have accepted..
             if (state == TradeState.ACCEPTED_CONFIRM_SCREEN &&
                 t_state == TradeState.ACCEPTED_CONFIRM_SCREEN) {
-                StringBuilder playerItems = new StringBuilder();
-                StringBuilder interactItems = new StringBuilder();
                 //Give items to both players...
                 for (Item item : partner.getTrading().getContainer().toNonNullArray()) {
                     player.getInventory().add(item);
@@ -348,19 +354,15 @@ public class Trading {
                     interactItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
                 }
                 try {
-                    tradeLogs.log(TRADE, "Player " + player.getUsername() + " gave " + interactItems + " in a trade to " + partner.getUsername());
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " gave " + interactItems + " in a trade to " + partner.getUsername(), "trade");
-                    tradeLogs.log(TRADE, "Player " + partner.getUsername() + " gave " + playerItems + " in a trade to " + player.getUsername());
-                    Utils.sendDiscordInfoLog("Player " + partner.getUsername() + " gave " + playerItems + " in a trade to " + player.getUsername(), "trade");
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" gave " + interactItems + " in a trade to " + partner.getUsername(), "trade_2nd_accepted");
+                    Utils.sendDiscordInfoLog("Player " + partner.getUsername() + " with IP "+partner.getHostAddress()+" gave " + playerItems + " in a trade to " + player.getUsername(), "trade_2nd_accepted");
+
                     long plr_value = player.getTrading().getContainer().containerValue();
                     long other_plr_value = interact.getTrading().getContainer().containerValue();
                     long difference;
                     difference = (plr_value > other_plr_value) ? plr_value - other_plr_value : other_plr_value - plr_value;
-                    tradeLogs.log(TRADE, "Player " + player.getUsername() + " (lvl " + player.skills().combatLevel() + ") and " + partner.getUsername() + " (lvl " + partner.skills().combatLevel() + ") trade value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " blood money.");
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " (lvl " + player.skills().combatLevel() + ") and " + partner.getUsername() + " (lvl " + partner.skills().combatLevel() + ") trade value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " blood money.", "trade");
-                    if (difference > 1_000_000) {
-                        tradeLogs.warn("Player " + player.getUsername() + " has traded with Player " + partner.getUsername() + " with a value difference of greater than 1.000.000 blood money, this was possibly RWT.");
-                        Utils.sendDiscordInfoLog(GameServer.properties().discordNotifyId + " Player " + player.getUsername() + " has traded with Player " + partner.getUsername() + " with a value difference of greater than 1.000.000 blood money, this was possibly RWT.", "trade");
+                    if (difference > 10_000_000) {
+                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " (IP " + player.getHostAddress() + ") and " + partner.getUsername() + " (IP " + partner.getHostAddress() + ") trade value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " coins, possible RWT.", "trade_2nd_accepted");
                     }
                 } catch (Exception e) {
                     //The value shouldn't ever really be a string, but just in case, let's catch the exception.

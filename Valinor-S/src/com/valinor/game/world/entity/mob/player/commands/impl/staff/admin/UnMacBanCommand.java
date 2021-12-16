@@ -49,6 +49,7 @@ public class UnMacBanCommand implements Command {
                             PlayerPunishment.unban(offlinePlayer.getUsername());
                         }
                         player.message("Player " + offlinePlayer.getUsername() + " was successfully un MAC banned.");
+                        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unmacban "+username, "staff_cmd");
                     });
                 } else {
                     player.message("Something went wrong trying to unmacban " + offlinePlayer.getUsername());

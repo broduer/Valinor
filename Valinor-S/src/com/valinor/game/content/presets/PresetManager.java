@@ -37,13 +37,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class PresetManager {
 
-    private static final Logger presetLogs = LogManager.getLogger("PresetLogs");
-    private static final Level PRESET;
-
-    static {
-        PRESET = Level.getLevel("PRESET");
-    }
-
     // Items that are blacklisted from being created within a preset.
     public static final int[] ILLEGAL_ITEMS = new int[]{
         COINS_995,
@@ -540,7 +533,7 @@ public class PresetManager {
         if (equipmentLoaded && inventoryLoaded) {
             player.getInterfaceManager().close();
             player.message("Preset loaded!");
-            presetLogs.log(PRESET, "Player: " + player.getUsername() + " successfully loaded a preset with the following items -> equipment: " + Arrays.toString(preset.getEquipment()) + " inventory: " + Arrays.toString(preset.getInventory()));
+            Utils.sendDiscordInfoLog("Player: " + player.getUsername() + " IP "+player.getHostAddress()+" successfully loaded a preset with the following items -> equipment: " + Arrays.toString(preset.getEquipment()) + " inventory: " + Arrays.toString(preset.getInventory()), "presets_loaded");
 
             MagicSpellbook.changeSpellbook(player, preset.getSpellbook(), false);
             player.getInterfaceManager().setSidebar(6, player.getSpellbook().getInterfaceId());

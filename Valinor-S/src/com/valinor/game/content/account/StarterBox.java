@@ -24,13 +24,6 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class StarterBox extends Interaction {
 
-    private static final Logger starterBoxLogs = LogManager.getLogger("StarterBoxLogs");
-    private static final Level STARTER_BOX_LOGS;
-
-    static {
-        STARTER_BOX_LOGS = Level.getLevel("STARTER_BOX");
-    }
-
     public static boolean STARTER_BOX_ENABLED = true;
 
     private static final List<Item> STARTER_SETUP = Arrays.asList(new Item(DHAROKS_ARMOUR_SET), new Item(ABYSSAL_TENTACLE), new Item(GRANITE_MAUL_24225), new Item(DRAGON_BOOTS), new Item(AMULET_OF_FURY), new Item(DONATOR_MYSTERY_BOX));
@@ -83,8 +76,7 @@ public class StarterBox extends Interaction {
         //Mark as claimed
         player.putAttrib(AttributeKey.STARTER_BOX_CLAIMED,true);
         player.inventory().addOrBank(new Item(STARTER_BOX));
-        Utils.sendDiscordInfoLog(player.getUsername() + " received a starter box.", "starter_box_received");
-        starterBoxLogs.log(STARTER_BOX_LOGS,player.getUsername() + " received a starter box.");
+        Utils.sendDiscordInfoLog(player.getUsername() + " received a starter box.", "boxes_opened");
     }
 
     @Override

@@ -57,7 +57,6 @@ public class Tournament {
     public Tournament(TournamentManager.TornConfig config) {
         this.config = config;
         reward = setRewards();
-        Utils.sendDiscordInfoLog("Tournament reward has been set to "+reward.toString()+" .", "tournaments");
     }
 
     public Tournament(TournamentManager.TornConfig config, Item reward) {
@@ -102,6 +101,7 @@ public class Tournament {
         player.getInterfaceManager().close();
         Skulling.unskull(player);
         player.message(format("You've entered the %s tournament. Good luck %s.", config.key, player.getUsername()));
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " entered the "+config.key+" tournament.", "enter_tourny");
         if (inLobby.size() < minimumParticipants) {
             player.message("The tournament requires at least " + (minimumParticipants - inLobby.size()) + " more players to start.");
         }
@@ -158,8 +158,7 @@ public class Tournament {
             World.getWorld().sendWorldMessage(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info("PvP tournament rewards: " + reward.toString());
-            Utils.sendDiscordInfoLog("[Tournament</col>]: "+winner.getUsername()+" has won the "+fullName()+" tournament!", "tournaments");
-            Utils.sendDiscordInfoLog("PvP tournament rewards: " + reward.toString(), "tournaments");
+            Utils.sendDiscordInfoLog(winner.getUsername()+" has won the "+fullName()+" tournament! Reward: "+ reward.toString(), "tourny_winner");
 
             winner.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
             winner.getPacketSender().sendEntityHintRemoval(true);

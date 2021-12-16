@@ -44,12 +44,6 @@ import static com.valinor.game.world.entity.AttributeKey.SEND_DUEL_REQUEST;
 public class Dueling {
 
     private static final Logger logger = LogManager.getLogger(Dueling.class);
-    private static final Logger stakeLogs = LogManager.getLogger("StakeLogs");
-    private static final Level STAKE;
-
-    static {
-        STAKE = Level.getLevel("STAKE");
-    }
 
     private final Player player;
     private final ItemContainer container;
@@ -57,7 +51,6 @@ public class Dueling {
     private int configValue;
 
     private DuelState state = DuelState.NONE;
-    private static final String currencyType = "BM";
 
     //Delays!!
     private final SecondsTimer button_delay = new SecondsTimer();
@@ -327,6 +320,12 @@ public class Dueling {
                 player.inventory().addAll(t);
             }
 
+            if(state == DuelState.DUEL_SCREEN) {
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP " + player.getHostAddress() + " aborted the duel returning items: " + Arrays.toString(container.toNonNullArray()), "duel_1st_declined");
+            } else if(state == DuelState.CONFIRM_SCREEN) {
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP " + player.getHostAddress() + " aborted the duel returning items: " + Arrays.toString(container.toNonNullArray()), "duel_2nd_declined");
+            }
+
             //Refresh inventory
             player.inventory().refresh();
 
@@ -499,6 +498,9 @@ public class Dueling {
         //Interact's current trade state.
         final DuelState t_state = interact_.getDueling().getState();
 
+        StringBuilder playerItems = new StringBuilder();
+        StringBuilder interactItems = new StringBuilder();
+
         //Check which action to take..
         if (state == DuelState.DUEL_SCREEN) {
 
@@ -538,6 +540,16 @@ public class Dueling {
             if (state == DuelState.ACCEPTED_DUEL_SCREEN &&
                 t_state == DuelState.ACCEPTED_DUEL_SCREEN) {
 
+                for (Item item : opponent.getDueling().getContainer().toNonNullArray()) {
+                    playerItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+                for (Item item : player.getDueling().getContainer().toNonNullArray()) {
+                    interactItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" staked " + interactItems + " in a duel to " + opponent.getUsername(), "duel_1st_accepted");
+                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " with IP "+opponent.getHostAddress()+" staked " + playerItems + " in a duel to " + player.getUsername(), "duel_1st_accepted");
+
                 //Technically here, both have accepted.
                 //Go into confirm screen!
                 player.getDueling().confirmScreen();
@@ -553,6 +565,15 @@ public class Dueling {
             //Check if both have accepted..
             if (state == DuelState.ACCEPTED_CONFIRM_SCREEN &&
                 t_state == DuelState.ACCEPTED_CONFIRM_SCREEN) {
+                for (Item item : opponent.getDueling().getContainer().toNonNullArray()) {
+                    playerItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+                for (Item item : player.getDueling().getContainer().toNonNullArray()) {
+                    interactItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                }
+                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" staked " + interactItems + " in a duel to " + opponent.getUsername(), "duel_2nd_accepted");
+                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " with IP "+opponent.getHostAddress()+" staked " + playerItems + " in a duel to " + player.getUsername(), "due_2nd_accepted");
+
                 heal_player(player);
                 heal_player(opponent);
 
@@ -774,6 +795,8 @@ public class Dueling {
             }
             player.getPacketSender().sendString(DUEL_STATUS_FRAME_1, "<col=ca0d0d>DUEL MODIFIED!");
             opponent.getPacketSender().sendString(DUEL_STATUS_FRAME_1, "<col=ca0d0d>DUEL MODIFIED!");
+            Utils.sendDiscordInfoLog("Rule "+Utils.formatEnum(rule.name())+ " for "+player.getUsername()+" has been modified!", "stake_rules");
+            Utils.sendDiscordInfoLog("Rule "+Utils.formatEnum(rule.name())+ " for "+opponent.getUsername()+" has been modified!", "stake_rules");
 
             //Inform them about this "custom" rule.
             if (rule == DuelRule.LOCK_WEAPON && rules[rule.ordinal()]) {
@@ -973,21 +996,14 @@ public class Dueling {
                 }
             }
             try {
-                stakeLogs.log(STAKE, "Player " + opponent.getUsername() + " got " + playerItems + " from winning a duel against " + player.getUsername());
-                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " got " + playerItems + " from winning a duel against " + player.getUsername(), "stake");
-                stakeLogs.log(STAKE, "Player " + opponent.getUsername() + " already had " + interactItems + " from winning a duel against " + player.getUsername());
-                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " already had " + interactItems + " from winning a duel against " + player.getUsername(), "stake");
+                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " with IP "+player.getHostAddress()+" got " + playerItems + " from winning a duel against " + player.getUsername(), "stake_won");
+                Utils.sendDiscordInfoLog("Player " + opponent.getUsername() + " with IP "+opponent.getHostAddress()+" already had " + interactItems + " from winning a duel against " + player.getUsername(), "stake_won");
                 long plr_value = player.getDueling().getContainer().containerValue();
                 long other_plr_value = opponent.getDueling().getContainer().containerValue();
-                long difference;
-                difference = (plr_value > other_plr_value) ? plr_value - other_plr_value : other_plr_value - plr_value;
-                stakeLogs.log(STAKE, "Player " + player.getUsername() + " (lvl " + player.skills().combatLevel() + ") and " + opponent.getUsername() + " (lvl " + opponent.skills().combatLevel() + ") duel stake value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " " + currencyType);
-                Utils.sendDiscordInfoLog("Player " + player.getUsername() + " (lvl " + player.skills().combatLevel() + ") and " + opponent.getUsername() + " (lvl " + opponent.skills().combatLevel() + ") duel stake value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " " + currencyType, "stake");
-                if (difference > 1_000_000) {
-                    stakeLogs.warn("Player " + opponent.getUsername() + " won a stake against Player " + player.getUsername() + " with a value difference of greater than 1,000,000 " + currencyType + ", this was possibly RWT.");
-                    Utils.sendDiscordInfoLog(GameServer.properties().discordNotifyId + " Player " + opponent.getUsername() + " won a stake against Player " + player.getUsername() + " with a value difference of greater than 1,000,000 " + currencyType + ", this was possibly RWT.", "stake");
+                long difference = (plr_value > other_plr_value) ? plr_value - other_plr_value : other_plr_value - plr_value;
+                if (difference > 10_000_000) {
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " (IP " + player.getHostAddress() + ") and " + opponent.getUsername() + " (IP " + opponent.getHostAddress() + ") duel value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " coins, possible RWT.", "stake_won");
                 }
-
             } catch (Exception e) {
                 //The value shouldn't ever really be a string, but just in case, let's catch the exception.
                 logger.catching(e);
@@ -1016,6 +1032,7 @@ public class Dueling {
             opponent.getPacketSender().sendMessage("You have lost " + opponent.getDuelLosses() + " " + Utils.pluralOrNot("duel", opponent.getDuelLosses()) + ".");
             player.message("You were defeated! You have won " + player.getDuelWins() + " " + Utils.pluralOrNot("duel", player.getDuelWins()) + ".");
             player.message("You have now lost " + player.getDuelLosses() + " " + Utils.pluralOrNot("duel", player.getDuelLosses()) + ".");
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" lost " + interactItems + " from losing a duel against " + opponent.getUsername(), "stake_lost");
 
             //Reset attributes for both
             opponent.getDueling().resetAttributes();

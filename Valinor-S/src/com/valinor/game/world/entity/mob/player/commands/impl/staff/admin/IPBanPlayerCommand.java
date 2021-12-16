@@ -37,6 +37,7 @@ public class IPBanPlayerCommand implements Command {
         String username = Utils.formatText(command.substring(6)); // after "ipban "
         if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             player.getDialogueManager().start(new BanDialogue(username));
+            return;
         }
 
         if(GameServer.properties().punishmentsToLocalFile) {
@@ -74,6 +75,7 @@ public class IPBanPlayerCommand implements Command {
                 playerToBan.get().requestLogout();
 
                 player.message("Player " + username + " was successfully ip banned.");
+                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipban "+username, "staff_cmd");
             } else {
                 //offline
                 Player offlinePlayer = new Player();
@@ -97,6 +99,7 @@ public class IPBanPlayerCommand implements Command {
 
                                 PlayerPunishment.addToIPBanList(IPToBan);
                                 player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip banned.");
+                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipban "+offlinePlayer.getUsername(), "staff_cmd");
                             });
                         } else {
                             player.message("Something went wrong trying to offline ip ban "+offlinePlayer.getUsername());
@@ -116,10 +119,9 @@ public class IPBanPlayerCommand implements Command {
 
     public static final class BanDialogue extends Dialogue {
         LocalDateTime unbanDate = null;
-        private String username;
+        private final String username;
 
         public BanDialogue(String username) {
-
             this.username = username;
         }
 
@@ -171,15 +173,9 @@ public class IPBanPlayerCommand implements Command {
                     LocalDateTime unbanDate = null;
                     if (!type.equals("perm")) {
                         switch (type) {
-                            case "hours":
-                                unbanDate = LocalDateTime.now().plusHours(Long.parseLong(duration));
-                                break;
-                            case "days":
-                                unbanDate = LocalDateTime.now().plusDays(Long.parseLong(duration));
-                                break;
-                            case "minutes":
-                                unbanDate = LocalDateTime.now().plusMinutes(Long.parseLong(duration));
-                                break;
+                            case "hours" -> unbanDate = LocalDateTime.now().plusHours(Long.parseLong(duration));
+                            case "days" -> unbanDate = LocalDateTime.now().plusDays(Long.parseLong(duration));
+                            case "minutes" -> unbanDate = LocalDateTime.now().plusMinutes(Long.parseLong(duration));
                         }
                     } else {
                         unbanDate = LocalDateTime.now().plusYears(Long.parseLong(duration));
@@ -190,17 +186,16 @@ public class IPBanPlayerCommand implements Command {
                     if (plr.isPresent()) {
                         if (plr.get().getPlayerRights().greater(player.getPlayerRights())) {
                             player.message("You cannot ban that player!");
-                            //logger.warn(player.getUsername() + " tried to ban " + plr.get().getUsername(), "warning");
                             return;
                         }
                         plr.get().requestLogout();
                         MiscKotlin.INSTANCE.addIPBan(player, username, unbanTimestamp, reason, IPBanPlayerCommand.feedback(player));
                         player.message("Player " + username + " was successfully banned until " + unbanTimestamp + " for: " + reason);
+                        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipban "+username+" until " + unbanTimestamp + " for: " + reason, "staff_cmd");
                     } else {
                         final String player2Username = username;
                         if (Arrays.stream(player.getPlayerRights().getOwners()).anyMatch(name -> name.equalsIgnoreCase(player2Username))) {
                             player.message("You cannot ban that player!");
-                            //logger.warn(player.getUsername() + " tried to ban " + username, "warning");
                             return;
                         }
                         DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
@@ -209,6 +204,7 @@ public class IPBanPlayerCommand implements Command {
                             } else {
                                 MiscKotlin.INSTANCE.addIPBan(player, username, unbanTimestamp, reason, IPBanPlayerCommand.feedback(player));
                                 player.message("Player " + username + " was successfully banned until " + unbanTimestamp + " for: " + reason);
+                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipban "+username+" until " + unbanTimestamp + " for: " + reason, "staff_cmd");
                             }
                         });
                     }

@@ -31,13 +31,6 @@ import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS_TOTAL_VALUE;
  */
 public class ItemDispenser {
 
-    private static final Logger dispenserLogs = LogManager.getLogger("DispenserLogs");
-    private static final Level DISPENSER;
-
-    static {
-        DISPENSER = Level.getLevel("DISPENSER");
-    }
-
     /**
      * The Player instance of this class.
      */
@@ -165,6 +158,7 @@ public class ItemDispenser {
             boolean amOverOne = item.getAmount() > 1;
             String amtString = amOverOne ? "x" + Utils.format(item.getAmount()) + "" : Utils.getAOrAn(item.name());
             player.message(Color.RED.tag() + "You've added " + amtString + " " + itemName + " into the cart.");
+            Utils.sendDiscordInfoLog(player.getUsername() + " added " + amtString + " " + itemName + " into the cart.", "added_to_cart_dispenser");
         }
     }
 
@@ -215,7 +209,7 @@ public class ItemDispenser {
 
         //Clear items after we received the coins not before!
         var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
-        dispenserLogs.log(DISPENSER, player.getUsername() + " put " + Arrays.toString(items.toArray()) + " in the item dispenser.");
+        Utils.sendDiscordInfoLog(player.getUsername() + " dispensed " + Arrays.toString(items.toArray()) + " in the item dispenser.", "items_dispensed");
         items.clear();
         player.putAttrib(CART_ITEMS_TOTAL_VALUE,0);
     }

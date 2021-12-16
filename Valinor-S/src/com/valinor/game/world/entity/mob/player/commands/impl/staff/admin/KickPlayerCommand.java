@@ -25,6 +25,7 @@ public class KickPlayerCommand implements Command {
             }
             plr.get().requestLogout();
             player.message("Player " + player2 + " ("+plr.get().getUsername()+") has been kicked.");
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::kick "+plr.get().getUsername(), "staff_cmd");
         } else {
             player.message("Player " + player2 + " does not exist or is not online.");
         }

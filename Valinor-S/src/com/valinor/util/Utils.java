@@ -162,50 +162,6 @@ public class Utils {
         return writer.toString();
     }
 
-    public static String getStackTraceForDiscord(int characterLimit) {
-        final StringWriter writer = new StringWriter();
-        new Exception("Stack trace").printStackTrace(new PrintWriter(writer));
-        final String stackTrace = writer.toString().replaceAll("\n", " ").replaceAll("\\$", ":").replaceAll("\\<", "(").replaceAll("\\>", ")").replaceAll("\t", " ");
-        return stackTrace.substring(0, Math.min(stackTrace.length() - 1, characterLimit));
-    }
-
-    public static String getStackTraceForDiscord(Exception e, int characterLimit) {
-        final StringWriter writer = new StringWriter();
-        e.printStackTrace(new PrintWriter(writer));
-        final String stackTrace = writer.toString().replaceAll("\n", " ").replaceAll("\\$", ":").replaceAll("\\<", "(").replaceAll("\\>", ")").replaceAll("\t", " ");
-        return stackTrace.substring(0, Math.min(stackTrace.length() - 1, characterLimit));
-    }
-
-    public static String getStackTraceForDiscord(Throwable t, int characterLimit) {
-        final StringWriter writer = new StringWriter();
-        t.printStackTrace(new PrintWriter(writer));
-        final String stackTrace = writer.toString().replaceAll("\n", " ").replaceAll("\\$", ":").replaceAll("\\<", "(").replaceAll("\\>", ")").replaceAll("\t", " ");
-        return stackTrace.substring(0, Math.min(stackTrace.length() - 1, characterLimit));
-    }
-
-    public static String getStackTraceForDiscord(Error e, int characterLimit) {
-        final StringWriter writer = new StringWriter();
-        e.printStackTrace(new PrintWriter(writer));
-        final String stackTrace = writer.toString().replaceAll("\n", " ").replaceAll("\\$", ":").replaceAll("\\<", "(").replaceAll("\\>", ")").replaceAll("\t", " ");
-        return stackTrace.substring(0, Math.min(stackTrace.length() - 1, characterLimit));
-    }
-
-    public static String getStackTraceForDiscord(Throwable t) {
-        return getStackTraceForDiscord(t, 1990);
-    }
-
-    public static String getStackTraceForDiscord(Error e) {
-        return getStackTraceForDiscord(e, 1990);
-    }
-
-    public static String getStackTraceForDiscord(Exception e) {
-        return getStackTraceForDiscord(e, 1990);
-    }
-
-    public static String getStackTraceForDiscord() {
-        return getStackTraceForDiscord(1990);
-    }
-
     public static String getDiscordWebhookHeader() {
         return "[" + Utils.getCurrentServerDateTime() + "][v" + GameServer.properties().gameVersion + "][" + (GameServer.properties().production ? "Live" : "Dev") + "]" + (World.getWorld().getPlayers().get(1) != null ? "[Player1=" + World.getWorld().getPlayers().get(1).getUsername() + "]" : "") + ": ";
     }
@@ -215,110 +171,265 @@ public class Utils {
             GameEngine.getInstance().submitDiscord(() -> {
                 try {
                     switch (type) {
-                        case "command" -> {
-                            GameServer.getCommandWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getCommandWebHook().execute();
-                        }
-                        case "trade" -> {
-                            GameServer.getTradeWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getTradeWebHook().execute();
-                        }
-                        case "stake" -> {
-                            GameServer.getStakeWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getStakeWebHook().execute();
-                        }
                         case "chat" -> {
-                            GameServer.getChatWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getChatWebHook().execute();
+                            GameServer.publicChatWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.publicChatWebHookUrl.execute();
                         }
                         case "pm" -> {
-                            GameServer.getPmWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPmWebHook().execute();
+                            GameServer.privateChatWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.privateChatWebHookUrl.execute();
                         }
-                        case "npcdrops" -> {
-                            GameServer.getNpcDropsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getNpcDropsWebHook().execute();
+                        case "staff_cmd" -> {
+                            GameServer.staffCommandsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.staffCommandsWebHookUrl.execute();
                         }
-                        case "playerdrops" -> {
-                            GameServer.getPlayerDropsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPlayerDropsWebHook().execute();
+                        case "player_cmd" -> {
+                            GameServer.playerCommandsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.playerCommandsWebHookUrl.execute();
                         }
-                        case "pickups" -> {
-                            GameServer.getPickupsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPickupsWebHook().execute();
+                        case "votes_claimed" -> {
+                            GameServer.votesClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.votesClaimedWebHookUrl.execute();
+                        }
+                        case "donations_claimed" -> {
+                            GameServer.donationsClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.donationsClaimedWebHookUrl.execute();
+                        }
+                        case "trade_1st_declined" -> {
+                            GameServer.tradeFirstScreenDeclinedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tradeFirstScreenDeclinedWebHookUrl.execute();
+                        }
+                        case "trade_2nd_declined" -> {
+                            GameServer.tradeSecondScreenDeclinedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tradeSecondScreenDeclinedWebHookUrl.execute();
+                        }
+                        case "trade_1st_accepted" -> {
+                            GameServer.tradeFirstScreenAcceptedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tradeFirstScreenAcceptedWebHookUrl.execute();
+                        }
+                        case "trade_2nd_accepted" -> {
+                            GameServer.tradeSecondScreenAcceptedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tradeSecondScreenAcceptedWebHookUrl.execute();
+                        }
+                        case "duel_1st_declined" -> {
+                            GameServer.stakeFirstScreenDeclinedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeFirstScreenDeclinedWebHookUrl.execute();
+                        }
+                        case "duel_2nd_declined" -> {
+                            GameServer.stakeSecondScreenDeclinedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeSecondScreenDeclinedWebHookUrl.execute();
+                        }
+                        case "duel_1st_accepted" -> {
+                            GameServer.stakeFirstScreenAcceptedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeFirstScreenAcceptedWebHookUrl.execute();
+                        }
+                        case "duel_2nd_accepted" -> {
+                            GameServer.stakeSecondScreenAcceptedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeSecondScreenAcceptedWebHookUrl.execute();
+                        }
+                        case "stake_won" -> {
+                            GameServer.stakeItemsWonWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeItemsWonWebHookUrl.execute();
+                        }
+                        case "stake_lost" -> {
+                            GameServer.stakeItemsLostWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeItemsLostWebHookUrl.execute();
+                        }
+                        case "stake_rules" -> {
+                            GameServer.stakeRulesChangedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.stakeRulesChangedWebHookUrl.execute();
+                        }
+                        case "gamble_item_offer" -> {
+                            GameServer.gambleItemsOfferedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.gambleItemsOfferedWebHookUrl.execute();
+                        }
+                        case "gamble_items_won" -> {
+                            GameServer.gambleItemsWonWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.gambleItemsWonWebHookUrl.execute();
+                        }
+                        case "gamble_items_lost" -> {
+                            GameServer.gambleItemsLostWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.gambleItemsLostWebHookUrl.execute();
+                        }
+                        case "yell_item_drop" -> {
+                            GameServer.yellItemDropsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.yellItemDropsWebHookUrl.execute();
+                        }
+                        case "slayer_key_drop" -> {
+                            GameServer.slayerKeyDropsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.slayerKeyDropsWebHookUrl.execute();
+                        }
+                        case "brimstone_key_drop" -> {
+                            GameServer.brimstoneKeyDropsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.brimstoneKeyDropsWebHookUrl.execute();
+                        }
+                        case "crystal_key_drop" -> {
+                            GameServer.crystalKeyDropsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.crystalKeyDropsWebHookUrl.execute();
+                        }
+                        case "crystal_chest" -> {
+                            GameServer.crystalChestWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.crystalChestWebHookUrl.execute();
+                        }
+                        case "brimstone_chest" -> {
+                            GameServer.brimstoneChestWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.brimstoneChestWebHookUrl.execute();
+                        }
+                        case "slayer_chest" -> {
+                            GameServer.slayerChestWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.slayerChestWebHookUrl.execute();
+                        }
+                        case "collection_chest" -> {
+                            GameServer.collectionChestWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.collectionChestWebHookUrl.execute();
+                        }
+                        case "col_log_reward" -> {
+                            GameServer.rewardsClaimedColLogWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.rewardsClaimedColLogWebHookUrl.execute();
+                        }
+                        case "item_dropped" -> {
+                            GameServer.itemsDroppedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsDroppedWebHookUrl.execute();
+                        }
+                        case "player_pickup" -> {
+                            GameServer.playerPickupsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.playerPickupsWebHookUrl.execute();
                         }
                         case "login" -> {
-                            GameServer.getLoginWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getLoginWebHook().execute();
+                            GameServer.loginsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.loginsWebHookUrl.execute();
                         }
                         case "logout" -> {
-                            GameServer.getLogoutWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getLogoutWebHook().execute();
+                            GameServer.logoutsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.logoutsWebHookUrl.execute();
                         }
-                        case "shops" -> {
-                            GameServer.getShopsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getShopsWebHook().execute();
+                        case "logout_tourny" -> {
+                            GameServer.logoutDuringTournyWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.logoutDuringTournyWebHookUrl.execute();
                         }
-                        case "playerdeaths" -> {
-                            GameServer.getPlayerDeathsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPlayerDeathsWebHook().execute();
+                        case "items_bought_store" -> {
+                            GameServer.itemsBoughtWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsBoughtWebHookUrl.execute();
                         }
-                        case "tournaments" -> {
-                            GameServer.getTournamentWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getTournamentWebHook().execute();
+                        case "items_sold_store" -> {
+                            GameServer.itemsSoldWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsSoldWebHookUrl.execute();
                         }
-                        case "referrals" -> {
-                            GameServer.getReferralsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getReferralsWebHook().execute();
+                        case "npc_death" -> {
+                            GameServer.npcDeathWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.npcDeathWebHookUrl.execute();
                         }
-                        case "achievements" -> {
-                            GameServer.getAchievementsWebHookWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getAchievementsWebHookWebHook().execute();
+                        case "player_death" -> {
+                            GameServer.playerDeathWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.playerDeathWebHookUrl.execute();
                         }
-                        case "trading_post_sales" -> {
-                            GameServer.getTradingPostSalesWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getTradingPostSalesWebHook().execute();
+                        case "enter_tourny" -> {
+                            GameServer.playersEnteredTournyWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.playersEnteredTournyWebHookUrl.execute();
                         }
-                        case "trading_post_purchases" -> {
-                            GameServer.getTradingPostPurchasesWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getTradingPostPurchasesWebHook().execute();
+                        case "leave_tourny" -> {
+                            GameServer.playersLeftTournyWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.playersLeftTournyWebHookUrl.execute();
                         }
-                        case "raids" -> {
-                            GameServer.getRaidsWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getRaidsWebHook().execute();
+                        case "tourny_winner" -> {
+                            GameServer.tournyWinnersWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tournyWinnersWebHookUrl.execute();
                         }
-                        case "starter_box_received" -> {
-                            GameServer.getStarterBoxWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getStarterBoxWebHook().execute();
+                        case "referral" -> {
+                            GameServer.referralsWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.referralsWebHookUrl.execute();
                         }
-                        case "gamble" -> {
-                            GameServer.getGambleWebHook().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getGambleWebHook().execute();
+                        case "referral_reward" -> {
+                            GameServer.referralRewardsClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.referralRewardsClaimedWebHookUrl.execute();
                         }
-                        case "box_and_tickets" -> {
-                            GameServer.getBoxAndTicketsWebHookUrl().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getBoxAndTicketsWebHookUrl().execute();
+                        case "items_sales_tp" -> {
+                            GameServer.itemSalesTPWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemSalesTPWebHookUrl.execute();
                         }
-                        case "promo_code" -> {
-                            GameServer.getPromoCodewebHookURL().setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.getPromoCodewebHookURL().execute();
+                        case "items_bought_tp" -> {
+                            GameServer.itemsBoughtTPWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsBoughtTPWebHookUrl.execute();
+                        }
+                        case "items_modified_tp" -> {
+                            GameServer.itemsModifiedTPWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsModifiedTPWebHookUrl.execute();
+                        }
+                        case "items_claimed_tp" -> {
+                            GameServer.itemsClaimedTPWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsClaimedTPWebHookUrl.execute();
+                        }
+                        case "items_canceled_tp" -> {
+                            GameServer.itemsCanceledTPWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsCanceledTPWebHookUrl.execute();
+                        }
+                        case "cox_reward" -> {
+                            GameServer.coxRewardsClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.coxRewardsClaimedWebHookUrl.execute();
+                        }
+                        case "tob_reward" -> {
+                            GameServer.tobRewardsClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.tobRewardsClaimedWebHookUrl.execute();
+                        }
+                        case "cos_reward" -> {
+                            GameServer.cosRewardsClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.cosRewardsClaimedWebHookUrl.execute();
+                        }
+                        case "boxes_opened" -> {
+                            GameServer.boxesOpenedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.boxesOpenedWebHookUrl.execute();
+                        }
+                        case "tickets_opened" -> {
+                            GameServer.ticketsOpenedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.ticketsOpenedWebHookUrl.execute();
+                        }
+                        case "fpk_merk_promo_code_claimed" -> {
+                            GameServer.fpkMerkPromoCodeClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.fpkMerkPromoCodeClaimedWebHookUrl.execute();
+                        }
+                        case "added_to_cart_dispenser" -> {
+                            GameServer.itemsAddedToCartDispenserWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsAddedToCartDispenserWebHookUrl.execute();
+                        }
+                        case "items_dispensed" -> {
+                            GameServer.itemsDispensedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.itemsDispensedWebHookUrl.execute();
+                        }
+                        case "presets_loaded" -> {
+                            GameServer.presetsLoadedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.presetsLoadedWebHookUrl.execute();
+                        }
+                        case "niffler_looted" -> {
+                            GameServer.nifflerLootedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.nifflerLootedWebHookUrl.execute();
+                        }
+                        case "looting_bag_looted" -> {
+                            GameServer.lootingBagLootedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.lootingBagLootedWebHookUrl.execute();
+                        }
+                        case "looting_bag_withdrawn" -> {
+                            GameServer.lootingBagWithdrawnWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.lootingBagWithdrawnWebHookUrl.execute();
                         }
                     }
                 } catch (IOException e) {
+                    //Ignore discord errors, when discord server is being spammed it throws errors.
+                    //This system has been working without a issue for one year in production.
+                    //We can safely say that we can ignore these errors.
                     if (e.getMessage().contains("HTTP response code: 429")) {
                         //logger.error("Discord Webhook rate limit reached for Info webhook");
                     } else if (e.getMessage().contains("HTTP response code: 400")) {
-                        System.err.println("Discord Webhook content was in bad format (probably invalid characters)");
+                        //System.err.println("Discord Webhook content was in bad format (probably invalid characters)");
                     } else {
-                        logger.error("I think Discord webhook threw an IO exception");
+                        //logger.error("I think Discord webhook threw an IO exception");
                         //Let's log the text, since this error type shouldn't happen and we don't know why it did.
                         //Perhaps this error is caused by the Discord servers being overloaded/lagging in general?
-                        logger.error("The text that Discord tried to log was: " + text);
-                        logger.catching(e);
+                        //logger.error("The text that Discord tried to log was: " + text);
+                        //logger.catching(e);
                     }
                 } catch (Throwable t) {
-                    logger.error("I think Discord webhook threw an exception");
-                    logger.catching(t);
+                    //logger.error("I think Discord webhook threw an exception");
+                    //logger.catching(t);
                 }
             });
         }

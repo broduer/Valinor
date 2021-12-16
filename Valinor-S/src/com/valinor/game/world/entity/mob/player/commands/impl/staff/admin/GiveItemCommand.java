@@ -32,10 +32,10 @@ public class GiveItemCommand implements Command {
                     return;
                 }
                 Item item = new Item(itemId, itemAmount);
-                plr.get().getBank().depositFromNothing(item);
-                plr.get().message(player.getPlayerRights().getName() + " " + player.getUsername() + " has given you: " + item.name() + " X " + itemAmount);
-                //logger.info(player.getPlayerRights().getName() + " " + player.getUsername() + " has given " + username + ": " + item.name() + " X " + itemAmount);
-                player.message("You have given " + username + ": " + item.name() + " (" + itemId + ") X " + itemAmount);
+                plr.get().inventory().addOrBank(item);
+                plr.get().message(player.getPlayerRights().getName() + " " + player.getUsername() + " has given you: " + item.unnote().name() + " X " + itemAmount);
+                player.message("You have given " + username + ": " + item.unnote().name() + " (" + itemId + ") X " + itemAmount);
+                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::giveitem and spawned "+username+" x"+itemAmount+" "+item.unnote().name()+".", "staff_cmd");
             } else {
                 player.message("The player " + username + " is not online.");
             }

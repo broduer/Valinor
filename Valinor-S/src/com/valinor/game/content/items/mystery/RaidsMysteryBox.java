@@ -75,6 +75,7 @@ public class RaidsMysteryBox extends Interaction {
                     var amt = reward.getAmount();
                     player.message("You open the raids mystery box and found...");
                     player.message("x"+amt+" "+reward.unnote().name()+".");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a raids mystery box and received x"+amt+" "+reward.unnote().name()+".", "boxes_opened");
                 }
                 return true;
             }

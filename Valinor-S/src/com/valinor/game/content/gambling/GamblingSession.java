@@ -30,12 +30,6 @@ public class GamblingSession {
     public static boolean DISABLE_FLOWER_POKER = false;
 
     private static final Logger logger = LogManager.getLogger(GamblingSession.class);
-    private static final Logger gambleLogs = LogManager.getLogger("GambleLogs");
-    private static final Level GAMBLE;
-
-    static {
-        GAMBLE = Level.getLevel("GAMBLE");
-    }
 
     private static final int INTERFACE_ID = 16200;
     public static final int MY_ITEMS_OFFERED = 16230;
@@ -647,6 +641,8 @@ public class GamblingSession {
     }
 
     public void give(int gameId, Player winner, Player loser, boolean draw) {
+        StringBuilder itemsWon = new StringBuilder();
+        StringBuilder lostItems = new StringBuilder();
         if (draw) {
             if (winner != null) {
                 for (Item item : winner.getGamblingSession().getContainer().toNonNullArray()) {
@@ -670,6 +666,7 @@ public class GamblingSession {
                         continue;
                     //If inv full send to bank!
                     winner.inventory().addOrBank(item);
+                    itemsWon.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
                 }
 
                 for (Item item : loser.getGamblingSession().getContainer().toArray()) {
@@ -677,17 +674,18 @@ public class GamblingSession {
                         continue;
                     //If inv full send to bank!
                     winner.inventory().addOrBank(item);
+                    itemsWon.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                    lostItems.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), ");
+                    Utils.sendDiscordInfoLog("Player " + loser.getUsername() + " with IP "+loser.getHostAddress()+" lost " + lostItems + " from losing a gamble against " + winner.getUsername(), "gamble_items_lost");
                 }
                 try {
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" won " + itemsWon + " from " + opponent.getUsername()+" with IP "+opponent.getHostAddress(), "gamble_items_won");
+
                     long plr_value = player.getGamblingSession().getContainer().containerValue();
                     long other_plr_value = opponent.getGamblingSession().getContainer().containerValue();
-                    long difference;
-                    difference = (plr_value > other_plr_value) ? plr_value - other_plr_value : other_plr_value - plr_value;
-                    gambleLogs.log(GAMBLE, "Player " + player.getUsername() + " gamble value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " BM");
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " gamble value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " BM", "gamble");
-                    if (difference > 1_000_000) {
-                        gambleLogs.warn("Player " + opponent.getUsername() + " won a gamble against Player " + player.getUsername() + " with a value difference of greater than 1,000,000 BM, this was possibly RWT.");
-                        Utils.sendDiscordInfoLog(GameServer.properties().discordNotifyId + " Player " + opponent.getUsername() + " won a gamble against Player " + player.getUsername() + " with a value difference of greater than 1,000,000 BM, this was possibly RWT.", "gamble");
+                    long difference = (plr_value > other_plr_value) ? plr_value - other_plr_value : other_plr_value - plr_value;
+                    if (difference > 10_000_000) {
+                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " (IP " + player.getHostAddress() + ") and " + opponent.getUsername() + " (IP " + opponent.getHostAddress() + ") gamble value difference of " + Utils.insertCommasToNumber(String.valueOf(difference)) + " coins, possible RWT.", "gamble_items_won");
                     }
                 } catch (Exception e) {
                     //The value shouldn't ever really be a string, but just in case, let's catch the exception.

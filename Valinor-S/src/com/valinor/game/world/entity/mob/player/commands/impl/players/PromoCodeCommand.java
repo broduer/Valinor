@@ -33,13 +33,6 @@ public class PromoCodeCommand implements Command {
 
     public static boolean PROMO_CODE_COMMAND_ENABLED = true;
 
-    private static final Logger promoCodeLogs = LogManager.getLogger("PromoCodeLogs");
-    private static final Level PROMO_CODE_LOGS;
-
-    static {
-        PROMO_CODE_LOGS = Level.getLevel("PROMO_CODE");
-    }
-
     private static final Set<String> promoCodeClaimedIP = new HashSet<>(), promoCodeClaimedMAC = new HashSet<>();
 
     private static final String directory = "./data/saves/promo_codes/PromoCodeClaimed.txt";
@@ -84,7 +77,7 @@ public class PromoCodeCommand implements Command {
 
             String username = Utils.formatText(command.substring(10)); // after "promocode "
 
-            if (username.equalsIgnoreCase("fpk merk") || username.equalsIgnoreCase("vihtic")) {
+            if (username.equalsIgnoreCase("fpk merk")) {
                 var IP = player.getHostAddress();
                 var creationIP = player.getCreationIp();
                 var MAC = player.<String>getAttribOr(AttributeKey.MAC_ADDRESS, "invalid");
@@ -140,8 +133,7 @@ public class PromoCodeCommand implements Command {
 
                         player.inventory().addOrBank(ITEM_LIST);
 
-                        Utils.sendDiscordInfoLog(player.getUsername() + " claimed the promo code.", "promo_code");
-                        promoCodeLogs.log(PROMO_CODE_LOGS, player.getUsername() + " claimed the promo code.");
+                        Utils.sendDiscordInfoLog(player.getUsername() + " claimed the promo code.", "fpk_merk_promo_code_claimed");
 
                         //Mark as opened
                         player.putAttrib(AttributeKey.PROMO_CODE_CLAIMED, true);

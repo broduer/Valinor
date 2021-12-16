@@ -12,17 +12,7 @@ public abstract class Gamble {
      */
     public Player host, opponent;
 
-    /**
-     * Score betwen the players inside the 'gamble'
-     */
-    public int hostScore, opponentScore;
-
     public int gameId;
-
-    /**
-     * Checks if its the host's turn
-     */
-    public boolean yourTurn;
 
     public Gamble(Player host, Player opponent) {
         this.host = host;

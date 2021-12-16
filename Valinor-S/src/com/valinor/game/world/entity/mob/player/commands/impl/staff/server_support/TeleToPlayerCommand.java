@@ -41,6 +41,7 @@ public class TeleToPlayerCommand implements Command {
                 return;
             }
             player.teleport(plr.get().tile().clone());
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::teleto "+plr.get().getUsername(), "staff_cmd");
         } else {
             player.message("cannot find player with name '" + player2 + "'");
         }

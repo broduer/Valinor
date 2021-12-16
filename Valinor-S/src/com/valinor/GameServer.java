@@ -78,28 +78,66 @@ public class GameServer {
         logger = LogManager.getLogger(GameServer.class);
         if (properties().enableDiscordLogging) {
             logger.info("Discord logging has been enabled.");
-            commandWebHook = new DiscordWebhook(properties().commandWebHookUrl);
-            chatWebHook = new DiscordWebhook(properties().chatWebHookUrl);
-            stakeWebHook = new DiscordWebhook(properties().stakeWebHookUrl);
-            tradeWebHook = new DiscordWebhook(properties().tradeWebHookUrl);
-            pmWebHook = new DiscordWebhook(properties().pmWebHookUrl);
-            npcDropsWebHook = new DiscordWebhook(properties().npcDropsWebHookUrl);
-            playerDropsWebHook = new DiscordWebhook(properties().playerDropsWebHookUrl);
-            pickupsWebHook = new DiscordWebhook(properties().pickupsWebHookUrl);
-            loginWebHook = new DiscordWebhook(properties().loginWebHookUrl);
-            logoutWebHook = new DiscordWebhook(properties().logoutWebHookUrl);
-            shopsWebHook = new DiscordWebhook(properties().shopsWebHookUrl);
-            playerDeathsWebHook = new DiscordWebhook(properties().playerDeathsWebHookUrl);
-            tournamentsWebHook = new DiscordWebhook(properties().tournamentsWebHookUrl);
-            referralsWebHook = new DiscordWebhook(properties().referralsWebHookUrl);
-            achievementsWebHook = new DiscordWebhook(properties().achievementsWebHookUrl);
-            tradingPostSalesWebHook = new DiscordWebhook(properties().tradingPostSalesWebHook);
-            tradingPostPurchasesWebHook = new DiscordWebhook(properties().tradingPostPurchasesWebHook);
-            raidsWebHook = new DiscordWebhook(properties().raidsWebHook);
-            starterBoxWebHook = new DiscordWebhook(properties().starterBoxWebHook);
-            gambleWebHook = new DiscordWebhook(properties().gambleWebHookUrl);
-            boxAndTicketsWebHookUrl = new DiscordWebhook(properties().boxAndTicketsWebHookUrl);
-            promoCodewebHookURL = new DiscordWebhook(properties().promoCodewebHookURL);
+            publicChatWebHookUrl = new DiscordWebhook(properties().publicChatWebHookUrl);
+            privateChatWebHookUrl = new DiscordWebhook(properties().privateChatWebHookUrl);
+            staffCommandsWebHookUrl = new DiscordWebhook(properties().staffCommandsWebHookUrl);
+            playerCommandsWebHookUrl = new DiscordWebhook(properties().playerCommandsWebHookUrl);
+            votesClaimedWebHookUrl = new DiscordWebhook(properties().votesClaimedWebHookUrl);
+            donationsClaimedWebHookUrl = new DiscordWebhook(properties().donationsClaimedWebHookUrl);
+            tradeFirstScreenDeclinedWebHookUrl = new DiscordWebhook(properties().tradeFirstScreenDeclinedWebHookUrl);
+            tradeSecondScreenDeclinedWebHookUrl = new DiscordWebhook(properties().tradeSecondScreenDeclinedWebHookUrl);
+            tradeFirstScreenAcceptedWebHookUrl = new DiscordWebhook(properties().tradeFirstScreenAcceptedWebHookUrl);
+            tradeSecondScreenAcceptedWebHookUrl = new DiscordWebhook(properties().tradeSecondScreenAcceptedWebHookUrl);
+            stakeFirstScreenDeclinedWebHookUrl = new DiscordWebhook(properties().stakeFirstScreenDeclinedWebHookUrl);
+            stakeSecondScreenDeclinedWebHookUrl = new DiscordWebhook(properties().stakeSecondScreenDeclinedWebHookUrl);
+            stakeFirstScreenAcceptedWebHookUrl = new DiscordWebhook(properties().stakeFirstScreenAcceptedWebHookUrl);
+            stakeSecondScreenAcceptedWebHookUrl = new DiscordWebhook(properties().stakeSecondScreenAcceptedWebHookUrl);
+            stakeItemsWonWebHookUrl = new DiscordWebhook(properties().stakeItemsWonWebHookUrl);
+            stakeItemsLostWebHookUrl = new DiscordWebhook(properties().stakeItemsLostWebHookUrl);
+            stakeRulesChangedWebHookUrl = new DiscordWebhook(properties().stakeRulesChangedWebHookUrl);
+            gambleItemsOfferedWebHookUrl = new DiscordWebhook(properties().gambleItemsOfferedWebHookUrl);
+            gambleItemsWonWebHookUrl = new DiscordWebhook(properties().gambleItemsWonWebHookUrl);
+            gambleItemsLostWebHookUrl = new DiscordWebhook(properties().gambleItemsLostWebHookUrl);
+            yellItemDropsWebHookUrl = new DiscordWebhook(properties().yellItemDropsWebHookUrl);
+            slayerKeyDropsWebHookUrl = new DiscordWebhook(properties().slayerKeyDropsWebHookUrl);
+            brimstoneKeyDropsWebHookUrl = new DiscordWebhook(properties().brimstoneKeyDropsWebHookUrl);
+            crystalKeyDropsWebHookUrl = new DiscordWebhook(properties().crystalKeyDropsWebHookUrl);
+            slayerChestWebHookUrl = new DiscordWebhook(properties().slayerChestWebHookUrl);
+            brimstoneChestWebHookUrl = new DiscordWebhook(properties().brimstoneChestWebHookUrl);
+            crystalChestWebHookUrl = new DiscordWebhook(properties().crystalChestWebHookUrl);
+            collectionChestWebHookUrl = new DiscordWebhook(properties().collectionChestWebHookUrl);
+            rewardsClaimedColLogWebHookUrl = new DiscordWebhook(properties().rewardsClaimedColLogWebHookUrl);
+            itemsDroppedWebHookUrl = new DiscordWebhook(properties().itemsDroppedWebHookUrl);
+            playerPickupsWebHookUrl = new DiscordWebhook(properties().playerPickupsWebHookUrl);
+            loginsWebHookUrl = new DiscordWebhook(properties().loginsWebHookUrl);
+            logoutsWebHookUrl = new DiscordWebhook(properties().logoutsWebHookUrl);
+            logoutDuringTournyWebHookUrl = new DiscordWebhook(properties().logoutDuringTournyWebHookUrl);
+            itemsBoughtWebHookUrl = new DiscordWebhook(properties().itemsBoughtWebHookUrl);
+            itemsSoldWebHookUrl = new DiscordWebhook(properties().itemsSoldWebHookUrl);
+            npcDeathWebHookUrl = new DiscordWebhook(properties().npcDeathWebHookUrl);
+            playerDeathWebHookUrl = new DiscordWebhook(properties().playerDeathWebHookUrl);
+            playersEnteredTournyWebHookUrl = new DiscordWebhook(properties().playersEnteredTournyWebHookUrl);
+            playersLeftTournyWebHookUrl = new DiscordWebhook(properties().playersLeftTournyWebHookUrl);
+            tournyWinnersWebHookUrl = new DiscordWebhook(properties().tournyWinnersWebHookUrl);
+            referralsWebHookUrl = new DiscordWebhook(properties().referralsWebHookUrl);
+            referralRewardsClaimedWebHookUrl = new DiscordWebhook(properties().referralRewardsClaimedWebHookUrl);
+            itemSalesTPWebHookUrl = new DiscordWebhook(properties().itemSalesTPWebHookUrl);
+            itemsBoughtTPWebHookUrl = new DiscordWebhook(properties().itemsBoughtTPWebHookUrl);
+            itemsModifiedTPWebHookUrl = new DiscordWebhook(properties().itemsModifiedTPWebHookUrl);
+            itemsClaimedTPWebHookUrl = new DiscordWebhook(properties().itemsClaimedTPWebHookUrl);
+            itemsCanceledTPWebHookUrl = new DiscordWebhook(properties().itemsCanceledTPWebHookUrl);
+            coxRewardsClaimedWebHookUrl = new DiscordWebhook(properties().coxRewardsClaimedWebHookUrl);
+            tobRewardsClaimedWebHookUrl = new DiscordWebhook(properties().tobRewardsClaimedWebHookUrl);
+            cosRewardsClaimedWebHookUrl = new DiscordWebhook(properties().cosRewardsClaimedWebHookUrl);
+            boxesOpenedWebHookUrl = new DiscordWebhook(properties().boxesOpenedWebHookUrl);
+            ticketsOpenedWebHookUrl = new DiscordWebhook(properties().ticketsOpenedWebHookUrl);
+            fpkMerkPromoCodeClaimedWebHookUrl = new DiscordWebhook(properties().fpkMerkPromoCodeClaimedWebHookUrl);
+            itemsAddedToCartDispenserWebHookUrl = new DiscordWebhook(properties().itemsAddedToCartDispenserWebHookUrl);
+            itemsDispensedWebHookUrl = new DiscordWebhook(properties().itemsDispensedWebHookUrl);
+            presetsLoadedWebHookUrl = new DiscordWebhook(properties().presetsLoadedWebHookUrl);
+            nifflerLootedWebHookUrl = new DiscordWebhook(properties().nifflerLootedWebHookUrl);
+            lootingBagLootedWebHookUrl = new DiscordWebhook(properties().lootingBagLootedWebHookUrl);
+            lootingBagWithdrawnWebHookUrl = new DiscordWebhook(properties().lootingBagWithdrawnWebHookUrl);
         }
     }
 
@@ -127,28 +165,66 @@ public class GameServer {
 
     private static DatabaseService databaseService;
 
-    private static DiscordWebhook commandWebHook;
-    private static DiscordWebhook chatWebHook;
-    private static DiscordWebhook stakeWebHook;
-    private static DiscordWebhook tradeWebHook;
-    private static DiscordWebhook pmWebHook;
-    private static DiscordWebhook npcDropsWebHook;
-    private static DiscordWebhook playerDropsWebHook;
-    private static DiscordWebhook pickupsWebHook;
-    private static DiscordWebhook loginWebHook;
-    private static DiscordWebhook logoutWebHook;
-    private static DiscordWebhook shopsWebHook;
-    private static DiscordWebhook playerDeathsWebHook;
-    private static DiscordWebhook tournamentsWebHook;
-    private static DiscordWebhook referralsWebHook;
-    private static DiscordWebhook achievementsWebHook;
-    private static DiscordWebhook tradingPostSalesWebHook;
-    private static DiscordWebhook tradingPostPurchasesWebHook;
-    private static DiscordWebhook raidsWebHook;
-    private static DiscordWebhook starterBoxWebHook;
-    private static DiscordWebhook gambleWebHook;
-    private static DiscordWebhook boxAndTicketsWebHookUrl;
-    private static DiscordWebhook promoCodewebHookURL;
+    public static DiscordWebhook publicChatWebHookUrl;
+    public static DiscordWebhook privateChatWebHookUrl;
+    public static DiscordWebhook staffCommandsWebHookUrl;
+    public static DiscordWebhook playerCommandsWebHookUrl;
+    public static DiscordWebhook votesClaimedWebHookUrl;
+    public static DiscordWebhook donationsClaimedWebHookUrl;
+    public static DiscordWebhook tradeFirstScreenDeclinedWebHookUrl;
+    public static DiscordWebhook tradeSecondScreenDeclinedWebHookUrl;
+    public static DiscordWebhook tradeFirstScreenAcceptedWebHookUrl;
+    public static DiscordWebhook tradeSecondScreenAcceptedWebHookUrl;
+    public static DiscordWebhook stakeFirstScreenDeclinedWebHookUrl;
+    public static DiscordWebhook stakeSecondScreenDeclinedWebHookUrl;
+    public static DiscordWebhook stakeFirstScreenAcceptedWebHookUrl;
+    public static DiscordWebhook stakeSecondScreenAcceptedWebHookUrl;
+    public static DiscordWebhook stakeItemsWonWebHookUrl;
+    public static DiscordWebhook stakeItemsLostWebHookUrl;
+    public static DiscordWebhook stakeRulesChangedWebHookUrl;
+    public static DiscordWebhook gambleItemsOfferedWebHookUrl;
+    public static DiscordWebhook gambleItemsWonWebHookUrl;
+    public static DiscordWebhook gambleItemsLostWebHookUrl;
+    public static DiscordWebhook yellItemDropsWebHookUrl;
+    public static DiscordWebhook slayerKeyDropsWebHookUrl;
+    public static DiscordWebhook brimstoneKeyDropsWebHookUrl;
+    public static DiscordWebhook crystalKeyDropsWebHookUrl;
+    public static DiscordWebhook slayerChestWebHookUrl;
+    public static DiscordWebhook brimstoneChestWebHookUrl;
+    public static DiscordWebhook crystalChestWebHookUrl;
+    public static DiscordWebhook collectionChestWebHookUrl;
+    public static DiscordWebhook rewardsClaimedColLogWebHookUrl;
+    public static DiscordWebhook itemsDroppedWebHookUrl;
+    public static DiscordWebhook playerPickupsWebHookUrl;
+    public static DiscordWebhook loginsWebHookUrl;
+    public static DiscordWebhook logoutsWebHookUrl;
+    public static DiscordWebhook logoutDuringTournyWebHookUrl;
+    public static DiscordWebhook itemsBoughtWebHookUrl;
+    public static DiscordWebhook itemsSoldWebHookUrl;
+    public static DiscordWebhook npcDeathWebHookUrl;
+    public static DiscordWebhook playerDeathWebHookUrl;
+    public static DiscordWebhook playersEnteredTournyWebHookUrl;
+    public static DiscordWebhook playersLeftTournyWebHookUrl;
+    public static DiscordWebhook tournyWinnersWebHookUrl;
+    public static DiscordWebhook referralsWebHookUrl;
+    public static DiscordWebhook referralRewardsClaimedWebHookUrl;
+    public static DiscordWebhook itemSalesTPWebHookUrl;
+    public static DiscordWebhook itemsBoughtTPWebHookUrl;
+    public static DiscordWebhook itemsModifiedTPWebHookUrl;
+    public static DiscordWebhook itemsClaimedTPWebHookUrl;
+    public static DiscordWebhook itemsCanceledTPWebHookUrl;
+    public static DiscordWebhook coxRewardsClaimedWebHookUrl;
+    public static DiscordWebhook tobRewardsClaimedWebHookUrl;
+    public static DiscordWebhook cosRewardsClaimedWebHookUrl;
+    public static DiscordWebhook boxesOpenedWebHookUrl;
+    public static DiscordWebhook ticketsOpenedWebHookUrl;
+    public static DiscordWebhook fpkMerkPromoCodeClaimedWebHookUrl;
+    public static DiscordWebhook itemsAddedToCartDispenserWebHookUrl;
+    public static DiscordWebhook itemsDispensedWebHookUrl;
+    public static DiscordWebhook presetsLoadedWebHookUrl;
+    public static DiscordWebhook nifflerLootedWebHookUrl;
+    public static DiscordWebhook lootingBagLootedWebHookUrl;
+    public static DiscordWebhook lootingBagWithdrawnWebHookUrl;
 
     /**
      * The main method that will put the server online.
@@ -265,94 +341,6 @@ public class GameServer {
         } else {
             databaseService = new DatabaseService.DisabledDatabaseService();
         }
-    }
-
-    public static DiscordWebhook getCommandWebHook() {
-        return commandWebHook;
-    }
-
-    public static DiscordWebhook getChatWebHook() {
-        return chatWebHook;
-    }
-
-    public static DiscordWebhook getStakeWebHook() {
-        return stakeWebHook;
-    }
-
-    public static DiscordWebhook getTradeWebHook() {
-        return tradeWebHook;
-    }
-
-    public static DiscordWebhook getPmWebHook() {
-        return pmWebHook;
-    }
-
-    public static DiscordWebhook getNpcDropsWebHook() {
-        return npcDropsWebHook;
-    }
-
-    public static DiscordWebhook getPlayerDropsWebHook() {
-        return playerDropsWebHook;
-    }
-
-    public static DiscordWebhook getPickupsWebHook() {
-        return pickupsWebHook;
-    }
-
-    public static DiscordWebhook getLoginWebHook() {
-        return loginWebHook;
-    }
-
-    public static DiscordWebhook getLogoutWebHook() {
-        return logoutWebHook;
-    }
-
-    public static DiscordWebhook getShopsWebHook() {
-        return shopsWebHook;
-    }
-
-    public static DiscordWebhook getPlayerDeathsWebHook() {
-        return playerDeathsWebHook;
-    }
-
-    public static DiscordWebhook getTournamentWebHook() {
-        return tournamentsWebHook;
-    }
-
-    public static DiscordWebhook getReferralsWebHook() {
-        return referralsWebHook;
-    }
-
-    public static DiscordWebhook getAchievementsWebHookWebHook() {
-        return achievementsWebHook;
-    }
-
-    public static DiscordWebhook getTradingPostPurchasesWebHook() {
-        return tradingPostPurchasesWebHook;
-    }
-
-    public static DiscordWebhook getTradingPostSalesWebHook() {
-        return tradingPostSalesWebHook;
-    }
-
-    public static DiscordWebhook getRaidsWebHook() {
-        return raidsWebHook;
-    }
-
-    public static DiscordWebhook getStarterBoxWebHook() {
-        return starterBoxWebHook;
-    }
-
-    public static DiscordWebhook getGambleWebHook() {
-        return gambleWebHook;
-    }
-
-    public static DiscordWebhook getBoxAndTicketsWebHookUrl() {
-        return boxAndTicketsWebHookUrl;
-    }
-
-    public static DiscordWebhook getPromoCodewebHookURL() {
-        return promoCodewebHookURL;
     }
 
     public static boolean isStaffOnlyLogins() {

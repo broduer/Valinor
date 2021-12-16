@@ -45,16 +45,16 @@ public class MysteryTicket extends Interaction {
                 if(World.getWorld().rollDie(40,1)) {
                     player.inventory().addOrBank(new Item(MYSTERY_CHEST));
                     MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(MYSTERY_CHEST));
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a Mystery chest from a mystery ticket.", "box_and_tickets");
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a Mystery chest from a mystery ticket.", "tickets_opened");
                     worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Mystery ticket</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>Mystery chest</shad>!";
                 } else if(World.getWorld().rollDie(10,1)) {
                     Item reward = rewardRoll();
                     MYSTERY_BOX.log(player, MYSTERY_TICKET, reward);
                     player.inventory().addOrBank(reward);
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a "+reward.name()+" from a mystery ticket.", "box_and_tickets");
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a "+reward.name()+" from a mystery ticket.", "tickets_opened");
                     worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Mystery ticket</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>" + reward.name() + "</shad>!";
                 } else {
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received x3 Donator mystery box from a mystery ticket.", "box_and_tickets");
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received x3 Donator mystery box from a mystery ticket.", "tickets_opened");
                     player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX,3));
                     MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(DONATOR_MYSTERY_BOX,3));
                 }

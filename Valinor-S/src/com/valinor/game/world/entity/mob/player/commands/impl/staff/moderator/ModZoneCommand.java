@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 public class ModZoneCommand implements Command {
@@ -20,6 +21,7 @@ public class ModZoneCommand implements Command {
         });
 
         player.message("Welcome to the mod zone!");
+        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::modzone", "staff_cmd");
     }
 
     @Override

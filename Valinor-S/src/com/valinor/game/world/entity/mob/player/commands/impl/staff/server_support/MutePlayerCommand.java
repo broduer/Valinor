@@ -32,6 +32,7 @@ public class MutePlayerCommand implements Command {
         String username = Utils.formatText(command.substring(5)); // after "mute "
         if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             player.getDialogueManager().start(new MuteDialogue(username));
+            return;
         }
 
         if(GameServer.properties().punishmentsToLocalFile) {
@@ -52,6 +53,7 @@ public class MutePlayerCommand implements Command {
             playerToMute.ifPresent(value -> value.putAttrib(AttributeKey.MUTED,true));
             PlayerPunishment.mute(username);
             player.message("Player " + username + " was successfully muted.");
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::mute "+username, "staff_cmd");
         }
     }
 
@@ -62,10 +64,9 @@ public class MutePlayerCommand implements Command {
 
     public static final class MuteDialogue extends Dialogue {
         LocalDateTime unmuteDate = null;
-        private String username;
+        private final String username;
 
         public MuteDialogue(String username) {
-
             this.username = username;
         }
 
@@ -116,15 +117,9 @@ public class MutePlayerCommand implements Command {
                     LocalDateTime unmuteDate = null;
                     if (!type.equals("perm")) {
                         switch (type) {
-                            case "hours":
-                                unmuteDate = LocalDateTime.now().plusHours(Long.parseLong(duration));
-                                break;
-                            case "days":
-                                unmuteDate = LocalDateTime.now().plusDays(Long.parseLong(duration));
-                                break;
-                            case "minutes":
-                                unmuteDate = LocalDateTime.now().plusMinutes(Long.parseLong(duration));
-                                break;
+                            case "hours" -> unmuteDate = LocalDateTime.now().plusHours(Long.parseLong(duration));
+                            case "days" -> unmuteDate = LocalDateTime.now().plusDays(Long.parseLong(duration));
+                            case "minutes" -> unmuteDate = LocalDateTime.now().plusMinutes(Long.parseLong(duration));
                         }
                     } else {
                         unmuteDate = LocalDateTime.now().plusYears(Long.parseLong(duration));
@@ -135,18 +130,17 @@ public class MutePlayerCommand implements Command {
                     if (plr.isPresent()) {
                         if (plr.get().getPlayerRights().greater(player.getPlayerRights())) {
                             player.message("You cannot mute that player!");
-                            //logger.warn(player.getUsername() + " tried to mute " + plr.get().getUsername(), "warning");
                             return;
                         }
                         plr.get().putAttrib(AttributeKey.MUTED,true);
                         plr.get().message("You have been muted until " + unmuteTimestamp + " for: " + input);
                         GameServer.getDatabaseService().submit(new MutePlayerDatabaseTransaction(username, unmuteTimestamp, input));
                         player.message("Player " + username + " was successfully muted until " + unmuteTimestamp + " for: " + input);
+                        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::mute "+username+" until " + unmuteTimestamp + " for: " + input, "staff_cmd");
                     } else {
                         final String player2Username = username;
                         if (Arrays.stream(player.getPlayerRights().getOwners()).anyMatch(name -> name.equalsIgnoreCase(player2Username))) {
                             player.message("You cannot mute that player!");
-                            //logger.warn(player.getUsername() + " tried to mute " + username, "warning");
                             return;
                         }
                         DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
@@ -155,6 +149,7 @@ public class MutePlayerCommand implements Command {
                             } else {
                                 GameServer.getDatabaseService().submit(new MutePlayerDatabaseTransaction(username, unmuteTimestamp, input));
                                 player.message("Player " + username + " was successfully muted until " + unmuteTimestamp + " for: " + input);
+                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::mute "+username+" until " + unmuteTimestamp + " for: " + input, "staff_cmd");
                             }
                         });
                     }

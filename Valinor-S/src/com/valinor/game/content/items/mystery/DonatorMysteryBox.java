@@ -210,6 +210,7 @@ public class DonatorMysteryBox extends Interaction {
                     var amt = reward.getAmount();
                     player.message("You open the donator mystery box and found...");
                     player.message("x"+amt+" "+reward.unnote().name()+".");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a donator mystery box and received x"+amt+" "+reward.unnote().name()+".", "boxes_opened");
 
                     var opened = player.<Integer>getAttribOr(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, 0) + 1;
                     player.putAttrib(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, opened);

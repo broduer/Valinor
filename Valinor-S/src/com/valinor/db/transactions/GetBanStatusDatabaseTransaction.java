@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public final class GetBanStatusDatabaseTransaction extends DatabaseTransaction<Boolean> {
     private static final Logger logger = LogManager.getLogger(GetBanStatusDatabaseTransaction.class);
 
-    private String username;
+    private final String username;
 
     public GetBanStatusDatabaseTransaction(String username) {
         this.username = username;
@@ -27,13 +27,12 @@ public final class GetBanStatusDatabaseTransaction extends DatabaseTransaction<B
     public Boolean execute(Connection connection) throws SQLException {
         LocalDateTime currentDateTime = LocalDateTime.now();
         Timestamp expiryDate = null;
-        String cid = "", mac = "", ip = "";
-        try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT ban_expires, last_login_mac, last_login_cid, last_login_ip FROM users WHERE lower(username) = :username")) {
+        String mac = "", ip = "";
+        try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT ban_expires, last_login_mac, last_login_ip FROM users WHERE lower(username) = :username")) {
             statement.setString("username", username.toLowerCase());
             statement.execute();
             if (statement.getResultSet().next()) {
                 expiryDate = statement.getResultSet().getTimestamp("ban_expires");
-                cid = statement.getResultSet().getString("last_login_cid");
                 mac = statement.getResultSet().getString("last_login_mac");
                 ip = statement.getResultSet().getString("last_login_ip");
             }
@@ -61,18 +60,6 @@ public final class GetBanStatusDatabaseTransaction extends DatabaseTransaction<B
                     Timestamp macExpiryDate = statement.getResultSet().getTimestamp("unban_at");
                     if (macExpiryDate != null && !currentDateTime.isAfter(macExpiryDate.toLocalDateTime())) {
                         return true; // macbanned active
-                    }
-                }
-            }
-        }
-        if (cid != null && cid.length() > 0) {
-            try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT * from clientid_bans WHERE clientid = :cid")) {
-                statement.setString("cid", cid);
-                statement.execute();
-                while (statement.getResultSet().next()) {
-                    Timestamp cidExpiryDate = statement.getResultSet().getTimestamp("unban_at");
-                    if (cidExpiryDate != null && !currentDateTime.isAfter(cidExpiryDate.toLocalDateTime())) {
-                        return true; // cid active
                     }
                 }
             }

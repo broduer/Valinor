@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Utils;
 
 import java.util.Optional;
 
@@ -39,6 +40,7 @@ public class TeleToMePlayerCommand implements Command {
                 return;
             }
             plr.get().teleport(player.tile().clone());
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::teletome "+plr.get().getUsername(), "staff_cmd");
         }
     }
 

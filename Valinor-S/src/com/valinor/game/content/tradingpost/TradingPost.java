@@ -43,13 +43,6 @@ public class TradingPost {
 
     private static final Logger logger = LogManager.getLogger(TradingPost.class);
 
-    private static final Logger tradingPostLogs = LogManager.getLogger("TradingPostLogs");
-    private static final Level TRADING_POST;
-
-    static {
-        TRADING_POST = Level.getLevel("TRADING_POST");
-    }
-
     // Items that are blacklisted from being created within a preset.
     public static final int[] ILLEGAL_ITEMS = new int[]{
         COINS_995,
@@ -793,8 +786,7 @@ public class TradingPost {
             if (listing.submit(tpl)) {
                 player.inventory().remove(sale.getId(), sale.getAmount());
                 sales.put(player.getUsername().toLowerCase(), listing);
-                Utils.sendDiscordInfoLog(player.getUsername() + " listed: ItemName=" + sale.name() + " ItemAmount=" + sale.getAmount() + " Price=" + Utils.formatRunescapeStyle(price), "trading_post_sales");
-                tradingPostLogs.log(TRADING_POST, player.getUsername() + " listed: ItemName=" + sale.name() + " ItemAmount=" + sale.getAmount() + " Price=" + Utils.formatRunescapeStyle(price));
+                Utils.sendDiscordInfoLog(player.getUsername() + " listed: ItemName=" + sale.name() + " ItemAmount=" + sale.getAmount() + " Price=" + Utils.formatRunescapeStyle(price), "items_sales_tp");
                 save(listing);
                 player.message("You've successfully listed your offer to the " + GameConstants.SERVER_NAME + " marketplace!");
             }
@@ -1145,8 +1137,7 @@ public class TradingPost {
                 sel.get().tradePostHistory.add(selected);
             }
 
-            Utils.sendDiscordInfoLog(player.getUsername() + " bought: ItemName=" + purchased.name() + " ItemAmount=" + amount + " Price=" + Utils.formatRunescapeStyle(totalPrice), "trading_post_purchases");
-            tradingPostLogs.log(TRADING_POST, player.getUsername() + " bought: ItemName=" + purchased.name() + " ItemAmount=" + amount + " Price=" + Utils.formatRunescapeStyle(totalPrice));
+            Utils.sendDiscordInfoLog(player.getUsername() + " bought: ItemName=" + purchased.name() + " ItemAmount=" + amount + " Price=" + Utils.formatRunescapeStyle(totalPrice), "items_bought_tp");
 
             //System.out.println("Info BOUGHT: ItemName=" + purchased.name() + " ItemAmount=" + amount + " Price=" + Utils.formatRunescapeStyle(totalPrice));
             recentTransactions.add(selected);
@@ -1210,17 +1201,17 @@ public class TradingPost {
             var profitInPlatTokens = profit / 1000;
             var remainingCoins = profit - profitInPlatTokens * 1000;
             p.inventory().addOrBank(new Item(PLATINUM_TOKEN, (int) profitInPlatTokens));
-            tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profitInPlatTokens + " bloody tokens");
+            Utils.sendDiscordInfoLog(p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profitInPlatTokens + " platinum tokens", "items_claimed_tp");
 
             if (remainingCoins >= 1) {
                 p.inventory().addOrBank(new Item(COINS_995, (int) remainingCoins));
-                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) remainingCoins + " coins");
+                Utils.sendDiscordInfoLog(p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) remainingCoins + " coins", "items_claimed_tp");
             }
         } else {
             //Below max int add coins.
             if (profit > 0) {
                 p.inventory().addOrBank(new Item(COINS_995, (int) profit));
-                tradingPostLogs.log(TRADING_POST, p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profit + " coins");
+                Utils.sendDiscordInfoLog(p.getUsername() + " offer claimed for: " + offer.getSaleItem().unnote().name() + " Received=" + (int) profit + " coins", "items_claimed_tp");
             }
         }
 
@@ -1402,7 +1393,7 @@ public class TradingPost {
 
             listing.removeListedItem(offer);
             player.getInventory().addOrBank(refund);
-            tradingPostLogs.log(TRADING_POST, player.getUsername() + " successfully canceled the offer for: " + refund.unnote().name());
+            Utils.sendDiscordInfoLog(player.getUsername() + " successfully canceled the offer for: " + refund.unnote().name(), "items_canceled_tp");
             player.message("You have successfully canceled your listing for x" + remaining + " " + refund.unnote().name() + "!");
 
             if (unclaimedProfit > 0) {
@@ -1410,7 +1401,7 @@ public class TradingPost {
                 int refundId = isOver ? PLATINUM_TOKEN : COINS_995;
                 Item item = new Item(refundId, isOver ? (int) (unclaimedProfit / 1_000) : (int) unclaimedProfit);
                 player.inventory().addOrBank(item);
-                tradingPostLogs.log(TRADING_POST, player.getUsername() + " After canceling the offer there was already some unclaimed profits for: " + refund.unnote().name() + " Received: " + item.getAmount() + " coins!");
+                Utils.sendDiscordInfoLog(player.getUsername() + " After canceling the offer there was already some unclaimed profits for: " + refund.unnote().name() + " Received: " + item.getAmount() + " coins!", "items_canceled_tp");
                 player.message("<col=ff0000>You also had " + Utils.formatNumber(unclaimedProfit) + " coins unclaimed..");
             }
             refresh(player);

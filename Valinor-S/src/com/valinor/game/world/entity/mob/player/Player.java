@@ -152,13 +152,6 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
 
-    private static final Logger logoutLogs = LogManager.getLogger("LogoutLogs");
-    private static final Level LOGOUT;
-
-    static {
-        LOGOUT = Level.getLevel("LOGOUT");
-    }
-
     public TickDelay snowballCooldown = new TickDelay();
 
     public void removeAll(Item item) {
@@ -1308,7 +1301,6 @@ public class Player extends Mob {
     public void onLogout() {
         // Notify us
         //logger.info("Deregistering player - [username, host] : [{}, {}]", getUsername(), getHostAddress());
-        logoutLogs.log(LOGOUT, "[Logout] Deregistering player - {}", getUsername());
         Utils.sendDiscordInfoLog("```Deregistering player - " + getUsername() + " with IP " + getHostAddress() + "```", "logout");
 
         // Update session state
@@ -1386,6 +1378,7 @@ public class Player extends Mob {
         runExceptionally(() -> {
             //Leave tourny on logout
             TournamentManager.leaveTourny(this, true);
+            Utils.sendDiscordInfoLog("Player " + this.getUsername() + " with IP "+this.getHostAddress()+" logged out during a tournament.", "logout_tourny");
         });
 
         //Technically this is the last logout, but we'll use it as the last login so the last login doesn't get "overwritten" for the welcome screen when the player logs in.
@@ -2607,13 +2600,6 @@ public class Player extends Mob {
         return null;
     }
 
-    private static final Logger nifflerLogs = LogManager.getLogger("NifflerLogs");
-    private static final Level NIFFLER_LOGS;
-
-    static {
-        NIFFLER_LOGS = Level.getLevel("NIFFLER_LOGS");
-    }
-
     public int nifflerPouchSize() {
         return this.<ArrayList<Item>>getAttribOr(AttributeKey.NIFFLER_ITEMS_STORED, new ArrayList<Item>()).size();
     }
@@ -2672,7 +2658,7 @@ public class Player extends Mob {
                     boolean amOverOne = item.getAmount() > 1;
                     String amtString = amOverOne ? "x" + Utils.format(item.getAmount()) + "" : Utils.getAOrAn(item.name());
                     this.message(Color.RED.tag() + "The niffler collected " + amtString + " " + itemName + ".");
-                    nifflerLogs.log(NIFFLER_LOGS, "Player " + getUsername() + "'s niffler collected a: " + amtString + " " + itemName);
+                    Utils.sendDiscordInfoLog("Player " + getUsername() + "'s IP "+hostAddress+" niffler collected a: " + amtString + " " + itemName, "niffler_looted");
                 }
             }
         }

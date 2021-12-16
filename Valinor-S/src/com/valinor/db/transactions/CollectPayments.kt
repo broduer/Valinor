@@ -14,6 +14,7 @@ import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers.*
 import com.valinor.util.NpcIdentifiers.WISE_OLD_MAN
+import com.valinor.util.Utils
 import java.time.LocalDateTime
 
 object CollectPayments {
@@ -82,52 +83,18 @@ object CollectPayments {
                             execute()
                         }
                     }.onDatabase(GameServer.getDatabaseService()) {
-                        var paymentAmount = 0.0
-                        when (row.itemId) {
-
-                            FIVE_DOLLAR_BOND -> {
-                                paymentAmount = 5.0 * row.itemAmt
-                            }
-
-                            TEN_DOLLAR_BOND -> {
-                                paymentAmount = 10.0 * row.itemAmt
-                            }
-
-                            TWENTY_DOLLAR_BOND -> {
-                                paymentAmount = 20.0 * row.itemAmt
-                            }
-
-                            THIRTY_DOLLAR_BOND -> {
-                                paymentAmount = 30.0 * row.itemAmt
-                            }
-
-                            FORTY_DOLLAR_BOND -> {
-                                paymentAmount = 40.0 * row.itemAmt
-                            }
-
-                            FIFTY_DOLLAR_BOND -> {
-                                paymentAmount = 50.0 * row.itemAmt
-                            }
-
-                            SEVENTY_FIVE_DOLLAR_BOND -> {
-                                paymentAmount = 75.0 * row.itemAmt
-                            }
-
-                            ONE_HUNDRED_DOLLAR_BOND -> {
-                                paymentAmount = 100.0 * row.itemAmt
-                            }
-                        }
-
                         //Buy two get one free promo
                         if (GameServer.properties().buyTwoGetOneFree) {
                             // Award a 'buy-two-get-one free' special if acceptable.
                             val bonus = row.itemAmt / 2
                             inventory.addOrBank(Item(row.itemId, row.itemAmt + bonus))
+                            Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} bonus amt + $bonus ${Item(row.itemId).name()}.", "donations_claimed")
                             if (bonus > 0)
                                 message("${Color.RED.tag()}You have been rewarded extra items because of our active payment deal.")
                         } else {
                             //No promo active, give the purchase items without bonus
                             inventory.addOrBank(Item(row.itemId, row.itemAmt))
+                            Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} ${Item(row.itemId).name()}.", "donations_claimed")
                         }
                     }
                 }

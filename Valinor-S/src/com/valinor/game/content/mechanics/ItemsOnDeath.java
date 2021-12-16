@@ -44,13 +44,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class ItemsOnDeath {
 
-    private static final Logger playerDeathLogs = LogManager.getLogger("PlayerDeathsLogs");
-    private static final Level PLAYER_DEATHS;
-
-    static {
-        PLAYER_DEATHS = Level.getLevel("PLAYER_DEATHS");
-    }
-
     /**
      * The items the Player lost.
      */
@@ -85,9 +78,8 @@ public class ItemsOnDeath {
         // If we're in FFA clan wars, don't drop our items.
         // Have these safe area checks before we do some expensive code ... looking for who killed us.
         if (donator_zone || vorkath_area || zulrah_area || hydra_area || safe_accounts || duel_arena || pest_control || raids_area || in_tournament || minigame_safe_death || hunleff_area) {
-            playerDeathLogs.log(PLAYER_DEATHS, "Player: "+ player.getUsername() + " died in a safe area " + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""));
-            Utils.sendDiscordInfoLog("Player: "+ player.getUsername() + " died in a safe area " + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""), "playerdeaths");
-            Utils.sendDiscordInfoLog("Safe deaths activated for: "+ player.getUsername() + "" + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""+" donator_zone: "+donator_zone+" vorkath_area: "+vorkath_area+" hydra_area: "+hydra_area+" zulrah_area: "+zulrah_area+" in safe_accounts: "+safe_accounts+" duel_arena: "+duel_arena+" pest_control: "+pest_control+" raids_area: "+raids_area+" in_tournament: "+in_tournament+" minigame_safe_death: "+minigame_safe_death+" hunleff_area: "+hunleff_area), "playerdeaths");
+            Utils.sendDiscordInfoLog("Player: "+ player.getUsername() + " died in a safe area " + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""), "player_death");
+            Utils.sendDiscordInfoLog("Safe deaths activated for: "+ player.getUsername() + "" + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""+" donator_zone: "+donator_zone+" vorkath_area: "+vorkath_area+" hydra_area: "+hydra_area+" zulrah_area: "+zulrah_area+" in safe_accounts: "+safe_accounts+" duel_arena: "+duel_arena+" pest_control: "+pest_control+" raids_area: "+raids_area+" in_tournament: "+in_tournament+" minigame_safe_death: "+minigame_safe_death+" hunleff_area: "+hunleff_area), "player_death");
             return null;
         }
 
@@ -233,8 +225,7 @@ public class ItemsOnDeath {
         if (outputDeleted.stream().anyMatch(i -> i.getId() == LOOTING_BAG || i.getId() == LOOTING_BAG_22586)) {
             Item[] lootingBag = player.getLootingBag().toNonNullArray(); // bypass check if carrying bag since inv is cleared above
             toDrop.addAll(Arrays.asList(lootingBag));
-            playerDeathLogs.log(PLAYER_DEATHS,  player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") looting bag lost items: " + Arrays.toString(Arrays.asList(lootingBag).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""));
-            Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") looting bag lost items: " + Arrays.toString(Arrays.asList(lootingBag).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "playerdeaths");
+            Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") looting bag lost items: " + Arrays.toString(Arrays.asList(lootingBag).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "player_death");
 
             player.getLootingBag().clear();
             IKODTest.debug("looting bag had now: " + Arrays.toString(Arrays.asList(lootingBag).toArray()));
@@ -251,8 +242,7 @@ public class ItemsOnDeath {
             var nifflerItemsStored = player.<ArrayList<Item>>getAttribOr(AttributeKey.NIFFLER_ITEMS_STORED, new ArrayList<Item>());
             if (nifflerItemsStored != null) {
                 toDrop.addAll(nifflerItemsStored);
-                playerDeathLogs.log(PLAYER_DEATHS,  player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") niffler lost items: " + Arrays.toString(nifflerItemsStored.toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""));
-                Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") niffler lost items: " + Arrays.toString(nifflerItemsStored.toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "playerdeaths");
+                Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") niffler lost items: " + Arrays.toString(nifflerItemsStored.toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "player_death");
 
                 nifflerItemsStored.clear();
                 IKODTest.debug("niffler had now: " + Arrays.toString(nifflerItemsStored.toArray()));
@@ -355,8 +345,7 @@ public class ItemsOnDeath {
 
         GroundItemHandler.createGroundItem(new GroundItem(new Item(BONES), player.tile(), theKiller));
         outputDrop.add(new Item(BONES));
-        playerDeathLogs.log(PLAYER_DEATHS,  player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") lost items: " + Arrays.toString(lostItems.stream().map(Item::toShortString).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""));
-        Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") lost items: " + Arrays.toString(lostItems.stream().map(Item::toShortString).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "playerdeaths");
+        Utils.sendDiscordInfoLog(player.getUsername() + " (Skulled: " + Skulling.skulled(player) + ") lost items: " + Arrays.toString(lostItems.stream().map(Item::toShortString).toArray()) + (killer != null && killer.isPlayer() ? " to " + killer.getMobName() : ""), "player_death");
         //Reset last attacked by, since we already handled it above, and the player is already dead.
         player.clearAttrib(AttributeKey.LAST_DAMAGER);
         return new PlayerDeathDropResult(theKiller, outputDrop, outputKept, outputDeleted, outputConverted);

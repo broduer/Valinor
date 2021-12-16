@@ -18,6 +18,8 @@ public class UnBanPlayerCommand implements Command {
 
         if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             GameServer.getDatabaseService().submit(new UnbanPlayerDatabaseTransaction(username));
+            Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unban "+username, "staff_cmd");
+            return;
         }
 
         if(GameServer.properties().punishmentsToLocalFile) {
@@ -32,6 +34,7 @@ public class UnBanPlayerCommand implements Command {
             }
         }
         player.message("Player " + username + " was successfully unbanned.");
+        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unban "+username, "staff_cmd");
     }
 
     @Override

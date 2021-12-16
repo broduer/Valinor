@@ -29,6 +29,7 @@ public class IPMuteCommand implements Command {
         String username = Utils.formatText(command.substring(7)); // after "ipmute "
         if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             //TODO future
+            return;
         }
 
         if(GameServer.properties().punishmentsToLocalFile) {
@@ -50,6 +51,7 @@ public class IPMuteCommand implements Command {
                 playerToMute.get().putAttrib(AttributeKey.MUTED, true);
                 PlayerPunishment.ipmute(IPToMute);
                 player.message("Player " + playerToMute.get().getUsername() + " was successfully ip muted.");
+                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipmute "+playerToMute.get().getUsername(), "staff_cmd");
             } else {
                 //offline
                 Player offlinePlayer = new Player();
@@ -69,6 +71,7 @@ public class IPMuteCommand implements Command {
                                 offlinePlayer.putAttrib(AttributeKey.MUTED, true);
                                 PlayerPunishment.ipmute(IPToMute);
                                 player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip muted.");
+                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ipmute "+offlinePlayer.getUsername(), "staff_cmd");
                             });
                         } else {
                             player.message("Something went wrong trying to offline ip mute "+offlinePlayer.getUsername());

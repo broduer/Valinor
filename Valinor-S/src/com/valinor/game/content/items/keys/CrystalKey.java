@@ -91,6 +91,7 @@ public class CrystalKey extends Interaction {
             Item reward = generateReward();
             player.getInventory().addOrDrop(reward);
             KEYS.log(player, CRYSTAL_KEY, reward);
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the crystal chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "crystal_chest");
         }
 
         player.getInventory().addOrDrop(new Item(UNCUT_DRAGONSTONE));

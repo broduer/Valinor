@@ -746,6 +746,11 @@ public class Npc extends Mob {
 
     @Override
     public void die(Hit killHit) {
+        if(this.combatInfo != null && this.combatInfo.boss) {
+            if(this.def.name != null && killHit.getAttacker() != null) {
+                Utils.sendDiscordInfoLog(this.def.name+" died to "+killHit.getAttacker()+" at: "+this.tile.toString()+".", "npc_death");
+            }
+        }
         NpcDeath.execute(this);
     }
 

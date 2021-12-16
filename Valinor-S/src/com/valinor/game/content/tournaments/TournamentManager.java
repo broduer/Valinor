@@ -218,6 +218,7 @@ public class TournamentManager extends Interaction {
         if (player.isInTournamentLobby()) {
             wipeLoadout(player);
             //logger.info("Player " + player.getUsername() + " is leaving tourny lobby");
+            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " left the "+torn.getTypeName()+" tournament.", "leave_tourny");
             torn.inLobby.remove(player);
             player.setInTournamentLobby(false);
             player.getRunePouch().clear();
@@ -237,7 +238,6 @@ public class TournamentManager extends Interaction {
                 if (torn.winner == player) {
                     torn.winner.inventory().add(torn.reward.copy());
                     torn.winner.message("Reward: " + torn.reward.getAmount() + " x " + torn.reward.name() + ".");
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a tournament reward: " + torn.reward.getAmount() + " x " + torn.reward.name() + ".", "tournaments");
                     if (torn.reward != null) {
                         String rewardX = "" + torn.reward.getAmount(), rewardName = torn.reward.unnote().name();
                         TournamentManager.getWinnerHistories().add(new TournamentManager.WinnerHistory(player.getUsername(), rewardName, rewardX, torn.fullName(), System.currentTimeMillis()));
@@ -743,7 +743,7 @@ public class TournamentManager extends Interaction {
                         player.setInTournamentLobby(false);
                         player.teleport(TORN_START_TILE);
                         player.message("You have been teleported to the combat area!");
-                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " been teleported to the combat area!.", "tournaments");
+                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " been teleported to the combat area!.", "enter_tourny");
                         player.getMovementQueue().clear();
                         player.getTimers().extendOrRegister(TimerKey.TOURNAMENT_FIGHT_IMMUNE, TournamentUtils.FIGHT_IMMUME_TIMER);
                         player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "00:30");
@@ -827,7 +827,6 @@ public class TournamentManager extends Interaction {
                     nextTorn = new Tournament(settings.tornConfigs[Utils.random(settings.tornConfigs.length)]);
                 }
             }
-            Utils.sendDiscordInfoLog("Next torn (" + nextTorn.getTypeName() + ") scheduled for " + TournamentManager.nextTime, "tournaments");
             //logger.info("Next torn (" + nextTorn.getTypeName() + ") scheduled for " + TournamentManager.nextTime);
         } else {
             prevTorn = nextTorn;
