@@ -11,116 +11,278 @@ import com.valinor.util.Utils;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.*;
+
 public class ServerAnnouncements {
 
     private static final List<Integer> RARE_DROPS = Arrays.asList(
-        11908, //uncharged trident
-        11905, //trident of the seas (full)
-        12004, //kraken tentacle
+        //Kraken / Cave kraken
+        TRIDENT_OF_THE_SEAS,
+        TRIDENT_OF_THE_SEAS_FULL,
+        KRAKEN_TENTACLE,
+        JAR_OF_DIRT,
 
-        12819, //Elysian sigil
-        12923, //Spectral Sigil
-        12927, //Arcane sigil
+        //Corporeal beast
+        ELYSIAN_SIGIL,
+        SPECTRAL_SIGIL,
+        ARCANE_SIGIL,
 
-        6739, //dragon axe
-        6737, //berserker ring
-        6735, //warrior ring
-        6731, //seers ring
-        6733, //archers ring
+        //Dagannoth Kings
+        DRAGON_AXE,
+        BERSERKER_RING,
+        WARRIOR_RING,
+        SEERS_RING,
+        ARCHERS_RING,
 
-        4151, //abyssal whip
-        13265, //abyssal dagger
-        7979, //abyssal head
+        //Abyssal Sire
+        ABYSSAL_WHIP,
+        ABYSSAL_DAGGER,
+        ABYSSAL_HEAD,
+        BLUDGEON_AXON,
+        BLUDGEON_CLAW,
+        BLUDGEON_SPINE,
+        JAR_OF_MIASMA,
 
-        21637, //wyvern visage
+        //Ancient Wyvern, Long-tailed Wyvern, Spitting Wyvern, Taloned Wyvern
+        WYVERN_VISAGE,
 
-        11286, //draconic visage
+        //Cerberus
+        PRIMORDIAL_CRYSTAL,
+        PEGASIAN_CRYSTAL,
+        ETERNAL_CRYSTAL,
+        SMOULDERING_STONE,
 
-        13231, //primordial crystal
-        13229, //pegasian crystal
-        13227, //eternal crystal
-        13233, //smouldering stone
+        //Slayer (other) & splitted drops
+        IMBUED_HEART,
+        ETERNAL_GEM,
+        DUST_BATTLESTAFF,
+        MIST_BATTLESTAFF,
+        DRAGON_PICKAXE,
+        DRAGON_BOOTS,
+        KURASK_HEAD,
+        DRACONIC_VISAGE,
+        UNCUT_ONYX,
+        BLACK_MASK,
+        DRAGON_HARPOON,
+        DRAKES_TOOTH,
+        DRAKES_CLAW,
+        BASILISK_JAW,
+        DRAGON_SWORD,
 
-        11920, //dragon pickaxe
+        //Commander Zilyana
+        SARADOMIN_SWORD,
+        ARMADYL_CROSSBOW,
+        SARADOMIN_HILT,
+        GODSWORD_SHARD_1,
+        GODSWORD_SHARD_2,
+        GODSWORD_SHARD_3,
+        SARADOMINS_LIGHT,
 
-        20724, //imbued heart
-        21270, //eternal gem
-        20736, //dust battlestaff
-        20730, //mist battlestaff
+        //Cyclops
+        DRAGON_DEFENDER,
 
-        11838, //saradomin sword
-        11785, //armadyl crossbow
-        11814, //saradomin hilt
-        11818, //godsword shard 1
-        11820, //godsword shard 2
-        11822, //godsword shard 3
+        //Dark beast
+        DARK_BOW,
 
-        12954, //dragon defender
+        //Demonic gorilla
+        ZENYTE_SHARD,
+        BALLISTA_LIMBS,
+        BALLISTA_SPRING,
+        LIGHT_FRAME,
+        HEAVY_FRAME,
+        MONKEY_TAIL,
 
-        11235, //dark bow
+        //General graardor
+        BANDOS_CHESTPLATE,
+        BANDOS_TASSETS,
+        BANDOS_BOOTS,
+        BANDOS_HILT,
 
-        19529, //zenyte shard
-        19592, //ballista limbs
-        19601, //ballista spring
-        19586, //light frame
-        19589, //heavy frame
+        //K'ril tsutsaroth
+        ZAMORAKIAN_SPEAR,
+        STAFF_OF_THE_DEAD,
+        ZAMORAK_HILT,
+        STEAM_BATTLESTAFF,
 
-        11832, //bandos chestplate
-        11834, //bandos tassets
-        11836, //bandos boots
-        11812, //bandos hilt
+        //Kalphite queen
+        JAR_OF_SAND,
+        KQ_HEAD,
+        DRAGON_CHAINBODY_3140,
 
-        11824, //zamorakian spear
-        11791, //staff of the dead
-        11816, //zamorak hilt
+        //King black dragon
+        KBD_HEADS,
+        DRACONIC_VISAGE,
 
-        12885, //jar of sand
-        12647, //kalphite princess
+        //Kree'arra
+        ARMADYL_HELMET,
+        ARMADYL_CHESTPLATE,
+        ARMADYL_CHAINSKIRT,
+        ARMADYL_HILT,
 
-        12653, //prince black dragon
+        //Lizardman Shaman
+        DRAGON_WARHAMMER,
 
-        7978, //kurask head
+        //Thermonuclear smoke devil
+        OCCULT_NECKLACE, //occult necklace
+        SMOKE_BATTLESTAFF,
 
-        11826, //armadyl helmet
-        11828, //armadyl chestplate
-        11830, //armdayl chainskirt
-        11810, //armadyl hilt
+        //Scorpia
+        ODIUM_SHARD_3,
+        MALEDICTION_SHARD_3,
 
-        11840, //dragon boots
-        13576, //dragon warhammer
-        13652, //dragon claws
-        12002, //occult necklace
-        21918, //dragon limbs
-        22103, //dragon metal lump
+        //Crazy Archaeologist
+        ODIUM_SHARD_2,
+        MALEDICTION_SHARD_2,
 
-        13181, //scorpia's offspring
+        //Chaos fanatic
+        ODIUM_SHARD_1,
+        MALEDICTION_SHARD_1,
 
-        22111, //dragonbone necklace
-        2425, //vorkath's head
-        22006, //skeletal visage
+        //Venenatis
+        TREASONOUS_RING,
 
-        12922, //tanzanite fang
-        12932, //magic fang
-        12927, //serpentine visage
+        //Callisto
+        TYRANNICAL_RING,
 
-        12605, //treasonous ring
-        13177, //venenatis spiderling
-        12601, //ring of gods
+        //Vet'ion
+        RING_OF_THE_GODS,
 
-        22547, //craw's bow (u)
-        22552, //thammaron's sceptre (u)
-        22542, //viggora's chainmace (u)
-        21804, //ancient crystal
-        21807, //ancient emblem
-        21810, //ancient totem
-        21813, //ancient statuette
-        22299, //ancient medallion
-        22302, //ancient effigy
-        22305, //ancient relic
+        //Chaos elemental
+        ELEMENTAL_BOW,
+        DRAGON_2H_SWORD,
 
-        20997, //twisted bow
-        21015, //dinh's bulwark
-        21000 //twisted buckler
+
+        // Vorkath
+        DRAGONBONE_NECKLACE,
+        VORKATHS_HEAD_21907,
+        SKELETAL_VISAGE,
+        JAR_OF_DECAY,
+
+        //Zulrah
+        TANZANITE_FANG,
+        MAGIC_FANG,
+        SERPENTINE_VISAGE,
+        TANZANITE_MUTAGEN,
+        MAGMA_MUTAGEN,
+        JAR_OF_SWAMP,
+
+        //Revenants
+        CRAWS_BOW,
+        THAMMARONS_SCEPTRE,
+        VIGGORAS_CHAINMACE,
+        AMULET_OF_AVARICE,
+        VESTAS_SPEAR,
+        VESTAS_LONGSWORD,
+        VESTAS_CHAINBODY,
+        VESTAS_PLATESKIRT,
+        STATIUSS_WARHAMMER,
+        STATIUSS_FULL_HELM,
+        STATIUSS_PLATEBODY,
+        STATIUSS_PLATELEGS,
+
+        ZURIELS_HOOD,
+        ZURIELS_ROBE_TOP,
+        ZURIELS_ROBE_BOTTOM,
+        ZURIELS_STAFF,
+        MORRIGANS_COIF,
+        MORRIGANS_LEATHER_BODY,
+        MORRIGANS_LEATHER_CHAPS,
+        MORRIGANS_JAVELIN,
+        MORRIGANS_THROWING_AXE,
+        ANCIENT_CRYSTAL,
+        ANCIENT_EMBLEM,
+        ANCIENT_TOTEM,
+        ANCIENT_STATUETTE,
+        ANCIENT_MEDALLION,
+        ANCIENT_EFFIGY,
+        ANCIENT_RELIC,
+
+        //Ancient Revenants
+        DARK_ANCIENT_EMBLEM,
+        DARK_ANCIENT_TOTEM,
+        DARK_ANCIENT_STATUETTE,
+        DARK_ANCIENT_MEDALLION,
+        DARK_ANCIENT_EFFIGY,
+        DARK_ANCIENT_RELIC,
+
+        //Rune dragon
+        DRAGON_LIMBS,
+        DRAGON_METAL_LUMP,
+
+        //Adamant dragon
+        DRAGON_METAL_SLICE,
+
+        //Alchemical Hydra
+        HYDRA_TAIL,
+        HYDRA_LEATHER,
+        HYDRAS_FANG,
+        HYDRAS_EYE,
+        HYDRAS_HEART,
+        JAR_OF_CHEMICALS,
+        ALCHEMICAL_HYDRA_HEAD,
+        ALCHEMICAL_HYDRA_HEADS,
+
+        //Ancient barrelchest
+        ANCIENT_WARRIOR_CLAMP,
+
+        //Ancient chaos elemental
+        RING_OF_VIGOUR,
+
+        //Ancient king black dragon
+        ANCIENT_FACEGAURD,
+
+        //Arachne
+        DARK_ARMADYL_HELMET,
+
+        //Artio
+        DARK_ARMADYL_CHESTPLATE,
+
+        //Kerberos
+        DARK_ARMADYL_CHAINSKIRT,
+
+        //Skorpis
+        SAELDOR_SHARD,
+
+        //Barrelchest
+        ANCIENT_WARRIOR_SWORD,
+        ANCIENT_WARRIOR_MAUL,
+        ANCIENT_WARRIOR_AXE,
+
+        //Brutal Lava
+        LAVA_DHIDE_COIF,
+        LAVA_DHIDE_BODY,
+        LAVA_DHIDE_CHAPS,
+        LAVA_PARTYHAT,
+        INFERNAL_CAPE,
+
+        //Bryopyhta
+        BRYOPHYTAS_ESSENCE,
+
+        //Sarachnis
+        JAR_OF_EYES,
+        SARACHNIS_CUDGEL,
+
+        //The nightmare
+        INQUISITORS_MACE,
+        INQUISITORS_GREAT_HELM,
+        INQUISITORS_HAUBERK,
+        INQUISITORS_PLATESKIRT,
+        NIGHTMARE_STAFF,
+        VOLATILE_ORB,
+        HARMONISED_ORB,
+        ELDRITCH_ORB,
+        JAR_OF_DREAMS,
+
+        //Corrupted Nechryarch
+        CORRUPTED_BOOTS,
+
+        //Corrupted Hunleff
+        CRYSTAL_HELM,
+        CRYSTAL_BODY,
+        CRYSTAL_LEGS,
+        CORRUPTED_RANGER_GAUNTLETS,
+        CORRUPTING_STONE
     );
 
     public static void tryBroadcastDrop(Player player, Npc npc, Item item) {
