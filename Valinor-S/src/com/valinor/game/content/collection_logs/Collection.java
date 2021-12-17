@@ -80,7 +80,7 @@ public enum Collection {
 
     DEMONIC_GORILLA(AttributeKey.DEMONIC_GORILLAS_KILLED, LogType.BOSSES, "Demonic Gorilla", new int[]{NpcIdentifiers.DEMONIC_GORILLA, NpcIdentifiers.DEMONIC_GORILLA_7145, NpcIdentifiers.DEMONIC_GORILLA_7146, NpcIdentifiers.DEMONIC_GORILLA_7147, NpcIdentifiers.DEMONIC_GORILLA_7148, NpcIdentifiers.DEMONIC_GORILLA_7149}, AttributeKey.DEMONIC_GORILLA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(DRAGON_JAVELIN), new Item(LIGHT_BALLISTA), new Item(HEAVY_BALLISTA), new Item(NECKLACE_OF_ANGUISH), new Item(TORMENTED_BRACELET), new Item(RING_OF_SUFFERING), new Item(AMULET_OF_TORTURE)),
+        new Item(DRAGON_JAVELIN), new Item(ZENYTE_SHARD), new Item(BALLISTA_LIMBS), new Item(BALLISTA_SPRING), new Item(LIGHT_FRAME), new Item(HEAVY_FRAME), new Item(MONKEY_TAIL)),
 
     GENERAL_GRAARDOR(AttributeKey.GENERAL_GRAARDOR_KILLED, LogType.BOSSES, "General Graardor", new int[]{NpcIdentifiers.GENERAL_GRAARDOR}, AttributeKey.GENERAL_GRAARDOR_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2), new Item(BANDOS_GODSWORD_ORNAMENT_KIT, 1)},
         //Drops

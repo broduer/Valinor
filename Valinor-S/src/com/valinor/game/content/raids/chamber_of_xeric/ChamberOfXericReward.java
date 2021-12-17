@@ -103,7 +103,8 @@ public class ChamberOfXericReward {
             new LootItem(13652, 1,3), // dragon claws
             new LootItem(21003, 1,2), // elder maul
             new LootItem(21043, 1, 2), // kodai insignia
-            new LootItem(20997, 1, 2) // twisted bow
+            new LootItem(20997, 1, 2), // twisted bow
+            new LootItem(22386, 1, 1) // Metamorphic dust
         );
 
     private static final LootTable regularTable = new LootTable()
