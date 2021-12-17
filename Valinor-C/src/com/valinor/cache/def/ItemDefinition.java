@@ -632,13 +632,6 @@ public final class ItemDefinition {
                 model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-        if (recolorFrom != null && recolorTo != null) {
-            if (retextureFrom != null && retextureTo != null) {
-                for (int index = 0; index < recolorFrom.length; index++) {
-                    model.color_to_texture(model, retextureFrom[index], retextureTo[index], false);
-                }
-            }
-        }
         if (modelCustomColor > 0) {
             model.completelyRecolor(modelCustomColor);
         }
@@ -686,14 +679,6 @@ public final class ItemDefinition {
         if (retextureFrom != null) {
             for (int index = 0; index < retextureFrom.length; index++) {
                 widget_model.retexture(retextureFrom[index], retextureTo[index]);
-            }
-        }
-        
-        if (recolorFrom != null && recolorTo != null) {
-            if (retextureFrom != null && retextureTo != null) {
-                for (int index = 0; index < recolorFrom.length; index++) {
-                    widget_model.color_to_texture(widget_model, retextureFrom[index], retextureTo[index], false);
-                }
             }
         }
 
@@ -767,14 +752,6 @@ public final class ItemDefinition {
                 equipped_model.retexture(retextureFrom[index], retextureTo[index]);
             }
         }
-
-        if (recolorFrom != null && recolorTo != null) {
-            if (retextureFrom != null && retextureTo != null) {
-                for (int index = 0; index < recolorFrom.length; index++) {
-                    equipped_model.color_to_texture(equipped_model, retextureFrom[index], retextureTo[index], true);
-                }
-            }
-        }
         if (modelCustomColor > 0) {
             equipped_model.completelyRecolor(modelCustomColor);
         }
@@ -846,14 +823,6 @@ public final class ItemDefinition {
         if (retextureFrom != null) {
             for (int index = 0; index < retextureFrom.length; index++) {
                 dialogue_model.retexture(retextureFrom[index], retextureTo[index]);
-            }
-        }
-
-        if (recolorFrom != null && recolorTo != null) {
-            if (retextureFrom != null && retextureTo != null) {
-                for (int index = 0; index < recolorFrom.length; index++) {
-                    dialogue_model.color_to_texture(dialogue_model, retextureFrom[index], retextureTo[index], false);
-                }
             }
         }
         return dialogue_model;
