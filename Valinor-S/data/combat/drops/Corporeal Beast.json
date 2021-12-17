@@ -1,5 +1,7 @@
 {
 	"npcs": [ 319 ],
+	"petItem": 12816,
+	"petRarity": 2500,
 	"tables": [
 		{
 			"name": "Equipment",

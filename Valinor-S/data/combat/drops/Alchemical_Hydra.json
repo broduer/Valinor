@@ -1,5 +1,7 @@
 {
     "npcs": [ 8615, 8616, 8617, 8618, 8619, 8620, 8621, 8622 ],
+  "petItem": 22746,
+  "petRarity": 1500,
     "guaranteed": [
       { "id": 22786, "min": 2, "max": 2 }   //Hydra bones
     ],
