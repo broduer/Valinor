@@ -106,7 +106,9 @@ public class CrystalKey extends Interaction {
     }
 
     private Item generateReward() {
-        if(World.getWorld().rollDie(5,1)) {
+        if(World.getWorld().rollDie(50,1)) {
+            return Utils.randomElement(RARE);
+        } else if(World.getWorld().rollDie(5,1)) {
             return Utils.randomElement(UNCOMMON);
         } else {
             return Utils.randomElement(COMMON);
@@ -145,5 +147,11 @@ public class CrystalKey extends Interaction {
         new Item(SUPERIOR_DRAGON_BONES+1, 5 + World.getWorld().random(10)),
         new Item(DAGANNOTH_BONES+1, 20 + World.getWorld().random(20)),
         new Item(SUPER_COMBAT_POTION4+1, 10));
+
+    private final List<Item> RARE = Arrays.asList(
+        new Item(NEW_CRYSTAL_BOW, 1),
+        new Item(NEW_CRYSTAL_SHIELD, 1),
+        new Item(NEW_CRYSTAL_HALBERD_FULL, 1)
+    );
 
 }

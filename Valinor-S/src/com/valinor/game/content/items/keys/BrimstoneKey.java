@@ -156,6 +156,7 @@ public class BrimstoneKey extends Interaction {
         new Item(SUPER_COMBAT_POTION4+1, 20 + World.getWorld().random(25)));
 
     private final List<Item> RARE = Arrays.asList(
+        new Item(DRAGON_HASTA, 1),
         new Item(HYDRAS_HEART, 1),
         new Item(HYDRAS_FANG, 1),
         new Item(HYDRAS_EYE, 1),

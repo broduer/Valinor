@@ -4,6 +4,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
 
 import java.util.ArrayList;
@@ -67,6 +68,8 @@ public class CollectionLog {
                 //Passed all checks claim the reward
                 player.putAttrib(logToCheck.getRewardClaimedKey(), true);
                 player.inventory().addOrBank(logToCheck.getReward());
+                //Always give a collection key
+                player.inventory().addOrBank(new Item(CustomItemIdentifiers.COLLECTION_KEY));
                 player.message(Color.PURPLE.wrap("You have collected the reward for completing " + Color.BLUE.wrap(logToCheck.getName()) + " " + Color.PURPLE.wrap("collection log.")));
                 StringBuilder items = new StringBuilder();
                 Arrays.stream(logToCheck.getReward()).forEach(item -> items.append(Utils.insertCommasToNumber(String.valueOf(item.getAmount()))).append(" ").append(item.unnote().name()).append(" (id ").append(item.getId()).append("), "));

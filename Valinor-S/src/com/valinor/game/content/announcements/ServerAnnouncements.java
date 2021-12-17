@@ -43,6 +43,7 @@ public class ServerAnnouncements {
         BLUDGEON_CLAW,
         BLUDGEON_SPINE,
         JAR_OF_MIASMA,
+        UNSIRED,
 
         //Ancient Wyvern, Long-tailed Wyvern, Spitting Wyvern, Taloned Wyvern
         WYVERN_VISAGE,

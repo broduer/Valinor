@@ -22,7 +22,6 @@ import static com.valinor.util.CustomItemIdentifiers.NIFFLER;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T;
 import static com.valinor.util.NpcIdentifiers.THE_NIGHTMARE_9430;
 
 /**
@@ -179,7 +178,7 @@ public enum Collection {
 
     BRUTAL_LAVA_DRAGON(AttributeKey.BRUTAL_LAVA_DRAGONS_KILLED, LogType.BOSSES, "Brutal Lava Dragon", new int[]{BRUTAL_LAVA_DRAGON_FLYING}, AttributeKey.BRUTAL_LAVA_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(BABY_LAVA_DRAGON), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT)),
+        new Item(BABY_LAVA_DRAGON), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT), new Item(INFERNAL_CAPE)),
 
     CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1)},
         //Drops
@@ -202,7 +201,7 @@ public enum Collection {
 
     KERBEROS(AttributeKey.KERBEROS_KILLED, LogType.BOSSES, "Kerberos", new int[]{CustomNpcIdentifiers.KERBEROS}, AttributeKey.KERBEROS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,1), new Item(CustomItemIdentifiers.MYSTERY_CHEST,1), new Item(SAELDOR_SHARD, 500)},
         //Drops
-        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(DARK_ARMADYL_CHAINSKIRT)
+        new Item(CustomItemIdentifiers.KERBEROS_PET), new Item(ETERNAL_CRYSTAL), new Item(PEGASIAN_CRYSTAL), new Item(PRIMORDIAL_CRYSTAL), new Item(JAR_OF_SOULS), new Item(SMOULDERING_STONE), new Item(DARK_ARMADYL_CHAINSKIRT)
     ),
 
     SKORPIOS(AttributeKey.SKORPIOS_KILLED, LogType.BOSSES, "Skorpios", new int[]{CustomNpcIdentifiers.SKORPIOS}, AttributeKey.SKORPIOS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS,1), new Item(SAELDOR_SHARD, 250)},
@@ -230,7 +229,7 @@ public enum Collection {
         new Item(VESTAS_SPEAR), new Item(VESTAS_LONGSWORD), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(MORRIGANS_JAVELIN), new Item(MORRIGANS_THROWING_AXE), new Item(VIGGORAS_CHAINMACE), new Item(CRAWS_BOW), new Item(THAMMARONS_SCEPTRE), new Item(AMULET_OF_AVARICE), new Item(BRACELET_OF_ETHEREUM_UNCHARGED), new Item(ANCIENT_RELIC), new Item(ANCIENT_EFFIGY), new Item(ANCIENT_MEDALLION), new Item(ItemIdentifiers.ANCIENT_STATUETTE), new Item(ANCIENT_TOTEM), new Item(ANCIENT_EMBLEM), new Item(REVENANT_CAVE_TELEPORT), new Item(REVENANT_ETHER)
     ),
 
-    ANCIENT_REVENANTS(AttributeKey.ANCIENT_REVENANTS_KILLED, LogType.OTHER, "Ancient Revenants", new int[]{ANCIENT_REVENANT_DARK_BEAST, ANCIENT_REVENANT_ORK, ANCIENT_REVENANT_CYCLOPS, ANCIENT_REVENANT_DRAGON, ANCIENT_REVENANT_KNIGHT}, AttributeKey.ANCIENT_REVENANTS_LOG_CLAIMED, new Item[]{new Item(VIGGORAS_CHAINMACE_C), new Item(ANCIENT_VESTAS_LONGSWORD), new Item(ANCIENT_STATIUSS_WARHAMMER), new Item(LARRANS_KEY,20)},
+    ANCIENT_REVENANTS(AttributeKey.ANCIENT_REVENANTS_KILLED, LogType.OTHER, "Ancient Revenants", new int[]{ANCIENT_REVENANT_DARK_BEAST, ANCIENT_REVENANT_ORK, ANCIENT_REVENANT_CYCLOPS, ANCIENT_REVENANT_DRAGON, ANCIENT_REVENANT_KNIGHT}, AttributeKey.ANCIENT_REVENANTS_LOG_CLAIMED, new Item[]{new Item(VIGGORAS_CHAINMACE_C), new Item(ANCIENT_VESTAS_LONGSWORD), new Item(ANCIENT_STATIUSS_WARHAMMER), new Item(ItemIdentifiers.LARRANS_KEY,20)},
         //Drops
         new Item(VESTAS_SPEAR), new Item(VESTAS_LONGSWORD), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(MORRIGANS_JAVELIN), new Item(MORRIGANS_THROWING_AXE), new Item(VIGGORAS_CHAINMACE), new Item(CRAWS_BOW), new Item(THAMMARONS_SCEPTRE), new Item(AMULET_OF_AVARICE), new Item(DARK_ANCIENT_EMBLEM), new Item(DARK_ANCIENT_RELIC), new Item(DARK_ANCIENT_EFFIGY), new Item(DARK_ANCIENT_MEDALLION), new Item(DARK_ANCIENT_STATUETTE), new Item(DARK_ANCIENT_TOTEM), new Item(DARK_ANCIENT_EMBLEM), new Item(ANCIENT_VESTAS_LONGSWORD), new Item(ANCIENT_STATIUSS_WARHAMMER)
     ),
@@ -282,10 +281,36 @@ public enum Collection {
             NpcIdentifiers.TALONED_WYVERN, NpcIdentifiers.SPITTING_WYVERN, NpcIdentifiers.LONGTAILED_WYVERN, NpcIdentifiers.ANCIENT_WYVERN, NpcIdentifiers.KING_BLACK_DRAGON, NpcIdentifiers.KING_BLACK_DRAGON_6502, NpcIdentifiers.BLACK_DRAGON, NpcIdentifiers.BLACK_DRAGON_253, NpcIdentifiers.BLACK_DRAGON_254, NpcIdentifiers.BLACK_DRAGON_255, NpcIdentifiers.BLACK_DRAGON_256, NpcIdentifiers.BLACK_DRAGON_257, NpcIdentifiers.BLACK_DRAGON_258, NpcIdentifiers.BLACK_DRAGON_259, NpcIdentifiers.BLACK_DRAGON_7861, NpcIdentifiers.BLACK_DRAGON_7862, NpcIdentifiers.BLACK_DRAGON_7863, NpcIdentifiers.BLACK_DRAGON_8084, NpcIdentifiers.BLACK_DRAGON_8085, NpcIdentifiers.BRUTAL_BLACK_DRAGON, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8092, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8092,
             NpcIdentifiers.VORKATH_8061, NpcIdentifiers.ADAMANT_DRAGON, NpcIdentifiers.ADAMANT_DRAGON_8090, NpcIdentifiers.RUNE_DRAGON, NpcIdentifiers.RUNE_DRAGON_8031, NpcIdentifiers.RUNE_DRAGON_8091, NpcIdentifiers.LAVA_DRAGON, NpcIdentifiers.MITHRIL_DRAGON, NpcIdentifiers.MITHRIL_DRAGON_8088, NpcIdentifiers.MITHRIL_DRAGON_8089, NpcIdentifiers.SKELETAL_WYVERN_466, NpcIdentifiers.SKELETAL_WYVERN_467, NpcIdentifiers.SKELETAL_WYVERN_468, NpcIdentifiers.SPIRITUAL_MAGE, NpcIdentifiers.SPIRITUAL_MAGE_2244, NpcIdentifiers.SPIRITUAL_MAGE_3161, NpcIdentifiers.SPIRITUAL_MAGE_3168,
             NpcIdentifiers.KRAKEN, NpcIdentifiers.DARK_BEAST, NpcIdentifiers.DARK_BEAST_7250, NpcIdentifiers.NIGHT_BEAST, NpcIdentifiers.SMOKE_DEVIL, NpcIdentifiers.SMOKE_DEVIL_6639, NpcIdentifiers.SMOKE_DEVIL_6655, NpcIdentifiers.SMOKE_DEVIL_8482, NpcIdentifiers.SMOKE_DEVIL_8483, NpcIdentifiers.NUCLEAR_SMOKE_DEVIL, NpcIdentifiers.THERMONUCLEAR_SMOKE_DEVIL, NpcIdentifiers.KALPHITE_QUEEN_6500, NpcIdentifiers.KALPHITE_QUEEN_6501, NpcIdentifiers.WYRM, NpcIdentifiers.WYRM_8611, NpcIdentifiers.DRAKE_8612, NpcIdentifiers.DRAKE_8613, NpcIdentifiers.HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA_8616, NpcIdentifiers.ALCHEMICAL_HYDRA_8617, NpcIdentifiers.ALCHEMICAL_HYDRA_8618, NpcIdentifiers.ALCHEMICAL_HYDRA_8619, NpcIdentifiers.ALCHEMICAL_HYDRA_8620, NpcIdentifiers.ALCHEMICAL_HYDRA_8621, NpcIdentifiers.ALCHEMICAL_HYDRA_8622, NpcIdentifiers.ALCHEMICAL_HYDRA_8634,
-            NpcIdentifiers.BASILISK_KNIGHT, NpcIdentifiers.BASILISK_SENTINEL}, AttributeKey.SLAYER_LOG_CLAIMED, new Item[]{new Item(SLAYER_KEY, 100), new Item(CustomItemIdentifiers.MYSTERY_CHEST,2), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX,5)},
+            NpcIdentifiers.BASILISK_KNIGHT, NpcIdentifiers.BASILISK_SENTINEL}, AttributeKey.SLAYER_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SLAYER_KEY, 100), new Item(CustomItemIdentifiers.MYSTERY_CHEST,2), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX,5)},
         //Drops
         new Item(CRAWLING_HAND_7975), new Item(COCKATRICE_HEAD), new Item(BASILISK_HEAD), new Item(KURASK_HEAD), new Item(ABYSSAL_HEAD), new Item(IMBUED_HEART), new Item(ETERNAL_GEM), new Item(DUST_BATTLESTAFF), new Item(MIST_BATTLESTAFF), new Item(ABYSSAL_WHIP), new Item(GRANITE_MAUL_24225), new Item(LEAFBLADED_SWORD), new Item(LEAFBLADED_BATTLEAXE), new Item(BLACK_MASK), new Item(GRANITE_LONGSWORD), new Item(WYVERN_VISAGE), new Item(DRACONIC_VISAGE),
-        new Item(DRAGON_BOOTS), new Item(ABYSSAL_DAGGER), new Item(TRIDENT_OF_THE_SEAS), new Item(KRAKEN_TENTACLE), new Item(DARK_BOW), new Item(OCCULT_NECKLACE), new Item(DRAGON_CHAINBODY_3140), new Item(DRAGON_THROWNAXE), new Item(DRAGON_HARPOON), new Item(DRAGON_SWORD), new Item(DRAGON_KNIFE), new Item(DRAKES_TOOTH), new Item(DRAKES_CLAW), new Item(HYDRA_TAIL), new Item(HYDRAS_FANG), new Item(HYDRAS_EYE), new Item(HYDRAS_HEART), new Item(BASILISK_JAW)),
+        new Item(DRAGON_BOOTS), new Item(ABYSSAL_DAGGER), new Item(TRIDENT_OF_THE_SEAS), new Item(KRAKEN_TENTACLE), new Item(DARK_BOW), new Item(OCCULT_NECKLACE), new Item(DRAGON_CHAINBODY_3140), new Item(DRAGON_THROWNAXE), new Item(DRAGON_HARPOON), new Item(DRAGON_SWORD), new Item(DRAGON_KNIFE), new Item(DRAKES_TOOTH), new Item(DRAKES_CLAW), new Item(HYDRA_TAIL), new Item(HYDRAS_FANG), new Item(HYDRAS_EYE), new Item(HYDRAS_HEART), new Item(BASILISK_JAW),
+        new Item(MOSSY_KEY), new Item(DRAGON_METAL_SLICE), new Item(DRAGON_METAL_LUMP), new Item(DRAGON_LIMBS)),
+
+    //Keys
+    LARRANS_KEY(AttributeKey.LARRANS_KEYS_OPENED, LogType.KEYS, "Larrans key", new int[]{ItemIdentifiers.LARRANS_KEY}, AttributeKey.LARRANS_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.LARRANS_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+        //Drops
+        new Item(DAGONHAI_HAT), new Item(DAGONHAI_ROBE_TOP), new Item(DAGONHAI_ROBE_BOTTOM), new Item(VESTAS_LONGSWORD), new Item(VESTAS_SPEAR), new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(ZURIELS_STAFF),
+        new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM), new Item(MORRIGANS_JAVELIN), new Item(MORRIGANS_THROWING_AXE), new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS)),
+
+    CRYSTAL_KEY(AttributeKey.CRYSTAL_KEYS_OPENED, LogType.KEYS, "Crystal key", new int[]{ItemIdentifiers.CRYSTAL_KEY}, AttributeKey.CRYSTAL_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.CRYSTAL_KEY, 5), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+        //Drops
+        new Item(NEW_CRYSTAL_BOW), new Item(NEW_CRYSTAL_SHIELD), new Item(NEW_CRYSTAL_HALBERD_FULL)),
+
+    SLAYER_KEY(AttributeKey.SLAYER_KEYS_OPENED, LogType.KEYS, "Slayer key", new int[]{CustomItemIdentifiers.SLAYER_KEY}, AttributeKey.SLAYER_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SLAYER_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+        //Drops
+        new Item(DRAGONSTONE_FULL_HELM), new Item(DRAGONSTONE_PLATEBODY), new Item(DRAGONSTONE_PLATELEGS), new Item(DRAGONSTONE_GAUNTLETS), new Item(DRAGONSTONE_BOOTS), new Item(UNCUT_ONYX)),
+
+    BRIMSTONE_KEY(AttributeKey.BRIMSTONE_KEYS_OPENED, LogType.KEYS, "Brimstone key", new int[]{ItemIdentifiers.BRIMSTONE_KEY}, AttributeKey.BRIMSTONE_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.BRIMSTONE_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+        //Drops
+        new Item(MYSTIC_HAT_DUSK), new Item(MYSTIC_ROBE_TOP_DUSK), new Item(MYSTIC_ROBE_BOTTOM_DUSK), new Item(MYSTIC_BOOTS_DUSK), new Item(MYSTIC_GLOVES_DUSK), new Item(DRAGON_HASTA), new Item(HYDRAS_HEART), new Item(HYDRAS_FANG), new Item(HYDRAS_EYE), new Item(BOOTS_OF_BRIMSTONE)),
+
+    COLLECTION_KEY(AttributeKey.COLLECTION_LOG_KEYS_OPENED, LogType.KEYS, "Collection key", new int[]{CustomItemIdentifiers.COLLECTION_KEY}, AttributeKey.COLLECTION_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.COLLECTION_KEY, 1), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+        //Drops
+        new Item(SARADOMIN_HILT), new Item(ARMADYL_HILT), new Item(ARMADYL_HELMET), new Item(ARMADYL_CHESTPLATE), new Item(ARMADYL_CHAINSKIRT), new Item(BANDOS_BOOTS), new Item(BANDOS_TASSETS), new Item(BANDOS_CHESTPLATE), new Item(BLADE_OF_SAELDOR)),
+
 
     ;
 

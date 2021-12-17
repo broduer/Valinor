@@ -27,10 +27,6 @@ public class LarransChest extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (obj.getId() == 34832) {
-            if (player.skills().combatLevel() < 126 && !player.ironMode().ironman()) {
-                player.message(Color.RED.wrap("You need to be at least level 126 to open this chest."));
-                return true;
-            }
             if (player.inventory().contains(LARRANS_KEY)) {
                 open(player);
             }
@@ -42,7 +38,10 @@ public class LarransChest extends Interaction {
     private boolean rareDrop = false;
 
     private Item reward() {
-        if (Utils.rollDie(50, 1)) {
+        if (World.getWorld().rollDie(100, 1)) {
+            rareDrop = true;
+            return Utils.randomElement(EXTREME_RARE);
+        } else if (World.getWorld().rollDie(50, 1)) {
             rareDrop = true;
             return Utils.randomElement(RARE);
         } else {
@@ -81,6 +80,26 @@ public class LarransChest extends Interaction {
         new Item(DAGONHAI_HAT, 1),
         new Item(DAGONHAI_ROBE_TOP, 1),
         new Item(DAGONHAI_ROBE_BOTTOM, 1)
+    );
+
+    private static final List<Item> EXTREME_RARE = Arrays.asList(
+        new Item(VESTAS_LONGSWORD, 1),
+        new Item(VESTAS_SPEAR, 1),
+        new Item(VESTAS_CHAINBODY, 1),
+        new Item(VESTAS_PLATESKIRT, 1),
+        new Item(STATIUSS_WARHAMMER, 1),
+        new Item(STATIUSS_FULL_HELM, 1),
+        new Item(STATIUSS_PLATEBODY, 1),
+        new Item(STATIUSS_PLATELEGS, 1),
+        new Item(ZURIELS_STAFF, 1),
+        new Item(ZURIELS_HOOD, 1),
+        new Item(ZURIELS_ROBE_TOP, 1),
+        new Item(ZURIELS_ROBE_BOTTOM, 1),
+        new Item(MORRIGANS_JAVELIN, 100),
+        new Item(MORRIGANS_THROWING_AXE, 100),
+        new Item(MORRIGANS_COIF, 1),
+        new Item(MORRIGANS_LEATHER_BODY, 1),
+        new Item(MORRIGANS_LEATHER_CHAPS, 1)
     );
 
     private void open(Player player) {
