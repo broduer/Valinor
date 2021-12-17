@@ -12223,13 +12223,6 @@ public class Client extends GameApplet {
                         sprite.drawSpriteWithOutline(child_x_in_bounds, child_y_in_bounds, 0xffffff, true);
                     } else {
                         if (sprite != null) {
-                            switch (child.id) {
-                                case 13035:
-                                case 1164:
-                                case 30064:
-                                    sprite = spriteCache.get(1298);
-                                    break;
-                            }
 
                             boolean drawTransparent = child.drawsTransparent;
                             boolean highDetail = child.hightDetail;

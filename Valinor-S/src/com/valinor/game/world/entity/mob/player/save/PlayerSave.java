@@ -280,6 +280,7 @@ public class PlayerSave {
                 }
                 if (details.clan != null)
                     player.setClanChat(details.clan);
+                player.putAttrib(ACCEPT_AID, details.acceptAid);
                 if (details.yellColour != null) {
                     if (details.yellColour.equals("0")) {
                         player.putAttrib(YELL_COLOUR, "006601");
@@ -683,6 +684,7 @@ public class PlayerSave {
         private final String clan;
 
         //Settings
+        private final boolean acceptAid;
         private final String yellColour;
         private final boolean dontAskAgainEldritch;
         private final boolean dontAskAgainVolatile;
@@ -1084,6 +1086,7 @@ public class PlayerSave {
             friends = player.getRelations().getFriendList();
             ignores = player.getRelations().getIgnoreList();
             clan = player.getClanChat();
+            acceptAid = Player.getAttribBooleanOr(player, ACCEPT_AID, false);
             yellColour = Player.getAttribStringOr(player, YELL_COLOUR, "000000");
             dontAskAgainEldritch = Player.getAttribBooleanOr(player, ELDRITCH_NIGHTMARE_STAFF_QUESTION, false);
             dontAskAgainVolatile = Player.getAttribBooleanOr(player, VOLATILE_NIGHTMARE_STAFF_QUESTION, false);

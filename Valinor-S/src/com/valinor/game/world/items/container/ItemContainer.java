@@ -598,6 +598,19 @@ public class ItemContainer implements Iterable<Item> {
         return (int) Math.min(Integer.MAX_VALUE, count);
     }
 
+    public ArrayList<Item> collectItems(int... ids) {
+        ArrayList<Item> list = new ArrayList<>(ids.length);
+        for(Item item : items) {
+            if(item == null)
+                continue;
+            for(int id : ids) {
+                if(item.getId() == id)
+                    list.add(item);
+            }
+        }
+        return list.isEmpty() ? null : list;
+    }
+
     public int count(Integer... matches) {
         List<Integer> list = Arrays.asList(matches);
 

@@ -126,18 +126,6 @@ public class Buttons {
                 player.getBank().open();
                 break;
 
-            case 19210:
-            case 21741:
-                if (player.getDueling().inDuel()) {
-                    return;
-                }
-                Tile tile = GameServer.properties().defaultTile;
-                if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                    Teleports.basicTeleport(player, tile);
-                    player.message("You have been teleported to home.");
-                }
-                break;
-
             case TRADE_ACCEPT_BUTTON_1:
             case TRADE_ACCEPT_BUTTON_2:
                 player.getTrading().acceptTrade();

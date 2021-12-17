@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    ACCEPT_AID("accept_aid", AttribType.BOOLEAN),
+
     /**
      * Determines if Tztok Jad has spawned his healers or not
      */

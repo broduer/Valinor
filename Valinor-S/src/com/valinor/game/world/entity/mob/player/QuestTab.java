@@ -235,7 +235,7 @@ public final class QuestTab {
                 return true;
             }
 
-            case 73133, 1164, 13035, 30064 -> {
+            case 73133 -> {
                 DailyTaskManager.openEasyList(player);
                 return true;
             }

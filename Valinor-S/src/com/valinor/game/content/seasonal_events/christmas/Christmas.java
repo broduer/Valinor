@@ -183,8 +183,10 @@ public class Christmas extends Interaction {
             player.animate(5067);
             player.getInventory().add(SNOWBALL, 3);
         }).repeatingTask(5, r -> {
-            if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL)))
+            if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL))) {
+                r.stop();
                 return;
+            }
 
             player.animate(5067);
             player.getInventory().add(SNOWBALL, 3);

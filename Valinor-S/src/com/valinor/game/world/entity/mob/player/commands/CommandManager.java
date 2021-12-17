@@ -289,7 +289,6 @@ public class CommandManager {
             if (c.canUse(player)) {
                 try {
                     c.execute(player, command, parts);
-                    System.out.println(command);
                     List<String> ignore = Arrays.asList("teleto", "mute", "jail", "ipmute", "unipmute", "unmute", "ban", "macban", "ipban",
                         "unban", "teletome", "modzone", "unjail", "kick", "ipban", "unipban", "macban", "unmacban", "claimvote", "redeem", "item", "giveitem");
                     if(ignore.stream().noneMatch(command::startsWith)) {

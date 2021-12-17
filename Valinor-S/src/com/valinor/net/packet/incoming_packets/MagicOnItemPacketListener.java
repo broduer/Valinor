@@ -8,6 +8,8 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.magic.MagicClickSpells;
 import com.valinor.game.world.entity.combat.magic.Spell;
+import com.valinor.game.world.entity.combat.magic.lunar.BakePie;
+import com.valinor.game.world.entity.combat.magic.lunar.SuperglassMake;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -80,6 +82,20 @@ public class MagicOnItemPacketListener implements PacketListener {
                 final int itemValue = item.definition(World.getWorld()).highAlchValue();
 
                 switch (magicSpell2) {
+                    case SUPERGLASS_MAKE:
+                        if (player.getSpellbook() != MagicSpellbook.LUNAR)
+                            return;
+                        if (!spell.canCast(player, null, spell.deleteRunes()))
+                            return;
+                        SuperglassMake.makeGlass(player);
+                        break;
+                    case BAKE_PIE:
+                        if (player.getSpellbook() != MagicSpellbook.LUNAR)
+                            return;
+                        if (!spell.canCast(player, null, spell.deleteRunes()))
+                            return;
+                        BakePie.bake(player);
+                        break;
                     case SUPERHEAT_ITEM:
                         if (player.getSpellbook() != MagicSpellbook.NORMAL)
                             return;
@@ -116,7 +132,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         player.skills().addXp(Skills.MAGIC, spell.baseExperience(), true);
                         player.skills().addXp(Skills.SMITHING, data.get().getXpReward(), true);
                         player.getClickDelay().reset();
-                        return;
+                        break;
                     case ENCHANT_SAPPHIRE:
                     case ENCHANT_DIAMOND:
                     case ENCHANT_EMERALD:
@@ -130,7 +146,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                             }
                             JewelleryEnchantment.enchantItem(player, itemId);
                         }
-                        return;
+                        break;
                     case LOW_ALCHEMY:
                         if (!item.rawtradable() || item.getId() == BLOOD_MONEY || item.getId() == COINS_995) {
                             player.message("You can't alch that item.");
@@ -155,7 +171,7 @@ public class MagicOnItemPacketListener implements PacketListener {
 
                         player.inventory().remove(item, slot);
                         player.inventory().add(COINS_995, coinAmountToGive);
-                        return;
+                        break;
                     case HIGH_ALCHEMY:
                         if (!item.rawtradable() || item.getId() == BLOOD_MONEY || item.getId() == COINS_995) {
                             player.message("You can't alch that item.");
@@ -181,7 +197,7 @@ public class MagicOnItemPacketListener implements PacketListener {
 
                         player.inventory().remove(item, slot);
                         player.inventory().add(COINS_995, coinAmountToGive);
-                        return;
+                        break;
                 }
             }
         }
