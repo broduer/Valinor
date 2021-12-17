@@ -388,8 +388,8 @@ public class Skills {
         if (change > 0 && levels[skill] > xpLevel(skill) + change) { // Cap at realLvl (99) + boost (20) = 118
             levels[skill] = xpLevel(skill) + change;
         }
-        if (levels[skill] < 0) { // Min 0
-            levels[skill] = 0;
+        if (levels[skill] < 1) { // Min 1
+            levels[skill] = 1;
         }
         update(skill);
     }

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2429,
+    "y": 10385,
+    "z": 0,
+    "walkRange": 2
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2424,
+    "y": 10380,
+    "z": 0,
+    "walkRange": 2
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2431,
+    "y": 10390,
+    "z": 0,
+    "walkRange": 2
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2412,
+    "y": 10390,
+    "z": 0,
+    "walkRange": 2
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2416,
+    "y": 10398,
+    "z": 0,
+    "walkRange": 2
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 2416,
+    "y": 10388,
+    "z": 0,
+    "walkRange": 2
+  }
+]

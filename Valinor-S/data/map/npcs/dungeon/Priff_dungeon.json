@@ -1,0 +1,442 @@
+[
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3163,
+    "y": 12455,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3167,
+    "y": 12451,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3171,
+    "y": 12447,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3179,
+    "y": 12446,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3186,
+    "y": 12447,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3191,
+    "y": 12450,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3191,
+    "y": 12469,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3185,
+    "y": 12472,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3179,
+    "y": 12471,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3174,
+    "y": 12474,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+
+  {
+    "name": "Dark Beast",
+    "id": 4005,
+    "x": 3159,
+    "y": 12431,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Dark Beast",
+    "id": 4005,
+    "x": 3161,
+    "y": 12425,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Dark Beast",
+    "id": 4005,
+    "x": 3166,
+    "y": 12423,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Dark Beast",
+    "id": 4005,
+    "x": 3165,
+    "y": 12428,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Dark Beast",
+    "id": 4005,
+    "x": 3168,
+    "y": 12432,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3227,
+    "y": 12423,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3222,
+    "y": 12426,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3218,
+    "y": 12421,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3222,
+    "y": 12418,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3230,
+    "y": 12419,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3240,
+    "y": 12441,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3236,
+    "y": 12436,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3241,
+    "y": 12437,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3228,
+    "y": 12462,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3225,
+    "y": 12458,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3230,
+    "y": 12454,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Nechryael",
+    "id": 8,
+    "x": 3234,
+    "y": 12455,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Abyssal Demon",
+    "id": 7241,
+    "x": 3253,
+    "y": 12468,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Abyssal Demon",
+    "id": 7241,
+    "x": 3249,
+    "y": 12462,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Abyssal Demon",
+    "id": 7241,
+    "x": 3255,
+    "y": 12459,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Abyssal Demon",
+    "id": 7241,
+    "x": 3254,
+    "y": 12464,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Abyssal Demon",
+    "id": 7241,
+    "x": 3245,
+    "y": 12460,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3256,
+    "y": 12419,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3253,
+    "y": 12423,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3249,
+    "y": 12421,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3245,
+    "y": 12417,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Bloodveld",
+    "id": 484,
+    "x": 3251,
+    "y": 12417,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3248,
+    "y": 12382,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3254,
+    "y": 12380,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3256,
+    "y": 12371,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3258,
+    "y": 12379,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3253,
+    "y": 12389,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3230,
+    "y": 12360,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3226,
+    "y": 12367,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3218,
+    "y": 12371,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3210,
+    "y": 12371,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3208,
+    "y": 12365,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
+    "name": "Kurask",
+    "id": 411,
+    "x": 3220,
+    "y": 12367,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  }
+]

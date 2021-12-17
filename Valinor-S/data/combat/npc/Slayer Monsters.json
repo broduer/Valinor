@@ -4012,5 +4012,39 @@
       "death": 6115,
       "block": 6116
     }
+  },
+  {
+    // Basilisk Knight
+    "ids": [
+      9293
+    ],
+    "maxhit": 50,
+    "slayerxp": 300,
+    "slayerlvl": 60,
+    "attackspeed": 4,
+    "aggressive": false,
+    "stats": {
+      "attack": 186,
+      "strength": 186,
+      "hitpoints": 300,
+      "defence": 186,
+      "magic": 186,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 30,
+      "crushdefence": 0,
+      "magicdefence": 30,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 8499,
+      "block": -1,
+      "death": 8501
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.BasiliskKnight"
+    }
   }
 ]
