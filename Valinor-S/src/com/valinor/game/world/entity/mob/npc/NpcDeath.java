@@ -527,16 +527,6 @@ public class NpcDeath {
                     case CORRUPTED_NECHRYARCH -> {
                         DailyTaskManager.increase(DailyTasks.CORRUPTED_NECHRYARCH, killer);
                     }
-
-                }
-
-                //If our player killed a Tz-Kek, spawn it's babies!
-                for (int fightCaveMonsters : List.of(3116, 3118, 3120, 3121, 3123, 3125, 3127, 3128)) {
-                    if (npc.id() == fightCaveMonsters) {
-                        if (killer.isPlayer()) {
-                            FightCavesMinigame.handleMonsterDeath(npc, killer);
-                        }
-                    }
                 }
 
                 if (isBarrowsBro) {

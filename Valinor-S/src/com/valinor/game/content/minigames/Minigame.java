@@ -22,7 +22,7 @@ public abstract class Minigame extends Interaction {
      * @param player
      *            the player
      */
-    public abstract void start(Player player);
+    public abstract void start(Player player, boolean login);
 
     /**
      * Gets the task

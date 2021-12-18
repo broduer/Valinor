@@ -43,12 +43,12 @@ public class TzTokJad extends Npc {
             }
 
             IntStream.range(0, 4 - healers.size()).forEach(i -> {
-                Tile tile = FightCavesMinigame.COORDINATES[random(FightCavesMinigame.COORDINATES.length)].transform(0, 0, tile().getLevel());
-                YtHurKot monster = new YtHurKot(NpcIdentifiers.YTHURKOT, tile, this);
+                Tile tile = FightCavesMinigame.getInstance().nextSpawnPosition();
+                YtHurKot monster = new YtHurKot(NpcIdentifiers.YTHURKOT, new Tile(tile.x, tile.y, player.tile().level), this);
 
                 healers.add(monster);
                 FightCavesMinigame minigame = (FightCavesMinigame) player.getMinigame();
-                minigame.addNpc(monster);
+                minigame.getNpcSet().add(monster);
                 monster.walkRadius(100);
                 monster.respawns(false);
                 monster.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);

@@ -182,7 +182,8 @@ public class Death {
                 player.getDueling().onDeath();
             } else if(player.getMinigame() instanceof FightCavesMinigame) {
                 player.setMinigame(null);//Clear minigame when we die too
-                player.teleport(World.getWorld().randomTileAround(new Tile(2438, 5170), 1));
+                player.teleport(FightCavesMinigame.EXIT);
+                player.message("You have been defeated!");
             } else if (player.<Integer>getAttribOr(AttributeKey.JAILED, 0) == 1) {
                 player.message("You've died, but you cannot run from your jail sentence!");
                 player.teleport(player.tile());

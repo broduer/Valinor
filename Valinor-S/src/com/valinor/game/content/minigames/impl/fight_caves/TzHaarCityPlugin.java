@@ -15,6 +15,26 @@ import com.valinor.util.NpcIdentifiers;
  */
 public class TzHaarCityPlugin extends Interaction {
 
+    private int getStartingWave(Player player) {
+        if (player.getMemberRights().isZenyteMemberOrGreater(player)) {
+            return 55;
+        } else if (player.getMemberRights().isOnyxMemberOrGreater(player)) {
+            return 50;
+        } else if (player.getMemberRights().isDragonstoneMemberOrGreater(player)) {
+            return 45;
+        } else if (player.getMemberRights().isDiamondMemberOrGreater(player)) {
+            return 40;
+        } else if (player.getMemberRights().isRubyMemberOrGreater(player)) {
+            return 30;
+        } else if (player.getMemberRights().isEmeraldMemberOrGreater(player)) {
+            return 25;
+        } else if (player.getMemberRights().isSapphireMemberOrGreater(player)) {
+            return 20;
+        } else {
+            return 1;
+        }
+    }
+
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         int npcId = npc.id();
@@ -40,7 +60,7 @@ public class TzHaarCityPlugin extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int type) {
         if (object.getId() == 11833) { //Fight caves entrance
-            MinigameManager.playMinigame(player, new FightCavesMinigame(1));
+            MinigameManager.playMinigame(player, new FightCavesMinigame(getStartingWave(player)));
             return true;
         } else if (object.getId() == 11834) { //Fight caves leaving
             if(player.getMinigame() != null) {

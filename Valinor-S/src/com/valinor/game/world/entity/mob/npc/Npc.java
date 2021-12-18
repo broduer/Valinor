@@ -1,8 +1,5 @@
 package com.valinor.game.world.entity.mob.npc;
 
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
-import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Wyrm;
 import com.google.common.base.Stopwatch;
 import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
@@ -18,7 +15,9 @@ import com.valinor.game.world.entity.NodeType;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorilla;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
 import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
@@ -27,6 +26,7 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.saradomin.Z
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.zamorak.Kril;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Hydra;
+import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Wyrm;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Direction;
 import com.valinor.game.world.entity.mob.Flag;
@@ -58,8 +58,7 @@ import java.util.stream.Stream;
 
 import static com.valinor.util.CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON;
 import static com.valinor.util.ItemIdentifiers.BRACELET_OF_ETHEREUM;
-import static com.valinor.util.NpcIdentifiers.GIANT_MOLE;
-import static org.apache.logging.log4j.util.Unbox.box;
+import static com.valinor.util.NpcIdentifiers.*;
 
 /**
  * Represents a non-playable mob, which players can interact with.
@@ -512,6 +511,9 @@ public class Npc extends Mob {
         }
         Stopwatch stopwatch1 = Stopwatch.createStarted();
 
+        List<Integer> fight_cave_monsters = Arrays.asList(TZKIH_3116, TZKEK_3118, TZKEK_3119, TZKEK_3120, TOKXIL_3121, KETZEK, KETZEK_3126, YTMEJKOT, YTMEJKOT_3124, TZTOKJAD, YTHURKOT);
+        var fightCaveMonster = fight_cave_monsters.stream().anyMatch(n -> n == this.id);
+        inViewport = fightCaveMonster;//If fight cave monster ignore always agro
         //Aggression
         if (hp() > 0 && ((wrTarget == null || wrTarget.get() == null)) && !locked() && inViewport && !getTimers().has(TimerKey.COMBAT_ATTACK)) {
             boolean wilderness = (WildernessArea.wildernessLevel(tile()) >= 1) && !WildernessArea.inside_rouges_castle(tile()) && !Chinchompas.hunterNpc(id);
@@ -550,10 +552,10 @@ public class Npc extends Mob {
                     if (lastTime > 5000L || lastAttacker == this ||
                         (lastAttacker != null && (lastAttacker.dead() || lastAttacker.finished()))
                         || p.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 1) {
-                        if (def.roomBoss || CombatFactory.canReach(this, CombatFactory.RANGED_COMBAT, p)) {
+                        if (def.roomBoss || fightCaveMonster || CombatFactory.canReach(this, CombatFactory.RANGED_COMBAT, p)) {
                             if (CombatFactory.canAttack(this, finalMethod, p)) {
                                 getCombat().attack(p);
-                                //String ss = this.def.getName()+" v "+p.getUsername()+" : "+ CombatFactory.canAttack(this, method, p);
+                                //String ss = this.def.name+" v "+p.getUsername()+" : "+ CombatFactory.canAttack(this, method, p);
                                 //System.out.println(ss);
                                 //this.forceChat(ss);
                                 break;

@@ -164,7 +164,7 @@ public class MinigameManager {
         // Sets minigame
         player.setMinigame(minigame);
         // Starts the minigame
-        minigame.start(player);
+        minigame.start(player,false);
         // Starts the task
         if (minigame.getTask(player) != null) {
             TaskManager.submit(minigame.getTask(player));

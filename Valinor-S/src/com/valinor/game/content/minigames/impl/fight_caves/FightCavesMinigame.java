@@ -16,15 +16,15 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
-import com.valinor.util.Color;
-import com.valinor.util.NpcIdentifiers;
+import com.valinor.game.world.route.routes.DumbRoute;
+import com.valinor.util.chainedwork.Chain;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.valinor.util.ItemIdentifiers.FIRE_CAPE;
+import static com.valinor.util.ItemIdentifiers.TOKKUL;
 import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.Utils.randomElement;
 
 /**
  * Handles the fight caves minigames
@@ -38,154 +38,148 @@ public class FightCavesMinigame extends Minigame {
      */
     private int wave;
 
-    /**
-     * The amount to kill
-     */
-    private int toKill;
+    private int waveRotationOffset, spawnRotationOffset;
 
-    /**
-     * The total killed
-     */
-    private int totalKilled;
+    private boolean killedJad;
 
     /**
      * Represents the fight cave minigame
      *
-     * @param wave   the wave
+     * @param wave the wave
      */
     public FightCavesMinigame(int wave) {
         this.wave = wave;
-        this.toKill = 0;
-        this.totalKilled = 0;
     }
 
-    public final static Tile JAD_SPAWN = new Tile(2401,5084);
+    private static final FightCavesMinigame SINGLETON = new FightCavesMinigame(1);
 
-    /**
-     * The spawn coordinates
-     */
-    public final static Tile[] COORDINATES = {new Tile(2416, 5083), new Tile(2403, 5070),
-        new Tile(2380, 5071), new Tile(2379, 5105), new Tile(2400, 5084)};
+    public static FightCavesMinigame getInstance() {
+        return SINGLETON;
+    }
+
+    public static final Tile EXIT = new Tile(2439, 5172);
+
+    private static final Tile C = new Tile(2400, 5088);
+
+    private static final Tile S = new Tile(2400, 5070);
+
+    private static final Tile NW = new Tile(2382, 5106);
+
+    private static final Tile SW = new Tile(2380, 5071);
+
+    private static final Tile SE = new Tile(2418, 5082);
+
+    private static final Tile[] ROTATIONS = {SE, SW, C, NW, SW, SE, S, NW, C, SE, SW, S, NW, C, S}; //https://vgy.me/ItO1Db.png
 
     /**
      * The possition outside the cave
      */
     public static final Tile OUTSIDE = new Tile(2438, 5169, 0);
 
-    /**
-     * All the 63 waves
-     */
-    private static final int[][] WAVES = {{TZKIH_3116}, {TZKIH_3116, TZKIH_3116}, {TZKEK_3119},
-        {TZKEK_3119, TZKIH_3116}, {TZKEK_3119, TZKIH_3116, TZKIH_3116}, {TZKEK_3119, TZKEK_3119},
-        {TOKXIL_3121}, {TOKXIL_3121, TZKIH_3116}, {TOKXIL_3121, TZKIH_3116, TZKIH_3116},
-        {TOKXIL_3121, TZKEK_3119}, {TOKXIL_3121, TZKEK_3119, TZKIH_3116},
-        {TOKXIL_3121, TZKEK_3119, TZKIH_3116, TZKIH_3116}, {TOKXIL_3121, TZKEK_3119, TZKEK_3119},
-        {TOKXIL_3121, TOKXIL_3121}, {YTMEJKOT_3124}, {YTMEJKOT_3124, TZKIH_3116},
-        {YTMEJKOT_3124, TZKIH_3116, TZKIH_3116}, {YTMEJKOT_3124, TZKEK_3119},
-        {YTMEJKOT_3124, TZKEK_3119, TZKIH_3116}, {YTMEJKOT_3124, TZKEK_3119, TZKIH_3116, TZKIH_3116},
-        {YTMEJKOT_3124, TZKEK_3119, TZKEK_3119}, {YTMEJKOT_3124, TOKXIL_3121},
-        {YTMEJKOT_3124, TOKXIL_3121, TZKIH_3116}, {YTMEJKOT_3124, TOKXIL_3121, TZKIH_3116, TZKIH_3116},
-        {YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119}, {YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKIH_3116},
-        {YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKIH_3116, TZKIH_3116},
-        {YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKEK_3119}, {YTMEJKOT_3124, TOKXIL_3121, TOKXIL_3121},
-        {YTMEJKOT_3124, YTMEJKOT_3124}, {KETZEK}, {KETZEK, TZKIH_3116},
-        {KETZEK, TZKIH_3116, TZKIH_3116}, {KETZEK, TZKEK_3119}, {KETZEK, TZKEK_3119, TZKIH_3116},
-        {KETZEK, TZKEK_3119, TZKIH_3116, TZKIH_3116}, {KETZEK, TZKEK_3119, TZKEK_3119},
-        {KETZEK, TOKXIL_3121}, {KETZEK, TOKXIL_3121, TZKIH_3116},
-        {KETZEK, TOKXIL_3121, TZKIH_3116, TZKIH_3116}, {KETZEK, TOKXIL_3121, TZKEK_3119},
-        {KETZEK, TOKXIL_3121, TZKEK_3119, TZKIH_3116},
-        {KETZEK, TOKXIL_3121, TZKEK_3119, TZKIH_3116, TZKIH_3116},
-        {KETZEK, TOKXIL_3121, TZKEK_3119, TZKEK_3119}, {KETZEK, TOKXIL_3121, TOKXIL_3121},
-        {KETZEK, YTMEJKOT_3124}, {KETZEK, YTMEJKOT_3124, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TZKIH_3116, TZKIH_3116}, {KETZEK, YTMEJKOT_3124, TZKEK_3119},
-        {KETZEK, YTMEJKOT_3124, TZKEK_3119, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TZKEK_3119, TZKIH_3116, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TZKEK_3119, TZKEK_3119}, {KETZEK, YTMEJKOT_3124, TOKXIL_3121},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKIH_3116, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKIH_3116, TZKIH_3116},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TZKEK_3119, TZKEK_3119},
-        {KETZEK, YTMEJKOT_3124, TOKXIL_3121, TOKXIL_3121}, {KETZEK, YTMEJKOT_3124, YTMEJKOT_3124},
-        {KETZEK, KETZEK_3126}, {TZTOKJAD}};
-
-    /* The highest reachable wave. */
-    private static final int MAX_WAVE = WAVES.length;
-
     private final Set<Npc> npcSet = new HashSet<>();
 
-    public static void handleMonsterDeath(Npc npc, Player player) {
-        //If the NPC was a TZ Kek, spawn its babies!
-        if (npc.id() == TZKEK) {
-            for (int i = 0; i < 2; i++) {
-                var baby = new Npc(TZKEK_2192, npc.tile());
-                baby.respawns(false);
-                baby.walkRadius(200);
-                baby.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);
-                World.getWorld().registerNpc(baby);
-                baby.getCombat().attack(player);
-            }
-        }
+    public Set<Npc> getNpcSet() {
+        return npcSet;
+    }
 
-        //If the NPC was Tztok Jad, end the minigame!
-        if (npc.id() == TZTOKJAD) {
-            npc.graphic(453);
-        }
+    public Tile nextSpawnPosition() {
+        Tile pos = ROTATIONS[spawnRotationOffset];
+        if(++spawnRotationOffset >= ROTATIONS.length)
+            spawnRotationOffset = 0;
+        return pos;
     }
 
     /**
      * Spawns a wave
-     *
-     * @param wave the wave
      */
-    private void spawnWave(Player player, int wave) {
-        Tile lastPos = new Tile(COORDINATES[0].x, COORDINATES[0].y, player.tile().getLevel());
-
-        for (int i = 0; i < WAVES[wave - 1].length; i++) {
-            Tile pos = randomElement(COORDINATES);
-
-            if (pos.equals(lastPos.x, lastPos.y)) {
-                for (int n = 100; n >= 1; n--) {
-                    pos = wave == 63 ? JAD_SPAWN : randomElement(COORDINATES);
-                    if (!pos.equals(lastPos.x, lastPos.y)) break;
-                }
-            }
-
-            lastPos = pos = new Tile(pos.x, pos.y, player.tile().getLevel());
-            Npc monster = Npc.of(WAVES[wave - 1][i], pos);
-            npcSet.add(monster);
-            monster.walkRadius(200);
-            monster.respawns(false);
-            monster.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 100);
-            player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE, wave);
-            World.getWorld().registerNpc(monster);
-
-            //player.message(npc.tile().toString()+" vs "+player.tile().toString());
-            toKill++;
-            Task.runOnceTask(3, t -> {
-                monster.setEntityInteraction(player);
-                monster.face(player.tile());
-                monster.getCombat().attack(player);
-            });
+    private void beginWave(Player player) {
+        int wave = this.wave;
+        player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE, wave);
+        player.message("<col=ef1020>Wave: " + wave);
+        /*
+         * "Unique" waves
+         */
+        if (wave == 63) {
+            spawn(player, TZTOKJAD);
+            player.message("<col=ef1020>Final Challenge!");
+            DialogueManager.npcChat(player, Expression.FURIOUS, TZHAARMEJJAL, "Look out, here comes TzTok-Jad!");
+            return;
         }
-        player.message(Color.RED.tag()+"Wave: " + wave);
+        if (wave == 62) {
+            spawn(player, KETZEK);
+            spawn(player, KETZEK + 1);
+            return;
+        }
+        if (wave == 30) {
+            spawn(player, YTMEJKOT);
+            spawn(player, YTMEJKOT + 1);
+            return;
+        }
+        if (wave == 14) {
+            spawn(player, TOKXIL_3121);
+            spawn(player, TOKXIL_3121 + 1);
+            return;
+        }
+        /*
+         * "Basic" waves
+         */
+        while (wave >= 31) {
+            wave -= 31;
+            spawn(player, KETZEK);
+        }
+        while (wave >= 15) {
+            wave -= 15;
+            spawn(player, YTMEJKOT);
+        }
+        while (wave >= 7) {
+            wave -= 7;
+            spawn(player, TOKXIL_3121);
+        }
+        while (wave >= 3) {
+            wave -= 3;
+            spawn(player, TZKEK_3118);
+        }
+        while (wave > 0) {
+            wave--;
+            spawn(player, TZKIH_3116);
+        }
     }
 
-    public void addNpc(Npc npc) {
+    private void spawn(Player player, int id) {
+        Tile position = nextSpawnPosition();
+        spawn(player, id, position.getX(), position.getY(), player.tile().getLevel());
+    }
+
+    private void spawn(Player player, int id, int x, int y, int level) {
+        Npc npc = new Npc(id, new Tile(x,y, level)).spawn(false);
+        DumbRoute.route(npc, player.tile().x, player.tile().y);
+        npc.getCombat().setTarget(player);
+        npc.getCombat().attack(player);
+        npc.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN,100);
         npcSet.add(npc);
     }
 
     @Override
-    public void start(Player player) {
+    public void start(Player player, boolean login) {
         int level = player.getIndex() * 4;
-        player.teleport(new Tile(2401,5089, level));
+        int x, y;
+        if (login) {
+            x = C.getX();
+            y = C.getY();
+        } else {
+            x = 2412;
+            y = 5115;
+        }
+        player.teleport(new Tile(x, y, level));
         player.getPacketSender().sendString(4536, "Wave: " + wave);
         player.getInterfaceManager().openWalkable(4535);
+        waveRotationOffset = spawnRotationOffset = World.getWorld().get(ROTATIONS.length - 1);
 
-        Npc npc = Npc.of(NpcIdentifiers.TZHAARMEJJAL, new Tile(3222, 3222, 0));
-        DialogueManager.npcChat(player, Expression.CALM_TALK, npc.id(),"Good luck, Jal-Yt!");
-        spawnWave(player, wave);
+        if (!login)
+            DumbRoute.route(player, C.getX(), C.getY());
+        DialogueManager.npcChat(player, Expression.FURIOUS, TZHAARMEJJAL, "You're on your own now JalYt, prepare to fight for your life!");
+
+        Chain.bound(null).runFn(login ? 10 : 5, () -> beginWave(player));
     }
 
     @Override
@@ -196,18 +190,29 @@ public class FightCavesMinigame extends Minigame {
     @Override
     public void end(Player player) {
         player.teleport(OUTSIDE);
-        if (wave == (MAX_WAVE + 1)) {
-
-            Npc npc = Npc.of(NpcIdentifiers.TZHAARMEJJAL, new Tile(3222, 3222, 0));
-            DialogueManager.npcChat(player, Expression.CALM_TALK, npc.id(), "You even defeated TzTok-Jad, I am most impressed!", "Please accept this gift.", "Give cape back to me if you not want it.");
-
-            player.inventory().addOrDrop(new Item(FIRE_CAPE, 1));
-            AchievementsManager.activate(player, Achievements.FIGHT_CAVES_I, 1);
-            AchievementsManager.activate(player, Achievements.FIGHT_CAVES_II, 1);
-            player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE,1);
+        int lastWave = wave - 1;
+        if(lastWave == 0) {
+            DialogueManager.npcChat(player, Expression.SLIGHTLY_SAD, TZHAARMEJJAL, "Well I suppose you tried... better luck next time.");
+        } else {
+            int tokkul = 2 + ((lastWave - 50) * (3 + lastWave));
+            if(!killedJad) {
+                if(!player.getMemberRights().isSapphireMemberOrGreater(player)) {
+                    DialogueManager.npcChat(player, Expression.HAPPY, TZHAARMEJJAL, "Well done in the cave, here take TokKul as reward.");
+                    player.inventory().addOrDrop(new Item(TOKKUL, tokkul));
+                } else {
+                    DialogueManager.npcChat(player, Expression.SLIGHTLY_SAD, TZHAARMEJJAL, "Well I suppose you tried... better luck next time.");
+                }
+            } else {
+                DialogueManager.npcChat(player, Expression.FURIOUS, TZHAARMEJJAL, "You have defeated TzTok-Jad, I am most impressed! Please accept this gift.", "Give cape back to me if you not want it.");
+                player.inventory().addOrDrop(new Item(FIRE_CAPE, 1));
+                player.inventory().addOrDrop(new Item(TOKKUL, tokkul + 4000));
+                AchievementsManager.activate(player, Achievements.FIGHT_CAVES_I, 1);
+                AchievementsManager.activate(player, Achievements.FIGHT_CAVES_II, 1);
+            }
         }
         npcSet.forEach(npc -> World.getWorld().unregisterNpc(npc));
         player.setMinigame(null);
+        player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE, 1);
     }
 
     @Override
@@ -215,29 +220,32 @@ public class FightCavesMinigame extends Minigame {
         if (entity.isNpc()) {
             Npc npc = entity.getAsNpc();
             npcSet.remove(npc);
-            if (entity.getAsNpc().id() == NpcIdentifiers.YTHURKOT) {
+            if(player.dead()) {
+                //nothing should happen cause you failed
                 return;
             }
-            toKill--;
-            totalKilled++;
-            if (toKill == 0) {
-                wave++;
-                toKill = 0;
-                if (wave == (MAX_WAVE + 1)) {
-                    end(player);
-                } else {
-                    spawnWave(player, wave);
-                }
+            if(npc.id() == TZTOKJAD) {
+                player.animate(862);
+                npc.graphic(453);
+                killedJad = true;
+                Chain.bound(null).runFn(5, () -> {
+                    player.teleport(EXIT);
+                });
+                return;
             }
-            // Tz-Kek splits itself in two smaller NPCs on death
-            if (npc.id() == TZKEK_3119) {
-                Npc kek = Npc.of(TZKEK_3120, entity.tile().copy());
-                Npc kek2 = Npc.of(TZKEK_3120, entity.tile().copy());
-                npcSet.add(kek);
-                npcSet.add(kek2);
-
-                World.getWorld().registerNpc(kek);
-                World.getWorld().registerNpc(kek2);
+            if(npc.id() == TZKEK_3118) {
+                int x = npc.getAbsX();
+                int y = npc.getAbsY();
+                spawn(player, TZKEK_3120, World.getWorld().get(x, x + 1), World.getWorld().get(y, y + 1), player.tile().getLevel());
+                spawn(player, TZKEK_3120, World.getWorld().get(x, x + 1), World.getWorld().get(y, y + 1), player.tile().getLevel());
+                return;
+            }
+            if (npcSet.isEmpty()) {
+                wave++;
+                if (++waveRotationOffset >= ROTATIONS.length)
+                    waveRotationOffset = 0;
+                spawnRotationOffset = waveRotationOffset;
+                beginWave(player);
             }
         }
     }
