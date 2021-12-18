@@ -39,7 +39,7 @@ public final class SpotAnimation {
             graphic++;
         }
 
-        //dump(1969);
+        //dump(1994);
 
         if (buffer.pos != buffer.payload.length) {
             System.out.println("gfx mismatch! " + buffer.pos + " " + buffer.payload.length);

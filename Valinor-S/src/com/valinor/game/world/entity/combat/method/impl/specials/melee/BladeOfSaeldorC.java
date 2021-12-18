@@ -8,7 +8,7 @@ import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.mob.player.Skills;
 
-public class BladeOfSaeldorT extends CommonCombatMethod {
+public class BladeOfSaeldorC extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
@@ -25,7 +25,7 @@ public class BladeOfSaeldorT extends CommonCombatMethod {
             mob.message("Your hitpoints and prayer points have been healed by: "+heal+"!");
         }
 
-        CombatSpecial.drain(mob, CombatSpecial.BLADE_OF_SAELDOR_T.getDrainAmount());
+        CombatSpecial.drain(mob, CombatSpecial.BLADE_OF_SAELDOR_C.getDrainAmount());
     }
 
     @Override

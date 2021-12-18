@@ -1,4 +1,164 @@
 {
+  "25926": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25928": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25930": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25932": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25934": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25936": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
+  "25898": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25900": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25902": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25904": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25906": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25908": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25910": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25912": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25914": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "25870": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25872": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25874": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25876": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25878": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25880": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25882": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25862": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25865": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25867": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25884": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25886": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25888": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25890": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25892": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25894": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
+  "25896": {
+    "slot": 3,
+    "type": 5,
+    "showBeard": false
+  },
   "35": {
     "slot": 3,
     "type": 0,
@@ -7854,11 +8014,6 @@
     "type": 8,
     "showBeard": false
   },
-  "25902": {
-    "slot": 0,
-    "type": 8,
-    "showBeard": false
-  },
   "24444": {
     "slot": 0,
     "type": 8,
@@ -12215,6 +12370,11 @@
     "showBeard": false
   },
   "25916": {
+    "slot": 3,
+    "type": 0,
+    "showBeard": false
+  },
+  "25918": {
     "slot": 3,
     "type": 0,
     "showBeard": false
@@ -16891,11 +17051,6 @@
   },
   "22328": {
     "slot": 7,
-    "type": 0,
-    "showBeard": false
-  },
-  "25936": {
-    "slot": 5,
     "type": 0,
     "showBeard": false
   },

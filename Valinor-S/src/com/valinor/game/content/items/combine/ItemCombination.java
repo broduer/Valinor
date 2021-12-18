@@ -372,12 +372,12 @@ public class ItemCombination extends Interaction {
             protected void select(int option) {
                 if(isPhase(0)) {
                     if(option == 1) {
-                        if(!player.inventory().containsAll(new Item(SAELDOR_SHARD,1000), new Item(BLADE_OF_SAELDOR))) {
-                            player.message("You did not have enough shards, a thousand is required to upgrade your blade.");
+                        if(!player.inventory().containsAll(new Item(SAELDOR_SHARD,500), new Item(BLADE_OF_SAELDOR))) {
+                            player.message("You did not have enough shards, 500 shards are required to upgrade your blade.");
                             stop();
                             return;
                         }
-                        player.inventory().remove(new Item(SAELDOR_SHARD,1000), true);
+                        player.inventory().remove(new Item(SAELDOR_SHARD,500), true);
                         player.inventory().remove(new Item(BLADE_OF_SAELDOR), true);
                         player.inventory().add(new Item(BLADE_OF_SAELDOR_C_25882), true);
                         player.message("You carefully attach the shards to the blade to give it an additional boost.");

@@ -24,8 +24,7 @@ import com.valinor.util.timers.TimerKey;
 import java.util.Arrays;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.BLADE_OF_SAELDOR_C_25882;
-import static com.valinor.util.ItemIdentifiers.TOXIC_STAFF_UNCHARGED;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * Holds constants that hold data for all of the special attacks that can be
@@ -60,7 +59,7 @@ public enum CombatSpecial {
     ANCIENT_WARRIOR_AXE(new int[]{CustomItemIdentifiers.ANCIENT_WARRIOR_AXE, ANCIENT_WARRIOR_AXE_C}, 50, 1.50, 3.0, new AncientWarriorAxe(), WeaponType.AXE),
     ANCIENT_WARRIOR_MAUL(new int[]{CustomItemIdentifiers.ANCIENT_WARRIOR_MAUL, ANCIENT_WARRIOR_MAUL_C}, 50, 1.25, 1.50, new AncientWarriorMaul(), WeaponType.HAMMER),
 
-    BLADE_OF_SAELDOR_T(new int[]{BLADE_OF_SAELDOR_C_25882}, 50, 1.20, 2.00, new BladeOfSaeldorT(), WeaponType.LONGSWORD),
+    BLADE_OF_SAELDOR_C(new int[]{BLADE_OF_SAELDOR_C_25870, BLADE_OF_SAELDOR_C_25872, BLADE_OF_SAELDOR_C_25874, BLADE_OF_SAELDOR_C_25876, BLADE_OF_SAELDOR_C_25878, BLADE_OF_SAELDOR_C_25880, BLADE_OF_SAELDOR_C_25882}, 50, 1.20, 2.00, new BladeOfSaeldorC(), WeaponType.LONGSWORD),
 
     DRAGON_BATTLEAXE(new int[]{ItemIdentifiers.DRAGON_BATTLEAXE}, 100, 1.0, 1.0, null, WeaponType.AXE),
     BARRELCHEST_ANCHOR(new int[]{ItemIdentifiers.BARRELCHEST_ANCHOR}, 50, 1.0, 1.10, new BarrelchestAnchor(), WeaponType.MACE),

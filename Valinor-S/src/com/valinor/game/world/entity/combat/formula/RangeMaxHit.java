@@ -163,9 +163,9 @@ public class RangeMaxHit {
             D *= 1.10;
         }
 
-        var isBowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || weapon >= 25884 && weapon <= 25896;
+        var bowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || (weapon >= BOW_OF_FAERDHINEN_C_25884 && weapon <= BOW_OF_FAERDHINEN_C_25896);
         var isCrystalBow = weapon == NEW_CRYSTAL_BOW;
-        var crystalArmourBoosted = isBowOfFaerdhinen || isCrystalBow;
+        var crystalArmourBoosted = bowOfFaerdhinen || isCrystalBow;
 
         if (player.getEquipment().hasAt(EquipSlot.HEAD, CRYSTAL_HELM) && crystalArmourBoosted) {
             D *= 1.025;//2.5% damage boost
