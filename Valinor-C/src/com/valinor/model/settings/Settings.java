@@ -15,6 +15,9 @@ import java.util.Arrays;
  */
 public class Settings {
 
+    public static final boolean SOUNDS_ENABLED = false;
+    public static final boolean MUSIC_ENABLED = false;
+
     //Custom user settings
     public boolean status_bars = true;
     public boolean draw_fps = false;
@@ -65,13 +68,15 @@ public class Settings {
     public boolean roofs = true;
     public boolean orbs = true;
     public boolean sounds = false;
-    public int sound_state = sounds ? 2 : 0;
+    public int sound_state = 0;
     public boolean music = false;
+    public int music_state = 0;
 
     private String fileLine = "";
     public String location;
 
     public void toggleVarbits() {
+        Client.singleton.toggleConfig(168, music_state);
         Client.singleton.toggleConfig(169, sound_state);
         Client.singleton.toggleConfig(166, brightness);
         Client.singleton.toggleConfig(289, profanityFilter ? 1 : 0);
@@ -199,6 +204,7 @@ public class Settings {
             writeLine("counter_position", counter_position, bw);
             writeLine("counter_group", counter_group, bw);
             writeLine("sound_state", sound_state, bw);
+            writeLine("music_state", music_state, bw);
             writeLine("show_hit_predictor", show_hit_predictor, bw);
             writeLine("hidePrivateChat", hidePrivateChat, bw);
             writeLine("loginLogoutNotification", loginLogoutNotification, bw);
@@ -287,6 +293,8 @@ public class Settings {
                     counter_group = readBoolean();
                 } else if (contains("sound_state")) {
                     sound_state = readInt();
+                } else if (contains("music_state")) {
+                    music_state = readInt();
                 } else if (contains("show_hit_predictor")) {
                     show_hit_predictor = readBoolean();
                 } else if (contains("hidePrivateChat")) {
@@ -570,27 +578,84 @@ public class Settings {
                 Client.update_tab_producer = true;
                 return true;
 
+            case MUSIC_BUTTON_OFF:
+                Client.singleton.toggleConfig(168, 0);
+                music_state = 0;
+                return true;
+
+            case MUSIC_BUTTON_STATE_ONE:
+                if(!MUSIC_ENABLED) {
+                    Client.singleton.sendMessage("Music is currently disabled.", 0, "");
+                    return true;
+                }
+                Client.singleton.toggleConfig(168, 1);
+                music_state = 1;
+                return true;
+
+            case MUSIC_BUTTON_STATE_TWO:
+                if(!MUSIC_ENABLED) {
+                    Client.singleton.sendMessage("Music is currently disabled.", 0, "");
+                    return true;
+                }
+                Client.singleton.toggleConfig(168, 2);
+                music_state = 2;
+                return true;
+
+            case MUSIC_BUTTON_STATE_THREE:
+                if(!MUSIC_ENABLED) {
+                    Client.singleton.sendMessage("Music is currently disabled.", 0, "");
+                    return true;
+                }
+                Client.singleton.toggleConfig(168, 3);
+                music_state = 3;
+                return true;
+
+            case MUSIC_BUTTON_STATE_FOUR:
+                if(!MUSIC_ENABLED) {
+                    Client.singleton.sendMessage("Music is currently disabled.", 0, "");
+                    return true;
+                }
+                Client.singleton.toggleConfig(168, 4);
+                music_state = 4;
+                return true;
+
             case SOUND_BUTTON_OFF:
                 Client.singleton.toggleConfig(169, 0);
                 sound_state = 0;
                 return true;
 
             case SOUND_BUTTON_STATE_ONE:
+                if(!SOUNDS_ENABLED) {
+                    Client.singleton.sendMessage("Sounds are currently disabled.", 0, "");
+                    return true;
+                }
                 Client.singleton.toggleConfig(169, 1);
                 sound_state = 1;
                 return true;
 
             case SOUND_BUTTON_STATE_TWO:
+                if(!SOUNDS_ENABLED) {
+                    Client.singleton.sendMessage("Sounds are currently disabled.", 0, "");
+                    return true;
+                }
                 Client.singleton.toggleConfig(169, 2);
                 sound_state = 2;
                 return true;
 
             case SOUND_BUTTON_STATE_THREE:
+                if(!SOUNDS_ENABLED) {
+                    Client.singleton.sendMessage("Sounds are currently disabled.", 0, "");
+                    return true;
+                }
                 Client.singleton.toggleConfig(169, 3);
                 sound_state = 3;
                 return true;
 
             case SOUND_BUTTON_STATE_FOUR:
+                if(!SOUNDS_ENABLED) {
+                    Client.singleton.sendMessage("Sounds are currently disabled.", 0, "");
+                    return true;
+                }
                 Client.singleton.toggleConfig(169, 4);
                 sound_state = 4;
                 return true;
@@ -601,6 +666,11 @@ public class Settings {
         return false;
     }
 
+    public static final int MUSIC_BUTTON_OFF = 43533;
+    public static final int MUSIC_BUTTON_STATE_ONE = 43534;
+    public static final int MUSIC_BUTTON_STATE_TWO = 43535;
+    public static final int MUSIC_BUTTON_STATE_THREE = 43536;
+    public static final int MUSIC_BUTTON_STATE_FOUR = 43537;
     public static final int SOUND_BUTTON_OFF = 43538;
     public static final int SOUND_BUTTON_STATE_ONE = 43539;
     public static final int SOUND_BUTTON_STATE_TWO = 43540;

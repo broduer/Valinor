@@ -3118,7 +3118,7 @@ public class Client extends GameApplet {
 
         if (varpType == 3) {
             boolean previousPlayingMusic = setting.music;
-            System.out.println("music state: "+state);
+            //System.out.println("music state: "+state);
             if (state == 0) {
                 setting.music = false;
                 if (setting.music != previousPlayingMusic && !low_detail) {
@@ -3159,25 +3159,28 @@ public class Client extends GameApplet {
         }
 
         if (varpType == 4) {
-            SoundPlayer.setVolume(state);
             if (state == 0) {
                 setting.sounds = false;
             }
             if (state == 1) {
-                setting.sounds = true;
+                SoundPlayer.setVolume(state);
                 setWaveVolume(0);
+                setting.sounds = true;
             }
             if (state == 2) {
-                setting.sounds = true;
+                SoundPlayer.setVolume(state);
                 setWaveVolume(-400);
+                setting.sounds = true;
             }
             if (state == 3) {
-                setting.sounds = true;
+                SoundPlayer.setVolume(state);
                 setWaveVolume(-800);
+                setting.sounds = true;
             }
             if (state == 4) {
-                setting.sounds = true;
+                SoundPlayer.setVolume(state);
                 setWaveVolume(-1200);
+                setting.sounds = true;
             }
         }
 
@@ -4173,7 +4176,7 @@ public class Client extends GameApplet {
         frameValueH = 503;
         frameMode(ScreenMode.FIXED);
         resetInputFieldFocus();
-
+        setting.save();
         //Clear private messages
         resetSplitPrivateChatMessages();
         System.gc();
@@ -4859,7 +4862,7 @@ public class Client extends GameApplet {
                     Animation.load(resource.buffer, resource.ID);
                 }
                 if (resource.dataType == 2 && resource.ID == nextSong && resource.buffer != null) {
-                    saveMidi(fadeMusic, resource.buffer);
+                    //saveMidi(fadeMusic, resource.buffer);
                 }
 
                 if (resource.dataType == 3 && loading_phase == 1) {

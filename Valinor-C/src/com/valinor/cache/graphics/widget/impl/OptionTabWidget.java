@@ -68,13 +68,13 @@ public class OptionTabWidget extends Widget {
 
         slider(ZOOM_SLIDER, 0, 1100, 606, 615);
 
-        addConfigButton(BRIGHTNESS_STATE_ONE, 904, 397, 393, "Adjust Screen Brightness", 166, 1, OPTION_RESET_SETTING);
+        addConfigButton(BRIGHTNESS_STATE_ONE, 904, 397, 393, "Adjust Screen Brightness", 166, 1, OPTION_OK);
 
-        addConfigButton(BRIGHTNESS_STATE_TWO, 904, 398, 394, "Adjust Screen Brightness", 166, 2, OPTION_RESET_SETTING);
+        addConfigButton(BRIGHTNESS_STATE_TWO, 904, 398, 394, "Adjust Screen Brightness", 166, 2, OPTION_OK);
 
-        addConfigButton(BRIGHTNESS_STATE_THREE, 904, 399, 395, "Adjust Screen Brightness", 166, 3, OPTION_RESET_SETTING);
+        addConfigButton(BRIGHTNESS_STATE_THREE, 904, 399, 395, "Adjust Screen Brightness", 166, 3, OPTION_OK);
 
-        addConfigButton(BRIGHTNESS_STATE_FOUR, 904, 400, 396, "Adjust Screen Brightness", 166, 4, OPTION_RESET_SETTING);
+        addConfigButton(BRIGHTNESS_STATE_FOUR, 904, 400, 396, "Adjust Screen Brightness", 166, 4, OPTION_OK);
 
         addSettingsSprite(BRIGHTNESS_IMAGE, 617);
 
@@ -99,25 +99,25 @@ public class OptionTabWidget extends Widget {
 
     private static void audioSettings(Widget audio, AdvancedFont[] tda) {
         addSprite(43531, 635);
-        addConfigButton(43532, 904, 737, 732, "Adjust Music Volume", 168, 0, 5);
-        addConfigButton(43533, 904, 738, 733, "Adjust Music Volume", 168, 1, 5);
-        addConfigButton(43534, 904, 739, 734, "Adjust Music Volume", 168, 2, 5);
-        addConfigButton(43535, 904, 740, 735, "Adjust Music Volume", 168, 3, 5);
-        addConfigButton(43536, 904, 741, 736, "Adjust Music Volume", 168, 4, 5);
+        addConfigButton(43532, 904, 737, 732, "Adjust Music Volume", 168, 0, OPTION_OK);
+        addConfigButton(43533, 904, 738, 733, "Adjust Music Volume", 168, 1, OPTION_OK);
+        addConfigButton(43534, 904, 739, 734, "Adjust Music Volume", 168, 2, OPTION_OK);
+        addConfigButton(43535, 904, 740, 735, "Adjust Music Volume", 168, 3, OPTION_OK);
+        addConfigButton(43536, 904, 741, 736, "Adjust Music Volume", 168, 4, OPTION_OK);
 
         addSettingsSprite(43537, 631);
-        addConfigButton(43538, 904, 737, 732, "Adjust Sound Effect Volume", 169, 0, 5);
-        addConfigButton(43539, 904, 738, 733, "Adjust Sound Effect Volume", 169, 1, 5);
-        addConfigButton(43540, 904, 739, 734, "Adjust Sound Effect Volume", 169, 2, 5);
-        addConfigButton(43541, 904, 740, 735, "Adjust Sound Effect Volume", 169, 3, 5);
-        addConfigButton(43542, 904, 741, 736, "Adjust Sound Effect Volume", 169, 4, 5);
+        addConfigButton(43538, 904, 737, 732, "Adjust Sound Effect Volume", 169, 0, OPTION_OK);
+        addConfigButton(43539, 904, 738, 733, "Adjust Sound Effect Volume", 169, 1, OPTION_OK);
+        addConfigButton(43540, 904, 739, 734, "Adjust Sound Effect Volume", 169, 2, OPTION_OK);
+        addConfigButton(43541, 904, 740, 735, "Adjust Sound Effect Volume", 169, 3, OPTION_OK);
+        addConfigButton(43542, 904, 741, 736, "Adjust Sound Effect Volume", 169, 4, OPTION_OK);
 
         addSettingsSprite(43543, 632);
-        addConfigButton(43544, 904, 737, 732, "Adjust Area Sound Effect Volume", 780, 0, 5);
-        addConfigButton(43545, 904, 738, 733, "Adjust Area Sound Effect Volume", 780, 1, 5);
-        addConfigButton(43546, 904, 739, 734, "Adjust Area Sound Effect Volume", 780, 2, 5);
-        addConfigButton(43547, 904, 740, 735, "Adjust Area Sound Effect Volume", 780, 3, 5);
-        addConfigButton(43548, 904, 741, 736, "Adjust Area Sound Effect Volume", 780, 4, 5);
+        addConfigButton(43544, 904, 737, 732, "Adjust Area Sound Effect Volume", 780, 0, OPTION_OK);
+        addConfigButton(43545, 904, 738, 733, "Adjust Area Sound Effect Volume", 780, 1, OPTION_OK);
+        addConfigButton(43546, 904, 739, 734, "Adjust Area Sound Effect Volume", 780, 2, OPTION_OK);
+        addConfigButton(43547, 904, 740, 735, "Adjust Area Sound Effect Volume", 780, 3, OPTION_OK);
+        addConfigButton(43548, 904, 741, 736, "Adjust Area Sound Effect Volume", 780, 4, OPTION_OK);
 
         audio.totalChildren(19);
         int childNum = 0;
