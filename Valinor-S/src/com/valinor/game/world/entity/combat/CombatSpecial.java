@@ -35,7 +35,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 public enum CombatSpecial {
 
     //Other
-    DRAGON_PICKAXE(new int[]{ItemIdentifiers.DRAGON_PICKAXE, DRAGON_PICKAXE_12797, DRAGON_PICKAXE_OR_25376}, 100, 1.0, 1.0, null, WeaponType.PICKAXE),
+    PICKAXE(new int[]{ItemIdentifiers.DRAGON_PICKAXE, DRAGON_PICKAXE_12797, DRAGON_PICKAXE_OR_25376, INFERNAL_PICKAXE, CRYSTAL_PICKAXE, CRYSTAL_PICKAXE_23863}, 100, 1.0, 1.0, null, WeaponType.PICKAXE),
 
     //Range
     MAGIC_SHORTBOW(new int[]{ItemIdentifiers.MAGIC_SHORTBOW, ItemIdentifiers.MAGIC_SHORTBOW_I}, 55, 1.0, 1.2, new MagicShortbow(), WeaponType.BOW),
@@ -278,7 +278,11 @@ public enum CombatSpecial {
 
             if (weapon != null) {
                 switch (weapon.getId()) {
-                    case 22296 -> {
+                    case ItemIdentifiers.DRAGON_PICKAXE, DRAGON_PICKAXE_12797, DRAGON_PICKAXE_OR_25376, INFERNAL_PICKAXE, CRYSTAL_PICKAXE, CRYSTAL_PICKAXE_23863 -> {
+                        doDragonPickaxe(player, weapon.getId());
+                        return true;
+                    }
+                    case ItemIdentifiers.STAFF_OF_LIGHT -> {
                         doStaffOfTheDead(player, true);
                         return true;
                     }
@@ -307,6 +311,14 @@ public enum CombatSpecial {
             player.graphic(staffOfLight ? 1516 : 1228, 300, 0);
             player.getTimers().addOrSet(TimerKey.SOTD_DAMAGE_REDUCTION, 60);
             player.message("<col=3d5d2b>Spirits of deceased evildoers offer you their protection.");
+        }
+    }
+
+    private static void doDragonPickaxe(Player player, int weapon) {
+        if (CombatFactory.takeSpecialEnergy(player, 100)) {
+            player.forceChat("Smashing!");
+            player.skills().alterSkill(Skills.MINING, 3);
+            player.animate((weapon == 11920) ? 7138 : (weapon == CRYSTAL_PICKAXE_23863) ? 8329 : 3410);
         }
     }
 

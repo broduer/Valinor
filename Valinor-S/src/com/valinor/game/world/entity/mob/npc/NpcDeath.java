@@ -93,6 +93,8 @@ public class NpcDeath {
                 }
             }
 
+            respawnTimer = 5;
+
             npc.getMovementQueue().clear();
             npc.lockNoDamage();
 
@@ -648,12 +650,17 @@ public class NpcDeath {
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //Drop loot, but the first form of KQ, Runite golem and world bosses do not drop anything.
                     if (table != null && (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && npc.id() != THE_NIGHTMARE_9430)) {
-                        if(customDrops.stream().noneMatch(n -> n == npc.id())) {
+                        if(!customDrops.contains(npc.id())) {
                             //Always drops such as bones
                             ItemDrops.dropAlwaysItems(killer, npc);
 
                             //Roll for an actual drop of the table
                             ItemDrops.rollTheDropTable(killer, npc);
+                        } else {
+                            // Custom drop tables
+                            if(npc.combatInfo() != null) {
+                                npc.combatInfo().scripts.droptable_.reward(npc, killer);
+                            }
                         }
 
                         int roll = npc.def() != null && npc.def().combatlevel > 100 ? 100 : 200;

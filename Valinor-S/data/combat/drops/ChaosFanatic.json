@@ -3,6 +3,8 @@
   "npcs": [
 	6619
   ],
+  "petItem": 11995,
+  "petRarity": 500,
   "guaranteed": [
 	{
 	  "id": 532,

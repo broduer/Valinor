@@ -12,11 +12,13 @@
       "items": [
         {"id": 30125, "min": 1, "max": 1, "points": 100 }, //corrupt totem
         {"id": 989, "min": 1, "max": 1, "points": 45 }, //crystal key
-        {"id": 2944, "min": 1, "max": 1, "points": 4 },//key of drops
-        {"id": 23971, "min": 1, "max": 1, "points": 3 },//crystal helm
-        {"id": 23975, "min": 1, "max": 1, "points": 3 },//crystal body
-        {"id": 23979, "min": 1, "max": 1, "points": 3 },//crystal legs
-        {"id": 30048, "min": 1, "max": 1, "points": 2 },//corrupted ranger gauntlets
+        {"id": 2944, "min": 1, "max": 1, "points": 5 },//key of drops
+        {"id": 23971, "min": 1, "max": 1, "points": 4 },//crystal helm
+        {"id": 23975, "min": 1, "max": 1, "points": 4 },//crystal body
+        {"id": 23979, "min": 1, "max": 1, "points": 4 },//crystal legs
+        {"id": 30048, "min": 1, "max": 1, "points": 3 },//corrupted ranger gauntlets
+        {"id": 23995, "min": 1, "max": 1, "points": 2 },//Blade of saeldor
+        {"id": 25865, "min": 1, "max": 1, "points": 1 },//Bow of faerdhinen
         {"id": 8788, "min": 1, "max": 1, "points": 1 }//corrupting stone
       ]
     },

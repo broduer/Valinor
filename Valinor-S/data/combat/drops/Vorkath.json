@@ -1,5 +1,7 @@
 {
     "npcs": [ 8059, 8061 ],
+    "petItem": 21992,
+    "petRarity": 1500,
     "guaranteed": [
       { "id": 22124, "min": 2, "max": 2},   //Superior dragon bones
       { "id": 1751, "min": 2, "max": 2 }   //Blue dragonhide
