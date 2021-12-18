@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill;
 
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
@@ -11,6 +12,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.RequiredItem;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
+import com.valinor.util.Utils;
 
 import java.util.List;
 import java.util.Optional;
@@ -114,6 +116,11 @@ public class ItemCreationSkillable extends DefaultSkillable {
         filterRequiredItems(RequiredItem::isDelete).forEach(r -> {
             player.inventory().remove(r.getItem());
             if(r.getReplaceWith() != null) {
+                //When worn, 10% chance of smelting 2 of any bar at once when using the Edgeville furnace.
+                var doubleRoll = Utils.rollPercent((int) ItemSet.varrockDiaryArmour(player));
+                if(doubleRoll) {
+                    r.getReplaceWith().setAmount(2);
+                }
                 player.inventory().add(r.getReplaceWith());
             }
         });

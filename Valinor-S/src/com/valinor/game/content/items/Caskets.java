@@ -6,12 +6,11 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.CustomItemIdentifiers.BIG_CHEST;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * Might as well add this just in case we ever go eco, took 2min to convert.
- * Can easy use for PvP too :).
+ * Can easily use for PvP too :).
  *
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * april 20, 2020
@@ -29,10 +28,6 @@ public class Caskets extends Interaction {
                 openCasket(player, CASKET_7956);
                 return true;
             }
-            if (item.getId() == BIG_CHEST) {
-                openChest(player);
-                return true;
-            }
         }
         return false;
     }
@@ -43,41 +38,26 @@ public class Caskets extends Interaction {
 
         var amount = 0;
         if (id == CASKET) {
-            amount = World.getWorld().random(500, 2_500);
+            amount = World.getWorld().random(50_000, 250_000);
             var blood_reaper = player.hasPetOut("Blood Reaper pet");
             if(blood_reaper) {
-                int extraBM = amount * 10 / 100;
-                amount += extraBM;
+                int extra = amount * 10 / 100;
+                amount += extra;
             }
             player.inventory().remove(new Item(CASKET), true);
-            player.inventory().add(new Item(BLOOD_MONEY, amount), true);
-            player.message("You open the casket and find " + Utils.formatNumber(amount) + " blood money!");
+            player.inventory().add(new Item(COINS_995, amount), true);
+            player.message("You open the casket and find " + Utils.formatNumber(amount) + " coins!");
         } else if (id == CASKET_7956) {
-            amount = World.getWorld().random(2_500, 5_000);
+            amount = World.getWorld().random(250_000, 500_000);
             var blood_reaper = player.hasPetOut("Blood Reaper pet");
             if(blood_reaper) {
-                int extraBM = amount * 10 / 100;
-                amount += extraBM;
+                int extra = amount * 10 / 100;
+                amount += extra;
             }
             player.inventory().remove(new Item(CASKET_7956), true);
             player.inventory().add(new Item(BLOOD_MONEY, amount), true);
-            player.message("You open the casket and find " + Utils.formatNumber(amount) + " blood money!");
+            player.message("You open the casket and find " + Utils.formatNumber(amount) + " coins!");
         }
-    }
-
-    private void openChest(Player player) {
-        if (!player.inventory().contains(BIG_CHEST))
-            return;
-
-        var amount = 10_000;
-        var blood_reaper = player.hasPetOut("Blood Reaper pet");
-        if(blood_reaper) {
-            int extraBM = amount * 10 / 100;
-            amount += extraBM;
-        }
-        player.inventory().remove(new Item(BIG_CHEST), true);
-        player.inventory().add(new Item(BLOOD_MONEY, amount), true);
-        player.message("You open the chest and find 10.000 blood money!");
     }
 
 }

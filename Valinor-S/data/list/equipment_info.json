@@ -9549,12 +9549,12 @@
     "type": 0,
     "showBeard": false
   },
-  "12013": {
+  "20205": {
     "slot": 0,
     "type": 0,
     "showBeard": true
   },
-  "20205": {
+  "12013": {
     "slot": 0,
     "type": 0,
     "showBeard": true
@@ -9570,6 +9570,26 @@
     "showBeard": false
   },
   "12016": {
+    "slot": 10,
+    "type": 0,
+    "showBeard": false
+  },
+  "25549": {
+    "slot": 0,
+    "type": 0,
+    "showBeard": true
+  },
+  "25551": {
+    "slot": 4,
+    "type": 0,
+    "showBeard": false
+  },
+  "25553": {
+    "slot": 7,
+    "type": 0,
+    "showBeard": false
+  },
+  "25555": {
     "slot": 10,
     "type": 0,
     "showBeard": false

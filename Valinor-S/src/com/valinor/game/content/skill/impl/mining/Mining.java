@@ -2,10 +2,12 @@ package com.valinor.game.content.skill.impl.mining;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.util.Color;
@@ -22,6 +24,7 @@ import com.valinor.game.world.object.ObjectManager;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
+import com.valinor.util.timers.TimerKey;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -31,6 +34,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -80,13 +84,13 @@ public class Mining extends Interaction {
         STEEL(1269, 14, 627, 6755, 6),
         BLACK(12297, 21, 3866, 3866, 11),
         MITHRIL(1273, 26, 629, 6757, 21),
-        ADAMANT(1271, 30, 628, 6756,31),
-        RUNE(1275, 36, 624,6752, 41),
-        DRAGON(11920, 42, 7139, 6758,61),
-        THIRD_AGE(20014, 42, 7283,7282, 61),
-        DRAGON_OR(12797, 42, 642,335, 61),
-        INFERNAL(13243, 42, 4482, 4481,61),
-        CRYSTAL(23680, 45, 8329, 8329,81);
+        ADAMANT(1271, 30, 628, 6756, 31),
+        RUNE(1275, 36, 624, 6752, 41),
+        DRAGON(11920, 42, 7139, 6758, 61),
+        THIRD_AGE(20014, 42, 7283, 7282, 61),
+        DRAGON_OR(12797, 42, 642, 335, 61),
+        INFERNAL(13243, 42, 4482, 4481, 61),
+        CRYSTAL(23680, 45, 8329, 8329, 81);
 
         public int id;
         public int points;
@@ -129,6 +133,20 @@ public class Mining extends Interaction {
         } else {
             prospect(player, rockType);
         }
+    }
+
+    private static double nonDepletionChance(Rock rockType, Player player) {
+        double chance;
+        switch (rockType) {
+            case SILVER -> chance = 50.0;
+            case COAL -> chance = 40.0;
+            case GOLD -> chance = 33.33;
+            case MITHRIL, AMETHYST -> chance = 25.0;
+            case ADAMANT -> chance = 16.66;
+            case RUNE -> chance = 12.5;
+            default -> chance = 0;
+        }
+        return chance;
     }
 
     private static void mine(Player player, Rock rockType, int replId) {
@@ -183,8 +201,13 @@ public class Mining extends Interaction {
                     return;
                 }
 
+                var doubleRoll = Utils.rollPercent((int) ItemSet.varrockDiaryArmour(player));
+
                 // Roll for an uncut
                 if (Utils.rollDie(256, gemOdds)) {
+                    if (doubleRoll) {
+                        giveGem(player);
+                    }
                     giveGem(player);
                 }
 
@@ -214,10 +237,18 @@ public class Mining extends Interaction {
                         player.graphic(580, 155, 0);
                         addBar(player, finalRock);
                     } else {
-                        player.inventory().add(new Item(finalRock.ore));
+                        int amount = 1;
+                        if (doubleRoll)
+                            amount += 1;
+                        if (finalRock.ore != RUNITE_ORE && player.getEquipment().hasAt(EquipSlot.CAPE, MINING_CAPET) && Utils.rollPercent(5))
+                            amount += 1;
+
+                        player.inventory().addOrDrop(new Item(finalRock.ore, amount));
+                        if(amount > 1)
+                            player.message("You manage to mine an additional ore.");
                     }
 
-                    if(finalRock == Rock.RUNE) {
+                    if (finalRock == Rock.RUNE) {
                         player.getTaskBottleManager().increase(BottleTasks.MINE_RUNITE_ORE);
                     }
 
@@ -236,11 +267,17 @@ public class Mining extends Interaction {
                     GameObject original = new GameObject(obj.getId(), obj.tile(), obj.getType(), obj.getRotation());
                     GameObject spawned = new GameObject(replId, obj.tile(), obj.getType(), obj.getRotation());
 
-                    ObjectManager.replace(original, spawned, Math.max(1, rockTime - 1));
+                    var nonDepletion = Utils.rollPercent((int) nonDepletionChance(finalRock, player)) && player.getEquipment().hasAt(EquipSlot.HANDS, EXPERT_MINING_GLOVES);
+                    if(!nonDepletion) {
+                        ObjectManager.replace(original, spawned, Math.max(1, rockTime - 1));
+                    }
 
                     if (!player.jailed()) {
-                        player.skills().addXp(Skills.MINING, finalRock.xp);
-                        AchievementsManager.activate(player, Achievements.MINER,1);
+                        double xp = finalRock.xp *= xpBonus(player);
+                        if (doubleRoll)
+                            xp *= 2;
+                        player.skills().addXp(Skills.MINING, xp);
+                        AchievementsManager.activate(player, Achievements.MINER, 1);
                     }
 
                     if (World.getWorld().rollDie(125, 1)) {
@@ -297,43 +334,47 @@ public class Mining extends Interaction {
         });
     }
 
+    private static double xpBonus(Player player) {
+        double multiplier = 1;
+        multiplier *= ItemSet.prospectorBonus(player);
+        multiplier *= ItemSet.goldProspectorBonus(player);
+
+        //Acts as a prospector jacket in terms of full prospector outfit set XP bonus and master clue step but does not count as a prospector jacket to fulfill the Falador Diary's hard task of entering the Mining Guild wearing full prospector.
+        Item body = player.getEquipment().get(EquipSlot.BODY);
+        if (body != null && body.getId() == VARROCK_ARMOUR_4)
+            multiplier *= 2.5;
+        return multiplier;
+    }
+
     private static void addBar(Player player, Mining.Rock rock) {
-        boolean success = false;
         switch (rock) {
             case COPPER, TIN -> {
                 player.inventory().add(new Item(2349));
                 player.skills().addXp(Skills.SMITHING, 2.5);
-                success = true;
             }
             case IRON -> {
                 player.inventory().add(new Item(2351));
                 player.skills().addXp(Skills.SMITHING, 5.0);
-                success = true;
             }
             case SILVER -> {
                 player.inventory().add(new Item(2355));
                 player.skills().addXp(Skills.SMITHING, 5.5);
-                success = true;
             }
             case GOLD -> {
                 player.inventory().add(new Item(2357));
                 player.skills().addXp(Skills.SMITHING, 9.0);
-                success = true;
             }
             case MITHRIL -> {
                 player.inventory().add(new Item(2359));
                 player.skills().addXp(Skills.SMITHING, 12.0);
-                success = true;
             }
             case ADAMANT -> {
                 player.inventory().add(new Item(2361));
                 player.skills().addXp(Skills.SMITHING, 15.0);
-                success = true;
             }
             case RUNE -> {
                 player.inventory().add(new Item(2363));
                 player.skills().addXp(Skills.SMITHING, 20.0);
-                success = true;
             }
         }
     }
@@ -357,7 +398,7 @@ public class Mining extends Interaction {
                 }
             }
 
-            World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has unlocked the pet: <col="+Color.HOTPINK.getColorValue()+">" + new Item(Pet.ROCK_GOLEM.item).name()+ "</col>.");
+            World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.ROCK_GOLEM.item).name() + "</col>.");
         } else {
             player.message("You have a funny feeling like you would have been followed...");
         }
@@ -367,7 +408,7 @@ public class Mining extends Interaction {
         Mining.Rock type = Mining.Rock.GOLD;
         DecimalFormat format = new DecimalFormat("###.##");
 
-        PrintStream out = new PrintStream(System.getProperty("user.home")+"\\Desktop\\mining_" + type.toString().toLowerCase() + ".csv");
+        PrintStream out = new PrintStream(System.getProperty("user.home") + "\\Desktop\\mining_" + type.toString().toLowerCase() + ".csv");
         out.print("lvl");
         for (Mining.Pickaxe h : Mining.Pickaxe.values())
             out.print("," + h);
@@ -408,6 +449,7 @@ public class Mining extends Interaction {
 
     static {
         rocks = Arrays.asList(
+            new RegisterableRock(ROCKS_11363, Rock.CLAY),
             new RegisterableRock(ROCKS_11362, Rock.CLAY),
             new RegisterableRock(ROCKS_11161, Rock.COPPER, ROCKS_11391),
             new RegisterableRock(ROCKS_10943, Rock.COPPER),

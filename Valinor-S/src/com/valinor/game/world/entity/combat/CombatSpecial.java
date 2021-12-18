@@ -34,6 +34,9 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum CombatSpecial {
 
+    //Other
+    DRAGON_PICKAXE(new int[]{ItemIdentifiers.DRAGON_PICKAXE, DRAGON_PICKAXE_12797, DRAGON_PICKAXE_OR_25376}, 100, 1.0, 1.0, null, WeaponType.PICKAXE),
+
     //Range
     MAGIC_SHORTBOW(new int[]{ItemIdentifiers.MAGIC_SHORTBOW, ItemIdentifiers.MAGIC_SHORTBOW_I}, 55, 1.0, 1.2, new MagicShortbow(), WeaponType.BOW),
     DARK_BOW(new int[]{ItemIdentifiers.DARK_BOW, ItemIdentifiers.DARK_BOW_12765, ItemIdentifiers.DARK_BOW_12766, ItemIdentifiers.DARK_BOW_12767, ItemIdentifiers.DARK_BOW_12768, ItemIdentifiers.DARK_BOW_20408}, 55, 1.30, 1.24, new DarkBow(), WeaponType.BOW),
