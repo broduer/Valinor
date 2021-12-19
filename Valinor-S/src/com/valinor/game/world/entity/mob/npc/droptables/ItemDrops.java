@@ -18,9 +18,6 @@ import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.*;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;

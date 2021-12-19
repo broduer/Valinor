@@ -22,6 +22,7 @@ import com.valinor.util.chainedwork.Chain;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.ItemIdentifiers.FIRE_CAPE;
 import static com.valinor.util.ItemIdentifiers.TOKKUL;
 import static com.valinor.util.NpcIdentifiers.*;
@@ -204,10 +205,11 @@ public class FightCavesMinigame extends Minigame {
                 }
             } else {
                 DialogueManager.npcChat(player, Expression.FURIOUS, TZHAARMEJJAL, "You have defeated TzTok-Jad, I am most impressed! Please accept this gift.", "Give cape back to me if you not want it.");
-                player.inventory().addOrDrop(new Item(FIRE_CAPE, 1));
+                player.inventory().addOrDrop(new Item(FIRE_CAPE));
                 player.inventory().addOrDrop(new Item(TOKKUL, tokkul + 4000));
                 AchievementsManager.activate(player, Achievements.FIGHT_CAVES_I, 1);
                 AchievementsManager.activate(player, Achievements.FIGHT_CAVES_II, 1);
+                BOSSES.log(player, TZTOKJAD, new Item(FIRE_CAPE));
             }
         }
         npcSet.forEach(npc -> World.getWorld().unregisterNpc(npc));

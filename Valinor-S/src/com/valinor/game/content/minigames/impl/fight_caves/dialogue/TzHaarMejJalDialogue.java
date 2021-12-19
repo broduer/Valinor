@@ -13,6 +13,10 @@ import com.valinor.util.Color;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.Utils;
 
+import static com.valinor.game.content.collection_logs.LogType.BOSSES;
+import static com.valinor.util.ItemIdentifiers.FIRE_CAPE;
+import static com.valinor.util.NpcIdentifiers.TZTOKJAD;
+
 /**
  * @author Patrick van Elderen | December, 23, 2020, 15:33
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
@@ -320,6 +324,7 @@ public class TzHaarMejJalDialogue extends Dialogue {
         if (!PetAI.hasUnlocked(player, Pet.TZREK_JAD)) {
             // Unlock the varbit. Just do it, rather safe than sorry.
             player.addUnlockedPet(Pet.TZREK_JAD.varbit);
+            BOSSES.log(player, TZTOKJAD, new Item(Pet.TZREK_JAD.item));
 
             // RS tries to add it as follower first. That only works if you don't have one.
             var currentPet = player.pet();
