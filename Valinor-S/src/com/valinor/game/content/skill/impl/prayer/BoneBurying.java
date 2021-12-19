@@ -2,6 +2,7 @@ package com.valinor.game.content.skill.impl.prayer;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
+import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -73,8 +74,8 @@ public class BoneBurying extends Interaction {
             xp *= 4;
         }
         String mes = "You bury the bones.";
-
         player.skills().addXp(Skills.PRAYER, xp);
+        KourendCatacombs.buriedBone(player, bone);
         Chain.bound(player).runFn(1, () -> player.message(mes));
     }
 

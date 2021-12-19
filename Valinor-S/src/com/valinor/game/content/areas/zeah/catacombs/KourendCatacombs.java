@@ -1,21 +1,42 @@
 package com.valinor.game.content.areas.zeah.catacombs;
 
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
+import com.valinor.game.content.skill.impl.prayer.Bone;
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.Skotizo;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date februari 29, 2020 22:03
  */
-public class Catacombs extends Interaction {
+public class KourendCatacombs extends Interaction {
+
+    private static final Area CATACOMBS_BOUNDS = new Area(1578, 9960, 1760, 10110, 0);
+
+    @Override
+    public boolean onLogout(Player player) {
+        System.out.println("huh");
+        if(player.tile().region() == 6810) {
+            System.out.println("mus");
+            player.teleport(1665, 10048, 0);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
@@ -32,6 +53,11 @@ public class Catacombs extends Interaction {
 
             if (obj.getId() == STATUE_27785) {
                 Ladders.ladderDown(player, new Tile(1665, 10050), true);
+                return true;
+            }
+
+            if (obj.getId() == ALTAR_28900) {
+                startSkotizoFight(player, obj);
                 return true;
             }
 
@@ -155,34 +181,86 @@ public class Catacombs extends Interaction {
         }).then(1, player::unlock);
     }
 
+    private static void startSkotizoFight(Player player, GameObject gameObject) {
+        if (!player.getInventory().contains(DARK_TOTEM, 1)) {
+            player.itemBox("A completed dark totem is required to activate the altar.", DARK_TOTEM);
+            return;
+        }
+
+        player.optionsTitled("WARNING: You are about to enter Skotizo's lair.<br>Your dark totem will be consumed.<br><br>Are you sure you want to continue?", "Yes.", "No.", () -> {
+            if (!player.getInventory().contains(DARK_TOTEM, 1)) {
+                return;
+            }
+            player.getInventory().remove(DARK_TOTEM, 1);
+            Skotizo.startFight(player, gameObject);
+        });
+    }
+
     public static int getNextTotemPiece(Player player) {
         int base = 0, middle = 0, top = 0;
         for (Item item : player.inventory().getItems()) {
             if (item == null)
                 continue;
-            if (item.getId() == 19679)
+            if (item.getId() == DARK_TOTEM_BASE)
                 base += item.getAmount();
-            else if (item.getId() == 19681)
+            else if (item.getId() == DARK_TOTEM_MIDDLE)
                 middle += item.getAmount();
-            else if (item.getId() == 19683)
+            else if (item.getId() == DARK_TOTEM_TOP)
                 top += item.getAmount();
         }
         for (Item item : player.getBank().getItems()) {
             if (item == null)
                 continue;
-            if (item.getId() == 19679)
+            if (item.getId() == DARK_TOTEM_BASE)
                 base += item.getAmount();
-            else if (item.getId() == 19681)
+            else if (item.getId() == DARK_TOTEM_MIDDLE)
                 middle += item.getAmount();
-            else if (item.getId() == 19683)
+            else if (item.getId() == DARK_TOTEM_TOP)
                 top += item.getAmount();
         }
 
         int lowest = Math.min(base, Math.min(middle, top));
         if (lowest == base)
-            return 19679;
+            return DARK_TOTEM_BASE;
         else if (lowest == middle)
-            return 19681;
-        else return 19683;
+            return DARK_TOTEM_MIDDLE;
+        else return DARK_TOTEM_TOP;
+    }
+
+    public static void drop(Player pKiller, Npc npc, Tile tile) {
+        if (!npc.tile().inArea(CATACOMBS_BOUNDS))
+            return;
+        if (rollTotemDrop(npc)) {
+            int nextPiece = getNextTotemPiece(pKiller);
+            if (nextPiece > 0) {
+                GroundItem item = new GroundItem(new Item(nextPiece,1), tile, pKiller);
+                GroundItemHandler.createGroundItem(item);
+            }
+        }
+        if (rollShardDrop(npc)) {
+            GroundItem item = new GroundItem(new Item(19677, 1), tile, pKiller);
+            GroundItemHandler.createGroundItem(item);
+        }
+    }
+
+    private static boolean rollTotemDrop(Npc npc) {
+        double chance = 1d / (200 - Math.min(200, npc.maxHp()));
+        return World.getWorld().get() <= chance;
+    }
+
+    private static boolean rollShardDrop(Npc npc) {
+        double chance = 1d / (2d/3 * (200 - Math.min(200, npc.maxHp())));
+        return World.getWorld().get() <= chance;
+    }
+
+    public static void buriedBone(Player player, Bone bone) {
+        if (!player.tile().inArea(CATACOMBS_BOUNDS))
+            return;
+        if (bone.xp < 15)
+            player.skills().alterSkill(Skills.PRAYER,1);
+        else if (bone.xp < 72)
+            player.skills().alterSkill(Skills.PRAYER,2);
+        else
+            player.skills().alterSkill(Skills.PRAYER,4);
     }
 }

@@ -11,13 +11,28 @@ import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
+import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import java.security.SecureRandom;
 
 public class Skotizo extends CommonCombatMethod {
+
+    public static void startFight(Player player, GameObject altar) {
+        player.lock();
+        Chain.bound(null).runFn(1, () -> altar.animate(1477)).then(6, () -> altar.animate(1471));
+        Chain.bound(null).runFn(1, () -> {
+            player.animate(3865);
+            player.graphic(1296);
+        }).then(3, () -> {
+            player.getSkotizoInstance().enterInstance(player);
+        }).then(1, () -> {});
+        player.animate(-1);
+        player.unlock();
+    }
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
