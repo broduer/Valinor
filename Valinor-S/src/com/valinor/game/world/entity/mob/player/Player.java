@@ -980,6 +980,14 @@ public class Player extends Mob {
         return bryophytaInstance;
     }
 
+    private SkotizoInstance skotizoInstance;
+
+    public SkotizoInstance getSkotizoInstance() {
+        if (skotizoInstance == null)
+            skotizoInstance = new SkotizoInstance();
+        return skotizoInstance;
+    }
+
     /**
      * Actions that should be done when this mob is added to the world.
      */
