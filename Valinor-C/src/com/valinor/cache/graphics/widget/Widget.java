@@ -362,6 +362,7 @@ public class Widget {
             }
         }
         interfaceLoader = interfaces;
+        SkotizoWidget.unpack();
         QuestTabSidebarWidget.unpack(font);
         RaidsWidget.unpack(font);
         DailyTasksWidget.unpack(font);

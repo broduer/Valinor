@@ -29,9 +29,10 @@ public class Skotizo extends CommonCombatMethod {
             player.graphic(1296);
         }).then(3, () -> {
             player.getSkotizoInstance().enterInstance(player);
-        }).then(1, () -> {});
-        player.animate(-1);
-        player.unlock();
+        }).then(1, () -> {
+            player.animate(-1);
+            player.unlock();
+        });
     }
 
     @Override
