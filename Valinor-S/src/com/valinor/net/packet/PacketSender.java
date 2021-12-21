@@ -176,10 +176,14 @@ public final class PacketSender {
      * @param index       the index in the array
      */
     public PacketSender sendChangeSprite(int componentId, byte index) {
-        PacketBuilder out = new PacketBuilder(7);
-        out.putInt(componentId);
-        out.put(index);
-        player.getSession().write(out);
+        try {
+            PacketBuilder out = new PacketBuilder(7);
+            out.putInt(componentId);
+            out.put(index);
+            player.getSession().write(out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return this;
     }
 

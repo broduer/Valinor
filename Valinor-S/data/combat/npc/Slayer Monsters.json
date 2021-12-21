@@ -3554,25 +3554,24 @@
       7286
     ],
     "maxhit": 38,
-    "aggressive": true,
     "slayerxp": 618,
     "slayerlvl": 1,
     "attackspeed": 4,
     "deathlen": 7,
     "stats": {
-      "hitpoints": 5000,
+      "hitpoints": 450,
       "attack": 240,
       "magic": 280,
-      "defence": 120,
+      "defence": 200,
       "strength": 250,
-      "ranged": 280
+      "ranged": 1
     },
     "bonuses": {
-      "stabdefence": 200,
-      "slashdefence": 200,
-      "crushdefence": 200,
-      "magicdefence": 200,
-      "rangeddefence": 275
+      "stabdefence": 80,
+      "slashdefence": 80,
+      "crushdefence": 80,
+      "magicdefence": 130,
+      "rangeddefence": 130
     },
     "animations": {
       "attack": 4680,
@@ -3581,8 +3580,39 @@
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.Skotizo",
-      "death": "nl.bartpelle.veteres.content.npcs.bosses.wilderness.WildernessEventController.bossDeathScript",
-      "hit": "nl.bartpelle.veteres.content.npcs.bosses.wilderness.Skotizo.hitScript"
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.SkotizoAgro"
+    }
+  },
+  {
+    // Skotizo altara
+    "ids": [
+      7288, 7289, 7290, 7291, 7292, 7293, 7294, 7295
+    ],
+    "maxhit": 38,
+    "aggressive": false,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "attackspeed": 4,
+    "deathlen": 1,
+    "stats": {
+      "hitpoints": 100,
+      "attack": 1,
+      "magic": 1,
+      "defence": 1,
+      "strength": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
     }
   },
   {

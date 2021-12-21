@@ -75,6 +75,19 @@ public class ObjectManager {
     }
 
     /**
+     * Removes a global object from the world. If the object is present in the game, we find the reference to that object and add it to the remove list.
+     *
+     * @param id the identification value of the object
+     * @param x the x location of the object
+     * @param y the y location of the object
+     * @param height the height of the object
+     */
+    public static void remove(int id, int x, int y, int height) {
+        Optional<GameObject> existing = World.getWorld().getSpawnedObjs().stream().filter(o -> o.getId() == id && o.getX() == x && o.getY() == y && o.getZ() == height).findFirst();
+        existing.ifPresent(ObjectManager::removeObj);
+    }
+
+    /**
      * Performs the given {@link OperationType} on the given {@link GameObject}.
      * Used for spawning and despawning objects.
      * If the object has an owner, it will only be spawned for them. Otherwise,

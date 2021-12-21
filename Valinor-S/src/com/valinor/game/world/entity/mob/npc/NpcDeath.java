@@ -7,6 +7,7 @@ import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.areas.burthope.warriors_guild.MagicalAnimator;
 import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
@@ -281,7 +282,7 @@ public class NpcDeath {
                     killer.getTaskBottleManager().increase(BottleTasks.VORKATH);
                 }
 
-                if (npc.def().name.equalsIgnoreCase("Zombies Champion") || npc.def().name.equalsIgnoreCase("Skotizo") || npc.def().name.equalsIgnoreCase("Tekton")) {
+                if (npc.def().name.equalsIgnoreCase("Zombies Champion") || npc.def().name.equalsIgnoreCase("Brutal lava dragon")) {
                     killer.getTaskBottleManager().increase(BottleTasks.WORLD_BOSS);
                 }
 
@@ -303,7 +304,6 @@ public class NpcDeath {
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
-
                     if (World.getWorld().rollDie(10, 1)) {
                         npc.respawns(false);//Barrelchest can no longer spawn his ancient version spawns.
                         var ancientBarrelchest = new Npc(ANCIENT_BARRELCHEST, npc.spawnTile()).respawns(false);
@@ -319,6 +319,58 @@ public class NpcDeath {
                             World.getWorld().getNpcs().add(barrelchest);
                         });
                     }
+                }
+
+                if (npc.id() == AWAKENED_ALTAR) {
+                    ObjectManager.remove(28923, 1694, 9904, killer.getSkotizoInstance().getInstance().getzLevel()); // Remove
+                    // North
+                    // -
+                    // Awakened
+                    // Altar
+                    ObjectManager.addObj(new GameObject(28924, new Tile(1694, 9904, killer.getSkotizoInstance().getInstance().getzLevel()), 10, 2)); // North - Empty Altar
+                    killer.getPacketSender().sendChangeSprite(29232, (byte) 0);
+                    killer.getSkotizoInstance().altarCount--;
+                    killer.getSkotizoInstance().northAltar = false;
+                    killer.getSkotizoInstance().altarMap.remove(1);
+                }
+                if (npc.id() == AWAKENED_ALTAR_7290) {
+                    ObjectManager.remove(28923, 1696, 9871, killer.getSkotizoInstance().getInstance().getzLevel()); // Remove
+                    // South
+                    // -
+                    // Awakened
+                    // Altar
+                    ObjectManager.addObj(new GameObject(28924, new Tile(1696, 9871, killer.getSkotizoInstance().getInstance().getzLevel()),10, 0)); // South - Empty Altar
+                    killer.getPacketSender().sendChangeSprite(29233, (byte) 0);
+                    killer.getSkotizoInstance().altarCount--;
+                    killer.getSkotizoInstance().southAltar = false;
+                    killer.getSkotizoInstance().altarMap.remove(2);
+                }
+                if (npc.id() == AWAKENED_ALTAR_7292) {
+                    ObjectManager.remove(28923, 1678, 9888, killer.getSkotizoInstance().getInstance().getzLevel()); // Remove
+                    // West
+                    // -
+                    // Awakened
+                    // Altar
+                    ObjectManager.addObj(new GameObject(28924, new Tile(1678, 9888, killer.getSkotizoInstance().getInstance().getzLevel()), 10, 1)); // West - Empty Altar
+                    killer.getPacketSender().sendChangeSprite(29234, (byte) 0);
+                    killer.getSkotizoInstance().altarCount--;
+                    killer.getSkotizoInstance().westAltar = false;
+                    killer.getSkotizoInstance().altarMap.remove(3);
+                }
+                if (npc.id() == AWAKENED_ALTAR_7294) {
+                    ObjectManager.remove(28923, 1714, 9888, killer.getSkotizoInstance().getInstance().getzLevel()); // Remove
+                    // East
+                    // -
+                    // Awakened
+                    // Altar
+                    ObjectManager.addObj(new GameObject(28924, new Tile(1714, 9888, killer.getSkotizoInstance().getInstance().getzLevel()), 10, 3)); // East - Empty Altar
+                    killer.getPacketSender().sendChangeSprite(29235, (byte) 0);
+                    killer.getSkotizoInstance().altarCount--;
+                    killer.getSkotizoInstance().eastAltar = false;
+                    killer.getSkotizoInstance().altarMap.remove(4);
+                }
+                if (npc.id() == DARK_ANKOU) {
+                    killer.getSkotizoInstance().ankouSpawned = false;
                 }
 
                 Slayer.reward(killer, npc);
@@ -680,6 +732,7 @@ public class NpcDeath {
                         table.rollForTotemBase(killer);
                         table.rollForTotemMiddle(killer);
                         table.rollForTotemTop(killer);
+                        KourendCatacombs.drop(killer, npc, npc.tile());
                     }
 
                     // Custom drop tables

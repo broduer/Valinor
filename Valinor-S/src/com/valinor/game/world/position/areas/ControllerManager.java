@@ -21,6 +21,7 @@ public class ControllerManager {
         CONTROLLERS.add(new GamblingArea());
         CONTROLLERS.add(new COXArea());
         CONTROLLERS.add(new ChamberOfSecretsRaidArea());
+        CONTROLLERS.add(new SkotizoArea());
     }
 
     /**

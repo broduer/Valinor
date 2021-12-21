@@ -12,14 +12,14 @@ public class SkotizoWidget extends Widget {
         Widget tab = addInterface(29230);
         tab.totalChildren(5);
         addSprite(29231, 1932);
-        tab.child(0, 29231, 36, 141);
+        tab.child(0, 29231, 26, 21);
         addSprites(29232, 1936, 1933);
-        tab.child(1, 29232, 56, 128);
+        tab.child(1, 29232, 46, 8);
         addSprites(29233, 1936, 1933);
-        tab.child(2, 29233, 56, 193);
+        tab.child(2, 29233, 46, 73);
         addSprites(29234, 1936, 1933);
-        tab.child(3, 29234, 23, 160);
+        tab.child(3, 29234, 13, 40);
         addSprites(29235, 1936, 1933);
-        tab.child(4, 29235, 88, 160);
+        tab.child(4, 29235, 78, 40);
     }
 }

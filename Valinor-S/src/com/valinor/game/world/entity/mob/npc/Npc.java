@@ -79,7 +79,7 @@ public class Npc extends Mob {
     }
 
     public boolean isWorldBoss() {
-        return (Arrays.stream(BossEvent.values()).anyMatch(boss -> id == boss.npc)) || id == BRUTAL_LAVA_DRAGON;
+        return (Arrays.stream(BossEvent.values()).anyMatch(boss -> id == boss.npc));
     }
 
     public boolean isPet() {
@@ -150,7 +150,9 @@ public class Npc extends Mob {
             setCombatMethod(combatInfo().scripts.newCombatInstance());
         }
 
-        if (getMobName().toLowerCase().contains("clerk") || getMobName().toLowerCase().contains("banker")) {
+        if (this.def != null && this.def.name != null &&
+            (this.def.name.toLowerCase().contains("clerk")
+            || this.def.name.toLowerCase().contains("banker"))) {
             skipReachCheck = t -> {
                 Direction current = Direction.fromDeltas(getX() - t.getX(), getY()-t.getY());
                 return current.isDiagonal || t.distance(tile()) == 1;

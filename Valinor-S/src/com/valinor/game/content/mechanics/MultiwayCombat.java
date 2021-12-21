@@ -158,6 +158,7 @@ public class MultiwayCombat {
         13972, // Kalphite queen lair
         7322, // Sarachnis
         12955, // Bryophyta
+        6810, // Skotizo
 
         /* Wildy: (uses 8x8 chunks for some sections as well as chunks) **/
         5789,

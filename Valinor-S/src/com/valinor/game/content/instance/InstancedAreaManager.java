@@ -150,26 +150,6 @@ public class InstancedAreaManager {
     }
 
     /**
-     * Retrieves an open height level by sifting through the mapping and attempting to retrieve the lowest height level.
-     *
-     * @return the next lowest, open height level will be returned otherwise -1 will be returned. When -1 is returned it signifies that there are no heights open from 0 to
-     *         {@link MAXIMUM_HEIGHT}.
-     */
-    public int getNextOpenHeightCust(Area area, int level) {
-        for (int z = level; z < MAXIMUM_HEIGHT; z += 4) {
-            if (active.containsKey(z)) {
-                continue;
-            }
-            final int z1 = z;
-            if (World.getWorld().getPlayers().stream().anyMatch(p -> Objects.nonNull(p) &&  p.tile().inArea(area) && p.tile().level == z1)) {
-                continue;
-            }
-            return z;
-        }
-        return -1;
-    }
-
-    /**
      * Retrieves the single instance of this class
      * @return    the single instance
      */

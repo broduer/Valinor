@@ -29,7 +29,7 @@ import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP
 /**
  * @author optimum on 14/05/2020
  */
-public final class IronmanGroupHandler extends Interaction {
+public class IronmanGroupHandler extends Interaction {
 
     private static final Logger log = LoggerFactory.getLogger(IronmanGroupHandler.class);
 
@@ -72,11 +72,18 @@ public final class IronmanGroupHandler extends Interaction {
      * Handles the logout of a player
      */
     @Override
-    public void onLogout(Player player) {
-        Optional<IronmanGroup> getGroup = getPlayersGroup(player);
-        getGroup.ifPresent(ironmanGroup -> ironmanGroup.updatePlayer(player));
-        saveIronmanGroups();
-        clearInvitation(player);
+    public boolean onLogout(Player player) {
+        System.out.println("huh trigger");
+        //But this one doesnt
+        Optional<IronmanGroup> group = getPlayersGroup(player);
+        if(group.isPresent()) {
+            group.get().updatePlayer(player);
+            saveIronmanGroups();
+            clearInvitation(player);
+            System.out.println("trigger");
+            return true;
+        }
+        return false;
     }
 
     /**

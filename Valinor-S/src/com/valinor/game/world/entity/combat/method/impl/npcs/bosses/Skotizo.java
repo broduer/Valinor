@@ -1,23 +1,19 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses;
 
+import com.valinor.game.content.instance.impl.SkotizoInstance;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
-import com.valinor.game.world.entity.combat.skull.SkullType;
-import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.game.world.position.Tile;
-import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
-import com.valinor.util.timers.TimerKey;
 
-import java.security.SecureRandom;
+import static com.valinor.util.NpcIdentifiers.*;
 
 public class Skotizo extends CommonCombatMethod {
 
@@ -28,7 +24,14 @@ public class Skotizo extends CommonCombatMethod {
             player.animate(3865);
             player.graphic(1296);
         }).then(3, () -> {
-            player.getSkotizoInstance().enterInstance(player);
+            SkotizoInstance skotizoInstance = player.getSkotizoInstance();
+
+            if (skotizoInstance == null) {
+                player.message("We are unable to allow you in at the moment. Too many players.");
+                return;
+            }
+
+            player.getSkotizoInstance().init(player);
         }).then(1, () -> {
             player.animate(-1);
             player.unlock();
@@ -37,6 +40,12 @@ public class Skotizo extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
+        if(target.isPlayer()) {
+            Player player = target.getAsPlayer();
+            //Skotizo special attacks being checked every time he hits
+            player.getSkotizoInstance().awakenAltars(player);
+            player.getSkotizoInstance().summonMinions(player);
+        }
         if (withinDistance(1) && World.getWorld().rollDie(3, 2))
             meleeAttack(mob, target);
         else
@@ -71,5 +80,14 @@ public class Skotizo extends CommonCombatMethod {
     @Override
     public int getAttackDistance(Mob mob) {
         return 8;
+    }
+
+    @Override
+    public void onDeath() {
+        World.getWorld().getNpcs().forEachInArea(SkotizoInstance.SKOTIZO_AREA, n -> {
+            if(n.id() == REANIMATED_DEMON || n.id() == DARK_ANKOU || n.id() == AWAKENED_ALTAR || n.id() == AWAKENED_ALTAR_7290 || n.id() == AWAKENED_ALTAR_7292 || n.id() == AWAKENED_ALTAR_7294) {
+                n.hit(n, n.hp());//Kill off all npcs that are alive
+            }
+        });
     }
 }

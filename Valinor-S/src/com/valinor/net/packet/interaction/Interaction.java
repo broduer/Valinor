@@ -17,8 +17,8 @@ public abstract class Interaction {
 
     }
 
-    public void onLogout(Player player) {
-
+    public boolean onLogout(Player player) {
+        return false;
     }
 
     public boolean handleEquipment(Player player, Item item) { return false;}

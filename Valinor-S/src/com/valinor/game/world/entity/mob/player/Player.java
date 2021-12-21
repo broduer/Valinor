@@ -12,7 +12,6 @@ import com.valinor.game.content.bank_pin.BankPinSettings;
 import com.valinor.game.content.clan.Clan;
 import com.valinor.game.content.clan.ClanManager;
 import com.valinor.game.content.collection_logs.CollectionLog;
-import com.valinor.game.content.consumables.potions.impl.*;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.gambling.GambleState;
@@ -27,7 +26,6 @@ import com.valinor.game.content.mechanics.*;
 import com.valinor.game.content.mechanics.item_dispenser.ItemDispenser;
 import com.valinor.game.content.mechanics.promo.PaymentPromo;
 import com.valinor.game.content.mechanics.referrals.Referrals;
-import com.valinor.game.content.members.MemberFeatures;
 import com.valinor.game.content.minigames.Minigame;
 import com.valinor.game.content.minigames.MinigameManager;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
@@ -46,7 +44,6 @@ import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.items.keys.SlayerKey;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.SlayerRewards;
-import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.sound.CombatSounds;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.TaskBottleManager;
@@ -54,7 +51,6 @@ import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.content.title.AvailableTitle;
 import com.valinor.game.content.title.TitleCategory;
 import com.valinor.game.content.title.TitleColour;
-import com.valinor.game.content.title.TitlePlugin;
 import com.valinor.game.content.title.req.impl.other.TitleUnlockRequirement;
 import com.valinor.game.content.tournaments.Tournament;
 import com.valinor.game.content.tournaments.TournamentManager;
@@ -74,7 +70,6 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.hit.Hit;
-import com.valinor.game.world.entity.combat.magic.CombatSpells;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.VorkathState;
 import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
@@ -120,12 +115,10 @@ import com.valinor.net.packet.PacketSender;
 import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.net.packet.outgoing.UnnecessaryPacketDropper;
 import com.valinor.util.*;
-import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFutureListener;
 import org.apache.commons.compress.utils.Lists;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -143,7 +136,6 @@ import java.util.stream.IntStream;
 
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
-import static com.valinor.game.content.tournaments.TournamentUtils.TOURNAMENT_REGION;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.UPTIME;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WORLD_BOSS_SPAWN;
@@ -2569,6 +2561,11 @@ public class Player extends Mob {
             bryophytaInstance.clear();
             this.getPacketSender().sendEffectTimer(0, EffectTimer.MONSTER_RESPAWN);
             InstancedAreaManager.getSingleton().disposeOf(bryophytaInstance.getInstance());
+        }
+
+        if (skotizoInstance != null && skotizoInstance.getInstance() != null) {
+            skotizoInstance.clear(this);
+            InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());
         }
     }
 

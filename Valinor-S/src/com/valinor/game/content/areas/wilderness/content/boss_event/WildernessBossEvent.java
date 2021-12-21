@@ -82,7 +82,7 @@ public class WildernessBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final BossEvent[] EVENT_ROTATION = {BossEvent.BRUTAL_LAVA_DRAGON, BossEvent.ZOMBIES_CHAMPION, BossEvent.SKOTIZO, BossEvent.TEKTON};
+    private static final BossEvent[] EVENT_ROTATION = {BossEvent.BRUTAL_LAVA_DRAGON, BossEvent.ZOMBIES_CHAMPION};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 

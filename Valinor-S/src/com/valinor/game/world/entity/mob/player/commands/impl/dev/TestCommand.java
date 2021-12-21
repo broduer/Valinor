@@ -90,7 +90,10 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
         //player.sound(2401);
-        System.out.println(World.getWorld().getPlayers().size());
+        player.getPacketSender().sendChangeSprite(29232, (byte) 0);
+        player.getPacketSender().sendChangeSprite(29233, (byte) 0);
+        player.getPacketSender().sendChangeSprite(29234, (byte) 0);
+        player.getPacketSender().sendChangeSprite(29235, (byte) 1);
         player.message("Test command has been activated.");
     }
 

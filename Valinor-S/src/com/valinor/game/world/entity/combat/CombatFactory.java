@@ -997,20 +997,27 @@ public class CombatFactory {
             }
         }
 
+        if(attacker.isNpc() && target.isPlayer()) {
+            Npc npc = (Npc) attacker;
+            if (npc.getCombatMethod() instanceof Vorkath) {
+                Vorkath combatMethod = (Vorkath) npc.getCombatMethod();
+                if (combatMethod.resistance != null) {
+                    switch (combatMethod.resistance) {
+                        case PARTIAL -> hit.setDamage((int) (hit.getDamage() * 0.5d));
+                        case FULL -> hit.setDamage(0);
+                    }
+                }
+            }
+        }
+
         if (target.isNpc() && attacker.isPlayer()) {
             if (target instanceof Npc) {
                 Npc npc = (Npc) target;
                 Player player = (Player) attacker;
                 if (player.getCombat() == null) return; // should never happen lol
 
-                if (npc.getCombatMethod() instanceof Vorkath) {
-                    Vorkath combatMethod = (Vorkath) npc.getCombatMethod();
-                    if (combatMethod.resistance != null) {
-                        switch (combatMethod.resistance) {
-                            case PARTIAL -> hit.setDamage((int) (hit.getDamage() * 0.5d));
-                            case FULL -> hit.setDamage(0);
-                        }
-                    }
+                if(npc.id() == SKOTIZO) {
+                    hit.setDamage(player.getSkotizoInstance().damageReducctionEffect(player, hit.getDamage()));
                 }
 
                 CombatSpell spell = player.getCombat().getCastSpell() != null ? player.getCombat().getCastSpell() : player.getCombat().getAutoCastSpell();
@@ -1235,6 +1242,16 @@ public class CombatFactory {
                     if (block) {
                         hit.setDamage(0);
                         attackerAsPlayer.message("This monster is only vulnerable to leaf-bladed melee weapons and broad ammunition.");
+                    }
+                }
+
+                //Skotizo altars
+                if (npc.id() == AWAKENED_ALTAR || npc.id() == AWAKENED_ALTAR_7290 || npc.id() == AWAKENED_ALTAR_7292 || npc.id() == AWAKENED_ALTAR_7294) {
+                    if (attacker != null && attacker.isPlayer()) {
+                        Player player = attacker.getAsPlayer();
+                        if (player.getEquipment().hasAt(EquipSlot.WEAPON, ARCLIGHT)) {
+                            hit.setDamage(100);
+                        }
                     }
                 }
 

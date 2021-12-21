@@ -13,8 +13,6 @@ public enum BossEvent {
 
     GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
     BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
-    SKOTIZO(NpcIdentifiers.SKOTIZO, "Skotizo"),
-    TEKTON(NpcIdentifiers.TEKTON_7542, "Tekton"),
     ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
     NOTHING(-1, "Nothing"); // Filler
 

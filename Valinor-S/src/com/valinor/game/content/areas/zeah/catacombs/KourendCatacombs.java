@@ -4,6 +4,8 @@ import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.content.skill.impl.prayer.Bone;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.Skotizo;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -14,6 +16,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.Color;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -29,9 +32,7 @@ public class KourendCatacombs extends Interaction {
 
     @Override
     public boolean onLogout(Player player) {
-        System.out.println("huh");
         if(player.tile().region() == 6810) {
-            System.out.println("mus");
             player.teleport(1665, 10048, 0);
             return true;
         }
@@ -187,12 +188,26 @@ public class KourendCatacombs extends Interaction {
             return;
         }
 
-        player.optionsTitled("WARNING: You are about to enter Skotizo's lair.<br>Your dark totem will be consumed.<br><br>Are you sure you want to continue?", "Yes.", "No.", () -> {
-            if (!player.getInventory().contains(DARK_TOTEM, 1)) {
-                return;
+        player.getDialogueManager().start(new Dialogue() {
+            @Override
+            protected void start(Object... parameters) {
+                send(DialogueType.STATEMENT, ""+ Color.RED.wrap("WARNING:")+" You are about to enter Skotizo's lair.", "Your dark totem will be consumed.");
+                setPhase(0);
             }
-            player.getInventory().remove(DARK_TOTEM, 1);
-            Skotizo.startFight(player, gameObject);
+
+            @Override
+            protected void next() {
+                if(isPhase(0)) {
+                    stop();
+                    player.optionsTitled("Are you sure you want to continue?", "Yes.", "No.", () -> {
+                        if (!player.getInventory().contains(DARK_TOTEM, 1)) {
+                            return;
+                        }
+                        player.getInventory().remove(DARK_TOTEM, 1);
+                        Skotizo.startFight(player, gameObject);
+                    });
+                }
+            }
         });
     }
 

@@ -52,15 +52,18 @@ public final class InteractionManager {
     public static void onLogin(Player player) {
         for (Interaction interaction : interactions) {
             interaction.onLogin(player);
+            System.out.println("onLogin prints "+interaction.getClass().getSimpleName());
             return;
         }
     }
 
-    public static void onLogout(Player player) {
+    public static boolean onLogout(Player player) {
         for (Interaction interaction : interactions) {
-            interaction.onLogout(player);
-            return;
+            if (interaction.onLogout(player)) {
+                System.out.println("onLogout prints "+interaction.getClass().getSimpleName());
+            }
         }
+        return false;
     }
 
     public static boolean onEquipItem(Player player, Item item) {
