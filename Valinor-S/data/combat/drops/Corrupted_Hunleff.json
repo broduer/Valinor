@@ -1,7 +1,7 @@
 {
   "npcs": [ 9035, 9036, 9037 ],
   "guaranteed": [
-    { "id": 13307, "min": 1500, "max": 8500 } //Blood money
+    { "id": 995, "amount": 500000 } //Coins
   ],
   "petItem": 23757,
   "petRarity": 1000,

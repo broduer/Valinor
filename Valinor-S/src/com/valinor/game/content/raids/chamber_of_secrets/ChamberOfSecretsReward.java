@@ -13,7 +13,6 @@ import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -151,7 +150,7 @@ public class ChamberOfSecretsReward {
             for (int i = 0; i < rolls; i++) {
                 Item item = rollUnique();
                 boolean added = player.getRaidRewards().add(item);
-                OTHER.log(player, COS_RAIDS_KEY, item);
+                BOSSES.log(player, COS_RAIDS_KEY, item);
                 Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Secrets! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cos_reward");
                 rare = player;
             }
