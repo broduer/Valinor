@@ -9,7 +9,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.Direction;
+import com.valinor.game.world.route.RouteDirection;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
@@ -38,7 +38,7 @@ public class KaruulmSlayerDungeon extends Interaction {
         Chain.bound(null).runFn(1, () -> {
             player.lockDelayDamage();
             boolean east = wall.tile().x > player.getAbsX();
-            TaskManager.submit(new ForceMovementTask(player, 1, new ForceMovement(player.tile().clone(), new Tile(east ? 1 : -1, 0), 0, 50, east ? Direction.EAST.faceValue : Direction.WEST.faceValue)));
+            TaskManager.submit(new ForceMovementTask(player, 1, new ForceMovement(player.tile().clone(), new Tile(east ? 1 : -1, 0), 0, 50, east ? RouteDirection.EAST.faceValue : RouteDirection.WEST.faceValue)));
         }).then(2, player::unlock);
     }
 
@@ -52,15 +52,15 @@ public class KaruulmSlayerDungeon extends Interaction {
     }
 
     private void climbWall(Player player, GameObject wall) {
-        Direction dir;
+        RouteDirection dir;
         switch (wall.getRotation()) {
             case 0:
             case 2:
-                dir = player.getAbsY() < wall.tile().y ? Direction.NORTH : Direction.SOUTH;
+                dir = player.getAbsY() < wall.tile().y ? RouteDirection.NORTH : RouteDirection.SOUTH;
                 break;
             case 1:
             case 3:
-                dir = player.getAbsX() < wall.tile().x ? Direction.EAST : Direction.WEST;
+                dir = player.getAbsX() < wall.tile().x ? RouteDirection.EAST : RouteDirection.WEST;
                 break;
             default:
                 return;
@@ -73,7 +73,7 @@ public class KaruulmSlayerDungeon extends Interaction {
     }
 
     private void jumpGap(Player player, GameObject gap) {
-        Direction dir = player.getAbsY() > gap.tile().y ? Direction.SOUTH : Direction.NORTH;
+        RouteDirection dir = player.getAbsY() > gap.tile().y ? RouteDirection.SOUTH : RouteDirection.NORTH;
         Chain.bound(null).runFn(1, () -> {
             player.lockDelayDamage();
             player.animate(3067);
@@ -82,7 +82,7 @@ public class KaruulmSlayerDungeon extends Interaction {
     }
 
     private void crawlThroughTunnel(Player player, GameObject gap) {
-        Direction dir = player.getAbsX() > gap.tile().x ? Direction.WEST : Direction.EAST;
+        RouteDirection dir = player.getAbsX() > gap.tile().x ? RouteDirection.WEST : RouteDirection.EAST;
         Chain.bound(null).runFn(1, () -> {
             player.lockDelayDamage();
             player.animate(2796);

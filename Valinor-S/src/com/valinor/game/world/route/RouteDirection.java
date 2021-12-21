@@ -2,7 +2,7 @@ package com.valinor.game.world.route;
 
 import com.valinor.game.world.position.Tile;
 
-public enum Direction {
+public enum RouteDirection {
 
     /**
      * DO NOT REORDER
@@ -21,27 +21,27 @@ public enum Direction {
     public final int clientValue;
     public final int faceValue;
 
-    Direction(int deltaX, int deltaY, int clientValue, int faceValue) {
+    RouteDirection(int deltaX, int deltaY, int clientValue, int faceValue) {
         this.deltaX = deltaX;
         this.deltaY = deltaY;
         this.clientValue = clientValue;
         this.faceValue = faceValue;
     }
 
-    public static Direction get(String cardinal) {
+    public static RouteDirection get(String cardinal) {
         switch(cardinal.toUpperCase()) {
-            case "N":   return Direction.NORTH;
-            case "NW":  return Direction.NORTH_WEST;
-            case "NE":  return Direction.NORTH_EAST;
-            case "W":   return Direction.WEST;
-            case "E":   return Direction.EAST;
-            case "SW":  return Direction.SOUTH_WEST;
-            case "SE":  return Direction.SOUTH_EAST;
-            default:    return Direction.SOUTH;
+            case "N":   return RouteDirection.NORTH;
+            case "NW":  return RouteDirection.NORTH_WEST;
+            case "NE":  return RouteDirection.NORTH_EAST;
+            case "W":   return RouteDirection.WEST;
+            case "E":   return RouteDirection.EAST;
+            case "SW":  return RouteDirection.SOUTH_WEST;
+            case "SE":  return RouteDirection.SOUTH_EAST;
+            default:    return RouteDirection.SOUTH;
         }
     }
 
-    public static Direction getFromObjectDirection(int direction) {
+    public static RouteDirection getFromObjectDirection(int direction) {
         switch (direction) {
             case 0:
                 return SOUTH;
@@ -56,7 +56,7 @@ public enum Direction {
         }
     }
 
-    public static Direction fromDoorDirection(int direction) {
+    public static RouteDirection fromDoorDirection(int direction) {
         switch (direction) {
             case 0:
                 return WEST;
@@ -71,18 +71,18 @@ public enum Direction {
         }
     }
 
-    public static Direction getDirection(Tile src, Tile dest) {
+    public static RouteDirection getDirection(Tile src, Tile dest) {
         int deltaX = dest.getX() - src.getX();
         int deltaY = dest.getY() - src.getY();
         return getDirection(deltaX, deltaY);
     }
 
-    public static Direction getDirection(int deltaX, int deltaY) {
+    public static RouteDirection getDirection(int deltaX, int deltaY) {
         if (deltaX != 0)//normalize
             deltaX /= Math.abs(deltaX);
         if (deltaY != 0)
             deltaY /= Math.abs(deltaY);
-        for (Direction d: Direction.values()) {
+        for (RouteDirection d: RouteDirection.values()) {
             if (d.deltaX == deltaX && d.deltaY == deltaY)
                 return d;
         }

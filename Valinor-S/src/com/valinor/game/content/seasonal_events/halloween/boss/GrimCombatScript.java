@@ -75,7 +75,7 @@ public class GrimCombatScript extends CommonCombatMethod {
 
     private void meleeAttack(Npc npc, Mob target) {
         npc.animate(8056);
-        npc.face(null); // Stop facing the target
+        npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if (p != null && target.tile().inSqRadius(p.tile(), 12)) {
                 p.hit(npc, CombatFactory.calcDamageFromType(npc, p, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().submit();

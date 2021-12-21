@@ -46,7 +46,7 @@ public class LordVoldemort extends CommonCombatMethod {
             npc.animate(401);
             npc.forceChat("Expelliarmus!");
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -84,7 +84,7 @@ public class LordVoldemort extends CommonCombatMethod {
             npc.animate(401);
             npc.forceChat("Petrificus Totalus!");
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -107,7 +107,7 @@ public class LordVoldemort extends CommonCombatMethod {
             npc.animate(401);
             npc.forceChat("Sectumsempra!");
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -130,7 +130,7 @@ public class LordVoldemort extends CommonCombatMethod {
             npc.animate(401);
             npc.forceChat("Crucio!");
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -151,7 +151,7 @@ public class LordVoldemort extends CommonCombatMethod {
             npc.animate(805);
             npc.forceChat("Avada Kedavra!");
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {

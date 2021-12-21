@@ -161,7 +161,7 @@ public enum HydraAttacks {
         @Override
         public void executeAttack(AlchemicalHydra hydra, Mob target) {
             //hydra.lockNoAttack();
-            hydra.face(null);
+            hydra.resetFaceTile();
             Tile base = hydra.baseLocation;
             hydra.walkAndWait(base.transform(hydraSpawnLoc.x, hydraSpawnLoc.y), () -> {
                 FireWallSpots fireWallSpots = getWallFireSpots(target.tile(), base);

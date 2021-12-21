@@ -109,7 +109,7 @@ public class NpcDeath {
 
             Chain.bound(null).runFn(1, () -> {
                 // 1t later facing is reset. Stops npcs looking odd when they reset facing their target the tick they die.
-                npc.face(null);
+                npc.resetFaceTile();
             });
 
             if (killer != null) {

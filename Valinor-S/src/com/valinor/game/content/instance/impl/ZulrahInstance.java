@@ -58,7 +58,7 @@ public class ZulrahInstance {
 
                 zulrah.respawns(false);
                 zulrah.putAttrib(AttributeKey.OWNING_PLAYER, new Tuple<>(player.getIndex(), player));
-                zulrah.face(null);
+                zulrah.resetFaceTile();
                 zulrah.noRetaliation(true);
                 zulrah.combatInfo().aggressive = false;
             }).then(1, () -> player.message("Welcome to Zulrah's shrine.")).then(1, () -> {

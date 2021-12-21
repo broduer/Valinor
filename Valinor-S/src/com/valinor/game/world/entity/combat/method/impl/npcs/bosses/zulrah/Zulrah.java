@@ -242,7 +242,7 @@ public class Zulrah {
             target.stopActions(false);
             npc.getCombat().reset();
             npc.animate(5072);
-            npc.face(null);
+            npc.resetFaceTile();
             npc.lockDelayDamage();
             runFn(npc, 2, () -> {
                 npc.unlock();
@@ -272,7 +272,7 @@ public class Zulrah {
     }
 
     private static void doMeleePhase(Npc npc, Mob target) {
-        npc.face(null);
+        npc.resetFaceTile();
         runFn(npc, 1, () -> _doMeleePhaseInner(npc, target));
         runFn(npc, 10, () -> _doMeleePhaseInner(npc, target));
     }
@@ -354,7 +354,7 @@ public class Zulrah {
         Tile spawnTile = npc.spawnTile();
 
         // Fix facing first
-        npc.face(null);
+        npc.resetFaceTile();
 
         Chain.bound(null).cancelWhen(() -> instanceFinished(npc)).runFn(1, () -> {
             npc.animate(5069);
@@ -387,7 +387,7 @@ public class Zulrah {
         Tile spawnTile = npc.spawnTile();
 
         // Fix facing first
-        npc.face(null);
+        npc.resetFaceTile();
         runFn(npc, 1, () -> {
             // Snakelings
             npc.animate(5069);
@@ -433,7 +433,7 @@ public class Zulrah {
         Tile spawnTile = npc.spawnTile();
 
         // Fix facing first
-        npc.face(null);
+        npc.resetFaceTile();
         runFn(npc, 1, () -> {
             // Fumes
             npc.animate(5069);
@@ -489,7 +489,7 @@ public class Zulrah {
         Tile spawnTile = npc.spawnTile();
 
         // Fix facing first
-        npc.face(null);
+        npc.resetFaceTile();
         runFn(npc, 1, () -> {
             // Snakelings
             npc.animate(5069);

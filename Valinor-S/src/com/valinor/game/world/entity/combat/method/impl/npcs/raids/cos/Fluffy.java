@@ -47,7 +47,7 @@ public class Fluffy extends CommonCombatMethod {
     }
 
     private void rangeAttack(Player player) {
-        mob.face(null); // Stop facing the target
+        mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         Party party = player.raidsParty;
         for (Player member : party.getMembers()) {
@@ -65,7 +65,7 @@ public class Fluffy extends CommonCombatMethod {
     }
 
     private void magicAttack(Player player) {
-        mob.face(null); // Stop facing the target
+        mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         Party party = player.raidsParty;
         for (Player member : party.getMembers()) {

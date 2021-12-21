@@ -54,12 +54,12 @@ public class Flames extends Interaction {
        Optional<CerberusRegion> cerberusRegion = CerberusRegion.valueOfRegion(region);
 
         if (y < obj.tile().y) {
-            player.face(null);
+            player.resetFaceTile();
             player.getMovementQueue().clear();
             player.getMovementQueue().interpolate(x, y + 2);
             player.hit(player,5);
         } else {
-            player.face(null);
+            player.resetFaceTile();
             player.getMovementQueue().clear();
             player.getMovementQueue().interpolate(x, y - 2);
             player.hit(player,5);

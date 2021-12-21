@@ -71,7 +71,6 @@ public class RouteFinder {
     /**
      * Moves entity according to given route.
      */
-
     public void route(RouteType route, boolean message, boolean ignoreFreeze) {
         Tile position = entity.tile();
         int baseX = (position.getFirstChunkX() - 6) * 8;

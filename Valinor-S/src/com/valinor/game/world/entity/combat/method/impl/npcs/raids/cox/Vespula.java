@@ -13,7 +13,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.Direction;
+import com.valinor.game.world.route.RouteDirection;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.NpcIdentifiers.VESPULA;
@@ -43,7 +43,7 @@ public class Vespula extends CommonCombatMethod {
             var tileDist = npc.tile().transform(1, 1, 0).distance(target.tile());
             var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
 
-            npc.face(null); // Stop facing the target
+            npc.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -56,7 +56,7 @@ public class Vespula extends CommonCombatMethod {
                         target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
 
                         //echo projectile
-                        Direction echoDir = World.getWorld().random(Direction.values());
+                        RouteDirection echoDir = World.getWorld().random(RouteDirection.values());
                         Tile echoTile = target.tile().copy().transform(echoDir.deltaX, echoDir.deltaY, target.tile().level);
 
                         if (npc.id() == VESPULA)

@@ -808,7 +808,7 @@ public class Dueling {
 
     // Heal up when entering / ending a stake.
     private void heal_player(Player player) {
-        player.face(null); // Reset entity facing
+        player.resetFaceTile(); // Reset entity facing
         player.skills().resetStats(); //Reset all players stats
         Poison.cure(player); //Cure the player from any poisons
         Venom.cure(2, player);

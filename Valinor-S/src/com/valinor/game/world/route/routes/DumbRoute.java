@@ -4,7 +4,7 @@ package com.valinor.game.world.route.routes;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.ClipUtils;
-import com.valinor.game.world.route.Direction;
+import com.valinor.game.world.route.RouteDirection;
 import com.valinor.game.world.route.RouteFinder;
 import com.valinor.game.world.route.RouteMisc;
 import com.valinor.game.world.route.StepType;
@@ -22,7 +22,7 @@ public class DumbRoute {
         int z = entity.getZ();
         int size = entity.getSize();
         while(true) {
-            Direction stepDir = getStepDirection(entity.getRouteFinder().getClipUtils(), x, y, z, size, destX, destY);
+            RouteDirection stepDir = getStepDirection(entity.getRouteFinder().getClipUtils(), x, y, z, size, destX, destY);
             if(stepDir == null)
                 return;
             x += stepDir.deltaX;
@@ -36,7 +36,7 @@ public class DumbRoute {
         if(entity.isMovementBlocked(false, false)) {
             return;
         }
-        Direction stepDir = getStepDirection(entity.getRouteFinder().getClipUtils(), entity.getAbsX(), entity.getAbsY(), entity.getZ(), entity.getSize(), destX, destY);
+        RouteDirection stepDir = getStepDirection(entity.getRouteFinder().getClipUtils(), entity.getAbsX(), entity.getAbsY(), entity.getZ(), entity.getSize(), destX, destY);
         if(stepDir != null)
             entity.step(stepDir.deltaX, stepDir.deltaY, StepType.NORMAL);
     }
@@ -86,11 +86,11 @@ public class DumbRoute {
      * Clipping stuff..
      */
 
-    public static Direction getDirection(int x, int y, int z, int size, int destX, int destY) {
+    public static RouteDirection getDirection(int x, int y, int z, int size, int destX, int destY) {
         return getDirection(ClipUtils.REGULAR, x, y, z, size, destX, destY);
     }
 
-    public static Direction getDirection(ClipUtils clipping, int x, int y, int z, int size, int destX, int destY) {
+    public static RouteDirection getDirection(ClipUtils clipping, int x, int y, int z, int size, int destX, int destY) {
 
         boolean west = false, east = false;
         if(x < destX)
@@ -106,26 +106,26 @@ public class DumbRoute {
 
         if(west) {
             if(south)
-                return allowEntrance(clipping, x, y, z, size, Direction.SOUTH_WEST) ? Direction.SOUTH_WEST : null;
+                return allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH_WEST) ? RouteDirection.SOUTH_WEST : null;
              if(north)
-                 return allowEntrance(clipping, x, y, z, size, Direction.NORTH_WEST) ? Direction.NORTH_WEST : null;
-            return allowEntrance(clipping, x, y, z, size, Direction.WEST) ? Direction.WEST : null;
+                 return allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH_WEST) ? RouteDirection.NORTH_WEST : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.WEST) ? RouteDirection.WEST : null;
         }
         if(east) {
             if(south)
-                return allowEntrance(clipping, x, y, z, size, Direction.SOUTH_EAST) ? Direction.SOUTH_EAST : null;
+                return allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH_EAST) ? RouteDirection.SOUTH_EAST : null;
             if(north)
-                return allowEntrance(clipping, x, y, z, size, Direction.NORTH_EAST) ? Direction.NORTH_EAST : null;
-            return allowEntrance(clipping, x, y, z, size, Direction.EAST) ? Direction.EAST : null;
+                return allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH_EAST) ? RouteDirection.NORTH_EAST : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.EAST) ? RouteDirection.EAST : null;
         }
         if(south)
-            return allowEntrance(clipping, x, y, z, size, Direction.SOUTH) ? Direction.SOUTH : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH) ? RouteDirection.SOUTH : null;
         if(north)
-            return allowEntrance(clipping, x, y, z, size, Direction.NORTH) ? Direction.NORTH : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH) ? RouteDirection.NORTH : null;
         return null;
     }
 
-    private static Direction getStepDirection(ClipUtils clipping, int x, int y, int z, int size, int destX, int destY) {
+    private static RouteDirection getStepDirection(ClipUtils clipping, int x, int y, int z, int size, int destX, int destY) {
 
         boolean west = false, east = false;
         if(x < destX)
@@ -141,40 +141,40 @@ public class DumbRoute {
 
         if(west) {
             if(south) {
-                if(allowEntrance(clipping, x, y, z, size, Direction.SOUTH_WEST))
-                    return Direction.SOUTH_WEST;
-                if(allowEntrance(clipping, x, y, z, size, Direction.SOUTH))
-                    return Direction.SOUTH;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH_WEST))
+                    return RouteDirection.SOUTH_WEST;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH))
+                    return RouteDirection.SOUTH;
             } else if(north) {
-                if(allowEntrance(clipping, x, y, z, size, Direction.NORTH_WEST))
-                    return Direction.NORTH_WEST;
-                if(allowEntrance(clipping, x, y, z, size, Direction.NORTH))
-                    return Direction.NORTH;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH_WEST))
+                    return RouteDirection.NORTH_WEST;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH))
+                    return RouteDirection.NORTH;
             }
-            return allowEntrance(clipping, x, y, z, size, Direction.WEST) ? Direction.WEST : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.WEST) ? RouteDirection.WEST : null;
         }
         if(east) {
             if(south) {
-                if(allowEntrance(clipping, x, y, z, size, Direction.SOUTH_EAST))
-                    return Direction.SOUTH_EAST;
-                if(allowEntrance(clipping, x, y, z, size, Direction.SOUTH))
-                    return Direction.SOUTH;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH_EAST))
+                    return RouteDirection.SOUTH_EAST;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH))
+                    return RouteDirection.SOUTH;
             } else if(north) {
-                if(allowEntrance(clipping, x, y, z, size, Direction.NORTH_EAST))
-                    return Direction.NORTH_EAST;
-                if(allowEntrance(clipping, x, y, z, size, Direction.NORTH))
-                    return Direction.NORTH;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH_EAST))
+                    return RouteDirection.NORTH_EAST;
+                if(allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH))
+                    return RouteDirection.NORTH;
             }
-            return allowEntrance(clipping, x, y, z, size, Direction.EAST) ? Direction.EAST : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.EAST) ? RouteDirection.EAST : null;
         }
         if(south)
-            return allowEntrance(clipping, x, y, z, size, Direction.SOUTH) ? Direction.SOUTH : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.SOUTH) ? RouteDirection.SOUTH : null;
         if(north)
-            return allowEntrance(clipping, x, y, z, size, Direction.NORTH) ? Direction.NORTH : null;
+            return allowEntrance(clipping, x, y, z, size, RouteDirection.NORTH) ? RouteDirection.NORTH : null;
         return null;
     }
 
-    private static boolean allowEntrance(ClipUtils clipUtils, int x, int y, int z, int size, Direction dir) {
+    private static boolean allowEntrance(ClipUtils clipUtils, int x, int y, int z, int size, RouteDirection dir) {
         int dx = dir.deltaX;
         int dy = dir.deltaY;
         if(size == 1) {

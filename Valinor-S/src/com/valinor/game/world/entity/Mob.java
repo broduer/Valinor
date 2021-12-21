@@ -34,6 +34,7 @@ import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Boundary;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.Controller;
+import com.valinor.game.world.route.RouteDirection;
 import com.valinor.game.world.route.RouteFinder;
 import com.valinor.game.world.route.StepType;
 import com.valinor.game.world.route.routes.TargetRoute;
@@ -586,6 +587,13 @@ public abstract class Mob extends Entity {
         return this;
     }
 
+    public Mob face(RouteDirection direction) {
+        int faceX = getAbsX() + direction.deltaX;
+        int faceY = getAbsY() + direction.deltaY;
+        face(faceX, faceY);
+        return this;
+    }
+
     public Mob face(int x, int y) {
         face(new Tile(x, y));
         return this;
@@ -1016,28 +1024,28 @@ public abstract class Mob extends Entity {
     }
 
     /**
-     * doesnt return {@code Hit} instance because its immidiately submitted() so you cant change properties after.
+     * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage) {
         hit(attacker, damage, SplatType.HITSPLAT);
     }
 
     /**
-     * doesnt return {@code Hit} instance because its immidiately submitted() so you cant change properties after.
+     * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, int delay) {
         hit(attacker, damage, SplatType.HITSPLAT);
     }
 
     /**
-     * doesnt return {@code Hit} instance because its immidiately submitted() so you cant change properties after.
+     * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, SplatType type) {
         hit(attacker, damage, 0, null).setSplatType(type).submit();
     }
 
     /**
-     * doesnt return {@code Hit} instance because its immidiately submitted() so you cant change properties after.
+     * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, CombatType combatType, SplatType type) {
         hit(attacker, damage, 0, combatType).setSplatType(type).submit();

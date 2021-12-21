@@ -14,7 +14,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.Direction;
+import com.valinor.game.world.route.RouteDirection;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.chainedwork.Chain;
 
@@ -45,15 +45,15 @@ public class BrutalLavaDragon extends CommonCombatMethod {
             } else
                 break; // cant take the step, stop here
         }
-        Direction dir;
+        RouteDirection dir;
         if (vecX == -1)
-            dir = Direction.EAST;
+            dir = RouteDirection.EAST;
         else if (vecX == 1)
-            dir = Direction.WEST;
+            dir = RouteDirection.WEST;
         else if (vecY == -1)
-            dir = Direction.NORTH;
+            dir = RouteDirection.NORTH;
         else
-            dir = Direction.SOUTH;
+            dir = RouteDirection.SOUTH;
 
         if (endX != target.getAbsX() || endY != target.getAbsY()) { // only do movement if we can take at least one step
             if (target != null) {
@@ -119,7 +119,7 @@ public class BrutalLavaDragon extends CommonCombatMethod {
     }
 
     private void magicAttack(Npc npc, Mob target) {
-        npc.face(null); // Stop facing the target
+        npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if(p != null && target.tile().inSqRadius(p.tile(),12)) {
                 boolean dragon_fire = World.getWorld().rollDie(2, 1);

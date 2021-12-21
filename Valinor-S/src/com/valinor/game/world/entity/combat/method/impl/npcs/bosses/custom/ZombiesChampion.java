@@ -38,7 +38,7 @@ public class ZombiesChampion extends CommonCombatMethod {
     }
 
     private void rangeAttack(Npc npc, Mob target) {
-        npc.face(null); // Stop facing the target
+        npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if(p != null && target.tile().inSqRadius(p.tile(),12)) {
                 var delay = mob.getProjectileHitDelay(target);
@@ -51,7 +51,7 @@ public class ZombiesChampion extends CommonCombatMethod {
     }
 
     private void magicAttack(Npc npc, Mob target) {
-        npc.face(null); // Stop facing the target
+        npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if(p != null && target.tile().inSqRadius(p.tile(),12)) {
                 new Projectile(npc, p, 448, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();

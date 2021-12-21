@@ -20,7 +20,7 @@ public class Aragog extends CommonCombatMethod {
         if (target.isPlayer()) {
             Player player = target.getAsPlayer();
 
-            mob.face(null); // Stop facing the target
+            mob.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {
@@ -41,7 +41,7 @@ public class Aragog extends CommonCombatMethod {
         if (target.isPlayer()) {
             Player player = target.getAsPlayer();
 
-            mob.face(null); // Stop facing the target
+            mob.resetFaceTile(); // Stop facing the target
             //Target all raids party members
             if (player.raidsParty != null) {
                 for (Player p : player.raidsParty.getMembers()) {

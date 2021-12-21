@@ -74,6 +74,21 @@ public class Npc extends Mob {
       return this;
     }
 
+    public Tile faceBasedOnDir() {
+        this.tile();
+        return switch (this.spawnDirection()) {
+            case 1 -> this.tile().transform(0, 1); // n
+            case 6 -> this.tile().transform(0, -1); // s
+            case 4 -> this.tile().transform(1, 0); // e
+            case 3 -> this.tile().transform(-1, 0); // w
+            case 0 -> this.tile().transform(-1, 1); // nw
+            case 2 -> this.tile().transform(1, 1); // ne
+            case 5 -> this.tile().transform(-1, -1); // sw
+            case 7 -> this.tile().transform(-1, 1);
+            default -> this.tile(); // se
+        };
+    }
+
     public boolean isRandomWalkAllowed() {
         return spawnArea != null && !hidden() && getMovement().isAtDestination() && !locked() && !isMovementBlocked(false, false);
     }

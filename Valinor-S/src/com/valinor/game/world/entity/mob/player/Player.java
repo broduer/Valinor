@@ -1696,7 +1696,7 @@ public class Player extends Mob {
      */
     public void resetAttributes() {
         animate(-1);
-        face(null);// Reset entity facing
+        resetFaceTile();// Reset entity facing
         skills.resetStats();//Reset all players stats
         Poison.cure(this); //Cure the player from any poisons
         Venom.cure(2, this, false);
