@@ -1,0 +1,239 @@
+{
+  "points": 0,
+  "npcs": [
+    7792, 7793, 7794
+  ],
+  "guaranteed": [
+    {
+      "id": 6812,
+      "amount": 1
+    }
+    // Wyvern bones
+  ],
+  "tables": [
+    {
+      "name": "Weapons and armour",
+      "points": 23,
+      "items": [
+        {
+          "id": 1397,
+          "amount": 2,
+          "points": 55
+        },
+        {
+          "id": 1392,
+          "amount": 6,
+          "points": 55
+        },
+        {
+          "id": 1405,
+          "amount": 1,
+          "points": 40
+        },
+        {
+          "id": 1275,
+          "amount": 1,
+          "points": 40
+        },
+        {
+          "id": 1371,
+          "amount": 1,
+          "points": 30
+        },
+        {
+          "id": 1199,
+          "amount": 1,
+          "points": 30
+        },
+        {
+          "id": 1161,
+          "amount": 1,
+          "points": 30
+        },
+        {
+          "id": 21646,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 21643,
+          "amount": 1,
+          "points": 2
+        },
+        {
+          "id": 21637,
+          "amount": 1,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "name": "Runes and ammunition",
+      "points": 23,
+      "items": [
+        {
+          "id": 561,
+          "min": 37,
+          "max": 43,
+          "points": 55
+        },
+        {
+          "id": 560,
+          "min": 47,
+          "max": 53,
+          "points": 55
+        },
+        {
+          "id": 565,
+          "min": 27,
+          "max": 33,
+          "points": 55
+        },
+        {
+          "id": 890,
+          "min": 50,
+          "max": 76,
+          "points": 40
+        },
+        {
+          "id": 892,
+          "min": 25,
+          "max": 50,
+          "points": 40
+        },
+        {
+          "id": 9144,
+          "min": 30,
+          "max": 60,
+          "points": 15
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Herbs",
+      "points": 11,
+      "items": [
+        {
+          "id": 219,
+          "amount": 1,
+          "points": 75
+        },
+        {
+          "id": 207,
+          "min": 2,
+          "max": 4,
+          "points": 75
+        },
+        {
+          "id": 214,
+          "amount": 3,
+          "points": 60
+        },
+        {
+          "id": 216,
+          "amount": 3,
+          "points": 60
+        },
+        {
+          "id": 218,
+          "amount": 3,
+          "points": 55
+        },
+        {
+          "id": 2486,
+          "amount": 3,
+          "points": 50
+        }
+      ],
+      "tables": []
+    },
+    //TODO seeds
+    {
+      "name": "Materials",
+      "points": 33,
+      "items": [
+        {
+          "id": 2362,
+          "amount": 3,
+          "points": 50
+        },
+        {
+          "id": 21622,
+          "min": 80,
+          "max": 120,
+          "points": 50
+        },
+        {
+          "id": 450,
+          "amount": 20,
+          "points": 45
+        },
+        {
+          "id": 6333,
+          "min": 25,
+          "max": 30,
+          "points": 45
+        },
+        {
+          "id": 9194,
+          "min": 10,
+          "max": 15,
+          "points": 35
+        },
+        {
+          "id": 452,
+          "min": 2,
+          "max": 3,
+          "points": 30
+        },
+        {
+          "id": 1602,
+          "min": 3,
+          "max": 5,
+          "points": 30
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Other",
+      "points": 45,
+      "items": [
+        {
+          "id": 385,
+          "amount": 5,
+          "points": 25
+        },
+        {
+          "id": 3024,
+          "amount": 2,
+          "points": 25
+        },
+        {
+          "id": 995,
+          "min": 2000,
+          "max": 6000,
+          "points": 20
+        },
+        {
+          "id": 12699,
+          "amount": 1,
+          "points": 15
+        },
+        {
+          "id": 9465,
+          "amount": 1,
+          "points": 15
+        },
+        {
+          "id": 6035,
+          "min": 7,
+          "max": 10,
+          "points": 10
+        }
+      ],
+      "tables": []
+    }
+  ]
+}

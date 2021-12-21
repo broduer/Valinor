@@ -1,12 +1,84 @@
 [
+  /*{
+    "name": "Long-tailed Wyvern",
+    "id": 7792,
+    "x": 3639,
+    "y": 10265,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
   {
-    "name": "Ancient Wyvern",
-    "id": 7795,
-    "x": 3613,
+    "name": "Long-tailed Wyvern",
+    "id": 7792,
+    "x": 3633,
+    "y": 10253,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Long-tailed Wyvern",
+    "id": 7792,
+    "x": 3626,
+    "y": 10247,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Long-tailed Wyvern",
+    "id": 7792,
+    "x": 3605,
+    "y": 10266,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Taloned Wyvern",
+    "id": 7793,
+    "x": 3632,
     "y": 10282,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
+  },
+  {
+    "name": "Taloned Wyvern",
+    "id": 7793,
+    "x": 3638,
+    "y": 10265,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Spitting Wyvern",
+    "id": 7794,
+    "x": 3642,
+    "y": 10250,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "Spitting Wyvern",
+    "id": 7794,
+    "x": 3635,
+    "y": 10248,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },*/
+  {
+    "name": "Ancient Wyvern",
+    "id": 7795,
+    "x": 3610,
+    "y": 10282,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -15,7 +87,7 @@
     "y": 10275,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -24,7 +96,7 @@
     "y": 10272,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -33,7 +105,7 @@
     "y": 10289,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -42,25 +114,7 @@
     "y": 10278,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "Ancient Wyvern",
-    "id": 7795,
-    "x": 3613,
-    "y": 10282,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "Ancient Wyvern",
-    "id": 7795,
-    "x": 3613,
-    "y": 10282,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -69,7 +123,7 @@
     "y": 10251,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
     "name": "Ancient Wyvern",
@@ -78,6 +132,6 @@
     "y": 10251,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   }
 ]
