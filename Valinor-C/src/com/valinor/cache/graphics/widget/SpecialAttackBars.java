@@ -155,6 +155,7 @@ public enum SpecialAttackBars {
     ABYSSAL_TENTACLE(12006,"Binding Tentacle: Bind your target for 5 seconds and increase the chance of them being poisoned.",50.0, 31448, 12323, 12335),
     ABYSSAL_TENTACLE_24948(24948,"Binding Tentacle: Bind your target for 5 seconds and increase the chance of them being poisoned.",50.0, 31448, 12323, 12335),
     DRAGON_SCIMITAR(4587,"Sever: Deal a slash with increased accuracy that prevents your target from using protection prayers for 5 seconds if it successfully hits.",55.0, 31449, 7599, 7611),
+    BLADE_OF_SAELDOR_C(ItemIdentifiers.BLADE_OF_SAELDOR_C,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C_1(BLADE_OF_SAELDOR_C_25870,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C_2(BLADE_OF_SAELDOR_C_25872,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C_3(BLADE_OF_SAELDOR_C_25874,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),

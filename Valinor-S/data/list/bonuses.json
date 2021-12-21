@@ -48543,6 +48543,22 @@
     "magestr": 0,
     "pray": 0
   },
+  "24551": {
+    "stab": 55,
+    "slash": 94,
+    "crush": 0,
+    "range": 0,
+    "mage": 0,
+    "stabdef": 0,
+    "slashdef": 0,
+    "crushdef": 0,
+    "rangedef": 0,
+    "magedef": 0,
+    "str": 89,
+    "rangestr": 0,
+    "magestr": 0,
+    "pray": 0
+  },
   "25870": {
     "stab": 55,
     "slash": 94,
