@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3163,
+    "y": 12455,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3167,
+    "y": 12451,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3171,
+    "y": 12447,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3179,
+    "y": 12446,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3186,
+    "y": 12447,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3191,
+    "y": 12450,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3191,
+    "y": 12469,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3185,
+    "y": 12472,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3179,
+    "y": 12471,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Basilisk Knight",
+    "id": 9293,
+    "x": 3174,
+    "y": 12474,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  }
+]
