@@ -919,16 +919,34 @@ public class World {
         return Math.min(min, max) + (n == 0 ? 0 : random.nextInt(n + 1));
     }
 
-    public int get(int minRange, int maxRange) {
-        return minRange + get(maxRange - minRange);
+    public double get() {
+        return ThreadLocalRandom.current().nextDouble();
     }
 
     public int get(int maxRange) {
         return (int) (get() * (maxRange + 1D));
     }
 
-    public double get() {
-        return ThreadLocalRandom.current().nextDouble();
+    public int get(int minRange, int maxRange) {
+        return minRange + get(maxRange - minRange);
+    }
+
+    public int get(int... values) {
+        return values[get(values.length - 1)];
+    }
+
+    public <T> T get(T[] values) {
+        return values[get(values.length - 1)];
+    }
+
+    public <T> T get(List<T> list) {
+        return list.get(get(list.size() - 1));
+    }
+
+    public <T> T get(List<T> list, Object exclude) {
+        T result;
+        while ((result = get(list)) == exclude) {}
+        return result;
     }
 
     public double randomDouble() {

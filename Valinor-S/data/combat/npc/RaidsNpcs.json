@@ -281,29 +281,29 @@
   {
 	// Tekton
 	"ids": [
-	  7542
+      7540, 7541, 7542, 7545
 	],
     "boss": true,
-	"maxhit": 50,
-	"attackspeed": 4,
+	"maxhit": 40,
+	"attackspeed": 6,
 	"deathlen": 3,
 	"unstacked": true,
 	"slayerxp": 0,
 	"slayerlvl": 1,
 	"stats": {
-	  "attack": 500,
-	  "strength": 400,
-	  "magic": 300,
-	  "ranged": 300,
-	  "defence": 280,
-	  "hitpoints": 5000
+	  "attack": 390,
+	  "strength": 390,
+	  "magic": 205,
+	  "ranged": 1,
+	  "defence": 205,
+	  "hitpoints": 300
 	},
 	"bonuses": {
-	  "stabdefence": 50,
-	  "slashdefence": 50,
-	  "crushdefence": 0,
-	  "rangeddefence": 2800,
-	  "magicdefence": 500
+	  "stabdefence": 155,
+	  "slashdefence": 165,
+	  "crushdefence": 105,
+	  "rangeddefence": 0,
+	  "magicdefence": 0
 	},
 	"animations": {
 	  "attack": 7482,
@@ -311,20 +311,19 @@
 	  "death": 7495
 	},
 	"scripts": {
-	  "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox.Tekton",
-      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox.Tekton",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.TektonDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.TektonAgro"
 	}
   },
   {
     // Tekton
     "ids": [
-      7544
+      7543, 7544
     ],
-    "aggressive": true,
-    "aggroradius": 7,
     "boss": true,
-    "maxhit": 59,
-    "attackspeed": 3,
+    "maxhit": 50,
+    "attackspeed": 6,
     "deathlen": 3,
     "unstacked": true,
     "slayerxp": 0,
@@ -335,7 +334,7 @@
       "magic": 0,
       "ranged": 1,
       "defence": 205,
-      "hitpoints": 1250
+      "hitpoints": 600
     },
     "bonuses": {
       "stabdefence": 280,
@@ -352,7 +351,7 @@
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox.Tekton",
       "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.TektonDroptable",
-      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.TektonAgro"
     }
   },
   {
