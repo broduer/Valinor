@@ -24,7 +24,6 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MagicCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MeleeCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.RangedCombatMethod;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.abyssalsire.AbyssalSireState;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.bandos.Graardor;
@@ -754,16 +753,6 @@ public class CombatFactory {
                 entity.message("You cannot attack this monster.");
                 return false;
             }
-
-            //If we're attacking the Abyssal Sire and it's currently disoriented..
-            if ((other.getAsNpc()).id() == 5886) {
-                var combatState = other.<AbyssalSireState>getAttribOr(AttributeKey.ABYSSAL_SIRE_STATE, AbyssalSireState.DISORIENTED);
-
-                if (combatState == AbyssalSireState.DISORIENTED) {
-                    entity.message("The sire is disoriented. Maybe you can do something useful while it's unable to control the tentacles.");
-                    return false;
-                }
-            }
         }
 
         // The last time our target was attacked
@@ -783,13 +772,6 @@ public class CombatFactory {
             if (wep == 10501) {
                 entity.message("You can only pelt other players with a snowball.");
                 return false;
-            } else if (oppNpc.id() == 5914) {
-                var respiratoryState = other.<AbyssalSireState>getAttribOr(AttributeKey.ABYSSAL_SIRE_STATE, AbyssalSireState.STASIS);
-
-                if (respiratoryState == AbyssalSireState.STASIS) {
-                    entity.message("I can't reach that!");
-                    return false;
-                }
             }
 
             // The kraken boss already has a focus. Multi doesn't matter now.

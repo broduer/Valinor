@@ -31,11 +31,9 @@ import static com.valinor.util.NpcIdentifiers.THE_NIGHTMARE_9430;
 public enum Collection {
 
     // OSRS bosses
-    /*TODO
     ABYSSAL_SIRE(AttributeKey.KC_ABYSSALSIRE, LogType.BOSSES,"Abyssal Sire", new int[]{NpcIdentifiers.ABYSSAL_SIRE}, AttributeKey.ABYSSALSIRE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
         new Item(ABYSSAL_ORPHAN), new Item(UNSIRED), new Item(ABYSSAL_HEAD), new Item(BLUDGEON_SPINE), new Item(BLUDGEON_CLAW), new Item(BLUDGEON_AXON), new Item(JAR_OF_MIASMA), new Item(ABYSSAL_DAGGER), new Item(ABYSSAL_WHIP)),
-    */
 
     BARROWS(AttributeKey.BARROWS_CHESTS_OPENED, LogType.BOSSES, "Barrows", new int[]{-1},  AttributeKey.BARROWS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS), new Item(BARROWS_MYSTERY_BOX, 10), new Item(CustomItemIdentifiers.CURSED_AMULET_OF_THE_DAMNED)},
         //Drops

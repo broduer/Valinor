@@ -2795,6 +2795,23 @@ public class Player extends Mob {
         });
     }
 
+    public void doubleItemBox(String message, int id, int id2) {
+        this.getDialogueManager().start(new Dialogue() {
+            @Override
+            protected void start(Object... parameters) {
+                send(DialogueType.DOUBLE_ITEM_STATEMENT, new Item(id), new Item(id2), message);
+                setPhase(0);
+            }
+
+            @Override
+            protected void next() {
+                if (isPhase(0)) {
+                    stop();
+                }
+            }
+        });
+    }
+
     public void itemBox(String message, int id, int amount) {
         this.getDialogueManager().start(new Dialogue() {
             @Override

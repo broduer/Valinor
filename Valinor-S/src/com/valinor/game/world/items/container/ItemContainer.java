@@ -1370,6 +1370,19 @@ public class ItemContainer implements Iterable<Item> {
         return null;
     }
 
+    public ArrayList<Item> collectOneOfEach(int... ids) {
+        ArrayList<Item> list = new ArrayList<>(ids.length);
+        i: for(int id : ids) {
+            for(Item item : items) {
+                if(item != null && item.getId() == id) {
+                    list.add(item);
+                    continue i;
+                }
+            }
+        }
+        return list.size() != ids.length ? null : list;
+    }
+
     /** Sets the value for {@link #firingEvents}. */
     public void setFiringEvents(boolean firingEvents) {
         this.firingEvents = firingEvents;
