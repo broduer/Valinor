@@ -1,13 +1,12 @@
 package com.valinor.game.content.items_kept_on_death;
 
-import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
-import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -26,9 +25,9 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class ItemsKeptOnDeath {
 
-   private static List<Item> itemsKeptOnDeath = new ArrayList<>();
-   private static List<Item> itemsAlwaysKeptOnDeath = new ArrayList<>();
-   private static List<Item> itemsLostOnDeath = new ArrayList<>();
+   private static final List<Item> itemsKeptOnDeath = new ArrayList<>();
+   private static final List<Item> itemsAlwaysKeptOnDeath = new ArrayList<>();
+   private static final List<Item> itemsLostOnDeath = new ArrayList<>();
    private static long lostItemsValue = 0;
 
     /**
@@ -46,9 +45,6 @@ public class ItemsKeptOnDeath {
      */
     public static void sendInterfaceData(Player player) {
         clearAndRecalc(player);
-        // 2ndly need to heavily optimize risk calc
-
-        // no need to send all these when inter isnt even open
         player.getPacketSender().sendItemOnInterface(17109, itemsKeptOnDeath.toArray(new Item[0]));
         player.getPacketSender().sendItemOnInterface(17110, itemsAlwaysKeptOnDeath.toArray(new Item[0]));
         player.getPacketSender().sendItemOnInterface(17111, itemsLostOnDeath.toArray(new Item[0]));
@@ -235,7 +231,7 @@ public class ItemsKeptOnDeath {
 
     /**
      * anything that isn't always kept, stuff that converts, zulrah, things with charges, etc
-     * mimics {@link com.valinor.game.task.impl.PlayerDeathTask#dropItems(Player, Mob)} {@code toDrop.foreach() block}
+     * mimics {@link com.valinor.game.task.impl.Death#dropItems(Player, Mob)} {@code toDrop.foreach() block}
      */
     private static boolean changes(Item item) {
         return item.definition(World.getWorld()).changes;

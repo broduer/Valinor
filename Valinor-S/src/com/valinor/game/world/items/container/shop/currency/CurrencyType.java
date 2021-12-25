@@ -24,6 +24,7 @@ public enum CurrencyType {
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
     BOSS_POINTS(new BossPointsCurrency()),
+    ACHIEVEMENT_POINTS(new AchievementPointsCurrency()),
     PK_POINTS(new PkPointsCurrency());
 
     private static final ImmutableSet<CurrencyType> VALUES = ImmutableSet.copyOf(values());
@@ -56,6 +57,10 @@ public enum CurrencyType {
             case BOSS_POINTS -> {
                 int bossPoints = player.getAttribOr(AttributeKey.BOSS_POINTS, 0);
                 value = Utils.formatNumber(bossPoints);
+            }
+            case ACHIEVEMENT_POINTS -> {
+                int achievementPoints = player.getAttribOr(AttributeKey.ACHIEVEMENT_POINTS, 0);
+                value = Utils.formatNumber(achievementPoints);
             }
             case PK_POINTS -> {
                 int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);

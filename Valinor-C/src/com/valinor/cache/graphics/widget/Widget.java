@@ -3448,7 +3448,7 @@ public class Widget {
         container.sprites = new SimpleImage[20];
         container.inventoryOffsetX = new int[20];
         container.inventoryOffsetY = new int[20];
-        container.inventoryMarginX = 14;
+        container.inventoryMarginX = 17;
         container.inventoryMarginY = 4;
         container.inventoryItemId = new int[maxItemsOnSingleRow * rows];
         container.inventoryAmounts = new int[maxItemsOnSingleRow * rows];

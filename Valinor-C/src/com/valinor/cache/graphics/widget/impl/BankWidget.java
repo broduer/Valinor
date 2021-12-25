@@ -7,6 +7,8 @@ import com.valinor.cache.graphics.font.AdvancedFont;
 import com.valinor.cache.graphics.widget.Widget;
 import com.valinor.util.ConfigUtility;
 
+import java.util.Arrays;
+
 /**
  * This class represents the bank interface, referenced: https://oldschool.runescape.wiki/w/Bank
  * @author Zerikoth | 1 sep. 2019 : 14:39:32
@@ -95,6 +97,7 @@ public class BankWidget extends Widget {
         cache[5385].height -= 18;
         cache[5385].scrollMax = 1444;
         cache[5382].contentType = 206;
+
         bank.child(0, interfaceId + 1, 12, 2);
         bank.child(1, interfaceId + 2, 472, 9);
         bank.child(2, interfaceId + 3, 472, 9);

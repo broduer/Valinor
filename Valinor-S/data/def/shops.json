@@ -1027,26 +1027,6 @@
         "amount": 100000
       },
       {
-        "id": 10382,
-        "amount": 100000
-      },
-      {
-        "id": 10378,
-        "amount": 100000
-      },
-      {
-        "id": 10380,
-        "amount": 100000
-      },
-      {
-        "id": 10376,
-        "amount": 100000
-      },
-      {
-        "id": 19927,
-        "amount": 100000
-      },
-      {
         "id": 1135,
         "amount": 100000
       },
@@ -1056,26 +1036,6 @@
       },
       {
         "id": 1065,
-        "amount": 100000
-      },
-      {
-        "id": 10390,
-        "amount": 100000
-      },
-      {
-        "id": 10386,
-        "amount": 100000
-      },
-      {
-        "id": 10388,
-        "amount": 100000
-      },
-      {
-        "id": 10384,
-        "amount": 100000
-      },
-      {
-        "id": 19933,
         "amount": 100000
       },
       {
@@ -1091,26 +1051,6 @@
         "amount": 100000
       },
       {
-        "id": 10374,
-        "amount": 100000
-      },
-      {
-        "id": 10370,
-        "amount": 100000
-      },
-      {
-        "id": 10372,
-        "amount": 100000
-      },
-      {
-        "id": 10368,
-        "amount": 100000
-      },
-      {
-        "id": 19936,
-        "amount": 100000
-      },
-      {
         "id": 2501,
         "amount": 100000
       },
@@ -1120,90 +1060,6 @@
       },
       {
         "id": 2489,
-        "amount": 100000
-      },
-      {
-        "id": 12512,
-        "amount": 100000
-      },
-      {
-        "id": 12508,
-        "amount": 100000
-      },
-      {
-        "id": 12510,
-        "amount": 100000
-      },
-      {
-        "id": 12506,
-        "amount": 100000
-      },
-      {
-        "id": 19930,
-        "amount": 100000
-      },
-      {
-        "id": 12504,
-        "amount": 100000
-      },
-      {
-        "id": 12500,
-        "amount": 100000
-      },
-      {
-        "id": 12502,
-        "amount": 100000
-      },
-      {
-        "id": 12498,
-        "amount": 100000
-      },
-      {
-        "id": 19924,
-        "amount": 100000
-      },
-      {
-        "id": 12496,
-        "amount": 100000
-      },
-      {
-        "id": 12492,
-        "amount": 100000
-      },
-      {
-        "id": 12494,
-        "amount": 100000
-      },
-      {
-        "id": 12490,
-        "amount": 100000
-      },
-      {
-        "id": 19921,
-        "amount": 100000
-      },
-      {
-        "id": 22269,
-        "amount": 100000
-      },
-      {
-        "id": 22272,
-        "amount": 100000
-      },
-      {
-        "id": 22275,
-        "amount": 100000
-      },
-      {
-        "id": 22278,
-        "amount": 100000
-      },
-      {
-        "id": 22281,
-        "amount": 100000
-      },
-      {
-        "id": 22284,
         "amount": 100000
       }
     ]
@@ -4311,7 +4167,7 @@
     "name": "Crafting Shop",
     "currency": "COINS",
     "restock": true,
-    "noiron": false,
+    "noiron": true,
     "sellType": "NONE",
     "scroll": 0,
     "items": [
@@ -4323,11 +4179,67 @@
     "name": "Fletching Shop",
     "currency": "COINS",
     "restock": true,
-    "noiron": false,
+    "noiron": true,
     "sellType": "NONE",
     "scroll": 0,
     "items": [
 
+    ]
+  },
+  {
+    "shopId": 52,
+    "name": "Achievement Points Shop",
+    "currency": "ACHIEVEMENT_POINTS",
+    "restock": true,
+    "noiron": false,
+    "sellType": "NONE",
+    "scroll": 0,
+    "items": [
+      {
+        "id": 775,
+        "amount": 100000,
+        "value": 25
+      },
+      {
+        "id": 7409,
+        "amount": 100000,
+        "value": 25
+      },
+      {
+        "id": 13128,
+        "amount": 100000,
+        "value": 50
+      },
+      {
+        "id": 22947,
+        "amount": 100000,
+        "value": 35
+      },
+      {
+        "id": 6465,
+        "amount": 100000,
+        "value": 75
+      },
+      {
+        "id": 13124,
+        "amount": 100000,
+        "value": 35
+      },
+      {
+        "id": 13116,
+        "amount": 100000,
+        "value": 35
+      },
+      {
+        "id": 13116,
+        "amount": 100000,
+        "value": 35
+      },
+      {
+        "id": 13116,
+        "amount": 100000,
+        "value": 35
+      }
     ]
   }
 ]

@@ -18,23 +18,26 @@ public class ShopWidget extends Widget {
     private static void shop_with_scrollbar() {
         // Set up the shop inventory
         Widget shopInventory = cache[3900];
-        shopInventory.inventoryItemId = new int[200];
-        shopInventory.inventoryAmounts = new int[200];
-        shopInventory.itemOpacity = new int[200];
+
+        shopInventory.inventoryItemId = new int[100];
+        shopInventory.inventoryAmounts = new int[100];
+        shopInventory.itemOpacity = new int[100];
         shopInventory.drawInfinity = true;
-        shopInventory.width = 8;
-        shopInventory.height = 25;
+        shopInventory.width = 9;
+        shopInventory.height = 12;
+        shopInventory.inventoryMarginX = 18;
+        shopInventory.inventoryMarginY = 25;
 
         // The scroll, add the shop inventory to it.
         Widget scroll = addTabInterface(32995);
         scroll.totalChildren(1);
         setBounds(3900, 0, 0, 0, scroll);
         scroll.height = 230;
-        scroll.width = 390;
+        scroll.width = 440;
         scroll.scrollMax = 230;
 
         // Position the item container in the actual shop interface
-        setBounds(32995, 75, 65, 75, cache[3824]);
+        setBounds(32995, 26, 65,75, cache[3824]);
     }
 
     private static void shop_with_close_button(AdvancedFont[] font) {

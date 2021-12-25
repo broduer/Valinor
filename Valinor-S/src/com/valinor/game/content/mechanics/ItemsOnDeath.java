@@ -2,6 +2,7 @@ package com.valinor.game.content.mechanics;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
+import com.valinor.game.content.items_kept_on_death.Conversions;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
 import com.valinor.game.content.mechanics.break_items.BrokenItem;
 import com.valinor.game.content.minigames.MinigameManager;
@@ -13,10 +14,8 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
-import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.IronMode;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
@@ -24,11 +23,7 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.test.unit.IKODTest;
 import com.valinor.test.unit.PlayerDeathConvertResult;
 import com.valinor.test.unit.PlayerDeathDropResult;
-import com.valinor.util.Color;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -266,7 +261,13 @@ public class ItemsOnDeath {
                 || item.getId() == AncientArtifacts.ANCIENT_MEDALLION.getItemId()
                 || item.getId() == AncientArtifacts.ANCIENT_RELIC.getItemId()
                 || item.getId() == AncientArtifacts.ANCIENT_STATUETTE.getItemId()
-                || item.getId() == AncientArtifacts.ANCIENT_TOTEM.getItemId()) {
+                || item.getId() == AncientArtifacts.ANCIENT_TOTEM.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_EMBLEM.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_TOTEM.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_STATUETTE.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_MEDALLION.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_EFFIGY.getItemId()
+                || item.getId() == AncientArtifacts.DARK_ANCIENT_RELIC.getItemId()) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(item.getId()), player.tile(), theKiller));
                 outputDrop.add(new Item(item.getId()));
                 // dont add to toDropConverted, we're manually dropping it
@@ -301,6 +302,45 @@ public class ItemsOnDeath {
             }
 
             // IKODTest.debug("dc2: "+item.toShortString());
+            boolean[] converted = new boolean[1];
+
+            if (item.getId() == SARADOMINS_BLESSED_SWORD) { //Saradomin's blessed sword
+                converted[0] = true;
+                toDropConverted.add(new Item(SARADOMIN_SWORD));
+                toDropConverted.add(new Item(SARADOMINS_TEAR));
+            }
+
+            if (!npcFlag) { // Don't bother converting for suicide
+                for (Conversions con : Conversions.values()) {
+                    //These don't convert
+                    if (!converted[0] && con.src.getId() == item.getId()) {
+                        converted[0] = true; // Set that the original item should not be dropped
+                        for (Item out : con.out) {
+                            toDropConverted.add(new Item(out));
+                        }
+                        break;
+                    }
+                }
+                if (converted[0]) {
+                    // dont add the OG item to toDropConverted - its already been changed+added above
+                    return;
+                }
+            }
+
+            // Not yet converted... check some more. Only if non-suicide (you got pked) otherwise just be nice and give back the item untouched.
+            if (!converted[0] && !npcFlag) {
+                if (item.getId() >= 8714 && item.getId() <= 8744) {
+                    item = new Item(1201); // Rune kiteshield
+                } else if (item.getId() >= 8682 && item.getId() <= 8712) {
+                    item = new Item(1157); // Steel fullhelm
+                } else if (item.getId() == 12006) {
+                    item = new Item(12004); //Abyssal tent -> Kraken tent
+                } else if (Item.isCrystal(item.getId())) {
+                    item = new Item(4207);
+                } else if (item.skillcape()) {
+                    item = new Item(995, 11800);
+                }
+            }
 
             // if we've got to here, add the original or changed SINGLE item to the newer list
             toDropConverted.add(item);
