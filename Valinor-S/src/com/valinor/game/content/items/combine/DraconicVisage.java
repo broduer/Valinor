@@ -23,7 +23,7 @@ public class DraconicVisage extends Interaction {
             if (item.getId() == DRACONIC_VISAGE) {
                 player.faceObj(object);
                 if (player.skills().xpLevel(Skills.SMITHING) < 90) {
-                    player.message("You don't have the skills required to make this. You need 90 Smithing.");
+                    player.message("You don't have the skills required to make this you need 90 Smithing.");
                     return true;
                 }
 
