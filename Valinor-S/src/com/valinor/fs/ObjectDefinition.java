@@ -59,6 +59,7 @@ public class ObjectDefinition implements Definition {
 
     public int id;
     private int anInt2167;
+    public boolean boolean3 = true;
 
     public ObjectDefinition(int id, byte[] data) {
         this.id = id;
@@ -83,7 +84,7 @@ public class ObjectDefinition implements Definition {
         if (id == 7811) {
             name = "Supplies";
             options[1] = "Blood money supplies";
-            options[1] = null;
+            options[2] = null;
         }
 
         if (id == 29149) {
@@ -271,7 +272,40 @@ public class ObjectDefinition implements Definition {
             unclipped = true;
         } else if (code == 75) {
             anInt2298 = buffer.readUByte();
-        } else if (code == 77 || code == 92) {
+        } else if (code != 77 && code != 92) {
+            if (code == 78) {
+                anInt2302 = buffer.readUShort();
+                anInt2303 = buffer.readUByte();
+            } else if (code == 79) {
+                anInt2304 = buffer.readUShort();
+                anInt2290 = buffer.readUShort();
+                anInt2303 = buffer.readUByte();
+                int count = buffer.readUByte();
+                anIntArray2306 = new int[count];
+
+                for (int i = 0; i < count; i++) {
+                    anIntArray2306[i] = buffer.readUShort();
+                }
+            } else if (code == 81) {
+                anInt2296 = buffer.readUByte();
+            } else if (code == 82) {
+                this.anInt2167 = buffer.readUShort();
+            } else if (code == 89) {
+                boolean3 = false;
+            } else if (code == 249) {
+                int length = buffer.readUByte();
+                int index;
+                if (clientScriptData == null) {
+                    index = method32(length);
+                    clientScriptData = new HashMap<>(index);
+                }
+                for (index = 0; index < length; index++) {
+                    boolean stringData = buffer.readUByte() == 1;
+                    int key = buffer.readTriByte();
+                    clientScriptData.put(key, stringData ? buffer.readString() : buffer.readInt());
+                }
+            }
+        } else {
             varbit = buffer.readUShort();
             if (varbit == 65535) {
                 varbit = -1;
@@ -301,37 +335,6 @@ public class ObjectDefinition implements Definition {
             }
 
             to_objs[1 + count] = count2;
-        } else if (code == 78) {
-            anInt2302 = buffer.readUShort();
-            anInt2303 = buffer.readUByte();
-        } else if (code == 79) {
-            anInt2304 = buffer.readUShort();
-            anInt2290 = buffer.readUShort();
-            anInt2303 = buffer.readUByte();
-            int count = buffer.readUByte();
-            anIntArray2306 = new int[count];
-
-            for (int i = 0; i < count; i++) {
-                anIntArray2306[i] = buffer.readUShort();
-            }
-        } else if (code == 81) {
-            anInt2296 = buffer.readUByte();
-        } else if (code == 82) {
-            this.anInt2167 = buffer.readUShort();
-        } else if (code == 249) {
-            int length = buffer.readUByte();
-            int index;
-            if (clientScriptData == null) {
-                index = method32(length);
-                clientScriptData = new HashMap<>(index);
-            }
-            for (index = 0; index < length; index++) {
-                boolean stringData = buffer.readUByte() == 1;
-                int key = buffer.readTriByte();
-                clientScriptData.put(key, stringData ? buffer.readString() : buffer.readInt());
-            }
-        } else {
-            throw new RuntimeException("cannot parse object definition, missing config code: " + code);
         }
     }
 
