@@ -2717,49 +2717,6 @@ public class Player extends Mob {
         });
     }
 
-    public void costBMAction(int cost, String title, Runnable runnable) {
-        this.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.STATEMENT, title);
-                setPhase(0);
-            }
-
-            @Override
-            protected void next() {
-                if (isPhase(0)) {
-                    send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
-                    setPhase(1);
-                }
-            }
-
-            @Override
-            protected void select(int option) {
-                if (isPhase(1)) {
-                    if (option == 1) {
-                        var canPerformAction = false;
-                        int bmInInventory = player.inventory().count(BLOOD_MONEY);
-                        if (bmInInventory > 0) {
-                            if (bmInInventory >= cost) {
-                                canPerformAction = true;
-                                player.inventory().remove(new Item(BLOOD_MONEY, cost), true);
-                            }
-                        }
-
-                        if (canPerformAction) {
-                            if (runnable != null) {
-                                runnable.run();
-                            }
-                        } else {
-                            player.message("You do not have enough Blood money.");
-                        }
-                    }
-                    stop();
-                }
-            }
-        });
-    }
-
     public void itemBox(String message, int id) {
         this.getDialogueManager().start(new Dialogue() {
             @Override

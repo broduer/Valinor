@@ -250,7 +250,7 @@ public class ItemDrops {
         treasureCasketChance -= reduction;
 
         if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {
-            Item clueItem = new Item(TreasureRewardCaskets.MASTER_CASKET);
+            Item clueItem = new Item(TREASURE_CASKET);
             GroundItem groundItem = new GroundItem(clueItem, killer.tile(), killer);
             GroundItemHandler.createGroundItem(groundItem);
             notification(killer, clueItem);

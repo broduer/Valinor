@@ -14,6 +14,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomItemIdentifiers.CLOAK_OF_INVISIBILITY;
 import static com.valinor.util.CustomNpcIdentifiers.SKELETON_HELLHOUND_PET;
 import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.ZAMORAK_GODSWORD_ORNAMENT_KIT;
 
 public class HoverMenuManager {
 
@@ -59,28 +60,32 @@ public class HoverMenuManager {
         menus.put(ARMADYL_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@ and accuracy by @red@+25%@whi@."));
         menus.put(BANDOS_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(SARADOMIN_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
-        menus.put(ZAMORAK_ARMOUR_SET_SK, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(ZAMORAK_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(AMULET_OF_FURY_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(OCCULT_NECKLACE_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(AMULET_OF_TORTURE_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(NECKLACE_OF_ANGUISH_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
         menus.put(TORMENTED_BRACELET_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));
-        menus.put(GRANITE_MAUL_12848, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(ARMADYL_GODSWORD_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@ and accuracy by @red@+25%@whi@."));
+        menus.put(BANDOS_GODSWORD_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(SARADOMIN_GODSWORD_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(ZAMORAK_GODSWORD_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(FURY_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(OCCULT_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(TORTURE_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(ANGUISH_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(TORMENTED_ORNAMENT_KIT, new HoverMenu("Increases your max hit by @red@+1@whi@."));
+        menus.put(DRAGON_DEFENDER_ORNAMENT_KIT, new HoverMenu("A cosmetic version of the weapon."));
+        menus.put(RUNE_DEFENDER_ORNAMENT_KIT, new HoverMenu("A cosmetic version of the weapon."));
+        menus.put(RUNE_SCIMITAR_ORNAMENT_KIT_GUTHIX, new HoverMenu("A cosmetic version of the weapon."));
+        menus.put(RUNE_SCIMITAR_ORNAMENT_KIT_SARADOMIN, new HoverMenu("A cosmetic version of the weapon."));
+        menus.put(RUNE_SCIMITAR_ORNAMENT_KIT_ZAMORAK, new HoverMenu("A cosmetic version of the weapon."));
+
         menus.put(DRAGON_CLAWS_OR, new HoverMenu("Increases your max hit by @red@+1, and a accuracy boost of @red@+50%@whi@."));
         menus.put(RING_OF_MANHUNTING, new HoverMenu("Has both the effects of the @red@Berserker Ring@whi@ and @red@Ring Of Suffering@whi@."));
         menus.put(RING_OF_SORCERY, new HoverMenu("Has both the effects of the @red@Seer Ring (i)@whi@ and @red@Ring Of Recoil@whi@."));
         menus.put(RING_OF_PRECISION, new HoverMenu("Has both the effects of the Archers Ring (i)@whi@ and @red@Ring Of Recoil@whi@ And @red@+5@whi@ Ranged Strength."));
         menus.put(RING_OF_TRINITY, new HoverMenu("The effect of all forged rings combined into one."));
-        menus.put(SLAYER_HELMET_I, new HoverMenu("Whilst wearing you receive a @red@5%@whi@ extra PKP boost for killing players."));
-        menus.put(GREEN_SLAYER_HELMET_I, new HoverMenu("Whilst wearing you receive a @red@10%@whi@ Ranged Strength boost."));
-        menus.put(TURQUOISE_SLAYER_HELMET_I, new HoverMenu("Whilst wearing you receive a @red@10%@whi@ Magic Strength boost."));
-        menus.put(RED_SLAYER_HELMET_I, new HoverMenu("Whilst wearing you receive a @red@10%@whi@ Melee Strength boost."));
-        menus.put(BLACK_SLAYER_HELMET_I, new HoverMenu("Whilst wearing you receive a @red@10%@whi@ extra PKP boost for killing players."));
-        menus.put(TWISTED_SLAYER_HELMET_I, new HoverMenu("Combined effect of all imbued slayer helmets into one."));
-        menus.put(TWISTED_SLAYER_HELMET_I_KBD_HEADS, new HoverMenu("Combined effect of all imbued slayer helmets into one."));
-        menus.put(PURPLE_SLAYER_HELMET_I, new HoverMenu("Combined effect of all imbued slayer helmets into one."));
-        menus.put(HYDRA_SLAYER_HELMET_I, new HoverMenu("Combined effect of all imbued slayer helmets into one."));
-        menus.put(ELDER_MAUL_21205, new HoverMenu("A recolored version of the Elder maul! +1 max hit and better accuracy <col=65535>Untradeable and auto-keep."));
         menus.put(MAGMA_BLOWPIPE, new HoverMenu("A recolored version of the Toxic blowpipe! +3 max hit and better accuracy <col=65535>Untradeable and auto-keep."));
         menus.put(VENGEANCE_SKULL, new HoverMenu("With this item in your inventory, you won't need the required runes for vengeance! <col=65535>Untradeable and auto-keep."));
         menus.put(KEY_OF_DROPS, new HoverMenu("When using the Key of drops on a mystery box you will be guaranteed a rare drop. And 20% chance of a extreme rare drop."));

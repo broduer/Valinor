@@ -55,7 +55,7 @@ public class Caskets extends Interaction {
                 amount += extra;
             }
             player.inventory().remove(new Item(CASKET_7956), true);
-            player.inventory().add(new Item(BLOOD_MONEY, amount), true);
+            player.inventory().add(new Item(COINS_995, amount), true);
             player.message("You open the casket and find " + Utils.formatNumber(amount) + " coins!");
         }
     }

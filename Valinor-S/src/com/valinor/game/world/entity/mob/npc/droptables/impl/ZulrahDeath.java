@@ -15,8 +15,8 @@ import com.valinor.game.world.position.Tile;
 import java.util.Optional;
 
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.game.content.treasure.TreasureRewardCaskets.MASTER_CASKET;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
+import static com.valinor.util.CustomItemIdentifiers.TREASURE_CASKET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -35,7 +35,7 @@ public class ZulrahDeath implements Droptable {
             pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
 
             if (World.getWorld().rollDie(50, 1)) {
-                drop(npc, new Tile(2262, 3072, killer.tile().level), killer, new Item(MASTER_CASKET,1));
+                drop(npc, new Tile(2262, 3072, killer.tile().level), killer, new Item(TREASURE_CASKET,1));
                 killer.message("<col=0B610B>You have received a treasure casket drop!");
             }
 

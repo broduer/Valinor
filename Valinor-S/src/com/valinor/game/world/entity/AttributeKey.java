@@ -1023,6 +1023,11 @@ public enum AttributeKey {
     // the perk used to toggle the ROL effect from the cape
     MAXCAPE_ROL_ON("max_cape_perk_toggle", AttribType.INTEGER),
 
+    /**
+     * The amount of BH points we have collected.
+     */
+    BOUNTY_HUNTER_POINTS("bounty_hunter_points", AttribType.INTEGER),
+
     // NPC killcounts shown on the slayer log of the Slayer gem.
     KC_CRAWL_HAND("npckc1", AttribType.INTEGER),
     KC_CAVE_BUG("npckc2", AttribType.INTEGER),

@@ -11,16 +11,16 @@ import com.valinor.util.Utils;
 
 import java.text.NumberFormat;
 
+import static com.valinor.util.CustomItemIdentifiers.TREASURE_CASKET;
+
 /**
  * Created by Situations on 2016-11-05.
  */
 public class TreasureRewardCaskets {
 
-    public static final int MASTER_CASKET = 19836;
-
     public static boolean openCasket(Player player, Item casket) {
-        if (casket.getId() == MASTER_CASKET) {
-            reward(player, new Item(MASTER_CASKET));
+        if (casket.getId() == TREASURE_CASKET) {
+            reward(player, new Item(TREASURE_CASKET));
             return true;
         }
         return false;

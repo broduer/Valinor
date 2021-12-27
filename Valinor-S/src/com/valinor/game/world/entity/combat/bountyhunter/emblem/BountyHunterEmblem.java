@@ -14,26 +14,24 @@ import java.util.stream.Collectors;
  */
 public enum BountyHunterEmblem {
 
-    ANTIQUE_EMBLEM_TIER_1(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1,250,1,0),
-    ANTIQUE_EMBLEM_TIER_2(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_2,500,2,1),
-    ANTIQUE_EMBLEM_TIER_3(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_3,1000,4,2),
-    ANTIQUE_EMBLEM_TIER_4(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_4,2500,8,3),
-    ANTIQUE_EMBLEM_TIER_5(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_5,6000,12,4),
-    ANTIQUE_EMBLEM_TIER_6(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_6,10000,15,5),
-    ANTIQUE_EMBLEM_TIER_7(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_7,15000,20,6),
-    ANTIQUE_EMBLEM_TIER_8(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_8,20000,25,7),
-    ANTIQUE_EMBLEM_TIER_9(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_9,25000,32,8),
-    ANTIQUE_EMBLEM_TIER_10(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_10,30000,40,9);
+    ANTIQUE_EMBLEM_TIER_1(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1,50_000,0),
+    ANTIQUE_EMBLEM_TIER_2(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_2,100_000,1),
+    ANTIQUE_EMBLEM_TIER_3(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_3,200_000,2),
+    ANTIQUE_EMBLEM_TIER_4(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_4,400_000,3),
+    ANTIQUE_EMBLEM_TIER_5(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_5,750_000,4),
+    ANTIQUE_EMBLEM_TIER_6(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_6,1_200_000,5),
+    ANTIQUE_EMBLEM_TIER_7(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_7,1_750_000,6),
+    ANTIQUE_EMBLEM_TIER_8(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_8,2_500_000,7),
+    ANTIQUE_EMBLEM_TIER_9(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_9,3_500_000,8),
+    ANTIQUE_EMBLEM_TIER_10(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_10,5_000_000,9);
 
     private final int itemId;
-    private final int bm;
-    private final int targetPoints;
+    private final int bountyPoints;
     private final int index;
 
-    BountyHunterEmblem(int itemId, int bm, int targetPoints, int index) {
+    BountyHunterEmblem(int itemId, int bountyPoints, int index) {
         this.itemId = itemId;
-        this.bm = bm;
-        this.targetPoints = targetPoints;
+        this.bountyPoints = bountyPoints;
         this.index = index;
     }
 
@@ -41,12 +39,8 @@ public enum BountyHunterEmblem {
         return itemId;
     }
 
-    public int getBm() {
-        return bm;
-    }
-
-    public int getTargetPoints() {
-        return targetPoints;
+    public int getBountyPoints() {
+        return bountyPoints;
     }
 
     public int getIndex() {

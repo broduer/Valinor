@@ -33,7 +33,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.valinor.game.world.entity.AttributeKey.*;
-import static com.valinor.util.CustomItemIdentifiers.BLOODY_TOKEN;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -47,8 +46,6 @@ public class TradingPost {
     public static final int[] ILLEGAL_ITEMS = new int[]{
         COINS_995,
         PLATINUM_TOKEN,
-        BLOOD_MONEY,
-        BLOODY_TOKEN
     };
 
     public static boolean TRADING_POST_ENABLED = true;

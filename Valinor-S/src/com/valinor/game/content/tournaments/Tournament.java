@@ -23,8 +23,7 @@ import java.util.*;
 
 import static com.valinor.game.content.tournaments.TournamentUtils.LOBBY_TILE;
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
-import static com.valinor.util.ItemIdentifiers.DRAGON_CLAWS;
+import static com.valinor.util.ItemIdentifiers.*;
 import static java.lang.String.format;
 
 /**
@@ -363,7 +362,7 @@ public class Tournament {
      * The list of items rewarded from a tournament
      */
     private Item setRewards() {
-        var possible_rewards = new Item[] {new Item(DRAGON_CLAWS, 1), new Item(BLOOD_MONEY, 100_000), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 5), new Item(TEN_DOLLAR_BOND, 1)};
+        var possible_rewards = new Item[] {new Item(DRAGON_CLAWS, 1), new Item(ARMADYL_GODSWORD, 1), new Item(COINS_995, 50_000_000), new Item(KEY_OF_DROPS, 1), new Item(THIRTY_DOLLAR_BOND, 1), new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 5)};
         return World.getWorld().random(possible_rewards);
     }
 

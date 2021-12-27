@@ -24,7 +24,6 @@ import com.valinor.net.packet.PacketListener;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
@@ -148,7 +147,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         }
                         break;
                     case LOW_ALCHEMY:
-                        if (!item.rawtradable() || item.getId() == BLOOD_MONEY || item.getId() == COINS_995) {
+                        if (!item.rawtradable() || item.getId() == COINS_995) {
                             player.message("You can't alch that item.");
                             return;
                         }
@@ -173,7 +172,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         player.inventory().add(COINS_995, coinAmountToGive);
                         break;
                     case HIGH_ALCHEMY:
-                        if (!item.rawtradable() || item.getId() == BLOOD_MONEY || item.getId() == COINS_995) {
+                        if (!item.rawtradable() || item.getId() == COINS_995) {
                             player.message("You can't alch that item.");
                             return;
                         }

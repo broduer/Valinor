@@ -6,6 +6,7 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int TREASURE_CASKET = 31836;
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
     public static final int GIANT_KEY_OF_DROPS = 30201;
     public static final int COLLECTION_KEY = 30210;
@@ -156,7 +157,6 @@ public class CustomItemIdentifiers {
     public static final int PRIMORDIAL_BOOTS_OR = 30038;
     public static final int PEGASIAN_BOOTS_OR = 30180;
     public static final int ETERNAL_BOOTS_OR = 30182;
-    public static final int BLOODY_TOKEN = 13215;
     public static final int CORRUPTED_BOOTS = 30297;
     public static final int SALAZAR_SLYTHERINS_LOCKET = 32644;
     public static final int FENRIR_GREYBACK_JR = 32643;

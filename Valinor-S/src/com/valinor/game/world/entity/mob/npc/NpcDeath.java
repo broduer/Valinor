@@ -940,7 +940,6 @@ public class NpcDeath {
                 case DEMENTOR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.DEMENTOR.item));
                 case FLUFFY_JR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.FLUFFY_JR.item));
                 case FENRIR_GREYBACK_JR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.FENRIR_GREYBACK_JR.item));
-                case SKELETON_HELLHOUND_PET -> OTHER.log(killer, KILLER, new Item(Pet.SKELETON_HELLHOUND_PET.item));
             }
 
             World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");

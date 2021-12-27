@@ -272,7 +272,7 @@ public abstract class Shop {
             return;
         }
 
-        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
+        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
             player.message("You can't sell this item.");
             return;
         }
@@ -374,7 +374,7 @@ public abstract class Shop {
             return;
         }
 
-        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == BLOOD_MONEY || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
+        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
             player.message("This item can't be sold to shops.");
             return;
         }

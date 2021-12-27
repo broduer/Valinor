@@ -310,6 +310,8 @@ public class PlayerSave {
                 player.putAttrib(SLAYER_REWARD_POINTS, details.slayerRewardPoints);
                 player.putAttrib(BOSS_POINTS, details.bossPoints);
                 player.putAttrib(PK_POINTS, details.pkPoints);
+                player.putAttrib(ACHIEVEMENT_POINTS, details.achievementPoints);
+                player.putAttrib(BOUNTY_HUNTER_POINTS, details.bountyHunterPoints);
                 player.putAttrib(BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, details.teleportToTargetUnlocked);
                 player.putAttrib(PRESERVE, details.preserve);
                 player.putAttrib(RIGOUR, details.rigour);
@@ -562,7 +564,6 @@ public class PlayerSave {
                 player.putAttrib(HERB_BOX_CHARGES, details.herbBoxCharges);
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
                 player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
-                player.putAttrib(ACHIEVEMENT_POINTS, details.achievementPoints);
                 player.putAttrib(KYLIE_MINNOW_DIALOGUE_STARTED, details.kylieMinnowDialogueStarted);
                 return true;
             }
@@ -708,6 +709,8 @@ public class PlayerSave {
         private final int slayerRewardPoints;
         private final int bossPoints;
         private final int pkPoints;
+        private final int achievementPoints;
+        private final int bountyHunterPoints;
 
         //Unlocks
         private final boolean teleportToTargetUnlocked;
@@ -972,7 +975,6 @@ public class PlayerSave {
         private final int herbBoxCharges;
         private final boolean combatMaxed;
         private final int fightCaveWave;
-        private final int achievementPoints;
         private final boolean kylieMinnowDialogueStarted;
 
         public String password() {
@@ -1108,6 +1110,9 @@ public class PlayerSave {
             slayerRewardPoints = Player.getAttribIntOr(player, SLAYER_REWARD_POINTS, 0);
             bossPoints = Player.getAttribIntOr(player, BOSS_POINTS, 0);
             pkPoints = Player.getAttribIntOr(player, PK_POINTS, 0);
+            achievementPoints = Player.getAttribIntOr(player, ACHIEVEMENT_POINTS, 0);
+            bountyHunterPoints = Player.getAttribIntOr(player, BOUNTY_HUNTER_POINTS, 0);
+
             teleportToTargetUnlocked = Player.getAttribBooleanOr(player, BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, false);
             preserve = Player.getAttribBooleanOr(player, PRESERVE, false);
             rigour = Player.getAttribBooleanOr(player, RIGOUR, false);
@@ -1344,7 +1349,6 @@ public class PlayerSave {
             herbBoxCharges = Player.getAttribIntOr(player, HERB_BOX_CHARGES, 0);
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
             fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);
-            achievementPoints = Player.getAttribIntOr(player, ACHIEVEMENT_POINTS, 0);
             kylieMinnowDialogueStarted = Player.getAttribBooleanOr(player, KYLIE_MINNOW_DIALOGUE_STARTED, false);
         }
 

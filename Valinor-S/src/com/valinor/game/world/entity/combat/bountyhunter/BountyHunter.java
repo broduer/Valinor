@@ -1,18 +1,12 @@
 package com.valinor.game.world.entity.combat.bountyhunter;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
-import com.valinor.game.world.entity.mob.player.ExpMode;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.util.Color;
-import com.valinor.util.ItemIdentifiers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +14,6 @@ import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.EMBLEM_WEALTH;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1;
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
 import static com.valinor.util.Utils.formatNumber;
 
 /**
@@ -300,8 +293,8 @@ public class BountyHunter {
         for(BountyHunterEmblem emblem : list) {
             int amount = player.inventory().count(emblem.getItemId());
             if(amount > 0) {
-                targetPoints += (emblem.getTargetPoints() * amount);
-                value += (emblem.getBm() * amount);
+                targetPoints += (emblem.getBountyPoints() * amount);
+                value += (emblem.getBountyPoints() * amount);
                 player.putAttrib(EMBLEM_WEALTH,formatNumber(value)+" BM and "+formatNumber(targetPoints)+" target points");
 
                 if(performSale) {
@@ -309,7 +302,8 @@ public class BountyHunter {
                         return 0;
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
-                    player.inventory().add(new Item(BLOOD_MONEY, value));
+                    var bounties = player.<Integer>getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0) + value;
+                    player.putAttrib(AttributeKey.BOUNTY_HUNTER_POINTS, bounties);
                     player.clearAttrib(EMBLEM_WEALTH);
                 }
             }

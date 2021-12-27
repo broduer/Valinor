@@ -4,7 +4,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
  * @author Patrick van Elderen | December, 09, 2020, 14:14
@@ -25,7 +25,7 @@ public class WildernessStatBoardDialogue extends Dialogue {
                 player.message("We do not yet have this feature.");
                 stop();
             } else if(option == 2) {
-                send(DialogueType.OPTION,"Are you sure you want to do this?", "Yes, reset my K/D and Kill streak for 1,000 BM.", "No.");
+                send(DialogueType.OPTION,"Are you sure you want to do this?", "Yes, reset my K/D and Kill streak for 10m coins.", "No.");
                 setPhase(1);
             } else if(option == 3) {
                 stop();
@@ -33,16 +33,16 @@ public class WildernessStatBoardDialogue extends Dialogue {
         } else if(isPhase(1)) {
             if(option == 1) {
                 boolean canReset = false;
-                int bmInInventory = player.inventory().count(BLOOD_MONEY);
+                int bmInInventory = player.inventory().count(COINS_995);
                 if (bmInInventory > 0) {
-                    if(bmInInventory >= 1000) {
+                    if(bmInInventory >= 10_000_000) {
                         canReset = true;
-                        player.inventory().remove(BLOOD_MONEY, 1000);
+                        player.inventory().remove(COINS_995, 10_000_000);
                     }
                 }
 
                 if(!canReset) {
-                    player.message("You do not have enough BM to do this.");
+                    player.message("You do not have enough coins to do this.");
                     stop();
                     return;
                 }
@@ -50,7 +50,7 @@ public class WildernessStatBoardDialogue extends Dialogue {
                 // Reset current
                 player.putAttrib(AttributeKey.PLAYER_KILLS,0);
                 player.putAttrib(AttributeKey.PLAYER_DEATHS,0);
-                player.message("You have reset your K/D and Kill streak for 1000 BM.");
+                player.message("You have reset your K/D and Kill streak for 10m coins.");
                 stop();
             } else if(option == 2) {
                 stop();

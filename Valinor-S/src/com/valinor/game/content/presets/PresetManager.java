@@ -41,8 +41,6 @@ public class PresetManager {
     public static final int[] ILLEGAL_ITEMS = new int[]{
         COINS_995,
         PLATINUM_TOKEN,
-        BLOOD_MONEY,
-        BLOODY_TOKEN,
         CustomItemIdentifiers.VALINOR_COINS,
         CustomItemIdentifiers.VOTE_TICKET
     };

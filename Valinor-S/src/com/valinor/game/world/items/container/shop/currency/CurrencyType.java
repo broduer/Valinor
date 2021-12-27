@@ -24,7 +24,10 @@ public enum CurrencyType {
     VOTE_POINTS(new VotePointsCurrency()),
     BOSS_POINTS(new BossPointsCurrency()),
     ACHIEVEMENT_POINTS(new AchievementPointsCurrency()),
-    PK_POINTS(new PkPointsCurrency());
+    PK_POINTS(new PkPointsCurrency()),
+    BOUNTY_HUNTER_POINTS(new BountyHunterPointsCurrency()),
+
+    ;
 
     private static final ImmutableSet<CurrencyType> VALUES = ImmutableSet.copyOf(values());
 
@@ -63,6 +66,10 @@ public enum CurrencyType {
             case PK_POINTS -> {
                 int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
                 value = Utils.formatNumber(pkPoints);
+            }
+            case BOUNTY_HUNTER_POINTS -> {
+                int bounties = player.getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0);
+                value = Utils.format(bounties);
             }
             default -> {
             }

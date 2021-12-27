@@ -46,51 +46,60 @@ public class Rewards {
             RareTable reward = Utils.randomElement(possibles);
             if (reward != null) {
                 player.clueScrollReward().add(new Item(reward.reward, reward.reward.getAmount()), true);
-                if (reward.reward.getValue() >= 30000 && !player.getUsername().equalsIgnoreCase("Box test"))
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " has just received <col=" + Color.HOTPINK.getColorValue() + ">" + Utils.getAOrAn(reward.reward.name()) + " " + reward.reward.name() + " <col=0052cc>from an master casket!");
+                if (reward.rare && !player.getUsername().equalsIgnoreCase("Box test"))
+                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " has just received <col=" + Color.HOTPINK.getColorValue() + ">" + Utils.getAOrAn(reward.reward.name()) + " " + reward.reward.name() + " <col=0052cc>from an treasure casket!");
             }
         }
     }
 
     public enum StandardTable {
-        BLOOD_MONEY(100.0, new Item(ItemIdentifiers.BLOOD_MONEY,15_000)),
-        OPAL_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.OPAL_DRAGON_BOLTS_E, 1_000)),
-        DRAGONSTONE_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.DRAGONSTONE_DRAGON_BOLTS_E, 1_000)),
-        RUBY_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.RUBY_DRAGON_BOLTS_E, 1_000)),
-        DIAMOND_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.DIAMOND_DRAGON_BOLTS_E, 1_000)),
-        ONYX_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.ONYX_DRAGON_BOLTS_E, 1_000)),
+        COINS(100.0, new Item(ItemIdentifiers.COINS_995,5_000_000)),
+        OPAL_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.OPAL_DRAGON_BOLTS_E, 200)),
+        DRAGONSTONE_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.DRAGONSTONE_DRAGON_BOLTS_E, 200)),
+        RUBY_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.RUBY_DRAGON_BOLTS_E, 200)),
+        DIAMOND_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.DIAMOND_DRAGON_BOLTS_E, 200)),
+        ONYX_DRAGON_BOLTS_E(75.0, new Item(ItemIdentifiers.ONYX_DRAGON_BOLTS_E, 200)),
         ROYAL_GOWN_CROWN(50.0, new Item(ItemIdentifiers.ROYAL_CROWN)),
         ROYAL_GOWN_SCEPTRE(50.0, new Item(ItemIdentifiers.ROYAL_SCEPTRE)),
         ROYAL_GOWN_TOP(50.0, new Item(ItemIdentifiers.ROYAL_GOWN_TOP)),
         ROYAL_GOWN_BOTTOM(50.0, new Item(ItemIdentifiers.ROYAL_GOWN_BOTTOM)),
-        DRAGON_CROSSBOW(40.0, new Item(ItemIdentifiers.DRAGON_CROSSBOW)),
-        BANDOS_GODSWORD(40.0, new Item(ItemIdentifiers.BANDOS_GODSWORD)),
-        ZAMORAK_GODSWORD(95.0, new Item(ItemIdentifiers.ZAMORAK_GODSWORD)),
-        SARADOMIN_GODSWORD(90.0, new Item(ItemIdentifiers.SARADOMIN_GODSWORD)),
-        ICE_ARROWS(85.0, new Item(ItemIdentifiers.ICE_ARROWS, 1_000)),
-        EARTH_ARROWS(80.0, new Item(CustomItemIdentifiers.EARTH_ARROWS, 1_000)),
-        FIRE_ARROWS(75.0, new Item(CustomItemIdentifiers.FIRE_ARROWS, 1_000)),
-        DRAGON_JAVELIN(65.0, new Item(ItemIdentifiers.DRAGON_JAVELIN,100)),
-        DRAGON_KNIFE(60.0, new Item(ItemIdentifiers.DRAGON_KNIFE,100)),
-        DRAGON_KNIFE_P_PLUS_PLUS(55.0, new Item(ItemIdentifiers.DRAGON_KNIFEP_22810,100)),
-        DRAGON_THROWNAXE(50.0, new Item(ItemIdentifiers.DRAGON_THROWNAXE, 100)),
-        ABYSSAL_DAGGER_P_13271(45.0, new Item(ItemIdentifiers.ABYSSAL_DAGGER_P_13271)),
-        ODIUM_WARD(40.0, new Item(ItemIdentifiers.ODIUM_WARD)),
-        MALEDICTION_WARD(37.0, new Item(ItemIdentifiers.MALEDICTION_WARD)),
-        ARMADYL_CROSSBOW(35.0, new Item(ItemIdentifiers.ARMADYL_CROSSBOW)),
-        DRAGONFIRE_SHIELD(30.0, new Item(ItemIdentifiers.DRAGONFIRE_SHIELD)),
-        ARMADYL_CHAINSKIRT(25.0, new Item(ItemIdentifiers.ARMADYL_CHAINSKIRT)),
-        ARMADYL_CHESTPLATE(20.0, new Item(ItemIdentifiers.ARMADYL_CHESTPLATE)),
-        BANDOS_CHESTPLATE(15.0, new Item(ItemIdentifiers.BANDOS_CHESTPLATE)),
-        BANDOS_TASSETS(10.0, new Item(ItemIdentifiers.BANDOS_TASSETS)),
-        ARMADYL_GODSWORD(5.0, new Item(ItemIdentifiers.ARMADYL_GODSWORD));
+        ABYSSAL_WHIP(40.0, new Item(ItemIdentifiers.ABYSSAL_WHIP)),
+        AMULET_OF_FURY(40.0, new Item(ItemIdentifiers.AMULET_OF_FURY)),
+        KRAKEN_TENTACLE(95.0, new Item(ItemIdentifiers.KRAKEN_TENTACLE)),
+        SMOKE_BATTLESTAFF(90.0, new Item(ItemIdentifiers.SMOKE_BATTLESTAFF)),
+        ICE_ARROWS(85.0, new Item(ItemIdentifiers.ICE_ARROWS, 200)),
+        EARTH_ARROWS(80.0, new Item(CustomItemIdentifiers.EARTH_ARROWS, 200)),
+        FIRE_ARROWS(75.0, new Item(CustomItemIdentifiers.FIRE_ARROWS, 200)),
+        DRAGON_JAVELIN(65.0, new Item(ItemIdentifiers.DRAGON_JAVELIN,50)),
+        DRAGON_KNIFE(60.0, new Item(ItemIdentifiers.DRAGON_KNIFE,50)),
+        DRAGON_KNIFE_P_PLUS_PLUS(55.0, new Item(ItemIdentifiers.DRAGON_KNIFEP_22810,50)),
+        DRAGON_THROWNAXE(50.0, new Item(ItemIdentifiers.DRAGON_THROWNAXE, 50)),
+        COINS_2(40.0, new Item(ItemIdentifiers.COINS_995, 10_000_000)),
+        DRAGON_AXE(30.0, new Item(ItemIdentifiers.DRAGON_AXE)),
+        DRAGON_PICKAXE(20.0, new Item(ItemIdentifiers.DRAGON_PICKAXE),true),
+        ODIUM_WARD(15.0, new Item(ItemIdentifiers.ODIUM_WARD),true),
+        MALEDICTION_WARD(10.0, new Item(ItemIdentifiers.MALEDICTION_WARD),true),
+        DRACONIC_VISAGE(6.0, new Item(ItemIdentifiers.DRACONIC_VISAGE),true),
+        ARMADYL_CHAINSKIRT(5.0, new Item(ItemIdentifiers.ARMADYL_CHAINSKIRT),true),
+        ARMADYL_CHESTPLATE(4.0, new Item(ItemIdentifiers.ARMADYL_CHESTPLATE),true),
+        BANDOS_CHESTPLATE(3.0, new Item(ItemIdentifiers.BANDOS_CHESTPLATE),true),
+        BANDOS_TASSETS(2.0, new Item(ItemIdentifiers.BANDOS_TASSETS),true),
+        ABYSSAL_DAGGER(1.0, new Item(ItemIdentifiers.ABYSSAL_DAGGER),true);
 
         private final double probability;
         private final Item reward;
+        private final boolean rare;
 
         StandardTable(double probability, Item reward) {
             this.probability = probability;
             this.reward = reward;
+            this.rare = false;
+        }
+
+        StandardTable(double probability, Item reward, boolean rare) {
+            this.probability = probability;
+            this.reward = reward;
+            this.rare = rare;
         }
     }
 
@@ -135,35 +144,44 @@ public class Rewards {
         HALF_MOON_SPECTACLES(10.0, new Item(ItemIdentifiers.HALF_MOON_SPECTACLES)),
         ALE_OF_THE_GODS(5.0, new Item(ItemIdentifiers.ALE_OF_THE_GODS)),
         BUCKET_HELM_G(5.0, new Item(ItemIdentifiers.BUCKET_HELM_G)),
-        DRAGON_CLAWS(11.0, new Item(ItemIdentifiers.DRAGON_CLAWS)),
-        THIRD_AGE_MELEE_HELM(13.0, new Item(ItemIdentifiers._3RD_AGE_FULL_HELMET)),
-        THIRD_AGE_MELEE_BODY(12.0, new Item(ItemIdentifiers._3RD_AGE_PLATEBODY)),
-        THIRD_AGE_MELEE_LEGS(12.0, new Item(ItemIdentifiers._3RD_AGE_PLATELEGS)),
-        THIRD_AGE_MELEE_KITE(13.0, new Item(ItemIdentifiers._3RD_AGE_KITESHIELD)),
-        THIRD_AGE_RANGE_COIF(13.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_COIF)),
-        THIRD_AGE_RANGE_BODY(12.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_TOP)),
-        THIRD_AGE_RANGE_LEGS(12.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_LEGS)),
-        THIRD_AGE_RANGE_VAMBS(13.0, new Item(ItemIdentifiers._3RD_AGE_VAMBRACES)),
-        THIRD_AGE_HAT(13.0, new Item(ItemIdentifiers._3RD_AGE_MAGE_HAT)),
-        THIRD_AGE_TOP(12.0, new Item(ItemIdentifiers._3RD_AGE_ROBE)),
-        THIRD_AGE_SKIRT(12.0, new Item(ItemIdentifiers._3RD_AGE_ROBE_TOP)),
-        THIRD_AGE_AMULET(15.0, new Item(ItemIdentifiers._3RD_AGE_AMULET)),
-        THIRD_AGE_CLOAK(7.0, new Item(ItemIdentifiers._3RD_AGE_CLOAK)),
-        THIRD_AGE_WAND(5.0, new Item(ItemIdentifiers._3RD_AGE_WAND)),
-        THIRD_AGE_BOW(5.0, new Item(ItemIdentifiers._3RD_AGE_BOW)),
-        THIRD_AGE_LONGSWORD(5.0, new Item(ItemIdentifiers._3RD_AGE_LONGSWORD)),
-        THIRD_AGE_DRUIDIC_ROBE_TOP(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_ROBE_TOP)),
-        THIRD_AGE_DRUIDIC_ROBE_BOTTOMS(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_ROBE_BOTTOMS)),
-        THIRD_AGE_DRUIDIC_STAFF(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_STAFF)),
-        THIRD_AGE_DRUIDIC_CLOAK(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_CLOAK)),
+        ARMADYL_GODSWORD(11.0, new Item(ItemIdentifiers.ARMADYL_GODSWORD), true),
+        DRAGON_CLAWS(10.0, new Item(ItemIdentifiers.DRAGON_CLAWS), true),
+        THIRD_AGE_MELEE_HELM(13.0, new Item(ItemIdentifiers._3RD_AGE_FULL_HELMET), true),
+        THIRD_AGE_MELEE_BODY(12.0, new Item(ItemIdentifiers._3RD_AGE_PLATEBODY), true),
+        THIRD_AGE_MELEE_LEGS(12.0, new Item(ItemIdentifiers._3RD_AGE_PLATELEGS), true),
+        THIRD_AGE_MELEE_KITE(13.0, new Item(ItemIdentifiers._3RD_AGE_KITESHIELD), true),
+        THIRD_AGE_RANGE_COIF(13.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_COIF), true),
+        THIRD_AGE_RANGE_BODY(12.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_TOP), true),
+        THIRD_AGE_RANGE_LEGS(12.0, new Item(ItemIdentifiers._3RD_AGE_RANGE_LEGS), true),
+        THIRD_AGE_RANGE_VAMBS(13.0, new Item(ItemIdentifiers._3RD_AGE_VAMBRACES), true),
+        THIRD_AGE_HAT(13.0, new Item(ItemIdentifiers._3RD_AGE_MAGE_HAT), true),
+        THIRD_AGE_TOP(12.0, new Item(ItemIdentifiers._3RD_AGE_ROBE), true),
+        THIRD_AGE_SKIRT(12.0, new Item(ItemIdentifiers._3RD_AGE_ROBE_TOP), true),
+        THIRD_AGE_AMULET(15.0, new Item(ItemIdentifiers._3RD_AGE_AMULET), true),
+        THIRD_AGE_CLOAK(7.0, new Item(ItemIdentifiers._3RD_AGE_CLOAK), true),
+        THIRD_AGE_WAND(5.0, new Item(ItemIdentifiers._3RD_AGE_WAND), true),
+        THIRD_AGE_BOW(5.0, new Item(ItemIdentifiers._3RD_AGE_BOW), true),
+        THIRD_AGE_LONGSWORD(5.0, new Item(ItemIdentifiers._3RD_AGE_LONGSWORD), true),
+        THIRD_AGE_DRUIDIC_ROBE_TOP(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_ROBE_TOP), true),
+        THIRD_AGE_DRUIDIC_ROBE_BOTTOMS(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_ROBE_BOTTOMS), true),
+        THIRD_AGE_DRUIDIC_STAFF(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_STAFF), true),
+        THIRD_AGE_DRUIDIC_CLOAK(2.0, new Item(ItemIdentifiers._3RD_AGE_DRUIDIC_CLOAK), true),
         ;
 
         private final double probability;
         private final Item reward;
+        private final boolean rare;
 
         RareTable(double probability, Item reward) {
             this.probability = probability;
             this.reward = reward;
+            this.rare = false;
+        }
+
+        RareTable(double probability, Item reward, boolean rare) {
+            this.probability = probability;
+            this.reward = reward;
+            this.rare = rare;
         }
     }
 }

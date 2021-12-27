@@ -7,7 +7,6 @@ import com.valinor.util.CustomItemIdentifiers;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.valinor.game.content.treasure.TreasureRewardCaskets.MASTER_CASKET;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -65,7 +64,7 @@ public enum SlayerUnlockable {
 
     WEAK_SPOT(63429, new Item(BANDOS_GODSWORD), 650, "Weak spot", "10% Increased damage to the task monster." + "<br><col=ca0d0d>(650 points)"),
 
-    DIGGING_FOR_TREASURE(63430, new Item(MASTER_CASKET), 200, "Digging for treasure", "One extra loot when" + "<br>opening master caskets.<br><col=ca0d0d>(200 points)");
+    DIGGING_FOR_TREASURE(63430, new Item(TREASURE_CASKET), 200, "Digging for treasure", "One extra loot when" + "<br>opening master caskets.<br><col=ca0d0d>(200 points)");
 
     private final int buttonId;
     private final Item item;
