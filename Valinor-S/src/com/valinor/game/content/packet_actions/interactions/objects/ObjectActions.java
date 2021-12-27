@@ -1,5 +1,6 @@
 package com.valinor.game.content.packet_actions.interactions.objects;
 
+import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.smithing.Bar;
@@ -86,6 +87,10 @@ public class ObjectActions {
                 return;
             }
 
+            if(ShootingStars.getINSTANCE().handleObjectInteraction(player, object, 1)) {
+                return;
+            }
+
             if (Farming.handleActions(player, FarmingConstants.FIRST_CLICK_OBJECT, tile, -1)) {
                 return;
             }
@@ -118,6 +123,10 @@ public class ObjectActions {
 
             if (InteractionManager.checkObjectInteraction(player, object, 2)) {
                 //System.out.println("object option 2, checkObjectInteraction.");
+                return;
+            }
+
+            if(ShootingStars.getINSTANCE().handleObjectInteraction(player, object, 2)) {
                 return;
             }
 

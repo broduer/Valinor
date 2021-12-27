@@ -137,8 +137,7 @@ import java.util.stream.IntStream;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
 import static com.valinor.game.world.entity.AttributeKey.*;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.UPTIME;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WORLD_BOSS_SPAWN;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -2976,8 +2975,9 @@ public class Player extends Mob {
                 //We only have to update the uptime here, every other line is automatically updated.
                 this.getPacketSender().sendString(UPTIME.childId, QuestTab.InfoTab.INFO_TAB.get(UPTIME.childId).fetchLineData(this));
 
-                //Update the timer frames every minute.
+                //Update these timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
+                this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
 
                 if (minutesTillWildyBoss == 5) {
                     if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {

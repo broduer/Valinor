@@ -3,6 +3,7 @@ package com.valinor;
 import com.valinor.game.GameBuilder;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
@@ -57,6 +58,7 @@ public final class Bootstrap {
         Item.onServerStart();
         Impling.onServerStartup();
         WorldBossEvent.onServerStart();
+        ShootingStars.onServerStart();
         TopPkers.SINGLETON.init();
     }
 }
