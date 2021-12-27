@@ -358,7 +358,7 @@ public class NpcDefinition implements Definition {
             options[4] = null;
         } else if (id == LISA) {
             name = "Tournament Manager";
-            options = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", null, null, null};
+            options = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", "Daily-pkers", null, null};
         } else if (id == SHURA) {
             name = "Referral Manager";
         } else if (id == ICELORD_PET) {

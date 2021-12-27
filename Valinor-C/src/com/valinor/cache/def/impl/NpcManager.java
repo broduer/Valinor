@@ -211,7 +211,7 @@ public class NpcManager {
 
             case LISA:
                 definition.name = "Tournament Manager";
-                definition.actions = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", null, null, null};
+                definition.actions = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", "Daily-pkers", null, null};
                 break;
 
             case VANNAKA:
@@ -244,10 +244,6 @@ public class NpcManager {
                 impling = true;
                 break;
 
-            // tournament guy
-            case 8146:
-                definition.actions = new String[]{"Tournament", null, "Quick-join", "Quick-spectate", null, null, null};
-                break;
             // emblem trader
             case 308:
                 definition.actions = new String[]{"Talk-to", null, "Trade", null, null, null, null};

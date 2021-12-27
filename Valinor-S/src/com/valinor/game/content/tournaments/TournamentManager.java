@@ -2,6 +2,7 @@ package com.valinor.game.content.tournaments;
 
 import com.valinor.GameServer;
 import com.valinor.game.GameEngine;
+import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -86,6 +87,9 @@ public class TournamentManager extends Interaction {
                 return true;
             } else if (option == 3) {
                 TournamentManager.quickSpectate(player);
+                return true;
+            } else if (option == 4) {
+                TopPkers.SINGLETON.openLeaderboard(player);
                 return true;
             }
         }
