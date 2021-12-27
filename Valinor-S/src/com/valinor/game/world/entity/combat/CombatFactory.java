@@ -691,12 +691,19 @@ public class CombatFactory {
         var wep = -1;
 
         if (entity.isPlayer()) {
+            Player player = entity.getAsPlayer();
+            if(other.isPlayer()) {
+                if (WildernessArea.isAtWildernessLimitForMac(entity.getAsPlayer())) {
+                    player.message("You are double logging and cannot attack other players.");
+                    return false;
+                }
+            }
+
             wep = (entity.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON) != null ? (entity.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON).getId() : -1;
 
             // Check if we're using a special attack..
             if (entity.isSpecialActivated() && entity.getAsPlayer().getCombatSpecial() != null) {
                 if (entity.isPlayer()) {
-                    Player player = entity.getAsPlayer();
                     if (player.hasPetOut("Baby Abyssal Demon") && player.getCombatSpecial() == CombatSpecial.DRAGON_DAGGER) {
                         player.getCombatSpecial().setDrainAmount(20);
                     } else if (player.getCombatSpecial() == CombatSpecial.DRAGON_DAGGER) {

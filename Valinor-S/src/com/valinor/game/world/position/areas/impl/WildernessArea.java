@@ -31,6 +31,19 @@ public class WildernessArea extends Controller {
      */
     public static ArrayList<Player> players = new ArrayList<>(500);
 
+    /**
+     * Checks if the {@code player}'s remote MAC address has 2 or more players already in the wilderness.
+     */
+    public static boolean isAtWildernessLimitForMac(Player player) {
+        int count = 0;
+        for (Player others : players) {
+            if (player.<String>getAttribOr(AttributeKey.MAC_ADDRESS,"invalid").equals(others.<String>getAttribOr(AttributeKey.MAC_ADDRESS,"invalid")) && ++count >= 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean inWilderness(Tile tile) {
         return wildernessLevel(tile) > 0;
     }
