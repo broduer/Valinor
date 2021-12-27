@@ -11,7 +11,6 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.ItemIdentifiers;
 
 import static com.valinor.util.CustomItemIdentifiers.BEGINNER_AGS;
-import static com.valinor.util.CustomItemIdentifiers.HWEEN_ARMADYL_GODSWORD;
 
 public class ArmadylGodsword extends CommonCombatMethod {
 
@@ -21,7 +20,7 @@ public class ArmadylGodsword extends CommonCombatMethod {
         int animation = 7644;
         if(player.getEquipment().contains(ItemIdentifiers.ARMADYL_GODSWORD_OR))
             animation = 7645;
-        if(player.getEquipment().contains(BEGINNER_AGS) || player.getEquipment().contains(HWEEN_ARMADYL_GODSWORD))
+        if(player.getEquipment().contains(BEGINNER_AGS))
             animation = 11902;
         player.animate(animation);
         boolean gfx_gold = player.getAttribOr(AttributeKey.AGS_GFX_GOLD, false);

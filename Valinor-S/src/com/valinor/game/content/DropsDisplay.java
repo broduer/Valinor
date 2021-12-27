@@ -226,15 +226,6 @@ public class DropsDisplay {
             drops.add(petId != -1 ? 1 : 0, new Integer[]{ItemIdentifiers.LARRANS_KEY, 1, 1, roll});
         }
 
-        if(player.tile().memberCave()) {
-            roll = 100;
-            reduction = roll * player.totemDropRateBonus() / 100;
-            roll -= reduction;
-            drops.add(petId != -1 ? 2 : 0, new Integer[]{CORRUPT_TOTEM_BASE, 1, 1, roll});
-            drops.add(petId != -1 ? 3 : 0, new Integer[]{CORRUPT_TOTEM_MIDDLE, 1, 1, roll});
-            drops.add(petId != -1 ? 4 : 0, new Integer[]{CORRUPT_TOTEM_TOP, 1, 1, roll});
-        }
-
         if (dropTable.guaranteed != null) {
             for (ScalarLootTable.TableItem item : dropTable.guaranteed) {
                 Integer[] drop = new Integer[4];

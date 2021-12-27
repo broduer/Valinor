@@ -43,7 +43,7 @@ public class ShopUtility extends ItemIdentifiers {
      */
     public static final int SCROLL_BAR_INTERFACE_ID = 32995;
     
-    public static final int AMOUNT_STRING_ID = 22996;
+    public static final int AMOUNT_STRING_ID = 32996;
 
     public static final int SLAYER_BUY_AMOUNT_STRING_ID = 64017;
 

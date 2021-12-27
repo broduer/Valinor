@@ -80,14 +80,6 @@ public class MysteryChest extends Interaction {
                     rollForReward(player);
                 }
             }
-            if(item.getId() == HWEEN_MYSTERY_CHEST) {
-                //Safety make sure people aren't spoofing using cheat clients
-                if (player.inventory().contains(HWEEN_MYSTERY_CHEST)) {
-                    player.inventory().remove(new Item(HWEEN_MYSTERY_CHEST), true);
-                    rollForReward(player);
-                }
-                return true;
-            }
         }
         return false;
     }

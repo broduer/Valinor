@@ -8,7 +8,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.CustomItemIdentifiers.HWEEN_MYSTERY_BOX;
+import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.PINK_SWEETS;
 import static com.valinor.util.ItemIdentifiers.PUMPKIN_LANTERN;
 import static com.valinor.util.NpcIdentifiers.*;
@@ -90,7 +90,7 @@ public class TeacherAndPupilD extends Dialogue {
                 var candies = player.<Integer>getAttribOr(AttributeKey.CANDIES_TRADED,0)+ count;
                 player.putAttrib(AttributeKey.CANDIES_TRADED, candies);
                 player.message(Color.PURPLE.wrap("You have now given the teacher "+ Utils.formatNumber(candies)+" candies."));
-                player.inventory().addOrBank(new Item(HWEEN_MYSTERY_BOX, count));
+                player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX, count));
                 String plural = count > 1 ? "boxes" : "box";
                 player.message(Color.PURPLE.wrap("The teacher gave you "+ Utils.formatNumber(count)+" H'ween mystery "+plural+" in return."));
                 stop();

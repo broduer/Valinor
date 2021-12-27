@@ -1,7 +1,6 @@
 package com.valinor.game.content.packet_actions.interactions.items;
 
 import com.valinor.game.content.items.RockCake;
-import com.valinor.game.content.items.teleport.ArdyCape;
 import com.valinor.game.content.skill.impl.slayer.content.SlayerRing;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
@@ -21,8 +20,6 @@ public class ItemActionThree {
         if (InteractionManager.checkItemInteraction(player, item, 3)) {
             return;
         }
-
-        ArdyCape.onItemOption3(player, item);
 
         if(player.getRunePouch().quickFill(item.getId())) {
             return;

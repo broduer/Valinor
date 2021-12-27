@@ -82,6 +82,4 @@ public class CustomNpcIdentifiers {
     public static final int SKORPIOS_PET = 15036;
     public static final int ARACHNE_PET = 15037;
     public static final int ARTIO_PET = 15038;
-
-    public static final int SKELETON_HELLHOUND_PET = 15022;
 }

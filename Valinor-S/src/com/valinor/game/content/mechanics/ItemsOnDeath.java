@@ -209,8 +209,8 @@ public class ItemsOnDeath {
                 player.getPacketSender().sendMessage("Your " + item.unnote().name() + " has been broken. You can fix it by talking to").sendMessage("Perdu who is located in Edgevile at the furnace.");
                 item.setId(brokenItem.brokenItem);
 
-                //Drop bm for the killer
-                GroundItem groundItem = new GroundItem(new Item(BLOOD_MONEY, (int) brokenItem.bmDrop), player.tile(), theKiller);
+                //Drop coins for the killer
+                GroundItem groundItem = new GroundItem(new Item(COINS_995, brokenItem.costToRepair), player.tile(), theKiller);
                 GroundItemHandler.createGroundItem(groundItem);
             }
             player.inventory().add(item, true);

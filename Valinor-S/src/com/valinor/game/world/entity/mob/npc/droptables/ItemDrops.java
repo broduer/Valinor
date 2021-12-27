@@ -27,8 +27,7 @@ import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
 import static com.valinor.game.world.entity.mob.npc.NpcDeath.notification;
-import static com.valinor.util.CustomItemIdentifiers.HWEEN_TOKENS;
-import static com.valinor.util.CustomItemIdentifiers.XMAS_TOKENS;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -56,7 +55,7 @@ public class ItemDrops {
                     if (itemId == bone) {
                         Bone bones = Bone.get(itemId);
                         if (bones != null)
-                            player.skills().addXp(Skills.PRAYER, bones.xp);
+                            player.skills().addXp(Skills.PRAYER, bones.xp * 2);
                     }
                 }
             } else {
@@ -122,6 +121,11 @@ public class ItemDrops {
 
         //Amount of drop rolls
         int dropRolls = npc.combatInfo().droprolls;
+
+        if(player.inventory().contains(DOUBLE_DROPS_SCROLL)) {
+            dropRolls += 1;
+            player.inventory().remove(DOUBLE_DROPS_SCROLL, 1);
+        }
 
         var doubleDropChance = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_CHANCE);
         var isBoss = npc.combatInfo() != null && npc.combatInfo().boss;

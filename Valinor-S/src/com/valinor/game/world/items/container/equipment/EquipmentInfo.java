@@ -79,7 +79,7 @@ public class EquipmentInfo {
 
                 Item equipped = player.getEquipment().get(i);
                 if (equipped != null) {
-                    if (i == EquipSlot.AMMO && ((wepid >= 4212 && wepid <= 4223) || wepid == TOXIC_BLOWPIPE || wepid == MAGMA_BLOWPIPE || wepid == HWEEN_BLOWPIPE)) { // crystal bow /blowpipe ignore ammo
+                    if (i == EquipSlot.AMMO && ((wepid >= 4212 && wepid <= 4223) || wepid == TOXIC_BLOWPIPE || wepid == MAGMA_BLOWPIPE)) { // crystal bow /blowpipe ignore ammo
                         // these don't fucking factor ammo
                         continue;
                     }
@@ -396,8 +396,6 @@ public class EquipmentInfo {
                 case 18353:
                     return 13055;
                 case SCYTHE:
-                case GRIM_SCYTHE:
-                    return 408;
                 case SCYTHE_OF_VITUR:
                 case HOLY_SCYTHE_OF_VITUR:
                 case SANGUINE_SCYTHE_OF_VITUR:
@@ -419,7 +417,6 @@ public class EquipmentInfo {
                 case 11706: // Boxing gloves
                     return 3678;
                 case MAGMA_BLOWPIPE:
-                case HWEEN_BLOWPIPE:
                     return 11901;
                 case 12924: // Toxic blowpipe
                 case TOXIC_BLOWPIPE: // Toxic blowpipe
@@ -498,7 +495,6 @@ public class EquipmentInfo {
                 case 4961: // Torag's hamers
                     return 2068;
                 case 24225: // Granite maul
-                case HWEEN_GRANITE_MAUL:
                 case 24944:
                 case 7668: //Gadderhammer
                 case 12848: // Granite clamp
@@ -595,7 +591,6 @@ public class EquipmentInfo {
                 case VIGGORAS_CHAINMACE_U:
                 case VIGGORAS_CHAINMACE_C:
                 case BEGINNER_CHAINMACE:
-                case HWEEN_CHAINMACE:
                     return 245;
 
                 case THAMMARONS_SCEPTRE:
@@ -683,7 +678,6 @@ public class EquipmentInfo {
             case VIGGORAS_CHAINMACE_U:
             case VIGGORAS_CHAINMACE_C:
             case BEGINNER_CHAINMACE:
-            case HWEEN_CHAINMACE:
                 return 7200;
             case KODAI_WAND:
             case KODAI_WAND_23626:
@@ -726,7 +720,6 @@ public class EquipmentInfo {
                 return 3295;
             case 13263: // Abyssal bludgeon
             case GRANITE_MAUL_24225:
-            case HWEEN_GRANITE_MAUL:
             case 24944:
             case GRANITE_MAUL_12848: // Granite maul (or)
             case 16200:
@@ -775,7 +768,6 @@ public class EquipmentInfo {
             case DRAGON_HASTA:
             case TOXIC_BLOWPIPE:
             case MAGMA_BLOWPIPE:
-            case HWEEN_BLOWPIPE:
                 return 430;
             case BEGINNER_DRAGON_CLAWS:
             case DRAGON_CLAWS:

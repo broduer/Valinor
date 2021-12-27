@@ -12,9 +12,6 @@ import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -89,8 +86,6 @@ public abstract class Shop {
         if (store == null) {
             return;
         }
-
-        player.debugMessage("Closing store for " + player.toString() + ".");
         store.close(player);
     }
 
@@ -213,7 +208,7 @@ public abstract class Shop {
 
         //Don't refresh the shop for one player, refresh it for all players.
         for (Player player1 : this.players) {
-            refresh(player1);
+            refresh(player1,false);
         }
     }
 
@@ -347,11 +342,11 @@ public abstract class Shop {
 
         //Don't refresh the shop for one player, refresh it for all players.
         for (Player player1 : this.players) {
-            refresh(player1);
+            refresh(player1, false);
         }
     }
 
-    public abstract void refresh(Player player);
+    public abstract void refresh(Player player, boolean redrawStrings);
 
     public void startAddStock() {
         if (addStockTask == null) {

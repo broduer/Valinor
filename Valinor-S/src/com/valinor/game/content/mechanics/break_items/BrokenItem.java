@@ -1,6 +1,5 @@
 package com.valinor.game.content.mechanics.break_items;
 
-import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 
 import java.util.HashMap;
@@ -8,26 +7,49 @@ import java.util.Map;
 
 public enum BrokenItem {
 
-    RUNE_POUCH_I_BROKEN(CustomItemIdentifiers.RUNE_POUCH_I, BreakItemsOnDeath.RUNE_POUCH_I_BROKEN, 1000, 500),
-    AMULET_OF_FURY_OR_BROKEN(ItemIdentifiers.AMULET_OF_FURY_OR, BreakItemsOnDeath.AMULET_OF_FURY_OR_BROKEN, 1000, 750),
-    OCCULT_NECKLACE_OR_BROKEN(ItemIdentifiers.OCCULT_NECKLACE_OR, BreakItemsOnDeath.OCCULT_NECKLACE_OR_BROKEN, 1000, 750),
-    AMULET_OF_TORTURE_OR_BROKEN(ItemIdentifiers.AMULET_OF_TORTURE_OR, BreakItemsOnDeath.AMULET_OF_TORTURE_OR_BROKEN, 6000, 2000),
-    NECKLACE_OF_ANGUISH_OR_BROKEN(ItemIdentifiers.NECKLACE_OF_ANGUISH_OR, BreakItemsOnDeath.NECKLACE_OF_ANGUISH_OR_BROKEN, 5000, 2000),
-    TORMENTED_BRACELET_OR_BROKEN(ItemIdentifiers.TORMENTED_BRACELET_OR, BreakItemsOnDeath.TORMENTED_BRACELET_OR_BROKEN, 4000, 2000),
-    DRAGON_DEFENDER_T_BROKEN(ItemIdentifiers.DRAGON_DEFENDER_T, BreakItemsOnDeath.DRAGON_DEFENDER_T_BROKEN, 1000, 500),
-    DRAGON_BOOTS_G_BROKEN(ItemIdentifiers.DRAGON_BOOTS_G, BreakItemsOnDeath.DRAGON_BOOTS_G_BROKEN, 1000, 500);
+    FIRE_CAPE(ItemIdentifiers.FIRE_CAPE, ItemIdentifiers.FIRE_CAPE_BROKEN, 10_500),
+    INFERNAL_CAPE(ItemIdentifiers.INFERNAL_CAPE, ItemIdentifiers.INFERNAL_CAPE_BROKEN, 50_000),
+    AVAS_ASSEMBLER(ItemIdentifiers.AVAS_ASSEMBLER, ItemIdentifiers.AVAS_ASSEMBLER_BROKEN, 75_000),
+    IMBUED_GUTHIX_CAPE(ItemIdentifiers.IMBUED_GUTHIX_CAPE, ItemIdentifiers.IMBUED_GUTHIX_CAPE_BROKEN, 75_000),
+    IMBUED_SARADOMIN_CAPE(ItemIdentifiers.IMBUED_SARADOMIN_CAPE, ItemIdentifiers.IMBUED_SARADOMIN_CAPE_BROKEN, 75_000),
+    IMBUED_ZAMORAK_CAPE(ItemIdentifiers.IMBUED_ZAMORAK_CAPE, ItemIdentifiers.IMBUED_ZAMORAK_CAPE_BROKEN, 75_000),
+    FIRE_MAX_CAPE(ItemIdentifiers.FIRE_MAX_CAPE, ItemIdentifiers.FIRE_MAX_CAPE_BROKEN, 99_000),
+    INFERNAL_MAX_CAPE(ItemIdentifiers.INFERNAL_MAX_CAPE, ItemIdentifiers.INFERNAL_MAX_CAPE_BROKEN, 99_000),
+    ASSEMBLER_MAX_CAPE(ItemIdentifiers.ASSEMBLER_MAX_CAPE, ItemIdentifiers.ASSEMBLER_MAX_CAPE_BROKEN, 99_000),
+    IMBUED_GUTHIX_MAX_CAPE(ItemIdentifiers.IMBUED_GUTHIX_MAX_CAPE, ItemIdentifiers.IMBUED_GUTHIX_MAX_CAPE_BROKEN, 99_000),
+    IMBUED_SARADOMIN_MAX_CAPE(ItemIdentifiers.IMBUED_SARADOMIN_MAX_CAPE, ItemIdentifiers.IMBUED_SARADOMIN_MAX_CAPE_BROKEN, 99_000),
+    IMBUED_ZAMORAK_MAX_CAPE(ItemIdentifiers.IMBUED_ZAMORAK_MAX_CAPE, ItemIdentifiers.IMBUED_ZAMORAK_MAX_CAPE_BROKEN, 99_000),
+    BRONZE_DEFENDER(ItemIdentifiers.BRONZE_DEFENDER, ItemIdentifiers.BRONZE_DEFENDER_BROKEN, 1_000),
+    IRON_DEFENDER(ItemIdentifiers.IRON_DEFENDER, ItemIdentifiers.IRON_DEFENDER_BROKEN, 2_000),
+    STEEL_DEFENDER(ItemIdentifiers.STEEL_DEFENDER, ItemIdentifiers.STEEL_DEFENDER_BROKEN, 2_500),
+    BLACK_DEFENDER(ItemIdentifiers.BLACK_DEFENDER, ItemIdentifiers.BLACK_DEFENDER_BROKEN, 5_000),
+    MITHRIL_DEFENDER(ItemIdentifiers.MITHRIL_DEFENDER, ItemIdentifiers.MITHRIL_DEFENDER_BROKEN, 15_000),
+    ADAMANT_DEFENDER(ItemIdentifiers.ADAMANT_DEFENDER, ItemIdentifiers.ADAMANT_DEFENDER_BROKEN, 25_000),
+    RUNE_DEFENDER(ItemIdentifiers.RUNE_DEFENDER, ItemIdentifiers.RUNE_DEFENDER_BROKEN, 35_000),
+    DRAGON_DEFENDER(ItemIdentifiers.DRAGON_DEFENDER, ItemIdentifiers.DRAGON_DEFENDER_BROKEN, 40_000),
+    AVERNIC_DEFENDER(ItemIdentifiers.AVERNIC_DEFENDER, ItemIdentifiers.AVERNIC_DEFENDER_BROKEN, 1_000_000),
+    VOID_MELEE_HELM(ItemIdentifiers.VOID_MELEE_HELM, ItemIdentifiers.VOID_MELEE_HELM_BROKEN, 40_000),
+    VOID_MAGE_HELM(ItemIdentifiers.VOID_MAGE_HELM, ItemIdentifiers.VOID_MAGE_HELM_BROKEN, 40_000),
+    VOID_RANGER_HELM(ItemIdentifiers.VOID_RANGER_HELM, ItemIdentifiers.VOID_RANGER_HELM_BROKEN, 40_000),
+    VOID_KNIGHT_TOP(ItemIdentifiers.VOID_KNIGHT_TOP, ItemIdentifiers.VOID_KNIGHT_TOP_BROKEN, 45_000),
+    ELITE_VOID_TOP(ItemIdentifiers.ELITE_VOID_TOP, ItemIdentifiers.ELITE_VOID_TOP_BROKEN, 50_000),
+    VOID_KNIGHT_ROBE(ItemIdentifiers.VOID_KNIGHT_ROBE, ItemIdentifiers.VOID_KNIGHT_ROBE_BROKEN, 45_000),
+    ELITE_VOID_ROBE(ItemIdentifiers.ELITE_VOID_ROBE, ItemIdentifiers.ELITE_VOID_ROBE_BROKEN, 50_000),
+    VOID_KNIGHT_GLOVES(ItemIdentifiers.VOID_KNIGHT_GLOVES, ItemIdentifiers.VOID_KNIGHT_GLOVES_BROKEN, 30_000),
+    FIGHTER_HAT(ItemIdentifiers.FIGHTER_HAT, ItemIdentifiers.FIGHTER_HAT_BROKEN, 45_000),
+    FIGHTER_TORSO(ItemIdentifiers.FIGHTER_TORSO, ItemIdentifiers.FIGHTER_TORSO_BROKEN, 50_000),
 
-    BrokenItem(int originalItem, int brokenItem, int costToRepair, long bmDrop) {
+    ;
+
+    BrokenItem(int originalItem, int brokenItem, int costToRepair) {
         this.originalItem = originalItem;
         this.brokenItem = brokenItem;
         this.costToRepair = costToRepair;
-        this.bmDrop = bmDrop;
     }
 
     public final int originalItem;
     public final int brokenItem;
     public final int costToRepair;
-    public final long bmDrop;
 
     private static final Map<Integer, BrokenItem> brokenItems = new HashMap<>();
 

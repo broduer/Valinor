@@ -12,6 +12,7 @@ import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.dialogue.DialogueType;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -26,6 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.ItemIdentifiers.COOKING_GAUNTLETS;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -33,7 +35,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  */
 public class Cooking extends Interaction {
 
-    private static int cookingChance(Player player, Cookable type, GameObject obj) {
+    private int cookingChance(Player player, Cookable type, GameObject obj) {
         int points = obj.getId() == CLAY_OVEN_21302 ? 63 : 60;
         int diff = player.skills().levels()[Skills.COOKING] - type.lvl;
         return Math.min(100, points + diff);
@@ -217,10 +219,13 @@ public class Cooking extends Interaction {
                     player.animate(896);
                 }
 
+                int chance = cookingChance(player, food, obj);
+
                 // Cooking skillcape stops burning all food.
                 if (player.getEquipment().containsAny(9801, 9802, 10658)
                     || player.getEquipment().wearingMaxCape()
-                    || Utils.rollDie(100, cookingChance(player, food, obj))
+                    || player.getEquipment().hasAt(EquipSlot.HANDS, COOKING_GAUNTLETS)
+                    || World.getWorld().rollDie(100, chance)
                     || food == Cookable.SEAWEED) {
 
                     player.inventory().add(new Item(food.cooked), true);

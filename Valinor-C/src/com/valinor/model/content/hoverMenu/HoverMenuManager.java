@@ -22,26 +22,33 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(COOKING_GAUNTLETS, new HoverMenu("Never burn a fish whilst cooking."));
+        menus.put(MAGIC_SECATEURS, new HoverMenu("When patching herbs you get 2x more herbs."));
+        menus.put(EXPLORERS_RING_4, new HoverMenu("Gives @gre@25%@whi@ more skilling experience."));
+        menus.put(RADAS_BLESSING_4, new HoverMenu("Gives @gre@25%@whi@ more combat experience."));
+        menus.put(RING_OF_CHAROSA, new HoverMenu("Grants double exp and resources."));
+        menus.put(ARDOUGNE_CLOAK_4, new HoverMenu("Grants unlimited teleports to the resource arena and revenants cave."));
+        menus.put(BONECRUSHER, new HoverMenu("You auto bury a bone when killing a monster but you get altar xp."));
         menus.put(DOUBLE_DROPS_SCROLL, new HoverMenu("Grants @gre@2x@whi@ drop rolls per kill for the cost of token."));
         menus.put(POINTS_MYSTERY_CHEST, new HoverMenu("Contains random points!"));
         menus.put(POINTS_MYSTERY_BOX, new HoverMenu("Contains random points!"));
         menus.put(BARROWS_MYSTERY_BOX, new HoverMenu("Opens for a random barrows piece!"));
         menus.put(PURPLE_DYE, new HoverMenu("Using this dye on a twisted bow colors it purple."));
         menus.put(ORANGE_DYE, new HoverMenu("Using this dye on a twisted bow colors it orange."));
-        menus.put(TOTEMIC_HELMET, new HoverMenu("@red@+10%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(TOTEMIC_PLATEBODY, new HoverMenu("@red@+20%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(TOTEMIC_PLATELEGS, new HoverMenu("@red@+15%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(DARK_SAGE_HAT, new HoverMenu("@red@+5%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(DARK_SAGE_ROBE_TOP, new HoverMenu("@red@+10%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(DARK_SAGE_ROBE_BOTTOM, new HoverMenu("@red@+10%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(SARKIS_DARK_COIF, new HoverMenu("@red@+10%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(SARKIS_DARK_BODY, new HoverMenu("@red@+20%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
-        menus.put(SARKIS_DARK_LEGS, new HoverMenu("@red@+15%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(TOTEMIC_HELMET, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(TOTEMIC_PLATEBODY, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(TOTEMIC_PLATELEGS, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(DARK_SAGE_HAT, new HoverMenu("@red@+2%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(DARK_SAGE_ROBE_TOP, new HoverMenu("@red@+5%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(DARK_SAGE_ROBE_BOTTOM, new HoverMenu("@red@+5%@whi@ extra magic damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(SARKIS_DARK_COIF, new HoverMenu("@red@+5%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(SARKIS_DARK_BODY, new HoverMenu("@red@+5%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
+        menus.put(SARKIS_DARK_LEGS, new HoverMenu("@red@+5%@whi@ extra range damage and accuracy boost. This effect works only in PvM situations."));
         menus.put(GAMBLER_SCROLL, new HoverMenu("Claiming this item makes you gambler! As a gambler, you can host games and play flower poker at @yel@::gambling!"));
         menus.put(TOXIC_STAFF_OF_THE_DEAD_C, new HoverMenu("A much stronger version of the toxic staff of the dead."));
         menus.put(RING_OF_ELYSIAN, new HoverMenu("When dropping this ring it becomes an elysian pet. When wearing this ring, you turn into either a elysian sigil or shield."));
         menus.put(CORRUPTED_BOOTS, new HoverMenu("The best in slots boots, combined effects of all fused boots."));
-        menus.put(BLOOD_FIREBIRD, new HoverMenu("It has a @red@20%@whi@ chance of passively healing the player @red@15%@whi@ of the damage you deal. And gives @red@+500@whi@ blood money when killing players."));
+        menus.put(BLOOD_FIREBIRD, new HoverMenu("It has a @red@20%@whi@ chance of passively healing the player @red@15%@whi@ of the damage you deal."));
         menus.put(VIGGORAS_CHAINMACE_C, new HoverMenu("Gives the same boosts as a regular Viggora's chainmace. This boost also works outside of the wilderness."));
         menus.put(CRAWS_BOW_C, new HoverMenu("Gives the same boosts as a regular Craw's bow. This boost also works outside of the wilderness."));
         menus.put(THAMMARONS_STAFF_C, new HoverMenu("Gives the same boosts as a regular Thammaron's sceptre. This boost also works outside of the wilderness."));
@@ -122,7 +129,6 @@ public class HoverMenuManager {
         menus.put(BABY_ABYSSAL_DEMON, new HoverMenu("Changes the dragon dagger special attack requirement to @red@-20%@whi@ instead of @red@-25%@whi@."));
         menus.put(BABY_DARK_BEAST_EGG, new HoverMenu("Makes the dark bow @red@+10%@whi@ more accurate."));
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
-        menus.put(GRIM_REAPER_PET, new HoverMenu("Keep one extra item on death. This doesn't work while @red@ smited or red skulled@whi@."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
 
         menus.put(MYSTERY_TICKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",

@@ -729,9 +729,6 @@ public class NpcDeath {
                         table.rollForLarransKey(npc, killer);
                         table.rollForBrimstoneKey(npc, killer);
                         table.rollForKeyOfDrops(killer, npc);
-                        table.rollForTotemBase(killer);
-                        table.rollForTotemMiddle(killer);
-                        table.rollForTotemTop(killer);
                         KourendCatacombs.drop(killer, npc, npc.tile());
                     }
 

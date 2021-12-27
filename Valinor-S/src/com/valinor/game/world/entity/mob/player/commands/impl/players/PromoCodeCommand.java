@@ -21,6 +21,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -56,9 +57,8 @@ public class PromoCodeCommand implements Command {
     }
 
     private static final List<Item> ITEM_LIST = Arrays.asList(
-        new Item(BLOOD_MONEY, 25_000),
-        new Item(ABYSSAL_TENTACLE, 1),
-        new Item(DHAROKS_ARMOUR_SET, 1)
+        new Item(COINS_995, 5_000_000),
+        new Item(DONATOR_MYSTERY_BOX, 2)
     );
 
     @Override

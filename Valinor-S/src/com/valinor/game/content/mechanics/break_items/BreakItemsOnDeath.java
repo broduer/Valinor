@@ -5,7 +5,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 
-import static com.valinor.util.ItemIdentifiers.BLOOD_MONEY;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.PERDU;
 
 /**
@@ -15,20 +15,11 @@ import static com.valinor.util.NpcIdentifiers.PERDU;
  */
 public class BreakItemsOnDeath {
 
-    public static final int RUNE_POUCH_I_BROKEN = 14500;
-    public static final int AMULET_OF_FURY_OR_BROKEN = 14501;
-    public static final int OCCULT_NECKLACE_OR_BROKEN = 14502;
-    public static final int AMULET_OF_TORTURE_OR_BROKEN = 14503;
-    public static final int NECKLACE_OF_ANGUISH_OR_BROKEN = 14504;
-    public static final int TORMENTED_BRACELET_OR_BROKEN = 14505;
-    public static final int DRAGON_DEFENDER_T_BROKEN = 14506;
-    public static final int DRAGON_BOOTS_G_BROKEN = 14507;
-
     /**
      * Gets the total cost of repairing a player's broken items.
      *
      * @param player The player with broken items
-     * @return The amount of BM it costs to repair your items.
+     * @return The amount of coins it costs to repair your items.
      */
     public static int getRepairCost(Player player) {
         int cost = 0;
@@ -51,19 +42,19 @@ public class BreakItemsOnDeath {
             if (count > 0) {
                 var costToRepair = getRepairCost(player);
                 boolean canRepair = false;
-                int bmInInventory = player.inventory().count(BLOOD_MONEY);
+                int coinsInInventory = player.inventory().count(COINS_995);
 
-                if (bmInInventory > 0) {
-                    if(bmInInventory >= costToRepair) {
+                if (coinsInInventory > 0) {
+                    if(coinsInInventory >= costToRepair) {
                         canRepair = true;
-                        player.inventory().remove(new Item(BLOOD_MONEY, costToRepair));
+                        player.inventory().remove(new Item(COINS_995, costToRepair));
                     }
                 }
 
-                var bmInBank = player.getBank().count(BLOOD_MONEY);
-                if(bmInBank >= costToRepair) {
+                var coinsInBank = player.getBank().count(COINS_995);
+                if(coinsInBank >= costToRepair) {
                     canRepair = true;
-                    player.getBank().remove(BLOOD_MONEY, costToRepair);
+                    player.getBank().remove(COINS_995, costToRepair);
                 }
 
                 if(canRepair) {

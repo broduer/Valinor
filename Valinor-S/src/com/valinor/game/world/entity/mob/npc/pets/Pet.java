@@ -19,7 +19,6 @@ public enum Pet {
     //Custom
     ICE_IMP(CustomItemIdentifiers.ICE_IMP, CustomNpcIdentifiers.ICE_IMP_PET, -1),
     NAGINI(CustomItemIdentifiers.NAGINI, CustomNpcIdentifiers.NAGINI, -1),
-    SKELETON_HELLHOUND_PET(CustomItemIdentifiers.HAUNTED_HELLHOUND_PET, CustomNpcIdentifiers.SKELETON_HELLHOUND_PET,-1),
     BLOOD_REAPER(CustomItemIdentifiers.BLOOD_REAPER, CustomNpcIdentifiers.BLOOD_REAPER,-1),
     YOUNGLLEF(ItemIdentifiers.YOUNGLLEF, NpcIdentifiers.YOUNGLLEF,-1),
     CORRUPTED_YOUNGLLEF(ItemIdentifiers.CORRUPTED_YOUNGLLEF, NpcIdentifiers.CORRUPTED_YOUNGLLEF,-1),

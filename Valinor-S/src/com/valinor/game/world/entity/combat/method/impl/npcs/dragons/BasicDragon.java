@@ -12,8 +12,6 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.CustomItemIdentifiers.HAUNTED_DRAGONFIRE_SHIELD;
-
 public class BasicDragon extends CommonCombatMethod {
 
     boolean fire;
@@ -48,7 +46,7 @@ public class BasicDragon extends CommonCombatMethod {
             }
 
             //Does our player have an anti-dragon shield?
-            if (max > 0 && (player.getEquipment().hasAt(EquipSlot.SHIELD, 11283) || player.getEquipment().hasAt(EquipSlot.SHIELD, 11284) || player.getEquipment().hasAt(EquipSlot.SHIELD, HAUNTED_DRAGONFIRE_SHIELD) || player.getEquipment().hasAt(EquipSlot.SHIELD, 1540))) {
+            if (max > 0 && (player.getEquipment().hasAt(EquipSlot.SHIELD, 11283) || player.getEquipment().hasAt(EquipSlot.SHIELD, 11284) || player.getEquipment().hasAt(EquipSlot.SHIELD, 1540))) {
                 player.message("Your shield absorbs most of the dragon fire!");
                 max *= 0.3;
             }

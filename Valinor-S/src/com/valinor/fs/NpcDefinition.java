@@ -176,8 +176,6 @@ public class NpcDefinition implements Definition {
         } else if (id == LORD_VOLDEMORT) {
             name = "Lord voldemort";
             combatlevel = 1433;
-        } else if (id == SKELETON_HELLHOUND_PET) {
-            name = "Skeleton hellhound";
         } else if (id == GRIM) {
             name = "Grim";
             size = 3;

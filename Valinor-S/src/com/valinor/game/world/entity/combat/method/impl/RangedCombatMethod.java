@@ -61,7 +61,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             var weaponId = player.getEquipment().getId(EquipSlot.WEAPON);
             var ammoId = player.getEquipment().getId(EquipSlot.AMMO);
             var crystalBow = (weaponId >= NEW_CRYSTAL_BOW && weaponId <= CRYSTAL_BOW_110);
-            var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW || weaponId == HWEEN_CRAWS_BOW;
+            var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW;
             var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
             var blowpipe = weaponId == 12926 || weaponId == 12924;
             var chins = weaponType == WeaponType.CHINCHOMPA;
@@ -112,7 +112,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
             // Knives are not your de-facto stuff either
             if (weaponType == THROWN) {
-                if(weaponId == TOXIC_BLOWPIPE || weaponId == MAGMA_BLOWPIPE || weaponId == HWEEN_BLOWPIPE) {
+                if(weaponId == TOXIC_BLOWPIPE || weaponId == MAGMA_BLOWPIPE) {
                     graphic = 1122;
                 }
                 // Is this a knife? There are more than only knives that people throw.. think.. asparagus. uwat? darts, thrownaxes, javelins

@@ -402,6 +402,10 @@ public final class ItemDefinition {
         def.set_defaults();
         def.decode(data_buffer);
 
+        if (def.name != null && (def.name.toLowerCase().contains("ardougne cloak"))) {
+            def.inventoryActions = new String[]{null, "Wear", "Teleport", null, "Drop"};
+        }
+
         if (def.name != null && (def.name.contains("Max cape") || def.name.contains("max cape"))) {
             def.inventoryActions = new String[]{null, "Wear", "Features", null, "Drop"};
         }
@@ -442,7 +446,7 @@ public final class ItemDefinition {
                     || (def.name.toLowerCase().contains("nightmare")) || (def.name.toLowerCase().contains("kodai wand")) || (def.name.toLowerCase().contains("dragon sword")) || (def.name.toLowerCase().contains("dragon harpoon")) || (def.name.toLowerCase().contains("mystery box")) || (def.name.toLowerCase().contains("crystal key")) || (def.name.toLowerCase().contains("volatile")) || (def.name.toLowerCase().contains("eldritch")) || (def.name.toLowerCase().contains("harmonised")) || (def.name.toLowerCase().contains("inquisitor")) || (def.name.toLowerCase().contains("treasonous")) || (def.name.toLowerCase().contains("ring of the gods"))
                     || (def.name.toLowerCase().contains("vorkath")) || (def.name.toLowerCase().contains("dragonbone")) || (def.name.toLowerCase().contains("uncut onyx")) || (def.name.toLowerCase().contains("zulrah")) || (def.name.toLowerCase().contains("zul-andra")) || (def.name.toLowerCase().contains("sanguinesti")) || (def.name.toLowerCase().contains("blade of saeldor")) || (def.name.toLowerCase().contains("barrelchest anchor")) || (def.name.toLowerCase().contains("staff of balance")) || (def.name.toLowerCase().contains("twisted bow")) || (def.name.toLowerCase().contains("facegaurd")) || (def.name.toLowerCase().contains("guardian"))
                     || (def.name.toLowerCase().contains("twisted buckler")) || (def.name.toLowerCase().contains("dragon dart")) || (def.name.toLowerCase().contains("guthix rest")) || (def.name.toLowerCase().contains("obsidian")) || (def.name.toLowerCase().contains("regen bracelet")) || (def.name.toLowerCase().contains("rangers'")) || (def.name.toLowerCase().contains("dragon scimitar (or)")) || (def.name.toLowerCase().contains("valinor coins")) || (def.name.toLowerCase().contains("divine")) || (def.name.toLowerCase().contains("super antifire")) || (def.name.toLowerCase().contains("robin hood hat")) || (def.name.toLowerCase().contains("ankou"))
-                    || (def.name.toLowerCase().contains("santa")) || (def.name.toLowerCase().contains("halloween")) || (def.name.toLowerCase().contains("dye"))) {
+                    || (def.name.toLowerCase().contains("santa")) || (def.name.toLowerCase().contains("halloween")) || (def.name.toLowerCase().contains("dye")) || (def.name.toLowerCase().contains("cooking gauntlets")) || (def.name.toLowerCase().contains("magic secateurs")) || (def.name.toLowerCase().contains("explorers ring")) || (def.name.toLowerCase().contains("blessing")) || (def.name.toLowerCase().contains("charos")) || (def.name.toLowerCase().contains("ardougne cloak")) || (def.name.toLowerCase().contains("bonecrusher")) || (def.name.toLowerCase().contains("ornament kit"))) {
                     def.name = ("<col=65280>" + def.name);
                 }
                 if ((def.name.toLowerCase().contains("berserker ring")) || (def.name.toLowerCase().contains("seers")) || (def.name.toLowerCase().contains("archers")) || (def.name.toLowerCase().contains("warrior ring"))) {

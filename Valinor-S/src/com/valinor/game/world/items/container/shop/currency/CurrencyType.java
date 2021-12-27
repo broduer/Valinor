@@ -19,7 +19,6 @@ public enum CurrencyType {
     DONATOR_TICKETS(new ItemCurrency(CustomItemIdentifiers.DONATOR_TICKET)),
     MARK_OF_GRACE(new ItemCurrency(ItemIdentifiers.MARK_OF_GRACE)),
     VALINOR_COINS(new ItemCurrency(CustomItemIdentifiers.VALINOR_COINS)),
-    BLOOD_MONEY(new ItemCurrency(ItemIdentifiers.BLOOD_MONEY)),
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
@@ -45,7 +44,6 @@ public enum CurrencyType {
             case DONATOR_TICKETS -> value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.DONATOR_TICKET) ? player.inventory().count(CustomItemIdentifiers.DONATOR_TICKET) : 0);
             case MARK_OF_GRACE -> value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.MARK_OF_GRACE) ? player.inventory().count(ItemIdentifiers.MARK_OF_GRACE) : 0);
             case VALINOR_COINS -> value = Utils.formatNumber(player.inventory().contains(CustomItemIdentifiers.VALINOR_COINS) ? player.inventory().count(CustomItemIdentifiers.VALINOR_COINS) : 0);
-            case BLOOD_MONEY -> value = Utils.formatNumber(player.inventory().contains(ItemIdentifiers.BLOOD_MONEY) ? player.inventory().count(ItemIdentifiers.BLOOD_MONEY) : 0);
             case SLAYER_REWARD_POINTS -> {
                 int slayerRewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
                 value = Utils.formatNumber(slayerRewardPoints);

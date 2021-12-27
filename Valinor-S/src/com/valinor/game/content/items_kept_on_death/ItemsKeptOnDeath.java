@@ -224,7 +224,7 @@ public class ItemsKeptOnDeath {
                 return false;
             }
             // autokept if untradable
-            return !head.makeItemsTradeable();
+            return !head.rawtradable();
         }
         return false;
     }

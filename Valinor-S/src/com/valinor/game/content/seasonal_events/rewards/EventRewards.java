@@ -34,7 +34,7 @@ public enum EventRewards {
     EVENT_REWARD_22(new Item(CustomItemIdentifiers.DONATOR_TICKET, 250), 105),
     EVENT_REWARD_23(new Item(CustomItemIdentifiers.DONATOR_TICKET, 500), 100),
     EVENT_REWARD_24(new Item(ItemIdentifiers.DRAGON_BOOTS), 95),
-    EVENT_REWARD_25(new Item(CustomItemIdentifiers.CORRUPT_TOTEM), 90),
+    EVENT_REWARD_25(new Item(ItemIdentifiers.ANCIENT_TOTEM), 90),
     EVENT_REWARD_26(new Item(CustomItemIdentifiers.EARTH_ARROWS, 1000), 85),
     EVENT_REWARD_27(new Item(CustomItemIdentifiers.FIRE_ARROWS, 1000), 80),
     EVENT_REWARD_28(new Item(CustomItemIdentifiers.VALINOR_COINS, 500), 75),

@@ -8,11 +8,14 @@ import com.valinor.game.content.skill.impl.farming.impl.PatchState;
 import com.valinor.game.content.skill.impl.farming.impl.Patches;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.PlayerTask;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.incoming_packets.MovementPacketListener;
+
+import static com.valinor.util.ItemIdentifiers.MAGIC_SECATEURS;
 
 /**
  * Handles the action to harvest the crops.
@@ -54,8 +57,9 @@ public class CropHarvestAction extends PlayerTask {
 
             player.animate(data.getPatchType().getYieldAnimation());
             player.face(tile);
-            player.getInventory().add(new Item(state.getSeed().getProduct()));
-            player.skills().addXp(Skills.FARMING, state.getSeed().getExperience() / 10);
+            int amount = player.getEquipment().hasAt(EquipSlot.WEAPON, MAGIC_SECATEURS) ? 2 : 1;
+            player.getInventory().add(new Item(state.getSeed().getProduct(), amount));
+            player.skills().addXp(Skills.FARMING, (float)state.getSeed().getExperience() / 10);
             AchievementsManager.activate(player, Achievements.FARMER,1);
 
             if (FarmingConstants.hasToLoseLife(state, player)) {

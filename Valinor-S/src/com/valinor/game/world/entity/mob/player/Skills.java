@@ -33,6 +33,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_EXP_TICKS;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * Created by Bart Pelle on 8/23/2014.
@@ -219,8 +220,8 @@ public class Skills {
             amt *= player.expmode().getExpMultiplier();
         }
 
-        var dropRateBoostUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.EXP_BOOSTER);
-        if(dropRateBoostUnlock) {
+        var expBoostUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.EXP_BOOSTER);
+        if(expBoostUnlock) {
             switch (player.expmode()) {
                 case ROOKIE -> amt *= .10;
                 case GLADIATOR -> amt *= .5;
@@ -228,15 +229,20 @@ public class Skills {
             }
         }
 
+        if(!combatxp && player.getEquipment().hasAt(EquipSlot.RING, EXPLORERS_RING_4)) {
+            amt *= .25;
+        }
+
+        if(combatxp && player.getEquipment().hasAt(EquipSlot.RING, RADAS_BLESSING_4)) {
+            amt *= .25;
+        }
+
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
 
         var donator_zone = player.tile().memberZone() || player.tile().memberCave();
 
         //Genie pet gives x2 exp
-        amt *= geniePet || donator_zone || double_exp_ticks ? 2.0 : 1.0;
-
-        //World multiplier exp gives x2 exp.
-        amt *= World.getWorld().xpMultiplier > 1 ? 2.0 : 1.0;
+        amt *= player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) || geniePet || World.getWorld().xpMultiplier > 1 || donator_zone || double_exp_ticks ? 2.0 : 1.0;
 
         player.getPacketSender().sendExpDrop(skill, (int) amt, counter);
 

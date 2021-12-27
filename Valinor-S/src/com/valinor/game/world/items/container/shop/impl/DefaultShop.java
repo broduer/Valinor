@@ -130,7 +130,7 @@ public final class DefaultShop extends Shop {
             return;
         }
 
-        if(player.askForAccountPin()) {
+        if (player.askForAccountPin()) {
             player.sendAccountPinMessage();
             return;
         }
@@ -149,7 +149,7 @@ public final class DefaultShop extends Shop {
 
         players.add(player);
         player.inventory().refresh();
-        refresh(player);
+        refresh(player, true);
 
         int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
         player.getPacketSender().sendString(64014, "Reward Points: " + Utils.formatNumber(rewardPoints));
@@ -164,13 +164,39 @@ public final class DefaultShop extends Shop {
     }
 
     @Override
-    public void refresh(Player player) {
+    public void refresh(Player player, boolean redrawStrings) {
+        //Empty out the cost strings here at the top, that way it's cleared if it should be, and can be overwritten down below if necessary.
+        if (redrawStrings) {
+            for (int index = 0; index < 100; index++) {
+                player.getPacketSender().sendString(ShopUtility.AMOUNT_STRING_ID + index, "");
+            }
+        }
+        final Item[] items = container.toArray();
+        for (int index = 0; index < items.length; index++) {
+            Item item = items[index];
+
+            if (item == null) {
+                continue;
+            }
+
+            if (item instanceof StoreItem) {
+                //Only draw the strings if we are using the Text Shop Widget (i.e. we are not using the Regular Shop Widget).
+                if (redrawStrings) {
+                    // Write the item cost string
+                    final StoreItem storeItem = (StoreItem) items[index];
+                    if (storeItem != null) {
+                        int value = storeItem.getShopValue();
+                        player.getPacketSender().sendString(ShopUtility.AMOUNT_STRING_ID + index, value == 0 ? "FREE" : "" + Utils.formatRunescapeStyle(value));
+                    }
+                }
+            }
+        }
+
         player.getPacketSender().sendScrollbarHeight(ShopUtility.SCROLL_BAR_INTERFACE_ID, scroll);
         player.getPacketSender().sendItemOnInterface(3823, player.inventory().toArray());
         players.stream().filter(Objects::nonNull).forEach(p -> player.getPacketSender().sendItemOnInterface(shopId == 7 ? ShopUtility.SLAYER_BUY_ITEM_CHILD_ID : 3900, container.toArray()));
         //Slayer shop
-        if(shopId == 7) {
-            final Item[] items = container.toArray();
+        if (shopId == 7) {
             for (int index = 0; index < items.length; index++) {
                 Item item = items[index];
 
@@ -183,7 +209,7 @@ public final class DefaultShop extends Shop {
                     final StoreItem storeItem = (StoreItem) items[index];
                     if (storeItem != null) {
                         int value = storeItem.getShopValue();
-                        player.getPacketSender().sendString(64017 + index, "" + Utils.formatRunescapeStyle(value));
+                        player.getPacketSender().sendString(SLAYER_BUY_AMOUNT_STRING_ID + index, "" + Utils.formatRunescapeStyle(value));
                     }
                 }
             }

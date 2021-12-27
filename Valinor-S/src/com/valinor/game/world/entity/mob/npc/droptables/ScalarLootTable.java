@@ -307,44 +307,6 @@ public class ScalarLootTable {
         return table;
     }
 
-    public void rollForTotemBase(Player player) {
-        var inMemberCave = player.tile().memberCave();
-        if (inMemberCave) {
-            var roll = 100;
-            var reduction = roll * player.totemDropRateBonus() / 100;
-            roll -= reduction;
-            if (World.getWorld().rollDie(roll, 1)) {
-                GroundItemHandler.createGroundItem(new GroundItem(new Item(CORRUPT_TOTEM_BASE), player.tile(), player));
-            }
-        }
-    }
-
-    public void rollForTotemMiddle(Player player) {
-        var inMemberCave = player.tile().memberCave();
-        if (inMemberCave) {
-            var roll = 100;
-            var reduction = roll * player.totemDropRateBonus() / 100;
-            roll -= reduction;
-
-            if (World.getWorld().rollDie(roll, 1)) {
-                GroundItemHandler.createGroundItem(new GroundItem(new Item(CORRUPT_TOTEM_MIDDLE), player.tile(), player));
-            }
-        }
-    }
-
-    public void rollForTotemTop(Player player) {
-        var inMemberCave = player.tile().memberCave();
-        if (inMemberCave) {
-            var roll = 100;
-            var reduction = roll * player.totemDropRateBonus() / 100;
-            roll -= reduction;
-
-            if (World.getWorld().rollDie(roll, 1)) {
-                GroundItemHandler.createGroundItem(new GroundItem(new Item(CORRUPT_TOTEM_TOP), player.tile(), player));
-            }
-        }
-    }
-
     public void rollForLarransKey(Npc npc, Player player) {
         var inWilderness = WildernessArea.inWilderness(player.tile());
         SlayerCreature task = SlayerCreature.lookup(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));

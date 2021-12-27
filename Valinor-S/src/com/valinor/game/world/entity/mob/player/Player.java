@@ -301,24 +301,6 @@ public class Player extends Mob {
         };
     }
 
-    public int totemDropRateBonus() {
-        var extraPercentageChance = 0;
-        if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 50;
-        else if (getMemberRights().isOnyxMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 30;
-        else if (getMemberRights().isDragonstoneMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 25;
-        else if (getMemberRights().isDiamondMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 20;
-        else if (getMemberRights().isRubyMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 15;
-        else if (getMemberRights().isEmeraldMemberOrGreater(this) && tile().memberCave())
-            extraPercentageChance = 10;
-
-        return extraPercentageChance;
-    }
-
     public int memberAncientRevBonus() {
         var extraPercentageChance = 0;
         if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
@@ -1082,11 +1064,11 @@ public class Player extends Mob {
             speed = World.getWorld().equipmentInfo().weaponSpeed(weapon.getId());
         }
 
-        if (getCombat().getTarget() instanceof Npc && (getEquipment().contains(ItemIdentifiers.TOXIC_BLOWPIPE) || getEquipment().contains(MAGMA_BLOWPIPE) || getEquipment().contains(HWEEN_BLOWPIPE))) {
+        if (getCombat().getTarget() instanceof Npc && (getEquipment().contains(ItemIdentifiers.TOXIC_BLOWPIPE) || getEquipment().contains(MAGMA_BLOWPIPE))) {
             speed--;
         }
 
-        if (getCombat().getTarget() instanceof Npc && (getEquipment().hasAt(EquipSlot.WEAPON, TALONHAWK_CROSSBOW) || getEquipment().hasAt(EquipSlot.WEAPON, HAUNTED_CROSSBOW))) {
+        if (getCombat().getTarget() instanceof Npc && (getEquipment().hasAt(EquipSlot.WEAPON, TALONHAWK_CROSSBOW))) {
             speed--;
         }
 

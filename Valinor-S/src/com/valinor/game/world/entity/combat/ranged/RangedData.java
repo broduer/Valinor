@@ -226,7 +226,6 @@ public class RangedData {
         HUNTERS_CROSSBOW(new int[] {ItemIdentifiers.HUNTERS_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         KARILS_CROSSBOW(new int[]{ItemIdentifiers.KARILS_CROSSBOW}, RangedWeaponType.KARILS_CROSSBOW, true),
         TALONHAWK_CROSSBOW(new int[] {CustomItemIdentifiers.TALONHAWK_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
-        HAUNTED_CROSSBOW(new int[] {CustomItemIdentifiers.HAUNTED_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
 
         BRONZE_DART(new int[]{ItemIdentifiers.BRONZE_DART}, RangedWeaponType.DARTS, false),
         IRON_DART(new int[]{ItemIdentifiers.IRON_DART}, RangedWeaponType.DARTS, false),
@@ -259,9 +258,9 @@ public class RangedData {
 
         BALLISTA(new int[]{LIGHT_BALLISTA, HEAVY_BALLISTA}, RangedWeaponType.BALLISTA, true),
 
-        TOXIC_BLOWPIPE(new int[]{ItemIdentifiers.TOXIC_BLOWPIPE, MAGMA_BLOWPIPE, HWEEN_BLOWPIPE}, RangedWeaponType.TOXIC_BLOWPIPE, false),
+        TOXIC_BLOWPIPE(new int[]{ItemIdentifiers.TOXIC_BLOWPIPE, MAGMA_BLOWPIPE}, RangedWeaponType.TOXIC_BLOWPIPE, false),
         
-        CRAWS_BOW(new int[]{ItemIdentifiers.CRAWS_BOW_U, ItemIdentifiers.CRAWS_BOW, CRAWS_BOW_C, BEGINNER_CRAWS_BOW, HWEEN_CRAWS_BOW}, RangedWeaponType.CRAWS_BOW, false),
+        CRAWS_BOW(new int[]{ItemIdentifiers.CRAWS_BOW_U, ItemIdentifiers.CRAWS_BOW, CRAWS_BOW_C, BEGINNER_CRAWS_BOW}, RangedWeaponType.CRAWS_BOW, false),
 
         BOW_OF_FAERDHINEN(new int[]{ItemIdentifiers.BOW_OF_FAERDHINEN, ItemIdentifiers.BOW_OF_FAERDHINEN_C, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25869, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25884, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25886, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25888, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25890, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25892, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25894, ItemIdentifiers.BOW_OF_FAERDHINEN_C_25896}, RangedWeaponType.BOW_OF_FAERDHINEN, false),
 

@@ -134,7 +134,7 @@ public class Venom extends Interaction {
         if(wep == null) return false;
 
         // Only venom weps for venom. Blowpipe charged, toxic trident used, toxic staff of the dead charged.
-        if (wep.getId() != TOXIC_BLOWPIPE && wep.getId() != MAGMA_BLOWPIPE && wep.getId() != HWEEN_BLOWPIPE && wep.getId() != TRIDENT_OF_THE_SWAMP && wep.getId() != TOXIC_STAFF_OF_THE_DEAD && wep.getId() != TOXIC_STAFF_OF_THE_DEAD_C) {
+        if (wep.getId() != TOXIC_BLOWPIPE && wep.getId() != MAGMA_BLOWPIPE && wep.getId() != TRIDENT_OF_THE_SWAMP && wep.getId() != TOXIC_STAFF_OF_THE_DEAD && wep.getId() != TOXIC_STAFF_OF_THE_DEAD_C) {
             return false;
         }
 

@@ -81,7 +81,7 @@ public class FormulaUtils {
     }
 
     public static boolean hasViggorasChainMace(Player player) {
-        return ((player.getEquipment().hasAt(EquipSlot.WEAPON, VIGGORAS_CHAINMACE) || player.getEquipment().hasAt(EquipSlot.WEAPON, BEGINNER_CHAINMACE) || player.getEquipment().hasAt(EquipSlot.WEAPON, HWEEN_CHAINMACE)) && WildernessArea.inWilderness(player.tile()));
+        return ((player.getEquipment().hasAt(EquipSlot.WEAPON, VIGGORAS_CHAINMACE) || player.getEquipment().hasAt(EquipSlot.WEAPON, BEGINNER_CHAINMACE)) && WildernessArea.inWilderness(player.tile()));
     }
 
     public static boolean hasThammaronSceptre(Player player) {
@@ -90,7 +90,7 @@ public class FormulaUtils {
     }
 
     public static boolean hasCrawsBow(Player player) {
-        return ((player.getEquipment().hasAt(EquipSlot.WEAPON, CRAWS_BOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, BEGINNER_CRAWS_BOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, HWEEN_CRAWS_BOW)) && WildernessArea.inWilderness(player.tile()));
+        return ((player.getEquipment().hasAt(EquipSlot.WEAPON, CRAWS_BOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, BEGINNER_CRAWS_BOW)) && WildernessArea.inWilderness(player.tile()));
     }
 
     public static boolean hasAmuletOfAvarice(Player player) {

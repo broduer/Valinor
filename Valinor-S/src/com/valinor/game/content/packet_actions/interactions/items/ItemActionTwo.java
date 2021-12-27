@@ -4,7 +4,6 @@ import com.valinor.game.content.consumables.potions.Potions;
 import com.valinor.game.content.items.combine.EldritchNightmareStaff;
 import com.valinor.game.content.items.combine.HarmonisedNightmareStaff;
 import com.valinor.game.content.items.combine.VolatileNightmareStaff;
-import com.valinor.game.content.items.teleport.ArdyCape;
 import com.valinor.game.content.skill.impl.slayer.content.SlayerRing;
 import com.valinor.game.world.entity.mob.npc.pets.PetPaint;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -24,7 +23,6 @@ public class ItemActionTwo {
         int id = item.getId();
 
         PetPaint.wipePaint(player, item);
-        ArdyCape.onItemOption2(player, item);
 
         if (InteractionManager.checkItemInteraction(player, item, 2)) {
             return;

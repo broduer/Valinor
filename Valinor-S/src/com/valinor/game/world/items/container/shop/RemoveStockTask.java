@@ -48,7 +48,7 @@ public class RemoveStockTask extends Task {
         if (!stocksItem) {
             shop.container.remove(item);
             for (Player player : shop.players) {
-                shop.refresh(player);
+                shop.refresh(player,false);
             }
             return true;
         }
@@ -57,7 +57,7 @@ public class RemoveStockTask extends Task {
             //shop.container.remove(item.getId(), 1);
             item.setAmount(item.getAmount() - 1);
             for (Player player : shop.players) {
-                shop.refresh(player);
+                shop.refresh(player,false);
             }
             return true;
         }

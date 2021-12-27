@@ -82,7 +82,6 @@ public enum Seeds {
      */
     private final int experience;
 
-
     /**
      * The seed's item ID.
      */

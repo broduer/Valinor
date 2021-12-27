@@ -101,7 +101,7 @@ public enum Collection {
         //Drops
         new Item(KALPHITE_PRINCESS), new Item(KQ_HEAD), new Item(JAR_OF_SAND), new Item(DRAGON_2H_SWORD), new Item(DRAGON_CHAINBODY)),
 
-    KING_BLACK_DRAGON(AttributeKey.KING_BLACK_DRAGONS_KILLED, LogType.BOSSES, "King Black Dragon", new int[]{NpcIdentifiers.KING_BLACK_DRAGON}, AttributeKey.KING_BLACK_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS, 2), new Item(HAUNTED_DRAGONFIRE_SHIELD)},
+    KING_BLACK_DRAGON(AttributeKey.KING_BLACK_DRAGONS_KILLED, LogType.BOSSES, "King Black Dragon", new int[]{NpcIdentifiers.KING_BLACK_DRAGON}, AttributeKey.KING_BLACK_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS, 2)},
         //Drops
         new Item(PRINCE_BLACK_DRAGON), new Item(KBD_HEADS), new Item(DRAGON_PICKAXE), new Item(DRACONIC_VISAGE)),
 
