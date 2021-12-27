@@ -1,6 +1,8 @@
 package com.valinor.game.world.entity.combat.bountyhunter;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
@@ -223,28 +225,10 @@ public class BountyHunter {
             rewardPlayer = true;
         }
 
-        if (rewardPlayer) {
-
-            //Other rewards
-            if(WildernessArea.inWilderness(killer.tile()) && target.isPresent()) { // Only reward if in wild
-                // Add a death. Only when dying to a player.
-                int dc = (Integer) target.get().getAttribOr(AttributeKey.PLAYER_DEATHS, 0) + 1;
-                target.get().putAttrib(AttributeKey.PLAYER_DEATHS, dc);
-
-                //Increase the player killcount
-                int killcount = (Integer) killer.getAttribOr(AttributeKey.PLAYER_KILLS, 0) + 1;
-                killer.putAttrib(AttributeKey.PLAYER_KILLS, killcount);
-            }
-        } else {
-            killer.message("You don't get any rewards for that kill.");
-            //Player is probably farming kills.
-        }
-
         //Check if the player killed was our target..
         if (target.isPresent() && target.get().equals(killed)) {
             if (!rewardPlayer) {
-                killed.message("Being killed by targets on the same address does not count.");
-                killer.message("Killing targets on the same address does not count towards rewards.");
+                killer.message("You don't get any rewards for that kill.");
             }
 
             //Reset targets
@@ -255,8 +239,9 @@ public class BountyHunter {
                 //Send messages
                 killed.getPacketSender().sendMessage("You were defeated by your target!");
 
-                int targetKills = (Integer) killer.getAttribOr(AttributeKey.TARGET_KILLS, 0) + 1;
-                killer.putAttrib(AttributeKey.TARGET_KILLS, targetKills);
+                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);
+                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_II, 1);
+                AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_III, 1);
 
                 Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
 

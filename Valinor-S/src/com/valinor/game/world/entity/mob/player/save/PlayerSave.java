@@ -323,7 +323,6 @@ public class PlayerSave {
                         player.getRecentKills().add(kills);
                     }
                 }
-                player.putAttrib(TARGET_KILLS, details.targetKills);
                 player.putAttrib(KILLSTREAK_RECORD, details.killstreakRecord);
                 player.putAttrib(KING_BLACK_DRAGONS_KILLED, details.kingBlackDragonsKilled);
                 player.putAttrib(VETIONS_KILLED, details.vetionsKilled);
@@ -724,7 +723,6 @@ public class PlayerSave {
         private final List<String> recentKills;
 
         //counts
-        private final int targetKills;
         private final int killstreakRecord;
         private final int kingBlackDragonsKilled;
         private final int vetionsKilled;
@@ -1120,7 +1118,6 @@ public class PlayerSave {
             kills = Player.getAttribIntOr(player, PLAYER_KILLS, 0);
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
             recentKills = player.getRecentKills();
-            targetKills = Player.getAttribIntOr(player, TARGET_KILLS, 0);
             killstreakRecord = Player.getAttribIntOr(player, KILLSTREAK_RECORD, 0);
             kingBlackDragonsKilled = Player.getAttribIntOr(player, KING_BLACK_DRAGONS_KILLED, 0);
             vetionsKilled = Player.getAttribIntOr(player, VETIONS_KILLED, 0);

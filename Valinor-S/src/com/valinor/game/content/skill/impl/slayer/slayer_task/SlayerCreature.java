@@ -1,6 +1,6 @@
 package com.valinor.game.content.skill.impl.slayer.slayer_task;
 
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.AttributeKey;
@@ -280,8 +280,8 @@ public enum SlayerCreature {
                 if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     Tile tile = task.teleportLocation;
                     if (task == WORLD_BOSS) {
-                        if (WildernessBossEvent.getINSTANCE().getActiveNpc().isPresent() && WildernessBossEvent.currentSpawnPos != null) {
-                            tile = WildernessBossEvent.currentSpawnPos;
+                        if (WorldBossEvent.getINSTANCE().getActiveNpc().isPresent() && WorldBossEvent.currentSpawnPos != null) {
+                            tile = WorldBossEvent.currentSpawnPos;
                         } else {
                             player.message("The world boss recently died and will respawn shortly.");
                         }

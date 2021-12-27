@@ -6,7 +6,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.bank_pin.BankPin;
 import com.valinor.game.content.bank_pin.BankPinSettings;
 import com.valinor.game.content.clan.Clan;
@@ -143,6 +143,47 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
+
+    public int shutdownValueOf(int streak) {
+        int bonus = 1 * streak;
+        return bonus;
+    }
+
+    private int killstreakValueOf(int streak) {
+        int bonus = 1 * streak;
+        return bonus;
+    }
+
+    private int firstKillOfTheDay() {
+        if (System.currentTimeMillis() >= (long) getAttribOr(AttributeKey.FIRST_KILL_OF_THE_DAY, 0L)) {
+            putAttrib(AttributeKey.FIRST_KILL_OF_THE_DAY, System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24));
+            return 10;
+        }
+        return 0;
+    }
+
+    public int pkpAmount(Player target) {
+        // Declare base value for our kill.
+        int pkPoints = 1;
+
+        // Double BM, if enabled. Can be toggled with ::bmm <int>. Default 1.
+        pkPoints *= World.getWorld().pkpMultiplier;
+
+        // Ruin his kill streak. Only when dying to a player.
+        var target_killstreak = target == null ? 0 : target.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0);
+        var killstreak = this.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0) + 1;
+
+        // Apply target's killstreak on our reward. Oh, and our streak.
+        pkPoints += shutdownValueOf(target_killstreak); //Add the shutdown value bonus to the BM reward
+        pkPoints += killstreakValueOf(killstreak); //Add the killstreak value bonus to the BM reward
+        pkPoints += firstKillOfTheDay();
+
+        //Edgevile hotspot always pkp x2
+        if (tile().inArea(Tile.EDGEVILE_WILDY)) {
+            pkPoints *= 2;
+        }
+        return pkPoints;
+    }
 
     public TickDelay snowballCooldown = new TickDelay();
 
@@ -1372,7 +1413,6 @@ public class Player extends Mob {
             GameServer.getDatabaseService().submit(new UpdateKillsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_KILLS, 0), username));
             GameServer.getDatabaseService().submit(new UpdateDeathsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_DEATHS, 0), username));
             GameServer.getDatabaseService().submit(new UpdateKdrDatabaseTransaction(Double.parseDouble(getKillDeathRatio()), username));
-            GameServer.getDatabaseService().submit(new UpdateTargetKillsDatabaseTransaction(getAttribOr(AttributeKey.TARGET_KILLS, 0), username));
             GameServer.getDatabaseService().submit(new UpdateKillstreakDatabaseTransaction(getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0), username));
             GameServer.getDatabaseService().submit(new InsertPlayerIPDatabaseTransaction(this));
         }
@@ -2927,7 +2967,7 @@ public class Player extends Mob {
             }
 
             LocalDateTime now = LocalDateTime.now();
-            long minutesTillWildyBoss = now.until(WildernessBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
+            long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
 
             // Refresh the quest tab every minute (every 100 ticks)
             if (GameServer.properties().autoRefreshQuestTab && getPlayerQuestTabCycleCount() == GameServer.properties().refreshQuestTabCycles) {
@@ -2940,8 +2980,8 @@ public class Player extends Mob {
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
 
                 if (minutesTillWildyBoss == 5) {
-                    if (!WildernessBossEvent.ANNOUNCE_5_MIN_TIMER) {
-                        WildernessBossEvent.ANNOUNCE_5_MIN_TIMER = true;
+                    if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
+                        WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
                         World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
                     }
                 }

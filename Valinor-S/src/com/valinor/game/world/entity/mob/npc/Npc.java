@@ -3,7 +3,7 @@ package com.valinor.game.world.entity.mob.npc;
 import com.google.common.base.Stopwatch;
 import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
-import com.valinor.game.content.areas.wilderness.content.boss_event.BossEvent;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.GreatOlm;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.hunter.trap.impl.Chinchompas;
@@ -56,7 +56,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static com.valinor.util.CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON;
 import static com.valinor.util.ItemIdentifiers.BRACELET_OF_ETHEREUM;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -94,7 +93,7 @@ public class Npc extends Mob {
     }
 
     public boolean isWorldBoss() {
-        return (Arrays.stream(BossEvent.values()).anyMatch(boss -> id == boss.npc));
+        return (Arrays.stream(WorldBossEvent.WorldBosses.values()).anyMatch(boss -> id == boss.npc));
     }
 
     public boolean isPet() {

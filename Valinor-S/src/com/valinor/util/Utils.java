@@ -435,10 +435,6 @@ public class Utils {
         }
     }
 
-    public static void sendDiscordInfoLog(String text) {
-        sendDiscordInfoLog(text, "info");
-    }
-
     public static float getPercentageFromDecimal(float decimal) {
         return decimal * 100;
     }

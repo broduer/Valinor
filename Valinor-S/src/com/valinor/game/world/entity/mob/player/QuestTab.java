@@ -3,14 +3,14 @@ package com.valinor.game.world.entity.mob.player;
 import com.valinor.GameServer;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.areas.wilderness.content.EloRating;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -23,8 +23,6 @@ import java.util.concurrent.TimeUnit;
  * @author Ali 20.10.2017
  */
 public final class QuestTab {
-
-    private static final Logger logger = LogManager.getLogger(QuestTab.class);
 
     private QuestTab() {
     }
@@ -48,7 +46,7 @@ public final class QuestTab {
         WORLD_BOSS_SPAWN(73000) {
             @Override
             public String fetchLineData(Player player) {
-                return "Next World Boss: <col=ffffff>" + WildernessBossEvent.getINSTANCE().timeTill(false);
+                return "Next World Boss: <col=ffffff>" + WorldBossEvent.getINSTANCE().timeTill(false);
             }
         },
 
@@ -195,7 +193,71 @@ public final class QuestTab {
                 int slayerTasksCompleted = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
                 return "Slayer Tasks Completed: <col=ffffff>" + Utils.formatNumber(slayerTasksCompleted);
             }
-        };
+        },
+
+        PLAYERS_PKING(73019) {
+            @Override
+            public String fetchLineData(Player player) {
+                return "Players in wild: <col=ffffff>" + World.getWorld().getPlayersInWild();
+            }
+        },
+
+        ELO_RATING(73020) {
+            @Override
+            public String fetchLineData(Player player) {
+                int rating = player.getAttribOr(AttributeKey.ELO_RATING, EloRating.DEFAULT_ELO_RATING);
+                return "Elo Rating: <col=ffffff>" + Utils.formatNumber(rating);
+            }
+        },
+
+        KILLS(73021) {
+            @Override
+            public String fetchLineData(Player player) {
+                int kills = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
+                return "Player kills: <col=ffffff>" + Utils.formatNumber(kills);
+            }
+        },
+
+        DEATHS(73022) {
+            @Override
+            public String fetchLineData(Player player) {
+                int deaths = player.getAttribOr(AttributeKey.PLAYER_DEATHS, 0);
+                return "Player deaths: <col=ffffff>" + Utils.formatNumber(deaths);
+            }
+        },
+
+        KD_RATIO(73023) {
+            @Override
+            public String fetchLineData(Player player) {
+                return "K/D Ratio: <col=ffffff>" + player.getKillDeathRatio();
+            }
+        },
+
+        CURRENT_KILLSTREAK(73024) {
+            @Override
+            public String fetchLineData(Player player) {
+                int killstreak = player.getAttribOr(AttributeKey.KILLSTREAK, 0);
+                return "Killstreak: <col=ffffff>" + Utils.formatNumber(killstreak);
+            }
+        },
+
+        KILLSTREAK_RECORD(73025) {
+            @Override
+            public String fetchLineData(Player player) {
+                int record = player.getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0);
+                return "Highest killstreak: <col=ffffff>" + Utils.formatNumber(record);
+            }
+        },
+
+        WILDERNESS_KILLSTREAK(73026) {
+            @Override
+            public String fetchLineData(Player player) {
+                int wildernessStreak = player.getAttribOr(AttributeKey.WILDERNESS_KILLSTREAK, 0);
+                return "Wilderness streak: <col=ffffff>" + Utils.formatNumber(wildernessStreak);
+            }
+        },
+
+        ;
 
         public final int childId;
 

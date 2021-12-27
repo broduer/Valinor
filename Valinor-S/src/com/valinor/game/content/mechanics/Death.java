@@ -2,6 +2,8 @@ package com.valinor.game.content.mechanics;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.EffectTimer;
+import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
+import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
@@ -151,6 +153,12 @@ public class Death {
             //BH death logic
             if (killer != null && killer.isPlayer()) {
                 BountyHunter.onDeath(killer, player);
+                TopPkers.SINGLETON.increase(killer.getUsername());
+
+                //Other rewards
+                if(WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
+                    PlayerKillingRewards.reward(killer, player,true);
+                }
             }
 
             if (killer != null && player.getController() != null) {

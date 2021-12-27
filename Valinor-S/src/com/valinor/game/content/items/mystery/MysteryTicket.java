@@ -17,7 +17,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class MysteryTicket extends Interaction {
 
-    //1/10
+    //1/20
     private final List<Item> RARE_REWARDS = Arrays.asList(
         new Item(BANDOS_TASSETS), new Item(BANDOS_CHESTPLATE), new Item(ARMADYL_CHESTPLATE), new Item(ARMADYL_CHAINSKIRT), new Item(SARADOMIN_GODSWORD),
         new Item(ARMADYL_GODSWORD), new Item(DRAGON_WARHAMMER), new Item(DRAGON_HUNTER_LANCE), new Item(SPECTRAL_SPIRIT_SHIELD));
@@ -27,7 +27,7 @@ public class MysteryTicket extends Interaction {
         new Item(BLESSED_SPIRIT_SHIELD), new Item(ARMADYL_CROSSBOW), new Item(ARMADYL_HELMET), new Item(BANDOS_GODSWORD), new Item(ZAMORAK_GODSWORD));
 
     private Item rewardRoll() {
-        if (Utils.rollDie(10, 1)) {
+        if (Utils.rollDie(20, 1)) {
             return Utils.randomElement(RARE_REWARDS);
         } else {
             return Utils.randomElement(COMMON_REWARDS);
@@ -42,7 +42,7 @@ public class MysteryTicket extends Interaction {
                 player.inventory().remove(new Item(MYSTERY_TICKET));
                 var opened = player.<Integer>getAttribOr(AttributeKey.MYSTERY_TICKETS_OPENED, 0) + 1;
                 player.putAttrib(AttributeKey.MYSTERY_TICKETS_OPENED, opened);
-                if(World.getWorld().rollDie(40,1)) {
+                if(World.getWorld().rollDie(75,1)) {
                     player.inventory().addOrBank(new Item(MYSTERY_CHEST));
                     MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(MYSTERY_CHEST));
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a Mystery chest from a mystery ticket.", "tickets_opened");
@@ -54,9 +54,9 @@ public class MysteryTicket extends Interaction {
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a "+reward.name()+" from a mystery ticket.", "tickets_opened");
                     worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Mystery ticket</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>" + reward.name() + "</shad>!";
                 } else {
-                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received x3 Donator mystery box from a mystery ticket.", "tickets_opened");
-                    player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX,3));
-                    MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(DONATOR_MYSTERY_BOX,3));
+                    Utils.sendDiscordInfoLog("Player " + player.getUsername() + " received a Donator mystery box from a mystery ticket.", "tickets_opened");
+                    player.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX));
+                    MYSTERY_BOX.log(player, MYSTERY_TICKET, new Item(DONATOR_MYSTERY_BOX));
                 }
                 if(!worldMessage.isEmpty() && !player.getUsername().equalsIgnoreCase("Box test")) {
                     World.getWorld().sendWorldMessage(worldMessage);

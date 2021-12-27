@@ -287,9 +287,29 @@ public enum AttributeKey {
     // ID of the last region we were in
     LAST_REGION,
 
-    TARGET_KILLS("target_kills", AttribType.INTEGER),
+    FIRST_KILL_OF_THE_DAY("first_kill_otd", AttribType.LONG),
 
-    KILLSTREAK_RECORD("killstreak_record", AttribType.INTEGER),
+    ELO_RATING("elo_rating", AttribType.INTEGER),
+
+    /**
+     * Number of players killed in the wilderness without leaving.
+     */
+    WILDERNESS_KILLSTREAK("wilderness_killstreak", AttribType.INTEGER),
+
+    /**
+     * Number of players killed in the process of murdering.
+     */
+    KILLSTREAK("killstreak", AttribType.INTEGER),
+
+    /**
+     * Highest shutdown player ever achieved. Doesn't get replaced unless it's superceded.
+     */
+    KILLSTREAK_RECORD("ksrec", AttribType.INTEGER),
+
+    /**
+     * The highest shutdown this player has ever achieved. Does not get cleared upon death and is permanent until it's superceded.
+     */
+    SHUTDOWN_RECORD("sdrec", AttribType.INTEGER),
 
     /**
      * 8x8 areas
@@ -994,6 +1014,10 @@ public enum AttributeKey {
     YELL_COLOUR("yell_colour", AttribType.STRING),
     PLAYER_KILLS("player_kills", AttribType.INTEGER),
     PLAYER_DEATHS("player_deaths", AttribType.INTEGER),
+
+    TOP_PKER_REWARD_UNCLAIMED("top_pker_unclaimed_reward", AttribType.BOOLEAN),
+
+    TOP_PKER_REWARD,
 
     /**
      * The player that owns this very NPC spawn. Think of barrows brothers, or animated armours.

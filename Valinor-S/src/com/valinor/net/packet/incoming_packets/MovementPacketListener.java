@@ -104,6 +104,11 @@ public class MovementPacketListener implements PacketListener {
         }
 
         if (!WildernessArea.inWilderness(player.tile())) {
+            int wildernessStreak = player.getAttribOr(AttributeKey.WILDERNESS_KILLSTREAK, 0);
+            if (wildernessStreak >= 1) {
+                player.message("[<col=ca0d0d>Streak</col>] Your wilderness streak ends at <col=ca0d0d>" + wildernessStreak + "</col> as you exit the wilderness.");
+                player.clearAttrib(AttributeKey.WILDERNESS_KILLSTREAK);
+            }
 
             if (player.getTimers().has(TimerKey.TELEBLOCK)) {
                 player.getTimers().cancel(TimerKey.TELEBLOCK);

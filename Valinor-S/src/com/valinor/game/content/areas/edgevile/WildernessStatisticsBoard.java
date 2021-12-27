@@ -19,8 +19,7 @@ public class WildernessStatisticsBoard extends Interaction {
             if(object.getId() == 26756) {
                 int kills = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
                 int deaths = player.getAttribOr(AttributeKey.PLAYER_DEATHS, 0);
-                int targetKills = player.getAttribOr(AttributeKey.TARGET_KILLS, 0);
-                player.message("You have " + targetKills + " target " + Utils.pluralOrNot("kill", kills) + ", " + kills + " player " + Utils.pluralOrNot("kill", kills) + ", and " + deaths + " " + Utils.pluralOrNot("death", deaths) + ". Your KD ratio is " + player.getKillDeathRatio() + ".");
+                player.message("You have "+Utils.pluralOrNot("kill", kills) + ", " + kills + " player " + Utils.pluralOrNot("kill", kills) + ", and " + deaths + " " + Utils.pluralOrNot("death", deaths) + ". Your KD ratio is " + player.getKillDeathRatio() + ".");
                 return true;
             }
         } else if(option == 2) {

@@ -174,7 +174,7 @@ public class World {
 
     public int xpMultiplier = applyDoubleExperience() ? 2 : 1;
     public int slayerRewardPointsMultiplier = applyDoubleSlayerRewardPoints() ? 2 : 1;
-    public int bmMultiplier = applyDoubleBM() ? 2 : 1;
+    public int pkpMultiplier = applyDoubleBM() ? 2 : 1;
 
     private int elapsedTicks;
 

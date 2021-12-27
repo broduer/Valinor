@@ -1129,8 +1129,7 @@ public class CombatFactory {
             Npc npc = (Npc) target;
 
             if (npc.combatInfo() == null) {
-                //logger.info("Missing combat attributes for npc {}", npc.id());
-                Utils.sendDiscordInfoLog("Missing combat attributes for npc " + npc.id());
+                logger.info("Missing combat attributes for npc {}", npc.id());
                 return;
             }
         }

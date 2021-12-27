@@ -1,6 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom;
 
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
@@ -14,7 +14,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 
 /**
  * Npc id = 3359
- * A custom boss which spawns random in the wild by the {@link WildernessBossEvent}
+ * A custom boss which spawns random in the wild by the {@link WorldBossEvent}
  *
  * @author Patrick van Elderen | Zerikoth (PVE) | 06 feb. 2020 : 11:13
  * @see <a href="https://github.com/Patrick9-10-1995">Github profile</a>

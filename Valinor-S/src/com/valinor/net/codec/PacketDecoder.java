@@ -88,8 +88,7 @@ public final class PacketDecoder extends ByteToMessageDecoder {
                 session.queuePacket(packet);
             }
             if (GameServer.properties().logSuccessfulPackets && opcode != 0) {
-                //logger.info("Reading client to server packet " + opcode + " (" + packetName + ") with size " + size);
-                Utils.sendDiscordInfoLog("Reading client to server packet " + opcode + " (" + packetName + ") with size " + size);
+                logger.info("Reading client to server packet " + opcode + " (" + packetName + ") with size " + size);
             }
         } else {
             //We don't really need to log this since packet fragmentation is a thing over the Internet.

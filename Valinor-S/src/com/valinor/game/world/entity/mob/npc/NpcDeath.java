@@ -6,11 +6,10 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.areas.burthope.warriors_guild.MagicalAnimator;
-import com.valinor.game.content.areas.wilderness.content.boss_event.WildernessBossEvent;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
-import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.Phases;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -25,7 +24,6 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.Kal
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.KalphiteQueenSecondForm;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.vetion.VetionMinion;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
-import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
@@ -48,7 +46,6 @@ import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.*;
 import com.valinor.util.chainedwork.Chain;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -59,7 +56,6 @@ import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.CustomNpcIdentifiers.*;
@@ -688,9 +684,9 @@ public class NpcDeath {
                     }
 
                     // so in java .. we dont have functions so we need to hardcode the id check
-                    if (WildernessBossEvent.getINSTANCE().getActiveNpc().isPresent() &&
-                        npc == WildernessBossEvent.getINSTANCE().getActiveNpc().get()) {
-                        WildernessBossEvent.getINSTANCE().bossDeath(npc);
+                    if (WorldBossEvent.getINSTANCE().getActiveNpc().isPresent() &&
+                        npc == WorldBossEvent.getINSTANCE().getActiveNpc().get()) {
+                        WorldBossEvent.getINSTANCE().bossDeath(npc);
                     }
 
                     if(npc.id() == THE_NIGHTMARE_9430) {

@@ -1,9 +1,9 @@
 package com.valinor;
 
 import com.valinor.game.GameBuilder;
+import com.valinor.game.content.areas.wilderness.content.TopPkers;
+import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.skill.impl.hunter.Impling;
-import com.valinor.game.content.skill.impl.hunter.PuroPuro;
-import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.HostBlacklist;
@@ -56,6 +56,7 @@ public final class Bootstrap {
         HostBlacklist.loadBlacklist();
         Item.onServerStart();
         Impling.onServerStartup();
-
+        WorldBossEvent.onServerStart();
+        TopPkers.SINGLETON.init();
     }
 }

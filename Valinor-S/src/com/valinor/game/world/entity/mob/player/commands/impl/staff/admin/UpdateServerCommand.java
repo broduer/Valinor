@@ -30,8 +30,7 @@ public class UpdateServerCommand implements Command {
 
         try {
             time = Integer.parseInt(parts[1]);
-            //logger.info("An update initiated by {} to happen in {} ticks.", player.getUsername(), time);
-            Utils.sendDiscordInfoLog("An update initiated by "+player.getUsername()+" to happen in "+time+" ticks.");
+            logger.info("An update initiated by {} to happen in {} ticks.", player.getUsername(), time);
             GameServer.setUpdating(true);
 
             // Warn all players about the scheduled update.
@@ -54,8 +53,7 @@ public class UpdateServerCommand implements Command {
                             return;
                         }
                         if (UpdateServerCommand.time-- == 0) {
-                            //logger.info("Enter task shutdown server.");
-                            Utils.sendDiscordInfoLog("Enter task shutdown server.");
+                            logger.info("Enter task shutdown server.");
                             GameEngine.getInstance().shutdown();
                             stop();
                         }

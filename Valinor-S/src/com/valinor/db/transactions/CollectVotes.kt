@@ -125,8 +125,6 @@ object CollectVotes {
                             if (Utils.percentageChance(changeForDonatorMysteryBox)) {
                                 inventory().addOrBank(Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 1))
                                 World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " was lucky and received <col=" + Color.HOTPINK.colorValue.toString() + "> a Donator mystery box from voting!")
-                                //logger.info("$username was lucky and received a Donator mystery box from voting!")
-                                Utils.sendDiscordInfoLog("$username was lucky and received a Donator mystery box from voting!")
                             }
 
                             val coins = World.getWorld().random(500_000, 2_000_000)

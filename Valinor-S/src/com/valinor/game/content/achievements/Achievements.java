@@ -2,7 +2,6 @@ package com.valinor.game.content.achievements;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.world.items.Item;
-import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -33,7 +32,7 @@ public enum Achievements {
      */
     //Misc
     COMPLETIONIST("Completionist", "Complete all Achievements besides this one.", 1, Difficulty.HARD, new Item(COINS_995, 250_000_000), new Item(DONATOR_MYSTERY_BOX, 3), new Item(MYSTERY_CHEST)),
-    VOTE_FOR_US_I("Vote I", "Claim at least 100 vote points.<br>Type ::vote to support "+GameConstants.SERVER_NAME,100, Difficulty.EASY, new Item(VOTE_TICKET, 5), new Item(CRYSTAL_KEY+1, 2)),
+    VOTE_FOR_US_I("Vote I", "Claim at least 100 vote points.<br>Type ::vote to support "+ GameConstants.SERVER_NAME,100, Difficulty.EASY, new Item(VOTE_TICKET, 5), new Item(CRYSTAL_KEY+1, 2)),
     VOTE_FOR_US_II("Vote II", "Claim at least 250 vote points.<br>Type ::vote to support "+GameConstants.SERVER_NAME,250, Difficulty.MED, new Item(VOTE_TICKET, 25), new Item(DONATOR_MYSTERY_BOX, 1)),
     VOTE_FOR_US_III("Vote III", "Claim at least 500 vote points.<br>Type ::vote to support "+GameConstants.SERVER_NAME,500, Difficulty.HARD, new Item(VOTE_TICKET, 50), new Item(MYSTERY_TICKET, 1), new Item(MYSTERY_CHEST)),
     CRYSTAL_LOOTER_I("Crystal looter I", "Open the crystal chest 10 times.", 10, Difficulty.EASY, new Item(COINS_995, 500_000), new Item(CRYSTAL_KEY+1, 1)),
@@ -83,13 +82,13 @@ public enum Achievements {
     BARROWS_I("Barrows I", "Complete 10 barrows runs.", 10, Difficulty.EASY, new Item(COINS_995, 2_500_000), new Item(BARROWS_MYSTERY_BOX, 1)),
     BARROWS_II("Barrows II", "Complete 30 barrows runs.", 30, Difficulty.MED, new Item(COINS_995, 5_000_000), new Item(BARROWS_MYSTERY_BOX, 5)),
     BARROWS_III("Barrows III", "Complete 50 barrows runs.", 50, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(BARROWS_MYSTERY_BOX, 10), new Item(DHAROKS_PLATELEGS, 1)),
-    DEFENDER_HUNT_I("Defender hunter I", "Obtain the bronze defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 25)),
-    DEFENDER_HUNT_II("Defender hunter II", "Obtain the iron defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 50)),
-    DEFENDER_HUNT_III("Defender hunter III", "Obtain the steel defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 75)),
-    DEFENDER_HUNT_IV("Defender hunter IV", "Obtain the black defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 100)),
-    DEFENDER_HUNT_V("Defender hunter V", "Obtain the mithril defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 125)),
-    DEFENDER_HUNT_VI("Defender hunter VI", "Obtain the adamant defender.", 1, Difficulty.EASY, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 175)),
-    DEFENDER_HUNT_VII("Defender hunter VII", "Obtain the rune defender.", 1, Difficulty.MED, new Item(ItemIdentifiers.WARRIOR_GUILD_TOKEN, 225)),
+    DEFENDER_HUNT_I("Defender hunter I", "Obtain the bronze defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 25)),
+    DEFENDER_HUNT_II("Defender hunter II", "Obtain the iron defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 50)),
+    DEFENDER_HUNT_III("Defender hunter III", "Obtain the steel defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 75)),
+    DEFENDER_HUNT_IV("Defender hunter IV", "Obtain the black defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 100)),
+    DEFENDER_HUNT_V("Defender hunter V", "Obtain the mithril defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 125)),
+    DEFENDER_HUNT_VI("Defender hunter VI", "Obtain the adamant defender.", 1, Difficulty.EASY, new Item(WARRIOR_GUILD_TOKEN, 175)),
+    DEFENDER_HUNT_VII("Defender hunter VII", "Obtain the rune defender.", 1, Difficulty.MED, new Item(WARRIOR_GUILD_TOKEN, 225)),
     DEFENDER_HUNT_IX("Defender hunter IX", "Obtain the dragon defender.", 1, Difficulty.MED, new Item(SUPER_COMBAT_POTION4+1, 50), new Item(PRAYER_POTION4+1, 50), new Item(BIG_BONES+1, 100)),
     FIGHT_CAVES_I("Fight caves I", "Defeat TzTok-Jad.", 1, Difficulty.HARD, new Item(COINS_995, 5_000_000), new Item(DONATOR_MYSTERY_BOX, 1)),
     FIGHT_CAVES_II("Fight caves II", "Defeat TzTok-Jad three times.", 3, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET, 1), new Item(SUPER_COMBAT_POTION4+1, 10), new Item(PRAYER_POTION4+1, 10)),
@@ -128,7 +127,7 @@ public enum Achievements {
     GOLDSMITH("Goldsmith", "Make 1000 bars of any kind.", 1000, Difficulty.MED, new Item(RUNITE_BAR+1, 100), new Item(ADAMANTITE_BAR+1, 250), new Item(MITHRIL_BAR+1, 300)),
 
     /* Fishing */
-    FISHERMAN("Fisherman", "Catch 1000 fish of any kind.", 1000, Difficulty.MED, new Item(ItemIdentifiers.ANGLER_HAT), new Item(ItemIdentifiers.ANGLER_BOOTS), new Item(ItemIdentifiers.ANGLER_TOP), new Item(ItemIdentifiers.ANGLER_WADERS), new Item(COINS_995, 500_000)),
+    FISHERMAN("Fisherman", "Catch 1000 fish of any kind.", 1000, Difficulty.MED, new Item(ANGLER_HAT), new Item(ANGLER_BOOTS), new Item(ANGLER_TOP), new Item(ANGLER_WADERS), new Item(COINS_995, 500_000)),
 
     /* Cooking */
     BAKER("Baker", "Bake 10 breads or cakes.", 10, Difficulty.EASY, new Item(RAW_TROUT+1, 100)),
@@ -136,13 +135,51 @@ public enum Achievements {
     CHEF("Chef", "Complete all cooking achievements to become a chef!", 1, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(GOLDEN_CHEFS_HAT), new Item(GOLDEN_APRON)),
 
     /*Firemaking */
-    PYROMANCER("Pyromancer", "Burn 1000 logs.", 1000, Difficulty.EASY, new Item(ItemIdentifiers.PYROMANCER_BOOTS), new Item(ItemIdentifiers.PYROMANCER_HOOD), new Item(ItemIdentifiers.PYROMANCER_GARB), new Item(ItemIdentifiers.PYROMANCER_ROBE), new Item(WARM_GLOVES), new Item(ItemIdentifiers.BRUMA_TORCH), new Item(MAGIC_LOGS+1, 100), new Item(YEW_LOGS+1, 100)),
+    PYROMANCER("Pyromancer", "Burn 1000 logs.", 1000, Difficulty.EASY, new Item(PYROMANCER_BOOTS), new Item(PYROMANCER_HOOD), new Item(PYROMANCER_GARB), new Item(PYROMANCER_ROBE), new Item(WARM_GLOVES), new Item(BRUMA_TORCH), new Item(MAGIC_LOGS+1, 100), new Item(YEW_LOGS+1, 100)),
 
     /* Woodcutting */
-    LUMBERJACK("Lumberjack", "Cut 1000 logs.", 1000, Difficulty.EASY, new Item(ItemIdentifiers.LUMBERJACK_BOOTS), new Item(ItemIdentifiers.LUMBERJACK_HAT), new Item(ItemIdentifiers.LUMBERJACK_TOP), new Item(ItemIdentifiers.LUMBERJACK_LEGS), new Item(MAGIC_LOGS+1, 100), new Item(YEW_LOGS+1, 100)),
+    LUMBERJACK("Lumberjack", "Cut 1000 logs.", 1000, Difficulty.EASY, new Item(LUMBERJACK_BOOTS), new Item(LUMBERJACK_HAT), new Item(LUMBERJACK_TOP), new Item(LUMBERJACK_LEGS), new Item(MAGIC_LOGS+1, 100), new Item(YEW_LOGS+1, 100)),
 
     /* Farming */
-    FARMER("Farmer", "Harvest 100 seeds.", 100, Difficulty.HARD, new Item(ItemIdentifiers.FARMERS_STRAWHAT), new Item(ItemIdentifiers.FARMERS_BOOTS), new Item(ItemIdentifiers.FARMERS_JACKET), new Item(ItemIdentifiers.FARMERS_BORO_TROUSERS), new Item(SNAPDRAGON_SEED,100)),
+    FARMER("Farmer", "Harvest 100 seeds.", 100, Difficulty.HARD, new Item(FARMERS_STRAWHAT), new Item(FARMERS_BOOTS), new Item(FARMERS_JACKET), new Item(FARMERS_BORO_TROUSERS), new Item(SNAPDRAGON_SEED,100)),
+
+    /* PvP */
+    PVP_I("PVP I", "Kill 100 players in the wilderness.",100, Difficulty.EASY, new Item(DONATOR_MYSTERY_BOX)),
+    PVP_II("PVP II", "Kill 500 players in the wilderness.",500, Difficulty.MED, new Item(MYSTERY_TICKET, 1)),
+    PVP_III("PVP III", "Kill 1.000 players in the wilderness.",1000, Difficulty.HARD, new Item(MYSTERY_CHEST)),
+
+    BOUNTY_HUNTER_I("Bounty hunter I", "Kill 10 targets.", 10, Difficulty.EASY, new Item(DONATOR_MYSTERY_BOX)),
+    BOUNTY_HUNTER_II("Bounty hunter II", "Kill 50 targets.", 50, Difficulty.MED, new Item(VESTAS_LONGSWORD)),
+    BOUNTY_HUNTER_III("Bounty hunter III", "Kill 150 targets.", 150, Difficulty.HARD, new Item(MYSTERY_TICKET,2)),
+
+    DEEP_WILD_I("Deep wild I", "Kill 25 players in level 30+ wilderness.", 25, Difficulty.EASY, new Item(LARRANS_KEY, 5)),
+    DEEP_WILD_II("Deep wild II", "Kill 50 players in level 30+ wilderness.", 50, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX, 2)),
+    DEEP_WILD_III("Deep wild III", "Kill 100 players in level 30+ wilderness.", 100, Difficulty.HARD, new Item(MYSTERY_TICKET, 1)),
+
+    EXTREME_DEEP_WILD_I("Extreme deep wild I", "Kill 25 players in level 50+ wilderness.", 25, Difficulty.EASY, new Item(LARRANS_KEY, 5)),
+    EXTREME_DEEP_WILD_II("Extreme deep wild II", "Kill 50 players in level 50+ wilderness.", 50, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX, 2)),
+    EXTREME_DEEP_WILD_III("Extreme deep wild III", "Kill 100 players in level 50+ wilderness.", 100, Difficulty.HARD, new Item(MYSTERY_TICKET, 1)),
+
+    BLOODTHIRSTY_I("Bloodthirsty I", "Get a killstreak of 25.", 1, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX)),
+    BLOODTHIRSTY_II("Bloodthirsty II", "Get a killstreak of 50.", 1, Difficulty.HARD, new Item(DRAGON_CLAWS)),
+    BLOODTHIRSTY_III("Bloodthirsty III", "Kill someone that is on a killstreak of +50.", 1, Difficulty.HARD, new Item(DONATOR_MYSTERY_BOX)),
+
+    SURVIVOR_I("Survivor I", "Get a wilderness killstreak of 5.", 5, Difficulty.MED, new Item(LARRANS_KEY, 5)),
+    SURVIVOR_II("Survivor II", "Get a wilderness killstreak of above 10.", 10, Difficulty.HARD, new Item(DONATOR_MYSTERY_BOX)),
+
+    PURE_I("Pure I", "Get 25 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 25, Difficulty.EASY, new Item(ELDER_CHAOS_HOOD), new Item(ELDER_CHAOS_TOP), new Item(ELDER_CHAOS_ROBE)),
+    PURE_II("Pure II", "Get 50 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 50, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX)),
+    PURE_III("Pure III", "Get 75 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 75, Difficulty.HARD, new Item(MYSTERY_TICKET)),
+    PURE_IV("Pure IV", "Get 100 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 100, Difficulty.HARD, new Item(ZURIELS_STAFF)),
+
+    ZERKER_I("Zerker I", "Get 25 player kills with a defence level of 45.<br>You mast have a CB level of at least 95!", 25, Difficulty.EASY, new Item(FIGHTER_HAT), new Item(FIGHTER_TORSO)),
+    ZERKER_II("Zerker II", "Get 50 player kills with a defence level of 45.<br>You mast have a CB level of at least 95!", 50, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX)),
+    ZERKER_III("Zerker III", "Get 75 player kills with a defence level of 45.<br>You mast have a CB level of at least 95!", 75, Difficulty.HARD, new Item(MYSTERY_TICKET)),
+    ZERKER_IV("Zerker IV", "Get 100 player kills with a defence level of 45.<br>You mast have a CB level of at least 95!", 100, Difficulty.HARD, new Item(STATIUSS_WARHAMMER)),
+
+    DHAROK_BOMBER_I("Dharok bomber I","Kill 15 players wearing full dharok.<br>Your hitpoints must be below 25.",15, Difficulty.EASY, new Item(DONATOR_MYSTERY_BOX), new Item(DWARVEN_ROCK_CAKE)),
+    DHAROK_BOMBER_II("Dharok bomber II","Kill 25 players wearing full dharok.<br>Your hitpoints must be below 15.",25, Difficulty.MED, new Item(MYSTERY_TICKET)),
+    DHAROK_BOMBER_III("Dharok bomber III","Kill 15 players wearing full dharok.<br>Your hitpoints must be below 5.",15, Difficulty.HARD, new Item(DHAROK_PET)),
 
     ;
 
