@@ -61,10 +61,6 @@ public class TitlePlugin extends Interaction {
 
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
-        if (button == 73113) {
-            player.getInterfaceManager().open(61380);
-            return true; //Opens player titles
-        }
         if (TitleCategory.perform(title -> title.getButtonId() == button, title -> open(player, title))) {
             return true;
         }

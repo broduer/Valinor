@@ -190,7 +190,6 @@ public class Settings {
 
             // Write new contents.
             bw = new BufferedWriter(new FileWriter(location, true));
-            writeLine("questTabOpenedTab", Client.questTabOpenedTab, bw);
             writeLine("cameraSpeed", Client.cameraSpeed, bw);
             writeLine("zoom_distance", Client.zoom_distance, bw);
             writeLine("drag_item_value", drag_item_value, bw);
@@ -255,9 +254,7 @@ public class Settings {
             String line;
             while ((line = file.readLine()) != null) {
                 fileLine = line;
-                if (contains("questTabOpenedTab")) {
-                    Client.questTabOpenedTab = readInt();
-                } else if (contains("cameraSpeed")) {
+                if (contains("cameraSpeed")) {
                     Client.cameraSpeed = readString();
                 } else if (contains("zoom_distance")) {
                     Client.zoom_distance = readInt();

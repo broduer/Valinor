@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player;
 
 import com.valinor.GameServer;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
 import com.valinor.game.content.areas.wilderness.content.EloRating;
@@ -10,6 +11,7 @@ import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Utils;
 
 import java.text.SimpleDateFormat;
@@ -29,49 +31,49 @@ public final class QuestTab {
 
     public enum InfoTab {
 
-        TIME(72998) {
+        TIME(53416) {
             @Override
             public String fetchLineData(Player player) {
                 return "Time: <col=ffffff> " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd MMM hh:mm a"));
             }
         },
 
-        UPTIME(72999) {
+        UPTIME(53417) {
             @Override
             public String fetchLineData(Player player) {
                 return "Uptime: <col=ffffff>" + QuestTab.fetchUpTime();
             }
         },
 
-        WORLD_BOSS_SPAWN(73000) {
+        WORLD_BOSS_SPAWN(53418) {
             @Override
             public String fetchLineData(Player player) {
                 return "Next World Boss: <col=ffffff>" + WorldBossEvent.getINSTANCE().timeTill(false);
             }
         },
 
-        GAME_MODE(73001) {
+        GAME_MODE(53419) {
             @Override
             public String fetchLineData(Player player) {
                 return "Game Mode: <col=ffffff>" + Utils.gameModeToString(player);
             }
         },
 
-        EXP_MODE(73002) {
+        EXP_MODE(53420) {
             @Override
             public String fetchLineData(Player player) {
                 return "Exp Mode: <col=ffffff>" + player.expmode().toName();
             }
         },
 
-        PLAY_TIME(73003) {
+        PLAY_TIME(53421) {
             @Override
             public String fetchLineData(Player player) {
                 return "Play Time: <col=ffffff>" + Utils.convertSecondsToShortDuration((long) player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0), false);
             }
         },
 
-        REGISTERED_ON(73004) {
+        REGISTERED_ON(53422) {
             @Override
             public String fetchLineData(Player player) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
@@ -79,14 +81,14 @@ public final class QuestTab {
             }
         },
 
-        MEMBER_RANK(73005) {
+        MEMBER_RANK(53423) {
             @Override
             public String fetchLineData(Player player) {
                 return "Member Rank: <col=ffffff>" + player.getMemberRights().getName();
             }
         },
 
-        TOTAL_DONATED(73006) {
+        TOTAL_DONATED(53424) {
             @Override
             public String fetchLineData(Player player) {
                 double totalAmountPaid = player.getAttribOr(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0D);
@@ -94,7 +96,7 @@ public final class QuestTab {
             }
         },
 
-        VOTE_POINTS(73007) {
+        VOTE_POINTS(53425) {
             @Override
             public String fetchLineData(Player player) {
                 int votePoints = player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
@@ -102,7 +104,7 @@ public final class QuestTab {
             }
         },
 
-        BOSS_POINTS(73008) {
+        BOSS_POINTS(53425) {
             @Override
             public String fetchLineData(Player player) {
                 int bossPoints = player.getAttribOr(AttributeKey.BOSS_POINTS, 0);
@@ -110,7 +112,7 @@ public final class QuestTab {
             }
         },
 
-        ACHIEVEMENT_POINTS(73009) {
+        ACHIEVEMENT_POINTS(53426) {
             @Override
             public String fetchLineData(Player player) {
                 int achievementPoints = player.getAttribOr(AttributeKey.ACHIEVEMENT_POINTS, 0);
@@ -118,7 +120,7 @@ public final class QuestTab {
             }
         },
 
-        PK_POINTS(73010) {
+        PK_POINTS(53427) {
             @Override
             public String fetchLineData(Player player) {
                 int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
@@ -126,7 +128,7 @@ public final class QuestTab {
             }
         },
 
-        BOUNTY_HUNTER_POINTS(73011) {
+        BOUNTY_HUNTER_POINTS(53428) {
             @Override
             public String fetchLineData(Player player) {
                 int bountyHunterPoints = player.getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0);
@@ -134,7 +136,7 @@ public final class QuestTab {
             }
         },
 
-        REFERRALS(73012) {
+        REFERRALS(53429) {
             @Override
             public String fetchLineData(Player player) {
                 int referralCount = player.getAttribOr(AttributeKey.REFERRALS_COUNT, 0);
@@ -142,7 +144,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_TASK(73013) {
+        SLAYER_TASK(53430) {
             @Override
             public String fetchLineData(Player player) {
                 String name = Slayer.taskName(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
@@ -155,7 +157,7 @@ public final class QuestTab {
             }
         },
 
-        TASK_STREAK(73014) {
+        TASK_STREAK(53431) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0);
@@ -163,7 +165,7 @@ public final class QuestTab {
             }
         },
 
-        TASKS_COMPLETED(73015) {
+        TASKS_COMPLETED(53432) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
@@ -171,7 +173,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_KEYS_RECEIVED(73016) {
+        SLAYER_KEYS_RECEIVED(53433) {
             @Override
             public String fetchLineData(Player player) {
                 var keys = player.<Integer>getAttribOr(AttributeKey.SLAYER_KEYS_RECEIVED, 0);
@@ -179,7 +181,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_POINTS(73017) {
+        SLAYER_POINTS(53434) {
             @Override
             public String fetchLineData(Player player) {
                 int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
@@ -187,7 +189,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_TASKS_COMPLETED(73018) {
+        SLAYER_TASKS_COMPLETED(53435) {
             @Override
             public String fetchLineData(Player player) {
                 int slayerTasksCompleted = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
@@ -195,14 +197,14 @@ public final class QuestTab {
             }
         },
 
-        PLAYERS_PKING(73019) {
+        PLAYERS_IN_WILDERNESS(53436) {
             @Override
             public String fetchLineData(Player player) {
-                return "Players in wild: <col=ffffff>" + World.getWorld().getPlayersInWild();
+                return "Players in wild: <col=ffffff>" + WildernessArea.players.size();
             }
         },
 
-        ELO_RATING(73020) {
+        ELO_RATING(53437) {
             @Override
             public String fetchLineData(Player player) {
                 int rating = player.getAttribOr(AttributeKey.ELO_RATING, EloRating.DEFAULT_ELO_RATING);
@@ -210,7 +212,7 @@ public final class QuestTab {
             }
         },
 
-        KILLS(73021) {
+        KILLS(53438) {
             @Override
             public String fetchLineData(Player player) {
                 int kills = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
@@ -218,7 +220,7 @@ public final class QuestTab {
             }
         },
 
-        DEATHS(73022) {
+        DEATHS(53439) {
             @Override
             public String fetchLineData(Player player) {
                 int deaths = player.getAttribOr(AttributeKey.PLAYER_DEATHS, 0);
@@ -226,14 +228,14 @@ public final class QuestTab {
             }
         },
 
-        KD_RATIO(73023) {
+        KD_RATIO(53440) {
             @Override
             public String fetchLineData(Player player) {
                 return "K/D Ratio: <col=ffffff>" + player.getKillDeathRatio();
             }
         },
 
-        CURRENT_KILLSTREAK(73024) {
+        CURRENT_KILLSTREAK(53441) {
             @Override
             public String fetchLineData(Player player) {
                 int killstreak = player.getAttribOr(AttributeKey.KILLSTREAK, 0);
@@ -241,7 +243,7 @@ public final class QuestTab {
             }
         },
 
-        KILLSTREAK_RECORD(73025) {
+        KILLSTREAK_RECORD(53442) {
             @Override
             public String fetchLineData(Player player) {
                 int record = player.getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0);
@@ -249,7 +251,7 @@ public final class QuestTab {
             }
         },
 
-        WILDERNESS_KILLSTREAK(73026) {
+        WILDERNESS_KILLSTREAK(53443) {
             @Override
             public String fetchLineData(Player player) {
                 int wildernessStreak = player.getAttribOr(AttributeKey.WILDERNESS_KILLSTREAK, 0);
@@ -280,38 +282,49 @@ public final class QuestTab {
 
     public static boolean onButton(Player player, int button) {
         switch (button) {
-            case 72985 -> {
+            case 53405, 53505 -> {
                 QuestTab.refreshInfoTab(player);
+                player.getInterfaceManager().setSidebar(GameConstants.QUEST_TAB, 53400);
                 return true;
             }
 
-            case 73108 -> {
+            case 53406 -> {
+                player.getInterfaceManager().setSidebar(GameConstants.QUEST_TAB, 53500);
+                return true;
+            }
+
+            case 53516 -> {
                 AchievementWidget.openEasyJournal(player);
                 return true;
             }
 
-            case 73118 -> {
+            case 53521 -> {
+                player.getInterfaceManager().open(61380);
+                return true;
+            }
+
+            case 53526 -> {
                 player.getCollectionLog().open(LogType.BOSSES);
                 return true;
             }
 
-            case 73123 -> {
+            case 53531 -> {
                 DropsDisplay.start(player);
                 return true;
             }
 
-            case 73128 -> {
+            case 53536 -> {
                 player.getPresetManager().open();
                 return true;
             }
 
-            case 73133 -> {
+            case 53541 -> {
                 DailyTaskManager.openEasyList(player);
                 return true;
             }
 
-            case 73138 -> {
-                //TODO
+            case 53546 -> {
+                player.message("We are a brand new server and do not have guides yet.");
                 return true;
             }
         }
@@ -319,9 +332,7 @@ public final class QuestTab {
     }
 
     public static void refreshInfoTab(final Player player) {
-        InfoTab.INFO_TAB.forEach((childId, lineInfo) -> {
-            player.getPacketSender().sendString(childId, lineInfo.fetchLineData(player));
-        });
+        InfoTab.INFO_TAB.forEach((childId, lineInfo) -> player.getPacketSender().sendString(childId, lineInfo.fetchLineData(player)));
     }
 
     public static String fetchUpTime() {

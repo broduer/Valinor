@@ -6,7 +6,6 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
-import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,11 +17,19 @@ import com.valinor.game.world.position.areas.Controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.Collections;
+
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PLAYERS_IN_WILDERNESS;
 
 public class WildernessArea extends Controller {
 
     private static final Logger log = LoggerFactory.getLogger(WildernessArea.class);
+
+    /**
+     * All players currently in the wilderness.
+     */
+    public static ArrayList<Player> players = new ArrayList<>(500);
 
     public static boolean inWilderness(Tile tile) {
         return wildernessLevel(tile) > 0;
@@ -93,6 +100,8 @@ public class WildernessArea extends Controller {
             Player player = mob.getAsPlayer();
             //Clear the damage map when entering wilderness
             player.getCombat().getDamageMap().clear();
+            players.add(player);
+            player.getPacketSender().sendString(PLAYERS_IN_WILDERNESS.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_IN_WILDERNESS.childId).fetchLineData(player));
         }
     }
 
@@ -107,7 +116,8 @@ public class WildernessArea extends Controller {
             }
             player.getInterfaceManager().openWalkable(-1);
             player.getPacketSender().sendInteractionOption("null", 2, true);
-            BountyHunter.PLAYERS_IN_WILD.remove(player);
+            players.remove(player);
+            player.getPacketSender().sendString(PLAYERS_IN_WILDERNESS.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_IN_WILDERNESS.childId).fetchLineData(player));
             player.clearAttrib(AttributeKey.INWILD);
             player.clearAttrib(AttributeKey.PVP_WILDY_AGGRESSION_TRACKER);
         }
@@ -138,10 +148,6 @@ public class WildernessArea extends Controller {
                     player.getPacketSender().sendInteractionOption("Attack", 2, true);
                 }
                 player.getInterfaceManager().openWalkable(197);
-            }
-
-            if (!BountyHunter.PLAYERS_IN_WILD.contains(player)) {
-                BountyHunter.PLAYERS_IN_WILD.add(player);
             }
         }
     }

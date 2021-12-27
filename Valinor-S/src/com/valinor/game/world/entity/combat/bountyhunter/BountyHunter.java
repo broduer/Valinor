@@ -27,11 +27,6 @@ import static com.valinor.util.Utils.formatNumber;
 public class BountyHunter {
 
     /**
-     * All players currently in the wilderness.
-     */
-    public static final List<Player> PLAYERS_IN_WILD = new ArrayList<>();
-
-    /**
      * Target pairs.
      */
     private static final List<TargetPair> TARGET_PAIRS = new ArrayList<>();
@@ -58,7 +53,7 @@ public class BountyHunter {
                     }
 
                     //Search for a new target for the player..
-                    for (final Player potential : PLAYERS_IN_WILD) {
+                    for (final Player potential : WildernessArea.players) {
                         //Check if player2 is a valid target..
                         if (validTargetContester(potential)) {
                             //Check other stuff...

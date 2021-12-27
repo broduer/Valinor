@@ -95,34 +95,6 @@ public class Client extends GameApplet {
      */
     public static String cameraSpeed = "SLOW";
 
-    /**
-     * Have a specific interface button to have the clicked sprite.
-     * @param interfaceId
-     * @param clicked
-     * @param linkedButtons TODO
-     */
-    public static void setInterfaceClicked(int parentInterfaceId, int interfaceId, boolean clicked, boolean linkedButtons) {
-        if (linkedButtons) {
-            for (int index = 0; index < interfaceClickedList.size(); index++) {
-                String[] parse = interfaceClickedList.get(index).split(" ");
-                int parentIdParse = Integer.parseInt(parse[0]);
-                int interfaceIdParse = Integer.parseInt(parse[1]);
-                if (parentInterfaceId == parentIdParse) {
-                    if (Widget.cache[interfaceIdParse] == null) {
-                        continue;
-                    }
-                    Widget.cache[interfaceIdParse].isClicked = false;
-                    interfaceClickedList.remove(index);
-                    break;
-                }
-            }
-        }
-        Widget.cache[interfaceId].isClicked = clicked;
-        if (clicked) {
-            interfaceClickedList.add(parentInterfaceId + " " + interfaceId);
-        }
-    }
-
     public static String osName = "";
     public String tooltip;
     private final ArrayList<IncomingHit> expectedHit;
@@ -5859,11 +5831,6 @@ public class Client extends GameApplet {
                 return;
             }
 
-            // Quest tab buttons, the panels for Eco.
-            if (buttonId == 72985 || buttonId == 72989 || buttonId == 72993) {
-                setInterfaceClicked(72980, buttonId, true, true);
-                showCorrectQuestTab(false);
-            }
             if (flag8) {
                 OptionTabWidget.optionTabButtons(buttonId);
 
@@ -12207,21 +12174,6 @@ public class Client extends GameApplet {
                         }
                     }
 
-                    boolean clicked = false;
-                    if (child.isClicked) {
-                        sprite = child.spriteClicked;
-                        clicked = true;
-                    } else {
-                        if (child.id - 2 < 0) {
-                            return;
-                        }
-                        if (Widget.cache[child.id - 2] != null) {
-                            if (Widget.cache[child.id - 2].isClicked) {
-                                clicked = true;
-                                sprite = Widget.cache[child.id - 2].spriteClicked;
-                            }
-                        }
-                    }
                     if (widget_highlighted == 1 && child.id == spellId && spellId != 0 && sprite != null) {
                         sprite.drawSpriteWithOutline(child_x_in_bounds, child_y_in_bounds, 0xffffff, true);
                     } else {
@@ -12240,25 +12192,10 @@ public class Client extends GameApplet {
                             } else if (!highDetail) {
                                 sprite.drawSprite(child_x_in_bounds, child_y_in_bounds);
                             } else {
-                                if (child.hoverScrollBar) {
-                                    if (child.hoverHasText) {
-                                        if (!clicked) {
-                                            if (!Widget.cache[child.id + 1].defaultText.isEmpty()) {
-                                                Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
-                                                sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
-                                            }
-                                        }
-                                    } else {
-                                        //if an id is a hover id, this is needed so when the hover image is at the end of the scroll bar height, it will crop it. This fixed the hover images on scrollbar bug.
-                                        Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
-                                        sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
-                                    }
-                                }
                                 sprite.drawAdvancedSprite(child_x_in_bounds, child_y_in_bounds);
                             }
                         }
                     }
-
                 } else if (child.type == 279) {
 
                     //  System.out.println("Child type is 279 for child id: " + child.id);
@@ -16725,28 +16662,6 @@ public class Client extends GameApplet {
                     return true;
                 }
 
-                if (message.endsWith(":cleartextclicked:")) {
-                    clearTextClicked();
-                    return true;
-                }
-
-                if (message.endsWith(":settextclicked:")) {
-                    String[] args = message.split(" ");
-                    int id = Integer.parseInt(args[1]);
-                    boolean state = Boolean.parseBoolean(args[2]);
-                    setTextClicked(id, state);
-                    return true;
-                }
-
-                if (message.startsWith("setclicked")) {
-                    String[] args = message.split(" ");
-                    int parentInterfaceId = Integer.parseInt(args[1]);
-                    int id = Integer.parseInt(args[2]);
-                    boolean state = Boolean.parseBoolean(args[3]);
-                    setInterfaceClicked(parentInterfaceId, id, state, true);
-                    return true;
-                }
-
                 if (message.startsWith("npcpetid")) {
                     String[] args = message.split(":");
                     Client.npcPetId = Integer.parseInt(args[1]);
@@ -18858,63 +18773,10 @@ public class Client extends GameApplet {
     }
 
     /**
-     * Which tab on the quest tab is opened? Economy used.
-     */
-    public static int questTabOpenedTab = 1;
-
-    /**
-     * Show the correct clicked tab on the Quest tab.
-     */
-    public void showCorrectQuestTab(boolean logInUpdate) {
-        if (logInUpdate) {
-            int[] interfaceId = { 72985, 72989, 72993 };
-            setInterfaceClicked(72980, interfaceId[questTabOpenedTab - 1], true, true);
-        }
-        for (String s : interfaceClickedList) {
-            String[] parse = s.split(" ");
-            int parentIdParse = Integer.parseInt(parse[0]);
-            int interfaceIdParse = Integer.parseInt(parse[1]);
-            if (parentIdParse != 72980) {
-                continue;
-            }
-
-            switch (interfaceIdParse) {
-                // Information tab on the Eco Quest Interface.
-                case 72985:
-                    sendString("Information", 72984);
-                    setSidebarInterface(2, 72980);
-                    questTabOpenedTab = 1;
-                    break;
-                // Panel tab on the Eco Quest Interface.
-                case 72989:
-                    sendString("Panels", 72984);
-                    setSidebarInterface(2, 73089);
-                    questTabOpenedTab = 2;
-                    break;
-                // Activities tab on the Eco Quest Interface.
-                case 72993:
-                    sendString("Activities", 72984);
-                    setSidebarInterface(2, 73180);
-                    questTabOpenedTab = 3;
-                    break;
-            }
-            if (!logInUpdate) {
-                setting.save();
-            }
-        }
-    }
-
-    /**
      * Used for storing all the clicked texts set to true. So when a new clicked interface is changed to true, the ones stored here
      * can be reset.
      */
     public static ArrayList<String> textClickedList = new ArrayList<String>();
-
-    /**
-     * Used for storing all the clicked interfaces set to true. So when a new clicked interface is changed to true, the ones stored here
-     * can be reset.
-     */
-    public static ArrayList<String> interfaceClickedList = new ArrayList<String>();
 
     public static void clearTextClicked() {
         for (int index = 0; index < textClickedList.size(); index++) {

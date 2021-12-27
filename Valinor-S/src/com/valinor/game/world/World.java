@@ -493,23 +493,6 @@ public class World {
         players.stream().filter(p -> !Objects.isNull(p) && p.getPlayerRights().isStaffMember(p)).forEach(p -> p.getPacketSender().sendMessage(message));
     }
 
-    /**
-     * Looks for the amount of players inside the wilderness area
-     *
-     * @return players_in_wilderness
-     */
-    public int getPlayersInWild() {
-        int players_in_wilderness = 0;
-
-        for (Player player : BountyHunter.PLAYERS_IN_WILD) {
-            if (player != null) {
-                players_in_wilderness++;
-            }
-        }
-
-        return players_in_wilderness;
-    }
-
     public MobList<Player> getPlayers() {
         return players;
     }

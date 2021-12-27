@@ -434,7 +434,6 @@ public class Widget {
     public SimpleImage enabledSprite;
     public SimpleImage disabledHover;
     public SimpleImage[] sprites;
-    public SimpleImage spriteClicked;
 
     //Dropdown menu
     public DropdownMenu dropdown;
@@ -538,7 +537,6 @@ public class Widget {
     //Booleans
     public boolean hoverHasText;
     public boolean hoverScrollBar;
-    public boolean isClicked;
     public boolean isInFocus;
     public boolean displayAsterisks;
     public boolean updatesEveryInput;
@@ -2656,10 +2654,6 @@ public class Widget {
             return null;
         }
         return sprite;
-    }
-
-    public static void setSpriteClicked(int id, int spriteClickedId) {
-        cache[id].spriteClicked = imageLoaderNew(spriteClickedId);
     }
 
     static SimpleImage imageLoaderNew(int spriteId) {
