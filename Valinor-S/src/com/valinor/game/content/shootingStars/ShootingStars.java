@@ -125,6 +125,8 @@ public class ShootingStars {
         if (!DISABLED) {
             ShootingStars star = World.getWorld().get(SPAWNS);
             if (star != ACTIVE) {
+                // Despawn the star if existing
+                removeStar(false);
                 ACTIVE = star;
                 String eventMessage = "There's been a sighting of a star around " + getLocation() + "!";
                 World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + eventMessage);
@@ -132,9 +134,6 @@ public class ShootingStars {
 
                 last = LocalDateTime.now();
                 next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-            } else {
-                // Despawn the star if existing
-                removeStar(false);
             }
         }
     }
