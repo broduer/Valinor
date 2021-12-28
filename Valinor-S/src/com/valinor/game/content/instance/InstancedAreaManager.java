@@ -8,7 +8,6 @@ import com.valinor.game.world.position.Area;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * A class that manages all {@link InstancedArea} objects created.
@@ -24,15 +23,10 @@ public class InstancedAreaManager {
     private static final InstancedAreaManager SINGLETON = new InstancedAreaManager();
 
     /**
-     * The maximum height of any one instance
-     */
-    public static final int MAXIMUM_HEIGHT = 4 * 1024;
-
-    /**
      * A mapping of all {@InstancedArea} objects that are being operated on
      * and are active.
      */
-    private Map<Integer, InstancedArea> active = new HashMap<>();
+    private final Map<Integer, InstancedArea> active = new HashMap<>();
 
     /**
      * A private empty {@link InstancedAreaManager} constructor exists to ensure that no other instance of this class can be created from outside this class.
@@ -98,7 +92,7 @@ public class InstancedAreaManager {
      * {@link SingleInstancedArea} object will be returned.
      */
     public InstancedArea createSingleInstancedArea(Player player, Area area) {
-        int z = anyZ();//getNextOpenZLevel(area);
+        int z = anyZ();
         if (z == -1) {
             return null;
         }
@@ -108,33 +102,13 @@ public class InstancedAreaManager {
     }
 
     public InstancedArea createMultiInstancedArea(Area area) {
-        int z = getNextOpenZLevel(area);
+        int z = anyZ();
         if (z == -1) {
             return null;
         }
         MultiInstancedArea mia = new MultiInstancedArea(area, z);
         active.put(z, mia);
         return mia;
-    }
-
-    /**
-     * Retrieves an open height level by sifting through the mapping and attempting to retrieve the lowest height level.
-     *
-     * @return the next lowest, open height level will be returned otherwise -1 will be returned. When -1 is returned it signifies that there are no heights open from 0 to
-     *         {@link #MAXIMUM_HEIGHT}.
-     */
-    public int getNextOpenZLevel(Area area) {
-        for (int z = 4; z < MAXIMUM_HEIGHT; z += 4) {
-            if (active.containsKey(z)) {
-                continue;
-            }
-            final int zLvl = z;
-            if (World.getWorld().getPlayers().stream().anyMatch(p -> Objects.nonNull(p) && p.tile().inArea(area) && p.tile().level == zLvl)) {
-                continue;
-            }
-            return z;
-        }
-        return -1;
     }
 
     public int anyZ() {

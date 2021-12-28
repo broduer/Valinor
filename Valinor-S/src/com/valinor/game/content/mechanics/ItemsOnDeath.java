@@ -59,6 +59,7 @@ public class ItemsOnDeath {
      */
     public static PlayerDeathDropResult droplootToKiller(Player player, Mob killer) {
         var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
+        var nightmare_area = player.tile().region() == 15515;
         var donator_zone = player.tile().region() == 13462;
         var vorkath_area = player.tile().region() == 9023;
         var hydra_area = player.tile().region() == 5536;
@@ -72,9 +73,9 @@ public class ItemsOnDeath {
 
         // If we're in FFA clan wars, don't drop our items.
         // Have these safe area checks before we do some expensive code ... looking for who killed us.
-        if (donator_zone || vorkath_area || zulrah_area || hydra_area || safe_accounts || duel_arena || pest_control || raids_area || in_tournament || minigame_safe_death || hunleff_area) {
+        if (nightmare_area || donator_zone || vorkath_area || zulrah_area || hydra_area || safe_accounts || duel_arena || pest_control || raids_area || in_tournament || minigame_safe_death || hunleff_area) {
             Utils.sendDiscordInfoLog("Player: "+ player.getUsername() + " died in a safe area " + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""), "player_death");
-            Utils.sendDiscordInfoLog("Safe deaths activated for: "+ player.getUsername() + "" + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""+" donator_zone: "+donator_zone+" vorkath_area: "+vorkath_area+" hydra_area: "+hydra_area+" zulrah_area: "+zulrah_area+" in safe_accounts: "+safe_accounts+" duel_arena: "+duel_arena+" pest_control: "+pest_control+" raids_area: "+raids_area+" in_tournament: "+in_tournament+" minigame_safe_death: "+minigame_safe_death+" hunleff_area: "+hunleff_area), "player_death");
+            Utils.sendDiscordInfoLog("Safe deaths activated for: "+ player.getUsername() + "" + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""+ "nightmare_area: "+nightmare_area+" donator_zone: "+donator_zone+" vorkath_area: "+vorkath_area+" hydra_area: "+hydra_area+" zulrah_area: "+zulrah_area+" in safe_accounts: "+safe_accounts+" duel_arena: "+duel_arena+" pest_control: "+pest_control+" raids_area: "+raids_area+" in_tournament: "+in_tournament+" minigame_safe_death: "+minigame_safe_death+" hunleff_area: "+hunleff_area), "player_death");
             return null;
         }
 

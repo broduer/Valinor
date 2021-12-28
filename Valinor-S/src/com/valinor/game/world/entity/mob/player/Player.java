@@ -70,6 +70,7 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.VorkathState;
 import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
@@ -1000,6 +1001,14 @@ public class Player extends Mob {
         if (skotizoInstance == null)
             skotizoInstance = new SkotizoInstance();
         return skotizoInstance;
+    }
+
+    private NightmareInstance nightmareInstance;
+
+    public NightmareInstance getNightmareInstance() {
+        if (nightmareInstance == null)
+            nightmareInstance = new NightmareInstance();
+        return nightmareInstance;
     }
 
     /**

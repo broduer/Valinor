@@ -286,6 +286,9 @@ public class TeleportMenuConstants {
         teleportOptions.put(71, new OptionMenu("Basilisk knight", new String[] { "Basilisk knight", "Jormungand's prison", "slayer" },
             new TeleportAction(player, new Tile(2437, 10397))));
 
+        teleportOptions.put(72, new OptionMenu("The nightmare", new String[] { "The nightmare", "nightmare", "boss" },
+            new TeleportAction(player, new Tile(3808, 9777,1))));
+
         return teleportOptions;
     }
 

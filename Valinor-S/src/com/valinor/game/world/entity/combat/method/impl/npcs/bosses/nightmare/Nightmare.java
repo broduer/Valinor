@@ -97,6 +97,7 @@ public class Nightmare extends Npc {
     public void sequence() {
         if (stage < 0) {
             super.sequence();
+            System.out.println("dont do shit "+stage);
             return;
         }
         if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {

@@ -209,7 +209,6 @@ public class Npc extends Mob {
             case NpcIdentifiers.CORRUPTED_HUNLLEF,
                 NpcIdentifiers.CORRUPTED_HUNLLEF_9036,
                 NpcIdentifiers.CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
-            case NpcIdentifiers.THE_NIGHTMARE_9430 -> new Nightmare(id,tile);
             default -> new Npc(id, tile);
         };
     }
