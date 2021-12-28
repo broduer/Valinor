@@ -163,4 +163,8 @@ public class ItemSet {
 
         return bonus;
     }
+
+    public static boolean wearingAnglerSet(Player player) {
+        return player.getEquipment().containsAll(ANGLER_HAT, ANGLER_TOP, ANGLER_WADERS, ANGLER_BOOTS);
+    }
 }

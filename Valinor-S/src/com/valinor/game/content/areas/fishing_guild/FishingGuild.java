@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.fishing_guild;
 
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -59,6 +60,11 @@ public class FishingGuild extends Interaction {
                 int fishingLevel = player.skills().level(Skills.FISHING);
                 if (fishingLevel < 82) {
                     DialogueManager.npcChat(player, Expression.NODDING_ONE, KYLIE_MINNOW, "G'day, only the best fishers are allowed onto the fishing platform.", "You need a fishing level of 82.");
+                    return true;
+                }
+
+                if(!ItemSet.wearingAnglerSet(player)) {
+                    DialogueManager.npcChat(player, Expression.NODDING_ONE, KYLIE_MINNOW, "G'day, you are required to wear the full angler set.");
                     return true;
                 }
 
