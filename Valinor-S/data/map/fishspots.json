@@ -782,6 +782,98 @@
       }
     ]
   },
+  // Anglerfish in resource area
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3181,
+        "y": 3926
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3183,
+        "y": 3926
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3185,
+        "y": 3926
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3187,
+        "y": 3927
+      }
+    ]
+  },
+  // Anglerfish in Zeah
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1836,
+        "y": 3771
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1833,
+        "y": 3769
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1827,
+        "y": 3770
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1826,
+        "y": 3770
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1840,
+        "y": 3776
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 1831,
+        "y": 3767
+      }
+    ]
+  },
   {
     "spot": "MONKFISH",
     "tiles": [

@@ -12,6 +12,7 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.route.StepType;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
@@ -32,22 +33,24 @@ public class FishingGuild extends Interaction {
         if (option == 1) {
             //System.out.println("fishing object " + obj.toString());
             if (obj.getId() == DOOR_20925) {
-                int change = player.tile().y >= 3394 ? -1 : 1;
-                if (change == 1 && player.skills().level(Skills.FISHING) < 68) {
+                if (player.getAbsY() <= 3393 && player.skills().level(Skills.FISHING) < 68) {
                     DialogueManager.sendStatement(player, "You do not meet the level 68 Fishing requirement to enter the Guild.");
                     return false;
                 }
 
-                GameObject old = new GameObject(obj.getId(), obj.tile(), obj.getType(), 3);
-                GameObject spawned = new GameObject(obj.getId(), obj.tile(), obj.getType(), 4);
-                ObjectManager.replace(old, spawned, 1);
-
-                player.getMovementQueue().walkTo(new Tile(player.tile().x, player.tile().y + change));
-                player.lockNoDamage();
+                GameObject opened = new GameObject(1542, new Tile(2611, 3393, 0), obj.getType(), 0);
                 Chain.bound(null).runFn(1, () -> {
+                    player.lock();
+                    if(!player.isAt(obj.tile().x, player.getAbsY() <= 3393 ? obj.tile().y - 1 : obj.tile().y)) {
+                        player.stepAbs(obj.tile().x, player.getAbsY() <= 3393 ? obj.tile().y - 1 : obj.tile().y, StepType.FORCE_WALK);
+                    }
+                    opened.spawn();
+                    obj.skipClipping(true).remove();
+                    player.step(0, player.getAbsY() <= 3393 ? 1 : -1, StepType.FORCE_WALK);
+                }).then(2, () -> {
+                    obj.restore().skipClipping(false);
+                    opened.remove();
                     player.unlock();
-                    String plural = change == -1 ? "leave" : "enter";
-                    player.message("You " + plural + " the Fishing Guild.");
                 });
                 return true;
             }

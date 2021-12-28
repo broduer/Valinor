@@ -3,6 +3,7 @@ package com.valinor.game.content.skill.impl.fishing;
 import com.google.gson.Gson;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -11,6 +12,7 @@ import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -28,6 +30,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.FISHING_SPOT_7731;
 
 /**
@@ -62,6 +65,14 @@ public class Fishing {
             }
         }
         return false;
+    }
+
+    private static double xpBonus(Player player) {
+        double multiplier = 1;
+        multiplier *= ItemSet.anglerBonus(player);
+        multiplier *= ItemSet.spiritAnglerBonus(player);
+
+        return multiplier;
     }
 
     private static int catchChance(Player player, Fish type, FishingToolType fishingToolType) {
@@ -169,7 +180,7 @@ public class Fishing {
                     }
 
                     player.inventory().add(new Item(weCatch.item, weCatch == Fish.MINNOWS ? World.getWorld().random(10, 26) : 1), true);
-                    player.skills().addXp(Skills.FISHING, weCatch.xp);
+                    player.skills().addXp(Skills.FISHING, weCatch.xp * xpBonus(player));
                     AchievementsManager.activate(player, Achievements.FISHERMAN,1);
 
                     if (World.getWorld().rollDie(100, 1)) {

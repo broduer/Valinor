@@ -59,6 +59,7 @@ public class FontOfConsumption extends Interaction {
                 World.getWorld().tileGraphic(1276, player.tile().relative(0, 1),0, 0);
             }).then(2, () -> {
                 Item reward = new Item(roll(player));
+                player.inventory().remove(item);
                 player.inventory().addOrDrop(reward);
                 BOSSES.log(player, ABYSSAL_SIRE, reward);
                 player.itemBox("The Font consumes the Unsired and returns you a<br>reward.", reward.getId());

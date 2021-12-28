@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.combat.magic.MagicClickSpells;
 import com.valinor.game.world.entity.combat.magic.Spell;
 import com.valinor.game.world.entity.combat.magic.lunar.BakePie;
 import com.valinor.game.world.entity.combat.magic.lunar.SuperglassMake;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -25,6 +26,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.GOLDSMITH_GAUNTLETS;
 
 /**
  * Handles the packet for using magic spells on items ingame.
@@ -129,7 +131,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         }
                         player.inventory().addAll(new Item(data.get().getBar()));
                         player.skills().addXp(Skills.MAGIC, spell.baseExperience(), true);
-                        player.skills().addXp(Skills.SMITHING, data.get().getXpReward(), true);
+                        player.skills().addXp(Skills.SMITHING, player.getEquipment().hasAt(EquipSlot.HANDS, GOLDSMITH_GAUNTLETS) ? data.get().getXpReward() * 2.5 : data.get().getXpReward(), true);
                         player.getClickDelay().reset();
                         break;
                     case ENCHANT_SAPPHIRE:

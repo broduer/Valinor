@@ -912,22 +912,22 @@ public class Player extends Mob {
     }
 
     public boolean canSpawn() {
-        if ((!this.tile().homeRegion() || WildernessArea.inWilderness(this.tile()))) {
+        if ((!this.tile().homeRegion() || WildernessArea.inWilderness(this.tile())) && !getPlayerRights().isDeveloperOrGreater(this)) {
             this.message("You can only spawn items at home.");
             return false;
         }
 
-        if (this.busy()) {
+        if (this.busy() && !getPlayerRights().isDeveloperOrGreater(this)) {
             this.message("You can't spawn items at this time.");
             return false;
         }
 
-        if (this.inActiveTournament()) {
+        if (this.inActiveTournament() && !getPlayerRights().isDeveloperOrGreater(this)) {
             this.message("You can't spawn items inside the tournament.");
             return false;
         }
 
-        if (CombatFactory.inCombat(this)) {
+        if (CombatFactory.inCombat(this) && !getPlayerRights().isDeveloperOrGreater(this)) {
             //Silent no message
             return false;
         }

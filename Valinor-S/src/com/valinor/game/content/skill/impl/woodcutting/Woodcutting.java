@@ -2,12 +2,15 @@ package com.valinor.game.content.skill.impl.woodcutting;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
+import com.valinor.game.world.route.RouteFinder;
 import com.valinor.util.Color;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSortedSet;
@@ -29,6 +32,7 @@ import com.valinor.util.Utils;
 import java.util.Optional;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.CustomItemIdentifiers.WOODCUTTING_MASTER_CAPE;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
@@ -108,6 +112,36 @@ public class Woodcutting extends Interaction {
         return (int) (Math.min(0.95, points / denom) * 100);
     }
 
+    private static int nestChance(Player player) {
+        int chance = 200;
+        if (player.getMemberRights().isZenyteMemberOrGreater(player)) {
+            chance = 170;
+        } else if (player.getMemberRights().isOnyxMemberOrGreater(player)) {
+            chance = 175;
+        } else if (player.getMemberRights().isDragonstoneMemberOrGreater(player)) {
+            chance = 180;
+        } else if (player.getMemberRights().isDiamondMemberOrGreater(player)) {
+            chance = 185;
+        } else if (player.getMemberRights().isRubyMemberOrGreater(player)) {
+            chance = 190;
+        } else if (player.getMemberRights().isEmeraldMemberOrGreater(player)) {
+            chance = 195;
+        } else if (player.getMemberRights().isSapphireMemberOrGreater(player)) {
+            chance = 197;
+        }
+
+        if (wearsWoodcuttingCape(player)) {
+            chance += chance / 10;
+        }
+
+        return chance;
+    }
+
+    public static boolean wearsWoodcuttingCape(Player player) {
+        int cape = player.getEquipment().getId(EquipSlot.CAPE);
+        return cape == WOODCUTTING_CAPE || cape == WOODCUT_CAPET || cape == MAX_CAPE || cape == WOODCUTTING_MASTER_CAPE;
+    }
+
     public static Optional<Hatchet> findAxe(Player player) {
         if (player.getEquipment().hasWeapon()) {
             Optional<Hatchet> result = Hatchet.VALUES.stream().filter(it -> player.getEquipment().contains(it.id) && player.skills().levels()[Skills.WOODCUTTING] >= it.level).findFirst();
@@ -155,8 +189,8 @@ public class Woodcutting extends Interaction {
 
             @Override
             public void execute() {
-
                 GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
+                player.faceObj(obj);
 
                 int level = player.skills().levels()[Skills.WOODCUTTING];
                 if (player.tile().inArea(WoodcuttingGuild.AREA_EAST) || player.tile().inArea(WoodcuttingGuild.AREA_WEST))
@@ -173,7 +207,7 @@ public class Woodcutting extends Interaction {
                         GameObject old = new GameObject(obj.getId(), obj.tile(), obj.getType(), obj.getRotation());
                         GameObject spawned = new GameObject(trunkObjectId, obj.tile(), obj.getType(), obj.getRotation());
                         ObjectManager.replace(old, spawned, tree.respawnTime);
-                        player.skills().addXp(Skills.WOODCUTTING, tree.xp); // Xp as last, it can spawn a dialogue
+                        player.skills().addXp(Skills.WOODCUTTING, tree.xp * ItemSet.lumberJackOutfitBonus(player)); // Xp as last, it can spawn a dialogue
                         AchievementsManager.activate(player, Achievements.LUMBERJACK,1);
 
                         if (World.getWorld().rollDie(125, 1)) {
@@ -194,7 +228,7 @@ public class Woodcutting extends Interaction {
 
                             if (log != null) {
                                 player.graphic(580, 50, 0);
-                                player.skills().addXp(Skills.FIREMAKING, (log.xp * LogLighting.pyromancerOutfitBonus(player)) / 2);
+                                player.skills().addXp(Skills.FIREMAKING, (log.xp * ItemSet.pyromancerOutfitBonus(player)) / 2);
                             }
                         } else {
                             player.inventory().add(new Item(tree.logs));
@@ -204,9 +238,15 @@ public class Woodcutting extends Interaction {
                     }
 
                     //Finding a casket Money, money, money..
-                    if (Utils.rollDie(100, 1)) {
+                    if (World.getWorld().rollDie(100, 1)) {
                         player.inventory().addOrDrop(new Item(7956, 1));
                         player.message("You find a casket whilst cutting down the tree.");
+                    }
+
+                    if (World.getWorld().rollDie(nestChance(player), 1)) {
+                        GroundItem groundItem = new GroundItem(BirdNest.getRandomNest(tree), RouteFinder.findWalkable(player.tile()), player);
+                        GroundItemHandler.createGroundItem(groundItem);
+                        player.message("A bird's nest falls out of the tree.");
                     }
 
                     if (tree == Tree.YEW) {
@@ -217,7 +257,7 @@ public class Woodcutting extends Interaction {
                         player.getTaskBottleManager().increase(BottleTasks.CUT_MAGIC_TREES);
                     }
 
-                    player.skills().addXp(Skills.WOODCUTTING, tree.xp); // Xp as last, it can spawn a dialogue
+                    player.skills().addXp(Skills.WOODCUTTING, tree.xp * ItemSet.lumberJackOutfitBonus(player)); // Xp as last, it can spawn a dialogue
 
                     // If we're using the infernal axe, we have 1/3 odds to burn the log and get 50% FM xp.
                     if (axe == Hatchet.INFERNAL && Utils.rollDie(30, 10) && tree.logs > 0) {
@@ -225,7 +265,7 @@ public class Woodcutting extends Interaction {
 
                         if (log != null) {
                             player.graphic(580, 50, 0);
-                            player.skills().addXp(Skills.FIREMAKING, (log.xp * LogLighting.pyromancerOutfitBonus(player)) / 2);
+                            player.skills().addXp(Skills.FIREMAKING, (log.xp * ItemSet.pyromancerOutfitBonus(player)) / 2);
                         }
                     } else {
                         player.inventory().add(new Item(tree.logs));

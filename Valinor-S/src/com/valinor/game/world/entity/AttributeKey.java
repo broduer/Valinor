@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    BAGGED_COAL("bagged_coal", AttribType.INTEGER),
+
     ACCEPT_AID("accept_aid", AttribType.BOOLEAN),
 
     /**

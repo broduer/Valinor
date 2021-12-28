@@ -415,7 +415,6 @@ public class PlayerSave {
                 player.putAttrib(DRAKE, details.drakeKills);
                 player.putAttrib(HYDRA, details.hydraKills);
                 player.putAttrib(BASILISK_KNIGHT, details.basiliskKnightKills);
-                player.putAttrib(MEN_IN_BLACK_KILLED, details.menInBlackKills);
                 if(details.eventRewards != null) {
                     player.getEventRewards().setEventRewardsUnlocked(details.eventRewards);
                 }
@@ -564,6 +563,7 @@ public class PlayerSave {
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
                 player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
                 player.putAttrib(KYLIE_MINNOW_DIALOGUE_STARTED, details.kylieMinnowDialogueStarted);
+                player.putAttrib(BAGGED_COAL, details.baggedCoal);
                 return true;
             }
         }
@@ -815,7 +815,6 @@ public class PlayerSave {
         private final int drakeKills;
         private final int hydraKills;
         private final int basiliskKnightKills;
-        private final int menInBlackKills;
 
         //Content
         private final HashMap<EventRewards, Boolean> eventRewards;
@@ -974,6 +973,7 @@ public class PlayerSave {
         private final boolean combatMaxed;
         private final int fightCaveWave;
         private final boolean kylieMinnowDialogueStarted;
+        private final int baggedCoal;
 
         public String password() {
             return password;
@@ -1210,7 +1210,6 @@ public class PlayerSave {
             drakeKills = Player.getAttribIntOr(player, DRAKE, 0);
             hydraKills = Player.getAttribIntOr(player, HYDRA, 0);
             basiliskKnightKills = Player.getAttribIntOr(player, BASILISK_KNIGHT, 0);
-            menInBlackKills = Player.getAttribIntOr(player, MEN_IN_BLACK_KILLED, 0);
             bossTimers = player.getBossTimers().getTimes();
             eventRewards = player.getEventRewards().rewardsUnlocked();
             favoriteTeleports = player.getFavoriteTeleports();
@@ -1347,6 +1346,7 @@ public class PlayerSave {
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
             fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);
             kylieMinnowDialogueStarted = Player.getAttribBooleanOr(player, KYLIE_MINNOW_DIALOGUE_STARTED, false);
+            baggedCoal = Player.getAttribIntOr(player, BAGGED_COAL, 0);
         }
 
         public void parseDetails() throws Exception {

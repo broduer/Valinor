@@ -6,6 +6,7 @@ import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.masks.animations.AnimationLoop;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -20,6 +21,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * An implementation of {@link DefaultSkillable}.
@@ -81,7 +83,7 @@ public class ItemCreationSkillable extends DefaultSkillable {
 
     @Override
     public void startAnimationLoop(Player player) {
-        if (!animLoop.isPresent()) {
+        if (animLoop.isEmpty()) {
             return;
         }
         Task animLoopTask = new Task("ItemCreationAnimationTask", animLoop.get().getLoopDelay(), player, true) {
@@ -118,7 +120,8 @@ public class ItemCreationSkillable extends DefaultSkillable {
             if(r.getReplaceWith() != null) {
                 //When worn, 10% chance of smelting 2 of any bar at once when using the Edgeville furnace.
                 var doubleRoll = Utils.rollPercent((int) ItemSet.varrockDiaryArmour(player));
-                if(doubleRoll) {
+                var isOre = r.getItem().name().toLowerCase().contains("ore") || r.getItem().name().toLowerCase().contains("coal");
+                if(doubleRoll && isOre) {
                     r.getReplaceWith().setAmount(2);
                 }
                 player.inventory().add(r.getReplaceWith());
@@ -133,7 +136,7 @@ public class ItemCreationSkillable extends DefaultSkillable {
         }
 
         //Add exp..
-        player.skills().addXp(skill, experience);
+        player.skills().addXp(skill, player.getEquipment().hasAt(EquipSlot.HANDS, GOLDSMITH_GAUNTLETS) ? experience * 2.5 : experience);
 
         if (World.getWorld().rollDie(100, 1)) {
             GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
@@ -157,11 +160,14 @@ public class ItemCreationSkillable extends DefaultSkillable {
         //Validate required items..
         //Check if we have the required ores..
         boolean hasItems = true;
+        boolean hasHammer = player.getEquipment().contains(IMCANDO_HAMMER) || player.inventory().contains(IMCANDO_HAMMER);
         for (RequiredItem item : requiredItems) {
             if (!player.inventory().contains(item.getItem())) {
                 String prefix = item.getItem().getAmount() > 1 ? Integer.toString(item.getItem().getAmount()) : "some";
-                player.message("You "+(!hasItems ? "also need" : "need")+" "+prefix+" "+item.getItem().unnote().name()+".");
-                hasItems = false;
+                if(skill == Skills.SMITHING && !hasHammer) {
+                    player.message("You "+(!hasItems ? "also need" : "need")+" "+prefix+" "+item.getItem().unnote().name()+".");
+                }
+                hasItems = hasHammer;
             }
         }
         if (!hasItems) {

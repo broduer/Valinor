@@ -14,7 +14,7 @@ public class FishingTeleportsD extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Beginner Fishing", "Intermediate Fishing", "Advanced Fishing", "Nevermind");
+        send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Beginner Fishing", "Intermediate Fishing", "Advanced Fishing", "Anglerfish Fishing", "Nevermind");
         setPhase(0);
     }
 
@@ -37,6 +37,11 @@ public class FishingTeleportsD extends Dialogue {
                 }
             }
             if (option == 4) {
+                if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                    Teleports.basicTeleport(player, new Tile(1832,3772));
+                }
+            }
+            if (option == 5) {
                 stop();
             }
         }

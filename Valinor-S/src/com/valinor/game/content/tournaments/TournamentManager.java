@@ -20,6 +20,7 @@ import com.valinor.game.world.items.container.inventory.Inventory;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.TournamentArea;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
@@ -197,18 +198,20 @@ public class TournamentManager extends Interaction {
 
     @Override
     public void onLogin(Player player) {
-        //Wipe loadout
-        wipeLoadout(player);
-        //We're no longer participating
-        player.setInTournamentLobby(false);
-        player.setParticipatingTournament(null);
-        //Clear rune pouch
-        player.getRunePouch().clear();
-        //Reset attributes
-        player.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
-        player.getPacketSender().sendEntityHintRemoval(true);
-        //Exit the area
-        player.teleport(EXIT_TILE);
+        if(player.getController() instanceof TournamentArea) {
+            //Wipe loadout
+            wipeLoadout(player);
+            //We're no longer participating
+            player.setInTournamentLobby(false);
+            player.setParticipatingTournament(null);
+            //Clear rune pouch
+            player.getRunePouch().clear();
+            //Reset attributes
+            player.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
+            player.getPacketSender().sendEntityHintRemoval(true);
+            //Exit the area
+            player.teleport(EXIT_TILE);
+        }
     }
 
     public static void leaveTourny(Player player, boolean logout) {

@@ -1,7 +1,13 @@
-package com.valinor.game.content.items;
+package com.valinor.game.content.items.water_containers;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.object.GameObject;
+import com.valinor.net.packet.interaction.Interaction;
+
+import java.util.ArrayList;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -39,7 +45,7 @@ public enum WaterContainers {
         this.name = World.getWorld().definitions().get(ItemDefinition.class, empty).name.toLowerCase();
     }
 
-    private enum WaterSource {
+    public enum WaterSource {
         SINK, WATERPUMP, FOUNTAIN, WELL, TAP
     }
 }

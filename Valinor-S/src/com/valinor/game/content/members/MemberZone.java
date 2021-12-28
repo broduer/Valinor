@@ -270,6 +270,10 @@ public class MemberZone extends Interaction {
             }
 
             if(obj.getId() == ROW_BOAT) {
+                if(!obj.tile().equals(2323, 9801)) {
+                    player.message("I can't travel with this row boat.");
+                    return true;
+                }
                 if(!player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least a super member to travel with this boat."));
                     return true;

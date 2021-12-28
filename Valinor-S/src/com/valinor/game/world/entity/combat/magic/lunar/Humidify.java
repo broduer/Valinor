@@ -1,6 +1,6 @@
 package com.valinor.game.world.entity.combat.magic.lunar;
 
-import com.valinor.game.content.items.WaterContainers;
+import com.valinor.game.content.items.water_containers.WaterContainers;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 
