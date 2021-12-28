@@ -10,9 +10,6 @@ import java.util.Map;
  */
 public class NightmareEvent {
 
-    //This classwell yea i think u wanne do this on ur own pc and the abstract ihit method I dont think we have shit like that?
-
-    //So this class I can't port cuz Runite has different way of making instances
     //TODO
     /*private static Map<String, NightmareEvent> INSTANCES = new HashMap<String, NightmareEvent>();
 

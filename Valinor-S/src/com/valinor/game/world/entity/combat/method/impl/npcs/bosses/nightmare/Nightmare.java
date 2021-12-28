@@ -2,6 +2,8 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -33,28 +35,6 @@ public class Nightmare extends Npc {
         this.base = base;
     }
 
-    //TODO
-    /*static {
-        NPCAction.register(9461, "disturb", (player, npc) -> {
-            player.startEvent(event -> {
-                player.dialogue(new MessageDialogue("" + player.getName() + ", would you like to fight The Nightmare?"), new OptionsDialogue("Choose an option",
-                    new Option("Start a new instance", () -> {
-                        ArrayList<Player> team = new ArrayList<Player>();
-                        team.add(player);
-                        NightmareEvent.createInstance(team);
-                    }),
-                    new Option("Join a friends instance", () -> {
-                        player.nameInput("Enter friend's name:", key -> {
-                            NightmareEvent.joinInstance(key, player);
-                        });
-                    }),
-                    new Option("No thanks.")));
-                return;
-            });
-
-        });
-    }*/
-
     @Override
     public int maxHp() {
         return shield ? 80 * playersInRegion() : 2400;
@@ -62,97 +42,52 @@ public class Nightmare extends Npc {
 
     public ArrayList<Tile> getSleepwalkerTiles() {
         ArrayList<Tile> tiles = new ArrayList<>();
-        int[][] spots = new int[][] { { 26, 24 }, { 28, 24 }, { 36, 24 }, { 38, 24 }, { 41, 21 }, { 41, 19 }, { 41, 11 }, { 41, 9 }, { 38, 6 }, { 36, 6 }, { 28, 6 }, { 26, 6 }, { 23, 9 }, { 23, 11 }, { 23, 19 }, { 23, 21 }, { 23, 14 }, { 23, 16 }, { 41, 16 }, { 41, 14 }, { 31, 5 }, { 33, 5 }, { 31, 25 }, { 33, 25 }  };
+        int[][] spots = new int[][]{{26, 24}, {28, 24}, {36, 24}, {38, 24}, {41, 21}, {41, 19}, {41, 11}, {41, 9}, {38, 6}, {36, 6}, {28, 6}, {26, 6}, {23, 9}, {23, 11}, {23, 19}, {23, 21}, {23, 14}, {23, 16}, {41, 16}, {41, 14}, {31, 5}, {33, 5}, {31, 25}, {33, 25}};
         for (int[] spot : spots) {
             tiles.add(getBase().transform(spot[0], spot[1], 0));
         }
         return tiles;
     }
 
-
-    //This one
-    //This abstract method used in a few classes in this structure
-    //And this abstracct method is used in the combat show again was adfk
-    // ok yh overriding is possible ill do it my side later im off for now alr
-    //TODO
-   /* @Override
-    public int hit(Hit... hits) {
-        if(queuedHits == null)
-            queuedHits = new ArrayList<>();
-        int damage = 0;
-        boolean process = true;
+    @Override
+    public Hit manipulateHit(Hit hit) {
         boolean dead = false;
-        for(Hit hit : hits) {
-            Entity attacker = hit.attacker;
 
-            if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
-                stageDelta = 6;
-                toggleShield();
-                process = false;
-            } else if ((attacker instanceof TotemPlugin) && stage < 2) {
-                process = false;
-                queuedHits.add(hit);
-            } else if (attacker instanceof TotemPlugin) {
-                if (stage >= 2) {
-                    dead = true;
-                }
-            }
+        Mob attacker = hit.getAttacker();
 
-            if (attacker instanceof Parasite) {
-                hit.type = HitType.HEAL;
-                hit.damage = (Misc.random(100));
-            }
+        if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
+            stageDelta = 6;
+            toggleShield();
+        } else if ((attacker instanceof TotemPlugin) && stage < 2) {
 
-            if (attacker.isPlayer() && !isShield()) {
-                process = false;
-            }
-
-            if(process && hit.defend(this)) {
-                if (!isLocked(LockType.FULL_NULLIFY_DAMAGE))
-                    queuedHits.add(hit);
-                damage += hit.damage;
-            }
-
-            //attacker.forceText(stage + ": " + damage + "/" + getCombat().getStat(StatType.Hitpoints).currentLevel);
-
-            if (shield && 40 >= getCombat().getStat(StatType.Hitpoints).currentLevel && stage <= 2) {
-                toggleShield();
-                for (Player p : getPosition().getRegion().players) {
-                    p.sendMessage("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!");
-                }
-                process = false;
-            }
-
-        }
-        Hit baseHit = hits[0];
-        if (process) {
-            if(baseHit.type.resetActions) {
-                if(player != null)
-                    player.resetActions(true, false, false);
-                else
-                    npc.resetActions(false, false);
-            }
-            if(baseHit.attacker != null) {
-                if(baseHit.attacker.player != null && baseHit.attackStyle != null) {
-                    if(player != null) //important that this happens here for things that hit multiple targets
-                        baseHit.attacker.player.getCombat().skull(player);
-                    if(baseHit.attackSpell == null)
-                        CombatUtils.addXp(baseHit.attacker.player, this, baseHit.attackStyle, baseHit.attackType, damage);
-                }
-                getCombat().updateLastDefend(baseHit.attacker);
+        } else if (attacker instanceof TotemPlugin) {
+            if (stage >= 2) {
+                dead = true;
             }
         }
-        if (getCombat().getStat(StatType.Hitpoints).currentLevel <= 0) {
+
+        if (attacker instanceof Parasite) {
+            hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
+            hit.setDamage(World.getWorld().random(100));
+        }
+
+        //attacker.forceChat(stage + ": " + damage + "/" + hp());
+
+        if (shield && 40 >= hp() && stage <= 2) {
+            toggleShield();
+            World.getWorld().getPlayers().forEachInRegion(this.tile.region(), p -> p.message("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!"));
+        }
+
+        if (hp() <= 0) {
             for (TotemPlugin t : totems) {
                 t.setChargeable(false);
             }
         }
-        if (dead && getCombat().getStat(StatType.Hitpoints).currentLevel > 0) {
-            super.hit(new Hit().fixedDamage(getCombat().getStat(StatType.Hitpoints).currentLevel));
-            getCombat().getStat(StatType.Hitpoints).currentLevel = 0;
+        if (dead && hp() > 0) {
+            super.hit(this, hp());
         }
-        return damage;
-    }*/
+        return hit;
+    }
 
     public NightmareCombat getCombatMethod() {
         return new NightmareCombat();

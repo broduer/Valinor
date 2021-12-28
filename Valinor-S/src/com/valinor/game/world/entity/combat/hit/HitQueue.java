@@ -30,7 +30,6 @@ public class HitQueue {
     }
 
     public void process(Mob mob) {
-
         // If we are dead, clear all pending and current hits.
         if (mob.dead() || (mob.locked() && !mob.isDelayDamageLocked() && !mob.isDamageOkLocked() && !mob.isLogoutOkLocked())) {
             hits.clear();

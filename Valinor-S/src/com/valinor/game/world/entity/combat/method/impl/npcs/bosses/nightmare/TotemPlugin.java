@@ -1,8 +1,11 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.world.entity.combat.hit.SplatType;
+import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.position.Tile;
 
 /**
@@ -15,7 +18,8 @@ public class TotemPlugin extends Npc {
 
     private boolean chargeable, charged;
 
-    private int hitDelta = -1, spawnId;
+    private int hitDelta = -1;
+    private final int spawnId;
 
     public TotemPlugin(int id, Tile spawn) {
         super(id, spawn);
@@ -23,7 +27,6 @@ public class TotemPlugin extends Npc {
         spawn(false);
         lock();
         setHitpoints(1);
-        //TODO skipMovementCheck = true;
     }
 
     @Override
@@ -38,49 +41,47 @@ public class TotemPlugin extends Npc {
         }
     }
 
-    //TODO
-   /* @Override
-    public int hit(Hit... hits) {
-        if (charged) return 0;
-        for(Hit hit : hits) {
-            hit.type = HitType.HEAL;
-            if (hit.attacker != null && hit.attacker.isPlayer()) {
-                if (hit.attacker.player.getEquipment().get(Equipment.SLOT_WEAPON).getId() == 11907 || hit.attacker.player.getEquipment().get(Equipment.SLOT_WEAPON).getId() == 11905 || hit.attacker.player.getEquipment().get(Equipment.SLOT_WEAPON).getId() == 22288) {
-                    hit = new Hit().fixedDamage(hit.minDamage * 5);
-                    hit.type = HitType.HEAL;
-                }
+    @Override
+    public Hit manipulateHit(Hit hit) {
+        if (charged)
+            return null;
+        hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
+        if (hit.getAttacker() != null && hit.getAttacker().isPlayer()) {
+            if (hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 11907 || hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 11905 || hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 22288) {
+                hit.setDamage(hit.getDamage() * 5);
+                hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
             }
         }
-        int rt = super.hit(hits);
-        getCombat().getStat(StatType.Hitpoints).alter(getCombat().getStat(StatType.Hitpoints).currentLevel+ (rt * 2));
-        if (getCombat().getStat(StatType.Hitpoints).currentLevel >= getCombat().getStat(StatType.Hitpoints).fixedLevel) {
-            transform(spawnId + 2);
+
+        Hit rt = super.manipulateHit(hit);
+        heal(rt.getDamage() * 2);
+        if (hp() >= maxHp()) {
+            transmog(spawnId + 2);
             charged = true;
             chargeable = false;
             boolean all = true;
             for (TotemPlugin t : nightmare.getTotems()) {
                 if (!t.charged) {
                     all = false;
+                    break;
                 }
             }
             if (all) {
                 for (TotemPlugin t : nightmare.getTotems()) {
                     t.charged = false;
-                    t.getCombat().getStat(StatType.Hitpoints).alter(1);
-                    Projectile p = new Projectile(1768, 130, 110, 30, 56, 10, 10, 64);
-                    p.send(t, nightmare);
-                    t.transform(t.spawnId);
+                    t.combatInfo().stats.hitpoints = 1;
+
+                    Projectile p = new Projectile(t, nightmare,1768, 30, 110, 130, 110, 0);
+                    p.sendProjectile();
+                    t.transmog(t.spawnId);
                     t.breakCombat();
                     t.hitDelta = 3;
                 }
-                for (Player player : getPosition().getRegion().players) {
-                    player.sendMessage("<col=ff0000>All four totems are fully charged.");
-//					player.getWidgetManager().close(Widget.NIGHTMARE_TOTEM_HEALTH);
-                }
+                World.getWorld().getPlayers().forEachInRegion(nightmare.tile().region(), player -> player.message("<col=ff0000>All four totems are fully charged."));
             }
         }
         return rt;
-    }*/
+    }
 
     public void breakCombat() {
         World.getWorld().getPlayers().forEachInRegion(tile().region(), player -> {
