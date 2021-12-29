@@ -1,7 +1,5 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
-import com.valinor.game.task.Task;
-import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
@@ -9,7 +7,6 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.routes.ProjectileRoute;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -21,34 +18,8 @@ public class NightmareCombat extends CommonCombatMethod {
 
     private SpecialAttacks special;
 
-    private Task restoreTask;
-    private void checkRestoreTask(Mob mob) {
-        if (restoreTask == null) {
-            restoreTask = new Task("checkRestoreTask",3) {
-                @Override
-                public void execute() {
-                    if (mob.dead()
-                        || !mob.isRegistered()
-                        && (mob.getLocalPlayers().isEmpty()
-                        || mob.getLocalPlayers().stream().noneMatch(p -> ProjectileRoute.allow(mob, p)))) {
-                        stop();
-                        restore();
-                    }
-                }
-
-                @Override
-                public void onStop() {
-                    mob.getCombat().reset();
-                }
-            }.bind(mob);
-            TaskManager.submit(restoreTask);
-        }
-    }
-
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        checkRestoreTask(mob);
-
         Nightmare nightmare = (Nightmare) mob;
 
         /*

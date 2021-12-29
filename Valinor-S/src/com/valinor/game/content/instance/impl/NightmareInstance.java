@@ -1,5 +1,6 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.fs.NpcDefinition;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.MultiInstancedArea;
 import com.valinor.game.world.World;
@@ -60,6 +61,7 @@ public class NightmareInstance {
             nightmare.setTotems(new TotemPlugin[] { new TotemPlugin(TOTEM, new Tile(3879, 9942,instance.getzLevel() + 3)), new TotemPlugin(TOTEM_9437, new Tile(3863, 9942, instance.getzLevel() + 3)), new TotemPlugin(TOTEM_9440, new Tile(3863, 9958, instance.getzLevel() + 3)), new TotemPlugin(TOTEM_9443, new Tile(3879, 9958, instance.getzLevel() + 3)) });
             for (TotemPlugin t : nightmare.getTotems()) {
                 t.setNightmare(nightmare);
+                npcList.add(t);
             }
             nightmare.spawn(false);
             npcList.add(nightmare);
@@ -74,9 +76,11 @@ public class NightmareInstance {
                 nightmare.animate(8611);
                 player.message("<col=ff0000>The Nightmare has awoken!");
                 nightmare.setStage(0);
+                System.out.println("stage: "+nightmare.getStage());
                 inited = true;
             }).then(8, () -> {
                 nightmare.transmog(THE_NIGHTMARE_9425);
+                nightmare.heal(nightmare.maxHp());
                 nightmare.animate(-1);
             });
         }

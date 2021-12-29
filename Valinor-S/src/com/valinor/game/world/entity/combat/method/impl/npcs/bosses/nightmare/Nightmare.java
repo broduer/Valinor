@@ -44,7 +44,7 @@ public class Nightmare extends Npc {
         ArrayList<Tile> tiles = new ArrayList<>();
         int[][] spots = new int[][]{{26, 24}, {28, 24}, {36, 24}, {38, 24}, {41, 21}, {41, 19}, {41, 11}, {41, 9}, {38, 6}, {36, 6}, {28, 6}, {26, 6}, {23, 9}, {23, 11}, {23, 19}, {23, 21}, {23, 14}, {23, 16}, {41, 16}, {41, 14}, {31, 5}, {33, 5}, {31, 25}, {33, 25}};
         for (int[] spot : spots) {
-            tiles.add(getBase().transform(spot[0], spot[1], 0));
+            tiles.add(getBase().transform(spot[0], spot[1]));
         }
         return tiles;
     }
@@ -56,12 +56,14 @@ public class Nightmare extends Npc {
         Mob attacker = hit.getAttacker();
 
         if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
+            System.out.println("huh");
             stageDelta = 6;
             toggleShield();
         } else if ((attacker instanceof TotemPlugin) && stage < 2) {
-
+            System.out.println("huh2");
         } else if (attacker instanceof TotemPlugin) {
             if (stage >= 2) {
+                System.out.println("huh 3");
                 dead = true;
             }
         }
@@ -71,7 +73,7 @@ public class Nightmare extends Npc {
             hit.setDamage(World.getWorld().random(100));
         }
 
-        //attacker.forceChat(stage + ": " + damage + "/" + hp());
+        attacker.forceChat(stage + ": " + hit.getDamage() + "/" + hp());
 
         if (shield && 40 >= hp() && stage <= 2) {
             toggleShield();
@@ -97,13 +99,15 @@ public class Nightmare extends Npc {
     public void sequence() {
         if (stage < 0) {
             super.sequence();
-            System.out.println("dont do shit "+stage);
+            System.out.println("dont do shit stage:"+stage);
             return;
         }
+        System.out.println("stageDelta: "+stageDelta);
         if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {
+            System.out.println("enter sleepwalkers");
             stageDelta = -1;
             getCombat().reset();
-            transmog(9431);
+            transmog(THE_NIGHTMARE_9431);
             animate(-1);
             getCombatMethod().setSpecial(SpecialAttacks.SLEEPWALKERS);
             getCombatMethod().prepareAttack(this, null);
@@ -112,9 +116,11 @@ public class Nightmare extends Npc {
         }
 
         if (stageDelta == 4) {
+            System.out.println("enter teleport move");
             teleportAction(spawnTile());
         }
         if (stageDelta != -1) {
+            System.out.println("keep processing");
             super.sequence();
             return;
         }
@@ -127,6 +133,7 @@ public class Nightmare extends Npc {
         }
 
         if (specialDelta == 0 && stage < 3) {
+            System.out.println("special delta 0 and stage below 2");
             SpecialAttacks[][] attacks = {
                 {
                     SpecialAttacks.GRASPING_CLAWS,
@@ -169,23 +176,25 @@ public class Nightmare extends Npc {
                 if (nextAttack.teleportOption == EDGE) {
                     setFlyDirection(0);
                     switch (getFlyDirection()) {
-                        case 0 -> diffY = -10;
+                        case 0, 2 -> diffY = -10;
                         case 1 -> diffX = 10;
-                        case 2 -> diffY = -10;
                         case 3 -> diffX = -10;
                     }
                 }
-                Tile dest = spawnTile().transform(diffX, diffY, this.tile.level);
+                Tile dest = spawnTile().transform(diffX, diffY);
                 teleportAction(dest);
+                System.out.println("this teleport");
             }
             putAttrib(NEXT_ATTACK, nextAttack);
             getCombat().delayAttack(12);
         }
         if (specialDelta == -4) {
+            System.out.println("special delta -4");
             getCombatMethod().setSpecial(getAttrib(NEXT_ATTACK));
             getCombatMethod().prepareAttack(this, null);
         }
         if (--specialDelta == -10) {
+            System.out.println("special delta -10");
             getCombatMethod().setSpecial(null);
             specialDelta = 60;
         }
@@ -224,7 +233,10 @@ public class Nightmare extends Npc {
     private void teleportAction(Tile dest) {
         animate(8607);
         getCombat().reset();
-        Chain.bound(null).runFn(1, () -> this.teleport(dest)).then(1, () -> {
+        Chain.bound(null).runFn(1, () -> {
+            this.teleport(dest);
+            System.out.println("teleport to dest: "+dest);
+        }).then(1, () -> {
             transmog(stageDelta == -1 ? THE_NIGHTMARE + getStage() : THE_NIGHTMARE_9431);
             animate(8609);
         });
@@ -249,7 +261,7 @@ public class Nightmare extends Npc {
 
     @Override
     public void animate(int id) {
-        if (id() == 9431 && id != 8604 && id > 0) {
+        if (id() == THE_NIGHTMARE_9431 && id != 8604 && id > 0) {
             super.animate(0);
         }
         super.animate(id);

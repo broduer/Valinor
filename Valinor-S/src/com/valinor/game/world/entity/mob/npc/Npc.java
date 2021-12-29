@@ -220,6 +220,7 @@ public class Npc extends Mob {
     public void transmog(int id) {
         this.transmog = id;
         this.id = id;
+        System.out.println("transmog into "+id);
         this.getUpdateFlag().flag(Flag.TRANSFORM);
     }
 
