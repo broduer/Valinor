@@ -1,6 +1,5 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
-import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
@@ -23,12 +22,6 @@ public class Sleepwalker extends Npc {
 
     public void setNm(Nightmare nm) {
         this.nm = nm;
-    }
-
-    @Override
-    public Hit manipulateHit(Hit hit) {
-        hit.setDamage(10);
-        return super.manipulateHit(hit);
     }
 
     @Override

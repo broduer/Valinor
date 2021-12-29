@@ -1,6 +1,5 @@
 package com.valinor.game.content.instance.impl;
 
-import com.valinor.fs.NpcDefinition;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.MultiInstancedArea;
 import com.valinor.game.world.World;
@@ -80,7 +79,7 @@ public class NightmareInstance {
                 inited = true;
             }).then(8, () -> {
                 nightmare.transmog(THE_NIGHTMARE_9425);
-                nightmare.heal(nightmare.maxHp());
+                nightmare.setHitpoints(nightmare.maxHp());
                 nightmare.animate(-1);
             });
         }

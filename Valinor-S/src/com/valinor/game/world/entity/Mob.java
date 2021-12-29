@@ -282,8 +282,11 @@ public abstract class Mob extends Entity {
         this.getMovementQueue().resetFollowing();
         resetFaceTile();
         // Graphics and animations are not reset when you walk.
-        if (cancelMoving)
+        if (cancelMoving) {
             movementQueue.clear();
+            resetFaceTile();
+            TargetRoute.reset(this);
+        }
         action.clearNonWalkableActions();
         interruptChains();
         TargetRoute.reset(this);

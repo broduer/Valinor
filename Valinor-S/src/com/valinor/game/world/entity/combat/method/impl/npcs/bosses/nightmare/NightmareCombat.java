@@ -7,6 +7,7 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.chainedwork.Chain;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -39,7 +40,7 @@ public class NightmareCombat extends CommonCombatMethod {
             for (Mob victim : nightmare.getPossibleTargets(64, true, false)) {
                 nightmare.animate(MAGIC_ANIMATION);
                 nightmare.getCombat().setTarget(victim);
-                nightmare.runFn(1, () -> {
+                Chain.bound(null).runFn(1, () -> { // this can get interrupted
                     Projectile pr = new Projectile(nightmare, victim, MAGIC_PROJECTILE, 30, 66, 110, 90, 0);
                     pr.sendProjectile();
                 });
@@ -61,7 +62,7 @@ public class NightmareCombat extends CommonCombatMethod {
                 int delay = 60;
                 nightmare.animate(RANGE_ANIMATION);
                 nightmare.getCombat().setTarget(victim);
-                nightmare.runFn(1, () -> {
+                Chain.bound(null).runFn(1, () -> {
                     Projectile pr = new Projectile(nightmare, victim, RANGED_PROJECTILE, 30, 66, 110, 90, 0);
                     pr.sendProjectile();
                 });

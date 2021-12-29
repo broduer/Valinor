@@ -24,6 +24,7 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MagicCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MeleeCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.RangedCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Sleepwalker;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.bandos.Graardor;
@@ -967,12 +968,18 @@ public class CombatFactory {
      *
      * @param hit
      */
+    // ok if this wasnt static this would be the equivilent to @override hit() in runite
     public static void addPendingHit(Hit hit) {
         Mob attacker = hit.getAttacker();
         Mob target = hit.getTarget();
 
         if (target.dead()) {
             return;
+        }
+
+        boolean isSleepwalker = hit.getTarget().isNpc() && hit.getTarget().getAsNpc().def() != null && hit.getTarget().getAsNpc().def().name.toLowerCase().contains("sleepwalker");
+        if(isSleepwalker) {
+            hit.setDamage(10);
         }
 
         boolean isRevenant = attacker.isNpc() && attacker.getAsNpc().def().name.toLowerCase().contains("revenant");
@@ -1437,7 +1444,7 @@ public class CombatFactory {
         attacker.takehitSound(hit);
     }
 
-    private static void addCombatXp(Player player, Mob target, int hitDamage, CombatType style, FightStyle mode) {
+    public static void addCombatXp(Player player, Mob target, int hitDamage, CombatType style, FightStyle mode) {
         var hit = hitDamage;
         // Rather than putting hooks into every style of attacking a target, centralize it and stop giving XP
         // when certain styles can't damage an opponent.

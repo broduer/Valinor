@@ -5,6 +5,7 @@ import com.valinor.GameServer;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -90,10 +91,12 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
         //player.sound(2401);
-        player.getPacketSender().sendChangeSprite(29232, (byte) 0);
-        player.getPacketSender().sendChangeSprite(29233, (byte) 0);
-        player.getPacketSender().sendChangeSprite(29234, (byte) 0);
-        player.getPacketSender().sendChangeSprite(29235, (byte) 1);
+        for(Npc totem : player.closeNpcs(12)) {
+            if(totem.def().name.toLowerCase().contains("totem")) {
+                totem.setHitpoints(totem.maxHp() *2 +1);
+                System.out.println("chargeup");
+            }
+        }
         player.message("Test command has been activated.");
     }
 

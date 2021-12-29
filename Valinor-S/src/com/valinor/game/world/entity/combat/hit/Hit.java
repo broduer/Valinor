@@ -8,8 +8,12 @@ import com.valinor.game.world.entity.combat.formula.AccuracyFormula;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Sleepwalker;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.TotemPlugin;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Flag;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 
 import java.security.SecureRandom;
@@ -132,6 +136,7 @@ public class Hit {
         return builder(attacker, target, damage, delay, CombatType.MELEE);
     }
 
+    // just remembering whjat this does
     public static Hit builder(Mob attacker, Mob target, int damage, int delay, CombatType type) {
         Hit hit = new Hit(attacker, target, null, false, delay, damage);
         hit.combatType = type;
@@ -250,6 +255,19 @@ public class Hit {
 
     public void submit() {
         pidAdjust();
+        if(target instanceof Npc) {
+            Npc npc = target.getAsNpc();
+            if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("the nightmare")) {
+                Nightmare nightmare = (Nightmare) npc;
+                nightmare.overrideSubmit(this);
+                return;
+            } else if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("totem")) {
+                TotemPlugin totem = (TotemPlugin) npc;
+                totem.overrideSubmit(this);
+                System.out.println("trigger?");
+                return;
+            }
+        }
         CombatFactory.addPendingHit(this);
     }
 

@@ -1,9 +1,13 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.LockType;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatFactory;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
+import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -49,35 +53,74 @@ public class Nightmare extends Npc {
         return tiles;
     }
 
-    @Override
-    public Hit manipulateHit(Hit hit) {
+    public int overrideSubmit(Hit... hits) {
+        int damage = 0;
+        boolean process = true;
         boolean dead = false;
+        for(Hit hit : hits) {
+            Mob attacker = hit.getAttacker();
 
-        Mob attacker = hit.getAttacker();
-
-        if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
-            System.out.println("huh");
-            stageDelta = 6;
-            toggleShield();
-        } else if ((attacker instanceof TotemPlugin) && stage < 2) {
-            System.out.println("huh2");
-        } else if (attacker instanceof TotemPlugin) {
-            if (stage >= 2) {
-                System.out.println("huh 3");
-                dead = true;
+            if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
+                System.out.println("huh");
+                stageDelta = 6;
+                toggleShield();
+                process = false;
+            } else if ((attacker instanceof TotemPlugin) && stage < 2) {
+                process = false;
+                CombatFactory.addPendingHit(hit);
+                System.out.println("huh1");
+            } else if (attacker instanceof TotemPlugin) {
+                System.out.println("huh2");
+                if (stage >= 2) {
+                    dead = true;
+                    System.out.println("huh3");
+                }
             }
+
+            if (attacker instanceof Parasite) {
+                System.out.println("huh4");
+                hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
+                hit.setDamage(World.getWorld().random(100));
+            }
+
+            if (attacker.isPlayer() && !isShield()) {
+                process = false;
+            }
+
+            if(process) {
+
+                if (!isNullifyDamageLock())
+                    CombatFactory.addPendingHit(hit);
+                damage += hit.getDamage();
+            }
+
+            attacker.forceChat(stage + ": " + hit.getDamage() + "/" + hp());
+
+            if (shield && 40 >= hp() && stage <= 2) {
+                System.out.println("huh5");
+                toggleShield();
+                World.getWorld().getPlayers().forEachInRegion(this.tile.region(), p -> p.message("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!"));
+            }
+
         }
 
-        if (attacker instanceof Parasite) {
-            hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
-            hit.setDamage(World.getWorld().random(100));
-        }
+        Hit baseHit = hits[0];
+        if (process) {
+            System.out.println("huh6");
+            if(baseHit.splatType == SplatType.HITSPLAT || baseHit.splatType == SplatType.BLOCK_HITSPLAT) {
+                if(baseHit.getAttacker().isPlayer())
+                    baseHit.getAttacker().getAsPlayer().stopActions(false);
+                else
+                    baseHit.getAttacker().getAsNpc().stopActions(false);
+            }
 
-        attacker.forceChat(stage + ": " + hit.getDamage() + "/" + hp());
-
-        if (shield && 40 >= hp() && stage <= 2) {
-            toggleShield();
-            World.getWorld().getPlayers().forEachInRegion(this.tile.region(), p -> p.message("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!"));
+            if(baseHit.getAttacker() != null) {
+                if(baseHit.getAttacker().isPlayer() && baseHit.getAttacker().getAsPlayer() != null && baseHit.getCombatType() != null) {
+                    if(baseHit.getAttacker().getAsPlayer() != null) //important that this happens here for things that hit multiple targets
+                    if(baseHit.spell == null)
+                        CombatFactory.addCombatXp(baseHit.getAttacker().getAsPlayer(), baseHit.getTarget(), Math.min(baseHit.getDamage(), baseHit.getTarget().hp()), baseHit.getCombatType(), baseHit.getAttacker().getAsPlayer().getCombat().getFightType().getStyle());
+                }
+            }
         }
 
         if (hp() <= 0) {
@@ -88,7 +131,7 @@ public class Nightmare extends Npc {
         if (dead && hp() > 0) {
             super.hit(this, hp());
         }
-        return hit;
+        return damage;
     }
 
     public NightmareCombat getCombatMethod() {
@@ -102,8 +145,14 @@ public class Nightmare extends Npc {
             System.out.println("dont do shit stage:"+stage);
             return;
         }
-        System.out.println("stageDelta: "+stageDelta);
-        if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {
+        //So somehow the variables that are used to determine stages
+        //E.g: stageDelta, stage and specialStage or w/e don't seem to properly update
+        //It always stays in the same stages
+        //Somehow this stageDelta is ALWAYS -1
+        System.out.println("stageDelta: "+stageDelta+" "+stage+" "+specialDelta);
+        // so 6 >5>4>3>2>1 then -1
+        if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {//Also stage is never updated so once its gonna do its teleport metohod nightmare will change into a wrong npc cuz stage is always 0
+            //Not a single stage var is changed
             System.out.println("enter sleepwalkers");
             stageDelta = -1;
             getCombat().reset();
