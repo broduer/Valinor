@@ -126,8 +126,11 @@ public class NpcCombatInfo {
         public void resolve() {
             try {
                 combat_ = (CombatMethod) resolveClass(combat);
-                if (combat != null && combat.length() > 0)
+                //System.err.println("combat: "+combat_);
+                if (combat != null && combat.length() > 0) {
                     combatMethodClass = (Class<CombatMethod>) Class.forName(combat);
+                    //System.err.println("combatMethodClass: "+combat);
+                }
                 droptable_ = (Droptable) resolveClass(droptable);
                 agro_ = (AggressionCheck) resolveClass(aggression);
             } catch (ClassNotFoundException e) { // it could be one of the others not agro

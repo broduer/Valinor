@@ -220,6 +220,10 @@ public class Npc extends Mob {
     public void transmog(int id) {
         this.transmog = id;
         this.id = id;
+        NpcDefinition def = def();
+        setSize(def.size);
+        if(combatInfo != null)
+            this.combatInfo(World.getWorld().combatInfo(id));
         System.out.println("transmog into "+id);
         this.getUpdateFlag().flag(Flag.TRANSFORM);
     }

@@ -5,6 +5,8 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 
+import static com.valinor.util.NpcIdentifiers.KALPHITE_QUEEN_6501;
+
 public class SpawnNPCCommand implements Command {
 
     @Override
@@ -14,6 +16,7 @@ public class SpawnNPCCommand implements Command {
         for (int i = 0; i < amt; i++) {
             Npc npc = Npc.of(Integer.parseInt(parts[1]), player.tile()).respawns(false);
             World.getWorld().registerNpc(npc);
+            npc.combatInfo(World.getWorld().combatInfo(npc.id()));
             if (parts.length > 2) {
                 npc.setHitpoints(Integer.parseInt(parts[2]));
             }

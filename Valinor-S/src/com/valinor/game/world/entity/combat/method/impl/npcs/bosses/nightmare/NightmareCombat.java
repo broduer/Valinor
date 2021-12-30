@@ -40,7 +40,7 @@ public class NightmareCombat extends CommonCombatMethod {
             for (Mob victim : nightmare.getPossibleTargets(64, true, false)) {
                 nightmare.animate(MAGIC_ANIMATION);
                 nightmare.getCombat().setTarget(victim);
-                Chain.bound(null).runFn(1, () -> { // this can get interrupted
+                Chain.bound(null).runFn(1, () -> {
                     Projectile pr = new Projectile(nightmare, victim, MAGIC_PROJECTILE, 30, 66, 110, 90, 0);
                     pr.sendProjectile();
                 });

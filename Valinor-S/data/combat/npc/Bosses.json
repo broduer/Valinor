@@ -1379,6 +1379,40 @@
   {
     // The Nightmare - Totem
     "ids": [
+      9443, 9437, 9440, 9434, 9444, 9437, 9441, 9445
+    ],
+    "boss": true,
+    "maxhit": 0,
+    "attackspeed": 6,
+    "aggroradius": 0,
+    "respawntime": -1,
+    "deathlen": 5,
+    "aggressive": false,
+    "stats": {
+      "attack": 150,
+      "strength": 150,
+      "magic": 150,
+      "ranged": 150,
+      "defence": 150,
+      "hitpoints": 500
+    },
+    "bonuses": {
+      "attack": 208,
+      "stabdefence": 120,
+      "slashdefence": 180,
+      "crushdefence": 40,
+      "rangeddefence": 60,
+      "magicdefence": 60
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
+    }
+  },
+  {
+    // The Nightmare - Sleepwalker
+    "ids": [
       9446, 9447, 9448, 9449, 9450, 9451
     ],
     "boss": true,
@@ -1516,6 +1550,117 @@
       "attack": 3262,
       "block": 3260,
       "death": 3263
+    }
+  },
+  {
+    // Abyssal Sire
+    "ids": [
+      5886, 5887, 5888, 5889, 5890, 5891, 5908
+    ],
+    "slayerxp": 450,
+    "slayerlvl": 85,
+    "boss": true,
+    "maxhit": 66,
+    "attackspeed": 7,
+    "aggroradius": 0,
+    "respawntime": 2,
+    "deathlen": 5,
+    "aggressive": false,
+    "stats": {
+      "attack": 180,
+      "strength": 136,
+      "magic": 200,
+      "ranged": 1,
+      "defence": 250,
+      "hitpoints": 400
+    },
+    "bonuses": {
+      "attack": 195,
+      "stabdefence": 40,
+      "slashdefence": 60,
+      "crushdefence": 50,
+      "rangeddefence": 60,
+      "magicdefence": 20
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 7100
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.abyssalsire.AbyssalSire"
+    }
+  },
+  {
+    // Abyssal sire minion
+    "ids": [
+      5916, 5917
+    ],
+    "boss": false,
+    "maxhit": 6,
+    "attackspeed": 4,
+    "aggroradius": 10,
+    "respawntime": 2,
+    "deathlen": 5,
+    "aggressive": true,
+    "stats": {
+      "attack": 120,
+      "strength": 30,
+      "magic": 1,
+      "ranged": 50,
+      "defence": 30,
+      "hitpoints": 15
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": -10
+    },
+    "animations": {
+      "attack": 4522,
+      "block": 4523,
+      "death": 4521
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.abyssalsire.Scion"
+    }
+  },
+  {
+    // Scion
+    "ids": [
+      5918
+    ],
+    "boss": false,
+    "maxhit": 15,
+    "attackspeed": 4,
+    "aggroradius": 10,
+    "respawntime": -1,
+    "deathlen": 3,
+    "aggressive": true,
+    "stats": {
+      "attack": 120,
+      "strength": 90,
+      "magic": 1,
+      "ranged": 100,
+      "defence": 80,
+      "hitpoints": 50
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": -10
+    },
+    "animations": {
+      "attack": 7126,
+      "block": 7128,
+      "death": 7129
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.abyssalsire.Scion"
     }
   }
 ]
