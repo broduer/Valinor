@@ -19,9 +19,25 @@ public class NightmareCombat extends CommonCombatMethod {
 
     private SpecialAttacks special;
 
+    private void doSpecialAttack() {
+        var randomSpecialAttack = World.getWorld().random(5);
+        switch (randomSpecialAttack) {
+            case 0 -> special = SpecialAttacks.GRASPING_CLAWS;
+            case 1 -> special = SpecialAttacks.FLOWER_POWER;
+            case 2 -> special = SpecialAttacks.HUSKS;
+            case 3 -> special = SpecialAttacks.CURSE;
+            case 4 -> special = SpecialAttacks.PARASITES;
+        }
+    }
+
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         Nightmare nightmare = (Nightmare) mob;
+
+        //Force a special attack for now
+        if(World.getWorld().rollDie(10, 2)) {
+            doSpecialAttack();
+        }
 
         /*
          * Special attack.
@@ -45,7 +61,7 @@ public class NightmareCombat extends CommonCombatMethod {
                     pr.sendProjectile();
                 });
                 final Tile dest = victim.tile();
-                int delay = 60;
+                int delay;
                 if (nightmare.getCentrePosition().distance(dest) == 1) {
                     delay = 60;
                 } else if (nightmare.getCentrePosition().distance(dest) <= 5) {

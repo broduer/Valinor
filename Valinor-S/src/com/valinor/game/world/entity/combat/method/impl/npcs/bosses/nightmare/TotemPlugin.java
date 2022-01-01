@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.masks.Projectile;
@@ -44,11 +45,10 @@ public class TotemPlugin extends Npc {
 
     public int overrideSubmit(Hit... hits) {
         if (charged) {
-            System.out.println("hmmmm");
             return 0;
         }
+        int dmg = 0;
         for(Hit hit : hits) {
-            System.out.println("hmmmm1");
             hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
             if (hit.getAttacker() != null && hit.getAttacker().isPlayer()) {
                 if (hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 11907 || hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 11905 || hit.getAttacker().getAsPlayer().getEquipment().get(EquipSlot.WEAPON).getId() == 22288) {
@@ -56,11 +56,12 @@ public class TotemPlugin extends Npc {
                     hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
                 }
             }
+            CombatFactory.addPendingHit(hit);
+            dmg += hit.getDamage();
         }
-        int rt = overrideSubmit(hits);
+        int rt = dmg; // infinite loop this call must be wrong compare with rift
         heal(rt * 2);
         if (hp() >= maxHp()) {
-            System.out.println("hmmmm2");
             transmog(spawnId + 2);
             charged = true;
             chargeable = false;
@@ -72,7 +73,6 @@ public class TotemPlugin extends Npc {
                 }
             }
             if (all) {
-                System.out.println("hmmmm3");
                 for (TotemPlugin t : nightmare.getTotems()) {
                     t.charged = false;
                     t.combatInfo().stats.hitpoints = 1;
@@ -109,16 +109,8 @@ public class TotemPlugin extends Npc {
         return chargeable;
     }
 
-    //TODO
     public void setChargeable(boolean chargeable) {
         this.chargeable = chargeable;
-        /*actions = new NPCAction[5];
-        for (int i = 0; i < 5; i++) {
-            actions[i] = (player, npc) -> {
-                player.getCombat().setTarget(npc);
-                player.face(npc);
-            };
-        }*/
         if (chargeable) {
             transmog(spawnId + 1);
         }

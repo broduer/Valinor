@@ -624,13 +624,13 @@ public class CombatFactory {
 
         if (other.isNpc()) {
             var npc = other.getAsNpc();
-            var player = entity.getAsPlayer();
-            if (npc.hidden() || (entity.isPlayer() && npc.id() == 7707) || npc.locked() && npc.id() != 5886 && npc.id() != 2668) {
-                Debugs.CMB.debug(entity, "cant attack idk what this is hidden" + npc.hidden(), other, true);
+            if (npc.hidden() || (entity.isPlayer() && npc.id() == 7707) || npc.locked() && npc.id() != 5886 && npc.id() != 2668 && !npc.def().name.toLowerCase().contains("totem")) {
+                Debugs.CMB.debug(entity, "cant attack idk what this is hidden=" + npc.hidden()+" locked:"+npc.locked(), other, true);
                 return false;
             }
 
-            if (npc.id() == KILLER) {
+            if (npc.id() == KILLER && entity.isPlayer()) {
+                var player = entity.getAsPlayer();
                 if (!player.getEquipment().hasAt(EquipSlot.WEAPON, KILLERS_KNIFE_21059)) {
                     player.message(Color.RED.wrap("You can only kill these killers with a Killer's knife."));
                     return false;
@@ -638,6 +638,7 @@ public class CombatFactory {
             }
 
             if (entity.isPlayer() && other.isNpc()) {
+                var player = entity.getAsPlayer();
                 Party party = player.raidsParty;
                 if (party != null) {
                     if (npc.id() == LORD_VOLDEMORT) {
@@ -665,6 +666,7 @@ public class CombatFactory {
             }
 
             if (entity.isPlayer() && npc.id() == 7555) {
+                var player = entity.getAsPlayer();
                 Party party = player.raidsParty;
                 if (party != null) {
                     if (!party.isCanAttackLeftHand()) {
@@ -675,6 +677,7 @@ public class CombatFactory {
                 }
             }
             if (entity.isPlayer() && npc.id() == 7554) {
+                var player = entity.getAsPlayer();
                 Party party = player.raidsParty;
                 if (party != null) {
                     if (!party.isLeftHandDead()) {

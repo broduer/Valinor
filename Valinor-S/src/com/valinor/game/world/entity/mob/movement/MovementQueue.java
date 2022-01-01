@@ -672,7 +672,6 @@ public final class MovementQueue {
                 //System.out.println("Region changed for " + player.toString());
                 player.getPacketSender().sendMapRegion();
                 player.setRegionHeight(player.tile().getLevel());
-                player.setActiveMap(new Tile(player.tile().x, player.tile().y, player.tile().level));
             }
         }
     }

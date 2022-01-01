@@ -224,7 +224,6 @@ public class Npc extends Mob {
         setSize(def.size);
         if(combatInfo != null)
             this.combatInfo(World.getWorld().combatInfo(id));
-        System.out.println("transmog into "+id);
         this.getUpdateFlag().flag(Flag.TRANSFORM);
     }
 
@@ -739,12 +738,7 @@ public class Npc extends Mob {
 
     @Override
     public Tile getCentrePosition() {
-        Tile base = this.tile();
-
-        if (this.getSize() > 1) {
-            base = this.tile().transform(this.getSize() / 2, this.getSize() / 2, 0);
-        }
-        return base;
+        return new Tile(tile().getX() + def().size / 2, tile().getY() + def().size / 2, tile().getZ());
     }
 
     @Override

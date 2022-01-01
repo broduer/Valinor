@@ -30,13 +30,12 @@ public class Nightmare extends Npc {
 
     private TotemPlugin[] totems;
 
-    private final Tile base;
+    private final Tile base = new Tile(3840, 9936, this.tile.level);
 
     private boolean shield;
 
-    public Nightmare(int id, Tile base) {
-        super(id, base);
-        this.base = base;
+    public Nightmare(int id, Tile tile) {
+        super(id, tile.copy());
     }
 
     @Override
@@ -61,24 +60,19 @@ public class Nightmare extends Npc {
             Mob attacker = hit.getAttacker();
 
             if ((attacker instanceof TotemPlugin) && stageDelta == -1 && stage < 2) {
-                System.out.println("huh");
                 stageDelta = 6;
                 toggleShield();
                 process = false;
             } else if ((attacker instanceof TotemPlugin) && stage < 2) {
                 process = false;
                 CombatFactory.addPendingHit(hit);
-                System.out.println("huh1");
             } else if (attacker instanceof TotemPlugin) {
-                System.out.println("huh2");
                 if (stage >= 2) {
                     dead = true;
-                    System.out.println("huh3");
                 }
             }
 
             if (attacker instanceof Parasite) {
-                System.out.println("huh4");
                 hit.splatType = SplatType.NPC_HEALING_HITSPLAT;
                 hit.setDamage(World.getWorld().random(100));
             }
@@ -94,10 +88,9 @@ public class Nightmare extends Npc {
                 damage += hit.getDamage();
             }
 
-            attacker.forceChat(stage + ": " + hit.getDamage() + "/" + hp());
+            //attacker.forceChat(stage + ": " + hit.getDamage() + "/" + hp());
 
             if (shield && 40 >= hp() && stage <= 2) {
-                System.out.println("huh5");
                 toggleShield();
                 World.getWorld().getPlayers().forEachInRegion(this.tile.region(), p -> p.message("<col=ff0000>As the Nightmare's shield fails, the totems in the area are activated!"));
             }
@@ -106,7 +99,6 @@ public class Nightmare extends Npc {
 
         Hit baseHit = hits[0];
         if (process) {
-            System.out.println("huh6");
             if(baseHit.splatType == SplatType.HITSPLAT || baseHit.splatType == SplatType.BLOCK_HITSPLAT) {
                 if(baseHit.getAttacker().isPlayer())
                     baseHit.getAttacker().getAsPlayer().stopActions(false);
@@ -142,18 +134,10 @@ public class Nightmare extends Npc {
     public void sequence() {
         if (stage < 0) {
             super.sequence();
-            System.out.println("dont do shit stage:"+stage);
             return;
         }
-        //So somehow the variables that are used to determine stages
-        //E.g: stageDelta, stage and specialStage or w/e don't seem to properly update
-        //It always stays in the same stages
-        //Somehow this stageDelta is ALWAYS -1
-        System.out.println("stageDelta: "+stageDelta+" "+stage+" "+specialDelta);
-        // so 6 >5>4>3>2>1 then -1
-        if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {//Also stage is never updated so once its gonna do its teleport metohod nightmare will change into a wrong npc cuz stage is always 0
-            //Not a single stage var is changed
-            System.out.println("enter sleepwalkers");
+        //System.out.println("stageDelta: "+stageDelta+" "+stage+" "+specialDelta);
+        if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {
             stageDelta = -1;
             getCombat().reset();
             transmog(THE_NIGHTMARE_9431);
@@ -165,11 +149,9 @@ public class Nightmare extends Npc {
         }
 
         if (stageDelta == 4) {
-            System.out.println("enter teleport move");
             teleportAction(spawnTile());
         }
         if (stageDelta != -1) {
-            System.out.println("keep processing");
             super.sequence();
             return;
         }
@@ -182,7 +164,6 @@ public class Nightmare extends Npc {
         }
 
         if (specialDelta == 0 && stage < 3) {
-            System.out.println("special delta 0 and stage below 2");
             SpecialAttacks[][] attacks = {
                 {
                     SpecialAttacks.GRASPING_CLAWS,
@@ -232,18 +213,15 @@ public class Nightmare extends Npc {
                 }
                 Tile dest = spawnTile().transform(diffX, diffY);
                 teleportAction(dest);
-                System.out.println("this teleport");
             }
             putAttrib(NEXT_ATTACK, nextAttack);
             getCombat().delayAttack(12);
         }
         if (specialDelta == -4) {
-            System.out.println("special delta -4");
             getCombatMethod().setSpecial(getAttrib(NEXT_ATTACK));
             getCombatMethod().prepareAttack(this, null);
         }
         if (--specialDelta == -10) {
-            System.out.println("special delta -10");
             getCombatMethod().setSpecial(null);
             specialDelta = 60;
         }
@@ -284,7 +262,6 @@ public class Nightmare extends Npc {
         getCombat().reset();
         Chain.bound(null).runFn(1, () -> {
             this.teleport(dest);
-            System.out.println("teleport to dest: "+dest);
         }).then(1, () -> {
             transmog(stageDelta == -1 ? THE_NIGHTMARE + getStage() : THE_NIGHTMARE_9431);
             animate(8609);

@@ -7,12 +7,22 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.position.Boundary;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Utils;
+import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.valinor.game.content.instance.impl.NightmareInstance.THE_NIGHTMARE_SPAWN_TILE;
+import static com.valinor.util.ItemIdentifiers.EMPTY_VIAL;
+import static com.valinor.util.ItemIdentifiers.VIAL_OF_WATER;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -28,28 +38,32 @@ public enum SpecialAttacks {
             for (int x = 23; x < 41; x++) {
                 l:
                 for (int y = 6; y < 24; y++) {
-                    Tile pos = nm.getBase().transform(x, y, 0);
+                    Tile riftTile = nm.getBase().transform(x, y);
                     for (Npc n : World.getWorld().getNpcs()) {
-                        if (n.getCentrePosition().distance(pos) < (n.getSize() > 1 ? 2 : 1)) {
+                        if (n == null) continue;
+                        if (n.getCentrePosition().distance(riftTile) < (n.getSize() > 1 ? 2 : 1)) {
                             continue l;
                         }
                     }
                     if (World.getWorld().random(10) < 3) {
-                        tiles.add(pos);
+                        tiles.add(riftTile);
                     }
                 }
             }
-            for (Tile pos : tiles) {
-                World.getWorld().tileGraphic(1767, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 0);
+
+            //final List<GroundItem> groundItems = new ArrayList<>();
+            //groundItems.addAll(GroundItemHandler.getGroundItems());
+            //groundItems.forEach(GroundItemHandler::sendRemoveGroundItem);
+            for (Tile tile : tiles) {
+                World.getWorld().tileGraphic(1767, tile, 0, 0);
+                //GroundItemHandler.createGroundItem(new GroundItem(new Item(VIAL_OF_WATER), tile, null));
             }
-            nm.runFn(2, () -> {
-                for (Tile t : tiles) {
-                    for (Player p : World.getWorld().getPlayers()) {
-                        if (p.tile().equals(t)) {
-                            p.hit(nm, World.getWorld().random(50));
-                        }
+            Chain.bound(null).runFn(2, () -> {
+                World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), p -> {
+                    if (tiles.contains(p.tile())) {
+                        p.hit(nm, World.getWorld().random(50));
                     }
-                }
+                });
             });
         }
 
@@ -61,7 +75,7 @@ public enum SpecialAttacks {
             World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                 player.message("<col=ff0000>The Nightmare begins to charge up a devastating attack.");
             });
-            nm.runFn(1, () -> {
+            Chain.bound(null).runFn(1, () -> {
                 int count = Math.min(nm.playersInRegion(), 24);
                 ArrayList<Tile> spots = nm.getSleepwalkerTiles();
                 Collections.shuffle(spots);
@@ -81,7 +95,7 @@ public enum SpecialAttacks {
                 World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                     player.hit(nm, nm.getSleepwalkerCount() * 5);
                 });
-                nm.transmog(9425 + nm.getStage());
+                //nm.transmog(9425 + nm.getStage());
                 nm.setSleepwalkerCount(0);
             });
         }
@@ -99,15 +113,15 @@ public enum SpecialAttacks {
                 Tile[] pos = null;
                 if (target.tile().getX() - rX >= 23 || (target.tile().getX() - rX <= 41) || target.tile().getY() - rY >= 6 || (target.tile().getY() - rY <= 24)) {
                     if (target.tile().getY() - rY >= 6 || (target.tile().getY() - rY <= 24)) {
-                        pos = new Tile[]{target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0)};
+                        pos = new Tile[]{target.tile().transform(-1, 0), target.tile().transform(1, 0)};
                     } else {
-                        pos = new Tile[]{target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0)};
+                        pos = new Tile[]{target.tile().transform(0, 1), target.tile().transform(0, -1)};
                     }
                 } else {
                     if (World.getWorld().random(10) > 5) {
-                        pos = new Tile[]{target.tile().transform(-1, 0, 0), target.tile().transform(1, 0, 0)};
+                        pos = new Tile[]{target.tile().transform(-1, 0), target.tile().transform(1, 0)};
                     } else {
-                        pos = new Tile[]{target.tile().transform(0, 1, 0), target.tile().transform(0, -1, 0)};
+                        pos = new Tile[]{target.tile().transform(0, 1), target.tile().transform(0, -1)};
                     }
                 }
                 if (pos != null) {
@@ -133,13 +147,13 @@ public enum SpecialAttacks {
             });
             nm.setFlowerRotary(rand);
             FlowerRotary pattern = FlowerRotary.values()[rand];
-            Tile center = nm.getBase().transform(32, 15, 0);
+            Tile center = nm.getBase().transform(32, 15);
             ArrayList<GameObject> flowers = new ArrayList<>();
             for (int i = 0; i < 11; i++) {
-                GameObject lightFlower = new GameObject(37743, center.transform(0, pattern.getLight()[1] * i, 0), 10, 0);
-                GameObject lightFlower2 = new GameObject(37743, center.transform(pattern.getLight()[0] * i, 0, 0), 10, 0);
-                GameObject darkFlower = new GameObject(37740, center.transform(pattern.getDark()[0] * i, 0, 0), 10, 0);
-                GameObject darkFlower2 = new GameObject(37740, center.transform(0, pattern.getDark()[1] * i, 0), 10, 0);
+                GameObject lightFlower = new GameObject(37743, center.transform(0, pattern.getLight()[1] * i), 10, 0);
+                GameObject lightFlower2 = new GameObject(37743, center.transform(pattern.getLight()[0] * i, 0), 10, 0);
+                GameObject darkFlower = new GameObject(37740, center.transform(pattern.getDark()[0] * i, 0), 10, 0);
+                GameObject darkFlower2 = new GameObject(37740, center.transform(0, pattern.getDark()[1] * i), 10, 0);
                 flowers.add(lightFlower);
                 flowers.add(lightFlower2);
                 flowers.add(darkFlower);
@@ -149,7 +163,7 @@ public enum SpecialAttacks {
                 darkFlower.spawn();
                 darkFlower2.spawn();
             }
-            nm.runFn(1, () -> {
+            Chain.bound(null).runFn(1, () -> {
                 for (GameObject flower : flowers) {
                     flower.animate(flower.definition().anInt2281 + 1);
                 }
@@ -187,7 +201,7 @@ public enum SpecialAttacks {
     CURSE(8600, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-            nm.runFn(2, () -> {
+            Chain.bound(null).runFn(2, () -> {
                 World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), p -> {
                     if (Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MISSILES)) {
                         Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MISSILES);
@@ -216,16 +230,14 @@ public enum SpecialAttacks {
                 Projectile pr = new Projectile(nm, victim, 1770, 30, 66, 110, 90, 0);
                 pr.sendProjectile();
                 p.message("<col=ff0000>The Nightmare has impregnated you with a deadly parasite!");
-                //Config.IMPREGNANTED.set(p, 1);
                 p.putAttrib(AttributeKey.NIGHTMARE_BABY_DADY, true);
             }
             final List<Parasite> parasites = new ArrayList<Parasite>();
-            nm.runFn(28, () -> {
+            Chain.bound(null).runFn(28, () -> {
                 for (Mob victim : nm.getPossibleTargets()) {
                     if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
                         Player p = (Player) victim;
                         p.message("<col=ff0000>The parasite bursts out of you, fully grown!");
-                        //Config.IMPREGNANTED.set(p, 2);
                         p.graphic(1779);
                     }
                 }
@@ -275,14 +287,14 @@ public enum SpecialAttacks {
             World.getWorld().getPlayers().forEachInRegion(nm.tile().region(), player -> {
                 player.message("<col=ff0000>The Nightmare summons some infectious spores!");
             });
-            int[][] spores = {{32, 23}, {37, 20}, {40, 15}, {37, 10}, {32, 7}, {27, 10}, {24, 15}, {28, 15}, {32, 18}, {36, 15}, {32, 12}};
-            for (int i = 0; i < spores.length; i++) {
-                Spore spore = new Spore(nm.getBase().transform(spores[i][0], spores[i][1], 0));
-                nm.runFn(1, () -> {
+            int[][] spores = {{10, 7}, {15, 5}, {18, 10}, {15, 10}, {10, 7}, {5, 10}, {9, 10}, {6, 10}, {10, 13}, {14, 10}, {10, 12}};
+            for (int[] ints : spores) {
+                Spore spore = new Spore(nm.getBase().transform(ints[0], ints[1]));
+                //System.out.println(spore.tile());
+                Chain.bound(null).runFn(1, () -> {
                     spore.animate(spore.definition().anInt2281 + 1);
                 }).then(3, () -> {
                     spore.setId(37739);
-                    //spore.setId(37739, nm.getPossibleTargets()); PROPER ONE JUST NEED TO FIX THE ERROR
                 });
                 spore.spawn();
             }

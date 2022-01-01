@@ -182,20 +182,10 @@ public class Tile implements Cloneable {
         return transform(x, y);
     }
 
-    /**
-     * Checks if this location is within interaction range of another.
-     *
-     * @param other
-     *            The other location.
-     * @return <code>true</code> if the location is in range, <code>false</code>
-     *         if not.
-     */
-    public int distance(Tile other) {
-        int deltaX = other.x - x, deltaY = other.y - y;
-        double dis = Math.sqrt(Math.pow(deltaX, 2D) + Math.pow(deltaY, 2D));
-        if (dis > 1.0 && dis < 2)
-            return 2;
-        return (int) dis;
+    public int distance(Tile tile) {
+        int dx = tile.getX() - x;
+        int dz = tile.getY() - y;
+        return (int) Math.sqrt(dx * dx + dz * dz);
     }
 
     /**

@@ -37,7 +37,7 @@ public class AttackNpcPacketListener implements PacketListener {
 
         player.afkTimer.reset();
 
-        boolean inTutorial = player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT,false) && player.<Boolean>getAttribOr(CONTINUE_STARTER_TUTORIAL,false);
+        boolean inTutorial = player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false) && player.<Boolean>getAttribOr(CONTINUE_STARTER_TUTORIAL, false);
         if (player.busy() || inTutorial) {
             return;
         }
@@ -47,7 +47,7 @@ public class AttackNpcPacketListener implements PacketListener {
             return;
         }
 
-        if(player.askForAccountPin()) {
+        if (player.askForAccountPin()) {
             player.sendAccountPinMessage();
             return;
         }

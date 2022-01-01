@@ -255,7 +255,7 @@ public class Hit {
 
     public void submit() {
         pidAdjust();
-        if(target instanceof Npc) {
+        /*if(target instanceof Npc) {
             Npc npc = target.getAsNpc();
             if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("the nightmare")) {
                 Nightmare nightmare = (Nightmare) npc;
@@ -264,10 +264,9 @@ public class Hit {
             } else if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("totem")) {
                 TotemPlugin totem = (TotemPlugin) npc;
                 totem.overrideSubmit(this);
-                System.out.println("trigger?");
                 return;
             }
-        }
+        }*/
         CombatFactory.addPendingHit(this);
     }
 

@@ -815,31 +815,6 @@ public class Player extends Mob {
         this.skullType = skullType;
     }
 
-    /**
-     * The map which was recently sent to show
-     */
-    private Tile activeMap;
-
-    public Tile activeMap() {
-        return activeMap;
-    }
-
-    public void setActiveMap(Tile tile) {
-        activeMap = tile;
-    }
-
-    public Area activeArea() {
-        if (activeMap == null) {
-            return new Area(tile().x - 52, tile().y - 52, tile().x + 52, tile().y + 52, tile().level);
-        }
-
-        return new Area(activeMap.x, activeMap.y, activeMap.x + 104, activeMap.y + 104, activeMap.level);
-    }
-
-    public boolean seesChunk(int x, int z) {
-        return activeArea().contains(new Tile(x, z));
-    }
-
     private boolean[] savedDuelConfig = new boolean[22]; // 22 rules
 
     public boolean[] getSavedDuelConfig() {

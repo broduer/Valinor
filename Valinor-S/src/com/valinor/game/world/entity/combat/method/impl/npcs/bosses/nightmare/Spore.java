@@ -16,7 +16,7 @@ public class Spore extends GameObject {
     int state = -1;
 
     public Spore(Tile tile) {
-        super(37738, tile, 3, 10, 0);
+        super(37738, tile, 10, 3);
         spawn();
         check();
     }
@@ -30,13 +30,13 @@ public class Spore extends GameObject {
         }
         Chain.bound(null).runFn(1, () -> {
             if (state == -1) {
-                for (Player p : World.getWorld().getPlayers()) {
-                    if (p.tile().distance(new Tile(getX(), getY(), getZ())) < 2) {
+                World.getWorld().getPlayers().forEachInRegion(tile.region(), p -> {
+                    if (p.tile().distance(tile) < 2) {
                         p.putAttrib(AttributeKey.NIGHTMARE_SPORE, System.currentTimeMillis() + 30000);
                         animate(definition().anInt2281 + 1);
                         state = 0;
                     }
-                }
+                });
             }
             check();
         });

@@ -872,10 +872,8 @@ public class World {
     }
 
     public void tileGraphic(int id, Tile tile, int height, int delay) {
-        players.forEach(p -> {
-            if (p.activeArea().contains(tile)) {
-                p.getPacketSender().sendTileGraphic(id, tile, height, delay);
-            }
+        players.forEachInRegion(tile.region(), player -> {
+            player.getPacketSender().sendTileGraphic(id, tile, height, delay);
         });
     }
 
