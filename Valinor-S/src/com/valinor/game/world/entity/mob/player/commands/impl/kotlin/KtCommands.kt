@@ -13,8 +13,8 @@ import com.valinor.game.GameEngine
 import com.valinor.game.TimesCycle
 import com.valinor.game.content.EffectTimer
 import com.valinor.game.content.collection_logs.LogType
+import com.valinor.game.content.instance.InstancedArea
 import com.valinor.game.content.instance.InstancedAreaManager
-import com.valinor.game.content.instance.SingleInstancedArea
 import com.valinor.game.content.instance.impl.VorkathInstance
 import com.valinor.game.content.mechanics.Poison
 import com.valinor.game.content.mechanics.referrals.Referrals
@@ -626,7 +626,7 @@ object KtCommands {
                     dh.setLoadoutOnPlayer(bot)
                     bot.runFn(1) {
                         val area = InstancedAreaManager.getSingleton()
-                            .createSingleInstancedArea(bot, Area(2257, 4053, 2286, 4077)) as SingleInstancedArea?
+                            .createInstancedArea(bot, Area(2257, 4053, 2286, 4077)) as InstancedArea?
                         if (area == null) return@runFn
                         bot.teleport(VorkathInstance.ENTRANCE_POINT.transform(0, 0, area.getzLevel()))
                         val vorkath = Npc(

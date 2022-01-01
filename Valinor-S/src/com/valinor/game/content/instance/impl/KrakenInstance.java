@@ -1,8 +1,8 @@
 package com.valinor.game.content.instance.impl;
 
 import com.valinor.game.content.EffectTimer;
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
@@ -20,7 +20,7 @@ public class KrakenInstance {
     /**
      * The kraken instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     private final List<Npc> npcList = new ArrayList<>();
     public boolean playerHasLeft;
@@ -33,7 +33,7 @@ public class KrakenInstance {
      * @param player
      */
     public void enterKrakenInstance(Player player) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, new Area(2269, 10023, 2302, 10046));
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, new Area(2269, 10023, 2302, 10046));
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(new Tile(2280, 10022, instance.getzLevel()));
@@ -91,7 +91,7 @@ public class KrakenInstance {
      * get the instance
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 }

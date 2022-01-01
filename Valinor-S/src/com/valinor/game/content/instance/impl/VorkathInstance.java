@@ -1,7 +1,7 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.VorkathState;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -23,13 +23,13 @@ public class VorkathInstance {
     /**
      * The Vorkath instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     /**
      * get the instance
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 
@@ -46,7 +46,7 @@ public class VorkathInstance {
     public static final Area VORKATH_AREA = new Area(2260, 4054, 2286, 4077);
 
     public void enterInstance(Player player) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, VORKATH_AREA);
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, VORKATH_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(ENTRANCE_POINT.transform(0, 0, instance.getzLevel()));

@@ -342,8 +342,9 @@ public abstract class Mob extends Entity {
 
         if(this.isPlayer()) {
             var instancedArea = InstancedAreaManager.getSingleton().ofZ(getAsPlayer().getZ());
-            if (instancedArea != null)
+            if (instancedArea != null) {
                 instancedArea.onTeleport(getAsPlayer(), teleportTarget);
+            }
         }
 
         setTile(teleportTarget);

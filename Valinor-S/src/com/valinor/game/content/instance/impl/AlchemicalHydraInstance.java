@@ -1,8 +1,8 @@
 package com.valinor.game.content.instance.impl;
 
 import com.valinor.game.content.EffectTimer;
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
@@ -21,14 +21,14 @@ public class AlchemicalHydraInstance {
     /**
      * The Alchemical hydra instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     /**
      * get the instance
      *
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 
@@ -43,7 +43,7 @@ public class AlchemicalHydraInstance {
     public static final Tile HYDRA_SPAWN_TILE = new Tile(1364, 10265);
 
     public void enterInstance(Player player) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, ALCHEMICAL_HYDRA_AREA);
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, ALCHEMICAL_HYDRA_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(ENTRANCE_POINT.transform(0, 0, instance.getzLevel()));

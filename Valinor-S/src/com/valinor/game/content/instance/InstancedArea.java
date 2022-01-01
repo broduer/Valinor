@@ -4,7 +4,12 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 
-public abstract class InstancedArea {
+public class InstancedArea {
+
+    /**
+     * The owner of the instance
+     */
+    protected Player player;
 
     /**
      * The boundary or location for this instanced area
@@ -21,9 +26,10 @@ public abstract class InstancedArea {
      * @param area    the boundary or location
      * @param zLevel    the height of the area
      */
-    public InstancedArea(Area area, int zLevel) {
+    public InstancedArea(Player player, Area area, int zLevel) {
         this.area = area;
         this.zLevel = zLevel;
+        this.player = player;
     }
 
     /**
@@ -34,7 +40,9 @@ public abstract class InstancedArea {
      * is referenced.
      * </p>
      */
-    public abstract void onDispose();
+    public void onDispose() {
+
+    }
 
     /**
      * Determines the height of this area
@@ -50,6 +58,14 @@ public abstract class InstancedArea {
      */
     public Area getArea() {
         return area;
+    }
+
+    /**
+     * The instance owner
+     * @return the owner of this instance
+     */
+    public Player getPlayer() {
+        return player;
     }
 
     private OnTele onTeleport;

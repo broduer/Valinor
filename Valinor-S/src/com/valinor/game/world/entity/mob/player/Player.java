@@ -2545,8 +2545,11 @@ public class Player extends Mob {
         }
     }
 
+    /**
+     * Clears instances during the following actions:
+     * Teleportation, death and logout.
+     */
     public void clearInstance() {
-        //Clear instances when teleporting
         if (krakenInstance != null && krakenInstance.getInstance() != null) {
             InstancedAreaManager.getSingleton().disposeOf(krakenInstance.getInstance());
             putAttrib(AttributeKey.TENTACLES_DISTURBED, 0);
@@ -2571,6 +2574,11 @@ public class Player extends Mob {
         if (skotizoInstance != null && skotizoInstance.getInstance() != null) {
             skotizoInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());
+        }
+
+        if(nightmareInstance != null && nightmareInstance.getInstance() != null) {
+            nightmareInstance.cleanupInstance();
+            InstancedAreaManager.getSingleton().disposeOf(nightmareInstance.getInstance());
         }
     }
 

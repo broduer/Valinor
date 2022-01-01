@@ -1,7 +1,7 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
@@ -25,13 +25,13 @@ public class ZulrahInstance {
     /**
      * The Zulrah instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     /**
      * get the instance
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 
@@ -45,7 +45,7 @@ public class ZulrahInstance {
     private static final Area ZULRAH_AREA = new Area(2251, 3058, 2281, 3088);
 
     public void enterInstance(Player player, boolean teleport) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, ZULRAH_AREA);
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, ZULRAH_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.lock();

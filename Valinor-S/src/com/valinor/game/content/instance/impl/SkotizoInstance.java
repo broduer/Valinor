@@ -1,7 +1,7 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -26,14 +26,14 @@ public class SkotizoInstance {
     /**
      * The Skotizo instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     /**
      * get the instance
      *
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 
@@ -64,7 +64,7 @@ public class SkotizoInstance {
      * Constructs the content by creating an event
      */
     public void init(Player player) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, SKOTIZO_AREA);
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, SKOTIZO_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(ENTRANCE_POINT.transform(0, 0, instance.getzLevel()));

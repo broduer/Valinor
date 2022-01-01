@@ -23,7 +23,7 @@ public class InstancedAreaManager {
     private static final InstancedAreaManager SINGLETON = new InstancedAreaManager();
 
     /**
-     * A mapping of all {@InstancedArea} objects that are being operated on
+     * A mapping of all {#InstancedArea} objects that are being operated on
      * and are active.
      */
     private final Map<Integer, InstancedArea> active = new HashMap<>();
@@ -35,14 +35,14 @@ public class InstancedAreaManager {
     }
 
     /**
-     * Creates a new {@link SingleInstancedArea} object with the given params
+     * Creates a new {@link InstancedArea} object with the given params
      * @param zLevel
      *             the zLevel of the new instance
      * @param instance
      *             the instance that will be added
      * @return
      *             null if no zLevel can be found for this area, otherwise the new
-     *             {@link SingleInstancedArea} object will be returned.
+     *             {@link InstancedArea} object will be returned.
      */
     public void add(int zLevel, InstancedArea instance) {
         active.put(zLevel, instance);
@@ -53,7 +53,7 @@ public class InstancedAreaManager {
     }
 
     /**
-     * Determines if the {@link InstancedArea} paramater exists within
+     * Determines if the {@link InstancedArea} parameter exists within
      * the mapping of active {@link InstancedArea} objects and can be
      * disposed of.
      *
@@ -61,14 +61,14 @@ public class InstancedAreaManager {
      * @return        true if the area exists in the mapping with the same height level
      *                 and the same reference
      */
-    public boolean disposeOf(InstancedArea area) {//doubt this still works since we not longer use those height maps
+    public boolean disposeOf(InstancedArea area) {
         if (area == null)
             return false;
         int z = area.getzLevel();
         if (!active.containsKey(z)) {
             return false;
         }
-        InstancedArea found = active.get(z); // this system? should work
+        InstancedArea found = active.get(z);
         if (!found.equals(area)) {
             return false;
         }
@@ -85,30 +85,20 @@ public class InstancedAreaManager {
     }
 
     /**
-     * Creates a new {@link SingleInstancedArea} object with the given params
+     * Creates a new {@link InstancedArea} object with the given params
      * @param player    the player for this instanced area
      * @param area    the boundary of the area
      * @return    null if no height can be found for this area, otherwise the new
-     * {@link SingleInstancedArea} object will be returned.
+     * {@link InstancedArea} object will be returned.
      */
-    public InstancedArea createSingleInstancedArea(Player player, Area area) {
+    public InstancedArea createInstancedArea(Player player, Area area) {
         int z = anyZ();
         if (z == -1) {
             return null;
         }
-        SingleInstancedArea singleInstancedArea = new SingleInstancedArea(player, area, z);
+        InstancedArea singleInstancedArea = new InstancedArea(player, area, z);
         active.put(z, singleInstancedArea);
         return singleInstancedArea;
-    }
-
-    public InstancedArea createMultiInstancedArea(Area area) {
-        int z = anyZ();
-        if (z == -1) {
-            return null;
-        }
-        MultiInstancedArea mia = new MultiInstancedArea(area, z);
-        active.put(z, mia);
-        return mia;
     }
 
     public int anyZ() {

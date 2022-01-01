@@ -1,7 +1,7 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.game.content.instance.InstancedArea;
 import com.valinor.game.content.instance.InstancedAreaManager;
-import com.valinor.game.content.instance.SingleInstancedArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -23,14 +23,14 @@ public class BryophytaInstance {
     /**
      * The Bryophyta instance
      */
-    private SingleInstancedArea instance;
+    private InstancedArea instance;
 
     /**
      * get the instance
      *
      * @return the instance
      */
-    public SingleInstancedArea getInstance() {
+    public InstancedArea getInstance() {
         return instance;
     }
 
@@ -45,7 +45,7 @@ public class BryophytaInstance {
     public static final Tile BRYOPHYTA_SPAWN_TILE = new Tile(3223, 9933);
 
     public void enterInstance(Player player) {
-        instance = (SingleInstancedArea) InstancedAreaManager.getSingleton().createSingleInstancedArea(player, BRYOPHYTA_AREA);
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, BRYOPHYTA_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(ENTRANCE_POINT.transform(0, 0, instance.getzLevel()));
