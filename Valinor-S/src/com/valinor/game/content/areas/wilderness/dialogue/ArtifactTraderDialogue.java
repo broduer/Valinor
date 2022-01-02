@@ -51,8 +51,8 @@ public class ArtifactTraderDialogue extends Dialogue {
             send(DialogueType.STATEMENT, "Calculating total value...");
             setPhase(3);
         } else if (isPhase(3)) {
-            int totalBM = BountyHunter.exchange(player, false);
-            if (totalBM > 0) {
+            int totalBounties = BountyHunter.exchange(player, false);
+            if (totalBounties > 0) {
                 send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "You will get a total of "+player.<String>getAttribOr(AttributeKey.EMBLEM_WEALTH,"")+"", "for your antique emblems. Do you wish to exchange", "them?");
                 setPhase(4);
             } else {
@@ -65,10 +65,10 @@ public class ArtifactTraderDialogue extends Dialogue {
         } else if (isPhase(6)) {
             stop();
         } else if (isPhase(7)) {
-            send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "Certainly, let me calculate ", "your total BM from your wilderness artifacts.");
+            send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "Certainly, let me calculate ", "your total coins from your wilderness artifacts.");
             setPhase(8);
         } else if (isPhase(8)) {
-            send(DialogueType.STATEMENT, "Calculating total BM...");
+            send(DialogueType.STATEMENT, "Calculating total coins...");
             setPhase(9);
         } else if (isPhase(10)) {
             send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes", "No");
@@ -80,9 +80,9 @@ public class ArtifactTraderDialogue extends Dialogue {
             send(DialogueType.STATEMENT, "Calculating total coins...");
             setPhase(16);
         } else if (isPhase(16)) {
-            int totalBM = AncientArtifacts.exchange(player, false);
-            if (totalBM > 0) {
-                send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "You will get a total of " + Utils.formatNumber(totalBM) + " coins for your", "ancient artifacts. Do you wish to exchange them?");
+            int totalCoins = AncientArtifacts.exchange(player, false);
+            if (totalCoins > 0) {
+                send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "You will get a total of " + Utils.formatNumber(totalCoins) + " coins for your", "ancient artifacts. Do you wish to exchange them?");
                 setPhase(17);
             } else {
                 send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.CALM_TALK, "You do not have any ancient artifacts.");
@@ -110,7 +110,7 @@ public class ArtifactTraderDialogue extends Dialogue {
             }
         } else if (isPhase(5)) {
             if (option == 1) {
-                send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.HAPPY, "I've traded your antique emblems for " + Utils.format(BountyHunter.exchange(player, true)) + " coins.");
+                send(DialogueType.NPC_STATEMENT, NPC_ID, Expression.HAPPY, "I've traded your antique emblems for " + Utils.format(BountyHunter.exchange(player, true)) + " bounties.");
                 setPhase(6);
             } else if (option == 2) {
                 player.clearAttrib(EMBLEM_WEALTH);

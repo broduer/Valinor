@@ -128,11 +128,6 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if (targetFor.get().tile().memberCave() && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
-                        player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
-                        return false;
-                    }
-
                     //Prevent players from teleporting to targets that are doing agility obstacles.
                     if (targetFor.get().getMovementQueue().forcedStep()) {
                         player.message("You can't teleport to your target at this time.");
@@ -2098,11 +2093,6 @@ public class MagicClickSpells {
                         return false;
                     }
 
-                    if (targetFor.get().tile().memberCave() && !player.getMemberRights().isEmeraldMemberOrGreater(player)) {
-                        player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
-                        return false;
-                    }
-
                     //Prevent players from teleporting to targets that are doing agility obstacles.
                     if (targetFor.get().getMovementQueue().forcedStep()) {
                         player.message("You can't teleport to your target at this time.");
@@ -2611,11 +2601,6 @@ public class MagicClickSpells {
                 if (targetFor.isPresent()) {
                     if (!WildernessArea.inWilderness(targetFor.get().tile())) {
                         player.message("Your target is currently not in the Wilderness.");
-                        return false;
-                    }
-
-                    if (targetFor.get().tile().memberCave() && !player.getMemberRights().isSapphireMemberOrGreater(player)) {
-                        player.message("Your target is currently in the member cave. You cannot teleport there because you are not a member.");
                         return false;
                     }
 

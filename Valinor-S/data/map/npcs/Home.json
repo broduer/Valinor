@@ -107,13 +107,29 @@
     "walkRange": 2
   },
   {
+    "id": 308,
+    "x": 3088,
+    "y": 3516,
+    "z": 0,
+    "radius": 3,
+    "desc": "Emblem trader"
+  },
+  {
     "id": 2818,
-    "x": 3078,
-    "y": 3488,
+    "x": 3083,
+    "y": 3482,
     "z": 0,
     "radius": 0,
     "direction": "S",
     "desc": "Shop assistant"
+  },
+  {
+    "name": "Magic supplies",
+    "id": 2886,
+    "x": 3078,
+    "y": 3488,
+    "z": 0,
+    "walkRange": 2
   },
   {
     "id": 2882,
@@ -263,13 +279,5 @@
     "y": 3481,
     "z": 0,
     "walkRange": 1
-  },
-  {
-    "name": "Magic supplies",
-    "id": 2886,
-    "x": 3083,
-    "y": 3482,
-    "z": 0,
-    "walkRange": 2
   }
 ]

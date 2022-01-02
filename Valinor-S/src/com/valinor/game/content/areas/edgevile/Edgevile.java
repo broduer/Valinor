@@ -6,6 +6,8 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.task.impl.TickableTask;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
@@ -18,8 +20,9 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 
-import static com.valinor.util.NpcIdentifiers.EMBLEM_TRADER;
+import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
+import static com.valinor.util.ObjectIdentifiers.MINE_CART;
 
 /**
  * @author Patrick van Elderen | Zerikoth | PVE
@@ -34,9 +37,40 @@ public class Edgevile extends Interaction {
                 player.getDialogueManager().start(new ArtifactTraderDialogue());
                 return true;
             }
+            if (npc.id() == FANCY_DAN) {
+                World.getWorld().shop(6).open(player);
+                return true;
+            }
+            if (npc.id() == WISE_OLD_MAN) {
+                World.getWorld().shop(43).open(player);
+                return true;
+            }
         } else if (option == 2) {
             if (npc.id() == EMBLEM_TRADER) {
-                World.getWorld().shop(17).open(player);
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... parameters) {
+                        send(DialogueType.OPTION, "Which shop would you like to open?", "Bounty Hunter Shop", "PkP shop", "Nevermind");
+                        setPhase(0);
+                    }
+
+                    @Override
+                    protected void select(int option) {
+                        if(isPhase(0)) {
+                            if(option == 1) {
+                                World.getWorld().shop(17).open(player);
+                            }
+
+                            if(option == 2) {
+                                World.getWorld().shop(18).open(player);
+                            }
+
+                            if(option == 3) {
+                                stop();
+                            }
+                        }
+                    }
+                });
                 return true;
             }
         } else if (option == 3) {

@@ -332,12 +332,9 @@ public class NpcDefinition implements Definition {
         } else if (id == FANCY_DAN) {
             name = "Vote Manager";
             options[0] = "Trade";
-            options[2] = "Cast-votes";
         } else if (id == WISE_OLD_MAN) {
             name = "Credit Manager";
-            options[0] = "Talk-to";
-            options[2] = "Open-Shop";
-            options[3] = "Claim-purchases";
+            options[0] = "Trade";
         } else if (id == SECURITY_GUARD) {
             name = "Security Advisor";
             options[0] = "Check Pin Settings";

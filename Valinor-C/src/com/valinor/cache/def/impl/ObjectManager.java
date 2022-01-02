@@ -79,7 +79,7 @@ public class ObjectManager {
 
         if (id == 33020) {
             definition.name = "Forging table";
-            definition.actions = new String[]{"Forge", null, null, null, null};
+            definition.actions = new String[]{null, null, null, null, null};
         }
 
         if (id == 8878) {

@@ -153,14 +153,12 @@ public class NpcManager {
             case FANCY_DAN:
                 definition.name = "Vote Manager";
                 definition.actions[0] = "Trade";
-                definition.actions[2] = "Cast-votes";
+                definition.actions[2] = null;
                 break;
 
             case WISE_OLD_MAN:
                 definition.name = "Credit Manager";
-                definition.actions[0] = "Talk-to";
-                definition.actions[2] = "Open-Shop";
-                definition.actions[3] = "Claim-purchases";
+                definition.actions[0] = "Trade";
                 break;
 
             case SECURITY_GUARD:
