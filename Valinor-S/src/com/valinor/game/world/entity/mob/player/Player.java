@@ -972,18 +972,20 @@ public class Player extends Mob {
 
     private SkotizoInstance skotizoInstance;
 
-    public SkotizoInstance getSkotizoInstance() {
-        if (skotizoInstance == null)
-            skotizoInstance = new SkotizoInstance();
-        return skotizoInstance;
+    public NightmareInstance getNightmareInstance() {
+        return nightmareInstance;
+    }
+
+    public void setNightmareInstance(NightmareInstance nightmareInstance) {
+        this.nightmareInstance = nightmareInstance;
     }
 
     private NightmareInstance nightmareInstance;
 
-    public NightmareInstance getNightmareInstance() {
-        if (nightmareInstance == null)
-            nightmareInstance = new NightmareInstance();
-        return nightmareInstance;
+    public SkotizoInstance getSkotizoInstance() {
+        if (skotizoInstance == null)
+            skotizoInstance = new SkotizoInstance();
+        return skotizoInstance;
     }
 
     /**
@@ -1347,7 +1349,11 @@ public class Player extends Mob {
         /*
          * Clear instances
          */
-        runExceptionally(this::clearInstance);
+        runExceptionally(() -> {
+            clearInstance();
+            if (nightmareInstance != null)
+                nightmareInstance.onLogout(this);
+        });
 
         runExceptionally(() -> {
             // If we're in a duel, make sure to give us a loss for logging out.
@@ -2570,15 +2576,10 @@ public class Player extends Mob {
             this.getPacketSender().sendEffectTimer(0, EffectTimer.MONSTER_RESPAWN);
             InstancedAreaManager.getSingleton().disposeOf(bryophytaInstance.getInstance());
         }
-
+// like these just copy the field
         if (skotizoInstance != null && skotizoInstance.getInstance() != null) {
             skotizoInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());
-        }
-
-        if(nightmareInstance != null && nightmareInstance.getInstance() != null) {
-            nightmareInstance.cleanupInstance();
-            InstancedAreaManager.getSingleton().disposeOf(nightmareInstance.getInstance());
         }
     }
 

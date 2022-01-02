@@ -2,20 +2,13 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.group_ironman.IronmanGroup;
-import com.valinor.game.content.group_ironman.IronmanGroupHandler;
-import com.valinor.game.world.World;
-import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
-import com.valinor.game.world.items.ground.GroundItem;
-import com.valinor.game.world.items.ground.GroundItemHandler;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class TestCommand implements Command {
 
@@ -100,9 +93,6 @@ public class TestCommand implements Command {
                 System.out.println("chargeup");
             }
         }*/
-        final List<GroundItem> groundItems = new ArrayList<>();
-        groundItems.addAll(GroundItemHandler.getGroundItems());
-        groundItems.forEach(GroundItemHandler::sendRemoveGroundItem);
         player.message("Test command has been activated.");
     }
 

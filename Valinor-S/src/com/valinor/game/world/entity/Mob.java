@@ -7,6 +7,7 @@ import com.valinor.game.TimesCycle;
 import com.valinor.game.action.ActionManager;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.instance.InstancedAreaManager;
+import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.content.sound.CombatSounds;
@@ -345,6 +346,10 @@ public abstract class Mob extends Entity {
             if (instancedArea != null) {
                 instancedArea.onTeleport(getAsPlayer(), teleportTarget);
             }
+
+            NightmareInstance nightmareInstance = getAsPlayer().getNightmareInstance();
+            if (nightmareInstance != null)
+                getAsPlayer().getNightmareInstance().onTeleport(getAsPlayer());
         }
 
         setTile(teleportTarget);

@@ -9,6 +9,7 @@ import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
+import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.mechanics.break_items.BreakItemsOnDeath;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.tournaments.TournamentManager;
@@ -141,12 +142,12 @@ public class Death {
                 killer.getMinigame().killed(killer, player);
             }
 
-            if(player.getMinigame() != null) {
+            if (player.getMinigame() != null) {
                 player.getMinigame().end(player);
             }
 
             Npc barrowsBro = player.getAttribOr(barrowsBroSpawned, null);
-            if(barrowsBro != null) {
+            if (barrowsBro != null) {
                 World.getWorld().unregisterNpc(barrowsBro);
             }
 
@@ -156,8 +157,8 @@ public class Death {
                 TopPkers.SINGLETON.increase(killer.getUsername());
 
                 //Other rewards
-                if(WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
-                    PlayerKillingRewards.reward(killer, player,true);
+                if (WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
+                    PlayerKillingRewards.reward(killer, player, true);
                 }
             }
 
@@ -181,6 +182,10 @@ public class Death {
             // If we died in an instance, clean it up.
             player.clearInstance();
 
+            NightmareInstance nightmareInstance = player.getNightmareInstance();
+            if (nightmareInstance != null)
+                player.getNightmareInstance().onDeath(player);
+
             var died_under_7_wild = WildernessArea.wildernessLevel(player.tile()) <= 7; // Or in edge pvp (not classed as wildy)
             var duel_arena = player.getDueling().inDuel();
             var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
@@ -188,16 +193,16 @@ public class Death {
             // If you die in FFA clan wars, you respawn at the lobby place.
             if (duel_arena) {
                 player.getDueling().onDeath();
-            } else if(player.getMinigame() instanceof FightCavesMinigame) {
+            } else if (player.getMinigame() instanceof FightCavesMinigame) {
                 player.setMinigame(null);//Clear minigame when we die too
                 player.teleport(FightCavesMinigame.EXIT);
                 player.message("You have been defeated!");
             } else if (player.<Integer>getAttribOr(AttributeKey.JAILED, 0) == 1) {
                 player.message("You've died, but you cannot run from your jail sentence!");
                 player.teleport(player.tile());
-            } else if(in_tournament) {
+            } else if (in_tournament) {
                 TournamentManager.handleDeath(player);
-            } else if(player.getRaids() != null) {
+            } else if (player.getRaids() != null) {
                 player.getRaids().death(player);
             } else {
                 player.teleport(GameServer.properties().defaultTile); //Teleport the player to Varrock square
@@ -211,7 +216,7 @@ public class Death {
                 hardcoreDeath(player, killHit);
             }
 
-            if(player.<Boolean>getAttribOr(HP_EVENT_ACTIVE,false)) {
+            if (player.<Boolean>getAttribOr(HP_EVENT_ACTIVE, false)) {
                 player.clearAttrib(HP_EVENT_ACTIVE);
                 World.getWorld().clearBroadcast();
             }
@@ -224,7 +229,7 @@ public class Death {
             }
 
             //Remove auto-select
-            Autocasting.setAutocast(player,null); // Set auto-cast to default; 0
+            Autocasting.setAutocast(player, null); // Set auto-cast to default; 0
             WeaponInterfaces.updateWeaponInterface(player); //Update the weapon interface
             player.getCombat().setRangedWeapon(null);
 
@@ -304,9 +309,9 @@ public class Death {
         // Mechanic enabled?
         if (!PET_SHOUTING_ENABLED) return;
 
-            // Do we have a pet?
-            var pet = player.pet();
-            if(pet == null) return;
+        // Do we have a pet?
+        var pet = player.pet();
+        if (pet == null) return;
 
         // Have we paid (or are an admin) to have the mechanic?
         if (ItemsOnDeath.hasShoutAbility(player)) {
@@ -323,9 +328,9 @@ public class Death {
             var lives = group.get().getHardcoreLives();
             group.get().setHardcoreLives(lives - 1);
             var newLives = group.get().getHardcoreLives();
-            if(newLives == 0) {
+            if (newLives == 0) {
                 for (Player member : group.get().getOnlineMembers()) {
-                    if(!member.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    if (!member.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                         member.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
                         member.getPacketSender().sendRights();
                     }
@@ -338,7 +343,7 @@ public class Death {
             }
         }
 
-        if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+        if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
             player.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
@@ -350,10 +355,10 @@ public class Death {
                 World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + "!"));
             } else if (killHit.getAttacker() != null) {
                 if (killHit.getAttacker() instanceof Player) {
-                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + ", losing a fight to " + killHit.getAttacker().getAsPlayer().getUsername() +"!"));
+                    World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + ", losing a fight to " + killHit.getAttacker().getAsPlayer().getUsername() + "!"));
                 } else {
                     World.getWorld().sendWorldMessage(Color.RED.wrap(Icon.HCIM_DEATH.tag() + player.getUsername() + " has died as a Hardcore Ironman with a total level of " + overall + ", brutally"));
-                    World.getWorld().sendWorldMessage(Color.RED.wrap("executed by " + killHit.getAttacker().getAsNpc().def().name +"!"));
+                    World.getWorld().sendWorldMessage(Color.RED.wrap("executed by " + killHit.getAttacker().getAsNpc().def().name + "!"));
                 }
             } else {
                 if (killHit.splatType == SplatType.POISON_HITSPLAT) {

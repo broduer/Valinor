@@ -2,6 +2,7 @@ package com.valinor.game.content.teleport;
 
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.instance.InstancedAreaManager;
+import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -31,7 +32,7 @@ public class Teleports {
      */
     public static boolean canTeleport(Player player, boolean inform, TeleportType teletype) {
         //Put most important safety in this method just to be sure
-        if (TournamentManager.teleportBlocked(player,true)) {
+        if (TournamentManager.teleportBlocked(player, true)) {
             return false;
         }
 
@@ -82,13 +83,13 @@ public class Teleports {
             return false;
         }
 
-        if (player.getTimers().has(TimerKey.BLOCK_SPEC_AND_TELE) && player.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA,-1) == 0) {
-            player.message("<col=804080>Teleport blocked for "+ player.getTimers().asSeconds(TimerKey.BLOCK_SPEC_AND_TELE)+" more secs after using spec at the start of a battle.");
+        if (player.getTimers().has(TimerKey.BLOCK_SPEC_AND_TELE) && player.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 0) {
+            player.message("<col=804080>Teleport blocked for " + player.getTimers().asSeconds(TimerKey.BLOCK_SPEC_AND_TELE) + " more secs after using spec at the start of a battle.");
             return false;
         }
 
-        var mage_arena = player.<Boolean>getAttribOr(AttributeKey.MAGEBANK_MAGIC_ONLY,false);
-        if(fawkes && mage_arena) {
+        var mage_arena = player.<Boolean>getAttribOr(AttributeKey.MAGEBANK_MAGIC_ONLY, false);
+        if (fawkes && mage_arena) {
             player.message("A mysterious force blocks your teleport, you can't use fawkes to escape from here!");
             return false;
         }
@@ -186,8 +187,12 @@ public class Teleports {
         if (instancedArea != null)
             instancedArea.onTeleport(player, tile);
 
+        NightmareInstance nightmareInstance = player.getNightmareInstance();
+        if (nightmareInstance != null)
+            player.getNightmareInstance().onTeleport(player);
+
         //remove from tourny
-        TournamentManager.leaveTourny(player, false,true);
+        TournamentManager.leaveTourny(player, false, true);
 
         player.lockNoDamage();
         player.animate(anim);

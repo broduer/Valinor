@@ -15,6 +15,7 @@ import com.valinor.game.content.EffectTimer
 import com.valinor.game.content.collection_logs.LogType
 import com.valinor.game.content.instance.InstancedArea
 import com.valinor.game.content.instance.InstancedAreaManager
+import com.valinor.game.content.instance.impl.NightmareInstance
 import com.valinor.game.content.instance.impl.VorkathInstance
 import com.valinor.game.content.mechanics.Poison
 import com.valinor.game.content.mechanics.referrals.Referrals
@@ -97,6 +98,16 @@ object KtCommands {
     private val logger: Logger = LogManager.getLogger(KtCommands::class.java)
 
     fun init() {
+        cmd("clearnm", DEV) {
+            NightmareInstance.hmClear()
+            player.message("Cleared Nightmare instances hashmap..")
+        }
+        cmd("countnm", DEV) {
+            NightmareInstance.hmSize()
+        }
+        cmd("countnmp", DEV) {
+            System.out.println(player.nightmareInstance.players.size)
+        }
         cmd("sound", DEV) {
             player.sound(parts[1].toInt())
         }

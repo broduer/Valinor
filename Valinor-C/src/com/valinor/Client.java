@@ -4107,10 +4107,8 @@ public class Client extends GameApplet {
     }
 
     private void logout() {
-        addReportToServer("Regular logout has been called.");
         logoutTime = System.currentTimeMillis();
         expectedHit.clear();
-        // yellowEnded = true; //This prevents other yellow messages from sending.
         try {
             if (socketStream != null)
                 socketStream.close();

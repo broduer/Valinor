@@ -7,22 +7,13 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.items.Item;
-import com.valinor.game.world.items.ground.GroundItem;
-import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.game.world.position.Boundary;
 import com.valinor.game.world.position.Tile;
-import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static com.valinor.game.content.instance.impl.NightmareInstance.THE_NIGHTMARE_SPAWN_TILE;
-import static com.valinor.util.ItemIdentifiers.EMPTY_VIAL;
-import static com.valinor.util.ItemIdentifiers.VIAL_OF_WATER;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
