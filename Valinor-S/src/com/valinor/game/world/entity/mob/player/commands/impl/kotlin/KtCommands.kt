@@ -186,7 +186,7 @@ object KtCommands {
                     setInt("vo", 1607698304)
                     execute()
                 }
-            }.onDatabase(GameServer.votesDb) {
+            }.onDatabase(GameServer.getDatabaseService()) {
                 player.message("ok try")
             }
         }
