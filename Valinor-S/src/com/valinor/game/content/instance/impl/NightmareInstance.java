@@ -22,7 +22,7 @@ public class NightmareInstance {
 
     private static final Map<String, NightmareInstance> INSTANCES = new HashMap<>();
 
-    private int instanceLevel;
+    private final int instanceLevel;
     private final Tile ENTRANCE_POINT = new Tile(3872, 9942);
     private static final Tile THE_NIGHTMARE_SPAWN_TILE = new Tile(3870, 9949);
     private boolean inited = false;
