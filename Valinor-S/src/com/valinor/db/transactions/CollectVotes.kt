@@ -42,7 +42,7 @@ object CollectVotes {
             val list = mutableListOf<Triple<Int, Int, String>>()
             prepareStatement(
                 connection,
-                "SELECT * FROM votes WHERE lower(username) = :user AND claimed=0 AND voted_on != -1"
+                "SELECT * FROM DoAIIDlB_rs_votes WHERE lower(username) = :user AND claimed=0 AND voted_on != -1"
             ).apply {
                 setString("user", username.toLowerCase())
                 execute()
@@ -58,7 +58,7 @@ object CollectVotes {
                 }
             }
             list
-        }.onDatabase(GameServer.votesDb) { list ->
+        }.onDatabase(GameServer.getDatabaseService()) { list ->
             if (list.isEmpty()) {
                 message("There are no pending votes to claim. Wait a minute and try again, or contact an")
                 message("Administrator.")
@@ -69,11 +69,11 @@ object CollectVotes {
 
                 // now query again, setting claimed after we've confirmed they have space
                 makeQuery {
-                    prepareStatement(connection, "UPDATE votes SET claimed=1 WHERE id=:id").apply {
+                    prepareStatement(connection, "UPDATE DoAIIDlB_rs_votes SET claimed=1 WHERE id=:id").apply {
                         setInt("id", row.second)
                         execute()
                     }
-                }.onDatabase(GameServer.votesDb) {
+                }.onDatabase(GameServer.getDatabaseService()) {
 
                     votes.incrementAndGet()
 

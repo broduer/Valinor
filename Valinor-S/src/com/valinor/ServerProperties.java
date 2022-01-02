@@ -74,12 +74,11 @@ public final class ServerProperties {
     }
 
     public static class LocalProperties {
-        public final String db1, db2;
+        public final String db1;
         public final boolean sqlOn, discordLoggingOn;
 
         public LocalProperties() {
             db1 = "default";
-            db2 = "votes";
             discordLoggingOn = true;
             sqlOn = true;
         }
@@ -88,7 +87,6 @@ public final class ServerProperties {
         public String toString() {
             return "LocalProperties{" +
                 "db1='" + db1 + '\'' +
-                ", db2='" + db2 + '\'' +
                 '}';
         }
     }
