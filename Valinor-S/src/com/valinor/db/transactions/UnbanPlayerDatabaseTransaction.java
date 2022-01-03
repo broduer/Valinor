@@ -2,6 +2,7 @@ package com.valinor.db.transactions;
 
 import com.valinor.db.VoidDatabaseTransaction;
 import com.valinor.db.statement.NamedPreparedStatement;
+import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +28,8 @@ public class UnbanPlayerDatabaseTransaction extends VoidDatabaseTransaction {
             //logger.info("Executing query: " + statement.toString());
             statement.executeUpdate();
         }
+        MiscKotlin.INSTANCE.ipUnban(null, username);
+        MiscKotlin.INSTANCE.unbanMac(null, username);
     }
 
     @Override

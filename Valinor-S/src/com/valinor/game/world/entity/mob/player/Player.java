@@ -1519,15 +1519,12 @@ public class Player extends Mob {
         }
     }
 
-
-
     public boolean isMuted() {
         boolean muted = false;
         if (GameServer.properties().enableSql) {
             try {
                 //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
                 muted = GameServer.getDatabaseService().execute(new GetMuteStatusDatabaseTransaction(username));
-                System.out.println("muted: "+muted);
             } catch (Exception e) {
                 logger.catching(e);
             }

@@ -28,11 +28,12 @@ public final class GetMuteStatusDatabaseTransaction extends DatabaseTransaction<
         LocalDateTime currentDateTime = LocalDateTime.now();
         Timestamp expiryDate = null;
         String ip = "";
-        try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT mute_expires FROM users WHERE lower(username) = :username AND mute_expires IS NOT NULL")) {
+        try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT mute_expires, last_login_ip FROM users WHERE lower(username) = :username")) {
             statement.setString("username", username.toLowerCase());
             statement.execute();
             if (statement.getResultSet().next()) {
                 expiryDate = statement.getResultSet().getTimestamp("mute_expires");
+                ip = statement.getResultSet().getString("last_login_ip");
             }
         }
         if (expiryDate != null && currentDateTime.isAfter(expiryDate.toLocalDateTime())) {

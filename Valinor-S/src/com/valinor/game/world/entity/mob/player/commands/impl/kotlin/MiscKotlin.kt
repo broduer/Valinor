@@ -57,6 +57,7 @@ object MiscKotlin {
         }
     }
 
+    // so its pretty much reversing this yeah
     fun addIPBan(player: Player, user: String, expires: Timestamp, reason: String,
                  feedbackKicked: Function1<List<Player>, Unit>? = null) {
         val plr = World.getWorld().getPlayerByName(user)
@@ -77,6 +78,61 @@ object MiscKotlin {
                 player.message("Player with name '$user' has no IP. They cannot be banned.")
             else
                 ipban(ip, expires, reason, feedbackKicked)
+        }
+    }
+
+    fun ipUnban(staff: Player?, user: String) {
+        // find 'last login id'from the user record
+        getIPForUsername(user).submit {
+            val ip = it
+            // if IP is empty
+            if (ip == "") {
+                staff?.message("Player with name '$user' has no IP. They cannot be unbanned.")
+            } else {
+                // remove all records with IP in bans table
+                query {
+                    prepareStatement(connection, "DELETE FROM ip_bans WHERE ip=:ip").apply {
+                        setString("ip", ip)
+                        execute()
+                    }
+                }
+            }
+        }
+    }
+
+    fun liftIpMute(staff: Player?, user: String) {
+        // find 'last login id'from the user record
+        getIPForUsername(user).submit {
+            val ip = it
+            // if IP is empty
+            if (ip == "") {
+                staff?.message("Player with name '$user' has no IP. They cannot be unmuted.")
+            } else {
+                // remove all records with IP in mutes table
+                query {
+                    prepareStatement(connection, "DELETE FROM ip_mutes WHERE ip=:ip").apply {
+                        setString("ip", ip)
+                        execute()
+                    }
+                }
+            }
+        }
+    }
+
+    fun unbanMac(staff: Player?, user: String) {
+        getMacForUsername(user).submit {
+            val mac = it
+            if (mac == "")
+                staff?.message("Player with name '$user' has no MAC (probably on a VM/VPN).")
+            else {
+                // no mac id table?
+                query {
+                    prepareStatement(connection, "DELETE FROM macid_bans WHERE macid=:mac").apply {
+                        setString("mac", mac)
+                        execute()
+                    }
+                }
+            }
         }
     }
 
@@ -111,7 +167,6 @@ object MiscKotlin {
         }
         feedbackKicked?.let { it(removed) }
     }
-
     private fun ipban(ip: String, expires: Timestamp, reason: String, feedbackKicked: ((List<Player>) -> Unit)?) {
         query {
             prepareStatement(connection, "INSERT INTO ip_bans (ip, unban_at, reason) VALUES (:ip, :unban, :reason)").apply {
@@ -124,7 +179,7 @@ object MiscKotlin {
         val removed = mutableListOf<Player>()
         World.getWorld().players.filterNotNull().forEach {
             if (it.hostAddress.equals(ip)) {
-                it.requestLogout()
+                //it.requestLogout()
                 removed.add(it)
             }
         }
@@ -180,7 +235,7 @@ object MiscKotlin {
         val removed = mutableListOf<Player>()
         World.getWorld().players.filterNotNull().forEach {
             if (it.getAttribOr<String>(AttributeKey.MAC_ADDRESS, "invalid") == mac) {
-                it.requestLogout()
+                //it.requestLogout()
                 removed.add(it)
             }
         }
