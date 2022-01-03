@@ -15,7 +15,6 @@ import com.valinor.game.world.entity.mob.player.commands.impl.players.PromoCodeC
 import com.valinor.game.world.region.RegionManager;
 import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.BackgroundLoader;
-import com.valinor.util.PlayerPunishment;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -73,7 +72,6 @@ public class GameBuilder {
         tasks.add(ClanRepository::load);
         tasks.add(StarterBox::init);
         tasks.add(PromoCodeCommand::init);
-        tasks.add(PlayerPunishment::init);
         tasks.add(InteractionManager::init);
 
         //Load definitions..

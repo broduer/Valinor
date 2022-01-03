@@ -568,9 +568,6 @@ object KtCommands {
         cmd("toggleikod") {
             IKODTest.IKOD_DEBUG = !IKODTest.IKOD_DEBUG
         }
-        cmd("macbanlist") {
-            println("macbans: ${PlayerPunishment.macBannedUsers.map { it }.toTypedArray().contentToString()}")
-        }
         cmd("maxcons1") {
             LoginHandler.maximumShortTermOpenChannels = parts[1].toInt()
             println("maximumConcurrentRequests: ${LoginHandler.maximumShortTermOpenChannels}")

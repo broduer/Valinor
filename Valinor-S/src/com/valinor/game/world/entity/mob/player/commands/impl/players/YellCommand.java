@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.players;
 
+import com.valinor.GameServer;
+import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -27,7 +29,7 @@ public class YellCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if (player.muted()) {
+        if (player.isMuted()) {
             player.message("You are muted and cannot yell. Please try again later.");
             return;
         }

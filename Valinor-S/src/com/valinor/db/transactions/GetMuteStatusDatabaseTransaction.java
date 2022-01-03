@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public final class GetMuteStatusDatabaseTransaction extends DatabaseTransaction<Boolean> {
     private static final Logger logger = LogManager.getLogger(GetMuteStatusDatabaseTransaction.class);
 
-    private String username;
+    private final String username;
 
     public GetMuteStatusDatabaseTransaction(String username) {
         this.username = username;
@@ -27,6 +27,7 @@ public final class GetMuteStatusDatabaseTransaction extends DatabaseTransaction<
     public Boolean execute(Connection connection) throws SQLException {
         LocalDateTime currentDateTime = LocalDateTime.now();
         Timestamp expiryDate = null;
+        String ip = "";
         try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT mute_expires FROM users WHERE lower(username) = :username AND mute_expires IS NOT NULL")) {
             statement.setString("username", username.toLowerCase());
             statement.execute();
@@ -45,10 +46,23 @@ public final class GetMuteStatusDatabaseTransaction extends DatabaseTransaction<
             //logger.info("Executing query: " + statement.toString());
             statement.execute();
             if (statement.getResultSet().next()) {
-                return statement.getResultSet().getInt("is_muted") == 1;
+                if (statement.getResultSet().getInt("is_muted") == 1)
+                    return true; // normal mute active
             }
-            return false;
         }
+        if (ip != null && ip.length() > 0) {
+            try (NamedPreparedStatement statement = prepareStatement(connection, "SELECT * from ip_mutes WHERE ip = :ip")) {
+                statement.setString("ip", ip);
+                statement.execute();
+                while (statement.getResultSet().next()) {
+                    Timestamp cidExpiryDate = statement.getResultSet().getTimestamp("unmute_at");
+                    if (cidExpiryDate != null && !currentDateTime.isAfter(cidExpiryDate.toLocalDateTime())) {
+                        return true; // ip active
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     @Override

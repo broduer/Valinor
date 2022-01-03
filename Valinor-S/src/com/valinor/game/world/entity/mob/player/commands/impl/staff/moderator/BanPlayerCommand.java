@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
+package com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator;
 
 import com.valinor.GameServer;
 import com.valinor.db.DatabaseExtensionsKt;
@@ -10,10 +10,8 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.entity.mob.player.commands.Command;
-import com.valinor.game.world.entity.mob.player.save.PlayerSave;
-import com.valinor.util.PlayerPunishment;
+import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,76 +30,8 @@ public class BanPlayerCommand implements Command {
         if (command.length() <= 4)
             return;
         String username = Utils.formatText(command.substring(4)); // after "ban "
-        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
+        if (GameServer.properties().enableSql) {
             player.getDialogueManager().start(new BanDialogue(username));
-            return;
-        }
-
-        if(GameServer.properties().punishmentsToLocalFile) {
-            Optional<Player> playerToBan = World.getWorld().getPlayerByName(username);
-            if (playerToBan.isPresent()) {
-                if(playerToBan.get().getPlayerRights().isStaffMember(playerToBan.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-                    player.message("You cannot ban this player.");
-                    //logger.warn(player.getUsername() + " tried to ban " + playerToBan.get().getUsername(), "warning");
-                    return;
-                }
-
-                if (PlayerPunishment.banned(playerToBan.get().getUsername())) {
-                    player.message("Player " + playerToBan.get().getUsername() + " already has an active ban.");
-                    return;
-                }
-
-                //When in trade kick from trade first
-                if(playerToBan.get().getStatus() == PlayerStatus.TRADING) {
-                    playerToBan.get().getTrading().abortTrading();
-                }
-
-                //When in a duel forfeit for the player about to get banned
-                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
-                    playerToBan.get().getDueling().onDeath();
-                }
-
-                //When in a gamble forfeit for the player about to get banned
-                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
-                    playerToBan.get().getGamblingSession().abortGambling();
-                }
-
-                PlayerPunishment.addNameToBanList(playerToBan.get().getUsername());
-                playerToBan.get().requestLogout();
-
-                player.message("Player " + username + " was successfully banned.");
-                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ban "+username, "staff_cmd");
-            } else {
-                //offline
-                Player offlinePlayer = new Player();
-                offlinePlayer.setUsername(Utils.formatText(username.substring(0, 1).toUpperCase() + username.substring(1)));
-
-                GameEngine.getInstance().submitLowPriority(() -> {
-                    try {
-                        if (PlayerSave.loadOfflineWithoutPassword(offlinePlayer)) {
-                            GameEngine.getInstance().addSyncTask(() -> {
-                                if(!PlayerSave.playerExists(offlinePlayer.getUsername())) {
-                                    player.message("There is no such player profile.");
-                                    return;
-                                }
-
-                                if (PlayerPunishment.banned(offlinePlayer.getUsername())) {
-                                    player.message("Player " + offlinePlayer.getUsername() + " already has an active ban.");
-                                    return;
-                                }
-
-                                PlayerPunishment.addNameToBanList(offlinePlayer.getUsername());
-                                player.message("Player " + offlinePlayer.getUsername() + " was successfully offline banned.");
-                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::ban "+offlinePlayer.getUsername(), "staff_cmd");
-                            });
-                        } else {
-                            player.message("Something went wrong trying to offline ban "+offlinePlayer.getUsername());
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-            }
         }
     }
 
@@ -191,7 +121,7 @@ public class BanPlayerCommand implements Command {
                             player.message("You cannot ban that player!");
                             return;
                         }
-                        DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
+                        DatabaseExtensionsKt.submit(MiscKotlin.INSTANCE.getPlayerDbIdForName(username), id -> {
                             if (id == -1) {
                                 player.message("There is no player by the name '"+username+"'");
                             } else {

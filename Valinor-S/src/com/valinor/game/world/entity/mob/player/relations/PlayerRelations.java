@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.mob.player.relations;
 
+import com.valinor.GameServer;
+import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 
@@ -329,7 +331,7 @@ public class PlayerRelations {
             player.message("This player is currently offline.");
             return;
         }
-        if (player.muted()) {
+        if (player.isMuted()) {
             player.message("You are muted and cannot send private messages.");
             return;
         }

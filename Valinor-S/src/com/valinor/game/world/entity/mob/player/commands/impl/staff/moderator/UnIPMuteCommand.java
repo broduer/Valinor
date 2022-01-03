@@ -3,7 +3,6 @@ package com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator;
 import com.valinor.game.GameEngine;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
-import com.valinor.util.PlayerPunishment;
 import com.valinor.util.Utils;
 
 /**
@@ -22,22 +21,6 @@ public class UnIPMuteCommand implements Command {
             player.message("You must enter a valid IP.");
             return;
         }
-        GameEngine.getInstance().submitLowPriority(() -> {
-            try {
-                GameEngine.getInstance().addSyncTask(() -> {
-                    if (!PlayerPunishment.IPmuted(IPToRemove)) {
-                        player.message("This IP address is not listed as IP muted");
-                        return;
-                    }
-
-                    PlayerPunishment.unIPMuteUser(IPToRemove);
-                    player.message("The IP: " + IPToRemove + " was successfully removed from the mute list.");
-                    Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unipmute "+IPToRemove, "staff_cmd");
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
 
     @Override

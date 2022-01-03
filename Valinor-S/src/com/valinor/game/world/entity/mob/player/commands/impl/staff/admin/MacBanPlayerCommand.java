@@ -9,11 +9,9 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
-import com.valinor.game.world.entity.mob.player.save.PlayerSave;
-import com.valinor.util.PlayerPunishment;
+import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.BanPlayerCommand;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,8 +20,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Optional;
-
-import static com.valinor.game.world.entity.AttributeKey.MAC_ADDRESS;
 
 public class MacBanPlayerCommand implements Command {
 
@@ -34,93 +30,8 @@ public class MacBanPlayerCommand implements Command {
         if (command.length() <= 7)
             return;
         String username = Utils.formatText(command.substring(7)); // after "macban "
-        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
+        if (GameServer.properties().enableSql) {
             player.getDialogueManager().start(new BanPlayerCommand.BanDialogue(username));
-            return;
-        }
-
-        if(GameServer.properties().punishmentsToLocalFile) {
-            Optional<Player> playerToBan = World.getWorld().getPlayerByName(username);
-            if (playerToBan.isPresent()) {
-                if(playerToBan.get().getPlayerRights().isStaffMember(playerToBan.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-                    player.message("You cannot mac ban this player.");
-                    //logger.warn(player.getUsername() + " tried to mac ban " + playerToBan.get().getUsername(), "warning");
-                    return;
-                }
-
-                String mac = playerToBan.get().getAttribOr(MAC_ADDRESS, "invalid");
-
-                if (mac == null || mac.isEmpty()) {
-                    player.message("Player "+username+" has no MAC (probably on a VM/VPN) and cant be macbanned. use cid/normal ban instead.");
-                    return;
-                }
-
-                if (PlayerPunishment.macBanned(mac)) {
-                    player.message("Player " + username + " (" + mac + ") already has an active mac ban.");
-                    return;
-                }
-
-                //When in trade kick from trade first
-                if(playerToBan.get().getStatus() == PlayerStatus.TRADING) {
-                    playerToBan.get().getTrading().abortTrading();
-                }
-
-                //When in a duel forfeit for the player about to get banned
-                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
-                    playerToBan.get().getDueling().onDeath();
-                }
-
-                //When in a gamble forfeit for the player about to get banned
-                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
-                    playerToBan.get().getGamblingSession().abortGambling();
-                }
-
-                //PlayerPunishment.addMacBan(mac);
-                PlayerPunishment.addNameToBanList(playerToBan.get().getUsername());
-                PlayerPunishment.addNameToFile(playerToBan.get().getUsername());
-                playerToBan.get().requestLogout();
-                playerToBan.get().getPacketSender().sendExit();
-
-                player.message("Player " + username + " was successfully mac banned.");
-                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::macban "+username, "staff_cmd");
-            } else {
-                //offline
-                Player offlinePlayer = new Player();
-                offlinePlayer.setUsername(Utils.formatText(username.substring(0, 1).toUpperCase() + username.substring(1)));
-
-                GameEngine.getInstance().submitLowPriority(() -> {
-                    try {
-                        if (PlayerSave.loadOfflineWithoutPassword(offlinePlayer)) {
-                            GameEngine.getInstance().addSyncTask(() -> {
-                                if(!PlayerSave.playerExists(offlinePlayer.getUsername())) {
-                                    player.message("There is no such player profile.");
-                                    return;
-                                }
-
-                                String mac = offlinePlayer.getAttribOr(MAC_ADDRESS, "invalid");
-                                if (mac == null || mac.isEmpty()) {
-                                    player.message("Player "+username+" has no MAC (probably on a VM/VPN) and cant be macbanned. use cid/normal ban instead.");
-                                    return;
-                                }
-
-                                if (PlayerPunishment.macBanned(mac)) {
-                                    player.message("Player " + username + " (" + mac + ") already has an active mac ban.");
-                                    return;
-                                }
-
-                                PlayerPunishment.addMacBan(mac);
-                                PlayerPunishment.addNameToBanList(offlinePlayer.getUsername());
-                                player.message("Player " + username + " was successfully offline mac banned.");
-                                Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::macban "+username, "staff_cmd");
-                            });
-                        } else {
-                            player.message("Something went wrong trying to offline mac ban "+offlinePlayer.getUsername());
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-            }
         }
     }
 
@@ -212,7 +123,7 @@ public class MacBanPlayerCommand implements Command {
                             player.message("You cannot ban that player!");
                             return;
                         }
-                        DatabaseExtensionsKt.submit(Referrals.INSTANCE.getPlayerDbIdForName(username), id -> {
+                        DatabaseExtensionsKt.submit(MiscKotlin.INSTANCE.getPlayerDbIdForName(username), id -> {
                             if (id == -1) {
                                 player.message("There is no player by the name '"+username+"'");
                             } else {

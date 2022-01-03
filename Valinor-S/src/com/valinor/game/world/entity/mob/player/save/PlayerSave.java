@@ -140,7 +140,6 @@ public class PlayerSave {
                     player.setCreationIp(details.creationIp);
                 if (details.lastLogin != null)
                     player.setLastLogin(details.lastLogin);
-                player.putAttrib(MUTED, details.muted);
                 player.putAttrib(NEW_ACCOUNT, details.newPlayer);
                 player.putAttrib(IS_BETA_TESTER, details.isBetaTester);
                 player.putAttrib(VETERAN, details.veteran);
@@ -592,7 +591,6 @@ public class PlayerSave {
         private final Timestamp creationDate;
         private final String creationIp;
         private final Timestamp lastLogin;
-        private final boolean muted;
         private final boolean newPlayer;
         private final boolean isBetaTester;
         private final boolean veteran;
@@ -1011,7 +1009,6 @@ public class PlayerSave {
             creationDate = player.getCreationDate();
             creationIp = player.getCreationIp();
             lastLogin = player.getLastLogin();
-            muted = Player.getAttribBooleanOr(player, MUTED, false);
             newPlayer = Player.getAttribBooleanOr(player, NEW_ACCOUNT, false);
             isBetaTester = Player.getAttribBooleanOr(player, IS_BETA_TESTER, false);
             veteran = Player.getAttribBooleanOr(player, VETERAN, false);

@@ -433,8 +433,6 @@ public enum AttributeKey {
 
     DOUBLE_EXP_TICKS("double_exp_ticks", AttribType.INTEGER),
 
-    MUTED("muted", AttribType.BOOLEAN),
-
     CRYSTAL_KEYS_OPENED("crystal_keys_opened", AttribType.INTEGER),
     WILDY_KEYS_OPENED("wildy_keys_opened", AttribType.INTEGER),
 

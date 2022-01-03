@@ -111,6 +111,7 @@ import com.valinor.game.world.route.routes.TargetRoute;
 import com.valinor.net.PlayerSession;
 import com.valinor.net.SessionState;
 import com.valinor.net.channel.ServerHandler;
+import com.valinor.net.login.LoginResponses;
 import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.packet.PacketSender;
 import com.valinor.net.packet.interaction.InteractionManager;
@@ -1518,6 +1519,22 @@ public class Player extends Mob {
         }
     }
 
+
+
+    public boolean isMuted() {
+        boolean muted = false;
+        if (GameServer.properties().enableSql) {
+            try {
+                //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
+                muted = GameServer.getDatabaseService().execute(new GetMuteStatusDatabaseTransaction(username));
+                System.out.println("muted: "+muted);
+            } catch (Exception e) {
+                logger.catching(e);
+            }
+        }
+        return muted;
+    }
+
     private static final Set<String> veteranGiftClaimedIP = new HashSet<>();
     private static final Set<String> veteranGiftClaimedMAC = new HashSet<>();
 
@@ -2681,10 +2698,6 @@ public class Player extends Mob {
                 }
             }
         }
-    }
-
-    public boolean muted() {
-        return PlayerPunishment.IPmuted(hostAddress) || PlayerPunishment.muted(username) || this.<Boolean>getAttribOr(MUTED, false);
     }
 
     // Main item used

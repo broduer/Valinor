@@ -1,11 +1,10 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
+package com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator;
 
 import com.valinor.GameServer;
 import com.valinor.db.transactions.UnbanPlayerDatabaseTransaction;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
-import com.valinor.util.PlayerPunishment;
 import com.valinor.util.Utils;
 
 public class UnBanPlayerCommand implements Command {
@@ -16,25 +15,11 @@ public class UnBanPlayerCommand implements Command {
             return;
         String username = Utils.formatText(command.substring(6)); // after "unban "
 
-        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
+        if (GameServer.properties().enableSql) {
             GameServer.getDatabaseService().submit(new UnbanPlayerDatabaseTransaction(username));
+            player.message("Player " + username + " was successfully unbanned.");
             Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unban "+username, "staff_cmd");
-            return;
         }
-
-        if(GameServer.properties().punishmentsToLocalFile) {
-            if (!PlayerSave.playerExists(username)) {
-                player.message("Player " + username + " does not exist.");
-                return;
-            }
-
-            //Remove from regular ban list
-            if(PlayerPunishment.banned(username)) {
-                PlayerPunishment.unban(username);
-            }
-        }
-        player.message("Player " + username + " was successfully unbanned.");
-        Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unban "+username, "staff_cmd");
     }
 
     @Override

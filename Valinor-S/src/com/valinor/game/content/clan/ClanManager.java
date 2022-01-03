@@ -1,5 +1,7 @@
 package com.valinor.game.content.clan;
 
+import com.valinor.GameServer;
+import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.GameConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -134,7 +136,10 @@ public class ClanManager {
         }
 
         ClanMember member = clan.get(player.getUsername());
-        if (player.muted()) {
+        if (player.isMuted()) {
+            if (GameServer.properties().enableSql) {
+                GameServer.getDatabaseService().submit(new GetMuteStatusDatabaseTransaction(player.getUsername()));
+            }
             player.message("You are muted and cannot send messages.");
             return;
         }

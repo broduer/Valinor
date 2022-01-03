@@ -1,6 +1,7 @@
 package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
+import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.content.mechanics.AntiSpam;
 import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.world.entity.AttributeKey;
@@ -62,7 +63,7 @@ public class ChatMessagePacketListener implements PacketListener {
             return;
         }
 
-        if (player.muted()) {
+        if (player.isMuted()) {
             player.message("You are muted and cannot chat. Please try again later.");
             return;
         }

@@ -12,6 +12,7 @@ import com.valinor.game.world.entity.*
 import com.valinor.game.world.entity.AttributeKey.*
 import com.valinor.game.world.entity.mob.player.Player
 import com.valinor.game.world.entity.mob.player.QuestTab.InfoTab
+import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin
 import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers.*
@@ -206,7 +207,7 @@ object Referrals {
                 processUnclaimedEntry(buildRow(eventId, 1, DATABASE_PLAYER_ID.int(this), referee), true)
             }
         } else {*/
-        getPlayerDbIdForName(referrerName).submit {
+        MiscKotlin.getPlayerDbIdForName(referrerName).submit {
             if (it == -1) {
                 referee.message("Unknown player: $referrerName")
                 return@submit
@@ -256,29 +257,12 @@ object Referrals {
      * see getPlayerDbIdForName
      */
     fun Player.fetchDbId(setAttrib: Boolean = true) {
-        getPlayerDbIdForName(username).submit {
+        MiscKotlin.getPlayerDbIdForName(username).submit {
             if (it == -1) {
                 return@submit
             }
             if (setAttrib)
                 putAttrib(DATABASE_PLAYER_ID, it)
-        }
-    }
-
-    /**
-     * matches a user in the database by username and returns the rowID
-     */
-    fun getPlayerDbIdForName(username: String): Dbt<Int> {
-        return query<Int> {
-            prepareStatement(connection, "SELECT id FROM users WHERE lower(username) = :username").apply {
-                setString("username", username.toLowerCase())
-                execute()
-            }.run {
-                if (resultSet.next())
-                    resultSet.getInt("id")
-                else
-                    -1
-            }
         }
     }
 
@@ -344,7 +328,7 @@ object Referrals {
         } else {
             // confirm a player exists via SQL
             referee.message("Finding referral by $referrerName...")
-            getPlayerDbIdForName(referrerName).submit { dbid ->
+            MiscKotlin.getPlayerDbIdForName(referrerName).submit { dbid ->
                 GameEngine.getInstance().addSyncTask {
                     // check if user is real
                     if (dbid == -1) {

@@ -135,9 +135,7 @@ public class CommandManager {
          * Admin commands
          */
         commands.put("ipban", new IPBanPlayerCommand());
-        commands.put("unipban", new UnIPBanCommand());
         commands.put("macban", new MacBanPlayerCommand());
-        commands.put("unmacban", new UnMacBanCommand());
         commands.put("killscorpia", new KillScorpiaCommand());
         commands.put("setlevelo", new SetLevelOther());
         commands.put("disablepromocode", new DisablePromoCodeCommand());

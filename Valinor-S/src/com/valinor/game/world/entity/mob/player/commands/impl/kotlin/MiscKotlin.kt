@@ -17,6 +17,46 @@ import java.sql.Timestamp
  */
 object MiscKotlin {
 
+    /**
+     * matches a user in the database by username and returns the rowID
+     */
+    fun getPlayerDbIdForName(username: String): Dbt<Int> {
+        return query<Int> {
+            prepareStatement(connection, "SELECT id FROM users WHERE lower(username) = :username").apply {
+                setString("username", username.toLowerCase())
+                execute()
+            }.run {
+                if (resultSet.next())
+                    resultSet.getInt("id")
+                else
+                    -1
+            }
+        }
+    }
+
+    fun addIPMute(player: Player, user: String, expires: Timestamp, reason: String,
+                 feedbackKicked: Function1<List<Player>, Unit>? = null) {
+        val plr = World.getWorld().getPlayerByName(user)
+        var ip = ""
+        plr.ifPresent {
+            ip = it.hostAddress
+        }
+        if (!plr.isPresent) {
+            getIPForUsername(user).submit {
+                ip = it
+                if (ip == "")
+                    player.message("Player with name '$user' has no IP. They cannot be muted.")
+                else
+                    ipmute(ip, expires, reason, feedbackKicked)
+            }
+        } else {
+            if (ip == "")
+                player.message("Player with name '$user' has no IP. They cannot be muted.")
+            else
+                ipmute(ip, expires, reason, feedbackKicked)
+        }
+    }
+
     fun addIPBan(player: Player, user: String, expires: Timestamp, reason: String,
                  feedbackKicked: Function1<List<Player>, Unit>? = null) {
         val plr = World.getWorld().getPlayerByName(user)
@@ -52,6 +92,24 @@ object MiscKotlin {
                     ""
             }
         }
+    }
+
+    private fun ipmute(ip: String, expires: Timestamp, reason: String, feedbackKicked: ((List<Player>) -> Unit)?) {
+        query {
+            prepareStatement(connection, "INSERT INTO ip_mutes (ip, unmute_at, reason) VALUES (:ip, :unmute, :reason)").apply {
+                setString("ip", ip)
+                setTimestamp("unmute", expires)
+                setString("reason", reason)
+                execute()
+            }
+        }
+        val removed = mutableListOf<Player>()
+        World.getWorld().players.filterNotNull().forEach {
+            if (it.hostAddress.equals(ip)) {
+                removed.add(it)
+            }
+        }
+        feedbackKicked?.let { it(removed) }
     }
 
     private fun ipban(ip: String, expires: Timestamp, reason: String, feedbackKicked: ((List<Player>) -> Unit)?) {

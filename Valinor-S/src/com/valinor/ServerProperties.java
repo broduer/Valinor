@@ -228,8 +228,6 @@ public final class ServerProperties {
         pkTelesAfterSetupSet = 50;
         stakingStaffOnly = false;
         edgeDitch10secondPjTimerEnabled = true;
-        punishmentsToDatabase = false;
-        punishmentsToLocalFile = true;
         enableChangeAccountType = true;
         buyTwoGetOneFree = false;
         promoEnabled = false;
@@ -632,12 +630,6 @@ public final class ServerProperties {
 
     // If the pj timer is 10 seconds instead of 4.5s at edgeville. Stops pjers.
     public final boolean edgeDitch10secondPjTimerEnabled;
-
-    // If this is enabled punishments will be send to the database
-    public final boolean punishmentsToDatabase;
-
-    // If this is enabled punishments will be send to a local file
-    public final boolean punishmentsToLocalFile;
 
     /**
      *  If we want to enable players changing between PK mode and trained mode, set this to true.

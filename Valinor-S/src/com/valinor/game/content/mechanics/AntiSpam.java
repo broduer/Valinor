@@ -1,8 +1,14 @@
 package com.valinor.game.content.mechanics;
 
+import com.valinor.db.DatabaseExtensionsKt;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.util.PlayerPunishment;
+import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
+import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.IPMuteCommand;
+import com.valinor.util.Utils;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -75,10 +81,16 @@ public class AntiSpam {
 
             }
             if (flagPoint >= 2) {
-                player.putAttrib(AttributeKey.MUTED, true);
-                if (!PlayerPunishment.IPmuted(player.getHostAddress())) {
-                    PlayerPunishment.ipmute(player.getHostAddress());
-                }
+                LocalDateTime unmuteDate = LocalDateTime.now().plusYears(Long.parseLong("99"));
+                Timestamp unmuteTimestamp = Timestamp.valueOf(unmuteDate);
+                DatabaseExtensionsKt.submit(MiscKotlin.INSTANCE.getPlayerDbIdForName(player.getUsername()), id -> {
+                    if (id == -1) {
+                        player.message("There is no player by the name '"+player.getUsername()+"'");
+                    } else {
+                        MiscKotlin.INSTANCE.addIPMute(player, player.getUsername(), unmuteTimestamp, "Spamming", IPMuteCommand.feedback(player));
+                        Utils.sendDiscordInfoLog(player.getUsername() + " was spamming and got automatically ip muted by the system "+player.getUsername()+" until " + unmuteTimestamp + " for: " + "Spamming", "staff_cmd");
+                    }
+                });
                 return true;
             }
             player.newPlayerChat.add(textSent.toLowerCase());
