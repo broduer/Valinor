@@ -492,6 +492,10 @@ public class ItemDefinition implements Definition {
             name = "Donator Mystery Box";
             stackable = false;
             grandexchange = true;
+        } else if (id == SUPER_MYSTERY_BOX) {
+            name = "Super Mystery Box";
+            stackable = false;
+            grandexchange = true;
         } else if (id == ZOMBIES_CHAMPION_PET) {
             name = "Zombies champion pet";
             grandexchange = true;

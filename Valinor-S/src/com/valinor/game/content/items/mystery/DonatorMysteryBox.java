@@ -8,7 +8,7 @@ import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
-import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class DonatorMysteryBox extends Interaction {
@@ -194,27 +194,69 @@ public class DonatorMysteryBox extends Interaction {
     }
 
     @Override
+    public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
+        if ((use.getId() == DONATOR_MYSTERY_BOX || usedWith.getId() == DONATOR_MYSTERY_BOX) && (use.getId() == KEY_OF_DROPS || usedWith.getId() == KEY_OF_DROPS)) {
+            if(player.inventory().contains(KEY_OF_DROPS)) {
+                player.inventory().remove(KEY_OF_DROPS);
+                reward(player, DONATOR_MYSTERY_BOX, 2);
+            }
+            return true;
+        }
+        if ((use.getId() == DONATOR_MYSTERY_BOX || usedWith.getId() == DONATOR_MYSTERY_BOX) && (use.getId() == GIANT_KEY_OF_DROPS || usedWith.getId() == GIANT_KEY_OF_DROPS)) {
+            if(player.inventory().contains(KEY_OF_DROPS)) {
+                player.inventory().remove(KEY_OF_DROPS);
+                reward(player, DONATOR_MYSTERY_BOX, 3);
+            }
+            return true;
+        }
+        if ((use.getId() == SUPER_MYSTERY_BOX || usedWith.getId() == SUPER_MYSTERY_BOX) && (use.getId() == KEY_OF_DROPS || usedWith.getId() == KEY_OF_DROPS)) {
+            if(player.inventory().contains(KEY_OF_DROPS)) {
+                player.inventory().remove(KEY_OF_DROPS);
+                reward(player, SUPER_MYSTERY_BOX, 4);
+            }
+            return true;
+        }
+        if ((use.getId() == SUPER_MYSTERY_BOX || usedWith.getId() == SUPER_MYSTERY_BOX) && (use.getId() == GIANT_KEY_OF_DROPS || usedWith.getId() == GIANT_KEY_OF_DROPS)) {
+            if(player.inventory().contains(KEY_OF_DROPS)) {
+                player.inventory().remove(KEY_OF_DROPS);
+                reward(player, SUPER_MYSTERY_BOX, 5);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private void reward(Player player, int id, int rolls) {
+        if(player.inventory().contains(id)) {
+            player.inventory().remove(id);
+            for (int i = 0; i < rolls; i++) {
+                Item reward = rollReward();
+                if(rare) {
+                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a donator mystery box!");
+                }
+                player.inventory().addOrBank(reward);
+                MYSTERY_BOX.log(player, DONATOR_MYSTERY_BOX, reward);
+                rare = false;
+
+                var amt = reward.getAmount();
+                player.message("You open the donator mystery box and found...");
+                player.message("x"+amt+" "+reward.unnote().name()+".");
+                Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a donator mystery box and received x"+amt+" "+reward.unnote().name()+".", "boxes_opened");
+            }
+            var opened = player.<Integer>getAttribOr(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, 0) + 1;
+            player.putAttrib(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, opened);
+        }
+    }
+
+    @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if(option == 1) {
             if(item.getId() == DONATOR_MYSTERY_BOX) {
-                if(player.inventory().contains(DONATOR_MYSTERY_BOX)) {
-                    player.inventory().remove(DONATOR_MYSTERY_BOX);
-                    Item reward = rollReward();
-                    if(rare) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a donator mystery box!");
-                    }
-                    player.inventory().addOrBank(reward);
-                    MYSTERY_BOX.log(player, DONATOR_MYSTERY_BOX, reward);
-                    rare = false;
-
-                    var amt = reward.getAmount();
-                    player.message("You open the donator mystery box and found...");
-                    player.message("x"+amt+" "+reward.unnote().name()+".");
-                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a donator mystery box and received x"+amt+" "+reward.unnote().name()+".", "boxes_opened");
-
-                    var opened = player.<Integer>getAttribOr(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, 0) + 1;
-                    player.putAttrib(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, opened);
-                }
+                reward(player, item.getId(),1);
+                return true;
+            }
+            if(item.getId() == SUPER_MYSTERY_BOX) {
+                reward(player, item.getId(),3);
                 return true;
             }
         }
