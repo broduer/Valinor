@@ -77,6 +77,7 @@ public class CommandManager {
         commands.put("setteamname", new SetTeamNameCommand());
         commands.put("claimvote", new ClaimVoteCommand());
         commands.put("redeem", new RedeemCommand());
+        commands.put("claimtopvoter", new ClaimTopVoter());
         commands.put("vekers", new VekeRSCommand());
         commands.put("fpkmerk", new FpkMerkCommand());
         commands.put("capalot", new CapalotCommand());

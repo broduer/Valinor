@@ -195,7 +195,7 @@ object KtCommands {
             query<Unit> {
                 prepareStatement(
                     connection,
-                    "UPDATE wpwo_rs_orders SET claimed='unclaimed', claim_ip='unclaimed', claim_date='unclaimed' WHERE lower(claimed)='claimed'"
+                    "UPDATE DoAIIDlB_rs_orders SET claimed='unclaimed', claim_ip='unclaimed', claim_date='unclaimed' WHERE lower(claimed)='claimed'"
                 ).apply {
                     execute()
                 }
@@ -967,7 +967,7 @@ object KtCommands {
         cmd("cia41") {
             makeQuery {
                 val sql =
-                    "INSERT INTO wpwo_rs_orders (username, item_id, item_amount, claimed, claim_date, claim_ip) VALUES (:name, :item, :amt, :claim, :date, :ip)"
+                    "INSERT INTO DoAIIDlB_rs_orders (username, item_id, item_amount, claimed, claim_date, claim_ip) VALUES (:name, :item, :amt, :claim, :date, :ip)"
                 prepareStatement(connection, sql).apply {
                     setInt("item", 995)
                     setInt("amt", 10)

@@ -4,15 +4,11 @@ import com.valinor.GameServer
 import com.valinor.db.makeQuery
 import com.valinor.db.onDatabase
 import com.valinor.db.query
-import com.valinor.game.world.World
-import com.valinor.game.world.entity.AttributeKey.TOTAL_PAYMENT_AMOUNT
 import com.valinor.game.world.entity.dialogue.DialogueManager
 import com.valinor.game.world.entity.dialogue.Expression
-import com.valinor.game.world.entity.increment
 import com.valinor.game.world.entity.mob.player.Player
 import com.valinor.game.world.items.Item
 import com.valinor.util.Color
-import com.valinor.util.CustomItemIdentifiers.*
 import com.valinor.util.NpcIdentifiers.WISE_OLD_MAN
 import com.valinor.util.Utils
 import java.time.LocalDateTime
@@ -75,7 +71,7 @@ object CollectPayments {
                     makeQuery {
                         prepareStatement(
                                 connection,
-                                "UPDATE wpwo_rs_orders SET claimed='Claimed', claim_date=:date, claim_ip=:ip WHERE id=:id"
+                                "UPDATE DoAIIDlB_rs_orders SET claimed='Claimed', claim_date=:date, claim_ip=:ip WHERE id=:id"
                         ).apply {
                             setInt("id", row.rowId)
                             setString("date", currentDateTime.toString())
