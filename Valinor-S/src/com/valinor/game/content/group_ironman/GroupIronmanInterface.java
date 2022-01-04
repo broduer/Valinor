@@ -73,7 +73,7 @@ public class GroupIronmanInterface extends Interaction {
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 67012) {
-            if(player.ironMode() == GameMode.NONE) {
+            if(player.gameMode() == GameMode.NONE) {
                 player.message(Color.RED.wrap("Only ironman can use the invite functionality."));
                 return true;
             }
@@ -93,7 +93,7 @@ public class GroupIronmanInterface extends Interaction {
             return true;
         }
         if (button == 67013) {
-            if(player.ironMode() == GameMode.NONE) {
+            if(player.gameMode() == GameMode.NONE) {
                 player.message(Color.RED.wrap("Only ironman can use set a group name."));
                 return true;
             }
@@ -112,7 +112,7 @@ public class GroupIronmanInterface extends Interaction {
             return true;
         }
         if (button == 67014) {
-            if(player.ironMode() == GameMode.NONE) {
+            if(player.gameMode() == GameMode.NONE) {
                 player.message(Color.RED.wrap("You're not a ironman."));
                 return true;
             }
@@ -120,12 +120,12 @@ public class GroupIronmanInterface extends Interaction {
             return true;
         }
         if (button == 67018) {
-            if(player.ironMode() == GameMode.NONE) {
+            if(player.gameMode() == GameMode.NONE) {
                 player.message(Color.RED.wrap("Only an ironman can make a group."));
                 return true;
             }
             //Ultimate ironmans cannot create a group
-            if(player.ironMode() == GameMode.ULTIMATE) {
+            if(player.gameMode() == GameMode.ULTIMATE) {
                 player.message("You cannot create a group as an ultimate ironman.");
                 return true;
             }

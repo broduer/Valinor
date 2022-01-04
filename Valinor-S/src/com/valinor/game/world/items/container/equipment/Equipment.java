@@ -397,14 +397,14 @@ public final class Equipment extends ItemContainer {
         }
 
         if(equip.getId() == HARDCORE_IRONMAN_HELM || equip.getId() == HARDCORE_IRONMAN_PLATEBODY || equip.getId() == HARDCORE_IRONMAN_PLATELEGS) {
-            if(player.ironMode() != GameMode.HARDCORE) {
+            if(player.gameMode() != GameMode.HARDCORE) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a hardcore ironman.");
                 return false;
             }
         }
 
         if(equip.getId() == IRONMAN_HELM || equip.getId() == IRONMAN_PLATEBODY || equip.getId() == IRONMAN_PLATELEGS) {
-            if(player.ironMode() != GameMode.REGULAR) {
+            if(player.gameMode() != GameMode.REGULAR) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a ironman.");
                 return false;
             }

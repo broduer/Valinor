@@ -6,6 +6,7 @@ package com.valinor.game.world.entity.mob.player;
  */
 public enum GameMode {
 
+    INSTANT_PKER("Instant Pker"),
     NONE(""),
     REGULAR("Ironman"),
     ULTIMATE("Ultimate Ironman"),
@@ -17,6 +18,18 @@ public enum GameMode {
         this.name = name;
     }
 
+    /**
+     * Determines if the {@link #name} is equal to {@link GameMode#INSTANT_PKER}
+     * @return {@code true} if the player is of this type, otherwise {@code false}
+     */
+    public boolean instantPker() {
+        return name.equals("Instant Pker");
+    }
+
+    /**
+     * Determines if the {@link #name} is equal to {@link GameMode#REGULAR} or {@link GameMode#HARDCORE}
+     * @return {@code true} if the player is of this type, otherwise {@code false}
+     */
     public boolean ironman() {
         return name.equals("Ironman") || name.equals("Hardcore Ironman");
     }

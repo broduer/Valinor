@@ -43,7 +43,7 @@ public class AuburyDialogue extends Dialogue {
     protected void select(int option) {
         if(isPhase(1)) {
             if(option == 1) {
-                if(player.ironMode() == GameMode.NONE) {
+                if(player.gameMode() == GameMode.NONE) {
                     World.getWorld().shop(11).open(player);
                 } else {
                     World.getWorld().shop(23).open(player);

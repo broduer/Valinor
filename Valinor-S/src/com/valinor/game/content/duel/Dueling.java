@@ -216,7 +216,7 @@ public class Dueling {
             return;
         }
 
-        if (t_.ironMode() != GameMode.NONE) {
+        if (t_.gameMode() != GameMode.NONE) {
             player.message("Your partner is an Iron man, and cannot stake.");
             return;
         }

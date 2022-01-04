@@ -33,7 +33,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(GameMode.REGULAR);
+                player.gameMode(GameMode.REGULAR);
             }
             case 42403 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -41,7 +41,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(GameMode.ULTIMATE);
+                player.gameMode(GameMode.ULTIMATE);
             }
             case 42423 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -49,7 +49,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(GameMode.HARDCORE);
+                player.gameMode(GameMode.HARDCORE);
             }
             case 42405 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -57,7 +57,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(GameMode.NONE);
+                player.gameMode(GameMode.NONE);
             }
         }
     }

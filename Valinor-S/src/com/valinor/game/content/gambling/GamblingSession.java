@@ -284,7 +284,7 @@ public class GamblingSession {
             return;
         }
 
-        if (requestee.ironMode() != GameMode.NONE) {
+        if (requestee.gameMode() != GameMode.NONE) {
             player.message("That player is an ironman and can not gamble.");
             return;
         }

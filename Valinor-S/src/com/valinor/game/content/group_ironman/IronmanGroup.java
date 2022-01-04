@@ -52,7 +52,7 @@ public class IronmanGroup {
         members.add(new IronmanGroupMember(player));
         return new IronmanGroup().setDateStated(Date.from(Instant.now()))
             .setLeaderName(player.getUsername())
-            .setHardcoreGroup(player.ironMode() == GameMode.HARDCORE)
+            .setHardcoreGroup(player.gameMode() == GameMode.HARDCORE)
             .setHardcoreLives(1)
             .setGroupName(player.getUsername())
             .setMembers(members);
@@ -66,12 +66,12 @@ public class IronmanGroup {
         }
 
         if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            player.setPlayerRights(player.ironMode() == GameMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
+            player.setPlayerRights(player.gameMode() == GameMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
+        if(group.isPresent() && player.gameMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() + 1);
         }
     }
@@ -81,7 +81,7 @@ public class IronmanGroup {
         members.remove(member);
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
+        if(group.isPresent() && player.gameMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
         }
     }
@@ -91,7 +91,7 @@ public class IronmanGroup {
         members.remove(member);
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
+        if(group.isPresent() && player.gameMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
         }
     }
@@ -189,7 +189,7 @@ public class IronmanGroup {
         }
 
         //Check if the player being invited is an ironman
-        if(playerToInv.ironMode() == GameMode.NONE) {
+        if(playerToInv.gameMode() == GameMode.NONE) {
             leader.message(Color.RED.wrap("This player isn't a ironman."));
             return false;
         }
@@ -214,8 +214,8 @@ public class IronmanGroup {
         }
 
         //You can only invite players with the same ironman mode
-        if(leader.ironMode() != playerToInv.ironMode()) {
-            leader.message(Color.RED.wrap(playerToInv.getUsername()+" cannot join your group as they are not a "+leader.ironMode().name));
+        if(leader.gameMode() != playerToInv.gameMode()) {
+            leader.message(Color.RED.wrap(playerToInv.getUsername()+" cannot join your group as they are not a "+leader.gameMode().name));
             return false;
         }
         return true;

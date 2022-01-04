@@ -165,7 +165,7 @@ public class Bank extends ItemContainer {
      * Opens the bank itemcontainer.
      */
     public void open() {
-        if (player.ironMode() == GameMode.ULTIMATE) {
+        if (player.gameMode() == GameMode.ULTIMATE) {
             player.messageBox("As an Ultimate Iron Man, you cannot use the bank.");
             return;
         }

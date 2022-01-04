@@ -121,7 +121,7 @@ public class PlayerSave {
                     player.setMemberRights(MemberRights.valueOf(details.memberRights));
                 if (details.expMode != null)
                     player.expmode(details.expMode);
-                player.ironMode(Objects.requireNonNullElse(details.gameMode, GameMode.NONE));
+                player.gameMode(Objects.requireNonNullElse(details.gameMode, GameMode.NONE));
                 player.putAttrib(GROUP_NAME_SET, details.groupNameSet);
                 player.putAttrib(HARDCORE_GROUP_FALLEN, details.hardcoreGroupFallen);
                 if(details.lastIP != null) {
@@ -997,7 +997,7 @@ public class PlayerSave {
             playerRights = player.getPlayerRights().name();
             memberRights = player.getMemberRights().name();
             expMode = player.expmode();
-            gameMode = player.ironMode();
+            gameMode = player.gameMode();
             groupNameSet = Player.getAttribBooleanOr(player, GROUP_NAME_SET,false);
             hardcoreGroupFallen = Player.getAttribBooleanOr(player, HARDCORE_GROUP_FALLEN,false);
             lastIP = player.getHostAddress();

@@ -143,7 +143,7 @@ public class ItemsKeptOnDeath {
         int itemsKept = (Skulling.skulled(player) ? 0 : 3);
 
         // On Ultimate Iron Man, you drop everything!
-        if (player.ironMode() == GameMode.ULTIMATE) {
+        if (player.gameMode() == GameMode.ULTIMATE) {
             itemsKept = 0;
         }
 
@@ -160,7 +160,7 @@ public class ItemsKeptOnDeath {
         }
 
         // On Ultimate Iron Man, you drop everything!
-        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.ironMode() == GameMode.ULTIMATE) {
+        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.gameMode() == GameMode.ULTIMATE) {
             itemsKept = 0;
         }
 

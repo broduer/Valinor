@@ -205,7 +205,7 @@ public class Prayers extends Interaction {
             return false;
         }
         if (prayer == DefaultPrayerData.PROTECT_ITEM) {
-            if (player.ironMode() == GameMode.ULTIMATE) {
+            if (player.gameMode() == GameMode.ULTIMATE) {
                 if (msg) {
                     player.getPacketSender().sendConfig(prayer.getConfigId(), 0);
                     player.message("As an Ultimate Iron Man, you cannot use the protect item prayer.");

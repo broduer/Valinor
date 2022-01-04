@@ -208,7 +208,7 @@ public class Death {
             /**
              * HCIM - revoke status
              */
-            if (player.ironMode() == GameMode.HARDCORE) {
+            if (player.gameMode() == GameMode.HARDCORE) {
                 hardcoreDeath(player, killHit);
             }
 
@@ -330,7 +330,7 @@ public class Death {
                         member.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
                         member.getPacketSender().sendRights();
                     }
-                    member.ironMode(GameMode.REGULAR);
+                    member.gameMode(GameMode.REGULAR);
                 }
                 player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
             } else {
@@ -343,7 +343,7 @@ public class Death {
             player.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
-        player.ironMode(GameMode.REGULAR);
+        player.gameMode(GameMode.REGULAR);
         player.message(Color.RED.wrap("You have fallen as a Hardcore Ironman, your Hardcore status has been revoked."));
         if (player.skills().totalLevel() >= 100) {
             String overall = Utils.formatMoneyString(player.skills().totalLevel());

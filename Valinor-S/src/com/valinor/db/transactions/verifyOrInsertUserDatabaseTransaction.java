@@ -45,7 +45,7 @@ public final class verifyOrInsertUserDatabaseTransaction extends VoidDatabaseTra
                 statement.setTimestamp("updated_at", new Timestamp(new Date().getTime()));
                 statement.setString("mac", player.getAttribOr(MAC_ADDRESS, "invalid"));
                 statement.setString("exp_mode", player.expmode().toName());
-                statement.setString("iron_mode", player.ironMode().name);
+                statement.setString("iron_mode", player.gameMode().name);
                 statement.setInt("playtime", player.getAttribOr(GAME_TIME, 0));
                 //logger.info("Executing query: " + statement.toString());
                 statement.executeUpdate();

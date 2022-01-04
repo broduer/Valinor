@@ -43,8 +43,8 @@ public class Utils {
 
     public static String gameModeToString(Player player) {
         //Player is some sort of ironman
-        if (player.ironMode() != GameMode.NONE) {
-            return player.ironMode().name;
+        if (player.gameMode() != GameMode.NONE) {
+            return player.gameMode().name;
         } else {
             return "Regular";
         }

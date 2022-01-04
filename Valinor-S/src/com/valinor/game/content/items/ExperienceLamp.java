@@ -45,7 +45,7 @@ public class ExperienceLamp extends Interaction {
 
         if(button == 2831) { // Confirm
             if(player.inventory().contains(ANTIQUE_LAMP_11137)) {
-                if(player.ironMode() != GameMode.NONE) {
+                if(player.gameMode() != GameMode.NONE) {
                     player.message(Color.RED.wrap("Ironmans are unable to rub experience lamps."));
                     return true;
                 }

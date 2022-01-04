@@ -39,6 +39,120 @@ public class GameConstants {
         new Item(LOBSTER+1, 50)
     };
 
+    public final static int[] TAB_AMOUNT = {54, 53, 0, 0, 0, 0, 0, 0, 0, 0};
+    public final static Item[] BANK_ITEMS = {
+        new Item(4151, 20000), // whip
+        new Item(4587, 20000), // Scim
+        new Item(1215, 20000), // Dagger
+        new Item(4089, 20000), // Mystic
+        new Item(4109, 20000), // Mystic
+        new Item(4099, 20000), // Mystic
+        new Item(7400, 20000), // Enchanted
+        new Item(3755, 20000), // farseer helm
+        new Item(1163, 20000), // rune full helm
+        new Item(1305, 20000), // d long
+        new Item(4675, 20000), // ancient staff
+        new Item(4091, 20000), // Mystic
+        new Item(4111, 20000), // Mystic
+        new Item(4101, 20000), // Mystic
+        new Item(7399, 20000), // enchanted
+        new Item(3751, 20000), // hat
+        new Item(1127, 20000), // rune
+        new Item(1434, 20000), // mace
+        new Item(9185, 20000), // crossbow
+        new Item(4093, 20000), // Mystic
+        new Item(4113, 20000), // Mystic
+        new Item(4103, 20000), // Mystic
+        new Item(7398, 20000), // enchanted
+        new Item(3753, 20000), // helm
+        new Item(1079, 20000), // rune
+        new Item(5698, 20000), // dagger
+        new Item(10499, 20000), // avas
+        new Item(4097, 20000), // Mystic
+        new Item(4117, 20000), // Mystic
+        new Item(4107, 20000), // Mystic
+        new Item(2579, 20000), // wiz boots
+        new Item(3749, 20000), // helm
+        new Item(4131, 20000), // rune boots
+        new Item(2503, 20000), // hides
+        new Item(2497, 20000), // hides
+        new Item(12492, 20000), // hides
+        new Item(12508, 20000), // hides
+        new Item(12500, 20000), // hides
+        new Item(3105, 20000), // climbers
+        new Item(1093, 20000), // rune plateskirt
+        new Item(1201, 20000), // rune kiteshield
+        new Item(3842, 20000), // god book
+        new Item(12612, 20000), // god book
+        new Item(12494, 20000), // hides
+        new Item(12510, 20000), // hides
+        new Item(12502, 20000), // hides
+        new Item(6108, 20000), // ghostly
+        new Item(6107, 20000), // ghostly
+        new Item(6109, 20000), // ghostly
+        new Item(10828, 20000), // neit helm
+        new Item(2412, 20000), // sara god cape
+        new Item(7458, 20000), // mithril gloves for pures
+        new Item(7462, 20000), // gloves
+        new Item(11978, 20000), // glory (6)
+
+        // END OF TAB 1
+        new Item(2436, 20000), // pots
+        new Item(2440, 20000), // pots
+        new Item(2442, 20000), // pots
+        new Item(2444, 20000), // pots
+        new Item(3040, 20000), // pots
+        new Item(10925, 20000), // pots
+        new Item(3024, 20000), // pots
+        new Item(6685, 20000), // pots
+        new Item(145, 20000), // pots
+        new Item(157, 20000), // pots
+        new Item(163, 20000), // pots
+        new Item(169, 20000), // pots
+        new Item(3042, 20000), // pots
+        new Item(10927, 20000), // pots
+        new Item(3026, 20000), // pots
+        new Item(6689, 20000), // pots
+        new Item(147, 20000), // pots
+        new Item(159, 20000), // pots
+        new Item(165, 20000), // pots
+        new Item(171, 20000), // pots
+        new Item(3044, 20000), // pots
+        new Item(10929, 20000), // pots
+        new Item(3028, 20000), // pots
+        new Item(6687, 20000), // pots
+        new Item(149, 20000), // pots
+        new Item(161, 20000), // pots
+        new Item(167, 20000), // pots
+        new Item(173, 20000), // pots
+        new Item(3046, 20000), // pots
+        new Item(10931, 20000), // pots
+        new Item(3030, 20000), // pots
+        new Item(6691, 20000), // pots
+        new Item(385, 20000), // sharks
+        new Item(3144, 20000), // karambwan
+        new Item(560, 20000000), // runes
+        new Item(565, 20000000), // runes
+        new Item(555, 20000000), // runes
+        new Item(562, 20000000), // runes
+        new Item(557, 20000000), // runes
+        new Item(559, 20000000), // runes
+        new Item(564, 20000000), // runes
+        new Item(554, 20000000), // runes
+        new Item(9075, 20000000), // runes
+        new Item(556, 20000000), // runes
+        new Item(563, 20000000), // runes
+        new Item(559, 20000000), // runes
+        new Item(566, 20000000), // runes
+        new Item(561, 20000000), // runes
+        new Item(9241, 20000), // bolts
+        new Item(9244, 20000), // bolts
+        new Item(9245, 20000), // bolts
+        new Item(9243, 20000), // bolts
+        new Item(9242, 20000), // bolts
+        new Item(892, 20000), // rune arrows
+    };
+
     public static final String SERVER_NAME = "Valinor";
 
     /**

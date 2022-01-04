@@ -227,7 +227,7 @@ public class TradingPost {
             return;
         }
 
-        if (player.ironMode() != GameMode.NONE) {
+        if (player.gameMode() != GameMode.NONE) {
             player.message(Color.RED.wrap("As an ironman you stand alone."));
             return;
         }

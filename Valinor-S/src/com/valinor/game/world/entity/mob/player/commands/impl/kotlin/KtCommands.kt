@@ -9,6 +9,8 @@ import com.valinor.db.query
 import com.valinor.db.submit
 import com.valinor.db.transactions.CollectPayments.collectPayments
 import com.valinor.fs.ObjectDefinition
+import com.valinor.game.GameConstants.BANK_ITEMS
+import com.valinor.game.GameConstants.TAB_AMOUNT
 import com.valinor.game.GameEngine
 import com.valinor.game.TimesCycle
 import com.valinor.game.content.EffectTimer
@@ -106,7 +108,7 @@ object KtCommands {
             NightmareInstance.hmSize()
         }
         cmd("countnmp", DEV) {
-            System.out.println(player.nightmareInstance.players.size)
+            println(player.nightmareInstance.players.size)
         }
         cmd("sound", DEV) {
             player.sound(parts[1].toInt())

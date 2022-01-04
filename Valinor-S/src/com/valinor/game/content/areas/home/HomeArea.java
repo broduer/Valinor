@@ -292,7 +292,7 @@ public class HomeArea extends Interaction {
                 return true;
             }
             if (npc.id() == AUBURY) {
-                if(player.ironMode() == GameMode.NONE) {
+                if(player.gameMode() == GameMode.NONE) {
                     World.getWorld().shop(11).open(player);
                 } else {
                     World.getWorld().shop(23).open(player);

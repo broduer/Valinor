@@ -107,13 +107,13 @@ public class Trading {
         var sameGroup = IronmanGroupHandler.isTradingPermitted(player, otherPlayer);
 
         // Ironman? fuck off lol!!
-        if (player.ironMode() != GameMode.NONE && (otherPlayer == null || !(otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) || sameGroup))) {
+        if (player.gameMode() != GameMode.NONE && (otherPlayer == null || !(otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) || sameGroup))) {
             player.message("You are an Iron Man. You stand alone.");
             return;
         }
 
         // Ironman? fuck off lol!!
-        if (otherPlayer.ironMode() != GameMode.NONE && !(player.getPlayerRights().isDeveloperOrGreater(player) || sameGroup)) {
+        if (otherPlayer.gameMode() != GameMode.NONE && !(player.getPlayerRights().isDeveloperOrGreater(player) || sameGroup)) {
             player.message(otherPlayer.getUsername() + " is an Iron Man. They stand alone.");
             return;
         }

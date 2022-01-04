@@ -538,11 +538,11 @@ public class Player extends Mob {
 
     private GameMode gameMode = GameMode.NONE;
 
-    public GameMode ironMode() {
+    public GameMode gameMode() {
         return gameMode;
     }
 
-    public void ironMode(GameMode mode) {
+    public void gameMode(GameMode mode) {
         gameMode = mode;
     }
 
@@ -1396,7 +1396,7 @@ public class Player extends Mob {
         setLastLogin(new Timestamp(new Date().getTime()));
 
         if (GameServer.properties().enableSql) {
-            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName(), ironMode().name));
+            GameServer.getDatabaseService().submit(new UpdatePlayerInfoDatabaseTransaction(getAttribOr(DATABASE_PLAYER_ID, -1), getHostAddress() == null ? "invalid" : getHostAddress(), getAttribOr(MAC_ADDRESS, "invalid"), getAttribOr(GAME_TIME, 0), expmode().toName(), gameMode().name));
             GameServer.getDatabaseService().submit(new UpdatePlayerSkillsDatabaseTransaction(this));
             GameServer.getDatabaseService().submit(new UpdateKillsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_KILLS, 0), username));
             GameServer.getDatabaseService().submit(new UpdateDeathsDatabaseTransaction(getAttribOr(AttributeKey.PLAYER_DEATHS, 0), username));
