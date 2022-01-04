@@ -230,8 +230,6 @@ public final class ServerProperties {
         edgeDitch10secondPjTimerEnabled = true;
         enableChangeAccountType = true;
         buyTwoGetOneFree = false;
-        promoEnabled = false;
-        donatorPromo = false;
         doubleExperienceEvent = false;
         doubleSlayerRewardPointsEvent = false;
         doubleBMEvent = false;
@@ -638,12 +636,6 @@ public final class ServerProperties {
 
     // If this promo is active when purchasing 2 of the same items from the store you get one for free
     public final boolean buyTwoGetOneFree;
-
-    // If this promo is active every 15€ you get a mystery ticket
-    public final boolean donatorPromo;
-
-    // Is the promo interface enabled or disabled
-    public final boolean promoEnabled;
 
     public final boolean doubleExperienceEvent;
     public final boolean doubleSlayerRewardPointsEvent;

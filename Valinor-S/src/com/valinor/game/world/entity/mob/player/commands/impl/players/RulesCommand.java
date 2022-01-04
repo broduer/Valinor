@@ -14,6 +14,7 @@ public class RulesCommand implements Command {
     @Override
     public void execute(Player player, String command, String[] parts) {
         player.getPacketSender().sendURL(RULES_URL);
+        player.message("Opening the rules in your web browser...");
     }
 
     @Override

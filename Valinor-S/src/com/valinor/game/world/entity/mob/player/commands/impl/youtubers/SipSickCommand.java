@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.players;
+package com.valinor.game.world.entity.mob.player.commands.impl.youtubers;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
@@ -7,12 +7,12 @@ import com.valinor.game.world.entity.mob.player.commands.Command;
  * @author Patrick van Elderen | June, 21, 2021, 14:33
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
-public class WalkchaosCommand implements Command {
+public class SipSickCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.getPacketSender().sendURL("https://www.youtube.com/user/Walkchaos3");
-        player.message("Opening Walkchaos's channel in your web browser...");
+        player.getPacketSender().sendURL("https://www.youtube.com/channel/UC74CQ_yflg-KQrjtCXpmozA");
+        player.message("Opening Sipsick's channel in your web browser...");
     }
 
     @Override

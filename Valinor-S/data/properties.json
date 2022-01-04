@@ -123,8 +123,6 @@
   "edgeDitch10secondPjTimerEnabled": true,
   "enableChangeAccountType": true,
   "buyTwoGetOneFree": false,
-  "promoEnabled": true,
-  "donatorPromo": true,
   "doubleExperienceEvent": false,
   "doubleSlayerRewardPointsEvent": false,
   "doubleBMEvent": false,

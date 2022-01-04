@@ -16,7 +16,7 @@ public class SkullCommand implements Command {
 
         if (parts[0].startsWith("red")) {
             Skulling.assignSkullState(player, SkullType.RED_SKULL);
-            player.message(Color.RED.tag()+"Be careful whilst being redskulled all items are lost on death, this includes pets!");
+            player.message(Color.RED.tag()+"Be careful whilst being red skulled all items are lost on death, this includes pets!");
         } else {
             Skulling.assignSkullState(player, SkullType.WHITE_SKULL);
         }

@@ -13,6 +13,12 @@ public class DCaveCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
+        boolean member = player.getMemberRights().isSapphireMemberOrGreater(player);
+        if(!member && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+            player.message("You need to be at least a sapphire member to use this command.");
+            return;
+        }
+
         if (WildernessArea.inWilderness(player.tile()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("You can't use this command in the wilderness.");
             return;
@@ -61,6 +67,6 @@ public class DCaveCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return player.getMemberRights().isSapphireMemberOrGreater(player) || player.getPlayerRights().isStaffMember(player);
+        return true;
     }
 }

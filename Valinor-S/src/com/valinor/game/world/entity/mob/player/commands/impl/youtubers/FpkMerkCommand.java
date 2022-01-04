@@ -1,14 +1,14 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.players;
+package com.valinor.game.world.entity.mob.player.commands.impl.youtubers;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 
-public class SkiiCommand implements Command {
+public class FpkMerkCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.getPacketSender().sendURL("https://youtube.com/channel/UCzwqwQgjkW9ZSMqlCt-n3jQ");
-        player.message("Opening skii's channel in your web browser...");
+        player.getPacketSender().sendURL("https://www.youtube.com/channel/UCeVDQGzCI3dxp8NAT_YBIkQ");
+        player.message("Opening FPK Merk's channel in your web browser...");
     }
 
     @Override

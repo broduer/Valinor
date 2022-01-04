@@ -10,6 +10,7 @@ public class FeaturesCommand implements Command {
     @Override
     public void execute(Player player, String command, String[] parts) {
         player.getPacketSender().sendURL(DONATOR_FEATURES_URL);
+        player.message("Opening the features in your web browser...");
     }
 
     @Override

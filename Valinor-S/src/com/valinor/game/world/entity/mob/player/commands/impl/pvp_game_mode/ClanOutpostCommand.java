@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.players;
+package com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode;
 
 import com.valinor.game.content.clan.Clan;
 import com.valinor.game.content.clan.ClanRepository;

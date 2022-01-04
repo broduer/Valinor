@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.super_member;
+package com.valinor.game.world.entity.mob.player.commands.impl.member;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -10,8 +10,8 @@ public class YellColourCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(!player.getMemberRights().isEmeraldMemberOrGreater(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-            player.message("<col=ca0d0d>Only Super Members may use this feature.");
+        if(!player.getMemberRights().isSapphireMemberOrGreater(player) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+            player.message("<col=ca0d0d>Only Sapphire Members may use this feature.");
             return;
         }
         player.getDialogueManager().start(new Dialogue() {

@@ -20,6 +20,7 @@ public class GameConstants {
     public static final String DONATOR_FEATURES_URL = "https://valinor-os.com/features/";
     public static final String WEBSITE_URL = "https://valinor-os.com/";
     public static final String RULES_URL = "";
+    public static final String DISCORD_URL = "https://discord.gg/hESDzJVkz4";
 
     /**
      * Starter items for game mode.

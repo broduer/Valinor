@@ -1,14 +1,14 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.players;
+package com.valinor.game.world.entity.mob.player.commands.impl.youtubers;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 
-public class RespireCommand implements Command {
+public class TidusCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.getPacketSender().sendURL("https://youtube.com/c/InferiaDZN");
-        player.message("Opening Respire's channel in your web browser...");
+        player.getPacketSender().sendURL("https://www.youtube.com/channel/UC2vFpv7IIOC_LZbmYrmrNzg");
+        player.message("Opening Tidus Cross channel in your web browser...");
     }
 
     @Override

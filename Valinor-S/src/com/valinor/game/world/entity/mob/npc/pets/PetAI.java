@@ -139,7 +139,6 @@ public class PetAI extends Interaction {
         }
 
         player.message("You have set your pet down on the ground.");
-        player.message("<img=505>" + Color.RED.tag() + "TIP:</col> You can also type " + Color.BLUE.tag() + "::claimpet</col> to pick up your pet.");
         player.animate(827);
         Npc petNpc = new Npc(pet.npc, player.tile().transform(0, 1));
         petNpc.walkRadius(-1); // Allow walking all across the map

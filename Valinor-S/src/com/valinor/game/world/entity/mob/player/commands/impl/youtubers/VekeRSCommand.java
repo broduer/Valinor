@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.players;
+package com.valinor.game.world.entity.mob.player.commands.impl.youtubers;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;

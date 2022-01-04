@@ -1,7 +1,5 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.players;
 
-import com.valinor.GameServer;
-import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
