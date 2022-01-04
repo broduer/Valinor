@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.KtCommands;
 import com.valinor.game.world.entity.mob.player.commands.impl.member.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.owner.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.players.*;
-import com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode.ClanOutpostCommand;
+import com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.event_manager.HPEventCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.*;
@@ -49,6 +49,15 @@ public class CommandManager {
         commands.put("redskull", skullCommand);
         commands.put("kdr", new KDRCommand());
         commands.put("cp", new ClanOutpostCommand());
+        commands.put("pots", new PotsCommand());
+        commands.put("brew", new BrewPotCommand());
+        commands.put("restore", new SuperRestorePotCommand());
+        commands.put("magicpot", new MagicPotCommand());
+        commands.put("rangepot", new RangePotCommand());
+        commands.put("food", new FoodCommand());
+        commands.put("barrage", new BarrageCommand());
+        commands.put("veng", new VengCommand());
+        commands.put("tb", new TeleblockCommand());
         //Regular commands
         commands.put("changepassword", new ChangePasswordCommand());
         commands.put("changepass", new ChangePasswordCommand());
@@ -93,22 +102,12 @@ public class CommandManager {
         commands.put("promocode", new PromoCodeCommand());
 
         /*
-         * Donator commands
+         * Member commands
          */
         commands.put("dzone", new DzoneCommand());
         commands.put("unskull", new UnskullCommand());
         commands.put("dcave", new DCaveCommand());
-
-        /*
-         * Super donator commands
-         */
         commands.put("pickyellcolour", new YellColourCommand());
-
-        /*
-         * Extreme member commands
-         */
-        commands.put("heal", new HealCommand());
-        commands.put("spec", new SpecCommand());
 
         /*
         * Support commands
@@ -252,7 +251,6 @@ public class CommandManager {
         commands.put("settorntype", new SetTornType());
         commands.put("mkn", new MassKillNpc());
         commands.put("massgfx", new LoopGFX());
-        commands.put("spellbook", new SpellbookCommand());
         commands.put("energy", new RunEnergyCommand());
         commands.put("toggledebug", new ToggleDebugCommand());
         commands.put("toggledebugmessages", new ToggleDebugCommand());
