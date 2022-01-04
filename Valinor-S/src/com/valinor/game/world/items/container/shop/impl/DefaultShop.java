@@ -4,7 +4,7 @@ import com.valinor.GameServer;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
@@ -135,7 +135,7 @@ public final class DefaultShop extends Shop {
             return;
         }
 
-        if (player.ironMode() != IronMode.NONE && noiron) {
+        if (player.ironMode() != GameMode.NONE && noiron) {
             player.message("Iron men cannot access this shop.");
             player.getInterfaceManager().closeDialogue();
             return;

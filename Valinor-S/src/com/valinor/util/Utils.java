@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.valinor.game.GameEngine;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
@@ -43,7 +43,7 @@ public class Utils {
 
     public static String gameModeToString(Player player) {
         //Player is some sort of ironman
-        if (player.ironMode() != IronMode.NONE) {
+        if (player.ironMode() != GameMode.NONE) {
             return player.ironMode().name;
         } else {
             return "Regular";

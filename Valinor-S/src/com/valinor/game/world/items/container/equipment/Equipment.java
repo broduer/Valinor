@@ -27,7 +27,6 @@ import com.valinor.game.world.items.ItemWeight;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.ItemContainerAdapter;
 import com.valinor.game.world.items.container.inventory.Inventory;
-import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.timers.TimerKey;
@@ -398,14 +397,14 @@ public final class Equipment extends ItemContainer {
         }
 
         if(equip.getId() == HARDCORE_IRONMAN_HELM || equip.getId() == HARDCORE_IRONMAN_PLATEBODY || equip.getId() == HARDCORE_IRONMAN_PLATELEGS) {
-            if(player.ironMode() != IronMode.HARDCORE) {
+            if(player.ironMode() != GameMode.HARDCORE) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a hardcore ironman.");
                 return false;
             }
         }
 
         if(equip.getId() == IRONMAN_HELM || equip.getId() == IRONMAN_PLATEBODY || equip.getId() == IRONMAN_PLATELEGS) {
-            if(player.ironMode() != IronMode.REGULAR) {
+            if(player.ironMode() != GameMode.REGULAR) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a ironman.");
                 return false;
             }

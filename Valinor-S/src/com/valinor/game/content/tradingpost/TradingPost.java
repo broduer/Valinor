@@ -10,7 +10,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
@@ -22,7 +22,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -228,7 +227,7 @@ public class TradingPost {
             return;
         }
 
-        if (player.ironMode() != IronMode.NONE) {
+        if (player.ironMode() != GameMode.NONE) {
             player.message(Color.RED.wrap("As an ironman you stand alone."));
             return;
         }

@@ -1,12 +1,11 @@
 package com.valinor.game.content.gambling;
 
 import com.valinor.GameServer;
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.gambling.impl.Flower;
 import com.valinor.game.content.gambling.impl.FlowerPoker;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
@@ -16,12 +15,10 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.util.SecondsTimer;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GamblingSession {
@@ -287,7 +284,7 @@ public class GamblingSession {
             return;
         }
 
-        if (requestee.ironMode() != IronMode.NONE) {
+        if (requestee.ironMode() != GameMode.NONE) {
             player.message("That player is an ironman and can not gamble.");
             return;
         }

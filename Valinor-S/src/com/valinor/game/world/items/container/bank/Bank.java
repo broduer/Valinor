@@ -4,12 +4,11 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
-import com.valinor.game.content.items.CoalBag;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.magic.Autocasting;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
@@ -21,8 +20,6 @@ import com.valinor.util.Utils;
 
 import java.util.Arrays;
 import java.util.Optional;
-
-import static com.valinor.util.ItemIdentifiers.COAL;
 
 /**
  * Handles the Bank container.
@@ -168,7 +165,7 @@ public class Bank extends ItemContainer {
      * Opens the bank itemcontainer.
      */
     public void open() {
-        if (player.ironMode() == IronMode.ULTIMATE) {
+        if (player.ironMode() == GameMode.ULTIMATE) {
             player.messageBox("As an Ultimate Iron Man, you cannot use the bank.");
             return;
         }

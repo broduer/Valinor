@@ -14,7 +14,7 @@ import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
@@ -165,7 +165,7 @@ public class ItemsOnDeath {
         int keptItems = (Skulling.skulled(player) ? 0 : 3);
 
         // On Ultimate Iron Man, you drop everything!
-        if (player.ironMode() == IronMode.ULTIMATE) {
+        if (player.ironMode() == GameMode.ULTIMATE) {
             keptItems = 0;
         }
 
@@ -180,7 +180,7 @@ public class ItemsOnDeath {
             keptItems++;
         }
         // On Ultimate Iron Man, you drop everything!
-        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.ironMode() == IronMode.ULTIMATE) {
+        if (player.getSkullType().equals(SkullType.RED_SKULL) || player.ironMode() == GameMode.ULTIMATE) {
             keptItems = 0;
         }
         IKODTest.debug("keeping " + keptItems + " items");

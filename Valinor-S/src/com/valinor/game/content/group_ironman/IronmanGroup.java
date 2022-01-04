@@ -2,19 +2,16 @@ package com.valinor.game.content.group_ironman;
 
 import com.google.gson.annotations.Expose;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.bank.GroupStorage;
-import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.time.Instant;
 import java.util.*;
 
-import static com.valinor.game.world.entity.AttributeKey.HARDCORE_GROUP_FALLEN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_HARDCORE_IRONMAN;
 import static com.valinor.game.world.entity.mob.player.rights.PlayerRights.GROUP_IRON_MAN;
 
@@ -55,7 +52,7 @@ public class IronmanGroup {
         members.add(new IronmanGroupMember(player));
         return new IronmanGroup().setDateStated(Date.from(Instant.now()))
             .setLeaderName(player.getUsername())
-            .setHardcoreGroup(player.ironMode() == IronMode.HARDCORE)
+            .setHardcoreGroup(player.ironMode() == GameMode.HARDCORE)
             .setHardcoreLives(1)
             .setGroupName(player.getUsername())
             .setMembers(members);
@@ -69,12 +66,12 @@ public class IronmanGroup {
         }
 
         if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            player.setPlayerRights(player.ironMode() == IronMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
+            player.setPlayerRights(player.ironMode() == GameMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() + 1);
         }
     }
@@ -84,7 +81,7 @@ public class IronmanGroup {
         members.remove(member);
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
         }
     }
@@ -94,7 +91,7 @@ public class IronmanGroup {
         members.remove(member);
 
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(leader);
-        if(group.isPresent() && player.ironMode() == IronMode.HARDCORE) {
+        if(group.isPresent() && player.ironMode() == GameMode.HARDCORE) {
             group.get().setHardcoreLives(group.get().getHardcoreLives() - 1);
         }
     }
@@ -192,7 +189,7 @@ public class IronmanGroup {
         }
 
         //Check if the player being invited is an ironman
-        if(playerToInv.ironMode() == IronMode.NONE) {
+        if(playerToInv.ironMode() == GameMode.NONE) {
             leader.message(Color.RED.wrap("This player isn't a ironman."));
             return false;
         }

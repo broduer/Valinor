@@ -1,16 +1,11 @@
 package com.valinor.game.content.areas.edgevile;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
-import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.player.*;
-import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
-import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
-import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,7 +51,7 @@ public class IronManTutor extends Dialogue {
             default -> player.message("Only ironman players can claim their armour.");
         }
 
-        if (player.ironMode() != IronMode.NONE) {
+        if (player.ironMode() != GameMode.NONE) {
             DialogueManager.npcChat(player, Expression.HAPPY, NpcIdentifiers.IRON_MAN_TUTOR, "There you go. Wear it with pride.");
         }
     }

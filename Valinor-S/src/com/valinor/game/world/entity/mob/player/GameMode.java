@@ -4,7 +4,7 @@ package com.valinor.game.world.entity.mob.player;
  * @author Patrick van Elderen | March, 06, 2021, 14:46
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public enum IronMode {
+public enum GameMode {
 
     NONE(""),
     REGULAR("Ironman"),
@@ -13,7 +13,7 @@ public enum IronMode {
 
     public String name;
 
-    IronMode(String name) {
+    GameMode(String name) {
         this.name = name;
     }
 
@@ -22,7 +22,7 @@ public enum IronMode {
     }
 
     /**
-     * Determines if the {@link #name} is equal to {@link IronMode#REGULAR}
+     * Determines if the {@link #name} is equal to {@link GameMode#REGULAR}
      *
      * @return {@code true} if the player is of this type, otherwise {@code false}
      */
@@ -31,7 +31,7 @@ public enum IronMode {
     }
 
     /**
-     * Determines if the {@link #name} is equal to {@link IronMode#ULTIMATE}
+     * Determines if the {@link #name} is equal to {@link GameMode#ULTIMATE}
      *
      * @return {@code true} if the player is of this type, otherwise {@code false}
      */
@@ -40,7 +40,7 @@ public enum IronMode {
     }
 
     /**
-     * Determines if the {@link #name} is equal to {@link IronMode#HARDCORE}
+     * Determines if the {@link #name} is equal to {@link GameMode#HARDCORE}
      *
      * @return {@code true} if the player is of this type, otherwise {@code false}
      */

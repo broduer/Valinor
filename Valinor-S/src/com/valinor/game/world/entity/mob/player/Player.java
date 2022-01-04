@@ -103,7 +103,6 @@ import com.valinor.game.world.items.container.price_checker.PriceChecker;
 import com.valinor.game.world.items.container.rune_pouch.RunePouch;
 import com.valinor.game.world.object.OwnedObject;
 import com.valinor.game.world.object.dwarf_cannon.DwarfCannon;
-import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.ControllerManager;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
@@ -111,7 +110,6 @@ import com.valinor.game.world.route.routes.TargetRoute;
 import com.valinor.net.PlayerSession;
 import com.valinor.net.SessionState;
 import com.valinor.net.channel.ServerHandler;
-import com.valinor.net.login.LoginResponses;
 import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.packet.PacketSender;
 import com.valinor.net.packet.interaction.InteractionManager;
@@ -538,14 +536,14 @@ public class Player extends Mob {
         return this.inventory.containsAny(ids) || this.equipment.containsAny(ids) || this.bank.containsAny(ids);
     }
 
-    private IronMode ironMode = IronMode.NONE;
+    private GameMode gameMode = GameMode.NONE;
 
-    public IronMode ironMode() {
-        return ironMode;
+    public GameMode ironMode() {
+        return gameMode;
     }
 
-    public void ironMode(IronMode mode) {
-        ironMode = mode;
+    public void ironMode(GameMode mode) {
+        gameMode = mode;
     }
 
     private final GamblingSession gamblingSession = new GamblingSession(this);
@@ -2640,8 +2638,8 @@ public class Player extends Mob {
     public boolean nifflerCanStore(Mob target) {
         if (target != null && target.isPlayer()) {
             Player playerTarg = (Player) target;
-            var playerIsIron = ironMode.isIronman() || ironMode.isHardcoreIronman();
-            var targIsIron = playerTarg.ironMode.isIronman() || playerTarg.ironMode.isHardcoreIronman();
+            var playerIsIron = gameMode.isIronman() || gameMode.isHardcoreIronman();
+            var targIsIron = playerTarg.gameMode.isIronman() || playerTarg.gameMode.isHardcoreIronman();
             if (playerIsIron && !targIsIron) {
                 message(Color.RED.wrap(playerTarg.getUsername() + " is not a ironman, your Niffler cannot loot their items."));
                 return false;

@@ -7,7 +7,7 @@ import com.valinor.game.GameEngine;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupAverageSort;
 import com.valinor.game.content.group_ironman.sorts.IronmanGroupDateSort;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
@@ -107,7 +107,7 @@ public class IronmanGroupHandler extends Interaction {
 
         ironManGroups.add(newTeam);
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            player.setPlayerRights(player.ironMode() == IronMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
+            player.setPlayerRights(player.ironMode() == GameMode.HARDCORE ? GROUP_HARDCORE_IRONMAN : GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
         player.message("Your own group has been successfully created.");
@@ -217,10 +217,10 @@ public class IronmanGroupHandler extends Interaction {
     @Override
     public void onLogin(Player player) {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(player);
-        if(group.isPresent() && group.get().isHardcoreGroup() && player.ironMode() == IronMode.HARDCORE && !player.<Boolean>getAttribOr(HARDCORE_GROUP_FALLEN,false)) {
+        if(group.isPresent() && group.get().isHardcoreGroup() && player.ironMode() == GameMode.HARDCORE && !player.<Boolean>getAttribOr(HARDCORE_GROUP_FALLEN,false)) {
             var lives = group.get().getHardcoreLives();
             if(lives == 0) {
-                player.ironMode(IronMode.REGULAR);
+                player.ironMode(GameMode.REGULAR);
                 if(!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.IRON_MAN);
                     player.getPacketSender().sendRights();

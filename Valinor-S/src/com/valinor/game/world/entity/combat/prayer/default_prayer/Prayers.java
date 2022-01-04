@@ -9,7 +9,7 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
@@ -205,7 +205,7 @@ public class Prayers extends Interaction {
             return false;
         }
         if (prayer == DefaultPrayerData.PROTECT_ITEM) {
-            if (player.ironMode() == IronMode.ULTIMATE) {
+            if (player.ironMode() == GameMode.ULTIMATE) {
                 if (msg) {
                     player.getPacketSender().sendConfig(prayer.getConfigId(), 0);
                     player.message("As an Ultimate Iron Man, you cannot use the protect item prayer.");

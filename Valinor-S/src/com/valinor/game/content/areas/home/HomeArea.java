@@ -17,7 +17,7 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -292,7 +292,7 @@ public class HomeArea extends Interaction {
                 return true;
             }
             if (npc.id() == AUBURY) {
-                if(player.ironMode() == IronMode.NONE) {
+                if(player.ironMode() == GameMode.NONE) {
                     World.getWorld().shop(11).open(player);
                 } else {
                     World.getWorld().shop(23).open(player);

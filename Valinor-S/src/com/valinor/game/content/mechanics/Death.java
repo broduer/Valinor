@@ -4,8 +4,6 @@ import com.valinor.GameServer;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
-import com.valinor.game.content.daily_tasks.DailyTaskManager;
-import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
@@ -15,7 +13,6 @@ import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
@@ -26,11 +23,10 @@ import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
-import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
 import com.valinor.util.Icon;
@@ -212,7 +208,7 @@ public class Death {
             /**
              * HCIM - revoke status
              */
-            if (player.ironMode() == IronMode.HARDCORE) {
+            if (player.ironMode() == GameMode.HARDCORE) {
                 hardcoreDeath(player, killHit);
             }
 
@@ -334,7 +330,7 @@ public class Death {
                         member.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
                         member.getPacketSender().sendRights();
                     }
-                    member.ironMode(IronMode.REGULAR);
+                    member.ironMode(GameMode.REGULAR);
                 }
                 player.message(Color.PURPLE.wrap("Your group has lost their last life, you have been demoted to ironman."));
             } else {
@@ -347,7 +343,7 @@ public class Death {
             player.setPlayerRights(PlayerRights.GROUP_IRON_MAN);
             player.getPacketSender().sendRights();
         }
-        player.ironMode(IronMode.REGULAR);
+        player.ironMode(GameMode.REGULAR);
         player.message(Color.RED.wrap("You have fallen as a Hardcore Ironman, your Hardcore status has been revoked."));
         if (player.skills().totalLevel() >= 100) {
             String overall = Utils.formatMoneyString(player.skills().totalLevel());

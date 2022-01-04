@@ -33,7 +33,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.REGULAR);
+                player.ironMode(GameMode.REGULAR);
             }
             case 42403 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -41,7 +41,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.ULTIMATE);
+                player.ironMode(GameMode.ULTIMATE);
             }
             case 42423 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -49,7 +49,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.HARDCORE);
+                player.ironMode(GameMode.HARDCORE);
             }
             case 42405 -> {
                 player.getPacketSender().sendChangeSprite(42402, (byte) 0);
@@ -57,7 +57,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
-                player.ironMode(IronMode.NONE);
+                player.ironMode(GameMode.NONE);
             }
         }
     }
@@ -147,7 +147,7 @@ public class AccountSelection extends Interaction {
         return false;
     }
 
-    private void gearUp(Player player, IronMode type) {
+    private void gearUp(Player player, GameMode type) {
         switch (type) {
             case REGULAR -> {
                 player.resetSkills();
@@ -186,19 +186,19 @@ public class AccountSelection extends Interaction {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.IRON_MAN);
                 }
-                gearUp(player, IronMode.REGULAR);
+                gearUp(player, GameMode.REGULAR);
             }
             case 42403 -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.ULTIMATE_IRON_MAN);
                 }
-                gearUp(player, IronMode.ULTIMATE);
+                gearUp(player, GameMode.ULTIMATE);
             }
             case 42423 -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.HARDCORE_IRON_MAN);
                 }
-                gearUp(player, IronMode.HARDCORE);
+                gearUp(player, GameMode.HARDCORE);
             }
         }
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {

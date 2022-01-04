@@ -2,7 +2,7 @@ package com.valinor.game.content.items;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import com.valinor.game.world.entity.mob.player.IronMode;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -45,7 +45,7 @@ public class ExperienceLamp extends Interaction {
 
         if(button == 2831) { // Confirm
             if(player.inventory().contains(ANTIQUE_LAMP_11137)) {
-                if(player.ironMode() != IronMode.NONE) {
+                if(player.ironMode() != GameMode.NONE) {
                     player.message(Color.RED.wrap("Ironmans are unable to rub experience lamps."));
                     return true;
                 }

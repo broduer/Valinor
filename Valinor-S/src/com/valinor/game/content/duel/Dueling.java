@@ -1,7 +1,6 @@
 package com.valinor.game.content.duel;
 
 import com.valinor.GameServer;
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.Transmogrify;
@@ -25,7 +24,6 @@ import com.valinor.util.Color;
 import com.valinor.util.SecondsTimer;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -218,7 +216,7 @@ public class Dueling {
             return;
         }
 
-        if (t_.ironMode() != IronMode.NONE) {
+        if (t_.ironMode() != GameMode.NONE) {
             player.message("Your partner is an Iron man, and cannot stake.");
             return;
         }
