@@ -1,6 +1,7 @@
 package com.valinor.game.content.duel;
 
 import com.valinor.GameServer;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.Transmogrify;
@@ -412,8 +413,18 @@ public class Dueling {
             if (!validate(player, opponent, PlayerStatus.DUELING, DuelState.DUEL_SCREEN, DuelState.ACCEPTED_DUEL_SCREEN)) {
                 return;
             }
+            boolean illegalItem = false;
             Item stakeItem = new Item(id, amount);
+
             if (!stakeItem.rawtradable()) {
+                illegalItem = true;
+            }
+
+            if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == stakeItem.getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+                illegalItem = true;
+            }
+
+            if(illegalItem) {
                 player.message("You cannot stake that item.");
                 return;
             }

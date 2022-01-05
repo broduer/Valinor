@@ -1,9 +1,11 @@
 package com.valinor.game.world.items.container.shop;
 
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
@@ -262,18 +264,29 @@ public abstract class Shop {
             return;
         }
 
-        /*if (!item.rawtradable()) {
-            player.message("This item can't be sold to shops.");
-            return;
-        }*/
+        boolean illegalItem = false;
 
-        if (sellType() == SellType.NONE) {
-            player.message("You can't sell items to this shop.");
+        List<Integer> ILLEGAL_ITEMS_LIST = Arrays.asList(TASK_BOTTLE_CASKET, COINS_995, PLATINUM_TOKEN, CustomItemIdentifiers.VALINOR_COINS);
+
+        if(ILLEGAL_ITEMS_LIST.stream().anyMatch(i -> i == item.getId())) {
+            illegalItem = true;
+        }
+
+        if (Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+            illegalItem = true;
+        }
+
+        if (!item.rawtradable()) {
+            illegalItem = true;
+        }
+
+        if (illegalItem) {
+            player.message("This item can't be sold to shops.");
             return;
         }
 
-        if (item.getId() == TASK_BOTTLE_CASKET || item.getId() == BIG_CHEST || item.getId() == COINS_995 || item.getId() == PLATINUM_TOKEN || item.getId() == CustomItemIdentifiers.VALINOR_COINS) {
-            player.message("You can't sell this item.");
+        if (sellType() == SellType.NONE) {
+            player.message("You can't sell items to this shop.");
             return;
         }
 

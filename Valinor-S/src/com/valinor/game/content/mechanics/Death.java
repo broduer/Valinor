@@ -150,12 +150,6 @@ public class Death {
             //BH death logic
             if (killer != null && killer.isPlayer()) {
                 BountyHunter.onDeath(killer, player);
-                TopPkers.SINGLETON.increase(killer.getUsername());
-
-                //Other rewards
-                if (WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
-                    PlayerKillingRewards.reward(killer, player, true);
-                }
             }
 
             if (killer != null && player.getController() != null) {

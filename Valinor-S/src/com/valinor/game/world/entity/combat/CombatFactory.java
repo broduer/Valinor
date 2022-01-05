@@ -697,7 +697,7 @@ public class CombatFactory {
         if (entity.isPlayer()) {
             Player player = entity.getAsPlayer();
             if(other.isPlayer()) {
-                if (WildernessArea.isAtWildernessLimitForMac(entity.getAsPlayer())) {
+                if (WildernessArea.isAtWildernessLimitForMac(entity.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You are double logging and cannot attack other players.");
                     return false;
                 }

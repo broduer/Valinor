@@ -1,6 +1,7 @@
 package com.valinor.game.content.mechanics;
 
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.items_kept_on_death.Conversions;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
@@ -136,7 +137,7 @@ public class ItemsOnDeath {
         for (Item item : alwaysLostSpecial) {
             toDrop.remove(item); // not included in kept-3 if unskulled
             Item currency;
-            currency = new Item(COINS_995, item.getId() == LOOTING_BAG || item.getId() == LOOTING_BAG_22586 ? 1_250_000 : 2_500_000);
+            currency = new Item(COINS_995, item.getId() == LOOTING_BAG || item.getId() == LOOTING_BAG_22586 ? 500_000 : 2_500_000);
 
             outputDrop.add(currency); // this list isn't whats dropped its for logging
             GroundItemHandler.createGroundItem(new GroundItem(currency, player.tile(), theKiller)); // manually drop it here
@@ -359,6 +360,12 @@ public class ItemsOnDeath {
                 player.inventory().add(item);
                 outputKept.add(item);
                 return;
+            }
+
+            if(player.gameMode() == GameMode.INSTANT_PKER) {
+                if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(item1 -> item1.getId() == item.getId())) {
+                    return;
+                }
             }
 
             //Drop item

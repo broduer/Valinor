@@ -1,6 +1,7 @@
 package com.valinor.game.content.gambling;
 
 import com.valinor.GameServer;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.gambling.impl.Flower;
 import com.valinor.game.content.gambling.impl.FlowerPoker;
 import com.valinor.game.world.InterfaceConstants;
@@ -19,6 +20,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GamblingSession {
@@ -439,8 +441,19 @@ public class GamblingSession {
             if (!validate(player, opponent, GambleState.PLACING_BET)) {
                 return;
             }
+
+            boolean illegalItem = false;
             Item gambleItem = new Item(id, amount);
+
             if (!gambleItem.rawtradable()) {
+                illegalItem = true;
+            }
+
+            if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == gambleItem.getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+                illegalItem = true;
+            }
+
+            if(illegalItem) {
                 player.message("You cannot gamble that item.");
                 return;
             }

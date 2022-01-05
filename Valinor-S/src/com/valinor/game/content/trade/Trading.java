@@ -1,5 +1,6 @@
 package com.valinor.game.content.trade;
 
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.InterfaceConstants;
@@ -422,8 +423,19 @@ public class Trading {
         if (!validate(player, interact, TradeState.TRADE_SCREEN, TradeState.ACCEPTED_TRADE_SCREEN)) {
             return;
         }
+
+        boolean illegalItem = false;
         Item tradeItem = new Item(id, amount);
+
         if (!tradeItem.rawtradable()) {
+            illegalItem = true;
+        }
+
+        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == tradeItem.getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+            illegalItem = true;
+        }
+
+        if(illegalItem) {
             player.message("You cannot trade that item.");
             return;
         }

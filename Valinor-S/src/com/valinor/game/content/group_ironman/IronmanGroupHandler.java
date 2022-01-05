@@ -73,14 +73,11 @@ public class IronmanGroupHandler extends Interaction {
      */
     @Override
     public boolean onLogout(Player player) {
-        System.out.println("huh trigger");
-        //But this one doesnt
         Optional<IronmanGroup> group = getPlayersGroup(player);
         if(group.isPresent()) {
             group.get().updatePlayer(player);
             saveIronmanGroups();
             clearInvitation(player);
-            System.out.println("trigger");
             return true;
         }
         return false;

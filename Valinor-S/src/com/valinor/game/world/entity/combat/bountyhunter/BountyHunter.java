@@ -3,6 +3,8 @@ package com.valinor.game.world.entity.combat.bountyhunter;
 import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
+import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
@@ -214,17 +216,26 @@ public class BountyHunter {
             killer.getRecentKills().add(killed.getHostAddress());
         }
 
-        Optional<Player> target = getTargetfor(killer);
-
         if(killer.getPlayerRights().isDeveloperOrGreater(killer)) {
             rewardPlayer = true;
         }
 
+        if (rewardPlayer) {
+            TopPkers.SINGLETON.increase(killer.getUsername());
+
+            //Other rewards
+            if(WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
+                PlayerKillingRewards.reward(killer, killed,true);
+            }
+        } else {
+            killer.message("You don't get any rewards for that kill.");
+            //Player is probably farming kills.
+        }
+
+        Optional<Player> target = getTargetfor(killer);
+
         //Check if the player killed was our target..
         if (target.isPresent() && target.get().equals(killed)) {
-            if (!rewardPlayer) {
-                killer.message("You don't get any rewards for that kill.");
-            }
 
             //Reset targets
             unassign(killer);

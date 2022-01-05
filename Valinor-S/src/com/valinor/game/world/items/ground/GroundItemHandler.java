@@ -1,5 +1,6 @@
 package com.valinor.game.world.items.ground;
 
+import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.tournaments.TournamentManager;
@@ -193,8 +194,14 @@ public final class GroundItemHandler {
             return false;
         }
 
-        if (item.getItem().getId() >= 2412 && item.getItem().getId() <= 2414) {
-            player.message("The cape vanishes as it touches the ground.");
+        boolean illegalItem = item.getItem().getId() >= 2412 && item.getItem().getId() <= 2414;
+
+        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+            illegalItem = true;
+        }
+
+        if(illegalItem) {
+            player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
             return false;
         }
 
