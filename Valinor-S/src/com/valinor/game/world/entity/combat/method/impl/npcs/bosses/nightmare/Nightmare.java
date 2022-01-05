@@ -34,6 +34,8 @@ public class Nightmare extends Npc {
 
     private boolean shield;
 
+    public ArrayList<Mob> husksSpawned = new ArrayList<>();
+
     public Nightmare(int id, Tile tile) {
         super(id, tile.copy());
     }

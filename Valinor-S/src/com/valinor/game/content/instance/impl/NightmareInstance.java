@@ -5,7 +5,11 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.TotemPlugin;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
@@ -21,7 +25,7 @@ import static com.valinor.util.NpcIdentifiers.*;
 public class NightmareInstance {
 
     private static final Map<String, NightmareInstance> INSTANCES = new HashMap<>();
-
+    public static final Area THE_NIGHTMARE_AREA = new Area(3859, 9941, 3886, 9962);
     private final int instanceLevel;
     private final Tile ENTRANCE_POINT = new Tile(3872, 9942);
     private static final Tile THE_NIGHTMARE_SPAWN_TILE = new Tile(3870, 9949);
@@ -66,6 +70,7 @@ public class NightmareInstance {
             nightmare.transmog(THE_NIGHTMARE_9425);
             nightmare.setHitpoints(nightmare.maxHp());
             nightmare.animate(-1);
+            nightmare.getCombat().attack(Utils.randomElement(players));
         });
     }
 
@@ -134,7 +139,15 @@ public class NightmareInstance {
             World.getWorld().unregisterNpc(t);
         }
         if (nightmare.isRegistered() || nightmare != null || !nightmare.dead()) {
+            nightmare.husksSpawned.clear();
             World.getWorld().unregisterNpc(nightmare);
+        }
+
+        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+            if (!gi.getTile().inArea(THE_NIGHTMARE_AREA))
+                continue;
+
+            GroundItemHandler.sendRemoveGroundItem(gi);
         }
     }
 }

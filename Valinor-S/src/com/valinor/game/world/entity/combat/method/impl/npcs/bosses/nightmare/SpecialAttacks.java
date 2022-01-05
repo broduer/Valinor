@@ -95,6 +95,10 @@ public enum SpecialAttacks {
     HUSKS(8599, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
+            //If there are more then 10 husks spawned, we do not continue
+            if(nm.husksSpawned.size() > 10) {
+                return;
+            }
             int size = nm.playersInRegion() > 1 ? nm.playersInRegion() / 2 : nm.playersInRegion();
             ArrayList<Mob> targets = nm.getPossibleTargets(64, true, false);
             Collections.shuffle(targets);
@@ -118,12 +122,13 @@ public enum SpecialAttacks {
                 if (pos != null) {
                     Husk husk = new Husk(9466, pos[0], target, nm);
                     husk.spawn(false);
+                    nm.husksSpawned.add(husk);
                     Husk husk2 = new Husk(9467, pos[1], target, nm);
                     husk2.spawn(false);
+                    nm.husksSpawned.add(husk2);
                 }
             }
         }
-
     },
 
     FLOWER_POWER(8601, Nightmare.CENTER) {
@@ -237,6 +242,7 @@ public enum SpecialAttacks {
                     if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
                         victim.graphic(1765);
                         Parasite parasite = (Parasite) new Parasite(World.getWorld().random(5) == 3 ? 9469 : 9468, victim.tile().copy()).spawn(false);
+                        parasite.getCombat().setTarget(victim);
                         parasites.add(parasite);
                         victim.clearAttrib(AttributeKey.NIGHTMARE_BABY_DADY);
                     }
@@ -244,7 +250,7 @@ public enum SpecialAttacks {
             }).then(3, () -> {
                 for (Parasite parasite : parasites) {
                     parasite.unlock();
-                    parasite.getCombat().setTarget(nm);
+                    //parasite.getCombat().setTarget(nm);
                     parasite.face(nm.tile());
                 }
             });

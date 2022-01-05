@@ -6,8 +6,12 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.game.content.instance.impl.NightmareInstance.THE_NIGHTMARE_AREA;
+import static com.valinor.util.NpcIdentifiers.GROWTHLING;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -27,6 +31,7 @@ public class NightmareCombat extends CommonCombatMethod {
             case 2 -> special = SpecialAttacks.HUSKS;
             case 3 -> special = SpecialAttacks.CURSE;
             case 4 -> special = SpecialAttacks.PARASITES;
+            //default -> special = SpecialAttacks.HUSKS;
         }
     }
 
@@ -35,7 +40,7 @@ public class NightmareCombat extends CommonCombatMethod {
         Nightmare nightmare = (Nightmare) mob;
 
         //Force a special attack for now
-        if(World.getWorld().rollDie(10, 2)) {
+        if(World.getWorld().rollDie(10, 5)) {
             doSpecialAttack();
         }
 
@@ -115,5 +120,15 @@ public class NightmareCombat extends CommonCombatMethod {
     public void onDeath() {
         target.message("You have defeated The Nightmare!");
         target.message("You can leave by using the energy barrier.");
+
+        World.getWorld().getNpcs().forEachInArea(THE_NIGHTMARE_AREA, n -> {
+            if(n.def().name.toLowerCase().contains("nightmare")) {
+                Nightmare nightmare = (Nightmare) n;
+                if(nightmare != null) {
+                    nightmare.husksSpawned.clear();
+                }
+            }
+            n.hit(n, n.hp());
+        });
     }
 }
