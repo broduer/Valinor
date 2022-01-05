@@ -74,7 +74,7 @@ public class YellCommand implements Command {
                 case IRON_MAN -> nameColour = Color.DARKGREY.tag();
                 case GOLD_YOUTUBER, SILVER_YOUTUBER, BRONZE_YOUTUBER -> nameColour = Color.GREEN.tag();
                 case MODERATOR -> nameColour = Color.WHITE.tag();
-                case ADMINISTRATOR, HARDCORE_IRON_MAN, EVENT_MANAGER, OWNER -> nameColour = Color.RED.tag();
+                case ADMINISTRATOR, HARDCORE_IRON_MAN, EVENT_MANAGER, INSTANT_PKER, OWNER -> nameColour = Color.RED.tag();
                 case SUPPORT -> nameColour = Color.CYAN.tag();
             }
         }

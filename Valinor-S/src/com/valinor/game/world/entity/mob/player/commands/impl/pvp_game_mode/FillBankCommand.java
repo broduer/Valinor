@@ -22,6 +22,7 @@ public class FillBankCommand implements Command {
         player.getBank().addAll(BANK_ITEMS);
         System.arraycopy(TAB_AMOUNT, 0, player.getBank().tabAmounts, 0, TAB_AMOUNT.length);
         player.getBank().shift();
+        player.message("We have filled up your bank with starter items.");
     }
 
     @Override

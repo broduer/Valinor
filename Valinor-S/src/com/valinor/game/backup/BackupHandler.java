@@ -52,7 +52,6 @@ public class BackupHandler {
             .collect(Collectors.toList());
 
         playerBackups.forEach(backupRequests::remove);
-        System.out.println(playerBackups);
         try(FileOutputStream fos = new FileOutputStream(new File(backupFolder, DateFormatUtils.format(System.currentTimeMillis(), "MMM-dd-yyyy HH-mm") + ".zip"))){
             ZipOutputStream archive = new ZipOutputStream(fos);
             playerBackups.forEach(file -> {

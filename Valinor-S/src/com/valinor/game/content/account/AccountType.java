@@ -10,6 +10,7 @@ public enum AccountType {
     ULTIMATE_IRON_MAN(42403),
     HARDCORE_IRON_MAN(42423),
     REGULAR_ACCOUNT(42405),
+    INSTANT_PKER_ACCOUNT(42431),
     NONE(-1);
 
     private final int button;
@@ -27,7 +28,7 @@ public enum AccountType {
      * @return The spriteId
      */
     public int getSpriteId() {
-        return 42402 + (ordinal() * 1);
+        return 42402 + (ordinal());
     }
 
     /**

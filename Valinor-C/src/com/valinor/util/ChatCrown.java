@@ -34,6 +34,7 @@ public enum ChatCrown {
     DARK_LORD("<img=25</img>", 1838),
     SECURITY_MOD("<img=26</img>", 1861),
     EVENT_MANAGER("<img=27</img>", 468),
+    INSTANT_PKER("<img=28</img>", 506),
 
     // Extras
     SUPPORT("<img=14</img>", 505),
@@ -57,7 +58,7 @@ public enum ChatCrown {
         return spriteId;
     }
 
-    private static final Set<ChatCrown> STAFF = EnumSet.of(MOD_CROWN, ADMIN_CROWN, OWNER_CROWN, DEVELOPER, SUPPORT, SECURITY_MOD, EVENT_MANAGER, BRONZE_YOUTUBER, SILVER_YOUTUBER, GOLD_YOUTUBER, IRON_MAN, HARDCORE_IRONMAN, DARK_LORD);
+    private static final Set<ChatCrown> STAFF = EnumSet.of(MOD_CROWN, ADMIN_CROWN, OWNER_CROWN, DEVELOPER, SUPPORT, SECURITY_MOD, EVENT_MANAGER, INSTANT_PKER, BRONZE_YOUTUBER, SILVER_YOUTUBER, GOLD_YOUTUBER, IRON_MAN, HARDCORE_IRONMAN, DARK_LORD);
 
     public boolean isStaff() {
         return STAFF.contains(this);

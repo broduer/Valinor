@@ -22,6 +22,7 @@ public enum PlayerRights {
     DARK_LORD(ChatCrown.DARK_LORD),
     SECURITY_MOD(ChatCrown.SECURITY_MOD),
     EVENT_MANAGER(ChatCrown.EVENT_MANAGER),
+    INSTANT_PKER(ChatCrown.INSTANT_PKER),
     ;
 
     private final ChatCrown crown;

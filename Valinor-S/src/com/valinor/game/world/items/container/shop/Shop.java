@@ -272,7 +272,7 @@ public abstract class Shop {
             illegalItem = true;
         }
 
-        if (Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+        if (Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
             illegalItem = true;
         }
 

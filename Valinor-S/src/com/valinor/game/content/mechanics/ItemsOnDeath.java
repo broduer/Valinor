@@ -363,7 +363,7 @@ public class ItemsOnDeath {
             }
 
             if(player.gameMode() == GameMode.INSTANT_PKER) {
-                if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(item1 -> item1.getId() == item.getId())) {
+                if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(item1 -> item1.unnote().getId() == item.getId())) {
                     return;
                 }
             }

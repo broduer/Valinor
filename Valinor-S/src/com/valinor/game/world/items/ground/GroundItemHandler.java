@@ -196,7 +196,8 @@ public final class GroundItemHandler {
 
         boolean illegalItem = item.getItem().getId() >= 2412 && item.getItem().getId() <= 2414;
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
+            && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
             illegalItem = true;
         }
 

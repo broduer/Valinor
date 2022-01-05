@@ -56,6 +56,7 @@ public class CommandManager {
         commands.put("rangepot", new RangePotCommand());
         commands.put("food", new FoodCommand());
         commands.put("barrage", new BarrageCommand());
+        commands.put("fillbank", new FillBankCommand());
         commands.put("veng", new VengCommand());
         commands.put("tb", new TeleblockCommand());
         //Regular commands

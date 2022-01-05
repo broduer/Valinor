@@ -30,6 +30,7 @@ public class ShowCommandsListCommand implements Command {
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::barrage</col> - Spawns some barrage runes.");
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::veng</col> - Spawns some vengeance runes.");
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::tb</col> - Spawns some teleblock runes.");
+            commands.add("<br><col=" + Color.RED.getColorValue() + ">::fillbank</col> - Refills your bank with the starter items.");
         }
         commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Regular Commands:</col>");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::changepassword</col> - Change your password.");

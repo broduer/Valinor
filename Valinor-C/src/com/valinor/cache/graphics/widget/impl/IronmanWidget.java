@@ -212,6 +212,7 @@ public class IronmanWidget extends Widget {
         addClickableSprites(42425, "Toggle", 490, 491, 547);
         addClickableSprites(42426, "Toggle", 490, 491, 547);
         addClickableSprites(42427, "Toggle", 490, 491, 547);
+        addClickableSprites(42431, "Toggle", 490, 491, 547);
         addText(42428, "Rookie: X75 experience, no drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42429, "Challenger: X30 experience, 5% drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42430, "Gladiator: X7.5 experience, 10% drop rate bonus.", font, 0, 0xFD851A, false, true);
@@ -224,25 +225,27 @@ public class IronmanWidget extends Widget {
         addText(42422, "Hardcore Iron Man", font, 0, 0xFFFFFF, false, true);
         addText(42410, "No Iron man restrictions will be applied to this account.", font, 0, 0xFD851A, false, true);
         addText(42415, "Regular account", font, 0, 0xFFFFFF, false, true);
+        addText(42432, "PvP account", font, 0, 0xFFFFFF, false, true);
+        addText(42433, "PvP ready account.", font, 0, 0xFD851A, false, true);
 
         addText(42417, "Select your game mode", font, 1, 0xFFFFFF, false, true);
         addText(42418, "Select your experience mode", font, 1, 0xFFFFFF, false, true);
         hoverButton(42419, "Confirm and Continue", 1767, 1768);
 
-        setChildren(23, widget);
+        setChildren(26, widget);
         setBounds(42401, 15, 28, 0, widget);
-        setBounds(42402, 30, 88, 1, widget);
-        setBounds(42403, 30, 123, 2, widget);
-        setBounds(42423, 30, 150, 3, widget);
-        setBounds(42405, 30, 178, 4, widget);
-        setBounds(42407, 50, 99, 5, widget);
-        setBounds(42408, 50, 135, 6, widget);
-        setBounds(42424, 50, 163, 7, widget);
-        setBounds(42410, 50, 191, 8, widget);
-        setBounds(42412, 50, 89, 9, widget);
-        setBounds(42413, 50, 125, 10, widget);
-        setBounds(42422, 50, 153, 11, widget);
-        setBounds(42415, 50, 180, 12, widget);
+        setBounds(42402, 30, 85, 1, widget);
+        setBounds(42403, 30, 114, 2, widget);
+        setBounds(42423, 30, 138, 3, widget);
+        setBounds(42405, 30, 159, 4, widget);
+        setBounds(42407, 50, 96, 5, widget);
+        setBounds(42408, 50, 128, 6, widget);
+        setBounds(42424, 50, 150, 7, widget);
+        setBounds(42410, 50, 172, 8, widget);
+        setBounds(42412, 50, 87, 9, widget);
+        setBounds(42413, 50, 117, 10, widget);
+        setBounds(42422, 50, 139, 11, widget);
+        setBounds(42415, 50, 160, 12, widget);
         setBounds(42417, 150, 69, 13, widget);
         setBounds(42418, 125, 210, 14, widget);
         setBounds(42419, 465, 34, 15, widget);
@@ -253,5 +256,8 @@ public class IronmanWidget extends Widget {
         setBounds(42428, 130, 239, 20, widget);
         setBounds(42429, 130, 259, 21, widget);
         setBounds(42430, 130, 281, 22, widget);
+        setBounds(42431, 30, 182, 23, widget);
+        setBounds(42432, 50, 182, 24, widget);
+        setBounds(42433, 50, 193, 25, widget);
     }
 }

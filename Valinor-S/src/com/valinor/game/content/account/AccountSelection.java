@@ -9,6 +9,8 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 
+import static com.valinor.game.GameConstants.BANK_ITEMS;
+import static com.valinor.game.GameConstants.TAB_AMOUNT;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -33,6 +35,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42431, (byte) 0);
                 player.gameMode(GameMode.REGULAR);
             }
             case 42403 -> {
@@ -41,6 +44,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42431, (byte) 0);
                 player.gameMode(GameMode.ULTIMATE);
             }
             case 42423 -> {
@@ -49,6 +53,7 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42431, (byte) 0);
                 player.gameMode(GameMode.HARDCORE);
             }
             case 42405 -> {
@@ -57,7 +62,20 @@ public class AccountSelection extends Interaction {
                 player.getPacketSender().sendChangeSprite(42423, (byte) 0);
                 player.getPacketSender().sendChangeSprite(42405, (byte) 2);
                 player.getPacketSender().sendChangeSprite(42406, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42431, (byte) 0);
                 player.gameMode(GameMode.NONE);
+            }
+            case 42431 -> {
+                player.getPacketSender().sendChangeSprite(42402, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42403, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42423, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42405, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42406, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42431, (byte) 2);
+                player.getPacketSender().sendChangeSprite(42425, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42426, (byte) 0);
+                player.getPacketSender().sendChangeSprite(42427, (byte) 0);
+                player.gameMode(GameMode.INSTANT_PKER);
             }
         }
     }
@@ -104,6 +122,8 @@ public class AccountSelection extends Interaction {
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42423);
                     } else if (button == 42405) {
                         player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42405);
+                    } else if (button == 42431) {
+                        player.putAttrib(AttributeKey.GAME_MODE_SELECTED,42431);
                     }
                     player.getTimers().register(TimerKey.CLICK_DELAY,2);
                     refreshMode(player);
@@ -114,6 +134,11 @@ public class AccountSelection extends Interaction {
 
         if(button > 42424 && button < 42428) {
             if(player.getTimers().has(TimerKey.CLICK_DELAY)) {
+                return true;
+            }
+
+            if (player.<Integer>getAttribOr(AttributeKey.GAME_MODE_SELECTED,42405) == 42431) {
+                player.message("As an instant pker you have no exp modes.");
                 return true;
             }
 
@@ -166,10 +191,25 @@ public class AccountSelection extends Interaction {
                 player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATEBODY, 1), true);
                 player.getInventory().add(new Item(HARDCORE_IRONMAN_PLATELEGS, 1), true);
             }
+
+            case INSTANT_PKER -> {
+                player.getBank().addAll(BANK_ITEMS);
+                System.arraycopy(TAB_AMOUNT, 0, player.getBank().tabAmounts, 0, TAB_AMOUNT.length);
+                player.getBank().shift();
+                player.message("Your bank has been filled with PvP supplies.");
+
+                for (int skill = 0; skill < Skills.SKILL_COUNT; skill++) {
+                    player.skills().setXp(skill, Skills.levelToXp(99));
+                    player.skills().update();
+                    player.skills().recalculateCombat();
+                }
+            }
         }
 
-        player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-        player.message("You have been given some training equipment.");
+        if(type != GameMode.INSTANT_PKER) {
+            player.getInventory().addAll(GameConstants.STARTER_ITEMS);
+            player.message("You have been given some training equipment.");
+        }
 
         //Set default spellbook
         player.setSpellbook(MagicSpellbook.NORMAL);
@@ -199,6 +239,12 @@ public class AccountSelection extends Interaction {
                     player.setPlayerRights(PlayerRights.HARDCORE_IRON_MAN);
                 }
                 gearUp(player, GameMode.HARDCORE);
+            }
+            case 42431 -> {
+                if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    player.setPlayerRights(PlayerRights.INSTANT_PKER);
+                }
+                gearUp(player, GameMode.INSTANT_PKER);
             }
         }
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
