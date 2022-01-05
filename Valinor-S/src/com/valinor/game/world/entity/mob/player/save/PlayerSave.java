@@ -6,6 +6,7 @@ import com.google.gson.InstanceCreator;
 import com.google.gson.internal.ConstructorConstructor;
 import com.valinor.GameServer;
 import com.valinor.db.transactions.UpdatePasswordDatabaseTransaction;
+import com.valinor.game.backup.BackupHandler;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
@@ -1351,7 +1352,9 @@ public class PlayerSave {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("./data/saves/characters/" + username + ".json", false))) {
+            File file = new File("./data/saves/characters/" + username + ".json");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
+                BackupHandler.requestBackup(BackupHandler.BackupType.PLAYER, file);
                 writer.write(PlayerSave.SERIALIZE.toJson(this));
                 writer.flush();
             }

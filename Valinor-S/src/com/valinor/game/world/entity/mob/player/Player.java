@@ -24,7 +24,6 @@ import com.valinor.game.content.kill_logs.BossKillLog;
 import com.valinor.game.content.kill_logs.SlayerKillLog;
 import com.valinor.game.content.mechanics.*;
 import com.valinor.game.content.mechanics.item_dispenser.ItemDispenser;
-import com.valinor.game.content.mechanics.promo.PaymentPromo;
 import com.valinor.game.content.mechanics.referrals.Referrals;
 import com.valinor.game.content.minigames.Minigame;
 import com.valinor.game.content.minigames.MinigameManager;
@@ -562,12 +561,6 @@ public class Player extends Mob {
 
     public void setVorkathState(VorkathState state) {
         this.state = state;
-    }
-
-    private final PaymentPromo paymentPromo = new PaymentPromo(this);
-
-    public PaymentPromo getPaymentPromo() {
-        return paymentPromo;
     }
 
     private final PetInsurance petInsurance = new PetInsurance(this);

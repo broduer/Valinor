@@ -1,5 +1,5 @@
 cameraSpeed = SLOW
-zoom_distance = 680
+zoom_distance = 855
 drag_item_value = 10
 player_attack_priority = 0
 npc_attack_priority = 2
@@ -43,6 +43,6 @@ toggle_npc_overhead_names = false
 toggle_npc_overhead_hp = false
 ground_snow = true
 show_pet_options = true
-draw_fps = false
+draw_fps = true
 moving_prayers = false
 sky_snow = false

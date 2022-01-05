@@ -1,6 +1,7 @@
 package com.valinor;
 
 import com.valinor.game.GameBuilder;
+import com.valinor.game.backup.BackupHandler;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.shootingStars.ShootingStars;
@@ -54,6 +55,7 @@ public final class Bootstrap {
         gameBuilder.initialize();
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
+        BackupHandler.begin();
         HostBlacklist.loadBlacklist();
         Item.onServerStart();
         Impling.onServerStartup();
