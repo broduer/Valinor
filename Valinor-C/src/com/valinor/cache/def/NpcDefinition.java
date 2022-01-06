@@ -46,6 +46,7 @@ public final class NpcDefinition {
         }
         if(dump) {
             dump();
+            dumpNpcList();
         }
     }
 
@@ -128,6 +129,25 @@ public final class NpcDefinition {
         }*/
 
         return npcDefinition;
+    }
+
+    public static void dumpNpcList() {
+        File f = new File(System.getProperty("user.home") + "/Desktop/npclist.txt");
+        try {
+            f.createNewFile();
+            BufferedWriter bf = new BufferedWriter(new FileWriter(f));
+            for (int id = 0; id < NpcDefinition.totalNPCs; id++) {
+                NpcDefinition definition = NpcDefinition.get(id);
+                if (definition.name == null || definition.name.equals("null") ||
+                    definition.name.isEmpty()) continue;
+
+                bf.write(id+" - " + definition.name);
+                bf.write(System.getProperty("line.separator"));
+            }
+            bf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void dump() {

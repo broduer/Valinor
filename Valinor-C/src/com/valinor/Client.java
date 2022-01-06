@@ -8441,7 +8441,7 @@ public class Client extends GameApplet {
                     if (local_player.idle_animation_id != -1) {
                         build.skin();
                         try {
-                            build.interpolate(Sequence.cache[local_player.idle_animation_id].primaryFrames[0]);
+                            build.interpolate(Sequence.cache[local_player.idle_animation_id].frameIDs[0]);
                         } catch (ArrayIndexOutOfBoundsException error) {
                             addReportToServer("[CATCHING ERROR] Support_opcode: [327] : [328] - Frame overflow");
                         }
@@ -10010,7 +10010,7 @@ public class Client extends GameApplet {
                     i1 = -1;
                 int i2 = stream.readUByte();
                 if (i1 == npc.animation && i1 != -1) {
-                    int l2 = Sequence.cache[i1].replayMode;
+                    int l2 = Sequence.cache[i1].replyMode;
                     if (l2 == 1) {
                         npc.current_animation_frame = 0;
                         npc.current_animation_duration = 0;
@@ -11115,7 +11115,7 @@ public class Client extends GameApplet {
                     entity.animation = -1;
                 }
                 Sequence animation_2 = Sequence.cache[entity.animation];
-                if (animation_2.animatingPrecedence == 1 && entity.remaining_steps > 0 && entity.initiate_movement <= game_tick && entity.cease_movement < game_tick) {
+                if (animation_2.precedenceAnimating == 1 && entity.remaining_steps > 0 && entity.initiate_movement <= game_tick && entity.cease_movement < game_tick) {
                     entity.animation_delay = 1;
                     return;
                 }
@@ -11126,16 +11126,16 @@ public class Client extends GameApplet {
                     entity.current_animation_duration -= animation_3.duration(entity.current_animation_frame);
 
                 if (entity.current_animation_frame >= animation_3.frameCount) {
-                    entity.current_animation_frame -= animation_3.loopOffset;
+                    entity.current_animation_frame -= animation_3.frameStep;
                     entity.animation_loops++;
-                    if (entity.animation_loops >= animation_3.maximumLoops)
+                    if (entity.animation_loops >= animation_3.maxLoops)
                         entity.animation = -1;
                     if (entity.current_animation_frame < 0 || entity.current_animation_frame >= animation_3.frameCount)
                         entity.animation = -1;
                 }
                 entity.next_animation_frame = entity.current_animation_frame + 1;
                 if (entity.next_animation_frame >= animation_3.frameCount) {
-                    if (entity.animation_loops >= animation_3.maximumLoops)
+                    if (entity.animation_loops >= animation_3.maxLoops)
                         entity.next_animation_frame = entity.current_animation_frame + 1;
                     if (entity.next_animation_frame < 0 || entity.next_animation_frame >= animation_3.frameCount)
                         entity.next_animation_frame = entity.current_animation_frame;
@@ -12294,7 +12294,7 @@ public class Client extends GameApplet {
                     } else {
                         try {
                             Sequence animation = Sequence.cache[anim];
-                            model = child.get_animated_model(animation.secondaryFrames[child.currentFrame], animation.primaryFrames[child.currentFrame], selected);
+                            model = child.get_animated_model(animation.secondaryFrames[child.currentFrame], animation.frameIDs[child.currentFrame], selected);
                         } catch (Exception e) {
                             e.printStackTrace();
                             addReportToServer(e.getMessage());
@@ -12896,8 +12896,8 @@ public class Client extends GameApplet {
             // Load the gfx...
             try {
 
-                if (Animation.animationlist[SpotAnimation.cache[player.graphic_id].seq.primaryFrames[0] >> 16].length == 0) {
-                    resourceProvider.provide(1, SpotAnimation.cache[player.graphic_id].seq.primaryFrames[0] >> 16);
+                if (Animation.animationlist[SpotAnimation.cache[player.graphic_id].seq.frameIDs[0] >> 16].length == 0) {
+                    resourceProvider.provide(1, SpotAnimation.cache[player.graphic_id].seq.frameIDs[0] >> 16);
                 }
 
             } catch (Exception e) {
@@ -12911,7 +12911,7 @@ public class Client extends GameApplet {
             int delay = buffer.readNegUByte();
 
             if (animation == player.animation && animation != -1) {
-                int replayMode = Sequence.cache[animation].replayMode;
+                int replayMode = Sequence.cache[animation].replyMode;
                 if (replayMode == 1) {
                     player.current_animation_frame = 0;
                     player.current_animation_duration = 0;
@@ -13749,7 +13749,7 @@ public class Client extends GameApplet {
                         child.lastFrameTime -= animation.duration(child.currentFrame) + 1;
                         child.currentFrame++;
                         if (child.currentFrame >= animation.frameCount) {
-                            child.currentFrame -= animation.loopOffset;
+                            child.currentFrame -= animation.frameStep;
                             if (child.currentFrame < 0 || child.currentFrame >= animation.frameCount)
                                 child.currentFrame = 0;
                         }

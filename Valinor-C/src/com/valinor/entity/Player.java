@@ -33,14 +33,14 @@ public final class Player extends Entity {
              * MAKE SURE WE'VE LOADED THE GRAPHIC BEFORE ATTEMPTING TO DO IT.
              * Fixes graphics flickering.
              */
-            if (Animation.animationlist[anim.seq.primaryFrames[0] >> 16].length == 0) {
+            if (Animation.animationlist[anim.seq.frameIDs[0] >> 16].length == 0) {
                 model = null;
             }
             if(model != null) {
                 Model graphic = new Model(false, Animation.noAnimationInProgress(super.current_animation_id), false, model);
                 graphic.translate(0, -super.graphic_height, 0);
                 graphic.skin();
-                graphic.interpolate(anim.seq.primaryFrames[super.current_animation_id]);
+                graphic.interpolate(anim.seq.frameIDs[super.current_animation_id]);
                 graphic.face_skin = null;
                 graphic.vertex_skin = null;
                 if(anim.model_scale_x != 128 || anim.model_scale_y != 128)
@@ -216,29 +216,29 @@ public final class Player extends Entity {
         if(desc != null) {
             if(super.animation >= 0 && super.animation_delay == 0) {
                 final Sequence seq = Sequence.cache[super.animation];
-                current_frame = seq.primaryFrames[super.current_animation_frame];
+                current_frame = seq.frameIDs[super.current_animation_frame];
             }
             return desc.get_animated_model(-1, current_frame, null);
         }
 
         if(super.animation >= 0 && super.animation_delay == 0) {
             Sequence seq = Sequence.cache[super.animation];
-            current_frame = seq.primaryFrames[super.current_animation_frame];
+            current_frame = seq.frameIDs[super.current_animation_frame];
             if(super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id) {
-                animation = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
+                animation = Sequence.cache[super.queued_animation_id].frameIDs[super.queued_animation_frame];
             }
 
-            if(seq.playerOffhand >= 0) {
-                shield_delta = seq.playerOffhand;
+            if(seq.leftHandItem >= 0) {
+                shield_delta = seq.leftHandItem;
                 offset += shield_delta - player_appearance[5] << 40;
             }
-            if(seq.playerMainhand >= 0) {
-                weapon_delta = seq.playerMainhand;
+            if(seq.rightHandItem >= 0) {
+                weapon_delta = seq.rightHandItem;
                 offset += weapon_delta - player_appearance[3] << 48;
             }
         } else if(super.queued_animation_id >= 0) {
             Sequence seq = Sequence.cache[super.queued_animation_id];
-            current_frame = seq.primaryFrames[super.queued_animation_frame];
+            current_frame = seq.frameIDs[super.queued_animation_frame];
         }
         Model model = (Model) model_cache.get(offset);
         if(model == null) {

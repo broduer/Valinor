@@ -33,7 +33,7 @@ public final class StaticObject extends Renderable {
         if(model == null) {
             return null;
         }
-        int frame = graphics.seq.primaryFrames[flow];
+        int frame = graphics.seq.frameIDs[flow];
         Model animated_model = new Model(true, Animation.noAnimationInProgress(frame), false, model);
         if(!expired) {
             animated_model.skin();

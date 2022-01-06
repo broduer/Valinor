@@ -57,7 +57,7 @@ public final class Projectile extends Renderable {
         }
         int frame = -1;
         if(graphics.seq != null) {
-            frame = graphics.seq.primaryFrames[flow];
+            frame = graphics.seq.frameIDs[flow];
         }
         Model animated_model = new Model(true, Animation.noAnimationInProgress(frame), false, model);
         if(frame != -1) {

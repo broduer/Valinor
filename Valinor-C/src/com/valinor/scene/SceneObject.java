@@ -52,7 +52,7 @@ public final class SceneObject extends Renderable {
         int animation_id = -1;
         if (seq != null) {
             int step = Client.game_tick - cycle_delay;
-            if (step > 100 && seq.loopOffset > 0) {
+            if (step > 100 && seq.frameStep > 0) {
                 step = 100;
             }
             while (step > seq.duration(animation_frame)) {
@@ -61,7 +61,7 @@ public final class SceneObject extends Renderable {
                 if (animation_frame < seq.frameCount)
                     continue;
 
-                animation_frame -= seq.loopOffset;
+                animation_frame -= seq.frameStep;
                 if (animation_frame >= 0 && animation_frame < seq.frameCount)
                     continue;
 
@@ -70,7 +70,7 @@ public final class SceneObject extends Renderable {
             }
             cycle_delay = Client.game_tick - step;
             if (seq != null) {
-                animation_id = seq.primaryFrames[animation_frame];
+                animation_id = seq.frameIDs[animation_frame];
             }
         }
         ObjectDefinition def;
@@ -98,7 +98,7 @@ public final class SceneObject extends Renderable {
             seq = Sequence.cache[animation_id];
             animation_frame = 0;
             cycle_delay = Client.game_tick;
-            if (flag && seq != null && seq.loopOffset != -1) {
+            if (flag && seq != null && seq.frameStep != -1) {
                 animation_frame = (int) (Math.random() * (double) seq.frameCount);
                 cycle_delay -= (int) (Math.random() * (double) seq.duration(animation_frame));
             }

@@ -5,41 +5,27 @@ import com.valinor.cache.Archive;
 import com.valinor.io.Buffer;
 import com.valinor.util.FileUtils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Arrays;
 
 public final class Sequence {
 
     public static Sequence[] cache;
     public int frameCount;
-    public int[] primaryFrames;
+    public int[] frameIDs; // top 16 bits are FrameDefinition ids
+    public int[] chatFrameIds;
+    public int[] frameLenghts;
+    public int[] frameSounds;
     public int[] secondaryFrames;
-    public int[] durations;
-    public int loopOffset;
+    public int frameStep = -1;
     public int[] interleaveOrder;
-    public boolean stretches;
-    public int forcedPriority;
-    public int playerOffhand;
-    public int playerMainhand;
-    public int maximumLoops;
-    public int animatingPrecedence;
-    public int priority;
-    public int replayMode;
-
-    public Sequence() {
-        loopOffset = -1;
-        stretches = false;
-        forcedPriority = 5;
-        playerOffhand = -1; // Removes shield
-        playerMainhand = -1; // Removes weapon
-        maximumLoops = 99;
-        animatingPrecedence = -1; // Stops character from moving
-        priority = -1;
-        replayMode = 1; // replayMode default value 2 in OSRS, can change back to 1 if causes problems with animations.
-    }
+    public boolean stretches = false;
+    public int forcedPriority = 5;
+    public int leftHandItem = -1;
+    public int rightHandItem = -1;
+    public int maxLoops = 99;
+    public int precedenceAnimating = -1;
+    public int priority = -1;
+    public int replyMode = 2;
 
     public static void init(Archive archive) {
         final Buffer buffer = new Buffer(ClientConstants.LOAD_OSRS_DATA_FROM_CACHE_DIR ? FileUtils.read(ClientConstants.DATA_DIR + "/anims/seq.dat") : archive.get("seq.dat"));
@@ -59,11 +45,11 @@ public final class Sequence {
     }
 
     public int duration(int id) {
-        int duration = durations[id];
+        int duration = frameLenghts[id];
         if (duration == 0) {
-            final Animation frame = Animation.get(primaryFrames[id]);
+            final Animation frame = Animation.get(frameIDs[id]);
             if (frame != null) {
-                duration = durations[id] = frame.duration;
+                duration = frameLenghts[id] = frame.duration;
             }
         }
         if (duration == 0) {
@@ -79,27 +65,27 @@ public final class Sequence {
                 break;
             } else if (opcode == 1) {
                 frameCount = buffer.readUShort();
-                primaryFrames = new int[frameCount];
+                frameIDs = new int[frameCount];
                 secondaryFrames = new int[frameCount];
-                durations = new int[frameCount];
+                frameLenghts = new int[frameCount];
 
                 for (int i = 0; i < frameCount; i++) {
-                    durations[i] = buffer.readUShort();
+                    frameLenghts[i] = buffer.readUShort();
                 }
 
                 for (int i = 0; i < frameCount; i++) {
-                    primaryFrames[i] = buffer.readUShort();
+                    frameIDs[i] = buffer.readUShort();
                     secondaryFrames[i] = -1;
                 }
 
                 for (int i = 0; i < frameCount; i++) {
-                    primaryFrames[i] += buffer.readUShort() << 16;
+                    frameIDs[i] += buffer.readUShort() << 16;
                 }
             } else if (opcode == 2) {
-                loopOffset = buffer.readUShort();
+                frameStep = buffer.readUShort();
             } else if (opcode == 3) {
                 int index = buffer.readUByte();
-                interleaveOrder = new int[index + 1];
+                interleaveOrder = new int[1 + index];
                 for (int id = 0; id < index; id++) {
                     interleaveOrder[id] = buffer.readUByte();
                 }
@@ -109,48 +95,50 @@ public final class Sequence {
             } else if (opcode == 5) {
                 forcedPriority = buffer.readUByte();
             } else if (opcode == 6) {
-                playerOffhand = buffer.readUShort();
+                leftHandItem = buffer.readUShort();
             } else if (opcode == 7) {
-                playerMainhand = buffer.readUShort();
+                rightHandItem = buffer.readUShort();
             } else if (opcode == 8) {
-                maximumLoops = buffer.readUByte();
+                maxLoops = buffer.readUByte();
             } else if (opcode == 9) {
-                animatingPrecedence = buffer.readUByte();
+                precedenceAnimating = buffer.readUByte();
             } else if (opcode == 10) {
                 priority = buffer.readUByte();
             } else if (opcode == 11) {
-                replayMode = buffer.readUByte();
+                replyMode = buffer.readUByte();
             } else if (opcode == 12) {
                 int len = buffer.readUnsignedByte();
+                chatFrameIds = new int[len];
 
                 for (int i = 0; i < len; i++) {
-                    buffer.readUShort();
+                    chatFrameIds[i] = buffer.readUShort();
                 }
 
                 for (int i = 0; i < len; i++) {
-                    buffer.readUShort();
+                    chatFrameIds[i] += buffer.readUShort() << 16;
                 }
             } else if (opcode == 13) {
                 int len = buffer.readUnsignedByte();
+                frameSounds = new int[len];
 
                 for (int i = 0; i < len; i++) {
-                    buffer.read24Int();
+                    frameSounds[i] = buffer.read24Int();
                 }
             }
         }
 
         if (frameCount == 0) {
             frameCount = 1;
-            primaryFrames = new int[1];
-            primaryFrames[0] = -1;
+            frameIDs = new int[1];
+            frameIDs[0] = -1;
             secondaryFrames = new int[1];
             secondaryFrames[0] = -1;
-            durations = new int[1];
-            durations[0] = -1;
+            frameLenghts = new int[1];
+            frameLenghts[0] = -1;
         }
 
-        if (animatingPrecedence == -1) {
-            animatingPrecedence = (interleaveOrder == null) ? 0 : 2;
+        if (precedenceAnimating == -1) {
+            precedenceAnimating = (interleaveOrder == null) ? 0 : 2;
         }
 
         if (priority == -1) {
@@ -162,19 +150,21 @@ public final class Sequence {
     public String toString() {
         return "Sequence{" +
             "frameCount=" + frameCount +
-            ", primaryFrames=" + Arrays.toString(primaryFrames) +
+            ", frameIDs=" + Arrays.toString(frameIDs) +
+            ", chatFrameIds=" + Arrays.toString(chatFrameIds) +
+            ", frameLenghts=" + Arrays.toString(frameLenghts) +
+            ", frameSounds=" + Arrays.toString(frameSounds) +
             ", secondaryFrames=" + Arrays.toString(secondaryFrames) +
-            ", durations=" + Arrays.toString(durations) +
-            ", loopOffset=" + loopOffset +
+            ", frameStep=" + frameStep +
             ", interleaveOrder=" + Arrays.toString(interleaveOrder) +
             ", stretches=" + stretches +
             ", forcedPriority=" + forcedPriority +
-            ", playerOffhand=" + playerOffhand +
-            ", playerMainhand=" + playerMainhand +
-            ", maximumLoops=" + maximumLoops +
-            ", animatingPrecedence=" + animatingPrecedence +
+            ", leftHandItem=" + leftHandItem +
+            ", rightHandItem=" + rightHandItem +
+            ", maxLoops=" + maxLoops +
+            ", precedenceAnimating=" + precedenceAnimating +
             ", priority=" + priority +
-            ", replayMode=" + replayMode +
+            ", replyMode=" + replyMode +
             '}';
     }
 }

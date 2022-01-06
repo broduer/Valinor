@@ -2,7 +2,6 @@ package com.valinor.entity;
 
 import com.valinor.Client;
 import com.valinor.cache.anim.Sequence;
-import com.valinor.cache.anim.SpotAnimation;
 
 public class Entity extends Renderable {
 
@@ -215,7 +214,7 @@ public class Entity extends Renderable {
 
         if (animation != -1 && animation_delay == 0) {
             Sequence seq = Sequence.cache[animation];
-            if (remaining_steps > 0 && seq.animatingPrecedence == 0) {
+            if (remaining_steps > 0 && seq.precedenceAnimating == 0) {
                 step_tracker++;
                 return;
             }
