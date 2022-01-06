@@ -35,13 +35,21 @@ public final class Buffer extends Cacheable {
         return stream_1;
     }
 
-    public int getUIncrementalSmart() {
-        int value = 0, remainder;
-        for (remainder = readUSmart(); remainder == 32767; remainder = readUSmart()) {
-            value += 32767;
+    public int readUnsignedIntSmartShortCompat() {
+        int var1 = 0;
+
+        int var2;
+        for (var2 = this.readUSmart(); var2 == 32767; var2 = this.readUSmart()) {
+            var1 += 32767;
         }
-        value += remainder;
-        return value;
+
+        var1 += var2;
+        return var1;
+    }
+
+    public int readUSmart() {
+        int peek = payload[pos] & 0xFF;
+        return peek < 128 ? this.readUnsignedByte() : this.readUShort() - 0x8000;
     }
 
     public final int readUTriByte() {
@@ -294,14 +302,6 @@ public final class Buffer extends Cacheable {
             Client.addReportToServer(e.getMessage());
             return readUShort() - 32768;
         }
-    }
-
-    public int readUSmart() {
-        int value = payload[pos] & 0xff;
-        if (value < 128)
-            return readUnsignedByte();
-        else
-            return readUShort() - 32768;
     }
 
     public void encodeRSA(BigInteger exponent, BigInteger modulus) {

@@ -154,16 +154,16 @@ public final class ObjectDefinition {
             else if (opcode == 75)
                 merge_interact_state = buffer.readUnsignedByte();
             else if (opcode == 77 || opcode == 92) {
-                transformVarbit = buffer.readUShort();
+                varbit = buffer.readUShort();
 
-                if (transformVarbit == 0xFFFF) {
-                    transformVarbit = -1;
+                if (varp == 0xFFFF) {
+                    varp = -1;
                 }
 
-                transformVarp = buffer.readUShort();
+                varp = buffer.readUShort();
 
-                if (transformVarp == 0xFFFF) {
-                    transformVarp = -1;
+                if (varbit == 0xFFFF) {
+                    varbit = -1;
                 }
 
                 int value = -1;
@@ -355,8 +355,8 @@ public final class ObjectDefinition {
         obstructs_ground = false;
         isSolid = false;
         merge_interact_state = -1;
-        transformVarbit = -1;
-        transformVarp = -1;
+        varbit = -1;
+        varp = -1;
         transforms = null;
     }
 
@@ -427,15 +427,15 @@ public final class ObjectDefinition {
 
     public ObjectDefinition get_configs() {
         int setting_id = -1;
-        if (transformVarbit != -1) {
-            VariableBits bit = VariableBits.cache[transformVarbit];
+        if (varbit != -1) {
+            VariableBits bit = VariableBits.cache[varbit];
             int setting = bit.configId;
             int low = bit.leastSignificantBit;
             int high = bit.mostSignificantBit;
             int mask = Client.BIT_MASKS[high - low];
             setting_id = Client.singleton.settings[setting] >> low & mask;
-        } else if (transformVarp != -1)
-            setting_id = Client.singleton.settings[transformVarp];
+        } else if (varp != -1)
+            setting_id = Client.singleton.settings[varp];
 
         if (setting_id < 0 || setting_id >= transforms.length || transforms[setting_id] == -1)
             return null;
@@ -593,8 +593,8 @@ public final class ObjectDefinition {
     public int interact_state;
     public int decor_offset;
     public int merge_interact_state;
-    public int transformVarp;
-    public int transformVarbit;
+    public int varp;
+    public int varbit;
     public int ambientSoundId;
     public int anInt2083;
     public int anInt2112;

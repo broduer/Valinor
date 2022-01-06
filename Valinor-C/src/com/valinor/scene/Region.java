@@ -1460,7 +1460,7 @@ public final class Region {
         Buffer buffer = new Buffer(data);
         int object_id = -1;
         do {
-            int id_increment = buffer.getUIncrementalSmart();
+            int id_increment = buffer.readUnsignedIntSmartShortCompat();
             if (id_increment == 0)
                 break;
 
@@ -1496,13 +1496,13 @@ public final class Region {
         return cached;
     }
 
-    public void load(int block_x, CollisionMap map[], int block_y, SceneGraph scene, byte data[]) {
+    public void load(int block_x, CollisionMap[] map, int block_y, SceneGraph scene, byte[] data) {
         load:
         {
             Buffer buffer = new Buffer(data);
             int object_id = -1;
             do {
-                int id_offset = buffer.getUIncrementalSmart();
+                int id_offset = buffer.readUnsignedIntSmartShortCompat();
                 if (id_offset == 0)
                     break load;
 
@@ -1514,9 +1514,9 @@ public final class Region {
                         break;
 
                     pos += pos_offset - 1;
-                    int tile_y = pos & 0x3f;
-                    int tile_x = pos >> 6 & 0x3f;
-                    int plane = pos >> 12;
+                    int tile_y = pos & 0x3F;
+                    int tile_x = pos >> 6 & 0x3F;
+                    int plane = pos >> 12 & 0x3;
                     int hash = buffer.readUByte();
                     int type = hash >> 2;
                     int orientation = hash & 3;

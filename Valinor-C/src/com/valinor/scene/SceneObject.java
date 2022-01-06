@@ -98,14 +98,14 @@ public final class SceneObject extends Renderable {
             seq = Sequence.cache[animation_id];
             animation_frame = 0;
             cycle_delay = Client.game_tick;
-            if (flag && seq.loopOffset != -1) {
+            if (flag && seq != null && seq.loopOffset != -1) {
                 animation_frame = (int) (Math.random() * (double) seq.frameCount);
                 cycle_delay -= (int) (Math.random() * (double) seq.duration(animation_frame));
             }
         }
         ObjectDefinition def = ObjectDefinition.get(object_id);
-        this.varbit_id = def.transformVarbit;
-        this.config_id = def.transformVarp;
+        this.varbit_id = def.varbit;
+        this.config_id = def.varp;
         this.configs = def.transforms;
     }
 }

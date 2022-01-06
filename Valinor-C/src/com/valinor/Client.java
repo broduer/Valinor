@@ -1553,7 +1553,7 @@ public class Client extends GameApplet {
                  */
                 packetSender.sendEmptyPacket();
                 for (int i6 = 0; i6 < k2; i6++) {
-                    byte abyte1[] = objectData[i6];
+                    byte[] abyte1 = objectData[i6];
                     if (abyte1 != null) {
                         int l8 = (mapCoordinates[i6] >> 8) * 64 - next_region_start;
                         int k9 = (mapCoordinates[i6] & 0xff) * 64 - next_region_end;
