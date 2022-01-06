@@ -98,9 +98,6 @@ public class ShootingStars {
             if (success) {
                 String successMessage = "The Shooting star has been completely mined!";
                 World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + successMessage);
-            } else {
-                String failedMessage = "The dwarfs decided to mine the Shooting star as players didn't!";
-                World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + failedMessage);
             }
         }
     }
@@ -110,7 +107,6 @@ public class ShootingStars {
         if (METEORITE_REMAINING <= 0)
             METEORITE_REMAINING = 0;
     }
-
 
     private static void inspect(Player player) {
         DialogueManager.sendStatement(player, "The rock looks like it has "+METEORITE_REMAINING+" x fragments in it.");
