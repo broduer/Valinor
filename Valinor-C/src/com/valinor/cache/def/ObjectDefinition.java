@@ -522,7 +522,7 @@ public final class ObjectDefinition {
         Model animated_model = new Model(recolorFrom == null, Animation.noAnimationInProgress(animation_id), orientation == 0 && animation_id == -1 && !scale && !translate, retextureFrom == null, model);
         if (animation_id != -1) {
             animated_model.skin();
-            animated_model.applyTransform(animation_id);
+            animated_model.interpolate(animation_id);
             animated_model.face_skin = null;
             animated_model.vertex_skin = null;
         }

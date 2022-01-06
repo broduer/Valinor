@@ -2775,10 +2775,10 @@ public class Widget {
             model_1.skin();
 
         if (k != -1)
-            model_1.applyTransform(k);
+            model_1.interpolate(k);
 
         if (j != -1)
-            model_1.applyTransform(j);
+            model_1.interpolate(j);
 
         model_1.light(64, 768, -50, -10, -50, true, true);
         return model_1;

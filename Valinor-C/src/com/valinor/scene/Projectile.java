@@ -62,7 +62,7 @@ public final class Projectile extends Renderable {
         Model animated_model = new Model(true, Animation.noAnimationInProgress(frame), false, model);
         if(frame != -1) {
             animated_model.skin();
-            animated_model.applyTransform(frame);
+            animated_model.interpolate(frame);
             animated_model.face_skin = null;
             animated_model.vertex_skin = null;
         }

@@ -40,7 +40,7 @@ public final class Player extends Entity {
                 Model graphic = new Model(false, Animation.noAnimationInProgress(super.current_animation_id), false, model);
                 graphic.translate(0, -super.graphic_height, 0);
                 graphic.skin();
-                graphic.applyTransform(anim.seq.primaryFrames[super.current_animation_id]);
+                graphic.interpolate(anim.seq.primaryFrames[super.current_animation_id]);
                 graphic.face_skin = null;
                 graphic.vertex_skin = null;
                 if(anim.model_scale_x != 128 || anim.model_scale_y != 128)
@@ -206,80 +206,50 @@ public final class Player extends Entity {
     }
 
     public Model get_animated_model() {
-        if (desc != null) {
-            int currentFrame = -1;
-            int nextFrame = -1;
-            int cycle1 = 0;
-            int cycle2 = 0;
-            if (super.animation >= 0 && super.animation_delay == 0) {
-                Sequence seq = Sequence.cache[super.animation];
-                currentFrame = seq.primaryFrames[super.current_animation_frame];
-                if (Client.singleton.setting.enableTweening && super.next_animation_frame != -1) {
-                    nextFrame = seq.primaryFrames[super.next_animation_frame];
-                    cycle1 = seq.durations[super.current_animation_frame];
-                    cycle2 = super.current_animation_duration;
-                }
-            } else if (super.queued_animation_id >= 0) {
-                Sequence seq = Sequence.cache[super.queued_animation_id];
-                currentFrame = seq.primaryFrames[super.queued_animation_frame];
-                if (Client.singleton.setting.enableTweening && super.next_idle_frame != -1) {
-                    nextFrame = seq.primaryFrames[super.next_idle_frame];
-                    cycle1 = seq.durations[super.queued_animation_frame];
-                    cycle2 = super.queued_animation_duration;
-                }
+        long offset = appearance_offset;
+        int current_frame = -1;
+        int next_frame = -1;
+        int animation = -1;
+        int shield_delta = -1;
+        int weapon_delta = -1;
+
+        if(desc != null) {
+            if(super.animation >= 0 && super.animation_delay == 0) {
+                final Sequence seq = Sequence.cache[super.animation];
+                current_frame = seq.primaryFrames[super.current_animation_frame];
             }
-            Model model = desc.method164(-1, currentFrame, null, nextFrame, cycle1, cycle2);
-            return model;
+            return desc.get_animated_model(-1, current_frame, null);
         }
 
-        long l = appearance_offset;
-        int currentFrame = -1;
-        int nextFrame = -1;
-        int cycle1 = 0;
-        int cycle2 = 0;
-        int i1 = -1;
-        int j1 = -1;
-        int k1 = -1;
-        if (super.animation >= 0 && super.animation_delay == 0) {
+        if(super.animation >= 0 && super.animation_delay == 0) {
             Sequence seq = Sequence.cache[super.animation];
-            currentFrame = seq.primaryFrames[super.current_animation_frame];
-            if (Client.singleton.setting.enableTweening && super.next_animation_frame != -1) {
-                nextFrame = seq.primaryFrames[super.next_animation_frame];
-                cycle1 = seq.durations[super.current_animation_frame];
-                cycle2 = super.current_animation_duration;
+            current_frame = seq.primaryFrames[super.current_animation_frame];
+            if(super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id) {
+                animation = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
             }
-            if (super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id)
-                i1 = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
-            if (seq.playerOffhand >= 0) {
-                j1 = seq.playerOffhand;
-                l += j1 - player_appearance[5] << 40;
-            }
-            if (seq.playerMainhand >= 0) {
-                k1 = seq.playerMainhand;
-                l += k1 - player_appearance[3] << 48;
-            }
-        } else if (super.queued_animation_id >= 0) {
-            Sequence sequence = Sequence.cache[super.queued_animation_id];
-            currentFrame = sequence.primaryFrames[super.queued_animation_frame];
 
-            /** DISABLED BECAUSE IT CAUSES FLICKERING WITH SOME GFXS **/
-			/*if (Configuration.enableTweening && super.nextidle_animation_idFrame != -1) {
-				nextFrame = animation.primaryFrames[super.nextidle_animation_idFrame];
-				cycle1 = animation.durations[super.queued_animation_frame];
-				cycle2 = super.anInt1519;
-			}*/
+            if(seq.playerOffhand >= 0) {
+                shield_delta = seq.playerOffhand;
+                offset += shield_delta - player_appearance[5] << 40;
+            }
+            if(seq.playerMainhand >= 0) {
+                weapon_delta = seq.playerMainhand;
+                offset += weapon_delta - player_appearance[3] << 48;
+            }
+        } else if(super.queued_animation_id >= 0) {
+            Sequence seq = Sequence.cache[super.queued_animation_id];
+            current_frame = seq.primaryFrames[super.queued_animation_frame];
         }
-
-        Model model = (Model) model_cache.get(l);
+        Model model = (Model) model_cache.get(offset);
         if(model == null) {
             boolean cached = false;
             for(int index = 0; index < 12; index++) {
                 int appearance = player_appearance[index];
-                if(k1 >= 0 && index == 3)
-                    appearance = k1;
+                if(weapon_delta >= 0 && index == 3)
+                    appearance = weapon_delta;
 
-                if(j1 >= 0 && index == 5)
-                    appearance = j1;
+                if(shield_delta >= 0 && index == 5)
+                    appearance = shield_delta;
 
                 if(appearance >= 256 && appearance < 512 && !IdentityKit.cache[appearance - 256].body_cached())
                     cached = true;
@@ -301,11 +271,11 @@ public final class Player extends Entity {
             int equipped = 0;
             for(int index = 0; index < 12; index++) {
                 int appearance = player_appearance[index];
-                if(k1 >= 0 && index == 3)
-                    appearance = k1;
+                if(weapon_delta >= 0 && index == 3)
+                    appearance = weapon_delta;
 
-                if(j1 >= 0 && index == 5)
-                    appearance = j1;
+                if(shield_delta >= 0 && index == 5)
+                    appearance = shield_delta;
 
                 if(appearance >= 256 && appearance < 512) {
                     Model idk = IdentityKit.cache[appearance - 256].get_body();
@@ -331,18 +301,18 @@ public final class Player extends Entity {
             }
             model.skin();
             model.light(64, 850, -30, -50, -30, true, true);
-            model_cache.put(model, l);
-            key = l;
+            model_cache.put(model, offset);
+            key = offset;
         }
         if(reference_pose) {
             return model;
         }
         Model animated = Model.EMPTY_MODEL;
-        animated.replace(model, Animation.noAnimationInProgress(currentFrame) & Animation.noAnimationInProgress(animation));
-        if (currentFrame != -1 && i1 != -1) {
-            animated.applyAnimationFrames(Sequence.cache[super.animation].interleaveOrder, i1, currentFrame);
-        } else if(currentFrame != -1) {
-            animated.applyAnimationFrame(currentFrame, nextFrame, cycle1, cycle2);
+        animated.replace(model, Animation.noAnimationInProgress(current_frame) & Animation.noAnimationInProgress(animation));
+        if(current_frame != -1 && animation != -1) {
+            animated.mix(Sequence.cache[super.animation].interleaveOrder, animation, current_frame);
+        } else if(current_frame != -1) {
+            animated.interpolate(current_frame);
         }
 
         animated.calc_diagonals();

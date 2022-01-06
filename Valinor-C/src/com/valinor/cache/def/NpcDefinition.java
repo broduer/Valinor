@@ -375,75 +375,6 @@ public final class NpcDefinition {
         buffer = null;
     }
 
-    public Model method164(int j, int somethingCurrentAnimsFrameNumber, int ai[], int nextFrame, int idk,
-                           int idk2) {
-        if (transforms != null) {
-            NpcDefinition entityDef = get_configs();
-            if (entityDef == null)
-                return null;
-            else
-                return entityDef.method164(j, somethingCurrentAnimsFrameNumber, ai, nextFrame, idk, idk2);
-        }
-        Model model = (Model) model_cache.get(interfaceType);
-        if (model == null) {
-            boolean flag = false;
-            for (int i1 = 0; i1 < models.length; i1++)
-                if (!Model.cached(models[i1]))
-                    flag = true;
-
-            if (flag)
-                return null;
-            Model models[] = new Model[this.models.length];
-            for (int j1 = 0; j1 < this.models.length; j1++)
-                models[j1] = Model.get(this.models[j1]);
-
-            if (models.length == 1)
-                model = models[0];
-            else
-                model = new Model(models.length, models,true);
-            if (recolorFrom != null) {
-                for (int k1 = 0; k1 < recolorFrom.length; k1++)
-                    model.recolor(recolorFrom[k1], recolorTo[k1]);
-            }
-
-            if (modelCustomColor > 0) {
-                model.completelyRecolor(modelCustomColor);
-            }
-            if (modelCustomColor2 != 0) {
-                model.shadingRecolor(modelCustomColor2);
-            }
-            if (modelCustomColor3 != 0) {
-                model.shadingRecolor2(modelCustomColor3);
-            }
-            if (modelCustomColor4 != 0) {
-                model.shadingRecolor4(modelCustomColor4);
-            }
-            if (modelSetColor != 0) {
-                model.shadingRecolor3(modelSetColor);
-            }
-            model.skin();
-            model.scale(132, 132, 132);
-            model.light(84 + ambient, 1000 + contrast, -90, -580, -90, true);
-            model_cache.put(model, interfaceType);
-        }
-        Model empty = Model.EMPTY_MODEL;
-        empty.replace(model, Animation.noAnimationInProgress(somethingCurrentAnimsFrameNumber) & Animation.noAnimationInProgress(j) & Animation.noAnimationInProgress(nextFrame));
-        if (somethingCurrentAnimsFrameNumber != -1 && j != -1)
-            empty.applyAnimationFrames(ai, j, somethingCurrentAnimsFrameNumber);
-        else if (somethingCurrentAnimsFrameNumber != -1 && nextFrame != -1)
-            empty.applyAnimationFrame(somethingCurrentAnimsFrameNumber, nextFrame, idk, idk2);
-        else if (somethingCurrentAnimsFrameNumber != -1)
-            empty.applyTransform(somethingCurrentAnimsFrameNumber);
-        if (widthScale != 128 || heightScale != 128)
-            empty.scale(widthScale, heightScale, widthScale);
-        empty.calc_diagonals();
-        empty.face_skin = null;
-        empty.vertex_skin = null;
-        if (size == 1)
-            empty.within_tile = true;
-        return empty;
-    }
-
     public Model get_animated_model(int animation, int current, int[] label) {
         if (transforms != null) {
             final NpcDefinition def = get_configs();
@@ -481,11 +412,6 @@ public final class NpcDefinition {
                     model.recolor(recolorFrom[k1], recolorTo[k1]);
                 }
             }
-            if (retextureFrom != null) {
-                for (int index = 0; index < retextureFrom.length; index++)
-                    model.retexture(retextureFrom[index], retextureTo[index]);
-            }
-
             if (modelCustomColor > 0) {
                 model.completelyRecolor(modelCustomColor);
             }
@@ -509,13 +435,14 @@ public final class NpcDefinition {
         final Model animated_model = Model.EMPTY_MODEL;
         animated_model.replace(model, Animation.noAnimationInProgress(current) & Animation.noAnimationInProgress(animation));
         if (current != -1 && animation != -1)
-            animated_model.applyAnimationFrames(label, animation, current);
+            animated_model.mix(label, animation, current);
         else if (current != -1)
-            animated_model.applyTransform(current);
+            animated_model.interpolate(current);
+
         if (widthScale != 128 || heightScale != 128) {
             animated_model.scale(widthScale, heightScale, widthScale);
         }
-        
+
         animated_model.calc_diagonals();
         animated_model.face_skin = null;
         animated_model.vertex_skin = null;

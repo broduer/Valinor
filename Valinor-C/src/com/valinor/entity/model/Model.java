@@ -2343,121 +2343,7 @@ public class Model extends Renderable {
         }
     }
 
-    public void applyAnimationFrame(int frame, int nextFrame, int end, int cycle) {
-        if (!Client.singleton.setting.enableTweening) {
-            applyTransform(frame);
-            return;
-        }
-        interpolateFrames(frame, nextFrame, end, cycle);
-    }
-
-
-    public void interpolateFrames(int frame, int nextFrame, int end, int cycle) {
-
-        if ((vertex_skin != null && frame != -1)) {
-            Animation currentAnimation = Animation.get(frame);
-            if (currentAnimation == null)
-                return;
-            Skins currentList = currentAnimation.base;
-            xAnimOffset = 0;
-            yAnimOffset = 0;
-            zAnimOffset = 0;
-            Animation nextAnimation = null;
-            Skins nextList = null;
-            if (nextFrame != -1) {
-                nextAnimation = Animation.get(nextFrame);
-                if (nextAnimation == null || nextAnimation.base == null)
-                    return;
-                Skins nextSkin = nextAnimation.base;
-                if (nextSkin != currentList)
-                    nextAnimation = null;
-                nextList = nextSkin;
-            }
-            if (nextAnimation == null || nextList == null) {
-                for (int opcodeLinkTableIdx = 0; opcodeLinkTableIdx < currentAnimation.transformationCount; opcodeLinkTableIdx++) {
-                    int i_264_ = currentAnimation.transformationIndices[opcodeLinkTableIdx];
-                    transformSkin(currentList.transformationType[i_264_], currentList.skinList[i_264_], currentAnimation.transformX[opcodeLinkTableIdx], currentAnimation.transformY[opcodeLinkTableIdx], currentAnimation.transformZ[opcodeLinkTableIdx]);
-                }
-            } else {
-
-                for (int i1 = 0; i1 < currentAnimation.transformationCount; i1++) {
-                    int n1 = currentAnimation.transformationIndices[i1];
-                    int opcode = currentList.transformationType[n1];
-                    int[] skin = currentList.skinList[n1];
-                    int x = currentAnimation.transformX[i1];
-                    int y = currentAnimation.transformY[i1];
-                    int z = currentAnimation.transformZ[i1];
-                    boolean found = false;
-                    label0: for (int i2 = 0; i2 < nextAnimation.transformationCount; i2++) {
-                        int n2 = nextAnimation.transformationIndices[i2];
-                        if (nextList.skinList[n2].equals(skin)) {
-                            //Opcode 3 = Rotation
-                            if (opcode != 2) {
-                                x += (nextAnimation.transformX[i2] - x) * cycle / end;
-                                y += (nextAnimation.transformY[i2] - y) * cycle / end;
-                                z += (nextAnimation.transformZ[i2] - z) * cycle / end;
-                            } else {
-                                x &= 0xff;
-                                y &= 0xff;
-                                z &= 0xff;
-                                int dx = nextAnimation.transformX[i2] - x & 0xff;
-                                int dy = nextAnimation.transformY[i2] - y & 0xff;
-                                int dz = nextAnimation.transformZ[i2] - z & 0xff;
-                                if (dx >= 128) {
-                                    dx -= 256;
-                                }
-                                if (dy >= 128) {
-                                    dy -= 256;
-                                }
-                                if (dz >= 128) {
-                                    dz -= 256;
-                                }
-                                x = x + dx * cycle / end & 0xff;
-                                y = y + dy * cycle / end & 0xff;
-                                z = z + dz * cycle / end & 0xff;
-                            }
-                            found = true;
-                            break label0;
-                        }
-                    }
-                    if (!found) {
-                        if (opcode != 3 && opcode != 2) {
-                            x = x * (end - cycle) / end;
-                            y = y * (end - cycle) / end;
-                            z = z * (end - cycle) / end;
-                        } else if (opcode == 3) {
-                            x = (x * (end - cycle) + (cycle << 7)) / end;
-                            y = (y * (end - cycle) + (cycle << 7)) / end;
-                            z = (z * (end - cycle) + (cycle << 7)) / end;
-                        } else {
-                            x &= 0xff;
-                            y &= 0xff;
-                            z &= 0xff;
-                            int dx = -x & 0xff;
-                            int dy = -y & 0xff;
-                            int dz = -z & 0xff;
-                            if (dx >= 128) {
-                                dx -= 256;
-                            }
-                            if (dy >= 128) {
-                                dy -= 256;
-                            }
-                            if (dz >= 128) {
-                                dz -= 256;
-                            }
-                            x = x + dx * cycle / end & 0xff;
-                            y = y + dy * cycle / end & 0xff;
-                            z = z + dz * cycle / end & 0xff;
-                        }
-                    }
-                    transformSkin(opcode, skin, x, y, z);
-                }
-            }
-        }
-    }
-
-    private void transformSkin(int animationType, int skin[], int x, int y, int z) {
-
+    private void transform(int animationType, int[] skin, int x, int y, int z) {
         int i1 = skin.length;
         if (animationType == 0) {
             int j1 = 0;
@@ -2475,10 +2361,8 @@ public class Model extends Renderable {
                         zAnimOffset += vertex_z[j6];
                         j1++;
                     }
-
                 }
             }
-
             if (j1 > 0) {
                 xAnimOffset = (int)(xAnimOffset / j1 + x);
                 yAnimOffset = (int)(yAnimOffset / j1 + y);
@@ -2502,10 +2386,8 @@ public class Model extends Renderable {
                         vertex_y[j5] += y;
                         vertex_z[j5] += z;
                     }
-
                 }
             }
-
             return;
         }
         if (animationType == 2) {
@@ -2546,10 +2428,8 @@ public class Model extends Renderable {
                         vertex_y[k5] += yAnimOffset;
                         vertex_z[k5] += zAnimOffset;
                     }
-
                 }
             }
-
             return;
         }
         if (animationType == 3) {
@@ -2565,6 +2445,141 @@ public class Model extends Renderable {
                         vertex_x[l5] = (int)((vertex_x[l5] * x) / 128);
                         vertex_y[l5] = (int)((vertex_y[l5] * y) / 128);
                         vertex_z[l5] = (int)((vertex_z[l5] * z) / 128);
+                        vertex_x[l5] += xAnimOffset;
+                        vertex_y[l5] += yAnimOffset;
+                        vertex_z[l5] += zAnimOffset;
+                    }
+                }
+            }
+            return;
+        }
+        if (animationType == 5 && face_skin != null && face_alpha != null) {
+            for (int j2 = 0; j2 < i1; j2++) {
+                int k3 = skin[j2];
+                if (k3 < face_skin.length) {
+                    int ai4[] = face_skin[k3];
+                    for (int l4 = 0; l4 < ai4.length; l4++) {
+                        int i6 = ai4[l4];
+                        face_alpha[i6] += x * 8;
+                        if (face_alpha[i6] < 0)
+                            face_alpha[i6] = 0;
+                        if (face_alpha[i6] > 255)
+                            face_alpha[i6] = 255;
+                    }
+                }
+            }
+        }
+    }
+
+    private void transformSkin(int animationType, int skin[], int x, int y, int z) {
+
+        int i1 = skin.length;
+        if (animationType == 0) {
+            int j1 = 0;
+            xAnimOffset = 0;
+            yAnimOffset = 0;
+            zAnimOffset = 0;
+            for (int k2 = 0; k2 < i1; k2++) {
+                int l3 = skin[k2];
+                if (l3 < vertex_skin.length) {
+                    int ai5[] = vertex_skin[l3];
+                    for (int i5 = 0; i5 < ai5.length; i5++) {
+                        int j6 = ai5[i5];
+                        xAnimOffset += vertex_x[j6];
+                        yAnimOffset += vertex_y[j6];
+                        zAnimOffset += vertex_z[j6];
+                        j1++;
+                    }
+
+                }
+            }
+
+            if (j1 > 0) {
+                xAnimOffset = (int) (xAnimOffset / j1 + x);
+                yAnimOffset = (int) (yAnimOffset / j1 + y);
+                zAnimOffset = (int) (zAnimOffset / j1 + z);
+                return;
+            } else {
+                xAnimOffset = (int) x;
+                yAnimOffset = (int) y;
+                zAnimOffset = (int) z;
+                return;
+            }
+        }
+        if (animationType == 1) {
+            for (int k1 = 0; k1 < i1; k1++) {
+                int l2 = skin[k1];
+                if (l2 < vertex_skin.length) {
+                    int ai1[] = vertex_skin[l2];
+                    for (int i4 = 0; i4 < ai1.length; i4++) {
+                        int j5 = ai1[i4];
+                        vertex_x[j5] += x;
+                        vertex_y[j5] += y;
+                        vertex_z[j5] += z;
+                    }
+
+                }
+            }
+
+            return;
+        }
+        if (animationType == 2) {
+            for (int l1 = 0; l1 < i1; l1++) {
+                int i3 = skin[l1];
+                if (i3 < vertex_skin.length) {
+                    int auid[] = vertex_skin[i3];
+                    for (int j4 = 0; j4 < auid.length; j4++) {
+                        int k5 = auid[j4];
+                        vertex_x[k5] -= xAnimOffset;
+                        vertex_y[k5] -= yAnimOffset;
+                        vertex_z[k5] -= zAnimOffset;
+                        int k6 = (x & 0xff) * 8;
+                        int l6 = (y & 0xff) * 8;
+                        int i7 = (z & 0xff) * 8;
+                        if (i7 != 0) {
+                            int j7 = SINE[i7];
+                            int i8 = COSINE[i7];
+                            int l8 = vertex_y[k5] * j7 + vertex_x[k5] * i8 >> 16;
+                            vertex_y[k5] = vertex_y[k5] * i8 - vertex_x[k5] * j7 >> 16;
+                            vertex_x[k5] = l8;
+                        }
+                        if (k6 != 0) {
+                            int k7 = SINE[k6];
+                            int j8 = COSINE[k6];
+                            int i9 = vertex_y[k5] * j8 - vertex_z[k5] * k7 >> 16;
+                            vertex_z[k5] = vertex_y[k5] * k7 + vertex_z[k5] * j8 >> 16;
+                            vertex_y[k5] = i9;
+                        }
+                        if (l6 != 0) {
+                            int l7 = SINE[l6];
+                            int k8 = COSINE[l6];
+                            int j9 = vertex_z[k5] * l7 + vertex_x[k5] * k8 >> 16;
+                            vertex_z[k5] = vertex_z[k5] * k8 - vertex_x[k5] * l7 >> 16;
+                            vertex_x[k5] = j9;
+                        }
+                        vertex_x[k5] += xAnimOffset;
+                        vertex_y[k5] += yAnimOffset;
+                        vertex_z[k5] += zAnimOffset;
+                    }
+
+                }
+            }
+
+            return;
+        }
+        if (animationType == 3) {
+            for (int uid = 0; uid < i1; uid++) {
+                int j3 = skin[uid];
+                if (j3 < vertex_skin.length) {
+                    int ai3[] = vertex_skin[j3];
+                    for (int k4 = 0; k4 < ai3.length; k4++) {
+                        int l5 = ai3[k4];
+                        vertex_x[l5] -= xAnimOffset;
+                        vertex_y[l5] -= yAnimOffset;
+                        vertex_z[l5] -= zAnimOffset;
+                        vertex_x[l5] = (int) ((vertex_x[l5] * x) / 128);
+                        vertex_y[l5] = (int) ((vertex_y[l5] * y) / 128);
+                        vertex_z[l5] = (int) ((vertex_z[l5] * z) / 128);
                         vertex_x[l5] += xAnimOffset;
                         vertex_y[l5] += yAnimOffset;
                         vertex_z[l5] += zAnimOffset;
@@ -2588,72 +2603,78 @@ public class Model extends Renderable {
                         if (face_alpha[i6] > 255)
                             face_alpha[i6] = 255;
                     }
+
                 }
             }
+
         }
     }
 
-    public void applyTransform(int frameId) {
+    public void interpolate(int frameId) {
         if (vertex_skin == null)
             return;
+
         if (frameId == -1)
             return;
-        Animation animationFrame = Animation.get(frameId);
-        if (animationFrame == null)
+
+        Animation frame = Animation.get(frameId);
+        if (frame == null)
             return;
-        Skins class18 = animationFrame.base;
+
+        Skins skin = frame.base;
         xAnimOffset = 0;
         yAnimOffset = 0;
         zAnimOffset = 0;
-        for (int k = 0; k < animationFrame.transformationCount; k++) {
-            int l = animationFrame.transformationIndices[k];
-            transformSkin(class18.transformationType[l], class18.skinList[l],
-                animationFrame.transformX[k], animationFrame.transformY[k],
-                animationFrame.transformZ[k]);
-        }
 
+        for (int index = 0; index < frame.transformationCount; index++) {
+            int pos = frame.transformationIndices[index];
+            //Change skin.cache[pos] to skin.cache[2] for funny animations
+            transform(skin.transformationType[pos], skin.skinList[pos], frame.transformX[index], frame.transformY[index], frame.transformZ[index]);
+        }
     }
+    
+    public void mix(int[] label, int idle, int current) {
+        if (current == -1)
+            return;
 
-    public void applyAnimationFrames(int ai[], int j, int k) {
-        if (k == -1)
-            return;
-        if (ai == null || j == -1) {
-            applyTransform(k);
+        if (label == null || idle == -1) {
+            interpolate(current);
             return;
         }
-        Animation class36 = Animation.get(k);
-        if (class36 == null)
+        Animation anim = Animation.get(current);
+        if (anim == null)
             return;
-        Animation class36_1 = Animation.get(j);
-        if (class36_1 == null) {
-            applyTransform(k);
+
+        Animation skin = Animation.get(idle);
+        if (skin == null) {
+            interpolate(current);
             return;
         }
-        Skins class18 = class36.base;
+        Skins list = anim.base;
         xAnimOffset = 0;
         yAnimOffset = 0;
         zAnimOffset = 0;
-        int l = 0;
-        int i1 = ai[l++];
-        for (int j1 = 0; j1 < class36.transformationCount; j1++) {
-            int k1;
-            for (k1 = class36.transformationIndices[j1]; k1 > i1; i1 = ai[l++])
-                ;
-            if (k1 != i1 || class18.transformationType[k1] == 0)
-                transformSkin(class18.transformationType[k1], class18.skinList[k1], class36.transformX[j1], class36.transformY[j1], class36.transformZ[j1]);
+        int id = 0;
+        int table = label[id++];
+        for (int index = 0; index < anim.transformationCount; index++) {
+            int condition;
+            for (condition = anim.transformationIndices[index]; condition > table; table = label[id++])
+                ;//empty
+            if (condition != table || list.transformationType[condition] == 0)
+                transform(list.transformationType[condition], list.skinList[condition], anim.transformX[index], anim.transformY[index], anim.transformZ[index]);
         }
-
         xAnimOffset = 0;
         yAnimOffset = 0;
         zAnimOffset = 0;
-        l = 0;
-        i1 = ai[l++];
-        for (int l1 = 0; l1 < class36_1.transformationCount; l1++) {
-            int i2;
-            for (i2 = class36_1.transformationIndices[l1]; i2 > i1; i1 = ai[l++])
-                ;
-            if (i2 == i1 || class18.transformationType[i2] == 0)
-                transformSkin(class18.transformationType[i2], class18.skinList[i2], class36_1.transformX[l1], class36_1.transformY[l1], class36_1.transformZ[l1]);
+        id = 0;
+        table = label[id++];
+        for (int index = 0; index < skin.transformationCount; index++) {
+            int condition;
+            for (condition = skin.transformationIndices[index]; condition > table; table = label[id++])
+                ;//empty
+            if (condition == table || list.transformationType[condition] == 0)
+                transform(list.transformationType[condition], list.skinList[condition], skin.transformX[index], skin.transformY[index], skin.transformZ[index]);
+
         }
     }
 

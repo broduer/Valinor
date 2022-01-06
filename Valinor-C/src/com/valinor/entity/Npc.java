@@ -30,18 +30,20 @@ public final class Npc extends Entity {
     }
 
     private Model get_animated_model() {
+        int current_frame = -1;
+        int animation = -1;
         if(super.animation >= 0 && super.animation_delay == 0) {
-            int emote = Sequence.cache[super.animation].primaryFrames[super.current_animation_frame];
-            int movement = -1;
+            Sequence seq = Sequence.cache[super.animation];
+            current_frame = seq.primaryFrames[super.current_animation_frame];
             if (super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id)
-                movement = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
-            return desc.get_animated_model(movement, emote, Sequence.cache[super.animation].interleaveOrder);
+                animation = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
+
+            return desc.get_animated_model(animation, current_frame, Sequence.cache[super.animation].interleaveOrder);
+        } else if(super.queued_animation_id >= 0) {
+            Sequence seq = Sequence.cache[super.queued_animation_id];
+            current_frame = seq.primaryFrames[super.queued_animation_frame];
         }
-        int movement = -1;
-        if(super.queued_animation_id >= 0) {
-            movement = Sequence.cache[super.queued_animation_id].primaryFrames[super.queued_animation_frame];
-        }
-        return desc.get_animated_model(-1, movement, null);
+        return desc.get_animated_model(animation, current_frame, null);
     }
 
     public Model get_rotated_model() {
@@ -61,7 +63,7 @@ public final class Npc extends Entity {
                 Model graphic = new Model(true, Animation.noAnimationInProgress(frame), false, model);
                 graphic.translate(0, -super.graphic_height, 0);
                 graphic.skin();
-                graphic.applyTransform(frame);
+                graphic.interpolate(frame);
                 graphic.face_skin = null;
                 graphic.vertex_skin = null;
                 if (anim.model_scale_x != 128 || anim.model_scale_y != 128)

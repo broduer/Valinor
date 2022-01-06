@@ -8441,7 +8441,7 @@ public class Client extends GameApplet {
                     if (local_player.idle_animation_id != -1) {
                         build.skin();
                         try {
-                            build.applyTransform(Sequence.cache[local_player.idle_animation_id].primaryFrames[0]);
+                            build.interpolate(Sequence.cache[local_player.idle_animation_id].primaryFrames[0]);
                         } catch (ArrayIndexOutOfBoundsException error) {
                             addReportToServer("[CATCHING ERROR] Support_opcode: [327] : [328] - Frame overflow");
                         }
@@ -11047,7 +11047,108 @@ public class Client extends GameApplet {
             entity.getDegreesToTurn();
         }
         appendFocusDestination(entity);
-        entity.updateAnimation();
+        appendEmote(entity);
+    }
+
+    public void appendEmote(Entity entity) {
+        try {
+            if (entity.graphic_id > SpotAnimation.cache.length)
+                entity.graphic_id = -1;
+
+            entity.dynamic = false;
+
+            if (entity.queued_animation_id > Sequence.cache.length)
+                entity.queued_animation_id = -1;
+
+            if (entity.queued_animation_id != -1) {
+                if (entity.queued_animation_id > Sequence.cache.length)
+                    entity.queued_animation_id = 0;
+
+                Sequence animation = Sequence.cache[entity.queued_animation_id];
+                entity.queued_animation_duration++;
+                if (animation == null)
+                    return;
+
+                if (entity.queued_animation_frame < animation.frameCount && entity.queued_animation_duration > animation.duration(entity.queued_animation_frame)) {
+                    entity.queued_animation_duration = 1;
+                    entity.queued_animation_frame++;
+                    entity.next_idle_frame++;
+                }
+
+                entity.next_idle_frame = entity.queued_animation_frame + 1;
+                if (entity.next_idle_frame >= animation.frameCount) {
+                    if (entity.next_idle_frame >= animation.frameCount)
+                        entity.next_idle_frame = 0;
+                }
+
+                if (entity.queued_animation_frame >= animation.frameCount) {
+                    entity.queued_animation_duration = 1;
+                    entity.queued_animation_frame = 0;
+                }
+            }
+            if (entity.graphic_id != -1 && game_tick >= entity.graphic_cycle) {
+                if (entity.current_animation_id < 0)
+                    entity.current_animation_id = 0;
+
+                //System.out.println("gfx: " + entity.gfxId + " anim: " + SpotAnimation.cache[entity.gfxId].animationId);
+                Sequence animation_1 = SpotAnimation.cache[entity.graphic_id].seq;
+                if (animation_1 == null) {
+                    System.out.println("Spotanim seq == null");
+                    return;
+                }
+                //System.out.println("length: " + animation_1.get_length(entity.currentAnimation) + " frames: " + animation_1.frames);
+
+                for (entity.current_animation_time_remaining++; entity.current_animation_id < animation_1.frameCount && entity.current_animation_time_remaining > animation_1.duration(entity.current_animation_id); entity.current_animation_id++)
+                    entity.current_animation_time_remaining -= animation_1.duration(entity.current_animation_id);
+
+                if (entity.current_animation_id >= animation_1.frameCount && (entity.current_animation_id < 0 || entity.current_animation_id >= animation_1.frameCount))
+                    entity.graphic_id = -1;
+
+                entity.next_graphic_frame = entity.current_animation_id + 1;
+                if (entity.next_graphic_frame >= animation_1.frameCount) {
+                    if (entity.next_graphic_frame < 0 || entity.next_graphic_frame >= animation_1.frameCount)
+                        entity.graphic_id = -1;
+                }
+            }
+            if (entity.animation != -1 && entity.animation_delay <= 1) {
+                if (entity.animation >= Sequence.cache.length) {
+                    entity.animation = -1;
+                }
+                Sequence animation_2 = Sequence.cache[entity.animation];
+                if (animation_2.animatingPrecedence == 1 && entity.remaining_steps > 0 && entity.initiate_movement <= game_tick && entity.cease_movement < game_tick) {
+                    entity.animation_delay = 1;
+                    return;
+                }
+            }
+            if (entity.animation != -1 && entity.animation_delay == 0) {
+                Sequence animation_3 = Sequence.cache[entity.animation];
+                for (entity.current_animation_duration++; entity.current_animation_frame < animation_3.frameCount && entity.current_animation_duration > animation_3.duration(entity.current_animation_frame); entity.current_animation_frame++)
+                    entity.current_animation_duration -= animation_3.duration(entity.current_animation_frame);
+
+                if (entity.current_animation_frame >= animation_3.frameCount) {
+                    entity.current_animation_frame -= animation_3.loopOffset;
+                    entity.animation_loops++;
+                    if (entity.animation_loops >= animation_3.maximumLoops)
+                        entity.animation = -1;
+                    if (entity.current_animation_frame < 0 || entity.current_animation_frame >= animation_3.frameCount)
+                        entity.animation = -1;
+                }
+                entity.next_animation_frame = entity.current_animation_frame + 1;
+                if (entity.next_animation_frame >= animation_3.frameCount) {
+                    if (entity.animation_loops >= animation_3.maximumLoops)
+                        entity.next_animation_frame = entity.current_animation_frame + 1;
+                    if (entity.next_animation_frame < 0 || entity.next_animation_frame >= animation_3.frameCount)
+                        entity.next_animation_frame = entity.current_animation_frame;
+                }
+                entity.dynamic = animation_3.stretches;
+            }
+            if (entity.animation_delay > 0)
+                entity.animation_delay--;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            addReportToServer(e.getMessage());
+        }
     }
 
     private void appendFocusDestination(Entity entity) {
