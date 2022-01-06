@@ -3,31 +3,29 @@ import com.valinor.io.Buffer;
 
 public final class Skins {
 
-    private int count;
-
     /**
      * The type of each transformation.
      */
-    public final int[] opcodes;
-    public final int[][] cache;
+    public final int[] transformationType;
+    public final int[][] skinList;
 
     public Skins(Buffer stream) {
-        count = stream.readUShort();
+        int count = stream.readUShort();
 
-        opcodes = new int[count];
-        cache = new int[count][];
+        transformationType = new int[count];
+        skinList = new int[count][];
 
         for (int index = 0; index < count; index++) {
-            opcodes[index] = stream.readUShort();
+            transformationType[index] = stream.readUShort();
         }
 
         for (int label = 0; label < count; label++) {
-            cache[label] = new int[stream.readUShort()];
+            skinList[label] = new int[stream.readUShort()];
         }
 
         for (int label = 0; label < count; label++) {
-            for (int index = 0; index < cache[label].length; index++) {
-                cache[label][index] = stream.readUShort();
+            for (int index = 0; index < skinList[label].length; index++) {
+                skinList[label][index] = stream.readUShort();
             }
         }
     }

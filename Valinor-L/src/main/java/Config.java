@@ -15,12 +15,12 @@ public class Config {
     /*
      * Connection address of where to obtain the jar
      */
-    public static final String URL = "https://valinor-os.com/client/Valinor.jar";
+    public static final String URL = "https://valinor-os.com/client/Valinor-C.jar";
 
     /*
      * The name of the jar to launch once downloaded
      */
-    public static final String FILE_NAME = "Valinor.jar";
+    public static final String FILE_NAME = "Valinor-C.jar";
 
     /*
      * The path to save the jar once it's downloaded.

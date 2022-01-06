@@ -33,11 +33,11 @@ public final class StaticObject extends Renderable {
         if(model == null) {
             return null;
         }
-        int frame = graphics.seq.primary_frame[flow];
-        Model animated_model = new Model(true, Animation.validate(frame), false, model);
+        int frame = graphics.seq.primaryFrames[flow];
+        Model animated_model = new Model(true, Animation.noAnimationInProgress(frame), false, model);
         if(!expired) {
             animated_model.skin();
-            animated_model.interpolate(frame);
+            animated_model.applyTransform(frame);
             animated_model.face_skin = null;
             animated_model.vertex_skin = null;
         }
@@ -63,10 +63,10 @@ public final class StaticObject extends Renderable {
     }
 
     public void step(int length) {
-        for(duration += length; duration > graphics.seq.get_length(flow);) {
-            duration -= graphics.seq.get_length(flow) + 1;
+        for(duration += length; duration > graphics.seq.duration(flow);) {
+            duration -= graphics.seq.duration(flow) + 1;
             flow++;
-            if(flow >= graphics.seq.frames && (flow < 0 || flow >= graphics.seq.frames)) {
+            if(flow >= graphics.seq.frameCount && (flow < 0 || flow >= graphics.seq.frameCount)) {
                 flow = 0;
                 expired = true;
             }

@@ -2770,15 +2770,15 @@ public class Widget {
         if (k == -1 && j == -1 && model.face_color == null)
             return model;
 
-        Model model_1 = new Model(true, Animation.validate(k) & Animation.validate(j), false, model);
+        Model model_1 = new Model(true, Animation.noAnimationInProgress(k) & Animation.noAnimationInProgress(j), false, model);
         if (k != -1 || j != -1)
             model_1.skin();
 
         if (k != -1)
-            model_1.interpolate(k);
+            model_1.applyTransform(k);
 
         if (j != -1)
-            model_1.interpolate(j);
+            model_1.applyTransform(j);
 
         model_1.light(64, 768, -50, -10, -50, true, true);
         return model_1;

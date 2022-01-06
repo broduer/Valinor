@@ -28,8 +28,8 @@ public final class ClientConstants {
     public static final boolean test = false;
 
     public static final String CLIENT_VERSION = "1.0.2";
-    public static final int OSRS_DATA_VERSION = 200;
-    public static final int OSRS_DATA_SUB_VERSION = 0;
+    public static final int OSRS_DATA_VERSION = 202;
+    public static final int OSRS_DATA_SUB_VERSION = 2;
 
     public static final boolean DEBUG_MODE = !production;
 

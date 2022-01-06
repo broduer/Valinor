@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -46,62 +47,59 @@ public final class ItemDefinition {
         //dump();
     }
 
-    public void decode(Buffer buffer) {
+    private void decode(Buffer buffer) {
         while (true) {
-            int opcode = buffer.readUByte();
-            if (opcode == 0) {
+            int opcode = buffer.readUnsignedByte();
+            if (opcode == 0)
                 return;
-            }
-            if (opcode == 1) {
+            if (opcode == 1)
                 inventoryModel = buffer.readUShort();
-            } else if (opcode == 2) {
+            else if (opcode == 2)
                 name = buffer.readString();
-            } else if (opcode == 3) {
+            else if (opcode == 3)
                 description = buffer.readString();
-            } else if (opcode == 4) {
+            else if (opcode == 4)
                 zoom2d = buffer.readUShort();
-            } else if (opcode == 5) {
+            else if (opcode == 5)
                 xan2d = buffer.readUShort();
-            } else if (opcode == 6) {
+            else if (opcode == 6)
                 yan2d = buffer.readUShort();
-            } else if (opcode == 7) {
+            else if (opcode == 7) {
                 xOffset2d = buffer.readUShort();
-                if (xOffset2d > 32767) {
-                    xOffset2d -= 65536;
-                }
+                if (xOffset2d > 32767)
+                    xOffset2d -= 0x10000;
             } else if (opcode == 8) {
                 yOffset2d = buffer.readUShort();
-                if (yOffset2d > 32767) {
-                    yOffset2d -= 65536;
-                }
-            } else if (opcode == 9) {
-                buffer.readString();
-            } else if (opcode == 11) {
+                if (yOffset2d > 32767)
+                    yOffset2d -= 0x10000;
+            } else if (opcode == 11)
                 stackable = 1;
-            } else if (opcode == 12) {
+            else if (opcode == 12)
                 cost = buffer.readInt();
-            } else if (opcode == 16) {
+            else if (opcode == 16)
                 members = true;
-            } else if (opcode == 23) {
+            else if (opcode == 23) {
                 maleModel = buffer.readUShort();
-                maleOffset = buffer.readUByte();
-            } else if (opcode == 24) {
+                maleOffset = buffer.readSignedByte();
+            } else if (opcode == 24)
                 maleModel1 = buffer.readUShort();
-            } else if (opcode == 25) {
+            else if (opcode == 25) {
                 femaleModel = buffer.readUShort();
-                femaleOffset = buffer.readUByte();
+                femaleOffset = buffer.readSignedByte();
             } else if (opcode == 26)
                 femaleModel1 = buffer.readUShort();
             else if (opcode >= 30 && opcode < 35) {
+                if (groundActions == null)
+                    groundActions = new String[5];
                 groundActions[opcode - 30] = buffer.readString();
-                if (groundActions[opcode - 30].equalsIgnoreCase("Hidden")) {
+                if (groundActions[opcode - 30].equalsIgnoreCase("hidden"))
                     groundActions[opcode - 30] = null;
-                }
             } else if (opcode >= 35 && opcode < 40) {
+                if (inventoryActions == null)
+                    inventoryActions = new String[5];
                 inventoryActions[opcode - 35] = buffer.readString();
             } else if (opcode == 40) {
-                int length = buffer.readUByte();
-                //if models aren't recoloring properly, typically switch the position of src with dst
+                int length = buffer.readUnsignedByte();
                 recolorFrom = new int[length];
                 recolorTo = new int[length];
                 for (int index = 0; index < length; index++) {
@@ -109,7 +107,7 @@ public final class ItemDefinition {
                     recolorFrom[index] = buffer.readUShort();
                 }
             } else if (opcode == 41) {
-                int length = buffer.readUByte();
+                int length = buffer.readUnsignedByte();
                 retextureFrom = new short[length];
                 retextureTo = new short[length];
                 for (int index = 0; index < length; index++) {
@@ -117,58 +115,76 @@ public final class ItemDefinition {
                     retextureTo[index] = (short) buffer.readUShort();
                 }
             } else if (opcode == 42) {
-                shiftClickIndex = buffer.readUByte();//shift_menu_index
+                shiftClickIndex = buffer.readUnsignedByte();
             } else if (opcode == 65) {
                 isTradable = true;
-            } else if (opcode == 78) {
+            } else if (opcode == 78)
                 maleModel2 = buffer.readUShort();
-            } else if (opcode == 79) {
+            else if (opcode == 79)
                 femaleModel2 = buffer.readUShort();
-            } else if (opcode == 90) {
+            else if (opcode == 90)
                 maleHeadModel = buffer.readUShort();
-            } else if (opcode == 91) {
+            else if (opcode == 91)
                 femaleHeadModel = buffer.readUShort();
-            } else if (opcode == 92) {
+            else if (opcode == 92)
                 maleHeadModel2 = buffer.readUShort();
-            } else if (opcode == 93) {
+            else if (opcode == 93)
                 femaleHeadModel2 = buffer.readUShort();
-            } else if (opcode == 94) {
-                buffer.readUShort();
-            } else if (opcode == 95) {
+            else if (opcode == 94)
+                category = buffer.readUShort();
+            else if (opcode == 95)
                 zan2d = buffer.readUShort();
-            } else if (opcode == 97) {
+            else if (opcode == 97)
                 note = buffer.readUShort();
-            } else if (opcode == 98) {
+            else if (opcode == 98)
                 notedTemplate = buffer.readUShort();
-            } else if (opcode >= 100 && opcode < 110) {
+            else if (opcode >= 100 && opcode < 110) {
                 if (countobj == null) {
                     countobj = new int[10];
                     countco = new int[10];
                 }
                 countobj[opcode - 100] = buffer.readUShort();
                 countco[opcode - 100] = buffer.readUShort();
-            } else if (opcode == 110) {
+            } else if (opcode == 110)
                 resizeX = buffer.readUShort();
-            } else if (opcode == 111) {
+            else if (opcode == 111)
                 resizeY = buffer.readUShort();
-            } else if (opcode == 112) {
+            else if (opcode == 112)
                 resizeZ = buffer.readUShort();
-            } else if (opcode == 113) {
+            else if (opcode == 113)
                 ambient = buffer.readSignedByte();
-            } else if (opcode == 114) {
+            else if (opcode == 114)
                 contrast = buffer.readSignedByte() * 5;
-            } else if (opcode == 115) {
-                team = buffer.readUByte();
-            } else if (opcode == 139) {
-                unnotedId = buffer.readUShort();
-            } else if (opcode == 140) {
-                notedId = buffer.readUShort();
-            } else if (opcode == 148) {
+            else if (opcode == 115)
+                team = buffer.readUnsignedByte();
+            else if (opcode == 139)
+                bought_id = buffer.readUShort();
+            else if (opcode == 140)
+                bought_template_id = buffer.readUShort();
+            else if (opcode == 148)
                 placeholder = buffer.readUShort();
-            } else if (opcode == 149) {
-                placeholderTemplate =buffer.readUShort();
+            else if (opcode == 149) {
+                placeholderTemplate = buffer.readUShort();
             } else if (opcode == 249) {
-                //Empty
+                int length = buffer.readUnsignedByte();
+
+                params = new HashMap<>(length);
+
+                for (int i = 0; i < length; i++) {
+                    boolean isString = buffer.readUnsignedByte() == 1;
+                    int key = buffer.read24Int();
+                    Object value;
+
+                    if (isString) {
+                        value = buffer.readString();
+                    } else {
+                        value = buffer.readInt();
+                    }
+
+                    params.put(key, value);
+                }
+            } else {
+                System.err.printf("Error unrecognised {Items} opcode: %d%n%n", opcode);
             }
         }
     }
@@ -553,8 +569,8 @@ public final class ItemDefinition {
         contrast = 0;
         team = 0;
         isTradable = false;
-        unnotedId = -1;
-        notedId = -1;
+        bought_id = -1;
+        bought_template_id = -1;
         placeholder = -1;
         placeholderTemplate = -1;
         inventoryModel = 0;
@@ -924,8 +940,9 @@ public final class ItemDefinition {
     public boolean animate_inv_sprite;
 
     public boolean isTradable;
-    public int unnotedId;
-    public int notedId;
+    public int category;
+    public int bought_id;
+    public int bought_template_id;
     public int shiftClickIndex;
     public int placeholder;
     public int placeholderTemplate;

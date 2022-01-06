@@ -5,97 +5,86 @@ import com.valinor.io.Buffer;
 
 public final class Animation {
 
-    public static Animation[][] frame_list = new Animation[6500][0];
+    public static Animation[][] animationlist;
 
-    public static void load(byte[] data, int file_id) {
+    public static void load(int file, byte[] array) {
         try {
-            Buffer buffer = new Buffer(data);
-            Skins list = new Skins((buffer));
-            int length = buffer.readUShort();
-            frame_list[file_id] = new Animation[length * 3];
-
-            int[] translation_indices = new int[500];
-            int[] transform_x = new int[500];
-            int[] transform_y = new int[500];
-            int[] transform_z = new int[500];
-            for (int frames = 0; frames < length; frames++) {
-                int id = buffer.readUShort();
-                Animation frame = new Animation();
-                Animation[] skin = frame_list[file_id];
-                skin[id] = frame;
-                frame.skins = list;
-                int transformations = buffer.readUByte();
-                int last = -1;
-                int transformation = 0;
-                for (int index = 0; index < transformations; index++) {
-                    int attribute = buffer.readUByte();
-                    if (attribute > 0) {
-                        if (list.opcodes[index] != 0) {
-                            for (int next = index - 1; next > last; next--) {
-                                if (list.opcodes[next] != 0)
-                                    continue;
-
-                                translation_indices[transformation] = next;
-                                transform_x[transformation] = 0;
-                                transform_y[transformation] = 0;
-                                transform_z[transformation] = 0;
-                                transformation++;
-                                break;
+            final Buffer ay = new Buffer(array);
+            final Skins b2 = new Skins(ay);
+            final int n = ay.readUShort();
+            animationlist[file] = new Animation[n * 3];
+            final int[] array2 = new int[500];
+            final int[] array3 = new int[500];
+            final int[] array4 = new int[500];
+            final int[] array5 = new int[500];
+            for (int j = 0; j < n; ++j) {
+                final int k = ay.readUShort();;
+                final Animation[] array6 = animationlist[file];
+                final int n2 = k;
+                final Animation q = new Animation();
+                array6[n2] = q;
+                final Animation q2 = q;
+                q.base = b2;
+                final int f = ay.readUnsignedByte();
+                int c2 = 0;
+                int n3 = -1;
+                for (int l = 0; l < f; ++l) {
+                    final int f2;
+                    if ((f2 = ay.readUnsignedByte()) > 0) {
+                        if (b2.transformationType[l] != 0) {
+                            for (int n4 = l - 1; n4 > n3; --n4) {
+                                if (b2.transformationType[n4] == 0) {
+                                    array2[c2] = n4;
+                                    array3[c2] = 0;
+                                    array5[c2] = (array4[c2] = 0);
+                                    ++c2;
+                                    break;
+                                }
                             }
                         }
-                        translation_indices[transformation] = index;
-                        char c = '\0';
-                        if (list.opcodes[index] == 3) {
-                            c = '\200';
+                        array2[c2] = l;
+                        int n4 = 0;
+                        if (b2.transformationType[l] == 3) {
+                            n4 = 128;
                         }
-                        if ((attribute & 1) != 0) {
-                            transform_x[transformation] = (buffer.readShort());
-                        } else {
-                            transform_x[transformation] = c;
+                        if ((f2 & 0x1) != 0x0) {
+                            array3[c2] = ay.readShort2();
                         }
-
-                        if ((attribute & 2) != 0) {
-                            transform_y[transformation] = (buffer.readShort());
-                        } else {
-                            transform_y[transformation] = c;
+                        else {
+                            array3[c2] = n4;
                         }
-
-                        if ((attribute & 4) != 0) {
-                            transform_z[transformation] = (buffer.readShort());
-                        } else {
-                            transform_z[transformation] = c;
+                        if ((f2 & 0x2) != 0x0) {
+                            array4[c2] = ay.readShort2();
                         }
-
-                        if (list.opcodes[index] == 2) {
-                            transform_x[transformation] = ((transform_x[transformation] & 0xff) << 3) + (transform_x[transformation] >> 8 & 0x7);
-                            transform_y[transformation] = ((transform_y[transformation] & 0xff) << 3) + (transform_y[transformation] >> 8 & 0x7);
-                            transform_z[transformation] = ((transform_z[transformation] & 0xff) << 3) + (transform_z[transformation] >> 8 & 0x7);
+                        else {
+                            array4[c2] = n4;
                         }
-
-                        last = index;
-                        transformation++;
+                        if ((f2 & 0x4) != 0x0) {
+                            array5[c2] = ay.readShort2();
+                        }
+                        else {
+                            array5[c2] = n4;
+                        }
+                        n3 = l;
+                        ++c2;
                     }
                 }
-                frame.frames = transformation;
-                frame.translation_modifier = new int[transformation];
-                frame.x_modifier = new int[transformation];
-                frame.y_modifier = new int[transformation];
-                frame.z_modifier = new int[transformation];
-                for (int index = 0; index < transformation; ++index) {
-                    frame.translation_modifier[index] = translation_indices[index];
-                    frame.x_modifier[index] = transform_x[index];
-                    frame.y_modifier[index] = transform_y[index];
-                    frame.z_modifier[index] = transform_z[index];
+                q2.transformationCount = c2;
+                q2.transformationIndices = new int[c2];
+                q2.transformX = new int[c2];
+                q2.transformY = new int[c2];
+                q2.transformZ = new int[c2];
+                for (int l = 0; l < c2; ++l) {
+                    q2.transformationIndices[l] = array2[l];
+                    q2.transformX[l] = array3[l];
+                    q2.transformY[l] = array4[l];
+                    q2.transformZ[l] = array5[l];
                 }
             }
-        } catch (Exception ex) {
+        }  catch (Exception ex) {
             //Make silent
             //ex.printStackTrace();
         }
-    }
-
-    public static void release() {
-        frame_list = null;
     }
 
     public static int getFileId(int id) {
@@ -104,33 +93,36 @@ public final class Animation {
 
     public static Animation get(int frame) {
         try {
-            int file_id = frame >> 16;
-            frame = frame & 0xFFFF;
 
-            if (frame_list[file_id].length == 0) {
-                Client.singleton.resourceProvider.provide(1, file_id);
+            int file = frame >> 16;
+            int k = frame & 0xffff;
+
+            if (animationlist[file].length == 0) {
+                Client.singleton.resourceProvider.provide(1, file);
                 return null;
             }
 
-            return frame_list[file_id][frame];
-        } catch (Exception ex) {
-            //System.out.println("Animation: get(frame) - " + ex);
+            return animationlist[file][k];
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
             return null;
         }
     }
 
-    public static boolean validate(int frame) {
+    public static boolean noAnimationInProgress(int frame) {
         return frame == -1;
     }
 
-    public Animation() {
+    public static void clear() {
+        animationlist = null;
     }
 
-    public int length;
-    public Skins skins;
-    public int frames;
-    public int[] translation_modifier;
-    public int[] x_modifier;
-    public int[] y_modifier;
-    public int[] z_modifier;
+    public int duration;
+    public Skins base;
+    public int transformationCount;
+    public int[] transformationIndices;
+    public int[] transformX;
+    public int[] transformY;
+    public int[] transformZ;
 }

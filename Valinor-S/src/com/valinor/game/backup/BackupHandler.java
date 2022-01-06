@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
 public class BackupHandler {
 
     private static final boolean SAVE_PLAYERS = true;
-    private static final long BACKUP_TIMER = 5;
+    private static final long BACKUP_TIMER = 60;
 
     public static void begin() {
         ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(1);

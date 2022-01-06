@@ -104,6 +104,7 @@ import com.valinor.game.world.object.OwnedObject;
 import com.valinor.game.world.object.dwarf_cannon.DwarfCannon;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.ControllerManager;
+import com.valinor.game.world.position.areas.impl.TournamentArea;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.game.world.route.routes.TargetRoute;
 import com.valinor.net.PlayerSession;
@@ -1381,8 +1382,9 @@ public class Player extends Mob {
 
         runExceptionally(() -> {
             //Leave tourny on logout
+            if (controller instanceof TournamentArea)
+                Utils.sendDiscordInfoLog("Player " + this.getUsername() + " with IP " + this.getHostAddress() + " logged out during a tournament.", "logout_tourny");
             TournamentManager.leaveTourny(this, true);
-            Utils.sendDiscordInfoLog("Player " + this.getUsername() + " with IP "+this.getHostAddress()+" logged out during a tournament.", "logout_tourny");
         });
 
         //Technically this is the last logout, but we'll use it as the last login so the last login doesn't get "overwritten" for the welcome screen when the player logs in.
