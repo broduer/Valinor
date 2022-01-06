@@ -52,17 +52,17 @@ public final class SceneObject extends Renderable {
         int animation_id = -1;
         if (seq != null) {
             int step = Client.game_tick - cycle_delay;
-            if (step > 100 && seq.step > 0) {
+            if (step > 100 && seq.loopOffset > 0) {
                 step = 100;
             }
-            while (step > seq.get_length(animation_frame)) {
-                step -= seq.get_length(animation_frame);
+            while (step > seq.duration(animation_frame)) {
+                step -= seq.duration(animation_frame);
                 animation_frame++;
-                if (animation_frame < seq.frames)
+                if (animation_frame < seq.frameCount)
                     continue;
 
-                animation_frame -= seq.step;
-                if (animation_frame >= 0 && animation_frame < seq.frames)
+                animation_frame -= seq.loopOffset;
+                if (animation_frame >= 0 && animation_frame < seq.frameCount)
                     continue;
 
                 seq = null;
@@ -70,7 +70,7 @@ public final class SceneObject extends Renderable {
             }
             cycle_delay = Client.game_tick - step;
             if (seq != null) {
-                animation_id = seq.primary_frame[animation_frame];
+                animation_id = seq.primaryFrames[animation_frame];
             }
         }
         ObjectDefinition def;
@@ -98,9 +98,9 @@ public final class SceneObject extends Renderable {
             seq = Sequence.cache[animation_id];
             animation_frame = 0;
             cycle_delay = Client.game_tick;
-            if (flag && seq.step != -1) {
-                animation_frame = (int) (Math.random() * (double) seq.frames);
-                cycle_delay -= (int) (Math.random() * (double) seq.get_length(animation_frame));
+            if (flag && seq.loopOffset != -1) {
+                animation_frame = (int) (Math.random() * (double) seq.frameCount);
+                cycle_delay -= (int) (Math.random() * (double) seq.duration(animation_frame));
             }
         }
         ObjectDefinition def = ObjectDefinition.get(object_id);

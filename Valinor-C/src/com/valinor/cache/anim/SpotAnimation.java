@@ -22,7 +22,7 @@ public final class SpotAnimation {
         System.out.printf("Loaded %d graphics loading OSRS version %d and SUB version %d%n", amount, ClientConstants.OSRS_DATA_VERSION, ClientConstants.OSRS_DATA_SUB_VERSION);
 
         if (cache == null) {
-            cache = new SpotAnimation[amount + 10_000];
+            cache = new SpotAnimation[amount + 5000];
         }
 
         int graphic;
@@ -40,10 +40,6 @@ public final class SpotAnimation {
         }
 
         //dump(1994);
-
-        if (buffer.pos != buffer.payload.length) {
-            System.out.println("gfx mismatch! " + buffer.pos + " " + buffer.payload.length);
-        }
     }
 
     public static void dump(int amount) {
@@ -92,16 +88,6 @@ public final class SpotAnimation {
                         + Arrays.toString(cache[id].dst_color).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
-                if (cache[id].src_texture != null) {
-                    bf.write("graphics[graphic].src_texture = new int[] "
-                        + Arrays.toString(cache[id].src_texture).replace("[", "{").replace("]", "}") + ";");
-                    bf.write(System.getProperty("line.separator"));
-                }
-                if (cache[id].dst_texture != null) {
-                    bf.write("graphics[graphic].dst_texture = new int[] "
-                        + Arrays.toString(cache[id].dst_texture).replace("[", "{").replace("]", "}") + ";");
-                    bf.write(System.getProperty("line.separator"));
-                }
                 bf.write("break;");
                 bf.write(System.getProperty("line.separator"));
                 bf.write(System.getProperty("line.separator"));
@@ -113,29 +99,47 @@ public final class SpotAnimation {
     }
 
     public void decode(Buffer buffer) {
-        do {
+        while (true) {
             int opcode = buffer.readUByte();
             if (opcode == 0)
                 return;
 
-            if (opcode == 1)
+            if (opcode == 1) {
                 model_id = buffer.readUShort();
-            else if (opcode == 2) {
-                animation_id = buffer.readUShort();
-                if (Sequence.cache != null)
-                    seq = Sequence.cache[animation_id];
+                continue;
+            }
 
-            } else if (opcode == 4)
+            if (opcode == 2) {
+                animation_id = buffer.readUShort();
+                if (Sequence.cache != null) {
+                    seq = Sequence.cache[animation_id];
+                }
+                continue;
+            }
+
+            if (opcode == 4) {
                 model_scale_x = buffer.readUShort();
-            else if (opcode == 5)
+                continue;
+            }
+
+            if (opcode == 5) {
                 model_scale_y = buffer.readUShort();
-            else if (opcode == 6)
+                continue;
+            }
+            if (opcode == 6) {
                 rotation = buffer.readUShort();
-            else if (opcode == 7)
+                continue;
+            }
+            if (opcode == 7) {
                 ambient = buffer.readUByte();
-            else if (opcode == 8)
+                continue;
+            }
+            if (opcode == 8) {
                 contrast = buffer.readUByte();
-            else if (opcode == 40) {
+                continue;
+            }
+
+            if (opcode == 40) {
                 int length = buffer.readUByte();
                 src_color = new int[length];
                 dst_color = new int[length];
@@ -143,19 +147,10 @@ public final class SpotAnimation {
                     src_color[index] = (short) buffer.readUShort();
                     dst_color[index] = (short) buffer.readUShort();
                 }
-            } else if (opcode == 41) {
-                int length = buffer.readUByte();
-                src_texture = new short[length];
-                dst_texture = new short[length];
-                for (int index = 0; index < length; index++) {
-                    src_texture[index] = (short) buffer.readUShort();
-                    dst_texture[index] = (short) buffer.readUShort();
-                }
-
-            } else {
-                System.out.println("Error unrecognised {SPOTANIM} ocode: " + opcode);
+                continue;
             }
-        } while (true);
+            System.out.println("Error unrecognised spotanim config code: " + opcode);
+        }
     }
 
     public Model get_model() {
@@ -167,37 +162,34 @@ public final class SpotAnimation {
         if (model == null)
             return null;
 
-        if(src_color != null) {
-            for (int index = 0; index < src_color.length; index++)
-                if (src_color[0] != 0)
-                    model.recolor(src_color[index], dst_color[index]);
+        for (int index = 0; index < 6; index++) {
+            if (src_color[0] != 0) {
+                model.recolor(src_color[index], dst_color[index]);
+            }
+        }
 
-        }
-        if (src_texture != null) {
-            for (int index = 0; index < src_texture.length; index++)
-                if (src_texture[0] != 0)
-                    model.retexture(src_texture[index], dst_texture[index]);
-        }
         model_cache.put(model, id);
         return model;
     }
 
     public SpotAnimation() {
-
+        animation_id = -1;
+        src_color = new int[6];
+        dst_color = new int[6];
+        model_scale_x = 128;
+        model_scale_y = 128;
     }
 
     public static SpotAnimation[] cache;
     public int id;
     public int model_id;
-    public int animation_id = -1;
+    public int animation_id;
     public Sequence seq;
     public int[] src_color;
     public int[] dst_color;
-    public short[] src_texture;
-    public short[] dst_texture;
 
-    public int model_scale_x = 128;
-    public int model_scale_y = 128;
+    public int model_scale_x;
+    public int model_scale_y;
     public int rotation = 0;
     public int ambient = 0;
     public int contrast = 0;

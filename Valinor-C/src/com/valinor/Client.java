@@ -4829,7 +4829,7 @@ public class Client extends GameApplet {
                         update_chat_producer = true;
                 }
                 if (resource.dataType == 1) {
-                    Animation.load(resource.buffer, resource.ID);
+                    Animation.load(resource.ID, resource.buffer);
                 }
                 if (resource.dataType == 2 && resource.ID == nextSong && resource.buffer != null) {
                     //saveMidi(fadeMusic, resource.buffer);
@@ -7260,6 +7260,7 @@ public class Client extends GameApplet {
         multiOverlay = null;
         nullLoader();
         ObjectDefinition.release();
+
         NpcDefinition.clear();
         ItemDefinition.release();
         AreaDefinition.clear();
@@ -7276,7 +7277,7 @@ public class Client extends GameApplet {
         Rasterizer3D.clear();
         SceneGraph.release();
         Model.clear();
-        Animation.release();
+        Animation.clear();
         System.gc();
     }
 
@@ -8440,7 +8441,7 @@ public class Client extends GameApplet {
                     if (local_player.idle_animation_id != -1) {
                         build.skin();
                         try {
-                            build.interpolate(Sequence.cache[local_player.idle_animation_id].primary_frame[0]);
+                            build.applyTransform(Sequence.cache[local_player.idle_animation_id].primaryFrames[0]);
                         } catch (ArrayIndexOutOfBoundsException error) {
                             addReportToServer("[CATCHING ERROR] Support_opcode: [327] : [328] - Frame overflow");
                         }
@@ -10009,7 +10010,7 @@ public class Client extends GameApplet {
                     i1 = -1;
                 int i2 = stream.readUByte();
                 if (i1 == npc.animation && i1 != -1) {
-                    int l2 = Sequence.cache[i1].reset;
+                    int l2 = Sequence.cache[i1].replayMode;
                     if (l2 == 1) {
                         npc.current_animation_frame = 0;
                         npc.current_animation_duration = 0;
@@ -10019,7 +10020,7 @@ public class Client extends GameApplet {
                     if (l2 == 2)
                         npc.animation_loops = 0;
                 } else if (i1 == -1 || npc.animation == -1
-                    || Sequence.cache[i1].appended_frames >= Sequence.cache[npc.animation].appended_frames) {
+                    || Sequence.cache[i1].forcedPriority >= Sequence.cache[npc.animation].forcedPriority) {
                     npc.animation = i1;
                     npc.current_animation_frame = 0;
                     npc.current_animation_duration = 0;
@@ -10426,6 +10427,7 @@ public class Client extends GameApplet {
             long connecting_to_update_server_start_time = System.currentTimeMillis();
 
             Archive update_server = request_archive(5, "update list", "versionlist", 60);
+            Animation.animationlist = new Animation[3000][0];
             resourceProvider = new ResourceProvider();
             resourceProvider.initialize(update_server, this);
             Model.method459(resourceProvider.getModelCount(), resourceProvider);
@@ -11045,108 +11047,7 @@ public class Client extends GameApplet {
             entity.getDegreesToTurn();
         }
         appendFocusDestination(entity);
-        appendEmote(entity);
-    }
-
-    public void appendEmote(Entity entity) {
-        try {
-            if (entity.graphic_id > SpotAnimation.cache.length)
-                entity.graphic_id = -1;
-
-            entity.dynamic = false;
-
-            if (entity.queued_animation_id > Sequence.cache.length)
-                entity.queued_animation_id = -1;
-
-            if (entity.queued_animation_id != -1) {
-                if (entity.queued_animation_id > Sequence.cache.length)
-                    entity.queued_animation_id = 0;
-
-                Sequence animation = Sequence.cache[entity.queued_animation_id];
-                entity.queued_animation_duration++;
-                if (animation == null)
-                    return;
-
-                if (entity.queued_animation_frame < animation.frames && entity.queued_animation_duration > animation.get_length(entity.queued_animation_frame)) {
-                    entity.queued_animation_duration = 1;
-                    entity.queued_animation_frame++;
-                    entity.next_idle_frame++;
-                }
-
-                entity.next_idle_frame = entity.queued_animation_frame + 1;
-                if (entity.next_idle_frame >= animation.frames) {
-                    if (entity.next_idle_frame >= animation.frames)
-                        entity.next_idle_frame = 0;
-                }
-
-                if (entity.queued_animation_frame >= animation.frames) {
-                    entity.queued_animation_duration = 1;
-                    entity.queued_animation_frame = 0;
-                }
-            }
-            if (entity.graphic_id != -1 && game_tick >= entity.graphic_cycle) {
-                if (entity.current_animation_id < 0)
-                    entity.current_animation_id = 0;
-
-                //System.out.println("gfx: " + entity.gfxId + " anim: " + SpotAnimation.cache[entity.gfxId].animationId);
-                Sequence animation_1 = SpotAnimation.cache[entity.graphic_id].seq;
-                if (animation_1 == null) {
-                    System.out.println("Spotanim seq == null");
-                    return;
-                }
-                //System.out.println("length: " + animation_1.get_length(entity.currentAnimation) + " frames: " + animation_1.frames);
-
-                for (entity.current_animation_time_remaining++; entity.current_animation_id < animation_1.frames && entity.current_animation_time_remaining > animation_1.get_length(entity.current_animation_id); entity.current_animation_id++)
-                    entity.current_animation_time_remaining -= animation_1.get_length(entity.current_animation_id);
-
-                if (entity.current_animation_id >= animation_1.frames && (entity.current_animation_id < 0 || entity.current_animation_id >= animation_1.frames))
-                    entity.graphic_id = -1;
-
-                entity.next_graphic_frame = entity.current_animation_id + 1;
-                if (entity.next_graphic_frame >= animation_1.frames) {
-                    if (entity.next_graphic_frame < 0 || entity.next_graphic_frame >= animation_1.frames)
-                        entity.graphic_id = -1;
-                }
-            }
-            if (entity.animation != -1 && entity.animation_delay <= 1) {
-                if (entity.animation >= Sequence.cache.length) {
-                    entity.animation = -1;
-                }
-                Sequence animation_2 = Sequence.cache[entity.animation];
-                if (animation_2.tempo == 1 && entity.remaining_steps > 0 && entity.initiate_movement <= game_tick && entity.cease_movement < game_tick) {
-                    entity.animation_delay = 1;
-                    return;
-                }
-            }
-            if (entity.animation != -1 && entity.animation_delay == 0) {
-                Sequence animation_3 = Sequence.cache[entity.animation];
-                for (entity.current_animation_duration++; entity.current_animation_frame < animation_3.frames && entity.current_animation_duration > animation_3.get_length(entity.current_animation_frame); entity.current_animation_frame++)
-                    entity.current_animation_duration -= animation_3.get_length(entity.current_animation_frame);
-
-                if (entity.current_animation_frame >= animation_3.frames) {
-                    entity.current_animation_frame -= animation_3.step;
-                    entity.animation_loops++;
-                    if (entity.animation_loops >= animation_3.loops)
-                        entity.animation = -1;
-                    if (entity.current_animation_frame < 0 || entity.current_animation_frame >= animation_3.frames)
-                        entity.animation = -1;
-                }
-                entity.next_animation_frame = entity.current_animation_frame + 1;
-                if (entity.next_animation_frame >= animation_3.frames) {
-                    if (entity.animation_loops >= animation_3.loops)
-                        entity.next_animation_frame = entity.current_animation_frame + 1;
-                    if (entity.next_animation_frame < 0 || entity.next_animation_frame >= animation_3.frames)
-                        entity.next_animation_frame = entity.current_animation_frame;
-                }
-                entity.dynamic = animation_3.stretch;
-            }
-            if (entity.animation_delay > 0)
-                entity.animation_delay--;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            addReportToServer(e.getMessage());
-        }
+        entity.updateAnimation();
     }
 
     private void appendFocusDestination(Entity entity) {
@@ -12292,7 +12193,7 @@ public class Client extends GameApplet {
                     } else {
                         try {
                             Sequence animation = Sequence.cache[anim];
-                            model = child.get_animated_model(animation.frame_list[child.currentFrame], animation.primary_frame[child.currentFrame], selected);
+                            model = child.get_animated_model(animation.secondaryFrames[child.currentFrame], animation.primaryFrames[child.currentFrame], selected);
                         } catch (Exception e) {
                             e.printStackTrace();
                             addReportToServer(e.getMessage());
@@ -12890,6 +12791,17 @@ public class Client extends GameApplet {
             if (player.graphic_id == 65535) {
                 player.graphic_id = -1;
             }
+
+            // Load the gfx...
+            try {
+
+                if (Animation.animationlist[SpotAnimation.cache[player.graphic_id].seq.primaryFrames[0] >> 16].length == 0) {
+                    resourceProvider.provide(1, SpotAnimation.cache[player.graphic_id].seq.primaryFrames[0] >> 16);
+                }
+
+            } catch (Exception e) {
+                // e.printStackTrace();
+            }
         }
         if ((mask & 8) != 0) {
             int animation = buffer.readLEUShort();
@@ -12898,7 +12810,7 @@ public class Client extends GameApplet {
             int delay = buffer.readNegUByte();
 
             if (animation == player.animation && animation != -1) {
-                int replayMode = Sequence.cache[animation].reset;
+                int replayMode = Sequence.cache[animation].replayMode;
                 if (replayMode == 1) {
                     player.current_animation_frame = 0;
                     player.current_animation_duration = 0;
@@ -12908,7 +12820,7 @@ public class Client extends GameApplet {
                 if (replayMode == 2)
                     player.animation_loops = 0;
             } else if (animation == -1 || player.animation == -1
-                || Sequence.cache[animation].appended_frames >= Sequence.cache[player.animation].appended_frames) {
+                || Sequence.cache[animation].forcedPriority >= Sequence.cache[player.animation].forcedPriority) {
                 player.animation = animation;
                 player.current_animation_frame = 0;
                 player.current_animation_duration = 0;
@@ -13732,12 +13644,12 @@ public class Client extends GameApplet {
 
                 if (animationId != -1) {
                     Sequence animation = Sequence.cache[animationId];
-                    for (child.lastFrameTime += tick; child.lastFrameTime > animation.get_length(child.currentFrame); ) {
-                        child.lastFrameTime -= animation.get_length(child.currentFrame) + 1;
+                    for (child.lastFrameTime += tick; child.lastFrameTime > animation.duration(child.currentFrame); ) {
+                        child.lastFrameTime -= animation.duration(child.currentFrame) + 1;
                         child.currentFrame++;
-                        if (child.currentFrame >= animation.frames) {
-                            child.currentFrame -= animation.step;
-                            if (child.currentFrame < 0 || child.currentFrame >= animation.frames)
+                        if (child.currentFrame >= animation.frameCount) {
+                            child.currentFrame -= animation.loopOffset;
+                            if (child.currentFrame < 0 || child.currentFrame >= animation.frameCount)
                                 child.currentFrame = 0;
                         }
                         redrawRequired = true;

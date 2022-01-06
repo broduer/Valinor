@@ -12,6 +12,9 @@ import com.valinor.io.Buffer;
 import com.valinor.net.requester.ResourceProvider;
 import com.valinor.util.FileUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class ObjectDefinition {
 
     public static void init(Archive archive) {
@@ -35,177 +38,200 @@ public final class ObjectDefinition {
         }
     }
 
-    public void decode(Buffer buffer) {
-        do {
-            int opcode = buffer.readUByte();
+    private void decode(Buffer buffer) {
+        while (true) {
+            int opcode = buffer.readUnsignedByte();
             if (opcode == 0)
                 break;
-
             if (opcode == 1) {
-                int length = buffer.readUByte();
-                if (length > 0) {
-                    if (modelIds != null && !isLowDetail) {
-                        buffer.pos += length * 3;
-                    } else {
-                        models = new int[length];
-                        modelIds = new int[length];
-                        for (int index = 0; index < length; index++) {
-                            modelIds[index] = buffer.readUShort();
-                            models[index] = buffer.readUByte();
-                        }
-                    }
-                }
-            } else if (opcode == 2) {
-                name = buffer.readString();
-            } else if (opcode == 3) {
-                description = buffer.readString();
-            } else if (opcode == 5) {
-                int length = buffer.readUByte();
-                if (length > 0) {
-                    if (modelIds != null && !isLowDetail) {
-                        buffer.pos += 2 * length;
-                    } else {
-                        models = null;
-                        modelIds = new int[length];
+                int len = buffer.readUnsignedByte();
+                if (len > 0) {
+                    if (modelIds == null) {
+                        models = new int[len];
+                        modelIds = new int[len];
 
-                        for (int index = 0; index < length; ++index) {
-                            modelIds[index] = buffer.readUShort();
+                        for (int i = 0; i < len; i++) {
+                            modelIds[i] = buffer.readUShort();
+                            models[i] = buffer.readUnsignedByte();
                         }
+                    } else {
+                        buffer.pos += len * 3;
                     }
                 }
-            } else if (opcode == 14) {
-                sizeX = buffer.readUByte();
-            } else if (opcode == 15) {
-                sizeY = buffer.readUByte();
-            } else if (opcode == 17) {
+            } else if (opcode == 2)
+                name = buffer.readString();
+            else if (opcode == 3)
+                description = buffer.readString();
+            else if (opcode == 5) {
+                int len = buffer.readUnsignedByte();
+                if (len > 0) {
+                    if (modelIds == null) {
+                        models = null;
+                        modelIds = new int[len];
+
+                        for (int i = 0; i < len; i++) {
+                            modelIds[i] = buffer.readUShort();
+                        }
+                    } else {
+                        buffer.pos += len * 3;
+                    }
+                }
+            } else if (opcode == 14)
+                sizeX = buffer.readUnsignedByte();
+            else if (opcode == 15)
+                sizeY = buffer.readUnsignedByte();
+            else if (opcode == 17) {
                 solid = false;
-            } else if (opcode == 18) {
                 walkable = false;
-            } else if (opcode == 19) {
-                interact_state = buffer.readUByte();
-            } else if (opcode == 21) {
+            } else if (opcode == 18)
+                walkable = false;
+            else if (opcode == 19)
+                interact_state = buffer.readUnsignedByte();
+            else if (opcode == 21)
                 contour_to_tile = true;
-            } else if (opcode == 22) {
-                nonFlatShading = false;
-            } else if (opcode == 23) {
+            else if (opcode == 22)
+                nonFlatShading = true;
+            else if (opcode == 23)
                 modelClipped = true;
-            } else if (opcode == 24) {
+            else if (opcode == 24) { // Object Animations
                 animationId = buffer.readUShort();
-                if (animationId == 65535) {
+                if (animationId == 65535)
                     animationId = -1;
-                }
-            } else if (opcode == 27) {
-                solid = true;
-            } else if (opcode == 28) {
-                decor_offset = buffer.readUByte();
-            } else if (opcode == 29) {
+            } else if (opcode == 28)
+                decor_offset = buffer.readUnsignedByte();
+            else if (opcode == 29)
                 ambient = buffer.readSignedByte();
-            } else if (opcode == 39) {
-                contrast = buffer.readSignedByte() * 25;
-            } else if (opcode >= 30 && opcode < 35) {
+            else if (opcode == 39)
+                contrast = buffer.readSignedByte();
+            else if (opcode >= 30 && opcode < 35) {
+                if (actions == null)
+                    actions = new String[10];
                 actions[opcode - 30] = buffer.readString();
-                if (actions[opcode - 30].equalsIgnoreCase("Hidden")) {
+                if (actions[opcode - 30].equalsIgnoreCase("hidden"))
                     actions[opcode - 30] = null;
-                }
             } else if (opcode == 40) {
-                int length = buffer.readUByte();
-                recolorFrom = new int[length];
-                recolorTo = new int[length];
-                for (int index = 0; index < length; index++) {
-                    recolorFrom[index] = buffer.readUShort();
-                    recolorTo[index] = buffer.readUShort();
+                int len = buffer.readUnsignedByte();
+                recolorFrom = new int[len];
+                recolorTo = new int[len];
+                for (int i = 0; i < len; i++) {
+                    recolorFrom[i] = buffer.readUShort();
+                    recolorTo[i] = buffer.readUShort();
                 }
             } else if (opcode == 41) {
-                int length = buffer.readUByte();
-                retextureFrom = new short[length];
-                retextureTo = new short[length];
-                for (int index = 0; index < length; index++) {
-                    retextureFrom[index] = (short) buffer.readUShort();
-                    retextureTo[index] = (short) buffer.readUShort();
+                int len = buffer.readUnsignedByte();
+                retextureFrom = new short[len];
+                retextureTo = new short[len];
+                for (int i = 0; i < len; i++) {
+                    retextureFrom[i] = (short) buffer.readUShort();
+                    retextureTo[i] = (short) buffer.readUShort();
                 }
             } else if (opcode == 61) {
-                buffer.readUShort();
-            } else if (opcode == 62) {
+                category = buffer.readUShort();
+            } else if (opcode == 62)
                 rotated = true;
-            } else if (opcode == 64) {
+            else if (opcode == 64)
                 clipped = false;
-            } else if (opcode == 65) {
+            else if (opcode == 65)
                 modelSizeX = buffer.readUShort();
-            } else if (opcode == 66) {
+            else if (opcode == 66)
                 modelHeight = buffer.readUShort();
-            } else if (opcode == 67) {
+            else if (opcode == 67)
                 modelSizeY = buffer.readUShort();
-            } else if (opcode == 68) {
+            else if (opcode == 68)
                 mapSceneId = buffer.readUShort();
-            } else if (opcode == 69) {
-                orientation = buffer.readUByte();
-            } else if (opcode == 70) {
-                offsetX = buffer.readSignedShort();
-            } else if (opcode == 71) {
-                offsetHeight = buffer.readSignedShort();
-            } else if (opcode == 72) {
-                offsetY = buffer.readSignedShort();
-            } else if (opcode == 73) {
+            else if (opcode == 69)
+                orientation = buffer.readUnsignedByte();
+            else if (opcode == 70)
+                offsetX = buffer.readShort();
+            else if (opcode == 71)
+                offsetHeight = buffer.readShort();
+            else if (opcode == 72)
+                offsetY = buffer.readShort();
+            else if (opcode == 73)
                 obstructs_ground = true;
-            } else if (opcode == 74) {
+            else if (opcode == 74)
                 isSolid = true;
-            } else if (opcode == 75) {
-                merge_interact_state = buffer.readUByte();
-            } else if (opcode != 77 && opcode != 92) {
-                if (opcode == 78) {
-                    ambientSoundId = buffer.readUShort();
-                    int7 = buffer.readUByte();
-                } else if (opcode == 79) {
-                    int5 = buffer.readUShort();
-                    int6 = buffer.readUShort();
-                    int7 = buffer.readUByte();
-                    int length = buffer.readUByte();
-                    soundEffectIds = new int[length];
-
-                    for (int var4 = 0; var4 < length; ++var4) {
-                        soundEffectIds[var4] = buffer.readUShort();
-                    }
-                } else if (opcode == 81) {
-                    clipType = buffer.readUByte() * 256;
-                } else if (opcode == 82) {
-                    mapIconId = buffer.readUShort();
-                } else if (opcode == 89) {
-                    boolean3 = false;
-                } else if (opcode == 249) {
-                    //Empty
-                }
-            } else {
+            else if (opcode == 75)
+                merge_interact_state = buffer.readUnsignedByte();
+            else if (opcode == 77 || opcode == 92) {
                 transformVarbit = buffer.readUShort();
-                if (transformVarbit == 65535) {
+
+                if (transformVarbit == 0xFFFF) {
                     transformVarbit = -1;
                 }
 
                 transformVarp = buffer.readUShort();
-                if (transformVarp == 65535) {
+
+                if (transformVarp == 0xFFFF) {
                     transformVarp = -1;
                 }
 
-                int var3 = -1;
+                int value = -1;
+
                 if (opcode == 92) {
-                    var3 = buffer.readUShort();
-                    if (var3 == 65535) {
-                        var3 = -1;
+                    value = buffer.readUShort();
+
+                    if (value == 0xFFFF) {
+                        value = -1;
                     }
                 }
 
-                int var4 = buffer.readUnsignedByte();
-                transforms = new int[var4 + 2];
+                int len = buffer.readUnsignedByte();
 
-                for (int var5 = 0; var5 <= var4; ++var5) {
-                    transforms[var5] = buffer.readUShort();
-                    if (transforms[var5] == 65535) {
-                        transforms[var5] = -1;
+                transforms = new int[len + 2];
+                for (int i = 0; i <= len; ++i) {
+                    transforms[i] = buffer.readUShort();
+                    if (transforms[i] == 0xFFFF) {
+                        transforms[i] = -1;
                     }
                 }
+                transforms[len + 1] = value;
+            } else if(opcode == 78) {
+                ambientSoundId = buffer.readUShort();
+                anInt2083 = buffer.readUnsignedByte();
+            } else if(opcode == 79) {
+                anInt2112 = buffer.readUShort();
+                anInt2113 = buffer.readUShort();
+                anInt2083 = buffer.readUShort();
 
-                transforms[var4 + 1] = var3;
+                int length = buffer.readUnsignedByte();
+                int[] anims = new int[length];
+
+                for (int index = 0; index < length; ++index)
+                {
+                    anims[index] = buffer.readUShort();
+                }
+                soundEffectIds = anims;
+            } else if(opcode == 81) {
+                clipType = buffer.readUnsignedByte();
+            } else if (opcode == 82) {
+                mapIconId = buffer.readUShort();//AreaType
+            } else if(opcode == 89) {
+                randomAnimStart = false;
+            } else if (opcode == 249) {
+                int length = buffer.readUnsignedByte();
+
+                Map<Integer, Object> params = new HashMap<>(length);
+                for (int i = 0; i < length; i++)
+                {
+                    boolean isString = buffer.readUnsignedByte() == 1;
+                    int key = buffer.read24Int();
+                    Object value;
+
+                    if (isString) {
+                        value = buffer.readString();
+                    } else {
+                        value = buffer.readInt();
+                    }
+
+                    params.put(key, value);
+                }
+
+                this.params = params;
+            } else {
+                //System.err.printf("Error unrecognised {Objects} opcode: %d%n%n", opcode);
             }
-        } while (true);
+        }
         post_decode();
     }
 
@@ -493,10 +519,10 @@ public final class ObjectDefinition {
         }
         boolean scale = modelSizeX != 128 || modelHeight != 128 || modelSizeY != 128;
         boolean translate = offsetX != 0 || offsetHeight != 0 || offsetY != 0;
-        Model animated_model = new Model(recolorFrom == null, Animation.validate(animation_id), orientation == 0 && animation_id == -1 && !scale && !translate, retextureFrom == null, model);
+        Model animated_model = new Model(recolorFrom == null, Animation.noAnimationInProgress(animation_id), orientation == 0 && animation_id == -1 && !scale && !translate, retextureFrom == null, model);
         if (animation_id != -1) {
             animated_model.skin();
-            animated_model.interpolate(animation_id);
+            animated_model.applyTransform(animation_id);
             animated_model.face_skin = null;
             animated_model.vertex_skin = null;
         }
@@ -570,12 +596,13 @@ public final class ObjectDefinition {
     public int transformVarp;
     public int transformVarbit;
     public int ambientSoundId;
-    public int int7;
-    public int int5;
-    public int int6;
+    public int anInt2083;
+    public int anInt2112;
+    public int anInt2113;
     public int[] soundEffectIds;
     int clipType;
-    public boolean boolean3;
+    public boolean randomAnimStart;
+    public Map<Integer, Object> params = null;
 
     public int[] modelIds;
     public int[] transforms;
@@ -603,14 +630,6 @@ public final class ObjectDefinition {
     public boolean clipped;
     public boolean nonFlatShading;//
     public boolean obstructs_ground;
-
-    /**
-     * Later revisions
-     */
-    int opcode_78_1 = 2019882883;
-    int opcode_79_1 = 0;
-    int opcode_79_2 = 0;
-    int opcode_78_and_79 = 0;
-    int[] opcode_79_3;
+    public int category;
 
 }
