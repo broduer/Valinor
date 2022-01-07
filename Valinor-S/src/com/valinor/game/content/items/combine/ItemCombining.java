@@ -261,11 +261,6 @@ public class ItemCombining extends Interaction {
             return true;
         }
 
-        if ((use.getId() == TWISTED_BOW || usedWith.getId() == TWISTED_BOW) && (use.getId() == TWISTED_BOW_KIT || usedWith.getId() == TWISTED_BOW_KIT)) {
-            combineTwistedBow(player);
-            return true;
-        }
-
         if ((use.getId() == BANDOS_BOOTS || usedWith.getId() == BANDOS_BOOTS) && (use.getId() == BLACK_TOURMALINE_CORE || usedWith.getId() == BLACK_TOURMALINE_CORE)) {
             combineGuardianBoots(player);
             return true;
@@ -367,35 +362,6 @@ public class ItemCombining extends Interaction {
                         player.inventory().remove(AVAS_ACCUMULATOR);
                         player.inventory().add(new Item(AVAS_ASSEMBLER));
                         player.message("You carefully attach the Vorkath's head to the device and create the assembler.");
-                        stop();
-                    } else if (option == 2) {
-                        stop();
-                    }
-                }
-            }
-        });
-    }
-
-    private void combineTwistedBow(Player player) {
-        player.getDialogueManager().start(new Dialogue() {
-            @Override
-            protected void start(Object... parameters) {
-                send(DialogueType.OPTION, "Recolor the Twisted bow?", "Yes, sacrifice the kit.", "No, not right now.");
-                setPhase(0);
-            }
-
-            @Override
-            protected void select(int option) {
-                if (isPhase(0)) {
-                    if (option == 1) {
-                        if (!player.inventory().containsAll(TWISTED_BOW, TWISTED_BOW_KIT)) {
-                            stop();
-                            return;
-                        }
-                        player.inventory().remove(TWISTED_BOW);
-                        player.inventory().remove(TWISTED_BOW_KIT);
-                        player.inventory().add(new Item(TWISTED_BOW_I));
-                        player.message("You carefully attach the kit to the bow to give it an outstanding look.");
                         stop();
                     } else if (option == 2) {
                         stop();

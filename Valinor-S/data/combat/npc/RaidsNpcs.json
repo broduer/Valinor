@@ -1,5 +1,245 @@
 [
   {
+    // The Maiden of Sagadinti
+    "ids": [
+      8360, 8361, 8362, 8363, 8364, 8365
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 36,
+    "attackspeed": 10,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 350,
+      "strength": 350,
+      "magic": 350,
+      "ranged": 350,
+      "defence": 200,
+      "hitpoints": 3500
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.MaidenOfSugadinti",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.MaidenOfSugadintiDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Pestilent Bloat
+    "ids": [
+      8359
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 80,
+    "attackspeed": 1,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 250,
+      "strength": 340,
+      "magic": 150,
+      "ranged": 180,
+      "defence": 100,
+      "hitpoints": 2000
+    },
+    "bonuses": {
+      "stabdefence": 40,
+      "slashdefence": 20,
+      "crushdefence": 40,
+      "rangeddefence": 800,
+      "magicdefence": 600
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.PestilentBloat",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.PestilentBloatDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Nylocas Vasilias
+    "ids": [
+      8354, 8355, 8356, 8357
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 70,
+    "attackspeed": 4,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 400,
+      "strength": 350,
+      "magic": 50,
+      "ranged": 350,
+      "defence": 50,
+      "hitpoints": 2500
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.NylocasVasilias",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.NylocasVasiliasDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Sotetseg
+    "ids": [
+      8387, 8388
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 50,
+    "attackspeed": 5,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 250,
+      "strength": 250,
+      "magic": 250,
+      "ranged": 250,
+      "defence": 200,
+      "hitpoints": 4000
+    },
+    "bonuses": {
+      "stabdefence": 70,
+      "slashdefence": 70,
+      "crushdefence": 70,
+      "rangeddefence": 150,
+      "magicdefence": 30
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.Sotetseg",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.SotetsegDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Xarpus
+    "ids": [
+      8338, 8339, 8340, 8341
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 11,
+    "attackspeed": 4,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "magic": 220,
+      "ranged": 100,
+      "defence": 250,
+      "hitpoints": 5000
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 160,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.Xarpus",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.XarpusDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Verzik Vitur
+    "ids": [
+      8369, 8370, 8371, 8372, 8373, 8374, 8375
+    ],
+    "aggressive": true,
+    "aggroradius": 7,
+    "boss": true,
+    "maxhit": 137,
+    "attackspeed": 12,
+    "deathlen": 4,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 400,
+      "strength": 400,
+      "magic": 400,
+      "ranged": 400,
+      "defence": 20,
+      "hitpoints": 2000
+    },
+    "bonuses": {
+      "stabdefence": 20,
+      "slashdefence": 20,
+      "crushdefence": 20,
+      "rangeddefence": 20,
+      "magicdefence": 20
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8094
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.VerzikVitur",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.VerzikViturDroptable",
+      "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
     // Vanguard
     "ids": [
       7527

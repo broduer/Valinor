@@ -44,6 +44,7 @@ public class Party {
     private Player leader;
     private final List<Player> members;
     public ArrayList<Npc> monsters = new ArrayList<>();
+    public ArrayList<GameObject> objects = new ArrayList<>();
     private RaidsType raidsSelected = RaidsType.CHAMBER_OF_XERICS;
     private int height;
     private int kills;

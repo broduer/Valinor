@@ -756,4 +756,9 @@ public class Tile implements Cloneable {
     public Tile center(int size) {
         return transform((int) Math.ceil(size / 2.0), (int) Math.ceil(size / 2.0), 0);
     }
+
+    public boolean equalsIgnoreHeight(Tile tile) {
+        return tile.getX() == x && tile.getY() == y;
+    }
+
 }
