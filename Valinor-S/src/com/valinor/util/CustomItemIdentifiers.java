@@ -72,8 +72,6 @@ public class CustomItemIdentifiers {
     public static final int DARKLORD_SWORD = 30309;
     public static final int DARKLORD_STAFF = 30312;
     public static final int ACTIVITY_CASKET = 16475;
-    public static final int SCYTHE_OF_VITUR_KIT = 29102;
-    public static final int TWISTED_BOW_KIT = 29103;
     public static final int BEGINNER_WEAPON_PACK = 14479;
     public static final int BEGINNER_DRAGON_CLAWS = 14486;
     public static final int BEGINNER_AGS = 14487;
