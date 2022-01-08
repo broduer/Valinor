@@ -506,6 +506,10 @@ public abstract class Mob extends Entity {
 
     public abstract int maxHp();
 
+    public double getHealthPercentage() {
+        return (double) hp() / (double) maxHp();
+    }
+
     public boolean dead() {
         return hp() < 1;
     }

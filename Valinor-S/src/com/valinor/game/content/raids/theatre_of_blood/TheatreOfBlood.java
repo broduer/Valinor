@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Poison;
@@ -140,6 +141,17 @@ public class TheatreOfBlood extends Raids {
 
         //Make sure to heal
         player.healPlayer();
+
+        party.bossFightLives.put(player.getUsername().toLowerCase(), 0);
+        if (party.teamDead()) {
+            party.getMembers().forEach(p -> p.teleport(GameServer.properties().defaultTile));
+            party.getMembers().forEach(p -> p.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 0));
+            party.getMembers().forEach(p -> p.message("Unfortunately your team has failed Theatre of Blood!"));
+        } else {
+            Tile deathTile = respawnTile(party, player.tile().level);
+            player.teleport(deathTile.getX(), deathTile.getY(), party.getHeight());
+        }
+
         return true;
     }
 

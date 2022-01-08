@@ -108,6 +108,10 @@ public class NpcMovementCoordinator {
                     Debugs.NPC_RETREAT.debug(npc, "combat block", npc.getCombat().getTarget(), true);
                     return;
                 }
+                if(npc.neverWalkHome()) {
+                    Debugs.NPC_RETREAT.debug(npc, "never walk home", npc.getCombat().getTarget(), true);
+                    return;
+                }
                 npc.getRouteFinder().routeAbsolute(npc.spawnTile().x, npc.spawnTile().y);
             }
         }

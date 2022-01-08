@@ -19,6 +19,7 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.FightType;
 import com.valinor.game.world.entity.combat.weapon.WeaponType;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -238,6 +239,16 @@ public class Combat {
 
         // Handle attacking
         performNewAttack();
+
+        // Process combat scripts
+        if (mob.isNpc() && target != null) {
+            Npc npc = mob.getAsNpc();
+            if(npc.combatInfo() != null && npc.combatInfo().scripts != null && npc.combatInfo().scripts.combat_ != null) {
+                if(npc.getCombatMethod() != null) {
+                    npc.getCombatMethod().process(mob, target);
+                }
+            }
+        }
 
         if (mob.isPlayer() && target != null) {
             mob.getAsPlayer().getPacketSender().sendEntityFeed(target.getMobName(), target.hp(), target.maxHp());

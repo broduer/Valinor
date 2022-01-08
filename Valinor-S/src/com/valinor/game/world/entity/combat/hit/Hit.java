@@ -207,6 +207,12 @@ public class Hit {
             }
         }
 
+        //Heal hit
+        if(attacker.isNpc() && splatType == SplatType.NPC_HEALING_HITSPLAT) {
+            attacker.heal(damage);
+            return;
+        }
+
         if (target.isNpc() && target.getAsNpc().isCombatDummy()) {
             checkAccuracy = false;
         }

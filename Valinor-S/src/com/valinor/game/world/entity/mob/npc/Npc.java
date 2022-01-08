@@ -103,6 +103,15 @@ public class Npc extends Mob {
     //Target switching may be computationally expensive since it's in sequence (core processing).
     public static boolean TARG_SWITCH_ON = true;
 
+    public void neverWalkHome(boolean neverWalkHome) {
+        this.neverWalkHome = neverWalkHome;
+    }
+
+    public boolean neverWalkHome() {
+        return neverWalkHome;
+    }
+
+    private boolean neverWalkHome;
     public String spawnStack = "";
     public boolean minnowsFish;
     private int id;

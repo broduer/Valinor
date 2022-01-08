@@ -1,20 +1,21 @@
 package com.valinor.game.world.entity.combat.method.impl;
 
 import com.valinor.game.content.duel.DuelRule;
-import com.valinor.game.content.mechanics.Poison;
+import com.valinor.game.task.Task;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
-import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.Skill;
-import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Debugs;
 import com.valinor.util.timers.TimerKey;
@@ -47,6 +48,31 @@ public abstract class CommonCombatMethod implements CombatMethod {
         mob.putAttrib(AttributeKey.POISON_TICKS, 0);
         mob.clearAttrib(VENOMED_BY);
         mob.getTimers().cancel(TimerKey.FROZEN);
+    }
+
+    public final void handleDodgableAttack(final Mob mob, final Mob target, CombatType type, final Projectile projectile, final Graphic graphic, final int damage, Task onhit) {
+        if (mob == null || target == null)
+            return;
+
+        final Tile hitLoc = target.tile();
+        if (target.isPlayer()) {
+            projectile.sendProjectile();
+        }
+
+        Task task = new Task("handleDodgableAttackTask", 1, target, false) {
+
+            @Override
+            public void execute() {
+                if (!target.tile().equals(hitLoc)) {
+                    stop();
+                    return;
+                }
+                target.hit(mob, damage, 0, type).setAccurate(false).graphic(graphic).submit();
+                stop();
+            }
+        };
+        TaskManager.submit(task);
+        TaskManager.submit(onhit);
     }
 
     protected boolean withinDistance(int distance) {

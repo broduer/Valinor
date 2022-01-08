@@ -15,6 +15,7 @@ public class VerzikViturDroptable implements Droptable {
         var party = killer.raidsParty;
 
         if (party != null) {
+            party.verzikViturDead(true);
             if (party.getLeader().getRaids() != null)
                 party.getLeader().getRaids().complete(party);
         }

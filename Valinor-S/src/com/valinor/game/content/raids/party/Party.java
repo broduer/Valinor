@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.party;
 
+import com.google.common.collect.Maps;
 import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.chamber_of_xeric.ChamberOfXerics;
 import com.valinor.game.world.World;
@@ -15,6 +16,7 @@ import com.valinor.game.world.position.areas.impl.COXArea;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
@@ -45,11 +47,21 @@ public class Party {
     private final List<Player> members;
     public ArrayList<Npc> monsters = new ArrayList<>();
     public ArrayList<GameObject> objects = new ArrayList<>();
+    public final Map<String, Integer> bossFightLives = Maps.newConcurrentMap();
     private RaidsType raidsSelected = RaidsType.CHAMBER_OF_XERICS;
     private int height;
     private int kills;
     private int raidStage = 0;
     private boolean bossFightStarted;
+    private boolean verzikViturDead = false;
+
+    public boolean verzikViturDead() {
+        return verzikViturDead;
+    }
+
+    public void verzikViturDead(boolean verzikViturDead) {
+        this.verzikViturDead = verzikViturDead;
+    }
 
     public Party(Player leader) {
         this.leader = leader;
@@ -135,6 +147,19 @@ public class Party {
 
     public void setMeatTree(GameObject meatTree) {
         this.meatTree = meatTree;
+    }
+
+    public void setupBossLives() {
+        bossFightLives.clear();
+        getMembers().forEach(p -> bossFightLives.put(p.getUsername().toLowerCase(), 1));
+    }
+
+    public boolean canEnterBossRoom(Player player) {
+        return bossFightLives.get(player.getUsername().toLowerCase()) > 0;
+    }
+
+    public boolean teamDead() {
+        return bossFightLives.values().stream().allMatch(val -> val == 0);
     }
 
     public void removeMember(Player player) {
@@ -350,11 +375,6 @@ public class Party {
         Party party = p.raidsParty;
         if (party.getLeader() != p) {
             p.message("Only the party leader can start the fight.");
-            return;
-        }
-
-        if(party.getRaidsSelected() == RaidsType.THEATRE_OF_BLOOD) {
-            p.message("You can only raid the chamber of secrets.");
             return;
         }
 

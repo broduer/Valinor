@@ -5,6 +5,11 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    /**
+     * Personal points that you can use to purchase supplies during the raid
+     */
+    THEATRE_OF_BLOOD_POINTS("tob_points", AttribType.INTEGER),
+
     BAGGED_COAL("bagged_coal", AttribType.INTEGER),
 
     ACCEPT_AID("accept_aid", AttribType.BOOLEAN),

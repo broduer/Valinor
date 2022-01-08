@@ -14,4 +14,7 @@ public interface CombatMethod {
         return false;
     }
     default boolean canMultiAttackInSingleZones() { return false; }
+    default void process(Mob mob, Mob target) {
+
+    }
 }
