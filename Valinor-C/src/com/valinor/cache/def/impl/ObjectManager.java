@@ -127,10 +127,10 @@ public class ObjectManager {
         }
 
         if (id == 2654) {
-            definition.name = HALLOWEEN ? "Blood fountain" : "Snow fountain";
+            definition.name = HALLOWEEN ? "Blood fountain" : CHRISTMAS ? "Snow fountain" : "Fountain";
             definition.sizeX = 3;
             definition.sizeY = 3;
-            definition.actions[0] = "Rewards";
+            definition.actions[0] = HALLOWEEN || CHRISTMAS ? "Rewards" : null;
             definition.actions[1] = null;
             if (HALLOWEEN) {
                 definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};

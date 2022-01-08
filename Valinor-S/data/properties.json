@@ -128,5 +128,5 @@
   "doubleBMEvent": false,
   "doubleVotePointsEvent": false,
   "halloween": false,
-  "christmas": true
+  "christmas": false
 }

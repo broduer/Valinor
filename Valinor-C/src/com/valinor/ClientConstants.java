@@ -19,7 +19,7 @@ public final class ClientConstants {
         repackIndexFour = false;
 
     public static boolean HALLOWEEN = false;
-    public static boolean CHRISTMAS = true;
+    public static boolean CHRISTMAS = false;
 
     /*
      * This determines if we are going to connect to the live server or local server.
