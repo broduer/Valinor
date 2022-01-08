@@ -2,8 +2,6 @@ package com.valinor.cache.def.impl;
 
 import com.valinor.ClientConstants;
 import com.valinor.cache.def.NpcDefinition;
-import com.valinor.util.CustomNpcIdentifiers;
-import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -23,7 +21,7 @@ public class NpcManager {
                 definition.name = "Santa";
                 definition.actions = new String[] {"Talk-to", null, null, null, null};
                 definition.combatLevel = 0;
-                definition.models = new int[] {62598};
+                definition.modelId = new int[] {62598};
                 definition.additionalModels = new int[] {69682};
                 definition.rotate180Animation = 8535;
                 definition.rotate90LeftAnimation = 8536;
@@ -38,7 +36,7 @@ public class NpcManager {
                 definition.name = "Anti-Santa";
                 definition.actions = new String[] {"Talk-to", null, null, null, null};
                 definition.combatLevel = 0;
-                definition.models = new int[] {62597};
+                definition.modelId = new int[] {62597};
                 definition.additionalModels = new int[] {69681};
                 definition.rotate180Animation = 8542;
                 definition.rotate90LeftAnimation = 8543;
@@ -52,7 +50,7 @@ public class NpcManager {
             case 15116:
                 definition.name = "Anti-Santa";
                 definition.combatLevel = 0;
-                definition.models = new int[] {69686};
+                definition.modelId = new int[] {69686};
                 definition.additionalModels = new int[] {69718};
                 definition.standingAnimation = 7175;
                 definition.size = 2;
@@ -61,7 +59,7 @@ public class NpcManager {
             case 15117:
                 definition.name = "Icelord";
                 definition.combatLevel = 981;
-                definition.models = new int[] {21804,21801};
+                definition.modelId = new int[] {21804,21801};
                 definition.standingAnimation = 5722;
                 definition.size = 2;
                 definition.drawMapDot = true;
@@ -123,7 +121,7 @@ public class NpcManager {
                 definition.name = "<col=00ACFF>Referral Manager</col>";
                 definition.actions = new String[]{"Talk-to", null, null, null, null};
                 definition.combatLevel = 0;
-                definition.models = new int[] {39207};
+                definition.modelId = new int[] {39207};
                 definition.additionalModels = new int[] {39485};
                 definition.standingAnimation = 8551;
                 definition.drawMapDot = true;

@@ -22,7 +22,7 @@ public class CustomBosses {
             definition.combatLevel = 1322;
             definition.recolorFrom = new int[] {10004,25238,8741,4550,908,7073};
             definition.recolorTo = new int[] {5231,0,0,5353,0,8084};
-            definition.models = new int[] {5100,292,170,179,256,507};
+            definition.modelId = new int[] {5100,292,170,179,256,507};
             definition.drawMapDot = true;
             definition.rotate180Animation = 820;
             definition.rotate90LeftAnimation = 822;
@@ -38,7 +38,7 @@ public class CustomBosses {
             definition.name = "Brutal Lava Dragon";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 420;
-            definition.models = new int[]{58995, 58995, 58994, 58996};
+            definition.modelId = new int[]{58995, 58995, 58994, 58996};
             definition.widthScale = 170;
             definition.heightScale = 170;
             definition.standingAnimation = 7870;
@@ -50,7 +50,7 @@ public class CustomBosses {
             definition.name = "Brutal Lava Dragon";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 420;
-            definition.models = new int[]{58995, 58995, 58994, 58996};
+            definition.modelId = new int[]{58995, 58995, 58994, 58996};
             definition.widthScale = 170;
             definition.heightScale = 170;
             definition.standingAnimation = 90;
@@ -62,7 +62,7 @@ public class CustomBosses {
             definition.name = "Corrupted Nechryarch";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 300;
-            definition.models = new int[]{58922};
+            definition.modelId = new int[]{58922};
             definition.standingAnimation = 4650;
             definition.size = 2;
             definition.walkingAnimation = 6372;
@@ -74,7 +74,7 @@ public class CustomBosses {
             definition.recolorFrom = new int[]{-26527, -24618, -26073, 5018, 61, 10351, 33, 24};
             definition.recolorTo = new int[]{-19054, 12, 12, -16870, 11177, 61, 16, 12};
             definition.combatLevel = 300;
-            definition.models = new int[]{4953, 4955, 556, 58948, 58907, 58950, 58953, 58956};
+            definition.modelId = new int[]{4953, 4955, 556, 58948, 58907, 58950, 58953, 58956};
             definition.widthScale = 160;
             definition.heightScale = 160;
             definition.standingAnimation = 808;
@@ -88,7 +88,7 @@ public class CustomBosses {
             definition.recolorFrom = new int[]{138, 908, 794, 912, 916, 0, 103, 107};
             definition.recolorTo = new int[]{138, 908, 4769, 4769, 4769, 0, 0, 0};
             definition.combatLevel = 1123;
-            definition.models = new int[]{28294, 28295};
+            definition.modelId = new int[]{28294, 28295};
             definition.widthScale = 190;
             definition.heightScale = 190;
             definition.standingAnimation = 5318;
@@ -102,7 +102,7 @@ public class CustomBosses {
             definition.recolorFrom = new int[]{929, 960, 1981, 0, 931, 4029, 926, 902, 922, 918, 924, 904, 916, 912, 935, 939, 906, 920, 955, 910, 914, 7101, 11200, 957, 9149, 908, 4, 5053, 8125, 6069};
             definition.recolorTo = new int[]{4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 4769, 0, 4769, 0, 4769, 0, 0, 4769, 4769};
             definition.combatLevel = 636;
-            definition.models = new int[]{29270};
+            definition.modelId = new int[]{29270};
             definition.standingAnimation = 4484;
             definition.size = 5;
             definition.walkingAnimation = 4488;
@@ -118,7 +118,7 @@ public class CustomBosses {
             definition.recolorTo = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
             definition.combatLevel = 126;
             definition.contrast = 20;
-            definition.models = new int[]{21154};
+            definition.modelId = new int[]{21154};
             definition.additionalModels = new int[]{21394};
             definition.standingAnimation = 5538;
             definition.walkingAnimation = 5539;
@@ -128,7 +128,7 @@ public class CustomBosses {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;
-            definition.models = new int[]{16196, 16202, 16199, 16200};
+            definition.modelId = new int[]{16196, 16202, 16199, 16200};
             definition.additionalModels = new int[]{16213};
             definition.standingAnimation = 4311;
             definition.size = 2;
@@ -139,7 +139,7 @@ public class CustomBosses {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;
-            definition.models = new int[]{16195, 16201, 16198, 16197, 16200};
+            definition.modelId = new int[]{16195, 16201, 16198, 16197, 16200};
             definition.additionalModels = new int[]{16212, 16211};
             definition.standingAnimation = 4311;
             definition.size = 2;
@@ -153,7 +153,7 @@ public class CustomBosses {
             definition.recolorFrom = new int[]{0, 30635, 29390, 29526, 31271, 31393, 31151, 32200, 31192, 127};
             definition.recolorTo = new int[]{5662, 127, 5662, 5662, 5662, 5662, 5662, 5662, 127, 5662};
             definition.combatLevel = 172;
-            definition.models = new int[]{38610};
+            definition.modelId = new int[]{38610};
             definition.widthScale = 110;
             definition.heightScale = 110;
             definition.standingAnimation = 90;
@@ -165,7 +165,7 @@ public class CustomBosses {
             definition.name = "Fenrir greyback";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 655;
-            definition.models = new int[]{26177, 26188, 26181};
+            definition.modelId = new int[]{26177, 26188, 26181};
             definition.additionalModels = new int[]{26113};
             definition.standingAnimation = 6539;
             definition.walkingAnimation = 6541;

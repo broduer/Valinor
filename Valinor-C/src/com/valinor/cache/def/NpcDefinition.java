@@ -4,7 +4,6 @@ import com.valinor.Client;
 import com.valinor.ClientConstants;
 import com.valinor.cache.Archive;
 import com.valinor.cache.anim.Animation;
-import com.valinor.cache.anim.Sequence;
 import com.valinor.cache.config.VariableBits;
 import com.valinor.cache.def.impl.npcs.CustomBosses;
 import com.valinor.cache.def.impl.npcs.CustomPets;
@@ -20,6 +19,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class NpcDefinition {
 
@@ -54,7 +55,7 @@ public final class NpcDefinition {
 
     public static int getModelIds(final int id, final int models) {
         final NpcDefinition npcDefinition = get(id);
-        return npcDefinition.models[models];
+        return npcDefinition.modelId[models];
     }
 
     public static int getadditionalModels(final int id, final int models) {
@@ -112,7 +113,7 @@ public final class NpcDefinition {
             npcDefinition.recolorFrom = new int[]{22426, 926};
             npcDefinition.recolorTo = new int[]{8090, 22426};
             npcDefinition.combatLevel = 54;
-            npcDefinition.models = new int[]{2909, 2898, 2920};
+            npcDefinition.modelId = new int[]{2909, 2898, 2920};
             npcDefinition.standingAnimation = 195;
             npcDefinition.walkingAnimation = 189;
         }
@@ -165,9 +166,9 @@ public final class NpcDefinition {
 
                 bf.write("definition[id].name = " + definition.name + ";");
                 bf.write(System.getProperty("line.separator"));
-                if (definition.models != null) {
+                if (definition.modelId != null) {
                     bf.write("definition[id].model_id = new int[] "
-                        + Arrays.toString(definition.models).replace("[", "{").replace("]", "}") + ";");
+                        + Arrays.toString(definition.modelId).replace("[", "{").replace("]", "}") + ";");
                     bf.write(System.getProperty("line.separator"));
                 }
                 if (definition.size != 1) {
@@ -302,8 +303,8 @@ public final class NpcDefinition {
         definition.contrast = copy.contrast;
         definition.actions = new String[copy.actions.length];
         System.arraycopy(copy.actions, 0, definition.actions, 0, definition.actions.length);
-        definition.models = new int[copy.models.length];
-        System.arraycopy(copy.models, 0, definition.models, 0, definition.models.length);
+        definition.modelId = new int[copy.modelId.length];
+        System.arraycopy(copy.modelId, 0, definition.modelId, 0, definition.modelId.length);
         definition.hasRenderPriority = copy.hasRenderPriority;
     }
 
@@ -407,10 +408,10 @@ public final class NpcDefinition {
         Model model = (Model) model_cache.get(interfaceType);
         if (model == null) {
             boolean cached = false;
-            if(models == null) {
+            if(modelId == null) {
                 return null;
             }
-            for (int i : models) {
+            for (int i : modelId) {
                 if (!Model.cached(i)) {
                     cached = true;
                 }
@@ -418,9 +419,9 @@ public final class NpcDefinition {
             if (cached) {
                 return null;
             }
-            final Model[] models = new Model[this.models.length];
-            for (int index = 0; index < this.models.length; index++) {
-                models[index] = Model.get(this.models[index]);
+            final Model[] models = new Model[this.modelId.length];
+            for (int index = 0; index < this.modelId.length; index++) {
+                models[index] = Model.get(this.modelId[index]);
             }
             if (models.length == 1) {
                 model = models[0];
@@ -472,60 +473,63 @@ public final class NpcDefinition {
         return animated_model;
     }
 
-    public void decode(Buffer buffer) {
+    private void decode(Buffer buffer) {
         while (true) {
-            int opcode = buffer.readUByte();
-            if (opcode == 0) {
+            int opcode = buffer.readUnsignedByte();
+            if (opcode == 0)
                 return;
-            } else if (opcode == 1) {
-                int len = buffer.readUByte();
-                models = new int[len];
-                for (int i = 0; i < len; i++) {
-                    models[i] = buffer.readUShort();
+            if (opcode == 1) {
+                int j = buffer.readUnsignedByte();
+                modelId = new int[j];
+                for (int j1 = 0; j1 < j; j1++) {
+                    modelId[j1] = buffer.readUShort();
                 }
-            } else if (opcode == 2) {
+            } else if (opcode == 2)
                 name = buffer.readString();
-            } else if (opcode == 12) {
-                size = buffer.readUByte();
-            } else if (opcode == 13) {
+            else if (opcode == 3)
+                description = buffer.readString();
+            else if (opcode == 12)
+                size = buffer.readSignedByte();
+            else if (opcode == 13)
                 standingAnimation = buffer.readUShort();
-            } else if (opcode == 14) {
+            else if (opcode == 14)
                 walkingAnimation = buffer.readUShort();
-            } else if (opcode == 15) {
-                turnLeftSequence = buffer.readUShort(); //rotate left anim
-            } else if (opcode == 16) {
-                turnRightSequence = buffer.readUShort(); //rotate right anim
+            else if(opcode == 15) {
+                turnLeftSequence = buffer.readUShort();
+            } else if(opcode == 16) {
+                turnRightSequence = buffer.readUShort();
             } else if (opcode == 17) {
                 walkingAnimation = buffer.readUShort();
                 rotate180Animation = buffer.readUShort();
                 rotate90LeftAnimation = buffer.readUShort();
                 rotate90RightAnimation = buffer.readUShort();
                 if (rotate180Animation == 65535) {
-                    rotate180Animation = walkingAnimation;
+                    rotate180Animation = -1;
                 }
                 if (rotate90LeftAnimation == 65535) {
-                    rotate90LeftAnimation = walkingAnimation;
+                    rotate90LeftAnimation = -1;
                 }
                 if (rotate90RightAnimation == 65535) {
-                    rotate90RightAnimation = walkingAnimation;
+                    rotate90RightAnimation = -1;
                 }
-            } else if (opcode == 18) {
-                buffer.readUShort();
-            } else if (opcode >= 30 && opcode < 35) {
+            } else if(opcode == 18){
+                category = buffer.readUShort();
+            } else if (opcode >= 30 && opcode < 40) {
+                if (actions == null)
+                    actions = new String[10];
                 actions[opcode - 30] = buffer.readString();
-                if (actions[opcode - 30].equalsIgnoreCase("Hidden")) {
+                if (actions[opcode - 30].equalsIgnoreCase("hidden"))
                     actions[opcode - 30] = null;
-                }
             } else if (opcode == 40) {
-                int len = buffer.readUByte();
-                recolorFrom = new int[len];
-                recolorTo = new int[len];
-                for (int i = 0; i < len; i++) {
-                    recolorFrom[i] = buffer.readUShort();
-                    recolorTo[i] = buffer.readUShort();
+                int k = buffer.readUnsignedByte();
+                recolorFrom = new int[k];
+                recolorTo = new int[k];
+                for (int k1 = 0; k1 < k; k1++) {
+                    recolorFrom[k1] = buffer.readUShort();
+                    recolorTo[k1] = buffer.readUShort();
                 }
             } else if (opcode == 41) {
-                int length = buffer.readUByte();
+                int length = buffer.readUnsignedByte();
                 retextureFrom = new short[length];
                 retextureTo = new short[length];
                 for (int index = 0; index < length; index++) {
@@ -533,71 +537,81 @@ public final class NpcDefinition {
                     retextureTo[index] = (short) buffer.readUShort();
                 }
             } else if (opcode == 60) {
-                int len = buffer.readUByte();
-                additionalModels = new int[len];
-                for (int i = 0; i < len; i++) {
-                    additionalModels[i] = buffer.readUShort(); //chatheadModels
+                int l = buffer.readUnsignedByte();
+                additionalModels = new int[l];
+                for (int l1 = 0; l1 < l; l1++) {
+                    additionalModels[l1] = buffer.readUShort();
                 }
-            } else if (opcode == 93) {
-                //Make sure to draw PK bots in the minimap (NPC IDs 13000 to 13009)
-                if (id < 13000 || id > 13009)
-                    drawMapDot = false;
-            } else if (opcode == 95) {
+            } else if (opcode == 93)
+                drawMapDot = false;
+            else if (opcode == 95)
                 combatLevel = buffer.readUShort();
-            } else if (opcode == 97) {
-                widthScale = buffer.readUShort(); //widthScale
-            } else if (opcode == 98) {
+            else if (opcode == 97)
+                widthScale = buffer.readUShort();
+            else if (opcode == 98)
                 heightScale = buffer.readUShort();
-            } else if (opcode == 99) {
+            else if (opcode == 99)
                 hasRenderPriority = true;
-            } else if (opcode == 100) {
+            else if (opcode == 100)
                 ambient = buffer.readSignedByte();
-            } else if (opcode == 101) {
-                contrast = buffer.readSignedByte() * 5;
-            } else if (opcode == 102) {
+            else if (opcode == 101)
+                contrast = buffer.readSignedByte();
+            else if (opcode == 102)
                 headIconPrayer = buffer.readUShort();
-            } else if (opcode == 103) {
+            else if (opcode == 103)
                 rotation = buffer.readUShort();
-            } else if (opcode != 106 && opcode != 118) {
-                if (opcode == 107) { // L: 153
-                    isInteractable = false;
-                } else if (opcode == 109) {
-                    isClickable = false;
-                } else if (opcode == 111) {
-                    isFollower = true;
-                } else if (opcode == 249) {
-
-                }
-            } else {
+            else if (opcode == 109) {
+                isClickable = false;
+            } else if (opcode == 111) {
+                isFollower = true;
+            }
+            else if (opcode == 106 || opcode == 118) {
                 transformVarbit = buffer.readUShort();
-                if (transformVarbit == 65535) {
+                if (transformVarbit == 65535)
                     transformVarbit = -1;
-                }
-
                 transformVarp = buffer.readUShort();
-                if (transformVarp == 65535) {
+                if (transformVarp == 65535)
                     transformVarp = -1;
-                }
 
                 int var3 = -1;
-                if (opcode == 118) {
+                if(opcode == 118) {
                     var3 = buffer.readUShort();
-                    if (var3 == 65535) {
-                        var3 = -1;
-                    }
                 }
-
-                int var4 = buffer.readUnsignedByte();
-                transforms = new int[var4 + 2];
-
-                for (int var5 = 0; var5 <= var4; ++var5) {
-                    transforms[var5] = buffer.readUShort();
-                    if (transforms[var5] == 65535) {
-                        transforms[var5] = -1;
-                    }
+                int i1 = buffer.readUnsignedByte();
+                transforms = new int[i1 + 2];
+                for (int i2 = 0; i2 <= i1; i2++) {
+                    transforms[i2] = buffer.readUShort();
+                    if (transforms[i2] == 65535)
+                        transforms[i2] = -1;
                 }
+                transforms[i1 + 1] = var3;
 
-                transforms[var4 + 1] = var3;
+            } else if (opcode == 107)
+                isInteractable = false;
+            else if (opcode == 249)
+            {
+                int length = buffer.readUnsignedByte();
+
+                params = new HashMap<>(length);
+
+                for (int i = 0; i < length; i++) {
+                    boolean isString = buffer.readUnsignedByte() == 1;
+                    int key = buffer.read24Int();
+                    Object value;
+
+                    if (isString) {
+                        value = buffer.readString();
+                    }
+
+                    else {
+                        value = buffer.readInt();
+                    }
+
+                    params.put(key, value);
+                }
+            } else {
+                System.err.printf("Error unrecognised {NPC} opcode: %d%n%n", opcode);
+                continue;
             }
         }
     }
@@ -652,6 +666,7 @@ public final class NpcDefinition {
     public final int anInt64;
     public String name;
     public String[] actions;
+    public int category;
     public int walkingAnimation;
     public int turnLeftSequence;
     public int turnRightSequence;
@@ -680,7 +695,8 @@ public final class NpcDefinition {
     public int widthScale;
     public int contrast;
     public boolean hasRenderPriority;
-    public int[] models;
+    public int[] modelId;
+    public Map<Integer, Object> params = null;
     public int interfaceZoom = 0;
     public int id;
     public static TempCache model_cache = new TempCache(30);

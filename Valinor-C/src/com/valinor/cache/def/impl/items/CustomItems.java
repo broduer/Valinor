@@ -995,7 +995,7 @@ public class CustomItems {
             def.xOffset2d = 0;
             def.yOffset2d = 100;
             NpcDefinition npcInstance = NpcDefinition.get(NpcIdentifiers.DHAROK_THE_WRETCHED);
-            def.inventoryModel = npcInstance.models[0];
+            def.inventoryModel = npcInstance.modelId[0];
         }
 
         if(id == TREASURE_CASKET) {
