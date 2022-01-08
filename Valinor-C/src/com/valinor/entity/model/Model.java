@@ -27,14 +27,14 @@ public class Model extends Renderable {
     public static int COSINE[];
     static ModelHeader aClass21Array1661[];
     static Provider resourceProvider;
-    static boolean hasAnEdgeToRestrict[] = new boolean[4700];
-    static boolean outOfReach[] = new boolean[4700];
-    static int projected_vertex_x[] = new int[4700];
-    static int projected_vertex_y[] = new int[4700];
-    static int projected_vertex_z[] = new int[4700];
-    static int camera_vertex_x[] = new int[4700];
-    static int camera_vertex_y[] = new int[4700];
-    static int camera_vertex_z[] = new int[4700];
+    static boolean hasAnEdgeToRestrict[] = new boolean[6500];
+    static boolean outOfReach[] = new boolean[6500];
+    static int projected_vertex_x[] = new int[6500];
+    static int projected_vertex_y[] = new int[6500];
+    static int projected_vertex_z[] = new int[6500];
+    static int camera_vertex_x[] = new int[6500];
+    static int camera_vertex_y[] = new int[6500];
+    static int camera_vertex_z[] = new int[6500];
     static int depthListIndices[] = new int[1600];
     static int faceLists[][] = new int[1600][512];
     static int anIntArray1673[] = new int[12];
@@ -50,10 +50,10 @@ public class Model extends Renderable {
     static int zAnimOffset;
     static int modelIntArray3[];
     static int modelIntArray4[];
-    private static int anIntArray1622[] = new int[2000];
-    private static int anIntArray1623[] = new int[2000];
-    private static int anIntArray1624[] = new int[2000];
-    private static int anIntArray1625[] = new int[2000];
+    private static int anIntArray1622[] = new int[6500];
+    private static int anIntArray1623[] = new int[6500];
+    private static int anIntArray1624[] = new int[6500];
+    private static int anIntArray1625[] = new int[6500];
 
     static {
         SINE = Rasterizer3D.SINE;
