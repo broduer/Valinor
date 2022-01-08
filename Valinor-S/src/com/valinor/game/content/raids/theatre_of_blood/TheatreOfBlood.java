@@ -219,6 +219,8 @@ public class TheatreOfBlood extends Raids {
         party.monsters.add(sotetseg);
         party.monsters.add(xarpus);
         party.monsters.add(verzik);
+
+        party.setupBossLives();
     }
 
     private void spawnChests(Player player) {

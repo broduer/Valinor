@@ -14,6 +14,7 @@ public class AreaConstants {
     public static final Area XARPUS = new Area (3149, 4365, 3193, 4410);
     public static final Area VERZIK = new Area (3147, 4291, 3192, 4336);
     public static final Area LOOT = new Area (3222, 4301, 3253, 4337);
+    public static final Area BLOAT_ARENA = new Area(3287, 4439, 3304, 4456);
     public static final Area[] THEATRE_ROOMS = { THEATRE, MAIDEN, BLOAT, NYLOCAS, SOTETSEG, XARPUS, LOOT};
 
 }

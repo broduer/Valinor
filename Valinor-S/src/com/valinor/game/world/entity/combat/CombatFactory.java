@@ -406,6 +406,12 @@ public class CombatFactory {
             }
         }
 
+        //Combat script damage reductions
+        CombatMethod combatMethod = getMethod(attacker);
+        if (combatMethod != null) {
+            damage = (int) Math.round(damage * combatMethod.getDamageReduction());
+        }
+
         //If we have used the SOTD special attack, reduce incoming melee damage by 50%.
         if (target.isPlayer()) {
             if (target.getTimers().has(TimerKey.SOTD_DAMAGE_REDUCTION) && target.getAsPlayer().getEquipment().containsAny(STAFF_OF_THE_DEAD, TOXIC_STAFF_OF_THE_DEAD, TOXIC_STAFF_UNCHARGED, TOXIC_STAFF_OF_THE_DEAD_C, STAFF_OF_LIGHT) && type == CombatType.MELEE) {

@@ -159,7 +159,7 @@ public class Nightmare extends Npc {
         }
 
         if (isAttackable() && !getCombat().inCombat() && getCombat().getTarget() == null) {
-            for (Mob mob : getPossibleTargets()) {
+            for (Mob mob : getCombatMethod().getPossibleTargets()) {
                 getCombat().setTarget(mob);
                 break;
             }
@@ -228,31 +228,6 @@ public class Nightmare extends Npc {
             specialDelta = 60;
         }
         super.sequence();
-    }
-
-    public ArrayList<Mob> getPossibleTargets() {
-        return getPossibleTargets(14, true, false);
-    }
-
-    public ArrayList<Mob> getPossibleTargets(int ratio, boolean players, boolean npcs) {
-        ArrayList<Mob> possibleTargets = new ArrayList<>();
-        if (players) {
-            for (Player player : World.getWorld().getPlayers()) {
-                if (player == null || player.dead() || player.tile().distance(this.getCentrePosition()) > ratio) {
-                    continue;
-                }
-                possibleTargets.add(player);
-            }
-        }
-        if (npcs) {
-            for (Npc npc : World.getWorld().getNpcs()) {
-                if (npc == null || npc == this || npc.dead() || npc.getCentrePosition().distance(this.getCentrePosition()) > ratio) {
-                    continue;
-                }
-                possibleTargets.add(npc);
-            }
-        }
-        return possibleTargets;
     }
 
     public boolean isAttackable() {

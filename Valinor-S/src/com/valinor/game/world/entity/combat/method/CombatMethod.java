@@ -17,4 +17,7 @@ public interface CombatMethod {
     default void process(Mob mob, Mob target) {
 
     }
+    default double getDamageReduction() {
+        return 1.0;
+    }
 }

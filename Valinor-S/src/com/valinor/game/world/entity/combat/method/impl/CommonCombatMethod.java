@@ -3,6 +3,7 @@ package com.valinor.game.world.entity.combat.method.impl;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
@@ -19,6 +20,8 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Debugs;
 import com.valinor.util.timers.TimerKey;
+
+import java.util.ArrayList;
 
 import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
@@ -48,6 +51,31 @@ public abstract class CommonCombatMethod implements CombatMethod {
         mob.putAttrib(AttributeKey.POISON_TICKS, 0);
         mob.clearAttrib(VENOMED_BY);
         mob.getTimers().cancel(TimerKey.FROZEN);
+    }
+
+    public ArrayList<Mob> getPossibleTargets() {
+        return getPossibleTargets(14, true, false);
+    }
+
+    public ArrayList<Mob> getPossibleTargets(int ratio, boolean players, boolean npcs) {
+        ArrayList<Mob> possibleTargets = new ArrayList<>();
+        if (players) {
+            for (Player player : World.getWorld().getPlayers()) {
+                if (player == null || player.dead() || player.tile().distance(mob.getCentrePosition()) > ratio) {
+                    continue;
+                }
+                possibleTargets.add(player);
+            }
+        }
+        if (npcs) {
+            for (Npc npc : World.getWorld().getNpcs()) {
+                if (npc == null || npc == mob || npc.dead() || npc.getCentrePosition().distance(mob.getCentrePosition()) > ratio) {
+                    continue;
+                }
+                possibleTargets.add(npc);
+            }
+        }
+        return possibleTargets;
     }
 
     public final void handleDodgableAttack(final Mob mob, final Mob target, CombatType type, final Projectile projectile, final Graphic graphic, final int damage, Task onhit) {

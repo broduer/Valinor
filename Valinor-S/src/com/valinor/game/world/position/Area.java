@@ -2,6 +2,13 @@ package com.valinor.game.world.position;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.object.MapObjects;
+import com.valinor.game.world.object.ObjectManager;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Bart on 8/22/2015.
@@ -89,6 +96,20 @@ public class Area {
             }
         }
         return false;
+    }
+
+    public List<Tile> getRandomLocations(int count, int height) {
+        List<Tile> tiles = new ArrayList<>();
+        int lock = 50; //prevents deadlocks
+        while (tiles.size() < count && lock-- > 0) {
+            int x = World.getWorld().random(swX, neX);
+            int y = World.getWorld().random(swY, neY);
+            Tile tile = new Tile(x, y, height);
+            if (!ObjectManager.exists(tile) && !tiles.contains(tile)) {
+                tiles.add(tile);
+            }
+        }
+        return tiles;
     }
 
     public boolean containsClosed(Tile t) {

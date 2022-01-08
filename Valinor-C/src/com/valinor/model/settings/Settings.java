@@ -33,9 +33,9 @@ public class Settings {
     public boolean toggle_item_pile_names = true;
     public boolean filter_item_pile_names = false;
     public boolean moving_prayers = false;
-    public boolean ground_snow = true;
+    public boolean ground_snow = false;
     public boolean shift_pet_options = false;
-    public boolean sky_snow = true;
+    public boolean sky_snow = false;
 
     public int drag_item_value = 10;
     public boolean incinerator = false;

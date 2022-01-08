@@ -58,7 +58,7 @@ public class NightmareCombat extends CommonCombatMethod {
          * Default attack.
          */
         if (World.getWorld().random(10) > 5) {
-            for (Mob victim : nightmare.getPossibleTargets(64, true, false)) {
+            for (Mob victim : getPossibleTargets(64, true, false)) {
                 nightmare.animate(MAGIC_ANIMATION);
                 nightmare.getCombat().setTarget(victim);
                 Chain.bound(null).runFn(1, () -> {
@@ -79,7 +79,7 @@ public class NightmareCombat extends CommonCombatMethod {
                 victim.hit(nightmare, CombatFactory.calcDamageFromType(nightmare, victim, CombatType.MAGIC), (delay / 20) - 1, CombatType.MAGIC).checkAccuracy().submit();
             }
         } else {
-            for (Mob victim : nightmare.getPossibleTargets(64, true, false)) {
+            for (Mob victim : getPossibleTargets(64, true, false)) {
                 int delay = 60;
                 nightmare.animate(RANGE_ANIMATION);
                 nightmare.getCombat().setTarget(victim);
