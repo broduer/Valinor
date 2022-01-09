@@ -86,13 +86,12 @@ public class Scorpia extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath() {
+    public void onDeath(Npc npc) {
         spawnedGuardians = false;
         for (Npc guardian : guardians) {
             if (guardian != null && !guardian.dead())
                 guardian.hit(guardian, guardian.hp());
         }
-        super.onDeath();
     }
 
     @Override

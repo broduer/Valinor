@@ -137,7 +137,7 @@ public abstract class CommonCombatMethod implements CombatMethod {
     /**
      * npc only
      */
-    public void onDeath() {
+    public void onDeath(Npc npc) {
 
     }
 
