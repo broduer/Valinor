@@ -196,6 +196,12 @@ public class World {
 
     protected final Map<String, OwnedObject> ownedObjects = Maps.newConcurrentMap();
 
+    public <T> T randomTypeOfList(List<T> list) {
+        if(list == null || list.size() == 0)
+            return null;
+        return list.get(new SecureRandom().nextInt(list.size()));
+    }
+
     public static class WorldPerfTracker {
         public long skulls, tasks, login, logout, objects, packets, players,
             npcs, gpi, flush, reset, games;

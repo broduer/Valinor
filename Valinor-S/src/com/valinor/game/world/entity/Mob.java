@@ -1040,28 +1040,39 @@ public abstract class Mob extends Entity {
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage) {
-        hit(attacker, damage, SplatType.HITSPLAT);
+        hit_(attacker, damage, 0, SplatType.HITSPLAT);
     }
 
     /**
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, int delay) {
-        hit(attacker, damage, SplatType.HITSPLAT);
+        hit_(attacker, damage, delay, SplatType.HITSPLAT);
+    }
+
+    /**
+     * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
+     */
+    public void hit_(Mob attacker, int damage, int delay, SplatType type) {
+        hit(attacker, damage, delay, null, type);
+    }
+
+    public void hit(Mob attacker, int damage, CombatType combatType, SplatType type) {
+        hit(attacker, damage, 0, combatType).setSplatType(type).submit();
     }
 
     /**
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, SplatType type) {
-        hit(attacker, damage, 0, null).setSplatType(type).submit();
+        hit(attacker, damage, 0, null, type);
     }
 
     /**
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
-    public void hit(Mob attacker, int damage, CombatType combatType, SplatType type) {
-        hit(attacker, damage, 0, combatType).setSplatType(type).submit();
+    public void hit(Mob attacker, int damage, int delay, CombatType combatType, SplatType type) {
+        hit(attacker, damage, delay, combatType).setSplatType(type).submit();
     }
 
     /**
@@ -1440,7 +1451,7 @@ public abstract class Mob extends Entity {
     }
 
     /**
-     * shortcut to {@link Chain#waitUntil(Tile, Runnable)}
+     * shortcut to {@link Chain#waitUntil(int, BooleanSupplier, Runnable)}
      */
     public Chain<Mob> waitUntil(int tickBetweenLoop, BooleanSupplier condition, Runnable work) {
         return Chain.bound(this).waitUntil(tickBetweenLoop, condition, work);
@@ -1463,7 +1474,7 @@ public abstract class Mob extends Entity {
      * player.smartPathTo(startPos, obj.getSize());} doesn't work or walk exactly where you expect it too, its probably beacuse its a 1999 pathfinder.
      * <br> use {@code player.doPath(new DefaultPathFinder(), tile)} instead
      *
-     * @param object
+     * @param targetPos
      * @return
      */
     public void smartPathTo(Tile targetPos) {

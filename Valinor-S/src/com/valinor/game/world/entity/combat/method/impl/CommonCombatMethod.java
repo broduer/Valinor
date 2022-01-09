@@ -148,7 +148,7 @@ public abstract class CommonCombatMethod implements CombatMethod {
 
     }
 
-    public void onHit(Mob Mob, Mob target, Hit hit) {
+    public void onHit(Mob mob, Mob target, Hit hit) {
 
     }
 

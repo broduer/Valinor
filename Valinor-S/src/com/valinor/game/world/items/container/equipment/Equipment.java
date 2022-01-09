@@ -653,6 +653,13 @@ public final class Equipment extends ItemContainer {
     private void appearanceForIndex(int equipmentIndex) {
         if (!NO_APPEARANCE.contains(equipmentIndex)) {
             player.getUpdateFlag().flag(Flag.APPEARANCE);
+            if(equipmentIndex == EquipSlot.WEAPON) {
+                player.getCombat().setRangedWeapon(null);
+                WeaponInterfaces.updateWeaponInterface(player);
+                CombatSpecial.updateBar(player);
+                player.setSpecialActivated(false);
+                Autocasting.setAutocast(player, null);
+            }
         }
     }
 

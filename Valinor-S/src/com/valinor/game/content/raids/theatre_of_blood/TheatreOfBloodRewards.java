@@ -61,11 +61,6 @@ public class TheatreOfBloodRewards {
             }
         }
         player.getRaidRewards().clear();
-
-        //Roll for pet
-        if (World.getWorld().rollDie(650, 1)) {
-            unlockLilZik(player);
-        }
     }
 
     public static void displayRewards(Player player) { // shows

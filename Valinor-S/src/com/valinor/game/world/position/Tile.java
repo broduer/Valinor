@@ -761,4 +761,16 @@ public class Tile implements Cloneable {
         return tile.getX() == x && tile.getY() == y;
     }
 
+    /**
+     * Checks if this position is within distance of another position.
+     *
+     * @param tile
+     *            the position to check the distance for.
+     * @param distance
+     *            the distance to check.
+     * @return true if this position is within the distance of another position.
+     */
+    public boolean withinDistanceIgnoreHeight(Tile tile, int distance) {
+        return Math.abs(tile.getX() - this.getX()) <= distance && Math.abs(tile.getY() - this.getY()) <= distance;
+    }
 }
