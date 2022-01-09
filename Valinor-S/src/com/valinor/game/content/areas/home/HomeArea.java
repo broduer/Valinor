@@ -49,8 +49,9 @@ public class HomeArea extends Interaction {
                 player.getSlayerKey().open();
                 return true;
             }
-            if(object.getId() == TELEPORT_PLATFORM_36062) {
-
+            if(object.getId() == PORTAL_15477) {
+                player.faceObj(object);
+                player.message(Color.RED.wrap("Construction is being worked on and not ready to be released yet."));
                 return true;
             }
             if (object.getId() == ALTAR) {

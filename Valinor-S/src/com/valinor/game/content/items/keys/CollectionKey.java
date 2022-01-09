@@ -54,7 +54,7 @@ public class CollectionKey extends Interaction {
             }
         }
 
-        var keysUsed = player.<Integer>getAttribOr(COLLECTION_LOG_KEYS_OPENED,0);
+        var keysUsed = player.<Integer>getAttribOr(COLLECTION_LOG_KEYS_OPENED,0) + 1;
         player.putAttrib(COLLECTION_LOG_KEYS_OPENED, keysUsed);
         player.message(Color.PURPLE.wrap("You have now opened "+Utils.formatNumber(keysUsed)+" collection log keys!"));
     }

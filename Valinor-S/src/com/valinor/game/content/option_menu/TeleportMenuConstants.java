@@ -33,7 +33,7 @@ public class TeleportMenuConstants {
             new OptionMenu("Slayer Tower",
                 new String[] { "Crawling Hand", "Banshee", "Infernal mage", "Bloodveld", "Aberrant Spectre",
                     "Gargoyle", "Nechryael", "Abyssal Demon" },
-                new TeleportAction(player, new Tile(3097, 9868))));
+                new TeleportAction(player, new Tile(3429, 3538))));
 
         teleportOptions.put(3, new OptionMenu("Mourmer Tunnel", new String[] { "Dark Beast" },
             new TeleportAction(player, new Tile(2029, 4636))));
