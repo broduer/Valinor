@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.TickDelay;
 import com.valinor.util.Utils;
@@ -110,7 +111,7 @@ public class Cerberus extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath() {
+    public void onDeath(Npc npc) {
         comboAttackCooldown.reset();
         spreadLavaCooldown.reset();
     }

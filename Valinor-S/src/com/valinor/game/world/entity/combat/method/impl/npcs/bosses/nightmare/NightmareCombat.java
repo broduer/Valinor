@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
@@ -117,7 +118,7 @@ public class NightmareCombat extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath() {
+    public void onDeath(Npc npc) {
         target.message("You have defeated The Nightmare!");
         target.message("You can leave by using the energy barrier.");
 

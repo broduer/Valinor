@@ -871,10 +871,6 @@ public class NpcDeath {
             }
         }
 
-        if (npc.id() == NpcIdentifiers.GARGOYLE) {
-            Gargoyle.onDeath(npc);
-        }
-
         if (npc.id() == NpcIdentifiers.VETION) {//Just do it again for extra safety
             npc.clearAttrib(AttributeKey.VETION_HELLHOUND_SPAWNED);
             npc.putAttrib(AttributeKey.VETION_REBORN_ACTIVE, false);

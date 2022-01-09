@@ -216,7 +216,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath() {
+    public void onDeath(Npc npc) {
         World.getWorld().getNpcs().forEachInRegion(12613, n -> {
             if(n.isRegistered() || !n.dead()) {
                 n.hit(n, n.hp());

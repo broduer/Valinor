@@ -83,7 +83,7 @@ public class Skotizo extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath() {
+    public void onDeath(Npc npc) {
         World.getWorld().getNpcs().forEachInArea(SkotizoInstance.SKOTIZO_AREA, n -> {
             if(n.id() == REANIMATED_DEMON || n.id() == DARK_ANKOU || n.id() == AWAKENED_ALTAR || n.id() == AWAKENED_ALTAR_7290 || n.id() == AWAKENED_ALTAR_7292 || n.id() == AWAKENED_ALTAR_7294) {
                 n.hit(n, n.hp());//Kill off all npcs that are alive

@@ -22,7 +22,8 @@ public class Gargoyle extends CommonCombatMethod {
         return 413;
     }
 
-    public static void onDeath(Npc npc) {
+    @Override
+    public void onDeath(Npc npc) {
         npc.transmog(getNormalId());
     }
 
