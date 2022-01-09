@@ -13,7 +13,9 @@ public class NpcManager {
 
         switch (id) {
 
+            //Somehow these npcs are not clickable
             case SARACHNIS:
+            case PESTILENT_BLOAT:
                 definition.isClickable = true;
                 break;
                 

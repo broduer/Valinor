@@ -136,7 +136,6 @@ public class Hit {
         return builder(attacker, target, damage, delay, CombatType.MELEE);
     }
 
-    // just remembering whjat this does
     public static Hit builder(Mob attacker, Mob target, int damage, int delay, CombatType type) {
         Hit hit = new Hit(attacker, target, null, false, delay, damage);
         hit.combatType = type;
@@ -208,7 +207,7 @@ public class Hit {
         }
 
         //Heal hit
-        if(attacker.isNpc() && splatType == SplatType.NPC_HEALING_HITSPLAT) {
+        if(splatType == SplatType.NPC_HEALING_HITSPLAT) {
             attacker.heal(damage);
             return;
         }
@@ -260,7 +259,8 @@ public class Hit {
     }
 
     public void submit() {
-        pidAdjust();
+        if(splatType != SplatType.NPC_HEALING_HITSPLAT) {
+            pidAdjust();
         /*if(target instanceof Npc) {
             Npc npc = target.getAsNpc();
             if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("the nightmare")) {
@@ -273,7 +273,8 @@ public class Hit {
                 return;
             }
         }*/
-        CombatFactory.addPendingHit(this);
+            CombatFactory.addPendingHit(this);
+        }
     }
 
     @Override

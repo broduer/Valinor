@@ -112,6 +112,17 @@ public class Npc extends Mob {
     }
 
     private boolean neverWalkHome;
+
+    private boolean canAttack = true;
+
+    public boolean canAttack() {
+        return canAttack;
+    }
+
+    public void canAttack(boolean canAttack) {
+        this.canAttack = canAttack;
+    }
+
     public String spawnStack = "";
     public boolean minnowsFish;
     private int id;

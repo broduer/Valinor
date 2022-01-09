@@ -606,6 +606,14 @@ public class CombatFactory {
             return false;
         }
 
+        if(entity.isNpc()) {
+            Npc npc = entity.getAsNpc();
+            if(!npc.canAttack()) {
+                Debugs.CMB.debug(entity, "cant attack attribute is false", other, true);
+                return false;
+            }
+        }
+
         if (!MemberZone.canAttack(entity, other)) {
             Debugs.CMB.debug(entity, "cant attack member zone npc", other, true);
             return false;
@@ -977,7 +985,6 @@ public class CombatFactory {
      *
      * @param hit
      */
-    // ok if this wasnt static this would be the equivilent to @override hit() in runite
     public static void addPendingHit(Hit hit) {
         Mob attacker = hit.getAttacker();
         Mob target = hit.getTarget();

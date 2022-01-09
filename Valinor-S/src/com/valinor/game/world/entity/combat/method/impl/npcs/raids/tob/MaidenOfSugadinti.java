@@ -22,9 +22,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
  * Handles Maiden of Sugadinti combat.
  * @author ReverendDread
  *
- * TODO add blood spider animations (death anim)
- * TODO add blood spawn animations (death anim)
- *
  * Apr 7, 2019
  */
 public class MaidenOfSugadinti extends CommonCombatMethod {
@@ -71,6 +68,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
                     cycle = 0;
                     if (spawn == null) {
                         spawn = new Npc(BLOOD_SPAWN, tile).spawn(false);
+                        spawn.canAttack(false);
                         spawn.neverWalkHome(true);
                         World.getWorld().tileGraphic(BLOOD_SPLASH, tile, 0, 0);
                     }
@@ -114,8 +112,10 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
                     return;
                 }
                 if (cycles < SPIDER_SPAWNS.length) {
-                    Tile tile = SPIDER_SPAWNS[cycles];
+                    Tile tile = SPIDER_SPAWNS[cycles].transform(0,0, mob.tile().level);
                     Npc spider = new Npc(BLOOD_SPIDER, tile).spawn(false);
+                    spider.animate(8098);//Spawn animation
+                    spider.canAttack(false);
                     spider.faceEntity(mob);
                     spiders.add(spider);
                 } else if (cycles >= SPIDER_SPAWNS.length) {
@@ -213,5 +213,14 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
     @Override
     public int getAttackDistance(Mob mob) {
         return 24;
+    }
+
+    @Override
+    public void onDeath() {
+        World.getWorld().getNpcs().forEachInRegion(12613, n -> {
+            if(n.isRegistered() || !n.dead()) {
+                n.hit(n, n.hp());
+            }
+        });
     }
 }

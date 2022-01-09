@@ -91,9 +91,11 @@ public class PestilentBloat extends CommonCombatMethod {
 
     @Override
     public void process(Mob mob, Mob target) {
-        super.process(mob, target);
-        if(mob.dead())
+        if(mob.dead()) {
+            System.out.println("huh");
             return;
+        }
+        System.out.println("hmmm");
         mob.getTimers().cancel(TimerKey.FROZEN);
         targets = getPossibleTargets();
         if (corner >= corners.length) {
