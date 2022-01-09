@@ -1138,6 +1138,7 @@ public enum AttributeKey {
     GROTESQUE_GUARDIANS("grotesque_guardians", AttribType.INTEGER),
     BYROPHYTA("byrophyta", AttribType.INTEGER),
     THEATRE_OF_BLOOD_RUNS_COMPLETED("TOB", AttribType.INTEGER),
+    ZARYTE_CROSSBOW_SPEC_ACTIVE("zaryte_crossbow_spec_active", AttribType.BOOLEAN),
     HESPORI("hespori", AttribType.INTEGER),
     MIMIC("mimic", AttribType.INTEGER),
     SARACHNIS("sarachnis", AttribType.INTEGER),

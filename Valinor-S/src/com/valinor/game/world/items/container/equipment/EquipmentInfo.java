@@ -446,6 +446,7 @@ public class EquipmentInfo {
                     return style == 2 ? 3294 : 3297;
                 case 20593:
                 case 14487:
+                case 26233:
                 case 11802: // gs
                 case 11804: // gs
                 case 11806: // gs
@@ -740,6 +741,7 @@ public class EquipmentInfo {
                 return 3679;
             case 20593:
             case 14487:
+            case 26233:
             case 11802: // gs
             case 11804: // gs
             case 11806: // gs

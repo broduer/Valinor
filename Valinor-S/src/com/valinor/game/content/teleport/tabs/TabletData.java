@@ -4,6 +4,7 @@ import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.ItemIdentifiers;
 
 import java.util.Collections;
 import java.util.EnumSet;
@@ -57,7 +58,6 @@ public enum TabletData {
     LUMBERYARD(new Item(LUMBERYARD_TELEPORT), new Tile(3306, 3483, 0), true),
     ZUL_ANDRA(new Item(ZULANDRA_TELEPORT), new Tile(2200, 3055, 0), true),
     KEY_MASTER(new Item(KEY_MASTER_TELEPORT), new Tile(1312, 1250), true),
-    LUMBRIDGE_GRAVEYARD(new Item(LUMBRIDGE_GRAVEYARD_TELEPORT), new Tile(3244, 3199, 0), false),
     DRAYNOR_MANOR(new Item(DRAYNOR_MANOR_TELEPORT), new Tile(3111, 3326, 0), false),
     MIND_ALTAR(new Item(MIND_ALTAR_TELEPORT), new Tile(2979, 3509), false),
     SALVE_GRAVEYARD(new Item(SALVE_GRAVEYARD_TELEPORT), new Tile(3431, 3461), false),

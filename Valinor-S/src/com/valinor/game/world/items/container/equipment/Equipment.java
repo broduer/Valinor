@@ -140,7 +140,7 @@ public final class Equipment extends ItemContainer {
     public static boolean wearingAvasEffect(Player player) {
         Item cape = player.getEquipment().get(EquipSlot.CAPE);
         return cape != null && player.getEquipment().containsAny(10498, 10499, 13337, 9756, 9757, RANGING_CAPE,
-            RANGING_CAPE_10642, RANGING_CAPET, 22109, 21898);
+            RANGING_CAPET, 22109, 21898);
     }
 
     public static boolean fullFremennik(Player player) {
@@ -173,20 +173,20 @@ public final class Equipment extends ItemContainer {
                 continue;
             int id = item.getId();
             if (index == EquipSlot.HEAD) {
-                if (id == 12029 // torva
+                if (id == 26382 // torva
                     || id == 12026 // pernix
                     || id == 12023 // virtus
                 )
                     hpIncrease += 6;
 
             } else if (index == EquipSlot.BODY) {
-                if (id == 12028 // torva
+                if (id == 26384 // torva
                     || id == 12025 // pernix
                     || id == 12022 // virtus
                 )
                     hpIncrease += 20;
             } else if (index == EquipSlot.LEGS) {
-                if (id == 12027 // torva
+                if (id == 26386 // torva
                     || id == 12024 // pernix
                     || id == 12021 // virtus
                 )

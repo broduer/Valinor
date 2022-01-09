@@ -22,6 +22,7 @@ public class CombatSounds {
         // Special cases that don't match the below
         switch (weapon.getId()) {
         // Godswords
+        case 26233:
         case 11802:
         case 20593:
         case 20368:

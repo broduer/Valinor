@@ -54,9 +54,8 @@ public class RangedData {
     private static final Map<Integer, RangedWeapon> rangedWeapons = new HashMap<>();
 
     public static int getBoltSpecialAttack(Player p, Mob target, int damage) {
-
+        boolean zaryteCrossbow = p.getEquipment().hasAt(EquipSlot.WEAPON, 26374);
         double boltSpecialMultiplier;
-
         boolean always_fire_special = false;
 
         if(target instanceof Npc) {
@@ -69,6 +68,10 @@ public class RangedData {
         //System.out.println("Using bolt spec "+always_fire_special);
 
         Item ammo = p.getEquipment().get(EquipSlot.AMMO);
+
+        if(p.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE,false)) {
+            always_fire_special = true;
+        }
         if(ammo != null) {
             switch (ammo.getId()) {
                 case OPAL_BOLTS_E, OPAL_DRAGON_BOLTS_E -> {
@@ -76,14 +79,15 @@ public class RangedData {
                     if (lucky_lightning) {
                         int current_range_level = p.skills().level(Skills.RANGED);
                         target.performGraphic(new Graphic(749));
-                        boltSpecialMultiplier = (current_range_level * 0.10); // Can max deal 25% extra damage.
+                        double dmgModifier = zaryteCrossbow ? 0.11 : 0.10;
+                        boltSpecialMultiplier = (current_range_level * dmgModifier); // Can max deal 25% extra damage.
                         damage += boltSpecialMultiplier;
                     }
                 }
                 case JADE_BOLTS_E, JADE_DRAGON_BOLTS_E -> {
                     boolean earths_fury = Utils.percentageChance(boltSpecialChance(p.getMemberRights(), always_fire_special));
                     if (earths_fury) {
-                        boltSpecialMultiplier = 1.18; // Deals 18% extra damage.
+                        boltSpecialMultiplier = zaryteCrossbow ? 1.19 : 1.18; // Deals 18% extra damage.
                         damage *= boltSpecialMultiplier;
                         target.performGraphic(new Graphic(756));
                         if(target.isNpc()) {
@@ -95,7 +99,7 @@ public class RangedData {
                 }
                 case PEARL_BOLTS_E, PEARL_DRAGON_BOLTS_E -> {
                     target.performGraphic(new Graphic(750));
-                    boltSpecialMultiplier = 1.1;
+                    boltSpecialMultiplier = zaryteCrossbow ? 1.12 : 1.11;
                     damage *= boltSpecialMultiplier;
                 }
                 case TOPAZ_BOLTS_E, TOPAZ_DRAGON_BOLTS_E -> {
@@ -129,14 +133,15 @@ public class RangedData {
                 case RUBY_BOLTS_E, RUBY_DRAGON_BOLTS_E -> {
                     boolean blood_forfeit = Utils.percentageChance(boltSpecialChance(p.getMemberRights(), always_fire_special));
                     if (blood_forfeit) {
-                        int cap = 100;
+                        int cap = zaryteCrossbow ? 110 : 100;
 
                         target.performGraphic(new Graphic(754));
 
                         int selfDamage = (int) (p.skills().level(Skills.HITPOINTS) * 0.1);
                         if (selfDamage < p.skills().level(Skills.HITPOINTS)) {
                             int targetHP = target.hp();
-                            damage += targetHP * 0.2;
+                            double dmgModifier = zaryteCrossbow ? 0.22 : 0.2;
+                            damage += targetHP * dmgModifier;
                             if (damage > cap)
                                 damage = cap;
 
@@ -149,7 +154,7 @@ public class RangedData {
                     if (armour_piercing) {
                         p.putAttrib(AttributeKey.ARMOUR_PIERCING, true);
                         target.performGraphic(new Graphic(758, 100));
-                        boltSpecialMultiplier = 1.15; // Deals 15% extra damage.
+                        boltSpecialMultiplier = zaryteCrossbow ? 1.16 : 1.15; // Deals 15% extra damage.
                         damage *= boltSpecialMultiplier;
                     }
                 }
@@ -166,7 +171,8 @@ public class RangedData {
                         if (can_perform_dragons_breath) {
                             target.performGraphic(new Graphic(756));
                             int current_range_level = p.skills().level(Skills.RANGED);
-                            boltSpecialMultiplier = (current_range_level * 0.20); // 20 % extra damage
+                            double dmgModifier = zaryteCrossbow ? 0.22 : 0.20;
+                            boltSpecialMultiplier = (current_range_level * dmgModifier); // 20 % extra damage
                             damage += boltSpecialMultiplier;
                         }
                     }
@@ -175,7 +181,7 @@ public class RangedData {
                     boolean life_leech = Utils.percentageChance(boltSpecialChance(p.getMemberRights(), always_fire_special));
                     if (life_leech) {
                         target.performGraphic(new Graphic(753));
-                        boltSpecialMultiplier = 1.20; //20% extra damage
+                        boltSpecialMultiplier = zaryteCrossbow ? 1.22 : 1.20; //20% extra damage
                         damage *= boltSpecialMultiplier;
                         int heal = (int) (damage * 0.25);
 
@@ -215,13 +221,14 @@ public class RangedData {
         BRONZE_CROSSBOW(new int[]{ItemIdentifiers.BRONZE_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         IRON_CROSSBOW(new int[]{ItemIdentifiers.IRON_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         STEEL_CROSSBOW(new int[]{ItemIdentifiers.STEEL_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
-        MITHRIL_CROSSBOW(new int[]{MITH_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
+        MITHRIL_CROSSBOW(new int[]{ItemIdentifiers.MITHRIL_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         ADAMANT_CROSSBOW(new int[]{ItemIdentifiers.ADAMANT_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         RUNE_CROSSBOW(new int[]{ItemIdentifiers.RUNE_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         ARMADYL_CROSSBOW(new int[]{ItemIdentifiers.ARMADYL_CROSSBOW}, RangedWeaponType.ARMADYL_CROSSBOW, true),
         DRAGON_CROSSBOW(new int[] {ItemIdentifiers.DRAGON_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         DRAGON_HUNTER_CROSSBOW(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         DRAGON_HUNTER_CROSSBOW_T(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T}, RangedWeaponType.CROSSBOWS, true),
+        ZARYTE_CROSSBOW(new int[] {26374}, RangedWeaponType.ZARYTE_CROSSBOW, true),
 
         HUNTERS_CROSSBOW(new int[] {ItemIdentifiers.HUNTERS_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         KARILS_CROSSBOW(new int[]{ItemIdentifiers.KARILS_CROSSBOW}, RangedWeaponType.KARILS_CROSSBOW, true),
@@ -316,6 +323,7 @@ public class RangedData {
         TOXIC_BLOWPIPE(5, 7, FightType.THROWING_LONGRANGE, false),
         DORGESHUUN_CBOW(6, 8, FightType.BOLT_LONGRANGE, true),
         CROSSBOWS(7, 9, FightType.BOLT_LONGRANGE, true),
+        ZARYTE_CROSSBOW(8, 10, FightType.BOLT_LONGRANGE, true),
         SHORTBOW(7, 9, FightType.ARROW_LONGRANGE, true),
         ARMADYL_CROSSBOW(8, 10, FightType.BOLT_LONGRANGE, true),
         KARILS_CROSSBOW(8, 10, FightType.BOLT_LONGRANGE, true),

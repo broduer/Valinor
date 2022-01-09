@@ -307,6 +307,9 @@ public class CombatFactory {
                 // Handle bolt special effects for a player whose using crossbow
                 if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
                     damage = RangedData.getBoltSpecialAttack(player, target, damage);
+                    if(player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE,false)) {
+                        player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
+                    }
                 }
 
                 //Hard cap ranged special attacks
@@ -429,7 +432,7 @@ public class CombatFactory {
             if (player.hp() - damage > 0 && player.hp() <= player.skills().xpLevel(Skills.HITPOINTS) / 10) {
                 boolean ring = player.getEquipment().contains(2570);
 
-                boolean defenceCape = (int) player.getAttribOr(AttributeKey.DEFENCE_PERK_TOGGLE, 0) == 1 && (player.getEquipment().contains(DEFENCE_CAPE) || player.getEquipment().contains(DEFENCE_CAPE_10641));
+                boolean defenceCape = (int) player.getAttribOr(AttributeKey.DEFENCE_PERK_TOGGLE, 0) == 1 && (player.getEquipment().contains(DEFENCE_CAPE) || player.getEquipment().contains(DEFENCE_CAPET));
                 if (ring || (player.getEquipment().wearingMaxCape() && (int) player.getAttribOr(AttributeKey.MAXCAPE_ROL_ON, 0) == 1) || defenceCape) {
 
                     if (Teleports.rolTeleport(player)) {

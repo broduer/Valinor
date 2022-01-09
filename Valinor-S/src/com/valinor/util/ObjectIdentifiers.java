@@ -13979,7 +13979,7 @@ public final class ObjectIdentifiers
     public static final int BARREL_26462 = 26462;
     public static final int LARGE_GEYSER_26491 = 26491;
     public static final int POLL_BOOTH = 26492;
-    public static final int FALL = 26494;
+    public static final int SNOWFALL = 26494;
     public static final int WATERFALL_26495 = 26495;
     public static final int WATERFALL_26496 = 26496;
     public static final int WATERFALL_26497 = 26497;
@@ -14036,8 +14036,8 @@ public final class ObjectIdentifiers
     public static final int SUPERMAJORITY_MARKER_26696 = 26696;
     public static final int DOMINATION_MARKER = 26697;
     public static final int DOMINATION_MARKER_26698 = 26698;
-    public static final int _26703 = 26703;
-    public static final int _26704 = 26704;
+    public static final int SNOW_26703 = 26703;
+    public static final int SNOW_26704 = 26704;
     public static final int BLIGHTED_VINE_26705 = 26705;
     public static final int BANK_CHEST_26707 = 26707;
     public static final int CAVE_26709 = 26709;
@@ -14143,13 +14143,13 @@ public final class ObjectIdentifiers
     public static final int GRASSLAND = 26840;
     public static final int FOREST_FLOOR = 26841;
     public static final int SAND_26842 = 26842;
-    public static final int _26843 = 26843;
+    public static final int SNOW_26843 = 26843;
     public static final int BURNT_ROCK = 26844;
     public static final int HABITAT_SPACE_26845 = 26845;
     public static final int GRASSLAND_26846 = 26846;
     public static final int FOREST_FLOOR_26847 = 26847;
     public static final int SAND_26848 = 26848;
-    public static final int _26849 = 26849;
+    public static final int SNOW_26849 = 26849;
     public static final int BURNT_ROCK_26850 = 26850;
     public static final int HABITAT_SPACE_26851 = 26851;
     public static final int GRASSLAND_26852 = 26852;
