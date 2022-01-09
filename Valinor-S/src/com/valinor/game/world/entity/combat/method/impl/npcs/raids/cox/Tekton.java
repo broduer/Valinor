@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
@@ -109,7 +110,7 @@ public class Tekton extends CommonCombatMethod {
         }
     }
 
-    private void smith(Npc npc, Player player) {
+    private void smith(Npc npc, Mob target) {
         Tile walkToTile = new Tile(3309, 5295);
         Chain.bound(null).cancelWhen(() -> {
             return npc.dead(); // cancels as expected
@@ -130,7 +131,7 @@ public class Tekton extends CommonCombatMethod {
             npc.transmog(TEKTON_7545);
             npc.animate(7475);
             for (int i = 0; i < 6; i++) {
-                shootLava(npc, player);
+                shootLava(npc, target);
                 Chain.bound(null).runFn(3, () -> {
                     npc.heal(Math.max((int) (1200 * 0.005), 1));
                 });
@@ -138,7 +139,7 @@ public class Tekton extends CommonCombatMethod {
             npc.animate(7474);
         }).then(2, () -> {
             npc.transmog(TEKTON_7541);
-            Player p = findRandomTarget(player);
+            Player p = findRandomTarget(target.getAsPlayer());
             npc.face(p.tile());
             npc.getRouteFinder().routeEntity(p);
             Chain.bound(null).waitUntil(1, () -> {
@@ -183,12 +184,12 @@ public class Tekton extends CommonCombatMethod {
     }
 
     @Override
-    public void onHit(Npc npc, Player player) {
-        if (npc.def() != null && npc.def().name.toLowerCase().contains("tekton")) {
+    public void onHit(Mob mob, Mob target, Hit hit) {
+        if (mob.isNpc() && mob.getAsNpc().def() != null && mob.getAsNpc().def().name.toLowerCase().contains("tekton")) {
             if (World.getWorld().rollDie(10,1) && !forcedSmith) {
                 System.out.println("here");
                 forcedSmith = true;
-                smith(npc, player);
+                smith(mob.getAsNpc(), target);
             }
         }
     }

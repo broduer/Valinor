@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
@@ -78,9 +79,9 @@ public class Scorpia extends CommonCombatMethod {
     }
 
     @Override
-    public void onHit(Npc npc, Player player) {
-        if (npc.id() == SCORPIA) {
-            spawnGuardians(npc);
+    public void onHit(Mob mob, Mob target, Hit hit) {
+        if (mob.isNpc() && mob.getAsNpc().id() == SCORPIA) {
+            spawnGuardians(mob);
         }
     }
 

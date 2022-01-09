@@ -110,13 +110,13 @@ public class Sarachnis extends CommonCombatMethod {
     }
 
     @Override
-    public void onHit(Npc npc, Player player) {
-        if(npc.id() == SARACHNIS) {
-            if (npc.hp() <= 266) {
-                spawnFirstMinions(npc, player);
+    public void onHit(Mob mob, Mob target, Hit hit) {
+        if(mob.isNpc() && mob.getAsNpc().id() == SARACHNIS) {
+            if (mob.getAsNpc().hp() <= 266) {
+                spawnFirstMinions(mob.getAsNpc(), target);
             }
-            if (npc.hp() <= 133) {
-                spawnSecondMinions(npc, player);
+            if (mob.getAsNpc().hp() <= 133) {
+                spawnSecondMinions(mob.getAsNpc(), target);
             }
         }
     }

@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -147,7 +148,7 @@ public abstract class CommonCombatMethod implements CombatMethod {
 
     }
 
-    public void onHit(Npc npc, Player player) {
+    public void onHit(Mob Mob, Mob target, Hit hit) {
 
     }
 

@@ -73,13 +73,13 @@ public class Bryophyta extends CommonCombatMethod {
     }
 
     @Override
-    public void onHit(Npc npc, Player player) {
-        if(npc.id() == BRYOPHYTA) {
-            if (npc.hp() <= 85) {
-                spawnFirstMinions(player);
+    public void onHit(Mob mob, Mob target, Hit hit) {
+        if(mob.isNpc() && mob.getAsNpc().id() == BRYOPHYTA) {
+            if (mob.getAsNpc().hp() <= 85) {
+                spawnFirstMinions(target);
             }
-            if (npc.hp() <= 45) {
-                spawnSecondMinions(player);
+            if (mob.getAsNpc().hp() <= 45) {
+                spawnSecondMinions(target);
             }
         }
     }

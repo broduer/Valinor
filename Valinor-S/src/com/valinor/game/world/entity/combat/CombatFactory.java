@@ -331,11 +331,6 @@ public class CombatFactory {
             Npc npc = target.getAsNpc();
             Player player = (Player) attacker;
 
-            if (npc.getCombatMethod() != null && npc.getCombatMethod() instanceof CommonCombatMethod) {
-                CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
-                commonCombatMethod.onHit(npc, player);
-            }
-
             //Disturb the whirlpools
             if (npc.id() == TENTACLE_WHIRLPOOL) {
                 EnormousTentacle.onHit(player, npc);
@@ -1187,6 +1182,14 @@ public class CombatFactory {
         target.action.reset();
         if (attacker.isNpc() && hit.getCombatType() == CombatType.MAGIC && !target.getUpdateFlag().flagged(Flag.ANIMATION)) {
             target.animate(new Animation(target.getBlockAnim()));
+        }
+
+        if(attacker.isNpc()) {
+            Npc npc = attacker.getAsNpc();
+            if (npc.getCombatMethod() != null && npc.getCombatMethod() instanceof CommonCombatMethod) {
+                CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
+                commonCombatMethod.onHit(npc, target, hit);
+            }
         }
 
         if (target.isNpc() && attacker.isPlayer()) {
