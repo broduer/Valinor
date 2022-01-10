@@ -289,6 +289,9 @@ public class TeleportMenuConstants {
         teleportOptions.put(72, new OptionMenu("The nightmare", new String[] { "The nightmare", "nightmare", "boss" },
             new TeleportAction(player, new Tile(3808, 9777,1))));
 
+        teleportOptions.put(73, new OptionMenu("Nex", new String[] { "Nex", "nex", "boss" },
+            new TeleportAction(player, new Tile(2904, 5203,0))));
+
         return teleportOptions;
     }
 

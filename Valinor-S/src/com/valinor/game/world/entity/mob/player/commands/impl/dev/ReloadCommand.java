@@ -37,7 +37,7 @@ public class ReloadCommand implements Command {
                 World.getWorld().unregisterNpc(worldNpcs);
             }
             //Halloween.loadNpcs();
-            Christmas.loadNpcs();
+            //Christmas.loadNpcs();
             Impling.onServerStartup();
             World.loadNpcSpawns(new File("data/map/npcs"));
             try {

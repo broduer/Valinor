@@ -166,34 +166,13 @@ public final class Equipment extends ItemContainer {
 
     public int hpIncrease() {
         int hpIncrease = 0;
-
-        for (int index = 0; index < getItems().length; index++) {
-            Item item = get(index);
-            if (item == null)
-                continue;
-            int id = item.getId();
-            if (index == EquipSlot.HEAD) {
-                if (id == 26382 // torva
-                    || id == 12026 // pernix
-                    || id == 12023 // virtus
-                )
-                    hpIncrease += 6;
-
-            } else if (index == EquipSlot.BODY) {
-                if (id == 26384 // torva
-                    || id == 12025 // pernix
-                    || id == 12022 // virtus
-                )
-                    hpIncrease += 20;
-            } else if (index == EquipSlot.LEGS) {
-                if (id == 26386 // torva
-                    || id == 12024 // pernix
-                    || id == 12021 // virtus
-                )
-                    hpIncrease += 13;
-            }
+        if(hasAt(EquipSlot.HEAD, 26382)) {
+            hpIncrease += 6.6;
+        } else if(hasAt(EquipSlot.BODY, 26382)) {
+            hpIncrease += 20;
+        } else if(hasAt(EquipSlot.LEGS, 26382)) {
+            hpIncrease += 13.4;
         }
-
         return hpIncrease;
     }
 
