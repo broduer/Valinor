@@ -30,7 +30,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class Party {
 
     public static final List<Item> COX_REWARDS = Arrays.asList(new Item(DEXTEROUS_PRAYER_SCROLL), new Item(ARCANE_PRAYER_SCROLL), new Item(TWISTED_BUCKLER), new Item(DRAGON_HUNTER_CROSSBOW), new Item(DINHS_BULWARK), new Item(ANCESTRAL_HAT), new Item(ANCESTRAL_ROBE_TOP), new Item(ANCESTRAL_ROBE_BOTTOM), new Item(DRAGON_CLAWS), new Item(ELDER_MAUL), new Item(KODAI_WAND), new Item(TWISTED_BOW));
-    public static final List<Item> TOB_REWARDS = Arrays.asList(new Item(AVERNIC_DEFENDER), new Item(GHRAZI_RAPIER), new Item(SANGUINESTI_STAFF), new Item(JUSTICIAR_FACEGUARD), new Item(JUSTICIAR_LEGGUARDS), new Item(JUSTICIAR_CHESTGUARD), new Item(SCYTHE_OF_VITUR), new Item(HOLY_ORNAMENT_KIT), new Item(SANGUINE_ORNAMENT_KIT));
+    public static final List<Item> TOB_REWARDS = Arrays.asList(new Item(AVERNIC_DEFENDER_HILT), new Item(GHRAZI_RAPIER), new Item(SANGUINESTI_STAFF), new Item(JUSTICIAR_FACEGUARD), new Item(JUSTICIAR_LEGGUARDS), new Item(JUSTICIAR_CHESTGUARD), new Item(SCYTHE_OF_VITUR), new Item(SANGUINE_DUST), new Item(HOLY_ORNAMENT_KIT), new Item(SANGUINE_ORNAMENT_KIT));
     public static final List<Item> HP_REWARDS = Arrays.asList(new Item(NAGINI), new Item(TOM_RIDDLE_DIARY), new Item(MARVOLO_GAUNTS_RING), new Item(CLOAK_OF_INVISIBILITY), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(SALAZAR_SLYTHERINS_LOCKET));
 
     public static final int REWARDS_CONTAINER_ID = 12137;

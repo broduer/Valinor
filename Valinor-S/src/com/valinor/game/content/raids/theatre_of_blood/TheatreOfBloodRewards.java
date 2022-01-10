@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
-import com.valinor.game.content.raids.chamber_of_xeric.ChamberOfXericReward;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -12,10 +11,9 @@ import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import static com.valinor.game.content.collection_logs.CollectionLog.COX_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.CollectionLog.TOB_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.util.ItemIdentifiers.DARK_JOURNAL;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -88,23 +86,21 @@ public class TheatreOfBloodRewards {
 
     private static final LootTable uniqueTable = new LootTable()
         .addTable(1,
-            new LootItem(21034, 1, 20), // dexterous scroll
-            new LootItem(21079, 1, 20), // arcane scroll
-            new LootItem(21000, 1, 4), // twisted buckler
-            new LootItem(21012, 1, 4), // dragon hunter crossbow
-            new LootItem(21015, 1, 3), // dinh's bulwark
-            new LootItem(21018, 1, 3), // ancestral hat
-            new LootItem(21021, 1, 3), // ancestral top
-            new LootItem(21024, 1, 3), // ancestral bottom
-            new LootItem(13652, 1,3), // dragon claws
-            new LootItem(21003, 1,2), // elder maul
-            new LootItem(21043, 1, 2), // kodai insignia
-            new LootItem(20997, 1, 2), // twisted bow
-            new LootItem(22386, 1, 1) // Metamorphic dust
+            new LootItem(AVERNIC_DEFENDER_HILT, 1, 6),
+            new LootItem(JUSTICIAR_FACEGUARD, 1, 5),
+            new LootItem(JUSTICIAR_CHESTGUARD, 1,4),
+            new LootItem(JUSTICIAR_LEGGUARDS, 1,4),
+            new LootItem(SANGUINESTI_STAFF, 1, 3),
+            new LootItem(GHRAZI_RAPIER, 1, 3),
+            new LootItem(SCYTHE_OF_VITUR, 1, 2),
+            new LootItem(SANGUINE_DUST, 1, 1),
+            new LootItem(SANGUINE_ORNAMENT_KIT, 1, 1),
+            new LootItem(HOLY_ORNAMENT_KIT, 1, 1)
         );
 
     private static final LootTable regularTable = new LootTable()
         .addTable(1,
+            new LootItem(MOLTEN_GLASS, 125, 1), // molten glass
             new LootItem(560, 10000, 1), // death rune
             new LootItem(565, 10000, 1), // blood rune
             new LootItem(566, 10000, 1), // soul rune
@@ -132,9 +128,7 @@ public class TheatreOfBloodRewards {
             new LootItem(1618, 175, 1), // uncut diamond
             new LootItem(7937, 10000, 1), // pure essence
             new LootItem(8781, 500, 1), // teak plank
-            new LootItem(8783, 500, 1), // mahogany plank
-            new LootItem(21047, 1, 1), // torn prayer scroll
-            new LootItem(21027, 1, 1) // dark relic
+            new LootItem(8783, 500, 1) // mahogany plank
         );
 
     public static void giveRewards(Player player) {
@@ -156,8 +150,8 @@ public class TheatreOfBloodRewards {
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
-            BOSSES.log(player, COX_RAIDS_KEY, item);
-            Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cox_reward");
+            BOSSES.log(player, TOB_RAIDS_KEY, item);
+            Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "tob_reward");
             rare = player;
         }
 
@@ -166,7 +160,7 @@ public class TheatreOfBloodRewards {
         if (player != rare) {
             Item item = rollRegular();
             player.getRaidRewards().add(item);
-            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
+            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Personal Points: " + Utils.formatNumber(personalPoints), "tob_reward");
         }
     }
 

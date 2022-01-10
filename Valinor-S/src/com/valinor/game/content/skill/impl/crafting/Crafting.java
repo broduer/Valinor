@@ -93,11 +93,18 @@ public class Crafting extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
-        if (npc.id() == NpcIdentifiers.ELLIS) {
-            Tanning.open(player);
-            return true;
+        if(option == 1) {
+            if (npc.id() == NpcIdentifiers.ELLIS) {
+                Tanning.open(player);
+                return true;
+            }
         }
-
+        if(option == 2) {
+            if (npc.id() == NpcIdentifiers.ELLIS) {
+                World.getWorld().shop(50).open(player);
+                return true;
+            }
+        }
         return false;
     }
 

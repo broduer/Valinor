@@ -18,17 +18,11 @@ public class SkillingIsland extends Interaction {
         if(option == 1) {
             if(npc.id() == KAQEMEEX) {
                 World.getWorld().shop(40).open(player);
+                return true;
             }
             if(npc.id() == MASTER_CRAFTER) {
                 World.getWorld().shop(50).open(player);
-            }
-            if(npc.id() == HICKTON) {
-                World.getWorld().shop(51).open(player);
-            }
-        }
-        if(option == 2) {
-            if(npc.id() == HICKTON) {
-                World.getWorld().shop(51).open(player);
+                return true;
             }
         }
         return false;

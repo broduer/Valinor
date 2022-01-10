@@ -378,6 +378,13 @@
     "x": 2791,
     "y": 3536,
     "walkRange": 2
-  }
+  },
   //Master crafter
+  {
+    "id": 3231,
+    "x": 2795,
+    "y": 3539,
+    "walkRange": 2
+  }
+  //Ellis
 ]
