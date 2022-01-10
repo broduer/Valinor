@@ -106,14 +106,14 @@
     "direction": "N",
     "walkRange": 2
   },
-  {
+  /*{
     "id": 308,
     "x": 3088,
     "y": 3516,
     "z": 0,
     "radius": 3,
     "desc": "Emblem trader"
-  },
+  },*/
   {
     "id": 2818,
     "x": 3083,
