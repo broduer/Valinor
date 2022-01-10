@@ -102,7 +102,7 @@ public class TwiggyOKorn extends Dialogue {
         } else if(isPhase(15)) {
             if (option == 1) {
                 stop();
-                World.getWorld().shop(41).open(player);
+                World.getWorld().shop(52).open(player);
             }
             if (option == 2) {
                 stop();

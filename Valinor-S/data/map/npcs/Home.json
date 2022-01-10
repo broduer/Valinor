@@ -119,9 +119,27 @@
     "x": 3078,
     "y": 3497,
     "z": 0,
-    "radius": 0,
-    "direction": "S",
+    "radius": 1,
+    "direction": "E",
     "desc": "Shop assistant"
+  },
+  {
+    "id": 5527,
+    "x": 3089,
+    "y": 3485,
+    "z": 0,
+    "radius": 0,
+    "direction": "N",
+    "desc": "Twiggy O Korn"
+  },
+  {
+    "id": 3231,
+    "x": 3079,
+    "y": 3500,
+    "z": 0,
+    "radius": 2,
+    "direction": "E",
+    "desc": "Ellis"
   },
   {
     "name": "Iron man tutor",
