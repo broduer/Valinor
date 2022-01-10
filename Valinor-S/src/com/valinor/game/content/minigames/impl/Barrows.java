@@ -284,7 +284,7 @@ public class Barrows extends Interaction {
         for (int i = 1; i < 3; i++) {
             var rand = Utils.RANDOM_GEN.get();
             var idx = rand.nextInt(lootItemIds.size());
-            var multiplier = lootItemAmts.get(idx) > 600 ? 2 : 1;
+            var multiplier = lootItemAmts.get(idx - 1) > 600 ? 2 : 1;
 
             var item = new Item(lootItemIds.get(idx), rand.nextInt(lootItemAmts.get(idx)) * multiplier);
 

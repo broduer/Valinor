@@ -206,10 +206,8 @@ public class AccountSelection extends Interaction {
             }
         }
 
-        if(type != GameMode.INSTANT_PKER) {
-            player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-            player.message("You have been given some training equipment.");
-        }
+        player.getInventory().addAll(GameConstants.STARTER_ITEMS);
+        player.message("You have been given some training equipment.");
 
         //Set default spellbook
         player.setSpellbook(MagicSpellbook.NORMAL);

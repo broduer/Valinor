@@ -427,6 +427,8 @@ public class EquipmentInfo {
                     return 2779;
                 case KARILS_CROSSBOW:
                     return 2075;
+                case 26374:
+                    return 9168;
                 case TOKTZXILUL:
                     return 7558;
                 case STAFF_OF_THE_DEAD:
