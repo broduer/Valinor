@@ -25,7 +25,7 @@ public class MorrigansThrowingAxe extends CommonCombatMethod {
         mob.graphic(1626, 100, 0);
 
         //Fire projectile
-        new Projectile(mob, target, 1625, 50, 70, 44, 35, 3).sendProjectile();
+        new Projectile(mob, target, 1625, 32, 42, 40, 36, 0).sendProjectile();
 
         int hit = CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED);
         target.hit(mob, hit, 1, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();

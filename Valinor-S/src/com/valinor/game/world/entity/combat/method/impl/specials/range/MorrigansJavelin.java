@@ -28,7 +28,7 @@ public class MorrigansJavelin extends CommonCombatMethod {
         mob.graphic(1621);
 
         //Fire projectile
-        new Projectile(mob, target, 1622, 30, 60, 40, 36, 0).sendProjectile();
+        new Projectile(mob, target, 1622, 32, 42, 40, 36, 0).sendProjectile();
 
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED),0, CombatType.RANGED).checkAccuracy();
         hit.submit();

@@ -63,11 +63,11 @@ public class RangedCombatMethod extends CommonCombatMethod {
             var crystalBow = (weaponId >= NEW_CRYSTAL_BOW && weaponId <= CRYSTAL_BOW_110);
             var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW;
             var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
-            var blowpipe = weaponId == 12926 || weaponId == 12924;
             var chins = weaponType == WeaponType.CHINCHOMPA;
             var ballista = weaponId == 19478 || weaponId == 19481;
-
+            var dragonBolts = (ammoId >= 21932 && ammoId <= 21950);
             var baseDelay = chins ? 20 : ballista ? 30 : 41;
+            var speed = attacker.projectileSpeed(target);
             var startHeight = 40;
             var endHeight = 36;
             var curve = 15;
@@ -84,6 +84,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             }
 
             if (crawsBow) {
+                attacker.graphic(1611, 96, 0);
                 graphic = 1574;
             }
 
@@ -94,12 +95,14 @@ public class RangedCombatMethod extends CommonCombatMethod {
             // Bows need special love.. projectile and graphic :D
             if (weaponType == BOW && !crystalBow && !crawsBow && !bowOfFaerdhinen) {
                 var db = ArrowDrawBack.find(ammoId);
+                speed = 56;
 
                 // Find the gfx and do it : -)
                 if (db != null) {
                     if (Equipment.darkbow(weaponId)) {
                         var db2 = DblArrowDrawBack.find(ammoId);
                         if (db2 != null) {
+                            speed = 75;
                             player.graphic(db2.gfx, 96, 0);
                             graphic = db.projectile;
                         }
@@ -111,7 +114,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             }
 
             // Knives are not your de-facto stuff either
-            if (weaponType == THROWN) {
+            if (weaponType == THROWN || weaponType == WeaponType.DART) {
                 if(weaponId == TOXIC_BLOWPIPE || weaponId == MAGMA_BLOWPIPE) {
                     graphic = 1122;
                 }
@@ -146,18 +149,26 @@ public class RangedCombatMethod extends CommonCombatMethod {
             // Crossbows are the other type of special needs
             if (weaponType == WeaponType.CROSSBOW) {
                 baseDelay = 41;
-                startHeight = 40;
+                speed = 56;
+                startHeight = 38;
                 endHeight = 36;
                 curve = 5;
-                graphic = 27;
+                graphic = dragonBolts ? 1468 : 27;
+            }
+
+            if(weaponType == WeaponType.DART) {
+                baseDelay = 32;
+                speed = 45;
+                startHeight = 40;
+                endHeight = 36;
             }
 
             if (graphic != -1)
-                new Projectile(attacker, target, graphic, baseDelay, attacker.projectileSpeed(target), startHeight, endHeight, 0, curve, 11).sendProjectile();
+                new Projectile(attacker, target, graphic, baseDelay, speed, startHeight, endHeight, 0, curve, 11).sendProjectile();
 
             if (Equipment.darkbow(weaponId) || weaponId == SANGUINE_TWISTED_BOW) {
                 // dark bow 2nd arrow
-                new Projectile(attacker, target, graphic, 10 + baseDelay, 10 + attacker.projectileSpeed(target), startHeight, endHeight, 0, curve, 105).sendProjectile();
+                new Projectile(attacker, target, graphic, 10 + baseDelay, 10 + speed, startHeight, endHeight, 0, curve, 105).sendProjectile();
             }
         }
 

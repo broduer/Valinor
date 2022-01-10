@@ -22,7 +22,7 @@ public class ArmadylCrossbow extends CommonCombatMethod {
         player.animate(ANIMATION);
 
         //Fire projectile
-        new Projectile(mob, target, 301, 50, 70, 44, 35, 0).sendProjectile();
+        new Projectile(mob, target, 301, 41, 56, 38, 36, 0).sendProjectile();
 
         //Decrement ammo by 1
         CombatFactory.decrementAmmo(player);

@@ -25,8 +25,8 @@ public class MagicShortbow extends CommonCombatMethod {
         player.performGraphic(GRAPHIC);
 
         //Send 2 arrow projectiles
-        new Projectile(player, target, 249, 40, 70, 43, 31, 0).sendProjectile();
-        new Projectile(player, target, 249, 33, 74, 48, 31, 0).sendProjectile();
+        new Projectile(player, target, 249, 20, 36, 40, 36, 0).sendProjectile();
+        new Projectile(player, target, 249, 50, 56, 40, 36, 0).sendProjectile();
 
         //Remove 2 arrows from ammo
         CombatFactory.decrementAmmo(player);

@@ -25,7 +25,7 @@ public class DragonThrownaxe extends CommonCombatMethod {
         player.animate(ANIMATION);
         player.performGraphic(GRAPHIC);
 
-        new Projectile(player, target, 1318, 45, 65, 40, 33, 0).sendProjectile();
+        new Projectile(player, target, 1318, 32, 42, 40, 36, 0).sendProjectile();
 
         CombatFactory.decrementAmmo(player);
 

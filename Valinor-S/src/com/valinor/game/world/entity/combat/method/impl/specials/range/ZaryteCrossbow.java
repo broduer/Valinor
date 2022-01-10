@@ -27,7 +27,7 @@ public class ZaryteCrossbow extends CommonCombatMethod {
         player.animate(ANIMATION);
 
         //Fire projectile
-        new Projectile(mob, target, 1995, 50, 70, 44, 35, 0).sendProjectile();
+        new Projectile(mob, target, 1995, 41, 56, 40, 36, 0).sendProjectile();
 
         //Decrement ammo by 1
         CombatFactory.decrementAmmo(player);

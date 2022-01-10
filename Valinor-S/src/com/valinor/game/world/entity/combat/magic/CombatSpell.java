@@ -79,8 +79,8 @@ public abstract class CombatSpell extends Spell {
             if (spell.name().equalsIgnoreCase("Confuse")) {
                 if(cast.isPlayer()) {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
-                    cast.graphic(102, 100,0);
-                    new Projectile(cast, castOn, 103, 0, 20, 43, 31, 0).sendProjectile();
+                    cast.graphic(102, 92,0);
+                    new Projectile(cast, castOn, 103, 61, 66, 36, 31, 0).sendProjectile();
                     var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 13.0, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
@@ -100,7 +100,7 @@ public abstract class CombatSpell extends Spell {
                         }
 
                         var delay = tileDist <= 2 ? 1 : tileDist <= 5 ? 2 : 3;
-                        castOn.graphic(104, 100, delay * 30);//a tick in graphic format/maths is 30.
+                        castOn.graphic(104, 200, delay * 30);//a tick in graphic format/maths is 30.
 
                         if(isNpc) {
                             int decrease = (int) (0.05 * level);

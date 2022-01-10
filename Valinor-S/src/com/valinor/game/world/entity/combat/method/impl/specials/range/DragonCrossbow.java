@@ -24,7 +24,7 @@ public class DragonCrossbow extends CommonCombatMethod {
 
         player.animate(4230);
 
-        new Projectile(attacker, target, 698, 50, 70, 44, 35, 0).sendProjectile();
+        new Projectile(attacker, target, 698, 41, 56, 38, 36, 0).sendProjectile();
         target.delayedGraphics(new Graphic(1466, 80), 3);
 
         //Decrement ammo by 1

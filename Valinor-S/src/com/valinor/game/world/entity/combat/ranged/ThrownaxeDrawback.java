@@ -2,13 +2,24 @@ package com.valinor.game.world.entity.combat.ranged;
 
 public enum ThrownaxeDrawback {
 
-    BRONZE(800, -1, -1),
-    IRON(801, -1, -1),
-    STEEL(802, -1, -1),
-    MITHRIL(803, -1, -1),
-    ADAMANT(804, -1, -1),
-    RUNE(805, -1, -1),
-    DRAGON(20849, 1320, 1319);
+    /**
+     * Throwing axes
+     */
+    BRONZE_THROWING_AXE(800, 43, 36),
+    IRON_THROWING_AXE(801, 42, 35),
+    STEEL_THROWING_AXE(802, 44, 37),
+    MITHRIL_THROWING_AXE(803, 45, 38),
+    ADAMANT_THROWING_AXE(804, 46, 39),
+    RUNE_THROWING_AXE(805, 48, 41),
+    DRAGON_THROWING_AXE(20849, 1320, 1319),
+    MORRIGANS_THROWING_AXE(22634, 1624, 1623),
+
+    /**
+     * Thrown (misc)
+     */
+    OBBY_RING(6522, -1, 442),
+    MORRIGANS_JAVELIN(22636, 1619, 1620)
+    ;
 
     public int arrow, gfx, projectile;
 

@@ -26,7 +26,7 @@ public class Ballista extends CommonCombatMethod {
         target.performGraphic(GRAPHIC);
 
         // Fire projectile
-        new Projectile(player, target, 1301, 70, 30, 43, 31, 0).sendProjectile();
+        new Projectile(player, target, 1301, 49, 55, 38, 36, 0).sendProjectile();
 
         // Decrement ammo by 1
         CombatFactory.decrementAmmo(player);

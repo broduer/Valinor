@@ -28,7 +28,7 @@ public class DragonKnife extends CommonCombatMethod {
         int projectileId = poisonKnive ? 1629 : 699;
 
         // Send projectiles
-        new Projectile(player, target, projectileId, 40, 70, 43, 31, 0).sendProjectile();
+        new Projectile(player, target, projectileId, 15, 42, 40, 36, 0).sendProjectile();
 
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED),0, CombatType.RANGED).checkAccuracy();
         hit.submit();

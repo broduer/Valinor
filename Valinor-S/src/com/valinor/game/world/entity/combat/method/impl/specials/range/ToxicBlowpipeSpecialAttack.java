@@ -22,7 +22,7 @@ public class ToxicBlowpipeSpecialAttack extends CommonCombatMethod {
         player.animate(player.getEquipment().hasAt(EquipSlot.WEAPON, TOXIC_BLOWPIPE) ? 5061 : 11901);
 
         // Send projectiles
-        new Projectile(player, target, 1043, 32, 65, 35, 36, 0).sendProjectile();
+        new Projectile(player, target, 1043, 32, 42, 35, 36, 0).sendProjectile();
 
         CombatFactory.decrementAmmo(player);
 
