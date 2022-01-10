@@ -11,6 +11,7 @@ import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmbl
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,8 @@ import static com.valinor.util.Utils.formatNumber;
  * @author Zerikoth
  */
 public class BountyHunter {
+
+    private static final boolean CAN_RECEIVE_EMBLEMS = false;
 
     /**
      * Target pairs.
@@ -243,19 +246,24 @@ public class BountyHunter {
             //If player isn't farming kills..
             if (rewardPlayer) {
                 //Send messages
-                killed.getPacketSender().sendMessage("You were defeated by your target!");
+                killed.message("You were defeated by your target!");
+
+                var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 10;
+                killer.putAttrib(AttributeKey.PK_POINTS, pkp);
+                killer.message("You were awarded with 10 extra PKP for killing your target! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
 
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_II, 1);
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_III, 1);
 
-                Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
-
-                if (emblem.isPresent()) {
-                    killer.inventory().remove(new Item(emblem.get().getItemId()));
-                    killer.inventory().add(new Item(emblem.get().getNextOrLast().getItemId()));
-                } else {
-                    killer.inventory().addOrBank(new Item(ANTIQUE_EMBLEM_TIER_1));
+                if(CAN_RECEIVE_EMBLEMS) {
+                    Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
+                    if (emblem.isPresent()) {
+                        killer.inventory().remove(new Item(emblem.get().getItemId()));
+                        killer.inventory().add(new Item(emblem.get().getNextOrLast().getItemId()));
+                    } else {
+                        killer.inventory().addOrBank(new Item(ANTIQUE_EMBLEM_TIER_1));
+                    }
                 }
             }
         }
