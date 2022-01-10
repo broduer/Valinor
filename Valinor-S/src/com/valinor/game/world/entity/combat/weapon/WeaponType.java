@@ -12,6 +12,7 @@ public enum WeaponType {
     BOW(1764,1767, new FightType[]{FightType.ARROW_ACCURATE, FightType.ARROW_RAPID, FightType.ARROW_LONGRANGE}, 7549, 7561),
     CROSSBOW(1764,1767, new FightType[]{FightType.BOLT_ACCURATE, FightType.BOLT_RAPID, FightType.BOLT_LONGRANGE}, 7549, 7561),
     THROWN(4446,4449, new FightType[]{FightType.THROWING_ACCURATE, FightType.THROWING_RAPID, FightType.THROWING_LONGRANGE}, 7649, 7661),
+    DART(4446,4449, new FightType[]{FightType.THROWING_ACCURATE, FightType.THROWING_RAPID, FightType.THROWING_LONGRANGE}, 7649, 7661),
     CHINCHOMPA(24899,428, new FightType[]{FightType.SHORT_FUSE, FightType.MEDIUM_FUSE, FightType.LONG_FUSE}),
 
     //Magic

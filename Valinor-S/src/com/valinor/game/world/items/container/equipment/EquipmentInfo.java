@@ -427,8 +427,8 @@ public class EquipmentInfo {
                     return 2779;
                 case KARILS_CROSSBOW:
                     return 2075;
-                case 6522:
-                    return 3353;
+                case TOKTZXILUL:
+                    return 7558;
                 case STAFF_OF_THE_DEAD:
                 case TOXIC_STAFF_UNCHARGED:
                 case TOXIC_STAFF_OF_THE_DEAD:
@@ -631,6 +631,7 @@ public class EquipmentInfo {
             case DAGGER -> style == 2 ? 377 : 376;
             case MAGIC_STAFF -> 419;
             case THROWN -> 929;
+            case DART -> 7554;
             case WHIP -> 1658;
             case SPEAR -> switch (style) {
                 case 1 -> 380;
