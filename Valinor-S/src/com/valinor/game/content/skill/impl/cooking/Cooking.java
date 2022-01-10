@@ -113,27 +113,25 @@ public class Cooking extends Interaction {
         return false;
     }
 
-    private static final List<Integer> RANGES = Arrays.asList(CLAY_OVEN_21302, RANGE_27517, COOKING_RANGE_16893, RANGE_26181, COOKING_RANGE_4172, FIRE_26185, FIREPLACE_8712, STOVE_12269, SULPHUR_VENT, COOKING_POT_26180, COOKING_POT_12969, COOKING_RANGE, RANGE_7183, BONFIRE, UNCOOKING_POT, FIRE_26185);
+    private static final List<String> COOKING_OBJECTS = Arrays.asList("clay oven", "cooking range", "range", "fire", "fireplace", "stove", "sulphur vent", "cooking pot", "bonfire", "uncooking pot");
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
-        for (int range : RANGES) {
-            if (object.getId() == range) {
-                player.faceObj(object);
-                int id = player.getAttribOr(AttributeKey.ITEM_ID, -1);
-                GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
-                Cookable food = Cookable.get(id);
+        if (COOKING_OBJECTS.stream().anyMatch(co -> object.definition().name.toLowerCase().contains(co))) {
+            player.faceObj(object);
+            int id = player.getAttribOr(AttributeKey.ITEM_ID, -1);
+            GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
+            Cookable food = Cookable.get(id);
 
-                if (food != null) {
-                    //Check to see if the player has the level required to cook the food
-                    if (player.skills().levels()[Skills.COOKING] < food.lvl) {
-                        DialogueManager.sendStatement(player, "You need a cooking level of " + food.lvl + " to cook " + food.itemname + ".");
-                    } else {
-                        startCooking(player, food, obj);
-                    }
+            if (food != null) {
+                //Check to see if the player has the level required to cook the food
+                if (player.skills().levels()[Skills.COOKING] < food.lvl) {
+                    DialogueManager.sendStatement(player, "You need a cooking level of " + food.lvl + " to cook " + food.itemname + ".");
+                } else {
+                    startCooking(player, food, obj);
                 }
-                return true;
             }
+            return true;
         }
         return false;
     }

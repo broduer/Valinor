@@ -10,6 +10,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.object.doors.Door;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.route.StepType;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
@@ -29,52 +30,31 @@ public class CookingGuild extends Interaction {
     private final static int SECOND_FLOOR_STAIRS = 2609;
     private final static int THIRD_FLOOR_STAIRS = 2610;
 
-    private static void door(Player player, GameObject door) {
-
+    private static void door(Player player, GameObject obj) {
         //Requirement checks to enter the cooking guild.
-        if (player.tile().y <= 3443) {
             if (player.skills().level(Skills.COOKING) < 32) {
                 DialogueManager.npcChat(player, Expression.DULL, CHEF, "Sorry. Only the finest chefs are allowed in here. Get", "your cooking level up to 32 and come back wearing a", "chef's hat.");
             } else if (!player.getEquipment().containsAny(CHEFS_HAT, GOLDEN_CHEFS_HAT)) {
                 DialogueManager.npcChat(player, Expression.ANXIOUS, CHEF, "You can't come in here unless you're wearing a chef's", "hat, or something like that.");
             } else {
-                if (!player.tile().equals(door.tile().transform(0, 0, 0))) {
-                    player.getMovementQueue().interpolate(door.tile().transform(0, 0, 0));
-                }
-
-                //cached
-                GameObject old = new GameObject(door.getId(), door.tile(), door.getType(), door.getRotation());
-                GameObject spawned = new GameObject(24959, new Tile(3143, 3444), door.getType(), 2);
-
-                Chain.bound(player).name("CookingGuildDoor1Task").waitForTile(door.tile().transform(0, 0, 0), () -> {
+                GameObject opened = new GameObject(24959, new Tile(3143, 3444, 0), obj.getType(), 2);
+                Chain.bound(null).runFn(1, () -> {
                     player.lock();
-                    ObjectManager.removeObj(old);
-                    ObjectManager.addObj(spawned);
-                    player.getMovementQueue().interpolate(3143, 3444, MovementQueue.StepType.FORCED_WALK);
+
+                    if (!player.isAt(obj.getX(), player.getAbsY())) {
+                        player.stepAbs(obj.getX(), player.getAbsY(), StepType.FORCE_WALK);
+                        //event.delay(1); TODO
+                    }
+
+                    opened.spawn();
+                    obj.skipClipping(true).remove();
+                    player.step(0, player.getAbsY() <= 3443 ? 1 : -1, StepType.FORCE_WALK);
                 }).then(2, () -> {
-                    ObjectManager.removeObj(spawned);
-                    ObjectManager.addObj(old);
-                }).waitForTile(new Tile(3143, 3444), player::unlock);
+                    obj.restore().skipClipping(false);
+                    opened.remove();
+                    player.unlock();
+                });
             }
-        } else {
-            if (!player.tile().equals(door.tile().transform(0, 1, 0))) {
-                player.getMovementQueue().interpolate(door.tile().transform(0, 1, 0));
-            }
-
-            //cached
-            GameObject old = new GameObject(door.getId(), door.tile(), door.getType(), door.getRotation());
-            GameObject spawned = new GameObject(24959, new Tile(3143, 3444), door.getType(), 2);
-
-            Chain.bound(player).name("CookingGuildDoor2Task").waitForTile(door.tile().transform(0, 1, 0), () -> {
-                player.lock();
-                ObjectManager.removeObj(old);
-                ObjectManager.addObj(spawned);
-                player.getMovementQueue().interpolate(3143, 3443, MovementQueue.StepType.FORCED_WALK);
-            }).then(2, () -> {
-                ObjectManager.removeObj(spawned);
-                ObjectManager.addObj(old);
-            }).waitForTile(new Tile(3143, 3443), player::unlock);
-        }
     }
 
     @Override
@@ -95,30 +75,30 @@ public class CookingGuild extends Interaction {
             //Staircase inside the cooking guild
             if (obj.getId() == FIRST_FLOOR_STAIRS) {
                 if (obj.tile().equals(3144, 3447, 0)) {
-                    Ladders.ladderUp(player, new Tile(player.tile().x, player.tile().y, player.tile().level + 1), false);
+                    Ladders.ladderUp(player, new Tile(player.tile().x, player.tile().y, player.tile().level + 1), true);
                 }
                 return true;
             }
 
             if (obj.getId() == SECOND_FLOOR_STAIRS) {
-                Ladders.ladderUp(player, new Tile(3144, 3446, player.tile().level + 1), false);
+                Ladders.ladderUp(player, new Tile(3144, 3446, player.tile().level + 1), true);
                 return true;
             }
 
             if (obj.getId() == THIRD_FLOOR_STAIRS) {
                 if (obj.tile().equals(3144, 3447, 2)) {
-                    Ladders.ladderDown(player, new Tile(3144, 3449, player.tile().level - 1), false);
+                    Ladders.ladderDown(player, new Tile(3144, 3449, player.tile().level - 1), true);
                 }
                 return true;
             }
         } else if (interaction == 2) {
             if (obj.getId() == SECOND_FLOOR_STAIRS) {
-                Ladders.ladderUp(player, new Tile(3144, 3446, player.tile().level + 1), false);
+                Ladders.ladderUp(player, new Tile(3144, 3446, player.tile().level + 1), true);
                 return true;
             }
         } else if (interaction == 3) {
             if (obj.getId() == SECOND_FLOOR_STAIRS) {
-                Ladders.ladderDown(player, new Tile(3144, 3449, player.tile().level - 1), false);
+                Ladders.ladderDown(player, new Tile(3144, 3449, player.tile().level - 1), true);
                 return true;
             }
         }
