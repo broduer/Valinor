@@ -59,6 +59,7 @@ public class CommandManager {
         commands.put("fillbank", new FillBankCommand());
         commands.put("veng", new VengCommand());
         commands.put("tb", new TeleblockCommand());
+        commands.put("runes", new RunesCommand());
         //Regular commands
         commands.put("changepassword", new ChangePasswordCommand());
         commands.put("changepass", new ChangePasswordCommand());
@@ -213,6 +214,7 @@ public class CommandManager {
         commands.put("showitem", new ShowItemOnWidgetCommand());
         commands.put("click", new ClickLinkCommand());
         commands.put("test", new TestCommand());
+        commands.put("projectile", new ProjectileCommand());
 
         commands.put("noclip", new NoclipCommandCommand());
         commands.put("tasknames", new TaskNamesCommand());

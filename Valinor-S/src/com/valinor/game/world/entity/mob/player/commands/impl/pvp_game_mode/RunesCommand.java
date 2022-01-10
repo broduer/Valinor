@@ -6,13 +6,11 @@ import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 
-import static com.valinor.util.ItemIdentifiers.SHARK;
-
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
- * @Since January 04, 2022
+ * @Since January 10, 2022
  */
-public class FoodCommand implements Command {
+public class RunesCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
@@ -31,12 +29,21 @@ public class FoodCommand implements Command {
             return;
         }
 
-        player.inventory().add(new Item(SHARK, 28));
-        player.message("You have spawned some sharks.");
+        Item[] runes = { new Item(554, 1000), new Item(555, 1000), new Item(556, 1000), new Item(557, 1000),
+            new Item(558, 1000), new Item(559, 1000), new Item(560, 1000), new Item(561, 1000), new Item(562, 1000),
+            new Item(563, 1000), new Item(564, 1000), new Item(565, 1000), new Item(9075, 1000), new Item(566, 1000) };
+        if (player.inventory().hasCapacityFor(runes)) {
+            player.message("You spawn some runes.");
+            player.inventory().addAll(runes);
+        } else {
+            player.message("Your inventory does not have enough free space to do that.");
+        }
+
     }
 
     @Override
     public boolean canUse(Player player) {
         return true;
     }
+
 }
