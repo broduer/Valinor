@@ -100,7 +100,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
     /**
      * Handles spawning Nylocas Matomenos to heal the boss.
      */
-    private void nylocas(final Mob mob, final Mob target) {
+    private void nylocas(final Mob mob) {
         Task task = new Task("MaidenOfSugadintiNylocasTask", 1) {
 
             int cycles = 0;
@@ -128,9 +128,9 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
                         });
                         stop();
                     } else if (spider != null && !spider.dead() && !spider.frozen()) {
-                        Projectile projectile = new Projectile(spider, target, 1578, 0, 100, 50, 25,0);
+                        Projectile projectile = new Projectile(spider, mob, 1578, 0, 100, 50, 25,0);
                         projectile.sendProjectile();
-                        mob.hit(mob, World.getWorld().get(10, 15), SplatType.NPC_HEALING_HITSPLAT);
+                        mob.hit(spider, World.getWorld().get(10, 15), SplatType.NPC_HEALING_HITSPLAT);
                         spiders.add(spider);
                     }
                 }
@@ -185,7 +185,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
         mob.getCombat().setTarget(getClosestPlayer(mob)); //Sets npcs target to the closest player to it, should never be null.
         double percent = mob.getHealthPercentage();
         if (percent <= 0.7D && phase == 0 || percent <= 0.5D && phase == 1 || percent <= 0.3D && phase == 2) {
-            nylocas(mob, target);
+            nylocas(mob);
             phase++;
         }
     }

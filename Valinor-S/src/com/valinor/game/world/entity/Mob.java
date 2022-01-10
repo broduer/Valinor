@@ -687,7 +687,7 @@ public abstract class Mob extends Entity {
     }
 
     public void decrementHealth(Hit hit) {
-        if (dead())
+        if (dead() || hit.splatType == SplatType.NPC_HEALING_HITSPLAT)
             return;
         int outcome = hp() - hit.getDamage();
         if (outcome < 0) {

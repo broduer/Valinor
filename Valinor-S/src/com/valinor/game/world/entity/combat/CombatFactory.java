@@ -16,6 +16,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.Splat;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.magic.Autocasting;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.magic.CombatSpells;
@@ -1186,6 +1187,16 @@ public class CombatFactory {
         if (attacker.isNpc() && hit.getCombatType() == CombatType.MAGIC && !target.getUpdateFlag().flagged(Flag.ANIMATION)) {
             target.animate(new Animation(target.getBlockAnim()));
         }
+
+        // no need to process anything more
+        if (hit.splatType == SplatType.NPC_HEALING_HITSPLAT) {
+            hit.getTarget().heal(damage);
+            return;
+        }
+        /*
+        below here = adjust damage pending on reductions like shields, ely, or overheads in pvm etc
+
+         */
 
         if(attacker.isNpc()) {
             Npc npc = attacker.getAsNpc();

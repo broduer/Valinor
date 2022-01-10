@@ -15,6 +15,7 @@ public class RaidsWidget extends Widget {
         points(font);
         reward();
         party(font);
+        rewardTob(font);
     }
 
     private static void party(AdvancedFont[] font) {
@@ -100,6 +101,24 @@ public class RaidsWidget extends Widget {
         setBounds(12023, 275, 155, 2, widget);
         setBounds(12024, 275, 200, 3, widget);
         setBounds(12025, 372, 82, 4, widget);
+    }
+
+    private static void rewardTob(AdvancedFont[] font) {
+        Widget widget = addInterface(12220);
+        addSprite(12221,1938);
+        addItem(12222,true);
+        addItem(12223,true);
+        addItem(12224,false);
+        closeButton(12225,107,108,false);
+        addText(12226, "Theatre of Blood", font,2,0xff981f,false,true);
+
+        widget.totalChildren(6);
+        setBounds(12221, 140, 75, 0, widget);
+        setBounds(12222, 275, 115, 1, widget);
+        setBounds(12223, 275, 155, 2, widget);
+        setBounds(12224, 275, 200, 3, widget);
+        setBounds(12225, 372, 82, 4, widget);
+        setBounds(12226, 352, 82, 5, widget);
     }
 
     private static void points(AdvancedFont[] font) {

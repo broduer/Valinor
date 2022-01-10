@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
@@ -28,7 +29,7 @@ import static com.valinor.util.ObjectIdentifiers.GIANT_ANVIL;
  */
 public class Tekton extends CommonCombatMethod {
 
-    private final List<Tile> bubbles = new ArrayList<>(20);
+   /* private final List<Tile> bubbles = new ArrayList<>(20);
     private boolean forcedSmith = false;
     private boolean init = false;
 
@@ -52,11 +53,41 @@ public class Tekton extends CommonCombatMethod {
             }
         }
         return World.getWorld().get(targets);
+    }*/
+
+    private static boolean instanceFinished(Mob mob) {
+        if (mob instanceof Npc) {
+            Npc npc = (Npc) mob;
+            if (npc.dead() || !npc.isRegistered()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void doMeleePhaseInner(Mob mob, Mob target) {
+        mob.setEntityInteraction(null);
+        mob.animate(7493);
+        Tile p1 = target.tile().copy();
+        mob.face(p1);
+        Chain.bound(null).cancelWhen(() -> instanceFinished(mob)).runFn(1, () -> {
+            mob.face(p1);
+        }).then(4, () -> {
+            if (p1.area(1).contains(target)) {
+                target.hit(mob, Utils.random(41), 0, CombatType.MELEE).checkAccuracy().submit();
+            }
+        }).then(2, () -> {
+            mob.setEntityInteraction(target);
+        }).then(2, () -> {
+            mob.setEntityInteraction(null);
+        });
     }
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        if (!init) {
+        mob.getMovement().setBlockMovement(true); // Lock movement when we found a target
+        doMeleePhaseInner(mob, target);
+        /*if (!init) {
             init(((Npc) mob));
             init = true;
         }
@@ -107,10 +138,10 @@ public class Tekton extends CommonCombatMethod {
                     }
                 }
             });
-        }
+        }*/
     }
 
-    private void smith(Npc npc, Mob target) {
+    /*private void smith(Npc npc, Mob target) {
         Tile walkToTile = new Tile(3309, 5295);
         Chain.bound(null).cancelWhen(() -> {
             return npc.dead(); // cancels as expected
@@ -192,7 +223,7 @@ public class Tekton extends CommonCombatMethod {
                 smith(mob.getAsNpc(), target);
             }
         }
-    }
+    }*/
 
     @Override
     public int getAttackSpeed(Mob mob) {

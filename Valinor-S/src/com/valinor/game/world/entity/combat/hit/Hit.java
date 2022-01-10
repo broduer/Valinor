@@ -206,9 +206,7 @@ public class Hit {
             }
         }
 
-        //Heal hit
         if(splatType == SplatType.NPC_HEALING_HITSPLAT) {
-            attacker.heal(damage);
             return;
         }
 
@@ -259,8 +257,7 @@ public class Hit {
     }
 
     public void submit() {
-        if(splatType != SplatType.NPC_HEALING_HITSPLAT) {
-            pidAdjust();
+        pidAdjust();
         /*if(target instanceof Npc) {
             Npc npc = target.getAsNpc();
             if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("the nightmare")) {
@@ -273,8 +270,7 @@ public class Hit {
                 return;
             }
         }*/
-            CombatFactory.addPendingHit(this);
-        }
+        CombatFactory.addPendingHit(this); // defo need to call this cos this is where they all get processed
     }
 
     @Override

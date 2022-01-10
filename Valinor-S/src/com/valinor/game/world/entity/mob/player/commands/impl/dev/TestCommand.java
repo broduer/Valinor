@@ -2,6 +2,8 @@ package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.instance.impl.NightmareInstance;
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -89,6 +91,7 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
         //player.sound(2401);
+        player.hit(player, World.getWorld().get(10, 15), SplatType.NPC_HEALING_HITSPLAT);
         player.message("Test command has been activated.");
     }
 
