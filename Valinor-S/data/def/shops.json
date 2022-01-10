@@ -145,7 +145,7 @@
         "amount": 10000
       },
       {
-        "id": 1775,
+        "id": 1776,
         "amount": 10000,
         "value": 4000
       },
@@ -154,14 +154,33 @@
         "amount": 10000
       },
       {
-        "id": 222,
-        "amount": 10000,
-        "value": 2000
-      },
-      {
         "id": 200,
         "amount": 10000,
         "value": 4000
+      },
+      {
+        "id": 12740,
+        "amount": 10000
+      },
+      {
+        "id": 12742,
+        "amount": 10000
+      },
+      {
+        "id": 5340,
+        "amount": 10000
+      },
+      {
+        "id": 5341,
+        "amount": 10000
+      },
+      {
+        "id": 5343,
+        "amount": 10000
+      },
+      {
+        "id": 6032,
+        "amount": 10000
       }
     ]
   },
@@ -1911,59 +1930,175 @@
         "amount": 100,
         "value": 500
       },
-      // Armadyl godsword
       {
         "id": 13652,
         "amount": 100,
         "value": 1000
       },
-      // Dragon claws
       {
         "id": 11791,
         "amount": 100,
         "value": 350
       },
-      // Staff of the dead
       {
         "id": 22613,
         "amount": 100,
         "value": 1250
       },
-      // Vesta's longsword
       {
         "id": 22616,
         "amount": 100,
         "value": 1000
       },
-      // Vesta's chainbody
       {
         "id": 22619,
         "amount": 100,
         "value": 1000
       },
-      // Vesta's chainskirt
       {
         "id": 22622,
         "amount": 100,
         "value": 1250
       },
-      // Statius's warhammer
       {
         "id": 22625,
         "amount": 100,
         "value": 750
       },
-      // Statius's fullhelm
       {
         "id": 22628,
         "amount": 100,
         "value": 1000
       },
-      // Statius's platebody
       {
         "id": 22631,
         "amount": 100,
         "value": 1000
+      },
+      {
+        "id": 12526,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 20062,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 20065,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 22246,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 20068,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 20071,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 20074,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 20077,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 23686,
+        "amount": 100,
+        "value": 2
+      },
+      {
+        "id": 24636,
+        "amount": 100,
+        "value": 2
+      },
+      {
+        "id": 24624,
+        "amount": 100,
+        "value": 2
+      },
+      {
+        "id": 10551,
+        "amount": 100,
+        "value": 50
+      },
+      {
+        "id": 23650,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 21880,
+        "amount": 100,
+        "value": 1
+      },
+      {
+        "id": 12626,
+        "amount": 100,
+        "value": 5
+      },
+      {
+        "id": 11770,
+        "amount": 100,
+        "value": 100
+      },
+      {
+        "id": 11771,
+        "amount": 100,
+        "value": 100
+      },
+      {
+        "id": 11772,
+        "amount": 100,
+        "value": 100
+      },
+      {
+        "id": 11773,
+        "amount": 100,
+        "value": 100
+      },
+      {
+        "id": 13442,
+        "amount": 100,
+        "value": 1
+      },
+      {
+        "id": 21948,
+        "amount": 100,
+        "value": 1
+      },
+      {
+        "id": 21944,
+        "amount": 100,
+        "value": 1
+      },
+      {
+        "id": 21946,
+        "amount": 100,
+        "value": 1
+      },
+      {
+        "id": 12846,
+        "amount": 100,
+        "value": 250
+      },
+      {
+        "id": 12802,
+        "amount": 100,
+        "value": 500
       }
     ]
   },
@@ -4341,21 +4476,6 @@
         "id": 23348,
         "amount": 100000,
         "value": 25
-      },
-      {
-        "id": 20062,
-        "amount": 100000,
-        "value": 35
-      },
-      {
-        "id": 20065,
-        "amount": 100000,
-        "value": 35
-      },
-      {
-        "id": 22246,
-        "amount": 100000,
-        "value": 35
       },
       {
         "id": 20143,

@@ -97,13 +97,14 @@ public class RottenPotato extends Interaction {
 
     public static void onItemOption1(Player player) {
         if (player.getPlayerRights().isDeveloperOrGreater(player)) {
-            if (GameServer.properties().production) {
+            potatoChat(player);
+            /*if (GameServer.properties().production) {
                 potatoChat(player);
             } else {
                 //CommandManager.attempt(player, "clipat");
                 //CommandManager.attempt(player, "teleto testbot1");
-                CommandManager.attempt(player, "hydra");
-            }
+                //CommandManager.attempt(player, "hydra");
+            }*/
         }
     }
 
