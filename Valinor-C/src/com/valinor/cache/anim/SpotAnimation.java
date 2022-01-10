@@ -149,6 +149,17 @@ public final class SpotAnimation {
                 }
                 continue;
             }
+
+            if (opcode == 41) {
+                int length = buffer.readUByte();
+                src_texture = new short[length];
+                dst_texture = new short[length];
+                for (int index = 0; index < length; index++) {
+                    src_texture[index] = (short) buffer.readUShort();
+                    dst_texture[index] = (short) buffer.readUShort();
+                }
+                continue;
+            }
             System.out.println("Error unrecognised spotanim config code: " + opcode);
         }
     }
@@ -162,10 +173,15 @@ public final class SpotAnimation {
         if (model == null)
             return null;
 
-        for (int index = 0; index < 6; index++) {
-            if (src_color[0] != 0) {
-                model.recolor(src_color[index], dst_color[index]);
-            }
+        if(src_color != null) {
+            for (int index = 0; index < src_color.length; index++)
+                if (src_color[0] != 0)
+                    model.recolor(src_color[index], dst_color[index]);
+        }
+        if (src_texture != null) {
+            for (int index = 0; index < src_texture.length; index++)
+                if (src_texture[0] != 0)
+                    model.retexture(src_texture[index], dst_texture[index]);
         }
 
         model_cache.put(model, id);
@@ -187,6 +203,8 @@ public final class SpotAnimation {
     public Sequence seq;
     public int[] src_color;
     public int[] dst_color;
+    public short[] src_texture;
+    public short[] dst_texture;
 
     public int model_scale_x;
     public int model_scale_y;

@@ -46,6 +46,12 @@ public final class Player extends Entity {
                 if(anim.model_scale_x != 128 || anim.model_scale_y != 128)
                     graphic.scale(anim.model_scale_x, anim.model_scale_x, anim.model_scale_y);
 
+                if(anim.src_texture != null) {
+                    for(int index = 0; index < anim.src_texture.length; ++index) {
+                        graphic.retexture(anim.src_texture[index], anim.dst_texture[index]);
+                    }
+                }
+
                 graphic.light(64 + anim.ambient, 850 + anim.contrast, -30, -50, -30, true, true);
                 Model[] merged = {
                     player, graphic
