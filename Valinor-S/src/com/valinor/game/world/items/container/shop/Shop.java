@@ -345,12 +345,14 @@ public abstract class Shop {
             Utils.sendDiscordInfoLog(player.getUsername() + " has sold " + item.unnote().name() + " for " + Utils.formatNumber((long) item.getAmount() * sellValue) + " " + currencyType.currency.toString() + ".", "items_sold_store");
         }
         StoreItem converted = new StoreItem(item.getId(), item.getAmount());
-
-        if (find.isPresent()) {
-            Item found = find.get();
-            found.setAmount(found.getAmount() + item.getAmount());
-        } else {
-            container.add(converted);
+        boolean dontAddToContainer = true;
+        if (!dontAddToContainer) {
+            if (find.isPresent()) {
+                Item found = find.get();
+                found.setAmount(found.getAmount() + item.getAmount());
+            } else {
+                container.add(converted);
+            }
         }
 
         //Don't refresh the shop for one player, refresh it for all players.
