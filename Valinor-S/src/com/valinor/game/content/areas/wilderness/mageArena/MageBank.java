@@ -98,6 +98,7 @@ public class MageBank extends Interaction {
             return true;
         }
         if(obj.getId() == STATUE_OF_SARADOMIN_2873) {
+            player.faceObj(obj);
             player.runFn(1, () -> {
                 player.lockMovement();
                 player.animate(645);
@@ -107,6 +108,7 @@ public class MageBank extends Interaction {
             }).then(1, () -> {
                 World.getWorld().tileGraphic(188, new Tile(2500, 4719,0), 50, 0);
                 GroundItem groundItem = new GroundItem(new Item(SARADOMIN_CAPE), new Tile(2500, 4719, 0), player);
+                groundItem.vanishes(false);
                 groundItem.setState(GroundItem.State.SEEN_BY_OWNER);
                 GroundItemHandler.createGroundItem(groundItem);
                 player.unlock();
@@ -114,6 +116,7 @@ public class MageBank extends Interaction {
             return true;
         }
         if(obj.getId() == STATUE_OF_ZAMORAK_2874) {
+            player.faceObj(obj);
             player.runFn(1, () -> {
                 player.lockMovement();
                 player.animate(645);
@@ -130,6 +133,7 @@ public class MageBank extends Interaction {
             return true;
         }
         if(obj.getId() == STATUE_OF_GUTHIX) {
+            player.faceObj(obj);
             player.runFn(1, () -> {
                 player.lockMovement();
                 player.animate(645);

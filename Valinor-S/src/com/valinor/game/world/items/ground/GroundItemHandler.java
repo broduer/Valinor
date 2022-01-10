@@ -20,6 +20,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
+import static com.valinor.util.ItemIdentifiers.SARADOMIN_CAPE;
+import static com.valinor.util.ItemIdentifiers.ZAMORAK_CAPE;
 
 /**
  * A handler for a collection of {@link GroundItem}s
@@ -194,7 +196,11 @@ public final class GroundItemHandler {
             return false;
         }
 
-        boolean illegalItem = item.getItem().getId() >= 2412 && item.getItem().getId() <= 2414;
+        boolean illegalItem = false;
+
+        if((item.getItem().getId() >= SARADOMIN_CAPE && item.getItem().getId() <= ZAMORAK_CAPE) && item.vanishes()) {
+            illegalItem = true;
+        }
 
         if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
             && player != null && player.gameMode() == GameMode.INSTANT_PKER) {

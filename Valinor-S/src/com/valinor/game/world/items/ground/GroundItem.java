@@ -55,6 +55,8 @@ public final class GroundItem {
 
     private String pkedFrom;
 
+    private boolean vanishes = false;
+
     /**
      * Constructs a new ground item object
      *
@@ -182,6 +184,15 @@ public final class GroundItem {
 
     public boolean respawns() {
         return respawns;
+    }
+
+    public boolean vanishes() {
+        return vanishes;
+    }
+
+    public GroundItem vanishes(boolean vanishes) {
+        this.vanishes = vanishes;
+        return this;
     }
 
     public GroundItem respawns(boolean b) {
