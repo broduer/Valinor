@@ -33,11 +33,11 @@ public class ZaryteCrossbow extends CommonCombatMethod {
         CombatFactory.decrementAmmo(player);
 
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED),2, CombatType.RANGED).checkAccuracy();
-        hit.submit();
         if(hit.getDamage() > 0) {
             player.putAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, true);
         }
-        CombatSpecial.drain(mob, CombatSpecial.ARMADYL_CROSSBOW.getDrainAmount());
+        hit.submit();
+        CombatSpecial.drain(mob, CombatSpecial.ZARYTE_CROSSBOW.getDrainAmount());
     }
 
     @Override

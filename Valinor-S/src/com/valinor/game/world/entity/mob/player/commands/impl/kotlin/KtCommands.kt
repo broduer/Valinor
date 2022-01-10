@@ -35,6 +35,7 @@ import com.valinor.game.world.`object`.GameObject
 import com.valinor.game.world.`object`.MapObjects
 import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.Mob
+import com.valinor.game.world.entity.combat.CombatSpecial
 import com.valinor.game.world.entity.combat.CombatType
 import com.valinor.game.world.entity.combat.magic.MagicClickSpells
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath
@@ -100,6 +101,12 @@ object KtCommands {
     private val logger: Logger = LogManager.getLogger(KtCommands::class.java)
 
     fun init() {
+        cmd("spec", DEV) {
+            player.specialAttackPercentage = 100
+            player.isSpecialActivated = false
+            CombatSpecial.updateBar(player)
+            player.message("Your special attack has been refilled.")
+        }
         cmd("clearnm", DEV) {
             NightmareInstance.hmClear()
             player.message("Cleared Nightmare instances hashmap..")
