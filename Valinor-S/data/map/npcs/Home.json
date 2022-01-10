@@ -116,12 +116,20 @@
   },*/
   {
     "id": 2818,
-    "x": 3083,
-    "y": 3482,
+    "x": 3078,
+    "y": 3497,
     "z": 0,
     "radius": 0,
     "direction": "S",
     "desc": "Shop assistant"
+  },
+  {
+    "name": "Iron man tutor",
+    "id": 311,
+    "x": 3083,
+    "y": 3482,
+    "z": 0,
+    "walkRange": 2
   },
   {
     "name": "Magic supplies",
@@ -210,14 +218,6 @@
     "z": 0,
     "direction": "W",
     "walkRange": 0
-  },
-  {
-    "name": "Iron man tutor",
-    "id": 311,
-    "x": 3078,
-    "y": 3497,
-    "z": 0,
-    "walkRange": 2
   },
   {
     "name": "Donation Manager",
