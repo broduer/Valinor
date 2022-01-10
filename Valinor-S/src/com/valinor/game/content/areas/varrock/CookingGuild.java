@@ -30,7 +30,7 @@ public class CookingGuild extends Interaction {
     private final static int SECOND_FLOOR_STAIRS = 2609;
     private final static int THIRD_FLOOR_STAIRS = 2610;
 
-    private static void door(Player player, GameObject obj) {
+    private void door(Player player, GameObject obj) {
         //Requirement checks to enter the cooking guild.
             if (player.skills().level(Skills.COOKING) < 32) {
                 DialogueManager.npcChat(player, Expression.DULL, CHEF, "Sorry. Only the finest chefs are allowed in here. Get", "your cooking level up to 32 and come back wearing a", "chef's hat.");
@@ -38,14 +38,11 @@ public class CookingGuild extends Interaction {
                 DialogueManager.npcChat(player, Expression.ANXIOUS, CHEF, "You can't come in here unless you're wearing a chef's", "hat, or something like that.");
             } else {
                 GameObject opened = new GameObject(24959, new Tile(3143, 3444, 0), obj.getType(), 2);
-                Chain.bound(null).runFn(1, () -> {
+                Chain.bound(null).waitUntil(1, () -> {
                     player.lock();
-
-                    if (!player.isAt(obj.getX(), player.getAbsY())) {
-                        player.stepAbs(obj.getX(), player.getAbsY(), StepType.FORCE_WALK);
-                        //event.delay(1); TODO
-                    }
-
+                    player.stepAbs(obj.getX(), player.getAbsY(), StepType.FORCE_WALK);
+                    return player.tile().equals(obj.getX(), player.getAbsY());
+                }, () -> {
                     opened.spawn();
                     obj.skipClipping(true).remove();
                     player.step(0, player.getAbsY() <= 3443 ? 1 : -1, StepType.FORCE_WALK);
@@ -63,7 +60,7 @@ public class CookingGuild extends Interaction {
             // This door ID is used elsewhere too!
             if (obj.getId() == GUILD_DOOR) {
                 if (obj.tile().equals(3143, 3443)) {
-                    CookingGuild.door(player, obj);
+                    door(player, obj);
                 } else {
                     Door door = CACHE.stream().filter(d -> d.id() == obj.getId()).findAny().orElse(null);
                     if (door == null)
