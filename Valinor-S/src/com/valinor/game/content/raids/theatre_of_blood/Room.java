@@ -3,6 +3,7 @@ package com.valinor.game.content.raids.theatre_of_blood;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
@@ -12,6 +13,8 @@ import com.valinor.util.ObjectIdentifiers;
 
 import static com.valinor.game.world.position.AreaConstants.*;
 import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.VERZIK_VITUR_8369;
+import static com.valinor.util.NpcIdentifiers.VERZIK_VITUR_8370;
 import static com.valinor.util.ObjectIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.TREASURE_ROOM;
 
@@ -176,7 +179,18 @@ public class Room extends Interaction {
         }
         return false;
     }
-    
+
+    @Override
+    public boolean handleNpcInteraction(Player player, Npc npc, int option) {
+        if(option == 1) {
+            if(npc.id() == VERZIK_VITUR_8369) {
+                npc.transmog(VERZIK_VITUR_8370);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void unlockCape(Player player) {
         var finished = player.<Integer>getAttribOr(AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, 0);
         if (finished == 10) {

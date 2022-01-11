@@ -115,11 +115,10 @@ public class VerzikVitur extends CommonCombatMethod {
                         public void execute() {
                             count++;
                             if (count == 5 && healer == null && bomber == null) {
-                                healer = new Npc(8384, tile).spawn(false);
-                                //healer.attackTimer = Integer.MAX_VALUE;
+                                healer = new Npc(NYLOCAS_ATHANATOS, tile).spawn(false);
                                 healer.animate(8079);
                                 healer.face(mob.tile());
-                                bomber = new Npc(8385, SPIDER_SPAWN).spawn(false);
+                                bomber = new Npc(NYLOCAS_MATOMENOS_8385, SPIDER_SPAWN).spawn(false);
                                 bomber.getCombat().setTarget(target);
                                 bomber.animate(8098);
                             }
@@ -199,9 +198,8 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public void onHit(Mob mob, Mob target, Hit hit) {
-        if (mob.getAsNpc().id() == 8370) {
-            hit.setSplatType(SplatType.BLOCK_HITSPLAT);
-            //damage.setHitmark(Hitmark.DAWNBRINGER);
+        if (mob.getAsNpc().id() == VERZIK_VITUR_8370) {
+            hit.setSplatType(SplatType.VERZIK_SHIELD_HITSPLAT);
         }
         if (mob.getAsNpc().id() == VERZIK_VITUR_8371 || mob.getAsNpc().id() == VERZIK_VITUR_8375) {
             hit.setDamage(0);
@@ -219,7 +217,7 @@ public class VerzikVitur extends CommonCombatMethod {
         if (party == null) {
             return false;
         }
-        if (mob.getAsNpc().id() == 8370) {
+        if (mob.getAsNpc().id() == VERZIK_VITUR_8370) {
             List<Mob> targets = getPossibleTargets();
             mob.getAsNpc().canAttack(false);
             mob.animate(OUT_OF_CHAIR);

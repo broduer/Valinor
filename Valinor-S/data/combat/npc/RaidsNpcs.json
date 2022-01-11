@@ -141,7 +141,7 @@
     "animations": {
       "attack": -1,
       "block": -1,
-      "death": 8094
+      "death": 8085
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.PestilentBloat",
@@ -181,7 +181,7 @@
     "animations": {
       "attack": -1,
       "block": -1,
-      "death": 8094
+      "death": 7991
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.NylocasVasilias",
@@ -221,7 +221,7 @@
     "animations": {
       "attack": -1,
       "block": -1,
-      "death": 8094
+      "death": 8140
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.Sotetseg",
@@ -261,7 +261,7 @@
     "animations": {
       "attack": -1,
       "block": -1,
-      "death": 8094
+      "death": 8063
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.Xarpus",
@@ -301,12 +301,72 @@
     "animations": {
       "attack": -1,
       "block": -1,
-      "death": 8094
+      "death": 8118
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.VerzikVitur",
       "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.VerzikViturDroptable",
       "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
+    }
+  },
+  {
+    // Nylocas Athanatos
+    "ids": [
+      8384
+    ],
+    "deathlen": 1,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "magic": 50,
+      "ranged": 1,
+      "defence": 50,
+      "hitpoints": 180
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8079
+    }
+  },
+  {
+    // Nylocas Matomenos
+    "ids": [
+      8385
+    ],
+    "deathlen": 1,
+    "unstacked": true,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 100,
+      "strength": 100,
+      "magic": 100,
+      "ranged": 100,
+      "defence": 100,
+      "hitpoints": 200
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 8097
     }
   },
   {

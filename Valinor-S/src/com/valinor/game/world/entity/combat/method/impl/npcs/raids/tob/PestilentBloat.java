@@ -91,22 +91,22 @@ public class PestilentBloat extends CommonCombatMethod {
 
     @Override
     public void process(Mob mob, Mob target) {
+        super.process(mob, target);
         if(mob.dead()) {
-            System.out.println("huh");
             return;
         }
-        System.out.println("hmmm");
         mob.getTimers().cancel(TimerKey.FROZEN);
         targets = getPossibleTargets();
         if (corner >= corners.length) {
             corner = 0;
         }
-        if (!mob.tile().equalsIgnoreHeight(corners[corner]) && !isStopped()) { //hasnt reached the corner yet
-            DumbRoute.route(mob, corners[corner].getX(), corners[corner].getY());
+        Tile cornerTile = corners[corner].transform(0,0, mob.tile().level);
+        if (!mob.tile().equals(cornerTile) && !isStopped()) { //hasnt reached the corner yet
+            DumbRoute.route(mob, cornerTile.getX(), cornerTile.getY());
             if (stepsTillStop-- <= 0) {
                 setStopped(true);
             }
-            if (mob.tile().equalsIgnoreHeight(corners[corner]) && !isSleeping()) {
+            if (mob.tile().equals(cornerTile) && !isSleeping()) {
                 corner++;
             }
         } else {
@@ -164,7 +164,7 @@ public class PestilentBloat extends CommonCombatMethod {
                 } else if (cycle == 4) {
                     for (Mob target : targets) {
                         for (Tile loc : tiles) {
-                            if (target.tile().equalsIgnoreHeight(loc)) {
+                            if (target.tile().equals(loc)) {
                                 target.hit(mob, World.getWorld().random(20, 30));
                             }
                         }

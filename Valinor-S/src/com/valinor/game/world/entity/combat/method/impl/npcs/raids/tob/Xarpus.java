@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.util.NpcIdentifiers.XARPUS_8340;
+import static com.valinor.util.NpcIdentifiers.XARPUS_8341;
+
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since January 07, 2022
@@ -115,11 +118,12 @@ public class Xarpus extends CommonCombatMethod {
 
     @Override
     public void onDeath(Npc npc) {
-        npc.transmog(8341);
+        npc.transmog(XARPUS_8341);
     }
 
     @Override
     public void process(Mob mob, Mob target) {
+        super.process(mob, target);
         List<Mob> targets = getPossibleTargets();
         Optional<Mob> u = targets.stream().filter(t -> t.tile().isWithinDistance(mob.tile(), 6)).findAny();
         if (phase == 0 && exumedCount < 10 && u.isPresent()) {
@@ -135,7 +139,7 @@ public class Xarpus extends CommonCombatMethod {
                             tick++;
                             if (tick == 1) {
                                 int x = World.getWorld().random(ARENA.swX, ARENA.neX), y = World.getWorld().random(ARENA.swY, ARENA.neY);
-                                exumed = Tile.of(x, y);
+                                exumed = Tile.of(x, y).transform(0,0, mob.tile().level);
                                 exumedCount++;
                             } else if (tick > 1 && tick <= 16) {
                                 boolean plugged = false;
@@ -148,14 +152,14 @@ public class Xarpus extends CommonCombatMethod {
                                     World.getWorld().tileGraphic(1549, exumed, 0, 0);
                                 }
                                 if (!plugged && exumed != null) {
-                                    new Projectile(mob, target, 1550, 0, 120, 0, 0, 0).sendProjectile();
-                                    mob.setHitpoints(mob.maxHp() + 15);
-                                    mob.hit_(mob,15, 4, SplatType.NPC_HEALING_HITSPLAT);
+                                    new Projectile(exumed, mob.tile().center(mob.getSize()), mob.getIndex(), 1550, 120, 55, 0, 0, 0).sendProjectile();
+                                    mob.setHitpoints(mob.maxHp() + 9);
+                                    mob.hit_(mob,9, 4, SplatType.NPC_HEALING_HITSPLAT);
                                 }
                             } else if (tick >= 17) {
                                 if (exumedCount >= 10) {
                                     mob.getAsNpc().canAttack(true);
-                                    mob.getAsNpc().transmog(8340);
+                                    mob.getAsNpc().transmog(XARPUS_8340);
                                     mob.animate(8061);
                                     mob.getCombat().setTarget(World.getWorld().randomTypeOfList(targets));
                                     phase = 1;
@@ -207,7 +211,7 @@ public class Xarpus extends CommonCombatMethod {
                     if (t == null || t.getAsPlayer().dead())
                         continue;
                     if (t.tile().equalsIgnoreHeight(pool.getTile())) {
-                        mob.hit_(t, World.getWorld().random(6, 8), 1, SplatType.POISON_HITSPLAT);
+                        t.hit_(mob, World.getWorld().random(6, 8), 1, SplatType.POISON_HITSPLAT);
                     }
                 }
             }

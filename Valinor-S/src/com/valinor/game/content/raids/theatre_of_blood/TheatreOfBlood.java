@@ -144,7 +144,7 @@ public class TheatreOfBlood extends Raids {
 
         party.bossFightLives.put(player.getUsername().toLowerCase(), 0);
         if (party.teamDead()) {
-            party.getMembers().forEach(p -> p.teleport(GameServer.properties().defaultTile));
+            party.getMembers().forEach(p -> p.teleport(new Tile(1245, 3561, 0)));
             party.getMembers().forEach(p -> p.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 0));
             party.getMembers().forEach(p -> p.message("Unfortunately your team has failed Theatre of Blood!"));
         } else {
@@ -206,11 +206,18 @@ public class TheatreOfBlood extends Raids {
 
         //Create
         Npc maiden = new RaidsNpc(THE_MAIDEN_OF_SUGADINTI, new Tile(3162, 4444, party.getHeight()), party.getSize()).spawn(false);
+        maiden.neverWalkHome(true);
         Npc bloat = new RaidsNpc(PESTILENT_BLOAT, new Tile(3299, 4440, party.getHeight()), party.getSize()).spawn(false);
+        bloat.neverWalkHome(true);
+        bloat.resetFaceTile();
         Npc vasilias = new RaidsNpc(NYLOCAS_VASILIAS_8355, new Tile(3293, 4246, party.getHeight()), party.getSize()).spawn(false);
+        vasilias.neverWalkHome(true);
         Npc sotetseg = new RaidsNpc(SOTETSEG_8388, new Tile(3278, 4329, party.getHeight()), party.getSize()).spawn(false);
+        sotetseg.neverWalkHome(true);
         Npc xarpus = new RaidsNpc(XARPUS, new Tile(3169, 4386, party.getHeight()+1), party.getSize()).spawn(false);
-        Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()+1), party.getSize()).spawn(false);
+        xarpus.neverWalkHome(true);
+        Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()), party.getSize()).spawn(false);
+        verzik.neverWalkHome(true);
 
         //Add to list
         party.monsters.add(maiden);
