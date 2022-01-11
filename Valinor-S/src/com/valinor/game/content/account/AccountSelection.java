@@ -198,7 +198,7 @@ public class AccountSelection extends Interaction {
                 player.getBank().shift();
                 player.message("Your bank has been filled with PvP supplies.");
 
-                for (int skill = 0; skill < Skills.SKILL_COUNT; skill++) {
+                for (int skill = 0; skill < 7; skill++) {
                     player.skills().setXp(skill, Skills.levelToXp(99));
                     player.skills().update();
                     player.skills().recalculateCombat();
