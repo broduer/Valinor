@@ -559,6 +559,10 @@ public class ItemDefinition implements Definition {
             stackable = false;
             name = "$20 bond";
             grandexchange = true;
+        } else if (id == THIRTY_DOLLAR_BOND) {
+            stackable = false;
+            name = "$30 bond";
+            grandexchange = true;
         } else if (id == FORTY_DOLLAR_BOND) {
             stackable = false;
             name = "$40 bond";
