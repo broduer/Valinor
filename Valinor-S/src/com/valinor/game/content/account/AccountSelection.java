@@ -206,12 +206,12 @@ public class AccountSelection extends Interaction {
             }
         }
 
-        player.getInventory().addAll(GameConstants.STARTER_ITEMS);
-        player.message("You have been given some training equipment.");
-
         //Set default spellbook
         player.setSpellbook(MagicSpellbook.NORMAL);
         player.getUpdateFlag().flag(Flag.APPEARANCE);
+
+        player.inventory().addAll(GameConstants.STARTER_ITEMS);
+        player.message("You have been given some training equipment.");
     }
 
     public boolean confirm(Player player) {
