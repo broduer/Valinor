@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
-import static com.valinor.game.content.tournaments.TournamentUtils.LOBBY_TILE;
+import static com.valinor.game.content.tournaments.TournamentUtils.TORN_START_TILE;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static java.lang.String.format;
@@ -89,13 +89,17 @@ public class Tournament {
         if (player.getParticipatingTournament() != null)
             return;
 
-        player.teleport(LOBBY_TILE);
+        player.teleport(TORN_START_TILE);
         player.setInTournamentLobby(true);
         player.setParticipatingTournament(this);
         inLobby.add(player);
-        //We don't have to bank runes, since they are spawnable
-        //player.getRunePouch().bankRunesFromNothing();
-        player.getRunePouch().clear();
+
+        //Save skills
+        for (int skillId = 0; skillId < Skills.SKILL_COUNT; skillId++) {
+            double experience = player.skills().xp()[skillId];
+            player.skills().skillsBeforeTourny.put(skillId, experience);
+        }
+
         resetAllVars(player);
         player.getInterfaceManager().close();
         Skulling.unskull(player);
@@ -229,7 +233,7 @@ public class Tournament {
 
     public void setLoadoutOnPlayer(Player player) {
         resetAllVars(player);
-        TournamentManager.wipeLoadout(player); // clear the loadout and re-load below it we get new food. yes players will have to micro manage their inv setup every round.
+        TournamentManager.wipeLoadout(player); // clear the load out and re-load below it, we get new food. yes players will have to micromanage their inv setup every round.
         player.setSpecialAttackPercentage(100);
         CombatSpecial.updateBar(player);
 
@@ -296,8 +300,9 @@ public class Tournament {
         player.getPacketSender().sendEntityHint(last);
 
         //Set new waiting timers
-        player.getTimers().extendOrRegister(TimerKey.TOURNAMENT_FIGHT_IMMUNE, TournamentUtils.FIGHT_IMMUME_TIMER);
-        player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "00:30");
+        player.getTimers().extendOrRegister(TimerKey.TOURNAMENT_FIGHT_IMMUNE, TournamentUtils.FIGHT_IMMUNE_TIMER);
+        boolean spectating = player.isTournamentSpectating();
+        player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, spectating ? "Spectating" : "00:30");
         TaskManager.submit(new Task() {
             // does this repeat or is it a 1 time thing? Task one time thing
             @Override

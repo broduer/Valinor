@@ -9,10 +9,12 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
+import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.equipment.Equipment;
@@ -46,7 +48,7 @@ import static com.valinor.util.ObjectIdentifiers.EXIT_PORTAL_27096;
 import static java.lang.String.format;
 
 /**
- * A tournament system. Configured via /data/def/arcutus/tournaments.conf file
+ * A tournament system. Configured via /data/def/tournaments.conf file
  * <br>
  * You can start tournys via commands ::settornhours 05.50,05.51 etc {@link com.valinor.game.world.entity.mob.player.commands.impl.dev.SetTornLobbyTime}
  * <br>
@@ -181,10 +183,6 @@ public class TournamentManager extends Interaction {
             player.message("You are still wearing armour, you can't bring any items into the tournament.");
             return false;
         }
-        if (player.skills().combatLevel() < 126) {
-            player.message("You can't participate in tournaments without having maxed out combat.");
-            return false;
-        }
         return true;
     }
 
@@ -210,7 +208,7 @@ public class TournamentManager extends Interaction {
             player.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
             player.getPacketSender().sendEntityHintRemoval(true);
             //Exit the area
-            player.teleport(EXIT_TILE);
+            player.teleport(GameServer.properties().defaultTile);
         }
     }
 
@@ -227,12 +225,13 @@ public class TournamentManager extends Interaction {
             //logger.info("Player " + player.getUsername() + " is leaving tourny lobby");
             Utils.sendDiscordInfoLog("Player " + player.getUsername() + " left the "+torn.getTypeName()+" tournament.", "leave_tourny");
             torn.inLobby.remove(player);
+            restoreSkills(player);
             player.setInTournamentLobby(false);
             player.getRunePouch().clear();
             player.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
             player.getPacketSender().sendEntityHintRemoval(true);
             if (teleport) {
-                player.teleport(EXIT_TILE);
+                player.teleport(GameServer.properties().defaultTile);
             }
             player.setParticipatingTournament(null);
             return;
@@ -269,7 +268,7 @@ public class TournamentManager extends Interaction {
             }
             player.setTournamentOpponent(null);
             player.setParticipatingTournament(null);
-
+            restoreSkills(player);
             Prayers.closeAllPrayers(player);
             restorePreTournyState(player, torn);
             player.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
@@ -279,6 +278,27 @@ public class TournamentManager extends Interaction {
         } else {
             logger.error(player.getUsername() + " tried to leave but isn't in a torny");
         }
+    }
+
+    /**
+     * Restores the players skills to the levels and experience they had before entering a tournament.
+     *
+     * @param player The player being restored.
+     */
+    private static void restoreSkills(Player player) {
+        for (int skillId = 0; skillId < Skills.SKILL_COUNT; skillId++) {
+            if (player.skills().skillsBeforeTourny != null) {
+                double experience = player.skills().skillsBeforeTourny.get(skillId);
+                int level = player.skills().xpToLevel(experience);
+                player.skills().setLevel(skillId, level);
+                player.skills().setXp(skillId, experience);
+                player.skills().update();
+                player.skills().recalculateCombat();
+            }
+        }
+        Prayers.closeAllPrayers(player);
+        player.getUpdateFlag().flag(Flag.APPEARANCE);
+        player.message(Color.PURPLE.wrap("Your levels and experience have been restored."));
     }
 
     /**
@@ -354,18 +374,11 @@ public class TournamentManager extends Interaction {
 
     /**
      * Attempts to insert all inventory, equipment, rune pouch items into the players bank.
-     * Picks up the pet and also banks it.
      */
     static void bankEverything(Player player) {
         player.getBank().depositInventory();
         player.getBank().depositeEquipment();
-        if (player.pet() != null) {
-            PetAI.pickup(player);
-        }
-        //We don't have to bank runes, since they are spawnable
-        //player.getRunePouch().bankRunesFromNothing();
-        player.getRunePouch().clear();
-        player.getBank().depositInventory();
+        player.getRunePouch().bankRunesFromNothing();
         player.inventory().refresh();
         player.getEquipment().refresh();
         player.setQueuedAppearanceUpdate(true);
@@ -752,8 +765,9 @@ public class TournamentManager extends Interaction {
                         player.message("You have been teleported to the combat area!");
                         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " been teleported to the combat area!.", "enter_tourny");
                         player.getMovementQueue().clear();
-                        player.getTimers().extendOrRegister(TimerKey.TOURNAMENT_FIGHT_IMMUNE, TournamentUtils.FIGHT_IMMUME_TIMER);
-                        player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "00:30");
+                        player.getTimers().extendOrRegister(TimerKey.TOURNAMENT_FIGHT_IMMUNE, TournamentUtils.FIGHT_IMMUNE_TIMER);
+                        boolean spectating = player.isTournamentSpectating();
+                        player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, spectating ? "Spectating" : "00:30");
                         player.getPacketSender().sendInteractionOption("Attack", 2, true);
                     }
                     next.checkForNextRoundStart();

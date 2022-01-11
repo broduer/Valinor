@@ -28,9 +28,7 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_EXP_TICKS;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -48,6 +46,8 @@ public class Skills {
     private final Player player;
     private int combat;
     private final boolean[] dirty = new boolean[SKILL_COUNT];
+
+    public final HashMap<Integer, Double> skillsBeforeTourny = new HashMap<>();
 
     public Skills(Player player) {
         this.player = player;
@@ -204,15 +204,15 @@ public class Skills {
             return false;
         }
 
+        // Don't add the experience if player is in a tournament.
+        if (player.inActiveTournament() || player.isInTournamentLobby())
+            return false;
+
         if (target != null && target.isNpc() && combatxp) { // Don't add exp if the target is hidden or locked.
             Npc npc = (Npc) target;
             if (npc.hidden() || (npc.locked() && !npc.isDamageOkLocked()))
                 return false;
         }
-
-        // Don't add the experience if it has been locked or in a tournament..
-        if (player.inActiveTournament() || player.isInTournamentLobby())
-            return false;
 
         boolean geniePet = player.hasPetOut("Genie pet");
 
@@ -500,12 +500,12 @@ public class Skills {
     }
 
     /**
-     * Converts given XP to the equivilent skill level.
+     * Converts given XP to the equivalent skill level.
      *
      * @param xp
      * @return
      */
-    public static int xpToLevel(int xp) {
+    public static int xpToLevel(double xp) {
         // Most-frequently used variants.
         if (xp >= 13_034_431)//13,034,431 exp is level 99
             return 99;

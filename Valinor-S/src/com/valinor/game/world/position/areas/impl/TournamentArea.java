@@ -9,7 +9,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.areas.Controller;
 
-import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Patrick van Elderen | Zerikoth | PVE
@@ -18,12 +18,7 @@ import java.util.Arrays;
 public class TournamentArea extends Controller {
 
     public TournamentArea() {
-        super(Arrays.asList(
-            //Lobby
-            new Area(1672, 4691, 1694, 4714),
-
-            //Fight area
-            new Area(1699, 4691, 1721, 4714)));
+        super(List.of(new Area(1699, 4691, 1721, 4714)));
     }
 
     @Override
@@ -38,7 +33,7 @@ public class TournamentArea extends Controller {
             player.getInterfaceManager().openWalkable(-1);
 
             //Clear all items when leaving the area, players could use reflection run out and bank.
-            TournamentManager.leaveTourny(player,false,false);
+            TournamentManager.leaveTourny(player, false, false);
         }
     }
 
