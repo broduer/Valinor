@@ -18,10 +18,10 @@ public class ShopWidget extends Widget {
     private static void shop_with_scrollbar(AdvancedFont[] font) {
         // Set up the shop inventory
         Widget shopInventory = cache[3900];
-
-        shopInventory.inventoryItemId = new int[100];
-        shopInventory.inventoryAmounts = new int[100];
-        shopInventory.itemOpacity = new int[100];
+        int max_items = 200;
+        shopInventory.inventoryItemId = new int[max_items];
+        shopInventory.inventoryAmounts = new int[max_items];
+        shopInventory.itemOpacity = new int[max_items];
         shopInventory.drawInfinity = true;
         shopInventory.width = 9;
         shopInventory.height = 12;
