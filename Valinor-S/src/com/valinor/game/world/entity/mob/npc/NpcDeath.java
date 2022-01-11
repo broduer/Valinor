@@ -645,7 +645,8 @@ public class NpcDeath {
                     npc.animate(8278);
                 });
             } else {
-                npc.animate(npc.combatInfo() != null ? npc.combatInfo().animations.death : -1);
+                int anim = npc.combatInfo() != null ? npc.combatInfo().animations.death : -1;
+                npc.animate(anim);
             }
 
             // Death sound!

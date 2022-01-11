@@ -4342,6 +4342,68 @@ public enum CombatSpells {
         public MagicSpellbook spellbook() {
             return MagicSpellbook.NORMAL;
         }
+    }),
+    DAWNBRINGER(new CombatSpell() {
+        @Override
+        public String name() {
+            return "Dawnbringer";
+        }
+
+        @Override
+        public Optional<Animation> castAnimation() {
+            return Optional.of(new Animation(1167));
+        }
+
+        @Override
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            var tile = cast.tile();
+            var tileDist = tile.distance(castOn.tile());
+            return Optional.of(new Projectile(cast, castOn, 1547, (9 * tileDist), 45, 10, 0, 0));
+        }
+
+        @Override
+        public Optional<Graphic> endGraphic() {
+            return Optional.of(new Graphic(1548, 90));
+        }
+
+        @Override
+        public int baseMaxHit() {
+            return 34;
+        }
+
+        @Override
+        public Optional<Graphic> startGraphic() {
+            return Optional.of(new Graphic(1546, 80));
+        }
+
+        @Override
+        public int baseExperience() {
+            return 2;
+        }
+
+        @Override
+        public List<Item> equipmentRequired(Player player) {
+            return List.of();
+        }
+
+        @Override
+        public List<Item> itemsRequired(Player player) {
+            return List.of();
+        }
+        @Override
+        public int levelRequired() {
+            return 1;
+        }
+
+        @Override
+        public int spellId() {
+            return 11;
+        }
+
+        @Override
+        public MagicSpellbook spellbook() {
+            return MagicSpellbook.NORMAL;
+        }
     });
 
     /**

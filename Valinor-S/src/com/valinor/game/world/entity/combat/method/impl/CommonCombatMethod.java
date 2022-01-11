@@ -20,6 +20,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Debugs;
+import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import java.util.ArrayList;
@@ -83,28 +84,23 @@ public abstract class CommonCombatMethod implements CombatMethod {
         return possibleTargets;
     }
 
-    public final void handleDodgableAttack(final Mob mob, final Mob target, CombatType type, final Projectile projectile, final Graphic graphic, final int damage, Task onhit) {
+    public final void handleDodgableAttack(final Mob mob, final Mob target, final Projectile projectile, final Graphic graphic, final int damage, final int delay, Task onhit) {
         if (mob == null || target == null)
             return;
 
-        final Tile hitLoc = target.tile();
+        final Tile hitLoc = target.tile().copy();
         if (target.isPlayer()) {
             projectile.sendProjectile();
         }
 
-        Task task = new Task("handleDodgableAttackTask", 1, target, false) {
-
-            @Override
-            public void execute() {
-                if (!target.tile().equals(hitLoc)) {
-                    stop();
-                    return;
-                }
-                target.hit(mob, damage, 0, type).setAccurate(false).graphic(graphic).submit();
-                stop();
+        Chain.bound(null).runFn(delay, () -> {
+            if (target.tile().equals(hitLoc)) {
+                target.hit(mob, damage);
+                if (graphic != null)
+                    target.graphic(graphic.id(), graphic.height(), 0);
             }
-        };
-        TaskManager.submit(task);
+        });
+
         TaskManager.submit(onhit);
     }
 

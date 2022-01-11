@@ -53,15 +53,6 @@ public class Party {
     private int kills;
     private int raidStage = 0;
     private boolean bossFightStarted;
-    private boolean verzikViturDead = false;
-
-    public boolean verzikViturDead() {
-        return verzikViturDead;
-    }
-
-    public void verzikViturDead(boolean verzikViturDead) {
-        this.verzikViturDead = verzikViturDead;
-    }
 
     public Party(Player leader) {
         this.leader = leader;

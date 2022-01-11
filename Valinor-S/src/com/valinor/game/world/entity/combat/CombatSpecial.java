@@ -7,6 +7,7 @@ import com.valinor.game.task.impl.RestoreSpecialAttackTask;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.specials.magic.DawnbringerStaff;
 import com.valinor.game.world.entity.combat.method.impl.specials.magic.EldritchNMS;
 import com.valinor.game.world.entity.combat.method.impl.specials.magic.VolatileNMS;
 import com.valinor.game.world.entity.combat.method.impl.specials.melee.*;
@@ -52,6 +53,7 @@ public enum CombatSpecial {
     ELEMENTAL_BOW(new int[]{CustomItemIdentifiers.ELEMENTAL_BOW}, 50, 1.50, 3.00, new ElementalBow(), WeaponType.BOW),
 
     //Magic
+    DAWNBRINGER(new int[]{ItemIdentifiers.DAWNBRINGER}, 35, 5.0, 1.0, new DawnbringerStaff(), WeaponType.THROWN),
     STAFF_OF_THE_DEAD(new int[]{ItemIdentifiers.STAFF_OF_THE_DEAD}, 100, 1.0, 1.0, null, WeaponType.MAGIC_STAFF),
     TOXIC_STAFF_OF_THE_DEAD(new int[]{ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, TOXIC_STAFF_OF_THE_DEAD_C}, 100, 1.0, 1.0, null, WeaponType.MAGIC_STAFF),
     STAFF_OF_LIGHT(new int[]{ItemIdentifiers.STAFF_OF_LIGHT}, 100, 1.0, 1.0, null, WeaponType.MAGIC_STAFF),

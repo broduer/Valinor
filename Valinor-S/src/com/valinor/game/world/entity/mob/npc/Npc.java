@@ -717,7 +717,6 @@ public class Npc extends Mob {
         this.getCombat().setDamageMap(npc.getCombat().getDamageMap());
     }
 
-
     static final int[] PERMANENT_MOVEMENT_BLOCKED = {
         NpcIdentifiers.VORKATH_8061, NpcIdentifiers.PORTAL_1747, NpcIdentifiers.PORTAL_1748, NpcIdentifiers.PORTAL_1749, NpcIdentifiers.PORTAL_1750, NpcIdentifiers.VOID_KNIGHT_2950, NpcIdentifiers.VOID_KNIGHT_2951, NpcIdentifiers.VOID_KNIGHT_2952
     };
@@ -823,10 +822,6 @@ public class Npc extends Mob {
             }
         }
         this.hp = hitpoints;
-        if (this.hp <= 0 && getCombatMethod() != null && getCombatMethod().customOnDeath(this)) {
-            // Set local hp variable to 1 to prevent it from reaching statement below.
-            this.hp = 1;
-        }
         return this;
     }
 

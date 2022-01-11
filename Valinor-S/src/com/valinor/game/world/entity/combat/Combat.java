@@ -60,6 +60,7 @@ public class Combat {
         CombatSpells.TRIDENT_OF_THE_SEAS.getSpell(),
         CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell(),
         CombatSpells.SANGUINESTI_STAFF.getSpell(),
+        CombatSpells.DAWNBRINGER.getSpell(),
         CombatSpells.CRUCIATUS_CURSE.getSpell(),
         CombatSpells.PETRIFICUS_TOTALUS.getSpell(),
         CombatSpells.AVADA_KEDAVRA.getSpell(),

@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
-import com.valinor.GameServer;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Poison;
@@ -13,12 +12,14 @@ import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
+import static com.valinor.util.ItemIdentifiers.DAWNBRINGER;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.CHEST_32758;
 
@@ -83,6 +84,9 @@ public class TheatreOfBlood extends Raids {
         player.setRunningEnergy(100.0, true);
         Poison.cure(player);
         Venom.cure(2, player);
+
+        //Clear any dawnbringers
+        player.removeAll(new Item(DAWNBRINGER));
 
         //Move outside of raids
         player.teleport(1245, 3561, 0);

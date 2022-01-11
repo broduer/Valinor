@@ -24,6 +24,8 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.util.ItemIdentifiers.*;
@@ -376,7 +378,7 @@ public abstract class CombatSpell extends Spell {
         if(attacker.isPlayer()) {
             Player player = (Player) attacker;
 
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
                 speed = 4;
             }
         }

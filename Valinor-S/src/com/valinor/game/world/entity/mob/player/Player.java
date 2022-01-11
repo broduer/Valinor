@@ -199,6 +199,10 @@ public class Player extends Mob {
         for (int i = 0; i < bankCount; i++) {
             bank.removeFromBank(item);
         }
+
+        if(item.getId() == DAWNBRINGER) {
+            message("The weapon falls apart in your hand as Verzik's shield is destroyed.");
+        }
     }
 
     private final TeleportMenuHandler teleportMenuHandler = new TeleportMenuHandler(this);

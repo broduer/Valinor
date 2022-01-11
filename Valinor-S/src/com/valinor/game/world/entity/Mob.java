@@ -55,6 +55,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
+import static com.valinor.util.NpcIdentifiers.VETION;
+import static com.valinor.util.NpcIdentifiers.VETION_REBORN;
 
 /**
  * A player or NPC
@@ -694,6 +696,14 @@ public abstract class Mob extends Entity {
             outcome = 0;
         }
         setHitpoints(outcome);
+
+        if (isNpc() && hp() <= 0) {
+            if (getAsNpc().getCombatMethod() != null && getAsNpc().getCombatMethod().customOnDeath(this)) {
+                return;
+            } else if (getAsNpc().id() == VETION || getAsNpc().id() == VETION_REBORN) {
+                setHitpoints(1);
+            }
+        }
         if (hp() < 1 && !locked()) {
             die(hit);
         }

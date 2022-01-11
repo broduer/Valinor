@@ -2,7 +2,10 @@ package com.valinor.game.content.raids.theatre_of_blood;
 
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.dialogue.DialogueType;
+import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
@@ -15,8 +18,8 @@ import static com.valinor.game.world.position.AreaConstants.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.VERZIK_VITUR_8369;
 import static com.valinor.util.NpcIdentifiers.VERZIK_VITUR_8370;
-import static com.valinor.util.ObjectIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.TREASURE_ROOM;
+import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -127,25 +130,22 @@ public class Room extends Interaction {
             }
 
             if(object.getId() == SKELETON_32741) {
-                if (player.ownsAny(DAWNBRINGER)) {
-                    player.message("You've already found a Dawnbringer staff.");
-                } else {
-                    if(player.inventory().isFull()) {
-                        DialogueManager.sendStatement(player, "Your inventory is too full to do this.");
-                        return true;
-                    }
-                    player.inventory().add(new Item(DAWNBRINGER));
-                    player.message("You have found the Dawnbringer!");
+                boolean alreadyHas = player.getEquipment().contains(DAWNBRINGER) || player.inventory().contains(DAWNBRINGER);
+                if(alreadyHas) {
+                    DialogueManager.sendStatement(player, "You already have a dawnbringer.");
+                    return true;
                 }
+                if (player.inventory().isFull()) {
+                    DialogueManager.sendStatement(player, "Your inventory is too full to do this.");
+                    return true;
+                }
+                player.inventory().add(new Item(DAWNBRINGER));
+                player.message("You have found the Dawnbringer!");
                 return true;
             }
 
             if(object.getId() == TREASURE_ROOM) {
-                if (party.verzikViturDead()) {
-                    player.teleport(3237, 4307, party.getHeight());
-                } else {
-                    player.message("You must defeat Verzik before progressing!");
-                }
+                player.teleport(3237, 4307, party.getHeight());
                 return true;
             }
 
@@ -163,6 +163,7 @@ public class Room extends Interaction {
                 if (player.getRaids() != null) {
                     player.getRaids().exit(player);
                 }
+                TheatreOfBloodRewards.withdrawReward(player);
                 unlockCape(player);
                 return true;
             }
@@ -184,7 +185,21 @@ public class Room extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if(npc.id() == VERZIK_VITUR_8369) {
-                npc.transmog(VERZIK_VITUR_8370);
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... parameters) {
+                        send(DialogueType.NPC_STATEMENT, VERZIK_VITUR_8369, Expression.CALM_TALK, "Now that was quite the show! I haven't been that", "entertained in a long time.");
+                        setPhase(0);
+                    }
+
+                    @Override
+                    protected void next() {
+                        if(isPhase(0)) {
+                            npc.transmog(VERZIK_VITUR_8370);
+                            stop();
+                        }
+                    }
+                });
                 return true;
             }
         }

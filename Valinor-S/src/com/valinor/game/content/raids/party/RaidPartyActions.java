@@ -3,7 +3,6 @@ package com.valinor.game.content.raids.party;
 import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets;
 import com.valinor.game.content.raids.chamber_of_xeric.ChamberOfXerics;
-import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.party.dialogue.PartyDialogue;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
 import com.valinor.game.content.syntax.EnterSyntax;

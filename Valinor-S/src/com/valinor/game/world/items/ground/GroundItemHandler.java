@@ -20,8 +20,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
-import static com.valinor.util.ItemIdentifiers.SARADOMIN_CAPE;
-import static com.valinor.util.ItemIdentifiers.ZAMORAK_CAPE;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * A handler for a collection of {@link GroundItem}s
@@ -198,7 +197,9 @@ public final class GroundItemHandler {
 
         boolean illegalItem = false;
 
-        if((item.getItem().getId() >= SARADOMIN_CAPE && item.getItem().getId() <= ZAMORAK_CAPE) && item.vanishes()) {
+        List<Integer> ILLEGAL_ITEMS = Arrays.asList(DAWNBRINGER, SARADOMIN_CAPE, GUTHIX_CAPE, ZAMORAK_CAPE);
+
+        if(ILLEGAL_ITEMS.stream().anyMatch(i -> i == item.getItem().getId()) && item.vanishes()) {
             illegalItem = true;
         }
 

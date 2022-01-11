@@ -619,6 +619,8 @@ public final class Equipment extends ItemContainer {
             Autocasting.setAutocast(player, CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
             Autocasting.setAutocast(player, CombatSpells.SANGUINESTI_STAFF.getSpell());
+        } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
+            Autocasting.setAutocast(player, CombatSpells.DAWNBRINGER.getSpell());
         } else {
             //Otherwise always reset autocast when switching weapon
             Autocasting.setAutocast(player, null);
@@ -749,6 +751,8 @@ public final class Equipment extends ItemContainer {
             player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.HOLY_SANGUINESTI_STAFF)) {
             player.getCombat().setAutoCastSpell(CombatSpells.SANGUINESTI_STAFF.getSpell());
+        } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
+            player.getCombat().setAutoCastSpell(CombatSpells.DAWNBRINGER.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND)) {
             player.getCombat().setCastSpell(CombatSpells.CRUCIATUS_CURSE.getSpell());
         }

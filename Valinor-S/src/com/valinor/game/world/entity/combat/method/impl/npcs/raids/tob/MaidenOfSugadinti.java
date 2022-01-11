@@ -94,7 +94,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
         };
 
         Projectile projectile = new Projectile(mob, target, 1578, 0, 100, 50, 25, 0);
-        handleDodgableAttack(mob, target, CombatType.MAGIC, projectile, new Graphic(1576), World.getWorld().random(5, 25), task);
+        handleDodgableAttack(mob, target, projectile, new Graphic(1576), World.getWorld().random(5, 25),4, task);
     }
 
     /**
