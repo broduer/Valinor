@@ -1,5 +1,6 @@
 package com.valinor.game.world.items.ground;
 
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
@@ -12,6 +13,8 @@ import com.valinor.game.world.position.Tile;
  *
  */
 public final class GroundItem {
+
+    public GameMode droppedFromGamemode;
 
     public enum State {
         SEEN_BY_OWNER,
@@ -71,6 +74,8 @@ public final class GroundItem {
         this.item = item;
         this.tile = tile;
         this.player = owner;
+        if (owner != null)
+            this.droppedFromGamemode = owner.gameMode();
 
         if (owner == null) {
             broadcasted = true;

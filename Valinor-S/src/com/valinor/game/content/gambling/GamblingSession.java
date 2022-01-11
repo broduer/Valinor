@@ -286,6 +286,17 @@ public class GamblingSession {
             return;
         }
 
+        // Pvp mode? fuck off lol!!
+        if (player.gameMode() == GameMode.INSTANT_PKER && requestee.gameMode() != GameMode.INSTANT_PKER) {
+            player.message("You cannot gamble "+requestee.getUsername()+" you are a Instant Pker.");
+            return;
+        }
+
+        if (requestee.gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
+            player.message("You cannot gamble "+requestee.getUsername()+" they are playing as an Instant Pker.");
+            return;
+        }
+
         if (requestee.gameMode() != GameMode.NONE) {
             player.message("That player is an ironman and can not gamble.");
             return;

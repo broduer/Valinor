@@ -24,7 +24,8 @@ public class BankObjects extends Interaction {
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject obj) {
-        final boolean bank = obj.getId() == OPEN_CHEST_3194 || obj.definition().name.equalsIgnoreCase("Bank booth") || obj.definition().name.equalsIgnoreCase("Bank chest") || obj.definition().name.equalsIgnoreCase("Grand Exchange booth");
+        final String name = obj.definition().name;
+        final boolean bank = obj.getId() == OPEN_CHEST_3194 || name.toLowerCase().contains("bank booth") || name.toLowerCase().contains("bank chest") || name.toLowerCase().contains("grand exchange booth");
         if (bank) {
             int itemid = player.getAttribOr(AttributeKey.ITEM_ID, -1);
             int slot = player.getAttribOr(AttributeKey.ITEM_SLOT, -1);

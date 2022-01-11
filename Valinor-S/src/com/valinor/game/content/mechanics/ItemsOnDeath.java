@@ -387,6 +387,7 @@ public class ItemsOnDeath {
                 GroundItem g = new GroundItem(item, player.tile(), theKiller);
                 GroundItemHandler.createGroundItem(g);
                 g.pkedFrom(player.getUsername()); // Mark item as from PvP to avoid ironmen picking it up.
+                g.droppedFromGamemode = player.gameMode();
             }
             outputDrop.add(item);
         });

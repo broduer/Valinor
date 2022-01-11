@@ -53,6 +53,7 @@ import com.valinor.game.world.entity.mob.Direction;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -712,6 +713,17 @@ public class CombatFactory {
             if(other.isPlayer()) {
                 if (WildernessArea.isAtWildernessLimitForMac(entity.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You are double logging and cannot attack other players.");
+                    return false;
+                }
+
+                // Pvp mode? fuck off lol!!
+                if (player.gameMode() == GameMode.INSTANT_PKER && entity.getAsPlayer().gameMode() != GameMode.INSTANT_PKER) {
+                    player.message("You cannot attack "+entity.getAsPlayer().getUsername()+" you are a Instant Pker.");
+                    return false;
+                }
+
+                if (entity.getAsPlayer().gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
+                    player.message("You cannot attack "+entity.getAsPlayer().getUsername()+" they are playing as an Instant Pker.");
                     return false;
                 }
             }

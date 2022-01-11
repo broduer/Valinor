@@ -293,7 +293,7 @@ public final class GroundItemHandler {
             //System.out.println("different_owner "+different_owner+" groundItemPked "+groundItemPked);
 
             // Ironman checks (if it's not a respawning item)
-            if (player.gameMode() != GameMode.NONE) {
+            if (player.gameMode() != GameMode.NONE && player.gameMode() != GameMode.INSTANT_PKER) {
                 if (different_owner && !groundItemPked) { // Owner different? It could be pked!
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");
                     return;
@@ -301,6 +301,16 @@ public final class GroundItemHandler {
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");
                     return;
                 }
+            }
+
+            if (player.gameMode() == GameMode.INSTANT_PKER && groundItem.droppedFromGamemode != GameMode.INSTANT_PKER) {
+                player.message("You're an Instant pker, so you can't take items that other players have dropped.");
+                return;
+            }
+
+            if (player.gameMode() != GameMode.INSTANT_PKER && groundItem.droppedFromGamemode == GameMode.INSTANT_PKER) {
+                player.message("You're an Instant pker, so you can't take items that other players have dropped.");
+                return;
             }
 
             if (different_owner && Dueling.in_duel(player)) {

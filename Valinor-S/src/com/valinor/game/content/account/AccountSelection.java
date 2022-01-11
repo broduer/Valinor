@@ -203,6 +203,7 @@ public class AccountSelection extends Interaction {
                     player.skills().update();
                     player.skills().recalculateCombat();
                 }
+                player.putAttrib(AttributeKey.COMBAT_MAXED,true);
             }
         }
 

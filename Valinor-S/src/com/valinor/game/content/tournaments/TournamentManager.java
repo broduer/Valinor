@@ -70,7 +70,7 @@ public class TournamentManager extends Interaction {
                 return true;
             } else if (gameObject.getId() == EXIT_PORTAL_27096 && player.getTournamentOpponent() == null) {
                 player.debugMessage("lets leave lobby");
-                leaveLobby(player);
+                leaveTourny(player,false,true);
                 return true;
             }
             return false;

@@ -37,7 +37,7 @@ public class ObjectActions {
         final String name = object.definition().name;
         Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
 
-        final boolean bank = object.getId() == OPEN_CHEST_3194 || name.equalsIgnoreCase("Bank booth") || name.equalsIgnoreCase("Bank chest") || name.equalsIgnoreCase("Grand Exchange booth");
+        final boolean bank = object.getId() == OPEN_CHEST_3194 || name.toLowerCase().contains("bank booth") || name.toLowerCase().contains("bank chest") || name.toLowerCase().contains("grand exchange booth");
         if (clickAction == 1) {
             if(name.equalsIgnoreCase("Bank deposit box")) {
                 player.getDepositBox().open();
