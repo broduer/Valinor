@@ -15,9 +15,9 @@ import com.valinor.game.world.entity.NodeType;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorilla;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
 import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
@@ -470,6 +470,16 @@ public class Npc extends Mob {
                 //Handle combat
                 accumulateRuntimeTo(() -> {
                     getCombat().process();
+
+                    if(combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
+                        if(getCombatMethod() != null) {
+                            if (getCombatMethod() instanceof CommonCombatMethod) {
+                                CommonCombatMethod method = (CommonCombatMethod) getCombatMethod();
+                                method.set(this, null);
+                            }
+                            getCombatMethod().process(this, null);
+                        }
+                    }
 
                     // Process areas..
                     ControllerManager.process(this);

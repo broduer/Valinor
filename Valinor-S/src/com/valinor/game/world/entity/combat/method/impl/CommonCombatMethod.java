@@ -62,7 +62,11 @@ public abstract class CommonCombatMethod implements CombatMethod {
         ArrayList<Mob> possibleTargets = new ArrayList<>();
         if (players) {
             for (Player player : World.getWorld().getPlayers()) {
-                if (player == null || player.dead() || player.tile().distance(mob.getCentrePosition()) > ratio) {
+                if (player == null || player.dead() || player
+                    .tile()
+                    .distance(
+                        mob
+                            .getCentrePosition()) > ratio) {
                     continue;
                 }
                 possibleTargets.add(player);

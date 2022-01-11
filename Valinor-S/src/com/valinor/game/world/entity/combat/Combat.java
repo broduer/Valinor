@@ -240,16 +240,6 @@ public class Combat {
         // Handle attacking
         performNewAttack();
 
-        // Process combat scripts
-        if (mob.isNpc() && target != null) {
-            Npc npc = mob.getAsNpc();
-            if(npc.combatInfo() != null && npc.combatInfo().scripts != null && npc.combatInfo().scripts.combat_ != null) {
-                if(npc.getCombatMethod() != null) {
-                    npc.getCombatMethod().process(mob, target);
-                }
-            }
-        }
-
         if (mob.isPlayer() && target != null) {
             mob.getAsPlayer().getPacketSender().sendEntityFeed(target.getMobName(), target.hp(), target.maxHp());
         } else if (mob.isPlayer() && target == null) {
