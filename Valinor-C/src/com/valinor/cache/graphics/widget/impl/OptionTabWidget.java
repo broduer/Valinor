@@ -66,7 +66,7 @@ public class OptionTabWidget extends Widget {
         /* Advanced options */
         hoverButton(ADVANCED_OPTIONS, "Configure <col=ff9040>Advanced options", 605, 605, "Advanced options", font, 1, 0xff981f, 0xffffff, true);
 
-        slider(ZOOM_SLIDER, 0, 1100, 606, 615);
+        slider(ZOOM_SLIDER, 0, 1300, 606, 615);
 
         addConfigButton(BRIGHTNESS_STATE_ONE, 904, 397, 393, "Adjust Screen Brightness", 166, 1, OPTION_OK);
 

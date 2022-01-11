@@ -416,8 +416,8 @@ public class GameApplet extends Canvas implements Runnable, MouseListener, Mouse
                     Client.zoom_distance = max_zoom_1;
                 }
 
-                if (Client.zoom_distance > 1100) {
-                    Client.zoom_distance = 1100;
+                if (Client.zoom_distance > 1300) {
+                    Client.zoom_distance = 1300;
                 }
                 if (Client.zoom_distance < 0) {
                     Client.zoom_distance = 0;
