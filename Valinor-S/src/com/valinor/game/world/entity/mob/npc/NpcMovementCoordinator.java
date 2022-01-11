@@ -34,7 +34,7 @@ public class NpcMovementCoordinator {
     }
 
     public void process() {
-        if (npc.def().ispet)
+        if (npc.def().ispet || npc.neverWalkHome())
             return;
 
         //Only debug if enabled, string concatenation in large loops is expensive.
@@ -106,10 +106,6 @@ public class NpcMovementCoordinator {
                 }
                 if (CombatFactory.inCombat(npc)) {
                     Debugs.NPC_RETREAT.debug(npc, "combat block", npc.getCombat().getTarget(), true);
-                    return;
-                }
-                if(npc.neverWalkHome()) {
-                    Debugs.NPC_RETREAT.debug(npc, "never walk home", npc.getCombat().getTarget(), true);
                     return;
                 }
                 npc.getRouteFinder().routeAbsolute(npc.spawnTile().x, npc.spawnTile().y);

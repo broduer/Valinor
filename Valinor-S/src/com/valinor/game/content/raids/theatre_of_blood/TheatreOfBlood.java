@@ -208,6 +208,7 @@ public class TheatreOfBlood extends Raids {
         Npc maiden = new RaidsNpc(THE_MAIDEN_OF_SUGADINTI, new Tile(3162, 4444, party.getHeight()), party.getSize()).spawn(false);
         maiden.neverWalkHome(true);
         Npc bloat = new RaidsNpc(PESTILENT_BLOAT, new Tile(3299, 4440, party.getHeight()), party.getSize()).spawn(false);
+        bloat.noRetaliation(true);
         bloat.neverWalkHome(true);
         bloat.resetFaceTile();
         Npc vasilias = new RaidsNpc(NYLOCAS_VASILIAS_8355, new Tile(3293, 4246, party.getHeight()), party.getSize()).spawn(false);
