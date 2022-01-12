@@ -516,7 +516,7 @@ public class TradingPost {
 
             list.sort(Comparator.comparingLong(TradingPostListing::getTimeListed));
             Collections.reverse(list);
-            //System.out.println("display "+Arrays.toString(list.stream().map(e -> e.getSaleItem().unnote().name()+"by "+e.getSellerName()+", ").toArray()));
+            //System.out.println("display "+Arrays.toString(list.stream().map(e -> e.getSaleItem().unnote().name()+" by "+e.getSellerName()+", ").toArray()));
             player.putAttrib(RECENT_LISTING_RESULTS, list);
             player.putAttrib(TRADING_POST_RECENT_PAGE, 1);
             displayRecentPage(player, list);
@@ -990,6 +990,20 @@ public class TradingPost {
             if (selected.getRemaining() == 0) {
                 player.message("<col=ff0000>This offer has already been purchased by another player.");
                 return false;
+            }
+
+            Optional<Player> seller = World.getWorld().getPlayerByName(selected.getSellerName());
+
+            if(seller.isPresent()) {
+                if (player.gameMode() == GameMode.INSTANT_PKER && seller.get().gameMode() != GameMode.INSTANT_PKER) {
+                    player.message("<col=ff0000>You cannot buy items from a different game mode.");
+                    return false;
+                }
+
+                if (player.gameMode() != GameMode.INSTANT_PKER && seller.get().gameMode() == GameMode.INSTANT_PKER) {
+                    player.message("<col=ff0000>You cannot buy items from a different game mode.");
+                    return false;
+                }
             }
 
             player.putAttrib(AttributeKey.TRADING_POST_ORIGINAL_AMOUNT, selected.getRemaining());

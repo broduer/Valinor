@@ -14,5 +14,21 @@
     "buyersInfo": [
       "Test"
     ]
+  },
+  {
+    "sellerName": "pvp",
+    "lastBuyerName": "Patrick",
+    "saleItem": {
+      "id": 11802,
+      "amount": 1
+    },
+    "price": 1,
+    "timeListed": 1641929118519,
+    "amountSold": 1,
+    "profit": 1,
+    "transactionTime": 1641929146713,
+    "buyersInfo": [
+      "Patrick"
+    ]
   }
 ]
