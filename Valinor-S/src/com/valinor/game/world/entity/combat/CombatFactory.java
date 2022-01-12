@@ -25,7 +25,6 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MagicCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.MeleeCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.RangedCombatMethod;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Sleepwalker;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.bandos.Graardor;
@@ -175,7 +174,7 @@ public class CombatFactory {
              */
 
             int wep = p.getEquipment().getId(3);
-            boolean specialWeapons = wep == ELDRITCH_NIGHTMARE_STAFF || wep == VOLATILE_NIGHTMARE_STAFF || wep == DRAGON_THROWNAXE || wep == DRAGON_THROWNAXE_21207;
+            boolean specialWeapons = wep == ELDRITCH_NIGHTMARE_STAFF || wep == VOLATILE_NIGHTMARE_STAFF || wep == DRAGON_THROWNAXE || wep == DRAGON_THROWNAXE_21207 || wep == DAWNBRINGER;
 
             // check spec activated on NMS staff.
             if (specialWeapons && p.isSpecialActivated()) {
@@ -1070,8 +1069,22 @@ public class CombatFactory {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.KALPHITE_QUEEN_6501 && hit.getCombatType() == CombatType.MELEE) {
-                    hit.setDamage(0);
+                if(npc.id() == NYLOCAS_VASILIAS_8355 && hit.getCombatType() != CombatType.MAGIC && hit.getDamage() > 0) {
+                    npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
+                    int recoilDamage = (int) (hit.getDamage() * 0.75);
+                    player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
+                }
+
+                if(npc.id() == NYLOCAS_VASILIAS_8356 && hit.getCombatType() != CombatType.RANGED && hit.getDamage() > 0) {
+                    npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
+                    int recoilDamage = (int) (hit.getDamage() * 0.75);
+                    player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
+                }
+
+                if(npc.id() == NYLOCAS_VASILIAS_8357 && hit.getCombatType() != CombatType.MELEE && hit.getDamage() > 0) {
+                    npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
+                    int recoilDamage = (int) (hit.getDamage() * 0.75);
+                    player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
                 if (npc.id() == VANGUARD_7527 && hit.getCombatType() != CombatType.MELEE) {

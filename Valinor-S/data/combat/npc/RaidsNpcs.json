@@ -305,7 +305,6 @@
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob.VerzikVitur",
-      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.raids.VerzikViturDroptable",
       "aggression": "com.valinor.game.world.entity.mob.npc.aggressive.RaidsAgro"
     }
   },

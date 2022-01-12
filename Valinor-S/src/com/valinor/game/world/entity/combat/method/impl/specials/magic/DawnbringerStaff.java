@@ -3,6 +3,7 @@ package com.valinor.game.world.entity.combat.method.impl.specials.magic;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
+import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
@@ -33,6 +34,9 @@ public class DawnbringerStaff extends CommonCombatMethod {
                 int damage = World.getWorld().random(75, 150);
                 Hit hit = target.hit(mob, damage, 3, CombatType.MAGIC).checkAccuracy();
                 hit.submit();
+
+                //Drain spec after the attack
+                CombatSpecial.drain(mob, CombatSpecial.DAWNBRINGER.getDrainAmount());
             }
         }
     }

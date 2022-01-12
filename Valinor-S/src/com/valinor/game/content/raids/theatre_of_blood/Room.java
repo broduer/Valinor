@@ -163,16 +163,11 @@ public class Room extends Interaction {
                 if (player.getRaids() != null) {
                     player.getRaids().exit(player);
                 }
-                TheatreOfBloodRewards.withdrawReward(player);
                 unlockCape(player);
                 return true;
             }
 
             if(object.getId() == MONUMENTAL_CHEST) {
-                if (player.getRaidRewards().isEmpty()) {
-                    player.message(Color.RED.wrap("You have already looted the chest, or your points are below 10,000."));
-                    return true;
-                }
                 TheatreOfBloodRewards.displayRewards(player);
                 TheatreOfBloodRewards.withdrawReward(player);
                 return true;

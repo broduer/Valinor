@@ -12,6 +12,19 @@
       "profit": 0,
       "transactionTime": 0,
       "buyersInfo": []
+    },
+    {
+      "sellerName": "patrick",
+      "saleItem": {
+        "id": 4151,
+        "amount": 1
+      },
+      "price": 1,
+      "timeListed": 1641929360916,
+      "amountSold": 0,
+      "profit": 0,
+      "transactionTime": 0,
+      "buyersInfo": []
     }
   ]
 }

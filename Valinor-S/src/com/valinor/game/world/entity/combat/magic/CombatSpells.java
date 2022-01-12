@@ -4356,9 +4356,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            var tile = cast.tile();
-            var tileDist = tile.distance(castOn.tile());
-            return Optional.of(new Projectile(cast, castOn, 1547, (9 * tileDist), 45, 10, 0, 0));
+            return Optional.of(new Projectile(cast, castOn, 1547, 0, 40, 10, 50, 0));
         }
 
         @Override

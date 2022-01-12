@@ -10,7 +10,11 @@ import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.timers.TimerKey;
+
+import static com.valinor.util.NpcIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -18,8 +22,8 @@ import com.valinor.util.timers.TimerKey;
  */
 public class NylocasVasilias extends CommonCombatMethod {
 
-    private Form form = new Form(8355, CombatType.MELEE, CombatType.MAGIC);
-    private static final int MELEE_ANIM = 7989, MAGIC_ANIM = 7989, RANGED_ANIM = 7999;
+    private Form form = new Form(NYLOCAS_VASILIAS_8355, CombatType.MELEE, CombatType.MAGIC);
+    private static final int MELEE_ANIM = 8004, MAGIC_ANIM = 7989, RANGED_ANIM = 7999;
     private int attacks = 0;
 
     @Override
@@ -28,20 +32,20 @@ public class NylocasVasilias extends CommonCombatMethod {
         var tileDist = mob.tile().transform(1, 1, 0).distance(target.tile());
         var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
         switch (mob.getAsNpc().id()) {
-            case 8356:
+            case NYLOCAS_VASILIAS_8356:
                 if (target.isPlayer()) {
                     mob.animate(MAGIC_ANIM);
                     new Projectile(mob, target, 1580, 20, 12 * tileDist, 25, 30, 0).sendProjectile();
                     target.hit(mob, damage, delay, CombatType.MAGIC).checkAccuracy().submit();
                 }
                 break;
-            case 8355:
+            case NYLOCAS_VASILIAS_8355:
                 if (target.isPlayer()) {
                     mob.animate(MELEE_ANIM);
                     target.hit(mob, damage, 2, CombatType.MELEE).checkAccuracy().submit();
                 }
                 break;
-            case 8357:
+            case NYLOCAS_VASILIAS_8357:
                 if (target.isPlayer()) {
                     mob.animate(RANGED_ANIM);
                     new Projectile(mob, target, 1560, 20, 12 * tileDist, 25, 30, 0).sendProjectile();
@@ -83,14 +87,6 @@ public class NylocasVasilias extends CommonCombatMethod {
         mob.getTimers().cancel(TimerKey.FROZEN);
     }
 
-    @Override
-    public void onHit(Mob npc, Mob player, Hit hit) {
-        if (form.getStyle() != hit.getCombatType() && hit.getDamage() > 0) {
-            hit.setSplatType(SplatType.NPC_HEALING_HITSPLAT);
-            hit.setDamage((int) (hit.getDamage() * 0.75));
-        }
-    }
-
     /**
      * Checks if vasilia can tranform again.
      */
@@ -102,10 +98,9 @@ public class NylocasVasilias extends CommonCombatMethod {
         Form next = form;
         while (next.getId() == form.getId()) {
             next = switch (World.getWorld().random(0, 2)) {
-                case 0 -> new Form(8355, CombatType.MELEE, CombatType.MAGIC);
-                case 1 -> new Form(8356, CombatType.MAGIC, CombatType.RANGED);
-                case 2 -> new Form(8357, CombatType.RANGED, CombatType.MELEE);
-                default -> new Form(8355, CombatType.MELEE, CombatType.MAGIC);
+                case 1 -> new Form(NYLOCAS_VASILIAS_8356, CombatType.MAGIC, CombatType.RANGED);
+                case 2 -> new Form(NYLOCAS_VASILIAS_8357, CombatType.RANGED, CombatType.MELEE);
+                default -> new Form(NYLOCAS_VASILIAS_8355, CombatType.MELEE, CombatType.MAGIC);
             };
         }
         return next;

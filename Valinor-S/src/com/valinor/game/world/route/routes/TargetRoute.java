@@ -87,7 +87,7 @@ public class TargetRoute {
             int targetSize = target.getSize();
             if(!inTarget(absX, absY, size, targetX, targetY, targetSize) &&
                 inRange(absX, absY, size, targetX, targetY, targetSize, distance) &&
-                ((target.isNpc() && target.getAsNpc().id() == 7706)|| ProjectileRoute.allow(absX, absY, entity.getZ(), size, targetX, targetY, targetSize))) { // TODO: nick: look into projectile clipping so the zuk(inferno boss) exception is not required?
+                ((target.isNpc() && target.getAsNpc().id() == 7706 || target.getAsNpc().id() == 8370)|| ProjectileRoute.allow(absX, absY, entity.getZ(), size, targetX, targetY, targetSize))) { // TODO: nick: look into projectile clipping so the zuk(inferno boss) exception is not required?
                 withinDistance = true;
                 entity.getMovement().reset();
             }

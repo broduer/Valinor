@@ -23,12 +23,6 @@ import java.util.List;
  */
 public class PestilentBloat extends CommonCombatMethod {
 
-    //The issue is the walking, the entire script is based on movement
-    //I think I did not convert "npc.setNeverWalkHome(true);" properly, because I feel like something
-    // is up there, it tries to move but goes back to same tile whole time
-
-    //^my findings good idea
-
     private static final Tile[] corners = {
         new Tile(3288, 4440), //bottom left
         new Tile(3288, 4451), //top left
@@ -124,6 +118,7 @@ public class PestilentBloat extends CommonCombatMethod {
             }
         } else {
             if (isStopped() && getStepsTillStop() <= 0 && !isSleeping()) {
+                mob.animate(SLEEPING);
                 damageReduction = false;
                 shutdown(mob);
             }
@@ -179,6 +174,7 @@ public class PestilentBloat extends CommonCombatMethod {
                         for (Tile loc : tiles) {
                             if (target.tile().equals(loc)) {
                                 target.hit(mob, World.getWorld().random(20, 30));
+                                target.stun(5);
                             }
                         }
                     }
@@ -197,7 +193,6 @@ public class PestilentBloat extends CommonCombatMethod {
      * Handles the sleeping bit
      */
     private void shutdown(Mob mob) {
-        mob.animate(SLEEPING);
         setSleeping(true);
         Task task = new Task("PestilentBloatShutdownTask", 1) {
 

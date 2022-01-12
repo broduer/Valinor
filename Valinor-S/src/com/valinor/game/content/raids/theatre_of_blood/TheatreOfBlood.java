@@ -22,6 +22,7 @@ import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
 import static com.valinor.util.ItemIdentifiers.DAWNBRINGER;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.CHEST_32758;
+import static com.valinor.util.ObjectIdentifiers.MONUMENTAL_CHEST;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -243,10 +244,12 @@ public class TheatreOfBlood extends Raids {
         GameObject chest2 = new GameObject(CHEST_32758, new Tile(3303, 4277, party.getHeight()), 10, 5).spawn(); //Vasilias
         GameObject chest3 = new GameObject(CHEST_32758, new Tile(3278, 4293, party.getHeight()), 10, 2).spawn(); //sotetseg
         GameObject chest4 = new GameObject(CHEST_32758, new Tile(3171, 4399, party.getHeight() + 1), 10, 5).spawn(); //xarpus
+        GameObject lootChest = new GameObject(MONUMENTAL_CHEST, new Tile(3233, 4319, party.getHeight()), 10, 0).spawn(); //loot chest
 
         party.objects.add(chest1);
         party.objects.add(chest2);
         party.objects.add(chest3);
         party.objects.add(chest4);
+        party.objects.add(lootChest);
     }
 }

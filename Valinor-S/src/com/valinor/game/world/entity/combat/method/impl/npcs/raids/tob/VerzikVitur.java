@@ -9,6 +9,7 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,6 +19,7 @@ import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Utils;
+import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import java.util.List;
@@ -55,7 +57,8 @@ public class VerzikVitur extends CommonCombatMethod {
                 }
                 final Tile t_tile = t.tile();
                 Projectile projectile = new Projectile(mob.tile().center(mob.getSize()).transform(-1,0), target.tile(), -1,1580, 220, 0, 100, 0,0);
-                handleDodgableAttack(mob, t, projectile, null, World.getWorld().random(1, 60), 7, new Task("VerzikViturPrepareAttackTask1", 1) {
+                int dmg = Prayers.usingPrayer(t, Prayers.PROTECT_FROM_MAGIC) ? World.getWorld().random(1, 60) : World.getWorld().random(1, 137);
+                handleDodgableAttack(mob, t, projectile, null, dmg, 7, new Task("VerzikViturPrepareAttackTask1", 1) {
                     int count = 0;
                     @Override
                     public void execute() {
@@ -63,7 +66,8 @@ public class VerzikVitur extends CommonCombatMethod {
                         if (count == 8) {
                             World.getWorld().tileGraphic(1582, t_tile,0,0);
                             Stream<Mob> ts = targets.stream().filter(n -> !n.equals(t) && n.tile().withinDistanceIgnoreHeight(t_tile, 1));
-                            ts.forEach(t -> t.hit(mob, World.getWorld().random(1, 60), 0, CombatType.MAGIC).setAccurate(false).checkAccuracy().submit());
+                            int dmg = Prayers.usingPrayer(t, Prayers.PROTECT_FROM_MAGIC) ? World.getWorld().random(1, 60) : World.getWorld().random(1, 137);
+                            ts.forEach(t -> t.hit(mob, dmg, 0, CombatType.MAGIC).setAccurate(false).checkAccuracy().submit());
                             stop();
                         }
                     }
@@ -269,8 +273,7 @@ public class VerzikVitur extends CommonCombatMethod {
         } else if (mob.getAsNpc().id() == VERZIK_VITUR_8374) {
             mob.getAsNpc().canAttack(false);
             mob.getAsNpc().transmog(VERZIK_VITUR_8375);
-            mob.getAsNpc().def(World.getWorld().definitions().get(NpcDefinition.class, VERZIK_VITUR_8375));
-            mob.heal(mob.maxHp());
+            Chain.bound(null).runFn(5, () -> World.getWorld().unregisterNpc(mob.getAsNpc()));
             GameObject gameObject = new GameObject(TREASURE_ROOM, new Tile(3167, 4324, mob.tile().level), 10,0);
             gameObject.spawn();
 
@@ -279,6 +282,12 @@ public class VerzikVitur extends CommonCombatMethod {
                 p.message("You have defeated Verzik Vitur!");
                 p.getCombat().reset();
             });
+
+            if (party != null) {
+                if (party.getLeader().getRaids() != null) {
+                    party.getLeader().getRaids().complete(party);
+                }
+            }
             return true;
         }
         return false;

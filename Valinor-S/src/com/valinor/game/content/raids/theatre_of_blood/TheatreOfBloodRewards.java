@@ -50,14 +50,6 @@ public class TheatreOfBloodRewards {
 
     public static void withdrawReward(Player player) {
         player.inventory().addOrBank(player.getRaidRewards().getItems());
-        for (Item item : player.getRaidRewards().getItems()) {
-            if (item == null)
-                continue;
-            if (uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-                World.getWorld().sendWorldMessage(worldMessage);
-            }
-        }
         player.getRaidRewards().clear();
 
         //Roll for pet
@@ -140,15 +132,6 @@ public class TheatreOfBloodRewards {
         //uniques
         int personalPoints = player.getAttribOr(AttributeKey.PERSONAL_POINTS, 0);
 
-        if (personalPoints <= 10_000) {//Can't get any loot if below 10,000 points
-            player.message("You need at least 10k points to get a drop from Raids.");
-            return;
-        }
-
-        if (personalPoints > 150_000) {
-            personalPoints = 150_000;
-        }
-
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);
         Player rare = null;
@@ -156,6 +139,8 @@ public class TheatreOfBloodRewards {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
             BOSSES.log(player, TOB_RAIDS_KEY, item);
+            String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+            World.getWorld().sendWorldMessage(worldMessage);
             Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "tob_reward");
             rare = player;
         }
