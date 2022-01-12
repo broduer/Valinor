@@ -34,7 +34,7 @@ public class Tile implements Cloneable {
         return region() == 4919;
     }
 
-    public static final Area EDGEVILE_WILDY = new Area(2993, 3523, 3124, 3597, 0);
+    public static final Area EDGEVILE_WILDY = new Area(2993, 3523, 3100, 3563, 0);
 
     public static final Area EDGEVILE_HOME_AREA = new Area(3069, 3464, 3129, 3524);
 

@@ -16,6 +16,8 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
+import com.valinor.game.world.position.Area;
+import com.valinor.game.world.position.Tile;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
@@ -37,6 +39,8 @@ public class AccuracyFormula {
 
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
+
+    public static double ATTACK_MOD_BASE = 16.;
 
     public static boolean doesHit(Mob entity, Mob enemy, CombatType style) {
         return doesHit(entity, enemy, style, 1);
@@ -570,6 +574,8 @@ public class AccuracyFormula {
             off_style = entity.getCombat().getFightType().getAttackType();
         }
 
+        boolean edgevilePking = entity.tile().inArea(Tile.EDGEVILE_WILDY);
+
         //determine effective attack
         switch (style) {
             case MELEE:
@@ -627,8 +633,9 @@ public class AccuracyFormula {
                 break;
         }
 
+        double aug_atk_mod = edgevilePking ? ATTACK_MOD_BASE : 64.;
         //determine augmented levels
-        augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / 64.)));
+        augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
         augmented_defence = Math.floor(((effective_defence + 8) * (1 + def_equipment_bonus / 64.)));
 
         //determine hit chance
@@ -637,6 +644,8 @@ public class AccuracyFormula {
         } else {
             hit_chance = 1. - ((augmented_defence + 1) / ((2*augmented_attack)));
         }
+
+        //System.out.println(edgevilePking);
 
         //System.out.println("hit chance +  " + hit_chance);
         switch (style) {
@@ -668,6 +677,9 @@ public class AccuracyFormula {
                 }
                 break;
         }
+
+        //String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
+        //System.out.println(msg);
 
         if (entity.isPlayer() && (boolean) GameServer.properties().logAccuracyChances) {
             String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",

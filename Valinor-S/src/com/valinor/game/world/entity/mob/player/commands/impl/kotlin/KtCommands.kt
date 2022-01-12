@@ -37,6 +37,7 @@ import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.Mob
 import com.valinor.game.world.entity.combat.CombatSpecial
 import com.valinor.game.world.entity.combat.CombatType
+import com.valinor.game.world.entity.combat.formula.AccuracyFormula
 import com.valinor.game.world.entity.combat.magic.MagicClickSpells
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath
 import com.valinor.game.world.entity.int
