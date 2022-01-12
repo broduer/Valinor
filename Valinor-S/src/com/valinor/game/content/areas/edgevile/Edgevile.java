@@ -142,7 +142,6 @@ public class Edgevile extends Interaction {
             }
 
             if (obj.getId() == WILDERNESS_DITCH) {
-                System.out.println("huh");
                 Chain.bound(null).runFn(1, () -> {
                     player.getMovementQueue().clear();
                     player.lock();
