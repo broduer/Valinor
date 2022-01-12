@@ -9,6 +9,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.masks.animations.Animation;
+import com.valinor.game.world.entity.mob.Direction;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,6 +19,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.NpcIdentifiers.*;
@@ -140,15 +142,18 @@ public class Edgevile extends Interaction {
             }
 
             if (obj.getId() == WILDERNESS_DITCH) {
-                player.getMovementQueue().clear();
-                player.lockDelayDamage();
-                if (player.getForceMovement() == null && player.getClickDelay().elapsed(2000)) {
+                System.out.println("huh");
+                Chain.bound(null).runFn(1, () -> {
+                    player.getMovementQueue().clear();
+                    player.lock();
+                    player.animate(6132);
+                    player.sound(2462);
                     final Tile crossDitch = new Tile(0, player.tile().getY() < 3522 ? 3 : -3);
                     TaskManager.submit(new ForceMovementTask(player, 3, new ForceMovement(player.tile().copy(), crossDitch, 0, 70, crossDitch.getY() == 3 ? 0 : 2)));
-                    player.animate(6132);
+                }).then(2, () -> {
                     player.getClickDelay().reset();
-                    TickableTask.runOnceTask(3, c -> player.unlock());
-                }
+                    player.unlock();
+                });
                 return true;
             }
 

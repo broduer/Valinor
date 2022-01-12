@@ -62,7 +62,7 @@ public final class ClientConstants {
     /**
      * Allow walking over the wilderness ditch
      */
-    public static final boolean WILDERNESS_DITCH_DISABLED = true;
+    public static final boolean WILDERNESS_DITCH_DISABLED = false;
 
     /**
      * If we want to hide the client version from players, set this to false.

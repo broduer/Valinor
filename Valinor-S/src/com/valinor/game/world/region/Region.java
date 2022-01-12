@@ -121,13 +121,13 @@ public class Region {
         if (clips[height] == null) {
             clips[height] = new int[64][64];
         }
-        // asuming xy is abs xy
-        if (x >= 2944 && x<= 3330 && y >= 3521 && y <= 3522) {
+        // assuming xy is abs xy
+        /*if (x >= 2944 && x<= 3330 && y >= 3521 && y <= 3522) {
             //System.out.println("clip change "+x+", "+y+", "+height+" by "+shift);
             if (shift == 262144 || shift == 256) {
                 return; // fuck wildy ditch
             }
-        }
+        }*/
         clips[height][x - regionAbsX][y - regionAbsY] |= shift;
     }
 

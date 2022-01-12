@@ -220,7 +220,6 @@ public final class ServerProperties {
         nifflerLootedWebHookUrl = "";
         lootingBagLootedWebHookUrl = "";
         lootingBagWithdrawnWebHookUrl = "";
-        wildernessDitchEnbabled = false;
         redirectOutStream = false;
         teleToMeInWildOk = false;
         teleToWildyPlayedDisabled = false;
@@ -602,11 +601,6 @@ public final class ServerProperties {
     public final String nifflerLootedWebHookUrl;
     public final String lootingBagLootedWebHookUrl;
     public final String lootingBagWithdrawnWebHookUrl;
-
-    /**
-     * Can we walk over the wilderness ditch.
-     */
-    public final boolean wildernessDitchEnbabled;
 
     public final boolean redirectOutStream;
 
