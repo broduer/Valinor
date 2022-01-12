@@ -1,6 +1,7 @@
 package com.valinor.game.world.items.container;
 
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.ItemIdentifiers;
@@ -1438,5 +1439,25 @@ public class ItemContainer implements Iterable<Item> {
 
     public void sync() {
 
+    }
+
+    public Item findItem(int id) {
+        return findItem(id, false);
+    }
+
+    public Item findItem(int id, boolean acceptNoted) {
+        for(Item item : items) {
+            if(item != null && (item.getId() == id || (acceptNoted && World.getWorld().definitions().get(ItemDefinition.class, id).notelink != -1 && item.getId() == World.getWorld().definitions().get(ItemDefinition.class, id).notelink)))
+                return item;
+        }
+        return null;
+    }
+
+    public Item findItem(int id, boolean acceptNoted, int attributeHash) {
+        for(Item item : items) {
+            if(item != null && (item.getId() == id || (acceptNoted && World.getWorld().definitions().get(ItemDefinition.class, id).notelink != -1 && item.getId() == World.getWorld().definitions().get(ItemDefinition.class, id).notelink)))
+                return item;
+        }
+        return null;
     }
 }

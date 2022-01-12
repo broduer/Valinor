@@ -36,7 +36,6 @@ public class Fletching extends Interaction {
 
     public static void load() {
         Arrow.load();
-        Bolt.load();
         Carvable.load();
         Crossbow.load();
         Featherable.load();
@@ -99,7 +98,7 @@ public class Fletching extends Interaction {
                 player.getPacketSender().sendInterfaceModel(8903, 170, fletchable.getFletchableItems()[1].getProduct().getId());
                 player.getPacketSender().sendInterfaceModel(8904, 170, fletchable.getFletchableItems()[2].getProduct().getId());
                 player.getPacketSender().sendInterfaceModel(8905, 170, fletchable.getFletchableItems()[3].getProduct().getId());
-                player.getPacketSender().sendString(8909, "<br> <br> <br> <br>".concat(fletchable.getFletchableItems()[0].getProduct().getAmount()+" Arrow Shafts"));
+                player.getPacketSender().sendString(8909, "<br> <br> <br> <br>".concat(fletchable.getFletchableItems()[0].getProduct().getAmount() + " Arrow Shafts"));
                 player.getPacketSender().sendString(8913, "<br> <br> <br> <br>".concat("Short Bow"));
                 player.getPacketSender().sendString(8917, "<br> <br> <br> <br>".concat("Long Bow"));
                 player.getPacketSender().sendString(8921, "<br> <br> <br> <br>".concat("Crossbow Stock"));
@@ -285,7 +284,7 @@ public class Fletching extends Interaction {
         player.getInterfaceManager().close();
 
         if (player.skills().level(Skills.FLETCHING) < item.getLevel()) {
-            DialogueManager.sendStatement(player,"<col=369>You need a Fletching level of " + item.getLevel() + " to do that.");
+            DialogueManager.sendStatement(player, "<col=369>You need a Fletching level of " + item.getLevel() + " to do that.");
             return;
         }
 
@@ -346,8 +345,8 @@ public class Fletching extends Interaction {
                 player.inventory().removeAll(fletchable.getIngediants());
                 player.inventory().add(item.getProduct());
 
-                if(fletchable.getName().equalsIgnoreCase("Carvable")) {
-                    if(item.getProduct().name().endsWith("(u)")) {
+                if (fletchable.getName().equalsIgnoreCase("Carvable")) {
+                    if (item.getProduct().name().endsWith("(u)")) {
                         AchievementsManager.activate(player, Achievements.FLETCHER, 1);
                     }
                 }
@@ -361,8 +360,8 @@ public class Fletching extends Interaction {
                     GroundItemHandler.createGroundItem(item);
                 }
 
-                if(fletchable.getName().equalsIgnoreCase("Stringable")) {
-                    if(item.getProduct().name().equalsIgnoreCase("Magic shortbow")) {
+                if (fletchable.getName().equalsIgnoreCase("Stringable")) {
+                    if (item.getProduct().name().equalsIgnoreCase("Magic shortbow")) {
                         player.getTaskBottleManager().increase(BottleTasks.MAGIC_SHORTBOW);
                     }
                 }
