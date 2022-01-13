@@ -965,9 +965,9 @@ public class NpcDeath {
             player.message(Color.RED.wrap("You've dealt " + hits.getDamage() + " damage to The Nightmare!"));
             // Only people nearby are rewarded. This is to avoid people 'poking' the boss to do some damage
             // without really risking being there.
-            if (mob.tile().isWithinDistance(player.tile(),10) && hits.getDamage() >= 500) {
+            if (mob.tile().isWithinDistance(player.tile(),10) && hits.getDamage() >= 100) {
                 if(mob instanceof Npc) {
-                    player.message("You received a drop roll from the table for dealing at least 500 damage!");
+                    player.message("You received a drop roll from the table for dealing at least 100 damage!");
                     Npc npc = mob.getAsNpc();
 
                     //Always log kill timers

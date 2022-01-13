@@ -129,6 +129,7 @@ public final class InteractionManager {
     public static boolean checkObjectInteraction(Player player, GameObject object, int type) {
         for (Interaction interaction : interactions) {
             if (interaction.handleObjectInteraction(player, object, type)) {
+                player.faceObj(object);
                 //System.out.println("checkObjectInteraction prints "+interaction.getClass().getSimpleName());
                 return true;
             }

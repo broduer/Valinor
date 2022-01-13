@@ -161,6 +161,10 @@ public enum Collection {
         //Drops
         new Item(LITTLE_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(JAR_OF_DREAMS)),
 
+    NEX(AttributeKey.NEX_KC, LogType.BOSSES, "Nex", new int[]{NpcIdentifiers.NEX, NpcIdentifiers.NEX_11279, NpcIdentifiers.NEX_11280, NpcIdentifiers.NEX_11281, NpcIdentifiers.NEX_11282}, AttributeKey.NEX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,5)},
+        //Drops
+        new Item(NEXLING), new Item(ANCIENT_HILT), new Item(NIHIL_HORN), new Item(ZARYTE_VAMBRACES), new Item(TORVA_FULL_HELM), new Item(TORVA_PLATEBODY), new Item(TORVA_PLATELEGS), new Item(NIHIL_SHARD)),
+
     SARACHNIS(AttributeKey.SARACHNIS, LogType.BOSSES, "Sarachnis", new int[]{NpcIdentifiers.SARACHNIS}, AttributeKey.SARACHNIS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
         new Item(SRARACHA), new Item(JAR_OF_EYES), new Item(GIANT_EGG_SACFULL), new Item(SARACHNIS_CUDGEL)),

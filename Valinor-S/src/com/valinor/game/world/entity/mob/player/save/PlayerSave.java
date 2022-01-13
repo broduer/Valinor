@@ -358,6 +358,7 @@ public class PlayerSave {
                 player.putAttrib(CALLISTOS_KILLED, details.callistosKilled);
                 player.putAttrib(KC_GIANTMOLE, details.molesKilled);
                 player.putAttrib(THE_NIGHTMARE_KC, details.nightmaresKilled);
+                player.putAttrib(NEX_KC, details.nexKilled);
                 player.putAttrib(KC_REX, details.rexKilled);
                 player.putAttrib(KC_PRIME, details.primeKilled);
                 player.putAttrib(KC_SUPREME, details.supremeKilled);
@@ -757,6 +758,7 @@ public class PlayerSave {
         private final int callistosKilled;
         private final int molesKilled;
         private final int nightmaresKilled;
+        private final int nexKilled;
         private final int rexKilled;
         private final int primeKilled;
         private final int supremeKilled;
@@ -1151,6 +1153,7 @@ public class PlayerSave {
             callistosKilled = Player.getAttribIntOr(player, CALLISTOS_KILLED, 0);
             molesKilled = Player.getAttribIntOr(player, KC_GIANTMOLE, 0);
             nightmaresKilled = Player.getAttribIntOr(player, THE_NIGHTMARE_KC, 0);
+            nexKilled = Player.getAttribIntOr(player, NEX_KC, 0);
             rexKilled = Player.getAttribIntOr(player, KC_REX, 0);
             primeKilled = Player.getAttribIntOr(player, KC_PRIME, 0);
             supremeKilled = Player.getAttribIntOr(player, KC_SUPREME, 0);

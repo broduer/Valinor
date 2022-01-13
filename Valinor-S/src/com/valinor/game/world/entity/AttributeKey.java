@@ -111,6 +111,7 @@ public enum AttributeKey {
     SKOTIZO_LOG_CLAIMED,
     TEKTON_LOG_CLAIMED,
     THERMONUCLEAR_SMOKE_DEVIL_LOG_CLAIMED,
+    NEX_LOG_CLAIMED,
     THE_NIGTHMARE_LOG_CLAIMED,
     SARACHNIS_LOG_CLAIMED,
     CORRUPTED_HUNLEFF_LOG_CLAIMED,
@@ -159,6 +160,8 @@ public enum AttributeKey {
     PROMO_CODE_CLAIMED("promo_code_claimed", AttribType.BOOLEAN),
 
     THE_NIGHTMARE_KC("the_nightmare_kc", AttribType.INTEGER),
+
+    NEX_KC("nex_kc", AttribType.INTEGER),
 
     USING_TRADING_POST("using_trading_post", AttribType.BOOLEAN),
 

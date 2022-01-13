@@ -1,8 +1,12 @@
 package com.valinor.game.content.areas.dungeons.godwars;
 
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.Interaction;
+
+import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex.NEX_AREA;
 
 public class BossRoomDoors extends Interaction {
 
@@ -45,6 +49,30 @@ public class BossRoomDoors extends Interaction {
                     player.teleport(2839, 5296, 2);
                 } else if (player.tile().y == 5296) {
                     player.teleport(2839, 5294, 2);
+                }
+                return true;
+            }
+
+            //Nex
+            if(obj.getId() == 42967) {
+
+                return true;
+            }
+        }
+
+        if(option == 2) {
+            if(obj.getId() == 42967) {
+
+                int count = 0;
+                for (Player p : World.getWorld().getPlayers()) {
+                    if (p != null && p.tile().inArea(NEX_AREA))
+                        count++;
+                }
+
+                if (count == 0) {
+                    DialogueManager.sendStatement(player, "You peek inside the barrier and see no adventurers inside.");
+                } else {
+                    DialogueManager.sendStatement(player, "You peek inside the barrier and see " + count + " adventurers inside.");
                 }
                 return true;
             }

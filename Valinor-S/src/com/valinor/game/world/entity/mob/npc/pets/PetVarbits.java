@@ -60,4 +60,6 @@ public class PetVarbits {
     public static final int UNLOCKED_PET_ALCHY = 12000;
     public static final int UNLOCKED_PET_SARACHNIS = 12001;
     public static final int UNLOCKED_PET_LIL_ZIK = 12002;
+    public static final int UNLOCKED_PET_LITTLE_NIGHTMARE = 12003;
+    public static final int UNLOCKED_PET_NEXLING = 12004;
 }

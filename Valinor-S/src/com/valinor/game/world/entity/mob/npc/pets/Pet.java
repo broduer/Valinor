@@ -8,6 +8,7 @@ import java.util.*;
 
 import static com.valinor.game.world.entity.mob.npc.pets.PetVarbits.*;
 import static com.valinor.util.NpcIdentifiers.LITTLE_NIGHTMARE_9399;
+import static com.valinor.util.NpcIdentifiers.NEXLING_PET;
 
 /**
  * Created by Bart on 2/18/2016.
@@ -23,7 +24,6 @@ public enum Pet {
     YOUNGLLEF(ItemIdentifiers.YOUNGLLEF, NpcIdentifiers.YOUNGLLEF,-1),
     CORRUPTED_YOUNGLLEF(ItemIdentifiers.CORRUPTED_YOUNGLLEF, NpcIdentifiers.CORRUPTED_YOUNGLLEF,-1),
     FAWKES_RECOLOR(CustomItemIdentifiers.FAWKES_32937, CustomNpcIdentifiers.FAWKES_15981,-1),
-    THE_NIGHTMARE(ItemIdentifiers.LITTLE_NIGHTMARE, LITTLE_NIGHTMARE_9399,-1),
     ELYSIAN_PET(CustomItemIdentifiers.RING_OF_ELYSIAN, CustomNpcIdentifiers.ELYSIAN_PET,-1),
     KERBEROS(CustomItemIdentifiers.KERBEROS_PET, CustomNpcIdentifiers.KERBEROS_PET,-1),
     SKORPIOS(CustomItemIdentifiers.SKORPIOS_PET, CustomNpcIdentifiers.SKORPIOS_PET,-1),
@@ -109,6 +109,8 @@ public enum Pet {
     IKKLE_HYDRA_BLACK(ItemIdentifiers.IKKLE_HYDRA_22752, NpcIdentifiers.IKKLE_HYDRA_8495, NpcIdentifiers.IKKLE_HYDRA,UNLOCKED_PET_ALCHY),
     SRARACHA(ItemIdentifiers.SRARACHA, NpcIdentifiers.SRARACHA, UNLOCKED_PET_SARACHNIS),
     LIL_ZIK(ItemIdentifiers.LIL_ZIK, NpcIdentifiers.LIL_ZIK, UNLOCKED_PET_LIL_ZIK),
+    THE_NIGHTMARE(ItemIdentifiers.LITTLE_NIGHTMARE, LITTLE_NIGHTMARE_9399,UNLOCKED_PET_LITTLE_NIGHTMARE),
+    NEXLING(ItemIdentifiers.NEXLING, NEXLING_PET, UNLOCKED_PET_NEXLING),
 
     //Random junk pets
     BABY_CHINCHOMPA_BLACK(ItemIdentifiers.BABY_CHINCHOMPA_13325, NpcIdentifiers.BABY_CHINCHOMPA_6758, NpcIdentifiers.BABY_CHINCHOMPA_6759, UNLOCKED_PET_CHINCHOMPA),

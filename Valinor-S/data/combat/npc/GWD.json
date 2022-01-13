@@ -1059,5 +1059,184 @@
       "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.GWDArmadylMinion",
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra"
     }
+  },
+  {
+    // Nex
+    "ids": [
+      11278, 11279, 11280, 11281, 11282
+    ],
+    "maxhit": 32,
+    "attackspeed": 4,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": true,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 24,
+      "strength": 24,
+      "defence": 24,
+      "hitpoints": 3400
+    },
+    "bonuses": {
+      "stabdefence": -7,
+      "slashdefence": -7,
+      "crushdefence": -7,
+      "rangeddefence": -7,
+      "magicdefence": -7
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": 167
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.GWDNex",
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex"
+    }
+  },
+  {
+    // Fumus
+    "ids": [
+      11283
+    ],
+    "maxhit": 29,
+    "attackspeed": 5,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": true,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 200,
+      "magic": 200,
+      "ranged": 1,
+      "hitpoints": 500
+    },
+    "bonuses": {
+      "stabdefence": 25,
+      "slashdefence": 100,
+      "crushdefence": 100,
+      "rangeddefence": 50,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Fumus"
+    }
+  },
+  {
+    // Umbra
+    "ids": [
+      11284
+    ],
+    "maxhit": 29,
+    "attackspeed": 5,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": true,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 200,
+      "magic": 200,
+      "ranged": 1,
+      "hitpoints": 500
+    },
+    "bonuses": {
+      "stabdefence": 100,
+      "slashdefence": 100,
+      "crushdefence": 100,
+      "rangeddefence": 25,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Umbra"
+    }
+  },
+  {
+    // Cruor
+    "ids": [
+      11285
+    ],
+    "maxhit": 29,
+    "attackspeed": 5,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": true,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 200,
+      "magic": 200,
+      "ranged": 1,
+      "hitpoints": 500
+    },
+    "bonuses": {
+      "stabdefence": 100,
+      "slashdefence": 25,
+      "crushdefence": 100,
+      "rangeddefence": 50,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Cruor"
+    }
+  },
+  {
+    // Glacies
+    "ids": [
+      11286
+    ],
+    "maxhit": 29,
+    "attackspeed": 5,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": true,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 200,
+      "magic": 200,
+      "ranged": 1,
+      "hitpoints": 500
+    },
+    "bonuses": {
+      "stabdefence": 100,
+      "slashdefence": 100,
+      "crushdefence": 25,
+      "rangeddefence": 50,
+      "magicdefence": 150
+    },
+    "animations": {
+      "attack": -1,
+      "block": -1,
+      "death": -1
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Glacies"
+    }
   }
 ]

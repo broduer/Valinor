@@ -48,7 +48,9 @@ public class BossTimers {
         "Giant Mole",
         "Alchemical Hydra",
         "Corrupted Nechryarch",
-        "TzTok-Jad"
+        "TzTok-Jad",
+        "Nex",
+        "The Nightmare"
     );
 
     private Map<String, Integer> times = new HashMap<>();
