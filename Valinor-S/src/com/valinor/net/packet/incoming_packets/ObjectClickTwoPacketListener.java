@@ -26,7 +26,7 @@ public class ObjectClickTwoPacketListener implements PacketListener {
     @Override
     public void handleMessage(Player player, Packet packet) {
         final int x = packet.readLEShortA();
-        final int id = packet.readUnsignedShort();
+        final int id = packet.readInt();
         final int y = packet.readUnsignedShortA();
 
         if (player == null || player.dead()) {

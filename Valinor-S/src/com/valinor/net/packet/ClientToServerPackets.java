@@ -358,7 +358,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[67] = -3;
         PACKET_SIZES[68] = -3;
         PACKET_SIZES[69] = -3;
-        PACKET_SIZES[70] = 6;
+        PACKET_SIZES[70] = 8;
         PACKET_SIZES[71] = -3;
         PACKET_SIZES[72] = 2;
         PACKET_SIZES[73] = 2;
@@ -419,7 +419,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[129] = 8;
         PACKET_SIZES[130] = 0;
         PACKET_SIZES[131] = 4;
-        PACKET_SIZES[132] = 6;
+        PACKET_SIZES[132] = 8;
         PACKET_SIZES[133] = -1;
         PACKET_SIZES[134] = -3;
         PACKET_SIZES[135] = 8;
@@ -515,7 +515,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[225] = -3;
         PACKET_SIZES[226] = -1;
         PACKET_SIZES[227] = -3;
-        PACKET_SIZES[228] = 6;
+        PACKET_SIZES[228] = 8;
         PACKET_SIZES[229] = -3;
         PACKET_SIZES[230] = 1;
         PACKET_SIZES[231] = -3;
@@ -539,7 +539,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[249] = 4;
         PACKET_SIZES[250] = -3;
         PACKET_SIZES[251] = -3;
-        PACKET_SIZES[252] = 6;
+        PACKET_SIZES[252] = 8;
         PACKET_SIZES[253] = 6;
         PACKET_SIZES[254] = -3;
         PACKET_SIZES[255] = -3;

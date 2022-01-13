@@ -84,7 +84,7 @@ public class ObjectClickOnePacketListener implements PacketListener {
     @Override
     public void handleMessage(Player player, Packet packet) {
         final int x = packet.readLEShortA();
-        final int id = packet.readUnsignedShort();
+        final int id = packet.readInt();
         final int y = packet.readUnsignedShortA();
         Tile tile = new Tile(x, y, player.tile().getLevel());
         Optional<GameObject> object = MapObjects.get(id, tile);

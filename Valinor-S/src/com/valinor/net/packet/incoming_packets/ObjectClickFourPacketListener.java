@@ -27,7 +27,7 @@ public class ObjectClickFourPacketListener implements PacketListener {
     @Override
     public void handleMessage(Player player, Packet packet) {
         final int x = packet.readLEShortA();
-        final int id = packet.readShortA();
+        final int id = packet.readInt();
         final int y = packet.readLEShortA();
 
         Tile tile = new Tile(x, y, player.tile().getLevel());

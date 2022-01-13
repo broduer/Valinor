@@ -394,14 +394,14 @@ public class PacketSender {
     public void sendObjectOption1(int x, int id, int y) {
         buffer.writeOpcode(132);
         buffer.writeLEShortA(x);
-        buffer.writeShort(id);
+        buffer.writeInt(id);
         buffer.writeShortA(y);
     }
 
     public void sendObjectOption2(int id, int y, int x) {
         buffer.writeOpcode(252);
         buffer.writeLEShortA(x);
-        buffer.writeShort(id);
+        buffer.writeInt(id);
         buffer.writeShortA(y);
     }
 
@@ -409,13 +409,13 @@ public class PacketSender {
         buffer.writeOpcode(70);
         buffer.writeLEShort(x);
         buffer.writeShort(y);
-        buffer.writeLEShortA(id);
+        buffer.writeInt(id);
     }
 
     public void sendObjectOption4(int x, int id, int y) {
         buffer.writeOpcode(228);
         buffer.writeLEShortA(x);
-        buffer.writeShortA(id);
+        buffer.writeInt(id);
         buffer.writeLEShortA(y);
     }
 

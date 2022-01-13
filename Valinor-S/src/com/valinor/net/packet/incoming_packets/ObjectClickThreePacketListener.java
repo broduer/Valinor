@@ -27,7 +27,7 @@ public class ObjectClickThreePacketListener implements PacketListener {
     public void handleMessage(Player player, Packet packet) {
         final int x = packet.readLEShort();
         final int y = packet.readShort();
-        final int id = packet.readLEShortA();
+        final int id = packet.readInt();
 
         if (player == null || player.dead()) {
             return;
