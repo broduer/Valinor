@@ -295,7 +295,7 @@ public class NpcDeath {
                     killer.getTaskBottleManager().increase(BottleTasks.GIANT_MOLE);
                 }
 
-                if (npc.def().name.contains("green dragon")) {
+                if (npc.def().name.toLowerCase().contains("green dragon")) {
                     DailyTaskManager.increase(DailyTasks.GREEN_DRAGONS, killer);
                 }
 
