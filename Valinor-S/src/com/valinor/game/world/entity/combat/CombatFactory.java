@@ -76,6 +76,7 @@ import java.util.*;
 
 import static com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets.LORD_VOLDEMORT;
 import static com.valinor.game.world.InterfaceConstants.BARROWS_REWARD_WIDGET;
+import static com.valinor.game.world.entity.AttributeKey.MAXHIT_OVERRIDE;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.KRAKEN_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.TENTACLE_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
@@ -255,6 +256,10 @@ public class CombatFactory {
             case MAGIC:
                 max_damage = attacker.getCombat().maximumMagicHit();
                 break;
+        }
+
+        if(attacker.isNpc() && attacker.<Integer>getAttribOr(MAXHIT_OVERRIDE, -1) != -1) {
+            max_damage = attacker.<Integer>getAttribOr(MAXHIT_OVERRIDE, -1);
         }
 
         int damage = Utils.inclusive(1, max_damage);
@@ -567,11 +572,10 @@ public class CombatFactory {
      * Checks if an entity can attack a target.
      *
      * @param entity The entity which wants to attack.
-     * @param method The combat type the attacker is using.
      * @param other  The victim.
      * @return True if attacker has the requirements to attack, otherwise false.
      */
-    public static boolean canAttack(Mob entity, CombatMethod method, Mob other) {
+    public static boolean canAttack(Mob entity, Mob other) {
         Debugs.CMB.debug(entity, "enter can attack", other, true);
 
         if (entity == null || other == null) {
@@ -586,6 +590,11 @@ public class CombatFactory {
 
         if (entity.getIndex() == -1 || other.getIndex() == -1) { // Target logged off.
             Debugs.CMB.debug(entity, "attacker or target logged off", other, true);
+            return false;
+        }
+
+        if (other instanceof Npc && ((Npc) other).cantInteract()) {
+            Debugs.CMB.debug(entity, "cant interact", other, true);
             return false;
         }
 
@@ -1038,6 +1047,10 @@ public class CombatFactory {
                 Player player = (Player) attacker;
                 if (player.getCombat() == null) return; // should never happen lol
 
+                if (npc.capDamage() != -1 && hit.getDamage() > npc.capDamage()) {
+                    hit.setDamage(npc.capDamage());
+                }
+
                 if(npc.id() == SKOTIZO) {
                     hit.setDamage(player.getSkotizoInstance().damageReducctionEffect(player, hit.getDamage()));
                 }
@@ -1439,7 +1452,7 @@ public class CombatFactory {
                 boolean mayAttack = true;
 
                 // Check attackability
-                if (!canAttack(attacker, getMethod(attacker), target)) {
+                if (!canAttack(attacker, target)) {
                     mayAttack = false;
                     attacker.getCombat().reset();//Can't attack, reset combat
                 }

@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    MAXHIT_OVERRIDE,
+
     EXP_LAMP_WARNING_SENT("exp_lamp_warning_sent", AttribType.BOOLEAN),
 
     EXP_LAMP_USED("exp_lamp_used", AttribType.BOOLEAN),
