@@ -5,6 +5,10 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    EXP_LAMP_WARNING_SENT("exp_lamp_warning_sent", AttribType.BOOLEAN),
+
+    EXP_LAMP_USED("exp_lamp_used", AttribType.BOOLEAN),
+
     /**
      * Personal points that you can use to purchase supplies during the raid
      */

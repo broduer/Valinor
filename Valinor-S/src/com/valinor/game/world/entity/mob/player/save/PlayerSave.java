@@ -565,6 +565,8 @@ public class PlayerSave {
                 player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
                 player.putAttrib(KYLIE_MINNOW_DIALOGUE_STARTED, details.kylieMinnowDialogueStarted);
                 player.putAttrib(BAGGED_COAL, details.baggedCoal);
+                player.putAttrib(EXP_LAMP_WARNING_SENT, details.expLampWarningSent);
+                player.putAttrib(EXP_LAMP_USED, details.expLampUsed);
                 return true;
             }
         }
@@ -975,6 +977,8 @@ public class PlayerSave {
         private final int fightCaveWave;
         private final boolean kylieMinnowDialogueStarted;
         private final int baggedCoal;
+        private final boolean expLampWarningSent;
+        private final boolean expLampUsed;
 
         public String password() {
             return password;
@@ -1348,6 +1352,8 @@ public class PlayerSave {
             fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);
             kylieMinnowDialogueStarted = Player.getAttribBooleanOr(player, KYLIE_MINNOW_DIALOGUE_STARTED, false);
             baggedCoal = Player.getAttribIntOr(player, BAGGED_COAL, 0);
+            expLampWarningSent = Player.getAttribBooleanOr(player, EXP_LAMP_WARNING_SENT, false);
+            expLampUsed = Player.getAttribBooleanOr(player, EXP_LAMP_USED, false);
         }
 
         public void parseDetails() throws Exception {

@@ -2,6 +2,9 @@ package com.valinor.game.content.items;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -26,6 +29,48 @@ public class ExperienceLamp extends Interaction {
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if(option == 1) {
             if(item.getId() == ANTIQUE_LAMP_11137) {
+                if(player.gameMode() != GameMode.NONE) {
+                    player.message(Color.RED.wrap("Ironmans are unable to rub experience lamps."));
+                    return true;
+                }
+                if(player.gameMode() != GameMode.INSTANT_PKER && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+                    player.message(Color.RED.wrap("Instant pkers are unable to rub experience lamps."));
+                    return true;
+                }
+
+                if(!player.<Boolean>getAttribOr(AttributeKey.EXP_LAMP_WARNING_SENT, false)) {
+                    player.getDialogueManager().start(new Dialogue() {
+                        @Override
+                        protected void start(Object... parameters) {
+                            send(DialogueType.STATEMENT, Color.RED.wrap("Warning!")+" Using exp lamps will automatically disqualify", "you from competitions.");
+                            setPhase(0);
+                        }
+
+                        @Override
+                        protected void next() {
+                            if(isPhase(0)) {
+                                send(DialogueType.OPTION, "Are you sure you wish to continue?", "Yes, and don't show this message again.", "No.");
+                                setPhase(1);
+                            }
+                        }
+
+                        @Override
+                        protected void select(int option) {
+                            if(isPhase(1)) {
+                                if(option == 1) {
+                                    player.putAttrib(AttributeKey.EXP_LAMP_WARNING_SENT,true);
+                                    player.putAttrib(AttributeKey.EXP_LAMP_USED,true);
+                                    rub(player);
+                                    stop();
+                                }
+                                if(option == 2) {
+                                    stop();
+                                }
+                            }
+                        }
+                    });
+                    return true;
+                }
                 rub(player);
                 return true;
             }
@@ -45,10 +90,6 @@ public class ExperienceLamp extends Interaction {
 
         if(button == 2831) { // Confirm
             if(player.inventory().contains(ANTIQUE_LAMP_11137)) {
-                if(player.gameMode() != GameMode.NONE) {
-                    player.message(Color.RED.wrap("Ironmans are unable to rub experience lamps."));
-                    return true;
-                }
                 player.inventory().remove(ANTIQUE_LAMP_11137);
                 var skill = player.<Integer>getAttribOr(EXP_LAMP_SKILL_SELECTED, 0);
 
