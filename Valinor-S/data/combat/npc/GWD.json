@@ -1070,24 +1070,26 @@
     "aggressive": true,
     "retaliates": false,
     "boss": true,
-    "aggroradius": 50,
+    "aggroradius": 32,
     "stats": {
-      "attack": 24,
-      "strength": 24,
-      "defence": 24,
+      "attack": 315,
+      "strength": 260,
+      "defence": 260,
+      "ranged": 350,
+      "magic": 300,
       "hitpoints": 3400
     },
     "bonuses": {
-      "stabdefence": -7,
-      "slashdefence": -7,
-      "crushdefence": -7,
-      "rangeddefence": -7,
-      "magicdefence": -7
+      "stabdefence": 280,
+      "slashdefence": 250,
+      "crushdefence": 225,
+      "rangeddefence": 160,
+      "magicdefence": 350
     },
     "animations": {
       "attack": -1,
-      "block": -1,
-      "death": 167
+      "block": 9185,
+      "death": 9184
     },
     "scripts": {
       "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.GWDNex",
@@ -1122,9 +1124,9 @@
       "magicdefence": 150
     },
     "animations": {
-      "attack": -1,
+      "attack": 1979,
       "block": -1,
-      "death": -1
+      "death": 836
     },
     "scripts": {
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
@@ -1158,9 +1160,9 @@
       "magicdefence": 150
     },
     "animations": {
-      "attack": -1,
+      "attack": 1979,
       "block": -1,
-      "death": -1
+      "death": 836
     },
     "scripts": {
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
@@ -1194,9 +1196,9 @@
       "magicdefence": 150
     },
     "animations": {
-      "attack": -1,
+      "attack": 1979,
       "block": -1,
-      "death": -1
+      "death": 836
     },
     "scripts": {
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
@@ -1230,9 +1232,9 @@
       "magicdefence": 150
     },
     "animations": {
-      "attack": -1,
+      "attack": 1979,
       "block": -1,
-      "death": -1
+      "death": 836
     },
     "scripts": {
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
