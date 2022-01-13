@@ -23,6 +23,7 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(SUPER_MYSTERY_BOX, new HoverMenu("Opens for three donator mystery box rewards."));
         menus.put(IMCANDO_HAMMER, new HoverMenu("Acts as a wieldable hammer for smithing and construction."));
         menus.put(COAL_BAG_12019, new HoverMenu("Can store 27 coal ores and 36 when wearing a smithing cape."));
         menus.put(GOLDSMITH_GAUNTLETS, new HoverMenu("Gives @gre@2.5%@whi@ extra smithing experience when worn."));
