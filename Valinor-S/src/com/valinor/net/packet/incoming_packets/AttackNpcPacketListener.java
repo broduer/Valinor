@@ -61,6 +61,10 @@ public class AttackNpcPacketListener implements PacketListener {
                     return;
                 }
 
+                if (other.cantInteract()) {
+                    return;
+                }
+
                 // See if it's exclusively owned
                 Tuple<Integer, Player> ownerLink = other.getAttribOr(AttributeKey.OWNING_PLAYER, new Tuple<>(-1, null));
                 if (ownerLink.first() != null && ownerLink.first() >= 0 && ownerLink.first() != player.getIndex()) {

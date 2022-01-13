@@ -23,6 +23,7 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.bandos.Graardor;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexMinion;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.saradomin.Zilyana;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.zamorak.Kril;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
@@ -69,13 +70,31 @@ public class Npc extends Mob {
     private static final Logger logger = LogManager.getLogger(Npc.class);
 
     public Npc remove() {
-      World.getWorld().unregisterNpc(this);
-      return this;
+        //Only remove if the npc is actually spawned
+        if (isRegistered()) {
+            clearAttrib(AttributeKey.OWNING_PLAYER);
+            World.getWorld().unregisterNpc(this);
+        }
+        return this;
     }
 
     public Tile faceBasedOnDir() {
         this.tile();
         return switch (this.spawnDirection()) {
+            case 1 -> this.tile().transform(0, 1); // n
+            case 6 -> this.tile().transform(0, -1); // s
+            case 4 -> this.tile().transform(1, 0); // e
+            case 3 -> this.tile().transform(-1, 0); // w
+            case 0 -> this.tile().transform(-1, 1); // nw
+            case 2 -> this.tile().transform(1, 1); // ne
+            case 5 -> this.tile().transform(-1, -1); // sw
+            case 7 -> this.tile().transform(-1, 1);
+            default -> this.tile(); // se
+        };
+    }
+
+    public Tile faceBasedOnDir(int dir) {
+        return switch (dir) {
             case 1 -> this.tile().transform(0, 1); // n
             case 6 -> this.tile().transform(0, -1); // s
             case 4 -> this.tile().transform(1, 0); // e
@@ -103,15 +122,25 @@ public class Npc extends Mob {
     //Target switching may be computationally expensive since it's in sequence (core processing).
     public static boolean TARG_SWITCH_ON = true;
 
-    public void neverWalkHome(boolean neverWalkHome) {
-        this.neverWalkHome = neverWalkHome;
+    private int capDamage = -1;
+
+    public int capDamage() {
+        return capDamage;
     }
 
-    public boolean neverWalkHome() {
-        return neverWalkHome;
+    public void capDamage(int capDamage) {
+        this.capDamage = capDamage;
     }
 
-    private boolean neverWalkHome;
+    private boolean cantFollowUnderCombat;
+
+    public boolean cantFollowUnderCombat() {
+        return cantFollowUnderCombat;
+    }
+
+    public void cantFollowUnderCombat(boolean canFollowUnderCombat) {
+        this.cantFollowUnderCombat = canFollowUnderCombat;
+    }
 
     private boolean canAttack = true;
 
@@ -121,6 +150,16 @@ public class Npc extends Mob {
 
     public void canAttack(boolean canAttack) {
         this.canAttack = canAttack;
+    }
+
+    private boolean cantInteract;
+
+    public boolean cantInteract() {
+        return cantInteract;
+    }
+
+    public void cantInteract(boolean cantInteract) {
+        this.cantInteract = cantInteract;
     }
 
     public String spawnStack = "";
@@ -230,6 +269,7 @@ public class Npc extends Mob {
                 CORRUPTED_HUNLLEF_9036,
                 CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
             case NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282 -> new Nex(id, tile);
+            case FUMUS, CRUOR, UMBRA, GLACIES -> new NexMinion(id, tile);
             default -> new Npc(id, tile);
         };
     }
@@ -514,7 +554,7 @@ public class Npc extends Mob {
             // Fuck this is not a perfect solution! canAttack always worked but other circumstances such as area/distance checks need to be included too.
             if (!(this.id() >= 3116 && this.id() <= 3128) && this.id() != 5886 && id != 239 && !def.inferno) {
 
-                if (!CombatFactory.canAttack(this, method, target) && reached) {
+                if (!CombatFactory.canAttack(this, target) && reached) {
                     //target.message(def.name+" doesnt fucking like you hey?");
                     this.getCombat().reset();// Clear it.
                     this.faceEntity(null); // Reset face
@@ -546,7 +586,7 @@ public class Npc extends Mob {
                     lastagro = KreeArra.getLastBossDamager();
                 }
                 if (lastagro != null && lastagro != target) { // Change target to a new one
-                    if (reached && CombatFactory.canAttack(this, method, lastagro)) {
+                    if (reached && CombatFactory.canAttack(this, lastagro)) {
                         //target.message("target changed to "+lastagro.tile().toStringSimple());
                         putAttrib(AttributeKey.TARGET, new WeakReference<>(lastagro));
                         faceEntity(lastagro);
@@ -603,7 +643,7 @@ public class Npc extends Mob {
                         (lastAttacker != null && (lastAttacker.dead() || lastAttacker.finished()))
                         || p.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 1) {
                         if (def.roomBoss || fightCaveMonster || CombatFactory.canReach(this, CombatFactory.RANGED_COMBAT, p)) {
-                            if (CombatFactory.canAttack(this, finalMethod, p)) {
+                            if (CombatFactory.canAttack(this, p)) {
                                 getCombat().attack(p);
                                 //String ss = this.def.name+" v "+p.getUsername()+" : "+ CombatFactory.canAttack(this, method, p);
                                 //System.out.println(ss);
@@ -940,5 +980,29 @@ public class Npc extends Mob {
                     party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7345));
             }
         }
+    }
+
+    public int getCoordFaceX(int sizeX) {
+        return getCoordFaceX(sizeX, -1, -1);
+    }
+
+    public static final int getCoordFaceX(int x, int sizeX, int sizeY, int rotation) {
+        return x + ((rotation == 1 || rotation == 3 ? sizeY : sizeX) - 1) / 2;
+    }
+
+    public static final int getCoordFaceY(int y, int sizeX, int sizeY, int rotation) {
+        return y + ((rotation == 1 || rotation == 3 ? sizeX : sizeY) - 1) / 2;
+    }
+
+    public int getCoordFaceX(int sizeX, int sizeY, int rotation) {
+        return tile.x + ((rotation == 1 || rotation == 3 ? sizeY : sizeX) - 1) / 2;
+    }
+
+    public int getCoordFaceY(int sizeY) {
+        return getCoordFaceY(-1, sizeY, -1);
+    }
+
+    public int getCoordFaceY(int sizeX, int sizeY, int rotation) {
+        return tile.y + ((rotation == 1 || rotation == 3 ? sizeX : sizeY) - 1) / 2;
     }
 }

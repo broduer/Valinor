@@ -35,7 +35,7 @@ public class NpcActionOnePacketListener implements PacketListener {
         player.stopActions(false);
         player.face(npc.tile());
         player.debugMessage("Option "+option+" click npc id: " + npc.id());
-        if (npc.dead())
+        if (npc.dead() || npc.cantInteract())
             return;
 
         player.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(npc));

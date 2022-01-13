@@ -1,9 +1,11 @@
 package com.valinor.game.content.areas.dungeons.godwars;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexCombat.NEX_AREA;
@@ -55,7 +57,8 @@ public class BossRoomDoors extends Interaction {
 
             //Nex
             if(obj.getId() == 42967) {
-
+                player.teleport(new Tile(2910, 5203,0));
+                ZarosGodwars.addPlayer(player);
                 return true;
             }
         }
@@ -80,7 +83,12 @@ public class BossRoomDoors extends Interaction {
         return false;
     }
 
-    private void startNex(Player player) {
-
+    @Override
+    public boolean onLogout(Player player) {
+        if(player.tile().inArea(NEX_AREA)) {
+            player.teleport(2904, 5203,0);
+            return true;
+        }
+        return false;
     }
 }

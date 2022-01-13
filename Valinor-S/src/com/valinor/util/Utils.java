@@ -37,6 +37,12 @@ import java.util.zip.GZIPInputStream;
 
 public class Utils {
 
+    /** The time correction. */
+    private static long timeCorrection;
+
+    /** The last time update. */
+    private static long lastTimeUpdate;
+
     public static final Pattern VALID_NAME = Pattern.compile("^[a-zA-Z0-9_ ]{1,12}$");
 
     private static final Logger logger = LogManager.getLogger(Utils.class);
@@ -2193,5 +2199,24 @@ public class Utils {
             result = rawString.substring(0, rawString.length()-3) + "," + rawString.substring(rawString.length()-3, rawString.length());
         }
         return result;
+    }
+
+    /**
+     * Gets the face direction.
+     *
+     * @param xOffset the x offset
+     * @param yOffset the y offset
+     * @return the face direction
+     */
+    public static final int getFaceDirection(int xOffset, int yOffset) {
+        return ((int) (Math.atan2(-xOffset, -yOffset) * 2607.5945876176133)) & 0x3fff;
+    }
+
+    public static synchronized long currentTimeMillis() {
+        long l = System.currentTimeMillis();
+        if (l < lastTimeUpdate)
+            timeCorrection += lastTimeUpdate - l;
+        lastTimeUpdate = l;
+        return l + timeCorrection;
     }
 }
