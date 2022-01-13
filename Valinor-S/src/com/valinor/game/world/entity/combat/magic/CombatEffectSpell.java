@@ -93,7 +93,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
                     continue;
                 }
 
-                if (!CombatFactory.canAttack(cast, CombatFactory.MAGIC_COMBAT, n)) {
+                if (!CombatFactory.canAttack(cast, n)) {
                     cast.getCombat().reset();//Can't attack, reset combat
                     continue;
                 }
@@ -107,7 +107,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
                     //not in the multi area and we were, don't carry over.
                     continue;
                 }
-                if (!CombatFactory.canAttack(cast, CombatFactory.MAGIC_COMBAT, p)) {
+                if (!CombatFactory.canAttack(cast, p)) {
                     cast.getCombat().reset();//Can't attack, reset combat
                     continue;
                 }

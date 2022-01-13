@@ -121,12 +121,10 @@ public class Farming extends Interaction {
             PatchState patch = patch_states.get(patch_name);
 
             if (data == null || patch == null) {
-                System.out.println("data null.");
                 return;
             }
 
             if (patch.isDead()) {
-                System.out.println("dead patch.");
                 return;
             }
 

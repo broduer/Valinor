@@ -19,7 +19,6 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.FightType;
 import com.valinor.game.world.entity.combat.weapon.WeaponType;
-import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -39,7 +38,6 @@ import java.util.*;
 import java.util.Map.Entry;
 
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
-import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -277,8 +275,8 @@ public class Combat {
      */
     private void performNewAttack0() {
         if (target == null) {
-            //if (mob.isNpc() && mob.getAsNpc().id() == SKOTIZO)
-            //System.out.println("no targ");
+            if (mob.isNpc() && mob.getAsNpc().id() == NEX)
+            System.out.println("no targ");
             return;
         }
 
@@ -319,9 +317,8 @@ public class Combat {
         }
 
         // Check if the mob can perform the attack
-        if (!CombatFactory.canAttack(mob, method, target)) {
+        if (!CombatFactory.canAttack(mob, target)) {
             mob.getCombat().reset();//We can't attack our target, reset combat
-            //System.out.println("reeee?");
             return;
         }
 

@@ -99,7 +99,6 @@ public class Muttadile extends CommonCombatMethod {
             }
 
             for (Player member : party.getMembers()) {
-                System.out.println(member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight())));
                 if (member != null && member.getRaids() != null && member.getRaids().raiding(member) && member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight()))) {
                     npc.combatInfo().maxhit = 35;
                     npc.animate(npc.attackAnimation());
@@ -120,7 +119,6 @@ public class Muttadile extends CommonCombatMethod {
             }
 
             for (Player member : party.getMembers()) {
-                System.out.println(member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight())));
                 if (member != null && member.getRaids() != null && member.getRaids().raiding(member) && member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight()))) {
                     npc.combatInfo().maxhit = 45;
                     npc.animate(npc.attackAnimation());

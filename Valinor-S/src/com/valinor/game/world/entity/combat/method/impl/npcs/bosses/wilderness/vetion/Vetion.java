@@ -67,7 +67,7 @@ public class Vetion extends CommonCombatMethod {
             World.getWorld().tileGraphic(281, lightning_two, 0, 10 * tileDist);
             World.getWorld().tileGraphic(281, lightning_three, 0, 10 * tileDist);
         }).then(3, () -> {
-            if (target.tile() == (lightning_one) || target.tile() == (lightning_one.transform(1, 0)) || target.tile() == (lightning_one.transform(1, 1))) {
+            if (target != null && (target.tile() == (lightning_one) || target.tile() == (lightning_one.transform(1, 0)) || target.tile() == (lightning_one.transform(1, 1)))) {
                 target.hit(mob, World.getWorld().random(30));
             }
         });

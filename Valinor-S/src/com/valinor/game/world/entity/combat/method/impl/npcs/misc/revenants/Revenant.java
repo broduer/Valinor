@@ -26,7 +26,7 @@ public class Revenant extends CommonCombatMethod {
         if (npc.hp() < npc.maxHp() / 2 && World.getWorld().rollDie(5, 1)) {
             npc.graphic(1221);
             npc.heal(npc.maxHp() / 3);
-        } else if (CombatFactory.canAttack(mob, CombatFactory.MELEE_COMBAT, target) && World.getWorld().random(2) == 1)
+        } else if (CombatFactory.canAttack(mob, target) && World.getWorld().random(2) == 1)
             meleeAttack(npc, target);
         else if (World.getWorld().rollDie(2, 1))
             rangedAttack(npc, target);

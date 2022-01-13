@@ -34,8 +34,10 @@ public class NpcMovementCoordinator {
     }
 
     public void process() {
-        if (npc.def().ispet || npc.neverWalkHome())
+        if (npc.def().ispet || npc.cantFollowUnderCombat()) {
+            //System.out.println("laaaaaa");
             return;
+        }
 
         //Only debug if enabled, string concatenation in large loops is expensive.
         if (Debugs.NPC_MOVE.enabled) {

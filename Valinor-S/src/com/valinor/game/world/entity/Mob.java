@@ -700,8 +700,6 @@ public abstract class Mob extends Entity {
         if (isNpc() && hp() <= 0) {
             if (getAsNpc().getCombatMethod() != null && getAsNpc().getCombatMethod().customOnDeath(this)) {
                 return;
-            } else if (getAsNpc().id() == VETION || getAsNpc().id() == VETION_REBORN) {
-                setHitpoints(1);
             }
         }
         if (hp() < 1 && !locked()) {
