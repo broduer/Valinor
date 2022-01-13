@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
@@ -125,6 +126,8 @@ public class ItemCombining extends Interaction {
 
         SANGUINE_SCYTHE_OF_VITUR(ItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR, SCYTHE_OF_VITUR, SANGUINE_ORNAMENT_KIT),
 
+        SANGUINE_TWISTED_BOW(CustomItemIdentifiers.SANGUINE_TWISTED_BOW, TWISTED_BOW, SANGUINE_ORNAMENT_KIT),
+
         GRACEFUL_HOOD(GRACEFUL_HOOD_24743, ItemIdentifiers.GRACEFUL_HOOD, DARK_DYE),
 
         GRACEFUL_TOP(GRACEFUL_TOP_24749, ItemIdentifiers.GRACEFUL_TOP, DARK_DYE),
@@ -213,7 +216,9 @@ public class ItemCombining extends Interaction {
 
         CRYSTAL_OF_AMLODD_BLADE(ItemIdentifiers.BLADE_OF_SAELDOR_C_25882, BLADE_OF_SAELDOR_C, CRYSTAL_OF_AMLODD),
 
-        CRYSTAL_OF_AMLODDL_BOW(BOW_OF_FAERDHINEN_C_25896, BOW_OF_FAERDHINEN_C_25884, CRYSTAL_OF_AMLODD);
+        CRYSTAL_OF_AMLODDL_BOW(BOW_OF_FAERDHINEN_C_25896, BOW_OF_FAERDHINEN_C_25884, CRYSTAL_OF_AMLODD),
+
+        AVERNIC_DEFENDER(ItemIdentifiers.AVERNIC_DEFENDER, AVERNIC_DEFENDER_HILT, DRAGON_DEFENDER);
 
         private final int result;
         private final int item1;
@@ -291,6 +296,25 @@ public class ItemCombining extends Interaction {
                 player.message("standards, it smells awful.");
                 return true;
             }
+
+            if (item.getId() == AVERNIC_DEFENDER_HILT) {
+                player.message("You raise the hilt, inspecting each section carefully. It looks as though it could...");
+                player.message("combine with a powerful parrying dagger.");
+                return true;
+            }
+        }
+
+        if(option == 2) {
+            for (Combine combine : Combine.values()) {
+                if (item.getId() == combine.result) {
+                    if (player.inventory().contains(combine.result)) {
+                        player.inventory().remove(combine.result);
+                        player.inventory().add(new Item(combine.item1));
+                        player.inventory().add(new Item(combine.item2));
+                    }
+                    return true;
+                }
+            }
         }
 
         if (option == 4) {
@@ -301,7 +325,7 @@ public class ItemCombining extends Interaction {
                             @Override
                             protected void start(Object... parameters) {
                                 //TODO get real messages from OSRS
-                                send(DialogueType.ITEM_STATEMENT, new Item(combine.result), "<col=7f0000>Warning!</col>", "Lorem ipsum");
+                                send(DialogueType.ITEM_STATEMENT, new Item(combine.result), "<col=7f0000>Warning!</col>", "When converting this item you will lose the kit.");
                                 setPhase(0);
                             }
 
