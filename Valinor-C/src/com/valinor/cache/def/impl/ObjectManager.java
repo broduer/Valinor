@@ -18,7 +18,11 @@ public class ObjectManager {
             definition.actions = new String[]{"Loot", null, null, null, null};
         }
 
-        if (id == 2341 || id == 2342 || id == 17977) {
+        if (id == 29241) {
+            definition.actions = new String[]{"Drink", null, null, null, null};
+        }
+
+        if (id == 2341 || id == 2342 || id == 17977 || id == 26741) {
             definition.actions = new String[]{null, null, null, null, null};
         }
 

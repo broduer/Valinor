@@ -135,7 +135,7 @@ public final class DefaultShop extends Shop {
             return;
         }
 
-        if (player.gameMode() != GameMode.NONE && noiron) {
+        if (player.gameMode() != GameMode.NONE && player.gameMode() != GameMode.INSTANT_PKER && noiron) {
             player.message("Iron men cannot access this shop.");
             player.getInterfaceManager().closeDialogue();
             return;

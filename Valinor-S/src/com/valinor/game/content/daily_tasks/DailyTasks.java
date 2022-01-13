@@ -41,14 +41,14 @@ public enum DailyTasks {
         }
     },
 
-    VOTING("Voting", "Vote for us on 3 top list sites", "Any!", "Safe", null, 1, VOTING_DAILY_TASK_COMPLETION_AMOUNT, VOTING_DAILY_TASK_COMPLETED, VOTING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
+    VOTING("Voting", "Vote for us on 3 top list sites", "Any!", "Safe", new Tile(3100, 3505), 1, VOTING_DAILY_TASK_COMPLETION_AMOUNT, VOTING_DAILY_TASK_COMPLETED, VOTING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, /*new Item(XMAS_TOKENS, 500),*/ new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    SKILLING_TASKS("Skilling tasks", "Complete 3 skilling tasks", "Any!", "Safe", new Tile(3083,3488), 3, SKILLING_DAILY_TASK_COMPLETION_AMOUNT, SKILLING_DAILY_TASK_COMPLETED, SKILLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
+    SKILLING_TASKS("Skilling tasks", "Complete 3 skilling tasks", "Any!", "Safe", new Tile(3083,3488), 3, SKILLING_DAILY_TASK_COMPLETION_AMOUNT, SKILLING_DAILY_TASK_COMPLETED, SKILLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, /*new Item(XMAS_TOKENS, 500),*/ new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -62,7 +62,7 @@ public enum DailyTasks {
         }
     },
 
-    PVM_TASKS("PvMing tasks", "Complete 3 pvming tasks", "75+", "Safe", new Tile(3083,3488), 3, PVMING_DAILY_TASK_COMPLETION_AMOUNT, PVMING_DAILY_TASK_COMPLETED, PVMING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 500), new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
+    PVM_TASKS("PvMing tasks", "Complete 3 pvming tasks", "75+", "Safe", new Tile(3083,3488), 3, PVMING_DAILY_TASK_COMPLETION_AMOUNT, PVMING_DAILY_TASK_COMPLETED, PVMING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, /*new Item(XMAS_TOKENS, 500),*/ new Item(VOTE_TICKET, 1), new Item(COINS_995, 10_000_000), new Item(POINTS_MYSTERY_BOX, 1), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -111,7 +111,7 @@ public enum DailyTasks {
         }
     },
 
-    VALINOR_COINS("Valinor coins", "Exchange items for 1000 Valinor coins", "Any!", "Safe", null, 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 500), new Item(DONATOR_MYSTERY_BOX,1)) {
+    VALINOR_COINS("Valinor coins", "Exchange items for 1000 Valinor coins", "Any!", "Safe", new Tile(3109, 3500), 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, /*new Item(XMAS_TOKENS, 500),*/ new Item(DONATOR_MYSTERY_BOX,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

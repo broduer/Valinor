@@ -4,6 +4,7 @@ import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 
@@ -95,7 +96,7 @@ public class DailyTaskButtons extends Interaction {
         if(button == TELEPORT_BUTTON_ID) {
             DailyTasks task = player.getAttrib(DAILY_TASK_SELECTED);
             if (task != null) {
-                if(task == DailyTasks.VOTING) {
+                if(task.tile == null) {
                     player.message("This activity has no teleport option.");
                     return true;
                 }
@@ -106,6 +107,13 @@ public class DailyTaskButtons extends Interaction {
 
                 if(task == DailyTasks.SLAYER) {
                     SlayerCreature.teleport(player);
+                    return true;
+                }
+
+                if(WildernessArea.inWilderness(task.tile)) {
+                    player.optionsTitled("This is a dangerous area, are you sure?", "Yes.", "No.", () -> {
+                        Teleports.basicTeleport(player, task.tile);
+                    });
                     return true;
                 }
 

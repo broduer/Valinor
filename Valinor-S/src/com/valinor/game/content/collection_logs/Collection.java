@@ -184,7 +184,7 @@ public enum Collection {
 
     CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1)},
         //Drops
-        new Item(CORRUPTED_NECHRYARCH_PET), new Item(KEY_OF_DROPS), new Item(CORRUPTED_BOOTS)),
+        new Item(CustomItemIdentifiers.PET_CORRUPTED_NECHRYARCH), new Item(KEY_OF_DROPS), new Item(CORRUPTED_BOOTS)),
 
     ANCIENT_CHAOS_ELEMENTAL(AttributeKey.ANCIENT_CHAOS_ELEMENTALS_KILLED, LogType.BOSSES, "Ancient Chaos Elemental", new int[]{CustomNpcIdentifiers.ANCIENT_CHAOS_ELEMENTAL}, AttributeKey.ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops

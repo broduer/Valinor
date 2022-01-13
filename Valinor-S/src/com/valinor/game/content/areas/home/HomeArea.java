@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.home;
 
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.edgevile.Mac;
@@ -44,6 +45,10 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
+            if (object.getId() == TELESCOPE_25439) {
+                player.message(Color.RED.wrap("The "+ GameConstants.SERVER_NAME+" coins cannot be exchanged yet."));
+                return true;
+            }
             if (object.getId() == CLOSED_CHEST_2996) {
                 player.faceObj(object);
                 player.getSlayerKey().open();

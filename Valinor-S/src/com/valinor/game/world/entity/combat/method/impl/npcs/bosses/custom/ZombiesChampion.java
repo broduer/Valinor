@@ -23,13 +23,6 @@ public class ZombiesChampion extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-
-        //10% chance that the wold boss skulls you!
-        if(World.getWorld().rollDie(10,1)) {
-            Skulling.assignSkullState(((Player) target), SkullType.WHITE_SKULL);
-            target.message("The "+mob.getMobName()+" has skulled you, be careful!");
-        }
-
         if(World.getWorld().rollDie(5, 1)) {
             rangeAttack((Npc) mob, target);
         } else {
