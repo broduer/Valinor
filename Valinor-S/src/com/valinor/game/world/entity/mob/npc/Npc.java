@@ -22,6 +22,7 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulra
 import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.armadyl.KreeArra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.bandos.Graardor;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.saradomin.Zilyana;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.zamorak.Kril;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
@@ -41,7 +42,6 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.ControllerManager;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.game.world.route.routes.TargetRoute;
-import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.NpcPerformance;
 import com.valinor.util.SecondsTimer;
 import com.valinor.util.Utils;
@@ -144,8 +144,8 @@ public class Npc extends Mob {
     private int transmog = -1;
 
     // A list of npc-ids such as Bosses that are immune to venom.
-    public static final int[] venom_immunes = new int[]{NpcIdentifiers.COMBAT_DUMMY, NpcIdentifiers.UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
-    public static final int[] poison_immunes = new int[]{NpcIdentifiers.COMBAT_DUMMY, NpcIdentifiers.UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
+    public static final int[] venom_immunes = new int[]{COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
+    public static final int[] poison_immunes = new int[]{COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
 
     public Npc(int id) {
         this.id = id;
@@ -178,7 +178,7 @@ public class Npc extends Mob {
         }
 
         if (combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
-            if (id == NpcIdentifiers.ZULRAH || id == NpcIdentifiers.ZULRAH_2043 || id == NpcIdentifiers.ZULRAH_2044) {
+            if (id == ZULRAH || id == ZULRAH_2043 || id == ZULRAH_2044) {
                 setCombatMethod(Zulrah.EmptyCombatMethod.make());
             }
             setCombatMethod(combatInfo().scripts.newCombatInstance());
@@ -216,19 +216,20 @@ public class Npc extends Mob {
      */
     public static Npc of(int id, Tile tile) {
         return switch (id) {
-            case NpcIdentifiers.COMBAT_DUMMY -> new MaxHitDummyNpc(id,tile);
-            case NpcIdentifiers.UNDEAD_COMBAT_DUMMY -> new UndeadMaxHitDummy(id, tile);
+            case COMBAT_DUMMY -> new MaxHitDummyNpc(id,tile);
+            case UNDEAD_COMBAT_DUMMY -> new UndeadMaxHitDummy(id, tile);
             case Wyrm.IDLE, Wyrm.ACTIVE -> new Wyrm(id, tile);
-            case 8609 -> new Hydra(id, tile);
-            case 8612, 8613 -> new Drake(id, tile);
-            case NpcIdentifiers.TZTOKJAD -> new TzTokJad(id, tile);
-            case NpcIdentifiers.DEMONIC_GORILLA,
-                NpcIdentifiers.DEMONIC_GORILLA_7145,
-                NpcIdentifiers.DEMONIC_GORILLA_7146 -> new DemonicGorilla(id, tile);
-            case 7555, 7554, 7553 -> new GreatOlm(id, tile);
-            case NpcIdentifiers.CORRUPTED_HUNLLEF,
-                NpcIdentifiers.CORRUPTED_HUNLLEF_9036,
-                NpcIdentifiers.CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
+            case HYDRA -> new Hydra(id, tile);
+            case DRAKE_8612, DRAKE_8613 -> new Drake(id, tile);
+            case TZTOKJAD -> new TzTokJad(id, tile);
+            case DEMONIC_GORILLA,
+                DEMONIC_GORILLA_7145,
+                DEMONIC_GORILLA_7146 -> new DemonicGorilla(id, tile);
+            case GREAT_OLM_LEFT_CLAW_7555, GREAT_OLM_7554, GREAT_OLM_RIGHT_CLAW_7553 -> new GreatOlm(id, tile);
+            case CORRUPTED_HUNLLEF,
+                CORRUPTED_HUNLLEF_9036,
+                CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
+            case NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282 -> new Nex(id, tile);
             default -> new Npc(id, tile);
         };
     }
@@ -384,11 +385,11 @@ public class Npc extends Mob {
     }
 
     public boolean isCombatDummy() {
-        return this.id == NpcIdentifiers.COMBAT_DUMMY || this.id == NpcIdentifiers.UNDEAD_COMBAT_DUMMY;
+        return this.id == COMBAT_DUMMY || this.id == UNDEAD_COMBAT_DUMMY;
     }
 
     public boolean isPvPCombatDummy() {
-        return this.id == NpcIdentifiers.UNDEAD_COMBAT_DUMMY;
+        return this.id == UNDEAD_COMBAT_DUMMY;
     }
 
     public NpcPerformance performance = new NpcPerformance();
@@ -718,7 +719,7 @@ public class Npc extends Mob {
     }
 
     static final int[] PERMANENT_MOVEMENT_BLOCKED = {
-        NpcIdentifiers.VORKATH_8061, NpcIdentifiers.PORTAL_1747, NpcIdentifiers.PORTAL_1748, NpcIdentifiers.PORTAL_1749, NpcIdentifiers.PORTAL_1750, NpcIdentifiers.VOID_KNIGHT_2950, NpcIdentifiers.VOID_KNIGHT_2951, NpcIdentifiers.VOID_KNIGHT_2952
+        VORKATH_8061, PORTAL_1747, PORTAL_1748, PORTAL_1749, PORTAL_1750, VOID_KNIGHT_2950, VOID_KNIGHT_2951, VOID_KNIGHT_2952
     };
 
     public boolean permaBlockedMovement() {

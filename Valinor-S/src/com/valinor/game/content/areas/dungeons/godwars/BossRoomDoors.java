@@ -6,7 +6,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.Interaction;
 
-import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex.NEX_AREA;
+import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexCombat.NEX_AREA;
 
 public class BossRoomDoors extends Interaction {
 
@@ -60,7 +60,7 @@ public class BossRoomDoors extends Interaction {
             }
         }
 
-        if(option == 2) {
+        if(option == 3) {
             if(obj.getId() == 42967) {
 
                 int count = 0;
@@ -78,5 +78,9 @@ public class BossRoomDoors extends Interaction {
             }
         }
         return false;
+    }
+
+    private void startNex(Player player) {
+
     }
 }

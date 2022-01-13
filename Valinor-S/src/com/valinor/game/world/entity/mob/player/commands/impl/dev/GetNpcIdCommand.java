@@ -1,13 +1,11 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
-import com.valinor.fs.ItemDefinition;
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
-import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
 
 /**
@@ -24,7 +22,7 @@ public class GetNpcIdCommand implements Command {
         }
         String npcName = command.substring(parts[0].length() + 1);
         if (npcName.length() < 3) {
-            player.message("You must give at least 3 letters of input to narrow down the item.");
+            player.message("You must give at least 3 letters of input to narrow down the npc.");
             return;
         }
         int results = 0;
@@ -32,7 +30,7 @@ public class GetNpcIdCommand implements Command {
         for (int j = 0; j < World.getWorld().definitions().total(NpcDefinition.class); j++) {
             if (results >= 75) {
                 player.message("Over 75 results have been found, the maximum number of allowed results. If you cannot");
-                player.message("find the item, try and enter more characters to refine the results.");
+                player.message("find the npc, try and enter more characters to refine the results.");
                 return;
             }
             Npc npc = new Npc(j, null);

@@ -1,29 +1,16 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
-import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
-import com.valinor.game.world.position.Area;
+import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.position.Tile;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
- * @Since January 12, 2022
+ * @Since January 13, 2022
  */
-public class Nex extends CommonCombatMethod {
+public class Nex extends Npc {
 
-    public static final Area NEX_AREA = new Area(2911, 5189, 2939, 5217);
-
-    @Override
-    public void prepareAttack(Mob mob, Mob target) {
-
+    public Nex(int id, Tile tile) {
+        super(id, tile);
     }
 
-    @Override
-    public int getAttackSpeed(Mob mob) {
-        return mob.getBaseAttackSpeed();
-    }
-
-    @Override
-    public int getAttackDistance(Mob mob) {
-        return 20;
-    }
 }

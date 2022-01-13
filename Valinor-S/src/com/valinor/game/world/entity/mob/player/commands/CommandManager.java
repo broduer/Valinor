@@ -238,6 +238,7 @@ public class CommandManager {
         commands.put("cint", new ChatboxInterfaceCommand());
         commands.put("update", new UpdateServerCommand());
         commands.put("fn", new GetNpcIdCommand());
+        commands.put("fo", new GetObjectIdCommand());
         commands.put("getid", new GetItemIdCommand());
         commands.put("finditem", new GetItemIdCommand());
         commands.put("fi", new GetItemIdCommand());
