@@ -81,12 +81,6 @@ public class ObjectDefinition implements Definition {
             options = new String[] {"Teleport", null, null, null, null};
         }
 
-        if (id == 7811) {
-            name = "Supplies";
-            options[1] = "Blood money supplies";
-            options[2] = null;
-        }
-
         if (id == 29149) {
             options = new String[]{"Pray-at", "Ancients", "Lunar", "Modern", null};
         }

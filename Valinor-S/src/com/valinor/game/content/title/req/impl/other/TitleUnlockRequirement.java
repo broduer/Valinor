@@ -47,7 +47,7 @@ public class TitleUnlockRequirement extends TitleRequirement {
                     player.getUnlockedTitles().add(title);
                 }
             } else {
-                player.message("You do not have enough Blood money to purchase this title.");
+                player.message("You do not have enough coins to purchase this title.");
             }
         }
         return player.getUnlockedTitles().contains(title);

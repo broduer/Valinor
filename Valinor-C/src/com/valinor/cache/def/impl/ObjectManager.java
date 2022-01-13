@@ -119,13 +119,6 @@ public class ObjectManager {
             definition.recolorTo = deadmanChest.recolorTo;
         }
 
-        if (id == 7811) {
-            definition.name = "Supplies";
-            definition.actions[0] = "Blood money supplies";
-            definition.actions[1] = "Vote-rewards";
-            definition.actions[2] = "Donator-store";
-        }
-
         if (id == 2654) {
             definition.name = HALLOWEEN ? "Blood fountain" : CHRISTMAS ? "Snow fountain" : "Fountain";
             definition.sizeX = 3;

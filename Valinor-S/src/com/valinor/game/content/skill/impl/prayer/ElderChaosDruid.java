@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.ELDER_CHAOS_DRUID_7995;
 
 public class ElderChaosDruid extends Interaction {
@@ -77,8 +78,8 @@ public class ElderChaosDruid extends Interaction {
         if (player.inventory().getFreeSlots() < toRemove) {
             toRemove = player.inventory().getFreeSlots();
         }
-        var currency = 13307;
-        var name = "blood money";
+        var currency = COINS_995;
+        var name = "coins";
 
         if (!player.inventory().contains(new Item(currency, toRemove * 50))) {
             DialogueManager.npcChat(player, Expression.VERY_SAD, ELDER_CHAOS_DRUID_7995, "Unfortunately, you don't have enough " + name + " right now to do that.");
@@ -93,7 +94,7 @@ public class ElderChaosDruid extends Interaction {
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if (npc.id() == ELDER_CHAOS_DRUID_7995) {
-            var name = "blood money";
+            var name = "coins";
             player.getDialogueManager().start(new Dialogue() {
                 @Override
                 protected void start(Object... parameters) {

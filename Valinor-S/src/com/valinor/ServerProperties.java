@@ -223,7 +223,7 @@ public final class ServerProperties {
         redirectOutStream = false;
         teleToMeInWildOk = false;
         teleToWildyPlayedDisabled = false;
-        newAccsBMTime = 3000;
+        newAccsPKPTime = 3000;
         pkTelesAfterSetupSet = 50;
         stakingStaffOnly = false;
         edgeDitch10secondPjTimerEnabled = true;
@@ -611,8 +611,8 @@ public final class ServerProperties {
     // Stops non-admins doing 'teleto' if the target is in the wilderness ft. hybrid abuse x2 in 1 hour
     public final boolean teleToWildyPlayedDisabled;
 
-    // Game ticks before new accounts drop blood money (stops farming)
-    public final int newAccsBMTime;
+    // Game ticks before new accounts drop pkp (stops farming)
+    public final int newAccsPKPTime;
 
     // How many seconds you have to wait before using teleports (tabs, spellbook, wizard)
     public final int pkTelesAfterSetupSet;

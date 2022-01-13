@@ -214,7 +214,7 @@ public class Trading {
 
         //Update strings on interface
         player.getPacketSender().sendString(TRADING_WITH_FRAME, "Trading with: " + interact.getUsername());
-        player.getPacketSender().sendString(STATUS_FRAME_1, "").sendString(STATUS_FRAME_2, "Are you sure you want to make this trade?").sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>0</col> blood money)").sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>0</col> blood money)");
+        player.getPacketSender().sendString(STATUS_FRAME_1, "").sendString(STATUS_FRAME_2, "Are you sure you want to make this trade?").sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>0</col>)").sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>0</col>)");
         player.getPacketSender().sendString(ROW_1, interact.getUsername() + " has " + interact.inventory().getFreeSlots());
         player.getPacketSender().sendString(ROW_2, "free inventory");
         player.getPacketSender().sendString(ROW_3, "slots.");
@@ -410,10 +410,10 @@ public class Trading {
         String other_plr_value = "" + interact.getTrading().getContainer().containerValue();
         player.getPacketSender().sendString(TRADING_WITH_FRAME_2, interact.getUsername());
         interact.getPacketSender().sendString(TRADING_WITH_FRAME_2, player.getUsername());
-        player.getPacketSender().sendString(VALUE_1, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col> blood money)");
-        player.getPacketSender().sendString(VALUE_2, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col> blood money)");
-        interact.getPacketSender().sendString(VALUE_1, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col> blood money)");
-        interact.getPacketSender().sendString(VALUE_2, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col> blood money)");
+        player.getPacketSender().sendString(VALUE_1, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col>)");
+        player.getPacketSender().sendString(VALUE_2, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col>)");
+        interact.getPacketSender().sendString(VALUE_1, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col>)");
+        interact.getPacketSender().sendString(VALUE_2, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col>)");
         //Clear all interface frames to remove text of previously traded items.
         player.getPacketSender().sendString(ITEM_LIST_1_FRAME, "--clearall--"); // custom supported by client to clear all
         //Send new interface frames
@@ -505,10 +505,10 @@ public class Trading {
                 //Update value frames for both players
                 String plr_value = "" + container.containerValue();
                 String other_plr_value = "" + interact.getTrading().getContainer().containerValue();
-                player.getPacketSender().sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col> blood money)");
-                player.getPacketSender().sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col> blood money)");
-                interact.getPacketSender().sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col> blood money)");
-                interact.getPacketSender().sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col> blood money)");
+                player.getPacketSender().sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col>)");
+                player.getPacketSender().sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col>)");
+                interact.getPacketSender().sendString(ITEM_VALUE_1_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(other_plr_value) + "</col>)");
+                interact.getPacketSender().sendString(ITEM_VALUE_2_FRAME, "(Value: <col=ffffff>" + Utils.insertCommasToNumber(plr_value) + "</col>)");
                 player.getPacketSender().sendString(ROW_1, interact.getUsername() + " has " + interact.inventory().getFreeSlots());
                 player.getPacketSender().sendString(ROW_2, "free inventory");
                 player.getPacketSender().sendString(ROW_3, "slots.");
