@@ -89,10 +89,10 @@ public class Callisto extends CommonCombatMethod {
     private void roar(Npc npc, Mob target) {
         npc.putAttrib(AttributeKey.CALLISTO_ROAR, true);
         npc.animate(npc.attackAnimation());
-        int vecX = (target.getAbsX() - getClosestX(mob));
+        int vecX = (target.getAbsX() - Utils.getClosestX(mob, target.tile()));
         if (vecX != 0)
             vecX /= Math.abs(vecX); // determines X component for knockback
-        int vecY = (target.getAbsY() - getClosestY(mob));
+        int vecY = (target.getAbsY() - Utils.getClosestY(mob, target.tile()));
         if (vecY != 0)
             vecY /= Math.abs(vecY); // determines Y component for knockback
         int endX = target.getAbsX();
@@ -136,24 +136,6 @@ public class Callisto extends CommonCombatMethod {
             }
         }
         npc.clearAttrib(AttributeKey.CALLISTO_ROAR);
-    }
-
-    private int getClosestX(Mob mob) { // is this already added somewhere else? it's very useful, should be available somewhere public
-        if (target.getAbsX() < mob.getAbsX())
-            return mob.getAbsX();
-        else if (target.getAbsX() >= mob.getAbsX() && target.getAbsX() <= mob.getAbsX() + mob.getSize() - 1)
-            return target.getAbsX();
-        else
-            return mob.getAbsX() + mob.getSize() - 1;
-    }
-
-    private int getClosestY(Mob mob) { // is this already added somewhere else? it's very useful, should be available somewhere public
-        if (target.getAbsY() < mob.getAbsY())
-            return mob.getAbsY();
-        else if (target.getAbsY() >= mob.getAbsY() && target.getAbsY() <= mob.getAbsY() + mob.getSize() - 1)
-            return target.getAbsY();
-        else
-            return mob.getAbsY() + mob.getSize() - 1;
     }
 
 }

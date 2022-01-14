@@ -1005,4 +1005,9 @@ public class Npc extends Mob {
     public int getCoordFaceY(int sizeX, int sizeY, int rotation) {
         return tile.y + ((rotation == 1 || rotation == 3 ? sizeX : sizeY) - 1) / 2;
     }
+
+    @Override
+    public Tile getLastKnownRegion() {
+        return tile;
+    }
 }

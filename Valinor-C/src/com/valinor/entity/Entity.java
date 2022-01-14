@@ -177,6 +177,7 @@ public class Entity extends Renderable {
             int endY = destinationY * 128 + occupied_tiles * 64;
             world_x = (initialX * (remaining - elapsed) + endX * elapsed) / remaining;
             world_y = (initialY * (remaining - elapsed) + endY * elapsed) / remaining;
+            //System.out.println("end at "+initialX+" "+initialY+"  "+endX+" "+endY+" "+world_x+","+world_y);
         }
         step_tracker = 0;
 

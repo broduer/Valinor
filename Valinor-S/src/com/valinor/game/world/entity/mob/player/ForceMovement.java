@@ -12,8 +12,8 @@ public class ForceMovement {
     private int direction;
     
     public ForceMovement(Tile start, Tile end, int speed, int reverseSpeed, int direction) {
-        this.setStart(start);
-        this.setEnd(end);
+        this.setStart(start.clone());
+        this.setEnd(end.clone());
         this.setSpeed((short)speed);
         this.setReverseSpeed((short)reverseSpeed);
         this.setDirection((byte)direction);

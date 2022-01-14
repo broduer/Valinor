@@ -1788,7 +1788,6 @@ public class Player extends Mob {
     private final Inventory inventory = new Inventory(this);
     private final Equipment equipment = new Equipment(this);
     private final PriceChecker priceChecker = new PriceChecker(this);
-    private ForceMovement forceMovement;
     private final Stopwatch clickDelay = new Stopwatch();
     private EnterSyntax enterSyntax;
     private MagicSpellbook spellbook = MagicSpellbook.NORMAL;
@@ -2113,18 +2112,6 @@ public class Player extends Mob {
 
     public Equipment getEquipment() {
         return equipment;
-    }
-
-    public ForceMovement getForceMovement() {
-        return forceMovement;
-    }
-
-    public Player setForceMovement(ForceMovement forceMovement) {
-        this.forceMovement = forceMovement;
-        if (this.forceMovement != null) {
-            getUpdateFlag().flag(Flag.FORCED_MOVEMENT);
-        }
-        return this;
     }
 
     /**

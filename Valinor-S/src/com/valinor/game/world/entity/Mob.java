@@ -26,6 +26,7 @@ import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.UpdateFlag;
 import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.InfectionType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -1589,6 +1590,19 @@ public abstract class Mob extends Entity {
 
     public void setGraphicSwap(int graphicSwap) {
         this.graphicSwap = graphicSwap;
+    }
+
+    private ForceMovement forceMovement;
+    public ForceMovement getForceMovement() {
+        return forceMovement;
+    }
+
+    public Mob setForceMovement(ForceMovement forceMovement) {
+        this.forceMovement = forceMovement;
+        if (this.forceMovement != null) {
+            getUpdateFlag().flag(Flag.FORCED_MOVEMENT);
+        }
+        return this;
     }
 
 }

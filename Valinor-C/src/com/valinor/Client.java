@@ -10073,6 +10073,26 @@ public class Client extends GameApplet {
                 npc.current_hitpoints = hp;
                 npc.maximum_hitpoints = maxHp;
             }*/
+            if ((mask & 0x40) != 0) {//Use mask 0x40, ShadowRS removed it, so it opens one up for forcemovement
+                int initialX = stream.readUByteS();
+                int initialY = stream.readUByteS();
+                int destinationX = stream.readUByteS();
+                int destinationY = stream.readUByteS();
+                int startForceMovement = stream.readLEUShortA() + game_tick;
+                int endForceMovement = stream.readUShortA() + game_tick;
+                int direction = stream.readUByteS();
+
+                npc.initialX = initialX;
+                npc.initialY = initialY;
+                npc.destinationX = destinationX;
+                npc.destinationY = destinationY;
+                //System.out.println("from "+initialX+" "+initialY+" >> "+destinationX+" "+destinationX);
+                npc.initiate_movement = startForceMovement;
+                npc.cease_movement = endForceMovement;
+                npc.direction = direction;
+
+                npc.resetPath();
+            }
             if ((mask & 0x2) != 0) {//Transform
                 npc.desc = NpcDefinition.get(stream.readLEUShortA());
                 if (npc.desc != null) {

@@ -214,6 +214,7 @@ public class CommandManager {
         commands.put("showitem", new ShowItemOnWidgetCommand());
         commands.put("click", new ClickLinkCommand());
         commands.put("test", new TestCommand());
+        commands.put("pforce", new PForceMoveCmd());
         commands.put("projectile", new ProjectileCommand());
 
         commands.put("noclip", new NoclipCommandCommand());

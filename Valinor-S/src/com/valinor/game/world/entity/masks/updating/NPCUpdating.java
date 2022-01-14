@@ -41,7 +41,7 @@ public class NPCUpdating {
                 updateMovement(npc, packet);
                 npc.inViewport(true); // Mark as in viewport
                 if (npc.getUpdateFlag().isUpdateRequired()) {
-                    appendUpdates(npc, update);
+                    appendUpdates(player, npc, update);
                 }
             } else {
                 npcIterator.remove();
@@ -60,7 +60,7 @@ public class NPCUpdating {
                 npc.inViewport(true); // Mark as in viewport
                 //System.out.println(npc.getName()+" in viewport: "+npc.inViewport());
                 if (npc.getUpdateFlag().isUpdateRequired()) {
-                    appendUpdates(npc, update);
+                    appendUpdates(player, npc, update);
                 }
             }
         }
@@ -138,7 +138,7 @@ public class NPCUpdating {
      * @param block    The packet builder to write information on.
      * @return            The NPCUpdating instance.
      */
-    private static void appendUpdates(Npc npc, PacketBuilder block) {
+    private static void appendUpdates(Player player, Npc npc, PacketBuilder block) {
         int mask = 0;
         UpdateFlag flag = npc.getUpdateFlag();
         if (flag.flagged(Flag.ANIMATION) && npc.getAnimation() != null) {
@@ -159,6 +159,9 @@ public class NPCUpdating {
         /*if (flag.flagged(Flag.SECOND_SPLAT)) {
             mask |= 0x40;
         }*/
+        if (flag.flagged(Flag.FORCED_MOVEMENT) && npc.getForceMovement() != null) {
+            mask |= 0x40;
+        }
         if (flag.flagged(Flag.TRANSFORM)) {
             mask |= 0x2;
         }
@@ -185,6 +188,9 @@ public class NPCUpdating {
         /*if (flag.flagged(Flag.SECOND_SPLAT)) {
             updateDoubleHit(block, npc);
         }*/
+        if (flag.flagged(Flag.FORCED_MOVEMENT) && npc.getForceMovement() != null) {
+            updateForcedMovement(player, npc, block);
+        }
         if (flag.flagged(Flag.TRANSFORM)) {
             block.putShort(npc.transmog() <= 0 ? npc.id() : npc.transmog(), ValueType.A, ByteOrder.LITTLE);
         }
@@ -193,6 +199,26 @@ public class NPCUpdating {
             block.putShort(tile.getX() * 2 + 1, ByteOrder.LITTLE);
             block.putShort(tile.getY() * 2 + 1, ByteOrder.LITTLE);
         }
+    }
+
+    /**
+     * This update block is used to update forced npc movement.
+     * @param builder    The packet builder to write information on.
+     * @return            The NpcUpdating instance.
+     */
+    private static void updateForcedMovement(Player player, Npc npc, PacketBuilder builder) {
+        int startX = npc.getForceMovement().getStart().getLocalX(player.getLastKnownRegion());
+        int startY = npc.getForceMovement().getStart().getLocalY(player.getLastKnownRegion());
+        int endX = npc.getForceMovement().getEnd().getX();
+        int endY = npc.getForceMovement().getEnd().getY();
+
+        builder.put(startX, ValueType.S);
+        builder.put(startY, ValueType.S);
+        builder.put(startX + endX, ValueType.S);
+        builder.put(startY + endY, ValueType.S);
+        builder.putShort(npc.getForceMovement().getSpeed(), ValueType.A, ByteOrder.LITTLE);
+        builder.putShort(npc.getForceMovement().getReverseSpeed(), ValueType.A, ByteOrder.BIG);
+        builder.put(npc.getForceMovement().getDirection(), ValueType.S);
     }
 
     /**

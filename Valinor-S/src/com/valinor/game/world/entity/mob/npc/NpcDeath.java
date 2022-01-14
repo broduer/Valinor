@@ -90,8 +90,6 @@ public class NpcDeath {
                 }
             }
 
-            respawnTimer = 5;
-
             npc.getMovementQueue().clear();
             npc.lockNoDamage();
 
