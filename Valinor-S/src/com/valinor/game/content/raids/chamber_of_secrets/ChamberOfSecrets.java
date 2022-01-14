@@ -18,22 +18,13 @@ import com.valinor.util.Color;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
+import static com.valinor.util.CustomNpcIdentifiers.*;
 
 /**
  * @author Patrick van Elderen | April, 26, 2021, 16:58
  * @see <a href="https://github.com/PVE95">Github profile</a>
  */
 public class ChamberOfSecrets extends Raids {
-    
-    public final static int MALE_CENTAUR = 15030;
-    public final static int FEMALE_CENTAUR = 15032;
-    public final static int DEMENTOR = 15028;
-    public final static int ARAGOG = 15020;
-    public final static int ARAGOG_MINION = 134;
-    public final static int FLUFFY = 15026;
-    public final static int HUNGARIAN_HORNTAIL = 15034;
-    public final static int FENRIR_GREYBACK = 15050;
-    public final static int LORD_VOLDEMORT = 3443;
 
     @Override
     public boolean death(Player player) {

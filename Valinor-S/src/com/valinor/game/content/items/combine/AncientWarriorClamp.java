@@ -37,35 +37,37 @@ public class AncientWarriorClamp extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
-        if(item.getId() == ANCIENT_WARRIOR_AXE_C) {
-            player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Axe (c)?", "You will lose the Ancient Warrior Axe."}, "", "Proceed.", "Nevermind.", () -> {
-                if(!player.inventory().contains(ANCIENT_WARRIOR_AXE_C)) {
-                    return;
-                }
-                player.inventory().remove(new Item(ANCIENT_WARRIOR_AXE_C), true);
-                player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
-            });
-            return true;
-        }
-        if(item.getId() == ANCIENT_WARRIOR_MAUL_C) {
-            player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Maul (c)?", "You will lose the Ancient Warrior Maul."}, "", "Proceed.", "Nevermind.", () -> {
-                if(!player.inventory().contains(ANCIENT_WARRIOR_MAUL_C)) {
-                    return;
-                }
-                player.inventory().remove(new Item(ANCIENT_WARRIOR_MAUL_C), true);
-                player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
-            });
-            return true;
-        }
-        if(item.getId() == ANCIENT_WARRIOR_SWORD_C) {
-            player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Sword (c)?", "You will lose the Ancient Warrior Sword."}, "", "Proceed.", "Nevermind.", () -> {
-                if(!player.inventory().contains(ANCIENT_WARRIOR_SWORD_C)) {
-                    return;
-                }
-                player.inventory().remove(new Item(ANCIENT_WARRIOR_SWORD_C), true);
-                player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
-            });
-            return true;
+        if(option == 2) {
+            if (item.getId() == ANCIENT_WARRIOR_AXE_C) {
+                player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Axe (c)?", "You will lose the Ancient Warrior Axe."}, "", "Proceed.", "Nevermind.", () -> {
+                    if (!player.inventory().contains(ANCIENT_WARRIOR_AXE_C)) {
+                        return;
+                    }
+                    player.inventory().remove(new Item(ANCIENT_WARRIOR_AXE_C), true);
+                    player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
+                });
+                return true;
+            }
+            if (item.getId() == ANCIENT_WARRIOR_MAUL_C) {
+                player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Maul (c)?", "You will lose the Ancient Warrior Maul."}, "", "Proceed.", "Nevermind.", () -> {
+                    if (!player.inventory().contains(ANCIENT_WARRIOR_MAUL_C)) {
+                        return;
+                    }
+                    player.inventory().remove(new Item(ANCIENT_WARRIOR_MAUL_C), true);
+                    player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
+                });
+                return true;
+            }
+            if (item.getId() == ANCIENT_WARRIOR_SWORD_C) {
+                player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Sword (c)?", "You will lose the Ancient Warrior Sword."}, "", "Proceed.", "Nevermind.", () -> {
+                    if (!player.inventory().contains(ANCIENT_WARRIOR_SWORD_C)) {
+                        return;
+                    }
+                    player.inventory().remove(new Item(ANCIENT_WARRIOR_SWORD_C), true);
+                    player.inventory().addOrBank(new Item(ANCIENT_WARRIOR_CLAMP));
+                });
+                return true;
+            }
         }
         return false;
     }

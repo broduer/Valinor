@@ -6,6 +6,10 @@ package com.valinor.util;
  */
 public class CustomNpcIdentifiers {
 
+    public final static int MALE_CENTAUR = 15030;
+    public final static int FEMALE_CENTAUR = 15032;
+    public final static int ARAGOG_MINION = 134;
+    public final static int LORD_VOLDEMORT = 3443;
     public static final int SANTA = 15114;
     public static final int ANTI_SANTA = 15115;
     public static final int ANTI_SANTA_15116 = 15116;

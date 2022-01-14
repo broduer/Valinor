@@ -3,8 +3,6 @@ package com.valinor.cache.def.impl.npcs;
 import com.valinor.cache.def.NpcDefinition;
 import com.valinor.util.NpcIdentifiers;
 
-import static com.valinor.util.CustomItemIdentifiers.CENTAUR_FEMALE;
-import static com.valinor.util.CustomItemIdentifiers.CENTAUR_MALE;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 
 /**
@@ -124,7 +122,7 @@ public class CustomBosses {
             definition.walkingAnimation = 5539;
         }
 
-        if (id == CENTAUR_MALE) {
+        if (id == MALE_CENTAUR) {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;
@@ -135,7 +133,7 @@ public class CustomBosses {
             definition.walkingAnimation = 4310;
         }
 
-        if (id == CENTAUR_FEMALE) {
+        if (id == FEMALE_CENTAUR) {
             definition.name = "Centaur";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 126;

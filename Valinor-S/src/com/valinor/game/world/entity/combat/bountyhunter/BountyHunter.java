@@ -9,6 +9,7 @@ import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Utils;
@@ -250,6 +251,7 @@ public class BountyHunter {
 
                 var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 10;
                 killer.putAttrib(AttributeKey.PK_POINTS, pkp);
+                killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
                 killer.message("You were awarded with 10 extra PKP for killing your target! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
 
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);

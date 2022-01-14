@@ -2,6 +2,7 @@ package com.valinor.game.world.items.container.shop.currency.impl;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.container.shop.currency.Currency;
 
 /**
@@ -20,6 +21,7 @@ public class PkPointsCurrency implements Currency {
         int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
         if (pkPoints >= amount) {
             player.putAttrib(AttributeKey.PK_POINTS, pkPoints - amount);
+            player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
             return true;
         } else {
             player.message("You do not have enough pk points.");

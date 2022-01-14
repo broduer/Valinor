@@ -32,7 +32,7 @@ public class PerduDialogue extends Dialogue {
             if (option == 1) {
                 int cost = BreakItemsOnDeath.getRepairCost(player);
                 if(cost > 0) {
-                    send(DialogueType.NPC_STATEMENT, player.getInteractingNpcId(), Expression.HAPPY, "It will cost you " + Color.RED.tag() + "" + Utils.insertCommasToNumber(Integer.toString(cost)) + "</col> BM to fix your", "broken items.");
+                    send(DialogueType.NPC_STATEMENT, player.getInteractingNpcId(), Expression.HAPPY, "It will cost you " + Color.RED.tag() + "" + Utils.insertCommasToNumber(Integer.toString(cost)) + "</col> coins to fix your", "broken items.");
                     setPhase(2);
                 } else {
                     send(DialogueType.NPC_STATEMENT, player.getInteractingNpcId(), Expression.NOT_INTERESTED, "You do not have any broken items.");

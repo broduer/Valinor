@@ -74,13 +74,13 @@ import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.*;
 
-import static com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets.LORD_VOLDEMORT;
 import static com.valinor.game.world.InterfaceConstants.BARROWS_REWARD_WIDGET;
 import static com.valinor.game.world.entity.AttributeKey.MAXHIT_OVERRIDE;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.KRAKEN_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.TENTACLE_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomNpcIdentifiers.LORD_VOLDEMORT;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 

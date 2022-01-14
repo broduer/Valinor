@@ -47,9 +47,7 @@ public class ChamberOfSecretsReward {
             if (item == null)
                 continue;
             if (ChamberOfSecretsReward.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
-                Utils.sendDiscordInfoLog("Rare drop collected: " + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chambers of Secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-                World.getWorld().sendWorldMessage(worldMessage);
+                Utils.sendDiscordInfoLog("Rare drop collected: (COS)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }
         }
 
@@ -100,18 +98,34 @@ public class ChamberOfSecretsReward {
 
     private static final LootTable regularTable = new LootTable()
         .addTable(1,
-            new LootItem(ARMADYL_GODSWORD, 1, 1),
-            new LootItem(ARMADYL_CROSSBOW, 1, 1),
-            new LootItem(DONATOR_MYSTERY_BOX, 1, 1),
-            new LootItem(DRAGON_CROSSBOW, 1, 6),
-            new LootItem(DRAGON_THROWNAXE, World.getWorld().random(125, 250), 5),
-            new LootItem(DRAGON_KNIFE, World.getWorld().random(125, 250), 5),
-            new LootItem(BANDOS_GODSWORD, 1, 4),
-            new LootItem(ZAMORAK_GODSWORD, 1, 4),
-            new LootItem(SARADOMIN_GODSWORD, 1, 4),
-            new LootItem(DRAGONFIRE_SHIELD, 1, 3),
-            new LootItem(ABYSSAL_DAGGER_P_13271, 1, 5),
-            new LootItem(IMBUEMENT_SCROLL, 5, 4)
+            new LootItem(560, 10000, 1), // death rune
+            new LootItem(565, 10000, 1), // blood rune
+            new LootItem(566, 10000, 1), // soul rune
+            new LootItem(892, 2500, 1), // rune arrow
+            new LootItem(11212, 1000, 1), // dragon arrow
+            new LootItem(3050, 370, 1), // grimy toadflax
+            new LootItem(208, 250, 1), // grimy ranarr weed
+            new LootItem(210, 196, 1), // grimy irit
+            new LootItem(212, 370, 1), // grimy avantoe
+            new LootItem(214, 405, 1), // grimy kwuarm
+            new LootItem(3052, 200, 1), // grimy snapdragon
+            new LootItem(216, 400, 1), // grimy cadantine
+            new LootItem(2486, 293, 1), // grimy lantadyme
+            new LootItem(218, 212, 1), // grimy dwarf weed
+            new LootItem(220, 856, 1), // grimy torstol
+            new LootItem(443, 500, 1), // silver ore
+            new LootItem(454, 1000, 1), // coal
+            new LootItem(445, 1000, 1), // gold ore
+            new LootItem(448, 500, 1), // mithril ore
+            new LootItem(450, 350, 1), // adamantite ore
+            new LootItem(452, 200, 1), // runite ore
+            new LootItem(1624, 250, 1), // uncut sapphire
+            new LootItem(1622, 225, 1), // uncut emerald
+            new LootItem(1620, 200, 1), // uncut ruby
+            new LootItem(1618, 175, 1), // uncut diamond
+            new LootItem(7937, 10000, 1), // pure essence
+            new LootItem(8781, 500, 1), // teak plank
+            new LootItem(8783, 500, 1) // mahogany plank
         );
 
     private static int doubleChestRoll(Player player) {
@@ -151,6 +165,8 @@ public class ChamberOfSecretsReward {
                 Item item = rollUnique();
                 boolean added = player.getRaidRewards().add(item);
                 BOSSES.log(player, COS_RAIDS_KEY, item);
+                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Secrets! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cos_reward");
                 rare = player;
             }

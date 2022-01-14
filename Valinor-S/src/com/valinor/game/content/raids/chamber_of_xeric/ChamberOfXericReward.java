@@ -13,8 +13,7 @@ import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.COX_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.game.content.collection_logs.LogType.OTHER;
-import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.DARK_JOURNAL;
 
 /**
  * @author Patrick van Elderen | May, 13, 2021, 12:29
@@ -55,8 +54,7 @@ public class ChamberOfXericReward {
             if (item == null)
                 continue;
             if (ChamberOfXericReward.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chambers of Xerics</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-                World.getWorld().sendWorldMessage(worldMessage);
+                Utils.sendDiscordInfoLog("Rare drop collected: (COX)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }
         }
         player.getRaidRewards().clear();
@@ -161,6 +159,8 @@ public class ChamberOfXericReward {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
             BOSSES.log(player, COX_RAIDS_KEY, item);
+            String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of xeric</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+            World.getWorld().sendWorldMessage(worldMessage);
             Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cox_reward");
             rare = player;
         }

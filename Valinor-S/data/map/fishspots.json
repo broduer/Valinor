@@ -1,5 +1,45 @@
 [
   {
+    // Home bait 1
+    "spot": "NET_BAIT",
+    "tiles": [
+      {
+        "x": 3085,
+        "y": 3460
+      }
+    ]
+  },
+  {
+    // Home bait 2
+    "spot": "NET_BAIT",
+    "tiles": [
+      {
+        "x": 3082,
+        "y": 3460
+      }
+    ]
+  },
+  {
+    // Home lobster 1
+    "spot": "CAGE_HARPOON",
+    "tiles": [
+      {
+        "x": 3084,
+        "y": 3460
+      }
+    ]
+  },
+  {
+    // Home lobster 2
+    "spot": "CAGE_HARPOON",
+    "tiles": [
+      {
+        "x": 3088,
+        "y": 3458
+      }
+    ]
+  },
+  {
     // Camelot bait 1
     "spot": "NET_BAIT",
     "tiles": [

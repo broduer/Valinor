@@ -220,9 +220,9 @@ public class CustomItemIdentifiers {
     public static final int ANCIENT_WARRIOR_SWORD = 7806;
     public static final int ANCIENT_WARRIOR_MAUL = 7808;
     public static final int ANCIENT_WARRIOR_AXE = 7807;
-    public static final int ANCIENT_WARRIOR_SWORD_C = 32983;
-    public static final int ANCIENT_WARRIOR_MAUL_C = 31985;
-    public static final int ANCIENT_WARRIOR_AXE_C = 32984;
+    public static final int ANCIENT_WARRIOR_SWORD_C = 31983;
+    public static final int ANCIENT_WARRIOR_MAUL_C = 31981;
+    public static final int ANCIENT_WARRIOR_AXE_C = 31984;
     public static final int VALINOR_COINS = 17000;
     public static final int KEY_OF_DROPS = 2944;
     public static final int LAVA_WHIP = 12773;

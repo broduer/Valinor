@@ -76,6 +76,7 @@ public class PointMysteryBox extends Interaction {
                     var pkPoints = player.<Integer>getAttribOr(PK_POINTS, 0) + amount;
                     player.putAttrib(PK_POINTS, pkPoints);
                     player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
+
                     Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" pk points.", "boxes_opened");
                 }
 

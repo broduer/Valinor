@@ -87,7 +87,7 @@ public enum SlayerCreature {
     JELLIES(50, 52, 57, new Tile(2704,10026), NpcIdentifiers.JELLY, NpcIdentifiers.JELLY_438, NpcIdentifiers.JELLY_439, NpcIdentifiers.JELLY_440, NpcIdentifiers.JELLY_441, NpcIdentifiers.JELLY_442, NpcIdentifiers.WARPED_JELLY, NpcIdentifiers.VITREOUS_JELLY, NpcIdentifiers.VITREOUS_WARPED_JELLY),
     ROCKSLUG(51, 20, 20, new Tile(2801,10017), NpcIdentifiers.ROCKSLUG, NpcIdentifiers.ROCKSLUG_422, NpcIdentifiers.GIANT_ROCKSLUG),
     NECHRYAEL(52, 80, 85, new Tile(3441,3566,2), NpcIdentifiers.NECHRYAEL, NpcIdentifiers.NECHRYAEL_11, NpcIdentifiers.NECHRYARCH, NpcIdentifiers.GREATER_NECHRYAEL),
-    KALPHITES(53, 1, 15, new Tile(3506,9524), NpcIdentifiers.KALPHITE_QUEEN_6500, NpcIdentifiers.KALPHITE_QUEEN_6501, NpcIdentifiers.KALPHITE_WORKER, NpcIdentifiers.KALPHITE_WORKER_956, NpcIdentifiers.KALPHITE_SOLDIER_957, NpcIdentifiers.KALPHITE_SOLDIER_958, NpcIdentifiers.KALPHITE_GUARDIAN, NpcIdentifiers.KALPHITE_GUARDIAN_960, NpcIdentifiers.KALPHITE_WORKER_961, NpcIdentifiers.KALPHITE_GUARDIAN_962),
+    KALPHITES(53, 1, 15, new Tile(3491,9515), NpcIdentifiers.KALPHITE_QUEEN_6500, NpcIdentifiers.KALPHITE_QUEEN_6501, NpcIdentifiers.KALPHITE_WORKER, NpcIdentifiers.KALPHITE_WORKER_956, NpcIdentifiers.KALPHITE_SOLDIER_957, NpcIdentifiers.KALPHITE_SOLDIER_958, NpcIdentifiers.KALPHITE_GUARDIAN, NpcIdentifiers.KALPHITE_GUARDIAN_960, NpcIdentifiers.KALPHITE_WORKER_961, NpcIdentifiers.KALPHITE_GUARDIAN_962),
     EARTH_WARRIORS(54, 1, 35, null, new Tile(3121,9975), NpcIdentifiers.EARTH_WARRIOR),
     OTHERWORLDLY_BEINGS(55, 1, 40, null, NpcIdentifiers.OTHERWORLDLY_BEING),
     ELVES(56, 1, 70, null, NpcIdentifiers.ELF_ARCHER, NpcIdentifiers.ELF_ARCHER_5296, NpcIdentifiers.ELF_WARRIOR, NpcIdentifiers.ELF_WARRIOR_5294),

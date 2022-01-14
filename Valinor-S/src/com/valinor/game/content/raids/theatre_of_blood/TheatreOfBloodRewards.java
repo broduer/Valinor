@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
+import com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecretsReward;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -50,6 +51,13 @@ public class TheatreOfBloodRewards {
 
     public static void withdrawReward(Player player) {
         player.inventory().addOrBank(player.getRaidRewards().getItems());
+        for (Item item : player.getRaidRewards().getItems()) {
+            if (item == null)
+                continue;
+            if (TheatreOfBloodRewards.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
+                Utils.sendDiscordInfoLog("Rare drop collected: (TOB)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
+            }
+        }
         player.getRaidRewards().clear();
 
         //Roll for pet
