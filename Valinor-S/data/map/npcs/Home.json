@@ -1,5 +1,23 @@
 [
   {
+    "name": "PVP Combat dummy",
+    "id": 2668,
+    "x": 3091,
+    "y": 3514,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 0
+  },
+  {
+    "name": "PVM Combat dummy",
+    "id": 7413,
+    "x": 3093,
+    "y": 3514,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 0
+  },
+  {
     "name": "Grand Exchange Clerk",
     "id": 2148,
     "x": 3091,

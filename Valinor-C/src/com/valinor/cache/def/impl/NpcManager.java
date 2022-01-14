@@ -13,6 +13,7 @@ public class NpcManager {
 
         switch (id) {
 
+
             //Somehow these npcs are not clickable
             case SARACHNIS:
             case PESTILENT_BLOAT:
@@ -218,9 +219,17 @@ public class NpcManager {
                 break;
 
             case COMBAT_DUMMY:
+                definition.name = "PVP combat dummy";
                 definition.actions = new String[]{null, "Attack", null, null, null};
                 definition.hasRenderPriority = true;
                 break;
+
+            case UNDEAD_COMBAT_DUMMY:
+                definition.name = "PVM combat dummy";
+                definition.actions = new String[]{null, "Attack", null, null, null};
+                definition.hasRenderPriority = true;
+                break;
+
             case ROCK_CRAB:
             case ROCK_CRAB_102:
                 definition.hasRenderPriority = true;
