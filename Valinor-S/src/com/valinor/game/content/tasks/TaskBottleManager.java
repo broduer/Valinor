@@ -130,7 +130,7 @@ public class TaskBottleManager {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (task.getTaskRequirements() != null) {
+        if (task != null && task.getTaskRequirements() != null) {
             stringBuilder.append("Requirement:<br>");
             for (String s : task.getTaskRequirements()) {
                 if(s.isEmpty())

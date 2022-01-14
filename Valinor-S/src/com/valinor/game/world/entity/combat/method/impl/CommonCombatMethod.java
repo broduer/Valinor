@@ -55,19 +55,18 @@ public abstract class CommonCombatMethod implements CombatMethod {
         mob.getTimers().cancel(TimerKey.FROZEN);
     }
 
-    public ArrayList<Mob> getPossibleTargets() {
-        return getPossibleTargets(14, true, false);
+    public ArrayList<Mob> getPossibleTargets(Mob mob) {
+        return getPossibleTargets(mob,14, true, false);
     }
 
-    public ArrayList<Mob> getPossibleTargets(int ratio, boolean players, boolean npcs) {
+    public ArrayList<Mob> getPossibleTargets(Mob mob, int ratio, boolean players, boolean npcs) {
         ArrayList<Mob> possibleTargets = new ArrayList<>();
         if (players) {
             for (Player player : World.getWorld().getPlayers()) {
                 if (player == null || player.dead() || player
                     .tile()
                     .distance(
-                        mob
-                            .getCentrePosition()) > ratio) {
+                        mob.getCentrePosition()) > ratio) {
                     continue;
                 }
                 possibleTargets.add(player);

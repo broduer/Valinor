@@ -2,7 +2,6 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness;
 
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -11,12 +10,8 @@ import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.routes.DumbRoute;
-import com.valinor.util.NpcIdentifiers;
-import com.valinor.util.TickDelay;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.NpcIdentifiers.SCORPIA;
@@ -42,7 +37,7 @@ public class Scorpia extends CommonCombatMethod {
         }
     }
 
-    private void spawnGuardians(Mob mob) {
+    private void spawnGuardians(Mob mob, Mob target) {
         if (!spawnedGuardians && mob.hp() < 100) {
             spawnedGuardians = true;
             Area bounds = new Area(mob.getAbsX(), mob.getAbsY(), mob.getAbsX() + mob.getSize() - 1, mob.getAbsY() + mob.getSize() - 1, 0);
@@ -53,7 +48,7 @@ public class Scorpia extends CommonCombatMethod {
                 guardian.graphic(144, 20, 0);
                 Chain.bound(null).name("ScorpiaGuardiansTask").repeatingTask(4, t -> {
 
-                    if (guardian.dead() || target.dead() || !mob.getCombat().inCombat()) {
+                    if ((guardian != null && guardian.dead()) || target.dead() || !mob.getCombat().inCombat()) {
                         t.stop();
                         return;
                     }
@@ -81,7 +76,7 @@ public class Scorpia extends CommonCombatMethod {
     @Override
     public void onHit(Mob mob, Mob target, Hit hit) {
         if (mob.isNpc() && mob.getAsNpc().id() == SCORPIA) {
-            spawnGuardians(mob);
+            spawnGuardians(mob, target);
         }
     }
 

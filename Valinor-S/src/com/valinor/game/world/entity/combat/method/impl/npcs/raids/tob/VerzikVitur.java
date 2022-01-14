@@ -47,7 +47,7 @@ public class VerzikVitur extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         set(mob, target);
-        List<Mob> targets = getPossibleTargets();
+        List<Mob> targets = getPossibleTargets(mob);
         final Tile tile = target.tile();
         if (mob.getAsNpc().id() == VERZIK_VITUR_8370) {
             mob.animate(CHAIR_ATTACK);
@@ -216,7 +216,7 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public boolean customOnDeath(Mob mob) {
-        List<Mob> targets = getPossibleTargets();
+        List<Mob> targets = getPossibleTargets(mob);
         target = Utils.randomElement(targets);
         return transform(mob, ((Player) target));
     }
@@ -227,7 +227,7 @@ public class VerzikVitur extends CommonCombatMethod {
             return false;
         }
         if (mob.getAsNpc().id() == VERZIK_VITUR_8370) {
-            List<Mob> targets = getPossibleTargets();
+            List<Mob> targets = getPossibleTargets(mob);
             mob.getAsNpc().canAttack(false);
             mob.animate(OUT_OF_CHAIR);
             mob.getCombat().reset();

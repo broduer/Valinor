@@ -97,7 +97,7 @@ public class PestilentBloat extends CommonCombatMethod {
         }
         mob.getAsNpc().noRetaliation(true);
         mob.getTimers().cancel(TimerKey.FROZEN);
-        targets = getPossibleTargets();
+        targets = getPossibleTargets(mob);
         if (corner >= corners.length) {
             corner = 0;
         }

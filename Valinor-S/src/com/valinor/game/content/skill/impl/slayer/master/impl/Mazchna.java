@@ -91,7 +91,9 @@ public class Mazchna extends Interaction {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.NPC_STATEMENT, MAZCHNA, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", ""+num+" "+Slayer.taskName(task.uid)+".");
+                String n = Slayer.taskName(task.uid);
+                String taskName = n == null ? "NULL" : n;
+                send(DialogueType.NPC_STATEMENT, MAZCHNA, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", ""+num+" "+taskName+".");
                 setPhase(0);
             }
 

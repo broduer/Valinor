@@ -35,7 +35,7 @@ public class Sotetseg extends CommonCombatMethod {
 
                 int cycle = 0;
                 int inRange = 0;
-                final List<Mob> targets = getPossibleTargets();
+                final List<Mob> targets = getPossibleTargets(mob);
                 final int damage = targets.size() > 2 ? World.getWorld().random(135, 150) : World.getWorld().random(55, 70);
 
                 @Override
@@ -70,7 +70,7 @@ public class Sotetseg extends CommonCombatMethod {
         //Normal attack
         Task task = new Task("SotetsegNormalAttackTask", 1) {
             int cycle = 0;
-            final List<Mob> chainable = getPossibleTargets();
+            final List<Mob> chainable = getPossibleTargets(mob);
 
             @Override
             public void execute() {

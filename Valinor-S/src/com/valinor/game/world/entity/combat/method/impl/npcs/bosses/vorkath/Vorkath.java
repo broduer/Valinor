@@ -373,7 +373,7 @@ public class Vorkath extends CommonCombatMethod {
                 && !t.isWithinDistance(target.getCentrePosition(), 3)
                 && mob.getAsNpc().spawnTile().y - t.y <= 8));
         new Projectile(mob.getCentrePosition(), pos, 0, 1484, 65, 20, 20, 20, 1).sendProjectile();
-        mob.repeatingTask(t -> { // ok to run forever, shouldnt get interrupted
+        mob.repeatingTask(t -> { // ok to run forever, shouldn't get interrupted
             mob.putAttrib(VORKATH_CB_COOLDOWN, 5);
             if (t.tick == 3) {
                 spawn = new Npc(ZOMBIFIED_SPAWN_8063, pos).respawns(false);
@@ -408,7 +408,7 @@ public class Vorkath extends CommonCombatMethod {
                         player.getVorkathInstance().npcList.remove(spawn);
                     }
                 } else {
-                    if (spawn != null && spawn.tile().distance(target.tile()) <= 1) {
+                    if (spawn != null && target != null && spawn.tile().distance(target.tile()) <= 1) {
                         spawn.hit(spawn, spawn.hp());
                         target.hit(mob,60, 1);
                         spawn.graphic(157);

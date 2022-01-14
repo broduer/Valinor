@@ -21,7 +21,7 @@ public class Cerberus extends CommonCombatMethod {
     private final TickDelay spreadLavaCooldown = new TickDelay();
     private boolean combatAttack = false;
 
-    private void rangedAttack() {
+    private void rangedAttack(Mob mob, Mob target) {
         //mob.forceChat("RANGE");
         var tileDist = mob.tile().distance(target.tile());
         var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
@@ -31,7 +31,7 @@ public class Cerberus extends CommonCombatMethod {
         target.delayedGraphics(1244, 100, delay + 1);
     }
 
-    private void magicAttack() {
+    private void magicAttack(Mob mob, Mob target) {
         //mob.forceChat("MAGIC");
         var tileDist = mob.tile().distance(target.tile());
         var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
@@ -47,35 +47,35 @@ public class Cerberus extends CommonCombatMethod {
         }
     }
 
-    private void meleeAttack(boolean animate) {
+    private void meleeAttack(Mob mob, Mob target, boolean animate) {
         if (animate)
             mob.animate(mob.attackAnimation());
         target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().submit();
     }
 
-    private void comboAttack() {
+    private void comboAttack(Mob mob, Mob target) {
         mob.animate(4490); // triple attack
         combatAttack = true;
         //mob.forceChat("MAGIC COMBO");
-        magicAttack();
+        magicAttack(mob, target);
         mob.runFn(2, () -> {
             //mob.forceChat("RANGED COMBO");
             if (mob == null || target.dead()) {
                 return;
             }
-            rangedAttack();
+            rangedAttack(mob, target);
         }).then(2, () -> {
             combatAttack = true;
             if (!CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
                 return;
             }
             //mob.forceChat("MELEE COMBO");
-            meleeAttack(false);
+            meleeAttack(mob, target,false);
         });
         comboAttackCooldown.delay(66); // ~40 seconds cooldown
     }
 
-    private void spreadLava() {
+    private void spreadLava(Mob mob, Mob target) {
         spreadLavaCooldown.delay(36);
         mob.animate(4493);
         mob.forceChat("Grrrrrrrrrr");
@@ -119,17 +119,17 @@ public class Cerberus extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         if (!comboAttackCooldown.isDelayed()) {
-            comboAttack();
+            comboAttack(mob, target);
         }
         if (mob.hp() <= 200 && !spreadLavaCooldown.isDelayed()) {
-            spreadLava();
+            spreadLava(mob, target);
         }
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target) && Utils.rollPercent(25)) {
-            meleeAttack(true);
+            meleeAttack(mob, target,true);
         } else if (Utils.rollPercent(50)) {
-            magicAttack();
+            magicAttack(mob, target);
         } else {
-            rangedAttack();
+            rangedAttack(mob, target);
         }
     }
 

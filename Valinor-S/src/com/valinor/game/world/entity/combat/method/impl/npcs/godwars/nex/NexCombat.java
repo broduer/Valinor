@@ -70,7 +70,7 @@ public class NexCombat extends CommonCombatMethod {
         nex.animate(VIRUS_ATTACK_ANIM);
         nex.setLastVirus(Utils.currentTimeMillis() + 60000);
         nex.forceChat("Let the virus flow through you.");
-        sendVirusAttack(nex, new ArrayList<>(), getPossibleTargets(), target);
+        sendVirusAttack(nex, new ArrayList<>(), getPossibleTargets(nex), target);
     }
 
     public void sendVirusAttack(Nex nex, ArrayList<Mob> hit, ArrayList<Mob> possibleTargets, Mob infected) {
@@ -89,7 +89,7 @@ public class NexCombat extends CommonCombatMethod {
     private void smokeRushAttack(Nex nex) {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, 32);
         nex.animate(MAGIC_ATTACK_ANIM);
-        for(Mob t : getPossibleTargets()) {
+        for(Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 384, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
             if (World.getWorld().rollDie(100, 25)) {
@@ -142,7 +142,7 @@ public class NexCombat extends CommonCombatMethod {
                 @Override
                 public void execute() {
                     npc.graphic(2013);
-                    ArrayList<Mob> possibleTargets = getPossibleTargets();
+                    ArrayList<Mob> possibleTargets = getPossibleTargets(mob);
                     if (possibleTargets != null) {
                         for (Mob mob : possibleTargets) {
                             if (mob == null || mob.dead() || !mob.isRegistered() || !mob.tile().isWithinDistance(npc.tile(), 10))

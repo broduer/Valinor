@@ -645,7 +645,10 @@ public class NpcDeath {
                     npc.animate(8278);
                 });
             } else {
-                int anim = npc.combatInfo() != null ? npc.combatInfo().animations.death : -1;
+                int anim = -1;
+                if(npc != null && npc.combatInfo() != null) {
+                    anim = npc.combatInfo().animations.death;
+                }
                 npc.animate(anim);
             }
 

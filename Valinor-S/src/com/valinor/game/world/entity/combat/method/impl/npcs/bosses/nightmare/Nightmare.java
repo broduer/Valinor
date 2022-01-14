@@ -159,7 +159,7 @@ public class Nightmare extends Npc {
         }
 
         if (isAttackable() && !getCombat().inCombat() && getCombat().getTarget() == null) {
-            for (Mob mob : getCombatMethod().getPossibleTargets()) {
+            for (Mob mob : getCombatMethod().getPossibleTargets(this)) {
                 getCombat().setTarget(mob);
                 break;
             }

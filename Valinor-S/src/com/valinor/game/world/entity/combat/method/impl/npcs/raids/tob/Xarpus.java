@@ -50,7 +50,7 @@ public class Xarpus extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        List<Mob> targets = getPossibleTargets();
+        List<Mob> targets = getPossibleTargets(mob);
         if (phase == 1) { //poison pools		
             mob.animate(8059);
             final Tile tile = target.tile();
@@ -124,7 +124,7 @@ public class Xarpus extends CommonCombatMethod {
     @Override
     public void process(Mob mob, Mob target) {
         super.process(mob, target);
-        List<Mob> targets = getPossibleTargets();
+        List<Mob> targets = getPossibleTargets(mob);
         Optional<Mob> u = targets.stream().filter(t -> t.tile().isWithinDistance(mob.tile(), 6)).findAny();
         if (phase == 0 && exumedCount < 10 && u.isPresent()) {
             if (healingTask == null) {

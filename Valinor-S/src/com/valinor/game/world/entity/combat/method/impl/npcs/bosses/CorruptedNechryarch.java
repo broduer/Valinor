@@ -30,7 +30,7 @@ public class CorruptedNechryarch extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
        if (!acidAttackCooldown.isDelayed()) {
-            acid_attack(mob, target);
+            acid_attack(mob);
         }
         boolean close = target.tile().isWithinDistance(mob.tile(),2);
         if (close && World.getWorld().rollDie(3))
@@ -49,7 +49,7 @@ public class CorruptedNechryarch extends CommonCombatMethod {
         return 8;
     }
 
-    private void acid_attack(Mob mob, Mob target) {
+    private void acid_attack(Mob mob) {
         acidAttackCooldown.delay(50);
         Tile lastAcidPos = mob.tile();
 
@@ -99,8 +99,8 @@ public class CorruptedNechryarch extends CommonCombatMethod {
     }
 
     private void magic_attack(Mob mob, Mob target) {
-        mob.animate(7550); // there
-        Arrays.stream(mob.closePlayers(16, 16)).forEach(p -> {
+        mob.animate(7550);
+        World.getWorld().getPlayers().forEachInRegion(7484, p -> {
             if (p != null && ProjectileRoute.allow(mob, p)) {
                 var tileDist = mob.tile().transform(3, 3, 0).distance(p.tile());
                 var delay = Math.max(1, (20 + (tileDist * 12)) / 30);

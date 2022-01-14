@@ -1,5 +1,6 @@
 package com.valinor.game.content.boss_event;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -112,9 +113,9 @@ public class WorldBossEvent {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(LAVA_DRAGON_BONES), npc.tile(), player));
                 }
 
-                if(npc.id() == GRIM) {
+                /*if(npc.id() == GRIM) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(HWEEN_TOKENS, World.getWorld().random(500, 5000)), npc.tile(), player));
-                }
+                }*/
 
                 //Always drop random coins
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(1_000_000, 5_000_000)), npc.tile(), player));
@@ -182,9 +183,16 @@ public class WorldBossEvent {
         // First despawn the npc if existing
         terminateActiveEvent(true);
 
-        if (nextIsPeriodicEventBoss) {
-            nextIsPeriodicEventBoss = false;
-            activeEvent = WorldBosses.GRIM;
+        if(GameServer.properties().halloween || GameServer.properties().christmas) {
+            if (nextIsPeriodicEventBoss) {
+                nextIsPeriodicEventBoss = false;
+                activeEvent = GameServer.properties().halloween ? WorldBosses.GRIM : null;//TODO xmas boss
+            } else {
+                if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
+                    lastEvent = 0;
+                activeEvent = EVENT_ROTATION[lastEvent];
+                nextIsPeriodicEventBoss = true;
+            }
         } else {
             if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
                 lastEvent = 0;

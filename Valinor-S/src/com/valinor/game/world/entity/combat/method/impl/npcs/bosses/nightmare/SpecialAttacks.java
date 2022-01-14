@@ -100,7 +100,7 @@ public enum SpecialAttacks {
                 return;
             }
             int size = nm.playersInRegion() > 1 ? nm.playersInRegion() / 2 : nm.playersInRegion();
-            ArrayList<Mob> targets = nm.getCombatMethod().getPossibleTargets(64, true, false);
+            ArrayList<Mob> targets = nm.getCombatMethod().getPossibleTargets(nm, 64, true, false);
             Collections.shuffle(targets);
             for (int i = 0; i < size; i++) {
                 Player target = (Player) targets.get(i);
@@ -220,7 +220,7 @@ public enum SpecialAttacks {
     PARASITES(8606, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-            for (Mob victim : nm.getCombatMethod().getPossibleTargets()) {
+            for (Mob victim : nm.getCombatMethod().getPossibleTargets(nm)) {
                 Player p = (Player) victim;
                 if (World.getWorld().random(6) == 3) continue;
                 Projectile pr = new Projectile(nm, victim, 1770, 30, 66, 110, 90, 0);
@@ -230,7 +230,7 @@ public enum SpecialAttacks {
             }
             final List<Parasite> parasites = new ArrayList<Parasite>();
             Chain.bound(null).runFn(28, () -> {
-                for (Mob victim : nm.getCombatMethod().getPossibleTargets()) {
+                for (Mob victim : nm.getCombatMethod().getPossibleTargets(nm)) {
                     if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
                         Player p = (Player) victim;
                         p.message("<col=ff0000>The parasite bursts out of you, fully grown!");
@@ -238,7 +238,7 @@ public enum SpecialAttacks {
                     }
                 }
             }).then(2, () -> {
-                for (Mob victim : nm.getCombatMethod().getPossibleTargets()) {
+                for (Mob victim : nm.getCombatMethod().getPossibleTargets(nm)) {
                     if (victim.<Boolean>getAttribOr(AttributeKey.NIGHTMARE_BABY_DADY, false)) {
                         victim.graphic(1765);
                         Parasite parasite = (Parasite) new Parasite(World.getWorld().random(5) == 3 ? 9469 : 9468, victim.tile().copy()).spawn(false);

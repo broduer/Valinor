@@ -27,7 +27,7 @@ public class CorporealBeast extends CommonCombatMethod {
     public static final Area CORPOREAL_BEAST_AREA = new Area(2974, 4371, 2998, 4395);
 
     private Task stompTask;
-    private void checkStompTask() {
+    private void checkStompTask(Mob mob, Mob target) {
         if (stompTask == null) {
             stompTask = new Task("checkStompTask",7) {
                 @Override
@@ -65,7 +65,7 @@ public class CorporealBeast extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        checkStompTask();
+        checkStompTask(mob, target);
         //Check if we're able to melee our opponent.. and if we are, roll a die to smack em in the mouth
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target) && Utils.rollDie(3, 1)) {
             //The Melee attack is only used when the player is standing in Melee distance and can hit up to 33.

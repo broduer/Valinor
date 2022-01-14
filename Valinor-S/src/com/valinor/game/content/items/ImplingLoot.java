@@ -267,7 +267,10 @@ public class ImplingLoot extends Interaction {
                 //Generate loot
                 Item loot;
                 loot = implingJar.lootTable.rollItem();
-                player.inventory().add(loot);
+                if (loot != null)
+                    player.inventory().add(loot);
+                else
+                    player.message("[Error]: No loot found, contact a staff member.");
             }
         }
     }
