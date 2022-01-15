@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.wilderness;
 
+import com.valinor.GameServer;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.TickAndStop;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -62,7 +63,7 @@ public class DesertedKeepLever extends Interaction {
                 TaskManager.submit(new TickAndStop(4) {
                     @Override
                     public void executeAndStop() {
-                        Tile targetTile = new Tile(3090, 3475);
+                        Tile targetTile = GameServer.properties().defaultTile;
                         player.teleport(targetTile);
                         player.animate(-1);
                         player.message("...And teleport out of the wilderness.");
