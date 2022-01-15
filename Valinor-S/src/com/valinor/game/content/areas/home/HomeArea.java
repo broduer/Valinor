@@ -215,6 +215,11 @@ public class HomeArea extends Interaction {
                 EquipmentInfo info = World.getWorld().equipmentInfo();
                 int targetSlot = info.slotFor(item.getId());
 
+                if(player.getEquipment().hasWeapon() && player.getEquipment().getWeapon().isTwoHanded()) {
+                    player.message(Color.RED.wrap("You cannot take this shield right now."));
+                    return true;
+                }
+
                 if (player.getEquipment().isSlotOccupied(targetSlot)) {
                     player.message(Color.RED.wrap("You are already wearing a shield."));
                     return true;
