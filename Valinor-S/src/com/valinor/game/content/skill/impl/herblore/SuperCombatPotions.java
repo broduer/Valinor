@@ -88,7 +88,7 @@ public class SuperCombatPotions {
 
             @Override
             public void fourthOption(Player player) {
-                player.action.execute(mix(player, 6), true);
+                player.action.execute(mix(player, 7), true);
             }
         };
     }
