@@ -4,6 +4,7 @@ import com.valinor.game.content.mechanics.MultiwayCombat;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -215,7 +216,7 @@ public class DwarfCannon extends OwnedObject {
             var tileDist = owner.tile().transform(3, 3, 0).distance(npc.tile());
             var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
 
-            npc.hit(owner, World.getWorld().random(MAX_HIT), delay);
+            npc.hit(owner, World.getWorld().random(MAX_HIT), delay, CombatType.RANGED);
             setAmmo(getAmmo() - 1);
             if (getAmmo() <= 0) {
                 owner.message("Your cannon is out of ammo!");
