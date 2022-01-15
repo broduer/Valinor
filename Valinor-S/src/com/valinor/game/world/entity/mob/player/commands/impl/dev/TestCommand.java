@@ -3,10 +3,12 @@ package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 import com.valinor.GameServer;
 import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.raids.party.Party;
+import com.valinor.game.content.raids.theatre_of_blood.SupplyChest;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Nex;
@@ -33,90 +35,26 @@ import static com.valinor.util.NpcIdentifiers.NEX;
 public class TestCommand implements Command {
 
     private final List<Item> itemList = Arrays.asList(
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
+        new Item(STAMINA_POTION4),
+        new Item(PRAYER_POTION4),
+        new Item(SARADOMIN_BREW4),
+        new Item(SUPER_RESTORE4),
 
         //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-
-    //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-
-    //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-
-    //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-
-    //Row
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151),
-        new Item(4151)
+        new Item(EGG_POTATO),
+        new Item(SHARK),
+        new Item(SEA_TURTLE),
+        new Item(MANTA_RAY)
     );
 
     @Override
     public void execute(Player player, String command, String[] parts) {
         //System.out.println(player.pet().def().name);
-        //player.getPacketSender().sendItemOnInterface(67541, itemList);
-        //player.sound(2401); // need to add cmd back?
+        //player.getPacketSender().sendItemOnInterface(12236, itemList);
+        //player.sound(2401);
         //ZarosGodwars.end();
 
-        // clear slots
-        player.getPacketSender().sendItemOnInterfaceSlot(12222, null, 0);
-        player.getPacketSender().sendItemOnInterfaceSlot(12223, null, 0);
-        player.getPacketSender().sendItemOnInterfaceSlot(12224, null, 0);
-
-        player.getPacketSender().sendItemOnInterfaceSlot(12222, new Item(TARROMIN_TAR, 43), 0);
-        player.getPacketSender().sendItemOnInterfaceSlot(12223, new Item(GRIMY_LANTADYME,2), 0);
-        player.getPacketSender().sendItemOnInterfaceSlot(12224, new Item(RUNITE_ORE,4), 0);
+        player.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 100);
 
         player.message("Test command has been activated.");
     }

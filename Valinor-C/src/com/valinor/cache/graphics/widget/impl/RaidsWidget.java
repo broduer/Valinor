@@ -16,6 +16,7 @@ public class RaidsWidget extends Widget {
         reward();
         party(font);
         rewardTob(font);
+        tobShop(font);
     }
 
     private static void party(AdvancedFont[] font) {
@@ -121,6 +122,38 @@ public class RaidsWidget extends Widget {
         setBounds(12226, 215, 82, 5, widget);
     }
 
+    private static void tobShop(AdvancedFont[] font) {
+        Widget widget = addInterface(12230);
+        addSprite(12231,1937);
+        closeButton(12232,107,108,false);
+        addText(12233, "Theatre of Blood Supplies", font,2,0xff981f,false,true);
+        addText(12234, "Points available:", font,1,0xff981f,false,true);
+        addText(12235, "8", font,1,0xffffff,false,true);
+        addContainer(12236, TYPE_CONTAINER, 4, 2, 10, 22, 0, false, false, true, "Take");
+
+        Widget cost = addTabInterface(12237);
+        cost.totalChildren(8);
+        for (int index = 0; index < 8; index++) {
+            addText(12238 + index, "1", font, 0, 0xff981f, true, true);
+            int x = index % 4;
+            int y = index / 4;
+
+            x = (23 + 20) * x - 7;
+            y = (32 + 25) * y + 37;
+
+            cost.child(0 + index, 12238 + index, x + 22, y);
+        }
+
+        widget.totalChildren(7);
+        setBounds(12231, 140, 75, 0, widget);
+        setBounds(12232, 375, 79, 1, widget);
+        setBounds(12233, 180, 82, 2, widget);
+        setBounds(12234, 213, 230, 3, widget);
+        setBounds(12235, 310, 231, 4, widget);
+        setBounds(12236, 143, 109, 5, widget);
+        setBounds(12237, 143, 109, 6, widget);
+    }
+
     private static void points(AdvancedFont[] font) {
         Widget points_widget = addInterface(12000);
         points_widget.totalChildren(5);
@@ -136,4 +169,5 @@ public class RaidsWidget extends Widget {
         setBounds(12004, 15, 20, 3, points_widget);
         setBounds(12005, 74, 20, 4, points_widget);
     }
+
 }
