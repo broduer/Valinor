@@ -425,7 +425,7 @@ public class Player extends Mob {
         return slayerKey;
     }
 
-    private final ItemContainer raidRewards = new ItemContainer(2, ItemContainer.StackPolicy.ALWAYS);
+    private final ItemContainer raidRewards = new ItemContainer(3, ItemContainer.StackPolicy.ALWAYS);
 
     public ItemContainer getRaidRewards() {
         return raidRewards;

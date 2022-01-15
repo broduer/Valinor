@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
-import com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecretsReward;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -11,6 +10,8 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
+
+import java.util.Arrays;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.TOB_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
@@ -74,19 +75,22 @@ public class TheatreOfBloodRewards {
         player.getPacketSender().sendItemOnInterfaceSlot(12023, null, 0);
         player.getPacketSender().sendItemOnInterfaceSlot(12024, null, 0);
 
-        player.getInterfaceManager().open(12020);
+        player.getInterfaceManager().open(12220);
 
         if (totalRewards >= 1) {
             Item reward1 = player.getRaidRewards().getItems()[0];
-            player.getPacketSender().sendItemOnInterfaceSlot(12022, reward1, 0);
+            player.getPacketSender().sendItemOnInterfaceSlot(12222, reward1, 0);
         }
 
         if (totalRewards >= 2) {
             Item reward2 = player.getRaidRewards().getItems()[1];
-            player.getPacketSender().sendItemOnInterfaceSlot(12023, reward2, 0);
+            player.getPacketSender().sendItemOnInterfaceSlot(12223, reward2, 0);
         }
 
-        player.getPacketSender().sendItemOnInterfaceSlot(12024, new Item(DARK_JOURNAL), 0);
+        if (totalRewards >= 3) {
+            Item reward3 = player.getRaidRewards().getItems()[2];
+            player.getPacketSender().sendItemOnInterfaceSlot(12224, reward3, 0);
+        }
     }
 
     private static final LootTable uniqueTable = new LootTable()
@@ -156,9 +160,13 @@ public class TheatreOfBloodRewards {
         //Only give normal drops when you did not receive any rares.
         //regular drops
         if (player != rare) {
-            Item item = rollRegular();
-            player.getRaidRewards().add(item);
-            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Personal Points: " + Utils.formatNumber(personalPoints), "tob_reward");
+            Item item1 = rollRegular();
+            Item item2 = rollRegular();
+            Item item3 = rollRegular();
+            player.getRaidRewards().add(item1);
+            player.getRaidRewards().add(item2);
+            player.getRaidRewards().add(item3);
+            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item1.unnote().name() + ", " + item2.unnote().name() + " and " + item3.unnote().name() + " from Theatre of blood! Personal Points: " + Utils.formatNumber(personalPoints), "tob_reward");
         }
     }
 

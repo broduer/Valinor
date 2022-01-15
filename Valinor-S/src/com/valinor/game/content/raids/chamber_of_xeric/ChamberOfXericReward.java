@@ -169,8 +169,10 @@ public class ChamberOfXericReward {
         //regular drops
         if (player != rare) {
             Item item = rollRegular();
+            Item item2 = rollRegular();
             player.getRaidRewards().add(item);
-            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
+            player.getRaidRewards().add(item2);
+            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
         }
     }
 

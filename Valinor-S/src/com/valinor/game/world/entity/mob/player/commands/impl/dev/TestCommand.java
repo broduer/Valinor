@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexCombat.NO_ESCAPE_TELEPORTS;
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.NEX;
 
 public class TestCommand implements Command {
@@ -106,7 +107,17 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(67541, itemList);
         //player.sound(2401); // need to add cmd back?
-        ZarosGodwars.end();
+        //ZarosGodwars.end();
+
+        // clear slots
+        player.getPacketSender().sendItemOnInterfaceSlot(12222, null, 0);
+        player.getPacketSender().sendItemOnInterfaceSlot(12223, null, 0);
+        player.getPacketSender().sendItemOnInterfaceSlot(12224, null, 0);
+
+        player.getPacketSender().sendItemOnInterfaceSlot(12222, new Item(TARROMIN_TAR, 43), 0);
+        player.getPacketSender().sendItemOnInterfaceSlot(12223, new Item(GRIMY_LANTADYME,2), 0);
+        player.getPacketSender().sendItemOnInterfaceSlot(12224, new Item(RUNITE_ORE,4), 0);
+
         player.message("Test command has been activated.");
     }
 

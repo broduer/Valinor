@@ -180,8 +180,10 @@ public class ChamberOfSecretsReward {
                 player.message(Color.PURPLE.wrap("You received an extra drop roll because of your member rank."));
             for (int i = 0; i < rolls; i++) {
                 Item item = rollRegular();
+                Item item2 = rollRegular();
                 player.getRaidRewards().add(item);
-                Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Secrets! Personal Points: " + Utils.formatNumber(personalPoints), "cos_reward");
+                player.getRaidRewards().add(item2);
+                Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Secrets! Personal Points: " + Utils.formatNumber(personalPoints), "cos_reward");
             }
         }
     }
