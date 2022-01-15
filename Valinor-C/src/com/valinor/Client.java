@@ -14639,8 +14639,8 @@ public class Client extends GameApplet {
         int b_y = z * sin_y + b_x * cos_y >> 16;
 
         if (b_y >= 50) {
-            scene_draw_x = Rasterizer3D.center_x + (a_x << SceneGraph.focalLength) / b_y;
-            scene_draw_y = Rasterizer3D.center_y + (a_y << SceneGraph.focalLength) / b_y;
+            scene_draw_x = Rasterizer3D.center_x + (a_x * SceneGraph.focalLength) / b_y;
+            scene_draw_y = Rasterizer3D.center_y + (a_y * SceneGraph.focalLength) / b_y;
         } else {
             scene_draw_x = -1;
             scene_draw_y = -1;
