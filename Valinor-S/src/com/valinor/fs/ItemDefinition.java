@@ -141,9 +141,14 @@ public class ItemDefinition implements Definition {
         } else if (id == TASK_BOTTLE_PVMING) {
             name = "Task bottle (pvming)";
             grandexchange = true;
-        } else if (id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX + 1) {
+        } else if (id == POINTS_MYSTERY_BOX) {
             name = "Points mystery box";
             grandexchange = true;
+        } else if(id == POINTS_MYSTERY_BOX + 1) {
+            name = "Points mystery box";
+            grandexchange = true;
+            notelink = POINTS_MYSTERY_BOX;
+            noteModel = 799;
         } else if (id == BARROWS_MYSTERY_BOX) {
             name = "Barrows mystery box";
             grandexchange = true;
