@@ -88,8 +88,8 @@ public class TaskReward {
         Item item = Utils.randomElement(items);
         if (rare && !player.getUsername().equalsIgnoreCase("Box test")) {
             boolean amOverOne = item.getAmount() > 1;
-            String amtString = amOverOne ? "x " + Utils.format(item.getAmount()) + "" : Utils.getAOrAn(item.name());
-            String msg = "<img=1081> <col=AD800F>" + player.getUsername() + " has received " + amtString + "<shad=0> " + item.name() + "</shad>!";
+            String amtString = amOverOne ? "x " + Utils.format(item.getAmount()) + "" : Utils.getAOrAn(item.unnote().name());
+            String msg = "<img=1081> <col=AD800F>" + player.getUsername() + " has received " + amtString + "<shad=0> " + item.unnote().name() + "</shad>!";
             World.getWorld().sendWorldMessage(msg);
             rare = false;
         }
