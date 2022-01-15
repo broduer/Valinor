@@ -10,7 +10,7 @@
   "packetProcessLimit": 100,
   "defaultClanChat": "help",
   "autosaveMinutes": 15,
-  "afkLogoutMinutes": 15,
+  "afkLogoutMinutes": 180,
   "afkLogoutMinutesNewAccounts": 4,
   "requireBankPinOnLogin": false,
   "defaultBankPinRecoveryDays": 3,
