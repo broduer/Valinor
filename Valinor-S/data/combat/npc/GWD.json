@@ -575,6 +575,7 @@
     "slayerxp": 49,
     "slayerlvl": 1,
     "aggressive": true,
+    "aggroradius": 3,
     "stats": {
       "attack": 24,
       "strength": 24,
