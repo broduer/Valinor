@@ -40,7 +40,7 @@ public class AccuracyFormula {
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
 
-    public static double ATTACK_MOD_BASE = 16.;
+    public static double ATTACK_MOD_BASE = 30.;
 
     public static boolean doesHit(Mob entity, Mob enemy, CombatType style) {
         return doesHit(entity, enemy, style, 1);
@@ -682,11 +682,11 @@ public class AccuracyFormula {
         //System.out.println(msg);
 
         if (entity.isPlayer() && (boolean) GameServer.properties().logAccuracyChances) {
-            String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",
+            String debugmsg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",
                 (int) augmented_attack, (int) augmented_defence,
                 off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
             //System.out.println(msg);
-            entity.message(msg);
+            entity.message(debugmsg);
             //System.out.println(targetBonuses);
         }
 
