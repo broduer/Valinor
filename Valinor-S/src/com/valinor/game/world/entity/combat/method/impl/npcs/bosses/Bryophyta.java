@@ -33,6 +33,7 @@ public class Bryophyta extends CommonCombatMethod {
     public void prepareAttack(Mob mob, Mob target) {
         if (!target.tile().inArea(BRYOPHYTA_WOODS)) {
             mob.getCombat().reset();
+            System.out.println("cmb reset 510");
             return;
         }
         if (withinDistance(1)) {

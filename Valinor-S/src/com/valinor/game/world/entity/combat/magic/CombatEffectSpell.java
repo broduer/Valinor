@@ -95,6 +95,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
 
                 if (!CombatFactory.canAttack(cast, n)) {
                     cast.getCombat().reset();//Can't attack, reset combat
+                    System.out.println("cmb spell eff 1");
                     continue;
                 }
                 // the list of potential targets
@@ -109,6 +110,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
                 }
                 if (!CombatFactory.canAttack(cast, p)) {
                     cast.getCombat().reset();//Can't attack, reset combat
+                    System.out.println("cmb spell eff 2");
                     continue;
                 }
                 // the list of potential targets

@@ -34,6 +34,7 @@ public class BabyMuttadileDroptable implements Droptable {
             Npc mommaMuttadile = party.getMommaMuttadile();
             mommaMuttadile.putAttrib(MUTTADILE_HEAL_COUNT,0);
             mommaMuttadile.getCombat().reset();
+            System.out.println("cmb reset 45510");
             mommaMuttadile.respawns(false);
             mommaMuttadile.lockNoDamage();
             var targ = mommaMuttadile.<WeakReference<Mob>>getAttribOr(AttributeKey.TARGET, new WeakReference<Mob>(null)).get();

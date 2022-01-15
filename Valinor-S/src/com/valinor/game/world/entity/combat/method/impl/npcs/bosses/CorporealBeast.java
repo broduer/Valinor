@@ -46,6 +46,7 @@ public class CorporealBeast extends CommonCombatMethod {
                 @Override
                 public void onStop() {
                     mob.getCombat().reset();
+                    System.out.println("cmb reset 511");
                 }
             }.bind(mob);
             TaskManager.submit(stompTask);

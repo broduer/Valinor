@@ -142,6 +142,7 @@ public class Nightmare extends Npc {
         if (stageDelta > 0 && --stageDelta == 0 && stage < 2) {
             stageDelta = -1;
             getCombat().reset();
+            System.out.println("reset nightmare 1");
             transmog(THE_NIGHTMARE_9431);
             animate(-1);
             getCombatMethod().setSpecial(SpecialAttacks.SLEEPWALKERS);
@@ -237,6 +238,7 @@ public class Nightmare extends Npc {
     private void teleportAction(Tile dest) {
         animate(8607);
         getCombat().reset();
+        System.out.println("reset nightmare 2");
         Chain.bound(null).runFn(1, () -> {
             this.teleport(dest);
         }).then(1, () -> {

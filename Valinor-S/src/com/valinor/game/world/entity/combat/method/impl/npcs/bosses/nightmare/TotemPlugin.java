@@ -93,6 +93,7 @@ public class TotemPlugin extends Npc {
         World.getWorld().getPlayers().forEachInRegion(tile().region(), player -> {
             if (player.getCombat().getTarget() == this) {
                 player.getCombat().reset();
+                System.out.println("reset totem");
             }
         });
     }

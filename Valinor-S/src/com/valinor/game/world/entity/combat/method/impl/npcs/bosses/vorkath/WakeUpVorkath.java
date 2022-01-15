@@ -42,6 +42,7 @@ public class WakeUpVorkath extends Task {
 
         ticks++;
         sleepingVorkath.getCombat().reset();
+        System.out.println("cmb reset 518");
         if (ticks == 1) {
             player.setVorkathState(VorkathState.AWAKE);
             player.animate(POKE_ANIMATION);

@@ -231,10 +231,12 @@ public class VerzikVitur extends CommonCombatMethod {
             mob.getAsNpc().canAttack(false);
             mob.animate(OUT_OF_CHAIR);
             mob.getCombat().reset();
+            System.out.println("reset verzik 1");
             mob.resetFaceTile();
             targets.forEach(t -> {
                 t.getAsPlayer().removeAll(new Item(DAWNBRINGER));
                 t.getAsPlayer().getCombat().reset();
+                System.out.println("reset verzik 2");
             });
             Task task = new Task("VerzikViturTransformTask", 4) {
 
@@ -281,6 +283,7 @@ public class VerzikVitur extends CommonCombatMethod {
             players.forEach(p -> {
                 p.message("You have defeated Verzik Vitur!");
                 p.getCombat().reset();
+                System.out.println("reset verzik 3");
             });
 
             if (party != null) {

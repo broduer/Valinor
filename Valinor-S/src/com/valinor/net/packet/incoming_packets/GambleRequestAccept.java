@@ -56,6 +56,7 @@ public class GambleRequestAccept implements PacketListener {
             player.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(other));
             player.putAttrib(AttributeKey.INTERACTION_OPTION, 4);
             player.getCombat().reset();
+            System.out.println("cmb reset 5100999");
             player.stopActions(false);
             TargetRoute.set(player, other, () -> {
                 player.runFn(1, () -> {

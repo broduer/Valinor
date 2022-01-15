@@ -57,6 +57,7 @@ public class DragonfireShield extends Interaction {
                 player.getTimers().extendOrRegister(TimerKey.COMBAT_ATTACK, 4);
                 player.getTimers().register(TimerKey.DRAGONFIRE_SPECIAL, 200);
                 player.getCombat().reset();
+                System.out.println("reset combat dfs");
 
                 if (shield.getId() == DragonfireShieldType.WYVERN.charged()) {
                     wyvernSpecial(player, target);

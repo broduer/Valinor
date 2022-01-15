@@ -5,6 +5,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.util.Debugs;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
@@ -163,6 +164,7 @@ public class FoodConsumable {
 
         //Eating stops combat
         player.getCombat().reset();
+        System.out.println("reset combat food");
 
         Item foodItem = new Item(food.itemId);
         boolean healed = player.hp() < player.maxHp();

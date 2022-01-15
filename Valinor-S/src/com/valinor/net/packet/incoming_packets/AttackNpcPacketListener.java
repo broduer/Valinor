@@ -70,6 +70,7 @@ public class AttackNpcPacketListener implements PacketListener {
                 if (ownerLink.first() != null && ownerLink.first() >= 0 && ownerLink.first() != player.getIndex()) {
                     player.message("They don't seem interested in fighting you.");
                     player.getCombat().reset();
+                    System.out.println("cmb reset 51088");
                     return;
                 }
 

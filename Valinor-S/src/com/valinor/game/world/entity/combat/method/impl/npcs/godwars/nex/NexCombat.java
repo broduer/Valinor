@@ -96,6 +96,7 @@ public class NexCombat extends CommonCombatMethod {
         nex.forceChat("There is...");
         nex.cantInteract(true);
         nex.getCombat().reset();
+        System.out.println("cmb reset 1212122");
         final int idx = Utils.random(NO_ESCAPE_TELEPORTS.length);
         final Tile selectedTile = NO_ESCAPE_TELEPORTS[idx];
         final Tile center = new Tile(2924, 5202, 0);

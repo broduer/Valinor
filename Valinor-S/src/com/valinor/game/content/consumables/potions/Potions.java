@@ -249,6 +249,7 @@ public class Potions {
 
             //Sipping a potion stops combat
             player.getCombat().reset();
+            System.out.println("reset combat pots");
 
             String doses = left == 1 ? "dose" : "doses";
             if (potion == Potion.ANTIVENOM) {

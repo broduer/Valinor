@@ -40,6 +40,7 @@ public class Sarachnis extends CommonCombatMethod {
     public void prepareAttack(Mob mob, Mob target) {
         if (!target.tile().inArea(SARACHNIS_AREA)) {
             mob.getCombat().reset();
+            System.out.println("cmb reset 514");
             return;
         }
 
@@ -64,6 +65,7 @@ public class Sarachnis extends CommonCombatMethod {
             });
         }).then(1, () -> {
             mob.getCombat().reset();
+            System.out.println("cmb reset 515");
             mob.lock();
             walk(mob);
         }).waitUntil(1, () -> {

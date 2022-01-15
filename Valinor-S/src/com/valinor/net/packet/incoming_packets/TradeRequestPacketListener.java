@@ -57,6 +57,7 @@ public class TradeRequestPacketListener implements PacketListener {
             player.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(other));
             player.putAttrib(AttributeKey.INTERACTION_OPTION, 4);
             player.getCombat().reset();
+            System.out.println("cmb reset asfds454fd");
             player.stopActions(false);
             TargetRoute.set(player, other, () -> {
                 player.runFn(1, () -> {

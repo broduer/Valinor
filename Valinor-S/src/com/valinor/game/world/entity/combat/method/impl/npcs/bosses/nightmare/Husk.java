@@ -30,6 +30,7 @@ public class Husk extends Npc {
         if (tile().distance(nm.getBase()) > 64) {
             // stop bug where husks are appearing outside instance following the player. no idea how.
             getCombat().reset();
+            System.out.println("reset husk");
             remove();
         }
     }

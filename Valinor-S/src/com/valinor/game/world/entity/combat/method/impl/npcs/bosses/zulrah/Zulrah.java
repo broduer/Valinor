@@ -241,6 +241,7 @@ public class Zulrah {
             //npc.forceChat("sinking down...");
             target.stopActions(false);
             npc.getCombat().reset();
+            System.out.println("cmb reset 533");
             npc.animate(5072);
             npc.resetFaceTile();
             npc.lockDelayDamage();

@@ -183,6 +183,7 @@ public class KrakenBoss {
             if (!minion.hidden()) { // Already dead maybe from recoil/venom
                 minion.stopActions(false);
                 minion.getCombat().reset();
+                System.out.println("cmb reset 1510");
                 NpcDeath.deathReset(minion);
                 minion.animate(minion.combatInfo().animations.death);
             }

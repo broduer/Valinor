@@ -672,6 +672,7 @@ public class MagicClickSpells {
 
                 if (player != null) {
                     player.getCombat().reset();
+                    System.out.println("cmb reset alch low");
                     player.action.clearNonWalkableActions();
                     player.animate(713);
                     player.graphic(113, 100, 15);
@@ -815,6 +816,7 @@ public class MagicClickSpells {
                 final Player player = cast.isPlayer() ? (Player) cast : null;
 
                 if (player != null) {
+                    System.out.println("cmb reset alch high");
                     player.getCombat().reset();
                     player.action.clearNonWalkableActions();
                     player.animate(713);

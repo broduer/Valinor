@@ -48,8 +48,10 @@ public abstract class Spell {
                 if (autoCastSelected)
                     Autocasting.setAutocast(player, null);
 
-                if (!autoCastSelected)
+                if (!autoCastSelected) {
                     player.getCombat().reset();
+                    System.out.println("cmb reset reeeeee 1222");
+                }
                 return false;
             }
 

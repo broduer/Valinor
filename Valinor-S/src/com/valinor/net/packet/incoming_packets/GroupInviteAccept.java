@@ -61,6 +61,7 @@ public class GroupInviteAccept implements PacketListener {
             invited.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(requester));
             invited.putAttrib(AttributeKey.INTERACTION_OPTION, 4);
             invited.getCombat().reset();
+            System.out.println("cmb reset 556510");
             invited.stopActions(false);
             TargetRoute.set(invited, requester, () -> {
                 invited.runFn(1, () -> {

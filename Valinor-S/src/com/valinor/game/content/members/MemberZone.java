@@ -45,11 +45,13 @@ public class MemberZone extends Interaction {
             if (player.tile().memberZone()) {
                 if((npc.id() == ANCIENT_REVENANT_DARK_BEAST || npc.id() == ANCIENT_REVENANT_ORK || npc.id() == ANCIENT_REVENANT_CYCLOPS || npc.id() == ANCIENT_REVENANT_DRAGON || npc.id() == ANCIENT_REVENANT_KNIGHT) && elite_member) {
                     player.getCombat().reset();
+                    System.out.println("reset combat member zone 1");
                     player.message(Color.RED.wrap("You need to be at least a elite member to attack ancient revenants."));
                     return false;
                 }
                 if((npc.id() == ANCIENT_BARRELCHEST || npc.id() == ANCIENT_CHAOS_ELEMENTAL || npc.id() == ANCIENT_KING_BLACK_DRAGON) && extreme_member) {
                     player.getCombat().reset();
+                    System.out.println("reset combat member zone 2");
                     player.message(Color.RED.wrap("You need to be at least a extreme member to attack ancient bosses."));
                     return false;
                 }
