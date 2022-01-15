@@ -4,6 +4,8 @@ import com.valinor.cache.graphics.font.AdvancedFont;
 import com.valinor.cache.graphics.widget.DrawLine;
 import com.valinor.cache.graphics.widget.Widget;
 
+import static com.valinor.ClientConstants.PVP_GAME_MODE_ENABLED;
+
 /**
  * The class which represents functionality for the ironman interface.
  * @author Patrick van Elderen | March, 06, 2021, 14:37
@@ -212,7 +214,9 @@ public class IronmanWidget extends Widget {
         addClickableSprites(42425, "Toggle", 490, 491, 547);
         addClickableSprites(42426, "Toggle", 490, 491, 547);
         addClickableSprites(42427, "Toggle", 490, 491, 547);
-        addClickableSprites(42431, "Toggle", 490, 491, 547);
+        if(PVP_GAME_MODE_ENABLED) {
+            addClickableSprites(42431, "Toggle", 490, 491, 547);
+        }
         addText(42428, "Rookie: X75 experience, no drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42429, "Challenger: X30 experience, 5% drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42430, "Gladiator: X7.5 experience, 10% drop rate bonus.", font, 0, 0xFD851A, false, true);
@@ -225,14 +229,16 @@ public class IronmanWidget extends Widget {
         addText(42422, "Hardcore Iron Man", font, 0, 0xFFFFFF, false, true);
         addText(42410, "No Iron man restrictions will be applied to this account.", font, 0, 0xFD851A, false, true);
         addText(42415, "Regular account", font, 0, 0xFFFFFF, false, true);
-        addText(42432, "PvP account", font, 0, 0xFFFFFF, false, true);
-        addText(42433, "PvP ready account.", font, 0, 0xFD851A, false, true);
+        if(PVP_GAME_MODE_ENABLED) {
+            addText(42432, "PvP account", font, 0, 0xFFFFFF, false, true);
+            addText(42433, "PvP ready account.", font, 0, 0xFD851A, false, true);
+        }
 
         addText(42417, "Select your game mode", font, 1, 0xFFFFFF, false, true);
         addText(42418, "Select your experience mode", font, 1, 0xFFFFFF, false, true);
         hoverButton(42419, "Confirm and Continue", 1767, 1768);
 
-        setChildren(26, widget);
+        setChildren(PVP_GAME_MODE_ENABLED ? 26 : 23, widget);
         setBounds(42401, 15, 28, 0, widget);
         setBounds(42402, 30, 85, 1, widget);
         setBounds(42403, 30, 114, 2, widget);
@@ -256,8 +262,10 @@ public class IronmanWidget extends Widget {
         setBounds(42428, 130, 239, 20, widget);
         setBounds(42429, 130, 259, 21, widget);
         setBounds(42430, 130, 281, 22, widget);
-        setBounds(42431, 30, 182, 23, widget);
-        setBounds(42432, 50, 182, 24, widget);
-        setBounds(42433, 50, 193, 25, widget);
+        if(PVP_GAME_MODE_ENABLED) {
+            setBounds(42431, 30, 182, 23, widget);
+            setBounds(42432, 50, 182, 24, widget);
+            setBounds(42433, 50, 193, 25, widget);
+        }
     }
 }
