@@ -275,8 +275,6 @@ public class Combat {
      */
     private void performNewAttack0() {
         if (target == null) {
-            if (mob.isNpc() && mob.getAsNpc().id() == NEX)
-            System.out.println("no targ");
             return;
         }
 
