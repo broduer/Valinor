@@ -73,6 +73,7 @@ public class ItemPacks {
         // Herblore
         VIAL(ItemIdentifiers.EMPTY_VIAL_PACK, new Item(ItemIdentifiers.VIAL + 1, 100)),
         VIAL_OF_WATER(ItemIdentifiers.WATERFILLED_VIAL_PACK, new Item(ItemIdentifiers.VIAL_OF_WATER + 1, 100)),
+        EYE_OF_NEWT_PACK(ItemIdentifiers.EYE_OF_NEWT_PACK, new Item(ItemIdentifiers.EYE_OF_NEWT + 1, 100)),
         EMPTY_JUGS(ItemIdentifiers.EMPTY_JUG_PACK, new Item(ItemIdentifiers.JUG + 1, 100)),
         AMYLASE(ItemIdentifiers.AMYLASE_PACK, new Item(ItemIdentifiers.AMYLASE_CRYSTAL, 100)),
 
