@@ -19,6 +19,7 @@ public class Settings {
     public static final boolean MUSIC_ENABLED = false;
 
     //Custom user settings
+    public boolean tile_markers = false;
     public boolean enableTweening = false;
     public boolean status_bars = true;
     public boolean draw_fps = false;

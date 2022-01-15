@@ -1,6 +1,5 @@
 package com.valinor.entity.model;
 
-import com.valinor.Client;
 import com.valinor.cache.anim.Animation;
 import com.valinor.cache.anim.Skins;
 import com.valinor.draw.Rasterizer2D;
@@ -2979,8 +2978,8 @@ public class Model extends Renderable {
             y = y_offset;
 
             projected_vertex_z[index] = z - position;
-            projected_vertex_x[index] = center_x + (x << 9) / z;
-            projected_vertex_y[index] = center_y + (y << 9) / z;
+            projected_vertex_x[index] = center_x + (x * SceneGraph.focalLength) / z;
+            projected_vertex_y[index] = center_y + (y * SceneGraph.focalLength) / z;
             if (texture_faces > 0) {
                 camera_vertex_x[index] = x;
                 camera_vertex_y[index] = y;
@@ -2995,11 +2994,10 @@ public class Model extends Renderable {
             System.out.println("Could not rotate and project item!");
         }
     }
-    public static final int VIEW_DISTANCE = 3500; //3500 or 4500, 3500 provides better performance.
+    public static final int VIEW_DISTANCE = 9500; //3500 or 4500, 3500 provides better performance.
 
     @Override
     public final void render_3D(int orientation, int cos_y, int sin_y, int sin_x, int cos_x, int start_x, int start_y, int depth, long uid) {
-
         int scene_x = depth * cos_x - start_x * sin_x >> 16;
         int scene_y = start_y * cos_y + scene_x * sin_y >> 16;
         int dimension_sin_y = diagonal_2D * sin_y >> 16;
@@ -3008,23 +3006,23 @@ public class Model extends Renderable {
             return;
 
         int x_rot = depth * sin_x + start_x * cos_x >> 16;
-        int obj_x = x_rot - diagonal_2D << SceneGraph.view_dist;
+        int obj_x = (x_rot - diagonal_2D) * SceneGraph.focalLength;
         if (obj_x / pos >= Rasterizer2D.viewport_center_y)
             return;
 
-        int obj_width = x_rot + diagonal_2D << SceneGraph.view_dist;
+        int obj_width = (x_rot + diagonal_2D) * SceneGraph.focalLength;
         if (obj_width / pos <= -Rasterizer2D.viewport_center_y)
             return;
 
         int y_rot = start_y * sin_y - scene_x * cos_y >> 16;
         int dimension_cos_y = diagonal_2D * cos_y >> 16;
-        int obj_height = y_rot + dimension_cos_y << SceneGraph.view_dist;
+        int obj_height = (y_rot + dimension_cos_y) * SceneGraph.focalLength;
         if (obj_height / pos <= -Rasterizer2D.viewport_center_x)
             return;
 
 
         int offset = dimension_cos_y + (super.model_height * sin_y >> 16);
-        int obj_y = y_rot - offset << SceneGraph.view_dist;
+        int obj_y = (y_rot - offset) * SceneGraph.focalLength;
         if (obj_y / pos >= Rasterizer2D.viewport_center_x)
             return;
 
@@ -3095,8 +3093,8 @@ public class Model extends Renderable {
 
             projected_vertex_z[index] = raster_z - scene_y;
             if (raster_z >= 50) {
-                projected_vertex_x[index] = center_x + (raster_x << SceneGraph.view_dist) / raster_z;
-                projected_vertex_y[index] = center_y + (raster_y << SceneGraph.view_dist) / raster_z;
+                projected_vertex_x[index] = (center_x + (raster_x * SceneGraph.focalLength) / raster_z);
+                projected_vertex_y[index] = (center_y + (raster_y * SceneGraph.focalLength) / raster_z);
             } else {
                 projected_vertex_x[index] = -5000;
                 flag = true;
@@ -3366,14 +3364,14 @@ public class Model extends Renderable {
             int k4 = faceHslA[i];
             if (j2 >= 50) {
                 int k5 = (50 - l1) * modelIntArray4[j2 - l1];
-                anIntArray1678[l] = j + (k2 + ((camera_vertex_x[k1] - k2) * k5 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (k3 + ((camera_vertex_y[k1] - k3) * k5 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (k2 + ((camera_vertex_x[k1] - k2) * k5 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (k3 + ((camera_vertex_y[k1] - k3) * k5 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = k4 + ((faceHslC[i] - k4) * k5 >> 16);
             }
             if (uid >= 50) {
                 int l5 = (50 - l1) * modelIntArray4[uid - l1];
-                anIntArray1678[l] = j + (k2 + ((camera_vertex_x[j1] - k2) * l5 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (k3 + ((camera_vertex_y[j1] - k3) * l5 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (k2 + ((camera_vertex_x[j1] - k2) * l5 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (k3 + ((camera_vertex_y[j1] - k3) * l5 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = k4 + ((faceHslB[i] - k4) * l5 >> 16);
             }
         }
@@ -3387,14 +3385,14 @@ public class Model extends Renderable {
             int l4 = faceHslB[i];
             if (l1 >= 50) {
                 int i6 = (50 - uid) * modelIntArray4[l1 - uid];
-                anIntArray1678[l] = j + (l2 + ((camera_vertex_x[i1] - l2) * i6 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (l3 + ((camera_vertex_y[i1] - l3) * i6 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (l2 + ((camera_vertex_x[i1] - l2) * i6 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (l3 + ((camera_vertex_y[i1] - l3) * i6 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = l4 + ((faceHslA[i] - l4) * i6 >> 16);
             }
             if (j2 >= 50) {
                 int j6 = (50 - uid) * modelIntArray4[j2 - uid];
-                anIntArray1678[l] = j + (l2 + ((camera_vertex_x[k1] - l2) * j6 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (l3 + ((camera_vertex_y[k1] - l3) * j6 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (l2 + ((camera_vertex_x[k1] - l2) * j6 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (l3 + ((camera_vertex_y[k1] - l3) * j6 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = l4 + ((faceHslC[i] - l4) * j6 >> 16);
             }
         }
@@ -3408,14 +3406,14 @@ public class Model extends Renderable {
             int i5 = faceHslC[i];
             if (uid >= 50) {
                 int k6 = (50 - j2) * modelIntArray4[uid - j2];
-                anIntArray1678[l] = j + (i3 + ((camera_vertex_x[j1] - i3) * k6 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (i4 + ((camera_vertex_y[j1] - i4) * k6 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (i3 + ((camera_vertex_x[j1] - i3) * k6 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (i4 + ((camera_vertex_y[j1] - i4) * k6 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = i5 + ((faceHslB[i] - i5) * k6 >> 16);
             }
             if (l1 >= 50) {
                 int l6 = (50 - j2) * modelIntArray4[l1 - j2];
-                anIntArray1678[l] = j + (i3 + ((camera_vertex_x[i1] - i3) * l6 >> 16) << SceneGraph.view_dist) / 50;
-                anIntArray1679[l] = k + (i4 + ((camera_vertex_y[i1] - i4) * l6 >> 16) << SceneGraph.view_dist) / 50;
+                anIntArray1678[l] = j + (i3 + ((camera_vertex_x[i1] - i3) * l6 >> 16) << SceneGraph.focalLength) / 50;
+                anIntArray1679[l] = k + (i4 + ((camera_vertex_y[i1] - i4) * l6 >> 16) << SceneGraph.focalLength) / 50;
                 anIntArray1680[l++] = i5 + ((faceHslA[i] - i5) * l6 >> 16);
             }
         }
@@ -3553,71 +3551,7 @@ public class Model extends Renderable {
         return mouse_x <= x_a || mouse_x <= x_b || mouse_x <= x_c;
     }
 
-
-    public void method2593(int orientation) { //I believe this is calculateBoundingBox aka calculateExtreme
-        //if (this.field1947 == -1) {
-        int min_x = 0;
-        int min_y = 0;
-        int min_z = 0;
-        int max_x = 0;
-        int max_y = 0;
-        int max_z = 0;
-        int cos = COSINE[orientation];
-        int sin = SINE[orientation];
-        //get bounds
-        for (int point = 0; point < this.vertices; point++) {
-            int v_x = Rasterizer3D.calc_vertex_x(this.vertex_x[point], this.vertex_z[point], cos, sin);
-            int v_y = this.vertex_y[point];
-            int v_z = Rasterizer3D.calc_vertex_z(this.vertex_x[point], this.vertex_z[point], cos, sin);
-            if (v_x < min_x) {
-                min_x = v_x;
-            }
-            if (v_x > max_x) {
-                max_x = v_x;
-            }
-            if (v_y < min_y) {
-                min_y = v_y;
-            }
-            if (v_y > max_y) {
-                max_y = v_y;
-            }
-            if (v_z < min_z) {
-                min_z = v_z;
-            }
-            if (v_z > max_z) {
-                max_z = v_z;
-            }
-        }
-        //unsure
-        this.field1944 = (max_x + min_x) / 2;
-        this.field1963 = (max_y + min_y) / 2;
-        this.field1946 = (max_z + min_z) / 2;
-        this.field1947 = (max_x - min_x + 1) / 2;
-        this.field1948 = (max_y - min_y + 1) / 2;
-        this.field1924 = (max_z - min_z + 1) / 2;
-        if (this.field1947 < 32) {
-            this.field1947 = 32;
-        }
-        if (this.field1924 < 32) {
-            this.field1924 = 32;
-        }
-        if (within_tile) {
-            this.field1947 += 8;
-            this.field1924 += 8;
-        }
-        //}
-    }
-
-    public int field1944;
-    public int field1947;
-    public int field1963;
-    public int field1948;
-    public int field1946;
-    public int field1924;
-
-
     public int bufferOffset;
-    public int uvBufferOffset;
 
     public int getBufferOffset() {
         return bufferOffset;
@@ -3625,22 +3559,6 @@ public class Model extends Renderable {
 
     public void setBufferOffset(int bufferOffset) {
         this.bufferOffset = bufferOffset;
-    }
-
-    public int getUvBufferOffset() {
-        return uvBufferOffset;
-    }
-
-    public void setUvBufferOffset(int uvBufferOffset) {
-        this.uvBufferOffset = uvBufferOffset;
-    }
-
-    public float[][] getFaceTextureUCoordinates() {
-        return new float[][]{};
-    }
-
-    public float[][] getFaceTextureVCoordinates() {
-        return new float[][]{};
     }
 
     public void completelyRecolor(int j) {

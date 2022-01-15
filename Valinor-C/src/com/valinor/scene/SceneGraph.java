@@ -1,5 +1,6 @@
 package com.valinor.scene;
 
+import com.valinor.Client;
 import com.valinor.ClientConstants;
 import com.valinor.collection.LinkedList;
 import com.valinor.draw.Rasterizer2D;
@@ -15,6 +16,10 @@ import com.valinor.scene.object.WallDecoration;
 import com.valinor.scene.object.tile.ComplexTile;
 import com.valinor.scene.object.tile.SimpleTile;
 import com.valinor.scene.object.tile.Tile;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public final class SceneGraph {
 
@@ -826,30 +831,9 @@ public final class SceneGraph {
         if (depth < 50 || depth > VIEW_DISTANCE) //3500
             return false;
 
-        int viewport_width = center_x + (x_curve << view_dist) / depth;
-        int viewport_height = center_y + (y_curve << view_dist) / depth;
+        int viewport_width = center_x + (x_curve * focalLength) / depth;
+        int viewport_height = center_y + (y_curve * focalLength) / depth;
         return viewport_width >= left && viewport_width <= right && viewport_height >= top && viewport_height <= bottom;
-    }
-
-
-    public static final int[] get_position(int raster_x, int raster_y, int raster_z) {
-        int position;
-        position = raster_z * sin_x + raster_x * cos_x >> 16;
-        raster_z = raster_z * cos_x - raster_x * sin_x >> 16;
-        raster_x = position;
-
-        position = cos_y * raster_y - raster_z * sin_y >> 16;
-        raster_z = sin_y * raster_y + raster_z * cos_y >> 16;
-        raster_z |= 1;
-
-        //int scene_x;// = raster_x * Rasterizer.anInt1894 / raster_z + Rasterizer.textureInt1 + Raster.topX;
-        //int scene_y;// = Rasterizer.anInt1894 * position / raster_z + Rasterizer.textureInt2 + Raster.topY;
-
-        int scene_x = Rasterizer3D.center_x + (raster_x << SceneGraph.view_dist) / raster_z;
-        int scene_y = Rasterizer3D.center_y + (position << SceneGraph.view_dist) / raster_z;
-        return new int[]{
-            scene_x, scene_y
-        };
     }
 
     public void register_click(int y, int x) {
@@ -858,6 +842,14 @@ public final class SceneGraph {
         click_y = y;
         click_tile_x = -1;
         click_tile_y = -1;
+    }
+
+    public void requestMarkTile(int x, int y) {
+        requestMarkTile = true;
+        requestedMarkTileX = x;
+        requestedMarkTileY = y;
+        tracedMarkTileX = -1;
+        tracedMarkTileY = -1;
     }
 
     public void render(int cam_pos_x, int cam_pos_z, int curve_x, int cam_pos_y, int plane, int curve_y) {
@@ -904,12 +896,14 @@ public final class SceneGraph {
         this.process_culling();
         anInt446 = 0;
         for (int z = current_pos_z; z < map_size_z; z++) {
-            Tile tile_height[][] = tile_array[z];
+            Tile[][] tile_height = tile_array[z];
             for (int x = current_pos_x; x < region_x; x++) {
                 for (int y = current_pos_y; y < region_y; y++) {
                     Tile tile = tile_height[x][y];
                     if (tile != null)
-                        if (tile.logic_height > plane || !TILE_VISIBILITY_MAP[(x - tile_center_x) + render_distance][(y - tile_center_y) + render_distance] && height_map[z][x][y] - cam_pos_y < 2000) {
+                        if (tile.logic_height > plane || 
+                            !TILE_VISIBILITY_MAP[(x - tile_center_x) + render_distance][(y - tile_center_y) + render_distance]) {
+                                //&& height_map[z][x][y] - cam_pos_y < 2000) {
                             tile.updated = false;
                             tile.drawn = false;
                             tile.render_mask = 0;
@@ -958,6 +952,7 @@ public final class SceneGraph {
                         }
                         if (anInt446 == 0) {
                             interacted = false;
+                            requestMarkTile = false;
                             return;
                         }
                     }
@@ -1002,6 +997,7 @@ public final class SceneGraph {
                         }
                         if (anInt446 == 0) {
                             interacted = false;
+                            requestMarkTile = false;
                             return;
                         }
                     }
@@ -1009,6 +1005,125 @@ public final class SceneGraph {
             }
         }
         interacted = false;
+        requestMarkTile = false;
+    }
+
+    public boolean isMarked(Tile tile) {
+        WorldPoint point = new WorldPoint(Client.singleton.getBaseX() + tile.x, Client.singleton.getBaseY() + tile.y, tile.plane);
+        return Client.singleton.getWorldPoint().isWithinDistance(point) && markedTiles.containsKey(point.getRegionID()) && markedTiles.get(point.getRegionID()).contains(point);
+    }
+
+    public void markTile(int x, int y, int z) {
+        WorldPoint point = new WorldPoint(Client.singleton.getBaseX() + x, Client.singleton.getBaseY() + y, z);
+        if (!Client.singleton.getWorldPoint().isWithinDistance(point)) {
+            Client.singleton.sendMessage("You are too far away to do that.", 0, "");
+            return;
+        }
+        if (markedTiles.containsKey(point.getRegionID())) {
+            List<WorldPoint> list = markedTiles.get(point.getRegionID());
+            if (list.contains(point)) {
+                list.remove(point);
+                if (list.isEmpty()) {
+                    markedTiles.remove(point.getRegionID());
+                }
+            } else {
+                list.add(point);
+            }
+            markedTiles.put(point.getRegionID(), list);
+        } else {
+            markedTiles.put(point.getRegionID(), new ArrayList<>(Arrays.asList(point)));
+        }
+        Client.singleton.setting.save();
+    }
+
+    public void renderTileMarkers() {
+        if (!Client.singleton.setting.tile_markers)
+            return;
+        for (int z = current_pos_z; z < map_size_z; ++z) {
+            Tile[][] tiles = tile_array[z];
+            for (int x = current_pos_x; x < region_x; ++x) {
+                for (int y = current_pos_y; y < region_y; ++y) {
+                    Tile tile = tiles[x][y];
+                    if (tile != null) {
+                        if (tile.logic_height <= tile.plane) {
+                            if (TILE_VISIBILITY_MAP[x - tile_center_x + render_distance][y - tile_center_y + render_distance] || height_map[z][x][y] - cam_pos_y >= 3000) {
+                                if (isMarked(tile)) {
+                                    //System.out.printf("%d %d %d %d %d %d %d", tile.plane, sin_y, cos_y, sin_x, cos_x, tile.x, tile.y);
+                                    drawTileMarker(tile.plane, sin_y, cos_y, sin_x, cos_x, tile.x, tile.y);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void drawTileMarker(int plane, int sin_y, int cos_y, int sin_x, int cos_x, int camera_x, int camera_y) {
+        int i2;
+        int l1 = i2 = (camera_x << 7) - cam_pos_x;
+        int depth_a;
+        int depth_b = depth_a = (camera_y << 7) - cam_pos_z;
+        int i3;
+        int l2 = i3 = i2 + 128;
+        int depth_c;
+        int depth_d = depth_c = depth_a + 128;
+        int l3 = height_map[plane][camera_x][camera_y] - cam_pos_y;
+        int i4 = height_map[plane][camera_x + 1][camera_y] - cam_pos_y;
+        int j4 = height_map[plane][camera_x + 1][camera_y + 1] - cam_pos_y;
+        int k4 = height_map[plane][camera_x][camera_y + 1] - cam_pos_y;
+        int l4 = depth_a * sin_x + i2 * cos_x >> 16;
+        depth_a = depth_a * cos_x - i2 * sin_x >> 16;
+        i2 = l4;
+        l4 = l3 * cos_y - depth_a * sin_y >> 16;
+        depth_a = l3 * sin_y + depth_a * cos_y >> 16;
+        l3 = l4;
+        l4 = depth_b * sin_x + i3 * cos_x >> 16;
+        depth_b = depth_b * cos_x - i3 * sin_x >> 16;
+        i3 = l4;
+        l4 = i4 * cos_y - depth_b * sin_y >> 16;
+        depth_b = i4 * sin_y + depth_b * cos_y >> 16;
+        i4 = l4;
+        l4 = depth_c * sin_x + l2 * cos_x >> 16;
+        depth_c = depth_c * cos_x - l2 * sin_x >> 16;
+        l2 = l4;
+        l4 = j4 * cos_y - depth_c * sin_y >> 16;
+        depth_c = j4 * sin_y + depth_c * cos_y >> 16;
+        j4 = l4;
+        l4 = depth_d * sin_x + l1 * cos_x >> 16;
+        depth_d = depth_d * cos_x - l1 * sin_x >> 16;
+        l1 = l4;
+        l4 = k4 * cos_y - depth_d * sin_y >> 16;
+        depth_d = k4 * sin_y + depth_d * cos_y >> 16;
+        k4 = l4;
+        try {
+            int x_a = Rasterizer3D.center_x + (i2 * SceneGraph.focalLength) / depth_a;
+            int y_a = Rasterizer3D.center_y + (l3 * SceneGraph.focalLength) / depth_a;
+            int x_b = Rasterizer3D.center_x + (i3 * SceneGraph.focalLength) / depth_b;
+            int y_b = Rasterizer3D.center_y + (i4 * SceneGraph.focalLength) / depth_b;
+            int x_c = Rasterizer3D.center_x + (l2 * SceneGraph.focalLength) / depth_c;
+            int y_c = Rasterizer3D.center_y + (j4 * SceneGraph.focalLength) / depth_c;
+            int x_d = Rasterizer3D.center_x + (l1 * SceneGraph.focalLength) / depth_d;
+            int y_d = Rasterizer3D.center_y + (k4 * SceneGraph.focalLength) / depth_d;
+            int[] x = {x_a,x_b,x_c,x_d};
+            int[] y = {y_a,y_b,y_c,y_d};
+            Graphics2D g2d = Rasterizer2D.createGraphics(true);
+            g2d.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE);
+            g2d.setColor(new Color(16776960));
+            g2d.drawLine(x_c, y_c, x_d, y_d);
+            g2d.drawLine(x_c, y_c - 1, x_d, y_d - 1);
+            g2d.drawLine(x_b, y_b, x_c, y_c);
+            g2d.drawLine(x_b, y_b, x_c, y_c - 1);
+            g2d.drawLine(x_b, y_b, x_a, y_a);
+            g2d.drawLine(x_b, y_b - 1, x_a, y_a - 1);
+            g2d.drawLine(x_d, y_d, x_a, y_a);
+            g2d.drawLine(x_d, y_d - 1, x_a, y_a - 1);
+            g2d.setColor(new Color(0, 0, 0, 50));
+            g2d.fillPolygon(x, y, 4);
+        } catch (ArithmeticException e) {
+            e.printStackTrace();
+            System.out.println(depth_a);
+        }
     }
 
     private void load(Tile loaded, boolean flag) {
@@ -1523,14 +1638,14 @@ public final class SceneGraph {
         if (depth_d < 50)
             return;
 
-        int x_a = Rasterizer3D.center_x + (viewpoint_x_a << view_dist) / depth_a;
-        int y_a = Rasterizer3D.center_y + (viewpoint_y_a << view_dist) / depth_a;
-        int x_b = Rasterizer3D.center_x + (viewpoint_x_b << view_dist) / depth_b;
-        int y_b = Rasterizer3D.center_y + (viewport_y_b << view_dist) / depth_b;
-        int x_c = Rasterizer3D.center_x + (viewpoint_x_c << view_dist) / depth_c;
-        int y_c = Rasterizer3D.center_y + (viewpoint_y_c << view_dist) / depth_c;
-        int x_d = Rasterizer3D.center_x + (viewpoint_x_d << view_dist) / depth_d;
-        int y_d = Rasterizer3D.center_y + (viewpoint_y_d << view_dist) / depth_d;
+        int x_a = Rasterizer3D.center_x + (viewpoint_x_a * focalLength) / depth_a;
+        int y_a = Rasterizer3D.center_y + (viewpoint_y_a * focalLength) / depth_a;
+        int x_b = Rasterizer3D.center_x + (viewpoint_x_b * focalLength) / depth_b;
+        int y_b = Rasterizer3D.center_y + (viewport_y_b * focalLength) / depth_b;
+        int x_c = Rasterizer3D.center_x + (viewpoint_x_c * focalLength) / depth_c;
+        int y_c = Rasterizer3D.center_y + (viewpoint_y_c * focalLength) / depth_c;
+        int x_d = Rasterizer3D.center_x + (viewpoint_x_d * focalLength) / depth_d;
+        int y_d = Rasterizer3D.center_y + (viewpoint_y_d * focalLength) / depth_d;
         Rasterizer3D.alpha = 0;
         if ((x_c - x_d) * (y_b - y_d) - (y_c - y_d) * (x_b - x_d) > 0) {
             Rasterizer3D.testX = x_c < 0 || x_d < 0 || x_b < 0 || x_c > Rasterizer2D.center_x || x_d > Rasterizer2D.center_x || x_b > Rasterizer2D.center_x;
@@ -1538,6 +1653,12 @@ public final class SceneGraph {
                 click_tile_x = camera_x;
                 click_tile_y = camera_y;
             }
+            if (requestMarkTile && entered_tile(requestedMarkTileX,
+                requestedMarkTileY, y_c, y_d, y_b, x_c, x_d, x_b)) {
+                tracedMarkTileX = camera_x;
+                tracedMarkTileY = camera_y;
+            }
+
             if (simple.texture_id == -1) {
                 if (simple.shadow_c != 0xbc614e) {
                     Rasterizer3D.drawShadedTriangle(y_c, y_d, y_b, x_c, x_d, x_b, simple.shadow_c, simple.shadow_d, simple.shadow_b);
@@ -1560,6 +1681,10 @@ public final class SceneGraph {
             if (interacted && entered_tile(click_x, click_y, y_a, y_b, y_d, x_a, x_b, x_d)) {
                 click_tile_x = camera_x;
                 click_tile_y = camera_y;
+            }
+            if (requestMarkTile && this.entered_tile(requestedMarkTileX, requestedMarkTileY, y_a, y_b, y_d, x_a, x_b, x_d)) {
+                tracedMarkTileX = camera_x;
+                tracedMarkTileY = camera_y;
             }
             if (simple.texture_id == -1) {
                 if (simple.shadow_a != 0xbc614e) {
@@ -1600,8 +1725,8 @@ public final class SceneGraph {
                 ComplexTile.texture_viewpoint_y[index] = viewport_y;
                 ComplexTile.texture_viewpoint_z[index] = viewport_z;
             }
-            ComplexTile.vertex_viewpoint_x[index] = Rasterizer3D.center_x + (viewport_x << view_dist) / viewport_z;
-            ComplexTile.vertex_viewpoint_y[index] = Rasterizer3D.center_y + (viewport_y << view_dist) / viewport_z;
+            ComplexTile.vertex_viewpoint_x[index] = Rasterizer3D.center_x + (viewport_x * focalLength) / viewport_z;
+            ComplexTile.vertex_viewpoint_y[index] = Rasterizer3D.center_y + (viewport_y * focalLength) / viewport_z;
             ComplexTile.vertex_viewpoint_z[index] = viewport_z;
         }
 
@@ -1622,6 +1747,11 @@ public final class SceneGraph {
                 if (interacted && entered_tile(click_x, click_y, y_a, y_b, y_c, x_a, x_b, x_c)) {
                     click_tile_x = camera_x;
                     click_tile_y = camera_y;
+                }
+                if (requestMarkTile && entered_tile(requestedMarkTileX,
+                    requestedMarkTileY, y_a, y_b, y_c, x_a, x_b, x_c)) {
+                    tracedMarkTileX = camera_x;
+                    tracedMarkTileY = camera_y;
                 }
                 if (complex.material == null || complex.material[face] == -1) {
                     if (complex.hue_a[face] != 0xbc614e) {
@@ -1685,7 +1815,7 @@ public final class SceneGraph {
 
     private void process_culling() {
         int cull = culling_cluster_ptr[plane];
-        SceneCluster list[] = culling_cluster[plane];
+        SceneCluster[] list = culling_cluster[plane];
         processed_culling_cluster_ptr = 0;
         for (int index = 0; index < cull; index++) {
             SceneCluster cluster = list[index];
@@ -2079,6 +2209,11 @@ public final class SceneGraph {
     private static int click_y;
     public static int click_tile_x = -1;
     public static int click_tile_y = -1;
+    private static boolean requestMarkTile;
+    private static int requestedMarkTileX;
+    private static int requestedMarkTileY;
+    public static int tracedMarkTileX = -1;
+    public static int tracedMarkTileY = -1;
     private static final int culling_index;
     private static int[] culling_cluster_ptr;
     private static SceneCluster[][] culling_cluster;
@@ -2147,7 +2282,7 @@ public final class SceneGraph {
         {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}
     };
 
-    public static final int MAXIMUM_RENDER_DISTANCE = 25;
+    public static final int MAXIMUM_RENDER_DISTANCE = 26;
     public static final int MINIMUM_RENDER_DISTANCE = 10;
     public static int render_distance = MAXIMUM_RENDER_DISTANCE; //When changing render distance, make sure to reset viewport.
     public static boolean render_ground_decorations = true;
@@ -2162,7 +2297,7 @@ public final class SceneGraph {
     private static int top;
     private static int right;
     private static int bottom;
-    public static int view_dist = 9;//rename
+    public static int focalLength;
 
     public static int getCam_pos_x() {
         return cam_pos_x;
@@ -2208,9 +2343,13 @@ public final class SceneGraph {
         SceneGraph.bottom = bottom;
     }
 
+    public static Map<Integer, List<WorldPoint>> markedTiles;
+
     static {
+        focalLength = 512;
         culling_index = 4;
         culling_cluster_ptr = new int[culling_index];
         culling_cluster = new SceneCluster[culling_index][500];
+        markedTiles = new HashMap<>();
     }
 }

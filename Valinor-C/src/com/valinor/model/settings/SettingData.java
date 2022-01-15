@@ -4,6 +4,22 @@ import com.valinor.Client;
 
 public enum SettingData implements SettingsAction<Client> {
 
+    /*TILE_MARKERS("Tile markers") {
+        @Override
+        public String name(Client client) {
+            return client.setting.tile_markers + setting;
+        }
+
+        public boolean status() {
+            return Client.singleton.setting.tile_markers;
+        }
+
+        @Override
+        public void handle(Client client) {
+            client.setting.tile_markers = !client.setting.tile_markers;
+        }
+    },*/
+
     STATUS_BARS("Status bars") {
         @Override
         public String name(Client client) {

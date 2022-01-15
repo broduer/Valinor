@@ -82,6 +82,20 @@ import static com.valinor.cache.graphics.widget.Widget.OPTION_MENU;
 
 public class Client extends GameApplet {
 
+    public int getBaseX() {
+        return next_region_start;
+    }
+
+    public int getBaseY() {
+        return next_region_end;
+    }
+
+    public WorldPoint getWorldPoint() {
+        int x = next_region_start + (local_player.world_x - 6 >> 7);
+        int y = next_region_end + (local_player.world_y - 6 >> 7);
+        return new WorldPoint(x, y, plane);
+    }
+
     private String depositBoxOptionFirst = "1";
 
     public static int npcPetId = -1;
@@ -5211,6 +5225,11 @@ public class Client extends GameApplet {
                 }
             }
         }
+        if (SceneGraph.tracedMarkTileX != -1) {
+            scene.markTile(SceneGraph.tracedMarkTileX, SceneGraph.tracedMarkTileY, plane);
+            SceneGraph.tracedMarkTileX = -1;
+            SceneGraph.tracedMarkTileY = -1;
+        }
         if (super.click_type == 1 && clickToContinueString != null) {
             clickToContinueString = null;
             update_chat_producer = true;
@@ -5971,6 +5990,13 @@ public class Client extends GameApplet {
                 // player option 2
                 packetSender.sendAttackPlayer((int) local_player_index);
             }
+        }
+
+        if (action == 517) {
+            int x = second_menu_action - 4;
+            int y = first_menu_action - 4;
+            scene.requestMarkTile(x, y);
+            System.out.println("x "+x+ "y "+y);
         }
 
         // clicking tiles hello
@@ -7145,6 +7171,14 @@ public class Client extends GameApplet {
             if (interactingPlayer != null) {
                 buildAtPlayerMenu(0, getInteractingWithEntityId(), interactingPlayer, 0); // Only called for the person that is ontop of my mouse.
             }
+        }
+
+        if (setting.tile_markers && isShiftPressed) {
+            menuActionText[menuActionRow] = "Mark Tile";
+            menuActionTypes[menuActionRow] = 517;
+            firstMenuAction[menuActionRow] = super.cursor_x;
+            secondMenuAction[menuActionRow] = super.cursor_y;
+            menuActionRow++;
         }
     }
 
@@ -14581,6 +14615,7 @@ public class Client extends GameApplet {
     }
 
     private void get_scene_pos(int x, int vertical_offset, int y) {
+        SceneGraph.focalLength = Rasterizer3D.width;
         if (x < 128 || y < 128 || x > 13056 || y > 13056) {
             scene_draw_x = -1;
             scene_draw_y = -1;
@@ -14603,13 +14638,14 @@ public class Client extends GameApplet {
         int a_y = z * cos_y - b_x * sin_y >> 16;
         int b_y = z * sin_y + b_x * cos_y >> 16;
 
-        if (b_y >= 50 && b_y <= Model.VIEW_DISTANCE) {
-            scene_draw_x = Rasterizer3D.center_x + (a_x << SceneGraph.view_dist) / b_y;
-            scene_draw_y = Rasterizer3D.center_y + (a_y << SceneGraph.view_dist) / b_y;
+        if (b_y >= 50) {
+            scene_draw_x = Rasterizer3D.center_x + (a_x << SceneGraph.focalLength) / b_y;
+            scene_draw_y = Rasterizer3D.center_y + (a_y << SceneGraph.focalLength) / b_y;
         } else {
             scene_draw_x = -1;
             scene_draw_y = -1;
         }
+        SceneGraph.focalLength = 512;
     }
 
     private void buildSplitPrivateChatMenu() {
@@ -17717,7 +17753,7 @@ public class Client extends GameApplet {
             //System.out.println("view_dist = " + SceneGraph.view_dist);
             //This determines the field of view of the client aka depth.
             //This FOV is more narrow and is closer to OSRS.
-            set_camera_pos(zoom_distance + tilt * ((SceneGraph.view_dist == 9) && (screen == ScreenMode.RESIZABLE) ? 2 : SceneGraph.view_dist == 10 ? 5 : 3),
+            set_camera_pos(zoom_distance + tilt * ((SceneGraph.focalLength == 9) && (screen == ScreenMode.RESIZABLE) ? 2 : SceneGraph.focalLength == 10 ? 5 : 3),
                 tilt, current_camera_pan, get_tile_pos(plane, local_player.world_y, local_player.world_x) - 50, pan, current_camera_tilt);
         }
         int plane;
@@ -17763,8 +17799,10 @@ public class Client extends GameApplet {
         Model.anInt1687 = 0;
         Model.anInt1685 = super.cursor_x - (screen == ScreenMode.FIXED ? 4 : 0);
         Model.anInt1686 = super.cursor_y - (screen == ScreenMode.FIXED ? 4 : 0);
+        SceneGraph.focalLength = 519;
         Rasterizer2D.clear();
         scene.render(camera_abs_x, camera_abs_y, cam_curve_x, camera_abs_z, plane, cam_curve_y);
+        scene.renderTileMarkers();
         scene.reset_interactive_obj();
         render_item_pile_attatchments();
         updateEntities();
