@@ -124,12 +124,10 @@ public abstract class CommonCombatMethod implements CombatMethod {
         if(mob.isNpc() && mob.getAsNpc().id() == CORPOREAL_BEAST) {
             if(!target.tile().inArea(CORPOREAL_BEAST_AREA)) {
                 mob.getCombat().reset();//Target out of distance reset combat
-                System.out.println("cmb reset inAttackRange");
             }
         }
         if (mob.tile().distance(target.tile()) >= 16 && !instance) {
             mob.getCombat().reset();//Target out of distance reset combat
-            System.out.println("out of dist");
             return false;
         }
         return DumbRoute.withinDistance(mob, target, getAttackDistance(mob));
@@ -164,14 +162,12 @@ public abstract class CommonCombatMethod implements CombatMethod {
             if (type != CombatType.MAGIC && magicOnly) {
                 player.message("You can only use magic inside the arena!");
                 player.getCombat().reset();
-                System.out.println("cmb reset 500");
                 return false;
             }
 
             if (type == CombatType.MAGIC) {
                 if (spell != null && !spell.canCast(player, other, false)) {
                     player.getCombat().reset();//We can't cast this spell reset combat
-                    System.out.println("cmb reset 501");
                     player.getCombat().setCastSpell(null);
                     Debugs.CMB.debug(entity, "spell !cancast.", other, true);
                     return false;
@@ -181,7 +177,6 @@ public abstract class CommonCombatMethod implements CombatMethod {
                 if (player.getDueling().inDuel() && player.getDueling().getRules()[DuelRule.NO_MAGIC.ordinal()]) {
                     DialogueManager.sendStatement(player, "Magic has been disabled in this duel!");
                     player.getCombat().reset();
-                    System.out.println("cmb reset 502");
                     Debugs.CMB.debug(entity, "no magic in duel.", other, true);
                     return false;
                 }
@@ -190,7 +185,6 @@ public abstract class CommonCombatMethod implements CombatMethod {
                 if (player.getDueling().inDuel() && player.getDueling().getRules()[DuelRule.NO_RANGED.ordinal()]) {
                     DialogueManager.sendStatement(player, "Ranged has been disabled in this duel!");
                     player.getCombat().reset();//Ranged attacks disabled, stop combat
-                    System.out.println("cmb reset 503");
                     Debugs.CMB.debug(entity, "no range in duel.", other, true);
                     return false;
                 }
@@ -199,14 +193,12 @@ public abstract class CommonCombatMethod implements CombatMethod {
                 if (!CombatFactory.checkAmmo(player)) {
                     Debugs.CMB.debug(entity, "no ammo", other, true);
                     player.getCombat().reset();//Out of ammo, stop combat
-                    System.out.println("cmb reset 504");
                     return false;
                 }
             } else if (type == CombatType.MELEE) {
                 if (player.getDueling().inDuel() && player.getDueling().getRules()[DuelRule.NO_MELEE.ordinal()]) {
                     DialogueManager.sendStatement(player, "Melee has been disabled in this duel!");
                     player.getCombat().reset();//Melee attacks disabled, stop combat
-                    System.out.println("cmb reset 505");
                     Debugs.CMB.debug(entity, "no melee in duel.", other, true);
                     return false;
                 }
@@ -217,7 +209,6 @@ public abstract class CommonCombatMethod implements CombatMethod {
                     if (id == VESPULA) {
                         entity.message("Vespula is flying too high for you to hit with melee!");
                         entity.getCombat().reset();//Vespula out of range, stop combat
-                        System.out.println("cmb reset 506");
                         return false;
                     }
 
@@ -226,12 +217,10 @@ public abstract class CommonCombatMethod implements CombatMethod {
                         || id == 3178 || id == 3179 || id == 3180 || id == 3181 || id == 3182 || id == 3183) {
                         entity.message("The Aviansie is flying too high for you to attack using melee.");
                         entity.getCombat().reset();//Aviansie out of range, stop combat
-                        System.out.println("cmb reset 507");
                         return false;
                     } else if (id >= 3162 && id <= 3165 || id == 15016) {
                         entity.message("It's flying too high for you to attack using melee.");
                         entity.getCombat().reset();//Monster out of range, stop combat
-                        System.out.println("cmb reset 508");
                         return false;
                     }
                 }

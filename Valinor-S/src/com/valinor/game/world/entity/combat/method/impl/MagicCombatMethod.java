@@ -121,7 +121,6 @@ public class MagicCombatMethod extends CommonCombatMethod {
 
         if (mob.getCombat().getAutoCastSpell() == null && !spellWeapon) {
             mob.getCombat().reset();// combat is stopped for magic when not autocasting. spell on entity is a 1-time attack.
-            System.out.println("cmb reset 509");
         }
         mob.getCombat().setCastSpell(null);
     }

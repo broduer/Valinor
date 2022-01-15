@@ -558,7 +558,6 @@ public class Npc extends Mob {
                     //target.message(def.name+" doesnt fucking like you hey?");
                     this.getCombat().reset();// Clear it.
                     this.faceEntity(null); // Reset face
-                    System.out.println("cmb reset 2323510");
                 }
             }
 
@@ -664,10 +663,9 @@ public class Npc extends Mob {
         // Prevent being too far from spawn - unless you're in a boss room. Free reign!
         if (spawnTile.distance(tile) > maxDistanceFromSpawn && walkRadius != -1) {
             stopActions(false);
-            //getCombat().reset(); // Otherwise we'll forever be stuck with a target yo!
-            //System.out.println("cmb reset 5104544");
+            getCombat().reset(); // Otherwise we'll forever be stuck with a target yo!
             //if (target != null)
-            	//target.message("abandoned - out of range "+def.name);
+            //	target.message("abandoned - out of range "+def.name);
         }
     }
 

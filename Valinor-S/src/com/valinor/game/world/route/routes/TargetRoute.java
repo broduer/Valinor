@@ -166,8 +166,6 @@ public class TargetRoute {
                 entity.getAsPlayer().getMovement().outOfReach();
             }
             entity.getCombat().reset();//Out of distance reset combat
-
-            System.out.println("reset comb");
             reset();
         }
     }

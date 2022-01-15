@@ -24,10 +24,8 @@ public class AbyssalDemon extends CommonCombatMethod {
         if(destination == null) return;
         entity.teleport(destination);
         entity.graphic(409);
-        if (entity == target) {
+        if (entity == target)
             target.getCombat().reset();
-            System.out.println("cmb reset 2121234");
-        }
     }
 
     private void basicAttack(Mob mob, Mob target) {

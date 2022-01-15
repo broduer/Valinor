@@ -103,7 +103,6 @@ public class PickupItemPacketListener implements PacketListener {
             player.stopActions(false);
             player.skills().stopSkillable();
             player.getCombat().reset();
-            System.out.println("cmb reset a45fgdsfd");
 
             player.putAttrib(AttributeKey.INTERACTED_GROUNDITEM, itemId);
             player.putAttrib(AttributeKey.INTERACTION_OPTION, 3);

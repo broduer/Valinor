@@ -48,7 +48,6 @@ public class GiantMole extends CommonCombatMethod {
         int[] offsets = Utils.randomElement(BURROW_POINTS);
         Tile burrowDestination = npc.spawnTile().relative(offsets[0], offsets[1]);
         target.getCombat().reset();//When mole digs reset combat
-        System.out.println("cmb reset 512");
         npc.lockNoDamage();
         npc.faceEntity(null);
         npc.getMovement().reset();

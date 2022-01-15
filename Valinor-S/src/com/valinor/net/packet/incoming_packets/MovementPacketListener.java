@@ -80,7 +80,6 @@ public class MovementPacketListener implements PacketListener {
         if (packet.getOpcode() == ClientToServerPackets.MINIMAP_MOVEMENT_OPCODE || packet.getOpcode() == ClientToServerPackets.GAME_MOVEMENT_OPCODE) {
             player.getCombat().reset();//Reset combat when moving
             player.getCombat().setCastSpell(null);
-            System.out.println("cmb reset waaasasasas");
         }
 
         var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();

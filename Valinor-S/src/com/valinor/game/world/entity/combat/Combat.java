@@ -142,7 +142,7 @@ public class Combat {
         if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
             return MagicMaxHit.maxHit(player, false);
         }
-        return MagicMaxHit.maxHit(player, true);
+        return MagicMaxHit.maxHit(player,true);
     }
 
     public int maximumMeleeHit() {
@@ -152,10 +152,10 @@ public class Combat {
         }
         //PvP max hit
         if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
-            return MeleeMaxHit.maxHit(mob.getAsPlayer(), false);
+            return MeleeMaxHit.maxHit(mob.getAsPlayer(),false);
         }
         //PvM max hit
-        return MeleeMaxHit.maxHit(mob.getAsPlayer(), true);
+        return MeleeMaxHit.maxHit(mob.getAsPlayer(),true);
     }
 
     /**
@@ -199,7 +199,7 @@ public class Combat {
             player.action.clearNonWalkableActions();
             if (!player.getInterfaceManager().isMainClear()) {
                 boolean ignore = player.getInterfaceManager().isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE) || player.getInterfaceManager().isInterfaceOpen(29050) || player.getInterfaceManager().isInterfaceOpen(55140);
-                if (!ignore) {
+                if(!ignore) {
                     //player.debugMessage("walkable interface is: " + player.getInterfaceManager().getWalkable());
                     player.getInterfaceManager().close(false);
                 }
@@ -227,7 +227,6 @@ public class Combat {
             mob.getMovementQueue().clear();
 
         Debugs.CMB.debug(mob, "Attack", target, true);
-        System.out.println("Attack " + target);
     }
 
     /**
@@ -238,9 +237,6 @@ public class Combat {
         hitQueue.process(mob);
 
         // Handle attacking
-        if(mob.isPlayer())
-            System.out.println("performNewAttack "+mob.getMobName());
-
         performNewAttack();
 
         if (mob.isPlayer() && target != null) {
@@ -278,16 +274,11 @@ public class Combat {
      * the real method, without try-catch wrapped around it
      */
     private void performNewAttack0() {
-        if(mob.isPlayer())
-            System.out.println("enter performNewAttack0 "+mob.getMobName());
-
         if (target == null) {
-            //System.out.println("no targ");
+            if (mob.isNpc() && mob.getAsNpc().id() == NEX)
+            System.out.println("no targ");
             return;
         }
-
-        if(mob.isPlayer())
-            System.out.println("here in performNewAttack0 "+mob.getMobName()+" targ "+target.getMobName());
 
         // Fetch the combat method the mob will be attacking with
         method = CombatFactory.getMethod(mob);
@@ -318,7 +309,7 @@ public class Combat {
 
             if (!player.getInterfaceManager().isMainClear()) {
                 boolean ignore = player.getInterfaceManager().isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE) || player.getInterfaceManager().isInterfaceOpen(29050) || player.getInterfaceManager().isInterfaceOpen(55140);
-                if (!ignore) {
+                if(!ignore) {
                     //player.debugMessage("walkable interface is: " + player.getInterfaceManager().getWalkable());
                     player.getInterfaceManager().close(false);
                 }
@@ -328,7 +319,6 @@ public class Combat {
         // Check if the mob can perform the attack
         if (!CombatFactory.canAttack(mob, target)) {
             mob.getCombat().reset();//We can't attack our target, reset combat
-            System.out.println("reset comb 1");
             return;
         }
 
@@ -467,8 +457,6 @@ public class Combat {
         mob.getMovementQueue().resetFollowing();
         mob.setEntityInteraction(null);
         TargetRoute.reset(mob);
-        if (mob.isPlayer())
-            System.out.println("reset weee");
     }
 
     /**

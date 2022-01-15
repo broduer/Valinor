@@ -2173,7 +2173,6 @@ public enum CombatSpells {
             if (target.getTimers().has(TimerKey.TELEBLOCK) || target.getTimers().has(TimerKey.TELEBLOCK_IMMUNITY)) {
                 player.message("That player is already being affected by this spell.");
                 player.getCombat().reset();
-                System.out.println("cmb reset tb");
                 player.getCombat().setCastSpell(null);
                 return false;
             }

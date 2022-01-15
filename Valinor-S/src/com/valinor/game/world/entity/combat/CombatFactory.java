@@ -503,7 +503,6 @@ public class CombatFactory {
     public static boolean validTarget(Mob attacker, Mob target) {
         //Check if target is online and alive
         if (!target.isRegistered() || !attacker.isRegistered() || target.hp() <= 0) {
-            System.out.println("reset valid targ 1");
             attacker.getCombat().reset();//Target not valid reset combat
             return false;
         }
@@ -511,7 +510,6 @@ public class CombatFactory {
         // Check if teleporting away/teleported away
         if (attacker.tile().distance(target.tile()) >= 16) {
             attacker.getCombat().reset();
-            System.out.println("reset valid targ 2");
             return false;
         }
 
@@ -960,7 +958,6 @@ public class CombatFactory {
             }
         }
 
-        System.out.println("Passed canAttack checks");
         Debugs.CMB.debug(entity, "Passed canAttack checks", other, true);
         return true;
     }
@@ -1458,7 +1455,6 @@ public class CombatFactory {
                 if (!canAttack(attacker, target)) {
                     mayAttack = false;
                     attacker.getCombat().reset();//Can't attack, reset combat
-                    System.out.println("reset comb 2");
                 }
 
                 if (mayAttack) {

@@ -134,7 +134,6 @@ public class NpcDeath {
                     respawnTimer = 25;
 
                 killer.getCombat().reset();
-                System.out.println("cmb reset 89510");
 
                 // Increment kill.
                 killer.getSlayerKillLog().addKill(npc);

@@ -35,7 +35,6 @@ public class YtHurKot extends Npc {
         long lastTime = System.currentTimeMillis() - (long) getAttribOr(AttributeKey.LAST_WAS_ATTACKED_TIME, 0L);
         if (lastTime < 6000L) {
             getCombat().reset();//Last attack was 6 seconds ago, reset combat
-            System.out.println("cmb reset 45454");
         }
 
         if (CombatFactory.lastAttacker(this) != null || getCombat().getTarget() != null) {
