@@ -1001,6 +1001,7 @@ public class CustomItems {
         if(id == TREASURE_CASKET) {
             ItemDefinition.copyInventory(def, REWARD_CASKET_MASTER);
             def.name = "<col=65280>Treasure casket";
+            def.stackable = 1;
         }
 
         if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON) {

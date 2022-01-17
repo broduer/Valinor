@@ -129,6 +129,10 @@ public class ItemDefinition implements Definition {
         } else if (id == CURSED_AMULET_OF_THE_DAMNED) {
             name = "Cursed amulet of the damned";
             grandexchange = true;
+        } else if(id == TREASURE_CASKET) {
+            name = "Treasure casket";
+            grandexchange = true;
+            stackable = true;
         } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};
