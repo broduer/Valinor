@@ -223,18 +223,18 @@ public class Skills {
         var expBoostUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.EXP_BOOSTER);
         if(expBoostUnlock) {
             switch (player.expmode()) {
-                case ROOKIE -> amt *= .10;
-                case GLADIATOR -> amt *= .5;
-                case CHALLENGER -> amt *= .3;
+                case ROOKIE -> amt *= 1.10;
+                case GLADIATOR -> amt *= 1.5;
+                case CHALLENGER -> amt *= 1.3;
             }
         }
 
         if(!combatxp && player.getEquipment().hasAt(EquipSlot.RING, EXPLORERS_RING_4)) {
-            amt *= .25;
+            amt *= 1.25;
         }
 
         if(combatxp && player.getEquipment().hasAt(EquipSlot.RING, RADAS_BLESSING_4)) {
-            amt *= .25;
+            amt *= 1.25;
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
