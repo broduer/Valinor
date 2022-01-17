@@ -155,9 +155,4 @@ public class FormulaUtils {
         return Arrays.stream(BLACK_MASK_IMBUED).anyMatch(mask -> player.getEquipment().hasAt(EquipSlot.HEAD, mask));
     }
 
-    private static final int[] TWISTED_SLAYER_HELMET_I = new int[] {ItemIdentifiers.TWISTED_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET_I_KBD_HEADS, TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE, TWISTED_SLAYER_HELMET_I_VAMP_DUST, TWISTED_SLAYER_HELMET_I_JAD};
-    public static boolean wearingTwistedSlayerHelmetI(Player player) {
-        return Arrays.stream(TWISTED_SLAYER_HELMET_I).anyMatch(mask -> player.getEquipment().hasAt(EquipSlot.HEAD, mask));
-    }
-
 }

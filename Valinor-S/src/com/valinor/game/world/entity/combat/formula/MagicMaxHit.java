@@ -76,10 +76,6 @@ public class MagicMaxHit {
                 multiplier += 0.10;
             }
 
-            if (FormulaUtils.wearingTwistedSlayerHelmetI(player) && target != null && target.isNpc() && includeNpcMax) {
-                multiplier += 0.10;
-            }
-
             /**
              * When wearing the clock of invisibility with an elder wand you get a 10% damage boost vs npcs
              */

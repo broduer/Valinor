@@ -526,7 +526,6 @@ public abstract class Mob extends Entity {
      */
     private int headHint = -1;
 
-
     /**
      * Gets the player's current head hint index.
      *

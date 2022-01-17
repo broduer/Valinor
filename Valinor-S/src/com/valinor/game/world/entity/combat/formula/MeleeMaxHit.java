@@ -144,10 +144,6 @@ public class MeleeMaxHit {
             D *= 1.10;
         }
 
-        if (FormulaUtils.wearingTwistedSlayerHelmetI(player) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.10;
-        }
-
         //• Arclight: 1.70 (vs. demons)
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, ARCLIGHT) && target != null && includeNpcMax) {
             if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {

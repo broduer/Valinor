@@ -159,10 +159,6 @@ public class RangeMaxHit {
             D *= 1.10;
         }
 
-        if (FormulaUtils.wearingTwistedSlayerHelmetI(player) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.10;
-        }
-
         var bowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || (weapon >= BOW_OF_FAERDHINEN_C_25884 && weapon <= BOW_OF_FAERDHINEN_C_25896);
         var isCrystalBow = weapon == NEW_CRYSTAL_BOW;
         var crystalArmourBoosted = bowOfFaerdhinen || isCrystalBow;
