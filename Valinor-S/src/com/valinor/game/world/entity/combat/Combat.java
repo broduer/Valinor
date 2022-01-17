@@ -429,7 +429,7 @@ public class Combat {
 
     public int magicSpellDelay(Mob target) {
         var tileDist = mob.tile().distance(target.tile());
-        var delay = 1.5 + Math.floor(tileDist) / 2.0;
+        var delay = (tileDist <= 3) ? 4 : 5;
 
         if (castSpell != null && (castSpell.spellId() == 1 || castSpell.spellId() == 2 || castSpell.spellId() == 3)) // Tridents
             delay -= 1; // 1 less tick to make it faster
@@ -437,12 +437,8 @@ public class Combat {
         if (castSpell != null && castSpell.name().equalsIgnoreCase("Crumble undead")) {
             delay = 0;
         }
-
-        // 1: Always a minimum delay before impact.
-        // maximum of 4 otherwise barrage will stack up with pidded melee hit and you cannot out-eat it.
-        delay = Math.min(Math.max(1.0, delay), 5.0);
-
-        return (int) delay;
+        
+        return delay;
     }
 
     /**

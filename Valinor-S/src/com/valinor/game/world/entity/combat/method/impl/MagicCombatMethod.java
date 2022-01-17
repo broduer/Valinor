@@ -43,11 +43,20 @@ public class MagicCombatMethod extends CommonCombatMethod {
 
     @Override
     public int getAttackSpeed(Mob mob) {
+        int speed = mob.getBaseAttackSpeed();
         CombatSpell spell = mob.getCombat().getCastSpell() != null ? mob.getCombat().getCastSpell() : mob.getCombat().getAutoCastSpell();
+
         if (spell != null) {
-            return spell.getAttackSpeed(mob);
+            speed = spell.getAttackSpeed(mob);
         }
-        return mob.getBaseAttackSpeed();
+
+        if(mob.isPlayer()) {
+            Player player = mob.getAsPlayer();
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF)) {
+                speed = -1;
+            }
+        }
+        return speed;
     }
 
     @Override
