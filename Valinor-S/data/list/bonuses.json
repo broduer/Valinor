@@ -1,4 +1,20 @@
 {
+  "22370": {
+    "stab": 10,
+    "slash": -1,
+    "crush": 40,
+    "range": 0,
+    "mage": 15,
+    "stabdef": 2,
+    "slashdef": 3,
+    "crushdef": 1,
+    "rangedef": 0,
+    "magedef": 15,
+    "str": 50,
+    "rangestr": 0,
+    "magestr": 0,
+    "pray": 0
+  },
   "22516": {
     "stab": 0,
     "slash": 0,
