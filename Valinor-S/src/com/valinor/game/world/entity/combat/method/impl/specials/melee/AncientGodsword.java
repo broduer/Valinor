@@ -24,24 +24,24 @@ public class AncientGodsword extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         final Player player = (Player) mob;
-        int animation = 9171;
-        player.animate(animation);
+        player.animate(9171);
         player.graphic(1996);
-        //TODO it.player().world().spawnSound(it.player().tile(), 3869, 0, 10)
 
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE),1, CombatType.MELEE).checkAccuracy();
         hit.submit();
         CombatSpecial.drain(mob, CombatSpecial.ANCIENT_GODSWORD.getDrainAmount());
 
-        Tile targetTile = target.tile();
-        Chain.bound(null).runFn(8, () -> {
-            if(target.tile().isWithinDistance(targetTile,5)) {
-                target.graphic(2003);
-                int damage = Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MAGIC) ? 12 : 25;
-                target.hit(mob, damage);
-                mob.heal(damage);
-            }
-        });
+        if(hit.isAccurate()) {
+            Tile targetTile = target.tile();
+            Chain.bound(null).runFn(8, () -> {
+                if (target.tile().isWithinDistance(targetTile, 5)) {
+                    target.graphic(2003);
+                    int damage = 25;
+                    target.hit(mob, damage);
+                    mob.heal(damage);
+                }
+            });
+        }
     }
 
     @Override
