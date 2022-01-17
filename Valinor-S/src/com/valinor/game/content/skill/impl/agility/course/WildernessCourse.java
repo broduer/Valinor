@@ -78,7 +78,7 @@ public class WildernessCourse extends Interaction {
                     var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
                     player.putAttrib(WILDY_COURSE_STATE, stage);
                     //System.out.println("stage is now: "+stage);
-                    player.skills().addXp(Skills.AGILITY, 12.5);
+                    player.skills().addXp(Skills.AGILITY, 12.5 * 3);
                 });
                 return true;
             }
@@ -100,7 +100,7 @@ public class WildernessCourse extends Interaction {
                         var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
                         player.putAttrib(WILDY_COURSE_STATE, stage);
                         //System.out.println("stage is now: "+stage);
-                        player.skills().addXp(Skills.AGILITY, 20.0);
+                        player.skills().addXp(Skills.AGILITY, 20.0 * 3);
                     }).then(2, player::unlock);
                 });
                 return true;
@@ -131,7 +131,7 @@ public class WildernessCourse extends Interaction {
                         });
                     }
                     Chain.bound(player).name("WildernessCourse8Task").waitForTile(new Tile(2996, 3960), () -> {
-                        player.skills().addXp(Skills.AGILITY, 20.0);
+                        player.skills().addXp(Skills.AGILITY, 20.0 * 3);
                         player.unlock();
                     });
                 });
@@ -161,7 +161,7 @@ public class WildernessCourse extends Interaction {
                         var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
                         player.putAttrib(WILDY_COURSE_STATE, stage);
                         //System.out.println("stage is now: "+stage);
-                        player.skills().addXp(Skills.AGILITY, 20.0);
+                        player.skills().addXp(Skills.AGILITY, 20.0 * 3);
                         player.message("...You make it safely to the other side.");
                         player.agilityWalk(true);
                         player.unlock();
@@ -187,7 +187,7 @@ public class WildernessCourse extends Interaction {
                         player.animate(-1);
                         var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
                         player.putAttrib(WILDY_COURSE_STATE, stage);
-                        player.skills().addXp(Skills.AGILITY, 498.9);
+                        player.skills().addXp(Skills.AGILITY, 498.9 * 3);
                         //System.out.println("stage is now: "+stage);
                         if (stage == 5) {
                             player.getTaskBottleManager().increase(BottleTasks.WILDERNESS_COURSE);

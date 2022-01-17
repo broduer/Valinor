@@ -123,11 +123,11 @@ public class PestilentBloat extends CommonCombatMethod {
                 shutdown(mob);
             }
         }
-        if (!isSleeping()) {
+        if (!isSleeping() && mob.isRegistered() && !mob.dead()) {
             checkForLineOfSight(mob);
         }
         boolean present = targets.stream().anyMatch(t -> t.tile().inArea(AreaConstants.BLOAT_ARENA));
-        if (present && !flesh && !isSleeping()) {
+        if (present && !flesh && !isSleeping() && mob.isRegistered() && !mob.dead()) {
             fleshFall(mob, targets.get(0));
         }
     }
@@ -140,7 +140,7 @@ public class PestilentBloat extends CommonCombatMethod {
             if (!ProjectileRoute.allow(mob, target.tile())) {
                 continue;
             }
-            if (target.isPlayer()) {
+            if (target.isPlayer() && mob.isRegistered() && !mob.dead()) {
                 new Projectile(mob, target, 1569, 0, 100, 45, 28, 0).sendProjectile();
                 target.hit(mob, World.getWorld().random(1, 23), 3,null).setAccurate(false).graphic(new Graphic(1569)).submit();
             }
@@ -159,7 +159,7 @@ public class PestilentBloat extends CommonCombatMethod {
 
             @Override
             public void execute() {
-                if(mob.dead()) {
+                if(mob.dead() || !mob.isRegistered()) {
                     stop();
                     return;
                 }

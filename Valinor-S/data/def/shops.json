@@ -6,7 +6,7 @@
     "currency": "COINS",
     "restock": false,
     "sellType": "ANY",
-    "scroll": 275,
+    "scroll": 400,
     "items": [
       {
         "id": 3188,
@@ -184,6 +184,62 @@
       },
       {
         "id": 952,
+        "amount": 10000
+      },
+      {
+        "id": 10010,
+        "amount": 10000
+      },
+      {
+        "id": 11260,
+        "amount": 10000
+      },
+      {
+        "id": 1438,
+        "amount": 10000
+      },
+      {
+        "id": 1440,
+        "amount": 10000
+      },
+      {
+        "id": 1442,
+        "amount": 10000
+      },
+      {
+        "id": 1444,
+        "amount": 10000
+      },
+      {
+        "id": 1446,
+        "amount": 10000
+      },
+      {
+        "id": 1448,
+        "amount": 10000
+      },
+      {
+        "id": 1452,
+        "amount": 10000
+      },
+      {
+        "id": 1454,
+        "amount": 10000
+      },
+      {
+        "id": 1456,
+        "amount": 10000
+      },
+      {
+        "id": 1458,
+        "amount": 10000
+      },
+      {
+        "id": 1462,
+        "amount": 10000
+      },
+      {
+        "id": 22118,
         "amount": 10000
       }
     ]
@@ -4360,19 +4416,19 @@
     "name": "Crafting Shop",
     "currency": "COINS",
     "restock": true,
-    "noiron": true,
+    "noiron": false,
     "sellType": "NONE",
     "scroll": 0,
     "items": [
       {
         "id": 1621,
         "amount": 1000,
-        "value": 4000
+        "value": 20000
       },
       {
         "id": 1623,
         "amount": 1000,
-        "value": 2000
+        "value": 15000
       },
       {
         "id": 1755,

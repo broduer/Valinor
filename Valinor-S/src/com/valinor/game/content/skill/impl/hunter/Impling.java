@@ -74,7 +74,7 @@ public enum Impling {
         if(!player.tile().isWithinDistance(npc.tile(), 1))
             return;
 
-        if(player.inventory().getFreeSlots() > 0) {
+        if(player.inventory().isFull()) {
             player.message("You don't have enough inventory space to do that.");
             return;
         }

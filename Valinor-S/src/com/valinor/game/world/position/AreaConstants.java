@@ -6,6 +6,7 @@ package com.valinor.game.world.position;
  */
 public class AreaConstants {
 
+    public static final Area RESOURCE_AREA = new Area(3174, 3924, 3196, 3944);
     public static final Area THEATRE = new Area (3127, 4229, 3329, 4489);
     public static final Area MAIDEN = new Area (3149, 4418, 3228, 4467);
     public static final Area BLOAT = new Area (3265, 4428, 3327, 4465);

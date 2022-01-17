@@ -105,9 +105,6 @@ public class TheatreOfBlood extends Raids {
 
             //Daily raids task
             DailyTaskManager.increase(DailyTasks.RAIDING, p);
-
-            //Roll a reward for each individual player
-            TheatreOfBloodRewards.giveRewards(p);
         });
     }
 

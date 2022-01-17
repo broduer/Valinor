@@ -217,7 +217,7 @@ public class IronmanWidget extends Widget {
         if(PVP_GAME_MODE_ENABLED) {
             addClickableSprites(42431, "Toggle", 490, 491, 547);
         }
-        addText(42428, "Rookie: X75 experience, no drop rate bonus.", font, 0, 0xFD851A, false, true);
+        addText(42428, "Rookie: X150 experience, no drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42429, "Challenger: X30 experience, 5% drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42430, "Gladiator: X7.5 experience, 10% drop rate bonus.", font, 0, 0xFD851A, false, true);
         addText(42407, "An Iron Man can't receive items or assistance from other players.<br>" + "They cannot trade, stake, receive PVP loot or pickup dropped items.", font, 0, 0xFD851A, false, true);

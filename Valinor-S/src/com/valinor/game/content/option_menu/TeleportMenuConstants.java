@@ -149,7 +149,7 @@ public class TeleportMenuConstants {
         teleportOptions.put(28,
             new OptionMenu("<img=1049>East Dragons",
                 new String[] { "Wilderness", "high Risk", "Green Dragon", "Varrock East" },
-                new TeleportAction(player, new Tile(3366, 3634))));
+                new TeleportAction(player, new Tile(3345, 3670))));
 
         teleportOptions.put(29, new OptionMenu("Corporeal Beast Lair", new String[] { "Boss", "Corporal Beast" },
             new TeleportAction(player, new Tile(2969, 4382, 2))));

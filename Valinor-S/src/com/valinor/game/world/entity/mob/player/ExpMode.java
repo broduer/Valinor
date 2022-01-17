@@ -6,7 +6,7 @@ package com.valinor.game.world.entity.mob.player;
  */
 public enum ExpMode {
 
-    ROOKIE("Rookie",1, 75D,0D),
+    ROOKIE("Rookie",1, 150D,0D),
     CHALLENGER("Challenger",2, 30D,5D),
     GLADIATOR("Gladiator", 3,7.5D,10D);
 

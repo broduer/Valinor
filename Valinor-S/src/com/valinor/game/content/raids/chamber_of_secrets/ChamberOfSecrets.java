@@ -124,9 +124,6 @@ public class ChamberOfSecrets extends Raids {
 
             //Daily raids task
             DailyTaskManager.increase(DailyTasks.RAIDING, p);
-
-            //Roll a reward for each individual player
-            ChamberOfSecretsReward.giveRewards(p);
         });
     }
 

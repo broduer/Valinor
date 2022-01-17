@@ -31,6 +31,7 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_EXP_TICKS;
+import static com.valinor.game.world.position.AreaConstants.RESOURCE_AREA;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -235,6 +236,10 @@ public class Skills {
 
         if(combatxp && player.getEquipment().hasAt(EquipSlot.RING, RADAS_BLESSING_4)) {
             amt *= 1.25;
+        }
+
+        if(player.tile().inArea(RESOURCE_AREA)) {
+            amt *= 1.75;
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;

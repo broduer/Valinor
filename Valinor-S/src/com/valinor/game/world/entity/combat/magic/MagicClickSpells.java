@@ -1651,7 +1651,7 @@ public class MagicClickSpells {
             @Override
             public boolean canCast(Player player, Mob target, boolean delete) {
                 if (true) {
-                    player.message("We do not haave construction yet.");
+                    player.message("We do not have construction yet.");
                     return false;
                 }
                 return super.canCast(player, target, delete);
@@ -1816,7 +1816,7 @@ public class MagicClickSpells {
                 final Player player = cast.isPlayer() ? (Player) cast : null;
 
                 if (player != null) {
-                    Tile tile = new Tile(3222, 3218, 0);
+                    Tile tile = new Tile(2931, 4711, 0);
                     if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                         Teleports.basicTeleport(player, tile);
                     }
@@ -1873,7 +1873,7 @@ public class MagicClickSpells {
                 final Player player = cast.isPlayer() ? (Player) cast : null;
 
                 if (player != null) {
-                    Tile tile = new Tile(2549, 3112, 0);
+                    Tile tile = new Tile(2914, 3738, 0);
                     if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                         Teleports.basicTeleport(player, tile);
                     }

@@ -143,6 +143,10 @@ public class TheatreOfBloodRewards {
     public static void giveRewards(Player player) {
         //uniques
         int personalPoints = player.getAttribOr(AttributeKey.PERSONAL_POINTS, 0);
+        if (personalPoints <= 10_000) {//Can't get any loot if below 10,000 points
+            player.message("You need at least 10k points to get a drop from Raids.");
+            return;
+        }
 
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);

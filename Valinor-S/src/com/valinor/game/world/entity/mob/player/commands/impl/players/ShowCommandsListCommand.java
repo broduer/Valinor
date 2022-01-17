@@ -56,6 +56,7 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::players</col> - Displays players online.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::empty</col> - Empties your inventory.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::clearbank</col> - Empties your bank.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::lockexp</col> - Lock and unlock your exp.");
 
         commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Member Commands:</col>");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::dzone</col> - Teleports you to the member zone.");

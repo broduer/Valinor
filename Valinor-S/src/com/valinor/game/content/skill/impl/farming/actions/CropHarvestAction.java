@@ -59,7 +59,7 @@ public class CropHarvestAction extends PlayerTask {
             player.face(tile);
             int amount = player.getEquipment().hasAt(EquipSlot.WEAPON, MAGIC_SECATEURS) ? 2 : 1;
             player.getInventory().add(new Item(state.getSeed().getProduct(), amount));
-            player.skills().addXp(Skills.FARMING, (float)state.getSeed().getExperience() / 10);
+            player.skills().addXp(Skills.FARMING, (float)state.getSeed().getExperience() / 10 * 2);
             AchievementsManager.activate(player, Achievements.FARMER,1);
 
             if (FarmingConstants.hasToLoseLife(state, player)) {

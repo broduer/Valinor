@@ -58,6 +58,27 @@ public class HunterTeleportsD extends Dialogue {
             if (option == 4) {
                 stop();
             }
+        } else if (isPhase(1)) {
+            if (option == 1) {
+                if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                    Teleports.basicTeleport(player, new Tile(2343,3594));
+                }
+            }
+            if (option == 2) {
+                if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                    Teleports.basicTeleport(player, new Tile(2558,2936));
+                }
+            }
+            if (option == 3) {
+                player.optionsTitled("<col=FF0000>You are about to enter a dangerous area", "Continue.", "Nevermind.", () -> {
+                    if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                        Teleports.basicTeleport(player, new Tile(3148, 3766));
+                    }
+                });
+            }
+            if (option == 4) {
+                stop();
+            }
         }
     }
 }

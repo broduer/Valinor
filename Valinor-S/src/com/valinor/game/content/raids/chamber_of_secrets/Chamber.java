@@ -29,7 +29,7 @@ public class Chamber extends Interaction {
     };
 
     private void fluffyDoor(Player player, GameObject obj) {
-        if (obj.interactAble()) {//deze reset niet dat is t probleem je hebt een bug gevonden
+        if (obj.interactAble()) {
             if (player.tile().y <= 4557) {
                 player.smartPathTo(obj.tile());
                 Chain.bound(player).name("EnterFluffyDoor").waitForTile(new Tile(3141, 4557), () -> {
@@ -180,6 +180,8 @@ public class Chamber extends Interaction {
                     player.message(Color.RED.wrap("You have already looted the tombstone, or your points are below 1,000."));
                     return true;
                 }
+                //Roll a reward for each individual player
+                ChamberOfSecretsReward.giveRewards(player);
                 ChamberOfSecretsReward.displayRewards(player);
                 ChamberOfSecretsReward.withdrawReward(player);
                 return true;
