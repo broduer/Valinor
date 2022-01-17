@@ -58,7 +58,7 @@ public enum ChatCrown {
         return spriteId;
     }
 
-    private static final Set<ChatCrown> STAFF = EnumSet.of(MOD_CROWN, ADMIN_CROWN, OWNER_CROWN, DEVELOPER, SUPPORT, SECURITY_MOD, EVENT_MANAGER, INSTANT_PKER, BRONZE_YOUTUBER, SILVER_YOUTUBER, GOLD_YOUTUBER, IRON_MAN, HARDCORE_IRONMAN, DARK_LORD);
+    private static final Set<ChatCrown> STAFF = EnumSet.of(SUPPORT, MOD_CROWN, ADMIN_CROWN, OWNER_CROWN, DEVELOPER, SECURITY_MOD);
 
     public boolean isStaff() {
         return STAFF.contains(this);
@@ -68,14 +68,12 @@ public enum ChatCrown {
         List<ChatCrown> crowns = new ArrayList<>();
 
         PlayerRights playerRights = PlayerRights.get(rights);
-        if (playerRights != PlayerRights.PLAYER
-                && playerRights.getCrown() != null) {
+        if (playerRights != PlayerRights.PLAYER && playerRights.getCrown() != null) {
             crowns.add(playerRights.getCrown());
         }
 
         MemberRights donorRights = MemberRights.get(donatorRights);
-        if (donorRights != MemberRights.NONE
-                && donorRights.getCrown() != null) {
+        if (donorRights != MemberRights.NONE && donorRights.getCrown() != null) {
             crowns.add(donorRights.getCrown());
         }
 

@@ -1039,11 +1039,8 @@ public class Client extends GameApplet {
                     String name = msg.getName();
                     String message = msg.getMessage();
                     String title = msg.getTitle() == null ? "" : msg.getTitle();
-                    List<ChatCrown> crowns = msg.getCrowns();
-                    boolean broadcast = false;
-                    if (message.contains("<link")) {
-                        broadcast = true;
-                    }
+
+                    boolean broadcast = message.contains("<link");
 
                     if (settings[ConfigUtility.TRANSPARENT_CHAT_BOX_ID] == 1 && !fixed) {
                         message = message.replace("<col=0>", "<col=FFFFFF>").replace("<col=255>", "<col=9090ff>")
@@ -1065,22 +1062,12 @@ public class Client extends GameApplet {
                                     }
                                 } else {
                                     xPos += 48;
-                                    String replacementSpaces = "";
-                                    for (ChatCrown c : crowns) {
-                                        replacementSpaces += "    ";
+                                    for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                         SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                         if (sprite != null) {
                                             sprite.drawSprite(xPos + 1, y - 12 + yOffset);
                                             xPos += sprite.width + 2;
                                         }
-                                    }
-                                    if (!crowns.isEmpty()) {
-                                        if (crowns.size() > 1) {
-                                            // Let's remove the first space, 8 spaces is too many for 2 icons, it should
-                                            // be 7.
-                                            replacementSpaces = replacementSpaces.substring(1);
-                                        }
-                                        message = message.replace("[Global]", "[Global]" + replacementSpaces);
                                     }
                                     if (y > 0 && y < 210) {
                                         adv_font_regular.draw(message, 11, y + yOffset, transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
@@ -1102,7 +1089,7 @@ public class Client extends GameApplet {
                         if (chatTypeView == 1 || chatTypeView == 0) {
                             int xPos = 11;
 
-                            for (ChatCrown c : crowns) {
+                            for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                 SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                 if (sprite != null) {
                                     sprite.drawSprite(xPos + 1, y - 12 + yOffset);
@@ -1139,7 +1126,7 @@ public class Client extends GameApplet {
                                     transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
                                 x += adv_font_regular.get_width("From ");
 
-                                for (ChatCrown c : crowns) {
+                                for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                     SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                     if (sprite != null) {
                                         sprite.drawSprite(x + 1, y - 12 + yOffset);
@@ -7961,9 +7948,9 @@ public class Client extends GameApplet {
                         local_player.message_cycle = 150;
 
                         List<ChatCrown> crowns = ChatCrown.get(myPrivilege, donatorPrivilege);
-                        String crownPrefix = "";
+                        StringBuilder crownPrefix = new StringBuilder();
                         for (ChatCrown c : crowns) {
-                            crownPrefix += c.getIdentifier();
+                            crownPrefix.append(c.getIdentifier());
                         }
 
                         sendMessage(local_player.entity_message, 2, crownPrefix + local_player.username, local_player.getTitle(false));
@@ -13032,9 +13019,9 @@ public class Client extends GameApplet {
                         player.message_cycle = 150;
 
                         List<ChatCrown> crowns = ChatCrown.get(privilege, donatorPrivilege);
-                        String crownPrefix = "";
+                        StringBuilder crownPrefix = new StringBuilder();
                         for (ChatCrown c : crowns) {
-                            crownPrefix += c.getIdentifier();
+                            crownPrefix.append(c.getIdentifier());
                         }
 
                         sendMessage(text, 1, crownPrefix + player.username, player.getTitle(false));

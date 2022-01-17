@@ -52,7 +52,7 @@ public enum PlayerRights {
 
     SECURITY_MODERATOR("Security Mod", 1861, 1, 3),
 
-    EVENT_MANAGER("Event Manager", 468, 1, 2),
+    EVENT_MANAGER("Event Manager", 468, -1, 2),
 
     INSTANT_PKER("Instant Pker", 506, -1, 0),
     ;
