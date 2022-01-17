@@ -1829,7 +1829,7 @@ public class CombatFactory {
         var ammoName = ammoId == -1 ? "" : new Item(ammoId).definition(World.getWorld()).name.toLowerCase();
         var crystalBow = (weaponId >= 4212 && weaponId <= 4223);
         var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW;
-        var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
+        var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || weaponId == BOW_OF_FAERDHINEN_C || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
 
         WeaponType weaponType = player.getCombat().getWeaponType();
 

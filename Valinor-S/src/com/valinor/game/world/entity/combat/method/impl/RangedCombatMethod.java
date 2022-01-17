@@ -62,7 +62,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             var ammoId = player.getEquipment().getId(EquipSlot.AMMO);
             var crystalBow = (weaponId >= NEW_CRYSTAL_BOW && weaponId <= CRYSTAL_BOW_110);
             var crawsBow = weaponId == CRAWS_BOW || weaponId == CRAWS_BOW_C || weaponId == BEGINNER_CRAWS_BOW;
-            var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
+            var bowOfFaerdhinen = weaponId == BOW_OF_FAERDHINEN || weaponId == BOW_OF_FAERDHINEN_C || (weaponId >= BOW_OF_FAERDHINEN_C_25884 && weaponId <= BOW_OF_FAERDHINEN_C_25896);
             var chins = weaponType == WeaponType.CHINCHOMPA;
             var ballista = weaponId == 19478 || weaponId == 19481;
             var dragonBolts = (ammoId >= 21932 && ammoId <= 21950);
@@ -78,9 +78,52 @@ public class RangedCombatMethod extends CommonCombatMethod {
                 graphic = 249;
             }
 
-            if(bowOfFaerdhinen) {
+            //Normal and (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN) || player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25894)) {
                 attacker.graphic(1888, 96, 0);
                 graphic = 1887;
+            }
+
+            //Red (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C)) {
+                attacker.graphic(1923, 96, 0);
+                graphic = 1922;
+            }
+
+            //White (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25884)) {
+                attacker.graphic(1925, 96, 0);
+                graphic = 1924;
+            }
+
+            //Black (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25886)) {
+                attacker.graphic(1927, 96, 0);
+                graphic = 1926;
+            }
+
+            //Purple (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25888)) {
+                attacker.graphic(1929, 96, 0);
+                graphic = 1928;
+            }
+
+            //Green (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25890)) {
+                attacker.graphic(1931, 96, 0);
+                graphic = 1930;
+            }
+
+            //Yellow (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25892)) {
+                attacker.graphic(1933, 96, 0);
+                graphic = 1932;
+            }
+
+            //Blue (c)
+            if(player.getEquipment().hasAt(EquipSlot.WEAPON, BOW_OF_FAERDHINEN_C_25896)) {
+                attacker.graphic(1935, 96, 0);
+                graphic = 1934;
             }
 
             if (crawsBow) {
