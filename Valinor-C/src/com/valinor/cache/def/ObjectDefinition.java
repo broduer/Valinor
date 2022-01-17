@@ -38,24 +38,24 @@ public final class ObjectDefinition {
         }
     }
 
-    private void decode(Buffer buffer) {
-        while (true) {
-            int opcode = buffer.readUnsignedByte();
+    public void decode(Buffer buffer) {
+        do {
+            int opcode = buffer.readUByte();
             if (opcode == 0)
                 break;
-            if (opcode == 1) {
-                int len = buffer.readUnsignedByte();
-                if (len > 0) {
-                    if (modelIds == null) {
-                        models = new int[len];
-                        modelIds = new int[len];
 
-                        for (int i = 0; i < len; i++) {
-                            modelIds[i] = buffer.readUShort();
-                            models[i] = buffer.readUnsignedByte();
+            if (opcode == 1) {
+                int length = buffer.readUByte();
+                if (length > 0) {
+                    if (modelIds == null || isLowDetail) {
+                        models = new int[length];
+                        modelIds = new int[length];
+                        for (int index = 0; index < length; index++) {
+                            modelIds[index] = buffer.readUShort();
+                            models[index] = buffer.readUByte();
                         }
                     } else {
-                        buffer.pos += len * 3;
+                        buffer.pos += length * 3;
                     }
                 }
             } else if (opcode == 2)
@@ -63,70 +63,73 @@ public final class ObjectDefinition {
             else if (opcode == 3)
                 description = buffer.readString();
             else if (opcode == 5) {
-                int len = buffer.readUnsignedByte();
-                if (len > 0) {
-                    if (modelIds == null) {
+                int length = buffer.readUByte();
+                if (length > 0) {
+                    if (modelIds == null || isLowDetail) {
                         models = null;
-                        modelIds = new int[len];
-
-                        for (int i = 0; i < len; i++) {
-                            modelIds[i] = buffer.readUShort();
-                        }
+                        modelIds = new int[length];
+                        for (int index = 0; index < length; index++)
+                            modelIds[index] = buffer.readUShort();
                     } else {
-                        buffer.pos += len * 3;
+                        buffer.pos += length * 2;
                     }
                 }
             } else if (opcode == 14)
-                sizeX = buffer.readUnsignedByte();
+                sizeX = buffer.readUByte();
             else if (opcode == 15)
-                sizeY = buffer.readUnsignedByte();
-            else if (opcode == 17) {
+                sizeY = buffer.readUByte();
+            else if (opcode == 17)
                 solid = false;
-                walkable = false;
-            } else if (opcode == 18)
+            else if (opcode == 18)
                 walkable = false;
             else if (opcode == 19)
-                interact_state = buffer.readUnsignedByte();
+                interact_state = buffer.readUByte();//(buffer.readUnsignedByte() == 1);
             else if (opcode == 21)
                 contour_to_tile = true;
             else if (opcode == 22)
-                nonFlatShading = true;
+                nonFlatShading = false;
             else if (opcode == 23)
                 modelClipped = true;
-            else if (opcode == 24) { // Object Animations
+            else if (opcode == 24) {
                 animationId = buffer.readUShort();
                 if (animationId == 65535)
                     animationId = -1;
+            } else if (opcode == 27) {
+                solid = true;
             } else if (opcode == 28)
-                decor_offset = buffer.readUnsignedByte();
+                decor_offset = buffer.readUByte();
             else if (opcode == 29)
                 ambient = buffer.readSignedByte();
             else if (opcode == 39)
                 contrast = buffer.readSignedByte();
             else if (opcode >= 30 && opcode < 35) {
                 if (actions == null)
-                    actions = new String[10];
+                    actions = new String[5];
                 actions[opcode - 30] = buffer.readString();
                 if (actions[opcode - 30].equalsIgnoreCase("hidden"))
                     actions[opcode - 30] = null;
             } else if (opcode == 40) {
-                int len = buffer.readUnsignedByte();
-                recolorFrom = new int[len];
-                recolorTo = new int[len];
-                for (int i = 0; i < len; i++) {
-                    recolorFrom[i] = buffer.readUShort();
-                    recolorTo[i] = buffer.readUShort();
+                int length = buffer.readUByte();
+                recolorFrom = new int[length];
+                recolorTo = new int[length];
+                for (int index = 0; index < length; index++) {
+                    recolorFrom[index] = buffer.readUShort();
+                    recolorTo[index] = buffer.readUShort();
                 }
             } else if (opcode == 41) {
-                int len = buffer.readUnsignedByte();
-                retextureFrom = new short[len];
-                retextureTo = new short[len];
-                for (int i = 0; i < len; i++) {
-                    retextureFrom[i] = (short) buffer.readUShort();
-                    retextureTo[i] = (short) buffer.readUShort();
+                int length = buffer.readUByte();
+                retextureFrom = new short[length];
+                retextureTo = new short[length];
+                for (int index = 0; index < length; index++) {
+                    retextureFrom[index] = (short) buffer.readUShort();
+                    retextureTo[index] = (short) buffer.readUShort();
                 }
-            } else if (opcode == 61) {
-                category = buffer.readUShort();
+            } else if (opcode == 82) {
+                mapIconId = buffer.readUShort();
+                if (mapIconId == 0xFFFF) {
+                    mapIconId = -1;
+                } else if (mapIconId == 13)
+                    mapIconId = 86;
             } else if (opcode == 62)
                 rotated = true;
             else if (opcode == 64)
@@ -140,98 +143,74 @@ public final class ObjectDefinition {
             else if (opcode == 68)
                 mapSceneId = buffer.readUShort();
             else if (opcode == 69)
-                orientation = buffer.readUnsignedByte();
+                orientation = buffer.readUByte();
             else if (opcode == 70)
-                offsetX = buffer.readShort();
+                offsetX = buffer.readSignedShort();
             else if (opcode == 71)
-                offsetHeight = buffer.readShort();
+                offsetHeight = buffer.readSignedShort();
             else if (opcode == 72)
-                offsetY = buffer.readShort();
+                offsetY = buffer.readSignedShort();
             else if (opcode == 73)
                 obstructs_ground = true;
             else if (opcode == 74)
                 isSolid = true;
             else if (opcode == 75)
-                merge_interact_state = buffer.readUnsignedByte();
-            else if (opcode == 77 || opcode == 92) {
+                merge_interact_state = buffer.readUByte();
+            else if (opcode == 77) {
                 varbit = buffer.readUShort();
-
-                if (varp == 0xFFFF) {
+                if (varp == 65535)
                     varp = -1;
-                }
 
                 varp = buffer.readUShort();
-
-                if (varbit == 0xFFFF) {
+                if (varbit == 65535)
                     varbit = -1;
+
+                int length = buffer.readUByte();
+                transforms = new int[length + 2];//+ 1
+                for (int index = 0; index <= length; index++) {
+                    transforms[index] = buffer.readUShort();
+                    if (transforms[index] == 65535)
+                        transforms[index] = -1;
                 }
-
-                int value = -1;
-
-                if (opcode == 92) {
-                    value = buffer.readUShort();
-
-                    if (value == 0xFFFF) {
-                        value = -1;
-                    }
-                }
-
-                int len = buffer.readUnsignedByte();
-
-                transforms = new int[len + 2];
-                for (int i = 0; i <= len; ++i) {
-                    transforms[i] = buffer.readUShort();
-                    if (transforms[i] == 0xFFFF) {
-                        transforms[i] = -1;
-                    }
-                }
-                transforms[len + 1] = value;
-            } else if(opcode == 78) {
+                transforms[length + 1] = -1;
+            } else if (opcode == 78) {
                 ambientSoundId = buffer.readUShort();
-                anInt2083 = buffer.readUnsignedByte();
-            } else if(opcode == 79) {
+                anInt2083 = buffer.readUByte();
+            } else if (opcode == 79) {
                 anInt2112 = buffer.readUShort();
                 anInt2113 = buffer.readUShort();
-                anInt2083 = buffer.readUShort();
-
-                int length = buffer.readUnsignedByte();
+                anInt2083 = buffer.readUByte();
+                int length = buffer.readUByte();
                 int[] anims = new int[length];
-
-                for (int index = 0; index < length; ++index)
-                {
+                for (int index = 0; index < length; index++) {
                     anims[index] = buffer.readUShort();
                 }
-                soundEffectIds = anims;
-            } else if(opcode == 81) {
-                clipType = buffer.readUnsignedByte();
-            } else if (opcode == 82) {
-                mapIconId = buffer.readUShort();//AreaType
-            } else if(opcode == 89) {
-                randomAnimStart = false;
-            } else if (opcode == 249) {
-                int length = buffer.readUnsignedByte();
+            } else if (opcode == 81) {
+                buffer.readUByte();// * 256;
+            } else if (opcode == 92) {
+                varbit = buffer.readUShort();
+                if (varp == 65535)
+                    varp = -1;
 
-                Map<Integer, Object> params = new HashMap<>(length);
-                for (int i = 0; i < length; i++)
-                {
-                    boolean isString = buffer.readUnsignedByte() == 1;
-                    int key = buffer.read24Int();
-                    Object value;
+                varbit = buffer.readUShort();
+                if (varbit == 65535)
+                    varbit = -1;
 
-                    if (isString) {
-                        value = buffer.readString();
-                    } else {
-                        value = buffer.readInt();
-                    }
+                int var = buffer.readUShort();
+                if (var == 65535)
+                    var = -1;
 
-                    params.put(key, value);
+                int length = buffer.readUByte();
+                transforms = new int[length + 2];
+                for (int index = 0; index <= length; index++) {
+                    transforms[index] = buffer.readUShort();
+                    if (transforms[index] == 65535)
+                        transforms[index] = -1;
                 }
-
-                this.params = params;
-            } else {
-                //System.err.printf("Error unrecognised {Objects} opcode: %d%n%n", opcode);
+                transforms[length + 1] = var;
             }
-        }
+        } while (true);
+
         post_decode();
     }
 
