@@ -603,18 +603,17 @@ public class Npc extends Mob {
 
         List<Integer> fight_cave_monsters = Arrays.asList(TZKIH_3116, TZKEK_3118, TZKEK_3119, TZKEK_3120, TOKXIL_3121, KETZEK, KETZEK_3126, YTMEJKOT, YTMEJKOT_3124, TZTOKJAD, YTHURKOT);
         var fightCaveMonster = fight_cave_monsters.stream().anyMatch(n -> n == this.id);
-        inViewport = fightCaveMonster;//If fight cave monster ignore always agro
+        if(tile.region() == 9551) {
+            inViewport = fightCaveMonster;//If fight cave monster ignore always agro
+        }
+
         //Aggression
         if (hp() > 0 && ((wrTarget == null || wrTarget.get() == null)) && !locked() && inViewport && !getTimers().has(TimerKey.COMBAT_ATTACK)) {
             boolean wilderness = (WildernessArea.wildernessLevel(tile()) >= 1) && !WildernessArea.inside_rouges_castle(tile()) && !Chinchompas.hunterNpc(id);
             //NPCs should only aggro if you can attack them.
             if (combatInfo != null && (combatInfo.aggressive || wilderness)) {
-                if (method == null)
-                    method = CombatFactory.getMethod(this);
-                CombatMethod finalMethod = method;
                 final int ceil = def.combatlevel * 2;
                 final boolean override = combatInfo != null && combatInfo.scripts != null && combatInfo.scripts.agro_ != null;
-
                 //Highly optimized code
                 Stream<Player> playerStream = World.getWorld().getPlayers()
                     .stream()
