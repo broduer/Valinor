@@ -10,7 +10,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 public class CustomRequirement extends TitleRequirement {
 
     public CustomRequirement() {
-        super("Must be at least an<br>elite member");
+        super("Must be at least an<br>ruby member");
     }
 
     @Override

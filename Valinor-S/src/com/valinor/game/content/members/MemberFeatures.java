@@ -11,6 +11,7 @@ import com.valinor.util.Color;
 import java.util.Calendar;
 
 import static com.valinor.util.CustomItemIdentifiers.KEY_OF_DROPS;
+import static com.valinor.util.CustomItemIdentifiers.MYSTERY_CHEST;
 
 public class MemberFeatures extends Interaction {
 
@@ -26,7 +27,8 @@ public class MemberFeatures extends Interaction {
 
             if (World.getWorld().getCalendar().get(Calendar.DAY_OF_MONTH) == 1) {
                 player.putAttrib(AttributeKey.RECEIVED_MONTHLY_SPONSOR_REWARDS, true);
-                player.message(Color.PURPLE.wrap("You have received your monthly sponsor rewards. Thank you for supporting " + GameConstants.SERVER_NAME + "!"));
+                player.inventory().addOrDrop(new Item(MYSTERY_CHEST));
+                player.message(Color.PURPLE.wrap("You have received your monthly Zenyte member reward. Thank you for supporting " + GameConstants.SERVER_NAME + "!"));
             }
         }
     }

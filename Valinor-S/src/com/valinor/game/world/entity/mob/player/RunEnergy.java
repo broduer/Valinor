@@ -36,7 +36,7 @@ public class RunEnergy {
             return;
         }
 
-        //Being an extreme member grants you infinite run outside the wilderness.
+        //Being a diamond member grants you infinite run outside the wilderness.
         if (player.getMemberRights().isDiamondMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile())) {
             return;
         }

@@ -95,7 +95,7 @@ public enum MemberRights {
     }
 
     /**
-     * Checks if the player has saphire member status or higher.
+     * Checks if the player has sapphire member status or higher.
      */
     public boolean isSapphireMemberOrGreater(Player player) {
         return player.getMemberRights().getRightValue() >= SAPPHIRE_MEMBER.getRightValue();

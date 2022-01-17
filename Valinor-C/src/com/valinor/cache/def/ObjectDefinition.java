@@ -94,8 +94,6 @@ public final class ObjectDefinition {
                 animationId = buffer.readUShort();
                 if (animationId == 65535)
                     animationId = -1;
-            } else if (opcode == 27) {
-                solid = true;
             } else if (opcode == 28)
                 decor_offset = buffer.readUByte();
             else if (opcode == 29)
@@ -124,12 +122,8 @@ public final class ObjectDefinition {
                     retextureFrom[index] = (short) buffer.readUShort();
                     retextureTo[index] = (short) buffer.readUShort();
                 }
-            } else if (opcode == 82) {
-                mapIconId = buffer.readUShort();
-                if (mapIconId == 0xFFFF) {
-                    mapIconId = -1;
-                } else if (mapIconId == 13)
-                    mapIconId = 86;
+            } else if (opcode == 61) {
+                category = buffer.readUShort();
             } else if (opcode == 62)
                 rotated = true;
             else if (opcode == 64)
@@ -156,23 +150,39 @@ public final class ObjectDefinition {
                 isSolid = true;
             else if (opcode == 75)
                 merge_interact_state = buffer.readUByte();
-            else if (opcode == 77) {
+            else if (opcode == 77 || opcode == 92) {
                 varbit = buffer.readUShort();
-                if (varp == 65535)
+
+                if (varp == 0xFFFF) {
                     varp = -1;
+                }
 
                 varp = buffer.readUShort();
-                if (varbit == 65535)
-                    varbit = -1;
 
-                int length = buffer.readUByte();
-                transforms = new int[length + 2];//+ 1
-                for (int index = 0; index <= length; index++) {
-                    transforms[index] = buffer.readUShort();
-                    if (transforms[index] == 65535)
-                        transforms[index] = -1;
+                if (varbit == 0xFFFF) {
+                    varbit = -1;
                 }
-                transforms[length + 1] = -1;
+
+                int value = -1;
+
+                if (opcode == 92) {
+                    value = buffer.readUShort();
+
+                    if (value == 0xFFFF) {
+                        value = -1;
+                    }
+                }
+
+                int len = buffer.readUnsignedByte();
+
+                transforms = new int[len + 2];
+                for (int i = 0; i <= len; ++i) {
+                    transforms[i] = buffer.readUShort();
+                    if (transforms[i] == 0xFFFF) {
+                        transforms[i] = -1;
+                    }
+                }
+                transforms[len + 1] = value;
             } else if (opcode == 78) {
                 ambientSoundId = buffer.readUShort();
                 anInt2083 = buffer.readUByte();
@@ -186,28 +196,33 @@ public final class ObjectDefinition {
                     anims[index] = buffer.readUShort();
                 }
             } else if (opcode == 81) {
-                buffer.readUByte();// * 256;
-            } else if (opcode == 92) {
-                varbit = buffer.readUShort();
-                if (varp == 65535)
-                    varp = -1;
+                clipType = buffer.readUnsignedByte();
+            } else if (opcode == 82) {
+                mapIconId = buffer.readUShort();//AreaType
+            } else if(opcode == 89) {
+                randomAnimStart = false;
+            } else if (opcode == 249) {
+                int length = buffer.readUnsignedByte();
 
-                varbit = buffer.readUShort();
-                if (varbit == 65535)
-                    varbit = -1;
+                Map<Integer, Object> params = new HashMap<>(length);
+                for (int i = 0; i < length; i++)
+                {
+                    boolean isString = buffer.readUnsignedByte() == 1;
+                    int key = buffer.read24Int();
+                    Object value;
 
-                int var = buffer.readUShort();
-                if (var == 65535)
-                    var = -1;
+                    if (isString) {
+                        value = buffer.readString();
+                    } else {
+                        value = buffer.readInt();
+                    }
 
-                int length = buffer.readUByte();
-                transforms = new int[length + 2];
-                for (int index = 0; index <= length; index++) {
-                    transforms[index] = buffer.readUShort();
-                    if (transforms[index] == 65535)
-                        transforms[index] = -1;
+                    params.put(key, value);
                 }
-                transforms[length + 1] = var;
+
+                this.params = params;
+            } else {
+                //System.err.printf("Error unrecognised {Objects} opcode: %d%n%n", opcode);
             }
         } while (true);
 

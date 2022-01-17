@@ -176,26 +176,26 @@ public class Party {
     public void addPersonalPoints(Player player, int points) {
         boolean centaurPet = player.hasPetOut("Centaur");
         boolean olmletPet = player.hasPetOut("Olmlet");
-        boolean eliteMember = player.getMemberRights().isRubyMemberOrGreater(player);
-        boolean extremeMember = player.getMemberRights().isDiamondMemberOrGreater(player);
-        boolean LegendaryMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
-        boolean vipMember = player.getMemberRights().isOnyxMemberOrGreater(player);
-        boolean sponsorMember = player.getMemberRights().isZenyteMemberOrGreater(player);
+        boolean rubyMember = player.getMemberRights().isRubyMemberOrGreater(player);
+        boolean diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
+        boolean dragonstoneMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
+        boolean onyxMember = player.getMemberRights().isOnyxMemberOrGreater(player);
+        boolean zenyteMember = player.getMemberRights().isZenyteMemberOrGreater(player);
 
         var percentageBoost = 0;
         if(centaurPet || olmletPet) {
             percentageBoost += 10;
         }
 
-        if(eliteMember) {
+        if(rubyMember) {
             percentageBoost += 5;
-        } else if(extremeMember) {
+        } else if(diamondMember) {
             percentageBoost += 10;
-        } else if(LegendaryMember) {
+        } else if(dragonstoneMember) {
             percentageBoost += 15;
-        } else if(vipMember) {
+        } else if(onyxMember) {
             percentageBoost += 20;
-        } else if(sponsorMember) {
+        } else if(zenyteMember) {
             percentageBoost += 25;
         }
 

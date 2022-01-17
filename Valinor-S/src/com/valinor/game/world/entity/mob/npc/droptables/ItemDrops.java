@@ -5,7 +5,6 @@ import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.skill.impl.prayer.Bone;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
-import com.valinor.game.content.treasure.TreasureRewardCaskets;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -246,7 +245,7 @@ public class ItemDrops {
         else
             treasureCasketChance = 128;
 
-        var reduction = treasureCasketChance * killer.masterCasketMemberBonus() / 100;
+        var reduction = treasureCasketChance * killer.treasureCasketMemberBonus() / 100;
         treasureCasketChance -= reduction;
 
         if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {

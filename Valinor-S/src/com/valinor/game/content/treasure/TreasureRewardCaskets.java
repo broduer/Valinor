@@ -65,7 +65,7 @@ public class TreasureRewardCaskets {
                 }
             });
 
-            player.message("<col=3300ff>Your treasure is worth around " + NumberFormat.getInstance().format(value(player)) + " BM!</col>");
+            player.message("<col=3300ff>Your treasure is worth around " + NumberFormat.getInstance().format(value(player)) + " Coins!</col>");
 
             //Display the interface
             //System.out.println(Arrays.toString(player.clueScrollReward().toArray()));

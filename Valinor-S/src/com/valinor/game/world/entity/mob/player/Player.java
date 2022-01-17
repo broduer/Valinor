@@ -365,7 +365,7 @@ public class Player extends Mob {
         return extraPercentageChance;
     }
 
-    public int masterCasketMemberBonus() {
+    public int treasureCasketMemberBonus() {
         var extraPercentageChance = 0;
         if (getMemberRights().isZenyteMemberOrGreater(this) && tile().memberCave())
             extraPercentageChance = 25;

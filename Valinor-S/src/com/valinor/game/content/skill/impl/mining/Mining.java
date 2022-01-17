@@ -57,7 +57,7 @@ public class Mining extends Interaction {
         ADAMANT(449, "adamant", 70, 310, 95.0, 240, 9328),
         RUNE(451, "rune", 85, 380, 125.0, 720, 4237),
         JAIL_BLURITE(668, "blurite", 1, 320, 0.0, 3, 1000000),
-        AMETHYST(21347, "amethyst", 92, 380, 246.0, 120, 2500);
+        AMETHYST(21347, "amethyst", 92, 380, 246.0, 125, 2500);
 
         public int ore;
         public String rockName;

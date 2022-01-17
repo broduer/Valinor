@@ -423,9 +423,9 @@ public class SlayerRewards {
     public void block() {
         int pts = player.getAttribOr(SLAYER_REWARD_POINTS, 0);
         int required = 100;
-        boolean extremeMember = player.getMemberRights().isDiamondMemberOrGreater(player);
+        boolean diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
 
-        if (pts < 100 && !extremeMember) {
+        if (pts < 100 && !diamondMember) {
             player.message("You need " + required + " points to block your task.");
         } else {
             SlayerCreature assignedTask = SlayerCreature.lookup(player.slayerTaskId());
@@ -444,7 +444,7 @@ public class SlayerRewards {
             }
 
             blocked.add(assignedTask.uid);
-            if (!extremeMember) {
+            if (!diamondMember) {
                 player.putAttrib(SLAYER_REWARD_POINTS, pts - required);
             }
             player.putAttrib(SLAYER_TASK_ID, 0);
