@@ -66,8 +66,9 @@ public class Vorkath extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-       if (mob.<Integer>getAttribOr(AttributeKey.VORKATH_CB_COOLDOWN, 0) > 0)
-            return;
+       if (mob.<Integer>getAttribOr(AttributeKey.VORKATH_CB_COOLDOWN, 0) > 0) {
+           return;
+       }
 
         int count = mob.getAttribOr(VORKATH_NORMAL_ATTACK_COUNT, 6);
         int attackType = 0;
@@ -88,17 +89,17 @@ public class Vorkath extends CommonCombatMethod {
         mob.putAttrib(VORKATH_NORMAL_ATTACK_COUNT, count);
 
         switch (attackType) {
-            case 1 -> melee();
-            case 2 -> mage();
-            case 3 -> range();
-            case 4 -> tripleOrdered();
-            case 5 -> bomb();
-            case 6 -> acidSpitball();
-            case 7 -> zombified();
+            case 1 -> melee(mob, target);
+            case 2 -> mage(mob, target);
+            case 3 -> range(mob, target);
+            case 4 -> tripleOrdered(mob, target);
+            case 5 -> bomb(mob, target);
+            case 6 -> acidSpitball(mob, target);
+            case 7 -> zombified(mob, target);
         }
     }
 
-    private void bomb() {
+    private void bomb(Mob mob, Mob target) {
         //mob.forceChat("BOMB");
         mob.animate(FIREBALL_ATTACK_ANIMATION);
         Tile targPos = target.tile().copy();
@@ -112,7 +113,7 @@ public class Vorkath extends CommonCombatMethod {
         Chain.bound(null).runFn(dist, () -> mob.setEntityInteraction(target));
     }
 
-    private void range() {
+    private void range(Mob mob, Mob target) {
         //mob.forceChat("range");
         mob.animate(ATTACK_ANIMATION);
         new Projectile(mob, target, 1477, BREATH_DELAY, mob.projectileSpeed(target), BREATH_START_HEIGHT, BREATH_END_HEIGHT, 1).sendProjectile();
@@ -122,7 +123,7 @@ public class Vorkath extends CommonCombatMethod {
         Chain.bound(null).runFn(1, () -> mob.setEntityInteraction(target));
     }
 
-    private void mage() {
+    private void mage(Mob mob, Mob target) {
         //mob.forceChat("mage");
         mob.animate(ATTACK_ANIMATION);
         new Projectile(mob, target, 1479, BREATH_DELAY, mob.projectileSpeed(target), BREATH_START_HEIGHT, BREATH_END_HEIGHT, 1).sendProjectile();
@@ -132,14 +133,14 @@ public class Vorkath extends CommonCombatMethod {
         Chain.bound(null).runFn(1, () -> mob.setEntityInteraction(target));
     }
 
-    private void melee() {
+    private void melee(Mob mob, Mob target) {
         //mob.forceChat("melee");
         mob.animate(MELEE_ATTACK_ANIMATION_2);
         target.hit(mob, Utils.random(32), CombatType.MELEE).checkAccuracy().submit();
         Chain.bound(null).runFn(1, () -> mob.setEntityInteraction(target));
     }
 
-    private void tripleOrdered() {
+    private void tripleOrdered(Mob mob, Mob target) {
         if (!mob.hasAttrib(VORKATH_LINEAR_ATTACKS) || mob.<List<Integer>>getAttrib(VORKATH_LINEAR_ATTACKS).isEmpty()) {
             List<Integer> attackIds = new LinkedList<>(Arrays.asList(0, 1, 2));
             Collections.shuffle(attackIds);
@@ -155,7 +156,7 @@ public class Vorkath extends CommonCombatMethod {
                 target.runOnceTask(3, r -> target.performGraphic(VENOMOUS_DRAGONFIRE_END_GRAPHIC));
                 if (Utils.random(4) <= 3)
                     target.venom(mob);
-                fireDamage();
+                fireDamage(mob, target);
             }
             case 1 -> {
                 //mob.forceChat("purple");
@@ -163,7 +164,7 @@ public class Vorkath extends CommonCombatMethod {
                 mob.animate(ATTACK_ANIMATION);
                 new Projectile(mob, target, 1471, BREATH_DELAY, mob.projectileSpeed(target), BREATH_START_HEIGHT, BREATH_END_HEIGHT, 1).sendProjectile();
                 target.runOnceTask(3, r -> target.performGraphic(PRAYER_DRAGONFIRE_END_GRAPHIC));
-                fireDamage();
+                fireDamage(mob, target);
                 if (target.isPlayer()) {
                     for (int i = 0; i < target.getAsPlayer().getPrayerActive().length; i++) {
                         Prayers.deactivatePrayer(target, i);
@@ -177,14 +178,14 @@ public class Vorkath extends CommonCombatMethod {
                 target.runOnceTask(3, r -> target.performGraphic(REGULAR_DRAGONFIRE_END_GRAPHIC));
                 new Projectile(mob, target, 393, BREATH_DELAY, mob.projectileSpeed(target), BREATH_START_HEIGHT, BREATH_END_HEIGHT, 1).sendProjectile();
                 mob.animate(ATTACK_ANIMATION);
-                fireDamage();
+                fireDamage(mob, target);
             }
         }
         if (attackIds.isEmpty()) // attacks done
             mob.clearAttrib(VORKATH_LINEAR_ATTACKS);
     }
 
-    private void fireDamage() {
+    private void fireDamage(Mob mob, Mob target) {
         if (target instanceof Player) {
             Player player = (Player) target;
             int max = 73;
@@ -248,7 +249,7 @@ public class Vorkath extends CommonCombatMethod {
         }
     }
 
-    private void poisonPools() {
+    private void poisonPools(Mob mob, Mob target) {
         //mob.forceChat("Poison pools");
         if (!poison) {
             resistance = Resistance.PARTIAL;
@@ -318,15 +319,15 @@ public class Vorkath extends CommonCombatMethod {
         }
     }
 
-    private void acidSpitball() {
+    private void acidSpitball(Mob mob, Mob target) {
         //mob.forceChat("acidSpitball");
         mob.animate(FIREBALL_SPIT_ATTACK_ANIMATION); // this anim lasts like 15+ seconds
-        poisonPools(); // this is a 2 in 1, does pools first then spitballs
+        poisonPools(mob, target); // this is a 2 in 1, does pools first then spitballs
         mob.putAttrib(AttributeKey.VORKATH_CB_COOLDOWN, 27);
-        mob.runUninterruptable(2, this::startSpitball);
+        mob.runUninterruptable(2, () -> startSpitball(mob, target));
     }
 
-    private void startSpitball() {
+    private void startSpitball(Mob mob, Mob target) {
         //mob.forceChat("speed spitball");
         final Area area = new Area(2257, 4053, 2286, 4077).transform(0, 0, 0, 0, target.tile().level);
         Optional<Player> first = World.getWorld().getPlayers().search(p -> p.tile().inAreaZ(area));
@@ -360,9 +361,8 @@ public class Vorkath extends CommonCombatMethod {
 
     public Npc spawn = null;
 
-    private void zombified() {
+    private void zombified(Mob mob, Mob target) {
         resistance = Resistance.FULL;
-        mob.lockNoDamage();
         mob.animate(7960);
         new Projectile(mob, target, 395, BREATH_DELAY, 60, BREATH_START_HEIGHT, BREATH_END_HEIGHT, 1).sendProjectile();
         target.freeze(30, mob);
@@ -374,7 +374,6 @@ public class Vorkath extends CommonCombatMethod {
                 && mob.getAsNpc().spawnTile().y - t.y <= 8));
         new Projectile(mob.getCentrePosition(), pos, 0, 1484, 65, 20, 20, 20, 1).sendProjectile();
         mob.repeatingTask(t -> { // ok to run forever, shouldn't get interrupted
-            mob.putAttrib(VORKATH_CB_COOLDOWN, 5);
             if (t.tick == 3) {
                 spawn = new Npc(ZOMBIFIED_SPAWN_8063, pos).respawns(false);
                 spawn.faceEntity(target);
@@ -423,11 +422,11 @@ public class Vorkath extends CommonCombatMethod {
             }
         }).onStop(() -> {
             resistance = null;
+            mob.unlock();
+            mob.putAttrib(AttributeKey.VORKATH_CB_COOLDOWN, 0);
+            mob.getCombat().attack(target);
             target.getTimers().cancel(TimerKey.FROZEN);
             target.getTimers().cancel(TimerKey.REFREEZE);
-            mob.putAttrib(AttributeKey.VORKATH_CB_COOLDOWN, 0);
-            mob.unlock();
-            mob.getCombat().attack(target);
         });
     }
 

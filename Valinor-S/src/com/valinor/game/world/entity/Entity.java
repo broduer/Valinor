@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity;
 
+import com.valinor.game.GameConstants;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.TickAndStop;
 import com.valinor.game.task.impl.TickableTask;
@@ -217,15 +218,11 @@ public abstract class Entity {
     public Player[] closePlayers(int maxCapacity, int span) {
         Player[] targs = new Player[maxCapacity];
         int caret = 0;
-        for (int idx = 0; idx < 2048; idx++) {
+        for (int idx = 0; idx < GameConstants.PLAYERS_LIMIT; idx++) {
             Player p = World.getWorld().getPlayers().get(idx);
             if (p == null || p == this || tile().distance(p.tile()) > 14 || p.tile().level != tile().level || p.looks().hidden() || p.finished()) {
                 continue;
             }
-            //already looping 2048 times this will be far too expensive!
-			/*if(!((Player)this).sync().hasInView(p.index())){
-				continue;
-			}*/
             if (p.tile().inSqRadius(tile, span)) {
                 targs[caret++] = p;
             }

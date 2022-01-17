@@ -60,6 +60,7 @@ public class WakeUpVorkath extends Task {
 
             //Spawn the vorkath
             World.getWorld().registerNpc(vorkath);
+            vorkath.face(player.tile());
 
             //Add the vorkath to the instance list
             player.getVorkathInstance().npcList.add(vorkath);
