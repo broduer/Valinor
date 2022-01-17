@@ -1,12 +1,12 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
-import com.valinor.util.Utils;
 
 import java.util.ArrayList;
 
@@ -18,22 +18,19 @@ import static com.valinor.util.NpcIdentifiers.NEX_11280;
  */
 public class Nex extends Npc {
 
-    private boolean followTarget;
     private int stage;
     private int minionStage;
     private int flyTime;
     private long lastVirus;
-    private boolean embracedShadow;
-    private boolean trapsSettedUp;
     private long lastSiphon;
     private boolean doingSiphon;
-    private Npc[] bloodReavers;
+    private final Npc[] bloodReavers;
     private int switchPrayersDelay;
 
     public Nex(int id, Tile tile) {
         super(id, tile);
         cantInteract(true);
-        capDamage(50);
+        bloodReavers = new Npc[3];
     }
 
     @Override
@@ -41,25 +38,25 @@ public class Nex extends Npc {
         if (flyTime > 0)
             flyTime--;
 
-        if (getStage() == 0 && minionStage == 0 && hp() <= 2400) {
+        if (getStage() == 0 && minionStage == 0 && hp() <= 2720) {
             capDamage(0);
             forceChat("Fumus, don't fail me!");
             getCombat().delayAttack(1);
             ZarosGodwars.breakFumusBarrier();
             minionStage = 1;
-        } else if (getStage() == 1 && minionStage == 1 && hp() <= 1800) {
+        } else if (getStage() == 1 && minionStage == 1 && hp() <= 2040) {
             capDamage(0);
             forceChat("Umbra, don't fail me!");
             getCombat().delayAttack(1);
             ZarosGodwars.breakUmbraBarrier();
             minionStage = 2;
-        } else if (getStage() == 2 && minionStage == 2 && hp() <= 1200) {
+        } else if (getStage() == 2 && minionStage == 2 && hp() <= 1360) {
             capDamage(0);
             forceChat("Cruor, don't fail me!");
             getCombat().delayAttack(1);
             ZarosGodwars.breakCruorBarrier();
             minionStage = 3;
-        } else if (getStage() == 3 && minionStage == 3 && hp() <= 600) {
+        } else if (getStage() == 3 && minionStage == 3 && hp() <= 680) {
             capDamage(0);
             forceChat("Glacies, don't fail me!");
             getCombat().delayAttack(1);
@@ -78,8 +75,6 @@ public class Nex extends Npc {
             return;
         }
         super.sequence();
-        /*if (!getCombat().process())
-            checkAgressivity();*/
     }
 
     public ArrayList<Mob> calculatePossibleTargets(Tile current, Tile position, boolean northSouth) {
@@ -97,21 +92,18 @@ public class Nex extends Npc {
 
     public void moveNextStage() {
         if (getStage() == 0 && minionStage == 1) {
-            capDamage(50);
             forceChat("Darken my shadow!");
             Projectile projectile = new Projectile(ZarosGodwars.umbra, this, 2010, 30,60,18, 18,0);
             projectile.sendProjectile();
             getCombat().delayAttack(1);
             setStage(1);
         } else if (getStage() == 1 && minionStage == 2) {
-            capDamage(50);
             forceChat("Flood my lungs with blood!");
             Projectile projectile = new Projectile(ZarosGodwars.cruor, this, 2010, 30,60,18, 18,0);
             projectile.sendProjectile();
             getCombat().delayAttack(1);
             setStage(2);
         } else if (getStage() == 2 && minionStage == 3) {
-            capDamage(50);
             killBloodReavers();
             forceChat("Infuse me with the power of ice!");
             Projectile projectile = new Projectile(ZarosGodwars.glacies, this, 2010, 30,60,18, 18,0);
@@ -119,7 +111,6 @@ public class Nex extends Npc {
             getCombat().delayAttack(1);
             setStage(3);
         } else if (getStage() == 3 && minionStage == 4) {
-            capDamage(50);
             forceChat("NOW, THE POWER OF ZAROS!");
             animate(9179);
             getCombat().delayAttack(1);
@@ -138,17 +129,19 @@ public class Nex extends Npc {
 
     @Override
     public void onHit(Hit hit) {
-        /*if (doingSiphon)
-            this.hit(this, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
+        if(hit.getTarget().isNpc()) {
+            if (doingSiphon)
+                this.hit(this, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
 
-        if (id() == NEX_11280 && hit.getCombatType() == CombatType.MELEE) {
-            Mob source = hit.getTarget();
-            if (source != null) {
-                int deflectedDamage = (int) (hit.getDamage() * 0.1);
-                if (deflectedDamage > 0)
-                    hit.getAttacker().hit(source, deflectedDamage, 1, null).setIsReflected().submit();
+            if (id() == NEX_11280 && hit.getCombatType() == CombatType.MELEE) {
+                Mob source = hit.getAttacker();
+                if (source != null) {
+                    int deflectedDamage = (int) (hit.getDamage() * 0.1);
+                    if (deflectedDamage > 0)
+                        hit.getAttacker().hit(hit.getTarget(), deflectedDamage, 1, null).setIsReflected().submit();
+                }
             }
-        }*/
+        }
         super.onHit(hit);
     }
 
@@ -190,22 +183,6 @@ public class Nex extends Npc {
         this.lastVirus = lastVirus;
     }
 
-    public boolean isEmbracedShadow() {
-        return embracedShadow;
-    }
-
-    public void setEmbracedShadow(boolean embracedShadow) {
-        this.embracedShadow = embracedShadow;
-    }
-
-    public boolean isTrapsSettedUp() {
-        return trapsSettedUp;
-    }
-
-    public void setTrapsSettedUp(boolean trapsSettedUp) {
-        this.trapsSettedUp = trapsSettedUp;
-    }
-
     public long getLastSiphon() {
         return lastSiphon;
     }
@@ -227,12 +204,8 @@ public class Nex extends Npc {
             if (npc.dead())
                 return;
             heal(npc.hp());
-            npc.die(null);
+            npc.hit(npc, npc.hp());
         }
-    }
-
-    public boolean isDoingSiphon() {
-        return doingSiphon;
     }
 
     public void setDoingSiphon(boolean doingSiphon) {

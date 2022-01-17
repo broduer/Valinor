@@ -1241,5 +1241,41 @@
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.Glacies"
     }
+  },
+  {
+    // Blood reaver
+    "ids": [
+      11293, 11294
+    ],
+    "maxhit": 20,
+    "attackspeed": 5,
+    "aggressive": true,
+    "retaliates": false,
+    "boss": false,
+    "aggroradius": 50,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 100,
+      "magic": 190,
+      "ranged": 1,
+      "hitpoints": 125
+    },
+    "bonuses": {
+      "stabdefence": 20,
+      "slashdefence": 80,
+      "crushdefence": 120,
+      "rangeddefence": 55,
+      "magicdefence": 300
+    },
+    "animations": {
+      "attack": 9194,
+      "block": 9196,
+      "death": 9192
+    },
+    "scripts": {
+      "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.BloodReaver"
+    }
   }
 ]

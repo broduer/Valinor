@@ -978,7 +978,7 @@
     "maxhit": 31,
     "attackspeed": 6,
     "aggroradius": 10,
-    "aggressive": false,
+    "aggressive": true,
     "boss": true,
     "stats": {
       "attack": 120,

@@ -1,8 +1,11 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
+import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.hit.Hit;
+import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Utils;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -16,6 +19,7 @@ public class NexMinion extends Npc {
         super(id, tile);
         cantFollowUnderCombat(true);
         capDamage(0);
+        lockMovement();
     }
 
     public void breakBarrier() {
@@ -28,9 +32,16 @@ public class NexMinion extends Npc {
         if (dead() || !hasNoBarrier)
             return;
         super.sequence();
-        //TODO check with Jak what this is suppose to be
-        /*if (!getCombat().process())
-            checkAgressivity();*/
+        Mob target = null;
+        if(getCombatMethod() != null) {
+            if (getCombatMethod() instanceof CommonCombatMethod) {
+                CommonCombatMethod method = (CommonCombatMethod) getCombatMethod();
+                method.set(this, null);
+                target = Utils.randomElement(method.getPossibleTargets(this));
+            }
+        }
+        if(target != null)
+            getCombat().setTarget(target);
     }
 
     @Override

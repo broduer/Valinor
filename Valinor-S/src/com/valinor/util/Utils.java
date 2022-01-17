@@ -2219,4 +2219,34 @@ public class Utils {
         lastTimeUpdate = l;
         return l + timeCorrection;
     }
+
+    /**
+     * Gets the coord offsets near.
+     *
+     * @param size the size
+     * @return the coord offsets near
+     */
+    public static final int[][] getCoordOffsetsNear(int size) {
+        int[] xs = new int[4 + (4 * size)];
+        int[] xy = new int[xs.length];
+        xs[0] = -size;
+        xy[0] = 1;
+        xs[1] = 1;
+        xy[1] = 1;
+        xs[2] = -size;
+        xy[2] = -size;
+        xs[3] = 1;
+        xy[2] = -size;
+        for (int fakeSize = size; fakeSize > 0; fakeSize--) {
+            xs[(4 + ((size - fakeSize) * 4))] = -fakeSize + 1;
+            xy[(4 + ((size - fakeSize) * 4))] = 1;
+            xs[(4 + ((size - fakeSize) * 4)) + 1] = -size;
+            xy[(4 + ((size - fakeSize) * 4)) + 1] = -fakeSize + 1;
+            xs[(4 + ((size - fakeSize) * 4)) + 2] = 1;
+            xy[(4 + ((size - fakeSize) * 4)) + 2] = -fakeSize + 1;
+            xs[(4 + ((size - fakeSize) * 4)) + 3] = -fakeSize + 1;
+            xy[(4 + ((size - fakeSize) * 4)) + 3] = -size;
+        }
+        return new int[][] { xs, xy };
+    }
 }

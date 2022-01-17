@@ -68,8 +68,7 @@ public class ZarosGodwars {
 
     public static void clear() {
         if (nex != null) {
-            //TODO
-            //nex.killBloodReavers();
+            nex.killBloodReavers();
             nex.remove();
             nex = null;
         }
@@ -133,7 +132,7 @@ public class ZarosGodwars {
                     Npc fumus = new NexMinion(FUMUS, new Tile(2913, 5215, 0)).spawn(false);
                     ZarosGodwars.fumus = (NexMinion) fumus;
                     fumus.spawnDirection(Utils.getFaceDirection(1, -1));
-                    nex.face(new Tile(fumus.getCoordFaceX(fumus.getSize()), fumus.getCoordFaceY(fumus.getSize()), 0));
+                    fumus.face(new Tile(fumus.getCoordFaceX(fumus.getSize()), fumus.getCoordFaceY(fumus.getSize()), 0));
                     nex.forceChat("Fumus!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.fumus, nex, 2010, 30,80,18, 18,0);
@@ -141,8 +140,8 @@ public class ZarosGodwars {
                 }).then(3, () -> {
                     Npc umbra = new NexMinion(UMBRA, new Tile(2937, 5215, 0)).spawn(false);
                     ZarosGodwars.umbra = (NexMinion) umbra;
-                    ZarosGodwars.umbra.spawnDirection(Utils.getFaceDirection(-1, -1));
-                    nex.face(new Tile(ZarosGodwars.umbra.getCoordFaceX(ZarosGodwars.umbra.getSize()), ZarosGodwars.umbra.getCoordFaceY(ZarosGodwars.umbra.getSize()), 0));
+                    umbra.spawnDirection(Utils.getFaceDirection(-1, -1));
+                    umbra.face(new Tile(ZarosGodwars.umbra.getCoordFaceX(ZarosGodwars.umbra.getSize()), ZarosGodwars.umbra.getCoordFaceY(ZarosGodwars.umbra.getSize()), 0));
                     nex.forceChat("Umbra!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.umbra, nex, 2010, 30,80,18, 18,0);
@@ -150,8 +149,8 @@ public class ZarosGodwars {
                 }).then(3, () -> {
                     Npc cruor = new NexMinion(CRUOR, new Tile(2937, 5191, 0)).spawn(false);
                     ZarosGodwars.cruor = (NexMinion) cruor;
-                    ZarosGodwars.cruor.spawnDirection(Utils.getFaceDirection(-1, 1));
-                    nex.face(new Tile(ZarosGodwars.cruor.getCoordFaceX(ZarosGodwars.cruor.getSize()), ZarosGodwars.cruor.getCoordFaceY(ZarosGodwars.cruor.getSize()), 0));
+                    cruor.spawnDirection(Utils.getFaceDirection(-1, 1));
+                    cruor.face(new Tile(ZarosGodwars.cruor.getCoordFaceX(ZarosGodwars.cruor.getSize()), ZarosGodwars.cruor.getCoordFaceY(ZarosGodwars.cruor.getSize()), 0));
                     nex.forceChat("Cruor!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.cruor, nex, 2010, 30,80,18, 18,0);
@@ -159,9 +158,9 @@ public class ZarosGodwars {
                 }).then(3, () -> {
                     Npc glacies = new NexMinion(GLACIES, new Tile(2913, 5191, 0)).spawn(false);
                     ZarosGodwars.glacies = (NexMinion) glacies;
-                    ZarosGodwars.glacies.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
-                    ZarosGodwars.glacies.spawnDirection(Utils.getFaceDirection(1, 1));
-                    nex.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
+                    glacies.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
+                    glacies.spawnDirection(Utils.getFaceDirection(1, 1));
+                    glacies.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
                     nex.forceChat("Glacies!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30,80,18, 18,0);

@@ -115,7 +115,7 @@ public class ShootingStars {
     /**
      * The interval at which server-wide shooting star events occur. Event runs every 45 minutes
      */
-    public static final int EVENT_INTERVAL = 500;//4500
+    public static final int EVENT_INTERVAL = 4500;//4500
 
     public void startEvent() {
         if (!DISABLED) {

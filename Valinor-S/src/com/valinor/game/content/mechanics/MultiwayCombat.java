@@ -126,6 +126,7 @@ public class MultiwayCombat {
 
     private static final List<Integer> REGIONS = Arrays.asList(
         /* Safe: **/
+        11601, //Nex
         15515, //The nightmare
         6992, 6993, //Giant mole
         9551, //Fight Caves
