@@ -242,6 +242,8 @@ public class Mining extends Interaction {
                             amount += 1;
                         if (finalRock.ore != RUNITE_ORE && player.getEquipment().hasAt(EquipSlot.CAPE, MINING_CAPET) && Utils.rollPercent(5))
                             amount += 1;
+                        if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                            amount += 1;
 
                         player.inventory().addOrDrop(new Item(finalRock.ore, amount));
                         if(amount > 1)

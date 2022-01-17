@@ -28,6 +28,7 @@ import java.util.List;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.COOKING_GAUNTLETS;
+import static com.valinor.util.ItemIdentifiers.RING_OF_CHAROSA;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -226,7 +227,8 @@ public class Cooking extends Interaction {
                     || World.getWorld().rollDie(100, chance)
                     || food == Cookable.SEAWEED) {
 
-                    player.inventory().add(new Item(food.cooked), true);
+                    int amount = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) ? 2 : 1;
+                    player.inventory().add(new Item(food.cooked, amount), true);
 
                     String msg = switch (food) {
                         case RAW_LOBSTER -> "You roast a lobster.";

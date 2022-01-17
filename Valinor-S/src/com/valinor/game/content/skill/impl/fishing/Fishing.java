@@ -179,7 +179,8 @@ public class Fishing {
                         unlockHeron(player);
                     }
 
-                    player.inventory().add(new Item(weCatch.item, weCatch == Fish.MINNOWS ? World.getWorld().random(10, 26) : 1), true);
+                    int amount = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) ? 2 : 1;
+                    player.inventory().add(new Item(weCatch.item, weCatch == Fish.MINNOWS ? World.getWorld().random(10, 26) : amount), true);
                     player.skills().addXp(Skills.FISHING, weCatch.xp * xpBonus(player));
                     AchievementsManager.activate(player, Achievements.FISHERMAN,1);
 

@@ -124,6 +124,8 @@ public class ItemCreationSkillable extends DefaultSkillable {
                 if(doubleRoll && isOre) {
                     r.getReplaceWith().setAmount(2);
                 }
+                if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                    r.getReplaceWith().setAmount(r.getReplaceWith().getAmount() + 1);
                 player.inventory().add(r.getReplaceWith());
             }
         });

@@ -238,7 +238,7 @@ public class CommandManager {
         commands.put("walkint", new WalkableInterfaceCommand());
         commands.put("shop", new ShopCommand());
         commands.put("cint", new ChatboxInterfaceCommand());
-        commands.put("update", new UpdateServerCommand());
+        //commands.put("update", new UpdateServerCommand());
         commands.put("fn", new GetNpcIdCommand());
         commands.put("fo", new GetObjectIdCommand());
         commands.put("getid", new GetItemIdCommand());

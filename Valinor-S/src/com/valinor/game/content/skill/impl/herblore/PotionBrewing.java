@@ -9,6 +9,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -18,6 +19,7 @@ import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.ItemIdentifiers.RING_OF_CHAROSA;
 
 /**
  * Created by Bart on 10/29/2015.
@@ -226,13 +228,14 @@ public class PotionBrewing {
 
                     player.inventory().remove(pot.secondary);
                     player.inventory().remove(pot.unfinished);
+                    int amount = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) ? 2 : 1;
                     if (player.getEquipment().contains(ItemIdentifiers.AMULET_OF_CHEMISTRY) && Utils.rollDie(100, 5)) {
-                        player.inventory().add(new Item(pot.resultFourDose));
+                        player.inventory().add(new Item(pot.resultFourDose, amount));
                         int charges = player.getAttribOr(AttributeKey.AMULET_OF_CHEMISTRY_CHARGES, 5);
                         charges -= 1;
                         player.putAttrib(AttributeKey.AMULET_OF_CHEMISTRY_CHARGES, charges);
                     } else {
-                        player.inventory().add(new Item(pot.result));
+                        player.inventory().add(new Item(pot.result, amount));
                     }
                     player.sound(2608, 0);
                     player.animate(363);
