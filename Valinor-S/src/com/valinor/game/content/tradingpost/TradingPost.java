@@ -527,7 +527,7 @@ public class TradingPost {
         int listSize = tradingPostListings.size();
         int idx = 0;
         //System.out.println(Arrays.toString(tradingPostListings.toArray()));
-        
+
         for (int i = 66330; i < 66330 + CHILD_LENGTH; i += 7) {
             if (idx >= listSize) {
                 //System.out.println("skip "+idx+" over "+listSize);
