@@ -57,8 +57,12 @@ public class BossRoomDoors extends Interaction {
 
             //Nex
             if(obj.getId() == 42967) {
-                player.teleport(new Tile(2910, 5203,0));
-                ZarosGodwars.addPlayer(player);
+                if(player.getX() <= 2908) {
+                    player.teleport(new Tile(2910, 5203, 0));
+                    ZarosGodwars.addPlayer(player);
+                } else if(player.getX() <= 2910) {
+                    player.teleport(new Tile(2908, 5203, 0));
+                }
                 return true;
             }
         }

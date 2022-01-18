@@ -6,6 +6,7 @@ import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.masks.animations.Priority;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
@@ -186,6 +187,8 @@ public class Teleports {
         var instancedArea = InstancedAreaManager.getSingleton().ofZ(player.getZ());
         if (instancedArea != null)
             instancedArea.onTeleport(player, tile);
+
+        ZarosGodwars.removePlayer(player);
 
         NightmareInstance nightmareInstance = player.getNightmareInstance();
         if (nightmareInstance != null)

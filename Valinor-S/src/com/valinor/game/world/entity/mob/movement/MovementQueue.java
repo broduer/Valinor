@@ -19,10 +19,7 @@ import com.valinor.util.Debugs;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.Optional;
+import java.util.*;
 
 import static com.valinor.game.world.entity.AttributeKey.MOVEMENT_PACKET_STEPS;
 import static com.valinor.util.NpcIdentifiers.*;
@@ -384,9 +381,10 @@ public final class MovementQueue {
             return false;
         }
 
+        List<Integer> ALWAYS_LOCKED_FROM_MOVEMENT = Arrays.asList(GREAT_OLM_RIGHT_CLAW_7553, GREAT_OLM_LEFT_CLAW_7555, GREAT_OLM_7554, COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, FUMUS, UMBRA, CRUOR, GLACIES);
         if(mob.isNpc()) {
             Npc npc = mob.getAsNpc();
-            if(npc.id() == GREAT_OLM_RIGHT_CLAW_7553 || npc.id() == GREAT_OLM_LEFT_CLAW_7555 || npc.id() == GREAT_OLM_7554 || npc.isCombatDummy()) {
+            if(ALWAYS_LOCKED_FROM_MOVEMENT.stream().anyMatch(n -> n == npc.id())) {
                 return false;
             }
         }

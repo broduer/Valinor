@@ -243,6 +243,9 @@ public class Hit {
             } else if (alwaysHitActive) {
                 damage = alwaysHitDamage;
             } else {
+                if(attacker.isNpc() && attacker.getAsNpc().def().name.equalsIgnoreCase("Nex") && attacker.<Boolean>getAttribOr(AttributeKey.TURMOIL_ACTIVE, false)) {
+                    this.damage *= 1.10;
+                }
                 // use existing damage
                 damage = this.damage;
             }

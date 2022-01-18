@@ -1,17 +1,30 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
+import com.valinor.game.content.announcements.ServerAnnouncements;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.Item;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
+import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.object.MapObjects;
+import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
+import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
@@ -27,6 +40,9 @@ public class ZarosGodwars {
     public static NexMinion umbra;
     public static NexMinion cruor;
     public static NexMinion glacies;
+
+    public static Optional<GameObject> ancientBarrierPurple = MapObjects.get(42967, new Tile(2909, 5202, 0));
+    public static GameObject redBarrierPurple = null;
 
     public static int getPlayersCount() {
         return playersOn.size();
@@ -54,7 +70,6 @@ public class ZarosGodwars {
 
     public static void addPlayer(Player player) {
         if (playersOn.contains(player)) {
-            // System.out.println("ERROR DOUBLE ENTRY!");
             return;
         }
         playersOn.add(player);
@@ -91,7 +106,12 @@ public class ZarosGodwars {
     }
 
     private static void cancel() {
-        if (getPlayersCount() == 0) clear();
+        //Replace red barrier with purple
+        if(redBarrierPurple != null && ancientBarrierPurple.isPresent()) {
+            ObjectManager.replaceWith(redBarrierPurple, ancientBarrierPurple.get());
+        }
+        if (getPlayersCount() == 0)
+            clear();
     }
 
     public static ArrayList<Mob> getPossibleTargets() {
@@ -121,59 +141,97 @@ public class ZarosGodwars {
             if (nex == null) {
                 Nex nex = new Nex(NEX, new Tile(2924, 5202, 0));
                 ZarosGodwars.nex = nex;
-                Chain.bound(null).cancelWhen(() -> {
-                    return nex == null; // cancels as expected
-                }).runFn(TESTING ? 5 : 20, () -> {
+                Chain.bound(null).cancelWhen(() -> { // ah cancel applies here only to the first chain, so you want it to take to next
+                    return getPlayersCount() == 0 || nex == null; // cancels as expected
+                }).thenCancellable(TESTING ? 5 : 20, () -> {
                     nex.spawn(false);
-                }).then(1, () -> {
+                }).thenCancellable(1, () -> {
                     nex.forceChat("AT LAST!");
                     nex.animate(9182);
-                }).then(3, () -> {
+                }).thenCancellable(3, () -> {
                     Npc fumus = new NexMinion(FUMUS, new Tile(2913, 5215, 0)).spawn(false);
                     ZarosGodwars.fumus = (NexMinion) fumus;
-                    fumus.spawnDirection(Utils.getFaceDirection(1, -1));
-                    fumus.face(new Tile(fumus.getCoordFaceX(fumus.getSize()), fumus.getCoordFaceY(fumus.getSize()), 0));
+                    fumus.face(nex.tile());
+                    nex.face(fumus.tile());
                     nex.forceChat("Fumus!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.fumus, nex, 2010, 30,80,18, 18,0);
                     projectile.sendProjectile();
-                }).then(3, () -> {
+                }).thenCancellable(3, () -> {
                     Npc umbra = new NexMinion(UMBRA, new Tile(2937, 5215, 0)).spawn(false);
                     ZarosGodwars.umbra = (NexMinion) umbra;
-                    umbra.spawnDirection(Utils.getFaceDirection(-1, -1));
-                    umbra.face(new Tile(ZarosGodwars.umbra.getCoordFaceX(ZarosGodwars.umbra.getSize()), ZarosGodwars.umbra.getCoordFaceY(ZarosGodwars.umbra.getSize()), 0));
+                    umbra.face(nex.tile());
+                    nex.face(umbra.tile());
                     nex.forceChat("Umbra!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.umbra, nex, 2010, 30,80,18, 18,0);
                     projectile.sendProjectile();
-                }).then(3, () -> {
+                }).thenCancellable(3, () -> {
                     Npc cruor = new NexMinion(CRUOR, new Tile(2937, 5191, 0)).spawn(false);
                     ZarosGodwars.cruor = (NexMinion) cruor;
-                    cruor.spawnDirection(Utils.getFaceDirection(-1, 1));
-                    cruor.face(new Tile(ZarosGodwars.cruor.getCoordFaceX(ZarosGodwars.cruor.getSize()), ZarosGodwars.cruor.getCoordFaceY(ZarosGodwars.cruor.getSize()), 0));
+                    cruor.face(nex.tile());
+                    nex.face(cruor.tile());
                     nex.forceChat("Cruor!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.cruor, nex, 2010, 30,80,18, 18,0);
                     projectile.sendProjectile();
-                }).then(3, () -> {
+                }).thenCancellable(3, () -> {
                     Npc glacies = new NexMinion(GLACIES, new Tile(2913, 5191, 0)).spawn(false);
                     ZarosGodwars.glacies = (NexMinion) glacies;
-                    glacies.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
-                    glacies.spawnDirection(Utils.getFaceDirection(1, 1));
-                    glacies.face(new Tile(ZarosGodwars.glacies.getCoordFaceX(ZarosGodwars.glacies.getSize()), ZarosGodwars.glacies.getCoordFaceY(ZarosGodwars.glacies.getSize()), 0));
+                    glacies.face(nex.tile());
+                    nex.face(glacies.tile());
                     nex.forceChat("Glacies!");
                     nex.animate(9189);
                     Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30,80,18, 18,0);
                     projectile.sendProjectile();
-                }).then(3, () -> {
+                }).thenCancellable(3, () -> {
                     nex.forceChat("Fill my soul with smoke!");
                     Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30,80,18, 18,0);
                     projectile.sendProjectile();
-                }).then(2, () -> {
+                }).thenCancellable(2, () -> {
                     nex.cantInteract(false);
                     nex.getCombat().setTarget(Utils.randomElement(getPossibleTargets()));
+
+                    //Replace purple barrier with red
+                    if(ancientBarrierPurple.isPresent()) {
+                        redBarrierPurple = new GameObject(42941, ancientBarrierPurple.get().tile(), ancientBarrierPurple.get().getType(), ancientBarrierPurple.get().getRotation());
+                        ObjectManager.replaceWith(ancientBarrierPurple.get(), redBarrierPurple);
+                    }
                 });
             }
         }
+    }
+
+    public static void drop(Mob mob) {
+        mob.getCombat().getDamageMap().forEach((key, hits) -> {
+            Player player = (Player) key;
+            if (mob.tile().isWithinDistance(player.tile(),12) && hits.getDamage() >= 100) {
+                if(mob instanceof Npc) {
+                    Npc npc = mob.getAsNpc();
+
+                    //Always log kill timers
+                    player.getBossTimers().submit(npc.def().name, (int) player.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), player);
+
+                    //Always increase kill counts
+                    player.getBossKillLog().addKill(npc);
+
+                    //Random drop from the table
+                    ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
+                    if (table != null) {
+                        Item reward = table.randomItem(World.getWorld().random());
+                        if (reward != null) {
+
+                            // bosses, find npc ID, find item ID
+                            BOSSES.log(player, npc.id(), reward);
+
+                            GroundItemHandler.createGroundItem(new GroundItem(reward, npc.tile(), player));
+                            ServerAnnouncements.tryBroadcastDrop(player, npc, reward);
+
+                            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " got drop item " + reward, "npcdrops");
+                        }
+                    }
+                }
+            }
+        });
     }
 }

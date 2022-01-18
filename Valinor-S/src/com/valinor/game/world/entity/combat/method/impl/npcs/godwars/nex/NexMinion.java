@@ -19,7 +19,6 @@ public class NexMinion extends Npc {
         super(id, tile);
         cantFollowUnderCombat(true);
         capDamage(0);
-        lockMovement();
     }
 
     public void breakBarrier() {

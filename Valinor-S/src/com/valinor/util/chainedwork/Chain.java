@@ -328,6 +328,31 @@ public class Chain<T> {
         return nextNode;
     }
 
+    public Chain<T> thenCancellable(Runnable nextWork) {
+        if (this.work == null) {
+            return runFn(1, nextWork);
+        }
+        nextNode = bound(owner); // make a new one
+        nextNode.work = nextWork; // init work
+        nextNode.name = name; // re-use the name
+        nextNode.cancelCondition = cancelCondition;
+        nextNode.findSource();
+        return nextNode;
+    }
+
+    public Chain<T> thenCancellable(int startDelay, Runnable nextWork) {
+        if (this.work == null) {
+            return runFn(startDelay, nextWork);
+        }
+        nextNode = bound(owner); // make a new one
+        nextNode.work = nextWork; // init work
+        nextNode.name = name; // re-use the name
+        nextNode.cycleDelay = startDelay;
+        nextNode.cancelCondition = cancelCondition;
+        nextNode.findSource();
+        return nextNode;
+    }
+
     /**
      * see {@link Chain#repeatingTask(int, Consumer)}.
      * @param tickBetweenLoop

@@ -26,6 +26,15 @@ public class Nex extends Npc {
     private boolean doingSiphon;
     private final Npc[] bloodReavers;
     private int switchPrayersDelay;
+    private boolean turmoilAttackUsed;
+
+    public boolean isTurmoilAttackUsed() {
+        return turmoilAttackUsed;
+    }
+
+    public void setTurmoilAttackUsed(boolean turmoilAttackUsed) {
+        this.turmoilAttackUsed = turmoilAttackUsed;
+    }
 
     public Nex(int id, Tile tile) {
         super(id, tile);
@@ -97,12 +106,14 @@ public class Nex extends Npc {
             projectile.sendProjectile();
             getCombat().delayAttack(1);
             setStage(1);
+            capDamage(-1);
         } else if (getStage() == 1 && minionStage == 2) {
             forceChat("Flood my lungs with blood!");
             Projectile projectile = new Projectile(ZarosGodwars.cruor, this, 2010, 30,60,18, 18,0);
             projectile.sendProjectile();
             getCombat().delayAttack(1);
             setStage(2);
+            capDamage(-1);
         } else if (getStage() == 2 && minionStage == 3) {
             killBloodReavers();
             forceChat("Infuse me with the power of ice!");
@@ -110,12 +121,14 @@ public class Nex extends Npc {
             projectile.sendProjectile();
             getCombat().delayAttack(1);
             setStage(3);
+            capDamage(-1);
         } else if (getStage() == 3 && minionStage == 4) {
             forceChat("NOW, THE POWER OF ZAROS!");
             animate(9179);
             getCombat().delayAttack(1);
-            heal(600);
+            heal(500);
             setStage(4);
+            capDamage(-1);
         }
     }
 
@@ -203,7 +216,7 @@ public class Nex extends Npc {
             bloodReavers[index] = null;
             if (npc.dead())
                 return;
-            heal(npc.hp());
+            this.hit(this, npc.hp(), SplatType.NPC_HEALING_HITSPLAT);
             npc.hit(npc, npc.hp());
         }
     }

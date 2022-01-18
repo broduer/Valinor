@@ -19,7 +19,7 @@ import java.util.function.Predicate;
  *
  * @author Professor Oak
  */
-public class MapObjects {
+public class MapObjects { // cache objects
 
     /**
      * A map which holds all of our map objects. This contains objects from the cache, the

@@ -17,7 +17,6 @@ public class Fumus extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        System.out.println("huh");
         mob.animate(mob.attackAnimation());
         var tileDist = mob.tile().transform(1, 1, 0).distance(target.tile());
         var delay = Math.max(1, (50 + (tileDist * 12)) / 30);

@@ -215,6 +215,7 @@ public class CommandManager {
         commands.put("showitem", new ShowItemOnWidgetCommand());
         commands.put("click", new ClickLinkCommand());
         commands.put("test", new TestCommand());
+        commands.put("rnex", new RestartNexCommand());
         commands.put("raidsl", new TestRaidsLootCommand());
         commands.put("pforce", new PForceMoveCmd());
         commands.put("projectile", new ProjectileCommand());

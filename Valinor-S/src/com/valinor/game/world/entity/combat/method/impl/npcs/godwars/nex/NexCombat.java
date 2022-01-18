@@ -1,7 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
 import com.valinor.fs.NpcDefinition;
-import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
@@ -22,6 +21,7 @@ import com.valinor.game.world.entity.mob.npc.NpcCombatInfo;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.routes.DumbRoute;
@@ -31,6 +31,8 @@ import com.valinor.util.chainedwork.Chain;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars.ancientBarrierPurple;
+import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars.redBarrierPurple;
 import static com.valinor.util.NpcIdentifiers.BLOOD_REAVER;
 import static com.valinor.util.NpcIdentifiers.NEX_11282;
 
@@ -41,7 +43,9 @@ import static com.valinor.util.NpcIdentifiers.NEX_11282;
 public class NexCombat extends CommonCombatMethod {
 
     private int attackCount;
+    private static final int TURMOIL_GFX = 2016;
     private static final int MELEE_ATTACK_ANIM = 9180;
+    private static final int MELEE_ATTACK_ZAROS_PHASE = 9181;
     private static final int VIRUS_ATTACK_ANIM = 9189;
     private static final int MAGIC_ATTACK_ANIM = 9189;//Shared animation
     private static final int BLOOD_SIPHON_ANIM = 9183;
@@ -58,6 +62,8 @@ public class NexCombat extends CommonCombatMethod {
     private static final int BLOOD_SACRIFICE_ATTACK_MAX = 80;
     private static final int CONTAINMENT_SPECIAL_ATTACK_MAX = 60;
     private static final int ICE_PRISON_SPECIAL_ATTACK_MAX = 75;
+
+    private static final int[] DRAIN = { Skills.ATTACK, Skills.STRENGTH, Skills.DEFENCE};
 
     public static final Area NEX_AREA = new Area(2910, 5189, 2939, 5217);
 
@@ -82,7 +88,7 @@ public class NexCombat extends CommonCombatMethod {
                     smokeBulletAttack(nex);
                 } else {
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target);
+                        meleeAttack(nex, target,false);
                     } else {
                         smokeRushAttack(nex);
                     }
@@ -99,7 +105,7 @@ public class NexCombat extends CommonCombatMethod {
                     */
                 } else {
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target);
+                        meleeAttack(nex, target,false);
                     } else {
                         shadowShotsAttack(nex);
                     }
@@ -114,13 +120,77 @@ public class NexCombat extends CommonCombatMethod {
                     attackCount = 0; // reset attack count
                 } else {
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target);
+                        meleeAttack(nex, target,false);
                     } else {
                         bloodBarrage(nex, target);
                     }
                 }
+            } else if (nex.getAttacksStage() == 3) {
+                if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
+                    meleeAttack(nex, target,false);
+                } else {
+                    iceBarrageAttack(nex);
+                }
+            } else if (nex.getAttacksStage() == 4) {
+                if (attackCount == 0) {
+                    if (!nex.isTurmoilAttackUsed()) {
+                        turmoil(nex);
+                    }
+                } else {
+                    //25% chance to drain
+                    if (World.getWorld().rollDie(100, 25)) {
+                        drainAttack(nex);
+                    }
+
+                    if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
+                        meleeAttack(nex, target, true);
+                    } else {
+                        magicAttack(nex);
+                    }
+                }
             }
         }
+    }
+
+    //Lasting until the end of the fight, Nex's magic and melee attacks are now far more accurate and powerful, hitting massive damage even through prayer.
+    private void turmoil(Nex nex) {
+        nex.graphic(TURMOIL_GFX);
+        nex.combatInfo().stats.attack += 100;
+        nex.combatInfo().stats.strength += 100;
+        nex.combatInfo().stats.magic += 100;
+        nex.putAttrib(AttributeKey.TURMOIL_ACTIVE, true);
+        nex.setTurmoilAttackUsed(true);
+    }
+
+    private void drainAttack(Nex nex) {
+        for (Mob t : getPossibleTargets(nex)) {
+            Projectile projectile = new Projectile(nex, t, 2010, 0, 100, 43, 31, 0);
+            projectile.sendProjectile();
+
+            for (int skill : DRAIN) {
+                int take = 5;
+                t.skills().alterSkill(skill, -take);
+                nex.combatInfo().stats.attack += take;
+                nex.combatInfo().stats.strength += take;
+                nex.combatInfo().stats.defence += take;
+            }
+        }
+    }
+
+    private void magicAttack(Nex nex) {
+        nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MAGIC_ATTACK_MAX);
+        nex.animate(MAGIC_ATTACK_ANIM);
+        for (Mob t : getPossibleTargets(nex)) {
+            Projectile projectile = new Projectile(nex, t, 2007, 0, 100, 43, 31, 0);
+            projectile.sendProjectile();
+            Hit hit = t.hit(nex, CombatFactory.calcDamageFromType(nex, t, CombatType.MAGIC), 3, CombatType.MAGIC);
+            hit.checkAccuracy().submit();
+            if(hit.isAccurate()) {
+                t.graphic(2008);
+                t.skills().alterSkill(Skills.PRAYER, -5);
+            }
+        }
+        nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, -1);
     }
 
     private void bloodSacrifice(Nex nex, Mob target) {
@@ -151,7 +221,7 @@ public class NexCombat extends CommonCombatMethod {
                     damage = World.getWorld().random(1, 12);
                     t.hit(nex, damage, 1);
                     t.graphic(376);
-                    nex.heal(damage / 4);
+                    nex.hit(nex, damage / 4, SplatType.NPC_HEALING_HITSPLAT);
                 }
             }
         });
@@ -189,7 +259,7 @@ public class NexCombat extends CommonCombatMethod {
         Hit hit = target.hit(nex, CombatFactory.calcDamageFromType(nex, target, CombatType.MAGIC), 3, CombatType.MAGIC).graphic(new Graphic(379));
         hit.checkAccuracy().submit();
         if (hit.isAccurate()) {
-            nex.heal(hit.getDamage() / 4);
+            nex.hit(nex, hit.getDamage() / 4, SplatType.NPC_HEALING_HITSPLAT);
             target.graphic(2002);
         }
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, -1);
@@ -330,6 +400,9 @@ public class NexCombat extends CommonCombatMethod {
 
     private void dragAttack(Nex nex) {
         Mob target = Utils.randomElement(getPossibleTargets(nex));
+        if(target == null) {
+            return; // No targets found
+        }
         if (target.isPlayer()) {
 
             int vecX = (nex.getAbsX() - Utils.getClosestX(nex, target.tile()));
@@ -405,10 +478,28 @@ public class NexCombat extends CommonCombatMethod {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, -1);
     }
 
-    private void meleeAttack(Nex nex, Mob target) {
+    private void meleeAttack(Nex nex, Mob target, boolean zarosPhase) {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MELEE_ATTACK_MAX);
-        nex.animate(MELEE_ATTACK_ANIM);
+        nex.animate(zarosPhase ? MELEE_ATTACK_ZAROS_PHASE : MELEE_ATTACK_ANIM);
         target.hit(nex, CombatFactory.calcDamageFromType(nex, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().submit();
+        nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, -1);
+    }
+
+    private void iceBarrageAttack(Nex nex) {
+        nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MAGIC_ATTACK_MAX);
+        nex.animate(MAGIC_ATTACK_ANIM);
+        for (Mob t : getPossibleTargets(nex)) {
+            Projectile projectile = new Projectile(nex, t, 362, 0, 100, 43, 31, 0);
+            projectile.sendProjectile();
+            Hit hit = t.hit(nex, CombatFactory.calcDamageFromType(nex, t, CombatType.MAGIC), 3, CombatType.MAGIC);
+            hit.checkAccuracy().submit();
+            if(hit.isAccurate()) {
+                if (World.getWorld().rollDie(100, 25)) {
+                    t.graphic(369);
+                    t.freeze(10, mob);
+                }
+            }
+        }
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, -1);
     }
 
@@ -426,57 +517,50 @@ public class NexCombat extends CommonCombatMethod {
     public boolean customOnDeath(Mob mob) {
         if (mob.isNpc()) {
             Npc npc = mob.getAsNpc();
+            npc.clearAttrib(AttributeKey.TURMOIL_ACTIVE);
             npc.transmog(NEX_11282);
             final NpcCombatInfo combatInfo = npc.combatInfo();
-            TaskManager.submit(new Task("NexCombatDeathTask1", 1) {
-                int ticks;
+            npc.animate(combatInfo.animations.death);
+            Chain.bound(null).runFn(combatInfo.deathlen, () -> {
+                npc.graphic(2013);
+                ArrayList<Mob> possibleTargets = getPossibleTargets(mob);
+                if (possibleTargets != null) {
+                    for (Mob t : possibleTargets) {
+                        if (t == null || t.dead() || !t.isRegistered() || !t.tile().isWithinDistance(npc.tile(), 10))
+                            continue;
+                        Projectile projectile = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile.sendProjectile();
+                        Projectile projectile2 = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY(), npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile2.sendProjectile();
+                        Projectile projectile3 = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile3.sendProjectile();
+                        Projectile projectile4 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile4.sendProjectile();
+                        Projectile projectile5 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY(), npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile5.sendProjectile();
+                        Projectile projectile6 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile6.sendProjectile();
+                        Projectile projectile7 = new Projectile(t.tile(), new Tile(npc.getX(), npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile7.sendProjectile();
+                        Projectile projectile8 = new Projectile(t.tile(), new Tile(npc.getX(), npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        projectile8.sendProjectile();
+                        t.hit(npc, World.getWorld().random(40));
+                    }
+                }
+            }).then(2, () -> {
+                npc.remove();
 
-                @Override
-                public void execute() {
-                    if (ticks == 0) {
-                        npc.animate(combatInfo.animations.death);
-                    } else if (ticks >= combatInfo.deathlen) {
-                        npc.remove();
-                        ZarosGodwars.end();
-                        stop();
-                    }
-                    ticks++;
+                //Drop loot for everyone
+                ZarosGodwars.drop(npc);
+
+                //Replace red barrier with purple
+                if(redBarrierPurple != null && ancientBarrierPurple.isPresent()) {
+                    ObjectManager.replaceWith(redBarrierPurple, ancientBarrierPurple.get());
                 }
-            });
-            npc.forceChat("Taste my wrath!");
-            TaskManager.submit(new Task("NexCombatDeathTask2", 5) {
-                @Override
-                public void execute() {
-                    npc.graphic(2013);
-                    ArrayList<Mob> possibleTargets = getPossibleTargets(mob);
-                    if (possibleTargets != null) {
-                        for (Mob mob : possibleTargets) {
-                            if (mob == null || mob.dead() || !mob.isRegistered() || !mob.tile().isWithinDistance(npc.tile(), 10))
-                                continue;
-                            Projectile projectile = new Projectile(target.tile(), new Tile(npc.getX() + 2, npc.getY() + 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile.sendProjectile();
-                            Projectile projectile2 = new Projectile(target.tile(), new Tile(npc.getX() + 2, npc.getY(), npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile2.sendProjectile();
-                            Projectile projectile3 = new Projectile(target.tile(), new Tile(npc.getX() + 2, npc.getY() - 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile3.sendProjectile();
-                            Projectile projectile4 = new Projectile(target.tile(), new Tile(npc.getX() - 2, npc.getY() + 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile4.sendProjectile();
-                            Projectile projectile5 = new Projectile(target.tile(), new Tile(npc.getX() - 2, npc.getY(), npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile5.sendProjectile();
-                            Projectile projectile6 = new Projectile(target.tile(), new Tile(npc.getX() - 2, npc.getY() - 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile6.sendProjectile();
-                            Projectile projectile7 = new Projectile(target.tile(), new Tile(npc.getX(), npc.getY() + 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile7.sendProjectile();
-                            Projectile projectile8 = new Projectile(target.tile(), new Tile(npc.getX(), npc.getY() - 2, npc.getZ()), -1, 2014, 41, 35, 24, 0, 0);
-                            projectile8.sendProjectile();
-                            mob.hit(npc, World.getWorld().random(40));
-                        }
-                    }
-                }
-            });
+                //Respawn nex
+            }).then(45, ZarosGodwars::end);
         }
         return true;
     }
-
 
 }

@@ -19,6 +19,7 @@ import com.valinor.game.world.entity.combat.Venom;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.Splat;
 import com.valinor.game.world.entity.combat.hit.SplatType;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Direction;

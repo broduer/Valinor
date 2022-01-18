@@ -21,6 +21,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.CommandManager;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
@@ -52,9 +53,7 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(12236, itemList);
         //player.sound(2401);
-        //ZarosGodwars.end();
-
-
+        ZarosGodwars.end();
 
         player.message("Test command has been activated.");
     }
