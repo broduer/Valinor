@@ -86,7 +86,7 @@ public class PlayerKillingRewards {
                     killer.message("You're currently on a killing spree of " + killstreak + "!");
 
                     if (killstreak % 5 == 0 || killstreak > 15) {
-                        World.getWorld().getPlayers().forEach(player -> player.message("<col=ca0d0d><img=506> " + killer.getUsername() + " has a killing spree of " + killstreak + " and can be shut down for " + (100 + player.shutdownValueOf(killstreak)) + " BM!"));
+                        World.getWorld().getPlayers().forEach(player -> player.message("<col=ca0d0d><img=506> " + killer.getUsername() + " has a killing spree of " + killstreak + " and can be shut down for " + (100 + player.shutdownValueOf(killstreak)) + " PKP!"));
                     }
                 }
 

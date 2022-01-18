@@ -111,8 +111,8 @@ public class GamblingSession {
                 player.getPacketSender().sendItemOnInterface(OPPONENT_ITEMS_OFFERED, opponent.getGamblingSession().getContainer().toArray());
                 opponent.getPacketSender().sendItemOnInterface(MY_ITEMS_OFFERED, opponent.getGamblingSession().getContainer().toArray());
                 opponent.getPacketSender().sendItemOnInterface(OPPONENT_ITEMS_OFFERED, player.getGamblingSession().getContainer().toArray());
-                player.getPacketSender().sendString(16229, "You (" + Utils.formatRunescapeStyle(player.getGamblingSession().getContainer().containerValue()) + " BM)");
-                opponent.getPacketSender().sendString(16232, opponent.getGamblingSession().opponent.getUsername() + " (" + Utils.formatRunescapeStyle(player.getGamblingSession().getContainer().containerValue()) + " BM))");
+                player.getPacketSender().sendString(16229, "You (" + Utils.formatRunescapeStyle(player.getGamblingSession().getContainer().containerValue()) + " coins)");
+                opponent.getPacketSender().sendString(16232, opponent.getGamblingSession().opponent.getUsername() + " (" + Utils.formatRunescapeStyle(player.getGamblingSession().getContainer().containerValue()) + " coins))");
             }
         };
     }

@@ -32,7 +32,7 @@ public class TitleUnlockRequirement extends TitleRequirement {
     private final UnlockableTitle title;
 
     public TitleUnlockRequirement(UnlockableTitle title) {
-        super("Costs " + Utils.formatNumber(title.cost) + " BM<br>to unlock");
+        super("Costs " + Utils.formatNumber(title.cost) + " coins<br>to unlock");
         this.title = title;
     }
 

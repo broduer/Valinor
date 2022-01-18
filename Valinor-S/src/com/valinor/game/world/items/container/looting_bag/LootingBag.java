@@ -500,7 +500,7 @@ public class LootingBag extends ItemContainer {
 
         if (depositing) {
             player.getPacketSender().sendItemOnInterface(InterfaceConstants.LOOTING_BAG_DEPOSIT_CONTAINER_ID, player.inventory().toArray());
-            player.getPacketSender().sendString(BAG_VALUE_STRING, "Bag value: " + Utils.formatNumber(containerValue()) + " bm");
+            player.getPacketSender().sendString(BAG_VALUE_STRING, "Bag value: " + Utils.formatNumber(containerValue()) + " coins");
             return;
         }
         if (bankStoring) {
@@ -512,7 +512,7 @@ public class LootingBag extends ItemContainer {
             return;
         }
         player.getPacketSender().sendString(EMPTY_STRING, "");
-        player.getPacketSender().sendString(VALUE_STRING, "Value: " + Utils.formatNumber(containerValue()) + " bm");
+        player.getPacketSender().sendString(VALUE_STRING, "Value: " + Utils.formatNumber(containerValue()) + " coins");
         player.getPacketSender().sendItemOnInterface(InterfaceConstants.LOOTING_BAG_OPEN_CONTAINER_ID, player.getLootingBag().toArray());
     }
 

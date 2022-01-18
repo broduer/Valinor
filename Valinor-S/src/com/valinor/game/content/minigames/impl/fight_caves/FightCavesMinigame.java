@@ -211,7 +211,6 @@ public class FightCavesMinigame extends Minigame {
                 BOSSES.log(player, TZTOKJAD, new Item(FIRE_CAPE));
             }
         }
-        System.out.println(npcSet);
         for (Npc npc : npcSet) {
             if(npc.isRegistered() || !npc.dead()) {
                 World.getWorld().unregisterNpc(npc);

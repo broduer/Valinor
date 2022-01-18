@@ -102,7 +102,7 @@ public class PetInsurance {
                 }
             }
 
-            String currency = "bm";
+            String currency = "coins";
             if(!canClaimPet) {
                 player.message("<col=ca0d0d>You don't have enough "+currency+" to reclaim your pet!");
             } else if (player.inventory().getFreeSlots() == 0) {

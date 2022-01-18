@@ -14,7 +14,7 @@ public class PilesDialogue extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        String name = "BM";
+        String name = "coins";
         send(DialogueType.NPC_STATEMENT, PILES, Expression.CALM_TALK, "Hello. I can convert items to banknotes, for 10 "+name, "per item. Just hand me the items you'd like me to", "convert.");
         setPhase(0);
     }
