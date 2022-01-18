@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.dungeons.godwars;
 
+import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
@@ -13,7 +14,7 @@ public class GodwarsAltars extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
-        if(obj.getId() == ZAMORAK_ALTAR || obj.getId() == SARADOMIN_ALTAR || obj.getId() == ARMADYL_ALTAR || obj.getId() == BANDOS_ALTAR) {
+        if(obj.getId() == ZAMORAK_ALTAR || obj.getId() == SARADOMIN_ALTAR || obj.getId() == ARMADYL_ALTAR || obj.getId() == BANDOS_ALTAR || obj.getId() == 42965) {
             if (option == 1) {
                 if (CombatFactory.inCombat(player)) {
                     if (!player.getTimers().has(TimerKey.GODWARS_ALTAR_LOCK)) {
@@ -38,8 +39,10 @@ public class GodwarsAltars extends Interaction {
                     teleportTile = new Tile(2839, 5294, 2);
                 if (obj.getId() == 26366)
                     teleportTile = new Tile(2862, 5354, 2);
+                if (obj.getId() == 42965)
+                    teleportTile = new Tile(2904, 5203, 0);
 
-                player.teleport(teleportTile);
+                Teleports.basicTeleport(player, teleportTile);
             }
             return true;
         }

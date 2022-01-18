@@ -40,7 +40,7 @@ public class BankObjects extends Interaction {
 
     @Override
     public boolean handleItemOnNpc(Player player, Item item, Npc npc) {
-        final boolean banker = npc.def().name.equalsIgnoreCase("Banker");
+        final boolean banker = npc.def().name.equalsIgnoreCase("Banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis");
         if (banker) {
             int itemid = player.getAttribOr(AttributeKey.ITEM_ID, -1);
             int slot = player.getAttribOr(AttributeKey.ITEM_SLOT, -1);

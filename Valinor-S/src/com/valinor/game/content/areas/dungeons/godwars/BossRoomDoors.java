@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.dungeons.godwars;
 
+import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -7,6 +8,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexCombat.NEX_AREA;
 
