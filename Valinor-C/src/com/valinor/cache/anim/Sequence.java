@@ -108,13 +108,14 @@ public final class Sequence {
         System.out.println("priority "+cache[7644].priority);
         System.out.println("replyMode "+cache[7644].replyMode);*/
         //System.out.println(findAnimFileId(2851));
-        //System.out.println(findAnimFileId(6953));
-
-        //dump(8763);
-        //dumpAnimations(9144);
+        //System.out.println(findAnimFileId(7004));
 
         // temp fix for wintertodt howling snowstorm
         cache[7322].frameStep = 10;
+    }
+
+    public static int findAnimFileId(int animId) {
+        return Animation.getFileId(cache[animId].frameIDs[0]);
     }
 
     public int duration(int id) {
