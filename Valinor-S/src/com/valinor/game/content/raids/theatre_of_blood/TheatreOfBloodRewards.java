@@ -55,7 +55,9 @@ public class TheatreOfBloodRewards {
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
                 continue;
-            if (TheatreOfBloodRewards.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
+            if (uniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (TOB)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }
         }
@@ -155,9 +157,6 @@ public class TheatreOfBloodRewards {
             Item item = rollUnique();
             boolean added = player.getRaidRewards().add(item);
             BOSSES.log(player, TOB_RAIDS_KEY, item);
-            String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-            World.getWorld().sendWorldMessage(worldMessage);
-            Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Theatre of blood! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "tob_reward");
             rare = player;
         }
 

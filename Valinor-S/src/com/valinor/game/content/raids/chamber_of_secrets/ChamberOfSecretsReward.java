@@ -42,11 +42,18 @@ public class ChamberOfSecretsReward {
     }
 
     public static void withdrawReward(Player player) {
+        if(player.getRaidRewards().isEmpty()) {
+            player.message("There are no rewards, if you feel that this is wrong contact a staff member.");
+            return;
+        }
+
         player.inventory().addOrBank(player.getRaidRewards().getItems());
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
                 continue;
-            if (ChamberOfSecretsReward.uniqueTable.allItems().stream().anyMatch(i -> item.matchesId(item.getId()))) {
+            if (uniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (COS)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }
         }
@@ -165,9 +172,6 @@ public class ChamberOfSecretsReward {
                 Item item = rollUnique();
                 boolean added = player.getRaidRewards().add(item);
                 BOSSES.log(player, COS_RAIDS_KEY, item);
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
-                World.getWorld().sendWorldMessage(worldMessage);
-                Utils.sendDiscordInfoLog("Rare drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " from Chambers of Secrets! Party Points: " + Utils.formatNumber(personalPoints) + " [debug: added=" + added + "]", "cos_reward");
                 rare = player;
             }
         }

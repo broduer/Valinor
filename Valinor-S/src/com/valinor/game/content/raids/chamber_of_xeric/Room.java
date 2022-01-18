@@ -91,8 +91,6 @@ public class Room extends Interaction {
                     player.message(Color.RED.wrap("You have already looted the chest, or your points are below 10,000."));
                     return true;
                 }
-                //Roll a reward for each individual player
-                ChamberOfXericReward.giveRewards(player);
                 ChamberOfXericReward.displayRewards(player);
                 ChamberOfXericReward.withdrawReward(player);
                 return true;

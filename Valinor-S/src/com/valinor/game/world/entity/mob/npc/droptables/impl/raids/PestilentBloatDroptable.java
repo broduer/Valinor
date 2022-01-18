@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.mob.npc.droptables.impl.raids;
 
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.Droptable;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -24,6 +26,16 @@ public class PestilentBloatDroptable implements Droptable {
                 party.setRaidStage(3);
                 party.teamMessage("<col=ef20ff>You may now progress to the next room!");
                 party.setKills(0);//Reset kills back to 0
+            }
+
+            int randomPoints = World.getWorld().random(10,12);
+            for(Player player : party.getMembers()) {
+                var raidsPoints = player
+                    .<Integer>getAttribOr(AttributeKey.THEATRE_OF_BLOOD_POINTS
+                        ,0) + randomPoints;
+                player
+                    .putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, raidsPoints);
+                player.message("You now have "+raidsPoints+" points.");
             }
         }
     }

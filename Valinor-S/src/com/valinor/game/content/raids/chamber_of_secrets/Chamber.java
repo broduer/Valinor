@@ -180,8 +180,6 @@ public class Chamber extends Interaction {
                     player.message(Color.RED.wrap("You have already looted the tombstone, or your points are below 1,000."));
                     return true;
                 }
-                //Roll a reward for each individual player
-                ChamberOfSecretsReward.giveRewards(player);
                 ChamberOfSecretsReward.displayRewards(player);
                 ChamberOfSecretsReward.withdrawReward(player);
                 return true;

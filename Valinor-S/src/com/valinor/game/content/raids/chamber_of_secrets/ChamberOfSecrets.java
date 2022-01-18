@@ -6,6 +6,7 @@ import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.raids.RaidsNpc;
 import com.valinor.game.content.raids.Raids;
 import com.valinor.game.content.raids.party.Party;
+import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBloodRewards;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.Venom;
@@ -124,6 +125,9 @@ public class ChamberOfSecrets extends Raids {
 
             //Daily raids task
             DailyTaskManager.increase(DailyTasks.RAIDING, p);
+
+            //Roll a reward for each individual player
+            TheatreOfBloodRewards.giveRewards(p);
         });
     }
 

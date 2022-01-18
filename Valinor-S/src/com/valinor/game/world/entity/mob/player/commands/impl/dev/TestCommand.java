@@ -54,7 +54,7 @@ public class TestCommand implements Command {
         //player.sound(2401);
         //ZarosGodwars.end();
 
-        player.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 100);
+
 
         player.message("Test command has been activated.");
     }

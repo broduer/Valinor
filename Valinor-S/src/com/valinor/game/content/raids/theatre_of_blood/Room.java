@@ -168,7 +168,6 @@ public class Room extends Interaction {
             }
 
             if(object.getId() == MONUMENTAL_CHEST) {
-                TheatreOfBloodRewards.giveRewards(player);
                 TheatreOfBloodRewards.displayRewards(player);
                 TheatreOfBloodRewards.withdrawReward(player);
                 return true;
