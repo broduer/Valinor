@@ -172,7 +172,6 @@ public class FightCavesMinigame extends Minigame {
             y = 5115;
         }
         player.teleport(new Tile(x, y, level));
-        player.getPacketSender().sendString(4536, "Wave: " + wave);
         player.getInterfaceManager().openWalkable(4535);
         waveRotationOffset = spawnRotationOffset = World.getWorld().get(ROTATIONS.length - 1);
 
@@ -212,7 +211,12 @@ public class FightCavesMinigame extends Minigame {
                 BOSSES.log(player, TZTOKJAD, new Item(FIRE_CAPE));
             }
         }
-        npcSet.forEach(npc -> World.getWorld().unregisterNpc(npc));
+        System.out.println(npcSet);
+        for (Npc npc : npcSet) {
+            if(npc.isRegistered() || !npc.dead()) {
+                World.getWorld().unregisterNpc(npc);
+            }
+        }
         player.setMinigame(null);
         player.putAttrib(AttributeKey.FIGHT_CAVES_WAVE, 1);
     }

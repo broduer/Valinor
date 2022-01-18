@@ -2,8 +2,6 @@ package com.valinor.game.content.mechanics;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.EffectTimer;
-import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
-import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
@@ -138,10 +136,6 @@ public class Death {
                 killer.getMinigame().killed(killer, player);
             }
 
-            if (player.getMinigame() != null) {
-                player.getMinigame().end(player);
-            }
-
             Npc barrowsBro = player.getAttribOr(barrowsBroSpawned, null);
             if (barrowsBro != null) {
                 World.getWorld().unregisterNpc(barrowsBro);
@@ -184,9 +178,9 @@ public class Death {
             if (duel_arena) {
                 player.getDueling().onDeath();
             } else if (player.getMinigame() instanceof FightCavesMinigame) {
-                player.setMinigame(null);//Clear minigame when we die too
-                player.teleport(FightCavesMinigame.EXIT);
-                player.message("You have been defeated!");
+                if (player.getMinigame() != null) {
+                    player.getMinigame().end(player);
+                }
             } else if (player.<Integer>getAttribOr(AttributeKey.JAILED, 0) == 1) {
                 player.message("You've died, but you cannot run from your jail sentence!");
                 player.teleport(player.tile());
