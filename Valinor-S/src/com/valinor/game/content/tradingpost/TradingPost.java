@@ -507,10 +507,7 @@ public class TradingPost {
             sales.entrySet().stream().filter(Objects::nonNull).filter(e -> e.getValue() != null).forEach(recent -> {
                 recent.getValue().getListedItems().forEach(item -> {
                     //System.out.println("Item: " + item.getSaleItem().unnote().name() + " seller: " + item.getSellerName() +" "+ item.getSellerName()+" listed at: "+item.getListedTime()+" "+item.getTimeListed());
-                    Item i = item.getSaleItem().unnote();
-                    if (i.name().toLowerCase().contains(i.name().toLowerCase())) {
-                        list.add(item);
-                    }
+                    list.add(item);
                 });
             });
 
@@ -530,11 +527,10 @@ public class TradingPost {
         int listSize = tradingPostListings.size();
         int idx = 0;
         //System.out.println(Arrays.toString(tradingPostListings.toArray()));
-
+        
         for (int i = 66330; i < 66330 + CHILD_LENGTH; i += 7) {
             if (idx >= listSize) {
-                resetDisplayResults(player);
-                //System.out.println("skip "+idx);
+                //System.out.println("skip "+idx+" over "+listSize);
                 continue;
             }
             TradingPostListing item = tradingPostListings.get(idx);
