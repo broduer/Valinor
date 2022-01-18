@@ -1019,13 +1019,9 @@ public class CustomItems {
         }
 
         if (id == NIFFLER) {
+            ItemDefinition.copyInventory(def, BABY_MOLE);
             def.modelCustomColor4 = 33785;
             def.name = "<col=65280>Niffler pet";
-            def.inventoryModel = 12073;
-            def.yOffset2d = 20;
-            def.xan2d = 369;
-            def.yan2d = 1874;
-            def.zoom2d = 2256;
         }
 
         if (id == ZRIAWK) {

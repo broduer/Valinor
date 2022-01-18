@@ -73,21 +73,10 @@ public class CustomPets {
             definition.description = "Tiny but deadly!";
         }
 
-        if (id == NIFFLER) {
+        if (id == BABY_MOLE_6651) {
             definition.modelCustomColor4 = 33785;
             definition.name = "Niffler pet";
             definition.actions = new String[]{"Pick-up", null, "Tickle", null, null};
-            definition.ambient = 30;
-            definition.contrast = 30;
-            definition.modelId = new int[] {12073};
-            definition.additionalModels = new int[] {28863};
-            definition.heightScale = 80;
-            definition.widthScale = 80;
-            definition.standingAnimation = 3309;
-            definition.walkingAnimation = 3313;
-            definition.isFollower = true;
-            definition.drawMapDot = false;
-            definition.size = 1;
             definition.description = "Tiny but deadly!";
         }
 

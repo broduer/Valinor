@@ -197,7 +197,7 @@ public class CustomItemIdentifiers {
     public static final int PET_KRIL_TSUTSAROTH_BLACK = 16016;
     public static final int BABY_ABYSSAL_DEMON = 16024;
     public static final int BABY_SQUIRT = 16005;
-    public static final int NIFFLER = 32646;
+    public static final int NIFFLER = 31646;
     public static final int FAWKES = 30693;
     public static final int MAGMA_BLOWPIPE = 30049;
     public static final int RUNE_POUCH_I = 23650;
