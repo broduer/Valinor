@@ -283,7 +283,16 @@ public class ServerAnnouncements {
         CRYSTAL_BODY,
         CRYSTAL_LEGS,
         CORRUPTED_RANGER_GAUNTLETS,
-        CORRUPTING_STONE
+        CORRUPTING_STONE,
+
+        //Nex
+        ANCIENT_HILT,
+        NIHIL_HORN,
+        ZARYTE_VAMBRACES,
+        TORVA_FULL_HELM,
+        TORVA_PLATEBODY,
+        TORVA_PLATELEGS,
+        NIHIL_SHARD
     );
 
     public static void tryBroadcastDrop(Player player, Npc npc, Item item) {
