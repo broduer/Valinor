@@ -1,5 +1,91 @@
 [
   {
+    // Baby dragon (48) (red)
+    "ids": [
+      244, 245, 246
+    ],
+    "maxhit": 5,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 143,
+    "stats": {
+      "attack": 40,
+      "strength": 40,
+      "defence": 40,
+      "magic": 1,
+      "hitpoints": 50
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "magicdefence": 40,
+      "rangeddefence": 30
+    },
+    "animations": {
+      "attack": 25,
+      "block": 26,
+      "death": 28
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Red dragon
+    "ids": [
+      247, 248, 249, 250, 251
+    ],
+    "maxhit": 14,
+    "attackspeed": 4,
+    "deathlen": 2,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 143,
+    "stats": {
+      "attack": 130,
+      "strength": 130,
+      "defence": 130,
+      "magic": 1,
+      "hitpoints": 140
+    },
+    "bonuses": {
+      "stabdefence": 50,
+      "slashdefence": 70,
+      "crushdefence": 70,
+      "magicdefence": 60,
+      "rangeddefence": 50
+    },
+    "animations": {
+      "attack": 80,
+      "block": 89,
+      "death": 92
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
     // Wild Dog
     "ids": [
       112, 113

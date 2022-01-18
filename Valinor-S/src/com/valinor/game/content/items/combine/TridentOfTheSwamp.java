@@ -8,14 +8,14 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
- * @Since January 17, 2022
+ * @Since January 18, 2022
  */
-public class ToxicStaffOfTheDead extends Interaction {
+public class TridentOfTheSwamp extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
-        if ((use.getId() == MAGIC_FANG && usedWith.getId() == STAFF_OF_THE_DEAD) || (use.getId() == STAFF_OF_THE_DEAD && usedWith.getId() == MAGIC_FANG)) {
-            if (!player.inventory().containsAll(MAGIC_FANG, STAFF_OF_THE_DEAD)) {
+        if ((use.getId() == MAGIC_FANG && usedWith.getId() == TRIDENT_OF_THE_SEAS) || (use.getId() == TRIDENT_OF_THE_SEAS && usedWith.getId() == MAGIC_FANG)) {
+            if (!player.inventory().containsAll(MAGIC_FANG, TRIDENT_OF_THE_SEAS)) {
                 return true;
             }
 
@@ -25,8 +25,8 @@ public class ToxicStaffOfTheDead extends Interaction {
             }
 
             player.inventory().remove(MAGIC_FANG);
-            player.inventory().remove(STAFF_OF_THE_DEAD);
-            player.inventory().add(new Item(TOXIC_STAFF_OF_THE_DEAD));
+            player.inventory().remove(TRIDENT_OF_THE_SEAS);
+            player.inventory().add(new Item(TRIDENT_OF_THE_SWAMP));
             player.animate(3015);
             return true;
         }

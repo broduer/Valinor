@@ -15,7 +15,7 @@ public class EquipmentWidget extends Widget {
     public static void unpack(AdvancedFont[] font) {
         equipment_bonus_widget(font);
         equipment_tab_widget();
-        buildEquipmentTab();
+        //buildEquipmentTab();
     }
 
     public static void buildEquipmentTab() {

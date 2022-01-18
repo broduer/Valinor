@@ -4,6 +4,10 @@ import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.ItemIdentifiers;
+
+import static com.valinor.util.ItemIdentifiers.ANCIENT_GODSWORD;
+import static com.valinor.util.ItemIdentifiers.ANCIENT_HILT;
 
 /**
  * @author Patrick van Elderen | March, 16, 2021, 14:33
@@ -109,12 +113,28 @@ public class GodswordParts extends Interaction {
             }
             return true;
         }
+        if ((use.getId() == BLADE || usedWith.getId() == BLADE) && (use.getId() == ANCIENT_HILT || usedWith.getId() == ANCIENT_HILT)) {
+            if (Dueling.screen_closed(player) && player.inventory().containsAll(BLADE, ANCIENT_HILT)) {
+                player.inventory().remove(new Item(BLADE), true);
+                player.inventory().remove(new Item(ANCIENT_HILT), true);
+                player.inventory().add(new Item(ANCIENT_GODSWORD), true);
+            }
+            return true;
+        }
         return false;
     }
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if(option == 3) {
+            if(item.getId() == ANCIENT_GODSWORD) {
+                if (Dueling.screen_closed(player) && player.inventory().contains(ANCIENT_GODSWORD) && player.inventory().getFreeSlots() >= 2) {
+                    player.inventory().remove(new Item(ANCIENT_GODSWORD), true);
+                    player.inventory().add(new Item(ANCIENT_HILT), true);
+                    player.inventory().add(new Item(BLADE), true);
+                }
+                return true;
+            }
             if(item.getId() == AGS) {
                 if (Dueling.screen_closed(player) && player.inventory().contains(AGS) && player.inventory().getFreeSlots() >= 2) {
                     player.inventory().remove(new Item(AGS), true);
