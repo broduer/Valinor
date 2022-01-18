@@ -57,8 +57,7 @@
         { "id": 995, "min": 8, "max": 8, "points": 10 }, //Coins
         { "id": 995, "min": 15, "max": 15, "points": 10 }, //Coins
         { "id": 995, "min": 20, "max": 20, "points": 10 }, //Coins
-        { "id": 995, "min": 30, "max": 30, "points": 10 }, //Coins
-        { "id": 2677, "min": 1, "max": 1, "points": 1 } //Clue scroll (easy)
+        { "id": 995, "min": 30, "max": 30, "points": 10 } //Coins
       ]
     }
   ]

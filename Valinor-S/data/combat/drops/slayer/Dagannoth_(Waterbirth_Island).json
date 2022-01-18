@@ -84,8 +84,7 @@
           { "id": 6173, "min": 1, "max": 1, "points": 1 },   //Stretched hide
           { "id": 6169, "min": 1, "max": 1, "points": 1 },   //Circular hide
           { "id": 3801, "min": 1, "max": 1, "points": 1 },   //Keg of beer
-          { "id": 13493, "min": 1, "max": 1, "points": 1 },   //Ensouled dagannoth head
-          { "id": 2801, "min": 1, "max": 1, "points": 1 }   //Clue scroll (medium)
+          { "id": 13493, "min": 1, "max": 1, "points": 1 }   //Ensouled dagannoth head
         ]
       }
     ]

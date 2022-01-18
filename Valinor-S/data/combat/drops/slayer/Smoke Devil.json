@@ -64,9 +64,7 @@
 				{ "id": 2353, "min": 2, "max": 2, "weight": 10 }, //Steel bar
 				{ "id": 1514, "min": 5, "max": 5, "weight": 10 }, //Magic logs (noted)
 				{ "id": 454, "min": 15, "max": 15, "weight": 10 }, //Coal (noted)
-				{ "id": 2363, "min": 1, "max": 1, "weight": 3 }, //Runite bar
-				{ "id": 2722, "min": 1, "max": 1, "weight": 3 }, //Clue scroll (hard)
-				{ "id": 12073, "min": 1, "max": 1, "weight": 1 } //Clue scroll (elite)
+				{ "id": 2363, "min": 1, "max": 1, "weight": 3 } //Runite bar
 			]
 		}
 	]

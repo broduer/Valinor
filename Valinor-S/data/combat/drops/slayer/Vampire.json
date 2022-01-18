@@ -71,8 +71,7 @@
         "points": 1,
         "items": [
           { "id": 995, "min": 15, "max": 15, "points": 10 }, //Coins
-          { "id": 1440, "min": 1, "max": 1, "points": 10 }, //Earth talisman
-          { "id": 2801, "min": 1, "max": 1, "points": 1 } //Clue scroll (medium)
+          { "id": 1440, "min": 1, "max": 1, "points": 10 } //Earth talisman
         ]
       }
     ]

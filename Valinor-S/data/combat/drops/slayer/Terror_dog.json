@@ -66,8 +66,7 @@
         "items": [
           { "id": 995, "min": 50000, "max": 200000, "": 1 }, //Coins
           { "id": 449, "min": 1, "max": 2, "": 10 }, //Adamantite ore
-          { "id": 365, "min": 1, "max": 2, "": 10 }, //Bass
-          { "id": 2722, "min": 1, "max": 2, "": 1 } //Clue scroll (hard)
+          { "id": 365, "min": 1, "max": 2, "": 10 } //Bass
         ]
       },
       {

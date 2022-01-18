@@ -72,8 +72,7 @@
 				{ "id": 225, "min": 1, "max": 1, "points": 6 }, //Limpwurt root
 				{ "id": 6334, "min": 4, "max": 4, "points": 6 }, //Teak logs (noted)
 				{ "id": 6332, "min": 2, "max": 4, "points": 6 }, //Mahogany logs
-				{ "id": 13487, "min": 1, "max": 1, "points": 3 }, //Ensouled horror head
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+				{ "id": 13487, "min": 1, "max": 1, "points": 3 } //Ensouled horror head
 			]
 		}
 	]

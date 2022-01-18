@@ -67,7 +67,6 @@
 				{ "id": 5953, "min": 2, "max": 2, "points": 30 }, //Antidote++(4) (noted)
 				{ "id": 1645, "min": 1, "max": 1, "points": 30 }, //Dragonstone ring
 				{ "id": 12004, "min": 1, "max": 1, "points": 11 }, //Kraken tentacle
-				{ "id": 12073, "min": 1, "max": 1, "points": 12 }, //Clue scroll (elite)
 				{ "id": 12007, "min": 1, "max": 1, "points": 1 } //Jar of dirt
 			]
 		}

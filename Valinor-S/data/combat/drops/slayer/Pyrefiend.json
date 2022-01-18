@@ -44,8 +44,7 @@
 				{ "id": 995, "min": 160, "max": 160, "points": 6 }, //Coins
 				{ "id": 995, "min": 200, "max": 200, "points": 6 }, //Coins
 				{ "id": 995, "min": 450, "max": 450, "points": 6 }, //Coins
-				{ "id": 1993, "min": 1, "max": 1, "points": 3 }, //Jug of wine
-				{ "id": 2801, "min": 1, "max": 1, "points": 1 } //Clue scroll (medium)
+				{ "id": 1993, "min": 1, "max": 1, "points": 3 } //Jug of wine
 			]
 		}
 	]

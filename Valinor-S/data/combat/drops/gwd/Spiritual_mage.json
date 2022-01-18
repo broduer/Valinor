@@ -42,8 +42,7 @@
         "points": 60,
         "items": [
           { "id": 7937, "min": 90, "max": 90, "points": 10 }, //Pure essence (noted)
-          { "id": 176, "min": 5, "max": 5, "points": 20 }, //Antipoison(3) (noted)
-          { "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+          { "id": 176, "min": 5, "max": 5, "points": 20 } //Antipoison(3) (noted)
         ]
       }
     ]

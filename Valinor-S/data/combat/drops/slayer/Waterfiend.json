@@ -113,8 +113,7 @@
 				{ "id": 402, "min": 10, "max": 29, "": 6 }, //Seaweed (noted)
 				{ "id": 1444, "min": 1, "max": 1, "": 6 }, //Water talisman
 				{ "id": 228, "min": 5, "max": 50, "": 6 }, //Vial of water (noted)
-				{ "id": 6668, "min": 1, "max": 1, "": 6 }, //Fishbowl
-				{ "id": 2722, "min": 1, "max": 1, "": 1 } //Clue scroll (hard)
+				{ "id": 6668, "min": 1, "max": 1, "": 6 } //Fishbowl
 			]
 		}
 	]

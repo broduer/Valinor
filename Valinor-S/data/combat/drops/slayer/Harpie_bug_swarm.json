@@ -36,8 +36,7 @@
           { "id": 995, "min": 490, "max": 490, "points": 3 }, //Coins
           { "id": 995, "min": 550, "max": 550, "points": 3 }, //Coins
           { "id": 444, "min": 1, "max": 1, "points": 1 }, //Gold ore
-          { "id": 1993, "min": 1, "max": 1, "points": 1 }, //Jug of wine
-          { "id": 2801, "min": 1, "max": 1, "points": 1 } //Clue scroll (medium)
+          { "id": 1993, "min": 1, "max": 1, "points": 1 } //Jug of wine
         ]
       }
     ]

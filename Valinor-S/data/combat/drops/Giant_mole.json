@@ -52,8 +52,7 @@
         "items": [
           { "id": 385, "min": 4, "max": 4, "points": 10 }, //Shark
           { "id": 1516, "min": 100, "max": 100, "points": 10 }, //Yew logs (noted)
-          { "id": 413, "min": 1, "max": 1, "points": 10 }, //Oyster pearls
-          { "id": 12073, "min": 1, "max": 1, "points": 1 } //Clue scroll (elite)
+          { "id": 413, "min": 1, "max": 1, "points": 10 } //Oyster pearls
         ]
       }
     ]

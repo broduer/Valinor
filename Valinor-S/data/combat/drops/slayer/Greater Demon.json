@@ -38,8 +38,7 @@
 				{ "id": 995, "min": 460, "max": 460, "points": 6 }, //Coins
 				{ "id": 2357, "min": 1, "max": 1, "points": 6 }, //Gold bar
 				{ "id": 361, "min": 1, "max": 1, "points": 6 }, //Tuna
-				{ "id": 1734, "min": 10, "max": 10, "points": 1 }, //Thread
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+				{ "id": 1734, "min": 10, "max": 10, "points": 1 } //Thread
 			]
 		}
 	]

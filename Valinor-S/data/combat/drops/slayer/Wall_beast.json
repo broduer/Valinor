@@ -43,8 +43,7 @@
           { "id": 4542, "min": 1, "max": 1, "points": 12 }, //Lantern lens
           { "id": 596, "min": 1, "max": 1, "points": 12 }, //Unlit torch
           { "id": 221, "min": 1, "max": 1, "points": 3 }, //Eye of newt
-          { "id": 4544, "min": 1, "max": 1, "points": 3 }, //Bullseye lantern (unf)
-          { "id": 2801, "min": 1, "max": 1, "points": 1 } //Clue scroll (medium)
+          { "id": 4544, "min": 1, "max": 1, "points": 3 } //Bullseye lantern (unf)
         ]
       }
     ]

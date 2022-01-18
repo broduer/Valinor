@@ -57,7 +57,6 @@
         "points": 1,
         "items": [
           { "id": 22118, "min": 1, "max": 1, "points": 30 },   //Wrath talisman
-          { "id": 12073, "min": 1, "max": 1, "points": 7 },   //Clue scroll (elite)
           { "id": 21918, "min": 1, "max": 1, "points": 4 },   //Dragon limbs
           { "id": 22103, "min": 1, "max": 1, "points": 4 },   //Dragon metal lump
           { "id": 11286, "min": 1, "max": 1, "points": 1 }   //Draconic visage

@@ -43,7 +43,6 @@
 				{ "id": 2011, "min": 1, "max": 1, "points": 25 }, //Curry
 				{ "id": 9431, "min": 1, "max": 1, "points": 25 }, //Runite limbs
 				{ "id": 161, "min": 1, "max": 1, "points": 25 }, //Super strength(1)
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 }, //Clue scroll (hard)
 				{ "id": 11286, "min": 1, "max": 1, "points": 1 } //Draconic visage
 			]
 		}

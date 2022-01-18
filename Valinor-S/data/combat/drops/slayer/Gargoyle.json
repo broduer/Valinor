@@ -36,8 +36,7 @@
 				{ "id": 2354, "min": 15, "max": 15, "points": 3 }, //Steel bar (noted)
 				{ "id": 2358, "min": 10, "max": 15, "points": 3 }, //Gold bar (noted)
 				{ "id": 2360, "min": 15, "max": 15, "points": 1 }, //Mithril bar (noted)
-				{ "id": 451, "min": 1, "max": 1, "points": 1 }, //Runite ore
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+				{ "id": 451, "min": 1, "max": 1, "points": 1 } //Runite ore
 			]
 		}
 	]

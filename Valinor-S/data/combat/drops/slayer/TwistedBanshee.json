@@ -67,8 +67,7 @@
         { "id": 373, "min": 1, "max": 1, "points": 10 }, //Swordfish
         { "id": 7937, "min": 65, "max": 65, "points": 10 }, //Pure essence (noted)
         { "id": 447, "min": 1, "max": 1, "points": 10 }, //Mithril ore
-        { "id": 221, "min": 1, "max": 1, "points": 10 }, //Eye of newt
-        { "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+        { "id": 221, "min": 1, "max": 1, "points": 10 } //Eye of newt
       ]
     }
   ]

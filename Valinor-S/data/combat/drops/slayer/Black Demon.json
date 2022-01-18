@@ -57,8 +57,7 @@
 				{ "id": 2361, "min": 1, "max": 1, "points": 3 }, //Adamantite bar
 				{ "id": 379, "min": 1, "max": 1, "points": 3 }, //Lobster
 				{ "id": 13502, "min": 1, "max": 1, "points": 1 }, //Ensouled demon head
-				{ "id": 133, "min": 1, "max": 1, "points": 1 }, //Defence potion(3)
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+				{ "id": 133, "min": 1, "max": 1, "points": 1 } //Defence potion(3)
 			]
 		}
 	]

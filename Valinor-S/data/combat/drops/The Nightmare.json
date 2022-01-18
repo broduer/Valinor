@@ -53,8 +53,7 @@
         { "id": 5300, "min": 1, "max": 1, "points": 3 }, //Snapdragon seed
         { "id": 1514, "min": 15, "max": 20, "points": 3 }, //Magic logs (noted)
         { "id": 3024, "min": 3, "max": 3, "points": 1 }, //Super restore(4)
-        { "id": 3052, "min": 3, "max": 3, "points": 2 }, //Grimy snapdragon (noted)
-        { "id": 12073, "min": 1, "max": 1, "points": 2 } //Clue scroll (elite)
+        { "id": 3052, "min": 3, "max": 3, "points": 2 } //Grimy snapdragon (noted)
       ]
     },
     {

@@ -80,9 +80,7 @@
 				{ "id": 995, "min": 64, "max": 220, "points": 20 }, //Coins
 				{ "id": 121, "min": 1, "max": 1, "points": 12 }, //Attack potion(3)
 				{ "id": 385, "min": 1, "max": 2, "points": 12 }, //Shark
-				{ "id": 1456, "min": 1, "max": 1, "points": 6 }, //Death talisman
-				{ "id": 2722, "min": 1, "max": 1, "points": 1 }, //Clue scroll (hard)
-				{ "id": 12073, "min": 1, "max": 1, "points": 1 } //Clue scroll (elite)
+				{ "id": 1456, "min": 1, "max": 1, "points": 6 } //Death talisman
 			]
 		}
 	]
