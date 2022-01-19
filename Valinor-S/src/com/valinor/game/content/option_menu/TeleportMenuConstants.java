@@ -97,196 +97,193 @@ public class TeleportMenuConstants {
             new OptionMenu("Ancient Cavern", new String[] { "Waterfiend", "Brutal Green Dragon", "Mithril Dragon" },
                 new TeleportAction(player, new Tile(1746, 5327, 0))));
 
-        teleportOptions.put(14, new OptionMenu("Waterfall Dungeon", new String[] { "Fire Giant" },
-            new TeleportAction(player, new Tile(2575, 9863))));
-
-        teleportOptions.put(15, new OptionMenu("Experiment Cave", new String[] { "Experiment" },
+        teleportOptions.put(14, new OptionMenu("Experiment Cave", new String[] { "Experiment" },
             new TeleportAction(player, new Tile(3577, 9927))));
 
-        teleportOptions.put(16,
+        teleportOptions.put(15,
             new OptionMenu(
                 "Fremennik Slayer Dungeon", new String[] { "Cave Crawler", "Rockslug", "Cockatrice",
                 "Pyrefiend", "Basilisk", "Jelly", "Turoth", "Kurask" },
                 new TeleportAction(player, new Tile(2807, 10002))));
 
-        teleportOptions.put(17, new OptionMenu("Fossil Wyverns", new String[] { "Spitting Wyvern", "Taloned Wyvern", "Long-tailed Wyvern", "Ancient Wyvern" },
+        teleportOptions.put(16, new OptionMenu("Fossil Wyverns", new String[] { "Spitting Wyvern", "Taloned Wyvern", "Long-tailed Wyvern", "Ancient Wyvern" },
             new TeleportAction(player, new Tile(3609, 10278))));
 
-        teleportOptions.put(18, new OptionMenu("Lighthouse", new String[] { "Dagannoth" },
+        teleportOptions.put(17, new OptionMenu("Lighthouse", new String[] { "Dagannoth" },
             new TeleportAction(player, new Tile(2509, 3634))));
 
-        teleportOptions.put(19, new OptionMenu("Rock crabs", new String[] { "Rock Crab" },
+        teleportOptions.put(18, new OptionMenu("Rock crabs", new String[] { "Rock Crab" },
             new TeleportAction(player, new Tile(2673, 3714))));
 
-        teleportOptions.put(20, new OptionMenu("Sand crabs", new String[] { "Rock Crab" },
+        teleportOptions.put(19, new OptionMenu("Sand crabs", new String[] { "Rock Crab" },
             new TeleportAction(player, new Tile(1728, 3463))));
 
-        teleportOptions.put(21,
+        teleportOptions.put(20,
             new OptionMenu("Smoke Dungeon", new String[] { "Dust Devil", "Fire Giant", "Pyrefiend" },
                 new TeleportAction(player, new Tile(3206, 9379))));
 
-        teleportOptions.put(22,
+        teleportOptions.put(21,
             new OptionMenu("Home", new String[] { "Trade", "Trading", "Market", "Pking", "Edgeville" },
                 new TeleportAction(player, new Tile(3084, 3503))));
 
-        teleportOptions.put(23, new OptionMenu("<img=1049>Graveyard", new String[] { "Wilderness", "Graveyard" },
+        teleportOptions.put(22, new OptionMenu("<img=1049>Graveyard", new String[] { "Wilderness", "Graveyard" },
             new TeleportAction(player, new Tile(2974, 3748))));
 
-        teleportOptions.put(24, new OptionMenu("Varrock Multi", new String[] { "Wilderness", "Varrock Multi" },
+        teleportOptions.put(23, new OptionMenu("Varrock Multi", new String[] { "Wilderness", "Varrock Multi" },
             new TeleportAction(player, new Tile(3243, 3518))));
 
-        teleportOptions.put(25, new OptionMenu("Edgeville", new String[] { "Wilderness", "Edgeville" },
+        teleportOptions.put(24, new OptionMenu("Edgeville", new String[] { "Wilderness", "Edgeville" },
             new TeleportAction(player, new Tile(3084, 3503))));
 
-        teleportOptions.put(26, new OptionMenu("Mage Bank", new String[] { "Wilderness", "Mage Bank" },
+        teleportOptions.put(25, new OptionMenu("Mage Bank", new String[] { "Wilderness", "Mage Bank" },
             new TeleportAction(player, new Tile(2539, 4716))));
 
-        teleportOptions.put(27,
+        teleportOptions.put(26,
             new OptionMenu("<img=1049>West Dragons",
                 new String[] { "Wilderness", "Low Risk", "Green Dragon", "Varrock West" },
                 new TeleportAction(player, new Tile(2982, 3603))));
 
-        teleportOptions.put(28,
+        teleportOptions.put(27,
             new OptionMenu("<img=1049>East Dragons",
                 new String[] { "Wilderness", "high Risk", "Green Dragon", "Varrock East" },
                 new TeleportAction(player, new Tile(3345, 3670))));
 
-        teleportOptions.put(29, new OptionMenu("Corporeal Beast Lair", new String[] { "Boss", "Corporal Beast" },
+        teleportOptions.put(28, new OptionMenu("Corporeal Beast Lair", new String[] { "Boss", "Corporal Beast" },
             new TeleportAction(player, new Tile(2969, 4382, 2))));
 
-        teleportOptions.put(30,
+        teleportOptions.put(29,
             new OptionMenu("<img=1049>Rogue's Castle", new String[] { "Boss", "Wilderness", "Chaos Elemental" },
                 new TeleportAction(player, new Tile(3307, 3916, 0))));
 
-        teleportOptions.put(31, new OptionMenu("Abyssal Nexus", new String[] { "Boss", "Abyssal Sire" },
+        teleportOptions.put(30, new OptionMenu("Abyssal Nexus", new String[] { "Boss", "Abyssal Sire" },
             new TeleportAction(player, new Tile(3039, 4772, 0))));
 
-        teleportOptions.put(32, new OptionMenu("Cerberus Lair", new String[] { "Boss", "Cerberus" },
+        teleportOptions.put(31, new OptionMenu("Cerberus Lair", new String[] { "Boss", "Cerberus" },
             new TeleportAction(player, new Tile(1292,1252, 0))));
 
-        teleportOptions.put(33,
+        teleportOptions.put(32,
             new OptionMenu("Godwars Dungeon",
                 new String[] { "Boss", "gwd", "Godwars", "Bandos", "Saradomin", "Zamorak", "Armadyl" },
-                new TeleportAction(player, new Tile(2881, 5310, 2))));
+                new TeleportAction(player, null, true, "Godwars")));
 
-        teleportOptions.put(34, new OptionMenu("Mole Lair", new String[] { "Boss", "Giant Mole" },
+        teleportOptions.put(33, new OptionMenu("Mole Lair", new String[] { "Boss", "Giant Mole" },
             new TeleportAction(player, new Tile(1760, 5163))));
 
-        teleportOptions.put(35, new OptionMenu("Kalphite Lair", new String[] { "Boss", "Kq", "Kalphite Queen" },
+        teleportOptions.put(34, new OptionMenu("Kalphite Lair", new String[] { "Boss", "Kq", "Kalphite Queen" },
             new TeleportAction(player, new Tile(3484, 9510, 2))));
 
-        teleportOptions.put(36,
+        teleportOptions.put(35,
             new OptionMenu("Dagannoth Dungeon", new String[] { "Slayer", "Dagannoth", "Rex", "Prime", "Supreme" },
                 new TeleportAction(player, new Tile(2442, 10147, 0))));
 
-        teleportOptions.put(37,
+        teleportOptions.put(36,
             new OptionMenu("King Black Dragon Lair", new String[] { "Boss", "KBD", "King Black Dragon" },
                 new TeleportAction(player, new Tile(2271, 4680, 0))));
 
-        teleportOptions.put(38, new OptionMenu("Kraken Cave", new String[] { "Boss", "Kraken" },
+        teleportOptions.put(37, new OptionMenu("Kraken Cave", new String[] { "Boss", "Kraken" },
             new TeleportAction(player, new Tile(2280, 10016, 0))));
 
-        teleportOptions.put(39, new OptionMenu("Smoke Devil Cave", new String[] { "Boss", "Thermonuclear Smoke Devil" },
+        teleportOptions.put(38, new OptionMenu("Smoke Devil Cave", new String[] { "Boss", "Thermonuclear Smoke Devil" },
             new TeleportAction(player, new Tile(2404, 9417, 0))));
 
-        teleportOptions.put(40, new OptionMenu("Zulrah's Island", new String[] { "Boss", "Zulrah" },
+        teleportOptions.put(39, new OptionMenu("Zulrah's Island", new String[] { "Boss", "Zulrah" },
             new TeleportAction(player, new Tile(2204, 3056, 0))));
 
-        teleportOptions.put(41, new OptionMenu("<img=1049>Callisto", new String[] { "Boss", "Callisto" },
+        teleportOptions.put(40, new OptionMenu("<img=1049>Callisto", new String[] { "Boss", "Callisto" },
             new TeleportAction(player, new Tile(3307, 3837, 0))));
 
-        teleportOptions.put(42, new OptionMenu("<img=1049>Chaos Fanatic", new String[] { "Boss", "Chaos Fanatic" },
+        teleportOptions.put(41, new OptionMenu("<img=1049>Chaos Fanatic", new String[] { "Boss", "Chaos Fanatic" },
             new TeleportAction(player, new Tile(2992, 3851, 0))));
 
-        teleportOptions.put(43, new OptionMenu("<img=1049>Crazy Archeologist", new String[] { "Boss", "Crazy Archeologist" },
+        teleportOptions.put(42, new OptionMenu("<img=1049>Crazy Archeologist", new String[] { "Boss", "Crazy Archeologist" },
             new TeleportAction(player, new Tile(2976, 3694, 0))));
 
-        teleportOptions.put(44, new OptionMenu("Demonic Gorillas", new String[] { "Boss", "Demonic Gorillas" },
+        teleportOptions.put(43, new OptionMenu("Demonic Gorillas", new String[] { "Boss", "Demonic Gorillas" },
             new TeleportAction(player, new Tile(2128, 5647, 0))));
 
-        teleportOptions.put(45, new OptionMenu("Lizardman Shaman", new String[] { "Boss", "Lizardman Shaman" },
+        teleportOptions.put(44, new OptionMenu("Lizardman Shaman", new String[] { "Boss", "Lizardman Shaman" },
             new TeleportAction(player, new Tile(1420, 3715, 0))));
 
-        teleportOptions.put(46, new OptionMenu("<img=1049>Venenatis", new String[] { "Boss", "Venenatis" },
+        teleportOptions.put(45, new OptionMenu("<img=1049>Venenatis", new String[] { "Boss", "Venenatis" },
             new TeleportAction(player, new Tile(3319, 3745, 0))));
 
-        teleportOptions.put(47, new OptionMenu("<img=1049>Vet'ion", new String[] { "Boss", "Vet'ion" },
+        teleportOptions.put(46, new OptionMenu("<img=1049>Vet'ion", new String[] { "Boss", "Vet'ion" },
             new TeleportAction(player, new Tile(3239, 3783, 0))));
 
-        teleportOptions.put(48, new OptionMenu("<img=1049>Scorpia", new String[] { "Boss", "Scorpia" },
+        teleportOptions.put(47, new OptionMenu("<img=1049>Scorpia", new String[] { "Boss", "Scorpia" },
             new TeleportAction(player, new Tile(3232, 3950, 0))));
 
-        teleportOptions.put(49, new OptionMenu("Vorkath", new String[] { "Boss", "Vorkath" },
+        teleportOptions.put(48, new OptionMenu("Vorkath", new String[] { "Boss", "Vorkath" },
             new TeleportAction(player, new Tile(2273, 4049, 0))));
 
-        teleportOptions.put(50, new OptionMenu("World Boss", new String[] { "Boss", "World Boss" },
+        teleportOptions.put(49, new OptionMenu("World Boss", new String[] { "Boss", "World Boss" },
             new TeleportAction(player, null,true, "World Boss")));
 
-        teleportOptions.put(51, new OptionMenu("Alchemical Hydra", new String[] { "Boss", "Alchemical Hydra" },
+        teleportOptions.put(50, new OptionMenu("Alchemical Hydra", new String[] { "Boss", "Alchemical Hydra" },
             new TeleportAction(player, new Tile(1354, 10258,0))));
 
-        teleportOptions.put(52, new OptionMenu("<img=1049>Barrelchest", new String[] { "Boss", "Barrelchest" },
+        teleportOptions.put(51, new OptionMenu("<img=1049>Barrelchest", new String[] { "Boss", "Barrelchest" },
             new TeleportAction(player, new Tile(3287, 3884,0))));
 
-        teleportOptions.put(53, new OptionMenu("Corrupted Nechryarch", new String[] { "Boss", "Corrupted Nechryarch" },
+        teleportOptions.put(52, new OptionMenu("Corrupted Nechryarch", new String[] { "Boss", "Corrupted Nechryarch" },
             new TeleportAction(player, new Tile(1885, 3865,0))));
 
-        teleportOptions.put(54, new OptionMenu("<img=1049>Revenants", new String[] { "Revenants", "revs", "rev cave" },
+        teleportOptions.put(53, new OptionMenu("<img=1049>Revenants", new String[] { "Revenants", "revs", "rev cave" },
             new TeleportAction(player, new Tile(3127, 3832,0))));
 
-        teleportOptions.put(55, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
+        teleportOptions.put(54, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
             new TeleportAction(player, new Tile(1245, 3561,0))));
 
-        teleportOptions.put(56, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
+        teleportOptions.put(55, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
             new TeleportAction(player, new Tile(3365, 3265, 0))));
 
-        teleportOptions.put(57, new OptionMenu("Barrows", new String[] { "Minigames", "Barrows" },
+        teleportOptions.put(56, new OptionMenu("Barrows", new String[] { "Minigames", "Barrows" },
             new TeleportAction(player, new Tile(3565, 3316, 0))));
 
-        teleportOptions.put(58, new OptionMenu("Fight Caves", new String[] { "Minigames", "Fight Caves", "Fire Cape" },
+        teleportOptions.put(57, new OptionMenu("Fight Caves", new String[] { "Minigames", "Fight Caves", "Fire Cape" },
             new TeleportAction(player, new Tile(2480, 5175, 0))));
 
-        teleportOptions.put(59,
+        teleportOptions.put(58,
             new OptionMenu("Warrior's Guild", new String[] { "Minigames", "Warrior Guild", "Defender" },
                 new TeleportAction(player, new Tile(2841, 3538, 0))));
 
-        teleportOptions.put(60, new OptionMenu("Pest Control", new String[] { "Minigames", "Pest Control", "Void" },
+        teleportOptions.put(59, new OptionMenu("Pest Control", new String[] { "Minigames", "Pest Control", "Void" },
             new TeleportAction(player, new Tile(2658, 2649, 0))));
 
-        teleportOptions.put(61, new OptionMenu("Varrock", new String[] { "Cities", "Varrock" },
+        teleportOptions.put(60, new OptionMenu("Varrock", new String[] { "Cities", "Varrock" },
             new TeleportAction(player, new Tile(3110, 3424))));
 
-        teleportOptions.put(62, new OptionMenu("Falador", new String[] { "Cities", "Falador" },
+        teleportOptions.put(61, new OptionMenu("Falador", new String[] { "Cities", "Falador" },
             new TeleportAction(player, new Tile(2965, 3380))));
 
-        teleportOptions.put(63, new OptionMenu("Lumbridge", new String[] { "Cities", "Lumbridge" },
+        teleportOptions.put(62, new OptionMenu("Lumbridge", new String[] { "Cities", "Lumbridge" },
             new TeleportAction(player, new Tile(3223, 3218))));
 
-        teleportOptions.put(64, new OptionMenu("Draynor", new String[] { "Cities", "Draynor" },
+        teleportOptions.put(63, new OptionMenu("Draynor", new String[] { "Cities", "Draynor" },
             new TeleportAction(player, new Tile(3093, 3244))));
 
-        teleportOptions.put(65, new OptionMenu("Camelot", new String[] { "Cities", "Camelot" },
+        teleportOptions.put(64, new OptionMenu("Camelot", new String[] { "Cities", "Camelot" },
             new TeleportAction(player, new Tile(2757, 3477))));
 
-        teleportOptions.put(66, new OptionMenu("Wintertodt", new String[] { "Wintertodt", "Minigames", "Firemaking" },
+        teleportOptions.put(65, new OptionMenu("Wintertodt", new String[] { "Wintertodt", "Minigames", "Firemaking" },
             new TeleportAction(player, new Tile(1630, 3947))));
 
-        teleportOptions.put(67, new OptionMenu("Sarachnis", new String[] { "Sarachnis", "boss" },
+        teleportOptions.put(66, new OptionMenu("Sarachnis", new String[] { "Sarachnis", "boss" },
             new TeleportAction(player, new Tile(1847,9922))));
 
-        teleportOptions.put(68, new OptionMenu("Bryophyta", new String[] { "Bryophyta", "boss" },
+        teleportOptions.put(67, new OptionMenu("Bryophyta", new String[] { "Bryophyta", "boss" },
             new TeleportAction(player, new Tile(3174, 9897))));
 
-        teleportOptions.put(69, new OptionMenu("Dagannoth kings", new String[] { "Dagannoth kings", "boss" },
+        teleportOptions.put(68, new OptionMenu("Dagannoth kings", new String[] { "Dagannoth kings", "boss" },
             new TeleportAction(player, new Tile(1910, 4367))));
 
-        teleportOptions.put(70, new OptionMenu("Basilisk knight", new String[] { "Basilisk knight", "Jormungand's prison", "slayer" },
+        teleportOptions.put(69, new OptionMenu("Basilisk knight", new String[] { "Basilisk knight", "Jormungand's prison", "slayer" },
             new TeleportAction(player, new Tile(2437, 10397))));
 
-        teleportOptions.put(71, new OptionMenu("The nightmare", new String[] { "The nightmare", "nightmare", "boss" },
+        teleportOptions.put(70, new OptionMenu("The nightmare", new String[] { "The nightmare", "nightmare", "boss" },
             new TeleportAction(player, new Tile(3808, 9777,1))));
 
-        teleportOptions.put(72, new OptionMenu("Nex", new String[] { "Nex", "nex", "boss" },
+        teleportOptions.put(71, new OptionMenu("Nex", new String[] { "Nex", "nex", "boss" },
             new TeleportAction(player, new Tile(2904, 5203,0))));
 
         return teleportOptions;

@@ -7,6 +7,8 @@ import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 
@@ -59,6 +61,9 @@ public class TeleportAction extends Action<Mob> {
                         }
                         if (WorldBossEvent.getINSTANCE().getActiveNpc().isPresent() && WorldBossEvent.currentSpawnPos != null) {
                             tile = WorldBossEvent.currentSpawnPos;
+                            if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                Teleports.basicTeleport(player, tile);
+                            }
                         } else {
                             player.message("The world boss recently died and will respawn shortly.");
                         }
@@ -66,8 +71,48 @@ public class TeleportAction extends Action<Mob> {
                     case "Revenants" -> {
                         var revsTeleUnlocked = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.REVENANT_TELEPORT);
                         tile = revsTeleUnlocked ? new Tile(3244, 10145, 0) : tile;
+                        if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                            Teleports.basicTeleport(player, tile);
+                        }
                     }
+                    case "Godwars" -> player.getDialogueManager().start(new Dialogue() {
+                        @Override
+                        protected void start(Object... parameters) {
+                            send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Armadyl", "Bandos", "Saradomin", "Zamorak");
+                            setPhase(0);
+                        }
+
+                        @Override
+                        protected void select(int option) {
+                            if (option == 1) {
+                                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
+                                    stop();
+                                    return;
+                                }
+                                Teleports.basicTeleport(player, new Tile(2841, 5291, 2));
+                            } else if (option == 2) {
+                                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
+                                    stop();
+                                    return;
+                                }
+                                Teleports.basicTeleport(player, new Tile(2860, 5354, 2));
+                            } else if (option == 3) {
+                                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
+                                    stop();
+                                    return;
+                                }
+                                Teleports.basicTeleport(player, new Tile(2911, 5267, 0));
+                            } else if (option == 4) {
+                                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
+                                    stop();
+                                    return;
+                                }
+                                Teleports.basicTeleport(player, new Tile(2925, 5336, 2));
+                            }
+                        }
+                    });
                 }
+                return;
             }
 
             if(tile == null) {

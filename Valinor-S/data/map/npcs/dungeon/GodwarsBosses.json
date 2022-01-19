@@ -1,0 +1,126 @@
+[
+  {
+    "id": 3165,
+    "x": 2829,
+    "y": 5300,
+    "walkRange": 8,
+    "z": 2
+  },
+  // Flight Kilisa
+  {
+    "id": 3163,
+    "x": 2834,
+    "y": 5297,
+    "walkRange": 8,
+    "z": 2
+  },
+  // Wingman Skree
+  {
+    "id": 3164,
+    "x": 2827,
+    "y": 5299,
+    "walkRange": 8,
+    "z": 2
+  },
+  // Flockleader Geerin
+  {
+    "id": 3162,
+    "x": 2832,
+    "y": 5301,
+    "walkRange": 8,
+    "z": 2
+  },
+  // Kree'arra
+  {
+    "id": 2215,
+    "x": 2870,
+    "y": 5358,
+    "walkRange": 3,
+    "z": 2
+  },
+  // General Graardor
+  {
+    "id": 2216,
+    "x": 2871,
+    "y": 5359,
+    "walkRange": 2,
+    "z": 2
+  },
+  // Sergeant Strongstack
+  {
+    "id": 2217,
+    "x": 2872,
+    "y": 5354,
+    "walkRange": 2,
+    "z": 2
+  },
+  // Sergeant Steelwill
+  {
+    "id": 2218,
+    "x": 2868,
+    "y": 5362,
+    "walkRange": 6,
+    "z": 2
+  },
+  // Sergeant Grimspike
+  {
+    "id": 2205,
+    "x": 2899,
+    "y": 5267,
+    "walkRange": 9
+  },
+  // Commander Zilyana
+  {
+    "id": 2206,
+    "x": 2901,
+    "y": 5264,
+    "walkRange": 9
+  },
+  // Starlight
+  {
+    "id": 2207,
+    "x": 2897,
+    "y": 5263,
+    "walkRange": 9
+  },
+  // Growler
+  {
+    "id": 2208,
+    "x": 2895,
+    "y": 5265,
+    "walkRange": 9
+  },
+  // Bree
+  {
+    "id": 3129,
+    "x": 2920,
+    "y": 5326,
+    "walkRange": 2,
+    "z": 2
+  },
+  // K'ril Tsutsaroth
+  {
+    "id": 3130,
+    "x": 2929,
+    "y": 5327,
+    "walkRange": 5,
+    "z": 2
+  },
+  // Tstanon Karlak
+  {
+    "id": 3132,
+    "x": 2923,
+    "y": 5324,
+    "walkRange": 5,
+    "z": 2
+  },
+  // Balfrug
+  {
+    "id": 3131,
+    "x": 2921,
+    "y": 5327,
+    "walkRange": 3,
+    "z": 2
+  }
+  // Zakl'n Gritch
+]
