@@ -2,9 +2,11 @@ package com.valinor.game.content.items.combine;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.object.GameObject;
 import com.valinor.net.packet.interaction.Interaction;
 
-import static com.valinor.util.ItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.FEROCIOUS_GLOVES;
+import static com.valinor.util.ItemIdentifiers.HYDRA_LEATHER;
 
 /**
  *
@@ -14,8 +16,8 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class FerociousGloves extends Interaction {
 
     @Override
-    public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
-        if ((use.getId() == HAMMER || usedWith.getId() == HAMMER) && (use.getId() == HYDRA_LEATHER || usedWith.getId() == HYDRA_LEATHER)) {
+    public boolean handleItemOnObject(Player player, Item item, GameObject object) {
+        if(item.getId() == HYDRA_LEATHER && object.getId() == 34628) {
             if(!player.inventory().contains(HYDRA_LEATHER))
                 return true;
             player.inventory().remove(HYDRA_LEATHER);

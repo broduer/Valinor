@@ -382,7 +382,7 @@
   {
     // Rockslug
     "ids": [
-      421
+      421, 422
     ],
     "maxhit": 4,
     "attackspeed": 4,
@@ -1307,7 +1307,6 @@
       2007,
       2008,
       2018,
-      2025,
       7247,
       7248
     ],
@@ -1355,7 +1354,7 @@
       243
     ],
     "maxhit": 5,
-    "slayerxp": 42,
+    "slayerxp": 50,
     "slayerlvl": 1,
     "stats": {
       "attack": 40,
@@ -1363,7 +1362,7 @@
       "defence": 40,
       "magic": 1,
       "ranged": 1,
-      "hitpoints": 42
+      "hitpoints": 50
     },
     "bonuses": {
       "stabdefence": 30,
@@ -2186,7 +2185,10 @@
       2026,
       2027,
       2028,
-      2029
+      2029,
+      2030,
+      2031,
+      2032
     ],
     "maxhit": 9,
     "slayerxp": 87,
@@ -2409,6 +2411,9 @@
       "death": [
         409
       ]
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.dragons.MetalDragon"
     }
   },
   {
@@ -2499,6 +2504,9 @@
       "death": [
         409
       ]
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.dragons.MetalDragon"
     }
   },
   {
@@ -2885,7 +2893,6 @@
       2860,
       2861
     ],
-    "maxhit": 1,
     "maxhit": 1,
     "slayerxp": 2,
     "stats": {

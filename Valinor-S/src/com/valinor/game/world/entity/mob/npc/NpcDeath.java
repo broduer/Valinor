@@ -791,7 +791,7 @@ public class NpcDeath {
                     NechryarchDeathSpawn.death(npc); //Do death spawn death
                 }
 
-                if (npc.id() == NECHRYAEL || npc.id() == NECHRYAEL_11) {
+                if (npc.id() == NECHRYAEL || npc.id() == NECHRYAEL_11 || npc.id() == GREATER_NECHRYAEL) {
                     new Nechryael().onDeath(npc);
                 }
 

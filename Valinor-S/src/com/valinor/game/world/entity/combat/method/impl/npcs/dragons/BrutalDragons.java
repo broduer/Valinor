@@ -93,9 +93,9 @@ public class BrutalDragons extends CommonCombatMethod {
         fire = false;
         npc.animate(6722);
         switch (npc.id()) {
-            case NpcIdentifiers.BRUTAL_GREEN_DRAGON, NpcIdentifiers.BRUTAL_GREEN_DRAGON_8081 -> new Projectile(npc, target, 133, 60, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
-            case NpcIdentifiers.BRUTAL_BLUE_DRAGON, NpcIdentifiers.BRUTAL_RED_DRAGON -> new Projectile(npc, target, 136, 60, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
-            case NpcIdentifiers.BRUTAL_RED_DRAGON_8087, NpcIdentifiers.BRUTAL_BLACK_DRAGON, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8092, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8093 -> new Projectile(npc, target, 130, 60, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
+            case NpcIdentifiers.BRUTAL_GREEN_DRAGON, NpcIdentifiers.BRUTAL_GREEN_DRAGON_8081 -> new Projectile(npc, target, 133, 30, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
+            case NpcIdentifiers.BRUTAL_BLUE_DRAGON, NpcIdentifiers.BRUTAL_RED_DRAGON -> new Projectile(npc, target, 136, 30, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
+            case NpcIdentifiers.BRUTAL_RED_DRAGON_8087, NpcIdentifiers.BRUTAL_BLACK_DRAGON, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8092, NpcIdentifiers.BRUTAL_BLACK_DRAGON_8093 -> new Projectile(npc, target, 130, 30, npc.projectileSpeed(target), 10, 31, 0, 10, 16).sendProjectile();
             default -> System.err.println("Assigned brutal dragon script with no projectile, npc id " + npc.id());
         }
 

@@ -8,6 +8,7 @@ import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -48,7 +49,7 @@ public class ItemDrops {
         Tile tile = dropUnderPlayer ? player.tile() : npc.tile();
 
         table.getGuaranteedDrops().forEach(tableItem -> {
-            if (player.inventory().contains(BONECRUSHER)) {
+            if (player.inventory().contains(BONECRUSHER) || player.getEquipment().hasAt(EquipSlot.AMULET, DRAGONBONE_NECKLACE)) {
                 int itemId = tableItem.convert().getId();
                 for (int bone : BONES) {
                     if (itemId == bone) {

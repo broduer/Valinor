@@ -169,15 +169,15 @@
     "ids": [
       7392
     ],
-    "maxhit": 4,
+    "maxhit": 9,
     "attackspeed": 4,
     "slayerxp": 770,
     "droprolls": 3,
     "slayerlvl": 20,
     "stats": {
-      "attack": 27,
-      "strength": 27,
-      "defence": 27,
+      "attack": 72,
+      "strength": 77,
+      "defence": 77,
       "hitpoints": 77
     },
     "bonuses": {

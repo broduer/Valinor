@@ -150,16 +150,7 @@
     "id": 6797,
     "x": 2432,
     "y": 3423,
-    "walkRange": 0,
-    "realismExclusive": true,
-    "economyExclusive": true
-  },
-  // Nieve
-  {
-    "id": 6797,
-    "x": 2433,
-    "y": 3435,
-    "walkRange": 4
+    "walkRange": 0
   },
   // Gnome woman
   {

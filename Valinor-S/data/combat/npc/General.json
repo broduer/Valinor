@@ -1,5 +1,349 @@
 [
   {
+    // Giant frog (13)
+    "ids": [
+      2143
+    ],
+    "maxhit": 2,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 10,
+      "strength": 8,
+      "defence": 6,
+      "magic": 1,
+      "hitpoints": 23
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 1793,
+      "block": 1794,
+      "death": 1795
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Giant frog (99)
+    "ids": [
+      477
+    ],
+    "maxhit": 9,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 100,
+      "strength": 80,
+      "defence": 60,
+      "magic": 1,
+      "hitpoints": 100
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 1793,
+      "block": 1794,
+      "death": 1795
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Big frog (10)
+    "ids": [
+      2144
+    ],
+    "maxhit": 2,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 8,
+      "strength": 6,
+      "defence": 4,
+      "magic": 1,
+      "hitpoints": 18
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 1793,
+      "block": 1794,
+      "death": 1795
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Big frog (24)
+    "ids": [
+      2144
+    ],
+    "maxhit": 3,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 25,
+      "strength": 20,
+      "defence": 15,
+      "magic": 1,
+      "hitpoints": 25
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 1793,
+      "block": 1794,
+      "death": 1795
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Baby black dragon (83)
+    "ids": [
+      1871, 1872
+    ],
+    "maxhit": 11,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 80,
+    "stats": {
+      "attack": 70,
+      "strength": 70,
+      "defence": 70,
+      "magic": 1,
+      "hitpoints": 80
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "magicdefence": 40,
+      "rangeddefence": 30
+    },
+    "animations": {
+      "attack": 25,
+      "block": 26,
+      "death": 28
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Baby black dragon (83)
+    "ids": [
+      1871, 1872
+    ],
+    "maxhit": 11,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 80,
+    "stats": {
+      "attack": 70,
+      "strength": 70,
+      "defence": 70,
+      "magic": 1,
+      "hitpoints": 80
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "magicdefence": 40,
+      "rangeddefence": 30
+    },
+    "animations": {
+      "attack": 25,
+      "block": 26,
+      "death": 28
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Baby black dragon (83)
+    "ids": [
+      1871, 1872
+    ],
+    "maxhit": 11,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 80,
+    "stats": {
+      "attack": 70,
+      "strength": 70,
+      "defence": 70,
+      "magic": 1,
+      "hitpoints": 80
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "magicdefence": 40,
+      "rangeddefence": 30
+    },
+    "animations": {
+      "attack": 25,
+      "block": 26,
+      "death": 28
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
+    // Baby dragon (48) (green)
+    "ids": [
+      5194, 5872, 5873
+    ],
+    "maxhit": 5,
+    "attackspeed": 4,
+    "deathlen": 5,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 50,
+    "stats": {
+      "attack": 40,
+      "strength": 40,
+      "defence": 40,
+      "magic": 1,
+      "hitpoints": 50
+    },
+    "bonuses": {
+      "stabdefence": 30,
+      "slashdefence": 50,
+      "crushdefence": 50,
+      "magicdefence": 40,
+      "rangeddefence": 30
+    },
+    "animations": {
+      "attack": 25,
+      "block": 26,
+      "death": 28
+    },
+    "sounds": {
+      "attack": [
+        408
+      ],
+      "block": [
+        410
+      ],
+      "death": [
+        409
+      ]
+    }
+  },
+  {
     // Baby dragon (48) (red)
     "ids": [
       244, 245, 246
@@ -10,7 +354,7 @@
     "aggroradius": 0,
     "aggressive": false,
     "slayerlvl": 1,
-    "slayerxp": 143,
+    "slayerxp": 50,
     "stats": {
       "attack": 40,
       "strength": 40,
@@ -493,7 +837,8 @@
       79,
       81,
       80,
-      3973
+      3973,
+      7265
     ],
     "maxhit": 3,
     "slayerxp": 29,
@@ -1235,7 +1580,7 @@
   {
     // Magic Axe
     "ids": [
-      2844
+      2844, 7269
     ],
     "maxhit": 5,
     "stats": {
@@ -3644,6 +3989,595 @@
       "attack": 284,
       "block": 285,
       "death": 287
+    }
+  },
+  {
+    // Gnome guard (23)
+    "ids": [
+      6081, 6082
+    ],
+    "maxhit": 3,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 17,
+      "strength": 17,
+      "defence": 17,
+      "hitpoints": 31,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 8,
+      "slashdefence": 8,
+      "crushdefence": 80,
+      "rangeddefence": 8,
+      "magicdefence": 8
+    },
+    "animations": {
+      "attack": 191,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome Mage (5)
+    "ids": [
+      6099
+    ],
+    "maxhit": 1,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 3,
+      "strength": 1,
+      "defence": 1,
+      "hitpoints": 10,
+      "magic": 1,
+      "ranged": 5
+    },
+    "bonuses": {
+      "stabdefence": -30,
+      "slashdefence": -30,
+      "crushdefence": -30,
+      "rangeddefence": -30,
+      "magicdefence": -30
+    },
+    "animations": {
+      "attack": 3968,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome troop (1)
+    "ids": [
+      4973, 4974
+    ],
+    "maxhit": 2,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 1,
+      "hitpoints": 3,
+      "magic": 1,
+      "ranged": 5
+    },
+    "bonuses": {
+      "stabdefence": 3,
+      "slashdefence": 4,
+      "crushdefence": 5,
+      "rangeddefence": 2,
+      "magicdefence": 4
+    },
+    "animations": {
+      "attack": 191,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome Driver (5)
+    "ids": [
+      6098
+    ],
+    "maxhit": 1,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 3,
+      "strength": 5,
+      "defence": 3,
+      "hitpoints": 10,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": -30,
+      "slashdefence": -30,
+      "crushdefence": -30,
+      "rangeddefence": -30,
+      "magicdefence": -30
+    },
+    "animations": {
+      "attack": 3969,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome child (1)
+    "ids": [
+      6077, 6078, 6079
+    ],
+    "maxhit": 3,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 1,
+      "hitpoints": 2,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": -42,
+      "slashdefence": -42,
+      "crushdefence": -42,
+      "rangeddefence": -42,
+      "magicdefence": -42
+    },
+    "animations": {
+      "attack": 191,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome Archer (5)
+    "ids": [
+      6097
+    ],
+    "maxhit": 2,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 1,
+      "hitpoints": 10,
+      "magic": 1,
+      "ranged": 6
+    },
+    "bonuses": {
+      "stabdefence": -30,
+      "slashdefence": -30,
+      "crushdefence": -30,
+      "rangeddefence": -30,
+      "magicdefence": -30
+    },
+    "animations": {
+      "attack": 190,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Gnome (1)
+    "ids": [
+      5969, 6094, 6095, 6096
+    ],
+    "maxhit": 1,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 1,
+      "strength": 1,
+      "defence": 1,
+      "hitpoints": 3,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": -42,
+      "slashdefence": -42,
+      "crushdefence": -42,
+      "rangeddefence": -42,
+      "magicdefence": -42
+    },
+    "animations": {
+      "attack": 190,
+      "block": 193,
+      "death": 196
+    }
+  },
+  {
+    // Tortoise (79)
+    "ids": [
+      6075
+    ],
+    "maxhit": 11,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 15,
+      "strength": 90,
+      "defence": 80,
+      "hitpoints": 100,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 3961,
+      "block": 3960,
+      "death": 3962
+    }
+  },
+  {
+    // Tortoise (92)
+    "ids": [
+      6076
+    ],
+    "maxhit": 11,
+    "deathlen": 2,
+    "attackspeed": 6,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 30,
+      "strength": 100,
+      "defence": 80,
+      "hitpoints": 120,
+      "magic": 50,
+      "ranged": 50
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 3961,
+      "block": 3960,
+      "death": 3962
+    }
+  },
+  {
+    // Sulphur Lizard (50)
+    "ids": [
+      8614
+    ],
+    "maxhit": 5,
+    "deathlen": 6,
+    "attackspeed": 4,
+    "slayerxp": 50,
+    "slayerlvl": 44,
+    "stats": {
+      "attack": 50,
+      "strength": 45,
+      "defence": 30,
+      "hitpoints": 50,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 15,
+      "slashdefence": 25,
+      "crushdefence": 25,
+      "rangeddefence": 15,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 8283,
+      "block": -1,
+      "death": 8284
+    }
+  },
+  {
+    // Skeleton warlord (132)
+    "ids": [
+      1539
+    ],
+    "maxhit": 15,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 124,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 115,
+      "strength": 114,
+      "defence": 110,
+      "hitpoints": 124,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 2067,
+      "block": 3238,
+      "death": 836
+    }
+  },
+  {
+    // Skeleton thug (132)
+    "ids": [
+      1541
+    ],
+    "maxhit": 15,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 124,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 115,
+      "strength": 114,
+      "defence": 110,
+      "hitpoints": 124,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 422,
+      "block": 425,
+      "death": 836
+    }
+  },
+  {
+    // Skeleton Mage (16)
+    "ids": [
+      84
+    ],
+    "maxhit": 3,
+    "deathlen": 5,
+    "attackspeed": 4,
+    "slayerxp": 17,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 14,
+      "strength": 14,
+      "defence": 14,
+      "hitpoints": 17,
+      "magic": 18,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 5487,
+      "block": 5489,
+      "death": 5491
+    }
+  },
+  {
+    // Skeleton Mage (83)
+    "ids": [
+      4319
+    ],
+    "maxhit": 11,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 80,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 10,
+      "strength": 10,
+      "defence": 60,
+      "hitpoints": 80,
+      "magic": 1,
+      "ranged": 100
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 15
+    },
+    "animations": {
+      "attack": 5487,
+      "block": 5489,
+      "death": 5491
+    }
+  },
+  {
+    // Skeleton hero (149)
+    "ids": [
+      1537
+    ],
+    "maxhit": 18,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 124,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 145,
+      "strength": 134,
+      "defence": 110,
+      "hitpoints": 124,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 2067,
+      "block": 3238,
+      "death": 836
+    }
+  },
+  {
+    // Skeleton heavy (132)
+    "ids": [
+      1540
+    ],
+    "maxhit": 15,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 124,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 115,
+      "strength": 114,
+      "defence": 110,
+      "hitpoints": 124,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 390,
+      "block": 3239,
+      "death": 836
+    }
+  },
+  {
+    // Skeleton brute (132)
+    "ids": [
+      1538
+    ],
+    "maxhit": 15,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 124,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 115,
+      "strength": 114,
+      "defence": 110,
+      "hitpoints": 124,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 422,
+      "block": 425,
+      "death": 836
+    }
+  },
+  {
+    // Angry barbarian spirit (166)
+    "ids": [
+      5563
+    ],
+    "maxhit": 18,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 150,
+      "strength": 140,
+      "defence": 100,
+      "hitpoints": 190,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 6726,
+      "block": 6728,
+      "death": 6727
+    }
+  },
+  {
+    // Enraged barbarian spirit (166)
+    "ids": [
+      5564
+    ],
+    "maxhit": 18,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 150,
+      "strength": 140,
+      "defence": 100,
+      "hitpoints": 190,
+      "magic": 1,
+      "ranged": 1
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 3,
+      "crushdefence": 2,
+      "rangeddefence": 2,
+      "magicdefence": -3
+    },
+    "animations": {
+      "attack": 6728,
+      "block": 6726,
+      "death": 6727
     }
   }
 ]
