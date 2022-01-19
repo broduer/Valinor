@@ -686,6 +686,7 @@ public class Skills {
                         return true;
                     }
                     player.getDialogueManager().start(skill.getDialogue());
+                    return true;
                 }
             }
             if (isCombatMaxed || player.getPlayerRights().isDeveloperOrGreater(player)) {
