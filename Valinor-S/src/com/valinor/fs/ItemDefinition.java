@@ -108,7 +108,7 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{null, null, null, null, "Destroy"};
         }
 
-        if(name.contains("slayer helmet") || name.contains("Slayer helmet")) {
+        if (name.contains("slayer helmet") || name.contains("Slayer helmet")) {
             ioptions = new String[]{null, "Wear", null, null, "Drop"};
         }
 
@@ -120,6 +120,7 @@ public class ItemDefinition implements Definition {
         } else if (id == GIANT_KEY_OF_DROPS) {
             name = "Giant key of drops";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == RAIDS_MYSTERY_BOX) {
             name = "Raids mystery box";
             grandexchange = true;
@@ -130,7 +131,7 @@ public class ItemDefinition implements Definition {
             name = "Cursed amulet of the damned";
             grandexchange = true;
             cost = 2_000_000;
-        } else if(id == TREASURE_CASKET) {
+        } else if (id == TREASURE_CASKET) {
             name = "Treasure casket";
             grandexchange = true;
             stackable = true;
@@ -149,7 +150,7 @@ public class ItemDefinition implements Definition {
         } else if (id == POINTS_MYSTERY_BOX) {
             name = "Points mystery box";
             grandexchange = true;
-        } else if(id == POINTS_MYSTERY_BOX + 1) {
+        } else if (id == POINTS_MYSTERY_BOX + 1) {
             name = "Points mystery box";
             grandexchange = true;
             notelink = POINTS_MYSTERY_BOX;
@@ -167,32 +168,42 @@ public class ItemDefinition implements Definition {
         } else if (id == TOTEMIC_HELMET) {
             name = "Totemic helmet";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == TOTEMIC_PLATEBODY) {
             name = "Totemic platebody";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == TOTEMIC_PLATELEGS) {
             name = "Totemic platelegs";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == DARK_SAGE_HAT) {
             name = "Dark sage hat";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == DARK_SAGE_ROBE_TOP) {
             name = "Dark sage robe top";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == DARK_SAGE_ROBE_BOTTOM) {
             name = "Dark sage robe bottoms";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == TWISTED_BOW_ORANGE || id == TWISTED_BOW_PURPLE) {
             name = "Twisted bow";
+            cost = 10_000_000;
         } else if (id == SARKIS_DARK_COIF) {
             name = "Sarkis dark coif";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == SARKIS_DARK_BODY) {
             name = "Sarkis dark body";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == SARKIS_DARK_LEGS) {
             name = "Sarkis dark legs";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == RESOURCE_PACK) {
             name = "Resource pack";
         } else if (id == SUMMER_TOKEN) {
@@ -248,161 +259,170 @@ public class ItemDefinition implements Definition {
             name = "Mystery ticket";
             stackable = true;
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == DARKLORD_BOW) {
             name = "Darklord bow";
+            cost = 3_000_000;
         } else if (id == DARKLORD_SWORD) {
             name = "Darklord sword";
+            cost = 3_000_000;
         } else if (id == DARKLORD_STAFF) {
             name = "Darklord staff";
+            cost = 3_000_000;
         } else if (id == SLAYER_KEY) {
             name = "Slayer key";
             stackable = true;
             grandexchange = true;
-        } else if(id == VAMPYRE_DUST) {
+        } else if (id == VAMPYRE_DUST) {
             notelink = -1;
             noteModel = -1;
-        } else if(id == VETERAN_PARTYHAT) {
+        } else if (id == VETERAN_PARTYHAT) {
             name = "Veteran partyhat";
             grandexchange = true;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == VETERAN_HWEEN_MASK) {
+        } else if (id == VETERAN_HWEEN_MASK) {
             name = "Veteran halloween mask";
             grandexchange = true;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == VETERAN_SANTA_HAT) {
+        } else if (id == VETERAN_SANTA_HAT) {
             name = "Veteran santa hat";
             grandexchange = true;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
-        } else if(id == BEGINNER_WEAPON_PACK) {
+        } else if (id == BEGINNER_WEAPON_PACK) {
             name = "Beginner weapon pack";
             ioptions = new String[]{"Open", null, null, null, "Destroy"};
-        } else if(id == BEGINNER_DRAGON_CLAWS) {
+        } else if (id == BEGINNER_DRAGON_CLAWS) {
             name = "Beginner dragon claws";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == BEGINNER_AGS) {
+        } else if (id == BEGINNER_AGS) {
             name = "Beginner AGS";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == BEGINNER_CHAINMACE) {
+        } else if (id == BEGINNER_CHAINMACE) {
             name = "Beginner chainmace";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == BEGINNER_CRAWS_BOW) {
+        } else if (id == BEGINNER_CRAWS_BOW) {
             name = "Beginner craw's bow";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
-        } else if(id == ZRIAWK) {
+        } else if (id == ZRIAWK) {
             name = "Zriawk pet";
             grandexchange = true;
-        } else if(id == GAMBLER_SCROLL) {
+        } else if (id == GAMBLER_SCROLL) {
             name = "Gambler scroll";
             grandexchange = true;
-        } else if(id == FAWKES_32937) {
+        } else if (id == FAWKES_32937) {
             name = "Fawkes pet";
             grandexchange = true;
-        } else if(id == RING_OF_VIGOUR) {
+        } else if (id == RING_OF_VIGOUR) {
             name = "Ring of vigour";
             grandexchange = true;
-        } else if(id == DARK_BANDOS_CHESTPLATE) {
+            cost = 15_000_000;
+        } else if (id == DARK_BANDOS_CHESTPLATE) {
             name = "Dark bandos chestplate";
             grandexchange = true;
-            cost = 3_000_000;
-        } else if(id == DARK_BANDOS_TASSETS) {
+            cost = 10_000_000;
+        } else if (id == DARK_BANDOS_TASSETS) {
             name = "Dark bandos tassets";
             grandexchange = true;
-            cost = 3_000_000;
-        } else if(id == DARK_ARMADYL_HELMET) {
+            cost = 10_000_000;
+        } else if (id == DARK_ARMADYL_HELMET) {
             name = "Dark armadyl helmet";
             grandexchange = true;
-            cost = 3_000_000;
-        } else if(id == DARK_ARMADYL_CHESTPLATE) {
+            cost = 10_000_000;
+        } else if (id == DARK_ARMADYL_CHESTPLATE) {
             name = "Dark armadyl chestplate";
             grandexchange = true;
             cost = 3_000_000;
-        } else if(id == DARK_ARMADYL_CHAINSKIRT) {
+        } else if (id == DARK_ARMADYL_CHAINSKIRT) {
             name = "Dark armadyl chainskirt";
             grandexchange = true;
-            cost = 3_000_000;
-        } else if(id == RING_OF_ELYSIAN) {
+            cost = 10_000_000;
+        } else if (id == RING_OF_ELYSIAN) {
             name = "Ring of elysian";
             grandexchange = true;
-        } else if(id == TOXIC_STAFF_OF_THE_DEAD_C) {
+        } else if (id == TOXIC_STAFF_OF_THE_DEAD_C) {
             name = "Toxic staff of the dead (c)";
             grandexchange = true;
-            cost = 2_000_000;
-        } else if(id == KERBEROS_PET) {
+            cost = 15_000_000;
+        } else if (id == KERBEROS_PET) {
             name = "Kerberos pet";
             grandexchange = true;
-        } else if(id == SKORPIOS_PET) {
+        } else if (id == SKORPIOS_PET) {
             name = "Skorpios pet";
             grandexchange = true;
-        } else if(id == ARACHNE_PET) {
+        } else if (id == ARACHNE_PET) {
             name = "Arachne pet";
             grandexchange = true;
-        } else if(id == ARTIO_PET) {
+        } else if (id == ARTIO_PET) {
             name = "Artio pet";
             grandexchange = true;
-        } else if(id == SAELDOR_SHARD) {
+        } else if (id == SAELDOR_SHARD) {
             name = "Saeldor shard";
             grandexchange = true;
-        } else if(id == CYAN_PARTYHAT) {
+        } else if (id == CYAN_PARTYHAT) {
             name = "Cyan partyhat";
             grandexchange = true;
-        } else if(id == LIME_PARTYHAT) {
+        } else if (id == LIME_PARTYHAT) {
             name = "Lime partyhat";
             grandexchange = true;
-        } else if(id == ORANGE_PARTYHAT) {
+        } else if (id == ORANGE_PARTYHAT) {
             name = "Orange partyhat";
             grandexchange = true;
-        } else if(id == WHITE_HWEEN_MASK) {
+        } else if (id == WHITE_HWEEN_MASK) {
             name = "White h'ween mask";
             grandexchange = true;
-        } else if(id == PURPLE_HWEEN_MASK) {
+        } else if (id == PURPLE_HWEEN_MASK) {
             name = "Purple h'ween mask";
             grandexchange = true;
-        } else if(id == LIME_GREEN_HWEEN_MASK) {
+        } else if (id == LIME_GREEN_HWEEN_MASK) {
             name = "Lime green h'ween mask";
             grandexchange = true;
-        } else if(id == DARK_ELDER_MAUL) {
+        } else if (id == DARK_ELDER_MAUL) {
             name = "Dark elder maul";
             grandexchange = true;
-        } else if(id == SANGUINE_TWISTED_BOW) {
+            cost = 10_000_000;
+        } else if (id == SANGUINE_TWISTED_BOW) {
             name = "Sanguine twisted bow";
             grandexchange = true;
-            cost = 10_000_000;
-        } else if(id == SANGUINE_SCYTHE_OF_VITUR) {
-            cost = 10_000_000;
-        } else if(id == ANCIENT_FACEGAURD) {
+            cost = 100_000_000;
+        } else if (id == SANGUINE_SCYTHE_OF_VITUR) {
+            cost = 100_000_000;
+        } else if (id == ANCIENT_FACEGAURD) {
             name = "Ancient facegaurd";
             grandexchange = true;
-        } else if(id == ANCIENT_WARRIOR_CLAMP) {
+            cost = 15_000_000;
+        } else if (id == ANCIENT_WARRIOR_CLAMP) {
             name = "Ancient warrior clamp";
             grandexchange = true;
-            cost = 1_500_000;
-        } else if(id == ANCIENT_KING_BLACK_DRAGON_PET) {
+            cost = 25_500_000;
+        } else if (id == ANCIENT_KING_BLACK_DRAGON_PET) {
             name = "Ancient king black dragon pet";
             grandexchange = true;
-        } else if(id == ANCIENT_CHAOS_ELEMENTAL_PET) {
+        } else if (id == ANCIENT_CHAOS_ELEMENTAL_PET) {
             name = "Ancient chaos elemental pet";
             grandexchange = true;
-        } else if(id == ANCIENT_BARRELCHEST_PET) {
+        } else if (id == ANCIENT_BARRELCHEST_PET) {
             name = "Ancient barrelchest pet";
             grandexchange = true;
-        } else if(id == DARK_ANCIENT_EMBLEM) {
+        } else if (id == DARK_ANCIENT_EMBLEM) {
             name = "Dark ancient emblem";
-        } else if(id == DARK_ANCIENT_TOTEM) {
+        } else if (id == DARK_ANCIENT_TOTEM) {
             name = "Dark ancient totem";
-        } else if(id == DARK_ANCIENT_STATUETTE) {
+        } else if (id == DARK_ANCIENT_STATUETTE) {
             name = "Dark ancient statuette";
-        } else if(id == DARK_ANCIENT_MEDALLION) {
+        } else if (id == DARK_ANCIENT_MEDALLION) {
             name = "Dark ancient medallion";
-        } else if(id == DARK_ANCIENT_EFFIGY) {
+        } else if (id == DARK_ANCIENT_EFFIGY) {
             name = "Dark ancient effigy";
-        } else if(id == DARK_ANCIENT_RELIC) {
+        } else if (id == DARK_ANCIENT_RELIC) {
             name = "Dark ancient relic";
-        } else if(id == ANCIENT_VESTAS_LONGSWORD) {
+        } else if (id == ANCIENT_VESTAS_LONGSWORD) {
             name = "Ancient vesta's longsword";
             grandexchange = true;
-        } else if(id == ANCIENT_STATIUSS_WARHAMMER) {
+            cost = 30_000_000;
+        } else if (id == ANCIENT_STATIUSS_WARHAMMER) {
             name = "Ancient statius's warhammer";
             grandexchange = true;
+            cost = 25_000_000;
         } else if (id == TASK_BOTTLE_CASKET) {
             name = "Task bottle casket";
             ioptions = new String[]{"Open", null, null, null, "Drop"};
@@ -412,27 +432,31 @@ public class ItemDefinition implements Definition {
         } else if (id == SHADOW_MACE) {
             name = "Shadow mace";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == SHADOW_GREAT_HELM) {
             name = "Shadow great helm";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == SHADOW_HAUBERK) {
             name = "Shadow hauberk";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == SHADOW_PLATESKIRT) {
             name = "Shadow plateskirt";
             grandexchange = true;
+            cost = 3_000_000;
         } else if (id == VIGGORAS_CHAINMACE_C) {
             name = "Viggora's chainmace (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 25_000_000;
         } else if (id == CRAWS_BOW_C) {
             name = "Craw's bow (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 25_000_000;
         } else if (id == THAMMARONS_STAFF_C) {
             name = "Thammaron's sceptre (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 5_000_000;
         } else if (id == PEGASIAN_BOOTS_OR) {
             name = "Pegasian boots (or)";
             grandexchange = true;
@@ -472,7 +496,7 @@ public class ItemDefinition implements Definition {
         } else if (id == DRAGON_CLAWS_OR) {
             name = "Dragon claws (or)";
             grandexchange = true;
-            cost = 1_000_000;
+            cost = 5_000_000;
         } else if (id == ETHEREAL_PARTYHAT) {
             name = "Ethereal partyhat";
             grandexchange = true;
@@ -497,18 +521,19 @@ public class ItemDefinition implements Definition {
         } else if (id == TWISTED_BOW_I) {
             name = "Twisted bow (i)";
             grandexchange = true;
+            cost = 35_000_000;
         } else if (id == ANCESTRAL_HAT_I) {
             name = "Ancestral hat (i)";
             grandexchange = true;
-            cost = 3_000_000;
+            cost = 30_000_000;
         } else if (id == ANCESTRAL_ROBE_TOP_I) {
             name = "Ancestral robe top (i)";
             grandexchange = true;
-            cost = 3_000_000;
+            cost = 30_000_000;
         } else if (id == ANCESTRAL_ROBE_BOTTOM_I) {
             name = "Ancestral robe bottom (i)";
             grandexchange = true;
-            cost = 3_000_000;
+            cost = 30_000_000;
         } else if (id == PRIMORDIAL_BOOTS_OR) {
             name = "Primordial boots (or)";
             grandexchange = true;
@@ -541,27 +566,27 @@ public class ItemDefinition implements Definition {
         } else if (id == ANCIENT_WARRIOR_SWORD) {
             name = "Ancient warrior sword";
             grandexchange = true;
-            cost = 1_000_000;
+            cost = 50_000_000;
         } else if (id == ANCIENT_WARRIOR_AXE) {
             name = "Ancient warrior axe";
             grandexchange = true;
-            cost = 1_000_000;
+            cost = 50_000_000;
         } else if (id == ANCIENT_WARRIOR_MAUL) {
             name = "Ancient warrior maul";
             grandexchange = true;
-            cost = 1_000_000;
+            cost = 50_000_000;
         } else if (id == ANCIENT_WARRIOR_SWORD_C) {
             name = "Ancient warrior sword (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 75_000_000;
         } else if (id == ANCIENT_WARRIOR_AXE_C) {
             name = "Ancient warrior axe (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 75_000_000;
         } else if (id == ANCIENT_WARRIOR_MAUL_C) {
             name = "Ancient warrior maul (c)";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 75_000_000;
         } else if (id == KEY_OF_DROPS) {
             name = "Key of Drops";
             grandexchange = true;
@@ -663,6 +688,7 @@ public class ItemDefinition implements Definition {
         } else if (id == SALAZAR_SLYTHERINS_LOCKET) {
             name = "Salazar slytherins locket";
             grandexchange = true;
+            cost = 15_000_000;
         } else if (id == FENRIR_GREYBACK_JR) {
             name = "Fenrir greyback Jr. pet";
             grandexchange = true;
@@ -675,16 +701,16 @@ public class ItemDefinition implements Definition {
         } else if (id == ELDER_WAND_STICK) {
             name = "Elder wand stick";
             grandexchange = true;
-            cost = 3_000_000;
+            cost = 15_000_000;
         } else if (id == ELDER_WAND_HANDLE) {
             name = "Elder wand handle";
             grandexchange = true;
-            cost = 3_000_000;
+            cost = 15_000_000;
         } else if (id == ELDER_WAND) {
             name = "Elder wand";
             grandexchange = true;
-            cost = 6_000_000;
-        } else if(id == ELDER_WAND_RAIDS) {
+            cost = 40_000_000;
+        } else if (id == ELDER_WAND_RAIDS) {
             name = "Elder wand (raids)";
         } else if (id == CLOAK_OF_INVISIBILITY) {
             name = "Cloak of invisibility";
@@ -701,7 +727,7 @@ public class ItemDefinition implements Definition {
         } else if (id == SWORD_OF_GRYFFINDOR) {
             name = "Sword of gryffindor";
             grandexchange = true;
-            cost = 2_000_000;
+            cost = 20_000_000;
         } else if (id == CENTAUR_MALE) {
             name = "Male centaur pet";
             grandexchange = true;
@@ -711,16 +737,17 @@ public class ItemDefinition implements Definition {
         } else if (id == DEMENTOR_PET) {
             name = "Dementor pet";
             grandexchange = true;
-        } else if(id == JALNIBREK) {
+        } else if (id == JALNIBREK) {
             name = "Jal-nib-rek pet";
             grandexchange = true;
-        } else if(id == CORRUPTING_STONE) {
+        } else if (id == CORRUPTING_STONE) {
             name = "Corrupting stone";
             grandexchange = true;
-        } else if(id == CORRUPTED_RANGER_GAUNTLETS) {
+        } else if (id == CORRUPTED_RANGER_GAUNTLETS) {
             name = "Corrupted ranger gauntlets";
             grandexchange = true;
-        } else if(id == BLOOD_REAPER) {
+            cost = 3_000_000;
+        } else if (id == BLOOD_REAPER) {
             name = "Blood Reaper pet";
             grandexchange = true;
         } else if (id == YOUNGLLEF) {
