@@ -1039,7 +1039,7 @@ public class Client extends GameApplet {
                     String name = msg.getName();
                     String message = msg.getMessage();
                     String title = msg.getTitle() == null ? "" : msg.getTitle();
-
+                    List<ChatCrown> crowns = msg.getCrowns();
                     boolean broadcast = message.contains("<link");
 
                     if (settings[ConfigUtility.TRANSPARENT_CHAT_BOX_ID] == 1 && !fixed) {
@@ -1056,22 +1056,19 @@ public class Client extends GameApplet {
                         }
                         if (chatTypeView == 0 || chatTypeView == 6) {
                             if (!broadcast) {
-                                if (!message.contains("[Global]")) {
-                                    if (y > 0 && y < 210) {
-                                        adv_font_regular.draw(message, 11, y + yOffset, transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
-                                    }
-                                } else {
+                                if (message.contains("[Global]")) {
                                     xPos += 48;
-                                    for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
+                                    for (ChatCrown c : crowns) {
+                                    //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                         SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                         if (sprite != null) {
                                             sprite.drawSprite(xPos + 1, y - 12 + yOffset);
                                             xPos += sprite.width + 2;
                                         }
                                     }
-                                    if (y > 0 && y < 210) {
-                                        adv_font_regular.draw(message, 11, y + yOffset, transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
-                                    }
+                                }
+                                if (y > 0 && y < 210) {
+                                    adv_font_regular.draw(message, 11, y + yOffset, transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
                                 }
                             } else if (broadcast) {
                                 if (y > 0 && y < 210) {
@@ -1089,7 +1086,8 @@ public class Client extends GameApplet {
                         if (chatTypeView == 1 || chatTypeView == 0) {
                             int xPos = 11;
 
-                            for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
+                            for (ChatCrown c : crowns) {
+                            //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                 SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                 if (sprite != null) {
                                     sprite.drawSprite(xPos + 1, y - 12 + yOffset);
