@@ -16,8 +16,7 @@
         { "id": 11371, "min": 1, "max": 1, "points": 6 }, //Steel hasta
         { "id": 11341, "min": 1, "max": 1, "points": 6 }, //Ancient page
         { "id": 1391, "min": 1, "max": 1, "points": 3 }, //Battlestaff
-        { "id": 1333, "min": 1, "max": 1, "points": 3 }, //Rune scimitar
-        { "id": 2801, "min": 1, "max": 1, "points": 1 } //Clue scroll (medium)
+        { "id": 1333, "min": 1, "max": 1, "points": 3 } //Rune scimitar
       ]
     }
   ]

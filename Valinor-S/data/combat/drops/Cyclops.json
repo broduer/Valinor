@@ -53,7 +53,6 @@
         { "id": 5280, "min": 1, "max": 1, "points": 1 },   //Cactus seed
         { "id": 5323, "min": 1, "max": 1, "points": 1 },   //Strawberry seed
         { "id": 5321, "min": 1, "max": 1, "points": 1 },   //Watermelon seed
-        { "id": 2722, "min": 1, "max": 1, "points": 1 },   //Clue scroll (hard)
         { "id": 10977, "min": 1, "max": 1, "points": 1 }   //Curved bone
       ]
     },
@@ -110,7 +109,6 @@
         { "id": 5304, "min": 1, "max": 1, "points": 3 },   //Torstol seed
         { "id": 5280, "min": 1, "max": 1, "points": 3 },   //Cactus seed
         { "id": 5282, "min": 1, "max": 1, "points": 3 },   //Mushroom spore
-        { "id": 2722, "min": 1, "max": 1, "points": 1 },   //Clue scroll (hard)
         { "id": 10976, "min": 1, "max": 1, "points": 1 },   //Long bone
         { "id": 10977, "min": 1, "max": 1, "points": 1 }   //Curved bone
       ]

@@ -28,7 +28,6 @@
         { "id": 560, "min": 15, "max": 15, "points": 10 }, //Death rune
         { "id": 379, "min": 2, "max": 2, "points": 10 }, //Lobster
         { "id": 2357, "min": 1, "max": 1, "points": 10 }, //Gold bar
-        { "id": 2722, "min": 1, "max": 1, "points": 1 }, //Clue scroll (hard)
         { "id": 1734, "min": 10, "max": 10, "points": 1 } //Thread
       ]
     }

@@ -50,8 +50,6 @@
         { "id": 11237, "min": 8, "max": 8, "points": 50 }, //Dragon arrowtips
         { "id": 2011, "min": 3, "max": 3, "points": 15 }, //Curry
         { "id": 13511, "min": 1, "max": 1, "points": 15 }, //Ensouled dragon head
-        { "id": 2722, "min": 1, "max": 1, "points": 6 }, //Clue scroll (hard)
-        { "id": 12073, "min": 1, "max": 1, "points": 6 }, //Clue scroll (elite)
         { "id": 11286, "min": 1, "max": 1, "points": 1 } //Draconic visage
       ]
     }

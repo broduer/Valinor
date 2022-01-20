@@ -45,8 +45,7 @@
         { "id": 2327, "min": 1, "max": 1, "points": 6 }, //Meat pie
         { "id": 2359, "min": 1, "max": 1, "points": 6 }, //Mithril bar
         { "id": 1698, "min": 1, "max": 1, "points": 6 }, //Ruby amulet
-        { "id": 13496, "min": 1, "max": 1, "points": 3 }, //Ensouled bloodveld head
-        { "id": 2722, "min": 1, "max": 1, "points": 1 } //Clue scroll (hard)
+        { "id": 13496, "min": 1, "max": 1, "points": 3 } //Ensouled bloodveld head
       ]
     }
   ]
