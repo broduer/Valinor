@@ -186,7 +186,9 @@ public abstract class Shop {
                 return;
             }
 
-            if (itemCache.containsKey(item.getId()) && container.retrieve(slot).isPresent()) {
+            boolean doNotDecreaseShopAmount = true;
+
+            if (itemCache.containsKey(item.getId()) && container.retrieve(slot).isPresent() && !doNotDecreaseShopAmount) {
                 if (decrementStock()) {
                     container.retrieve(slot).get().decrementAmountBy(item.getAmount());
                 }

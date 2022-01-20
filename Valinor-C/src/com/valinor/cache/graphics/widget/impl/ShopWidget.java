@@ -23,6 +23,7 @@ public class ShopWidget extends Widget {
         shopInventory.inventoryAmounts = new int[max_items];
         shopInventory.itemOpacity = new int[max_items];
         shopInventory.drawInfinity = true;
+        shopInventory.displayAmount = false;
         shopInventory.width = 9;
         shopInventory.height = 12;
         shopInventory.inventoryMarginX = 18;

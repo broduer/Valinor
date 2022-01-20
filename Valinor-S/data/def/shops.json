@@ -2540,92 +2540,77 @@
     "items": [
       {
         "id": 554,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       //  Fire Rune
       {
         "id": 555,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       // Water Rune
       {
         "id": 556,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       // Air Rune
       {
         "id": 557,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       // Earth Rune
       {
         "id": 558,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       // Mind Rune
       {
         "id": 559,
-        "amount": 5000,
-        "value": 1
+        "amount": 5000
       },
       // Body Rune
       {
         "id": 562,
-        "amount": 250,
-        "value": 1
+        "amount": 250
       },
       // Chaos Rune
       {
         "id": 560,
-        "amount": 250,
-        "value": 1
+        "amount": 250
       },
       // Death Rune
       {
         "id": 561,
-        "amount": 250,
-        "value": 1
+        "amount": 250
       },
       // Nature Rune
       {
         "id": 12734,
-        "amount": 80,
-        "value": 100
+        "amount": 80
       },
       // Fire Rune Pack
       {
         "id": 12730,
-        "amount": 80,
-        "value": 100
+        "amount": 80
       },
       // Water Rune Pack
       {
         "id": 12728,
-        "amount": 80,
-        "value": 100
+        "amount": 80
       },
       // Air Rune Pack
       {
         "id": 12732,
-        "amount": 80,
-        "value": 100
+        "amount": 80
       },
       // Earth Rune Pack
       {
         "id": 12736,
-        "amount": 40,
-        "value": 100
+        "amount": 40
       },
       // Mind Rune Pack
       {
         "id": 12738,
-        "amount": 35,
-        "value": 100
+        "amount": 35
       }
       // Chaos Rune Pack
     ]
