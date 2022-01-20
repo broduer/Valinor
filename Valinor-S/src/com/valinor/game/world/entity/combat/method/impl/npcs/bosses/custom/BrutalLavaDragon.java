@@ -29,7 +29,7 @@ public class BrutalLavaDragon extends CommonCombatMethod {
 
     private boolean headbutt; //prevents headbutt twice in a row
 
-    private void knockback() {
+    private void knockback(Mob mob, Mob target) {
         int vecX = (target.getAbsX() - getClosestX());
         if (vecX != 0)
             vecX /= Math.abs(vecX); // determines X component for knockback
@@ -102,16 +102,10 @@ public class BrutalLavaDragon extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        //10% chance that the wold boss skulls you!
-        if(World.getWorld().rollDie(10,1)) {
-            Skulling.assignSkullState(((Player) target), SkullType.WHITE_SKULL);
-            target.message("The "+mob.getMobName()+" has skulled you, be careful!");
-        }
-
         if (World.getWorld().rollDie(15, 1) && !headbutt && target.tile().isWithinDistance(mob.tile(),3)) {
             mob.forceChat("HEADBUTT");
             mob.animate(HEADBUTT);
-            knockback();
+            knockback(mob, target);
             headbutt = true;
         }
 
