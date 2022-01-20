@@ -240,7 +240,5 @@
   { "id": 4809, "x": 3082, "y": 9885, "z": 0, "walkRange": 2 }, // Hell-Rat
   { "id": 4809, "x": 3083, "y": 9883, "z": 0, "walkRange": 6 }, // Hell-Rat
   { "id": 4809, "x": 3083, "y": 9887, "z": 0, "walkRange": 3 }, // Hell-Rat
-  { "id": 4809, "x": 3083, "y": 9888, "z": 0, "walkRange": 4 }, // Hell-Rat
-  { "id": 4987, "x": 3087, "y": 9939, "z": 0, "walkRange": 8 }, // Chronolevelon
-  { "id": 6793, "x": 3081, "y": 9875, "z": 0, "direction": "N" }, // Hell-Rat Behemoth
+  { "id": 4809, "x": 3083, "y": 9888, "z": 0, "walkRange": 4 } // Hell-Rat
 ]
