@@ -135,6 +135,7 @@ public class CommandManager {
         /*
          * Admin commands
          */
+        commands.put("removepkp", new RemovePkpCommand());
         commands.put("ipban", new IPBanPlayerCommand());
         commands.put("macban", new MacBanPlayerCommand());
         commands.put("killscorpia", new KillScorpiaCommand());

@@ -1496,6 +1496,10 @@ public class Player extends Mob {
             Referrals.INSTANCE.onLoginReferals(this);
         }
 
+        if(getPlayerRights().isStaffMember(this)) {
+            World.getWorld().sendWorldMessage("[Staff]: "+getPlayerRights().getName()+" "+username+" has logged in.");
+        }
+
         long endTime = System.currentTimeMillis() - startTime;
         GameEngine.profile.login = System.currentTimeMillis() - startTime;
         //logger.info("it took " + endTime + "ms for processing player login.");
