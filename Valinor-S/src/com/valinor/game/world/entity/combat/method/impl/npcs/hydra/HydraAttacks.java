@@ -250,7 +250,11 @@ public enum HydraAttacks {
         public void executeAttack(AlchemicalHydra hydra, Mob target) {
             var poolAmount = Utils.randomFloat() < 0.6 ? 1 : Utils.random(4, 5);
             var pools = getPoolTiles(hydra.baseLocation, target.tile(), poolAmount);
-            hydra.animate(8234);
+
+            if (hydra.id() == HydraPhase.GREEN.phaseSwitchID)
+                hydra.animate(8234);
+            else
+                hydra.animate(8255);
 
             for (Tile pool : pools) {
                 fireProjectileToLocation(hydra, pool, 1644, 50, 90, 0, 5, 55, 0);
