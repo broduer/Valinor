@@ -112,6 +112,20 @@ public class Woodcutting extends Interaction {
         return (int) (Math.min(0.95, points / denom) * 100);
     }
 
+    public static int getEntLog(Player player) {
+        if (player.skills().level(Skills.WOODCUTTING) >= 75 && World.getWorld().rollDie(10, 4)) {
+            return 1514;
+        } else if (player.skills().level(Skills.WOODCUTTING) > 60 && World.getWorld().rollDie(10, 5)) { // NOT a typo, 61 gives you yews.
+            return 1516;
+        } else if (player.skills().level(Skills.WOODCUTTING) >= 40 && World.getWorld().rollDie(10, 4)) {
+            return 1518;
+        } else if (World.getWorld().rollDie(10, 5)) {
+            return 1520;
+        }
+
+        return 1522; // Oak
+    }
+
     private static int nestChance(Player player) {
         int chance = 200;
         if (player.getMemberRights().isZenyteMemberOrGreater(player)) {

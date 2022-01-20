@@ -2802,7 +2802,7 @@
       "death": 7146
     },
     "scripts": {
-      //"droptable": "droptables.Ent"
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.Ent"
     }
   },
   {
