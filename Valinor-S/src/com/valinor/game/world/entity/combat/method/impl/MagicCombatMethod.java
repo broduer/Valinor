@@ -49,13 +49,6 @@ public class MagicCombatMethod extends CommonCombatMethod {
         if (spell != null) {
             speed = spell.getAttackSpeed(mob);
         }
-
-        if(mob.isPlayer()) {
-            Player player = mob.getAsPlayer();
-            if(player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF)) {
-                speed = -1;
-            }
-        }
         return speed;
     }
 
