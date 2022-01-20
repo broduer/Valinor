@@ -72,14 +72,6 @@ public class InstancedAreaManager {
         if (!found.equals(area)) {
             return false;
         }
-
-        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(found.area))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
-        }
-
         active.remove(z);
         return true;
     }

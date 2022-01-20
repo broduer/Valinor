@@ -7,6 +7,8 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.NpcIdentifiers;
@@ -75,5 +77,12 @@ public class ZulrahInstance {
             World.getWorld().unregisterNpc(npc);
         }
         npcList.clear();
+
+        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+            if (!gi.getTile().inArea(ZULRAH_AREA))
+                continue;
+
+            GroundItemHandler.sendRemoveGroundItem(gi);
+        }
     }
 }

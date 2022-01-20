@@ -8,6 +8,8 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
@@ -28,12 +30,14 @@ public class KrakenInstance {
     public KrakenInstance() {
     }
 
+    private static final Area KRAKEN_AREA = new Area(2269, 10023, 2302, 10046);
+
     /**
      * Begin the kraken instance
      * @param player
      */
     public void enterKrakenInstance(Player player) {
-        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, new Area(2269, 10023, 2302, 10046));
+        instance = InstancedAreaManager.getSingleton().createInstancedArea(player, KRAKEN_AREA);
         if (player != null && instance != null) {
             npcList.clear();
             player.teleport(new Tile(2280, 10022, instance.getzLevel()));
@@ -53,6 +57,13 @@ public class KrakenInstance {
                     }
                     npcList.clear();
                     player.putAttrib(AttributeKey.TENTACLES_DISTURBED, 0);
+
+                    for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+                        if (!gi.getTile().inArea(KRAKEN_AREA))
+                            continue;
+
+                        GroundItemHandler.sendRemoveGroundItem(gi);
+                    }
                 }
             });
         }

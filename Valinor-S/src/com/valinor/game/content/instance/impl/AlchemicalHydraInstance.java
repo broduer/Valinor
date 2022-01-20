@@ -8,6 +8,8 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
@@ -72,6 +74,13 @@ public class AlchemicalHydraInstance {
             World.getWorld().unregisterNpc(npc);
         }
         npcList.clear();
+
+        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+            if (!gi.getTile().inArea(ALCHEMICAL_HYDRA_AREA))
+                continue;
+
+            GroundItemHandler.sendRemoveGroundItem(gi);
+        }
     }
 
     public void death(Player killer) {

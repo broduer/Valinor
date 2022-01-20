@@ -5,6 +5,8 @@ import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
@@ -231,6 +233,13 @@ public class SkotizoInstance {
         altarMap.clear();
 
         player.getPacketSender().sendChangeSprite(29232, (byte) 0).sendChangeSprite(29233, (byte) 0).sendChangeSprite(29234, (byte) 0).sendChangeSprite(29235, (byte) 0);
+
+        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+            if (!gi.getTile().inArea(SKOTIZO_AREA))
+                continue;
+
+            GroundItemHandler.sendRemoveGroundItem(gi);
+        }
     }
 
 }

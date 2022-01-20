@@ -6,6 +6,8 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.ground.GroundItem;
+import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 
@@ -72,5 +74,12 @@ public class BryophytaInstance {
             World.getWorld().unregisterNpc(npc);
         }
         npcList.clear();
+
+        for (GroundItem gi : GroundItemHandler.getGroundItems()) {
+            if (!gi.getTile().inArea(BRYOPHYTA_AREA))
+                continue;
+
+            GroundItemHandler.sendRemoveGroundItem(gi);
+        }
     }
 }
