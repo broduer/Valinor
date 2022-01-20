@@ -399,7 +399,7 @@ public class Combat {
         }
     }
 
-    static final List<Integer> gmauls = new ArrayList<>(List.of(ItemIdentifiers.GRANITE_MAUL, CustomItemIdentifiers.GRANITE_MAUL_24944, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225, CustomItemIdentifiers.GRANITE_MAUL_24944));
+    public static final List<Integer> gmauls = new ArrayList<>(List.of(ItemIdentifiers.GRANITE_MAUL, CustomItemIdentifiers.GRANITE_MAUL_24944, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225, CustomItemIdentifiers.GRANITE_MAUL_24944));
 
     private boolean specialGraniteMaul() {
         var graniteMaulSpecials = mob.<Integer>getAttribOr(AttributeKey.GRANITE_MAUL_SPECIALS, 0);

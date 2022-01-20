@@ -2,9 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob;
 
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.task.Task;
-import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
@@ -18,7 +16,6 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
-import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
@@ -204,10 +201,13 @@ public class VerzikVitur extends CommonCombatMethod {
     }
 
     @Override
-    public boolean customOnDeath(Mob mob) {
-        List<Mob> targets = getPossibleTargets(mob);
-        target = Utils.randomElement(targets);
-        return transform(mob, ((Player) target));
+    public boolean customOnDeath(Hit hit) {
+        if(hit.getTarget().isNpc()) {
+            List<Mob> targets = getPossibleTargets(hit.getTarget());
+            Mob target = Utils.randomElement(targets);
+            return transform(hit.getTarget(), ((Player) target));
+        }
+        return true;
     }
 
     private boolean transform(Mob mob, Player player) {

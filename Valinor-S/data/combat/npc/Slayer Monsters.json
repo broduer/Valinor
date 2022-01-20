@@ -404,6 +404,9 @@
       "attack": 1567,
       "death": 1568,
       "block": 1565
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Rockslug"
     }
   },
   {
@@ -3546,6 +3549,9 @@
       "attack": 1519,
       "block": 1517,
       "death": 1518
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Gargoyle"
     }
   },
   {

@@ -514,16 +514,16 @@ public class NexCombat extends CommonCombatMethod {
     }
 
     @Override
-    public boolean customOnDeath(Mob mob) {
-        if (mob.isNpc()) {
-            Npc npc = mob.getAsNpc();
+    public boolean customOnDeath(Hit hit) {
+        if (hit.getTarget().isNpc()) {
+            Npc npc = hit.getTarget().getAsNpc();
             npc.clearAttrib(AttributeKey.TURMOIL_ACTIVE);
             npc.transmog(NEX_11282);
             final NpcCombatInfo combatInfo = npc.combatInfo();
             npc.animate(combatInfo.animations.death);
             Chain.bound(null).runFn(combatInfo.deathlen, () -> {
                 npc.graphic(2013);
-                ArrayList<Mob> possibleTargets = getPossibleTargets(mob);
+                ArrayList<Mob> possibleTargets = getPossibleTargets(npc);
                 if (possibleTargets != null) {
                     for (Mob t : possibleTargets) {
                         if (t == null || t.dead() || !t.isRegistered() || !t.tile().isWithinDistance(npc.tile(), 10))

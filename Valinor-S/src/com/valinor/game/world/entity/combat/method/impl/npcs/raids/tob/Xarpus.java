@@ -9,6 +9,7 @@ import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 
@@ -117,7 +118,7 @@ public class Xarpus extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath(Npc npc) {
+    public void onDeath(Player player, Npc npc) {
         npc.transmog(XARPUS_8341);
     }
 

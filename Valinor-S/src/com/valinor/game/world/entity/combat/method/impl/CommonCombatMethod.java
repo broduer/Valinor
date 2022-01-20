@@ -136,7 +136,14 @@ public abstract class CommonCombatMethod implements CombatMethod {
     /**
      * npc only
      */
-    public void onDeath(Npc npc) {
+    public void onDeath(Player killer, Npc npc) {
+
+    }
+
+    /**
+     * npc only
+     */
+    public void deathRespawn(Npc npc) {
 
     }
 

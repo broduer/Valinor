@@ -1,6 +1,7 @@
 package com.valinor.game.content.areas.burthope.warriors_guild;
 
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.content.items.skillcape.CapeOfCompletion;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -78,8 +79,8 @@ public class WarriorDoubleDoor extends Interaction {
                 player.getMovementQueue().walkTo(obj.tile().transform(0, 0, 0));
             }
 
-            //Does our player have enough tokens or are they wearing the attack cape? //TODO cape
-            if (/*(*/!player.inventory().contains(new Item(WARRIOR_GUILD_TOKEN, 100)) /*&& !CapeOfCompletion.ATTACK.operating(player))*/ && player.tile().x == 2846) {
+            //Does our player have enough tokens or are they wearing the attack cape?
+            if ((!player.inventory().contains(new Item(WARRIOR_GUILD_TOKEN, 100)) && !CapeOfCompletion.ATTACK.operating(player)) && player.tile().x == 2846) {
                 player.unlock();
                 player.getDialogueManager().start(new Dialogue() {
                     @Override

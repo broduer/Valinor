@@ -28,7 +28,6 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Wyrm;
-import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Gargoyle;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Nechryael;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.nechryarch.NechryarchDeathSpawn;
@@ -673,7 +672,7 @@ public class NpcDeath {
                     if (npc.getCombatMethod() instanceof CommonCombatMethod) {
                         CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
                         commonCombatMethod.set(npc, killer);
-                        commonCombatMethod.onDeath(npc);
+                        commonCombatMethod.onDeath(killer, npc);
                     }
 
                     //Rock crabs
@@ -791,10 +790,6 @@ public class NpcDeath {
                     NechryarchDeathSpawn.death(npc); //Do death spawn death
                 }
 
-                if (npc.id() == NECHRYAEL || npc.id() == NECHRYAEL_11 || npc.id() == GREATER_NECHRYAEL) {
-                    new Nechryael().onDeath(npc);
-                }
-
                 Zulrah.death(killer, npc);
 
                 if (npc.id() == CORPOREAL_BEAST) { // Corp beast
@@ -858,7 +853,6 @@ public class NpcDeath {
     }
 
     public static void respawn(Npc npc) {
-
         if (npc.id() == KrakenBoss.KRAKEN_NPCID) {
             npc.transmog(KrakenBoss.KRAKEN_WHIRLPOOL);
             // Transmog kraken info after the drop table is done otherwise it'll look for the wrong table
@@ -878,7 +872,7 @@ public class NpcDeath {
             npc.putAttrib(AttributeKey.VETION_REBORN_ACTIVE, false);
         }
 
-        if (npc.hidden()) { // not respawned yet. we do this check incase it was force-respawned by .. group spawning (gwd)
+        if (npc.hidden()) { // not respawned yet. we do this check in case it was force-respawned by .. group spawning (gwd)
             deathReset(npc);
             npc.hidden(false);
             if (npc.combatInfo() != null) {
@@ -897,6 +891,11 @@ public class NpcDeath {
 
             if (npc instanceof Wyrm) {
                 npc.transmog(Wyrm.IDLE);
+            }
+
+            if (npc.getCombatMethod() instanceof CommonCombatMethod) {
+                CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
+                commonCombatMethod.deathRespawn(npc);
             }
         }
     }

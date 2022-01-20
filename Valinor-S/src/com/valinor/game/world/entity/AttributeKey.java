@@ -5,6 +5,9 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    // Last time we boosted our prayer
+    PRAYERCAPE_BOOST,
+
     TURMOIL_ACTIVE,
 
     MAXHIT_OVERRIDE,

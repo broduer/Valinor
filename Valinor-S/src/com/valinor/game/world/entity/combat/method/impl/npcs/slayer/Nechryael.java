@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.NpcDeath;
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.region.Region;
 import com.valinor.game.world.region.RegionManager;
@@ -37,7 +38,8 @@ public class Nechryael extends CommonCombatMethod {
         basicAttack(mob, target);
     }
 
-    public void onDeath(Mob mob) {
+    @Override
+    public void onDeath(Player player, Npc npc) {
         List<Npc> minions = mob.getAttribOr(AttributeKey.MINION_LIST, new ArrayList<Npc>());
         for (Npc deathSpawn : minions) {
             if (!deathSpawn.hidden()) {

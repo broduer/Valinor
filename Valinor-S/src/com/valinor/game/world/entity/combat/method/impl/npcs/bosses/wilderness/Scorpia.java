@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
@@ -81,7 +82,7 @@ public class Scorpia extends CommonCombatMethod {
     }
 
     @Override
-    public void onDeath(Npc npc) {
+    public void onDeath(Player player, Npc npc) {
         spawnedGuardians = false;
         for (Npc guardian : guardians) {
             if (guardian != null && !guardian.dead())

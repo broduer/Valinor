@@ -83,6 +83,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.LORD_VOLDEMORT;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.GARGOYLE;
 
 /**
  * Acts as a utility class for combat.
@@ -1330,22 +1331,6 @@ public class CombatFactory {
                     }
                 }
 
-                // Gargs
-                if (npc.hp() - damage <= 0) {
-                    if (npc.id() == 412) {
-                        damage = npc.hp();
-                        hit.setDamage(npc.hp());
-
-                        boolean isGmaul = Combat.gmauls.stream().anyMatch(granite_maul -> attackerAsPlayer.getEquipment().hasAt(EquipSlot.WEAPON, granite_maul));
-                        if (attackerAsPlayer.inventory().contains(ROCK_HAMMER) || isGmaul) {
-                            Gargoyle.smash(attackerAsPlayer, npc, false);
-                        } else {
-                            attackerAsPlayer.message("Gargoyles can only be killed using a Rockhammer.");
-                            hit.setDamage(npc.hp() == 1 ? 0 : npc.hp() - 1);
-                        }
-                    }
-                }
-
                 // Desert lizards
                 if (npc.hp() - damage <= 0) {
                     if (npc.id() == NpcIdentifiers.DESERT_LIZARD || npc.id() == NpcIdentifiers.DESERT_LIZARD_460 || npc.id() == NpcIdentifiers.DESERT_LIZARD_461) {
@@ -1355,22 +1340,6 @@ public class CombatFactory {
                     }
                 }
 
-                // rockslugs
-                if (npc.hp() - damage <= 0) {
-                    if (npc.id() == NpcIdentifiers.ROCKSLUG || npc.id() == NpcIdentifiers.ROCKSLUG_422) {
-                        damage = npc.hp();
-                        hit.setDamage(npc.hp());
-                        if (attackerAsPlayer.inventory().contains(BAG_OF_SALT, 1) || attackerAsPlayer.getEquipment().contains(BRINE_SABRE)) {
-                            if (!attackerAsPlayer.getEquipment().contains(BRINE_SABRE)) {
-                                attackerAsPlayer.animate(1574);
-                                npc.graphic(327);
-                            }
-                        } else {
-                            attackerAsPlayer.message("Rockslugs can only be killed using a bag of salt.");
-                            hit.setDamage(npc.hp() == 1 ? 0 : npc.hp() - 1);
-                        }
-                    }
-                }
             }
 
             var weapon = attackerAsPlayer.getEquipment().get(EquipSlot.WEAPON);

@@ -699,7 +699,7 @@ public abstract class Mob extends Entity {
         setHitpoints(outcome);
 
         if (isNpc() && hp() <= 0) {
-            if (getAsNpc().getCombatMethod() != null && getAsNpc().getCombatMethod().customOnDeath(this)) {
+            if (getAsNpc().getCombatMethod() != null && getAsNpc().getCombatMethod().customOnDeath(hit)) {
                 return;
             }
         }

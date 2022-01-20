@@ -5,6 +5,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -87,9 +88,10 @@ public class Vetion extends CommonCombatMethod {
         vetion.putAttrib(AttributeKey.MINION_LIST, minions);
     }
 
-    public boolean customOnDeath(Mob mob) {
-        if (mob.isNpc()) {
-            Npc purpleVetion = (Npc) mob;
+    @Override
+    public boolean customOnDeath(Hit hit) {
+        if (hit.getTarget().isNpc()) {
+            Npc purpleVetion = (Npc) hit.getTarget();
             if ((purpleVetion.hp() == 0 || purpleVetion.dead()) && !purpleVetion.<Boolean>getAttribOr(AttributeKey.VETION_REBORN_ACTIVE, false)) {
                 purpleVetion.heal(255); // Heal vetion
                 purpleVetion.transmog(6612); //Transform into orange vetion

@@ -1,10 +1,8 @@
 package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.game.content.items.RottenPotato;
-import com.valinor.game.content.skill.impl.slayer.content.BagOfSalt;
 import com.valinor.game.content.skill.impl.slayer.content.FungicideSpray;
 import com.valinor.game.content.skill.impl.slayer.content.IceCooler;
-import com.valinor.game.content.skill.impl.slayer.content.RockHammer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -69,15 +67,7 @@ public class ItemOnNpcPacketListener implements PacketListener {
                 return;
             }
 
-            if (RockHammer.onItemOnNpc(player, npc)) {
-                return;
-            }
-
             if(IceCooler.onItemOnNpc(player, npc)) {
-                return;
-            }
-
-            if (BagOfSalt.onItemOnNpc(player, npc)) {
                 return;
             }
 
