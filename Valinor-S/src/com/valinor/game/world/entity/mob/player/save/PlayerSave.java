@@ -552,6 +552,7 @@ public class PlayerSave {
                 player.putAttrib(DONATOR_MYSTERY_BOX_LOG_CLAIMED, details.donatorMysteryBoxLogClaimed);
                 player.putAttrib(MYSTERY_TICKET_LOG_CLAIMED, details.mysteryTicketLogClaimed);
                 player.putAttrib(MYSTERY_CHEST_LOG_CLAIMED, details.mysteryChestLogClaimed);
+                player.putAttrib(PETS_MYSTERY_BOX_LOG_CLAIMED, details.petsMysteryLogClaimed);
                 player.putAttrib(SARACHNIS_LOG_CLAIMED, details.sarachnisLogClaimed);
                 player.putAttrib(BRYOPHYTA_LOG_CLAIMED, details.bryophytaLogClaimed);
                 player.putAttrib(SLAYER_LOG_CLAIMED, details.slayerLogClaimed);
@@ -963,6 +964,7 @@ public class PlayerSave {
         private final boolean donatorMysteryBoxLogClaimed;
         private final boolean mysteryTicketLogClaimed;
         private final boolean mysteryChestLogClaimed;
+        private final boolean petsMysteryLogClaimed;
         private final boolean sarachnisLogClaimed;
         private final boolean bryophytaLogClaimed;
         private final boolean revenantsLogClaimed;
@@ -1339,6 +1341,7 @@ public class PlayerSave {
             donatorMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, DONATOR_MYSTERY_BOX_LOG_CLAIMED, false);
             mysteryTicketLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_TICKET_LOG_CLAIMED, false);
             mysteryChestLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_CHEST_LOG_CLAIMED, false);
+            petsMysteryLogClaimed = Player.getAttribBooleanOr(player, PETS_MYSTERY_BOX_LOG_CLAIMED, false);
             sarachnisLogClaimed = Player.getAttribBooleanOr(player, SARACHNIS_LOG_CLAIMED, false);
             bryophytaLogClaimed = Player.getAttribBooleanOr(player, BRYOPHYTA_LOG_CLAIMED, false);
             slayerLogClaimed = Player.getAttribBooleanOr(player, SLAYER_LOG_CLAIMED, false);

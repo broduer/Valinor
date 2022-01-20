@@ -46,7 +46,7 @@ public class CorruptedNechryarch extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 8;
+        return 12;
     }
 
     private void acid_attack(Mob mob) {
@@ -55,7 +55,7 @@ public class CorruptedNechryarch extends CommonCombatMethod {
 
         ArrayList<Player> targets = new ArrayList<>();
         World.getWorld().getPlayers().forEach(p -> {
-            if (p != null && p.tile().inSqRadius(mob.tile(), 8)) {
+            if (p != null && p.tile().inSqRadius(mob.tile(), 12)) {
                 targets.add(p);
             }
         });

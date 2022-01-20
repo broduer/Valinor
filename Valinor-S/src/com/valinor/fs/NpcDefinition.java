@@ -2,14 +2,12 @@ package com.valinor.fs;
 
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.io.RSBuffer;
-import com.valinor.util.CustomNpcIdentifiers;
 import io.netty.buffer.Unpooled;
 import nl.bartpelle.dawnguard.DataStore;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
-import static com.valinor.game.content.raids.chamber_of_secrets.ChamberOfSecrets.*;
 import static com.valinor.util.CustomItemIdentifiers.JAWA_PET;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.ARAGOG;
@@ -358,8 +356,8 @@ public class NpcDefinition implements Definition {
             options = new String[]{"Sign-up", null, "Quick-join", "Quick-spectate", "Daily-pkers", null, null};
         } else if (id == SHURA) {
             name = "Referral Manager";
-        } else if (id == ICELORD_PET) {
-            name = "Icelord";
+        } else if (id == WAMPA_PET) {
+            name = "Wampa";
         } else if (id == NIFFLER_PET) {
             name = "Niffler";
         } else if (id == FAWKES_15981) {

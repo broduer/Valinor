@@ -169,6 +169,7 @@ public class CustomItemIdentifiers {
     public static final int DEMENTOR_PET = 30342;
     public static final int DONATOR_MYSTERY_BOX = 30185;
     public static final int SUPER_MYSTERY_BOX = 31200;
+    public static final int PETS_MYSTERY_BOX = 31201;
     public static final int FOUNDER_IMP = 30016;
     public static final int ICE_IMP = 30017;
     public static final int PET_CORRUPTED_NECHRYARCH = 30018;
@@ -177,7 +178,7 @@ public class CustomItemIdentifiers {
     public static final int BABY_LAVA_DRAGON = 30131;
     public static final int JAWA_PET = 16173;
     public static final int BABY_ARAGOG = 16172;
-    public static final int ICELORD_PET = 16171;
+    public static final int WAMPA_PET = 16171;
     public static final int DHAROK_PET = 16020;
     public static final int TWISTED_SLAYER_HELMET_I_KBD_HEADS = 24445;
     public static final int TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE = 25913;

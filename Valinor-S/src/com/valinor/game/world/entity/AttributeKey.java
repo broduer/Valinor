@@ -37,6 +37,7 @@ public enum AttributeKey {
     DONATOR_MYSTERY_BOXES_OPENED("donator_mystery_boxes_opened", AttribType.INTEGER),
     MYSTERY_TICKETS_OPENED("mystery_tickets_opened", AttribType.INTEGER),
     MYSTERY_CHESTS_OPENED("mystery_chests_opened", AttribType.INTEGER),
+    PETS_MYSTERY_BOXES_OPENED("pets_mystery_boxes_opened", AttribType.INTEGER),
 
     SARACHNIS_RANDOM_MOVE_TILE,
 
@@ -137,6 +138,7 @@ public enum AttributeKey {
     DONATOR_MYSTERY_BOX_LOG_CLAIMED,
     MYSTERY_TICKET_LOG_CLAIMED,
     MYSTERY_CHEST_LOG_CLAIMED,
+    PETS_MYSTERY_BOX_LOG_CLAIMED,
     REVENANTS_LOG_CLAIMED,
     SLAYER_LOG_CLAIMED,
     LARRANS_KEY_LOG_CLAIMED,

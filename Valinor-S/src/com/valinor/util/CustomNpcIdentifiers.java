@@ -58,7 +58,7 @@ public class CustomNpcIdentifiers {
     public static final int BABY_LAVA_DRAGON = 15017;
     public static final int JAWA_PET = 15213;
     public static final int BABY_ARAGOG = 15214;
-    public static final int ICELORD_PET = 15220;
+    public static final int WAMPA_PET = 15220;
     public static final int NIFFLER_PET = 6651;
     public static final int FAWKES = 14927;
     public static final int BABY_SQUIRT = 15225;

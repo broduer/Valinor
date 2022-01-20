@@ -25,7 +25,7 @@ public enum Cart {
     ZRIAWK(CustomItemIdentifiers.ZRIAWK,2000),
     FAWKES(CustomItemIdentifiers.FAWKES,1500),
     BARRELCHEST_PET(CustomItemIdentifiers.BARRELCHEST_PET,350),
-    ICELORD(CustomItemIdentifiers.ICELORD_PET,1000),
+    ICELORD(CustomItemIdentifiers.WAMPA_PET,1000),
     NIFFLER(CustomItemIdentifiers.NIFFLER,750),
     BABY_ARAGOG(CustomItemIdentifiers.BABY_ARAGOG,1250),
     FOUNDER_IMP(CustomItemIdentifiers.FOUNDER_IMP,850),

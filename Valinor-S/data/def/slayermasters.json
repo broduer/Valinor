@@ -1076,13 +1076,6 @@
         "max": 170,
         "creatureUid": 51
       },
-      //Shadow warriors
-      {
-        "weighing": 8,
-        "min": 110,
-        "max": 170,
-        "creatureUid": 32
-      },
       //Skeletal Wyverns
       {
         "weighing": 8,

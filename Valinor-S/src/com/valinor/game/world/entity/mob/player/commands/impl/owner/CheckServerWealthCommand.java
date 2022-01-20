@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.SaveWealthInfo;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
 import com.valinor.game.world.items.Item;
+import com.valinor.util.CustomNpcIdentifiers;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +27,6 @@ import java.util.stream.Stream;
 
 import static com.valinor.game.world.entity.AttributeKey.MAC_ADDRESS;
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.CustomNpcIdentifiers.ICELORD_PET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -431,7 +431,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == NIFFLER) {
                                         storage.sumNifflerPet.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == ICELORD_PET) {
+                                    if(item.getId() == CustomNpcIdentifiers.WAMPA_PET) {
                                         storage.sumIcelordPet.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == BABY_ARAGOG) {

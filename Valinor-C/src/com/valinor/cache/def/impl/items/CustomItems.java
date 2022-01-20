@@ -1373,7 +1373,7 @@ public class CustomItems {
             def.zoom2d = 480;
         }
 
-        if (id == 30185 || id == 30186 || id == 30187 || id == 30188 || id == 30200 || id == 31200) {
+        if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case DONATOR_MYSTERY_BOX:
@@ -1387,6 +1387,14 @@ public class CustomItems {
                 case SUPER_MYSTERY_BOX:
                     def.name = "<col=65280>Super mystery box";
                     def.inventoryModel = 55615;
+                    def.animateInventory = true;
+                    def.recolorFrom = new int[]{2999, 22410};
+                    def.recolorTo = new int[]{524, 13};
+                    break;
+
+                case PETS_MYSTERY_BOX:
+                    def.name = "<col=65280>Pets mystery box";
+                    def.inventoryModel = 55616;
                     def.animateInventory = true;
                     def.recolorFrom = new int[]{2999, 22410};
                     def.recolorTo = new int[]{524, 13};

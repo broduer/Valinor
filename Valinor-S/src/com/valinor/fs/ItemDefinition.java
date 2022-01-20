@@ -10,7 +10,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -554,6 +553,10 @@ public class ItemDefinition implements Definition {
             name = "Super Mystery Box";
             stackable = false;
             grandexchange = true;
+        } else if (id == PETS_MYSTERY_BOX) {
+            name = "Super Mystery Box";
+            stackable = false;
+            grandexchange = true;
         } else if (id == ZOMBIES_CHAMPION_PET) {
             name = "Zombies champion pet";
             grandexchange = true;
@@ -800,8 +803,8 @@ public class ItemDefinition implements Definition {
             grandexchange = true;
             ioptions = new String[]{null, null, null, null, "Drop"};
             stackable = false;
-        } else if (id == ICELORD_PET) {
-            name = "Icelord pet";
+        } else if (id == WAMPA_PET) {
+            name = "Wampa pet";
             grandexchange = true;
             ioptions = new String[]{null, null, null, null, "Drop"};
             stackable = false;
