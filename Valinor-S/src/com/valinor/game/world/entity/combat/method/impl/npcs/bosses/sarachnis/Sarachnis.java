@@ -38,11 +38,6 @@ public class Sarachnis extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        if (!target.tile().inArea(SARACHNIS_AREA)) {
-            mob.getCombat().reset();
-            return;
-        }
-
         if (attacks == 4) {
             move(mob);
         } else if (withinDistance(1)) {
@@ -131,11 +126,11 @@ public class Sarachnis extends CommonCombatMethod {
     }
 
     public void handleAfterHit(Hit hit) {
-        if (hit.getAttacker() == null) {
-            return;
+        if(hit.getAttacker().isNpc()) {
+            Npc npc = hit.getAttacker().getAsNpc();
+            if (hit.getDamage() > 0)
+                npc.heal(10);
         }
-        if (hit.getDamage() > 0)
-            hit.getAttacker().heal(10);
     }
 
     public void spawnFirstMinions(Mob mob, Mob target) {

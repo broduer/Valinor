@@ -3158,7 +3158,7 @@
   {
     // Cave Kraken LOL who makes this up it must be savoins S-S-S_SAVOINSSSSSS DUDUDUDUDUDUDUD
     "ids": [
-      493
+      492, 493
     ],
     "maxhit": 13,
     "slayerxp": 125,
@@ -3247,7 +3247,7 @@
   {
     // Kraken boss
     "ids": [
-      494
+      493, 494
     ],
     "maxhit": 28,
     "attackspeed": 4,
