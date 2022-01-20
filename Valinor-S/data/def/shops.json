@@ -3899,7 +3899,7 @@
     "shopId": 43,
     "name": "<col=FFFE00>$</col> <col=FF0000>Donator Tickets Shop</col> <col=FFFE00>$</col>",
     "currency": "DONATOR_TICKETS",
-    "noiron": true,
+    "noiron": false,
     "restock": true,
     "sellType": "NONE",
     "scroll": 300,
