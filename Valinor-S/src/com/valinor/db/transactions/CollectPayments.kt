@@ -4,11 +4,15 @@ import com.valinor.GameServer
 import com.valinor.db.makeQuery
 import com.valinor.db.onDatabase
 import com.valinor.db.query
+import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.dialogue.DialogueManager
 import com.valinor.game.world.entity.dialogue.Expression
 import com.valinor.game.world.entity.mob.player.Player
 import com.valinor.game.world.items.Item
 import com.valinor.util.Color
+import com.valinor.util.CustomItemIdentifiers.*
+import com.valinor.util.ItemIdentifiers.SCYTHE_OF_VITUR
+import com.valinor.util.ItemIdentifiers.TWISTED_BOW
 import com.valinor.util.NpcIdentifiers.WISE_OLD_MAN
 import com.valinor.util.Utils
 import java.time.LocalDateTime
@@ -79,6 +83,30 @@ object CollectPayments {
                             execute()
                         }
                     }.onDatabase(GameServer.getDatabaseService()) {
+                        var paymentAmount = 0.0
+                        when (row.itemId) {
+                            SCYTHE_OF_VITUR -> {
+                                paymentAmount = 150.0
+                            }
+                            TWISTED_BOW -> {
+                                paymentAmount = 150.0
+                            }
+                            DONATOR_MYSTERY_BOX -> {
+                                paymentAmount = 6.0
+                            }
+                            SUPER_MYSTERY_BOX -> {
+                                paymentAmount = 15.0
+                            }
+                            PETS_MYSTERY_BOX -> {
+                                paymentAmount = 40.0
+                            }
+                        }
+                        val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0) + paymentAmount
+                        putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
+
+                        //Check if we can update the rank
+                        memberRights.update(this, false)
+
                         //Buy two get one free promo
                         if (GameServer.properties().buyTwoGetOneFree) {
                             // Award a 'buy-two-get-one free' special if acceptable.
