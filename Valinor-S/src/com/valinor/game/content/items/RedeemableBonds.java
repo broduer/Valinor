@@ -112,7 +112,7 @@ public class RedeemableBonds extends Interaction {
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
         switch (item.getId()) {
-            case FIVE_DOLLAR_BOND, TEN_DOLLAR_BOND, TWENTY_DOLLAR_BOND, FORTY_DOLLAR_BOND, FIFTY_DOLLAR_BOND, ONE_HUNDRED_DOLLAR_BOND -> {
+            case FIVE_DOLLAR_BOND, TEN_DOLLAR_BOND, TWENTY_DOLLAR_BOND, THIRTY_DOLLAR_BOND, FORTY_DOLLAR_BOND, FIFTY_DOLLAR_BOND, SEVENTY_FIVE_DOLLAR_BOND, ONE_HUNDRED_DOLLAR_BOND -> {
                 open(player, item.getId(),false);
                 return true;
             }
@@ -123,7 +123,7 @@ public class RedeemableBonds extends Interaction {
     @Override
     public boolean handleItemOnPlayer(Player player, Item item, Player other) {
         switch (item.getId()) {
-            case FIVE_DOLLAR_BOND, TEN_DOLLAR_BOND, TWENTY_DOLLAR_BOND, FORTY_DOLLAR_BOND, FIFTY_DOLLAR_BOND, ONE_HUNDRED_DOLLAR_BOND -> {
+            case FIVE_DOLLAR_BOND, TEN_DOLLAR_BOND, TWENTY_DOLLAR_BOND, THIRTY_DOLLAR_BOND, FORTY_DOLLAR_BOND, FIFTY_DOLLAR_BOND, SEVENTY_FIVE_DOLLAR_BOND, ONE_HUNDRED_DOLLAR_BOND -> {
                 if (other.getInterfaceManager().getMain() != -1) {
                     player.message("That player is busy.");
                     return true;
