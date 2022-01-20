@@ -12225,6 +12225,7 @@ public class ItemIdentifiers
     public static final int GOLD_SINK = 26269;
     public static final int ANCIENT_HILT = 26370;
     public static final int NIHIL_HORN = 26372;
+    public static final int ZARYTE_CROSSBOW = 26374;
     public static final int TORVA_FULL_HELM = 26382;
     public static final int TORVA_PLATEBODY = 26384;
     public static final int TORVA_PLATELEGS = 26386;
