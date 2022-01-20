@@ -17,6 +17,7 @@ import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
+import static com.valinor.util.NpcIdentifiers.MAZCHNA;
 import static com.valinor.util.NpcIdentifiers.NIEVE;
 
 /**
@@ -90,8 +91,9 @@ public class Nieve extends Interaction {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.NPC_STATEMENT, NIEVE, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", "" + num + " "
-                    + Slayer.taskName(task.uid) + ".");
+                String n = Slayer.taskName(task.uid);
+                String taskName = n == null ? "NULL" : n;
+                send(DialogueType.NPC_STATEMENT, NIEVE, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", ""+num+" "+taskName+".");
                 setPhase(0);
             }
 

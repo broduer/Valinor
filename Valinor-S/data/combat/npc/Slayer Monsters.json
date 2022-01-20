@@ -491,6 +491,9 @@
       "attack": 1546,
       "death": 1548,
       "block": 1547
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Basilisk"
     }
   },
   {

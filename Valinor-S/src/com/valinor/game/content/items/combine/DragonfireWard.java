@@ -13,14 +13,14 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
- * @Since December 26, 2021
+ * @Since January 20, 2022
  */
-public class DraconicVisage extends Interaction {
+public class DragonfireWard extends Interaction {
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
         if (object.definition().name.equalsIgnoreCase("anvil")) {
-            if (item.getId() == DRACONIC_VISAGE) {
+            if (item.getId() == SKELETAL_VISAGE) {
                 player.faceObj(object);
                 if (player.skills().xpLevel(Skills.SMITHING) < 90) {
                     player.message("You don't have the skills required to make this you need 90 Smithing.");
@@ -32,23 +32,23 @@ public class DraconicVisage extends Interaction {
                     return true;
                 }
 
-                if (!player.inventory().containsAll(ANTIDRAGON_SHIELD, DRACONIC_VISAGE)) {
+                if (!player.inventory().containsAll(ANTIDRAGON_SHIELD, SKELETAL_VISAGE)) {
                     player.message("You do not have the right materials to make this shield.");
                     return true;
                 }
 
                 player.animate(898);
-                Chain.bound(player).name("DraconicVisageAnvilTask").runFn(6, () -> player.animate(898)).then(6, () -> {
-                    if (player.inventory().containsAll(ANTIDRAGON_SHIELD, DRACONIC_VISAGE)) {
-                        player.inventory().remove(new Item(DRACONIC_VISAGE), true);
+                Chain.bound(player).name("SkeletalVisageAnvilTask").runFn(6, () -> player.animate(898)).then(6, () -> {
+                    if (player.inventory().containsAll(ANTIDRAGON_SHIELD, SKELETAL_VISAGE)) {
+                        player.inventory().remove(new Item(SKELETAL_VISAGE), true);
                         player.inventory().remove(new Item(ANTIDRAGON_SHIELD), true);
-                        player.inventory().add(new Item(DRAGONFIRE_SHIELD), true);
+                        player.inventory().add(new Item(DRAGONFIRE_WARD), true);
                         player.skills().addXp(Skills.SMITHING,2000);
                     }
                     player.getDialogueManager().start(new Dialogue() {
                         @Override
                         protected void start(Object... parameters) {
-                            send(DialogueType.ITEM_STATEMENT, new Item(DRAGONFIRE_SHIELD), "", "You successfully combine the Draconic visage with the shield.");
+                            send(DialogueType.ITEM_STATEMENT, new Item(DRAGONFIRE_WARD), "", "You successfully combine the skeletal visage with the shield.");
                             setPhase(0);
                         }
 

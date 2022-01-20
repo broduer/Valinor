@@ -7,6 +7,7 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.util.ItemIdentifiers;
 
 import static com.valinor.util.ItemIdentifiers.MIRROR_SHIELD;
 
@@ -25,7 +26,7 @@ public class BasiliskKnight extends CommonCombatMethod {
         } else {
             magicAttack(mob, target);
         }
-        if (target.isPlayer() && !target.getAsPlayer().getEquipment().contains(MIRROR_SHIELD)) {
+        if (target.isPlayer() && !target.getAsPlayer().getEquipment().containsAny(ItemIdentifiers.MIRROR_SHIELD, ItemIdentifiers.VS_SHIELD_24266)) {
             for (int skill : DRAIN) {
                 target.getAsPlayer().skills().alterSkill(skill, -4);
             }

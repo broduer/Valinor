@@ -51,6 +51,11 @@ public class WildernessArea extends Controller {
     public static int wildernessLevel(Tile tile) {
         int z = (tile.y > 6400) ? tile.y - 6400 : tile.y;
 
+        CustomWildernessRegions customWildernessRegions = CustomWildernessRegions.byRegion(tile.region());
+        if(customWildernessRegions != null && customWildernessRegions.region == tile.region()) {
+            return customWildernessRegions.level;
+        }
+
         if (!(tile.x > 2941 && tile.x < 3392 && tile.y > 3524 && tile.y < 3968) && !inUndergroundWilderness(tile))
             return 0;
 

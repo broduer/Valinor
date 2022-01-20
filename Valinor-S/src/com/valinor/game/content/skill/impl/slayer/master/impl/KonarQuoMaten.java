@@ -18,6 +18,7 @@ import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
 import static com.valinor.util.NpcIdentifiers.KONAR_QUO_MATEN;
+import static com.valinor.util.NpcIdentifiers.MAZCHNA;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -91,8 +92,9 @@ public class KonarQuoMaten extends Interaction {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                send(DialogueType.NPC_STATEMENT, KONAR_QUO_MATEN, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", "" + num + " " + Slayer.taskName(task.uid) + ".");
-                setPhase(0);
+                String n = Slayer.taskName(task.uid);
+                String taskName = n == null ? "NULL" : n;
+                send(DialogueType.NPC_STATEMENT, KONAR_QUO_MATEN, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", ""+num+" "+taskName+".");setPhase(0);
             }
 
             @Override

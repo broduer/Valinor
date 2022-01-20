@@ -1,12 +1,8 @@
 package com.valinor.game.content.areas.wilderness;
 
-import com.valinor.game.content.teleport.TeleportType;
-import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.TickAndStop;
-import com.valinor.game.world.entity.dialogue.Dialogue;
-import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -33,69 +29,11 @@ public class RevenantsCave extends Interaction {
             switch (obj.getId()) {
                 case CAVERN_31555 -> {
                     player.faceObj(obj);
-                    player.getDialogueManager().start(new Dialogue() {
-                        @Override
-                        protected void start(Object... parameters) {
-                            send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Enter normal cave", "Enter donator cave");
-                            setPhase(0);
-                        }
-
-                        @Override
-                        protected void select(int option) {
-                            if(isPhase(0)) {
-                                if(option == 1) {
-                                    stop();
-                                    player.animate(2796);
-                                    Chain.bound(null).runFn(2, () -> {
-                                        player.animate(-1);
-                                        player.teleport(3196, 10056);
-                                        player.message("You enter the cave.");
-                                    });
-                                }
-                                if(option == 2) {
-                                    Tile tile = new Tile(2335, 9795);
-
-                                    if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
-                                        return;
-                                    }
-
-                                    player.getDialogueManager().start(new Dialogue() {
-                                        @Override
-                                        protected void start(Object... parameters) {
-                                            send(DialogueType.STATEMENT, "This teleport will send you to a dangerous area.", "Do you wish to continue?");
-                                            setPhase(1);
-                                        }
-
-                                        @Override
-                                        protected void next() {
-                                            if (isPhase(1)) {
-                                                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
-                                                setPhase(2);
-                                            }
-                                        }
-
-                                        @Override
-                                        protected void select(int option) {
-                                            if (option == 1) {
-                                                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                                                    stop();
-                                                    return;
-                                                }
-
-                                                Chain.bound(null).runFn(1, () -> {
-                                                    player.animate(2796);
-                                                }).then(2, () -> {
-                                                    player.animate(-1);
-                                                    player.teleport(2335, 9795);
-                                                    player.message("You enter the cave.");
-                                                });
-                                            }
-                                            stop();
-                                        }
-                                    });
-                                }
-                            }
-                        }
+                    player.animate(2796);
+                    Chain.bound(null).runFn(2, () -> {
+                        player.animate(-1);
+                        player.teleport(3196, 10056);
+                        player.message("You enter the cave.");
                     });
                     return true;
                 }
@@ -124,70 +62,12 @@ public class RevenantsCave extends Interaction {
                     return true;
                 }
                 case CAVERN_31556 -> {
-                    player.getDialogueManager().start(new Dialogue() {
-                        @Override
-                        protected void start(Object... parameters) {
-                            send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Enter normal cave", "Enter donator cave");
-                            setPhase(0);
-                        }
-
-                        @Override
-                        protected void select(int option) {
-                            if(isPhase(0)) {
-                                stop();
-                                if(option == 1) {
-                                    Chain.bound(null).runFn(1, () -> {
-                                        player.animate(2796);
-                                    }).then(2, () -> {
-                                        player.animate(-1);
-                                        player.teleport(3241, 10234);
-                                        player.message("You enter the cave.");
-                                    });
-                                }
-                                if(option == 2) {
-                                    Tile tile = new Tile(2335, 9795);
-
-                                    if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
-                                        return;
-                                    }
-
-                                    player.getDialogueManager().start(new Dialogue() {
-                                        @Override
-                                        protected void start(Object... parameters) {
-                                            send(DialogueType.STATEMENT, "This teleport will send you to a dangerous area.", "Do you wish to continue?");
-                                            setPhase(1);
-                                        }
-
-                                        @Override
-                                        protected void next() {
-                                            if (isPhase(1)) {
-                                                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
-                                                setPhase(2);
-                                            }
-                                        }
-
-                                        @Override
-                                        protected void select(int option) {
-                                            if (option == 1) {
-                                                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                                                    stop();
-                                                    return;
-                                                }
-
-                                                Chain.bound(null).runFn(1, () -> {
-                                                    player.animate(2796);
-                                                }).then(2, () -> {
-                                                    player.animate(-1);
-                                                    player.teleport(2335, 9795);
-                                                    player.message("You enter the cave.");
-                                                });
-                                            }
-                                            stop();
-                                        }
-                                    });
-                                }
-                            }
-                        }
+                    Chain.bound(null).runFn(1, () -> {
+                        player.animate(2796);
+                    }).then(2, () -> {
+                        player.animate(-1);
+                        player.teleport(3241, 10234);
+                        player.message("You enter the cave.");
                     });
                     return true;
                 }

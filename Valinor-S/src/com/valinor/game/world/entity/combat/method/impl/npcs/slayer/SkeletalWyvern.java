@@ -73,7 +73,7 @@ public class SkeletalWyvern extends CommonCombatMethod {
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target) && Utils.rollDie(3, 2)) {
             attackStyle = AttackStyle.MELEE;
             basicAttack(mob, target);
-        } else if (Utils.rollDie(5, 1)) {
+        } else if (Utils.rollDie(3, 1)) {
             attackStyle = AttackStyle.ICE_BREATH;
             iceBreath(mob, target);
         } else if (Utils.rollDie(2, 1)) {

@@ -27,7 +27,7 @@ public class Cockatrice extends CommonCombatMethod {
 
         Player player = (Player) target;
         basicAttack(mob, target);
-        if (!player.getEquipment().contains(ItemIdentifiers.MIRROR_SHIELD)) {
+        if (!player.getEquipment().containsAny(ItemIdentifiers.MIRROR_SHIELD, ItemIdentifiers.VS_SHIELD_24266)) {
             for (int skill : DRAIN) {
                 player.skills().alterSkill(skill, -8);
             }

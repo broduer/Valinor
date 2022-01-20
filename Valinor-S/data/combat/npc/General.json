@@ -4579,5 +4579,36 @@
       "block": 6726,
       "death": 6727
     }
+  },
+  {
+    // Fire elemental (35)
+    "ids": [
+      1365
+    ],
+    "maxhit": 4,
+    "deathlen": 2,
+    "attackspeed": 4,
+    "slayerxp": 0,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 35,
+      "strength": 35,
+      "defence": 20,
+      "hitpoints": 30,
+      "magic": 20,
+      "ranged": 20
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 1030,
+      "block": 1029,
+      "death": 1031
+    }
   }
 ]

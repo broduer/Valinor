@@ -433,7 +433,7 @@ public class ItemCombining extends Interaction {
                         player.inventory().remove(DRAGON_METAL_LUMP);
                         player.inventory().remove(DRAGON_METAL_SHARD);
                         player.inventory().add(new Item(DRAGON_PLATEBODY));
-                        send(DialogueType.ITEM_STATEMENT, DRAGON_PLATEBODY, "", "You combine the shard, lump and chainbody to create a Dragon Platebody.");
+                        send(DialogueType.ITEM_STATEMENT, new Item(DRAGON_PLATEBODY), "", "You combine the shard, lump and chainbody to create a Dragon Platebody.");
                         setPhase(1);
                     } else if (option == 2) {
                         stop();
@@ -473,7 +473,7 @@ public class ItemCombining extends Interaction {
                         player.inventory().remove(DRAGON_METAL_SLICE);
                         player.inventory().remove(DRAGON_METAL_SHARD);
                         player.inventory().add(new Item(DRAGON_KITESHIELD));
-                        send(DialogueType.ITEM_STATEMENT, DRAGON_KITESHIELD, "", "You combine the shard, slice and square shield to create a Dragon Kiteshield.");
+                        send(DialogueType.ITEM_STATEMENT, new Item(DRAGON_KITESHIELD), "", "You combine the shard, slice and square shield to create a Dragon Kiteshield.");
                         setPhase(1);
                     } else if (option == 2) {
                         stop();

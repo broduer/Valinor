@@ -97,9 +97,13 @@ public class KaruulmSlayerDungeon extends Interaction {
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
+        if (obj.getId() == CAVE_EXIT_34514) {
+            player.teleport(1311,3807);
+            return true;
+        }
         if (obj.getId() == ELEVATOR) {
-            //player.animate(798);
-            player.teleport(1311, 10188);
+            Chain.bound(null).runFn(1, () -> player.animate(798)).then(2, () -> player.teleport(1311, 10188));
+
             return true;
         }
         if (obj.getId() == MYSTERIOUS_PIPE) {

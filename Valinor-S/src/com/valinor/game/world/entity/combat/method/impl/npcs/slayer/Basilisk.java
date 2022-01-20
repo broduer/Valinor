@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.slayer;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -20,20 +21,22 @@ public class Basilisk extends CommonCombatMethod {
     private void basicAttack(Mob mob, Mob target) {
         target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
         mob.animate(mob.attackAnimation());
+        if(target.isPlayer()) {
+            Player player = target.getAsPlayer();
+            if (!player.getEquipment().containsAny(ItemIdentifiers.MIRROR_SHIELD, ItemIdentifiers.VS_SHIELD_24266)) {
+                player.hit(mob, World.getWorld().random(2, 5), CombatType.MELEE).submit();
+                for (int skill : DRAIN) {
+                    player.skills().alterSkill(skill, -4);
+                }
+                player.message("<col=ff0000>The basilisk's piercing gaze drains your stats!");
+                player.message("<col=ff0000>A mirror shield can protect you from this attack.");
+            }
+        }
     }
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        Player player = (Player) target;
         basicAttack(mob, target);
-        if(!player.getEquipment().contains(ItemIdentifiers.MIRROR_SHIELD)) {
-            player.hit(mob, Utils.random(2, 5), CombatType.MELEE).submit();
-            for (int skill : DRAIN) {
-                player.skills().alterSkill(skill, -4);
-            }
-            player.message("<col=ff0000>The basilisk's piercing gaze drains your stats!");
-            player.message("<col=ff0000>A mirror shield can protect you from this attack.");
-        }
     }
 
     @Override
