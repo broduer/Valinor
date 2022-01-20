@@ -20,7 +20,6 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.NodeType;
-import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.masks.updating.NPCUpdating;
@@ -143,13 +142,13 @@ public class World {
         return (day == 5 || day == 6 || day == 7) || GameServer.properties().doubleSlayerRewardPointsEvent;
     }
 
-    private boolean applyDoubleBM() {
+    private boolean applyDoublePKP() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        return (day == 5 || day == 6 || day == 7) || GameServer.properties().doubleBMEvent;
+        return (day == 5 || day == 6 || day == 7) || GameServer.properties().doublePKPEvent;
     }
 
     public boolean doubleVotePoints() {
-        return isFirstWeekofMonth() && GameServer.properties().doubleBMEvent;
+        return isFirstWeekofMonth() && GameServer.properties().doublePKPEvent;
     }
 
     private boolean isFirstWeekofMonth() {
@@ -174,7 +173,7 @@ public class World {
 
     public int xpMultiplier = applyDoubleExperience() ? 2 : 1;
     public int slayerRewardPointsMultiplier = applyDoubleSlayerRewardPoints() ? 2 : 1;
-    public int pkpMultiplier = applyDoubleBM() ? 2 : 1;
+    public int pkpMultiplier = applyDoublePKP() ? 2 : 1;
 
     private int elapsedTicks;
 

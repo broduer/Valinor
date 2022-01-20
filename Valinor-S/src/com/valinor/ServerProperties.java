@@ -231,7 +231,7 @@ public final class ServerProperties {
         buyTwoGetOneFree = false;
         doubleExperienceEvent = false;
         doubleSlayerRewardPointsEvent = false;
-        doubleBMEvent = false;
+        doublePKPEvent = false;
         doubleVotePointsEvent = false;
         halloween = false;
         christmas = false;
@@ -633,7 +633,7 @@ public final class ServerProperties {
 
     public final boolean doubleExperienceEvent;
     public final boolean doubleSlayerRewardPointsEvent;
-    public final boolean doubleBMEvent;
+    public final boolean doublePKPEvent;
     public final boolean doubleVotePointsEvent;
     public final boolean halloween;
     public final boolean christmas;
