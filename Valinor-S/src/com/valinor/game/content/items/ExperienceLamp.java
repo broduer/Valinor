@@ -5,7 +5,6 @@ import com.google.common.collect.Sets;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
-import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -29,15 +28,6 @@ public class ExperienceLamp extends Interaction {
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if(option == 1) {
             if(item.getId() == ANTIQUE_LAMP_11137) {
-                if(player.gameMode() != GameMode.NONE) {
-                    player.message(Color.RED.wrap("Ironmans are unable to rub experience lamps."));
-                    return true;
-                }
-                if(player.gameMode() != GameMode.INSTANT_PKER && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-                    player.message(Color.RED.wrap("Instant pkers are unable to rub experience lamps."));
-                    return true;
-                }
-
                 if(!player.<Boolean>getAttribOr(AttributeKey.EXP_LAMP_WARNING_SENT, false)) {
                     player.getDialogueManager().start(new Dialogue() {
                         @Override
