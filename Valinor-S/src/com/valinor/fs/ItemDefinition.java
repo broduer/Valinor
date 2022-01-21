@@ -108,7 +108,7 @@ public class ItemDefinition implements Definition {
         }
 
         if (name.contains("slayer helmet") || name.contains("Slayer helmet")) {
-            ioptions = new String[]{null, "Wear", null, null, "Drop"};
+            ioptions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
         //Bounty hunter emblem hardcoding.
