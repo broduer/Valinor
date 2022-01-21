@@ -58,6 +58,7 @@ public class Gargoyle extends CommonCombatMethod {
         }).then(1, () -> {
             npc.hidden(true);
             smashed = true;
+            npc.transmog(GARGOYLE);
             npc.hp(0, 0);
             npc.die(null);
         });
