@@ -446,6 +446,8 @@ public class EquipmentInfo {
                 case ABYSSAL_DAGGER_P_13269:
                 case ABYSSAL_DAGGER_P_13271:
                     return style == 2 ? 3294 : 3297;
+                case 11902:
+                    return style == 1 ? 390 : 386;
                 case 20593:
                 case 14487:
                 case 26233:
