@@ -30,7 +30,7 @@ import static com.valinor.util.NpcIdentifiers.*;
 public class Sarachnis extends CommonCombatMethod {
 
     private static final Area SARACHNIS_AREA = new Area(1830, 9891, 1856, 9911, 0);
-    private static final List<Tile> WALK_TO_TILES = Arrays.asList(new Tile(1834, 9894), new Tile(1846, 9894), new Tile(1846, 9906), new Tile(1834, 9906));
+    private static final List<Tile> WALK_TO_TILES = Arrays.asList(new Tile(1834, 9894), new Tile(1846, 9894), new Tile(1846, 9905), new Tile(1834, 9906));
 
     private static int attacks;
     boolean spawned = false;
