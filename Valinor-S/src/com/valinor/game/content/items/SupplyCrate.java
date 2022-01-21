@@ -36,7 +36,7 @@ public class SupplyCrate extends Interaction {
         if (player.inventory().contains(id)) {
             player.inventory().remove(id);
             for (int i = 0; i < rolls; i++) {
-                Item reward = reward();
+                Item reward = reward().copy();
                 if (rare) {
                     World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a supply crate!");
                 }
