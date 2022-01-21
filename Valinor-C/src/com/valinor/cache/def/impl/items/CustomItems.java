@@ -1013,6 +1013,12 @@ public class CustomItems {
             def.stackable = 1;
         }
 
+        if(id == VOID_SET) {
+            ItemDefinition.copyInventory(def, VERACS_ARMOUR_SET);
+            def.name = "<col=65280>Regular void set";
+            def.modelCustomColor4 = 155;
+        }
+
         if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON) {
             def.inventoryActions = new String[]{null, "Wear", null, null, "Destroy"};
         }

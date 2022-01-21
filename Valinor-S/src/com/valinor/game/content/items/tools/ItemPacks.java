@@ -2,6 +2,7 @@ package com.valinor.game.content.items.tools;
 
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class ItemPacks {
 
     public enum ItemSets {
         //Armour sets
+        VOID_SET(CustomItemIdentifiers.VOID_SET, new Item(ItemIdentifiers.VOID_KNIGHT_GLOVES), new Item(ItemIdentifiers.VOID_KNIGHT_ROBE), new Item(ItemIdentifiers.VOID_KNIGHT_TOP), new Item(ItemIdentifiers.VOID_MAGE_HELM), new Item(ItemIdentifiers.VOID_RANGER_HELM), new Item(ItemIdentifiers.VOID_MELEE_HELM)),
         GUTHANS_SET(ItemIdentifiers.GUTHANS_ARMOUR_SET, new Item(ItemIdentifiers.GUTHANS_HELM), new Item(ItemIdentifiers.GUTHANS_PLATEBODY), new Item(ItemIdentifiers.GUTHANS_CHAINSKIRT), new Item(ItemIdentifiers.GUTHANS_WARSPEAR)),
         VERACS_SET(ItemIdentifiers.VERACS_ARMOUR_SET, new Item(ItemIdentifiers.VERACS_BRASSARD), new Item(ItemIdentifiers.VERACS_FLAIL), new Item(ItemIdentifiers.VERACS_HELM), new Item(ItemIdentifiers.VERACS_PLATESKIRT)),
         TORAGS_SET(ItemIdentifiers.TORAGS_ARMOUR_SET, new Item(ItemIdentifiers.TORAGS_HAMMERS), new Item(ItemIdentifiers.TORAGS_HELM), new Item(ItemIdentifiers.TORAGS_PLATEBODY), new Item(ItemIdentifiers.TORAGS_PLATELEGS)),

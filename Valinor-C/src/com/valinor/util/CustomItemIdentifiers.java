@@ -6,6 +6,7 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int VOID_SET = 32623;
     public static final int TREASURE_CASKET = 31836;
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
     public static final int GIANT_KEY_OF_DROPS = 30201;
