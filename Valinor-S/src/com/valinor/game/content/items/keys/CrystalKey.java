@@ -135,7 +135,6 @@ public class CrystalKey extends Interaction {
         new Item(DRAGON_BATTLEAXE, 1),
         new Item(SHIELD_LEFT_HALF, 1),
         new Item(SHIELD_RIGHT_HALF, 1),
-        new Item(CLUE_SCROLL_HARD, 1),
         new Item(COOKED_KARAMBWAN+1, 15),
         new Item(DRAGON_SCIMITAR, 1),
         new Item(DRAGON_BOOTS, 1),
