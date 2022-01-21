@@ -29,7 +29,8 @@ public enum PlayerMagicStaff {
     STEAM(new int[] {STEAM_BATTLESTAFF, MYSTIC_STEAM_STAFF, STEAM_BATTLESTAFF_12795, MYSTIC_STEAM_STAFF_12796}, new int[] {STEAM_RUNE}),
     DUST(new int[] {DUST_BATTLESTAFF, MYSTIC_DUST_STAFF}, new int[] {DUST_RUNE}),
     MIST(new int[] {MIST_BATTLESTAFF, MYSTIC_MIST_STAFF}, new int[] {MIST_RUNE}),
-    TOME_OF_FIRE(new int[] { ItemIdentifiers.TOME_OF_FIRE, TOME_OF_FIRE_EMPTY }, new int[] { FIRE_RUNE });
+    TOME_OF_FIRE(new int[] { ItemIdentifiers.TOME_OF_FIRE, TOME_OF_FIRE_EMPTY }, new int[] { FIRE_RUNE }),
+    BRYOPHYTAS_STAFF(new int[] { ItemIdentifiers.BRYOPHYTAS_STAFF }, new int[] { NATURE_RUNE });
 
     /**
      * The staves that can be used in place of runes.

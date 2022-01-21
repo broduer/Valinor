@@ -2476,7 +2476,7 @@ public enum CombatSpells {
         public List<Item> itemsRequired(Player player) {
             boolean hasTomeOfFire = player.getEquipment().hasAt(EquipSlot.SHIELD, TOME_OF_FIRE);
             if (hasTomeOfFire) {
-                return List.of(Item.of(FIRE_RUNE, 10), Item.of(AIR_RUNE, 7));
+                return List.of(Item.of(WRATH_RUNE, 1), Item.of(AIR_RUNE, 7));
             }
             return List.of(
                 Item.of(FIRE_RUNE, 10),

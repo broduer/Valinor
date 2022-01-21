@@ -760,6 +760,10 @@ public class MagicClickSpells {
                 if (shield != null && player.getEquipment().hasAt(EquipSlot.SHIELD, TOME_OF_FIRE)) {
                     return List.of(new Item[]{new Item(NATURE_RUNE, 1)});
                 }
+                boolean hasBryophytaStaff = player.getEquipment().hasAt(EquipSlot.WEAPON, BRYOPHYTAS_STAFF);
+                if (hasBryophytaStaff) {
+                    return List.of(Item.of(FIRE_RUNE, 4));
+                }
                 return List.of(new Item[]{new Item(FIRE_RUNE, 4), new Item(NATURE_RUNE, 1)});
             }
 
@@ -801,6 +805,10 @@ public class MagicClickSpells {
                 Item shield = player.getEquipment().get(EquipSlot.SHIELD);
                 if (shield != null && shield.getId() == TOME_OF_FIRE) {
                     return List.of(new Item[]{new Item(NATURE_RUNE, 1)});
+                }
+                boolean hasBryophytaStaff = player.getEquipment().hasAt(EquipSlot.WEAPON, BRYOPHYTAS_STAFF);
+                if (hasBryophytaStaff) {
+                    return List.of(Item.of(FIRE_RUNE, 5));
                 }
                 return List.of(new Item[]{new Item(FIRE_RUNE, 5), new Item(NATURE_RUNE, 1)});
             }
