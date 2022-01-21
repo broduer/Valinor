@@ -37,7 +37,7 @@ public class AncientWarriorClamp extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
-        if(option == 2) {
+        if(option == 4) {
             if (item.getId() == ANCIENT_WARRIOR_AXE_C) {
                 player.confirmDialogue(new String[]{"Are you sure you wish to dismantle the Ancient Warrior Axe (c)?", "You will lose the Ancient Warrior Axe."}, "", "Proceed.", "Nevermind.", () -> {
                     if (!player.inventory().contains(ANCIENT_WARRIOR_AXE_C)) {

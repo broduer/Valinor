@@ -132,9 +132,9 @@ public class ItemCombining extends Interaction {
 
         HOLY_SCYTHE_OF_VITUR(ItemIdentifiers.HOLY_SCYTHE_OF_VITUR, SCYTHE_OF_VITUR, HOLY_ORNAMENT_KIT, true),
 
-        SANGUINE_SCYTHE_OF_VITUR(ItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR, SCYTHE_OF_VITUR, SANGUINE_ORNAMENT_KIT),
+        SANGUINE_SCYTHE_OF_VITUR(ItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR, SCYTHE_OF_VITUR, SANGUINE_ORNAMENT_KIT, true),
 
-        SANGUINE_TWISTED_BOW(CustomItemIdentifiers.SANGUINE_TWISTED_BOW, TWISTED_BOW, SANGUINE_ORNAMENT_KIT),
+        SANGUINE_TWISTED_BOW(CustomItemIdentifiers.SANGUINE_TWISTED_BOW, TWISTED_BOW, SANGUINE_ORNAMENT_KIT, true),
 
         GRACEFUL_HOOD(GRACEFUL_HOOD_24743, ItemIdentifiers.GRACEFUL_HOOD, DARK_DYE),
 
@@ -255,7 +255,7 @@ public class ItemCombining extends Interaction {
                     if (player.inventory().contains(combine.item1) && player.inventory().contains(combine.item2)) {
                         player.inventory().remove(combine.item1);
                         player.inventory().remove(combine.item2);
-                        player.inventory().add(new Item(combine.result));
+                        player.inventory().addOrBank(new Item(combine.result));
                     } else {
                         player.message("You don't have the required supplies to do this.");
                     }
@@ -317,8 +317,8 @@ public class ItemCombining extends Interaction {
                 if (item.getId() == combine.result) {
                     if (player.inventory().contains(combine.result)) {
                         player.inventory().remove(combine.result);
-                        player.inventory().add(new Item(combine.item1));
-                        player.inventory().add(new Item(combine.item2));
+                        player.inventory().addOrBank(new Item(combine.item1));
+                        player.inventory().addOrBank(new Item(combine.item2));
                     }
                     return true;
                 }
@@ -350,7 +350,7 @@ public class ItemCombining extends Interaction {
                                     if (option == 1) {
                                         if (player.inventory().contains(combine.result)) {
                                             player.inventory().remove(combine.result);
-                                            player.inventory().add(new Item(combine.item2));
+                                            player.inventory().addOrBank(new Item(combine.item2));
                                         }
                                         stop();
                                     } else if (option == 2) {
@@ -385,7 +385,7 @@ public class ItemCombining extends Interaction {
                         }
                         player.inventory().remove(VORKATHS_HEAD_21907);
                         player.inventory().remove(AVAS_ACCUMULATOR);
-                        player.inventory().add(new Item(AVAS_ASSEMBLER));
+                        player.inventory().addOrBank(new Item(AVAS_ASSEMBLER));
                         player.message("You carefully attach the Vorkath's head to the device and create the assembler.");
                         stop();
                     } else if (option == 2) {
@@ -425,7 +425,7 @@ public class ItemCombining extends Interaction {
                         player.inventory().remove(DRAGON_CHAINBODY);
                         player.inventory().remove(DRAGON_METAL_LUMP);
                         player.inventory().remove(DRAGON_METAL_SHARD);
-                        player.inventory().add(new Item(DRAGON_PLATEBODY));
+                        player.inventory().addOrBank(new Item(DRAGON_PLATEBODY));
                         send(DialogueType.ITEM_STATEMENT, new Item(DRAGON_PLATEBODY), "", "You combine the shard, lump and chainbody to create a Dragon Platebody.");
                         setPhase(1);
                     } else if (option == 2) {
@@ -465,7 +465,7 @@ public class ItemCombining extends Interaction {
                         player.inventory().remove(DRAGON_SQ_SHIELD);
                         player.inventory().remove(DRAGON_METAL_SLICE);
                         player.inventory().remove(DRAGON_METAL_SHARD);
-                        player.inventory().add(new Item(DRAGON_KITESHIELD));
+                        player.inventory().addOrBank(new Item(DRAGON_KITESHIELD));
                         send(DialogueType.ITEM_STATEMENT, new Item(DRAGON_KITESHIELD), "", "You combine the shard, slice and square shield to create a Dragon Kiteshield.");
                         setPhase(1);
                     } else if (option == 2) {
@@ -494,7 +494,7 @@ public class ItemCombining extends Interaction {
                         }
                         player.inventory().remove(BANDOS_BOOTS);
                         player.inventory().remove(BLACK_TOURMALINE_CORE);
-                        player.inventory().add(new Item(GUARDIAN_BOOTS));
+                        player.inventory().addOrBank(new Item(GUARDIAN_BOOTS));
                         player.message("You merge the black tourmaline core usedWith the boots to create a pair of guardian boots.");
                         stop();
                     } else if (option == 2) {
@@ -524,7 +524,7 @@ public class ItemCombining extends Interaction {
                         }
                         player.inventory().remove(SAELDOR_SHARD, 500);
                         player.inventory().remove(BLADE_OF_SAELDOR);
-                        player.inventory().add(new Item(BLADE_OF_SAELDOR_C_25870));
+                        player.inventory().addOrBank(new Item(BLADE_OF_SAELDOR_C_25870));
                         player.message("You carefully attach the shards to the blade to give it an additional boost.");
                         stop();
                     } else if (option == 2) {
