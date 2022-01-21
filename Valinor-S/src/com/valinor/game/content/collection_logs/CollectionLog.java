@@ -23,6 +23,7 @@ public class CollectionLog {
     public static final int COS_RAIDS_KEY = 100_000;
     public static final int COX_RAIDS_KEY = 100_001;
     public static final int TOB_RAIDS_KEY = 100_002;
+    public static final int BARROWS_KEY = 100_003;
 
     private final Player player;
 

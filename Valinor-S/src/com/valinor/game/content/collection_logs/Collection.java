@@ -35,7 +35,7 @@ public enum Collection {
         //Drops
         new Item(ABYSSAL_ORPHAN), new Item(UNSIRED), new Item(ABYSSAL_HEAD), new Item(BLUDGEON_SPINE), new Item(BLUDGEON_CLAW), new Item(BLUDGEON_AXON), new Item(JAR_OF_MIASMA), new Item(ABYSSAL_DAGGER), new Item(ABYSSAL_WHIP)),
 
-    BARROWS(AttributeKey.BARROWS_CHESTS_OPENED, LogType.BOSSES, "Barrows", new int[]{-1},  AttributeKey.BARROWS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS), new Item(BARROWS_MYSTERY_BOX, 10), new Item(CustomItemIdentifiers.CURSED_AMULET_OF_THE_DAMNED)},
+    BARROWS(AttributeKey.BARROWS_CHESTS_OPENED, LogType.BOSSES, "Barrows", new int[]{BARROWS_KEY},  AttributeKey.BARROWS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS), new Item(BARROWS_MYSTERY_BOX, 10), new Item(CustomItemIdentifiers.CURSED_AMULET_OF_THE_DAMNED)},
         //Drops
         new Item(KARILS_COIF), new Item(AHRIMS_HOOD), new Item(DHAROKS_HELM),new Item(GUTHANS_HELM), new Item(TORAGS_HELM), new Item(VERACS_HELM), new Item(KARILS_LEATHERTOP), new Item(AHRIMS_ROBETOP), new Item(DHAROKS_PLATEBODY), new Item(GUTHANS_PLATEBODY), new Item(TORAGS_PLATEBODY), new Item(VERACS_BRASSARD), new Item(KARILS_LEATHERSKIRT), new Item(AHRIMS_ROBESKIRT), new Item(DHAROKS_PLATELEGS), new Item(GUTHANS_CHAINSKIRT), new Item(TORAGS_PLATELEGS), new Item(VERACS_PLATESKIRT), new Item(KARILS_CROSSBOW), new Item(AHRIMS_STAFF), new Item(DHAROKS_GREATAXE), new Item(GUTHANS_WARSPEAR), new Item(TORAGS_HAMMERS), new Item(VERACS_FLAIL), new Item(BOLT_RACK)),
 

@@ -24,7 +24,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.game.content.collection_logs.CollectionLog.BARROWS_KEY;
+import static com.valinor.game.content.collection_logs.LogType.BOSSES;
+import static com.valinor.game.content.collection_logs.LogType.MYSTERY_BOX;
 import static com.valinor.game.world.entity.AttributeKey.*;
+import static com.valinor.util.CustomItemIdentifiers.PETS_MYSTERY_BOX;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -312,6 +316,8 @@ public class Barrows extends Interaction {
                     player.inventory().addOrDrop(item);
                     totalLoot.add(item, true);
                 }
+
+                BOSSES.log(player, BARROWS_KEY, item);
             }
         }
 
