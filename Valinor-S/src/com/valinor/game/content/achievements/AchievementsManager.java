@@ -69,7 +69,11 @@ public class AchievementsManager {
 
             Item[] reward = achievement.getReward();
             if (reward != null) {
-                player.inventory().addOrBank(reward.clone());
+                if(player.gameMode().isUltimateIronman()) {
+                    player.inventory().addOrDrop(reward.clone());
+                } else {
+                    player.inventory().addOrBank(reward.clone());
+                }
                 Utils.sendDiscordInfoLog(player.getUsername()+" has completed " + achievement.getName() + " and got " + Arrays.toString(reward.clone()), "achievements");
             }
         }
