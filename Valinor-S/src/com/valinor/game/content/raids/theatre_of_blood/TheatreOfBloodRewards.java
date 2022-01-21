@@ -155,7 +155,7 @@ public class TheatreOfBloodRewards {
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique();
-            boolean added = player.getRaidRewards().add(item);
+            player.getRaidRewards().add(item);
             BOSSES.log(player, TOB_RAIDS_KEY, item);
             rare = player;
         }

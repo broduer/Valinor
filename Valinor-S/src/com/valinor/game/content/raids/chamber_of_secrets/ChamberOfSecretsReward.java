@@ -42,11 +42,6 @@ public class ChamberOfSecretsReward {
     }
 
     public static void withdrawReward(Player player) {
-        if(player.getRaidRewards().isEmpty()) {
-            player.message("There are no rewards, if you feel that this is wrong contact a staff member.");
-            return;
-        }
-
         player.inventory().addOrBank(player.getRaidRewards().getItems());
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
@@ -157,38 +152,24 @@ public class ChamberOfSecretsReward {
             return;
         }
 
-        if (personalPoints > 100_000) {
-            personalPoints = 100_000;
-        }
-
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
-            int rolls = Utils.percentageChance(doubleChestRoll(player)) ? 2 : 1;
-            if (rolls == 2)
-                player.message(Color.PURPLE.wrap("You received an extra drop roll because of your member rank."));
-            for (int i = 0; i < rolls; i++) {
-                Item item = rollUnique();
-                boolean added = player.getRaidRewards().add(item);
-                BOSSES.log(player, COS_RAIDS_KEY, item);
-                rare = player;
-            }
+            Item item = rollUnique();
+            player.getRaidRewards().add(item);
+            BOSSES.log(player, COS_RAIDS_KEY, item);
+            rare = player;
         }
 
         //Only give normal drops when you did not receive any rares.
         //regular drops
         if (player != rare) {
-            int rolls = Utils.percentageChance(doubleChestRoll(player)) ? 2 : 1;
-            if (rolls == 2)
-                player.message(Color.PURPLE.wrap("You received an extra drop roll because of your member rank."));
-            for (int i = 0; i < rolls; i++) {
-                Item item = rollRegular();
-                Item item2 = rollRegular();
-                player.getRaidRewards().add(item);
-                player.getRaidRewards().add(item2);
-                Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Secrets! Personal Points: " + Utils.formatNumber(personalPoints), "cos_reward");
-            }
+            Item item = rollRegular();
+            Item item2 = rollRegular();
+            player.getRaidRewards().add(item);
+            player.getRaidRewards().add(item2);
+            Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Secrets! Personal Points: " + Utils.formatNumber(personalPoints), "cos_reward");
         }
     }
 

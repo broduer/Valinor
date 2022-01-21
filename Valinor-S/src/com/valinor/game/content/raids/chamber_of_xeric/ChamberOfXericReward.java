@@ -13,7 +13,7 @@ import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.COX_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.util.ItemIdentifiers.DARK_JOURNAL;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * @author Patrick van Elderen | May, 13, 2021, 12:29
@@ -49,11 +49,6 @@ public class ChamberOfXericReward {
     }
 
     public static void withdrawReward(Player player) {
-        if(player.getRaidRewards().isEmpty()) {
-            player.message("There are no rewards, if you feel that this is wrong contact a staff member.");
-            return;
-        }
-
         player.inventory().addOrBank(player.getRaidRewards().getItems());
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
@@ -97,19 +92,19 @@ public class ChamberOfXericReward {
 
     private static final LootTable uniqueTable = new LootTable()
         .addTable(1,
-            new LootItem(21034, 1, 20), // dexterous scroll
-            new LootItem(21079, 1, 20), // arcane scroll
-            new LootItem(21000, 1, 4), // twisted buckler
-            new LootItem(21012, 1, 4), // dragon hunter crossbow
-            new LootItem(21015, 1, 3), // dinh's bulwark
-            new LootItem(21018, 1, 3), // ancestral hat
-            new LootItem(21021, 1, 3), // ancestral top
-            new LootItem(21024, 1, 3), // ancestral bottom
-            new LootItem(13652, 1,3), // dragon claws
-            new LootItem(21003, 1,2), // elder maul
-            new LootItem(21043, 1, 2), // kodai insignia
-            new LootItem(20997, 1, 2), // twisted bow
-            new LootItem(22386, 1, 1) // Metamorphic dust
+            new LootItem(DEXTEROUS_PRAYER_SCROLL, 1, 20),
+            new LootItem(ARCANE_PRAYER_SCROLL, 1, 20),
+            new LootItem(TWISTED_BUCKLER, 1, 4),
+            new LootItem(DRAGON_HUNTER_CROSSBOW, 1, 4),
+            new LootItem(DINHS_BULWARK, 1, 3),
+            new LootItem(ANCESTRAL_HAT, 1, 3),
+            new LootItem(ANCESTRAL_ROBE_TOP, 1, 3),
+            new LootItem(ANCESTRAL_ROBE_BOTTOM, 1, 3),
+            new LootItem(DRAGON_CLAWS, 1,3),
+            new LootItem(ELDER_MAUL, 1,2),
+            new LootItem(KODAI_INSIGNIA, 1, 2),
+            new LootItem(TWISTED_BOW, 1, 2),
+            new LootItem(METAMORPHIC_DUST, 1, 1)
         );
 
     private static final LootTable regularTable = new LootTable()
@@ -155,16 +150,12 @@ public class ChamberOfXericReward {
             return;
         }
 
-        if (personalPoints > 150_000) {
-            personalPoints = 150_000;
-        }
-
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique();
-            boolean added = player.getRaidRewards().add(item);
+            player.getRaidRewards().add(item);
             BOSSES.log(player, COX_RAIDS_KEY, item);
             rare = player;
         }

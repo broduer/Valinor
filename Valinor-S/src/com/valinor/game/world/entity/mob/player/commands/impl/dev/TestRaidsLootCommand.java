@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
+import com.valinor.game.content.raids.chamber_of_xeric.ChamberOfXericReward;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBloodRewards;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -13,10 +14,15 @@ public class TestRaidsLootCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.putAttrib(AttributeKey.PERSONAL_POINTS, 50_000);
-        TheatreOfBloodRewards.giveRewards(player);
-        TheatreOfBloodRewards.displayRewards(player);
-        TheatreOfBloodRewards.withdrawReward(player);
+        player.putAttrib(AttributeKey.PERSONAL_POINTS, 1_000_000);
+        for (int i = 0; i < 125; i++) {
+            ChamberOfXericReward.giveRewards(player);
+            ChamberOfXericReward.displayRewards(player);
+            ChamberOfXericReward.withdrawReward(player);
+        }
+        //TheatreOfBloodRewards.giveRewards(player);
+        //TheatreOfBloodRewards.displayRewards(player);
+        //TheatreOfBloodRewards.withdrawReward(player);
     }
 
     @Override
