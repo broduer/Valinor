@@ -23,7 +23,7 @@ public class WoodcuttingTeleportsD extends Dialogue {
         if (isPhase(0)) {
             if (option == 1) {
                 if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                    Teleports.basicTeleport(player, new Tile(3104,3208));
+                    Teleports.basicTeleport(player, new Tile(3136, 3219));
                 }
             }
             if (option == 2) {

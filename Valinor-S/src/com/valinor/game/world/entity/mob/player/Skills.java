@@ -218,7 +218,15 @@ public class Skills {
         boolean geniePet = player.hasPetOut("Genie pet");
 
         if (multiplied) {
-            amt *= player.expmode().getExpMultiplier();
+            if (combatxp) {
+                if (player.expmode() == ExpMode.ROOKIE && combatxp) {
+                    amt *= 150D;
+                } else {
+                    amt *= player.expmode().getExpMultiplier();
+                }
+            } else {
+                amt *= player.expmode().getExpMultiplier();
+            }
         }
 
         var expBoostUnlock = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.EXP_BOOSTER);
@@ -243,11 +251,18 @@ public class Skills {
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
+        var ringOfCharosA = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA);
 
-        var donator_zone = player.tile().memberZone() || player.tile().memberCave();
+        var doubleExp = geniePet || World.getWorld().xpMultiplier > 1 || double_exp_ticks;
 
         //Genie pet gives x2 exp
-        amt *= player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) || geniePet || World.getWorld().xpMultiplier > 1 || donator_zone || double_exp_ticks ? 2.0 : 1.0;
+        amt *= doubleExp ? 2.0 : 1.0;
+
+        if(ringOfCharosA && doubleExp) {
+            amt *= 1.25;
+        } else {
+            amt *= 2.0;
+        }
 
         player.getPacketSender().sendExpDrop(skill, (int) amt, counter);
 

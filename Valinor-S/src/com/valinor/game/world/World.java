@@ -134,17 +134,17 @@ public class World {
 
     private boolean applyDoubleExperience() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        return (day == 5 || day == 6 || day == 7) || GameServer.properties().doubleExperienceEvent;
+        return (day == 5 || day == 6 || day == 7) && GameServer.properties().doubleExperienceEvent;
     }
 
     private boolean applyDoubleSlayerRewardPoints() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        return (day == 5 || day == 6 || day == 7) || GameServer.properties().doubleSlayerRewardPointsEvent;
+        return (day == 5 || day == 6 || day == 7) && GameServer.properties().doubleSlayerRewardPointsEvent;
     }
 
     private boolean applyDoublePKP() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        return (day == 5 || day == 6 || day == 7) || GameServer.properties().doublePKPEvent;
+        return (day == 5 || day == 6 || day == 7) && GameServer.properties().doublePKPEvent;
     }
 
     public boolean doubleVotePoints() {

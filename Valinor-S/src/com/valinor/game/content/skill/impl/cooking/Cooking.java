@@ -19,6 +19,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
@@ -118,23 +119,34 @@ public class Cooking extends Interaction {
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
+        if(object.getId() == RANGE_7183 && object.tile().equals(3094, 3462)) {
+            player.smartPathTo(new Tile(3093, 3463));
+            player.waitForTile(new Tile(3093, 3463), () -> {
+                cook(player);
+            });
+            return true;
+        }
         if (COOKING_OBJECTS.stream().anyMatch(co -> object.definition().name.toLowerCase().contains(co))) {
-            player.faceObj(object);
-            int id = player.getAttribOr(AttributeKey.ITEM_ID, -1);
-            GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
-            Cookable food = Cookable.get(id);
-
-            if (food != null) {
-                //Check to see if the player has the level required to cook the food
-                if (player.skills().levels()[Skills.COOKING] < food.lvl) {
-                    DialogueManager.sendStatement(player, "You need a cooking level of " + food.lvl + " to cook " + food.itemname + ".");
-                } else {
-                    startCooking(player, food, obj);
-                }
-            }
+            cook(player);
             return true;
         }
         return false;
+    }
+
+    private void cook(Player player) {
+        int id = player.getAttribOr(AttributeKey.ITEM_ID, -1);
+        GameObject obj = player.getAttribOr(AttributeKey.INTERACTION_OBJECT, null);
+        Cookable food = Cookable.get(id);
+        player.faceObj(obj);
+
+        if (food != null) {
+            //Check to see if the player has the level required to cook the food
+            if (player.skills().levels()[Skills.COOKING] < food.lvl) {
+                DialogueManager.sendStatement(player, "You need a cooking level of " + food.lvl + " to cook " + food.itemname + ".");
+            } else {
+                startCooking(player, food, obj);
+            }
+        }
     }
 
     private final static int SINEW = 9436;

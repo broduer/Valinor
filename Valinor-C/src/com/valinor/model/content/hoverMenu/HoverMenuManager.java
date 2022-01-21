@@ -32,7 +32,7 @@ public class HoverMenuManager {
         menus.put(MAGIC_SECATEURS, new HoverMenu("When patching herbs you get 2x more herbs."));
         menus.put(EXPLORERS_RING_4, new HoverMenu("Gives @gre@25%@whi@ more skilling experience."));
         menus.put(RADAS_BLESSING_4, new HoverMenu("Gives @gre@25%@whi@ more combat experience."));
-        menus.put(RING_OF_CHAROSA, new HoverMenu("Grants double exp and resources."));
+        menus.put(RING_OF_CHAROSA, new HoverMenu("Grants double exp and resources. During double exp lamps and events this ring will grant you an additional 25% exp boost. It does not stack with the event."));
         menus.put(ARDOUGNE_CLOAK_4, new HoverMenu("Grants unlimited teleports to the resource arena and revenants cave."));
         menus.put(BONECRUSHER, new HoverMenu("You auto bury a bone when killing a monster but you get altar xp."));
         menus.put(DOUBLE_DROPS_SCROLL, new HoverMenu("Grants @gre@2x@whi@ drop rolls per kill for the cost of token."));

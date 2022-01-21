@@ -690,7 +690,7 @@ public class TradingPost {
                 return false;
             }
 
-            // Dont allow illegal items to inserted into a trading post.
+            // Don't allow illegal items to insert into a trading post.
             if (Arrays.stream(ILLEGAL_ITEMS).anyMatch(id -> id == offerItem.getId())) {
                 player.message("You can't sell illegal items.");
                 return false;
