@@ -68,8 +68,10 @@ public class Sarachnis extends CommonCombatMethod {
             }
             , () -> {
             Player p = findPlayerInRoom();
-            mob.face(p.tile());
-            mob.getCombat().attack(p);
+            if(p != null) {
+                mob.face(p.tile());
+                mob.getCombat().attack(p);
+            }
             mob.resetFaceTile();
             attacks = 0;
             mob.unlock();
