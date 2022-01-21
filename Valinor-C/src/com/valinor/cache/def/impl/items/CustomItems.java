@@ -546,20 +546,24 @@ public class CustomItems {
         if (id == SANGUINE_TWISTED_BOW) {
             ItemDefinition.copyInventory(def, TWISTED_BOW);
             ItemDefinition.copyEquipment(def, TWISTED_BOW);
-            def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
             def.name = "<col=65280>Sanguine twisted bow";
             def.modelCustomColor4 = 235;
             def.stackable = 0;
         }
 
         if (id == SANGUINE_SCYTHE_OF_VITUR) {
-            def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
+        }
+
+        if (id == HOLY_SANGUINESTI_STAFF) {
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
         }
 
         if (id == ANCIENT_WARRIOR_AXE_C) {
             ItemDefinition.copyInventory(def, 7807);
             ItemDefinition.copyEquipment(def, 7807);
-            def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
             def.name = "<col=65280>Ancient warrior axe (c)";
             def.modelCustomColor3 = 23532;
         }
@@ -567,7 +571,7 @@ public class CustomItems {
         if (id == ANCIENT_WARRIOR_MAUL_C) {
             ItemDefinition.copyInventory(def, 7808);
             ItemDefinition.copyEquipment(def, 7808);
-            def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
             def.name = "<col=65280>Ancient warrior maul (c)";
             def.modelCustomColor3 = 23532;
         }
@@ -575,7 +579,7 @@ public class CustomItems {
         if (id == ANCIENT_WARRIOR_SWORD_C) {
             ItemDefinition.copyInventory(def, 7806);
             ItemDefinition.copyEquipment(def, 7806);
-            def.inventoryActions = new String[]{null, "Wield", null, "Dismantle", "Drop"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
             def.name = "<col=65280>Ancient warrior sword (c)";
             def.modelCustomColor3 = 23532;
         }
