@@ -235,7 +235,7 @@ public class RangeMaxHit {
                 petBonus *= 1.10;
             }
             if (player.getRaids() != null && player.getRaids().raiding(player))
-                petBonus *= 10.10;
+                petBonus *= 1.10;
         }
 
         if (player.getEquipment().hasAt(EquipSlot.WEAPON, CRAWS_BOW_C) && target != null && target.isNpc() && includeNpcMax) {
