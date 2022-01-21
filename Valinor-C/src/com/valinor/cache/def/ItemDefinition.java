@@ -427,11 +427,19 @@ public final class ItemDefinition {
         }
 
         if (def.name != null && (def.name.contains("slayer helmet") || def.name.contains("Slayer helmet"))) {
-            def.inventoryActions = new String[]{null, "Wear", null, "Disassemble", "Drop"};
+            def.inventoryActions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
         if (id == 24225 || (def.name != null && def.name.contains("crystal bow"))) {
             def.inventoryActions = new String[]{null, "Wield", null, null, null};
+        }
+
+        if (def.name != null && def.name.contains("Blade of saeldor (c)")) {
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
+        }
+
+        if (def.name != null && def.name.contains("Bow of faerdhinen (c)")) {
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
         }
 
         CustomItems.unpack(id);

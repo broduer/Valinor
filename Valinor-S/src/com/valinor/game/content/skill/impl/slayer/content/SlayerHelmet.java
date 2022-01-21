@@ -1,11 +1,23 @@
 package com.valinor.game.content.skill.impl.slayer.content;
 
+import com.valinor.fs.ItemDefinition;
+import com.valinor.game.content.items.equipment.ArdougneCape;
+import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.dialogue.DialogueType;
+import com.valinor.game.world.entity.dialogue.Expression;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
+
+import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.DURADEL;
 
 /**
  * This class represents the Slayer interface functionality
@@ -287,7 +299,58 @@ public class SlayerHelmet extends Interaction {
                 return true;
             }
         }
+
+        if(option == 3) {
+            ItemDefinition def = item.definition(World.getWorld());
+            if (def.name != null && (def.name.contains("slayer helmet") || def.name.contains("Slayer helmet"))) {
+                check(player);
+                return true;
+            }
+        }
         return false;
+    }
+
+    @Override
+    public boolean handleEquipmentAction(Player player, Item item, int slot) {
+        ItemDefinition def = item.definition(World.getWorld());
+        if (def.name != null && (def.name.contains("slayer helmet") || def.name.contains("Slayer helmet")) && slot == EquipSlot.HEAD) {
+            check(player);
+            return true;
+        }
+        return false;
+    }
+
+    private void check(Player player) {
+        int numleft = player.slayerTaskAmount();
+        var masterId = Math.max(1, player.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
+        String n = Slayer.taskName(player.slayerTaskId());
+        String taskName = n == null ? "NULL" : n;
+
+        int slayerMaster = -1;
+
+        if (numleft > 0) {
+            if (masterId == Slayer.TURAEL_ID) {
+                slayerMaster = TURAEL;
+            } else if(masterId == Slayer.KRYSTILIA_ID) {
+                slayerMaster = KRYSTILIA;
+            } else if (masterId == Slayer.MAZCHNA_ID) {
+                slayerMaster = MAZCHNA;
+            } else if (masterId == Slayer.VANNAKA_ID) {
+                slayerMaster = VANNAKA;
+            } else if (masterId == Slayer.CHAELDAR_ID) {
+                slayerMaster = CHAELDAR;
+            } else if (masterId == Slayer.NIEVE_ID) {
+                slayerMaster = NIEVE;
+            } else if (masterId == Slayer.DURADEL_ID) {
+                slayerMaster = DURADEL;
+            } else if(masterId == Slayer.KONAR_QUO_MATEN_ID) {
+                slayerMaster = KONAR_QUO_MATEN;
+            }
+
+            DialogueManager.npcChat(player,Expression.H, slayerMaster,"You're still hunting " + taskName + "; you have " + numleft + " to go. Come", "back when you've finished your task.");
+        } else {
+            DialogueManager.sendStatement(player, "You need something new to hunt.");
+        }
     }
 
     private void disassemble(Player player, Item remove) {
