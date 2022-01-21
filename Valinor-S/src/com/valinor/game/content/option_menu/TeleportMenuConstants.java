@@ -35,7 +35,7 @@ public class TeleportMenuConstants {
                     "Gargoyle", "Nechryael", "Abyssal Demon" },
                 new TeleportAction(player, new Tile(3429, 3538))));
 
-        teleportOptions.put(3, new OptionMenu("Mourmer Tunnel", new String[] { "Dark Beast" },
+        teleportOptions.put(3, new OptionMenu("Mourner Tunnels", new String[] { "Dark Beast" },
             new TeleportAction(player, new Tile(2029, 4636))));
 
         teleportOptions.put(4,
@@ -59,7 +59,7 @@ public class TeleportMenuConstants {
             new OptionMenu("Stronghold Slayer Cave",
                 new String[] { "Aberrant Spectre", "Abyssal Demon", "Ankou", "Baby Black Dragon", "Black Demon",
                     "Black Dragon", "Bloodveld", "Blue Dragon", "Bronze Dragon", "Fire Giant", "Gargoyle",
-                    "Greater Demon", "Hellhound", "Iron Dragon", "Kalphite", "Nechryael", "Steel Dragon",
+                    "Greater Demon", "Hellhound", "Iron Dragon", "Nechryael", "Steel Dragon",
                     "Waterfiend" },
                 new TeleportAction(player, new Tile(2430, 3424))));
 
@@ -285,6 +285,9 @@ public class TeleportMenuConstants {
 
         teleportOptions.put(71, new OptionMenu("Nex", new String[] { "Nex", "nex", "boss" },
             new TeleportAction(player, new Tile(2904, 5203,0))));
+
+        teleportOptions.put(72, new OptionMenu("Strange machine", new String[] { "strange machine", "wyvern shield", "ancient wyvern shield" },
+            new TeleportAction(player, new Tile(3763, 3870, 1))));
 
         return teleportOptions;
     }
