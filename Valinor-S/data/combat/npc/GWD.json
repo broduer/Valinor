@@ -4,6 +4,8 @@
     "ids": [
       3159
     ],
+    "slayerxp": 100,
+    "slayerlvl": 68,
     "maxhit": 11,
     "attackspeed": 5,
     "aggressive": true,
@@ -59,6 +61,8 @@
     "ids": [
       2243
     ],
+    "slayerxp": 135,
+    "slayerlvl": 68,
     "maxhit": 16,
     "attackspeed": 5,
     "aggressive": true,
@@ -841,6 +845,8 @@
     "ids": [
       2210
     ],
+    "slayerxp": 110,
+    "slayerlvl": 68,
     "maxhit": 13,
     "aggressive": true,
     "attackspeed": 5,
