@@ -1389,6 +1389,11 @@
     "type": 0,
     "showBeard": false
   },
+  "23230": {
+    "slot": 5,
+    "type": 0,
+    "showBeard": false
+  },
   "660": {
     "slot": 0,
     "type": 0,
@@ -9141,7 +9146,7 @@
   },
   "11902": {
     "slot": 3,
-    "type": 5,
+    "type": 0,
     "showBeard": false
   },
   "20095": {
