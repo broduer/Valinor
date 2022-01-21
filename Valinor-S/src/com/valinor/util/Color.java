@@ -1,5 +1,7 @@
 package com.valinor.util;
 
+import com.valinor.game.world.entity.mob.player.Player;
+
 public enum Color {
 
     GOLD("AD800F"), MEDIUMGREY("888888"), BLUE("0000FF"), ROYAL("4C00AA"), RUNITE("5287A5"),
@@ -30,6 +32,17 @@ public enum Color {
 
     public String wrap(String s) {
         return tag() + s + "</col>";
+    }
+
+    public static String staffColor(Player player, String s) {
+        String color = "";
+        switch (player.getPlayerRights()) {
+            case SUPPORT -> color = Color.CYAN.tag() + s + "</col>";
+            case MODERATOR -> color = Color.WHITE.tag() + s + "</col>";
+            case ADMINISTRATOR, OWNER -> color = Color.RED.tag() + s + "</col>";
+            case DEVELOPER -> color = Color.PURPLE.tag() + s + "</col>";
+        }
+        return color;
     }
 
     public String tag() {

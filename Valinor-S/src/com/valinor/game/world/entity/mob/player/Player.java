@@ -1497,7 +1497,7 @@ public class Player extends Mob {
         }
 
         if(getPlayerRights().isStaffMember(this)) {
-            World.getWorld().sendWorldMessage("[Staff]: "+getPlayerRights().getName()+" "+username+" has logged in.");
+            World.getWorld().sendWorldMessage("[Staff]: <img="+getPlayerRights().getSpriteId()+">"+Color.staffColor(this, getPlayerRights().getName())+"</img> "+Color.BLUE.wrap(username)+" has logged in.");
         }
 
         long endTime = System.currentTimeMillis() - startTime;
