@@ -11,8 +11,7 @@ import com.valinor.game.world.entity.mob.player.Player
 import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers.*
-import com.valinor.util.ItemIdentifiers.SCYTHE_OF_VITUR
-import com.valinor.util.ItemIdentifiers.TWISTED_BOW
+import com.valinor.util.ItemIdentifiers.*
 import com.valinor.util.NpcIdentifiers.WISE_OLD_MAN
 import com.valinor.util.Utils
 import java.time.LocalDateTime
@@ -84,23 +83,60 @@ object CollectPayments {
                         }
                     }.onDatabase(GameServer.getDatabaseService()) {
                         var paymentAmount = 0.0
+                        var isIronManItem = false
                         when (row.itemId) {
                             SCYTHE_OF_VITUR -> {
                                 paymentAmount = 150.0
+                                isIronManItem = false
                             }
                             TWISTED_BOW -> {
                                 paymentAmount = 150.0
+                                isIronManItem = false
                             }
                             DONATOR_MYSTERY_BOX -> {
                                 paymentAmount = 6.0
+                                isIronManItem = false
                             }
                             SUPER_MYSTERY_BOX -> {
                                 paymentAmount = 15.0
+                                isIronManItem = false
                             }
                             PETS_MYSTERY_BOX -> {
                                 paymentAmount = 40.0
+                                isIronManItem = false
+                            }
+                            RUNE_POUCH -> {
+                                paymentAmount = 3.0
+                                isIronManItem = true
+                            }
+                            IMBUED_HEART -> {
+                                paymentAmount = 5.0
+                                isIronManItem = true
+                            }
+                            VOID_SET -> {
+                                paymentAmount = 15.0
+                                isIronManItem = true
+                            }
+                            EXTRA_SUPPLY_CRATE -> {
+                                paymentAmount = 3.0
+                                isIronManItem = true
+                            }
+                            DWARF_CANNON_SET -> {
+                                paymentAmount = 10.0
+                                isIronManItem = true
+                            }
+                            COLLECTION_KEY -> {
+                                paymentAmount = 15.0
+                                isIronManItem = true
                             }
                         }
+
+                        val playerIsIron = gameMode().isIronman || gameMode().isHardcoreIronman || gameMode().isUltimateIronman
+                        if(playerIsIron && !isIronManItem) {
+                            message("You are unable to claim your order as a ironman. Contact a staff member to sort this out.")
+                            return@onDatabase
+                        }
+
                         val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0) + paymentAmount
                         putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
 
