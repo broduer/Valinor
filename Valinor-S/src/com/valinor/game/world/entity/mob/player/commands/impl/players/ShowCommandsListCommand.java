@@ -57,6 +57,14 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::empty</col> - Empties your inventory.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::clearbank</col> - Empties your bank.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::lockexp</col> - Lock and unlock your exp.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::chins</col> - Teleports you to the black chins in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::revs</col> - Teleports you to the revs in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::mb</col> - Teleports you to the mage bank.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::50s</col> - Teleports you to level 50 wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::44s</col> - Teleports you to level 44 wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::graves</col> - Teleports you to the graves in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::wests</col> - Teleports you to wests in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::easts</col> - Teleports you to easts in wilderness.");
 
         commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Member Commands:</col>");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::dzone</col> - Teleports you to the member zone.");

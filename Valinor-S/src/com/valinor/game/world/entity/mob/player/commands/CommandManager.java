@@ -48,7 +48,6 @@ public class CommandManager {
         commands.put("skull", skullCommand);
         commands.put("redskull", skullCommand);
         commands.put("kdr", new KDRCommand());
-        commands.put("cp", new ClanOutpostCommand());
         commands.put("pots", new PotsCommand());
         commands.put("brew", new BrewPotCommand());
         commands.put("restore", new SuperRestorePotCommand());
@@ -103,6 +102,15 @@ public class CommandManager {
         commands.put("tidus", new TidusCommand());
         commands.put("features", new FeaturesCommand());
         commands.put("promocode", new PromoCodeCommand());
+        commands.put("cp", new ClanOutpostCommand());
+        commands.put("chins", new ChinsCommand());
+        commands.put("revs", new RevsCommand());
+        commands.put("mb",new MageBankCommand());
+        commands.put("50s", new Wilderness50TeleportCommand());
+        commands.put("44s", new Wilderness44TeleportCommand());
+        commands.put("graves", new GravesTeleportCommand());
+        commands.put("wests", new WestsTeleportCommand());
+        commands.put("easts", new EastsTeleportCommand());
 
         /*
          * Member commands
@@ -274,7 +282,6 @@ public class CommandManager {
          */
         commands.put("csw", new CheckServerWealthCommand());
         commands.put("kickall", new KickAllCommand());
-        commands.put("setstaffonlylogin", new SetStaffOnlyLoginCommand());
         commands.put("tradepost", new TradingPostCommand());
         LazyCommands.init();
         KtCommands.INSTANCE.init();
