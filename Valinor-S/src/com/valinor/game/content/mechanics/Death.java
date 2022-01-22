@@ -7,6 +7,7 @@ import com.valinor.game.content.group_ironman.IronmanGroup;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.mechanics.break_items.BreakItemsOnDeath;
+import com.valinor.game.content.minigames.MinigameManager;
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.World;
@@ -158,6 +159,21 @@ public class Death {
                 logger.error("Error dropping items and loot!", e);
             }
 
+            var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
+            var duel_arena = player.getDueling().inDuel() || player.getDueling().endingDuel();
+            var pest_control = player.tile().region() == 10536;
+            var raids_area = player.getRaids() != null && player.getRaids().raiding(player);
+            var minigame_safe_death = player.getMinigame() != null && player.getMinigame().getType().equals(MinigameManager.ItemType.SAFE);
+
+            boolean hardcoreSafeDeath = in_tournament || duel_arena || pest_control || raids_area || minigame_safe_death;
+
+            /**
+             * HCIM - revoke status
+             */
+            if (player.gameMode() == GameMode.HARDCORE && !hardcoreSafeDeath) {
+                hardcoreDeath(player, killHit);
+            }
+
             player.clearAttrib(AttributeKey.TARGET); // Clear last attacked or interacted.
 
             // Close open interface. do this BEFORE MINIGAME HANDLING -> such as arena deaths.
@@ -171,8 +187,6 @@ public class Death {
                 player.getNightmareInstance().onDeath(player);
 
             var died_under_7_wild = WildernessArea.wildernessLevel(player.tile()) <= 7; // Or in edge pvp (not classed as wildy)
-            var duel_arena = player.getDueling().inDuel();
-            var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
 
             // If you die in FFA clan wars, you respawn at the lobby place.
             if (duel_arena) {
@@ -191,13 +205,6 @@ public class Death {
             } else {
                 player.teleport(GameServer.properties().defaultTile); //Teleport the player to Varrock square
                 player.message("Oh dear, you are dead!"); //Send the death message
-            }
-
-            /**
-             * HCIM - revoke status
-             */
-            if (player.gameMode() == GameMode.HARDCORE) {
-                hardcoreDeath(player, killHit);
             }
 
             if (player.<Boolean>getAttribOr(HP_EVENT_ACTIVE, false)) {
