@@ -16,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.valinor.game.content.title.TitleCategory.*;
@@ -84,7 +81,9 @@ public class TitlePlugin extends Interaction {
                     player.setEnterSyntax(new EnterSyntax() {
                         @Override
                         public void handleSyntax(Player player, @NotNull String input) {
-                            boolean illegal = Censor.containsBadWords(input) || Utils.containsMessageFormattingTag(input) || Utils.hasInvalidChars(input) || input.equalsIgnoreCase("Billionaire");
+                            List<String> wordsToBlock = Arrays.asList("billionaire", "mod", "moderator", "support", "admin", "administrator");
+                            boolean illegalWords = wordsToBlock.stream().anyMatch(w -> w.toLowerCase().contains(input));
+                            boolean illegal = Censor.containsBadWords(input) || Utils.containsMessageFormattingTag(input) || Utils.hasInvalidChars(input) || illegalWords;
                             if (input.length() >= 2 && input.length() <= 12 && !illegal) {
                                 CustomRequirement customRequirement = new CustomRequirement();
                                 AvailableTitle custom = new AvailableTitle(input, player.getCurrentCategory()).addRequirement(customRequirement);

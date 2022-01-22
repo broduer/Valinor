@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.dialogue.NifflerD;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Tuple;
@@ -140,7 +141,8 @@ public class PetAI extends Interaction {
 
         player.message("You have set your pet down on the ground.");
         player.animate(827);
-        Npc petNpc = new Npc(pet.npc, player.tile().transform(0, 1));
+        Tile tile = player.tile().transform(0,1);
+        Npc petNpc = new Npc(pet.npc, World.getWorld().randomTileAround(tile, 1));
         petNpc.walkRadius(-1); // Allow walking all across the map
         petNpc.putAttrib(AttributeKey.OWNING_PLAYER, new Tuple<>(player.getIndex(), player));
         petNpc.putAttrib(AttributeKey.PET_TYPE, pet);

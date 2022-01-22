@@ -31,6 +31,9 @@ public class ChamberOfSecretsRaidArea extends Controller {
 
     @Override
     public void leave(Mob mob) {
+        if(mob.isPlayer()) {
+            mob.getAsPlayer().getInterfaceManager().close(true);
+        }
     }
 
     @Override

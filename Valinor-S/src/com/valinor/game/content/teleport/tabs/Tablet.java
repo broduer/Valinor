@@ -20,7 +20,10 @@ public class Tablet extends Interaction {
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
-        return breakTablet(player, item.getId());
+        if(option == 1) {
+            return breakTablet(player, item.getId());
+        }
+        return false;
     }
 
     /**

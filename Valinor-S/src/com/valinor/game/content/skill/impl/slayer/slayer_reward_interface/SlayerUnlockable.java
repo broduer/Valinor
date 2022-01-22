@@ -54,7 +54,7 @@ public enum SlayerUnlockable {
 
     TREASURE_HUNT(63424, new Item(CASKET), 300, "Treasure hunt", "Learn how to find treasures whilst pvming.<br><col=ca0d0d>(300 points)"),
 
-    TELEPORT_TO_TASK(63425, new Item(TELEPORT_CARD), 100, "Task teleportation", "Unlock the ability to teleport straight to tasks. <col=ca0d0d>(100 <br><col=ca0d0d>points)"),
+    TELEPORT_TO_TASK(63425, new Item(TELEPORT_CARD), 100, "Task teleportation", "Unlock the ability to teleport straight to<br>tasks. <col=ca0d0d>(100 <col=ca0d0d>points)"),
 
     BIGGEST_AND_BADDEST(63426, new Item(SUPERIOR_DRAGON_BONES), 500, "Biggest and baddest", "Better chance to get a superior boss," + "<br>while on slayer task <col=ca0d0d>(500 points)"),
 

@@ -528,21 +528,21 @@ public class NexCombat extends CommonCombatMethod {
                     for (Mob t : possibleTargets) {
                         if (t == null || t.dead() || !t.isRegistered() || !t.tile().isWithinDistance(npc.tile(), 10))
                             continue;
-                        Projectile projectile = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile = new Projectile(new Tile(npc.getX() + 2, npc.getY() + 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile.sendProjectile();
-                        Projectile projectile2 = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY(), npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile2 = new Projectile(new Tile(npc.getX() + 2, npc.getY(), npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile2.sendProjectile();
-                        Projectile projectile3 = new Projectile(t.tile(), new Tile(npc.getX() + 2, npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile3 = new Projectile(new Tile(npc.getX() + 2, npc.getY() - 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile3.sendProjectile();
-                        Projectile projectile4 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile4 = new Projectile(new Tile(npc.getX() - 2, npc.getY() + 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile4.sendProjectile();
-                        Projectile projectile5 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY(), npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile5 = new Projectile(new Tile(npc.getX() - 2, npc.getY(), npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile5.sendProjectile();
-                        Projectile projectile6 = new Projectile(t.tile(), new Tile(npc.getX() - 2, npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile6 = new Projectile(new Tile(npc.getX() - 2, npc.getY() - 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile6.sendProjectile();
-                        Projectile projectile7 = new Projectile(t.tile(), new Tile(npc.getX(), npc.getY() + 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile7 = new Projectile(new Tile(npc.getX(), npc.getY() + 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile7.sendProjectile();
-                        Projectile projectile8 = new Projectile(t.tile(), new Tile(npc.getX(), npc.getY() - 2, npc.getZ()), -1, 2014, 65, 35, 24, 0, 0);
+                        Projectile projectile8 = new Projectile(new Tile(npc.getX(), npc.getY() - 2, npc.getZ()), t.tile(), -1, 2014, 65, 35, 24, 0, 0);
                         projectile8.sendProjectile();
                         t.hit(npc, World.getWorld().random(40));
                     }
