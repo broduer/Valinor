@@ -1317,6 +1317,30 @@ public class CustomItems {
             def.countobj = new int[]{30192, 30193, 30194, 30194, 0, 0, 0, 0, 0, 0};
         }
 
+        if(id == SAPPHIRE_MEMBER_RANK) {
+            ItemDefinition.copyInventory(def, SCROLL);
+            def.name = "<col=65280>Sapphire member rank scroll";
+            def.modelCustomColor4 = 31575;
+        }
+
+        if(id == FIFTY_TOTAL_DONATED_SCROLL) {
+            ItemDefinition.copyInventory(def, SCROLL);
+            def.name = "<col=65280>$50 Scroll";
+            def.modelCustomColor4 = 12222;
+        }
+
+        if(id == ONE_HUNDRED_TOTAL_DONATED_SCROLL) {
+            ItemDefinition.copyInventory(def, SCROLL);
+            def.name = "<col=65280>$100 Scroll";
+            def.modelCustomColor4 = 13133;
+        }
+
+        if(id == HUNDRED_FIFTY_TOTAL_DONATED_SCROLL) {
+            ItemDefinition.copyInventory(def, SCROLL);
+            def.name = "<col=65280>$150 Scroll";
+            def.modelCustomColor4 = 235;
+        }
+
         if (id == 30192) {
             ItemDefinition.copyInventory(def, 3985);
             def.name = "<col=65280>Winter Token";

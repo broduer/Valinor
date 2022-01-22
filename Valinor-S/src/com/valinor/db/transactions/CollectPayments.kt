@@ -137,7 +137,7 @@ object CollectPayments {
                             return@onDatabase
                         }
 
-                        val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0) + paymentAmount
+                        val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0.0) + paymentAmount
                         putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
 
                         //Check if we can update the rank

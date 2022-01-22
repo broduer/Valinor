@@ -114,6 +114,18 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == SAPPHIRE_MEMBER_RANK) {
+            name = "Sapphire member rank scroll";
+            grandexchange = true;
+        } else if (id == FIFTY_TOTAL_DONATED_SCROLL) {
+            name = "$50 Scroll";
+            grandexchange = true;
+        } else if (id == ONE_HUNDRED_TOTAL_DONATED_SCROLL) {
+            name = "$100 Scroll";
+            grandexchange = true;
+        } else if (id == HUNDRED_FIFTY_TOTAL_DONATED_SCROLL) {
+            name = "$150 Scroll";
+            grandexchange = true;
         } else if (id == PINK_SWEETS) {
             stackable = true;
         } else if (id == GIANT_KEY_OF_DROPS) {

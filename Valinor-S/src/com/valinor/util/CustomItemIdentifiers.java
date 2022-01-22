@@ -5,6 +5,10 @@ import static com.valinor.util.ItemIdentifiers.BANK_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int SAPPHIRE_MEMBER_RANK = 32520;
+    public static final int FIFTY_TOTAL_DONATED_SCROLL = 32521;
+    public static final int ONE_HUNDRED_TOTAL_DONATED_SCROLL = 32522;
+    public static final int HUNDRED_FIFTY_TOTAL_DONATED_SCROLL = 32523;
     public static final int VOID_SET = 32623;
     public static final int TREASURE_CASKET = 31836;
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
