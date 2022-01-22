@@ -51,6 +51,7 @@ object CollectPayments {
                         "Wait a minute and try again, or contact an Administrator."
                 )
             }
+            var sendNonIronmanMsg = false
             list.forEach { row ->
 
                 val item = row.itemId
@@ -64,100 +65,111 @@ object CollectPayments {
                     spaceFor = (!bank.contains(100_001) || bank.count(100_001) < Int.MAX_VALUE - 5)
                             && (!bank.contains(100_002) || bank.count(100_002) < Int.MAX_VALUE - 10)
                 }
-
+                
                 if (!spaceFor) {
                     // no space. inform user, purchase is NOT set as claimed.
                     message("Your bank was too full. Make some space and reclaim.")
-                } else {
-                    // now query again, setting claimed after we've confirmed they have space
-                    val currentDateTime = LocalDateTime.now()
-                    makeQuery {
-                        prepareStatement(
-                                connection,
-                                "UPDATE DoAIIDlB_rs_orders SET claimed='Claimed', claim_date=:date, claim_ip=:ip WHERE id=:id"
-                        ).apply {
-                            setInt("id", row.rowId)
-                            setString("date", currentDateTime.toString())
-                            setString("ip", hostAddress ?: "unknown")
-                            execute()
-                        }
-                    }.onDatabase(GameServer.getDatabaseService()) {
-                        var paymentAmount = 0.0
-                        var isIronManItem = false
-                        when (row.itemId) {
-                            SCYTHE_OF_VITUR -> {
-                                paymentAmount = 150.0
-                                isIronManItem = false
-                            }
-                            TWISTED_BOW -> {
-                                paymentAmount = 150.0
-                                isIronManItem = false
-                            }
-                            DONATOR_MYSTERY_BOX -> {
-                                paymentAmount = 6.0
-                                isIronManItem = false
-                            }
-                            SUPER_MYSTERY_BOX -> {
-                                paymentAmount = 15.0
-                                isIronManItem = false
-                            }
-                            PETS_MYSTERY_BOX -> {
-                                paymentAmount = 40.0
-                                isIronManItem = false
-                            }
-                            RUNE_POUCH -> {
-                                paymentAmount = 3.0
-                                isIronManItem = true
-                            }
-                            IMBUED_HEART -> {
-                                paymentAmount = 5.0
-                                isIronManItem = true
-                            }
-                            VOID_SET -> {
-                                paymentAmount = 15.0
-                                isIronManItem = true
-                            }
-                            EXTRA_SUPPLY_CRATE -> {
-                                paymentAmount = 3.0
-                                isIronManItem = true
-                            }
-                            DWARF_CANNON_SET -> {
-                                paymentAmount = 10.0
-                                isIronManItem = true
-                            }
-                            COLLECTION_KEY -> {
-                                paymentAmount = 15.0
-                                isIronManItem = true
-                            }
-                        }
-
-                        val playerIsIron = gameMode().isIronman || gameMode().isHardcoreIronman || gameMode().isUltimateIronman
-                        if(playerIsIron && !isIronManItem) {
-                            message("You are unable to claim your order as a ironman. Contact a staff member to sort this out.")
-                            return@onDatabase
-                        }
-
-                        val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0.0) + paymentAmount
-                        putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
-
-                        //Check if we can update the rank
-                        memberRights.update(this, false)
-
-                        //Buy two get one free promo
-                        if (GameServer.properties().buyTwoGetOneFree) {
-                            // Award a 'buy-two-get-one free' special if acceptable.
-                            val bonus = row.itemAmt / 2
-                            inventory.addOrBank(Item(row.itemId, row.itemAmt + bonus))
-                            Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} bonus amt + $bonus ${Item(row.itemId).name()}.", "donations_claimed")
-                            if (bonus > 0)
-                                message("${Color.RED.tag()}You have been rewarded extra items because of our active payment deal.")
-                        } else {
-                            //No promo active, give the purchase items without bonus
-                            inventory.addOrBank(Item(row.itemId, row.itemAmt))
-                            Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} ${Item(row.itemId).name()}.", "donations_claimed")
-                        }
+                    return@forEach // continue to next
+                }
+                var isIronManItem = false
+                when (row.itemId) {
+                    DONATOR_MYSTERY_BOX -> {
+                        isIronManItem = false
+                    }
+                    SUPER_MYSTERY_BOX -> {
+                        isIronManItem = false
+                    }
+                    PETS_MYSTERY_BOX -> {
+                        isIronManItem = false
+                    }
+                    RAIDS_MYSTERY_BOX -> {
+                        isIronManItem = false
+                    }
+                    MYSTERY_CHEST -> {
+                        isIronManItem = false
                     }
                 }
+                val playerIsIron = gameMode().isIronman || gameMode().isHardcoreIronman || gameMode().isUltimateIronman
+                if(playerIsIron && !isIronManItem) {
+                    sendNonIronmanMsg = true
+                    return@forEach
+                }
+
+                    // now query again, setting claimed after we've confirmed they have space
+                val currentDateTime = LocalDateTime.now()
+                // because it gives items here, the code below is for after stuff is claimed not before
+                makeQuery {
+                    prepareStatement(
+                            connection,
+                            "UPDATE DoAIIDlB_rs_orders SET claimed='Claimed', claim_date=:date, claim_ip=:ip WHERE id=:id"
+                    ).apply {
+                        setInt("id", row.rowId)
+                        setString("date", currentDateTime.toString())
+                        setString("ip", hostAddress ?: "unknown")
+                        execute()
+                    }
+                }.onDatabase(GameServer.getDatabaseService()) {
+                    var paymentAmount = 0.0
+                    when (row.itemId) {
+                        DONATOR_MYSTERY_BOX -> {
+                            paymentAmount = 6.0
+                        }
+                        SUPER_MYSTERY_BOX -> {
+                            paymentAmount = 15.0
+                        }
+                        PETS_MYSTERY_BOX -> {
+                            paymentAmount = 40.0
+                        }
+                        RAIDS_MYSTERY_BOX -> {
+                            paymentAmount = 55.0
+                        }
+                        MYSTERY_CHEST -> {
+                            paymentAmount = 250.0
+                        }
+                        RUNE_POUCH -> {
+                            paymentAmount = 3.0
+                        }
+                        IMBUED_HEART -> {
+                            paymentAmount = 5.0
+                        }
+                        VOID_SET -> {
+                            paymentAmount = 15.0
+                        }
+                        EXTRA_SUPPLY_CRATE -> {
+                            paymentAmount = 3.0
+                        }
+                        DWARF_CANNON_SET -> {
+                            paymentAmount = 10.0
+                        }
+                        COLLECTION_KEY -> {
+                            paymentAmount = 15.0
+                        }
+                    }
+
+                    val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0.0) + paymentAmount
+                    putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
+
+                    //Check if we can update the rank
+                    memberRights.update(this, false)
+
+                    //Buy two get one free promo
+                    if (GameServer.properties().buyTwoGetOneFree) {
+                        // Award a 'buy-two-get-one free' special if acceptable.
+                        val bonus = row.itemAmt / 2
+                        inventory.addOrBank(Item(row.itemId, row.itemAmt + bonus))
+                        Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} bonus amt + $bonus ${Item(row.itemId).name()}.", "donations_claimed")
+                        if (bonus > 0)
+                            message("${Color.RED.tag()}You have been rewarded extra items because of our active payment deal.")
+                    } else {
+                        //No promo active, give the purchase items without bonus
+                        inventory.addOrBank(Item(row.itemId, row.itemAmt))
+                        Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} ${Item(row.itemId).name()}.", "donations_claimed")
+                    }
+                }
+
+            }
+            if (sendNonIronmanMsg) { // there
+                message("You are unable to claim your order as a ironman. Contact a staff member to sort this out.")
             }
         }
     }
