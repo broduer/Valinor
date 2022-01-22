@@ -11,8 +11,6 @@ import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
-import java.util.Arrays;
-
 import static com.valinor.game.content.collection_logs.CollectionLog.TOB_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -55,7 +53,7 @@ public class TheatreOfBloodRewards {
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
                 continue;
-            if (uniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+            if (TOBUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
                 String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (TOB)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
@@ -95,7 +93,7 @@ public class TheatreOfBloodRewards {
         }
     }
 
-    private static final LootTable uniqueTable = new LootTable()
+    private static final LootTable TOBUniqueTable = new LootTable()
         .addTable(1,
             new LootItem(AVERNIC_DEFENDER_HILT, 1, 6),
             new LootItem(JUSTICIAR_FACEGUARD, 1, 5),
@@ -154,7 +152,7 @@ public class TheatreOfBloodRewards {
         //System.out.println(chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
-            Item item = rollUnique();
+            Item item = rollUnique().copy();
             player.getRaidRewards().add(item);
             BOSSES.log(player, TOB_RAIDS_KEY, item);
             rare = player;
@@ -163,9 +161,9 @@ public class TheatreOfBloodRewards {
         //Only give normal drops when you did not receive any rares.
         //regular drops
         if (player != rare) {
-            Item item1 = rollRegular();
-            Item item2 = rollRegular();
-            Item item3 = rollRegular();
+            Item item1 = rollRegular().copy();
+            Item item2 = rollRegular().copy();
+            Item item3 = rollRegular().copy();
             player.getRaidRewards().add(item1);
             player.getRaidRewards().add(item2);
             player.getRaidRewards().add(item3);
@@ -178,6 +176,6 @@ public class TheatreOfBloodRewards {
     }
 
     private static Item rollUnique() {
-        return uniqueTable.rollItem();
+        return TOBUniqueTable.rollItem();
     }
 }

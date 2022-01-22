@@ -46,7 +46,7 @@ public class ChamberOfSecretsReward {
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
                 continue;
-            if (uniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+            if (COSUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
                 String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (COS)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
@@ -84,7 +84,7 @@ public class ChamberOfSecretsReward {
         player.getPacketSender().sendItemOnInterfaceSlot(12024, new Item(DARK_JOURNAL), 0);
     }
 
-    private static final LootTable uniqueTable = new LootTable()
+    private static final LootTable COSUniqueTable = new LootTable()
         .addTable(1,
             new LootItem(KEY_OF_DROPS, 1, 7),
             new LootItem(SWORD_OF_GRYFFINDOR, 1, 6),
@@ -156,7 +156,7 @@ public class ChamberOfSecretsReward {
         //System.out.println(chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
-            Item item = rollUnique();
+            Item item = rollUnique().copy();
             player.getRaidRewards().add(item);
             BOSSES.log(player, COS_RAIDS_KEY, item);
             rare = player;
@@ -165,8 +165,8 @@ public class ChamberOfSecretsReward {
         //Only give normal drops when you did not receive any rares.
         //regular drops
         if (player != rare) {
-            Item item = rollRegular();
-            Item item2 = rollRegular();
+            Item item = rollRegular().copy();
+            Item item2 = rollRegular().copy();
             player.getRaidRewards().add(item);
             player.getRaidRewards().add(item2);
             Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Secrets! Personal Points: " + Utils.formatNumber(personalPoints), "cos_reward");
@@ -178,6 +178,6 @@ public class ChamberOfSecretsReward {
     }
 
     private static Item rollUnique() {
-        return uniqueTable.rollItem();
+        return COSUniqueTable.rollItem();
     }
 }

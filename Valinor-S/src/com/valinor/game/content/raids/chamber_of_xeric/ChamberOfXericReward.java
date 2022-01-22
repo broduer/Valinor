@@ -53,7 +53,7 @@ public class ChamberOfXericReward {
         for (Item item : player.getRaidRewards().getItems()) {
             if (item == null)
                 continue;
-            if (uniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+            if (COXUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
                 String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of xeric</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (COX)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
@@ -90,7 +90,7 @@ public class ChamberOfXericReward {
         player.getPacketSender().sendItemOnInterfaceSlot(12024, new Item(DARK_JOURNAL), 0);
     }
 
-    private static final LootTable uniqueTable = new LootTable()
+    private static final LootTable COXUniqueTable = new LootTable()
         .addTable(1,
             new LootItem(DEXTEROUS_PRAYER_SCROLL, 1, 20),
             new LootItem(ARCANE_PRAYER_SCROLL, 1, 20),
@@ -154,7 +154,7 @@ public class ChamberOfXericReward {
         //System.out.println(chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
-            Item item = rollUnique();
+            Item item = rollUnique().copy();
             player.getRaidRewards().add(item);
             BOSSES.log(player, COX_RAIDS_KEY, item);
             rare = player;
@@ -163,8 +163,8 @@ public class ChamberOfXericReward {
         //Only give normal drops when you did not receive any rares.
         //regular drops
         if (player != rare) {
-            Item item = rollRegular();
-            Item item2 = rollRegular();
+            Item item = rollRegular().copy();
+            Item item2 = rollRegular().copy();
             player.getRaidRewards().add(item);
             player.getRaidRewards().add(item2);
             Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
@@ -176,6 +176,6 @@ public class ChamberOfXericReward {
     }
 
     private static Item rollUnique() {
-        return uniqueTable.rollItem();
+        return COXUniqueTable.rollItem();
     }
 }
