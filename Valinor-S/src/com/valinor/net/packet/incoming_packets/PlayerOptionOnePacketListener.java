@@ -1,6 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
-import com.valinor.game.content.seasonal_events.christmas.Christmas;
+import com.valinor.game.content.seasonal_events.christmas.WinterEvent;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -41,7 +41,7 @@ public class PlayerOptionOnePacketListener implements PacketListener {
             player.putAttrib(AttributeKey.TARGET, new WeakReference<Mob>(other));
 
             if(player.getEquipment().contains(SNOWBALL)) {
-                Christmas.throwSnow(player, other);
+                WinterEvent.throwSnow(player, other);
                 return;
             }
 

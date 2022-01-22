@@ -681,8 +681,8 @@ public class ItemDefinition implements Definition {
             name = "H'ween token";
             ioptions = new String[]{null, null, null, null, "Drop"};
             grandexchange = true;
-        } else if (id == XMAS_TOKENS) {
-            name = "X'mas token";
+        } else if (id == WINTER_TOKENS) {
+            name = "Winter token";
             ioptions = new String[]{null, null, null, null, "Drop"};
             grandexchange = true;
         } else if (id == CORRUPTED_BOOTS) {

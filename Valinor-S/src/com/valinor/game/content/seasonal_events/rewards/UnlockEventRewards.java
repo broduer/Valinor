@@ -85,7 +85,7 @@ public class UnlockEventRewards {
         if(event.equalsIgnoreCase("H'ween")) {
             tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
             player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
-        } else if(event.equalsIgnoreCase("X'mas")) {
+        } else if(event.equalsIgnoreCase("Winter")) {
             tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
             player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
         }
@@ -120,7 +120,7 @@ public class UnlockEventRewards {
 
     private static final Item COMPLETED_EVENT_REWARD = new Item(MYSTERY_TICKET,2);
 
-    private static final Item TOKEN_REQUIREMENT = GameServer.properties().halloween ? new Item(HWEEN_TOKENS, 5000) : new Item(XMAS_TOKENS, 10_000);
+    private static final Item TOKEN_REQUIREMENT = GameServer.properties().halloween ? new Item(HWEEN_TOKENS, 5000) : new Item(WINTER_TOKENS, 10_000);
 
     private static final ArrayList<Item> items = new ArrayList<>();
 
@@ -134,7 +134,7 @@ public class UnlockEventRewards {
     public void open(String event) {
         if(event.equalsIgnoreCase("H'ween")) {
             player.getPacketSender().sendString(73304, "Halloween event 2021");
-        } else if(event.equalsIgnoreCase("X'mas")) {
+        } else if(event.equalsIgnoreCase("Winter")) {
             player.getPacketSender().sendString(73304, "Christmas event 2021");
         }
 
@@ -162,8 +162,8 @@ public class UnlockEventRewards {
         //Clear the rolled item slot
         player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, null, 0);
 
-        //X'mas event has no reset button
-        if(event.equalsIgnoreCase("X'mas")) {
+        //Winter event has no reset button
+        if(event.equalsIgnoreCase("Winter")) {
             player.getPacketSender().sendInterfaceDisplayState(73310, true);
         }
     }

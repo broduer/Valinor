@@ -1308,9 +1308,9 @@ public class CustomItems {
             def.modelCustomColor4 = 22222;
         }
 
-        if (id == XMAS_TOKENS) {
+        if (id == WINTER_TOKENS) {
             ItemDefinition.copyInventory(def, 13204);
-            def.name = "<col=65280>X'mas token";
+            def.name = "<col=65280>Winter token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
             def.recolorTo = new int[]{127, 155, 374770};
             def.countco = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
@@ -1319,21 +1319,21 @@ public class CustomItems {
 
         if (id == 30192) {
             ItemDefinition.copyInventory(def, 3985);
-            def.name = "<col=65280>X'mas Token";
+            def.name = "<col=65280>Winter Token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
             def.recolorTo = new int[]{127, 155, 374770};
         }
 
         if (id == 30193) {
             ItemDefinition.copyInventory(def, 3987);
-            def.name = "<col=65280>X'mas Token";
+            def.name = "<col=65280>Winter Token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
             def.recolorTo = new int[]{127, 155, 374770};
         }
 
         if (id == 30194) {
             ItemDefinition.copyInventory(def, 3989);
-            def.name = "<col=65280>X'mas Token";
+            def.name = "<col=65280>Winter Token";
             def.recolorFrom = new int[]{5813, 9139, 26006};
             def.recolorTo = new int[]{127, 155, 374770};
         }

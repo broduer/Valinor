@@ -32,8 +32,8 @@ public class GameConstants {
         new Item(IRON_SCIMITAR), new Item(RUNE_SCIMITAR),
         //Regular bow and bronze arrows
         new Item(SHORTBOW), new Item(BRONZE_ARROW, 1000),
-        //Glory (6) and climbing boots
-        new Item(AMULET_OF_GLORY6), new Item(CLIMBING_BOOTS),
+        //Power ammy and climbing boots
+        new Item(AMULET_OF_POWER), new Item(CLIMBING_BOOTS),
         //Standard runes
         new Item(FIRE_RUNE, 1000), new Item(WATER_RUNE, 1000), new Item(AIR_RUNE, 1000), new Item(EARTH_RUNE, 1000), new Item(MIND_RUNE, 1000),
         //Food (Lobsters, noted)

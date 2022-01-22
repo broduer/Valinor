@@ -20,21 +20,21 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum DailyTasks {
 
-    ROCK_CRABS("Rock crabs", "Kill 20 rock crabs", "Any!", "Safe", new Tile(2706, 3713), 20, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, ROCK_CRABS_DAILY_TASK_COMPLETED, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
+    ROCK_CRABS("Rock crabs", "Kill 20 rock crabs", "Any!", "Safe", new Tile(2706, 3713), 20, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, ROCK_CRABS_DAILY_TASK_COMPLETED, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    EXPERIMENTS("Experiments", "Kill 20 experiments", "25+", "Safe", new Tile(3556, 9944), 20, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, EXPERIMENTS_DAILY_TASK_COMPLETED, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
+    EXPERIMENTS("Experiments", "Kill 20 experiments", "25+", "Safe", new Tile(3556, 9944), 20, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, EXPERIMENTS_DAILY_TASK_COMPLETED, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    THIEVING("Thieving", "Steal from 100 stalls or pick-pockets", "Any!", "Safe", new Tile(3084,3475), 100, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, THIEVING_DAILY_TASK_COMPLETED, THIEVING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15)) {
+    THIEVING("Thieving", "Steal from 100 stalls or pick-pockets", "Any!", "Safe", new Tile(3084,3475), 100, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, THIEVING_DAILY_TASK_COMPLETED, THIEVING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -55,7 +55,7 @@ public enum DailyTasks {
         }
     },
 
-    SLAYER("Slayer", "Complete 5 slayer tasks","25+", "Safe", null, 5, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(XMAS_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(POINTS_MYSTERY_CHEST, 1), new Item(SLAYER_TELEPORT_SCROLL, 5)) {
+    SLAYER("Slayer", "Complete 5 slayer tasks","25+", "Safe", null, 5, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 100), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(POINTS_MYSTERY_CHEST, 1), new Item(SLAYER_TELEPORT_SCROLL, 5)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -69,28 +69,28 @@ public enum DailyTasks {
         }
     },
 
-    BARROWS("Barrows", "Complete 3 barrows runs", "70+", "Safe", new Tile(3565, 3306), 3, BARROWS_TASK_COMPLETION_AMOUNT, BARROWS_DAILY_TASK_COMPLETED, BARROWS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 1_500_000), new Item(BARROWS_MYSTERY_BOX)) {
+    BARROWS("Barrows", "Complete 3 barrows runs", "70+", "Safe", new Tile(3565, 3306), 3, BARROWS_TASK_COMPLETION_AMOUNT, BARROWS_DAILY_TASK_COMPLETED, BARROWS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 250), new Item(COINS_995, 1_500_000), new Item(BARROWS_MYSTERY_BOX)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    GREEN_DRAGONS("Green dragons", "Kill 30 green dragons", "70+", "Dangerous", new Tile(3343, 3664), 30, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, GREEN_DRAGONS_DAILY_TASK_COMPLETED, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 1_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
+    GREEN_DRAGONS("Green dragons", "Kill 30 green dragons", "70+", "Dangerous", new Tile(3343, 3664), 30, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, GREEN_DRAGONS_DAILY_TASK_COMPLETED, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 250), new Item(COINS_995, 1_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    IMPLING("Impling catching", "Catch 35 implings", "Any!", "Safe", new Tile(2592,4317), 35, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, IMPLING_DAILY_TASK_COMPLETED, IMPLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(XMAS_TOKENS, 250), new Item(COINS_995, 1_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
+    IMPLING("Impling catching", "Catch 35 implings", "Any!", "Safe", new Tile(2592,4317), 35, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, IMPLING_DAILY_TASK_COMPLETED, IMPLING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 250), new Item(COINS_995, 1_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    RAIDING("Raids", "Complete 5 raids of any type", "126+", "Safe", new Tile(1245, 3561), 5, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, RAIDS_DAILY_TASK_COMPLETED, RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(XMAS_TOKENS, 2500), new Item(COINS_995, 2_500_000), new Item(POINTS_MYSTERY_BOX+1,5), new Item(POINTS_MYSTERY_CHEST)) {
+    RAIDING("Raids", "Complete 5 raids of any type", "126+", "Safe", new Tile(1245, 3561), 5, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, RAIDS_DAILY_TASK_COMPLETED, RAIDS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 2500), new Item(COINS_995, 2_500_000), new Item(POINTS_MYSTERY_BOX+1,5), new Item(POINTS_MYSTERY_CHEST)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

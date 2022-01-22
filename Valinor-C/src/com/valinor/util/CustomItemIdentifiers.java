@@ -15,7 +15,7 @@ public class CustomItemIdentifiers {
     public static final int PVMING_SCROLL = 30384;
     public static final int TASK_BOTTLE_SKILLING = 30385;
     public static final int TASK_BOTTLE_PVMING = 30386;
-    public static final int XMAS_TOKENS = 30191;
+    public static final int WINTER_TOKENS = 30191;
     public static final int POINTS_MYSTERY_BOX = 30186;
     public static final int BARROWS_MYSTERY_BOX = 30188;
     public static final int POINTS_MYSTERY_CHEST = 30189;

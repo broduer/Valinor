@@ -14933,7 +14933,7 @@ public class Client extends GameApplet {
 
         if (ClientConstants.CAN_SWITCH_MUSIC) {
             if (setting.music && !low_detail) {
-                playSong(ClientConstants.CHRISTMAS ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
+                playSong(ClientConstants.WINTER ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
                 spriteCache.get(58).drawSprite(726, 464);
             } else {
                 spriteCache.get(59).drawSprite(726, 464);
@@ -15408,7 +15408,7 @@ public class Client extends GameApplet {
                         if (SignLink.music != null) {
                             SignLink.music.start();
                         }
-                        playSong(ClientConstants.CHRISTMAS ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
+                        playSong(ClientConstants.WINTER ? SoundConstants.XMAS_THEME : ClientConstants.HALLOWEEN ? SoundConstants.HWEEN_THEME : SoundConstants.SCAPE_RUNE);
                         spriteCache.get(58).drawSprite(726, 464);
                     } else {
                         spriteCache.get(59).drawSprite(726, 464);

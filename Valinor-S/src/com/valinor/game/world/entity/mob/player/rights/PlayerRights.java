@@ -170,7 +170,7 @@ public enum PlayerRights {
     }
 
     public boolean isStaffMemberOrYoutuber(Player player) {
-        return isServerSupport() || isModerator() || isAdminOrGreater(player)|| isYoutuber(player);
+        return isServerSupport() || isModerator() || isAdminOrGreater(player) || isYoutuber(player);
     }
 
     public boolean isYoutuber(Player player) {

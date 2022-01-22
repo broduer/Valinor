@@ -63,7 +63,7 @@ public class ItemDrops {
                     // not fixed-amount drop, amount has a min/max amount randomly given
                     Item dropped = new Item(tableItem.id, Utils.random(tableItem.min, tableItem.max));
                     int itemId = dropped.getId();
-                    var eventCurrency = itemId == HWEEN_TOKENS || itemId == XMAS_TOKENS;
+                    var eventCurrency = itemId == HWEEN_TOKENS || itemId == WINTER_TOKENS;
 
                     if (eventCurrency) {
                         if (inWilderness) {

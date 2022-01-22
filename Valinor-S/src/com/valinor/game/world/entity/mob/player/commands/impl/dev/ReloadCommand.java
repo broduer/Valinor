@@ -1,6 +1,5 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
-import com.valinor.game.content.seasonal_events.christmas.Christmas;
 import com.valinor.game.content.skill.impl.fishing.Fishing;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.World;

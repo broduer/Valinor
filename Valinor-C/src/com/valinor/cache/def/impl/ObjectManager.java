@@ -2,8 +2,7 @@ package com.valinor.cache.def.impl;
 
 import com.valinor.cache.def.ObjectDefinition;
 
-import static com.valinor.ClientConstants.CHRISTMAS;
-import static com.valinor.ClientConstants.HALLOWEEN;
+import static com.valinor.ClientConstants.*;
 
 public class ObjectManager {
 
@@ -124,15 +123,15 @@ public class ObjectManager {
         }
 
         if (id == 2654) {
-            definition.name = HALLOWEEN ? "Blood fountain" : CHRISTMAS ? "Snow fountain" : "Fountain";
+            definition.name = HALLOWEEN ? "Blood fountain" : WINTER ? "Snow fountain" : "Fountain";
             definition.sizeX = 3;
             definition.sizeY = 3;
-            definition.actions[0] = HALLOWEEN || CHRISTMAS ? "Rewards" : null;
+            definition.actions[0] = HALLOWEEN || WINTER ? "Rewards" : null;
             definition.actions[1] = null;
             if (HALLOWEEN) {
                 definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
                 definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 926, 926};
-            } else if (CHRISTMAS) {
+            } else if (WINTER) {
                 definition.recolorFrom = new int[]{10266, 10270, 10279, 10275, 10283, 33325, 33222};
                 definition.recolorTo = new int[]{10266, 10270, 10279, 10275, 10283, 127, 126};
             }

@@ -25,7 +25,7 @@ import java.util.List;
 
 import static com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards.UNLOCKED_ITEM_SLOT;
 import static com.valinor.game.content.skill.impl.hunter.Impling.OVERWORLD_RANDOM_SPAWN_TILES;
-import static com.valinor.util.CustomItemIdentifiers.XMAS_TOKENS;
+import static com.valinor.util.CustomItemIdentifiers.WINTER_TOKENS;
 import static com.valinor.util.CustomNpcIdentifiers.SANTA;
 import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP;
 import static com.valinor.util.ItemIdentifiers.SNOWBALL;
@@ -35,7 +35,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since November 30, 2021
  */
-public class Christmas extends Interaction {
+public class WinterEvent extends Interaction {
 
     private static final Logger logger = LogManager.getLogger(Halloween.class);
 
@@ -43,11 +43,11 @@ public class Christmas extends Interaction {
     private static final int OVERWORLD_MAX_ICE_IMP = 200;
 
     public static void loadNpcs() {
-        Npc santa = new Npc(SANTA, new Tile(3096, 3486));
-        World.getWorld().registerNpc(santa);
+        //Npc santa = new Npc(SANTA, new Tile(3096, 3486));
+        //World.getWorld().registerNpc(santa);
 
         loadIceImp();
-        logger.info("Loaded christmas npcs.");
+        logger.info("Loaded winter npcs.");
     }
 
     public static void loadObjects() {
@@ -121,8 +121,8 @@ public class Christmas extends Interaction {
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 73307) {
-            player.optionsTitled("Exchange your 5,000 X'mas tokens for a reward?", "Yes", "No", () -> {
-                if (!player.inventory().contains(new Item(XMAS_TOKENS, 10_000))) {
+            player.optionsTitled("Exchange your 5,000 Winter tokens for a reward?", "Yes", "No", () -> {
+                if (!player.inventory().contains(new Item(WINTER_TOKENS, 10_000))) {
                     return;
                 }
 
@@ -137,12 +137,12 @@ public class Christmas extends Interaction {
                     return;
                 }
 
-                if (player.inventory().contains(new Item(XMAS_TOKENS, 10_000))) {
+                if (player.inventory().contains(new Item(WINTER_TOKENS, 10_000))) {
                     player.getEventRewards().refreshItems();
                     player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(), 0);
-                    player.getEventRewards().rollForReward(XMAS_TOKENS, 10_000, reward.copy(), "X'mas");
+                    player.getEventRewards().rollForReward(WINTER_TOKENS, 10_000, reward.copy(), "Winter");
                 } else {
-                    player.message(Color.RED.wrap("You do not have enough X'mas tokens to roll for a reward."));
+                    player.message(Color.RED.wrap("You do not have enough Winter tokens to roll for a reward."));
                 }
             });
             return true;
@@ -155,7 +155,7 @@ public class Christmas extends Interaction {
         if (option == 1) {
             if (object.getId() == 2654) {
                 if (GameServer.properties().christmas) {
-                    player.getEventRewards().open("X'mas");
+                    player.getEventRewards().open("Winter");
                 }
                 return true;
             }

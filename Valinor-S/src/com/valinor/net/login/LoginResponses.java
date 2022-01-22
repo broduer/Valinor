@@ -76,13 +76,6 @@ public final class LoginResponses {
             return OLD_CLIENT_VERSION;
         }
 
-        if (GameServer.properties().staffOnlyLogins && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
-            return LOGIN_SERVER_MAINTENANCE;
-        }
-        if (GameServer.properties().maintenanceMode && !player.getPlayerRights().isAdminOrGreater(player)) {
-            return LOGIN_SERVER_MAINTENANCE;
-        }
-
         if (World.getWorld().getPlayers().isFull()) {
             return LOGIN_WORLD_FULL;
         }
@@ -177,6 +170,11 @@ public final class LoginResponses {
             PlayerSave.save(player);
             FarmingSaving.save(player);
         }
+
+        if (GameServer.properties().staffOnlyLogins && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+            return LOGIN_SERVER_MAINTENANCE;
+        }
+
         return LOGIN_SUCCESSFUL;
     }
 
