@@ -76,7 +76,7 @@ public final class LoginResponses {
             return OLD_CLIENT_VERSION;
         }
 
-        if (GameServer.isStaffOnlyLogins() && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+        if (GameServer.properties().staffOnlyLogins && !player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
             return LOGIN_SERVER_MAINTENANCE;
         }
         if (GameServer.properties().maintenanceMode && !player.getPlayerRights().isAdminOrGreater(player)) {

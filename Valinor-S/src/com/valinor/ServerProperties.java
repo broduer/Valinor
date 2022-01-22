@@ -97,6 +97,7 @@ public final class ServerProperties {
 
     private ServerProperties(boolean sqlOn, boolean discordLoggingOn) {
         // Default property values. If the server properties file exists, these will be ignored.
+        staffOnlyLogins = false;
         gameVersion = "2";
         definitionsDirectory = "./data/def/";
         dumpDefinitionsDirectory = "./data/dump/";
@@ -239,6 +240,11 @@ public final class ServerProperties {
 
     public final String fileStore;
     public final boolean definitionsLazy;
+
+    /**
+     * The flag that determines if the server is accepting non-staff logins.
+     */
+    public boolean staffOnlyLogins;
 
     /**
      * The current game/client version.

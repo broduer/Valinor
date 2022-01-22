@@ -44,11 +44,6 @@ public class GameServer {
     private static volatile boolean isUpdating;
 
     /**
-     * The flag that determines if the server is accepting non-staff logins.
-     */
-    private static volatile boolean staffOnlyLogins = false;
-
-    /**
      * The flooder used to stress-test the server.
      */
     private static final Flooder flooder = new Flooder();
@@ -329,13 +324,5 @@ public class GameServer {
         } else {
             databaseService = new DatabaseService.DisabledDatabaseService();
         }
-    }
-
-    public static boolean isStaffOnlyLogins() {
-        return staffOnlyLogins;
-    }
-
-    public static void setStaffOnlyLogins(boolean staffOnlyLogins) {
-        GameServer.staffOnlyLogins = staffOnlyLogins;
     }
 }

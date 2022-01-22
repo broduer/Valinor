@@ -24,7 +24,7 @@ public final class ClientConstants {
     /*
      * This determines if we are going to connect to the live server or local server.
      */
-    public static final boolean production = true;
+    public static final boolean production = false;
     public static final boolean test = false;
 
     public static final String CLIENT_VERSION = "1.0.0";

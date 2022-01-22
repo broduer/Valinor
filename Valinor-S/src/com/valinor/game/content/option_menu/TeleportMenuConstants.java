@@ -231,8 +231,8 @@ public class TeleportMenuConstants {
         teleportOptions.put(53, new OptionMenu("<img=1049>Revenants", new String[] { "Revenants", "revs", "rev cave" },
             new TeleportAction(player, new Tile(3127, 3832,0))));
 
-        teleportOptions.put(54, new OptionMenu("Raids", new String[] { "Boss", "Raids" },
-            new TeleportAction(player, new Tile(1245, 3561,0))));
+        teleportOptions.put(54, new OptionMenu("Raids", new String[] { "Boss", "Raids", "tob", "cos", "cox", "chamber", "theatre" },
+            new TeleportAction(player, new Tile(3097, 3478,0))));
 
         /*teleportOptions.put(55, new OptionMenu("Duel Arena", new String[] { "Minigames", "Duel Arena", "Staking" },
             new TeleportAction(player, new Tile(3365, 3265, 0))));*/
