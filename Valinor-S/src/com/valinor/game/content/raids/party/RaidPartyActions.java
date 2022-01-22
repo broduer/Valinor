@@ -94,7 +94,7 @@ public class RaidPartyActions extends Interaction {
         }
 
         if (button == 12140) {
-            if (player.tile().region() != 4919) {
+            if (player.tile().region() != 12342) {
                 player.message("You can't invite players from here.");
                 return true;
             }

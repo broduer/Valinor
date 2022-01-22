@@ -20,7 +20,7 @@ public class PartyDialogue extends Dialogue {
     protected void select(int option) {
         if(isPhase(0)) {
             if(option == 1) {
-                if(player.tile().region() != 4919) {
+                if(player.tile().region() != 12342) {
                     stop();
                     player.message("You can't invite players from here.");
                     return;
