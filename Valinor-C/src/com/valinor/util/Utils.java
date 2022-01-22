@@ -118,6 +118,21 @@ public final class Utils {
             's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4',
             '5', '6', '7', '8', '9' };
 
+    /**
+     * An array containing invalid title characters.
+     */
+    public static final char[] INVALID_TITLE_CHARACTERS = {'_', '!', '@', '$', '%', '^', '&', '*', '(', ')', '-',
+        '+', '=', ':', ';', '.', '>', '<', ',', '"', '[', ']', '|', '?', '/', '`'};
+
+    public static boolean hasInvalidChars(String title) {
+        for (char c : INVALID_TITLE_CHARACTERS) {
+            if (title.indexOf(c) != -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static long longForName(String s) {
         long l = 0L;
         for (int i = 0; i < s.length() && i < 12; i++) {

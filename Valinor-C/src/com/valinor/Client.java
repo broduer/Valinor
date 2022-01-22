@@ -7624,11 +7624,21 @@ public class Client extends GameApplet {
                         update_chat_producer = true;
                     }
                     if (rsi.updatesEveryInput && rsi.defaultText.length() > 0 && key != 10 && key != 13) {
+                        if(Utils.hasInvalidChars(rsi.defaultText)) {
+                            sendMessage("You cannot use invalid characters.", 0, "");
+                            rsi.defaultText = "";
+                            return;
+                        }
                         packetSender.inputField(4 + rsi.defaultText.length() + 1, rsi.id, rsi.defaultText);
                         inputString = "";
                         promptInput = "";
                         break;
                     } else if ((key == 10 || key == 13) && !rsi.updatesEveryInput) {
+                        if(Utils.hasInvalidChars(rsi.defaultText)) {
+                            sendMessage("You cannot use invalid characters.", 0, "");
+                            rsi.defaultText = "";
+                            return;
+                        }
                         packetSender.inputField(4 + rsi.defaultText.length() + 1, rsi.id, rsi.defaultText);
                         inputString = "";
                         promptInput = "";
@@ -7978,19 +7988,6 @@ public class Client extends GameApplet {
         } catch (IOException e) {
             e.printStackTrace();
             addReportToServer(e.getMessage());
-        }
-    }
-
-    private void updateInputField(final Widget rsi) {
-
-        switch (rsi.id) {
-
-            default:
-                packetSender.inputField(4 + rsi.defaultText.length() + 1, rsi.id, rsi.defaultText);
-                inputString = "";
-                promptInput = "";
-                break;
-
         }
     }
 
