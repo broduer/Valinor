@@ -43,12 +43,12 @@ public class MemberZone extends Interaction {
 
             //Make sure we're in the member zone
             if (player.tile().memberZone()) {
-                if((npc.id() == ANCIENT_REVENANT_DARK_BEAST || npc.id() == ANCIENT_REVENANT_ORK || npc.id() == ANCIENT_REVENANT_CYCLOPS || npc.id() == ANCIENT_REVENANT_DRAGON || npc.id() == ANCIENT_REVENANT_KNIGHT) && ruby_member) {
+                if((npc.id() == ANCIENT_REVENANT_DARK_BEAST || npc.id() == ANCIENT_REVENANT_ORK || npc.id() == ANCIENT_REVENANT_CYCLOPS || npc.id() == ANCIENT_REVENANT_DRAGON || npc.id() == ANCIENT_REVENANT_KNIGHT) && !ruby_member) {
                     player.getCombat().reset();
                     player.message(Color.RED.wrap("You need to be at least a ruby member to attack ancient revenants."));
                     return false;
                 }
-                if((npc.id() == ANCIENT_BARRELCHEST || npc.id() == ANCIENT_CHAOS_ELEMENTAL || npc.id() == ANCIENT_KING_BLACK_DRAGON) && diamonMember) {
+                if((npc.id() == ANCIENT_BARRELCHEST || npc.id() == ANCIENT_CHAOS_ELEMENTAL || npc.id() == ANCIENT_KING_BLACK_DRAGON) && !diamonMember) {
                     player.getCombat().reset();
                     player.message(Color.RED.wrap("You need to be at least a diamond member to attack ancient bosses."));
                     return false;
