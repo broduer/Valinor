@@ -2187,7 +2187,7 @@
     "noiron": false,
     "restock": true,
     "sellType": "NONE",
-    "scroll": 0,
+    "scroll": 350,
     "items": [
       {
         "id": 9747,

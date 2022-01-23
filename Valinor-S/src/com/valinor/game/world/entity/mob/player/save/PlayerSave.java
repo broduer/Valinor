@@ -1288,9 +1288,9 @@ public class PlayerSave {
             dailyRaidsAmount = Player.getAttribIntOr(player, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyRaidsCompleted = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_COMPLETED, false);
             dailyRaidsRewardClaimed = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_REWARD_CLAIMED, false);
-            dailyZulrahAmount = Player.getAttribIntOr(player, RAIDS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dailyZulrahCompleted = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_COMPLETED, false);
-            dailyZulrahRewardClaimed = Player.getAttribBooleanOr(player, RAIDS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyZulrahAmount = Player.getAttribIntOr(player, ZULRAH_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyZulrahCompleted = Player.getAttribBooleanOr(player, ZULRAH_DAILY_TASK_COMPLETED, false);
+            dailyZulrahRewardClaimed = Player.getAttribBooleanOr(player, ZULRAH_DAILY_TASK_REWARD_CLAIMED, false);
             dailyCorruptedNechryarchAmount = Player.getAttribIntOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyCorruptedNechryarchCompleted = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_COMPLETED, false);
             dailyCorruptedNechryarchRewardClaimed = Player.getAttribBooleanOr(player, CORRUPTED_NECHRYARCH_DAILY_TASK_REWARD_CLAIMED, false);
