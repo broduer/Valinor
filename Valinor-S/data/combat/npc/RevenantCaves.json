@@ -408,7 +408,7 @@
   {
     // Revenant Dragon
     "ids": [
-      7940, 16003
+      7940
     ],
     "maxhit": 30,
     "slayerxp": 140,
@@ -423,6 +423,46 @@
       "magic": 150,
       "ranged": 151,
       "hitpoints": 140
+    },
+    "bonuses": {
+      "stabdefence": 201,
+      "slashdefence": 206,
+      "crushdefence": 188,
+      "rangeddefence": 197,
+      "magicdefence": 101,
+      "magic": 61,
+      "attack": 72,
+      "ranged": 60,
+      "strength": 78
+    },
+    "animations": {
+      "attack": 80,
+      "block": 89,
+      "death": 92
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
+    // Ancient Revenant Dragon
+    "ids": [
+      16003
+    ],
+    "maxhit": 30,
+    "slayerxp": 140,
+    "aggressive": true,
+    "aggroradius": 3,
+    "slayerlvl": 1,
+    "attackspeed": 5,
+    "stats": {
+      "attack": 106,
+      "strength": 126,
+      "defence": 87,
+      "magic": 150,
+      "ranged": 151,
+      "hitpoints": 240
     },
     "bonuses": {
       "stabdefence": 201,
@@ -528,7 +568,7 @@
   {
     // Revenant Knight
     "ids": [
-      7939, 16004
+      7939
     ],
     "maxhit": 27,
     "slayerxp": 143,
@@ -566,9 +606,49 @@
     }
   },
   {
+    // Ancient Revenant Knight
+    "ids": [
+      16004
+    ],
+    "maxhit": 27,
+    "slayerxp": 143,
+    "aggressive": true,
+    "aggroradius": 3,
+    "slayerlvl": 1,
+    "attackspeed": 5,
+    "stats": {
+      "attack": 100,
+      "strength": 119,
+      "defence": 80,
+      "magic": 146,
+      "ranged": 146,
+      "hitpoints": 243
+    },
+    "bonuses": {
+      "stabdefence": 195,
+      "slashdefence": 200,
+      "crushdefence": 180,
+      "rangeddefence": 190,
+      "magicdefence": 95,
+      "magic": 55,
+      "attack": 69,
+      "ranged": 55,
+      "strength": 71
+    },
+    "animations": {
+      "attack": 6600,
+      "block": 388,
+      "death": 836
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
     // Revenant Ork
     "ids": [
-      7937, 16001
+      7937
     ],
     "maxhit": 20,
     "slayerxp": 105,
@@ -606,9 +686,49 @@
     }
   },
   {
+    // Ancient Revenant Ork
+    "ids": [
+      16001
+    ],
+    "maxhit": 20,
+    "slayerxp": 105,
+    "aggressive": true,
+    "aggroradius": 3,
+    "slayerlvl": 1,
+    "attackspeed": 5,
+    "stats": {
+      "attack": 99,
+      "strength": 100,
+      "defence": 60,
+      "magic": 110,
+      "ranged": 130,
+      "hitpoints": 205
+    },
+    "bonuses": {
+      "stabdefence": 148,
+      "slashdefence": 150,
+      "crushdefence": 146,
+      "rangeddefence": 148,
+      "magicdefence": 50,
+      "magic": 0,
+      "attack": 60,
+      "ranged": 50,
+      "strength": 55
+    },
+    "animations": {
+      "attack": 4320,
+      "block": 4322,
+      "death": 4321
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
     // Revenant Dark Beast
     "ids": [
-      7938, 16000
+      7938
     ],
     "maxhit": 23,
     "slayerxp": 140,
@@ -623,6 +743,46 @@
       "magic": 130,
       "ranged": 135,
       "hitpoints": 140
+    },
+    "bonuses": {
+      "stabdefence": 153,
+      "slashdefence": 152,
+      "crushdefence": 155,
+      "rangeddefence": 158,
+      "magicdefence": 70,
+      "magic": 0,
+      "attack": 65,
+      "ranged": 45,
+      "strength": 60
+    },
+    "animations": {
+      "attack": 2731,
+      "block": 2732,
+      "death": 2733
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
+    // Ancient Revenant Dark Beast
+    "ids": [
+      16000
+    ],
+    "maxhit": 23,
+    "slayerxp": 140,
+    "aggressive": true,
+    "aggroradius": 3,
+    "slayerlvl": 1,
+    "attackspeed": 5,
+    "stats": {
+      "attack": 93,
+      "strength": 110,
+      "defence": 80,
+      "magic": 130,
+      "ranged": 135,
+      "hitpoints": 240
     },
     "bonuses": {
       "stabdefence": 153,
