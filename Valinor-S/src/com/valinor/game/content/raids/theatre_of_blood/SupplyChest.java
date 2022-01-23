@@ -37,7 +37,11 @@ public class SupplyChest extends Interaction {
 
     @Override
     public boolean handleItemContainerActionInteraction(Player player, Item item, int slot, int interfaceId, int type) {
-        return takeSupply(player, item.getId(), slot);
+        if(interfaceId == 12230) {
+            takeSupply(player, item.getId(), slot);
+            return true;
+        }
+        return false;
     }
 
     enum Supplies {
@@ -91,7 +95,7 @@ public class SupplyChest extends Interaction {
             player.getInterfaceManager().open(12230);
         }
 
-        public static boolean takeSupply(Player player, int id, int index) {
+        public static void takeSupply(Player player, int id, int index) {
             Supplies supply = Supplies.getById(id);
             if(supply != null) {
                 //Make sure item id and index both match
@@ -109,10 +113,8 @@ public class SupplyChest extends Interaction {
                     } else {
                         player.message(Color.RED.wrap("You do not have enough points."));
                     }
-                    return true;
                 }
             }
-            return false;
         }
     }
 }

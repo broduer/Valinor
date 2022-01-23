@@ -83,7 +83,6 @@ public class RuneDragon extends CommonCombatMethod {
         }
     }
 
-
     private void doMelee(Npc npc, Mob target) {
         npc.animate(npc.attackAnimation());
         target.hit(npc, Utils.random(npc.combatInfo().maxhit), CombatType.MELEE).checkAccuracy().submit();
