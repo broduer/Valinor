@@ -36,7 +36,7 @@ public class PlantSeedIntoPatchAction extends PlayerTask {
             player.getInventory().remove(seed_data.getSeedItemId(), 1);
             var aAn = Utils.getAOrAn(new Item(seed_data.getSeedItemId()).name().toLowerCase());
             player.message("You plant "+aAn+" "+World.getWorld().definitions().get(ItemDefinition.class, seed_data.getSeedItemId()).name.toLowerCase()+" in the herb patch.");
-            player.skills().addXp(Skills.FARMING, seed_data.getExperience() * 5);
+            player.skills().addXp(Skills.FARMING, seed_data.getExperience() * 3);
             if(seed_data == Seeds.HERB_TORSTOL) {
                 player.getTaskBottleManager().increase(BottleTasks.PLANT_TORSTOL_SEED);
             }

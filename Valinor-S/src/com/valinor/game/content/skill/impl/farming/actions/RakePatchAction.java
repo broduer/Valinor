@@ -32,7 +32,7 @@ public class RakePatchAction extends PlayerTask {
             player.animate(FarmingConstants.RAKING_ANIM);
             state.setWeedStage(state.getWeedStage() + 1);
             player.getFarming().updatePatches(player);
-            player.skills().addXp(Skills.FARMING, 4.0 * 5); // Yeah, you get 4 xp... #worth
+            player.skills().addXp(Skills.FARMING, 4.0 * 2); // Yeah, you get 4 xp... #worth
             player.inventory().add(new Item(WEEDS)); // Free weed :)
             if (state.getWeedStage() >= 3) {
                 state.resetLastStageGrowthMoment();
