@@ -430,7 +430,7 @@ public final class ItemDefinition {
             def.inventoryActions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
-        if (id == 24225 || (def.name != null && def.name.contains("crystal bow"))) {
+        if (id == 24225 || (def.name != null && def.name.contains("crystal bow") || def.name.contains("crystal shield") || def.name.contains("crystal halberd"))) {
             def.inventoryActions = new String[]{null, "Wield", null, null, null};
         }
 
