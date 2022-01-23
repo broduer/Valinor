@@ -272,6 +272,8 @@ public class Woodcutting extends Interaction {
                         player.getTaskBottleManager().increase(BottleTasks.CUT_MAGIC_TREES);
                     }
 
+                    AchievementsManager.activate(player, Achievements.LUMBERJACK,1);
+
                     player.skills().addXp(Skills.WOODCUTTING, tree.xp * ItemSet.lumberJackOutfitBonus(player)); // Xp as last, it can spawn a dialogue
 
                     // If we're using the infernal axe, we have 1/3 odds to burn the log and get 50% FM xp.
