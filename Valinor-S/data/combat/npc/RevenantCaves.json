@@ -648,7 +648,7 @@
   {
     // Revenant Cyclops
     "ids": [
-      7934, 16002
+      7934
     ],
     "maxhit": 16,
     "slayerxp": 44,
@@ -663,6 +663,46 @@
       "magic": 65,
       "ranged": 70,
       "hitpoints": 44
+    },
+    "bonuses": {
+      "stabdefence": 140,
+      "slashdefence": 130,
+      "crushdefence": 135,
+      "rangeddefence": 135,
+      "magicdefence": 10,
+      "magic": 0,
+      "attack": 0,
+      "ranged": 0,
+      "strength": 0
+    },
+    "animations": {
+      "attack": 4652,
+      "block": 4651,
+      "death": 4653
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
+    // Ancient Revenant Cyclops
+    "ids": [
+      16002
+    ],
+    "maxhit": 16,
+    "slayerxp": 44,
+    "aggressive": true,
+    "aggroradius": 3,
+    "slayerlvl": 1,
+    "attackspeed": 5,
+    "stats": {
+      "attack": 60,
+      "strength": 73,
+      "defence": 49,
+      "magic": 65,
+      "ranged": 70,
+      "hitpoints": 140
     },
     "bonuses": {
       "stabdefence": 140,

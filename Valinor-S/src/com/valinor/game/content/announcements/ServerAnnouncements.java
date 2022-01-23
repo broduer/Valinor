@@ -292,7 +292,11 @@ public class ServerAnnouncements {
         TORVA_FULL_HELM,
         TORVA_PLATEBODY,
         TORVA_PLATELEGS,
-        NIHIL_SHARD
+        NIHIL_SHARD,
+
+        //Ancient revenants
+        ANCIENT_VESTAS_LONGSWORD,
+        ANCIENT_STATIUSS_WARHAMMER
     );
 
     public static void tryBroadcastDrop(Player player, Npc npc, Item item) {
