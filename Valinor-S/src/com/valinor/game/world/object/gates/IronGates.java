@@ -40,10 +40,19 @@ public class IronGates extends Interaction {
         }
 
         if (obj.getId() == 2143 || obj.getId() == 2144) {
-            if (obj.tile().x == 2888 || obj.tile().x == 2889) {
-                openTaverlyDungeonPrisonGate(player);
-                return true;
+            int walkToX = 0;
+            if(player.tile().x <= 2888) {
+                walkToX = 2888;
+            } else if(player.tile().x <= 2889) {
+                walkToX = 2889;
             }
+
+            Tile startPos = new Tile(walkToX, 9831);
+            player.smartPathTo(startPos);
+            player.waitForTile(startPos, () -> {
+                openTaverlyDungeonPrisonGate(player);
+            });
+            return true;
         }
 
         if (obj.getId() == 1568 || obj.getId() == 1569) {
