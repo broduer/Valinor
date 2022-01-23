@@ -13,7 +13,7 @@ public class RulesCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.getPacketSender().sendURL(RULES_URL);
+        player.message("You can read the rules on our discord page. ::discord to open it.");
         player.message("Opening the rules in your web browser...");
     }
 
