@@ -287,7 +287,7 @@ public class TournamentManager extends Interaction {
      */
     private static void restoreSkills(Player player) {
         for (int skillId = 0; skillId < Skills.SKILL_COUNT; skillId++) {
-            if (player.skills().skillsBeforeTourny != null) {
+            if (player.skills().skillsBeforeTourny != null && player.skills().skillsBeforeTourny.get(skillId) != null) {
                 double experience = player.skills().skillsBeforeTourny.get(skillId);
                 int level = player.skills().xpToLevel(experience);
                 player.skills().setLevel(skillId, level);

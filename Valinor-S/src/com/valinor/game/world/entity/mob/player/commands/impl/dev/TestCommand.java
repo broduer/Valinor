@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.instance.impl.NightmareInstance;
+import com.valinor.game.content.minigames.impl.Barrows;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.theatre_of_blood.SupplyChest;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
@@ -53,7 +54,11 @@ public class TestCommand implements Command {
         //System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(12236, itemList);
         //player.sound(2401);
-        ZarosGodwars.end();
+        //ZarosGodwars.end();
+
+        for (int i = 0; i < 100; i++) {
+            Barrows.testloot(player);
+        }
 
         player.message("Test command has been activated.");
     }
