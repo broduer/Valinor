@@ -41,13 +41,14 @@ public class SlayerKey {
         var task_id = player.<Integer>getAttribOr(SLAYER_TASK_ID,0);
         var task = SlayerCreature.lookup(task_id);
         var roll = player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().production ? 1 : 20;
-        if (task != null && Slayer.creatureMatches(player, npc.id())) {
+        boolean hasTask = player.slayerTaskAmount() > 0;
+        if (task != null && Slayer.creatureMatches(player, npc.id()) && hasTask) {
             if(World.getWorld().rollDie(roll,1)) {
                 var keysReceived = player.<Integer>getAttribOr(SLAYER_KEYS_RECEIVED,0) + 1;
                 player.putAttrib(SLAYER_KEYS_RECEIVED, keysReceived);
                 player.getPacketSender().sendString(QuestTab.InfoTab.SLAYER_KEYS_RECEIVED.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.SLAYER_KEYS_RECEIVED.childId).fetchLineData(player));
 
-                player.inventory().addOrBank(new Item(SLAYER_KEY));
+                player.inventory().addOrDrop(new Item(SLAYER_KEY));
                 player.message(Color.PURPLE.wrap("A slayer key appeared, you have now collected a total of "+keysReceived+ " slayer keys."));
                 Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a slayer key drop.", "slayer_key_drop");
             }

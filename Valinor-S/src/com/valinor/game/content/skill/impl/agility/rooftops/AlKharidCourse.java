@@ -60,12 +60,16 @@ public class AlKharidCourse extends Interaction {
                 player.lockNoDamage();
                 player.face(player.tile().transform(0, -1));
                 Chain.bound(player).name("AlKharidWallClimb1Task").runFn(1, () -> player.animate(828, 15));
-                Chain.bound(player).name("AlKharidWallClimb2Task").runFn(2, () -> player.teleport(3273, 3192, 3));
+                Chain.bound(player).name("AlKharidWallClimb2Task").runFn(2, () -> {
+                    player.teleport(3273, 3192, 3);
+                }).then(1, () -> {
+                    if(player.tile().equals(3273, 3192, 3)) {
+                        player.skills().addXp(Skills.AGILITY, 10.0);
+                        MarksOfGrace.trySpawn(player, MARK_SPOTS, 40, 20);
+                    }
+                });
                 player.animate(-1);
                 player.unlock();
-                player.skills().addXp(Skills.AGILITY, 10.0);
-
-                MarksOfGrace.trySpawn(player, MARK_SPOTS, 40, 20);
             }
             return true;
         }
