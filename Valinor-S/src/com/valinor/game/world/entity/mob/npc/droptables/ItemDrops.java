@@ -121,9 +121,10 @@ public class ItemDrops {
 
         //Amount of drop rolls
         int dropRolls = npc.combatInfo().droprolls;
+        boolean doubleTheDrop = false;
 
         if(player.inventory().contains(DOUBLE_DROPS_SCROLL)) {
-            dropRolls += 1;
+            doubleTheDrop = true;
             player.inventory().remove(DOUBLE_DROPS_SCROLL, 1);
         }
 
@@ -137,6 +138,15 @@ public class ItemDrops {
         for (int i = 0; i < dropRolls; i++) {
             Item reward = table.randomItem(World.getWorld().random());
             if (reward != null) {
+                if(doubleTheDrop) {
+                    GroundItem item = new GroundItem(reward, tile, player);
+                    if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
+                        player.nifflerStore(item.getItem());
+                    } else {
+                        GroundItemHandler.createGroundItem(item);
+                    }
+                    player.message("Your drop scroll has been consumed, double drop: "+item.getItem().unnote().name());
+                }
                 var doubleDropsLampActive = player.<Integer>getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0) > 0;
                 var founderImp = player.pet() != null && player.pet().def().name.equalsIgnoreCase("Founder Imp");
                 var canDoubleDrop = doubleDropsLampActive || founderImp;
