@@ -3,10 +3,12 @@ package com.valinor.game.content.skill.impl.thieving;
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.net.packet.interaction.Interaction;
@@ -78,7 +80,10 @@ public class Pickpocketing extends Interaction {
                     if (World.getWorld().rollDie(odds, 1)) {
                         ThievingPet.unlockRaccoon(player);
                     }
-                    player.inventory().add(pickpocket.lootTable.rollItem());
+                    Item item = pickpocket.lootTable.rollItem();
+                    if(ItemSet.wearingRogueOutfit(player))
+                        item.setAmount(item.getAmount() * 2);
+                    player.inventory().add(item);
                     player.skills().addXp(Skills.THIEVING, pickpocket.exp, true);
                     DailyTaskManager.increase(DailyTasks.THIEVING, player);
                 });
@@ -114,6 +119,8 @@ public class Pickpocketing extends Interaction {
             chance *= 1.1;
         if (thievingLevel > levelReq)
             chance += (thievingLevel - requiredLevel) * slope;
+        if(ItemSet.wearingRogueOutfit(player))
+            chance += 10;
         return Math.min(chance, 95); //Caps at 95%
     }
 

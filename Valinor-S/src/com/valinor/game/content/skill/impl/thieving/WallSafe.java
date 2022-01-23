@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill.impl.thieving;
 
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -72,7 +73,10 @@ public class WallSafe extends Interaction {
                     player.message("You get some loot.");
                     player.sound(1238);
                     player.skills().addXp(Skills.THIEVING,70,true);
-                    player.inventory().add(getLoot(player));
+                    Item loot = getLoot(player);
+                    if(ItemSet.wearingRogueOutfit(player))
+                        loot.setAmount(loot.getAmount() * 2);
+                    player.inventory().add(loot);
                     openSafe(wallSafe);
                 });
             }

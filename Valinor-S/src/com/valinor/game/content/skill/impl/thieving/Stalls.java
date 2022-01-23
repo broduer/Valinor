@@ -4,6 +4,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -289,6 +290,8 @@ public class Stalls extends Interaction {
                 player.getTaskBottleManager().increase(BottleTasks.STEAL_FROM_GEM_STALL);
             }
             Item loot = stall.lootTable.rollItem();
+            if(ItemSet.wearingRogueOutfit(player))
+                loot.setAmount(loot.getAmount() * 2);
             player.getInventory().add(loot);
 
             if (World.getWorld().rollDie(200, 1)) {

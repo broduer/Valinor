@@ -12,6 +12,10 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class ItemSet {
 
+    public static boolean wearingRogueOutfit(Player player) {
+        return player.getEquipment().containsAll(ROGUE_BOOTS, ROGUE_GLOVES, ROGUE_TOP, ROGUE_TROUSERS, ROGUE_MASK);
+    }
+
     public static double lumberJackOutfitBonus(Player player) {
         double bonus = 1.0;
 
