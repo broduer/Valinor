@@ -6,13 +6,19 @@
     ],
     "tables": [
       {
-        "name": "Empty",
-        "points": 2,
+        "name": "Rares",
+        "points": 6,
         "items": [
-          { "id": 22545, "min": 1, "max": 1, "points": 1 }, //Viggora's chainmace
-          { "id": 22550, "min": 1, "max": 1, "points": 1 }, //Craw's bow
-          { "id": 22555, "min": 1, "max": 1, "points": 1 },  //Thammaron's sceptre
-          { "id": 22557, "min": 1, "max": 1, "points": 1 }  //Amulet of avarice
+          { "id": 21807, "min": 1, "max": 1, "points": 12 },   //Ancient emblem
+          { "id": 21810, "min": 1, "max": 1, "points": 10 },   //Ancient totem
+          { "id": 21813, "min": 1, "max": 1, "points": 8 },   //Ancient statuette
+          { "id": 22299, "min": 1, "max": 1, "points": 7 },   //Ancient medallion
+          { "id": 22302, "min": 1, "max": 1, "points": 6 },   //Ancient effigy
+          { "id": 22305, "min": 1, "max": 1, "points": 5 },   //Ancient relic
+          { "id": 22545, "min": 1, "max": 1, "points": 3 }, //Viggora's chainmace
+          { "id": 22550, "min": 1, "max": 1, "points": 3 }, //Craw's bow
+          { "id": 22555, "min": 1, "max": 1, "points": 3 },  //Thammaron's sceptre
+          { "id": 22557, "min": 1, "max": 1, "points": 3 }  //Amulet of avarice
         ]
       },
       {
@@ -60,13 +66,7 @@
           { "id": 1516, "min": 60, "max": 100, "points": 3 },   //Yew logs (noted)
           { "id": 1514, "min": 15, "max": 25, "points": 3 },   //Magic logs (noted)
           { "id": 1632, "min": 5, "max": 7, "points": 3 },   //Uncut dragonstone (noted)
-          { "id": 5316, "min": 5, "max": 9, "points": 2 },   //Magic seed
-          { "id": 21807, "min": 1, "max": 1, "points": 5 },   //Ancient emblem
-          { "id": 21810, "min": 1, "max": 1, "points": 5 },   //Ancient totem
-          { "id": 21813, "min": 1, "max": 1, "points": 4 },   //Ancient statuette
-          { "id": 22299, "min": 1, "max": 1, "points": 3 },   //Ancient medallion
-          { "id": 22302, "min": 1, "max": 1, "points": 2 },   //Ancient effigy
-          { "id": 22305, "min": 1, "max": 1, "points": 1 }   //Ancient relic
+          { "id": 5316, "min": 5, "max": 9, "points": 2 }   //Magic seed
         ]
       },
       {
