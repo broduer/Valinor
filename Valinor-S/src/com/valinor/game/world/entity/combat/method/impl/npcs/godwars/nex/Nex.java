@@ -21,6 +21,7 @@ public class Nex extends Npc {
     private int stage;
     private int minionStage;
     private int flyTime;
+    private long lastNoEscape;
     private long lastVirus;
     private long lastSiphon;
     private boolean doingSiphon;
@@ -194,6 +195,14 @@ public class Nex extends Npc {
 
     public void setLastVirus(long lastVirus) {
         this.lastVirus = lastVirus;
+    }
+
+    public long getLastNoEscape() {
+        return lastNoEscape;
+    }
+
+    public void setLastNoEscape(long lastNoEscape) {
+        this.lastNoEscape = lastNoEscape;
     }
 
     public long getLastSiphon() {

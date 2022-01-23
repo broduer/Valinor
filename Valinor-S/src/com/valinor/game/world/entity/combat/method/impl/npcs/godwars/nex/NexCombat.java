@@ -83,7 +83,7 @@ public class NexCombat extends CommonCombatMethod {
                     virusAttack(nex, target);
                 } else if (attackCount == 4) {
                     dragAttack(nex);
-                } else if (attackCount == 6) {
+                } else if (nex.getLastNoEscape() < Utils.currentTimeMillis() && attackCount == 6) {
                     attackCount = 0;
                     smokeBulletAttack(nex);
                 } else {
@@ -355,6 +355,7 @@ public class NexCombat extends CommonCombatMethod {
     }
 
     private void smokeBulletAttack(Nex nex) {
+        nex.setLastNoEscape(Utils.currentTimeMillis() + 30000);
         nex.forceChat("There is...");
         nex.cantInteract(true);
         nex.getCombat().reset();
