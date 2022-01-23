@@ -138,10 +138,15 @@ public class NightmareInstance {
         for (TotemPlugin t : nightmare.getTotems()) {
             World.getWorld().unregisterNpc(t);
         }
-        if (nightmare.isRegistered() || nightmare != null || !nightmare.dead()) {
-            nightmare.husksSpawned.clear();
-            World.getWorld().unregisterNpc(nightmare);
-        }
+
+        World.getWorld().getNpcs().forEachInArea(THE_NIGHTMARE_AREA, n -> {
+            if (nightmare != null) {
+                nightmare.husksSpawned.clear();
+            }
+            if(!n.dead()) {
+                n.hit(n, n.hp());
+            }
+        });
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
             if (!gi.getTile().inArea(THE_NIGHTMARE_AREA))
