@@ -1104,19 +1104,7 @@ public class CombatFactory {
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if (npc.id() == VANGUARD_7527 && hit.getCombatType() != CombatType.MELEE) {
-                    hit.setDamage(0);
-                }
-
                 if (npc.id() == TEKTON_ENRAGED_7544 && hit.getCombatType() != CombatType.MELEE) {
-                    hit.setDamage(0);
-                }
-
-                if (npc.id() == NpcIdentifiers.VANGUARD_7528 && hit.getCombatType() != CombatType.RANGED) {
-                    hit.setDamage(0);
-                }
-
-                if (npc.id() == NpcIdentifiers.VANGUARD_7529 && hit.getCombatType() != CombatType.MAGIC) {
                     hit.setDamage(0);
                 }
 

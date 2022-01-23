@@ -86,12 +86,18 @@ object CollectPayments {
                     RAIDS_MYSTERY_BOX -> {
                         isIronManItem = false
                     }
+                    MYSTERY_TICKET -> {
+                        isIronManItem = false
+                    }
                     MYSTERY_CHEST -> {
                         isIronManItem = false
                     }
                 }
+
                 val playerIsIron = gameMode().isIronman || gameMode().isHardcoreIronman || gameMode().isUltimateIronman
-                if(playerIsIron && !isIronManItem) {
+                val canClaimOnIron = playerIsIron && !isIronManItem
+
+                if(!canClaimOnIron) {
                     sendNonIronmanMsg = true
                     return@forEach
                 }
@@ -174,7 +180,8 @@ object CollectPayments {
 
             }
             if (sendNonIronmanMsg) { // there
-                message("You are unable to claim your order as a ironman. Contact a staff member to sort this out.")
+                message("You are unable to claim your order as a ironman. Contact a staff member to sort this")
+                message("out.")
             }
         }
     }
