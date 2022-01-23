@@ -154,8 +154,6 @@ public class MagicOnItemPacketListener implements PacketListener {
                             return;
                         }
 
-                        Item finalItem1 = item;
-
                         if (!spell.canCast(player, null, spell.deleteRunes())) {
                             return;
                         }
@@ -163,7 +161,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                         int coinAmountToGive = (int) Math.floor(itemValue * 0.15);
 
                         if (item.getValue() == 0) {
-                            coinAmountToGive = 0;
+                            coinAmountToGive = 1;
                         }
 
                         spell.startCast(player, null);
@@ -179,17 +177,14 @@ public class MagicOnItemPacketListener implements PacketListener {
                             return;
                         }
 
-                        Item finalItem = item;
-
                         if (!spell.canCast(player, null, spell.deleteRunes())) {
                             return;
                         }
 
                         coinAmountToGive = (int) Math.floor(itemValue * 0.25);
 
-
                         if (item.getValue() == 0) {
-                            coinAmountToGive = 0;
+                            coinAmountToGive = 1;
                         }
 
                         spell.startCast(player, null);
