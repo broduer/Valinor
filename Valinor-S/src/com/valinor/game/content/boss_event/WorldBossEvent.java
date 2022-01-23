@@ -75,7 +75,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION};
+    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
@@ -256,6 +256,7 @@ public class WorldBossEvent {
         GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
+        CORRUPTED_HUNLLEF(NpcIdentifiers.CORRUPTED_HUNLLEF, "Corrupted hunllef"),
         NOTHING(-1, "Nothing"); // Filler
 
         public final int npc;
