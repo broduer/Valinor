@@ -1,6 +1,7 @@
 package com.valinor.game.content.interfaces;
 
 import com.valinor.game.content.areas.edgevile.BobBarter;
+import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.Interaction;
@@ -14,6 +15,11 @@ public class DataOrbs extends Interaction {
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 1510) {
+            if(player.gameMode() == GameMode.ULTIMATE) {
+                player.message("As an Ultimate ironman you cannot use banks.");
+                return true;
+            }
+
             if(WildernessArea.inWilderness(player.tile())) {
                 player.message(Color.RED.wrap("What the hell are you thinking? That doesn't work in dangerous areas!"));
                 return true;
