@@ -11,7 +11,7 @@
 				{ "id": 1391, "min": 1, "max": 1, "points": 15 }, //Battlestaff
 				{ "id": 1395, "min": 1, "max": 1, "points": 15 }, //Water battlestaff
 				{ "id": 1403, "min": 1, "max": 1, "points": 15 }, //Mystic water staff
-				{ "id": 11908, "min": 1, "max": 1, "points": 3 }, //Uncharged trident
+				{ "id": 11905, "min": 1, "max": 1, "points": 3 }, //Uncharged trident
 				{ "id": 12004, "min": 1, "max": 1, "points": 1 } //Kraken tentacle
 			]
 		},
