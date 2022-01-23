@@ -1,5 +1,13 @@
 [
   {
+    "name": "Drunken dwarf",
+    "id": 2408,
+    "x": 3098,
+    "y": 3506,
+    "z": 0,
+    "direction": "S"
+  },
+  {
     "name": "Emblem trader",
     "id": 308,
     "x": 3088,
