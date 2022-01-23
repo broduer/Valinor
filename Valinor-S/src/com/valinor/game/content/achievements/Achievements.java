@@ -65,7 +65,7 @@ public enum Achievements {
     BEAR_GRYLLS("Bear Grylls", "Kill 250 Callisto.", 250, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(DONATOR_MYSTERY_BOX, 1), new Item(LARRANS_KEY, 5)),
     SNAKE_CHARMER("Snake charmer", "Kill 1000 Zulrah.", 1000, Difficulty.HARD, new Item(DOUBLE_DROPS_LAMP, 2), new Item(MYSTERY_TICKET, 1), new Item(MYSTERY_CHEST, 1)),
     VORKY("Vorky", "Kill 100 Vorkaths.", 100, Difficulty.HARD, new Item(COINS_995, 50_000_000), new Item(MYSTERY_TICKET), new Item(VORKATHS_HEAD_21907)),
-    REVENANT_HUNTER("Revenant hunter", "Kill 2500 revenants.", 2500, Difficulty.HARD, new Item(MYSTERY_TICKET, 1), new Item(DONATOR_MYSTERY_BOX, 3), new Item(CRAWS_BOW_C, 1)),
+    REVENANT_HUNTER("Revenant hunter", "Kill 10000 revenants.", 10000, Difficulty.HARD, new Item(MYSTERY_TICKET, 1), new Item(DONATOR_MYSTERY_BOX, 3), new Item(CRAWS_BOW_C, 1)),
     GODWAR("Godwar", "Kill 500 Godwars Dungeon Bosses", 500, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(DONATOR_MYSTERY_BOX, 2), new Item(GODSWORD_BLADE, 1)),
     CORPOREAL_CRITTER("Corporeal Critter", "Kill 100 Corporeal beasts.", 100, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(BLESSED_SPIRIT_SHIELD, 1), new Item(MYSTERY_TICKET, 1)),
 
