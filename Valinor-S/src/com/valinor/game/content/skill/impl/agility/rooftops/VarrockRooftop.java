@@ -189,9 +189,10 @@ public class VarrockRooftop extends Interaction {
 
         // Jump gap
         if (obj.getId() == GAP_14834) {
-            player.lock();
+            player.smartPathTo(new Tile(3208, 3397, 3));
             player.face(player.tile().transform(+1, 0));
             Chain.bound(player).name("VarrockJumpgap2Task").waitForTile(new Tile(3208, 3397, 3), () -> {
+                player.lock();
                 player.animate(1995);
                 player.sound(2461, 15);
             }).then(1, () -> {

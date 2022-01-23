@@ -251,7 +251,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(2658, 2649, 0))));
 
         teleportOptions.put(59, new OptionMenu("Varrock", new String[] { "Cities", "Varrock" },
-            new TeleportAction(player, new Tile(3110, 3424))));
+            new TeleportAction(player, new Tile(3210, 3424))));
 
         teleportOptions.put(60, new OptionMenu("Falador", new String[] { "Cities", "Falador" },
             new TeleportAction(player, new Tile(2965, 3380))));
