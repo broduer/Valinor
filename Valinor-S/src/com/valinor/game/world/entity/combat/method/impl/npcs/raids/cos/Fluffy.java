@@ -50,6 +50,9 @@ public class Fluffy extends CommonCombatMethod {
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         Party party = player.raidsParty;
+        if(party == null) {
+            return;
+        }
         for (Player member : party.getMembers()) {
             if (member != null && member.getRaids() != null && member.getRaids().raiding(player) && member.tile().inArea(new Area(3138, 4558, 3144, 4564, member.raidsParty.getHeight()))) {
                 var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
@@ -68,6 +71,9 @@ public class Fluffy extends CommonCombatMethod {
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         Party party = player.raidsParty;
+        if(party == null) {
+            return;
+        }
         for (Player member : party.getMembers()) {
             if (member != null && member.getRaids() != null && member.getRaids().raiding(player) && member.tile().inArea(new Area(3138, 4558, 3144, 4564, member.raidsParty.getHeight()))) {
                 var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());

@@ -62,7 +62,7 @@ public class WarriorsGuildCyclops implements Droptable {
             }
         } else if (killed.id() == NpcIdentifiers.CYCLOPS_2137) {//Dragon defender
             chance = killer.getPlayerRights().isDeveloperOrGreater(killer) ? 2 : 70;
-            if (Utils.rollDie(chance, 1)) {
+            if (World.getWorld().rollDie(chance, 1)) {
                 //Defender drop
                 drop(killed, killer, new Item(defender));
                 var count = killer.<Integer>getAttribOr(AttributeKey.DRAGON_DEFENDER_DROPS, 0) + 1;

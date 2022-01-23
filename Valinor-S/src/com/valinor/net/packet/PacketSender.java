@@ -1035,8 +1035,6 @@ public final class PacketSender {
         sendPosition(groundItem.getTile());
         PacketBuilder out = new PacketBuilder(44);
         out.putShort(groundItem.getItem().getId(), ValueType.A, ByteOrder.LITTLE);
-        //ken comment, also changed this in Client.java opcode == ClientToServerPackets.CREATE_GROUND_ITEMS to allow for interfaces greater than 80000.
-        //out.putShort(groundItem.getItem().getAmount());
         out.putInt(groundItem.getItem().getAmount());
         out.putShort(0);
         player.getSession().write(out);

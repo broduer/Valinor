@@ -197,7 +197,7 @@ public final class GroundItemHandler {
 
         boolean illegalItem = false;
 
-        List<Integer> ILLEGAL_ITEMS = Arrays.asList(DAWNBRINGER, SARADOMIN_CAPE, GUTHIX_CAPE, ZAMORAK_CAPE);
+        List<Integer> ILLEGAL_ITEMS = Arrays.asList(DAWNBRINGER, SARADOMIN_CAPE, GUTHIX_CAPE, ZAMORAK_CAPE, ANTIDRAGON_SHIELD, BRONZE_AXE, BRONZE_PICKAXE);
 
         if(ILLEGAL_ITEMS.stream().anyMatch(i -> i == item.getItem().getId()) && item.vanishes()) {
             illegalItem = true;
