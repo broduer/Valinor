@@ -1,5 +1,37 @@
 [
   {
+    // Ghoul (42)
+    "ids": [
+      289
+    ],
+    "maxhit": 5,
+    "attackspeed": 6,
+    "deathlen": 2,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 30,
+      "strength": 40,
+      "defence": 30,
+      "magic": 1,
+      "hitpoints": 50
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "magicdefence": 0,
+      "rangeddefence": 0
+    },
+    "animations": {
+      "attack": 422,
+      "block": 424,
+      "death": 836
+    }
+  },
+  {
     // Giant frog (13)
     "ids": [
       2143

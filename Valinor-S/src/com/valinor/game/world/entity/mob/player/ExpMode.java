@@ -6,25 +6,31 @@ package com.valinor.game.world.entity.mob.player;
  */
 public enum ExpMode {
 
-    ROOKIE("Rookie",1, 50D,0D),
-    CHALLENGER("Challenger",2, 30D,5D),
-    GLADIATOR("Gladiator", 3,7.5D,10D);
+    ROOKIE("Rookie",1,150D,50D,0D),
+    CHALLENGER("Challenger",2, 30D,30D,5D),
+    GLADIATOR("Gladiator", 3,7.5D,7.5D,10D);
 
     private final String name;
     private final int uid;
+    private final double combatExp;
     private final double expMultiplier;
     private final double dropRateMultiplier;
     private static ExpMode[] cache;
 
-    ExpMode(String name, int uid, double expMultiplier, double dropRateMultiplier) {
+    ExpMode(String name, int uid, double combatExp, double expMultiplier, double dropRateMultiplier) {
         this.name = name;
         this.uid = uid;
+        this.combatExp = combatExp;
         this.expMultiplier = expMultiplier;
         this.dropRateMultiplier = dropRateMultiplier;
     }
 
     public int uid() {
         return uid;
+    }
+
+    public double getCombatExp() {
+        return combatExp;
     }
 
     public double getExpMultiplier() {

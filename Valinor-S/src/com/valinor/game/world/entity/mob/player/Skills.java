@@ -219,11 +219,7 @@ public class Skills {
 
         if (multiplied) {
             if (combatxp) {
-                if (player.expmode() == ExpMode.ROOKIE && combatxp) {
-                    amt *= 150D;
-                } else {
-                    amt *= player.expmode().getExpMultiplier();
-                }
+                amt *= player.expmode().getCombatExp();
             } else {
                 amt *= player.expmode().getExpMultiplier();
             }

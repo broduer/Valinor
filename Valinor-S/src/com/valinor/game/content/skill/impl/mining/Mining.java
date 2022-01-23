@@ -275,10 +275,7 @@ public class Mining extends Interaction {
                     }
 
                     if (!player.jailed()) {
-                        double xp = finalRock.xp *= xpBonus(player);
-                        if (doubleRoll)
-                            xp *= 2;
-                        player.skills().addXp(Skills.MINING, xp);
+                        player.skills().addXp(Skills.MINING, finalRock.xp * xpBonus(player));
                         AchievementsManager.activate(player, Achievements.MINER, 1);
                     }
 

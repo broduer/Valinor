@@ -174,7 +174,7 @@ public enum MemberRights {
         }
 
         boolean extremeMemberUnlocked = player.getAttribOr(AttributeKey.DIAMOND_MEMBER_UNLOCKED, false);
-        if (totalAmountPaid >= 500 && !extremeMemberUnlocked) {
+        if (totalAmountPaid >= 250.00 && !extremeMemberUnlocked) {
             player.setMemberRights(MemberRights.DIAMOND_MEMBER);
             player.putAttrib(AttributeKey.DIAMOND_MEMBER_UNLOCKED, true);
             player.inventory().addOrBank(new Item(DONATOR_TICKET,1000));
@@ -183,7 +183,7 @@ public enum MemberRights {
         }
 
         boolean legendaryMemberUnlocked = player.getAttribOr(AttributeKey.DRAGONSTONE_MEMBER_UNLOCKED, false);
-        if (totalAmountPaid >= 1000 && !legendaryMemberUnlocked) {
+        if (totalAmountPaid >= 750.00 && !legendaryMemberUnlocked) {
             player.setMemberRights(MemberRights.DRAGONSTONE_MEMBER);
             player.putAttrib(AttributeKey.DRAGONSTONE_MEMBER_UNLOCKED, true);
             player.inventory().addOrBank(new Item(DONATOR_TICKET,1250));
@@ -192,7 +192,7 @@ public enum MemberRights {
         }
 
         boolean vipMemberUnlocked = player.getAttribOr(AttributeKey.ONYX_MEMBER_UNLOCKED, false);
-        if (totalAmountPaid >= 2500 && !vipMemberUnlocked) {
+        if (totalAmountPaid >= 1500 && !vipMemberUnlocked) {
             player.setMemberRights(MemberRights.ONYX_MEMBER);
             player.putAttrib(AttributeKey.ONYX_MEMBER_UNLOCKED, true);
             player.inventory().addOrBank(new Item(MYSTERY_TICKET, 5));
@@ -201,7 +201,7 @@ public enum MemberRights {
         }
 
         boolean sponsorMemberUnlocked = player.getAttribOr(AttributeKey.ZENYTE_MEMBER_UNLOCKED, false);
-        if (totalAmountPaid >= 5000.00 && !sponsorMemberUnlocked) {
+        if (totalAmountPaid >= 3000.00 && !sponsorMemberUnlocked) {
             player.setMemberRights(MemberRights.ZENYTE_MEMBER);
             player.putAttrib(AttributeKey.ZENYTE_MEMBER_UNLOCKED, true);
             player.inventory().addOrBank(new Item(MYSTERY_CHEST));

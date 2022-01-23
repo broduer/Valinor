@@ -8,6 +8,7 @@ import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.dialogue.DialogueManager
 import com.valinor.game.world.entity.dialogue.Expression
 import com.valinor.game.world.entity.mob.player.Player
+import com.valinor.game.world.entity.mob.player.QuestTab.InfoTab
 import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers.*
@@ -65,7 +66,7 @@ object CollectPayments {
                     spaceFor = (!bank.contains(100_001) || bank.count(100_001) < Int.MAX_VALUE - 5)
                             && (!bank.contains(100_002) || bank.count(100_002) < Int.MAX_VALUE - 10)
                 }
-                
+
                 if (!spaceFor) {
                     // no space. inform user, purchase is NOT set as claimed.
                     message("Your bank was too full. Make some space and reclaim.")
@@ -123,6 +124,9 @@ object CollectPayments {
                         RAIDS_MYSTERY_BOX -> {
                             paymentAmount = 55.0
                         }
+                        MYSTERY_TICKET -> {
+                            paymentAmount = 23.0
+                        }
                         MYSTERY_CHEST -> {
                             paymentAmount = 250.0
                         }
@@ -146,8 +150,9 @@ object CollectPayments {
                         }
                     }
 
-                    val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0.0) + paymentAmount
+                    val increaseTotalBy = getAttribOr<Int>(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0.0) + paymentAmount * row.itemAmt
                     putAttrib(AttributeKey.TOTAL_PAYMENT_AMOUNT, increaseTotalBy)
+                    packetSender.sendString(InfoTab.TOTAL_DONATED.childId, InfoTab.INFO_TAB[InfoTab.TOTAL_DONATED.childId]!!.fetchLineData(this))
 
                     //Check if we can update the rank
                     memberRights.update(this, false)

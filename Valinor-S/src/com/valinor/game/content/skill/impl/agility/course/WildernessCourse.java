@@ -8,6 +8,7 @@ import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.movement.MovementQueue;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -75,9 +76,7 @@ public class WildernessCourse extends Interaction {
                     player.teleport(3004, 3950);
                     //player.animate(749, 30);
                     player.unlock();
-                    var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
-                    player.putAttrib(WILDY_COURSE_STATE, stage);
-                    //System.out.println("stage is now: "+stage);
+                    putStage(player, 1);
                     player.skills().addXp(Skills.AGILITY, 12.5 * 3);
                 });
                 return true;
@@ -97,9 +96,7 @@ public class WildernessCourse extends Interaction {
                     // 2t later
                     Chain.bound(player).name("WildernessCourse4Task").runFn(1, () -> {
                         player.getPacketSender().sendObjectAnimation(obj, 55);
-                        var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
-                        player.putAttrib(WILDY_COURSE_STATE, stage);
-                        //System.out.println("stage is now: "+stage);
+                        putStage(player, 2);
                         player.skills().addXp(Skills.AGILITY, 20.0 * 3);
                     }).then(2, player::unlock);
                 });
@@ -119,10 +116,7 @@ public class WildernessCourse extends Interaction {
                 }).then(2, () -> {
                     player.face(new Tile(0, player.tile().y));
                     //Increase stage when starting the obstacle
-                    var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
-                    player.putAttrib(WILDY_COURSE_STATE, stage);
-                    //System.out.println("stage is now: "+stage);
-
+                    putStage(player, 4);
                     for (int i = 0; i < 6; i++) {
                         // add new Tasks @ instantly (0*3=0), 3 6, 9, 12
                         Chain.bound(player).name("WildernessCourse7Task").runFn(i * 3, () -> {
@@ -158,9 +152,7 @@ public class WildernessCourse extends Interaction {
 
                     Chain.bound(player).name("WildernessCourse10Task").waitForTile(end, () -> {
                         player.looks().resetRender();
-                        var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
-                        player.putAttrib(WILDY_COURSE_STATE, stage);
-                        //System.out.println("stage is now: "+stage);
+                        putStage(player, 8);
                         player.skills().addXp(Skills.AGILITY, 20.0 * 3);
                         player.message("...You make it safely to the other side.");
                         player.agilityWalk(true);
@@ -185,13 +177,12 @@ public class WildernessCourse extends Interaction {
                         player.teleport(new Tile(2995, 3934));
                         player.looks().resetRender();
                         player.animate(-1);
-                        var stage = player.<Integer>getAttribOr(WILDY_COURSE_STATE, 0) + 1;
-                        player.putAttrib(WILDY_COURSE_STATE, stage);
-                        player.skills().addXp(Skills.AGILITY, 498.9 * 3);
-                        //System.out.println("stage is now: "+stage);
-                        if (stage == 5) {
+                        if (player.<Integer>getAttribOr(AttributeKey.WILDY_COURSE_STATE, 0) == 15) {
+                            player.putAttrib(AttributeKey.WILDY_COURSE_STATE, 0);
+                            player.skills().addXp(Skills.AGILITY, 498.9 * 3);
                             player.getTaskBottleManager().increase(BottleTasks.WILDERNESS_COURSE);
                             AchievementsManager.activate(player, Achievements.PARKOUR, 1);
+
 
                             if (World.getWorld().rollDie(10, 1)) {
                                 GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
@@ -204,7 +195,6 @@ public class WildernessCourse extends Interaction {
                                 UnlockAgilityPet.unlockGiantSquirrel(player);
                             }
                         }
-                        player.putAttrib(WILDY_COURSE_STATE, 0);
                         player.unlock();
                     });
                 });
@@ -308,5 +298,12 @@ public class WildernessCourse extends Interaction {
         GameObject openDoor2 = new GameObject(23554, new Tile(2997, 3931, 0), 0, 3);
         GameObject rotateDoor2 = new GameObject(23554, new Tile(2997, 3931, 0), 0, 4);
         ObjectManager.replace(openDoor2, rotateDoor2, 3);
+    }
+
+    private int putStage(Player player, int stageBit) {
+        var stage = player.<Integer>getAttribOr(AttributeKey.WILDY_COURSE_STATE, 0);
+        stage |= stageBit;
+        player.putAttrib(AttributeKey.WILDY_COURSE_STATE, stage);
+        return stage;
     }
 }

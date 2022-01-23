@@ -52,7 +52,7 @@ public class Edgevile extends Interaction {
                 player.getDialogueManager().start(new Dialogue() {
                     @Override
                     protected void start(Object... parameters) {
-                        send(DialogueType.OPTION, "Which shop would you like to open?", "Bounty Hunter Shop", "PkP shop", "Nevermind");
+                        send(DialogueType.OPTION, "Which shop would you like to open?", "Boss Points shop", "PkP shop", "Nevermind");
                         setPhase(0);
                     }
 
@@ -60,7 +60,7 @@ public class Edgevile extends Interaction {
                     protected void select(int option) {
                         if(isPhase(0)) {
                             if(option == 1) {
-                                World.getWorld().shop(17).open(player);
+                                World.getWorld().shop(47).open(player);
                             }
 
                             if(option == 2) {

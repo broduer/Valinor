@@ -1657,13 +1657,6 @@
         "max": 35,
         "creatureUid": 131
       },
-      //Grotesque Guardians
-      {
-        "weighing": 8,
-        "min": 3,
-        "max": 35,
-        "creatureUid": 132
-      },
       //K'ril Tsutsaroth
       {
         "weighing": 8,
@@ -2070,13 +2063,6 @@
         "max": 35,
         "creatureUid": 131
       },
-      //Grotesque Guardians
-      {
-        "weighing": 8,
-        "min": 3,
-        "max": 35,
-        "creatureUid": 132
-      },
       //K'ril Tsutsaroth
       {
         "weighing": 8,
@@ -2251,13 +2237,6 @@
         "min": 90,
         "max": 120,
         "creatureUid": 90
-      },
-      //Minions of Scabaras
-      {
-        "weighing": 4,
-        "min": 30,
-        "max": 60,
-        "creatureUid": 85
       },
       //Mithril dragons
       {
@@ -2489,13 +2468,6 @@
         "min": 3,
         "max": 35,
         "creatureUid": 131
-      },
-      //Grotesque Guardians
-      {
-        "weighing": 12,
-        "min": 3,
-        "max": 35,
-        "creatureUid": 132
       },
       //K'ril Tsutsaroth
       {

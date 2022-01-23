@@ -23,6 +23,8 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(RING_OF_WEALTH, new HoverMenu("@gre@+5%@whi@ droprate"));
+        menus.put(RING_OF_WEALTH_I, new HoverMenu("@gre@+7.5%@whi@ droprate"));
         menus.put(SAPPHIRE_MEMBER_RANK, new HoverMenu("When reading this scroll you gain +10$ total donated and the sapphire member rank. You cannot use this scroll with +10 total donated."));
         menus.put(FIFTY_TOTAL_DONATED_SCROLL, new HoverMenu("When reading this scroll you gain +50$ total donated. Ranks auto update based on your total amount."));
         menus.put(ONE_HUNDRED_TOTAL_DONATED_SCROLL, new HoverMenu("When reading this scroll you gain +100$ total donated. Ranks auto update based on your total amount."));

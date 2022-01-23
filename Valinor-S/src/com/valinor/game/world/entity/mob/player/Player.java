@@ -401,6 +401,12 @@ public class Player extends Mob {
         if (mode == ExpMode.GLADIATOR)
             percent += 10;
 
+        if(equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH))
+            percent += 5;
+
+        if(equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I))
+            percent += 7.5;
+
         var dropRateBoostUnlock = slayerRewards.getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
         if(dropRateBoostUnlock)
             percent += 3;
