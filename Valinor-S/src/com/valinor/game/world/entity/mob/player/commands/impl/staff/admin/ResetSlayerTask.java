@@ -24,7 +24,6 @@ public class ResetSlayerTask implements Command {
         final String player2 = Utils.formatText(command.substring(parts[0].length() + 1));
         Optional<Player> plr = World.getWorld().getPlayerByName(player2);
         if (plr.isPresent()) {
-
             Slayer.cancelTask(plr.get(), true);
             player.message("You have reset the slayer task for player "+plr.get().getUsername()+".");
             plr.get().message("Your slayer task has been reset, talk to any slayer master for a new task.");

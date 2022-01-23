@@ -29,6 +29,10 @@ public class Mazchna extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if (npc.id() == MAZCHNA) {
+                if (player.skills().combatLevel() < 20) {
+                    player.message("You need a combat level of 20 to talk to Mazchna.");
+                    return true;
+                }
                 player.getDialogueManager().start(new MazchnaD());
                 return true;
             }

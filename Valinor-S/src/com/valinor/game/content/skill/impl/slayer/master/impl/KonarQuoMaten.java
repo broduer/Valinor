@@ -30,6 +30,10 @@ public class KonarQuoMaten extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if (npc.id() == KONAR_QUO_MATEN) {
+                if (player.skills().combatLevel() < 75) {
+                    player.message("You need a combat level of 75 to talk to Konar quo Maten.");
+                    return true;
+                }
                 player.getDialogueManager().start(new KonarQuoMatenD());
                 return true;
             }

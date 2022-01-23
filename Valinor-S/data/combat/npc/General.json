@@ -1,5 +1,37 @@
 [
   {
+    // Suqah (111)
+    "ids": [
+      787, 788, 789, 790, 791, 792, 793
+    ],
+    "maxhit": 10,
+    "attackspeed": 6,
+    "deathlen": 2,
+    "aggroradius": 0,
+    "aggressive": false,
+    "slayerlvl": 1,
+    "slayerxp": 0,
+    "stats": {
+      "attack": 95,
+      "strength": 95,
+      "defence": 95,
+      "magic": 1,
+      "hitpoints": 105
+    },
+    "bonuses": {
+      "stabdefence": 50,
+      "slashdefence": 70,
+      "crushdefence": 70,
+      "magicdefence": 90,
+      "rangeddefence": 50
+    },
+    "animations": {
+      "attack": 4387,
+      "block": 4384,
+      "death": 4389
+    }
+  },
+  {
     // Ghoul (42)
     "ids": [
       289
@@ -1212,7 +1244,7 @@
   {
     // Mugger
     "ids": [
-      2871
+      1461, 6996
     ],
     "maxhit": 2,
     "stats": {
@@ -1237,7 +1269,7 @@
   {
     // Pirate
     "ids": [
-      523
+      1447, 513, 514, 516, 6993, 6994, 6995
     ],
     "maxhit": 2,
     "stats": {

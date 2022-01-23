@@ -16,10 +16,6 @@ public class KonarQuoMatenD extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        if (player.skills().combatLevel() < 75) {
-            player.message("You need a combat level of 75 to talk to Konar quo Maten.");
-            return;
-        }
         send(DialogueType.NPC_STATEMENT, KONAR_QUO_MATEN, Expression.NODDING_ONE, "'Ello, and what are you after then?");
         setPhase(0);
     }

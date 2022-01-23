@@ -14,6 +14,7 @@ import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.net.packet.interaction.Interaction;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.SLAYER_TASK;
@@ -30,6 +31,14 @@ public class Duradel extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if (npc.id() == DURADEL) {
+                if (player.skills().combatLevel() < 100) {
+                    player.message("You need a combat level of 100 to talk to Duradel.");
+                    return true;
+                }
+                if (player.skills().level(Skills.SLAYER) < 50) {
+                    player.message("You need a slayer level of 50 to talk to Duradel.");
+                    return true;
+                }
                 player.getDialogueManager().start(new DuradelD());
                 return true;
             }

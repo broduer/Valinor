@@ -30,6 +30,10 @@ public class Vannaka extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if (npc.id() == VANNAKA) {
+                if (player.skills().combatLevel() < 40) {
+                    player.message("You need a combat level of 40 to talk to Vannaka.");
+                    return true;
+                }
                 player.getDialogueManager().start(new VannakaD());
                 return true;
             }

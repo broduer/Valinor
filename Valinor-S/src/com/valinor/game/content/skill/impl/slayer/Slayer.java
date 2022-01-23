@@ -103,6 +103,7 @@ public class Slayer {
         if (adminCancel) {
             player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
             player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
+            player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE,false);
             player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
             return;
         }
@@ -124,6 +125,7 @@ public class Slayer {
                         if (10 > pts) {
                             player.message("You need " + required + " points to cancel your task.");
                         } else {
+                            player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE,false);
                             player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
                             player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
                             player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);

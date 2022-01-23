@@ -30,6 +30,10 @@ public class Chaeldar extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if(option == 1) {
             if (npc.id() == CHAELDAR) {
+                if (player.skills().combatLevel() < 70) {
+                    player.message("You need a combat level of 70 to talk to Chaeldar.");
+                    return true;
+                }
                 player.getDialogueManager().start(new ChaeldarD());
                 return true;
             }

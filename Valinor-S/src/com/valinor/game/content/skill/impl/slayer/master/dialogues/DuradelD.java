@@ -17,14 +17,6 @@ public class DuradelD extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        if (player.skills().combatLevel() < 100) {
-            player.message("You need a combat level of 100 to talk to Duradel.");
-            return;
-        }
-        if (player.skills().level(Skills.SLAYER) < 50) {
-            player.message("You need a slayer level of 50 to talk to Duradel.");
-            return;
-        }
         send(DialogueType.NPC_STATEMENT, DURADEL, Expression.NODDING_ONE, "'Ello, and what are you after then?");
         setPhase(0);
     }

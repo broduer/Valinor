@@ -16,10 +16,6 @@ public class VannakaD extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        if (player.skills().combatLevel() < 40) {
-            player.message("You need a combat level of 40 to talk to Vannaka.");
-            return;
-        }
         send(DialogueType.NPC_STATEMENT, VANNAKA, Expression.NODDING_ONE, "'Ello, and what are you after then?");
         setPhase(0);
     }

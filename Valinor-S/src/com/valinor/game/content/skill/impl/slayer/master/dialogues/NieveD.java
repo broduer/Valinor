@@ -16,10 +16,6 @@ public class NieveD extends Dialogue {
 
     @Override
     protected void start(Object... parameters) {
-        if (player.skills().combatLevel() < 85) {
-            player.message("You need a combat level of 85 to talk to Nieve.");
-            return;
-        }
         send(DialogueType.NPC_STATEMENT, NIEVE, Expression.NODDING_ONE, "'Ello, and what are you after then?");
         setPhase(0);
     }

@@ -289,6 +289,12 @@ public class TeleportMenuConstants {
         teleportOptions.put(71, new OptionMenu("Strange machine", new String[] { "strange machine", "wyvern shield", "ancient wyvern shield" },
             new TeleportAction(player, new Tile(3763, 3870, 1))));
 
+        teleportOptions.put(72, new OptionMenu("Lunar isle", new String[] { "lunar", "isle", "suqah" },
+            new TeleportAction(player, new Tile(2113, 3915, 0))));
+
+        teleportOptions.put(73, new OptionMenu("Stronghold of security", new String[] { "stronghold", "security", "minotaur", "wolf", "goblin", "zombie", "rat", "giant rat" },
+            new TeleportAction(player, new Tile(1859, 5243, 0))));
+
         return teleportOptions;
     }
 

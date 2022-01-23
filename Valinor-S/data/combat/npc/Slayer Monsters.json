@@ -1279,7 +1279,7 @@
   {
     // Dwarf
     "ids": [
-      290
+      290, 296, 1403, 1405, 1406, 5185
     ],
     "maxhit": 2,
     "slayerxp": 16,
@@ -3491,7 +3491,7 @@
     ],
     "maxhit": 15,
     "slayerxp": 120,
-    "slayerlvl": 63,
+    "slayerlvl": 1,
     "attackspeed": 4,
     "aggressive": true,
     "aggroradius": 3,

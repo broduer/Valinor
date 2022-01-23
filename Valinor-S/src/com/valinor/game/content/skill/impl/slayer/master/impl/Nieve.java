@@ -30,6 +30,10 @@ public class Nieve extends Interaction {
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {
         if (option == 1) {
             if (npc.id() == NIEVE) {
+                if (player.skills().combatLevel() < 85) {
+                    player.message("You need a combat level of 85 to talk to Nieve.");
+                    return true;
+                }
                 player.getDialogueManager().start(new NieveD());
                 return true;
             }
