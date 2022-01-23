@@ -17,8 +17,7 @@ import com.valinor.util.Utils;
 
 import java.util.*;
 
-import static com.valinor.util.CustomItemIdentifiers.BIG_CHEST;
-import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_CASKET;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -150,6 +149,14 @@ public abstract class Shop {
         if (storeItem.getAmount() < 1) {
             player.message("There is none of this item left in stock!");
             return;
+        }
+
+        if(shopId == 6) {
+            var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+            if(item.getId() == DONATOR_MYSTERY_BOX && playerIsIron) {
+                player.message("As an ironman you cannot buy mystery boxes.");
+                return;
+            }
         }
 
         if (item.getAmount() > storeItem.getAmount() && shopId != 7)
@@ -443,9 +450,6 @@ public abstract class Shop {
             StoreItem storeItem = (StoreItem) item;
             int value = storeItem.getShopValue();
             String message = Color.RED.tag() + "The shop will sell this " + item.unnote().name() + " for " + (value <= 0 ? "free!" : Utils.formatValue(value) + storeItem.getShopCurrency(this).toString() + ".");
-            if (shopId == 47) {
-                message = Color.RED.tag() + "The shop will sell x" + item.getAmount() + " " + item.unnote().name() + " for " + (value <= 0 ? "free!" : Utils.formatValue(value) + storeItem.getShopCurrency(this).toString() + ".");//Override message
-            }
             player.message(message);
         }
     }

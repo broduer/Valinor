@@ -206,6 +206,7 @@ public class FightCavesMinigame extends Minigame {
                 DialogueManager.npcChat(player, Expression.FURIOUS, TZHAARMEJJAL, "You have defeated TzTok-Jad, I am most impressed! Please accept this gift.", "Give cape back to me if you not want it.");
                 player.inventory().addOrDrop(new Item(FIRE_CAPE));
                 player.inventory().addOrDrop(new Item(TOKKUL, tokkul + 4000));
+                player.inventory().refresh();
                 AchievementsManager.activate(player, Achievements.FIGHT_CAVES_I, 1);
                 AchievementsManager.activate(player, Achievements.FIGHT_CAVES_II, 1);
                 BOSSES.log(player, TZTOKJAD, new Item(FIRE_CAPE));

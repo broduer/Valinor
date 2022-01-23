@@ -398,6 +398,8 @@ public class Item implements Cloneable {
 
     // These untradable items will be send to the inventory or bank on death.
     public static final int[] AUTO_KEPT_LIST = new int[]{
+        FIRE_CAPE,
+        FIGHTER_TORSO,
         ELDER_WAND_RAIDS,
         KILLERS_KNIFE_21059,
         BEGINNER_WEAPON_PACK,
