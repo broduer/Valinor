@@ -21,6 +21,7 @@ import java.util.Optional;
 
 import static com.valinor.game.content.raids.party.Party.*;
 import static com.valinor.util.ObjectIdentifiers.RECRUITING_BOARD;
+import static com.valinor.util.ObjectIdentifiers.SCORE_BOARD_32544;
 
 /**
  * @author Patrick van Elderen | April, 26, 2021, 17:25
@@ -34,6 +35,11 @@ public class RaidPartyActions extends Interaction {
             if (object.getId() == RECRUITING_BOARD) {
                 player.faceObj(object);
                 player.getDialogueManager().start(new PartyDialogue());
+                return true;
+            }
+            if (object.getId() == SCORE_BOARD_32544) {
+                player.faceObj(object);
+                player.message(Color.RED.wrap("We do not have scores yet."));
                 return true;
             }
         }
