@@ -97,7 +97,7 @@ object CollectPayments {
                 val playerIsIron = gameMode().isIronman || gameMode().isHardcoreIronman || gameMode().isUltimateIronman
                 val canClaimOnIron = playerIsIron && !isIronManItem
 
-                if(!canClaimOnIron) {
+                if(!canClaimOnIron && playerIsIron) {
                     sendNonIronmanMsg = true
                     return@forEach
                 }
