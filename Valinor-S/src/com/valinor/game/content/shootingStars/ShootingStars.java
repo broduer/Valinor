@@ -42,6 +42,7 @@ public class ShootingStars {
     private static GameObject rock;
     public static ArrayList<Player> players = new ArrayList<>(500);
     public static int STAR_CURRENCY = 25527;
+    private static boolean SHOOTING_STAR_REMOVED = false;
 
     private static final ShootingStars[] SPAWNS = {
         new ShootingStars(new Tile(3299, 3303, 0)),
@@ -95,6 +96,7 @@ public class ShootingStars {
         if (rock != null) {
             rock.setId(-1);
             rock = null;
+            SHOOTING_STAR_REMOVED = true;
             if (success) {
                 String successMessage = "The Shooting star has been completely mined!";
                 World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + successMessage);
@@ -124,6 +126,7 @@ public class ShootingStars {
                 // Despawn the star if existing
                 removeStar(false);
                 ACTIVE = star;
+                SHOOTING_STAR_REMOVED = false;
                 String eventMessage = "There's been a sighting of a star around " + getLocation() + "!";
                 World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + eventMessage);
                 addStar();
@@ -187,6 +190,26 @@ public class ShootingStars {
                     stop();
                     return;
                 }
+
+                if (METEORITE_REMAINING <= 0) {
+                    removeStar(true);
+                    player.resetAnimation();
+                    stop();
+                    return;
+                }
+
+                if (rock == null) {
+                    player.resetAnimation();
+                    stop();
+                    return;
+                }
+
+                if(SHOOTING_STAR_REMOVED) {
+                    player.resetAnimation();
+                    stop();
+                    return;
+                }
+
                 var random = World.getWorld().random(1, 3);
                 player.getInventory().add(STAR_CURRENCY, random);
                 player.skills().addXp(Skills.MINING, 30, true);
@@ -209,15 +232,6 @@ public class ShootingStars {
                 }
                 if(METEORITE_REMAINING >= 1 && METEORITE_REMAINING <= 100) {
                     rock.setId(CRASHED_STAR_41229);
-                }
-                if (METEORITE_REMAINING <= 0) {
-                    removeStar(true);
-                    player.resetAnimation();
-                    stop();
-                }
-                if (rock == null) {
-                    player.resetAnimation();
-                    stop();
                 }
                 player.animate(pick.get().crystalAnim);
             }
