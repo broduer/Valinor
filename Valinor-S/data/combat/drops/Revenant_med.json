@@ -26,7 +26,7 @@
         "points": 250,
         "items": [
           { "id": 1392, "min": 3, "max": 3, "points": 15 },   //Battlestaff (noted)
-          { "id": 21817, "min": 1, "max": 1, "points": 10 },   //Bracelet of ethereum (uncharged)
+          { "id": 21816, "min": 1, "max": 1, "points": 10 },   //Bracelet of ethereum
           { "id": 1163, "min": 1, "max": 1, "points": 15 },   //Rune full helm
           { "id": 1127, "min": 1, "max": 1, "points": 15 },   //Rune platebody
           { "id": 1079, "min": 1, "max": 1, "points": 15 },   //Rune platelegs
