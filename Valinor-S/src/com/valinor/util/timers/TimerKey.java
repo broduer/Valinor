@@ -9,6 +9,8 @@ import java.util.Set;
 
 public enum TimerKey {
 
+    WAIT_FOR_DB,
+
     VASA_TELEPORT_ATTACK,
 
     /**

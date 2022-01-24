@@ -5,6 +5,7 @@ import com.valinor.db.transactions.CollectVotes;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
+import com.valinor.util.timers.TimerKey;
 
 /**
  * @author Patrick van Elderen | May, 29, 2021, 11:13
@@ -12,15 +13,15 @@ import com.valinor.game.world.entity.mob.player.commands.Command;
  */
 public class ClaimVoteCommand implements Command {
 
-    private long lastCommandUsed;
-
     @Override
     public void execute(Player player, String command, String[] parts) {
         if (GameServer.properties().enableSql) {
-            if (System.currentTimeMillis() - lastCommandUsed >= 10000) {
-                lastCommandUsed = System.currentTimeMillis();
-                CollectVotes.INSTANCE.collectVotes(player);
+            if(player.getTimers().has(TimerKey.WAIT_FOR_DB)) {
+                player.message("You must wait 10s before using this command again.");
+                return;
             }
+            player.getTimers().addOrSet(TimerKey.WAIT_FOR_DB, 10);
+            CollectVotes.INSTANCE.collectVotes(player);
         } else {
             player.message("The database is offline at this moment.");
         }

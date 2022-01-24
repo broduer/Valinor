@@ -16,12 +16,10 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.Tuple;
 import com.valinor.util.Utils;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 
@@ -30,6 +28,29 @@ import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
  * @author <a href="http://www.rune-server.org/members/stand+up/">Stand Up</a>
  */
 public final class Hunter {
+
+    public static void onServerStart() {
+        TaskManager.submit(new ClearTrapsTask());
+    }
+
+    public static void exec() {
+        exec(1000*60*2);
+    }
+
+    public static void exec(long abandonTime) {
+        List<Tuple<Player, Trap>> todel = new ArrayList<>();
+        GLOBAL_TRAPS.forEach((p, tp) -> {
+            tp.getTraps().forEach(trap -> {
+                if (System.currentTimeMillis() - trap.placedDownTime > abandonTime) { // 2min
+                    todel.add(new Tuple(p, trap)); // cant remove here, would cause concurrentmodex
+                }
+            });
+        });
+        todel.forEach(e -> {
+            abandon(e.first(), e.second(), false);
+        });
+        todel.clear();
+    }
 
     //Barehand impling anim id 7171
 
@@ -125,6 +146,7 @@ public final class Hunter {
         }
 
         trap.submit();
+        trap.placedDownTime = System.currentTimeMillis();
         player.animate(5208);
         player.inventory().remove(trap.getType().getItemId());
         ObjectManager.addObj(trap.getObject());

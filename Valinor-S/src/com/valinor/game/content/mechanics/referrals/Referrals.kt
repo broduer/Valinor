@@ -17,6 +17,7 @@ import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers.*
 import com.valinor.util.Utils
+import com.valinor.util.timers.TimerKey
 import java.sql.Timestamp
 import java.util.*
 
@@ -582,9 +583,14 @@ object Referrals {
             }
             70006 -> {
                 player.message("Fetching Referrals...")
+                if (player.timers.has(TimerKey.WAIT_FOR_DB)) {
+                    player.message("You must wait 10s before using this button again.")
+                    return true
+                }
+                player.timers.addOrSet(TimerKey.WAIT_FOR_DB, 10)
                 val results = player.processAllReferralsForMe()
                 player.event {
-                    if (tick > 100) {
+                    if (tick > 100) {//spam this button dupes
                         stop()
                         System.err.println("Referral events future timed out")
                         return@event

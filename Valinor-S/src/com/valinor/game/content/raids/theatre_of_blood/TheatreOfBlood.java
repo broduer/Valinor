@@ -90,7 +90,7 @@ public class TheatreOfBlood extends Raids {
         player.removeAll(new Item(DAWNBRINGER));
 
         //Move outside of raids
-        player.teleport(1245, 3561, 0);
+        player.teleport(3097, 3478, 0);
         player.getInterfaceManager().close(true);
     }
 

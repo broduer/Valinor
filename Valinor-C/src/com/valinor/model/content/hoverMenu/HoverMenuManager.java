@@ -102,7 +102,7 @@ public class HoverMenuManager {
         menus.put(RING_OF_TRINITY, new HoverMenu("The effect of all forged rings combined into one."));
         menus.put(MAGMA_BLOWPIPE, new HoverMenu("A recolored version of the Toxic blowpipe! +3 max hit and better accuracy <col=65535>Untradeable and auto-keep."));
         menus.put(VENGEANCE_SKULL, new HoverMenu("With this item in your inventory, you won't need the required runes for vengeance! <col=65535>Untradeable and auto-keep."));
-        menus.put(KEY_OF_DROPS, new HoverMenu("When using the Key of drops on a mystery box you will be guaranteed a rare drop. And 20% chance of a extreme rare drop."));
+        menus.put(KEY_OF_DROPS, new HoverMenu("When using the Key of drops on a mystery box you will get an extra drop roll."));
         menus.put(ANCESTRAL_HAT_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));
         menus.put(ANCESTRAL_ROBE_TOP_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));
         menus.put(ANCESTRAL_ROBE_BOTTOM_I, new HoverMenu("+@red@10%@whi@ extra accuracy and +@red@5@whi@ Magic damage."));

@@ -6,6 +6,7 @@ import com.valinor.game.content.minigames.impl.Barrows;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.theatre_of_blood.SupplyChest;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
+import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
 import com.valinor.game.world.World;
@@ -56,10 +57,14 @@ public class TestCommand implements Command {
         //player.sound(2401);
         //ZarosGodwars.end();
 
-        for (int i = 0; i < 500; i++) {
-            player.getPacketSender().sendScreenFade("", 1, 3);
-        }
+        //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
+
+        Npc npc = new Npc(NEX, new Tile(3333, 3333)).spawn(false);
+
+        World.getWorld().getPlayers().forEach(p -> {
+
+        });
 
         player.message("Test command has been activated.");
     }

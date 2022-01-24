@@ -77,8 +77,8 @@ public class HydraCombatScript extends CommonCombatMethod {
             new Projectile(hydra.getCentrePosition(), pos,1,1644,54,25,35,0,0,16,64).sendProjectile();
             Direction dir = Direction.getDirection(Utils.getClosestTile(hydra, pos), pos);
 
-            World.getWorld().tileGraphic(1645, new Tile(pos.getX(), pos.getY()), pos.getZ(),40);
-            World.getWorld().tileGraphic(POISON_POOLS[dir.ordinal()], new Tile(pos.getX(), pos.getY()), pos.getZ(),40);
+            World.getWorld().tileGraphic(1645, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 40);
+            World.getWorld().tileGraphic(POISON_POOLS[dir.ordinal()], new Tile(pos.getX(), pos.getY(), pos.getZ()), 0,40);
             Chain.bound(hydra).runFn(3, () -> {
                 for (int i = 0; i < 15; i++) {
                     if (target.tile().equals(pos)) {

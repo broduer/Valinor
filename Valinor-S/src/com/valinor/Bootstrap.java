@@ -5,6 +5,7 @@ import com.valinor.game.backup.BackupHandler;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.shootingStars.ShootingStars;
+import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
@@ -62,5 +63,6 @@ public final class Bootstrap {
         WorldBossEvent.onServerStart();
         ShootingStars.onServerStart();
         TopPkers.SINGLETON.init();
+        Hunter.onServerStart();
     }
 }

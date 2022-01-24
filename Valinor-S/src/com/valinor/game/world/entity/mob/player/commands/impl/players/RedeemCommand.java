@@ -4,6 +4,7 @@ import com.valinor.db.transactions.CollectPayments;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.util.Color;
+import com.valinor.util.timers.TimerKey;
 
 /**
  * @author Patrick van Elderen | May, 29, 2021, 19:47
@@ -13,15 +14,15 @@ public class RedeemCommand implements Command {
 
     public static boolean ENABLED = true;
 
-    private long lastCommandUsed;
-
     @Override
     public void execute(Player player, String command, String[] parts) {
         if(ENABLED) {
-            if (System.currentTimeMillis() - lastCommandUsed >= 10000) {
-                lastCommandUsed = System.currentTimeMillis();
-                CollectPayments.INSTANCE.collectPayments(player);
+            if(player.getTimers().has(TimerKey.WAIT_FOR_DB)) {
+                player.message("You must wait 10s before using this command again.");
+                return;
             }
+            player.getTimers().addOrSet(TimerKey.WAIT_FOR_DB, 10);
+            CollectPayments.INSTANCE.collectPayments(player);
         } else {
             player.message(Color.RED.wrap("The ::redeem command has been temporarily disabled."));
         }

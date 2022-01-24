@@ -3,6 +3,8 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
+import com.valinor.game.world.entity.combat.hit.HitDamageCache;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
@@ -18,11 +20,9 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.NpcIdentifiers.*;
@@ -202,10 +202,18 @@ public class ZarosGodwars {
         }
     }
 
+    /**
+     * A comparartor that sorts player damages by the most damage done, descending.
+     */
+    private static final Comparator<Map.Entry<Mob, HitDamageCache>> BEST_DAMAGE_COMPARATOR = Comparator.comparingInt(e -> e.getValue().getDamage());
+
     public static void drop(Mob mob) {
-        mob.getCombat().getDamageMap().forEach((key, hits) -> {
+        var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(BEST_DAMAGE_COMPARATOR);
+        list.limit(2).collect(Collectors.toList()).forEach(e -> {
+            var key = e.getKey();
+            var hits = e.getValue();
             Player player = (Player) key;
-            if (mob.tile().isWithinDistance(player.tile(),12) && hits.getDamage() >= 100) {
+            if (mob.tile().isWithinDistance(player.tile(),12) && hits.getDamage() >= 300) {
                 if(mob instanceof Npc) {
                     Npc npc = mob.getAsNpc();
 

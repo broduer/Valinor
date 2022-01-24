@@ -38,12 +38,12 @@ public class LizardShaman extends CommonCombatMethod {
         npc.getTimers().register(TimerKey.COMBAT_ATTACK, 5);
         Task.runOnceTask(3, t -> {
             for (int i = 1; i < 7; i += 2) {
-                spawn_destructive_minions(target, i);
+                spawn_destructive_minions(mob, target, i);
             }
         });
     }
 
-    private void spawn_destructive_minions(Mob target, int explodeTick) {
+    private void spawn_destructive_minions(Mob mob, Mob target, int explodeTick) {
         Npc spawn = new Npc(6768, new Tile(target.tile().x + Utils.random(2), target.tile().y + Utils.random(2)));
         spawn.respawns(false);
         spawn.noRetaliation(true);
@@ -55,7 +55,10 @@ public class LizardShaman extends CommonCombatMethod {
         Chain.runGlobal(explodeTick, () -> {
             spawn.animate(7159);
             spawn.stopActions(true);
-        }).then(2, () -> {
+        }).cancelWhen(() -> {
+            spawn.remove();
+            return spawn.tile().getDistance(mob.tile()) > 10; // cancels as expected
+        }).thenCancellable(2, () -> {
             spawn.hidden(true);
             World.getWorld().tileGraphic(1295, spawn.tile(), 1, 0);
 
@@ -63,7 +66,7 @@ public class LizardShaman extends CommonCombatMethod {
                 if (p.tile().inSqRadius(spawn.tile(), 1))
                     p.hit(spawn, Utils.random(10));
             });
-        }).then(2, () -> World.getWorld().unregisterNpc(spawn));
+        }).thenCancellable(2, () -> World.getWorld().unregisterNpc(spawn));
     }
 
     private void primary_melee_attack(Npc npc, Mob target) {

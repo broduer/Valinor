@@ -21,6 +21,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.test.unit.IKODTest;
 import com.valinor.test.unit.PlayerDeathConvertResult;
 import com.valinor.test.unit.PlayerDeathDropResult;
@@ -72,7 +73,7 @@ public class ItemsOnDeath {
         var minigame_safe_death = player.getMinigame() != null && player.getMinigame().getType().equals(MinigameManager.ItemType.SAFE);
         var hunleff_area = player.tile().region() == 6810;
         Mob lastAttacker = player.getAttribOr(AttributeKey.LAST_DAMAGER,null);
-        final boolean npcFlag = lastAttacker != null && lastAttacker.isNpc();
+        final boolean npcFlag = lastAttacker != null && lastAttacker.isNpc() && !WildernessArea.inWilderness(player.tile());
 
         // If we're in FFA clan wars, don't drop our items.
         // Have these safe area checks before we do some expensive code ... looking for who killed us.

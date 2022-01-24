@@ -110,7 +110,7 @@ public class RaidPartyActions extends Interaction {
                     Optional<Player> target = World.getWorld().getPlayerByName(input);
 
                     if (target.isPresent()) {
-                        if (target.get().tile().region() != 4919) {
+                        if (target.get().tile().region() != 12342) {
                             player.message(Utils.formatName(input) + " is nowhere near the raids area.");
                             return;
                         }

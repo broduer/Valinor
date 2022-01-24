@@ -1462,7 +1462,7 @@
       "magic": 240,
       "ranged": 240,
       "defence": 240,
-      "hitpoints": 1000
+      "hitpoints": 10000
     },
     "bonuses": {
       "attack": 420,

@@ -34,6 +34,11 @@ public abstract class Trap {
     private final TrapType type;
 
     /**
+     * Time since placed
+     */
+    public long placedDownTime;
+
+    /**
      * The state of this trap.
      */
     private TrapState state;
