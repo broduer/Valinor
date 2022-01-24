@@ -156,7 +156,7 @@ public class TaskBottleManager {
         BottleTasks bottleTask = player.getAttribOr(AttributeKey.BOTTLE_TASK, null);
 
         player.putAttrib(CAN_CLAIM_TASK_REWARD,false);
-        player.inventory().remove(bottleTask.getTaskCategory() == TaskCategory.SKILLING_TASK ? SKILLING_SCROLL : PVMING_SCROLL);
+        player.removeAll(bottleTask.getTaskCategory() == TaskCategory.SKILLING_TASK ? new Item(SKILLING_SCROLL) : new Item(PVMING_SCROLL));
         player.inventory().addOrDrop(new Item(TASK_BOTTLE_CASKET));
         AchievementsManager.activate(player, Achievements.TASK_MASTER_I, 1);
         AchievementsManager.activate(player, Achievements.TASK_MASTER_II, 1);
