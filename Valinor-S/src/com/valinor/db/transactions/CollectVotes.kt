@@ -80,7 +80,7 @@ object CollectVotes {
                     if (index == list.size - 1) {
                         // the last one in the loop.
                         GameEngine.getInstance().addSyncTask {
-                            val now = LocalDateTime.now()
+                            /*val now = LocalDateTime.now()
                             val currentMac: String = getAttribOr(AttributeKey.MAC_ADDRESS, "invalid")
                             //Either IP or Mac matches check if 12 hours have passed.
 
@@ -95,7 +95,7 @@ object CollectVotes {
                             if (inLast12h) {
                                 message(Color.RED.wrap("You have already voted the past 12 hours."))
                                 return@addSyncTask
-                            }
+                            }*/
                             var points = votes.toInt()
 
                             val electionDay = slayerRewards.unlocks.containsKey(SlayerConstants.ELECTION_DAY) && World.getWorld().rollDie(5,1)
@@ -150,7 +150,7 @@ object CollectVotes {
                             putAttrib(AttributeKey.VOTE_POINTS, increaseBy)
                             packetSender.sendString(QuestTab.InfoTab.VOTE_POINTS.childId, QuestTab.InfoTab.INFO_TAB[QuestTab.InfoTab.VOTE_POINTS.childId]!!.fetchLineData(this))
 
-                            voteHistory.add(VoteLog(hostAddress, currentMac, now))
+                            //voteHistory.add(VoteLog(hostAddress, currentMac, now))
 
                             Utils.sendDiscordInfoLog("$username used command: ::claimvote and claimed their vote reward.", "votes_claimed")
                         }
