@@ -1,6 +1,6 @@
 {
   "staffOnlyLogins": false,
-  "gameVersion": "1.0.1",
+  "gameVersion": "1.0.2",
   "definitionsDirectory": "./data/def/",
   "clippingDirectory": "./data/clipping/",
   "debugMode": true,
