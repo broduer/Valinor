@@ -71,10 +71,12 @@ public class ItemsOnDeath {
         var raids_area = player.getRaids() != null && player.getRaids().raiding(player);
         var minigame_safe_death = player.getMinigame() != null && player.getMinigame().getType().equals(MinigameManager.ItemType.SAFE);
         var hunleff_area = player.tile().region() == 6810;
+        Mob lastAttacker = player.getAttribOr(AttributeKey.LAST_DAMAGER,null);
+        final boolean npcFlag = lastAttacker != null && lastAttacker.isNpc();
 
         // If we're in FFA clan wars, don't drop our items.
         // Have these safe area checks before we do some expensive code ... looking for who killed us.
-        if (nightmare_area || donator_zone || vorkath_area || zulrah_area || hydra_area || safe_accounts || duel_arena || pest_control || raids_area || in_tournament || minigame_safe_death || hunleff_area) {
+        if (npcFlag || nightmare_area || donator_zone || vorkath_area || zulrah_area || hydra_area || safe_accounts || duel_arena || pest_control || raids_area || in_tournament || minigame_safe_death || hunleff_area) {
             Utils.sendDiscordInfoLog("Player: "+ player.getUsername() + " died in a safe area " + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""), "player_death");
             Utils.sendDiscordInfoLog("Safe deaths activated for: "+ player.getUsername() + "" + (killer != null && killer.isPlayer() ? " to " + killer.toString() : ""+ "nightmare_area: "+nightmare_area+" donator_zone: "+donator_zone+" vorkath_area: "+vorkath_area+" hydra_area: "+hydra_area+" zulrah_area: "+zulrah_area+" in safe_accounts: "+safe_accounts+" duel_arena: "+duel_arena+" pest_control: "+pest_control+" raids_area: "+raids_area+" in_tournament: "+in_tournament+" minigame_safe_death: "+minigame_safe_death+" hunleff_area: "+hunleff_area), "player_death");
             return null;
@@ -251,9 +253,6 @@ public class ItemsOnDeath {
 
         outputKept.addAll(keep);
         IKODTest.debug("Kept-3: " + Arrays.toString(keep.stream().map(Item::toShortString).toArray()));
-
-        Mob lastAttacker = player.getAttribOr(AttributeKey.LAST_DAMAGER,null);
-        final boolean npcFlag = lastAttacker != null && lastAttacker.isNpc();
 
         LinkedList<Item> toDropConverted = new LinkedList<>();
 
