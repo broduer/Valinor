@@ -36,13 +36,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 91);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 91, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(92, 100));
+            return Optional.of(new Graphic(92, 124));
         }
 
         @Override
@@ -57,7 +57,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(90, 100));
+            return Optional.of(new Graphic(90, 92));
         }
 
         @Override
@@ -111,7 +111,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Animation> castAnimation() {
-            return Optional.of(new Animation(716));
+            return Optional.of(new Animation(1163));
         }
 
         @Override
@@ -170,13 +170,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 94);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 94, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(95, 100));
+            return Optional.of(new Graphic(95, 124));
         }
 
         @Override
@@ -186,7 +186,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(93, 100));
+            return Optional.of(new Graphic(93, 92));
         }
 
         @Override
@@ -235,8 +235,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 97);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 97, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -370,8 +370,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 100);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 100, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -441,8 +441,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 118);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 118, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -574,8 +574,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return bind(cast, castOn, dist, 178);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 178, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -648,8 +648,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 121);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 121, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -713,8 +713,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 124);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 124, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -778,8 +778,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 127);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 127, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -849,8 +849,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 146);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 146, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -914,8 +914,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 133);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 133, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -978,8 +978,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 136);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 136, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1043,8 +1043,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 88);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 88, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1114,8 +1114,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return bind(cast, castOn, dist, 178);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 178, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1188,8 +1188,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 328);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 328, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1257,8 +1257,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 139);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 139, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1322,8 +1322,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 130);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 130, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1603,8 +1603,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 159);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 159, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1667,8 +1667,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 162);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 162, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1802,8 +1802,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 165);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 165, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -1936,8 +1936,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 156);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 156, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -2005,8 +2005,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return bind(cast, castOn, dist, 178);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 178, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -2165,7 +2165,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            return Optional.empty();
+           return Optional.empty();
         }
 
         @Override
@@ -2249,13 +2249,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1456);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 1456, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(1457, 80));
+            return Optional.of(new Graphic(1457, 124));
         }
 
         @Override
@@ -2265,7 +2265,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1455, 100));
+            return Optional.of(new Graphic(1455, 92));
         }
 
         @Override
@@ -2313,13 +2313,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1459);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 1459, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(1460, 80));
+            return Optional.of(new Graphic(1460, 124));
         }
 
         @Override
@@ -2329,7 +2329,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1458, 100));
+            return Optional.of(new Graphic(1458, 92));
         }
 
         @Override
@@ -2378,13 +2378,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1462);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 1462, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(1463, 80));
+            return Optional.of(new Graphic(1463, 124));
         }
 
         @Override
@@ -2394,7 +2394,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1461, 100));
+            return Optional.of(new Graphic(1461, 92));
         }
 
         @Override
@@ -2443,13 +2443,13 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1465);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 1465, 0, 66, 43, 31, 0));
         }
 
         @Override
         public Optional<Graphic> endGraphic() {
-            return Optional.of(new Graphic(1466, 80));
+            return Optional.of(new Graphic(1466, 124));
         }
 
         @Override
@@ -2459,7 +2459,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1464, 100));
+            return Optional.of(new Graphic(1464, 92));
         }
 
         @Override
@@ -2476,7 +2476,7 @@ public enum CombatSpells {
         public List<Item> itemsRequired(Player player) {
             boolean hasTomeOfFire = player.getEquipment().hasAt(EquipSlot.SHIELD, TOME_OF_FIRE);
             if (hasTomeOfFire) {
-                return List.of(Item.of(FIRE_RUNE, 10), Item.of(AIR_RUNE, 7));
+                return List.of(Item.of(WRATH_RUNE, 1), Item.of(AIR_RUNE, 7));
             }
             return List.of(
                 Item.of(FIRE_RUNE, 10),
@@ -2524,8 +2524,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 384);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 384, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -2609,8 +2609,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 378);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 378, 0, 66, 43, 0, 0));
         }
 
         @Override
@@ -2682,8 +2682,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 371);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 372, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -2752,8 +2752,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 360);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 360, 0, 66, 43, 0, 0));
         }
 
         @Override
@@ -2829,7 +2829,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            return Optional.empty();
+            return Optional.of(new Projectile(cast, castOn, 384, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -3061,7 +3061,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            return Optional.empty();
+            return Optional.of(new Projectile(cast, castOn, 366, 0, 66, 43, 0, 0));
         }
 
         @Override
@@ -3136,8 +3136,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 386);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 386, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -3225,8 +3225,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 380);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 380, 0, 66, 43, 0, 0));
         }
 
         @Override
@@ -3298,8 +3298,8 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return ancient(cast, castOn, dist, 374);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 374, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -3444,7 +3444,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            return Optional.empty();
+            return Optional.of(new Projectile(cast, castOn, 390, 0, 66, 43, 31, 0));
         }
 
         @Override
@@ -3739,8 +3739,10 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, (9 * dist), 1252);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            Tile targPos = castOn.tile();
+            int dist = cast.tile().distance(targPos);
+            return Optional.of(new Projectile(cast, castOn,1252, (9 * dist), 45, 10, 0, 0, 10, 64));
         }
 
         @Override
@@ -3750,7 +3752,7 @@ public enum CombatSpells {
 
         @Override
         public int baseMaxHit() {
-            return 28;
+            return 0;
         }
 
         @Override
@@ -3800,8 +3802,10 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1040);
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            var tile = cast.tile();
+            var tileDist = tile.distance(castOn.tile());
+            return Optional.of(new Projectile(cast, castOn, 1040, (9 * tileDist), 45, 10, 0, 0));
         }
 
         @Override
@@ -3811,7 +3815,7 @@ public enum CombatSpells {
 
         @Override
         public int baseMaxHit() {
-            return 33;
+            return 0;
         }
 
         @Override
@@ -3861,8 +3865,10 @@ public enum CombatSpells {
         }
 
         @Override
-        public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-            return modern(cast, castOn, dist, 1539); //9 *
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            var tile = cast.tile();
+            var tileDist = tile.distance(castOn.tile());
+            return Optional.of(new Projectile(cast, castOn, 1539, (9 * tileDist), 45, 10, 0, 0));
         }
 
         @Override

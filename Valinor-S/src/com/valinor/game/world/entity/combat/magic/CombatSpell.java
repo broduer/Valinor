@@ -45,7 +45,7 @@ public abstract class CombatSpell extends Spell {
         int castAnimation = -1;
 
         Npc npc = cast.isNpc() ? ((Npc) cast) : null;
-
+        
         if (castAnimation().isPresent()) {
             castAnimation().ifPresent(cast::animate);
         } else {
@@ -77,15 +77,13 @@ public abstract class CombatSpell extends Spell {
 
         //Special spells
 
-        //is this my entire class? yes
-
         if(spell != null) {
             if (spell.name().equalsIgnoreCase("Confuse")) {
                 if(cast.isPlayer()) {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
-                    cast.graphic(102, 100,0);
-                    new Projectile(cast, castOn, 103, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    cast.graphic(102, 92,0);
+                    new Projectile(cast, castOn, 103, 61, 66, 36, 31, 0).sendProjectile();
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 13.0, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -104,7 +102,7 @@ public abstract class CombatSpell extends Spell {
                         }
 
                         var delay = tileDist <= 2 ? 1 : tileDist <= 5 ? 2 : 3;
-                        castOn.graphic(104, 100, delay * 30);//a tick in graphic format/maths is 30.
+                        castOn.graphic(104, 200, delay * 30);//a tick in graphic format/maths is 30.
 
                         if(isNpc) {
                             int decrease = (int) (0.05 * level);
@@ -125,7 +123,7 @@ public abstract class CombatSpell extends Spell {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
                     cast.graphic(102, 100,0);
                     new Projectile(cast, castOn, 105, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 21, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -165,7 +163,7 @@ public abstract class CombatSpell extends Spell {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
                     cast.graphic(102, 100,0);
                     new Projectile(cast, castOn, 108, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 29.0, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -205,7 +203,7 @@ public abstract class CombatSpell extends Spell {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
                     cast.graphic(167, 100,0);
                     new Projectile(cast, castOn, 168, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 76.0, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -245,7 +243,7 @@ public abstract class CombatSpell extends Spell {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
                     cast.graphic(170, 100,0);
                     new Projectile(cast, castOn, 171, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 83, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -285,7 +283,7 @@ public abstract class CombatSpell extends Spell {
                     var success = AccuracyFormula.doesHit(cast, castOn, CombatType.MAGIC) || cast.hasAttrib(AttributeKey.ALWAYS_HIT);
                     cast.graphic(173, 100,0);
                     new Projectile(cast, castOn, 174, 0, 20, 43, 31, 0).sendProjectile();
-                    var tileDist = cast.tile().getChevDistance(castOn.tile());
+                    var tileDist = cast.tile().distance(castOn.tile());
                     cast.skills().addXp(Skills.MAGIC, 90.0, castOn.isPlayer());
                     boolean isNpc = castOn.isNpc();
                     if(success) {
@@ -326,7 +324,7 @@ public abstract class CombatSpell extends Spell {
                     Player target = (Player) castOn;
                     var success = AccuracyFormula.doesHit(player, target, CombatType.MAGIC) || player.hasAttrib(AttributeKey.ALWAYS_HIT);
                     new Projectile(player, target, success ? 1299 : 1300, 41, player.projectileSpeed(target), 43, 31, 0).sendProjectile();
-                    var tileDist = player.tile().getChevDistance(target.tile());
+                    var tileDist = player.tile().distance(target.tile());
                     var tbTime = 495;
                     var tb_delay = tileDist <= 2 ? 1 : tileDist <= 5 ? 2 : 3;
                     if(success) {
@@ -351,38 +349,19 @@ public abstract class CombatSpell extends Spell {
         }
 
         // Finally send the projectile after two ticks.
-        int castProjectileTicks = 2;
-        int endGraphicDelay = castProjectileTicks * 30;
-        Optional<Projectile> optP = castProjectile(cast, castOn, cast.tile().getChevDistance(castOn.tile()));
-        if (optP.isPresent()) {
-            Projectile p = optP.get();
-            endGraphicDelay += p.getClientTicks();
-            TaskManager.submit(new Task("CastProjectileTask", castProjectileTicks, cast, false) {
+        castProjectile(cast, castOn).ifPresent(g -> {
+            TaskManager.submit(new Task("CastProjectileTask", 2, cast, false) {
                 @Override
                 public void execute() {
-                    p.sendProjectile();
+                    g.sendProjectile();
                     this.stop();
                 }
             });
-        }
-
-        //so in here it sends the projectile
-
-        //sec ive patched this on my side, i def forgot something version control lol
+        });
 
         Hit hit = castOn.hit(cast, CombatFactory.calcDamageFromType(cast, castOn, CombatType.MAGIC), cast.getCombat().magicSpellDelay(castOn), CombatType.MAGIC).checkAccuracy().spell(spell).postDamage(h -> ((MagicCombatMethod)CombatFactory.MAGIC_COMBAT).handleAfterHit(h));
         hit.submit();
 
-        if (hit.isAccurate()) {
-            Optional<Graphic> optEG = endGraphic();
-            if (optEG.isPresent()) {
-                Graphic endG = optEG.get();
-                castOn.performGraphic(new Graphic(endG.id(), endG.height(), endG.delay() + endGraphicDelay));
-            }
-        } else {
-            castOn.performGraphic(new Graphic(85, 90, 30 + endGraphicDelay));
-            //castOn.delayedGraphics(new Graphic(85, 90, 30), cast.getCombat().magicSpellDelay(castOn) - 1);
-        }
         if (spell instanceof CombatEffectSpell) {
             //Effects only hit when we don't splash
             if (hit.isAccurate()) {
@@ -399,7 +378,7 @@ public abstract class CombatSpell extends Spell {
         if(attacker.isPlayer()) {
             Player player = (Player) attacker;
 
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
                 speed = 4;
             }
         }
@@ -464,46 +443,8 @@ public abstract class CombatSpell extends Spell {
      * @param castOn the entity targeted by the spell.
      * @return the projectile played when this spell is cast.
      */
-    public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
-        return castProjectile(cast, castOn);
-    }
-
-    /**
-     * The projectile played when this spell is cast.
-     *
-     * @param cast   the entity casting the spell.
-     * @param castOn the entity targeted by the spell.
-     * @return the projectile played when this spell is cast.
-     */
-    public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-        return castProjectile(cast, castOn, 3);
-    }
-
-    public Optional<Projectile> bind(Mob cast, Mob castOn, int dist, int graphicID) {
-        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
-        int realDelay = Math.max(0, 75 + delayMod);
-        int speed = Math.max(0, delayMod + 56 + (dist * 10));
-        return Optional.of(new Projectile(cast, castOn, graphicID,
-            realDelay, speed, 45, 0, 16));
-    }
-
-    public Optional<Projectile> modern(Mob cast, Mob castOn, int dist, int graphicID) {
-        int delay = 51;
-        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
-        int realDelay = Math.max(0, delay + delayMod);
-        int speed = Math.max(0, delayMod + delay + 5 + (dist * 10));
-        return Optional.of(new Projectile(cast, castOn, graphicID,
-            realDelay, speed, 43, 31, 16));
-    }
-
-    public Optional<Projectile> ancient(Mob cast, Mob castOn, int dist, int graphicID) {
-        int delay = 51;
-        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
-        int realDelay = Math.max(0, delay + delayMod);
-        int speed = Math.max(0, delayMod + delay + 5 + (dist * 10));
-        return Optional.of(new Projectile(cast, castOn, graphicID,
-            realDelay, speed, 43, 0, 16));
-    }
+    public abstract Optional<Projectile> castProjectile(Mob cast,
+                                                        Mob castOn);
 
     /**
      * The ending graphic played when the spell hits the victim.
