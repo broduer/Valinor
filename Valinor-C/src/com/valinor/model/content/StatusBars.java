@@ -145,7 +145,6 @@ public class StatusBars {
         int prayer = Client.singleton.currentLevels[5];
         int percent = getPercent(getPercent(type,0),250);
 
-
         Rasterizer2D.draw_rectangle_outline(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250, 0x000000);
 
         Rasterizer2D.draw_filled_rect(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250 , 0x000000,130);

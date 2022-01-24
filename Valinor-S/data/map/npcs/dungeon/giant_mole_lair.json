@@ -7,5 +7,41 @@
     "z": 0,
     "direction": "S",
     "walkRange": 6
+  },
+  {
+    "name": "Giant Mole",
+    "id": 5779,
+    "x": 1759,
+    "y": 5196,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Giant Mole",
+    "id": 5779,
+    "x": 1780,
+    "y": 5189,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Giant Mole",
+    "id": 5779,
+    "x": 1760,
+    "y": 5164,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
+  },
+  {
+    "name": "Giant Mole",
+    "id": 5779,
+    "x": 1746,
+    "y": 5171,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 6
   }
 ]

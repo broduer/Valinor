@@ -39,16 +39,17 @@ public class MemberZone extends Interaction {
             Npc npc = (Npc) target;
 
             var ruby_member = player.getMemberRights().isRubyMemberOrGreater(player);
-            var diamonMember = player.getMemberRights().isDiamondMemberOrGreater(player);
+            var diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
 
             //Make sure we're in the member zone
-            if (player.tile().memberZone()) {
-                if((npc.id() == ANCIENT_REVENANT_DARK_BEAST || npc.id() == ANCIENT_REVENANT_ORK || npc.id() == ANCIENT_REVENANT_CYCLOPS || npc.id() == ANCIENT_REVENANT_DRAGON || npc.id() == ANCIENT_REVENANT_KNIGHT) && !ruby_member) {
+            if (player.tile().memberCave()) {
+                if ((npc.id() == ANCIENT_REVENANT_DARK_BEAST || npc.id() == ANCIENT_REVENANT_ORK || npc.id() == ANCIENT_REVENANT_CYCLOPS || npc.id() == ANCIENT_REVENANT_DRAGON || npc.id() == ANCIENT_REVENANT_KNIGHT) && !ruby_member) {
                     player.getCombat().reset();
                     player.message(Color.RED.wrap("You need to be at least a ruby member to attack ancient revenants."));
                     return false;
                 }
-                if((npc.id() == ANCIENT_BARRELCHEST || npc.id() == ANCIENT_CHAOS_ELEMENTAL || npc.id() == ANCIENT_KING_BLACK_DRAGON) && !diamonMember) {
+
+                if ((npc.id() == ANCIENT_BARRELCHEST || npc.id() == ANCIENT_CHAOS_ELEMENTAL || npc.id() == ANCIENT_KING_BLACK_DRAGON) && !diamondMember) {
                     player.getCombat().reset();
                     player.message(Color.RED.wrap("You need to be at least a diamond member to attack ancient bosses."));
                     return false;
@@ -69,7 +70,7 @@ public class MemberZone extends Interaction {
 
                 Tile tile = new Tile(2335, 9795);
 
-                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
                     return true;
                 }
 
@@ -110,7 +111,7 @@ public class MemberZone extends Interaction {
                     return true;
                 }
 
-                if(player.getMemberRights().isSapphireMemberOrGreater(player)) {
+                if (player.getMemberRights().isSapphireMemberOrGreater(player)) {
                     Teleports.basicTeleport(player, new Tile(2457, 2858));
                 } else {
                     Teleports.basicTeleport(player, GameServer.properties().defaultTile);
@@ -120,7 +121,7 @@ public class MemberZone extends Interaction {
             if (obj.getId() == PORTAL_OF_HEROES) {
                 Tile tile = new Tile(3299, 3918);
 
-                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
                     return true;
                 }
 
@@ -158,7 +159,7 @@ public class MemberZone extends Interaction {
             if (obj.getId() == PORTAL_OF_CHAMPIONS) {
                 Tile tile = new Tile(3287, 3884);
 
-                if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
                     return true;
                 }
 
@@ -269,12 +270,12 @@ public class MemberZone extends Interaction {
                 return true;
             }
 
-            if(obj.getId() == ROW_BOAT) {
-                if(!obj.tile().equals(2323, 9801)) {
+            if (obj.getId() == ROW_BOAT) {
+                if (!obj.tile().equals(2323, 9801)) {
                     player.message("I can't travel with this row boat.");
                     return true;
                 }
-                if(!player.getMemberRights().isEmeraldMemberOrGreater(player)) {
+                if (!player.getMemberRights().isEmeraldMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least a super member to travel with this boat."));
                     return true;
                 }

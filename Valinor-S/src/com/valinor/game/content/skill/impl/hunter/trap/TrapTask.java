@@ -4,6 +4,8 @@ import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.trap.Trap.TrapState;
 import com.valinor.game.task.Task;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.object.ObjectManager;
 import com.valinor.util.RandomGen;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -48,7 +50,7 @@ public final class TrapTask extends Task {
                 return;
             }
 
-            if (!trapProcessor.getTask().isPresent() || trapProcessor.getTraps().isEmpty()) {
+            if (trapProcessor.getTask().isEmpty() || trapProcessor.getTraps().isEmpty()) {
                 stop();
                 return;
             }
@@ -67,7 +69,7 @@ public final class TrapTask extends Task {
             if (trap == null)
                 return;
 
-            if (!Hunter.getTrap(player, trap.getObject()).isPresent() || !trap.getState().equals(TrapState.PENDING)) {
+            if (Hunter.getTrap(player, trap.getObject()).isEmpty() || !trap.getState().equals(TrapState.PENDING)) {
                 return;
             }
             trap.onSequence();

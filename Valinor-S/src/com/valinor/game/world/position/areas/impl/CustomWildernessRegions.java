@@ -6,7 +6,7 @@ package com.valinor.game.world.position.areas.impl;
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
  * December 7, 2021
  */
-public enum CustomWildernessRegions {
+/*public enum CustomWildernessRegions {
 
     MEMBER_CAVE_1(9369, 20),
     MEMBER_CAVE_2(9370, 20);
@@ -28,4 +28,4 @@ public enum CustomWildernessRegions {
         //Nothing was found
         return null;
     }
-}
+}*/

@@ -459,6 +459,51 @@
     "walkRange": 3
   },
   {
+    "name": "Ancient rev dark beast",
+    "id": 16000,
+    "x": 3242,
+    "y": 10162,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Ancient rev ork",
+    "id": 16001,
+    "x": 3243,
+    "y": 10170,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Ancient rev cyclops",
+    "id": 16002,
+    "x": 3249,
+    "y": 10181,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Ancient rev dragon",
+    "id": 16003,
+    "x": 3253,
+    "y": 10140,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Ancient rev knight",
+    "id": 16004,
+    "x": 3247,
+    "y": 10172,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
     "name": "Hellhound",
     "id": 7877,
     "x": 3203,
