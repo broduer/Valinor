@@ -1,5 +1,6 @@
 package com.valinor.game.content.items;
 
+import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
@@ -7,6 +8,7 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.net.packet.interaction.Interaction;
 
+import static com.valinor.util.CustomItemIdentifiers.TREASURE_CASKET;
 import static com.valinor.util.ItemIdentifiers.IMPLING_JAR;
 
 /**
@@ -257,6 +259,9 @@ public class ImplingLoot extends Interaction {
                 //Generate loot
                 Item loot;
                 loot = implingJar.lootTable.rollItem();
+                if(implingJar == ImplingJar.LUCKY_IMPLING) {
+                    loot = new Item(TREASURE_CASKET);
+                }
                 if (loot != null)
                     player.inventory().add(loot);
                 else
