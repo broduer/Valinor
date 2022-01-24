@@ -5,6 +5,8 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 
+import java.util.Optional;
+
 /**
  * A graphic propelled through the air by some sort of spell, weapon, or other
  * miscellaneous force.
@@ -267,6 +269,63 @@ public final class Projectile {
 
     public int getRadius() {
         return radius;
+    }
+
+    /**
+     * Grabbing Client speed
+     *
+     * @return
+     */
+    public int getClientTicks() {
+        return speed;
+    }
+
+    /**
+     * The projectile played when this spell is cast.
+     *
+     * @param cast   the entity casting the spell.
+     * @param castOn the entity targeted by the spell.
+     * @return the projectile played when this spell is cast.
+     */
+    public Optional<Projectile> castProjectile(Mob cast, Mob castOn, int dist) {
+        return castProjectile(cast, castOn);
+    }
+
+    /**
+     * The projectile played when this spell is cast.
+     *
+     * @param cast   the entity casting the spell.
+     * @param castOn the entity targeted by the spell.
+     * @return the projectile played when this spell is cast.
+     */
+    public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+        return castProjectile(cast, castOn, 3);
+    }
+
+    public Optional<Projectile> bind(Mob cast, Mob castOn, int dist, int graphicID) {
+        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
+        int realDelay = Math.max(0, 75 + delayMod);
+        int speed = Math.max(0, delayMod + 56 + (dist * 10));
+        return Optional.of(new Projectile(cast, castOn, graphicID,
+            realDelay, speed, 45, 0, 16));
+    }
+
+    public Optional<Projectile> modern(Mob cast, Mob castOn, int dist, int graphicID) {
+        int delay = 51;
+        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
+        int realDelay = Math.max(0, delay + delayMod);
+        int speed = Math.max(0, delayMod + delay + 5 + (dist * 10));
+        return Optional.of(new Projectile(cast, castOn, graphicID,
+            realDelay, speed, 43, 31, 16));
+    }
+
+    public Optional<Projectile> ancient(Mob cast, Mob castOn, int dist, int graphicID) {
+        int delay = 51;
+        int delayMod = -60;// because server is old-fashion has manual server 2 tick delay
+        int realDelay = Math.max(0, delay + delayMod);
+        int speed = Math.max(0, delayMod + delay + 5 + (dist * 10));
+        return Optional.of(new Projectile(cast, castOn, graphicID,
+            realDelay, speed, 43, 0, 16));
     }
 
     @Override

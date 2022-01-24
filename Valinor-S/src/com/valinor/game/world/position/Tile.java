@@ -30,6 +30,10 @@ public class Tile implements Cloneable {
         return inArea(EDGEVILE_HOME_AREA) || region() == 7991 || region() == 7992 || region() == 8247;
     }
 
+    public int getChevDistance(Tile other) {
+        return Math.max(Math.abs(other.getX() - getX()), Math.abs(other.getY() - getY()));
+    }
+
     public boolean raidsPartyArea() {
         return region() == 4919;
     }

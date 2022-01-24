@@ -428,17 +428,13 @@ public class Combat {
     }
 
     public int magicSpellDelay(Mob target) {
-        var tileDist = mob.tile().distance(target.tile());
-        var delay = (tileDist <= 3) ? 4 : 5;
+        int dist = mob.tile().getChevDistance(target.tile());
 
-        if (castSpell != null && (castSpell.spellId() == 1 || castSpell.spellId() == 2 || castSpell.spellId() == 3)) // Tridents
-            delay -= 1; // 1 less tick to make it faster
-
-        if (castSpell != null && castSpell.name().equalsIgnoreCase("Crumble undead")) {
-            delay = 0;
+        if(dist > 4) {
+            return 4;
         }
-        
-        return delay;
+
+        return (1 + (1 + dist) / 3) + 2;
     }
 
     /**
