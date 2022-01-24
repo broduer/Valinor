@@ -41,6 +41,7 @@ public enum Cookable {
     RAW_CHICKEN(1, 30.0, 2138, 2140, 2144, "a chicken", "chickens", 10),
     RAW_RABBIT(1, 30.0, 3226, 3228, 7222, "a rabbit", "rabbits"),
     CRAB_MEAT(21, 100.0, 7518, 7521, 7520, "a piece of crab meat", "crab meat"),
+    BIRD_MEAT(11, 62.5, 9978, 9980, 9982, "a piece of bird meat", "bird meat"),
 
     //Pies
     REDBERRY_PIE(10, 78.0, 2321, 2325, 2329, "a redberry pie"),
