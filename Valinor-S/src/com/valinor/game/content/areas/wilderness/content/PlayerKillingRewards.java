@@ -108,7 +108,7 @@ public class PlayerKillingRewards {
                 killer.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(killer));
                 target.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(target));
 
-                var pkPoints = killer.pkpAmount(target);
+                var pkPoints = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + killer.pkpAmount(target);
                 killer.message(Color.RED.tag() + "<shad=0>[PK Points]</col></shad> " + Color.BLUE.tag() + "You earn " + Color.VIOLET.tag() + "(+" + pkPoints + ") pkp " + Color.BLUE.tag() + " after killing " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "!");
 
                 killer.putAttrib(AttributeKey.PK_POINTS, pkPoints);
