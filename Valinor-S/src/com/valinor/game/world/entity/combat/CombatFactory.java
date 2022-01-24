@@ -383,14 +383,19 @@ public class CombatFactory {
 
         //PvP protection prayers
         if (damage > 0 && target != null) {
-            if (target.isPlayer() && attacker.isPlayer()) {
+            if (target.isPlayer()) {
                 //final int olddam = damage;
                 if (type == CombatType.MELEE && Prayers.usingPrayer(target, PROTECT_FROM_MELEE)) {
-                    damage *= 0.4;
+                    damage *= 0.6;
                 } else if (type == CombatType.RANGED && Prayers.usingPrayer(target, PROTECT_FROM_MISSILES)) {
-                    damage *= 0.4;
+                    damage *= 0.6;
                 } else if (type == CombatType.MAGIC && Prayers.usingPrayer(target, PROTECT_FROM_MAGIC)) {
-                    damage *= 0.4;
+                    damage *= 0.6;
+                } else if (target.isNpc()) {
+                    // Damage capping for NPCs only - player damage capping requires some investigating on RS because of PID.
+                    if (target.hp() < damage) {
+                        damage = target.hp();
+                    }
                 }
             }
         }
