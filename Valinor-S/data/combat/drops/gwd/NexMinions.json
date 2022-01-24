@@ -1,0 +1,55 @@
+{
+  "points": 0,
+  "items": [],
+  "npcs": [
+    11283, 11284, 11285, 11286
+  ],
+  "guaranteed": [
+  ],
+  "tables": [
+    {
+      "name": "Extrarares",
+      "points": 2,
+      "items": [
+        {
+          "id": 26225,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 26221,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 26223,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 26227,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 26229,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 26231,
+          "amount": 3,
+          "points": 10
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Empty",
+      "points": 50,
+      "items": [
+      ],
+      "tables": []
+    }
+  ]
+}

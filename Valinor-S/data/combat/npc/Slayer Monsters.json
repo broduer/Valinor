@@ -1,5 +1,37 @@
 [
   {
+    // Otherworldly being (64)
+    "ids": [
+      2843
+    ],
+    "maxhit": 8,
+    "attackspeed": 4,
+    "slayerxp": 66,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 56,
+      "strength": 56,
+      "defence": 46,
+      "magic": 1,
+      "ranged": 1,
+      "hitpoints": 66
+    },
+    "bonuses": {
+      "attack": 30,
+      "strength": 30,
+      "stabdefence": 15,
+      "slashdefence": 10,
+      "crushdefence": 20,
+      "rangeddefence": 15,
+      "magicdefence": -5
+    },
+    "animations": {
+      "attack": 422,
+      "block": 424,
+      "death": 836
+    }
+  },
+  {
     // Zygomite
     "ids": [
       1024

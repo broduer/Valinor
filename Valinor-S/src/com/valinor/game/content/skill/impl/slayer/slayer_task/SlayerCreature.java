@@ -82,7 +82,7 @@ public enum SlayerCreature {
     KURASK(45, 70, 65, new Tile(2700,9996), NpcIdentifiers.KURASK_410, NpcIdentifiers.KURASK_411, NpcIdentifiers.KING_KURASK),
     GARGOYLE(46, 75, 80, new Tile(3434,3538,2), NpcIdentifiers.GARGOYLE, NpcIdentifiers.GARGOYLE_1543, NpcIdentifiers.MARBLE_GARGOYLE_7408),
     PYREFIEND(47, 30, 25, new Tile(2761,10004), NpcIdentifiers.PYREFIEND, NpcIdentifiers.PYREFIEND_434, NpcIdentifiers.PYREFIEND_435, NpcIdentifiers.PYREFIEND_436, NpcIdentifiers.PYREFIEND_3139, NpcIdentifiers.FLAMING_PYRELORD),
-    BLOODVELDS(48, 50, 50, new Tile(3423,3463,1), NpcIdentifiers.BLOODVELD, NpcIdentifiers.BLOODVELD_485, NpcIdentifiers.BLOODVELD_486, NpcIdentifiers.BLOODVELD_487, NpcIdentifiers.BLOODVELD_3138, NpcIdentifiers.INSATIABLE_BLOODVELD, NpcIdentifiers.INSATIABLE_MUTATED_BLOODVELD),
+    BLOODVELDS(48, 50, 50, new Tile(3423,3463,1), NpcIdentifiers.BLOODVELD, NpcIdentifiers.BLOODVELD_485, NpcIdentifiers.BLOODVELD_486, NpcIdentifiers.BLOODVELD_487, NpcIdentifiers.BLOODVELD_3138, NpcIdentifiers.INSATIABLE_BLOODVELD, NpcIdentifiers.INSATIABLE_MUTATED_BLOODVELD, NpcIdentifiers.MUTATED_BLOODVELD, NpcIdentifiers.MUTATED_BLOODVELD_9610, NpcIdentifiers.MUTATED_BLOODVELD_9611),
     DUST_DEVILS(49, 65, 70, new Tile(1712,10016), NpcIdentifiers.DUST_DEVIL, NpcIdentifiers.DUST_DEVIL_7249, NpcIdentifiers.CHOKE_DEVIL),
     JELLIES(50, 52, 57, new Tile(2704,10026), NpcIdentifiers.JELLY, NpcIdentifiers.JELLY_438, NpcIdentifiers.JELLY_439, NpcIdentifiers.JELLY_440, NpcIdentifiers.JELLY_441, NpcIdentifiers.JELLY_442, NpcIdentifiers.WARPED_JELLY, NpcIdentifiers.VITREOUS_JELLY, NpcIdentifiers.VITREOUS_WARPED_JELLY),
     ROCKSLUG(51, 20, 20, new Tile(2801,10017), NpcIdentifiers.ROCKSLUG, NpcIdentifiers.ROCKSLUG_422, NpcIdentifiers.GIANT_ROCKSLUG),
@@ -109,7 +109,7 @@ public enum SlayerCreature {
     WYVERN(72, 72, 70, new Tile(3056,9555), NpcIdentifiers.SKELETAL_WYVERN, NpcIdentifiers.SKELETAL_WYVERN_466, NpcIdentifiers.SKELETAL_WYVERN_467, NpcIdentifiers.SKELETAL_WYVERN_468, NpcIdentifiers.TALONED_WYVERN, NpcIdentifiers.SPITTING_WYVERN, NpcIdentifiers.LONGTAILED_WYVERN, NpcIdentifiers.ANCIENT_WYVERN),
     KILLERWATTS(73, 37, 50, null, NpcIdentifiers.KILLERWATT, NpcIdentifiers.KILLERWATT_470),
     //TODO
-    MUTATED_ZYGOMITES(74, 57, 60, new Tile(2415,4475), NpcIdentifiers.ZYGOMITE),
+    MUTATED_ZYGOMITES(74, 57, 60, new Tile(2415,4475), NpcIdentifiers.ZYGOMITE, NpcIdentifiers.ZYGOMITE_1024, NpcIdentifiers.ANCIENT_ZYGOMITE),
     ICEFIENDS(75, 1, 20, new Tile(3007,3474), NpcIdentifiers.ICEFIEND, NpcIdentifiers.ICEFIEND_4813, NpcIdentifiers.ICEFIEND_7586),
     MINOTAURS(76, 1, 7, null, NpcIdentifiers.MINOTAUR, NpcIdentifiers.MINOTAUR_2482, NpcIdentifiers.MINOTAUR_2483),
     FLESH_CRAWLER(77, 1, 15, new Tile(2005,5302), NpcIdentifiers.FLESH_CRAWLER, NpcIdentifiers.FLESH_CRAWLER_2499, NpcIdentifiers.FLESH_CRAWLER_2500),

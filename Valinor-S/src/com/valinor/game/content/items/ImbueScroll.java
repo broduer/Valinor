@@ -69,6 +69,12 @@ public class ImbueScroll extends Interaction {
             player.inventory().add(new Item(RING_OF_SUFFERING_I),true);
             return true;
         }
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == RING_OF_WEALTH || usedWith.getId() == RING_OF_WEALTH)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(RING_OF_WEALTH),true);
+            player.inventory().add(new Item(RING_OF_WEALTH_I),true);
+            return true;
+        }
         return false;
     }
 }

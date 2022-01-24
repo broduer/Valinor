@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    MINING_LVL_RESET("mining_lvl_reset", AttribType.BOOLEAN),
+
     // Last time we boosted our prayer
     PRAYERCAPE_BOOST,
 

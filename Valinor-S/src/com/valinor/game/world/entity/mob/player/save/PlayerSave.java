@@ -568,6 +568,7 @@ public class PlayerSave {
                 player.putAttrib(BAGGED_COAL, details.baggedCoal);
                 player.putAttrib(EXP_LAMP_WARNING_SENT, details.expLampWarningSent);
                 player.putAttrib(EXP_LAMP_USED, details.expLampUsed);
+                player.putAttrib(MINING_LVL_RESET, details.miningLvlReset);
                 return true;
             }
         }
@@ -981,6 +982,7 @@ public class PlayerSave {
         private final int baggedCoal;
         private final boolean expLampWarningSent;
         private final boolean expLampUsed;
+        private final boolean miningLvlReset;
 
         public String password() {
             return password;
@@ -1271,7 +1273,7 @@ public class PlayerSave {
             dailySkillingCompleted = Player.getAttribBooleanOr(player, SKILLING_DAILY_TASK_COMPLETED, false);
             dailySkillingRewardClaimed = Player.getAttribBooleanOr(player, SKILLING_DAILY_TASK_REWARD_CLAIMED, false);
             dailyPvmingAmount = Player.getAttribIntOr(player, PVMING_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dailyPvmingCompleted = Player.getAttribBooleanOr(player, PVMING_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyPvmingCompleted = Player.getAttribBooleanOr(player, PVMING_DAILY_TASK_COMPLETED, false);
             dailyPvmingRewardClaimed = Player.getAttribBooleanOr(player, PVMING_DAILY_TASK_REWARD_CLAIMED, false);
             dailyBarrowsAmount = Player.getAttribIntOr(player, BARROWS_TASK_COMPLETION_AMOUNT, 0);
             dailyBarrowsCompleted = Player.getAttribBooleanOr(player, BARROWS_DAILY_TASK_COMPLETED, false);
@@ -1280,7 +1282,7 @@ public class PlayerSave {
             dailySlayerCompleted = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_COMPLETED, false);
             dailySlayerRewardClaimed = Player.getAttribBooleanOr(player, SLAYER_DAILY_TASK_REWARD_CLAIMED, false);
             dailyGreenDragonsAmount = Player.getAttribIntOr(player, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dailyGreenDragonsCompleted = Player.getAttribBooleanOr(player, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyGreenDragonsCompleted = Player.getAttribBooleanOr(player, GREEN_DRAGONS_DAILY_TASK_COMPLETED, false);
             dailyGreenDragonsRewardClaimed = Player.getAttribBooleanOr(player, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, false);
             dailyImplingAmount = Player.getAttribIntOr(player, IMPLING_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyImplingCompleted = Player.getAttribBooleanOr(player, IMPLING_DAILY_TASK_COMPLETED, false);
@@ -1357,6 +1359,7 @@ public class PlayerSave {
             baggedCoal = Player.getAttribIntOr(player, BAGGED_COAL, 0);
             expLampWarningSent = Player.getAttribBooleanOr(player, EXP_LAMP_WARNING_SENT, false);
             expLampUsed = Player.getAttribBooleanOr(player, EXP_LAMP_USED, false);
+            miningLvlReset = Player.getAttribBooleanOr(player, MINING_LVL_RESET, false);
         }
 
         public void parseDetails() throws Exception {

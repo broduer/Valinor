@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.burthope.warriors_guild;
 
+import com.valinor.game.content.items.skillcape.CapeOfCompletion;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
@@ -27,18 +28,17 @@ public class Basement extends Interaction {
                 return true;
             }
 
-            if(!player.inventory().contains(WARRIOR_GUILD_TOKEN, 100) && player.getX() < 2912) {
+            if ((!player.inventory().contains(new Item(WARRIOR_GUILD_TOKEN, 100)) && !CapeOfCompletion.ATTACK.operating(player)) && player.getX() < 2912) {
                 DialogueManager.sendStatement(player, "You need at least 100 warrior guild tokens to enter this area.");
                 return true;
             }
-            if (player.inventory().contains(new Item(DRAGON_DEFENDER)) || player.getEquipment().hasAt(EquipSlot.SHIELD, DRAGON_DEFENDER))
-                set_item(player, DRAGON_DEFENDER);
-            else if (player.inventory().contains(new Item(RUNE_DEFENDER)) || player.getEquipment().hasAt(EquipSlot.SHIELD, RUNE_DEFENDER))
-                set_item(player, DRAGON_DEFENDER);
-            //TODO add proper doors
+
+            player.putAttrib(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, DRAGON_DEFENDER);
 
             player.teleport(player.getX() < 2912 ? 2912 : 2911, 9968);
-            CyclopsRoom.handle_time_spent(player,true);
+            if (!CapeOfCompletion.ATTACK.operating(player)) {
+                CyclopsRoom.handle_time_spent(player, true);
+            }
             return true;
         }
 

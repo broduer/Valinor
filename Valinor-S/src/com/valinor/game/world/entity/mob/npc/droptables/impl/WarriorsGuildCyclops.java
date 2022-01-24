@@ -23,8 +23,7 @@ public class WarriorsGuildCyclops implements Droptable {
 
     @Override
     public void reward(Npc killed, Player killer) {
-
-        int defender = killer.getAttribOr(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, 0);
+        int defender = killer.getAttribOr(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, BRONZE_DEFENDER);
         int chance = killer.getPlayerRights().isDeveloperOrGreater(killer) ? 2 : 30;
 
         //All the way up to rune

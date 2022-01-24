@@ -1,4 +1,29 @@
 {
+  "26225": {
+    "slot": 0,
+    "type": 8,
+    "showBeard": false
+  },
+  "26221": {
+    "slot": 4,
+    "type": 6,
+    "showBeard": false
+  },
+  "26223": {
+    "slot": 7,
+    "type": 0,
+    "showBeard": false
+  },
+  "26227": {
+    "slot": 9,
+    "type": 0,
+    "showBeard": false
+  },
+  "26229": {
+    "slot": 10,
+    "type": 0,
+    "showBeard": false
+  },
   "22947": {
     "slot": 13,
     "type": 0,

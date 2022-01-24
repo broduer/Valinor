@@ -20,6 +20,7 @@ public enum CurrencyType {
     MARK_OF_GRACE(new ItemCurrency(ItemIdentifiers.MARK_OF_GRACE)),
     VALINOR_COINS(new ItemCurrency(CustomItemIdentifiers.VALINOR_COINS)),
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
+    STARDUST(new ItemCurrency(ItemIdentifiers.STARDUST)),
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
     BOSS_POINTS(new BossPointsCurrency()),

@@ -21,7 +21,7 @@ import com.valinor.util.chainedwork.Chain;
 
 import java.util.Arrays;
 
-import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.PILES;
 import static com.valinor.util.NpcIdentifiers.ROCKS_6601;
 import static com.valinor.util.ObjectIdentifiers.GATE_26760;
@@ -29,7 +29,7 @@ import static com.valinor.util.ObjectIdentifiers.GATE_26760;
 public class ResourceArena extends Interaction {
 
     private static final Area ARENA_BOUNDARIES = new Area(3174, 3924, 3196, 3944);
-    public static int[] ALLOWED_EXCHANGE = new int[] {440, 453, 444, 447, 449, 451, 1515, 1513, 11936, 11934, 2349, 2351, 2353, 2355, 2357, 2359, 2361, 2363, 451, 13439, 10138};
+    public static int[] ALLOWED_EXCHANGE = new int[] {440, 453, 444, 447, 449, 451, 1515, 1513, 11936, 11934, 2349, 2351, 2353, 2355, 2357, 2359, 2361, 2363, 451, 13439, 10138, RAW_MONKFISH, MONKFISH};
 
     private void swap(Player player, int original, int result) {
         int currency = COINS_995;

@@ -4676,5 +4676,56 @@
         "value": 10
       }
     ]
+  },
+  {
+    "shopId": 53,
+    "name": "Stardust Shop",
+    "currency": "STARDUST",
+    "restock": true,
+    "noiron": false,
+    "sellType": "NONE",
+    "scroll": 0,
+    "items": [
+      {
+        "id": 25549,
+        "amount": 100000,
+        "value": 1750
+      },
+      {
+        "id": 25551,
+        "amount": 100000,
+        "value": 2500
+      },
+      {
+        "id": 25553,
+        "amount": 100000,
+        "value": 2500
+      },
+      {
+        "id": 25555,
+        "amount": 100000,
+        "value": 1750
+      },
+      {
+        "id": 21343,
+        "amount": 100000,
+        "value": 1300
+      },
+      {
+        "id": 21345,
+        "amount": 100000,
+        "value": 1500
+      },
+      {
+        "id": 21392,
+        "amount": 100000,
+        "value": 2000
+      },
+      {
+        "id": 19473,
+        "amount": 100000,
+        "value": 175
+      }
+    ]
   }
 ]

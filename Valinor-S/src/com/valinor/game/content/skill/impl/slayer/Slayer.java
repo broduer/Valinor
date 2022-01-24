@@ -218,19 +218,19 @@ public class Slayer {
                                 }
                             } else {
                                 if (master == Slayer.MAZCHNA_ID) {
-                                    ptsget = 7;
-                                } else if (master == Slayer.VANNAKA_ID) {
                                     ptsget = 10;
-                                } else if (master == Slayer.CHAELDAR_ID) {
+                                } else if (master == Slayer.VANNAKA_ID) {
                                     ptsget = 15;
-                                } else if (master == Slayer.NIEVE_ID) {
+                                } else if (master == Slayer.CHAELDAR_ID) {
                                     ptsget = 20;
-                                } else if (master == Slayer.DURADEL_ID) {
+                                } else if (master == Slayer.NIEVE_ID) {
                                     ptsget = 30;
+                                } else if (master == Slayer.DURADEL_ID) {
+                                    ptsget = 35;
                                 } else if (master == Slayer.KONAR_QUO_MATEN_ID) {
-                                    ptsget = 25;
+                                    ptsget = 35;
                                 } else if (master == Slayer.KRYSTILIA_ID) {
-                                    ptsget = 25;
+                                    ptsget = 35;
                                 } else {
                                     ptsget = 0;
                                 }

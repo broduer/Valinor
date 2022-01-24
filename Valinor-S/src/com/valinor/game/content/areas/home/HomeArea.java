@@ -289,6 +289,10 @@ public class HomeArea extends Interaction {
             }
         }
         if (option == 2) {
+            if (npc.id() == DRUNKEN_DWARF_2408) {
+                World.getWorld().shop(53).open(player);
+                return true;
+            }
             if (npc.id() == DOMMIK) {
                 World.getWorld().shop(12).open(player);
                 return true;

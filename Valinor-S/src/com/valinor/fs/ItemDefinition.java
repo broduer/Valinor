@@ -111,16 +111,27 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
-        List<Integer> customTradeable = Arrays.asList(INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
-        if(customTradeable.stream().anyMatch(item -> item == id)) {
+        List<Integer> customTradeable = Arrays.asList(BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
+        if (customTradeable.stream().anyMatch(item -> item == id)) {
             grandexchange = true;
         }
 
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
-        }  else if (id == DRAGON_PLATESKIRT || id == DRAGON_PLATELEGS) {
+        } else if (id == SLAYER_TELEPORT_SCROLL) {
+            name = "Slayer teleport scroll";
+            grandexchange = true;
+            stackable = true;
+        } else if (id == ABYSSAL_WHIP) {
+            cost = 300_000;
+        } else if (id == TOXIC_BLOWPIPE || id == SERPENTINE_HELM || id == TRIDENT_OF_THE_SWAMP || id == TOXIC_STAFF_OF_THE_DEAD) {
+            cost = 500_000;
+        } else if (id == DRAGON_PLATESKIRT || id == DRAGON_PLATELEGS) {
             cost = 100_000;
+        } else if (id == VOID_SET) {
+            name = "Void set";
+            grandexchange = true;
         } else if (id == SAPPHIRE_MEMBER_RANK) {
             name = "Sapphire member rank scroll";
             grandexchange = true;

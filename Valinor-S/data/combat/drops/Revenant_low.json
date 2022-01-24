@@ -7,7 +7,7 @@
     "tables": [
       {
         "name": "Rares",
-        "points": 4,
+        "points": 10,
         "items": [
           { "id": 21807, "min": 1, "max": 1, "points": 12 },   //Ancient emblem
           { "id": 21810, "min": 1, "max": 1, "points": 10 },   //Ancient totem
@@ -18,7 +18,22 @@
           { "id": 22545, "min": 1, "max": 1, "points": 3 }, //Viggora's chainmace
           { "id": 22550, "min": 1, "max": 1, "points": 3 }, //Craw's bow
           { "id": 22555, "min": 1, "max": 1, "points": 3 },  //Thammaron's sceptre
-          { "id": 22557, "min": 1, "max": 1, "points": 3 }  //Amulet of avarice
+          { "id": 22557, "min": 1, "max": 1, "points": 3 },  //Amulet of avarice
+          { "id": 22647, "min": 1, "max": 1, "points": 1 }, //Zuriel's staff
+          { "id": 22650, "min": 1, "max": 1, "points": 1 }, //Zuriel's hood
+          { "id": 22653, "min": 1, "max": 1, "points": 1 }, //Zuriel's robe top
+          { "id": 22656, "min": 1, "max": 1, "points": 1 }, //Zuriel's robe bottom
+          { "id": 22638, "min": 1, "max": 1, "points": 1 }, //Morrigan's coif
+          { "id": 22641, "min": 1, "max": 1, "points": 1 }, //Morrigan's leather body
+          { "id": 22644, "min": 1, "max": 1, "points": 1 }, //Morrigan's leather chaps
+          { "id": 22622, "min": 1, "max": 1, "points": 1 }, //SWH
+          { "id": 22625, "min": 1, "max": 1, "points": 1 }, //Statius's Helm
+          { "id": 22628, "min": 1, "max": 1, "points": 1 }, //Statius's platebody
+          { "id": 22631, "min": 1, "max": 1, "points": 1 }, //Statius's platelegs
+          { "id": 22616, "min": 1, "max": 1, "points": 1 }, //Vesta's Chainbody
+          { "id": 22619, "min": 1, "max": 1, "points": 1 }, //Vesta's Chainskirt
+          { "id": 22613, "min": 1, "max": 1, "points": 1 }, //VLS
+          { "id": 22610, "min": 1, "max": 1, "points": 1 } //Vesta Spear
         ]
       },
       {

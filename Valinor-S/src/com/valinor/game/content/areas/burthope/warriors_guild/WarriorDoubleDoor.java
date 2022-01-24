@@ -134,11 +134,13 @@ public class WarriorDoubleDoor extends Interaction {
                 else
                     set_item(player, BRONZE_DEFENDER);
 
-                int defid = player.getAttribOr(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, -1);
+                int defid = player.getAttribOr(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, BRONZE_DEFENDER);
                 ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, defid);
 
                 player.message("<col=804080>Cyclops' are currently dropping " + def.name.toLowerCase() + "s.");
-                CyclopsRoom.handle_time_spent(player, false);
+                if (!CapeOfCompletion.ATTACK.operating(player)) {
+                    CyclopsRoom.handle_time_spent(player, false);
+                }
             }
         }
         player.unlock();

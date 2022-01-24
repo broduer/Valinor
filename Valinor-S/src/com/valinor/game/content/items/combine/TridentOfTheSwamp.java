@@ -14,8 +14,8 @@ public class TridentOfTheSwamp extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
-        if ((use.getId() == MAGIC_FANG && usedWith.getId() == TRIDENT_OF_THE_SEAS) || (use.getId() == TRIDENT_OF_THE_SEAS && usedWith.getId() == MAGIC_FANG)) {
-            if (!player.inventory().containsAll(MAGIC_FANG, TRIDENT_OF_THE_SEAS)) {
+        if ((use.getId() == MAGIC_FANG && usedWith.getId() == TRIDENT_OF_THE_SEAS_FULL) || (use.getId() == TRIDENT_OF_THE_SEAS_FULL && usedWith.getId() == MAGIC_FANG)) {
+            if (!player.inventory().containsAll(MAGIC_FANG, TRIDENT_OF_THE_SEAS_FULL)) {
                 return true;
             }
 
@@ -25,7 +25,7 @@ public class TridentOfTheSwamp extends Interaction {
             }
 
             player.inventory().remove(MAGIC_FANG);
-            player.inventory().remove(TRIDENT_OF_THE_SEAS);
+            player.inventory().remove(TRIDENT_OF_THE_SEAS_FULL);
             player.inventory().add(new Item(TRIDENT_OF_THE_SWAMP));
             player.animate(3015);
             return true;

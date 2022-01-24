@@ -183,7 +183,7 @@ public class ShootingStars {
             public void execute() {
                 // check obj
                 if (!ObjectManager.objWithTypeExists(10, obj.tile()) && !ObjectManager.objWithTypeExists(11, obj.tile()) && !ObjectManager.objWithTypeExists(0, obj.tile())) {
-                    player.animate(-1);
+                    player.resetAnimation();
                     stop();
                     return;
                 }

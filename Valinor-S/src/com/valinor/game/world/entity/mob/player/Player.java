@@ -1506,6 +1506,13 @@ public class Player extends Mob {
             World.getWorld().sendWorldMessage("[Staff]: <img="+getPlayerRights().getSpriteId()+">"+Color.staffColor(this, getPlayerRights().getName())+"</img> "+Color.BLUE.wrap(username)+" has logged in.");
         }
 
+        if(!this.<Boolean>getAttribOr(AttributeKey.MINING_LVL_RESET, false)) {
+            this.putAttrib(AttributeKey.MINING_LVL_RESET, true);
+            this.skills.setLevel(Skills.MINING, 85);
+            this.skills.setXp(Skills.MINING, Skills.levelToXp(85));
+            this.message("Your mining level has been reset to level 85.");
+        }
+
         long endTime = System.currentTimeMillis() - startTime;
         GameEngine.profile.login = System.currentTimeMillis() - startTime;
         //logger.info("it took " + endTime + "ms for processing player login.");

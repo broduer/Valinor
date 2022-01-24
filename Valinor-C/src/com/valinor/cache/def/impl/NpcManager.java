@@ -13,6 +13,9 @@ public class NpcManager {
 
         switch (id) {
 
+            case DRUNKEN_DWARF_2408:
+                definition.actions = new String[]{"Talk-to", null, "Trade", null, null, null, null};
+                break;
 
             //Somehow these npcs are not clickable
             case SARACHNIS:
