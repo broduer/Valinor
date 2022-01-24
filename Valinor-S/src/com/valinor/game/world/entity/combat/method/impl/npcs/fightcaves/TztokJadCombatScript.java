@@ -20,32 +20,24 @@ public class TztokJadCombatScript extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        TzTokJad jad = (TzTokJad) mob;
-
         var attackRoll = World.getWorld().random(3);
-        var spawnedHealers = jad.<Boolean>getAttribOr(AttributeKey.JAD_SPAWNED_HEALERS, false);
-
-        //Do we spawn the healers?
-        if (jad.hp() < 130 && !spawnedHealers) {
-            jad.spawnHealers(target);
-        }
 
         //Select an attack style based on our random roll..
         switch (attackRoll) {
             case 1 -> {
-                rangedAttack(jad, target);
+                rangedAttack(mob, target);
             }
             case 2 -> {
-                mageAttack(jad, target);
+                mageAttack(mob, target);
             }
             default -> {
-                if (CombatFactory.canReach(jad, CombatFactory.MELEE_COMBAT, target)) {
-                    meleeAttack(jad, target);
+                if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
+                    meleeAttack(mob, target);
                 } else {
                     if (World.getWorld().rollDie(2, 1))
-                        rangedAttack(jad, target);
+                        rangedAttack(mob, target);
                     else
-                        mageAttack(jad, target);
+                        mageAttack(mob, target);
                 }
             }
         }

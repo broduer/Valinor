@@ -56,9 +56,10 @@ public class TestCommand implements Command {
         //player.sound(2401);
         //ZarosGodwars.end();
 
-        for (int i = 0; i < 100; i++) {
-            Barrows.testloot(player);
+        for (int i = 0; i < 500; i++) {
+            player.getPacketSender().sendScreenFade("", 1, 3);
         }
+        //player.getPacketSender().sendScreenFade("", 1, 3);
 
         player.message("Test command has been activated.");
     }

@@ -38,7 +38,7 @@ public class ZulAndra extends Interaction {
                         if (getPhase() == 0) {
                             if (option == 1) {
                                 stop();
-                                player.getPacketSender().sendScreenFade("", 1, 5);
+                                player.getPacketSender().sendScreenFade("", 1, 3);
                                 DialogueManager.sendStatement(player, "The priestess rows you to Zulrah's shrine,", "then hurriedly paddles away.");
                                 player.getZulrahInstance().enterInstance(player, false);
                             } else if (option == 2) {

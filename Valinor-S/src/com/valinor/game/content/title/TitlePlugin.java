@@ -206,7 +206,7 @@ public class TitlePlugin extends Interaction {
     }
 
     public List<AvailableTitle> getCategory(TitleCategory category) {
-        return categorizedTitles.stream().filter(cat -> cat.getCategory() == category).map(CategorizedTitles::getTitles).findAny().get();
+        return categorizedTitles.stream().filter(cat -> cat.getCategory() == category).map(CategorizedTitles::getTitles).findAny().orElse(List.of());
     }
 
     private List<AvailableTitle> otherTitles() {

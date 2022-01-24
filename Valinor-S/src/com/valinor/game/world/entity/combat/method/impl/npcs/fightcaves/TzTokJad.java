@@ -27,6 +27,14 @@ public class TzTokJad extends Npc {
         respawns(false);
     }
 
+    //TODO healers
+   /* var spawnedHealers = mob.<Boolean>getAttribOr(AttributeKey.JAD_SPAWNED_HEALERS, false);
+
+    //Do we spawn the healers?
+        if (mob.hp() < 130 && !spawnedHealers) {
+        mob.spawnHealers(target);
+    }*/
+
     /**
      * Spawn healers.
      */

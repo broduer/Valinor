@@ -60,9 +60,6 @@ public final class PacketSender {
      */
     public PacketSender sendScreenFade(String text, int state, int seconds) {
         PacketBuilder out = new PacketBuilder(13, PacketType.VARIABLE);
-        if (seconds < 1 && state != 0) {
-            throw new IllegalArgumentException("The amount of seconds cannot be less than one.");
-        }
         out.putString(text);
         out.put(state);
         out.put(seconds);
