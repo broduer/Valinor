@@ -76,11 +76,11 @@ public class CyclopsRoom {
         }
     }
 
-    private static boolean insideTopFloorCyclopsRoom(Tile tile) {
+    public static boolean insideTopFloorCyclopsRoom(Tile tile) {
         return tile.inArea(2838, 3543, 2876, 3556) || tile.inArea(2847, 3534, 2876, 3542);
     }
 
-    private static boolean insideBasementCyclopsRoom(Tile tile) {
+    public static boolean insideBasementCyclopsRoom(Tile tile) {
         return tile.inArea(2905, 9965, 2940, 9973) && !tile.inArea(2905, 9966, 2911, 9973);
     }
 

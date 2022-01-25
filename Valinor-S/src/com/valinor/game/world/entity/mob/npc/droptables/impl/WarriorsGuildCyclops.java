@@ -38,7 +38,7 @@ public class WarriorsGuildCyclops implements Droptable {
 
                 //Defender drop
                 drop(killed, killer, new Item(defender));
-                killer.message("<col=804080>The Cyclops drops " + aOrAn + " " + def.name + ". Be sure to show this to Kamfreena to unlock");
+                killer.message("<col=804080>The Cyclops drops " + aOrAn + " " + def.name + ". Be sure to leave the door to unlock");
                 killer.message("<col=804080>the next tier Defender!");
 
                 switch (defender) {
@@ -51,13 +51,6 @@ public class WarriorsGuildCyclops implements Droptable {
                     case RUNE_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_VII, 1);
                     case DRAGON_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_IX, 1);
                 }
-            }
-
-            //Normal drop
-            var table = ScalarLootTable.forNPC(NpcIdentifiers.CYCLOPS_2464);
-            if (table != null) {
-                var reward = table.randomItem(World.getWorld().random());
-                drop(killed, killer.tile(), killer, reward);
             }
         } else if (killed.id() == NpcIdentifiers.CYCLOPS_2137) {//Dragon defender
             chance = killer.getPlayerRights().isDeveloperOrGreater(killer) ? 2 : 70;

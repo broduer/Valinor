@@ -11,6 +11,8 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 
+import static com.valinor.game.content.areas.burthope.warriors_guild.CyclopsRoom.insideBasementCyclopsRoom;
+import static com.valinor.game.content.areas.burthope.warriors_guild.CyclopsRoom.insideTopFloorCyclopsRoom;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
@@ -19,6 +21,18 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
 public class Basement extends Interaction {
+
+    @Override
+    public boolean onLogout(Player player) {
+        if(insideTopFloorCyclopsRoom(player.tile())) {
+            player.teleport(2843, 3540,2);
+            return true;
+        } else if(insideBasementCyclopsRoom(player.tile())) {
+            player.teleport(2909, 9969,0);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
