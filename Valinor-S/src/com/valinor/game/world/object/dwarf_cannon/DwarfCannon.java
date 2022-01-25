@@ -291,6 +291,11 @@ public class DwarfCannon extends OwnedObject {
             player.message("You can't place a cannon in Fight Caves.");
             return false;
         }
+
+        if(player.tile().region() == 13623) {
+            player.message("You can't place a cannon in the slayer tower.");
+            return false;
+        }
         //TODO can't place a cannon in the inferno
         //TODO can't place a cannon in your house
 
