@@ -12,11 +12,12 @@ public class RestartNexCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        ZarosGodwars.end();
+        ZarosGodwars.clear();
+        ZarosGodwars.startEvent();
     }
 
     @Override
     public boolean canUse(Player player) {
-        return player.getUsername().equalsIgnoreCase("Reinier");
+        return player.getPlayerRights().isDeveloperOrGreater(player);
     }
 }

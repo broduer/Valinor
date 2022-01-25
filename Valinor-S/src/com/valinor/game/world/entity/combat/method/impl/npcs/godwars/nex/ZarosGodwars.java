@@ -44,6 +44,8 @@ public class ZarosGodwars {
     public static Optional<GameObject> ancientBarrierPurple = MapObjects.get(42967, new Tile(2909, 5202, 0));
     public static GameObject redBarrierPurple = null;
 
+    public static boolean NEX_EVENT_ACTIVE = false;
+
     public static int getPlayersCount() {
         return playersOn.size();
     }
@@ -73,7 +75,10 @@ public class ZarosGodwars {
             return;
         }
         playersOn.add(player);
-        startEvent();
+
+        if(!NEX_EVENT_ACTIVE) {
+            startEvent();
+        }
     }
 
     public static void removePlayer(Player player) {
@@ -110,8 +115,10 @@ public class ZarosGodwars {
         if(redBarrierPurple != null && ancientBarrierPurple.isPresent()) {
             ObjectManager.replaceWith(redBarrierPurple, ancientBarrierPurple.get());
         }
-        if (getPlayersCount() == 0)
+        if (getPlayersCount() == 0) {
             clear();
+            NEX_EVENT_ACTIVE = false;
+        }
     }
 
     public static ArrayList<Mob> getPossibleTargets() {
@@ -129,21 +136,15 @@ public class ZarosGodwars {
         nex.moveNextStage();
     }
 
-    public static void end() {
-        clear();
-        startEvent();
-    }
-
-    private static final boolean TESTING = true;
+    private static final boolean TESTING = false;
 
     public static void startEvent() {
         if (getPlayersCount() >= 1) {
             if (nex == null) {
+                NEX_EVENT_ACTIVE = true;
                 Nex nex = new Nex(NEX, new Tile(2924, 5202, 0));
                 ZarosGodwars.nex = nex;
-                Chain.bound(null).cancelWhen(() -> { // ah cancel applies here only to the first chain, so you want it to take to next
-                    return getPlayersCount() == 0 || nex == null; // cancels as expected
-                }).thenCancellable(TESTING ? 5 : 20, () -> {
+                Chain.bound(null).cancelWhen(() -> getPlayersCount() == 0 || ZarosGodwars.nex == null || nex == null).thenCancellable(TESTING ? 5 : 20, () -> {
                     nex.spawn(false);
                 }).thenCancellable(1, () -> {
                     nex.forceChat("AT LAST!");
