@@ -524,7 +524,7 @@ public class Crafting extends Interaction {
                 }
 
                 if (craftable.getName().equalsIgnoreCase("Gem")) {
-                    if (item.getProduct().name().equalsIgnoreCase("Uncut dragonstone")) {
+                    if (item.getProduct().name().contains("Dragonstone")) {
                         player.getTaskBottleManager().increase(BottleTasks.CRAFT_DRAGONSTONES);
                     }
                 }

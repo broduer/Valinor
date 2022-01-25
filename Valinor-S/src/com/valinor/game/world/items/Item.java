@@ -398,6 +398,16 @@ public class Item implements Cloneable {
 
     // These untradable items will be send to the inventory or bank on death.
     public static final int[] AUTO_KEPT_LIST = new int[]{
+        AVAS_ASSEMBLER,
+        AVAS_ACCUMULATOR,
+        BRONZE_DEFENDER,
+        IRON_DEFENDER,
+        BLACK_DEFENDER,
+        MITHRIL_DEFENDER,
+        ADAMANT_DEFENDER,
+        RUNE_DEFENDER,
+        DRAGON_DEFENDER,
+        AVERNIC_DEFENDER,
         IMBUED_SARADOMIN_CAPE,
         IMBUED_GUTHIX_CAPE,
         IMBUED_ZAMORAK_CAPE,

@@ -32,7 +32,7 @@ public class CureCropAction extends PlayerTask {
                 state.setDiseaseState(DiseaseState.NOT_PRESENT);
 
                 player.getInventory().remove(FarmingConstants.ITEM_PLANT_CURE);
-                player.getInventory().add(new Item(ItemIdentifiers.EMPTY_VIAL));
+                player.getInventory().add(new Item(ItemIdentifiers.VIAL));
 
                 player.message("You apply the cure to the patch.");
                 player.getFarming().updatePatches(player);

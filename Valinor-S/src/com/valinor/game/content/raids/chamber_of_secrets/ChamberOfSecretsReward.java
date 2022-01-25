@@ -88,7 +88,6 @@ public class ChamberOfSecretsReward {
         .addTable(1,
             new LootItem(KEY_OF_DROPS, 1, 7),
             new LootItem(SWORD_OF_GRYFFINDOR, 1, 6),
-            new LootItem(SWORD_OF_GRYFFINDOR, 1, 6),
             new LootItem(CLOAK_OF_INVISIBILITY, 1, 5),
             new LootItem(MARVOLO_GAUNTS_RING, 1, 4),
             new LootItem(TOM_RIDDLE_DIARY, 1, 3),
