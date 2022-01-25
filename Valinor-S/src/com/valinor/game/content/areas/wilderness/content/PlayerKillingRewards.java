@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
 import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
+import static com.valinor.util.CustomItemIdentifiers.PETS_MYSTERY_BOX;
 
 /**
  * The class which represents functionality for the BM rewards.
@@ -108,16 +109,30 @@ public class PlayerKillingRewards {
                 killer.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(killer));
                 target.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(target));
 
-                var pkPoints = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + killer.pkpAmount(target);
-                killer.message(Color.RED.tag() + "<shad=0>[PK Points]</col></shad> " + Color.BLUE.tag() + "You earn " + Color.VIOLET.tag() + "(+" + pkPoints + ") pkp " + Color.BLUE.tag() + " after killing " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "!");
+                var pkp = killer.pkpAmount(target);
+                var blood_reaper = killer.hasPetOut("Blood Reaper pet");
+                if(blood_reaper) {
+                    int extraBM = pkp * 10 / 100;
+                    pkp += extraBM;
+                }
 
-                killer.putAttrib(AttributeKey.PK_POINTS, pkPoints);
+                killer.message(Color.RED.tag() + "<shad=0>[PK Points]</col></shad> " + Color.BLUE.tag() + "You earn " + Color.VIOLET.tag() + "(+" + pkp + ") pkp " + Color.BLUE.tag() + " after killing " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "!");
+
+                int updatePkp = (Integer) killer.getAttribOr(AttributeKey.PK_POINTS, 0) + pkp;
+                killer.putAttrib(AttributeKey.PK_POINTS, updatePkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
 
                 //1 in 250 chance to receive a mystery box
                 if(World.getWorld().rollDie(250,1)) {
                     killer.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX));
                     killer.message(Color.PURPLE.wrap("You've found a mystery box searching the corpse of "+target.getUsername()+"."));
+                }
+
+                //1 in 1000 chance to receive a pets' mystery box
+                if(World.getWorld().rollDie(1000,1)) {
+                    killer.inventory().addOrBank(new Item(PETS_MYSTERY_BOX));
+                    killer.message(Color.PURPLE.wrap("You've found a pets mystery box searching the corpse of "+target.getUsername()+"."));
+                    World.getWorld().sendWorldMessage("<img=1081>" + killer.getUsername() + " " + "found a pets mystery box searching the corpse of "+target.getUsername()+".");
                 }
             }
         } catch (Exception e) {
