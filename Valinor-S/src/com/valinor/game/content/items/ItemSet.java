@@ -87,6 +87,29 @@ public class ItemSet {
         return bonus;
     }
 
+    public static double farmerSetBonus(Player player) {
+        double bonus = 1.0;
+        Item helmet = player.getEquipment().get(EquipSlot.HEAD);
+        Item jacket = player.getEquipment().get(EquipSlot.BODY);
+        Item legs = player.getEquipment().get(EquipSlot.LEGS);
+        Item boots = player.getEquipment().get(EquipSlot.FEET);
+
+        if (helmet != null && helmet.getId() == FARMERS_STRAWHAT)
+            bonus += 0.4;
+        if (jacket != null && jacket.getId() == FARMERS_JACKET)
+            bonus += 0.8;
+        if (legs != null && legs.getId() == FARMERS_BORO_TROUSERS)
+            bonus += 0.6;
+        if (boots != null && boots.getId() == FARMERS_BOOTS)
+            bonus += 0.2;
+
+        /* Whole set gives an additional 0.5% exp bonus */
+        if (bonus >= 2.0)
+            bonus += 0.5;
+
+        return bonus;
+    }
+
     public static double goldProspectorBonus(Player player) {
         double bonus = 1.0;
         Item helmet = player.getEquipment().get(EquipSlot.HEAD);

@@ -1,6 +1,7 @@
 package com.valinor.game.content.skill.impl.farming.actions;
 
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.farming.impl.DiseaseState;
 import com.valinor.game.content.skill.impl.farming.impl.PatchState;
@@ -36,7 +37,7 @@ public class PlantSeedIntoPatchAction extends PlayerTask {
             player.getInventory().remove(seed_data.getSeedItemId(), 1);
             var aAn = Utils.getAOrAn(new Item(seed_data.getSeedItemId()).name().toLowerCase());
             player.message("You plant "+aAn+" "+World.getWorld().definitions().get(ItemDefinition.class, seed_data.getSeedItemId()).name.toLowerCase()+" in the herb patch.");
-            player.skills().addXp(Skills.FARMING, seed_data.getExperience() * 3);
+            player.skills().addXp(Skills.FARMING, seed_data.getExperience() * 3 * ItemSet.farmerSetBonus(player));
             if(seed_data == Seeds.HERB_TORSTOL) {
                 player.getTaskBottleManager().increase(BottleTasks.PLANT_TORSTOL_SEED);
             }

@@ -2,6 +2,7 @@ package com.valinor.game.content.skill.impl.farming.actions;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.farming.impl.FarmingPatchType;
 import com.valinor.game.content.skill.impl.farming.impl.PatchState;
@@ -59,7 +60,7 @@ public class CropHarvestAction extends PlayerTask {
             player.face(tile);
             int amount = player.getEquipment().hasAt(EquipSlot.WEAPON, MAGIC_SECATEURS) ? 2 : 1;
             player.getInventory().add(new Item(state.getSeed().getProduct(), amount));
-            player.skills().addXp(Skills.FARMING,state.getSeed().getExperience() * 5);
+            player.skills().addXp(Skills.FARMING,state.getSeed().getExperience() * 5 * ItemSet.farmerSetBonus(player));
             AchievementsManager.activate(player, Achievements.FARMER,1);
 
             if (FarmingConstants.hasToLoseLife(state, player)) {

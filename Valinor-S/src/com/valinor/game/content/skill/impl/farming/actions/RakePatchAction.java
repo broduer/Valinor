@@ -1,5 +1,6 @@
 package com.valinor.game.content.skill.impl.farming.actions;
 
+import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.farming.impl.PatchState;
 import com.valinor.game.task.TaskManager;
@@ -32,7 +33,7 @@ public class RakePatchAction extends PlayerTask {
             player.animate(FarmingConstants.RAKING_ANIM);
             state.setWeedStage(state.getWeedStage() + 1);
             player.getFarming().updatePatches(player);
-            player.skills().addXp(Skills.FARMING, 4.0 * 2); // Yeah, you get 4 xp... #worth
+            player.skills().addXp(Skills.FARMING, 4.0 * 2 * ItemSet.farmerSetBonus(player)); // Yeah, you get 4 xp... #worth
             player.inventory().add(new Item(WEEDS)); // Free weed :)
             if (state.getWeedStage() >= 3) {
                 state.resetLastStageGrowthMoment();
