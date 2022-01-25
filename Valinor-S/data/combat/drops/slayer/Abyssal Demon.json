@@ -13,17 +13,17 @@
   "tables": [
 	{
 	  "name": "Rares",
-	  "points": 1,
+	  "points": 3,
 	  "items": [
 		{
 		  "id": 4151,
 		  "amount": 1,
-		  "points": 12
+		  "points": 100
 		},
 		{
 		  "id": 7979,
 		  "amount": 1,
-		  "points": 1
+		  "points": 10
 		}
 	  ],
 	  "tables": []

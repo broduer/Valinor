@@ -398,6 +398,17 @@ public class Item implements Cloneable {
 
     // These untradable items will be send to the inventory or bank on death.
     public static final int[] AUTO_KEPT_LIST = new int[]{
+        IMBUED_SARADOMIN_CAPE,
+        IMBUED_GUTHIX_CAPE,
+        IMBUED_ZAMORAK_CAPE,
+        VOID_MAGE_HELM,
+        VOID_RANGER_HELM,
+        VOID_MELEE_HELM,
+        VOID_KNIGHT_TOP,
+        VOID_KNIGHT_ROBE,
+        VOID_KNIGHT_GLOVES,
+        ELITE_VOID_TOP,
+        ELITE_VOID_ROBE,
         FIRE_CAPE,
         FIGHTER_TORSO,
         ELDER_WAND_RAIDS,
