@@ -519,7 +519,6 @@ public class PresetManager {
                 if (i < preset.getStats().length) {
                     int level = preset.getStats()[i];
                     player.skills().setLevel(i, level);
-                    player.skills().setXp(i, Skills.levelToXp(level));
                 }
             });
         }
