@@ -32,10 +32,11 @@ public class ObjectManager {
      */
     public static void onRegionChange(Player player) {
         for (GameObject object : World.getWorld().getSpawnedObjs()) {
+            // perform has distance checks
             perform(object, OperationType.SPAWN);
         }
         for (GameObject obj : World.getWorld().getRemovedObjs()) {
-            if (obj != null && Tile.sameH(player, obj)) {
+            if (obj != null && player.tile().isWithinDistance(obj.tile(), 64)) {
                 player.getPacketSender().sendObjectRemoval(obj);
             }
         }
@@ -61,7 +62,7 @@ public class ObjectManager {
     }
 
     /**
-     * Deregisters a {@link GameObject} from the world.
+     * Registers a {@link GameObject} from the world.
      *
      * @param object       The object to deregister.
      */
@@ -106,6 +107,7 @@ public class ObjectManager {
          * via the map objects and also checks for cheatclients via them.
          */
         switch (type) {
+            // dw about duplicates, they are excluded
             case SPAWN -> MapObjects.add(object);
             case DESPAWN -> MapObjects.remove(object);
         }

@@ -86,7 +86,7 @@ public class MapObjects { // cache objects
     }
 
     /**
-     * Attempts to add a new object to our map of mapobjects.
+     * Attempts to add a new object to our map of mapobjects. DUPLICATES IGNORED
      *
      * @param object
      */

@@ -1059,7 +1059,7 @@ public class Client extends GameApplet {
                                 if (message.contains("[Global]")) {
                                     xPos += 48;
                                     for (ChatCrown c : crowns) {
-                                    //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
+                                        //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                         SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                         if (sprite != null) {
                                             sprite.drawSprite(xPos + 1, y - 12 + yOffset);
@@ -1087,7 +1087,7 @@ public class Client extends GameApplet {
                             int xPos = 11;
 
                             for (ChatCrown c : crowns) {
-                            //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
+                                //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                 SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                 if (sprite != null) {
                                     sprite.drawSprite(xPos + 1, y - 12 + yOffset);
@@ -1759,7 +1759,7 @@ public class Client extends GameApplet {
 
                 if (function != -1) {
                     int sprite = AreaDefinition.lookup(function).spriteId;
-                    if(sprite != -1) {
+                    if (sprite != -1) {
                         int viewportX = x;
                         int viewportY = y;
                         minimapHint[objectIconCount] = AreaDefinition.getImage(sprite);
@@ -2245,7 +2245,7 @@ public class Client extends GameApplet {
                         }
                     }
                 }
-                
+
                 if (child.optionType == Widget.OPTION_DROPDOWN) {
 
                     boolean flag = false;
@@ -2536,13 +2536,13 @@ public class Client extends GameApplet {
                                             if (child.id == 5064 && lootingBag) {
                                                 child.actions = new String[]{"Check", null, null, null, null, null, null};
                                             } else if (child.id == 5064) {
-                                                if(child.parent == 5063 && widget_overlay_id == 34400) {
+                                                if (child.parent == 5063 && widget_overlay_id == 34400) {
                                                     child.actions = new String[]{null, null, null, null, null, null, null};
                                                 } else {
                                                     child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
                                                 }
                                             }
-                                            if(child.parent == 34417) {
+                                            if (child.parent == 34417) {
                                                 switch (depositBoxOptionFirst) {
                                                     case "1":
                                                         child.actions = new String[]{"Store 1", "Store 5", "Store 10", "Store All", "Store X", null, null};
@@ -5981,7 +5981,7 @@ public class Client extends GameApplet {
             int x = second_menu_action - 4;
             int y = first_menu_action - 4;
             scene.requestMarkTile(x, y);
-            System.out.println("x "+x+ "y "+y);
+            System.out.println("x " + x + "y " + y);
         }
 
         // clicking tiles hello
@@ -7624,7 +7624,7 @@ public class Client extends GameApplet {
                         update_chat_producer = true;
                     }
                     if (rsi.updatesEveryInput && rsi.defaultText.length() > 0 && key != 10 && key != 13) {
-                        if(Utils.hasInvalidChars(rsi.defaultText)) {
+                        if (Utils.hasInvalidChars(rsi.defaultText)) {
                             sendMessage("You cannot use invalid characters.", 0, "");
                             rsi.defaultText = "";
                             return;
@@ -7634,7 +7634,7 @@ public class Client extends GameApplet {
                         promptInput = "";
                         break;
                     } else if ((key == 10 || key == 13) && !rsi.updatesEveryInput) {
-                        if(Utils.hasInvalidChars(rsi.defaultText)) {
+                        if (Utils.hasInvalidChars(rsi.defaultText)) {
                             sendMessage("You cannot use invalid characters.", 0, "");
                             rsi.defaultText = "";
                             return;
@@ -10486,6 +10486,7 @@ public class Client extends GameApplet {
     }
 
     public Archive mediaStreamLoader;
+
     private void unpackingMedia() {
         try {
             long unpacking_media_start_time = System.currentTimeMillis();
@@ -12699,38 +12700,38 @@ public class Client extends GameApplet {
                         }
                     }
                 } else if (child.type == OPTION_MENU && child instanceof OptionMenuInterface) {
-                final OptionMenuInterface inter = (OptionMenuInterface) child;
-                if (!inter.getOptionMenus().isEmpty()) {
-                    int drawX = child_x_in_bounds + 2;
-                    int drawY = child_y_in_bounds + 2;
-                    final int boxWidth = inter.width - 4;
-                    final int boxHeight = 40;
-                    for (OptionMenu menu : inter.getOptionMenus()) {
-                        if (menu == null) {
-                            continue;
-                        }
-                        Rasterizer2D.drawPixels(boxHeight, drawY, drawX, menu.isHighlighted() ? 0x695B36 : 0x3B3629, boxWidth);
-                        Rasterizer2D.fillPixels(drawX, boxWidth, boxHeight, 0, drawY);
+                    final OptionMenuInterface inter = (OptionMenuInterface) child;
+                    if (!inter.getOptionMenus().isEmpty()) {
+                        int drawX = child_x_in_bounds + 2;
+                        int drawY = child_y_in_bounds + 2;
+                        final int boxWidth = inter.width - 4;
+                        final int boxHeight = 40;
+                        for (OptionMenu menu : inter.getOptionMenus()) {
+                            if (menu == null) {
+                                continue;
+                            }
+                            Rasterizer2D.drawPixels(boxHeight, drawY, drawX, menu.isHighlighted() ? 0x695B36 : 0x3B3629, boxWidth);
+                            Rasterizer2D.fillPixels(drawX, boxWidth, boxHeight, 0, drawY);
 
-                        adv_font_regular.draw(menu.getOptionName(), drawX + 5, drawY + 17, 0xFF981F, -1);
-                        adv_font_small.draw(menu.getOptionTooltip(), drawX + 5, drawY + 33, 0xFFA945, -1);
+                            adv_font_regular.draw(menu.getOptionName(), drawX + 5, drawY + 17, 0xFF981F, -1);
+                            adv_font_small.draw(menu.getOptionTooltip(), drawX + 5, drawY + 33, 0xFFA945, -1);
 
-                        // Teleport menu only
-                        if (inter.id == 72156) {
-                            inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
-                        } else if (inter.id == 72206) {
-                            inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
-                            inter.getSprites()[1].drawSprite(drawX + boxWidth - inter.getSprites()[1].width - 6, drawY + 17);
-                            inter.getSprites()[2].drawSprite(drawX + boxWidth - inter.getSprites()[2].width - 6, drawY + 28);
+                            // Teleport menu only
+                            if (inter.id == 72156) {
+                                inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
+                            } else if (inter.id == 72206) {
+                                inter.getSprites()[0].drawSprite(drawX + boxWidth - inter.getSprites()[0].width - 4, drawY + 3);
+                                inter.getSprites()[1].drawSprite(drawX + boxWidth - inter.getSprites()[1].width - 6, drawY + 17);
+                                inter.getSprites()[2].drawSprite(drawX + boxWidth - inter.getSprites()[2].width - 6, drawY + 28);
+                            }
+                            menu.setHighlighted(false);
+                            drawY += 42;
                         }
-                        menu.setHighlighted(false);
-                        drawY += 42;
+                    }
+                    if (inter.defaultText.length() > 0) {
+                        adv_font_regular.draw_centered(inter.defaultText, 5 + child_x_in_bounds + inter.width / 2, child_y_in_bounds + inter.height / 2, 0xFF981F, -1);
                     }
                 }
-                if (inter.defaultText.length() > 0) {
-                    adv_font_regular.draw_centered(inter.defaultText, 5 + child_x_in_bounds + inter.width / 2, child_y_in_bounds + inter.height / 2, 0xFF981F, -1);
-                }
-            }
         }
         Rasterizer2D.set_clip(clipLeft, clipTop, clipRight, clipBottom);
     }
@@ -15279,8 +15280,17 @@ public class Client extends GameApplet {
             int offset = stream.readUByte();
             int x = localX + (offset >> 4 & 7);
             int y = localY + (offset & 7);
+            //System.out.println("despawn " + objectTypeFace + " " + type + " " + orientation+" from "+localX+" to "+x+","+y);
             if (x >= 0 && y >= 0 && x < 104 && y < 104) {
                 requestSpawnObject(-1, -1, orientation, group, y, type, plane, x, 0);
+
+                /*Item groundItem = new Item();
+                groundItem.id = 227;
+                groundItem.quantity = 1;
+                if (scene_items[plane][x][y] == null)
+                    scene_items[plane][x][y] = new LinkedList();
+                scene_items[plane][x][y].insertBack(groundItem);
+                spawn_scene_item(x, y);*/
             }
             return;
         }
@@ -15381,7 +15391,7 @@ public class Client extends GameApplet {
                     loginScreenCursorPos = 1;
                 } else if ((this.cursor_x >= 305) && (this.cursor_x <= 461) && (this.cursor_y >= 290) && (this.cursor_y <= 329)) {
                     if ((myUsername.length() > 0) && (myPassword.length() > 0)) {
-                        if(loginTimer.finished()) {
+                        if (loginTimer.finished()) {
                             login(myUsername, myPassword, false);
                             loginTimer.start(2);
                         }
@@ -15446,7 +15456,7 @@ public class Client extends GameApplet {
                     if (l1 == 8 && myPassword.length() > 0)
                         myPassword = myPassword.substring(0, myPassword.length() - 1);
                     if (l1 == 9 || l1 == 10 || l1 == 13) {
-                        if(loginTimer.finished()) {
+                        if (loginTimer.finished()) {
                             login(myUsername, myPassword, false);
                             loginTimer.start(2);
                         }
