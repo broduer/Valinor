@@ -14,8 +14,12 @@ public class Arclight extends Interaction {
 
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
         if ((use.getId() == DARKLIGHT || usedWith.getId() == DARKLIGHT) && (use.getId() == ANCIENT_SHARD || usedWith.getId() == ANCIENT_SHARD)) {
+            if(!player.inventory().contains(new Item(ANCIENT_SHARD,3))) {
+                player.message("You need at least three ancient shards.");
+                return true;
+            }
             player.inventory().remove(DARKLIGHT);
-            player.inventory().remove(ANCIENT_SHARD);
+            player.inventory().remove(ANCIENT_SHARD,3);
             player.inventory().add(new Item(ARCLIGHT));
             player.message("You combine the darklight with the ancient shard to make a arclight");
             return true;
