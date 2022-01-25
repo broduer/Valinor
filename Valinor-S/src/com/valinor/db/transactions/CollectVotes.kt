@@ -145,6 +145,10 @@ object CollectVotes {
                                 World.getWorld().sendWorldMessage("<img=1081>" + Color.PURPLE.wrap(username.toString()) + " just activated his "+Color.RED.wrap("Election day")+" perk and doubled their vote points!")
                             }
 
+                            //Safety
+                            if(points > 5)
+                                points = 5
+
                             // and here is reward inside the loop for 1 vote. so this code runs x times how many votes
                             val increaseBy = getAttribOr<Int>(AttributeKey.VOTE_POINTS, 0) + points
                             putAttrib(AttributeKey.VOTE_POINTS, increaseBy)

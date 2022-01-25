@@ -322,9 +322,15 @@ public class Hit {
 
     public Hit pidAdjust() {
         if (target != null && attacker != null && target.isPlayer() && attacker.isPlayer() && target != attacker && attacker.pidOrderIndex < target.pidOrderIndex) {
-            delay(getDelay() - 1);
+            delay(delay - 1);
             pidded = true;
         }
+
+        //we adjust pid to ranged and magic methods so there's no over delay
+        if(combatType != CombatType.MELEE && delay < 1) {
+            delay = 1;
+        }
+
         return this;
     }
 
