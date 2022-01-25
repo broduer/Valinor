@@ -638,14 +638,11 @@ public class AccuracyFormula {
                 break;
         }
 
-        double aug_atk_mod = edgevilePking ? ATTACK_MOD_BASE : 64.;
         //determine augmented levels
         augmented_attack = Math.floor(((effective_attack+8) * (off_equipment_bonus + 64.)));
         //augmented_attack = Math.floor(((effective_attack) * (off_equipment_bonus / 64.)));
         augmented_defence = Math.floor(((effective_defence+8) * (def_equipment_bonus + 64.)));
         //augmented_defence = Math.floor(((effective_defence) * (def_equipment_bonus / 64.)));
-
-
 
         //determine hit chance
         if (augmented_attack < augmented_defence) {
