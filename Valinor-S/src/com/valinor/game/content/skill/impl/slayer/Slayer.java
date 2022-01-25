@@ -126,7 +126,6 @@ public class Slayer {
                         } else {
                             player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
                             player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
-                            player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);
                             player.getPacketSender().sendString(TASK_STREAK.childId, QuestTab.InfoTab.INFO_TAB.get(TASK_STREAK.childId).fetchLineData(player));
                             player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
                             player.putAttrib(AttributeKey.SLAYER_REWARD_POINTS, pts - required);

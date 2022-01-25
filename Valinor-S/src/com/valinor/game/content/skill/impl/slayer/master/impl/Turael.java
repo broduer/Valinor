@@ -66,6 +66,12 @@ public class Turael extends Interaction {
             return;
         }
 
+        int currentMaster = player.getAttribOr(AttributeKey.SLAYER_MASTER,0);
+        if (currentMaster != Slayer.TURAEL_ID) {
+            player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);
+            player.message("Your slayer task streak has been reset.");
+        }
+
         player.putAttrib(AttributeKey.SLAYER_MASTER, Slayer.TURAEL_ID);
         player.putAttrib(AttributeKey.SLAYER_TASK_ID, def.getCreatureUid());
         int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);
@@ -100,7 +106,8 @@ public class Turael extends Interaction {
                 } else if (isPhase(24)) {
                     // Time to check our task state. Can we hand out?
                     int numleft = player.slayerTaskAmount();
-                    if (numleft > 0) {
+                    int master = player.getAttribOr(AttributeKey.SLAYER_MASTER,0);
+                    if (numleft > 0 && master == Slayer.TURAEL_ID) {
                         send(DialogueType.NPC_STATEMENT, TURAEL, Expression.H, "You're still hunting " + Slayer.taskName(player.slayerTaskId()) + "; you have " + numleft + " to go. Come", "back when you've finished your task.");
                         setPhase(15);
                         return;
@@ -111,7 +118,7 @@ public class Turael extends Interaction {
 
                     SlayerCreature task = SlayerCreature.lookup(player.slayerTaskId());
                     int num = player.slayerTaskAmount();
-                    send(DialogueType.NPC_STATEMENT, TURAEL, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill " + num + " " + Slayer.taskName(task.uid) + ".");
+                    send(DialogueType.NPC_STATEMENT, TURAEL, Expression.ANXIOUS, "Excellent, you're doing great.", "Your new task is to kill " + num + " " + Slayer.taskName(task.uid) + ".");
                     setPhase(26);
                 } else if (isPhase(26)) {
                     send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Got any tips for me?", "Okay, great!");

@@ -104,7 +104,8 @@ public class TuraelD extends Dialogue {
         } else if(isPhase(24)) {
             // Time to check our task state. Can we hand out?
             int numleft = player.slayerTaskAmount();
-            if (numleft > 0) {
+            int master = player.getAttribOr(AttributeKey.SLAYER_MASTER,0);
+            if (numleft > 0 && master == Slayer.TURAEL_ID) {
                 send(DialogueType.NPC_STATEMENT, TURAEL, Expression.H, "You're still hunting " + Slayer.taskName(player.slayerTaskId()) + "; you have " + numleft + " to go. Come", "back when you've finished your task.");
                 setPhase(15);
                 return;
