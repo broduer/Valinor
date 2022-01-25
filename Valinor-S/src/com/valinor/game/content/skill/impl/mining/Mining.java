@@ -344,11 +344,11 @@ public class Mining extends Interaction {
             multiplier *= 2.5;
 
         Item gloves = player.getEquipment().get(EquipSlot.HANDS);
-        if (gloves != null && body.getId() == MINING_GLOVES)
+        if (gloves != null && gloves.getId() == MINING_GLOVES)
             multiplier *= 1.0;
-        if (gloves != null && body.getId() == EXPERT_MINING_GLOVES)
+        if (gloves != null && gloves.getId() == EXPERT_MINING_GLOVES)
             multiplier *= 3.0;
-        if (gloves != null && body.getId() == SUPERIOR_MINING_GLOVES)
+        if (gloves != null && gloves.getId() == SUPERIOR_MINING_GLOVES)
             multiplier *= 5.0;
         return multiplier;
     }
