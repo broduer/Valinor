@@ -88,7 +88,7 @@ public class MeleeMaxHit {
         //Special attacks
         if(wearingAnyBlackMask && target != null && target.isNpc() && includeNpcMax) {
             Npc npc = target.getAsNpc();
-            if(npc.id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(npc.id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.1667;
             }
 
@@ -99,7 +99,7 @@ public class MeleeMaxHit {
 
         //(Note: the black mask bonus is ignored when using a salve amulet)
         if(player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULET) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.16;
             }
 
@@ -109,7 +109,7 @@ public class MeleeMaxHit {
         }
 
         if(player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULETI) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -120,7 +120,7 @@ public class MeleeMaxHit {
 
         //• Salve amulet (e): 1.20
         if(player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULET_E) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -131,7 +131,7 @@ public class MeleeMaxHit {
 
         //• Salve amulet (ei): 1.20 (all styles)
         if(player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULETEI) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -146,7 +146,7 @@ public class MeleeMaxHit {
 
         //• Arclight: 1.70 (vs. demons)
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, ARCLIGHT) && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.70;
             }
 
@@ -157,7 +157,7 @@ public class MeleeMaxHit {
 
         //• Darklight: 1.60 (vs. demons)
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, DARKLIGHT) && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.60;
             }
 
@@ -168,7 +168,7 @@ public class MeleeMaxHit {
 
         //• Leaf-bladed battleaxe: 1.175 (vs. kurask, turoth)
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, DARKLIGHT) && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.175;
             }
 
@@ -207,7 +207,7 @@ public class MeleeMaxHit {
 
         //• Dragon hunter lance: 1.20
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_LANCE) && target != null && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -274,7 +274,7 @@ public class MeleeMaxHit {
         }
 
         if(player.hasPetOut("Olmlet") && target != null && target.isNpc() && includeNpcMax) {
-            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if(target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 petBonus *= 1.10;
             }
 

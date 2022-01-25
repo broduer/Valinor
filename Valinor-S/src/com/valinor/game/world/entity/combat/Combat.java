@@ -139,7 +139,7 @@ public class Combat {
             return mob.getAsNpc().combatInfo() == null ? 0 : mob.getAsNpc().combatInfo().maxhit;
         }
         Player player = mob.getAsPlayer();
-        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
+        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
             return MagicMaxHit.maxHit(player, false);
         }
         return MagicMaxHit.maxHit(player,true);
@@ -151,7 +151,7 @@ public class Combat {
             return mob.getAsNpc().combatInfo() == null ? 0 : mob.getAsNpc().combatInfo().maxhit;
         }
         //PvP max hit
-        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
+        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
             return MeleeMaxHit.maxHit(mob.getAsPlayer(),false);
         }
         //PvM max hit
@@ -168,7 +168,7 @@ public class Combat {
         if (mob.isNpc()) {
             return mob.getAsNpc().combatInfo() == null ? 0 : mob.getAsNpc().combatInfo().maxhit;
         }
-        if (mob.isPlayer() && target.isNpc() && target.getAsNpc().id() == UNDEAD_COMBAT_DUMMY) {
+        if (mob.isPlayer() && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
             return RangeMaxHit.maxHit(mob.getAsPlayer(), mob.getAsPlayer().getCombat().target, ignoreArrowRangeStr, false);
         }
         return RangeMaxHit.maxHit(mob.getAsPlayer(), mob.getAsPlayer().getCombat().target, ignoreArrowRangeStr, true);

@@ -131,7 +131,7 @@ public class MagicMaxHit {
             //# Pet effects
             if (player.hasPetOut("Olmlet") && target != null && target.isNpc() && includeNpcMax) {
                 var increaseBy = 5;
-                if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+                if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                     maxHit += increaseBy;
                 }
                 if (player.getRaids() != null && player.getRaids().raiding(player))

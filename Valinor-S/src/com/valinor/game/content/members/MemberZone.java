@@ -208,9 +208,9 @@ public class MemberZone extends Interaction {
                         if (clan != null) {
                             if (clan.meetingRoom == null) {
                                 clan.meetingRoom = InstancedAreaManager.getSingleton().createInstancedArea(player, new Area(1, 2, 3, 4));
-                                Npc pvpDummy = new Npc(NpcIdentifiers.UNDEAD_COMBAT_DUMMY, new Tile(2454, 2846, 2 + clan.meetingRoom.getzLevel()));
+                                Npc pvpDummy = new Npc(NpcIdentifiers.COMBAT_DUMMY, new Tile(2454, 2846, 2 + clan.meetingRoom.getzLevel()));
                                 pvpDummy.spawnDirection(1);
-                                Npc slayerDummy = new Npc(NpcIdentifiers.COMBAT_DUMMY, new Tile(2454, 2848, 2 + clan.meetingRoom.getzLevel()));
+                                Npc slayerDummy = new Npc(NpcIdentifiers.UNDEAD_COMBAT_DUMMY, new Tile(2454, 2848, 2 + clan.meetingRoom.getzLevel()));
                                 slayerDummy.spawnDirection(6);
                                 clan.dummys = Arrays.asList(pvpDummy, slayerDummy);
                                 World.getWorld().registerNpc(clan.dummys.get(0));

@@ -103,7 +103,7 @@ public class RangeMaxHit {
         var wearingAnyBlackMask = FormulaUtils.wearingBlackMask(player) || FormulaUtils.wearingBlackMaskImbued(player) || player.getEquipment().wearingSlayerHelm();
         //Special attacks
         if (wearingAnyBlackMask && target != null && target.isNpc() && includeNpcMax) {
-            if (target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.15;
             }
 
@@ -114,7 +114,7 @@ public class RangeMaxHit {
 
         //(Note: the black mask bonus is ignored when using a salve amulet)
         if (player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULET) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.15;
             }
 
@@ -124,7 +124,7 @@ public class RangeMaxHit {
         }
 
         if (player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULETI) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -135,7 +135,7 @@ public class RangeMaxHit {
 
         //• Salve amulet (e): 1.20
         if (player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULET_E) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -146,7 +146,7 @@ public class RangeMaxHit {
 
         //• Salve amulet (ei): 1.20 (all styles)
         if (player.getEquipment().hasAt(EquipSlot.AMULET, SALVE_AMULETEI) && !wearingAnyBlackMask && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.20;
             }
 
@@ -177,7 +177,7 @@ public class RangeMaxHit {
 
         //• Dragon hunter crossbow: 1.25
         if ((player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW_T)) && target != null && includeNpcMax) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.25;
             }
 
@@ -188,7 +188,7 @@ public class RangeMaxHit {
 
         //Craws Bow
         if (FormulaUtils.hasCrawsBow(player) && target != null && target.isNpc() && includeNpcMax) {
-            if (target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY) {
+            if (target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
                 D *= 1.50;
             }
 
@@ -231,7 +231,7 @@ public class RangeMaxHit {
         }
 
         if (player.hasPetOut("Olmlet") && target != null && target.isNpc()) {
-            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.COMBAT_DUMMY && includeNpcMax) {
+            if (target.isNpc() && target.getAsNpc().id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY && includeNpcMax) {
                 petBonus *= 1.10;
             }
             if (player.getRaids() != null && player.getRaids().raiding(player))

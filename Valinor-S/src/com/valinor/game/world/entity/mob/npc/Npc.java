@@ -429,7 +429,7 @@ public class Npc extends Mob {
     }
 
     public boolean isPvPCombatDummy() {
-        return this.id == UNDEAD_COMBAT_DUMMY;
+        return this.id == COMBAT_DUMMY;
     }
 
     public NpcPerformance performance = new NpcPerformance();
