@@ -2,6 +2,8 @@ package com.valinor.game.content.tasks;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.daily_tasks.TaskCategory;
 import com.valinor.game.content.tasks.rewards.TaskReward;
 import com.valinor.game.world.entity.AttributeKey;
@@ -71,6 +73,12 @@ public class TaskBottleManager {
                     player.putAttrib(TASKS_COMPLETED, tasks_completed);
                     player.message("You have now completed <col=" + Color.BLUE.getColorValue() + ">" + tasks_completed + "</col> tasks.");
                     player.putAttrib(CAN_CLAIM_TASK_REWARD, true);
+
+                    if(task.getTaskCategory() == TaskCategory.SKILLING_TASK) {
+                        DailyTaskManager.increase(DailyTasks.SKILLING_TASKS, player);
+                    } else if(task.getTaskCategory() == TaskCategory.PVMING_TASK) {
+                        DailyTaskManager.increase(DailyTasks.PVM_TASKS, player);
+                    }
                 }
             }
         }

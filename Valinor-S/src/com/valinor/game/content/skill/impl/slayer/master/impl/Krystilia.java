@@ -88,7 +88,6 @@ public class Krystilia extends Interaction {
             return;
         }
 
-        player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, true);
         player.putAttrib(AttributeKey.SLAYER_MASTER, Slayer.KRYSTILIA_ID);
         player.putAttrib(AttributeKey.SLAYER_TASK_ID, def.getCreatureUid());
         int task_amt = player.getSlayerRewards().slayerTaskAmount(player, def);

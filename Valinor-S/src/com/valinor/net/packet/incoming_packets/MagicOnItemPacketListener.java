@@ -100,6 +100,8 @@ public class MagicOnItemPacketListener implements PacketListener {
                     case SUPERHEAT_ITEM:
                         if (player.getSpellbook() != MagicSpellbook.NORMAL)
                             return;
+                        if (!spell.canCast(player, null, spell.deleteRunes()))
+                            return;
                         if (!player.getClickDelay().elapsed(500)) {
                             return;
                         }
@@ -160,7 +162,7 @@ public class MagicOnItemPacketListener implements PacketListener {
 
                         int coinAmountToGive = (int) Math.floor(itemValue * 0.15);
 
-                        if (item.getValue() == 0) {
+                        if (coinAmountToGive == 0) {
                             coinAmountToGive = 1;
                         }
 
@@ -183,7 +185,7 @@ public class MagicOnItemPacketListener implements PacketListener {
 
                         coinAmountToGive = (int) Math.floor(itemValue * 0.25);
 
-                        if (item.getValue() == 0) {
+                        if (coinAmountToGive == 0) {
                             coinAmountToGive = 1;
                         }
 

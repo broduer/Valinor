@@ -103,7 +103,6 @@ public class Slayer {
         if (adminCancel) {
             player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
             player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
-            player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE,false);
             player.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(player));
             return;
         }
@@ -125,7 +124,6 @@ public class Slayer {
                         if (10 > pts) {
                             player.message("You need " + required + " points to cancel your task.");
                         } else {
-                            player.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE,false);
                             player.putAttrib(AttributeKey.SLAYER_TASK_ID, 0);
                             player.putAttrib(AttributeKey.SLAYER_TASK_AMT, 0);
                             player.putAttrib(AttributeKey.SLAYER_TASK_SPREE, 0);
@@ -149,18 +147,18 @@ public class Slayer {
             // Check our task. Decrease. Reward. leggo
             var task = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_ID, 0);
             var amt = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_AMT, 0);
-            var wildernessSlayerActive = killer.<Boolean>getAttribOr(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false);
             var inWilderness = WildernessArea.inWilderness(npc.tile());
             var bonusPoints = killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.BONUS_SLAYER_POINTS);
+            var master = Math.max(1, killer.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
 
             if (task > 0) {
                 // Resolve taskdef
                 SlayerCreature taskdef = SlayerCreature.lookup(task);
                 if (taskdef != null && taskdef.matches(npc.id())) {
 
-                    if (wildernessSlayerActive && !inWilderness) {
+                    if (master == Slayer.KRYSTILIA_ID && !inWilderness) {
                         killer.message("<col=FF0000>You must kill your slayer assignment within the wilderness to receive experience!");
-                        amt = 0;
+                        return;
                     }
 
                     //Making sure that we have a fallback exp drop
@@ -172,10 +170,9 @@ public class Slayer {
                     killer.getPacketSender().sendString(SLAYER_TASK.childId, QuestTab.InfoTab.INFO_TAB.get(SLAYER_TASK.childId).fetchLineData(killer));
 
                     // Finished?
-                    if (amt == 0) {
+                    if (amt <= 0) {
                         // Give points
                         var spree = killer.<Integer>getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0) + 1;
-                        var master = Math.max(1, killer.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
                         if (master == Slayer.TURAEL_ID) {
                             killer.message("<col=7F00FF>You have completed your task; return to a Slayer master.");
                         } else {
@@ -230,7 +227,7 @@ public class Slayer {
                                 } else if (master == Slayer.KONAR_QUO_MATEN_ID) {
                                     ptsget = 35;
                                 } else if (master == Slayer.KRYSTILIA_ID) {
-                                    ptsget = 35;
+                                    ptsget = 45;
                                 } else {
                                     ptsget = 0;
                                 }
@@ -249,10 +246,7 @@ public class Slayer {
                             //TODO achievements here
                             killer.getTaskBottleManager().increase(BottleTasks.COMPLETE_SLAYER_TASKS);
                             DailyTaskManager.increase(DailyTasks.SLAYER, killer);
-
-                            if (wildernessSlayerActive) {
-                                killer.putAttrib(AttributeKey.WILDERNESS_SLAYER_TASK_ACTIVE, false);
-                            }
+                            killer.putAttrib(AttributeKey.SLAYER_MASTER, 0);
                         }
 
                         killer.putAttrib(AttributeKey.SLAYER_TASK_SPREE, spree);

@@ -29,4 +29,16 @@ public class NeitiznotFaceguard extends Interaction {
         return false;
     }
 
+    @Override
+    public boolean handleItemInteraction(Player player, Item item, int option) {
+        if(option == 2) {
+            if(item.getId() == NEITIZNOT_FACEGUARD) {
+                player.inventory().remove(new Item(NEITIZNOT_FACEGUARD),true);
+                player.inventory().add(new Item(BASILISK_JAW),true);
+                player.inventory().add(new Item(HELM_OF_NEITIZNOT),true);
+                return true;
+            }
+        }
+        return false;
+    }
 }

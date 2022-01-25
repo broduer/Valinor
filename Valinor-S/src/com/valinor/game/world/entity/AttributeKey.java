@@ -5,8 +5,6 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
-    MINING_LVL_RESET("mining_lvl_reset", AttribType.BOOLEAN),
-
     // Last time we boosted our prayer
     PRAYERCAPE_BOOST,
 
@@ -675,8 +673,6 @@ public enum AttributeKey {
     SLAYER_TASK_SPREE("slayerspree", AttribType.INTEGER),
 
     SLAYER_TASK_SPREE_RECORD("slayer_task_spree_record", AttribType.INTEGER),
-
-    WILDERNESS_SLAYER_TASK_ACTIVE("slayer;wilderness_task_active", AttribType.BOOLEAN),
 
     WILDERNESS_SLAYER_DESCRIBED("wilderness_task_described", AttribType.BOOLEAN),
 

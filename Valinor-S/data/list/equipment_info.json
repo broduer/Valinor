@@ -1,4 +1,39 @@
 {
+  "13646": {
+    "slot": 0,
+    "type": 0,
+    "showBeard": true
+  },
+  "13644": {
+    "slot": 10,
+    "type": 0,
+    "showBeard": false
+  },
+  "21392": {
+    "slot": 9,
+    "type": 0,
+    "showBeard": false
+  },
+  "13642": {
+    "slot": 4,
+    "type": 6,
+    "showBeard": false
+  },
+  "13640": {
+    "slot": 7,
+    "type": 0,
+    "showBeard": false
+  },
+  "21343": {
+    "slot": 9,
+    "type": 0,
+    "showBeard": false
+  },
+  "21345": {
+    "slot": 9,
+    "type": 0,
+    "showBeard": false
+  },
   "26225": {
     "slot": 0,
     "type": 8,

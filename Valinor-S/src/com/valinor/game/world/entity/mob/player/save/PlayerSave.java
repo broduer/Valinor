@@ -207,7 +207,6 @@ public class PlayerSave {
                 player.putAttrib(SLAYER_TASK_SPREE, details.slayerTaskStreak);
                 player.putAttrib(SLAYER_TASK_SPREE_RECORD, details.slayerTaskStreakRecord);
                 player.putAttrib(COMPLETED_SLAYER_TASKS, details.completedSlayerTasks);
-                player.putAttrib(WILDERNESS_SLAYER_TASK_ACTIVE, details.wildernessSlayerActive);
                 player.putAttrib(WILDERNESS_SLAYER_DESCRIBED, details.wildernessSlayerDescribed);
                 if (details.slayerPartner != null) {
                     player.putAttrib(SLAYER_PARTNER, details.slayerPartner);
@@ -569,7 +568,6 @@ public class PlayerSave {
                 player.putAttrib(BAGGED_COAL, details.baggedCoal);
                 player.putAttrib(EXP_LAMP_WARNING_SENT, details.expLampWarningSent);
                 player.putAttrib(EXP_LAMP_USED, details.expLampUsed);
-                player.putAttrib(MINING_LVL_RESET, details.miningLvlReset);
                 return true;
             }
         }
@@ -653,7 +651,6 @@ public class PlayerSave {
         private final int slayerTaskStreak;
         private final int slayerTaskStreakRecord;
         private final int completedSlayerTasks;
-        private final boolean wildernessSlayerActive;
         private final boolean wildernessSlayerDescribed;
         private final String slayerPartner;
         private final ArrayList<Integer> blockedSlayerTasks;
@@ -984,7 +981,6 @@ public class PlayerSave {
         private final int baggedCoal;
         private final boolean expLampWarningSent;
         private final boolean expLampUsed;
-        private final boolean miningLvlReset;
 
         public String password() {
             return password;
@@ -1070,7 +1066,6 @@ public class PlayerSave {
             slayerTaskStreak = Player.getAttribIntOr(player, SLAYER_TASK_SPREE, 0);
             slayerTaskStreakRecord = Player.getAttribIntOr(player, SLAYER_TASK_SPREE_RECORD, 0);
             completedSlayerTasks = Player.getAttribIntOr(player, COMPLETED_SLAYER_TASKS, 0);
-            wildernessSlayerActive = Player.getAttribBooleanOr(player, WILDERNESS_SLAYER_TASK_ACTIVE, false);
             wildernessSlayerDescribed = Player.getAttribBooleanOr(player, WILDERNESS_SLAYER_DESCRIBED, false);
             slayerPartner = player.getAttribOr(SLAYER_PARTNER, "None");
             blockedSlayerTasks = player.getSlayerRewards().getBlocked();
@@ -1362,7 +1357,6 @@ public class PlayerSave {
             baggedCoal = Player.getAttribIntOr(player, BAGGED_COAL, 0);
             expLampWarningSent = Player.getAttribBooleanOr(player, EXP_LAMP_WARNING_SENT, false);
             expLampUsed = Player.getAttribBooleanOr(player, EXP_LAMP_USED, false);
-            miningLvlReset = Player.getAttribBooleanOr(player, MINING_LVL_RESET, false);
         }
 
         public void parseDetails() throws Exception {
