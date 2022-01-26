@@ -4128,8 +4128,6 @@ public class Client extends GameApplet {
         socketStream = null;
         loggedIn = false;
         loginScreenState = 0;
-        captcha = null;
-        captchaInput = "";
         if (fadingScreen != null) {
             fadingScreen.stop();
         }
@@ -9416,39 +9414,6 @@ public class Client extends GameApplet {
 
     public String macAddress;
 
-    public String getPassword() {
-        return myPassword;
-    }
-
-    public boolean missingPassword() {
-        if (getPassword() == null || getPassword().isEmpty()) {
-            loginScreenCursorPos = 0;
-            firstLoginMessage = "Please enter your password.";
-            return true;
-        }
-        return false;
-    }
-
-    public boolean missingCaptchaInput() {
-        if (loginScreenState == 1 && captchaInput.length() == 0 && captcha != null) {
-            firstLoginMessage = "You must enter the captcha (case sensitive) or click x to exit.";
-            return true;
-        }
-        return false;
-    }
-
-    public boolean nameWhitespace() {
-        if (myUsername != null && myUsername.startsWith(" ") || myUsername.endsWith(" ") || myUsername.contains("  ")) {
-            firstLoginMessage = "Invalid username whitespace usage. Please try again.";
-            return true;
-        }
-        return false;
-    }
-
-    private static final Object CAPTCHA_LOCK = new Object();
-    private String captchaInput;
-    private SimpleImage captcha;
-
     /**
      * The login method for the 317 protocol.
      *
@@ -9457,19 +9422,6 @@ public class Client extends GameApplet {
      * @param reconnecting The flag for the user indicating to attempt to reconnect.
      */
     public void login(String name, String password, boolean reconnecting) {
-        if (loggedIn)
-            return;
-
-        if (missingPassword()) {
-            loginScreenState = 0;
-            return;
-        }
-
-        if (missingCaptchaInput())
-            return;
-
-        captcha = null;
-
         setting.save();
         SignLink.setError(name);
         try {
@@ -9522,7 +9474,6 @@ public class Client extends GameApplet {
                 /*byte[] mac = getMACAddress();
                 outBuffer.writeByte(mac.length);
                 outBuffer.writeBytes(mac);*/
-                outBuffer.writeString(captchaInput);
                 outBuffer.writeString(macAddress);
                 outBuffer.writeString("");
                 outBuffer.encryptRSAContent();
@@ -9789,26 +9740,6 @@ public class Client extends GameApplet {
                 secondLoginMessage = "Please appeal on the forums.";
                 return;
             }
-            if (response == 31 || response == 32) {
-                try {
-                    int length = ((socketStream.read() & 0xFF) << 8) + socketStream.read();
-                    byte[] captchaData = new byte[length];
-                    for (int i12 = 0; i12 < length; i12++)
-                        captchaData[i12] = (byte) socketStream.read();
-                    captcha = new SimpleImage(BufferedImages.toBufferedImage(captchaData));
-                    captcha.set_transparent_pixels(45, 45, 45);
-                    firstLoginMessage = response == 27 ? "Enter the captcha (case sensitive)." : "Incorrect, enter the captcha (case sensitive).";
-                    synchronized (CAPTCHA_LOCK) {
-                        captchaInput = "";
-                    }
-                    loginScreenState = 1;
-                } catch (IOException e) {
-                    firstLoginMessage = "Captcha error occurred, contact staff.";
-                    e.printStackTrace();
-                }
-
-                return;
-            }
             if (response == -1) {
                 if (copy == 0) {
                     if (loginFailures < 2) {
@@ -9819,11 +9750,12 @@ public class Client extends GameApplet {
                         }
                         loginFailures++;
                         login(name, password, reconnecting);
+                        return;
                     } else {
                         firstLoginMessage = "No response from loginserver";
                         secondLoginMessage = "Please wait 1 minute and try again.";
+                        return;
                     }
-                    return;
                 } else {
                     firstLoginMessage = "No response from server";
                     secondLoginMessage = "Please try using a different world.";
@@ -10565,8 +10497,6 @@ public class Client extends GameApplet {
             accountManager = new AccountManager(this, spriteCache.get(1850));
             accountManager.loadAccounts();
             saveButton = spriteCache.get(1851);
-            captchaExit = spriteCache.get(1851);//new Sprite("/loginscreen/captcha-exit");
-            captchaExitHover = spriteCache.get(1851);//new Sprite("/loginscreen/captcha-exit-hover");
 
             if (ClientConstants.repackIndexOne) {
                 CacheUtils.repackCacheIndex(this, Store.MODEL);
@@ -14961,8 +14891,6 @@ public class Client extends GameApplet {
         }
     }
 
-    private SimpleImage captchaExit;
-    private SimpleImage captchaExitHover;
     private SimpleImage loginHover;
     private SimpleImage usernameHover;
     private SimpleImage passwordHover;
@@ -14978,24 +14906,7 @@ public class Client extends GameApplet {
         musicHover = (ClientConstants.CAN_SWITCH_MUSIC && mouseInRegion(726, 465, 764, 500));
 
         char c = '\u0168';
-        if (loginScreenState == 1) {
-            if (firstLoginMessage.length() > 0) {
-                adv_font_small.draw_centered(firstLoginMessage, 385, 365, 16777215, true);
-            }
-
-            if (captcha != null)
-                captcha.drawAdvancedSpriteCentered(382, 446);
-
-            adv_font_regular.draw(
-                captchaInput + ((game_tick % 40 < 20) ? "|" : ""),
-                (myWidth / 2) - 119, myHeight / 2 + 8, 0xffffff, 0x191919, 255);
-
-
-            int exitX = 494;
-            int exitY = 236;
-            SimpleImage exit = captchaExit.isMousedOver(exitX, exitY, this.cursor_x, this.cursor_y) ? captchaExitHover : captchaExit;
-            exit.drawSprite(exitX, exitY);
-        } else if (loginScreenState == 0) {
+        if (loginScreenState == 0) {
             int i = 100;
             adv_font_regular.draw(resourceProvider.loadingMessage, i, c / 190, 0x75a9a9, true);
             if ((this.cursor_x >= 267) && (this.cursor_x <= 508) && (this.cursor_y >= 177) && (this.cursor_y <= 232)) {
@@ -15472,12 +15383,7 @@ public class Client extends GameApplet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (loginScreenState == 1) {
-            if (super.click_type == 1 && captchaExit.isMousedOver(494, 236, this.cursor_x, this.cursor_y)) {
-                loginScreenState = 0;
-                firstLoginMessage = "";
-            }
-        } else if (this.loginScreenState == 0 || this.loginScreenState == 2) {
+        if (this.loginScreenState == 0 || this.loginScreenState == 2) {
             if (super.click_type == 1) {
                 if ((this.cursor_x >= 267) && (this.cursor_x <= 508) && (this.cursor_y >= 177) && (this.cursor_y <= 232)) {
                     loginScreenCursorPos = 0;
@@ -15537,38 +15443,29 @@ public class Client extends GameApplet {
                     break;
                 }
 
-                if (loginScreenState == 1) {
-                    synchronized (CAPTCHA_LOCK) {
-                        captchaInput = loginScreenInput(captchaInput, l1, flag1, 12,
-                            null,
-                            () -> login(myUsername, getPassword(), false)
-                        );
+                if (loginScreenCursorPos == 0) {
+                    if (l1 == 8 && myUsername.length() > 0)
+                        myUsername = myUsername.substring(0, myUsername.length() - 1);
+                    if (l1 == 9 || l1 == 10 || l1 == 13)
+                        loginScreenCursorPos = 1;
+                    if (flag1)
+                        myUsername += (char) l1;
+                    if (myUsername.length() > 12)
+                        myUsername = myUsername.substring(0, 12);
+                } else if (loginScreenCursorPos == 1) {
+                    if (l1 == 8 && myPassword.length() > 0)
+                        myPassword = myPassword.substring(0, myPassword.length() - 1);
+                    if (l1 == 9 || l1 == 10 || l1 == 13) {
+                        if (loginTimer.finished()) {
+                            login(myUsername, myPassword, false);
+                            loginTimer.start(2);
+                        }
                     }
-                } else if (loginScreenState == 0) {
-                    if (loginScreenCursorPos == 0) {
-                        if (l1 == 8 && myUsername.length() > 0)
-                            myUsername = myUsername.substring(0, myUsername.length() - 1);
-                        if (l1 == 9 || l1 == 10 || l1 == 13)
-                            loginScreenCursorPos = 1;
-                        if (flag1)
-                            myUsername += (char) l1;
-                        if (myUsername.length() > 12)
-                            myUsername = myUsername.substring(0, 12);
-                    } else if (loginScreenCursorPos == 1) {
-                        if (l1 == 8 && myPassword.length() > 0)
-                            myPassword = myPassword.substring(0, myPassword.length() - 1);
-                        if (l1 == 9 || l1 == 10 || l1 == 13) {
-                            if (loginTimer.finished()) {
-                                login(myUsername, myPassword, false);
-                                loginTimer.start(2);
-                            }
-                        }
-                        if (flag1) {
-                            myPassword += (char) l1;
-                        }
-                        if (myPassword.length() > 20) {
-                            myPassword = myPassword.substring(0, 20);
-                        }
+                    if (flag1) {
+                        myPassword += (char) l1;
+                    }
+                    if (myPassword.length() > 20) {
+                        myPassword = myPassword.substring(0, 20);
                     }
                 }
             } while (true);
@@ -15581,24 +15478,6 @@ public class Client extends GameApplet {
             if (super.click_type == 1 && super.click_x >= k - 75 && super.click_x <= k + 75 && super.click_y >= j1 - 20 && super.click_y <= j1 + 20)
                 loginScreenState = 0;
         }
-    }
-
-    private String loginScreenInput(String current, int l1, boolean flag1, int maxWidth, Runnable tab, Runnable enter) {
-        if (l1 == 8 && current.length() > 0)
-            current = current.substring(0, current.length() - 1);
-        if (l1 == 9) {
-            if (tab != null)
-                tab.run();
-        } else if (l1 == 10 || l1 == 13) {
-            if (enter != null)
-                enter.run();
-            return current;
-        }
-        if (flag1)
-            current += (char) l1;
-        if (current.length() > maxWidth)
-            current = current.substring(0, maxWidth);
-        return current;
     }
 
     //OBJECTS
@@ -18268,7 +18147,6 @@ public class Client extends GameApplet {
         anInt1171 = 1;
         myUsername = "";
         myPassword = "";
-        captchaInput = "";
         genericLoadingError = false;
         reportAbuseInterfaceID = -1;
         spawns = new LinkedList();
