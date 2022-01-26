@@ -40,7 +40,8 @@ public class AccuracyFormula {
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
 
-    public static double ATTACK_MOD_BASE = 30.;
+    private static final boolean BOOST_ATTACK = true;
+    public static double ATTACK_MOD_BASE = 28.;
 
     public static boolean doesHit(Mob entity, Mob enemy, CombatType style) {
         return doesHit(entity, enemy, style, 1);
@@ -81,14 +82,11 @@ public class AccuracyFormula {
             final Item weapon = player.getEquipment().get(EquipSlot.WEAPON);
 
             if (weapon != null) {
+                attackerWeaponId = weapon.getId(); // Used below in Twisted bow computation.
+
                 final Map<Integer, Integer> requiredLevels = World.getWorld().equipmentInfo().requirementsFor(weapon.getId());
                 if (requiredLevels != null) {
                     final Integer requiredLevel = requiredLevels.get(Skills.ATTACK);
-                    if (requiredLevel != null)
-                        off_weapon_requirement = requiredLevel;
-                }
-                if (requiredLevels != null) {
-                    final Integer requiredLevel = requiredLevels.get(Skills.RANGED);
                     if (requiredLevel != null)
                         off_weapon_requirement = requiredLevel;
                 }
@@ -577,8 +575,6 @@ public class AccuracyFormula {
             off_style = entity.getCombat().getFightType().getAttackType();
         }
 
-        boolean edgevilePking = entity.tile().inArea(Tile.EDGEVILE_WILDY);
-
         //determine effective attack
         switch (style) {
             case MELEE:
@@ -613,17 +609,15 @@ public class AccuracyFormula {
                     def_equipment_bonus = Math.max(Math.max(def_equipment_stab_defence, def_equipment_slash_defence), def_equipment_crush_defence);
                 }
                 break;
-
             case RANGED:
-                if (off_base_ranged_level > off_weapon_requirement) {
-                    off_weapon_bonus = (off_base_ranged_level - off_weapon_requirement) * .3;
-                }
+/*				if (off_base_ranged_level > off_weapon_requirement) {
+					off_weapon_bonus = (off_base_ranged_level - off_weapon_requirement) * .3;
+				}*/
                 effective_attack = Math.floor((((off_current_ranged_level * off_ranged_prayer_bonus) * off_additional_bonus) + off_stance_bonus + off_weapon_bonus) * twistedBowMultiplier);
                 effective_defence = Math.floor((def_current_defence_level * def_defence_prayer_bonus) + def_stance_bonus);
                 off_equipment_bonus = off_equipment_ranged_attack;
                 def_equipment_bonus = def_equipment_ranged_defence;
-            break;
-
+                break;
             case MAGIC:
                 //if (off_base_magic_level > off_spell_requirement) {
                 //	off_spell_bonus = (off_base_magic_level - off_spell_requirement) * .3;
@@ -639,55 +633,50 @@ public class AccuracyFormula {
         }
 
         //determine augmented levels
-        augmented_attack = Math.floor(((effective_attack+8) * (off_equipment_bonus + 64.)));
-        //augmented_attack = Math.floor(((effective_attack) * (off_equipment_bonus / 64.)));
-        augmented_defence = Math.floor(((effective_defence+8) * (def_equipment_bonus + 64.)));
-        //augmented_defence = Math.floor(((effective_defence) * (def_equipment_bonus / 64.)));
+        double aug_atk_mod = BOOST_ATTACK ? ATTACK_MOD_BASE : 64.;
+        augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
+        augmented_defence = Math.floor(((effective_defence + 8) * (1 + def_equipment_bonus / 64.)));
 
         //determine hit chance
         if (augmented_attack < augmented_defence) {
             hit_chance = augmented_attack / ((augmented_defence + 1.) * 2.);
-            // hit_chance = (augmented_attack - 1.) / (2. * augmented_defence);
         } else {
             hit_chance = 1. - ((augmented_defence + 2.) / ((augmented_attack + 1.) * 2.));
-            // hit_chance = 1. - (augmented_defence + 1) / (2. * augmented_attack);
         }
-
-        //System.out.println(edgevilePking);
 
         //System.out.println("hit chance +  " + hit_chance);
         switch (style) {
             case MELEE:
                 if (def_protect_from_melee) {
                     off_hit_chance = Math.floor((((hit_chance) * off_void_bonus) * .6) * 100.);
-                    def_block_chance = Math.floor(101 -((((hit_chance) * off_void_bonus) * .6) * 100.));
+                    def_block_chance = Math.floor(101 - ((((hit_chance) * off_void_bonus) * .6) * 100.));
                 } else {
                     off_hit_chance = Math.floor(((hit_chance) * off_void_bonus) * 100.);
-                    def_block_chance = Math.floor((((hit_chance) * off_void_bonus) * 100.));
+                    def_block_chance = Math.floor(101 - (((hit_chance) * off_void_bonus) * 100.));
                 }
                 break;
             case RANGED:
                 if (def_protect_from_ranged) {
                     off_hit_chance = Math.floor((((hit_chance) * off_void_bonus) * .6) * 100.);
-                    def_block_chance = Math.floor(101 -((((hit_chance) * off_void_bonus) * .6) * 100.));
+                    def_block_chance = Math.floor(101 - ((((hit_chance) * off_void_bonus) * .6) * 100.));
                 } else {
                     off_hit_chance = Math.floor(((hit_chance) * off_void_bonus) * 100.);
-                    def_block_chance = Math.floor((((hit_chance) * off_void_bonus) * 100.));
+                    def_block_chance = Math.floor(101 - (((hit_chance) * off_void_bonus) * 100.));
                 }
                 break;
             case MAGIC:
                 if (def_protect_from_magic) {
                     off_hit_chance = Math.floor(((hit_chance * off_void_bonus) * .6) * 100.);
-                    def_block_chance = Math.floor(101 -(((hit_chance * off_void_bonus) * .6) * 100.));
+                    def_block_chance = Math.floor(101 - (((hit_chance * off_void_bonus) * .6) * 100.));
                 } else {
                     off_hit_chance = Math.floor((hit_chance * off_void_bonus) * 100.);
-                    def_block_chance = Math.floor(((hit_chance * off_void_bonus) * 100.));
+                    def_block_chance = Math.floor(101 - ((hit_chance * off_void_bonus) * 100.));
                 }
                 break;
         }
 
-        //String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
-        //System.out.println(msg);
+        String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
+        System.out.println(msg);
 
         if (entity.isPlayer() && (boolean) GameServer.properties().logAccuracyChances) {
             String debugmsg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",
