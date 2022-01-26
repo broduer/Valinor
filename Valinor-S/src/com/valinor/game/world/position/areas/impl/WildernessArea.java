@@ -56,6 +56,18 @@ public class WildernessArea extends Controller {
             return customWildernessRegions.level;
         }*/
 
+        if (!(tile.x > 2941 && tile.x < 3392 && tile.y > 3524 && tile.y < 3968) && !inUndergroundWilderness(tile))
+            return 0;
+
+        // North of black knights fortress and more - people lure here.
+        if (tile.inArea(2998, 3525, 3026, 3536) || tile.inArea(3005, 3537, 3023, 3545)
+            || tile.equals(2997, 3525) || tile.inArea(3024, 3537, 3026, 3542)
+            || tile.inArea(3027, 3525, 3032, 3530) || tile.inArea(3003, 3537, 3004, 3538)
+            // And level 20, west side of wildy, trollhiem shortcut. More people lure here :)
+            || tile.inArea(2941, 3676, 2947, 3681)) {
+            return 0;
+        }
+
         return ((z - 3520) >> 3) + 1;
     }
 
