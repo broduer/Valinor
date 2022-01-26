@@ -203,18 +203,12 @@ public class ZarosGodwars {
         }
     }
 
-    /**
-     * A comparartor that sorts player damages by the most damage done, descending.
-     */
-    private static final Comparator<Map.Entry<Mob, HitDamageCache>> BEST_DAMAGE_COMPARATOR = Comparator.comparingInt(e -> e.getValue().getDamage());
-
     public static void drop(Mob mob) {
-        var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(BEST_DAMAGE_COMPARATOR);
-        list.limit(2).collect(Collectors.toList()).forEach(e -> {
+        var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
+        list.stream().limit(3).forEach(e -> {
             var key = e.getKey();
-            var hits = e.getValue();
             Player player = (Player) key;
-            if (mob.tile().isWithinDistance(player.tile(),12) && hits.getDamage() >= 300) {
+            if (mob.tile().isWithinDistance(player.tile(),12)) {
                 if(mob instanceof Npc) {
                     Npc npc = mob.getAsNpc();
 

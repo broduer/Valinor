@@ -147,7 +147,7 @@ public class Fishing {
 
                 Fish weCatch = selectedAction.randomFish(player.skills().level(Skills.FISHING));
 
-                if(npc.id() == FISHING_SPOT_7731 && (npc.minnowsFish || (npc.minnowsFish = World.getWorld().rollDie(100)))) {
+                if(npc.id() == FISHING_SPOT_7731 && (npc.minnowsFish || (npc.minnowsFish = World.getWorld().rollDie(15)))) {
                     npc.graphic(1387);
 
                     if(player.inventory().contains(weCatch.item)) {
