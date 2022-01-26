@@ -675,8 +675,8 @@ public class AccuracyFormula {
                 break;
         }
 
-        String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
-        System.out.println(msg);
+        //String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
+        //System.out.println(msg);
 
         if (entity.isPlayer() && (boolean) GameServer.properties().logAccuracyChances) {
             String debugmsg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",

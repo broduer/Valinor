@@ -1,4 +1,6 @@
 {
+  "lowercaseCaptcha": true,
+  "disableCaptchaEveryLogin": true,
   "staffOnlyLogins": false,
   "gameVersion": "1.0.2",
   "definitionsDirectory": "./data/def/",
@@ -123,7 +125,7 @@
   "edgeDitch10secondPjTimerEnabled": true,
   "enableChangeAccountType": true,
   "buyTwoGetOneFree": false,
-  "doubleExperienceEvent": false,
+  "doubleExperienceEvent": true,
   "doubleSlayerRewardPointsEvent": false,
   "doublePKPEvent": false,
   "doubleVotePointsEvent": false,

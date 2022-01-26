@@ -97,6 +97,8 @@ public final class ServerProperties {
 
     private ServerProperties(boolean sqlOn, boolean discordLoggingOn) {
         // Default property values. If the server properties file exists, these will be ignored.
+        lowercaseCaptcha = true;
+        disableCaptchaEveryLogin = true;
         staffOnlyLogins = false;
         gameVersion = "2";
         definitionsDirectory = "./data/def/";
@@ -240,6 +242,16 @@ public final class ServerProperties {
 
     public final String fileStore;
     public final boolean definitionsLazy;
+
+    /**
+     * The flag that determines if the server is sending lower case captcha.
+     */
+    public boolean lowercaseCaptcha;
+
+    /**
+     * The flag that determines if the server is sending a captcha every login.
+     */
+    public boolean disableCaptchaEveryLogin;
 
     /**
      * The flag that determines if the server is accepting non-staff logins.

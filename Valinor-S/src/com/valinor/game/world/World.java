@@ -132,23 +132,23 @@ public class World {
         return calendar;
     }
 
-    private boolean applyDoubleExperience() {
+    private boolean applyWeekendDoubleExperience() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         return (day == 5 || day == 6 || day == 7) && GameServer.properties().doubleExperienceEvent;
     }
 
-    private boolean applyDoubleSlayerRewardPoints() {
+    private boolean applyWeekendDoubleSlayerRewardPoints() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         return (day == 5 || day == 6 || day == 7) && GameServer.properties().doubleSlayerRewardPointsEvent;
     }
 
-    private boolean applyDoublePKP() {
+    private boolean applyWeekendDoublePKP() {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         return (day == 5 || day == 6 || day == 7) && GameServer.properties().doublePKPEvent;
     }
 
     public boolean doubleVotePoints() {
-        return isFirstWeekofMonth() && GameServer.properties().doublePKPEvent;
+        return isFirstWeekofMonth() && GameServer.properties().doubleVotePointsEvent;
     }
 
     private boolean isFirstWeekofMonth() {
@@ -171,9 +171,9 @@ public class World {
         return currentTick() >= end;
     }
 
-    public int xpMultiplier = applyDoubleExperience() ? 2 : 1;
-    public int slayerRewardPointsMultiplier = applyDoubleSlayerRewardPoints() ? 2 : 1;
-    public int pkpMultiplier = applyDoublePKP() ? 2 : 1;
+    public int xpMultiplier = applyWeekendDoubleExperience() || GameServer.properties().doubleExperienceEvent ? 2 : 1;
+    public int slayerRewardPointsMultiplier = applyWeekendDoubleSlayerRewardPoints() || GameServer.properties().doubleSlayerRewardPointsEvent ? 2 : 1;
+    public int pkpMultiplier = applyWeekendDoublePKP() || GameServer.properties().doublePKPEvent ? 2 : 1;
 
     private int elapsedTicks;
 
