@@ -98,7 +98,7 @@
           { "id": 392, "min": 25, "max": 55, "points": 40 },   //Manta ray (noted)
           { "id": 22118, "min": 1, "max": 1, "points": 24 },   //Wrath talisman
           { "id": 537, "min": 7, "max": 28, "points": 30 },   //Dragon bones (noted)
-          { "id": 2425, "min": 1, "max": 1, "points": 20 },   //Vorkath's head
+          { "id": 21907, "min": 1, "max": 1, "points": 20 },   //Vorkath's head
           { "id": 22106, "min": 1, "max": 1, "points": 1 },   //Jar of decay
           { "id": 11286, "min": 1, "max": 1, "points": 1 },   //Draconic visage
           { "id": 22006, "min": 1, "max": 1, "points": 1 }   //Skeletal visage

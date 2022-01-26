@@ -1,13 +1,11 @@
 package com.valinor.game.content.skill.impl.slayer.content;
 
 import com.valinor.fs.ItemDefinition;
-import com.valinor.game.content.items.equipment.ArdougneCape;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
-import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -16,8 +14,9 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
+import static com.valinor.util.ItemIdentifiers.VORKATHS_HEAD_21907;
 import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.DURADEL;
+import static com.valinor.util.ObjectIdentifiers.VORKATH_HEAD;
 
 /**
  * This class represents the Slayer interface functionality
@@ -56,7 +55,6 @@ public class SlayerHelmet extends Interaction {
     private static final int KQ_HEAD = ItemIdentifiers.KQ_HEAD;
     private static final int KBD_HEADS = ItemIdentifiers.KBD_HEADS;
     private static final int DARK_CLAW = ItemIdentifiers.DARK_CLAW;
-    private static final int VORKATH_HEAD = ItemIdentifiers.VORKATHS_HEAD_21907;
     private static final int HYDRA_HEAD = ItemIdentifiers.ALCHEMICAL_HYDRA_HEAD;
     private static final int TWISTED_HORNS = ItemIdentifiers.TWISTED_HORNS;
 
@@ -198,6 +196,20 @@ public class SlayerHelmet extends Interaction {
             player.getInventory().remove(new Item(DARK_CLAW), true);
             player.getInventory().remove(new Item(SLAYER_HELM_IMBUE), true);
             player.getInventory().add(new Item(PURPLE_HELM_IMBUE), true);
+            return true;
+        }
+
+        if ((used.getId() == VORKATHS_HEAD_21907 && with.getId() == SLAYER_HELM) || (used.getId() == SLAYER_HELM && with.getId() == VORKATHS_HEAD_21907)) {
+            player.getInventory().remove(new Item(VORKATHS_HEAD_21907), true);
+            player.getInventory().remove(new Item(SLAYER_HELM), true);
+            player.getInventory().add(new Item(TURQUOISE_SLAYER_HELM), true);
+            return true;
+        }
+
+        if ((used.getId() == VORKATHS_HEAD_21907 && with.getId() == SLAYER_HELM_IMBUE) || (used.getId() == SLAYER_HELM_IMBUE && with.getId() == VORKATHS_HEAD_21907)) {
+            player.getInventory().remove(new Item(VORKATHS_HEAD_21907), true);
+            player.getInventory().remove(new Item(SLAYER_HELM_IMBUE), true);
+            player.getInventory().add(new Item(TURQUOISE_HELM_IMBUE), true);
             return true;
         }
 
