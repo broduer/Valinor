@@ -31,10 +31,10 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
      * a map of ip:count of connections open in netty. not 1:1 with attempting to login because the client
      * might send a js5 or cache request or something else
      */
-    private static ConcurrentHashMap<String, Integer> connections = new ConcurrentHashMap<>();
-    private static ConcurrentHashMap<String, ConcurrentLinkedDeque<Long>> login_timestamps = new ConcurrentHashMap<>();
-    public static long timeLimitForMaxConnections = 15_000;
-    public static int maximumShortTermOpenChannels = 25;
+    private static final ConcurrentHashMap<String, Integer> connections = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<String, ConcurrentLinkedDeque<Long>> login_timestamps = new ConcurrentHashMap<>();
+    public static long timeLimitForMaxConnections = 2_500;
+    public static int maximumShortTermOpenChannels = 6;
 
     // Used to check if the user has a username which 100% an admin. Means you don't have
     // to bother loading the profile _just_ to check rights.

@@ -36,7 +36,7 @@
   "tournamentMinDevParticipants": 2,
   "logSuccessfulPackets": false,
   "logUnderflowPacketsProduction": false,
-  "connectionLimit": 15,
+  "connectionLimit": 6,
   "maxAlts": 5,
   "pidIntervalTicks": 100,
   "enablePidShuffling": true,
