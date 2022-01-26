@@ -398,6 +398,7 @@ public class Item implements Cloneable {
 
     // These untradable items will be send to the inventory or bank on death.
     public static final int[] AUTO_KEPT_LIST = new int[]{
+        RING_OF_WEALTH_I,
         AVAS_ASSEMBLER,
         AVAS_ACCUMULATOR,
         BRONZE_DEFENDER,
