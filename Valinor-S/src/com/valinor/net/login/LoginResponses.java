@@ -12,6 +12,8 @@ import com.valinor.game.world.entity.mob.player.save.PlayerSave;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave.SaveDetails;
 import com.valinor.net.ByteBufUtils;
 import com.valinor.net.NetworkConstants;
+import com.valinor.net.login.captcha.CaptchaRequirement;
+import com.valinor.net.login.captcha.LoginCaptcha;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -282,4 +284,7 @@ public final class LoginResponses {
      * is under maintenance.
      */
     public static final int LOGIN_SERVER_MAINTENANCE = 98;
+
+    public static final int CAPTCHA_REQUIRED = 31;
+    public static final int CAPTCHA_INCORRECT = 32;
 }
