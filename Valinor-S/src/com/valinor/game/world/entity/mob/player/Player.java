@@ -411,6 +411,9 @@ public class Player extends Mob {
         if(dropRateBoostUnlock)
             percent += 3;
 
+        if(hasPetOut("Zriawk"))
+            percent += 15;
+
         //Drop rate percentage boost can't go over cap%
         return percent;
     }
