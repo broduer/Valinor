@@ -230,6 +230,10 @@ public final class SimpleImage extends Rasterizer2D {
         }
     }
 
+    public boolean isMousedOver(int spriteX, int spriteY, int mouseX, int mouseY) {
+        return mouseX >= spriteX && mouseY >= spriteY && mouseX <= spriteX + this.width && mouseY <= spriteY + this.height;
+    }
+
     public void init() {
         Rasterizer2D.init(this.width, this.height, this.pixels, depth_buffer);
     }
@@ -911,8 +915,12 @@ public final class SimpleImage extends Rasterizer2D {
         set_transparent_pixels(color.getRed(), color.getGreen(), color.getBlue());
     }
 
-    public static Image create(byte spriteData[]) {
+    public static Image create(byte[] spriteData) {
         return Toolkit.getDefaultToolkit().createImage(spriteData);
+    }
+
+    public void drawAdvancedSpriteCentered(int i, int j) {
+        drawAdvancedSprite(i - (this.width / 2), j - (this.height / 2));
     }
 
     public void drawAdvancedSprite(int xPos, int yPos) {
