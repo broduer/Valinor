@@ -6,6 +6,7 @@ import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.CustomNpcIdentifiers;
 import com.valinor.util.NpcIdentifiers;
 
@@ -65,7 +66,7 @@ public enum SlayerCreature {
     LESSER_DEMONS(28, 1, 60, new Tile(3016,3849), new Tile(3016,3849), NpcIdentifiers.LESSER_DEMON, NpcIdentifiers.LESSER_DEMON_2006, NpcIdentifiers.LESSER_DEMON_2007, NpcIdentifiers.LESSER_DEMON_2008, NpcIdentifiers.LESSER_DEMON_3982, NpcIdentifiers.LESSER_DEMON_7247, NpcIdentifiers.LESSER_DEMON_7248, NpcIdentifiers.LESSER_DEMON_7656, NpcIdentifiers.LESSER_DEMON_7657, NpcIdentifiers.LESSER_DEMON_7664, NpcIdentifiers.LESSER_DEMON_7865, NpcIdentifiers.LESSER_DEMON_7866, NpcIdentifiers.LESSER_DEMON_7867),
     GREATER_DEMONS(29, 1, 85, new Tile(1693,10099), new Tile(3225,10132), NpcIdentifiers.GREATER_DEMON, NpcIdentifiers.GREATER_DEMON_2026, NpcIdentifiers.GREATER_DEMON_2027, NpcIdentifiers.GREATER_DEMON_2028, NpcIdentifiers.GREATER_DEMON_2029, NpcIdentifiers.GREATER_DEMON_2030, NpcIdentifiers.GREATER_DEMON_2031, NpcIdentifiers.GREATER_DEMON_2032, NpcIdentifiers.GREATER_DEMON_7244, NpcIdentifiers.GREATER_DEMON_7245, NpcIdentifiers.GREATER_DEMON_7246, NpcIdentifiers.GREATER_DEMON_7871, NpcIdentifiers.GREATER_DEMON_7872, NpcIdentifiers.GREATER_DEMON_7873),
     BLACK_DEMONS(30, 1, 80, new Tile(3191, 10155), new Tile(3174, 10153), NpcIdentifiers.BLACK_DEMON, NpcIdentifiers.BLACK_DEMON_1432, NpcIdentifiers.BLACK_DEMON_2048, NpcIdentifiers.BLACK_DEMON_2049, NpcIdentifiers.BLACK_DEMON_2050, NpcIdentifiers.BLACK_DEMON_2051, NpcIdentifiers.BLACK_DEMON_2052, NpcIdentifiers.BLACK_DEMON_5874, NpcIdentifiers.BLACK_DEMON_5875, NpcIdentifiers.BLACK_DEMON_5876, NpcIdentifiers.BLACK_DEMON_5877, NpcIdentifiers.BLACK_DEMON_6357, NpcIdentifiers.BLACK_DEMON_7242, NpcIdentifiers.BLACK_DEMON_7243, NpcIdentifiers.BLACK_DEMON_7874, NpcIdentifiers.BLACK_DEMON_7875, NpcIdentifiers.BLACK_DEMON_7876, NpcIdentifiers.DEMONIC_GORILLA, NpcIdentifiers.DEMONIC_GORILLA_7145, NpcIdentifiers.DEMONIC_GORILLA_7146, NpcIdentifiers.DEMONIC_GORILLA_7147, NpcIdentifiers.DEMONIC_GORILLA_7148, NpcIdentifiers.DEMONIC_GORILLA_7149, NpcIdentifiers.DEMONIC_GORILLA_7152),
-    HELLHOUNDS(31, 1, 75, new Tile(1614,10065), NpcIdentifiers.HELLHOUND, NpcIdentifiers.HELLHOUND_105, NpcIdentifiers.HELLHOUND_135, NpcIdentifiers.HELLHOUND_3133, NpcIdentifiers.HELLHOUND_7256, NpcIdentifiers.HELLHOUND_7877, NpcIdentifiers.SKELETON_HELLHOUND, NpcIdentifiers.SKELETON_HELLHOUND_6387, NpcIdentifiers.SKELETON_HELLHOUND_6613),
+    HELLHOUNDS(31, 1, 75, new Tile(1639,10074), new Tile(3189,3921), NpcIdentifiers.HELLHOUND, NpcIdentifiers.HELLHOUND_105, NpcIdentifiers.HELLHOUND_135, NpcIdentifiers.HELLHOUND_3133, NpcIdentifiers.HELLHOUND_7256, NpcIdentifiers.HELLHOUND_7877, NpcIdentifiers.SKELETON_HELLHOUND, NpcIdentifiers.SKELETON_HELLHOUND_6387, NpcIdentifiers.SKELETON_HELLHOUND_6613),
     SHADOW_WARRIORS(32, 1, 60, null, NpcIdentifiers.SHADOW_WARRIOR),
     WEREWOLVES(33, 1, 60, new Tile(2924,5354), NpcIdentifiers.WEREWOLF, NpcIdentifiers.WEREWOLF_2594, NpcIdentifiers.WEREWOLF_2595, NpcIdentifiers.WEREWOLF_2596, NpcIdentifiers.WEREWOLF_2597, NpcIdentifiers.WEREWOLF_2598, NpcIdentifiers.WEREWOLF_2599, NpcIdentifiers.WEREWOLF_2600, NpcIdentifiers.WEREWOLF_2601, NpcIdentifiers.WEREWOLF_2602, NpcIdentifiers.WEREWOLF_2603, NpcIdentifiers.WEREWOLF_2604, NpcIdentifiers.WEREWOLF_2605, NpcIdentifiers.WEREWOLF_2606, NpcIdentifiers.WEREWOLF_2607, NpcIdentifiers.WEREWOLF_2608, NpcIdentifiers.WEREWOLF_2609, NpcIdentifiers.WEREWOLF_2610, NpcIdentifiers.WEREWOLF_2611, NpcIdentifiers.WEREWOLF_2612, NpcIdentifiers.WEREWOLF_3135, NpcIdentifiers.WEREWOLF_3136, NpcIdentifiers.WEREWOLF_5928),
     VAMPIRES(34, 1, 3, null, NpcIdentifiers.VAMPYRE_JUVENILE, NpcIdentifiers.VAMPYRE_JUVENILE_3693, NpcIdentifiers.VAMPYRE_JUVENILE_3696, NpcIdentifiers.VAMPYRE_JUVENILE_3697, NpcIdentifiers.VAMPYRE_JUVENILE_4436, NpcIdentifiers.VAMPYRE_JUVENILE_4437, NpcIdentifiers.VAMPYRE_JUVENILE_4438, NpcIdentifiers.VAMPYRE_JUVENILE_4439, NpcIdentifiers.VAMPYRE_JUVENILE_8326, NpcIdentifiers.VAMPYRE_JUVENILE_8327, NpcIdentifiers.VAMPYRE_JUVENILE, NpcIdentifiers.VAMPYRE_JUVINATE, NpcIdentifiers.VAMPYRE_JUVINATE_3691, NpcIdentifiers.VAMPYRE_JUVINATE_3694, NpcIdentifiers.VAMPYRE_JUVINATE_3695, NpcIdentifiers.VAMPYRE_JUVINATE_3698, NpcIdentifiers.VAMPYRE_JUVINATE_3699, NpcIdentifiers.VAMPYRE_JUVINATE_3700, NpcIdentifiers.VAMPYRE_JUVINATE_4427, NpcIdentifiers.VAMPYRE_JUVINATE_4428, NpcIdentifiers.VAMPYRE_JUVINATE_4429, NpcIdentifiers.VAMPYRE_JUVINATE_4430, NpcIdentifiers.VAMPYRE_JUVINATE_4432, NpcIdentifiers.VAMPYRE_JUVINATE_4433, NpcIdentifiers.VAMPYRE_JUVINATE_4434, NpcIdentifiers.VAMPYRE_JUVINATE_4442, NpcIdentifiers.VAMPYRE_JUVINATE_4443, NpcIdentifiers.VAMPYRE_JUVINATE_4481, NpcIdentifiers.VAMPYRE_JUVINATE_4482, NpcIdentifiers.VAMPYRE_JUVINATE_4486, NpcIdentifiers.VAMPYRE_JUVINATE_4487, NpcIdentifiers.VAMPYRE_JUVINATE_5634, NpcIdentifiers.VAMPYRE_JUVINATE_5635, NpcIdentifiers.VAMPYRE_JUVINATE_5636, NpcIdentifiers.VAMPYRE_JUVINATE_5637, NpcIdentifiers.VAMPYRE_JUVINATE_5638, NpcIdentifiers.VAMPYRE_JUVINATE_5639),
@@ -154,7 +155,7 @@ public enum SlayerCreature {
     ENTS(115, 1, 3, new Tile(3203,3676), NpcIdentifiers.ENT, NpcIdentifiers.ENT_7234),
     ROGUES(116, 1, 3, new Tile(3285, 3922), NpcIdentifiers.ROGUE, NpcIdentifiers.ROGUE_6603),
     WYRM(117, 62, 3, new Tile(1274,10191), NpcIdentifiers.WYRM, NpcIdentifiers.WYRM_8611),
-    DRAKES(118, 84, 3, new Tile(1312,10236), NpcIdentifiers.DRAKE_8612, NpcIdentifiers.DRAKE_8613),
+    DRAKES(118, 84, 3, new Tile(1312,10236, 1), NpcIdentifiers.DRAKE_8612, NpcIdentifiers.DRAKE_8613),
     BARRELCHEST(119, 1, 100,true, new Tile(3287, 3884), NpcIdentifiers.BARRELCHEST_6342, CustomNpcIdentifiers.ANCIENT_BARRELCHEST),
     HYDRA(120, 95, 85, new Tile(1313,10236), NpcIdentifiers.HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA_8616, NpcIdentifiers.ALCHEMICAL_HYDRA_8617, NpcIdentifiers.ALCHEMICAL_HYDRA_8618, NpcIdentifiers.ALCHEMICAL_HYDRA_8619, NpcIdentifiers.ALCHEMICAL_HYDRA_8620, NpcIdentifiers.ALCHEMICAL_HYDRA_8621, NpcIdentifiers.ALCHEMICAL_HYDRA_8622, NpcIdentifiers.ALCHEMICAL_HYDRA_8634),
     ABYSSAL_SIRE(121, 85, 100,true, new Tile(3105, 4838), NpcIdentifiers.ABYSSAL_SIRE, NpcIdentifiers.ABYSSAL_SIRE_5887, NpcIdentifiers.ABYSSAL_SIRE_5888, NpcIdentifiers.ABYSSAL_SIRE_5889, NpcIdentifiers.ABYSSAL_SIRE_5890, NpcIdentifiers.ABYSSAL_SIRE_5891, NpcIdentifiers.ABYSSAL_SIRE_5908),
@@ -279,6 +280,7 @@ public enum SlayerCreature {
             if (num > 0) {
                 if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     Tile tile = task.teleportLocation;
+
                     if (task == WORLD_BOSS) {
                         if (WorldBossEvent.getINSTANCE().getActiveNpc().isPresent() && WorldBossEvent.currentSpawnPos != null) {
                             tile = WorldBossEvent.currentSpawnPos;
@@ -286,7 +288,22 @@ public enum SlayerCreature {
                             player.message("The world boss recently died and will respawn shortly.");
                         }
                     }
-                    Teleports.basicTeleport(player, tile);
+
+                    if(WildernessArea.inWilderness(tile)) {
+                        Tile finalTile = tile;
+                        player.optionsTitled("Dangerous teleport! Would you like to proceed?", "Yes.", "No.", () -> {
+                            if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                Teleports.basicTeleport(player, finalTile);
+                                player.message("You have teleported to your slayer task.");
+                            }
+                        });
+                        return;
+                    }
+
+                    if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                        Teleports.basicTeleport(player, tile);
+                    }
+
                     player.message("You have teleported to your slayer task.");
                 }
             } else {
