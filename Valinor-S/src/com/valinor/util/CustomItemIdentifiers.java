@@ -185,10 +185,6 @@ public class CustomItemIdentifiers {
     public static final int BABY_ARAGOG = 16172;
     public static final int WAMPA_PET = 16171;
     public static final int DHAROK_PET = 16020;
-    public static final int TWISTED_SLAYER_HELMET_I_KBD_HEADS = 24445;
-    public static final int TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE = 25913;
-    public static final int TWISTED_SLAYER_HELMET_I_VAMP_DUST = 25907;
-    public static final int TWISTED_SLAYER_HELMET_I_JAD = 25902;
     public static final int MYSTERY_CHEST = 14525;
     public static final int IMBUEMENT_SCROLL = 20238;
     public static final int BIG_CHEST = 14524;
