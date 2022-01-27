@@ -245,7 +245,7 @@ public class KourendCatacombs extends Interaction {
     public static void drop(Player pKiller, Npc npc, Tile tile) {
         if (!npc.tile().inArea(CATACOMBS_BOUNDS))
             return;
-        if (rollTotemDrop(npc)) {
+        if (rollTotemDrop()) {
             int nextPiece = getNextTotemPiece(pKiller);
             if (nextPiece > 0) {
                 GroundItem item = new GroundItem(new Item(nextPiece,1), tile, pKiller);
@@ -258,14 +258,12 @@ public class KourendCatacombs extends Interaction {
         }
     }
 
-    private static boolean rollTotemDrop(Npc npc) {
-        double chance = 1d / (200 - Math.min(200, npc.maxHp()));
-        return World.getWorld().get() <= chance;
+    private static boolean rollTotemDrop() {
+        return World.getWorld().rollDie(50,1);
     }
 
     private static boolean rollShardDrop(Npc npc) {
-        double chance = 1d / (2d/3 * (200 - Math.min(200, npc.maxHp())));
-        return World.getWorld().get() <= chance;
+        return World.getWorld().rollDie(50,1);
     }
 
     public static void buriedBone(Player player, Bone bone) {
