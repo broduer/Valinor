@@ -55,7 +55,7 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
 
         final int count = connections.get(host);
         if (count > GameServer.properties().connectionLimit) {
-            //logger.trace("Maximum number of connections reached for: " + host+" : "+count);
+            logger.trace("Maximum number of connections reached for: " + host+" : "+count);
             LoginDecoder.sendCodeAndClose(ctx, LoginResponses.LOGIN_CONNECTION_LIMIT);
             return;
         }
@@ -63,7 +63,7 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
         longs.removeIf(time -> System.currentTimeMillis() - time >= timeLimitForMaxConnections);
         final int count2 = longs.size();
         if (count2 >= maximumShortTermOpenChannels) { // someone is spamming logins
-            //logger.trace("Maximum number of connections in {} ms timespan reached for: {}: {}", timeLimitForMaxConnections, host, count2);
+            logger.trace("Maximum number of connections in {} ms timespan reached for: {}: {}", timeLimitForMaxConnections, host, count2);
             LoginDecoder.sendCodeAndClose(ctx, LoginResponses.LOGIN_CONNECTION_LIMIT);
             return;
         }

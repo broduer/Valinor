@@ -42,7 +42,7 @@ public final class LoginResponses {
         String finalHost = host;
         long altCount = World.getWorld().getPlayers().stream().filter(p -> p != null && !p.getPlayerRights().isAdminOrGreater(p) && !p.<Boolean>getAttribOr(IS_BOT,false) && finalHost.equals(p.getHostAddress())).count();
         if (altCount >= GameServer.properties().maxAlts) {
-            //logger.trace("Maximum number of alts reached for: " +host+" : "+altCount);
+            logger.trace("Maximum number of alts reached for: " +host+" : "+altCount);
             return LOGIN_CONNECTION_LIMIT;
         }
         if (World.getWorld().ls.ONLINE.contains(player.getMobName().toUpperCase()) || World.getWorld().getPlayerByName(player.getUsername()).isPresent()) {

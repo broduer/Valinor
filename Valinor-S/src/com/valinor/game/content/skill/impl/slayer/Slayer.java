@@ -1,11 +1,13 @@
 package com.valinor.game.content.skill.impl.slayer;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.slayer.master.SlayerMaster;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.content.skill.impl.slayer.superior_slayer.SuperiorSlayer;
 import com.valinor.game.content.tasks.BottleTasks;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -234,6 +236,10 @@ public class Slayer {
 
                             if (bonusPoints) {
                                 ptsget += 15;
+                            }
+
+                            if(World.getWorld().slayerRewardPointsMultiplier > 1 || GameServer.properties().doubleSlayerRewardPointsEvent) {
+                                ptsget *= 2;
                             }
 
                             if (ptsget > 0) {

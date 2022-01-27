@@ -87,7 +87,7 @@ public class LoginService implements Service {
             boolean b = PlayerSave.save(request);
             FarmingSaving.save(request);
             saveIronmanGroups();
-            //logger.trace("save to disk complete for {} : {}", b, request);
+            logger.trace("save to disk complete for {} : {}", b, request);
             return b;
         } catch (Throwable t) {
             // If we don't catch any possible errors, thread could die silently.

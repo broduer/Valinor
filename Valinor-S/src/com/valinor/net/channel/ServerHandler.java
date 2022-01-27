@@ -48,10 +48,10 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
             return;
         }
         if (player.getUsername() == null || player.getUsername().length() == 0) {
-            //logger.error("channelInactive wtf: "+player);
+            logger.error("channelInactive wtf: "+player);
             return;
         }
-        //logger.trace("channelInactive for Player {} state:{}", player, player.getSession().getState());
+        logger.trace("channelInactive for Player {} state:{}", player, player.getSession().getState());
         if (session.getState() != SessionState.LOGGED_IN) {
             // during login the connection is dropped and sent again a couple times (handshake > update > rsa > login)
             return;

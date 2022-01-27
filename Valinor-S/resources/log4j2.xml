@@ -28,11 +28,11 @@
         </logger>
         <logger name="com.valinor.game.LoginService" level="WARN" additivity="false">
         </logger>
-        <logger name="com.valinor.game.LoginService" level="ERROR" additivity="false">
+        <logger name="com.valinor.game.LoginService" level="TRACE" additivity="false">
         </logger>
         <logger name="com.valinor.game.LogoutService" level="ERROR" additivity="false">
         </logger>
-        <logger name="io.netty" level="ERROR" additivity="false">
+        <logger name="io.netty" level="TRACE" additivity="false">
         </logger>
     </Loggers>
 </Configuration>

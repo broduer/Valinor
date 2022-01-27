@@ -181,6 +181,10 @@ public class Player extends Mob {
         if (tile().inArea(Tile.EDGEVILE_WILDY)) {
             pkPoints *= 2;
         }
+
+        if(World.getWorld().pkpMultiplier > 1 || GameServer.properties().doublePKPEvent) {
+            pkPoints *= 2;
+        }
         return pkPoints;
     }
 

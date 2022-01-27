@@ -75,7 +75,7 @@ public class LoginWorker implements Runnable {
 
         int response = LoginResponses.evaluateAsync(player, request.message);
         if (response != LoginResponses.LOGIN_SUCCESSFUL)
-            //logger.trace("Login response code for " + player.getUsername() + " is " + response);
+            logger.trace("Login response code for " + player.getUsername() + " is " + response);
         if (response != LoginResponses.LOGIN_SUCCESSFUL) {
             // Load wasn't successful, disconnect with login response.
             sendCodeAndClose(player.getSession().getChannel(), response);
@@ -110,7 +110,7 @@ public class LoginWorker implements Runnable {
             ChannelFuture future = player.getSession().sendOkLogin(response);
             if (response != LoginResponses.LOGIN_SUCCESSFUL) {
                 sendCodeAndClose(player.getSession().getChannel(), response);
-                //logger.trace("Login response 2nd code for " + player.getUsername() + " is " + response);
+                logger.trace("Login response 2nd code for " + player.getUsername() + " is " + response);
                 // reply is sent either way above, no need here
                 return;
             }
