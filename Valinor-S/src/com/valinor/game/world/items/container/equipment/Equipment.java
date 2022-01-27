@@ -783,6 +783,19 @@ public final class Equipment extends ItemContainer {
         return item != null && item.getId() == itemId;
     }
 
+    /**
+     * Checks if the person you're attacking has a charged Serp helm. If so, theres a 1/6 chance you get venomed.
+     */
+    public static void checkTargetVenomGear(Mob attacker, Mob victim) {
+        // NOTE: Jagex has nerfed the helm and it no longer poisons Players
+        if (victim.isPlayer() && attacker.isNpc()) {
+            // There is a chance for venom to apply when it has charges. Charge deduction is done on a different time - the same one as Barrows, it decays when in combat @ 733 scales/hour
+            if (Equipment.venomHelm(victim) && World.getWorld().rollDie(6, 1)) {
+                attacker.venom(victim);
+            }
+        }
+    }
+
     public static boolean venomHelm(Mob mob) {
         Player player = (Player) mob;
         Item helm = player.getEquipment().get(EquipSlot.HEAD);

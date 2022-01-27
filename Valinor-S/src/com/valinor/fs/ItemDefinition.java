@@ -111,7 +111,7 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
-        List<Integer> customTradeable = Arrays.asList(NEITIZNOT_FACEGUARD, GRANITE_MAUL_24225, BERSERKER_RING_I, WARRIOR_RING_I, SEERS_RING_I, ARCHERS_RING_I, BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
+        List<Integer> customTradeable = Arrays.asList(CRYSTAL_HELM, CRYSTAL_BODY, CRYSTAL_LEGS, BLADE_OF_SAELDOR, BOW_OF_FAERDHINEN, NEITIZNOT_FACEGUARD, GRANITE_MAUL_24225, BERSERKER_RING_I, WARRIOR_RING_I, SEERS_RING_I, ARCHERS_RING_I, BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
         if (customTradeable.stream().anyMatch(item -> item == id)) {
             grandexchange = true;
         }
@@ -123,8 +123,10 @@ public class ItemDefinition implements Definition {
             name = "Slayer teleport scroll";
             grandexchange = true;
             stackable = true;
-        } else if (id == ABYSSAL_WHIP) {
+        } else if (id == BRIMSTONE_RING) {
             cost = 300_000;
+        } else if (id == ABYSSAL_WHIP) {
+            cost = 320_000;
         } else if (id == TOXIC_BLOWPIPE || id == SERPENTINE_HELM || id == TRIDENT_OF_THE_SWAMP || id == TOXIC_STAFF_OF_THE_DEAD) {
             cost = 500_000;
         } else if (id == DRAGON_PLATESKIRT || id == DRAGON_PLATELEGS) {

@@ -14,9 +14,12 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.game.world.route.StepType;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.util.ItemIdentifiers.INSULATED_BOOTS;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -58,28 +61,26 @@ public class RuneDragon extends CommonCombatMethod {
     private void sparkAttack(Npc npc, Mob target) {
         npc.animate(81);
         for (int i = 0; i < 2; i++) {
-            Tile pos = target.tile().relative(Utils.get(-1, 1), Utils.get(-1, 1));
+            Tile pos = target.tile().relative(World.getWorld().get(-1, 1), World.getWorld().get(-1, 1));
+            new Projectile(npc.tile(), pos, 0, 1488, 160, 40,10, 0, 0, 16, 192).sendProjectile();
             Npc spark = new Npc(8032, pos);
-
-            //When projectile hits ground sparks start following player
-            Chain.bound(null).runFn(5, () -> {
+            Chain.bound(null).runFn(1, () -> {
+                spark.spawn(false);
+            }).then(2, () -> {
                 for (int j = 0; j < 5; j++) {
-                    World.getWorld().registerNpc(spark);
-                    spark.getMovementQueue().follow(target);
-
+                    if (target == null)
+                        break;
+                    spark.step(World.getWorld().get(-1, 1), World.getWorld().get(-1, 1), StepType.FORCE_WALK);
                     if (target.tile().isWithinDistance(spark.tile(), 1)) {
                         int maxDamage = 8;
-                        if (target.getAsPlayer().getEquipment().contains(ItemIdentifiers.INSULATED_BOOTS))
+                        if (target.getAsPlayer() != null && target.getAsPlayer().getEquipment().contains(INSULATED_BOOTS))
                             maxDamage = 2;
                         target.hit(mob, maxDamage);
                     }
+                    //event.delay(1);
                 }
-            }).then(5, () -> {
-                World.getWorld().unregisterNpc(spark);
-                this.sparkAttack = false;
+                spark.remove();
             });
-
-            new Projectile(npc.tile(), pos, 0, 1488, 160, 40,10, 0, 0, 16, 192).sendProjectile();
         }
     }
 

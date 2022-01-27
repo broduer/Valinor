@@ -1,5 +1,7 @@
 package com.valinor.game.world.entity.combat.method.impl;
 
+import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -12,6 +14,8 @@ import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.container.equipment.Equipment;
+
+import java.util.ArrayList;
 
 import static com.valinor.game.world.entity.combat.weapon.WeaponType.BOW;
 import static com.valinor.game.world.entity.combat.weapon.WeaponType.THROWN;
@@ -245,6 +249,53 @@ public class RangedCombatMethod extends CommonCombatMethod {
         }
     }
 
+    private void multi_target_chinchompas(Mob mob, Mob primary_target, int delay) {
+        var targets = new ArrayList<Mob>();
+        if (primary_target.isPlayer()) {
+            World.getWorld().getPlayers().forEachInArea(primary_target.tile().area(1), t -> {
+                if(mob.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 1) {
+                    targets.add(t);
+                }
+            });
+        } else {
+            World.getWorld().getNpcs().forEachInArea(primary_target.tile().area(1), t -> {
+                if(mob.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 1) {
+                    targets.add(t);
+                }
+            });
+        }
+
+        for (Mob targ : targets) {
+            if (targ == primary_target || targ == mob) {
+                //dont hit us, or the target we've already hit
+                continue;
+            }
+            if (targ.isNpc()) {
+                var n = targ.getAsNpc();
+
+                /*if (n.id() == InfernoContext.PILLAR_INVIS || n.id() == InfernoContext.PILLAR_VISIBLE) {
+                    continue;
+                }*/
+            }
+            if (!CombatFactory.canAttack(mob, targ)) { // Validate they're in an attackable location
+                continue;
+            }
+
+            final Hit hit = targ.hit(mob, CombatFactory.calcDamageFromType(mob, targ, CombatType.RANGED), delay, CombatType.RANGED);
+            hit.checkAccuracy().submit();
+
+            targ.delayedGraphics(new Graphic(157,100,0), 1);
+
+            targ.putAttrib(AttributeKey.LAST_DAMAGER, mob);
+            targ.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
+            mob.putAttrib(AttributeKey.LAST_TARGET, targ);
+            targ.graphic(-1);
+
+            Equipment.checkTargetVenomGear(mob, targ);
+        }
+        targets.clear();
+    }
+
     private boolean ballista(int weaponId) {
         return weaponId == 19478 || weaponId == 19481;
     }
@@ -297,6 +348,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
         if (chins) {
             hit.getTarget().performGraphic(new Graphic(157, 100, 0));
+            multi_target_chinchompas(hit.getAttacker(), hit.getTarget(), hit.getDelay());
         }
     }
 }

@@ -7,6 +7,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -101,6 +102,8 @@ public enum Impling {
                     } else {
                         player.inventory().remove(new Item(IMPLING_JAR));
                         Item jar = new Item(impling.jarId);
+                        if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                            jar.setAmount(jar.getAmount() * 2);
                         player.inventory().add(jar);
                     }
 

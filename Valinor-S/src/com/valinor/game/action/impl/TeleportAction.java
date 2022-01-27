@@ -9,8 +9,11 @@ import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
+import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.ItemIdentifiers;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -117,6 +120,17 @@ public class TeleportAction extends Action<Mob> {
 
             if(tile == null) {
                 player.message("Something went wrong, couldn't find tile to teleport too.");
+                return;
+            }
+
+
+            Tile finalTile = tile;
+            if(WildernessArea.inWilderness(finalTile)) {
+                player.optionsTitled("Dangerous teleport! Would you like to proceed?", "Yes.", "No.", () -> {
+                    if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                        Teleports.basicTeleport(player, finalTile);
+                    }
+                });
                 return;
             }
 

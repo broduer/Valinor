@@ -1056,7 +1056,6 @@ public enum AttributeKey {
     GROUP_SPAWN_MAP,
 
     TOURNAMENT_COUNTDOWN("tourny_countdown_last", AttribType.INTEGER),
-    TUTORIAL("tutorial", AttribType.BOOLEAN),
     ARMOUR_PIERCING("armour_piercing", AttribType.BOOLEAN),
     TENTACLES_DISTURBED("tentacles_disturbed", AttribType.INTEGER),
 

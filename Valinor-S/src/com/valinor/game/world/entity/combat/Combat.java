@@ -168,7 +168,7 @@ public class Combat {
         if (mob.isNpc()) {
             return mob.getAsNpc().combatInfo() == null ? 0 : mob.getAsNpc().combatInfo().maxhit;
         }
-        if (mob.isPlayer() && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
+        if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
             return RangeMaxHit.maxHit(mob.getAsPlayer(), mob.getAsPlayer().getCombat().target, ignoreArrowRangeStr, false);
         }
         return RangeMaxHit.maxHit(mob.getAsPlayer(), mob.getAsPlayer().getCombat().target, ignoreArrowRangeStr, true);

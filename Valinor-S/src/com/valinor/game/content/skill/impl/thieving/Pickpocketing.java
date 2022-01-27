@@ -6,6 +6,7 @@ import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -82,6 +83,8 @@ public class Pickpocketing extends Interaction {
                     }
                     Item item = pickpocket.lootTable.rollItem();
                     if(ItemSet.wearingRogueOutfit(player))
+                        item.setAmount(item.getAmount() * 2);
+                    if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
                         item.setAmount(item.getAmount() * 2);
                     player.inventory().add(item);
                     player.skills().addXp(Skills.THIEVING, pickpocket.exp, true);

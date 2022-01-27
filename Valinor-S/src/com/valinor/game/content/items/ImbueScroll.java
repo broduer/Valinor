@@ -15,6 +15,13 @@ public class ImbueScroll extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == MAGIC_SHORTBOW || usedWith.getId() == MAGIC_SHORTBOW)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(MAGIC_SHORTBOW),true);
+            player.inventory().add(new Item(MAGIC_SHORTBOW_I),true);
+            return true;
+        }
+
         if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == ARCHERS_RING || usedWith.getId() == ARCHERS_RING)) {
             player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
             player.inventory().remove(new Item(ARCHERS_RING),true);

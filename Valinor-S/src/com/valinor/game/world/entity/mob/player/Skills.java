@@ -234,6 +234,8 @@ public class Skills {
             }
         }
 
+        var ringOfCharosA = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA);
+
         if(!combatxp && player.getEquipment().hasAt(EquipSlot.RING, EXPLORERS_RING_4)) {
             amt *= 1.25;
         }
@@ -242,12 +244,15 @@ public class Skills {
             amt *= 1.25;
         }
 
+        if(combatxp && ringOfCharosA) {
+            amt *= 2.0;
+        }
+
         if(player.tile().inArea(RESOURCE_AREA)) {
             amt *= 1.75;
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
-        var ringOfCharosA = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA);
 
         var doubleExp = geniePet || World.getWorld().xpMultiplier > 1 || double_exp_ticks;
 
@@ -255,7 +260,7 @@ public class Skills {
         amt *= doubleExp ? 2.0 : 1.0;
 
         if(ringOfCharosA && doubleExp) {
-            amt *= 1.25;
+            amt *= 2.25;
         } else {
             amt *= 2.0;
         }

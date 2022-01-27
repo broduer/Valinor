@@ -64,6 +64,9 @@ public class Tutorial extends Dialogue {
             player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
             player.unlock();
             player.looks().hide(false);
+            player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+            player.inventory().refresh();//Force an inventory refresh
+            player.message("You have been given some training equipment.");
         }
     }
 
@@ -77,6 +80,9 @@ public class Tutorial extends Dialogue {
             } else if (option == 2) {
                 player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
                 player.looks().hide(false);
+                player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+                player.inventory().refresh();//Force an inventory refresh
+                player.message("You have been given some training equipment.");
                 stop();
             }
         }

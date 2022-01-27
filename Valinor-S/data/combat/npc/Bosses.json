@@ -539,6 +539,43 @@
     }
   },
   {
+    // Ancient King black dragon (AKBD)
+    "ids": [
+      16006
+    ],
+    "maxhit": 25,
+    "attackspeed": 4,
+    "aggroradius": 16,
+    "slayerxp": 258,
+    "slayerlvl": 1,
+    "aggressive": true,
+    "boss": true,
+    "stats": {
+      "attack": 240,
+      "strength": 240,
+      "magic": 240,
+      "ranged": 1,
+      "defence": 240,
+      "hitpoints": 600
+    },
+    "bonuses": {
+      "stabdefence": 70,
+      "slashdefence": 90,
+      "crushdefence": 90,
+      "rangeddefence": 70,
+      "magicdefence": 80
+    },
+    "animations": {
+      "attack": 80,
+      "block": 89,
+      "death": 92
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.dragons.KingBlackDragon",
+      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+    }
+  },
+  {
     // Dagannoth rex
     "ids": [
       2267

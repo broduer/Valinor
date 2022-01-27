@@ -17,6 +17,7 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.incoming_packets.MovementPacketListener;
 
 import static com.valinor.util.ItemIdentifiers.MAGIC_SECATEURS;
+import static com.valinor.util.ItemIdentifiers.RING_OF_CHAROSA;
 
 /**
  * Handles the action to harvest the crops.
@@ -59,6 +60,8 @@ public class CropHarvestAction extends PlayerTask {
             player.animate(data.getPatchType().getYieldAnimation());
             player.face(tile);
             int amount = player.getEquipment().hasAt(EquipSlot.WEAPON, MAGIC_SECATEURS) ? 2 : 1;
+            if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                amount += 1;
             player.getInventory().add(new Item(state.getSeed().getProduct(), amount));
             player.skills().addXp(Skills.FARMING,state.getSeed().getExperience() * 5 * ItemSet.farmerSetBonus(player));
             AchievementsManager.activate(player, Achievements.FARMER,1);

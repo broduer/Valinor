@@ -10,6 +10,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -208,9 +209,12 @@ public final class Chinchompas extends Trap {
             case BLACK_CHINCHOMPA -> new Item(BLACK_CHINCHOMPA);
         };
 
-        if(data.get() == BoxTrapData.BLACK_CHINCHOMPA) {
+        if (data.get() == BoxTrapData.BLACK_CHINCHOMPA) {
             player.getTaskBottleManager().increase(BottleTasks.BLACK_CHINCHOMPAS);
         }
+
+        if (player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+            reward.setAmount(reward.getAmount() * 2);
 
         player.inventory().addOrDrop(reward);
         tryForPet(player, reward.equals(new Item(CHINCHOMPA_10033)) ? Pet.BABY_CHINCHOMPA_GREY : reward.equals(new Item(RED_CHINCHOMPA_10034)) ? Pet.BABY_CHINCHOMPA_RED : Pet.BABY_CHINCHOMPA_BLACK);
@@ -218,7 +222,7 @@ public final class Chinchompas extends Trap {
 
     private void tryForPet(Player player, Pet pet) {
         var chance = pet == Pet.BABY_CHINCHOMPA_GREY ? 2200 : pet == Pet.BABY_CHINCHOMPA_RED ? 1800 : 1200;
-        if (World.getWorld().rollDie((chance * (int)player.getMemberRights().petRateMultiplier()), 1)) {
+        if (World.getWorld().rollDie((chance * (int) player.getMemberRights().petRateMultiplier()), 1)) {
             if (!PetAI.hasUnlocked(player, pet)) {
                 // Unlock the varbit. Just do it, rather safe than sorry.
                 player.addUnlockedPet(pet.varbit);
@@ -237,7 +241,7 @@ public final class Chinchompas extends Trap {
                     }
                 }
 
-                World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has unlocked the pet: <col="+Color.HOTPINK.getColorValue()+">" + new Item(pet.item).name()+ "</col>.");
+                World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(pet.item).name() + "</col>.");
             } else {
                 player.message("You have a funny feeling like you would have been followed...");
             }

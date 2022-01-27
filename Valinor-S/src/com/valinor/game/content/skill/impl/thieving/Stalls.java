@@ -9,6 +9,7 @@ import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -25,6 +26,7 @@ import com.valinor.util.chainedwork.Chain;
 import static com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.RING_OF_CHAROSA;
 
 /**
  * @author Patrick van Elderen | April, 21, 2021, 11:44
@@ -292,6 +294,9 @@ public class Stalls extends Interaction {
             Item loot = stall.lootTable.rollItem();
             if(ItemSet.wearingRogueOutfit(player))
                 loot.setAmount(loot.getAmount() * 2);
+            if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                loot.setAmount(loot.getAmount() * 2);
+
             player.getInventory().add(loot);
 
             if (World.getWorld().rollDie(200, 1)) {

@@ -7,6 +7,7 @@ import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -200,9 +201,10 @@ public final class Birds extends Trap {
             throw new IllegalStateException("Invalid object id.");
         }
 
-        player.inventory().addOrDrop(new Item(BONES, 1));
-        player.inventory().addOrDrop(new Item(RAW_BIRD_MEAT, 1));
-        player.inventory().addOrDrop(new Item(data.get().reward, 1));
+        int amount = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) ? 2: 1;
+        player.inventory().addOrDrop(new Item(BONES, amount));
+        player.inventory().addOrDrop(new Item(RAW_BIRD_MEAT, amount));
+        player.inventory().addOrDrop(new Item(data.get().reward, amount));
     }
     
     @Override

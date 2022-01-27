@@ -52,6 +52,13 @@
       "tables": []
     },
     {
+      "name": "Empty",
+      "points": 2,
+      "items": [
+      ],
+      "tables": []
+    },
+    {
       "name": "Ammo",
       "points": 1,
       "items": [

@@ -264,6 +264,11 @@ public class ItemCombining extends Interaction {
             }
         }
 
+        if ((use.getId() == VORKATHS_HEAD || usedWith.getId() == VORKATHS_HEAD) && (use.getId() == AVAS_ACCUMULATOR || usedWith.getId() == AVAS_ACCUMULATOR)) {
+            combineAssembler(player);
+            return true;
+        }
+
         if ((use.getId() == VORKATHS_HEAD_21907 || usedWith.getId() == VORKATHS_HEAD_21907) && (use.getId() == AVAS_ACCUMULATOR || usedWith.getId() == AVAS_ACCUMULATOR)) {
             combineAssembler(player);
             return true;
@@ -379,11 +384,15 @@ public class ItemCombining extends Interaction {
             protected void select(int option) {
                 if (isPhase(0)) {
                     if (option == 1) {
-                        if (!player.inventory().containsAll(VORKATHS_HEAD_21907, AVAS_ACCUMULATOR)) {
+                        if (!player.inventory().containsAny(VORKATHS_HEAD_21907, VORKATHS_HEAD)) {
                             stop();
                             return;
                         }
-                        player.inventory().remove(VORKATHS_HEAD_21907);
+                        if (!player.inventory().contains(AVAS_ACCUMULATOR)) {
+                            stop();
+                            return;
+                        }
+                        player.inventory().remove(player.inventory().contains(VORKATHS_HEAD) ? VORKATHS_HEAD : VORKATHS_HEAD_21907);
                         player.inventory().remove(AVAS_ACCUMULATOR);
                         player.inventory().addOrBank(new Item(AVAS_ASSEMBLER));
                         player.message("You carefully attach the Vorkath's head to the device and create the assembler.");

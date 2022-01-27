@@ -394,17 +394,22 @@ public class RunePouch extends ItemContainer {
         }
     }
 
-    public void empty() {
+    public void empty(boolean runePouchI) {
         if(player.getRunePouch().isEmpty()) {
             player.message("There are no runes in your rune pouch.");
             return;
         }
-        for (int index = 0; index < player.getRunePouch().size(); index++) {
-            if (player.getRunePouch().get(index) == null)
-                continue;
-            player.inventory().addOrBank(player.getRunePouch().toArray());
-            player.getRunePouch().clear();
-            refresh();
+        int freeSlotsNeeded = runePouchI ? 4 : 3;
+        if(player.inventory().hasFreeSlots(freeSlotsNeeded)) {
+            for (int index = 0; index < player.getRunePouch().size(); index++) {
+                if (player.getRunePouch().get(index) == null)
+                    continue;
+                player.inventory().addOrBank(player.getRunePouch().toArray());
+                player.getRunePouch().clear();
+                refresh();
+            }
+        } else {
+            player.message("You need at least "+freeSlotsNeeded+" free inventory slots to empty your pouch.");
         }
     }
 }

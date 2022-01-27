@@ -90,6 +90,8 @@ public class ItemDrops {
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(dropped, tile, player));
                     }
+
+                    BOSSES.log(player, npc.id(), dropped);
                 } else {
                     Item item = tableItem.convert();
                     int itemId = tableItem.convert().getId();
@@ -106,6 +108,8 @@ public class ItemDrops {
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(item, tile, player));
                     }
+
+                    BOSSES.log(player, npc.id(), item);
                 }
             }
         });

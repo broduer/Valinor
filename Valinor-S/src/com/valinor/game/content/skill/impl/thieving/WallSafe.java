@@ -2,6 +2,7 @@ package com.valinor.game.content.skill.impl.thieving;
 
 import com.valinor.game.content.items.ItemSet;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -14,6 +15,7 @@ import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.RING_OF_CHAROSA;
 import static com.valinor.util.ObjectIdentifiers.WALL_SAFE;
 
 /**
@@ -75,6 +77,8 @@ public class WallSafe extends Interaction {
                     player.skills().addXp(Skills.THIEVING,70,true);
                     Item loot = getLoot(player);
                     if(ItemSet.wearingRogueOutfit(player))
+                        loot.setAmount(loot.getAmount() * 2);
+                    if(player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
                         loot.setAmount(loot.getAmount() * 2);
                     player.inventory().add(loot);
                     openSafe(wallSafe);

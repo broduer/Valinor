@@ -248,9 +248,6 @@ public class AccountSelection extends Interaction {
         }
         player.unlock();
         player.getInterfaceManager().close();
-        player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
-        player.inventory().refresh();//Force an inventory refresh
-        player.message("You have been given some training equipment.");
         player.putAttrib(AttributeKey.CONTINUE_STARTER_TUTORIAL, true);
         if (player.getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
             player.getDialogueManager().start(new Tutorial());

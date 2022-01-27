@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
 import com.valinor.game.world.entity.mob.npc.pets.PetAI;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
@@ -170,8 +171,13 @@ public class RuneConversion extends Interaction {
                         player.getTaskBottleManager().increase(BottleTasks.CRAFT_DEATH_RUNES, finalAmount);
                     }
 
-                    player.inventory().add(new Item(altar.rune, finalAmount * multi), true);
-                    player.skills().addXp(Skills.RUNECRAFTING, altar.xp * finalAmount);
+                    int runeAmount = finalAmount * multi;
+
+                    if (player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA))
+                        runeAmount *= 2;
+
+                    player.inventory().add(new Item(altar.rune, runeAmount), true);
+                    player.skills().addXp(Skills.RUNECRAFTING, runeAmount);
                     player.putAttrib(AttributeKey.RUNECRAFTING, false);
                     AchievementsManager.activate(player, RUNE_MYSTERIES,finalAmount * multi);
 

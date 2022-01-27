@@ -5,6 +5,7 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.EquipSlot;

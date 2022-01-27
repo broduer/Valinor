@@ -49,7 +49,8 @@ public class ItemActionTwo {
         }
 
         switch (id) {
-            case RUNE_POUCH, RUNE_POUCH_I -> player.getRunePouch().empty();
+            case RUNE_POUCH -> player.getRunePouch().empty(false);
+            case RUNE_POUCH_I -> player.getRunePouch().empty(true);
             case LOOTING_BAG, LOOTING_BAG_22586 -> player.getLootingBag().setSettings();
         }
     }

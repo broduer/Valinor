@@ -1081,7 +1081,7 @@ public abstract class Mob extends Entity {
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage, int delay, CombatType combatType, SplatType type) {
-        hit(attacker, damage, delay, combatType).setSplatType(type).submit();
+        hit(attacker, damage, delay, combatType).setIsReflected().setSplatType(type).submit();
     }
 
     /**

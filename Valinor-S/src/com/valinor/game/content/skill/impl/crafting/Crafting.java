@@ -114,7 +114,7 @@ public class Crafting extends Interaction {
             Glass.craft(player, Glass.GlassData.MOLTEN_GLASS, 28);
             return true;
         }
-        if(obj.definition() != null && obj.definition().name != null && obj.definition().name.equalsIgnoreCase("Furnace") && (item.getId() == ZENYTE || item.getId() == ONYX || item.getId() == DRAGONSTONE_6903 || item.getId() == DIAMOND || item.getId() == RUBY || item.getId() == EMERALD || item.getId() == SAPPHIRE)) {
+        if(obj.definition() != null && obj.definition().name != null && obj.definition().name.equalsIgnoreCase("Furnace") && (item.getId() == ZENYTE || item.getId() == ONYX || item.getId() == DRAGONSTONE || item.getId() == DIAMOND || item.getId() == RUBY || item.getId() == EMERALD || item.getId() == SAPPHIRE)) {
             Jewellery.open(player);
             return true;
         }

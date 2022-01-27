@@ -293,6 +293,7 @@ public class Barrows extends Interaction {
             var item = new Item(lootItemIds.get(idx), rand.nextInt(lootItemAmts.get(idx)) * multiplier);
 
             player.inventory().addOrDrop(item);
+            BOSSES.log(player, BARROWS_KEY, item);
 
             totalLoot.add(item, true);
 

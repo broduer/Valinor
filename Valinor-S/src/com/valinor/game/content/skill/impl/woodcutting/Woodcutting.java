@@ -285,7 +285,8 @@ public class Woodcutting extends Interaction {
                             player.skills().addXp(Skills.FIREMAKING, (log.xp * ItemSet.pyromancerOutfitBonus(player)) / 2);
                         }
                     } else {
-                        player.inventory().add(new Item(tree.logs));
+                        int amount = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA) ? 2 : 1;
+                        player.inventory().add(new Item(tree.logs, amount));
                     }
                 }
                 if (player.inventory().isFull()) {

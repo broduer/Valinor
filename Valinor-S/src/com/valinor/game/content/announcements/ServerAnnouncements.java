@@ -284,6 +284,8 @@ public class ServerAnnouncements {
         CRYSTAL_LEGS,
         CORRUPTED_RANGER_GAUNTLETS,
         CORRUPTING_STONE,
+        BLADE_OF_SAELDOR,
+        BOW_OF_FAERDHINEN,
 
         //Nex
         ANCIENT_HILT,

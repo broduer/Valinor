@@ -594,6 +594,20 @@ public class CombatFactory {
             return false;
         }
 
+        if(entity.isPlayer() && other.isNpc()) {
+            Player player = entity.getAsPlayer();
+            if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+                return false;
+            }
+        }
+
+        if(entity.isNpc() && other.isPlayer()) {
+            Player player = other.getAsPlayer();
+            if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+                return false;
+            }
+        }
+
         if (entity.getIndex() == -1 || other.getIndex() == -1) { // Target logged off.
             Debugs.CMB.debug(entity, "attacker or target logged off", other, true);
             return false;

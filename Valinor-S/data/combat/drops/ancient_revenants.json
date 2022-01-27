@@ -19,6 +19,8 @@
         { "id": 22545, "min": 1, "max": 1, "points": 2 }, //Viggora's chainmace
         { "id": 22550, "min": 1, "max": 1, "points": 2 }, //Craw's bow
         { "id": 22555, "min": 1, "max": 1, "points": 2 }, //Thammaron's sceptre
+        { "id": 22634, "min": 1, "max": 10, "points": 10 },   //Morrigan axe's
+        { "id": 22636, "min": 1, "max": 10, "points": 10 },   //Morrigan jav's
         { "id": 22647, "min": 1, "max": 1, "points": 1 }, //Zuriel's staff
         { "id": 22650, "min": 1, "max": 1, "points": 1 }, //Zuriel's hood
         { "id": 22653, "min": 1, "max": 1, "points": 1 }, //Zuriel's robe top
@@ -40,7 +42,7 @@
     },
     {
       "name": "Empty",
-      "points": 55,
+      "points": 38,
       "items": [
       ]
     }
