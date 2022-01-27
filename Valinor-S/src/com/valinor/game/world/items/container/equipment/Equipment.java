@@ -166,11 +166,13 @@ public final class Equipment extends ItemContainer {
 
     public int hpIncrease() {
         int hpIncrease = 0;
-        if (hasAt(EquipSlot.HEAD, 26382)) {
+        if (hasAt(EquipSlot.HEAD, TORVA_FULL_HELM)) {
             hpIncrease += 6.6;
-        } else if (hasAt(EquipSlot.BODY, 26382)) {
+        }
+        if (hasAt(EquipSlot.BODY, TORAGS_PLATEBODY)) {
             hpIncrease += 20;
-        } else if (hasAt(EquipSlot.LEGS, 26382)) {
+        }
+        if (hasAt(EquipSlot.LEGS, TORVA_PLATELEGS)) {
             hpIncrease += 13.4;
         }
         return hpIncrease;
