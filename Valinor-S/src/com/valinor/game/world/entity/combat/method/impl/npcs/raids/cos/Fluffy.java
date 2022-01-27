@@ -1,6 +1,5 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.raids.cos;
 
-import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
@@ -8,7 +7,6 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.position.Area;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
@@ -18,69 +16,52 @@ import com.valinor.util.timers.TimerKey;
  */
 public class Fluffy extends CommonCombatMethod {
 
-    private void lighting(Player player) {
+    private void lighting(Mob mob) {
         mob.animate(4494);
-        Party party = player.raidsParty;
-        if(party == null) {
-            return;
-        }
-        for (Player member : party.getMembers()) {
-            if (member != null && member.getRaids() != null && member.getRaids().raiding(player) && member.tile().inArea(new Area(3138, 4558, 3144, 4564, member.raidsParty.getHeight()))) {
-                final var tile1 = member.tile().copy();
-                final var tile2 = member.tile().copy().transform(1, 0);
-                final var tile3 = member.tile().copy().transform(1, 1);
 
-                new Projectile(mob.getCentrePosition(), tile1, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
-                new Projectile(mob.getCentrePosition(), tile2, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
-                new Projectile(mob.getCentrePosition(), tile3, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
-                Chain.bound(null).runFn(5, () -> {
-                    World.getWorld().tileGraphic(83, tile1, 0, 0);
-                    World.getWorld().tileGraphic(83, tile2, 0, 0);
-                    World.getWorld().tileGraphic(83, tile3, 0, 0);
-                    if (member.tile().equals(tile1) || member.tile().equals(tile2) || member.tile().equals(tile3)) {
-                        member.hit(mob, World.getWorld().random(1, 23), CombatType.MAGIC).submit();
-                    }
-                });
-            }
+        for (Mob t : getPossibleTargets(mob, 20, true,false)) {
+            final var tile1 = t.tile().copy();
+            final var tile2 = t.tile().copy().transform(1, 0);
+            final var tile3 = t.tile().copy().transform(1, 1);
+
+            new Projectile(mob.getCentrePosition(), tile1, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
+            new Projectile(mob.getCentrePosition(), tile2, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
+            new Projectile(mob.getCentrePosition(), tile3, 1, 731, 125, 40, 25, 0, 0, 16, 96).sendProjectile();
+            Chain.bound(null).runFn(5, () -> {
+                World.getWorld().tileGraphic(83, tile1, 0, 0);
+                World.getWorld().tileGraphic(83, tile2, 0, 0);
+                World.getWorld().tileGraphic(83, tile3, 0, 0);
+                if (t.tile().equals(tile1) || t.tile().equals(tile2) || t.tile().equals(tile3)) {
+                    t.hit(mob, World.getWorld().random(1, 23), CombatType.MAGIC).submit();
+                }
+            });
         }
+
         mob.getTimers().register(TimerKey.COMBAT_ATTACK, 6);
     }
 
-    private void rangeAttack(Player player) {
+    private void rangeAttack(Mob mob) {
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
-        Party party = player.raidsParty;
-        if(party == null) {
-            return;
-        }
-        for (Player member : party.getMembers()) {
-            if (member != null && member.getRaids() != null && member.getRaids().raiding(player) && member.tile().inArea(new Area(3138, 4558, 3144, 4564, member.raidsParty.getHeight()))) {
-                var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
-                var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
+        for (Mob t : getPossibleTargets(mob, 20, true,false)) {
+            var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
+            var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
 
-                new Projectile(mob, member, 182, 25, 12 * tileDist, 65, 31, 0, 15, 220).sendProjectile();
-                member.hit(mob, CombatFactory.calcDamageFromType(mob, member, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
-                member.delayedGraphics(183, 50, delay);
-            }
+            new Projectile(mob, t, 182, 25, 12 * tileDist, 65, 31, 0, 15, 220).sendProjectile();
+            t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+            t.delayedGraphics(183, 50, delay);
         }
-
         mob.face(target.tile()); // Go back to facing the target.
     }
 
-    private void magicAttack(Player player) {
+    private void magicAttack(Mob mob) {
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
-        Party party = player.raidsParty;
-        if(party == null) {
-            return;
-        }
-        for (Player member : party.getMembers()) {
-            if (member != null && member.getRaids() != null && member.getRaids().raiding(player) && member.tile().inArea(new Area(3138, 4558, 3144, 4564, member.raidsParty.getHeight()))) {
-                var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
-                var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
-                new Projectile(mob, member, 1403, 25, 12 * tileDist, 65, 31, 0, 15, 220).sendProjectile();
-                member.hit(mob, CombatFactory.calcDamageFromType(mob, member, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-            }
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
+            var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
+            new Projectile(mob, t, 1403, 25, 12 * tileDist, 65, 31, 0, 15, 220).sendProjectile();
+            t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
         mob.face(target.tile()); // Go back to facing the target.
     }
@@ -131,6 +112,6 @@ public class Fluffy extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 6;
+        return 12;
     }
 }

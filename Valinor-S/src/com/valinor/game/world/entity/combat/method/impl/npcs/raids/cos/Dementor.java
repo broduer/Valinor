@@ -17,33 +17,33 @@ public class Dementor extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         if(CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
-            meleeAttack();//Melee attack ignores prayer
+            meleeAttack(mob, target);//Melee attack ignores prayer
         } else if(World.getWorld().rollDie(2,1)) {
-            magicAttack();
+            magicAttack(mob);
         } else if(World.getWorld().rollDie(10,1) && !target.dead()) {
-            stealGoodMemories();
+            stealGoodMemories(mob, target);
         }
     }
 
-    private void meleeAttack() {
+    private void meleeAttack(Mob mob, Mob target) {
         mob.animate(mob.attackAnimation());
         target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
     }
 
-    private void magicAttack() {
+    private void magicAttack(Mob mob) {
         //mob.forceChat("MAGIC ATTACK");
-        var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
-        var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
-        mob.graphic(194);
-        new Projectile(mob, target, 195, 20, 12 * tileDist, 35, 30, 0).sendProjectile();
-
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-
-        target.delayedGraphics(196,0, delay);
+        for (Mob t : getPossibleTargets(mob, 20, true,false)) {
+            var tileDist = mob.tile().transform(3, 3, 0).distance(t.tile());
+            var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
+            mob.graphic(194);
+            new Projectile(mob, t, 195, 20, 12 * tileDist, 35, 30, 0).sendProjectile();
+            t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
+            t.delayedGraphics(196, 0, delay);
+        }
         mob.animate(mob.attackAnimation());
     }
 
-    private void stealGoodMemories() {
+    private void stealGoodMemories(Mob mob, Mob target) {
         mob.forceChat("STEAL MEMORIES!");
         mob.animate(5543);
 

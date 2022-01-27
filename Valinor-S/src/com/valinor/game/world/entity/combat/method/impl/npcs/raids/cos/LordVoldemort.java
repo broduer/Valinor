@@ -14,7 +14,6 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
-import com.valinor.game.world.position.Area;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
@@ -30,35 +29,27 @@ public class LordVoldemort extends CommonCombatMethod {
     public void prepareAttack(Mob mob, Mob target) {
         var random = Utils.random(7);
         switch (random) {
-            case 0, 1 -> crucio(((Npc) mob), target);
-            case 2, 3 -> petrificusTotalus(((Npc) mob), target);
-            case 4 -> sectumsempra(((Npc) mob), target);
-            case 5 -> expelliarmus(((Npc) mob), target);
-            default -> avadaKedavra(((Npc) mob), target);
+            case 0, 1 -> crucio(((Npc) mob));
+            case 2, 3 -> petrificusTotalus(mob);
+            case 4 -> sectumsempra(((Npc) mob));
+            case 5 -> expelliarmus(((Npc) mob));
+            default -> avadaKedavra(((Npc) mob));
         }
     }
 
-    private void expelliarmus(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            //Expelliarmus has a max hit of 35
-            npc.combatInfo().maxhit = 35;
-            npc.animate(401);
-            npc.forceChat("Expelliarmus!");
+    private void expelliarmus(Npc npc) {
+        //Expelliarmus has a max hit of 35
+        npc.combatInfo().maxhit = 35;
+        npc.animate(401);
+        npc.forceChat("Expelliarmus!");
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(player) && p.tile().inArea(new Area(3143, 4652, 3160, 4665, p.raidsParty.getHeight()))) {
-                        new Projectile(npc, p, EXPELLIARMUS_PROJECTILE, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();
-                        var delay = mob.getProjectileHitDelay(target);
-                        Chain.bound(null).runFn(delay, () -> disarm(p));
-                        p.hit(npc, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                    }
-                }
-            }
-            mob.face(target.tile()); // Go back to facing the target.
+        npc.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            new Projectile(npc, t, EXPELLIARMUS_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
+            var delay = mob.getProjectileHitDelay(t);
+            Chain.bound(null).runFn(delay, () -> disarm(t.getAsPlayer()));
+            t.hit(npc, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
     }
 
@@ -76,93 +67,62 @@ public class LordVoldemort extends CommonCombatMethod {
         }
     }
 
-    private void petrificusTotalus(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            //petrificus totalus has a max hit of 32
-            npc.combatInfo().maxhit = 32;
-            npc.animate(401);
-            npc.forceChat("Petrificus Totalus!");
+    private void petrificusTotalus(Mob mob) {
+        //petrificus totalus has a max hit of 32
+        mob.getAsNpc().combatInfo().maxhit = 32;
+        mob.animate(401);
+        mob.forceChat("Petrificus Totalus!");
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(player) && p.tile().inArea(new Area(3143, 4652, 3160, 4665, p.raidsParty.getHeight()))) {
-                        new Projectile(npc, p, PETRIFICUS_TOTALUS_PROJECTILE, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();
-                        var delay = mob.getProjectileHitDelay(target);
-                        p.hit(npc, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                    }
-                }
-            }
-            mob.face(target.tile()); // Go back to facing the target.
+        mob.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            new Projectile(mob, t, PETRIFICUS_TOTALUS_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
+            var delay = mob.getProjectileHitDelay(t);
+            t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
     }
 
-    private void sectumsempra(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            //sectumsempra totalus has a max hit of 42
-            npc.combatInfo().maxhit = 42;
-            npc.animate(401);
-            npc.forceChat("Sectumsempra!");
+    private void sectumsempra(Npc npc) {
+        //sectumsempra totalus has a max hit of 42
+        npc.combatInfo().maxhit = 42;
+        npc.animate(401);
+        npc.forceChat("Sectumsempra!");
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(player) && p.tile().inArea(new Area(3143, 4652, 3160, 4665, p.raidsParty.getHeight()))) {
-                        new Projectile(npc, p, SECTUMSEMPRA_PROJECTILE, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();
-                        var delay = mob.getProjectileHitDelay(target);
-                        p.hit(npc, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                    }
-                }
-            }
-            mob.face(target.tile()); // Go back to facing the target.
+        npc.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            new Projectile(npc, t, SECTUMSEMPRA_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
+            var delay = mob.getProjectileHitDelay(t);
+            t.hit(npc, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
     }
 
-    private void crucio(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            //sectumsempra totalus has a max hit of 36
-            npc.combatInfo().maxhit = 36;
-            npc.animate(401);
-            npc.forceChat("Crucio!");
+    private void crucio(Npc npc) {
+        //sectumsempra totalus has a max hit of 36
+        npc.combatInfo().maxhit = 36;
+        npc.animate(401);
+        npc.forceChat("Crucio!");
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(player) && p.tile().inArea(new Area(3143, 4652, 3160, 4665, p.raidsParty.getHeight()))) {
-                        new Projectile(npc, p, CRUCIATUS_CURSE_PROJECTILE, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();
-                        var delay = mob.getProjectileHitDelay(target);
-                        p.hit(npc, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                    }
-                }
-            }
-            mob.face(target.tile()); // Go back to facing the target.
+        npc.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            new Projectile(npc, t, CRUCIATUS_CURSE_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
+            var delay = mob.getProjectileHitDelay(t);
+            t.hit(npc, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
     }
 
-    private void avadaKedavra(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            npc.animate(805);
-            npc.forceChat("Avada Kedavra!");
+    private void avadaKedavra(Npc npc) {
+        npc.animate(805);
+        npc.forceChat("Avada Kedavra!");
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(player) && p.tile().inArea(new Area(3143, 4652, 3160, 4665, p.raidsParty.getHeight()))) {
-                        new Projectile(npc, p, AVADA_KEDAVRA_PROJECTILE, 32, mob.projectileSpeed(target), 30, 30, 0).sendProjectile();
-                        var delay = mob.getProjectileHitDelay(target);
-                        p.hit(npc, Prayers.usingPrayer(p, Prayers.PROTECT_FROM_MAGIC) ? World.getWorld().random(1, 40) : World.getWorld().random(1, 80), delay);
-                    }
-                }
-            }
-            mob.face(target.tile()); // Go back to facing the target.
+        npc.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+
+        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+            new Projectile(npc, t, AVADA_KEDAVRA_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
+            var delay = mob.getProjectileHitDelay(t);
+            t.hit(npc, Prayers.usingPrayer(t, Prayers.PROTECT_FROM_MAGIC) ? World.getWorld().random(1, 40) : World.getWorld().random(1, 80), delay);
         }
     }
 
