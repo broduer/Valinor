@@ -340,8 +340,8 @@ public class ScalarLootTable {
         var master = Math.max(1, player.<Integer>getAttribOr(AttributeKey.SLAYER_MASTER, 0));
         if(master == Slayer.KONAR_QUO_MATEN_ID && isSlayerTask) {
             var combatLvl = npc.def().combatlevel;
-            var dropRate = combatLvl >= 100 ? 120 - (combatLvl / 5) : 100 + (100 - combatLvl) / 40;
-            if (World.getWorld().rollDie(dropRate, 1)) {
+            //var dropRate = combatLvl >= 100 ? 120 - (combatLvl / 5) : 100 + (100 - combatLvl) / 40;
+            if (World.getWorld().rollDie(50, 1)) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.BRIMSTONE_KEY), player.tile(), player));
                 Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a brimstone key drop.", "brimstone_key_drop");
             }
