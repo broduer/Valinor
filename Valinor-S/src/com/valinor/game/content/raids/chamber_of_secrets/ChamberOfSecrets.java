@@ -127,7 +127,7 @@ public class ChamberOfSecrets extends Raids {
             DailyTaskManager.increase(DailyTasks.RAIDING, p);
 
             //Roll a reward for each individual player
-            TheatreOfBloodRewards.giveRewards(p);
+            ChamberOfSecretsReward.giveRewards(p);
         });
     }
 
