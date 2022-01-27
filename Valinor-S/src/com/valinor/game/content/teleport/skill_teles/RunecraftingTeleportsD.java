@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
+import com.valinor.util.timers.TimerKey;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -21,6 +22,11 @@ public class RunecraftingTeleportsD extends Dialogue {
 
     @Override
     protected void select(int option) {
+        if(player.getTimers().has(TimerKey.CLICK_DELAY)) {
+            return;
+        }
+
+        player.getTimers().addOrSet(TimerKey.CLICK_DELAY, 2);
        if(isPhase(0)) {
            if(option == 1) {
                stop();
