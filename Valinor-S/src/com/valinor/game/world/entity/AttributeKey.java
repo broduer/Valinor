@@ -5,6 +5,9 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    CANNOT_ATTACK_OUT_OF_DIST,
+    FENRIR_SPECIAL_ACTIVE,
+
     // Last time we boosted our prayer
     PRAYERCAPE_BOOST,
 

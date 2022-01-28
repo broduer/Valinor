@@ -17,6 +17,7 @@ import com.valinor.util.timers.TimerKey;
 public class Fluffy extends CommonCombatMethod {
 
     private void lighting(Mob mob) {
+        //mob.forceChat("LIGHTNING");
         mob.animate(4494);
 
         for (Mob t : getPossibleTargets(mob, 20, true,false)) {
@@ -41,6 +42,7 @@ public class Fluffy extends CommonCombatMethod {
     }
 
     private void rangeAttack(Mob mob) {
+        //mob.forceChat("RANGE");
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         for (Mob t : getPossibleTargets(mob, 20, true,false)) {
@@ -55,6 +57,7 @@ public class Fluffy extends CommonCombatMethod {
     }
 
     private void magicAttack(Mob mob) {
+        //mob.forceChat("MAGIC");
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
         for (Mob t : getPossibleTargets(mob, 20, true, false)) {
@@ -66,7 +69,8 @@ public class Fluffy extends CommonCombatMethod {
         mob.face(target.tile()); // Go back to facing the target.
     }
 
-    private void meleeAttack() {
+    private void meleeAttack(Mob mob, Mob target) {
+        //mob.forceChat("MELEE");
         target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
         mob.animate(mob.attackAnimation());
     }
@@ -78,10 +82,8 @@ public class Fluffy extends CommonCombatMethod {
         if (!mob.isNpc() || !target.isPlayer())
             return;
 
-        Player player = (Player) target;
-
         if (World.getWorld().rollDie(20, 1)) { //5% chance the npc sends lightning
-            lighting(player);
+            lighting(mob);
             specialAttack = true;
         }
 
@@ -89,18 +91,18 @@ public class Fluffy extends CommonCombatMethod {
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
             int chance = World.getWorld().random(6);
             if (chance == 1) {
-                rangeAttack(player);
+                rangeAttack(mob);
             } else if (chance == 2) {
-                magicAttack(player);
+                magicAttack(mob);
             } else {
-                meleeAttack();
+                meleeAttack(mob, target);
             }
         } else {
             int chance = World.getWorld().random(3);
             if (chance == 1) {
-                rangeAttack(player);
+                rangeAttack(mob);
             } else {
-                magicAttack(player);
+                magicAttack(mob);
             }
         }
     }

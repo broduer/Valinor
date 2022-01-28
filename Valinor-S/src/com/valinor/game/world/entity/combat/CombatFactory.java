@@ -33,7 +33,6 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.zamorak.Kri
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.CaveKraken;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.DesertLizards;
-import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Gargoyle;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.EnormousTentacle;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
@@ -75,15 +74,15 @@ import java.lang.ref.WeakReference;
 import java.util.*;
 
 import static com.valinor.game.world.InterfaceConstants.BARROWS_REWARD_WIDGET;
-import static com.valinor.game.world.entity.AttributeKey.MAXHIT_OVERRIDE;
+import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.KRAKEN_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.TENTACLE_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomNpcIdentifiers.FENRIR_GREYBACK;
 import static com.valinor.util.CustomNpcIdentifiers.LORD_VOLDEMORT;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.GARGOYLE;
 
 /**
  * Acts as a utility class for combat.
@@ -560,6 +559,15 @@ public class CombatFactory {
                 CommonCombatMethod commonCombatMethod = (CommonCombatMethod) method;
                 commonCombatMethod.set(attacker, target);
                 if (attacker.isNpc() && !commonCombatMethod.inAttackRange()) {
+                    Npc npc = attacker.getAsNpc();
+                    if(npc.id() == FENRIR_GREYBACK) {
+                        var outOfDistanceCount = attacker.<Integer>getAttribOr(CANNOT_ATTACK_OUT_OF_DIST, 0) + 1;
+                        attacker.putAttrib(CANNOT_ATTACK_OUT_OF_DIST, outOfDistanceCount);
+                        if(outOfDistanceCount >= 10) {
+                            attacker.putAttrib(FENRIR_SPECIAL_ACTIVE, true);
+                            attacker.clearAttrib(CANNOT_ATTACK_OUT_OF_DIST);
+                        }
+                    }
                     return false;
                 }
             } else {
@@ -686,7 +694,7 @@ public class CombatFactory {
                     if (npc.id() == LORD_VOLDEMORT) {
                         boolean canDamageVoldy = player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS) || player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND);
                         if (!canDamageVoldy) {
-                            player.message(Color.RED.wrap("You can only damage Lord Voldemort with a elder wand."));
+                            player.message(Color.RED.wrap("You can only damage Lord Voldemort with a elder wand. You should loot some graves."));
                             return false;
                         }
                     }
@@ -701,7 +709,7 @@ public class CombatFactory {
                         entity.message(Color.RED.wrap("You can only fight this claw with magic."));
                         return false;
                     } else if (party.getGreatOlmNpc() != null && other.getAsNpc().id() == party.getGreatOlmNpc().id() && !range) {
-                        entity.message(Color.RED.wrap("You can only fight the Basilisk with range."));
+                        entity.message(Color.RED.wrap("You can only fight the Olm with range."));
                         return false;
                     }
                 }

@@ -27,7 +27,7 @@ public class Dementor extends CommonCombatMethod {
 
     private void meleeAttack(Mob mob, Mob target) {
         mob.animate(mob.attackAnimation());
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
+        target.hit(mob, World.getWorld().random(5, 15));
     }
 
     private void magicAttack(Mob mob) {
@@ -69,6 +69,6 @@ public class Dementor extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 8;
+        return 12;
     }
 }

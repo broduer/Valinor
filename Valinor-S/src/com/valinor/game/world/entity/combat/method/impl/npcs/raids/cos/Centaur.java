@@ -1,5 +1,8 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.raids.cos;
 
+import com.valinor.game.task.Task;
+import com.valinor.game.task.TaskManager;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
