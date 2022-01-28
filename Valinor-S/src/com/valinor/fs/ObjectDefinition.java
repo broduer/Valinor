@@ -342,6 +342,19 @@ public class ObjectDefinition implements Definition {
         return var0 + 1;
     }
 
+    public int getOption(String... searchOptions) {
+        if (options != null) {
+            for (String s : searchOptions) {
+                for (int i = 0; i < options.length; i++) {
+                    String option = options[i];
+                    if (s.equalsIgnoreCase(option))
+                        return i + 1;
+                }
+            }
+        }
+        return -1;
+    }
+
     public boolean isClippedDecoration() {
         return anInt2292 != 0 || clipType == 1 || aBool2264;
     }

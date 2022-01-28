@@ -15,9 +15,10 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.game.world.route.StepType;
-import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.valinor.util.ItemIdentifiers.INSULATED_BOOTS;
 
@@ -67,9 +68,18 @@ public class RuneDragon extends CommonCombatMethod {
             Chain.bound(null).runFn(1, () -> {
                 spark.spawn(false);
             }).then(2, () -> {
-                for (int j = 0; j < 5; j++) {
-                    if (target == null)
-                        break;
+                AtomicInteger cap = new AtomicInteger(5);
+                Chain.bound(null).repeatingTask(1, t -> {
+                    if (target == null) {
+                        t.stop();
+                        return;
+                    }
+                    if (cap.getAndDecrement() == 0) {
+                        spark.remove();
+                        // should eventually stop here
+                        t.stop();
+                        return;
+                    }
                     spark.step(World.getWorld().get(-1, 1), World.getWorld().get(-1, 1), StepType.FORCE_WALK);
                     if (target.tile().isWithinDistance(spark.tile(), 1)) {
                         int maxDamage = 8;
@@ -77,9 +87,7 @@ public class RuneDragon extends CommonCombatMethod {
                             maxDamage = 2;
                         target.hit(mob, maxDamage);
                     }
-                    //event.delay(1);
-                }
-                spark.remove();
+                });
             });
         }
     }
