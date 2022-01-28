@@ -7,6 +7,7 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -15,14 +16,8 @@ import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
-import com.valinor.util.timers.TimerKey;
 
 public class CorporealBeast extends CommonCombatMethod {
-
-    private final int splashing_magic_gfx = 315;
-    private final int splashing_magic_tile_gfx = 317;
-    private final int corporeal_beast_animation = 1680;
-    private final int splashing_magic_attack_damage = 30;
 
     public static final Area CORPOREAL_BEAST_AREA = new Area(2974, 4371, 2998, 4395);
 
@@ -66,32 +61,16 @@ public class CorporealBeast extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         checkStompTask(mob, target);
-        //Check if we're able to melee our opponent.. and if we are, roll a die to smack em in the mouth
-        if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target) && Utils.rollDie(3, 1)) {
-            //The Melee attack is only used when the player is standing in Melee distance and can hit up to 33.
-            //The Protect from Melee prayer will negate all damage from this attack.
-            mob.animate(1682);
-            mob.getAsNpc().combatInfo().maxhit = 33;
-            target.hit(mob, CombatFactory.calcDamageFromType(mob, target,CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
-            //Check if we attack the player using a stat draining magic attack
-        } else if (World.getWorld().rollDie(2, 1)) {
-            mob.animate(corporeal_beast_animation);
-            mob.getAsNpc().combatInfo().maxhit = 55;
-            int stat_draining_ranged_gfx = 314;
-            new Projectile(mob, target, stat_draining_ranged_gfx, 15, 45, 40, 25, 10).sendProjectile();
-            target.hit(mob, CombatFactory.calcDamageFromType(mob, target,CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
-            stat_draining_magic_attack(target);
-        } else if (World.getWorld().rollDie(2, 1)) {
-            mob.animate(corporeal_beast_animation);
-            mob.getAsNpc().combatInfo().maxhit = 65;
-            splashing_magic_attack(((Npc)mob), target);
-            mob.getTimers().register(TimerKey.COMBAT_ATTACK, 4);
+        if (World.getWorld().rollDie(10, 6)) {
+            if (withinDistance(1) && World.getWorld().rollDie(10, 6)) {
+                meleeAttack(mob, target);
+            } else {
+                fireBasic(mob, target);
+            }
+        } else if (World.getWorld().rollDie(3, 2)) {
+            firePowered(mob, target);
         } else {
-            mob.animate(corporeal_beast_animation);
-            mob.getAsNpc().combatInfo().maxhit = 65;
-            int high_damage_magic_gfx = 316;
-            new Projectile(mob, target, high_damage_magic_gfx, 15, 45, 40, 25, 10).sendProjectile();
-            target.hit(mob, CombatFactory.calcDamageFromType(mob, target,CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
+            fireSplit(mob, target);
         }
     }
 
@@ -102,7 +81,7 @@ public class CorporealBeast extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 14;
+        return 20;
     }
 
     private void stat_draining_magic_attack(Mob target) {
@@ -129,96 +108,66 @@ public class CorporealBeast extends CommonCombatMethod {
         }
     }
 
-    private void splashing_magic_attack(Npc npc, Mob target) {
-        int x = target.tile().x; //The target's x tile
-        int z = target.tile().y; //The target's z tile
-
-        int random_one = Utils.random(1);
-        int random_two = Utils.random(2);
-
-        //Handle the initial spell
-        Tile initial_splash = new Tile(x, z, target.tile().level);
-        int initial_splash_distance = npc.tile().distance(initial_splash) / 2;
-        int initial_splash_delay = Math.max(1, (20 + initial_splash_distance * 12) / 30);
-
-        //Send the projectile from the NPC -> players tile
-        new Projectile(npc.tile().transform(2, 2, 0), initial_splash, 0, splashing_magic_gfx, 28 * initial_splash_distance, initial_splash_delay, 40, 0, 10).sendProjectile();
-
-        //Send the tile graphic
-        target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, initial_splash, 1, 28 * initial_splash_distance);
-
-        //Animate the NPC
-        npc.animate(corporeal_beast_animation, initial_splash_delay);
-
-        //Create a delay before checking if the player is on the initial tile
-        Chain.bound(null).name("initial_splash_distance_1_task").runFn(initial_splash_distance, () -> {
-            //Check to see if the player's on the initial tile
-            if (target.tile().inSqRadius(initial_splash,1) && target.tile().inArea(2974, 4371, 2998, 4395)) {
-                target.hit(npc, Utils.random(splashing_magic_attack_damage));
-            }
-        });
-
-        //Handle the first splash
-        Tile splash_one = new Tile(initial_splash.x + 2 + random_one, initial_splash.y + 2 + random_one);
-        int splash_one_distance = initial_splash.distance(splash_one);
-        int splash_one_delay = Math.max(1, (20 + splash_one_distance * 12) / 30);
-
-        //Handle the second splash
-        Tile splash_two = new Tile(initial_splash.x, initial_splash.y + 2 + random_one);
-        int splash_two_distance = initial_splash.distance(splash_two);
-
-        //Handle the third splash
-        Tile splash_three = new Tile(initial_splash.x + 2 + random_one, initial_splash.y + random_two);
-        int splash_three_distance = initial_splash.distance(splash_three);
-
-        //Handle the fourth splash
-        Tile splash_four = new Tile(initial_splash.x + 2 + random_one, initial_splash.y - 2 + random_one);
-        int splash_four_distance = initial_splash.distance(splash_four);
-
-        //Handle the fifth splash
-        Tile splash_five = new Tile(initial_splash.x - 2 + random_one, initial_splash.y + 2 + random_two);
-        int splash_five_distance = initial_splash.distance(splash_five);
-
-        //Handle the sixth splash
-        Tile splash_six = new Tile(initial_splash.x - 2 + random_two, initial_splash.y - 2 + random_two);
-        int splash_six_distance = initial_splash.distance(splash_six);
-
-        //Create a delay before sending the splash projectiles
-        Chain.bound(null).name("initial_splash_distance_2_task").runFn(initial_splash_distance, () -> {
-            Player[] close = target.closePlayers(64);
-
-            //Send the projectiles
-            for (Player player : close) {
-                new Projectile(initial_splash, splash_one, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-                new Projectile(initial_splash, splash_two, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-                new Projectile(initial_splash, splash_three, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-                new Projectile(initial_splash, splash_four, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-                new Projectile(initial_splash, splash_five, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-                new Projectile(initial_splash, splash_six, 0, splashing_magic_gfx, 28 * initial_splash_distance, splash_one_delay, 0, 0, 10).sendFor(player);
-            }
-
-            //Send the tile graphic
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_one, 1, 28 * splash_one_distance);
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_two, 1, 28 * splash_two_distance);
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_three, 1, 28 * splash_three_distance);
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_four, 1, 28 * splash_four_distance);
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_five, 1, 28 * splash_five_distance);
-            target.getAsPlayer().getPacketSender().sendTileGraphic(splashing_magic_tile_gfx, splash_six, 1, 28 * splash_six_distance);
-
-            //If any player on the world is on the tile -> deal damage.
-            hitAfterDelay(splash_one, close);
-            hitAfterDelay(splash_two, close);
-            hitAfterDelay(splash_three, close);
-            hitAfterDelay(splash_four, close);
-            hitAfterDelay(splash_five, close);
-            hitAfterDelay(splash_six, close);
-        });
+    private void meleeAttack(Mob mob, Mob target) {
+        mob.animate(1682);
+        mob.getAsNpc().combatInfo().maxhit = 33;
+        target.hit(mob, CombatFactory.calcDamageFromType(mob, target,CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
     }
 
-    private void hitAfterDelay(Tile tile, Player[] opts) {
-        for (Player p : opts) {
-            if (p.tile().inSqRadius(tile, 1) && p.tile().inArea(2974, 4371, 2998, 4395))
-                p.hit(mob, Utils.random(30), 1);
+    private void fireBasic(Mob mob, Mob target) {
+        mob.animate(1680);
+        mob.getAsNpc().combatInfo().maxhit = 55;
+        Projectile  projectile = new Projectile(mob, target, 314, 15, 66, 65, 31, 0);
+        projectile.sendProjectile();
+        target.hit(mob, CombatFactory.calcDamageFromType(mob, target,CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
+        stat_draining_magic_attack(target);
+    }
+
+    private void firePowered(Mob mob, Mob target) {
+        mob.animate(1681);
+        Projectile  projectile = new Projectile(mob, target, 316, 15, 66, 65, 31, 0);
+        projectile.sendProjectile();
+
+        if (Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MAGIC)) {
+            target.hit(mob, World.getWorld().random(10, 35), 2);
+        } else {
+            mob.getAsNpc().combatInfo().maxhit = 65;
+            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
         }
+    }
+
+    private void fireSplit(Mob mob, Mob target) {
+        mob.animate(1681);
+        Projectile  projectile = new Projectile(mob.getCentrePosition(), target.tile(), 1,315, 66, 15, 65, 31, 0);
+        projectile.sendProjectile();
+
+        mob.getAsNpc().combatInfo().maxhit = 42;
+        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
+
+        final Mob t = target;
+        Tile[] targets = new Tile[5];
+        Chain.bound(null).runFn(2, () -> {
+            Tile src = t.tile();
+            for (int i = 0; i < targets.length; i++) {
+                targets[i] = new Tile(src.getX() + World.getWorld().get(-2, 2), src.getY() + World.getWorld().get(-2, 2), src.getZ());
+                Projectile split = new Projectile(mob.getCentrePosition(), target.tile(), 1,315, 60, 0, 0, 0, 0);
+                split.sendProjectile();
+            }
+        }).then(2, () -> {
+            for (Tile tileGraphic : targets) {
+                World.getWorld().tileGraphic(317, tileGraphic, 0, 0);
+            }
+
+            World.getWorld().getPlayers().forEachInArea(CORPOREAL_BEAST_AREA, player -> {
+                if (!CombatFactory.canAttack(mob, player)) {
+                    return;
+                }
+                for (Tile tile : targets) {
+                    if (player.isAt(tile.getX(), tile.getY())) {
+                        target.hit(mob, World.getWorld().random(15, 35));
+                    }
+                }
+            });
+        });
     }
 }

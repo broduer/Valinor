@@ -26,6 +26,7 @@ import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_K
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
+import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
 import static com.valinor.game.world.entity.mob.npc.NpcDeath.notification;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -36,7 +37,6 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class ItemDrops {
 
-    private static final Area CORPOREAL_BEAST_AREA = new Area(2944, 4352, 3007, 4415);
     private static final List<Integer> BONES = Arrays.asList(ItemIdentifiers.BONES, BURNT_BONES, BAT_BONES, BIG_BONES, BABYDRAGON_BONES, DRAGON_BONES, JOGRE_BONES, ZOGRE_BONES, OURG_BONES, WYVERN_BONES, DAGANNOTH_BONES, LONG_BONE, CURVED_BONE, LAVA_DRAGON_BONES, SUPERIOR_DRAGON_BONES, WYRM_BONES, DRAKE_BONES, HYDRA_BONES);
 
     public static void dropAlwaysItems(Player player, Npc npc) {
