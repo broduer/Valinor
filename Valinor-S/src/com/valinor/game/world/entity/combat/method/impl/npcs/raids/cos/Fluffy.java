@@ -6,7 +6,6 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
-import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 

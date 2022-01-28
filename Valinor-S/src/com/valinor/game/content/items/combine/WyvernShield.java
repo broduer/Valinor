@@ -20,7 +20,7 @@ public class WyvernShield extends Interaction {
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
-        if (object.definition().name.equalsIgnoreCase("strange machine")) {
+        if (object.definition().name.equalsIgnoreCase("Strange Machine")) {
             if (item.getId() == WYVERN_VISAGE) {
                 player.faceObj(object);
                 if (player.skills().xpLevel(Skills.SMITHING) < 66) {

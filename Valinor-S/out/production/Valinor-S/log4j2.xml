@@ -16,6 +16,20 @@
                 <SizeBasedTriggeringPolicy size="10 MB" />
             </policies>
         </RollingRandomAccessFile >
+        <RollingRandomAccessFile  name="outfile" fileName="./data/logs/out.txt" immediateFlush="true" filePattern="./data/logs/out-%d{MM-dd-yyyy-HH-mm-ss}.txt">
+            <LevelRangeFilter minLevel="WARN" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{dd MMM yyyy, h:mm:ss a}] [%t] [%logger{1}] [%level] %msg%n"/>
+            <policies>
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </policies>
+        </RollingRandomAccessFile >
+        <RollingRandomAccessFile  name="tracefile" fileName="./data/logs/traces.txt" immediateFlush="true" filePattern="./data/logs/traces-%d{MM-dd-yyyy-HH-mm-ss}.txt">
+            <LevelRangeFilter minLevel="INFO" maxLevel="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{dd MMM yyyy, h:mm:ss a}] [%t] [%logger{1}] [%level] %msg%n"/>
+            <policies>
+                <SizeBasedTriggeringPolicy size="10 MB" />
+            </policies>
+        </RollingRandomAccessFile >
     </Appenders>
     <Loggers>
         <Root level="TRACE">
@@ -23,16 +37,17 @@
             <AppenderRef ref="errconsole"/>
             <AppenderRef ref="outfile"/>
             <AppenderRef ref="errfile"/>
+            <AppenderRef ref="tracefile"/>
         </Root>
-        <logger name="com.valinor.game.world.entity.mob.player.Player" level="ERROR" additivity="false">
+        <logger name="com.ferox.game.world.entity.mob.player.Player" level="ERROR" additivity="false">
         </logger>
-        <logger name="com.valinor.game.LoginService" level="WARN" additivity="false">
+        <logger name="com.ferox.game.LoginService" level="WARN" additivity="false">
         </logger>
-        <logger name="com.valinor.game.LoginService" level="TRACE" additivity="false">
+        <logger name="com.ferox.game.LoginService" level="ERROR" additivity="false">
         </logger>
-        <logger name="com.valinor.game.LogoutService" level="ERROR" additivity="false">
+        <logger name="com.ferox.game.LogoutService" level="ERROR" additivity="false">
         </logger>
-        <logger name="io.netty" level="TRACE" additivity="false">
+        <logger name="io.netty" level="ERROR" additivity="false">
         </logger>
     </Loggers>
 </Configuration>
