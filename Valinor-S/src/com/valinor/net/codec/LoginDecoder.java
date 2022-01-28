@@ -93,7 +93,7 @@ public final class LoginDecoder extends ByteToMessageDecoder {
 
         int request = buffer.readUnsignedByte();
         if (request != NetworkConstants.LOGIN_REQUEST_OPCODE) {
-            //logger.error("Session rejected for bad login request id: {} for IP: {}", box(request), ctx.channel().remoteAddress());
+            logger.error("Session rejected for bad login request id: {} for IP: {}", box(request), ctx.channel().remoteAddress());
             sendCodeAndClose(ctx, LoginResponses.LOGIN_BAD_SESSION_ID);
             return;
         }
@@ -116,7 +116,7 @@ public final class LoginDecoder extends ByteToMessageDecoder {
         int connectionType = buffer.readUnsignedByte();
         if (connectionType != NetworkConstants.NEW_CONNECTION_OPCODE
             && connectionType != NetworkConstants.RECONNECTION_OPCODE) {
-            //logger.error("Session rejected for bad connection type id: {}", box(connectionType));
+            logger.error("Session rejected for bad connection type id: {}", box(connectionType));
             sendCodeAndClose(ctx, LoginResponses.LOGIN_BAD_SESSION_ID);
             return;
         }
@@ -134,14 +134,14 @@ public final class LoginDecoder extends ByteToMessageDecoder {
         // obviously adjust the indentation below:
         int magicId = buffer.readUnsignedByte();
         if (magicId != 0xFF) {
-            //logger.error(String.format("[host= %s] [magic= %d] was rejected for the wrong magic value.", ctx.channel().remoteAddress(), magicId));
+            logger.error(String.format("[host= %s] [magic= %d] was rejected for the wrong magic value.", ctx.channel().remoteAddress(), magicId));
             sendCodeAndClose(ctx, LoginResponses.LOGIN_REJECT_SESSION);
             return;
         }
 
         int memory = buffer.readByte();
         if (memory != 0 && memory != 1) {
-            //logger.error("[host={}] was rejected for having the memory setting.", ctx.channel().remoteAddress());
+            logger.error("[host={}] was rejected for having the memory setting.", ctx.channel().remoteAddress());
             sendCodeAndClose(ctx, LoginResponses.LOGIN_REJECT_SESSION);
             return;
         }

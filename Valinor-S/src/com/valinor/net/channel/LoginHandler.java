@@ -85,7 +85,7 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         super.channelUnregistered(ctx);
-        //logger.info("channel closed on login screen");
+        logger.info("channel closed on login screen");
 
         PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();
 
@@ -111,10 +111,10 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
             if (throwable instanceof java.nio.channels.ClosedChannelException) return; // dc
 
             if (throwable instanceof ReadTimeoutException) {
-                //logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
+                logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
                 ctx.channel().close();
             } else {
-                //logger.error("An exception has been caused in the pipeline: ", throwable);
+                logger.error("An exception has been caused in the pipeline: ", throwable);
             }
         } catch (Exception e) {
             logger.error("Uncaught server exception!", e);

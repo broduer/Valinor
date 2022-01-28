@@ -32,7 +32,7 @@ public final class LoginResponses {
     private static final Logger logger = LogManager.getLogger(LoginResponses.class);
 
     public static int evaluateOnGamethread(Player player) {
-        //logger.info("evaluating final login.");
+        logger.info("evaluating final login.");
         // Done on game thread.
         String host = "";
         if(player.getSession().getChannel() != null) {
@@ -58,7 +58,7 @@ public final class LoginResponses {
      * @return
      */
     public static int evaluateAsync(Player player, LoginDetailsMessage msg) {
-        //logger.info("evaluating login.");
+        logger.info("evaluating login.");
         // Done on networking thread.
 
         if(GameServer.boundTime == 0) {// server not on yet
