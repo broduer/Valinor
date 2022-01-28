@@ -212,7 +212,7 @@ public class ShootingStars {
 
                 var random = World.getWorld().random(1, 3);
                 player.getInventory().add(STAR_CURRENCY, random);
-                player.skills().addXp(Skills.MINING, 30, true);
+                player.skills().addXp(Skills.MINING, 30 * Mining.xpBonus(player), true);
                 removeShards(random);
                 player.message("You mine " + random + " "+ World.getWorld().definitions().get(ItemDefinition.class, STAR_CURRENCY).name.toLowerCase()+".");
                 if(METEORITE_REMAINING > 500 && METEORITE_REMAINING <= 700) {

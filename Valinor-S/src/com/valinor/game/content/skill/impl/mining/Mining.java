@@ -333,7 +333,7 @@ public class Mining extends Interaction {
         });
     }
 
-    private static double xpBonus(Player player) {
+    public static double xpBonus(Player player) {
         double multiplier = 1;
         multiplier *= ItemSet.prospectorBonus(player);
         multiplier *= ItemSet.goldProspectorBonus(player);
