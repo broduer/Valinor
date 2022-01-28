@@ -177,7 +177,7 @@ public class RuneConversion extends Interaction {
                         runeAmount *= 2;
 
                     player.inventory().add(new Item(altar.rune, runeAmount), true);
-                    player.skills().addXp(Skills.RUNECRAFTING, runeAmount);
+                    player.skills().addXp(Skills.RUNECRAFTING, altar.xp * finalAmount);
                     player.putAttrib(AttributeKey.RUNECRAFTING, false);
                     AchievementsManager.activate(player, RUNE_MYSTERIES,finalAmount * multi);
 
