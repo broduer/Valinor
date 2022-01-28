@@ -9,9 +9,7 @@ import com.valinor.game.world.entity.combat.hit.SplatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.container.equipment.Equipment;
-import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.RouteDirection;
 import com.valinor.util.chainedwork.Chain;
@@ -30,48 +28,42 @@ public class Vespula extends CommonCombatMethod {
         if (mob.isNpc()) {
             Npc npc = mob.getAsNpc();
             if (npc.id() != VESPULA || !withinDistance(1) || World.getWorld().random(5) > 3)
-                rangeAttack(npc, target);
+                rangeAttack(npc);
             else
                 meleeAttack(npc, target);
         }
     }
 
-    private void rangeAttack(Npc npc, Mob target) {
-        if (target.isPlayer()) {
-            Player player = target.getAsPlayer();
-            npc.animate(mob.attackAnimation());
-            var tileDist = npc.tile().transform(1, 1, 0).distance(target.tile());
+    private void rangeAttack(Npc npc) {
+        npc.animate(mob.attackAnimation());
+
+        npc.resetFaceTile(); // Stop facing the target
+        //Target all raids party members
+        for (Mob t : getPossibleTargets(npc, 20, true, false)) {
+            var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());
             var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
 
-            npc.resetFaceTile(); // Stop facing the target
-            //Target all raids party members
-            if (player.raidsParty != null) {
-                for (Player p : player.raidsParty.getMembers()) {
-                    if (p != null && p.getRaids() != null && p.getRaids().raiding(p) && p.tile().inArea(new Area(3298, 5287, 3325, 5309, p.raidsParty.getHeight()))) {
-                        if (npc.id() == VESPULA) {
-                            new Projectile(npc, target, 1486, 20, 12 * tileDist, 70, 43, 0).sendProjectile();
-                        } else {
-                            new Projectile(npc, target, 1486, 20, 12 * tileDist, 40, 43, 0).sendProjectile();
-                        }
-                        target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
-
-                        //echo projectile
-                        RouteDirection echoDir = World.getWorld().random(RouteDirection.values());
-                        Tile echoTile = target.tile().copy().transform(echoDir.deltaX, echoDir.deltaY, target.tile().level);
-
-                        if (npc.id() == VESPULA)
-                            new Projectile(mob.tile().transform(1, 1, 0), echoTile, 1, 1486, 100, 30, 70, 0, 0).sendProjectile();
-                        else
-                            new Projectile(mob.tile().transform(1, 1, 0), echoTile, 1, 1486, 100, 30, 40, 0, 0).sendProjectile();
-
-                        Chain.bound(null).runFn(4, () -> {
-                            if (p.isAt(echoTile)) {
-                                target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
-                            }
-                        });
-                    }
-                }
+            if (npc.id() == VESPULA) {
+                new Projectile(npc, t, 1486, 20, 12 * tileDist, 70, 43, 0).sendProjectile();
+            } else {
+                new Projectile(npc, t, 1486, 20, 12 * tileDist, 40, 43, 0).sendProjectile();
             }
+            t.hit(npc, CombatFactory.calcDamageFromType(npc, t, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
+
+            //echo projectile
+            RouteDirection echoDir = World.getWorld().random(RouteDirection.values());
+            Tile echoTile = t.tile().copy().transform(echoDir.deltaX, echoDir.deltaY, t.tile().level);
+
+            if (npc.id() == VESPULA)
+                new Projectile(mob.tile().transform(1, 1, 0), echoTile, 1, 1486, 100, 30, 70, 0, 0).sendProjectile();
+            else
+                new Projectile(mob.tile().transform(1, 1, 0), echoTile, 1, 1486, 100, 30, 40, 0, 0).sendProjectile();
+
+            Chain.bound(null).runFn(4, () -> {
+                if (t.isAt(echoTile)) {
+                    target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
+                }
+            });
         }
     }
 
@@ -113,7 +105,7 @@ public class Vespula extends CommonCombatMethod {
     public void handleAfterHit(Hit hit) {
         Mob attacker = hit.getAttacker();
         Mob target = hit.getTarget();
-        if (World.getWorld().rollDie(5,1)) {
+        if (World.getWorld().rollDie(5, 1)) {
             if (!Equipment.venomHelm(target)) { // Serp helm stops poison.
                 target.hit(attacker, 20, SplatType.POISON_HITSPLAT);
             }

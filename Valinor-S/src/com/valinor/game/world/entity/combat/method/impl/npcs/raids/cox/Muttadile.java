@@ -10,7 +10,6 @@ import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
 
@@ -64,7 +63,7 @@ public class Muttadile extends CommonCombatMethod {
                     if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
                         meleeAttack(npc, target);
                     } else {
-                        rangeAttack(npc, target);
+                        rangeAttack(npc);
                     }
                     //Apart from having higher stats and using all three forms of combat, this larger muttadile will also perform a shockwave attack if anyone is within melee range,
                     // dealing massive damage to everyone in melee range, which can hit as high as 118.
@@ -76,9 +75,9 @@ public class Muttadile extends CommonCombatMethod {
                             meleeAttack(npc, target);
                         }
                     } else if (World.getWorld().rollDie(2, 1)) {
-                        rangeAttack(npc, target);
+                        rangeAttack(npc);
                     } else {
-                        magicAttack(npc, target);
+                        magicAttack(npc);
                     }
                 }
             }
@@ -91,43 +90,25 @@ public class Muttadile extends CommonCombatMethod {
         target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
     }
 
-    private void rangeAttack(Npc npc, Mob target) {
-        if(target.isPlayer()) {
-            Party party = target.getAsPlayer().raidsParty;
-            if (party == null) {
-                return;
-            }
-
-            for (Player member : party.getMembers()) {
-                if (member != null && member.getRaids() != null && member.getRaids().raiding(member) && member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight()))) {
-                    npc.combatInfo().maxhit = 35;
-                    npc.animate(npc.attackAnimation());
-                    var tileDist = npc.tile().transform(1, 1, 0).distance(member.tile());
-                    var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
-                    new Projectile(npc, member, 1291, 20, 12 * tileDist, npc.id() == MUTTADILE_7562 ? 15 : 35, 30, 0).sendProjectile();
-                    member.hit(npc, CombatFactory.calcDamageFromType(npc, member, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
-                }
-            }
+    private void rangeAttack(Npc npc) {
+        for (Mob t : getPossibleTargets(npc, 20, true,false)) {
+            npc.combatInfo().maxhit = 35;
+            npc.animate(npc.attackAnimation());
+            var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());
+            var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
+            new Projectile(npc, t, 1291, 20, 12 * tileDist, npc.id() == MUTTADILE_7562 ? 15 : 35, 30, 0).sendProjectile();
+            t.hit(npc, CombatFactory.calcDamageFromType(npc, t, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
         }
     }
 
-    private void magicAttack(Npc npc, Mob target) {
-        if(target.isPlayer()) {
-            Party party = target.getAsPlayer().raidsParty;
-            if (party == null) {
-                return;
-            }
-
-            for (Player member : party.getMembers()) {
-                if (member != null && member.getRaids() != null && member.getRaids().raiding(member) && member.tile().inArea(new Area(3300, 5313, 3324, 5338, member.raidsParty.getHeight()))) {
-                    npc.combatInfo().maxhit = 45;
-                    npc.animate(npc.attackAnimation());
-                    var tileDist = npc.tile().transform(1, 1, 0).distance(member.tile());
-                    var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
-                    new Projectile(npc, member, 393, 20, 12 * tileDist, 35, 30, 0).sendProjectile();
-                    member.hit(npc, CombatFactory.calcDamageFromType(npc, member, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                }
-            }
+    private void magicAttack(Npc npc) {
+        for (Mob t : getPossibleTargets(npc, 20, true, false)) {
+            npc.combatInfo().maxhit = 45;
+            npc.animate(npc.attackAnimation());
+            var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());
+            var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
+            new Projectile(npc, t, 393, 20, 12 * tileDist, 35, 30, 0).sendProjectile();
+            t.hit(npc, CombatFactory.calcDamageFromType(npc, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
         }
     }
 
