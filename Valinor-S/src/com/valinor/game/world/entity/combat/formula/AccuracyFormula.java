@@ -41,7 +41,7 @@ public class AccuracyFormula {
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
 
     private static final boolean BOOST_ATTACK = true;
-    public static double ATTACK_MOD_BASE = 28.;
+    public static double ATTACK_MOD_BASE = 31.;
 
     public static boolean doesHit(Mob entity, Mob enemy, CombatType style) {
         return doesHit(entity, enemy, style, 1);
@@ -648,7 +648,7 @@ public class AccuracyFormula {
         switch (style) {
             case MELEE:
                 if (def_protect_from_melee) {
-                    off_hit_chance = Math.floor((((hit_chance) * off_void_bonus) * .6) * 100.);
+                    off_hit_chance = Math.floor((((hit_chance) * off_void_bonus) * .3) * 100.);
                     def_block_chance = Math.floor(101 - ((((hit_chance) * off_void_bonus) * .6) * 100.));
                 } else {
                     off_hit_chance = Math.floor(((hit_chance) * off_void_bonus) * 100.);

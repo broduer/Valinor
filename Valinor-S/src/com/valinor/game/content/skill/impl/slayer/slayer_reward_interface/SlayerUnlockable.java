@@ -22,7 +22,7 @@ public enum SlayerUnlockable {
 
     DOUBLE_DROP_CHANCE(63408, new Item(DOUBLE_DROPS_LAMP), 400, "Double drops", "Have a chance at rolling double drops when" + "<br>killing bosses. 1/100 chance <col=ca0d0d>400 points)"),
 
-    KILL_BLOW(63409, new Item(ARMADYL_GODSWORD), 750, "Kill blow", "Have a chance at dealing a finishing blow" + "<br>on any monster.<col=ca0d0d>(750 points)"),
+    KILL_BLOW(63409, new Item(ARMADYL_GODSWORD), 750, "Kill blow", "Have a chance at dealing a finishing blow (1/300 hits)" + "<br>on any monster.<col=ca0d0d>(750 points)"),
 
     BIGGER_AND_BADDER(63410, new Item(1451), 75, "Bigger and Badder", "Increase the risk against certain slayer" + "<br>monsters with the chance of a superior " + "<br>version spawning whilst on a slayer task.<br><col=ca0d0d>(75 points)"),
 
