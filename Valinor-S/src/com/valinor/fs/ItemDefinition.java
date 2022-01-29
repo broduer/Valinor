@@ -119,6 +119,16 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == TORVA_FULL_HELM) {
+            cost = 12_000_000;
+        } else if (id == TORVA_PLATEBODY) {
+            cost = 20_000_000;
+        } else if (id == TORVA_PLATELEGS) {
+            cost = 15_000_000;
+        } else if (id == ZARYTE_CROSSBOW) {
+            cost = 13_000_000;
+        } else if (id == ZARYTE_VAMBRACES) {
+            cost = 1_000_000;
         } else if (id == SLAYER_TELEPORT_SCROLL) {
             name = "Slayer teleport scroll";
             grandexchange = true;
