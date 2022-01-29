@@ -362,7 +362,9 @@ public class Fletching extends Interaction {
 
                 if (fletchable.getName().equalsIgnoreCase("Stringable")) {
                     if (item.getProduct().name().equalsIgnoreCase("Magic shortbow")) {
-                        player.getTaskBottleManager().increase(BottleTasks.MAGIC_SHORTBOW);
+                        player.getTaskBottleManager().increase(BottleTasks.MAGIC_BOW);
+                    } else if (item.getProduct().name().equalsIgnoreCase("Magic longbow")) {
+                        player.getTaskBottleManager().increase(BottleTasks.MAGIC_BOW);
                     }
                 }
 

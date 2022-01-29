@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 public enum BottleTasks {
 
     //#Skilling tasks
-    BONES_ON_ALTAR(125,"Pledge 100 bones on any altar.", TaskCategory.SKILLING_TASK),
+    BONES_ON_ALTAR(125,"Pledge 125 bones on any altar.", TaskCategory.SKILLING_TASK),
     CRAFT_DEATH_RUNES(1000,"Craft 1000 death runes.", TaskCategory.SKILLING_TASK,"- Level 65 Runecrafting"),
     WILDERNESS_COURSE(35,"Complete 35 laps at the Wilderness agility course.", TaskCategory.SKILLING_TASK,"- Level 50 Agility"),
     MAKE_SUPER_COMBAT_POTIONS(100,"Make 100 super combat potions.", TaskCategory.SKILLING_TASK,"- Level 90 Herblore"),
     STEAL_FROM_GEM_STALL(150,"Steal from the gem stall 150 times.", TaskCategory.SKILLING_TASK,"- Level 75 Thieving"),
     CRAFT_DRAGONSTONES(200,"Craft 200 uncut dragonstone's.", TaskCategory.SKILLING_TASK,"- Level 55 Crafting"),
-    MAGIC_SHORTBOW(200,"Make 200 magic bows.", TaskCategory.SKILLING_TASK,"- Level 80 Fletching"),
+    MAGIC_BOW(200,"Make 200 magic bows.", TaskCategory.SKILLING_TASK,"- Level 80 Fletching"),
     COMPLETE_SLAYER_TASKS(10,"Complete 10 slayer tasks.", TaskCategory.SKILLING_TASK),
     BLACK_CHINCHOMPAS(100,"Catch 100 black chinchompas.", TaskCategory.SKILLING_TASK,"- Level 73 Hunter"),
     MINE_RUNITE_ORE(100,"Mine 100 Runite ores.", TaskCategory.SKILLING_TASK,"- Level 85 Mining"),
