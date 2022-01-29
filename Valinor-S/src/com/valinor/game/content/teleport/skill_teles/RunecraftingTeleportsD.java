@@ -26,7 +26,7 @@ public class RunecraftingTeleportsD extends Dialogue {
             return;
         }
 
-        player.getTimers().addOrSet(TimerKey.CLICK_DELAY, 2);
+        player.getTimers().addOrSet(TimerKey.CLICK_DELAY, 1);
        if(isPhase(0)) {
            if(option == 1) {
                stop();

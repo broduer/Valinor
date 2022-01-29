@@ -25,14 +25,14 @@ public enum Stringable implements Fletchable {
     MAGIC_SHORTBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.MAGIC_SHORTBOW_U), new FletchableItem(new Item(ItemIdentifiers.MAGIC_SHORTBOW), 80, 83.2)),
     MAGIC_LONGBOWBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.MAGIC_LONGBOW_U), new FletchableItem(new Item(ItemIdentifiers.MAGIC_LONGBOW), 85, 91.5)),
     
-    BRONZE_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.BRONZE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.BRONZE_CROSSBOW), 9, 6.0)),
-    BLURITE_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.BLURITE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.BLURITE_CROSSBOW), 24, 16.0)),
-    IRON_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.IRON_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.IRON_CROSSBOW), 39, 22.0)),
-    STEEL_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.STEEL_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.STEEL_CROSSBOW), 46, 27.0)),
-    MITHRIL_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.MITHRIL_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.MITHRIL_CROSSBOW), 54, 32.0)),
-    ADAMANT_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.ADAMANT_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.ADAMANT_CROSSBOW), 61, 41.0)),
-    RUNITE_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.RUNITE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.RUNE_CROSSBOW), 69, 50.0)),
-    DRAGON_CROSSBOW(new Item(ItemIdentifiers.BOW_STRING), new Item(ItemIdentifiers.DRAGON_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.DRAGON_CROSSBOW), 78, 70.0));
+    BRONZE_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.BRONZE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.BRONZE_CROSSBOW), 9, 6.0)),
+    BLURITE_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.BLURITE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.BLURITE_CROSSBOW), 24, 16.0)),
+    IRON_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.IRON_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.IRON_CROSSBOW), 39, 22.0)),
+    STEEL_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.STEEL_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.STEEL_CROSSBOW), 46, 27.0)),
+    MITHRIL_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.MITHRIL_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.MITHRIL_CROSSBOW), 54, 32.0)),
+    ADAMANT_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.ADAMANT_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.ADAMANT_CROSSBOW), 61, 41.0)),
+    RUNITE_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.RUNITE_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.RUNE_CROSSBOW), 69, 50.0)),
+    DRAGON_CROSSBOW(new Item(ItemIdentifiers.CROSSBOW_STRING), new Item(ItemIdentifiers.DRAGON_CROSSBOW_U), new FletchableItem(new Item(ItemIdentifiers.DRAGON_CROSSBOW), 78, 70.0));
 
     private final Item use;
     private final Item with;
