@@ -104,7 +104,8 @@ public class ChamberOfXericReward {
             new LootItem(ELDER_MAUL, 1,2),
             new LootItem(KODAI_INSIGNIA, 1, 2),
             new LootItem(TWISTED_BOW, 1, 2),
-            new LootItem(METAMORPHIC_DUST, 1, 1)
+            new LootItem(METAMORPHIC_DUST, 1, 1),
+            new LootItem(TWISTED_ANCESTRAL_COLOUR_KIT, 1, 1)
         );
 
     private static final LootTable regularTable = new LootTable()
@@ -138,7 +139,8 @@ public class ChamberOfXericReward {
             new LootItem(8781, 500, 1), // teak plank
             new LootItem(8783, 500, 1), // mahogany plank
             new LootItem(21047, 1, 1), // torn prayer scroll
-            new LootItem(21027, 1, 1) // dark relic
+            new LootItem(21027, 1, 1), // dark relic
+            new LootItem(ONYX, 1, 1) // onyx
         );
 
     public static void giveRewards(Player player) {
@@ -167,6 +169,8 @@ public class ChamberOfXericReward {
             Item item2 = rollRegular().copy();
             player.getRaidRewards().add(item);
             player.getRaidRewards().add(item2);
+            BOSSES.log(player, COX_RAIDS_KEY, item);
+            BOSSES.log(player, COX_RAIDS_KEY, item2);
             Utils.sendDiscordInfoLog("Regular Drop: " + player.getUsername() + " Has just received " + item.unnote().name() + " and " + item2.unnote().name() + " from Chambers of Xeric! Personal Points: " + Utils.formatNumber(personalPoints), "cox_reward");
         }
     }
