@@ -330,6 +330,10 @@ public class Buttons {
                 }
 
                 if (button == LOGOUT) {
+                    if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT,false)) {
+                        player.message("You cannot log out at the moment.");
+                        return;
+                    }
                     // Handle this here and not in canLogout() so that x-logging doesn't "break" the
                     // attack timer.
                     if (player.getDueling().inDuel() && player.getDueling().getRules()[DuelRule.NO_FORFEIT.ordinal()]) {
