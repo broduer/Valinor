@@ -291,7 +291,7 @@ public class MeleeMaxHit {
         }
 
         if(player.getEquipment().hasAt(EquipSlot.WEAPON, CustomItemIdentifiers.SWORD_OF_GRYFFINDOR) && target != null && target.isNpc() && includeNpcMax) {
-            weaponBonus *= 1.25;
+            weaponBonus *= 1.35;
         }
 
         if (player.getEquipment().hasAt(EquipSlot.HEAD, TOTEMIC_HELMET) && target != null && target.isNpc() && includeNpcMax) {

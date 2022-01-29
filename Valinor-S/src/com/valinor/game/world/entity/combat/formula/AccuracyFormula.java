@@ -293,9 +293,9 @@ public class AccuracyFormula {
                     twistedBowMultiplier += 0.25;
                 }
 
-                //The sword of gryffindor gives a 25% accuracy boost vs monsters.
+                //The sword of gryffindor gives a 65% accuracy boost vs monsters.
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, CustomItemIdentifiers.SWORD_OF_GRYFFINDOR)) {
-                    off_additional_bonus += 0.25;
+                    off_additional_bonus += 0.65;
                 }
 
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, CustomItemIdentifiers.MAGMA_BLOWPIPE)) {
