@@ -188,6 +188,10 @@ public class Tile implements Cloneable {
         return (int) Math.sqrt(dx * dx + dz * dz);
     }
 
+    public int getChevDistance(Tile other) {
+        return Math.max(Math.abs(other.getX() - getX()), Math.abs(other.getY() - getY()));
+    }
+
     /**
      * Gets the distance between this position and another position. Only X and
      * Y are considered (i.e. 2 dimensions).

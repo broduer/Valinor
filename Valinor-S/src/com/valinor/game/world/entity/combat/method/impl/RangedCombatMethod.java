@@ -308,9 +308,10 @@ public class RangedCombatMethod extends CommonCombatMethod {
         if (weaponId == 12926 || weaponType == WeaponType.CHINCHOMPA)   // Blowpipe / chins longer range throwning weps
             return (dist <= 5) ? 2 : 3;
         if (weaponType == THROWN) {
-            return 2; // darts / knives with max dist 4
+            return 1 + dist / 6; // darts / knives with max dist 4
         } else {
-            return (dist <= 2) ? 3 : (dist <= 8) ? 3 : 4; // shortbow (and darkbow), longbow, karils xbow, crystal bow, crossbows
+            return (int) (2 + Math.floor((3.0 + dist) / 6.0));
+            // shortbow (and darkbow), longbow, karils xbow, crystal bow, crossbows
         }
     }
 
