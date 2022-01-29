@@ -18,42 +18,47 @@
         {
           "id": 30185,
           "amount": 1,
-          "points": 6
+          "points": 5
         },
         {
-          "id": 2944,
+          "id": 31200,
           "amount": 1,
-          "points": 5
+          "points": 4
         },
         {
           "id": 30222,
           "amount": 1,
-          "points": 5
+          "points": 4
+        },
+        {
+          "id": 2944,
+          "amount": 1,
+          "points": 3
         },
         {
           "id": 26235,
           "amount": 1,
-          "points": 3
+          "points": 2
         },
         {
           "id": 26372,
           "amount": 1,
-          "points": 3
+          "points": 2
         },
         {
           "id": 26382,
           "amount": 1,
-          "points": 3
+          "points": 2
         },
         {
           "id": 26384,
           "amount": 1,
-          "points": 3
+          "points": 2
         },
         {
           "id": 26386,
           "amount": 1,
-          "points": 3
+          "points": 2
         },
         {
           "id": 26370,
@@ -65,7 +70,7 @@
     },
     {
       "name": "Misc",
-      "points": 30,
+      "points": 100,
       "items": [
         {
           "id": 385,

@@ -76,7 +76,7 @@ public class ZarosGodwars {
         }
         playersOn.add(player);
 
-        if(!NEX_EVENT_ACTIVE) {
+        if (!NEX_EVENT_ACTIVE) {
             startEvent();
         }
     }
@@ -112,7 +112,7 @@ public class ZarosGodwars {
 
     private static void cancel() {
         //Replace red barrier with purple
-        if(redBarrierPurple != null && ancientBarrierPurple.isPresent()) {
+        if (redBarrierPurple != null && ancientBarrierPurple.isPresent()) {
             ObjectManager.replaceWith(redBarrierPurple, ancientBarrierPurple.get());
         }
         if (getPlayersCount() == 0) {
@@ -156,7 +156,7 @@ public class ZarosGodwars {
                     nex.face(fumus.tile());
                     nex.forceChat("Fumus!");
                     nex.animate(9189);
-                    Projectile projectile = new Projectile(ZarosGodwars.fumus, nex, 2010, 30,80,18, 18,0);
+                    Projectile projectile = new Projectile(ZarosGodwars.fumus, nex, 2010, 30, 80, 18, 18, 0);
                     projectile.sendProjectile();
                 }).thenCancellable(3, () -> {
                     Npc umbra = new NexMinion(UMBRA, new Tile(2937, 5215, 0)).spawn(false);
@@ -165,7 +165,7 @@ public class ZarosGodwars {
                     nex.face(umbra.tile());
                     nex.forceChat("Umbra!");
                     nex.animate(9189);
-                    Projectile projectile = new Projectile(ZarosGodwars.umbra, nex, 2010, 30,80,18, 18,0);
+                    Projectile projectile = new Projectile(ZarosGodwars.umbra, nex, 2010, 30, 80, 18, 18, 0);
                     projectile.sendProjectile();
                 }).thenCancellable(3, () -> {
                     Npc cruor = new NexMinion(CRUOR, new Tile(2937, 5191, 0)).spawn(false);
@@ -174,7 +174,7 @@ public class ZarosGodwars {
                     nex.face(cruor.tile());
                     nex.forceChat("Cruor!");
                     nex.animate(9189);
-                    Projectile projectile = new Projectile(ZarosGodwars.cruor, nex, 2010, 30,80,18, 18,0);
+                    Projectile projectile = new Projectile(ZarosGodwars.cruor, nex, 2010, 30, 80, 18, 18, 0);
                     projectile.sendProjectile();
                 }).thenCancellable(3, () -> {
                     Npc glacies = new NexMinion(GLACIES, new Tile(2913, 5191, 0)).spawn(false);
@@ -183,18 +183,18 @@ public class ZarosGodwars {
                     nex.face(glacies.tile());
                     nex.forceChat("Glacies!");
                     nex.animate(9189);
-                    Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30,80,18, 18,0);
+                    Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30, 80, 18, 18, 0);
                     projectile.sendProjectile();
                 }).thenCancellable(3, () -> {
                     nex.forceChat("Fill my soul with smoke!");
-                    Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30,80,18, 18,0);
+                    Projectile projectile = new Projectile(ZarosGodwars.glacies, nex, 2010, 30, 80, 18, 18, 0);
                     projectile.sendProjectile();
                 }).thenCancellable(2, () -> {
                     nex.cantInteract(false);
                     nex.getCombat().setTarget(Utils.randomElement(getPossibleTargets()));
 
                     //Replace purple barrier with red
-                    if(ancientBarrierPurple.isPresent()) {
+                    if (ancientBarrierPurple.isPresent()) {
                         redBarrierPurple = new GameObject(42941, ancientBarrierPurple.get().tile(), ancientBarrierPurple.get().getType(), ancientBarrierPurple.get().getRotation());
                         ObjectManager.replaceWith(ancientBarrierPurple.get(), redBarrierPurple);
                     }
@@ -204,12 +204,16 @@ public class ZarosGodwars {
     }
 
     public static void drop(Mob mob) {
-        var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
+        /*var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
         list.stream().limit(3).forEach(e -> {
             var key = e.getKey();
             Player player = (Player) key;
             if (mob.tile().isWithinDistance(player.tile(),12)) {
-                if(mob instanceof Npc) {
+                if(mob instanceof Npc) {*/
+        mob.getCombat().getDamageMap().forEach((key, hits) -> {
+            Player player = (Player) key;
+            if (mob.tile().isWithinDistance(player.tile(), 12) && hits.getDamage() >= 100) {
+                if (mob instanceof Npc) {
                     Npc npc = mob.getAsNpc();
 
                     //Always log kill timers
