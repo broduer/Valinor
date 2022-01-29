@@ -94,7 +94,7 @@ public enum CombatSpecial {
     SHADOW_MACE(new int[]{CustomItemIdentifiers.SHADOW_MACE}, 35, 1.35, 1.75, new ShadowMace(), WeaponType.MACE),
     DRAGON_WARHAMMER(new int[]{ItemIdentifiers.DRAGON_WARHAMMER, ItemIdentifiers.DRAGON_WARHAMMER_20785}, 50, 1.50, 1.50, new DragonWarhammer(), WeaponType.HAMMER),
     STATIUS_WARHAMMER(new int[]{ItemIdentifiers.STATIUSS_WARHAMMER, ItemIdentifiers.STATIUSS_WARHAMMER_23620}, 35, 1.25, 1.50, new StatiusWarhammer(), WeaponType.HAMMER),
-    ANCIENT_STATIUS_WARHAMMER(new int[]{ANCIENT_STATIUSS_WARHAMMER}, 35, 1.25, 3.00, new AncientStatiusWarhammer(), WeaponType.HAMMER),
+    ANCIENT_STATIUS_WARHAMMER(new int[]{ANCIENT_STATIUSS_WARHAMMER}, 35, 1.30, 1.50, new AncientStatiusWarhammer(), WeaponType.HAMMER),
     DRAGON_CLAWS(new int[]{ItemIdentifiers.DRAGON_CLAWS, BEGINNER_DRAGON_CLAWS}, 50, 1.0, 3.00, new DragonClaws(), WeaponType.CLAWS),
     DRAGON_CLAWS_OR(new int[]{CustomItemIdentifiers.DRAGON_CLAWS_OR}, 50, 1.0, 3.50, new DragonClaws(), WeaponType.CLAWS),
     DRAGON_HALBERD(new int[]{ItemIdentifiers.DRAGON_HALBERD}, 30, 1.10, 1.35, new DragonHalberd(), WeaponType.HALBERD),
@@ -104,7 +104,7 @@ public enum CombatSpecial {
     DINHS_BULWARK(new int[]{ItemIdentifiers.DINHS_BULWARK}, 50, 1.0, 2.0, new DinhsBulwark(), WeaponType.DINHS_BULWARK),
     GRANITE_HAMMER(new int[]{ItemIdentifiers.GRANITE_HAMMER}, 60, 1.0, 1.50, new GraniteHammer(), WeaponType.HAMMER),
     VESTA_LONGSWORD(new int[]{ItemIdentifiers.VESTAS_LONGSWORD, ItemIdentifiers.VESTAS_LONGSWORD_23615}, 25, 1.20, 1.50, new VestaLongsword(), WeaponType.LONGSWORD),
-    ANCIENT_VESTA_LONGSWORD(new int[]{ItemIdentifiers.VESTAS_LONGSWORD, ANCIENT_VESTAS_LONGSWORD}, 25, 1.25, 3.00, new AncientVestaLongsword(), WeaponType.LONGSWORD),
+    ANCIENT_VESTA_LONGSWORD(new int[]{ItemIdentifiers.VESTAS_LONGSWORD, ANCIENT_VESTAS_LONGSWORD}, 25, 1.25, 1.50, new AncientVestaLongsword(), WeaponType.LONGSWORD),
     VESTA_SPEAR(new int[]{ItemIdentifiers.VESTAS_SPEAR}, 50, 1.20, 1.50, new VestaSpear(), WeaponType.SPEAR);
 
     /**

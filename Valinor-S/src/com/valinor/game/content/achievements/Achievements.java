@@ -72,7 +72,7 @@ public enum Achievements {
     SKILLER_I("Skiller I", "Earn a total level of 750.", 1, Difficulty.EASY, new Item(COINS_995, 500_000), new Item(ANTIQUE_LAMP_11137, 1)),
     SKILLER_II("Skiller II", "Earn a total level of 1000.", 1, Difficulty.MED, new Item(COINS_995, 5_000_000), new Item(ANTIQUE_LAMP_11137, 2)),
     SKILLER_III("Skiller III", "Earn a total level of 1500.", 1, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(ANTIQUE_LAMP_11137, 2), new Item(DONATOR_MYSTERY_BOX, 1)),
-    SKILLER_IV("Skiller IV", "Earn level 99 in all skills.", 1, Difficulty.HARD, new Item(COINS_995, 250_000_000), new Item(MYSTERY_CHEST, 1), new Item(DOUBLE_DROPS_LAMP, 2), new Item(MYSTERY_TICKET, 1)),
+    SKILLER_IV("Skiller IV", "Earn level 99 in all skills.", 1, Difficulty.HARD, new Item(COINS_995, 100_000_000), new Item(PETS_MYSTERY_BOX, 1), new Item(DOUBLE_DROPS_LAMP, 2), new Item(MYSTERY_TICKET, 1)),
 
     TASK_MASTER_I("Task master I", "Complete 10 tasks.", 10, Difficulty.EASY, new Item(SLAYER_KEY,10)),
     TASK_MASTER_II("Task master II", "Complete 25 tasks.", 25, Difficulty.MED, new Item(SLAYER_KEY,20)),

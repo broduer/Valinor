@@ -1,312 +1,90 @@
 {
-  "points": 0,
-  "npcs": [
-	2042,
-	2043,
-	2044
-  ],
-  "petItem": 12921,
-  "petRarity": 500,
-  "guaranteed": [
-	{
-	  "id": 12934,
-	  "min": 100,
-	  "max": 300
-	},
-	{
-	  "id": 12938,
-	  "min": 1,
-	  "max": 2
-	}
-  ],
-  "tables": [
-	{
-	  "name": "Unique",
-	  "points": 1,
-	  "items": [
+	"npcs": [ 2042, 2043, 2044 ],
+	"guaranteed": [
+		{ "id": 12934, "min": 100, "max": 300 } //Zulrah's scales
+	],
+	"petItem": 12921,
+	"petRarity": 500,
+	"tables": [
 		{
-		  "id": 12922,
-		  "amount": 1,
-		  "points": 1
+			"name": "Armour & Weapons",
+			"points": 6,
+			"items": [
+				{ "id": 1149, "min": 1, "max": 1, "points": 1 }, //Dragon med helm
+				{ "id": 3204, "min": 1, "max": 1, "points": 1 } //Dragon halberd
+			]
 		},
 		{
-		  "id": 12932,
-		  "amount": 1,
-		  "points": 1
+			"name": "Runes",
+			"points": 7,
+			"items": [
+				{ "id": 563, "min": 200, "max": 200, "points": 1 }, //Law rune
+				{ "id": 560, "min": 300, "max": 300, "points": 1 }, //Death rune
+				{ "id": 562, "min": 500, "max": 500, "points": 1 }, //Chaos rune
+				{ "id": 7937, "min": 1500, "max": 1500, "points": 1 } //Pure essence (noted)
+			]
 		},
 		{
-		  "id": 12927,
-		  "amount": 1,
-		  "points": 1
+			"name": "Herbs",
+			"points": 7,
+			"items": [
+				{ "id": 3050, "min": 25, "max": 25, "points": 10 }, //Grimy toadflax (noted)
+				{ "id": 3052, "min": 10, "max": 10, "points": 1 }, //Grimy snapdragon (noted)
+				{ "id": 218, "min": 30, "max": 30, "points": 1 }, //Grimy dwarf weed (noted)
+				{ "id": 220, "min": 10, "max": 10, "points": 1 } //Grimy torstol (noted)
+			]
 		},
 		{
-		  "id": 6571,
-		  "amount": 1,
-		  "points": 1
+			"name": "Materials",
+			"points": 7,
+			"items": [
+				{ "id": 1780, "min": 1000, "max": 1000, "points": 10 }, //Flax (noted)
+				{ "id": 6290, "min": 35, "max": 35, "points": 10 }, //Snakeskin (noted)
+				{ "id": 9193, "min": 12, "max": 12, "points": 10 }, //Dragon bolt tips
+				{ "id": 1516, "min": 35, "max": 35, "points": 10 }, //Yew logs (noted)
+				{ "id": 8836, "min": 50, "max": 50, "points": 1 }, //Mahogany logs (noted)
+				{ "id": 454, "min": 200, "max": 200, "points": 1 }, //Coal (noted)
+				{ "id": 452, "min": 2, "max": 2, "points": 1 } //Runite ore (noted)
+			]
+		},
+		{
+			"name": "Seeds",
+			"points": 5,
+			"items": [
+				{ "id": 5290, "min": 2, "max": 2, "points": 5 }, //Calquat tree seed
+				{ "id": 5289, "min": 1, "max": 1, "points": 5 }, //Palm tree seed
+				{ "id": 5288, "min": 3, "max": 3, "points": 5 }, //Papaya tree seed
+				{ "id": 5316, "min": 1, "max": 1, "points": 5 }, //Magic seed
+				{ "id": 5296, "min": 2, "max": 2, "points": 5 }, //Toadflax seed
+				{ "id": 5300, "min": 1, "max": 1, "points": 1 }, //Snapdragon seed
+				{ "id": 5303, "min": 2, "max": 2, "points": 1 }, //Dwarf weed seed
+				{ "id": 5304, "min": 1, "max": 1, "points": 1 }, //Torstol seed
+				{ "id": 5317, "min": 1, "max": 1, "points": 1 } //Spirit seed
+			]
+		},
+		{
+			"name": "Other",
+			"points": 5,
+			"items": [
+				{ "id": 12938, "min": 4, "max": 4, "points": 25 }, //Zul-andra teleport
+				{ "id": 537, "min": 12, "max": 12, "points": 25 }, //Dragon bones (noted)
+				{ "id": 5975, "min": 20, "max": 20, "points": 25 }, //Coconut (noted)
+				{ "id": 1988, "min": 250, "max": 250, "points": 25 }, //Grapes (noted)
+				{ "id": 12934, "min": 500, "max": 500, "points": 25 }, //Zulrah's scales
+				{ "id": 1392, "min": 10, "max": 10, "points": 15 }, //Battlestaff (noted)
+				{ "id": 5953, "min": 10, "max": 10, "points": 15 }, //Antidote++(4) (noted)
+				{ "id": 392, "min": 35, "max": 35, "points": 15 }, //Manta ray (noted)
+				{ "id": 1939, "min": 1000, "max": 1000, "points": 15 }, //Swamp tar
+				{ "id": 6694, "min": 10, "max": 10, "points": 15 }, //Crushed nest (noted)
+				{ "id": 2362, "min": 20, "max": 20, "points": 15 }, //Adamantite bar (noted)
+				{ "id": 12922, "min": 1, "max": 1, "points": 3 }, //Tanzanite fang
+				{ "id": 12932, "min": 1, "max": 1, "points": 3 }, //Magic fang
+				{ "id": 12927, "min": 1, "max": 1, "points": 3 }, //Serpentine visage
+				{ "id": 6571, "min": 1, "max": 1, "points": 4 }, //Uncut onyx
+				{ "id": 12936, "min": 1, "max": 1, "points": 2 }, //Jar of swamp
+				{ "id": 13200, "min": 1, "max": 1, "points": 1 }, //Tanzanite mutagen
+				{ "id": 13201, "min": 1, "max": 1, "points": 1 } //Magma mutagen
+			]
 		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Armour",
-	  "points": 7,
-	  "items": [
-		{
-		  "id": 1149,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 3204,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Runes",
-	  "points": 32,
-	  "items": [
-		{
-		  "id": 563,
-		  "amount": 200,
-		  "points": 3
-		},
-		{
-		  "id": 560,
-		  "amount": 300,
-		  "points": 1
-		},
-		{
-		  "id": 562,
-		  "amount": 500,
-		  "points": 1
-		},
-		{
-		  "id": 7937,
-		  "amount": 1500,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Herbs",
-	  "points": 8,
-	  "items": [
-		{
-		  "id": 2999,
-		  "amount": 25,
-		  "points": 1
-		},
-		{
-		  "id": 3001,
-		  "amount": 10,
-		  "points": 1
-		},
-		{
-		  "id": 268,
-		  "amount": 30,
-		  "points": 1
-		},
-		{
-		  "id": 270,
-		  "amount": 10,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Materials",
-	  "points": 51,
-	  "items": [
-		{
-		  "id": 1780,
-		  "amount": 1000,
-		  "points": 3
-		},
-		{
-		  "id": 6290,
-		  "amount": 35,
-		  "points": 3
-		},
-		{
-		  "id": 9193,
-		  "amount": 12,
-		  "points": 3
-		},
-		{
-		  "id": 1516,
-		  "amount": 35,
-		  "points": 3
-		},
-		{
-		  "id": 454,
-		  "amount": 200,
-		  "points": 1
-		},
-		{
-		  "id": 452,
-		  "amount": 2,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Seeds",
-	  "points": 21,
-	  "items": [
-		{
-		  "id": 5316,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 5290,
-		  "amount": 2,
-		  "points": 4
-		},
-		{
-		  "id": 5288,
-		  "amount": 3,
-		  "points": 4
-		},
-		{
-		  "id": 5289,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 5296,
-		  "amount": 2,
-		  "points": 2
-		},
-		{
-		  "id": 5300,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 5303,
-		  "amount": 2,
-		  "points": 3
-		},
-		{
-		  "id": 5304,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 5317,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 4207,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 46,
-	  "items": [],
-	  "tables": [
-		{
-		  "name": "Normal",
-		  "points": 500,
-		  "items": [
-			{
-			  "id": 12938,
-			  "amount": 1,
-			  "points": 5
-			},
-			{
-			  "id": 537,
-			  "amount": 12,
-			  "points": 5
-			},
-			{
-			  "id": 5975,
-			  "amount": 20,
-			  "points": 5
-			},
-			{
-			  "id": 1988,
-			  "amount": 250,
-			  "points": 5
-			},
-			{
-			  "id": 12934,
-			  "amount": 500,
-			  "points": 3
-			},
-			{
-			  "id": 1392,
-			  "amount": 10,
-			  "points": 3
-			},
-			{
-			  "id": 5953,
-			  "amount": 10,
-			  "points": 3
-			},
-			{
-			  "id": 392,
-			  "amount": 35,
-			  "points": 3
-			},
-			{
-			  "id": 6333,
-			  "amount": 50,
-			  "points": 3
-			},
-			{
-			  "id": 1939,
-			  "amount": 1000,
-			  "points": 3
-			},
-			{
-			  "id": 5075,
-			  "amount": 10,
-			  "points": 3
-			},
-			{
-			  "id": 2362,
-			  "amount": 20,
-			  "points": 3
-			}
-		  ],
-		  "tables": []
-		},
-		{
-		  "name": "Fkn rare",
-		  "points": 1,
-		  "items": [
-			{
-			  "id": 12936,
-			  "amount": 1,
-			  "points": 4
-			},
-			{
-			  "id": 13200,
-			  "amount": 1,
-			  "points": 1
-			},
-			{
-			  "id": 13201,
-			  "amount": 1,
-			  "points": 1
-			}
-		  ],
-		  "tables": []
-		}
-	  ]
-	}
-  ]
+	]
 }

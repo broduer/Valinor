@@ -44,7 +44,12 @@ public class Edgevile extends Interaction {
                 return true;
             }
             if (npc.id() == WISE_OLD_MAN) {
-                World.getWorld().shop(43).open(player);
+                var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+                if(playerIsIron) {
+                    World.getWorld().shop(54).open(player);
+                } else {
+                    World.getWorld().shop(43).open(player);
+                }
                 return true;
             }
         } else if (option == 2) {

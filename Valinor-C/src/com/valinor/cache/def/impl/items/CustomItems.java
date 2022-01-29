@@ -426,8 +426,21 @@ public class CustomItems {
             def.recolorTo = new int[]{16, 968, 0, 274, 20, 4, 8, 20};
         }
 
-        if (id == FAWKES) {
+        if(id == FAWKES) {
             def.name = "<col=65280>Fawkes pet";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.ambient = 40;
+            def.inventoryModel = 26852;
+            def.xOffset2d = -8;
+            def.yOffset2d = -13;
+            def.xan2d = 141;
+            def.yan2d = 1790;
+            def.zoom2d = 2768;
+        }
+
+        if (id == FAWKES_32937) {
+            def.name = "<col=65280>Fawkes pet";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
             def.modelCustomColor4 = 222200;
             def.ambient = 40;
             def.inventoryModel = 26852;

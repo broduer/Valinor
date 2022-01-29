@@ -418,6 +418,14 @@ public class Player extends Mob {
         if(hasPetOut("Zriawk"))
             percent += 15;
 
+        if (equipment.hasAt(EquipSlot.WEAPON, PURPLE_SLAYER_HELMET_I)) {
+            percent += 3;
+        }
+
+        if (equipment.hasAt(EquipSlot.WEAPON, TZKAL_SLAYER_HELMET_I)) {
+            percent += 3;
+        }
+
         //Drop rate percentage boost can't go over cap%
         return percent;
     }

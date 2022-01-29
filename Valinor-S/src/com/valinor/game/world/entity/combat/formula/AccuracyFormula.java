@@ -16,8 +16,6 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
-import com.valinor.game.world.position.Area;
-import com.valinor.game.world.position.Tile;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
@@ -248,6 +246,12 @@ public class AccuracyFormula {
                 if (helm != null && Slayer.creatureMatches(player, npc.id())) {
                     if (player.getEquipment().wearingSlayerHelm() || (IntStream.range(8901, 8921).anyMatch(id -> id == helm.getId()))) {
                         off_additional_bonus += 0.125;
+                    }
+                }
+
+                if (helm != null) {
+                    if (helm.getId() == RED_SLAYER_HELMET_I || helm.getId() == GREEN_SLAYER_HELMET_I || helm.getId() == BLACK_SLAYER_HELMET_I || helm.getId() == TZKAL_SLAYER_HELMET_I) {
+                        off_additional_bonus += 0.030;//3% accuracy boos
                     }
                 }
 

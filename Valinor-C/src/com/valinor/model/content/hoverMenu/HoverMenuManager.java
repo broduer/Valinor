@@ -23,6 +23,11 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(RED_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the magic skill. Effect works in both Pvm aswell as PvP."));
+        menus.put(GREEN_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the range skill. Effect works in both Pvm aswell as PvP."));
+        menus.put(BLACK_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the melee skill. Effect works in both Pvm aswell as PvP."));
+        menus.put(PURPLE_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@bonus drop rate."));
+        menus.put(TZKAL_SLAYER_HELMET_I, new HoverMenu("Gives the effect of all combined helmets."));
         menus.put(MINING_GLOVES, new HoverMenu("@gre@+1%@whi@ bonus exp in the mining skill."));
         menus.put(EXPERT_MINING_GLOVES, new HoverMenu("@gre@+3%@whi@ bonus exp in the mining skill."));
         menus.put(SUPERIOR_MINING_GLOVES, new HoverMenu("@gre@+5%@whi@ bonus exp in the mining skill."));

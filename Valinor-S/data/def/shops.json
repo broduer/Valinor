@@ -430,6 +430,11 @@
         "id": 32663,
         "amount": 1,
         "value": 7500
+      },
+      {
+        "id": 24466,
+        "amount": 1,
+        "value": 5000
       }
     ]
   },
@@ -1854,146 +1859,126 @@
   },
   {
     "shopId": 15,
-    "name": "Ferox Coins exchange (Changes ever 6 weeks)",
+    "name": "Valinor Coins exchange",
     "noiron": false,
-    "currency": "FEROX_COINS",
+    "currency": "VALINOR_COINS",
     "restock": false,
     "sellType": "NONE",
     "scroll": 0,
     "items": [
       {
-        "id": 32646,
-        "amount": 100000,
-        "value": 25000
-      },
-      {
-        "id": 24937,
-        "amount": 100000,
+        "id": 32707,
+        "amount": 1,
         "value": 30000
       },
       {
-        "id": 32102,
-        "amount": 100000,
+        "id": 12081,
+        "amount": 1,
+        "value": 50000
+      },
+      {
+        "id": 16169,
+        "amount": 1,
+        "value": 50000
+      },
+      {
+        "id": 30297,
+        "amount": 1,
+        "value": 50000
+      },
+      {
+        "id": 31956,
+        "amount": 1,
+        "value": 50000
+      },
+      {
+        "id": 32700,
+        "amount": 1,
+        "value": 60000
+      },
+      {
+        "id": 12102,
+        "amount": 1,
         "value": 40000
       },
       {
-        "id": 10330,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
-        "id": 10332,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
-        "id": 10334,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
-        "id": 10336,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
-        "id": 4447,
-        "amount": 100000,
-        "value": 500
-      },
-      {
-        "id": 30125,
-        "amount": 100000,
-        "value": 1000
-      },
-      {
-        "id": 24945,
-        "amount": 100000,
-        "value": 20000
+        "id": 30693,
+        "amount": 1,
+        "value": 40000
       },
       {
         "id": 32550,
-        "amount": 100000,
+        "amount": 1,
         "value": 20000
       },
       {
         "id": 32551,
-        "amount": 100000,
+        "amount": 1,
         "value": 20000
       },
       {
         "id": 32552,
-        "amount": 100000,
+        "amount": 1,
         "value": 20000
       },
       {
         "id": 32553,
-        "amount": 100000,
+        "amount": 1,
         "value": 18500
       },
       {
         "id": 32554,
-        "amount": 100000,
+        "amount": 1,
         "value": 18500
       },
       {
         "id": 32555,
-        "amount": 100000,
+        "amount": 1,
         "value": 18500
       },
       {
-        "id": 1773,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
-        "id": 1769,
-        "amount": 100000,
-        "value": 20000
-      },
-      {
         "id": 30196,
-        "amount": 100000,
+        "amount": 1,
         "value": 70000
       },
       {
         "id": 30199,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       },
       {
         "id": 30202,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       },
       {
         "id": 30000,
-        "amount": 100000,
+        "amount": 1,
         "value": 70000
       },
       {
         "id": 30002,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       },
       {
         "id": 30004,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       },
       {
         "id": 30020,
-        "amount": 100000,
+        "amount": 1,
         "value": 70000
       },
       {
         "id": 30021,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       },
       {
         "id": 30022,
-        "amount": 100000,
+        "amount": 1,
         "value": 90000
       }
     ]
@@ -4732,6 +4717,122 @@
         "id": 19473,
         "amount": 100000,
         "value": 175
+      }
+    ]
+  },
+  {
+    "shopId": 54,
+    "name": "<col=FFFE00>$</col> <col=FF0000>Donator Tickets Shop</col> <col=FFFE00>$</col>",
+    "currency": "DONATOR_TICKETS",
+    "noiron": false,
+    "restock": true,
+    "sellType": "NONE",
+    "scroll": 0,
+    "items": [
+      {
+        "id": 11665,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 11664,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 11663,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 8840,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 8839,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 8842,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 10551,
+        "amount": 100,
+        "value": 1000
+      },
+      {
+        "id": 10548,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 1038,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 1040,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 1042,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 1044,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 1046,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 1048,
+        "amount": 100,
+        "value": 3000
+      },
+      {
+        "id": 11862,
+        "amount": 100,
+        "value": 4000
+      },
+      {
+        "id": 13343,
+        "amount": 100,
+        "value": 4000
+      },
+      {
+        "id": 1050,
+        "amount": 100,
+        "value": 1000
+      },
+      {
+        "id": 11847,
+        "amount": 100,
+        "value": 2000
+      },
+      {
+        "id": 1057,
+        "amount": 100,
+        "value": 1500
+      },
+      {
+        "id": 1055,
+        "amount": 100,
+        "value": 1500
+      },
+      {
+        "id": 1053,
+        "amount": 100,
+        "value": 1500
       }
     ]
   }

@@ -9,6 +9,10 @@ public class ObjectManager {
     public static void get(int id) {
         ObjectDefinition definition = ObjectDefinition.get(id);
 
+        if(id == 25439) {
+            definition.actions = new String[]{"Open-Shop", "View", "Exchange", "Clear", "Item-List"};
+        }
+
         if (id == 27095) {
             definition.name = "Portal";
         }

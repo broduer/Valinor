@@ -520,6 +520,7 @@ public final class Equipment extends ItemContainer {
         }
 
         CombatSounds.weapon_equip_sounds(player, equipmentSlot, equip.getId());
+        sync();
         return true;
     }
 

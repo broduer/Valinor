@@ -72,8 +72,12 @@ public class MagicMaxHit {
                 multiplier += 0.25;
             }
 
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, TURQUOISE_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
-                multiplier += 0.10;
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, RED_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
+                multiplier += 0.030;
+            }
+
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, TZKAL_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
+                multiplier += 0.030;//3% damage boost
             }
 
             /**

@@ -33,7 +33,7 @@ public class CustomNpcIdentifiers {
     public static final int ANCIENT_BARRELCHEST = 16005;
     public static final int ANCIENT_KING_BLACK_DRAGON = 16006;
     public static final int ANCIENT_CHAOS_ELEMENTAL = 16007;
-    public static final int BLOOD_FIREBIRD = 17370;
+    public static final int BLOOD_FIREBIRD = 7370;
     public static final int ZRIAWK = 15340;
     public static final int BRUTAL_LAVA_DRAGON_FLYING = 15016;
     public static final int BRUTAL_LAVA_DRAGON = 15019;

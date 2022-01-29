@@ -169,7 +169,7 @@ public enum SpecialAttackBars {
     VESTAS_SPEAR(22610, "Spear Wall: All damage dealt by this attack is reduced by 50%, but will damage up to sixteen targets surrounding you. After using this attack, you will be immune from melee attacks for 5 seconds.", 50.0, 31456, 7674, 7686),
     STATIUS_WARHAMMER(22622, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
     STATIUS_WARHAMMER_23620(23620, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
-    ANCIENT_STATIUS_WARHAMMER(31996, "Smash: Deal an attack which deals a minimum 25% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
+    ANCIENT_STATIUS_WARHAMMER(31996, "Smash: Deal an attack which deals a minimum 30% extra damage and lowers your target's Defence level by 30%.", 35.0, 31457, 7474, 7486),
 
     //We don't have the interface...
     IVANDIS_FLAIL(22398, "Retainer: Traps a vampyre juvenile or juvinate provided they have 50% or less hitpoints remaining.", 10.0, 31396, -1, -1),

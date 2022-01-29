@@ -46,7 +46,7 @@ public class HomeArea extends Interaction {
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
             if (object.getId() == TELESCOPE_25439) {
-                player.message(Color.RED.wrap("The "+ GameConstants.SERVER_NAME+" coins cannot be exchanged yet."));
+                World.getWorld().shop(15).open(player);
                 return true;
             }
             if (object.getId() == CLOSED_CHEST_2996) {
@@ -210,6 +210,10 @@ public class HomeArea extends Interaction {
             }
         }
         if (option == 2) {
+            if (object.getId() == TELESCOPE_25439) {
+                player.getItemDispenser().checkCart();
+                return true;
+            }
             if (object.getId() == ANTIDRAGON_SHIELD) {
                 Item item = new Item(ItemIdentifiers.ANTIDRAGON_SHIELD);
                 EquipmentInfo info = World.getWorld().equipmentInfo();
@@ -231,7 +235,22 @@ public class HomeArea extends Interaction {
             }
         }
         if (option == 3) {
-
+            if (object.getId() == TELESCOPE_25439) {
+                player.getItemDispenser().dispenseItemsDialogue();
+                return true;
+            }
+        }
+        if(option == 4) {
+            if (object.getId() == TELESCOPE_25439) {
+                player.getItemDispenser().clearCart();
+                return true;
+            }
+        }
+        if(option == 5) {
+            if (object.getId() == TELESCOPE_25439) {
+                player.getItemDispenser().loadValueList();
+                return true;
+            }
         }
         return false;
     }
@@ -332,6 +351,16 @@ public class HomeArea extends Interaction {
         }
         if (option == 4) {
 
+        }
+        return false;
+    }
+
+    @Override
+    public boolean handleItemOnObject(Player player, Item item, GameObject object) {
+        if (object.getId() == TELESCOPE_25439) {
+            player.faceObj(object);
+            player.getItemDispenser().addItemToCart(item);
+            return true;
         }
         return false;
     }

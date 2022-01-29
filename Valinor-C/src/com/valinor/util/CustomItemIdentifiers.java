@@ -5,6 +5,8 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
+    //Have fun XD
+
     //Be careful ids not allowed over 32,767!
     public static final int SAPPHIRE_MEMBER_RANK = 32520;
     public static final int FIFTY_TOTAL_DONATED_SCROLL = 32521;
@@ -121,7 +123,7 @@ public class CustomItemIdentifiers {
     public static final int FREMENNIK_KILT_24946 = 24946;
     public static final int PARTYHAT__SPECS_24945 = 24945;
     public static final int GRANITE_MAUL_24944 = 24944;
-    public static final int TOXIC_STAFF_OF_THE_DEAD_C = 32006;
+    public static final int TOXIC_STAFF_OF_THE_DEAD_C = 32006;//do we even have this ingame atm? no save for upgrade chest tbh or add it here idc make it 25k points
     public static final int RING_OF_ELYSIAN = 32005;
     public static final int KERBEROS_PET = 32300;
     public static final int SKORPIOS_PET = 32301;
@@ -129,7 +131,9 @@ public class CustomItemIdentifiers {
     public static final int ARTIO_PET = 32303;
     public static final int SAELDOR_SHARD = 22517;
 
-    public static final int DARK_ELDER_MAUL = 31956;
+    public static final int DARK_ELDER_MAUL = 31956;//this used to be massive in luzox  doyou want to add it to upgrade machine? or this store
+    //I feel like upgrade machine is more for gamblers and this one for people who want to save up to you i dont mind
+    //we can add both staff and maul in upgrade and in vali coin store yeah true doesn't hurt
     public static final int SANGUINE_TWISTED_BOW = 31957;
     public static final int ANCIENT_WARRIOR_CLAMP = 31985;
     public static final int ANCIENT_FACEGAURD = 31982;
@@ -145,8 +149,8 @@ public class CustomItemIdentifiers {
     public static final int ANCIENT_VESTAS_LONGSWORD = 31995;
     public static final int ANCIENT_STATIUSS_WARHAMMER = 31996;
     public static final int TASK_BOTTLE_CASKET = 31999;
-    public static final int BLOOD_FIREBIRD = 32700;
-    public static final int VIGGORAS_CHAINMACE_C = 32705;
+    public static final int BLOOD_FIREBIRD = 32700; // we dont have this pet anymore in game  wtf is that anyways l0l
+    public static final int VIGGORAS_CHAINMACE_C = 32705;//staff and mace not ingame only  mace is from coll log no? thats bow i think unless there is 2
     public static final int CRAWS_BOW_C = 32706;
     public static final int THAMMARONS_STAFF_C = 32707;
     public static final int ZRIAWK = 32663;

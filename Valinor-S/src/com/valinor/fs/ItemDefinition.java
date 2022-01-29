@@ -119,6 +119,8 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == FAWKES) {
+            name = "Fawkes";
         } else if (id == TORVA_FULL_HELM) {
             cost = 12_000_000;
         } else if (id == TORVA_PLATEBODY) {
@@ -707,21 +709,25 @@ public class ItemDefinition implements Definition {
             name = "Ring of manhunting";
             ioptions = new String[]{null, "Wear", null, null, "Drop"};
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == RING_OF_SORCERY) {
             stackable = false;
             name = "Ring of sorcery";
             ioptions = new String[]{null, "Wear", null, null, "Drop"};
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == RING_OF_PRECISION) {
             stackable = false;
             name = "Ring of precision";
             ioptions = new String[]{null, "Wear", null, null, "Drop"};
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == RING_OF_TRINITY) {
             stackable = false;
             name = "Ring of trinity";
             ioptions = new String[]{null, "Wear", null, null, "Drop"};
             grandexchange = true;
+            cost = 7_500_000;
         } else if (id == HWEEN_TOKENS) {
             name = "H'ween token";
             ioptions = new String[]{null, null, null, null, "Drop"};
@@ -733,6 +739,7 @@ public class ItemDefinition implements Definition {
         } else if (id == CORRUPTED_BOOTS) {
             name = "Corrupted boots";
             grandexchange = true;
+            cost = 7_500_000;
         } else if (id == SALAZAR_SLYTHERINS_LOCKET) {
             name = "Salazar slytherins locket";
             grandexchange = true;

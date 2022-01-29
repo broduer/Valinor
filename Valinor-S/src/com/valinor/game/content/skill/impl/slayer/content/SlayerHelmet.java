@@ -14,8 +14,9 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.ItemIdentifiers;
 
-import static com.valinor.util.ItemIdentifiers.VORKATHS_HEAD_21907;
+import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.NIEVE;
 import static com.valinor.util.ObjectIdentifiers.VORKATH_HEAD;
 
 /**
@@ -37,19 +38,19 @@ public class SlayerHelmet extends Interaction {
     private static final int SLAYER_HELM_IMBUE = ItemIdentifiers.SLAYER_HELMET_I;
 
     public static int RED_SLAYER_HELM = ItemIdentifiers.RED_SLAYER_HELMET;
-    private static final int RED_HELM_IMBUE = ItemIdentifiers.RED_SLAYER_HELMET_I;
+    public static final int RED_HELM_IMBUE = ItemIdentifiers.RED_SLAYER_HELMET_I;
     public static int GREEN_SLAYER_HELM = ItemIdentifiers.GREEN_SLAYER_HELMET;
-    private static final int GREEN_HELM_IMBUE = ItemIdentifiers.GREEN_SLAYER_HELMET_I;
+    public static final int GREEN_HELM_IMBUE = ItemIdentifiers.GREEN_SLAYER_HELMET_I;
     public static int BLACK_SLAYER_HELM = ItemIdentifiers.BLACK_SLAYER_HELMET;
-    private static final int BLACK_HELM_IMBUE = ItemIdentifiers.BLACK_SLAYER_HELMET_I;
+    public static final int BLACK_HELM_IMBUE = ItemIdentifiers.BLACK_SLAYER_HELMET_I;
     public static int PURPLE_SLAYER_HELM = ItemIdentifiers.PURPLE_SLAYER_HELMET;
     public static int PURPLE_HELM_IMBUE = ItemIdentifiers.PURPLE_SLAYER_HELMET_I;
-    private static final int TURQUOISE_SLAYER_HELM = ItemIdentifiers.TURQUOISE_SLAYER_HELMET;
-    private static final int TURQUOISE_HELM_IMBUE = ItemIdentifiers.TURQUOISE_SLAYER_HELMET_I;
-    private static final int HYDRA_SLAYER_HELM = ItemIdentifiers.HYDRA_SLAYER_HELMET;
-    private static final int HYDRA_SLAYER_HELM_IMBUE = ItemIdentifiers.HYDRA_SLAYER_HELMET_I;
-    private static final int TWISTED_SLAYER_HELMET = ItemIdentifiers.TWISTED_SLAYER_HELMET;
-    private static final int TWISTED_SLAYER_HELMET_IMBUE = ItemIdentifiers.TWISTED_SLAYER_HELMET_I;
+    public static final int TURQUOISE_SLAYER_HELM = ItemIdentifiers.TURQUOISE_SLAYER_HELMET;
+    public static final int TURQUOISE_HELM_IMBUE = ItemIdentifiers.TURQUOISE_SLAYER_HELMET_I;
+    public static final int HYDRA_SLAYER_HELM = ItemIdentifiers.HYDRA_SLAYER_HELMET;
+    public static final int HYDRA_SLAYER_HELM_IMBUE = ItemIdentifiers.HYDRA_SLAYER_HELMET_I;
+    public static final int TWISTED_SLAYER_HELMET = ItemIdentifiers.TWISTED_SLAYER_HELMET;
+    public static final int TWISTED_SLAYER_HELMET_IMBUE = ItemIdentifiers.TWISTED_SLAYER_HELMET_I;
 
     private static final int ABYSSAL_HEAD = ItemIdentifiers.ABYSSAL_HEAD;
     private static final int KQ_HEAD = ItemIdentifiers.KQ_HEAD;
@@ -241,20 +242,57 @@ public class SlayerHelmet extends Interaction {
             return true;
         }
 
-        if ((used.getId() == TWISTED_HORNS && with.getId() == SLAYER_HELM) || (used.getId() == SLAYER_HELM && with.getId() == TWISTED_HORNS)) {
-            player.getInventory().remove(new Item(TWISTED_HORNS), true);
-            player.getInventory().remove(new Item(SLAYER_HELM), true);
-            player.getInventory().add(new Item(TWISTED_SLAYER_HELMET), true);
+        if ((used.getId() == TWISTED_HORNS && with.getId() == RED_HELM_IMBUE) || (used.getId() == RED_HELM_IMBUE && with.getId() == TWISTED_HORNS)) {
+            makeZukHelm(player);
             return true;
         }
 
-        if ((used.getId() == TWISTED_HORNS && with.getId() == SLAYER_HELM_IMBUE) || (used.getId() == SLAYER_HELM_IMBUE && with.getId() == TWISTED_HORNS)) {
-            player.getInventory().remove(new Item(TWISTED_HORNS), true);
-            player.getInventory().remove(new Item(SLAYER_HELM_IMBUE), true);
-            player.getInventory().add(new Item(TWISTED_SLAYER_HELMET_IMBUE), true);
+        if ((used.getId() == TWISTED_HORNS && with.getId() == GREEN_HELM_IMBUE) || (used.getId() == GREEN_HELM_IMBUE && with.getId() == TWISTED_HORNS)) {
+            makeZukHelm(player);
             return true;
         }
+
+        if ((used.getId() == TWISTED_HORNS && with.getId() == BLACK_HELM_IMBUE) || (used.getId() == BLACK_HELM_IMBUE && with.getId() == TWISTED_HORNS)) {
+            makeZukHelm(player);
+            return true;
+        }
+
+        if ((used.getId() == TWISTED_HORNS && with.getId() == PURPLE_HELM_IMBUE) || (used.getId() == PURPLE_HELM_IMBUE && with.getId() == TWISTED_HORNS)) {
+            makeZukHelm(player);
+            return true;
+        }
+
         return false;
+    }
+
+    private void makeZukHelm(Player player) {
+        if(!player.inventory().contains(RED_HELM_IMBUE)) {
+            player.message("You need a red slayer helmet (i), to make a Tzkal slayer helmet.");
+            return;
+        }
+        if(!player.inventory().contains(GREEN_HELM_IMBUE)) {
+            player.message("You need a green slayer helmet (i), to make a Tzkal slayer helmet.");
+            return;
+        }
+        if(!player.inventory().contains(BLACK_HELM_IMBUE)) {
+            player.message("You need a black slayer helmet (i), to make a Tzkal slayer helmet.");
+            return;
+        }
+        if(!player.inventory().contains(PURPLE_HELM_IMBUE)) {
+            player.message("You need a purple slayer helmet (i), to make a Tzkal slayer helmet.");
+            return;
+        }
+        if(!player.inventory().contains(TWISTED_HORNS)) {
+            player.message("You need twisted horns, to make a Tzkal slayer helmet.");
+            return;
+        }
+        player.getInventory().remove(new Item(TWISTED_HORNS), true);
+        player.getInventory().remove(new Item(RED_HELM_IMBUE), true);
+        player.getInventory().remove(new Item(GREEN_HELM_IMBUE), true);
+        player.getInventory().remove(new Item(BLACK_HELM_IMBUE), true);
+        player.getInventory().remove(new Item(PURPLE_HELM_IMBUE), true);
+        player.getInventory().add(new Item(TZKAL_SLAYER_HELMET_I), true);
+        player.message("You combined all the helms together to make a Tzkal slayer helmet.");
     }
 
     @Override
@@ -308,6 +346,16 @@ public class SlayerHelmet extends Interaction {
 
             if (item.getId() == PURPLE_HELM_IMBUE) {
                 disassemble(player, new Item(PURPLE_HELM_IMBUE), new Item(DARK_CLAW), true);
+                return true;
+            }
+
+            if (item.getId() == TZKAL_SLAYER_HELMET_I) {
+                player.getInventory().add(new Item(TWISTED_HORNS), true);
+                player.getInventory().add(new Item(RED_HELM_IMBUE), true);
+                player.getInventory().add(new Item(GREEN_HELM_IMBUE), true);
+                player.getInventory().add(new Item(BLACK_HELM_IMBUE), true);
+                player.getInventory().add(new Item(PURPLE_HELM_IMBUE), true);
+                player.getInventory().remove(new Item(TZKAL_SLAYER_HELMET_I), true);
                 return true;
             }
         }

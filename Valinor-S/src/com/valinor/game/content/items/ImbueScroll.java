@@ -4,6 +4,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 
+import static com.valinor.game.content.skill.impl.slayer.content.SlayerHelmet.*;
 import static com.valinor.util.CustomItemIdentifiers.IMBUEMENT_SCROLL;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -15,6 +16,55 @@ public class ImbueScroll extends Interaction {
 
     @Override
     public boolean handleItemOnItemInteraction(Player player, Item use, Item usedWith) {
+        if ((use.getId() == IMBUEMENT_SCROLL && usedWith.getId() == SLAYER_HELMET) || (use.getId() == SLAYER_HELMET && usedWith.getId() == IMBUEMENT_SCROLL)) {
+            player.getInventory().remove(new Item(IMBUEMENT_SCROLL), true);
+            player.getInventory().remove(new Item(SLAYER_HELMET), true);
+            player.getInventory().add(new Item(SLAYER_HELMET_I), true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == HYDRA_SLAYER_HELM || usedWith.getId() == HYDRA_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(HYDRA_SLAYER_HELM),true);
+            player.inventory().add(new Item(HYDRA_SLAYER_HELM_IMBUE),true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == RED_SLAYER_HELM || usedWith.getId() == RED_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(RED_SLAYER_HELM),true);
+            player.inventory().add(new Item(RED_HELM_IMBUE),true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == GREEN_SLAYER_HELM || usedWith.getId() == GREEN_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(GREEN_SLAYER_HELM),true);
+            player.inventory().add(new Item(GREEN_HELM_IMBUE),true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == PURPLE_SLAYER_HELM || usedWith.getId() == PURPLE_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(PURPLE_SLAYER_HELM),true);
+            player.inventory().add(new Item(PURPLE_HELM_IMBUE),true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == TURQUOISE_SLAYER_HELM || usedWith.getId() == TURQUOISE_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(TURQUOISE_SLAYER_HELM),true);
+            player.inventory().add(new Item(TURQUOISE_HELM_IMBUE),true);
+            return true;
+        }
+
+        if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == BLACK_SLAYER_HELM || usedWith.getId() == BLACK_SLAYER_HELM)) {
+            player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
+            player.inventory().remove(new Item(BLACK_SLAYER_HELM),true);
+            player.inventory().add(new Item(BLACK_HELM_IMBUE),true);
+            return true;
+        }
+
         if ((use.getId() == IMBUEMENT_SCROLL || usedWith.getId() == IMBUEMENT_SCROLL) && (use.getId() == MAGIC_SHORTBOW || usedWith.getId() == MAGIC_SHORTBOW)) {
             player.inventory().remove(new Item(IMBUEMENT_SCROLL),true);
             player.inventory().remove(new Item(MAGIC_SHORTBOW),true);
