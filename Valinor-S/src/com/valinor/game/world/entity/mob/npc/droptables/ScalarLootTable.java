@@ -353,7 +353,7 @@ public class ScalarLootTable {
         if (task != null && task.matches(npc.id()) && player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KEY_OF_DROPS)) {
             int roll = 1000;
             if (World.getWorld().rollDie(roll, 1)) {
-                GroundItemHandler.createGroundItem(new GroundItem(new Item(CustomItemIdentifiers.KEY_OF_DROPS), player.tile(), player));
+                player.inventory().addOrDrop(new Item(CustomItemIdentifiers.KEY_OF_DROPS));
             }
         }
     }
