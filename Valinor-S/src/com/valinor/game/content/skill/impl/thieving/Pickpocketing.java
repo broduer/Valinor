@@ -256,6 +256,10 @@ public class Pickpocketing extends Interaction {
             new LootTable().addTable(1,
                 new LootItem(COINS_995, 3000, 4000, 1) //Coins
             )),
+        KNIGHT_OF_ARDOUGNE(55, 84.3, 386, 5, 3, 19000,"knight's",
+            new LootTable().addTable(1,
+                new LootItem(COINS_995, 3000, 4000, 1) //Coins
+            )),
         PALADIN(70, 151.75, 386, 5, 3, 12000,"paladin's",
             new LootTable().addTable(1,
                 new LootItem(COINS_995, 4000, 4500, 6), //Coins

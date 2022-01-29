@@ -3019,6 +3019,7 @@ public class Player extends Mob {
 
         if (lastregion != tile.region() || lastChunk != tile.chunk()) {
             MultiwayCombat.refresh(this, lastregion, lastChunk);
+            packetSender.sendString(4536, "");
         }
 
         // Update last region and chunk ids
@@ -3037,7 +3038,7 @@ public class Player extends Mob {
         section[8] = true;
         ControllerManager.process(this);
 
-        //We don't have to make a entire abstract area for just these 2 lines.
+        //We don't have to make an entire abstract area for just these 2 lines.
         if (tile.region() == 14231) {
             interfaceManager.openWalkable(4535);
             packetSender.sendString(4536, "Kill Count: " + getAttribOr(BARROWS_MONSTER_KC, 0));

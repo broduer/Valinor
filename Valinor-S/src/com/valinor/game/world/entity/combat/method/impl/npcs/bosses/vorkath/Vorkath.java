@@ -101,6 +101,14 @@ public class Vorkath extends CommonCombatMethod {
 
     private void bomb(Mob mob, Mob target) {
         //mob.forceChat("BOMB");
+        if(target.frozen()) {
+            if(World.getWorld().rollDie(2,1)) {
+                mage(mob, target);
+            } else {
+                range(mob, target);
+            }
+            return;
+        }
         mob.animate(FIREBALL_ATTACK_ANIMATION);
         Tile targPos = target.tile().copy();
         int dist = mob.tile().distance(targPos);
