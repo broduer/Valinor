@@ -12,11 +12,15 @@ import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
+import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.EXP_LAMP_SKILL_SELECTED;
+import static com.valinor.game.world.entity.mob.player.Skills.*;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_LAMP_11137;
+import static com.valinor.util.ItemIdentifiers.DARK_RELIC;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -64,6 +68,11 @@ public class ExperienceLamp extends Interaction {
                 rub(player);
                 return true;
             }
+
+            if(item.getId() == DARK_RELIC) {
+                rub(player);
+                return true;
+            }
         }
         return false;
     }
@@ -89,6 +98,16 @@ public class ExperienceLamp extends Interaction {
                     case CHALLENGER -> 1_000;
                 };
                 player.skills().addXp(skill, exp);
+                player.getInterfaceManager().close();
+            } else if(player.inventory().contains(DARK_RELIC)) {
+                player.inventory().remove(DARK_RELIC);
+                var skill = player.<Integer>getAttribOr(EXP_LAMP_SKILL_SELECTED, 0);
+
+                var level = player.skills().level(skill);
+                List<Integer> skills_150 = Arrays.asList(ATTACK, DEFENCE, STRENGTH, HITPOINTS, RANGED, PRAYER, MAGIC, MINING, WOODCUTTING, HERBLORE, FARMING, HUNTER, COOKING, FISHING, THIEVING, FIREMAKING, AGILITY);
+                var modifier = skills_150.stream().anyMatch(s -> s.intValue() == skill) ? 150 : 25;
+                var exp = level * modifier;
+                player.skills().addXp(skill, exp,false);
                 player.getInterfaceManager().close();
             }
             return true;
