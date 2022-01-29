@@ -166,6 +166,9 @@ public class ItemDefinition implements Definition {
             name = "Treasure casket";
             grandexchange = true;
             stackable = true;
+        } else if(id == BIG_CHEST) {
+            name = "Big chest";
+            grandexchange = false;
         } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};

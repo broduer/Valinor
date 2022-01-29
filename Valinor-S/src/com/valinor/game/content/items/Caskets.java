@@ -6,6 +6,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
+import static com.valinor.util.CustomItemIdentifiers.BIG_CHEST;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -26,6 +27,10 @@ public class Caskets extends Interaction {
             }
             if (item.getId() == CASKET_7956) {
                 openCasket(player, CASKET_7956);
+                return true;
+            }
+            if (item.getId() == BIG_CHEST) {
+                openCasket(player, BIG_CHEST);
                 return true;
             }
         }
@@ -57,6 +62,16 @@ public class Caskets extends Interaction {
             player.inventory().remove(new Item(CASKET_7956), true);
             player.inventory().add(new Item(COINS_995, amount), true);
             player.message("You open the casket and find " + Utils.formatNumber(amount) + " coins!");
+        } else if (id == BIG_CHEST) {
+            amount = World.getWorld().random(1_250_000, 5_000_000);
+            var blood_reaper = player.hasPetOut("Blood Reaper pet");
+            if(blood_reaper) {
+                int extra = amount * 10 / 100;
+                amount += extra;
+            }
+            player.inventory().remove(new Item(BIG_CHEST), true);
+            player.inventory().add(new Item(COINS_995, amount), true);
+            player.message("You open the chest and find " + Utils.formatNumber(amount) + " coins!");
         }
     }
 

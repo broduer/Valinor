@@ -15,6 +15,13 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
+        if(id == BIG_CHEST) {
+            def.name = "<col=65280>Big chest";
+            ItemDefinition.copyInventory(def, 8151);
+            def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
+            def.modelCustomColor4 = 124;
+        }
+
         if (id == SKILLING_SCROLL) {
             def.name = "<col=65280>Skilling scroll";
             def.inventoryActions = new String[]{"Read", null, null, null, "Destroy"};
