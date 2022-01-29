@@ -25,7 +25,7 @@ public class MapObjects { // cache objects
      * A map which holds all of our map objects. This contains objects from the cache, the
      * landscape from files before any objects are custom spawned or adjusted
      */
-    public static final Map<Long, ArrayList<GameObject>> mapObjects = new HashMap<Long, ArrayList<GameObject>>();
+    public static final Map<Long, ArrayList<GameObject>> mapObjects = new HashMap<>();
 
     /**
      * Attempts to get an object with the given id and position.
@@ -52,9 +52,7 @@ public class MapObjects { // cache objects
         //Go through the objects in the list..
         ArrayList<GameObject> list = mapObjects.get(hash);
         if (list != null) {
-            Iterator<GameObject> it = list.iterator();
-            for (; it.hasNext(); ) {
-                GameObject o = it.next();
+            for (GameObject o : list) {
                 if (o != null && predicate.test(o)
                     && o.tile().equals(tile)) {
                     return Optional.of(o);
@@ -86,7 +84,7 @@ public class MapObjects { // cache objects
     }
 
     /**
-     * Attempts to add a new object to our map of mapobjects. DUPLICATES IGNORED
+     * Attempts to add a new object to our map of map objects. DUPLICATES IGNORED
      *
      * @param object
      */
@@ -99,9 +97,7 @@ public class MapObjects { // cache objects
             //Check if object already exists in this list..
             boolean exists = false;
             List<GameObject> list = mapObjects.get(hash);
-            Iterator<GameObject> it = list.iterator();
-            for (; it.hasNext(); ) {
-                GameObject o = it.next();
+            for (GameObject o : list) {
                 if (o.equals(object)) {
                     exists = true;
                     break;
