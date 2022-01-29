@@ -633,7 +633,7 @@ public class AccuracyFormula {
         }
 
         //determine augmented levels
-        double aug_atk_mod = BOOST_ATTACK ? ATTACK_MOD_BASE : 64.;
+        double aug_atk_mod = BOOST_ATTACK && style == CombatType.MELEE ? ATTACK_MOD_BASE : 64.;
         augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
         augmented_defence = Math.floor(((effective_defence + 8) * (1 + def_equipment_bonus / 64.)));
 
