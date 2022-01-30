@@ -193,8 +193,8 @@ public class Potions {
                 player.message("You need at least 51 hitpoints to drink this potion.");
                 return;
             }
-            if (WildernessArea.inWilderness(player.tile())) {
-                player.message("You can't use this potion in the wilderness.");
+            if (player.getRaids() == null) {
+                player.message("You can't use this potion outside of raids.");
                 return;
             }
         }
