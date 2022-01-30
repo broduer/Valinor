@@ -47,7 +47,7 @@ public class RuneConversion extends Interaction {
         ASTRAL(40, 8.7, -1, ASTRAL_RUNE, 34771, -1, new Tile(2156, 3863), -1, new Tile(2156, 3863), true, 42, 3700, Pet.RIFT_GUARDIAN_ASTRAL),
         BLOOD(77, 23.8, -1, BLOOD_RUNE, 27978, -1, null, -1, null, true, 42, 3600, Pet.RIFT_GUARDIAN_BLOOD),
         SOUL(90, 29.7, -1, SOUL_RUNE, 27980, -1, null, -1, null, true, 42, 3500, Pet.RIFT_GUARDIAN_SOUL),
-        WRATH(95, 8.0, 22118, WRATH_RUNE, 34772, 34824, new Tile(2337, 4833), 34759, new Tile(2448,2822), true, 42, 3400, Pet.WRATH_RIFT_GUARDIAN);
+        WRATH(95, 8.0, WRATH_TALISMAN, WRATH_RUNE, 34772, 34824, new Tile(2337, 4833), 34759, new Tile(2448,2822), true, 42, 3400, Pet.WRATH_RIFT_GUARDIAN);
 
         private final int levelReq;
         private final double xp;
