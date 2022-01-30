@@ -349,6 +349,11 @@ public class SlayerHelmet extends Interaction {
                 return true;
             }
 
+            if (item.getId() == TURQUOISE_SLAYER_HELM) {
+                disassemble(player, new Item(TURQUOISE_SLAYER_HELM), new Item(VORKATHS_HEAD_21907), true);
+                return true;
+            }
+
             if (item.getId() == TZKAL_SLAYER_HELMET_I) {
                 player.getInventory().add(new Item(TWISTED_HORNS), true);
                 player.getInventory().add(new Item(RED_HELM_IMBUE), true);
