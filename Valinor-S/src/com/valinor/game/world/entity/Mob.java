@@ -1049,6 +1049,11 @@ public abstract class Mob extends Entity {
      * doesn't return {@code Hit} instance because It's immediately submitted() so you can't change properties after.
      */
     public void hit(Mob attacker, int damage) {
+        if(isNpc()) {
+            if(getAsNpc().def() != null && getAsNpc().def().ispet) {
+                return;
+            }
+        }
         hit_(attacker, damage, 0, SplatType.HITSPLAT);
     }
 
