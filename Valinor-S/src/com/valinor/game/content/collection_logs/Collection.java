@@ -71,7 +71,7 @@ public enum Collection {
         //Drops
         new Item(ODIUM_SHARD_2), new Item(MALEDICTION_SHARD_2), new Item(FEDORA)),
 
-    DAGANNOTH_KINGS(null, LogType.BOSSES, "Dagannoth Kings", new int[]{NpcIdentifiers.DAGANNOTH_REX, NpcIdentifiers.DAGANNOTH_PRIME, NpcIdentifiers.DAGANNOTH_SUPREME}, AttributeKey.DAGANNOTH_KINGS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(RING_OF_TRINITY)},
+    DAGANNOTH_KINGS(null, LogType.BOSSES, "Dagannoth Kings", new int[]{NpcIdentifiers.DAGANNOTH_REX, NpcIdentifiers.DAGANNOTH_PRIME, NpcIdentifiers.DAGANNOTH_SUPREME}, AttributeKey.DAGANNOTH_KINGS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
         new Item(PET_DAGANNOTH_PRIME), new Item(PET_DAGANNOTH_SUPREME), new Item(PET_DAGANNOTH_REX), new Item(BERSERKER_RING), new Item(ARCHERS_RING), new Item(SEERS_RING), new Item(WARRIOR_RING), new Item(DRAGON_AXE), new Item(SEERCULL), new Item(MUD_BATTLESTAFF)),
 
