@@ -38,9 +38,6 @@ public class AccuracyFormula {
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
 
-    private static final boolean BOOST_ATTACK = true;
-    public static double ATTACK_MOD_BASE = 31.;
-
     public static boolean doesHit(Mob entity, Mob enemy, CombatType style) {
         return doesHit(entity, enemy, style, 1);
     }
@@ -498,7 +495,7 @@ public class AccuracyFormula {
             assert enemy instanceof Npc;
             Npc npc = (Npc) enemy;
             if (npc.combatInfo() != null && npc.combatInfo().stats != null && npc.combatInfo().boss) {
-                def_equipment_ranged_defence -= (def_current_defence_level * 0.50); //I don't like this solution but this formula is fucked.
+                def_equipment_ranged_defence -= (def_current_defence_level * 0.10); //I don't like this solution but this formula is fucked.
             }
         }
 
@@ -636,8 +633,15 @@ public class AccuracyFormula {
                 break;
         }
 
+        double ATTACK_MOD_BASE = 38.;
+
         //determine augmented levels
-        double aug_atk_mod = BOOST_ATTACK && style == CombatType.MELEE ? ATTACK_MOD_BASE : 64.;
+        double aug_atk_mod = 64.;
+        if(entity.isPlayer() && enemy.isPlayer()) {
+            if(style == CombatType.MELEE) {
+                aug_atk_mod = ATTACK_MOD_BASE;
+            }
+        }
         augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
         augmented_defence = Math.floor(((effective_defence + 8) * (1 + def_equipment_bonus / 64.)));
 
