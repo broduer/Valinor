@@ -102,6 +102,14 @@ object KtCommands {
     private val logger: Logger = LogManager.getLogger(KtCommands::class.java)
 
     fun init() {
+        cmd("exitraid", PLAYER) {
+            if(player.raids != null) {
+                player.raids.exit(player)
+                player.message("You have left the raid.")
+            } else {
+                player.message("You are not in any raid at the moment.")
+            }
+        }
         cmd("spec", DEV) {
             player.specialAttackPercentage = 100
             player.isSpecialActivated = false
