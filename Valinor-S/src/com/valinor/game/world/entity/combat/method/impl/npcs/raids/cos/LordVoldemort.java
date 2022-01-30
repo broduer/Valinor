@@ -25,15 +25,22 @@ import static com.valinor.game.content.items.combine.ElderWand.*;
  */
 public class LordVoldemort extends CommonCombatMethod {
 
+    private int attacks = 0;
+
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        var random = Utils.random(7);
-        switch (random) {
-            case 0, 1 -> crucio(((Npc) mob));
-            case 2, 3 -> petrificusTotalus(mob);
-            case 4 -> sectumsempra(((Npc) mob));
-            case 5 -> expelliarmus(((Npc) mob));
-            default -> avadaKedavra(((Npc) mob));
+        attacks++;
+        if(attacks == 10) {
+            expelliarmus(((Npc) mob));
+            attacks = 0;
+        } else {
+            var random = Utils.random(7);
+            switch (random) {
+                case 0, 1 -> crucio(((Npc) mob));
+                case 2, 3 -> petrificusTotalus(mob);
+                case 4, 5 -> sectumsempra(((Npc) mob));
+                default -> avadaKedavra(((Npc) mob));
+            }
         }
     }
 
