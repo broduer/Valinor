@@ -20,7 +20,7 @@ public class WildernessHotspot extends WildernessActivity {
 
     @Override
     public String description() {
-        return "Mysterious Wilderness";
+        return "Hotspot";
     }
 
     @Override
