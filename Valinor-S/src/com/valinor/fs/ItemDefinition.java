@@ -181,6 +181,9 @@ public class ItemDefinition implements Definition {
         } else if(id == BIG_CHEST) {
             name = "Big chest";
             grandexchange = false;
+        } else if(id == WILDY_ACTIVITY_CASKET) {
+            name = "Wildy activity casket";
+            grandexchange = false;
         } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
             ioptions = new String[]{"Read", null, null, null, "Destroy"};

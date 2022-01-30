@@ -82,7 +82,7 @@ public enum MemberRights {
         return "<img=" + spriteId + ">";
     }
 
-    private double bloodMoneyMultiplier() {
+    public double pkpMultiplier() {
         return modifiers[0];
     }
 

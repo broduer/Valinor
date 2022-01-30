@@ -197,6 +197,7 @@ public class CustomItemIdentifiers {
     public static final int MYSTERY_CHEST = 14525;
     public static final int IMBUEMENT_SCROLL = 20238;
     public static final int BIG_CHEST = 14524;
+    public static final int WILDY_ACTIVITY_CASKET = 14526;
     public static final int WILDERNESS_KEY = BANK_KEY;
     public static final int BARRELCHEST_PET = 23818;
     public static final int RING_OF_VIGOUR = 32304;

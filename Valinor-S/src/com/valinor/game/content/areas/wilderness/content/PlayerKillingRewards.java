@@ -2,6 +2,11 @@ package com.valinor.game.content.areas.wilderness.content;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevileActivity;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.PureActivity;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.WildernessHotspot;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.ZerkerActivity;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatConstants;
@@ -14,23 +19,45 @@ import com.valinor.util.Color;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.concurrent.TimeUnit;
+
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
-import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
-import static com.valinor.util.CustomItemIdentifiers.PETS_MYSTERY_BOX;
+import static com.valinor.util.CustomItemIdentifiers.*;
 
 /**
- * The class which represents functionality for the BM rewards.
+ * The class which represents functionality for the PKP rewards.
  * Credits go to the developers from OSS.
  * <p>
  * Update: December, 12, 2020, 18:33
  * Added support for new features such as wilderness events.
- * Redskull, trained accounts and many more. Also optimized the class.
+ * Red skull, trained accounts and many more. Also optimized the class.
  *
  * @author <a href="http://www.rune-server.org/members/_Patrick_/">Patrick van
  * Elderen</a>
  */
 public class PlayerKillingRewards {
+
     private static final Logger logger = LogManager.getLogger(PlayerKillingRewards.class);
+
+    private static int shutdownValueOf(int streak) {
+        return (10 * streak + 50 * (streak / 10));
+    }
+
+    private static int killstreakValueOf(int streak) {
+        int points = 5 * streak;
+        if(points > 100)
+            points = 100;
+        return points;
+    }
+
+    private static int firstKillOfTheDay(Player killer) {
+        if (System.currentTimeMillis() >= (long) killer.getAttribOr(AttributeKey.FIRST_KILL_OF_THE_DAY, 0L)) {
+            killer.message("You've earned 2,500 additional pkp for your first kill of the day!");
+            killer.putAttrib(AttributeKey.FIRST_KILL_OF_THE_DAY, System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24));
+            return 2500;
+        }
+        return 0;
+    }
 
     public static void reward(Player killer, Player target, boolean valid) {
         // Add a death. Only when dying to a player.
@@ -41,6 +68,19 @@ public class PlayerKillingRewards {
 
             // Add a kill when the kill is valid (not farming) and it's not in duel arena/FFA
             if (valid) {
+                // Starter trade prevention
+                if (killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !killer.getPlayerRights().isDeveloperOrGreater(killer) && !target.getPlayerRights().isDeveloperOrGreater(target)) {
+                    killer.message("You are restricted from receiving rewards from pking until 30 minutes of play time.");
+                    killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
+                    return;
+                }
+
+                if (target.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !target.getPlayerRights().isDeveloperOrGreater(target) && !killer.getPlayerRights().isDeveloperOrGreater(killer)) {
+                    killer.message("Your partner is restricted from receiving rewards from pking until 30 minutes of play time.");
+                    killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
+                    return;
+                }
+
                 //Update achievements
                 updateAchievement(killer, target);
 
@@ -87,7 +127,7 @@ public class PlayerKillingRewards {
                     killer.message("You're currently on a killing spree of " + killstreak + "!");
 
                     if (killstreak % 5 == 0 || killstreak > 15) {
-                        World.getWorld().getPlayers().forEach(player -> player.message("<col=ca0d0d><img=506> " + killer.getUsername() + " has a killing spree of " + killstreak + " and can be shut down for " + (100 + player.shutdownValueOf(killstreak)) + " PKP!"));
+                        World.getWorld().getPlayers().forEach(player -> player.message("<col=ca0d0d><img=506> " + killer.getUsername() + " has a killing spree of " + killstreak + " and can be shut down for " + (100 + shutdownValueOf(killstreak)) + " PKP!"));
                     }
                 }
 
@@ -109,16 +149,48 @@ public class PlayerKillingRewards {
                 killer.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(killer));
                 target.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(target));
 
-                var pkp = killer.pkpAmount(target);
-                var blood_reaper = killer.hasPetOut("Blood Reaper pet");
-                if(blood_reaper) {
-                    int extraBM = pkp * 10 / 100;
-                    pkp += extraBM;
+                boolean edgeActivity = WildernessActivityManager.getSingleton().isActivityCurrent(EdgevileActivity.class) && WildernessActivityManager.getSingleton().getActivity(EdgevileActivity.class).canReward(killer);
+                boolean pureActivity = WildernessActivityManager.getSingleton().isActivityCurrent(PureActivity.class) && WildernessActivityManager.getSingleton().getActivity(PureActivity.class).canReward(killer);
+                boolean zerkerActivity = WildernessActivityManager.getSingleton().isActivityCurrent(ZerkerActivity.class) && WildernessActivityManager.getSingleton().getActivity(ZerkerActivity.class).canReward(killer);
+                boolean hotspotActivity = WildernessActivityManager.getSingleton().isActivityCurrent(WildernessHotspot.class) && WildernessActivityManager.getSingleton().getActivity(WildernessHotspot.class).canReward(killer);
+
+                //Check if any activities active, if so roll for a casket
+                if (edgeActivity || pureActivity || zerkerActivity) {
+                    if(World.getWorld().rollDie(45, 1)) {
+                        killer.inventory().addOrDrop(new Item(WILDY_ACTIVITY_CASKET));
+                        killer.message(Color.PURPLE.wrap("You've found a wildy activity casket searching the corpse of "+target.getUsername()+"."));
+                    }
                 }
 
-                killer.message(Color.RED.tag() + "<shad=0>[PK Points]</col></shad> " + Color.BLUE.tag() + "You earn " + Color.VIOLET.tag() + "(+" + pkp + ") pkp " + Color.BLUE.tag() + " after killing " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "!");
+                var pkpReward = 500;//Base value
 
-                int updatePkp = (Integer) killer.getAttribOr(AttributeKey.PK_POINTS, 0) + pkp;
+                // Apply donation boost, if any
+                pkpReward = (int) ((double )pkpReward * killer.getMemberRights().pkpMultiplier());
+
+                // Apply target's killstreak on our reward. Oh, and our streak.
+                pkpReward += shutdownValueOf(target_killstreak); //Add the shutdown value bonus to the pkp reward
+                pkpReward += killstreakValueOf(killstreak); //Add the killstreak value bonus to the pkp reward
+                pkpReward += WildernessArea.wildernessLevel(killer.tile()) * 2; //Add the wilderness level bonus to the reward
+
+                // Double pkp, if enabled. Can be toggled with ::pkpmultiplier <int>. Default 1.
+                pkpReward *= World.getWorld().pkpMultiplier;
+
+                pkpReward += firstKillOfTheDay(killer); //2000pkp for first kill of the day
+
+                if(hotspotActivity) {
+                    pkpReward *= 2.0;
+                    killer.message("<col=6a1a18><img=15> You get double pkp for killing a player in a hotspot!");
+                }
+
+                var blood_reaper = killer.hasPetOut("Blood Reaper pet");
+                if(blood_reaper) {
+                    int extraPkp = pkpReward * 10 / 100;
+                    pkpReward += extraPkp;
+                }
+
+                killer.message(Color.RED.tag() + "<shad=0>[PK Points]</col></shad> " + Color.BLUE.tag() + "You earn " + Color.VIOLET.tag() + "(+" + pkpReward + ") pkp " + Color.BLUE.tag() + " after killing " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "!");
+
+                int updatePkp = (Integer) killer.getAttribOr(AttributeKey.PK_POINTS, 0) + pkpReward;
                 killer.putAttrib(AttributeKey.PK_POINTS, updatePkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
 
@@ -141,19 +213,6 @@ public class PlayerKillingRewards {
     }
 
     private static void updateAchievement(Player killer, Player target) {
-        // Starter trade prevention
-        if (killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !killer.getPlayerRights().isDeveloperOrGreater(killer) && !target.getPlayerRights().isDeveloperOrGreater(target)) {
-            killer.message("You are restricted from completing achievements until 30 minutes of play time.");
-            killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
-            return;
-        }
-
-        if (target.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !target.getPlayerRights().isDeveloperOrGreater(target) && !killer.getPlayerRights().isDeveloperOrGreater(killer)) {
-            killer.message("Your partner is restricted from completing achievements until 30 minutes of play time.");
-            killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
-            return;
-        }
-
         AchievementsManager.activate(killer, Achievements.PVP_I, 1);
         AchievementsManager.activate(killer, Achievements.PVP_II, 1);
         AchievementsManager.activate(killer, Achievements.PVP_III, 1);

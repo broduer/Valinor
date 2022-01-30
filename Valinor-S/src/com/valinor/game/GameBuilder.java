@@ -1,6 +1,7 @@
 package com.valinor.game;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.clan.ClanRepository;
 import com.valinor.game.content.account.StarterBox;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
@@ -73,6 +74,7 @@ public class GameBuilder {
         tasks.add(StarterBox::init);
         tasks.add(PromoCodeCommand::init);
         tasks.add(InteractionManager::init);
+        tasks.add(WildernessActivityManager.getSingleton()::init);
 
         //Load definitions..
         tasks.add(TradingPost::init);

@@ -65,7 +65,6 @@ public class PointMysteryBox extends Interaction {
                     var bossPoints = player.<Integer>getAttribOr(BOSS_POINTS, 0) + amount;
                     player.putAttrib(BOSS_POINTS, bossPoints);
                     player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
-                    player.getPacketSender().sendString(QuestTab.InfoTab.BOSS_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.BOSS_POINTS.childId).fetchLineData(player));
                     Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+bossPoints+" boss points.", "boxes_opened");
                 } else if (World.getWorld().rollDie(3, 1)) {
                     points = "double drops scroll";

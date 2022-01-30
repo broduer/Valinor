@@ -145,51 +145,6 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
 
-    public int shutdownValueOf(int streak) {
-        int bonus = 1 * streak;
-        return bonus;
-    }
-
-    private int killstreakValueOf(int streak) {
-        int bonus = 1 * streak;
-        return bonus;
-    }
-
-    private int firstKillOfTheDay() {
-        if (System.currentTimeMillis() >= (long) getAttribOr(AttributeKey.FIRST_KILL_OF_THE_DAY, 0L)) {
-            putAttrib(AttributeKey.FIRST_KILL_OF_THE_DAY, System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24));
-            return 10;
-        }
-        return 0;
-    }
-
-    public int pkpAmount(Player target) {
-        // Declare base value for our kill.
-        int pkPoints = 1;
-
-        // Double BM, if enabled. Can be toggled with ::bmm <int>. Default 1.
-        pkPoints *= World.getWorld().pkpMultiplier;
-
-        // Ruin his kill streak. Only when dying to a player.
-        var target_killstreak = target == null ? 0 : target.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0);
-        var killstreak = this.<Integer>getAttribOr(AttributeKey.KILLSTREAK, 0) + 1;
-
-        // Apply target's killstreak on our reward. Oh, and our streak.
-        pkPoints += shutdownValueOf(target_killstreak); //Add the shutdown value bonus to the BM reward
-        pkPoints += killstreakValueOf(killstreak); //Add the killstreak value bonus to the BM reward
-        pkPoints += firstKillOfTheDay();
-
-        //Edgevile hotspot always pkp x2
-        if (tile().inArea(Tile.EDGEVILE_WILDY)) {
-            pkPoints *= 2;
-        }
-
-        if(World.getWorld().pkpMultiplier > 1 || GameServer.properties().doublePKPEvent) {
-            pkPoints *= 2;
-        }
-        return pkPoints;
-    }
-
     public TickDelay snowballCooldown = new TickDelay();
 
     public void removeAll(Item item) {
@@ -3022,6 +2977,8 @@ public class Player extends Mob {
                 //We only have to update the uptime here, every other line is automatically updated.
                 this.getPacketSender().sendString(TIME.childId, QuestTab.InfoTab.INFO_TAB.get(TIME.childId).fetchLineData(this));
                 this.getPacketSender().sendString(UPTIME.childId, QuestTab.InfoTab.INFO_TAB.get(UPTIME.childId).fetchLineData(this));
+                this.getPacketSender().sendString(WILDERNESS_ACTIVITY.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_ACTIVITY.childId).fetchLineData(this));
+                this.getPacketSender().sendString(WILDERNESS_ACTIVITY_LOCATION.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_ACTIVITY_LOCATION.childId).fetchLineData(this));
 
                 //Update these timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
