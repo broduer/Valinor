@@ -43,7 +43,6 @@ public class SkotizoInstance {
 
     }
 
-    public List<Npc> npcList = new ArrayList<>();
     public List<GameObject> objectList = new ArrayList<>();
     public Npc skotizo;
     public GameObject southAltarEmpty;
@@ -68,14 +67,12 @@ public class SkotizoInstance {
     public void init(Player player) {
         instance = InstancedAreaManager.getSingleton().createInstancedArea(player, SKOTIZO_AREA);
         if (player != null && instance != null) {
-            npcList.clear();
             player.teleport(ENTRANCE_POINT.transform(0, 0, instance.getzLevel()));
 
             //Create a Skotizo instance
             skotizo = new Npc(SKOTIZO, new Tile(1688, 9880, instance.getzLevel())).spawn(false);
             skotizo.getCombat().setTarget(player);
             skotizo.getCombat().attack(player);
-            npcList.add(skotizo);
 
             player.getPacketSender().sendChangeSprite(29232, (byte) 0).sendChangeSprite(29233, (byte) 0).sendChangeSprite(29234, (byte) 0).sendChangeSprite(29235, (byte) 0);
 
@@ -118,16 +115,12 @@ public class SkotizoInstance {
                 reanimatedDemon1.getCombat().attack(player);
                 reanimatedDemon2.getCombat().attack(player);
                 reanimatedDemon3.getCombat().attack(player);
-                npcList.add(reanimatedDemon1);
-                npcList.add(reanimatedDemon2);
-                npcList.add(reanimatedDemon3);
                 demonsSpawned = true;
             }
         } else if (random == 4 && World.getWorld().random(5) == 0) {
             if (skotizo.hp() < 150 && !ankouSpawned) {
                 Npc darkAnkou = new Npc(DARK_ANKOU, new Tile(player.getX(), player.getY() - 1, instance.getzLevel())).spawn(false);
                 darkAnkou.getCombat().attack(player);
-                npcList.add(darkAnkou);
                 ankouSpawned = true;
             }
         }
@@ -165,7 +158,6 @@ public class SkotizoInstance {
                                 GameObject altarNorth = new GameObject(AWAKENED_ALTAR, new Tile(1694, 9904, instance.getzLevel()), 10, 2);// North - Awakened Altar
                                 ObjectManager.addObj(altarNorth);
                                 Npc awakenedAltar = new Npc(NpcIdentifiers.AWAKENED_ALTAR, new Tile(1694, 9904, instance.getzLevel())).spawn(false);
-                                npcList.add(awakenedAltar);
                                 altarCount++;
                                 northAltar = true;
                             }
@@ -178,7 +170,6 @@ public class SkotizoInstance {
                                 ObjectManager.addObj(altarSouth);
                                 objectList.add(altarSouth);
                                 Npc awakenedAltar = new Npc(NpcIdentifiers.AWAKENED_ALTAR_7290, new Tile(1696, 9871, instance.getzLevel())).spawn(false);
-                                npcList.add(awakenedAltar);
                                 altarCount++;
                                 southAltar = true;
                             }
@@ -191,7 +182,6 @@ public class SkotizoInstance {
                                 ObjectManager.addObj(altarWest);
                                 objectList.add(altarWest);
                                 Npc awakenedAltar = new Npc(NpcIdentifiers.AWAKENED_ALTAR_7292, new Tile(1678, 9888, instance.getzLevel())).spawn(false);
-                                npcList.add(awakenedAltar);
                                 altarCount++;
                                 westAltar = true;
                             }
@@ -204,7 +194,6 @@ public class SkotizoInstance {
                                 ObjectManager.addObj(altarEast);
                                 objectList.add(altarEast);
                                 Npc awakenedAltar = new Npc(NpcIdentifiers.AWAKENED_ALTAR_7294, new Tile(1714, 9888, instance.getzLevel())).spawn(false);
-                                npcList.add(awakenedAltar);
                                 altarCount++;
                                 eastAltar = true;
                             }
@@ -220,19 +209,25 @@ public class SkotizoInstance {
     }
 
     public void clear(Player player) {
-        for (Npc npc : npcList) {
-            World.getWorld().unregisterNpc(npc);
-        }
-        npcList.clear();
+        player.getPacketSender().sendChangeSprite(29232, (byte) 0).sendChangeSprite(29233, (byte) 0).sendChangeSprite(29234, (byte) 0).sendChangeSprite(29235, (byte) 0);
+
+        World.getWorld().getNpcs().forEachInArea(SkotizoInstance.SKOTIZO_AREA, n -> {
+            if(n.id() == SKOTIZO || n.id() == REANIMATED_DEMON || n.id() == DARK_ANKOU || n.id() == NpcIdentifiers.AWAKENED_ALTAR || n.id() == AWAKENED_ALTAR_7290 || n.id() == AWAKENED_ALTAR_7292 || n.id() == AWAKENED_ALTAR_7294) {
+                n.remove();//Kill off all npcs that are alive
+            }
+        });
 
         for(GameObject obj : objectList) {
             ObjectManager.removeObj(obj);
         }
         objectList.clear();
 
+        altarCount = 0;
+        northAltar = false;
+        southAltar = false;
+        westAltar = false;
+        eastAltar = false;
         altarMap.clear();
-
-        player.getPacketSender().sendChangeSprite(29232, (byte) 0).sendChangeSprite(29233, (byte) 0).sendChangeSprite(29234, (byte) 0).sendChangeSprite(29235, (byte) 0);
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
             if (!gi.getTile().inArea(SKOTIZO_AREA))

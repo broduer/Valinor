@@ -120,7 +120,7 @@ public class PestilentBloat extends CommonCombatMethod {
             if (isStopped() && getStepsTillStop() <= 0 && !isSleeping()) {
                 mob.animate(SLEEPING);
                 damageReduction = false;
-                shutdown(mob);
+                shutdown();
             }
         }
         if (!isSleeping() && mob.isRegistered() && !mob.dead()) {
@@ -192,7 +192,7 @@ public class PestilentBloat extends CommonCombatMethod {
     /**
      * Handles the sleeping bit
      */
-    private void shutdown(Mob mob) {
+    private void shutdown() {
         setSleeping(true);
         Task task = new Task("PestilentBloatShutdownTask", 1) {
 

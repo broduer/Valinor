@@ -130,7 +130,7 @@ public class NightmareCombat extends CommonCombatMethod {
                     nightmare.husksSpawned.clear();
                 }
             }
-            n.hit(n, n.hp());
+            n.remove();
         });
     }
 }

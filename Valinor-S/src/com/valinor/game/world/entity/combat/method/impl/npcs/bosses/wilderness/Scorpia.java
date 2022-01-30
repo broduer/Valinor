@@ -86,7 +86,7 @@ public class Scorpia extends CommonCombatMethod {
         spawnedGuardians = false;
         for (Npc guardian : guardians) {
             if (guardian != null && !guardian.dead())
-                guardian.hit(guardian, guardian.hp());
+                guardian.remove();
         }
     }
 

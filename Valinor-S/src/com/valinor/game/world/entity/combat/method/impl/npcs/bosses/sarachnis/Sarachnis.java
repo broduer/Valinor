@@ -122,7 +122,7 @@ public class Sarachnis extends CommonCombatMethod {
     public void onDeath(Player player, Npc npc) {
         World.getWorld().getNpcs().forEachInArea(SARACHNIS_AREA, n -> {
             if(n.id() == SPAWN_OF_SARACHNIS || n.id() == SPAWN_OF_SARACHNIS_8715) {
-                n.hit(n, n.hp());
+                n.remove();
             }
         });
     }

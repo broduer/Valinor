@@ -144,7 +144,7 @@ public class NightmareInstance {
                 nightmare.husksSpawned.clear();
             }
             if(!n.dead()) {
-                n.hit(n, n.hp());
+                n.remove();
             }
         });
 

@@ -123,7 +123,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
                     if (mob.dead()) { //maiden is dead
                         spiders.forEach(npc -> {
                             if(!npc.dead()) {
-                                npc.hit(npc, npc.hp());
+                                npc.remove();
                             }
                         });
                         stop();
@@ -219,7 +219,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
     public void onDeath(Player player,Npc npc) {
         World.getWorld().getNpcs().forEachInRegion(12613, n -> {
             if(n.isRegistered() || !n.dead()) {
-                n.hit(n, n.hp());
+                n.remove();
             }
         });
     }

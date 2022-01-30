@@ -157,7 +157,7 @@ public class AbyssalSire extends CommonCombatMethod {
     public void onDeath(Player player,Npc npc) {
         for(Npc n : spawns) {
             if(n.isRegistered() || !n.dead()) {
-                n.hit(n, n.hp());
+                n.remove();
             }
         }
     }

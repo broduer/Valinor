@@ -2588,7 +2588,7 @@ public class Player extends Mob {
             this.getPacketSender().sendEffectTimer(0, EffectTimer.MONSTER_RESPAWN);
             InstancedAreaManager.getSingleton().disposeOf(bryophytaInstance.getInstance());
         }
-// like these just copy the field
+
         if (skotizoInstance != null && skotizoInstance.getInstance() != null) {
             skotizoInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());

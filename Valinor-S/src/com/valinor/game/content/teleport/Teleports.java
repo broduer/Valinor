@@ -197,6 +197,9 @@ public class Teleports {
 
         //Stop the players actions
         player.stopActions(true);
+
+        player.clearInstance();
+
         //trigger checks
         var instancedArea = InstancedAreaManager.getSingleton().ofZ(player.getZ());
         if (instancedArea != null)
