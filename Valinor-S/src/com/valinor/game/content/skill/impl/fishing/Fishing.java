@@ -184,13 +184,13 @@ public class Fishing {
                     player.skills().addXp(Skills.FISHING, weCatch.xp * xpBonus(player));
                     AchievementsManager.activate(player, Achievements.FISHERMAN,1);
 
-                    if (World.getWorld().rollDie(100, 1)) {
+                    if (World.getWorld().rollDie(100, 1) && weCatch != Fish.MINNOWS) {
                         GroundItem item = new GroundItem(new Item(TASK_BOTTLE_SKILLING), player.tile(), player);
                         GroundItemHandler.createGroundItem(item);
                     }
 
                     //Finding a casket in the water! Money, money, money..
-                    if (Utils.rollDie(20, 1)) {
+                    if (Utils.rollDie(20, 1) && weCatch != Fish.MINNOWS) {
                         player.inventory().addOrDrop(new Item(7956, 1));
                         player.message("You find a casket in the water.");
                     }
