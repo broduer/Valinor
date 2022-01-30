@@ -19,16 +19,16 @@ public final class ClientConstants {
         repackIndexFour = false;
 
     public static boolean HALLOWEEN = false;
-    public static boolean WINTER = true;
+    public static boolean WINTER = false;
     public static boolean CHRISTMAS = false;
 
     /*
      * This determines if we are going to connect to the live server or local server.
      */
-    public static final boolean production = false;
+    public static final boolean production = true;
     public static final boolean test = false;
 
-    public static final String CLIENT_VERSION = "1.0.3";
+    public static final String CLIENT_VERSION = "1.0.4";
     public static final int OSRS_DATA_VERSION = 202;
     public static final int OSRS_DATA_SUB_VERSION = 2;
 
