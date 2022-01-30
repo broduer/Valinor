@@ -350,7 +350,7 @@ public enum Collection {
         //Drops
         new Item(SARADOMIN_HILT), new Item(ARMADYL_HILT), new Item(ARMADYL_HELMET), new Item(ARMADYL_CHESTPLATE), new Item(ARMADYL_CHAINSKIRT), new Item(BANDOS_BOOTS), new Item(BANDOS_TASSETS), new Item(BANDOS_CHESTPLATE), new Item(BLADE_OF_SAELDOR)),
 
-    WILDERNESS_KEY(AttributeKey.COLLECTION_LOG_KEYS_OPENED, LogType.KEYS, "Wilderness key", new int[]{CustomItemIdentifiers.WILDERNESS_KEY}, AttributeKey.WILDERNESS_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.WILDERNESS_KEY, 5), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
+    WILDERNESS_KEY(AttributeKey.WILDY_KEYS_OPENED, LogType.KEYS, "Wilderness key", new int[]{CustomItemIdentifiers.WILDERNESS_KEY}, AttributeKey.WILDERNESS_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.WILDERNESS_KEY, 5), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
         new Item(VESTAS_LONGSWORD), new Item(VESTAS_SPEAR), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(STATIUSS_FULL_HELM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM),
         new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(HEAVY_BALLISTA), new Item(LIGHT_BALLISTA), new Item(NEITIZNOT_FACEGUARD), new Item(PRIMORDIAL_BOOTS), new Item(PEGASIAN_BOOTS), new Item(ETERNAL_BOOTS), new Item(IMBUED_HEART), new Item(DRAGON_CLAWS), new Item(ARMADYL_GODSWORD),

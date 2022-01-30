@@ -3020,6 +3020,7 @@ public class Player extends Mob {
                 setPlayerQuestTabCycleCount(0);
 
                 //We only have to update the uptime here, every other line is automatically updated.
+                this.getPacketSender().sendString(TIME.childId, QuestTab.InfoTab.INFO_TAB.get(TIME.childId).fetchLineData(this));
                 this.getPacketSender().sendString(UPTIME.childId, QuestTab.InfoTab.INFO_TAB.get(UPTIME.childId).fetchLineData(this));
 
                 //Update these timer frames every minute.
