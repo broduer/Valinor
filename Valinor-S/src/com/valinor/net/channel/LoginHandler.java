@@ -112,6 +112,7 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
 
             if (throwable instanceof ReadTimeoutException) {
                 logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
+                throwable.printStackTrace();
                 ctx.channel().close();
             } else {
                 logger.error("An exception has been caused in the pipeline: ", throwable);

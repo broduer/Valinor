@@ -80,6 +80,7 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
             }
             if (throwable instanceof ReadTimeoutException) {
                 logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
+                throwable.printStackTrace();
                 ctx.channel().close();
             }
             else {
