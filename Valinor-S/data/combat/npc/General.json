@@ -1018,12 +1018,52 @@
     }
   },
   {
-    // Zombie with axe
+    // Zombie (13)
     "ids": [
-      44
+      26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41
     ],
-    "maxhit": 3,
+    "maxhit": 2,
+    "attackspeed": 6,
     "slayerxp": 22,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 8,
+      "strength": 9,
+      "defence": 10,
+      "hitpoints": 22
+    },
+    "bonuses": {
+      "stabdefence": 0,
+      "slashdefence": 0,
+      "crushdefence": 0,
+      "rangeddefence": 0,
+      "magicdefence": 0
+    },
+    "animations": {
+      "attack": 5578,
+      "block": 5579,
+      "death": 5580
+    },
+    "sounds": {
+      "attack": [
+        931
+      ],
+      "block": [
+        923
+      ],
+      "death": [
+        922
+      ]
+    }
+  },
+  {
+    // Zombie (18)
+    "ids": [
+      42, 43, 44, 45, 46, 47, 48, 6596, 6597, 6598
+    ],
+    "maxhit": 2,
+    "attackspeed": 6,
+    "slayerxp": 24,
     "slayerlvl": 1,
     "stats": {
       "attack": 13,
@@ -1039,9 +1079,83 @@
       "magicdefence": 0
     },
     "animations": {
-      "attack": 5571,
-      "block": 5574,
-      "death": 5575
+      "attack": 5578,
+      "block": 5579,
+      "death": 5580
+    },
+    "sounds": {
+      "attack": [
+        931
+      ],
+      "block": [
+        923
+      ],
+      "death": [
+        922
+      ]
+    }
+  },
+  {
+    // Zombie (24)
+    "ids": [ 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 3980, 3981, 2501, 2502, 2503 ],
+    "maxhit": 3,
+    "attackspeed": 6,
+    "slayerxp": 30,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 19,
+      "strength": 21,
+      "defence": 16,
+      "hitpoints": 30
+    },
+    "bonuses": {
+      "stabdefence": 9,
+      "slashdefence": 8,
+      "crushdefence": 12,
+      "rangeddefence": 11,
+      "magicdefence": 10
+    },
+    "animations": {
+      "attack": 5578,
+      "block": 5579,
+      "death": 5580
+    },
+    "sounds": {
+      "attack": [
+        931
+      ],
+      "block": [
+        923
+      ],
+      "death": [
+        922
+      ]
+    }
+  },
+  {
+    // Zombie (159)
+    "ids": [ 6741 ],
+    "maxhit": 11,
+    "attackspeed": 6,
+    "slayerxp": 80,
+    "slayerlvl": 1,
+    "stats": {
+      "attack": 19,
+      "strength": 21,
+      "defence": 16,
+      "hitpoints": 80
+    },
+    "bonuses": {
+      "stabdefence": 9,
+      "slashdefence": 8,
+      "crushdefence": 12,
+      "rangeddefence": 11,
+      "magicdefence": 10
+    },
+    "animations": {
+      "attack": 5578,
+      "block": 5579,
+      "death": 5580
     },
     "sounds": {
       "attack": [
@@ -2461,7 +2575,7 @@
   {
     // Spider
     "ids": [
-      3019
+      3019, 4561, 5238
     ],
     "maxhit": 1,
     "slayerxp": 2,
