@@ -86,6 +86,9 @@ public class ItemDrops {
 
                     //Niffler
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
+                        if(tile.level != player.tile().level) {
+                            return;
+                        }
                         player.nifflerStore(dropped);
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(dropped, tile, player));
@@ -104,6 +107,9 @@ public class ItemDrops {
                     }
 
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc) && tableItem.convert().getValue() > 0) {
+                        if(tile.level != player.tile().level) {
+                            return;
+                        }
                         player.nifflerStore(item);
                     } else {
                         GroundItemHandler.createGroundItem(new GroundItem(item, tile, player));
@@ -145,6 +151,9 @@ public class ItemDrops {
                 if(doubleTheDrop) {
                     GroundItem item = new GroundItem(reward, tile, player);
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
+                        if(tile.level != player.tile().level) {
+                            return;
+                        }
                         player.nifflerStore(item.getItem());
                     } else {
                         GroundItemHandler.createGroundItem(item);
@@ -161,6 +170,9 @@ public class ItemDrops {
                         GroundItem doubleDrop = new GroundItem(reward, tile, player);
 
                         if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
+                            if(tile.level != player.tile().level) {
+                                return;
+                            }
                             player.nifflerStore(doubleDrop.getItem());
                         } else {
                             GroundItemHandler.createGroundItem(doubleDrop);
@@ -175,6 +187,9 @@ public class ItemDrops {
                 OTHER.log(player, npc.id(), reward);
 
                 if (player.nifflerPetOut() && player.nifflerCanStore(npc) && reward.getValue() > 0) {
+                    if(tile.level != player.tile().level) {
+                        return;
+                    }
                     player.nifflerStore(reward);
                 } else {
                     GroundItemHandler.createGroundItem(new GroundItem(reward, tile, player));
