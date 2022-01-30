@@ -110,11 +110,11 @@ public class WildernessKeyChest extends Interaction {
 
         if(rewardOne != null) {
             boolean amOverOne = rewardOne.getAmount() > 1;
-            String amtString = amOverOne ? "x " + Utils.format(rewardOne.getAmount()) + "" : Utils.getAOrAn(rewardOne.name());
+            String amtString = amOverOne ? "x" + Utils.format(rewardOne.getAmount()) + "" : Utils.getAOrAn(rewardOne.name());
             String openedAt = wilderness ? "inside the member zone" : "at home";
 
             if(!player.getUsername().equalsIgnoreCase("Box test")) {
-                String msg = "<img=506><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wilderness key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " has received " + amtString + " " + rewardOne.name() + " " + openedAt + "! Keys opened ("+keysUsed+")";
+                String msg = "<img=506><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wildy key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " received " + amtString + " " + rewardOne.name() + " " + openedAt + "! Keys opened ("+keysUsed+")";
                 World.getWorld().sendWorldMessage(msg);
             }
 
