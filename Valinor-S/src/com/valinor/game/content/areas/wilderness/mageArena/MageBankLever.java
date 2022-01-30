@@ -1,10 +1,12 @@
 package com.valinor.game.content.areas.wilderness.mageArena;
 
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
@@ -22,8 +24,13 @@ public class MageBankLever extends Interaction {
             if (obj.getId() == 5959) {
                 player.faceObj(obj);
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
                     player.teleblockMessage();
+                    return true;
+                }
+
+                if (WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile())) {
+                    player.message("You cannot teleport outside the Wilderness with the Wilderness key.");
                     return true;
                 }
 
@@ -64,8 +71,13 @@ public class MageBankLever extends Interaction {
 
                 player.faceObj(obj);
                 //Check to see if the player is teleblocked
-                if (player.getTimers().has(TimerKey.TELEBLOCK)) {
+                if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
                     player.teleblockMessage();
+                    return true;
+                }
+
+                if (WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile())) {
+                    player.message("You cannot teleport outside the Wilderness with the Wilderness key.");
                     return true;
                 }
 

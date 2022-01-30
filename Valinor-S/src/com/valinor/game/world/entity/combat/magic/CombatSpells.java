@@ -2170,7 +2170,7 @@ public enum CombatSpells {
 
         @Override
         public boolean canCast(Player player, Mob target, boolean delete) {
-            if (target.getTimers().has(TimerKey.TELEBLOCK) || target.getTimers().has(TimerKey.TELEBLOCK_IMMUNITY)) {
+            if (target.getTimers().has(TimerKey.TELEBLOCK) || target.getTimers().has(TimerKey.SPECIAL_TELEBLOCK) || target.getTimers().has(TimerKey.TELEBLOCK_IMMUNITY)) {
                 player.message("That player is already being affected by this spell.");
                 player.getCombat().reset();
                 player.getCombat().setCastSpell(null);

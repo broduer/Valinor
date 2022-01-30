@@ -16,6 +16,7 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
 import com.valinor.util.SecondsTimer;
 import com.valinor.util.Utils;
+import com.valinor.util.timers.TimerKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -95,6 +96,12 @@ public class Trading {
     }
 
     public void requestTrade(Player otherPlayer) {
+        //Check to see if the player is special teleblocked
+        if (player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+            player.teleblockMessage();
+            return;
+        }
+
         if (player.getUsername().equalsIgnoreCase("Box test")) {
             player.message("This account can't trade other players.");
             return;

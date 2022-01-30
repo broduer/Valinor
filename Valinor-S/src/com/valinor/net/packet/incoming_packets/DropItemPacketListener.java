@@ -18,6 +18,7 @@ import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
+import com.valinor.util.timers.TimerKey;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -122,6 +123,11 @@ public class DropItemPacketListener implements PacketListener {
                     if (def != null && def.ioptions != null && def.ioptions[4] != null && def.ioptions[4].equalsIgnoreCase("destroy")) {
                         destroyOption(player, slot, true);
                     } else {
+                        //Check to see if the player is special teleblocked
+                        if (player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                            player.teleblockMessage();
+                            return;
+                        }
 
                         if (item.getId() == CustomItemIdentifiers.WILDERNESS_KEY && WildernessArea.inWilderness(player.tile())) {
                             player.message("You can't drop this item.");

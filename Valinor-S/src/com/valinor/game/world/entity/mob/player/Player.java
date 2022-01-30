@@ -6,6 +6,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.bank_pin.BankPin;
 import com.valinor.game.content.bank_pin.BankPinSettings;
@@ -112,6 +113,7 @@ import com.valinor.net.SessionState;
 import com.valinor.net.channel.ServerHandler;
 import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.packet.PacketSender;
+import com.valinor.net.packet.incoming_packets.PickupItemPacketListener;
 import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.net.packet.outgoing.UnnecessaryPacketDropper;
 import com.valinor.util.*;
@@ -893,6 +895,17 @@ public class Player extends Mob {
     }
 
     public void teleblockMessage() {
+        if (!getTimers().has(TimerKey.SPECIAL_TELEBLOCK))
+            return;
+
+        long special_timer = getTimers().left(TimerKey.SPECIAL_TELEBLOCK) * 600L;
+
+        message(String.format("A teleport block has been cast on you. It should wear off in %d minutes, %d seconds.",
+            TimeUnit.MILLISECONDS.toMinutes(special_timer),
+            TimeUnit.MILLISECONDS.toSeconds(special_timer) -
+                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(special_timer))
+        ));
+
         if (!getTimers().has(TimerKey.TELEBLOCK))
             return;
 
@@ -1400,6 +1413,14 @@ public class Player extends Mob {
             getFarming().resetLogActionMoment();
             looks().hide(true);
             Hunter.abandon(this, null, true);
+            if (WildernessArea.inWilderness(this.tile())) {
+                if (this.inventory().contains(CustomItemIdentifiers.WILDERNESS_KEY)) {
+                    this.inventory().remove(CustomItemIdentifiers.WILDERNESS_KEY, Integer.MAX_VALUE);
+                    World.getWorld().clearBroadcast();
+                    PickupItemPacketListener.respawn(Item.of(CustomItemIdentifiers.WILDERNESS_KEY), tile, 3);
+                    WildernessKeyPlugin.announceKeySpawn(tile);
+                }
+            }
             if (getClan() != null) {
                 ClanManager.leave(this, true);
             }
@@ -1613,6 +1634,11 @@ public class Player extends Mob {
         if (staminaPotionTicks > 0) {
             int seconds = (int) Utils.ticksToSeconds(staminaPotionTicks);
             packetSender.sendEffectTimer(seconds, EffectTimer.STAMINA);
+        }
+
+        int specialTeleblockTicks = this.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
+        if (specialTeleblockTicks > 0) {
+            teleblock(specialTeleblockTicks, true);
         }
 
         int dropRateLampTicks = this.getAttribOr(AttributeKey.DOUBLE_DROP_LAMP_TICKS, 0);
@@ -2987,6 +3013,7 @@ public class Player extends Mob {
 
             LocalDateTime now = LocalDateTime.now();
             long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
+            long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
 
             // Refresh the quest tab every minute (every 100 ticks)
             if (GameServer.properties().autoRefreshQuestTab && getPlayerQuestTabCycleCount() == GameServer.properties().refreshQuestTabCycles) {
@@ -3003,6 +3030,13 @@ public class Player extends Mob {
                     if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
                         WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
                         World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
+                    }
+                }
+
+                if (minutesTillWildyKey == 5) {
+                    if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
+                        WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
+                        World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
                     }
                 }
             }

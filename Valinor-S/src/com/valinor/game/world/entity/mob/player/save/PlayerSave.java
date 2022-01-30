@@ -22,6 +22,7 @@ import com.valinor.game.world.entity.mob.player.rights.MemberRights;
 import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.timers.TimerKey;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.mindrot.BCrypt;
@@ -182,6 +183,7 @@ public class PlayerSave {
                 if (details.lastPreset != null) {
                     player.setLastPreset(details.lastPreset);
                 }
+                player.getTimers().register(TimerKey.SPECIAL_TELEBLOCK, details.specialTeleblockTimer);
                 player.putAttrib(TOTAL_PAYMENT_AMOUNT, details.totalAmountPaid);
                 player.putAttrib(PROMO_PAYMENT_AMOUNT, details.promoPaymentAmount);
                 player.putAttrib(PROMO_ITEMS_UNLOCKED, details.promoItemsClaimed);
@@ -453,6 +455,7 @@ public class PlayerSave {
                 player.putAttrib(LARRANS_KEYS_OPENED, details.larranKeysUsed);
                 player.putAttrib(BRIMSTONE_KEYS_OPENED, details.brimstoneKeysOpened);
                 player.putAttrib(COLLECTION_LOG_KEYS_OPENED, details.collectionLogKeysOpened);
+                player.putAttrib(WILDY_KEYS_OPENED, details.wildernessKeysOpened);
                 player.putAttrib(SLAYER_KEYS_OPENED, details.slayerKeysOpened);
                 player.putAttrib(SLAYER_KEYS_RECEIVED, details.slayerKeysReceived);
                 player.putAttrib(DOUBLE_EXP_TICKS, details.doubleExpTicks);
@@ -625,6 +628,7 @@ public class PlayerSave {
         private final DefaultPrayerData[] quickPrayers;
         private final Presetable[] presets;
         private final Object[] lastPreset;
+        private final int specialTeleblockTimer;
 
         //Member attribs
         private final double totalAmountPaid;
@@ -846,6 +850,7 @@ public class PlayerSave {
         private final int larranKeysUsed;
         private final int brimstoneKeysOpened;
         private final int collectionLogKeysOpened;
+        private final int wildernessKeysOpened;
 
         private final int slayerKeysOpened;
         private final int slayerKeysReceived;
@@ -1045,6 +1050,7 @@ public class PlayerSave {
             quickPrayers = player.getQuickPrayers().getPrayers();
             presets = player.getPresets();
             lastPreset = player.getLastPreset();
+            specialTeleblockTimer = player.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
             totalAmountPaid = Player.getAttribDoubleOr(player, TOTAL_PAYMENT_AMOUNT, 0D);
             promoPaymentAmount = Player.getAttribDoubleOr(player, PROMO_PAYMENT_AMOUNT, 0D);
             promoItemsClaimed = Player.getAttribIntOr(player, PROMO_ITEMS_UNLOCKED, 0);
@@ -1242,6 +1248,7 @@ public class PlayerSave {
             larranKeysUsed = Player.getAttribIntOr(player, LARRANS_KEYS_OPENED, 0);
             brimstoneKeysOpened = Player.getAttribIntOr(player, BRIMSTONE_KEYS_OPENED, 0);
             collectionLogKeysOpened = Player.getAttribIntOr(player, COLLECTION_LOG_KEYS_OPENED, 0);
+            wildernessKeysOpened = Player.getAttribIntOr(player, WILDY_KEYS_OPENED, 0);
             slayerKeysOpened = Player.getAttribIntOr(player, SLAYER_KEYS_OPENED, 0);
             slayerKeysReceived = Player.getAttribIntOr(player, SLAYER_KEYS_RECEIVED, 0);
             doubleExpTicks = Player.getAttribIntOr(player, DOUBLE_EXP_TICKS,0);

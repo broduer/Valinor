@@ -110,7 +110,8 @@ public class MovementPacketListener implements PacketListener {
                 player.clearAttrib(AttributeKey.WILDERNESS_KILLSTREAK);
             }
 
-            if (player.getTimers().has(TimerKey.TELEBLOCK)) {
+            if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+                player.getTimers().cancel(TimerKey.SPECIAL_TELEBLOCK);
                 player.getTimers().cancel(TimerKey.TELEBLOCK);
                 player.getTimers().cancel(TimerKey.TELEBLOCK_IMMUNITY);
                 player.message("The teleport block fades as you leave the wilderness...");

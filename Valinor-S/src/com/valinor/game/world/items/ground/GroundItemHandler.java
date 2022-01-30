@@ -2,16 +2,21 @@ package com.valinor.game.world.items.ground;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.combat.skull.SkullType;
+import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem.State;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +25,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
+import static com.valinor.util.CustomItemIdentifiers.WILDERNESS_KEY;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -352,6 +358,25 @@ public final class GroundItemHandler {
                             stop();
                             return;
                         } else {
+                            if (item.getId() == WILDERNESS_KEY) {
+                                if (WildernessArea.inWilderness(player.tile())) {
+                                    player.confirmDialogue(new String[]{Color.RED.wrap("Are you sure you wish to pick up this key? You will be red"), Color.RED.wrap("skulled and all your items will be lost on death!")}, "", "Proceed.", "Cancel.", () -> {
+                                        Optional<GroundItem> gItem = GroundItemHandler.getGroundItem(WILDERNESS_KEY, tile, player);
+                                        if (gItem.isEmpty()) {
+                                            return;
+                                        }
+                                        WildernessKeyPlugin.announceKeyPickup(player, tile);
+                                        Skulling.assignSkullState(player, SkullType.RED_SKULL);
+                                        player.inventory().add(item);
+                                        sendRemoveGroundItem(groundItem);
+                                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " picked up item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ")", "player_pickup");
+                                        player.inventory().refresh();
+                                    });
+                                }
+                                stop();
+                                return;
+                            }
+
                             boolean added = player.inventory().add(item);
                             if (!added) {
                                 player.message("There is not enough space in your inventory to hold any more items.");

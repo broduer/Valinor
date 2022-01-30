@@ -162,6 +162,8 @@ public abstract class Mob extends Entity {
      */
     public void teleblock(int time, boolean triggerOnLogin) {
         if (triggerOnLogin) {
+            timers.extendOrRegister(TimerKey.SPECIAL_TELEBLOCK, time);
+
             String end = "approximately 2 minutes";
             if (time > 400) {
                 end = "5 minutes";
@@ -172,6 +174,10 @@ public abstract class Mob extends Entity {
                 player.getPacketSender().sendEffectTimer((int) (time * 0.6), EffectTimer.TELEBLOCK);
                 player.message("<col=804080>A teleblock spell has been cast on you. It will expire in " + end + ".");
             }
+            return;
+        }
+
+        if (timers.has(TimerKey.SPECIAL_TELEBLOCK)) {
             return;
         }
 

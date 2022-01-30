@@ -1,5 +1,6 @@
 package com.valinor.game.world.position.areas.impl;
 
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.world.World;
@@ -14,6 +15,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.Controller;
+import com.valinor.util.CustomItemIdentifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -138,6 +140,11 @@ public class WildernessArea extends Controller {
             player.getPacketSender().sendString(PLAYERS_IN_WILDERNESS.childId, QuestTab.InfoTab.INFO_TAB.get(PLAYERS_IN_WILDERNESS.childId).fetchLineData(player));
             player.clearAttrib(AttributeKey.INWILD);
             player.clearAttrib(AttributeKey.PVP_WILDY_AGGRESSION_TRACKER);
+
+            if (player.inventory().contains(CustomItemIdentifiers.WILDERNESS_KEY)) {
+                log.info("{} - escaped with the Wilderness key.", player.getUsername());
+                WildernessKeyPlugin.announceKeyEscape(player);
+            }
         }
     }
 
@@ -148,6 +155,15 @@ public class WildernessArea extends Controller {
             if (!inWilderness(player.tile())) {
                 leave(player);
                 return;
+            }
+
+            //If player is in the wilderness whilst holding a wildy key broadcast it!
+            if(WildernessKeyPlugin.hasKey(player)) {
+                if(!WildernessKeyPlugin.ESCAPED) {
+                    var wildy_lvl = WildernessArea.wildernessLevel(player.tile());
+                    var message = player.getUsername()+" is holding wilderness key at wilderness level ("+wildy_lvl+")";
+                    World.getWorld().sendBroadcast(message);
+                }
             }
 
             if (Transmogrify.isTransmogrified(player)) {

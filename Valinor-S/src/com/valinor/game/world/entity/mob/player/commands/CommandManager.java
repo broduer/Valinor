@@ -144,6 +144,7 @@ public class CommandManager {
         /*
          * Admin commands
          */
+        commands.put("spawnkey", new WildernessKeyCommand());
         commands.put("removepkp", new RemovePkpCommand());
         commands.put("ipban", new IPBanPlayerCommand());
         commands.put("macban", new MacBanPlayerCommand());

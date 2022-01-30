@@ -1,5 +1,6 @@
 package com.valinor.game.content.teleport;
 
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.instance.impl.NightmareInstance;
@@ -32,6 +33,11 @@ public class Teleports {
      * if we so wish to.
      */
     public static boolean canTeleport(Player player, boolean inform, TeleportType teletype) {
+        if ((WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile()) && !player.getPlayerRights().isDeveloperOrGreater(player))) {
+            player.message("You cannot teleport outside the Wilderness with the Wilderness key.");
+            return false;
+        }
+
         //Put most important safety in this method just to be sure
         if (TournamentManager.teleportBlocked(player, true)) {
             return false;
@@ -48,6 +54,14 @@ public class Teleports {
         if (Dueling.in_duel(player)) {
             if (inform) {
                 player.message("You cannot teleport out of a duel.");
+            }
+            return false;
+        }
+
+        if (player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
+            if(inform) {
+                long millis = player.getTimers().left(TimerKey.SPECIAL_TELEBLOCK) * 600L;
+                player.message(String.format("A teleport block has been cast on you. It should wear off in %d minutes, %d seconds.", TimeUnit.MILLISECONDS.toMinutes(millis), TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
             }
             return false;
         }

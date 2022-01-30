@@ -5,6 +5,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
 import com.valinor.game.content.areas.wilderness.content.EloRating;
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
@@ -60,28 +61,35 @@ public final class QuestTab {
             }
         },
 
-        GAME_MODE(53420) {
+        WILDERNESS_KEY(53420) {
+            @Override
+            public String fetchLineData(Player player) {
+                return "Next Wildy Key: <col=ffffff>" + WildernessKeyPlugin.timeTill(false);
+            }
+        },
+
+        GAME_MODE(53421) {
             @Override
             public String fetchLineData(Player player) {
                 return "Game Mode: <col=ffffff>" + Utils.gameModeToString(player);
             }
         },
 
-        EXP_MODE(53421) {
+        EXP_MODE(53422) {
             @Override
             public String fetchLineData(Player player) {
                 return "Exp Mode: <col=ffffff>" + player.expmode().toName();
             }
         },
 
-        PLAY_TIME(53422) {
+        PLAY_TIME(53423) {
             @Override
             public String fetchLineData(Player player) {
                 return "Play Time: <col=ffffff>" + Utils.convertSecondsToShortDuration((long) player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0), false);
             }
         },
 
-        REGISTERED_ON(53423) {
+        REGISTERED_ON(53424) {
             @Override
             public String fetchLineData(Player player) {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
@@ -89,14 +97,14 @@ public final class QuestTab {
             }
         },
 
-        MEMBER_RANK(53424) {
+        MEMBER_RANK(53425) {
             @Override
             public String fetchLineData(Player player) {
                 return "Member Rank: <col=ffffff>" + player.getMemberRights().getName();
             }
         },
 
-        TOTAL_DONATED(53425) {
+        TOTAL_DONATED(53426) {
             @Override
             public String fetchLineData(Player player) {
                 double totalAmountPaid = player.getAttribOr(AttributeKey.TOTAL_PAYMENT_AMOUNT, 0D);
@@ -104,7 +112,7 @@ public final class QuestTab {
             }
         },
 
-        VOTE_POINTS(53426) {
+        VOTE_POINTS(53427) {
             @Override
             public String fetchLineData(Player player) {
                 int votePoints = player.getAttribOr(AttributeKey.VOTE_POINTS, 0);
@@ -112,7 +120,7 @@ public final class QuestTab {
             }
         },
 
-        BOSS_POINTS(53427) {
+        BOSS_POINTS(53428) {
             @Override
             public String fetchLineData(Player player) {
                 int bossPoints = player.getAttribOr(AttributeKey.BOSS_POINTS, 0);
@@ -120,7 +128,7 @@ public final class QuestTab {
             }
         },
 
-        ACHIEVEMENT_POINTS(53428) {
+        ACHIEVEMENT_POINTS(53429) {
             @Override
             public String fetchLineData(Player player) {
                 int achievementPoints = player.getAttribOr(AttributeKey.ACHIEVEMENT_POINTS, 0);
@@ -128,7 +136,7 @@ public final class QuestTab {
             }
         },
 
-        PK_POINTS(53429) {
+        PK_POINTS(53430) {
             @Override
             public String fetchLineData(Player player) {
                 int pkPoints = player.getAttribOr(AttributeKey.PK_POINTS, 0);
@@ -136,7 +144,7 @@ public final class QuestTab {
             }
         },
 
-        BOUNTY_HUNTER_POINTS(53430) {
+        BOUNTY_HUNTER_POINTS(53431) {
             @Override
             public String fetchLineData(Player player) {
                 int bountyHunterPoints = player.getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0);
@@ -144,7 +152,7 @@ public final class QuestTab {
             }
         },
 
-        REFERRALS(53431) {
+        REFERRALS(53432) {
             @Override
             public String fetchLineData(Player player) {
                 int referralCount = player.getAttribOr(AttributeKey.REFERRALS_COUNT, 0);
@@ -152,7 +160,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_TASK(53432) {
+        SLAYER_TASK(53433) {
             @Override
             public String fetchLineData(Player player) {
                 String name = Slayer.taskName(player.getAttribOr(AttributeKey.SLAYER_TASK_ID, 0));
@@ -165,7 +173,7 @@ public final class QuestTab {
             }
         },
 
-        TASK_STREAK(53433) {
+        TASK_STREAK(53434) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.SLAYER_TASK_SPREE, 0);
@@ -173,7 +181,7 @@ public final class QuestTab {
             }
         },
 
-        TASKS_COMPLETED(53434) {
+        TASKS_COMPLETED(53435) {
             @Override
             public String fetchLineData(Player player) {
                 int num = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
@@ -181,7 +189,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_KEYS_RECEIVED(53435) {
+        SLAYER_KEYS_RECEIVED(53436) {
             @Override
             public String fetchLineData(Player player) {
                 var keys = player.<Integer>getAttribOr(AttributeKey.SLAYER_KEYS_RECEIVED, 0);
@@ -189,7 +197,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_POINTS(53436) {
+        SLAYER_POINTS(53437) {
             @Override
             public String fetchLineData(Player player) {
                 int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
@@ -197,7 +205,7 @@ public final class QuestTab {
             }
         },
 
-        SLAYER_TASKS_COMPLETED(53437) {
+        SLAYER_TASKS_COMPLETED(53438) {
             @Override
             public String fetchLineData(Player player) {
                 int slayerTasksCompleted = player.getAttribOr(AttributeKey.COMPLETED_SLAYER_TASKS, 0);
@@ -205,14 +213,14 @@ public final class QuestTab {
             }
         },
 
-        PLAYERS_IN_WILDERNESS(53438) {
+        PLAYERS_IN_WILDERNESS(53439) {
             @Override
             public String fetchLineData(Player player) {
                 return "Players in wild: <col=ffffff>" + WildernessArea.players.size();
             }
         },
 
-        ELO_RATING(53439) {
+        ELO_RATING(53440) {
             @Override
             public String fetchLineData(Player player) {
                 int rating = player.getAttribOr(AttributeKey.ELO_RATING, EloRating.DEFAULT_ELO_RATING);
@@ -220,7 +228,7 @@ public final class QuestTab {
             }
         },
 
-        KILLS(53440) {
+        KILLS(53441) {
             @Override
             public String fetchLineData(Player player) {
                 int kills = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
@@ -228,7 +236,7 @@ public final class QuestTab {
             }
         },
 
-        DEATHS(53441) {
+        DEATHS(53442) {
             @Override
             public String fetchLineData(Player player) {
                 int deaths = player.getAttribOr(AttributeKey.PLAYER_DEATHS, 0);
@@ -236,14 +244,14 @@ public final class QuestTab {
             }
         },
 
-        KD_RATIO(53442) {
+        KD_RATIO(53443) {
             @Override
             public String fetchLineData(Player player) {
                 return "K/D Ratio: <col=ffffff>" + player.getKillDeathRatio();
             }
         },
 
-        CURRENT_KILLSTREAK(53443) {
+        CURRENT_KILLSTREAK(53444) {
             @Override
             public String fetchLineData(Player player) {
                 int killstreak = player.getAttribOr(AttributeKey.KILLSTREAK, 0);
@@ -251,7 +259,7 @@ public final class QuestTab {
             }
         },
 
-        KILLSTREAK_RECORD(53444) {
+        KILLSTREAK_RECORD(53445) {
             @Override
             public String fetchLineData(Player player) {
                 int record = player.getAttribOr(AttributeKey.KILLSTREAK_RECORD, 0);
@@ -259,7 +267,7 @@ public final class QuestTab {
             }
         },
 
-        WILDERNESS_KILLSTREAK(53445) {
+        WILDERNESS_KILLSTREAK(53446) {
             @Override
             public String fetchLineData(Player player) {
                 int wildernessStreak = player.getAttribOr(AttributeKey.WILDERNESS_KILLSTREAK, 0);

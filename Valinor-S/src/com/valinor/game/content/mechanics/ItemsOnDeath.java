@@ -2,6 +2,7 @@ package com.valinor.game.content.mechanics;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.GameConstants;
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.items_kept_on_death.Conversions;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
@@ -22,9 +23,11 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.net.packet.incoming_packets.PickupItemPacketListener;
 import com.valinor.test.unit.IKODTest;
 import com.valinor.test.unit.PlayerDeathConvertResult;
 import com.valinor.test.unit.PlayerDeathDropResult;
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
 
 import java.util.ArrayList;
@@ -198,6 +201,16 @@ public class ItemsOnDeath {
             }
             keep.add(new Item(head.getId(), 1));
 
+            //Always drop wildy keys
+            if(head.getId() == CustomItemIdentifiers.WILDERNESS_KEY) {
+                if (WildernessArea.inWilderness(player.tile())) {
+                    player.inventory().remove(CustomItemIdentifiers.WILDERNESS_KEY, Integer.MAX_VALUE);
+                    PickupItemPacketListener.respawn(Item.of(CustomItemIdentifiers.WILDERNESS_KEY), tile, 3);
+                    WildernessKeyPlugin.announceKeyDrop(player, tile);
+                    keep.remove(head);
+                }
+            }
+
             if (head.getAmount() == 1) { // Amount 1? Remove the item entirely.
                 Item delete = toDrop.poll();
                 IKODTest.debug("kept " + delete.toShortString());
@@ -258,6 +271,15 @@ public class ItemsOnDeath {
         LinkedList<Item> toDropConverted = new LinkedList<>();
 
         toDrop.forEach(item -> {
+            if(item.getId() == CustomItemIdentifiers.WILDERNESS_KEY) {
+                if (WildernessArea.inWilderness(player.tile())) {
+                    player.inventory().remove(CustomItemIdentifiers.WILDERNESS_KEY, Integer.MAX_VALUE);
+                    PickupItemPacketListener.respawn(Item.of(CustomItemIdentifiers.WILDERNESS_KEY), tile, 3);
+                    WildernessKeyPlugin.announceKeyDrop(player, tile);
+                    return;
+                }
+            }
+
             if (item.getId() == AncientArtifacts.ANCIENT_EFFIGY.getItemId()
                 || item.getId() == AncientArtifacts.ANCIENT_EMBLEM.getItemId()
                 || item.getId() == AncientArtifacts.ANCIENT_MEDALLION.getItemId()

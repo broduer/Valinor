@@ -1,5 +1,6 @@
 package com.valinor.game.content.teleport.obelisk;
 
+import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
@@ -234,7 +235,9 @@ public class Obelisks extends Interaction {
                 int plry = p.tile().y;
 
                 if (plrx >= x - 1 && plrx <= x + 1 && plry >= y - 1 && plry <= y + 1) {
-                    if (p.getTimers().has(TimerKey.TELEBLOCK)) {
+                    if (WildernessKeyPlugin.hasKey(p)) {
+                        p.message("You cannot teleport outside the Wilderness with the Wilderness key.");
+                    } else if (p.getTimers().has(TimerKey.TELEBLOCK) || p.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
                         p.message("You're teleblocked and cannot travel with obelisks.");
                     } else if (!p.locked() || !p.stunned()) {
                         p.stopActions(true);
