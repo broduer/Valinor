@@ -217,7 +217,7 @@ public class DropsDisplay {
         petAverage -= reduction;
 
         if(petId != -1)
-            drops.add(0, new Integer[]{petId, 1, 1, player.hasPetOut("Jawa") ? petAverage / 2 : petAverage}); //"pet" specifically identified by minAmount == -1
+            drops.add(0, new Integer[]{petId, 1, 1, player.hasPetOut("Jawa pet") ? petAverage / 2 : petAverage}); //"pet" specifically identified by minAmount == -1
 
         var larransLuck = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.LARRANS_LUCK);
         var combatLvl = def.combatlevel;

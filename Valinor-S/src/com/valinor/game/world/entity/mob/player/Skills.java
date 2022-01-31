@@ -294,7 +294,7 @@ public class Skills {
                 player.graphic(1388, 124, 0);
                 player.message(Color.ORANGE_RED.tag() + "Congratulations on achieving level 99 in " + SKILL_NAMES[skill] + "!");
                 player.message(Color.ORANGE_RED.tag() + "You may now purchase a skillcape from Mac who can be found at home.");
-                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just achieved level 99 in " + Color.BLUE.tag() + "" + SKILL_NAMES[skill] + "</col> on a " + Color.BLUE.tag() + " " + Utils.gameModeToString(player) + "</col>!");
+                World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just achieved level 99 in " + Color.BLUE.tag() + "" + SKILL_NAMES[skill] + "</col> on a " + Color.BLUE.tag() + " " + Utils.gameModeToString(player) + " exp mode: "+player.expmode().toName()+"</col>!");
             }
 
             if (totalLevel() >= Mac.TOTAL_LEVEL_FOR_MAXED) {
@@ -359,6 +359,13 @@ public class Skills {
                 });
             }
         }
+
+        if (xps[skill] == 200_000_000) {
+            player.graphic(1388, 124, 0);
+            player.message(Color.ORANGE_RED.tag() + "Congratulations on achieving 200m experience in " + SKILL_NAMES[skill] + "!");
+            World.getWorld().sendWorldMessage("<img=1081> <col=" + Color.HOTPINK.getColorValue() + ">" + player.getUsername() + "</col> has just achieved 200M exp in " + Color.BLUE.tag() + "" + SKILL_NAMES[skill] + "</col> on a " + Color.BLUE.tag() + " " + Utils.gameModeToString(player) + "</col>!");
+        }
+
         update();//Force an update
         return oldLevel != newLevel;
     }

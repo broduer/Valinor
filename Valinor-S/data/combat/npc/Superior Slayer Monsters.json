@@ -27,6 +27,9 @@
       "attack": 1537,
       "block": 2309,
       "death": 1538
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -57,6 +60,9 @@
       "attack": 4234,
       "block": 4235,
       "death": 4233
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -82,6 +88,9 @@
       "attack": 1552,
       "block": 1550,
       "death": 1553
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -105,6 +114,9 @@
       "attack": 1557,
       "block": 1555,
       "death": 1558
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -137,6 +149,9 @@
       "attack": 227,
       "death": 228,
       "block": 1504
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -162,6 +177,9 @@
       "death": 1590,
       "block": 1591,
       "attack": 1592
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -190,6 +208,9 @@
       "attack": 1567,
       "death": 1568,
       "block": 1565
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -224,7 +245,8 @@
       "death": 7815
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.MarbleGargoyle"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.MarbleGargoyle",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -257,7 +279,8 @@
       "death": 2733
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.NightBeast"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.NightBeast",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -288,6 +311,9 @@
       "attack": 4672,
       "block": 4671,
       "death": 4673
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -318,7 +344,8 @@
       "death": 3849
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.SmokeDevil"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.SmokeDevil",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -352,7 +379,8 @@
       "death": 1508
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.AberrantSpectre"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.slayer.AberrantSpectre",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -382,6 +410,9 @@
       "attack": 1582,
       "death": 1580,
       "block": 1581
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   },
   {
@@ -411,6 +442,9 @@
       "attack": 1586,
       "death": 1587,
       "block": 1585
+    },
+    "scripts": {
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.SuperiorSlayerDroptable"
     }
   }
 ]

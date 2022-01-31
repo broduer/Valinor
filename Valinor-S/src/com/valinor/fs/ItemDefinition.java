@@ -260,50 +260,73 @@ public class ItemDefinition implements Definition {
             grandexchange = true;
         } else if (id == AGILITY_MASTER_CAPE) {
             name = "Agility master cape";
+            cost = 1_000_000;
         } else if (id == ATTACK_MASTER_CAPE) {
             name = "Attack master cape";
-        } else if (id == CONSTRUCCTION_MASTER_CAPE) {
+            cost = 1_000_000;
+        } else if (id == CONSTRUCTION_MASTER_CAPE) {
             name = "Construction master cape";
+            cost = 1_000_000;
         } else if (id == COOKING_MASTER_CAPE) {
             name = "Cooking master cape";
+            cost = 1_000_000;
         } else if (id == CRAFTING_MASTER_CAPE) {
             name = "Crafting master cape";
+            cost = 1_000_000;
         } else if (id == DEFENCE_MASTER_CAPE) {
             name = "Defence master cape";
+            cost = 1_000_000;
         } else if (id == FARMING_MASTER_CAPE) {
             name = "Farming master cape";
+            cost = 1_000_000;
         } else if (id == FIREMAKING_MASTER_CAPE) {
             name = "Firemaking master cape";
+            cost = 1_000_000;
         } else if (id == FISHING_MASTER_CAPE) {
             name = "Fishing master cape";
+            cost = 1_000_000;
         } else if (id == FLETCHING_MASTER_CAPE) {
             name = "Fletching master cape";
+            cost = 1_000_000;
         } else if (id == HERBLORE_MASTER_CAPE) {
             name = "Herblore master cape";
+            cost = 1_000_000;
         } else if (id == HITPOINTS_MASTER_CAPE) {
             name = "Hitpoints master cape";
+            cost = 1_000_000;
         } else if (id == HUNTER_MASTER_CAPE) {
             name = "Hunter master cape";
+            cost = 1_000_000;
         } else if (id == MAGIC_MASTER_CAPE) {
             name = "Magic master cape";
+            cost = 1_000_000;
         } else if (id == MINING_MASTER_CAPE) {
             name = "Mining master cape";
+            cost = 1_000_000;
         } else if (id == PRAYER_MASTER_CAPE) {
             name = "Prayer master cape";
+            cost = 1_000_000;
         } else if (id == RANGE_MASTER_CAPE) {
             name = "Range master cape";
+            cost = 1_000_000;
         } else if (id == RUNECRAFTING_MASTER_CAPE) {
             name = "Runecrafting master cape";
+            cost = 1_000_000;
         } else if (id == SLAYER_MASTER_CAPE) {
             name = "Slayer master cape";
+            cost = 1_000_000;
         } else if (id == SMITHING_MASTER_CAPE) {
             name = "Smithing master cape";
+            cost = 1_000_000;
         } else if (id == STRENGTH_MASTER_CAPE) {
             name = "Strength master cape";
+            cost = 1_000_000;
         } else if (id == THIEVING_MASTER_CAPE) {
             name = "Thieving master cape";
+            cost = 1_000_000;
         } else if (id == WOODCUTTING_MASTER_CAPE) {
             name = "Woodcutting master cape";
+            cost = 1_000_000;
         } else if (id == MYSTERY_TICKET) {
             name = "Mystery ticket";
             stackable = true;

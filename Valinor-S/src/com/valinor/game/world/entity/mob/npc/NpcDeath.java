@@ -132,8 +132,6 @@ public class NpcDeath {
                 if(SponsorInsideCave)
                     respawnTimer = 25;
 
-                killer.getCombat().reset();
-
                 // Increment kill.
                 killer.getSlayerKillLog().addKill(npc);
                 if (!npc.isWorldBoss() || npc.id() != THE_NIGHTMARE_9430 || npc.id() != KALPHITE_QUEEN_6500) {
@@ -620,11 +618,6 @@ public class NpcDeath {
 
                             //Roll for an actual drop of the table
                             ItemDrops.rollTheDropTable(killer, npc);
-                        } else {
-                            // Custom drop tables
-                            if(npc.combatInfo() != null) {
-                                npc.combatInfo().scripts.droptable_.reward(npc, killer);
-                            }
                         }
 
                         int roll = npc.def() != null && npc.def().combatlevel > 100 ? 100 : 200;

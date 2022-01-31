@@ -52,7 +52,7 @@ public class TestCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        //System.out.println(player.pet().def().name);
+        System.out.println(player.pet().def().name);
         //player.getPacketSender().sendItemOnInterface(12236, itemList);
         //player.sound(2401);
         //ZarosGodwars.end();
@@ -60,11 +60,6 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        Npc npc = new Npc(NEX, new Tile(3333, 3333)).spawn(false);
-
-        World.getWorld().getPlayers().forEach(p -> {
-
-        });
 
         player.message("Test command has been activated.");
     }

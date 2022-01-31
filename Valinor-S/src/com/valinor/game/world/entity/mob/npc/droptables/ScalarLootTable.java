@@ -366,7 +366,7 @@ public class ScalarLootTable {
             var reduction = roll * player.dropRateBonus() / 100;
             roll -= reduction;
 
-            if (World.getWorld().rollDie(player.hasPetOut("Jawa") ? roll / 2 : roll, 1)) {
+            if (World.getWorld().rollDie(player.hasPetOut("Jawa pet") ? roll / 2 : roll, 1)) {
                 return Optional.ofNullable(Pet.getPetByItem(petItem));
             }
         }

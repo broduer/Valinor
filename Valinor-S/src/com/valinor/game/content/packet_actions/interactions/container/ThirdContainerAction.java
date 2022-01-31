@@ -57,7 +57,6 @@ public class ThirdContainerAction {
             if (player.getDepositBox().quantityTen) {
                 player.getDepositBox().deposit(id, 5);
             } else {
-                System.out.println("enter");
                 player.getDepositBox().deposit(id, 10);
             }
         }

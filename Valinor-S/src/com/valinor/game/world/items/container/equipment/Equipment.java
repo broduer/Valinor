@@ -4,6 +4,7 @@ import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.edgevile.Mac;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.items.equipment.max_cape.MaxCape;
+import com.valinor.game.content.items.skillcape.MasterCape;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.sound.CombatSounds;
@@ -367,6 +368,7 @@ public final class Equipment extends ItemContainer {
         // Check if we're fit enough to equip this item
 
         boolean[] needsreq = new boolean[1];
+        boolean[] needsMasterCapeReq = new boolean[1];
         Map<Integer, Integer> reqs = World.getWorld().equipmentInfo().requirementsFor(equip.getId());
         if (reqs != null && reqs.size() > 0) {
             reqs.forEach((key, value) -> {
@@ -374,11 +376,18 @@ public final class Equipment extends ItemContainer {
                     player.message("You need %s %s level of %d to equip this.", Skills.SKILL_INDEFINITES[key], Skills.SKILL_NAMES[key], value);
                     needsreq[0] = true;
                 }
+
+                Optional<MasterCape> masterCape = MasterCape.forId(key);
+                if(masterCape.isPresent() && equip.matchesId(masterCape.get().cape)) {
+                    if(!needsMasterCapeReq[0] && player.skills().xp()[key] < 200_000_000) {
+                        needsMasterCapeReq[0] = true;
+                    }
+                }
             });
         }
 
         // We don't meet a requirement.
-        if (needsreq[0]) {
+        if (needsreq[0] || needsMasterCapeReq[0]) {
             player.message("<col=FF0000>You don't have the level requirements to wear: %s.", World.getWorld().definitions().get(ItemDefinition.class, equip.getId()).name);
             return false;
         }

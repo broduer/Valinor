@@ -360,6 +360,10 @@ public class PlayerSave {
                 player.putAttrib(CALLISTOS_KILLED, details.callistosKilled);
                 player.putAttrib(KC_GIANTMOLE, details.molesKilled);
                 player.putAttrib(THE_NIGHTMARE_KC, details.nightmaresKilled);
+                player.putAttrib(KREE_ARRA_KILLED, details.kreeArrasKilled);
+                player.putAttrib(COMMANDER_ZILYANA_KILLED, details.zilyanasKilled);
+                player.putAttrib(GENERAL_GRAARDOR_KILLED, details.graardorsKilled);
+                player.putAttrib(KRIL_TSUTSAROTHS_KILLED, details.krilTsutsarothsKilled);
                 player.putAttrib(NEX_KC, details.nexKilled);
                 player.putAttrib(KC_REX, details.rexKilled);
                 player.putAttrib(KC_PRIME, details.primeKilled);
@@ -764,6 +768,10 @@ public class PlayerSave {
         private final int scorpiasKilled;
         private final int callistosKilled;
         private final int molesKilled;
+        private final int kreeArrasKilled;
+        private final int zilyanasKilled;
+        private final int graardorsKilled;
+        private final int krilTsutsarothsKilled;
         private final int nightmaresKilled;
         private final int nexKilled;
         private final int rexKilled;
@@ -1165,6 +1173,10 @@ public class PlayerSave {
             callistosKilled = Player.getAttribIntOr(player, CALLISTOS_KILLED, 0);
             molesKilled = Player.getAttribIntOr(player, KC_GIANTMOLE, 0);
             nightmaresKilled = Player.getAttribIntOr(player, THE_NIGHTMARE_KC, 0);
+            kreeArrasKilled = Player.getAttribIntOr(player, KREE_ARRA_KILLED, 0);
+            zilyanasKilled = Player.getAttribIntOr(player, COMMANDER_ZILYANA_KILLED, 0);
+            graardorsKilled = Player.getAttribIntOr(player, GENERAL_GRAARDOR_KILLED, 0);
+            krilTsutsarothsKilled = Player.getAttribIntOr(player, KRIL_TSUTSAROTHS_KILLED, 0);
             nexKilled = Player.getAttribIntOr(player, NEX_KC, 0);
             rexKilled = Player.getAttribIntOr(player, KC_REX, 0);
             primeKilled = Player.getAttribIntOr(player, KC_PRIME, 0);

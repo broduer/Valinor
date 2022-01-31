@@ -375,11 +375,11 @@ public class Player extends Mob {
         if(hasPetOut("Zriawk"))
             percent += 15;
 
-        if (equipment.hasAt(EquipSlot.WEAPON, PURPLE_SLAYER_HELMET_I)) {
+        if (equipment.hasAt(EquipSlot.HEAD, PURPLE_SLAYER_HELMET_I)) {
             percent += 3;
         }
 
-        if (equipment.hasAt(EquipSlot.WEAPON, TZKAL_SLAYER_HELMET_I)) {
+        if (equipment.hasAt(EquipSlot.HEAD, TZKAL_SLAYER_HELMET_I)) {
             percent += 3;
         }
 

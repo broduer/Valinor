@@ -26,19 +26,14 @@ public class CureCropAction extends PlayerTask {
      */
     private CureCropAction(Player player, PatchState state) {
         super(3, player, () -> {
-
             if (player.getInventory().contains(FarmingConstants.ITEM_PLANT_CURE)) {
-
                 state.setDiseaseState(DiseaseState.NOT_PRESENT);
-
                 player.getInventory().remove(FarmingConstants.ITEM_PLANT_CURE);
                 player.getInventory().add(new Item(ItemIdentifiers.VIAL));
-
                 player.message("You apply the cure to the patch.");
                 player.getFarming().updatePatches(player);
+                player.endCurrentTask();
             }
-
-            player.endCurrentTask();
         });
     }
 

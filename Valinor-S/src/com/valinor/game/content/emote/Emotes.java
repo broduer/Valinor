@@ -10,6 +10,7 @@ import com.valinor.game.world.items.Item;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Emotes {
@@ -94,95 +95,95 @@ public class Emotes {
             }
             int capeid = cape.getId();
             switch (capeid) {
-                case 9747, 9748 -> {
+                case 9747, 9748, ATTACK_MASTER_CAPE -> {
                     player.animate(4959);
                     player.graphic(823);
                 }
-                case 9753, 9754 -> {
+                case 9753, 9754, DEFENCE_MASTER_CAPE -> {
                     player.animate(4961);
                     player.graphic(824);
                 }
-                case 9750, 9751 -> {
+                case 9750, 9751, STRENGTH_MASTER_CAPE -> {
                     player.animate(4981);
                     player.graphic(828);
                 }
-                case 9768, 9769 -> {
+                case 9768, 9769, HITPOINTS_MASTER_CAPE -> {
                     player.animate(4971);
                     player.graphic(833);
                 }
-                case 9756, 9757 -> {
+                case 9756, 9757, RANGE_MASTER_CAPE -> {
                     player.animate(4973);
                     player.graphic(832);
                 }
-                case 9762, 9763 -> {
+                case 9762, 9763, PRAYER_MASTER_CAPE -> {
                     player.animate(4939);
                     player.graphic(813);
                 }
-                case 9759, 9760 -> {
+                case 9759, 9760, MAGIC_MASTER_CAPE -> {
                     player.animate(4979);
                     player.graphic(829);
                 }
-                case 9801, 9802 -> {
+                case 9801, 9802, COOKING_MASTER_CAPE -> {
                     player.animate(4955);
                     player.graphic(821);
                 }
-                case 9807, 9808 -> {
+                case 9807, 9808, WOODCUTTING_MASTER_CAPE -> {
                     player.animate(4957);
                     player.graphic(822);
                 }
-                case 9783, 9784 -> {
+                case 9783, 9784, FLETCHING_MASTER_CAPE -> {
                     player.animate(4937);
                     player.graphic(812);
                 }
-                case 9798, 9799 -> {
+                case 9798, 9799, FISHING_MASTER_CAPE -> {
                     player.animate(4951);
                     player.graphic(819);
                 }
-                case 9804, 9805 -> {
+                case 9804, 9805, FIREMAKING_MASTER_CAPE -> {
                     player.animate(4975);
                     player.graphic(8831);
                 }
-                case 9780, 9781 -> {
+                case 9780, 9781, CRAFTING_MASTER_CAPE -> {
                     player.animate(4949);
                     player.graphic(818);
                 }
-                case 9795, 9796 -> {
+                case 9795, 9796, SMITHING_MASTER_CAPE -> {
                     player.animate(4943);
                     player.graphic(815);
                 }
-                case 9792, 9793 -> {
+                case 9792, 9793, MINING_MASTER_CAPE -> {
                     player.animate(4941);
                     player.graphic(814);
                 }
-                case 9774, 9775 -> {
+                case 9774, 9775, HERBLORE_MASTER_CAPE -> {
                     player.animate(4969);
                     player.graphic(835);
                 }
-                case 9771, 9772 -> {
+                case 9771, 9772, AGILITY_MASTER_CAPE -> {
                     player.animate(4977);
                     player.graphic(830);
                 }
-                case 9777, 9778 -> {
+                case 9777, 9778, THIEVING_MASTER_CAPE -> {
                     player.animate(4965);
                     player.graphic(826);
                 }
-                case 9786, 9787 -> {
+                case 9786, 9787, SLAYER_MASTER_CAPE -> {
                     player.animate(4967);
                     player.graphic(1656);
                 }
-                case 9810, 9811 -> {
+                case 9810, 9811, FARMING_MASTER_CAPE -> {
                     player.animate(4963);
                     player.graphic(826);
                 }
-                case 9765, 9766 -> {
+                case 9765, 9766, RUNECRAFTING_MASTER_CAPE -> {
                     player.animate(4947);
                     player.graphic(817);
                 }
-                case 9789, 9790 -> {
+                case 9789, 9790, HUNTER_MASTER_CAPE -> {
                     player.animate(4953);
                     player.graphic(820);
                 }
-                case 9948, 9949 -> {
+                case 9948, 9949, CONSTRUCTION_MASTER_CAPE -> {
                     player.animate(5158);
                     player.graphic(907);
                 }

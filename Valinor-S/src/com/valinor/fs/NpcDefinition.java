@@ -8,7 +8,6 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.*;
 
-import static com.valinor.util.CustomItemIdentifiers.JAWA_PET;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.ARAGOG;
 import static com.valinor.util.CustomNpcIdentifiers.DEMENTOR;

@@ -40,7 +40,7 @@ public class CustomItemIdentifiers {
     public static final int SUMMER_TOKEN = 30219;
     public static final int AGILITY_MASTER_CAPE = 30280;
     public static final int ATTACK_MASTER_CAPE = 30282;
-    public static final int CONSTRUCCTION_MASTER_CAPE = 30284;
+    public static final int CONSTRUCTION_MASTER_CAPE = 30284;
     public static final int COOKING_MASTER_CAPE = 30286;
     public static final int CRAFTING_MASTER_CAPE = 30288;
     public static final int DEFENCE_MASTER_CAPE = 30290;

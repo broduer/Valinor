@@ -187,7 +187,10 @@ public abstract class Shop {
             || player.getInventory().remaining() >= 1 && item.stackable()
             || player.getInventory().contains(item.getId()) && item.stackable()) {
 
-            item = new Item(item.getId(), item.getAmount());
+            boolean canNote = item.noteable() && item.getAmount() > 1;
+            int giveNotedItemOrUnnoted = canNote ? item.note().getId() : item.getId();
+
+            item = new Item(giveNotedItemOrUnnoted, item.getAmount());
 
             if (value > 0 && !currencyType.currency.takeCurrency(player, item.getAmount() * value)) {
                 return;
@@ -246,7 +249,7 @@ public abstract class Shop {
 
         if (shopId == 47) {
             if (item.getId() == CANNONBALL) {
-                item.setAmount(1000);
+                item.setAmount(100);
             }
         }
 
@@ -450,6 +453,9 @@ public abstract class Shop {
             StoreItem storeItem = (StoreItem) item;
             int value = storeItem.getShopValue();
             String message = Color.RED.tag() + "The shop will sell this " + item.unnote().name() + " for " + (value <= 0 ? "free!" : Utils.formatValue(value) + storeItem.getShopCurrency(this).toString() + ".");
+            if(shopId == 47 && item.getId() == CANNONBALL) {
+                message = Color.RED.tag() + "The shop will sell 100 " + item.unnote().name() + " for " + Utils.formatValue(value) + storeItem.getShopCurrency(this).toString() + ".";
+            }
             player.message(message);
         }
     }

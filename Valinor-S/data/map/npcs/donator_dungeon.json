@@ -1,57 +1,75 @@
 [
   {
-    "name": "revenant imp",
-    "id": 7881,
-    "x": 2335,
-    "y": 9804,
-    "z": 0,
-    "direction": "E",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant pyrefiend",
-    "id": 7932,
-    "x": 2329,
-    "y": 9804,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant imp",
-    "id": 7881,
-    "x": 2327,
-    "y": 9811,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant dragon",
-    "id": 7940,
-    "x": 2337,
+    "name": "vet'ion",
+    "id": 6611,
+    "x": 2342,
     "y": 9810,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 3
   },
   {
-    "name": "revenant goblin",
-    "id": 7931,
-    "x": 2333,
+    "name": "chaos fanatic",
+    "id": 6619,
+    "x": 2325,
+    "y": 9812,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "miniature chaotic clouds",
+    "id": 6620,
+    "x": 2326,
+    "y": 9815,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "miniature chaotic clouds",
+    "id": 6620,
+    "x": 2322,
+    "y": 9815,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "miniature chaotic clouds",
+    "id": 6620,
+    "x": 2325,
+    "y": 9814,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
+  },
+  {
+    "name": "miniature chaotic clouds",
+    "id": 6620,
+    "x": 2327,
     "y": 9809,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
   },
   {
-    "name": "revenant dark beast",
-    "id": 7938,
-    "x": 2342,
-    "y": 9804,
+    "name": "miniature chaotic clouds",
+    "id": 6620,
+    "x": 2328,
+    "y": 9813,
     "z": 0,
     "direction": "S",
-    "walkRange": 5
+    "walkRange": 2
+  },
+  {
+    "name": "crazy arch",
+    "id": 6618,
+    "x": 2333,
+    "y": 9805,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 2
   },
   {
     "name": "callisto",
@@ -209,51 +227,6 @@
     "direction": "S",
     "walkRange": 5,
     "ancientSpawn": true
-  },
-  {
-    "name": "revenant demon",
-    "id": 7936,
-    "x": 2323,
-    "y": 9815,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant hellhound",
-    "id": 7935,
-    "x": 2342,
-    "y": 9811,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant knight",
-    "id": 7939,
-    "x": 2330,
-    "y": 9824,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant ork",
-    "id": 7937,
-    "x": 2337,
-    "y": 9828,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
-  },
-  {
-    "name": "revenant dark beast",
-    "id": 7938,
-    "x": 2343,
-    "y": 9827,
-    "z": 0,
-    "direction": "S",
-    "walkRange": 5
   },
   {
     "name": "ancient revenant knight",
