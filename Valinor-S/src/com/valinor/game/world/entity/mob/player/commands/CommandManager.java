@@ -103,6 +103,7 @@ public class CommandManager {
         commands.put("features", new FeaturesCommand());
         commands.put("promocode", new PromoCodeCommand());
         commands.put("cp", new ClanOutpostCommand());
+        commands.put("co", new ClanOutpostCommand());
         commands.put("chins", new ChinsCommand());
         commands.put("revs", new RevsCommand());
         commands.put("mb",new MageBankCommand());

@@ -25,16 +25,13 @@ public class HerbBox extends Interaction {
                     player.message("You need at least one inventory space to take a herb from your box.");
                     return true;
                 }
-                var herbBoxCharges = player.<Integer>getAttribOr(AttributeKey.HERB_BOX_CHARGES,20);
-                if (herbBoxCharges == 0) {
-                    player.putAttrib(AttributeKey.HERB_BOX_CHARGES,20);
-                } else {
-                    int herb = table.rollItem().getId();
-                    player.inventory().add(herb, 1);
-                    player.message("You open the herb box and find " + World.getWorld().definitions().get(ItemDefinition.class, herb).name + ".");
-                    if (herbBoxCharges - 1 <= 0) {
-                        player.inventory().remove(item,true);
-                    }
+                int herb = table.rollItem().getId();
+                player.inventory().add(herb, 1);
+                player.message("You open the herb box and find " + World.getWorld().definitions().get(ItemDefinition.class, herb).name + ".");
+                var herbBoxCharges = player.<Integer>getAttribOr(AttributeKey.HERB_BOX_CHARGES, 20) - 1;
+                player.putAttrib(AttributeKey.HERB_BOX_CHARGES, herbBoxCharges);
+                if (herbBoxCharges <= 0) {
+                    player.inventory().remove(item, true);
                 }
                 return true;
             }
