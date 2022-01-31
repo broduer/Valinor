@@ -5,7 +5,9 @@ import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -20,9 +22,13 @@ import static com.valinor.game.world.entity.AttributeKey.*;
 public class DailyTaskManager extends Interaction {
 
     public static String timeLeft() {
-        LocalDateTime midnight = LocalDateTime.of(LocalDateTime.now().getYear(), LocalDateTime.now().getMonth(), LocalDateTime.now().getDayOfMonth() + 1, 0, 0);
-        LocalDateTime now = LocalDateTime.now();
-        long diffInSeconds = ChronoUnit.SECONDS.between(now, midnight);
+        LocalDate now = LocalDate.now();
+        LocalDate midnight = now.plusDays(1);
+
+        ZonedDateTime aDateTime = ZonedDateTime.now();
+        ZonedDateTime otherDateTime = ZonedDateTime.of(midnight.getYear(), midnight.getMonth().getValue(), midnight.getDayOfMonth(), 0, 0, 0, 0, ZoneId.systemDefault());
+
+        long diffInSeconds = ChronoUnit.SECONDS.between(aDateTime, otherDateTime);
         return Utils.convertSecondsToDurationShort(diffInSeconds);
     }
 
