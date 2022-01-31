@@ -180,9 +180,9 @@ public class ItemCombining extends Interaction {
 
         LAVA_STAFF(LAVA_BATTLESTAFF_21198, LAVA_BATTLESTAFF, LAVA_STAFF_UPGRADE_KIT, true),
 
-        DRAGON_HUNTER_CROSSBOW_B(ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_B, DRAGON_HUNTER_CROSSBOW, KBD_HEADS, true),
+        DRAGON_HUNTER_CROSSBOW_B(ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_B, DRAGON_HUNTER_CROSSBOW, KBD_HEADS, false, true),
 
-        DRAGON_HUNTER_CROSSBOW_T(ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T, DRAGON_HUNTER_CROSSBOW, VORKATHS_HEAD_21907, true),
+        DRAGON_HUNTER_CROSSBOW_T(ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T, DRAGON_HUNTER_CROSSBOW, VORKATHS_HEAD_21907, false, true),
 
         CRYSTAL_OF_IORWERTH_CROWN(CRYSTAL_CROWN_23913, CRYSTAL_CROWN, CRYSTAL_OF_IORWERTH, true),
 
@@ -232,6 +232,7 @@ public class ItemCombining extends Interaction {
         private final int item1;
         private final int item2;
         private boolean revert;
+        private boolean dismantle;
 
         Combine(int result, int item1, int item2) {
             this.result = result;
@@ -244,6 +245,14 @@ public class ItemCombining extends Interaction {
             this.item1 = item1;
             this.item2 = item2;
             this.revert = revert;
+        }
+
+        Combine(int result,int item1, int item2, boolean revert, boolean dismantle) {
+            this.result = result;
+            this.item1 = item1;
+            this.item2 = item2;
+            this.revert = revert;
+            this.dismantle = dismantle;
         }
     }
 
@@ -364,8 +373,19 @@ public class ItemCombining extends Interaction {
                                 }
                             }
                         });
-                        return true;
+                    } else {
+                        if (combine.dismantle) {
+                            if (item.getId() == combine.result) {
+                                if (player.inventory().contains(combine.result)) {
+                                    player.inventory().remove(combine.result);
+                                    player.inventory().addOrBank(new Item(combine.item1));
+                                    player.inventory().addOrBank(new Item(combine.item2));
+                                }
+                                return true;
+                            }
+                        }
                     }
+                    return true;
                 }
             }
         }
