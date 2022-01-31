@@ -66,7 +66,7 @@ public final class ServerProperties {
             }
             //Since the static initializer is called after the constructor, we can set the game port here if we don't want to override the game port.
             if (!current.overrideGamePort) {
-                current.gamePort = 43596;
+                current.gamePort = 43594;
             }
         } catch (IOException e) {
             throw new ExceptionInInitializerError(e);
@@ -122,7 +122,7 @@ public final class ServerProperties {
         displayCycleTime = true;
         useInformationCycle = true;
         informationCycleCount = 10;
-        gamePort = 43596;
+        gamePort = 43594;
         overrideGamePort = false;
         enableTraceLogging = false;
         production = false;

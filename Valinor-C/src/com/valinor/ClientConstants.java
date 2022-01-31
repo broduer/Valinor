@@ -25,10 +25,10 @@ public final class ClientConstants {
     /*
      * This determines if we are going to connect to the live server or local server.
      */
-    public static final boolean production = false;
+    public static final boolean production = true;
     public static final boolean test = false;
 
-    public static final String CLIENT_VERSION = "1.0.4";
+    public static final String CLIENT_VERSION = "1.0.5";
     public static final int OSRS_DATA_VERSION = 202;
     public static final int OSRS_DATA_SUB_VERSION = 2;
 
@@ -89,9 +89,9 @@ public final class ClientConstants {
     //Set this to true to display the simple client load time (the total time it takes to load the client).
     public static final boolean DISPLAY_CLIENT_LOAD_TIME = true;
 
-    public static final String SERVER_ADDRESS = production ? "135.125.235.134" : test ? "51.195.44.182" : "localhost";
+    public static final String SERVER_ADDRESS = production ? "54.38.214.231" : test ? "51.195.44.182" : "localhost";
 
-    public static int SERVER_PORT = 43596;
+    public static int SERVER_PORT = 43594;
     public static final int FILE_SERVER_PORT = 43598;
 
     //Set dynamic map crosshair to true for a world map crosshair that moves or false for a static one that doesn't move.
