@@ -69,6 +69,11 @@ public class WildernessKeyChest extends Interaction {
                 return true;
             }
 
+            if(player.tile().region() == 9370 && !player.getMemberRights().isDiamondMemberOrGreater(player)) {
+                player.message("Only diamond members can loot this chest.");
+                return true;
+            }
+
             //Important to lock the player during the action
             player.lock();
 
