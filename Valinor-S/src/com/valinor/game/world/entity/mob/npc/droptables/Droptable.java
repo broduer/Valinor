@@ -13,6 +13,7 @@ import com.valinor.game.world.position.Tile;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
+import static com.valinor.util.CustomItemIdentifiers.TREASURE_CASKET;
 
 /**
  * Created by Bart on 10/6/2015.
@@ -35,13 +36,29 @@ public interface Droptable {
             GroundItemHandler.createGroundItem(new GroundItem(item, tile, player));
         }
 
-        boolean doubleDropsLampActive = (Integer) player.getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0) > 0;
-        boolean founderImp = player.pet() != null && player.pet().def().name.equalsIgnoreCase("Founder Imp");
-        boolean slayerPerk = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.DOUBLE_DROP_CHANCE) && World.getWorld().rollDie(100, 1);
-        if (doubleDropsLampActive || founderImp || slayerPerk) {
-            if(World.getWorld().rollDie(10, 1)) {
-                item.setAmount(item.getAmount() * 2);
-                player.message("Your drop was doubled.");
+        if (World.getWorld().rollDie(50, 1)) {
+            drop(npc, new Tile(2262, 3072, player.tile().level), player, new Item(TREASURE_CASKET, 1));
+            player.message("<col=0B610B>You have received a treasure casket drop!");
+        }
+
+        var doubleDropsLampActive = player.<Integer>getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0) > 0;
+        var founderImp = player.pet() != null && player.pet().def().name.equalsIgnoreCase("Founder Imp");
+        var canDoubleDrop = doubleDropsLampActive || founderImp;
+        if (canDoubleDrop) {
+            var rolledDoubleDrop = World.getWorld().rollDie(10, 1);
+            if (rolledDoubleDrop) {
+                //Drop the item to the ground instead of editing the item instance
+                GroundItem doubleDrop = new GroundItem(item, tile, player);
+
+                if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
+                    if(tile.level != player.tile().level) {
+                        return;
+                    }
+                    player.nifflerStore(doubleDrop.getItem());
+                } else {
+                    GroundItemHandler.createGroundItem(doubleDrop);
+                }
+                player.message("The double drop effect doubled your drop.");
             }
         }
         ServerAnnouncements.tryBroadcastDrop(player, npc, item);

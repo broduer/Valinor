@@ -31,17 +31,9 @@ public class ZulrahDeath implements Droptable {
             Optional<Pet> pet = NpcDeath.checkForPet(killer, table);
             pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
 
-            if (World.getWorld().rollDie(50, 1)) {
-                drop(npc, new Tile(2262, 3072, killer.tile().level), killer, new Item(TREASURE_CASKET, 1));
-                killer.message("<col=0B610B>You have received a treasure casket drop!");
-            }
-
-            var rolls = 2;
             var reward = table.randomItem(World.getWorld().random());
-            for (int i = 0; i < rolls; i++) {
-                if (reward != null) {
-                    drop(npc, new Tile(2262, 3072, killer.tile().level), killer, reward);
-                }
+            if (reward != null) {
+                drop(npc, new Tile(2262, 3072, killer.tile().level), killer, reward);
             }
         }
     }
