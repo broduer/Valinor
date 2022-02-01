@@ -444,12 +444,6 @@ public class Player extends Mob {
         this.multi_cannon_stage = stage;
     }
 
-    private final ItemDispenser itemDispenser = new ItemDispenser(this);
-
-    public ItemDispenser getItemDispenser() {
-        return itemDispenser;
-    }
-
     public List<TradingPostListing> tempList;
 
     public List<TradingPostListing> tradePostHistory = Lists.newArrayList();

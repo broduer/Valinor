@@ -35,11 +35,10 @@ public class ObjectManager {
             // perform has distance checks
             perform(object, OperationType.SPAWN);
         }
-        /*for (GameObject obj : World.getWorld().getRemovedObjs()) {
-            if (obj != null && player.tile().isWithinDistance(obj.tile(), 64)) {
-                player.getPacketSender().sendObjectRemoval(obj);
-            }
-        }*/
+        for (GameObject obj : World.getWorld().getRemovedObjs()) {
+            // perform has distance checks
+            perform(obj, OperationType.DESPAWN);
+        }
     }
 
     /**

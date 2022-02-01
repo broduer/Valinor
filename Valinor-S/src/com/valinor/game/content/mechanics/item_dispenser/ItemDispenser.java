@@ -9,19 +9,19 @@ import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
+import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS;
 import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS_TOTAL_VALUE;
+import static com.valinor.util.ObjectIdentifiers.TELESCOPE_25439;
 
 /**
  * The item dispenser is an object which crushes all your items into Valinor coins.
@@ -29,31 +29,93 @@ import static com.valinor.game.world.entity.AttributeKey.CART_ITEMS_TOTAL_VALUE;
  * @author Patrick van Elderen | February, 14, 2021, 23:12
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
  */
-public class ItemDispenser {
+public class ItemDispenser extends Interaction {
 
-    /**
-     * The Player instance of this class.
-     */
-    private final Player player;
-
-    public ItemDispenser(Player player) {
-        this.player = player;
+    @Override
+    public boolean handleObjectInteraction(Player player, GameObject object, int option) {
+        if(option == 1) {
+            if (object.getId() == TELESCOPE_25439) {
+                World.getWorld().shop(15).open(player);
+                return true;
+            }
+        }
+        if(option == 2) {
+            if (object.getId() == TELESCOPE_25439) {
+                checkCart(player);
+                return true;
+            }
+        }
+        if(option == 3) {
+            if (object.getId() == TELESCOPE_25439) {
+                loadValueList(player);
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void checkCart() {
+    @Override
+    public boolean handleItemOnObject(Player player, Item item, GameObject object) {
+        if (object.getId() == TELESCOPE_25439) {
+            player.faceObj(object);
+            addItemToCart(player, item);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean handleButtonInteraction(Player player, int button) {
+        if(button == 27206) {
+            clearCart(player);
+            return true;
+        }
+        if(button == 27208) {
+            dispenseItemsDialogue(player);
+            return true;
+        }
+        return false;
+    }
+
+    private static final int AMOUNT_STRING_ID = 27316;
+
+    private void clearStrings(Player player) {
+        for (int index = 0; index < 100; index++) {
+            player.getPacketSender().sendString(AMOUNT_STRING_ID + index, "");
+        }
+    }
+
+    public void checkCart(Player player) {
+        clearStrings(player);
         player.getInterfaceManager().open(ItemSimulatorUtility.WIDGET_ID);
         player.getPacketSender().sendString(ItemSimulatorUtility.WIDGET_TITLE_ID,"Items to dispense");
         var totalValue = player.<Integer>getAttribOr(CART_ITEMS_TOTAL_VALUE, 0);
         var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
         player.getPacketSender().sendString(ItemSimulatorUtility.SUB_TITLE_ID,"Total: "+Utils.formatNumber(totalValue)+" "+GameConstants.SERVER_NAME+" coins");
         player.getPacketSender().sendItemOnInterface(ItemSimulatorUtility.DISPENSER_CONTAINER_ID, items);
+
+        for (int index = 0; index < items.size(); index++) {
+            Item item = items.get(index);
+
+            if (item == null) {
+                continue;
+            }
+
+            if (item != null) {
+                Optional<Cart> cart = Cart.get(item.getId());
+                if(cart.isPresent()) {
+                    int value = item.getAmount() * cart.get().value;
+                    player.getPacketSender().sendString(AMOUNT_STRING_ID + index, Utils.formatNumber(value));
+                }
+            }
+        }
     }
 
     /**
      * Adds items into the cart, which will be dispensed later on.
      * @param src The item to dispense.
      */
-    public void addItemToCart(Item src) {
+    public void addItemToCart(Player player, Item src) {
         Optional<Cart> cart = Cart.get(src.getId());
 
         if(cart.isEmpty()) {
@@ -87,7 +149,7 @@ public class ItemDispenser {
                             }
                             //Change the item amount
                             item.setAmount(amt);
-                            store(item);
+                            store(player, item);
                             stop();
                         } else if ((option == 2)) {
                             stop();
@@ -98,10 +160,10 @@ public class ItemDispenser {
             return;
         }
 
-        store(item);
+        store(player, item);
     }
 
-    private void store(Item src) {
+    private void store(Player player, Item src) {
         final Item item = src.copy();
 
         if(!player.inventory().contains(item)) {
@@ -165,7 +227,7 @@ public class ItemDispenser {
     /**
      * Remove all the items from the cart.
      */
-    public void clearCart() {
+    public void clearCart(Player player) {
         var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
 
         if(items.isEmpty()) {
@@ -184,9 +246,10 @@ public class ItemDispenser {
         //Clear the list
         items.clear();
         player.putAttrib(CART_ITEMS_TOTAL_VALUE,0);
+        player.getPacketSender().sendItemOnInterface(ItemSimulatorUtility.DISPENSER_CONTAINER_ID, items);
     }
 
-    private void dispense() {
+    private void dispense(Player player) {
         if(!player.inventory().hasCapacityFor(new Item(CustomItemIdentifiers.VALINOR_COINS))) {
             player.message("You have no room for any "+GameConstants.SERVER_NAME+" coins!");
            return;
@@ -212,12 +275,14 @@ public class ItemDispenser {
         Utils.sendDiscordInfoLog(player.getUsername() + " dispensed " + Arrays.toString(items.toArray()) + " in the item dispenser.", "items_dispensed");
         items.clear();
         player.putAttrib(CART_ITEMS_TOTAL_VALUE,0);
+        player.getPacketSender().sendItemOnInterface(ItemSimulatorUtility.DISPENSER_CONTAINER_ID, items);
+        clearStrings(player);
     }
 
     /**
      * Opens up a list with all the items and their respected values.
      */
-    public void loadValueList() {
+    public void loadValueList(Player player) {
         List<String> prices = new ArrayList<>();
 
         prices.add("<br><col=" + Color.MITHRIL.getColorValue() + "> Item - Value</col><br><br>");
@@ -228,16 +293,16 @@ public class ItemDispenser {
         player.sendScroll("Item values", Collections.singletonList(prices).toString().replaceAll(Pattern.quote("["), "").replaceAll(Pattern.quote("]"), "").replaceAll(",", ""));
     }
 
-    public void dispenseItemsDialogue() {
+    public void dispenseItemsDialogue(Player p) {
         //First check if we have items
-        var items = player.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
+        var items = p.<ArrayList<Item>>getAttribOr(CART_ITEMS, new ArrayList<Item>());
         if(items.isEmpty()) {
-            player.message(Color.RED.tag()+"There are no items in the cart.");
+            p.message(Color.RED.tag()+"There are no items in the cart.");
             return;
         }
 
         //We have items in our cart lets continue...
-        player.getDialogueManager().start(new Dialogue() {
+        p.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
                 send(DialogueType.STATEMENT,"Are you sure you wish to destroy your items?");
@@ -257,18 +322,18 @@ public class ItemDispenser {
                 if(isPhase(1)) {
                     if(option == 1) {
                         if(items.isEmpty()) {
-                            player.message(Color.RED.tag()+"There are no items in the cart.");
+                            p.message(Color.RED.tag()+"There are no items in the cart.");
                             stop();
                             return;
                         }
-                        dispense();
+                        dispense(p);
                         stop();
                     } else if(option == 2) {
                         if(items.isEmpty()) {
                             stop();
                             return;
                         }
-                        clearCart();//Return items
+                        clearCart(p);//Return items
                         stop();
                     }
                 }

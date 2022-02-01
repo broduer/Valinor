@@ -92,16 +92,6 @@ public class Edgevile extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
-            if (obj.getId() == DWARVEN_MACHINERY) {
-                player.getItemDispenser().dispenseItemsDialogue();
-                return true;
-            }
-
-            if (obj.getId() == MINE_CART) {
-                player.getItemDispenser().checkCart();
-                return true;
-            }
-
             if (obj.getId() == CHAOS_ALTAR_411) {
                 if (player.skills().level(Skills.PRAYER) < player.skills().xpLevel(Skills.PRAYER)) {
                     player.animate(new Animation(645));
@@ -173,11 +163,7 @@ public class Edgevile extends Interaction {
                 return true;
             }
         } else if (option == 2) {
-
-            if (obj.getId() == MINE_CART) {
-                player.getItemDispenser().loadValueList();
-                return true;
-            }
+            
             if (obj.getId() == DWARVEN_MACHINERY) {
                 World.getWorld().shop(15).open(player);
                 return true;
@@ -195,20 +181,13 @@ public class Edgevile extends Interaction {
                 return true;
             }
         } else if (option == 3) {
-            if (obj.getId() == 637) {
-                player.getItemDispenser().clearCart();
-                return true;
-            }
+
         }
         return false;
     }
 
     @Override
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
-        if (object.getId() == 637) {
-            player.getItemDispenser().addItemToCart(item);
-            return true;
-        }
         return false;
     }
 

@@ -38,22 +38,34 @@ import static com.valinor.util.NpcIdentifiers.NEX;
 public class TestCommand implements Command {
 
     private final List<Item> itemList = Arrays.asList(
-        new Item(STAMINA_POTION4),
-        new Item(PRAYER_POTION4),
-        new Item(SARADOMIN_BREW4),
-        new Item(SUPER_RESTORE4),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
 
         //Row
-        new Item(EGG_POTATO),
-        new Item(SHARK),
-        new Item(SEA_TURTLE),
-        new Item(MANTA_RAY)
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP),
+        new Item(ABYSSAL_WHIP)
     );
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        System.out.println(player.pet().def().name);
-        //player.getPacketSender().sendItemOnInterface(12236, itemList);
+        //System.out.println(player.pet().def().name);
+        //player.getPacketSender().sendItemOnInterface(27201, itemList);
         //player.sound(2401);
         //ZarosGodwars.end();
 

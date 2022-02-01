@@ -1,6 +1,5 @@
 package com.valinor.game.content.areas.home;
 
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.edgevile.Mac;
@@ -33,8 +32,8 @@ import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.ObjectIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.ALTAR;
+import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen | April, 23, 2021, 10:49
@@ -45,10 +44,6 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
-            if (object.getId() == TELESCOPE_25439) {
-                World.getWorld().shop(15).open(player);
-                return true;
-            }
             if (object.getId() == CLOSED_CHEST_2996) {
                 player.faceObj(object);
                 player.getSlayerKey().open();
@@ -210,10 +205,6 @@ public class HomeArea extends Interaction {
             }
         }
         if (option == 2) {
-            if (object.getId() == TELESCOPE_25439) {
-                player.getItemDispenser().checkCart();
-                return true;
-            }
             if (object.getId() == ANTIDRAGON_SHIELD) {
                 Item item = new Item(ItemIdentifiers.ANTIDRAGON_SHIELD);
                 EquipmentInfo info = World.getWorld().equipmentInfo();
@@ -231,24 +222,6 @@ public class HomeArea extends Interaction {
 
                 player.animate(536);
                 player.getEquipment().manualWear(item, true, true);
-                return true;
-            }
-        }
-        if (option == 3) {
-            if (object.getId() == TELESCOPE_25439) {
-                player.getItemDispenser().dispenseItemsDialogue();
-                return true;
-            }
-        }
-        if(option == 4) {
-            if (object.getId() == TELESCOPE_25439) {
-                player.getItemDispenser().clearCart();
-                return true;
-            }
-        }
-        if(option == 5) {
-            if (object.getId() == TELESCOPE_25439) {
-                player.getItemDispenser().loadValueList();
                 return true;
             }
         }
@@ -351,16 +324,6 @@ public class HomeArea extends Interaction {
         }
         if (option == 4) {
 
-        }
-        return false;
-    }
-
-    @Override
-    public boolean handleItemOnObject(Player player, Item item, GameObject object) {
-        if (object.getId() == TELESCOPE_25439) {
-            player.faceObj(object);
-            player.getItemDispenser().addItemToCart(item);
-            return true;
         }
         return false;
     }

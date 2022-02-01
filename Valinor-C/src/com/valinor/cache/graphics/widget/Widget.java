@@ -370,7 +370,6 @@ public class Widget {
         IronmanWidget.unpack(font);
         OrnateJewelleryBoxWidget.unpack(font);
         ItemSimulationWidget.unpack(font);
-        DonationPromoWidget.unpack(font);
         GambleWidget.unpack(font);
         PetInsuranceWidget.unpack(font);
         SlayerRewardWidget.unpack(font);
