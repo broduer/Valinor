@@ -298,6 +298,9 @@ public class TeleportMenuConstants {
         teleportOptions.put(74, new OptionMenu("Godwards dungeon middle", new String[] { "gwd", "godwars", "middle" },
             new TeleportAction(player, new Tile(2875, 5315, 2))));
 
+        teleportOptions.put(75, new OptionMenu("Yak", new String[] { "yak" },
+            new TeleportAction(player, new Tile(2325, 3800, 0))));
+
         return teleportOptions;
     }
 
