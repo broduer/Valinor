@@ -312,9 +312,11 @@ public class CombatFactory {
                 Player player = attacker.getAsPlayer();
                 // Handle bolt special effects for a player whose using crossbow
                 if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
-                    damage = RangedData.getBoltSpecialAttack(player, target, damage);
-                    if(player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE,false)) {
-                        player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
+                    if(damage > 0) {
+                        damage = RangedData.getBoltSpecialAttack(player, target, damage);
+                        if (player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, false)) {
+                            player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
+                        }
                     }
                 }
 
