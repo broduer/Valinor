@@ -79,7 +79,7 @@ public class Skotizo extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 8;
+        return 20;
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.valinor.game.world.route.routes;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.route.RouteType;
 
+import static com.valinor.util.NpcIdentifiers.*;
+
 //I'm not 100% sure I like this class...
 public class TargetRoute {
 
@@ -87,7 +89,7 @@ public class TargetRoute {
             int targetSize = target.getSize();
             if(!inTarget(absX, absY, size, targetX, targetY, targetSize) &&
                 inRange(absX, absY, size, targetX, targetY, targetSize, distance) &&
-                ((target.isNpc() && target.getAsNpc().id() == 7706) || (target.isNpc() && target.getAsNpc().id() == 8370) || ProjectileRoute.allow(absX, absY, entity.getZ(), size, targetX, targetY, targetSize))) { // TODO: nick: look into projectile clipping so the zuk(inferno boss) exception is not required?
+                ((target.isNpc() && target.getAsNpc().id() == 7706) || (target.isNpc() && target.getAsNpc().id() == 8370) || (target.isNpc() && target.getAsNpc().id() == AWAKENED_ALTAR) || (target.isNpc() && target.getAsNpc().id() == AWAKENED_ALTAR_7290) || (target.isNpc() && target.getAsNpc().id() == AWAKENED_ALTAR_7292) || (target.isNpc() && target.getAsNpc().id() == AWAKENED_ALTAR_7294) || ProjectileRoute.allow(absX, absY, entity.getZ(), size, targetX, targetY, targetSize))) { // TODO: nick: look into projectile clipping so the zuk(inferno boss) exception is not required?
                 withinDistance = true;
                 entity.getMovement().reset();
             }
