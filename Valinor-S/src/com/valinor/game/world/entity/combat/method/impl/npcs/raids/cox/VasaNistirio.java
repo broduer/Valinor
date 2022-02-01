@@ -39,7 +39,7 @@ public class VasaNistirio extends CommonCombatMethod {
     }
 
     private void rangeAttack(Mob mob) {
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             final var tile = t.tile().copy();
             new Projectile(mob.tile().transform(1, 1, 0), tile, 1, 1329, 125, 30, 175, 6, 0).sendProjectile();
             Chain.bound(null).runFn(6, () -> {

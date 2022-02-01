@@ -21,7 +21,7 @@ public class Aragog extends CommonCombatMethod {
         mob.resetFaceTile(); // Stop facing the target
         //Target all raids party members
 
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             var tileDist = mob.tile().transform(3, 3, 0).distance(t.tile());
             new Projectile(mob, t, 1254, 20, 12 * tileDist, 30, 30, 0, 14, 5).sendProjectile();
             var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
@@ -35,7 +35,7 @@ public class Aragog extends CommonCombatMethod {
 
         mob.resetFaceTile(); // Stop facing the target
         //Target all raids party members
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             var tileDist = mob.tile().transform(3, 3, 0).distance(t.tile());
             var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
             new Projectile(mob, t, 88, 20, 12 * tileDist, 30, 30, 0, 14, 5).sendProjectile();

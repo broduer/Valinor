@@ -91,7 +91,7 @@ public class Muttadile extends CommonCombatMethod {
     }
 
     private void rangeAttack(Npc npc) {
-        for (Mob t : getPossibleTargets(npc, 20, true,false)) {
+        for (Mob t : getPossibleTargets(npc, 64, true,false)) {
             npc.combatInfo().maxhit = 35;
             npc.animate(npc.attackAnimation());
             var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());
@@ -102,7 +102,7 @@ public class Muttadile extends CommonCombatMethod {
     }
 
     private void magicAttack(Npc npc) {
-        for (Mob t : getPossibleTargets(npc, 20, true, false)) {
+        for (Mob t : getPossibleTargets(npc, 64, true, false)) {
             npc.combatInfo().maxhit = 45;
             npc.animate(npc.attackAnimation());
             var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());

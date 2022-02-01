@@ -52,7 +52,7 @@ public class LordVoldemort extends CommonCombatMethod {
 
         npc.resetFaceTile(); // Stop facing the target
         //Target all raids party members
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             new Projectile(npc, t, EXPELLIARMUS_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
             var delay = mob.getProjectileHitDelay(t);
             Chain.bound(null).runFn(delay, () -> disarm(t.getAsPlayer()));
@@ -82,7 +82,7 @@ public class LordVoldemort extends CommonCombatMethod {
 
         mob.resetFaceTile(); // Stop facing the target
         //Target all raids party members
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             new Projectile(mob, t, PETRIFICUS_TOTALUS_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
             var delay = mob.getProjectileHitDelay(t);
             t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
@@ -97,7 +97,7 @@ public class LordVoldemort extends CommonCombatMethod {
 
         npc.resetFaceTile(); // Stop facing the target
         //Target all raids party members
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             new Projectile(npc, t, SECTUMSEMPRA_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
             var delay = mob.getProjectileHitDelay(t);
             t.hit(npc, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
@@ -112,7 +112,7 @@ public class LordVoldemort extends CommonCombatMethod {
 
         npc.resetFaceTile(); // Stop facing the target
         //Target all raids party members
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             new Projectile(npc, t, CRUCIATUS_CURSE_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
             var delay = mob.getProjectileHitDelay(t);
             t.hit(npc, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
@@ -126,7 +126,7 @@ public class LordVoldemort extends CommonCombatMethod {
         npc.resetFaceTile(); // Stop facing the target
         //Target all raids party members
 
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             new Projectile(npc, t, AVADA_KEDAVRA_PROJECTILE, 32, mob.projectileSpeed(t), 30, 30, 0).sendProjectile();
             var delay = mob.getProjectileHitDelay(t);
             t.hit(npc, Prayers.usingPrayer(t, Prayers.PROTECT_FROM_MAGIC) ? World.getWorld().random(1, 40) : World.getWorld().random(1, 80), delay);

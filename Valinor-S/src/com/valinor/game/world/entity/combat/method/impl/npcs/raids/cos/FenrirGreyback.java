@@ -25,7 +25,7 @@ public class FenrirGreyback extends CommonCombatMethod {
         if(mob.<Boolean>getAttribOr(FENRIR_SPECIAL_ACTIVE, false)) {
             mob.animate(mob.attackAnimation());
             mob.forceChat("DIE, FILTHY MUGGLES!");
-            ArrayList<Mob> targets = getPossibleTargets(mob, 20, true, false);
+            ArrayList<Mob> targets = getPossibleTargets(mob, 64, true, false);
             for (Mob t : targets) {
                 if (t == null) {
                     continue;

@@ -19,7 +19,7 @@ public class Fluffy extends CommonCombatMethod {
         //mob.forceChat("LIGHTNING");
         mob.animate(4494);
 
-        for (Mob t : getPossibleTargets(mob, 20, true,false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true,false)) {
             final var tile1 = t.tile().copy();
             final var tile2 = t.tile().copy().transform(1, 0);
             final var tile3 = t.tile().copy().transform(1, 1);
@@ -44,7 +44,7 @@ public class Fluffy extends CommonCombatMethod {
         //mob.forceChat("RANGE");
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
-        for (Mob t : getPossibleTargets(mob, 20, true,false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true,false)) {
             var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
             var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
 
@@ -59,7 +59,7 @@ public class Fluffy extends CommonCombatMethod {
         //mob.forceChat("MAGIC");
         mob.resetFaceTile(); // Stop facing the target
         mob.animate(4492);
-        for (Mob t : getPossibleTargets(mob, 20, true, false)) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
             var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
             var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
             new Projectile(mob, t, 1403, 25, 12 * tileDist, 65, 31, 0, 15, 220).sendProjectile();

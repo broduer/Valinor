@@ -22,7 +22,7 @@ public class MuttadileInTheWater extends CommonCombatMethod {
     }
 
     private void magicAttack(Npc npc) {
-        for (Mob t : getPossibleTargets(npc, 20, true, false)) {
+        for (Mob t : getPossibleTargets(npc, 64, true, false)) {
             var tileDist = npc.tile().transform(1, 1, 0).distance(t.tile());
             var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
             new Projectile(npc, t, 393, 20, 12 * tileDist, 0, 30, 0).sendProjectile();
