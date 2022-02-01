@@ -16,7 +16,7 @@ public enum Cart {
     /**
      * Item ID, Coin value
      */
-
+    RING_OF_ELYSIAN(CustomItemIdentifiers.RING_OF_ELYSIAN,500),
     JAWA_PET(CustomItemIdentifiers.JAWA_PET,600),
     CENTAUR_MALE(CustomItemIdentifiers.CENTAUR_MALE,800),
     CENTAUR_FEMALE(CustomItemIdentifiers.CENTAUR_FEMALE,800),
