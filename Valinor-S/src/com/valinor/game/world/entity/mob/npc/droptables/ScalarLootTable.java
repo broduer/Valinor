@@ -16,6 +16,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
@@ -330,6 +331,7 @@ public class ScalarLootTable {
 
             if (World.getWorld().rollDie(dropRate, 1)) {
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.LARRANS_KEY), player.tile(), player));
+                player.message(Color.PURPLE.wrap("A larran's key appeared."));
             }
         }
     }
@@ -342,6 +344,7 @@ public class ScalarLootTable {
             var combatLvl = npc.def().combatlevel;
             //var dropRate = combatLvl >= 100 ? 120 - (combatLvl / 5) : 100 + (100 - combatLvl) / 40;
             if (World.getWorld().rollDie(50, 1)) {
+                player.message(Color.PURPLE.wrap("A brimstone key appeared."));
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(ItemIdentifiers.BRIMSTONE_KEY), player.tile(), player));
                 Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a brimstone key drop.", "brimstone_key_drop");
             }
@@ -353,6 +356,7 @@ public class ScalarLootTable {
         if (task != null && task.matches(npc.id()) && player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KEY_OF_DROPS)) {
             int roll = 1000;
             if (World.getWorld().rollDie(roll, 1)) {
+                player.message(Color.PURPLE.wrap("A key of drops appeared."));
                 player.inventory().addOrDrop(new Item(CustomItemIdentifiers.KEY_OF_DROPS));
             }
         }

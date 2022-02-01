@@ -47,7 +47,6 @@ public class SlayerKey {
                 var keysReceived = player.<Integer>getAttribOr(SLAYER_KEYS_RECEIVED,0) + 1;
                 player.putAttrib(SLAYER_KEYS_RECEIVED, keysReceived);
                 player.getPacketSender().sendString(QuestTab.InfoTab.SLAYER_KEYS_RECEIVED.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.SLAYER_KEYS_RECEIVED.childId).fetchLineData(player));
-
                 player.inventory().addOrDrop(new Item(SLAYER_KEY));
                 player.message(Color.PURPLE.wrap("A slayer key appeared, you have now collected a total of "+keysReceived+ " slayer keys."));
                 Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a slayer key drop.", "slayer_key_drop");
