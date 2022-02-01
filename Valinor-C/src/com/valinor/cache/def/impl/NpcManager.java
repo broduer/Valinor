@@ -151,7 +151,7 @@ public class NpcManager {
                 definition.actions = new String[] {"Weapons", null, "Armour", "Ironman", null};
                 break;
             case TWIGGY_OKORN:
-                definition.actions = new String[]{"Talk-to", null, "Claim-cape", null, null};
+                definition.actions = new String[]{"Talk-to", null, "Claim-cape", "Open-shop", null};
                 break;
 
             case FANCY_DAN:

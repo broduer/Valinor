@@ -288,7 +288,7 @@ public abstract class Shop {
             illegalItem = true;
         }
 
-        if (!item.rawtradable()) {
+        if (!item.rawtradable() && this.sellType() != SellType.CONTAINS) {
             illegalItem = true;
         }
 
@@ -334,7 +334,13 @@ public abstract class Shop {
 
         Optional<Item> find = container.search(item.getId());
         int sellValue;
-        sellValue = item.getId() == 619 ? 1 : item.unnote().getSellValue();
+
+        if (find.isPresent()) {
+            StoreItem storeItem = (StoreItem) find.get();
+            sellValue = storeItem.getShopValue();
+        } else {
+            sellValue = item.getId() == 619 ? 1 : item.unnote().getSellValue();
+        }
 
         final int amount = player.inventory().count(item.getId());
 
@@ -396,7 +402,7 @@ public abstract class Shop {
             return;
         }
 
-        if (!item.rawtradable()) {
+        if (!item.rawtradable() && this.sellType() != SellType.CONTAINS) {
             player.message("This item can't be sold to shops.");
             return;
         }
@@ -423,7 +429,14 @@ public abstract class Shop {
             return;
         }
 
-        int value = item.getId() == 619 ? 1 : item.unnote().getSellValue();
+        Optional<Item> find = container.search(item.getId());
+        int value;
+        if (find.isPresent()) {
+            StoreItem storeItem = (StoreItem) find.get();
+            value = storeItem.getShopValue();
+        } else {
+            value = item.getId() == 619 ? 1 : item.unnote().getSellValue();
+        }
 
         if (value <= 0) {
             if (this.sellType() != SellType.NONE) {

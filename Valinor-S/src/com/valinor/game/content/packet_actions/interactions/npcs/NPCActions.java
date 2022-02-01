@@ -195,6 +195,18 @@ public class NPCActions extends NpcIdentifiers {
 
                 case MAKEOVER_MAGE_1307 -> player.getInterfaceManager().open(61380);
 
+                case NpcIdentifiers.TWIGGY_OKORN -> {
+                    if (AchievementsManager.isCompleted(player, Achievements.COMPLETIONIST)) {
+                        if (player.inventory().getFreeSlots() < 2) {
+                            player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_CAPE, 1));
+                            player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_HOOD, 1));
+                        } else {
+                            player.message("You need at least 2 free slots.");
+                        }
+                    } else {
+                        player.message("You haven't completed all of the achievements yet.");
+                    }
+                }
 
                 case NpcIdentifiers.BOB_BARTER_HERBS -> player.getDialogueManager().start(new BobBarter());
                 case NpcIdentifiers.THE_COLLECTOR -> {
@@ -255,16 +267,7 @@ public class NPCActions extends NpcIdentifiers {
             }
 
             if (npc.id() == NpcIdentifiers.TWIGGY_OKORN) {
-                if (AchievementsManager.isCompleted(player, Achievements.COMPLETIONIST)) {
-                    if (player.inventory().getFreeSlots() < 2) {
-                        player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_CAPE, 1));
-                        player.inventory().add(new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_HOOD, 1));
-                    } else {
-                        player.message("You need at least 2 free slots.");
-                    }
-                } else {
-                    player.message("You haven't completed all of the achievements yet.");
-                }
+                World.getWorld().shop(52).open(player);
                 return;
             }
 

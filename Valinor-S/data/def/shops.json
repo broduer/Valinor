@@ -4699,7 +4699,7 @@
     "currency": "ACHIEVEMENT_POINTS",
     "restock": true,
     "noiron": false,
-    "sellType": "NONE",
+    "sellType": "CONTAINS",
     "scroll": 0,
     "items": [
       {

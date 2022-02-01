@@ -31,7 +31,9 @@ public class AchievementPointsCurrency implements Currency {
 
     @Override
     public void recieveCurrency(Player player, int amount) {
-        //Empty can't receive currency from shops
+        var achievementPoints = player.<Integer>getAttribOr(AttributeKey.ACHIEVEMENT_POINTS, 0) + amount;
+        player.putAttrib(AttributeKey.ACHIEVEMENT_POINTS, achievementPoints);
+        player.getPacketSender().sendString(QuestTab.InfoTab.ACHIEVEMENT_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.ACHIEVEMENT_POINTS.childId).fetchLineData(player));
     }
 
     @Override
@@ -41,7 +43,7 @@ public class AchievementPointsCurrency implements Currency {
 
     @Override
     public boolean canRecieveCurrency(Player player) {
-        return false;
+        return true;
     }
 
     @Override
