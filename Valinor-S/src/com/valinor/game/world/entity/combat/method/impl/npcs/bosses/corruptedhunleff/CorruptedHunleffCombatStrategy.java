@@ -63,56 +63,62 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
             if(World.getWorld().rollDie(2,1)) {
                 mob.animate(8420);
-                mob.getAsNpc().combatInfo().maxhit = 50;
-                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).setAccurate(true).submit();
+                for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+                    mob.getAsNpc().combatInfo().maxhit = 50;
+                    t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MELEE), CombatType.MELEE).setAccurate(true).submit();
+                }
             } else {
                 //Standard attacks: The Hunllef uses two main standard attacks, a ranged crystal-like attack and a magic based orb attack.
                 // The Hunllef will alternate between the two attack styles every 4 attacks.
                 if (attacks == 4) {
-                    rangeAttack(mob, target);
+                    rangeAttack(mob);
                     attacks = 0;
                 } else {
-                    magicAttack(mob, target);
+                    magicAttack(mob);
                 }
             }
         } else {
             //Standard attacks: The Hunllef uses two main standard attacks, a ranged crystal-like attack and a magic based orb attack.
             // The Hunllef will alternate between the two attack styles every 4 attacks.
             if (attacks == 4) {
-                rangeAttack(mob, target);
+                rangeAttack(mob);
                 attacks = 0;
             } else {
-                magicAttack(mob, target);
+                magicAttack(mob);
             }
         }
 
         //25% chance to spawn tornados
         if (World.getWorld().rollDie(4, 1)) {
             tornadoAttack = true;
-            tornadoAttack(mob, target);
+            tornadoAttack(mob);
         }
     }
 
-    private void rangeAttack(Mob mob, Mob target) {
-        var tileDist = mob.tile().transform(1, 1, 0).distance(target.tile());
-        var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
-        Projectile projectile = new Projectile(mob, target, 1705, 35, 20 * tileDist, 45, 30, 0);
-        projectile.sendProjectile();
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+    private void rangeAttack(Mob mob) {
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+            var tileDist = mob.tile().transform(1, 1, 0).distance(t.tile());
+            var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
+            Projectile projectile = new Projectile(mob, t, 1705, 35, 20 * tileDist, 45, 30, 0);
+            projectile.sendProjectile();
+            t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+        }
     }
 
-    private void magicAttack(Mob mob, Mob target) {
+    private void magicAttack(Mob mob) {
         mob.animate(mob.attackAnimation());
-        //25% chance to disable prayers
-        if(World.getWorld().rollDie(4,1)) {
-            prayerDisableAttack(mob, target);
-        } else {
-            var tileDist = mob.tile().transform(1, 1, 0).distance(target.tile());
-            var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
-            Projectile projectile = new Projectile(mob, target, 1713, 35, 20 * tileDist, 45, 30, 0);
-            projectile.sendProjectile();
-            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-            target.delayedGraphics(1709, 100, delay);
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+            //25% chance to disable prayers
+            if (World.getWorld().rollDie(4, 1)) {
+                prayerDisableAttack(mob, t);
+            } else {
+                var tileDist = mob.tile().transform(1, 1, 0).distance(t.tile());
+                var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
+                Projectile projectile = new Projectile(mob, t, 1713, 35, 20 * tileDist, 45, 30, 0);
+                projectile.sendProjectile();
+                t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
+                t.delayedGraphics(1709, 100, delay);
+            }
         }
     }
 
@@ -139,48 +145,50 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
      * The Hunllef summons multiple tornados that chase the player and deal high damage if they reach the players location, these tornadoes disappear after
      * a brief period. The number of tornados summoned increases as the Hunllef takes damage.
      */
-    private void tornadoAttack(Mob mob, Mob target) {
+    private void tornadoAttack(Mob mob) {
         mob.animate(8418);
         Tile base = mob.tile().copy();
 
         final List<Tile> crystalSpots = new ArrayList<>(List.of(new Tile(0, 6, 0)));
 
-        if(mob.hp() < 750) {
+        if(mob.hp() < 7500) {
             crystalSpots.add(new Tile(3, 6, 0));
         }
 
-        if(mob.hp() < 500) {
+        if(mob.hp() < 5000) {
             crystalSpots.add(new Tile(World.getWorld().random(1,4), World.getWorld().random(1,4), 0));
         }
 
-        if(mob.hp() < 250) {
+        if(mob.hp() < 2500) {
             crystalSpots.add(new Tile(World.getWorld().random(3,7), World.getWorld().random(2,6), 0));
         }
 
         Tile centralCrystalSpot = new Tile(39, 14, 0);
         Tile central = base.transform(centralCrystalSpot.x, centralCrystalSpot.y);
         ArrayList<Tile> spots = new ArrayList<>(crystalSpots);
-        int[] ticker = new int[1];
-        Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1718, central, 0, 0)).repeatingTask(1, t -> {
-            if (ticker[0] == 10) {
-                t.stop();
-                return;
-            }
-            for (Tile spot : spots) {
-                World.getWorld().tileGraphic(1718, base.transform(spot.x, spot.y), 0, 0);
-            }
-            ArrayList<Tile> newSpots = new ArrayList<>();
-            for (Tile spot : new ArrayList<>(spots)) {
-                final Tile curSpot = base.transform(spot.x, spot.y);
-                if (curSpot.equals(target.tile())) {
-                    target.hit(mob, World.getWorld().random(1, 35), SplatType.HITSPLAT);
-                } else {
-                    final Direction direction = Direction.getDirection(curSpot, target.tile());
-                    Tile newSpot = spot.transform(direction.x, direction.y);
-                    newSpots.add(newSpot);
+
+        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+            int[] ticker = new int[1];
+            Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1718, central, 0, 0)).repeatingTask(1, tick -> {
+                if (ticker[0] == 10) {
+                    tick.stop();
+                    return;
                 }
-            }
-            // visual debug
+                for (Tile spot : spots) {
+                    World.getWorld().tileGraphic(1718, base.transform(spot.x, spot.y), 0, 0);
+                }
+                ArrayList<Tile> newSpots = new ArrayList<>();
+                for (Tile spot : new ArrayList<>(spots)) {
+                    final Tile curSpot = base.transform(spot.x, spot.y);
+                    if (curSpot.equals(t.tile())) {
+                        t.hit(mob, World.getWorld().random(1, 35), SplatType.HITSPLAT);
+                    } else {
+                        final Direction direction = Direction.getDirection(curSpot, t.tile());
+                        Tile newSpot = spot.transform(direction.x, direction.y);
+                        newSpots.add(newSpot);
+                    }
+                }
+                // visual debug
             /*ArrayList<GroundItem> markers = new ArrayList<>(1);
             for (Tile step : newSpots) {
                 GroundItem marker = new GroundItem(new Item(ItemIdentifiers.VIAL, 1), new Tile(base.transform(step.x, step.y).x,
@@ -191,10 +199,11 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
             Task.runOnceTask(1, c -> {
                 markers.forEach(GroundItemHandler::sendRemoveGroundItem);
             });*/
-            spots.clear();
-            spots.addAll(newSpots);
-            ticker[0]++;
-        });
+                spots.clear();
+                spots.addAll(newSpots);
+                ticker[0]++;
+            });
+        }
     }
 
     @Override
