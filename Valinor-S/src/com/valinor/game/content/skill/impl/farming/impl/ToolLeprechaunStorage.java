@@ -12,7 +12,7 @@ import static com.valinor.game.world.items.container.shop.ShopUtility.*;
  *
  * @author Gabriel || Wolfsdarker
  */
-public class ToolLeprechaun {
+public class ToolLeprechaunStorage {
 
     /**
      * The tool's interface title.
