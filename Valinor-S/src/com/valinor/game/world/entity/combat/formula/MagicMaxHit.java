@@ -5,6 +5,7 @@ import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.Skills;
@@ -95,6 +96,14 @@ public class MagicMaxHit {
             if (weakSpot && target != null && target.isNpc()) {
                 if (Slayer.creatureMatches(player, target.getAsNpc().id())) {
                     multiplier += 0.10;
+                }
+            }
+
+            boolean ancientKingBlackDragonPet = player.hasPetOut("Ancient king black dragon");
+            if(ancientKingBlackDragonPet && target != null && target.isNpc() && includeNpcMax) {
+                Npc npc = (Npc) target;
+                if (npc.def() != null && npc.def().name != null && FormulaUtils.isDragon(npc)) {
+                    multiplier += 0.25;
                 }
             }
 

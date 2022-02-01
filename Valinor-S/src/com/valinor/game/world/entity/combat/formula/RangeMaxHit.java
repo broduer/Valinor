@@ -199,6 +199,14 @@ public class RangeMaxHit {
             D *= 1.50;
         }
 
+        boolean ancientKingBlackDragonPet = player.hasPetOut("Ancient king black dragon");
+        if(ancientKingBlackDragonPet && target != null && target.isNpc() && includeNpcMax) {
+            Npc npc = (Npc) target;
+            if (npc.def() != null && npc.def().name != null && FormulaUtils.isDragon(npc)) {
+                D *= 1.25;
+            }
+        }
+
         //System.out.println("After multipliers: "+D);
 
         double baseSpecialModifier = 1.0;
