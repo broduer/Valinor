@@ -151,13 +151,13 @@ public abstract class Shop {
             return;
         }
 
-        if(shopId == 6) {
+/*        if(shopId == 6) {
             var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
             if(item.getId() == DONATOR_MYSTERY_BOX && playerIsIron) {
                 player.message("As an ironman you cannot buy mystery boxes.");
                 return;
             }
-        }
+        }*/
 
         if (item.getAmount() > storeItem.getAmount() && shopId != 7)
             item.setAmount(storeItem.getAmount());
