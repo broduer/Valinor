@@ -204,7 +204,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[172] = -3;
         PACKET_SIZES[173] = -3;
         PACKET_SIZES[174] = 7;
-        PACKET_SIZES[175] = -3;
+        PACKET_SIZES[175] = -1;
         PACKET_SIZES[176] = 10;
         PACKET_SIZES[177] = 6;
         PACKET_SIZES[178] = 0;
@@ -363,6 +363,7 @@ public final class ServerToClientPackets {
     public static final int CREATION_MENU = 167;
     public static final int SHOW_HIDE_INTERFACE_CONTAINER = 171;
     public static final int PLAY_SOUND_EFFECT = 174;
+    public static final int ENTITY_FEED = 175;
     public static final int OPEN_WELCOME_SCREEN = 176;
     public static final int MOVE_CAMERA = 177;
     public static final int SHOW_PLAYER_HEAD_ON_INTERFACE = 185;

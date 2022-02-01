@@ -960,11 +960,11 @@ public class Rasterizer2D extends Cacheable {
         }
     }
 
-    public static void fillPixels(int xPos, int yPos, int width, int height, int colour) {
-        method339(yPos, colour, width, xPos);
-        method339((yPos + height) - 1, colour, width, xPos);
-        method341(yPos, colour, height, xPos);
-        method341(yPos, colour, height, (xPos + width) - 1);
+    public static void fillPixels(int i, int j, int k, int l, int i1) {
+        method339(i1, l, j, i);
+        method339((i1 + k) - 1, l, j, i);
+        method341(i1, l, k, i);
+        method341(i1, l, k, (i + j) - 1);
     }
 
     public static void method339(int i, int j, int k, int l) {

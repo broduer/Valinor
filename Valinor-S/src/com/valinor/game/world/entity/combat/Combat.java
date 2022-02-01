@@ -239,8 +239,11 @@ public class Combat {
         // Handle attacking
         performNewAttack();
 
-        //TODO ask jak where we can put this
-        if (mob.isPlayer() && target == null) {
+        if (mob.isPlayer() && target != null) {
+            mob.getAsPlayer().getPacketSender().sendEntityFeed(target.getMobName(), target.hp(), target.maxHp());
+        } else if (mob.isPlayer() && target == null) {
+            mob.getAsPlayer().getPacketSender().resetEntityFeed();
+
             //No target found reset fight time
             if (fightTimer.isRunning()) {
                 fightTimer.reset();

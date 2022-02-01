@@ -36,6 +36,18 @@ public final class PacketSender {
 
     private static final Logger logger = LogManager.getLogger(PacketSender.class);
 
+    public PacketSender sendEntityFeed(String opponent, int HP, int maxHP) {
+        PacketBuilder out = new PacketBuilder(175, PacketType.VARIABLE);
+        out.putString(opponent == null ? "null" : opponent).putShort(HP).putShort(maxHP);
+        player.getSession().write(out);
+        return this;
+    }
+
+    public PacketSender resetEntityFeed() {
+        sendEntityFeed("", 0, 0);
+        return this;
+    }
+
     /**
      * Sends some information to the client about screen fading.
      *
