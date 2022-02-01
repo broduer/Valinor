@@ -26,17 +26,21 @@ public class PointMysteryBox extends Interaction {
                 player.inventory().remove(POINTS_MYSTERY_BOX);
                 var amount = World.getWorld().random(3,5);
                 var votePoints = World.getWorld().random(1,2);
+                var pkPoints = World.getWorld().random(150,500);
                 String points = "";
 
                 if (World.getWorld().rollDie(50, 1)) {
                     amount += 5;
                     votePoints += 1;
+                    pkPoints += 75;
                 } else if (World.getWorld().rollDie(100, 1)) {
                     amount += 10;
                     votePoints += 2;
+                    pkPoints += 100;
                 } else if (World.getWorld().rollDie(150, 1)) {
                     amount += 15;
                     votePoints += 3;
+                    pkPoints += 175;
                 }
 
                 if (World.getWorld().rollDie(50, 1)) {
@@ -53,7 +57,7 @@ public class PointMysteryBox extends Interaction {
                 } else if (World.getWorld().rollDie(25, 1)) {
                     points = "marks of grace";
                     player.inventory().addOrBank(new Item(MARK_OF_GRACE, amount));
-                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" marks of grace.", "boxes_opened");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+amount+" marks of grace.", "boxes_opened");
                 } else if (World.getWorld().rollDie(6, 1)) {
                     points = "slayer points";
                     var slayerRewardPoints = player.<Integer>getAttribOr(SLAYER_REWARD_POINTS, 0) + amount;
@@ -69,14 +73,13 @@ public class PointMysteryBox extends Interaction {
                 } else if (World.getWorld().rollDie(3, 1)) {
                     points = "double drops scroll";
                     player.inventory().addOrBank(new Item(DOUBLE_DROPS_SCROLL, amount));
-                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" double drop scrolls.", "boxes_opened");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+amount+" double drop scrolls.", "boxes_opened");
                 } else {
                     points = "pk points";
-                    var pkPoints = player.<Integer>getAttribOr(PK_POINTS, 0) + amount;
-                    player.putAttrib(PK_POINTS, pkPoints);
+                    var pkp = player.<Integer>getAttribOr(PK_POINTS, 0) + pkPoints;
+                    player.putAttrib(PK_POINTS, pkp);
                     player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
-
-                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" pk points.", "boxes_opened");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+pkPoints+" pk points.", "boxes_opened");
                 }
 
                 if (amount > 5) {

@@ -28,17 +28,21 @@ public class PointsMysteryChest extends Interaction {
                 player.inventory().remove(POINTS_MYSTERY_CHEST);
                 var amount = World.getWorld().random(10, 15);
                 var votePoints = World.getWorld().random(3,7);
+                var pkPoints = World.getWorld().random(300,700);
                 String points = "";
 
                 if (World.getWorld().rollDie(50, 1)) {
                     amount += 8;
                     votePoints += 2;
+                    pkPoints += 100;
                 } else if (World.getWorld().rollDie(100, 1)) {
                     amount += 13;
                     votePoints += 3;
+                    pkPoints += 200;
                 } else if (World.getWorld().rollDie(150, 1)) {
                     amount += 20;
                     votePoints += 4;
+                    pkPoints += 300;
                 }
 
                 if (World.getWorld().rollDie(50, 1)) {
@@ -75,10 +79,10 @@ public class PointsMysteryChest extends Interaction {
                     Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" double drop scrolls.", "boxes_opened");
                 } else {
                     points = "pk points";
-                    var pkPoints = player.<Integer>getAttribOr(PK_POINTS, 0) + amount;
-                    player.putAttrib(PK_POINTS, pkPoints);
+                    var pkp = player.<Integer>getAttribOr(PK_POINTS, 0) + pkPoints;
+                    player.putAttrib(PK_POINTS, pkp);
                     player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
-                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+points+" pk points.", "boxes_opened");
+                    Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery box and received x"+pkPoints+" pk points.", "boxes_opened");
                 }
 
                 if (amount > 15) {

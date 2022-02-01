@@ -114,8 +114,8 @@ public class PickupItemPacketListener implements PacketListener {
 
             if (onSpot(player, tile)) {
                 if(itemId == WILDERNESS_KEY) {
-                    if(player.skills().combatLevel() < 126) {
-                        player.message(Color.RED.wrap("You need to be at least level 126 to pickup this key."));
+                    if(player.skills().combatLevel() < 120) {
+                        player.message(Color.RED.wrap("You need to be at least level 120 to pickup this key."));
                         return;
                     }
                 }
@@ -126,8 +126,8 @@ public class PickupItemPacketListener implements PacketListener {
                     @Override
                     public void onReach() {
                         if(itemId == WILDERNESS_KEY) {
-                            if(player.skills().combatLevel() < 126) {
-                                player.message(Color.RED.wrap("You need to be at least level 126 to pickup this key."));
+                            if(player.skills().combatLevel() < 120) {
+                                player.message(Color.RED.wrap("You need to be at least level 120 to pickup this key."));
                                 stop();
                                 return;
                             }

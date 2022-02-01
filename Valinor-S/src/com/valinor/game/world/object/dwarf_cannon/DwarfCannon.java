@@ -323,7 +323,7 @@ public class DwarfCannon extends OwnedObject {
             player.message("This temple is ancient and would probably collapse if you started firing a cannon.");
             return false;
         }
-        if(player.tile().region() == 9007) {
+        if(player.tile().region() == 9007 || player.tile().memberCave()) {
             player.message("The ground is too damp to support a cannon.");
             return false;
         }
