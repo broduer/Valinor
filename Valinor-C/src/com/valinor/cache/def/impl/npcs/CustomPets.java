@@ -341,6 +341,25 @@ public class CustomPets {
             definition.description = "Tiny but deadly!";
         }
 
+        if (id == GRIM_REAPER) {
+            definition.name = "Grim Reaper pet";
+            definition.heightScale = 90;
+            definition.widthScale = 90;
+            definition.recolorFrom = new int[] {10004, 25238, 8741, 4550, 908, 7073};
+            definition.recolorTo = new int[] {5231, 0, 0, 5353, 0, 8084};
+            definition.modelId = new int[]{5100, 292, 170, 179, 256, 507};
+            definition.rotate180Animation = 820;
+            definition.rotate90LeftAnimation = 822;
+            definition.rotate90RightAnimation = 821;
+            definition.standingAnimation = 847;
+            definition.walkingAnimation = 819;
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+        }
+
         if (id == BLOOD_REAPER) {
             definition.name = "Blood Reaper pet";
             definition.heightScale = 90;
