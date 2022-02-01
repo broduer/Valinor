@@ -161,7 +161,7 @@ public class Player extends Mob {
             bank.removeFromBank(item);
         }
 
-        if(item.getId() == DAWNBRINGER) {
+        if (item.getId() == DAWNBRINGER) {
             message("The weapon falls apart in your hand as Verzik's shield is destroyed.");
         }
     }
@@ -362,17 +362,17 @@ public class Player extends Mob {
         if (mode == ExpMode.GLADIATOR)
             percent += 10;
 
-        if(equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH))
+        if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH))
             percent += 5;
 
-        if(equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I))
+        if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I))
             percent += 7.5;
 
         var dropRateBoostUnlock = slayerRewards.getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
-        if(dropRateBoostUnlock)
+        if (dropRateBoostUnlock)
             percent += 3;
 
-        if(hasPetOut("Zriawk"))
+        if (hasPetOut("Zriawk"))
             percent += 15;
 
         if (equipment.hasAt(EquipSlot.HEAD, PURPLE_SLAYER_HELMET_I)) {
@@ -1391,7 +1391,7 @@ public class Player extends Mob {
             boolean pvpGameMode = gameMode == GameMode.INSTANT_PKER;
             boolean cannotEnterSkillsDatabase = developer || owner || pvpGameMode;
 
-            if(!cannotEnterSkillsDatabase) {
+            if (!cannotEnterSkillsDatabase) {
                 GameServer.getDatabaseService().submit(new UpdatePlayerSkillsDatabaseTransaction(this));
             }
 
@@ -1487,8 +1487,8 @@ public class Player extends Mob {
             Referrals.INSTANCE.onLoginReferals(this);
         }
 
-        if(getPlayerRights().isStaffMember(this)) {
-            World.getWorld().sendWorldMessage("[Staff]: <img="+getPlayerRights().getSpriteId()+">"+Color.staffColor(this, getPlayerRights().getName())+"</img> "+Color.BLUE.wrap(username)+" has logged in.");
+        if (getPlayerRights().isStaffMember(this)) {
+            World.getWorld().sendWorldMessage("[Staff]: <img=" + getPlayerRights().getSpriteId() + ">" + Color.staffColor(this, getPlayerRights().getName()) + "</img> " + Color.BLUE.wrap(username) + " has logged in.");
         }
 
         long endTime = System.currentTimeMillis() - startTime;
@@ -1795,7 +1795,6 @@ public class Player extends Mob {
     private final SecondsTimer yellDelay = new SecondsTimer();
     public final SecondsTimer increaseStats = new SecondsTimer();
     public final SecondsTimer decreaseStats = new SecondsTimer();
-    public boolean[] section = new boolean[16];
 
     private int destroyItem = -1;
     private boolean queuedAppearanceUpdate; // Updates appearance on next tick
@@ -1846,7 +1845,7 @@ public class Player extends Mob {
 
     public void syncContainers() {
         Optional<IronmanGroup> group = IronmanGroupHandler.getPlayersGroup(this);
-        if(group.isPresent()) {
+        if (group.isPresent()) {
             if (group.get().getGroupStorage(this).dirty) {
                 group.get().getGroupStorage(this).sync();
                 group.get().getGroupStorage(this).dirty = false;
@@ -2374,11 +2373,11 @@ public class Player extends Mob {
     }
 
     public void sound(int id) {
-        getPacketSender().sendSound(id, 0, 0,80);
+        getPacketSender().sendSound(id, 0, 0, 80);
     }
 
     public void sound(int id, int delay) {
-        getPacketSender().sendSound(id, 0, delay,8);
+        getPacketSender().sendSound(id, 0, delay, 8);
     }
 
     private Task distancedTask;
@@ -2683,7 +2682,7 @@ public class Player extends Mob {
                     boolean amOverOne = item.getAmount() > 1;
                     String amtString = amOverOne ? "x" + Utils.format(item.getAmount()) + "" : Utils.getAOrAn(item.name());
                     this.message(Color.RED.tag() + "The niffler collected " + amtString + " " + itemName + ".");
-                    Utils.sendDiscordInfoLog("Player " + getUsername() + "'s IP "+hostAddress+" niffler collected a: " + amtString + " " + itemName, "niffler_looted");
+                    Utils.sendDiscordInfoLog("Player " + getUsername() + "'s IP " + hostAddress + " niffler collected a: " + amtString + " " + itemName, "niffler_looted");
                 }
             }
         }
@@ -2865,7 +2864,6 @@ public class Player extends Mob {
 
     public void sequence() {
         try {
-            Arrays.fill(section, false);
 
             Runnable total = () -> {
                 time(t -> {
@@ -3013,57 +3011,31 @@ public class Player extends Mob {
 
         if (lastregion != tile.region() || lastChunk != tile.chunk()) {
             MultiwayCombat.refresh(this, lastregion, lastChunk);
-            packetSender.sendString(4536, "");
         }
 
         // Update last region and chunk ids
         putAttrib(AttributeKey.LAST_REGION, tile.region());
         putAttrib(AttributeKey.LAST_CHUNK, tile.chunk());
     }, controllers = () -> {
-        // ok so after 4 mins since logged in and tutorial still isn't complete, kick them
-        // don't rely on afk timer cos that can be reset easily by them just clicking move or w.e, this forces script to handle doing the entire tutorial, in future we can make new methods to kick
-        if (this.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false) && System.currentTimeMillis() - this.<Long>getAttribOr(LOGGED_IN_AT_TIME, System.currentTimeMillis()) > 1000 * 60 * 4) {
-            this.requestLogout();
-        }
-
         Prayers.drainPrayer(this);
 
         //Section 8 Process areas..
-        section[8] = true;
         ControllerManager.process(this);
-
-        //We don't have to make an entire abstract area for just these 2 lines.
-        if (tile.region() == 14231) {
-            interfaceManager.openWalkable(4535);
-            packetSender.sendString(4536, "Kill Count: " + getAttribOr(BARROWS_MONSTER_KC, 0));
-        }
     }, cbBountyFlush = () -> {
         getCombat().process();
 
         //Section 8 Process Bounty Hunter
-        section[9] = true;
-        BountyHunter.sequence(this);
-
-        //Section 10 Updates inventory if an update has been requested
-        section[10] = true;
+        //BountyHunter.sequence(this);
     }, end = () -> {
-
-        if (hp() < 1 && System.currentTimeMillis() - lockTime > 30_000) {
-            logger.error("player has been locked for 30s while 0hp.. how tf did that happen");
-            die(null);
-        }
-
         if (queuedAppearanceUpdate()) {
             getUpdateFlag().flag(Flag.APPEARANCE);
             setQueuedAppearanceUpdate(false);
         }
 
         //Section 12 Sync containers, if dirty
-        section[12] = true;
         postcycle_dirty();
 
         //Section 13 Send queued chat messages
-        section[13] = true;
         if (!getChatMessageQueue().isEmpty()) {
             setCurrentChatMessage(getChatMessageQueue().poll());
             getUpdateFlag().flag(Flag.CHAT);
@@ -3072,7 +3044,6 @@ public class Player extends Mob {
         }
 
         //Section 14 Decrease boosted stats Increase lowered stats. Don't decrease stats whilst the divine potion effect is active.
-        section[14] = true;
         if ((!increaseStats.active() || (decreaseStats.secondsElapsed() >= (Prayers.usingPrayer(this, Prayers.PRESERVE) ? 90 : 60))) && !divinePotionEffectActive()) {
             skills.replenishStats();
 

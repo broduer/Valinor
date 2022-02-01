@@ -54,8 +54,8 @@ public class Mining extends Interaction {
         GOLD(444, "gold", 40, 180, 65.0, 40, 29664),
         MITHRIL(447, "mithril", 55, 210, 80.0, 60, 14832),
         LOVAKITE(13356, "lovakite", 65, 210, 10.0, 40, 24556),
-        ADAMANT(449, "adamant", 70, 310, 95.0, 240, 9328),
-        RUNE(451, "rune", 85, 380, 125.0, 720, 4237),
+        ADAMANT(449, "adamant", 70, 310, 95.0, 100, 9328),
+        RUNE(451, "rune", 85, 380, 125.0, 220, 4237),
         JAIL_BLURITE(668, "blurite", 1, 320, 0.0, 3, 1000000),
         AMETHYST(21347, "amethyst", 92, 380, 246.0, 125, 2500);
 

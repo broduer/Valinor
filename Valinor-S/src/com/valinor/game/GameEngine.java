@@ -243,20 +243,6 @@ public final class GameEngine implements Runnable {
                 for (int counter = 0; counter < World.getWorld().section.length; counter++) {
                     if (!World.getWorld().section[counter]) {
                         logger.fatal("Game Engine World section " + counter + " was not successful.");
-                        //Player sequencing went wrong, let's find out what happened.
-                        if (counter == 5) {
-                            for (int counter2 = 1; counter2 < World.getWorld().getPlayers().size() + 1; counter2++) {
-                                Player player = World.getWorld().getPlayers().get(counter2);
-                                if (player != null) {
-                                    //logger.info("Player was not null when logging");
-                                    for (int counter3 = 0; counter3 < player.section.length; counter3++) {
-                                        if (!player.section[counter3]) {
-                                            logger.fatal("Player " + player.getUsername() + " section " + counter3 + " was not successful.");
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
