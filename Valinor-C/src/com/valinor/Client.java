@@ -3355,6 +3355,46 @@ public class Client extends GameApplet {
                         addReportToServer(e.getMessage());
                     }
                 }
+
+                if (entity instanceof Npc) {
+                    Npc npc = ((Npc) entity);
+
+                    if (local_player.engaged_entity_id == -1) {
+                        // Is the npc interacting with us?
+                        // If we aren't interacting with others,
+                        // Start combat box timer.
+                        if ((npc.engaged_entity_id - 32768) == localPlayerIndex) {
+                            currentInteract = npc;
+                            combatBoxTimer.start(10);
+                        }
+                    } else {
+                        // Are we interacting with the npc?
+                        // Start combat box timer.
+                        if (npc.index == local_player.engaged_entity_id) {
+                            currentInteract = npc;
+                            combatBoxTimer.start(10);
+                        }
+                    }
+                } else if (entity instanceof Player) {
+                    Player player = ((Player) entity);
+
+                    if (local_player.engaged_entity_id == -1) {
+                        // Is the player interacting with us?
+                        // If we aren't interacting with others,
+                        // Start combat box timer.
+                        if ((player.engaged_entity_id - 32768) == localPlayerIndex) {
+                            currentInteract = player;
+                            combatBoxTimer.start(10);
+                        }
+                    } else {
+                        // Are we interacting with the player?
+                        // Start combat box timer.
+                        if (player.index == local_player.engaged_entity_id - 32768) {
+                            currentInteract = player;
+                            combatBoxTimer.start(10);
+                        }
+                    }
+                }
             }
             for (int message_index = 0; message_index < total_messages; message_index++) {
                 int raster_x = scene_text_x[message_index];
@@ -4938,6 +4978,57 @@ public class Client extends GameApplet {
         if (scene_draw_x > -1 && game_tick % 20 < 10) {
             headIconsHint[0].drawSprite(scene_draw_x - 12, scene_draw_y - 28);
         }
+    }
+
+    public void drawCombatBox() {
+        // Get health..
+        int currentHp = currentInteract.current_hitpoints;
+        int maxHp = currentInteract.maximum_hitpoints;
+
+        // Make sure the mob isn't dead!
+        if (currentHp == 0) {
+            return;
+        }
+
+        // Get name..
+        String name = null;
+        if (currentInteract instanceof Player) {
+            name = ((Player) currentInteract).username;
+        } else if (currentInteract instanceof Npc) {
+            if (((Npc) currentInteract).desc != null) {
+                name = ((Npc) currentInteract).desc.name;
+            }
+        }
+
+        // Make sure the mob has a name!
+        if (name == null) {
+            return;
+        }
+
+        // Positioning..
+        int height = 37;
+        int width = 126;
+        int xPos = 2;
+        int yPos = 18;
+
+        // Draw box ..
+        Rasterizer2D.draw_filled_rect(xPos, yPos, width, height, 0x504a41, 180); //Main box
+        Rasterizer2D.fillPixels(xPos, yPos, width, height, 0x000000); //Outline
+
+        // Draw name..
+        Client.adv_font_regular.draw_centered(name, xPos + (width / 2), yPos + 14, 16777215, 0);
+
+        int percent = (int) (((double) currentHp / (double) maxHp) * (width - 9));
+        if (percent > (width - 9)) {
+            percent = (width - 9);
+        }
+        // Draw missing health
+        Rasterizer2D.draw_filled_rect(xPos + 4, yPos + 19, width - 9, 16, 11740160, 150);
+        // Draw existing health
+        Rasterizer2D.draw_filled_rect(xPos + 4, yPos + 19, percent, 16, 0x17770e);
+
+        // Draw health..
+        Client.adv_font_small.draw_centered(currentHp + "/" + maxHp, xPos + (width / 2), yPos + 32, 16777215, 0);
     }
 
     static long lastPackets;
@@ -10994,6 +11085,13 @@ public class Client extends GameApplet {
             return "*";
     }
 
+    public boolean shouldDrawCombatBox() {
+        if (!setting.draw_health_overlay) {
+            return false;
+        }
+        return currentInteract != null && !combatBoxTimer.finished();
+    }
+
     private void showErrorScreen() {
         Graphics g = getGameComponent().getGraphics();
         g.setColor(Color.black);
@@ -12711,7 +12809,7 @@ public class Client extends GameApplet {
                                 continue;
                             }
                             Rasterizer2D.drawPixels(boxHeight, drawY, drawX, menu.isHighlighted() ? 0x695B36 : 0x3B3629, boxWidth);
-                            Rasterizer2D.fillPixels(drawX, boxWidth, boxHeight, 0, drawY);
+                            Rasterizer2D.fillPixels(drawX, drawY, boxWidth, boxHeight, 0);
 
                             adv_font_regular.draw(menu.getOptionName(), drawX + 5, drawY + 17, 0xFF981F, -1);
                             adv_font_small.draw(menu.getOptionTooltip(), drawX + 5, drawY + 33, 0xFFA945, -1);
@@ -13233,66 +13331,6 @@ public class Client extends GameApplet {
     Runtime runtime = Runtime.getRuntime();
     int clientMemory = (int) ((runtime.totalMemory() - runtime.freeMemory()) / 1024L);
 
-    public String entityFeedName;
-    public int entityFeedHP;
-    public int entityFeedMaxHP;
-    public int entityFeedHP2;
-    public int entityAlpha;
-    private int entityTick;
-
-    public void pushFeed(String entityName, int HP, int maxHP) {
-        entityFeedHP2 = entityFeedHP <= 0 ? entityFeedMaxHP : entityFeedHP;
-        entityFeedName = entityName;
-        entityFeedHP = HP;
-        entityFeedMaxHP = maxHP;
-        entityAlpha = 255;
-        entityTick = entityName.isEmpty() ? 0 : 600;
-    }
-
-    private void displayEntityFeed() {
-        if (entityFeedName == null)
-            return;
-        if (entityFeedHP == 0)
-            return;
-        if (entityTick-- <= 0)
-            return;
-
-        double percentage = entityFeedHP / (double) entityFeedMaxHP;
-        double percentage2 = (entityFeedHP2 - entityFeedHP) / (double) entityFeedMaxHP;
-        int width = (int) (135 * percentage);
-
-        if (width > 132)
-            width = 132;
-
-        int xOff = 3;
-        int yOff = 25;
-
-        // background
-        Rasterizer2D.fillRectangle(xOff, yOff, 141, 50, 0x4c433d, 155);
-        Rasterizer2D.drawRectangle(xOff, yOff, 141, 50, 0x332f2d, 255);
-
-        // name
-        adv_font_small.draw_centered(entityFeedName, xOff + 69, yOff + 23, 0xFDFDFD, 0);
-
-        // Hp fill
-        Rasterizer2D.fillRectangle(xOff + 7, yOff + 32, width - 4, 12, 0x66b754, 130);
-        Rasterizer2D.fillRectangle(xOff + 7, yOff + 32, width - 4, 12, 0x66b754, 130);
-
-        // Hp empty
-        Rasterizer2D.fillRectangle(xOff + 4 + width, yOff + 32, 135 - width - 4, 12, 0xc43636, 130);
-
-        if (entityAlpha > 0) {
-            entityAlpha -= 5;
-            Rasterizer2D.fillRectangle(xOff + 4 + width, yOff + 32, (int) (135 * percentage2) - 4, 12, 0xFFDB00, (int) (130 * entityAlpha / 255.0));
-        }
-
-        Rasterizer2D.drawRectangle(xOff + 7, yOff + 32, 128, 12, 0x332f2d, 130);
-
-        // HP text
-        adv_font_small.draw_centered(NumberFormat.getInstance(Locale.US).format(entityFeedHP) + " / "
-            + NumberFormat.getInstance(Locale.US).format(entityFeedMaxHP), xOff + 72, yOff + 44, 0xFDFDFD, 0);
-    }
-
     private void displayHits() {
         ArrayList<IncomingHit> temp = new ArrayList<>(expectedHit);
         for (int index = 0; index < temp.size(); index++) {
@@ -13347,10 +13385,6 @@ public class Client extends GameApplet {
             // Effect timers
             if (setting.draw_timers) {
                 drawEffectTimers();
-            }
-
-            if (setting.draw_health_overlay) {
-                displayEntityFeed();
             }
 
             if (startSpin) {
@@ -16060,16 +16094,6 @@ public class Client extends GameApplet {
                 return true;
             }
 
-            if (opcode == ServerToClientPackets.ENTITY_FEED) {
-                try {
-                    pushFeed(incoming.readString(), incoming.readUShort(), incoming.readUShort());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                opcode = -1;
-                return true;
-            }
-
             if (opcode == ServerToClientPackets.OPEN_WELCOME_SCREEN) {
                 daysSinceRecovChange = incoming.readNegUByte();
                 unreadMessages = incoming.readUShortA();
@@ -17809,6 +17833,13 @@ public class Client extends GameApplet {
             SnowFlake.drawSnowflakes(0, 0);
         }
 
+        if (widget_overlay_id == -1) {
+            // Combat hp overlay
+            if (shouldDrawCombatBox()) {
+                drawCombatBox();
+            }
+        }
+
         if (screen != ScreenMode.FIXED) {
             drawChatArea();
             drawMinimap();
@@ -18262,6 +18293,7 @@ public class Client extends GameApplet {
     private int crossType;
     // private int plane;
     public int plane;
+    private Entity currentInteract;
     public final int[] currentLevels;
     private static int anInt924;
     private final long[] ignoreListAsLongs;
@@ -18560,6 +18592,10 @@ public class Client extends GameApplet {
     private boolean fadeMusic;
     private final int[] minimapLineWidth;
     private CollisionMap[] collisionMaps;
+    /**
+     * Draws information about our current target during combat.
+     */
+    private SecondsTimer combatBoxTimer = new SecondsTimer();
     public static int BIT_MASKS[];
     private int[] mapCoordinates;
     private int[] terrainIndices;
