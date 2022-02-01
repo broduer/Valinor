@@ -2962,6 +2962,20 @@ public class Player extends Mob {
             long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
             long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
 
+            if (minutesTillWildyBoss == 5) {
+                if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
+                    WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
+                    World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
+                }
+            }
+
+            if (minutesTillWildyKey == 5) {
+                if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
+                    WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
+                    World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
+                }
+            }
+
             // Refresh the quest tab every minute (every 100 ticks)
             if (GameServer.properties().autoRefreshQuestTab && getPlayerQuestTabCycleCount() == GameServer.properties().refreshQuestTabCycles) {
                 setPlayerQuestTabCycleCount(0);
@@ -2975,20 +2989,6 @@ public class Player extends Mob {
                 //Update these timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
-
-                if (minutesTillWildyBoss == 5) {
-                    if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
-                        WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
-                    }
-                }
-
-                if (minutesTillWildyKey == 5) {
-                    if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
-                        WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
-                    }
-                }
             }
         }, timers = () -> {
         getTimers().cycle(this);

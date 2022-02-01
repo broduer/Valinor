@@ -5081,7 +5081,7 @@ public class Client extends GameApplet {
         currentPacketTime = System.currentTimeMillis();
 
         if (currentPacketTime - packetsReadTime > 20 && loggedIn && loggedInWatch.hasElapsed(10_000, TimeUnit.MILLISECONDS)) {
-            addReportToServer("It took longer than 20 ms to read packets");
+            //addReportToServer("It took longer than 20 ms to read packets");
         }
         lastPackets = System.currentTimeMillis();
 

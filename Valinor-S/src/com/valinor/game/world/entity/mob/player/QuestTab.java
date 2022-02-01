@@ -12,7 +12,6 @@ import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Utils;

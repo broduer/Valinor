@@ -70,7 +70,7 @@ public class FishingGuild extends Interaction {
 
                 player.runFn(1, () -> {
                     player.lock();
-                    player.getPacketSender().sendScreenFade("", 1, 3);
+                    //player.getPacketSender().sendScreenFade("", 1, 3);
                 }).then(3, () -> DialogueManager.sendStatement(player, "You board the boat and row to the fishing platform.")).then(2, () -> {
                     player.teleport(2614, 3440);
                     player.unlock();
@@ -81,7 +81,7 @@ public class FishingGuild extends Interaction {
             if (obj.getId() == ROW_BOAT_30377) {
                 player.runFn(1, () -> {
                     player.lock();
-                    player.getPacketSender().sendScreenFade("", 1, 3);
+                    //player.getPacketSender().sendScreenFade("", 1, 3);
                 }).then(3, () -> DialogueManager.sendStatement(player, "You board the boat and row to the " + ("dock") + ".")).then(2, () -> {
                     player.teleport(2600, 3425);
                     player.unlock();
