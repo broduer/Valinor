@@ -255,14 +255,14 @@ public class AccuracyFormula {
                 //Arclight
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, ARCLIGHT)) {
                     if (npc.def() != null && npc.def().name != null && FormulaUtils.isDemon(npc)) {
-                        off_additional_bonus += 0.7;
+                        off_additional_bonus += 0.70;
                     }
                 }
 
                 //Dragon hunter crossbow and lance
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW_T) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW_B) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_LANCE)) {
                     if (npc.def() != null && npc.def().name != null && FormulaUtils.isDragon(npc)) {
-                        off_additional_bonus += 0.3;
+                        off_additional_bonus += 0.60;
                     }
                 }
 
@@ -275,7 +275,7 @@ public class AccuracyFormula {
 
                 //Magic on lava dragons
                 if (npc.id() == 6593 && style.equals(CombatType.MAGIC)) {
-                    off_additional_bonus += 0.5;
+                    off_additional_bonus += 0.50;
                 }
 
                 if (player.getEquipment().contains(ItemIdentifiers.SALVE_AMULET)) {
@@ -283,7 +283,7 @@ public class AccuracyFormula {
                 }
 
                 if (player.getEquipment().contains(ItemIdentifiers.SALVE_AMULETI) || player.getEquipment().contains(SALVE_AMULET_E) || player.getEquipment().contains(ItemIdentifiers.SALVE_AMULETEI)) {
-                    off_additional_bonus += 0.2;
+                    off_additional_bonus += 0.20;
                 }
 
                 if (weapon != null && (weapon.getId() == TWISTED_BOW || weapon.getId() == TWISTED_BOW_ORANGE || weapon.getId() == TWISTED_BOW_PURPLE || weapon.getId() == TWISTED_BOW_I || weapon.getId() == SANGUINE_TWISTED_BOW)) {
@@ -309,7 +309,7 @@ public class AccuracyFormula {
                 }
 
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, VIGGORAS_CHAINMACE_C) || player.getEquipment().hasAt(EquipSlot.WEAPON, CRAWS_BOW_C)) {
-                    off_additional_bonus += 0.5;
+                    off_additional_bonus += 0.50;
                 }
 
                 //Thammaron Sceptre
@@ -451,6 +451,10 @@ public class AccuracyFormula {
                 off_additional_bonus += 0.10;//10.0% damage boost
             }
 
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, ZARYTE_CROSSBOW)) {
+                off_additional_bonus += 0.50;
+            }
+
             //Custom effect not from OSRS, OSRS is 2.5% this is 5%
             if (player.getCombat().getFightType().getAttackType() == AttackType.CRUSH) {
                 if (player.getEquipment().hasAt(EquipSlot.HEAD, INQUISITORS_GREAT_HELM)) {
@@ -495,7 +499,7 @@ public class AccuracyFormula {
             assert enemy instanceof Npc;
             Npc npc = (Npc) enemy;
             if (npc.combatInfo() != null && npc.combatInfo().stats != null && npc.combatInfo().boss) {
-                def_equipment_ranged_defence -= (def_current_defence_level * 0.10); //I don't like this solution but this formula is fucked.
+                def_equipment_ranged_defence -= (def_current_defence_level * 0.50); //I don't like this solution but this formula is fucked.
             }
         }
 
@@ -642,6 +646,7 @@ public class AccuracyFormula {
                 aug_atk_mod = ATTACK_MOD_BASE;
             }
         }
+
         augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
         augmented_defence = Math.floor(((effective_defence + 8) * (1 + def_equipment_bonus / 64.)));
 
