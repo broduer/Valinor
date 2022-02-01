@@ -88,7 +88,11 @@ public class NexCombat extends CommonCombatMethod {
                     smokeBulletAttack(nex);
                 } else {
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target,false);
+                        if(World.getWorld().rollDie(2,1)) {
+                            meleeAttack(nex, target,false);
+                        } else {
+                            smokeRushAttack(nex);
+                        }
                     } else {
                         smokeRushAttack(nex);
                     }
@@ -120,14 +124,22 @@ public class NexCombat extends CommonCombatMethod {
                     attackCount = 0; // reset attack count
                 } else {
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target,false);
+                        if(World.getWorld().rollDie(2,1)) {
+                            meleeAttack(nex, target,false);
+                        } else {
+                            smokeRushAttack(nex);
+                        }
                     } else {
                         bloodBarrage(nex, target);
                     }
                 }
             } else if (nex.getAttacksStage() == 3) {
                 if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                    meleeAttack(nex, target,false);
+                    if(World.getWorld().rollDie(2,1)) {
+                        meleeAttack(nex, target,false);
+                    } else {
+                        smokeRushAttack(nex);
+                    }
                 } else {
                     iceBarrageAttack(nex);
                 }
@@ -143,7 +155,11 @@ public class NexCombat extends CommonCombatMethod {
                     }
 
                     if (CombatFactory.canReach(nex, CombatFactory.MELEE_COMBAT, target)) {
-                        meleeAttack(nex, target, true);
+                        if(World.getWorld().rollDie(2,1)) {
+                            meleeAttack(nex, target,true);
+                        } else {
+                            smokeRushAttack(nex);
+                        }
                     } else {
                         magicAttack(nex);
                     }

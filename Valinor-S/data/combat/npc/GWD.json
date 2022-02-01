@@ -1079,18 +1079,22 @@
     "aggroradius": 32,
     "stats": {
       "attack": 315,
-      "strength": 260,
+      "strength": 200,
       "defence": 260,
       "ranged": 350,
-      "magic": 300,
+      "magic": 230,
       "hitpoints": 3400
     },
     "bonuses": {
-      "stabdefence": 280,
-      "slashdefence": 250,
-      "crushdefence": 225,
-      "rangeddefence": 160,
-      "magicdefence": 350
+      "attack": 200,
+      "magic": 100,
+      "ranged": 150,
+      "strength": 20,
+      "stabdefence": 40,
+      "slashdefence": 140,
+      "crushdefence": 60,
+      "rangeddefence": 190,
+      "magicdefence": 300
     },
     "animations": {
       "attack": -1,
