@@ -125,7 +125,6 @@ public class WildernessKeyPlugin {
             LocalDateTime now = LocalDateTime.now();
             long difference = last.until(now, ChronoUnit.MINUTES);
             if (difference >= SPAWN_DURATION.toMinutes()) {
-                System.out.println("huh");
                 logger.trace("A wilderness key is spawning.");
                 WildernessKeyLocation location = spawnKey();
                 if (location != null) {
