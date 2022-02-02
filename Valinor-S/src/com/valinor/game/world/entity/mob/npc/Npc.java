@@ -71,7 +71,7 @@ public class Npc extends Mob {
 
     public Npc remove() {
         //Only remove if the npc is actually spawned
-        if (isRegistered()) {
+        if (isRegistered() && !def.ispet) {
             clearAttrib(AttributeKey.OWNING_PLAYER);
             World.getWorld().unregisterNpc(this);
         }

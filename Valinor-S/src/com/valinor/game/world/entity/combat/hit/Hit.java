@@ -14,7 +14,10 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.To
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
+import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 
 import java.security.SecureRandom;
 import java.util.function.Consumer;
@@ -260,7 +263,6 @@ public class Hit {
     }
 
     public void submit() {
-        pidAdjust();
         /*if(target instanceof Npc) {
             Npc npc = target.getAsNpc();
             if(npc != null && npc.def() != null && npc.def().name.toLowerCase().contains("the nightmare")) {
@@ -273,7 +275,41 @@ public class Hit {
                 return;
             }
         }*/
-        CombatFactory.addPendingHit(this); // defo need to call this cos this is where they all get processed
+        if(target != null && !invalid()) {
+            pidAdjust();
+            CombatFactory.addPendingHit(this);// defo need to call this cos this is where they all get processed
+        }
+    }
+
+    public boolean invalid() {
+        if (target.locked() && !target.isDamageOkLocked() && !target.isDelayDamageLocked())
+            return true;
+
+        if (attacker != null && target != null && attacker instanceof Mob) {
+            //System.out.printf("incoming hit on %s origin=%s state=%s%n", target, attacker, attacker.dead());
+            if (attacker instanceof Player) {
+                Tile myWildTile = target.tile().level < 6400 ? target.tile() : target.tile().transform(0, -6400, 0);
+                Tile originWildTile = attacker.tile().level < 6400 ? attacker.tile() : attacker.tile().transform(0, -6400, 0);
+                int wildDist = originWildTile.getChevDistance(myWildTile);
+
+                if (wildDist >= (WildernessArea.inWilderness(attacker.tile()) ? 64 : 18)) {
+                    //System.out.print("Hit nullified: dist "+wildDist);
+                    return true;
+                }
+            } else if (attacker instanceof Npc) {
+                if (attacker.dead()) {
+                    return true;
+                }
+
+                Tile attackerTile = attacker.tile();
+                Tile myTile = target.tile();
+
+                if (myTile.getChevDistance(attackerTile) >= 64) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override

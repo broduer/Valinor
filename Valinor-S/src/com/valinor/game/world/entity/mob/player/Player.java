@@ -2985,7 +2985,7 @@ public class Player extends Mob {
                     }
                 }
 
-                //Update these timer frames every minute.
+                //Update this timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(WILDERNESS_KEY.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KEY.childId).fetchLineData(this));
