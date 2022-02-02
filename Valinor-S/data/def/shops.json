@@ -1514,6 +1514,10 @@
         "amount": 100000
       },
       {
+        "id": 12829,
+        "amount": 100000
+      },
+      {
         "id": 1377,
         "amount": 100000
       },
@@ -2034,7 +2038,7 @@
   {
     "shopId": 18,
     "name": "PK Points Store",
-    "noiron": true,
+    "noiron": false,
     "currency": "PK_POINTS",
     "restock": true,
     "sellType": "NONE",
@@ -4082,11 +4086,71 @@
     "shopId": 43,
     "name": "<col=FFFE00>$</col> <col=FF0000>Donator Tickets Shop</col> <col=FFFE00>$</col>",
     "currency": "DONATOR_TICKETS",
-    "noiron": true,
+    "noiron": false,
     "restock": true,
     "sellType": "NONE",
-    "scroll": 300,
+    "scroll": 350,
     "items": [
+      {
+        "id": 11665,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 11664,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 11663,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 8840,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 8839,
+        "amount": 100,
+        "value": 750
+      },
+      {
+        "id": 8842,
+        "amount": 100,
+        "value": 500
+      },
+      {
+        "id": 13072,
+        "amount": 100,
+        "value": 1500
+      },
+      {
+        "id": 13073,
+        "amount": 100,
+        "value": 1500
+      },
+      {
+        "id": 12863,
+        "amount": 100,
+        "value": 2000
+      },
+      {
+        "id": 13071,
+        "amount": 100,
+        "value": 5000
+      },
+      {
+        "id": 10551,
+        "amount": 100,
+        "value": 1000
+      },
+      {
+        "id": 10548,
+        "amount": 100,
+        "value": 500
+      },
       {
         "id": 11137,
         "amount": 100,
@@ -4897,142 +4961,6 @@
         "id": 19473,
         "amount": 100000,
         "value": 175
-      }
-    ]
-  },
-  {
-    "shopId": 54,
-    "name": "<col=FFFE00>$</col> <col=FF0000>Donator Tickets Shop</col> <col=FFFE00>$</col>",
-    "currency": "DONATOR_TICKETS",
-    "noiron": false,
-    "restock": true,
-    "sellType": "NONE",
-    "scroll": 0,
-    "items": [
-      {
-        "id": 11665,
-        "amount": 100,
-        "value": 500
-      },
-      {
-        "id": 11664,
-        "amount": 100,
-        "value": 500
-      },
-      {
-        "id": 11663,
-        "amount": 100,
-        "value": 500
-      },
-      {
-        "id": 8840,
-        "amount": 100,
-        "value": 750
-      },
-      {
-        "id": 8839,
-        "amount": 100,
-        "value": 750
-      },
-      {
-        "id": 8842,
-        "amount": 100,
-        "value": 500
-      },
-      {
-        "id": 13072,
-        "amount": 100,
-        "value": 1500
-      },
-      {
-        "id": 13073,
-        "amount": 100,
-        "value": 1500
-      },
-      {
-        "id": 12863,
-        "amount": 100,
-        "value": 2000
-      },
-      {
-        "id": 13071,
-        "amount": 100,
-        "value": 5000
-      },
-      {
-        "id": 10551,
-        "amount": 100,
-        "value": 1000
-      },
-      {
-        "id": 10548,
-        "amount": 100,
-        "value": 500
-      },
-      {
-        "id": 1038,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 1040,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 1042,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 1044,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 1046,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 1048,
-        "amount": 100,
-        "value": 3000
-      },
-      {
-        "id": 11862,
-        "amount": 100,
-        "value": 4000
-      },
-      {
-        "id": 13343,
-        "amount": 100,
-        "value": 4000
-      },
-      {
-        "id": 1050,
-        "amount": 100,
-        "value": 1000
-      },
-      {
-        "id": 11847,
-        "amount": 100,
-        "value": 2000
-      },
-      {
-        "id": 1057,
-        "amount": 100,
-        "value": 1500
-      },
-      {
-        "id": 1055,
-        "amount": 100,
-        "value": 1500
-      },
-      {
-        "id": 1053,
-        "amount": 100,
-        "value": 1500
       }
     ]
   }
