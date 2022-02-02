@@ -6,7 +6,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
-import static com.valinor.util.CustomItemIdentifiers.RAIDS_MYSTERY_BOX;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -15,23 +15,25 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class RaidsMysteryBox extends Interaction {
 
-    private static final int RARE_ROLL = 20;
-    private static final int UNCOMMON_ROLL = 14;
+    private static final int RARE_ROLL = 12;
+    private static final int UNCOMMON_ROLL = 7;
 
     private static final Item[] RARE = new Item[]{
         new Item(SCYTHE_OF_VITUR),
         new Item(TWISTED_BOW),
-        new Item(SANGUINESTI_STAFF),
-        new Item(GHRAZI_RAPIER)
+        new Item(ELDER_WAND_HANDLE),
+        new Item(ELDER_WAND_STICK),
+        new Item(TALONHAWK_CROSSBOW),
+        new Item(SALAZAR_SLYTHERINS_LOCKET),
     };
 
     private static final Item[] UNCOMMON = new Item[]{
-        new Item(DRAGON_HUNTER_CROSSBOW),
+        new Item(TOM_RIDDLE_DIARY),
+        new Item(MARVOLO_GAUNTS_RING),
+        new Item(SANGUINESTI_STAFF),
+        new Item(GHRAZI_RAPIER),
         new Item(ANCESTRAL_ROBE_BOTTOM),
         new Item(ANCESTRAL_ROBE_TOP),
-        new Item(DINHS_BULWARK),
-        new Item(DRAGON_CLAWS),
-        new Item(ELDER_MAUL),
         new Item(KODAI_INSIGNIA),
         new Item(AVERNIC_DEFENDER),
         new Item(JUSTICIAR_CHESTGUARD),
@@ -39,6 +41,12 @@ public class RaidsMysteryBox extends Interaction {
     };
 
     private static final Item[] COMMON = new Item[]{
+        new Item(CLOAK_OF_INVISIBILITY),
+        new Item(SWORD_OF_GRYFFINDOR),
+        new Item(DRAGON_HUNTER_CROSSBOW),
+        new Item(ELDER_MAUL),
+        new Item(DINHS_BULWARK),
+        new Item(DRAGON_CLAWS),
         new Item(DEXTEROUS_PRAYER_SCROLL),
         new Item(ARCANE_PRAYER_SCROLL),
         new Item(TWISTED_BUCKLER),
