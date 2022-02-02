@@ -29,7 +29,7 @@ public class RevsCommand implements Command {
                 if(isPhase(1)) {
                     if (option == 1) {
                         Tile tile = new Tile(3075, 3651, 0);
-                        if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                        if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                             stop();
                             return;
                         }
@@ -38,7 +38,7 @@ public class RevsCommand implements Command {
                         stop();
                     } else if (option == 2) {
                         Tile tile = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.REVENANT_TELEPORT) ? new Tile(3244, 10145, 0) : new Tile(3130, 3828);;
-                        if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                        if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                             stop();
                             return;
                         }

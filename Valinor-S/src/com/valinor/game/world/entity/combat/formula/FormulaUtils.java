@@ -70,7 +70,7 @@ public class FormulaUtils {
                 name = def.name;
             }
             boolean exceptions = name.contains("Elvarg") || name.contains("Revenant dragon");
-            return name.contains("Hungarian horntail") || name.contains("Wyvern") || name.contains("Great Olm (Right claw)") || name.contains("Great Olm (Left claw)") || name.contains("Great Olm") || name.contains("Wyrm") || name.contains("Drake") || name.contains("Hydra") || name.contains("Vorkath") || name.contains("Galvek") || name.contains("dragon") || name.contains("Dragon") && !exceptions;
+            return name.contains("Hungarian horntail") || name.contains("Wyvern") || name.contains("Great Olm (Right claw)") || name.contains("Great Olm (Left claw)") || name.contains("Great Olm") || name.contains("Wyrm") || name.contains("Drake") || name.contains("Hydra") || name.contains("Vorkath") || name.contains("Galvek") || name.contains("King black") || name.contains("Ancient king") || name.contains("dragon") || name.contains("Dragon") && !exceptions;
         }
         return false;
     }

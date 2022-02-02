@@ -75,12 +75,7 @@ public class Item implements Cloneable {
     private int amount;
 
     public static void onServerStart() {
-        Mob.accumulateRuntimeTo(() -> {
-            checkDefs();
-        }, t -> {
-            System.out.println("itemdef special fields took " + t.toMillis() + " ms");
-        });
-
+        Mob.accumulateRuntimeTo(Item::checkDefs, t -> System.out.println("item def special fields took " + t.toMillis() + " ms"));
     }
 
     private static void checkDefs() {
@@ -394,8 +389,9 @@ public class Item implements Cloneable {
         return def.name;
     }
 
-    // These untradable items will be send to the inventory or bank on death.
+    // These untradable items will be sent to the inventory or bank on death.
     public static final int[] AUTO_KEPT_LIST = new int[]{
+        RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY, FEROCIOUS_GLOVES, RING_OF_MANHUNTING, CORRUPTED_RANGER_GAUNTLETS,
         COAL_BAG, IMCANDO_HAMMER, GOLDSMITH_GAUNTLETS, COOKING_GAUNTLETS, MAGIC_SECATEURS, EXPLORERS_RING_4, RADAS_BLESSING_4, RING_OF_CHAROSA, ARDOUGNE_CLOAK_4,
         BONECRUSHER, FIGHTER_HAT, SKILLING_SCROLL, TASK_BOTTLE_SKILLING, TASK_BOTTLE_PVMING, TASK_BOTTLE_CASKET, PVMING_SCROLL,
         MAX_CAPE, FIRE_MAX_CAPE, SARADOMIN_MAX_CAPE, ZAMORAK_MAX_CAPE, GUTHIX_MAX_CAPE, ACCUMULATOR_MAX_CAPE, MAX_CAPE_13342, ARDOUGNE_MAX_CAPE, INFERNAL_MAX_CAPE_21285, IMBUED_SARADOMIN_MAX_CAPE, IMBUED_ZAMORAK_MAX_CAPE, IMBUED_GUTHIX_MAX_CAPE, ASSEMBLER_MAX_CAPE, MYTHICAL_MAX_CAPE,

@@ -19,7 +19,7 @@ public class WestsTeleportCommand implements Command {
 
         Tile tile = new Tile(2978, 3598);
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             return;
         }
 

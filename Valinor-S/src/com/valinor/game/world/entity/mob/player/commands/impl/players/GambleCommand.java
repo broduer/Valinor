@@ -18,7 +18,7 @@ public class GambleCommand implements Command {
             return;
         }
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             return;
         }
 

@@ -19,7 +19,7 @@ public class Wilderness44TeleportCommand implements Command {
 
         Tile tile = new Tile(2972, 3863);
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             return;
         }
 

@@ -31,7 +31,7 @@ public class DCaveCommand implements Command {
 
         Tile tile = new Tile(2335, 9795);
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             return;
         }
 

@@ -18,7 +18,7 @@ public class ChinsCommand implements Command {
     public void execute(Player player, String command, String[] parts) {
         Tile tile = new Tile(3138,3785);
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             return;
         }
 

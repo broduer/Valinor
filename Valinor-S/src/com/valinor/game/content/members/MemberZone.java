@@ -70,7 +70,7 @@ public class MemberZone extends Interaction {
 
                 Tile tile = new Tile(2335, 9795);
 
-                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     return true;
                 }
 
@@ -121,7 +121,7 @@ public class MemberZone extends Interaction {
             if (obj.getId() == PORTAL_OF_HEROES) {
                 Tile tile = new Tile(3299, 3918);
 
-                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     return true;
                 }
 
@@ -159,7 +159,7 @@ public class MemberZone extends Interaction {
             if (obj.getId() == PORTAL_OF_CHAMPIONS) {
                 Tile tile = new Tile(3287, 3884);
 
-                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC) || !Teleports.pkTeleportOk(player, tile)) {
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
                     return true;
                 }
 

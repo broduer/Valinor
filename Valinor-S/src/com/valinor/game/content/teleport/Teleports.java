@@ -1,5 +1,6 @@
 package com.valinor.game.content.teleport;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.instance.InstancedAreaManager;
@@ -16,10 +17,13 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.TournamentArea;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.valinor.game.content.presets.PresetManager.lastTimeDied;
 
 /**
  * @author Patrick van Elderen | January, 10, 2021, 11:08
@@ -136,35 +140,6 @@ public class Teleports {
         });
     }
 
-    public static boolean pkTeleportOk(Player player, Tile tile) {
-        return pkTeleportOk(player, tile.x, tile.y, true);
-    }
-
-    public static boolean pkTeleportOk(Player player, int x, int z) {
-        return pkTeleportOk(player, x, z, true);
-    }
-
-    public static boolean pkTeleportOk(Player player, Tile tile, boolean preventQuickRespawn) {
-        return pkTeleportOk(player, tile.x, tile.y, preventQuickRespawn);
-    }
-
-    // Execute a teleport, checking if locked or jailed etc.
-    public static boolean pkTeleportOk(Player player, int x, int z, boolean preventQuickRespawn) {
-        if (player.locked()) {
-            // Stops players doing ::mb while jumping over, for example, the wildy ditch. This would fly them off into random places.
-            return false;
-        }
-        if (!player.getPlayerRights().isDeveloperOrGreater(player)) {
-            if (player.jailed()) {
-                player.message("You can't use commands when Jailed.");
-                return false;
-            }
-        } else {
-            player.message("As an admin you bypass pk-tele restrictions.");
-        }
-        return true;
-    }
-
     public static boolean rolTeleport(Player player) {
         // rol ringoflife ring of life
         player.stopActions(true);
@@ -191,6 +166,21 @@ public class Teleports {
         //If the player is locked or dead
         if (player.locked() || player.dead() || player.hp() <= 0)
             return;
+
+        if (!player.getPlayerRights().isDeveloperOrGreater(player)) {
+            if (player.jailed()) {
+                player.message("You can't use commands when Jailed.");
+                return;
+            }
+            if (WildernessArea.inWilderness(tile)) {
+                if (lastTimeDied(player, GameServer.properties().pkTelesAfterSetupSet)) {
+                    player.message("Quick wilderness teleports are off limits %ds <col=FF0000>after death.</col>", (int) Utils.ticksToSeconds(GameServer.properties().pkTelesAfterSetupSet));
+                    return;
+                }
+            }
+        } else {
+            player.message("As an admin you bypass pk-tele restrictions.");
+        }
 
         //Close all interfaces
         player.getInterfaceManager().close();
