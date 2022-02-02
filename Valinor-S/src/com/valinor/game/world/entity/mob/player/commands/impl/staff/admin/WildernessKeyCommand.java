@@ -19,7 +19,7 @@ public class WildernessKeyCommand implements Command {
     public void execute(Player player, String command, String[] parts) {
         WildernessKeyLocation location = WildernessKeyPlugin.spawnKey();
         if (location != null) {
-            //log.trace("Key location selected: {} (absolute: {}).", location, location.tile());
+            log.trace("Key location selected: {} (absolute: {}).", location, location.tile());
         } else {
             player.message("There is already a wilderness spawned.");
         }

@@ -140,6 +140,7 @@ import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_M
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WILDERNESS_KEY;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -2927,9 +2928,7 @@ public class Player extends Mob {
         }
     }
 
-    Runnable logR = () -> {
-        fireLogout();
-    },
+    Runnable logR = this::fireLogout,
         qtStuff = () -> {
             setPlayerQuestTabCycleCount(getPlayerQuestTabCycleCount() + 1);
             var gametime = (Integer) getAttribOr(GAME_TIME, 0) + 1;
@@ -2958,24 +2957,6 @@ public class Player extends Mob {
                 }
             }
 
-            LocalDateTime now = LocalDateTime.now();
-            long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
-            long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
-
-            if (minutesTillWildyBoss == 5) {
-                if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
-                    WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
-                    World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
-                }
-            }
-
-            if (minutesTillWildyKey == 5) {
-                if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
-                    WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
-                    World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
-                }
-            }
-
             // Refresh the quest tab every minute (every 100 ticks)
             if (GameServer.properties().autoRefreshQuestTab && getPlayerQuestTabCycleCount() == GameServer.properties().refreshQuestTabCycles) {
                 setPlayerQuestTabCycleCount(0);
@@ -2986,9 +2967,28 @@ public class Player extends Mob {
                 this.getPacketSender().sendString(WILDERNESS_ACTIVITY.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_ACTIVITY.childId).fetchLineData(this));
                 this.getPacketSender().sendString(WILDERNESS_ACTIVITY_LOCATION.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_ACTIVITY_LOCATION.childId).fetchLineData(this));
 
+                LocalDateTime now = LocalDateTime.now();
+                long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
+                long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
+
+                if (minutesTillWildyBoss == 5) {
+                    if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
+                        WorldBossEvent.ANNOUNCE_5_MIN_TIMER = true;
+                        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The world boss will spawn in 5 minutes, gear up!");
+                    }
+                }
+
+                if (minutesTillWildyKey == 5) {
+                    if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
+                        WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
+                        World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
+                    }
+                }
+
                 //Update these timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
+                this.getPacketSender().sendString(WILDERNESS_KEY.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KEY.childId).fetchLineData(this));
             }
         }, timers = () -> {
         getTimers().cycle(this);

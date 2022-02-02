@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.wilderness.content.key;
 
+import com.valinor.GameServer;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -10,6 +11,8 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.CustomItemIdentifiers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -19,6 +22,8 @@ import java.time.temporal.ChronoUnit;
  * Created by Kaleem on 15/11/2017.
  */
 public class WildernessKeyPlugin {
+
+    private static final Logger logger = LogManager.getLogger(WildernessKeyPlugin.class);
 
     private static final String PICKUP_KEY_MESSAGE = "<col=800000>%s</col> has picked up the Wilderness key %s.";
 
@@ -108,7 +113,7 @@ public class WildernessKeyPlugin {
         ESCAPED = true;
     }
 
-    public static final Duration SPAWN_DURATION = Duration.ofHours(2);
+    public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(2);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(SPAWN_DURATION.toSeconds(), ChronoUnit.SECONDS);
@@ -120,6 +125,12 @@ public class WildernessKeyPlugin {
             LocalDateTime now = LocalDateTime.now();
             long difference = last.until(now, ChronoUnit.MINUTES);
             if (difference >= SPAWN_DURATION.toMinutes()) {
+                System.out.println("huh");
+                logger.trace("A wilderness key is spawning.");
+                WildernessKeyLocation location = spawnKey();
+                if (location != null) {
+                    logger.trace("A wilderness key has spawned at: {} (absolute: {})", location, location.tile());
+                }
                 ANNOUNCE_5_MIN_TIMER = false;
                 ESCAPED = false;
                 last = now;
@@ -146,9 +157,10 @@ public class WildernessKeyPlugin {
 
     public static WildernessKeyLocation spawnKey() {
         if (GroundItemHandler.getGroundItems().stream().anyMatch(groundItem -> groundItem.getItem().getId() == CustomItemIdentifiers.WILDERNESS_KEY)) {
-            //log.trace("Another key is already on the floor, new key will not spawn.");
+            logger.trace("Another key is already on the floor, new key will not spawn.");
             return null;
         }
+        System.out.println("weeee");
         WildernessKeyLocation currentLocation = WildernessKeyLocation.findRandom();
         announceKeySpawn(currentLocation.tile());
 
