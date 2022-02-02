@@ -637,6 +637,9 @@ public class NpcDeath {
                         KourendCatacombs.drop(killer, npc, npc.tile());
                     }
 
+                    Optional<Pet> pet = NpcDeath.checkForPet(killer, table);
+                    pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
+
                     // Custom drop tables
                     if (npc.combatInfo() != null && npc.combatInfo().scripts != null && npc.combatInfo().scripts.droptable_ != null) {
                         npc.combatInfo().scripts.droptable_.reward(npc, killer);
@@ -820,7 +823,7 @@ public class NpcDeath {
                 killer.message("You have a funny feeling like you would have been followed...");
             } else if (currentPet == null) {
                 killer.message("You have a funny feeling like you're being followed.");
-                PetAI.spawnPet(killer, pet.get(), false);
+                PetAI.spawnPet(killer, pet.get(), false,false);
             } else {
                 killer.inventory().addOrBank(new Item(pet.get().item));
                 killer.message("You feel something weird sneaking into your backpack.");

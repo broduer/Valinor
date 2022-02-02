@@ -10,7 +10,6 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
-import com.valinor.util.Color;
 import com.valinor.util.Tuple;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
@@ -124,6 +123,10 @@ public class PetAI extends Interaction {
     }
 
     public static void spawnPet(Player player, Pet pet, boolean removeItem) {
+        spawnPet(player, pet, removeItem, true);
+    }
+
+    public static void spawnPet(Player player, Pet pet, boolean removeItem, boolean animate) {
         if (player.pet() != null && !player.pet().finished()) {
             if (player.inventory().getFreeSlots() < 1) {
                 player.message("You need at least one free inventory slot.");
@@ -139,8 +142,10 @@ public class PetAI extends Interaction {
             player.inventory().remove(new Item(pet.item), true);
         }
 
-        player.message("You have set your pet down on the ground.");
-        player.animate(827);
+        if(animate) {
+            player.message("You have set your pet down on the ground.");
+            player.animate(827);
+        }
         Tile tile = player.tile().transform(0,1);
         Npc petNpc = new Npc(pet.npc, World.getWorld().randomTileAround(tile, 1));
         petNpc.walkRadius(-1); // Allow walking all across the map

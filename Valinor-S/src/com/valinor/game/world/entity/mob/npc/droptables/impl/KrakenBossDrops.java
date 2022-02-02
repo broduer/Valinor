@@ -50,9 +50,7 @@ public class KrakenBossDrops implements Droptable {
             });
 
             Optional<Pet> pet = NpcDeath.checkForPet(killer, table);
-            if (pet.isPresent()) {
-                BOSSES.log(killer, killed.id(), new Item(pet.get().item));
-            }
+            pet.ifPresent(value -> BOSSES.log(killer, killed.id(), new Item(value.item)));
         }
     }
 
