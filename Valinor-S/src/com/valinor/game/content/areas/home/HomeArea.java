@@ -15,11 +15,15 @@ import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.masks.animations.Animation;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.game.world.object.GameObject;
@@ -30,6 +34,8 @@ import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.GAME_MODE;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WILDERNESS_ACTIVITY_LOCATION;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.ALTAR;
@@ -229,95 +235,129 @@ public class HomeArea extends Interaction {
     }
 
     @Override
-    public boolean handleNpcInteraction(Player player, Npc npc, int option) {
+    public boolean handleNpcInteraction(Player p, Npc npc, int option) {
         if (option == 1) {
             if (npc.id() == GRAND_EXCHANGE_CLERK || npc.id() == GRAND_EXCHANGE_CLERK_2149) {
-                TradingPost.open(player);
+                TradingPost.open(p);
                 return true;
             }
             if (npc.id() == IRON_MAN_TUTOR) {
-                GroupIronmanInterface.open(player);
+                GroupIronmanInterface.open(p);
                 return true;
             }
             if (npc.id() == PERDU) {
-                player.getDialogueManager().start(new PerduDialogue());
+                p.getDialogueManager().start(new PerduDialogue());
                 return true;
             }
             if (npc.id() == SHURA) {
                 if (Referrals.INSTANCE.getCOMMAND_ENABLED()) {
-                    player.getDialogueManager().start(new ReferralD());
+                    p.getDialogueManager().start(new ReferralD());
                 } else {
-                    player.message("Referrals are currently disabled.");
+                    p.message("Referrals are currently disabled.");
                 }
                 return true;
             }
             if (npc.id() == COOK) {
-                World.getWorld().shop(13).open(player);
+                World.getWorld().shop(13).open(p);
                 return true;
             }
             if (npc.id() == DOMMIK) {
-                World.getWorld().shop(12).open(player);
+                World.getWorld().shop(12).open(p);
                 return true;
             }
             if (npc.id() == LOWE) {
-                World.getWorld().shop(10).open(player);
+                World.getWorld().shop(10).open(p);
                 return true;
             }
             if (npc.id() == SHOP_ASSISTANT_2820) {
-                World.getWorld().shop(1).open(player);
+                World.getWorld().shop(1).open(p);
                 return true;
             }
             if (npc.id() == HANS) {
-                player.getDialogueManager().start(new Hans());
+                p.getDialogueManager().start(new Hans());
                 return true;
             }
             if (npc.id() == AUBURY) {
-                player.getDialogueManager().start(new AuburyDialogue());
+                p.getDialogueManager().start(new AuburyDialogue());
                 return true;
             }
             if (npc.id() == DRUNKEN_DWARF_2408) {
-                player.getDialogueManager().start(new DrunkenDwarfDialogue());
+                p.getDialogueManager().start(new DrunkenDwarfDialogue());
                 return true;
             }
         }
         if (option == 2) {
+            if (npc.id() == IRON_MAN_TUTOR) {
+                var playerIsIron = p.gameMode().isIronman() || p.gameMode().isHardcoreIronman() || p.gameMode().isUltimateIronman();
+                if(!playerIsIron) {
+                    p.message("Only ironman can use this function.");
+                    return true;
+                }
+                p.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... parameters) {
+                        send(DialogueType.OPTION, "Would you like to de-iron?", "Yes.", "No.");
+                        setPhase(0);
+                    }
+
+                    @Override
+                    protected void select(int option) {
+                        if(isPhase(0)) {
+                            if(option == 1) {
+                                if(!p.getPlayerRights().isStaffMember(p)) {
+                                    p.setPlayerRights(PlayerRights.PLAYER);
+                                    p.getPacketSender().sendRights();
+                                }
+                                p.gameMode(GameMode.NONE);
+                                p.getPacketSender().sendString(GAME_MODE.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.GAME_MODE.childId).fetchLineData(p));
+                                p.message("Your ironman status has been revoked.");
+                                stop();
+                            }
+                            if(option == 2) {
+                                stop();
+                            }
+                        }
+                    }
+                });
+                return true;
+            }
             if (npc.id() == DRUNKEN_DWARF_2408) {
-                World.getWorld().shop(53).open(player);
+                World.getWorld().shop(53).open(p);
                 return true;
             }
             if (npc.id() == DOMMIK) {
-                World.getWorld().shop(12).open(player);
+                World.getWorld().shop(12).open(p);
                 return true;
             }
             if (npc.id() == LOWE) {
-                World.getWorld().shop(10).open(player);
+                World.getWorld().shop(10).open(p);
                 return true;
             }
             if (npc.id() == AUBURY) {
-                if (player.gameMode() == GameMode.NONE) {
-                    World.getWorld().shop(11).open(player);
+                if (p.gameMode() == GameMode.NONE) {
+                    World.getWorld().shop(11).open(p);
                 } else {
-                    World.getWorld().shop(23).open(player);
+                    World.getWorld().shop(23).open(p);
                 }
                 return true;
             }
             if (npc.id() == VANNAKA) {
-                player.getTaskBottleManager().open();
+                p.getTaskBottleManager().open();
                 return true;
             }
             if (npc.id() == HANS) {
-                player.getDialogueManager().start(new Hans());
+                p.getDialogueManager().start(new Hans());
                 return true;
             }
         }
         if (option == 3) {
             if (npc.id() == AUBURY) {
                 npc.forceChat("Seventhior Distine Molenko!");
-                player.graphic(110, 124, 100);
-                player.lockNoDamage();
-                Chain.bound(player).runFn(3, () -> {
-                    player.teleport(new Tile(2911, 4830, 0));
-                    player.unlock();
+                p.graphic(110, 124, 100);
+                p.lockNoDamage();
+                Chain.bound(p).runFn(3, () -> {
+                    p.teleport(new Tile(2911, 4830, 0));
+                    p.unlock();
                 });
                 return true;
             }

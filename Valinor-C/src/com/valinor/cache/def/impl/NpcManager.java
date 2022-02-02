@@ -13,6 +13,10 @@ public class NpcManager {
 
         switch (id) {
 
+            case IRON_MAN_TUTOR:
+                definition.actions = new String[]{"Talk-to", null, "De-iron", null, null, null, null};
+                break;
+
             case DRUNKEN_DWARF_2408:
                 definition.actions = new String[]{"Talk-to", null, "Trade", null, null, null, null};
                 break;

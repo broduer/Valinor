@@ -11,6 +11,8 @@ import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.game.GameConstants.BANK_ITEMS;
 import static com.valinor.game.GameConstants.TAB_AMOUNT;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.EXP_MODE;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.GAME_MODE;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -249,6 +251,8 @@ public class AccountSelection extends Interaction {
         player.unlock();
         player.getInterfaceManager().close();
         player.putAttrib(AttributeKey.CONTINUE_STARTER_TUTORIAL, true);
+        player.getPacketSender().sendString(GAME_MODE.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.GAME_MODE.childId).fetchLineData(player));
+        player.getPacketSender().sendString(EXP_MODE.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.EXP_MODE.childId).fetchLineData(player));
         if (player.getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
             player.getDialogueManager().start(new Tutorial());
         }

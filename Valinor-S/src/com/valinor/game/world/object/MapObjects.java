@@ -74,7 +74,7 @@ public class MapObjects { // cache objects
     }
 
     /**
-     * Checks if an gameobject exists.
+     * Checks if a game object exists.
      *
      * @param object
      * @return
@@ -90,11 +90,11 @@ public class MapObjects { // cache objects
      */
     public static void add(GameObject object) {
         RegionManager.loadMapFiles(object.getX(), object.getY());
-        //Get hash for object..
+        //Get hash for object.
         long hash = getHash(object.tile().getX(), object.tile().getY(), object.tile().getLevel());
 
         if (mapObjects.containsKey(hash)) {
-            //Check if object already exists in this list..
+            //Check if object already exists in this list.
             boolean exists = false;
             List<GameObject> list = mapObjects.get(hash);
             for (GameObject o : list) {
