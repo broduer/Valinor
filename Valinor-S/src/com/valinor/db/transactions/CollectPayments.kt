@@ -4,6 +4,7 @@ import com.valinor.GameServer
 import com.valinor.db.makeQuery
 import com.valinor.db.onDatabase
 import com.valinor.db.query
+import com.valinor.game.world.World
 import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.dialogue.DialogueManager
 import com.valinor.game.world.entity.dialogue.Expression
@@ -162,6 +163,14 @@ object CollectPayments {
 
                     //Check if we can update the rank
                     memberRights.update(this, false)
+
+                    if(GameServer.properties().mysteryTicketPromo) {
+                        val mysteryTickets = paymentAmount.toInt() / 10
+                        if (mysteryTickets > 0) {
+                            inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
+                            World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
+                        }
+                    }
 
                     //Buy two get one free promo
                     if (GameServer.properties().buyTwoGetOneFree) {

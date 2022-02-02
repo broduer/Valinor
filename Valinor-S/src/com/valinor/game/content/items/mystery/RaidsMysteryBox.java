@@ -15,8 +15,8 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class RaidsMysteryBox extends Interaction {
 
-    private static final int RARE_ROLL = 12;
-    private static final int UNCOMMON_ROLL = 7;
+    private static final int RARE_ROLL = 8;
+    private static final int UNCOMMON_ROLL = 4;
 
     private static final Item[] RARE = new Item[]{
         new Item(SCYTHE_OF_VITUR),

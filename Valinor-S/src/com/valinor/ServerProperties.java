@@ -233,6 +233,7 @@ public final class ServerProperties {
         edgeDitch10secondPjTimerEnabled = true;
         enableChangeAccountType = true;
         buyTwoGetOneFree = false;
+        mysteryTicketPromo = false;
         doubleExperienceEvent = false;
         doubleSlayerRewardPointsEvent = false;
         doublePKPEvent = false;
@@ -654,6 +655,9 @@ public final class ServerProperties {
 
     // If this promo is active when purchasing 2 of the same items from the store you get one for free
     public final boolean buyTwoGetOneFree;
+
+    // If this promo is active when spending 10EU in the webshop you get one of these free.
+    public final boolean mysteryTicketPromo;
 
     public final boolean doubleExperienceEvent;
     public final boolean doubleSlayerRewardPointsEvent;

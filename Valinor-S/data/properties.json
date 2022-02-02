@@ -126,6 +126,7 @@
   "edgeDitch10secondPjTimerEnabled": true,
   "enableChangeAccountType": true,
   "buyTwoGetOneFree": false,
+  "mysteryTicketPromo": false,
   "doubleExperienceEvent": true,
   "doubleSlayerRewardPointsEvent": false,
   "doublePKPEvent": false,
