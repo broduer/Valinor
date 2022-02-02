@@ -33,8 +33,8 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
      */
     private static final ConcurrentHashMap<String, Integer> connections = new ConcurrentHashMap<>();
     private static final ConcurrentHashMap<String, ConcurrentLinkedDeque<Long>> login_timestamps = new ConcurrentHashMap<>();
-    public static long timeLimitForMaxConnections = 2_500;
-    public static int maximumShortTermOpenChannels = 6;
+    public static long timeLimitForMaxConnections = 15_000;
+    public static int maximumShortTermOpenChannels = 25;
 
     // Used to check if the user has a username which 100% an admin. Means you don't have
     // to bother loading the profile _just_ to check rights.
