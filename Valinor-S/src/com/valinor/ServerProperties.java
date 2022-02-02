@@ -131,6 +131,7 @@ public final class ServerProperties {
         refreshQuestTabCycles = 100;
         hitPredictorEnabled = true;
         tournamentsEnabled = true;
+        wildernessActivityEnabled = true;
         enableSql = sqlOn;
         linuxOnlyDisplayCycleLag = false;
         ignoreGameLagDetectionMilliseconds = 10000;
@@ -407,6 +408,11 @@ public final class ServerProperties {
      * If we want to disable PvP tournaments, set this to false.
      */
     public final boolean tournamentsEnabled;
+
+    /**
+     * If we want to disable wilderness activity, set this to false.
+     */
+    public final boolean wildernessActivityEnabled;
 
     /**
      * If we want to disable SQL, set this to false.

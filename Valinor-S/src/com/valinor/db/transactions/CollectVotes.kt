@@ -19,6 +19,7 @@ import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers
 import com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP
+import com.valinor.util.ItemIdentifiers
 import com.valinor.util.ItemIdentifiers.COINS_995
 import com.valinor.util.Utils
 import org.apache.logging.log4j.LogManager
@@ -106,6 +107,15 @@ object CollectVotes {
                             if(World.getWorld().doubleVotePoints())
                                 points *= 2
 
+                            val maxPoints: Int = if(World.getWorld().doubleVotePoints())
+                                12
+                            else
+                                6
+
+                            //Safety
+                            if(points > maxPoints)
+                                points = maxPoints
+
                             //World message is important people like "shine"
                             World.getWorld()
                                 .sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">" + points + " vote points</col> for voting! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::vote</col>!")
@@ -134,6 +144,9 @@ object CollectVotes {
                             inventory().addOrBank(Item(DOUBLE_DROPS_LAMP, 1))
                             message("You have received x1 double drops lamp for voting.")
 
+                            inventory().addOrBank(Item(ItemIdentifiers.ANTIQUE_LAMP_11137, 1))
+                            message("You have received x1 experience lamp for voting.")
+
                             //Increase achievements
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_I, votes.toInt())
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_II, votes.toInt())
@@ -144,10 +157,6 @@ object CollectVotes {
                             if(electionDay) {
                                 World.getWorld().sendWorldMessage("<img=1081>" + Color.PURPLE.wrap(username.toString()) + " just activated his "+Color.RED.wrap("Election day")+" perk and doubled their vote points!")
                             }
-
-                            //Safety
-                            if(points > 5)
-                                points = 5
 
                             // and here is reward inside the loop for 1 vote. so this code runs x times how many votes
                             val increaseBy = getAttribOr<Int>(AttributeKey.VOTE_POINTS, 0) + points

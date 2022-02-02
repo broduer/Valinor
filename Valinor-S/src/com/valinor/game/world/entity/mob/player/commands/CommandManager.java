@@ -101,7 +101,6 @@ public class CommandManager {
         commands.put("walkchaos", new WalkchaosCommand());
         commands.put("tidus", new TidusCommand());
         commands.put("features", new FeaturesCommand());
-        commands.put("promocode", new PromoCodeCommand());
         commands.put("cp", new ClanOutpostCommand());
         commands.put("co", new ClanOutpostCommand());
         commands.put("chins", new ChinsCommand());
@@ -151,8 +150,6 @@ public class CommandManager {
         commands.put("macban", new MacBanPlayerCommand());
         commands.put("killscorpia", new KillScorpiaCommand());
         commands.put("setlevelo", new SetLevelOther());
-        commands.put("disablepromocode", new DisablePromoCodeCommand());
-        commands.put("disablesbox", new DisableStarterBox());
         commands.put("checkmulti", new CheckMultiLoggers());
         commands.put("disabledailyrewards", new DisableDailyRewards());
         commands.put("disableredeem", new DisableRedeem());

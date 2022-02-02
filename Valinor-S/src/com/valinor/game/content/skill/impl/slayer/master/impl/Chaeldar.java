@@ -96,7 +96,7 @@ public class Chaeldar extends Interaction {
         player.getDialogueManager().start(new Dialogue() {
             @Override
             protected void start(Object... parameters) {
-                String n = Slayer.taskName(task.uid);
+                String n = task == null ? "NULL" : Slayer.taskName(task.uid);
                 String taskName = n == null ? "NULL" : n;
                 send(DialogueType.NPC_STATEMENT, CHAELDAR, Expression.ANXIOUS, "Excellent, you're doing great. Your new task is to kill", ""+num+" "+taskName+".");setPhase(0);
             }

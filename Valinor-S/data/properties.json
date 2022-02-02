@@ -28,6 +28,7 @@
   "hitPredictorEnabled": true,
   "drawShopCostText": true,
   "tournamentsEnabled": true,
+  "wildernessActivityEnabled": true,
   "enableSql": false,
   "linuxOnlyDisplayCycleLag": false,
   "ignoreGameLagDetectionMilliseconds": 35000,

@@ -38,7 +38,6 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::redeem</col> - Redeem all your purchases.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::claimvote</col> - Claim your vote rewards.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::refer</col> - Allows you to fill in your referral.");
-        commands.add("<br><col=" + Color.RED.getColorValue() + ">::promocode - name</col> - Some content creators have a promo code.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::yell</col> - Allows you to use the yell channel.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::claimtopvoter</col> - Claims the rewards for being top voter.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::kdr</col> - Display your KDR in chat.");
