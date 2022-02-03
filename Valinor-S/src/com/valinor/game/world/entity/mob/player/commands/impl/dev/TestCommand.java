@@ -2,6 +2,8 @@ package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.instance.impl.NightmareInstance;
+import com.valinor.game.content.mechanics.AntiSpam;
+import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.content.minigames.impl.Barrows;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.theatre_of_blood.SupplyChest;
@@ -22,11 +24,14 @@ import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.CommandManager;
+import com.valinor.game.world.entity.mob.player.commands.impl.players.YellCommand;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
+import com.valinor.net.PlayerSession;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
+import com.valinor.util.flood.Buffer;
 
 import java.util.Arrays;
 import java.util.List;
@@ -74,6 +79,25 @@ public class TestCommand implements Command {
 
 
         player.message("Test command has been activated.");
+       // String xd = ".net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com";
+        String xd = "kyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskys";
+        for (int i = 0; i < 20; i++) {
+
+            if (AntiSpam.isNewPlayerSpamming(player, xd)) { // runs the check, doesnt matter about return
+              //  return;
+            }
+
+            if (Utils.blockedWord(xd)) {
+                player.message("<col=ca0d0d>Please refrain from using foul language in the yell chat! Thanks.");
+               // return;
+            }
+            String filtered = Censor.starred(xd);
+            if (filtered != null) {
+                byte[] compressed = Utils.encode(filtered, Buffer.create());
+            }
+            YellCommand.sendYell(player, xd);
+        }
+        PlayerSession.main(new String[0]);
     }
 
     @Override

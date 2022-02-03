@@ -9,8 +9,6 @@ import com.valinor.db.query
 import com.valinor.db.submit
 import com.valinor.db.transactions.CollectPayments.collectPayments
 import com.valinor.fs.ObjectDefinition
-import com.valinor.game.GameConstants.BANK_ITEMS
-import com.valinor.game.GameConstants.TAB_AMOUNT
 import com.valinor.game.GameEngine
 import com.valinor.game.TimesCycle
 import com.valinor.game.content.EffectTimer
@@ -37,7 +35,6 @@ import com.valinor.game.world.entity.AttributeKey
 import com.valinor.game.world.entity.Mob
 import com.valinor.game.world.entity.combat.CombatSpecial
 import com.valinor.game.world.entity.combat.CombatType
-import com.valinor.game.world.entity.combat.formula.AccuracyFormula
 import com.valinor.game.world.entity.combat.magic.MagicClickSpells
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath
 import com.valinor.game.world.entity.int
@@ -367,7 +364,7 @@ object KtCommands {
                         bot.smartPathTo(targPos);
                         val chat = "we ${targPos.distance(bot.tile())} i:${bot.relations.ignoreList.size}"
                         bot.forceChat(chat)
-                        bot.chatMessageQueue.add(ChatMessage(0, 0, chat.toByteArray()))
+                        bot.chatMessageQueue.add(ChatMessage(0, 0, chat.toByteArray(), chat))
                         if (!bot.isRegistered)
                             it.stop()
                     }

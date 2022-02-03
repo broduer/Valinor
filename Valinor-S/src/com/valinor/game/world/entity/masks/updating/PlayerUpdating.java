@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.masks.updating;
 
+import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Entity;
@@ -14,6 +15,8 @@ import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.packet.PacketBuilder.AccessType;
 import com.valinor.net.packet.PacketType;
 import com.valinor.net.packet.ValueType;
+import com.valinor.util.Utils;
+import com.valinor.util.flood.Buffer;
 
 import java.util.Iterator;
 
@@ -410,7 +413,12 @@ public class PlayerUpdating {
      */
     private static void updateChat(PacketBuilder builder, Player target) {
         ChatMessage message = target.getCurrentChatMessage();
-        byte[] bytes = message.getText();
+        byte[] bytes = message.getBytes();
+        // by moving encoding under blocked, if its blocked, no need to encode/code won't get this far
+        // since only 1 message is sent in player updating per tick, there's no need to run Encoding every time we get a msg (up to 5 per tick)
+        String filtered = Censor.starred(message.getText());
+        if (filtered != null)
+            bytes = Utils.encode(filtered, Buffer.create()); // 5k buffer is overkill as fuck
         builder.putShort(((message.getColour() & 0xff) << 8) | (message.getEffects() & 0xff), ByteOrder.LITTLE);
         builder.put(target.getPlayerRights().ordinal());
         builder.put(target.getMemberRights().ordinal());

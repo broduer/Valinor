@@ -1285,7 +1285,7 @@ public class Utils {
         return new String(decodeBuf, 0, idx);
     }
 
-    public static byte[] encode(String string, Buffer buffer) {
+    public static byte[] encode(String string, Buffer buffer) { // compression
         if (string.length() > 80)
             string = string.substring(0, 80);
         string = string.toLowerCase();

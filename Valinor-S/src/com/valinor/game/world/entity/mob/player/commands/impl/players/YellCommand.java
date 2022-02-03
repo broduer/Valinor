@@ -57,6 +57,10 @@ public class YellCommand implements Command {
             return;
         }
 
+        sendYell(player, yellMessage);
+    }
+
+    public static void sendYell(Player player, String yellMessage) {
         //#Text colour
         String yellColour = player.getAttribOr(AttributeKey.YELL_COLOUR, "006601");
 

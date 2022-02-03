@@ -27,7 +27,7 @@ public class ChatMessagePacketListener implements PacketListener {
         int effect = packet.readByteS();
         byte[] text = packet.readReversedBytesA(size);
         String raw = Utils.textUnpack(text, size);
-        String chatMessage = Utils.ucFirst(Utils.textUnpack(text, size).toLowerCase());
+        String chatMessage = Utils.ucFirst(raw.toLowerCase());
 
         if (chatMessage.length() <= 0) {
             return;
@@ -36,7 +36,7 @@ public class ChatMessagePacketListener implements PacketListener {
         if (chatMessage.length() > 80) {
             chatMessage = chatMessage.substring(0, 79);
         }
-
+        
         if (AntiSpam.isNewPlayerSpamming(player, chatMessage)) {
             return;
         }
@@ -68,9 +68,6 @@ public class ChatMessagePacketListener implements PacketListener {
             return;
         }
 
-        String filtered = Censor.starred(raw);
-        if (filtered != null)
-            text = Utils.encode(filtered, Buffer.create());
         
         if (Utils.blockedWord(chatMessage)) {
             DialogueManager.sendStatement(player, "A word was blocked in your sentence. Please do not repeat it!");
@@ -82,7 +79,7 @@ public class ChatMessagePacketListener implements PacketListener {
             return;
         }
 
-        player.getChatMessageQueue().add(new ChatMessage(color, effect, text));
+        player.getChatMessageQueue().add(new ChatMessage(color, effect, text, raw));
         Utils.sendDiscordInfoLog(player.getUsername() + ": " + chatMessage, "chat");
     }
 

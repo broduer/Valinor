@@ -15,21 +15,27 @@ public class ChatMessage {
      * The effects of the message.
      */
     private int effects;
+    private byte[] bytes;
     /**
      * The actual text of the message.
      */
-    private byte[] text;
+    private String text;
+
+    public byte[] getBytes() {
+        return bytes;
+    }
 
     /**
      * The Message constructor.
-     *
      * @param colour  The color the message will have, done through color(#):
      * @param effects The effect the message will have, done through effect(#):
+     * @param bytes
      * @param text    The actual message it will have.
      */
-    public ChatMessage(int colour, int effects, byte[] text) {
+    public ChatMessage(int colour, int effects, byte[] bytes, String text) {
         this.colour = colour;
         this.effects = effects;
+        this.bytes = bytes;
         this.text = text;
     }
 
@@ -56,7 +62,7 @@ public class ChatMessage {
      *
      * @return text.
      */
-    public byte[] getText() {
+    public String getText() {
         return text;
     }
 }
