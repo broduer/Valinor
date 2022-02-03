@@ -28,7 +28,7 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
     private static final Logger logger = LogManager.getLogger(LoginHandler.class);
 
     /**
-     * a map of ip:count of connections open in netty. not 1:1 with attempting to login because the client
+     * a map of ip:count of connections open in netty. not 1:1 with attempting to log in because the client
      * might send a js5 or cache request or something else
      */
     private static final ConcurrentHashMap<String, Integer> connections = new ConcurrentHashMap<>();

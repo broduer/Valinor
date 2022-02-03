@@ -85,7 +85,7 @@ public class NPCActions extends NpcIdentifiers {
                 handled = true;
             }
 
-            if(npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis")) {
+            if(npc.def().name != null && (npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis"))) {
                 player.getDialogueManager().start(new BankTellerDialogue(), npc);
                 return;
             }

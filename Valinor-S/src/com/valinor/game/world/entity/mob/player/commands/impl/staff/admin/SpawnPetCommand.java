@@ -37,30 +37,30 @@ public class SpawnPetCommand implements Command {
                     Optional<Pet> pet = Optional.ofNullable(Pet.getPetByItem(table.petItem));
                     if (pet.isPresent()) {
                         // Do we already own this pet?
-                        boolean caught = player.isPetUnlocked(pet.get().varbit);
+                        boolean caught = plr.get().isPetUnlocked(pet.get().varbit);
 
                         // RS tries to add it as follower first. That only works if you don't have one.
-                        Npc currentPet = player.pet();
+                        Npc currentPet = plr.get().pet();
                         if (caught && pet.get().varbit != -1) {//Only applies to untradeable pets
-                            player.message("You have a funny feeling like you would have been followed...");
+                            plr.get().message("You have a funny feeling like you would have been followed...");
                         } else if (currentPet == null) {
-                            player.message("You have a funny feeling like you're being followed.");
-                            PetAI.spawnPet(player, pet.get(), false,false);
+                            plr.get().message("You have a funny feeling like you're being followed.");
+                            PetAI.spawnPet(plr.get(), pet.get(), false,false);
                         } else {
-                            player.inventory().addOrBank(new Item(pet.get().item));
-                            player.message("You feel something weird sneaking into your backpack.");
+                            plr.get().inventory().addOrBank(new Item(pet.get().item));
+                            plr.get().message("You feel something weird sneaking into your backpack.");
                         }
 
-                        if (!player.isPetUnlocked(pet.get().varbit)) {
+                        if (!plr.get().isPetUnlocked(pet.get().varbit)) {
                             if (pet.get().varbit != -1) { // -1 means tradeable pet
-                                if (!player.isPetUnlocked(pet.get().varbit)) {
-                                    player.addUnlockedPet(pet.get().varbit);
+                                if (!plr.get().isPetUnlocked(pet.get().varbit)) {
+                                    plr.get().addUnlockedPet(pet.get().varbit);
                                 }
                             }
                         }
 
-                        World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + player.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
-                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".", "yell_item_drop");
+                        World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + plr.get().getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
+                        Utils.sendDiscordInfoLog("Player " + plr.get().getUsername() + " has received a: " + new Item(pet.get().item).name() + ".", "yell_item_drop");
                     }
                     pet.ifPresent(value -> BOSSES.log(plr.get(), boss, new Item(value.item)));
                 }

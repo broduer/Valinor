@@ -635,10 +635,11 @@ public class NpcDeath {
                         table.rollForBrimstoneKey(npc, killer);
                         table.rollForKeyOfDrops(killer, npc);
                         KourendCatacombs.drop(killer, npc, npc.tile());
-                    }
 
-                    Optional<Pet> pet = NpcDeath.checkForPet(killer, table);
-                    pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
+                        // Pets, anyone?! :)
+                        Optional<Pet> pet = checkForPet(killer, table);
+                        pet.ifPresent(value -> BOSSES.log(killer, npc.id(), new Item(value.item)));
+                    }
 
                     // Custom drop tables
                     if (npc.combatInfo() != null && npc.combatInfo().scripts != null && npc.combatInfo().scripts.droptable_ != null) {
