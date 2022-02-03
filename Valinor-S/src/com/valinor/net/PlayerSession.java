@@ -2,6 +2,7 @@ package com.valinor.net;
 
 import com.valinor.GameServer;
 import com.valinor.game.TimesCycle;
+import com.valinor.game.task.Task;
 import com.valinor.game.task.impl.PlayerTask;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
@@ -161,26 +162,20 @@ public class PlayerSession {
                 //rather than just skipping the null packet, as this is faster.
                 break;
             }
+            PacketListener listener = null;
             try {
-                PacketListener listener = ClientToServerPackets.PACKETS[packet.getOpcode()];
+                listener = ClientToServerPackets.PACKETS[packet.getOpcode()];
 
                 if (packet.getOpcode() != 0) {
                     //logger.info("Packet " + packet.getOpcode() + " is: " + ClientToServerPackets.PACKETS[packet.getOpcode()].toString());
                 }
                 int finalI = i;
+                PacketListener finalListener1 = listener;
                 Mob.accumulateRuntimeTo(() -> {
                     try {
-                        listener.handleMessage(player, packet);
+                        finalListener1.handleMessage(player, packet);
                     } catch (Throwable t) {
                         logger.catching(t);
-                    }
-                    if (player.getCurrentTask() != null) {
-                        if (player.getCurrentTask() instanceof PlayerTask) {
-                            PlayerTask task = (PlayerTask) player.getCurrentTask();
-                            if (task.stops(listener.getClass())) {
-                                task.stop();
-                            }
-                        }
                     }
                 }, taken -> {
                     if (!TimesCycle.BENCHMARKING_ENABLED)
@@ -200,15 +195,46 @@ public class PlayerSession {
                 logger.catching(t);
             } finally {
                 packet.getBuffer().release();
+                // this method has always been sketchy i dont know what the fuck it does, maybe thats for future/check oss
             }
+
+            final Task[] stopped = {null};
+            PacketListener finalListener = listener;
+            Mob.accumulateRuntimeTo(() -> {
+                if (player.getCurrentTask() != null) {
+                    stopped[0] = player.getCurrentTask();
+                    if (player.getCurrentTask() instanceof PlayerTask) {
+                        PlayerTask task = (PlayerTask) player.getCurrentTask();
+                        if (task.stops(finalListener.getClass())) {
+                            task.stop(); // could feasibly be a task stopping! this is included in the ms count..
+                        }
+                    }
+                }
+            }, taken -> {
+                if (!TimesCycle.BENCHMARKING_ENABLED)
+                    return;
+                if (taken.toNanos() > threshold) { // 0.5ms
+                    final double taken2 = taken.toNanos() / 1_000_000.;
+                    final String frm = df.format(taken2);
+                    final String time = frm.equals("0") || frm.equals("0.0") ? taken2 + "" : frm;
+                    final String name = stopped[0] == null ? "??" : stopped[0].getClass().getSimpleName();
+                    logger.warn("{} ms to stop task {} player {} by packet {}", time, name, player, finalListener.getClass().getSimpleName());
+                    logger.trace("{} ms to stop task {} player {} by packet {}", time, name, player, finalListener.getClass().getSimpleName());
+                }
+            });
         }
     }
 
     public static void main(String[] args) {
+        int[] data = new int[] {72, 117, 98, 98, 101, 108, 108, 10, 59, -80, -43, 68, -96, -15, 13, 29, 51, -22};
+        byte[] dataBytes = new byte[data.length];
+        for (int i = 0; i < dataBytes.length; i++) {
+            dataBytes[i] = (byte) data[i];
+        }
        /* long ns = 600_000;
         double smallns = ns / 1_000_000.;
         System.out.println(df.format(smallns)+" from "+smallns+" and "+ns);*/
-        final Packet packet = new Packet(-1, Unpooled.copiedBuffer(new byte[]{(byte)105, (byte)116, (byte)101, (byte)109, (byte)32, (byte)50, (byte)50, (byte)54, (byte)54, (byte)52, (byte)32, (byte)50, (byte)48, (byte)10}));
+        final Packet packet = new Packet(-1, Unpooled.copiedBuffer(dataBytes));
         String command = packet.readString();
         System.out.println("was "+ Arrays.toString(packet.getBuffer().array())+" -> "+command);
     }
