@@ -1,6 +1,8 @@
 package com.valinor.game.content.areas.wilderness.content.key;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -111,6 +113,9 @@ public class WildernessKeyPlugin {
         World.getWorld().sendWorldMessage(SPRITE + message);
         World.getWorld().clearBroadcast();
         ESCAPED = true;
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_I, 1);
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_II, 1);
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_III, 1);
     }
 
     public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(2);

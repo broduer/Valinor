@@ -1,5 +1,7 @@
 package com.valinor.game.content.raids.chamber_of_xeric;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.mechanics.Poison;
@@ -96,6 +98,7 @@ public class ChamberOfXerics extends Raids {
 
             //Daily raids task
             DailyTaskManager.increase(DailyTasks.RAIDING, p);
+            AchievementsManager.activate(p, Achievements.RAIDER, 1);
 
             //Roll a reward for each individual player
             ChamberOfXericReward.giveRewards(p);

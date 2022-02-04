@@ -34,9 +34,9 @@ public class AchievementWidget {
         int totalAchievements = list.size();
 
         switch (difficulty) {
-            case EASY -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 535);
-            case MED -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 565);
-            case HARD -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 760);
+            case EASY -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 665);
+            case MED -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 685);
+            case HARD -> player.getPacketSender().sendScrollbarHeight(AchievementUtility.ACHIEVEMENT_SCROLL_BAR, 830);
         }
 
         player.getPacketSender().sendString(AchievementUtility.ACHIEVEMENTS_COMPLETED, "Achievements Completed (" + player.achievementsCompleted() + "/" + Achievements.getTotal() + ")");

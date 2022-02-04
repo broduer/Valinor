@@ -1,6 +1,8 @@
 package com.valinor.game.content.tournaments;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
@@ -326,6 +328,7 @@ public class Tournament {
                     player.forceChat("Fight!");
                     player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "Fight!");
                     player.clearAttrib(AttributeKey.TOURNAMENT_COUNTDOWN);
+                    AchievementsManager.activate(player, Achievements.TOURNY, 1);
                     stop();
                 } else {
                     if (secs != (int) player.getAttribOr(AttributeKey.TOURNAMENT_COUNTDOWN, -1)) {

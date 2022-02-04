@@ -1,5 +1,7 @@
 package com.valinor.game.content.areas.wilderness.content.key;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.skull.SkullType;
@@ -156,5 +158,9 @@ public class WildernessKeyChest extends Interaction {
 
         //And unlock the player
         player.unlock();
+
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_I, 1);
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_II, 1);
+        AchievementsManager.activate(player, Achievements.WILDY_KEY_III, 1);
     }
 }

@@ -28,7 +28,6 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Drake;
 import com.valinor.game.world.entity.combat.method.impl.npcs.karuulm.Wyrm;
-import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.Nechryael;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss;
 import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.superiors.nechryarch.NechryarchDeathSpawn;
 import com.valinor.game.world.entity.mob.npc.droptables.ItemDrops;
@@ -138,6 +137,26 @@ public class NpcDeath {
                     killer.getBossKillLog().addKill(npc);
                 }
 
+                if(npc.id() == NpcIdentifiers.HYDRA) {
+                    AchievementsManager.activate(killer, Achievements.HYDRA,1);
+                }
+
+                if (npc.def().name.equalsIgnoreCase("Abyssal Sire")) {
+                    AchievementsManager.activate(killer, Achievements.SIRE, 1);
+                }
+
+                if (npc.id() == BRYOPHYTA) {
+                    AchievementsManager.activate(killer, Achievements.BRYOPHYTA, 1);
+                }
+
+                if (npc.id() == NpcIdentifiers.SARACHNIS) {
+                    AchievementsManager.activate(killer, Achievements.SPIDER_STAMPER, 1);
+                }
+
+                if (npc.def().name.equalsIgnoreCase("Demonic gorilla")) {
+                    AchievementsManager.activate(killer, Achievements.DEMONIC, 1);
+                }
+
                 if (npc.def().name.equalsIgnoreCase("Yak")) {
                     AchievementsManager.activate(killer, Achievements.YAK_HUNTER, 1);
                 }
@@ -185,10 +204,6 @@ public class NpcDeath {
                 if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant")) {
                     AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.REVENANTS);
-                }
-
-                if (npc.def().name.equalsIgnoreCase("Alchemical Hydra")) {
-                    killer.getTaskBottleManager().increase(BottleTasks.ALCHEMICAL_HYDRA);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Chaos Fanatic")) {
@@ -288,13 +303,19 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Giant Mole")) {
                     killer.getTaskBottleManager().increase(BottleTasks.GIANT_MOLE);
+                    AchievementsManager.activate(killer, Achievements.HOLY_MOLEY, 1);
                 }
 
                 if (npc.def().name.toLowerCase().contains("green dragon")) {
                     DailyTaskManager.increase(DailyTasks.GREEN_DRAGONS, killer);
                 }
 
+                if (npc.def().name.equalsIgnoreCase("Nex")) {
+                    AchievementsManager.activate(killer, Achievements.NEX, 1);
+                }
+
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
+                    AchievementsManager.activate(killer, Achievements.ANCHOR_HUNTER, 1);
                     if (World.getWorld().rollDie(10, 1)) {
                         npc.respawns(false);//Barrelchest can no longer spawn his ancient version spawns.
                         var ancientBarrelchest = new Npc(ANCIENT_BARRELCHEST, npc.spawnTile()).respawns(false);
@@ -486,6 +507,7 @@ public class NpcDeath {
 
                     case CORRUPTED_NECHRYARCH -> {
                         DailyTaskManager.increase(DailyTasks.CORRUPTED_NECHRYARCH, killer);
+                        AchievementsManager.activate(killer, Achievements.CORRUPTED_NECHRYARCH, 1);
                     }
                 }
 
@@ -654,6 +676,7 @@ public class NpcDeath {
                     return;
                 } else if (npc.id() == KALPHITE_QUEEN_6501) {
                     KalphiteQueenSecondForm.death(npc);
+                    AchievementsManager.activate(killer, Achievements.BUG_EXTERMINATOR, 1);
                 }
 
                 if (npc.id() == Phases.OLM_LEFT_HAND) {
@@ -690,6 +713,8 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Alchemical hydra")) {
                     if (killer != null && killer.getAlchemicalHydraInstance() != null) {
+                        killer.getTaskBottleManager().increase(BottleTasks.ALCHEMICAL_HYDRA);
+                        AchievementsManager.activate(killer, Achievements.HYDRA,1);
                         killer.getAlchemicalHydraInstance().death(killer);//Do Alchemical hydra death
                     }
                 }
@@ -887,6 +912,8 @@ public class NpcDeath {
 
                     //Always increase kill counts
                     player.getBossKillLog().addKill(npc);
+
+                    AchievementsManager.activate(player, Achievements.NIGHTMARE, 1);
 
                     //Random drop from the table
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());

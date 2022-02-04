@@ -68,6 +68,19 @@ public enum Achievements {
     REVENANT_HUNTER("Revenant hunter", "Kill 10000 revenants.", 10000, Difficulty.HARD, new Item(MYSTERY_TICKET, 1), new Item(DONATOR_MYSTERY_BOX, 3), new Item(CRAWS_BOW_C, 1)),
     GODWAR("Godwar", "Kill 500 Godwars Dungeon Bosses", 500, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(DONATOR_MYSTERY_BOX, 2), new Item(GODSWORD_BLADE, 1)),
     CORPOREAL_CRITTER("Corporeal Critter", "Kill 100 Corporeal beasts.", 100, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(BLESSED_SPIRIT_SHIELD, 1), new Item(MYSTERY_TICKET, 1)),
+    ANCHOR_HUNTER("Anchor Hunter I", "Kill 150 Barrelchest.", 150, Difficulty.MED, new Item(COINS_995, 2_000_000), new Item(CRYSTAL_KEY, 2)),
+    NEX("Zaros temple", "Kill 100 Nex.", 150, Difficulty.HARD, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX, 2), new Item(MYSTERY_TICKET, 2)),
+    NIGHTMARE("Nightmare", "Kill 100 Nightmares.", 100, Difficulty.HARD, new Item(COINS_995, 15_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX, 1), new Item(MYSTERY_TICKET, 1)),
+    RAIDER("Raider", "Finish 125 raids of any kind.", 125, Difficulty.MED, new Item(COINS_995, 25_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX,2), new Item(MYSTERY_TICKET,2)),
+    CORRUPTED_NECHRYARCH("Corrupted Nechryarch", "Kill 250 Corrupted Nechryarchs", 250, Difficulty.MED, new Item(COINS_995, 10_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX,2), new Item(MYSTERY_TICKET)),
+    HYDRA("Hydra Hunter", "Kill 300 Hydras.", 300, Difficulty.MED, new Item(COINS_995, 15_000_000), new Item(CRYSTAL_KEY,3)),
+    SIRE("Sire", "Kill 25 Abyssal sires.", 25, Difficulty.EASY, new Item(COINS_995, 5_000_000), new Item(DONATOR_MYSTERY_BOX)),
+    BRYOPHYTA("Bryophyta", "Kill 10 Bryophytas.", 10, Difficulty.EASY, new Item(COINS_995, 2_000_000), new Item(CRYSTAL_KEY)),
+    DEMONIC("Demonic", "Kill 125 Demonic Gorillas.", 125, Difficulty.MED, new Item(COINS_995, 10_000_000), new Item(CRYSTAL_KEY, 5), new Item(DONATOR_MYSTERY_BOX)),
+    HOLY_MOLEY("Holy Moley", "Kill 300 Giant Moles.", 300, Difficulty.EASY, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX)),
+    BUG_EXTERMINATOR("Bug Exterminator", "Kill 50 Kalphite Queens.", 50, Difficulty.EASY, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 1), new Item(DONATOR_MYSTERY_BOX)),
+    SPIDER_STAMPER("Spider Stamper", "Kill 50 Sarachnis.", 50, Difficulty.EASY, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 1), new Item(DONATOR_MYSTERY_BOX)),
+    WORLD_BOSS_SMASHER("World Boss Smasher", "Kill 50 World bosses.", 50, Difficulty.MED, new Item(COINS_995, 10_000_000), new Item(DONATOR_MYSTERY_BOX, 2), new Item(MYSTERY_TICKET,2)),
 
     SKILLER_I("Skiller I", "Earn a total level of 750.", 1, Difficulty.EASY, new Item(COINS_995, 500_000), new Item(ANTIQUE_LAMP_11137, 1)),
     SKILLER_II("Skiller II", "Earn a total level of 1000.", 1, Difficulty.MED, new Item(COINS_995, 5_000_000), new Item(ANTIQUE_LAMP_11137, 2)),
@@ -92,7 +105,7 @@ public enum Achievements {
     DEFENDER_HUNT_IX("Defender hunter IX", "Obtain the dragon defender.", 1, Difficulty.MED, new Item(SUPER_COMBAT_POTION4+1, 50), new Item(PRAYER_POTION4+1, 50), new Item(BIG_BONES+1, 100)),
     FIGHT_CAVES_I("Fight caves I", "Defeat TzTok-Jad.", 1, Difficulty.HARD, new Item(COINS_995, 5_000_000), new Item(DONATOR_MYSTERY_BOX, 1)),
     FIGHT_CAVES_II("Fight caves II", "Defeat TzTok-Jad three times.", 3, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET, 1), new Item(SUPER_COMBAT_POTION4+1, 10), new Item(PRAYER_POTION4+1, 10)),
-
+    TOURNY("Tourny", "Participate in ten tournaments.", 10, Difficulty.EASY, new Item(COINS_995, 2_000_000), new Item(DONATOR_MYSTERY_BOX)),
     //Skilling
 
     /* Runecrafting */
@@ -180,6 +193,13 @@ public enum Achievements {
     DHAROK_BOMBER_I("Dharok bomber I","Kill 15 players wearing full dharok.<br>Your hitpoints must be below 25.",15, Difficulty.EASY, new Item(DONATOR_MYSTERY_BOX), new Item(DWARVEN_ROCK_CAKE)),
     DHAROK_BOMBER_II("Dharok bomber II","Kill 25 players wearing full dharok.<br>Your hitpoints must be below 15.",25, Difficulty.MED, new Item(MYSTERY_TICKET)),
     DHAROK_BOMBER_III("Dharok bomber III","Kill 15 players wearing full dharok.<br>Your hitpoints must be below 5.",15, Difficulty.HARD, new Item(DHAROK_PET)),
+
+    WILDY_KEY_HUNTER_I("Wildy Key Hunter I","Get to safety with a wilderness key 5 times.",5, Difficulty.EASY, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET)),
+    WILDY_KEY_I("Wildy Key I","Open 5 wilderness keys.",5, Difficulty.EASY, new Item(COINS_995, 15_000_000), new Item(DONATOR_MYSTERY_BOX)),
+    WILDY_KEY_HUNTER_II("Wildy Key Hunter II","Get to safety with a wilderness key 15 times.",15, Difficulty.MED, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET,2)),
+    WILDY_KEY_II("Wildy Key II","Open 15 wilderness keys.",15, Difficulty.MED, new Item(COINS_995, 15_000_000), new Item(DONATOR_MYSTERY_BOX,2)),
+    WILDY_KEY_HUNTER_III("Wildy Key Hunter III","Get to safety with a wilderness key 45 times.",45, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET,3)),
+    WILDY_KEY_III("Wildy Key III","Open 45 wilderness keys.",45, Difficulty.HARD, new Item(COINS_995, 15_000_000), new Item(DONATOR_MYSTERY_BOX,3)),
 
     ;
 
