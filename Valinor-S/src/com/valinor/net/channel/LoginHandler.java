@@ -8,23 +8,25 @@ import com.valinor.net.SessionState;
 import com.valinor.net.codec.LoginDecoder;
 import com.valinor.net.login.LoginDetailsMessage;
 import com.valinor.net.login.LoginResponses;
-import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.ReadTimeoutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 /**
  * @author os-scape team
  */
-@Sharable
+@ChannelHandler.Sharable
 public final class LoginHandler extends ChannelInboundHandlerAdapter {
+
+    /**
+     * The logger instance for this class.
+     */
     private static final Logger logger = LogManager.getLogger(LoginHandler.class);
 
     /**
@@ -36,13 +38,10 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
     public static long timeLimitForMaxConnections = 15_000;
     public static int maximumShortTermOpenChannels = 25;
 
-    // Used to check if the user has a username which 100% an admin. Means you don't have
-    // to bother loading the profile _just_ to check rights.
-    public static List<String> hardcodeAdmins = Arrays.asList("patrick");
-
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         super.channelRegistered(ctx);
+
         String host = ByteBufUtils.getHost(ctx.channel());
         connections.compute(host, (k, v) -> v == null ? 1 : ++v);
         //System.out.println("login size: "+connections.get(host));
@@ -67,11 +66,16 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
             LoginDecoder.sendCodeAndClose(ctx, LoginResponses.LOGIN_CONNECTION_LIMIT);
             return;
         }
+
+        // Nothing went wrong, so register the channel and forward the
+        // event to next handler in the pipeline.
+        ctx.fireChannelRegistered();
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         super.channelRead(ctx, msg);
+
         if (msg instanceof LoginDetailsMessage) {
             ctx.channel().attr(NetworkConstants.SESSION_KEY).setIfAbsent(new PlayerSession(ctx.channel()));
             PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();
@@ -94,6 +98,9 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
         if (session != null && session.getState() == SessionState.CONNETED) {
             reduceIPConnectedCount(ctx);
         }
+
+        // the connection is unregistered so forward the event to the next handler in the pipeline.
+        ctx.fireChannelUnregistered();
     }
 
     public static void reduceIPConnectedCount(ChannelHandlerContext ctx) {
@@ -105,23 +112,18 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) throws Exception {
         try {
-            // ignore on socket exception (typically indicated by message starting with read0)
             if (throwable.getStackTrace().length > 0 && throwable.getStackTrace()[0].getMethodName().equals("read0")) return;
-            if(throwable.getMessage() != null && throwable.getMessage().equalsIgnoreCase("Connection reset")) return;
-            if (throwable instanceof java.nio.channels.ClosedChannelException) return; // dc
 
             if (throwable instanceof ReadTimeoutException) {
                 logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
-                throwable.printStackTrace();
                 ctx.channel().close();
             } else {
                 logger.error("An exception has been caused in the pipeline: ", throwable);
             }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Uncaught server exception!", e);
         }
 
-        // dont close on exception, continue
         super.exceptionCaught(ctx, throwable);
     }
 

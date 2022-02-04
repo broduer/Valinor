@@ -1,26 +1,21 @@
 package com.valinor.net.codec;
 
-import com.valinor.GameServer;
 import com.valinor.net.ByteBufUtils;
-import com.valinor.net.HostBlacklist;
 import com.valinor.net.NetworkConstants;
 import com.valinor.net.login.LoginDetailsMessage;
 import com.valinor.net.login.LoginResponses;
 import com.valinor.net.login.captcha.CaptchaRequirement;
-import com.valinor.net.login.captcha.LoginCaptcha;
 import com.valinor.net.packet.PacketBuilder;
 import com.valinor.net.security.IsaacRandom;
 import com.valinor.util.Utils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.net.InetSocketAddress;
 import java.security.SecureRandom;
@@ -63,8 +58,6 @@ public final class LoginDecoder extends ByteToMessageDecoder {
     public static void sendCodeAndClose(ChannelHandlerContext ctx, int response) {
         ByteBuf buffer = Unpooled.buffer(Byte.BYTES);
         buffer.writeByte(response);
-        //We may not want to add the ChannelFutureListener.CLOSE here.
-        //ctx.writeAndFlush(buffer);
         ctx.writeAndFlush(buffer).addListener(ChannelFutureListener.CLOSE);
     }
 
@@ -181,64 +174,12 @@ public final class LoginDecoder extends ByteToMessageDecoder {
         String password = ByteBufUtils.readString(rsaBuffer);
         String mac = ByteBufUtils.readString(rsaBuffer);
 
-        /*String captcha = ByteBufUtils.readString(rsaBuffer);
-        if (GameServer.properties().lowercaseCaptcha)
-            captcha = captcha.toLowerCase();*/
-
         if (username.length() < 1 || username.length() > 12 || password.length() < 3 || password.length() > 20) {
             sendCodeAndClose(ctx, LoginResponses.INVALID_CREDENTIALS_COMBINATION);
             return;
         }
 
-        String hostName = ((InetSocketAddress) ctx.channel().remoteAddress()).getAddress().getHostName();
-
-        if(HostBlacklist.isBlocked(hostName)) {
-            sendCodeAndClose(ctx, LoginResponses.LOGIN_REJECT_SESSION);
-            return;
-        }
-
-        /*boolean passedCaptcha = false;
-        CaptchaRequirement captchaRequirement = LoginCaptcha.get(username.toLowerCase());
-        if (captchaRequirement != null) {
-            logger.debug("Player {} has pending captcha {}, entered {}.", username, captchaRequirement.getCaptcha(), captcha);
-            if (captchaRequirement.isIncorrect(captcha)) {
-                try {
-                    captchaRequirement = LoginCaptcha.refresh(username.toLowerCase());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                sendCaptcha(ctx, LoginResponses.CAPTCHA_INCORRECT, captchaRequirement);
-                logger.debug("Player failed captcha, sending again, name={}, captchaInput={}", username, captcha);
-                return;
-            }
-
-            logger.debug("Player {} passed captcha.", username);
-            LoginCaptcha.remove(username.toLowerCase());
-            passedCaptcha = true;
-        } else {
-            logger.debug("Player {} has no pending captcha.", username);
-        }
-
-        if (!GameServer.properties().disableCaptchaEveryLogin && !passedCaptcha) {
-            CaptchaRequirement captchaRequirement1 = null;
-            try {
-                captchaRequirement1 = LoginCaptcha.create(username.toLowerCase());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            sendCaptcha(ctx, LoginResponses.CAPTCHA_INCORRECT, captchaRequirement1);
-            logger.debug("Requiring captcha for every login, name={}, captchaInput={}", username, captcha);
-            return;
-        }*/
-
         out.add(new LoginDetailsMessage(ctx, username, password, ByteBufUtils.getHost(ctx.channel()), mac, uid, new IsaacRandom(seed), decodingRandom));
-    }
-
-    private static void sendCaptcha(ChannelHandlerContext channel, int loginCode, CaptchaRequirement requirement) {
-        channel.writeAndFlush(new PacketBuilder().put((byte) loginCode)
-                .putShort(requirement.getImage().length)
-                .writeByteArray(requirement.getImage()).toPacket())
-            .addListener(ChannelFutureListener.CLOSE);
     }
 
     private enum LoginDecoderState {

@@ -10,7 +10,6 @@ import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
-import com.valinor.net.HostBlacklist;
 import com.valinor.net.NetworkBuilder;
 
 /**
@@ -58,7 +57,6 @@ public final class Bootstrap {
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
         BackupHandler.begin();
-        HostBlacklist.loadBlacklist();
         Item.onServerStart();
         Impling.onServerStartup();
         WorldBossEvent.onServerStart();

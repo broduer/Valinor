@@ -31,18 +31,7 @@ public class LoginWorker implements Runnable {
 
 	private static final Logger logger = LogManager.getLogger(LoginWorker.class);
 	
-	private LoginService service;
-
-	/**
-	 * Will show 'sever is being updated' if false. After a Production restart, do ::acceptlogins to enable.
-	 */
-	public static boolean acceptLogins = false;
-
-	/**
-	 * only names that can do ::freelogin (login with a PW!!!) .. basically dev only.
-	 * Way of getting admin before profile load and you can do a rights=2 check
-	 */
-	public static List<String> hardcodeAdmins = Collections.emptyList();
+	private final LoginService service;
 	
 	public LoginWorker(LoginService service) {
 		this.service = service;
@@ -71,6 +60,7 @@ public class LoginWorker implements Runnable {
 		}
 
 		logger.debug("Attempting to process login request for {}.", request.message.getUsername());
+
         final Player player = request.player;
 
         int response = LoginResponses.evaluateAsync(player, request.message);
@@ -81,12 +71,12 @@ public class LoginWorker implements Runnable {
             sendCodeAndClose(player.getSession().getChannel(), response);
             return;
         }
+
         // Send the final login response.
         PlayerSession session = player.getSession();
         Channel channel = session.getChannel();
         LoginDetailsMessage message = request.message;
         complete(request, player, channel, message);
-
 	}
 
     private void sendCodeAndClose(Channel channel, int response) {

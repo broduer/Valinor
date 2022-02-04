@@ -1,37 +1,41 @@
 package com.valinor.net.channel;
 
+import com.valinor.game.service.LoginWorker;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.NetworkConstants;
 import com.valinor.net.PlayerSession;
 import com.valinor.net.SessionState;
-import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.timeout.ReadTimeoutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.net.SocketException;
-
 /**
  * @author os-scape team
  */
-@Sharable
+@ChannelHandler.Sharable
 public final class ServerHandler extends ChannelInboundHandlerAdapter {
+
+    /**
+     * The logger instance for this class.
+     */
     private static final Logger logger = LogManager.getLogger(ServerHandler.class);
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        // oss: read is handled directly in decoder rather than passed to handler
-        super.channelRead(ctx, msg);
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        super.channelRegistered(ctx);
+        logger.trace("A new client has connected: {}", ctx.channel());
     }
 
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         super.channelUnregistered(ctx);
+
         LoginHandler.reduceIPConnectedCount(ctx);
+        logger.trace("A client has disconnected: {}", ctx.channel());
 
         PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();
 
@@ -62,38 +66,27 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable throwable) throws Exception {
-        try {
-            PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();
-            // ignore on traditional socket exception (typically indicated by message starting with read0 but may change..)
-            if (throwable.getStackTrace().length > 0 && throwable.getStackTrace()[0].getMethodName().equals("read0")) {
-                return;
-            }
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        // oss: read is handled directly in decoder rather than passed to handler
+        super.channelRead(ctx, msg);
+    }
 
-            if (throwable instanceof SocketException && throwable.getStackTrace().length > 0 && throwable.getStackTrace()[0].getMethodName().equals("throwConnectionReset")) {
-                logger.error("connection reset: "+throwable+" : "+session);
-                return; // dc
-            }
-            if (throwable instanceof IOException && throwable.getStackTrace().length > 0 && throwable.getStackTrace()[0].getMethodName().equals("writev0")) {
-                logger.error("connection aborted: "+throwable+" : "+session);
-                return; // dc
-            }
-            if (throwable instanceof ReadTimeoutException) {
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        try {
+            if (cause.getStackTrace().length > 0 && cause.getStackTrace()[0].getMethodName().equals("read0")) return;
+
+            if (cause instanceof ReadTimeoutException) {
                 logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
-                throwable.printStackTrace();
                 ctx.channel().close();
+            } else {
+                logger.error("An exception has been caused in the pipeline: ", cause);
             }
-            else {
-                logger.error("An exception has been caused in the pipeline: {} {}", session, throwable);
-            }
-        } catch (Exception e) {
+        } catch (Throwable e) {
             logger.error("Uncaught server exception!", e);
         }
 
-        // dont close on exception, continue
-        super.exceptionCaught(ctx, throwable);
-
+        super.exceptionCaught(ctx, cause);
     }
-
 
 }

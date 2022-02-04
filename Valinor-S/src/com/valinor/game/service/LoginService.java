@@ -31,7 +31,7 @@ public class LoginService implements Service {
 	 * accessing this at the same time. One (or more) being the decoder thread from Netty, one (or more) being
 	 * the login service worker.
 	 */
-	private LinkedBlockingQueue<LoginRequest> messages = new LinkedBlockingQueue<>();
+	private final LinkedBlockingQueue<LoginRequest> messages = new LinkedBlockingQueue<>();
 
     public final Set<String> ONLINE = Sets.newConcurrentHashSet();
 	
