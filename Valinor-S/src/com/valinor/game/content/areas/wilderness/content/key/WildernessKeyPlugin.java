@@ -159,7 +159,6 @@ public class WildernessKeyPlugin {
             logger.trace("Another key is already on the floor, new key will not spawn.");
             return null;
         }
-        System.out.println("weeee");
         WildernessKeyLocation currentLocation = WildernessKeyLocation.findRandom();
         announceKeySpawn(currentLocation.tile());
 

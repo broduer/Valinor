@@ -172,7 +172,8 @@
 		  "id": 1618,
 		  "amount": 10,
 		  "points": 3
-		}
+		},
+		{ "id": 13249, "min": 3, "max": 3, "points": 1 } //Key master teleport
 	  ],
 	  "tables": []
 	},
