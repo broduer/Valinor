@@ -17,6 +17,9 @@ object SaveWealthInfo {
         var str = ""
         val goal = storage.toScanAmt.get()
         str += ("Scanned " + (goal) + " offline players.\n")
+        str += ("The total cash for all " + goal + " players is: " + Utils.formatNumber(storage.sumMoneyWealth.get())+"\n")
+        str += ("The total cash wealth for all " + goal + " players is: " + Utils.formatNumber(storage.sumMoneyItemWealth.get())+"\n")
+        str += ("The total item count for all " + goal + " players is: " + Utils.formatNumber(storage.itemsCount.toLong())+"\n")
         str += ("The total REFERRAL by name count for all " + goal + " players is: " + Utils.formatNumber(storage.sumRefersByName.toLong())+"\n")
         str += ("The total VOTES count for all " + goal + " players is: " + Utils.formatNumber(storage.sumVotePoints.toLong())+"\n")
         str += ("The total ELY for all " + goal + " players is: " + Utils.formatNumber(storage.sumEly.get())+"\n")
@@ -74,7 +77,7 @@ object SaveWealthInfo {
         str += ("The total FAWKES PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumFawkesPet.get())+"\n")
         str += ("The total RECOLORED FAWKES PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumRecoloredFawkesPet.get())+"\n")
         str += ("The total NIFFLER PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumNifflerPet.get())+"\n")
-        str += ("The total ICELORD PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumIcelordPet.get())+"\n")
+        str += ("The total ICELORD PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumWampaPet.get())+"\n")
         str += ("The total BABY ARAGOG PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumBabyAragogPet.get())+"\n")
         str += ("The total MINI NECROMANCER PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumMiniNecromancerPet.get())+"\n")
         str += ("The total CORRUPTED NECHRYARCH PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumCorruptedNechryarchPet.get())+"\n")
@@ -95,7 +98,6 @@ object SaveWealthInfo {
         str += ("The total JALTOK JAD PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumJaltokJadPet.get())+"\n")
         str += ("The total TZREK ZUK PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumTzrekZukPet.get())+"\n")
         str += ("The total RING OF ELYSIAN for all " + goal + " players is: " + Utils.formatNumber(storage.sumRingOfElysianPet.get())+"\n")
-        str += ("The total BLOOD MONEY PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumBloodMoneyPet.get())+"\n")
         str += ("The total GENIE PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumGeniePet.get())+"\n")
         str += ("The total DHAROK PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumDharokPet.get())+"\n")
         str += ("The total ZOMBIES CHAMPION PET for all " + goal + " players is: " + Utils.formatNumber(storage.sumZombiesChampionPet.get())+"\n")
@@ -118,8 +120,27 @@ object SaveWealthInfo {
             File("./data/eco scan - summary.txt").writeText(str)
         }
 
+        GameEngine.getInstance().submitLowPriority {
+            File("./data/eco scan - summary.txt").createNewFile()
+            File("./data/eco scan - summary.txt").writeText(str)
+        }
+
+        full(storage)
         fullvotes(storage)
         fullRefByName(storage)
+        fullitems(storage)
+    }
+
+    fun full(storage: CheckServerWealthCommand.AtomicStorage) {
+        val sortedValues = Utils.sortByComparator(storage.playersValues, false)
+        var str = "full breakdown is:\n"
+        sortedValues.forEach { (key: String, value: Long) ->
+            str += key + "=" + Utils.formatNumber(value) + " " + "" + "\n"
+        }
+        GameEngine.getInstance().submitLowPriority {
+            File("./data/eco scan - full.txt").createNewFile()
+            File("./data/eco scan - full.txt").writeText(str)
+        }
     }
 
     fun fullvotes(storage: CheckServerWealthCommand.AtomicStorage) {
@@ -147,6 +168,32 @@ object SaveWealthInfo {
         GameEngine.getInstance().submitLowPriority {
             File("./data/eco scan - ref by name.txt").createNewFile()
             File("./data/eco scan - ref by name.txt").writeText(str)
+        }
+    }
+
+    fun fullitems(storage: CheckServerWealthCommand.AtomicStorage) {
+        println("items starting")
+        val sortedValues = storage.loaded.toMutableList().filter { storage.BMtotal(it) > 0 }.sortedByDescending {
+            storage.BMtotal(it)
+        }
+        var str = "full breakdown is:\n"
+        sortedValues.forEachIndexed { ix, p ->
+            val items = storage.playerBmItems.get(p)?.filterNotNull()
+            str += "${p.mobName} has ${Utils.formatNumber(storage.BMtotal(p))} on account from ${items?.size?: 0} items\n"
+            items?.forEachIndexed { index, it ->
+                if (it.amount > 0)
+                // if (index < 20) // only record 20 items to file, otherwise it takes a long ass time to save the txt file...
+                    str += "${it.name()} x ${it.amount} = ${it.amount * 1L * it.getValue()} bm\n"
+            }
+            str += "\n\n"
+            if (ix % 50 == 0)
+                println("done ${(ix.toDouble()/sortedValues.size.toDouble())*100.0}% scans...")
+        }
+        println("items save done, submit to save")
+        GameEngine.getInstance().submitLowPriority {
+            File("./data/eco scan - player all items.txt").createNewFile()
+            File("./data/eco scan - player all items.txt").writeText(str)
+            println("items save complete")
         }
     }
 }
