@@ -386,9 +386,10 @@ public class RunePouch extends ItemContainer {
 
     public void bankRunesFromNothing() {
         //logger.trace("Player {} banking rp runes {} {}", player.getMobName(), player.getRunePouch().size(), Arrays.toString(player.getRunePouch().toArray()));
-        for (int index = 0; index < player.getRunePouch().size(); index++) {
-            if (player.getRunePouch().get(index) == null) continue;
-            player.getBank().depositFromNothing(player.getRunePouch().get(index).copy());
+        for (Item item : player.getRunePouch().toArray()) {
+            if(item == null)
+                continue;
+            player.getBank().depositFromNothing(item);
             player.getRunePouch().clear();
             refresh();
         }

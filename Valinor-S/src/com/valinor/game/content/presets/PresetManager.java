@@ -406,7 +406,9 @@ public class PresetManager {
     }
 
     private void runepouch(final Presetable preset) {
+        boolean itemNotFound = false;
         Item[] stack = preset.getRunePouch();
+        StringBuilder missingItemBuilder = new StringBuilder();
         if (stack == null) {
             return;
         }
@@ -427,7 +429,55 @@ public class PresetManager {
                     player.getMobName(), item.getAmount(), item.getId(), item.name()));
                 item.setAmount(1);
             }
-            player.getRunePouch().deposit(item.copy());
+
+            int tabSlot = player.getBank().getSlot(item.getId());
+            if (tabSlot <= -1) {
+                //Item doesn't exist in tab slot skip item..
+                itemNotFound = true;
+                appendMissingItemReport(missingItemBuilder, item);
+                continue;
+            }
+
+            int tab = player.getBank().tabForSlot(tabSlot);
+            if (tab <= -1) {
+                //Item doesn't exist in bank tabs skip item..
+                itemNotFound = true;
+                appendMissingItemReport(missingItemBuilder, item);
+                continue;
+            }
+
+            Item bankItem = player.getBank().get(tabSlot);
+            if (bankItem == null) {
+                //item isn't found in the bank at all, skip..
+                itemNotFound = true;
+                appendMissingItemReport(missingItemBuilder, item);
+                continue;
+            }
+
+            if (bankItem.getAmount() <= 0) {
+                //item isn't found in the bank with any quantity, skip..
+                itemNotFound = true;
+                appendMissingItemReport(missingItemBuilder, item);
+                continue;
+            }
+
+            if (player.getBank().remove(new Item(item.unnote(), item.getAmount()), tabSlot, false)) {
+                if (!player.getBank().indexOccupied(tabSlot)) {
+                    player.getBank().changeTabAmount(tab, -1);
+                    player.getBank().shift();
+                }
+                if (bankItem.getAmount() < item.getAmount()) {
+                    item.setAmount(bankItem.getAmount());
+                }
+
+                player.getRunePouch().deposit(item.copy());
+            }
+        }
+
+        if (itemNotFound) {
+            for (String s : missingItemBuilder.toString().split("\\|")) {
+                player.message("Couldn't find " + s + " in your bank.");
+            }
         }
     }
 
@@ -506,7 +556,7 @@ public class PresetManager {
 
         //Before banking the inventory first bank looting bag and clear rune pouch
         player.getLootingBag().depositLootingBag();
-        player.getRunePouch().clear();
+        player.getRunePouch().bankRunesFromNothing();
 
         //When the preset is global auto bank
         player.getBank().depositInventory();
@@ -525,6 +575,7 @@ public class PresetManager {
 
         boolean equipmentLoaded = equipment(preset);
         boolean inventoryLoaded = inventory(preset);
+
         runepouch(preset);
 
         if (equipmentLoaded && inventoryLoaded) {

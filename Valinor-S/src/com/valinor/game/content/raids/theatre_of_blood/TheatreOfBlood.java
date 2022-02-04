@@ -160,6 +160,7 @@ public class TheatreOfBlood extends Raids {
             player.teleport(deathTile.getX(), deathTile.getY(), party.getHeight());
         }
 
+        clearParty(player);
         return true;
     }
 
