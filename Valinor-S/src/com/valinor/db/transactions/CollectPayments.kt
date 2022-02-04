@@ -20,6 +20,13 @@ import java.time.LocalDateTime
 
 object CollectPayments {
 
+    @JvmStatic
+    fun main(args: Array<String>) {
+        val f = 70
+        val x = f/10
+        println("$x")//the val f is atm 70 it cant be , can you re-do it and print?
+    }
+
     class DonationRow(val itemId: Int, val itemAmt: Int, val rowId: Int)
 
     fun Player.collectPayments() {
@@ -217,8 +224,9 @@ object CollectPayments {
                     //Check if we can update the rank
                     memberRights.update(this, false)
 
+                    val total = (totalPaymentAmount * row.itemAmt).toInt()
                     if(GameServer.properties().mysteryTicketPromo) {
-                        val mysteryTickets = totalPaymentAmount.toInt() / 10
+                        val mysteryTickets = total / 10
                         if (mysteryTickets > 0) {
                             inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
                             World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
