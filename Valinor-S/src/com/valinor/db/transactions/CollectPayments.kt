@@ -118,42 +118,95 @@ object CollectPayments {
                     }
                 }.onDatabase(GameServer.getDatabaseService()) {
                     var paymentAmount = 0.0
+                    var totalPaymentAmount = 0.0
                     when (row.itemId) {
+                        FIVE_DOLLAR_BOND -> {
+                            totalPaymentAmount = 4.45
+                        }
+                        TEN_DOLLAR_BOND -> {
+                            totalPaymentAmount = 8.85
+                        }
+                        TWENTY_DOLLAR_BOND -> {
+                            totalPaymentAmount = 17.70
+                        }
+                        THIRTY_DOLLAR_BOND -> {
+                            totalPaymentAmount = 26.65
+                        }
+                        FORTY_DOLLAR_BOND -> {
+                            totalPaymentAmount = 35.40
+                        }
+                        FIFTY_DOLLAR_BOND -> {
+                            totalPaymentAmount = 44.25
+                        }
+                        SEVENTY_FIVE_DOLLAR_BOND -> {
+                            totalPaymentAmount = 66.40
+                        }
+                        ONE_HUNDRED_DOLLAR_BOND -> {
+                            totalPaymentAmount = 88.50
+                        }
                         DONATOR_MYSTERY_BOX -> {
                             paymentAmount = 6.0
+                            totalPaymentAmount = 5.0
                         }
                         SUPER_MYSTERY_BOX -> {
                             paymentAmount = 15.0
+                            totalPaymentAmount = 14.0
                         }
                         PETS_MYSTERY_BOX -> {
                             paymentAmount = 40.0
+                            totalPaymentAmount = 36.0
                         }
                         RAIDS_MYSTERY_BOX -> {
                             paymentAmount = 55.0
+                            totalPaymentAmount = 40.0
                         }
                         MYSTERY_TICKET -> {
                             paymentAmount = 23.0
+                            totalPaymentAmount = 20.0
                         }
                         MYSTERY_CHEST -> {
                             paymentAmount = 250.0
+                            totalPaymentAmount = 225.0
                         }
                         RUNE_POUCH -> {
                             paymentAmount = 3.0
+                            totalPaymentAmount = 2.50
                         }
                         IMBUED_HEART -> {
                             paymentAmount = 5.0
+                            totalPaymentAmount = 5.0
                         }
                         VOID_SET -> {
                             paymentAmount = 15.0
+                            totalPaymentAmount = 15.0
                         }
                         EXTRA_SUPPLY_CRATE -> {
                             paymentAmount = 3.0
+                            totalPaymentAmount = 2.50
                         }
                         DWARF_CANNON_SET -> {
                             paymentAmount = 10.0
+                            totalPaymentAmount = 9.0
                         }
                         COLLECTION_KEY -> {
                             paymentAmount = 15.0
+                            totalPaymentAmount = 15.0
+                        }
+                        SAPPHIRE_MEMBER_RANK -> {
+                            paymentAmount = 15.0
+                            totalPaymentAmount = 4.39
+                        }
+                        FIFTY_TOTAL_DONATED_SCROLL -> {
+                            paymentAmount = 15.0
+                            totalPaymentAmount = 26.44
+                        }
+                        ONE_HUNDRED_TOTAL_DONATED_SCROLL -> {
+                            paymentAmount = 15.0
+                            totalPaymentAmount = 52.89
+                        }
+                        HUNDRED_FIFTY_TOTAL_DONATED_SCROLL -> {
+                            paymentAmount = 15.0
+                            totalPaymentAmount = 79.33
                         }
                     }
 
@@ -165,7 +218,7 @@ object CollectPayments {
                     memberRights.update(this, false)
 
                     if(GameServer.properties().mysteryTicketPromo) {
-                        val mysteryTickets = paymentAmount.toInt() / 10
+                        val mysteryTickets = totalPaymentAmount.toInt() / 10
                         if (mysteryTickets > 0) {
                             inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
                             World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
