@@ -28,14 +28,16 @@ public class DailyTasksWidget extends Widget {
         hoverButton(41415, "Claim", 1844, 1845);
         addText(41418, "Claim", font, 2, 0xff981f, false, true);
         addContainer(41419, TYPE_CONTAINER, 7, 1, 13, 0, 0, false, true, true);
-        addConfigButton(41420, 1163, 1165, 1166, 115, 24, "Easy", 1, 5, 1160, false);
-        addConfigButton(41421, 1164, 1165, 1166, 115, 24, "Med", 0, 5, 1161, false);
-        addConfigButton(41422, 1165, 1165, 1166, 115, 24, "Hard", 0, 5, 1162, false);
+        addConfigButton(41420, 41400, 1165, 1166, 115, 24, "Easy", 1, 5, 1160, false);
+        addConfigButton(41421, 41400, 1165, 1166, 115, 24, "Med", 0, 5, 1161, false);
+        addConfigButton(41422, 41400, 1165, 1166, 115, 24, "Hard", 0, 5, 1162, false);
         addText(41423, "Easy", font, 1, 0xffffff, true, true);
         addText(41424, "Med", font, 1, 0xffffff, true, true);
         addText(41425, "Hard", font, 1, 0xffffff, true, true);
         hoverButton(41426, "Teleport", 1904, 1905);
         addText(41429, "Teleport", font, 2, 0xff981f, false, true);
+        addConfigButton(41460, 41400, 1165, 1166, 115, 24, "PvP", 0, 5, 1163, false);
+        addText(41461, "Pvp", font, 1, 0xffffff, true, true);
 
         Widget scrollInterface = addTabInterface(41430);
         scrollInterface.scrollPosition = 0;
@@ -53,10 +55,10 @@ public class DailyTasksWidget extends Widget {
             y += 18;
         }
 
-        widget.totalChildren(26);
+        widget.totalChildren(28);
         widget.child(0, 41401, 6, 10);
         widget.child(1, 41402, 480, 17);
-        widget.child(2, 41403, 275, 19);
+        widget.child(2, 41403, 325, 19);
         widget.child(3, 41404, 88, 46);
         widget.child(4, 41405, 295, 157);
         widget.child(5, 41406, 193, 181);
@@ -80,5 +82,7 @@ public class DailyTasksWidget extends Widget {
         widget.child(23, 41426, 380, 50);
         widget.child(24, 41429, 390, 69);
         widget.child(25, 41430, 14, 65);
+        widget.child(26, 41460, 170, 18);
+        widget.child(27, 41461, 192, 20);
     }
 }
