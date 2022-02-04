@@ -42,6 +42,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.*;
 import com.valinor.util.chainedwork.Chain;
 import org.apache.logging.log4j.LogManager;
@@ -155,6 +156,7 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Demonic gorilla")) {
                     AchievementsManager.activate(killer, Achievements.DEMONIC, 1);
+                    DailyTaskManager.increase(DailyTasks.DEMONIC_GORILLAS, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Yak")) {
@@ -204,6 +206,11 @@ public class NpcDeath {
                 if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant")) {
                     AchievementsManager.activate(killer, Achievements.REVENANT_HUNTER, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.REVENANTS);
+                }
+
+                //This daily only triggers in the wilderness
+                if (npc.def().name.contains("Revenant") || npc.def().name.contains("revenant") && WildernessArea.inWilderness(killer.tile())) {
+                    DailyTaskManager.increase(DailyTasks.REVENANTS, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Chaos Fanatic")) {
@@ -312,6 +319,11 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Nex")) {
                     AchievementsManager.activate(killer, Achievements.NEX, 1);
+                    DailyTaskManager.increase(DailyTasks.NEX, killer);
+                }
+
+                if(npc.def().name.equalsIgnoreCase("Battle mage")) {
+                    DailyTaskManager.increase(DailyTasks.BATTLE_MAGES, killer);
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
@@ -424,6 +436,7 @@ public class NpcDeath {
                     case KrakenBoss.KRAKEN_NPCID -> {// Kraken boss transmogged KC
                         AchievementsManager.activate(killer, Achievements.SQUIDWARD, 1);
                         killer.getTaskBottleManager().increase(BottleTasks.KRAKEN);
+                        DailyTaskManager.increase(DailyTasks.KRAKENS, killer);
                     }
 
                     case ADAMANT_DRAGON, ADAMANT_DRAGON_8090, RUNE_DRAGON, RUNE_DRAGON_8031, RUNE_DRAGON_8091 -> AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_III, 1);

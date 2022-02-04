@@ -3,6 +3,8 @@ package com.valinor.game.content.tournaments;
 import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.interfaces.BonusesInterface;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
@@ -158,13 +160,13 @@ public class Tournament {
             winner.putAttrib(AttributeKey.TOURNAMENT_WINS, wins);
             var points = winner.<Integer>getAttribOr(AttributeKey.TOURNAMENT_POINTS, 0) + 1;
             winner.putAttrib(AttributeKey.TOURNAMENT_POINTS, points);
+            DailyTaskManager.increase(DailyTasks.WIN_PVP_TOURNY, winner);
             winner.message("You have won the " + fullName() + " Tournament! You now have won "+Color.BLUE.wrap(""+wins)+" tournaments.");
             winner.message("You've received 1 tournament point! You now have won "+Color.BLUE.wrap(""+points)+" tournament points.");
             World.getWorld().sendWorldMessage(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info("PvP tournament rewards: " + reward.toString());
             Utils.sendDiscordInfoLog(winner.getUsername()+" has won the "+fullName()+" tournament! Reward: "+ reward.toString(), "tourny_winner");
-
             winner.getPacketSender().sendInteractionOption("null", 2, true); //Remove attack option
             winner.getPacketSender().sendEntityHintRemoval(true);
             onTournyClosed();
@@ -329,6 +331,7 @@ public class Tournament {
                     player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "Fight!");
                     player.clearAttrib(AttributeKey.TOURNAMENT_COUNTDOWN);
                     AchievementsManager.activate(player, Achievements.TOURNY, 1);
+                    DailyTaskManager.increase(DailyTasks.TOURNY, player);
                     stop();
                 } else {
                     if (secs != (int) player.getAttribOr(AttributeKey.TOURNAMENT_COUNTDOWN, -1)) {

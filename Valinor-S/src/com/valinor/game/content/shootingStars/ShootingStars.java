@@ -2,6 +2,8 @@ package com.valinor.game.content.shootingStars;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.action.impl.UnwalkableAction;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.content.skill.impl.mining.Mining;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
@@ -212,6 +214,7 @@ public class ShootingStars {
 
                 var random = World.getWorld().random(1, 3);
                 player.getInventory().add(STAR_CURRENCY, random);
+                DailyTaskManager.increase(DailyTasks.STARDUST, player,3);
                 player.skills().addXp(Skills.MINING, 30 * Mining.xpBonus(player), true);
                 removeShards(random);
                 player.message("You mine " + random + " "+ World.getWorld().definitions().get(ItemDefinition.class, STAR_CURRENCY).name.toLowerCase()+".");

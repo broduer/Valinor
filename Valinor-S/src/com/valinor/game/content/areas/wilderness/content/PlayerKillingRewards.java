@@ -7,6 +7,8 @@ import com.valinor.game.content.areas.wilderness.content.wilderness_activity.imp
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.PureActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.WildernessHotspot;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.ZerkerActivity;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatConstants;
@@ -219,6 +221,11 @@ public class PlayerKillingRewards {
 
         //Killer needs killstreak of +25 to unlock
         int killstreak = killer.getAttribOr(AttributeKey.KILLSTREAK, 0);
+
+        if(killstreak >= 10) {
+            DailyTaskManager.increase(DailyTasks.KILLSTREAK, killer);
+        }
+
         if (killstreak >= 25) {
             AchievementsManager.activate(killer, Achievements.BLOODTHIRSTY_I, 1);
         }
@@ -246,6 +253,7 @@ public class PlayerKillingRewards {
             AchievementsManager.activate(killer, Achievements.DEEP_WILD_I, 1);
             AchievementsManager.activate(killer, Achievements.DEEP_WILD_II, 1);
             AchievementsManager.activate(killer, Achievements.DEEP_WILD_III, 1);
+            DailyTaskManager.increase(DailyTasks.DEEP_WILD, killer);
         }
 
         if (WildernessArea.wildernessLevel(killer.tile()) >= 50) {
@@ -283,6 +291,27 @@ public class PlayerKillingRewards {
             if (killer.hp() < 5) {
                 AchievementsManager.activate(killer, Achievements.DHAROK_BOMBER_III, 1);
             }
+        }
+
+        boolean edgevile = killer.tile().region() == 12343 || killer.tile().region() == 12087;
+        boolean mageBank = killer.tile().region() == 12605 || killer.tile().region() == 12349 || killer.tile().region() == 12093;
+        boolean revCave = killer.tile().region() == 12701 || killer.tile().region() == 12702 || killer.tile().region() == 12703 || killer.tile().region() == 12957 || killer.tile().region() == 12958 || killer.tile().region() == 12959;
+        boolean memberCave = killer.tile().memberCave();
+
+        if(edgevile) {
+            DailyTaskManager.increase(DailyTasks.EDGEVILE_KILLS, killer);
+        }
+
+        if(mageBank) {
+            DailyTaskManager.increase(DailyTasks.MAGE_BANK_KILLS, killer);
+        }
+
+        if(revCave) {
+            DailyTaskManager.increase(DailyTasks.KILL_PLAYERS_REV_CAVE, killer);
+        }
+
+        if(memberCave) {
+            DailyTaskManager.increase(DailyTasks.MEMBER_CAVE_KILLS, killer);
         }
     }
 

@@ -33,10 +33,14 @@ public class DailyTaskManager extends Interaction {
     }
 
     public static void increase(DailyTasks dailyTask, Player player) {
+        increase(dailyTask, player, 1);
+    }
+
+    public static void increase(DailyTasks dailyTask, Player player, int increaseBy) {
         //Can only increase when the task isn't already finished.
         if (dailyTask.canIncrease(player)) {
             var completionAmount = dailyTask.completionAmount;
-            var increase = player.<Integer>getAttribOr(dailyTask.key, 0) + 1;
+            var increase = player.<Integer>getAttribOr(dailyTask.key, 0) + increaseBy;
             player.putAttrib(dailyTask.key, increase);
             player.message(Color.PURPLE.wrap("Daily task; " + dailyTask.taskName + " Completed: (" + increase + "/" + completionAmount + ")"));
 
@@ -126,9 +130,10 @@ public class DailyTaskManager extends Interaction {
         open(player, TaskCategory.EASY);
         sendInterfaceForTask(player, DailyTasks.EXPERIMENTS);
         player.putAttrib(DAILY_TASK_CATEGORY, TaskCategory.EASY);
-        player.getPacketSender().sendConfig(1163, 1);
-        player.getPacketSender().sendConfig(1164, 0);
-        player.getPacketSender().sendConfig(1165, 0);
+        player.getPacketSender().sendConfig(1160, 1);
+        player.getPacketSender().sendConfig(1161, 0);
+        player.getPacketSender().sendConfig(1162, 0);
+        player.getPacketSender().sendConfig(1163, 0);
         player.getPacketSender().setClickedText(LIST_START_ID, true);
         player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
     }

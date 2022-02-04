@@ -4,6 +4,8 @@ import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
@@ -129,6 +131,8 @@ public class WorldBossEvent {
                 player.getBossKillLog().addKill(npc);
 
                 AchievementsManager.activate(player, Achievements.WORLD_BOSS_SMASHER,1);
+
+                DailyTaskManager.increase(DailyTasks.WORLD_BOSS, player);
 
                 //Random drop from the table
                 ScalarLootTable table = ScalarLootTable.forNPC(npc.id());

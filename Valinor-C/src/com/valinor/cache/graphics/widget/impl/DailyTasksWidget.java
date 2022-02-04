@@ -20,7 +20,7 @@ public class DailyTasksWidget extends Widget {
         addText(41407, "0% (0/3)", font, 0, 0xffffff, true, true);
         addText(41408, "Vote for us on 3 top list sites", font, 2, 0xF7AA25, true, true);addText(41404, "Activities", font, 2, 0xF7AA25, true, true);
         addText(41409, "Fill up the bar for rewards! (2X bonus!)", font, 1, 0xF7AA25, false, true);
-        addText(41410, "Information", font, 2, 0xF7AA25, true, true);
+        addText(41410, "Information", font, 2, 0xF7AA25, false, true);
         addText(41411, "Recommended Combat<br>Level:", font, 1, 0xF7AA25, true, true);
         addText(41412, "Any!", font, 1, 65280, true, true);
         addText(41413, "<u=ffff00>Location:", font, 1, 0xF7AA25, true, true);
@@ -28,7 +28,7 @@ public class DailyTasksWidget extends Widget {
         hoverButton(41415, "Claim", 1844, 1845);
         addText(41418, "Claim", font, 2, 0xff981f, false, true);
         addContainer(41419, TYPE_CONTAINER, 7, 1, 13, 0, 0, false, true, true);
-        addConfigButton(41420, 41400, 1165, 1166, 115, 24, "Easy", 1, 5, 1160, false);
+        addConfigButton(41420, 41400, 1165, 1166, 115, 24, "Easy", 0, 5, 1160, false);
         addConfigButton(41421, 41400, 1165, 1166, 115, 24, "Med", 0, 5, 1161, false);
         addConfigButton(41422, 41400, 1165, 1166, 115, 24, "Hard", 0, 5, 1162, false);
         addText(41423, "Easy", font, 1, 0xffffff, true, true);
@@ -65,7 +65,7 @@ public class DailyTasksWidget extends Widget {
         widget.child(6, 41407, 340, 183);
         widget.child(7, 41408, 340, 203);
         widget.child(8, 41409, 209, 232);
-        widget.child(9, 41410, 248, 53);
+        widget.child(9, 41410, 218, 53);
         widget.child(10, 41411, 253, 72);
         widget.child(11, 41412, 250, 100);
         widget.child(12, 41413, 255, 117);

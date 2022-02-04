@@ -25,6 +25,7 @@ public class DailyTaskButtons extends Interaction {
     private static final HashMap<Integer, DailyTasks> EASY_BUTTONS = new HashMap<>();
     private static final HashMap<Integer, DailyTasks> MED_BUTTONS = new HashMap<>();
     private static final HashMap<Integer, DailyTasks> HARD_BUTTONS = new HashMap<>();
+    private static final HashMap<Integer, DailyTasks> PVP_BUTTONS = new HashMap<>();
 
     static {
         int button;
@@ -41,6 +42,10 @@ public class DailyTaskButtons extends Interaction {
         for (final DailyTasks achievement : DailyTasks.asList(TaskCategory.HARD)) {
             HARD_BUTTONS.put(button++, achievement);
         }
+        button = 41431;
+        for (final DailyTasks achievement : DailyTasks.asList(TaskCategory.PVP)) {
+            PVP_BUTTONS.put(button++, achievement);
+        }
     }
 
     @Override
@@ -49,9 +54,10 @@ public class DailyTaskButtons extends Interaction {
             DailyTaskManager.open(player, TaskCategory.EASY);
             DailyTaskManager.sendInterfaceForTask(player, DailyTasks.EXPERIMENTS);
             player.putAttrib(DAILY_TASK_CATEGORY, TaskCategory.EASY);
-            player.getPacketSender().sendConfig(1163, 1);
-            player.getPacketSender().sendConfig(1164, 0);
-            player.getPacketSender().sendConfig(1165, 0);
+            player.getPacketSender().sendConfig(1160, 1);
+            player.getPacketSender().sendConfig(1161, 0);
+            player.getPacketSender().sendConfig(1162, 0);
+            player.getPacketSender().sendConfig(1163, 0);
             player.getPacketSender().setClickedText(LIST_START_ID, true);
             player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
             return true;
@@ -61,9 +67,10 @@ public class DailyTaskButtons extends Interaction {
             DailyTaskManager.open(player, TaskCategory.MED);
             DailyTaskManager.sendInterfaceForTask(player, DailyTasks.BARROWS);
             player.putAttrib(DAILY_TASK_CATEGORY, TaskCategory.MED);
+            player.getPacketSender().sendConfig(1160, 0);
+            player.getPacketSender().sendConfig(1161, 1);
+            player.getPacketSender().sendConfig(1162, 0);
             player.getPacketSender().sendConfig(1163, 0);
-            player.getPacketSender().sendConfig(1164, 1);
-            player.getPacketSender().sendConfig(1165, 0);
             player.getPacketSender().setClickedText(LIST_START_ID, true);
             player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
             return true;
@@ -73,9 +80,23 @@ public class DailyTaskButtons extends Interaction {
             DailyTaskManager.open(player, TaskCategory.HARD);
             DailyTaskManager.sendInterfaceForTask(player, DailyTasks.CORRUPTED_NECHRYARCH);
             player.putAttrib(DAILY_TASK_CATEGORY, TaskCategory.HARD);
+            player.getPacketSender().sendConfig(1160, 0);
+            player.getPacketSender().sendConfig(1161, 0);
+            player.getPacketSender().sendConfig(1162, 1);
             player.getPacketSender().sendConfig(1163, 0);
-            player.getPacketSender().sendConfig(1164, 0);
-            player.getPacketSender().sendConfig(1165, 1);
+            player.getPacketSender().setClickedText(LIST_START_ID, true);
+            player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
+            return true;
+        }
+
+        if (button == 41460) {
+            DailyTaskManager.open(player, TaskCategory.PVP);
+            DailyTaskManager.sendInterfaceForTask(player, DailyTasks.DEEP_WILD);
+            player.putAttrib(DAILY_TASK_CATEGORY, TaskCategory.PVP);
+            player.getPacketSender().sendConfig(1160, 0);
+            player.getPacketSender().sendConfig(1161, 0);
+            player.getPacketSender().sendConfig(1162, 0);
+            player.getPacketSender().sendConfig(1163, 1);
             player.getPacketSender().setClickedText(LIST_START_ID, true);
             player.getInterfaceManager().open(DAILY_TASK_MANAGER_INTERFACE);
             return true;
@@ -139,6 +160,13 @@ public class DailyTaskButtons extends Interaction {
         //Hard task buttons
         if (player.getAttribOr(DAILY_TASK_CATEGORY, null) == TaskCategory.HARD && HARD_BUTTONS.containsKey(button)) {
             DailyTaskManager.sendInterfaceForTask(player, HARD_BUTTONS.get(button));
+            player.getPacketSender().setClickedText(button, true);
+            return true;
+        }
+
+        //PvP task buttons
+        if (player.getAttribOr(DAILY_TASK_CATEGORY, null) == TaskCategory.PVP && PVP_BUTTONS.containsKey(button)) {
+            DailyTaskManager.sendInterfaceForTask(player, PVP_BUTTONS.get(button));
             player.getPacketSender().setClickedText(button, true);
             return true;
         }

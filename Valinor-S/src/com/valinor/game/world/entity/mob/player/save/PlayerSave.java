@@ -126,7 +126,7 @@ public class PlayerSave {
                 player.gameMode(Objects.requireNonNullElse(details.gameMode, GameMode.NONE));
                 player.putAttrib(GROUP_NAME_SET, details.groupNameSet);
                 player.putAttrib(HARDCORE_GROUP_FALLEN, details.hardcoreGroupFallen);
-                if(details.lastIP != null) {
+                if (details.lastIP != null) {
                     player.setHostAddress(details.lastIP);
                 }
                 player.getHostAddressMap().put(player.getHostAddress(), 1);
@@ -422,10 +422,10 @@ public class PlayerSave {
                 player.putAttrib(DRAKE, details.drakeKills);
                 player.putAttrib(HYDRA, details.hydraKills);
                 player.putAttrib(BASILISK_KNIGHT, details.basiliskKnightKills);
-                if(details.eventRewards != null) {
+                if (details.eventRewards != null) {
                     player.getEventRewards().setEventRewardsUnlocked(details.eventRewards);
                 }
-                if(details.favoriteTeleports != null) {
+                if (details.favoriteTeleports != null) {
                     player.setFavoriteTeleports(details.favoriteTeleports);
                 }
                 if (details.bossTimers != null) {
@@ -515,6 +515,54 @@ public class PlayerSave {
                 player.putAttrib(VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyValinorCoinsAmount);
                 player.putAttrib(VALINOR_COINS_DAILY_TASK_COMPLETED, details.dailyValinorCoinsCompleted);
                 player.putAttrib(VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, details.dailyValinorCoinsRewardClaimed);
+                player.putAttrib(TOURNY_DAILY_TASK_COMPLETION_AMOUNT, details.dailyTournyAmount);
+                player.putAttrib(TOURNY_DAILY_TASK_COMPLETED, details.dailyTournyCompleted);
+                player.putAttrib(TOURNY_DAILY_TASK_REWARD_CLAIMED, details.dailyTournyRewardClaimed);
+                player.putAttrib(STARDUST_DAILY_TASK_COMPLETION_AMOUNT, details.dailyStardustAmount);
+                player.putAttrib(STARDUST_DAILY_TASK_COMPLETED, details.dailyStardustCompleted);
+                player.putAttrib(STARDUST_DAILY_TASK_REWARD_CLAIMED, details.dailyStardustRewardClaimed);
+                player.putAttrib(WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyWorldBossAmount);
+                player.putAttrib(WORLD_BOSS_DAILY_TASK_COMPLETED, details.dailyWorldBossCompleted);
+                player.putAttrib(WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, details.dailyWorldBossRewardClaimed);
+                player.putAttrib(REVENANTS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyRevenantsAmount);
+                player.putAttrib(REVENANTS_DAILY_TASK_COMPLETED, details.dailyRevenantsCompleted);
+                player.putAttrib(REVENANTS_DAILY_TASK_REWARD_CLAIMED, details.dailyRevenantsRewardClaimed);
+                player.putAttrib(KRAKEN_DAILY_TASK_COMPLETION_AMOUNT, details.dailyKrakensAmount);
+                player.putAttrib(KRAKEN_DAILY_TASK_COMPLETED, details.dailyKrakensCompleted);
+                player.putAttrib(KRAKEN_DAILY_TASK_REWARD_CLAIMED, details.dailyKrakensRewardClaimed);
+                player.putAttrib(BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, details.dailyBattleMagesAmount);
+                player.putAttrib(BATTLE_MAGE_DAILY_TASK_COMPLETED, details.dailyBattleMagesCompleted);
+                player.putAttrib(BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, details.dailyBattleMagesRewardClaimed);
+                player.putAttrib(NEX_DAILY_TASK_COMPLETION_AMOUNT, details.dailyNexAmount);
+                player.putAttrib(NEX_DAILY_TASK_COMPLETED, details.dailyNexCompleted);
+                player.putAttrib(NEX_DAILY_TASK_REWARD_CLAIMED, details.dailyNexRewardClaimed);
+                player.putAttrib(DEMONIC_GORILLA_DAILY_TASK_COMPLETION_AMOUNT, details.dailyDemonicGorillasAmount);
+                player.putAttrib(DEMONIC_GORILLA_DAILY_TASK_COMPLETED, details.dailyDemonicGorillasCompleted);
+                player.putAttrib(DEMONIC_GORILLA_DAILY_TASK_REWARD_CLAIMED, details.dailyDemonicGorillasRewardClaimed);
+                player.putAttrib(WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETION_AMOUNT, details.dailyWinPvPTournyAmount);
+                player.putAttrib(WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETED, details.dailyWinPvPTournyCompleted);
+                player.putAttrib(WIN_PVP_TOURNAMENT_DAILY_TASK_REWARD_CLAIMED, details.dailyWinPvPTournyRewardClaimed);
+                player.putAttrib(WILDY_KEY_ESCAPE_DAILY_TASK_COMPLETION_AMOUNT, details.dailyWildykeyEscapeAmount);
+                player.putAttrib(WILDY_KEY_ESCAPE_DAILY_TASK_COMPLETED, details.dailyWildykeyEscapeCompleted);
+                player.putAttrib(WILDY_KEY_ESCAPE_DAILY_TASK_REWARD_CLAIMED, details.dailyWildykeyEscapeRewardClaimed);
+                player.putAttrib(KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETION_AMOUNT, details.dailyKillPlayersRevCaveAmount);
+                player.putAttrib(KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETED, details.dailyKillPlayersRevCaveCompleted);
+                player.putAttrib(KILL_PLAYERS_REV_CAVE_DAILY_TASK_REWARD_CLAIMED, details.dailyKillPlayersRevCaveRewardClaimed);
+                player.putAttrib(DEEP_WILD_DAILY_TASK_COMPLETION_AMOUNT, details.dailyDeepWildAmount);
+                player.putAttrib(DEEP_WILD_DAILY_TASK_COMPLETED, details.dailyDeepWildCompleted);
+                player.putAttrib(DEEP_WILD_DAILY_TASK_REWARD_CLAIMED, details.dailyDeepWildRewardClaimed);
+                player.putAttrib(KILLSTREAK_DAILY_TASK_COMPLETION_AMOUNT, details.dailyKillstreakAmount);
+                player.putAttrib(KILLSTREAK_DAILY_TASK_COMPLETED, details.dailyKillstreakCompleted);
+                player.putAttrib(KILLSTREAK_DAILY_TASK_REWARD_CLAIMED, details.dailyKillstreakRewardClaimed);
+                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyEdgevileKillsAmount);
+                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_COMPLETED, details.dailyEdgevileKillsCompleted);
+                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyEdgevileKillsRewardClaimed);
+                player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyMageBankKillsAmount);
+                player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_COMPLETED, details.dailyMageBankKillsCompleted);
+                player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyMageBankKillsRewardClaimed);
+                player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyMemberCaveKillsAmount);
+                player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, details.dailyMemberCaveKillsCompleted);
+                player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyMemberCaveKillsRewardClaimed);
                 player.putAttrib(ALCHEMICAL_HYDRA_LOG_CLAIMED, details.alchemicalHydraLogClaimed);
                 player.putAttrib(ANCIENT_BARRELCHEST_LOG_CLAIMED, details.ancientBarrelchestLogClaimed);
                 player.putAttrib(ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, details.ancientChaosElementalLogClaimed);
@@ -934,6 +982,70 @@ public class PlayerSave {
         private final boolean dailyValinorCoinsCompleted;
         private final boolean dailyValinorCoinsRewardClaimed;
 
+        private final int dailyTournyAmount;
+        private final boolean dailyTournyCompleted;
+        private final boolean dailyTournyRewardClaimed;
+
+        private final int dailyStardustAmount;
+        private final boolean dailyStardustCompleted;
+        private final boolean dailyStardustRewardClaimed;
+
+        private final int dailyWorldBossAmount;
+        private final boolean dailyWorldBossCompleted;
+        private final boolean dailyWorldBossRewardClaimed;
+
+        private final int dailyRevenantsAmount;
+        private final boolean dailyRevenantsCompleted;
+        private final boolean dailyRevenantsRewardClaimed;
+
+        private final int dailyKrakensAmount;
+        private final boolean dailyKrakensCompleted;
+        private final boolean dailyKrakensRewardClaimed;
+
+        private final int dailyBattleMagesAmount;
+        private final boolean dailyBattleMagesCompleted;
+        private final boolean dailyBattleMagesRewardClaimed;
+
+        private final int dailyNexAmount;
+        private final boolean dailyNexCompleted;
+        private final boolean dailyNexRewardClaimed;
+
+        private final int dailyDemonicGorillasAmount;
+        private final boolean dailyDemonicGorillasCompleted;
+        private final boolean dailyDemonicGorillasRewardClaimed;
+
+        private final int dailyWinPvPTournyAmount;
+        private final boolean dailyWinPvPTournyCompleted;
+        private final boolean dailyWinPvPTournyRewardClaimed;
+
+        private final int dailyWildykeyEscapeAmount;
+        private final boolean dailyWildykeyEscapeCompleted;
+        private final boolean dailyWildykeyEscapeRewardClaimed;
+
+        private final int dailyKillPlayersRevCaveAmount;
+        private final boolean dailyKillPlayersRevCaveCompleted;
+        private final boolean dailyKillPlayersRevCaveRewardClaimed;
+
+        private final int dailyDeepWildAmount;
+        private final boolean dailyDeepWildCompleted;
+        private final boolean dailyDeepWildRewardClaimed;
+
+        private final int dailyKillstreakAmount;
+        private final boolean dailyKillstreakCompleted;
+        private final boolean dailyKillstreakRewardClaimed;
+
+        private final int dailyEdgevileKillsAmount;
+        private final boolean dailyEdgevileKillsCompleted;
+        private final boolean dailyEdgevileKillsRewardClaimed;
+
+        private final int dailyMageBankKillsAmount;
+        private final boolean dailyMageBankKillsCompleted;
+        private final boolean dailyMageBankKillsRewardClaimed;
+
+        private final int dailyMemberCaveKillsAmount;
+        private final boolean dailyMemberCaveKillsCompleted;
+        private final boolean dailyMemberCaveKillsRewardClaimed;
+
         private final boolean alchemicalHydraLogClaimed;
         private final boolean ancientBarrelchestLogClaimed;
         private final boolean ancientChaosElementalLogClaimed;
@@ -1020,14 +1132,14 @@ public class PlayerSave {
             memberRights = player.getMemberRights().name();
             expMode = player.expmode();
             gameMode = player.gameMode();
-            groupNameSet = Player.getAttribBooleanOr(player, GROUP_NAME_SET,false);
-            hardcoreGroupFallen = Player.getAttribBooleanOr(player, HARDCORE_GROUP_FALLEN,false);
+            groupNameSet = Player.getAttribBooleanOr(player, GROUP_NAME_SET, false);
+            hardcoreGroupFallen = Player.getAttribBooleanOr(player, HARDCORE_GROUP_FALLEN, false);
             lastIP = player.getHostAddress();
             mac = player.getAttribOr(MAC_ADDRESS, "invalid");
-            accountPin = Player.getAttribIntOr(player, ACCOUNT_PIN,0);
-            askAccountPin = Player.getAttribBooleanOr(player, ASK_FOR_ACCOUNT_PIN,false);
-            accountPinAttemptsLeft = Player.getAttribIntOr(player, ACCOUNT_PIN_ATTEMPTS_LEFT,5);
-            accountPinFrozenTicks = Player.getAttribIntOr(player, ACCOUNT_PIN_FREEZE_TICKS,0);
+            accountPin = Player.getAttribIntOr(player, ACCOUNT_PIN, 0);
+            askAccountPin = Player.getAttribBooleanOr(player, ASK_FOR_ACCOUNT_PIN, false);
+            accountPinAttemptsLeft = Player.getAttribIntOr(player, ACCOUNT_PIN_ATTEMPTS_LEFT, 5);
+            accountPinFrozenTicks = Player.getAttribIntOr(player, ACCOUNT_PIN_FREEZE_TICKS, 0);
             creationDate = player.getCreationDate();
             creationIp = player.getCreationIp();
             lastLogin = player.getLastLogin();
@@ -1263,7 +1375,7 @@ public class PlayerSave {
             wildernessKeysOpened = Player.getAttribIntOr(player, WILDY_KEYS_OPENED, 0);
             slayerKeysOpened = Player.getAttribIntOr(player, SLAYER_KEYS_OPENED, 0);
             slayerKeysReceived = Player.getAttribIntOr(player, SLAYER_KEYS_RECEIVED, 0);
-            doubleExpTicks = Player.getAttribIntOr(player, DOUBLE_EXP_TICKS,0);
+            doubleExpTicks = Player.getAttribIntOr(player, DOUBLE_EXP_TICKS, 0);
             dropRateLampTicks = Player.getAttribIntOr(player, DOUBLE_DROP_LAMP_TICKS, 0);
             ethereumAbsorption = Player.getAttribBooleanOr(player, ETHEREUM_ABSORPTION, false);
             jailed = Player.getAttribIntOr(player, JAILED, 0);
@@ -1316,6 +1428,54 @@ public class PlayerSave {
             dailyValinorCoinsAmount = Player.getAttribIntOr(player, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyValinorCoinsCompleted = Player.getAttribBooleanOr(player, VALINOR_COINS_DAILY_TASK_COMPLETED, false);
             dailyValinorCoinsRewardClaimed = Player.getAttribBooleanOr(player, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyTournyAmount = Player.getAttribIntOr(player, TOURNY_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyTournyCompleted = Player.getAttribBooleanOr(player, TOURNY_DAILY_TASK_COMPLETED, false);
+            dailyTournyRewardClaimed = Player.getAttribBooleanOr(player, TOURNY_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyStardustAmount = Player.getAttribIntOr(player, STARDUST_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyStardustCompleted = Player.getAttribBooleanOr(player, STARDUST_DAILY_TASK_COMPLETED, false);
+            dailyStardustRewardClaimed = Player.getAttribBooleanOr(player, STARDUST_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyWorldBossAmount = Player.getAttribIntOr(player, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyWorldBossCompleted = Player.getAttribBooleanOr(player, WORLD_BOSS_DAILY_TASK_COMPLETED, false);
+            dailyWorldBossRewardClaimed = Player.getAttribBooleanOr(player, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyRevenantsAmount = Player.getAttribIntOr(player, REVENANTS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyRevenantsCompleted = Player.getAttribBooleanOr(player, REVENANTS_DAILY_TASK_COMPLETED, false);
+            dailyRevenantsRewardClaimed = Player.getAttribBooleanOr(player, REVENANTS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyKrakensAmount = Player.getAttribIntOr(player, KRAKEN_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyKrakensCompleted = Player.getAttribBooleanOr(player, KRAKEN_DAILY_TASK_COMPLETED, false);
+            dailyKrakensRewardClaimed = Player.getAttribBooleanOr(player, KRAKEN_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyBattleMagesAmount = Player.getAttribIntOr(player, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyBattleMagesCompleted = Player.getAttribBooleanOr(player, BATTLE_MAGE_DAILY_TASK_COMPLETED, false);
+            dailyBattleMagesRewardClaimed = Player.getAttribBooleanOr(player, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyNexAmount = Player.getAttribIntOr(player, NEX_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyNexCompleted = Player.getAttribBooleanOr(player, NEX_DAILY_TASK_COMPLETED, false);
+            dailyNexRewardClaimed = Player.getAttribBooleanOr(player, NEX_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyDemonicGorillasAmount = Player.getAttribIntOr(player, DEMONIC_GORILLA_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyDemonicGorillasCompleted = Player.getAttribBooleanOr(player, DEMONIC_GORILLA_DAILY_TASK_COMPLETED, false);
+            dailyDemonicGorillasRewardClaimed = Player.getAttribBooleanOr(player, DEMONIC_GORILLA_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyWinPvPTournyAmount = Player.getAttribIntOr(player, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyWinPvPTournyCompleted = Player.getAttribBooleanOr(player, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETED, false);
+            dailyWinPvPTournyRewardClaimed = Player.getAttribBooleanOr(player, WIN_PVP_TOURNAMENT_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyWildykeyEscapeAmount = Player.getAttribIntOr(player, WILDY_KEY_ESCAPE_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyWildykeyEscapeCompleted = Player.getAttribBooleanOr(player, WILDY_KEY_ESCAPE_DAILY_TASK_COMPLETED, false);
+            dailyWildykeyEscapeRewardClaimed = Player.getAttribBooleanOr(player, WILDY_KEY_ESCAPE_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyKillPlayersRevCaveAmount = Player.getAttribIntOr(player, KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyKillPlayersRevCaveCompleted = Player.getAttribBooleanOr(player, KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETED, false);
+            dailyKillPlayersRevCaveRewardClaimed = Player.getAttribBooleanOr(player, KILL_PLAYERS_REV_CAVE_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyDeepWildAmount = Player.getAttribIntOr(player, DEEP_WILD_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyDeepWildCompleted = Player.getAttribBooleanOr(player, DEEP_WILD_DAILY_TASK_COMPLETED, false);
+            dailyDeepWildRewardClaimed = Player.getAttribBooleanOr(player, DEEP_WILD_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyKillstreakAmount = Player.getAttribIntOr(player, KILLSTREAK_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyKillstreakCompleted = Player.getAttribBooleanOr(player, KILLSTREAK_DAILY_TASK_COMPLETED, false);
+            dailyKillstreakRewardClaimed = Player.getAttribBooleanOr(player, KILLSTREAK_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyEdgevileKillsAmount = Player.getAttribIntOr(player, EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyEdgevileKillsCompleted = Player.getAttribBooleanOr(player, EDGEVILE_KILLS_DAILY_TASK_COMPLETED, false);
+            dailyEdgevileKillsRewardClaimed = Player.getAttribBooleanOr(player, EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyMageBankKillsAmount = Player.getAttribIntOr(player, MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyMageBankKillsCompleted = Player.getAttribBooleanOr(player, MAGE_BANK_KILLS_DAILY_TASK_COMPLETED, false);
+            dailyMageBankKillsRewardClaimed = Player.getAttribBooleanOr(player, MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyMemberCaveKillsAmount = Player.getAttribIntOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyMemberCaveKillsCompleted = Player.getAttribBooleanOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, false);
+            dailyMemberCaveKillsRewardClaimed = Player.getAttribBooleanOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
             alchemicalHydraLogClaimed = Player.getAttribBooleanOr(player, ALCHEMICAL_HYDRA_LOG_CLAIMED, false);
             ancientBarrelchestLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_BARRELCHEST_LOG_CLAIMED, false);
             ancientChaosElementalLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, false);
