@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.clan.ClanManager;
 import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.mechanics.AntiSpam;
 import com.valinor.game.content.mechanics.Censor;
@@ -77,26 +78,7 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-
         player.message("Test command has been activated.");
-       // String xd = ".net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com.net.com.com.com";
-        String xd = "kyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskyskys";
-        for (int i = 0; i < 20; i++) {
-
-            if (AntiSpam.isNewPlayerSpamming(player, xd)) { // runs the check, doesnt matter about return
-              //  return;
-            }
-
-            if (Utils.blockedWord(xd)) {
-                player.message("<col=ca0d0d>Please refrain from using foul language in the yell chat! Thanks.");
-               // return;
-            }
-            String filtered = Censor.starred(xd);
-            if (filtered != null) {
-                byte[] compressed = Utils.encode(filtered, Buffer.create());
-            }
-            YellCommand.sendYell(player, xd);
-        }
         PlayerSession.main(new String[0]);
     }
 

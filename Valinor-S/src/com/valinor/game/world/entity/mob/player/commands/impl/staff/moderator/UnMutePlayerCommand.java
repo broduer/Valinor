@@ -20,6 +20,9 @@ public class UnMutePlayerCommand implements Command {
 
         Optional<Player> plr = World.getWorld().getPlayerByName(username);
         if (GameServer.properties().enableSql) {
+            plr.ifPresent(p -> {
+                p.muted = false;
+            });
             GameServer.getDatabaseService().submit(new UnmutePlayerDatabaseTransaction(username));
             player.message("Player " + username + " was successfully unmuted.");
             Utils.sendDiscordInfoLog(player.getUsername() + " used command: ::unmute "+username, "staff_cmd");

@@ -33,7 +33,11 @@ public class IPMuteCommand implements Command {
         if (command.length() <= 7)
             return;
         String username = Utils.formatText(command.substring(7)); // after "ipmute "
+        Optional<Player> plr = World.getWorld().getPlayerByName(username);
         if (GameServer.properties().enableSql) {
+            plr.ifPresent(p -> {
+                p.muted = true;
+            });
             player.getDialogueManager().start(new MuteDialogue(username));
         }
     }

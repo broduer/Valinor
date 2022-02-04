@@ -137,9 +137,6 @@ public class ClanManager {
 
         ClanMember member = clan.get(player.getUsername());
         if (player.isMuted()) {
-            if (GameServer.properties().enableSql) {
-                GameServer.getDatabaseService().submit(new GetMuteStatusDatabaseTransaction(player.getUsername()));
-            }
             player.message("You are muted and cannot send messages.");
             return;
         }

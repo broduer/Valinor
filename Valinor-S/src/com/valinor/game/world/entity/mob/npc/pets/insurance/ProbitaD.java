@@ -45,7 +45,7 @@ public class ProbitaD extends Dialogue {
             send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Tell me about pet insurance.", "I've lost a pet. Have you got it?", "I have a pet that I'd like to insure.", "What pets have I insured?", "Maybe another time.");
             setPhase(1);
         } else if (getPhase() == 2) {
-            send(DialogueType.NPC_STATEMENT, PROBITA, Expression.DEFAULT, "My insurance fee is "+ Utils.formatNumber(INSURANCE_FEE)+" coins. Once you've paid", "that, the pet's insured forever, and you can reclaim it", "here unlimited times for a reclamation fee of "+ Utils.formatNumber(PetInsurance.RECLAIM_FEE)+"", " bm whenever you lose your pet upon death.");
+            send(DialogueType.NPC_STATEMENT, PROBITA, Expression.DEFAULT, "My insurance fee is "+ Utils.formatNumber(INSURANCE_FEE)+" coins. Once you've paid", "that, the pet's insured forever, and you can reclaim it", "here unlimited times for a reclamation fee of "+ Utils.formatNumber(PetInsurance.RECLAIM_FEE)+"", " whenever you lose your pet upon death.");
             setPhase(3);
         } else if (getPhase() == 3) {
             stop();

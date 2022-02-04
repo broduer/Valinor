@@ -147,6 +147,7 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class Player extends Mob {
 
     public TickDelay snowballCooldown = new TickDelay();
+    public boolean muted;
 
     public void removeAll(Item item) {
         int inventoryCount = inventory.count(item.getId());
@@ -1496,6 +1497,17 @@ public class Player extends Mob {
         GameEngine.profile.login = System.currentTimeMillis() - startTime;
         //logger.info("it took " + endTime + "ms for processing player login.");
         //System.out.println("it took " + endTime + "ms for processing player login.");
+        
+        if (GameServer.properties().enableSql) {
+            GameEngine.getInstance().submitLowPriority(() -> {
+                try {
+                    //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
+                    muted = GameServer.getDatabaseService().execute(new GetMuteStatusDatabaseTransaction(username));
+                } catch (Exception e) {
+                    logger.catching(e);
+                }
+            });
+        }
     }
 
     private void moveFromRegionOnLogin() {
@@ -1521,16 +1533,7 @@ public class Player extends Mob {
     }
 
     public boolean isMuted() {
-        boolean muted = false;
-        if (GameServer.properties().enableSql) {
-            try {
-                //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
-                muted = GameServer.getDatabaseService().execute(new GetMuteStatusDatabaseTransaction(username));
-            } catch (Exception e) {
-                logger.catching(e);
-            }
-        }
-        return muted;
+        return muted; // how do you save stuff agasin in psave? oh actually dont need to save
     }
 
     private static final Set<String> veteranGiftClaimedIP = new HashSet<>();

@@ -27,7 +27,11 @@ public class MutePlayerCommand implements Command {
         if (command.length() <= 5)
             return;
         String username = Utils.formatText(command.substring(5)); // after "mute "
+        Optional<Player> plr = World.getWorld().getPlayerByName(username);
         if (GameServer.properties().enableSql) {
+            plr.ifPresent(p -> {
+                p.muted = true;
+            });
             player.getDialogueManager().start(new MuteDialogue(username));
         }
     }
