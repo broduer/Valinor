@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    RAIDS_BOX_GIVES_TBOW,
+
     CANNOT_ATTACK_OUT_OF_DIST,
     FENRIR_SPECIAL_ACTIVE,
 

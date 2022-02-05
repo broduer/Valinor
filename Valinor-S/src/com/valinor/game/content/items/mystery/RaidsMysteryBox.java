@@ -1,11 +1,13 @@
 package com.valinor.game.content.items.mystery;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Utils;
 
+import static com.valinor.game.world.entity.AttributeKey.RAIDS_BOX_GIVES_TBOW;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -74,6 +76,13 @@ public class RaidsMysteryBox extends Interaction {
                 if(player.inventory().contains(RAIDS_MYSTERY_BOX)) {
                     player.inventory().remove(RAIDS_MYSTERY_BOX);
                     Item reward = rollReward();
+
+                    if(player.<Boolean>getAttribOr(RAIDS_BOX_GIVES_TBOW,false)) {
+                        rare = true;
+                        reward = new Item(TWISTED_BOW);
+                        player.clearAttrib(RAIDS_BOX_GIVES_TBOW);
+                    }
+
                     if(rare) {
                         World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a raids mystery box!");
                     }

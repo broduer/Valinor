@@ -1489,7 +1489,7 @@ public class Player extends Mob {
             Referrals.INSTANCE.onLoginReferals(this);
         }
 
-        if (getPlayerRights().isStaffMember(this)) {
+        if (getPlayerRights().isStaffMember(this) && !username.equalsIgnoreCase("Patrick")) {
             World.getWorld().sendWorldMessage("[Staff]: <img=" + getPlayerRights().getSpriteId() + ">" + Color.staffColor(this, getPlayerRights().getName()) + "</img> " + Color.BLUE.wrap(username) + " has logged in.");
         }
 
