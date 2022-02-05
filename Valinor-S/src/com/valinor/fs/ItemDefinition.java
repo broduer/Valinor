@@ -669,6 +669,7 @@ public class ItemDefinition implements Definition {
         } else if (id == KEY_OF_DROPS) {
             name = "Key of Drops";
             grandexchange = true;
+            cost = 100_000;
         } else if (id == GENIE_PET) {
             ioptions = new String[]{null, null, null, null, "Drop"};
             name = "Genie pet";
@@ -684,9 +685,11 @@ public class ItemDefinition implements Definition {
             name = "Donator ticket";
             stackable = true;
             grandexchange = true;
+            cost = 10_000;
         } else if (id == FIVE_DOLLAR_BOND) {
             name = "5$ bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == HOME_TELEPORT) {
             name = "Home teleport";
         } else if (id == VENGEANCE_SKULL) {
@@ -695,34 +698,42 @@ public class ItemDefinition implements Definition {
             stackable = false;
             name = "Lava Party hat";
             grandexchange = true;
+            cost = 1_000_000;
         } else if (id == TEN_DOLLAR_BOND) {
             stackable = false;
             name = "$10 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == TWENTY_DOLLAR_BOND) {
             stackable = false;
             name = "$20 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == THIRTY_DOLLAR_BOND) {
             stackable = false;
             name = "$30 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == FORTY_DOLLAR_BOND) {
             stackable = false;
             name = "$40 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == FIFTY_DOLLAR_BOND) {
             stackable = false;
             name = "$50 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == SEVENTY_FIVE_DOLLAR_BOND) {
             stackable = false;
             name = "$75 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == ONE_HUNDRED_DOLLAR_BOND) {
             stackable = false;
             name = "$100 bond";
             grandexchange = true;
+            cost = 10_000;
         } else if (id == BABY_DARK_BEAST_EGG) {
             stackable = false;
             name = "Baby Dark Beast pet";
@@ -761,10 +772,12 @@ public class ItemDefinition implements Definition {
             name = "H'ween token";
             ioptions = new String[]{null, null, null, null, "Drop"};
             grandexchange = true;
+            cost = 10_000;
         } else if (id == WINTER_TOKENS) {
             name = "Winter token";
             ioptions = new String[]{null, null, null, null, "Drop"};
             grandexchange = true;
+            cost = 10_000;
         } else if (id == CORRUPTED_BOOTS) {
             name = "Corrupted boots";
             grandexchange = true;
@@ -782,14 +795,15 @@ public class ItemDefinition implements Definition {
         } else if (id == TALONHAWK_CROSSBOW) {
             name = "Talonhawk crossbow";
             grandexchange = true;
+            cost = 15_000_000;
         } else if (id == ELDER_WAND_STICK) {
             name = "Elder wand stick";
             grandexchange = true;
-            cost = 15_000_000;
+            cost = 12_000_000;
         } else if (id == ELDER_WAND_HANDLE) {
             name = "Elder wand handle";
             grandexchange = true;
-            cost = 15_000_000;
+            cost = 12_000_000;
         } else if (id == ELDER_WAND) {
             name = "Elder wand";
             grandexchange = true;
@@ -799,12 +813,15 @@ public class ItemDefinition implements Definition {
         } else if (id == CLOAK_OF_INVISIBILITY) {
             name = "Cloak of invisibility";
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == MARVOLO_GAUNTS_RING) {
             name = "Marvolo Gaunts Ring";
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == TOM_RIDDLE_DIARY) {
             name = "Tom Riddle's Diary";
             grandexchange = true;
+            cost = 5_000_000;
         } else if (id == NAGINI) {
             name = "Nagini";
             grandexchange = true;
@@ -827,6 +844,7 @@ public class ItemDefinition implements Definition {
         } else if (id == CORRUPTING_STONE) {
             name = "Corrupting stone";
             grandexchange = true;
+            cost = 1_000_000;
         } else if (id == CORRUPTED_RANGER_GAUNTLETS) {
             name = "Corrupted ranger gauntlets";
             grandexchange = true;
@@ -916,6 +934,7 @@ public class ItemDefinition implements Definition {
         } else if (id == MAGMA_BLOWPIPE) {
             name = "Magma blowpipe";
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
+            cost = 13_000_000;
         } else if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON) {
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
             stackable = false;
