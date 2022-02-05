@@ -281,6 +281,7 @@ public class CommandManager {
         /*
          * Owner commands
          */
+        commands.put("givetbow", new TbowRaidsMysteryBoxCommand());
         commands.put("csw", new CheckServerWealthCommand());
         commands.put("kickall", new KickAllCommand());
         commands.put("tradepost", new TradingPostCommand());
