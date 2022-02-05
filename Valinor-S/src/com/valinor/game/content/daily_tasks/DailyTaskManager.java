@@ -6,7 +6,6 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -39,15 +38,23 @@ public class DailyTaskManager extends Interaction {
     public static void increase(DailyTasks dailyTask, Player player, int increaseBy) {
         //Can only increase when the task isn't already finished.
         if (dailyTask.canIncrease(player)) {
-            var completionAmount = dailyTask.completionAmount;
-            var increase = player.<Integer>getAttribOr(dailyTask.key, 0) + increaseBy;
-            player.putAttrib(dailyTask.key, increase);
-            player.message(Color.PURPLE.wrap("Daily task; " + dailyTask.taskName + " Completed: (" + increase + "/" + completionAmount + ")"));
+            int before = player.<Integer>getAttribOr(dailyTask.key, 0);
+            var current = player.<Integer>getAttribOr(dailyTask.key, 0) + increaseBy;
+            var completeAmount = dailyTask.completionAmount;
+            if (current >= completeAmount)
+                current = completeAmount;
 
-            //We have completed the task
-            if (increase == dailyTask.completionAmount) {
-                player.putAttrib(dailyTask.completed, true);
-                player.message(Color.PURPLE.wrap(dailyTask.taskName + " completed, you may now claim its rewards!"));
+            player.putAttrib(dailyTask.key, current);
+
+            int after = player.<Integer>getAttribOr(dailyTask.key, 0);
+            player.message(Color.PURPLE.wrap("Daily task; " + dailyTask.taskName + " Completed: (" + after + "/" + completeAmount + ")"));
+
+            if (after != before) {
+                //We have completed the task
+                if (after >= completeAmount) {
+                    player.putAttrib(dailyTask.completed, true);
+                    player.message(Color.PURPLE.wrap(dailyTask.taskName + " completed, you may now claim its rewards!"));
+                }
             }
         }
     }

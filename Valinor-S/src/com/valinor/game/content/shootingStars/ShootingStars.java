@@ -1,5 +1,6 @@
 package com.valinor.game.content.shootingStars;
 
+import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.action.impl.UnwalkableAction;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
@@ -119,7 +120,7 @@ public class ShootingStars {
     /**
      * The interval at which server-wide shooting star events occur. Event runs every 45 minutes
      */
-    public static final int EVENT_INTERVAL = 4500;//4500
+    public static final int EVENT_INTERVAL = GameServer.properties().production ? 4500 : 500;
 
     public void startEvent() {
         if (!DISABLED) {
@@ -214,7 +215,7 @@ public class ShootingStars {
 
                 var random = World.getWorld().random(1, 3);
                 player.getInventory().add(STAR_CURRENCY, random);
-                DailyTaskManager.increase(DailyTasks.STARDUST, player,3);
+                DailyTaskManager.increase(DailyTasks.STARDUST, player, random);
                 player.skills().addXp(Skills.MINING, 30 * Mining.xpBonus(player), true);
                 removeShards(random);
                 player.message("You mine " + random + " "+ World.getWorld().definitions().get(ItemDefinition.class, STAR_CURRENCY).name.toLowerCase()+".");
