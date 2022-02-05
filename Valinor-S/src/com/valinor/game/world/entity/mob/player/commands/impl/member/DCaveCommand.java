@@ -31,11 +31,34 @@ public class DCaveCommand implements Command {
 
         Tile tile = new Tile(2335, 9795);
 
-        if (!Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
-            return;
-        }
+        player.getDialogueManager().start(new Dialogue() {
+            @Override
+            protected void start(Object... parameters) {
+                send(DialogueType.STATEMENT, "This teleport will send you to a dangerous area.", "Do you wish to continue?");
+                setPhase(1);
+            }
 
-        Teleports.basicTeleport(player, tile);
+            @Override
+            protected void next() {
+                if (isPhase(1)) {
+                    send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
+                    setPhase(2);
+                }
+            }
+
+            @Override
+            protected void select(int option) {
+                if (option == 1) {
+                    if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                        stop();
+                        return;
+                    }
+                    Teleports.basicTeleport(player, tile);
+                } else if (option == 2) {
+                    stop();
+                }
+            }
+        });
     }
 
     @Override
