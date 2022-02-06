@@ -136,7 +136,7 @@ public class DwarfCannonActions extends Interaction {
                 }
                 if (object.asOwnedObject().isOwner(player)) {
                     DwarfCannon cannon = ((DwarfCannon) object);
-                    if (player.inventory().hasFreeSlots(1) || player.inventory().hasCapacityFor(new Item(CANNON_BALL))) {
+                    if (player.inventory().hasFreeSlots(1) || player.inventory().hasCapacity(new Item(CANNON_BALL))) {
                         if (cannon.getAmmo() > 0) {
                             player.inventory().add(CANNON_BALL, cannon.getAmmo());
                             player.message("You unload your cannon and receive Cannonball x " + cannon.getAmmo());

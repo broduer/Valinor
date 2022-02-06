@@ -761,7 +761,7 @@ public class ItemContainer implements Iterable<Item> {
      * @param item The {@link Item} to determine this for.
      * @return {@code true} if {@code item} can be added, {@code false} otherwise.
      */
-    public final boolean hasCapacityFor(Item... item) {
+    public final boolean hasCapacity(Item... item) {
         int indexCount = computeIndexCount(item);
         return remaining() >= indexCount;
     }
@@ -777,7 +777,7 @@ public class ItemContainer implements Iterable<Item> {
     public final boolean hasCapacityAfter(Item[] add, Item... remove) {
         ItemContainer container = new ItemContainer(capacity, policy, toArray());
         container.removeAll(Arrays.copyOf(remove, remove.length));
-        return container.hasCapacityFor(add);
+        return container.hasCapacity(add);
     }
 
     /**

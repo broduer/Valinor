@@ -6,7 +6,6 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.magic.Autocasting;
-import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
 import com.valinor.game.world.entity.masks.Projectile;
@@ -44,7 +43,7 @@ public class ChaosElemental extends CommonCombatMethod {
         projectile(npc, target, 550, 551, 552);
         Player player = (Player) target;
         final Item item = player.getEquipment().get(EquipSlot.WEAPON);
-        if (item != null && player.inventory().hasCapacityFor(item)) {
+        if (item != null && player.inventory().hasCapacity(item)) {
             player.getEquipment().remove(item, EquipSlot.WEAPON, true);
             player.getEquipment().unequip(EquipSlot.WEAPON);
             player.getCombat().setRangedWeapon(null);

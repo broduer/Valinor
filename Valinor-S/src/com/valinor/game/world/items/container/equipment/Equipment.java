@@ -484,7 +484,7 @@ public final class Equipment extends ItemContainer {
             (equipmentSlot == EquipSlot.SHIELD && (!hasWeapon() || !hasShield() || getWeapon().isTwoHanded()))
                 || (equipmentSlot == EquipSlot.WEAPON && (!hasShield() || !hasWeapon() || getShield().isTwoHanded()));
 
-        if (secondaryItemToUnequip != null && !inventory.hasCapacityFor(secondaryItemToUnequip) && !oneForOneSwap) {
+        if (secondaryItemToUnequip != null && !inventory.hasCapacity(secondaryItemToUnequip) && !oneForOneSwap) {
             player.message("You do not have enough space in your inventory.");
             return false;
         }

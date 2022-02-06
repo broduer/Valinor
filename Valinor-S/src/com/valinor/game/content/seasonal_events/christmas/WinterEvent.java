@@ -26,7 +26,6 @@ import java.util.List;
 import static com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards.UNLOCKED_ITEM_SLOT;
 import static com.valinor.game.content.skill.impl.hunter.Impling.OVERWORLD_RANDOM_SPAWN_TILES;
 import static com.valinor.util.CustomItemIdentifiers.WINTER_TOKENS;
-import static com.valinor.util.CustomNpcIdentifiers.SANTA;
 import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP;
 import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 import static com.valinor.util.ObjectIdentifiers.*;
@@ -173,7 +172,7 @@ public class WinterEvent extends Interaction {
 
     private void takeSnow(Player player, GameObject object) {
         player.faceObj(object);
-        if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL))) {
+        if (!player.getInventory().hasCapacity(new Item(SNOWBALL))) {
             player.message("You don't have enough room to carry snow!");
             return;
         }
@@ -183,7 +182,7 @@ public class WinterEvent extends Interaction {
             player.animate(5067);
             player.getInventory().add(SNOWBALL, 3);
         }).repeatingTask(5, r -> {
-            if (!player.getInventory().hasCapacityFor(new Item(SNOWBALL))) {
+            if (!player.getInventory().hasCapacity(new Item(SNOWBALL))) {
                 r.stop();
                 return;
             }

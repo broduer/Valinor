@@ -32,7 +32,7 @@ public class RunesCommand implements Command {
         Item[] runes = { new Item(554, 1000), new Item(555, 1000), new Item(556, 1000), new Item(557, 1000),
             new Item(558, 1000), new Item(559, 1000), new Item(560, 1000), new Item(561, 1000), new Item(562, 1000),
             new Item(563, 1000), new Item(564, 1000), new Item(565, 1000), new Item(9075, 1000), new Item(566, 1000) };
-        if (player.inventory().hasCapacityFor(runes)) {
+        if (player.inventory().hasCapacity(runes)) {
             player.message("You spawn some runes.");
             player.inventory().addAll(runes);
         } else {

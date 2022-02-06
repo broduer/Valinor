@@ -62,7 +62,7 @@ public class LordVoldemort extends CommonCombatMethod {
 
     private void disarm(Player player) {
         final Item item = player.getEquipment().get(EquipSlot.WEAPON);
-        if (item != null && player.inventory().hasCapacityFor(item)) {
+        if (item != null && player.inventory().hasCapacity(item)) {
             player.getEquipment().remove(item, EquipSlot.WEAPON, true);
             player.getEquipment().unequip(EquipSlot.WEAPON);
             WeaponInterfaces.updateWeaponInterface(player);

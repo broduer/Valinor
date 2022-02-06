@@ -250,7 +250,7 @@ public class ItemDispenser extends Interaction {
     }
 
     private void dispense(Player player) {
-        if(!player.inventory().hasCapacityFor(new Item(CustomItemIdentifiers.VALINOR_COINS))) {
+        if(!player.inventory().hasCapacity(new Item(CustomItemIdentifiers.VALINOR_COINS))) {
             player.message("You have no room for any "+GameConstants.SERVER_NAME+" coins!");
            return;
         }

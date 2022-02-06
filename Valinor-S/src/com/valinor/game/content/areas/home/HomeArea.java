@@ -35,7 +35,6 @@ import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.GAME_MODE;
-import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.WILDERNESS_ACTIVITY_LOCATION;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.ALTAR;
@@ -115,7 +114,7 @@ public class HomeArea extends Interaction {
 
             if (object.getId() == ANTIDRAGON_SHIELD) {
                 Item item = new Item(ItemIdentifiers.ANTIDRAGON_SHIELD);
-                if (player.inventory().hasCapacityFor(item)) {
+                if (player.inventory().hasCapacity(item)) {
                     player.animate(536);
                     player.inventory().add(item);
                 } else {
@@ -126,7 +125,7 @@ public class HomeArea extends Interaction {
 
             if (object.getId() == BRONZE_PICKAXE) {
                 Item item = new Item(ItemIdentifiers.BRONZE_PICKAXE);
-                if (player.inventory().hasCapacityFor(item)) {
+                if (player.inventory().hasCapacity(item)) {
                     player.animate(536);
                     player.inventory().add(item);
                 } else {
@@ -137,7 +136,7 @@ public class HomeArea extends Interaction {
 
             if (object.getId() == BRONZE_AXE) {
                 Item item = new Item(ItemIdentifiers.BRONZE_AXE);
-                if (player.inventory().hasCapacityFor(item)) {
+                if (player.inventory().hasCapacity(item)) {
                     player.animate(536);
                     player.inventory().add(item);
                 } else {
@@ -149,7 +148,7 @@ public class HomeArea extends Interaction {
             if (object.getId() == MOUNTED_MUSIC_CAPE) {
                 Item cape = new Item(ItemIdentifiers.MUSIC_CAPE);
                 Item hood = new Item(ItemIdentifiers.MUSIC_HOOD);
-                if (player.inventory().hasCapacityFor(cape, hood)) {
+                if (player.inventory().hasCapacity(cape, hood)) {
                     player.animate(536);
                     player.inventory().addAll(cape, hood);
                 } else {
@@ -161,7 +160,7 @@ public class HomeArea extends Interaction {
                 if (Mac.success(player)) {
                     Item cape = new Item(ItemIdentifiers.MAX_CAPE);
                     Item hood = new Item(ItemIdentifiers.MAX_HOOD);
-                    if (player.inventory().hasCapacityFor(cape, hood)) {
+                    if (player.inventory().hasCapacity(cape, hood)) {
                         var canAfford = false;
                         int currencyInInventory = player.inventory().count(COINS_995);
                         if (currencyInInventory > 0) {
@@ -186,7 +185,7 @@ public class HomeArea extends Interaction {
             if (object.getId() == MOUNTED_QUEST_CAPE_29179) {
                 Item cape = new Item(ItemIdentifiers.QUEST_POINT_CAPE);
                 Item hood = new Item(ItemIdentifiers.QUEST_POINT_HOOD);
-                if (player.inventory().hasCapacityFor(cape, hood)) {
+                if (player.inventory().hasCapacity(cape, hood)) {
                     player.animate(536);
                     player.inventory().addAll(cape, hood);
                 } else {
@@ -198,7 +197,7 @@ public class HomeArea extends Interaction {
                 if (AchievementsManager.isCompleted(player, Achievements.COMPLETIONIST)) {
                     Item cape = new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_CAPE);
                     Item hood = new Item(ItemIdentifiers.ACHIEVEMENT_DIARY_HOOD);
-                    if (player.inventory().hasCapacityFor(cape, hood)) {
+                    if (player.inventory().hasCapacity(cape, hood)) {
                         player.animate(536);
                         player.inventory().addAll(cape, hood);
                     } else {
