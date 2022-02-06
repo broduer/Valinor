@@ -364,8 +364,7 @@
       "death": 172
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -401,8 +400,7 @@
       "death": 1580
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -441,8 +439,7 @@
       "death": 92
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -481,8 +478,7 @@
       "death": 92
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -521,8 +517,7 @@
       "death": 67
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -561,8 +556,7 @@
       "death": 6576
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -601,8 +595,7 @@
       "death": 836
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -641,8 +634,7 @@
       "death": 836
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -681,8 +673,7 @@
       "death": 4321
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -721,8 +712,7 @@
       "death": 4321
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -761,8 +751,7 @@
       "death": 2733
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -801,8 +790,7 @@
       "death": 2733
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -841,8 +829,7 @@
       "death": 4653
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -881,8 +868,7 @@
       "death": 4653
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -921,8 +907,7 @@
       "death": 6182
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   },
   {
@@ -961,8 +946,7 @@
       "death": 167
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant",
-      "aggression": "com.valinor.game.content.members.MemberCaveAgro"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.misc.Revenant"
     }
   }
 ]
