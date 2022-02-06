@@ -76,10 +76,9 @@ public class VorkathInstance {
         player.setVorkathState(VorkathState.SLEEPING);
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(VORKATH_AREA))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
+            if (gi.getTile().inArea(VORKATH_AREA) && gi.getTile().level == player.tile().level) {
+                GroundItemHandler.sendRemoveGroundItem(gi);
+            }
         }
     }
 }

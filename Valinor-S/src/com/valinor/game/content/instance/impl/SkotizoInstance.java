@@ -230,10 +230,9 @@ public class SkotizoInstance {
         altarMap.clear();
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(SKOTIZO_AREA))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
+            if (gi.getTile().inArea(SKOTIZO_AREA) && gi.getTile().level == player.tile().level) {
+                GroundItemHandler.sendRemoveGroundItem(gi);
+            }
         }
     }
 

@@ -69,17 +69,16 @@ public class AlchemicalHydraInstance {
 
     public boolean playerHasLeft;
 
-    public void clear() {
+    public void clear(Player player) {
         for (Npc npc : npcList) {
             World.getWorld().unregisterNpc(npc);
         }
         npcList.clear();
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(ALCHEMICAL_HYDRA_AREA))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
+            if (gi.getTile().inArea(ALCHEMICAL_HYDRA_AREA) && gi.getTile().level == player.tile().level) {
+                GroundItemHandler.sendRemoveGroundItem(gi);
+            }
         }
     }
 

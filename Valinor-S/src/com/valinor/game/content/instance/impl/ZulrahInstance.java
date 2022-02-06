@@ -47,7 +47,7 @@ public class ZulrahInstance {
     private static final Area ZULRAH_AREA = new Area(2251, 3058, 2281, 3088);
 
     public void enterInstance(Player player, boolean teleport) {
-        clear();
+        clear(player);
         instance = InstancedAreaManager.getSingleton().createInstancedArea(player, ZULRAH_AREA);
         if (player != null && instance != null) {
             npcList.clear();
@@ -73,17 +73,16 @@ public class ZulrahInstance {
         }
     }
 
-    public void clear() {
+    public void clear(Player player) {
         for (Npc npc : npcList) {
             World.getWorld().unregisterNpc(npc);
         }
         npcList.clear();
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(ZULRAH_AREA))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
+            if (gi.getTile().inArea(ZULRAH_AREA) && gi.getTile().level == player.tile().level) {
+                GroundItemHandler.sendRemoveGroundItem(gi);
+            }
         }
     }
 }

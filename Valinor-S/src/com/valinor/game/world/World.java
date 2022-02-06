@@ -39,6 +39,7 @@ import com.valinor.game.world.items.ground.GroundItem;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.OwnedObject;
+import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.region.Flags;
 import com.valinor.game.world.region.Region;
@@ -56,6 +57,7 @@ import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.valinor.util.NpcIdentifiers.SHANOMI;
 

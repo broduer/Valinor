@@ -2573,7 +2573,7 @@ public class Player extends Mob {
         }
 
         if (zulrahInstance != null && zulrahInstance.getInstance() != null) {
-            zulrahInstance.clear();
+            zulrahInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(zulrahInstance.getInstance());
         }
 
@@ -2583,7 +2583,7 @@ public class Player extends Mob {
         }
 
         if (bryophytaInstance != null && bryophytaInstance.getInstance() != null) {
-            bryophytaInstance.clear();
+            bryophytaInstance.clear(this);
             this.getPacketSender().sendEffectTimer(0, EffectTimer.MONSTER_RESPAWN);
             InstancedAreaManager.getSingleton().disposeOf(bryophytaInstance.getInstance());
         }

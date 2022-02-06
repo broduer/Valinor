@@ -113,7 +113,7 @@ public class NightmareInstance {
         players.remove(player);
         //No players left in the region, lets clean up the instance
         if (getPlayers().size() == 0) {
-            clearAll();
+            clearAll(player);
         }
     }
 
@@ -121,7 +121,7 @@ public class NightmareInstance {
         players.remove(player);
         //No players left in the region, lets clean up the instance
         if (getPlayers().size() == 0) {
-            clearAll();
+            clearAll(player);
         }
     }
 
@@ -129,11 +129,11 @@ public class NightmareInstance {
         players.remove(player);
         //No players left in the region, lets clean up the instance
         if (getPlayers().size() == 0) {
-            clearAll();
+            clearAll(player);
         }
     }
 
-    private void clearAll() {
+    private void clearAll(Player player) {
         //remove all the npcs alive in the instance
         for (TotemPlugin t : nightmare.getTotems()) {
             World.getWorld().unregisterNpc(t);
@@ -149,10 +149,9 @@ public class NightmareInstance {
         });
 
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-            if (!gi.getTile().inArea(THE_NIGHTMARE_AREA))
-                continue;
-
-            GroundItemHandler.sendRemoveGroundItem(gi);
+            if (gi.getTile().inArea(THE_NIGHTMARE_AREA) && gi.getTile().level == player.tile().level) {
+                GroundItemHandler.sendRemoveGroundItem(gi);
+            }
         }
     }
 }

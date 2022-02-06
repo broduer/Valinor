@@ -59,10 +59,9 @@ public class KrakenInstance {
                     player.putAttrib(AttributeKey.TENTACLES_DISTURBED, 0);
 
                     for (GroundItem gi : GroundItemHandler.getGroundItems()) {
-                        if (!gi.getTile().inArea(KRAKEN_AREA))
-                            continue;
-
-                        GroundItemHandler.sendRemoveGroundItem(gi);
+                        if (gi.getTile().inArea(KRAKEN_AREA) && gi.getTile().level == player.tile().level) {
+                            GroundItemHandler.sendRemoveGroundItem(gi);
+                        }
                     }
                 }
             });
