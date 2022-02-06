@@ -37,7 +37,7 @@ public interface Droptable {
         }
 
         if (World.getWorld().rollDie(50, 1)) {
-            drop(npc, new Tile(2262, 3072, player.tile().level), player, new Item(TREASURE_CASKET, 1));
+            player.inventory().addOrDrop(new Item(TREASURE_CASKET, 1));
             player.message("<col=0B610B>You have received a treasure casket drop!");
         }
 

@@ -279,10 +279,9 @@ public class ItemDrops {
         treasureCasketChance -= reduction;
 
         if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {
-            Item clueItem = new Item(TREASURE_CASKET);
-            GroundItem groundItem = new GroundItem(clueItem, killer.tile(), killer);
-            GroundItemHandler.createGroundItem(groundItem);
-            notification(killer, clueItem);
+            Item treasureCasket = new Item(TREASURE_CASKET, 1);
+            killer.inventory().addOrDrop(treasureCasket);
+            notification(killer, treasureCasket);
             killer.message("<col=0B610B>You have received a treasure casket drop!");
         }
 
