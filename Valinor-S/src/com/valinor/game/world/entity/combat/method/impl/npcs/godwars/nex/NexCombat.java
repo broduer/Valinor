@@ -179,7 +179,7 @@ public class NexCombat extends CommonCombatMethod {
     }
 
     private void drainAttack(Nex nex) {
-        for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+        for (Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 2010, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
 
@@ -196,7 +196,7 @@ public class NexCombat extends CommonCombatMethod {
     private void magicAttack(Nex nex) {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MAGIC_ATTACK_MAX);
         nex.animate(MAGIC_ATTACK_ANIM);
-        for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+        for (Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 2007, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
             Hit hit = t.hit(nex, CombatFactory.calcDamageFromType(nex, t, CombatType.MAGIC), 3, CombatType.MAGIC);
@@ -230,7 +230,7 @@ public class NexCombat extends CommonCombatMethod {
                 player.message("You didn't make it far enough in time - Nex fires a punishing attack!");
 
                 //Random players will also take up to 12 damage through Protect from Magic, and their prayer is drained by 1/3rd as well.
-                for (final Mob t : getPossibleTargets(nex, 64, true,false)) {
+                for (final Mob t : getPossibleTargets(nex)) {
                     Projectile projectile = new Projectile(nex, t, 374, 35, 56, 41, 16, 0);
                     projectile.sendProjectile();
 
@@ -287,7 +287,7 @@ public class NexCombat extends CommonCombatMethod {
 
         Chain.bound(null).runFn(1, () -> {
             if (nex.getAttacksStage() != 1 || nex.finished()) {
-                for (Mob m : getPossibleTargets(nex, 64, true,false)) {
+                for (Mob m : getPossibleTargets(nex)) {
                     if (m instanceof Player) {
                         Player player = (Player) m;
                         //TODO a varbit to turn screen darker
@@ -297,7 +297,7 @@ public class NexCombat extends CommonCombatMethod {
             }
 
             if (Utils.getRandom(2) == 0) {
-                for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+                for (Mob t : getPossibleTargets(nex)) {
                     if (t instanceof Player) {
                         Player player = (Player) t;
                         int distance = Utils.getDistance(player.getX(), player.getY(), nex.getX(), nex.getY());
@@ -313,7 +313,7 @@ public class NexCombat extends CommonCombatMethod {
     private void shadowSmashAttack(Nex nex) {
         nex.forceChat("Fear the Shadow!");
         nex.animate( SHADOW_SMASH_ATTACK_ANIM);
-        ArrayList<Mob> possibleTargets = getPossibleTargets(nex, 64, true,false);
+        ArrayList<Mob> possibleTargets = getPossibleTargets(nex);
         final HashMap<String, int[]> tiles = new HashMap<>();
         for (Mob t : possibleTargets) {
             String key = t.getX() + "_" + t.getY();
@@ -342,7 +342,7 @@ public class NexCombat extends CommonCombatMethod {
     private void shadowShotsAttack(Nex nex) {
         //When using prot range, damage cut in half
         nex.animate(MAGIC_ATTACK_ANIM);
-        for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+        for (Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 378, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
 
@@ -410,13 +410,13 @@ public class NexCombat extends CommonCombatMethod {
             nex.getUpdateFlag().flag(Flag.FORCED_MOVEMENT);
             Chain.bound(null).then(3, () -> nex.teleport(center)); //Update nex on map
         }).then(8, () -> {
-            nex.getCombat().setTarget(Utils.randomElement(getPossibleTargets(nex, 20, true,false)));
+            nex.getCombat().setTarget(Utils.randomElement(getPossibleTargets(nex)));
             nex.cantInteract(false);
         });
     }
 
     private void dragAttack(Nex nex) {
-        Mob target = Utils.randomElement(getPossibleTargets(nex, 64, true,false));
+        Mob target = Utils.randomElement(getPossibleTargets(nex));
         if(target == null) {
             return; // No targets found
         }
@@ -463,7 +463,7 @@ public class NexCombat extends CommonCombatMethod {
         nex.animate(VIRUS_ATTACK_ANIM);
         nex.setLastVirus(Utils.currentTimeMillis() + 60000);
         nex.forceChat("Let the virus flow through you.");
-        sendVirusAttack(nex, new ArrayList<>(), getPossibleTargets(nex, 64, true,false), target);
+        sendVirusAttack(nex, new ArrayList<>(), getPossibleTargets(nex), target);
     }
 
     public void sendVirusAttack(Nex nex, ArrayList<Mob> hit, ArrayList<Mob> possibleTargets, Mob infected) {
@@ -483,7 +483,7 @@ public class NexCombat extends CommonCombatMethod {
     private void smokeRushAttack(Nex nex) {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MAGIC_ATTACK_MAX);
         nex.animate(MAGIC_ATTACK_ANIM);
-        for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+        for (Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 384, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
             if (World.getWorld().rollDie(100, 25)) {
@@ -504,7 +504,7 @@ public class NexCombat extends CommonCombatMethod {
     private void iceBarrageAttack(Nex nex) {
         nex.putAttrib(AttributeKey.MAXHIT_OVERRIDE, MAGIC_ATTACK_MAX);
         nex.animate(MAGIC_ATTACK_ANIM);
-        for (Mob t : getPossibleTargets(nex, 64, true,false)) {
+        for (Mob t : getPossibleTargets(nex)) {
             Projectile projectile = new Projectile(nex, t, 362, 0, 100, 43, 31, 0);
             projectile.sendProjectile();
             Hit hit = t.hit(nex, CombatFactory.calcDamageFromType(nex, t, CombatType.MAGIC), 3, CombatType.MAGIC);

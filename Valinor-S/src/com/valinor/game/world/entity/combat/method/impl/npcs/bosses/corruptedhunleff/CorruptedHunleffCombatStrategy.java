@@ -63,7 +63,7 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
         if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
             if(World.getWorld().rollDie(2,1)) {
                 mob.animate(8420);
-                for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+                for (Mob t : getPossibleTargets(mob)) {
                     mob.getAsNpc().combatInfo().maxhit = 50;
                     t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.MELEE), CombatType.MELEE).setAccurate(true).submit();
                 }
@@ -96,7 +96,7 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
     }
 
     private void rangeAttack(Mob mob) {
-        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+        for (Mob t : getPossibleTargets(mob)) {
             var tileDist = mob.tile().transform(1, 1, 0).distance(t.tile());
             var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
             Projectile projectile = new Projectile(mob, t, 1705, 35, 20 * tileDist, 45, 30, 0);
@@ -107,7 +107,7 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
 
     private void magicAttack(Mob mob) {
         mob.animate(mob.attackAnimation());
-        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+        for (Mob t : getPossibleTargets(mob)) {
             //25% chance to disable prayers
             if (World.getWorld().rollDie(4, 1)) {
                 prayerDisableAttack(mob, t);
@@ -167,7 +167,7 @@ public class CorruptedHunleffCombatStrategy extends CommonCombatMethod {
         Tile central = base.transform(centralCrystalSpot.x, centralCrystalSpot.y);
         ArrayList<Tile> spots = new ArrayList<>(crystalSpots);
 
-        for (Mob t : getPossibleTargets(mob, 64, true, false)) {
+        for (Mob t : getPossibleTargets(mob)) {
             int[] ticker = new int[1];
             Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1718, central, 0, 0)).repeatingTask(1, tick -> {
                 if (ticker[0] == 10) {
