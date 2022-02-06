@@ -42,7 +42,7 @@ public class Barrows extends Interaction {
 
     private static final List<Integer> possibles = Arrays.asList(SARCOPHAGUS_20720, SARCOPHAGUS_20770, SARCOPHAGUS_20772, SARCOPHAGUS_20721, SARCOPHAGUS_20771, SARCOPHAGUS_20722);
     private static final List<Integer> lootItemIds = Arrays.asList(ItemIdentifiers.DEATH_RUNE, ItemIdentifiers.BLOOD_RUNE, ItemIdentifiers.CHAOS_RUNE, ItemIdentifiers.MIND_RUNE, BOLT_RACK, COINS_995);
-    private static final List<Integer> lootItemAmts = Arrays.asList(180, 80, 270, 450, 120);
+    private static final List<Integer> lootItemAmts = Arrays.asList(180, 80, 270, 450, 120, 40);
     private static final List<Integer> barrowsItemIds = Arrays.asList(AHRIMS_HOOD, AHRIMS_STAFF, AHRIMS_ROBETOP, AHRIMS_ROBESKIRT, DHAROKS_HELM, DHAROKS_GREATAXE, DHAROKS_PLATEBODY,
         DHAROKS_PLATELEGS, GUTHANS_HELM, GUTHANS_WARSPEAR, GUTHANS_PLATEBODY, GUTHANS_CHAINSKIRT, KARILS_COIF, KARILS_CROSSBOW, KARILS_LEATHERTOP, KARILS_LEATHERSKIRT, TORAGS_HELM,
         TORAGS_HAMMERS, TORAGS_PLATEBODY, TORAGS_PLATELEGS, VERACS_HELM, VERACS_FLAIL, VERACS_BRASSARD, VERACS_PLATESKIRT, AMULET_OF_THE_DAMNED);
@@ -291,6 +291,10 @@ public class Barrows extends Interaction {
             var multiplier = lootItemAmts.get(idx) > 600 ? 2 : 1;
 
             var item = new Item(lootItemIds.get(idx), rand.nextInt(lootItemAmts.get(idx)) * multiplier);
+
+            if(item.getAmount() <= 0) {
+                item.setAmount(World.getWorld().random(1, 50));
+            }
 
             player.inventory().addOrDrop(item);
             BOSSES.log(player, BARROWS_KEY, item);

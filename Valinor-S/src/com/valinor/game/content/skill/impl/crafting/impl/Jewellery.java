@@ -253,7 +253,7 @@ public final class Jewellery {
                         player.inventory().remove(jewellery.materials[index], -1, false);
                     }
                 }
-                
+
                 player.inventory().add(new Item(jewellery.product), -1, true);
                 player.skills().addXp(Skills.CRAFTING, jewellery.experience);
                 player.message("You have crafted " + Utils.getAOrAn(new Item(jewellery.product).name()) + " " + new Item(jewellery.product).name() + ".");
