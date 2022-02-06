@@ -190,6 +190,7 @@ public class DwarfCannon extends OwnedObject {
                     filter(npc -> npc.def().combatlevel > 0 && npc.hp() > 0).
                     filter(npc -> !npc.dead()).
                     filter(npc -> !npc.def().ispet).
+                    filter(npc -> !npc.isWorldBoss()).
                     filter(npc -> cannonDirection.validArea(getCorrectedTile(tile()).transform(1, 1, 0), npc.tile())).
                     filter(npc -> ProjectileRoute.allow(getCorrectedTile(tile()).getX(),
                         getCorrectedTile(tile()).getY(), getCorrectedTile(tile()).getZ(), 1,

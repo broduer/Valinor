@@ -623,7 +623,6 @@ public class Npc extends Mob {
                     .filter(p -> !p.looks().hidden());
                 // apply overrides
                 if (override) {
-                    System.out.println("override");
                     playerStream = playerStream.filter(p -> combatInfo.scripts.agro_.shouldAgro(this, p));
                 } else {
                     if (!wilderness) {
