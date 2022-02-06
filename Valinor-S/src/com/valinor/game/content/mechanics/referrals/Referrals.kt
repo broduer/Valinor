@@ -33,7 +33,7 @@ object Referrals {
     const val REFEREE_ONE_DAY_PLAYTIME = 2
     const val REFEREE_TEN_HOURS_PLAYTIME = 3
     const val REFEREE_HAS_THREE_REFERRALS_THEMSELVES = 4
-    var COMMAND_ENABLED = true
+    var COMMAND_ENABLED = false
 
     /**
      * called when a player logs in.

@@ -26,6 +26,8 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.CommandManager;
 import com.valinor.game.world.entity.mob.player.commands.impl.players.YellCommand;
+import com.valinor.game.world.entity.mob.player.rights.MemberRights;
+import com.valinor.game.world.entity.mob.player.rights.PlayerRights;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
@@ -78,8 +80,12 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
+        for (int i = 0; i < 1000; i++) {
+            player.getPacketSender().sendConfig(1160, 1);
+        }
+
         player.message("Test command has been activated.");
-        PlayerSession.main(new String[0]);
+        //PlayerSession.main(new String[0]);
     }
 
     @Override

@@ -290,7 +290,7 @@
     "direction": "E",
     "walkRange": 0
   },
-  {
+ /* {
     "name": "Referral Manager",
     "id": 9413,
     "x": 3081,
@@ -298,7 +298,7 @@
     "z": 0,
     "direction": "E",
     "walkRange": 0
-  },
+  },*/
   {
     "name": "Food and Potion supplies",
     "id": 225,

@@ -84,12 +84,6 @@ public final class PacketSender {
         return this;
     }
 
-    public PacketSender clearClickedText() {
-        PacketBuilder out = new PacketBuilder(238);
-        player.getSession().write(out);
-        return this;
-    }
-
     public PacketSender setClickedText(int interfaceId, boolean state) {
         PacketBuilder out = new PacketBuilder(239);
         out.put(state ? 1 : 0);
@@ -143,24 +137,10 @@ public final class PacketSender {
         return this;
     }
 
-    public PacketSender mysteryBoxSpinner() {
-        PacketBuilder out = new PacketBuilder(11);
-        player.getSession().write(out);
-        return this;
-    }
-
     public PacketSender sendInfection(InfectionType infection) {
         PacketBuilder out = new PacketBuilder(6);
 
         out.put(infection.ordinal(), ValueType.C);
-        player.getSession().write(out);
-        return this;
-    }
-
-    public PacketSender sendScreenMode(int width, int height) {
-        PacketBuilder out = new PacketBuilder(128);
-
-        out.putShort(width, ValueType.A, ByteOrder.LITTLE).putInt(height);
         player.getSession().write(out);
         return this;
     }
@@ -257,12 +237,6 @@ public final class PacketSender {
     public PacketSender sendAutocastId(int id) {
         PacketBuilder out = new PacketBuilder(38);
         out.putShort(id);
-        player.getSession().write(out);
-        return this;
-    }
-
-    public PacketSender sendEnableNoclip() {
-        PacketBuilder out = new PacketBuilder(250);
         player.getSession().write(out);
         return this;
     }

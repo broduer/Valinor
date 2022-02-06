@@ -1497,7 +1497,7 @@ public class Player extends Mob {
         GameEngine.profile.login = System.currentTimeMillis() - startTime;
         //logger.info("it took " + endTime + "ms for processing player login.");
         //System.out.println("it took " + endTime + "ms for processing player login.");
-        
+
         if (GameServer.properties().enableSql) {
             GameEngine.getInstance().submitLowPriority(() -> {
                 try {
@@ -2377,11 +2377,13 @@ public class Player extends Mob {
     }
 
     public void sound(int id) {
-        getPacketSender().sendSound(id, 0, 0, 80);
+        if (GameServer.properties().soundsEnabled)
+            packetSender.sendSound(id, 0, 0, 80);
     }
 
     public void sound(int id, int delay) {
-        getPacketSender().sendSound(id, 0, delay, 8);
+        if (GameServer.properties().soundsEnabled)
+            packetSender.sendSound(id, 0, delay, 8);
     }
 
     private Task distancedTask;

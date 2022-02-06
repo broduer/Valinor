@@ -230,7 +230,6 @@ public class CommandManager {
         commands.put("pforce", new PForceMoveCmd());
         commands.put("projectile", new ProjectileCommand());
 
-        commands.put("noclip", new NoclipCommandCommand());
         commands.put("tasknames", new TaskNamesCommand());
         commands.put("taskamount", new TaskAmountCommand());
         commands.put("tabamounts", new TabAmountsCommand());

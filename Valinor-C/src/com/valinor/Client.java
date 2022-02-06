@@ -15831,15 +15831,6 @@ public class Client extends GameApplet {
                 return true;
             }
 
-            // Size is 6 opcode 128
-            if (opcode == ServerToClientPackets.SET_FRAME_MODE) {
-                int width = incoming.readLEUShortA();
-                int height = incoming.readInt();
-                frameMode(width, height);
-                opcode = -1;
-                return true;
-            }
-
             if (opcode == ServerToClientPackets.SEND_EXP_DROP) {
                 try {
                     int skill = incoming.readUByte();
@@ -16437,15 +16428,6 @@ public class Client extends GameApplet {
                     autocast = true;
                     autoCastId = auto;
                 }
-                opcode = -1;
-                return true;
-            }
-
-            if (opcode == ServerToClientPackets.MYSTERY_BOX_SPIN) {
-                spinSpeed = 1;
-                Widget.cache[71101].x = 0;
-                Widget.cache[71200].x = 0;
-                startSpin = true;
                 opcode = -1;
                 return true;
             }
@@ -17236,12 +17218,6 @@ public class Client extends GameApplet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                opcode = -1;
-                return true;
-            }
-
-            if (opcode == ServerToClientPackets.CLEAR_CLICKED_TEXT) {
-                clearTextClicked();
                 opcode = -1;
                 return true;
             }

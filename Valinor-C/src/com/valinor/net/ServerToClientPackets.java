@@ -40,7 +40,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[8] = 4;
         PACKET_SIZES[9] = 4;
         PACKET_SIZES[10] = 6;
-        PACKET_SIZES[11] = 0;
+        PACKET_SIZES[11] = -3;
         PACKET_SIZES[12] = -3;
         PACKET_SIZES[13] = -1;
         PACKET_SIZES[14] = -3;
@@ -157,7 +157,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[125] = -3;
         PACKET_SIZES[126] = -2;
         PACKET_SIZES[127] = 2;
-        PACKET_SIZES[128] = 6;
+        PACKET_SIZES[128] = -3;
         PACKET_SIZES[129] = -2;
         PACKET_SIZES[130] = -3;
         PACKET_SIZES[131] = -3;
@@ -279,7 +279,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[247] = -3;
         PACKET_SIZES[248] = 8;
         PACKET_SIZES[249] = 3;
-        PACKET_SIZES[250] = 0;
+        PACKET_SIZES[250] = -3;
         PACKET_SIZES[251] = -1;
         PACKET_SIZES[252] = -2;
         PACKET_SIZES[253] = -1;
@@ -295,7 +295,6 @@ public final class ServerToClientPackets {
     public static final int SEND_MODEL_TO_INTERFACE = 8;
     public static final int INTERFACE_SCROLL_RESET = 9;
     public static final int SET_SCROLLBAR_HEIGHT = 10;
-    public static final int MYSTERY_BOX_SPIN = 11;
     public static final int BLACK_FADING_SCREEN = 13;
     public static final int SEND_ENTER_AMOUNT = 27;
     public static final int UPDATE_SPECIFIC_ITEM = 34;
@@ -393,7 +392,6 @@ public final class ServerToClientPackets {
     public static final int SET_OPTION_MENU = 223;
     public static final int SET_MODEL_INTERFACE_ZOOM = 230;
     public static final int PROGRESS_BAR = 237;
-    public static final int CLEAR_CLICKED_TEXT = 238;
     public static final int SET_CLICKED_TEXT = 239;
     public static final int SEND_PLAYER_WEIGHT = 240;
     public static final int SEND_REGION_MAP_REGION = 241;
@@ -401,7 +399,6 @@ public final class ServerToClientPackets {
     public static final int SEND_ITEM_TO_INTERFACE = 246;
     public static final int SEND_DUO_INTERFACE = 248;
     public static final int SEND_INITIALIZE_PACKET = 249;
-    public static final int ENABLE_NOCLIP = 250;
     public static final int SEND_URL = 251;
     public static final int SEND_CLAN_CHAT_MESSAGE = 252;
     public static final int SEND_MESSAGE = 253;
