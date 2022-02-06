@@ -49,8 +49,8 @@ public class KalphiteQueenFirstForm extends CommonCombatMethod {
                 target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
                 break;
             case RANGED:
-                for(Player player : World.getWorld().getPlayers()) {
-                    if(player != null && player.tile().inArea(KalphiteQueen.getArea())) {
+                for(Mob t : getPossibleTargets(mob)) {
+                    if(t != null) {
                         new Projectile(npc, target, 473, 41, 60, 45, 30, 0, 10, 15).sendProjectile();
                         target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), 2, CombatType.RANGED).checkAccuracy().submit();
                     }
@@ -58,8 +58,8 @@ public class KalphiteQueenFirstForm extends CommonCombatMethod {
                 break;
             case MAGIC:
                 npc.graphic(278);
-                for(Player player : World.getWorld().getPlayers()) {
-                    if (player != null && player.tile().inArea(KalphiteQueen.getArea())) {
+                for(Mob t : getPossibleTargets(mob)) {
+                    if(t != null) {
                         new Projectile(npc, target, 280, 41, 60, 45, 30, 0, 10, 15).sendProjectile();
                         target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MAGIC), 2, CombatType.MAGIC).checkAccuracy().submit();
                         target.delayedGraphics(281,0,2);

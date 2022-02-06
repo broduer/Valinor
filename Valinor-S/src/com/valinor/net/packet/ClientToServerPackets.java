@@ -1,9 +1,6 @@
 package com.valinor.net.packet;
 
-import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.incoming_packets.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -64,7 +61,6 @@ public class ClientToServerPackets {
     public static final int MAGIC_ON_ITEM_OPCODE = 237;
     public static final int MAGIC_ON_GROUND_ITEM_OPCODE = 181;
     public static final int TRADE_REQUEST_OPCODE = 139;
-    public static final int CREATION_MENU_OPCODE = 166;
     public static final int GROUP_INVITE_ACCEPT = 125;
     public static final int GAMBLE_REQUEST_ACCEPT = 127;
 

@@ -146,7 +146,7 @@ public class PlayerSession {
     public static long threshold = 50_500_000;
 
     /**
-     * Processes all of the queued messages from the {@link PacketDecoder} by
+     * Processes all the queued messages from the {@link PacketDecoder} by
      * polling the internal queue, and then handling them via the handleInputMessage.
      * This method is called EACH GAME CYCLE.
      */

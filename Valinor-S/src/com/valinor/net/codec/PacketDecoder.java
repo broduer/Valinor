@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-
 /**
  * Decodes packets that are received from the player's channel.
  * These packets are received from the client C2S packets.

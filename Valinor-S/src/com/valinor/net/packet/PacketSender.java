@@ -18,10 +18,7 @@ import com.valinor.net.packet.outgoing.message.ComponentVisibility;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -747,7 +744,7 @@ public final class PacketSender {
     }
 
     public void sendMultipleStrings(List<Player.TextData> stringList) {
-        List<Player.TextData> filtered = stringList.stream().collect(Collectors.toList());
+        List<Player.TextData> filtered = new ArrayList<>(stringList);
 
         PacketBuilder out = new PacketBuilder(129, PacketType.VARIABLE_SHORT);
 
