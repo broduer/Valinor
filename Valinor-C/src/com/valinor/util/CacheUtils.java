@@ -125,7 +125,6 @@ public final class CacheUtils {
         }
         catch (Exception e) {
             e.printStackTrace();
-            Client.addReportToServer(e.getMessage());
         }
     }
 
@@ -146,7 +145,6 @@ public final class CacheUtils {
             ImageIO.write(trans, "png", out);
         } catch (Exception e) {
             e.printStackTrace();
-            Client.addReportToServer(e.getMessage());
         }
     }
 

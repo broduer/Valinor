@@ -804,10 +804,6 @@ public class GameApplet extends Canvas implements Runnable, MouseListener, Mouse
         thread.setName(nameFormat + "-" + counter.incrementAndGet());
         thread.start();
         thread.setPriority(i);
-        thread.setUncaughtExceptionHandler((t, e) -> {
-            e.printStackTrace();
-            Client.addReportToServer(e.getMessage());
-        });
     }
 
     void draw_loadup(int percentage, String loadingText) {

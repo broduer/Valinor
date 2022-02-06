@@ -299,7 +299,6 @@ public final class Buffer extends Cacheable {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Client.addReportToServer(e.getMessage());
             return readUShort() - 32768;
         }
     }

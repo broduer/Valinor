@@ -35,17 +35,6 @@ public class PacketSender {
         buffer.writeString(friend);
     }
 
-    public void sendClientReport(String msg) {
-        buffer.writeOpcode(160);
-        buffer.writeByte(msg.length() + 1);
-        buffer.writeString(msg);
-    }
-
-    public void sendDisconnectByPacket(boolean disconnected) {
-        buffer.writeOpcode(161);
-        buffer.writeByte(disconnected ? 1 : 0);
-    }
-
     public void sendFriendDeletion(String friend) {
         buffer.writeOpcode(215);
         buffer.writeByte(friend.length() + 1);

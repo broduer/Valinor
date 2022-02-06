@@ -86,8 +86,6 @@ public class CacheDownloader {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-            Client.addReportToServer("Cache download error:");
-            Client.addReportToServer("" + e.getMessage());
         }
     }
 
@@ -100,7 +98,6 @@ public class CacheDownloader {
             br.close();
         } catch (Exception ex) {
             ex.printStackTrace();
-            Client.addReportToServer(ex.getMessage());
         }
         return version;
     }
@@ -116,7 +113,6 @@ public class CacheDownloader {
             br.close();
         } catch (Exception ex) {
             ex.printStackTrace();
-            Client.addReportToServer(ex.getMessage());
         }
         return version;
     }

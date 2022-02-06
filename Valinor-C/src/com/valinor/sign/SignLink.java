@@ -388,7 +388,7 @@ public final class SignLink implements Runnable {
     }
 
     public static void reporterror(String s) {
-        Client.addReportToServer("Error: " + s);
+        System.err.println("Error: " + s);
     }
 
     public static void setError(String error) {

@@ -708,7 +708,6 @@ public class Client extends GameApplet {
             return abyte0;
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
             return null;
         }
     }
@@ -1018,14 +1017,12 @@ public class Client extends GameApplet {
                 drawInterface(Widget.cache[backDialogueId], 20, 20 + yOffset, 0);
             } catch (Exception e) {
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
         } else if (dialogueId != -1) {
             try {
                 drawInterface(Widget.cache[dialogueId], 20, 20 + yOffset, 0);
             } catch (Exception e) {
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
         } else if (showChatComponents) {
             int playerChatRows = -3;
@@ -1375,7 +1372,6 @@ public class Client extends GameApplet {
             initClientFrame(window_width, window_height);
         } catch (Exception exception) {
             exception.printStackTrace();
-            addReportToServer(exception.getMessage());
             return;
         }
     }
@@ -1644,7 +1640,6 @@ public class Client extends GameApplet {
             clearObjectSpawnRequests();
         } catch (Exception exception) {
             exception.printStackTrace();
-            addReportToServer(exception.getMessage());
         }
         ObjectDefinition.model_cache.clear();
         if (super.gameFrame != null) {
@@ -1748,7 +1743,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
         gameScreenImageProducer.init();
         objectIconCount = 0;
@@ -1806,7 +1800,6 @@ public class Client extends GameApplet {
                 ImageIO.write(bufferedimage, "png", file1);
             } catch (Exception e) {
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
         }
     }
@@ -2342,7 +2335,6 @@ public class Client extends GameApplet {
                                                     }
                                                 } catch (Exception e) {
                                                     e.printStackTrace();
-                                                    addReportToServer(e.getMessage());
                                                 }
                                                 HoverMenuManager.reset();
                                                 menuActionText[menuActionRow] = action;
@@ -2890,14 +2882,11 @@ public class Client extends GameApplet {
         }
 
         if (stream.pos != i) {
-            addReportToServer("NPC updating broke (stream position mismatch), this is very bad.");
-            addReportToServer("Make sure to check buffer received datatypes in client match buffer sent datatypes from server.");
             SignLink.reporterror(myUsername + " size mismatch in getnpcpos - pos:" + stream.pos + " psize:" + i);
             throw new RuntimeException("eek");
         }
         for (int i1 = 0; i1 < npcs_in_region; i1++)
             if (npcs[local_npcs[i1]] == null) {
-                addReportToServer("NPC updating broke, this is really bad.");
                 SignLink.reporterror(myUsername + " null entry in npc list - pos:" + i1 + " size:" + npcs_in_region);
                 throw new RuntimeException("eek");
             }
@@ -3352,7 +3341,6 @@ public class Client extends GameApplet {
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        addReportToServer(e.getMessage());
                     }
                 }
             }
@@ -3456,7 +3444,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -3757,7 +3744,6 @@ public class Client extends GameApplet {
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
-                addReportToServer(ex.getMessage());
             }
         }
 
@@ -4113,7 +4099,6 @@ public class Client extends GameApplet {
                 socketStream.close();
         } catch (Exception _ex) {
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         }
         firstLoginMessage = secondLoginMessage = "";
         effects_list.clear();
@@ -4221,10 +4206,6 @@ public class Client extends GameApplet {
             }
         }
         processOnDemandQueue();
-
-        if (debug_packet_info && readpkts > 0) {
-            addReportToServer(Client.xpro++ + " processGame took " + (System.currentTimeMillis() - processGameTime));
-        }
         processGameTime = System.currentTimeMillis();
         readpkts = 0;
     }
@@ -4569,7 +4550,6 @@ public class Client extends GameApplet {
             osName = System.getProperty("os.name");
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -4751,7 +4731,6 @@ public class Client extends GameApplet {
             ImageIO.write(trans, "png", out);
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -4981,17 +4960,8 @@ public class Client extends GameApplet {
             readpkts++;
         }
 
-        if (debug_packet_info) {
-            long lastRead = System.currentTimeMillis() - lastPackets;
-            long itTook = System.currentTimeMillis() - packetsReadTime;
-            addReportToServer("read " + readpkts + " packets last read was " + lastRead + " ms ago. it took " + itTook + " ms ");
-        }
-
         currentPacketTime = System.currentTimeMillis();
 
-        if (currentPacketTime - packetsReadTime > 20 && loggedIn && loggedInWatch.hasElapsed(10_000, TimeUnit.MILLISECONDS)) {
-            //addReportToServer("It took longer than 20 ms to read packets");
-        }
         lastPackets = System.currentTimeMillis();
 
         if (!loggedIn) {
@@ -5049,14 +5019,10 @@ public class Client extends GameApplet {
         timeoutCounter++;
         //System.out.println(timeoutCounter);
         if (timeoutCounter > 750) {
-            addReportToServer("Connection timed out at counter " + timeoutCounter + " (" + (int) ((timeoutCounter / 30) * 0.6) + " secs), dropping client");
             try {
-                addReportToServer("Dropping client, not a normal logout.");
                 dropClient();
             } catch (Exception e) {
-                addReportToServer("There was an error dropping the client:");
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
         }
 
@@ -5064,7 +5030,6 @@ public class Client extends GameApplet {
         forceNPCUpdateBlock();
         processTrackUpdates();
         processMobChatText();
-        processLagReports();
         animation_step++;
         if (crossType != 0) {
             crossIndex += 20;
@@ -5267,35 +5232,15 @@ public class Client extends GameApplet {
             }
         } catch (IOException _ex) {
             try {
-                addReportToServer("Dropping client, not a normal logout. 2");
                 dropClient();
             } catch (Exception e) {
-                addReportToServer("There was an error dropping the client: dropClient()");
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         } catch (Exception exception) {
             logout();
-            addReportToServer("There was an error sending logout():");
             exception.printStackTrace();
-            addReportToServer(exception.getMessage());
         }
-    }
-
-    private void processLagReports() {
-        if (reports.isEmpty()) {
-            return;
-        }
-        for (int i = 0; i < reports.size(); i++) {
-            if (reports.isEmpty())
-                break;
-            String text = reports.pop();
-            if (text == null) return;
-            packetSender.sendClientReport(text);
-        }
-        reports.clear();
     }
 
     private void clearObjectSpawnRequests() {
@@ -5451,7 +5396,6 @@ public class Client extends GameApplet {
                 buffer = indices[0].decompress(file);
         } catch (Exception _ex) {
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         }
 
         // Compare crc...
@@ -5471,15 +5415,11 @@ public class Client extends GameApplet {
     }
 
     private void dropClient() {
-        addReportToServer("Client dropped");
-        packetSender.sendDisconnectByPacket(true);
         if (afkCountdown > 0) {
             try {
                 logout();
             } catch (Exception e) {
-                addReportToServer("There was an error resetting logout: ");
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
             return;
         }
@@ -5505,7 +5445,6 @@ public class Client extends GameApplet {
             rsSocket.close();
         } catch (Exception _ex) {
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         }
     }
 
@@ -5543,7 +5482,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -6150,7 +6088,6 @@ public class Client extends GameApplet {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
         }
 
@@ -7050,7 +6987,6 @@ public class Client extends GameApplet {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
             }
             if (opcode == 0) {
@@ -7185,7 +7121,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
         socketStream = null;
         //if (mouseDetection != null)
@@ -7496,7 +7431,6 @@ public class Client extends GameApplet {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            addReportToServer(e.getMessage());
                         }
 
                         if (amount > 0) {
@@ -7567,7 +7501,6 @@ public class Client extends GameApplet {
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
-                            addReportToServer(e.getMessage());
                         }
 
                         if (amount > 0) {
@@ -7697,19 +7630,6 @@ public class Client extends GameApplet {
                     /* Client debug commands not actually used in the game */
                     if (isDeveloper) {
 
-                        if (inputString.equals("::lagtest")) {
-                            addReportToServer("testy1!");
-                            addReportToServer("testy2!");
-                            addReportToServer("testy3!");
-                        }
-                        if (inputString.equals("::dc")) {
-                            dropClient();
-                        }
-                        if (inputString.equals("::lagtest2")) {
-                            String[] data = new String[]{"" + timeoutCounter, "" + opcode, "" + lastOpcode, "" + secondLastOpcode, "" + thirdLastOpcode};
-                            addReportToServer(Arrays.toString(data));
-                        }
-
                         if (inputString.startsWith("::debugt")) {
                             debugTextures = !debugTextures;
                         }
@@ -7784,7 +7704,6 @@ public class Client extends GameApplet {
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();
-                                addReportToServer(e.getMessage());
                             }
 
                         }
@@ -7987,7 +7906,6 @@ public class Client extends GameApplet {
             Files.write(colorPath, str.getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -8459,16 +8377,12 @@ public class Client extends GameApplet {
                         try {
                             build.interpolate(Sequence.cache[local_player.idle_animation_id].frameIDs[0]);
                         } catch (ArrayIndexOutOfBoundsException error) {
-                            addReportToServer("[CATCHING ERROR] Support_opcode: [327] : [328] - Frame overflow");
+                            error.printStackTrace();
                         }
                         child.model_type = 5;
                         child.model_id = 0;
                         child.set_model(aBoolean994, build);
-                    } else {
-                        addReportToServer("[ERROR] Support opcode: [327] : [328] - variable [localPlayer.standAnimIndex] == -1");
                     }
-                } else {
-                    addReportToServer("[ERROR] Support opcode: [327] : [328] - variable [model] == null");
                 }
             }
         }
@@ -9448,8 +9362,6 @@ public class Client extends GameApplet {
 
             int response = socketStream.read();
 
-            addReportToServer("Server login response code " + response);
-
             int copy = response;
 
             if (response == 0) {
@@ -9493,7 +9405,6 @@ public class Client extends GameApplet {
                 socketStream.queueBytes(loginBuffer.pos, loginBuffer.payload);
                 response = socketStream.read();
             }
-            //addReportToServer("Server login response code is now " + response);
             if (response == 1) {
                 try {
                     Thread.sleep(2000L);
@@ -9503,9 +9414,7 @@ public class Client extends GameApplet {
                 login(name, password, reconnecting);
                 return;
             }
-            //addReportToServer("Server login response code is again now " + response);
             if (response == 2) {
-                //addReportToServer("Successful login (response code 2)");
                 int rights = myPrivilege;
                 rights = socketStream.read();
                 // flagged = socketStream.read() == 1;
@@ -9769,11 +9678,8 @@ public class Client extends GameApplet {
         } catch (IOException _ex) {
             firstLoginMessage = "";
         } catch (Exception e) {
-            addReportToServer("Error while generating uid. Skipping step.");
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
-        //addReportToServer("Cannot connect to server, IP is " + ClientConstants.SERVER_ADDRESS + " with port " + ClientConstants.SERVER_PORT);
         secondLoginMessage = "Error connecting to server.";
     }
 
@@ -10010,7 +9916,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
         return opcode != 1;
     }
@@ -10822,10 +10727,8 @@ public class Client extends GameApplet {
             if (ClientConstants.DISPLAY_CLIENT_LOAD_TIME) {
                 System.out.println("It took " + clientLoadDifference + " ms to load the client.");
             }
-            return;
         } catch (Exception exception) {
             exception.printStackTrace();
-            addReportToServer(exception.getMessage());
         }
     }
 
@@ -11184,7 +11087,6 @@ public class Client extends GameApplet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -11253,7 +11155,6 @@ public class Client extends GameApplet {
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    addReportToServer(ex.getMessage());
                 }
                 animation_step = 0;
                 resetAllImageProducers();
@@ -11271,7 +11172,6 @@ public class Client extends GameApplet {
                         drawInterface(rsInterface_1, 0, 8, 0);
                     } catch (Exception ex) {
                         ex.printStackTrace();
-                        addReportToServer(ex.getMessage());
                     }
                 }
                 Widget rsInterface = Widget.cache[fullscreenInterfaceID];
@@ -11283,7 +11183,6 @@ public class Client extends GameApplet {
                     drawInterface(rsInterface, 0, 8, 0);
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    addReportToServer(ex.getMessage());
                 }
                 if (!menuOpen) {
                     processRightClick();
@@ -11326,7 +11225,6 @@ public class Client extends GameApplet {
                 processWidgetAnimations(animation_step, overlayInterfaceId);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                addReportToServer(ex.getMessage());
             }
         }
         drawTabArea();
@@ -11356,7 +11254,6 @@ public class Client extends GameApplet {
                 flag2 = processWidgetAnimations(animation_step, backDialogueId);
             } catch (Exception ex) {
                 ex.printStackTrace();
-                addReportToServer(ex.getMessage());
             }
 
             if (flag2) {
@@ -11678,9 +11575,7 @@ public class Client extends GameApplet {
                                             (isFixed ? 41 : y2), 255, true);
                                     }
                                 } catch (Exception e) {
-                                    addReportToServer("Bank tab icon error: tab [" + i + "], amount [" + tabAm + "], tabAmount [" + tabAmounts[i] + "], itemSlot [" + itemSlot + "]");
                                     e.printStackTrace();
-                                    addReportToServer(e.getMessage());
                                 }
                             }
                         }
@@ -12334,7 +12229,6 @@ public class Client extends GameApplet {
                             model = child.get_animated_model(animation.secondaryFrames[child.currentFrame], animation.frameIDs[child.currentFrame], selected);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            addReportToServer(e.getMessage());
                         }
                     }
 
@@ -13024,7 +12918,6 @@ public class Client extends GameApplet {
 
                     } catch (Exception exception) {
                         exception.printStackTrace();
-                        addReportToServer(exception.getMessage());
                     }
             }
             buffer.pos = k3 + j3;
@@ -13171,7 +13064,6 @@ public class Client extends GameApplet {
             }
 
         } catch (Exception _ex) {
-            addReportToServer(_ex.getMessage());
             SignLink.reporterror("Client.set_camera() : " + local_player.world_x + "," + local_player.world_y + "," + current_camera_pan + ","
                 + current_camera_tilt + "," + region_x + "," + region_y + "," + next_region_start + "," + next_region_end);
             throw new RuntimeException("eek");
@@ -13405,7 +13297,6 @@ public class Client extends GameApplet {
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                    addReportToServer(ex.getMessage());
                 }
             }
 
@@ -13521,7 +13412,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            addReportToServer(e.getMessage());
         }
     }
 
@@ -14205,7 +14095,6 @@ public class Client extends GameApplet {
             } while (true);
         } catch (Exception _ex) {
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
             return -1;
         }
     }
@@ -15017,12 +14906,10 @@ public class Client extends GameApplet {
                     Thread.sleep(j);
                 } catch (Exception _ex) {
                     _ex.printStackTrace();
-                    addReportToServer(_ex.getMessage());
                 }
             }
         } catch (Exception _ex) {
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         }
         drawingFlames = false;
     }
@@ -15573,14 +15460,11 @@ public class Client extends GameApplet {
         }
 
         if (stream.pos != packetSize) {
-            addReportToServer("Player updating broke, this is very bad.");
-            addReportToServer("Make sure to check buffer received datatypes in client match buffer sent datatypes from server.");
             SignLink.reporterror("Error packet size mismatch in getplayer pos:" + stream.pos + " psize:" + packetSize);
             throw new RuntimeException("eek");
         }
         for (int count = 0; count < players_in_region; count++) {
             if (players[local_players[count]] == null) {
-                addReportToServer("Player updating broke, this is really bad.");
                 SignLink.reporterror(myUsername + " null entry in pl list - pos:" + count + " size:" + players_in_region);
                 throw new RuntimeException("eek");
             }
@@ -15879,7 +15763,6 @@ public class Client extends GameApplet {
             // The packet size -3 means the packet shouldn't be sent by the server, did we
             // forget to add the size in the client ServerToClientPackets class?
             if (packetSize == -3) {
-                addReportToServer("The packet opcode " + opcode + " is not whitelisted!");
                 return false;
             }
 
@@ -15910,20 +15793,10 @@ public class Client extends GameApplet {
 
             incoming.pos = 0;
             socketStream.flushInputStream(incoming.payload, packetSize);
-            if (timeoutCounter > 50) {
-                String[] data = new String[]{"" + timeoutCounter, "" + opcode, "" + lastOpcode, "" + secondLastOpcode, "" + thirdLastOpcode};
-                //final String txt = "timeoutCounter above threshold " + timeoutCounter + ", packet: opcode: " + opcode + ", lastOpcode: " + lastOpcode + ", secondLastOpcode: " + secondLastOpcode + ", thirdLastOpcode: " + thirdLastOpcode;
-                //addReportToServer(txt);
-                //addReportToServer(Arrays.toString(data));
-            }
             timeoutCounter = 0;
             thirdLastOpcode = secondLastOpcode;
             secondLastOpcode = lastOpcode;
             lastOpcode = opcode;
-
-            if (debug_packet_info) {
-                //addReportToServer("> " + opcode);
-            }
 
             // Size is 1 (packet number is 6)
             if (opcode == ServerToClientPackets.HEALTH_ORB) {
@@ -15931,7 +15804,6 @@ public class Client extends GameApplet {
                     poisonType = incoming.readNegUByte();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -15955,8 +15827,6 @@ public class Client extends GameApplet {
                     opcode = -1;
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer("Packet 7 error caused by interface: " + componentId);
-                    addReportToServer(e.getMessage());
                 }
                 return true;
             }
@@ -15978,7 +15848,6 @@ public class Client extends GameApplet {
                     ExpCounter.addXP(skill, exp, increment);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -16045,9 +15914,6 @@ public class Client extends GameApplet {
                 updatePlayers(packetSize, incoming);
                 loadingMap = false;
                 opcode = -1;
-                if (debug_packet_info) {
-                    addReportToServer("last gpi " + (System.currentTimeMillis() - LAST_GPI) + " ms ago.. call count " + Client.game_tick + " (+" + (game_tick - lastcallcount) + ")");
-                }
                 lastcallcount = game_tick;
                 LAST_GPI = System.currentTimeMillis();
                 xpro = 0;
@@ -16149,7 +16015,6 @@ public class Client extends GameApplet {
                     // 16));
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -16939,9 +16804,6 @@ public class Client extends GameApplet {
                         break;
                     }
                 }
-                if (ignoreCount == before) {
-                    addReportToServer("unable to find " + nameHash);
-                }
                 opcode = -1;
                 return true;
             }
@@ -17106,7 +16968,6 @@ public class Client extends GameApplet {
                     } catch (Exception ex) {
                         SignLink.reporterror("cde1");
                         ex.printStackTrace();
-                        addReportToServer(ex.getMessage());
                     }
                 opcode = -1;
                 return true;
@@ -17261,7 +17122,6 @@ public class Client extends GameApplet {
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -17341,8 +17201,6 @@ public class Client extends GameApplet {
                     //sendMessage("updated items "+Arrays.toString(container.inventoryItemId), 0, "");
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer("Container error caused by interface: " + frameId);
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -17366,7 +17224,6 @@ public class Client extends GameApplet {
                     addEffectTimer(new EffectTimer(timer, sprite));
                 } catch (Exception e) {
                     e.printStackTrace();
-                    addReportToServer(e.getMessage());
                 }
                 opcode = -1;
                 return true;
@@ -17693,17 +17550,12 @@ public class Client extends GameApplet {
                 "T1 - " + opcode + "," + packetSize + " - " + secondLastOpcode + "," + thirdLastOpcode);
             logout();
         } catch (IOException _ex) {
-            addReportToServer("There has been an exception reading packets, dropping client. dropClient()");
             try {
-                addReportToServer("Dropping client, not a normal logout. 3");
                 dropClient();
             } catch (Exception e) {
-                addReportToServer("There was an error dropping the client: dropClient()");
                 e.printStackTrace();
-                addReportToServer(e.getMessage());
             }
             _ex.printStackTrace();
-            addReportToServer(_ex.getMessage());
         } catch (Throwable exception) {
             StringBuilder s2 = new StringBuilder("T2 - " + opcode + "," + secondLastOpcode + "," + thirdLastOpcode + " - " + packetSize + ","
                 + (next_region_start + local_player.waypoint_x[0]) + "," + (next_region_end + local_player.waypoint_y[0])
@@ -17712,20 +17564,10 @@ public class Client extends GameApplet {
                 s2.append(incoming.payload[j15]).append(",");
             SignLink.reporterror(s2.toString());
             exception.printStackTrace();
-            addReportToServer(exception.getMessage());
             // logout();
         }
         opcode = -1;
         return true;
-    }
-
-    static final Deque<String> reports = new java.util.LinkedList<>();
-
-    public static void addReportToServer(String s) {
-        if (reports != null) {
-            // append newest to end
-            reports.addLast(s);
-        }
     }
 
     private void render() {
@@ -18016,12 +17858,6 @@ public class Client extends GameApplet {
     public Settings setting;
 
     public Client() {
-        Thread.setDefaultUncaughtExceptionHandler((t, e) -> {
-            e.printStackTrace();
-            addReportToServer(t.toString());
-            addReportToServer(e.getMessage());
-        });
-        addReportToServer("client init");
         expectedHit = new ArrayList<>();
         setting = new Settings();
         chatMessages = new ChatMessage[500];
@@ -18767,7 +18603,6 @@ public class Client extends GameApplet {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-            addReportToServer(ex.getMessage());
         }
         return character;
     }

@@ -260,7 +260,6 @@ public class AdvancedFont extends Rasterizer2D {
                                 unknown = -1;
                             } catch (Exception exception) {
                                 exception.printStackTrace();
-                                Client.addReportToServer(exception.getMessage());
                                 /* was empty now isn't */
                             }
                         } else if (effect.startsWith(set_clan)) {
@@ -284,7 +283,6 @@ public class AdvancedFont extends Rasterizer2D {
                                     unknown = -1;
                                 } catch (Exception exception) {
                                     exception.printStackTrace();
-                                    Client.addReportToServer(exception.getMessage());
                                 }
                         } else {
                             set_effects(effect);
@@ -428,7 +426,6 @@ public class AdvancedFont extends Rasterizer2D {
                                 unknown = -1;
                             } catch (Exception exception) {
                                 exception.printStackTrace();
-                                Client.addReportToServer(exception.getMessage());
                                 /* was empty now isn't */
                             }
                         } else {
@@ -529,7 +526,6 @@ public class AdvancedFont extends Rasterizer2D {
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();
-                Client.addReportToServer(exception.getMessage());
                 break;
             }
             break;
@@ -585,7 +581,6 @@ public class AdvancedFont extends Rasterizer2D {
                                 unknown = -1;
                             } catch (Exception exception) {
                                 exception.printStackTrace();
-                                Client.addReportToServer(exception.getMessage());
                             }
                         }
                         continue;
