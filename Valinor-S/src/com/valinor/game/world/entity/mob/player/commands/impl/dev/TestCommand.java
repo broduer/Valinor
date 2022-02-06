@@ -1,6 +1,9 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
+import com.valinor.db.transactions.GetBanStatusDatabaseTransaction;
+import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
+import com.valinor.game.GameEngine;
 import com.valinor.game.content.clan.ClanManager;
 import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.content.mechanics.AntiSpam;
@@ -32,6 +35,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.net.PlayerSession;
+import com.valinor.net.login.LoginResponses;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import com.valinor.util.flood.Buffer;
@@ -80,8 +84,17 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        for (int i = 0; i < 1000; i++) {
-            player.getPacketSender().sendConfig(1160, 1);
+        for (int i = 0; i < 100; i++) {
+            if (GameServer.properties().enableSql) {
+                //GameEngine.getInstance().submitLowPriority(() -> {
+                    try {
+                        //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
+                        player.muted = GameServer.getDatabaseService().execute(new GetMuteStatusDatabaseTransaction(player.getUsername()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                //});
+            }
         }
 
         player.message("Test command has been activated.");

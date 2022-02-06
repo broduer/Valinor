@@ -133,8 +133,8 @@ public class DatabaseService {
      * @throws ExecutionException   If this future completed exceptionally.
      * @throws InterruptedException If the current thread was interrupted while waiting.
      */
-    public <T> T execute(DatabaseTransaction<T> transaction) throws InterruptedException, ExecutionException {
-        return _submit(transaction).get();
+    public <T> T execute(DatabaseTransaction<T> transaction) throws InterruptedException, ExecutionException, TimeoutException {
+        return _submit(transaction).get(15, TimeUnit.SECONDS);
     }
 
     public static class DisabledDatabaseService extends DatabaseService {

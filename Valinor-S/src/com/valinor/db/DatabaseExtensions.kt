@@ -5,7 +5,7 @@ import java.sql.Connection
 import java.util.function.Consumer
 
 /**
- * this immidiately submits the work to db.
+ * this immediately submits the work to db.
  */
 fun query(con: VoidDbt.(Connection) -> Unit) {
     object: VoidDbt() {

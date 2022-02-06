@@ -12,8 +12,6 @@ import com.valinor.game.world.entity.mob.player.save.PlayerSave;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave.SaveDetails;
 import com.valinor.net.ByteBufUtils;
 import com.valinor.net.NetworkConstants;
-import com.valinor.net.login.captcha.CaptchaRequirement;
-import com.valinor.net.login.captcha.LoginCaptcha;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -92,6 +90,8 @@ public final class LoginResponses {
             }
         }
 
+        logger.trace("Passed login checks, checking ban status for player: "+player.getUsername());
+
         if (GameServer.properties().enableSql) {
             boolean banned = false;
             try {
@@ -99,15 +99,19 @@ public final class LoginResponses {
                 if (GameServer.getDatabaseService() == null) {
                     return LoginResponses.LOGIN_GAME_UPDATE;
                 }
+                logger.trace("Checking ban status "+player.getUsername());
                 //Here we use execute instead of submit, since we want this to be executed synchronously and not asynchronously, since we want to wait for the response of the query before continuing execution in this LoginResponses class.
                 banned = GameServer.getDatabaseService().execute(new GetBanStatusDatabaseTransaction(player.getUsername()));
             } catch (Exception e) {
                 logger.catching(e);
             }
             if (banned) {
+                logger.trace("player is banned: "+player.getUsername());
                 return LoginResponses.LOGIN_DISABLED_ACCOUNT;
             }
         }
+
+        logger.trace("Passed ban check for "+player.getUsername());
 
         String enteredPassword = msg.getPassword();//Password received from client
         String name = player.getUsername();
@@ -132,6 +136,7 @@ public final class LoginResponses {
                 return LoginResponses.COULD_NOT_COMPLETE_LOGIN;
             }
             try {
+                logger.trace("Load profile for player: "+player.getUsername());
                 PlayerSave.load(player);
             } catch (Throwable t) {
                 logger.error("There was an error loading profile for " + player.getUsername() + ": ");
@@ -147,10 +152,6 @@ public final class LoginResponses {
             player.putAttrib(MAC_ADDRESS, msg.getMac()); // override mac from save game with current mac
             player.setHostAddress(msg.getHost());
             player.getHostAddressMap().put(msg.getHost(), 1);
-
-           /* if(msg.getMac().isEmpty()) {
-                return LoginResponses.COULD_NOT_COMPLETE_LOGIN;
-            }*/
         } else {
             // new account. encrypt pw and store.
             player.setPassword(BCrypt.hashpw(enteredPassword, BCrypt.gensalt()));
@@ -161,7 +162,7 @@ public final class LoginResponses {
 
         if (GameServer.properties().enableSql) {
             //Its this the whole time this connection no server just wasnt running yet
-            //System.out.println("Submitting ProfileDatabaseTransaction");
+            logger.trace("Submitting ProfileDatabaseTransaction for player "+player.getUsername());
             //Be careful, the execute method is blocking and throws ExecutionException and InterruptedException which should be handled.
             //Server.getDatabaseService().execute(new InsertUserDatabaseTransaction(player));
             GameServer.getDatabaseService().submit(new verifyOrInsertUserDatabaseTransaction(player));
@@ -177,6 +178,7 @@ public final class LoginResponses {
             return LOGIN_SERVER_MAINTENANCE;
         }
 
+        logger.trace("Login was successful for player "+player.getUsername());
         return LOGIN_SUCCESSFUL;
     }
 
