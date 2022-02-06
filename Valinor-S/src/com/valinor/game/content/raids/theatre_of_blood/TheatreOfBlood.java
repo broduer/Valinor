@@ -136,6 +136,8 @@ public class TheatreOfBlood extends Raids {
             ObjectManager.removeObj(obj);
         }
         party.objects.clear();
+
+        player.putAttrib(PERSONAL_POINTS,0);
     }
 
     @Override
@@ -155,12 +157,12 @@ public class TheatreOfBlood extends Raids {
             party.getMembers().forEach(p -> p.teleport(new Tile(1245, 3561, 0)));
             party.getMembers().forEach(p -> p.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 0));
             party.getMembers().forEach(p -> p.message("Unfortunately your team has failed Theatre of Blood!"));
+            party.getMembers().forEach(this::clearParty);
         } else {
             Tile deathTile = respawnTile(party, player.tile().level);
             player.teleport(deathTile.getX(), deathTile.getY(), party.getHeight());
+            clearParty(player);
         }
-
-        clearParty(player);
         return true;
     }
 
