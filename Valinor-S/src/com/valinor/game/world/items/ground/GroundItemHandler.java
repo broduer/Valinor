@@ -201,6 +201,15 @@ public final class GroundItemHandler {
             return false;
         }
 
+        // Nonstackable but more than 1?
+        if (item.getItem().getAmount() > 1 && !item.getItem().definition(World.getWorld()).stackable()) {
+            for (int i = 0; i < Math.min(10, item.getItem().getAmount()); i++) {
+                createGroundItem(new GroundItem(new Item(item.getItem(), 1), item.getTile(), item.getPlayer()));
+            }
+
+            return true;
+        }
+
         boolean illegalItem = false;
 
         List<Integer> ILLEGAL_ITEMS = Arrays.asList(DAWNBRINGER, SARADOMIN_CAPE, GUTHIX_CAPE, ZAMORAK_CAPE, ANTIDRAGON_SHIELD, BRONZE_AXE, BRONZE_PICKAXE);
@@ -219,12 +228,8 @@ public final class GroundItemHandler {
             return false;
         }
 
-        if (player == null) {
-            item.setState(State.SEEN_BY_EVERYONE);
-        }
-
         // Stackable? Can group with existing of the same item on that tile
-        if (item.getItem().stackable()) {
+        if (item.getItem().definition(World.getWorld()).stackable()) {
             for (GroundItem other : groundItems) {
                 // Same id, location, still valid
                 if (item.getItem().getId() == other.getItem().getId()

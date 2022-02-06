@@ -79,6 +79,7 @@ public final class GroundItem {
 
         if (owner == null) {
             broadcasted = true;
+            state = State.SEEN_BY_EVERYONE;
         }
     }
 
