@@ -1184,7 +1184,8 @@
       "death": 7949
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.Vorkath",
+      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.VorkathDeath"
     }
   },
   {

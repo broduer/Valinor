@@ -16487,18 +16487,6 @@ public class Client extends GameApplet {
                 return true;
             }
 
-            if (opcode == ServerToClientPackets.ENABLE_NOCLIP) {
-                for (int plane = 0; plane < 4; plane++) {
-                    for (int x = 1; x < 103; x++) {
-                        for (int y = 1; y < 103; y++) {
-                            collisionMaps[plane].adjacencies[x][y] = 0;
-                        }
-                    }
-                }
-                opcode = -1;
-                return true;
-            }
-
             if (opcode == ServerToClientPackets.SEND_URL) {
                 String url = incoming.readString();
                 Utils.launchURL(url);

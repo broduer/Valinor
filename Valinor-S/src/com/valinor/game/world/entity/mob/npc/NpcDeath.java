@@ -61,8 +61,8 @@ import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
- * Represents an npc's death task, which handles everything
- * an npc does before and after their death animation (including it),
+ * Represents a npc death task, which handles everything
+ * a npc does before and after their death animation (including it),
  * such as dropping their drop table items.
  *
  * @author relex lawl
@@ -72,7 +72,7 @@ public class NpcDeath {
 
     private static final Logger logger = LogManager.getLogger(NpcDeath.class);
 
-    private static final List<Integer> customDrops = Arrays.asList(WHIRLPOOL_496, KRAKEN, CAVE_KRAKEN, WHIRLPOOL, ZULRAH, ZULRAH_2043, ZULRAH_2044);
+    private static final List<Integer> customDrops = Arrays.asList(WHIRLPOOL_496, KRAKEN, CAVE_KRAKEN, WHIRLPOOL, ZULRAH, ZULRAH_2043, ZULRAH_2044, VORKATH_8061);
 
     public static void execute(Npc npc) {
         try {
