@@ -1047,7 +1047,7 @@ public class CombatFactory {
         boolean isRevenant = attacker.isNpc() && attacker.getAsNpc().def().name.toLowerCase().contains("revenant");
         if (isRevenant && target.isPlayer()) {
             Player playerTarget = target.getAsPlayer();
-            if (playerTarget.getEquipment().hasAt(EquipSlot.HANDS, BRACELET_OF_ETHEREUM)) {
+            if (playerTarget.getEquipment().hasAt(EquipSlot.HANDS, BRACELET_OF_ETHEREUM) || playerTarget.getMemberRights().isDiamondMemberOrGreater(playerTarget)) {
                 int newDamage = (int) (hit.getDamage() * 0.25);
                 //Wearing the bracelet of ethereum no longer gives complete immunity of revenant attacks, now reducing incoming damage from them by 75%.
                 hit.setDamage(newDamage);
@@ -1110,19 +1110,19 @@ public class CombatFactory {
                     hit.setDamage(0);
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8355 && hit.getCombatType() != CombatType.MAGIC && hit.getDamage() > 0) {
+                if(npc.id() == NYLOCAS_VASILIAS_8355 && hit.getCombatType() != CombatType.MELEE && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8356 && hit.getCombatType() != CombatType.RANGED && hit.getDamage() > 0) {
+                if(npc.id() == NYLOCAS_VASILIAS_8356 && hit.getCombatType() != CombatType.MAGIC && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8357 && hit.getCombatType() != CombatType.MELEE && hit.getDamage() > 0) {
+                if(npc.id() == NYLOCAS_VASILIAS_8357 && hit.getCombatType() != CombatType.RANGED && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();

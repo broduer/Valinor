@@ -193,8 +193,8 @@ public class Npc extends Mob {
     private int transmog = -1;
 
     // A list of npc-ids such as Bosses that are immune to venom.
-    public static final int[] venom_immunes = new int[]{COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
-    public static final int[] poison_immunes = new int[]{COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
+    public static final int[] venom_immunes = new int[]{NYLOCAS_VASILIAS_8355, NYLOCAS_VASILIAS_8356, NYLOCAS_VASILIAS_8357, COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
+    public static final int[] poison_immunes = new int[]{NYLOCAS_VASILIAS_8355, NYLOCAS_VASILIAS_8356, NYLOCAS_VASILIAS_8357, COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
 
     public Npc(int id) {
         this.id = id;
