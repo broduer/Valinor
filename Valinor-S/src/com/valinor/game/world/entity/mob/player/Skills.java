@@ -244,12 +244,16 @@ public class Skills {
             amt *= 1.25;
         }
 
-        if(combatxp && ringOfCharosA) {
+        if(combatxp) {
             amt *= 2.0;
         }
 
         if(player.tile().inArea(RESOURCE_AREA)) {
             amt *= 1.75;
+        }
+
+        if(ringOfCharosA) {
+            amt *= 2.0;
         }
 
         var double_exp_ticks = player.<Integer>getAttribOr(DOUBLE_EXP_TICKS, 0) > 0;
@@ -258,12 +262,6 @@ public class Skills {
 
         //Genie pet gives x2 exp
         amt *= doubleExp ? 2.0 : 1.0;
-
-        if(ringOfCharosA && doubleExp) {
-            amt *= 2.25;
-        } else {
-            amt *= 2.0;
-        }
 
         player.getPacketSender().sendExpDrop(skill, (int) amt, counter);
 
