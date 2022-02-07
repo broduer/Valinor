@@ -50,7 +50,7 @@ public class DeepBurn {
                     OlmAnimations.resetAnimation(party);
                     if (target.getRaids() != null && target.getRaids().raiding(target) && GreatOlm.insideChamber(target)) {
                         target.forceChat("Burn with me!");
-                        target.hit(olm, World.getWorld().random(25), 1, CombatType.MAGIC).checkAccuracy().submit();
+                        target.hit(olm, 5, 1);
                     }
                 }
                 if (tick == 19) {
@@ -86,7 +86,7 @@ public class DeepBurn {
                                     && member.getRaids() != null && member.getRaids().raiding(member) && GreatOlm.insideChamber(member)) {
                                     member.forceChat("Burn with me!");
                                     var delay = olm.getProjectileHitDelay(member);
-                                    member.hit(olm, World.getWorld().random(25), delay, CombatType.MAGIC).checkAccuracy().submit();
+                                    member.hit(olm, 5, delay);
                                 }
                             }
                         } else {
