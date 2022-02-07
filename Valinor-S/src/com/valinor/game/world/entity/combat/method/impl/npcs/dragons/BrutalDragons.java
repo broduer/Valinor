@@ -44,11 +44,11 @@ public class BrutalDragons extends CommonCombatMethod {
             Player player = (Player) target;
             double max = 50.0;
             int antifire_charges = player.getAttribOr(AttributeKey.ANTIFIRE_POTION, 0);
+            boolean memberEffect = player.getMemberRights().isDiamondMemberOrGreater(player);
             boolean hasShield = CombatConstants.hasAntiFireShield(player);
-            boolean hasPotion = antifire_charges > 0;
+            boolean hasPotion = antifire_charges > 0 || memberEffect;
 
-            boolean memberEffect = player.getMemberRights().isDiamondMemberOrGreater(player) && !WildernessArea.inWilderness(player.tile());
-            if (player.<Boolean>getAttribOr(AttributeKey.SUPER_ANTIFIRE_POTION, false) || memberEffect) {
+            if (player.<Boolean>getAttribOr(AttributeKey.SUPER_ANTIFIRE_POTION, false)) {
                 player.message("Your super antifire potion protects you completely from the heat of the dragon's breath!");
                 max = 0.0;
             }
