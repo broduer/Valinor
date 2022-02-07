@@ -163,6 +163,11 @@ public class Teleports {
     }
 
     public static void basicTeleport(Player player, Tile tile, int anim, Graphic gfx) {
+        if(tile == null) {
+            player.message("[NULL tile] Contact a staff member or report to the bugs channel.");
+            return;
+        }
+
         //If the player is locked or dead
         if (player.locked() || player.dead() || player.hp() <= 0)
             return;
