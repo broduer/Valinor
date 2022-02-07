@@ -1,6 +1,10 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex;
 
+import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
+import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
@@ -221,6 +225,9 @@ public class ZarosGodwars {
 
                     //Always increase kill counts
                     player.getBossKillLog().addKill(npc);
+
+                    AchievementsManager.activate(player, Achievements.ZAROS_TEMPLE, 1);
+                    DailyTaskManager.increase(DailyTasks.NEX, player);
 
                     //Random drop from the table
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());

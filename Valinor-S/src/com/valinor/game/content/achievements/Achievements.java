@@ -69,7 +69,7 @@ public enum Achievements {
     GODWAR("Godwar", "Kill 500 Godwars Dungeon Bosses", 500, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(DONATOR_MYSTERY_BOX, 2), new Item(GODSWORD_BLADE, 1)),
     CORPOREAL_CRITTER("Corporeal Critter", "Kill 100 Corporeal beasts.", 100, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(BLESSED_SPIRIT_SHIELD, 1), new Item(MYSTERY_TICKET, 1)),
     ANCHOR_HUNTER("Anchor Hunter I", "Kill 150 Barrelchest.", 150, Difficulty.MED, new Item(COINS_995, 2_000_000), new Item(CRYSTAL_KEY, 2)),
-    NEX("Zaros temple", "Kill 100 Nex.", 150, Difficulty.HARD, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX, 2), new Item(MYSTERY_TICKET, 2)),
+    ZAROS_TEMPLE("Zaros temple", "Kill 150 Nex.", 150, Difficulty.HARD, new Item(COINS_995, 5_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX, 2), new Item(MYSTERY_TICKET, 2)),
     NIGHTMARE("Nightmare", "Kill 100 Nightmares.", 100, Difficulty.HARD, new Item(COINS_995, 15_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX, 1), new Item(MYSTERY_TICKET, 1)),
     RAIDER("Raider", "Finish 125 raids of any kind.", 125, Difficulty.MED, new Item(COINS_995, 25_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX,2), new Item(MYSTERY_TICKET,2)),
     CORRUPTED_NECHRYARCH("Corrupted Nechryarch", "Kill 250 Corrupted Nechryarchs", 250, Difficulty.MED, new Item(COINS_995, 10_000_000), new Item(CRYSTAL_KEY, 3), new Item(DONATOR_MYSTERY_BOX,2), new Item(MYSTERY_TICKET)),

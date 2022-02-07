@@ -317,11 +317,6 @@ public class NpcDeath {
                     DailyTaskManager.increase(DailyTasks.GREEN_DRAGONS, killer);
                 }
 
-                if (npc.def().name.equalsIgnoreCase("Nex")) {
-                    AchievementsManager.activate(killer, Achievements.NEX, 1);
-                    DailyTaskManager.increase(DailyTasks.NEX, killer);
-                }
-
                 if(npc.def().name.equalsIgnoreCase("Battle mage")) {
                     DailyTaskManager.increase(DailyTasks.BATTLE_MAGES, killer);
                 }
