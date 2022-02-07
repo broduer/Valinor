@@ -66,10 +66,6 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
             LoginDecoder.sendCodeAndClose(ctx, LoginResponses.LOGIN_CONNECTION_LIMIT);
             return;
         }
-
-        // Nothing went wrong, so register the channel and forward the
-        // event to next handler in the pipeline.
-        ctx.fireChannelRegistered();
     }
 
     @Override
@@ -98,9 +94,6 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
         if (session != null && session.getState() == SessionState.CONNETED) {
             reduceIPConnectedCount(ctx);
         }
-
-        // the connection is unregistered so forward the event to the next handler in the pipeline.
-        ctx.fireChannelUnregistered();
     }
 
     public static void reduceIPConnectedCount(ChannelHandlerContext ctx) {

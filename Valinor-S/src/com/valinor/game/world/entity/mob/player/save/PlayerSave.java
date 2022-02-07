@@ -1590,7 +1590,7 @@ public class PlayerSave {
             }
             File file = new File("./data/saves/characters/" + username + ".json");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, false))) {
-                BackupHandler.requestBackup(BackupHandler.BackupType.PLAYER, file);
+                //BackupHandler.requestBackup(BackupHandler.BackupType.PLAYER, file);
                 writer.write(PlayerSave.SERIALIZE.toJson(this));
                 writer.flush();
             }

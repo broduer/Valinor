@@ -56,7 +56,7 @@ public final class Bootstrap {
         gameBuilder.initialize();
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
-        BackupHandler.begin();
+        //BackupHandler.begin();
         Item.onServerStart();
         Impling.onServerStartup();
         WorldBossEvent.onServerStart();
