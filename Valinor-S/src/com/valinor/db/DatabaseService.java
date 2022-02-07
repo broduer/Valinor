@@ -1,6 +1,7 @@
 package com.valinor.db;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -51,7 +52,7 @@ public class DatabaseService {
     private final DatabaseTransactionExecutor transactionExecutor;
     private final ExecutorService backgroundExecutor = Executors.newFixedThreadPool(8, new ThreadFactoryBuilder()
         .setPriority(Thread.NORM_PRIORITY)
-        .setNameFormat("ArctusDatabaseServiceBackgroundThread")
+        .setNameFormat(GameConstants.SERVER_NAME+"DatabaseServiceBackgroundThread")
         .build()); //Since this is a background pool with very low maximum usage, it's fine to have it at 8 threads since it will be idle 99% of the time. Normal priority so the tasks can be executed ASAP.
     private final BlockingQueue<DatabaseJob<?>> jobs = new LinkedBlockingDeque<>();
 
