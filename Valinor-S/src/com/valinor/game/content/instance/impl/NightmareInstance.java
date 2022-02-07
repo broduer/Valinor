@@ -50,7 +50,7 @@ public class NightmareInstance {
         for (TotemPlugin t : nightmare.getTotems()) {
             t.setNightmare(nightmare);
         }
-        nightmare.spawn(false);
+        nightmare.spawn(true);
         Chain.bound(null).runFn(1, () -> {
             if (inited) {
                 return;
