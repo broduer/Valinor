@@ -686,6 +686,9 @@ public class CombatFactory {
             if (entity.isPlayer() && other.isNpc()) {
                 var player = entity.getAsPlayer();
                 Party party = player.raidsParty;
+                var melee = entity.getCombat().combatType() == CombatType.MELEE;
+                var magic = entity.getCombat().combatType() == CombatType.MAGIC;
+                var range = entity.getCombat().combatType() == CombatType.RANGED;
                 if (party != null) {
                     if (npc.id() == LORD_VOLDEMORT) {
                         boolean canDamageVoldy = player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS) || player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND);
@@ -695,9 +698,6 @@ public class CombatFactory {
                         }
                     }
 
-                    var melee = entity.getCombat().combatType() == CombatType.MELEE;
-                    var magic = entity.getCombat().combatType() == CombatType.MAGIC;
-                    var range = entity.getCombat().combatType() == CombatType.RANGED;
                     if (party.getLeftHandNpc() != null && other.getAsNpc().id() == party.getLeftHandNpc().id() && !melee) {
                         entity.message(Color.RED.wrap("You can only fight this claw with melee."));
                         return false;
@@ -709,28 +709,31 @@ public class CombatFactory {
                         return false;
                     }
                 }
-            }
 
-            if (entity.isPlayer() && npc.id() == 7555) {
-                var player = entity.getAsPlayer();
-                Party party = player.raidsParty;
-                if (party != null) {
-                    if (!party.isCanAttackLeftHand()) {
-                        entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
-                        Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
-                        return false;
+                if (npc.id() == 7555) {
+                    if (party != null) {
+                        if (!party.isCanAttackLeftHand()) {
+                            entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
+                            Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
+                            return false;
+                        }
                     }
                 }
-            }
-            if (entity.isPlayer() && npc.id() == 7554) {
-                var player = entity.getAsPlayer();
-                Party party = player.raidsParty;
-                if (party != null) {
-                    if (!party.isLeftHandDead()) {
-                        entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
-                        Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
-                        return false;
+
+                if (npc.id() == 7554) {
+                    if (party != null) {
+                        if (!party.isLeftHandDead()) {
+                            entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
+                            Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
+                            return false;
+                        }
                     }
+                }
+
+                if(npc.def().name != null && npc.def().name.equalsIgnoreCase("Battle mage") && !magic) {
+                    entity.message(Color.RED.wrap("You can only use magic inside the arena!"));
+                    Debugs.CMB.debug(entity, "You can only use magic inside the arena!", other, true);
+                    return false;
                 }
             }
 
