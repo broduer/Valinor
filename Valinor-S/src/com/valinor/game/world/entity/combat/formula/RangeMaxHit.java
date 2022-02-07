@@ -155,12 +155,12 @@ public class RangeMaxHit {
             }
         }
 
-        if (player.getEquipment().hasAt(EquipSlot.WEAPON, GREEN_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.030;//3% damage boost
+        if (player.getEquipment().hasAt(EquipSlot.HEAD, GREEN_SLAYER_HELMET_I)) {
+            D *= 1.03;//3% damage boost
         }
 
-        if (player.getEquipment().hasAt(EquipSlot.WEAPON, TZKAL_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.030;//3% damage boost
+        if (player.getEquipment().hasAt(EquipSlot.HEAD, TZKAL_SLAYER_HELMET_I)) {
+            D *= 1.03;//3% damage boost
         }
 
         var bowOfFaerdhinen = weapon == BOW_OF_FAERDHINEN || weapon == BOW_OF_FAERDHINEN_C || (weapon >= BOW_OF_FAERDHINEN_C_25884 && weapon <= BOW_OF_FAERDHINEN_C_25896);

@@ -140,12 +140,12 @@ public class MeleeMaxHit {
             }
         }
 
-        if (player.getEquipment().hasAt(EquipSlot.WEAPON, BLACK_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.030;//3% damage boost
+        if (player.getEquipment().hasAt(EquipSlot.HEAD, BLACK_SLAYER_HELMET_I)) {
+            D *= 1.03;//3% damage boost
         }
 
-        if (player.getEquipment().hasAt(EquipSlot.WEAPON, TZKAL_SLAYER_HELMET_I) && target != null && target.isNpc() && includeNpcMax) {
-            D *= 1.030;//3% damage boost
+        if (player.getEquipment().hasAt(EquipSlot.HEAD, TZKAL_SLAYER_HELMET_I)) {
+            D *= 1.03;//3% damage boost
         }
 
         //• Arclight: 1.70 (vs. demons)
