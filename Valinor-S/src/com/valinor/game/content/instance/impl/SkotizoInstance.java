@@ -213,7 +213,7 @@ public class SkotizoInstance {
 
         World.getWorld().getNpcs().forEachInArea(SkotizoInstance.SKOTIZO_AREA, n -> {
             if(n.id() == SKOTIZO || n.id() == REANIMATED_DEMON || n.id() == DARK_ANKOU || n.id() == NpcIdentifiers.AWAKENED_ALTAR || n.id() == AWAKENED_ALTAR_7290 || n.id() == AWAKENED_ALTAR_7292 || n.id() == AWAKENED_ALTAR_7294) {
-                n.remove();//Kill off all npcs that are alive
+                n.remove(player);//Kill off all npcs that are alive
             }
         });
 

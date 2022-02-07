@@ -69,9 +69,19 @@ public class Npc extends Mob {
 
     private static final Logger logger = LogManager.getLogger(Npc.class);
 
+    public Npc remove(Player player) {
+        //Only remove if the npc is actually spawned
+        boolean sameInstance = player.tile().level == this.tile().level;
+        if ((isRegistered() && !def.ispet) && sameInstance) {
+            clearAttrib(AttributeKey.OWNING_PLAYER);
+            World.getWorld().unregisterNpc(this);
+        }
+        return this;
+    }
+
     public Npc remove() {
         //Only remove if the npc is actually spawned
-        if (isRegistered() && !def.ispet) {
+        if ((isRegistered() && !def.ispet)) {
             clearAttrib(AttributeKey.OWNING_PLAYER);
             World.getWorld().unregisterNpc(this);
         }

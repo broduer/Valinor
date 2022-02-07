@@ -219,7 +219,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
     public void onDeath(Player player,Npc npc) {
         World.getWorld().getNpcs().forEachInRegion(12613, n -> {
             if(n.isRegistered() || !n.dead()) {
-                n.remove();
+                n.remove(player);
             }
         });
     }

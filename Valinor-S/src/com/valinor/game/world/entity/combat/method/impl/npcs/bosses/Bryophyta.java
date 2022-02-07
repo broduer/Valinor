@@ -134,7 +134,7 @@ public class Bryophyta extends CommonCombatMethod {
     public void onDeath(Player player,Npc npc) {
         World.getWorld().getNpcs().forEachInArea(BRYOPHYTA_WOODS, n -> {
             if (n.id() == GROWTHLING) {
-                n.remove();
+                n.remove(player);
             }
         });
     }
