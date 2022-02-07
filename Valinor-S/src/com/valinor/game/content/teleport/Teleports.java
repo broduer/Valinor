@@ -202,10 +202,6 @@ public class Teleports {
 
         ZarosGodwars.removePlayer(player);
 
-        NightmareInstance nightmareInstance = player.getNightmareInstance();
-        if (nightmareInstance != null)
-            player.getNightmareInstance().onTeleport(player);
-
         //remove from tourny
         TournamentManager.leaveTourny(player, false, true);
 

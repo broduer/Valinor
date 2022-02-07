@@ -1,5 +1,7 @@
 package com.valinor.game.content.instance.impl;
 
+import com.valinor.game.task.Task;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
@@ -25,6 +27,7 @@ import static com.valinor.util.NpcIdentifiers.*;
 public class NightmareInstance {
 
     private static final Map<String, NightmareInstance> INSTANCES = new HashMap<>();
+    private static final int NIGHTMARE_REGION = 15515;
     public static final Area THE_NIGHTMARE_AREA = new Area(3859, 9941, 3886, 9962);
     private final int instanceLevel;
     private final Tile ENTRANCE_POINT = new Tile(3872, 9942);
@@ -35,7 +38,8 @@ public class NightmareInstance {
 
     private NightmareInstance(ArrayList<Player> players) {
         this.players = players;
-        instanceLevel = this.players.get(0).getIndex() * 4 + 3;
+        Player instanceOwner = this.players.get(0);
+        instanceLevel = instanceOwner.getIndex() * 4 + 3;
 
         //Create a Nightmare instance
         nightmare = new Nightmare(THE_NIGHTMARE_9432, THE_NIGHTMARE_SPAWN_TILE.transform(0, 0, instanceLevel));
@@ -71,6 +75,7 @@ public class NightmareInstance {
             nightmare.setHitpoints(nightmare.maxHp());
             nightmare.animate(-1);
             nightmare.getCombat().attack(Utils.randomElement(players));
+            TaskManager.submit(new NightmareInstanceTask(this, instanceOwner, instanceLevel));
         });
     }
 
@@ -109,30 +114,6 @@ public class NightmareInstance {
         return players;
     }
 
-    public void onDeath(Player player) {
-        players.remove(player);
-        //No players left in the region, lets clean up the instance
-        if (getPlayers().size() == 0) {
-            clearAll(player);
-        }
-    }
-
-    public void onTeleport(Player player) {
-        players.remove(player);
-        //No players left in the region, lets clean up the instance
-        if (getPlayers().size() == 0) {
-            clearAll(player);
-        }
-    }
-
-    public void onLogout(Player player) {
-        players.remove(player);
-        //No players left in the region, lets clean up the instance
-        if (getPlayers().size() == 0) {
-            clearAll(player);
-        }
-    }
-
     private void clearAll(Player player) {
         //remove all the npcs alive in the instance
         for (TotemPlugin t : nightmare.getTotems()) {
@@ -151,6 +132,48 @@ public class NightmareInstance {
         for (GroundItem gi : GroundItemHandler.getGroundItems()) {
             if (gi.getTile().inArea(THE_NIGHTMARE_AREA) && gi.getTile().level == player.tile().level) {
                 GroundItemHandler.sendRemoveGroundItem(gi);
+            }
+        }
+    }
+
+    private static class NightmareInstanceTask extends Task {
+
+        NightmareInstance instance;
+        Player instanceOwner;
+        int instanceLevel;
+
+        NightmareInstanceTask(NightmareInstance instance, Player player, int instanceLevel) {
+            super("NightmareInstanceTask",10,false);
+            this.instance = instance;
+            this.instanceOwner = player;
+            this.instanceLevel = instanceLevel;
+        }
+
+        private int playersLeftInRegion() {
+            int count = 0;
+            for (Player p : World.getWorld().getPlayers()) {
+                if (p != null && p.tile().region() == NIGHTMARE_REGION && p.tile().level == instanceLevel)
+                    count++;
+            }
+            return count;
+        }
+
+        @Override
+        public void execute() {
+            if(instanceOwner == null) {
+                stop();
+                return;
+            }
+            if(!instanceOwner.isRegistered()) {
+                stop();
+                return;
+            }
+            //System.out.println("ticking "+playersLeftInRegion());
+            if(playersLeftInRegion() == 0) {
+                instance.clearAll(instanceOwner);
+                instance.getPlayers().clear();
+                INSTANCES.remove(instanceOwner.getUsername());
+                stop();
             }
         }
     }

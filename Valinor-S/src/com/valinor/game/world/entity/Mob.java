@@ -356,10 +356,6 @@ public abstract class Mob extends Entity {
             if (instancedArea != null) {
                 instancedArea.onTeleport(getAsPlayer(), teleportTarget);
             }
-
-            NightmareInstance nightmareInstance = getAsPlayer().getNightmareInstance();
-            if (nightmareInstance != null)
-                getAsPlayer().getNightmareInstance().onTeleport(getAsPlayer());
         }
 
         setTile(teleportTarget);

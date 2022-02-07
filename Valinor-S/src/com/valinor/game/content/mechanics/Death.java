@@ -182,10 +182,6 @@ public class Death {
             // If we died in an instance, clean it up.
             player.clearInstance();
 
-            NightmareInstance nightmareInstance = player.getNightmareInstance();
-            if (nightmareInstance != null)
-                player.getNightmareInstance().onDeath(player);
-
             var died_under_7_wild = WildernessArea.wildernessLevel(player.tile()) <= 7; // Or in edge pvp (not classed as wildy)
 
             // If you die in FFA clan wars, you respawn at the lobby place.

@@ -1333,8 +1333,6 @@ public class Player extends Mob {
          */
         runExceptionally(() -> {
             clearInstance();
-            if (nightmareInstance != null)
-                nightmareInstance.onLogout(this);
         });
 
         runExceptionally(() -> {
