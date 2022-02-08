@@ -20,6 +20,7 @@ import java.util.zip.ZipOutputStream;
 
 public class BackupHandler {
 
+    public static final boolean BACKUP_SYSTEM_ENABLED = true;
     private static final boolean SAVE_PLAYERS = true;
     private static final long BACKUP_TIMER = 60;
 

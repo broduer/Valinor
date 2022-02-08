@@ -52,6 +52,8 @@ public enum Impling {
         this.overworldSpawnWeight = overworldSpawnWeight;
     }
 
+    public static final boolean IMPLINGS_SPAWN_ENABLED = false;
+
     private static final Area PURO_PURO = new Area(2562, 4290, 2621, 4349, 0);
 
     private static void attemptCatch(Player player, Npc npc, Impling impling) {

@@ -8,6 +8,7 @@ import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.Impling;
+import com.valinor.game.content.skill.impl.hunter.PuroPuro;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.NetworkBuilder;
@@ -56,11 +57,17 @@ public final class Bootstrap {
         gameBuilder.initialize();
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
-        //BackupHandler.begin();
+        if(BackupHandler.BACKUP_SYSTEM_ENABLED) {
+            BackupHandler.begin();
+        }
         Item.onServerStart();
-        Impling.onServerStartup();
+        if(Impling.IMPLINGS_SPAWN_ENABLED) {
+            Impling.onServerStartup();
+        }
         WorldBossEvent.onServerStart();
-        ShootingStars.onServerStart();
+        if(!ShootingStars.DISABLED) {
+            ShootingStars.onServerStart();
+        }
         TopPkers.SINGLETON.init();
         WildernessKeyPlugin.onServerStart();
         Hunter.onServerStart();

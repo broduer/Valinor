@@ -39,7 +39,7 @@ public class ShootingStars {
         return INSTANCE;
     }
 
-    private static final boolean DISABLED = false;
+    public static final boolean DISABLED = false;
     private static int METEORITE_REMAINING = 1000;
     private static ShootingStars ACTIVE;
     private static GameObject rock;
