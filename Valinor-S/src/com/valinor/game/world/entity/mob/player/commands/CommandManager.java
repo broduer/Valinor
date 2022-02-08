@@ -148,7 +148,9 @@ public class CommandManager {
         commands.put("spawnkey", new WildernessKeyCommand());
         commands.put("removepkp", new RemovePkpCommand());
         commands.put("ipban", new IPBanPlayerCommand());
+        commands.put("unipban", new UnIPBanCommand());
         commands.put("macban", new MacBanPlayerCommand());
+        commands.put("unmacban", new UnMacBanCommand());
         commands.put("killscorpia", new KillScorpiaCommand());
         commands.put("setlevelo", new SetLevelOther());
         commands.put("checkmulti", new CheckMultiLoggers());

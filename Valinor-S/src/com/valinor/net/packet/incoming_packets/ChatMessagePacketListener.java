@@ -1,9 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
-import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
-import com.valinor.game.content.mechanics.AntiSpam;
-import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.masks.chat.ChatMessage;
@@ -11,7 +8,6 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
 import com.valinor.util.Utils;
-import com.valinor.util.flood.Buffer;
 
 /**
  * This packet listener manages the spoken text by a player.
@@ -36,10 +32,6 @@ public class ChatMessagePacketListener implements PacketListener {
         if (chatMessage.length() > 80) {
             chatMessage = chatMessage.substring(0, 79);
         }
-        
-        if (AntiSpam.isNewPlayerSpamming(player, chatMessage)) {
-            return;
-        }
 
         boolean newAccount = player.getAttribOr(AttributeKey.NEW_ACCOUNT, false);
         if (newAccount) {
@@ -63,7 +55,7 @@ public class ChatMessagePacketListener implements PacketListener {
             return;
         }
 
-        if (player.isMuted()) {
+        if (player.muted()) {
             player.message("You are muted and cannot chat. Please try again later.");
             return;
         }

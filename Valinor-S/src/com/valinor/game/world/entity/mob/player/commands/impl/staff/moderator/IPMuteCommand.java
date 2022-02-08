@@ -6,11 +6,14 @@ import com.valinor.game.GameEngine;
 import com.valinor.game.content.mechanics.referrals.Referrals;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
+import com.valinor.game.world.entity.mob.player.save.PlayerSave;
+import com.valinor.util.PlayerPunishment;
 import com.valinor.util.Utils;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -33,12 +36,65 @@ public class IPMuteCommand implements Command {
         if (command.length() <= 7)
             return;
         String username = Utils.formatText(command.substring(7)); // after "ipmute "
-        Optional<Player> plr = World.getWorld().getPlayerByName(username);
-        if (GameServer.properties().enableSql) {
-            plr.ifPresent(p -> {
-                p.muted = true;
-            });
-            player.getDialogueManager().start(new MuteDialogue(username));
+        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
+            Optional<Player> plr = World.getWorld().getPlayerByName(username);
+            if (GameServer.properties().enableSql) {
+                plr.ifPresent(p -> {
+                    p.muted = true;
+                });
+                player.getDialogueManager().start(new MuteDialogue(username));
+            }
+            return;
+        }
+
+        if(!GameServer.properties().punishmentsToDatabase) {
+            Optional<Player> playerToMute = World.getWorld().getPlayerByName(username);
+            if (playerToMute.isPresent()) {
+                if (playerToMute.get().getPlayerRights().isStaffMember(playerToMute.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+                    player.message("You cannot ip mute this player.");
+                    return;
+                }
+
+                String IPToMute = playerToMute.get().getHostAddress();
+
+                if (PlayerPunishment.IPmuted(IPToMute)) {
+                    player.message("Player " + playerToMute.get().getUsername() + " already has an active ip mute.");
+                    return;
+                }
+
+                playerToMute.get().putAttrib(AttributeKey.MUTED, true);
+                PlayerPunishment.addIPMute(IPToMute);
+                player.message("Player " + playerToMute.get().getUsername() + " was successfully ip muted.");
+                Utils.sendDiscordInfoLog("Player " + playerToMute.get().getUsername() + " was ip muted by " + player.getUsername(), "staff_cmd");
+            } else {
+                //offline
+                Player offlinePlayer = new Player();
+                offlinePlayer.setUsername(Utils.formatText(username.substring(0, 1).toUpperCase() + username.substring(1)));
+
+                GameEngine.getInstance().submitLowPriority(() -> {
+                    try {
+                        if (PlayerSave.loadOfflineWithoutPassword(offlinePlayer)) {
+                            GameEngine.getInstance().addSyncTask(() -> {
+                                String IPToMute = offlinePlayer.getHostAddress();
+
+                                if (PlayerPunishment.IPmuted(IPToMute)) {
+                                    player.message("Player " + offlinePlayer.getUsername() + " already has an active ip mute.");
+                                    return;
+                                }
+
+                                offlinePlayer.putAttrib(AttributeKey.MUTED, true);
+                                PlayerPunishment.addIPMute(IPToMute);
+                                player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip muted.");
+                                Utils.sendDiscordInfoLog("Player " + offlinePlayer.getUsername() + " was offline ip muted by " + player.getUsername(), "staff_cmd");
+                            });
+                        } else {
+                            player.message("Something went wrong trying to offline ip mute "+offlinePlayer.getUsername());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
         }
     }
 

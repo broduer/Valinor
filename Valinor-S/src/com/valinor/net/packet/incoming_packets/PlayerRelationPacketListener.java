@@ -1,7 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
-import com.valinor.db.transactions.GetMuteStatusDatabaseTransaction;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.ClientToServerPackets;
@@ -52,7 +51,7 @@ public class PlayerRelationPacketListener implements PacketListener {
                     Optional<Player> friend = World.getWorld().getPlayerByName(username.replaceAll("_", " "));
                     int size = packet.getSize() - packet.getBuffer().nioBuffer().position();
                     byte[] message = packet.readBytes(size);
-                    if (player.isMuted()) {
+                    if (player.muted()) {
                         player.message("You are muted and cannot chat. Please try again later.");
                         return;
                     }

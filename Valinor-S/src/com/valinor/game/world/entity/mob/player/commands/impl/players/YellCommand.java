@@ -27,7 +27,7 @@ public class YellCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if (player.isMuted()) {
+        if (player.muted()) {
             player.message("You are muted and cannot yell. Please try again later.");
             return;
         }

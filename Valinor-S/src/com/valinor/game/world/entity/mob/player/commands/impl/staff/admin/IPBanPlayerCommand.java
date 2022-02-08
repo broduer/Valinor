@@ -3,7 +3,6 @@ package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
 import com.valinor.GameServer;
 import com.valinor.db.DatabaseExtensionsKt;
 import com.valinor.game.GameEngine;
-import com.valinor.game.content.mechanics.referrals.Referrals;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -13,6 +12,7 @@ import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.commands.impl.kotlin.MiscKotlin;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
+import com.valinor.util.PlayerPunishment;
 import com.valinor.util.Utils;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -34,8 +34,82 @@ public class IPBanPlayerCommand implements Command {
         if (command.length() <= 6)
             return;
         String username = Utils.formatText(command.substring(6)); // after "ipban "
-        if (GameServer.properties().enableSql) {
+        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             player.getDialogueManager().start(new BanDialogue(username));
+            return;
+        }
+
+        if(!GameServer.properties().punishmentsToDatabase) {
+            Optional<Player> playerToBan = World.getWorld().getPlayerByName(username);
+            if (playerToBan.isPresent()) {
+                if(playerToBan.get().getPlayerRights().isStaffMember(playerToBan.get()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+                    player.message("You cannot ip ban this player.");
+                    logger.warn(player.getUsername() + " tried to ip ban " + playerToBan.get().getUsername(), "warning");
+                    return;
+                }
+
+                String IPToBan = playerToBan.get().getHostAddress();
+
+                if (PlayerPunishment.ipBanned(IPToBan)) {
+                    player.message("Player " + username + " already has an active ip ban.");
+                    return;
+                }
+
+                //When in trade kick from trade first
+                if(playerToBan.get().getStatus() == PlayerStatus.TRADING) {
+                    playerToBan.get().getTrading().abortTrading();
+                }
+
+                //When in a duel forfeit for the player about to get banned
+                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
+                    playerToBan.get().getDueling().onDeath();
+                }
+
+                //When in a gamble forfeit for the player about to get banned
+                if(playerToBan.get().getStatus() == PlayerStatus.DUELING) {
+                    playerToBan.get().getGamblingSession().abortGambling();
+                }
+
+                PlayerPunishment.addIPBan(IPToBan);
+                PlayerPunishment.addBan(playerToBan.get().getUsername());
+                playerToBan.get().requestLogout();
+
+                player.message("Player " + username + " was successfully ip banned.");
+                Utils.sendDiscordInfoLog("Player " + username + " was ip banned by " + player.getUsername(), "staff_cmd");
+            } else {
+                //offline
+                Player offlinePlayer = new Player();
+                offlinePlayer.setUsername(Utils.formatText(username.substring(0, 1).toUpperCase() + username.substring(1)));
+
+                GameEngine.getInstance().submitLowPriority(() -> {
+                    try {
+                        if (PlayerSave.loadOfflineWithoutPassword(offlinePlayer)) {
+                            GameEngine.getInstance().addSyncTask(() -> {
+                                String IPToBan = offlinePlayer.getHostAddress();
+
+                                if(!PlayerSave.playerExists(offlinePlayer.getUsername())) {
+                                    player.message("There is no such player profile.");
+                                    return;
+                                }
+
+                                if (PlayerPunishment.ipBanned(IPToBan)) {
+                                    player.message("Player " + offlinePlayer.getUsername() + " already has an active ip ban.");
+                                    return;
+                                }
+
+                                PlayerPunishment.addIPBan(IPToBan);
+                                PlayerPunishment.addBan(offlinePlayer.getUsername());
+                                player.message("Player " + offlinePlayer.getUsername() + " was successfully offline ip banned.");
+                                Utils.sendDiscordInfoLog("Player " + offlinePlayer.getUsername() + " was offline ip banned by " + player.getUsername(), "staff_cmd");
+                            });
+                        } else {
+                            player.message("Something went wrong trying to offline ip ban "+offlinePlayer.getUsername());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
         }
     }
 

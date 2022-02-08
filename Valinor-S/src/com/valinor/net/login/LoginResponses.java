@@ -12,6 +12,7 @@ import com.valinor.game.world.entity.mob.player.save.PlayerSave;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave.SaveDetails;
 import com.valinor.net.ByteBufUtils;
 import com.valinor.net.NetworkConstants;
+import com.valinor.util.PlayerPunishment;
 import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -92,7 +93,7 @@ public final class LoginResponses {
 
         logger.trace("Passed login checks, checking ban status for player: "+player.getUsername());
 
-        if (GameServer.properties().enableSql) {
+        if (GameServer.properties().enableSql && GameServer.properties().punishmentsToDatabase) {
             boolean banned = false;
             try {
                 //If the server hasn't fully started up yet, let's tell the user the server is updating.
@@ -107,6 +108,20 @@ public final class LoginResponses {
             }
             if (banned) {
                 logger.trace("player is banned: "+player.getUsername());
+                return LoginResponses.LOGIN_DISABLED_ACCOUNT;
+            }
+        }
+
+        if (!GameServer.properties().punishmentsToDatabase) {
+            if (PlayerPunishment.banned(player.getUsername())) {
+                return LoginResponses.LOGIN_DISABLED_ACCOUNT;
+            }
+
+            if (PlayerPunishment.ipBanned((player.getHostAddress()))) {
+                return LoginResponses.LOGIN_DISABLED_ACCOUNT;
+            }
+
+            if (PlayerPunishment.macBanned(player.getAttribOr(MAC_ADDRESS, "invalid"))) {
                 return LoginResponses.LOGIN_DISABLED_ACCOUNT;
             }
         }

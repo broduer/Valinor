@@ -1,4 +1,5 @@
 {
+  "punishmentsToDatabase": false,
   "lowercaseCaptcha": true,
   "disableCaptchaEveryLogin": true,
   "staffOnlyLogins": false,
@@ -29,7 +30,7 @@
   "drawShopCostText": true,
   "tournamentsEnabled": true,
   "wildernessActivityEnabled": true,
-  "enableSql": false,
+  "enableSql": true,
   "linuxOnlyDisplayCycleLag": false,
   "ignoreGameLagDetectionMilliseconds": 35000,
   "clearQuestInterfaceStrings": true,

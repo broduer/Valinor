@@ -203,11 +203,6 @@ public class Player extends Mob {
         return farming_instance;
     }
 
-    /**
-     * Save a new player's chat sent to ip-mute for advertising.
-     */
-    public ArrayList<String> newPlayerChat = new ArrayList<String>();
-
     private Raids raids;
 
     public Raids getRaids() {
@@ -1530,10 +1525,6 @@ public class Player extends Mob {
         }
     }
 
-    public boolean isMuted() {
-        return muted; // how do you save stuff agasin in psave? oh actually dont need to save
-    }
-
     private static final Set<String> veteranGiftClaimedIP = new HashSet<>();
     private static final Set<String> veteranGiftClaimedMAC = new HashSet<>();
 
@@ -2690,6 +2681,10 @@ public class Player extends Mob {
                 }
             }
         }
+    }
+
+    public boolean muted() {
+        return PlayerPunishment.IPmuted(hostAddress) || PlayerPunishment.muted(username) || this.<Boolean>getAttribOr(MUTED, false) || muted;
     }
 
     // Main item used

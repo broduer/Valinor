@@ -14,6 +14,7 @@ import com.valinor.game.world.definition.loader.impl.*;
 import com.valinor.game.world.region.RegionManager;
 import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.BackgroundLoader;
+import com.valinor.util.PlayerPunishment;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
@@ -69,6 +70,7 @@ public class GameBuilder {
         Queue<Runnable> tasks = new ArrayDeque<>();
         tasks.add(IronmanGroupHandler::loadIronmanGroups);
         tasks.add(ClanRepository::load);
+        tasks.add(PlayerPunishment::init);
         tasks.add(InteractionManager::init);
         if (GameServer.properties().wildernessActivityEnabled) {
             tasks.add(WildernessActivityManager.getSingleton()::init);

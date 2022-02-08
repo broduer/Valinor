@@ -97,6 +97,7 @@ public final class ServerProperties {
 
     private ServerProperties(boolean sqlOn, boolean discordLoggingOn) {
         // Default property values. If the server properties file exists, these will be ignored.
+        punishmentsToDatabase = false;
         lowercaseCaptcha = true;
         disableCaptchaEveryLogin = true;
         staffOnlyLogins = false;
@@ -244,6 +245,9 @@ public final class ServerProperties {
 
     public final String fileStore;
     public final boolean definitionsLazy;
+
+    // If this is enabled punishments will be send to the database
+    public final boolean punishmentsToDatabase;
 
     /**
      * The flag that determines if the server is sending lower case captcha.
