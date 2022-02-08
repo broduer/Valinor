@@ -39,7 +39,6 @@ import com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards;
 import com.valinor.game.content.security.impl.EnterAccountPin;
 import com.valinor.game.content.skill.Skillable;
 import com.valinor.game.content.skill.impl.farming.Farming;
-import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.items.keys.SlayerKey;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
@@ -146,6 +145,11 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
 
+    private final Farming farming = new Farming(this);
+    public Farming getFarming() {
+        return farming;
+    }
+
     public TickDelay snowballCooldown = new TickDelay();
     public boolean muted;
 
@@ -187,20 +191,6 @@ public class Player extends Mob {
 
     public Optional<IronmanGroup> getIronmanGroup() {
         return IronmanGroupHandler.getPlayersGroup(this);
-    }
-
-    /**
-     * The player's instance for farming.
-     */
-    private final Farming farming_instance = new Farming();
-
-    /**
-     * Returns the player's farming instance.
-     *
-     * @return the instance
-     */
-    public Farming getFarming() {
-        return farming_instance;
     }
 
     private Raids raids;
@@ -1158,7 +1148,6 @@ public class Player extends Mob {
     public void synchronousSave() {
         if (session.getState() == SessionState.LOGGED_IN || session.getState() == SessionState.LOGGING_OUT) {
             PlayerSave.save(this);
-            FarmingSaving.save(this);
         }
     }
 
@@ -1354,7 +1343,6 @@ public class Player extends Mob {
             PetAI.despawnOnLogout(this);
             getInterfaceManager().close();
             TaskManager.cancelTasks(this);
-            getFarming().resetLogActionMoment();
             looks().hide(true);
             Hunter.abandon(this, null, true);
             if (WildernessArea.inWilderness(this.tile())) {
@@ -1433,6 +1421,7 @@ public class Player extends Mob {
         relations.setPrivateMessageId(1);
         // Send friends and ignored players lists...
         relations.onLogin();
+        farming.handleLogin();
         getMovement().clear();
         setHeadHint(-1);
         teleportMenuHandler.load();

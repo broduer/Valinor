@@ -23,7 +23,6 @@ import com.valinor.game.content.mechanics.referrals.Referrals.displayMyReferrals
 import com.valinor.game.content.minigames.MinigameManager
 import com.valinor.game.content.minigames.impl.fight_caves.FightCavesMinigame
 import com.valinor.game.content.raids.party.Party
-import com.valinor.game.content.skill.impl.farming.FarmingSaving
 import com.valinor.game.content.tournaments.Tournament
 import com.valinor.game.content.tournaments.TournamentManager
 import com.valinor.game.content.tournaments.TournamentManager.TornConfig
@@ -419,7 +418,6 @@ object KtCommands {
                         // player.message("${p2.mobName} hard removed")
                         GameEngine.getInstance().submitLowPriority {
                             PlayerSave.save(player)
-                            FarmingSaving.save(player)
                         }
                     }
 

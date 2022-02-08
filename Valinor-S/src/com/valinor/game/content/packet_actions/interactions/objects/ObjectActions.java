@@ -1,8 +1,6 @@
 package com.valinor.game.content.packet_actions.interactions.objects;
 
 import com.valinor.game.content.shootingStars.ShootingStars;
-import com.valinor.game.content.skill.impl.farming.Farming;
-import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.content.skill.impl.smithing.Bar;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
 import com.valinor.game.content.tradingpost.TradingPost;
@@ -35,8 +33,6 @@ public class ObjectActions {
         }
 
         final String name = object.definition().name;
-        Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
-
         final boolean bank = object.getId() == OPEN_CHEST_3194 || name.toLowerCase().contains("bank booth") || name.toLowerCase().contains("bank chest") || name.toLowerCase().contains("grand exchange booth");
         if (clickAction == 1) {
             if(name.equalsIgnoreCase("Bank deposit box")) {
@@ -91,9 +87,8 @@ public class ObjectActions {
                 return;
             }
 
-            if (Farming.handleActions(player, FarmingConstants.FIRST_CLICK_OBJECT, tile, -1)) {
-                return;
-            }
+            player.getFarming().handleObjectClick(object.getId(), object.tile().x, object.tile().y, 1);
+            return;
         }
 
         if (clickAction == 2) {
@@ -130,9 +125,7 @@ public class ObjectActions {
                 return;
             }
 
-            if (Farming.handleActions(player, FarmingConstants.SECOND_CLICK_OBJECT, tile, -1)) {
-                return;
-            }
+            player.getFarming().handleObjectClick(object.getId(), object.tile().x, object.tile().y, 2);
             return;
         }
 
@@ -152,6 +145,8 @@ public class ObjectActions {
             if (InteractionManager.checkObjectInteraction(player, object, 3)) {
                 return;
             }
+
+            player.getFarming().handleObjectClick(object.getId(), object.tile().x, object.tile().y, 3);
             return;
         }
 

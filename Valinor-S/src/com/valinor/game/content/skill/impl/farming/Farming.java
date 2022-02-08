@@ -1,363 +1,503 @@
 package com.valinor.game.content.skill.impl.farming;
 
-import com.valinor.game.GameEngine;
-import com.valinor.game.content.skill.impl.farming.actions.*;
-import com.valinor.game.content.skill.impl.farming.compostbin.CompostBin;
-import com.valinor.game.content.skill.impl.farming.compostbin.CompostBinManager;
-import com.valinor.game.content.skill.impl.farming.impl.*;
-import com.valinor.game.task.TaskManager;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+import com.google.common.base.Preconditions;
+import com.valinor.fs.ItemDefinition;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.position.Tile;
-import com.valinor.net.BitConfig;
-import com.valinor.net.BitConfigBuilder;
-import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.util.ItemIdentifiers;
+import com.valinor.util.Utils;
+import com.valinor.util.chainedwork.Chain;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+public class Farming {
 
-/**
- * Farming skill main file.
- *
- * @author Gabriel || Wolfsdarker
- */
-public class Farming extends Interaction {
+    public static final int HARVEST_ANIMATION = 2275;
 
     /**
-     * The last moment the player logged in or out.
+     * Placeholder for Tree harvesting
      */
-    private long last_log_action;
+    public static final int HARVEST_CHOPPING = -2;
 
-    /**
-     * The manager for all compost bins.
-     */
-    private final CompostBinManager compost_manager;
+    private static final int[] farmingOutfit = { 13646, 13642, 13640, 13644 };
 
-    /**
-     * The player's crop informations.
-     */
-    private final Map<String, PatchState> patch_states;
+    private final Player player;
+    private final Plant[] plants = new Plant[50];
+    private final GrassyPatch[] patches = new GrassyPatch[50];
 
-    /**
-     * The tools the player has stored inside the leprechaun.
-     */
-    private final Map<Integer, Integer> tools_stored;
+    public Farming(Player player) {
+        this.player = player;
 
-    /**
-     * Constructor for the farming instance.
-     */
-    public Farming() {
-        this.compost_manager = new CompostBinManager();
-        this.patch_states = new HashMap<>();
-        this.tools_stored = new HashMap<>();
+        for (int i = 0; i < patches.length; i++)
+            if (patches[i] == null)
+                patches[i] = new GrassyPatch();
     }
 
-    /**
-     * Returns the last moment the player logged in or out.
-     *
-     * @return the moment from epoch day
-     */
-    public long getLastLogAction() {
-        return last_log_action;
+    public static int getFarmingPieces(Player player) {
+        int pieces = 0;
+        for (int aFarmingOutfit : farmingOutfit) {
+            if (player.getEquipment().contains(aFarmingOutfit)) {
+                pieces++;
+            }
+        }
+        return pieces;
     }
 
-    /**
-     * Returns the player crop's information.
-     *
-     * @return the crop information
-     */
-    public Map<String, PatchState> getPatchStates() {
-        return patch_states;
-    }
-
-    /**
-     * Returns the tools the player has stored in the leprechaun.
-     *
-     * @return the tools
-     */
-    public Map<Integer, Integer> getToolStored() {
-        return tools_stored;
-    }
-
-    /**
-     * Returns the compost manager's instance.
-     *
-     * @return the instance
-     */
-    public CompostBinManager getCompostManager() {
-        return compost_manager;
-    }
-
-    /**
-     * Sets the last moment the player logged in or out.
-     *
-     * @param l
-     * @return the moment
-     */
-    public long setLastLogAction(long l) {
-        return last_log_action = l;
-    }
-
-    /**
-     * Resets the last moment the player logged in or out to the current moment.
-     *
-     * @return the moment
-     */
-    public long resetLogActionMoment() {
-        return last_log_action = System.currentTimeMillis();
-    }
-
-
-    /**
-     * Updates all the crop's timers.
-     */
-    public void updateCropStages(Player player) {
-        //System.out.println("Enter updateCropStages");
-        patch_states.keySet().forEach(patch_name -> {
-            //System.out.println("Enter loop");
-
-            Patches data = Patches.get(patch_name);
-            PatchState patch = patch_states.get(patch_name);
-
-            if (data == null || patch == null) {
+    public void handleLogin() {
+        doConfig();
+        Chain.bound(null).name("farming_task").repeatingTask(1, t -> {
+            if(player == null || !player.isRegistered()) {
+                t.stop();
                 return;
             }
-
-            if (patch.isDead()) {
-                return;
-            }
-
-            //System.out.println(System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed());
-            if (System.currentTimeMillis() - last_log_action > (5 * 60_000) && patch.isUsed()) {
-                //System.out.println("ticking");
-                if (!FarmingConstants.isFullyGrown(patch)) {
-                    //System.out.println("Not fully grown yet");
-                    if (FarmingConstants.inGrowthInterval(patch)) {
-                        //System.out.println("enter interval");
-                        patch.resetLastStageGrowthMoment();
-                        if (patch.getProtection() == PatchProtection.NOT_PROTECTED && patch.getDiseaseState() == DiseaseState.NOT_PRESENT &&
-                            FarmingConstants.hasToApplyDisease(patch) && patch.getStage() + 1 < patch.getSeed().getMaxGrowth() &&
-                            patch.getStage() > patch.getSeed().getMinGrowth() + 1) {
-                            patch.setDiseaseState(DiseaseState.PRESENT);
-                        } else if (patch.getDiseaseState() == DiseaseState.PRESENT) {
-                            patch.setDead(true);
-                        } else {
-                            //System.out.println("Update stage");
-                            patch.setStage(patch.getStage() + 1);
-                            if (!FarmingConstants.isFullyGrown(patch)) {
-                                patch.setWatered(patch.getProtection() != PatchProtection.NOT_PROTECTED);
-                            } else {
-                                player.message("One or more farming crops have fully grown.");
-                            }
-                            patch.setLivesAmount(3 + patch.getTreatment().getLivesIncrease());
-                        }
-                    }
-                }
-            } else if (!patch.isUsed()) {
-                if (patch.getWeedStage() > 0 && (System.currentTimeMillis() - patch.getLastStageChangeMoment() >= 2 * 60_000)) {
-                    patch.resetLastStageGrowthMoment();
-                    patch.setWeedStage(patch.getWeedStage() - 1);
-                }
-            }
+            sequence();
         });
     }
 
-    /**
-     * Updates all the patches for the player.
-     */
-    public void updatePatches(Player player) {
-        //System.out.println("Enter updatePatches");
-        final Map<Integer, BitConfigBuilder> configMap = new HashMap<>();
-        patch_states.keySet().stream().filter(patch_name -> {
-            Patches data = Patches.get(patch_name);
-
-            if (data == null) {
-                return false;
-            }
-
-            for (Tile tile : data.getAllotmentTile()) {
-                if (player.tile().getDistance(tile) <= 56) {
-                    //System.out.println("ALLOW "+player.getUsername());
-                    return true;
-                }
-            }
-            //System.out.println("FILTER "+player.getUsername());
-            return false;
-        }).forEach(patch_name -> {
-            //System.out.println("Looking for patches");
-            Patches data = Patches.get(patch_name);
-            PatchState patch = patch_states.get(patch_name);
-            BitConfigBuilder config = configMap.getOrDefault(data.getConfigId(), new BitConfigBuilder(data.getConfigId()));
-
-            config.set(patch.getUsedStage(), data.getPatchBitOffset());
-            if (patch.isWatered() && !FarmingConstants.isFullyGrown(patch)) {
-                if (data.getPatchType() == FarmingPatchType.ALLOTMENT || data.getPatchType() == FarmingPatchType.FLOWER_PATCH) {
-                    config.set(1 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
-                }
-            } else if (patch.isDead()) {
-                if (data.getPatchType() == FarmingPatchType.ALLOTMENT || data.getPatchType() == FarmingPatchType.FLOWER_PATCH) {
-                    config.set(3 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
-                } else if (data.getPatchType() == FarmingPatchType.HERB_PATCH) {
-                    config.set(0xAB, data.getPatchBitOffset());
-                }
-            } else if (patch.getDiseaseState() == DiseaseState.PRESENT) {
-                //System.out.println("Patch isn't dead, continue looking");
-                if (data.getPatchType() == FarmingPatchType.ALLOTMENT || data.getPatchType() == FarmingPatchType.FLOWER_PATCH) {
-                    config.set(2 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
-                } else if (data.getPatchType() == FarmingPatchType.HERB_PATCH) {
-                    //System.out.println("Found herb patch");
-                    config.set(1 << data.getPatchType().getStateBitOffset(), data.getPatchBitOffset());
-                }
-            }
-            configMap.put(data.getConfigId(), config);
-        });
-
-        configMap.forEach((key, value) -> {
-            final BitConfig config = value.build();
-            player.getPacketSender().sendConfigByte(config.getId(), config.getValue());
-        });
+    public void handleObjectClick(int objectId, int x, int y, int option) {
+        player.getFarming().click(player, x, y, option);
     }
 
-    /**
-     * Handles the player login.
-     *
-     * @param player
-     */
-    @Override
-    public void onLogin(Player player) {
-        loadFarming(player);
-        player.getFarming().updateCropStages(player);
-        player.getFarming().resetLogActionMoment();
-        player.getFarming().updatePatches(player);
-        TaskManager.submit(new FarmingTask(player));
+    public void handleItemOnObject(int itemId, int objectId, int objectX, int objectY) {
+        if (plant(itemId, objectX, objectY))
+            return;
+        if (useItemOnPlant(itemId, objectX, objectY))
+            return;
+    }
 
-        for (CompostBin compostBin : player.getFarming().getCompostManager().getCompostBins()) {
-            if (player.tile().distance(compostBin.getTile().tile()) <= 56) {
-                player.getFarming().getCompostManager().updateBin(player, compostBin);
+    public void regionChanged() {
+        player.getFarming().doConfig();
+    }
+
+    public void sequence() {
+        for (Plant i : plants) {
+            if (i != null) {
+                i.process(player);
+            }
+        }
+        for (int i = 0; i < patches.length; i++) {
+            if (i >= FarmingPatches.values().length)
+                break;
+            if ((patches[i] != null) && (!inhabited(FarmingPatches.values()[i].bottomLeft.getX(), FarmingPatches.values()[i].bottomLeft.getY()))) {
+                patches[i].process(player, i);
             }
         }
     }
 
-    /**
-     * Returns the player's farming instance after loading (if saved before) the information.
-     *
-     * @return the instance
-     */
-    public static void loadFarming(Player player) {
-        GameEngine.getInstance().submitLowPriority(() -> {
-            boolean file_found = FarmingLoading.loadCrops(player.getUsername(), player.getFarming());
-
-            if (!file_found || player.getFarming().getPatchStates().isEmpty()) {
-                Arrays.stream(Patches.values()).forEach(data -> player.getFarming().getPatchStates().put(data.name(), new PatchState()));
+    public int config(FarmingPatches patch) {
+        if (inhabited(patch.bottomLeft.getX(), patch.bottomLeft.getY())) {
+            for (Plant plant : plants) {
+                if (plant != null && plant.getPatch() == patch) {
+                    return plant.getConfig();
+                }
             }
+        }
 
-            if (!file_found || player.getFarming().getCompostManager().getCompostBins().isEmpty()) {
-                Arrays.stream(CompostBinTiles.values()).forEach(data -> player.getFarming().getCompostManager().getCompostBins().add(new CompostBin(data)));
-            }
-        });
+        return patches[patch.ordinal()].stage;
     }
 
-    /**
-     * Handles the region change update.
-     *
-     * @param player
-     */
-    public static void onRegionChange(Player player) {
-        player.getFarming().updatePatches(player);
+    public void doConfig() {
+        FarmingPatches[] patches = {
+            FarmingPatches.FALADOR_HERB,
+            FarmingPatches.CATHERBY_HERB,
+            FarmingPatches.ARDOUGNE_HERB,
+            FarmingPatches.PHAS_HERB
+        };
 
-        for (CompostBin compostBin : player.getFarming().getCompostManager().getCompostBins()) {
-            if (player.tile().distance(compostBin.getTile().tile()) <= 56) {
-                player.getFarming().getCompostManager().updateBin(player, compostBin);
+        FarmingPatches closest = null;
+        int lowest = 0;
+        for (FarmingPatches patch : patches) {
+            int dist = (int) Utils.distance(player.tile().x, player.tile().y, patch.bottomLeft.getX(), patch.bottomLeft.getY());
+            if (closest == null || dist < lowest) {
+                closest = patch;
+                lowest = dist;
             }
+        }
+
+        int config = 0;
+
+        switch (closest) {
+            case FALADOR_HERB:
+                config = (config(FarmingPatches.FALADOR_HERB) << 24)
+                    + (config(FarmingPatches.FALADOR_FLOWER) << 16)
+                    + (config(FarmingPatches.FALADOR_ALLOTMENT_SOUTH) << 8)
+                    + (config(FarmingPatches.FALADOR_ALLOTMENT_NORTH));
+                break;
+            case CATHERBY_HERB:
+                /**
+                 * //		529(<<0) = Fruit Tree
+                 * //		529(<<24) = Herb
+                 * //		529(<<16) = Flower
+                 * //		529(<<8) = South Allotment
+                 * //		529(<<0) = North Allotment
+                 * //		511(<<24) = Compost Bin
+                 */
+                config = (config(FarmingPatches.CATHERBY_HERB) << 24)
+                    + (config(FarmingPatches.CATHERBY_FLOWER) << 16)
+                    + (config(FarmingPatches.CATHERBY_ALLOTMENT_SOUTH) << 8)
+                    + (config(FarmingPatches.CATHERBY_ALLOTMENT_NORTH));
+                break;
+            case ARDOUGNE_HERB:
+                config = (config(FarmingPatches.ARDOUGNE_HERB) << 24)
+                    + (config(FarmingPatches.ARDOUGNE_FLOWER) << 16)
+                    + (config(FarmingPatches.ARDOUGNE_ALLOTMENT_SOUTH) << 8)
+                    + (config(FarmingPatches.ARDOUGNE_ALLOTMENT_NORTH));
+                break;
+            case PHAS_HERB:
+                config = (config(FarmingPatches.PHAS_HERB) << 24)
+                    + (config(FarmingPatches.PHAS_FLOWER) << 16)
+                    + (config(FarmingPatches.PHAS_ALLOTMENT_EAST) << 8)
+                    + (config(FarmingPatches.PHAS_ALLOTMENT_WEST));
+                break;
+        }
+        player.getPacketSender().sendConfigByte(529, config);
+    }
+
+    public void clear() {
+        for (int i = 0; i < plants.length; i++) {
+            plants[i] = null;
+        }
+
+        for (int i = 0; i < patches.length; i++) {
+            patches[i] = new GrassyPatch();
         }
     }
 
-    /**
-     * Handle the player actions for farming.
-     *
-     * @param player
-     * @param action_type
-     * @param tile
-     * @param itemId
-     * @return
-     */
-    public static boolean handleActions(Player player, String action_type, Tile tile, int itemId) {
-
-        CompostBinTiles potentialBin = CompostBinTiles.get(tile.getX(), tile.getY());
-
-        final var patchData = potentialBin != null ? null : Patches.get(tile.getX(), tile.getY());
-        var patchState = potentialBin == null && patchData != null ? player.getFarming().getPatchStates()
-            .get(patchData.name()) : null;
-
-        switch (action_type) {
-            case FarmingConstants.ITEM_ON_OBJECT_ACTION -> {
-                if (itemId == -1) {
-                    return false;
-                }
-                if (potentialBin != null) {
-                    return player.getFarming().getCompostManager().fillCompostBin(player, itemId, potentialBin.tile());
-                }
-                if (patchData == null) {
-                    return false;
-                }
-                if (PlantSeedIntoPatchAction.plantSeed(player, patchData, itemId, tile)) {
-                    return true;
-                }
-                if (WaterPatchAction.waterPatch(player, patchData, tile, itemId)) {
-                    return true;
-                }
-                if (CompostPatchAction.compostPatch(player, patchData, itemId, tile)) {
-                    return true;
-                }
-                if (CureCropAction.curePlant(player, patchData, tile, itemId)) {
-                    return true;
-                }
-                if (itemId == FarmingConstants.RAKE) {
-                    RakePatchAction.rakePatch(player, patchState, tile);
-                }
-                if (itemId == FarmingConstants.SPADE) {
-                    ClearPatchAction.clearPatch(player, patchData, tile);
-                }
+    public void insert(Plant patch) {
+        for (int i = 0; i < plants.length; i++)
+            if (plants[i] == null) {
+                plants[i] = patch;
+                break;
             }
-            case FarmingConstants.FIRST_CLICK_OBJECT -> {
-                if (potentialBin != null) {
-                    if (!player.getFarming().getCompostManager().collectProducts(player, potentialBin.tile())) {
-                        return player.getFarming().getCompostManager().changeClosedState(player, potentialBin.tile());
+    }
+
+    public boolean inhabited(int x, int y) {
+        for (int i = 0; i < plants.length; i++) {
+            if (plants[i] != null) {
+                FarmingPatches patch = plants[i].getPatch();
+                if ((x >= patch.bottomLeft.getX()) && (y >= patch.bottomLeft.getY()) && (x <= patch.topLeft.getX()) && (y <= patch.topLeft.getY())) {
+                    if (isPatchException(x, y, patch)) {
+                        continue;
                     }
                     return true;
                 }
-                if (patchData == null) {
-                    return false;
-                }
-                if (patchState == null) {
-                    return false;
-                }
-                if (patchState.isUsed() && FarmingConstants.isFullyGrown(patchState)) {
-                    CropHarvestAction.harvestPatch(player, patchData, tile);
-                } else if (patchState.getDiseaseState() == DiseaseState.PRESENT) {
-                    return CureCropAction.curePlant(player, patchData, tile, ItemIdentifiers.PLANT_CURE);
-                } else if (patchState.isDead()) {
-                    ClearPatchAction.clearPatch(player, patchData, tile);
-                } else if (patchState.getWeedStage() < 3) {
-                    RakePatchAction.rakePatch(player, patchState, tile);
-                } else {
-                    TaskManager.submit(new InspectionAction(player, patchState));
-                }
-                return true;
-            }
-            case FarmingConstants.SECOND_CLICK_OBJECT -> {
-                if (patchData == null) {
-                    return false;
-                }
-                if (patchState == null) {
-                    return false;
-                }
-                TaskManager.submit(new InspectionAction(player, patchState));
-                return true;
             }
         }
+
         return false;
     }
 
+    public int getGrassyPatch(int x, int y) {
+        for (int i = 0; i < FarmingPatches.values().length; i++) {
+            FarmingPatches patch = FarmingPatches.values()[i];
+            if (x >= patch.bottomLeft.getX() && y >= patch.bottomLeft.getY() && x <= patch.topLeft.getX() && y <= patch.topLeft.getY()) {
+                if (!isPatchException(x, y, patch)) {
+                    if (inhabited(x, y) || patches[i] == null)
+                        break;
+                    return i;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public Plant getPlantedPatch(int x, int y) {
+        for (int i = 0; i < FarmingPatches.values().length; i++) {
+            FarmingPatches patch = FarmingPatches.values()[i];
+            if (x >= patch.bottomLeft.getX() && y >= patch.bottomLeft.getY() && x <= patch.topLeft.getX() && y <= patch.topLeft.getY()) {
+                if (!isPatchException(x, y, patch)) {
+                    for (Plant plant : plants) {
+                        if (plant != null && plant.patch == patch.ordinal()) {
+                            return plant;
+                        }
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private boolean isPatchException(int x, int y, FarmingPatches patch) {
+        if(x == 3054 && y == 3307 && patch != FarmingPatches.FALADOR_FLOWER)
+            return true;
+        if (x == 3601 && y == 3525 && patch != FarmingPatches.PHAS_FLOWER)
+            return true;
+        return false;
+    }
+
+    public boolean click(Player player, int x, int y, int option) {
+        int grass = getGrassyPatch(x, y);
+        if (grass != -1) {
+            if (option == 1) {
+                patches[grass].click(player, option, grass);
+            }
+            return true;
+        } else {
+            Plant plant = getPlantedPatch(x, y);
+
+            if (plant != null) {
+                plant.click(player, option);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void remove(Plant plant) {
+        for (int i = 0; i < plants.length; i++) {
+            if ((plants[i] != null) && (plants[i] == plant)) {
+                patches[plants[i].getPatch().ordinal()].setTime();
+                plants[i] = null;
+                doConfig();
+                return;
+            }
+        }
+    }
+
+    public boolean useItemOnPlant(int item, int x, int y) {
+        if (item == ItemIdentifiers.RAKE) {
+            int patch = getGrassyPatch(x, y);
+            if (patch != -1) {
+                patches[patch].rake(player, patch);
+                return true;
+            }
+        }
+
+        Plant plant = getPlantedPatch(x, y);
+        if (plant != null) {
+            plant.useItemOnPlant(player, item);
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean plant(int seed, int x, int y) {
+        if (!Plants.isSeed(seed)) {
+            return false;
+        }
+
+        for (FarmingPatches patch : FarmingPatches.values()) {
+            if ((x >= patch.bottomLeft.getX()) && (y >= patch.bottomLeft.getY()) && (x <= patch.topLeft.getX()) && (y <= patch.topLeft.getY())) {
+                if (isPatchException(x, y, patch)) {
+                    continue;
+                }
+                if (!patches[patch.ordinal()].isRaked()) {
+                    player.message("This patch needs to be raked before anything can grow in it.");
+                    return true;
+                }
+
+                for (Plants plant : Plants.values()) {
+                    if (plant.seed == seed) {
+                        if (player.skills().level(Skills.FARMING) >= plant.level) {
+                            if (inhabited(x, y)) {
+                                player.message("There are already seeds planted here.");
+                                return true;
+                            }
+
+                            if (patch.seedType != plant.type) {
+                                player.message("You can't plant this type of seed here.");
+                                return true;
+                            }
+
+                            if (player.inventory().contains(patch.planter)) {
+                                player.animate(2291);
+                                player.message("You bury the seed in the dirt.");
+                                player.inventory().remove(seed, 1);
+                                Plant planted = new Plant(patch.ordinal(), plant.ordinal());
+                                planted.setTime();
+                                insert(planted);
+                                if (player.inventory().contains(25025)) { // Magic watering can (doesn't exist in osrs)
+                                    planted.watered = -1;
+                                    planted.magicCan = true;
+                                    player.message("Your magic watering can waters and fertilizes the soil.");
+                                }
+                                doConfig();
+                                player.skills().addXp(Skills.FARMING, (int)plant.plantExperience, true);
+                            } else {
+                                String name = World.getWorld().definitions().get(ItemDefinition.class, patch.planter).name;
+                                player.message("You need " + Utils.getAOrAn(name) + " " +name+ " to plant seeds.");
+                            }
+
+                        } else {
+                            player.message("You need a Farming level of " + plant.level + " to plant this.");
+                        }
+
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    private String getDirectory() {
+        return "./data/saves/farming/";
+    }
+
+    private String getFile() {
+        return getDirectory() + player.getUsername() + ".txt";
+    }
+
+    public void save() {
+        try {
+            if (!new File(getDirectory()).exists()) {
+                Preconditions.checkState(new File(getDirectory()).mkdirs());
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter(getFile()));
+            for (int i = 0; i < patches.length; i++) {
+                if (i >= FarmingPatches.values().length)
+                    break;
+                if (patches[i] != null) {
+                    writer.write("[PATCH]");
+                    writer.newLine();
+                    writer.write("patch: "+i);
+                    writer.newLine();
+                    writer.write("stage: "+patches[i].stage);
+                    writer.newLine();
+                    writer.write("time: "+patches[i].time);
+                    writer.newLine();
+                    writer.write("END PATCH");
+                    writer.newLine();
+                    writer.newLine();
+                }
+            }
+            for (int i = 0; i < plants.length; i++) {
+                if (plants[i] != null) {
+                    writer.write("[PLANT]");
+                    writer.newLine();
+                    writer.write("patch: "+plants[i].patch);
+                    writer.newLine();
+                    writer.write("plant: "+plants[i].plant);
+                    writer.newLine();
+                    writer.write("stage: "+plants[i].stage);
+                    writer.newLine();
+                    writer.write("watered: "+plants[i].watered);
+                    writer.newLine();
+                    writer.write("harvested: "+plants[i].harvested);
+                    writer.newLine();
+                    writer.write("magicCan: "+plants[i].magicCan);
+                    writer.newLine();
+                    writer.write("time: "+plants[i].time);
+                    writer.newLine();
+                    writer.write("END PLANT");
+                    writer.newLine();
+                    writer.newLine();
+                }
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void load() {
+        try {
+            if (!new File(getFile()).exists())
+                return;
+            BufferedReader r = new BufferedReader(new FileReader(getFile()));
+            int stage = -1, patch = -1, plant = -1, watered = -1, harvested = -1;
+            boolean magicCan = false;
+            long time = -1;
+            while(true) {
+                String line = r.readLine();
+                if(line == null) {
+                    break;
+                } else {
+                    line = line.trim();
+                }
+                if(line.startsWith("patch"))
+                    patch = Integer.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("stage"))
+                    stage = Integer.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("plant"))
+                    plant = Integer.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("watered"))
+                    watered = Integer.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("harvested"))
+                    harvested = Integer.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("magicCan"))
+                    magicCan = Boolean.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.startsWith("time"))
+                    time = Long.valueOf(line.substring(line.indexOf(":")+2));
+                else if(line.equals("END PATCH") && patch >= 0) {
+                    patches[patch].stage = (byte)stage;
+                    patches[patch].time = time;
+                    patch = -1;
+                }
+                else if(line.equals("END PLANT") && patch >= 0) {
+                    plants[patch] = new Plant(patch, plant);
+                    plants[patch].watered = (byte) watered;
+                    plants[patch].stage = (byte) stage;
+                    plants[patch].harvested = (byte) harvested;
+                    plants[patch].time = time;
+                    plants[patch].magicCan = magicCan;
+                    patch = -1;
+                }
+            }
+            r.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+//Catherby
+//		529(<<0) = Fruit Tree
+//		529(<<24) = Herb
+//		529(<<16) = Flower
+//		529(<<8) = South Allotment
+//		529(<<0) = North Allotment
+//		511(<<24) = Compost Bin
+//		Falador
+//		529(<<0) = Tree
+//		529(<<24) = Herb
+//		529(<<16) = Flower
+//		529(<<8) = South Allotment
+//		529(<<0) = North Allotment
+//		511(<<0) = Compost Bin
+//		Ardougne
+//		529(<<24) = Herb
+//		529(<<16) = Flower
+//		529(<<8) = South Allotment
+//		529(<<0) = North Allotment
+//		529(<<24) = Compost Bin
+//		529(<<0) = Bush
+//		Port Phasmatys
+//		529(<<24) = Herb
+//		529(<<16) = Flower
+//		529(<<8) = South Allotment
+//		529(<<0) = North Allotment
+//		511(<<16) = Compost Bin
+//		Lumbridge
+//		529(<<0) = Tree
+//		Taverley
+//		529(<<0) = Tree
+//		Varrock
+//		529(<<0) = Tree
+//		529(<<0) = Bush
+//		Gnome Stronghold
+//		529(<<0) = Tree
+//		529(<<8) = Fruit Tree
+//		Tree Gnome Village
+//		529(<<0) = Fruit Tree
+//		Brimhaven
+//		529(<<0) = Fruit Tree
+//		Rimmington
+//		529(<<0) = Bush
+//		Etceteria
+//		529(<<0) = Bush
+//		Al Kharid
+//		529(<<0) = Cactus

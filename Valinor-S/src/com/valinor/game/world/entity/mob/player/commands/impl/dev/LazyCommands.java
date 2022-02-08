@@ -5,7 +5,6 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.Referrals;
-import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.trap.impl.Chinchompas;
 import com.valinor.game.content.treasure.TreasureRewardCaskets;
@@ -325,7 +324,6 @@ public class LazyCommands {
         });
         byLazy("ps", (p,cmd,parts) -> { // save .. dont have to relog to refresh json file
             PlayerSave.save(p);
-            FarmingSaving.save(p);
         });
         byLazy("openmaster", (p,cmd,parts) -> {
             int amount = Integer.parseInt(parts[1]);

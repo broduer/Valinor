@@ -1,7 +1,5 @@
 package com.valinor.game.content.packet_actions.interactions.items;
 
-import com.valinor.game.content.skill.impl.farming.Farming;
-import com.valinor.game.content.skill.impl.farming.FarmingConstants;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
@@ -31,15 +29,11 @@ public class ItemOnObject {
             return;
         }
 
-        Tile tile = new Tile(object.getX(), object.getY(), player.tile().getZ());
-
         if (InteractionManager.checkItemOnObjectInteraction(player, item, object)) {
             return;
         }
 
-        if (Farming.handleActions(player, FarmingConstants.ITEM_ON_OBJECT_ACTION, tile, item.getId())) {
-            return;
-        }
+        player.getFarming().handleItemOnObject(item.getId(), object.getId(), object.tile().x, object.tile().y);
 
         player.message("Nothing interesting happens.");
     }

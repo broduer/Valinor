@@ -2,7 +2,6 @@ package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.minigames.impl.Barrows;
-import com.valinor.game.content.skill.impl.farming.Farming;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.object.ObjectManager;
@@ -24,8 +23,8 @@ private static final Logger logger = LogManager.getLogger(RegionChangePacketList
                 GroundItemHandler.updateRegionItems(player);
                 Barrows.onRegionChange(player);
                 ObjectManager.onRegionChange(player);
-                Farming.onRegionChange(player);
                 IronmanGroupHandler.clearInvitation(player);
+                player.getFarming().regionChanged();
                 player.setAllowRegionChangePacket(false);
                 player.afkTimer.reset();
             } catch (Exception e) {

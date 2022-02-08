@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    PETS_SCROLL("pets_scroll", AttribType.BOOLEAN),
+
     MUTED("muted", AttribType.BOOLEAN),
 
     RAIDS_BOX_GIVES_TBOW,

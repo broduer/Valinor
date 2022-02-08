@@ -3,7 +3,6 @@ package com.valinor.game.service;
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.Sets;
 import com.valinor.game.GameEngine;
-import com.valinor.game.content.skill.impl.farming.FarmingSaving;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
@@ -85,7 +84,6 @@ public class LoginService implements Service {
         stopwatch.start();
         try {
             boolean b = PlayerSave.save(request);
-            FarmingSaving.save(request);
             saveIronmanGroups();
             logger.trace("save to disk complete for {} : {}", b, request);
             return b;
