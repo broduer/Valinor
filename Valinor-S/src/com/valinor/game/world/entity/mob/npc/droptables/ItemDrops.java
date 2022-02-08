@@ -95,6 +95,7 @@ public class ItemDrops {
                     }
 
                     BOSSES.log(player, npc.id(), dropped);
+                    OTHER.log(player, npc.id(), dropped);
                 } else {
                     Item item = tableItem.convert();
                     int itemId = tableItem.convert().getId();
@@ -116,6 +117,7 @@ public class ItemDrops {
                     }
 
                     BOSSES.log(player, npc.id(), item);
+                    OTHER.log(player, npc.id(), item);
                 }
             }
         });

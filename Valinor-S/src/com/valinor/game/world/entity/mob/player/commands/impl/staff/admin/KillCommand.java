@@ -17,9 +17,11 @@ public class KillCommand implements Command {
         if (plr.isPresent()) {
             //logger.info("Player " + plr.get().getUsername() + " has been killed by admin: " + player.getUsername());
             plr.get().setHitpoints(0);
+            plr.get().die(null);
         } else if (parts.length < 2) {
             //logger.info("Player " + player.getUsername() + " has been killed by admin: " + player.getUsername());
             player.setHitpoints(0);
+            player.die(null);
         } else {
             player.message("The player " + Utils.formatText(parts[1]) +  " is not online.");
         }

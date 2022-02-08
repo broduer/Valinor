@@ -6,10 +6,12 @@ import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.kill_logs.BossKillLog;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleffCombatStrategy;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -79,7 +81,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF};
+    private static final WorldBosses[] EVENT_ROTATION = {/*WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, */WorldBosses.CORRUPTED_HUNLLEF};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
@@ -217,11 +219,12 @@ public class WorldBossEvent {
             currentSpawnPos = tile;
             ANNOUNCE_5_MIN_TIMER = false;
 
-            Npc boss = new Npc(activeEvent.npc, tile);
-            boss.respawns(false);
+            Npc boss = new Npc(activeEvent.npc, tile).spawn(false);
             boss.walkRadius(1);
             boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN,1);
-            World.getWorld().registerNpc(boss);
+            if(activeEvent == WorldBosses.CORRUPTED_HUNLLEF) {
+                boss.setCombatMethod(new CorruptedHunleffCombatStrategy());
+            }
 
             //Assign the npc reference.
             this.activeNpc = Optional.of(boss);

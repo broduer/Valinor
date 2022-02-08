@@ -31,6 +31,7 @@ public class ZombiesChampion extends CommonCombatMethod {
     }
 
     private void rangeAttack(Npc npc, Mob target) {
+        npc.animate(npc.attackAnimation());
         npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if(p != null && target.tile().inSqRadius(p.tile(),12)) {
@@ -44,6 +45,7 @@ public class ZombiesChampion extends CommonCombatMethod {
     }
 
     private void magicAttack(Npc npc, Mob target) {
+        npc.animate(npc.attackAnimation());
         npc.resetFaceTile(); // Stop facing the target
         World.getWorld().getPlayers().forEach(p -> {
             if(p != null && target.tile().inSqRadius(p.tile(),12)) {

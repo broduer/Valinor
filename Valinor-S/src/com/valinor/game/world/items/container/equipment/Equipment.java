@@ -766,7 +766,7 @@ public final class Equipment extends ItemContainer {
         if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS)) {
             player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
-            player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
+            player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.HOLY_SANGUINESTI_STAFF)) {
             player.getCombat().setAutoCastSpell(CombatSpells.SANGUINESTI_STAFF.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
