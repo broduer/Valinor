@@ -28,7 +28,6 @@ public class Sotetseg extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        System.out.println("weee");
         attacks++;
         if (attacks == 10) { //big spec
             attacks = 0;
@@ -80,7 +79,7 @@ public class Sotetseg extends CommonCombatMethod {
                         return;
                     }
                     if (cycle == 0) {
-                        new Projectile(mob, target, 1606, 1, 200, 35, 30, 0).sendProjectile();
+                        new Projectile(mob, target, 1606, 1, 175, 35, 30, 0).sendProjectile();
                         if (target.isPlayer()) {
                             target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 6, CombatType.MAGIC).checkAccuracy().submit();
                         }
