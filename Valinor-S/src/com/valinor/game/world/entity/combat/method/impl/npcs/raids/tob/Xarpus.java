@@ -205,9 +205,7 @@ public class Xarpus extends CommonCombatMethod {
             for (PoisonPool pool : poison) {
                 if (pool == null)
                     continue;
-                Mob creator = targets.stream().filter(p -> !p.getAsPlayer().dead()).findFirst().orElse(null);
-                if (creator != null)
-                    World.getWorld().tileGraphic(pool.getGfx(), pool.getTile(),0,0);
+                targets.stream().filter(p -> !p.getAsPlayer().dead()).findFirst().ifPresent(creator -> World.getWorld().tileGraphic(pool.getGfx(), pool.getTile(), 0, 0));
                 for (Mob t : targets) {
                     if (t == null || t.getAsPlayer().dead())
                         continue;
@@ -233,7 +231,7 @@ public class Xarpus extends CommonCombatMethod {
             if (target.tile().isWithinDistance(STARING_QUAD, 7)) {
                 new Projectile(mob, target, 1555, 0, 120, 50, 25, 0).sendProjectile();
                 target.graphic(1556);
-                target.hit_(mob,50 + (int) Math.ceil((float)(hit.getDamage() / 2)), 3, SplatType.POISON_HITSPLAT);
+                target.hit_(mob,World.getWorld().random(6, 8), 3, SplatType.POISON_HITSPLAT);
             }
         }
     }

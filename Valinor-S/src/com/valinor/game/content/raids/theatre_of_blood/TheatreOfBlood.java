@@ -144,54 +144,34 @@ public class TheatreOfBlood extends Raids {
     public boolean death(Player player) {
         Party party = player.raidsParty;
         if (party == null) return false;
-        player.teleport(respawnTile(party, player.tile().level));
+        Tile deathTile = respawnTile(party, player.tile().level);
+        player.teleport(deathTile.getX(), deathTile.getY(), party.getHeight());
         int pointsLost = (int) (player.<Integer>getAttribOr(PERSONAL_POINTS, 0) * 0.4);
         if (pointsLost > 0)
             addPoints(player, -pointsLost);
 
         //Make sure to heal
         player.healPlayer();
-
-        party.bossFightLives.put(player.getUsername().toLowerCase(), 0);
-        if (party.teamDead()) {
-            party.getMembers().forEach(p -> p.teleport(new Tile(1245, 3561, 0)));
-            party.getMembers().forEach(p -> p.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, 0));
-            party.getMembers().forEach(p -> p.message("Unfortunately your team has failed Theatre of Blood!"));
-            party.getMembers().forEach(this::clearParty);
-        } else {
-            Tile deathTile = respawnTile(party, player.tile().level);
-            player.teleport(deathTile.getX(), deathTile.getY(), party.getHeight());
-            clearParty(player);
-        }
         return true;
     }
 
     @Override
     public Tile respawnTile(Party party, int level) {
-        switch (party.getRaidStage()) {
-            case 1://maiden
-                return new Tile(3190, 4446, level);
-            case 2://bloat
-                return new Tile(3309, 4447, level);
-            case 3://vasilias
-                return new Tile(3295, 4262, level);
-            case 4://sotetseg
-                return new Tile(3280, 4302, level);
-            case 5://xarpus
-                return new Tile(3280, 4293, level);
-            case 6://verzik
-                int[] xPos = {3179, 3177, 3175, 3161, 3159, 3157};
-                int yPos = 4325;
-                for (int x : xPos) {
-                    boolean playerInPos = party.getMembers().stream().anyMatch(plr -> plr.tile().equalsIgnoreHeight(Tile.of(x, yPos)));
-                    if (!playerInPos) {
-                        return Tile.of(x, yPos);
-                    }
-                }
-                return Tile.of(3179, yPos);
-            default:
-                throw new IllegalStateException("Unexpected value: " + party.getRaidStage());
-        }
+        return switch (party.getRaidStage()) {
+            case 1 ->//maiden
+                new Tile(3190, 4446, level);
+            case 2 ->//bloat
+                new Tile(3309, 4447, level);
+            case 3 ->//vasilias
+                new Tile(3295, 4262, level);
+            case 4 ->//sotetseg
+                new Tile(3280, 4302, level);
+            case 5 ->//xarpus
+                new Tile(3280, 4293, level);
+            case 6 ->//verzik
+                new Tile(3168, 4303, level);
+            default -> throw new IllegalStateException("Unexpected value: " + party.getRaidStage());
+        };
     }
 
     @Override
@@ -238,8 +218,6 @@ public class TheatreOfBlood extends Raids {
         party.monsters.add(sotetseg);
         party.monsters.add(xarpus);
         party.monsters.add(verzik);
-
-        party.setupBossLives();
     }
 
     private void spawnChests(Player player) {

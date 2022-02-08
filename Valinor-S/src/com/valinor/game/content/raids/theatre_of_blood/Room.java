@@ -36,11 +36,6 @@ public class Room extends Interaction {
             }
 
             if (object.getId() == BARRIER_32755) {
-                if(!party.canEnterBossRoom(player)) {
-                    player.message("You have died and can't re-enter this fight!");
-                    return true;
-                }
-
                 if (player.tile().inArea(MAIDEN)) {
                     if (player.getX() >= 3186) {
                         player.teleport(3184, player.getY(), party.getHeight());

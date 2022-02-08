@@ -47,7 +47,6 @@ public class Party {
     private final List<Player> members;
     public ArrayList<Npc> monsters = new ArrayList<>();
     public ArrayList<GameObject> objects = new ArrayList<>();
-    public final Map<String, Integer> bossFightLives = Maps.newConcurrentMap();
     private RaidsType raidsSelected = RaidsType.CHAMBER_OF_XERICS;
     private int height;
     private int kills;
@@ -138,19 +137,6 @@ public class Party {
 
     public void setMeatTree(GameObject meatTree) {
         this.meatTree = meatTree;
-    }
-
-    public void setupBossLives() {
-        bossFightLives.clear();
-        getMembers().forEach(p -> bossFightLives.put(p.getUsername().toLowerCase(), 1));
-    }
-
-    public boolean canEnterBossRoom(Player player) {
-        return bossFightLives.get(player.getUsername().toLowerCase()) > 0;
-    }
-
-    public boolean teamDead() {
-        return bossFightLives.values().stream().allMatch(val -> val == 0);
     }
 
     public void removeMember(Player player) {
