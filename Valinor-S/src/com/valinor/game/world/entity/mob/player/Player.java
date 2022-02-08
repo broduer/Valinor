@@ -71,6 +71,7 @@ import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.content.instance.impl.NightmareInstance;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.vorkath.VorkathState;
+import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.ZarosGodwars;
 import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
@@ -1317,6 +1318,7 @@ public class Player extends Mob {
          */
         runExceptionally(() -> {
             clearInstance();
+            ZarosGodwars.removePlayer(this);
         });
 
         runExceptionally(() -> {
