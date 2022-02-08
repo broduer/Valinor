@@ -29,10 +29,10 @@ public class CorruptedNechryarch extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-       if (!acidAttackCooldown.isDelayed()) {
-            acid_attack(mob);
+        if (!acidAttackCooldown.isDelayed()) {
+            acid_attack(mob, target);
         }
-        boolean close = target.tile().isWithinDistance(mob.tile(),2);
+        boolean close = target.tile().isWithinDistance(mob.tile(), 2);
         if (close && World.getWorld().rollDie(3))
             melee_attack(mob, target);
         else
@@ -49,41 +49,29 @@ public class CorruptedNechryarch extends CommonCombatMethod {
         return 12;
     }
 
-    private void acid_attack(Mob mob) {
+    private void acid_attack(Mob mob, Mob target) {
         acidAttackCooldown.delay(50);
         Tile lastAcidPos = mob.tile();
 
-        ArrayList<Player> targets = new ArrayList<>();
-        World.getWorld().getPlayers().forEach(p -> {
-            if (p != null && p.tile().inSqRadius(mob.tile(), 12)) {
-                targets.add(p);
-            }
-        });
         for (int cycle = 0; cycle < 1; cycle++) {
-            Player random = Utils.randomElement(targets);
-            if(random == null) {
-                return;
-            }
             // so this start delay needs to increase per target so the attack appears
             // in sequence..
             Chain.bound(null).runFn(2, () -> {
-                Tile lockonTile = random.tile();
-                var tileDist = mob.tile().transform(3, 3, 0).distance(random.tile());
+                Tile lockonTile = target.tile();
+                var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
                 var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
 
                 new Projectile(lastAcidPos, lockonTile, -1, 5005, 12 * tileDist, 10, 35, 35, 0, 16, 64).sendProjectile();
                 World.getWorld().tileGraphic(5001, lastAcidPos, 0, 0);
                 World.getWorld().tileGraphic(5004, lastAcidPos, 0, 0);
                 acidPools.add(lastAcidPos);
-                for (Player player : targets) {
-                    Chain.bound(null).runFn(delay, () -> {
-                        if (player.tile().equals(lockonTile)) {
-                            int damage = World.getWorld().random(1, 30);
-                            player.hit(mob, damage);
-                            mob.heal(damage);
-                        }
-                    }).then(20, acidPools::clear);
-                }
+                Chain.bound(null).runFn(delay, () -> {
+                    if (target.tile().equals(lockonTile)) {
+                        int damage = World.getWorld().random(1, 30);
+                        target.hit(mob, damage);
+                        mob.heal(damage);
+                    }
+                }).then(20, acidPools::clear);
                 // after fixed delay of 2s
             });
         }
@@ -91,31 +79,25 @@ public class CorruptedNechryarch extends CommonCombatMethod {
 
     private void melee_attack(Mob mob, Mob target) {
         mob.animate(4672);
-        World.getWorld().getPlayers().forEach(p -> {
-            if (p != null && p.tile().isWithinDistance(mob.tile(), 2)) {
-                p.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
-            }
-        });
+        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
     }
 
     private void magic_attack(Mob mob, Mob target) {
         mob.animate(7550);
-        World.getWorld().getPlayers().forEachInRegion(7484, p -> {
-            if (p != null && ProjectileRoute.allow(mob, p)) {
-                var tileDist = mob.tile().transform(3, 3, 0).distance(p.tile());
-                var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
-                new Projectile(mob, target, 5000, 30, 12 * tileDist, 120, 43, 0, 16, 64).sendProjectile();
-                p.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
-                if (World.getWorld().rollDie(10)) {
-                    Chain.bound(null).runFn(delay + 2, () -> {
-                        //after hit effects
-                        for (int i = 0; i < 5; i++) {
-                            p.hit(mob,3);
-                            p.graphic(5002);
-                        }
-                    });
-                }
+        if (ProjectileRoute.allow(mob, target)) {
+            var tileDist = mob.tile().transform(3, 3, 0).distance(target.tile());
+            var delay = Math.max(1, (20 + (tileDist * 12)) / 30);
+            new Projectile(mob, target, 5000, 30, 12 * tileDist, 120, 43, 0, 16, 64).sendProjectile();
+            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().submit();
+            if (World.getWorld().rollDie(10)) {
+                Chain.bound(null).runFn(delay + 2, () -> {
+                    //after hit effects
+                    for (int i = 0; i < 5; i++) {
+                        target.hit(mob, 3);
+                        target.graphic(5002);
+                    }
+                });
             }
-        });
+        }
     }
 }
