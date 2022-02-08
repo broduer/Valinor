@@ -23,12 +23,15 @@ public class Sotetseg extends CommonCombatMethod {
     private static final Graphic RED_BALL_SPLASH = new Graphic(1605);
     private static final Area ARENA = new Area(3273, 4308, 3287, 4334);
     private static final int ATTACK = 8139;
-    private boolean specialAttack = false;
+
+    private int attacks = 0;
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        if (World.getWorld().random(0, 10) == 0) { //big spec
-            specialAttack = true;
+        System.out.println("weee");
+        attacks++;
+        if (attacks == 10) { //big spec
+            attacks = 0;
             mob.animate(ATTACK - 1);
             new Projectile(mob, target, 1604, 1, 350, 35, 30, 0).sendProjectile();
             Task task = new Task("SotetsegBigSpecTask", 1) {
@@ -63,46 +66,45 @@ public class Sotetseg extends CommonCombatMethod {
 
             };
             TaskManager.submit(task);
-            return;
-        }
-        specialAttack = false;
-        mob.animate(ATTACK);
-        //Normal attack
-        Task task = new Task("SotetsegNormalAttackTask", 1) {
-            int cycle = 0;
-            final List<Mob> chainable = getPossibleTargets(mob);
+        } else {
+            mob.animate(ATTACK);
+            //Normal attack
+            Task task = new Task("SotetsegNormalAttackTask", 1) {
+                int cycle = 0;
+                final List<Mob> chainable = getPossibleTargets(mob);
 
-            @Override
-            public void execute() {
-                if (mob.dead()) {
-                    stop();
-                    return;
-                }
-                if (cycle == 0) {
-                    new Projectile(mob, target, 1606, 1, 200, 35, 30, 0).sendProjectile();
-                    if (target.isPlayer()) {
-                        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 6, CombatType.MAGIC).checkAccuracy().submit();
+                @Override
+                public void execute() {
+                    if (mob.dead()) {
+                        stop();
+                        return;
                     }
-                } else if (cycle == 5 && chainable.size() > 1) {
-                    Mob chain = World.getWorld().randomTypeOfList(chainable
-                        .stream()
-                        .filter(player -> player.tile().inArea(ARENA))
-                        .filter(player -> player != target)
-                        .collect(Collectors.toList()));
-                    if(chain != null) {
-                        if (chain.isPlayer() && target.isPlayer() && !chain.getAsPlayer().dead()) {
-                            new Projectile(mob, target, 1607, 0, 200, 35, 30, 0).sendProjectile();
-                            if (target.isPlayer()) {
-                                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), 4, CombatType.RANGED).checkAccuracy().submit();
+                    if (cycle == 0) {
+                        new Projectile(mob, target, 1606, 1, 200, 35, 30, 0).sendProjectile();
+                        if (target.isPlayer()) {
+                            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 6, CombatType.MAGIC).checkAccuracy().submit();
+                        }
+                    } else if (cycle == 5 && chainable.size() > 1) {
+                        Mob chain = World.getWorld().randomTypeOfList(chainable
+                            .stream()
+                            .filter(player -> player.tile().inArea(ARENA))
+                            .filter(player -> player != target)
+                            .collect(Collectors.toList()));
+                        if (chain != null) {
+                            if (chain.isPlayer() && target.isPlayer() && !chain.getAsPlayer().dead()) {
+                                new Projectile(mob, target, 1607, 0, 200, 35, 30, 0).sendProjectile();
+                                if (target.isPlayer()) {
+                                    target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), 4, CombatType.RANGED).checkAccuracy().submit();
+                                }
                             }
                         }
+                        stop();
                     }
-                    stop();
+                    cycle++;
                 }
-                cycle++;
-            }
-        };
-        TaskManager.submit(task);
+            };
+            TaskManager.submit(task);
+        }
     }
 
     @Override
@@ -112,6 +114,6 @@ public class Sotetseg extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return specialAttack ? 9 : 5;
+        return 12;
     }
 }

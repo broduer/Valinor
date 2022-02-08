@@ -149,11 +149,6 @@ public class Room extends Interaction {
                 return true;
             }
 
-            if(object.getId() == CHEST_32758) {
-                //TODO c.getShops().openShop(135);
-                return true;
-            }
-
             if(object.getId() == ObjectIdentifiers.TELEPORT_CRYSTAL) {
                 if (player.getRaids() != null) {
                     player.getRaids().exit(player);

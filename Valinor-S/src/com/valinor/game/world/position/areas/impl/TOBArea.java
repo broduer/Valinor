@@ -100,7 +100,7 @@ public class TOBArea extends Controller {
 
     @Override
     public boolean inside(Mob mob) {
-        return mob.tile().region() == 12869 || mob.tile().region() == 12613 || mob.tile().region() == 13125 || mob.tile().region() == 13122 || mob.tile().region() == 13123 || mob.tile().region() == 12611;
+        return mob.tile().region() == 12869 || mob.tile().region() == 12613 || mob.tile().region() == 13125 || mob.tile().region() == 13122 || mob.tile().region() == 13123 || mob.tile().region() == 12611 || mob.tile().region() == 12612;
     }
 
     @Override
