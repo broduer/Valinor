@@ -31,12 +31,12 @@ public class Vetion extends CommonCombatMethod {
         }
 
         if (Utils.rollDie(20, 1)) { // 5% chance the target sends his bitch ass lightning
-            doMagic();
-        } else if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
+            doMagic(mob, target);
+        } else if (CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target) && World.getWorld().rollDie(2,1)) {
             mob.animate(5499);
             target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
         } else {
-            doMagic();
+            doMagic(mob, target);
         }
     }
 
@@ -50,7 +50,7 @@ public class Vetion extends CommonCombatMethod {
         return 6;
     }
 
-    private void doMagic() {
+    private void doMagic(Mob mob, Mob target) {
         mob.animate(mob.attackAnimation());
         Tile lightning_one = target.tile();
         Tile lightning_two = lightning_one.transform(1, 0);

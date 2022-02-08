@@ -36,6 +36,8 @@ public class Callisto extends CommonCombatMethod {
         return mob.getBaseAttackSpeed();
     }
 
+    private int attacks = 0;
+
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         Npc npc = (Npc) mob;
@@ -44,14 +46,19 @@ public class Callisto extends CommonCombatMethod {
             prepareHeal(npc);
         }
 
+        attacks++;
+
         // Determine if we do a special hit, or a regular hit.
-        if (CombatFactory.canReach(npc, CombatFactory.MELEE_COMBAT, target) && Utils.percentageChance(80)) {
+        if (CombatFactory.canReach(npc, CombatFactory.MELEE_COMBAT, target) && World.getWorld().rollDie(2,1)) {
             target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
             npc.animate(npc.attackAnimation());
-        } else if (Utils.percentageChance(80)) {
+        }
+
+        if (attacks == 5) {
             fury(npc, target);
-        } else {
+        } else if(attacks == 10) {
             roar(npc, target);
+            attacks = 0;
         }
     }
 
@@ -65,7 +72,7 @@ public class Callisto extends CommonCombatMethod {
         new Projectile(npc, target, 395, 40, 60, 31, 43, 0).sendProjectile();
 
         Chain.bound(null).name("CallistoFuryTask").runFn(2, () -> {
-            target.hit(npc, Utils.random(60), CombatType.MELEE).checkAccuracy().submit();
+            target.hit(npc, Utils.random(60));
             ((Player)target).message("Callisto's fury sends an almighty shockwave through you.");
             target.stun(4);
             target.graphic(245, 124, 0);

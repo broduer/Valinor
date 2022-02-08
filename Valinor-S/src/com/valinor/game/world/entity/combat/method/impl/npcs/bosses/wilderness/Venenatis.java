@@ -20,7 +20,7 @@ public class Venenatis extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        if (withinDistance(2) && World.getWorld().rollDie(3, 1)) { // melee has "halberd" range
+        if (withinDistance(2) && World.getWorld().rollDie(2, 1)) { // melee has "halberd" range
             meleeAttack(mob, target);
         } else {
             magicAttack(mob, target);
@@ -52,12 +52,12 @@ public class Venenatis extends CommonCombatMethod {
         mob.getAsNpc().combatInfo().maxhit = 22;
         mob.graphic(164);
         mob.animate(5322);
-        for (Player p : mob.getLocalPlayers()) {
-            if (DumbRoute.withinDistance(mob, p, 8)) {
+        World.getWorld().getPlayers().forEachInRegion(13370, p -> {
+            if (p != null && DumbRoute.withinDistance(mob, p, 8)) {
                 new Projectile(mob, target, 165, 40, mob.projectileSpeed(target), 23, 21, 0).sendProjectile();
                 target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), mob.getProjectileHitDelay(target), CombatType.MAGIC).checkAccuracy().submit();
             }
-        }
+        });
     }
 
     //Web attack: Her most deadly attack, Venenatis throws a ball of web at the player, dealing up to 50

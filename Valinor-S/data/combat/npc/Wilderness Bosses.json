@@ -68,7 +68,7 @@
       "death": 6576
     },
     "scripts": {
-      //"combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.vetion.VetionMinion",
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.vetion.SkeletonHellhound",
       "death": "nl.bartpelle.veteres.content.npcs.bosses.wilderness.vetion.VetionMinion.death"
     }
   },

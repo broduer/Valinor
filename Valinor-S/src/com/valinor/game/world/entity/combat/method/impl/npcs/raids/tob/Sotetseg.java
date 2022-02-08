@@ -25,6 +25,7 @@ public class Sotetseg extends CommonCombatMethod {
     private static final int ATTACK = 8139;
 
     private int attacks = 0;
+    private int normalAttacks = 0;
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
@@ -68,41 +69,27 @@ public class Sotetseg extends CommonCombatMethod {
         } else {
             mob.animate(ATTACK);
             //Normal attack
-            Task task = new Task("SotetsegNormalAttackTask", 1) {
-                int cycle = 0;
+            normalAttacks++;
+            if(normalAttacks == 5) {
+                normalAttacks = 0;
                 final List<Mob> chainable = getPossibleTargets(mob);
-
-                @Override
-                public void execute() {
-                    if (mob.dead()) {
-                        stop();
-                        return;
+                Mob chain = World.getWorld().randomTypeOfList(chainable
+                    .stream()
+                    .filter(player -> player.tile().inArea(ARENA))
+                    .collect(Collectors.toList()));
+                if (chain != null) {
+                    if (chain.isPlayer() && target.isPlayer() && !chain.getAsPlayer().dead()) {
+                        new Projectile(mob, target, 1607, 0, 175, 35, 30, 0).sendProjectile();
+                        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), 5, CombatType.RANGED).checkAccuracy().submit();
                     }
-                    if (cycle == 0) {
-                        new Projectile(mob, target, 1606, 1, 175, 35, 30, 0).sendProjectile();
-                        if (target.isPlayer()) {
-                            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 6, CombatType.MAGIC).checkAccuracy().submit();
-                        }
-                    } else if (cycle == 5 && chainable.size() > 1) {
-                        Mob chain = World.getWorld().randomTypeOfList(chainable
-                            .stream()
-                            .filter(player -> player.tile().inArea(ARENA))
-                            .filter(player -> player != target)
-                            .collect(Collectors.toList()));
-                        if (chain != null) {
-                            if (chain.isPlayer() && target.isPlayer() && !chain.getAsPlayer().dead()) {
-                                new Projectile(mob, target, 1607, 0, 200, 35, 30, 0).sendProjectile();
-                                if (target.isPlayer()) {
-                                    target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), 4, CombatType.RANGED).checkAccuracy().submit();
-                                }
-                            }
-                        }
-                        stop();
-                    }
-                    cycle++;
                 }
-            };
-            TaskManager.submit(task);
+                return;
+            }
+
+            new Projectile(mob, target, 1606, 1, 175, 35, 30, 0).sendProjectile();
+            if (target.isPlayer()) {
+                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), 6, CombatType.MAGIC).checkAccuracy().submit();
+            }
         }
     }
 

@@ -938,6 +938,10 @@ public class CombatFactory {
 
         var isOpponentDead = myLastAttacker == null || myLastAttacker.dead();
 
+        if (other.isNpc() && other.getAsNpc().getCombatMethod() != null && other.getAsNpc().getCombatMethod().canMultiAttackInSingleZones()) {
+            return true;
+        }
+
         if (myLastAttackedTime < myTimeToPj && myLastAttacker != null && myLastAttacker != other && !isOpponentDead) {
             // Multiway check bro!
             if (entity.isPlayer()) {
@@ -966,10 +970,6 @@ public class CombatFactory {
                     return false;
                 }
             }
-        }
-
-        if (other.isNpc() && other.getAsNpc().getCombatMethod() != null && other.getAsNpc().getCombatMethod().canMultiAttackInSingleZones()) {
-            return true;
         }
 
         // Check immune npcs..

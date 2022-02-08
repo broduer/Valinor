@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses;
 
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -13,8 +14,12 @@ public class Barrelchest extends CommonCombatMethod {
     }
 
     private void meleeAttack(Mob mob, Mob target) {
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
         mob.animate(mob.attackAnimation());
+        if(World.getWorld().rollDie(2,1)) {
+            target.hit(mob, World.getWorld().random(1, mob.getAsNpc().combatInfo().maxhit / 2));
+        } else {
+            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), CombatType.MELEE).checkAccuracy().submit();
+        }
     }
 
     @Override

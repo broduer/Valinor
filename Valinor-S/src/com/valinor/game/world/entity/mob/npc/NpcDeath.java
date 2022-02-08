@@ -727,10 +727,6 @@ public class NpcDeath {
                     }
                 }
 
-                if (npc.id() == 6613) {
-                    VetionMinion.death(npc); //Do Vetíon minion death
-                }
-
                 if (npc.id() == 6716 || npc.id() == 6723 || npc.id() == 7649) {
                     NechryarchDeathSpawn.death(npc); //Do death spawn death
                 }

@@ -1,1 +1,17 @@
-{}
+{
+  "patrick": {
+    "name": "patrick",
+    "owner": "patrick",
+    "slogan": "None",
+    "joinable": "ANYONE",
+    "talkable": "ANYONE",
+    "kickable": "LEADER",
+    "managable": "LEADER",
+    "lootshare": false,
+    "lock": false,
+    "memberLimit": 100,
+    "ranked": {
+      "patrick": "LEADER"
+    }
+  }
+}

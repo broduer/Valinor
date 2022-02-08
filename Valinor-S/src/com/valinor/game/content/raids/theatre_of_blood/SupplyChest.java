@@ -37,7 +37,7 @@ public class SupplyChest extends Interaction {
 
     @Override
     public boolean handleItemContainerActionInteraction(Player player, Item item, int slot, int interfaceId, int type) {
-        if(interfaceId == 12230) {
+        if(interfaceId == 12236) {
             takeSupply(player, item.getId(), slot);
             return true;
         }
@@ -101,7 +101,7 @@ public class SupplyChest extends Interaction {
                 //Make sure item id and index both match
                 if(supply.id == id && supply.index == index) {
                     var currentPoints = player.<Integer>getAttribOr(AttributeKey.THEATRE_OF_BLOOD_POINTS,0);
-                    if(currentPoints > supply.cost) {
+                    if(currentPoints >= supply.cost) {
                         currentPoints = player.<Integer>getAttribOr(AttributeKey.THEATRE_OF_BLOOD_POINTS,0) - supply.cost;
                         player.putAttrib(AttributeKey.THEATRE_OF_BLOOD_POINTS, currentPoints);
 
