@@ -127,7 +127,7 @@ public class Xarpus extends CommonCombatMethod {
         super.process(mob, target);
         List<Mob> targets = getPossibleTargets(mob);
         Optional<Mob> u = targets.stream().filter(t -> t.tile().isWithinDistance(mob.tile(), 6)).findAny();
-        if (phase == 0 && exumedCount < 10 && u.isPresent()) {
+        if (phase == 0 && exumedCount < 5 && u.isPresent()) {
             if (healingTask == null) {
                 if (!targets.isEmpty()) {
                     healingTask = new Task("XarpusProcessHealingTask", 1) {

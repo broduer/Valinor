@@ -85,21 +85,21 @@ public class Room extends Interaction {
             if(object.getId() == FORMIDABLE_PASSAGE) {
                 if (player.tile().inArea(MAIDEN)) {
                     if (party.getRaidStage() == 2) {
-                        player.teleport(3322, 4448);
+                        player.teleport(3322, 4448, party.getHeight());
                     } else {
                         player.message("You must defeat Maiden before progressing!");
                     }
                 }
                 if (player.tile().inArea(BLOAT)) {
                     if (party.getRaidStage() == 3) {
-                        player.teleport(3296, 4283);
+                        player.teleport(3296, 4283, party.getHeight());
                     } else {
                         player.message("You must defeat Bloat before progressing!");
                     }
                 }
                 if (player.tile().inArea(NYLOCAS)) {
                     if (party.getRaidStage() == 4) {
-                        player.teleport(3291, 4328);
+                        player.teleport(3291, 4328, party.getHeight());
                     } else {
                         player.message("You must defeat Nylocas before progressing!");
                     }

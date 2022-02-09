@@ -48,7 +48,7 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        player.getEventRewards().rewardsUnlocked().clear();
+       player.teleport(3169, 4386, player.tile().level+1);
         player.message("Test command has been activated.");
         //PlayerSession.main(new String[0]);
     }

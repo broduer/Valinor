@@ -55,7 +55,7 @@ public class Sotetseg extends CommonCombatMethod {
                         }
                         for (Mob t : targets) {
                             if (t.isPlayer() && !t.getAsPlayer().dead() && t.tile().isWithinDistance(target.tile(), 1)) {
-                                target.hit(mob, damage / inRange, 0);
+                                t.hit(mob, damage / inRange, 0);
                                 t.getAsPlayer().graphic(RED_BALL_SPLASH.id(), RED_BALL_SPLASH.height(), 0);
                             }
                         }
