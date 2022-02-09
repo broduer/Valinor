@@ -132,9 +132,8 @@ public class WinterEvent extends Interaction {
                     if (reward == null) {
                         return;
                     }
-                    reward = new Item(reward.getId(), 1);
 
-                    System.out.println("reward: "+reward);
+                    reward = new Item(reward.getId(), 1);
 
                     player.getEventRewards().refreshItems();
                     player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward, 0);
