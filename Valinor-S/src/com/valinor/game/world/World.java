@@ -717,7 +717,7 @@ public class World {
             if(GameServer.properties().halloween) {
                 Halloween.loadNpcs();
             }
-            if(GameServer.properties().christmas) {
+            if(GameServer.properties().winter) {
                 WinterEvent.loadNpcs();
                 WinterEvent.loadObjects();
             }

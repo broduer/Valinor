@@ -157,7 +157,7 @@ public class UnlockEventRewards {
         if(event.equalsIgnoreCase("Halloween")) {
             player.getPacketSender().sendString(73304, "Halloween event 2021");
         } else if(event.equalsIgnoreCase("Winter")) {
-            player.getPacketSender().sendString(73304, "Christmas event 2021");
+            player.getPacketSender().sendString(73304, "Winter event 2022");
         }
 
         setAllItemsTrans();

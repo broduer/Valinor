@@ -159,6 +159,29 @@ public class HoverMenuManager {
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
 
+        menus.put(WINTER_CASKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
+            Arrays.asList(
+                CRYSTAL_OF_ITHELL,
+                CRYSTAL_OF_IORWERTH,
+                CRYSTAL_OF_TRAHAEARN,
+                CRYSTAL_OF_CADARN,
+                CRYSTAL_OF_CRWYS,
+                CRYSTAL_OF_MEILYR,
+                CRYSTAL_OF_HEFIN,
+                CRYSTAL_OF_AMLODD,
+                PETS_MYSTERY_BOX,
+                CORRUPTING_STONE,
+                CURSED_AMULET_OF_THE_DAMNED,
+                FEROCIOUS_GLOVES,
+                SUPER_MYSTERY_BOX,
+                NIGHTMARE_STAFF,
+                RED_DYE,
+                RUNE_POUCH_I,
+                AVERNIC_DEFENDER_HILT,
+                INFERNAL_CAPE,
+                AVAS_ASSEMBLER
+            )));
+        
         menus.put(MYSTERY_TICKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
                 MYSTERY_CHEST, DONATOR_MYSTERY_BOX, BANDOS_TASSETS, BANDOS_CHESTPLATE, ARMADYL_CHESTPLATE, ARMADYL_CHAINSKIRT, SARADOMIN_GODSWORD,

@@ -42,9 +42,6 @@ public class WinterEvent extends Interaction {
     private static final int OVERWORLD_MAX_ICE_IMP = 100;
 
     public static void loadNpcs() {
-        //Npc santa = new Npc(SANTA, new Tile(3096, 3486));
-        //World.getWorld().registerNpc(santa);
-
         loadIceImp();
         logger.info("Loaded winter npcs.");
     }
