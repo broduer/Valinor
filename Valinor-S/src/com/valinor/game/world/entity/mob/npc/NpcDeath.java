@@ -59,6 +59,7 @@ import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.ICELORD;
 
 /**
  * Represents a npc death task, which handles everything
@@ -136,6 +137,16 @@ public class NpcDeath {
                 killer.getSlayerKillLog().addKill(npc);
                 if (!npc.isWorldBoss() || npc.id() != THE_NIGHTMARE_9430 || npc.id() != KALPHITE_QUEEN_6500) {
                     killer.getBossKillLog().addKill(npc);
+                }
+
+                if(npc.def().name.equalsIgnoreCase("Ice imp")) {
+                    int chance = killer.getPlayerRights().isDeveloperOrGreater(killer) ? 1 : 100;
+                    if(World.getWorld().rollDie(chance, 1)) {
+                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + killer.getUsername() + " just encountered a Wampa!");
+                        Npc wampa = new Npc(ICELORD, npc.spawnTile()).spawn(false);
+                        wampa.walkRadius(1);
+                        wampa.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN,1);
+                    }
                 }
 
                 if(npc.id() == NpcIdentifiers.HYDRA) {
