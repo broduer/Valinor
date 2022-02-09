@@ -29,7 +29,7 @@ public class CorruptingStone extends Interaction {
                 }
                 player.inventory().remove(new Item(CORRUPTING_STONE), true);
                 player.inventory().remove(new Item(BOW_OF_FAERDHINEN), true);
-                player.inventory().add(new Item(BOW_OF_FAERDHINEN_C), true);
+                player.inventory().add(new Item(BOW_OF_FAERDHINEN_C_25884), true);
             });
             return true;
         }

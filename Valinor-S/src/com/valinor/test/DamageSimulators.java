@@ -672,11 +672,11 @@ public class DamageSimulators {
 
         if (entity.isPlayer()) {
             final Player player = (Player) entity;
-            if (type.equals(CombatType.MELEE) && (FormulaUtils.voidMelee(player) || FormulaUtils.voidCustomMelee(player)))
+            if (type.equals(CombatType.MELEE) && (FormulaUtils.voidMelee(player)))
                 off_void_bonus = 1.10;
-            else if (type.equals(CombatType.RANGED) && (FormulaUtils.voidRanger(player) || FormulaUtils.voidCustomRanger(player)))
+            else if (type.equals(CombatType.RANGED) && (FormulaUtils.voidRanger(player)))
                 off_void_bonus = 1.10;
-            else if (type.equals(CombatType.MAGIC) && (FormulaUtils.voidMagic(player) || FormulaUtils.voidCustomMagic(player)))
+            else if (type.equals(CombatType.MAGIC) && (FormulaUtils.voidMagic(player)))
                 off_void_bonus = 1.30;
         }
 

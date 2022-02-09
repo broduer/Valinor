@@ -3,6 +3,7 @@ package com.valinor.cache.def.impl;
 import com.valinor.ClientConstants;
 import com.valinor.cache.def.NpcDefinition;
 
+import static com.valinor.util.CustomNpcIdentifiers.WAMPA;
 import static com.valinor.util.NpcIdentifiers.*;
 
 public class NpcManager {
@@ -66,8 +67,8 @@ public class NpcManager {
                 definition.size = 2;
                 break;
                 
-            case 15117:
-                definition.name = "Icelord";
+            case WAMPA:
+                definition.name = "Wampa";
                 definition.combatLevel = 981;
                 definition.modelId = new int[] {21804,21801};
                 definition.standingAnimation = 5722;

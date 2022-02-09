@@ -27,7 +27,7 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class RangeMaxHit {
 
-    private static final HashSet<Integer> TWISTED_BOWS = new HashSet<>(Arrays.asList(TWISTED_BOW, TWISTED_BOW_I, TWISTED_BOW_ORANGE, TWISTED_BOW_PURPLE, SANGUINE_TWISTED_BOW));
+    private static final HashSet<Integer> TWISTED_BOWS = new HashSet<>(Arrays.asList(TWISTED_BOW, TWISTED_BOW_RED, TWISTED_BOW_ORANGE, TWISTED_BOW_PURPLE, SANGUINE_TWISTED_BOW));
 
     public static int maxHit(Mob mob, Mob target, boolean factorInAmmoRangeStr, boolean includeNpcMax) {
         Player player = (Player) mob;
@@ -96,7 +96,7 @@ public class RangeMaxHit {
         }
 
         // Elite Void effect adds extra 2.5%.
-        if (FormulaUtils.wearingEliteVoid(player) || FormulaUtils.voidCustomRanger(player)) {
+        if (FormulaUtils.wearingEliteVoid(player)) {
             D *= 1.125;
         }
 

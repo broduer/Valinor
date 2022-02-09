@@ -175,6 +175,7 @@ public class Halloween extends Interaction {
             if (GameServer.properties().halloween) {
                 player.optionsTitled("Exchange your 5,000 H'ween tokens for a reward?", "Yes", "No", () -> {
                     if (!player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
+                        player.message(Color.RED.wrap("You do not have enough H'ween tokens to roll for a reward."));
                         return;
                     }
 
@@ -189,20 +190,16 @@ public class Halloween extends Interaction {
                         return;
                     }
 
-                    if (player.inventory().contains(new Item(HWEEN_TOKENS, 5000))) {
-                        player.getEventRewards().refreshItems();
-                        player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(), 0);
-                        player.getEventRewards().rollForReward(HWEEN_TOKENS, 5000, reward.copy(), "H'ween");
-                    } else {
-                        player.message(Color.RED.wrap("You do not have enough H'ween tokens to roll for a reward."));
-                    }
+                    player.getEventRewards().refreshItems();
+                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward, 0);
+                    player.getEventRewards().rollForReward(HWEEN_TOKENS, 5000, reward, "Halloween");
                 });
+                return true;
             }
-            return true;
         }
         if (button == 73310) {
             if (GameServer.properties().halloween) {
-                player.getEventRewards().reset("H'ween");
+                player.getEventRewards().reset("Halloween");
             }
             return true;
         }
@@ -214,9 +211,9 @@ public class Halloween extends Interaction {
         if (option == 1) {
             if (object.getId() == 2654) {
                 if (GameServer.properties().halloween) {
-                    player.getEventRewards().open("H'ween");
+                    player.getEventRewards().open("Halloween");
+                    return true;
                 }
-                return true;
             }
         }
         return false;

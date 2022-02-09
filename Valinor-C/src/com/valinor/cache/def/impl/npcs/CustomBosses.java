@@ -4,6 +4,8 @@ import com.valinor.cache.def.NpcDefinition;
 import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.CustomNpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.ICELORD;
+import static com.valinor.util.NpcIdentifiers.SNOWFLAKE;
 
 /**
  * @author Patrick van Elderen | April, 07, 2021, 15) {49
@@ -13,6 +15,32 @@ public class CustomBosses {
 
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
+
+        if(id == SNOWFLAKE_BOSS) {
+            definition.name = "Snowflake";
+            definition.actions = new String[]{null, "Attack", null, null, null};
+            definition.combatLevel = 1027;
+            definition.modelId = new int[] {35835};
+            definition.additionalModels = new int[] {35839};
+            definition.widthScale = 180;
+            definition.heightScale = 180;
+            definition.standingAnimation = 8154;
+            definition.size = 2;
+            definition.walkingAnimation = 8151;
+        }
+
+        if(id == ICELORD) {
+            definition.name = "Wampa";
+            definition.combatLevel = 981;
+            definition.modelId = new int[] {21804,21801};
+            definition.standingAnimation = 5722;
+            definition.size = 2;
+            definition.drawMapDot = true;
+            definition.walkingAnimation = 5721;
+            definition.actions = new String[]{null, "Attack", null, null, null};
+            definition.widthScale = 180;
+            definition.heightScale = 180;
+        }
 
         if (id == GRIM) {
             definition.name = "Grim";

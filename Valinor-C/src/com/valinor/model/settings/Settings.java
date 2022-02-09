@@ -1,6 +1,7 @@
 package com.valinor.model.settings;
 
 import com.valinor.Client;
+import com.valinor.ClientConstants;
 import com.valinor.model.content.Keybinding;
 import com.valinor.sign.SignLink;
 
@@ -34,9 +35,9 @@ public class Settings {
     public boolean toggle_item_pile_names = true;
     public boolean filter_item_pile_names = false;
     public boolean moving_prayers = false;
-    public boolean ground_snow = false;
+    public boolean ground_snow = ClientConstants.WINTER;
     public boolean shift_pet_options = false;
-    public boolean sky_snow = false;
+    public boolean sky_snow = ClientConstants.WINTER;
 
     public int drag_item_value = 10;
     public boolean incinerator = false;

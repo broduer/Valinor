@@ -55,6 +55,7 @@ public class HoverMenuManager {
         menus.put(BARROWS_MYSTERY_BOX, new HoverMenu("Opens for a random barrows piece!"));
         menus.put(PURPLE_DYE, new HoverMenu("Using this dye on a twisted bow colors it purple."));
         menus.put(ORANGE_DYE, new HoverMenu("Using this dye on a twisted bow colors it orange."));
+        menus.put(RED_DYE, new HoverMenu("Using this dye on a twisted bow colors it red."));
         menus.put(TOTEMIC_HELMET, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
         menus.put(TOTEMIC_PLATEBODY, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
         menus.put(TOTEMIC_PLATELEGS, new HoverMenu("@red@+5%@whi@ extra melee damage and accuracy boost. This effect works only in PvM situations."));
@@ -139,7 +140,7 @@ public class HoverMenuManager {
         menus.put(FAWKES, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
         menus.put(FAWKES_32937, new HoverMenu("Ability to teleport you out of wilderness from any level and any place."));
         menus.put(BARRELCHEST_PET, new HoverMenu("@red@+1@whi@ Max hit And @red@+10%@whi@ attack bonus accuracy."));
-        menus.put(CustomItemIdentifiers.ICELORD_PET, new HoverMenu("Has a @red@10%@whi@ chance to freeze your opponent."));
+        menus.put(CustomItemIdentifiers.WAMPA_PET, new HoverMenu("Has a @red@10%@whi@ chance to freeze your opponent."));
         menus.put(NIFFLER, new HoverMenu("Niffler stores items that you've received from a player kill or pvm drop into his pouch."));
         menus.put(BABY_ARAGOG, new HoverMenu("Gives @red@5%@whi@ vs players and @red@10%@whi@ vs npcs more Ranged damage and @red@15%@whi@ more Ranged accuracy."));
         menus.put(BABY_LAVA_DRAGON, new HoverMenu("Gives Gives @red@5%@whi@ vs players and @red@10%@whi@ vs npcs Magic damage and @red@10%@whi@ more Magic accuracy."));

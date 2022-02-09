@@ -241,6 +241,7 @@ public final class ServerProperties {
         doubleVotePointsEvent = false;
         halloween = false;
         christmas = false;
+        winter = false;
     }
 
     public final String fileStore;
@@ -669,5 +670,6 @@ public final class ServerProperties {
     public final boolean doubleVotePointsEvent;
     public final boolean halloween;
     public final boolean christmas;
+    public final boolean winter;
 }
 

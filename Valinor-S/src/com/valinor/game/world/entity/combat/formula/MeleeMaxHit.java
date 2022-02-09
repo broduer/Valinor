@@ -80,7 +80,7 @@ public class MeleeMaxHit {
         //System.out.println("Before multipliers: "+D);
 
         // Void melee: multiply by 1.10. Round down.
-        if (FormulaUtils.voidMelee(player) || FormulaUtils.wearingEliteVoid(player) || FormulaUtils.voidCustomMelee(player)) {
+        if (FormulaUtils.voidMelee(player) || FormulaUtils.wearingEliteVoid(player)) {
             D *= 1.10;
         }
 

@@ -286,7 +286,7 @@ public class AccuracyFormula {
                     off_additional_bonus += 0.20;
                 }
 
-                if (weapon != null && (weapon.getId() == TWISTED_BOW || weapon.getId() == TWISTED_BOW_ORANGE || weapon.getId() == TWISTED_BOW_PURPLE || weapon.getId() == TWISTED_BOW_I || weapon.getId() == SANGUINE_TWISTED_BOW)) {
+                if (weapon != null && (weapon.getId() == TWISTED_BOW || weapon.getId() == TWISTED_BOW_ORANGE || weapon.getId() == TWISTED_BOW_PURPLE || weapon.getId() == TWISTED_BOW_RED || weapon.getId() == SANGUINE_TWISTED_BOW)) {
                     twistedBowMultiplier = twistedBowAccuracyMultiplier((int) def_current_magic_level) + 0.10;
                 }
 
@@ -523,11 +523,11 @@ public class AccuracyFormula {
         if (entity.isPlayer()) {
             assert entity instanceof Player;
             final Player player = (Player) entity;
-            if (style.equals(CombatType.MELEE) && (FormulaUtils.voidMelee(player) || FormulaUtils.voidCustomMelee(player)))
+            if (style.equals(CombatType.MELEE) && (FormulaUtils.voidMelee(player)))
                 off_void_bonus = 1.10;
-            else if (style.equals(CombatType.RANGED) && (FormulaUtils.voidRanger(player) || FormulaUtils.voidCustomRanger(player)))
+            else if (style.equals(CombatType.RANGED) && (FormulaUtils.voidRanger(player)))
                 off_void_bonus = 1.10;
-            else if (style.equals(CombatType.MAGIC) && (FormulaUtils.voidMagic(player) || FormulaUtils.voidCustomMagic(player)))
+            else if (style.equals(CombatType.MAGIC) && (FormulaUtils.voidMagic(player)))
                 off_void_bonus = 1.30;
         }
 

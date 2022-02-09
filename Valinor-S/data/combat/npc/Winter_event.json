@@ -99,9 +99,9 @@
     }
   },
   {
-    // Icelord
+    // Snowflake
     "ids": [
-      15117
+      15122
     ],
     "maxhit": 45,
     "attackspeed": 6,
@@ -112,7 +112,7 @@
       "defence": 150,
       "magic": 268,
       "ranged": 268,
-      "hitpoints": 4000
+      "hitpoints": 7000
     },
     "bonuses": {
       "attack": 320,
@@ -124,12 +124,46 @@
       "magicdefence": 200
     },
     "animations": {
-      "attack": 8056,
-      "block": 435,
-      "death": 836
+      "attack": 8158,
+      "block": -1,
+      "death": 8160
     },
     "scripts": {
-      "combat": "com.valinor.game.content.seasonal_events.christmas.boss.IcelordCombatScript"
+      "combat": "com.valinor.game.content.seasonal_events.winter.boss.SnowflakeCombatScript"
+    }
+  },
+  {
+    // Icelord
+    "ids": [
+      852
+    ],
+    "maxhit": 45,
+    "attackspeed": 6,
+    "aggressive": true,
+    "stats": {
+      "attack": 320,
+      "strength": 220,
+      "defence": 150,
+      "magic": 268,
+      "ranged": 1,
+      "hitpoints": 1250
+    },
+    "bonuses": {
+      "attack": 220,
+      "strength": 200,
+      "stabdefence": 125,
+      "slashdefence": 135,
+      "crushdefence": 145,
+      "rangeddefence": 1,
+      "magicdefence": 200
+    },
+    "animations": {
+      "attack": 5724,
+      "block": 5723,
+      "death": 5726
+    },
+    "scripts": {
+      "combat": "com.valinor.game.content.seasonal_events.winter.boss.WampaCombatScript"
     }
   }
 ]

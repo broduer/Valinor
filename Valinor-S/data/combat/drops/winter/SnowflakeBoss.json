@@ -1,0 +1,24 @@
+{
+  "npcs": [ 15122 ],
+  "guaranteed": [
+    { "id": 532, "min": 1, "max": 1 }, //Big bones
+    { "id": 30191, "min": 2000, "max": 3500 } //Winter tokens
+  ],
+  "petItem": 32525,
+  "petRarity": 2050,
+  "tables": [
+    {
+      "name": "Drops",
+      "points": 1,
+      "items": [
+
+      ]
+    },
+    {
+      "name": "Empty",
+      "points": 1,
+      "items": [
+      ]
+    }
+  ]
+}

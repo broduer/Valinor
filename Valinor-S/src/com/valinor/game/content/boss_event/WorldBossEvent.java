@@ -62,7 +62,11 @@ public class WorldBossEvent {
      */
     private static final Tile[] POSSIBLE_SPAWNS = {
         new Tile(2968, 3404),//Falador outside gate
+        new Tile(3167, 3757),//level 30 wild
+        new Tile(3166, 3832),//level 40 wild
         new Tile(3073, 3687),//level 21 wild
+        new Tile(3194,3951),//level 54 wild
+        new Tile(2963,3819)//level 38 wild
     };
 
     public static Tile currentSpawnPos;
@@ -81,7 +85,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {/*WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, */WorldBosses.CORRUPTED_HUNLLEF};
+    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
@@ -106,11 +110,6 @@ public class WorldBossEvent {
                     return;
                 }
 
-                //Always drops
-                if(npc.id() == SKOTIZO || npc.id() == TEKTON_7542) {
-                    GroundItemHandler.createGroundItem(new GroundItem(new Item(ASHES), npc.tile(), player));
-                }
-
                 if(npc.id() == ZOMBIES_CHAMPION) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(BIG_BONES), npc.tile(), player));
                 }
@@ -118,10 +117,6 @@ public class WorldBossEvent {
                 if(npc.id() == BRUTAL_LAVA_DRAGON_FLYING) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(LAVA_DRAGON_BONES), npc.tile(), player));
                 }
-
-                /*if(npc.id() == GRIM) {
-                    GroundItemHandler.createGroundItem(new GroundItem(new Item(HWEEN_TOKENS, World.getWorld().random(500, 5000)), npc.tile(), player));
-                }*/
 
                 //Always drop random coins
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(1_000_000, 5_000_000)), npc.tile(), player));
@@ -193,10 +188,10 @@ public class WorldBossEvent {
         // First despawn the npc if existing
         terminateActiveEvent(true);
 
-        if(GameServer.properties().halloween || GameServer.properties().christmas) {
+        if(GameServer.properties().halloween || GameServer.properties().winter) {
             if (nextIsPeriodicEventBoss) {
                 nextIsPeriodicEventBoss = false;
-                activeEvent = GameServer.properties().halloween ? WorldBosses.GRIM : null;//TODO xmas boss
+                activeEvent = GameServer.properties().winter ? WorldBosses.SNOWFLAKE : WorldBosses.GRIM;
             } else {
                 if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
                     lastEvent = 0;
@@ -265,6 +260,8 @@ public class WorldBossEvent {
     public enum WorldBosses {
 
         GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
+        WAMPA(ICELORD, "Wampa"),
+        SNOWFLAKE(CustomNpcIdentifiers.SNOWFLAKE_BOSS, "Snowflake"),
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
         CORRUPTED_HUNLLEF(NpcIdentifiers.CORRUPTED_HUNLLEF, "Corrupted hunllef"),
@@ -281,8 +278,16 @@ public class WorldBossEvent {
         public String spawnLocation(Tile tile) {
             if (tile.equals(new Tile(2968, 3404))) {
                 return "north outside of the Falador gate";
+            } else if (tile.equals(new Tile(3167, 3757))) {
+                return "south east of the black chins hills";
+            } else if (tile.equals(new Tile(3166, 3832))) {
+                return "near the Lava dragons";
             } else if (tile.equals(new Tile(3073, 3687))) {
                 return "outside of the bandit camp";
+            } else if (tile.equals(new Tile(3194,3951))) {
+                return "next to resource area";
+            } else if (tile.equals(new Tile(2963,3819))) {
+                return "near lvl 40 wild altar";
             }
             //We shouldn't be getting here
             return "Nothing";

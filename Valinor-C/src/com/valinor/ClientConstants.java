@@ -19,7 +19,7 @@ public final class ClientConstants {
         repackIndexFour = false;
 
     public static boolean HALLOWEEN = false;
-    public static boolean WINTER = false;
+    public static boolean WINTER = true;
     public static boolean CHRISTMAS = false;
 
     /*

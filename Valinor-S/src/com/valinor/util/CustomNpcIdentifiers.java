@@ -6,6 +6,7 @@ package com.valinor.util;
  */
 public class CustomNpcIdentifiers {
 
+
     public final static int MALE_CENTAUR = 15030;
     public final static int FEMALE_CENTAUR = 15032;
     public final static int ARAGOG_MINION = 134;
@@ -18,6 +19,7 @@ public class CustomNpcIdentifiers {
     public static final int ICE_IMP_15119 = 15119;
     public static final int ICE_IMP_15120 = 15120;
     public static final int ICE_IMP_PET = 15121;
+    public static final int SNOWFLAKE_BOSS = 15122;
     public static final int NAGINI = 15025;
     public static final int BLOOD_REAPER = 15229;
     public static final int FAWKES_15981 = 15981;

@@ -16,6 +16,7 @@ import static com.valinor.util.CustomNpcIdentifiers.FLUFFY;
 import static com.valinor.util.CustomNpcIdentifiers.HUNGARIAN_HORNTAIL;
 import static com.valinor.util.CustomNpcIdentifiers.ZOMBIES_CHAMPION_PET;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.ICELORD;
 
 /**
  * Created by Bart Pelle on 10/4/2014.
@@ -153,8 +154,13 @@ public class NpcDefinition implements Definition {
                 break;
             }
         }
-
-        if (id == ICE_IMP) {
+        if (id == ICELORD) {
+            name = "Wampa boss";
+            combatlevel = 981;
+        } else if (id == SNOWFLAKE_BOSS) {
+            name = "Snowflake boss";
+            combatlevel = 1027;
+        } else if (id == ICE_IMP) {
             name = "Ice imp";
             combatlevel = 77;
         } else if (id == ICE_IMP_15119) {
@@ -163,6 +169,8 @@ public class NpcDefinition implements Definition {
         } else if (id == ICE_IMP_15120) {
             name = "Ice imp";
             combatlevel = 188;
+        } else if (id == ICE_IMP_PET) {
+            name = "Ice imp";
         } else if (id == 7632) {
             name = "Men in black";
             combatlevel = 80;

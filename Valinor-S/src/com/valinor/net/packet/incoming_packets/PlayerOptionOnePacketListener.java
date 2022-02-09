@@ -1,6 +1,6 @@
 package com.valinor.net.packet.incoming_packets;
 
-import com.valinor.game.content.seasonal_events.christmas.WinterEvent;
+import com.valinor.game.content.seasonal_events.winter.WinterEvent;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;

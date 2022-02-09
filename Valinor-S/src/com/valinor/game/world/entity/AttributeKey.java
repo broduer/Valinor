@@ -81,7 +81,7 @@ public enum AttributeKey {
     MUTTADILE_HEAL_COUNT,
 
     HWEEN_EVENT_TOKENS_SPENT("hween_event_tokens_spent", AttribType.INTEGER),
-    XMAS_EVENT_TOKENS_SPENT("xmas_event_tokens_spent", AttribType.INTEGER),
+    WINTER_EVENT_TOKENS_SPENT("winter_event_tokens_spent", AttribType.INTEGER),
 
     CANDIES_TRADED("candiestraded", AttribType.INTEGER),
     FINISHED_HALLOWEEN_TEACHER_DIALOGUE("finished_halloween_teacher_dialogue", AttribType.BOOLEAN),

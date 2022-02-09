@@ -5,6 +5,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
+import com.valinor.util.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.valinor.game.world.entity.AttributeKey.HWEEN_EVENT_TOKENS_SPENT;
+import static com.valinor.game.world.entity.AttributeKey.WINTER_EVENT_TOKENS_SPENT;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -37,12 +39,24 @@ public class UnlockEventRewards {
         this.eventRewardsUnlocked = eventRewardsUnlocked;
     }
 
+    public boolean lookForMissing() {
+        var missing = false;
+        for (EventRewards value : EventRewards.values()) {
+            // if any of the values are missing from unlocked, they're not unlocked
+            if (!player.getEventRewards().rewardsUnlocked().getOrDefault(value, false)) {
+                missing = true;
+                break;
+            }
+        }
+        return missing;
+    }
+
     public Item generateReward() {
         var randomReward = World.getWorld().random(210);
 
+        HashMap<EventRewards, Boolean> eventRewards = player.getEventRewards().rewardsUnlocked();
         for (EventRewards reward : EventRewards.values()) {
-            //System.out.println(reward.name()+" -> "+player.<Boolean>getAttribOr(reward.key,false));
-            var unlocked = player.getEventRewards().rewardsUnlocked().get(reward);
+            var unlocked = eventRewards.size() != 0 && eventRewards.getOrDefault(reward, false);
             if (unlocked) {
                 continue;
             }
@@ -51,9 +65,11 @@ public class UnlockEventRewards {
                 return reward.reward;
             }
         }
-        final EventRewards eventRewards = Arrays.stream(EventRewards.values()).filter(r -> !player.getEventRewards().rewardsUnlocked().get(r)).findAny().get();
-        player.getEventRewards().rewardsUnlocked().put(eventRewards, true);
-        return eventRewards.reward;
+        //Some reason this line errors randomly and when the last in the enum is still open it always errors
+        // well it will npe if they are all unlocked there is still 1 free tho
+        final EventRewards r = Arrays.stream(EventRewards.values()).filter(value -> !eventRewards.getOrDefault(value, false)).findAny().get();
+        player.getEventRewards().rewardsUnlocked().put(r, true);
+        return r.reward;
     }
 
     public void reset(String event) {
@@ -63,7 +79,11 @@ public class UnlockEventRewards {
         if (unlockedAllRewards) {
             player.optionsTitled("Would you like to reset all the rewards?", "Yes", "No", () -> {
                 player.getEventRewards().rewardsUnlocked().clear();
-                player.putAttrib(HWEEN_EVENT_TOKENS_SPENT,0);
+                if(event.equalsIgnoreCase("Winter")) {
+                    player.putAttrib(WINTER_EVENT_TOKENS_SPENT,0);
+                } else if(event.equalsIgnoreCase("Halloween")) {
+                    player.putAttrib(HWEEN_EVENT_TOKENS_SPENT,0);
+                }
                 player.inventory().addOrBank(COMPLETED_EVENT_REWARD);
                 //Let the world know this play has finished the rewards and goes for them again
                 World.getWorld().sendWorldMessage("<img=505><shad=0>" + Color.MEDRED.wrap("[" + event + "]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " has just reset the " + Color.PURPLE.wrap(event) + " Event Rewards!");
@@ -82,20 +102,22 @@ public class UnlockEventRewards {
         player.inventory().addOrBank(reward);
 
         int tokensSpent = 0;
-        if(event.equalsIgnoreCase("H'ween")) {
+        if(event.equalsIgnoreCase("Halloween")) {
             tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
             player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
         } else if(event.equalsIgnoreCase("Winter")) {
-            tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0) + amount;
-            player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
+            tokensSpent = player.<Integer>getAttribOr(WINTER_EVENT_TOKENS_SPENT,0) + amount;
+            player.putAttrib(WINTER_EVENT_TOKENS_SPENT, tokensSpent);
         }
 
-        int totalToSpent = event.equalsIgnoreCase("H'ween") ? 220_000 : 220_000;
+        int max = event.equalsIgnoreCase("Halloween") ? 220_000 : 440_000;
+        if(tokensSpent > max)
+            tokensSpent = max;
 
-        final var progress = (int) (tokensSpent * 100 / (double) totalToSpent);
+        final var progress = (int) (tokensSpent * 100 / (double) max);
 
         player.getPacketSender().sendProgressBar(73313, progress);
-        player.getPacketSender().sendString(73314, "Tokens spent: " +tokensSpent);
+        player.getPacketSender().sendString(73314, "Tokens spent: " + Utils.formatNumber(tokensSpent));
 
         boolean shout = items_to_shout.stream().anyMatch(item -> reward.getId() == item);
 
@@ -118,7 +140,7 @@ public class UnlockEventRewards {
     public static final int UNLOCKED_ITEM_SLOT = 73317;
     private static final int UNLOCKABLE_ITEMS_CONTAINER = 73318;
 
-    private static final Item COMPLETED_EVENT_REWARD = new Item(MYSTERY_TICKET,2);
+    private static final Item COMPLETED_EVENT_REWARD = new Item(WINTER_CASKET,1);
 
     private static final Item TOKEN_REQUIREMENT = GameServer.properties().halloween ? new Item(HWEEN_TOKENS, 5000) : new Item(WINTER_TOKENS, 10_000);
 
@@ -132,7 +154,7 @@ public class UnlockEventRewards {
     }
 
     public void open(String event) {
-        if(event.equalsIgnoreCase("H'ween")) {
+        if(event.equalsIgnoreCase("Halloween")) {
             player.getPacketSender().sendString(73304, "Halloween event 2021");
         } else if(event.equalsIgnoreCase("Winter")) {
             player.getPacketSender().sendString(73304, "Christmas event 2021");
@@ -147,11 +169,18 @@ public class UnlockEventRewards {
 
         player.getPacketSender().sendItemOnInterface(UNLOCKABLE_ITEMS_CONTAINER, items);
 
-        final int tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0);
-        player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
+        int tokensSpent = 0;
+        if(event.equalsIgnoreCase("Halloween")) {
+            tokensSpent = player.<Integer>getAttribOr(HWEEN_EVENT_TOKENS_SPENT,0);
+            player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, tokensSpent);
+        } else if(event.equalsIgnoreCase("Winter")) {
+            tokensSpent = player.<Integer>getAttribOr(WINTER_EVENT_TOKENS_SPENT,0);
+            player.putAttrib(WINTER_EVENT_TOKENS_SPENT, tokensSpent);
+        }
+
         final var progress = (int) (tokensSpent * 100 / (double) 220_000);
         player.getPacketSender().sendProgressBar(73313, progress);
-        player.getPacketSender().sendString(73314, "Tokens spent: " +tokensSpent);
+        player.getPacketSender().sendString(73314, "Tokens spent: " +Utils.formatNumber(tokensSpent));
 
         //Write the event reward item
         player.getPacketSender().sendItemOnInterfaceSlot(COMPLETED_EVENT_REWARD_SLOT, COMPLETED_EVENT_REWARD, 0);
@@ -176,12 +205,16 @@ public class UnlockEventRewards {
 
     public void refreshItems() {
         for (EventRewards reward : EventRewards.values()) {
+            HashMap<EventRewards, Boolean> rewards = player.getEventRewards().rewardsUnlocked();
+
             //List empty, we haven't unlocked anything
-            if(player.getEventRewards().rewardsUnlocked().isEmpty()) {
+            if(rewards != null && rewards.isEmpty()) {
                 continue;
             }
 
-            var unlocked = player.getEventRewards().rewardsUnlocked().get(reward);
+            var unlocked = rewards != null && rewards.get(reward) != null &&
+                rewards.size() != 0 &&
+                rewards.get(reward);
             if (unlocked) {
                 reward.reward.setAmount(1);
                 player.getPacketSender().sendItemOnInterface(UNLOCKABLE_ITEMS_CONTAINER, items);

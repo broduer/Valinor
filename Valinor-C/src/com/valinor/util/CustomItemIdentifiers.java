@@ -5,13 +5,14 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 
 public class CustomItemIdentifiers {
 
-    //Have fun XD
-
     //Be careful ids not allowed over 32,767!
     public static final int SAPPHIRE_MEMBER_RANK = 32520;
     public static final int FIFTY_TOTAL_DONATED_SCROLL = 32521;
     public static final int ONE_HUNDRED_TOTAL_DONATED_SCROLL = 32522;
     public static final int HUNDRED_FIFTY_TOTAL_DONATED_SCROLL = 32523;
+    public static final int WINTER_CASKET = 32524;
+    public static final int SNOWFLAKE_PET = 32525;
+    public static final int SNOW_IMP_COSTUME = 32526;
     public static final int VOID_SET = 32623;
     public static final int TREASURE_CASKET = 31836;
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
@@ -188,7 +189,7 @@ public class CustomItemIdentifiers {
     public static final int BABY_LAVA_DRAGON = 30131;
     public static final int JAWA_PET = 16173;
     public static final int BABY_ARAGOG = 16172;
-    public static final int ICELORD_PET = 16171;
+    public static final int WAMPA_PET = 16171;
     public static final int DHAROK_PET = 16020;
     public static final int TWISTED_SLAYER_HELMET_I_KBD_HEADS = 24445;
     public static final int TWISTED_SLAYER_HELMET_I_INFERNAL_CAPE = 25913;

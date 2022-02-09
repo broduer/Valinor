@@ -462,7 +462,7 @@ public class CombatFactory {
         if (attacker.isPlayer()) {
             Player player = (Player) attacker;
 
-            if (player.hasPetOut("Icelord") && combat_type == CombatType.MAGIC) {
+            if (player.hasPetOut("Wampa") && combat_type == CombatType.MAGIC) {
                 //10% chance to activate the freeze effect
                 if (World.getWorld().rollDie(100, player.getPlayerRights().isDeveloperOrGreater(player) ? 98 : 10)) {
                     player.pet().forceChat("FREEZEEEEE");

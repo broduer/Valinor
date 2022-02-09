@@ -12,7 +12,6 @@ import com.valinor.util.ItemIdentifiers;
 import java.util.Arrays;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.CustomItemIdentifiers.VOID_MAGE_HELM_24940;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.BLACK_MASK_9_I;
 
@@ -110,22 +109,6 @@ public class FormulaUtils {
 
     public static boolean voidBase(Player player) {
         return ((player.getEquipment().hasAt(EquipSlot.BODY, 8839) && player.getEquipment().hasAt(EquipSlot.LEGS, 8840)) || (player.getEquipment().hasAt(EquipSlot.BODY, 13072) && player.getEquipment().hasAt(EquipSlot.LEGS, 13073))) && player.getEquipment().hasAt(EquipSlot.HANDS, 8842);
-    }
-
-    public static boolean voidCustomBase(Player player) {
-        return (player.getEquipment().hasAt(EquipSlot.BODY, ELITE_VOID_TOP_24943) && player.getEquipment().hasAt(EquipSlot.LEGS, ELITE_VOID_ROBE_24942) && player.getEquipment().hasAt(EquipSlot.HANDS, VOID_KNIGHT_GLOVES_24938));
-    }
-
-    public static boolean voidCustomRanger(Player player) {
-        return player.getEquipment().hasAt(EquipSlot.HEAD, VOID_RANGER_HELM_24939) && voidCustomBase(player);
-    }
-
-    public static boolean voidCustomMelee(Player player) {
-        return player.getEquipment().hasAt(EquipSlot.HEAD, VOID_MELEE_HELM_24941) && voidCustomBase(player);
-    }
-
-    public static boolean voidCustomMagic(Player player) {
-        return player.getEquipment().hasAt(EquipSlot.HEAD, VOID_MAGE_HELM_24940) && voidCustomBase(player);
     }
 
     public static boolean voidRanger(Player player) {

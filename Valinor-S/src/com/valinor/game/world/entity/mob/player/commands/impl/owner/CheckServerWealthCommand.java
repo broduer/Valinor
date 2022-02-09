@@ -391,7 +391,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == TWISTED_BOW) {
                                         storage.sumTwistedbow.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == TWISTED_BOW_I) {
+                                    if(item.getId() == TWISTED_BOW_RED) {
                                         storage.sumTwistedBowI.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == SANGUINE_TWISTED_BOW) {

@@ -30,7 +30,7 @@
   "drawShopCostText": true,
   "tournamentsEnabled": true,
   "wildernessActivityEnabled": true,
-  "enableSql": true,
+  "enableSql": false,
   "linuxOnlyDisplayCycleLag": false,
   "ignoreGameLagDetectionMilliseconds": 35000,
   "clearQuestInterfaceStrings": true,
@@ -133,5 +133,6 @@
   "doublePKPEvent": false,
   "doubleVotePointsEvent": false,
   "halloween": false,
-  "christmas": false
+  "christmas": false,
+  "winter": true
 }

@@ -214,7 +214,7 @@ public class RangedData {
         MAGIC_SHORTBOW(new int[]{ItemIdentifiers.MAGIC_SHORTBOW, ItemIdentifiers.MAGIC_SHORTBOW_I}, RangedWeaponType.SHORTBOW, true),
         _3RD_AGE_BOW(new int[] {ItemIdentifiers._3RD_AGE_BOW}, RangedWeaponType.SHORTBOW, true),
         DARK_BOW(new int[]{ItemIdentifiers.DARK_BOW}, RangedWeaponType.LONGBOW, true),
-        TWISTED_BOW(new int[]{ItemIdentifiers.TWISTED_BOW, TWISTED_BOW_ORANGE, TWISTED_BOW_PURPLE, CustomItemIdentifiers.TWISTED_BOW_I, CustomItemIdentifiers.SANGUINE_TWISTED_BOW}, RangedWeaponType.TWISTED_BOW, true),
+        TWISTED_BOW(new int[]{ItemIdentifiers.TWISTED_BOW, TWISTED_BOW_ORANGE, TWISTED_BOW_PURPLE, CustomItemIdentifiers.TWISTED_BOW_RED, CustomItemIdentifiers.SANGUINE_TWISTED_BOW}, RangedWeaponType.TWISTED_BOW, true),
         ELEMENTAL_BOW(new int[] {CustomItemIdentifiers.ELEMENTAL_BOW}, RangedWeaponType.SHORTBOW, true),
         DARKLORD_BOW(new int[] {CustomItemIdentifiers.DARKLORD_BOW}, RangedWeaponType.SHORTBOW, true),
 

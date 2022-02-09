@@ -6,7 +6,6 @@ import com.google.gson.InstanceCreator;
 import com.google.gson.internal.ConstructorConstructor;
 import com.valinor.GameServer;
 import com.valinor.db.transactions.UpdatePasswordDatabaseTransaction;
-import com.valinor.game.backup.BackupHandler;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
@@ -638,7 +637,7 @@ public class PlayerSave {
                 player.putAttrib(FINISHED_HALLOWEEN_TEACHER_DIALOGUE, details.finishedHalloweenDialogue);
                 player.putAttrib(CANDIES_TRADED, details.candiesTraded);
                 player.putAttrib(HWEEN_EVENT_TOKENS_SPENT, details.hweenEventTokensSpent);
-                player.putAttrib(XMAS_EVENT_TOKENS_SPENT, details.xmasEventTokensSpent);
+                player.putAttrib(WINTER_EVENT_TOKENS_SPENT, details.winterEventTokensSpent);
                 player.putAttrib(HERB_BOX_CHARGES, details.herbBoxCharges);
                 player.putAttrib(COMBAT_MAXED, details.combatMaxed);
                 player.putAttrib(FIGHT_CAVES_WAVE, details.fightCaveWave);
@@ -1137,7 +1136,7 @@ public class PlayerSave {
         private final boolean finishedHalloweenDialogue;
         private final int candiesTraded;
         private final int hweenEventTokensSpent;
-        private final int xmasEventTokensSpent;
+        private final int winterEventTokensSpent;
         private final int herbBoxCharges;
         private final boolean combatMaxed;
         private final int fightCaveWave;
@@ -1583,7 +1582,7 @@ public class PlayerSave {
             finishedHalloweenDialogue = Player.getAttribBooleanOr(player, FINISHED_HALLOWEEN_TEACHER_DIALOGUE, false);
             candiesTraded = Player.getAttribIntOr(player, CANDIES_TRADED, -1);
             hweenEventTokensSpent = Player.getAttribIntOr(player, HWEEN_EVENT_TOKENS_SPENT, 0);
-            xmasEventTokensSpent = Player.getAttribIntOr(player, XMAS_EVENT_TOKENS_SPENT, 0);
+            winterEventTokensSpent = Player.getAttribIntOr(player, WINTER_EVENT_TOKENS_SPENT, 0);
             herbBoxCharges = Player.getAttribIntOr(player, HERB_BOX_CHARGES, 0);
             combatMaxed = Player.getAttribBooleanOr(player, COMBAT_MAXED, false);
             fightCaveWave = Player.getAttribIntOr(player, FIGHT_CAVES_WAVE, 0);

@@ -269,7 +269,7 @@ public class CustomItems {
         }
 
         if (id == TWISTED_BOW_I) {
-            def.name = "<col=65280>Twisted bow (i)";
+            def.name = "<col=65280>Twisted bow";
             def.recolorFrom = new int[]{10318, 10334, 14236, 13223};
             def.recolorTo = new int[]{524, 527, 524, 527};
             def.femaleModel = 32674;
@@ -1152,18 +1152,6 @@ public class CustomItems {
             def.zoom2d = 1424;
         }
 
-        if (id == ICE_IMP) {
-            def.name = "<col=65280>Ice imp";
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.inventoryModel = 58916;
-            def.xOffset2d = 11;
-            def.yOffset2d = -1;
-            def.xan2d = 116;
-            def.yan2d = 1778;
-            def.zoom2d = 1424;
-            def.modelCustomColor4 = 31575;
-        }
-
         if (id == PET_CORRUPTED_NECHRYARCH) {
             def.name = "<col=65280>Corrupted nechryarch pet";
             def.inventoryActions = new String[]{null, null, null, null, "Drop"};
@@ -1235,13 +1223,6 @@ public class CustomItems {
             def.xan2d = 83;
             def.yan2d = 1826;
             def.zoom2d = 2541;
-        }
-
-        if (id == ICELORD_PET) {
-            def.name = "<col=65280>Icelord pet";
-            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
-            def.inventoryModel = 21802;
-            def.zoom2d = 4380;
         }
 
         if (id == CENTAUR_FEMALE) {
@@ -1333,15 +1314,6 @@ public class CustomItems {
             def.yan2d = 656;
             def.zoom2d = 1020;
             def.modelCustomColor4 = 22222;
-        }
-
-        if (id == WINTER_TOKENS) {
-            ItemDefinition.copyInventory(def, 13204);
-            def.name = "<col=65280>Winter token";
-            def.recolorFrom = new int[]{5813, 9139, 26006};
-            def.recolorTo = new int[]{127, 155, 374770};
-            def.countco = new int[]{2, 3, 4, 5, 0, 0, 0, 0, 0, 0};
-            def.countobj = new int[]{30192, 30193, 30194, 30194, 0, 0, 0, 0, 0, 0};
         }
 
         if(id == SAPPHIRE_MEMBER_RANK) {

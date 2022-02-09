@@ -11,6 +11,17 @@ public class CustomPets {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
+        if(id == SNOWFLAKE) {
+            definition.name = "Snowflake pet";
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.widthScale = 45;
+            definition.heightScale = 45;
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+        }
+
         if(id == NAGINI) {
             definition.name = "Nagini pet";
             definition.ambient = 10;
@@ -158,8 +169,8 @@ public class CustomPets {
             definition.description = "Tiny but deadly!";
         }
 
-        if (id == ICELORD_PET) {
-            definition.name = "Icelord pet";
+        if (id == WAMPA_PET) {
+            definition.name = "Wampa pet";
             definition.widthScale = 63;
             definition.heightScale = 63;
             definition.modelId = new int[]{21802, 21801, 21806};
@@ -172,10 +183,10 @@ public class CustomPets {
             definition.description = "Tiny but deadly!";
         }
 
-        if(id == 15121) {
+        if(id == ICE_IMP_PET) {
             NpcDefinition.copy(definition, IMP);
             definition.name = "Ice imp pet";
-            definition.combatLevel = 188;
+            definition.combatLevel = 0;
             definition.widthScale = 120;
             definition.heightScale = 120;
             definition.actions = new String[]{"Pick-up", null, null, null, null};

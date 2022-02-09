@@ -1,4 +1,4 @@
-package com.valinor.game.content.seasonal_events.christmas;
+package com.valinor.game.content.seasonal_events.winter;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.seasonal_events.halloween.Halloween;
@@ -26,7 +26,7 @@ import java.util.List;
 import static com.valinor.game.content.seasonal_events.rewards.UnlockEventRewards.UNLOCKED_ITEM_SLOT;
 import static com.valinor.game.content.skill.impl.hunter.Impling.OVERWORLD_RANDOM_SPAWN_TILES;
 import static com.valinor.util.CustomItemIdentifiers.WINTER_TOKENS;
-import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP;
+import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.SNOWBALL;
 import static com.valinor.util.ObjectIdentifiers.*;
 
@@ -39,7 +39,7 @@ public class WinterEvent extends Interaction {
     private static final Logger logger = LogManager.getLogger(Halloween.class);
 
     public static int ACTIVE_OVERWORLD_ICE_IMP = 0;
-    private static final int OVERWORLD_MAX_ICE_IMP = 200;
+    private static final int OVERWORLD_MAX_ICE_IMP = 100;
 
     public static void loadNpcs() {
         //Npc santa = new Npc(SANTA, new Tile(3096, 3486));
@@ -67,41 +67,36 @@ public class WinterEvent extends Interaction {
 
     private static void loadIceImp() {
         for (Tile tile : IceImpSpawnTiles.lumbridgeSpawns) {
-            Npc iceImp = new Npc(ICE_IMP, tile);
+            Npc iceImp = new Npc(ICE_IMP, tile).spawn(true);
             iceImp.walkRadius(5);
             iceImp.getRouteFinder().routeAbsolute(iceImp.getSpawnArea().randomX(), iceImp.getSpawnArea().randomY());
-            World.getWorld().registerNpc(iceImp);
         }
 
         for (Tile tile : IceImpSpawnTiles.draynorSpawns) {
-            Npc iceImp = new Npc(ICE_IMP, tile);
+            Npc iceImp = new Npc(ICE_IMP, tile).spawn(true);
             iceImp.walkRadius(5);
             iceImp.getRouteFinder().routeAbsolute(iceImp.getSpawnArea().randomX(), iceImp.getSpawnArea().randomY());
-            World.getWorld().registerNpc(iceImp);
         }
 
         for (Tile tile : IceImpSpawnTiles.varrockSpawns) {
-            Npc iceImp = new Npc(ICE_IMP, tile);
+            Npc iceImp = new Npc(ICE_IMP, tile).spawn(true);
             iceImp.walkRadius(5);
             iceImp.getRouteFinder().routeAbsolute(iceImp.getSpawnArea().randomX(), iceImp.getSpawnArea().randomY());
-            World.getWorld().registerNpc(iceImp);
         }
 
         for (Tile tile : IceImpSpawnTiles.faladorSpawns) {
-            Npc iceImp = new Npc(ICE_IMP, tile);
+            Npc iceImp = new Npc(ICE_IMP, tile).spawn(true);
             iceImp.walkRadius(5);
             iceImp.getRouteFinder().routeAbsolute(iceImp.getSpawnArea().randomX(), iceImp.getSpawnArea().randomY());
-            World.getWorld().registerNpc(iceImp);
         }
 
         for (Tile tile : IceImpSpawnTiles.wildernessSpawns) {
-            Npc iceImp = new Npc(ICE_IMP, tile);
+            Npc iceImp = new Npc(ICE_IMP_15120, tile).spawn(true);
             iceImp.walkRadius(5);
             iceImp.getRouteFinder().routeAbsolute(iceImp.getSpawnArea().randomX(), iceImp.getSpawnArea().randomY());
-            World.getWorld().registerNpc(iceImp);
         }
 
-        Chain.bound(null).name("ChristmasIceImpTask").repeatingTask(100, t -> {
+        Chain.bound(null).name("IceImpTask").repeatingTask(100, t -> {
             if (ACTIVE_OVERWORLD_ICE_IMP < OVERWORLD_MAX_ICE_IMP) {
                 spawnRandomIceImpOverworld();
             }
@@ -110,41 +105,43 @@ public class WinterEvent extends Interaction {
 
     private static void spawnRandomIceImpOverworld() {
         Tile tile = Utils.randomElement(OVERWORLD_RANDOM_SPAWN_TILES);
-        Npc impling = new Npc(ICE_IMP, new Tile(tile.getX(), tile.getY(), tile.getZ()));
-        impling.walkRadius(16);
-        impling.getRouteFinder().routeAbsolute(impling.getSpawnArea().randomX(), impling.getSpawnArea().randomY());
-        World.getWorld().registerNpc(impling);
+        Npc imp = new Npc(ICE_IMP_15119, new Tile(tile.getX(), tile.getY(), tile.getZ())).spawn(true);
+        imp.walkRadius(16);
+        imp.getRouteFinder().routeAbsolute(imp.getSpawnArea().randomX(), imp.getSpawnArea().randomY());
         ACTIVE_OVERWORLD_ICE_IMP++;
     }
 
     @Override
     public boolean handleButtonInteraction(Player player, int button) {
         if (button == 73307) {
-            player.optionsTitled("Exchange your 5,000 Winter tokens for a reward?", "Yes", "No", () -> {
-                if (!player.inventory().contains(new Item(WINTER_TOKENS, 10_000))) {
-                    return;
-                }
+            if (GameServer.properties().winter) {
+                player.optionsTitled("Exchange your 10,000 Winter tokens for a reward?", "Yes", "No", () -> {
+                    if (!player.inventory().contains(new Item(WINTER_TOKENS, 10_000))) {
+                        player.message(Color.RED.wrap("You do not have enough Winter tokens to roll for a reward."));
+                        return;
+                    }
 
-                var unlockedAllRewards = player.getEventRewards().rewardsUnlocked().values().stream().allMatch(r -> r);
-                if (unlockedAllRewards) {
-                    player.message(Color.RED.wrap("You have already unlocked all rewards."));
-                    return;
-                }
+                    boolean missing = player.getEventRewards().lookForMissing();
 
-                Item reward = player.getEventRewards().generateReward();
-                if (reward == null) {
-                    return;
-                }
+                    if (!missing) {
+                        player.message(Color.RED.wrap("You have already unlocked all rewards."));
+                        return;
+                    }
 
-                if (player.inventory().contains(new Item(WINTER_TOKENS, 10_000))) {
+                    Item reward = player.getEventRewards().generateReward();
+                    if (reward == null) {
+                        return;
+                    }
+                    reward = new Item(reward.getId(), 1);
+
+                    System.out.println("reward: "+reward);
+
                     player.getEventRewards().refreshItems();
-                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward.copy(), 0);
-                    player.getEventRewards().rollForReward(WINTER_TOKENS, 10_000, reward.copy(), "Winter");
-                } else {
-                    player.message(Color.RED.wrap("You do not have enough Winter tokens to roll for a reward."));
-                }
-            });
-            return true;
+                    player.getPacketSender().sendItemOnInterfaceSlot(UNLOCKED_ITEM_SLOT, reward, 0);
+                    player.getEventRewards().rollForReward(WINTER_TOKENS, 10_000, reward, "Winter");
+                });
+                return true;
+            }
         }
         return false;
     }
@@ -153,7 +150,7 @@ public class WinterEvent extends Interaction {
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
             if (object.getId() == 2654) {
-                if (GameServer.properties().christmas) {
+                if (GameServer.properties().winter) {
                     player.getEventRewards().open("Winter");
                 }
                 return true;
@@ -161,10 +158,10 @@ public class WinterEvent extends Interaction {
 
             List<Integer> snow = Arrays.asList(SNOW, SNOW_15616, SNOW_15617, SNOW_19030);
             if (snow.stream().anyMatch(s -> s == object.getId())) {
-                if (GameServer.properties().christmas) {
+                if (GameServer.properties().winter) {
                     takeSnow(player, object);
+                    return true;
                 }
-                return true;
             }
         }
         return false;

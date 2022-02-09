@@ -1,4 +1,4 @@
-package com.valinor.game.content.seasonal_events.christmas;
+package com.valinor.game.content.seasonal_events.winter;
 
 import com.valinor.game.world.position.Tile;
 

@@ -97,8 +97,7 @@ public class Item implements Cloneable {
         int[] tradeable_special_items = {
             SALVE_AMULET, SALVE_AMULETI, VENGEANCE_SKULL, FEROCIOUS_GLOVES, RING_OF_MANHUNTING, AVERNIC_DEFENDER, INFERNAL_CAPE, TWISTED_SLAYER_HELMET_I,
             RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY,
-            DRAGON_DAGGERP_24949, ELITE_VOID_TOP_24943, ELITE_VOID_ROBE_24942, VOID_MELEE_HELM_24941, VOID_MAGE_HELM_24940, VOID_RANGER_HELM_24939,
-            VOID_KNIGHT_GLOVES_24938, GRANITE_MAUL_24944, PARTYHAT__SPECS_24945, ABYSSAL_TENTACLE_24948, FREMENNIK_KILT_24946, SPIKED_MANACLES_24947, FAWKES_32937,
+            GRANITE_MAUL_24944, FAWKES_32937,
         };
         for (int i : tradeable_special_items) {
             World.getWorld().definitions().get(ItemDefinition.class, i).tradeable_special_items = true;

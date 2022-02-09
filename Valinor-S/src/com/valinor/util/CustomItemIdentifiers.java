@@ -9,6 +9,9 @@ public class CustomItemIdentifiers {
     public static final int FIFTY_TOTAL_DONATED_SCROLL = 32521;
     public static final int ONE_HUNDRED_TOTAL_DONATED_SCROLL = 32522;
     public static final int HUNDRED_FIFTY_TOTAL_DONATED_SCROLL = 32523;
+    public static final int WINTER_CASKET = 32524;
+    public static final int SNOWFLAKE_PET = 32525;
+    public static final int SNOW_IMP_COSTUME = 32526;
     public static final int VOID_SET = 32623;
     public static final int TREASURE_CASKET = 31836;
     public static final int CURSED_AMULET_OF_THE_DAMNED = 30211;
@@ -108,17 +111,6 @@ public class CustomItemIdentifiers {
     public static final int PURPLE_HWEEN_MASK = 32554;
     public static final int LIME_GREEN_HWEEN_MASK = 32555;
     public static final int FAWKES_32937 = 32937;
-    public static final int VOID_KNIGHT_GLOVES_24938 = 24938;
-    public static final int VOID_RANGER_HELM_24939 = 24939;
-    public static final int VOID_MAGE_HELM_24940 = 24940;
-    public static final int VOID_MELEE_HELM_24941 = 24941;
-    public static final int ELITE_VOID_ROBE_24942 = 24942;
-    public static final int ELITE_VOID_TOP_24943 = 24943;
-    public static final int DRAGON_DAGGERP_24949 = 24949;
-    public static final int ABYSSAL_TENTACLE_24948 = 24948;
-    public static final int SPIKED_MANACLES_24947 = 24947;
-    public static final int FREMENNIK_KILT_24946 = 24946;
-    public static final int PARTYHAT__SPECS_24945 = 24945;
     public static final int GRANITE_MAUL_24944 = 24944;
     public static final int TOXIC_STAFF_OF_THE_DEAD_C = 32006;
     public static final int RING_OF_ELYSIAN = 32005;
@@ -152,7 +144,7 @@ public class CustomItemIdentifiers {
     public static final int LAVA_DHIDE_COIF = 30074;
     public static final int LAVA_DHIDE_BODY = 30077;
     public static final int LAVA_DHIDE_CHAPS = 30080;
-    public static final int TWISTED_BOW_I = 30183;
+    public static final int TWISTED_BOW_RED = 30183;
     public static final int ANCESTRAL_HAT_I = 30175;
     public static final int ANCESTRAL_ROBE_TOP_I = 30177;
     public static final int ANCESTRAL_ROBE_BOTTOM_I = 30179;

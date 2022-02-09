@@ -71,7 +71,7 @@ public enum CombatSpecial {
     BARRELCHEST_ANCHOR(new int[]{ItemIdentifiers.BARRELCHEST_ANCHOR}, 50, 1.0, 1.10, new BarrelchestAnchor(), WeaponType.MACE),
     GRANITE_MAUL(new int[]{ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225, GRANITE_MAUL_24944}, 50, 1.0, 1.10, new GraniteMaul(), WeaponType.HAMMER),
     DRAGON_LONGSWORD(new int[]{ItemIdentifiers.DRAGON_LONGSWORD}, 25, 1.25, 1.25, new DragonLongsword(), WeaponType.LONGSWORD),
-    DRAGON_DAGGER(new int[]{ItemIdentifiers.DRAGON_DAGGER, ItemIdentifiers.DRAGON_DAGGERP, ItemIdentifiers.DRAGON_DAGGERP_5680, ItemIdentifiers.DRAGON_DAGGERP_5698, ItemIdentifiers.DRAGON_DAGGER_20407, DRAGON_DAGGERP_24949}, 25, 1.15, 1.15, new DragonDagger(), WeaponType.DAGGER),
+    DRAGON_DAGGER(new int[]{ItemIdentifiers.DRAGON_DAGGER, ItemIdentifiers.DRAGON_DAGGERP, ItemIdentifiers.DRAGON_DAGGERP_5680, ItemIdentifiers.DRAGON_DAGGERP_5698, ItemIdentifiers.DRAGON_DAGGER_20407}, 25, 1.15, 1.15, new DragonDagger(), WeaponType.DAGGER),
     ABYSSAL_DAGGER(new int[]{ItemIdentifiers.ABYSSAL_DAGGER, ItemIdentifiers.ABYSSAL_DAGGER_P, ItemIdentifiers.ABYSSAL_DAGGER_P_13269, ItemIdentifiers.ABYSSAL_DAGGER_P_13271}, 50, 0.85, 1.25, new AbyssalDagger(), WeaponType.DAGGER),
     ANCIENT_GODSWORD(new int[]{26233}, 50, 1.10, 1.35, new AncientGodsword(), WeaponType.TWOHANDED),
     ARMADYL_GODSWORD(new int[]{ItemIdentifiers.ARMADYL_GODSWORD, ItemIdentifiers.ARMADYL_GODSWORD_OR, 20593, BEGINNER_AGS}, 50, 1.35, 1.35, new ArmadylGodsword(), WeaponType.TWOHANDED),
@@ -82,7 +82,7 @@ public enum CombatSpecial {
 
     DRAGON_SPEAR(new int[]{ItemIdentifiers.DRAGON_SPEAR, ItemIdentifiers.DRAGON_SPEARP, ItemIdentifiers.DRAGON_SPEARP_5716, ItemIdentifiers.DRAGON_SPEARP_5730}, 25, 1.0, 1.0, new DragonSpear(), WeaponType.SPEAR),
     ZAMORAKIAN_SPEAR(new int[]{ItemIdentifiers.ZAMORAKIAN_SPEAR}, 25, 1.0, 1.0, new ZamorakianSpear(), WeaponType.SPEAR),
-    ABYSSAL_TENTACLE(new int[]{ItemIdentifiers.ABYSSAL_TENTACLE, ABYSSAL_TENTACLE_24948}, 50, 1.0, 1.0, new AbyssalTentacle(), WeaponType.WHIP),
+    ABYSSAL_TENTACLE(new int[]{ItemIdentifiers.ABYSSAL_TENTACLE}, 50, 1.0, 1.0, new AbyssalTentacle(), WeaponType.WHIP),
     ABYSSAL_WHIP(new int[]{ItemIdentifiers.ABYSSAL_WHIP, ItemIdentifiers.VOLCANIC_ABYSSAL_WHIP, ItemIdentifiers.FROZEN_ABYSSAL_WHIP}, 50, 1.0, 1.25, new AbyssalWhip(), WeaponType.WHIP),
     BLESSED_SARADOMIN_SWORD(new int[]{ItemIdentifiers.SARADOMINS_BLESSED_SWORD, ItemIdentifiers.SARAS_BLESSED_SWORD_FULL}, 65, 1.25, 1.0, new SaradominBlessedSword(), WeaponType.TWOHANDED),
     SARADOMIN_SWORD(new int[]{ItemIdentifiers.SARADOMIN_SWORD}, 100, 1.0, 1.0, new SaradominSword(), WeaponType.TWOHANDED),

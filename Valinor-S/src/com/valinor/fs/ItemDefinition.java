@@ -124,6 +124,10 @@ public class ItemDefinition implements Definition {
             unprotectable = true;
         } else if (id == FAWKES) {
             name = "Fawkes";
+        } else if (id == WINTER_CASKET) {
+            name = "Winter casket";
+        } else if (id == ICE_IMP) {
+            name = "Ice imp";
         } else if (id == TORVA_FULL_HELM) {
             cost = 12_000_000;
         } else if (id == TORVA_PLATEBODY) {
@@ -593,8 +597,8 @@ public class ItemDefinition implements Definition {
             name = "Lava d'hide chaps";
             grandexchange = true;
             cost = 3_000_000;
-        } else if (id == TWISTED_BOW_I) {
-            name = "Twisted bow (i)";
+        } else if (id == TWISTED_BOW_RED) {
+            name = "Twisted bow";
             grandexchange = true;
             cost = 35_000_000;
         } else if (id == ANCESTRAL_HAT_I) {
