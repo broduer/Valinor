@@ -28,7 +28,7 @@ public final class ClientConstants {
     public static final boolean production = false;
     public static final boolean test = false;
 
-    public static final String CLIENT_VERSION = "1.0.7";
+    public static final String CLIENT_VERSION = "1.0.8";
     public static final int OSRS_DATA_VERSION = 202;
     public static final int OSRS_DATA_SUB_VERSION = 2;
 

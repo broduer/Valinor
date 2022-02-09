@@ -260,7 +260,6 @@ public class WorldBossEvent {
     public enum WorldBosses {
 
         GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
-        WAMPA(ICELORD, "Wampa"),
         SNOWFLAKE(CustomNpcIdentifiers.SNOWFLAKE_BOSS, "Snowflake"),
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
