@@ -32,8 +32,8 @@ import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.CustomItemIdentifiers.HWEEN_TOKENS;
-import static com.valinor.util.CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING;
-import static com.valinor.util.CustomNpcIdentifiers.GRIM;
+import static com.valinor.util.CustomItemIdentifiers.WINTER_TOKENS;
+import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -116,6 +116,10 @@ public class WorldBossEvent {
 
                 if(npc.id() == BRUTAL_LAVA_DRAGON_FLYING) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(LAVA_DRAGON_BONES), npc.tile(), player));
+                }
+
+                if(npc.id() == SNOWFLAKE_BOSS) {
+                    GroundItemHandler.createGroundItem(new GroundItem(new Item(WINTER_TOKENS, World.getWorld().random(2000,3500)), npc.tile(), player));
                 }
 
                 //Always drop random coins
@@ -260,7 +264,7 @@ public class WorldBossEvent {
     public enum WorldBosses {
 
         GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
-        SNOWFLAKE(CustomNpcIdentifiers.SNOWFLAKE_BOSS, "Snowflake"),
+        SNOWFLAKE(SNOWFLAKE_BOSS, "Snowflake"),
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
         CORRUPTED_HUNLLEF(NpcIdentifiers.CORRUPTED_HUNLLEF, "Corrupted hunllef"),
