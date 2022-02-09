@@ -41,15 +41,6 @@ public class WinterCasket extends Interaction {
         }
     }
 
-    private final List<Item> COMMON_REWARDS = Arrays.asList(
-        new Item(LARRANS_KEY,10),
-        new Item(ABYSSAL_WHIP),
-        new Item(AMULET_OF_FURY),
-        new Item(BONECRUSHER),
-        new Item(EXPLORERS_RING_4),
-        new Item(BARROWS_MYSTERY_BOX)
-    );
-
     private final List<Item> UNCOMMON_REWARDS = Arrays.asList(
         new Item(BANDOS_GODSWORD_ORNAMENT_KIT),
         new Item(SARADOMIN_GODSWORD_ORNAMENT_KIT),
@@ -94,10 +85,8 @@ public class WinterCasket extends Interaction {
         if (World.getWorld().rollDie(50, 1)) {
             rare = true;
             return Utils.randomElement(RARE_REWARDS);
-        } else if (World.getWorld().rollDie(20, 1)) {
-            return Utils.randomElement(UNCOMMON_REWARDS);
         } else {
-            return Utils.randomElement(COMMON_REWARDS);
+            return Utils.randomElement(UNCOMMON_REWARDS);
         }
     }
 }

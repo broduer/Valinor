@@ -58,7 +58,7 @@ public class GrassyPatch {
         }
         raking = true;
         p.animate(2273);
-        Chain.bound(null).repeatingTask(3, t -> {
+        Chain.bound(p).repeatingTask(3, t -> {
             if (!p.inventory().contains(5341)) {
                 p.message("This patch needs to be raked before anything can grow in it.");
                 p.message("You do not have a rake in your inventory.");

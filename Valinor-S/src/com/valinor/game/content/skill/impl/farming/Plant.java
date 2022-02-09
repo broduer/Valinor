@@ -114,7 +114,7 @@ public class Plant {
 
         if (harvestItemNeeded.stream().anyMatch(item -> player.inventory().contains(item) || player.getEquipment().contains(item))) {
             final Plant instance = this;
-            Chain.bound(null).repeatingTask(3, t -> {
+            Chain.bound(player).repeatingTask(3, t -> {
                 if (player.getInventory().getFreeSlots() == 0) {
                     player.message("Your inventory is full.");
                     t.stop();
@@ -170,7 +170,7 @@ public class Plant {
         if (item == 952) {
             player.animate(830);
             player.getFarming().remove(this);
-            Chain.bound(null).runFn(2, () -> {
+            Chain.bound(player).runFn(2, () -> {
                 player.message("You remove your plants from the plot.");
                 player.animate(65535);
             });
