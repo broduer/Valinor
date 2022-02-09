@@ -67,7 +67,6 @@ public class ItemDrops {
 
                     if (eventCurrency) {
                         int extraTokens = player.hasPetOut("Ice imp") ? (int) (dropped.getAmount() * 0.50) : 0;
-                        System.out.println(extraTokens);
                         dropped.setAmount(dropped.copy().getAmount() + extraTokens);
                     }
 
