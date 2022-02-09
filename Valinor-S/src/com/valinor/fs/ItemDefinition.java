@@ -122,12 +122,14 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == SNOWFLAKE_PET) {
+            name = "Snowflake pet";
         } else if (id == FAWKES) {
             name = "Fawkes";
         } else if (id == WINTER_CASKET) {
             name = "Winter casket";
         } else if (id == ICE_IMP) {
-            name = "Ice imp";
+            name = "Ice imp pet";
         } else if (id == TORVA_FULL_HELM) {
             cost = 12_000_000;
         } else if (id == TORVA_PLATEBODY) {
@@ -781,7 +783,7 @@ public class ItemDefinition implements Definition {
             name = "Winter token";
             ioptions = new String[]{null, null, null, null, "Drop"};
             grandexchange = true;
-            cost = 10_000;
+            cost = 100;
         } else if (id == CORRUPTED_BOOTS) {
             name = "Corrupted boots";
             grandexchange = true;

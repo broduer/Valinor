@@ -12,6 +12,7 @@ import java.util.HashMap;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomItemIdentifiers.CLOAK_OF_INVISIBILITY;
+import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP_PET;
 import static com.valinor.util.CustomNpcIdentifiers.SKELETON_HELLHOUND_PET;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.ZAMORAK_GODSWORD_ORNAMENT_KIT;
@@ -23,6 +24,8 @@ public class HoverMenuManager {
     public static HashMap<Integer, HoverMenu> menus = new HashMap<>();
 
     public static void init() {
+        menus.put(ICE_IMP_PET, new HoverMenu("@gre@+50%@whi@Bonus winter tokens when killing winter event monsters."));
+        menus.put(SNOWFLAKE_PET, new HoverMenu("@gre@+3%@whi@Damage and accuracy when performing magic attacks."));
         menus.put(RED_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the magic skill. Effect works in both Pvm aswell as PvP."));
         menus.put(GREEN_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the range skill. Effect works in both Pvm aswell as PvP."));
         menus.put(BLACK_SLAYER_HELMET_I, new HoverMenu("@gre@+3%@whi@Bonus accuracy and damage in the melee skill. Effect works in both Pvm aswell as PvP."));

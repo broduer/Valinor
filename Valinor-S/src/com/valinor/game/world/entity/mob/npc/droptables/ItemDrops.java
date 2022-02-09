@@ -66,16 +66,9 @@ public class ItemDrops {
                     var eventCurrency = itemId == HWEEN_TOKENS || itemId == WINTER_TOKENS;
 
                     if (eventCurrency) {
-                        if (inWilderness) {
-                            //50% extra tokens in wilderness
-                            int extraTokens = dropped.getAmount() * 50 / 100;
-                            dropped.setAmount(dropped.copy().getAmount() + extraTokens);
-
-                            //Doubled if the player is skulled
-                            if (player.getSkullType() != SkullType.NO_SKULL) {
-                                dropped.setAmount(dropped.copy().getAmount() * 2);
-                            }
-                        }
+                        int extraTokens = player.hasPetOut("Ice imp") ? (int) (dropped.getAmount() * 0.50) : 0;
+                        System.out.println(extraTokens);
+                        dropped.setAmount(dropped.copy().getAmount() + extraTokens);
                     }
 
                     var noteDragonBones = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NOTED_DRAGON_BONES);

@@ -57,7 +57,13 @@ public class WinterCasket extends Interaction {
         new Item(ARMADYL_GODSWORD_ORNAMENT_KIT),
         new Item(TORMENTED_ORNAMENT_KIT),
         new Item(WILDERNESS_KEY,3),
-        new Item(DONATOR_MYSTERY_BOX)
+        new Item(DONATOR_MYSTERY_BOX),
+        new Item(ARMADYL_HELMET),
+        new Item(ARMADYL_CHESTPLATE),
+        new Item(ARMADYL_CHAINSKIRT),
+        new Item(BANDOS_TASSETS),
+        new Item(BANDOS_CHESTPLATE),
+        new Item(STAFF_OF_BALANCE)
     );
 
     private final List<Item> RARE_REWARDS = Arrays.asList(
@@ -75,7 +81,11 @@ public class WinterCasket extends Interaction {
         new Item(FEROCIOUS_GLOVES),
         new Item(SUPER_MYSTERY_BOX),
         new Item(NIGHTMARE_STAFF),
-        new Item(RED_DYE)
+        new Item(RED_DYE),
+        new Item(RUNE_POUCH_I),
+        new Item(AVERNIC_DEFENDER_HILT),
+        new Item(INFERNAL_CAPE),
+        new Item(AVAS_ASSEMBLER)
     );
 
     private boolean rare = false;

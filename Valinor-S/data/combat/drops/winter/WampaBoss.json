@@ -11,7 +11,30 @@
       "name": "Drops",
       "points": 1,
       "items": [
-
+        { "id": 985, "min": 1, "max": 1, "points": 70 }, //Tooth half of a key
+        { "id": 987, "min": 1, "max": 1, "points": 70 }, //Loop half of a key
+        { "id": 989, "min": 1, "max": 1, "points": 65 }, //Crystal key
+        { "id": 11133, "min": 1, "max": 1, "points": 70 }, //Regen bracelet
+        { "id": 6731, "min": 1, "max": 1, "points": 70 }, //Seers ring
+        { "id": 6733, "min": 1, "max": 1, "points": 70 }, //Archers ring
+        { "id": 6735, "min": 1, "max": 1, "points": 70 }, //Warriors ring
+        { "id": 6737, "min": 1, "max": 1, "points": 65 }, //Berserker ring
+        { "id": 12601, "min": 1, "max": 1, "points": 65 }, //Ring of the gods
+        { "id": 12603, "min": 1, "max": 1, "points": 65 }, //Tyrannical ring
+        { "id": 12605, "min": 1, "max": 1, "points": 65 }, //Treasonous ring
+        { "id": 20849, "min": 10, "max": 30, "points": 100 }, //Dragon thrownaxe
+        { "id": 22804, "min": 10, "max": 30, "points": 90 }, //Dragon knife
+        { "id": 22806, "min": 10, "max": 30, "points": 90 }, //Dragon knife p
+        { "id": 22808, "min": 10, "max": 30, "points": 90 }, //Dragon knife p+
+        { "id": 22810, "min": 10, "max": 30, "points": 90 }, //Dragon knife p++
+        { "id": 19484, "min": 10, "max": 30, "points": 90 }, //Dragon javelin
+        { "id": 19490, "min": 10, "max": 30, "points": 90 }, //Dragon javelin p++
+        { "id": 22002, "min": 1, "max": 1, "points": 60 }, //Dragonfire ward
+        { "id": 21633, "min": 1, "max": 1, "points": 60 }, //Ancient wyvern shield
+        { "id": 11286, "min": 1, "max": 1, "points": 50 }, //Draconic visage
+        { "id": 11785, "min": 1, "max": 1, "points": 20 }, //Armadyl crossbow
+        { "id": 11802, "min": 1, "max": 1, "points": 17 }, //Armadyl godsword
+        { "id": 13652, "min": 1, "max": 1, "points": 12 } //Dragon claws
       ]
     },
     {

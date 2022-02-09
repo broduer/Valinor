@@ -373,6 +373,10 @@ public class AccuracyFormula {
                 off_additional_bonus += 0.125;
             }
 
+            if (player.hasPetOut("Snowflake") && style.equals(CombatType.MAGIC)) {
+                off_additional_bonus += 0.03;
+            }
+
             if (player.hasPetOut("Little Nightmare") && style.equals(CombatType.MAGIC)) {
                 off_additional_bonus += 0.05;
             }

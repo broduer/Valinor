@@ -107,6 +107,10 @@ public class MagicMaxHit {
                 }
             }
 
+            if(player.hasPetOut("Snowflake")) {
+                multiplier += 0.03;
+            }
+
             int weapon = player.getEquipment().get(3) == null ? -1 : player.getEquipment().get(3).getId();
             if (spell_name.equals("Volatile spell")) {
                 int baseLevel = level;
