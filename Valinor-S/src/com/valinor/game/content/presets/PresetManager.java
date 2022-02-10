@@ -415,6 +415,7 @@ public class PresetManager {
         if (!player.inventory().contains(RUNE_POUCH) && !player.inventory().contains(RUNE_POUCH_I)) {
             return;
         }
+        player.getRunePouch().bankRunesFromNothing();
         for (Item value : stack) {
             Item item = value;
 
@@ -556,7 +557,6 @@ public class PresetManager {
 
         //Before banking the inventory first bank looting bag and clear rune pouch
         player.getLootingBag().depositLootingBag();
-        player.getRunePouch().bankRunesFromNothing();
 
         //When the preset is global auto bank
         player.getBank().depositInventory();

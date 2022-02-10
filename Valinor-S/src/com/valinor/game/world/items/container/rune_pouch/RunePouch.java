@@ -385,6 +385,11 @@ public class RunePouch extends ItemContainer {
     }
 
     public void bankRunesFromNothing() {
+        //Nothing to bank
+        if(player.getRunePouch().isEmpty()) {
+            return;
+        }
+
         //logger.trace("Player {} banking rp runes {} {}", player.getMobName(), player.getRunePouch().size(), Arrays.toString(player.getRunePouch().toArray()));
         for (Item item : player.getRunePouch().toArray()) {
             if(item == null)
