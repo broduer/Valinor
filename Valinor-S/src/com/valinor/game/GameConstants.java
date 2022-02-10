@@ -37,12 +37,11 @@ public class GameConstants {
         //Standard runes
         new Item(FIRE_RUNE, 1000), new Item(WATER_RUNE, 1000), new Item(AIR_RUNE, 1000), new Item(EARTH_RUNE, 1000), new Item(MIND_RUNE, 1000),
         //Food (Lobsters, noted)
-        new Item(LOBSTER+1, 50)
+        new Item(LOBSTER + 1, 50)
     };
 
-    public final static int[] TAB_AMOUNT = {54, 53, 0, 0, 0, 0, 0, 0, 0, 0};
+    public final static int[] TAB_AMOUNT = {48, 60, 0, 0, 0, 0, 0, 0, 0, 0};
     public final static Item[] BANK_ITEMS = {
-        new Item(4151, 20000), // whip
         new Item(4587, 20000), // Scim
         new Item(1215, 20000), // Dagger
         new Item(4089, 20000), // Mystic
@@ -81,8 +80,8 @@ public class GameConstants {
         new Item(12508, 20000), // hides
         new Item(12500, 20000), // hides
         new Item(3105, 20000), // climbers
-        new Item(1093, 20000), // rune plateskirt
-        new Item(1201, 20000), // rune kiteshield
+        new Item(1093, 20000), // rune
+        new Item(1201, 20000), // rune
         new Item(3842, 20000), // god book
         new Item(12612, 20000), // god book
         new Item(12494, 20000), // hides
@@ -91,11 +90,6 @@ public class GameConstants {
         new Item(6108, 20000), // ghostly
         new Item(6107, 20000), // ghostly
         new Item(6109, 20000), // ghostly
-        new Item(10828, 20000), // neit helm
-        new Item(2412, 20000), // sara god cape
-        new Item(7458, 20000), // mithril gloves for pures
-        new Item(7462, 20000), // gloves
-        new Item(11978, 20000), // glory (6)
 
         // END OF TAB 1
         new Item(2436, 20000), // pots
@@ -152,6 +146,12 @@ public class GameConstants {
         new Item(9243, 20000), // bolts
         new Item(9242, 20000), // bolts
         new Item(892, 20000), // rune arrows
+        new Item(10828, 20000), // neit helm
+        new Item(2412, 20000), // sara god cape
+        new Item(8013, 20000), // home teleport tab
+        new Item(7458, 20000), // mithril gloves for pures
+        new Item(7462, 20000), // gloves
+        new Item(11978, 20000), // glory (6)
     };
 
     public static final String SERVER_NAME = "Valinor";
@@ -161,18 +161,18 @@ public class GameConstants {
      * corresponding itemcontainer identification.
      */
     public static final int[][] SIDEBAR_INTERFACE =
-    {
-        {GameConstants.ATTACK_TAB, 2423}, {GameConstants.SKILL_TAB, 10000}, {GameConstants.QUEST_TAB, 53400}, {GameConstants.INVENTORY_TAB, 3213}, {GameConstants.EQUIPMENT_TAB, 1644}, {GameConstants.PRAYER_TAB, 5608}, {GameConstants.MAGIC_TAB, 938}, //Row 1
+        {
+            {GameConstants.ATTACK_TAB, 2423}, {GameConstants.SKILL_TAB, 10000}, {GameConstants.QUEST_TAB, 53400}, {GameConstants.INVENTORY_TAB, 3213}, {GameConstants.EQUIPMENT_TAB, 1644}, {GameConstants.PRAYER_TAB, 5608}, {GameConstants.MAGIC_TAB, 938}, //Row 1
 
-        {GameConstants.CLAN_TAB, InterfaceConstants.CLAN_CHAT}, {GameConstants.FRIENDS_TAB, 5065}, {GameConstants.IGNORE_TAB, 5715}, {GameConstants.LOGOUT_TAB, 2449}, {GameConstants.WRENCH_TAB, 42500}, {GameConstants.EMOTE_TAB, 147}, {GameConstants.MUSIC_TAB, 72150} //Row 2
-    };
-    
+            {GameConstants.CLAN_TAB, InterfaceConstants.CLAN_CHAT}, {GameConstants.FRIENDS_TAB, 5065}, {GameConstants.IGNORE_TAB, 5715}, {GameConstants.LOGOUT_TAB, 2449}, {GameConstants.WRENCH_TAB, 42500}, {GameConstants.EMOTE_TAB, 147}, {GameConstants.MUSIC_TAB, 72150} //Row 2
+        };
+
     /**
      * All the tab identifications
      */
     public static final int ATTACK_TAB = 0, SKILL_TAB = 1, QUEST_TAB = 2, INVENTORY_TAB = 3, EQUIPMENT_TAB = 4,
-            PRAYER_TAB = 5, MAGIC_TAB = 6, CLAN_TAB = 7, FRIENDS_TAB = 8, IGNORE_TAB = 9, LOGOUT_TAB = 10,
-            WRENCH_TAB = 11, EMOTE_TAB = 12, MUSIC_TAB = 13;
+        PRAYER_TAB = 5, MAGIC_TAB = 6, CLAN_TAB = 7, FRIENDS_TAB = 8, IGNORE_TAB = 9, LOGOUT_TAB = 10,
+        WRENCH_TAB = 11, EMOTE_TAB = 12, MUSIC_TAB = 13;
 
     //Capped at 1000, we wont ever reach more then 1000 players as RSPS anyways
     public static final int PLAYERS_LIMIT = 1000; //This must be capped to 2047 because 11 bits - 1
@@ -181,5 +181,5 @@ public class GameConstants {
     /**
      * Strings that are classified as bad
      */
-    public static final String[] BAD_STRINGS = { };
+    public static final String[] BAD_STRINGS = {};
 }
