@@ -288,26 +288,26 @@ public class BountyHunter {
             return 0;
         }
 
-        int bountyHunterPoints = 0;
+        int pkPoints = 0;
 
         for(BountyHunterEmblem emblem : list) {
             int amount = player.inventory().count(emblem.getItemId());
             if(amount > 0) {
-                bountyHunterPoints += (emblem.getBountyPoints() * amount);
-                player.putAttrib(EMBLEM_WEALTH,formatNumber(bountyHunterPoints)+" bounties");
+                pkPoints += (emblem.getPkPoints() * amount);
+                player.putAttrib(EMBLEM_WEALTH,formatNumber(pkPoints)+" pk points");
 
                 if(performSale) {
                     if(!player.inventory().contains(emblem.getItemId())) {
                         return 0;
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
-                    var bounties = player.<Integer>getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0) + bountyHunterPoints;
-                    player.putAttrib(AttributeKey.BOUNTY_HUNTER_POINTS, bounties);
+                    var bounties = player.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + pkPoints;
+                    player.putAttrib(AttributeKey.PK_POINTS, bounties);
                     player.clearAttrib(EMBLEM_WEALTH);
                 }
             }
         }
-        return bountyHunterPoints;
+        return pkPoints;
     }
 
     /***

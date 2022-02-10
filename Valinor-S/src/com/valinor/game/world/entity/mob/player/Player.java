@@ -3013,7 +3013,7 @@ public class Player extends Mob {
         getCombat().process();
 
         //Section 8 Process Bounty Hunter
-        //BountyHunter.sequence(this);
+        BountyHunter.sequence(this);
     }, end = () -> {
         if (queuedAppearanceUpdate()) {
             getUpdateFlag().flag(Flag.APPEARANCE);

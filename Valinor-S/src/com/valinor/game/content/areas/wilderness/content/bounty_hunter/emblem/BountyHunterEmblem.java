@@ -14,24 +14,24 @@ import java.util.stream.Collectors;
  */
 public enum BountyHunterEmblem {
 
-    ANTIQUE_EMBLEM_TIER_1(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1,50_000,0),
-    ANTIQUE_EMBLEM_TIER_2(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_2,100_000,1),
-    ANTIQUE_EMBLEM_TIER_3(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_3,200_000,2),
-    ANTIQUE_EMBLEM_TIER_4(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_4,400_000,3),
-    ANTIQUE_EMBLEM_TIER_5(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_5,750_000,4),
-    ANTIQUE_EMBLEM_TIER_6(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_6,1_200_000,5),
-    ANTIQUE_EMBLEM_TIER_7(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_7,1_750_000,6),
-    ANTIQUE_EMBLEM_TIER_8(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_8,2_500_000,7),
-    ANTIQUE_EMBLEM_TIER_9(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_9,3_500_000,8),
-    ANTIQUE_EMBLEM_TIER_10(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_10,5_000_000,9);
+    ANTIQUE_EMBLEM_TIER_1(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1,500,0),
+    ANTIQUE_EMBLEM_TIER_2(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_2,750,1),
+    ANTIQUE_EMBLEM_TIER_3(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_3,1000,2),
+    ANTIQUE_EMBLEM_TIER_4(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_4,1500,3),
+    ANTIQUE_EMBLEM_TIER_5(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_5,2000,4),
+    ANTIQUE_EMBLEM_TIER_6(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_6,2750,5),
+    ANTIQUE_EMBLEM_TIER_7(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_7,3500,6),
+    ANTIQUE_EMBLEM_TIER_8(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_8,4500,7),
+    ANTIQUE_EMBLEM_TIER_9(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_9,6000,8),
+    ANTIQUE_EMBLEM_TIER_10(ItemIdentifiers.ANTIQUE_EMBLEM_TIER_10,8000,9);
 
     private final int itemId;
-    private final int bountyPoints;
+    private final int pkPoints;
     private final int index;
 
-    BountyHunterEmblem(int itemId, int bountyPoints, int index) {
+    BountyHunterEmblem(int itemId, int pkPoints, int index) {
         this.itemId = itemId;
-        this.bountyPoints = bountyPoints;
+        this.pkPoints = pkPoints;
         this.index = index;
     }
 
@@ -39,8 +39,8 @@ public enum BountyHunterEmblem {
         return itemId;
     }
 
-    public int getBountyPoints() {
-        return bountyPoints;
+    public int getPkPoints() {
+        return pkPoints;
     }
 
     public int getIndex() {
