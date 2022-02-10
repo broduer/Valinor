@@ -5,7 +5,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
 import com.valinor.game.content.areas.wilderness.content.EloRating;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.collection_logs.LogType;

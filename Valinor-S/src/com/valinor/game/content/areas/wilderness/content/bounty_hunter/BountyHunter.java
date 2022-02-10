@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.bountyhunter;
+package com.valinor.game.content.areas.wilderness.content.bounty_hunter;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
@@ -7,7 +7,7 @@ import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.mechanics.Death;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.emblem.BountyHunterEmblem;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.items.Item;

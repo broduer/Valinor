@@ -195,7 +195,7 @@ public class AccountSelection extends Interaction {
             }
 
             case INSTANT_PKER -> {
-                /*player.getBank().addAll(BANK_ITEMS);
+                player.getBank().addAll(BANK_ITEMS);
                 System.arraycopy(TAB_AMOUNT, 0, player.getBank().tabAmounts, 0, TAB_AMOUNT.length);
                 player.getBank().shift();
                 player.message("Your bank has been filled with PvP supplies.");
@@ -205,7 +205,7 @@ public class AccountSelection extends Interaction {
                     player.skills().update();
                     player.skills().recalculateCombat();
                 }
-                player.putAttrib(AttributeKey.COMBAT_MAXED,true);*/
+                player.putAttrib(AttributeKey.COMBAT_MAXED,true);
             }
         }
 

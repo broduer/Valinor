@@ -1,6 +1,6 @@
 package com.valinor.game.content.teleport.obelisk;
 
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;

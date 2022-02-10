@@ -152,6 +152,8 @@ public class ChamberOfXericReward {
             return;
         }
 
+
+
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);
         Player rare = null;

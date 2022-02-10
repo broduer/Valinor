@@ -2,7 +2,7 @@ package com.valinor.game.content.mechanics;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.GameConstants;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.items_kept_on_death.Conversions;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
@@ -11,7 +11,7 @@ import com.valinor.game.content.minigames.MinigameManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.emblem.BountyHunterEmblem;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;

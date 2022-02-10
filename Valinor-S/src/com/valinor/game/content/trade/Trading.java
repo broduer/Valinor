@@ -120,12 +120,6 @@ public class Trading {
             return;
         }
 
-        // Pvp mode? fuck off lol!!
-        if (player.gameMode() == GameMode.INSTANT_PKER && otherPlayer.gameMode() != GameMode.INSTANT_PKER) {
-            player.message("You cannot trade "+otherPlayer.getUsername()+" you are a Instant Pker.");
-            return;
-        }
-
         if (otherPlayer.gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
             player.message("You cannot trade "+otherPlayer.getUsername()+" they are playing as an Instant Pker.");
             return;

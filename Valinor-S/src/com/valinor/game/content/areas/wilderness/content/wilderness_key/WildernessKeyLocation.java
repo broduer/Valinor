@@ -1,4 +1,4 @@
-package com.valinor.game.content.areas.wilderness.content.key;
+package com.valinor.game.content.areas.wilderness.content.wilderness_key;
 
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;

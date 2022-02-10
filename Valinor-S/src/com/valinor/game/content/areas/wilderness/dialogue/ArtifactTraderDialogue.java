@@ -2,7 +2,7 @@ package com.valinor.game.content.areas.wilderness.dialogue;
 
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunter;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.dialogue.Dialogue;

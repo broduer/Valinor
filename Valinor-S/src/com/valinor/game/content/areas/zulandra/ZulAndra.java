@@ -1,6 +1,6 @@
 package com.valinor.game.content.areas.zulandra;
 
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.zulandra.dialogue.*;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueManager;

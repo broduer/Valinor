@@ -14,7 +14,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
-import com.valinor.game.world.entity.combat.bountyhunter.BountyHunter;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunter;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.dialogue.Dialogue;

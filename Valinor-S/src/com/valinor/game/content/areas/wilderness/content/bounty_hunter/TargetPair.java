@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.bountyhunter;
+package com.valinor.game.content.areas.wilderness.content.bounty_hunter;
 
 import com.valinor.game.world.entity.mob.player.Player;
 

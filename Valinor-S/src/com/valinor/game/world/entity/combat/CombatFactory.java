@@ -751,12 +751,6 @@ public class CombatFactory {
                     return false;
                 }
 
-                // Pvp mode? fuck off lol!!
-                if (player.gameMode() == GameMode.INSTANT_PKER && entity.getAsPlayer().gameMode() != GameMode.INSTANT_PKER) {
-                    player.message("You cannot attack "+entity.getAsPlayer().getUsername()+" you are a Instant Pker.");
-                    return false;
-                }
-
                 if (entity.getAsPlayer().gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
                     player.message("You cannot attack "+entity.getAsPlayer().getUsername()+" they are playing as an Instant Pker.");
                     return false;

@@ -7,8 +7,6 @@ import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
-import com.valinor.game.world.entity.combat.bountyhunter.emblem.BountyHunterEmblem;
-import com.valinor.game.world.entity.combat.hit.HitDamageCache;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.ScalarLootTable;
@@ -20,13 +18,11 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.MapObjects;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.NpcIdentifiers.*;

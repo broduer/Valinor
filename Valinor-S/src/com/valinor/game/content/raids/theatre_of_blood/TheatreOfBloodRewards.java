@@ -148,6 +148,10 @@ public class TheatreOfBloodRewards {
             return;
         }
 
+        if (personalPoints > 180_000) {
+            personalPoints = 180_000;
+        }
+
         double chance = (float) personalPoints / 100 / 100.0;
         //System.out.println(chance);
         Player rare = null;

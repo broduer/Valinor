@@ -1,16 +1,14 @@
 package com.valinor.game.content.areas.edgevile;
 
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
 import com.valinor.game.content.teleport.OrnateJewelleryBox;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.ForceMovementTask;
-import com.valinor.game.task.impl.TickableTask;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.masks.animations.Animation;
-import com.valinor.game.world.entity.mob.Direction;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.ForceMovement;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -26,7 +24,6 @@ import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
-import static com.valinor.util.ObjectIdentifiers.MINE_CART;
 
 /**
  * @author Patrick van Elderen | Zerikoth | PVE

@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.bountyhunter.dialogue;
+package com.valinor.game.content.areas.wilderness.content.bounty_hunter.dialogue;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;

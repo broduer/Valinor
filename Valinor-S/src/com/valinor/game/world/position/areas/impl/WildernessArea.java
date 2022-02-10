@@ -1,6 +1,6 @@
 package com.valinor.game.world.position.areas.impl;
 
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.world.World;

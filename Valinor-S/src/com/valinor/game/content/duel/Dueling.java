@@ -222,12 +222,6 @@ public class Dueling {
             return;
         }
 
-        // Pvp mode? fuck off lol!!
-        if (player.gameMode() == GameMode.INSTANT_PKER && t_.gameMode() != GameMode.INSTANT_PKER) {
-            player.message("You cannot duel "+t_.getUsername()+" you are a Instant Pker.");
-            return;
-        }
-
         if (t_.gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
             player.message("You cannot duel "+t_.getUsername()+" they are playing as an Instant Pker.");
             return;

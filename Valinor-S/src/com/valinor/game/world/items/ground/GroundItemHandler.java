@@ -2,7 +2,7 @@ package com.valinor.game.world.items.ground;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
-import com.valinor.game.content.areas.wilderness.content.key.WildernessKeyPlugin;
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.task.Task;

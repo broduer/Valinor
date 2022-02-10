@@ -36,7 +36,7 @@ public final class ClientConstants {
 
     public static final boolean DEBUG_INTERFACES = false;
 
-    public static final boolean PVP_GAME_MODE_ENABLED = false;
+    public static final boolean PVP_GAME_MODE_ENABLED = true;
 
     /**
      * Used for change world button on login screen

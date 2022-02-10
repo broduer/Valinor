@@ -18,7 +18,7 @@ import com.valinor.game.content.skill.impl.woodcutting.BirdNest;
 import com.valinor.game.content.tasks.rewards.TaskReward;
 import com.valinor.game.content.treasure.TreasureRewardCaskets;
 import com.valinor.game.world.entity.AttributeKey;
-import com.valinor.game.world.entity.combat.bountyhunter.dialogue.TeleportToTargetScrollD;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.dialogue.TeleportToTargetScrollD;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
