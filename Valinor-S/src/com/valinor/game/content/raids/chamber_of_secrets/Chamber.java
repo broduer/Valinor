@@ -80,7 +80,7 @@ public class Chamber extends Interaction {
             //Can only interact if we're in an actual raid
             if (obj.getId() == STAIRCASE_13503 || obj.getId() == CHALICE_33456) {
                 if(player.getRaids() != null) {
-                    player.getRaids().exit(player);
+                    player.getRaids().exit(player,false);
                 }
                 player.healPlayer();
                 return true;

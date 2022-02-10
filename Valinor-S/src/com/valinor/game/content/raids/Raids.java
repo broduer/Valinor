@@ -14,7 +14,7 @@ public abstract class Raids {
 
     public abstract void startup(Player player);
 
-    public abstract void exit(Player player);
+    public abstract void exit(Player player, boolean teleport);
 
     public abstract void complete(Party party);
 

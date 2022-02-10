@@ -66,8 +66,9 @@ public class Xarpus extends CommonCombatMethod {
                     if (tick == 1) {
                         Projectile projectile = new Projectile(mob, target, 1555, 0, 120, 50, 25,0);
                         projectile.sendProjectile();
+
                     } else if (tick == 4) {
-                        boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equalsIgnoreHeight(tile));
+                        boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equals(tile));
                         if (!exists) {
                             if (poison.size() > 25) {
                                 poison.set(oldestPool, new PoisonPool(World.getWorld().random(1654, 1661), tile));
@@ -80,14 +81,18 @@ public class Xarpus extends CommonCombatMethod {
                         World.getWorld().tileGraphic(1556, tile,0,0);
                     } else if (tick == 5) {
                         int tries = 0;
-                        while (next == target && tries++ < 50 && targets.size() > 1) {
+                        boolean moreThenOneTarget = targets.size() > 1;
+                        while (next == target && tries++ < 50 && moreThenOneTarget) {
                             next = World.getWorld().randomTypeOfList(targets);
                         }
-                        Projectile projectile = new Projectile(tile, next, 1555, 0, 120, 50, 25,0);
-                        projectile.sendProjectile();
+
+                        if(moreThenOneTarget) {
+                            Projectile projectile = new Projectile(tile, next, 1555, 0, 120, 50, 25, 0);
+                            projectile.sendProjectile();
+                        }
                     } else if (tick == 9) {
                         final Tile nextTile = next.tile();
-                        boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equalsIgnoreHeight(nextTile));
+                        boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equals(nextTile));
                         if (!exists) {
                             if (poison.size() > 25) {
                                 poison.set(oldestPool, new PoisonPool(World.getWorld().random(1654, 1661), nextTile));
@@ -127,7 +132,9 @@ public class Xarpus extends CommonCombatMethod {
         super.process(mob, target);
         List<Mob> targets = getPossibleTargets(mob);
         Optional<Mob> u = targets.stream().filter(t -> t.tile().isWithinDistance(mob.tile(), 6)).findAny();
-        if (phase == 0 && exumedCount < 5 && u.isPresent()) {
+        if (phase == 0 && exumedCount < 10 && u.isPresent()) {
+            mob.resetFaceTile();
+            mob.setEntityInteraction(null);
             if (healingTask == null) {
                 if (!targets.isEmpty()) {
                     healingTask = new Task("XarpusProcessHealingTask", 1) {
@@ -145,7 +152,7 @@ public class Xarpus extends CommonCombatMethod {
                             } else if (tick > 1 && tick <= 16) {
                                 boolean plugged = false;
                                 for (Mob t : targets) {
-                                    if (t.tile().equalsIgnoreHeight(exumed)) {
+                                    if (t.tile().equals(exumed)) {
                                         plugged = true;
                                     }
                                 }
@@ -153,8 +160,7 @@ public class Xarpus extends CommonCombatMethod {
                                     World.getWorld().tileGraphic(1549, exumed, 0, 0);
                                 }
                                 if (!plugged && exumed != null) {
-                                    new Projectile(exumed, mob.tile().center(mob.getSize()), mob.getIndex(), 1550, 120, 55, 0, 0, 0).sendProjectile();
-                                    mob.setHitpoints(mob.maxHp() + 9);
+                                    new Projectile(exumed, mob.getCentrePosition(), mob.getIndex(), 1550, 87, 40, 11, 55, 0).sendProjectile();
                                     mob.hit_(mob,9, 4, SplatType.NPC_HEALING_HITSPLAT);
                                 }
                             } else if (tick >= 17) {
@@ -209,7 +215,7 @@ public class Xarpus extends CommonCombatMethod {
                 for (Mob t : targets) {
                     if (t == null || t.getAsPlayer().dead())
                         continue;
-                    if (t.tile().equalsIgnoreHeight(pool.getTile())) {
+                    if (t.tile().equals(pool.getTile())) {
                         t.hit_(mob, World.getWorld().random(6, 8), 1, SplatType.POISON_HITSPLAT);
                     }
                 }
@@ -229,6 +235,7 @@ public class Xarpus extends CommonCombatMethod {
         }
         if (phase == 2) {
             if (target.tile().isWithinDistance(STARING_QUAD, 7)) {
+                System.out.println("huh2");
                 new Projectile(mob, target, 1555, 0, 120, 50, 25, 0).sendProjectile();
                 target.graphic(1556);
                 target.hit_(mob,World.getWorld().random(6, 8), 3, SplatType.POISON_HITSPLAT);
@@ -241,7 +248,7 @@ public class Xarpus extends CommonCombatMethod {
      */
     public Tile getRandomFocus() {
         Tile random = QUAD[World.getWorld().random(0, QUAD.length - 1)];
-        if (random.equalsIgnoreHeight(STARING_QUAD)) {
+        if (random.equals(STARING_QUAD)) {
             return getRandomFocus();
         } else {
             return random;

@@ -57,7 +57,7 @@ public class ChamberOfSecrets extends Raids {
     }
 
     @Override
-    public void exit(Player player) {
+    public void exit(Player player, boolean teleport) {
         player.setRaids(null);
 
         //Delete the elder wand before doing any other actions
@@ -95,7 +95,9 @@ public class ChamberOfSecrets extends Raids {
         Venom.cure(2, player);
 
         //Move outside of raids
-        player.teleport(3097, 3478, 0);
+        if(!teleport) {
+            player.teleport(3097, 3478, 0);
+        }
         player.getInterfaceManager().close(true);
     }
 

@@ -249,7 +249,7 @@
       "magic": 220,
       "ranged": 100,
       "defence": 250,
-      "hitpoints": 5000
+      "hitpoints": 3500
     },
     "bonuses": {
       "stabdefence": 0,

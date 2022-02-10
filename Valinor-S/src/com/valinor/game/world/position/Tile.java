@@ -761,10 +761,6 @@ public class Tile implements Cloneable {
         return transform((int) Math.ceil(size / 2.0), (int) Math.ceil(size / 2.0), 0);
     }
 
-    public boolean equalsIgnoreHeight(Tile tile) {
-        return tile.getX() == x && tile.getY() == y;
-    }
-
     /**
      * Checks if this position is within distance of another position.
      *

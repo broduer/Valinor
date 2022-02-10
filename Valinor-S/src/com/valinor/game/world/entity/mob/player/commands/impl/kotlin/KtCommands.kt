@@ -100,7 +100,7 @@ object KtCommands {
     fun init() {
         cmd("exitraid", PLAYER) {
             if(player.raids != null) {
-                player.raids.exit(player)
+                player.raids.exit(player,false)
                 player.message("You have left the raid.")
             } else {
                 player.message("You are not in any raid at the moment.")

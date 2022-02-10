@@ -26,7 +26,7 @@ public class Room extends Interaction {
 
             if (object.getId() == STEPS_29778) {
                 if (player.getRaids() != null) {
-                    player.getRaids().exit(player);
+                    player.getRaids().exit(player,false);
                 }
                 return true;
             }

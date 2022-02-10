@@ -878,7 +878,6 @@ public class World {
 
     public void tileGraphic(int id, Tile tile, int height, int delay) {
         players.forEachInRegion(tile.region(), player -> {
-            System.out.println(tile);
             if(player.tile().level == tile.level) {
                 player.getPacketSender().sendTileGraphic(id, tile, height, delay);
             }

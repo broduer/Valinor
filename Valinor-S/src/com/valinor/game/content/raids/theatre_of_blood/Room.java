@@ -151,7 +151,7 @@ public class Room extends Interaction {
 
             if(object.getId() == ObjectIdentifiers.TELEPORT_CRYSTAL) {
                 if (player.getRaids() != null) {
-                    player.getRaids().exit(player);
+                    player.getRaids().exit(player,false);
                 }
                 unlockCape(player);
                 return true;

@@ -329,7 +329,7 @@ public class Party {
                 member.raidsParty = null;
                 if (!destroyFromBoard) {
                     if(member.getRaids() != null) {
-                        member.getRaids().exit(member);
+                        member.getRaids().exit(member,false);
                     }
                 } else {
                     member.getInterfaceManager().close();
@@ -343,7 +343,7 @@ public class Party {
         if (player.raidsParty != null) {
             leaveParty(player, false);
             if(player.getRaids() != null) {
-                player.getRaids().exit(player);
+                player.getRaids().exit(player,false);
             }
         }
     }

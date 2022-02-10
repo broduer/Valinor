@@ -1238,7 +1238,7 @@ public class CombatFactory {
 
         // no need to process anything more
         if (hit.splatType == SplatType.NPC_HEALING_HITSPLAT) {
-            hit.getTarget().heal(damage);
+            hit.getTarget().heal(damage, attacker.getMobName().equalsIgnoreCase("Xarpus") ? 1000 : 0);
             return;
         }
         /*

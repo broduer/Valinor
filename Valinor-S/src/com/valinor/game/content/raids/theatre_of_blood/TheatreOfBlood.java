@@ -59,7 +59,7 @@ public class TheatreOfBlood extends Raids {
     }
 
     @Override
-    public void exit(Player player) {
+    public void exit(Player player, boolean teleport) {
         player.setRaids(null);
 
         Party party = player.raidsParty;
@@ -92,7 +92,9 @@ public class TheatreOfBlood extends Raids {
         player.removeAll(new Item(DAWNBRINGER));
 
         //Move outside of raids
-        player.teleport(3097, 3478, 0);
+        if(!teleport) {
+            player.teleport(3097, 3478, 0);
+        }
         player.getInterfaceManager().close(true);
     }
 
