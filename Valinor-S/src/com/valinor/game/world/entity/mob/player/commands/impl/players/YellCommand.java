@@ -70,17 +70,14 @@ public class YellCommand implements Command {
         //#Name colour is based on member rights not player rights
         String nameColour = player.getMemberRights().yellNameColour();
 
-        boolean ignoreStaffColour = true;
 
         //#Staff colours can be different
-        if(ignoreStaffColour) {
-            switch (player.getPlayerRights()) {
-                case IRON_MAN -> nameColour = Color.DARKGREY.tag();
-                case GOLD_YOUTUBER, SILVER_YOUTUBER, BRONZE_YOUTUBER -> nameColour = Color.GREEN.tag();
-                case MODERATOR -> nameColour = Color.WHITE.tag();
-                case ADMINISTRATOR, HARDCORE_IRON_MAN, EVENT_MANAGER, INSTANT_PKER, OWNER -> nameColour = Color.RED.tag();
-                case SUPPORT -> nameColour = Color.CYAN.tag();
-            }
+        switch (player.getPlayerRights()) {
+            case IRON_MAN -> nameColour = Color.DARKGREY.tag();
+            case GOLD_YOUTUBER, SILVER_YOUTUBER, BRONZE_YOUTUBER -> nameColour = Color.GREEN.tag();
+            case MODERATOR -> nameColour = Color.WHITE.tag();
+            case ADMINISTRATOR, HARDCORE_IRON_MAN, EVENT_MANAGER, INSTANT_PKER, OWNER -> nameColour = Color.RED.tag();
+            case SUPPORT -> nameColour = Color.CYAN.tag();
         }
 
         //# This was made by Ken to ensure the client size it needs [Global]
@@ -99,8 +96,18 @@ public class YellCommand implements Command {
         //# Constructs a world message
         //World.getWorld().sendWorldMessage(mainChannel + " " + icon + "</img> "+nameColour+"" + username + ":</col><col=" + yellColour + "> " + formatYellMessage);
 
+        boolean yellColourShad = false;
+        if(player.getUsername().equalsIgnoreCase("LOOTATIONS")) {
+            yellColour = "01c9f1";
+            yellColourShad = true;
+        } else if(player.getUsername().equalsIgnoreCase("Bear")) {
+            yellColour = "AA336A";
+            yellColourShad = true;
+        }
+
+        String msg = yellColourShad ? "<shad=1>"+nameColour+"["+playerIcon+"</img>"+memberIcon+"</img>"+username+"]</col></shad>: <shad=0><col="+yellColour+">"+formatYellMessage+"</shad>" : "<shad=1>"+nameColour+"["+playerIcon+"</img>"+memberIcon+"</img>"+username+"]</col></shad>: <col="+yellColour+">"+formatYellMessage;
         //System.out.println(yellColour);
-        World.getWorld().sendWorldMessage("<shad=1>"+nameColour+"["+playerIcon+"</img>"+memberIcon+"</img>"+username+"]</col></shad>: <col="+yellColour+">"+formatYellMessage);
+        World.getWorld().sendWorldMessage(msg);
         int yellDelay = getYellDelay(player);
         if (yellDelay > 0) {
             player.getYellDelay().start(yellDelay);
