@@ -159,6 +159,44 @@ public class HoverMenuManager {
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
 
+        menus.put(GOLD_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable PvP items in the game!",
+            Arrays.asList(
+                BRIMSTONE_RING,
+                TOME_OF_FIRE,
+                DARK_BOW,
+                ABYSSAL_WHIP,
+                SMOKE_BATTLESTAFF,
+                MASTER_WAND,
+                RUNE_POUCH_I,
+                DRAGON_BOOTS_ORNAMENT_KIT,
+                DRAGON_DEFENDER_ORNAMENT_KIT
+            )));
+
+        menus.put(PLATINUM_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable PvP items in the game!",
+            Arrays.asList(
+                ARMADYL_GODSWORD,
+                DRAGON_CLAWS,
+                SPECTRAL_SPIRIT_SHIELD,
+                DRAGON_CLAWS,
+                VESTAS_LONGSWORD,
+                VESTAS_SPEAR,
+                STATIUSS_WARHAMMER,
+                ZURIELS_STAFF,
+                VESTAS_CHAINBODY,
+                VESTAS_PLATESKIRT,
+                STATIUSS_FULL_HELM,
+                STATIUSS_PLATEBODY,
+                STATIUSS_PLATELEGS,
+                MORRIGANS_COIF,
+                MORRIGANS_LEATHER_BODY,
+                MORRIGANS_LEATHER_CHAPS,
+                ZURIELS_HOOD,
+                ZURIELS_ROBE_TOP,
+                ZURIELS_ROBE_BOTTOM,
+                DRAGONFIRE_SHIELD,
+                ANCIENT_WYVERN_SHIELD
+            )));
+
         menus.put(WINTER_CASKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
                 CRYSTAL_OF_ITHELL,

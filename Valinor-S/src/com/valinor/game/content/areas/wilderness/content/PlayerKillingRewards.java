@@ -9,6 +9,10 @@ import com.valinor.game.content.areas.wilderness.content.wilderness_activity.imp
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.ZerkerActivity;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.items.mystery.BronzeMysteryBox;
+import com.valinor.game.content.items.mystery.GoldMysterybox;
+import com.valinor.game.content.items.mystery.PlatinumMysteryBox;
+import com.valinor.game.content.items.mystery.SilverMysteryBox;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatConstants;
@@ -208,6 +212,11 @@ public class PlayerKillingRewards {
                     killer.message(Color.PURPLE.wrap("You've found a pets mystery box searching the corpse of "+target.getUsername()+"."));
                     World.getWorld().sendWorldMessage("<img=1081>" + killer.getUsername() + " " + "found a pets mystery box searching the corpse of "+target.getUsername()+".");
                 }
+
+                BronzeMysteryBox.rollForBronzeMysteryBox(killer, target);
+                SilverMysteryBox.rollForSilverMysteryBox(killer, target);
+                GoldMysterybox.rollForGoldMysteryBox(killer, target);
+                PlatinumMysteryBox.rollForPlatinumMysteryBox(killer, target);
             }
         } catch (Exception e) {
             logger.error("fk", e);

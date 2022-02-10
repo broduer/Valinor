@@ -1411,7 +1411,8 @@ public class CustomItems {
             def.zoom2d = 480;
         }
 
-        if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX) {
+        if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX
+            || id == BRONZE_MYSTERY_BOX || id == SILVER_MYSTERY_BOX || id == GOLD_MYSTERY_BOX || id == PLATINUM_MYSTERY_BOX) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case DONATOR_MYSTERY_BOX:
@@ -1461,7 +1462,31 @@ public class CustomItems {
                 case BARROWS_MYSTERY_BOX:
                     def.name = "<col=65280>Barrows Mystery Box";
                     def.recolorFrom = new int[]{22410, 2999};
-                    def.recolorTo = new int[]{356770, 266770};
+                    def.recolorTo = new int[]{356770, 127};
+                    break;
+
+                case BRONZE_MYSTERY_BOX:
+                    def.name = "<col=65280>Bronze Mystery Box";
+                    def.recolorFrom = new int[]{22410, 2999};
+                    def.recolorTo = new int[]{5652, 127};
+                    break;
+
+                case SILVER_MYSTERY_BOX:
+                    def.name = "<col=65280>Silver Mystery Box";
+                    def.recolorFrom = new int[]{22410, 2999};
+                    def.recolorTo = new int[]{82, 127};
+                    break;
+
+                case GOLD_MYSTERY_BOX:
+                    def.name = "<col=65280>Gold Mystery Box";
+                    def.recolorFrom = new int[]{22410, 2999};
+                    def.recolorTo = new int[]{8128, 127};
+                    break;
+
+                case PLATINUM_MYSTERY_BOX:
+                    def.name = "<col=65280>Platinum Mystery Box";
+                    def.recolorFrom = new int[]{22410, 2999};
+                    def.recolorTo = new int[]{37982, 127};
                     break;
             }
         }

@@ -5,6 +5,10 @@ import static com.valinor.util.ItemIdentifiers.BANK_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int BRONZE_MYSTERY_BOX = 30379;
+    public static final int SILVER_MYSTERY_BOX = 30380;
+    public static final int GOLD_MYSTERY_BOX = 30381;
+    public static final int PLATINUM_MYSTERY_BOX = 30382;
     public static final int SAPPHIRE_MEMBER_RANK = 32520;
     public static final int FIFTY_TOTAL_DONATED_SCROLL = 32521;
     public static final int ONE_HUNDRED_TOTAL_DONATED_SCROLL = 32522;

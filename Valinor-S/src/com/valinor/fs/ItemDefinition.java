@@ -124,6 +124,22 @@ public class ItemDefinition implements Definition {
             unprotectable = true;
         } else if (id == SNOWFLAKE_PET) {
             name = "Snowflake pet";
+        } else if (id == BRONZE_MYSTERY_BOX) {
+            name = "Bronze mystery box";
+            grandexchange = true;
+            cost = 10_000;
+        } else if (id == SILVER_MYSTERY_BOX) {
+            name = "Silver mystery box";
+            grandexchange = true;
+            cost = 20_000;
+        } else if (id == GOLD_MYSTERY_BOX) {
+            name = "Gold mystery box";
+            grandexchange = true;
+            cost = 30_000;
+        } else if (id == PLATINUM_MYSTERY_BOX) {
+            name = "Platinum mystery box";
+            grandexchange = true;
+            cost = 40_000;
         } else if (id == FAWKES) {
             name = "Fawkes";
         } else if (id == WINTER_CASKET) {
