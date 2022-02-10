@@ -30,48 +30,50 @@ public enum PlayerRights {
 
     DEVELOPER("Developer", 497, 4, 5),
 
-    BRONZE_YOUTUBER("Bronze Youtuber", 1087, 8, 1),
+    BRONZE_YOUTUBER("Bronze Youtuber", 1087, 12, 1),
 
-    IRON_MAN("Iron Man", 502, 9, 0),
+    SILVER_YOUTUBER("Silver Youtuber", 1088, 13, 1),
 
-    ULTIMATE_IRON_MAN("Ultimate Iron Man", 503, 10, 0),
+    GOLD_YOUTUBER("Gold Youtuber", 1089, 14, 1),
 
-    HARDCORE_IRON_MAN("Hardcore Iron Man", 504, 11, 0),
+    IRON_MAN("Iron Man", 502, 15, 0),
 
-    SUPPORT("Support Team", 505, 12, 2),
+    ULTIMATE_IRON_MAN("Ultimate Iron Man", 503, 16, 0),
 
-    SILVER_YOUTUBER("Silver Youtuber", 1088, 18, 1),
+    HARDCORE_IRON_MAN("Hardcore Iron Man", 504, 17, 0),
 
-    GOLD_YOUTUBER("Gold Youtuber", 1089, 19, 1),
+    GROUP_IRON_MAN("Group Iron Man", 1917, 18, 0),
 
-    GROUP_IRON_MAN("Group Iron Man", 1917, 16, 0),
+    GROUP_HARDCORE_IRONMAN("Group Hardcore Iron Man", 1918, 19, 0),
 
-    GROUP_HARDCORE_IRONMAN("Group Hardcore Iron Man", 1918, 17, 0),
+    SUPPORT("Support Team", 505, 20, 2),
 
-    DARK_LORD("Dark Lord", 1838, 18, 0),
+    SECURITY_MODERATOR("Security Mod", 1861, 21, 3),
 
-    SECURITY_MODERATOR("Security Mod", 1861, 1, 3),
+    EVENT_MANAGER("Event Manager", 468, 22, 0),
 
-    EVENT_MANAGER("Event Manager", 468, -1, 2),
+    INSTANT_PKER("Instant Pker", 506, 23, 0),
 
-    INSTANT_PKER("Instant Pker", 506, -1, 0),
+    HEAD_MOD("Head Mod", 1940, 24, 4),
+
+    HEAD_ADMIN("Head Admin", 1941, 25, 4),
     ;
 
     private final String name;
 
     private final int spriteId;
 
-    private final int right;
+    private final int clientImageId;
 
     /**
      * The value of the right. The higher the value, the more permissions the player has.
      */
     private final int rightValue;
 
-    PlayerRights(String name, int spriteId, int right, int rightValue) {
+    PlayerRights(String name, int spriteId, int clientImageId, int rightValue) {
         this.name = name;
         this.spriteId = spriteId;
-        this.right = right;
+        this.clientImageId = clientImageId;
         this.rightValue = rightValue;
     }
 
@@ -104,8 +106,8 @@ public enum PlayerRights {
         return spriteId;
     }
 
-    public final int getRight() {
-        return right;
+    public final int getClientImageId() {
+        return clientImageId;
     }
 
     public final int getRightValue() {

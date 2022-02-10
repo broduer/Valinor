@@ -36,7 +36,7 @@ public class YellCommand implements Command {
             return;
         }
         int kc = player.getAttribOr(AttributeKey.PLAYER_KILLS, 0);
-        if (player.getMemberRights().getRightValue() < MemberRights.SAPPHIRE_MEMBER.getRightValue() && player.getPlayerRights() == PlayerRights.PLAYER && kc < 50) {
+        if (player.getMemberRights().getRight() < MemberRights.SAPPHIRE_MEMBER.getRight() && player.getPlayerRights() == PlayerRights.PLAYER && kc < 50) {
             player.message("Only Members and players with over 50 kills in the wilderness can yell.");
             return;
         }

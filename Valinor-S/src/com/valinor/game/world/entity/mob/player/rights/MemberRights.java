@@ -14,14 +14,14 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 
 public enum MemberRights {
 
-    NONE(0, "None", -1, -1, 0, Color.BLACK.tag(), 1.0, 1.0, 1.0),
-    SAPPHIRE_MEMBER(10, "Saphire Member", 1871, 5, 1, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
-    EMERALD_MEMBER(50, "Emerald Member", 1875, 6, 2, Color.BLUE.tag(), 1.07, 1.025, 1.025),
-    RUBY_MEMBER(100, "Ruby Member", 1872, 22, 3, Color.PURPLE.tag(), 1.15, 1.025, 1.025),
-    DIAMOND_MEMBER(250, "Diamond Member", 1874, 7, 4, Color.YELLOW.tag(), 1.20, 1.025, 1.025),
-    DRAGONSTONE_MEMBER(750, "Dragonstone Member", 1876, 24, 5, Color.DRAGON.tag(), 1.025, 1.025, 1.025),
-    ONYX_MEMBER(1500, "Onyx Member", 1877, 15, 6, Color.GOLDENROD.tag(), 1.025, 1.025, 1.025),
-    ZENYTE_MEMBER(3000, "Zenyte Member", 1873, 23, 7, Color.RUNITE.tag(), 1.025, 1.025, 1.0255);
+    NONE(0, "None", -1, -1, Color.BLACK.tag(), 1.0, 1.0, 1.0),
+    SAPPHIRE_MEMBER(10, "Saphire Member", 1871, 5, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
+    EMERALD_MEMBER(50, "Emerald Member", 1875, 6, Color.BLUE.tag(), 1.07, 1.025, 1.025),
+    RUBY_MEMBER(100, "Ruby Member", 1872, 7, Color.PURPLE.tag(), 1.15, 1.025, 1.025),
+    DIAMOND_MEMBER(250, "Diamond Member", 1874, 8, Color.YELLOW.tag(), 1.20, 1.025, 1.025),
+    DRAGONSTONE_MEMBER(750, "Dragonstone Member", 1876, 9, Color.DRAGON.tag(), 1.025, 1.025, 1.025),
+    ONYX_MEMBER(1500, "Onyx Member", 1877, 10, Color.GOLDENROD.tag(), 1.025, 1.025, 1.025),
+    ZENYTE_MEMBER(3000, "Zenyte Member", 1873, 11, Color.RUNITE.tag(), 1.025, 1.025, 1.0255);
 
     private final double spent;
 
@@ -31,21 +31,15 @@ public enum MemberRights {
 
     private final int right;
 
-    /**
-     * The value of the right. The higher the value, the more permissions the player has.
-     */
-    private final int rightValue;
-
     private final String yellNameColour;
 
     private final double[] modifiers;
 
-    MemberRights(double spent, String name, int spriteId, int right, int rightValue, String yellNameColour, double... modifiers) {
+    MemberRights(double spent, String name, int spriteId, int right, String yellNameColour, double... modifiers) {
         this.spent = spent;
         this.name = name;
         this.spriteId = spriteId;
         this.right = right;
-        this.rightValue = rightValue;
         this.yellNameColour = yellNameColour;
         this.modifiers = modifiers;
     }
@@ -64,10 +58,6 @@ public enum MemberRights {
 
     public final int getRight() {
         return right;
-    }
-
-    public int getRightValue() {
-        return rightValue;
     }
 
     public String yellNameColour() {
@@ -98,49 +88,49 @@ public enum MemberRights {
      * Checks if the player has sapphire member status or higher.
      */
     public boolean isSapphireMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= SAPPHIRE_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= SAPPHIRE_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has emerald member status or higher.
      */
     public boolean isEmeraldMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= EMERALD_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= EMERALD_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has ruby member status or higher.
      */
     public boolean isRubyMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= RUBY_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= RUBY_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has diamond member status or higher.
      */
     public boolean isDiamondMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= DIAMOND_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= DIAMOND_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has dragonstone member status or higher.
      */
     public boolean isDragonstoneMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= DRAGONSTONE_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= DRAGONSTONE_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has onyx member status or higher.
      */
     public boolean isOnyxMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= ONYX_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= ONYX_MEMBER.getRight();
     }
 
     /**
      * Checks if the player has zenyte member status or higher.
      */
     public boolean isZenyteMemberOrGreater(Player player) {
-        return player.getMemberRights().getRightValue() >= ZENYTE_MEMBER.getRightValue();
+        return player.getMemberRights().getRight() >= ZENYTE_MEMBER.getRight();
     }
 
     public void update(Player player, boolean silent) {
@@ -217,7 +207,7 @@ public enum MemberRights {
     private static final Set<MemberRights> RIGHTS = Collections.unmodifiableSet(EnumSet.allOf(MemberRights.class));
 
     public static MemberRights get(int value) {
-        return RIGHTS.stream().filter(element -> element.rightValue == value).findFirst().orElse(NONE);
+        return RIGHTS.stream().filter(element -> element.right == value).findFirst().orElse(NONE);
     }
 
     @Override

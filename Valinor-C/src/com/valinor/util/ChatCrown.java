@@ -7,39 +7,32 @@ import java.util.Set;
 
 public enum ChatCrown {
 
+    SUPPORT("<img=20</img>", 505),
     MOD_CROWN("<img=1</img>", 494),
     ADMIN_CROWN("<img=2</img>", 495),
     OWNER_CROWN("<img=3</img>", 496),
     DEVELOPER("<img=4</img>", 497),
 
-    //Members
     SAPPHIRE_MEMBER("<img=5</img>", 1871),
     EMERALD_MEMBER("<img=6</img>", 1875),
-    RUBY_MEMBER("<img=22</img>", 1872),
-    DIAMOND_MEMBER("<img=7</img>", 1874),
-    DRAGONSTONE_MEMBER("<img=24</img>", 1876),
-    ONYX_MEMBER("<img=15</img>", 1877),
-    ZENYTE_MEMBER("<img=23</img>", 1873),
-
-    BRONZE_YOUTUBER("<img=8</img>", 1087),
-    SILVER_YOUTUBER("<img=16</img>", 1088),
-    GOLD_YOUTUBER("<img=17</img>", 1089),
-
-    // Ironman
-    IRON_MAN("<img=9</img>", 502),
-    ULTIMATE_IRONMAN("<img=10</img>", 503),
-    HARDCORE_IRONMAN("<img=11</img>", 504),
+    RUBY_MEMBER("<img=7</img>", 1872),
+    DIAMOND_MEMBER("<img=8</img>", 1874),
+    DRAGONSTONE_MEMBER("<img=9</img>", 1876),
+    ONYX_MEMBER("<img=10</img>", 1877),
+    ZENYTE_MEMBER("<img=11</img>", 1873),
+    BRONZE_YOUTUBER("<img=12</img>", 1087),
+    SILVER_YOUTUBER("<img=13</img>", 1088),
+    GOLD_YOUTUBER("<img=14</img>", 1089),
+    IRON_MAN("<img=15</img>", 502),
+    ULTIMATE_IRONMAN("<img=16</img>", 503),
+    HARDCORE_IRONMAN("<img=17</img>", 504),
     GROUP_IRONMAN("<img=18</img>", 1917),
     GROUP_HARDCORE_IRONMAN("<img=19</img>", 1918),
-    DARK_LORD("<img=25</img>", 1838),
-    SECURITY_MOD("<img=26</img>", 1861),
-    EVENT_MANAGER("<img=27</img>", 468),
-    INSTANT_PKER("<img=28</img>", 506),
-
-    // Extras
-    SUPPORT("<img=14</img>", 505),
-    PKER_ICON("<img=21</img>", 506),
-
+    SECURITY_MOD("<img=21</img>", 1861),
+    EVENT_MANAGER("<img=22</img>", 468),
+    INSTANT_PKER("<img=23</img>", 506),
+    HEAD_MOD("<img=24</img>", 506),
+    HEAD_ADMIN("<img=25</img>", 506),
     ;
 
     private final String identifier;
