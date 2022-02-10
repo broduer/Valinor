@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.game.world.entity.AttributeKey.EMBLEM_WEALTH;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PK_POINTS;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1;
 import static com.valinor.util.Utils.formatNumber;
 
@@ -301,8 +302,9 @@ public class BountyHunter {
                         return 0;
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
-                    var bounties = player.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + pkPoints;
-                    player.putAttrib(AttributeKey.PK_POINTS, bounties);
+                    var pkp = player.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + pkPoints;
+                    player.putAttrib(AttributeKey.PK_POINTS, pkp);
+                    player.getPacketSender().sendString(PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(PK_POINTS.childId).fetchLineData(player));
                     player.clearAttrib(EMBLEM_WEALTH);
                 }
             }

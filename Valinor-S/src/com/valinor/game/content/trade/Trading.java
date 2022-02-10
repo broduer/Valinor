@@ -120,11 +120,6 @@ public class Trading {
             return;
         }
 
-        if (otherPlayer.gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
-            player.message("You cannot trade "+otherPlayer.getUsername()+" they are playing as an Instant Pker.");
-            return;
-        }
-
         // Ironman? fuck off lol!!
         if (otherPlayer.gameMode() != GameMode.NONE && !(player.getPlayerRights().isDeveloperOrGreater(player) || sameGroup)) {
             player.message(otherPlayer.getUsername() + " is an Iron Man. They stand alone.");

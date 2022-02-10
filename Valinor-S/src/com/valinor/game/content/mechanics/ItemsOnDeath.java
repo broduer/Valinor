@@ -384,11 +384,11 @@ public class ItemsOnDeath {
                 return;
             }
 
-            if(player.gameMode() == GameMode.INSTANT_PKER) {
+            /*if(player.gameMode() == GameMode.INSTANT_PKER) {
                 if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(item1 -> item1.unnote().getId() == item.getId())) {
                     return;
                 }
-            }
+            }*/
 
             //Drop item
             //System.out.println("Creating ground item " + item.getId());

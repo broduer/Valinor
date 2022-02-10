@@ -227,11 +227,6 @@ public class TradingPost {
             return;
         }
 
-        if (player.gameMode() != GameMode.NONE && player.gameMode() != GameMode.INSTANT_PKER) {
-            player.message(Color.RED.wrap("As an ironman you stand alone."));
-            return;
-        }
-
         //printRecentTransactions();
         player.getInterfaceManager().close();
         resetInterface(player);
@@ -693,6 +688,17 @@ public class TradingPost {
             // Don't allow illegal items to insert into a trading post.
             if (Arrays.stream(ILLEGAL_ITEMS).anyMatch(id -> id == offerItem.getId())) {
                 player.message("You can't sell illegal items.");
+                return false;
+            }
+
+            boolean illegalItem = false;
+
+            if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == offerItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+                illegalItem = true;
+            }
+
+            if(illegalItem) {
+                player.message("You cannot offer that item.");
                 return false;
             }
 
