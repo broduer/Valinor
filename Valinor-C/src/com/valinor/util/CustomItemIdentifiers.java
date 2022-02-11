@@ -6,6 +6,9 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int YOUTUBE_MYSTERY_BOX = 30376;
+    public static final int LEGENDARY_MYSTERY_BOX = 30377;
+    public static final int PROMO_MYSTERY_BOX = 30378;
     public static final int BRONZE_MYSTERY_BOX = 30379;
     public static final int SILVER_MYSTERY_BOX = 30380;
     public static final int GOLD_MYSTERY_BOX = 30381;

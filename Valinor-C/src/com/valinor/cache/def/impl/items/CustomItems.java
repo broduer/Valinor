@@ -1412,7 +1412,7 @@ public class CustomItems {
         }
 
         if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX
-            || id == BRONZE_MYSTERY_BOX || id == SILVER_MYSTERY_BOX || id == GOLD_MYSTERY_BOX || id == PLATINUM_MYSTERY_BOX) {
+            || id == BRONZE_MYSTERY_BOX || id == SILVER_MYSTERY_BOX || id == GOLD_MYSTERY_BOX || id == PLATINUM_MYSTERY_BOX || id == YOUTUBE_MYSTERY_BOX || id == LEGENDARY_MYSTERY_BOX || id == PROMO_MYSTERY_BOX) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case DONATOR_MYSTERY_BOX:
@@ -1487,6 +1487,28 @@ public class CustomItems {
                     def.name = "<col=65280>Platinum Mystery Box";
                     def.recolorFrom = new int[]{22410, 2999};
                     def.recolorTo = new int[]{37982, 127};
+                    break;
+
+                case YOUTUBE_MYSTERY_BOX:
+                    def.name = "<col=65280>Youtube Mystery Box";
+                    def.recolorFrom = new int[]{22410, 2999};
+                    def.recolorTo = new int[]{43331, 127};
+                    break;
+
+                case LEGENDARY_MYSTERY_BOX:
+                    def.name = "<col=65280>Legendary mystery box";
+                    def.inventoryModel = 55617;
+                    def.animateInventory = true;
+                    def.recolorFrom = new int[]{2999, 22410};
+                    def.recolorTo = new int[]{524, 13};
+                    break;
+
+                case PROMO_MYSTERY_BOX:
+                    def.name = "<col=65280>Promo mystery box";
+                    def.inventoryModel = 55618;
+                    def.animateInventory = true;
+                    def.recolorFrom = new int[]{2999, 22410};
+                    def.recolorTo = new int[]{524, 13};
                     break;
             }
         }

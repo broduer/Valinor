@@ -197,6 +197,53 @@ public class HoverMenuManager {
                 ANCIENT_WYVERN_SHIELD
             )));
 
+        menus.put(YOUTUBE_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
+            Arrays.asList(
+                ABYSSAL_DAGGER,
+                ABYSSAL_DAGGER_P_13271,
+                ZAMORAKIAN_SPEAR,
+                STAFF_OF_THE_DEAD,
+                HEAVY_BALLISTA,
+                ARMADYL_CHESTPLATE,
+                ARMADYL_CHAINSKIRT,
+                BANDOS_CHESTPLATE,
+                BANDOS_TASSETS,
+                GUARDIAN_BOOTS,
+                TOXIC_STAFF_OF_THE_DEAD,
+                TOXIC_BLOWPIPE
+            )));
+
+        menus.put(LEGENDARY_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
+            Arrays.asList(
+                ARCANE_SPIRIT_SHIELD,
+                AVERNIC_DEFENDER,
+                VOLATILE_ORB,
+                ELDRITCH_ORB,
+                HARMONISED_ORB,
+                DONATOR_TICKET,
+                PETS_MYSTERY_BOX,
+                ELDER_MAUL,
+                DRAGON_HUNTER_CROSSBOW,
+                DRAGON_HUNTER_LANCE,
+                NIGHTMARE_STAFF
+            )));
+
+        menus.put(PROMO_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
+            Arrays.asList(
+                FIFTY_TOTAL_DONATED_SCROLL,
+                GIANT_KEY_OF_DROPS,
+                TWISTED_BOW,
+                SCYTHE_OF_VITUR,
+                SANGUINE_ORNAMENT_KIT,
+                PETS_MYSTERY_BOX,
+                RAIDS_MYSTERY_BOX,
+                VALINOR_COINS,
+                LIME_PARTYHAT,
+                PURPLE_HWEEN_MASK,
+                LIME_GREEN_HWEEN_MASK,
+                FORTY_DOLLAR_BOND
+            )));
+
         menus.put(WINTER_CASKET, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
                 CRYSTAL_OF_ITHELL,
