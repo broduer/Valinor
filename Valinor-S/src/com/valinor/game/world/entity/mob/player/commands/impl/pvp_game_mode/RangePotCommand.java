@@ -17,7 +17,7 @@ public class RangePotCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(player.gameMode() != GameMode.INSTANT_PKER) {
+        if(player.gameMode() != GameMode.INSTANT_PKER && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("Only Instant Pkers can use this command.");
             return;
         }
