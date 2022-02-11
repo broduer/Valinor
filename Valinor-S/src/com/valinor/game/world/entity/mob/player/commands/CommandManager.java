@@ -60,6 +60,7 @@ public class CommandManager {
         commands.put("tb", new TeleblockCommand());
         commands.put("runes", new RunesCommand());
         //Regular commands
+        commands.put("toggledyk", new ToggleDidYouKnowCommand());
         commands.put("lockexp", new LockExpCommand());
         commands.put("changepassword", new ChangePasswordCommand());
         commands.put("changepass", new ChangePasswordCommand());

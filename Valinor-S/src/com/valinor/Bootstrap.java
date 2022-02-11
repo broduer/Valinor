@@ -1,12 +1,14 @@
 package com.valinor;
 
 import com.valinor.game.GameBuilder;
+import com.valinor.game.content.announcements.DidYouKnowTask;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
 import com.valinor.game.content.skill.impl.hunter.Impling;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.NetworkBuilder;
@@ -55,6 +57,7 @@ public final class Bootstrap {
         gameBuilder.initialize();
         networkBuilder.initialize(port);
         GwdLogic.onServerStart();
+        TaskManager.submit(new DidYouKnowTask());
         Item.onServerStart();
         if(Impling.IMPLINGS_SPAWN_ENABLED) {
             Impling.onServerStartup();

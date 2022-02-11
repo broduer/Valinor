@@ -65,6 +65,7 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::wests</col> - Teleports you to wests in wilderness.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::easts</col> - Teleports you to easts in wilderness.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::exitraid</col> - Closes your current raid instance.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::toggledyk</col> - Toggle did you know messages.");
 
         commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Member Commands:</col>");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::dzone</col> - Teleports you to the member zone.");
