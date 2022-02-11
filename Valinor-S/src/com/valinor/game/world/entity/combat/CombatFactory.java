@@ -1738,7 +1738,7 @@ public class CombatFactory {
         if (freezer == null) {
             return;
         }
-        
+
         if (!freezer.isRegistered()) {//freezer offline
             mob.getTimers().cancel(TimerKey.FROZEN); //Remove frozen timer key
             mob.getTimers().cancel(TimerKey.REFREEZE); //Remove frozen timer key
