@@ -507,8 +507,8 @@ public final class Equipment extends ItemContainer {
         //Update weapon interface
         WeaponInterfaces.updateWeaponInterface(player);
 
-        boolean unarmed = player.getEquipment().hasWeapon();
-        if (equipmentSlot == EquipSlot.SHIELD && unarmed) { // Player isn't wielding a weapon, reset weapon too.
+        boolean hasWeapon = player.getEquipment().hasWeapon();
+        if (equipmentSlot == EquipSlot.SHIELD && !hasWeapon) { // Player isn't wielding a weapon, reset weapon too.
             resetWeapon();
         } else if (equipmentSlot == EquipSlot.WEAPON) {
             resetWeapon();
