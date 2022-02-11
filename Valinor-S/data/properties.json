@@ -128,6 +128,7 @@
   "enableChangeAccountType": true,
   "buyTwoGetOneFree": false,
   "mysteryTicketPromo": false,
+  "promoMysteryBox": false,
   "doubleExperienceEvent": true,
   "doubleSlayerRewardPointsEvent": false,
   "doublePKPEvent": false,

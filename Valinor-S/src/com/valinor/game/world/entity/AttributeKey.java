@@ -590,8 +590,6 @@ public enum AttributeKey {
 
     TOTAL_PAYMENT_AMOUNT("total_payment_amount", AttribType.DOUBLE),
 
-    PROMO_ITEMS_UNLOCKED("promo_items_unlocked", AttribType.INTEGER),
-
     /**
      * Boolean key indicating if the account was freshly made (used for introductory dialogue).
      */

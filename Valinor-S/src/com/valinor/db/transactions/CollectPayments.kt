@@ -152,8 +152,12 @@ object CollectPayments {
                             totalPaymentAmount = 88.50
                         }
                         DONATOR_MYSTERY_BOX -> {
-                            paymentAmount = 6.0
-                            totalPaymentAmount = 5.0
+                            paymentAmount = 3.0
+                            totalPaymentAmount = 4.0
+                        }
+                        LEGENDARY_MYSTERY_BOX -> {
+                            paymentAmount = 23.0
+                            totalPaymentAmount = 20.0
                         }
                         SUPER_MYSTERY_BOX -> {
                             paymentAmount = 15.0
@@ -166,14 +170,6 @@ object CollectPayments {
                         RAIDS_MYSTERY_BOX -> {
                             paymentAmount = 55.0
                             totalPaymentAmount = 40.0
-                        }
-                        MYSTERY_TICKET -> {
-                            paymentAmount = 23.0
-                            totalPaymentAmount = 20.0
-                        }
-                        MYSTERY_CHEST -> {
-                            paymentAmount = 250.0
-                            totalPaymentAmount = 225.0
                         }
                         RUNE_POUCH -> {
                             paymentAmount = 3.0
@@ -225,6 +221,15 @@ object CollectPayments {
                     memberRights.update(this, false)
 
                     val total = (totalPaymentAmount * row.itemAmt).toInt()
+
+                    if(GameServer.properties().promoMysteryBox) {
+                        val promoMysteryBoxes = total / 100
+                        if (promoMysteryBoxes > 0) {
+                            inventory.addOrBank(Item(PROMO_MYSTERY_BOX, promoMysteryBoxes))
+                            World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " promo mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
+                        }
+                    }
+
                     if(GameServer.properties().mysteryTicketPromo) {
                         val mysteryTickets = total / 10
                         if (mysteryTickets > 0) {

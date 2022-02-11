@@ -235,6 +235,7 @@ public final class ServerProperties {
         enableChangeAccountType = true;
         buyTwoGetOneFree = false;
         mysteryTicketPromo = false;
+        promoMysteryBox = false;
         doubleExperienceEvent = false;
         doubleSlayerRewardPointsEvent = false;
         doublePKPEvent = false;
@@ -663,6 +664,8 @@ public final class ServerProperties {
 
     // If this promo is active when spending 10EU in the webshop you get one of these free.
     public final boolean mysteryTicketPromo;
+
+    public final boolean promoMysteryBox;
 
     public final boolean doubleExperienceEvent;
     public final boolean doubleSlayerRewardPointsEvent;

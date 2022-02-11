@@ -193,7 +193,6 @@ public class PlayerSave {
                 player.getTimers().register(TimerKey.SPECIAL_TELEBLOCK, details.specialTeleblockTimer);
                 player.putAttrib(TOTAL_PAYMENT_AMOUNT, details.totalAmountPaid);
                 player.putAttrib(PROMO_PAYMENT_AMOUNT, details.promoPaymentAmount);
-                player.putAttrib(PROMO_ITEMS_UNLOCKED, details.promoItemsClaimed);
                 player.putAttrib(SAPPHIRE_MEMBER_UNLOCKED, details.sapphireMemberUnlocked);
                 player.putAttrib(EMERALD_MEMBER_UNLOCKED, details.emeraldMemberUnlocked);
                 player.putAttrib(RUBY_MEMBER_UNLOCKED, details.rubyMemberUnlocked);
@@ -708,7 +707,6 @@ public class PlayerSave {
         //Member attribs
         private final double totalAmountPaid;
         private final double promoPaymentAmount;
-        private final int promoItemsClaimed;
         private final boolean sapphireMemberUnlocked;
         private final boolean emeraldMemberUnlocked;
         private final boolean rubyMemberUnlocked;
@@ -1212,7 +1210,6 @@ public class PlayerSave {
             specialTeleblockTimer = player.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
             totalAmountPaid = Player.getAttribDoubleOr(player, TOTAL_PAYMENT_AMOUNT, 0D);
             promoPaymentAmount = Player.getAttribDoubleOr(player, PROMO_PAYMENT_AMOUNT, 0D);
-            promoItemsClaimed = Player.getAttribIntOr(player, PROMO_ITEMS_UNLOCKED, 0);
             sapphireMemberUnlocked = Player.getAttribBooleanOr(player, SAPPHIRE_MEMBER_UNLOCKED, false);
             emeraldMemberUnlocked = Player.getAttribBooleanOr(player, EMERALD_MEMBER_UNLOCKED, false);
             rubyMemberUnlocked = Player.getAttribBooleanOr(player, RUBY_MEMBER_UNLOCKED, false);
