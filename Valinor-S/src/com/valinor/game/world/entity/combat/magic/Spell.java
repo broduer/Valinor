@@ -149,7 +149,6 @@ public abstract class Spell {
                 //Check staff of the dead and don't delete runes at a rate of 1/8
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, STAFF_OF_THE_DEAD) || player.getEquipment().hasAt(EquipSlot.WEAPON, TOXIC_STAFF_OF_THE_DEAD) || player.getEquipment().hasAt(EquipSlot.WEAPON, TOXIC_STAFF_OF_THE_DEAD_C)) {
                     if (World.getWorld().random(8) == 1) {
-                        player.message("Your staff of the dead negated your runes for this cast.");
                         delete = false;
                     }
                 }
