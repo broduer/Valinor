@@ -64,24 +64,17 @@ public class YellCommand implements Command {
         //#Text colour
         String yellColour = player.getAttribOr(AttributeKey.YELL_COLOUR, "006601");
 
-        //System.out.println("[Global] <img=" + (player.getPlayerRights().getRight())
-        //    + "</img> " + player.getUsername() + ":<col=" + colour + "> " + Misc.ucFirst(yellMessage));
-
         //#Name colour is based on member rights not player rights
         String nameColour = player.getMemberRights().yellNameColour();
-
 
         //#Staff colours can be different
         switch (player.getPlayerRights()) {
             case IRON_MAN -> nameColour = Color.DARKGREY.tag();
             case GOLD_YOUTUBER, SILVER_YOUTUBER, BRONZE_YOUTUBER -> nameColour = Color.GREEN.tag();
             case MODERATOR -> nameColour = Color.WHITE.tag();
-            case ADMINISTRATOR, HARDCORE_IRON_MAN, EVENT_MANAGER, INSTANT_PKER, OWNER -> nameColour = Color.RED.tag();
-            case SUPPORT -> nameColour = Color.CYAN.tag();
+            case ADMINISTRATOR, HEAD_ADMIN, HARDCORE_IRON_MAN, EVENT_MANAGER, INSTANT_PKER, OWNER -> nameColour = Color.RED.tag();
+            case SUPPORT -> nameColour = Color.SUPPORT_YELL_NAME.tag();
         }
-
-        //# This was made by Ken to ensure the client size it needs [Global]
-        //String mainChannel = "[Global]";
 
         //# The player icon
         String playerIcon = player.getPlayerRights().getSpriteId() != -1 ? "<img=" + player.getPlayerRights().getSpriteId() + ">" : "";
@@ -93,15 +86,21 @@ public class YellCommand implements Command {
         //# The message but formatted proper usages of capitals and such.
         String formatYellMessage = Utils.ucFirst(yellMessage);
 
-        //# Constructs a world message
-        //World.getWorld().sendWorldMessage(mainChannel + " " + icon + "</img> "+nameColour+"" + username + ":</col><col=" + yellColour + "> " + formatYellMessage);
-
         boolean yellColourShad = false;
         if(player.getUsername().equalsIgnoreCase("LOOTATIONS")) {
             yellColour = "01c9f1";
             yellColourShad = true;
         } else if(player.getUsername().equalsIgnoreCase("Bear")) {
             yellColour = "AA336A";
+            yellColourShad = true;
+        } else if(player.getUsername().equalsIgnoreCase("Skii")) {
+            yellColour = "8b0000";
+            yellColourShad = true;
+        } else if(player.getUsername().equalsIgnoreCase("Dehzyne")) {
+            yellColour = "D010C4";
+            yellColourShad = true;
+        } else if(player.getUsername().equalsIgnoreCase("Ehwaz")) {
+            yellColour = "00ff00";
             yellColourShad = true;
         }
 

@@ -22,7 +22,6 @@ public enum PlayerRights {
     SECURITY_MOD(ChatCrown.SECURITY_MOD),
     EVENT_MANAGER(ChatCrown.EVENT_MANAGER),
     INSTANT_PKER(ChatCrown.INSTANT_PKER),
-    HEAD_MOD(ChatCrown.HEAD_MOD),
     HEAD_ADMIN(ChatCrown.HEAD_ADMIN),
     ;
 

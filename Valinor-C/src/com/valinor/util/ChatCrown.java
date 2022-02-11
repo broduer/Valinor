@@ -31,8 +31,7 @@ public enum ChatCrown {
     SECURITY_MOD("<img=21</img>", 1861),
     EVENT_MANAGER("<img=22</img>", 468),
     INSTANT_PKER("<img=23</img>", 506),
-    HEAD_MOD("<img=24</img>", 506),
-    HEAD_ADMIN("<img=25</img>", 506),
+    HEAD_ADMIN("<img=24</img>", 1940),
     ;
 
     private final String identifier;

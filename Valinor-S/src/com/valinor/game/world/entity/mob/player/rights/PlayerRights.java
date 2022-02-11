@@ -54,9 +54,8 @@ public enum PlayerRights {
 
     INSTANT_PKER("Instant Pker", 506, 23, 0),
 
-    HEAD_MOD("Head Mod", 1940, 24, 4),
+    HEAD_ADMIN("Head Admin", 1940, 24, 4),
 
-    HEAD_ADMIN("Head Admin", 1941, 25, 4),
     ;
 
     private final String name;

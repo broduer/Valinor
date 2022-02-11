@@ -12,8 +12,7 @@ public enum Color {
     LIGHTORANGE("FF9040"), YELLOW("FFFF00"), BARROWS("131613"), CYAN("00FFFF"), ADAMANTITE("63965E"),
     MAROON("800000"), GREEN("65280"), LIGHT_GREEN("006000"), DARK_RED("6f0000"), DARK_GREEN("006600"),
     OLIVE("808000"), ORANGE("ff981f"), ORANGE_2("ff7000"), ORANGE_RED("FF4500"), COOL_BLUE("0040ff"),
-
-    RAID_PURPLE("ef20ff")
+    SUPPORT_YELL_NAME("008b8b0"), RAID_PURPLE("ef20ff")
     ;
 
     Color(String colorValue) {
@@ -37,7 +36,7 @@ public enum Color {
     public static String staffColor(Player player, String s) {
         String color = "";
         switch (player.getPlayerRights()) {
-            case SUPPORT -> color = Color.CYAN.tag() + s + "</col>";
+            case SUPPORT -> color = Color.SUPPORT_YELL_NAME.tag() + s + "</col>";
             case MODERATOR -> color = Color.WHITE.tag() + s + "</col>";
             case ADMINISTRATOR, OWNER -> color = Color.RED.tag() + s + "</col>";
             case DEVELOPER -> color = Color.PURPLE.tag() + s + "</col>";

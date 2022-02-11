@@ -1049,21 +1049,9 @@ public class Client extends GameApplet {
                         int xPos = 10;
                         if (broadcast) {
                             spriteCache.get(856).drawSprite(xPos + 62, y - 12 + yOffset);
-                            xPos += 14;
                         }
                         if (chatTypeView == 0 || chatTypeView == 6) {
                             if (!broadcast) {
-                                if (message.contains("[Global]")) {
-                                    xPos += 48;
-                                    for (ChatCrown c : crowns) {
-                                        //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
-                                        SimpleImage sprite = spriteCache.get(c.getSpriteId());
-                                        if (sprite != null) {
-                                            sprite.drawSprite(xPos + 1, y - 12 + yOffset);
-                                            xPos += sprite.width + 2;
-                                        }
-                                    }
-                                }
                                 if (y > 0 && y < 210) {
                                     adv_font_regular.draw(message, 11, y + yOffset, transparent_chat_box && !fixed ? 0xFFFFFF : 0, shadow);
                                 }
@@ -1087,7 +1075,7 @@ public class Client extends GameApplet {
                                 //for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                 SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                 if (sprite != null) {
-                                    sprite.drawSprite(xPos + 1, y - 12 + yOffset);
+                                    sprite.drawSprite(xPos + 1, y - 11 + yOffset);
                                     xPos += sprite.width + 2;
                                 }
                             }
@@ -1124,7 +1112,7 @@ public class Client extends GameApplet {
                                 for (ChatCrown c : ChatCrown.get(myPrivilege, donatorPrivilege)) {
                                     SimpleImage sprite = spriteCache.get(c.getSpriteId());
                                     if (sprite != null) {
-                                        sprite.drawSprite(x + 1, y - 12 + yOffset);
+                                        sprite.drawSprite(x + 1, y - 11 + yOffset);
                                         x += sprite.width + 2;
                                     }
                                 }
@@ -7613,14 +7601,6 @@ public class Client extends GameApplet {
                 // Remove the ability for players to do shaded messages..
                 if (inputString.contains("<shad")) {
                     inputString = inputString.replaceAll("<shad", "");
-                }
-                // Remove the ability for players to do global messages..
-                if (inputString.contains("[Global]")) {
-                    inputString = inputString.replaceAll("Global", "");
-                }
-                // Remove the ability for players to do global messages..
-                if (inputString.contains("[global]")) {
-                    inputString = inputString.replaceAll("global", "");
                 }
                 if ((key == 13 || key == 10) && inputString.length() > 0) {
                     boolean isDeveloper = (myPrivilege == 4 || myPrivilege == 3 || myPrivilege == 2);

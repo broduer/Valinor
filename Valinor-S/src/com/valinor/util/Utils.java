@@ -1534,7 +1534,7 @@ public class Utils {
 
     private static final String[] BLOCKED_WORDS = new String[]{
         "<img", "@cr", "<img=", ":tradereq:", ":duelreq:",
-        "<col=", "<shad=", "[Global]", "[global]", "leaked ip's", "leaked ips", "leaked pass",
+        "<col=", "<shad=", "leaked ip's", "leaked ips", "leaked pass",
         "devious", "firepk", "ventrilica", "ventrili",
         "hade5", "hades5", "pvplegacy", "junglepk", "runeinsanit",
         "n3t", "c  0 m", "c 0 m", "C 0  m",
