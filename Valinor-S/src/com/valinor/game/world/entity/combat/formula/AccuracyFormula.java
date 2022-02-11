@@ -619,7 +619,7 @@ public class AccuracyFormula {
                 }
                 break;
             case RANGED:
-/*				if (off_base_ranged_level > off_weapon_requirement) {
+				/*if (off_base_ranged_level > off_weapon_requirement) {
 					off_weapon_bonus = (off_base_ranged_level - off_weapon_requirement) * .3;
 				}*/
                 effective_attack = Math.floor((((off_current_ranged_level * off_ranged_prayer_bonus) * off_additional_bonus) + off_stance_bonus + off_weapon_bonus) * twistedBowMultiplier);
@@ -628,10 +628,10 @@ public class AccuracyFormula {
                 def_equipment_bonus = def_equipment_ranged_defence;
                 break;
             case MAGIC:
-                //if (off_base_magic_level > off_spell_requirement) {
-                //	off_spell_bonus = (off_base_magic_level - off_spell_requirement) * .3;
-                //	System.out.println(off_base_magic_level + ". " + off_spell_requirement + " " + off_spell_bonus);
-                //}
+/*                if (off_base_magic_level > off_spell_requirement) {
+                	off_spell_bonus = (off_base_magic_level - off_spell_requirement) * .3;
+                	System.out.println(off_base_magic_level + ". " + off_spell_requirement + " " + off_spell_bonus);
+                }*/
                 effective_attack = Math.floor(((off_current_magic_level * off_magic_prayer_bonus) * off_additional_bonus) + off_spell_bonus);
                 effective_magic = Math.floor(def_current_magic_level * .7);
                 effective_defence = Math.floor((def_current_defence_level * def_defence_prayer_bonus) * .3);
@@ -646,9 +646,7 @@ public class AccuracyFormula {
         //determine augmented levels
         double aug_atk_mod = 64.;
         if(entity.isPlayer() && enemy.isPlayer()) {
-            if(style == CombatType.MELEE) {
-                aug_atk_mod = ATTACK_MOD_BASE;
-            }
+            aug_atk_mod = ATTACK_MOD_BASE;
         }
 
         augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));
@@ -692,8 +690,8 @@ public class AccuracyFormula {
                 break;
         }
 
-        //String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
-        //System.out.println(msg);
+        String msg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",(int) augmented_attack, (int) augmented_defence,off_equipment_bonus, def_equipment_bonus, (int) effective_attack, (int) effective_defence, (int) off_hit_chance, (int) def_block_chance);
+        System.out.println(msg);
 
         if (entity.isPlayer() && (boolean) GameServer.properties().logAccuracyChances) {
             String debugmsg = String.format("Atk %d v def %d. Bonus %d vs %d. Level %d vs %d. Relative %d%% hit > %d%% block%n",
