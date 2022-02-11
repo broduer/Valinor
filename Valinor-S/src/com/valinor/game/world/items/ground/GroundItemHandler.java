@@ -218,13 +218,13 @@ public final class GroundItemHandler {
             illegalItem = true;
         }
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
-            && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
-            illegalItem = true;
-        }
-
         if(illegalItem) {
             player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
+            return false;
+        }
+
+        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
+            && player != null && player.gameMode() != GameMode.INSTANT_PKER) {
             return false;
         }
 

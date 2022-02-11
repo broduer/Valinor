@@ -3,6 +3,7 @@ package com.valinor.game.world.items;
 import com.google.gson.annotations.Expose;
 import com.valinor.fs.DefinitionRepository;
 import com.valinor.fs.ItemDefinition;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
@@ -12,6 +13,7 @@ import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;

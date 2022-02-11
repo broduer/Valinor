@@ -76,6 +76,7 @@ public class ItemDefinition implements Definition {
     public boolean tradeable_special_items;
     public boolean changes;
     public boolean autoKeptOnDeath;
+    public boolean pvpSpawnable;
 
     public ItemDefinition(int id, byte[] data) {
         this.id = id;
