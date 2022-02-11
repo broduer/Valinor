@@ -1,8 +1,12 @@
 package com.valinor.game.world.position.areas.impl;
 
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunterWidget;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.Hotspot;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.HotspotTask;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -15,6 +19,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.Controller;
+import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +27,7 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import static com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunter.DISABLED;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PLAYERS_IN_WILDERNESS;
 
 public class WildernessArea extends Controller {
@@ -118,6 +124,11 @@ public class WildernessArea extends Controller {
     public void enter(Mob mob) {
         if (mob.isPlayer()) {
             Player player = mob.getAsPlayer();
+            //When player enters the wilderness activate hotspot
+            if (!player.hotspotActive()) {
+                TaskManager.submit(new HotspotTask(player));
+            }
+
             //Clear the damage map when entering wilderness
             player.getCombat().getDamageMap().clear();
             players.add(player);
@@ -176,12 +187,28 @@ public class WildernessArea extends Controller {
 
                 // new level is inside wildy
                 if (lvl > 0) {
+                    //Hotspot notifier
+                    boolean hotspotNotification = player.getAttribOr(AttributeKey.WILDERNESS_HOTSPOT_NOTIFICATION, false);
+                    if (player.tile().inArea(Hotspot.ACTIVE.area)) {
+                        if (!hotspotNotification) {
+                            player.message("<col="+ Color.MEDRED.getColorValue()+">Bounty Hotspot:</col>You have entered the active hotspot.");
+                            player.putAttrib(AttributeKey.WILDERNESS_HOTSPOT_NOTIFICATION, true);
+                        }
+                    } else {
+                        if (hotspotNotification) {
+                            player.message("You have left the wilderness hotspot.");
+                            player.putAttrib(AttributeKey.WILDERNESS_HOTSPOT_NOTIFICATION, false);
+                        }
+                    }
+
                     // ONLY SET THIS WHEN ENTERING not 24.7 ever tick
                     player.putAttrib(AttributeKey.INWILD, World.getWorld().cycleCount());
                     player.getPacketSender().sendString(199, "Level: " + lvl);
                     player.getPacketSender().sendInteractionOption("Attack", 2, true);
                 }
-                player.getInterfaceManager().openWalkable(197);
+                if(!DISABLED) {
+                    BountyHunterWidget.sendBountyWidget(player);
+                }
             }
         }
     }

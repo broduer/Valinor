@@ -5,6 +5,25 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    DID_YOU_KNOW("did_you_know_activated", AttribType.BOOLEAN),
+
+    //Bounty hunter
+    BOUNTY_HUNTER_TASK,
+    BOUNTY_HUNTER_TASK_COMPLETION_AMOUNT("bounty_hunter_task_completion_amount", AttribType.INTEGER),
+    BOUNTY_TASKS_COMPLETED("bounty_tasks_completed", AttribType.INTEGER),
+    MINIMIZE("minimize", AttribType.BOOLEAN),
+    HOTSPOT_TIMER("hotspot_timer", AttribType.INTEGER),
+    BOUNTY_TASK_TIMER("bounty_task_timer", AttribType.INTEGER),
+    BOUNTY_HUNTER_TASK_NOTIFICATIONS("bounty_task_notifications", AttribType.BOOLEAN),
+    FAILED_BOUNTY_HUNTER_TASK("failed_bounty_task", AttribType.BOOLEAN),
+    BOUNTY_TASKS_SKIPPED("bounty_hunter_tasks_skipped", AttribType.INTEGER),
+    TARGET_IMMUNITY("target_immunity", AttribType.INTEGER),
+
+    /**
+     * Wilderness hotspot enter/exit notification
+     */
+    WILDERNESS_HOTSPOT_NOTIFICATION,
+
     PETS_SCROLL("pets_scroll", AttribType.BOOLEAN),
 
     MUTED("muted", AttribType.BOOLEAN),

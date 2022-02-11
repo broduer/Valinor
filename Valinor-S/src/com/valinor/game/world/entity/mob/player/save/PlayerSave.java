@@ -7,6 +7,7 @@ import com.google.gson.internal.ConstructorConstructor;
 import com.valinor.GameServer;
 import com.valinor.db.transactions.UpdatePasswordDatabaseTransaction;
 import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.bank_pin.BankPinModification;
 import com.valinor.game.content.collection_logs.Collection;
 import com.valinor.game.content.presets.Presetable;
@@ -330,6 +331,11 @@ public class PlayerSave {
                         player.getRecentKills().add(kills);
                     }
                 }
+                player.putAttrib(AttributeKey.BOUNTY_TASKS_SKIPPED, details.bountyTasksSkipped);
+                player.putAttrib(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, details.bountyTaskNotifications);
+                player.putAttrib(AttributeKey.BOUNTY_TASKS_COMPLETED, details.bountyTasksCompleted);
+                player.putAttrib(BOUNTY_HUNTER_TASK_COMPLETION_AMOUNT, details.bountyHunterTaskCompletionAmount);
+                player.putAttrib(BOUNTY_HUNTER_TASK, details.bountyTask);
                 player.putAttrib(KILLSTREAK, details.killstreak);
                 player.putAttrib(KILLSTREAK_RECORD, details.killstreakRecord);
                 player.putAttrib(KING_BLACK_DRAGONS_KILLED, details.kingBlackDragonsKilled);
@@ -800,6 +806,11 @@ public class PlayerSave {
         private final int kills;
         private final int deaths;
         private final List<String> recentKills;
+        private final int bountyTasksSkipped;
+        private final boolean bountyTaskNotifications;
+        private final int bountyTasksCompleted;
+        private final int bountyHunterTaskCompletionAmount;
+        private final BountyHunterTask.BountyTasks bountyTask;
 
         //counts
         private final int killstreak;
@@ -1285,6 +1296,11 @@ public class PlayerSave {
             kills = Player.getAttribIntOr(player, PLAYER_KILLS, 0);
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
             recentKills = player.getRecentKills();
+            bountyTasksSkipped = Player.getAttribIntOr(player, AttributeKey.BOUNTY_TASKS_SKIPPED, 0);
+            bountyTaskNotifications = Player.getAttribBooleanOr(player, AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, true);
+            bountyTasksCompleted = Player.getAttribIntOr(player, AttributeKey.BOUNTY_TASKS_COMPLETED, 0);
+            bountyHunterTaskCompletionAmount = Player.getAttribIntOr(player, BOUNTY_HUNTER_TASK_COMPLETION_AMOUNT, 0);
+            bountyTask = player.getAttribOr(BOUNTY_HUNTER_TASK, null);
             killstreak = Player.getAttribIntOr(player, KILLSTREAK, 0);
             killstreakRecord = Player.getAttribIntOr(player, KILLSTREAK_RECORD, 0);
             kingBlackDragonsKilled = Player.getAttribIntOr(player, KING_BLACK_DRAGONS_KILLED, 0);

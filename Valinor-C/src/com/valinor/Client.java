@@ -17,6 +17,7 @@ import com.valinor.cache.graphics.fading_screen.BlackFadingScreen;
 import com.valinor.cache.graphics.fading_screen.FadingScreen;
 import com.valinor.cache.graphics.font.AdvancedFont;
 import com.valinor.cache.graphics.widget.*;
+import com.valinor.cache.graphics.widget.impl.BountyHunterWidget;
 import com.valinor.cache.graphics.widget.impl.OptionTabWidget;
 import com.valinor.cache.graphics.widget.impl.WeaponInterfacesWidget;
 import com.valinor.cache.graphics.widget.option_menu.OptionMenu;
@@ -6872,6 +6873,23 @@ public class Client extends GameApplet {
             firstMenuAction[menuActionRow] = super.cursor_x;
             secondMenuAction[menuActionRow] = super.cursor_y;
             menuActionRow++;
+
+            //  System.out.println("Screen: " + screen.toString() + " | height " + window_height + " | width " + window_width);
+            if (openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET || openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET_SUB_COMPONENT || openWalkableInterface == BountyHunterWidget.EXPAND_WIDGET) {
+                if (screen == ScreenMode.FIXED) {
+                    buildInterfaceMenu(4, Widget.cache[openWalkableInterface], super.cursor_x, 4, super.cursor_y, 0);
+                    // System.out.println("Building for this - fixed");
+                } else {
+                    int xOffset = window_width - 765 + 40;
+                    // System.out.println("x offset: " + xOffset);
+                    // System.out.println("x offset: " + xOffset + " | y offset: " + yOffset);
+                    // System.out.println("Cursor x: " + super.cursor_x + " | calculated window width: " + ((window_width / 2) - 356));
+                    // System.out.println("Cursor y: " + super.cursor_y + " | calculated window height: " + ((window_height / 2) - 230));
+                    // System.out.println("X: " + super.cursor_x + " | calc: " + ((window_width / 2) + 356));
+                    // System.out.println("Y: " + super.cursor_y + "  | calc: " + ((window_height / 2) + 230));
+                    buildInterfaceMenu(xOffset, Widget.cache[openWalkableInterface], super.cursor_x, 6, super.cursor_y, 0);
+                }
+            }
         }
 
         // System.out.println("open interface: " + openWalkableInterface);
@@ -6959,7 +6977,7 @@ public class Client extends GameApplet {
                             Npc npc2 = npcs[local_npcs[j2]];
                             if (npc2 != null && npc2 != npc && npc2.desc.size == 1
                                 && npc2.world_x == npc.world_x && npc2.world_y == npc.world_y) {
-                                if (npc2.showActions()) {
+                                if (npc2.showActions() && !interactingBountyWidget()) {
                                     buildAtNPCMenu(npc2.desc, local_npcs[j2], y, x);
                                 }
                             }
@@ -6970,7 +6988,7 @@ public class Client extends GameApplet {
                                 buildAtPlayerMenu(x, local_players[l2], player, y);
                         }
                     }
-                    if (npc.showActions()) {
+                    if (npc.showActions() && !interactingBountyWidget()) {
                         buildAtNPCMenu(npc.desc, uid, y, x);
                     }
                 } catch (Exception e) {
@@ -10875,6 +10893,12 @@ public class Client extends GameApplet {
             return String.valueOf(format.format(j));
         else
             return "*";
+    }
+
+    private boolean interactingBountyWidget() {
+        boolean interacting = (openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET || openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET_SUB_COMPONENT) && mouseInRegion(323, 48, 506, 90) || (openWalkableInterface == BountyHunterWidget.EXPAND_WIDGET) && mouseInRegion(496, 65, 507, 75);
+        //System.out.println("Interacting with bounty widget: " + interacting);
+        return interacting;
     }
 
     private void showErrorScreen() {

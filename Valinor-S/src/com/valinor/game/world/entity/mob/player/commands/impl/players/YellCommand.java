@@ -97,7 +97,7 @@ public class YellCommand implements Command {
             yellColour = "8b0000";
             yellColourShad = true;
         } else if(player.getUsername().equalsIgnoreCase("Dehzyne")) {
-            yellColour = "D010C4";
+            yellColour = "000000";
             yellColourShad = true;
         } else if(player.getUsername().equalsIgnoreCase("Ehwaz")) {
             yellColour = "00ff00";

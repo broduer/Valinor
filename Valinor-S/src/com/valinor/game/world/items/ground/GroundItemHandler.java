@@ -228,6 +228,12 @@ public final class GroundItemHandler {
             return false;
         }
 
+        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
+            && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
+            player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
+            return false;
+        }
+
         // Stackable? Can group with existing of the same item on that tile
         if (item.getItem().definition(World.getWorld()).stackable()) {
             for (GroundItem other : groundItems) {

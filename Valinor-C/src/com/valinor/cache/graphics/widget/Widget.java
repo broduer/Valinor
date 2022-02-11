@@ -407,6 +407,7 @@ public class Widget {
         JewelryWidget.init();
         TradingPostWidget.unpack(font);
         EventWidget.unpack(font);
+        BountyHunterWidget.unpack(font);
         if (ClientConstants.CHECK_UNUSED_INTERFACES) {
             checkUnusedInterfaces();
         }

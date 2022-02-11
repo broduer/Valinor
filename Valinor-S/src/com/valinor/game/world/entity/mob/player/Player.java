@@ -6,6 +6,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.bank_pin.BankPin;
@@ -144,6 +145,17 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
+
+    public boolean hotspotActive() {
+        int hotspotTimer = this.getAttribOr(AttributeKey.HOTSPOT_TIMER, -1);
+        return hotspotTimer > 0;
+    }
+
+    public boolean hasBountyTask() {
+        int bountyTaskTimer = this.getAttribOr(AttributeKey.BOUNTY_TASK_TIMER, -1);
+        var bountyTask = this.<BountyHunterTask.BountyTasks>getAttribOr(BOUNTY_HUNTER_TASK, null);
+        return bountyTaskTimer > 0 && bountyTask != null;
+    }
 
     private final Farming farming = new Farming(this);
     public Farming getFarming() {

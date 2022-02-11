@@ -5,7 +5,10 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyTaskEvent;
 import com.valinor.game.content.mechanics.Death;
+import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.emblem.BountyHunterEmblem;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunterConstants.TARGET_NAME_ID;
 import static com.valinor.game.world.entity.AttributeKey.EMBLEM_WEALTH;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PK_POINTS;
 import static com.valinor.util.ItemIdentifiers.ANTIQUE_EMBLEM_TIER_1;
@@ -31,7 +35,7 @@ import static com.valinor.util.Utils.formatNumber;
  */
 public class BountyHunter {
 
-    private static final boolean CAN_RECEIVE_EMBLEMS = false;
+    public static boolean DISABLED = true;
 
     /**
      * Target pairs.
@@ -70,11 +74,6 @@ public class BountyHunter {
                             }
 
                             if(potential.looks().hidden()) {
-                                continue;
-                            }
-
-                            //Can't get this user as target
-                            if(potential.getUsername().equalsIgnoreCase("TRY CATCH ME")) {
                                 continue;
                             }
 
@@ -127,11 +126,23 @@ public class BountyHunter {
 
             //Send messages..
             player.getPacketSender().sendMessage("You've been assigned "+target.getUsername()+" as your target!");
+            player.getPacketSender().sendString(TARGET_NAME_ID, target.getUsername());
             target.getPacketSender().sendMessage("You've been assigned "+player.getUsername()+" as your target!");
+            target.getPacketSender().sendString(TARGET_NAME_ID, player.getUsername());
 
             //Send hints..
             player.getPacketSender().sendEntityHint(target);
             target.getPacketSender().sendEntityHint(player);
+
+            if(!DISABLED) {
+                if (!player.hasBountyTask()) {// Don't overwrite existing tasks
+                    TaskManager.submit(new BountyTaskEvent(player));
+                }
+
+                if (!target.hasBountyTask()) {
+                    TaskManager.submit(new BountyTaskEvent(target));
+                }
+            }
         }
     }
 
@@ -150,6 +161,10 @@ public class BountyHunter {
             //Reset hints..
             p1.getPacketSender().sendEntityHintRemoval(true);
             p2.getPacketSender().sendEntityHintRemoval(true);
+
+            //Reset name
+            p1.getPacketSender().sendString(TARGET_NAME_ID, "");
+            p2.getPacketSender().sendString(TARGET_NAME_ID, "");
 
             //Set timers
             p2.getTargetSearchTimer().start(TARGET_SEARCH_DELAY_SECONDS);
@@ -250,23 +265,24 @@ public class BountyHunter {
                 //Send messages
                 killed.message("You were defeated by your target!");
 
-                var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 10;
+                //Set before the kill message because otherwise the bounty task points aren't calculated in total points
+                BountyHunterTask.BountyTasks.checkOnKill(killer);
+
+                var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 100;
                 killer.putAttrib(AttributeKey.PK_POINTS, pkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
-                killer.message("You were awarded with 10 extra PKP for killing your target! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
+                killer.message("You were awarded with 100 extra PKP for killing your target! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
 
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_II, 1);
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_III, 1);
 
-                if(CAN_RECEIVE_EMBLEMS) {
-                    Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
-                    if (emblem.isPresent()) {
-                        killer.inventory().remove(new Item(emblem.get().getItemId()));
-                        killer.inventory().add(new Item(emblem.get().getNextOrLast().getItemId()));
-                    } else {
-                        killer.inventory().addOrBank(new Item(ANTIQUE_EMBLEM_TIER_1));
-                    }
+                Optional<BountyHunterEmblem> emblem = BountyHunterEmblem.getBest(killer, true);
+                if (emblem.isPresent()) {
+                    killer.inventory().remove(new Item(emblem.get().getItemId()));
+                    killer.inventory().add(new Item(emblem.get().getNextOrLast().getItemId()));
+                } else {
+                    killer.inventory().addOrBank(new Item(ANTIQUE_EMBLEM_TIER_1));
                 }
             }
         }
