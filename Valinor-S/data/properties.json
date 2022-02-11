@@ -3,7 +3,7 @@
   "lowercaseCaptcha": true,
   "disableCaptchaEveryLogin": true,
   "staffOnlyLogins": false,
-  "gameVersion": "1.0.8",
+  "gameVersion": "1.0.9",
   "definitionsDirectory": "./data/def/",
   "clippingDirectory": "./data/clipping/",
   "debugMode": true,
