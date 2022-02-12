@@ -74,19 +74,14 @@ public class HydraCombatScript extends CommonCombatMethod {
         for (int i = 0; i < 2; i++)
             targets.add(Utils.randomElement(positions));
         targets.forEach(pos -> hydra.runFn(1, () -> {
-            new Projectile(hydra.getCentrePosition(), pos,1,1644,54,25,35,0,0,16,64).sendProjectile();
+            new Projectile(hydra.getCentrePosition(), pos, 1, 1644, 54, 25, 35, 0, 0, 16, 64).sendProjectile();
             Direction dir = Direction.getDirection(Utils.getClosestTile(hydra, pos), pos);
 
             World.getWorld().tileGraphic(1645, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 40);
-            World.getWorld().tileGraphic(POISON_POOLS[dir.ordinal()], new Tile(pos.getX(), pos.getY(), pos.getZ()), 0,40);
+            World.getWorld().tileGraphic(POISON_POOLS[dir.ordinal()], new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 40);
             Chain.bound(hydra).runFn(3, () -> {
-                for (int i = 0; i < 15; i++) {
-                    if (target.tile().equals(pos)) {
-                        target.hit(hydra, World.getWorld().random(1, 4), SplatType.POISON_HITSPLAT);
-                    }
-                    Chain.bound(hydra).runFn(2, () -> {
-                        //Just ticking
-                    });
+                if (target.tile().equals(pos)) {
+                    target.hit(hydra, World.getWorld().random(1, 4), SplatType.POISON_HITSPLAT);
                 }
             });
         }));
