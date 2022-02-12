@@ -125,6 +125,10 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == PVP_MYSTERY_BOX) {
+            name = "PvP mystery box";
+            grandexchange = true;
+            stackable = true;
         } else if (id == YOUTUBE_MYSTERY_BOX) {
             name = "Youtube mystery box";
             grandexchange = true;
