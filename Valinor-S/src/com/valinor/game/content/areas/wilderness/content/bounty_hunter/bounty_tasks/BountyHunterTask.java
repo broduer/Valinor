@@ -64,11 +64,19 @@ public class BountyHunterTask {
                 }
             }
         },
-        KILL_WITHOUT_RING_OR_NECKLACE_EQUIPPED("Kill your target with no ring or neck armour equipped", 1) {
+        KILL_WITHOUT_RING_EQUIPPED("Kill your target with no ring armour equipped", 1) {
             @Override
             public void meetsRequirement(Player player) {
-                if (!player.getEquipment().hasRing() || !player.getEquipment().hasAmulet()) {
-                    BountyHunterTask.activate(player, BountyTasks.KILL_WITHOUT_RING_OR_NECKLACE_EQUIPPED, 1);
+                if (!player.getEquipment().hasRing()) {
+                    BountyHunterTask.activate(player, BountyTasks.KILL_WITHOUT_RING_EQUIPPED, 1);
+                }
+            }
+        },
+        KILL_WITHOUT_NECKLACE_EQUIPPED("Kill your target with no neck armour equipped", 1) {
+            @Override
+            public void meetsRequirement(Player player) {
+                if (!player.getEquipment().hasAmulet()) {
+                    BountyHunterTask.activate(player, BountyTasks.KILL_WITHOUT_NECKLACE_EQUIPPED, 1);
                 }
             }
         };
@@ -124,6 +132,7 @@ public class BountyHunterTask {
         player.clearAttrib(BOUNTY_HUNTER_TASK_COMPLETION_AMOUNT);
         player.putAttrib(AttributeKey.BOUNTY_TASK_TIMER, -1);
         player.putAttrib(AttributeKey.FAILED_BOUNTY_HUNTER_TASK, false);
+        player.stopBountyHunterTask();
     }
 
     /**
@@ -187,7 +196,6 @@ public class BountyHunterTask {
         //Task completed
         if (completionAmount >= bountyTasks.getCompletionAmount()) {
             player.message("<col=" + Color.MEDRED.getColorValue() + ">Bounty Task complete:</col> " + bountyHunterTask.getTaskDescription() + ".");
-            resetBountyTask(player, true);
 
             int bountyTasksCompleted = (Integer) player.getAttribOr(AttributeKey.BOUNTY_TASKS_COMPLETED, 0) + 1;
             player.putAttrib(AttributeKey.BOUNTY_TASKS_COMPLETED, bountyTasksCompleted);
@@ -195,8 +203,8 @@ public class BountyHunterTask {
             var pkp = player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 250;
             player.putAttrib(AttributeKey.PK_POINTS, pkp);
             player.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(player));
-            player.message("You were awarded with 250 extra PKP for completing your bounty task! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
-
+            player.message("You were awarded with 250 extra PKP for completing your bounty task!");
+            resetBountyTask(player, true);
         }
     }
 

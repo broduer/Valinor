@@ -1,5 +1,6 @@
 package com.valinor.game.content.daily_tasks;
 
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
@@ -69,6 +70,9 @@ public class DailyTaskManager extends Interaction {
                 player.clearAttrib(task.rewardClaimed);
             }
             player.message(Color.PURPLE.wrap("Your daily tasks have been reset."));
+
+            player.clearAttrib(BOUNTY_TASKS_SKIPPED);
+            player.message(Color.BLUE.wrap("You can now skip three bounty hunter tasks."));
         }
     }
 

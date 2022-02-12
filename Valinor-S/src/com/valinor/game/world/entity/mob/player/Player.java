@@ -146,6 +146,22 @@ import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
 
+    private Task bountyHunterTask;
+
+    public void setBountyHunterTask(Task task) {
+        stopDistancedTask();
+        this.bountyHunterTask = task;
+        if (task != null) {
+            TaskManager.submit(task);
+        }
+    }
+
+    public void stopBountyHunterTask() {
+        if (bountyHunterTask != null && bountyHunterTask.isRunning()) {
+            bountyHunterTask.stop();
+        }
+    }
+
     public boolean hotspotActive() {
         int hotspotTimer = this.getAttribOr(AttributeKey.HOTSPOT_TIMER, -1);
         return hotspotTimer > 0;
