@@ -29,13 +29,11 @@ import static com.valinor.util.Utils.formatNumber;
 
 /**
  * The bounty hunter minigame as of 4 November 2019.
- * 
+ *
  * @author Professor Oak
  * @author Zerikoth
  */
 public class BountyHunter {
-
-    public static boolean DISABLED = true;
 
     /**
      * Target pairs.
@@ -69,11 +67,11 @@ public class BountyHunter {
                         if (validTargetContester(potential)) {
                             //Check other stuff...
 
-                           if(potential.getHostAddress().equalsIgnoreCase(player.getHostAddress())) {
+                            if (potential.getHostAddress().equalsIgnoreCase(player.getHostAddress())) {
                                 continue;
                             }
 
-                            if(potential.looks().hidden()) {
+                            if (potential.looks().hidden()) {
                                 continue;
                             }
 
@@ -88,11 +86,11 @@ public class BountyHunter {
                             }
 
                             //Skip clan mates
-                            if(player.getClanChat().equalsIgnoreCase(potential.getClanChat())) {
+                            if (player.getClanChat().equalsIgnoreCase(potential.getClanChat())) {
                                 continue;
                             }
 
-                            if(Math.abs(player.skills().combatLevel() - potential.skills().combatLevel()) > 5) {
+                            if (Math.abs(player.skills().combatLevel() - potential.skills().combatLevel()) > 5) {
                                 continue;
                             }
 
@@ -125,23 +123,21 @@ public class BountyHunter {
             TARGET_PAIRS.add(pair);
 
             //Send messages..
-            player.getPacketSender().sendMessage("You've been assigned "+target.getUsername()+" as your target!");
+            player.getPacketSender().sendMessage("You've been assigned " + target.getUsername() + " as your target!");
             player.getPacketSender().sendString(TARGET_NAME_ID, target.getUsername());
-            target.getPacketSender().sendMessage("You've been assigned "+player.getUsername()+" as your target!");
+            target.getPacketSender().sendMessage("You've been assigned " + player.getUsername() + " as your target!");
             target.getPacketSender().sendString(TARGET_NAME_ID, player.getUsername());
 
             //Send hints..
             player.getPacketSender().sendEntityHint(target);
             target.getPacketSender().sendEntityHint(player);
 
-            if(!DISABLED) {
-                if (!player.hasBountyTask()) {// Don't overwrite existing tasks
-                    TaskManager.submit(new BountyTaskEvent(player));
-                }
+            if (!player.hasBountyTask()) {// Don't overwrite existing tasks
+                TaskManager.submit(new BountyTaskEvent(player));
+            }
 
-                if (!target.hasBountyTask()) {
-                    TaskManager.submit(new BountyTaskEvent(target));
-                }
+            if (!target.hasBountyTask()) {
+                TaskManager.submit(new BountyTaskEvent(target));
             }
         }
     }
@@ -200,7 +196,7 @@ public class BountyHunter {
     public static Optional<TargetPair> getPairFor(final Player p) {
         for (TargetPair pair : TARGET_PAIRS) {
             if (p.equals(pair.getPlayer1()) ||
-                    p.equals(pair.getPlayer2())) {
+                p.equals(pair.getPlayer2())) {
                 return Optional.of(pair);
             }
         }
@@ -220,7 +216,7 @@ public class BountyHunter {
         //Should the player be rewarded for this kill?
         boolean rewardPlayer = true;
 
-        if(killer.getRecentKills().contains(killed.getHostAddress())) {
+        if (killer.getRecentKills().contains(killed.getHostAddress())) {
             rewardPlayer = false;
             //System.out.println("Let's not reward the player, already killed before.");
         } else if (killer.getHostAddress().equals(killed.getHostAddress())) {
@@ -236,7 +232,7 @@ public class BountyHunter {
             killer.getRecentKills().add(killed.getHostAddress());
         }
 
-        if(killer.getPlayerRights().isDeveloperOrGreater(killer)) {
+        if (killer.getPlayerRights().isDeveloperOrGreater(killer)) {
             rewardPlayer = true;
         }
 
@@ -244,8 +240,8 @@ public class BountyHunter {
             TopPkers.SINGLETON.increase(killer.getUsername());
 
             //Other rewards
-            if(WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
-                PlayerKillingRewards.reward(killer, killed,true);
+            if (WildernessArea.inWilderness(killer.tile())) { // Only reward if in wild
+                PlayerKillingRewards.reward(killer, killed, true);
             }
         } else {
             killer.message("You don't get any rewards for that kill.");
@@ -268,10 +264,10 @@ public class BountyHunter {
                 //Set before the kill message because otherwise the bounty task points aren't calculated in total points
                 BountyHunterTask.BountyTasks.checkOnKill(killer);
 
-                var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS,0) + 100;
+                var pkp = killer.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0) + 100;
                 killer.putAttrib(AttributeKey.PK_POINTS, pkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
-                killer.message("You were awarded with 100 extra PKP for killing your target! You now have a total of "+ Utils.formatNumber(pkp)+" PKP!");
+                killer.message("You were awarded with 100 extra PKP for killing your target! You now have a total of " + Utils.formatNumber(pkp) + " PKP!");
 
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_I, 1);
                 AchievementsManager.activate(killer, Achievements.BOUNTY_HUNTER_II, 1);
@@ -295,26 +291,26 @@ public class BountyHunter {
      */
     public static int exchange(Player player, boolean performSale) {
         ArrayList<BountyHunterEmblem> list = new ArrayList<>();
-        for(BountyHunterEmblem emblem : BountyHunterEmblem.values()) {
-            if(player.inventory().contains(emblem.getItemId())) {
+        for (BountyHunterEmblem emblem : BountyHunterEmblem.values()) {
+            if (player.inventory().contains(emblem.getItemId())) {
                 list.add(emblem);
             }
         }
 
-        if(list.isEmpty()) {
+        if (list.isEmpty()) {
             return 0;
         }
 
         int pkPoints = 0;
 
-        for(BountyHunterEmblem emblem : list) {
+        for (BountyHunterEmblem emblem : list) {
             int amount = player.inventory().count(emblem.getItemId());
-            if(amount > 0) {
+            if (amount > 0) {
                 pkPoints += (emblem.getPkPoints() * amount);
-                player.putAttrib(EMBLEM_WEALTH,formatNumber(pkPoints)+" pk points");
+                player.putAttrib(EMBLEM_WEALTH, formatNumber(pkPoints) + " pk points");
 
-                if(performSale) {
-                    if(!player.inventory().contains(emblem.getItemId())) {
+                if (performSale) {
+                    if (!player.inventory().contains(emblem.getItemId())) {
                         return 0;
                     }
                     player.inventory().remove(emblem.getItemId(), amount);
