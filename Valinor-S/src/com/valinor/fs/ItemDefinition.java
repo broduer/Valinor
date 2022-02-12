@@ -152,8 +152,9 @@ public class ItemDefinition implements Definition {
             name = "Platinum mystery box";
             grandexchange = true;
             cost = 40_000;
-        } else if (id == FAWKES) {
+        } else if (id == FAWKES_32937) {
             name = "Fawkes";
+            grandexchange = false;
         } else if (id == WINTER_CASKET) {
             name = "Winter casket";
         } else if (id == ICE_IMP) {
