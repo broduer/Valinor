@@ -145,6 +145,7 @@ public class CommandManager {
         /*
          * Admin commands
          */
+        commands.put("finisha", new FinishAchievementCommand());
         commands.put("spawnpet", new SpawnPetCommand());
         commands.put("spawnkey", new WildernessKeyCommand());
         commands.put("removepkp", new RemovePkpCommand());

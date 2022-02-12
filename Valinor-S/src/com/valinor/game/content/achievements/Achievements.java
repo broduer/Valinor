@@ -6,6 +6,7 @@ import com.valinor.game.world.items.Item;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
@@ -262,5 +263,14 @@ public enum Achievements {
 
     public static int getTotal() {
         return values().length;
+    }
+
+    public static Optional<Achievements> getByName(String name) {
+        for (Achievements achievement : Achievements.values()) {
+            if(achievement.getName().equalsIgnoreCase(name)) {
+                return  Optional.of(achievement);
+            }
+        }
+        return Optional.empty();
     }
 }
