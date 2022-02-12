@@ -158,6 +158,7 @@ public class CommandManager {
         commands.put("disabledailyrewards", new DisableDailyRewards());
         commands.put("disableredeem", new DisableRedeem());
         commands.put("disablegamble", new DisableGambleCommand());
+        commands.put("disableyell", new DisableYellCommand());
         commands.put("healplayer", new HealPlayerCommand());
         commands.put("setmaxstats", new SetMaxSkillsCommand());
         commands.put("exitc", new ExitClientCommand());

@@ -100,6 +100,7 @@ public class ShowCommandsListCommand implements Command {
 
         if (player.getPlayerRights().isAdminOrGreater(player)) {
             commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Administrator Commands:</col>");
+            commands.add("<br><col=" + Color.RED.getColorValue() + ">::disableyell - Turns the yell channel on and off.</col>");
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::ipban [username]</col>");
             commands.add("example: <br><col=" + Color.RED.getColorValue() + ">::ipban player</col>");
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::kick [username]</col> - Disconnects (kicks) the specified player.");
