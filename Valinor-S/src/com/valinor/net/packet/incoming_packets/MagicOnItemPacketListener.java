@@ -2,6 +2,7 @@ package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
 import com.valinor.game.GameConstants;
+import com.valinor.game.content.skill.impl.magic.EnchantDragonBolts;
 import com.valinor.game.content.skill.impl.magic.JewelleryEnchantment;
 import com.valinor.game.content.skill.impl.smithing.Bar;
 import com.valinor.game.world.World;
@@ -142,6 +143,12 @@ public class MagicOnItemPacketListener implements PacketListener {
                     case ENCHANT_ZENYTE:
                     case ENCHANT_DRAGONSTONE:
                     case ENCHANT_RUBY_TOPAZ:
+                        Optional<EnchantDragonBolts.DragonBolts> dragonBolts = EnchantDragonBolts.DragonBolts.forId(itemId);
+                        if(dragonBolts.isPresent()) {
+                            EnchantDragonBolts.enchant(player, dragonBolts.get());
+                            return;
+                        }
+
                         if (JewelleryEnchantment.check(player, itemId, spellId)) {
                             if (!spell.canCast(player, null, spell.deleteRunes())) {
                                 return;
