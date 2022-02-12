@@ -18,8 +18,8 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class PromoMysteryBox extends Interaction {
 
-    private static final int RARE_ROLL = 30;
-    private static final int UNCOMMON_ROLL = 10;
+    private static final int RARE_ROLL = 5;
+    private static final int UNCOMMON_ROLL = 3;
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {

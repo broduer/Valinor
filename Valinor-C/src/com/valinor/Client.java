@@ -17,7 +17,6 @@ import com.valinor.cache.graphics.fading_screen.BlackFadingScreen;
 import com.valinor.cache.graphics.fading_screen.FadingScreen;
 import com.valinor.cache.graphics.font.AdvancedFont;
 import com.valinor.cache.graphics.widget.*;
-import com.valinor.cache.graphics.widget.impl.BountyHunterWidget;
 import com.valinor.cache.graphics.widget.impl.OptionTabWidget;
 import com.valinor.cache.graphics.widget.impl.WeaponInterfacesWidget;
 import com.valinor.cache.graphics.widget.option_menu.OptionMenu;
@@ -9477,6 +9476,7 @@ public class Client extends GameApplet {
                 messagePromptRaised = false;
                 clickToContinueString = null;
                 multicombat = 0;
+                singlePlusCombat = 0;
                 flashingSidebarId = -1;
                 characterGender = true;
                 resetCharacterCreation();
@@ -13351,6 +13351,8 @@ public class Client extends GameApplet {
             // Multi sign
             if (multicombat == 1) {
                 multiOverlay.drawSprite(fixed ? 445 : 480, window_height - 200);
+            } else if(singlePlusCombat == 1) {
+                Client.spriteCache.get(1919).drawSprite(fixed ? 445 : 480, window_height - 200);
             }
 
             if (broadcastText != null && !broadcastText.isEmpty()) {
@@ -17398,6 +17400,12 @@ public class Client extends GameApplet {
                 return true;
             }
 
+            if (opcode == ServerToClientPackets.SEND_SINGLE_PLUS_COMBAT_ICON) {
+                singlePlusCombat = incoming.readUByte(); // 1 is active
+                opcode = -1;
+                return true;
+            }
+
             if (opcode == ServerToClientPackets.SEND_MULTICOMBAT_ICON) {
                 multicombat = incoming.readUByte(); // 1 is active
                 opcode = -1;
@@ -18201,6 +18209,7 @@ public class Client extends GameApplet {
     private Archive title_archive;
     private int flashingSidebarId;
     private int multicombat;
+    private int singlePlusCombat;
     private LinkedList incompleteAnimables;
     private final int[] anIntArray1057;
     public final Widget aClass9_1059;

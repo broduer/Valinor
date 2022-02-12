@@ -892,6 +892,13 @@ public final class PacketSender {
         return this;
     }
 
+    public PacketSender sendSinglePlusIcon(int value) {
+        PacketBuilder out = new PacketBuilder(59);
+        out.put(value);
+        player.getSession().write(out);
+        return this;
+    }
+
     public PacketSender sendMultiIcon(int value) {
         PacketBuilder out = new PacketBuilder(61);
         out.put(value);

@@ -609,9 +609,12 @@ public class EquipmentInfo {
                 case ADAMANT_CROSSBOW:
                 case RUNE_CROSSBOW:
                 case DRAGON_CROSSBOW:
+                case ARMADYL_CROSSBOW:
                 case DRAGON_HUNTER_CROSSBOW:
                 case 18357:
-                    return 7552;
+                    Mob target = player.getCombat().getTarget();
+                    int animation = target == null ? 7552 : target.isPlayer() ? 4230 : 7552;
+                    return animation;
             }
         }
 
@@ -628,7 +631,6 @@ public class EquipmentInfo {
             case AXE -> style == 2 ? 401 : 395;
             case HAMMER -> 401;
             case BOW -> 426;
-            case CROSSBOW -> 4230;
             case LONGSWORD -> style == 2 ? 386 : 390;
             case TWOHANDED -> style == 2 ? 406 : 407;
             case PICKAXE, MACE -> style == 2 ? 400 : 401;
@@ -785,6 +787,7 @@ public class EquipmentInfo {
             case ADAMANT_CROSSBOW:
             case RUNE_CROSSBOW:
             case DRAGON_CROSSBOW:
+            case ARMADYL_CROSSBOW:
             case DRAGON_HUNTER_CROSSBOW:
             case KARILS_CROSSBOW:
             case 4747: // Torag's hamers
