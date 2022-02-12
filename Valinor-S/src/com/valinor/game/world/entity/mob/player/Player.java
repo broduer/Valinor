@@ -2599,6 +2599,11 @@ public class Player extends Mob {
             skotizoInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());
         }
+
+        var raids = getRaids();
+        if(raids != null) {
+            raids.exit(this,true);
+        }
     }
 
     @Override
