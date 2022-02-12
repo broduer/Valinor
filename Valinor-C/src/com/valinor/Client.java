@@ -80,6 +80,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.valinor.cache.graphics.widget.Widget.OPTION_MENU;
+import static com.valinor.cache.graphics.widget.impl.BountyHunterWidget.*;
 
 public class Client extends GameApplet {
 
@@ -6873,22 +6874,21 @@ public class Client extends GameApplet {
             firstMenuAction[menuActionRow] = super.cursor_x;
             secondMenuAction[menuActionRow] = super.cursor_y;
             menuActionRow++;
+        }
 
-            //  System.out.println("Screen: " + screen.toString() + " | height " + window_height + " | width " + window_width);
-            if (openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET || openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET_SUB_COMPONENT || openWalkableInterface == BountyHunterWidget.EXPAND_WIDGET) {
-                if (screen == ScreenMode.FIXED) {
-                    buildInterfaceMenu(4, Widget.cache[openWalkableInterface], super.cursor_x, 4, super.cursor_y, 0);
-                    // System.out.println("Building for this - fixed");
-                } else {
-                    int xOffset = window_width - 765 + 40;
-                    // System.out.println("x offset: " + xOffset);
-                    // System.out.println("x offset: " + xOffset + " | y offset: " + yOffset);
-                    // System.out.println("Cursor x: " + super.cursor_x + " | calculated window width: " + ((window_width / 2) - 356));
-                    // System.out.println("Cursor y: " + super.cursor_y + " | calculated window height: " + ((window_height / 2) - 230));
-                    // System.out.println("X: " + super.cursor_x + " | calc: " + ((window_width / 2) + 356));
-                    // System.out.println("Y: " + super.cursor_y + "  | calc: " + ((window_height / 2) + 230));
-                    buildInterfaceMenu(xOffset, Widget.cache[openWalkableInterface], super.cursor_x, 6, super.cursor_y, 0);
-                }
+        if (openWalkableInterface == BOUNTY_HUNTER_WIDGET || openWalkableInterface == BOUNTY_HUNTER_WIDGET_SUB_COMPONENT || openWalkableInterface == EXPAND_WIDGET) {
+            if (screen == ScreenMode.FIXED) {
+                buildInterfaceMenu(4, Widget.cache[openWalkableInterface], super.cursor_x, 4, super.cursor_y, 0);
+                //System.out.println("Building for this - fixed");
+            } else {
+                int xOffset = window_width - 765 + 40;
+                // System.out.println("x offset: " + xOffset);
+                // System.out.println("x offset: " + xOffset + " | y offset: " + yOffset);
+                // System.out.println("Cursor x: " + super.cursor_x + " | calculated window width: " + ((window_width / 2) - 356));
+                // System.out.println("Cursor y: " + super.cursor_y + " | calculated window height: " + ((window_height / 2) - 230));
+                // System.out.println("X: " + super.cursor_x + " | calc: " + ((window_width / 2) + 356));
+                // System.out.println("Y: " + super.cursor_y + "  | calc: " + ((window_height / 2) + 230));
+                buildInterfaceMenu(xOffset, Widget.cache[openWalkableInterface], super.cursor_x, 6, super.cursor_y, 0);
             }
         }
 
@@ -6932,7 +6932,7 @@ public class Client extends GameApplet {
                         menuActionRow++;
                     }
                 } else {
-                    if (def.actions != null) {
+                    if (def.actions != null && !interactingBountyWidget()) {
                         for (int type = 4; type >= 0; type--)
                             if (def.actions[type] != null) {
                                 menuActionText[menuActionRow] = def.actions[type] + " <col=00FFFF>" + def.name;
@@ -10896,7 +10896,7 @@ public class Client extends GameApplet {
     }
 
     private boolean interactingBountyWidget() {
-        boolean interacting = (openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET || openWalkableInterface == BountyHunterWidget.BOUNTY_HUNTER_WIDGET_SUB_COMPONENT) && mouseInRegion(323, 48, 506, 90) || (openWalkableInterface == BountyHunterWidget.EXPAND_WIDGET) && mouseInRegion(496, 65, 507, 75);
+        boolean interacting = (openWalkableInterface == BOUNTY_HUNTER_WIDGET || openWalkableInterface == BOUNTY_HUNTER_WIDGET_SUB_COMPONENT) && mouseInRegion(323, 48, 506, 90) || (openWalkableInterface == EXPAND_WIDGET) && mouseInRegion(496, 65, 507, 75);
         //System.out.println("Interacting with bounty widget: " + interacting);
         return interacting;
     }
