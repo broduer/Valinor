@@ -1,6 +1,7 @@
 package com.valinor.fs;
 
 import com.valinor.game.GameConstants;
+import com.valinor.game.world.definition.loader.ProtectionValue;
 import com.valinor.game.world.items.Item;
 import com.valinor.io.RSBuffer;
 import com.valinor.util.ItemIdentifiers;
@@ -76,6 +77,7 @@ public class ItemDefinition implements Definition {
     public boolean tradeable_special_items;
     public boolean changes;
     public boolean autoKeptOnDeath;
+    public ProtectionValue protectionValue;
     public boolean pvpSpawnable;
 
     public ItemDefinition(int id, byte[] data) {
@@ -1111,6 +1113,7 @@ public class ItemDefinition implements Definition {
         if (id == 6808) {
             name = "Scroll of Imbuement";
         }
+        protectionValue = new ProtectionValue();
     }
 
     public int highAlchValue() {
