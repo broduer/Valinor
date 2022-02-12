@@ -59,15 +59,15 @@ public class BountyTaskNotificationsD extends Dialogue {
                 stop();
             } else if (option == 2) {
                 boolean bounty_task_notification = player.getAttribOr(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, true);
+                bounty_task_notification = !bounty_task_notification;
+                player.putAttrib(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, bounty_task_notification);
 
                 if (bounty_task_notification) {
                     player.getInterfaceManager().openWalkable(BOUNTY_HUNTER_WIDGET_TASK_BUTTON);
-                    player.putAttrib(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, false);
                     stop();
                 } else {
                     player.getInterfaceManager().openWalkable(BOUNTY_HUNTER_WIDGET_TASK_INFO);
-                    player.putAttrib(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, true);
-                    send(DialogueType.STATEMENT, "You will no longer receive <col=0x7f0000>notifications about Bounty tasks. You", "can <col=0x7f0000>reactivate them again via the <col=0x7f0000>Bounty Hunter head-up display.");
+                    send(DialogueType.STATEMENT, "You will no longer receive <col=7f0000>notifications about Bounty tasks. You", "can <col=7f0000>reactivate them again via the <col=7f0000>Bounty Hunter head-up display.");
                     setPhase(1);
                 }
             } else if (option == 3) {
