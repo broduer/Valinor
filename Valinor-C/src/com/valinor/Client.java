@@ -1753,25 +1753,6 @@ public class Client extends GameApplet {
                 }
             }
         }
-        /*for (int x = 0; x < 104; x++) {
-            for (int y = 0; y < 104; y++) {
-                long id = scene.get_ground_decor_uid(plane, x, y);
-                if (id != 0L) {
-                    int function = ObjectDefinition.get(get_object_key(id)).mapIconId;
-                    if (function >= -1) {
-                        int sprite = AreaDefinition.lookup(function).spriteId;
-                        if(sprite != -1) {
-                            int viewportX = x;
-                            int viewportY = y;
-                            minimapHint[objectIconCount] = AreaDefinition.getImage(sprite);
-                            minimapHintX[objectIconCount] = viewportX;
-                            minimapHintY[objectIconCount] = viewportY;
-                            objectIconCount++;
-                        }
-                    }
-                }
-            }
-        }*/
 
         if (ClientConstants.DUMP_MAP_REGIONS) {
 
