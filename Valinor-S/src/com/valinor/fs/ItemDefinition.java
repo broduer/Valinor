@@ -125,6 +125,8 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == KQ_HEAD || id == ABYSSAL_HEAD || id == DARK_CLAW || id == TWISTED_HORNS || id == KBD_HEADS || id == ALCHEMICAL_HYDRA_HEAD) {
+            grandexchange = true;
         } else if (id == PVP_MYSTERY_BOX) {
             name = "PvP mystery box";
             grandexchange = true;
