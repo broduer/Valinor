@@ -87,7 +87,7 @@ public class BountyHunter {
                             }
 
                             //Skip clan mates
-                            if (player.getClanChat().equalsIgnoreCase(potential.getClanChat())) {
+                            if (player.getClanChat() != null && player.getClanChat().equalsIgnoreCase(potential.getClanChat())) {
                                 continue;
                             }
 

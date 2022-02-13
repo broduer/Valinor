@@ -178,9 +178,6 @@ public class Death {
             // Close open interface. do this BEFORE MINIGAME HANDLING -> such as arena deaths.
             player.stopActions(true);
 
-            // If we died in an instance, clean it up.
-            player.clearInstance();
-
             var died_under_7_wild = WildernessArea.wildernessLevel(player.tile()) <= 7; // Or in edge pvp (not classed as wildy)
 
             // If you die in FFA clan wars, you respawn at the lobby place.
@@ -206,6 +203,9 @@ public class Death {
                 player.clearAttrib(HP_EVENT_ACTIVE);
                 World.getWorld().clearBroadcast();
             }
+
+            // If we died in an instance, clean it up.
+            player.clearInstance();
 
             player.putAttrib(AttributeKey.DEATH_TELEPORT_TIMER, String.valueOf(System.currentTimeMillis()));
 
