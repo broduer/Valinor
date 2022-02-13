@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
+import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -10,6 +11,8 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
+
+import java.util.List;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.TOB_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
@@ -46,6 +49,17 @@ public class TheatreOfBloodRewards {
         } else {
             player.message("You have a funny feeling like you would have been followed...");
         }
+    }
+
+    public static boolean containsRare(Player partyMember) {
+        for (Item item : partyMember.getRaidRewards().getItems()) {
+            if (item == null)
+                continue;
+            if (TOBUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void withdrawReward(Player player) {
@@ -97,8 +111,8 @@ public class TheatreOfBloodRewards {
         .addTable(1,
             new LootItem(AVERNIC_DEFENDER_HILT, 1, 6),
             new LootItem(JUSTICIAR_FACEGUARD, 1, 5),
-            new LootItem(JUSTICIAR_CHESTGUARD, 1,4),
-            new LootItem(JUSTICIAR_LEGGUARDS, 1,4),
+            new LootItem(JUSTICIAR_CHESTGUARD, 1, 4),
+            new LootItem(JUSTICIAR_LEGGUARDS, 1, 4),
             new LootItem(SANGUINESTI_STAFF, 1, 3),
             new LootItem(GHRAZI_RAPIER, 1, 3),
             new LootItem(SCYTHE_OF_VITUR, 1, 2),
@@ -148,12 +162,12 @@ public class TheatreOfBloodRewards {
             return;
         }
 
-        if (personalPoints > 180_000) {
+        if (personalPoints > 180_000 && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             personalPoints = 180_000;
         }
 
         double chance = (float) personalPoints / 100 / 100.0;
-        //System.out.println(chance);
+        //System.out.println("chance: "+chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique().copy();

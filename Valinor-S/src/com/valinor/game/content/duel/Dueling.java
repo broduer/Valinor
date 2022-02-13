@@ -925,7 +925,7 @@ public class Dueling {
         }
 
         //Send interact hints
-        player.getPacketSender().sendPositionalHint(opponent.tile().copy(), 10);
+        player.getPacketSender().sendPositionalHint(opponent.tile().copy(), 0, 10);
         player.getPacketSender().sendEntityHint(opponent);
 
         if (GameServer.properties().enableLoadLastDuelPreset) {

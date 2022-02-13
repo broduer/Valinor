@@ -412,6 +412,14 @@ public class GameObject extends Entity implements Cloneable {
         return this;
     }
 
+    public GameObject withTile(Tile tile) {
+        return new GameObject(id, tile, type, rotation);
+    }
+
+    public GameObject withId(int objectId) {
+        return new GameObject(objectId, new Tile(tile.x, tile.y, tile.level), type, rotation);
+    }
+
     public Tile walkTo;
     public Predicate<Tile> skipReachCheck;
     public boolean skipClipping;

@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
+import com.google.common.collect.Lists;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
@@ -23,8 +24,8 @@ import com.valinor.util.Color;
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
 import static com.valinor.util.ItemIdentifiers.DAWNBRINGER;
 import static com.valinor.util.NpcIdentifiers.*;
-import static com.valinor.util.ObjectIdentifiers.CHEST_32758;
-import static com.valinor.util.ObjectIdentifiers.MONUMENTAL_CHEST;
+import static com.valinor.util.NpcIdentifiers.THE_MAIDEN_OF_SUGADINTI;
+import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -70,7 +71,7 @@ public class TheatreOfBlood extends Raids {
             //Last player in the party leaves clear the whole thing
             if(party.getMembers().size() == 0) {
                 //Clear all party members that are left
-                party.getMembers().clear();
+                Lists.newArrayList(party.getMembers()).forEach(party.getMembers()::remove);
                 clearParty(player);
             }
             player.raidsParty = null;
@@ -222,6 +223,37 @@ public class TheatreOfBlood extends Raids {
         party.monsters.add(verzik);
     }
 
+    public static final GameObject[] CHESTS = {
+        new GameObject(MONUMENTAL_CHEST, new Tile(3226, 4323), 10, 3),
+        new GameObject(MONUMENTAL_CHEST, new Tile(3226, 4327), 10, 3),
+        new GameObject(MONUMENTAL_CHEST, new Tile(3233, 4330), 10, 0),
+        new GameObject(MONUMENTAL_CHEST, new Tile(3240, 4327), 10, 1),
+        new GameObject(MONUMENTAL_CHEST, new Tile(3240, 4323), 10, 1)
+    };
+
+    public static void spawnLootChests(Player player) {
+        //Get the raids party
+        Party party = player.raidsParty;
+
+        if(party == null) {
+            return;
+        }
+
+        for (int index = 0; index < party.getMembers().size(); index++) {
+            Player partyMember = party.getMembers().get(index);
+            GameObject chest = CHESTS[index];
+            if (TheatreOfBloodRewards.containsRare(partyMember)) {
+                chest = chest.withId(MONUMENTAL_CHEST_32991);
+            }
+
+            Tile tile = chest.tile().transform(0,0, party.getHeight());
+            GameObject chestObject = chest.withTile(tile);
+            chestObject.spawn();
+            party.objects.add(chestObject);
+            partyMember.getPacketSender().sendPositionalHint(new Tile(tile.getX() + 1, tile.getY() + 1), 100, 2);
+        }
+    }
+
     private void spawnChests(Player player) {
         //Get the raids party
         Party party = player.raidsParty;
@@ -230,12 +262,10 @@ public class TheatreOfBlood extends Raids {
         GameObject chest2 = new GameObject(CHEST_32758, new Tile(3303, 4277, party.getHeight()), 10, 5).spawn(); //Vasilias
         GameObject chest3 = new GameObject(CHEST_32758, new Tile(3278, 4293, party.getHeight()), 10, 2).spawn(); //sotetseg
         GameObject chest4 = new GameObject(CHEST_32758, new Tile(3171, 4399, party.getHeight() + 1), 10, 5).spawn(); //xarpus
-        GameObject lootChest = new GameObject(MONUMENTAL_CHEST, new Tile(3233, 4319, party.getHeight()), 10, 0).spawn(); //loot chest
 
         party.objects.add(chest1);
         party.objects.add(chest2);
         party.objects.add(chest3);
         party.objects.add(chest4);
-        party.objects.add(lootChest);
     }
 }
