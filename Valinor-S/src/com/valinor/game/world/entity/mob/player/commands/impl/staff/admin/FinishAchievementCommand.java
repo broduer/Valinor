@@ -24,7 +24,7 @@ public class FinishAchievementCommand implements Command {
             return;
         }
         final String player2 = Utils.formatText(parts[1].replace("_", " "));
-        final String achievement = parts[2];
+        final String achievement = command.substring(command.lastIndexOf(parts[2]));
         Optional<Player> plr = World.getWorld().getPlayerByName(player2);
         if (plr.isPresent()) {
             Optional<Achievements> achievToComplete = Achievements.getByName(achievement);
