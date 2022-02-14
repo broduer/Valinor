@@ -125,7 +125,7 @@ public class BossKillLog {
         SKORPIOS("Skorpios",1, AttributeKey.SKORPIOS_KILLED, 0, STARTING_NAME_LINE + (6 * 56), CustomNpcIdentifiers.SKORPIOS),
         ARTIO("Artio",1, AttributeKey.ARTIO_KILLED, 0, STARTING_NAME_LINE + (6 * 57), CustomNpcIdentifiers.ARTIO),
         DEMONIC_GORILLA("Demonic gorillas", 2, AttributeKey.DEMONIC_GORILLAS_KILLED,0, STARTING_NAME_LINE + (6 * 58), NpcIdentifiers.DEMONIC_GORILLA, NpcIdentifiers.DEMONIC_GORILLA_7145, NpcIdentifiers.DEMONIC_GORILLA_7146, NpcIdentifiers.DEMONIC_GORILLA_7147, NpcIdentifiers.DEMONIC_GORILLA_7148, NpcIdentifiers.DEMONIC_GORILLA_7149),
-        THE_NIGHTMARE("The nightmare", 15, AttributeKey.THE_NIGHTMARE_KC,0, STARTING_NAME_LINE + (6 * 59), NpcIdentifiers.THE_NIGHTMARE_9430),
+        THE_NIGHTMARE("The nightmare", 15, AttributeKey.THE_NIGHTMARE_KC,0, STARTING_NAME_LINE + (6 * 59), NpcIdentifiers.THE_NIGHTMARE_9425, NpcIdentifiers.THE_NIGHTMARE_9426, NpcIdentifiers.THE_NIGHTMARE_9427, NpcIdentifiers.THE_NIGHTMARE_9428, NpcIdentifiers.THE_NIGHTMARE_9429, NpcIdentifiers.THE_NIGHTMARE_9430, NpcIdentifiers.THE_NIGHTMARE_9431, NpcIdentifiers.THE_NIGHTMARE_9432, NpcIdentifiers.THE_NIGHTMARE_9433),
         CORRUPTED_HUNLEFFS("Corrupted Hunleff", 15, AttributeKey.CORRUPTED_HUNLEFFS_KILLED,0, STARTING_NAME_LINE + (6 * 59), NpcIdentifiers.CORRUPTED_HUNLLEF, NpcIdentifiers.CORRUPTED_HUNLLEF_9036, NpcIdentifiers.CORRUPTED_HUNLLEF_9037),
         NEX("Nex", 25, AttributeKey.NEX_KC,0, STARTING_NAME_LINE + (6 * 60), NpcIdentifiers.NEX, NpcIdentifiers.NEX_11279, NpcIdentifiers.NEX_11280, NpcIdentifiers.NEX_11281, NpcIdentifiers.NEX_11282),
         ;

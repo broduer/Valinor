@@ -77,6 +77,8 @@ public class NpcDeath {
 
     public static void execute(Npc npc) {
         try {
+            boolean isNightmare = npc.def() != null && npc.def().name.equalsIgnoreCase("The Nightmare");
+
             // Path reset instantly when hitsplat appears killing the npc.
             var respawnTimer = Utils.secondsToTicks(45);// default 45 seconds
             NpcDefinition def = World.getWorld().definitions().get(NpcDefinition.class, npc.id());
@@ -135,7 +137,7 @@ public class NpcDeath {
 
                 // Increment kill.
                 killer.getSlayerKillLog().addKill(npc);
-                if (!npc.isWorldBoss() || npc.id() != THE_NIGHTMARE_9430 || npc.id() != KALPHITE_QUEEN_6500) {
+                if (!npc.isWorldBoss() || !isNightmare || npc.id() != KALPHITE_QUEEN_6500) {
                     killer.getBossKillLog().addKill(npc);
                 }
 
@@ -644,15 +646,16 @@ public class NpcDeath {
                         WorldBossEvent.getINSTANCE().bossDeath(npc);
                     }
 
-                    if(npc.id() == THE_NIGHTMARE_9430) {
+                    if(isNightmare) {
                         nightmareDrops(npc);
                     }
 
                     killer.getBossTimers().submit(npc.def().name, (int) killer.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), killer);
+                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare);
 
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //Drop loot, but the first form of KQ, Runite golem and world bosses do not drop anything.
-                    if (table != null && (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && npc.id() != THE_NIGHTMARE_9430)) {
+                    if (table != null && !ignoreDrops) {
                         if(!customDrops.contains(npc.id())) {
                             //Always drops such as bones
                             ItemDrops.dropAlwaysItems(killer, npc);
