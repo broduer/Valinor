@@ -36,6 +36,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.valinor.util.CustomItemIdentifiers.RUNE_POUCH_I;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -245,10 +246,12 @@ public class ItemsOnDeath {
         }
 
         // Rune pouch items are NOT in top-3 kept from prot item/unskulled. Always lost.
-        Item[] runePouch = player.getRunePouch().toNonNullArray(); // bypass check if carrying pouch since inv is cleared above
-        toDrop.addAll(Arrays.asList(runePouch));
-        player.getRunePouch().clear();
-        IKODTest.debug("rune pouch had now: " + Arrays.toString(Arrays.asList(runePouch).toArray()));
+        if (outputDeleted.stream().anyMatch(i -> i.getId() == RUNE_POUCH || i.getId() == RUNE_POUCH_I)) {
+            Item[] runePouch = player.getRunePouch().toNonNullArray(); // bypass check if carrying pouch since inv is cleared above
+            toDrop.addAll(Arrays.asList(runePouch));
+            player.getRunePouch().clear();
+            IKODTest.debug("rune pouch had now: " + Arrays.toString(Arrays.asList(runePouch).toArray()));
+        }
 
         if (player.hasPetOut("Niffler")) {
             //Get the current stored item list
