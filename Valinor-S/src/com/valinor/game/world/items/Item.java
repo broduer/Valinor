@@ -101,8 +101,16 @@ public class Item implements Cloneable {
             RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY,
             GRANITE_MAUL_24944, FAWKES_32937,
         };
+
         for (int i : tradeable_special_items) {
             World.getWorld().definitions().get(ItemDefinition.class, i).tradeable_special_items = true;
+        }
+
+        for(Item item : GameConstants.BANK_ITEMS) {
+            ItemDefinition unnoted = World.getWorld().definitions().get(ItemDefinition.class, item.unnote().getId());
+            unnoted.pvpSpawnable = true;
+            ItemDefinition noted = World.getWorld().definitions().get(ItemDefinition.class, item.note().getId());
+            noted.pvpSpawnable = true;
         }
     }
 

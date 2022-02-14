@@ -53,7 +53,7 @@ public class PetsMysteryBox extends Interaction {
             if(player.getUsername().equalsIgnoreCase("Box test")) {
                 return;
             }
-            String worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Pets mystery box</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>" + reward.name() + "</shad>!";
+            String worldMessage = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Pets mystery box</col>]</shad>:<col=AD800F> " + player.getUsername() + " received a <shad=0>" + reward.name() + "</shad>!";
             World.getWorld().sendWorldMessage(worldMessage);
         }
     }

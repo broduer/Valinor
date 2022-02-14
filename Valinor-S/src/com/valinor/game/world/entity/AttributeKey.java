@@ -453,7 +453,7 @@ public enum AttributeKey {
     MAC_ADDRESS("mac_address", AttribType.STRING),
 
     /**
-     * The entity which last attacked us.
+     * The entity which last attacked us. Set at time of attack. Not delayed/set when a hit finally appears
      */
     LAST_DAMAGER,
 

@@ -194,6 +194,11 @@ public class Teleports {
 
         player.clearInstance();
 
+        var raids = player.getRaids();
+        if(raids != null) {
+            raids.exit(player,true);
+        }
+
         //trigger checks
         var instancedArea = InstancedAreaManager.getSingleton().ofZ(player.getZ());
         if (instancedArea != null)

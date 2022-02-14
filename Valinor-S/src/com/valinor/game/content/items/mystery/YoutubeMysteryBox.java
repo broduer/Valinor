@@ -47,7 +47,7 @@ public class YoutubeMysteryBox extends Interaction {
                 player.message("x" + amt + " " + reward.unnote().name() + ".");
 
                 if (rare) {
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a youtube mystery box!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a youtube mystery box!");
                 }
                 Utils.sendDiscordInfoLog(player.getUsername() + " with IP " + player.getHostAddress() + " just opened a youtube mystery box and received x" + amt + " " + reward.unnote().name() + ".", "boxes_opened");
                 return true;

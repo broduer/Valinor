@@ -264,7 +264,7 @@ public class RuneConversion extends Interaction {
                 }
             }
 
-            World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " has unlocked the pet: <col="+Color.HOTPINK.getColorValue()+">" + new Item(guardian.item).name()+ "</col>.");
+            World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(player.getUsername()) + " has unlocked the pet: <col="+Color.HOTPINK.getColorValue()+">" + new Item(guardian.item).name()+ "</col>.");
         } else {
             player.message("You have a funny feeling like you would have been followed...");
         }

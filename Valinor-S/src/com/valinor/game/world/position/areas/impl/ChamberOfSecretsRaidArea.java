@@ -52,10 +52,6 @@ public class ChamberOfSecretsRaidArea extends Controller {
 
     @Override
     public boolean canTeleport(Player player) {
-        var raids = player.getRaids();
-        if(raids != null) {
-            raids.exit(player,true);
-        }
         return true;
     }
 

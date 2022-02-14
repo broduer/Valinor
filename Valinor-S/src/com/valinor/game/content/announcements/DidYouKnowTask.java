@@ -54,7 +54,7 @@ public class DidYouKnowTask extends Task {
         }
 
         List<String> messages = Arrays.asList(WordUtils.wrap(MESSAGES.get(position), 75).split("<br>"));
-        messages.set(0, "<img=505>[<col=" + Color.GREEN.getColorValue() + ">Did you know?</col>]: <col="+Color.PURPLE.getColorValue()+">" + messages.get(0) + (messages.size() > 1 ? "..." : "")); //Maroon and Purple are the best colours for this type of message
+        messages.set(0, "<img=452><shad=0>[<col=" + Color.RED.getColorValue() + ">Did you know?</col>]: <col="+Color.PURPLE.getColorValue()+">" + messages.get(0) + (messages.size() > 1 ? "..." : "")); //Maroon and Purple are the best colours for this type of message
 
         for (Player player : World.getWorld().getPlayers()) {
             if (player != null) {

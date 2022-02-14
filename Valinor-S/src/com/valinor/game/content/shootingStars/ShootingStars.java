@@ -102,7 +102,7 @@ public class ShootingStars {
             SHOOTING_STAR_REMOVED = true;
             if (success) {
                 String successMessage = "The Shooting star has been completely mined!";
-                World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + successMessage);
+                World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + successMessage);
             }
         }
     }
@@ -131,7 +131,7 @@ public class ShootingStars {
                 ACTIVE = star;
                 SHOOTING_STAR_REMOVED = false;
                 String eventMessage = "There's been a sighting of a star around " + getLocation() + "!";
-                World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + eventMessage);
+                World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + eventMessage);
                 addStar();
 
                 last = LocalDateTime.now();

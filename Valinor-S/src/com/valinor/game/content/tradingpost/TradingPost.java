@@ -693,7 +693,7 @@ public class TradingPost {
 
             boolean illegalItem = false;
 
-            if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == offerItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+            if(offerItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
                 illegalItem = true;
             }
 

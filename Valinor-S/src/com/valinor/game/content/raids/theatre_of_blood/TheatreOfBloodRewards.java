@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.theatre_of_blood;
 
+import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.npc.pets.Pet;
@@ -10,6 +11,8 @@ import com.valinor.game.world.items.loot.LootItem;
 import com.valinor.game.world.items.loot.LootTable;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
+
+import java.util.List;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.TOB_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
@@ -42,10 +45,21 @@ public class TheatreOfBloodRewards {
             }
 
             Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a: " + new Item(Pet.LIL_ZIK.item).name() + ".", "yell_item_drop");
-            World.getWorld().sendWorldMessage("<img=1081>" + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.LIL_ZIK.item).name() + "</col>.");
+            World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(player.getUsername()) + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.LIL_ZIK.item).name() + "</col>.");
         } else {
             player.message("You have a funny feeling like you would have been followed...");
         }
+    }
+
+    public static boolean containsRare(Player partyMember) {
+        for (Item item : partyMember.getRaidRewards().getItems()) {
+            if (item == null)
+                continue;
+            if (TOBUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void withdrawReward(Player player) {
@@ -54,7 +68,7 @@ public class TheatreOfBloodRewards {
             if (item == null)
                 continue;
             if (TOBUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                String worldMessage = "<img=452><shad=0>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Theatre of blood</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (TOB)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }
@@ -97,8 +111,8 @@ public class TheatreOfBloodRewards {
         .addTable(1,
             new LootItem(AVERNIC_DEFENDER_HILT, 1, 6),
             new LootItem(JUSTICIAR_FACEGUARD, 1, 5),
-            new LootItem(JUSTICIAR_CHESTGUARD, 1,4),
-            new LootItem(JUSTICIAR_LEGGUARDS, 1,4),
+            new LootItem(JUSTICIAR_CHESTGUARD, 1, 4),
+            new LootItem(JUSTICIAR_LEGGUARDS, 1, 4),
             new LootItem(SANGUINESTI_STAFF, 1, 3),
             new LootItem(GHRAZI_RAPIER, 1, 3),
             new LootItem(SCYTHE_OF_VITUR, 1, 2),
@@ -148,12 +162,12 @@ public class TheatreOfBloodRewards {
             return;
         }
 
-        if (personalPoints > 180_000) {
+        if (personalPoints > 180_000 && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             personalPoints = 180_000;
         }
 
         double chance = (float) personalPoints / 100 / 100.0;
-        //System.out.println(chance);
+        //System.out.println("chance: "+chance);
         Player rare = null;
         if (Utils.percentageChance((int) chance)) {
             Item item = rollUnique().copy();

@@ -47,7 +47,7 @@ public class Rewards {
             if (reward != null) {
                 player.clueScrollReward().add(new Item(reward.reward, reward.reward.getAmount()), true);
                 if (reward.rare && !player.getUsername().equalsIgnoreCase("Box test"))
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " has just received <col=" + Color.HOTPINK.getColorValue() + ">" + Utils.getAOrAn(reward.reward.name()) + " " + reward.reward.name() + " <col=0052cc>from an treasure casket!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " has just received <col=" + Color.HOTPINK.getColorValue() + ">" + Utils.getAOrAn(reward.reward.name()) + " " + reward.reward.name() + " <col=0052cc>from an treasure casket!");
             }
         }
     }

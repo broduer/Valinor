@@ -136,7 +136,7 @@ public class BoltFletching extends Interaction {
 
             @Override
             public void execute() {
-                if (!player.inventory().contains(new Item(bolt.id)) || !player.inventory().contains(bolt.tip)) {
+                if (!player.inventory().contains(new Item(bolt.id,10)) || !player.inventory().contains(bolt.tip,10)) {
                     stop();
                     return;
                 }

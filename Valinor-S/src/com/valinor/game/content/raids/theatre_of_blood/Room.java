@@ -10,10 +10,16 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.object.GameObject;
+import com.valinor.game.world.object.MapObjects;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.Color;
 import com.valinor.util.ObjectIdentifiers;
 
+import java.util.Optional;
+
+import static com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood.CHESTS;
+import static com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood.spawnLootChests;
 import static com.valinor.game.world.position.AreaConstants.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.VERZIK_VITUR_8369;
@@ -141,6 +147,7 @@ public class Room extends Interaction {
 
             if(object.getId() == TREASURE_ROOM) {
                 player.teleport(3237, 4307, party.getHeight());
+                spawnLootChests(player);
                 return true;
             }
 
@@ -157,13 +164,35 @@ public class Room extends Interaction {
                 return true;
             }
 
-            if(object.getId() == MONUMENTAL_CHEST) {
+            if(object.getId() == MONUMENTAL_CHEST || object.getId() == MONUMENTAL_CHEST_32991) {
+                int index = party.getMembers().indexOf(player);
+                if (index == -1) {
+                    player.message(Color.RED.wrap("There was an issue setting up your chest."));
+                    return true;
+                }
+
+                Tile clicked = object.tile();
+                Tile actual = CHESTS[index].tile().transform(0,0, party.getHeight());
+
+                if (!clicked.equals(actual)) {
+                    player.message("You can't loot that chest.");
+                    return true;
+                }
+
                 if (player.getRaidRewards().isEmpty()) {
                     player.message(Color.RED.wrap("You have already looted the chest, or your points are below 10,000."));
                     return true;
                 }
+
+                GameObject replaced = object.withId(MONUMENTAL_CHEST_32994).spawn();
+                party.objects.add(replaced);
+                player.getPacketSender().sendEntityHintRemoval(true);
                 TheatreOfBloodRewards.displayRewards(player);
                 TheatreOfBloodRewards.withdrawReward(player);
+                return true;
+            }
+            if(object.getId() == MONUMENTAL_CHEST_32994) {
+                player.message("This chest has already been looted.");
                 return true;
             }
         }

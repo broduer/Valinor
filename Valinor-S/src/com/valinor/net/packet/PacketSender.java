@@ -839,16 +839,17 @@ public final class PacketSender {
     /**
      * Sends a hint to specified position.
      *
-     * @param tile     The position to create the hint.
-     * @param tilePosition The position on the square (middle = 2; west = 3; east = 4; south = 5; north = 6)
+     * @param tile     The tile to create the hint.
+     * @param hintHeight The height of the hint.
+     * @param tilePosition The tile on the square (middle = 2; west = 3; east = 4; south = 5; north = 6)
      * @return The Packet Sender instance.
      */
-    public PacketSender sendPositionalHint(Tile tile, int tilePosition) {
+    public PacketSender sendPositionalHint(Tile tile, int hintHeight, int tilePosition) {
         PacketBuilder out = new PacketBuilder(254);
         out.put(tilePosition);
         out.putShort(tile.getX());
         out.putShort(tile.getY());
-        out.put(tile.getLevel());
+        out.put(hintHeight);
         player.getSession().write(out);
         return this;
     }
@@ -889,6 +890,13 @@ public final class PacketSender {
 
         // Tell client to prioritize the target.
         player.message("prioritizetarget:-1");
+        return this;
+    }
+
+    public PacketSender sendSinglePlusIcon(int value) {
+        PacketBuilder out = new PacketBuilder(59);
+        out.put(value);
+        player.getSession().write(out);
         return this;
     }
 

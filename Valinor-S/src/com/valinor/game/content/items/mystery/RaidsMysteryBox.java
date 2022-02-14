@@ -84,7 +84,7 @@ public class RaidsMysteryBox extends Interaction {
                     }
 
                     if(rare) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a raids mystery box!");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a raids mystery box!");
                     }
                     player.inventory().addOrBank(reward);
                     rare = false;

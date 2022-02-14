@@ -43,6 +43,8 @@ public class GameServer {
      */
     private static volatile boolean isUpdating;
 
+    public static boolean yellEnabled = true;
+
     /**
      * The flooder used to stress-test the server.
      */

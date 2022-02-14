@@ -1,5 +1,6 @@
 package com.valinor.game.content.raids.chamber_of_secrets;
 
+import com.google.common.collect.Lists;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
@@ -76,7 +77,7 @@ public class ChamberOfSecrets extends Raids {
             //Last player in the party leaves clear the whole thing
             if(party.getMembers().size() == 0) {
                 //Clear all party members that are left
-                party.getMembers().clear();
+                Lists.newArrayList(party.getMembers()).forEach(party.getMembers()::remove);
                 clearParty(player);
             }
             player.raidsParty = null;

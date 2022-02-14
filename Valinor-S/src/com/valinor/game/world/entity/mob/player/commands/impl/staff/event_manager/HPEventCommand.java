@@ -24,8 +24,8 @@ public class HPEventCommand implements Command {
 
         player.skills().hpEventLevel(10_000);
         player.putAttrib(AttributeKey.HP_EVENT_ACTIVE,true);
-        World.getWorld().sendWorldMessage("<img=1081> "+ Color.PURPLE.wrap(player.getUsername())+" "+Color.RED.wrap("is starting a HP Event at "+msg));
-        World.getWorld().sendBroadcast("<img=1081> "+ Utils.capitalizeFirst(player.getUsername())+" is starting a HP Event at "+msg);
+        World.getWorld().sendWorldMessage("<img=452><shad=0> "+ Color.PURPLE.wrap(player.getUsername())+" "+Color.RED.wrap("is starting a HP Event at "+msg));
+        World.getWorld().sendBroadcast("<img=452> "+ Utils.capitalizeFirst(player.getUsername())+" is starting a HP Event at "+msg);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.valinor.fs;
 
 import com.valinor.game.GameConstants;
+import com.valinor.game.world.definition.loader.ProtectionValue;
 import com.valinor.game.world.items.Item;
 import com.valinor.io.RSBuffer;
 import com.valinor.util.ItemIdentifiers;
@@ -76,6 +77,7 @@ public class ItemDefinition implements Definition {
     public boolean tradeable_special_items;
     public boolean changes;
     public boolean autoKeptOnDeath;
+    public ProtectionValue protectionValue;
     public boolean pvpSpawnable;
 
     public ItemDefinition(int id, byte[] data) {
@@ -123,6 +125,12 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == KQ_HEAD || id == ABYSSAL_HEAD || id == DARK_CLAW || id == TWISTED_HORNS || id == KBD_HEADS || id == ALCHEMICAL_HYDRA_HEAD) {
+            grandexchange = true;
+        } else if (id == PVP_MYSTERY_BOX) {
+            name = "PvP mystery box";
+            grandexchange = true;
+            stackable = true;
         } else if (id == YOUTUBE_MYSTERY_BOX) {
             name = "Youtube mystery box";
             grandexchange = true;
@@ -152,8 +160,9 @@ public class ItemDefinition implements Definition {
             name = "Platinum mystery box";
             grandexchange = true;
             cost = 40_000;
-        } else if (id == FAWKES) {
+        } else if (id == FAWKES_32937) {
             name = "Fawkes";
+            grandexchange = false;
         } else if (id == WINTER_CASKET) {
             name = "Winter casket";
         } else if (id == ICE_IMP) {
@@ -1110,6 +1119,7 @@ public class ItemDefinition implements Definition {
         if (id == 6808) {
             name = "Scroll of Imbuement";
         }
+        protectionValue = new ProtectionValue();
     }
 
     public int highAlchValue() {

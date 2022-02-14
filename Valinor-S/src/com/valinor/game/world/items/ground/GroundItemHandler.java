@@ -223,12 +223,7 @@ public final class GroundItemHandler {
             return false;
         }
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
-            && player != null && player.gameMode() != GameMode.INSTANT_PKER) {
-            return false;
-        }
-
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == item.getItem().unnote().getId())
+        if(item.getItem().definition(World.getWorld()).pvpSpawnable
             && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
             player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
             return false;
@@ -310,7 +305,7 @@ public final class GroundItemHandler {
             //System.out.println("different_owner "+different_owner+" groundItemPked "+groundItemPked);
 
             // Ironman checks (if it's not a respawning item)
-            if (player.gameMode() != GameMode.NONE) {
+            if (player.gameMode() != GameMode.NONE && player.gameMode() != GameMode.INSTANT_PKER) {
                 if (different_owner && !groundItemPked) { // Owner different? It could be pked!
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");
                     return;

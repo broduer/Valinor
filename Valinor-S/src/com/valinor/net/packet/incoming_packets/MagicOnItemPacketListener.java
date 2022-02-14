@@ -2,6 +2,7 @@ package com.valinor.net.packet.incoming_packets;
 
 import com.valinor.GameServer;
 import com.valinor.game.GameConstants;
+import com.valinor.game.content.skill.impl.magic.EnchantDragonBolts;
 import com.valinor.game.content.skill.impl.magic.JewelleryEnchantment;
 import com.valinor.game.content.skill.impl.smithing.Bar;
 import com.valinor.game.world.World;
@@ -10,10 +11,7 @@ import com.valinor.game.world.entity.combat.magic.MagicClickSpells;
 import com.valinor.game.world.entity.combat.magic.Spell;
 import com.valinor.game.world.entity.combat.magic.lunar.BakePie;
 import com.valinor.game.world.entity.combat.magic.lunar.SuperglassMake;
-import com.valinor.game.world.entity.mob.player.EquipSlot;
-import com.valinor.game.world.entity.mob.player.MagicSpellbook;
-import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.entity.mob.player.Skills;
+import com.valinor.game.world.entity.mob.player.*;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.items.RequiredItem;
 import com.valinor.game.world.items.ground.GroundItem;
@@ -81,6 +79,8 @@ public class MagicOnItemPacketListener implements PacketListener {
                 final MagicClickSpells.MagicSpells magicSpell2 = magicSpell.get();
                 final Spell spell = magicSpell2.getSpell();
                 final int itemValue = item.definition(World.getWorld()).highAlchValue();
+                boolean illegalItem = false;
+                Item finalItem = item;
 
                 switch (magicSpell2) {
                     case SUPERGLASS_MAKE:
@@ -143,6 +143,12 @@ public class MagicOnItemPacketListener implements PacketListener {
                     case ENCHANT_ZENYTE:
                     case ENCHANT_DRAGONSTONE:
                     case ENCHANT_RUBY_TOPAZ:
+                        Optional<EnchantDragonBolts.DragonBolts> dragonBolts = EnchantDragonBolts.DragonBolts.forId(itemId);
+                        if(dragonBolts.isPresent()) {
+                            EnchantDragonBolts.enchant(player, dragonBolts.get());
+                            return;
+                        }
+
                         if (JewelleryEnchantment.check(player, itemId, spellId)) {
                             if (!spell.canCast(player, null, spell.deleteRunes())) {
                                 return;
@@ -152,6 +158,14 @@ public class MagicOnItemPacketListener implements PacketListener {
                         break;
                     case LOW_ALCHEMY:
                         if (!item.rawtradable() || item.getId() == COINS_995) {
+                            illegalItem = true;
+                        }
+
+                        if(finalItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+                            illegalItem = true;
+                        }
+
+                        if(illegalItem) {
                             player.message("You can't alch that item.");
                             return;
                         }
@@ -174,7 +188,16 @@ public class MagicOnItemPacketListener implements PacketListener {
                         player.inventory().add(COINS_995, coinAmountToGive);
                         break;
                     case HIGH_ALCHEMY:
+
                         if (!item.rawtradable() || item.getId() == COINS_995) {
+                            illegalItem = true;
+                        }
+
+                        if(finalItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+                            illegalItem = true;
+                        }
+
+                        if(illegalItem) {
                             player.message("You can't alch that item.");
                             return;
                         }

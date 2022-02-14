@@ -59,7 +59,7 @@ public class SpawnPetCommand implements Command {
                             }
                         }
 
-                        World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + plr.get().getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=844e0d>" + plr.get().getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
                         Utils.sendDiscordInfoLog("Player " + plr.get().getUsername() + " has received a: " + new Item(pet.get().item).name() + ".", "yell_item_drop");
                     }
                     pet.ifPresent(value -> BOSSES.log(plr.get(), boss, new Item(value.item)));

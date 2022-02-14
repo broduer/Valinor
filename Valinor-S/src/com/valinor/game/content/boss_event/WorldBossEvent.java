@@ -158,7 +158,7 @@ public class WorldBossEvent {
 
         //Dissmiss broadcast when boss has been killed.
         World.getWorld().clearBroadcast();
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1081> " + activeEvent.description + " has been killed. It will respawn shortly.");
+        World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + activeEvent.description + " has been killed. It will respawn shortly.");
     }
 
     public LocalDateTime last = LocalDateTime.now().minus((long) (BOSS_EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);

@@ -581,114 +581,114 @@ public class CombatFactory {
     /**
      * Checks if an entity can attack a target.
      *
-     * @param entity The entity which wants to attack.
-     * @param other  The victim.
+     * @param attacker The entity which wants to attack.
+     * @param target  The victim.
      * @return True if attacker has the requirements to attack, otherwise false.
      */
-    public static boolean canAttack(Mob entity, Mob other) {
-        Debugs.CMB.debug(entity, "enter can attack", other, true);
+    public static boolean canAttack(Mob attacker, Mob target) { // mind if we rename args make it a bit easier? sure go ahead
+        Debugs.CMB.debug(attacker, "enter can attack", target, true);
 
-        if (entity == null || other == null) {
-            Debugs.CMB.debug(entity, "attacker or target null", other, true);
+        if (attacker == null || target == null) {
+            Debugs.CMB.debug(attacker, "attacker or target null", target, true);
             return false;
         }
 
-        if (entity.dead() || other.dead()) {
-            Debugs.CMB.debug(entity, "ded", other, true);
+        if (attacker.dead() || target.dead()) {
+            Debugs.CMB.debug(attacker, "ded", target, true);
             return false;
         }
 
-        if(entity.isPlayer() && other.isNpc()) {
-            Player player = entity.getAsPlayer();
+        if(attacker.isPlayer() && target.isNpc()) {
+            Player player = attacker.getAsPlayer();
             if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
                 return false;
             }
         }
 
-        if(entity.isNpc() && other.isPlayer()) {
-            Player player = other.getAsPlayer();
+        if(attacker.isNpc() && target.isPlayer()) {
+            Player player = target.getAsPlayer();
             if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
                 return false;
             }
         }
 
-        if (entity.getIndex() == -1 || other.getIndex() == -1) { // Target logged off.
-            Debugs.CMB.debug(entity, "attacker or target logged off", other, true);
+        if (attacker.getIndex() == -1 || target.getIndex() == -1) { // Target logged off.
+            Debugs.CMB.debug(attacker, "attacker or target logged off", target, true);
             return false;
         }
 
-        if (other instanceof Npc && ((Npc) other).cantInteract()) {
-            Debugs.CMB.debug(entity, "cant interact", other, true);
+        if (target instanceof Npc && ((Npc) target).cantInteract()) {
+            Debugs.CMB.debug(attacker, "cant interact", target, true);
             return false;
         }
 
-        if (entity.stunned()) {
+        if (attacker.stunned()) {
             // Calling stun interrupts combat, but this will force stop it too.
-            Debugs.CMB.debug(entity, "cant attack stunned", other, true);
+            Debugs.CMB.debug(attacker, "cant attack stunned", target, true);
             return false;
         }
 
-        if(entity.locked()) {
-            Debugs.CMB.debug(entity, "cant attack locked", other, true);
+        if(attacker.locked()) {
+            Debugs.CMB.debug(attacker, "cant attack locked", target, true);
             return false;
         }
 
-        if (other.tile().level != entity.tile().level) {
-            Debugs.CMB.debug(entity, "cant attack not on the same height level", other, true);
+        if (target.tile().level != attacker.tile().level) {
+            Debugs.CMB.debug(attacker, "cant attack not on the same height level", target, true);
             return false;
         }
 
-        if(entity.isNpc()) {
-            Npc npc = entity.getAsNpc();
+        if(attacker.isNpc()) {
+            Npc npc = attacker.getAsNpc();
             if(!npc.canAttack()) {
-                Debugs.CMB.debug(entity, "cant attack attribute is false", other, true);
+                Debugs.CMB.debug(attacker, "cant attack attribute is false", target, true);
                 return false;
             }
         }
 
-        if (!MemberZone.canAttack(entity, other)) {
-            Debugs.CMB.debug(entity, "cant attack member zone npc", other, true);
+        if (!MemberZone.canAttack(attacker, target)) {
+            Debugs.CMB.debug(attacker, "cant attack member zone npc", target, true);
             return false;
         }
 
-        if (!TournamentManager.canAttack(entity, other)) {
-            Debugs.CMB.debug(entity, "cant attack tourny", other, true);
+        if (!TournamentManager.canAttack(attacker, target)) {
+            Debugs.CMB.debug(attacker, "cant attack tourny", target, true);
             return false;
         }
 
-        if (entity.isNpc() && entity.getAsNpc().def().gwdRoomNpc && !CombatFactory.bothInFixedRoom(entity, other)) {
-            Debugs.CMB.debug(entity, "not in same room", other, true);
+        if (attacker.isNpc() && attacker.getAsNpc().def().gwdRoomNpc && !CombatFactory.bothInFixedRoom(attacker, target)) {
+            Debugs.CMB.debug(attacker, "not in same room", target, true);
             return false;
         }
 
         // Check if we can attack in this area
-        if (!ControllerManager.canAttack(entity, other)) {
-            Debugs.CMB.debug(entity, "You can't attack that player.", other, true);
-            entity.getMovementQueue().reset();
+        if (!ControllerManager.canAttack(attacker, target)) {
+            Debugs.CMB.debug(attacker, "You can't attack that player.", target, true);
+            attacker.getMovementQueue().reset();
             return false;
         }
 
-        if (other.isNpc()) {
-            var npc = other.getAsNpc();
-            if (npc.hidden() || (entity.isPlayer() && npc.id() == 7707) || npc.locked() && npc.id() != 5886 && npc.id() != 2668 && !npc.def().name.toLowerCase().contains("totem")) {
-                Debugs.CMB.debug(entity, "cant attack idk what this is hidden=" + npc.hidden()+" locked:"+npc.locked(), other, true);
+        if (target.isNpc()) {
+            var npc = target.getAsNpc();
+            if (npc.hidden() || (attacker.isPlayer() && npc.id() == 7707) || npc.locked() && npc.id() != 5886 && npc.id() != 2668 && !npc.def().name.toLowerCase().contains("totem")) {
+                Debugs.CMB.debug(attacker, "cant attack idk what this is hidden=" + npc.hidden()+" locked:"+npc.locked(), target, true);
                 return false;
             }
 
-            if (npc.id() == KILLER && entity.isPlayer()) {
-                var player = entity.getAsPlayer();
+            if (npc.id() == KILLER && attacker.isPlayer()) {
+                var player = attacker.getAsPlayer();
                 if (!player.getEquipment().hasAt(EquipSlot.WEAPON, KILLERS_KNIFE_21059)) {
                     player.message(Color.RED.wrap("You can only kill these killers with a Killer's knife."));
                     return false;
                 }
             }
 
-            if (entity.isPlayer() && other.isNpc()) {
-                var player = entity.getAsPlayer();
+            if (attacker.isPlayer() && target.isNpc()) {
+                var player = attacker.getAsPlayer();
                 Party party = player.raidsParty;
-                var melee = entity.getCombat().combatType() == CombatType.MELEE;
-                var magic = entity.getCombat().combatType() == CombatType.MAGIC;
-                var range = entity.getCombat().combatType() == CombatType.RANGED;
+                var melee = attacker.getCombat().combatType() == CombatType.MELEE;
+                var magic = attacker.getCombat().combatType() == CombatType.MAGIC;
+                var range = attacker.getCombat().combatType() == CombatType.RANGED;
                 if (party != null) {
                     if (npc.id() == LORD_VOLDEMORT) {
                         boolean canDamageVoldy = player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS) || player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND);
@@ -698,14 +698,14 @@ public class CombatFactory {
                         }
                     }
 
-                    if (party.getLeftHandNpc() != null && other.getAsNpc().id() == party.getLeftHandNpc().id() && !melee) {
-                        entity.message(Color.RED.wrap("You can only fight this claw with melee."));
+                    if (party.getLeftHandNpc() != null && target.getAsNpc().id() == party.getLeftHandNpc().id() && !melee) {
+                        attacker.message(Color.RED.wrap("You can only fight this claw with melee."));
                         return false;
-                    } else if (party.getRightHandNpc() != null && other.getAsNpc().id() == party.getRightHandNpc().id() && !magic) {
-                        entity.message(Color.RED.wrap("You can only fight this claw with magic."));
+                    } else if (party.getRightHandNpc() != null && target.getAsNpc().id() == party.getRightHandNpc().id() && !magic) {
+                        attacker.message(Color.RED.wrap("You can only fight this claw with magic."));
                         return false;
-                    } else if (party.getGreatOlmNpc() != null && other.getAsNpc().id() == party.getGreatOlmNpc().id() && !range) {
-                        entity.message(Color.RED.wrap("You can only fight the Olm with range."));
+                    } else if (party.getGreatOlmNpc() != null && target.getAsNpc().id() == party.getGreatOlmNpc().id() && !range) {
+                        attacker.message(Color.RED.wrap("You can only fight the Olm with range."));
                         return false;
                     }
                 }
@@ -713,8 +713,8 @@ public class CombatFactory {
                 if (npc.id() == 7555) {
                     if (party != null) {
                         if (!party.isCanAttackLeftHand()) {
-                            entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
-                            Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
+                            attacker.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
+                            Debugs.CMB.debug(attacker, "You can't attack it's left claw, kill the right claw first!", target, true);
                             return false;
                         }
                     }
@@ -723,16 +723,16 @@ public class CombatFactory {
                 if (npc.id() == 7554) {
                     if (party != null) {
                         if (!party.isLeftHandDead()) {
-                            entity.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
-                            Debugs.CMB.debug(entity, "You can't attack it's left claw, kill the right claw first!", other, true);
+                            attacker.message(Color.RED.wrap("You can't attack it's left claw, kill the right claw first!"));
+                            Debugs.CMB.debug(attacker, "You can't attack it's left claw, kill the right claw first!", target, true);
                             return false;
                         }
                     }
                 }
 
                 if(npc.def().name != null && npc.def().name.equalsIgnoreCase("Battle mage") && !magic) {
-                    entity.message(Color.RED.wrap("You can only use magic inside the arena!"));
-                    Debugs.CMB.debug(entity, "You can only use magic inside the arena!", other, true);
+                    attacker.message(Color.RED.wrap("You can only use magic inside the arena!"));
+                    Debugs.CMB.debug(attacker, "You can only use magic inside the arena!", target, true);
                     return false;
                 }
             }
@@ -743,25 +743,25 @@ public class CombatFactory {
 
         var wep = -1;
 
-        if (entity.isPlayer()) {
-            Player player = entity.getAsPlayer();
-            if(other.isPlayer()) {
-                if (WildernessArea.isAtWildernessLimitForMac(entity.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+        if (attacker.isPlayer()) {
+            Player player = attacker.getAsPlayer();
+            if(target.isPlayer()) {
+                if (WildernessArea.isAtWildernessLimitForMac(attacker.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You are double logging and cannot attack other players.");
                     return false;
                 }
 
-                if (entity.getAsPlayer().gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
-                    player.message("You cannot attack "+entity.getAsPlayer().getUsername()+" they are playing as an Instant Pker.");
+                if (attacker.getAsPlayer().gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
+                    player.message("You cannot attack "+ attacker.getAsPlayer().getUsername()+" they are playing as an Instant Pker.");
                     return false;
                 }
             }
 
-            wep = (entity.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON) != null ? (entity.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON).getId() : -1;
+            wep = (attacker.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON) != null ? (attacker.getAsPlayer()).getEquipment().get(EquipSlot.WEAPON).getId() : -1;
 
             // Check if we're using a special attack..
-            if (entity.isSpecialActivated() && entity.getAsPlayer().getCombatSpecial() != null) {
-                if (entity.isPlayer()) {
+            if (attacker.isSpecialActivated() && attacker.getAsPlayer().getCombatSpecial() != null) {
+                if (attacker.isPlayer()) {
                     if (player.hasPetOut("Baby Abyssal Demon") && player.getCombatSpecial() == CombatSpecial.DRAGON_DAGGER) {
                         player.getCombatSpecial().setDrainAmount(20);
                     } else if (player.getCombatSpecial() == CombatSpecial.DRAGON_DAGGER) {
@@ -771,27 +771,27 @@ public class CombatFactory {
                 // Check if we have enough special attack percentage.
                 // If not, reset special attack.
                 double vigour = 0;
-                if (entity.isPlayer() && entity.getAsPlayer().getEquipment().hasAt(EquipSlot.RING, RING_OF_VIGOUR)) {
-                    vigour += entity.getSpecialAttackPercentage() * 0.1;
+                if (attacker.isPlayer() && attacker.getAsPlayer().getEquipment().hasAt(EquipSlot.RING, RING_OF_VIGOUR)) {
+                    vigour += attacker.getSpecialAttackPercentage() * 0.1;
                 }
 
-                int specPercentage = (int) (entity.getSpecialAttackPercentage() + vigour);
+                int specPercentage = (int) (attacker.getSpecialAttackPercentage() + vigour);
 
                 //Make sure the player has enough special attack
-                if (specPercentage < entity.getAsPlayer().getCombatSpecial().getDrainAmount()) {
-                    entity.message("You do not have enough special attack energy left!");
-                    entity.setSpecialActivated(false);
-                    CombatSpecial.updateBar(entity.getAsPlayer());
+                if (specPercentage < attacker.getAsPlayer().getCombatSpecial().getDrainAmount()) {
+                    attacker.message("You do not have enough special attack energy left!");
+                    attacker.setSpecialActivated(false);
+                    CombatSpecial.updateBar(attacker.getAsPlayer());
                     return false;
                 }
             }
         }
 
-        if (other.isPlayer()) {
+        if (target.isPlayer()) {
             // Can't attack invis
-            var them = other.getAsPlayer();
+            var them = target.getAsPlayer();
             if (them.looks().hidden()) {
-                Debugs.CMB.debug(entity, "cant attack invisible target", other, true);
+                Debugs.CMB.debug(attacker, "cant attack invisible target", target, true);
                 return false;
             }
 
@@ -799,50 +799,50 @@ public class CombatFactory {
             // Which gives a messages in those other places.
             // This check if for multi-target attacks like barrage/burst/chins where extra targets have to be checked
             // For combat validity.
-            if (entity.isPlayer() && !WildernessArea.inAttackableArea(them)) {
-                Debugs.CMB.debug(entity, "cant attack not in an attackable area", other, true);
+            if (attacker.isPlayer() && !WildernessArea.inAttackableArea(them)) {
+                Debugs.CMB.debug(attacker, "cant attack not in an attackable area", target, true);
                 return false;
             }
 
             // Kraken attacking Players.
-            if (entity.isNpc()) {
-                if ((entity.getAsNpc()).id() == KrakenBoss.KRAKEN_NPCID || (entity.getAsNpc()).id() == KrakenBoss.TENTACLE_NPCID || (entity.getAsNpc()).id() == KrakenBoss.TENTACLE_NPCID || (entity.getAsNpc()).id() == TENTACLE_WHIRLPOOL) {
+            if (attacker.isNpc()) {
+                if ((attacker.getAsNpc()).id() == KrakenBoss.KRAKEN_NPCID || (attacker.getAsNpc()).id() == KrakenBoss.TENTACLE_NPCID || (attacker.getAsNpc()).id() == KrakenBoss.TENTACLE_NPCID || (attacker.getAsNpc()).id() == TENTACLE_WHIRLPOOL) {
                     return true;
                 }
             }
-        } else if (other.isNpc()) {
-            if ((other.getAsNpc()).combatInfo() == null) {
-                entity.message("Without combat attributes this monster is unattackable.");
+        } else if (target.isNpc()) {
+            if ((target.getAsNpc()).combatInfo() == null) {
+                attacker.message("Without combat attributes this monster is unattackable.");
                 return false;
-            } else if ((other.getAsNpc()).combatInfo().unattackable) {
-                entity.message("You cannot attack this monster.");
+            } else if ((target.getAsNpc()).combatInfo().unattackable) {
+                attacker.message("You cannot attack this monster.");
                 return false;
             }
         }
 
         // The last time our target was attacked
-        var targetLastAttackedTime = System.currentTimeMillis() - other.<Long>getAttribOr(AttributeKey.LAST_WAS_ATTACKED_TIME, 0L);
+        var targetLastAttackedTime = System.currentTimeMillis() - target.<Long>getAttribOr(AttributeKey.LAST_WAS_ATTACKED_TIME, 0L);
 
-        if (entity.isPlayer() && other.isNpc()) {
-            var oppNpc = other.getAsNpc();
+        if (attacker.isPlayer() && target.isNpc()) {
+            var oppNpc = target.getAsNpc();
             if (oppNpc.combatInfo() != null) {
-                var noRequirementNeeded = entity.getAsPlayer().getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NO_SLAYER_REQ);
+                var noRequirementNeeded = attacker.getAsPlayer().getSlayerRewards().getUnlocks().containsKey(SlayerConstants.NO_SLAYER_REQ);
                 var slayerReq = Math.max(SlayerCreature.slayerReq(oppNpc.id()), oppNpc.combatInfo().slayerlvl);
-                if (!noRequirementNeeded && slayerReq > (entity.getAsPlayer()).skills().level(Skills.SLAYER)) {
-                    entity.message("You need a slayer level of " + slayerReq + " to harm this NPC.");
+                if (!noRequirementNeeded && slayerReq > (attacker.getAsPlayer()).skills().level(Skills.SLAYER)) {
+                    attacker.message("You need a slayer level of " + slayerReq + " to harm this NPC.");
                     return false;
                 }
             }
 
             if (wep == 10501) {
-                entity.message("You can only pelt other players with a snowball.");
+                attacker.message("You can only pelt other players with a snowball.");
                 return false;
             }
 
             // The kraken boss already has a focus. Multi doesn't matter now.
             if (oppNpc.id() == KRAKEN_WHIRLPOOL && oppNpc.transmog() == KrakenBoss.KRAKEN_NPCID) {
-                if (other.<WeakReference<Mob>>getAttribOr(AttributeKey.TARGET, new WeakReference(null)).get() != entity && targetLastAttackedTime < 10000L) {
-                    entity.message("The Kraken already has a target.");
+                if (target.<WeakReference<Mob>>getAttribOr(AttributeKey.TARGET, new WeakReference(null)).get() != attacker && targetLastAttackedTime < 10000L) {
+                    attacker.message("The Kraken already has a target.");
                     return false;
                 }
             }
@@ -850,16 +850,16 @@ public class CombatFactory {
         }
 
         // Last person to hit our target.
-        var targetLastAttacker = other.<Mob>getAttrib(AttributeKey.LAST_DAMAGER);
+        var targetLastAttacker = target.<Mob>getAttrib(AttributeKey.LAST_DAMAGER);
 
         // Last time we were attacked
-        var myLastAttackedTime = System.currentTimeMillis() - entity.<Long>getAttribOr(AttributeKey.LAST_WAS_ATTACKED_TIME, 0L);
+        var myLastAttackedTime = System.currentTimeMillis() - attacker.<Long>getAttribOr(AttributeKey.LAST_WAS_ATTACKED_TIME, 0L);
 
         // Last person to hit us.
-        var myLastAttacker = entity.<Mob>getAttrib(AttributeKey.LAST_DAMAGER);
+        var myLastAttacker = attacker.<Mob>getAttrib(AttributeKey.LAST_DAMAGER);
 
-        var me_edgepk = GameServer.properties().edgeDitch10secondPjTimerEnabled && WildernessArea.inside_extended_pj_timer_zone(entity.tile());
-        var targ_edgepk = GameServer.properties().edgeDitch10secondPjTimerEnabled && WildernessArea.inside_extended_pj_timer_zone(other.tile());
+        var me_edgepk = GameServer.properties().edgeDitch10secondPjTimerEnabled && WildernessArea.inside_extended_pj_timer_zone(attacker.tile());
+        var targ_edgepk = GameServer.properties().edgeDitch10secondPjTimerEnabled && WildernessArea.inside_extended_pj_timer_zone(target.tile());
 
         var myTimeToPj = me_edgepk ? 10_000L : 4_600L;
         var areaPjTimer = pjTimerForArena();
@@ -869,61 +869,61 @@ public class CombatFactory {
         if (areaPjTimer != 4_600L)
             targTimeToPj = areaPjTimer;
 
-        if (entity.isPlayer() && other.isPlayer()) {
-            Player playerAttacker = entity.getAsPlayer();
+        if (attacker.isPlayer() && target.isPlayer()) {
+            Player playerAttacker = attacker.getAsPlayer();
 
             //As of 06/07/2021 you can no longer use tridents and elder wand on players
             if (playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF)) {
-                entity.message(Color.RED.wrap("You cannot use a this magic weapon against a player."));
+                attacker.message(Color.RED.wrap("You cannot use a this magic weapon against a player."));
                 return false;
             }
 
             // Staking security
-            if (Dueling.not_in_area(entity, other, "You can't attack them.")) {
+            if (Dueling.not_in_area(attacker, target, "You can't attack them.")) {
                 return false;
             }
-            if (Dueling.stake_not_started(entity, other)) {
-                entity.message("The fight hasn't started yet!");
+            if (Dueling.stake_not_started(attacker, target)) {
+                attacker.message("The fight hasn't started yet!");
                 return false;
             }
         }
 
         //If the NPC isn't visible we should no longer be attacking them.
-        if (entity.isNpc()) {
-            var npc = entity.getAsNpc();
+        if (attacker.isNpc()) {
+            var npc = attacker.getAsNpc();
             if (npc.hidden()) {
-                Debugs.CMB.debug(entity, "cant attack npc not visible", other, true);
+                Debugs.CMB.debug(attacker, "cant attack npc not visible", target, true);
                 return false;
             }
-            if (other.isPlayer()) {
-                if ((other.getAsPlayer()).getInterfaceManager().getMain() == BARROWS_REWARD_WIDGET) {
+            if (target.isPlayer()) {
+                if ((target.getAsPlayer()).getInterfaceManager().getMain() == BARROWS_REWARD_WIDGET) {
                     // When viewing the barrows loot interface, NPCs are not aggressive. Interesting eh.
-                    Debugs.CMB.debug(entity, "cant attack player in barrows reward widget", other, true);
+                    Debugs.CMB.debug(attacker, "cant attack player in barrows reward widget", target, true);
                     return false;
                 }
             }
         }
 
-        var inArena = Dueling.in_duel(entity);
-        var lastDamager = other.<Mob>getAttribOr(AttributeKey.LAST_DAMAGER, null);
+        var inArena = Dueling.in_duel(attacker);
+        var lastDamager = target.<Mob>getAttribOr(AttributeKey.LAST_DAMAGER, null);
 
         // Level checks only apply to PvP
-        if (other.isPlayer() && entity.isPlayer()) {
+        if (target.isPlayer() && attacker.isPlayer()) {
             // Is the player deep enough in the wilderness?
             // FFA Clan wars does not make any checks for levels. Free for all :)
             if (!inArena) {
 
-                var oppWithinLvl = entity.skills().combatLevel() >= getLowestLevel(other, entity) &&
-                    entity.skills().combatLevel() <= getHighestLevel(other, entity);
+                var oppWithinLvl = attacker.skills().combatLevel() >= getLowestLevel(target, attacker) &&
+                    attacker.skills().combatLevel() <= getHighestLevel(target, attacker);
 
                 if (!oppWithinLvl) {
-                    entity.message((!WildernessArea.inWilderness(entity.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
+                    attacker.message((!WildernessArea.inWilderness(attacker.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
                     return false;
                 } else {
-                    var withinLvl = (other.skills().combatLevel() >= getLowestLevel(entity, other) &&
-                        other.skills().combatLevel() <= getHighestLevel(entity, other));
+                    var withinLvl = (target.skills().combatLevel() >= getLowestLevel(attacker, target) &&
+                        target.skills().combatLevel() <= getHighestLevel(attacker, target));
                     if (!withinLvl) {
-                        entity.message((!WildernessArea.inWilderness(entity.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
+                        attacker.message((!WildernessArea.inWilderness(attacker.tile())) ? "Your level difference is too great! You need to move deeper into the Wilderness." : "Your level difference is too great.");
                         return false;
                     }
                 }
@@ -932,55 +932,70 @@ public class CombatFactory {
 
         var isOpponentDead = myLastAttacker == null || myLastAttacker.dead();
 
-        if (other.isNpc() && other.getAsNpc().getCombatMethod() != null && other.getAsNpc().getCombatMethod().canMultiAttackInSingleZones()) {
+        if (target.isNpc() && target.getAsNpc().getCombatMethod() != null && target.getAsNpc().getCombatMethod().canMultiAttackInSingleZones()) {
             return true;
         }
 
-        if (myLastAttackedTime < myTimeToPj && myLastAttacker != null && myLastAttacker != other && !isOpponentDead) {
+        if (myLastAttackedTime < myTimeToPj && myLastAttacker != null && myLastAttacker != target && !isOpponentDead) {
             // Multiway check bro!
-            if (entity.isPlayer()) {
-                if (entity.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(other)) {
-                    entity.message("You're already under attack.");
+            if (attacker.isPlayer()) {
+                if (attacker.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(target)) {
+                    attacker.message("You're already under attack.");
                     return false;
                 }
             } else {
-                if (!MultiwayCombat.includes(entity)) {
-                    entity.message("I'm already under attack.");
+                if (!MultiwayCombat.includes(attacker)) {
+                    attacker.message("I'm already under attack.");
                     return false;
                 }
             }
         }
 
-        if (targetLastAttackedTime < targTimeToPj && targetLastAttacker != null && targetLastAttacker != entity) {
+        // single plus areas
+        boolean isSinglePlusArea = CombatFactory.singlePlusArea(target);
+        // target's last opponent is NPC
+        boolean interruptCombatWithNpc = targetLastAttacker != null && targetLastAttacker.isNpc() && !MultiwayCombat.includes(target) && isSinglePlusArea;
+        if (targetLastAttackedTime < targTimeToPj && targetLastAttacker != null && targetLastAttacker != attacker && !interruptCombatWithNpc) {
             // Multiway check bro!
-            if (other.isPlayer()) {
-                if (other.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(other)) {
-                    entity.message("Someone else is already fighting your opponent.");
+            if (target.isPlayer()) {
+                if (target.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(target)) {
+                    attacker.message("Someone else is already fighting your opponent.");
                     return false;
                 }
             } else {
-                if (!MultiwayCombat.includes(other)) {
-                    entity.message("Someone else is fighting that.");
+                if (!MultiwayCombat.includes(target)) {
+                    attacker.message("Someone else is fighting that.");
                     return false;
                 }
             }
         }
 
         // Check immune npcs..
-        if (other.isNpc()) {
-            Npc npc = (Npc) other;
+        if (target.isNpc()) {
+            Npc npc = (Npc) target;
 
             if (npc.getTimers().has(TimerKey.ATTACK_IMMUNITY)) {
-                if (entity.isPlayer()) {
-                    ((Player) entity).message("This npc is currently immune to attacks.");
+                if (attacker.isPlayer()) {
+                    ((Player) attacker).message("This npc is currently immune to attacks.");
                 }
-                Debugs.CMB.debug(entity, "cant attack 7", other, true);
+                Debugs.CMB.debug(attacker, "cant attack 7", target, true);
                 return false;
             }
         }
 
-        Debugs.CMB.debug(entity, "Passed canAttack checks", other, true);
+        Debugs.CMB.debug(attacker, "Passed canAttack checks", target, true);
         return true;
+    }
+
+    public static boolean singlePlusArea(Mob target) {
+        if(target.tile().insideRevCave()) {
+            return true;
+        }
+
+        if(target.tile().memberCave()) {
+            return true;
+        }
+        return false;
     }
 
     /**

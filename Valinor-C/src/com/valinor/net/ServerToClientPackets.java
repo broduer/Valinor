@@ -88,7 +88,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[56] = -3;
         PACKET_SIZES[57] = 0;
         PACKET_SIZES[58] = -3;
-        PACKET_SIZES[59] = -3;
+        PACKET_SIZES[59] = 1;
         PACKET_SIZES[60] = -2;
         PACKET_SIZES[61] = 1;
         PACKET_SIZES[62] = 0;
@@ -309,6 +309,7 @@ public final class ServerToClientPackets {
     public static final int SEND_EFFECT_TIMER = 54;
     public static final int SEND_BANKTABS = 55;
     public static final int ITEM_ON_NPC = 57;
+    public static final int SEND_SINGLE_PLUS_COMBAT_ICON = 59;
     public static final int SEND_MULTIPLE_MAP_PACKETS = 60;
     public static final int SEND_MULTICOMBAT_ICON = 61;
     public static final int SEND_EXIT = 62;

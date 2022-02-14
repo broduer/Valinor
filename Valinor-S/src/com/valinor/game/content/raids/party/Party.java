@@ -13,10 +13,7 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.COXArea;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
@@ -67,8 +64,11 @@ public class Party {
         this.leader = leader;
     }
 
+    /**
+     * Get an unmodifiable list that contains the {@link Player}s inside this instance.
+     */
     public List<Player> getMembers() {
-        return members;
+        return Collections.unmodifiableList(members);
     }
 
     public int getSize() {
@@ -342,9 +342,6 @@ public class Party {
     public static void onLogout(Player player) {
         if (player.raidsParty != null) {
             leaveParty(player, false);
-            if(player.getRaids() != null) {
-                player.getRaids().exit(player,false);
-            }
         }
     }
 

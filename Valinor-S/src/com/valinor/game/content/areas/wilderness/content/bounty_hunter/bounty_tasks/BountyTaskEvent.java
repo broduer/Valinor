@@ -3,6 +3,7 @@ package com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_t
 import com.valinor.game.task.Task;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
@@ -19,11 +20,13 @@ import static com.valinor.game.content.areas.wilderness.content.bounty_hunter.Bo
 public class BountyTaskEvent extends Task {
 
     private final Player player;
+    private final Player target;
     boolean messageSent;
 
-    public BountyTaskEvent(Player player) {
+    public BountyTaskEvent(Player player, Player target) {
         super("BountyTaskEvent", BOUNTY_TASK_TIME, true); // 20 minutes to complete
         this.player = player;
+        this.target = target;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class BountyTaskEvent extends Task {
     @Override
     public void onTick() {
         // Stop the task if the player is offline.
-        if (!player.isRegistered()) {
+        if (!player.isRegistered() || !target.isRegistered()) {
             this.stop();
             return;
         }
@@ -86,7 +89,6 @@ public class BountyTaskEvent extends Task {
 
     @Override
     public void onStop() {
-        BountyHunterTask.resetBountyTask(player, false);
     }
 
 }

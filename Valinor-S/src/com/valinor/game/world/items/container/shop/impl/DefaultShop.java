@@ -13,6 +13,7 @@ import com.valinor.game.world.items.container.shop.Shop;
 import com.valinor.game.world.items.container.shop.ShopUtility;
 import com.valinor.game.world.items.container.shop.StoreItem;
 import com.valinor.game.world.items.container.shop.currency.CurrencyType;
+import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.util.Arrays;
@@ -153,7 +154,11 @@ public final class DefaultShop extends Shop {
 
         int rewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
         player.getPacketSender().sendString(64014, "Reward Points: " + Utils.formatNumber(rewardPoints));
-        player.getPacketSender().sendString(shopId == 7 ? 64005 : ShopUtility.NAME_INTERFACE_CHILD_ID, name);
+        String shopName = name;
+        if(shopId == 18) {
+            shopName = "Pk Point Shop - (PKP : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0)))+")";
+        }
+        player.getPacketSender().sendString(shopId == 7 ? 64005 : ShopUtility.NAME_INTERFACE_CHILD_ID, shopName);
         player.getInterfaceManager().openInventory(shopId == 7 ? 64000 : ShopUtility.INTERFACE_ID, InterfaceConstants.SHOP_INVENTORY - 1);
     }
 
@@ -167,7 +172,7 @@ public final class DefaultShop extends Shop {
     public void refresh(Player player, boolean redrawStrings) {
         //Empty out the cost strings here at the top, that way it's cleared if it should be, and can be overwritten down below if necessary.
         if (redrawStrings) {
-            for (int index = 0; index < 100; index++) {
+            for (int index = 0; index < 200; index++) {
                 player.getPacketSender().sendString(ShopUtility.AMOUNT_STRING_ID + index, "");
             }
         }

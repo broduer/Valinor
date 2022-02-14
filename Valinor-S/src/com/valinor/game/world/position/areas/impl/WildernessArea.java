@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunter.DISABLED;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.PLAYERS_IN_WILDERNESS;
 
 public class WildernessArea extends Controller {
@@ -206,9 +205,7 @@ public class WildernessArea extends Controller {
                     player.getPacketSender().sendString(199, "Level: " + lvl);
                     player.getPacketSender().sendInteractionOption("Attack", 2, true);
                 }
-                if(!DISABLED) {
-                    BountyHunterWidget.sendBountyWidget(player);
-                }
+                BountyHunterWidget.sendBountyWidget(player);
             }
         }
     }

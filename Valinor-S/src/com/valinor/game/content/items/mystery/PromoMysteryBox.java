@@ -18,8 +18,8 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class PromoMysteryBox extends Interaction {
 
-    private static final int RARE_ROLL = 30;
-    private static final int UNCOMMON_ROLL = 10;
+    private static final int RARE_ROLL = 5;
+    private static final int UNCOMMON_ROLL = 3;
 
     @Override
     public boolean handleItemInteraction(Player player, Item item, int option) {
@@ -50,7 +50,7 @@ public class PromoMysteryBox extends Interaction {
                 if (yell) {
                     boolean moreThanOne = amt > 1;
                     String plural = moreThanOne ? "x "+Utils.formatNumber(amt) : "";
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received "+plural+" " + Utils.getVowelFormat(reward.unnote().name()) + " from a promo mystery box!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received "+plural+" " + Utils.getVowelFormat(reward.unnote().name()) + " from a promo mystery box!");
                 }
                 Utils.sendDiscordInfoLog(player.getUsername() + " with IP " + player.getHostAddress() + " just opened a promo mystery box and received x" + amt + " " + reward.unnote().name() + ".", "boxes_opened");
                 return true;

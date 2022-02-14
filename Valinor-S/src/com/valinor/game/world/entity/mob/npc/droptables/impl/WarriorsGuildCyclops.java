@@ -49,7 +49,6 @@ public class WarriorsGuildCyclops implements Droptable {
                     case MITHRIL_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_V, 1);
                     case ADAMANT_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_VI, 1);
                     case RUNE_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_VII, 1);
-                    case DRAGON_DEFENDER -> AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_IX, 1);
                 }
             }
         } else if (killed.id() == NpcIdentifiers.CYCLOPS_2137) {//Dragon defender
@@ -59,6 +58,7 @@ public class WarriorsGuildCyclops implements Droptable {
                 drop(killed, killer, new Item(defender));
                 var count = killer.<Integer>getAttribOr(AttributeKey.DRAGON_DEFENDER_DROPS, 0) + 1;
                 killer.putAttrib(AttributeKey.DRAGON_DEFENDER_DROPS, count);
+                AchievementsManager.activate(killer, Achievements.DEFENDER_HUNT_IX, 1);
             }
 
             //Normal drop

@@ -3,6 +3,7 @@ package com.valinor.game.content.mechanics;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Area;
@@ -76,6 +77,9 @@ public class MultiwayCombat {
             if (player.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA,-1) != state) {
                 player.getPacketSender().sendMultiIcon(state);
             }
+
+            boolean singlePlusArea = CombatFactory.singlePlusArea(player);
+            player.getPacketSender().sendSinglePlusIcon(singlePlusArea ? 1 : 0);
         }
     }
 
@@ -94,6 +98,9 @@ public class MultiwayCombat {
             player.getPacketSender().sendMultiIcon(0);
             player.putAttrib(AttributeKey.MULTIWAY_AREA,0);
         }
+
+        boolean singlePlusArea = CombatFactory.singlePlusArea(player);
+        player.getPacketSender().sendSinglePlusIcon(singlePlusArea ? 1 : 0);
 
         if(lastregion == 13103 && lastregion != player.tile().region()) { // actually changed now
             // Make sure blurite removed when leaving this area
@@ -176,7 +183,7 @@ public class MultiwayCombat {
         9033, // KBD zone
         12363, 12362, 12106, 11851, 11850, // Abyssal Sire
         14938, 14939, // Smokedevil room in Nieve's cave + kalphite hive room
-        12701, 12702, 12703, 12957, 12958, 12959, // Revenants! Not 100% accurate but.. Yeah
+        //12701, 12702, 12703, 12957, 12958, 12959, // Revenants! Not 100% accurate but.. Yeah
         9886, 10142, // waterbirth dungeon / dagannoth cave
         9007, 9008, // zulrah
         9023, // vorkath

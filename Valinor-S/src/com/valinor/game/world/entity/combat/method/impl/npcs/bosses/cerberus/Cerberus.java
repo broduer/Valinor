@@ -88,14 +88,8 @@ public class Cerberus extends CommonCombatMethod {
             mob.runFn(1, () -> {
                 World.getWorld().tileGraphic(1246, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 0);
             }).then(2, () -> {
-                for (int i = 0; i < 6; i++) {
-                    if (target == null)
-                        return;
-                    if (target.tile().equals(pos)) {
-                        target.hit(mob,World.getWorld().random(10, 15));
-                    } else if (Utils.getDistance(target.tile(), pos) == 1) {
-                        target.hit(mob,7);
-                    }
+                if (target.tile().equals(pos)) {
+                    target.hit(mob, World.getWorld().random(10, 15));
                 }
             }).then(2, () -> {
                 World.getWorld().tileGraphic(1247, new Tile(pos.getX(), pos.getY(), pos.getZ()), 0, 0);
@@ -104,8 +98,6 @@ public class Cerberus extends CommonCombatMethod {
                     return;
                 if (target.tile().equals(pos)) {
                     target.hit(mob,World.getWorld().random(10, 18));
-                } else if (Utils.getDistance(target.tile(), pos) == 1) {
-                    target.hit(mob,10);
                 }
             });
         }

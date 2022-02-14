@@ -4,6 +4,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.InterfaceConstants;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -115,25 +116,16 @@ public class Trading {
         var sameGroup = IronmanGroupHandler.isTradingPermitted(player, otherPlayer);
 
         // Ironman? fuck off lol!!
-        if (player.gameMode() != GameMode.NONE && (otherPlayer == null || !(otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) || sameGroup))) {
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        if (playerIsIron && (otherPlayer == null || !(otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) || sameGroup))) {
             player.message("You are an Iron Man. You stand alone.");
             return;
         }
 
         // Ironman? fuck off lol!!
-        if (otherPlayer.gameMode() != GameMode.NONE && !(player.getPlayerRights().isDeveloperOrGreater(player) || sameGroup)) {
+        var otherIsIron = otherPlayer.gameMode().isIronman() || otherPlayer.gameMode().isHardcoreIronman() || otherPlayer.gameMode().isUltimateIronman();
+        if (otherIsIron && !(player.getPlayerRights().isDeveloperOrGreater(player) || sameGroup)) {
             player.message(otherPlayer.getUsername() + " is an Iron Man. They stand alone.");
-            return;
-        }
-
-        // Starter trade prevention
-        if (player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !player.getPlayerRights().isDeveloperOrGreater(player) && !otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer)) {
-            player.message("You are restricted from trading until 30 minutes of play time. Only " +Math.ceil((int)(3000.0 - player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0)+" minutes left.");
-            return;
-        }
-
-        if (otherPlayer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-            player.message("Your partner is restricted from trading until 30 minutes of play time. Only "+Math.ceil((int)(3000.0 - otherPlayer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0)+" minutes left.");
             return;
         }
 
@@ -438,7 +430,7 @@ public class Trading {
             illegalItem = true;
         }
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == tradeItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+        if(tradeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
             illegalItem = true;
         }
 

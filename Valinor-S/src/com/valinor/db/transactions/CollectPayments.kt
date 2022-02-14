@@ -226,7 +226,7 @@ object CollectPayments {
                         val promoMysteryBoxes = total / 100
                         if (promoMysteryBoxes > 0) {
                             inventory.addOrBank(Item(PROMO_MYSTERY_BOX, promoMysteryBoxes))
-                            World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " promo mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
+                            World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " promo mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
                         }
                     }
 
@@ -234,7 +234,7 @@ object CollectPayments {
                         val mysteryTickets = total / 10
                         if (mysteryTickets > 0) {
                             inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
-                            World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
+                            World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
                         }
                     }
 
