@@ -129,17 +129,6 @@ public class Trading {
             return;
         }
 
-        // Starter trade prevention
-        if (player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !player.getPlayerRights().isDeveloperOrGreater(player) && !otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer)) {
-            player.message("You are restricted from trading until 30 minutes of play time. Only " +Math.ceil((int)(3000.0 - player.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0)+" minutes left.");
-            return;
-        }
-
-        if (otherPlayer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-            player.message("Your partner is restricted from trading until 30 minutes of play time. Only "+Math.ceil((int)(3000.0 - otherPlayer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0)+" minutes left.");
-            return;
-        }
-
         if (player.jailed() || otherPlayer.jailed() && !otherPlayer.getPlayerRights().isStaffMember(otherPlayer) && !player.getPlayerRights().isStaffMember(player)) {
             player.message("You cannot trade when jailed.");
             return;
