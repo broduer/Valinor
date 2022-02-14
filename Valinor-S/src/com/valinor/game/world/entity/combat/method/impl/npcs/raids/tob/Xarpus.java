@@ -235,7 +235,6 @@ public class Xarpus extends CommonCombatMethod {
         }
         if (phase == 2) {
             if (target.tile().isWithinDistance(STARING_QUAD, 7)) {
-                System.out.println("huh2");
                 new Projectile(mob, target, 1555, 0, 120, 50, 25, 0).sendProjectile();
                 target.graphic(1556);
                 target.hit_(mob,World.getWorld().random(6, 8), 3, SplatType.POISON_HITSPLAT);

@@ -654,8 +654,9 @@ public class NpcDeath {
                     boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare);
 
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
+                    //System.out.println(ignoreDrops+ " " +isNightmare);
                     //Drop loot, but the first form of KQ, Runite golem and world bosses do not drop anything.
-                    if (table != null && !ignoreDrops) {
+                    if (table != null && ignoreDrops) {
                         if(!customDrops.contains(npc.id())) {
                             //Always drops such as bones
                             ItemDrops.dropAlwaysItems(killer, npc);

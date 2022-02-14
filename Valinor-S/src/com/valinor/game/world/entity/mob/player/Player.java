@@ -1097,7 +1097,7 @@ public class Player extends Mob {
             speed--;
         }
 
-        if(getCombat().getTarget() instanceof Player && weapon.getId() == SWORD_OF_GRYFFINDOR) {
+        if(getCombat().getTarget() instanceof Player && getEquipment().contains(SWORD_OF_GRYFFINDOR)) {
             speed = 6;
         }
 
