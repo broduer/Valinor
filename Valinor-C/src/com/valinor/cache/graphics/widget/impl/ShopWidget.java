@@ -25,19 +25,19 @@ public class ShopWidget extends Widget {
         shopInventory.drawInfinity = true;
         shopInventory.displayAmount = false;
         shopInventory.width = 9;
-        shopInventory.height = 12;
+        shopInventory.height = 22;
         shopInventory.inventoryMarginX = 18;
         shopInventory.inventoryMarginY = 25;
 
         // The scroll, add the shop inventory to it.
         Widget scroll = addTabInterface(32995);
-        scroll.totalChildren(101);
+        scroll.totalChildren(201);
         setBounds(3900, 0, 0, 0, scroll);
         scroll.height = 230;
         scroll.width = 440;
         scroll.scrollMax = 230;
 
-        for (int index = 0; index < 100; index++) {
+        for (int index = 0; index < 200; index++) {
             addText(32996 + index, "", font, 0, 0xffffff, true, true);
             int x = index % 9;
             int y = index / 9;
