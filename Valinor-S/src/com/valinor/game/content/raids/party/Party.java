@@ -342,9 +342,6 @@ public class Party {
     public static void onLogout(Player player) {
         if (player.raidsParty != null) {
             leaveParty(player, false);
-            if(player.getRaids() != null) {
-                player.getRaids().exit(player,false);
-            }
         }
     }
 

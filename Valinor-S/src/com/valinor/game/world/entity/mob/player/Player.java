@@ -1346,6 +1346,10 @@ public class Player extends Mob {
         runExceptionally(() -> {
             clearInstance();
             ZarosGodwars.removePlayer(this);
+            var raids = getRaids();
+            if(raids != null) {
+                raids.exit(this,true);
+            }
         });
 
         runExceptionally(() -> {
@@ -2598,11 +2602,6 @@ public class Player extends Mob {
         if (skotizoInstance != null && skotizoInstance.getInstance() != null) {
             skotizoInstance.clear(this);
             InstancedAreaManager.getSingleton().disposeOf(skotizoInstance.getInstance());
-        }
-
-        var raids = getRaids();
-        if(raids != null) {
-            raids.exit(this,true);
         }
     }
 
