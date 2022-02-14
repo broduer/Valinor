@@ -74,19 +74,6 @@ public class PlayerKillingRewards {
 
             // Add a kill when the kill is valid (not farming) and it's not in duel arena/FFA
             if (valid) {
-                // Starter trade prevention
-                if (killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !killer.getPlayerRights().isDeveloperOrGreater(killer) && !target.getPlayerRights().isDeveloperOrGreater(target)) {
-                    killer.message("You are restricted from receiving rewards from pking until 30 minutes of play time.");
-                    killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
-                    return;
-                }
-
-                if (target.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0) < 3000 && !target.getPlayerRights().isDeveloperOrGreater(target) && !killer.getPlayerRights().isDeveloperOrGreater(killer)) {
-                    killer.message("Your partner is restricted from receiving rewards from pking until 30 minutes of play time.");
-                    killer.message("Only " + Math.ceil((int) (3000.0 - killer.<Integer>getAttribOr(AttributeKey.GAME_TIME, 0)) / 100.0) + "minutes left.");
-                    return;
-                }
-
                 //Update achievements
                 updateAchievement(killer, target);
 
