@@ -38,7 +38,7 @@ public class ChamberOfSecretsReward {
         }
 
         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a: " + new Item(Pet.NAGINI.item).name() + ".", "yell_item_drop");
-        World.getWorld().sendWorldMessage("<img=1081>" + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.NAGINI.item).name() + "</col>.");
+        World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(player.getUsername()) + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.NAGINI.item).name() + "</col>.");
     }
 
     public static void withdrawReward(Player player) {
@@ -47,7 +47,7 @@ public class ChamberOfSecretsReward {
             if (item == null)
                 continue;
             if (COSUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                String worldMessage = "<img=452><shad=0>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of secrets</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (COS)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }

@@ -31,17 +31,17 @@ public class PointsMysteryChest extends Interaction {
                     var min = Points.VALINOR_COINS.mysteryChestMinAmount;
                     var max = Points.VALINOR_COINS.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " "+GameConstants.SERVER_NAME+" coins from a points mystery chest!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " "+GameConstants.SERVER_NAME+" coins from a points mystery chest!");
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" "+GameConstants.SERVER_NAME+" coins.");
                     player.inventory().addOrBank(new Item(VALINOR_COINS, amt));
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " "+GameConstants.SERVER_NAME+" coins from a points mystery chest!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " "+GameConstants.SERVER_NAME+" coins from a points mystery chest!");
                     Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a points mystery chest and received x"+amt+" "+GameConstants.SERVER_NAME+" coins.", "boxes_opened");
                 } else if (World.getWorld().rollDie(35, 1)) {
                     var min = Points.VOTE_POINTS.mysteryChestMinAmount;
                     var max = Points.VOTE_POINTS.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " vote points from a points mystery chest!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " vote points from a points mystery chest!");
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" vote points.");
                     var votePts = player.<Integer>getAttribOr(VOTE_POINTS, 0) + amt;
@@ -52,7 +52,7 @@ public class PointsMysteryChest extends Interaction {
                     var min = Points.MARKS_OF_GRACE.mysteryChestMinAmount;
                     var max = Points.MARKS_OF_GRACE.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " marks of grace from a points mystery chest!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " marks of grace from a points mystery chest!");
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" marks of grace.");
                     player.inventory().addOrBank(new Item(MARK_OF_GRACE, amt));
@@ -62,7 +62,7 @@ public class PointsMysteryChest extends Interaction {
                     var max = Points.SLAYER_REWARD_POINTS.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
                     if(amt >= 10) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " slayer points from a points mystery chest!");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " slayer points from a points mystery chest!");
                     }
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" slayer points.");
@@ -75,7 +75,7 @@ public class PointsMysteryChest extends Interaction {
                     var max = Points.BOSS_POINTS.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
                     if(amt >= 25) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " boss points from a points mystery chest!");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " boss points from a points mystery chest!");
                     }
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" boss points.");
@@ -94,7 +94,7 @@ public class PointsMysteryChest extends Interaction {
                     var max = Points.PK_POINTS.mysteryChestMaxAmount;
                     var amt = World.getWorld().random(min, max);
                     if(amt >= 450) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received x" + amt + " pk points from a points mystery chest!");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received x" + amt + " pk points from a points mystery chest!");
                     }
                     player.message("You open the points mystery chest and found...");
                     player.message("x"+amt+" pk points.");

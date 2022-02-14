@@ -210,7 +210,7 @@ public class PlayerKillingRewards {
                 if(World.getWorld().rollDie(1000,1)) {
                     killer.inventory().addOrBank(new Item(PETS_MYSTERY_BOX));
                     killer.message(Color.PURPLE.wrap("You've found a pets mystery box searching the corpse of "+target.getUsername()+"."));
-                    World.getWorld().sendWorldMessage("<img=1081>" + killer.getUsername() + " " + "found a pets mystery box searching the corpse of "+target.getUsername()+".");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0>" + killer.getUsername() + " " + "found a pets mystery box searching the corpse of "+target.getUsername()+".");
                 }
 
                 BronzeMysteryBox.rollForBronzeMysteryBox(killer, target);

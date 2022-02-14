@@ -127,7 +127,7 @@ public class WildyActivityCasket extends Interaction {
             if(player.getUsername().equalsIgnoreCase("Box test")) {
                 return;
             }
-            String msg = "<img=1081><shad=0>" + player.getUsername() + " has received "+Color.HOTPINK.tag()+"" + amtString + " " + item.name() + "</col> from a Activity casket!";
+            String msg = "<img=452><shad=0>" + player.getUsername() + " has received "+Color.HOTPINK.tag()+"" + amtString + " " + item.name() + "</col> from a Activity casket!";
             World.getWorld().sendWorldMessage(msg);
         }
     }

@@ -123,7 +123,7 @@ public class LarransChest extends Interaction {
 
                 //When we receive a rare loot send a world message
                 if (rareDrop) {
-                    String msg = "<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Larran's chest</col>]: " + "<col=1e44b3>" + player.getUsername() + " has received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + "!";
+                    String msg = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Larran's chest</col>]: " + "<col=1e44b3>" + player.getUsername() + " has received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + "!";
                     World.getWorld().sendWorldMessage(msg);
                     rareDrop = false;
                 }

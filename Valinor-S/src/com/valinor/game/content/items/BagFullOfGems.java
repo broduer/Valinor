@@ -47,7 +47,7 @@ public class BagFullOfGems extends Interaction {
         player.inventory().add(uncut);
 
         if(uncut.getId() == NOTED_UNCUT_ZENYTE) {
-            World.getWorld().sendWorldMessage("<img=1081> " + player.getUsername() + " just received <col=" + Color.BLUE.getColorValue() + "> an uncut Zenyte</col> from the gem bag!");
+            World.getWorld().sendWorldMessage("<img=452><shad=0> " + Color.RED.wrap(player.getUsername()) + " just received <col=" + Color.BLUE.getColorValue() + "> an uncut Zenyte</col> from the gem bag!");
         }
         player.message("You open the bag and find 40 uncut gems.");
 

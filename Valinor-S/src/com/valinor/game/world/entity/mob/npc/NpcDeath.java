@@ -142,7 +142,7 @@ public class NpcDeath {
                 if(npc.def().name.equalsIgnoreCase("Ice imp")) {
                     int chance = killer.getPlayerRights().isDeveloperOrGreater(killer) ? 1 : 100;
                     if(World.getWorld().rollDie(chance, 1)) {
-                        World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + killer.getUsername() + " just encountered a Wampa!");
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + killer.getUsername() + " just encountered a Wampa!");
                         Npc wampa = new Npc(ICELORD, npc.spawnTile()).spawn(false);
                         wampa.walkRadius(1);
                         wampa.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN,1);
@@ -887,7 +887,7 @@ public class NpcDeath {
                 case FENRIR_GREYBACK_JR -> BOSSES.log(killer, COS_RAIDS_KEY, new Item(Pet.FENRIR_GREYBACK_JR.item));
             }
 
-            World.getWorld().sendWorldMessage("<img=1081> <col=844e0d>" + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
+            World.getWorld().sendWorldMessage("<img=452><shad=0><col=844e0d>" + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".");
             Utils.sendDiscordInfoLog("Player " + killer.getUsername() + " has received a: " + new Item(pet.get().item).name() + ".", "yell_item_drop");
         }
         return pet;

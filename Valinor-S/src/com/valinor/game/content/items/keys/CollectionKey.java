@@ -48,7 +48,7 @@ public class CollectionKey extends Interaction {
             var amount = reward.getAmount();
             var plural = amount > 1 ? "x" + amount : "x1";
             if (sendWorldMessage && !player.getUsername().equalsIgnoreCase("Box test")) {
-                String worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Collection Log Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + plural + " <shad=0>" + reward.name() + "</shad>!";
+                String worldMessage = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Collection Log Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + plural + " <shad=0>" + reward.name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 rare = false;
             }

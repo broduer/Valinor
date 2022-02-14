@@ -78,7 +78,7 @@ public class BrimstoneKey extends Interaction {
             KEYS.log(player, BRIMSTONE_KEY, reward);
 
             if(rareDrop) {
-                String worldMessage = "<img=505><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Brimstone Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + Utils.getAOrAn(reward.unnote().name()) + " <shad=0>" + reward.unnote().name() + "</shad>!";
+                String worldMessage = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Brimstone Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + Utils.getAOrAn(reward.unnote().name()) + " <shad=0>" + reward.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 rareDrop = false;
             }

@@ -232,7 +232,7 @@ public class DonatorMysteryBox extends Interaction {
             for (int i = 0; i < rolls; i++) {
                 Item reward = rollReward();
                 if(rare) {
-                    World.getWorld().sendWorldMessage("<img=1081><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a donator mystery box!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a donator mystery box!");
                 }
                 player.inventory().addOrBank(reward);
                 MYSTERY_BOX.log(player, DONATOR_MYSTERY_BOX, reward);

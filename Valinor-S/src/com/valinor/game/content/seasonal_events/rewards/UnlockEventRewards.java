@@ -86,7 +86,7 @@ public class UnlockEventRewards {
                 }
                 player.inventory().addOrBank(COMPLETED_EVENT_REWARD);
                 //Let the world know this play has finished the rewards and goes for them again
-                World.getWorld().sendWorldMessage("<img=505><shad=0>" + Color.MEDRED.wrap("[" + event + "]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " has just reset the " + Color.PURPLE.wrap(event) + " Event Rewards!");
+                World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.MEDRED.wrap("[" + event + "]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " has just reset the " + Color.PURPLE.wrap(event) + " Event Rewards!");
                 player.getInterfaceManager().close();
             });
         } else {
@@ -126,7 +126,7 @@ public class UnlockEventRewards {
             if(player.getUsername().equalsIgnoreCase("Box test")) {
                 return;
             }
-            World.getWorld().sendWorldMessage("<img=505><shad=0>" + Color.MEDRED.wrap("[News]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " received " + Color.HOTPINK.wrap("x" + reward.getAmount()) + " " + Color.HOTPINK.wrap(reward.unnote().name()) + " from the Event!");
+            World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.MEDRED.wrap("[News]:") + "</shad> " + Color.PURPLE.wrap(player.getUsername()) + " received " + Color.HOTPINK.wrap("x" + reward.getAmount()) + " " + Color.HOTPINK.wrap(reward.unnote().name()) + " from the Event!");
         } else {
             int rewardAmount = reward.getAmount();
             String plural = rewardAmount > 1 ? "x" + rewardAmount : "x1";

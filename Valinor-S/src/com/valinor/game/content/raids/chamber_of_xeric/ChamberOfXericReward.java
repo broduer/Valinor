@@ -42,7 +42,7 @@ public class ChamberOfXericReward {
             }
 
             Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a: " + new Item(Pet.OLMLET.item).name() + ".", "yell_item_drop");
-            World.getWorld().sendWorldMessage("<img=1081>" + player.getUsername() + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.OLMLET.item).name() + "</col>.");
+            World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(player.getUsername()) + " has unlocked the pet: <col=" + Color.HOTPINK.getColorValue() + ">" + new Item(Pet.OLMLET.item).name() + "</col>.");
         } else {
             player.message("You have a funny feeling like you would have been followed...");
         }
@@ -54,7 +54,7 @@ public class ChamberOfXericReward {
             if (item == null)
                 continue;
             if (COXUniqueTable.allItems().stream().anyMatch(i -> i.matchesId(item.getId()))) {
-                String worldMessage = "<img=1081>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of xeric</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
+                String worldMessage = "<img=452><shad=0>[<col=" + Color.RAID_PURPLE.getColorValue() + ">Chamber of xeric</col>]</shad></col>: " + Color.BLUE.wrap(player.getUsername()) + " received " + Utils.getAOrAn(item.unnote().name()) + " <shad=0><col=AD800F>" + item.unnote().name() + "</shad>!";
                 World.getWorld().sendWorldMessage(worldMessage);
                 Utils.sendDiscordInfoLog("Rare drop collected: (COX)" + player.getUsername() + " withdrew " + item.unnote().name() + " ", "raids");
             }

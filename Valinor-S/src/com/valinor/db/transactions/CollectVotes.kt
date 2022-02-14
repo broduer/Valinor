@@ -118,7 +118,7 @@ object CollectVotes {
 
                             //World message is important people like "shine"
                             World.getWorld()
-                                .sendWorldMessage("<img=1081>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">" + points + " vote points</col> for voting! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::vote</col>!")
+                                .sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(username.toString()) + " just received <col=" + Color.BLUE.colorValue.toString() + ">" + points + " vote points</col> for voting! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::vote</col>!")
                             message("You have claimed your vote points.")
 
                             val changeForDonatorMysteryBox: Int = when (memberRights) {
@@ -134,7 +134,7 @@ object CollectVotes {
 
                             if (Utils.percentageChance(changeForDonatorMysteryBox)) {
                                 inventory().addOrBank(Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 1))
-                                World.getWorld().sendWorldMessage("<img=1081>" + username.toString() + " was lucky and received <col=" + Color.HOTPINK.colorValue.toString() + "> a Donator mystery box from voting!")
+                                World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.RED.wrap(username.toString()) + " was lucky and received <col=" + Color.HOTPINK.colorValue.toString() + "> a Donator mystery box from voting!")
                             }
 
                             val coins = World.getWorld().random(500_000, 2_000_000)
@@ -155,7 +155,7 @@ object CollectVotes {
                             DailyTaskManager.increase(DailyTasks.VOTING, this)
 
                             if(electionDay) {
-                                World.getWorld().sendWorldMessage("<img=1081>" + Color.PURPLE.wrap(username.toString()) + " just activated his "+Color.RED.wrap("Election day")+" perk and doubled their vote points!")
+                                World.getWorld().sendWorldMessage("<img=452><shad=0>" + Color.PURPLE.wrap(username.toString()) + " just activated his "+Color.RED.wrap("Election day")+" perk and doubled their vote points!")
                             }
 
                             // and here is reward inside the loop for 1 vote. so this code runs x times how many votes
