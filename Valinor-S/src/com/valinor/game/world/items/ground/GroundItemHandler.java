@@ -223,7 +223,7 @@ public final class GroundItemHandler {
             return false;
         }
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.unnote().getId() == item.getItem().unnote().getId())
+        if(item.getItem().definition(World.getWorld()).pvpSpawnable
             && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
             player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
             return false;

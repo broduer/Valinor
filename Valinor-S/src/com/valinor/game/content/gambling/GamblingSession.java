@@ -449,7 +449,7 @@ public class GamblingSession {
                 illegalItem = true;
             }
 
-            if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == gambleItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+            if(gambleItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
                 illegalItem = true;
             }
 

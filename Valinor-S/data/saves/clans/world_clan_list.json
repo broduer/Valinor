@@ -28,5 +28,20 @@
     "ranked": {
       "test": "LEADER"
     }
+  },
+  "patrick123": {
+    "name": "patrick123",
+    "owner": "patrick123",
+    "slogan": "None",
+    "joinable": "ANYONE",
+    "talkable": "ANYONE",
+    "kickable": "LEADER",
+    "managable": "LEADER",
+    "lootshare": false,
+    "lock": false,
+    "memberLimit": 100,
+    "ranked": {
+      "patrick123": "LEADER"
+    }
   }
 }

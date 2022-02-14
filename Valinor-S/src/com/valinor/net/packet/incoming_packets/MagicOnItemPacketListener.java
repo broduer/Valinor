@@ -161,7 +161,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                             illegalItem = true;
                         }
 
-                        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == finalItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+                        if(finalItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
                             illegalItem = true;
                         }
 
@@ -193,7 +193,7 @@ public class MagicOnItemPacketListener implements PacketListener {
                             illegalItem = true;
                         }
 
-                        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == finalItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+                        if(finalItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
                             illegalItem = true;
                         }
 

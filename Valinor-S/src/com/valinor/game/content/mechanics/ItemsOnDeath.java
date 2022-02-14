@@ -388,7 +388,7 @@ public class ItemsOnDeath {
             }
 
             if(player.gameMode() == GameMode.INSTANT_PKER) {
-                if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(item1 -> item1.unnote().getId() == item.unnote().getId())) {
+                if(item.definition(World.getWorld()).pvpSpawnable) {
                     return;
                 }
             }

@@ -4,6 +4,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
 import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.world.InterfaceConstants;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
@@ -438,7 +439,7 @@ public class Trading {
             illegalItem = true;
         }
 
-        if(Arrays.stream(GameConstants.BANK_ITEMS).anyMatch(i -> i.getId() == tradeItem.unnote().getId()) && player.gameMode() == GameMode.INSTANT_PKER) {
+        if(tradeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
             illegalItem = true;
         }
 
