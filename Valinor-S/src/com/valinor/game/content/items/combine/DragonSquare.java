@@ -35,7 +35,7 @@ public class DragonSquare extends Interaction {
                 player.getDialogueManager().start(new Dialogue() {
                     @Override
                     protected void start(Object... parameters) {
-                        send(DialogueType.ITEM_STATEMENT, FULL, "", "You forge the shield halves together to complete it.");
+                        send(DialogueType.ITEM_STATEMENT, new Item(FULL), "", "You forge the shield halves together to complete it.");
                         setPhase(0);
                     }
 

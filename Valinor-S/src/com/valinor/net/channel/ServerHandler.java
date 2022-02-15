@@ -13,6 +13,9 @@ import io.netty.handler.timeout.ReadTimeoutException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
+import java.net.SocketException;
+
 /**
  * @author os-scape team
  */
@@ -74,7 +77,20 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         try {
-            if (cause.getStackTrace().length > 0 && cause.getStackTrace()[0].getMethodName().equals("read0")) return;
+            // ignore on traditional socket exception (typically indicated by message starting with read0 but may change..)
+            if (cause.getStackTrace().length > 0 && cause.getStackTrace()[0].getMethodName().equals("read0")) {
+                return;
+            }
+
+            if (cause instanceof SocketException && cause.getStackTrace().length > 0 && cause.getStackTrace()[0].getMethodName().equals("throwConnectionReset")) {
+                logger.error("connection reset: "+cause);
+                return; // dc
+            }
+
+            if (cause instanceof IOException && cause.getStackTrace().length > 0 && cause.getStackTrace()[0].getMethodName().equals("writev0")) {
+                logger.error("connection aborted: "+cause);
+                return; // dc
+            }
 
             if (cause instanceof ReadTimeoutException) {
                 logger.info("Channel disconnected due to read timeout (30s): {}.", ctx.channel());
