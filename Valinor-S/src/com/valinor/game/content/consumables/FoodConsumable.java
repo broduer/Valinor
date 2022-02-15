@@ -3,6 +3,7 @@ package com.valinor.game.content.consumables;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.ItemIdentifiers;
@@ -198,7 +199,9 @@ public class FoodConsumable {
 
         int increase = player.getEquipment().hpIncrease();
         if (food == Food.ANGLERFISH) {
-            player.heal(food.heal, increase > 0 ? increase : 22);
+            boolean inCombat = CombatFactory.wasRecentlyAttacked(player);
+            int healFactor = increase > 0 ? increase : 22;
+            player.heal(food.heal, inCombat ? 0 : healFactor);
         } else if (food == Food.PURPLE_SWEETS || food == Food.PINK_SWEETS) {
             player.heal(Utils.random(food.heal, player.getEquipment().hpIncrease()));
         } else {
