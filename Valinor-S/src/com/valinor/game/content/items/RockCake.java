@@ -9,6 +9,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.util.timers.TimerKey;
 
 import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.DWARVEN_ROCK_CAKE;
 
 public class RockCake {
 
@@ -16,7 +17,7 @@ public class RockCake {
     private static final int OLD_DWARF = 6254;
 
     public static boolean onItemOption1(Player player, Item item) {
-        if(item.getId() == ROCKCAKE) {
+        if(item.getId() == ROCKCAKE || item.getId() == DWARVEN_ROCK_CAKE) {
             if (player.hp() > 1 && !player.getTimers().has(TimerKey.EAT_ROCKCAKE)) {
 
                 player.hit(player,1);
@@ -29,7 +30,7 @@ public class RockCake {
     }
 
     public static boolean onItemOption3(Player player, Item item) {
-        if(item.getId() == ROCKCAKE) {
+        if(item.getId() == ROCKCAKE || item.getId() == DWARVEN_ROCK_CAKE) {
             if (player.hp() > 1 && !player.getTimers().has(TimerKey.EAT_ROCKCAKE)) {
                 int dmg = (player.hp() + 10) / 10;
                 player.hit(player, dmg);
