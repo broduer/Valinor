@@ -1952,7 +1952,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(155,100));
+            return Optional.of(new Graphic(155, 100));
         }
 
         @Override
@@ -2165,7 +2165,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-           return Optional.empty();
+            return Optional.empty();
         }
 
         @Override
@@ -3740,9 +3740,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            Tile targPos = castOn.tile();
-            int dist = cast.tile().distance(targPos);
-            return Optional.of(new Projectile(cast, castOn,1252, (9 * dist), 45, 10, 0, 0, 10, 64));
+            return Optional.of(new Projectile(cast, castOn, 1252, 35, cast.projectileSpeed(castOn), 30, 0, 0));
         }
 
         @Override
@@ -3757,7 +3755,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1251, 80));
+            return Optional.of(new Graphic(1251, 92));
         }
 
         @Override
@@ -3803,9 +3801,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            var tile = cast.tile();
-            var tileDist = tile.distance(castOn.tile());
-            return Optional.of(new Projectile(cast, castOn, 1040, (9 * tileDist), 45, 10, 0, 0));
+            return Optional.of(new Projectile(cast, castOn, 1040, 35, cast.projectileSpeed(castOn), 30, 0, 0));
         }
 
         @Override
@@ -3820,7 +3816,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(665, 80));
+            return Optional.of(new Graphic(665, 92));
         }
 
         @Override
@@ -3866,9 +3862,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
-            var tile = cast.tile();
-            var tileDist = tile.distance(castOn.tile());
-            return Optional.of(new Projectile(cast, castOn, 1539, (9 * tileDist), 45, 10, 0, 0));
+            return Optional.of(new Projectile(cast, castOn, 1539, 35, cast.projectileSpeed(castOn), 30, 0, 0));
         }
 
         @Override
@@ -3883,7 +3877,7 @@ public enum CombatSpells {
 
         @Override
         public Optional<Graphic> startGraphic() {
-            return Optional.of(new Graphic(1540, 80));
+            return Optional.of(new Graphic(1540, 92));
         }
 
         @Override
@@ -4388,6 +4382,7 @@ public enum CombatSpells {
         public List<Item> itemsRequired(Player player) {
             return List.of();
         }
+
         @Override
         public int levelRequired() {
             return 1;
@@ -4412,8 +4407,7 @@ public enum CombatSpells {
     /**
      * Creates a new {@link CombatSpells}.
      *
-     * @param spell
-     *            the spell attached to this element.
+     * @param spell the spell attached to this element.
      */
     CombatSpells(CombatSpell spell) {
         this.spell = spell;
@@ -4431,8 +4425,7 @@ public enum CombatSpells {
     /**
      * Gets the spell with a {@link CombatSpell#spellId()} of {@code id}.
      *
-     * @param id
-     *            the identification of the combat spell.
+     * @param id the identification of the combat spell.
      * @return the combat spell with that identification.
      */
     public static Optional<CombatSpells> getCombatSpells(int id) {

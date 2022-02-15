@@ -22,6 +22,16 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class MagicMaxHit {
 
+    private static int getTridentMaxDamage(Player player, boolean swamp, boolean sang) {
+        EquipmentInfo.Bonuses b = EquipmentInfo.totalBonuses(player, World.getWorld().equipmentInfo());
+        int base = 20;
+        if (swamp)
+            base += 3;
+        if(sang)
+            base += 4;
+        return (int) Math.round((Math.max(base, base + (Math.max(0, player.skills().level(Skills.MAGIC) - 75)) / 3)) * (1 + (b.magestr / 100.0)));
+    }
+
     public static int maxHit(Player player, boolean includeNpcMax) {
         int baseMaxHit = 0;
         CombatSpell spell = player.getCombat().getCastSpell() != null ? player.getCombat().getCastSpell() : player.getCombat().getAutoCastSpell();
@@ -42,15 +52,20 @@ public class MagicMaxHit {
 
             //• Trident of the seas
             if (spell_name.equals("Trident of the seas")) {
-                spell_maxhit = 20;
-                spell_maxhit = (int) Math.round((Math.max(spell_maxhit, spell_maxhit + (Math.max(0, level - 75)) / 3)) * (1 + (b.magestr / 100.0)));
+                spell_maxhit = getTridentMaxDamage(player,false,false);
             }
 
             //• Trident of the swamp
             if (spell_name.equals("Trident of the swamp")) {
-                spell_maxhit = 23;
-                spell_maxhit = (int) Math.round((Math.max(spell_maxhit, spell_maxhit + (Math.max(0, level - 75)) / 3)) * (1 + (b.magestr / 100.0)));
+                spell_maxhit = getTridentMaxDamage(player,true,false);
             }
+
+            //• Sanguinesti staff
+            if (spell_name.equals("Sanguinesti spell")) {
+                spell_maxhit = getTridentMaxDamage(player,false,true);
+            }
+
+            //System.out.println("spell_maxhit "+spell_maxhit);
 
             //• God spells (level 60) in combination with Charge (level 80): the base max hit is 30.
             if (spell_name.equals("Saradomin Strike") || spell_name.equals("Claws of Guthix") || spell_name.equals("Flames of Zamorak")) {
@@ -63,7 +78,27 @@ public class MagicMaxHit {
                 spell_maxhit *= 1.50;
             }
 
+            boolean tridentStaff = spell_name.equals("Trident of the seas") || spell_name.equals("Trident of the swamp") || spell_name.equals("Sanguinesti spell");
             double multiplier = 1 + ((b.magestr > 0 ? b.magestr : 1.0) / 100);
+
+            if(tridentStaff) { // Tridents have mage str build in the calculation
+                multiplier = 1.0;
+            }
+
+            var wearingAnyBlackMask = FormulaUtils.wearingBlackMask(player) || FormulaUtils.wearingBlackMaskImbued(player) || player.getEquipment().wearingSlayerHelm();
+            //Special attacks
+            if(wearingAnyBlackMask && target != null && target.isNpc() && includeNpcMax) {
+                Npc npc = target.getAsNpc();
+                if(npc.id() == NpcIdentifiers.UNDEAD_COMBAT_DUMMY) {
+                    multiplier += 0.15;
+                }
+
+                if(Slayer.creatureMatches(player, npc.id())) {
+                    multiplier += 0.15;
+                }
+            }
+
+            //System.out.println("spell_maxhit here "+spell_maxhit);
 
             if (FormulaUtils.hasThammaronSceptre(player) && target != null && target.isNpc() && includeNpcMax) {
                 multiplier += 0.25;
@@ -80,6 +115,8 @@ public class MagicMaxHit {
             if (player.getEquipment().hasAt(EquipSlot.HEAD, TZKAL_SLAYER_HELMET_I)) {
                 multiplier += 0.03;//3% damage boost
             }
+
+            //System.out.println("spell_maxhit now "+spell_maxhit);
 
             /**
              * When wearing the clock of invisibility with an elder wand you get a 10% damage boost vs npcs
@@ -98,6 +135,8 @@ public class MagicMaxHit {
                     multiplier += 0.10;
                 }
             }
+
+            //System.out.println("spell_maxhit wa "+spell_maxhit);
 
             boolean ancientKingBlackDragonPet = player.hasPetOut("Ancient king black dragon");
             if(ancientKingBlackDragonPet && target != null && target.isNpc() && includeNpcMax) {
@@ -121,6 +160,8 @@ public class MagicMaxHit {
                 spell_maxhit = (int) (baseLevel * levelTimes);
             }
 
+            //System.out.println("spell_maxhit wonka "+spell_maxhit);
+
             // #Custom armour multipliers
             if (player.getEquipment().hasAt(EquipSlot.HEAD, DARK_SAGE_HAT) && target != null && target.isNpc() && includeNpcMax) {
                 multiplier += 0.05;//5% damage boost
@@ -134,7 +175,11 @@ public class MagicMaxHit {
                 multiplier += 0.10;//10.0% damage boost
             }
 
+            //System.out.println("spell_maxhit kozt "+spell_maxhit);
+
             int maxHit = (int) Math.round(spell_maxhit * multiplier);
+
+            //System.out.println("maxHit "+maxHit);
 
             // #Custom Armour effects
             if (player.getEquipment().hasAt(EquipSlot.AMULET, OCCULT_NECKLACE_OR) || player.getEquipment().hasAt(EquipSlot.HANDS, TORMENTED_BRACELET_OR)) {
@@ -212,6 +257,7 @@ public class MagicMaxHit {
                 boolean holy_staff = weapon == HOLY_SANGUINESTI_STAFF;
                 if (holy_staff) {
                     maxHit += 10;
+                    System.out.println("wut");
                 }
             }
             return maxHit;

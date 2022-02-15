@@ -193,7 +193,7 @@ public class Potions {
                 player.message("You need at least 51 hitpoints to drink this potion.");
                 return;
             }
-            if (player.getRaids() == null) {
+            if (player.getRaids() == null && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                 player.message("You can't use this potion outside of raids.");
                 return;
             }
