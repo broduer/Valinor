@@ -258,7 +258,7 @@ public class NpcDeath {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
                     if(!npc.ancientSpawn()) {
-                        Chain.bound(null).runFn(30, () -> {
+                        Chain.runGlobal(30, () -> {
                             var kingBlackDragon = new Npc(KING_BLACK_DRAGON, npc.spawnTile());
                             World.getWorld().getNpcs().add(kingBlackDragon);
                         });
@@ -293,7 +293,7 @@ public class NpcDeath {
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
 
                     if(!npc.ancientSpawn()) {
-                        Chain.bound(null).runFn(30, () -> {
+                        Chain.runGlobal(30, () -> {
                             var chaosElemental = new Npc(CHAOS_ELEMENTAL, npc.spawnTile());
                             World.getWorld().getNpcs().add(chaosElemental);
                         });
@@ -346,7 +346,7 @@ public class NpcDeath {
                 if (npc.id() == ANCIENT_BARRELCHEST) {
 
                     if(!npc.ancientSpawn()) {
-                        Chain.bound(null).runFn(30, () -> {
+                        Chain.runGlobal(30, () -> {
                             var barrelchest = new Npc(BARRELCHEST_6342, npc.spawnTile());
                             World.getWorld().getNpcs().add(barrelchest);
                         });
@@ -460,7 +460,7 @@ public class NpcDeath {
                         }
                     }
 
-                    case KERBEROS -> Chain.bound(null).runFn(30, () -> {
+                    case KERBEROS -> Chain.runGlobal(30, () -> {
                         var cerberus = new Npc(CERBERUS, npc.spawnTile());
                         World.getWorld().getNpcs().add(cerberus);
                     });
@@ -488,7 +488,7 @@ public class NpcDeath {
                         }
                     }
 
-                    case ARACHNE -> Chain.bound(null).runFn(30, () -> {
+                    case ARACHNE -> Chain.runGlobal(30, () -> {
                         var venenatis = new Npc(VENENATIS_6610, npc.spawnTile());
                         World.getWorld().getNpcs().add(venenatis);
                     });
@@ -504,7 +504,7 @@ public class NpcDeath {
                         }
                     }
 
-                    case ARTIO -> Chain.bound(null).runFn(30, () -> {
+                    case ARTIO -> Chain.runGlobal(30, () -> {
                         var callisto = new Npc(CALLISTO_6609, npc.spawnTile());
                         World.getWorld().getNpcs().add(callisto);
                     });
@@ -559,7 +559,7 @@ public class NpcDeath {
                         }
                     });
 
-                    Chain.bound(null).runFn(30, () -> {
+                    Chain.runGlobal(30, () -> {
                         var scorpia = new Npc(SCORPIA, npc.spawnTile());
                         World.getWorld().getNpcs().add(scorpia);
                     });
