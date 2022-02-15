@@ -611,6 +611,7 @@ public class EquipmentInfo {
                 case DRAGON_CROSSBOW:
                 case ARMADYL_CROSSBOW:
                 case DRAGON_HUNTER_CROSSBOW:
+                case TALONHAWK_CROSSBOW:
                 case 18357:
                     Mob target = player.getCombat().getTarget();
                     int animation = target == null ? 7552 : target.isPlayer() ? 4230 : 7552;
@@ -789,6 +790,7 @@ public class EquipmentInfo {
             case DRAGON_CROSSBOW:
             case ARMADYL_CROSSBOW:
             case DRAGON_HUNTER_CROSSBOW:
+            case TALONHAWK_CROSSBOW:
             case KARILS_CROSSBOW:
             case 4747: // Torag's hamers
             case 4958: // Torag's hamers

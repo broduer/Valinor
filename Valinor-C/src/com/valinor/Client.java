@@ -5889,7 +5889,7 @@ public class Client extends GameApplet {
             int x = second_menu_action - 4;
             int y = first_menu_action - 4;
             scene.requestMarkTile(x, y);
-            System.out.println("x " + x + "y " + y);
+            //System.out.println("x " + x + "y " + y);
         }
 
         // clicking tiles hello
