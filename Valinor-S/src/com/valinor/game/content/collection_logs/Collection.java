@@ -99,7 +99,7 @@ public enum Collection {
 
     KALPHITE_QUEEN(AttributeKey.KC_KQ, LogType.BOSSES, "Kalphite Queen", new int[]{NpcIdentifiers.KALPHITE_QUEEN_6501}, AttributeKey.KALPHITE_QUEEN_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(KALPHITE_PRINCESS), new Item(KQ_HEAD), new Item(JAR_OF_SAND), new Item(DRAGON_2H_SWORD), new Item(DRAGON_CHAINBODY)),
+        new Item(KALPHITE_PRINCESS), new Item(KQ_HEAD), new Item(JAR_OF_SAND), new Item(DRAGON_2H_SWORD), new Item(DRAGON_CHAINBODY_3140)),
 
     KING_BLACK_DRAGON(AttributeKey.KING_BLACK_DRAGONS_KILLED, LogType.BOSSES, "King Black Dragon", new int[]{NpcIdentifiers.KING_BLACK_DRAGON}, AttributeKey.KING_BLACK_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS, 2)},
         //Drops
@@ -131,7 +131,7 @@ public enum Collection {
 
     THERMONUCLEAR_SMOKE_DEVIL(AttributeKey.THERMONUCLEAR_SMOKE_DEVILS_KILLED, LogType.BOSSES, "Thermonuclear Smoke Devil", new int[]{NpcIdentifiers.THERMONUCLEAR_SMOKE_DEVIL}, AttributeKey.THERMONUCLEAR_SMOKE_DEVIL_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS), new Item(OCCULT_ORNAMENT_KIT)},
         //Drops
-        new Item(PET_SMOKE_DEVIL), new Item(OCCULT_NECKLACE), new Item(SMOKE_BATTLESTAFF), new Item(DRAGON_CHAINBODY)),
+        new Item(PET_SMOKE_DEVIL), new Item(OCCULT_NECKLACE), new Item(SMOKE_BATTLESTAFF), new Item(DRAGON_CHAINBODY_3140)),
 
     TZTOK_JAD(AttributeKey.JADS_KILLED, LogType.BOSSES, "Tztok-Jad", new int[]{NpcIdentifiers.TZTOKJAD}, AttributeKey.TZTOK_JAD_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
