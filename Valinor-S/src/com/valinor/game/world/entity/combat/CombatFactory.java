@@ -1137,7 +1137,8 @@ public class CombatFactory {
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if (npc.id() == TEKTON_ENRAGED_7544 && hit.getCombatType() != CombatType.MELEE) {
+                boolean isTekton = npc.id() == TEKTON_7541 || npc.id() == TEKTON_7542 || npc.id() == TEKTON_ENRAGED_7544 || npc.id() == TEKTON_ENRAGED_7544 || npc.id() == TEKTON_7545;
+                if (isTekton && hit.getCombatType() != CombatType.MELEE) {
                     hit.setDamage(0);
                 }
 
