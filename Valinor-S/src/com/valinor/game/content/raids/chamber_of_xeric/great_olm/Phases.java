@@ -21,17 +21,17 @@ public class Phases {
     public static void raisePower(Party party) {
         int random = World.getWorld().random(2);
         if(!party.getPhaseAttack().contains(phases[random])) {
-            party.teamMessage("The Basilisk rises with the power of " + phases[random] + ".");
+            party.teamMessage("Olm rises with the power of " + phases[random] + ".");
             party.getPhaseAttack().add(phases[random]);
         } else {
             if(!party.getPhaseAttack().contains(phases[0])) {
-                party.teamMessage("The Basilisk rises with the power of " + phases[0] + ".");
+                party.teamMessage("Olm rises with the power of " + phases[0] + ".");
                 party.getPhaseAttack().add(phases[0]);
             } else if(!party.getPhaseAttack().contains(phases[1])) {
-                party.teamMessage("The Basilisk rises with the power of " + phases[1] + ".");
+                party.teamMessage("Olm rises with the power of " + phases[1] + ".");
                 party.getPhaseAttack().add(phases[1]);
             } else if(!party.getPhaseAttack().contains(phases[2])) {
-                party.teamMessage("The Basilisk rises with the power of " + phases[2] + ".");
+                party.teamMessage("Olm rises with the power of " + phases[2] + ".");
                 party.getPhaseAttack().add(phases[2]);
             }
         }

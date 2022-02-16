@@ -25,7 +25,7 @@ public class FallingCrystals {
         party.getGreatOlmNpc().performGreatOlmAttack(party);
         party.setOlmAttackTimer(6);
 
-        party.teamMessage("The Basilisk sounds a cry...");
+        party.teamMessage("Olm sounds a cry...");
         TaskManager.submit(new Task("FallingCrystals:performAttackTask1",1, party, true) {
             int tick = 0;
 
@@ -41,7 +41,7 @@ public class FallingCrystals {
                     return;
                 }
                 if (tick == 1) {
-                   player.message(Color.RED.wrap("The Basilisk has chosen you as its target - watch out!"));
+                   player.message(Color.RED.wrap("Olm has chosen you as its target - watch out!"));
                 }
                 if (tick == 2) {
                     OlmAnimations.resetAnimation(party);

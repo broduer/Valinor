@@ -55,7 +55,7 @@ public class Swap {
                     party.getSwapPlayers().get(index).message("You have been paired with <col=FF0000>" + party.getSwapPlayers().get(index + 1).getUsername() + "</col>! The magical power will enact soon...");
                 } else {
                     if (party.getSwapPlayers().size() - 1 >= index)
-                        party.getSwapPlayers().get(index).message("The Basilisk had no one to pair you with! The magical power will enact soon...");
+                        party.getSwapPlayers().get(index).message("Olm had no one to pair you with! The magical power will enact soon...");
                 }
             }
             for (int index = 1; index < 6; index += 2) {
@@ -63,7 +63,7 @@ public class Swap {
                     party.getSwapPlayers().get(index).message("You have been paired with <col=FF0000>" + party.getSwapPlayers().get(index - 1).getUsername() + "</col>! The magical power will enact soon...");
                 } else {
                     if (party.getSwapPlayers().size() - 1 >= index)
-                        party.getSwapPlayers().get(index).message("The Basilisk had no one to pair you with! The magical power will enact soon...");
+                        party.getSwapPlayers().get(index).message("Olm had no one to pair you with! The magical power will enact soon...");
                 }
             }
         }).then(3, () -> {

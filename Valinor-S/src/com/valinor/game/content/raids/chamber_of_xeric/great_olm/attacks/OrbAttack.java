@@ -35,7 +35,7 @@ public class OrbAttack {
                 Player member = party.randomPartyPlayer();
                 if (member.getRaids() != null && member.getRaids().raiding(member) && GreatOlm.insideChamber(member)) {
                     if (!party.getPlayersToAttack().contains(member)) {
-                        member.message(sphereColors[i] + "The Basilisk fires a sphere of " + sphereNames[i] + " your way, </col>affecting your prayers.");
+                        member.message(sphereColors[i] + "Olm fires a sphere of " + sphereNames[i] + " your way, </col>affecting your prayers.");
                         Prayers.closeAllPrayers(member);
                         new Projectile(olm, member, 1341 + (i * 2), 25, olm.projectileSpeed(member), 70, 31, 0).sendProjectile();
                         party.getPlayersToAttack().add(member);

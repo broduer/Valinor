@@ -24,7 +24,7 @@ public class DeepBurn {
         Npc olm = party.getGreatOlmNpc();
         olm.performGreatOlmAttack(party);
         party.setOlmAttackTimer(6);
-        party.teamMessage("The Basilisk sounds a cry...");
+        party.teamMessage("Olm sounds a cry...");
 
         TaskManager.submit(new Task("DeepBurn:performAttackTask", 1, party, true) {
             int tick = 0;

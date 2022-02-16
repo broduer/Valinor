@@ -126,7 +126,7 @@ public class GreatOlm extends Npc {
 
                 if (!party.isLastPhaseStarted() && (party.getCurrentPhase() == 3 && party.isLeftHandDead() && party.isRightHandDead())) {
                     party.setLastPhaseStarted(true);
-                    party.teamMessage("The Basilisk is giving its all. This is its final stand.");
+                    party.teamMessage("Olm is giving its all. This is its final stand.");
                 }
 
                 if (party.getRightHandNpc().dead() || party.getRightHandNpc().hp() <= 0) {
@@ -198,7 +198,7 @@ public class GreatOlm extends Npc {
         party.setLeftHandProtected(true);
         Chain.bound(null).runFn(2, () -> {
             party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getLeftHandObject(), 7361));
-            party.teamMessage("The Basilisk's left claw clenches to protect itself temporarily.");
+            party.teamMessage("Olm's left claw clenches to protect itself temporarily.");
         });
     }
 
