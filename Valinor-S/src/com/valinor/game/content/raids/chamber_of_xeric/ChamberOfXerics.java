@@ -23,6 +23,8 @@ import com.valinor.util.Color;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
 import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.ObjectIdentifiers.*;
+import static com.valinor.util.ObjectIdentifiers.MEAT_TREE;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -51,6 +53,9 @@ public class ChamberOfXerics extends Raids {
 
         //Spawn all monsters
         spawnMonsters(player);
+
+        //Spawn all objects
+        spawnObjects(player);
     }
 
     @Override
@@ -60,10 +65,10 @@ public class ChamberOfXerics extends Raids {
         Party party = player.raidsParty;
 
         //Remove players from the party if they are not the leader
-        if(party != null) {
+        if (party != null) {
             party.removeMember(player);
             //Last player in the party leaves clear the whole thing
-            if(party.getMembers().size() == 0) {
+            if (party.getMembers().size() == 0) {
                 //Clear all party members that are left
                 Lists.newArrayList(party.getMembers()).forEach(party.getMembers()::remove);
                 clearParty(player);
@@ -72,7 +77,7 @@ public class ChamberOfXerics extends Raids {
         }
 
         //Reset points
-        player.putAttrib(PERSONAL_POINTS,0);
+        player.putAttrib(PERSONAL_POINTS, 0);
         player.message("<col=" + Color.BLUE.getColorValue() + ">You have restored your hitpoints, run energy and prayer.");
         player.message("<col=" + Color.HOTPINK.getColorValue() + ">You've also been cured of poison and venom.");
         player.skills().resetStats();
@@ -84,7 +89,7 @@ public class ChamberOfXerics extends Raids {
         Venom.cure(2, player);
 
         //Move outside of raids
-        if(!teleport) {
+        if (!teleport) {
             player.teleport(3097, 3478, 0);
         }
         player.getInterfaceManager().close(true);
@@ -111,17 +116,22 @@ public class ChamberOfXerics extends Raids {
     @Override
     public void clearParty(Player player) {
         Party party = player.raidsParty;
-        if(party == null) return;
-        if(party.monsters == null) {
+        if (party == null) return;
+        if (party.monsters == null) {
             return;
         }
-        for(Npc npc : party.monsters) {
+        for (Npc npc : party.monsters) {
             //If npc is alive remove them
-            if(npc.isRegistered() || !npc.dead()) {
+            if (npc.isRegistered() || !npc.dead()) {
                 World.getWorld().unregisterNpc(npc);
             }
         }
         party.monsters.clear();
+
+        for (GameObject obj : party.objects) {
+            ObjectManager.removeObj(obj);
+        }
+        party.objects.clear();
     }
 
     @Override
@@ -174,17 +184,14 @@ public class ChamberOfXerics extends Raids {
 
         //Create
         Npc vasa = new RaidsNpc(VASA_NISTIRIO, new Tile(3308, 5293, party.getHeight()), party.getSize());
-        Npc vanguard1 = new RaidsNpc(VANGUARD_7527, new Tile(3316,5326, party.getHeight()), party.getSize());
-        Npc vanguard2 = new RaidsNpc(VANGUARD_7528, new Tile(3313,5332, party.getHeight()), party.getSize());
-        Npc vanguard3 = new RaidsNpc(VANGUARD_7529, new Tile(3308,5329, party.getHeight()), party.getSize());
-        Npc tekton = new RaidsNpc(TEKTON_7541, new Tile(3313, 5295, party.getHeight()+1), party.getSize());
-        Npc babyMuttadile = new RaidsNpc(MUTTADILE_7562, new Tile(3308,5326,party.getHeight()+1), party.getSize());
-        Npc mommaMuttadile = new RaidsNpc(MUTTADILE, new Tile(3312,5330, party.getHeight()+1), party.getSize());
+        Npc vanguard1 = new RaidsNpc(VANGUARD_7527, new Tile(3316, 5326, party.getHeight()), party.getSize());
+        Npc vanguard2 = new RaidsNpc(VANGUARD_7528, new Tile(3313, 5332, party.getHeight()), party.getSize());
+        Npc vanguard3 = new RaidsNpc(VANGUARD_7529, new Tile(3308, 5329, party.getHeight()), party.getSize());
+        Npc tekton = new RaidsNpc(TEKTON_7541, new Tile(3313, 5295, party.getHeight() + 1), party.getSize());
+        Npc babyMuttadile = new RaidsNpc(MUTTADILE_7562, new Tile(3308, 5326, party.getHeight() + 1), party.getSize());
+        Npc mommaMuttadile = new RaidsNpc(MUTTADILE, new Tile(3312, 5330, party.getHeight() + 1), party.getSize());
         party.setMommaMuttadile(mommaMuttadile);
-        GameObject meatTree = new GameObject(30013, new Tile(3301,5320,party.getHeight()+1));
-        party.setMeatTree(meatTree);
-        ObjectManager.addObj(meatTree);
-        Npc vespula = new RaidsNpc(VESPULA, new Tile(3308,5295, party.getHeight()+2), party.getSize());
+        Npc vespula = new RaidsNpc(VESPULA, new Tile(3308, 5295, party.getHeight() + 2), party.getSize());
 
         //Spawn
         World.getWorld().registerNpc(vasa);
@@ -205,5 +212,33 @@ public class ChamberOfXerics extends Raids {
         party.monsters.add(babyMuttadile);
         party.monsters.add(mommaMuttadile);
         party.monsters.add(vespula);
+    }
+
+    private static final boolean SPAWN_CRYSTALS = false;
+
+    private void spawnObjects(Player player) {
+        //Get the raids party
+        Party party = player.raidsParty;
+
+        if(SPAWN_CRYSTALS) {
+            GameObject crystal = new GameObject(CRYSTAL_30017, new Tile(3310, 5305, party.getHeight() + 1)).spawn();
+            party.objects.add(crystal);
+
+            GameObject blocking = new GameObject(CRYSTAL_30016, new Tile(3312, 5307, party.getHeight())).spawn();
+            party.objects.add(blocking);
+
+            GameObject crystal1 = new GameObject(CRYSTAL_30017, new Tile(3311, 5340, party.getHeight())).spawn();
+            party.objects.add(crystal1);
+
+            GameObject crystal2 = new GameObject(CRYSTAL_30018, new Tile(3308, 5336, party.getHeight() + 1)).spawn();
+            party.objects.add(crystal2);
+
+            GameObject crystal3 = new GameObject(CRYSTAL_30018, new Tile(3311, 5308, party.getHeight() + 2)).spawn();
+            party.objects.add(crystal3);
+        }
+
+        GameObject meatTree = new GameObject(MEAT_TREE, new Tile(3301, 5320, party.getHeight() + 1)).spawn();
+        party.setMeatTree(meatTree);
+        party.objects.add(meatTree);
     }
 }

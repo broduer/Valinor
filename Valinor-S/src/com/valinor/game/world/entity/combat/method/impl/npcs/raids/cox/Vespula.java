@@ -99,7 +99,7 @@ public class Vespula extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 8;
+        return 12;
     }
 
     public void handleAfterHit(Hit hit) {

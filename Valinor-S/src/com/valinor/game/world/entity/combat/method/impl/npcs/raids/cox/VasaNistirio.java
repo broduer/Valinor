@@ -45,7 +45,7 @@ public class VasaNistirio extends CommonCombatMethod {
             Chain.bound(null).runFn(6, () -> {
                 World.getWorld().tileGraphic(1330, tile, 5, 0);
                 if (t.tile().equals(tile)) {
-                    t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.RANGED), 0, CombatType.RANGED).checkAccuracy().submit();
+                    t.hit(mob, CombatFactory.calcDamageFromType(mob, t, CombatType.RANGED));
                 }
             });
         }

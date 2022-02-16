@@ -17,6 +17,8 @@ import static com.valinor.game.world.entity.AttributeKey.MUTTADILE_EATING_STATE;
 import static com.valinor.game.world.entity.AttributeKey.MUTTADILE_HEAL_COUNT;
 import static com.valinor.util.NpcIdentifiers.MUTTADILE_7562;
 import static com.valinor.util.NpcIdentifiers.MUTTADILE_7563;
+import static com.valinor.util.ObjectIdentifiers.CRYSTAL_30017;
+import static com.valinor.util.ObjectIdentifiers.MEAT_TREE;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -44,6 +46,7 @@ public class Muttadile extends CommonCombatMethod {
                 if (party == null) return;
 
                 GameObject meatTree = party.getMeatTree();
+                //GameObject meatTree = party.getObject(MEAT_TREE, player, party);
                 if (npc.tile().isWithinDistance(meatTree.tile(), 2)) {
                     npc.noRetaliation(true);
                     npc.face(meatTree.tile());

@@ -4,6 +4,9 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.Droptable;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.ObjectManager;
+import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -28,6 +31,12 @@ public class MommaMuttadileDroptable implements Droptable {
 
                 //Delete the meat tree
                 ObjectManager.removeObj(party.getMeatTree());
+                //party.removeObject(MEAT_TREE, killer, party);
+
+                /*party.getObject(CRYSTAL_30018, killer, party).animate(7506);
+                Chain.bound(null).runFn(3, () -> {
+                    party.removeObject(CRYSTAL_30018, killer, party);
+                });*/
             }
         }
     }

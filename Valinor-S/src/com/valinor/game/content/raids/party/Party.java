@@ -824,4 +824,22 @@ public class Party {
     public void setRightHandNpc(Npc rightHandNpc) {
         this.rightHandNpc = rightHandNpc;
     }
+
+    public void removeObject(int id, Player player, Party party) {
+        for (GameObject obj : party.objects) {
+            //Check if the object matches the level and id
+            if(obj.tile().level == player.tile().level && obj.getId() == id) {
+                obj.remove();
+            }
+        }
+    }
+
+    public GameObject getObject(int id, Player player, Party party) {
+        for (GameObject obj : party.objects) {
+            if(obj.tile().level == player.tile().level && obj.getId() == id) {
+                return obj;
+            }
+        }
+        return null;
+    }
 }

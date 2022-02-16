@@ -155,6 +155,13 @@ public abstract class CommonCombatMethod implements CombatMethod {
 
     }
 
+    /**
+     * Handler functions
+     */
+    public void init(Mob mob) {
+
+    }
+
     public boolean canAttackStyle(Mob entity, Mob other, CombatType type) {
         //Specific combat style checks
         if (entity.isPlayer()) {

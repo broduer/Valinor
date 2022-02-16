@@ -3,6 +3,10 @@ package com.valinor.game.world.entity.mob.npc.droptables.impl.raids;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.droptables.Droptable;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.util.chainedwork.Chain;
+
+import static com.valinor.util.ObjectIdentifiers.CRYSTAL_30016;
+import static com.valinor.util.ObjectIdentifiers.CRYSTAL_30017;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -24,6 +28,11 @@ public class VasaNistirioDroptable implements Droptable {
                 party.setRaidStage(3);
                 party.teamMessage("<col=ef20ff>You may now progress to the next room!");
                 party.setKills(0);//Reset kills back to 0
+
+                /*party.getObject(CRYSTAL_30016, killer, party).animate(7506);
+                Chain.bound(null).runFn(3, () -> {
+                    party.removeObject(CRYSTAL_30016, killer, party);
+                });*/
             }
         }
     }

@@ -713,6 +713,10 @@ public class Npc extends Mob {
 
     public void setCombatMethod(CombatMethod combatMethod) {
         this.combatMethod = combatMethod;
+        if (this.combatMethod instanceof CommonCombatMethod) {
+            CommonCombatMethod o = (CommonCombatMethod) this.combatMethod;
+            o.init(this);
+        }
     }
 
     public SecondsTimer getImmunity() {
