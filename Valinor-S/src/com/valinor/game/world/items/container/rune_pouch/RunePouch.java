@@ -263,6 +263,11 @@ public class RunePouch extends ItemContainer {
             return;
         }
 
+        int inventoryAmount = player.inventory().count(item.getId());
+        if (inventoryAmount < amount) {
+            amount = inventoryAmount;
+        }
+
         player.inventory().remove(item.getId(), amount);
         player.getRunePouch().add(new Item(item.getId(), amount));
         refresh();
