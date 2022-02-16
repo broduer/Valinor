@@ -388,7 +388,7 @@
       "magic": 150,
       "ranged": 150,
       "defence": 160,
-      "hitpoints": 450
+      "hitpoints": 1000
     },
     "bonuses": {
       "stabdefence": 150,
@@ -428,7 +428,7 @@
       "magic": 150,
       "ranged": 215,
       "defence": 160,
-      "hitpoints": 450
+      "hitpoints": 1000
     },
     "bonuses": {
       "stabdefence": 55,
@@ -468,7 +468,7 @@
       "magic": 215,
       "ranged": 150,
       "defence": 160,
-      "hitpoints": 450
+      "hitpoints": 1000
     },
     "bonuses": {
       "stabdefence": 315,
@@ -665,7 +665,7 @@
 	  "magic": 205,
 	  "ranged": 1,
 	  "defence": 205,
-	  "hitpoints": 300
+	  "hitpoints": 3000
 	},
 	"bonuses": {
 	  "stabdefence": 155,
@@ -703,7 +703,7 @@
       "magic": 0,
       "ranged": 1,
       "defence": 205,
-      "hitpoints": 600
+      "hitpoints": 3000
     },
     "bonuses": {
       "stabdefence": 280,
@@ -743,7 +743,7 @@
       "magic": 88,
       "ranged": 150,
       "defence": 88,
-      "hitpoints": 1000
+      "hitpoints": 1500
     },
     "bonuses": {
       "stabdefence": 0,
@@ -783,7 +783,7 @@
       "magic": 88,
       "ranged": 150,
       "defence": 88,
-      "hitpoints": 1000
+      "hitpoints": 1500
     },
     "bonuses": {
       "stabdefence": 0,
