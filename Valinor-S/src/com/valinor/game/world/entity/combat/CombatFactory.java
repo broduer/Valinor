@@ -1754,14 +1754,15 @@ public class CombatFactory {
             return;
         }
 
-        if (!freezer.isRegistered()) {//freezer offline
+        boolean offScreen = freezer.tile().distance(mob.tile()) > 16;
+        if (offScreen || !freezer.isRegistered()) {//freezer offline
             mob.getTimers().cancel(TimerKey.FROZEN); //Remove frozen timer key
             mob.getTimers().cancel(TimerKey.REFREEZE); //Remove frozen timer key
             if (mob.isPlayer()) {
                 Player player = mob.getAsPlayer();
                 player.getPacketSender().sendEffectTimer(0, EffectTimer.FREEZE);
             }
-            //If freezer logged off, we get unfrozen.
+            //unfreeze as freezer is out of distance. Alt: If freezer logged off, we get unfrozen.
         }
     }
 
