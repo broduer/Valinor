@@ -954,7 +954,7 @@ public class CombatFactory {
         // single plus areas
         boolean isSinglePlusArea = CombatFactory.singlePlusArea(target);
         // target's last opponent is NPC
-        boolean interruptCombatWithNpc = targetLastAttacker != null && targetLastAttacker.isNpc() && !MultiwayCombat.includes(target) && isSinglePlusArea;
+        boolean interruptCombatWithNpc = targetLastAttacker != null && targetLastAttacker.isNpc() && !MultiwayCombat.includes(target) && isSinglePlusArea && attacker.isPlayer();
         if (targetLastAttackedTime < targTimeToPj && targetLastAttacker != null && targetLastAttacker != attacker && !interruptCombatWithNpc) {
             // Multiway check bro!
             if (target.isPlayer()) {
