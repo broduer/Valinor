@@ -100,6 +100,6 @@ public class Sotetseg extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 12;
+        return 24;
     }
 }

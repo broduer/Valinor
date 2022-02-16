@@ -43,6 +43,7 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
+        System.out.println("weee");
         set(mob, target);
         List<Mob> targets = getPossibleTargets(mob);
         final Tile tile = target.tile();
@@ -184,7 +185,7 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return mob.getAsNpc().id() == VERZIK_VITUR_8374 ? 4 : 32;
+        return 32;
     }
 
     @Override
@@ -208,6 +209,16 @@ public class VerzikVitur extends CommonCombatMethod {
             return transform(hit.getTarget(), ((Player) target));
         }
         return true;
+    }
+
+    @Override
+    public void process(Mob mob, Mob target) {
+        //For what ever reason we do not have a target, find a new one.
+        if(mob.getCombat().getTarget() == null) {
+            List<Mob> targets = getPossibleTargets(mob);
+            target = Utils.randomElement(targets);
+        }
+        super.process(mob, target);
     }
 
     private boolean transform(Mob mob, Player player) {
@@ -239,6 +250,7 @@ public class VerzikVitur extends CommonCombatMethod {
                 return mob.tile().equals(3167, 4311, mob.getZ());
             }, () -> {
                 GameObject gameObject = new GameObject(VERZIKS_THRONE_32737, new Tile(3167, 4324, mob.tile().level), 10, 0);
+                party.objects.add(gameObject);
                 gameObject.spawn();
                 mob.getAsNpc().transmog(VERZIK_VITUR_8372);
                 mob.getAsNpc().def(World.getWorld().definitions().get(NpcDefinition.class, VERZIK_VITUR_8372));
@@ -262,6 +274,7 @@ public class VerzikVitur extends CommonCombatMethod {
             mob.getAsNpc().transmog(VERZIK_VITUR_8375);
             Chain.bound(null).runFn(5, () -> World.getWorld().unregisterNpc(mob.getAsNpc()));
             GameObject gameObject = new GameObject(TREASURE_ROOM, new Tile(3167, 4324, mob.tile().level), 10, 0);
+            party.objects.add(gameObject);
             gameObject.spawn();
 
             List<Player> players = party.getMembers();

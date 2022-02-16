@@ -22,6 +22,7 @@ import com.valinor.game.world.position.Tile;
 import com.valinor.util.Color;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
+import static com.valinor.game.world.entity.AttributeKey.THEATRE_OF_BLOOD_POINTS;
 import static com.valinor.util.ItemIdentifiers.DAWNBRINGER;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.THE_MAIDEN_OF_SUGADINTI;
@@ -79,6 +80,7 @@ public class TheatreOfBlood extends Raids {
 
         //Reset points
         player.putAttrib(PERSONAL_POINTS,0);
+        player.putAttrib(THEATRE_OF_BLOOD_POINTS,0);
         player.message("<col=" + Color.BLUE.getColorValue() + ">You have restored your hitpoints, run energy and prayer.");
         player.message("<col=" + Color.HOTPINK.getColorValue() + ">You've also been cured of poison and venom.");
         player.skills().resetStats();

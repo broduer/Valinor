@@ -119,7 +119,7 @@ public class Xarpus extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 8;
+        return 24;
     }
 
     @Override

@@ -65,7 +65,7 @@ public class NylocasVasilias extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return form.getStyle() == CombatType.MELEE ? 2 : 8;
+        return form.getStyle() == CombatType.MELEE ? 2 : 24;
     }
 
     @Override
