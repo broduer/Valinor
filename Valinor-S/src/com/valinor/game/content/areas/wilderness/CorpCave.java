@@ -1,8 +1,10 @@
 package com.valinor.game.content.areas.wilderness;
 
+import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.timers.TimerKey;
 
@@ -20,8 +22,11 @@ public class CorpCave extends Interaction {
             }
 
             if(obj.getId() == CAVE) {
-                // from inside to outside to wildy
                 if (obj.tile().equals(3201, 3679)) {
+                    if (WildernessKeyPlugin.hasKey(player) && WildernessArea.inWilderness(player.tile())) {
+                        player.message("You cannot enter this cave with the Wilderness key.");
+                        return true;
+                    }
                     //Check to see if the player is teleblocked
                     if (player.getTimers().has(TimerKey.TELEBLOCK) || player.getTimers().has(TimerKey.SPECIAL_TELEBLOCK)) {
                         player.teleblockMessage();

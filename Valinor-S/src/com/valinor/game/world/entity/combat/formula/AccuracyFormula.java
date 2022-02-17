@@ -234,7 +234,7 @@ public class AccuracyFormula {
                 final Npc npc = (Npc) enemy;
 
                 if(npc.def() != null && npc.def().name != null && npc.def().name.equalsIgnoreCase("Nex") && style == CombatType.RANGED) {
-                    off_additional_bonus += 1.50;
+                    off_additional_bonus += 1.65;
                 }
 
                 AttackType attackType = player.getCombat().getFightType().getAttackType();
