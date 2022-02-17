@@ -172,14 +172,14 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create centaurs
-        Npc centaurMale = new RaidsNpc(MALE_CENTAUR, new Tile(3193, 4634, party.getHeight()), party.getSize());
-        Npc centaurMale2 = new RaidsNpc(MALE_CENTAUR, new Tile(3191, 4630, party.getHeight()), party.getSize());
-        Npc centaurMale3 = new RaidsNpc(MALE_CENTAUR, new Tile(3189, 4632, party.getHeight()), party.getSize());
-        Npc centaurMale4 = new RaidsNpc(MALE_CENTAUR, new Tile(3188, 4634, party.getHeight()), party.getSize());
-        Npc centaurFemale = new RaidsNpc(FEMALE_CENTAUR, new Tile(3184, 4628, party.getHeight()), party.getSize());
-        Npc centaurFemale2 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3184, 4632, party.getHeight()), party.getSize());
-        Npc centaurFemale3 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3180, 4635, party.getHeight()), party.getSize());
-        Npc centaurFemale4 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3179, 4629, party.getHeight()), party.getSize());
+        Npc centaurMale = new RaidsNpc(MALE_CENTAUR, new Tile(3193, 4634, party.getHeight()), party.getSize(), false);
+        Npc centaurMale2 = new RaidsNpc(MALE_CENTAUR, new Tile(3191, 4630, party.getHeight()), party.getSize(), false);
+        Npc centaurMale3 = new RaidsNpc(MALE_CENTAUR, new Tile(3189, 4632, party.getHeight()), party.getSize(), false);
+        Npc centaurMale4 = new RaidsNpc(MALE_CENTAUR, new Tile(3188, 4634, party.getHeight()), party.getSize(), false);
+        Npc centaurFemale = new RaidsNpc(FEMALE_CENTAUR, new Tile(3184, 4628, party.getHeight()), party.getSize(), false);
+        Npc centaurFemale2 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3184, 4632, party.getHeight()), party.getSize(), false);
+        Npc centaurFemale3 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3180, 4635, party.getHeight()), party.getSize(), false);
+        Npc centaurFemale4 = new RaidsNpc(FEMALE_CENTAUR, new Tile(3179, 4629, party.getHeight()), party.getSize(), false);
 
         //Spawn centaurs
         World.getWorld().registerNpc(centaurMale);
@@ -205,13 +205,13 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create dementors
-        Npc dementor = new RaidsNpc(DEMENTOR, new Tile(3155, 4612, party.getHeight()), party.getSize());
-        Npc dementor2 = new RaidsNpc(DEMENTOR, new Tile(3159, 4615, party.getHeight()), party.getSize());
-        Npc dementor3 = new RaidsNpc(DEMENTOR, new Tile(3163, 4614, party.getHeight()), party.getSize());
-        Npc dementor4 = new RaidsNpc(DEMENTOR, new Tile(3160, 4619, party.getHeight()), party.getSize());
-        Npc dementor5 = new RaidsNpc(DEMENTOR, new Tile(3155, 4616, party.getHeight()), party.getSize());
-        Npc dementor6 = new RaidsNpc(DEMENTOR, new Tile(3155, 4621, party.getHeight()), party.getSize());
-        Npc dementor7 = new RaidsNpc(DEMENTOR, new Tile(3161, 4621, party.getHeight()), party.getSize());
+        Npc dementor = new RaidsNpc(DEMENTOR, new Tile(3155, 4612, party.getHeight()), party.getSize(), false);
+        Npc dementor2 = new RaidsNpc(DEMENTOR, new Tile(3159, 4615, party.getHeight()), party.getSize(), false);
+        Npc dementor3 = new RaidsNpc(DEMENTOR, new Tile(3163, 4614, party.getHeight()), party.getSize(), false);
+        Npc dementor4 = new RaidsNpc(DEMENTOR, new Tile(3160, 4619, party.getHeight()), party.getSize(), false);
+        Npc dementor5 = new RaidsNpc(DEMENTOR, new Tile(3155, 4616, party.getHeight()), party.getSize(), false);
+        Npc dementor6 = new RaidsNpc(DEMENTOR, new Tile(3155, 4621, party.getHeight()), party.getSize(), false);
+        Npc dementor7 = new RaidsNpc(DEMENTOR, new Tile(3161, 4621, party.getHeight()), party.getSize(), false);
         //Spawn dementors
         World.getWorld().registerNpc(dementor);
         party.monsters.add(dementor);
@@ -234,7 +234,7 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create fluffy
-        Npc fluffy = new RaidsNpc(FLUFFY, new Tile(3139, 4563, party.getHeight()), party.getSize());
+        Npc fluffy = new RaidsNpc(FLUFFY, new Tile(3139, 4563, party.getHeight()), party.getSize(), false);
         //Spawn fluffy
         World.getWorld().registerNpc(fluffy);
         party.monsters.add(fluffy);
@@ -245,7 +245,7 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create aragog
-        Npc aragog = new RaidsNpc(ARAGOG, new Tile(3186, 4558, party.getHeight()), party.getSize());
+        Npc aragog = new RaidsNpc(ARAGOG, new Tile(3186, 4558, party.getHeight()), party.getSize(), false);
 
         //Spawn aragog
         World.getWorld().registerNpc(aragog);
@@ -257,14 +257,14 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create minions
-        Npc minion1 = new RaidsNpc(ARAGOG_MINION, new Tile(3188, 4552, party.getHeight()), party.getSize());
-        Npc minion2 = new RaidsNpc(ARAGOG_MINION, new Tile(3192, 4554, party.getHeight()), party.getSize());
-        Npc minion3 = new RaidsNpc(ARAGOG_MINION, new Tile(3191, 4561, party.getHeight()), party.getSize());
-        Npc minion4 = new RaidsNpc(ARAGOG_MINION, new Tile(3188, 4564, party.getHeight()), party.getSize());
-        Npc minion5 = new RaidsNpc(ARAGOG_MINION, new Tile(3184, 4567, party.getHeight()), party.getSize());
-        Npc minion6 = new RaidsNpc(ARAGOG_MINION, new Tile(3179, 4563, party.getHeight()), party.getSize());
-        Npc minion7 = new RaidsNpc(ARAGOG_MINION, new Tile(3179, 4558, party.getHeight()), party.getSize());
-        Npc minion8 = new RaidsNpc(ARAGOG_MINION, new Tile(3182, 4553, party.getHeight()), party.getSize());
+        Npc minion1 = new RaidsNpc(ARAGOG_MINION, new Tile(3188, 4552, party.getHeight()), party.getSize(), false);
+        Npc minion2 = new RaidsNpc(ARAGOG_MINION, new Tile(3192, 4554, party.getHeight()), party.getSize(), false);
+        Npc minion3 = new RaidsNpc(ARAGOG_MINION, new Tile(3191, 4561, party.getHeight()), party.getSize(), false);
+        Npc minion4 = new RaidsNpc(ARAGOG_MINION, new Tile(3188, 4564, party.getHeight()), party.getSize(), false);
+        Npc minion5 = new RaidsNpc(ARAGOG_MINION, new Tile(3184, 4567, party.getHeight()), party.getSize(), false);
+        Npc minion6 = new RaidsNpc(ARAGOG_MINION, new Tile(3179, 4563, party.getHeight()), party.getSize(), false);
+        Npc minion7 = new RaidsNpc(ARAGOG_MINION, new Tile(3179, 4558, party.getHeight()), party.getSize(), false);
+        Npc minion8 = new RaidsNpc(ARAGOG_MINION, new Tile(3182, 4553, party.getHeight()), party.getSize(), false);
 
         //Spawn minions
         World.getWorld().registerNpc(minion1);
@@ -292,8 +292,8 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create hungarian horntails
-        Npc hungarianHorntail = new RaidsNpc(HUNGARIAN_HORNTAIL, new Tile(3186, 4564, party.getHeight()), party.getSize());
-        Npc hungarianHorntail2 = new RaidsNpc(HUNGARIAN_HORNTAIL, new Tile(3190, 4551, party.getHeight()), party.getSize());
+        Npc hungarianHorntail = new RaidsNpc(HUNGARIAN_HORNTAIL, new Tile(3186, 4564, party.getHeight()), party.getSize(), false);
+        Npc hungarianHorntail2 = new RaidsNpc(HUNGARIAN_HORNTAIL, new Tile(3190, 4551, party.getHeight()), party.getSize(), false);
         //Spawn horntails
         World.getWorld().registerNpc(hungarianHorntail);
         party.monsters.add(hungarianHorntail);
@@ -306,7 +306,7 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create fenrir greyback
-        Npc fenrirGreyback = new RaidsNpc(FENRIR_GREYBACK, new Tile(3192, 4599, party.getHeight()), party.getSize());
+        Npc fenrirGreyback = new RaidsNpc(FENRIR_GREYBACK, new Tile(3192, 4599, party.getHeight()), party.getSize(), false);
         //Spawn fenrir greyback
         World.getWorld().registerNpc(fenrirGreyback);
         party.monsters.add(fenrirGreyback);
@@ -317,7 +317,7 @@ public class ChamberOfSecrets extends Raids {
         Party party = player.raidsParty;
 
         //Create lord voldemort instance
-        Npc lordVoldemort = new RaidsNpc(LORD_VOLDEMORT, new Tile(3150, 4661, party.getHeight()), party.getSize());
+        Npc lordVoldemort = new RaidsNpc(LORD_VOLDEMORT, new Tile(3150, 4661, party.getHeight()), party.getSize(), false);
         //Spawn the lord voldemort
         World.getWorld().registerNpc(lordVoldemort);
         party.monsters.add(lordVoldemort);
