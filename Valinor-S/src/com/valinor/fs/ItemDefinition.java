@@ -76,7 +76,6 @@ public class ItemDefinition implements Definition {
     public boolean isCrystal;
     public boolean tradeable_special_items;
     public boolean changes;
-    public boolean autoKeptOnDeath;
     public ProtectionValue protectionValue;
     public boolean pvpSpawnable;
 
@@ -103,11 +102,6 @@ public class ItemDefinition implements Definition {
         boolean clear_options = itemsToClear.stream().anyMatch(item -> item == id);
         if (clear_options) {
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
-        }
-
-        boolean replace_drop_with_destroy = Arrays.stream(Item.AUTO_KEPT_LIST).anyMatch(auto_kept_id -> auto_kept_id == id);
-        if (replace_drop_with_destroy) {
-            ioptions = new String[]{null, null, null, null, "Destroy"};
         }
 
         if (name.contains("slayer helmet") || name.contains("Slayer helmet")) {
@@ -232,9 +226,11 @@ public class ItemDefinition implements Definition {
             grandexchange = false;
         } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
+            grandexchange = false;
             ioptions = new String[]{"Read", null, null, null, "Destroy"};
         } else if (id == PVMING_SCROLL) {
             name = "Pvming scroll";
+            grandexchange = false;
             ioptions = new String[]{"Read", null, null, null, "Destroy"};
         } else if (id == TASK_BOTTLE_SKILLING) {
             name = "Task bottle (skilling)";
@@ -396,29 +392,34 @@ public class ItemDefinition implements Definition {
             noteModel = -1;
         } else if (id == VETERAN_PARTYHAT) {
             name = "Veteran partyhat";
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
         } else if (id == VETERAN_HWEEN_MASK) {
             name = "Veteran halloween mask";
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
         } else if (id == VETERAN_SANTA_HAT) {
             name = "Veteran santa hat";
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
         } else if (id == BEGINNER_WEAPON_PACK) {
+            grandexchange = false;
             name = "Beginner weapon pack";
             ioptions = new String[]{"Open", null, null, null, "Destroy"};
         } else if (id == BEGINNER_DRAGON_CLAWS) {
+            grandexchange = false;
             name = "Beginner dragon claws";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
         } else if (id == BEGINNER_AGS) {
+            grandexchange = false;
             name = "Beginner AGS";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
         } else if (id == BEGINNER_CHAINMACE) {
+            grandexchange = false;
             name = "Beginner chainmace";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
         } else if (id == BEGINNER_CRAWS_BOW) {
+            grandexchange = false;
             name = "Beginner craw's bow";
             ioptions = new String[]{null, "Wield", null, null, "Destroy"};
         } else if (id == ZRIAWK) {
@@ -543,6 +544,7 @@ public class ItemDefinition implements Definition {
             cost = 25_000_000;
         } else if (id == TASK_BOTTLE_CASKET) {
             name = "Task bottle casket";
+            grandexchange = true;
             ioptions = new String[]{"Open", null, null, null, "Drop"};
         } else if (id == BLOOD_FIREBIRD) {
             name = "Blood firebird pet";
@@ -661,6 +663,7 @@ public class ItemDefinition implements Definition {
             noteModel = -1;
             name = "Rune pouch (i)";
             ioptions = new String[]{"Open", null, null, "Empty", "Destroy"};
+            grandexchange = false;
         } else if (id == DOUBLE_DROPS_LAMP) {
             name = "Double drops lamp";
             grandexchange = true;
@@ -736,6 +739,7 @@ public class ItemDefinition implements Definition {
         } else if (id == HOME_TELEPORT) {
             name = "Home teleport";
         } else if (id == VENGEANCE_SKULL) {
+            grandexchange = false;
             name = "Vengeance";
         } else if (id == LAVA_PARTYHAT) {
             stackable = false;
@@ -852,6 +856,7 @@ public class ItemDefinition implements Definition {
             grandexchange = true;
             cost = 40_000_000;
         } else if (id == ELDER_WAND_RAIDS) {
+            grandexchange = false;
             name = "Elder wand (raids)";
         } else if (id == CLOAK_OF_INVISIBILITY) {
             name = "Cloak of invisibility";
@@ -954,27 +959,28 @@ public class ItemDefinition implements Definition {
         } else if (id == PET_KREE_ARRA_WHITE) {
             name = "Pet kree'arra (white)";
             stackable = false;
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, null, null, "Wipe-off paint", null};
         } else if (id == PET_ZILYANA_WHITE) {
             name = "Pet zilyana (white)";
             stackable = false;
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, null, null, "Wipe-off paint", null};
         } else if (id == PET_GENERAL_GRAARDOR_BLACK) {
             name = "Pet general graardor (black)";
             stackable = false;
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, null, null, "Wipe-off paint", null};
         } else if (id == PET_KRIL_TSUTSAROTH_BLACK) {
             name = "Pet k'ril tsutsaroth (black)";
             stackable = false;
-            grandexchange = true;
+            grandexchange = false;
             ioptions = new String[]{null, null, null, "Wipe-off paint", null};
         } else if (id == GUTHANS_ARMOUR_SET || id == VERACS_ARMOUR_SET || id == DHAROKS_ARMOUR_SET || id == TORAGS_ARMOUR_SET || id == AHRIMS_ARMOUR_SET || id == KARILS_ARMOUR_SET) {
             ioptions = new String[5];
             ioptions[0] = "Open";
         } else if (id == MAGMA_BLOWPIPE) {
+            grandexchange = false;
             name = "Magma blowpipe";
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
             cost = 13_000_000;

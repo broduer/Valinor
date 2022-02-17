@@ -69,7 +69,7 @@ public enum CombatSpecial {
 
     DRAGON_BATTLEAXE(new int[]{ItemIdentifiers.DRAGON_BATTLEAXE}, 100, 1.0, 1.0, null, WeaponType.AXE),
     BARRELCHEST_ANCHOR(new int[]{ItemIdentifiers.BARRELCHEST_ANCHOR}, 50, 1.0, 1.10, new BarrelchestAnchor(), WeaponType.MACE),
-    GRANITE_MAUL(new int[]{ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225, GRANITE_MAUL_24944}, 50, 1.0, 1.10, new GraniteMaul(), WeaponType.HAMMER),
+    GRANITE_MAUL(new int[]{ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225}, 50, 1.0, 1.10, new GraniteMaul(), WeaponType.HAMMER),
     DRAGON_LONGSWORD(new int[]{ItemIdentifiers.DRAGON_LONGSWORD}, 25, 1.25, 1.25, new DragonLongsword(), WeaponType.LONGSWORD),
     DRAGON_DAGGER(new int[]{ItemIdentifiers.DRAGON_DAGGER, ItemIdentifiers.DRAGON_DAGGERP, ItemIdentifiers.DRAGON_DAGGERP_5680, ItemIdentifiers.DRAGON_DAGGERP_5698, ItemIdentifiers.DRAGON_DAGGER_20407}, 25, 1.15, 1.15, new DragonDagger(), WeaponType.DAGGER),
     ABYSSAL_DAGGER(new int[]{ItemIdentifiers.ABYSSAL_DAGGER, ItemIdentifiers.ABYSSAL_DAGGER_P, ItemIdentifiers.ABYSSAL_DAGGER_P_13269, ItemIdentifiers.ABYSSAL_DAGGER_P_13271}, 50, 0.85, 1.25, new AbyssalDagger(), WeaponType.DAGGER),

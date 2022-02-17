@@ -426,7 +426,7 @@ public class Trading {
         boolean illegalItem = false;
         Item tradeItem = new Item(id, amount);
 
-        if (!tradeItem.rawtradable()) {
+        if (tradeItem.untradeable() && !tradeItem.definition(World.getWorld()).tradeable_special_items) {
             illegalItem = true;
         }
 

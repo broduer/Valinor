@@ -4,6 +4,7 @@ import com.valinor.fs.ItemDefinition;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
@@ -187,9 +188,9 @@ public class ItemsKeptOnDeath {
         boolean fcheck = true;
         if (fcheck)
         toDrop.forEach(item -> {
-
-            boolean always_kept = item.definition(World.getWorld()).autoKeptOnDeath;
+            boolean always_kept = item.untradeable();
             // 6 items *
+            //System.out.println("checking "+item.getId()+" "+item.untradeable()+" "+always_kept);
 
             //System.out.println("running the pvp check");
             if ((always_kept) && !changes(item)) {
@@ -217,21 +218,20 @@ public class ItemsKeptOnDeath {
         if (head.definition(World.getWorld()).tradeable_special_items) {
             return true;
         }
-        if (head.definition(World.getWorld()).autoKeptOnDeath &&
-            (head.getId() != ItemIdentifiers.SARAS_BLESSED_SWORD_FULL || head.getId() != ItemIdentifiers.SARADOMINS_BLESSED_SWORD)) {
+        if ((head.getId() != ItemIdentifiers.SARAS_BLESSED_SWORD_FULL || head.getId() != ItemIdentifiers.SARADOMINS_BLESSED_SWORD)) {
             // items like artifacts that convert to tier-1 are not kept
             if (changes(head)) {
                 return false;
             }
             // autokept if untradable
-            return !head.rawtradable();
+            return head.untradeable();
         }
         return false;
     }
 
     /**
      * anything that isn't always kept, stuff that converts, zulrah, things with charges, etc
-     * mimics {@link com.valinor.game.task.impl.Death#dropItems(Player, Mob)} {@code toDrop.foreach() block}
+     * mimics {@link com.valinor.game.content.mechanics.ItemsOnDeath#droplootToKiller(Player, Mob)}  {@code toDrop.foreach() block}
      */
     private static boolean changes(Item item) {
         return item.definition(World.getWorld()).changes;

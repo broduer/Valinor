@@ -81,10 +81,6 @@ public class Item implements Cloneable {
     }
 
     private static void checkDefs() {
-        for (int i : AUTO_KEPT_LIST) {
-            ItemDefinition definition = World.getWorld().definitions().get(ItemDefinition.class, i);
-            definition.autoKeptOnDeath = true;
-        }
         for (AncientArtifacts value : AncientArtifacts.values()) {
             ItemDefinition definition = World.getWorld().definitions().get(ItemDefinition.class, value.getItemId());
             definition.changes = true;
@@ -96,10 +92,11 @@ public class Item implements Cloneable {
                 World.getWorld().definitions().get(ItemDefinition.class, SARAS_BLESSED_SWORD_FULL).isCrystal = true;
             }
         }
+
         int[] tradeable_special_items = {
-            SALVE_AMULET, SALVE_AMULETI, VENGEANCE_SKULL, FEROCIOUS_GLOVES, RING_OF_MANHUNTING, AVERNIC_DEFENDER, INFERNAL_CAPE, TWISTED_SLAYER_HELMET_I,
-            RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY,
-            GRANITE_MAUL_24944, FAWKES_32937,
+            FEROCIOUS_GLOVES, AVERNIC_DEFENDER, INFERNAL_CAPE, RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY,
+            RING_OF_MANHUNTING, CORRUPTED_RANGER_GAUNTLETS, FAWKES_32937, TASK_BOTTLE_SKILLING, TASK_BOTTLE_PVMING,
+            TASK_BOTTLE_CASKET, RING_OF_VIGOUR,
         };
 
         for (int i : tradeable_special_items) {
@@ -390,6 +387,10 @@ public class Item implements Cloneable {
         return (def == null || id == ItemIdentifiers.PLATINUM_TOKEN || id == COINS_995 || def.grandexchange || def.noteModel > 0 || def.notelink > 0);
     }
 
+    public boolean untradeable() {
+        return !rawtradable();
+    }
+
     public String name() {
         ItemDefinition def = definition(World.getWorld());
         if (def == null) {
@@ -397,92 +398,6 @@ public class Item implements Cloneable {
         }
         return def.name;
     }
-
-    // These untradable items will be sent to the inventory or bank on death.
-    public static final int[] AUTO_KEPT_LIST = new int[]{
-        RING_OF_TRINITY, RING_OF_PRECISION, RING_OF_SORCERY, FEROCIOUS_GLOVES, RING_OF_MANHUNTING, CORRUPTED_RANGER_GAUNTLETS,
-        COAL_BAG, IMCANDO_HAMMER, GOLDSMITH_GAUNTLETS, COOKING_GAUNTLETS, MAGIC_SECATEURS, EXPLORERS_RING_4, RADAS_BLESSING_4, RING_OF_CHAROSA, ARDOUGNE_CLOAK_4,
-        BONECRUSHER, FIGHTER_HAT, SKILLING_SCROLL, TASK_BOTTLE_SKILLING, TASK_BOTTLE_PVMING, TASK_BOTTLE_CASKET, PVMING_SCROLL,
-        MAX_CAPE, FIRE_MAX_CAPE, SARADOMIN_MAX_CAPE, ZAMORAK_MAX_CAPE, GUTHIX_MAX_CAPE, ACCUMULATOR_MAX_CAPE, MAX_CAPE_13342, ARDOUGNE_MAX_CAPE, INFERNAL_MAX_CAPE_21285, IMBUED_SARADOMIN_MAX_CAPE, IMBUED_ZAMORAK_MAX_CAPE, IMBUED_GUTHIX_MAX_CAPE, ASSEMBLER_MAX_CAPE, MYTHICAL_MAX_CAPE,
-        SLAYER_HELMET, SLAYER_HELMET_I, BLACK_SLAYER_HELMET, BLACK_SLAYER_HELMET_I, GREEN_SLAYER_HELMET, GREEN_SLAYER_HELMET_I, RED_SLAYER_HELMET,
-        RED_SLAYER_HELMET_I, PURPLE_SLAYER_HELMET, PURPLE_SLAYER_HELMET_I, TURQUOISE_SLAYER_HELMET, TURQUOISE_SLAYER_HELMET_I, HYDRA_SLAYER_HELMET,
-        HYDRA_SLAYER_HELMET_I, TWISTED_SLAYER_HELMET, TWISTED_SLAYER_HELMET_I, SLAYER_HELMET_I_25177, BLACK_SLAYER_HELMET_I_25179, GREEN_SLAYER_HELMET_I_25181,
-        RED_SLAYER_HELMET_I_25183, PURPLE_SLAYER_HELMET_I_25185, TURQUOISE_SLAYER_HELMET_I_25187, HYDRA_SLAYER_HELMET_I_25189, TWISTED_SLAYER_HELMET_I_25191,
-        TZTOK_SLAYER_HELMET, TZTOK_SLAYER_HELMET_I, TZTOK_SLAYER_HELMET_I_25902, VAMPYRIC_SLAYER_HELMET, VAMPYRIC_SLAYER_HELMET_I, VAMPYRIC_SLAYER_HELMET_I_25908,
-        TZKAL_SLAYER_HELMET, TZKAL_SLAYER_HELMET_I, TZKAL_SLAYER_HELMET_I_25914,
-        SALVE_AMULET,
-        SALVE_AMULETI,
-        VENGEANCE_SKULL,
-        INFERNAL_CAPE,
-        RING_OF_WEALTH_I,
-        AVAS_ASSEMBLER,
-        AVAS_ACCUMULATOR,
-        BRONZE_DEFENDER,
-        IRON_DEFENDER,
-        BLACK_DEFENDER,
-        MITHRIL_DEFENDER,
-        ADAMANT_DEFENDER,
-        RUNE_DEFENDER,
-        DRAGON_DEFENDER,
-        AVERNIC_DEFENDER,
-        IMBUED_SARADOMIN_CAPE,
-        IMBUED_GUTHIX_CAPE,
-        IMBUED_ZAMORAK_CAPE,
-        VOID_MAGE_HELM,
-        VOID_RANGER_HELM,
-        VOID_MELEE_HELM,
-        VOID_KNIGHT_TOP,
-        VOID_KNIGHT_ROBE,
-        VOID_KNIGHT_GLOVES,
-        ELITE_VOID_TOP,
-        ELITE_VOID_ROBE,
-        FIRE_CAPE,
-        FIGHTER_TORSO,
-        ELDER_WAND_RAIDS,
-        KILLERS_KNIFE_21059,
-        BEGINNER_WEAPON_PACK,
-        BEGINNER_DRAGON_CLAWS,
-        BEGINNER_AGS,
-        BEGINNER_CHAINMACE,
-        BEGINNER_CRAWS_BOW,
-        VETERAN_HWEEN_MASK,
-        VETERAN_PARTYHAT,
-        VETERAN_SANTA_HAT,
-        BLOOD_FIREBIRD,
-        RING_OF_VIGOUR,
-        MAGMA_BLOWPIPE,
-        SARADOMIN_CAPE,
-        ZAMORAK_CAPE,
-        GUTHIX_CAPE,
-        MYTHICAL_CAPE_22114,
-        ARDOUGNE_CLOAK_4,
-        MITHRIL_GLOVES,
-        ADAMANT_GLOVES,
-        BARROWS_GLOVES,
-        HEALER_HAT,
-        RUNNER_HAT,
-        RANGER_HAT,
-        RUNNER_BOOTS,
-        PENANCE_SKIRT,
-        ARDOUGNE_CLOAK_4,
-        FEROCIOUS_GLOVES,
-        ROYAL_SEED_POD,
-        AVAS_ASSEMBLER,
-        VENGEANCE_SKULL,
-        PET_KREE_ARRA_WHITE,
-        PET_ZILYANA_WHITE,
-        PET_GENERAL_GRAARDOR_BLACK,
-        PET_KRIL_TSUTSAROTH_BLACK,
-        RUNE_POUCH_I,
-        DOUBLE_DROPS_LAMP,
-        RING_OF_MANHUNTING,
-        VALINOR_COINS,
-        ATTACKER_ICON,
-        COLLECTOR_ICON,
-        DEFENDER_ICON,
-        HEALER_ICON,
-        MAGIC_SHORTBOW_I,
-    };
 
     // Variants of crystal bow, shield, halberd, (i)
     // Note this does NOT INCLUDE 4212 ('new' bow) or 4224 ('new' shield)

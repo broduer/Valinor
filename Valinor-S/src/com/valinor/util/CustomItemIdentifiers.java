@@ -119,7 +119,6 @@ public class CustomItemIdentifiers {
     public static final int PURPLE_HWEEN_MASK = 32554;
     public static final int LIME_GREEN_HWEEN_MASK = 32555;
     public static final int FAWKES_32937 = 32937;
-    public static final int GRANITE_MAUL_24944 = 24944;
     public static final int TOXIC_STAFF_OF_THE_DEAD_C = 32006;
     public static final int RING_OF_ELYSIAN = 32005;
     public static final int KERBEROS_PET = 32300;
