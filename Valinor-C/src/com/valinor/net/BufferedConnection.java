@@ -53,7 +53,7 @@ public final class BufferedConnection implements Runnable {
             return inputStream.available();
     }
 
-    public void flushInputStream(byte abyte0[], int j) throws IOException {
+    public void readInputStream(byte abyte0[], int j) throws IOException {
         int i = 0;// was parameter
         if (closed)
             return;
@@ -140,7 +140,7 @@ public final class BufferedConnection implements Runnable {
     }
 
     private InputStream inputStream;
-    private OutputStream outputStream;
+    public OutputStream outputStream;
     private final Socket socket;
     private boolean closed;
     private final GameApplet rsApplet;

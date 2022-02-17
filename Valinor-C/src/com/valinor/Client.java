@@ -4989,7 +4989,7 @@ public class Client extends GameApplet {
         timeoutCounter++;
         //System.out.println(timeoutCounter);
         if (timeoutCounter > 750) {
-            System.out.println("huh");
+            //Because
             addReportToServer("Connection timed out at counter " + timeoutCounter + " (" + (int) ((timeoutCounter / 30) * 0.6) + " secs), dropping client");
             try {
                 addReportToServer("Dropping client, not a normal logout.");
@@ -5005,7 +5005,11 @@ public class Client extends GameApplet {
         forceNPCUpdateBlock();
         processTrackUpdates();
         processMobChatText();
-        processLagReports();
+        try {
+            processLagReports();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         animation_step++;
         if (crossType != 0) {
             crossIndex += 20;
@@ -9359,7 +9363,7 @@ public class Client extends GameApplet {
 
             if (response == 0) {
 
-                socketStream.flushInputStream(incoming.payload, 8);
+                socketStream.readInputStream(incoming.payload, 8);
                 incoming.pos = 0;
                 serverSeed = incoming.readLong(); // aka server session key
                 int[] seed = new int[4];
@@ -15753,7 +15757,7 @@ public class Client extends GameApplet {
 
             // Read opcode...
             if (opcode == -1) {
-                socketStream.flushInputStream(incoming.payload, 1);
+                socketStream.readInputStream(incoming.payload, 1);
                 opcode = incoming.payload[0] & 0xff;
                 if (encryption != null)
                     opcode = opcode - encryption.value() & 0xff;
@@ -15771,7 +15775,7 @@ public class Client extends GameApplet {
             // Read size
             if (packetSize == -1)
                 if (available > 0) {
-                    socketStream.flushInputStream(incoming.payload, 1);
+                    socketStream.readInputStream(incoming.payload, 1);
                     packetSize = incoming.payload[0] & 0xff;
                     available--;
                 } else {
@@ -15780,7 +15784,7 @@ public class Client extends GameApplet {
 
             if (packetSize == -2)
                 if (available > 1) {
-                    socketStream.flushInputStream(incoming.payload, 2);
+                    socketStream.readInputStream(incoming.payload, 2);
                     incoming.pos = 0;
                     packetSize = incoming.readUShort();
                     available -= 2;
@@ -15794,7 +15798,7 @@ public class Client extends GameApplet {
             }
 
             incoming.pos = 0;
-            socketStream.flushInputStream(incoming.payload, packetSize);
+            socketStream.readInputStream(incoming.payload, packetSize);
             timeoutCounter = 0;
             thirdLastOpcode = secondLastOpcode;
             secondLastOpcode = lastOpcode;
@@ -17545,32 +17549,35 @@ public class Client extends GameApplet {
     static final Deque<String> reports = new java.util.LinkedList<>();
 
     public static void addReportToServer(String s) {
-        System.out.println("waa");
         if (reports != null) {
-            System.out.println("weee");
             // append newest to end
             reports.addLast(s);
         }
     }
 
-    private void processLagReports() {
+    private void processLagReports() throws IOException {
         if (reports.isEmpty()) {
-            System.out.println("hmm");
             return;
         }
+        BufferedConnection temp =new BufferedConnection(this, openSocket(ClientConstants.SERVER_PORT));
         for (int i = 0; i < reports.size(); i++) {
             if (reports.isEmpty()) {
-                System.out.println("hmm1");
                 break;
             }
             String text = reports.pop();
             if (text == null) {
-                System.out.println("hmm2");
                 return;
             }
-            System.out.println("rep: "+text);
-            packetSender.sendClientReport(text);
+            text = text.substring(0, Math.min(text.length(), 120)); // just to be safe
+            Buffer temp2 = new Buffer(new byte[1 + 1 + 128]);
+            temp2.pos = 0;
+            temp2.writeByte(69);
+            temp2.writeByte(text.length() + 1); // max size 0-255
+            temp2.writeString(text);
+            temp.outputStream.write(temp2.payload, 0, temp2.pos);
         }
+        temp.outputStream.flush();
+        temp.close();
         reports.clear();
     }
 

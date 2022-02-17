@@ -85,6 +85,10 @@ public final class LoginHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         super.channelUnregistered(ctx);
+        boolean isplain = ctx.channel().attr(NetworkConstants.PLAINMSG).get();
+        if (isplain)
+            return; // dont print
+
         logger.info("channel closed on login screen");
 
         PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();

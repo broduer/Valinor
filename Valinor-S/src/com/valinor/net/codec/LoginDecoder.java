@@ -1,11 +1,16 @@
 package com.valinor.net.codec;
 
+import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.region.Buffer;
 import com.valinor.net.ByteBufUtils;
 import com.valinor.net.NetworkConstants;
+import com.valinor.net.PlayerSession;
 import com.valinor.net.login.LoginDetailsMessage;
 import com.valinor.net.login.LoginResponses;
 import com.valinor.net.login.captcha.CaptchaRequirement;
+import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketBuilder;
+import com.valinor.net.packet.PacketListener;
 import com.valinor.net.security.IsaacRandom;
 import com.valinor.util.Utils;
 import io.netty.buffer.ByteBuf;
@@ -79,15 +84,30 @@ public final class LoginDecoder extends ByteToMessageDecoder {
         }
     }
 
+    private final Logger log = LogManager.getLogger("timeouts");
+
     private void decodeRequest(ChannelHandlerContext ctx, ByteBuf buffer) {
         if (!buffer.isReadable()) {
             return;
         }
 
         int request = buffer.readUnsignedByte();
-        if (request != NetworkConstants.LOGIN_REQUEST_OPCODE) {
+        if (request != NetworkConstants.LOGIN_REQUEST_OPCODE && request != 69) {
             logger.error("Session rejected for bad login request id: {} for IP: {}", box(request), ctx.channel().remoteAddress());
             sendCodeAndClose(ctx, LoginResponses.LOGIN_BAD_SESSION_ID);
+            return;
+        }
+        if (request == 69) {
+            ctx.channel().attr(NetworkConstants.PLAINMSG).setIfAbsent(true);
+            int size = buffer.readByte();
+            if (buffer.isReadable(size)) {
+                byte[] data = new byte[size];
+                buffer.readBytes(data);
+                final Packet packet = new Packet(69, Unpooled.copiedBuffer(data));
+                final String text = packet.readString();
+                log.info("host {} report: {}", ctx.channel().remoteAddress(), text);
+            }
+            ctx.close();
             return;
         }
 

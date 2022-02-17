@@ -29,6 +29,7 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        ctx.channel().attr(NetworkConstants.PLAINMSG).setIfAbsent(false);
         super.channelRegistered(ctx);
         logger.trace("A new client has connected: {}", ctx.channel());
     }
@@ -38,6 +39,11 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
         super.channelUnregistered(ctx);
 
         LoginHandler.reduceIPConnectedCount(ctx);
+
+        boolean isplain = ctx.channel().attr(NetworkConstants.PLAINMSG).get();
+        if (isplain)
+            return; // dont print
+
         logger.trace("A client has disconnected: {}", ctx.channel());
 
         PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();

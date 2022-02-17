@@ -29,12 +29,6 @@ public class PacketSender {
         buffer.writeLong(test);
     }
 
-    public void sendClientReport(String msg) {
-        buffer.writeOpcode(160);
-        buffer.writeByte(msg.length() + 1);
-        buffer.writeString(msg);
-    }
-
     public void sendFriendAddition(String friend) {
         buffer.writeOpcode(188);
         buffer.writeByte(friend.length() + 1);

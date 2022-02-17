@@ -52,6 +52,7 @@ public class NetworkConstants {
      * The attribute that contains the key for a players session.
      */
     public static final AttributeKey<PlayerSession> SESSION_KEY = AttributeKey.valueOf("session.key");
+    public static final AttributeKey<Boolean> PLAINMSG = AttributeKey.valueOf("isplainmsg");
 
     public static final String[] INVALID_USERNAMES = {"Admin", "Owner", "Dev"};
 }
