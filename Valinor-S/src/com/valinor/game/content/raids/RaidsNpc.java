@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids;
 
-import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 
