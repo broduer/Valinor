@@ -227,6 +227,13 @@ public class TradingPost {
             return;
         }
 
+        // Ironman? fuck off lol!!
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        if (playerIsIron) {
+            player.message("You are an Iron Man. You stand alone.");
+            return;
+        }
+
         //printRecentTransactions();
         player.getInterfaceManager().close();
         resetInterface(player);
@@ -992,20 +999,6 @@ public class TradingPost {
             if (selected.getRemaining() == 0) {
                 player.message("<col=ff0000>This offer has already been purchased by another player.");
                 return false;
-            }
-
-            Optional<Player> seller = World.getWorld().getPlayerByName(selected.getSellerName());
-
-            if(seller.isPresent()) {
-                if (player.gameMode() == GameMode.INSTANT_PKER && seller.get().gameMode() != GameMode.INSTANT_PKER) {
-                    player.message("<col=ff0000>You cannot buy items from a different game mode.");
-                    return false;
-                }
-
-                if (player.gameMode() != GameMode.INSTANT_PKER && seller.get().gameMode() == GameMode.INSTANT_PKER) {
-                    player.message("<col=ff0000>You cannot buy items from a different game mode.");
-                    return false;
-                }
             }
 
             player.putAttrib(AttributeKey.TRADING_POST_ORIGINAL_AMOUNT, selected.getRemaining());

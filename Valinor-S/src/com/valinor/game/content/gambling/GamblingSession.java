@@ -286,7 +286,8 @@ public class GamblingSession {
             return;
         }
 
-        if (requestee.gameMode() != GameMode.NONE) {
+        var playerIsIron = requestee.gameMode().isIronman() || requestee.gameMode().isHardcoreIronman() || requestee.gameMode().isUltimateIronman();
+        if (playerIsIron) {
             player.message("That player is an ironman and can not gamble.");
             return;
         }

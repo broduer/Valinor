@@ -26,13 +26,13 @@ public class NightmareCombat extends CommonCombatMethod {
     private SpecialAttacks special;
 
     private void doSpecialAttack() {
-        var randomSpecialAttack = World.getWorld().random(5);
+        var randomSpecialAttack = World.getWorld().random(10);
         switch (randomSpecialAttack) {
-            case 0 -> special = SpecialAttacks.GRASPING_CLAWS;
-            case 1 -> special = SpecialAttacks.FLOWER_POWER;
-            case 2 -> special = SpecialAttacks.HUSKS;
-            case 3 -> special = SpecialAttacks.CURSE;
-            case 4 -> special = SpecialAttacks.PARASITES;
+            case 0, 1, 2 -> special = SpecialAttacks.GRASPING_CLAWS;
+            case 3, 4, 5 -> special = SpecialAttacks.CURSE;
+            case 6, 7 -> special = SpecialAttacks.FLOWER_POWER;
+            case 8 -> special = SpecialAttacks.HUSKS;
+            case 9, 10 -> special = SpecialAttacks.PARASITES;
             //default -> special = SpecialAttacks.HUSKS;
         }
     }

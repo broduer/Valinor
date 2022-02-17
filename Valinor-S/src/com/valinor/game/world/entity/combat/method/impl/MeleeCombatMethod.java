@@ -28,8 +28,8 @@ public class MeleeCombatMethod extends CommonCombatMethod {
                 mob.graphic(1231, 100, 0);
                 if(target.getAsNpc().getSize() > 2 || target.getAsNpc().isCombatDummy()) {
                     target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
-                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .66), CombatType.MELEE).checkAccuracy().submit();
-                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .33), 1, CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .75), CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .50), 1, CombatType.MELEE).checkAccuracy().submit();
                 } else {
                     target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
                 }

@@ -49,8 +49,11 @@ public class Utils {
 
     public static String gameModeToString(Player player) {
         //Player is some sort of ironman
-        if (player.gameMode() != GameMode.NONE) {
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        if (playerIsIron) {
             return player.gameMode().name;
+        } else if(player.gameMode() == GameMode.INSTANT_PKER) {
+            return "Instant Pker";
         } else {
             return "Regular";
         }

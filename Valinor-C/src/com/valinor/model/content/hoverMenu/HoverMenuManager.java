@@ -78,7 +78,8 @@ public class HoverMenuManager {
         menus.put(THAMMARONS_STAFF_C, new HoverMenu("Gives the same boosts as a regular Thammaron's sceptre. This boost also works outside of the wilderness."));
         menus.put(HOLY_SANGUINESTI_STAFF, new HoverMenu("@red@+10@whi@ extra damage, no accuracy boost."));
         menus.put(HOLY_GHRAZI_RAPIER, new HoverMenu("A much more powerful version of the ghrazi rapier."));
-        menus.put(SANGUINE_SCYTHE_OF_VITUR, new HoverMenu("A stronger version then the scythe of Vitur."));
+        menus.put(HOLY_SCYTHE_OF_VITUR, new HoverMenu("A stronger version than the scythe of vitur."));
+        menus.put(SANGUINE_SCYTHE_OF_VITUR, new HoverMenu("A stronger version than the holy scythe of vitur."));
         menus.put(SWORD_OF_GRYFFINDOR, new HoverMenu("@red@+25%@whi@ damage and accuracy boost against any monster."));
         menus.put(ARMADYL_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@ and accuracy by @red@+25%@whi@."));
         menus.put(BANDOS_GODSWORD_OR, new HoverMenu("Increases your max hit by @red@+1@whi@."));

@@ -57,8 +57,12 @@ public class MagicalAnimator extends Interaction {
             // Resolve the armour
             List<ArmourSets> sets = Arrays.stream(ArmourSets.values()).filter(set -> item.getId() == set.helm.getId() || item.getId() == set.body.getId() || item.getId() == set.legs.getId()).collect(Collectors.toList());
 
+            Item helm = sets.get(0).helm;
+            Item legs = sets.get(0).legs;
+            Item body = sets.get(0).body;
+
             // Got one? Or na
-            if (player.inventory().contains(sets.get(0).helm) && player.inventory().contains(sets.get(0).legs) && player.inventory().contains(sets.get(0).body)) {
+            if (helm != null && player.inventory().contains(helm) && legs != null && player.inventory().contains(legs) && body != null && player.inventory().contains(body)) {
                 Tile spawnTile = new Tile(obj.tile().x, obj.tile().y, obj.tile().level);
 
                 Chain.bound(player).name("MagicalAnimatorStartTask").runFn(1, () -> {

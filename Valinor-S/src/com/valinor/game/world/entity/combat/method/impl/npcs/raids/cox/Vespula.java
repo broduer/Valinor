@@ -61,7 +61,7 @@ public class Vespula extends CommonCombatMethod {
 
             Chain.bound(null).runFn(4, () -> {
                 if (t.isAt(echoTile)) {
-                    target.hit(npc, CombatFactory.calcDamageFromType(npc, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
+                    t.hit(npc, CombatFactory.calcDamageFromType(npc, t, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
                 }
             });
         }

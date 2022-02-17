@@ -51,7 +51,8 @@ public class IronManTutor extends Dialogue {
             default -> player.message("Only ironman players can claim their armour.");
         }
 
-        if (player.gameMode() != GameMode.NONE) {
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        if (!playerIsIron) {
             DialogueManager.npcChat(player, Expression.HAPPY, NpcIdentifiers.IRON_MAN_TUTOR, "There you go. Wear it with pride.");
         }
     }

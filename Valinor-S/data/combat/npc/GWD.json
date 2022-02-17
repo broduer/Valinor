@@ -1087,9 +1087,9 @@
     },
     "bonuses": {
       "attack": 200,
+      "strength": 20,
       "magic": 100,
       "ranged": 150,
-      "strength": 20,
       "stabdefence": 40,
       "slashdefence": 140,
       "crushdefence": 60,

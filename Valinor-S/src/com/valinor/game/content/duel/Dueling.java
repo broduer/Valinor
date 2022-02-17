@@ -217,7 +217,8 @@ public class Dueling {
             return;
         }
 
-        if (t_.gameMode() != GameMode.NONE) {
+        var playerIsIron = t_.gameMode().isIronman() || t_.gameMode().isHardcoreIronman() || t_.gameMode().isUltimateIronman();
+        if (playerIsIron) {
             player.message("Your partner is an Iron man, and cannot stake.");
             return;
         }

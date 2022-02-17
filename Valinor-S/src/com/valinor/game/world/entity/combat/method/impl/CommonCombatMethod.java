@@ -241,6 +241,8 @@ public abstract class CommonCombatMethod implements CombatMethod {
     }
 
     public CombatType styleOf() {
+        if (mob.isPlayer() && (mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS)))
+            return CombatType.MAGIC;
         if (!mob.isPlayer()) // this mtd is players only
             return null;
         if (this instanceof MagicCombatMethod)
@@ -255,8 +257,6 @@ public abstract class CommonCombatMethod implements CombatMethod {
             return CombatType.MELEE;
         if (this.getClass().getPackageName().contains("range"))
             return CombatType.RANGED;
-        if (mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS))
-            return CombatType.MAGIC;
         System.err.println("unknown player styleOf combat script: " + this + " wep " + mob.getAsPlayer().getEquipment().getId(3));
         return null;
     }

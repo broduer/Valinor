@@ -233,6 +233,10 @@ public class AccuracyFormula {
             if (enemy.isNpc()) {
                 final Npc npc = (Npc) enemy;
 
+                if(npc.def() != null && npc.def().name != null && npc.def().name.equalsIgnoreCase("Nex") && style == CombatType.RANGED) {
+                    off_additional_bonus += 1.50;
+                }
+
                 AttackType attackType = player.getCombat().getFightType().getAttackType();
                 if (npc.id() == CORPOREAL_BEAST) {
                     if (weapon != null && player.getEquipment().corpbeastArmour(weapon) && attackType != null && attackType.equals(AttackType.STAB)) {
@@ -250,6 +254,14 @@ public class AccuracyFormula {
                     if (helm.getId() == RED_SLAYER_HELMET_I || helm.getId() == GREEN_SLAYER_HELMET_I || helm.getId() == BLACK_SLAYER_HELMET_I || helm.getId() == TZKAL_SLAYER_HELMET_I) {
                         off_additional_bonus += 0.030;//3% accuracy boos
                     }
+                }
+
+                if (player.getEquipment().hasAt(EquipSlot.WEAPON, SCYTHE_OF_VITUR)) {
+                    off_additional_bonus += 0.25;
+                } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SCYTHE_OF_VITUR)) {
+                    off_additional_bonus += 0.50;
+                } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINE_SCYTHE_OF_VITUR)) {
+                    off_additional_bonus += 0.75;
                 }
 
                 //Arclight
@@ -499,13 +511,13 @@ public class AccuracyFormula {
         int def_equipment_ranged_defence = targetBonuses.rangedef;
         int def_equipment_magic_defence = targetBonuses.magedef;
 
-        if (enemy.isNpc()) {
+        /*if (enemy.isNpc()) {
             assert enemy instanceof Npc;
             Npc npc = (Npc) enemy;
             if (npc.combatInfo() != null && npc.combatInfo().stats != null && npc.combatInfo().boss) {
                 def_equipment_ranged_defence -= (def_current_defence_level * 0.50); //I don't like this solution but this formula is fucked.
             }
-        }
+        }*/
 
         //protect from * prayers
         boolean def_protect_from_melee = false;

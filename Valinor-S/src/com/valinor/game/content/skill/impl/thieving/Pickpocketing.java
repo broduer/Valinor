@@ -27,8 +27,7 @@ public class Pickpocketing extends Interaction {
         if (option == 2) {
             NpcDefinition npcDef = World.getWorld().definitions().get(NpcDefinition.class, npc.id());
             for (PickPocket pickpocket : PickPocket.values()) {
-                if (npcDef.name.equalsIgnoreCase(pickpocket.name().replace("_", " "))/* ||
-                    npcDef.name.toLowerCase().contains(pickpocket.name().toLowerCase())*/) {
+                if (npcDef.name != null && npcDef.name.equalsIgnoreCase(pickpocket.name().replace("_", " "))) {
                     int pickpocketOption = npcDef.getOption("pickpocket");
                     if (pickpocketOption == -1) {
                         return false;

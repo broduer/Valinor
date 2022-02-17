@@ -95,8 +95,8 @@ public enum SpecialAttacks {
     HUSKS(8599, Nightmare.NO_TELEPORT) {
         @Override
         public void run(Nightmare nm) {
-            //If there are more then 10 husks spawned, we do not continue
-            if(nm.husksSpawned.size() > 10) {
+            //If there are more than 4 husks spawned, we do not continue
+            if(nm.husksSpawned.size() > 4) {
                 return;
             }
             int size = nm.playersInRegion() > 1 ? nm.playersInRegion() / 2 : nm.playersInRegion();
