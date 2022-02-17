@@ -5,10 +5,13 @@ import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBloodRewards;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 
 import java.util.Arrays;
@@ -53,7 +56,7 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        player.teleport(3166, 4323, player.tile().level);
+        //player.teleport(3166, 4323, player.tile().level);
 
         /*//Make a party
         Party.createParty(player);

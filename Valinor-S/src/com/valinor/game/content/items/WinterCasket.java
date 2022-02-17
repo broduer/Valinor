@@ -32,30 +32,11 @@ public class WinterCasket extends Interaction {
     private void open(Player player) {
         if (player.inventory().contains(WINTER_CASKET)) {
             player.inventory().remove(WINTER_CASKET);
-            Item reward = reward().copy();
-            if (rare) {
-                World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a supply crate!");
-            }
+            Item reward = Utils.randomElement(RARE_REWARDS);
+            World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a supply crate!");
             player.inventory().addOrDrop(reward);
-            rare = false;
         }
     }
-
-    private final List<Item> UNCOMMON_REWARDS = Arrays.asList(
-        new Item(BANDOS_GODSWORD_ORNAMENT_KIT),
-        new Item(SARADOMIN_GODSWORD_ORNAMENT_KIT),
-        new Item(ZAMORAK_GODSWORD_ORNAMENT_KIT),
-        new Item(ARMADYL_GODSWORD_ORNAMENT_KIT),
-        new Item(TORMENTED_ORNAMENT_KIT),
-        new Item(WILDERNESS_KEY,3),
-        new Item(DONATOR_MYSTERY_BOX),
-        new Item(ARMADYL_HELMET),
-        new Item(ARMADYL_CHESTPLATE),
-        new Item(ARMADYL_CHAINSKIRT),
-        new Item(BANDOS_TASSETS),
-        new Item(BANDOS_CHESTPLATE),
-        new Item(STAFF_OF_BALANCE)
-    );
 
     private final List<Item> RARE_REWARDS = Arrays.asList(
         new Item(CRYSTAL_OF_ITHELL),
@@ -76,17 +57,26 @@ public class WinterCasket extends Interaction {
         new Item(RUNE_POUCH_I),
         new Item(AVERNIC_DEFENDER_HILT),
         new Item(INFERNAL_CAPE),
-        new Item(AVAS_ASSEMBLER)
+        new Item(AVAS_ASSEMBLER),
+        new Item(ELDER_MAUL),
+        new Item(TORTURE_ORNAMENT_KIT),
+        new Item(ANGUISH_ORNAMENT_KIT),
+        new Item(OCCULT_ORNAMENT_KIT),
+        new Item(CRYSTAL_HELM),
+        new Item(CRYSTAL_BODY),
+        new Item(CRYSTAL_LEGS),
+        new Item(GHRAZI_RAPIER),
+        new Item(MYSTERY_TICKET,5),
+        new Item(ARCANE_SIGIL),
+        new Item(VOTE_TICKET,30),
+        new Item(DONATOR_TICKET, 2000),
+        new Item(COINS_995, 200_000_000),
+        new Item(VOLATILE_ORB),
+        new Item(HARMONISED_ORB),
+        new Item(ELDRITCH_ORB),
+        new Item(PEGASIAN_BOOTS_OR),
+        new Item(ETERNAL_BOOTS_OR),
+        new Item(PRIMORDIAL_BOOTS_OR)
     );
 
-    private boolean rare = false;
-
-    private Item reward() {
-        if (World.getWorld().rollDie(50, 1)) {
-            rare = true;
-            return Utils.randomElement(RARE_REWARDS);
-        } else {
-            return Utils.randomElement(UNCOMMON_REWARDS);
-        }
-    }
 }
