@@ -1,6 +1,9 @@
 package com.valinor.net.packet;
 
+import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.packet.incoming_packets.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -63,6 +66,7 @@ public class ClientToServerPackets {
     public static final int TRADE_REQUEST_OPCODE = 139;
     public static final int GROUP_INVITE_ACCEPT = 125;
     public static final int GAMBLE_REQUEST_ACCEPT = 127;
+    public static final int CUSTOM_CLIENT_REPORT = 160;
 
     public static final int
     OBJECT_FIRST_CLICK_OPCODE = 132,
@@ -185,6 +189,16 @@ public class ClientToServerPackets {
 
         PACKETS[GAMBLE_REQUEST_ACCEPT] = new GambleRequestAccept();
 
+        PACKETS[CUSTOM_CLIENT_REPORT] = new PacketListener() {
+            private final Logger logger = LogManager.getLogger(PacketListener.class);
+            @Override
+            public void handleMessage(Player player, Packet packet) {
+                final String text = packet.readString();
+                System.out.println("got it: "+text);
+                logger.trace("player {} report: {}", player, text);
+            }
+        };
+
         PACKETS[GROUP_INVITE_ACCEPT] = new GroupInviteAccept();
 
         PACKET_NAMES[187] = "SPAWN_TAB_ACTION_OPCODE";
@@ -260,6 +274,7 @@ public class ClientToServerPackets {
         PACKET_NAMES[142] = "INPUT_FIELD_OPCODE";
         PACKET_NAMES[213] = "CONFIRM_OPCODE";
         PACKET_NAMES[172] = "OPTION_MENU_OPCODE";
+        PACKET_NAMES[160] = "CUSTOM_LAG_REPORT";
 
         PACKET_SIZES[127] = 2;
         PACKET_SIZES[0] = 0;
@@ -421,7 +436,7 @@ public class ClientToServerPackets {
         PACKET_SIZES[157] = -3;
         PACKET_SIZES[158] = -3;
         PACKET_SIZES[159] = -3;
-        PACKET_SIZES[160] = -3;
+        PACKET_SIZES[160] = -1;
         PACKET_SIZES[161] = -3;
         PACKET_SIZES[162] = -3;
         PACKET_SIZES[163] = -3;

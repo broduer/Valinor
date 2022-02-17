@@ -4989,10 +4989,15 @@ public class Client extends GameApplet {
         timeoutCounter++;
         //System.out.println(timeoutCounter);
         if (timeoutCounter > 750) {
+            System.out.println("huh");
+            addReportToServer("Connection timed out at counter " + timeoutCounter + " (" + (int) ((timeoutCounter / 30) * 0.6) + " secs), dropping client");
             try {
+                addReportToServer("Dropping client, not a normal logout.");
                 dropClient();
             } catch (Exception e) {
+                addReportToServer("There was an error dropping the client:");
                 e.printStackTrace();
+                addReportToServer(e.getMessage());
             }
         }
 
@@ -5000,6 +5005,7 @@ public class Client extends GameApplet {
         forceNPCUpdateBlock();
         processTrackUpdates();
         processMobChatText();
+        processLagReports();
         animation_step++;
         if (crossType != 0) {
             crossIndex += 20;
@@ -5202,14 +5208,20 @@ public class Client extends GameApplet {
             }
         } catch (IOException _ex) {
             try {
+                addReportToServer("Dropping client, not a normal logout. 2");
                 dropClient();
             } catch (Exception e) {
+                addReportToServer("There was an error dropping the client: dropClient()");
                 e.printStackTrace();
+                addReportToServer(e.getMessage());
             }
             _ex.printStackTrace();
+            addReportToServer(_ex.getMessage());
         } catch (Exception exception) {
             logout();
+            addReportToServer("There was an error sending logout():");
             exception.printStackTrace();
+            addReportToServer(exception.getMessage());
         }
     }
 
@@ -7607,6 +7619,9 @@ public class Client extends GameApplet {
                     }
                     /* Client debug commands not actually used in the game */
                     if (isDeveloper) {
+                        if (inputString.startsWith("::pkt")) {
+                            timeoutCounter = 800;
+                        }
 
                         if (inputString.startsWith("::debugt")) {
                             debugTextures = !debugTextures;
@@ -17525,6 +17540,38 @@ public class Client extends GameApplet {
         }
         opcode = -1;
         return true;
+    }
+
+    static final Deque<String> reports = new java.util.LinkedList<>();
+
+    public static void addReportToServer(String s) {
+        System.out.println("waa");
+        if (reports != null) {
+            System.out.println("weee");
+            // append newest to end
+            reports.addLast(s);
+        }
+    }
+
+    private void processLagReports() {
+        if (reports.isEmpty()) {
+            System.out.println("hmm");
+            return;
+        }
+        for (int i = 0; i < reports.size(); i++) {
+            if (reports.isEmpty()) {
+                System.out.println("hmm1");
+                break;
+            }
+            String text = reports.pop();
+            if (text == null) {
+                System.out.println("hmm2");
+                return;
+            }
+            System.out.println("rep: "+text);
+            packetSender.sendClientReport(text);
+        }
+        reports.clear();
     }
 
     private void render() {
