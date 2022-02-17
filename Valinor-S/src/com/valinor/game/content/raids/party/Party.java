@@ -49,6 +49,7 @@ public class Party {
     private int kills;
     private int raidStage = 0;
     private boolean bossFightStarted;
+    private int partySize;
 
     public Party(Player leader) {
         this.leader = leader;
@@ -117,6 +118,14 @@ public class Party {
 
     public void setRaidsSelected(RaidsType raidsSelected) {
         this.raidsSelected = raidsSelected;
+    }
+
+    public void setPartySize(int partySize) {
+        this.partySize = partySize;
+    }
+
+    public int getPartySize() {
+        return partySize;
     }
 
     private Npc mommaMuttadile;

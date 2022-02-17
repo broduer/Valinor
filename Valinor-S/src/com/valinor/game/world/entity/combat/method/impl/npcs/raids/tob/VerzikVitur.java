@@ -43,7 +43,6 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        System.out.println("weee");
         set(mob, target);
         List<Mob> targets = getPossibleTargets(mob);
         final Tile tile = target.tile();

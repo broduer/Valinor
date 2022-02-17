@@ -39,6 +39,7 @@ public class TheatreOfBlood extends Raids {
         Party party = player.raidsParty;
         if (party == null) return;
         party.setRaidStage(1);
+        party.setPartySize(party.getSize());
         final int height = party.getLeader().getIndex() * 4;
 
         for (Player member : party.getMembers()) {
@@ -65,14 +66,16 @@ public class TheatreOfBlood extends Raids {
         player.setRaids(null);
 
         Party party = player.raidsParty;
+        int partySize = party.getPartySize();
 
         //Remove players from the party if they are not the leader
         if(party != null) {
-            party.removeMember(player);
+            party.setPartySize(partySize - 1);
+            partySize--;
             //Last player in the party leaves clear the whole thing
-            if(party.getMembers().size() == 0) {
+            if(partySize == 0) {
                 //Clear all party members that are left
-                Lists.newArrayList(party.getMembers()).forEach(party.getMembers()::remove);
+                Lists.newArrayList(party.getMembers()).clear();
                 clearParty(player);
             }
             player.raidsParty = null;
