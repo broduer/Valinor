@@ -18,5 +18,7 @@ public class ProtectionValue {
     }
 
     public int id;
-    public int value;
+    public String name;
+    public int price;
+    public int wikiPrice;
 }
