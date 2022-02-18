@@ -9,7 +9,6 @@ import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.raids.Raids;
 import com.valinor.game.content.raids.RaidsNpc;
 import com.valinor.game.content.raids.party.Party;
-import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBloodRewards;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.Venom;
@@ -183,15 +182,15 @@ public class ChamberOfXerics extends Raids {
         Party party = player.raidsParty;
 
         //Create
-        Npc vasa = new RaidsNpc(VASA_NISTIRIO, new Tile(3308, 5293, party.getHeight()), party.getSize(), false);
-        Npc vanguard1 = new RaidsNpc(VANGUARD_7527, new Tile(3316, 5326, party.getHeight()), party.getSize(), false);
-        Npc vanguard2 = new RaidsNpc(VANGUARD_7528, new Tile(3313, 5332, party.getHeight()), party.getSize(), false);
-        Npc vanguard3 = new RaidsNpc(VANGUARD_7529, new Tile(3308, 5329, party.getHeight()), party.getSize(), false);
-        Npc tekton = new RaidsNpc(TEKTON_7541, new Tile(3313, 5295, party.getHeight() + 1), party.getSize(), false);
-        Npc babyMuttadile = new RaidsNpc(MUTTADILE_7562, new Tile(3308, 5326, party.getHeight() + 1), party.getSize(), false);
-        Npc mommaMuttadile = new RaidsNpc(MUTTADILE, new Tile(3312, 5330, party.getHeight() + 1), party.getSize(), false);
+        Npc vasa = new RaidsNpc(VASA_NISTIRIO, new Tile(3308, 5293, party.getHeight()), party.getSize());
+        Npc vanguard1 = new RaidsNpc(VANGUARD_7527, new Tile(3316, 5326, party.getHeight()), party.getSize());
+        Npc vanguard2 = new RaidsNpc(VANGUARD_7528, new Tile(3313, 5332, party.getHeight()), party.getSize());
+        Npc vanguard3 = new RaidsNpc(VANGUARD_7529, new Tile(3308, 5329, party.getHeight()), party.getSize());
+        Npc tekton = new RaidsNpc(TEKTON_7541, new Tile(3313, 5295, party.getHeight() + 1), party.getSize());
+        Npc babyMuttadile = new RaidsNpc(MUTTADILE_7562, new Tile(3308, 5326, party.getHeight() + 1), party.getSize());
+        Npc mommaMuttadile = new RaidsNpc(MUTTADILE, new Tile(3312, 5330, party.getHeight() + 1), party.getSize());
         party.setMommaMuttadile(mommaMuttadile);
-        Npc vespula = new RaidsNpc(VESPULA, new Tile(3308, 5295, party.getHeight() + 2), party.getSize(), false);
+        Npc vespula = new RaidsNpc(VESPULA, new Tile(3308, 5295, party.getHeight() + 2), party.getSize());
 
         //Spawn
         World.getWorld().registerNpc(vasa);
