@@ -302,16 +302,19 @@ public class RangedCombatMethod extends CommonCombatMethod {
     // The hitmark delay without pid. If pid, it gets adjusted elsewhere.
     // https://i.gyazo.com/d84b1fb9969e3166ff5abf2978e77b4d.png
     private int calcHitDelay(int weaponId, WeaponType weaponType, int dist) {
-        if (ballista(weaponId))
-            return (dist <= 4) ? 2 : 3;
-        else if (weaponType == WeaponType.CHINCHOMPA || weaponType == THROWN) {   //chins longer range throwing weapons
-            return 1 + (dist) / 6;
+        int hitDelay;
+        if (ballista(weaponId)) {
+            hitDelay = (dist <= 4) ? 2 : 3;
+        } else if (weaponType == WeaponType.CHINCHOMPA || weaponType == THROWN) {   //chins longer range throwing weapons
+            hitDelay = 1 + (dist) / 6;
         } else if(weaponId == TOXIC_BLOWPIPE) { // Blowpipe
-            return 1 + (dist) / 6; // The toxic blowpipe special attack has a hit delay of 2 ticks when distance is 4 or 5.
+            hitDelay = 1 + (dist) / 6; // The toxic blowpipe special attack has a hit delay of 2 ticks when distance is 4 or 5.
         } else {
-            return 1 + (3 + dist) / 6;
+            hitDelay = 1 + (3 + dist) / 6;
             // shortbow (and darkbow), longbow, karils xbow, crystal bow, crossbows
         }
+        //System.out.println(hitDelay);
+        return hitDelay;
     }
 
     private int calcHitDelaySecondArrow(int dist) {
