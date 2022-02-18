@@ -66,10 +66,11 @@ public class TheatreOfBlood extends Raids {
         player.setRaids(null);
 
         Party party = player.raidsParty;
-        int partySize = party.getPartySize();
 
         //Remove players from the party if they are not the leader
         if(party != null) {
+            int partySize = party.getPartySize();
+
             party.setPartySize(partySize - 1);
             partySize--;
             //Last player in the party leaves clear the whole thing
@@ -216,6 +217,7 @@ public class TheatreOfBlood extends Raids {
         sotetseg.cantFollowUnderCombat(true);
         Npc xarpus = new RaidsNpc(XARPUS, new Tile(3169, 4386, party.getHeight()+1), party.getSize(), true).spawn(false);
         xarpus.cantFollowUnderCombat(true);
+        xarpus.canAttack(false);
         Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()), party.getSize(), true).spawn(false);
         verzik.cantFollowUnderCombat(true);
 
