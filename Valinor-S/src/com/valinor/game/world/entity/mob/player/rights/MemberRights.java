@@ -15,7 +15,7 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 public enum MemberRights {
 
     NONE(0, "None", -1, -1, Color.BLACK.tag(), 1.0, 1.0, 1.0),
-    SAPPHIRE_MEMBER(10, "Saphire Member", 1871, 5, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
+    SAPPHIRE_MEMBER(10, "Sapphire Member", 1871, 5, Color.ORANGE.tag(), 1.05, 1.025, 1.025),
     EMERALD_MEMBER(50, "Emerald Member", 1875, 6, Color.BLUE.tag(), 1.07, 1.025, 1.025),
     RUBY_MEMBER(100, "Ruby Member", 1872, 7, Color.PURPLE.tag(), 1.15, 1.025, 1.025),
     DIAMOND_MEMBER(250, "Diamond Member", 1874, 8, Color.YELLOW.tag(), 1.20, 1.025, 1.025),

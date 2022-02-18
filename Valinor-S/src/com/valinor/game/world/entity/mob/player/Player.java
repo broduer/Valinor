@@ -149,7 +149,7 @@ public class Player extends Mob {
     private Task bountyHunterTask;
 
     public void setBountyHunterTask(Task task) {
-        stopDistancedTask();
+        stopBountyHunterTask();
         this.bountyHunterTask = task;
         if (task != null) {
             TaskManager.submit(task);
