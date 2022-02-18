@@ -611,6 +611,8 @@ public class EquipmentInfo {
                 case DRAGON_CROSSBOW:
                 case ARMADYL_CROSSBOW:
                 case DRAGON_HUNTER_CROSSBOW:
+                case DRAGON_HUNTER_CROSSBOW_T:
+                case DRAGON_HUNTER_CROSSBOW_B:
                 case TALONHAWK_CROSSBOW:
                 case 18357:
                     Mob target = player.getCombat().getTarget();
@@ -790,6 +792,8 @@ public class EquipmentInfo {
             case DRAGON_CROSSBOW:
             case ARMADYL_CROSSBOW:
             case DRAGON_HUNTER_CROSSBOW:
+            case DRAGON_HUNTER_CROSSBOW_T:
+            case DRAGON_HUNTER_CROSSBOW_B:
             case TALONHAWK_CROSSBOW:
             case KARILS_CROSSBOW:
             case 4747: // Torag's hamers
