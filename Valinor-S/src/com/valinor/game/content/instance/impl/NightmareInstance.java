@@ -32,9 +32,9 @@ public class NightmareInstance {
     private final int instanceLevel;
     private final Tile ENTRANCE_POINT = new Tile(3872, 9942);
     private static final Tile THE_NIGHTMARE_SPAWN_TILE = new Tile(3870, 9949);
-    private boolean inited = false;
     private final ArrayList<Player> players;
     private final Nightmare nightmare;
+    private boolean playerHasLeft;
 
     private NightmareInstance(ArrayList<Player> players) {
         this.players = players;
@@ -51,31 +51,29 @@ public class NightmareInstance {
             t.setNightmare(nightmare);
         }
         nightmare.spawn(true);
-        Chain.bound(null).runFn(1, () -> {
-            if (inited) {
-                return;
-            }
+        TaskManager.submit(new NightmareInstanceTask(this, instanceOwner, instanceLevel));
+        Chain.bound(null).cancelWhen(() -> {
+            return playerHasLeft; // cancels as expected
+        }).thenCancellable(1, () -> {
             nightmare.getUpdateFlag().reset();
             //nightmare.toggleShield();
-        }).then(1, () -> {
+        }).thenCancellable(1, () -> {
             for (Player p : this.players) {
                 p.teleport(ENTRANCE_POINT.transform(0, 0, instanceLevel));
                 p.setNightmareInstance(this);
             }
-        }).then(25, () -> {
+        }).thenCancellable(25, () -> {
             nightmare.transmog(THE_NIGHTMARE_9430);
             nightmare.animate(8611);
             for (Player p : this.players) {
                 p.message("<col=ff0000>The Nightmare has awoken!");
             }
             //nightmare.setStage(0);
-            inited = true;
-        }).then(8, () -> {
+        }).thenCancellable(8, () -> {
             nightmare.transmog(THE_NIGHTMARE_9425);
             nightmare.setHitpoints(nightmare.maxHp());
             nightmare.animate(-1);
             nightmare.getCombat().attack(Utils.randomElement(players));
-            TaskManager.submit(new NightmareInstanceTask(this, instanceOwner, instanceLevel));
         });
     }
 
@@ -125,7 +123,7 @@ public class NightmareInstance {
                 nightmare.husksSpawned.clear();
             }
             if(!n.dead()) {
-                n.remove(player);
+                n.remove();
             }
         });
 
@@ -168,6 +166,11 @@ public class NightmareInstance {
                 stop();
                 return;
             }
+
+            if(!instanceOwner.tile().inArea(THE_NIGHTMARE_AREA)) {
+                instance.playerHasLeft = true;
+            }
+
             //System.out.println("ticking "+playersLeftInRegion());
             if(playersLeftInRegion() == 0) {
                 instance.clearAll(instanceOwner);

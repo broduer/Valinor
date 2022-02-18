@@ -8,12 +8,10 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
-import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
 
 import static com.valinor.game.content.instance.impl.NightmareInstance.THE_NIGHTMARE_AREA;
-import static com.valinor.util.NpcIdentifiers.GROWTHLING;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
