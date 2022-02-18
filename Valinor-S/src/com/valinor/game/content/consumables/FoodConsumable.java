@@ -6,6 +6,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
+import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.Utils;
 import com.valinor.util.timers.TimerKey;
@@ -199,7 +200,7 @@ public class FoodConsumable {
 
         int increase = player.getEquipment().hpIncrease();
         if (food == Food.ANGLERFISH) {
-            boolean inCombat = CombatFactory.wasRecentlyAttacked(player);
+            boolean inCombat = CombatFactory.wasRecentlyAttacked(player) && WildernessArea.inWilderness(player.tile());
             int healFactor = increase > 0 ? increase : 22;
             player.heal(food.heal, inCombat ? 0 : healFactor);
         } else if (food == Food.PURPLE_SWEETS || food == Food.PINK_SWEETS) {
