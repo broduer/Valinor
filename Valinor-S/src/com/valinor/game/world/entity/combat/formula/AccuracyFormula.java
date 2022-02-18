@@ -18,22 +18,30 @@ import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
+import com.valinor.util.NpcIdentifiers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomNpcIdentifiers.ANCIENT_CHAOS_ELEMENTAL;
+import static com.valinor.util.CustomNpcIdentifiers.ANCIENT_KING_BLACK_DRAGON;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.CORPOREAL_BEAST;
+import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.KREEARRA;
 
 /**
  * Created by Bart on 8/22/2015.
  */
 public class AccuracyFormula {
+
+    private static final List<Integer> BUFF_RANGED_ATTACKS_VS = Arrays.asList(NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282, KRIL_TSUTSAROTH, KREEARRA, CHAOS_FANATIC, ANCIENT_KING_BLACK_DRAGON, ANCIENT_CHAOS_ELEMENTAL);
 
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
@@ -233,7 +241,7 @@ public class AccuracyFormula {
             if (enemy.isNpc()) {
                 final Npc npc = (Npc) enemy;
 
-                if(npc.def() != null && npc.def().name != null && npc.def().name.equalsIgnoreCase("Nex") && style == CombatType.RANGED) {
+                if(BUFF_RANGED_ATTACKS_VS.stream().anyMatch(id -> id == npc.id()) && style == CombatType.RANGED) {
                     off_additional_bonus += 1.65;
                 }
 
