@@ -228,13 +228,12 @@ public class RangedCombatMethod extends CommonCombatMethod {
                 weaponType = attacker.getAsPlayer().getCombat().getWeaponType();
             }
 
-            var tileDist = attacker.tile().distance(target.tile());
-            var delay = calcHitDelay(weaponId, weaponType, tileDist) + 1;
-
+            var tileDist = attacker.tile().getChebyshevDistance(target.tile());
+            var delay = calcHitDelay(weaponId, weaponType, tileDist);
             //System.out.println("delay: "+delay);
 
             // At range 3 the hits hit the same time. may indicate mathematical rounding in calc.
-            var secondArrowDelay = delay + (tileDist == 3 ? 0 : tileDist == 7 || tileDist == 8 || tileDist == 10 ? 2 : 1);
+            var secondArrowDelay = calcHitDelaySecondArrow(tileDist);
             //System.out.println("secondArrowDelay: "+secondArrowDelay);
 
             // primary range hit
@@ -305,14 +304,18 @@ public class RangedCombatMethod extends CommonCombatMethod {
     private int calcHitDelay(int weaponId, WeaponType weaponType, int dist) {
         if (ballista(weaponId))
             return (dist <= 4) ? 2 : 3;
-        if (weaponId == 12926 || weaponType == WeaponType.CHINCHOMPA)   // Blowpipe / chins longer range throwning weps
-            return (dist <= 5) ? 2 : 3;
-        if (weaponType == THROWN) {
-            return 1 + dist / 6; // darts / knives with max dist 4
+        else if (weaponType == WeaponType.CHINCHOMPA || weaponType == THROWN) {   //chins longer range throwing weapons
+            return 1 + (dist) / 6;
+        } else if(weaponId == TOXIC_BLOWPIPE) { // Blowpipe
+            return 1 + (dist) / 6; // The toxic blowpipe special attack has a hit delay of 2 ticks when distance is 4 or 5.
         } else {
-            return (int) (2 + Math.floor((3.0 + dist) / 6.0));
+            return 1 + (3 + dist) / 6;
             // shortbow (and darkbow), longbow, karils xbow, crystal bow, crossbows
         }
+    }
+
+    private int calcHitDelaySecondArrow(int dist) {
+        return 1 + (2 + dist) / 3;
     }
 
     @Override

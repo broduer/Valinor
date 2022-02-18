@@ -26,7 +26,6 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.game.world.route.RouteMisc;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.game.world.route.routes.TargetRoute;
-import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Debugs;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.timers.TimerKey;
@@ -428,11 +427,11 @@ public class Combat {
     }
 
     public int magicSpellDelay(Mob target) {
-        int dist = mob.tile().getChevDistance(target.tile());
-        if(dist > 4) {
-            return 4;
-        }
-        return (1 + (1 + dist) / 3) + 2;
+        int dist = mob.tile().getChebyshevDistance(target.tile());
+        //System.out.println("distance: "+dist);
+        int hitDelay = (1 + (1 + dist) / 3);
+        //System.out.println("hitDelay: "+hitDelay);
+        return hitDelay;
     }
 
     /**

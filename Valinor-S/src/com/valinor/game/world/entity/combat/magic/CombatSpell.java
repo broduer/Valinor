@@ -348,18 +348,12 @@ public abstract class CombatSpell extends Spell {
             }
         }
 
-        // Finally send the projectile after two ticks.
-        castProjectile(cast, castOn).ifPresent(g -> {
-            TaskManager.submit(new Task("CastProjectileTask", 2, cast, false) {
-                @Override
-                public void execute() {
-                    g.sendProjectile();
-                    this.stop();
-                }
-            });
-        });
+        // Finally, send the projectile after two ticks.
+        castProjectile(cast, castOn).ifPresent(Projectile::sendProjectile);
 
-        Hit hit = castOn.hit(cast, CombatFactory.calcDamageFromType(cast, castOn, CombatType.MAGIC), cast.getCombat().magicSpellDelay(castOn), CombatType.MAGIC).checkAccuracy().spell(spell).postDamage(h -> ((MagicCombatMethod)CombatFactory.MAGIC_COMBAT).handleAfterHit(h));
+        var hitDelay = cast.getCombat().magicSpellDelay(castOn);
+        //System.out.println("hit delay in combat spell: "+hitDelay);
+        Hit hit = castOn.hit(cast, CombatFactory.calcDamageFromType(cast, castOn, CombatType.MAGIC), hitDelay, CombatType.MAGIC).checkAccuracy().spell(spell).postDamage(h -> ((MagicCombatMethod)CombatFactory.MAGIC_COMBAT).handleAfterHit(h));
         hit.submit();
 
         if (spell instanceof CombatEffectSpell) {
@@ -378,7 +372,7 @@ public abstract class CombatSpell extends Spell {
         if(attacker.isPlayer()) {
             Player player = (Player) attacker;
 
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
                 speed = 4;
             }
         }

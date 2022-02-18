@@ -241,9 +241,9 @@ public abstract class CommonCombatMethod implements CombatMethod {
     }
 
     public CombatType styleOf() {
-        if (mob.isPlayer() && (mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS)))
+        if (mob != null && mob.isPlayer() && (mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || mob.getAsPlayer().getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS)))
             return CombatType.MAGIC;
-        if (!mob.isPlayer()) // this mtd is players only
+        if (mob != null && !mob.isPlayer()) // this mtd is players only
             return null;
         if (this instanceof MagicCombatMethod)
             return CombatType.MAGIC;

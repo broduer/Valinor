@@ -188,7 +188,7 @@ public class Tile implements Cloneable {
         return (int) Math.sqrt(dx * dx + dz * dz);
     }
 
-    public int getChevDistance(Tile other) {
+    public int getChebyshevDistance(Tile other) {
         return Math.max(Math.abs(other.getX() - getX()), Math.abs(other.getY() - getY()));
     }
 

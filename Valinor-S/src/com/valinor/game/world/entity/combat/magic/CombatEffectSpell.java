@@ -128,12 +128,15 @@ public abstract class CombatEffectSpell extends CombatSpell {
                 }
             }
 
+            var hitDelay = cast.getCombat().magicSpellDelay(target);
             if (hit.isAccurate()) {
                 //Successful hit, send graphics and do spell effects.
-                endGraphic().ifPresent(target::performGraphic);
+                if(endGraphic().isPresent()) {
+                    target.delayedGraphics(endGraphic().get(), hitDelay);
+                }
             } else {
                 //Unsuccessful hit. Send splash graphics for the spell because it wasn't accurate
-                target.delayedGraphics(new Graphic(85, 90, 30),cast.getCombat().magicSpellDelay(target) - 1);
+                target.delayedGraphics(new Graphic(85, 90, 30),hitDelay - 1);
             }
 
             spellEffect(cast, target, hit);

@@ -8,9 +8,6 @@ import com.valinor.game.world.entity.combat.formula.AccuracyFormula;
 import com.valinor.game.world.entity.combat.magic.CombatSpell;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Nightmare;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.Sleepwalker;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.nightmare.TotemPlugin;
 import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -290,7 +287,7 @@ public class Hit {
             if (attacker instanceof Player) {
                 Tile myWildTile = target.tile().level < 6400 ? target.tile() : target.tile().transform(0, -6400, 0);
                 Tile originWildTile = attacker.tile().level < 6400 ? attacker.tile() : attacker.tile().transform(0, -6400, 0);
-                int wildDist = originWildTile.getChevDistance(myWildTile);
+                int wildDist = originWildTile.getChebyshevDistance(myWildTile);
 
                 if (wildDist >= (WildernessArea.inWilderness(attacker.tile()) ? 64 : 18)) {
                     //System.out.print("Hit nullified: dist "+wildDist);
@@ -304,7 +301,7 @@ public class Hit {
                 Tile attackerTile = attacker.tile();
                 Tile myTile = target.tile();
 
-                if (myTile.getChevDistance(attackerTile) >= 64) {
+                if (myTile.getChebyshevDistance(attackerTile) >= 64) {
                     return true;
                 }
             }

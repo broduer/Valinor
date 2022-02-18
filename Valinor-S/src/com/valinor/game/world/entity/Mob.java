@@ -100,23 +100,26 @@ public abstract class Mob extends Entity {
     public abstract Tile getCentrePosition();
 
     /**
-     * Gets the projectile lockon index of this mob.
+     * Gets the projectile lock on index of this mob.
      *
-     * @return The projectile lockon index of this mob.
+     * @return The projectile lock on index of this mob.
      */
     public abstract int getProjectileLockonIndex();
 
     public int projectileSpeed(Mob target) {
         int clientSpeed;
         if (this.tile().isWithinDistance(this, target, 1)) {
-            clientSpeed = 56;
+            clientSpeed = 31;
         } else if (this.tile().isWithinDistance(this, target, 5)) {
-            clientSpeed = 61;
+            clientSpeed = 51;
         } else if (this.tile().isWithinDistance(this, target, 8)) {
             clientSpeed = 71;
         } else {
             clientSpeed = 81;
         }
+
+        //System.out.println("distance for projectile: "+this.tile.getChebyshevDistance(target.tile));
+        //System.out.println("speed: "+clientSpeed);
         return clientSpeed;
     }
 
