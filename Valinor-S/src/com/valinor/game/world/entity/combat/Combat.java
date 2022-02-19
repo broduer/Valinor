@@ -19,6 +19,7 @@ import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.FightType;
 import com.valinor.game.world.entity.combat.weapon.WeaponType;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
@@ -183,6 +184,13 @@ public class Combat {
         //When certain conditions are met you can no longer attack.
         if (mob.dead() || target.dead() || mob.isNoAttackLocked()) {
             return;
+        }
+
+        if(mob.isNpc()) {
+            Npc npc = target.getAsNpc();
+            if(!npc.canAttack()) {
+                return;
+            }
         }
 
         if (mob.isPlayer()) {

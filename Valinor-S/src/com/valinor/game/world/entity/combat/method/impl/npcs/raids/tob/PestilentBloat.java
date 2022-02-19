@@ -137,10 +137,10 @@ public class PestilentBloat extends CommonCombatMethod {
      */
     private void checkForLineOfSight(Mob mob) {
         for (Mob target : targets) {
-            /*if (!ProjectileRoute.allow(mob, target.tile())) {
+            if (!ProjectileRoute.allow(mob, target.tile())) {
                 continue;
-            }*/
-            if (target.isPlayer() && mob.isRegistered() && !mob.dead() && DumbRoute.withinDistance(mob, target, getAttackDistance(mob))) {
+            }
+            if (target.isPlayer() && mob.isRegistered() && !mob.dead()) {
                 new Projectile(mob, target, 1569, 0, 100, 45, 28, 0).sendProjectile();
                 target.hit(mob, World.getWorld().random(1, 20), 3,null).setAccurate(false).graphic(new Graphic(1569)).submit();
             }

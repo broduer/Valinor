@@ -2,6 +2,7 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.raids.cox;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
@@ -55,7 +56,7 @@ public class Tekton extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        if (target.isPlayer()) {
+        /*if (target.isPlayer()) {
             ArrayList<Mob> targets = new ArrayList<>();
             for (Mob t : getPossibleTargets(mob, 4, true, false)) {
                 Tile pos = Utils.getClosestTile(mob, t);
@@ -97,13 +98,47 @@ public class Tekton extends CommonCombatMethod {
                     }
                 }
             });
-        }
+        }*/
+        mob.getMovement().setBlockMovement(true); // Lock movement when we found a target
+        doMeleePhaseInner(mob, target);
     }
 
     private void resetCombatForPlayers(Mob mob) {
         for (Mob t : getPossibleTargets(mob)) {
             t.getCombat().reset();
         }
+    }
+
+    private static boolean instanceFinished(Mob mob) {
+        if (mob instanceof Npc) {
+            Npc npc = (Npc) mob;
+            if (npc.dead() || !npc.isRegistered()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void doMeleePhaseInner(Mob mob, Mob target) {
+        mob.setEntityInteraction(null);
+        mob.animate(7493);
+        Tile p1 = target.tile().copy();
+        mob.face(p1);
+        Chain.bound(null).cancelWhen(() -> instanceFinished(mob)).runFn(1, () -> {
+            mob.face(p1);
+        }).then(4, () -> {
+            if (p1.area(1).contains(target)) {
+                int maxDamage = 40;
+                if (Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE))
+                    maxDamage = 20;
+
+                target.hit(mob, World.getWorld().random(10, maxDamage));
+            }
+        }).then(2, () -> {
+            mob.setEntityInteraction(target);
+        }).then(2, () -> {
+            mob.setEntityInteraction(null);
+        });
     }
 
     private void smith(Mob mob, Mob target) {
