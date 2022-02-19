@@ -140,6 +140,7 @@ public class WildernessArea extends Controller {
         if (mob.isPlayer()) {
             Player player = mob.getAsPlayer();
             player.putAttrib(AttributeKey.LAST_WILD_LVL, 0);
+            player.putAttrib(AttributeKey.MAGEBANK_MAGIC_ONLY, false);
             if (!Skulling.skulled(player)) {
                 // wipe skull history incase
                 player.clearAttrib(AttributeKey.SKULL_ENTRIES_TRACKER);
@@ -166,6 +167,9 @@ public class WildernessArea extends Controller {
                 leave(player);
                 return;
             }
+
+            boolean insideMageArena = player.tile().inArea(3088, 3919, 3123, 3949);
+            //System.out.println(insideMageArena);
 
             //If player is in the wilderness whilst holding a wildy key broadcast it!
             if(WildernessKeyPlugin.hasKey(player)) {
@@ -204,6 +208,10 @@ public class WildernessArea extends Controller {
                     player.putAttrib(AttributeKey.INWILD, World.getWorld().cycleCount());
                     player.getPacketSender().sendString(199, "Level: " + lvl);
                     player.getPacketSender().sendInteractionOption("Attack", 2, true);
+
+                    if(insideMageArena) {
+                        player.putAttrib(AttributeKey.MAGEBANK_MAGIC_ONLY,true);
+                    }
                 }
                 BountyHunterWidget.sendBountyWidget(player);
             }
