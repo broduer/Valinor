@@ -206,21 +206,16 @@ public class Npc extends Mob {
     public static final int[] venom_immunes = new int[]{NYLOCAS_VASILIAS_8355, NYLOCAS_VASILIAS_8356, NYLOCAS_VASILIAS_8357, COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 3127, 494, 2265, 2266, 2267, 7144, 7145, 7146, 7147, 7148, 7149, 6611, 6612, 2042, 2043, 2044, 9035, 9036, 9037};
     public static final int[] poison_immunes = new int[]{NYLOCAS_VASILIAS_8355, NYLOCAS_VASILIAS_8356, NYLOCAS_VASILIAS_8357, COMBAT_DUMMY, UNDEAD_COMBAT_DUMMY, 9035, 9036, 9037};
 
-    public Npc(int id) {
-        this.id = id;
-        setSize(def.size);
-
-        if (combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
-            setCombatMethod(combatInfo().scripts.newCombatInstance());
-        }
-    }
-
     public Npc(int id, Tile tile) {
         super(NodeType.NPC, tile);
         this.id = id;
         spawnTile = tile;
         def = World.getWorld().definitions().get(NpcDefinition.class, id);
         combatInfo = World.getWorld().combatInfo(id);
+        if(combatInfo != null) {
+            combatInfo.stats = combatInfo.originalStats.clone(); // Replenish all stats on this NPC.
+            combatInfo.bonuses = combatInfo.originalBonuses.clone(); // Replenish all stats on this NPC.
+        }
         hp = combatInfo == null ? 50 : combatInfo.stats.hitpoints;
         spawnArea = new Area(spawnTile, walkRadius);
         putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, id == GIANT_MOLE ? 64 : 12);

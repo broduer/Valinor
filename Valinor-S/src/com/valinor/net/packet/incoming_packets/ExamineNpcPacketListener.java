@@ -4,8 +4,11 @@ import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.npc.NpcCombatInfo;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +33,7 @@ public class ExamineNpcPacketListener implements PacketListener {
             return;
         }
 
-        if(player.askForAccountPin()) {
+        if (player.askForAccountPin()) {
             player.sendAccountPinMessage();
             return;
         }
@@ -38,8 +41,15 @@ public class ExamineNpcPacketListener implements PacketListener {
         NpcCombatInfo combatInfo = World.getWorld().combatInfo(npc);
         NpcDefinition def = World.getWorld().definitions().get(NpcDefinition.class, npc);
 
-        if(!player.locked() && def != null && combatInfo != null && !combatInfo.unattackable) {
+        if (!player.locked() && def != null && combatInfo != null && !combatInfo.unattackable) {
             DropsDisplay.start(player, def.name, npc);
+
+            Mob target = player.getCombat().getTarget();
+            if (target != null && target.isNpc()) {
+                Npc n = target.getAsNpc();
+                if (n.combatInfo() != null)
+                    player.message(def.name + "'s Current stats: Att: " + n.combatInfo().stats.attack + " Str: " + n.combatInfo().stats.strength + " Def: " + n.combatInfo().stats.defence);
+            }
         }
 
         World.getWorld().examineRepository().npc(npc);
