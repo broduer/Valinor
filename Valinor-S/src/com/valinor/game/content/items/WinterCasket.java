@@ -32,13 +32,13 @@ public class WinterCasket extends Interaction {
     private void open(Player player) {
         if (player.inventory().contains(WINTER_CASKET)) {
             player.inventory().remove(WINTER_CASKET);
-            Item reward = Utils.randomElement(RARE_REWARDS);
+            Item reward = Utils.randomElement(REWARDS);
             World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a supply crate!");
             player.inventory().addOrDrop(reward);
         }
     }
 
-    private final List<Item> RARE_REWARDS = Arrays.asList(
+    private final List<Item> REWARDS = Arrays.asList(
         new Item(CRYSTAL_OF_ITHELL),
         new Item(CRYSTAL_OF_IORWERTH),
         new Item(CRYSTAL_OF_TRAHAEARN),
@@ -49,16 +49,8 @@ public class WinterCasket extends Interaction {
         new Item(CRYSTAL_OF_AMLODD),
         new Item(PETS_MYSTERY_BOX),
         new Item(CORRUPTING_STONE),
-        new Item(CURSED_AMULET_OF_THE_DAMNED),
-        new Item(FEROCIOUS_GLOVES),
-        new Item(SUPER_MYSTERY_BOX),
         new Item(NIGHTMARE_STAFF),
         new Item(RED_DYE),
-        new Item(RUNE_POUCH_I),
-        new Item(AVERNIC_DEFENDER_HILT),
-        new Item(INFERNAL_CAPE),
-        new Item(AVAS_ASSEMBLER),
-        new Item(ELDER_MAUL),
         new Item(TORTURE_ORNAMENT_KIT),
         new Item(ANGUISH_ORNAMENT_KIT),
         new Item(OCCULT_ORNAMENT_KIT),
@@ -66,10 +58,7 @@ public class WinterCasket extends Interaction {
         new Item(CRYSTAL_BODY),
         new Item(CRYSTAL_LEGS),
         new Item(GHRAZI_RAPIER),
-        new Item(MYSTERY_TICKET,5),
         new Item(ARCANE_SIGIL),
-        new Item(VOTE_TICKET,30),
-        new Item(DONATOR_TICKET, 2000),
         new Item(COINS_995, 200_000_000),
         new Item(VOLATILE_ORB),
         new Item(HARMONISED_ORB),

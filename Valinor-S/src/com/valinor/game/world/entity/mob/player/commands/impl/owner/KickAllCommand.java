@@ -1,10 +1,8 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.owner;
 
-import com.valinor.GameServer;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
-import com.valinor.util.Utils;
 
 import static com.valinor.game.world.entity.AttributeKey.IS_BOT;
 
@@ -28,6 +26,6 @@ public class KickAllCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return player.getPlayerRights().isOwner(player);
+        return player.getPlayerRights().isAdminOrGreater(player);
     }
 }

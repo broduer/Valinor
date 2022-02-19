@@ -360,8 +360,8 @@ public class Hit {
         }
 
         //we adjust pid to ranged and magic methods so there's no over delay
-        if(combatType != CombatType.MELEE && delay < 1) {
-            delay = 1;
+        if(combatType != CombatType.MELEE && delay < 2) {
+            delay = 2;
         }
 
         return this;
