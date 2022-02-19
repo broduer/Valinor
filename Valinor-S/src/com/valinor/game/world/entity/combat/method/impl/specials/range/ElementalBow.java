@@ -21,34 +21,36 @@ import static com.valinor.util.ItemIdentifiers.ICE_ARROWS;
 
 public class ElementalBow extends CommonCombatMethod {
 
-    private static final int FIRE_ARROW_PROJECTILE = 11;
-    private static final int ICE_ARROW_PROJECTILE = 16;
-
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         if (mob.isPlayer()) {
             Player player = (Player) mob;
+            if (player.getTimers().has(TimerKey.ELEMENTAL_BOW_SPECIAL_COOLDOWN)) {
+                player.message("You must wait "+player.getTimers().left(TimerKey.ELEMENTAL_BOW_SPECIAL_COOLDOWN)+" ticks before you can use this special again.");
+                player.getCombat().reset();
+                player.setSpecialActivated(false);
+                CombatSpecial.updateBar(player);
+                return;
+            }
+            player.getTimers().addOrSet(TimerKey.ELEMENTAL_BOW_SPECIAL_COOLDOWN, 20);
+            player.graphic(player.getEquipment().hasAt(EquipSlot.AMMO, FIRE_ARROWS) ? 1905 : player.getEquipment().hasAt(EquipSlot.AMMO, ICE_ARROWS) ? 1903 : 1904);
 
             player.animate(EquipmentInfo.attackAnimationFor(player, CustomItemIdentifiers.ELEMENTAL_BOW));
 
             Hit hit = target.hit(player, CombatFactory.calcDamageFromType(player, target, CombatType.RANGED),2, CombatType.RANGED).checkAccuracy();
             hit.submit();
 
-            player.putAttrib(AttributeKey.ELEMENTAL_BOW_SPECIAL_COOLDOWN, true);
-
-            Chain.bound(null).name("ElementalBowSpecTask").runFn(17, () -> player.putAttrib(AttributeKey.ELEMENTAL_BOW_SPECIAL_COOLDOWN, false));
+            new Projectile(player, target, 1922, 31, mob.projectileSpeed(target), 40, 31, 0).sendProjectile();
 
             //Ice effect
             if (player.getEquipment().hasAt(EquipSlot.AMMO, ICE_ARROWS)) {
-                new Projectile(player, target, ICE_ARROW_PROJECTILE, 41, 60, 40, 31, 0, 10, 15).sendProjectile();
                 target.freeze(5, player);
                 player.forceChat("FREEZE!");
-
                 //A task that loops 5 times
                 for (int index = 0; index < 6; index++) {
                     Chain.bound(null).name("ele_bow_freeze_effect").cancelWhen(() -> {
                         return !player.tile().isWithinDistance(target.tile()) || target.dead(); // cancels as expected
-                    }).runFn(index * 4, () -> {
+                    }).thenCancellable(index * 4, () -> {
                         target.graphic(540);
                         Hit freezeHit = target.hit(player, World.getWorld().random(2, 5),0, CombatType.RANGED).setAccurate(true);
                         freezeHit.submit();
@@ -60,14 +62,12 @@ public class ElementalBow extends CommonCombatMethod {
                 }
                 //Fire effect
             } else if (player.getEquipment().hasAt(EquipSlot.AMMO, FIRE_ARROWS)) {
-                new Projectile(player, target, FIRE_ARROW_PROJECTILE, 41, 60, 40, 31, 0, 10, 15).sendProjectile();
-
                 //A task that loops 5 times
                 for (int index = 0; index < 6; index++) {
                     // cancels as expected
                     Chain.bound(null).name("ele_bow_fire_effect").cancelWhen(() -> {
                         return !player.tile().isWithinDistance(target.tile()) || target.dead(); // cancels as expected
-                    }).runFn(index * 4, () -> {
+                    }).thenCancellable(index * 4, () -> {
                         target.graphic(78);
                         Hit fireHit = target.hit(player, World.getWorld().random(2, 5),0, CombatType.RANGED).setAccurate(true);
                         fireHit.submit();

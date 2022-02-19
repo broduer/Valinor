@@ -48579,7 +48579,7 @@
     "stab": 0,
     "slash": 0,
     "crush": 0,
-    "range": 110,
+    "range": 90,
     "mage": 0,
     "stabdef": 0,
     "slashdef": 0,
@@ -48587,7 +48587,7 @@
     "rangedef": 0,
     "magedef": 0,
     "str": 0,
-    "rangestr": 15,
+    "rangestr": 5,
     "magestr": 0,
     "pray": 0
   },
