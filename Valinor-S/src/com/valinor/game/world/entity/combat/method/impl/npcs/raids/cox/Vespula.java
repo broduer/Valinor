@@ -105,7 +105,7 @@ public class Vespula extends CommonCombatMethod {
     public void handleAfterHit(Hit hit) {
         Mob attacker = hit.getAttacker();
         Mob target = hit.getTarget();
-        if (World.getWorld().rollDie(5, 1)) {
+        if (World.getWorld().rollDie(10, 1)) {
             if (!Equipment.venomHelm(target)) { // Serp helm stops poison.
                 target.hit(attacker, 20, SplatType.POISON_HITSPLAT);
             }

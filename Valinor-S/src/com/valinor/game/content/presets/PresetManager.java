@@ -471,7 +471,8 @@ public class PresetManager {
                     item.setAmount(bankItem.getAmount());
                 }
 
-                player.getRunePouch().deposit(item.copy());
+                System.out.println(item.copy());
+                player.getRunePouch().deposit(item.copy(),true);
             }
         }
 

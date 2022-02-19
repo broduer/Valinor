@@ -29,7 +29,7 @@ public class Tekton extends CommonCombatMethod {
 
     @Override
     public void init(Mob mob) {
-        if (mob.isNpc()) {
+        /*if (mob.isNpc()) {
             Npc npc = mob.getAsNpc();
             int baseX = ((npc.spawnTile().getX() >> 3) & (~3)) << 3; // base X of the chamber
             int baseY = ((npc.spawnTile().getY() >> 3) & (~3)) << 3;
@@ -38,7 +38,7 @@ public class Tekton extends CommonCombatMethod {
                     bubbles.add(new Tile(baseX + x, baseY + y, npc.tile().level));
                 }
             }
-        }
+        }*/
     }
 
     private boolean forcedSmith = false;
@@ -167,12 +167,12 @@ public class Tekton extends CommonCombatMethod {
 
     @Override
     public void onHit(Mob mob, Mob target, Hit hit) {
-        if (mob.isNpc() && mob.getAsNpc().def() != null && mob.getAsNpc().def().name.toLowerCase().contains("tekton")) {
+        /*if (mob.isNpc() && mob.getAsNpc().def() != null && mob.getAsNpc().def().name.toLowerCase().contains("tekton")) {
             if (mob.hp() < mob.maxHp() / 2 && !forcedSmith && World.getWorld().rollDie(1, 1)) {//15
                 forcedSmith = true;
                 smith(mob, target);
             }
-        }
+        }*/
     }
 
     @Override

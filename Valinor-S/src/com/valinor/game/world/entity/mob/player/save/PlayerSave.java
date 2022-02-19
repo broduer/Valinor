@@ -331,6 +331,7 @@ public class PlayerSave {
                         player.getRecentKills().add(kills);
                     }
                 }
+                player.putAttrib(FIRST_KILL_OF_THE_DAY, details.firstKillOfTheDay);
                 player.putAttrib(AttributeKey.BOUNTY_TASKS_SKIPPED, details.bountyTasksSkipped);
                 player.putAttrib(AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, details.bountyTaskNotifications);
                 player.putAttrib(AttributeKey.BOUNTY_TASKS_COMPLETED, details.bountyTasksCompleted);
@@ -806,6 +807,7 @@ public class PlayerSave {
         private final int kills;
         private final int deaths;
         private final List<String> recentKills;
+        private final long firstKillOfTheDay;
         private final int bountyTasksSkipped;
         private final boolean bountyTaskNotifications;
         private final int bountyTasksCompleted;
@@ -1296,6 +1298,7 @@ public class PlayerSave {
             kills = Player.getAttribIntOr(player, PLAYER_KILLS, 0);
             deaths = Player.getAttribIntOr(player, PLAYER_DEATHS, 0);
             recentKills = player.getRecentKills();
+            firstKillOfTheDay = Player.getAttribLongOr(player, FIRST_KILL_OF_THE_DAY, 0L);
             bountyTasksSkipped = Player.getAttribIntOr(player, AttributeKey.BOUNTY_TASKS_SKIPPED, 0);
             bountyTaskNotifications = Player.getAttribBooleanOr(player, AttributeKey.BOUNTY_HUNTER_TASK_NOTIFICATIONS, true);
             bountyTasksCompleted = Player.getAttribIntOr(player, AttributeKey.BOUNTY_TASKS_COMPLETED, 0);

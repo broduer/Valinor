@@ -225,7 +225,7 @@ public class RunePouch extends ItemContainer {
      *            the rune that is being stored.
      * @return {@code true} if an item is stored, {@code false} otherwise.
      */
-    public void deposit(Item item) {
+    public void deposit(Item item, boolean preset) {
         boolean canAdd = RUNES.stream().anyMatch(rune -> rune == item.getId());
 
         if (!canAdd) {
@@ -263,14 +263,19 @@ public class RunePouch extends ItemContainer {
             return;
         }
 
-        int inventoryAmount = player.inventory().count(item.getId());
-        if (inventoryAmount < amount) {
-            amount = inventoryAmount;
+        if(!preset) {
+            int inventoryAmount = player.inventory().count(item.getId());
+            if (inventoryAmount < amount) {
+                amount = inventoryAmount;
+            }
+            player.inventory().remove(item.getId(), amount);
         }
-
-        player.inventory().remove(item.getId(), amount);
         player.getRunePouch().add(new Item(item.getId(), amount));
         refresh();
+    }
+
+    public void deposit(Item item) {
+        deposit(item,false);
     }
 
     public boolean itemOnItem(Item used, Item with) {

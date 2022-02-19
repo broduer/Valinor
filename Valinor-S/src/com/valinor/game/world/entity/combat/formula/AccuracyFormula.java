@@ -41,7 +41,7 @@ import static com.valinor.util.NpcIdentifiers.KREEARRA;
  */
 public class AccuracyFormula {
 
-    private static final List<Integer> BUFF_RANGED_ATTACKS_VS = Arrays.asList(NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282, KRIL_TSUTSAROTH, KREEARRA, CHAOS_FANATIC, ANCIENT_KING_BLACK_DRAGON, ANCIENT_CHAOS_ELEMENTAL);
+    private static final List<Integer> BUFF_RANGED_ATTACKS_VS = Arrays.asList(GREAT_OLM_7554, NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282, KRIL_TSUTSAROTH, KREEARRA, CHAOS_FANATIC, ANCIENT_KING_BLACK_DRAGON, ANCIENT_CHAOS_ELEMENTAL);
 
     public static final SecureRandom srand = new SecureRandom();
     private static final Logger logger = LogManager.getLogger(AccuracyFormula.class);
