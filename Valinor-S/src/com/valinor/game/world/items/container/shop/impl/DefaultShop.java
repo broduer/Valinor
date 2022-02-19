@@ -158,6 +158,8 @@ public final class DefaultShop extends Shop {
         String shopName = name;
         if(shopId == 18) {
             shopName = "Pk Point Shop - (PKP : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0)))+")";
+        } else if(shopId == 47) {
+            shopName = "Boss Point Shop - (Points : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.BOSS_POINTS,0)))+")";
         }
         player.getPacketSender().sendString(shopId == 7 ? 64005 : ShopUtility.NAME_INTERFACE_CHILD_ID, shopName);
         player.getInterfaceManager().openInventory(shopId == 7 ? 64000 : ShopUtility.INTERFACE_ID, InterfaceConstants.SHOP_INVENTORY - 1);

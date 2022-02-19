@@ -2624,6 +2624,21 @@
         "id": 10887,
         "amount": 100,
         "value": 5000
+      },
+      {
+        "id": 23246,
+        "amount": 100,
+        "value": 5000
+      },
+      {
+        "id": 30693,
+        "amount": 100,
+        "value": 300000
+      },
+      {
+        "id": 12102,
+        "amount": 100,
+        "value": 200000
       }
     ]
   },
@@ -4571,6 +4586,21 @@
     "scroll": 350,
     "items": [
       {
+        "id": 8921,
+        "amount": 100,
+        "value": 1000
+      },
+      {
+        "id": 30186,
+        "amount": 100,
+        "value": 200
+      },
+      {
+        "id": 30189,
+        "amount": 100,
+        "value": 400
+      },
+      {
         "id": 12863,
         "amount": 100,
         "value": 1000
@@ -4816,7 +4846,7 @@
   },
   {
     "shopId": 47,
-    "name": "Boss Points Rewards",
+    "name": "Boss Point Shop - (Points : 0)",
     "noiron": false,
     "currency": "BOSS_POINTS",
     "restock": true,
