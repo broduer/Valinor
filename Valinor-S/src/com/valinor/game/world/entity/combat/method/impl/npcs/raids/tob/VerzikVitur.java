@@ -251,6 +251,7 @@ public class VerzikVitur extends CommonCombatMethod {
                 GameObject gameObject = new GameObject(VERZIKS_THRONE_32737, new Tile(3167, 4324, mob.tile().level), 10, 0);
                 party.objects.add(gameObject);
                 gameObject.spawn();
+                mob.getAsNpc().completelyLockedFromMoving(true);
                 mob.getAsNpc().transmog(VERZIK_VITUR_8372);
                 mob.getAsNpc().def(World.getWorld().definitions().get(NpcDefinition.class, VERZIK_VITUR_8372));
             });
@@ -266,6 +267,7 @@ public class VerzikVitur extends CommonCombatMethod {
                 mob.animate(-1);
                 mob.forceChat("Behold my true nature!");
                 mob.getAsNpc().canAttack(true);
+                mob.getAsNpc().completelyLockedFromMoving(true);
             });
             return true;
         } else if (mob.getAsNpc().id() == VERZIK_VITUR_8374) {

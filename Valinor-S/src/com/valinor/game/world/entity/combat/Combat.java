@@ -186,8 +186,8 @@ public class Combat {
             return;
         }
 
-        if(mob.isNpc()) {
-            Npc npc = target.getAsNpc();
+        if(mob.isNpc() && target.isPlayer()) {
+            Npc npc = mob.getAsNpc();
             if(!npc.canAttack()) {
                 return;
             }

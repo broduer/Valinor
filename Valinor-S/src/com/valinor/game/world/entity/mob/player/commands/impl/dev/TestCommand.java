@@ -56,7 +56,7 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        //player.teleport(3166, 4323, player.tile().level);
+        player.teleport(3166, 4323, player.tile().level);
 
         /*//Make a party
         Party.createParty(player);

@@ -206,20 +206,21 @@ public class TheatreOfBlood extends Raids {
 
         //Create
         Npc maiden = new RaidsNpc(THE_MAIDEN_OF_SUGADINTI, new Tile(3162, 4444, party.getHeight()), party.getSize()).spawn(false);
-        maiden.cantFollowUnderCombat(true);
+        maiden.completelyLockedFromMoving(true);
         Npc bloat = new RaidsNpc(PESTILENT_BLOAT, new Tile(3299, 4440, party.getHeight()), party.getSize()).spawn(false);
         bloat.noRetaliation(true);
-        bloat.cantFollowUnderCombat(true);
         bloat.resetFaceTile();
+        bloat.canAttack(false);
+        bloat.cantMoveUnderCombat(true);
         Npc vasilias = new RaidsNpc(NYLOCAS_VASILIAS_8355, new Tile(3293, 4246, party.getHeight()), party.getSize()).spawn(false);
-        vasilias.cantFollowUnderCombat(true);
+        vasilias.completelyLockedFromMoving(true);
         Npc sotetseg = new RaidsNpc(SOTETSEG_8388, new Tile(3278, 4329, party.getHeight()), party.getSize()).spawn(false);
-        sotetseg.cantFollowUnderCombat(true);
+        sotetseg.completelyLockedFromMoving(true);
         Npc xarpus = new RaidsNpc(XARPUS, new Tile(3169, 4386, party.getHeight()+1), party.getSize()).spawn(false);
-        xarpus.cantFollowUnderCombat(true);
+        xarpus.completelyLockedFromMoving(true);
         xarpus.canAttack(false);
         Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()), party.getSize()).spawn(false);
-        verzik.cantFollowUnderCombat(true);
+        verzik.cantMoveUnderCombat(true);
 
         //Add to list
         party.monsters.add(maiden);

@@ -69,7 +69,7 @@ public class MaidenOfSugadinti extends CommonCombatMethod {
                     if (spawn == null) {
                         spawn = new Npc(BLOOD_SPAWN, tile).spawn(false);
                         spawn.canAttack(false);
-                        spawn.cantFollowUnderCombat(true);
+                        spawn.completelyLockedFromMoving(true);
                         World.getWorld().tileGraphic(BLOOD_SPLASH, tile, 0, 0);
                     }
                     if (spawn.dead() || mob.dead()) {

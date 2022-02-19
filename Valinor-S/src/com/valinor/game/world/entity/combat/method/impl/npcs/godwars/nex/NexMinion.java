@@ -17,7 +17,7 @@ public class NexMinion extends Npc {
 
     public NexMinion(int id, Tile tile) {
         super(id, tile);
-        cantFollowUnderCombat(true);
+        completelyLockedFromMoving(true);
         capDamage(0);
     }
 

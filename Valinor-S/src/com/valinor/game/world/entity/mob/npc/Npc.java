@@ -142,14 +142,24 @@ public class Npc extends Mob {
         this.capDamage = capDamage;
     }
 
-    private boolean cantFollowUnderCombat;
+    private boolean lockMovementCompletely;
 
-    public boolean cantFollowUnderCombat() {
-        return cantFollowUnderCombat;
+    public boolean completelyLockedFromMoving() {
+        return lockMovementCompletely;
     }
 
-    public void cantFollowUnderCombat(boolean canFollowUnderCombat) {
-        this.cantFollowUnderCombat = canFollowUnderCombat;
+    public void completelyLockedFromMoving(boolean lockMovementCompletely) {
+        this.lockMovementCompletely = lockMovementCompletely;
+    }
+
+    private boolean cantMoveUnderCombat;
+
+    public boolean cantMoveUnderCombat() {
+        return cantMoveUnderCombat;
+    }
+
+    public void cantMoveUnderCombat(boolean cantMoveUnderCombat) {
+        this.cantMoveUnderCombat = cantMoveUnderCombat;
     }
 
     private boolean canAttack = true;
