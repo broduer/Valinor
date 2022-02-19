@@ -381,6 +381,8 @@ public class EquipmentInfo {
         // Handle individual cases first
         if (weapon != 0) {
             switch (weapon) {
+                case HAM_JOINT:
+                    return 401;
                 case ARCLIGHT:
                     return style == 2 ? 386 : 390;
                 case IVANDIS_FLAIL:

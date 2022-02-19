@@ -51481,5 +51481,21 @@
     "rangestr": 122,
     "magestr": 0,
     "pray": 0
+  },
+  "23360": {
+    "stab": 38,
+    "slash": 26,
+    "crush": -2,
+    "range": 0,
+    "mage": 0,
+    "stabdef": 0,
+    "slashdef": 2,
+    "crushdef": 1,
+    "rangedef": 0,
+    "magedef": 0,
+    "str": 39,
+    "rangestr": 0,
+    "magestr": 0,
+    "pray": 0
   }
 }
