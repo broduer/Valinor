@@ -109,7 +109,7 @@ public class HoverMenuManager {
         menus.put(RING_OF_MANHUNTING, new HoverMenu("Has both the effects of the @red@Berserker Ring@whi@ and @red@Ring Of Suffering@whi@."));
         menus.put(RING_OF_SORCERY, new HoverMenu("Has both the effects of the @red@Seer Ring (i)@whi@ and @red@Ring Of Recoil@whi@."));
         menus.put(RING_OF_PRECISION, new HoverMenu("Has both the effects of the Archers Ring (i)@whi@ and @red@Ring Of Recoil@whi@ And @red@+5@whi@ Ranged Strength."));
-        menus.put(RING_OF_TRINITY, new HoverMenu("The effect of all forged rings combined into one."));
+        menus.put(RING_OF_TRINITY, new HoverMenu("The effect of all forged rings combined into one. And +@red@7.5%@whi@ drop rate bonus."));
         menus.put(MAGMA_BLOWPIPE, new HoverMenu("A recolored version of the Toxic blowpipe! +3 max hit and better accuracy <col=65535>Untradeable and auto-keep."));
         menus.put(VENGEANCE_SKULL, new HoverMenu("With this item in your inventory, you won't need the required runes for vengeance! <col=65535>Untradeable and auto-keep."));
         menus.put(KEY_OF_DROPS, new HoverMenu("When using the Key of drops on a mystery box you will get an extra drop roll."));

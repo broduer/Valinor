@@ -14,6 +14,7 @@ import com.valinor.game.world.items.container.looting_bag.LootingBag;
 import com.valinor.net.packet.Packet;
 import com.valinor.net.packet.PacketListener;
 import com.valinor.net.packet.interaction.InteractionManager;
+import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 
 /**
@@ -83,6 +84,9 @@ public class EquipPacketListener implements PacketListener {
                 if(info != null) {
                     player.getEquipment().equip(slot);
                     BonusesInterface.sendBonuses(player);
+
+                    var dropRateBonus = player.dropRateBonus();
+                    player.getPacketSender().sendInterfaceDisplayState(15150,true).sendString(15122, "Drop rate bonus: "+ Color.GREEN.wrap("+"+dropRateBonus)+"<col=65280>%</col>");
                 }
             }
         }

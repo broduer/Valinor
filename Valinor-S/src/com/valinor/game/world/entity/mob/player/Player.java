@@ -380,7 +380,7 @@ public class Player extends Mob {
         if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH))
             percent += 5;
 
-        if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I))
+        if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I) || equipment.hasAt(EquipSlot.RING, RING_OF_TRINITY))
             percent += 7.5;
 
         var dropRateBoostUnlock = slayerRewards.getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
