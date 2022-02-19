@@ -33,16 +33,6 @@ public class Dye extends Interaction {
             player.inventory().add(new Item(TWISTED_BOW_RED),true);
             return true;
         }
-        if ((use.getId() == CLEANING_CLOTH || usedWith.getId() == CLEANING_CLOTH) && (use.getId() == TWISTED_BOW_ORANGE || usedWith.getId() == TWISTED_BOW_ORANGE)) {
-            player.inventory().remove(new Item(TWISTED_BOW_ORANGE),true);
-            player.inventory().add(new Item(TWISTED_BOW),true);
-            return true;
-        }
-        if ((use.getId() == CLEANING_CLOTH || usedWith.getId() == CLEANING_CLOTH) && (use.getId() == TWISTED_BOW_PURPLE || usedWith.getId() == TWISTED_BOW_PURPLE)) {
-            player.inventory().remove(new Item(TWISTED_BOW_PURPLE),true);
-            player.inventory().add(new Item(TWISTED_BOW),true);
-            return true;
-        }
         return false;
     }
 }
