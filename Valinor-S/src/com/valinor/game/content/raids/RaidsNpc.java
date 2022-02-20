@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids;
 
-import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 
@@ -13,6 +12,13 @@ import com.valinor.game.world.position.Tile;
 public class RaidsNpc extends Npc {
 
     public static final double BONUS_HP_PER_PLAYER = 0.40; // %increased hp for each players beyond the first
+
+    public RaidsNpc(int id, Tile tile, boolean theatre) {
+        super(id, tile);
+        this.respawns(false);
+        this.combatInfo().aggroradius = 15;
+        this.walkRadius(15);
+    }
 
     public RaidsNpc(int id, Tile tile, int partySize) {
         super(id, tile);

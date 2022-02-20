@@ -64,7 +64,7 @@
           { "id": 5522, "min": 25, "max": 25, "points": 10 }, //Binding necklace (noted)
           { "id": 1938, "min": 254, "max": 350, "points": 10 }, //Jug of water (noted)
           { "id": 2, "min": 300, "max": 300, "points": 10 }, //Cannonball
-          { "id": 13273, "min": 1, "max": 1, "points": 1 } //Unsired
+          { "id": 13273, "min": 1, "max": 1, "points": 3 } //Unsired
         ]
       }
     ]

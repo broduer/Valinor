@@ -1555,7 +1555,7 @@
       "death": 8421
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CrystallineHunleffCombatStrategy"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.CrystallineHunleffCombatStrategy"
     }
   },
   {

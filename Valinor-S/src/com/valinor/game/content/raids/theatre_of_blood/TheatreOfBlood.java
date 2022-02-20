@@ -205,21 +205,21 @@ public class TheatreOfBlood extends Raids {
         Party party = player.raidsParty;
 
         //Create
-        Npc maiden = new RaidsNpc(THE_MAIDEN_OF_SUGADINTI, new Tile(3162, 4444, party.getHeight()), party.getSize()).spawn(false);
+        Npc maiden = new RaidsNpc(THE_MAIDEN_OF_SUGADINTI, new Tile(3162, 4444, party.getHeight()), true).spawn(false);
         maiden.completelyLockedFromMoving(true);
-        Npc bloat = new RaidsNpc(PESTILENT_BLOAT, new Tile(3299, 4440, party.getHeight()), party.getSize()).spawn(false);
+        Npc bloat = new RaidsNpc(PESTILENT_BLOAT, new Tile(3299, 4440, party.getHeight()), true).spawn(false);
         bloat.noRetaliation(true);
         bloat.resetFaceTile();
         bloat.canAttack(false);
         bloat.cantMoveUnderCombat(true);
-        Npc vasilias = new RaidsNpc(NYLOCAS_VASILIAS_8355, new Tile(3293, 4246, party.getHeight()), party.getSize()).spawn(false);
+        Npc vasilias = new RaidsNpc(NYLOCAS_VASILIAS_8355, new Tile(3293, 4246, party.getHeight()), true).spawn(false);
         vasilias.completelyLockedFromMoving(true);
-        Npc sotetseg = new RaidsNpc(SOTETSEG_8388, new Tile(3278, 4329, party.getHeight()), party.getSize()).spawn(false);
+        Npc sotetseg = new RaidsNpc(SOTETSEG_8388, new Tile(3278, 4329, party.getHeight()), true).spawn(false);
         sotetseg.completelyLockedFromMoving(true);
-        Npc xarpus = new RaidsNpc(XARPUS, new Tile(3169, 4386, party.getHeight()+1), party.getSize()).spawn(false);
+        Npc xarpus = new RaidsNpc(XARPUS, new Tile(3169, 4386, party.getHeight()+1), true).spawn(false);
         xarpus.completelyLockedFromMoving(true);
         xarpus.canAttack(false);
-        Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()), party.getSize()).spawn(false);
+        Npc verzik = new RaidsNpc(VERZIK_VITUR_8369, new Tile(3166, 4323,party.getHeight()), true).spawn(false);
         verzik.cantMoveUnderCombat(true);
 
         //Add to list
