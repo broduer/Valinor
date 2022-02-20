@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff;
+package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.corrupt;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;

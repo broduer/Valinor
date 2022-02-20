@@ -1515,6 +1515,47 @@
       "attack": 8419,
       "block": -1,
       "death": 8421
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.corrupt.CorruptedHunleffCombatStrategy"
+    }
+  },
+  {
+    // Hunllef
+    "ids": [
+      9021, 9022, 9023
+    ],
+    "boss": true,
+    "maxhit": 50,
+    "attackspeed": 5,
+    "aggroradius": 0,
+    "respawntime": 50,
+    "deathlen": 2,
+    "aggressive": false,
+    "stats": {
+      "attack": 240,
+      "strength": 240,
+      "magic": 240,
+      "ranged": 240,
+      "defence": 240,
+      "hitpoints": 600
+    },
+    "bonuses": {
+      "attack": 76,
+      "strength": 64,
+      "stabdefence": 20,
+      "slashdefence": 20,
+      "crushdefence": 20,
+      "rangeddefence": 20,
+      "magicdefence": 20
+    },
+    "animations": {
+      "attack": 8419,
+      "block": -1,
+      "death": 8421
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CrystallineHunleffCombatStrategy"
     }
   },
   {

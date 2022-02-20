@@ -1,5 +1,15 @@
 [
   {
+    "name": "Crystalline Hunllef",
+    "id": 9021,
+    "x": 3050,
+    "y": 2892,
+    "z": 0,
+    "direction": "W",
+    "walkRange": 0
+  },
+  //Wilderness
+  {
     "name": "vet'ion",
     "id": 6611,
     "x": 2342,

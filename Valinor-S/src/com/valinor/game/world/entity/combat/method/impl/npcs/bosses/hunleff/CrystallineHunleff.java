@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff;
+package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff;
 
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
@@ -8,28 +8,33 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
 
-import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff.Phase.*;
+import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.CrystallineHunleff.Phase.*;
+import static com.valinor.util.NpcIdentifiers.*;
 
-public class CorruptedHunleff extends Npc {
+/**
+ * @author Patrick van Elderen <https://github.com/PVE95>
+ * @Since February 20, 2022
+ */
+public class CrystallineHunleff extends Npc {
 
-    public CorruptedHunleff.CombatAI getCombatAI() {
+    public CombatAI getCombatAI() {
         return combatAI;
     }
 
-    private final CorruptedHunleff.CombatAI combatAI;
-    private CorruptedHunleff.Phase phase;
+    private final CombatAI combatAI;
+    private Phase phase;
 
-    public CorruptedHunleff(int id, Tile tile) {
+    public CrystallineHunleff(int id, Tile tile) {
         super(id, tile);
-        this.phase = CorruptedHunleff.Phase.forId(id);
-        this.combatAI = new CorruptedHunleff.CombatAI(this);
+        this.phase = Phase.forId(id);
+        this.combatAI = new CombatAI(this);
         this.setCombatMethod(combatAI);
     }
 
     enum Phase {
-        MELEE(9035, CombatType.MELEE, new CorruptedHunleffCombatStrategy()),
-        RANGED(9036, CombatType.RANGED, new CorruptedHunleffCombatStrategy()),
-        MAGIC(9037, CombatType.MAGIC, new CorruptedHunleffCombatStrategy());
+        MELEE(CRYSTALLINE_HUNLLEF, CombatType.MELEE, new CrystallineHunleffCombatStrategy()),
+        RANGED(CRYSTALLINE_HUNLLEF_9022, CombatType.RANGED, new CrystallineHunleffCombatStrategy()),
+        MAGIC(CRYSTALLINE_HUNLLEF_9023, CombatType.MAGIC, new CrystallineHunleffCombatStrategy());
 
         public final int npcId;
         public final CombatMethod method;
@@ -41,8 +46,8 @@ public class CorruptedHunleff extends Npc {
             this.method = method;
         }
 
-        public static CorruptedHunleff.Phase forId(int id) {
-            for (CorruptedHunleff.Phase phase : values()) {
+        public static Phase forId(int id) {
+            for (Phase phase : values()) {
                 if (phase.npcId == id)
                     return phase;
             }
@@ -52,20 +57,20 @@ public class CorruptedHunleff extends Npc {
 
     public static class CombatAI extends CommonCombatMethod {
 
-        private final CorruptedHunleff corruptedHunleff;
+        private final CrystallineHunleff crystallineHunleff;
         private CombatMethod currentMethod;
         private int attacksCounter;
 
-        public CombatAI(CorruptedHunleff corruptedHunleff) {
-            this.corruptedHunleff = corruptedHunleff;
-            currentMethod = corruptedHunleff.phase.method;
+        public CombatAI(CrystallineHunleff crystallineHunleff) {
+            this.crystallineHunleff = crystallineHunleff;
+            currentMethod = crystallineHunleff.phase.method;
         }
 
-        void updatePhase(CorruptedHunleff.Phase phase) {
-            corruptedHunleff.phase = phase;
+        void updatePhase(Phase phase) {
+            crystallineHunleff.phase = phase;
             currentMethod = phase.method;
-            corruptedHunleff.transmog(phase.npcId);
-            corruptedHunleff.getCombat().delayAttack(1);
+            crystallineHunleff.transmog(phase.npcId);
+            crystallineHunleff.getCombat().delayAttack(1);
             target.putAttrib(AttributeKey.HUNLESS_PREVIOUS_STYLE, phase);
         }
 
@@ -73,10 +78,10 @@ public class CorruptedHunleff extends Npc {
             attacksCounter += 1;
             //System.out.println("attks "+attacksCounter);
             if (attacksCounter >= 4) {
-                CorruptedHunleff.Phase old = target.getAttribOr(AttributeKey.HUNLESS_PREVIOUS_STYLE, MELEE);
+                Phase old = target.getAttribOr(AttributeKey.HUNLESS_PREVIOUS_STYLE, MELEE);
                 //System.out.println("previous phase: "+old);
                 if(old == MELEE) {
-                    updatePhase(Phase.RANGED);
+                    updatePhase(RANGED);
                 } else if(old == RANGED) {
                     updatePhase(MAGIC);
                 } else if(old == MAGIC) {

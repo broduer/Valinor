@@ -1,5 +1,5 @@
 {
-  "npcs": [ 9035, 9036, 9037 ],
+  "npcs": [ 9021, 9022, 9023 ],
   "guaranteed": [
     { "id": 995, "amount": 500000 } //Coins
   ],
@@ -16,8 +16,9 @@
         {"id": 23975, "min": 1, "max": 1, "points": 2 },//crystal body
         {"id": 23979, "min": 1, "max": 1, "points": 2 },//crystal legs
         {"id": 30048, "min": 1, "max": 1, "points": 2 },//corrupted ranger gauntlets
-        {"id": 24551, "min": 1, "max": 1, "points": 2 },//Blade of saeldor (c)
-        {"id": 25884, "min": 1, "max": 1, "points": 1 }//Bow of faerdhinen (c)
+        {"id": 23995, "min": 1, "max": 1, "points": 2 },//Blade of saeldor
+        {"id": 25865, "min": 1, "max": 1, "points": 1 },//Bow of faerdhinen
+        {"id": 8788, "min": 1, "max": 1, "points": 1 }//corrupting stone
       ]
     },
     {
