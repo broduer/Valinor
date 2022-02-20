@@ -5,6 +5,7 @@ import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.skill.impl.prayer.Bone;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
+import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.skull.SkullType;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -26,6 +27,7 @@ import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_K
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.content.collection_logs.LogType.OTHER;
 import static com.valinor.game.world.entity.AttributeKey.DOUBLE_DROP_LAMP_TICKS;
+import static com.valinor.game.world.entity.AttributeKey.SLAYER_TASK_ID;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
 import static com.valinor.game.world.entity.mob.npc.NpcDeath.notification;
 import static com.valinor.util.CustomItemIdentifiers.*;
@@ -78,7 +80,7 @@ public class ItemDrops {
 
                     //Niffler
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
-                        if(tile.level != player.tile().level) {
+                        if (tile.level != player.tile().level) {
                             return;
                         }
                         player.nifflerStore(dropped);
@@ -100,7 +102,7 @@ public class ItemDrops {
                     }
 
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc) && tableItem.convert().getValue() > 0) {
-                        if(tile.level != player.tile().level) {
+                        if (tile.level != player.tile().level) {
                             return;
                         }
                         player.nifflerStore(item);
@@ -127,7 +129,7 @@ public class ItemDrops {
         int dropRolls = npc.combatInfo().droprolls;
         boolean doubleTheDrop = false;
 
-        if(player.inventory().contains(DOUBLE_DROPS_SCROLL)) {
+        if (player.inventory().contains(DOUBLE_DROPS_SCROLL)) {
             doubleTheDrop = true;
             player.inventory().remove(DOUBLE_DROPS_SCROLL, 1);
         }
@@ -142,17 +144,17 @@ public class ItemDrops {
         for (int i = 0; i < dropRolls; i++) {
             Item reward = table.randomItem(World.getWorld().random());
             if (reward != null) {
-                if(doubleTheDrop) {
+                if (doubleTheDrop) {
                     GroundItem item = new GroundItem(reward, tile, player);
                     if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
-                        if(tile.level != player.tile().level) {
+                        if (tile.level != player.tile().level) {
                             return;
                         }
                         player.nifflerStore(item.getItem());
                     } else {
                         GroundItemHandler.createGroundItem(item);
                     }
-                    player.message("Your drop scroll has been consumed, double drop: "+item.getItem().unnote().name());
+                    player.message("Your drop scroll has been consumed, double drop: " + item.getItem().unnote().name());
                 }
                 var doubleDropsLampActive = player.<Integer>getAttribOr(DOUBLE_DROP_LAMP_TICKS, 0) > 0;
                 var founderImp = player.pet() != null && player.pet().def().name.equalsIgnoreCase("Founder Imp");
@@ -164,7 +166,7 @@ public class ItemDrops {
                         GroundItem doubleDrop = new GroundItem(reward, tile, player);
 
                         if (player.nifflerPetOut() && player.nifflerCanStore(npc)) {
-                            if(tile.level != player.tile().level) {
+                            if (tile.level != player.tile().level) {
                                 return;
                             }
                             player.nifflerStore(doubleDrop.getItem());
@@ -181,7 +183,7 @@ public class ItemDrops {
                 OTHER.log(player, npc.id(), reward);
 
                 if (player.nifflerPetOut() && player.nifflerCanStore(npc) && reward.getValue() > 0) {
-                    if(tile.level != player.tile().level) {
+                    if (tile.level != player.tile().level) {
                         return;
                     }
                     player.nifflerStore(reward);
@@ -190,7 +192,7 @@ public class ItemDrops {
                 }
 
                 ServerAnnouncements.tryBroadcastDrop(player, npc, reward);
-                if(reward.getId() == CRYSTAL_KEY) {
+                if (reward.getId() == CRYSTAL_KEY) {
                     Utils.sendDiscordInfoLog("Player " + player.getUsername() + " has received a crystal key drop.", "crystal_key_drop");
                 }
 
@@ -210,16 +212,20 @@ public class ItemDrops {
             return;
         }
 
-        if (!Slayer.creatureMatches(player, npc.id())) {
-            return;
-        }
-
-        if(npc.combatInfo() != null && npc.combatInfo().boss) {
-            Item coins = new Item(COINS_995, World.getWorld().random(100_000, 500_000));
-            GroundItem groundItem = new GroundItem(coins, player.tile(), player);
-            GroundItemHandler.createGroundItem(groundItem);
-            notification(player, coins);
-            player.message("<col=0B610B>You have received a "+Utils.formatRunescapeStyle(coins.getAmount())+" coins drop!");
+        var task_id = player.<Integer>getAttribOr(SLAYER_TASK_ID, 0);
+        var task = SlayerCreature.lookup(task_id);
+        var roll = player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().production ? 1 : 10;
+        boolean hasTask = player.slayerTaskAmount() > 0;
+        if (task != null && Slayer.creatureMatches(player, npc.id()) && hasTask) {
+            if (World.getWorld().rollDie(roll, 1)) {
+                if (npc.combatInfo() != null && npc.combatInfo().boss) {
+                    Item coins = new Item(COINS_995, World.getWorld().random(100_000, 500_000));
+                    GroundItem groundItem = new GroundItem(coins, player.tile(), player);
+                    GroundItemHandler.createGroundItem(groundItem);
+                    notification(player, coins);
+                    player.message("<col=0B610B>You have received a " + Utils.formatRunescapeStyle(coins.getAmount()) + " coins drop!");
+                }
+            }
         }
     }
 
@@ -228,17 +234,18 @@ public class ItemDrops {
             return;
         }
 
-        if (!Slayer.creatureMatches(player, npc.id())) {
-            return;
-        }
-
-        int roll = 25;
-        if (World.getWorld().rollDie(roll, 1)) {
-            Item supplyCrate = (npc.def() != null && npc.def().combatlevel > 100) ? new Item(SUPPLY_CRATE) : new Item(EXTRA_SUPPLY_CRATE);
-            GroundItem groundItem = new GroundItem(supplyCrate, player.tile(), player);
-            GroundItemHandler.createGroundItem(groundItem);
-            notification(player, supplyCrate);
-            player.message("<col=0B610B>You have received a supply crate drop!");
+        var task_id = player.<Integer>getAttribOr(SLAYER_TASK_ID, 0);
+        var task = SlayerCreature.lookup(task_id);
+        var roll = player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().production ? 1 : 25;
+        boolean hasTask = player.slayerTaskAmount() > 0;
+        if (task != null && Slayer.creatureMatches(player, npc.id()) && hasTask) {
+            if (World.getWorld().rollDie(roll, 1)) {
+                Item supplyCrate = (npc.def() != null && npc.def().combatlevel > 100) ? new Item(SUPPLY_CRATE) : new Item(EXTRA_SUPPLY_CRATE);
+                GroundItem groundItem = new GroundItem(supplyCrate, player.tile(), player);
+                GroundItemHandler.createGroundItem(groundItem);
+                notification(player, supplyCrate);
+                player.message("<col=0B610B>You have received a supply crate drop!");
+            }
         }
     }
 
@@ -247,10 +254,8 @@ public class ItemDrops {
             return;
         }
 
-        if (!Slayer.creatureMatches(killer, npc.id())) {
-            return;
-        }
-
+        var task_id = killer.<Integer>getAttribOr(SLAYER_TASK_ID, 0);
+        var task = SlayerCreature.lookup(task_id);
         int treasureCasketChance;
         if (killer.getMemberRights().isZenyteMemberOrGreater(killer))
             treasureCasketChance = 95;
@@ -271,12 +276,14 @@ public class ItemDrops {
 
         var reduction = treasureCasketChance * killer.treasureCasketMemberBonus() / 100;
         treasureCasketChance -= reduction;
-
-        if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {
-            Item treasureCasket = new Item(TREASURE_CASKET, 1);
-            killer.inventory().addOrDrop(treasureCasket);
-            notification(killer, treasureCasket);
-            killer.message("<col=0B610B>You have received a treasure casket drop!");
+        boolean hasTask = killer.slayerTaskAmount() > 0;
+        if (task != null && Slayer.creatureMatches(killer, npc.id()) && hasTask) {
+            if (World.getWorld().rollDie(killer.getPlayerRights().isDeveloperOrGreater(killer) && !GameServer.properties().production ? 1 : treasureCasketChance, 1)) {
+                Item treasureCasket = new Item(TREASURE_CASKET, 1);
+                killer.inventory().addOrDrop(treasureCasket);
+                notification(killer, treasureCasket);
+                killer.message("<col=0B610B>You have received a treasure casket drop!");
+            }
         }
 
         Item smallCasket = new Item(ItemIdentifiers.CASKET_7956);
