@@ -99,6 +99,7 @@ public class Room extends Interaction {
                 if (player.tile().inArea(BLOAT)) {
                     if (party.getRaidStage() == 3) {
                         player.teleport(3296, 4283, party.getHeight());
+                        player.getMovement().clear();
                     } else {
                         player.message("You must defeat Bloat before progressing!");
                     }

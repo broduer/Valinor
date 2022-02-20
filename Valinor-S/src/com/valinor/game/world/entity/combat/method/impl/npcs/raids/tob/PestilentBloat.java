@@ -32,7 +32,7 @@ public class PestilentBloat extends CommonCombatMethod {
 
     private static final int SLEEPING = 8082; //sleep animation
     private int corner = 0; //corner flag
-    private int stepsTillStop = World.getWorld().random(40, 80); //steps till bloat stops walking and then sleeps
+    private int stepsTillStop = 47; //steps till bloat stops walking and then sleeps
 
     public int getStepsTillStop() {
         return stepsTillStop;
@@ -110,6 +110,7 @@ public class PestilentBloat extends CommonCombatMethod {
         if (!sleeping && !isStopped()) {
             DumbRoute.route(mob, cornerTile.getX(), cornerTile.getY());
             mob.getCombat().setTarget(null);
+            //System.out.println(stepsTillStop);
             if (stepsTillStop-- <= 0) {
                 setStopped(true);
             }
@@ -202,7 +203,7 @@ public class PestilentBloat extends CommonCombatMethod {
             public void execute() {
                 if (duration >= 29) {
                     setStopped(false);
-                    setStepsTillStop(World.getWorld().random(40, 80));
+                    setStepsTillStop(47);
                     setSleeping(false);
                     damageReduction = true;
                     stop();

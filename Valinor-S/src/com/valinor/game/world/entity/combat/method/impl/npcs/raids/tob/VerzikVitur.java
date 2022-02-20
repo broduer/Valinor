@@ -80,7 +80,7 @@ public class VerzikVitur extends CommonCombatMethod {
                         continue;
                     }
                     final Tile t_tile = t.tile();
-                    Projectile projectile = new Projectile(mob, t, 1583, 0, 130, 100, 0, 0);
+                    Projectile projectile = new Projectile(mob.tile(), t.tile(),-1,1583, 130, 0, 100, 0, 0);
                     handleDodgableAttack(mob, t, projectile, null, World.getWorld().random(1, 60), 5, new Task("VerzikViturPrepareAttackTask2", 1) {
                         int count = 0;
 
@@ -108,7 +108,7 @@ public class VerzikVitur extends CommonCombatMethod {
                     electricCount++;
                     bombCount = 0;
                 } else {
-                    Projectile projectile = new Projectile(mob, target, 1586, 0, 130, 100, 0, 0);
+                    Projectile projectile = new Projectile(mob.tile(), target.tile(),-1,1586, 130, 0, 100, 0, 0);
                     handleDodgableAttack(mob, target, projectile, null, World.getWorld().random(1, 60), 5, new Task("VerzikViturPrepareAttackTask3", 1) {
                         int count = 0;
                         Npc healer;
@@ -184,7 +184,7 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return 32;
+        return mob.isNpc() && mob.getAsNpc().id() == VERZIK_VITUR_8374 ? 8 : 32;
     }
 
     @Override
@@ -217,6 +217,7 @@ public class VerzikVitur extends CommonCombatMethod {
             List<Mob> targets = getPossibleTargets(mob);
             target = Utils.randomElement(targets);
         }
+        mob.getCombat().setTarget(target);
         super.process(mob, target);
     }
 
@@ -267,7 +268,8 @@ public class VerzikVitur extends CommonCombatMethod {
                 mob.animate(-1);
                 mob.forceChat("Behold my true nature!");
                 mob.getAsNpc().canAttack(true);
-                mob.getAsNpc().completelyLockedFromMoving(true);
+                mob.getAsNpc().completelyLockedFromMoving(false);
+                mob.getAsNpc().cantMoveUnderCombat(false);
             });
             return true;
         } else if (mob.getAsNpc().id() == VERZIK_VITUR_8374) {

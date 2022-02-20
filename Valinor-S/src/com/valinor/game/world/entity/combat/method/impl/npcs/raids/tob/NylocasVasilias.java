@@ -78,6 +78,7 @@ public class NylocasVasilias extends CommonCombatMethod {
                 public void execute() {
                     form = getNextForm();
                     mob.getAsNpc().transmog(form.getId());
+                    mob.getAsNpc().completelyLockedFromMoving(form.id != NYLOCAS_VASILIAS_8355);
                     mob.getCombat().delayAttack(3);
                     stop();
                 }

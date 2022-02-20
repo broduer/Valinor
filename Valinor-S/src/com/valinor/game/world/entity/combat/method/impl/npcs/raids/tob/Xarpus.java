@@ -12,6 +12,7 @@ import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.chainedwork.Chain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,7 @@ public class Xarpus extends CommonCombatMethod {
         if (phase == 1) { //poison pools		
             mob.animate(8059);
             final Tile tile = target.tile();
+            boolean moreThenOneTarget = targets.size() > 1;
             Task task = new Task("XarpusPrepareAttackTask", 1) {
 
                 Mob next = target;
@@ -64,7 +66,7 @@ public class Xarpus extends CommonCombatMethod {
                 public void execute() {
                     tick++;
                     if (tick == 1) {
-                        Projectile projectile = new Projectile(mob, target, 1555, 0, 120, 50, 25,0);
+                        Projectile projectile = new Projectile(mob.tile(), target.tile(), -1, 1555, 120, 0, 50, 25,0);
                         projectile.sendProjectile();
 
                     } else if (tick == 4) {
@@ -75,35 +77,39 @@ public class Xarpus extends CommonCombatMethod {
                                 if (oldestPool > 25) {
                                     oldestPool = 0;
                                 }
-                            } else
+                            } else {
                                 poison.add(new PoisonPool(World.getWorld().random(1654, 1661), tile));
+                            }
                         }
                         World.getWorld().tileGraphic(1556, tile,0,0);
                     } else if (tick == 5) {
                         int tries = 0;
-                        boolean moreThenOneTarget = targets.size() > 1;
                         while (next == target && tries++ < 50 && moreThenOneTarget) {
                             next = World.getWorld().randomTypeOfList(targets);
                         }
 
                         if(moreThenOneTarget) {
-                            Projectile projectile = new Projectile(tile, next, 1555, 0, 120, 50, 25, 0);
+                            Projectile projectile = new Projectile(tile, next.tile(), -1, 1555, 120, 0, 50, 25, 0);
                             projectile.sendProjectile();
                         }
+                        //stop();
                     } else if (tick == 9) {
-                        final Tile nextTile = next.tile();
-                        boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equals(nextTile));
-                        if (!exists) {
-                            if (poison.size() > 25) {
-                                poison.set(oldestPool, new PoisonPool(World.getWorld().random(1654, 1661), nextTile));
-                                oldestPool++;
-                                if (oldestPool > 25) {
-                                    oldestPool = 0;
+                        if(moreThenOneTarget) {
+                            final Tile nextTile = next.tile();
+                            boolean exists = poison.stream().anyMatch(pool -> pool.getTile().equals(nextTile));
+                            if (!exists) {
+                                if (poison.size() > 25) {
+                                    poison.set(oldestPool, new PoisonPool(World.getWorld().random(1654, 1661), nextTile));
+                                    oldestPool++;
+                                    if (oldestPool > 25) {
+                                        oldestPool = 0;
+                                    }
+                                } else {
+                                    poison.add(new PoisonPool(World.getWorld().random(1654, 1661), nextTile));
                                 }
-                            } else
-                                poison.add(new PoisonPool(World.getWorld().random(1654, 1661), nextTile));
+                            }
+                            World.getWorld().tileGraphic(1556, nextTile, 0, 0);
                         }
-                        World.getWorld().tileGraphic(1556, nextTile,0,0);
                         stop();
                     }
                 }
@@ -235,7 +241,7 @@ public class Xarpus extends CommonCombatMethod {
         }
         if (phase == 2) {
             if (target.tile().isWithinDistance(STARING_QUAD, 7)) {
-                new Projectile(mob, target, 1555, 0, 120, 50, 25, 0).sendProjectile();
+                new Projectile(mob.tile(), target.tile(),  -1,1555, 120, 0, 50, 25, 0).sendProjectile();
                 target.graphic(1556);
                 target.hit_(mob,World.getWorld().random(6, 8), 3, SplatType.POISON_HITSPLAT);
             }
