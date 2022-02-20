@@ -5,7 +5,7 @@
     "noiron": false,
     "currency": "COINS",
     "restock": false,
-    "sellType": "ANY",
+    "sellType": "NONE",
     "scroll": 450,
     "items": [
       {
@@ -4603,7 +4603,7 @@
       {
         "id": 8921,
         "amount": 100,
-        "value": 1000
+        "value": 2500
       },
       {
         "id": 30186,
