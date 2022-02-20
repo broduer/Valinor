@@ -33,7 +33,7 @@ public class KickPlayerCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return (player.getPlayerRights().isModeratorOrGreater(player));
+        return (player.getPlayerRights().isSupportOrGreater(player));
     }
 
 }
