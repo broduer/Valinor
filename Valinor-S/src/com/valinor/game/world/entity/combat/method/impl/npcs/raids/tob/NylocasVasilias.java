@@ -60,13 +60,16 @@ public class NylocasVasilias extends CommonCombatMethod {
 
     @Override
     public int getAttackSpeed(Mob mob) {
-        return mob.getBaseAttackSpeed();
+        int attackSpeed = mob.getBaseAttackSpeed();
+        return changingForm ? attackSpeed + 3 : attackSpeed;
     }
 
     @Override
     public int getAttackDistance(Mob mob) {
         return form.getStyle() == CombatType.MELEE ? 2 : 24;
     }
+
+    private boolean changingForm = false;
 
     @Override
     public void process(Mob mob, Mob target) {
@@ -79,7 +82,7 @@ public class NylocasVasilias extends CommonCombatMethod {
                     form = getNextForm();
                     mob.getAsNpc().transmog(form.getId());
                     mob.getAsNpc().completelyLockedFromMoving(form.id != NYLOCAS_VASILIAS_8355);
-                    mob.getCombat().delayAttack(3);
+                    changingForm = true;
                     stop();
                 }
             };
