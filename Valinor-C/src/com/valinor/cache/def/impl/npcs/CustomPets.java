@@ -15,8 +15,8 @@ public class CustomPets {
             definition.name = "Bloodfury hespori pet";
             definition.actions = new String[]{"Pick-up", null, null, null, null};
             definition.modelId = new int[] {55621};
-            definition.widthScale = 48;
-            definition.heightScale = 48;
+            definition.widthScale = 37;
+            definition.heightScale = 37;
             definition.standingAnimation = 8222;
             definition.walkingAnimation = 8222;
             definition.isFollower = true;

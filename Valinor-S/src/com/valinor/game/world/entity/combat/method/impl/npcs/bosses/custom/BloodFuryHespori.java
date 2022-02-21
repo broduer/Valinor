@@ -9,6 +9,10 @@ import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
  */
 public class BloodFuryHespori extends CommonCombatMethod {
 
+    //attack anims
+    //8221
+    //8223
+
     @Override
     public void prepareAttack(Mob mob, Mob target) {
 

@@ -1493,7 +1493,7 @@
     "aggroradius": 0,
     "aggressive": false,
     "respawntime": 50,
-    "deathlen": 2,
+    "deathlen": 6,
     "stats": {
       "attack": 242,
       "strength": 288,
@@ -1513,9 +1513,9 @@
       "magicdefence": 0
     },
     "animations": {
-      "attack": -1,
+      "attack": 8376,
       "block": -1,
-      "death": -1
+      "death": 8384
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom.FragmentOfSeren"
@@ -1553,9 +1553,9 @@
       "magicdefence": 80
     },
     "animations": {
-      "attack": -1,
+      "attack": 8221,
       "block": -1,
-      "death": -1
+      "death": 8225
     },
     "scripts": {
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom.BloodFuryHespori"

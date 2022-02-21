@@ -2133,7 +2133,6 @@ public class NpcIdentifiers
     public static final int CRATE_GOBLIN = 2300;
     public static final int CAVE_GOBLIN_2301 = 2301;
     public static final int GOBLIN_SCRIBE = 2302;
-    public static final int OLDAK = 2303;
     public static final int GOURMET = 2304;
     public static final int GOURMET_2305 = 2305;
     public static final int GOURMET_2306 = 2306;
@@ -6944,7 +6943,6 @@ public class NpcIdentifiers
     public static final int TZHAARHUR_7687 = 7687;
     public static final int TZHAARHURZAL = 7688;
     public static final int TZHAARHURRIN = 7689;
-    public static final int TZHAARKETKEH = 7690;
     public static final int JALNIB = 7691;
     public static final int JALMEJRAH = 7692;
     public static final int JALAK = 7693;

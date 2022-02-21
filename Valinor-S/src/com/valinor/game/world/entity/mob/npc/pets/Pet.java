@@ -8,7 +8,6 @@ import java.util.*;
 
 import static com.valinor.game.world.entity.mob.npc.pets.PetVarbits.*;
 import static com.valinor.util.NpcIdentifiers.LITTLE_NIGHTMARE_9399;
-import static com.valinor.util.NpcIdentifiers.NEXLING_PET;
 
 /**
  * Created by Bart on 2/18/2016.
@@ -114,7 +113,7 @@ public enum Pet {
     SRARACHA(ItemIdentifiers.SRARACHA, NpcIdentifiers.SRARACHA, UNLOCKED_PET_SARACHNIS),
     LIL_ZIK(ItemIdentifiers.LIL_ZIK, NpcIdentifiers.LIL_ZIK, UNLOCKED_PET_LIL_ZIK),
     THE_NIGHTMARE(ItemIdentifiers.LITTLE_NIGHTMARE, LITTLE_NIGHTMARE_9399,UNLOCKED_PET_LITTLE_NIGHTMARE),
-    NEXLING(ItemIdentifiers.NEXLING, NEXLING_PET, UNLOCKED_PET_NEXLING),
+    NEXLING(ItemIdentifiers.NEXLING, ItemIdentifiers.NEXLING, UNLOCKED_PET_NEXLING),
 
     //Random junk pets
     BABY_CHINCHOMPA_BLACK(ItemIdentifiers.BABY_CHINCHOMPA_13325, NpcIdentifiers.BABY_CHINCHOMPA_6758, NpcIdentifiers.BABY_CHINCHOMPA_6759, UNLOCKED_PET_CHINCHOMPA),
