@@ -171,6 +171,7 @@ public class Party {
     public void addPersonalPoints(Player player, int points) {
         boolean centaurPet = player.hasPetOut("Centaur");
         boolean olmletPet = player.hasPetOut("Olmlet");
+        boolean lilZikPet = player.hasPetOut("Lil' Zik");
         boolean rubyMember = player.getMemberRights().isRubyMemberOrGreater(player);
         boolean diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
         boolean dragonstoneMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
@@ -178,7 +179,7 @@ public class Party {
         boolean zenyteMember = player.getMemberRights().isZenyteMemberOrGreater(player);
 
         var percentageBoost = 0;
-        if(centaurPet || olmletPet) {
+        if(centaurPet || olmletPet || lilZikPet) {
             percentageBoost += 10;
         }
 

@@ -213,7 +213,7 @@ public class Settings {
             writeLine("profanityFilter", profanityFilter, bw);
             writeLine("cameraMovement", cameraMovement, bw);
             writeLine("shiftClick", shiftClick, bw);
-            writeLine("ESC_Close", esc_close, bw);
+            writeLine("esc_close", esc_close, bw);
             writeLine("mouseButtons", mouseButtons, bw);
             writeLine("acceptAid", acceptAid, bw);
             writeLine("brightness", brightness, bw);

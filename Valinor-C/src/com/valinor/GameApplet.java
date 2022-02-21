@@ -608,7 +608,7 @@ public class GameApplet extends Canvas implements Runnable, MouseListener, Mouse
             return;
         }
 
-        if (keycode == KeyEvent.VK_ESCAPE && Client.singleton.settings[ConfigUtility.ESC_CLOSE_ID] == 1) {
+        if (keycode == KeyEvent.VK_ESCAPE && Client.singleton.setting.esc_close) {
             //Close any open interfaces.
             if (Client.loggedIn && Client.widget_overlay_id != -1) {
                 if(Client.widget_overlay_id == 48700) {
