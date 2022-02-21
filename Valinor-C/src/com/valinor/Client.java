@@ -10053,7 +10053,7 @@ public class Client extends GameApplet {
             for (int l = 4; l >= 0; l--) {
                 // Is not an attack option.
                 if (npcDefinition.actions[l] != null) {
-                    if (npcDefinition.actions[l].equalsIgnoreCase("Pick-up")) {
+                    if (npcDefinition.actions[l].equalsIgnoreCase("Pick-up") || npcDefinition.actions[l].equalsIgnoreCase("Tickle")) {
                         //System.out.println("npcPetId = "+npcPetId+" vs index: "+npcIndex);
                         if (npcPetId != npcIndex) {
                             return;
@@ -10098,6 +10098,9 @@ public class Client extends GameApplet {
                         }
                         char c = '\0';
                         if (isPet && setting.shift_pet_options) {
+                            c = '\u07D0';
+                        }
+                        if (npcDefinition.actions[l].contains("Tickle")) {
                             c = '\u07D0';
                         }
                         menuActionText[menuActionRow] = npcDefinition.actions[l] + " <col=ffff00>" + name;

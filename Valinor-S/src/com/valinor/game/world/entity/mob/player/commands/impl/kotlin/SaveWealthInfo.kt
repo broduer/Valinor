@@ -173,17 +173,17 @@ object SaveWealthInfo {
 
     fun fullitems(storage: CheckServerWealthCommand.AtomicStorage) {
         println("items starting")
-        val sortedValues = storage.loaded.toMutableList().filter { storage.BMtotal(it) > 0 }.sortedByDescending {
-            storage.BMtotal(it)
+        val sortedValues = storage.loaded.toMutableList().filter { storage.total(it) > 0 }.sortedByDescending {
+            storage.total(it)
         }
         var str = "full breakdown is:\n"
         sortedValues.forEachIndexed { ix, p ->
-            val items = storage.playerBmItems.get(p)?.filterNotNull()
-            str += "${p.mobName} has ${Utils.formatNumber(storage.BMtotal(p))} on account from ${items?.size?: 0} items\n"
+            val items = storage.playerItems.get(p)?.filterNotNull()
+            str += "${p.mobName} has ${Utils.formatNumber(storage.total(p))} on account from ${items?.size?: 0} items\n"
             items?.forEachIndexed { index, it ->
                 if (it.amount > 0)
                 // if (index < 20) // only record 20 items to file, otherwise it takes a long ass time to save the txt file...
-                    str += "${it.name()} x ${it.amount} = ${it.amount * 1L * it.getValue()} bm\n"
+                    str += "${it.name()} x ${it.amount} = ${it.amount * 1L * it.getValue()}\n"
             }
             str += "\n\n"
             if (ix % 50 == 0)

@@ -248,8 +248,8 @@ public class CheckServerWealthCommand implements Command {
         public AtomicInteger toScanAmt = new AtomicInteger(0);
         public AtomicInteger scannedCount = new AtomicInteger(0);
         public ConcurrentLinkedQueue<Player> loaded = new ConcurrentLinkedQueue<>();
-        public ConcurrentHashMap<Player, Long> playerBMTotal = new ConcurrentHashMap<>();
-        public ConcurrentHashMap<Player, ArrayList<Item>> playerBmItems = new ConcurrentHashMap<>();
+        public ConcurrentHashMap<Player, Long> playerTotal = new ConcurrentHashMap<>();
+        public ConcurrentHashMap<Player, ArrayList<Item>> playerItems = new ConcurrentHashMap<>();
 
         public long vp(Player opp) {
             return 1L * opp.<Integer>getAttribOr(AttributeKey.VOTE_POINTS, 0L);
@@ -259,8 +259,8 @@ public class CheckServerWealthCommand implements Command {
             return 1L * opp.<Integer>getAttribOr(AttributeKey.REFERRALS_COUNT, 0L);
         }
 
-        public long BMtotal(Player opp) {
-            return 1L * playerBMTotal.getOrDefault(opp, 0L);
+        public long total(Player opp) {
+            return 1L * playerTotal.getOrDefault(opp, 0L);
         }
 
     }
@@ -605,7 +605,7 @@ public class CheckServerWealthCommand implements Command {
                                         storage.sumBowOfFaerdhinen.addAndGet(1L * item.getAmount());
                                     }
                                     if (item.getValue() > 0)
-                                        storage.playerBmItems.compute(opp, (k, v) -> {
+                                        storage.playerItems.compute(opp, (k, v) -> {
                                             if (v == null)
                                                 v = new ArrayList<>();
                                             v.add(item);
@@ -625,10 +625,10 @@ public class CheckServerWealthCommand implements Command {
                                     }
                                 }
 
-                                storage.playerBMTotal.put(opp, playerBloodMoneyWealth);
+                                storage.playerTotal.put(opp, playerBloodMoneyWealth);
 
-                                if (storage.playerBmItems.containsKey(opp))
-                                    storage.playerBmItems.get(opp).sort(new Comparator<Item>() {
+                                if (storage.playerItems.containsKey(opp))
+                                    storage.playerItems.get(opp).sort(new Comparator<Item>() {
                                         @Override
                                         public int compare(Item o2, Item o1) {
                                             return Long.compare(1L * o1.getValue() * o1.getAmount(), 1L * o2.getValue() * o2.getAmount());
