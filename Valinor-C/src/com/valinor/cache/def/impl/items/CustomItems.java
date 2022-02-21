@@ -8,6 +8,7 @@ import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomItemIdentifiers.DARK_ANCIENT_EFFIGY;
+import static com.valinor.util.CustomNpcIdentifiers.BLOOD_FURY_HESPORI;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class CustomItems {
@@ -1409,6 +1410,41 @@ public class CustomItems {
             def.yan2d = 108;
             def.zan2d = 2020;
             def.zoom2d = 480;
+        }
+
+        if(id == FRAGMENT_OF_SEREN_PET) {
+            def.name = "<col=65280>Fragment of seren pet";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.zoom2d = 5000;
+            def.yan2d = 100;
+            def.xan2d = 100;
+            def.xOffset2d = 0;
+            def.yOffset2d = 10;
+            def.inventoryModel = 38608;
+        }
+
+        if(id == BLOOD_FURY_HESPORI_PET) {
+            def.name = "<col=65280>Bloodfury hespori pet";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.zoom2d = 5000;
+            def.yan2d = 100;
+            def.xan2d = 100;
+            def.xOffset2d = 0;
+            def.yOffset2d = 10;
+            NpcDefinition npcInstance = NpcDefinition.get(BLOOD_FURY_HESPORI);
+            def.inventoryModel = npcInstance.modelId[0];
+        }
+
+        if(id == INFERNAL_SPIDER_PET) {
+            def.name = "<col=65280>Infernal spider pet";
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.animate_inv_sprite = true;
+            def.inventoryModel = 55622;
+            def.xOffset2d = 9;
+            def.yOffset2d = -4;
+            def.xan2d = 67;
+            def.yan2d = 67;
+            def.zoom2d = 1380;
         }
 
         if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX

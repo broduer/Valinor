@@ -25,6 +25,7 @@ import com.valinor.util.timers.TimerKey;
 import java.util.Arrays;
 
 import static com.valinor.util.CustomNpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.*;
 
 /**
@@ -40,6 +41,8 @@ public class MemberZone extends Interaction {
 
             var ruby_member = player.getMemberRights().isRubyMemberOrGreater(player);
             var diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
+            var dragonstoneMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
+            var onyxMember = player.getMemberRights().isOnyxMemberOrGreater(player);
 
             //Make sure we're in the member zone
             if (player.tile().memberCave()) {
@@ -54,6 +57,30 @@ public class MemberZone extends Interaction {
                     player.message(Color.RED.wrap("You need to be at least a diamond member to attack ancient bosses."));
                     return false;
                 }
+
+                if ((npc.id() == CRYSTALLINE_HUNLLEF || npc.id() == CRYSTALLINE_HUNLLEF_9022 || npc.id() == CRYSTALLINE_HUNLLEF_9023) && !onyxMember) {
+                    player.getCombat().reset();
+                    player.message(Color.RED.wrap("You need to be at least a onyx member to attack the Crystalline Hunleff."));
+                    return false;
+                }
+
+                if (npc.id() == BLOOD_FURY_HESPORI && !dragonstoneMember) {
+                    player.getCombat().reset();
+                    player.message(Color.RED.wrap("You need to be at least a dragonstone member to attack the Bloodfury hespori."));
+                    return false;
+                }
+
+                if (npc.id() == NpcIdentifiers.FRAGMENT_OF_SEREN && !diamondMember) {
+                    player.getCombat().reset();
+                    player.message(Color.RED.wrap("You need to be at least a diamond member to attack the Fragment of seren."));
+                    return false;
+                }
+
+                if (npc.id() == INFERNAL_SPIDER && !dragonstoneMember) {
+                    player.getCombat().reset();
+                    player.message(Color.RED.wrap("You need to be at least a dragonstone member to attack the Infernal spider."));
+                    return false;
+                }
             }
         }
         return true;
@@ -62,6 +89,82 @@ public class MemberZone extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject obj, int option) {
         if (option == 1) {
+            if (obj.getId() == PORTAL_33037 && obj.tile().equals(3057,2918)) {
+                Tile tile = new Tile(3038, 2956);
+                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                    return true;
+                }
+                Teleports.basicTeleport(player, tile);
+                return true;
+            } else if (obj.getId() == PORTAL_33037 && obj.tile().equals(3033,2954)) {
+                player.getDialogueManager().start(new Dialogue() {
+                    @Override
+                    protected void start(Object... parameters) {
+                        send(DialogueType.OPTION, "Which member cave would you like to enter?", "Safe cave. (Diamond member+)", "Wilderness cave.", "Neither.");
+                        setPhase(0);
+                    }
+
+                    @Override
+                    protected void select(int option) {
+                        if(isPhase(0)) {
+                            if(option == 1) {
+                                if (!player.getMemberRights().isDiamondMemberOrGreater(player)) {
+                                    player.message(Color.RED.wrap("You need to be at least an Diamond member to enter the safe member cave."));
+                                    stop();
+                                    return;
+                                }
+                                Tile tile = new Tile(3056, 2922);
+                                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                    stop();
+                                    return;
+                                }
+                                Teleports.basicTeleport(player, tile);
+                                stop();
+                            }
+                            if(option == 2) {
+                                stop();
+                                Tile tile = new Tile(2335, 9795);
+
+                                player.optionsTitled("Dangerous teleport! Would you like to proceed?", "Yes.", "No.", () -> {
+
+                                    if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                        return;
+                                    }
+
+                                    player.getDialogueManager().start(new Dialogue() {
+                                        @Override
+                                        protected void start(Object... parameters) {
+                                            send(DialogueType.STATEMENT, "This teleport will send you to a dangerous area.", "Do you wish to continue?");
+                                            setPhase(1);
+                                        }
+
+                                        @Override
+                                        protected void next() {
+                                            if (isPhase(1)) {
+                                                send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
+                                                setPhase(2);
+                                            }
+                                        }
+
+                                        @Override
+                                        protected void select(int option) {
+                                            if (option == 1) {
+                                                if (!Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
+                                                    stop();
+                                                    return;
+                                                }
+                                                Teleports.basicTeleport(player, tile);
+                                            } else if (option == 2) {
+                                                stop();
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    }
+                });
+            }
             if (obj.getId() == CAVE_ENTRANCE_31606 || obj.getId() == PORTAL_OF_LEGENDS) {
                 if (!player.getMemberRights().isSapphireMemberOrGreater(player)) {
                     player.message(Color.RED.wrap("You need to be at least an Member to enter the member zone."));
@@ -283,6 +386,17 @@ public class MemberZone extends Interaction {
                     return true;
                 }
                 player.teleport(new Tile(2312, 9904));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean handleNpcInteraction(Player player, Npc npc, int option) {
+        if(option == 1) {
+            if(npc.id() == CHIEF_FARMER) {
+                World.getWorld().shop(54).open(player);
                 return true;
             }
         }

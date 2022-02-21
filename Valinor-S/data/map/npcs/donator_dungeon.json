@@ -1,5 +1,32 @@
 [
   {
+    "name": "Bloodfury hespori",
+    "id": 15024,
+    "x": 3020,
+    "y": 2899,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 0
+  },
+  {
+    "name": "Infernal spider",
+    "id": 15033,
+    "x": 3020,
+    "y": 2927,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 3
+  },
+  {
+    "name": "Fragment of seren",
+    "id": 8917,
+    "x": 3015,
+    "y": 2886,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 3
+  },
+  {
     "name": "Crystalline Hunllef",
     "id": 9021,
     "x": 3050,

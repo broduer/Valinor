@@ -11,6 +11,49 @@ public class CustomPets {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
+        if(id == BLOOD_FURY_HESPORI_PET) {
+            definition.name = "Bloodfury hespori pet";
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.modelId = new int[] {55621};
+            definition.widthScale = 48;
+            definition.heightScale = 48;
+            definition.standingAnimation = 8222;
+            definition.walkingAnimation = 8222;
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+        }
+
+        if(id == INFERNAL_SPIDER_PET) {
+            definition.name = "Infernal spider pet";
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.modelId = new int[] {55619, 55620};
+            definition.widthScale = 60;
+            definition.heightScale = 60;
+            definition.standingAnimation = 5318;
+            definition.walkingAnimation = 5317;
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+        }
+
+        if(id == FRAGMENT_OF_SEREN_PET) {
+            definition.name = "Fragment of seren pet";
+            definition.actions = new String[]{"Pick-up", null, null, null, null};
+            definition.modelId = new int[] {38605};
+            definition.additionalModels = new int[] {38608};
+            definition.widthScale = 60;
+            definition.heightScale = 60;
+            definition.standingAnimation = 8372;
+            definition.walkingAnimation = 8372;
+            definition.isFollower = true;
+            definition.drawMapDot = false;
+            definition.size = 1;
+            definition.description = "Tiny but deadly!";
+        }
+
         if(id == SNOWFLAKE) {
             definition.name = "Snowflake pet";
             definition.actions = new String[]{"Pick-up", null, null, null, null};

@@ -256,6 +256,18 @@ public class NpcDefinition implements Definition {
             name = "Artio";
             combatlevel = 470;
             size = 5;
+        } else if (id == BLOOD_FURY_HESPORI) {
+            name = "Bloodfury hespori";
+            combatlevel = 833;
+            size = 3;
+        } else if (id == INFERNAL_SPIDER) {
+            name = "Infernal spider";
+            combatlevel = 655;
+            size = 4;
+        } else if (id == ANCIENT_REVENANT_DARK_BEAST) {
+            name = "Ancient revenant dark beast";
+            combatlevel = 120;
+            size = 3;
         } else if (id == ANCIENT_REVENANT_DARK_BEAST) {
             name = "Ancient revenant dark beast";
             combatlevel = 120;
@@ -290,6 +302,15 @@ public class NpcDefinition implements Definition {
             size = 3;
         } else if (id == ANCIENT_KING_BLACK_DRAGON_PET) {
             name = "Ancient king black dragon";
+            size = 1;
+        } else if (id == BLOOD_FURY_HESPORI_PET) {
+            name = "Blood fury hespori";
+            size = 1;
+        } else if (id == INFERNAL_SPIDER_PET) {
+            name = "Infernal spider";
+            size = 1;
+        } else if (id == FRAGMENT_OF_SEREN_PET) {
+            name = "Fragment of seren";
             size = 1;
         } else if (id == ANCIENT_CHAOS_ELEMENTAL_PET) {
             name = "Ancient chaos elemental";

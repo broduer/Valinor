@@ -5,7 +5,6 @@ import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.ICELORD;
-import static com.valinor.util.NpcIdentifiers.SNOWFLAKE;
 
 /**
  * @author Patrick van Elderen | April, 07, 2021, 15) {49
@@ -15,6 +14,30 @@ public class CustomBosses {
 
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
+
+        if(id == BLOOD_FURY_HESPORI) {
+            definition.name = "Bloodfury hespori";
+            definition.actions = new String[]{null, "Attack", null, null, null};
+            definition.combatLevel = 833;
+            definition.modelId = new int[] {55621};
+            definition.widthScale = 128;
+            definition.heightScale = 128;
+            definition.standingAnimation = 8222;
+            definition.size = 3;
+            definition.walkingAnimation = 8222;
+        }
+
+        if(id == INFERNAL_SPIDER) {
+            definition.name = "Infernal spider";
+            definition.actions = new String[]{null, "Attack", null, null, null};
+            definition.combatLevel = 655;
+            definition.modelId = new int[] {55619, 55620};
+            definition.widthScale = 190;
+            definition.heightScale = 190;
+            definition.standingAnimation = 5318;
+            definition.size = 4;
+            definition.walkingAnimation = 5317;
+        }
 
         if(id == SNOWFLAKE_BOSS) {
             definition.name = "Snowflake";

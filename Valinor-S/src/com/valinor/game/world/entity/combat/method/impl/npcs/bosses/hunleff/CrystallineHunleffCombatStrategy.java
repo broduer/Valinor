@@ -71,7 +71,7 @@ public class CrystallineHunleffCombatStrategy extends CommonCombatMethod {
     private void prayerDisableAttack(Mob mob, Mob target) {
         var tileDist = mob.tile().transform(1, 1, 0).distance(target.tile());
         var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
-        Projectile projectile = new Projectile(mob, target, 1708, 35, 20 * tileDist, 45, 30, 0);
+        Projectile projectile = new Projectile(mob, target, 1707, 35, 20 * tileDist, 45, 30, 0);
         projectile.sendProjectile();
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy();
         hit.submit();
@@ -110,13 +110,13 @@ public class CrystallineHunleffCombatStrategy extends CommonCombatMethod {
         ArrayList<Tile> spots = new ArrayList<>(crystalSpots);
 
         int[] ticker = new int[1];
-        Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1718, central, 0, 0)).repeatingTask(1, tick -> {
+        Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1717, central, 0, 0)).repeatingTask(1, tick -> {
             if (ticker[0] == 10) {
                 tick.stop();
                 return;
             }
             for (Tile spot : spots) {
-                World.getWorld().tileGraphic(1718, base.transform(spot.x, spot.y), 0, 0);
+                World.getWorld().tileGraphic(1717, base.transform(spot.x, spot.y), 0, 0);
             }
             ArrayList<Tile> newSpots = new ArrayList<>();
             for (Tile spot : new ArrayList<>(spots)) {

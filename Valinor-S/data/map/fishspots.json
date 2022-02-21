@@ -785,6 +785,43 @@
       }
     ]
   },
+  // Anglerfish in member area
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3023,
+        "y": 2965
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3023,
+        "y": 2966
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3023,
+        "y": 2967
+      }
+    ]
+  },
+  {
+    "spot": "ANGLERFISH",
+    "tiles": [
+      {
+        "x": 3023,
+        "y": 2968
+      }
+    ]
+  },
   // Anglerfish in resource area
   {
     "spot": "ANGLERFISH",
@@ -3457,6 +3494,43 @@
       {
         "x": 3349,
         "y": 3793
+      }
+    ]
+  },
+  {
+    "spot": "DARK_CRAB",
+    "tiles": [
+      {
+        "x": 3027,
+        "y": 2965
+      }
+    ]
+  },
+  {
+    "spot": "DARK_CRAB",
+    "tiles": [
+      {
+        "x": 3027,
+        "y": 2966
+      }
+    ]
+  },
+  {
+    "spot": "DARK_CRAB",
+    "tiles": [
+      {
+        "x": 3027,
+        "y": 2967
+      }
+    ]
+  },
+  {
+    // Member zone shark
+    "spot": "NET_HARPOON",
+    "tiles": [
+      {
+        "x": 3027,
+        "y": 2968
       }
     ]
   },

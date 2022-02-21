@@ -18,6 +18,9 @@ import static com.valinor.util.NpcIdentifiers.NEXLING_PET;
 public enum Pet {
 
     //Custom
+    BLOOD_FURY_HESPORI(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET, CustomNpcIdentifiers.BLOOD_FURY_HESPORI_PET, -1),
+    FRAGMENT_OF_SEREN(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET, CustomNpcIdentifiers.FRAGMENT_OF_SEREN_PET, -1),
+    INFERNAL_SPIDER(CustomItemIdentifiers.INFERNAL_SPIDER_PET, CustomNpcIdentifiers.INFERNAL_SPIDER_PET, -1),
     SNOWFLAKE(CustomItemIdentifiers.SNOWFLAKE_PET, NpcIdentifiers.SNOWFLAKE, -1),
     ICE_IMP(CustomItemIdentifiers.ICE_IMP, CustomNpcIdentifiers.ICE_IMP_PET, -1),
     NAGINI(CustomItemIdentifiers.NAGINI, CustomNpcIdentifiers.NAGINI, -1),

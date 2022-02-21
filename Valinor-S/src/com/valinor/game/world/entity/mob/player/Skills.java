@@ -234,6 +234,18 @@ public class Skills {
             }
         }
 
+        if(player.tile().memberZone()) {
+            switch (player.getMemberRights()) {
+                case SAPPHIRE_MEMBER -> amt *= 1.10;
+                case EMERALD_MEMBER -> amt *= 1.25;
+                case RUBY_MEMBER -> amt *= 1.40;
+                case DIAMOND_MEMBER -> amt *= 1.60;
+                case DRAGONSTONE_MEMBER -> amt *= 1.75;
+                case ONYX_MEMBER -> amt *= 1.95;
+                case ZENYTE_MEMBER -> amt *= 2.0;
+            }
+        }
+
         var ringOfCharosA = player.getEquipment().hasAt(EquipSlot.RING, RING_OF_CHAROSA);
 
         if(!combatxp && player.getEquipment().hasAt(EquipSlot.RING, EXPLORERS_RING_4)) {

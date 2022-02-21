@@ -578,11 +578,11 @@ public class Tile implements Cloneable {
     }
 
     public boolean memberZone() {
-        return region() == 13462 || region() == 9772;
+        return region() == 13462 || region() == 9772 || region() == 12078;
     }
 
     public boolean memberCave() {
-        return region() == 9369 || region() == 9370;
+        return region() == 9369 || region() == 9370 || region() == 12077;
     }
 
     public static boolean standingOn(Mob entity, Mob other) {

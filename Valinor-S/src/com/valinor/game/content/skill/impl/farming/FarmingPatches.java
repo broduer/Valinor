@@ -5,6 +5,11 @@ import com.valinor.util.ItemIdentifiers;
 
 public enum FarmingPatches {
 
+    MEMBER_HERB(new Tile(3018, 2959), new Tile(3021, 2960), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.HERB),
+    MEMBER_FLOWER(new Tile(3022, 2959), new Tile(3025, 2960), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.FLOWER),
+    MEMBER_ALLOTMENT_NORTH(new Tile(3027, 2954), new Tile(3030, 2959), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.ALLOTMENT),
+    MEMBER_ALLOTMENT_SOUTH(new Tile(3055, 3302), new Tile(3059, 3309), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.ALLOTMENT),
+
     CATHERBY_ALLOTMENT_NORTH(new Tile(2805, 3465), new Tile(2815, 3469), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.ALLOTMENT),
     CATHERBY_ALLOTMENT_SOUTH(new Tile(2805, 3458), new Tile(2815, 3461), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.ALLOTMENT),
     CATHERBY_HERB(new Tile(2813, 3462), new Tile(2815, 3464), Farming.HARVEST_ANIMATION, ItemIdentifiers.SEED_DIBBER, ItemIdentifiers.SECATEURS, SeedType.HERB),

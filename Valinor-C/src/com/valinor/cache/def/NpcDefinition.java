@@ -22,6 +22,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.valinor.util.NpcIdentifiers.*;
+
 public final class NpcDefinition {
 
     public static int totalNPCs;
@@ -125,9 +127,15 @@ public final class NpcDefinition {
             MemberNpcs.unpack(id);
         }
 
-        /*if(id == 8492) {
-            System.out.println("Actions now: " + Arrays.toString(npcDefinition.actions));
-        }*/
+        if(id == FRAGMENT_OF_SEREN) {
+            System.out.println("models: " + Arrays.toString(npcDefinition.modelId).replace("[", "{").replace("]", "}"));
+            System.out.println("additionalModels: " + Arrays.toString(npcDefinition.additionalModels).replace("[", "{").replace("]", "}"));
+            System.out.println("standingAnimation: " + npcDefinition.standingAnimation);
+            System.out.println("walkingAnimation: " + npcDefinition.walkingAnimation);
+            System.out.println("size: " + npcDefinition.size);
+            System.out.println("widthScale: " + npcDefinition.widthScale);
+            System.out.println("heightScale: " + npcDefinition.heightScale);
+        }
 
         return npcDefinition;
     }

@@ -30,7 +30,7 @@ public class DataOrbs extends Interaction {
                 return true;
             }
 
-            if(!player.tile().homeRegion() || player.tile().region() == 9772) {
+            if(!player.tile().homeRegion() && !player.tile().memberZone()) {
                 player.message(Color.RED.wrap("You can't bank here!"));
                 return true;
             }
@@ -51,7 +51,7 @@ public class DataOrbs extends Interaction {
                 return true;
             }
 
-            if(!player.tile().homeRegion() || player.tile().region() == 9772) {
+            if(!player.tile().homeRegion() && !player.tile().memberZone()) {
                 player.message(Color.RED.wrap("You can't refill potions here!"));
                 return true;
             }
@@ -71,7 +71,7 @@ public class DataOrbs extends Interaction {
                 return true;
             }
 
-            if(!player.tile().homeRegion() || player.tile().region() == 9772) {
+            if(!player.tile().homeRegion() && !player.tile().memberZone()) {
                 player.message(Color.RED.wrap("You can't heal yourself here!"));
                 return true;
             }

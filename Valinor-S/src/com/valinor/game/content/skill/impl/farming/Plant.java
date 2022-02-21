@@ -125,7 +125,12 @@ public class Plant {
                 int id = Plants.values()[plant].harvest;
                 ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, id);
                 add = def.noted() ? new Item(def.notelink, 1) : new Item(id, 1);
-                player.inventory().add(add.getId(), add.getAmount());
+
+                int amt = add.getAmount();
+                if(player.tile().memberZone()) {
+                    amt += World.getWorld().random(1, 4);
+                }
+                player.inventory().add(add.getId(), amt);
 
                 int petRate = player.<Boolean>getAttribOr(AttributeKey.PETS_SCROLL,false) ? (int) (10000 * .75) : 10000;
                 if (World.getWorld().random(petRate) == 2) {

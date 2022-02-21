@@ -108,7 +108,7 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
-        List<Integer> customTradeable = Arrays.asList(INFERNAL_AXE, INFERNAL_PICKAXE, INFERNAL_AXE_OR, INFERNAL_HARPOON, INFERNAL_HARPOON_OR, INFERNAL_PICKAXE_OR, RING_OF_CHAROSA, COAL_BAG, GOLDSMITH_GAUNTLETS, COOKING_GAUNTLETS, MAGIC_SECATEURS, EXPLORERS_RING_4, ARDOUGNE_CLOAK_4, BONECRUSHER, CRYSTAL_HELM, CRYSTAL_BODY, CRYSTAL_LEGS, BLADE_OF_SAELDOR, BOW_OF_FAERDHINEN, NEITIZNOT_FACEGUARD, GRANITE_MAUL_24225, BERSERKER_RING_I, WARRIOR_RING_I, SEERS_RING_I, ARCHERS_RING_I, BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
+        List<Integer> customTradeable = Arrays.asList(HOLY_ORNAMENT_KIT, SANGUINE_ORNAMENT_KIT, INFERNAL_AXE, INFERNAL_PICKAXE, INFERNAL_AXE_OR, INFERNAL_HARPOON, INFERNAL_HARPOON_OR, INFERNAL_PICKAXE_OR, RING_OF_CHAROSA, COAL_BAG, GOLDSMITH_GAUNTLETS, COOKING_GAUNTLETS, MAGIC_SECATEURS, EXPLORERS_RING_4, ARDOUGNE_CLOAK_4, BONECRUSHER, CRYSTAL_HELM, CRYSTAL_BODY, CRYSTAL_LEGS, BLADE_OF_SAELDOR, BOW_OF_FAERDHINEN, NEITIZNOT_FACEGUARD, GRANITE_MAUL_24225, BERSERKER_RING_I, WARRIOR_RING_I, SEERS_RING_I, ARCHERS_RING_I, BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR);
         if (customTradeable.stream().anyMatch(item -> item == id)) {
             grandexchange = true;
         }
@@ -134,6 +134,15 @@ public class ItemDefinition implements Definition {
             grandexchange = true;
         } else if (id == SNOWFLAKE_PET) {
             name = "Snowflake pet";
+            grandexchange = true;
+        } else if (id == FRAGMENT_OF_SEREN_PET) {
+            name = "Fragment of seren pet";
+            grandexchange = true;
+        } else if (id == BLOOD_FURY_HESPORI_PET) {
+            name = "Blood fury hespori pet";
+            grandexchange = true;
+        } else if (id == INFERNAL_SPIDER_PET) {
+            name = "Infernal spider pet";
             grandexchange = true;
         } else if (id == BRONZE_MYSTERY_BOX) {
             name = "Bronze mystery box";

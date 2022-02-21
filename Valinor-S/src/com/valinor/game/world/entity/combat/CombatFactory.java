@@ -994,7 +994,7 @@ public class CombatFactory {
             return true;
         }
 
-        if(target.tile().memberCave()) {
+        if(target.tile().memberCave() && target.tile().region() != 12077) {
             return true;
         }
         return false;
@@ -1157,15 +1157,15 @@ public class CombatFactory {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF && hit.getCombatType() == CombatType.MELEE) {
+                if ((npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF || npc.id() == CRYSTALLINE_HUNLLEF) && hit.getCombatType() == CombatType.MELEE) {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF_9036 && hit.getCombatType() == CombatType.RANGED) {
+                if ((npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF_9036 || npc.id() == CRYSTALLINE_HUNLLEF_9022) && hit.getCombatType() == CombatType.RANGED) {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF_9037 && hit.getCombatType() == CombatType.MAGIC) {
+                if ((npc.id() == NpcIdentifiers.CORRUPTED_HUNLLEF_9037 || npc.id() == CRYSTALLINE_HUNLLEF_9023) && hit.getCombatType() == CombatType.MAGIC) {
                     hit.setDamage(0);
                 }
 

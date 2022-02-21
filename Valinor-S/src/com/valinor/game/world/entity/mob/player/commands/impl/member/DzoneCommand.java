@@ -9,7 +9,7 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 
 public class DzoneCommand implements Command {
 
-    private static final boolean NEW_DZONE = false;
+    private static final boolean NEW_DZONE = true;
 
     @Override
     public void execute(Player player, String command, String[] parts) {

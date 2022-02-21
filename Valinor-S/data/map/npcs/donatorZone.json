@@ -1,5 +1,14 @@
 [
   {
+    "name": "Chief farmer",
+    "id": 6957,
+    "x": 3023,
+    "y": 2955,
+    "z": 0,
+    "direction": "N",
+    "walkRange": 0
+  },
+  {
     "name": "krystilia",
     "id": 7663,
     "x": 2454,

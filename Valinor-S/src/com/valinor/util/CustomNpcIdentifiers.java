@@ -6,7 +6,11 @@ package com.valinor.util;
  */
 public class CustomNpcIdentifiers {
 
-
+    public final static int BLOOD_FURY_HESPORI_PET = 15060;
+    public final static int INFERNAL_SPIDER_PET = 15061;
+    public final static int FRAGMENT_OF_SEREN_PET = 15062;
+    public final static int BLOOD_FURY_HESPORI = 15024;
+    public final static int INFERNAL_SPIDER = 15033;
     public final static int MALE_CENTAUR = 15030;
     public final static int FEMALE_CENTAUR = 15032;
     public final static int ARAGOG_MINION = 134;

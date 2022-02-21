@@ -5397,5 +5397,42 @@
         "value": 175
       }
     ]
+  },
+  {
+    "shopId": 54,
+    "name": "Farming Shop",
+    "currency": "COINS",
+    "restock": true,
+    "noiron": false,
+    "sellType": "CONTAINS",
+    "scroll": 0,
+    "items": [
+      {"id": 5341, "amount": 500}, // Rake
+      {"id": 5343, "amount": 500}, // Seed dibber
+      {"id": 5329, "amount": 500}, // Secateurs
+      {"id": 952, "amount": 500}, // Spade
+      {"id": 5325, "amount": 500}, // Trowel
+      {"id": 5340, "amount": 500}, // Watering can (8)
+      {"id": 5356, "amount": 500}, // Flower pot
+      {"id": 13250, "amount": 30}, // Pot sack
+
+      {"id": 5418, "amount": 500}, // Empty sack
+      {"id": 13252, "amount": 30}, // Sack pack
+      {"id": 5376, "amount": 500}, // Basket
+      {"id": 13254, "amount": 30}, // Basket pack
+      {"id": 1942, "amount": 30}, // Potato
+      {"id": 1957, "amount": 30}, // Onion
+      {"id": 1965, "amount": 30}, // Cabbage
+      {"id": 1982, "amount": 30}, // Tomato
+      {"id": 5986, "amount": 30}, // Sweetcorn
+      {"id": 5504, "amount": 30}, // Strawberry
+      {"id": 5982, "amount": 30}, // Watermelon
+      {"id": 5295, "amount": 30}, // Ranarr
+      {"id": 5296, "amount": 30}, // Toadflax
+      {"id": 5297, "amount": 30}, // Irit
+      {"id": 5298, "amount": 30}, // Avantoe
+      {"id": 5299, "amount": 30}, // Kwuarm
+      {"id": 5300, "amount": 30} // Snapdragon
+    ]
   }
 ]

@@ -106,7 +106,8 @@ public class Farming {
             FarmingPatches.FALADOR_HERB,
             FarmingPatches.CATHERBY_HERB,
             FarmingPatches.ARDOUGNE_HERB,
-            FarmingPatches.PHAS_HERB
+            FarmingPatches.PHAS_HERB,
+            FarmingPatches.MEMBER_HERB
         };
 
         FarmingPatches closest = null;
@@ -122,6 +123,12 @@ public class Farming {
         int config = 0;
 
         switch (closest) {
+            case MEMBER_HERB:
+                config = (config(FarmingPatches.MEMBER_HERB) << 24)
+                    + (config(FarmingPatches.MEMBER_FLOWER) << 16)
+                    + (config(FarmingPatches.MEMBER_ALLOTMENT_SOUTH) << 8)
+                    + (config(FarmingPatches.MEMBER_ALLOTMENT_NORTH));
+                break;
             case FALADOR_HERB:
                 config = (config(FarmingPatches.FALADOR_HERB) << 24)
                     + (config(FarmingPatches.FALADOR_FLOWER) << 16)
