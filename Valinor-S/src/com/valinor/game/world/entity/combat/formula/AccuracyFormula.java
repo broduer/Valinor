@@ -276,6 +276,7 @@ public class AccuracyFormula {
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, ARCLIGHT)) {
                     if (npc.def() != null && npc.def().name != null && FormulaUtils.isDemon(npc)) {
                         off_additional_bonus += 0.70;
+                        //System.out.println("trigger effect");
                     }
                 }
 

@@ -34,9 +34,9 @@ public class NpcMovementCoordinator {
     }
 
     public void process() {
+        //if(npc.id() == 8374)
+            //System.out.println("laaaaaa "+npc.completelyLockedFromMoving()+" "+npc.cantMoveUnderCombat());
         if (npc.def().ispet || npc.completelyLockedFromMoving() || npc.cantMoveUnderCombat()) {
-            /*if(npc.id() == 8371)
-            System.out.println("laaaaaa "+npc.completelyLockedFromMoving());*/
             return;
         }
 

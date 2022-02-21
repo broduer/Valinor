@@ -16,7 +16,8 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.corruptedhunleff.CorruptedHunleff;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.CrystallineHunleff;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.corrupt.CorruptedHunleff;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorilla;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
 import com.valinor.game.world.entity.combat.method.impl.npcs.fightcaves.TzTokJad;
@@ -212,7 +213,7 @@ public class Npc extends Mob {
         spawnTile = tile;
         def = World.getWorld().definitions().get(NpcDefinition.class, id);
         combatInfo = World.getWorld().combatInfo(id);
-        if(combatInfo != null) {
+        if (combatInfo != null) {
             combatInfo.stats = combatInfo.originalStats.clone(); // Replenish all stats on this NPC.
             combatInfo.bonuses = combatInfo.originalBonuses.clone(); // Replenish all stats on this NPC.
         }
@@ -240,9 +241,9 @@ public class Npc extends Mob {
 
         if (this.def != null && this.def.name != null &&
             (this.def.name.toLowerCase().contains("clerk")
-            || this.def.name.toLowerCase().contains("banker"))) {
+                || this.def.name.toLowerCase().contains("banker"))) {
             skipReachCheck = t -> {
-                Direction current = Direction.fromDeltas(getX() - t.getX(), getY()-t.getY());
+                Direction current = Direction.fromDeltas(getX() - t.getX(), getY() - t.getY());
                 return current.isDiagonal || t.distance(tile()) == 1;
             };
         }
@@ -270,7 +271,7 @@ public class Npc extends Mob {
      */
     public static Npc of(int id, Tile tile) {
         return switch (id) {
-            case COMBAT_DUMMY -> new MaxHitDummyNpc(id,tile);
+            case COMBAT_DUMMY -> new MaxHitDummyNpc(id, tile);
             case UNDEAD_COMBAT_DUMMY -> new UndeadMaxHitDummy(id, tile);
             case Wyrm.IDLE, Wyrm.ACTIVE -> new Wyrm(id, tile);
             case HYDRA -> new Hydra(id, tile);
@@ -283,6 +284,9 @@ public class Npc extends Mob {
             case CORRUPTED_HUNLLEF,
                 CORRUPTED_HUNLLEF_9036,
                 CORRUPTED_HUNLLEF_9037 -> new CorruptedHunleff(id, tile);
+            case CRYSTALLINE_HUNLLEF,
+                CRYSTALLINE_HUNLLEF_9022,
+                CRYSTALLINE_HUNLLEF_9023 -> new CrystallineHunleff(id, tile);
             case NEX, NEX_11279, NEX_11280, NEX_11281, NEX_11282 -> new Nex(id, tile);
             case FUMUS, CRUOR, UMBRA, GLACIES -> new NexMinion(id, tile);
             default -> new Npc(id, tile);
@@ -298,7 +302,7 @@ public class Npc extends Mob {
         this.id = id;
         NpcDefinition def = def();
         setSize(def.size);
-        if(combatInfo != null)
+        if (combatInfo != null)
             this.combatInfo(World.getWorld().combatInfo(id));
         this.getUpdateFlag().flag(Flag.TRANSFORM);
     }
@@ -527,8 +531,8 @@ public class Npc extends Mob {
                 accumulateRuntimeTo(() -> {
                     getCombat().process();
 
-                    if(combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
-                        if(getCombatMethod() != null) {
+                    if (combatInfo() != null && combatInfo().scripts != null && combatInfo().scripts.combat_ != null) {
+                        if (getCombatMethod() != null) {
                             if (getCombatMethod() instanceof CommonCombatMethod) {
                                 CommonCombatMethod method = (CommonCombatMethod) getCombatMethod();
                                 method.set(this, null);
@@ -618,7 +622,7 @@ public class Npc extends Mob {
 
         List<Integer> fight_cave_monsters = Arrays.asList(TZKIH_3116, TZKEK_3118, TZKEK_3119, TZKEK_3120, TOKXIL_3121, KETZEK, KETZEK_3126, YTMEJKOT, YTMEJKOT_3124, TZTOKJAD, YTHURKOT);
         var fightCaveMonster = fight_cave_monsters.stream().anyMatch(n -> n == this.id);
-        if(tile.region() == 9551) {
+        if (tile.region() == 9551) {
             inViewport = fightCaveMonster;//If fight cave monster ignore always agro
         }
 
@@ -679,7 +683,7 @@ public class Npc extends Mob {
             stopActions(false);
             getCombat().reset(); // Otherwise we'll forever be stuck with a target yo!
             //if (target != null)
-            //	target.message("abandoned - out of range "+def.name);
+                //target.message("abandoned - out of range " + def.name);
         }
     }
 
@@ -850,9 +854,9 @@ public class Npc extends Mob {
 
     @Override
     public void die(Hit killHit) {
-        if(this.combatInfo != null && this.combatInfo.boss) {
-            if(this.def.name != null && killHit.getAttacker() != null) {
-                Utils.sendDiscordInfoLog(this.def.name+" died to "+killHit.getAttacker()+" at: "+this.tile.toString()+".", "npc_death");
+        if (this.combatInfo != null && this.combatInfo.boss) {
+            if (this.def.name != null && killHit.getAttacker() != null) {
+                Utils.sendDiscordInfoLog(this.def.name + " died to " + killHit.getAttacker() + " at: " + this.tile.toString() + ".", "npc_death");
             }
         }
         NpcDeath.execute(this);
@@ -968,18 +972,18 @@ public class Npc extends Mob {
         if (party.getCurrentPhase() == 3) {
             if (tile().getX() >= 3238) {
                 if (spawnDirection == Direction.SOUTH.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7372));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7372));
                 else if (spawnDirection == Direction.NORTH.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7373));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7373));
                 else if (spawnDirection == Direction.NONE.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7371));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7371));
             } else {
                 if (spawnDirection == Direction.SOUTH.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7373));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7373));
                 else if (spawnDirection == Direction.NORTH.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7372));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7372));
                 else if (spawnDirection == Direction.NONE.toInteger())
-                party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7371));
+                    party.forPlayers(player -> player.getPacketSender().sendObjectAnimation(party.getGreatOlmObject(), 7371));
             }
         } else {
             if (tile().getX() >= 3238) {

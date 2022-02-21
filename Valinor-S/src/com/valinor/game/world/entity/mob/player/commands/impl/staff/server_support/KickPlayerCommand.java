@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
+package com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support;
 
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;

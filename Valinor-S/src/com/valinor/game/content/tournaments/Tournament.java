@@ -272,7 +272,7 @@ public class Tournament {
         }
         for (int i = 0; i < loadout.runepouch.capacity(); i++) {
             if (loadout.runepouch.getItems()[i] == null) continue;
-            player.getRunePouch().deposit(loadout.runepouch.getItems()[i].clone());
+            player.getRunePouch().deposit(loadout.runepouch.getItems()[i].clone(),true);
             player.getRunePouch().refresh();
             //logger.trace("tournament: rune pouch: slot {} is {}", i, player.getRunePouch().get(i));
         }

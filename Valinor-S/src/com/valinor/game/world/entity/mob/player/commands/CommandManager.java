@@ -11,6 +11,7 @@ import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.event_manager.HPEventCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.JailCommand;
+import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.KickPlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.MutePlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.TeleToPlayerCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.member.YellColourCommand;

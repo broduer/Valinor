@@ -142,7 +142,7 @@ public class Combat {
         if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
             return MagicMaxHit.maxHit(player, false);
         }
-        return MagicMaxHit.maxHit(player,true);
+        return MagicMaxHit.maxHit(player, true);
     }
 
     public int maximumMeleeHit() {
@@ -152,10 +152,10 @@ public class Combat {
         }
         //PvP max hit
         if (mob.isPlayer() && target != null && target.isNpc() && target.getAsNpc().id() == COMBAT_DUMMY) {
-            return MeleeMaxHit.maxHit(mob.getAsPlayer(),false);
+            return MeleeMaxHit.maxHit(mob.getAsPlayer(), false);
         }
         //PvM max hit
-        return MeleeMaxHit.maxHit(mob.getAsPlayer(),true);
+        return MeleeMaxHit.maxHit(mob.getAsPlayer(), true);
     }
 
     /**
@@ -186,9 +186,9 @@ public class Combat {
             return;
         }
 
-        if(mob.isNpc() && target.isPlayer()) {
+        if (mob.isNpc() && target.isPlayer()) {
             Npc npc = mob.getAsNpc();
-            if(!npc.canAttack()) {
+            if (!npc.canAttack()) {
                 return;
             }
         }
@@ -206,7 +206,7 @@ public class Combat {
             player.action.clearNonWalkableActions();
             if (!player.getInterfaceManager().isMainClear()) {
                 boolean ignore = player.getInterfaceManager().isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE) || player.getInterfaceManager().isInterfaceOpen(29050) || player.getInterfaceManager().isInterfaceOpen(55140);
-                if(!ignore) {
+                if (!ignore) {
                     //player.debugMessage("walkable interface is: " + player.getInterfaceManager().getWalkable());
                     player.getInterfaceManager().close(false);
                 }
@@ -281,7 +281,10 @@ public class Combat {
      * the real method, without try-catch wrapped around it
      */
     private void performNewAttack0() {
+        /*if (mob.isNpc() && mob.getAsNpc().id() == 8374)
+            System.out.println("enter");*/
         if (target == null) {
+            //System.out.println("null targ");
             return;
         }
 
@@ -314,7 +317,7 @@ public class Combat {
 
             if (!player.getInterfaceManager().isMainClear()) {
                 boolean ignore = player.getInterfaceManager().isInterfaceOpen(DAILY_TASK_MANAGER_INTERFACE) || player.getInterfaceManager().isInterfaceOpen(29050) || player.getInterfaceManager().isInterfaceOpen(55140);
-                if(!ignore) {
+                if (!ignore) {
                     //player.debugMessage("walkable interface is: " + player.getInterfaceManager().getWalkable());
                     player.getInterfaceManager().close(false);
                 }

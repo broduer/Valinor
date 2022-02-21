@@ -56,23 +56,13 @@ public class Tekton extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        /*if (target.isPlayer()) {
-            ArrayList<Mob> targets = new ArrayList<>();
-            for (Mob t : getPossibleTargets(mob, 4, true, false)) {
-                Tile pos = Utils.getClosestTile(mob, t);
-                int xDist = Math.abs(pos.getX() - t.getAbsX());
-                int yDist = Math.abs(pos.getY() - t.getAbsY());
-                int dist = Math.max(xDist, yDist);
-                if (dist <= 4) {
-                    targets.add(t);
-                }
-            }
+        if (target.isPlayer()) {
+            Tile tile = target.tile().copy();
 
-            Mob p = World.getWorld().get(targets);
             RouteDirection side;
-            Tile pos = Utils.getClosestTile(mob, p);
-            int xDiff = pos.getX() - p.getAbsX();
-            int yDiff = pos.getY() - p.getAbsY();
+            Tile pos = Utils.getClosestTile(mob, tile);
+            int xDiff = pos.getX() - tile.x;
+            int yDiff = pos.getY() - tile.y;
             if (xDiff > 0)
                 side = RouteDirection.WEST;
             else if (xDiff < 0)
@@ -83,24 +73,19 @@ public class Tekton extends CommonCombatMethod {
                 side = RouteDirection.NORTH;
             mob.face(side);
             mob.animate(7483);
-            Chain.bound(null).runFn(1, () -> {
+            Chain.bound(null).runFn(3, () -> {
                 if (mob.dead())
                     return;
-                for (Mob t : targets) {
-                    Tile src = Utils.getClosestTile(mob, t);
-                    if ((side.deltaX != 0 && t.getAbsX() - src.getX() == side.deltaX) ||
-                        (side.deltaY != 0 && t.getAbsY() - src.getY() == side.deltaY)) {
-                        int maxDamage = 40;
-                        if (Prayers.usingPrayer(t, Prayers.PROTECT_FROM_MELEE))
-                            maxDamage = 20;
 
-                        t.hit(mob, World.getWorld().random(10, maxDamage));
-                    }
+                if (tile.area(1).contains(target)) {
+                    int maxDamage = 40;
+                    if (Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE))
+                        maxDamage = 20;
+
+                    target.hit(mob, World.getWorld().random(10, maxDamage));
                 }
             });
-        }*/
-        mob.getMovement().setBlockMovement(true); // Lock movement when we found a target
-        doMeleePhaseInner(mob, target);
+        }
     }
 
     private void resetCombatForPlayers(Mob mob) {
@@ -117,28 +102,6 @@ public class Tekton extends CommonCombatMethod {
             }
         }
         return false;
-    }
-
-    private static void doMeleePhaseInner(Mob mob, Mob target) {
-        mob.setEntityInteraction(null);
-        mob.animate(7493);
-        Tile p1 = target.tile().copy();
-        mob.face(p1);
-        Chain.bound(null).cancelWhen(() -> instanceFinished(mob)).runFn(1, () -> {
-            mob.face(p1);
-        }).then(4, () -> {
-            if (p1.area(1).contains(target)) {
-                int maxDamage = 40;
-                if (Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE))
-                    maxDamage = 20;
-
-                target.hit(mob, World.getWorld().random(10, maxDamage));
-            }
-        }).then(2, () -> {
-            mob.setEntityInteraction(target);
-        }).then(2, () -> {
-            mob.setEntityInteraction(null);
-        });
     }
 
     private void smith(Mob mob, Mob target) {

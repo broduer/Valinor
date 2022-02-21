@@ -257,7 +257,6 @@ public class MagicMaxHit {
                 boolean holy_staff = weapon == HOLY_SANGUINESTI_STAFF;
                 if (holy_staff) {
                     maxHit += 10;
-                    System.out.println("wut");
                 }
             }
             return maxHit;

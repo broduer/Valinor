@@ -19,7 +19,7 @@ public class KeybindingWidget extends Widget {
         hoverButton(Keybinding.RESTORE_DEFAULT, "Restore Defaults", 448, 447, "Restore Defaults", font, 1, 0xff8a1f, 0xff8a1f, true);
 
         addText(53002, "Esc closes current interface", font, 1, 0xff8a1f, false, true);
-        addConfigButton(Keybinding.ESCAPE_CONFIG, 53000, 334, 333, "Select", 594, 0, OPTION_TOGGLE_SETTING);
+        addConfigButton(Keybinding.ESCAPE_CONFIG, 53000, 334, 333, "Select", 594, 0, OPTION_OK);
 
         tab.totalChildren(50);
         int childNum = 0;

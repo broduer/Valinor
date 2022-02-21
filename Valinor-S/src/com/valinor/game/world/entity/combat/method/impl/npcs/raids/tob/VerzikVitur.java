@@ -3,7 +3,9 @@ package com.valinor.game.world.entity.combat.method.impl.npcs.raids.tob;
 import com.valinor.fs.NpcDefinition;
 import com.valinor.game.task.Task;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.hit.SplatType;
@@ -151,8 +153,9 @@ public class VerzikVitur extends CommonCombatMethod {
         if (mob.getAsNpc().id() == VERZIK_VITUR_8374) {
             int random = World.getWorld().random(0, 2);
             if (random == 0) {
-                mob.animate(8123);
-                mob.hit(target, World.getWorld().random(1, 40), 2, CombatType.MELEE).submit();
+                if(CombatFactory.canReach(mob, CombatFactory.MELEE_COMBAT, target)) {
+                    meleeAttack(mob, target);
+                }
             } else if (random == 1) {
                 mob.animate(8124);
                 for (Mob t : targets) {
@@ -161,7 +164,7 @@ public class VerzikVitur extends CommonCombatMethod {
                     }
                     Projectile projectile = new Projectile(mob, target, 1580, 0, 220, 100, 0, 0);
                     projectile.sendProjectile();
-                    t.hit(mob, World.getWorld().random(1, 40), 2, CombatType.MAGIC).checkAccuracy().submit();
+                    t.hit(mob, World.getWorld().random(1, 40), 7, CombatType.MAGIC).checkAccuracy().submit();
                 }
             } else if (random == 2) {
                 mob.animate(8125);
@@ -169,12 +172,18 @@ public class VerzikVitur extends CommonCombatMethod {
                     if (t == null || t.getAsPlayer().dead() || !t.tile().inArea(ARENA)) {
                         continue;
                     }
-                    Projectile projectile = new Projectile(mob, target, 1560, 0, 100, 25, 30, 0);
+                    var delay = mob.getProjectileHitDelay(t);
+                    Projectile projectile = new Projectile(mob, target, 1560, 0, mob.projectileSpeed(t), 25, 30, 0);
                     projectile.sendProjectile();
-                    t.hit(mob, World.getWorld().random(1, 40), 2, CombatType.RANGED).checkAccuracy().submit();
+                    t.hit(mob, World.getWorld().random(1, 40), delay, CombatType.RANGED).checkAccuracy().submit();
                 }
             }
         }
+    }
+
+    private void meleeAttack(Mob mob, Mob target) {
+        mob.animate(8123);
+        target.hit(mob, World.getWorld().random(1, 40), 0, CombatType.MELEE).submit();
     }
 
     @Override
@@ -184,7 +193,7 @@ public class VerzikVitur extends CommonCombatMethod {
 
     @Override
     public int getAttackDistance(Mob mob) {
-        return mob.isNpc() && mob.getAsNpc().id() == VERZIK_VITUR_8374 ? 8 : 32;
+        return mob.isNpc() && mob.getAsNpc().id() == VERZIK_VITUR_8374 ? 1 : 32;
     }
 
     @Override
@@ -215,9 +224,10 @@ public class VerzikVitur extends CommonCombatMethod {
         //For what ever reason we do not have a target, find a new one.
         if(mob.getCombat().getTarget() == null) {
             List<Mob> targets = getPossibleTargets(mob);
-            target = Utils.randomElement(targets);
+            Mob newTarg = Utils.randomElement(targets);
+            mob.getCombat().setTarget(newTarg);
         }
-        mob.getCombat().setTarget(target);
+        //System.out.println(target);
         super.process(mob, target);
     }
 
@@ -270,6 +280,9 @@ public class VerzikVitur extends CommonCombatMethod {
                 mob.getAsNpc().canAttack(true);
                 mob.getAsNpc().completelyLockedFromMoving(false);
                 mob.getAsNpc().cantMoveUnderCombat(false);
+                mob.getAsNpc().combatInfo().aggressive = true;
+                mob.getAsNpc().combatInfo().aggroradius = 25;
+                mob.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 25);
             });
             return true;
         } else if (mob.getAsNpc().id() == VERZIK_VITUR_8374) {

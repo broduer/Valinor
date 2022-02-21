@@ -81,8 +81,6 @@ public class TestCommand implements Command {
 
         //Spawn chest
         TheatreOfBlood.spawnLootChests(player);*/
-        int newHp = (int) (2000 * 87.5 / 100);
-        System.out.println(newHp);
         player.message("Test command has been activated.");
         //PlayerSession.main(new String[0]);
     }

@@ -983,6 +983,8 @@ public class CombatFactory {
             }
         }
 
+        //System.out.println("Passed canAttack checks");
+
         Debugs.CMB.debug(attacker, "Passed canAttack checks", target, true);
         return true;
     }
