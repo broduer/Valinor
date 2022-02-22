@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.combat.method.impl;
 
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -21,17 +22,38 @@ public class MeleeCombatMethod extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
+        var goliathEffect = mob.<Boolean>getAttribOr(AttributeKey.GOLIATH_ABILITY,false) && Utils.percentageChance(5);
+        var boostDamageBy25Percent = false;
+        var bind = false;
+        if(goliathEffect) {
+            if(World.getWorld().rollDie(2,1)) {
+                boostDamageBy25Percent = true;
+            } else {
+                bind = true;
+            }
+        }
+
+        int damage = CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE);
+        if(mob.isPlayer()) {
+            if (boostDamageBy25Percent) {
+                damage = (int) (damage * 1.25);
+            } else if (bind) {
+                target.freeze(5, mob);
+                target.graphic(1876);
+            }
+        }
+
         if (target.isNpc() && mob.isPlayer()) {
             Player player = (Player) mob;
             if (player.getEquipment().hasAt(EquipSlot.WEAPON, SCYTHE_OF_VITUR) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SCYTHE_OF_VITUR) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINE_SCYTHE_OF_VITUR)) {
                 mob.animate(mob.attackAnimation());
                 mob.graphic(1231, 100, 0);
                 if(target.getAsNpc().getSize() > 2 || target.getAsNpc().isCombatDummy()) {
-                    target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
-                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .75), CombatType.MELEE).checkAccuracy().submit();
-                    target.hit(mob, (int) (CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE) * .50), 1, CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, damage, 0, CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, (int) (damage * .75), CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, (int) (damage * .50), 1, CombatType.MELEE).checkAccuracy().submit();
                 } else {
-                    target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 0, CombatType.MELEE).checkAccuracy().submit();
+                    target.hit(mob, damage, 0, CombatType.MELEE).checkAccuracy().submit();
                 }
                 return;
             }
@@ -46,7 +68,7 @@ public class MeleeCombatMethod extends CommonCombatMethod {
             }
         }
 
-        final Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy();
+        final Hit hit = target.hit(mob, damage, 1, CombatType.MELEE).checkAccuracy();
         hit.submit();
 
         mob.animate(mob.attackAnimation());

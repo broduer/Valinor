@@ -120,6 +120,10 @@ public class WorldBossEvent {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(WINTER_TOKENS, World.getWorld().random(2000,3500)), npc.tile(), player));
                 }
 
+                if(npc.id() == BLOOD_FURY_HESPORI_15021 || npc.id() == INFERNAL_SPIDER_15031) {
+                    GroundItemHandler.createGroundItem(new GroundItem(new Item(CRYSTAL_KEY, 1), npc.tile(), player));
+                }
+
                 //Always drop random coins
                 GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(1_000_000, 5_000_000)), npc.tile(), player));
 

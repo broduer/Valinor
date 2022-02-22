@@ -256,11 +256,11 @@ public class NpcDefinition implements Definition {
             name = "Artio";
             combatlevel = 470;
             size = 5;
-        } else if (id == BLOOD_FURY_HESPORI) {
+        } else if (id == BLOOD_FURY_HESPORI || id == BLOOD_FURY_HESPORI_15021) {
             name = "Bloodfury hespori";
             combatlevel = 833;
             size = 3;
-        } else if (id == INFERNAL_SPIDER) {
+        } else if (id == INFERNAL_SPIDER || id == INFERNAL_SPIDER_15031) {
             name = "Infernal spider";
             combatlevel = 655;
             size = 4;

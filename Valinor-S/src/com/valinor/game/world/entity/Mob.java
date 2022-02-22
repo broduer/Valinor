@@ -1137,7 +1137,6 @@ public abstract class Mob extends Entity {
         setEntityInteraction(attacker);
 
         runFn(2, () -> {
-            System.out.println("set targ");
             // Override logic
             getCombat().setTarget(attacker);
             // this mob needs to hit the attacker, not vice versa

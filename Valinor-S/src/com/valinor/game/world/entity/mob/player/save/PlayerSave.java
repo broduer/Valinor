@@ -657,6 +657,8 @@ public class PlayerSave {
                 player.putAttrib(BAGGED_COAL, details.baggedCoal);
                 player.putAttrib(EXP_LAMP_WARNING_SENT, details.expLampWarningSent);
                 player.putAttrib(EXP_LAMP_USED, details.expLampUsed);
+                player.putAttrib(SWIFT_ABILITY, details.swiftAbility);
+                player.putAttrib(GOLIATH_ABILITY, details.goliathAbility);
                 return true;
             }
         }
@@ -1167,6 +1169,8 @@ public class PlayerSave {
         private final int baggedCoal;
         private final boolean expLampWarningSent;
         private final boolean expLampUsed;
+        private final boolean swiftAbility;
+        private final boolean goliathAbility;
 
         public String password() {
             return password;
@@ -1624,6 +1628,8 @@ public class PlayerSave {
             baggedCoal = Player.getAttribIntOr(player, BAGGED_COAL, 0);
             expLampWarningSent = Player.getAttribBooleanOr(player, EXP_LAMP_WARNING_SENT, false);
             expLampUsed = Player.getAttribBooleanOr(player, EXP_LAMP_USED, false);
+            swiftAbility = Player.getAttribBooleanOr(player, SWIFT_ABILITY, false);
+            goliathAbility = Player.getAttribBooleanOr(player, GOLIATH_ABILITY, false);
         }
 
         public void parseDetails() throws Exception {

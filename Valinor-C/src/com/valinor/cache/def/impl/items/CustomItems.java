@@ -1321,6 +1321,32 @@ public class CustomItems {
             def.zoom2d = 2640;
         }
 
+        if (id == RANGING_SCROLL) {
+            def.name = "<col=65280>Ranging scroll";
+            def.inventoryActions = new String[]{"Read", null, null, null, "Drop"};
+            def.stackable = 0;
+            def.inventoryModel = 10347;
+            def.xOffset2d = -1;
+            def.yOffset2d = 11;
+            def.xan2d = 344;
+            def.yan2d = 656;
+            def.zoom2d = 1020;
+            def.modelCustomColor4 = 32222;
+        }
+
+        if (id == MELEE_SCROLL) {
+            def.name = "<col=65280>Melee scroll";
+            def.inventoryActions = new String[]{"Read", null, null, null, "Drop"};
+            def.stackable = 0;
+            def.inventoryModel = 10347;
+            def.xOffset2d = -1;
+            def.yOffset2d = 11;
+            def.xan2d = 344;
+            def.yan2d = 656;
+            def.zoom2d = 1020;
+            def.modelCustomColor4 = 42222;
+        }
+
         if (id == DOUBLE_DROPS_SCROLL) {
             def.name = "<col=65280>Double drop scroll";
             def.inventoryActions = new String[]{null, null, null, null, null};

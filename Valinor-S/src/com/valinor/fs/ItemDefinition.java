@@ -117,6 +117,12 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == RANGING_SCROLL) {
+            name = "Ranging scroll";
+            grandexchange = true;
+        } else if (id == MELEE_SCROLL) {
+            name = "Melee scroll";
+            grandexchange = true;
         } else if (id == INFERNAL_TRIDENT) {
             name = "Infernal trident";
             grandexchange = true;

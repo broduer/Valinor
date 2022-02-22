@@ -5,6 +5,9 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    SWIFT_ABILITY("swift_ability", AttribType.BOOLEAN),
+    GOLIATH_ABILITY("goliath_ability", AttribType.BOOLEAN),
+
     DID_YOU_KNOW("did_you_know_activated", AttribType.BOOLEAN),
 
     //Bounty hunter

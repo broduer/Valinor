@@ -14,6 +14,7 @@ import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.container.equipment.Equipment;
+import com.valinor.util.Utils;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob attacker, Mob target) {
+        var swiftEffect = attacker.<Boolean>getAttribOr(AttributeKey.SWIFT_ABILITY,false) && Utils.percentageChance(5);
         //Get data
 
         //TODO sound here
@@ -213,7 +215,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             if (graphic != -1)
                 new Projectile(attacker, target, graphic, baseDelay, speed, startHeight, endHeight, 0, curve, 11).sendProjectile();
 
-            if (Equipment.darkbow(weaponId) || weaponId == SANGUINE_TWISTED_BOW) {
+            if (Equipment.darkbow(weaponId) || weaponId == SANGUINE_TWISTED_BOW || swiftEffect) {
                 // dark bow 2nd arrow
                 new Projectile(attacker, target, graphic, 10 + baseDelay, 10 + speed, startHeight, endHeight, 0, curve, 105).sendProjectile();
             }
@@ -240,7 +242,7 @@ public class RangedCombatMethod extends CommonCombatMethod {
             target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
 
             // secondary hits
-            if (attacker.getCombat().getRangedWeapon() == RangedWeapon.DARK_BOW) {
+            if (attacker.getCombat().getRangedWeapon() == RangedWeapon.DARK_BOW || swiftEffect) {
                 target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), secondArrowDelay, CombatType.RANGED).checkAccuracy().submit();
             } else if (weaponId == SANGUINE_TWISTED_BOW) {
                 target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED) / 2, secondArrowDelay, CombatType.RANGED).checkAccuracy().submit();
