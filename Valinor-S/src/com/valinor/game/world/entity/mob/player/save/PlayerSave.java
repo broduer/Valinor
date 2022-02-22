@@ -638,6 +638,10 @@ public class PlayerSave {
                 player.putAttrib(REVENANTS_LOG_CLAIMED, details.revenantsLogClaimed);
                 player.putAttrib(CHAMBER_OF_XERIC_LOG_CLAIMED, details.chamberOfXericLogClaimed);
                 player.putAttrib(THEATRE_OF_BLOOD_LOG_CLAIMED, details.theatreOfBloodLogClaimed);
+                player.putAttrib(CRYSTALLINE_HUNLLEF_LOG_CLAIMED, details.crystallineHunleffLogClaimed);
+                player.putAttrib(FRAGMENT_OF_SEREN_LOG_CLAIMED, details.fragmentOfSerenLogClaimed);
+                player.putAttrib(BLOOD_FURY_HESPORI_LOG_CLAIMED, details.bloodFurHesporiLogClaimed);
+                player.putAttrib(TINFERNAL_SPIDER_LOG_CLAIMED, details.infernalSpiderLogClaimed);
                 player.putAttrib(DONATOR_MYSTERY_BOX_LOG_CLAIMED, details.donatorMysteryBoxLogClaimed);
                 player.putAttrib(MYSTERY_TICKET_LOG_CLAIMED, details.mysteryTicketLogClaimed);
                 player.putAttrib(MYSTERY_CHEST_LOG_CLAIMED, details.mysteryChestLogClaimed);
@@ -1149,6 +1153,10 @@ public class PlayerSave {
         private final boolean chamberOfSecretsLogClaimed;
         private final boolean chamberOfXericLogClaimed;
         private final boolean theatreOfBloodLogClaimed;
+        private final boolean crystallineHunleffLogClaimed;
+        private final boolean fragmentOfSerenLogClaimed;
+        private final boolean bloodFurHesporiLogClaimed;
+        private final boolean infernalSpiderLogClaimed;
         private final boolean donatorMysteryBoxLogClaimed;
         private final boolean mysteryTicketLogClaimed;
         private final boolean mysteryChestLogClaimed;
@@ -1609,6 +1617,10 @@ public class PlayerSave {
             revenantsLogClaimed = Player.getAttribBooleanOr(player, REVENANTS_LOG_CLAIMED, false);
             chamberOfXericLogClaimed = Player.getAttribBooleanOr(player, CHAMBER_OF_XERIC_LOG_CLAIMED, false);
             theatreOfBloodLogClaimed = Player.getAttribBooleanOr(player, THEATRE_OF_BLOOD_LOG_CLAIMED, false);
+            crystallineHunleffLogClaimed = Player.getAttribBooleanOr(player, CRYSTALLINE_HUNLLEF_LOG_CLAIMED, false);
+            fragmentOfSerenLogClaimed = Player.getAttribBooleanOr(player, FRAGMENT_OF_SEREN_LOG_CLAIMED, false);
+            bloodFurHesporiLogClaimed = Player.getAttribBooleanOr(player, BLOOD_FURY_HESPORI_LOG_CLAIMED, false);
+            infernalSpiderLogClaimed = Player.getAttribBooleanOr(player, TINFERNAL_SPIDER_LOG_CLAIMED, false);
             donatorMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, DONATOR_MYSTERY_BOX_LOG_CLAIMED, false);
             mysteryTicketLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_TICKET_LOG_CLAIMED, false);
             mysteryChestLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_CHEST_LOG_CLAIMED, false);

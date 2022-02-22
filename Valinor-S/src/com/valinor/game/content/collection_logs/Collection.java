@@ -22,7 +22,25 @@ import static com.valinor.util.CustomItemIdentifiers.NIFFLER;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.THE_NIGHTMARE_9430;
+import static com.valinor.util.ItemIdentifiers.ABYSSAL_ORPHAN;
+import static com.valinor.util.ItemIdentifiers.CALLISTO_CUB;
+import static com.valinor.util.ItemIdentifiers.HELLPUPPY;
+import static com.valinor.util.ItemIdentifiers.IKKLE_HYDRA;
+import static com.valinor.util.ItemIdentifiers.KALPHITE_PRINCESS;
+import static com.valinor.util.ItemIdentifiers.LIL_ZIK;
+import static com.valinor.util.ItemIdentifiers.LITTLE_NIGHTMARE;
+import static com.valinor.util.ItemIdentifiers.NEXLING;
+import static com.valinor.util.ItemIdentifiers.OLMLET;
+import static com.valinor.util.ItemIdentifiers.PRINCE_BLACK_DRAGON;
+import static com.valinor.util.ItemIdentifiers.SCORPIAS_OFFSPRING;
+import static com.valinor.util.ItemIdentifiers.SKOTOS;
+import static com.valinor.util.ItemIdentifiers.SRARACHA;
+import static com.valinor.util.ItemIdentifiers.TZREKJAD;
+import static com.valinor.util.ItemIdentifiers.VENENATIS_SPIDERLING;
+import static com.valinor.util.ItemIdentifiers.VETION_JR;
+import static com.valinor.util.ItemIdentifiers.VORKI;
+import static com.valinor.util.ItemIdentifiers.YOUNGLLEF;
+import static com.valinor.util.NpcIdentifiers.*;
 
 /**
  * @author PVE
@@ -223,7 +241,7 @@ public enum Collection {
 
     CORRUPTED_HUNLEFF(AttributeKey.CORRUPTED_HUNLEFFS_KILLED, LogType.BOSSES, "Corrupted Hunleff", new int[]{NpcIdentifiers.CORRUPTED_HUNLLEF, NpcIdentifiers.CORRUPTED_HUNLLEF_9036, NpcIdentifiers.CORRUPTED_HUNLLEF_9037}, AttributeKey.CORRUPTED_HUNLEFF_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(YOUNGLLEF), new Item(CRYSTAL_HELM), new Item(CRYSTAL_BODY), new Item(CRYSTAL_LEGS), new Item(KEY_OF_DROPS), new Item(CORRUPTING_STONE)
+        new Item(ItemIdentifiers.CORRUPTED_YOUNGLLEF), new Item(CRYSTAL_HELM), new Item(CRYSTAL_BODY), new Item(CRYSTAL_LEGS), new Item(KEY_OF_DROPS), new Item(CORRUPTED_RANGER_GAUNTLETS), new Item(BLADE_OF_SAELDOR_C), new Item(BOW_OF_FAERDHINEN_C_25884)
     ),
 
     REVENANTS(AttributeKey.REVENANTS_KILLED, LogType.OTHER, "Revenants", new int[]{NpcIdentifiers.REVENANT_IMP, NpcIdentifiers.REVENANT_CYCLOPS, NpcIdentifiers.REVENANT_DARK_BEAST, NpcIdentifiers.REVENANT_DEMON, NpcIdentifiers.REVENANT_DRAGON, NpcIdentifiers.REVENANT_GOBLIN, NpcIdentifiers.REVENANT_HELLHOUND, NpcIdentifiers.REVENANT_HOBGOBLIN, NpcIdentifiers.REVENANT_KNIGHT, NpcIdentifiers.REVENANT_ORK, NpcIdentifiers.REVENANT_PYREFIEND}, AttributeKey.REVENANTS_LOG_CLAIMED, new Item[]{new Item(VIGGORAS_CHAINMACE_C), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_TICKET), new Item(KEY_OF_DROPS)},
@@ -248,6 +266,26 @@ public enum Collection {
     THEATRE_OF_BLOOD(AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, LogType.BOSSES, "Theatre of Blood", new int[]{TOB_RAIDS_KEY}, AttributeKey.THEATRE_OF_BLOOD_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.RAIDS_MYSTERY_BOX,3), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2)},
         //Drops
         new Item(LIL_ZIK), new Item(SCYTHE_OF_VITUR), new Item(GHRAZI_RAPIER), new Item(SANGUINESTI_STAFF), new Item(JUSTICIAR_FACEGUARD), new Item(JUSTICIAR_CHESTGUARD), new Item(JUSTICIAR_LEGGUARDS), new Item(AVERNIC_DEFENDER_HILT)),
+
+    CRYSTALLINE_HUNLLEF(AttributeKey.CRYSTALLINE_HUNLEFF_KC, LogType.BOSSES, "Crystalline hunleff", new int[]{NpcIdentifiers.CRYSTALLINE_HUNLLEF, CRYSTALLINE_HUNLLEF_9022, CRYSTALLINE_HUNLLEF_9023}, AttributeKey.CRYSTALLINE_HUNLLEF_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(YOUNGLLEF), new Item(KEY_OF_DROPS), new Item(CRYSTAL_HELM), new Item(CRYSTAL_BODY), new Item(CRYSTAL_LEGS), new Item(CORRUPTED_RANGER_GAUNTLETS), new Item(BLADE_OF_SAELDOR), new Item(BOW_OF_FAERDHINEN), new Item(CORRUPTING_STONE)
+        ),
+
+    FRAGMENT_OF_SEREN(AttributeKey.FRAGMENT_OF_SEREN_KC, LogType.BOSSES, "Fragment of seren", new int[]{NpcIdentifiers.FRAGMENT_OF_SEREN}, AttributeKey.FRAGMENT_OF_SEREN_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(MELEE_SCROLL)
+    ),
+
+    BLOOD_FURY_HESPORI(AttributeKey.BLOOD_FURY_HESPORI_KC, LogType.BOSSES, "Blood fury hespori", new int[]{CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15021}, AttributeKey.BLOOD_FURY_HESPORI_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(RANGING_SCROLL)
+    ),
+
+    INFERNAL_SPIDER(AttributeKey.INFERNAL_SPIDER_KC, LogType.BOSSES, "Infernal spider", new int[]{CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031}, AttributeKey.TINFERNAL_SPIDER_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+    ),
 
     //Mystery box
     DONATOR_MYSTERY_BOX(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Donator Mystery Box", new int[]{CustomItemIdentifiers.DONATOR_MYSTERY_BOX}, AttributeKey.DONATOR_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 10), new Item(KEY_OF_DROPS,5)},
@@ -281,7 +319,7 @@ public enum Collection {
         new Item(CustomItemIdentifiers.FAWKES),
         new Item(CustomItemIdentifiers.BABY_ARAGOG),
         new Item(CustomItemIdentifiers.BLOOD_REAPER),
-        new Item(ItemIdentifiers.YOUNGLLEF),
+        new Item(YOUNGLLEF),
         new Item(CustomItemIdentifiers.MINI_NECROMANCER),
         new Item(CustomItemIdentifiers.ARTIO_PET),
         new Item(CustomItemIdentifiers.ANCIENT_BARRELCHEST_PET),
