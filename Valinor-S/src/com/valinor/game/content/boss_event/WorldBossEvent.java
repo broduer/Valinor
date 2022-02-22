@@ -83,7 +83,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF};
+    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF, WorldBosses.BLOOD_FURY_HESPORI, WorldBosses.INFERNAL_SPIDER};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
