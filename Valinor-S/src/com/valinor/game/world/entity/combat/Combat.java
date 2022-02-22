@@ -55,6 +55,7 @@ public class Combat {
     }
 
     public CombatSpell[] AUTOCAST_SPELLS = {
+        CombatSpells.INFERNAL_TRIDENT.getSpell(),
         CombatSpells.TRIDENT_OF_THE_SEAS.getSpell(),
         CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell(),
         CombatSpells.SANGUINESTI_STAFF.getSpell(),

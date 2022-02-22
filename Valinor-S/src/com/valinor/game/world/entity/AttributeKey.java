@@ -205,6 +205,11 @@ public enum AttributeKey {
 
     NEX_KC("nex_kc", AttribType.INTEGER),
 
+    CRYSTALLINE_HUNLEFF_KC("crystalline_hunleff_kc", AttribType.INTEGER),
+    FRAGMENT_OF_SEREN_KC("fragment_of_seren_kc", AttribType.INTEGER),
+    BLOOD_FURY_HESPORI_KC("blood_fury_hespori_kc", AttribType.INTEGER),
+    INFERNAL_SPIDER_KC("infernal_spider_kc", AttribType.INTEGER),
+
     USING_TRADING_POST("using_trading_post", AttribType.BOOLEAN),
 
     /**
@@ -1221,7 +1226,7 @@ public enum AttributeKey {
     WINTERTODT("wintertodt", AttribType.INTEGER),
     OBOR("obor", AttribType.INTEGER),
     CHAMBER_OF_SECRET_RUNS_COMPLETED("xeric_runs", AttribType.INTEGER),
-    CHAMBER_OF_XERIC_RUNS_CHALLENGE_COMPLETED("xeric_runs_challenge", AttribType.INTEGER),
+    CHAMBER_OF_XERIC_RUNS_COMPLETED("xeric_runs", AttribType.INTEGER),
     DERANGED_ARCH("deranged_arch", AttribType.INTEGER),
     GROTESQUE_GUARDIANS("grotesque_guardians", AttribType.INTEGER),
     BYROPHYTA("byrophyta", AttribType.INTEGER),

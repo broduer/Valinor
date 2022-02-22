@@ -6,6 +6,7 @@ import static com.valinor.util.ItemIdentifiers.LARRANS_KEY;
 public class CustomItemIdentifiers {
 
     //Be careful ids not allowed over 32,767!
+    public static final int INFERNAL_TRIDENT = 30343;
     public static final int FRAGMENT_OF_SEREN_PET = 30344;
     public static final int BLOOD_FURY_HESPORI_PET = 30345;
     public static final int INFERNAL_SPIDER_PET = 30346;

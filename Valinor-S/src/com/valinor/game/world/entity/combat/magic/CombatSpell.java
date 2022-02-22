@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static com.valinor.util.CustomItemIdentifiers.INFERNAL_TRIDENT;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -372,7 +373,7 @@ public abstract class CombatSpell extends Spell {
         if(attacker.isPlayer()) {
             Player player = (Player) attacker;
 
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER)) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, HARMONISED_NIGHTMARE_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, DAWNBRINGER) || player.getEquipment().hasAt(EquipSlot.WEAPON, INFERNAL_TRIDENT)) {
                 speed = 4;
             }
         }

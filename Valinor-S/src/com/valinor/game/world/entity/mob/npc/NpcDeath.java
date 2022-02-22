@@ -791,7 +791,7 @@ public class NpcDeath {
     }
 
     /**
-     * If you're resetting an Npc as if it were by death but not, for example maybe kraken tentacles which go back down to
+     * If you're resetting a Npc as if it were by death but not, for example maybe kraken tentacles which go back down to
      * the depths when the boss is killed.
      */
     public static void deathReset(Npc npc) {
@@ -799,6 +799,7 @@ public class NpcDeath {
             npc.getCombat().clearDamagers(); //Clear damagers
         }
 
+        npc.getCombat().reset();
         npc.clearAttrib(AttributeKey.TARGET);
         npc.clearAttrib(AttributeKey.LAST_ATTACKED_MAP);
         npc.putAttrib(AttributeKey.VENOM_TICKS, 0);

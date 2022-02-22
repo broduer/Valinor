@@ -5125,6 +5125,7 @@
 11892:0.0:Zamorak banner
 11902:1.0:Leaf-bladed sword
 11904:0.0:Entomologist's diary
+30343:1.0:Infernal trident
 11905:1.0:Trident of the seas (full)
 11907:1.0:Trident of the seas
 11908:1.0:Uncharged trident

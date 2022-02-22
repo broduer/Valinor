@@ -4397,6 +4397,67 @@ public enum CombatSpells {
         public MagicSpellbook spellbook() {
             return MagicSpellbook.NORMAL;
         }
+    }),
+    INFERNAL_TRIDENT(new CombatSpell() {
+        @Override
+        public String name() {
+            return "Infernal trident";
+        }
+
+        @Override
+        public Optional<Animation> castAnimation() {
+            return Optional.of(new Animation(1167));
+        }
+
+        @Override
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.of(new Projectile(cast, castOn, 1544, 35, cast.projectileSpeed(castOn), 30, 0, 0));
+        }
+
+        @Override
+        public Optional<Graphic> endGraphic() {
+            return Optional.of(new Graphic(1545, 90));
+        }
+
+        @Override
+        public int baseMaxHit() {
+            return 34;
+        }
+
+        @Override
+        public Optional<Graphic> startGraphic() {
+            return Optional.of(new Graphic(1543, 92));
+        }
+
+        @Override
+        public int baseExperience() {
+            return 2;
+        }
+
+        @Override
+        public List<Item> equipmentRequired(Player player) {
+            return List.of();
+        }
+
+        @Override
+        public List<Item> itemsRequired(Player player) {
+            return List.of();
+        }
+
+        @Override
+        public int levelRequired() {
+            return 75;
+        }
+
+        @Override
+        public int spellId() {
+            return 3;
+        }
+
+        @Override
+        public MagicSpellbook spellbook() {
+            return MagicSpellbook.NORMAL;
+        }
     });
 
     /**

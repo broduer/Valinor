@@ -16,6 +16,23 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
+        // Trident of the seas
+       if(id == INFERNAL_TRIDENT) {
+           def.name = "<col=65280>Infernal trident";
+           def.femaleModel = 55623;
+           def.femaleOffset = 6;
+           def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
+           def.inventoryModel = 55624;
+           def.maleModel = 55623;
+           def.xOffset2d = -7;
+           def.yOffset2d = 8;
+           def.cost = 68500;
+           def.xan2d = 1535;
+           def.yan2d = 1778;
+           def.zan2d = 108;
+           def.zoom2d = 2421;
+       }
+
         if(id == WILDY_ACTIVITY_CASKET) {
             ItemDefinition.copyInventory(def, CASKET);
             def.name = "<col=65280>Wildy activity casket";

@@ -27,22 +27,50 @@ public class BloodFuryHespori extends CommonCombatMethod {
             rangeAttack(mob, target);
         }
 
-        if(World.getWorld().rollDie(5, 1)) {
+        if(World.getWorld().rollDie(5, 1) && mob.tile().memberCave()) {
             groundAttack(mob, target);
         }
     }
 
     //Melee distance always take damage
     private void meleeAttack(Mob mob, Mob target) {
-        mob.animate(8224);
-        target.hit(mob, World.getWorld().random(1, Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE) ? 13 : 25));
+        if(mob.tile().memberCave()) {
+            mob.animate(8224);
+            target.hit(mob, World.getWorld().random(1, Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE) ? 13 : 25));
+        } else {
+            //World boss
+            mob.animate(8224);
+            mob.resetFaceTile(); // Stop facing the target
+            World.getWorld().getPlayers().forEach(p -> {
+                if(p != null && target.tile().inSqRadius(p.tile(),12)) {
+                    p.hit(mob, World.getWorld().random(1, Prayers.usingPrayer(target, Prayers.PROTECT_FROM_MELEE) ? 13 : 25));
+                }
+            });
+
+            mob.face(target.tile()); // Go back to facing the target.
+        }
     }
 
     private void rangeAttack(Mob mob, Mob target) {
-        mob.animate(8221);
-        var delay = mob.getProjectileHitDelay(target);
-        new Projectile(mob, target, 73, 25, mob.projectileSpeed(target), 100, 21, 0).sendProjectile();
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+        if(mob.tile().memberCave()) {
+            mob.animate(8221);
+            var delay = mob.getProjectileHitDelay(target);
+            new Projectile(mob, target, 73, 25, mob.projectileSpeed(target), 100, 21, 0).sendProjectile();
+            target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+        } else {
+            //World boss
+            mob.animate(8221);
+            mob.resetFaceTile(); // Stop facing the target
+            World.getWorld().getPlayers().forEach(p -> {
+                if(p != null && target.tile().inSqRadius(p.tile(),12)) {
+                    var delay = mob.getProjectileHitDelay(p);
+                    new Projectile(mob, p, 73, 25, mob.projectileSpeed(p), 100, 21, 0).sendProjectile();
+                    p.hit(mob, CombatFactory.calcDamageFromType(mob, p, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().submit();
+                }
+            });
+
+            mob.face(target.tile()); // Go back to facing the target.
+        }
     }
 
     private void groundAttack(Mob mob, Mob target) {

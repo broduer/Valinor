@@ -124,6 +124,11 @@ public class ChamberOfSecrets extends Raids {
             p.message(Color.RAID_PURPLE.wrap("Congratulations - your raid is complete!"));
             var completed = p.<Integer>getAttribOr(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, 0) + 1;
             p.putAttrib(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, completed);
+
+            var bossPoints = p.<Integer>getAttribOr(AttributeKey.BOSS_POINTS, 0) + 100;
+            p.putAttrib(AttributeKey.BOSS_POINTS, bossPoints);
+            p.message(Color.RAID_PURPLE.wrap("You were awarded 100 boss points for completing the raid."));
+
             p.message(String.format("Total points: " + Color.RAID_PURPLE.wrap("%,d") + ", Personal points: " + Color.RAID_PURPLE.wrap("%,d") + " (" + Color.RAID_PURPLE.wrap("%.2f") + "%%)",
                 party.totalPoints(), p.<Integer>getAttribOr(PERSONAL_POINTS, 0), (double) (p.<Integer>getAttribOr(PERSONAL_POINTS, 0) / party.totalPoints()) * 100));
 

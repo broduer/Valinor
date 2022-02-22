@@ -57,6 +57,7 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
+import static com.valinor.util.CustomNpcIdentifiers.BLOOD_FURY_HESPORI;
 import static com.valinor.util.NpcIdentifiers.VETION;
 import static com.valinor.util.NpcIdentifiers.VETION_REBORN;
 
@@ -1124,8 +1125,8 @@ public abstract class Mob extends Entity {
 
     public void autoRetaliate(Mob attacker) {
         boolean sameAttacker = attacker == this;
-        //if (isNpc() && getAsNpc().id() == SKOTIZO)
-        //    System.out.println("retal skot");
+        //if (isNpc() && getAsNpc().id() == BLOOD_FURY_HESPORI)
+            //System.out.println("retal "+noRetaliation);
         if (dead() || hp() < 1 || (isPlayer() && !getCombat().autoRetaliate()) || noRetaliation || locked() || stunned() || sameAttacker) {
             Debugs.CMB.debug(attacker, "auto ret: dead: "+dead()+" hp: "+hp()+" autoret: "+getCombat().autoRetaliate()+" noRetaliation: "+noRetaliation+" locked: "+locked()+" stunned: "+stunned()+" sameAttacker: "+sameAttacker, this, true);
             //System.out.println("dead: "+dead()+" hp: "+hp()+" autoret: "+getCombat().autoRetaliate()+" noRetaliation: "+noRetaliation+" locked: "+locked()+" stunned: "+stunned()+" sameAttacker: "+sameAttacker);
@@ -1136,6 +1137,7 @@ public abstract class Mob extends Entity {
         setEntityInteraction(attacker);
 
         runFn(2, () -> {
+            System.out.println("set targ");
             // Override logic
             getCombat().setTarget(attacker);
             // this mob needs to hit the attacker, not vice versa

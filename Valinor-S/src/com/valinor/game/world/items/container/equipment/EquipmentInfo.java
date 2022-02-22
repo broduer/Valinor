@@ -711,6 +711,7 @@ public class EquipmentInfo {
             case TOXIC_STAFF_OF_THE_DEAD:
             case TOXIC_STAFF_OF_THE_DEAD_C:
             case TRIDENT_OF_THE_SEAS:
+            case INFERNAL_TRIDENT:
             case TRIDENT_OF_THE_SEAS_FULL:
             case TRIDENT_OF_THE_SEAS_E:
             case UNCHARGED_TOXIC_TRIDENT:

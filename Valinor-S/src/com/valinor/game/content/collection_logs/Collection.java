@@ -241,7 +241,7 @@ public enum Collection {
         new Item(CustomItemIdentifiers.NAGINI), new Item(FENRIR_GREYBACK_JR), new Item(FLUFFY_JR), new Item(CENTAUR_MALE), new Item(CENTAUR_FEMALE), new Item(DEMENTOR_PET),
         new Item(TOM_RIDDLE_DIARY), new Item(MARVOLO_GAUNTS_RING), new Item(CLOAK_OF_INVISIBILITY), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(SALAZAR_SLYTHERINS_LOCKET)),
 
-    CHAMBER_OF_XERIC(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chambers of Xeric", new int[]{COX_RAIDS_KEY}, AttributeKey.CHAMBER_OF_XERIC_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX,5), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.RAIDS_MYSTERY_BOX,5)},
+    CHAMBER_OF_XERIC(AttributeKey.CHAMBER_OF_XERIC_RUNS_COMPLETED, LogType.BOSSES, "Chambers of Xeric", new int[]{COX_RAIDS_KEY}, AttributeKey.CHAMBER_OF_XERIC_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX,5), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.RAIDS_MYSTERY_BOX,5)},
         //Drops
         new Item(OLMLET), new Item(METAMORPHIC_DUST), new Item(TWISTED_BOW), new Item(ELDER_MAUL), new Item(KODAI_INSIGNIA), new Item(DRAGON_CLAWS), new Item(ANCESTRAL_HAT), new Item(ANCESTRAL_ROBE_TOP), new Item(ANCESTRAL_ROBE_BOTTOM), new Item(DINHS_BULWARK), new Item(DEXTEROUS_PRAYER_SCROLL), new Item(ARCANE_PRAYER_SCROLL), new Item(DRAGON_HUNTER_CROSSBOW), new Item(TWISTED_BUCKLER), new Item(TORN_PRAYER_SCROLL), new Item(DARK_RELIC), new Item(ONYX), new Item(TWISTED_ANCESTRAL_COLOUR_KIT)),
 

@@ -15,7 +15,7 @@ public class CustomBosses {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
-        if(id == BLOOD_FURY_HESPORI) {
+        if(id == BLOOD_FURY_HESPORI || id == BLOOD_FURY_HESPORI_15021) {
             definition.name = "Bloodfury hespori";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 833;
@@ -27,7 +27,7 @@ public class CustomBosses {
             definition.walkingAnimation = 8222;
         }
 
-        if(id == INFERNAL_SPIDER) {
+        if(id == INFERNAL_SPIDER || id == INFERNAL_SPIDER_15031) {
             definition.name = "Infernal spider";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.combatLevel = 655;

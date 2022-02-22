@@ -266,6 +266,8 @@ public class WorldBossEvent {
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
         CORRUPTED_HUNLLEF(NpcIdentifiers.CORRUPTED_HUNLLEF, "Corrupted hunllef"),
+        INFERNAL_SPIDER(INFERNAL_SPIDER_15031, "Infernal spider"),
+        BLOOD_FURY_HESPORI(BLOOD_FURY_HESPORI_15021, "Blood fury hespori"),
         NOTHING(-1, "Nothing"); // Filler
 
         public final int npc;

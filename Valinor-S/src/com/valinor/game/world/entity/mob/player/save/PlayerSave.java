@@ -378,6 +378,12 @@ public class PlayerSave {
                 player.putAttrib(GENERAL_GRAARDOR_KILLED, details.graardorsKilled);
                 player.putAttrib(KRIL_TSUTSAROTHS_KILLED, details.krilTsutsarothsKilled);
                 player.putAttrib(NEX_KC, details.nexKilled);
+                player.putAttrib(THEATRE_OF_BLOOD_RUNS_COMPLETED, details.theatreOfBloodRuns);
+                player.putAttrib(CHAMBER_OF_XERIC_RUNS_COMPLETED, details.chamberOfXericRuns);
+                player.putAttrib(CRYSTALLINE_HUNLEFF_KC, details.crystallineHunleffKilled);
+                player.putAttrib(FRAGMENT_OF_SEREN_KC, details.fragmentOfSerenKilled);
+                player.putAttrib(BLOOD_FURY_HESPORI_KC, details.bloodFuryHesporiKilled);
+                player.putAttrib(INFERNAL_SPIDER_KC, details.infernalSpiderKilled);
                 player.putAttrib(KC_REX, details.rexKilled);
                 player.putAttrib(KC_PRIME, details.primeKilled);
                 player.putAttrib(KC_SUPREME, details.supremeKilled);
@@ -856,6 +862,12 @@ public class PlayerSave {
         private final int krilTsutsarothsKilled;
         private final int nightmaresKilled;
         private final int nexKilled;
+        private final int theatreOfBloodRuns;
+        private final int chamberOfXericRuns;
+        private final int crystallineHunleffKilled;
+        private final int fragmentOfSerenKilled;
+        private final int bloodFuryHesporiKilled;
+        private final int infernalSpiderKilled;
         private final int rexKilled;
         private final int primeKilled;
         private final int supremeKilled;
@@ -1345,6 +1357,12 @@ public class PlayerSave {
             graardorsKilled = Player.getAttribIntOr(player, GENERAL_GRAARDOR_KILLED, 0);
             krilTsutsarothsKilled = Player.getAttribIntOr(player, KRIL_TSUTSAROTHS_KILLED, 0);
             nexKilled = Player.getAttribIntOr(player, NEX_KC, 0);
+            theatreOfBloodRuns = Player.getAttribIntOr(player, THEATRE_OF_BLOOD_RUNS_COMPLETED, 0);
+            chamberOfXericRuns = Player.getAttribIntOr(player, CHAMBER_OF_XERIC_RUNS_COMPLETED, 0);
+            crystallineHunleffKilled = Player.getAttribIntOr(player, CRYSTALLINE_HUNLEFF_KC, 0);
+            fragmentOfSerenKilled = Player.getAttribIntOr(player, FRAGMENT_OF_SEREN_KC, 0);
+            bloodFuryHesporiKilled = Player.getAttribIntOr(player, BLOOD_FURY_HESPORI_KC, 0);
+            infernalSpiderKilled = Player.getAttribIntOr(player, INFERNAL_SPIDER_KC, 0);
             rexKilled = Player.getAttribIntOr(player, KC_REX, 0);
             primeKilled = Player.getAttribIntOr(player, KC_PRIME, 0);
             supremeKilled = Player.getAttribIntOr(player, KC_SUPREME, 0);

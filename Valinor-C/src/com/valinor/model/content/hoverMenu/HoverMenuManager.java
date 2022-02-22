@@ -160,6 +160,7 @@ public class HoverMenuManager {
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
         menus.put(LIL_ZIK, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
+        menus.put(INFERNAL_TRIDENT, new HoverMenu("@red@+1@whi@ to max hit, opposed to Sanguinesti staff."));
 
         menus.put(GOLD_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable PvP items in the game!",
             Arrays.asList(
