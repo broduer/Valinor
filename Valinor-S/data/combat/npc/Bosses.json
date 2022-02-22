@@ -1578,13 +1578,13 @@
       "strength": 490,
       "magic": 150,
       "ranged": 235,
-      "defence": 490,
+      "defence": 190,
       "hitpoints": 500
     },
     "bonuses": {
-      "stabdefence": 260,
-      "slashdefence": 260,
-      "crushdefence": 260,
+      "stabdefence": 160,
+      "slashdefence": 160,
+      "crushdefence": 160,
       "rangeddefence": 100,
       "magicdefence": 850
     },
@@ -1654,13 +1654,13 @@
       "strength": 490,
       "magic": 150,
       "ranged": 235,
-      "defence": 490,
+      "defence": 190,
       "hitpoints": 7500
     },
     "bonuses": {
-      "stabdefence": 260,
-      "slashdefence": 260,
-      "crushdefence": 260,
+      "stabdefence": 160,
+      "slashdefence": 160,
+      "crushdefence": 160,
       "rangeddefence": 100,
       "magicdefence": 850
     },
