@@ -5,7 +5,7 @@
     "noiron": false,
     "currency": "COINS",
     "restock": false,
-    "sellType": "NONE",
+    "sellType": "ANY",
     "scroll": 450,
     "items": [
       {
