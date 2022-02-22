@@ -113,7 +113,7 @@ public class CommandManager {
         commands.put("graves", new GravesTeleportCommand());
         commands.put("wests", new WestsTeleportCommand());
         commands.put("easts", new EastsTeleportCommand());
-        commands.put("resettask", new RessetSlayerTask());
+        //commands.put("resettask", new RessetSlayerTask());
 
         /*
          * Member commands

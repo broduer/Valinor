@@ -9,8 +9,6 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 
 public class DzoneCommand implements Command {
 
-    private static final boolean NEW_DZONE = true;
-
     @Override
     public void execute(Player player, String command, String[] parts) {
         boolean member = player.getMemberRights().isSapphireMemberOrGreater(player);
@@ -23,7 +21,7 @@ public class DzoneCommand implements Command {
             player.message("You can't use this command in the wilderness.");
             return;
         }
-        Tile tile = NEW_DZONE ? new Tile(3029, 2966) : new Tile(2457, 2858);
+        Tile tile = new Tile(3029, 2966);
         if (Teleports.canTeleport(player,true, TeleportType.GENERIC)) {
             Teleports.basicTeleport(player, tile);
         }

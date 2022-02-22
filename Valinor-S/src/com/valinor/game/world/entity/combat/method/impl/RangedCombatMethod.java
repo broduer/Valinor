@@ -47,6 +47,9 @@ public class RangedCombatMethod extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob attacker, Mob target) {
         var swiftEffect = attacker.<Boolean>getAttribOr(AttributeKey.SWIFT_ABILITY,false) && Utils.percentageChance(5);
+        if(swiftEffect && attacker.isPlayer()) {
+            attacker.getAsPlayer().message("You fired an extra shot.");
+        }
         //Get data
 
         //TODO sound here
