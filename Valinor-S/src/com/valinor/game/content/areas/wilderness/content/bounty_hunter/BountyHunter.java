@@ -222,21 +222,24 @@ public class BountyHunter {
         //Should the player be rewarded for this kill?
         boolean rewardPlayer = true;
 
-        if (killer.getRecentKills().contains(killed.getHostAddress())) {
+        /*if (killer.getRecentKills().contains(killed.getHostAddress())) {
             rewardPlayer = false;
             //System.out.println("Let's not reward the player, already killed before.");
+        } else */
+        if (killer.<String>getAttribOr(AttributeKey.MAC_ADDRESS, "invalid").equals(killed.<String>getAttribOr(AttributeKey.MAC_ADDRESS, "invalid"))) {
+            rewardPlayer = false;
         } else if (killer.getHostAddress().equals(killed.getHostAddress())) {
             rewardPlayer = false;
             //System.out.println("Let's not reward the player, same IP.");
         } else if (!WildernessArea.inWilderness(killer.tile())) {
             rewardPlayer = false;
             //System.out.println("Let's not reward the player, not in wild.");
-        } else {
+        }/* else {
             //System.out.println("Let's reward the player");
             //Clear out the old kills so the player can kill other players, since it is recent kills, not lifetime kills.
             killer.getRecentKills().clear();
             killer.getRecentKills().add(killed.getHostAddress());
-        }
+        }*/
 
         if (killer.getPlayerRights().isDeveloperOrGreater(killer)) {
             rewardPlayer = true;
