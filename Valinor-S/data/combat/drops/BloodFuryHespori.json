@@ -1,5 +1,5 @@
 {
-  "npcs": [ 15021, 15024 ],
+  "npcs": [ 15022, 15024 ],
   "guaranteed": [
     { "id": 995, "amount": 100000 }, //Coins
     {"id": 989, "amount": 1 } //Crystal key
