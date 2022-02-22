@@ -94,9 +94,7 @@ public class NpcDeath {
 
             npc.getMovementQueue().clear();
             npc.lockNoDamage();
-
-            // Reset interacting entity..
-            npc.setEntityInteraction(null);
+            npc.getCombat().reset();
 
             Optional<Player> killer_id = npc.getCombat().getKiller();
 

@@ -130,7 +130,7 @@ public abstract class Mob extends Entity {
         } else if (this.tile().isWithinDistance(this, target, 5)) {
             gfxDelay = 100;
         } else if (this.tile().isWithinDistance(this, target, 8)) {
-            gfxDelay = 120;
+            gfxDelay = 110;
         } else {
             gfxDelay = 140;
         }

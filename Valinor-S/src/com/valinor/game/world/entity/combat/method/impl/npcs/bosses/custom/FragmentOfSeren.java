@@ -69,13 +69,13 @@ public class FragmentOfSeren extends CommonCombatMethod {
         ArrayList<Tile> spots = new ArrayList<>(crystalSpots);
 
         int[] ticker = new int[1];
-        Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1698, central, 0, 0)).repeatingTask(1, tick -> {
+        Chain.bound(null).runFn(2, () -> World.getWorld().tileGraphic(1718, central, 0, 0)).repeatingTask(1, tick -> {
             if (ticker[0] == 10) {
                 tick.stop();
                 return;
             }
             for (Tile spot : spots) {
-                World.getWorld().tileGraphic(1698, base.transform(spot.x, spot.y), 0, 0);
+                World.getWorld().tileGraphic(1718, base.transform(spot.x, spot.y), 0, 0);
             }
             ArrayList<Tile> newSpots = new ArrayList<>();
             for (Tile spot : new ArrayList<>(spots)) {
