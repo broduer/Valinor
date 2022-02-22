@@ -306,7 +306,7 @@ public final class GroundItemHandler {
 
             // Ironman checks (if it's not a respawning item)
             var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
-            if (playerIsIron) {
+            if (playerIsIron && groundItem.getItem().getId() != WILDERNESS_KEY) {
                 if (different_owner && !groundItemPked) { // Owner different? It could be pked!
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");
                     return;
