@@ -129,7 +129,7 @@ public class BossKillLog {
         NEX("Nex", 25, AttributeKey.NEX_KC,0, STARTING_NAME_LINE + (6 * 60), NpcIdentifiers.NEX, NpcIdentifiers.NEX_11279, NpcIdentifiers.NEX_11280, NpcIdentifiers.NEX_11281, NpcIdentifiers.NEX_11282),
         CRYSTALLINE_HUNLEFF("Crystalline Hunleff", 15, AttributeKey.CRYSTALLINE_HUNLEFF_KC,0, STARTING_NAME_LINE + (6 * 61), NpcIdentifiers.CRYSTALLINE_HUNLLEF, NpcIdentifiers.CRYSTALLINE_HUNLLEF_9022, NpcIdentifiers.CRYSTALLINE_HUNLLEF_9023),
         FRAGMENT_OF_SEREN("Fragment of Seren", 10, AttributeKey.FRAGMENT_OF_SEREN_KC,0, STARTING_NAME_LINE + (6 * 62), NpcIdentifiers.FRAGMENT_OF_SEREN),
-        BLOOD_FURY_HESPORI("Blood fury hespori", 10, AttributeKey.BLOOD_FURY_HESPORI_KC,0, STARTING_NAME_LINE + (6 * 63), CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15021),
+        BLOOD_FURY_HESPORI("Blood fury hespori", 10, AttributeKey.BLOOD_FURY_HESPORI_KC,0, STARTING_NAME_LINE + (6 * 63), CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15022),
         INFERNAL_SPIDER("Infernal spider", 10, AttributeKey.INFERNAL_SPIDER_KC,0, STARTING_NAME_LINE + (6 * 64), CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031),
         CHAMBERS_OF_XERIC("Chambers of Xerics",50, AttributeKey.CHAMBER_OF_XERIC_RUNS_COMPLETED, 0, STARTING_NAME_LINE + (6 * 65)),
         THEATRE_OF_BLOOD("Theatre of blood runs",50, AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, 0, STARTING_NAME_LINE + (6 * 66)),

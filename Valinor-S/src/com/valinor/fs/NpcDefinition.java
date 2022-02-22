@@ -256,7 +256,7 @@ public class NpcDefinition implements Definition {
             name = "Artio";
             combatlevel = 470;
             size = 5;
-        } else if (id == BLOOD_FURY_HESPORI || id == BLOOD_FURY_HESPORI_15021) {
+        } else if (id == BLOOD_FURY_HESPORI || id == BLOOD_FURY_HESPORI_15022) {
             name = "Bloodfury hespori";
             combatlevel = 833;
             size = 3;

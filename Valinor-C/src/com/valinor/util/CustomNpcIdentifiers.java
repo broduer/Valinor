@@ -11,7 +11,7 @@ public class CustomNpcIdentifiers {
     public final static int FRAGMENT_OF_SEREN_PET = 15062;
     public final static int BLOOD_FURY_HESPORI = 15024;
     public final static int INFERNAL_SPIDER = 15033;
-    public final static int BLOOD_FURY_HESPORI_15021 = 15021;
+    public final static int BLOOD_FURY_HESPORI_15022 = 15022;
     public final static int INFERNAL_SPIDER_15031 = 15031;
     public final static int MALE_CENTAUR = 15030;
     public final static int FEMALE_CENTAUR = 15032;

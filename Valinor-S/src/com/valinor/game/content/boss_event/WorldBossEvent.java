@@ -73,7 +73,7 @@ public class WorldBossEvent {
      * The interval at which server-wide world boss events occur.
      * Whilst in production mode every hour otherwise every 30 seconds.
      */
-    public static final int BOSS_EVENT_INTERVAL = 6000;
+    public static final int BOSS_EVENT_INTERVAL = 500;
 
     /**
      * The active event being run.
@@ -83,7 +83,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF, WorldBosses.BLOOD_FURY_HESPORI, WorldBosses.INFERNAL_SPIDER};
+    private static final WorldBosses[] EVENT_ROTATION = {/*WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF, */WorldBosses.BLOOD_FURY_HESPORI, WorldBosses.INFERNAL_SPIDER};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
@@ -120,7 +120,7 @@ public class WorldBossEvent {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(WINTER_TOKENS, World.getWorld().random(2000,3500)), npc.tile(), player));
                 }
 
-                if(npc.id() == BLOOD_FURY_HESPORI_15021 || npc.id() == INFERNAL_SPIDER_15031) {
+                if(npc.id() == BLOOD_FURY_HESPORI_15022 || npc.id() == INFERNAL_SPIDER_15031) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(CRYSTAL_KEY, 1), npc.tile(), player));
                 }
 
@@ -194,10 +194,10 @@ public class WorldBossEvent {
         // First despawn the npc if existing
         terminateActiveEvent(true);
 
-        if(GameServer.properties().halloween || GameServer.properties().winter) {
+        if(GameServer.properties().winter) {
             if (nextIsPeriodicEventBoss) {
                 nextIsPeriodicEventBoss = false;
-                activeEvent = GameServer.properties().winter ? WorldBosses.SNOWFLAKE : WorldBosses.GRIM;
+                activeEvent = WorldBosses.SNOWFLAKE;
             } else {
                 if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
                     lastEvent = 0;
@@ -265,13 +265,12 @@ public class WorldBossEvent {
      */
     public enum WorldBosses {
 
-        GRIM(CustomNpcIdentifiers.GRIM, "Grim"),
         SNOWFLAKE(SNOWFLAKE_BOSS, "Snowflake"),
         BRUTAL_LAVA_DRAGON(CustomNpcIdentifiers.BRUTAL_LAVA_DRAGON_FLYING, "Brutal lava dragon"),
         ZOMBIES_CHAMPION(NpcIdentifiers.ZOMBIES_CHAMPION, "Zombies champion"),
         CORRUPTED_HUNLLEF(NpcIdentifiers.CORRUPTED_HUNLLEF, "Corrupted hunllef"),
         INFERNAL_SPIDER(INFERNAL_SPIDER_15031, "Infernal spider"),
-        BLOOD_FURY_HESPORI(BLOOD_FURY_HESPORI_15021, "Blood fury hespori"),
+        BLOOD_FURY_HESPORI(BLOOD_FURY_HESPORI_15022, "Blood fury hespori"),
         NOTHING(-1, "Nothing"); // Filler
 
         public final int npc;

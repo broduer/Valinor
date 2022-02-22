@@ -160,7 +160,7 @@ public class HoverMenuManager {
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
         menus.put(LIL_ZIK, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
-        menus.put(INFERNAL_TRIDENT, new HoverMenu("@red@+1@whi@ to max hit, opposed to Sanguinesti staff."));
+        menus.put(INFERNAL_TRIDENT, new HoverMenu("@red@+2@whi@ to max hit, opposed to Sanguinesti staff."));
         menus.put(RANGING_SCROLL, new HoverMenu("Read this scroll to learn the ability of swift. 5% chance to activate."));
         menus.put(MELEE_SCROLL, new HoverMenu("Read this scroll to learn the ability of goliath. 5% chance to activate."));
 

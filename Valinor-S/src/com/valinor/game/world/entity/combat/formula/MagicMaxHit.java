@@ -22,15 +22,13 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class MagicMaxHit {
 
-    private static int getTridentMaxDamage(Player player, boolean swamp, boolean sang, boolean infernal) {
+    private static int getTridentMaxDamage(Player player, boolean swamp, boolean sang) {
         EquipmentInfo.Bonuses b = EquipmentInfo.totalBonuses(player, World.getWorld().equipmentInfo());
         int base = 20;
         if (swamp)
             base += 3;
         if(sang)
             base += 4;
-        if(infernal)
-            base += 5;
         return (int) Math.round((Math.max(base, base + (Math.max(0, player.skills().level(Skills.MAGIC) - 75)) / 3)) * (1 + (b.magestr / 100.0)));
     }
 
@@ -54,22 +52,17 @@ public class MagicMaxHit {
 
             //• Trident of the seas
             if (spell_name.equals("Trident of the seas")) {
-                spell_maxhit = getTridentMaxDamage(player,false,false,false);
+                spell_maxhit = getTridentMaxDamage(player,false,false);
             }
 
             //• Trident of the swamp
             if (spell_name.equals("Trident of the swamp")) {
-                spell_maxhit = getTridentMaxDamage(player,true,false,false);
+                spell_maxhit = getTridentMaxDamage(player,true,false);
             }
 
             //• Sanguinesti staff
-            if (spell_name.equals("Sanguinesti spell")) {
-                spell_maxhit = getTridentMaxDamage(player,false,true,false);
-            }
-
-            //• Infernal trident
-            if (spell_name.equals("Infernal trident")) {
-                spell_maxhit = getTridentMaxDamage(player,false,false,true);
+            if (spell_name.equals("Sanguinesti spell") || spell_name.equals("Infernal trident")) {
+                spell_maxhit = getTridentMaxDamage(player,false,true);
             }
 
             //System.out.println("spell_maxhit "+spell_maxhit);
@@ -85,7 +78,7 @@ public class MagicMaxHit {
                 spell_maxhit *= 1.50;
             }
 
-            boolean tridentStaff = spell_name.equals("Trident of the seas") || spell_name.equals("Trident of the swamp") || spell_name.equals("Sanguinesti spell");
+            boolean tridentStaff = spell_name.equals("Trident of the seas") || spell_name.equals("Trident of the swamp") || spell_name.equals("Sanguinesti spell") || spell_name.equals("Infernal trident");
             double multiplier = 1 + ((b.magestr > 0 ? b.magestr : 1.0) / 100);
 
             if(tridentStaff) { // Tridents have mage str build in the calculation
@@ -263,8 +256,12 @@ public class MagicMaxHit {
             if (spell_name.equals("Sanguinesti spell")) {
                 boolean holy_staff = weapon == HOLY_SANGUINESTI_STAFF;
                 if (holy_staff) {
-                    maxHit += 10;
+                    maxHit += 1;
                 }
+            }
+
+            if(spell_name.equals("Infernal trident")) {
+                maxHit += 2;
             }
             return maxHit;
         }

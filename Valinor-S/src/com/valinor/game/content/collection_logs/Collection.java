@@ -277,7 +277,7 @@ public enum Collection {
         new Item(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(MELEE_SCROLL)
     ),
 
-    BLOOD_FURY_HESPORI(AttributeKey.BLOOD_FURY_HESPORI_KC, LogType.BOSSES, "Blood fury hespori", new int[]{CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15021}, AttributeKey.BLOOD_FURY_HESPORI_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+    BLOOD_FURY_HESPORI(AttributeKey.BLOOD_FURY_HESPORI_KC, LogType.BOSSES, "Blood fury hespori", new int[]{CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15022}, AttributeKey.BLOOD_FURY_HESPORI_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
         new Item(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(RANGING_SCROLL)
     ),
