@@ -371,11 +371,16 @@ public final class GroundItemHandler {
                                         if (gItem.isEmpty()) {
                                             return;
                                         }
-                                        sendRemoveGroundItem(groundItem);
+                                        final GroundItem groundItem1 = gItem.get();
+                                        if (groundItem1.isRemoved()) {
+                                            return;
+                                        }
+                                        final Item item2 = groundItem1.getItem();
+                                        sendRemoveGroundItem(groundItem1);
                                         WildernessKeyPlugin.announceKeyPickup(player, tile);
                                         Skulling.assignSkullState(player, SkullType.RED_SKULL);
-                                        player.inventory().add(item);
-                                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " picked up item " + item.getAmount() + "x " + item.unnote().name() + " (id " + item.getId() + ")", "player_pickup");
+                                        player.inventory().add(item2);
+                                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " picked up item " + item2.getAmount() + "x " + item2.unnote().name() + " (id " + item2.getId() + ")", "player_pickup");
                                         player.inventory().refresh();
                                     });
                                 }
