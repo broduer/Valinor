@@ -47,8 +47,11 @@ public class CrystalKey extends Interaction {
                     GameObject old = new GameObject(172, object.tile(), object.getType(), object.getRotation());
                     GameObject spawned = new GameObject(173, object.tile(), object.getType(), object.getRotation());
                     ObjectManager.replace(old, spawned, 2);
-                    int roll = Utils.percentageChance(player.extraItemRollChance()) ? 2 : 1;
-                    for (int i = 0; i < roll; i++) {
+                    int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
+                    if(Utils.percentageChance(player.extraItemRollChance())) {
+                        rolls += 1;
+                    }
+                    for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
                 });
@@ -72,8 +75,11 @@ public class CrystalKey extends Interaction {
                     GameObject old = new GameObject(172, object.tile(), object.getType(), object.getRotation());
                     GameObject spawned = new GameObject(173, object.tile(), object.getType(), object.getRotation());
                     ObjectManager.replace(old, spawned, 2);
-                    int roll = Utils.percentageChance(player.extraItemRollChance()) ? 2 : 1;
-                    for (int i = 0; i < roll; i++) {
+                    int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
+                    if(Utils.percentageChance(player.extraItemRollChance())) {
+                        rolls += 1;
+                    }
+                    for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
                 });
@@ -86,13 +92,10 @@ public class CrystalKey extends Interaction {
     }
 
     private void reward(Player player) {
-        int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
-        for (int i = 0; i < rolls; i++) {
-            Item reward = generateReward();
-            player.getInventory().addOrDrop(reward);
-            KEYS.log(player, CRYSTAL_KEY, reward);
-            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the crystal chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "crystal_chest");
-        }
+        Item reward = generateReward();
+        player.getInventory().addOrDrop(reward);
+        KEYS.log(player, CRYSTAL_KEY, reward);
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the crystal chest and received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + ".", "crystal_chest");
 
         player.getInventory().addOrDrop(new Item(UNCUT_DRAGONSTONE));
 
@@ -106,9 +109,9 @@ public class CrystalKey extends Interaction {
     }
 
     private Item generateReward() {
-        if(World.getWorld().rollDie(50,1)) {
+        if (World.getWorld().rollDie(50, 1)) {
             return Utils.randomElement(RARE);
-        } else if(World.getWorld().rollDie(5,1)) {
+        } else if (World.getWorld().rollDie(5, 1)) {
             return Utils.randomElement(UNCOMMON);
         } else {
             return Utils.randomElement(COMMON);
@@ -116,36 +119,36 @@ public class CrystalKey extends Interaction {
     }
 
     private final List<Item> COMMON = Arrays.asList(
-        new Item(UNCUT_DIAMOND+1, 25),
+        new Item(UNCUT_DIAMOND + 1, 25),
         new Item(DRAGON_ARROWTIPS, 50 + World.getWorld().random(150)),
-        new Item(RAW_SEA_TURTLE+1, 50),
-        new Item(SHARK+1, 50),
+        new Item(RAW_SEA_TURTLE + 1, 50),
+        new Item(SHARK + 1, 50),
         new Item(COINS_995, 2_500_000),
-        new Item(RAW_DARK_CRAB, 30),
-        new Item(GRIMY_RANARR_WEED+1, 25),
+        new Item(RAW_DARK_CRAB + 1, 30),
+        new Item(GRIMY_RANARR_WEED + 1, 25),
         new Item(RANARR_SEED, 25),
-        new Item(GRIMY_SNAPDRAGON+1, 25),
-        new Item(GRIMY_TOADFLAX+1, 25),
+        new Item(GRIMY_SNAPDRAGON + 1, 25),
+        new Item(GRIMY_TOADFLAX + 1, 25),
         new Item(SNAPDRAGON_SEED, 25));
 
     private final List<Item> UNCOMMON = Arrays.asList(
         new Item(COINS_995, 5_000_000),
         new Item(DRAGON_LONGSWORD, 1),
-        new Item(MAGIC_LOGS+1, 100),
+        new Item(MAGIC_LOGS + 1, 100),
         new Item(DRAGON_BATTLEAXE, 1),
         new Item(SHIELD_LEFT_HALF, 1),
         new Item(SHIELD_RIGHT_HALF, 1),
-        new Item(COOKED_KARAMBWAN+1, 15),
+        new Item(COOKED_KARAMBWAN + 1, 15),
         new Item(DRAGON_SCIMITAR, 1),
         new Item(DRAGON_BOOTS, 1),
-        new Item(RUNITE_BAR+1, 25),
-        new Item(DRAGON_BONES+1, 35),
-        new Item(RUNITE_ORE+2, 25),
+        new Item(RUNITE_BAR + 1, 25),
+        new Item(DRAGON_BONES + 1, 35),
+        new Item(RUNITE_ORE + 2, 25),
         new Item(DRAGONSTONE_BOLTS_E, 100),
         new Item(RUBY_BOLTS_E, 75),
-        new Item(SUPERIOR_DRAGON_BONES+1, 5 + World.getWorld().random(10)),
-        new Item(DAGANNOTH_BONES+1, 20 + World.getWorld().random(20)),
-        new Item(SUPER_COMBAT_POTION4+1, 10));
+        new Item(SUPERIOR_DRAGON_BONES + 1, 5 + World.getWorld().random(10)),
+        new Item(DAGANNOTH_BONES + 1, 20 + World.getWorld().random(20)),
+        new Item(SUPER_COMBAT_POTION4 + 1, 10));
 
     private final List<Item> RARE = Arrays.asList(
         new Item(NEW_CRYSTAL_BOW, 1),

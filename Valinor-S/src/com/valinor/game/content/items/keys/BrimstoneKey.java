@@ -34,8 +34,11 @@ public class BrimstoneKey extends Interaction {
                 player.sound(51);
                 player.animate(536);
                 Chain.bound(null).runFn(1, () -> {
-                    int roll = Utils.percentageChance(player.extraItemRollChance()) ? 2 : 1;
-                    for (int i = 0; i < roll; i++) {
+                    int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
+                    if (Utils.percentageChance(player.extraItemRollChance())) {
+                        rolls += 1;
+                    }
+                    for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
                 });
@@ -56,8 +59,11 @@ public class BrimstoneKey extends Interaction {
                 player.sound(51);
                 player.animate(536);
                 Chain.bound(null).runFn(1, () -> {
-                    int roll = Utils.percentageChance(player.extraItemRollChance()) ? 2 : 1;
-                    for (int i = 0; i < roll; i++) {
+                    int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
+                    if(Utils.percentageChance(player.extraItemRollChance())) {
+                        rolls += 1;
+                    }
+                    for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
                 });
@@ -70,18 +76,15 @@ public class BrimstoneKey extends Interaction {
     }
 
     private void reward(Player player) {
-        int rolls = player.getMemberRights().isDiamondMemberOrGreater(player) ? 2 : 1;
-        for (int i = 0; i < rolls; i++) {
-            Item reward = generateReward();
-            player.getInventory().addOrDrop(reward);
-            Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the brimstone chest and received " + Utils.getAOrAn(reward.unnote().name()) +" "+reward.unnote().name()+".", "brimstone_chest");
-            KEYS.log(player, BRIMSTONE_KEY, reward);
+        Item reward = generateReward();
+        player.getInventory().addOrDrop(reward);
+        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " opened the brimstone chest and received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + ".", "brimstone_chest");
+        KEYS.log(player, BRIMSTONE_KEY, reward);
 
-            if(rareDrop) {
-                String worldMessage = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Brimstone Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + Utils.getAOrAn(reward.unnote().name()) + " <shad=0>" + reward.unnote().name() + "</shad>!";
-                World.getWorld().sendWorldMessage(worldMessage);
-                rareDrop = false;
-            }
+        if (rareDrop) {
+            String worldMessage = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Brimstone Key</col>]</shad>:<col=AD800F> " + player.getUsername() + " received " + Utils.getAOrAn(reward.unnote().name()) + " <shad=0>" + reward.unnote().name() + "</shad>!";
+            World.getWorld().sendWorldMessage(worldMessage);
+            rareDrop = false;
         }
 
         int keysUsed = player.<Integer>getAttribOr(AttributeKey.BRIMSTONE_KEYS_OPENED, 0) + 1;
@@ -96,9 +99,9 @@ public class BrimstoneKey extends Interaction {
     private boolean rareDrop = false;
 
     private Item generateReward() {
-        if(World.getWorld().rollDie(10,1)) {
+        if (World.getWorld().rollDie(10, 1)) {
             return Utils.randomElement(UNCOMMON);
-        } else if(World.getWorld().rollDie(100,1)) {
+        } else if (World.getWorld().rollDie(100, 1)) {
             rareDrop = true;
             return Utils.randomElement(RARE);
         } else {
@@ -110,26 +113,26 @@ public class BrimstoneKey extends Interaction {
         new Item(COINS_995, 2_500_000 + World.getWorld().random(2_500_000)),
         new Item(DRAGON_ARROWTIPS, 150 + World.getWorld().random(350)),
         new Item(DRAGON_DART_TIP, 150 + World.getWorld().random(350)),
-        new Item(UNCUT_DIAMOND+1, 25 + World.getWorld().random(25)),
-        new Item(UNCUT_RUBY+1, 25 + World.getWorld().random(25)),
-        new Item(COAL+1, 300 + World.getWorld().random(200)),
-        new Item(IRON_ORE+1, 350 + World.getWorld().random(200)),
+        new Item(UNCUT_DIAMOND + 1, 25 + World.getWorld().random(25)),
+        new Item(UNCUT_RUBY + 1, 25 + World.getWorld().random(25)),
+        new Item(COAL + 1, 300 + World.getWorld().random(200)),
+        new Item(IRON_ORE + 1, 350 + World.getWorld().random(200)),
         new Item(RUNE_FULL_HELM, 1),
         new Item(RUNE_PLATEBODY, 1),
         new Item(RUNE_PLATELEGS, 1),
-        new Item(RAW_MONKFISH+1, 100 + World.getWorld().random(300)),
-        new Item(RAW_SHARK+1, 100 + World.getWorld().random(250)),
-        new Item(RAW_SEA_TURTLE+1, 80 + World.getWorld().random(200)),
-        new Item(RAW_MANTA_RAY+1, 80 + World.getWorld().random(160)),
-        new Item(RUNITE_ORE+1, 25),
-        new Item(STEEL_BAR+1, 300 + World.getWorld().random(200)),
-        new Item(RAW_DARK_CRAB+1, 80 + World.getWorld().random(160)),
-        new Item(GRIMY_RANARR_WEED+1, 40 + World.getWorld().random(50)),
+        new Item(RAW_MONKFISH + 1, 100 + World.getWorld().random(300)),
+        new Item(RAW_SHARK + 1, 100 + World.getWorld().random(250)),
+        new Item(RAW_SEA_TURTLE + 1, 80 + World.getWorld().random(200)),
+        new Item(RAW_MANTA_RAY + 1, 80 + World.getWorld().random(160)),
+        new Item(RUNITE_ORE + 1, 25),
+        new Item(STEEL_BAR + 1, 300 + World.getWorld().random(200)),
+        new Item(RAW_DARK_CRAB + 1, 80 + World.getWorld().random(160)),
+        new Item(GRIMY_RANARR_WEED + 1, 40 + World.getWorld().random(50)),
         new Item(RANARR_SEED, 30 + World.getWorld().random(25)),
-        new Item(GRIMY_SNAPDRAGON+1, 40 + World.getWorld().random(50)),
-        new Item(GRIMY_TOADFLAX+1, 40 + World.getWorld().random(50)),
+        new Item(GRIMY_SNAPDRAGON + 1, 40 + World.getWorld().random(50)),
+        new Item(GRIMY_TOADFLAX + 1, 40 + World.getWorld().random(50)),
         new Item(SNAPDRAGON_SEED, 30 + World.getWorld().random(25)),
-        new Item(PURE_ESSENCE+1, 3000 + World.getWorld().random(3000)));
+        new Item(PURE_ESSENCE + 1, 3000 + World.getWorld().random(3000)));
 
     private final List<Item> UNCOMMON = Arrays.asList(
         new Item(COINS_995, 5_000_000 + World.getWorld().random(2_500_000)),
@@ -139,7 +142,7 @@ public class BrimstoneKey extends Interaction {
         new Item(MYSTIC_BOOTS_DUSK, 1),
         new Item(MYSTIC_GLOVES_DUSK, 1),
         new Item(DRAGON_BOOTS, 1),
-        new Item(DRAGON_BONES+1, 50),
+        new Item(DRAGON_BONES + 1, 50),
         new Item(OPAL_DRAGON_BOLTS_E, 100),
         new Item(JADE_DRAGON_BOLTS_E, 100),
         new Item(PEARL_DRAGON_BOLTS_E, 100),
@@ -151,9 +154,9 @@ public class BrimstoneKey extends Interaction {
         new Item(DRAGONSTONE_DRAGON_BOLTS_E, 100),
         new Item(ONYX_DRAGON_BOLTS_E, 100),
         new Item(RUBY_BOLTS_E, 75),
-        new Item(SUPERIOR_DRAGON_BONES+1, 25 + World.getWorld().random(40)),
-        new Item(DAGANNOTH_BONES+1, 20 + World.getWorld().random(50)),
-        new Item(SUPER_COMBAT_POTION4+1, 20 + World.getWorld().random(25)));
+        new Item(SUPERIOR_DRAGON_BONES + 1, 25 + World.getWorld().random(40)),
+        new Item(DAGANNOTH_BONES + 1, 20 + World.getWorld().random(50)),
+        new Item(SUPER_COMBAT_POTION4 + 1, 20 + World.getWorld().random(25)));
 
     private final List<Item> RARE = Arrays.asList(
         new Item(DRAGON_HASTA, 1),
