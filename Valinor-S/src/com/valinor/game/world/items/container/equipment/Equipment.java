@@ -28,6 +28,7 @@ import com.valinor.game.world.items.ItemWeight;
 import com.valinor.game.world.items.container.ItemContainer;
 import com.valinor.game.world.items.container.ItemContainerAdapter;
 import com.valinor.game.world.items.container.inventory.Inventory;
+import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.timers.TimerKey;
@@ -390,6 +391,15 @@ public final class Equipment extends ItemContainer {
         if (needsreq[0] || needsMasterCapeReq[0]) {
             player.message("<col=FF0000>You don't have the level requirements to wear: %s.", World.getWorld().definitions().get(ItemDefinition.class, equip.getId()).name);
             return false;
+        }
+
+        //For Collection iron accounts check if we unlocked this item
+        if(player.gameMode().isCollectionIron()) {
+            if(player.getCollectionLog().unlocked(equip.getId()) == 1) {
+                System.out.println("enter2");
+                player.message(Color.RED.wrap("You have not unlocked this item yet."));
+                return false;
+            }
         }
 
         if (equip.getId() == HARDCORE_IRONMAN_HELM || equip.getId() == HARDCORE_IRONMAN_PLATEBODY || equip.getId() == HARDCORE_IRONMAN_PLATELEGS) {

@@ -228,7 +228,7 @@ public class TradingPost {
         }
 
         // Ironman? fuck off lol!!
-        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman() || player.gameMode().isCollectionIron();
         if (playerIsIron) {
             player.message("You are an Iron Man. You stand alone.");
             return;
@@ -700,7 +700,7 @@ public class TradingPost {
 
             boolean illegalItem = false;
 
-            if(offerItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+            if(offerItem.definition(World.getWorld()).pvpSpawnable && player.gameMode().instantPker()) {
                 illegalItem = true;
             }
 

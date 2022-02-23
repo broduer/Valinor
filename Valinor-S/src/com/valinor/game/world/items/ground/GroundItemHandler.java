@@ -1,6 +1,5 @@
 package com.valinor.game.world.items.ground;
 
-import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
@@ -305,7 +304,7 @@ public final class GroundItemHandler {
             //System.out.println("different_owner "+different_owner+" groundItemPked "+groundItemPked);
 
             // Ironman checks (if it's not a respawning item)
-            var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+            var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman() || player.gameMode().isCollectionIron();
             if (playerIsIron && groundItem.getItem().getId() != WILDERNESS_KEY) {
                 if (different_owner && !groundItemPked) { // Owner different? It could be pked!
                     player.message("You're an Iron Man, so you can't take items that other players have dropped.");

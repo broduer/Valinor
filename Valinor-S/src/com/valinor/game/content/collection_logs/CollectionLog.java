@@ -148,9 +148,15 @@ public class CollectionLog {
     public int unlocked(int id) {
         int[] unlocked = new int[] {-1};//default -1
 
+        System.out.println("waaaa "+unlocked[0]);
         player.getCollectionLog().collectionLog.forEach((key, value) -> {
-            if (unlocked[0] == 1) return; // continue@foreach
+            System.out.println("enter "+unlocked[0]);
+            if (unlocked[0] == 1) {
+                System.out.println("hmmmm");
+                return; // continue@foreach
+            }
             Item[] items = key.getObtainables();
+            System.out.println("huh");
             for (Item item : items) {
                 if (id == item.getId()) {
                     if (value.isEmpty()) {

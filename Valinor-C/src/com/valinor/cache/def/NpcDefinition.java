@@ -127,7 +127,7 @@ public final class NpcDefinition {
             MemberNpcs.unpack(id);
         }
 
-        if(id == FRAGMENT_OF_SEREN) {
+        /*if(id == FRAGMENT_OF_SEREN) {
             System.out.println("models: " + Arrays.toString(npcDefinition.modelId).replace("[", "{").replace("]", "}"));
             System.out.println("additionalModels: " + Arrays.toString(npcDefinition.additionalModels).replace("[", "{").replace("]", "}"));
             System.out.println("standingAnimation: " + npcDefinition.standingAnimation);
@@ -135,7 +135,7 @@ public final class NpcDefinition {
             System.out.println("size: " + npcDefinition.size);
             System.out.println("widthScale: " + npcDefinition.widthScale);
             System.out.println("heightScale: " + npcDefinition.heightScale);
-        }
+        }*/
 
         return npcDefinition;
     }

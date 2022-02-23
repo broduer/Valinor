@@ -136,7 +136,7 @@ public final class DefaultShop extends Shop {
             return;
         }
 
-        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman() || player.gameMode().isCollectionIron();
         if (playerIsIron && noiron) {
             player.message("Iron men cannot access this shop.");
             player.getInterfaceManager().closeDialogue();

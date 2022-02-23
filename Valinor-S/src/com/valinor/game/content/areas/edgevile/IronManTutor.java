@@ -21,7 +21,7 @@ public class IronManTutor extends Dialogue {
 
     public static void armour(Player player) {
         switch (player.gameMode()) {
-            case REGULAR -> {
+            case REGULAR, COLLECTION_IRON -> {
                 if (player.ownsAny(IRONMAN_HELM, IRONMAN_PLATEBODY, IRONMAN_PLATELEGS)) {
                     player.message("Come back when you've lost your ironman armour.");
                     return;
@@ -51,7 +51,7 @@ public class IronManTutor extends Dialogue {
             default -> player.message("Only ironman players can claim their armour.");
         }
 
-        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
+        var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman() || player.gameMode().isCollectionIron();
         if (!playerIsIron) {
             DialogueManager.npcChat(player, Expression.HAPPY, NpcIdentifiers.IRON_MAN_TUTOR, "There you go. Wear it with pride.");
         }

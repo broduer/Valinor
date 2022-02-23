@@ -286,7 +286,7 @@ public class GamblingSession {
             return;
         }
 
-        var playerIsIron = requestee.gameMode().isIronman() || requestee.gameMode().isHardcoreIronman() || requestee.gameMode().isUltimateIronman();
+        var playerIsIron = requestee.gameMode().isIronman() || requestee.gameMode().isHardcoreIronman() || requestee.gameMode().isUltimateIronman() || requestee.gameMode().isCollectionIron();
         if (playerIsIron) {
             player.message("That player is an ironman and can not gamble.");
             return;
@@ -450,7 +450,7 @@ public class GamblingSession {
                 illegalItem = true;
             }
 
-            if(gambleItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+            if(gambleItem.definition(World.getWorld()).pvpSpawnable && player.gameMode().instantPker()) {
                 illegalItem = true;
             }
 

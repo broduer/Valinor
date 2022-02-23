@@ -387,7 +387,7 @@ public class ItemsOnDeath {
                 return;
             }
 
-            if(player.gameMode() == GameMode.INSTANT_PKER) {
+            if(player.gameMode().instantPker()) {
                 if(item.definition(World.getWorld()).pvpSpawnable) {
                     return;
                 }

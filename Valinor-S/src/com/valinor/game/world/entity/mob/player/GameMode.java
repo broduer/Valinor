@@ -6,11 +6,12 @@ package com.valinor.game.world.entity.mob.player;
  */
 public enum GameMode {
 
-    INSTANT_PKER("Instant Pker"),
     NONE(""),
     REGULAR("Ironman"),
     ULTIMATE("Ultimate Ironman"),
-    HARDCORE("Hardcore Ironman");
+    HARDCORE("Hardcore Ironman"),
+    INSTANT_PKER("Instant Pker"),
+    COLLECTION_IRON("Collection iron");
 
     public String name;
 
@@ -59,5 +60,14 @@ public enum GameMode {
      */
     public boolean isHardcoreIronman() {
         return name.equals("Hardcore Ironman");
+    }
+
+    /**
+     * Determines if the {@link #name} is equal to {@link GameMode#COLLECTION_IRON}
+     *
+     * @return {@code true} if the player is of this type, otherwise {@code false}
+     */
+    public boolean isCollectionIron() {
+        return name.equals("Collection iron");
     }
 }

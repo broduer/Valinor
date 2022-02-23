@@ -217,7 +217,7 @@ public class Dueling {
             return;
         }
 
-        var playerIsIron = t_.gameMode().isIronman() || t_.gameMode().isHardcoreIronman() || t_.gameMode().isUltimateIronman();
+        var playerIsIron = t_.gameMode().isIronman() || t_.gameMode().isHardcoreIronman() || t_.gameMode().isUltimateIronman() || t_.gameMode().isCollectionIron();
         if (playerIsIron) {
             player.message("Your partner is an Iron man, and cannot stake.");
             return;
@@ -421,7 +421,7 @@ public class Dueling {
                 illegalItem = true;
             }
 
-            if(stakeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+            if(stakeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode().instantPker()) {
                 illegalItem = true;
             }
 

@@ -73,7 +73,7 @@ public class WorldBossEvent {
      * The interval at which server-wide world boss events occur.
      * Whilst in production mode every hour otherwise every 30 seconds.
      */
-    public static final int BOSS_EVENT_INTERVAL = 500;
+    public static final int BOSS_EVENT_INTERVAL = 6000;
 
     /**
      * The active event being run.

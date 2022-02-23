@@ -287,7 +287,7 @@ public class HomeArea extends Interaction {
         }
         if (option == 2) {
             if (npc.id() == IRON_MAN_TUTOR) {
-                var playerIsIron = p.gameMode().isIronman() || p.gameMode().isHardcoreIronman() || p.gameMode().isUltimateIronman();
+                var playerIsIron = p.gameMode().isIronman() || p.gameMode().isHardcoreIronman() || p.gameMode().isUltimateIronman() || p.gameMode().isCollectionIron();
                 if(!playerIsIron) {
                     p.message("Only ironman can use this function.");
                     return true;

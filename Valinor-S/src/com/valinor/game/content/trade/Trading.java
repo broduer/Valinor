@@ -115,6 +115,16 @@ public class Trading {
 
         var sameGroup = IronmanGroupHandler.isTradingPermitted(player, otherPlayer);
 
+        if(player.gameMode().isCollectionIron() && !otherPlayer.gameMode().isCollectionIron()) {
+            player.message("You can't trade this person, you stand alone.");
+            return;
+        }
+
+        if(otherPlayer.gameMode().isCollectionIron() && !player.gameMode().isCollectionIron()) {
+            player.message("You can't trade this person, they stand alone.");
+            return;
+        }
+
         // Ironman? fuck off lol!!
         var playerIsIron = player.gameMode().isIronman() || player.gameMode().isHardcoreIronman() || player.gameMode().isUltimateIronman();
         if (playerIsIron && (otherPlayer == null || !(otherPlayer.getPlayerRights().isDeveloperOrGreater(otherPlayer) || sameGroup))) {
@@ -430,7 +440,7 @@ public class Trading {
             illegalItem = true;
         }
 
-        if(tradeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode() == GameMode.INSTANT_PKER) {
+        if(tradeItem.definition(World.getWorld()).pvpSpawnable && player.gameMode().instantPker()) {
             illegalItem = true;
         }
 
