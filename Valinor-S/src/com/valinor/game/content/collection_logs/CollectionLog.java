@@ -7,10 +7,7 @@ import com.valinor.util.Color;
 import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static com.valinor.game.content.collection_logs.CollectionLogUtility.*;
 
@@ -145,44 +142,30 @@ public class CollectionLog {
         }
     }
 
-    //Skip that one for now this is more important XD
-    //Some reason when player.getCollectionLog().collectionLog is empty this entire logic doesn't work
-
-    public int unlocked(int id) {
-        int[] unlocked = new int[] {-1};//default -1
-
-        //player.getCollectionLog().collectionLog = empty
-
-        //What I'm trying to accomplish:
-        //Check if the item we are wearing is in any of the col logs
-        //if it is in the log, check if we've got it unlocked
-        //If we have we can wear otherwise we cannot wear
-
-        //But the thing is, player.getCollectionLog().collectionLog
-        //Only logs the items we've got unlocked, so we can't loop it?
-
-        //Never reaches loop we made this awhile back but doesnt seem to work
-        player.getCollectionLog().collectionLog.forEach((key, value) -> {
-            System.out.println("enter "+unlocked[0]);
-            if (unlocked[0] == 1) {
-                return; // continue@foreach
-            }
-            Item[] items = key.getObtainables();//brb sure
-            for (Item item : items) {
-                if (id == item.getId()) {
-                    if (value.isEmpty()) {
-                        unlocked[0] = 1; // cant wear
-                        break;
-                    }
-                    int amount = value.stream().filter(i -> i.getId() == item.getId()).findAny().orElse(new Item(0, 0)).getAmount();
-                    if (amount <= 0) {
-                        unlocked[0] = 1; // cant wear
-                        break;
-                    }
+    public boolean unlocked(int id) {
+        id = new Item(id).unnote().getId();
+        boolean isInColLog = false;
+        top: for (Collection value : Collection.values()) {
+            for (Item item : value.getObtainables()) {
+                if (item.unnote().getId() == id) {
+                    isInColLog = true;
+                    break top; // exit two loops
                 }
             }
-        });
+        }
+        final Item[] obtained = {null};
+        if (isInColLog) {
+            int finalId = id;
+            player.getCollectionLog().collectionLog.forEach((key, v) -> {
+                final Item item = v.stream().filter(e -> e.unnote().getId() == finalId).findFirst().orElse(null);
+                if (item != null && item.getAmount() > 0)
+                    obtained[0] = item;
+            });
 
-        return unlocked[0];
+        } else {
+            // return as unlocked when item isn't even a col log item
+            return true;
+        }
+        return obtained[0] != null && obtained[0].getAmount() > 0;
     }
 }

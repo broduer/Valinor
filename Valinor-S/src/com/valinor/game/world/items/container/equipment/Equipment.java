@@ -395,8 +395,7 @@ public final class Equipment extends ItemContainer {
 
         //For Collection iron accounts check if we unlocked this item
         if(player.gameMode().isCollectionIron()) {
-            if(player.getCollectionLog().unlocked(equip.getId()) == 1) {
-                System.out.println("enter2");
+            if(!player.getCollectionLog().unlocked(equip.getId())) {
                 player.message(Color.RED.wrap("You have not unlocked this item yet."));
                 return false;
             }
