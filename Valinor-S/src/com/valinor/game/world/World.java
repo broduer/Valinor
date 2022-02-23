@@ -325,7 +325,7 @@ public class World {
                     return;
                 }
                 try {
-                    if (npc != null && !npc.hidden()) {
+                    if (npc != null) {
                         npc.processed = true;
                         npc.sequence();
                         npc.inViewport(false); //Assume viewport is false, we set it in NPC Updating below.
