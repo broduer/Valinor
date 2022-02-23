@@ -9,6 +9,11 @@ public class ObjectManager {
     public static void get(int id) {
         ObjectDefinition definition = ObjectDefinition.get(id);
 
+        if(id == 33020) {
+            definition.name = "Forging rack";
+            definition.actions = new String[] {"Forge", null, null, null, null};
+        }
+
         if(id == 25439) {
             definition.actions = new String[]{"Open-Shop", "View", "Item-List", null, null};
         }
@@ -82,11 +87,6 @@ public class ObjectManager {
             definition.actions[2] = null;
             definition.actions[3] = null;
             definition.actions[4] = null;
-        }
-
-        if (id == 33020) {
-            definition.name = "Forging table";
-            definition.actions = new String[]{null, null, null, null, null};
         }
 
         if (id == 8878) {

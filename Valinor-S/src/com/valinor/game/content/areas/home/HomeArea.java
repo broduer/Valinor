@@ -12,6 +12,8 @@ import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.ReferralD;
 import com.valinor.game.content.mechanics.referrals.Referrals;
 import com.valinor.game.content.tradingpost.TradingPost;
+import com.valinor.game.content.upgrades.forging.ItemForgingCategory;
+import com.valinor.game.content.upgrades.forging.ItemForgingTable;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.Venom;
@@ -49,6 +51,14 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
+            if(object.getId() == WEAPON_RACK_33020) {
+                if(object.tile().equals(3078, 3507)) {
+                    player.getItemForgingTable().open(player, ItemForgingCategory.WEAPON);
+                } else {
+                    player.message("Nothing interesting happens.");
+                }
+                return true;
+            }
             if (object.getId() == CLOSED_CHEST_2996) {
                 player.faceObj(object);
                 player.getSlayerKey().open();

@@ -86,7 +86,7 @@ public class ObjectDefinition implements Definition {
         }
 
         if(id == 33020) {
-            name = "Forging table";
+            name = "Forging rack";
             options = new String[] {"Forge", null, null, null, null};
         }
 

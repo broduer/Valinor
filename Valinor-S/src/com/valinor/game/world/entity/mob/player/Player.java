@@ -56,6 +56,7 @@ import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.content.tournaments.TournamentUtils;
 import com.valinor.game.content.trade.Trading;
 import com.valinor.game.content.tradingpost.TradingPostListing;
+import com.valinor.game.content.upgrades.forging.ItemForgingTable;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.task.impl.AccountPinFrozenTask;
@@ -145,6 +146,12 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
+
+    private final ItemForgingTable itemForgingTable = new ItemForgingTable();
+
+    public ItemForgingTable getItemForgingTable() {
+        return itemForgingTable;
+    }
 
     private Task bountyHunterTask;
 

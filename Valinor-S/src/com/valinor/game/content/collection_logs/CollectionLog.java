@@ -145,18 +145,29 @@ public class CollectionLog {
         }
     }
 
+    //Skip that one for now this is more important XD
+    //Some reason when player.getCollectionLog().collectionLog is empty this entire logic doesn't work
+
     public int unlocked(int id) {
         int[] unlocked = new int[] {-1};//default -1
 
-        System.out.println("waaaa "+unlocked[0]);
+        //player.getCollectionLog().collectionLog = empty
+
+        //What I'm trying to accomplish:
+        //Check if the item we are wearing is in any of the col logs
+        //if it is in the log, check if we've got it unlocked
+        //If we have we can wear otherwise we cannot wear
+
+        //But the thing is, player.getCollectionLog().collectionLog
+        //Only logs the items we've got unlocked, so we can't loop it?
+
+        //Never reaches loop we made this awhile back but doesnt seem to work
         player.getCollectionLog().collectionLog.forEach((key, value) -> {
             System.out.println("enter "+unlocked[0]);
             if (unlocked[0] == 1) {
-                System.out.println("hmmmm");
                 return; // continue@foreach
             }
-            Item[] items = key.getObtainables();
-            System.out.println("huh");
+            Item[] items = key.getObtainables();//brb sure
             for (Item item : items) {
                 if (id == item.getId()) {
                     if (value.isEmpty()) {
