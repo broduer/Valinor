@@ -27,7 +27,7 @@ public class MysteryTicket extends Interaction {
         new Item(BLESSED_SPIRIT_SHIELD), new Item(ARMADYL_CROSSBOW), new Item(ARMADYL_HELMET), new Item(BANDOS_GODSWORD), new Item(ZAMORAK_GODSWORD));
 
     private Item rewardRoll() {
-        if (Utils.rollDie(20, 1)) {
+        if (Utils.rollDie(5, 1)) {
             return Utils.randomElement(RARE_REWARDS);
         } else {
             return Utils.randomElement(COMMON_REWARDS);

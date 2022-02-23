@@ -241,9 +241,9 @@ public class AccuracyFormula {
             if (enemy.isNpc()) {
                 final Npc npc = (Npc) enemy;
 
-                if(BUFF_RANGED_ATTACKS_VS.stream().anyMatch(id -> id == npc.id()) && style == CombatType.RANGED) {
+               /* if(BUFF_RANGED_ATTACKS_VS.stream().anyMatch(id -> id == npc.id()) && style == CombatType.RANGED) {
                     off_additional_bonus += 1.65;
-                }
+                }*/
 
                 AttackType attackType = player.getCombat().getFightType().getAttackType();
                 if (npc.id() == CORPOREAL_BEAST) {
@@ -520,13 +520,13 @@ public class AccuracyFormula {
         int def_equipment_ranged_defence = targetBonuses.rangedef;
         int def_equipment_magic_defence = targetBonuses.magedef;
 
-        /*if (enemy.isNpc()) {
+        if (enemy.isNpc()) {
             assert enemy instanceof Npc;
             Npc npc = (Npc) enemy;
             if (npc.combatInfo() != null && npc.combatInfo().stats != null && npc.combatInfo().boss) {
                 def_equipment_ranged_defence -= (def_current_defence_level * 0.50); //I don't like this solution but this formula is fucked.
             }
-        }*/
+        }
 
         //protect from * prayers
         boolean def_protect_from_melee = false;
