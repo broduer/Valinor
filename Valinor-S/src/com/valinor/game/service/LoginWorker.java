@@ -15,6 +15,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -86,11 +87,12 @@ public class LoginWorker implements Runnable {
     }
 
     private void initForGame(LoginDetailsMessage message, Channel channel) {
-        if (channel != null) {
-            channel.pipeline().replace("encoder", "encoder", new PacketEncoder(message.getEncryptor()));
-            channel.pipeline().replace("decoder", "decoder", new PacketDecoder(message.getDecryptor()));
-            channel.pipeline().remove("login-handler");
-            channel.pipeline().addFirst("timeout", new ReadTimeoutHandler(30, TimeUnit.SECONDS));
+        if (!(channel instanceof EmbeddedChannel)) {
+            while (channel.pipeline().last() != null) {
+                channel.pipeline().removeLast();
+            }
+
+            channel.pipeline().addLast(new ReadTimeoutHandler(30, TimeUnit.SECONDS), new PacketEncoder(message.getEncryptor()), new PacketDecoder(message.getDecryptor()));
         }
     }
 
