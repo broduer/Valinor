@@ -1736,7 +1736,7 @@ public class CombatFactory {
             return;
 
         mob.clearAttrib(AttributeKey.VENGEANCE_ACTIVE);
-        attacker.hit(mob, (int) (damage * 0.75), 1, null).setIsReflected().submit();
+        attacker.hit(mob, (int) (damage * 0.75), 0, null).setIsReflected().submit();
         mob.forceChat("Taste Vengeance!");
     }
 
