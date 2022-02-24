@@ -6,10 +6,14 @@ import java.util.Map;
 public enum PlayerRights {
     //Warning: the rights in here must match the server-side Rights enum.
     PLAYER(null),
+    SUPPORT(ChatCrown.SUPPORT),
     MODERATOR(ChatCrown.MOD_CROWN),
     ADMINISTRATOR(ChatCrown.ADMIN_CROWN),
     OWNER(ChatCrown.OWNER_CROWN),
     DEVELOPER(ChatCrown.DEVELOPER),
+
+    //Member ranks here
+
     BRONZE_YOUTUBER(ChatCrown.BRONZE_YOUTUBER),
     SILVER_YOUTUBER(ChatCrown.SILVER_YOUTUBER),
     GOLD_YOUTUBER(ChatCrown.GOLD_YOUTUBER),
@@ -18,11 +22,11 @@ public enum PlayerRights {
     HARDCORE_IRONMAN(ChatCrown.HARDCORE_IRONMAN),
     GROUP_IRONMAN(ChatCrown.GROUP_IRONMAN),
     GROUP_HARDCORE_IRONMAN(ChatCrown.GROUP_HARDCORE_IRONMAN),
-    SUPPORT(ChatCrown.SUPPORT),
     SECURITY_MOD(ChatCrown.SECURITY_MOD),
     EVENT_MANAGER(ChatCrown.EVENT_MANAGER),
     INSTANT_PKER(ChatCrown.INSTANT_PKER),
     HEAD_ADMIN(ChatCrown.HEAD_ADMIN),
+    COLLECTION_IRONMAN(ChatCrown.COLLECTION_IRONMAN),
     ;
 
     private final ChatCrown crown;

@@ -362,6 +362,7 @@ public class Widget {
             }
         }
         interfaceLoader = interfaces;
+        AccountSelectionWidget.unpack(font);
         ForgeWidget.unpack(font);
         SkotizoWidget.unpack();
         QuestTabSidebarWidget.unpack(font);

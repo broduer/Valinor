@@ -4989,7 +4989,6 @@ public class Client extends GameApplet {
         timeoutCounter++;
         //System.out.println(timeoutCounter);
         if (timeoutCounter > 750) {
-            //Because
             addReportToServer("Connection timed out at counter " + timeoutCounter + " (" + (int) ((timeoutCounter / 30) * 0.6) + " secs), dropping client");
             try {
                 addReportToServer("Dropping client, not a normal logout.");
@@ -7623,10 +7622,6 @@ public class Client extends GameApplet {
                     }
                     /* Client debug commands not actually used in the game */
                     if (isDeveloper) {
-                        if (inputString.startsWith("::pkt")) {
-                            timeoutCounter = 800;
-                        }
-
                         if (inputString.startsWith("::debugt")) {
                             debugTextures = !debugTextures;
                         }

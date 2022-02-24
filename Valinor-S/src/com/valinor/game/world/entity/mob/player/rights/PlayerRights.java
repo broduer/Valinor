@@ -22,6 +22,8 @@ public enum PlayerRights {
 
     PLAYER("Player", -1, -1, 0),
 
+    SUPPORT("Support Team", 505, 20, 2),
+
     MODERATOR("Moderator", 494, 1, 3),
 
     ADMINISTRATOR("Administrator", 495, 2, 4),
@@ -46,8 +48,6 @@ public enum PlayerRights {
 
     GROUP_HARDCORE_IRONMAN("Group Hardcore Iron Man", 1918, 19, 0),
 
-    SUPPORT("Support Team", 505, 20, 2),
-
     SECURITY_MODERATOR("Security Mod", 1861, 21, 3),
 
     EVENT_MANAGER("Event Manager", 468, 22, 0),
@@ -55,6 +55,9 @@ public enum PlayerRights {
     INSTANT_PKER("Instant Pker", 506, 23, 0),
 
     HEAD_ADMIN("Head Admin", 1940, 24, 4),
+
+
+    COLLECTION_IRONMAN("Collection ironman", 470, 25, 0),
 
     ;
 

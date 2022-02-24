@@ -1,6 +1,5 @@
 package com.valinor.game.content.account;
 
-import com.valinor.game.GameConstants;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.Flag;
 import com.valinor.game.world.entity.mob.player.*;

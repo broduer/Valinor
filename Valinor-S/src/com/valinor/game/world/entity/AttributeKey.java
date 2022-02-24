@@ -150,6 +150,9 @@ public enum AttributeKey {
     GAME_MODE_SELECTED,
     EXP_MODE_SELECTED,
 
+    CURRENT_GAME_MODE_SELECTED,
+    CURRENT_EXP_MODE_SELECTED,
+
     VIEWING_COLLECTION_LOG,
 
     //Collection log reward attributes

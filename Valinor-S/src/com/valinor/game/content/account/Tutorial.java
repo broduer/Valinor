@@ -32,7 +32,8 @@ public class Tutorial extends Dialogue {
         //System.out.println("phase "+getPhase());
         if (isPhase(1)) {
             stop();
-            AccountSelection.open(player);
+            GameModeInterface.open(player, GameModeInterface.AccountType.REGULAR_ACCOUNT);
+            //AccountSelection.open(player);
         } else if (isPhase(2)) {
             send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Yes.", "No.");
             setPhase(2);
