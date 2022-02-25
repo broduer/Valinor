@@ -258,7 +258,7 @@ public class CombatFactory {
                 break;
         }
 
-        if(attacker.isNpc() && attacker.<Integer>getAttribOr(MAXHIT_OVERRIDE, -1) != -1) {
+        if (attacker.isNpc() && attacker.<Integer>getAttribOr(MAXHIT_OVERRIDE, -1) != -1) {
             max_damage = attacker.<Integer>getAttribOr(MAXHIT_OVERRIDE, -1);
         }
 
@@ -289,9 +289,9 @@ public class CombatFactory {
                                 damage = 87;
                             }
                         }
-                        if (player.getCombatSpecial() == CombatSpecial.VOLATILE_NIGHTMARE_STAFF) {
-                            if (damage > 87) {
-                                damage = 87;
+                        if (player.getCombatSpecial() == CombatSpecial.KORASI_SWORD) {
+                            if (damage > 80) {
+                                damage = 80;
                             }
                         }
                         if (player.getCombatSpecial() == CombatSpecial.ANCIENT_WARRIOR_MAUL) {
@@ -312,7 +312,7 @@ public class CombatFactory {
                 Player player = attacker.getAsPlayer();
                 // Handle bolt special effects for a player whose using crossbow
                 if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
-                    if(damage > 0) {
+                    if (damage > 0) {
                         damage = RangedData.getBoltSpecialAttack(player, target, damage);
                         if (player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, false)) {
                             player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
@@ -336,6 +336,17 @@ public class CombatFactory {
             }
         } else if (type == CombatType.MAGIC) {
             // Do magic effects with the calculated damage..
+
+            if (attacker.isPlayer()) {
+                Player player = attacker.getAsPlayer();
+
+                //Hard cap magic special attacks
+                if (player.getCombatSpecial() == CombatSpecial.VOLATILE_NIGHTMARE_STAFF) {
+                    if (damage > 87) {
+                        damage = 87;
+                    }
+                }
+            }
         }
 
         if (target.isNpc() && attacker.isPlayer()) {
@@ -380,6 +391,13 @@ public class CombatFactory {
                     damage *= 0.5d;
                 }
             }
+        }
+
+        // up till now, damage is calculated as MELEE for korasi.
+        if (attacker.isPlayer() && attacker.getAsPlayer().getEquipment().getId(EquipSlot.WEAPON) == KORASI_SWORD && type == CombatType.MELEE) {
+            type = CombatType.MAGIC;
+            // now we've calculated max damage, we're gonna change the type to MAGIC
+            // this means protect from melee won't work and reduce the damage. only prot magic will.
         }
 
         //PvP protection prayers
@@ -556,10 +574,10 @@ public class CombatFactory {
                 commonCombatMethod.set(attacker, target);
                 if (attacker.isNpc() && !commonCombatMethod.inAttackRange()) {
                     Npc npc = attacker.getAsNpc();
-                    if(npc.id() == FENRIR_GREYBACK) {
+                    if (npc.id() == FENRIR_GREYBACK) {
                         var outOfDistanceCount = attacker.<Integer>getAttribOr(CANNOT_ATTACK_OUT_OF_DIST, 0) + 1;
                         attacker.putAttrib(CANNOT_ATTACK_OUT_OF_DIST, outOfDistanceCount);
-                        if(outOfDistanceCount >= 10) {
+                        if (outOfDistanceCount >= 10) {
                             attacker.putAttrib(FENRIR_SPECIAL_ACTIVE, true);
                             attacker.clearAttrib(CANNOT_ATTACK_OUT_OF_DIST);
                         }
@@ -582,7 +600,7 @@ public class CombatFactory {
      * Checks if an entity can attack a target.
      *
      * @param attacker The entity which wants to attack.
-     * @param target  The victim.
+     * @param target   The victim.
      * @return True if attacker has the requirements to attack, otherwise false.
      */
     public static boolean canAttack(Mob attacker, Mob target) { // mind if we rename args make it a bit easier? sure go ahead
@@ -598,16 +616,16 @@ public class CombatFactory {
             return false;
         }
 
-        if(attacker.isPlayer() && target.isNpc()) {
+        if (attacker.isPlayer() && target.isNpc()) {
             Player player = attacker.getAsPlayer();
-            if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+            if (player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
                 return false;
             }
         }
 
-        if(attacker.isNpc() && target.isPlayer()) {
+        if (attacker.isNpc() && target.isPlayer()) {
             Player player = target.getAsPlayer();
-            if(player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
+            if (player.<Boolean>getAttribOr(AttributeKey.NEW_ACCOUNT, false)) {
                 return false;
             }
         }
@@ -628,7 +646,7 @@ public class CombatFactory {
             return false;
         }
 
-        if(attacker.locked()) {
+        if (attacker.locked()) {
             Debugs.CMB.debug(attacker, "cant attack locked", target, true);
             return false;
         }
@@ -638,9 +656,9 @@ public class CombatFactory {
             return false;
         }
 
-        if(attacker.isNpc()) {
+        if (attacker.isNpc()) {
             Npc npc = attacker.getAsNpc();
-            if(!npc.canAttack()) {
+            if (!npc.canAttack()) {
                 Debugs.CMB.debug(attacker, "cant attack attribute is false", target, true);
                 return false;
             }
@@ -671,7 +689,7 @@ public class CombatFactory {
         if (target.isNpc()) {
             var npc = target.getAsNpc();
             if (npc.hidden() || (attacker.isPlayer() && npc.id() == 7707) || npc.locked() && npc.id() != 5886 && npc.id() != 2668 && !npc.def().name.toLowerCase().contains("totem")) {
-                Debugs.CMB.debug(attacker, "cant attack idk what this is hidden=" + npc.hidden()+" locked:"+npc.locked(), target, true);
+                Debugs.CMB.debug(attacker, "cant attack idk what this is hidden=" + npc.hidden() + " locked:" + npc.locked(), target, true);
                 return false;
             }
 
@@ -730,7 +748,7 @@ public class CombatFactory {
                     }
                 }
 
-                if(npc.def().name != null && npc.def().name.equalsIgnoreCase("Battle mage") && !magic) {
+                if (npc.def().name != null && npc.def().name.equalsIgnoreCase("Battle mage") && !magic) {
                     attacker.message(Color.RED.wrap("You can only use magic inside the arena!"));
                     Debugs.CMB.debug(attacker, "You can only use magic inside the arena!", target, true);
                     return false;
@@ -745,14 +763,14 @@ public class CombatFactory {
 
         if (attacker.isPlayer()) {
             Player player = attacker.getAsPlayer();
-            if(target.isPlayer()) {
+            if (target.isPlayer()) {
                 if (WildernessArea.isAtWildernessLimitForMac(attacker.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You are double logging and cannot attack other players.");
                     return false;
                 }
 
                 if (attacker.getAsPlayer().gameMode() == GameMode.INSTANT_PKER && player.gameMode() != GameMode.INSTANT_PKER) {
-                    player.message("You cannot attack "+ attacker.getAsPlayer().getUsername()+" they are playing as an Instant Pker.");
+                    player.message("You cannot attack " + attacker.getAsPlayer().getUsername() + " they are playing as an Instant Pker.");
                     return false;
                 }
             }
@@ -990,11 +1008,11 @@ public class CombatFactory {
     }
 
     public static boolean singlePlusArea(Mob target) {
-        if(target.tile().insideRevCave()) {
+        if (target.tile().insideRevCave()) {
             return true;
         }
 
-        if(target.tile().memberCave() && target.tile().region() != 12077) {
+        if (target.tile().memberCave() && target.tile().region() != 12077) {
             return true;
         }
         return false;
@@ -1051,7 +1069,7 @@ public class CombatFactory {
         }
 
         boolean isSleepwalker = hit.getTarget().isNpc() && hit.getTarget().getAsNpc().def() != null && hit.getTarget().getAsNpc().def().name.toLowerCase().contains("sleepwalker");
-        if(isSleepwalker) {
+        if (isSleepwalker) {
             hit.setDamage(10);
         }
 
@@ -1065,7 +1083,7 @@ public class CombatFactory {
             }
         }
 
-        if(attacker.isNpc() && target.isPlayer()) {
+        if (attacker.isNpc() && target.isPlayer()) {
             Npc npc = (Npc) attacker;
             if (npc.getCombatMethod() instanceof Vorkath) {
                 Vorkath combatMethod = (Vorkath) npc.getCombatMethod();
@@ -1088,7 +1106,7 @@ public class CombatFactory {
                     hit.setDamage(npc.capDamage());
                 }
 
-                if(npc.id() == SKOTIZO) {
+                if (npc.id() == SKOTIZO) {
                     hit.setDamage(player.getSkotizoInstance().damageReducctionEffect(player, hit.getDamage()));
                 }
 
@@ -1122,19 +1140,19 @@ public class CombatFactory {
                     hit.setDamage(0);
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8355 && hit.getCombatType() != CombatType.MELEE && hit.getDamage() > 0) {
+                if (npc.id() == NYLOCAS_VASILIAS_8355 && hit.getCombatType() != CombatType.MELEE && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8356 && hit.getCombatType() != CombatType.MAGIC && hit.getDamage() > 0) {
+                if (npc.id() == NYLOCAS_VASILIAS_8356 && hit.getCombatType() != CombatType.MAGIC && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
                 }
 
-                if(npc.id() == NYLOCAS_VASILIAS_8357 && hit.getCombatType() != CombatType.RANGED && hit.getDamage() > 0) {
+                if (npc.id() == NYLOCAS_VASILIAS_8357 && hit.getCombatType() != CombatType.RANGED && hit.getDamage() > 0) {
                     npc.hit(npc, hit.getDamage(), SplatType.NPC_HEALING_HITSPLAT);
                     int recoilDamage = (int) (hit.getDamage() * 0.75);
                     player.hit(npc, recoilDamage, 1, null).setIsReflected().submit();
@@ -1265,7 +1283,7 @@ public class CombatFactory {
 
          */
 
-        if(attacker.isNpc()) {
+        if (attacker.isNpc()) {
             Npc npc = attacker.getAsNpc();
             if (npc.getCombatMethod() != null && npc.getCombatMethod() instanceof CommonCombatMethod) {
                 CommonCombatMethod commonCombatMethod = (CommonCombatMethod) npc.getCombatMethod();
@@ -1732,7 +1750,7 @@ public class CombatFactory {
     public static void handleVengeance(Mob mob, Mob attacker, int damage) {
         if (mob == attacker) // dont recoil self-caused damage (rockcake)
             return;
-        if(damage == 0)
+        if (damage == 0)
             return;
 
         mob.clearAttrib(AttributeKey.VENGEANCE_ACTIVE);

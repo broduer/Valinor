@@ -79,7 +79,7 @@ public enum CombatSpecial {
     SARADOMIN_GODSWORD(new int[]{ItemIdentifiers.SARADOMIN_GODSWORD, ItemIdentifiers.SARADOMIN_GODSWORD_OR}, 50, 1.10, 1.1, new SaradominGodsword(), WeaponType.TWOHANDED),
     ZAMORAK_GODSWORD(new int[]{ItemIdentifiers.ZAMORAK_GODSWORD, ItemIdentifiers.ZAMORAK_GODSWORD_OR}, 50, 1.10, 1.1, new ZamorakGodsword(), WeaponType.TWOHANDED),
     DRAGON_SCIMITAR(new int[]{ItemIdentifiers.DRAGON_SCIMITAR, ItemIdentifiers.DRAGON_SCIMITAR_OR, ItemIdentifiers.DRAGON_SCIMITAR_20406, DRAGON_SCIMITAR_TIER_1, DRAGON_SCIMITAR_TIER_2, DRAGON_SCIMITAR_TIER_3, DRAGON_SCIMITAR_TIER_4, DRAGON_SCIMITAR_TIER_5_1, DRAGON_SCIMITAR_TIER_5_2, DRAGON_SCIMITAR_TIER_5_3, DRAGON_SCIMITAR_TIER_5_4, DRAGON_SCIMITAR_TIER_5_5}, 55, 1.0, 1.25, new DragonScimitar(), WeaponType.LONGSWORD),
-    KORASI_SWORD(new int[]{CustomItemIdentifiers.KORASI_SWORD}, 60, 1.5, 6.0, new KorasiSword(), WeaponType.LONGSWORD),
+    KORASI_SWORD(new int[]{CustomItemIdentifiers.KORASI_SWORD}, 60, 1.50, 8.0, new KorasiSword(), WeaponType.LONGSWORD),
 
     DRAGON_SPEAR(new int[]{ItemIdentifiers.DRAGON_SPEAR, ItemIdentifiers.DRAGON_SPEARP, ItemIdentifiers.DRAGON_SPEARP_5716, ItemIdentifiers.DRAGON_SPEARP_5730}, 25, 1.0, 1.0, new DragonSpear(), WeaponType.SPEAR),
     ZAMORAKIAN_SPEAR(new int[]{ItemIdentifiers.ZAMORAKIAN_SPEAR}, 25, 1.0, 1.0, new ZamorakianSpear(), WeaponType.SPEAR),

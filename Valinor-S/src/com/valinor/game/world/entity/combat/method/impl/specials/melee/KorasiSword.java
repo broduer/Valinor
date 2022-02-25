@@ -16,10 +16,8 @@ public class KorasiSword implements CombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        mob.animate(4000);
-        mob.graphic(2700, 100, 0);
-
-        Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE),1, CombatType.MELEE).graphic(new Graphic(2701)).checkAccuracy();
+        mob.animate(1058);
+        Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE),1, CombatType.MELEE).graphic(new Graphic(1798, 30, 0)).checkAccuracy();
         hit.submit();
         CombatSpecial.drain(mob, CombatSpecial.KORASI_SWORD.getDrainAmount());
     }

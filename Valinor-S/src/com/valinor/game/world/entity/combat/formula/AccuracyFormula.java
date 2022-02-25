@@ -367,7 +367,7 @@ public class AccuracyFormula {
                 }
 
                 if (player.getEquipment().hasAt(EquipSlot.LEGS, TOTEMIC_PLATELEGS) || player.getEquipment().hasAt(EquipSlot.LEGS, DARK_SAGE_ROBE_BOTTOM) || player.getEquipment().hasAt(EquipSlot.LEGS, SARKIS_DARK_LEGS)) {
-                    off_additional_bonus += 10;//10.0% damage boost
+                    off_additional_bonus += 0.10;//10.0% damage boost
                 }
             }
 
