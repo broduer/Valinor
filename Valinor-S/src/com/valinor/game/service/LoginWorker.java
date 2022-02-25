@@ -1,10 +1,12 @@
 package com.valinor.game.service;
 
 import co.paralleluniverse.strands.Strand;
+import com.valinor.GameServer;
 import com.valinor.game.GameEngine;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.net.PlayerSession;
+import com.valinor.net.channel.ClientInitializer;
 import com.valinor.net.codec.PacketDecoder;
 import com.valinor.net.codec.PacketEncoder;
 import com.valinor.net.login.LoginDetailsMessage;
@@ -17,12 +19,9 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.embedded.EmbeddedChannel;
 import io.netty.handler.timeout.ReadTimeoutHandler;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -91,8 +90,7 @@ public class LoginWorker implements Runnable {
             while (channel.pipeline().last() != null) {
                 channel.pipeline().removeLast();
             }
-
-            channel.pipeline().addLast(new ReadTimeoutHandler(30, TimeUnit.SECONDS), new PacketEncoder(message.getEncryptor()), new PacketDecoder(message.getDecryptor()));
+            channel.pipeline().addLast(new ReadTimeoutHandler(30, TimeUnit.SECONDS), new PacketEncoder(message.getEncryptor()), new PacketDecoder(message.getDecryptor()), ((ClientInitializer)GameServer.bootstrap.networkBuilder.connectionInitializer).handler);
         }
     }
 

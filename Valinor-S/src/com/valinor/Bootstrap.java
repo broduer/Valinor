@@ -30,7 +30,7 @@ public final class Bootstrap {
      * The network builder that will initialize the core components of the
      * network.
      */
-    private final NetworkBuilder networkBuilder = new NetworkBuilder();
+    public final NetworkBuilder networkBuilder = new NetworkBuilder();
 
     /**
      * The game builder that will initialize the core components of the game.

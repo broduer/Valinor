@@ -1,6 +1,6 @@
 package com.valinor.net;
 
-import com.valinor.net.channel.ChannelPipelineHandler;
+import com.valinor.net.channel.ClientInitializer;
 import com.valinor.util.timers.TimerKey;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.UnpooledByteBufAllocator;
@@ -36,7 +36,7 @@ public final class NetworkBuilder {
      * The {@link ChannelInitializer} that will determine how channels will be
      * initialized when registered to the event loop group.
      */
-    private final ChannelInitializer<Channel> connectionInitializer = new ChannelPipelineHandler();
+    public final ChannelInitializer<Channel> connectionInitializer = new ClientInitializer();
 
     /**
      * Initializes this network handler effectively preparing the server to

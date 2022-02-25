@@ -41,10 +41,9 @@ public final class ServerHandler extends ChannelInboundHandlerAdapter {
         LoginHandler.reduceIPConnectedCount(ctx);
 
         boolean isplain = ctx.channel().attr(NetworkConstants.PLAINMSG).get();
-        if (isplain)
-            return; // dont print
-
-        logger.trace("A client has disconnected: {}", ctx.channel());
+        if (!isplain) {
+            logger.trace("A client has disconnected: {}", ctx.channel());
+        }
 
         PlayerSession session = ctx.channel().attr(NetworkConstants.SESSION_KEY).get();
 

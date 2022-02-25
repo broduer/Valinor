@@ -7,6 +7,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.save.PlayerSave;
+import com.valinor.net.channel.ClientInitializer;
 import com.valinor.test.generic.PlayerProfileVerf;
 import com.valinor.util.DiscordWebhook;
 import com.valinor.util.flood.Flooder;
@@ -223,6 +224,8 @@ public class GameServer {
     public static DiscordWebhook lootingBagLootedWebHookUrl;
     public static DiscordWebhook lootingBagWithdrawnWebHookUrl;
 
+    public static Bootstrap bootstrap;
+
     /**
      * The main method that will put the server online.
      */
@@ -249,7 +252,7 @@ public class GameServer {
                 PlayerProfileVerf.verifyIntegrity();
             }
             logger.info("Initializing the Bootstrap...");
-            Bootstrap bootstrap = new Bootstrap(GameServer.properties().gamePort);
+            bootstrap = new Bootstrap(GameServer.properties().gamePort);
             bootstrap.bind();
             initializeDatabase();
             Runtime.getRuntime().addShutdownHook(new Thread() {
