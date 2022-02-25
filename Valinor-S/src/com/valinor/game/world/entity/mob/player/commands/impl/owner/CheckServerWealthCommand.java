@@ -76,7 +76,6 @@ public class CheckServerWealthCommand implements Command {
         // on the game thread: do a quick username scan to filter on/offline
         ArrayList<Player> onlineToScan = new ArrayList<>();
         for (Player opp : World.getWorld().getPlayers()) {
-            if (opp == null) continue;
             /*if (opp.getUsername().equalsIgnoreCase("box test")) continue;
             if(opp.getPlayerRights().isAdminOrGreater(opp)) continue;
             if(opp.getPlayerRights().isDeveloperOrGreater(opp)) continue;*/
@@ -326,6 +325,9 @@ public class CheckServerWealthCommand implements Command {
                                 }
 
                                 for (Item item : allItems) {
+                                    if(opp.gameMode().instantPker() && item.definition(World.getWorld()).pvpSpawnable) {
+                                        continue;
+                                    }
                                     storage.itemsCount.addAndGet(1);
 
                                     if(item.getId() == ELYSIAN_SPIRIT_SHIELD) {
