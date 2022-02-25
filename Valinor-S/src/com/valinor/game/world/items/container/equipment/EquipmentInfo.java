@@ -338,6 +338,18 @@ public class EquipmentInfo {
             return new int[]{stab, slash, crush, range, mage};
         }
 
+        public String[] bonusesStr() {
+            return new String[]{"Stab", "Slash", "Crush", "Range", "Mage"};
+        }
+
+        public int[] morebonuses() {
+            return new int[]{str, rangedef, magestr};
+        }
+
+        public String[] morebonusesStr() {
+            return new String[]{"Melee strength", "Range strength", "Magic damage"};
+        }
+
         public String[] bonusesAtk() {
             return new String[]{"Stab", "Slash", "Crush", "Range", "Mage"};
         }

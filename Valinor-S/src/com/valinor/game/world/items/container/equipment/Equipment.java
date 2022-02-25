@@ -341,6 +341,14 @@ public final class Equipment extends ItemContainer {
             return false;
         }
 
+        //TODO
+        /*if(player.getController() instanceof RiskFightArea || player.getController() instanceof RiskFightSafeArea) {
+            if (equip.definition(World.getWorld()).isUpgradedWeapon) {
+                player.message("You can't equip this weapon here.");
+                return false;
+            }
+        }*/
+
         //Handle duel arena settings..
         if (player.getDueling().inDuel()) {
             for (int i = 11; i < player.getDueling().getRules().length; i++) {
@@ -363,6 +371,11 @@ public final class Equipment extends ItemContainer {
                     DialogueManager.sendStatement(player, "Weapons have been locked in this duel!");
                     return false;
                 }
+            }
+
+            if (equip.definition(World.getWorld()).isUpgradedWeapon) {
+                DialogueManager.sendStatement(player, "These weapons have been disabled in a duel!");
+                return false;
             }
         }
 

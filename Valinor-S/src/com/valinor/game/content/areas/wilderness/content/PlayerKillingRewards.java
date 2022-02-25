@@ -29,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.*;
 
 /**
  * The class which represents functionality for the PKP rewards.
@@ -44,6 +45,109 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 public class PlayerKillingRewards {
 
     private static final Logger logger = LogManager.getLogger(PlayerKillingRewards.class);
+
+    private static void increaseWhipKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(ABYSSAL_WHIP, FROZEN_ABYSSAL_WHIP, VOLCANIC_ABYSSAL_WHIP, ABYSSAL_TENTACLE, ABYSSAL_WHIP_TIER_1, ABYSSAL_WHIP_TIER_2, ABYSSAL_WHIP_TIER_3, ABYSSAL_WHIP_TIER_4, ABYSSAL_WHIP_TIER_5_1, ABYSSAL_WHIP_TIER_5_2, ABYSSAL_WHIP_TIER_5_3, ABYSSAL_WHIP_TIER_5_4, ABYSSAL_WHIP_TIER_5_5)) {
+            int whipKills = (Integer) player.getAttribOr(AttributeKey.WHIP_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.WHIP_KILLS, whipKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) whip kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + whipKills + " whip kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseDDSKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(DRAGON_DAGGER, DRAGON_DAGGERP, DRAGON_DAGGERP_5680, DRAGON_DAGGERP_5698, DRAGON_DAGGER_TIER_1, DRAGON_DAGGER_TIER_2, DRAGON_DAGGER_TIER_3, DRAGON_DAGGER_TIER_4, DRAGON_DAGGER_TIER_5_1, DRAGON_DAGGER_TIER_5_2, DRAGON_DAGGER_TIER_5_3, DRAGON_DAGGER_TIER_5_4, DRAGON_DAGGER_TIER_5_5)) {
+            int ddsKills = (Integer) player.getAttribOr(AttributeKey.DDS_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.DDS_KILLS, ddsKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) dds kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + ddsKills + " dds kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseGmaulKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(GRANITE_MAUL, GRANITE_MAUL_12848, GRANITE_MAUL_20557, GRANITE_MAUL_24225, GRANITE_MAUL_24227, GRANITE_MAUL_TIER_1, GRANITE_MAUL_TIER_2, GRANITE_MAUL_TIER_3, GRANITE_MAUL_TIER_4, GRANITE_MAUL_TIER_5_1, GRANITE_MAUL_TIER_5_2, GRANITE_MAUL_TIER_5_3, GRANITE_MAUL_TIER_5_4, GRANITE_MAUL_TIER_5_5)) {
+            int ddsKills = (Integer) player.getAttribOr(AttributeKey.GMAUL_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.GMAUL_KILLS, ddsKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) gmaul kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + ddsKills + " gmaul kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increasedDScimKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(DRAGON_SCIMITAR, DRAGON_SCIMITAR_OR, DRAGON_SCIMITAR_TIER_1, DRAGON_SCIMITAR_TIER_2, DRAGON_SCIMITAR_TIER_3, DRAGON_SCIMITAR_TIER_4, DRAGON_SCIMITAR_TIER_5_1, DRAGON_SCIMITAR_TIER_5_2, DRAGON_SCIMITAR_TIER_5_3, DRAGON_SCIMITAR_TIER_5_4, DRAGON_SCIMITAR_TIER_5_5)) {
+            int dscimKills = (Integer) player.getAttribOr(AttributeKey.D_SCIM_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.D_SCIM_KILLS, dscimKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) dscim kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + dscimKills + " dscim kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseRuneCbowKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(RUNE_CROSSBOW, RUNE_CROSSBOW_TIER_1, RUNE_CROSSBOW_TIER_2, RUNE_CROSSBOW_TIER_3, RUNE_CROSSBOW_TIER_4, RUNE_CROSSBOW_TIER_5_1, RUNE_CROSSBOW_TIER_5_2, RUNE_CROSSBOW_TIER_5_3, RUNE_CROSSBOW_TIER_5_4, RUNE_CROSSBOW_TIER_5_5)) {
+            int rcbowKills = (Integer) player.getAttribOr(AttributeKey.RUNE_C_BOW_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.RUNE_C_BOW_KILLS, rcbowKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) rune c'bow kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + rcbowKills + " rune c'bow kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseDMaceKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(DRAGON_MACE, DRAGON_MACE_TIER_1, DRAGON_MACE_TIER_2, DRAGON_MACE_TIER_3, DRAGON_MACE_TIER_4, DRAGON_MACE_TIER_5_1, DRAGON_MACE_TIER_5_2, DRAGON_MACE_TIER_5_3, DRAGON_MACE_TIER_5_4, DRAGON_MACE_TIER_5_5)) {
+            int dmaceKills = (Integer) player.getAttribOr(AttributeKey.D_MACE_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.D_MACE_KILLS, dmaceKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) dmace kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + dmaceKills + " dmace kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseDLongKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(DRAGON_LONGSWORD, DRAGON_LONGSWORD_TIER_1, DRAGON_LONGSWORD_TIER_2, DRAGON_LONGSWORD_TIER_3, DRAGON_LONGSWORD_TIER_4, DRAGON_LONGSWORD_TIER_5_1, DRAGON_LONGSWORD_TIER_5_2, DRAGON_LONGSWORD_TIER_5_3, DRAGON_LONGSWORD_TIER_5_4, DRAGON_LONGSWORD_TIER_5_5)) {
+            int dlongKills = (Integer) player.getAttribOr(AttributeKey.D_LONG_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.D_LONG_KILLS, dlongKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) dlong kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + dlongKills + " dlong kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseMSBKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(MAGIC_SHORTBOW, MAGIC_SHORTBOW_I, MAGIC_SHORTBOW_TIER_1, MAGIC_SHORTBOW_TIER_2, MAGIC_SHORTBOW_TIER_3, MAGIC_SHORTBOW_TIER_4, MAGIC_SHORTBOW_TIER_5_1, MAGIC_SHORTBOW_TIER_5_2, MAGIC_SHORTBOW_TIER_5_3, MAGIC_SHORTBOW_TIER_5_4, MAGIC_SHORTBOW_TIER_5_5)) {
+            int msbKills = (Integer) player.getAttribOr(AttributeKey.MSB_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.MSB_KILLS, msbKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) msb kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + msbKills + " msb kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseDbowKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(DARK_BOW, DARK_BOW_TIER_1, DARK_BOW_TIER_2, DARK_BOW_TIER_3, DARK_BOW_TIER_4, DARK_BOW_TIER_5_1, DARK_BOW_TIER_5_2, DARK_BOW_TIER_5_3, DARK_BOW_TIER_5_4, DARK_BOW_TIER_5_5)) {
+            int dbowKills = (Integer) player.getAttribOr(AttributeKey.DBOW_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.DBOW_KILLS, dbowKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) dbow kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + dbowKills + " dbow kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    private static void increaseSOLKills(Player player, Player target) {
+        if (player.getEquipment().containsAny(STAFF_OF_LIGHT, STAFF_OF_LIGHT_TIER_1, STAFF_OF_LIGHT_TIER_2, STAFF_OF_LIGHT_TIER_3, STAFF_OF_LIGHT_TIER_4, STAFF_OF_LIGHT_TIER_5_1, STAFF_OF_LIGHT_TIER_5_2, STAFF_OF_LIGHT_TIER_5_3, STAFF_OF_LIGHT_TIER_5_4, STAFF_OF_LIGHT_TIER_5_5)) {
+            int dbowKills = (Integer) player.getAttribOr(AttributeKey.DBOW_KILLS, 0) + 1;
+            player.putAttrib(AttributeKey.STAFF_OF_LIGHT_KILLS, dbowKills);
+            player.message(Color.BLUE.tag() + "You've received earn " + Color.VIOLET.tag() + "(+1) sol kill" + Color.BLUE.tag() + " after defeating " + Color.VIOLET.tag() + "" + target.getUsername() + "" + Color.BLUE.tag() + "! You now have " + Color.VIOLET.tag() + " " + dbowKills + " sol kills" + Color.BLUE.tag() + "!");
+        }
+    }
+
+    /**
+     * Increases the kill count for that specific weapon.
+     */
+    public static void increaseMeleeWeaponKills(Player player, Player target) {
+        increaseDDSKills(player, target);
+        increaseGmaulKills(player, target);
+        increaseWhipKills(player, target);
+        increasedDScimKills(player, target);
+        increaseDMaceKills(player, target);
+        increaseDLongKills(player, target);
+        increaseSOLKills(player, target);
+    }
+
+    public static void increaseRangedWeaponKills(Player player, Player target) {
+        increaseRuneCbowKills(player, target);
+        increaseMSBKills(player, target);
+        increaseDbowKills(player, target);
+    }
+
+    public static void increaseMagicWeaponKills(Player player, Player target) {
+        increaseSOLKills(player, target);
+    }
 
     private static int shutdownValueOf(int streak) {
         return (10 * streak + 50 * (streak / 10));

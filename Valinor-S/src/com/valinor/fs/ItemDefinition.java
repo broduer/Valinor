@@ -78,6 +78,7 @@ public class ItemDefinition implements Definition {
     public boolean changes;
     public ProtectionValue protectionValue;
     public boolean pvpSpawnable;
+    public boolean isUpgradedWeapon;
 
     public ItemDefinition(int id, byte[] data) {
         this.id = id;
@@ -117,6 +118,213 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == 15441) {
+            stackable = false;
+            name = "Abyssal whip tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 15442) {
+            stackable = false;
+            name = "Abyssal whip tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 15443) {
+            stackable = false;
+            name = "Abyssal whip tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 15444) {
+            stackable = false;
+            name = "Abyssal whip tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 15445 || id == 15446 || id == 15447 || id == 15448 || id == 15449) {
+            stackable = false;
+            name = "Abyssal whip tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16209) {
+            stackable = false;
+            name = "Dragon dagger tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16210) {
+            stackable = false;
+            name = "Dragon dagger tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16211) {
+            stackable = false;
+            name = "Dragon dagger tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16212) {
+            stackable = false;
+            name = "Dragon dagger tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16213 || id == 16214 || id == 16215 || id == 16216 || id == 16217) {
+            stackable = false;
+            name = "Dragon dagger tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16218) {
+            stackable = false;
+            name = "Magic shortbow tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16219) {
+            stackable = false;
+            name = "Magic shortbow tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16220) {
+            stackable = false;
+            name = "Magic shortbow tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16221) {
+            stackable = false;
+            name = "Magic shortbow tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16222 || id == 16223 || id == 16224 || id == 16225 || id == 16226) {
+            stackable = false;
+            name = "Magic shortbow tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16227) {
+            stackable = false;
+            name = "Rune crossbow tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16228) {
+            stackable = false;
+            name = "Rune crossbow tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16229) {
+            stackable = false;
+            name = "Rune crossbow tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16230) {
+            stackable = false;
+            name = "Rune crossbow tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16231 || id == 16232 || id == 16233 || id == 16234 || id == 16235) {
+            stackable = false;
+            name = "Rune crossbow tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16236) {
+            stackable = false;
+            name = "Dragon scimitar tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16237) {
+            stackable = false;
+            name = "Dragon scimitar tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16238) {
+            stackable = false;
+            name = "Dragon scimitar tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16239) {
+            stackable = false;
+            name = "Dragon scimitar tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16240 || id == 16241 || id == 16242 || id == 16243 || id == 16244) {
+            stackable = false;
+            name = "Dragon scimitar tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16245) {
+            stackable = false;
+            name = "Dragon longsword tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16246) {
+            stackable = false;
+            name = "Dragon longsword tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16247) {
+            stackable = false;
+            name = "Dragon longsword tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16248) {
+            stackable = false;
+            name = "Dragon longsword tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16249 || id == 16250 || id == 16251 || id == 16252 || id == 16253) {
+            stackable = false;
+            name = "Dragon longsword tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16254) {
+            stackable = false;
+            name = "Dragon mace tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16255) {
+            stackable = false;
+            name = "Dragon mace tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16256) {
+            stackable = false;
+            name = "Dragon mace tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16257) {
+            stackable = false;
+            name = "Dragon mace tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16258 || id == 16259 || id == 16260 || id == 16261 || id == 16262) {
+            stackable = false;
+            name = "Dragon mace tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16200) {
+            stackable = false;
+            name = "Granite maul tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16201) {
+            stackable = false;
+            name = "Granite maul tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16202) {
+            stackable = false;
+            name = "Granite maul tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16203) {
+            stackable = false;
+            name = "Granite maul tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16204 || id == 16205 || id == 16206 || id == 16207 || id == 16208) {
+            stackable = false;
+            name = "Granite maul tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16277) {
+            stackable = false;
+            name = "Staff of light tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16269) {
+            stackable = false;
+            name = "Staff of light tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16270) {
+            stackable = false;
+            name = "Staff of light tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16271) {
+            stackable = false;
+            name = "Staff of light tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 16272 || id == 16273 || id == 16274 || id == 16275 || id == 16276) {
+            stackable = false;
+            name = "Staff of light tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 12765) {
+            stackable = false;
+            name = "Dark bow tier 1";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 12766) {
+            stackable = false;
+            name = "Dark bow tier 2";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 12767) {
+            stackable = false;
+            name = "Dark bow tier 3";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 12768) {
+            stackable = false;
+            name = "Dark bow tier 4";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 15706 || id == 15707 || id == 15708 || id == 15709 || id == 15710) {
+            stackable = false;
+            name = "Dark bow tier 5";
+            ioptions = new String[]{null, "Wield", null, null, "Destroy"};
+        } else if (id == 19780) {
+            name = "Korasi's sword";
+            grandexchange = true;
+        } else if(id == PKP_TICKET) {
+            name = "PkP ticket";
+            grandexchange = true;
+            stackable = true;
         } else if (id == RANGING_SCROLL) {
             name = "Ranging scroll";
             grandexchange = true;

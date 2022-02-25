@@ -3,6 +3,8 @@ package com.valinor.cache.def;
 import com.valinor.ClientConstants;
 import com.valinor.cache.Archive;
 import com.valinor.cache.def.impl.items.CustomItems;
+import com.valinor.cache.def.impl.items.PreEocItems;
+import com.valinor.cache.def.impl.items.UpgradeWeapons;
 import com.valinor.cache.def.impl.items.WinterItems;
 import com.valinor.cache.factory.ItemSpriteFactory;
 import com.valinor.collection.TempCache;
@@ -443,6 +445,8 @@ public final class ItemDefinition {
             def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
         }
 
+        PreEocItems.unpack(id);
+        UpgradeWeapons.unpack(id);
         CustomItems.unpack(id);
         WinterItems.unpack(id);
 

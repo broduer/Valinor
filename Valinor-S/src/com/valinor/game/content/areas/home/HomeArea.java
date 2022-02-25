@@ -7,6 +7,7 @@ import com.valinor.game.content.areas.edgevile.dialogue.AuburyDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.DrunkenDwarfDialogue;
 import com.valinor.game.content.areas.edgevile.dialogue.PerduDialogue;
 import com.valinor.game.content.areas.lumbridge.dialogue.Hans;
+import com.valinor.game.content.areas.wilderness.content.upgrade_station.WeaponUpgraderD;
 import com.valinor.game.content.group_ironman.GroupIronmanInterface;
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.content.mechanics.referrals.ReferralD;
@@ -51,8 +52,8 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (option == 1) {
-            if(object.getId() == WEAPON_RACK_33020) {
-                if(object.tile().equals(3078, 3507)) {
+            if (object.getId() == WEAPON_RACK_33020) {
+                if (object.tile().equals(3078, 3507)) {
                     player.getItemForgingTable().open(player, ItemForgingCategory.WEAPON);
                 } else {
                     player.message("Nothing interesting happens.");
@@ -225,7 +226,7 @@ public class HomeArea extends Interaction {
                 EquipmentInfo info = World.getWorld().equipmentInfo();
                 int targetSlot = info.slotFor(item.getId());
 
-                if(player.getEquipment().hasWeapon() && player.getEquipment().getWeapon().isTwoHanded()) {
+                if (player.getEquipment().hasWeapon() && player.getEquipment().getWeapon().isTwoHanded()) {
                     player.message(Color.RED.wrap("You cannot take this shield right now."));
                     return true;
                 }
@@ -246,6 +247,10 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleNpcInteraction(Player p, Npc npc, int option) {
         if (option == 1) {
+            if (npc.id() == TELEKINETIC_GUARDIAN) {
+                p.getDialogueManager().start(new WeaponUpgraderD());
+                return true;
+            }
             if (npc.id() == GRAND_EXCHANGE_CLERK || npc.id() == GRAND_EXCHANGE_CLERK_2149) {
                 TradingPost.open(p);
                 return true;
@@ -298,7 +303,7 @@ public class HomeArea extends Interaction {
         if (option == 2) {
             if (npc.id() == IRON_MAN_TUTOR) {
                 var playerIsIron = p.gameMode().isIronman() || p.gameMode().isHardcoreIronman() || p.gameMode().isUltimateIronman() || p.gameMode().isCollectionIron();
-                if(!playerIsIron) {
+                if (!playerIsIron) {
                     p.message("Only ironman can use this function.");
                     return true;
                 }
@@ -311,9 +316,9 @@ public class HomeArea extends Interaction {
 
                     @Override
                     protected void select(int option) {
-                        if(isPhase(0)) {
-                            if(option == 1) {
-                                if(!p.getPlayerRights().isStaffMember(p)) {
+                        if (isPhase(0)) {
+                            if (option == 1) {
+                                if (!p.getPlayerRights().isStaffMember(p)) {
                                     p.setPlayerRights(PlayerRights.PLAYER);
                                     p.getPacketSender().sendRights();
                                 }
@@ -322,7 +327,7 @@ public class HomeArea extends Interaction {
                                 p.message("Your ironman status has been revoked.");
                                 stop();
                             }
-                            if(option == 2) {
+                            if (option == 2) {
                                 stop();
                             }
                         }

@@ -157,6 +157,8 @@ public class NpcDefinition implements Definition {
         if (id == ICELORD) {
             name = "Wampa boss";
             combatlevel = 981;
+        } else if (id == 5979) {
+            name = "Weapon Upgrader";
         } else if (id == SNOWFLAKE_BOSS) {
             name = "Snowflake boss";
             combatlevel = 1027;

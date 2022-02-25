@@ -16,7 +16,12 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
-        // Trident of the seas
+        if(id == PKP_TICKET) {
+            ItemDefinition.copyInventory(def, CASTLE_WARS_TICKET);
+            def.name = "<col=65280>PkP ticket";
+            def.modelCustomColor4 = 22222;
+        }
+
        if(id == INFERNAL_TRIDENT) {
            def.name = "<col=65280>Infernal trident";
            def.femaleModel = 55623;

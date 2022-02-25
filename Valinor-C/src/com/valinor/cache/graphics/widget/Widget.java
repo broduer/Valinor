@@ -410,6 +410,7 @@ public class Widget {
         TradingPostWidget.unpack(font);
         EventWidget.unpack(font);
         BountyHunterWidget.unpack(font);
+        WeaponUpgradeWidget.unpack(font);
         if (ClientConstants.CHECK_UNUSED_INTERFACES) {
             checkUnusedInterfaces();
         }
@@ -996,7 +997,7 @@ public class Widget {
         widget.hoverType = hover;
     }
 
-    public static void addPrayer(int id, int configState, int configFrame, int requiredValues, int disabledSprite, int enabledSprite, String prayerName, int hover, int glowX, int glowY) {
+    public static void addPrayer(int id, int configState, int configFrame, int requiredValues, int disabledSprite, int enabledSprite, String prayerName, int hover) {
         Widget widget = addTabInterface(id);
         widget.id = id;
         widget.parent = 22500;
@@ -1008,8 +1009,6 @@ public class Widget {
         widget.enabledSprite = Client.spriteCache.get(150);
         widget.width = 34;
         widget.height = 34;
-        widget.spriteXOffset = glowX;
-        widget.spriteYOffset = glowY;
         widget.valueCompareType = new int[1];
         widget.requiredValues = new int[1];
         widget.valueCompareType[0] = 1;
@@ -1018,7 +1017,7 @@ public class Widget {
         widget.valueIndexArray[0][0] = 5;
         widget.valueIndexArray[0][1] = configFrame;
         widget.valueIndexArray[0][2] = 0;
-        widget.tooltip = "Activate <col=ffb000>" + prayerName;
+        widget.tooltip = "Activate <col=ffb000>"+prayerName;
         widget = addTabInterface(id + 1);
         widget.id = id + 1;
         widget.parent = 22500;
@@ -1364,6 +1363,33 @@ public class Widget {
         widget.child_y = new int[0];
         widget.hasActions = false;
         widget.displayAmount = showAmount;
+        widget.inventoryMarginX = 24;
+        widget.inventoryMarginY = 24;
+        widget.height = 5;
+        widget.width = 6;
+        widget.parent = 5292;
+        widget.id = id;
+        widget.type = TYPE_INVENTORY;
+    }
+
+    public static void addItemUpgradeStation(int id) {
+        Widget widget = cache[id] = new Widget();
+        widget.actions = new String[]{
+            "Reclaim",
+            null,
+            null,
+            null,
+            null
+        };
+        widget.inventoryOffsetX = new int[20];
+        widget.inventoryItemId = new int[30];
+        widget.inventoryAmounts = new int[30];
+        widget.itemOpacity = new int[30];
+        widget.inventoryOffsetY = new int[20];
+        widget.children = new int[0];
+        widget.child_x = new int[0];
+        widget.child_y = new int[0];
+        widget.hasActions = false;
         widget.inventoryMarginX = 24;
         widget.inventoryMarginY = 24;
         widget.height = 5;

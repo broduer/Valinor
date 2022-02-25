@@ -663,6 +663,27 @@ public class PlayerSave {
                 player.putAttrib(EXP_LAMP_USED, details.expLampUsed);
                 player.putAttrib(SWIFT_ABILITY, details.swiftAbility);
                 player.putAttrib(GOLIATH_ABILITY, details.goliathAbility);
+                player.putAttrib(WEAPON_UPGRADES, details.weaponUpgrades);
+                player.putAttrib(DDS_KILLS, details.ddsKills);
+                player.putAttrib(GMAUL_KILLS, details.gmaulKills);
+                player.putAttrib(WHIP_KILLS, details.whipKills);
+                player.putAttrib(D_SCIM_KILLS, details.dScimKills);
+                player.putAttrib(STAFF_OF_LIGHT_KILLS, details.staffOfLightKills);
+                player.putAttrib(RUNE_C_BOW_KILLS, details.runeCBowKills);
+                player.putAttrib(D_MACE_KILLS, details.dMaceKills);
+                player.putAttrib(D_LONG_KILLS, details.dLongKills);
+                player.putAttrib(MSB_KILLS, details.msbKills);
+                player.putAttrib(DBOW_KILLS, details.dbowKills);
+                player.putAttrib(DDS_KILLS_TIER_UNLOCKED, details.ddsKillsTier);
+                player.putAttrib(GMAUL_KILLS_TIER_UNLOCKED, details.gmaulKillsTier);
+                player.putAttrib(WHIP_KILLS_TIER_UNLOCKED, details.whipKillsTier);
+                player.putAttrib(D_SCIM_KILLS_TIER_UNLOCKED, details.dScimKillsTier);
+                player.putAttrib(STAFF_OF_LIGHT_KILLS_TIER_UNLOCKED, details.staffOfLightKillsTier);
+                player.putAttrib(RUNE_C_BOW_KILLS_TIER_UNLOCKED, details.runeCBowKillsTier);
+                player.putAttrib(D_MACE_KILLS_TIER_UNLOCKED, details.dMaceKillsTier);
+                player.putAttrib(D_LONG_KILLS_TIER_UNLOCKED, details.dLongKillsTier);
+                player.putAttrib(MSB_KILLS_TIER_UNLOCKED, details.msbKillsTier);
+                player.putAttrib(DBOW_KILLS_TIER_UNLOCKED, details.dbowKillsTier);
                 return true;
             }
         }
@@ -1179,6 +1200,27 @@ public class PlayerSave {
         private final boolean expLampUsed;
         private final boolean swiftAbility;
         private final boolean goliathAbility;
+        private final int weaponUpgrades;
+        private final int ddsKills;
+        private final int gmaulKills;
+        private final int whipKills;
+        private final int dScimKills;
+        private final int staffOfLightKills;
+        private final int runeCBowKills;
+        private final int dMaceKills;
+        private final int dLongKills;
+        private final int msbKills;
+        private final int dbowKills;
+        private final int ddsKillsTier;
+        private final int gmaulKillsTier;
+        private final int whipKillsTier;
+        private final int dScimKillsTier;
+        private final int staffOfLightKillsTier;
+        private final int runeCBowKillsTier;
+        private final int dMaceKillsTier;
+        private final int dLongKillsTier;
+        private final int msbKillsTier;
+        private final int dbowKillsTier;
 
         public String password() {
             return password;
@@ -1642,6 +1684,27 @@ public class PlayerSave {
             expLampUsed = Player.getAttribBooleanOr(player, EXP_LAMP_USED, false);
             swiftAbility = Player.getAttribBooleanOr(player, SWIFT_ABILITY, false);
             goliathAbility = Player.getAttribBooleanOr(player, GOLIATH_ABILITY, false);
+            weaponUpgrades = Player.getAttribIntOr(player, WEAPON_UPGRADES, 0);
+            ddsKills = Player.getAttribIntOr(player, DDS_KILLS, 0);
+            gmaulKills = Player.getAttribIntOr(player, GMAUL_KILLS, 0);
+            whipKills = Player.getAttribIntOr(player, WHIP_KILLS, 0);
+            dScimKills = Player.getAttribIntOr(player, D_SCIM_KILLS, 0);
+            staffOfLightKills = Player.getAttribIntOr(player, STAFF_OF_LIGHT_KILLS, 0);
+            runeCBowKills = Player.getAttribIntOr(player, RUNE_C_BOW_KILLS, 0);
+            dMaceKills = Player.getAttribIntOr(player, D_MACE_KILLS, 0);
+            dLongKills = Player.getAttribIntOr(player, D_LONG_KILLS, 0);
+            msbKills = Player.getAttribIntOr(player, MSB_KILLS, 0);
+            dbowKills = Player.getAttribIntOr(player, DBOW_KILLS, 0);
+            ddsKillsTier = Player.getAttribIntOr(player, DDS_KILLS_TIER_UNLOCKED, 0);
+            gmaulKillsTier = Player.getAttribIntOr(player, GMAUL_KILLS_TIER_UNLOCKED, 0);
+            whipKillsTier = Player.getAttribIntOr(player, WHIP_KILLS_TIER_UNLOCKED, 0);
+            dScimKillsTier = Player.getAttribIntOr(player, D_SCIM_KILLS_TIER_UNLOCKED, 0);
+            staffOfLightKillsTier = Player.getAttribIntOr(player, STAFF_OF_LIGHT_KILLS_TIER_UNLOCKED, 0);
+            runeCBowKillsTier = Player.getAttribIntOr(player, RUNE_C_BOW_KILLS_TIER_UNLOCKED, 0);
+            dMaceKillsTier = Player.getAttribIntOr(player, D_MACE_KILLS_TIER_UNLOCKED, 0);
+            dLongKillsTier = Player.getAttribIntOr(player, D_LONG_KILLS_TIER_UNLOCKED, 0);
+            msbKillsTier = Player.getAttribIntOr(player, MSB_KILLS_TIER_UNLOCKED, 0);
+            dbowKillsTier = Player.getAttribIntOr(player, DBOW_KILLS_TIER_UNLOCKED, 0);
         }
 
         public void parseDetails() throws Exception {

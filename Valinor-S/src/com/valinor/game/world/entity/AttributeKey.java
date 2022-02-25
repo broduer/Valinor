@@ -5,6 +5,29 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    WEAPON_UPGRADES("weapon_upgrades", AttribType.INTEGER),
+    DDS_KILLS("dds_kills", AttribType.INTEGER),
+    GMAUL_KILLS("gmaul_kills", AttribType.INTEGER),
+    WHIP_KILLS("whip_kills", AttribType.INTEGER),
+    D_SCIM_KILLS("d_scim_kills", AttribType.INTEGER),
+    STAFF_OF_LIGHT_KILLS("staff_of_light_kills", AttribType.INTEGER),
+    RUNE_C_BOW_KILLS("rune_c_bow_kills", AttribType.INTEGER),
+    D_MACE_KILLS("d_mace_kills", AttribType.INTEGER),
+    D_LONG_KILLS("d_long_kills", AttribType.INTEGER),
+    MSB_KILLS("msb_kills", AttribType.INTEGER),
+    DBOW_KILLS("dbow_kills", AttribType.INTEGER),
+
+    DDS_KILLS_TIER_UNLOCKED("dds_kills_tier_unlock", AttribType.INTEGER),
+    GMAUL_KILLS_TIER_UNLOCKED("gmaul_kills_tier_unlock", AttribType.INTEGER),
+    WHIP_KILLS_TIER_UNLOCKED("whip_kills_tier_unlock", AttribType.INTEGER),
+    D_SCIM_KILLS_TIER_UNLOCKED("d_scim_kills_tier_unlock", AttribType.INTEGER),
+    STAFF_OF_LIGHT_KILLS_TIER_UNLOCKED("staff_of_light_kills_tier_unlock", AttribType.INTEGER),
+    RUNE_C_BOW_KILLS_TIER_UNLOCKED("rune_c_bow_kills_tier_unlock", AttribType.INTEGER),
+    D_MACE_KILLS_TIER_UNLOCKED("d_mace_kills_tier_unlock", AttribType.INTEGER),
+    D_LONG_KILLS_TIER_UNLOCKED("d_long_kills_tier_unlock", AttribType.INTEGER),
+    MSB_KILLS_TIER_UNLOCKED("msb_kills_tier_unlock", AttribType.INTEGER),
+    DBOW_KILLS_TIER_UNLOCKED("dbow_kills_tier_unlock", AttribType.INTEGER),
+
     CORRUPTED_BOOTS_ATTEMTPS("corrupted_boots_attempts", AttribType.INTEGER),
     ANCIENT_FACEGUARD_ATTEMPTS("ancient_facegaurd_attempts", AttribType.INTEGER),
     TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS("toxic_staff_of_the_dead_c_attempts", AttribType.INTEGER),

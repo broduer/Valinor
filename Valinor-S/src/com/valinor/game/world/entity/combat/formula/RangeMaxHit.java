@@ -15,8 +15,10 @@ import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.game.world.items.container.equipment.EquipmentInfo;
 import com.valinor.util.NpcIdentifiers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -293,6 +295,18 @@ public class RangeMaxHit {
 
         if (player.getEquipment().hasAt(EquipSlot.WEAPON, MAGMA_BLOWPIPE)) {
             maxHit += 3;
+        }
+
+        //Tier 4 melee weapons
+        List<Integer> tier_four = new ArrayList<>(List.of(MAGIC_SHORTBOW_TIER_4, RUNE_CROSSBOW_TIER_4));
+        if (tier_four.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {
+            maxHit += 1;
+        }
+
+        //Tier 5 melee weapons
+        List<Integer> tier_five = new ArrayList<>(List.of(MAGIC_SHORTBOW_TIER_5_1, MAGIC_SHORTBOW_TIER_5_2, MAGIC_SHORTBOW_TIER_5_3, MAGIC_SHORTBOW_TIER_5_4, MAGIC_SHORTBOW_TIER_5_5, RUNE_CROSSBOW_TIER_5_1, RUNE_CROSSBOW_TIER_5_2, RUNE_CROSSBOW_TIER_5_3, RUNE_CROSSBOW_TIER_5_4, RUNE_CROSSBOW_TIER_5_5));
+        if (tier_five.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {
+            maxHit += 2;
         }
 
         if (player.hasPetOut("Youngllef pet")) {

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.valinor.game.content.items.combine.ElderWand.*;
-import static com.valinor.util.CustomItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD_C;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public enum CombatSpells {
@@ -1417,7 +1417,7 @@ public enum CombatSpells {
 
         @Override
         public List<Item> equipmentRequired(Player player) {
-            return List.of(Item.of(SARADOMIN_STAFF), Item.of(STAFF_OF_LIGHT));
+            return List.of(Item.of(SARADOMIN_STAFF), Item.of(STAFF_OF_LIGHT), Item.of(STAFF_OF_LIGHT_TIER_1), Item.of(STAFF_OF_LIGHT_TIER_2), Item.of(STAFF_OF_LIGHT_TIER_3), Item.of(STAFF_OF_LIGHT_TIER_4), Item.of(STAFF_OF_LIGHT_TIER_5_1), Item.of(STAFF_OF_LIGHT_TIER_5_2), Item.of(STAFF_OF_LIGHT_TIER_5_3), Item.of(STAFF_OF_LIGHT_TIER_5_4), Item.of(STAFF_OF_LIGHT_TIER_5_5));
         }
 
         @Override

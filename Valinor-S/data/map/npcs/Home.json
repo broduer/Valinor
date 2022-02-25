@@ -1,5 +1,13 @@
 [
   {
+    "id": 5979,
+    "x": 3083,
+    "y": 3506,
+    "radius": 0,
+    "direction": "S",
+    "desc": "Weapon Upgrader"
+  },
+  {
     "name": "Drunken dwarf",
     "id": 2408,
     "x": 3098,
@@ -71,13 +79,13 @@
     "walkRange": 0
   },
   {
-  "name": "Banker",
-  "id": 3888,
-  "x": 3090,
-  "y": 3494,
-  "z": 0,
-  "direction": "S",
-  "walkRange": 0
+    "name": "Banker",
+    "id": 3888,
+    "x": 3090,
+    "y": 3494,
+    "z": 0,
+    "direction": "S",
+    "walkRange": 0
   },
   {
     "name": "Banker",
@@ -290,15 +298,15 @@
     "direction": "E",
     "walkRange": 0
   },
- /* {
-    "name": "Referral Manager",
-    "id": 9413,
-    "x": 3081,
-    "y": 3500,
-    "z": 0,
-    "direction": "E",
-    "walkRange": 0
-  },*/
+  /* {
+     "name": "Referral Manager",
+     "id": 9413,
+     "x": 3081,
+     "y": 3500,
+     "z": 0,
+     "direction": "E",
+     "walkRange": 0
+   },*/
   {
     "name": "Food and Potion supplies",
     "id": 225,

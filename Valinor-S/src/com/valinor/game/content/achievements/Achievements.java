@@ -2,6 +2,7 @@ package com.valinor.game.content.achievements;
 
 import com.valinor.game.GameConstants;
 import com.valinor.game.world.items.Item;
+import com.valinor.util.ItemIdentifiers;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -202,6 +203,9 @@ public enum Achievements {
     WILDY_KEY_HUNTER_III("Wildy Key Hunter III","Get to safety with a wilderness key 45 times.",45, Difficulty.HARD, new Item(COINS_995, 10_000_000), new Item(MYSTERY_TICKET,3)),
     WILDY_KEY_III("Wildy Key III","Open 45 wilderness keys.",45, Difficulty.HARD, new Item(COINS_995, 15_000_000), new Item(DONATOR_MYSTERY_BOX,3)),
 
+    AMELIORATION_I("Amelioration I", "Perform at least 1 weapon upgrades.", 1, Difficulty.EASY, new Item(ItemIdentifiers.SARADOMIN_GODSWORD), new Item(ItemIdentifiers.BANDOS_GODSWORD), new Item(ItemIdentifiers.ZAMORAK_GODSWORD)),
+    AMELIORATION_II("Amelioration II", "Perform at least 3 weapon upgrades.", 1, Difficulty.MED, new Item(ItemIdentifiers.ARMADYL_GODSWORD), new Item(ItemIdentifiers.DRAGON_CLAWS)),
+    AMELIORATION_III("Amelioration III", "Unlock the tier 5 abyssal whip.", 1, Difficulty.HARD, new Item(ItemIdentifiers.ELDER_MAUL)),
     ;
 
     public static List<Achievements> asList(Difficulty difficulty) {

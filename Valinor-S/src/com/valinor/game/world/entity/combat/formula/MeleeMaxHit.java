@@ -329,6 +329,18 @@ public class MeleeMaxHit {
             maxHit += 1;
         }
 
+        //Tier 4 melee weapons
+        List<Integer> tier_four = new ArrayList<>(List.of(GRANITE_MAUL_TIER_4, ABYSSAL_WHIP_TIER_4, DRAGON_DAGGER_TIER_4, DRAGON_SCIMITAR_TIER_4, DRAGON_LONGSWORD_TIER_4, DRAGON_MACE_TIER_4));
+        if (tier_four.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {
+            maxHit += 1;
+        }
+
+        //Tier 5 melee weapons
+        List<Integer> tier_five = new ArrayList<>(List.of(GRANITE_MAUL_TIER_5_1, GRANITE_MAUL_TIER_5_2, GRANITE_MAUL_TIER_5_3, GRANITE_MAUL_TIER_5_4, GRANITE_MAUL_TIER_5_5, ABYSSAL_WHIP_TIER_5_1, ABYSSAL_WHIP_TIER_5_2, ABYSSAL_WHIP_TIER_5_3, ABYSSAL_WHIP_TIER_5_4, ABYSSAL_WHIP_TIER_5_5, DRAGON_DAGGER_TIER_5_1, DRAGON_DAGGER_TIER_5_2, DRAGON_DAGGER_TIER_5_3, DRAGON_DAGGER_TIER_5_4, DRAGON_DAGGER_TIER_5_5, DRAGON_SCIMITAR_TIER_5_1, DRAGON_SCIMITAR_TIER_5_2, DRAGON_SCIMITAR_TIER_5_3, DRAGON_SCIMITAR_TIER_5_4, DRAGON_SCIMITAR_TIER_5_5, DRAGON_LONGSWORD_TIER_5_1, DRAGON_LONGSWORD_TIER_5_2, DRAGON_LONGSWORD_TIER_5_3, DRAGON_LONGSWORD_TIER_5_4, DRAGON_LONGSWORD_TIER_5_5, DRAGON_MACE_TIER_5_1, DRAGON_MACE_TIER_5_2, DRAGON_MACE_TIER_5_3, DRAGON_MACE_TIER_5_4, DRAGON_MACE_TIER_5_5));
+        if (tier_five.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {
+            maxHit += 2;
+        }
+
         if(player.hasPetOut("Baby Barrelchest") || player.hasPetOut("Ancient barrelchest")) {
             maxHit += 1;
         }
