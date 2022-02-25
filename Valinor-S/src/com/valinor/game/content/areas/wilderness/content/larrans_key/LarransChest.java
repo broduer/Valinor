@@ -71,9 +71,9 @@ public class LarransChest extends Interaction {
         new Item(STEEL_BAR+1, 350 + World.getWorld().random(550)),
         new Item(MAGIC_LOGS+1, 180 + World.getWorld().random(220)),
         new Item(DRAGON_DART_TIP, 80 + World.getWorld().random(200)),
-        new Item(TORSTOL_SEED, 10 + World.getWorld().random(10)),
-        new Item(SNAPDRAGON_SEED, 10 + World.getWorld().random(10)),
-        new Item(RANARR_SEED, 10 + World.getWorld().random(10))
+        new Item(TORSTOL_SEED, World.getWorld().random(1, 5)),
+        new Item(SNAPDRAGON_SEED, World.getWorld().random(1, 5)),
+        new Item(RANARR_SEED, World.getWorld().random(1, 5))
     );
 
     private static final List<Item> RARE = Arrays.asList(

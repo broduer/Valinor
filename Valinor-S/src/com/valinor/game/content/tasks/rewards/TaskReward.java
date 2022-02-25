@@ -24,8 +24,8 @@ public class TaskReward {
         new Item(ANGLERFISH+1, 50),
         new Item(SUPER_COMBAT_POTION4+1, 10),
         new Item(DIVINE_SUPER_COMBAT_POTION4+1, 5),
-        new Item(SNAPDRAGON_SEED, 10),
-        new Item(RANARR_SEED, 15),
+        new Item(SNAPDRAGON_SEED, 3),
+        new Item(RANARR_SEED, 5),
         new Item(ANTIQUE_LAMP_11137),
         new Item(MAGIC_LOGS+1, 200),
         new Item(YEW_LOGS+1, 300)

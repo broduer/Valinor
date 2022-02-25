@@ -60,6 +60,7 @@ public class SlayerKey {
             return;
         }
 
+        player.lock();
         player.message("You unlock the chest with your key.");
         player.sound(51);
         player.animate(536);
@@ -85,6 +86,7 @@ public class SlayerKey {
         var keysUsed = player.<Integer>getAttribOr(SLAYER_KEYS_OPENED,0) + 1;
         player.putAttrib(SLAYER_KEYS_OPENED, keysUsed);
         player.message(Color.PURPLE.wrap("You have now opened "+Utils.formatNumber(keysUsed)+" slayer keys!"));
+        player.unlock();
     }
 
     private boolean rare = false;

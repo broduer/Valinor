@@ -28,6 +28,7 @@ public class BrimstoneKey extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (object.getId() == BRIMSTONE_CHEST && option == 1) {
+            player.lock();
             if (player.inventory().contains(BRIMSTONE_KEY)) {
                 player.inventory().remove(new Item(BRIMSTONE_KEY));
                 player.message("You unlock the chest with your key.");
@@ -41,6 +42,7 @@ public class BrimstoneKey extends Interaction {
                     for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
+                    player.unlock();
                 });
             } else {
                 player.message("You need a crystal key to open this chest.");
@@ -54,6 +56,7 @@ public class BrimstoneKey extends Interaction {
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
         if (object.getId() == BRIMSTONE_CHEST) {
             if (player.inventory().contains(BRIMSTONE_KEY)) {
+                player.lock();
                 player.inventory().remove(new Item(BRIMSTONE_KEY));
                 player.message("You unlock the chest with your key.");
                 player.sound(51);
@@ -66,6 +69,7 @@ public class BrimstoneKey extends Interaction {
                     for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
+                    player.unlock();
                 });
             } else {
                 player.message("You need a crystal key to open this chest.");
@@ -128,10 +132,10 @@ public class BrimstoneKey extends Interaction {
         new Item(STEEL_BAR + 1, 300 + World.getWorld().random(200)),
         new Item(RAW_DARK_CRAB + 1, 80 + World.getWorld().random(160)),
         new Item(GRIMY_RANARR_WEED + 1, 40 + World.getWorld().random(50)),
-        new Item(RANARR_SEED, 30 + World.getWorld().random(25)),
+        new Item(RANARR_SEED, World.getWorld().random(1, 5)),
         new Item(GRIMY_SNAPDRAGON + 1, 40 + World.getWorld().random(50)),
         new Item(GRIMY_TOADFLAX + 1, 40 + World.getWorld().random(50)),
-        new Item(SNAPDRAGON_SEED, 30 + World.getWorld().random(25)),
+        new Item(SNAPDRAGON_SEED, World.getWorld().random(1, 5)),
         new Item(PURE_ESSENCE + 1, 3000 + World.getWorld().random(3000)));
 
     private final List<Item> UNCOMMON = Arrays.asList(

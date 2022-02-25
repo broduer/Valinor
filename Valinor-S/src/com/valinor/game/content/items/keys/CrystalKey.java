@@ -39,6 +39,7 @@ public class CrystalKey extends Interaction {
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (object.getId() == 172 && option == 1) {
             if (player.inventory().contains(CRYSTAL_KEY)) {
+                player.lock();
                 player.inventory().remove(new Item(CRYSTAL_KEY));
                 player.message("You unlock the chest with your key.");
                 player.sound(51);
@@ -54,6 +55,7 @@ public class CrystalKey extends Interaction {
                     for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
+                    player.unlock();
                 });
             } else {
                 player.message("You need a crystal key to open this chest.");
@@ -67,6 +69,7 @@ public class CrystalKey extends Interaction {
     public boolean handleItemOnObject(Player player, Item item, GameObject object) {
         if (object.getId() == 172) {
             if (player.inventory().contains(CRYSTAL_KEY)) {
+                player.lock();
                 player.inventory().remove(new Item(CRYSTAL_KEY));
                 player.message("You unlock the chest with your key.");
                 player.sound(51);
@@ -82,6 +85,7 @@ public class CrystalKey extends Interaction {
                     for (int i = 0; i < rolls; i++) {
                         reward(player);
                     }
+                    player.unlock();
                 });
             } else {
                 player.message("You need a crystal key to open this chest.");
@@ -126,10 +130,10 @@ public class CrystalKey extends Interaction {
         new Item(COINS_995, 2_500_000),
         new Item(RAW_DARK_CRAB + 1, 30),
         new Item(GRIMY_RANARR_WEED + 1, 25),
-        new Item(RANARR_SEED, 25),
+        new Item(RANARR_SEED, World.getWorld().random(1, 5)),
         new Item(GRIMY_SNAPDRAGON + 1, 25),
         new Item(GRIMY_TOADFLAX + 1, 25),
-        new Item(SNAPDRAGON_SEED, 25));
+        new Item(SNAPDRAGON_SEED, World.getWorld().random(1, 3)));
 
     private final List<Item> UNCOMMON = Arrays.asList(
         new Item(COINS_995, 5_000_000),

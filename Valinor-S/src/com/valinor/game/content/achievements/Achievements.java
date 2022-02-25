@@ -155,7 +155,7 @@ public enum Achievements {
     LUMBERJACK("Lumberjack", "Cut 1000 logs.", 1000, Difficulty.EASY, new Item(LUMBERJACK_BOOTS), new Item(LUMBERJACK_HAT), new Item(LUMBERJACK_TOP), new Item(LUMBERJACK_LEGS), new Item(MAGIC_LOGS+1, 100), new Item(YEW_LOGS+1, 100)),
 
     /* Farming */
-    FARMER("Farmer", "Harvest 100 seeds.", 100, Difficulty.HARD, new Item(FARMERS_STRAWHAT), new Item(FARMERS_BOOTS), new Item(FARMERS_JACKET), new Item(FARMERS_BORO_TROUSERS), new Item(SNAPDRAGON_SEED,100)),
+    FARMER("Farmer", "Harvest 100 seeds.", 100, Difficulty.HARD, new Item(FARMERS_STRAWHAT), new Item(FARMERS_BOOTS), new Item(FARMERS_JACKET), new Item(FARMERS_BORO_TROUSERS), new Item(SNAPDRAGON_SEED,25)),
 
     /* PvP */
     PVP_I("PVP I", "Kill 100 players in the wilderness.",100, Difficulty.EASY, new Item(DONATOR_MYSTERY_BOX)),
