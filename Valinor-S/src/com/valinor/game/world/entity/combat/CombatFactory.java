@@ -604,7 +604,7 @@ public class CombatFactory {
      * @param target   The victim.
      * @return True if attacker has the requirements to attack, otherwise false.
      */
-    public static boolean canAttack(Mob attacker, Mob target) { // mind if we rename args make it a bit easier? sure go ahead
+    public static boolean canAttack(Mob attacker, Mob target) {
         Debugs.CMB.debug(attacker, "enter can attack", target, true);
 
         if (attacker == null || target == null) {

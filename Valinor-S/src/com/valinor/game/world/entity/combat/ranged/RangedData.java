@@ -229,7 +229,7 @@ public class RangedData {
         DRAGON_HUNTER_CROSSBOW(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         DRAGON_HUNTER_CROSSBOW_T(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_T}, RangedWeaponType.CROSSBOWS, true),
         DRAGON_HUNTER_CROSSBOW_B(new int[] {ItemIdentifiers.DRAGON_HUNTER_CROSSBOW_B}, RangedWeaponType.CROSSBOWS, true),
-        ZARYTE_CROSSBOW(new int[] {26374}, RangedWeaponType.ZARYTE_CROSSBOW, true),
+        ZARYTE_CROSSBOW(new int[] {ItemIdentifiers.ZARYTE_CROSSBOW}, RangedWeaponType.ZARYTE_CROSSBOW, true),
 
         HUNTERS_CROSSBOW(new int[] {ItemIdentifiers.HUNTERS_CROSSBOW}, RangedWeaponType.CROSSBOWS, true),
         KARILS_CROSSBOW(new int[]{ItemIdentifiers.KARILS_CROSSBOW}, RangedWeaponType.KARILS_CROSSBOW, true),
