@@ -15,7 +15,6 @@ import static com.valinor.util.CustomItemIdentifiers.CLOAK_OF_INVISIBILITY;
 import static com.valinor.util.CustomNpcIdentifiers.ICE_IMP_PET;
 import static com.valinor.util.CustomNpcIdentifiers.SKELETON_HELLHOUND_PET;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.ZAMORAK_GODSWORD_ORNAMENT_KIT;
 
 public class HoverMenuManager {
 
@@ -160,9 +159,11 @@ public class HoverMenuManager {
         menus.put(BABY_SQUIRT, new HoverMenu("Gives @red@10%@whi@ more accuracy and acts as a ring of vigour."));
         menus.put(OLMLET, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
         menus.put(LIL_ZIK, new HoverMenu("Gives @red@10%@whi@ extra damage and accuracy during raids. And 10% boost in personal points."));
+        menus.put(GRIM_REAPER_PET, new HoverMenu("Always protects one extra item when using the protection prayer. (Does not count when smited)"));
         menus.put(INFERNAL_TRIDENT, new HoverMenu("@red@+2@whi@ to max hit, opposed to Sanguinesti staff."));
         menus.put(RANGING_SCROLL, new HoverMenu("Read this scroll to learn the ability of swift. 5% chance to activate."));
         menus.put(MELEE_SCROLL, new HoverMenu("Read this scroll to learn the ability of goliath. 5% chance to activate."));
+        menus.put(GRAND_MYSTERY_BOX, new HoverMenu("There is a @red@25%@whi@ chance that you will double this mystery box."));
 
         menus.put(GOLD_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable PvP items in the game!",
             Arrays.asList(
@@ -220,17 +221,25 @@ public class HoverMenuManager {
 
         menus.put(LEGENDARY_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
-                ARCANE_SPIRIT_SHIELD,
-                AVERNIC_DEFENDER,
-                VOLATILE_ORB,
-                ELDRITCH_ORB,
-                HARMONISED_ORB,
-                DONATOR_TICKET,
-                PETS_MYSTERY_BOX,
-                ELDER_MAUL,
-                DRAGON_HUNTER_CROSSBOW,
+                TWISTED_BOW,
+                SCYTHE_OF_VITUR,
+                ELYSIAN_SPIRIT_SHIELD,
+                KORASI_SWORD,
+                TORVA_FULL_HELM,
+                TORVA_PLATEBODY,
+                TORVA_PLATELEGS,
+                CustomItemIdentifiers.NIFFLER,
+                CustomItemIdentifiers.FAWKES,
                 DRAGON_HUNTER_LANCE,
-                NIGHTMARE_STAFF
+                SANGUINESTI_STAFF,
+                ANCESTRAL_HAT,
+                ANCESTRAL_ROBE_TOP,
+                ANCESTRAL_ROBE_BOTTOM,
+                KODAI_WAND,
+                AVERNIC_DEFENDER,
+                DONATOR_TICKET, 5_000,
+                PETS_MYSTERY_BOX,
+                DRAGON_HUNTER_CROSSBOW
             )));
 
         menus.put(PROMO_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
@@ -287,7 +296,93 @@ public class HoverMenuManager {
 
         menus.put(DONATOR_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable items in the game!",
             Arrays.asList(
-                GREEN_HALLOWEEN_MASK, _3RD_AGE_BOW, BLACK_SANTA_HAT, BLUE_PARTYHAT, ARCANE_SPIRIT_SHIELD, SPECTRAL_SPIRIT_SHIELD, FEROCIOUS_GLOVES, DRAGON_HUNTER_LANCE, ARMADYL_GODSWORD, DRAGON_WARHAMMER, ARMADYL_CROSSBOW, TOXIC_STAFF_OF_THE_DEAD, PRIMORDIAL_BOOTS, BANDOS_TASSETS, ARMADYL_CHESTPLATE
+                TWISTED_BOW,
+                SCYTHE_OF_VITUR,
+                ELYSIAN_SPIRIT_SHIELD,
+                CustomItemIdentifiers.NIFFLER,
+                CustomItemIdentifiers.FAWKES,
+                SANGUINESTI_STAFF,
+                ELDER_MAUL,
+                GHRAZI_RAPIER,
+                _3RD_AGE_LONGSWORD,
+                _3RD_AGE_BOW,
+                _3RD_AGE_WAND,
+                ANCESTRAL_HAT,
+                ANCESTRAL_ROBE_TOP,
+                ANCESTRAL_ROBE_BOTTOM,
+                GREEN_HALLOWEEN_MASK,
+                BLUE_HALLOWEEN_MASK,
+                RED_HALLOWEEN_MASK,
+                BLACK_HWEEN_MASK,
+                SANTA_HAT,
+                BLACK_SANTA_HAT,
+                INVERTED_SANTA_HAT,
+                RED_PARTYHAT,
+                YELLOW_PARTYHAT,
+                BLUE_PARTYHAT,
+                GREEN_PARTYHAT,
+                PURPLE_PARTYHAT,
+                WHITE_PARTYHAT,
+                BLACK_PARTYHAT,
+                RAINBOW_PARTYHAT,
+                PARTYHAT__SPECS,
+                CHRISTMAS_CRACKER,
+                _3RD_AGE_WAND,
+                _3RD_AGE_BOW,
+                _3RD_AGE_LONGSWORD,
+                _3RD_AGE_CLOAK,
+                _3RD_AGE_RANGE_TOP,
+                _3RD_AGE_RANGE_LEGS,
+                _3RD_AGE_RANGE_COIF,
+                _3RD_AGE_VAMBRACES,
+                _3RD_AGE_ROBE_TOP,
+                _3RD_AGE_ROBE,
+                _3RD_AGE_MAGE_HAT,
+                _3RD_AGE_AMULET,
+                _3RD_AGE_PLATELEGS,
+                _3RD_AGE_PLATEBODY,
+                _3RD_AGE_FULL_HELMET,
+                _3RD_AGE_KITESHIELD
+            )));
+
+        menus.put(ARMOUR_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable armour in the game!",
+            Arrays.asList(
+                ELYSIAN_SPIRIT_SHIELD,
+                STATIUSS_FULL_HELM,
+                STATIUSS_PLATEBODY,
+                STATIUSS_PLATELEGS,
+                VESTAS_CHAINBODY,
+                VESTAS_PLATESKIRT,
+                ANCESTRAL_HAT,
+                ANCESTRAL_ROBE_TOP,
+                ANCESTRAL_ROBE_BOTTOM,
+                MORRIGANS_COIF,
+                MORRIGANS_LEATHER_BODY,
+                MORRIGANS_LEATHER_CHAPS,
+                ZURIELS_HOOD,
+                ZURIELS_ROBE_TOP,
+                ZURIELS_ROBE_BOTTOM,
+                ARCANE_SPIRIT_SHIELD,
+                NEITIZNOT_FACEGUARD,
+                DINHS_BULWARK
+            )));
+
+        menus.put(WEAPON_MYSTERY_BOX, new HoverMenu("Has a chance to give some of the most valuable weaponary in the game!",
+            Arrays.asList(
+                NIGHTMARE_STAFF,
+                SANGUINESTI_STAFF,
+                GHRAZI_RAPIER,
+                ELDER_MAUL,
+                DRAGON_CLAWS,
+                ARMADYL_GODSWORD,
+                VESTAS_LONGSWORD,
+                STATIUSS_WARHAMMER,
+                VESTAS_SPEAR,
+                TOXIC_BLOWPIPE,
+                TOXIC_STAFF_OF_THE_DEAD,
+                HEAVY_BALLISTA,
+                ABYSSAL_DAGGER_P_13271,
+                ARMADYL_CROSSBOW
             )));
 
         menus.put(MYSTERY_CHEST, new HoverMenu("Has a chance to give some of the most rare items in the game!",

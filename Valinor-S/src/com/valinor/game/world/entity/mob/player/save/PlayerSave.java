@@ -643,6 +643,9 @@ public class PlayerSave {
                 player.putAttrib(BLOOD_FURY_HESPORI_LOG_CLAIMED, details.bloodFurHesporiLogClaimed);
                 player.putAttrib(TINFERNAL_SPIDER_LOG_CLAIMED, details.infernalSpiderLogClaimed);
                 player.putAttrib(DONATOR_MYSTERY_BOX_LOG_CLAIMED, details.donatorMysteryBoxLogClaimed);
+                player.putAttrib(ARMOUR_MYSTERY_BOX_LOG_CLAIMED, details.armourMysteryBoxLogClaimed);
+                player.putAttrib(WEAPON_MYSTERY_BOX_LOG_CLAIMED, details.weaponMysteryBoxLogClaimed);
+                player.putAttrib(LEGENDARY_MYSTERY_BOX_LOG_CLAIMED, details.legendaryMysteryBoxLogClaimed);
                 player.putAttrib(MYSTERY_TICKET_LOG_CLAIMED, details.mysteryTicketLogClaimed);
                 player.putAttrib(MYSTERY_CHEST_LOG_CLAIMED, details.mysteryChestLogClaimed);
                 player.putAttrib(PETS_MYSTERY_BOX_LOG_CLAIMED, details.petsMysteryLogClaimed);
@@ -684,6 +687,13 @@ public class PlayerSave {
                 player.putAttrib(D_LONG_KILLS_TIER_UNLOCKED, details.dLongKillsTier);
                 player.putAttrib(MSB_KILLS_TIER_UNLOCKED, details.msbKillsTier);
                 player.putAttrib(DBOW_KILLS_TIER_UNLOCKED, details.dbowKillsTier);
+                player.putAttrib(ARMOUR_MYSTERY_BOXES_OPENED, details.armourMysteryBoxesOpened);
+                player.putAttrib(DONATOR_MYSTERY_BOXES_OPENED, details.donatorMysteryBoxesOpened);
+                player.putAttrib(LEGENDARY_MYSTERY_BOXES_OPENED, details.legendaryMysteryBoxesOpened);
+                player.putAttrib(MYSTERY_CHESTS_OPENED, details.mysteryChestsOpened);
+                player.putAttrib(MYSTERY_TICKETS_OPENED, details.mysteryTicketsOpened);
+                player.putAttrib(PETS_MYSTERY_BOXES_OPENED, details.petsMysteryBoxesOpened);
+                player.putAttrib(WEAPON_MYSTERY_BOXES_OPENED, details.weaponMysteryBoxesOpened);
                 return true;
             }
         }
@@ -1179,6 +1189,9 @@ public class PlayerSave {
         private final boolean bloodFurHesporiLogClaimed;
         private final boolean infernalSpiderLogClaimed;
         private final boolean donatorMysteryBoxLogClaimed;
+        private final boolean armourMysteryBoxLogClaimed;
+        private final boolean weaponMysteryBoxLogClaimed;
+        private final boolean legendaryMysteryBoxLogClaimed;
         private final boolean mysteryTicketLogClaimed;
         private final boolean mysteryChestLogClaimed;
         private final boolean petsMysteryLogClaimed;
@@ -1221,6 +1234,13 @@ public class PlayerSave {
         private final int dLongKillsTier;
         private final int msbKillsTier;
         private final int dbowKillsTier;
+        private final int armourMysteryBoxesOpened;
+        private final int donatorMysteryBoxesOpened;
+        private final int legendaryMysteryBoxesOpened;
+        private final int mysteryChestsOpened;
+        private final int mysteryTicketsOpened;
+        private final int petsMysteryBoxesOpened;
+        private final int weaponMysteryBoxesOpened;
 
         public String password() {
             return password;
@@ -1664,6 +1684,9 @@ public class PlayerSave {
             bloodFurHesporiLogClaimed = Player.getAttribBooleanOr(player, BLOOD_FURY_HESPORI_LOG_CLAIMED, false);
             infernalSpiderLogClaimed = Player.getAttribBooleanOr(player, TINFERNAL_SPIDER_LOG_CLAIMED, false);
             donatorMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, DONATOR_MYSTERY_BOX_LOG_CLAIMED, false);
+            armourMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, ARMOUR_MYSTERY_BOX_LOG_CLAIMED, false);
+            weaponMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, WEAPON_MYSTERY_BOX_LOG_CLAIMED, false);
+            legendaryMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, LEGENDARY_MYSTERY_BOX_LOG_CLAIMED, false);
             mysteryTicketLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_TICKET_LOG_CLAIMED, false);
             mysteryChestLogClaimed = Player.getAttribBooleanOr(player, MYSTERY_CHEST_LOG_CLAIMED, false);
             petsMysteryLogClaimed = Player.getAttribBooleanOr(player, PETS_MYSTERY_BOX_LOG_CLAIMED, false);
@@ -1705,6 +1728,13 @@ public class PlayerSave {
             dLongKillsTier = Player.getAttribIntOr(player, D_LONG_KILLS_TIER_UNLOCKED, 0);
             msbKillsTier = Player.getAttribIntOr(player, MSB_KILLS_TIER_UNLOCKED, 0);
             dbowKillsTier = Player.getAttribIntOr(player, DBOW_KILLS_TIER_UNLOCKED, 0);
+            armourMysteryBoxesOpened = Player.getAttribIntOr(player, ARMOUR_MYSTERY_BOXES_OPENED, 0);
+            donatorMysteryBoxesOpened = Player.getAttribIntOr(player, DONATOR_MYSTERY_BOXES_OPENED, 0);
+            legendaryMysteryBoxesOpened = Player.getAttribIntOr(player, LEGENDARY_MYSTERY_BOXES_OPENED, 0);
+            mysteryChestsOpened = Player.getAttribIntOr(player, MYSTERY_CHESTS_OPENED, 0);
+            mysteryTicketsOpened = Player.getAttribIntOr(player, MYSTERY_TICKETS_OPENED, 0);
+            petsMysteryBoxesOpened = Player.getAttribIntOr(player, PETS_MYSTERY_BOXES_OPENED, 0);
+            weaponMysteryBoxesOpened = Player.getAttribIntOr(player, WEAPON_MYSTERY_BOXES_OPENED, 0);
         }
 
         public void parseDetails() throws Exception {

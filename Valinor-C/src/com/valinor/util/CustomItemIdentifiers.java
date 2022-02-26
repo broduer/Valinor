@@ -104,6 +104,9 @@ public class CustomItemIdentifiers {
     public static final int FRAGMENT_OF_SEREN_PET = 30344;
     public static final int BLOOD_FURY_HESPORI_PET = 30345;
     public static final int INFERNAL_SPIDER_PET = 30346;
+    public static final int ARMOUR_MYSTERY_BOX = 30372;
+    public static final int WEAPON_MYSTERY_BOX = 30373;
+    public static final int GRAND_MYSTERY_BOX = 30374;
     public static final int PVP_MYSTERY_BOX = 30375;
     public static final int YOUTUBE_MYSTERY_BOX = 30376;
     public static final int LEGENDARY_MYSTERY_BOX = 30377;

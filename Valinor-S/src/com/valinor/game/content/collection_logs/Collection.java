@@ -13,12 +13,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.*;
-import static com.valinor.util.CustomItemIdentifiers.BABY_LAVA_DRAGON;
-import static com.valinor.util.CustomItemIdentifiers.BARRELCHEST_PET;
-import static com.valinor.util.CustomItemIdentifiers.DEMENTOR_PET;
-import static com.valinor.util.CustomItemIdentifiers.FENRIR_GREYBACK_JR;
-import static com.valinor.util.CustomItemIdentifiers.FLUFFY_JR;
-import static com.valinor.util.CustomItemIdentifiers.NIFFLER;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
@@ -190,7 +184,7 @@ public enum Collection {
     // Custom bosses
     BARRELCHEST(AttributeKey.BARRELCHESTS_KILLED, LogType.BOSSES, "Barrelchests", new int[]{NpcIdentifiers.BARRELCHEST_6342}, AttributeKey.BARRELCHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 1), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL)),
+        new Item(CustomItemIdentifiers.BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL)),
 
     ZOMBIES_CHAMPION(AttributeKey.ZOMBIES_CHAMPIONS_KILLED, LogType.BOSSES, "Zombies Champion", new int[]{NpcIdentifiers.ZOMBIES_CHAMPION}, AttributeKey.ZOMBIES_CHAMPION_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2), new Item(KEY_OF_DROPS,3)},
         //Drops
@@ -198,7 +192,7 @@ public enum Collection {
 
     BRUTAL_LAVA_DRAGON(AttributeKey.BRUTAL_LAVA_DRAGONS_KILLED, LogType.BOSSES, "Brutal Lava Dragon", new int[]{BRUTAL_LAVA_DRAGON_FLYING}, AttributeKey.BRUTAL_LAVA_DRAGON_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2)},
         //Drops
-        new Item(BABY_LAVA_DRAGON), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT), new Item(INFERNAL_CAPE)),
+        new Item(CustomItemIdentifiers.BABY_LAVA_DRAGON), new Item(LAVA_DHIDE_COIF), new Item(LAVA_DHIDE_BODY), new Item(LAVA_DHIDE_CHAPS), new Item(KEY_OF_DROPS), new Item(LAVA_PARTYHAT), new Item(INFERNAL_CAPE)),
 
     CORRUPTED_NECHRYARCH(AttributeKey.CORRUPTED_NECHRYARCHS_KILLED, LogType.BOSSES, "Corrupted Nechryarch", new int[]{CustomNpcIdentifiers.CORRUPTED_NECHRYARCH}, AttributeKey.CORRUPTED_NECHRYARCH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1)},
         //Drops
@@ -256,7 +250,7 @@ public enum Collection {
 
     CHAMBER_OF_SECRETS(AttributeKey.CHAMBER_OF_SECRET_RUNS_COMPLETED, LogType.BOSSES, "Chamber Of Secrets", new int[]{COS_RAIDS_KEY}, AttributeKey.CHAMBER_OF_SECRETS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX,3)},
         //Drops
-        new Item(CustomItemIdentifiers.NAGINI), new Item(FENRIR_GREYBACK_JR), new Item(FLUFFY_JR), new Item(CENTAUR_MALE), new Item(CENTAUR_FEMALE), new Item(DEMENTOR_PET),
+        new Item(CustomItemIdentifiers.NAGINI), new Item(CustomItemIdentifiers.FENRIR_GREYBACK_JR), new Item(CustomItemIdentifiers.FLUFFY_JR), new Item(CENTAUR_MALE), new Item(CENTAUR_FEMALE), new Item(CustomItemIdentifiers.DEMENTOR_PET),
         new Item(TOM_RIDDLE_DIARY), new Item(MARVOLO_GAUNTS_RING), new Item(CLOAK_OF_INVISIBILITY), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(SALAZAR_SLYTHERINS_LOCKET)),
 
     CHAMBER_OF_XERIC(AttributeKey.CHAMBER_OF_XERIC_RUNS_COMPLETED, LogType.BOSSES, "Chambers of Xeric", new int[]{COX_RAIDS_KEY}, AttributeKey.CHAMBER_OF_XERIC_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX,5), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.RAIDS_MYSTERY_BOX,5)},
@@ -274,29 +268,133 @@ public enum Collection {
 
     FRAGMENT_OF_SEREN(AttributeKey.FRAGMENT_OF_SEREN_KC, LogType.BOSSES, "Fragment of seren", new int[]{NpcIdentifiers.FRAGMENT_OF_SEREN}, AttributeKey.FRAGMENT_OF_SEREN_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(MELEE_SCROLL)
+        new Item(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(MELEE_SCROLL)
     ),
 
     BLOOD_FURY_HESPORI(AttributeKey.BLOOD_FURY_HESPORI_KC, LogType.BOSSES, "Blood fury hespori", new int[]{CustomNpcIdentifiers.BLOOD_FURY_HESPORI, BLOOD_FURY_HESPORI_15022}, AttributeKey.BLOOD_FURY_HESPORI_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(RANGING_SCROLL)
+        new Item(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(RANGING_SCROLL)
     ),
 
     INFERNAL_SPIDER(AttributeKey.INFERNAL_SPIDER_KC, LogType.BOSSES, "Infernal spider", new int[]{CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031}, AttributeKey.TINFERNAL_SPIDER_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
     ),
 
     //Mystery box
     DONATOR_MYSTERY_BOX(AttributeKey.DONATOR_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Donator Mystery Box", new int[]{CustomItemIdentifiers.DONATOR_MYSTERY_BOX}, AttributeKey.DONATOR_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX, 10), new Item(KEY_OF_DROPS,5)},
         //Drops
-        new Item(GREEN_HALLOWEEN_MASK), new Item(BLUE_HALLOWEEN_MASK), new Item(RED_HALLOWEEN_MASK), new Item(BLACK_HWEEN_MASK), new Item(SANTA_HAT),
-        new Item(BLACK_SANTA_HAT), new Item(INVERTED_SANTA_HAT), new Item(RED_PARTYHAT), new Item(YELLOW_PARTYHAT), new Item(BLUE_PARTYHAT),
-        new Item(GREEN_PARTYHAT), new Item(PURPLE_PARTYHAT), new Item(WHITE_PARTYHAT), new Item(BLACK_PARTYHAT), new Item(RAINBOW_PARTYHAT),
-        new Item(PARTYHAT__SPECS), new Item(CHRISTMAS_CRACKER), new Item(_3RD_AGE_WAND), new Item(_3RD_AGE_BOW), new Item(_3RD_AGE_LONGSWORD),
-        new Item(_3RD_AGE_CLOAK), new Item(_3RD_AGE_RANGE_TOP), new Item(_3RD_AGE_RANGE_LEGS), new Item(_3RD_AGE_RANGE_COIF), new Item(_3RD_AGE_VAMBRACES),
-        new Item(_3RD_AGE_ROBE_TOP), new Item(_3RD_AGE_ROBE), new Item(_3RD_AGE_MAGE_HAT), new Item(_3RD_AGE_AMULET), new Item(_3RD_AGE_PLATELEGS),
-        new Item(_3RD_AGE_PLATEBODY), new Item(_3RD_AGE_FULL_HELMET), new Item(_3RD_AGE_KITESHIELD)),
+        new Item(TWISTED_BOW),
+        new Item(SCYTHE_OF_VITUR),
+        new Item(ELYSIAN_SPIRIT_SHIELD),
+        new Item(CustomItemIdentifiers.NIFFLER),
+        new Item(CustomItemIdentifiers.FAWKES),
+        new Item(SANGUINESTI_STAFF),
+        new Item(ELDER_MAUL),
+        new Item(GHRAZI_RAPIER),
+        new Item(_3RD_AGE_LONGSWORD),
+        new Item(_3RD_AGE_BOW),
+        new Item(_3RD_AGE_WAND),
+        new Item(ANCESTRAL_HAT),
+        new Item(ANCESTRAL_ROBE_TOP),
+        new Item(ANCESTRAL_ROBE_BOTTOM),
+        new Item(GREEN_HALLOWEEN_MASK),
+        new Item(BLUE_HALLOWEEN_MASK),
+        new Item(RED_HALLOWEEN_MASK),
+        new Item(BLACK_HWEEN_MASK),
+        new Item(SANTA_HAT),
+        new Item(BLACK_SANTA_HAT),
+        new Item(INVERTED_SANTA_HAT),
+        new Item(RED_PARTYHAT),
+        new Item(YELLOW_PARTYHAT),
+        new Item(BLUE_PARTYHAT),
+        new Item(GREEN_PARTYHAT),
+        new Item(PURPLE_PARTYHAT),
+        new Item(WHITE_PARTYHAT),
+        new Item(BLACK_PARTYHAT),
+        new Item(RAINBOW_PARTYHAT),
+        new Item(PARTYHAT__SPECS),
+        new Item(CHRISTMAS_CRACKER),
+        new Item(_3RD_AGE_WAND),
+        new Item(_3RD_AGE_BOW),
+        new Item(_3RD_AGE_LONGSWORD),
+        new Item(_3RD_AGE_CLOAK),
+        new Item(_3RD_AGE_RANGE_TOP),
+        new Item(_3RD_AGE_RANGE_LEGS),
+        new Item(_3RD_AGE_RANGE_COIF),
+        new Item(_3RD_AGE_VAMBRACES),
+        new Item(_3RD_AGE_ROBE_TOP),
+        new Item(_3RD_AGE_ROBE),
+        new Item(_3RD_AGE_MAGE_HAT),
+        new Item(_3RD_AGE_AMULET),
+        new Item(_3RD_AGE_PLATELEGS),
+        new Item(_3RD_AGE_PLATEBODY),
+        new Item(_3RD_AGE_FULL_HELMET),
+        new Item(_3RD_AGE_KITESHIELD)
+    ),
+
+    //Armour mystery box
+    ARMOUR_MYSTERY_BOX(AttributeKey.ARMOUR_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Armour Mystery Box", new int[]{CustomItemIdentifiers.ARMOUR_MYSTERY_BOX}, AttributeKey.ARMOUR_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.ARMOUR_MYSTERY_BOX, 10), new Item(KEY_OF_DROPS,5)},
+        //Drops
+        new Item(ELYSIAN_SPIRIT_SHIELD),
+        new Item(STATIUSS_FULL_HELM),
+        new Item(STATIUSS_PLATEBODY),
+        new Item(STATIUSS_PLATELEGS),
+        new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT),
+        new Item(ANCESTRAL_HAT),
+        new Item(ANCESTRAL_ROBE_TOP),
+        new Item(ANCESTRAL_ROBE_BOTTOM),
+        new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY),
+        new Item(MORRIGANS_LEATHER_CHAPS),
+        new Item(ZURIELS_HOOD),
+        new Item(ZURIELS_ROBE_TOP),
+        new Item(ZURIELS_ROBE_BOTTOM),
+        new Item(ARCANE_SPIRIT_SHIELD),
+        new Item(NEITIZNOT_FACEGUARD),
+        new Item(DINHS_BULWARK)),
+
+    //Weapon mystery box
+    WEAPON_MYSTERY_BOX(AttributeKey.WEAPON_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Weapon Mystery Box", new int[]{CustomItemIdentifiers.WEAPON_MYSTERY_BOX}, AttributeKey.WEAPON_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.WEAPON_MYSTERY_BOX, 10), new Item(KEY_OF_DROPS,5)},
+        //Drops
+        new Item(NIGHTMARE_STAFF),
+        new Item(SANGUINESTI_STAFF),
+        new Item(GHRAZI_RAPIER),
+        new Item(ELDER_MAUL),
+        new Item(DRAGON_CLAWS),
+        new Item(ARMADYL_GODSWORD),
+        new Item(VESTAS_LONGSWORD),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(VESTAS_SPEAR),
+        new Item(TOXIC_BLOWPIPE),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(HEAVY_BALLISTA),
+        new Item(ABYSSAL_DAGGER_P_13271),
+        new Item(ARMADYL_CROSSBOW)),
+
+    //Legendary mystery box
+    LEGENDARY_MYSTERY_BOX(AttributeKey.LEGENDARY_MYSTERY_BOXES_OPENED, LogType.MYSTERY_BOX, "Legendary Mystery Box", new int[]{CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX}, AttributeKey.LEGENDARY_MYSTERY_BOX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX, 10), new Item(KEY_OF_DROPS,5)},
+        //Drops
+        new Item(TWISTED_BOW),
+        new Item(SCYTHE_OF_VITUR),
+        new Item(ELYSIAN_SPIRIT_SHIELD),
+        new Item(KORASI_SWORD),
+        new Item(TORVA_FULL_HELM),
+        new Item(TORVA_PLATEBODY),
+        new Item(TORVA_PLATELEGS),
+        new Item(CustomItemIdentifiers.NIFFLER),
+        new Item(CustomItemIdentifiers.FAWKES),
+        new Item(DRAGON_HUNTER_LANCE),
+        new Item(SANGUINESTI_STAFF),
+        new Item(ANCESTRAL_HAT),
+        new Item(ANCESTRAL_ROBE_TOP),
+        new Item(ANCESTRAL_ROBE_BOTTOM),
+        new Item(KODAI_WAND),
+        new Item(AVERNIC_DEFENDER),
+        new Item(DONATOR_TICKET),
+        new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX),
+        new Item(DRAGON_HUNTER_CROSSBOW)),
 
     //Mystery ticket
     MYSTERY_TICKET(AttributeKey.MYSTERY_TICKETS_OPENED, LogType.MYSTERY_BOX, "Mystery Ticket", new int[]{CustomItemIdentifiers.MYSTERY_TICKET}, AttributeKey.MYSTERY_TICKET_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_TICKET, 5), new Item(KEY_OF_DROPS,5)},
