@@ -291,6 +291,13 @@ public class PlayerKillingRewards {
                 killer.putAttrib(AttributeKey.PK_POINTS, updatePkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
 
+                var risk = killer.<Long>getAttribOr(AttributeKey.RISKED_WEALTH, 0L);
+
+                //If a player is risking over 50M coins roll for an extra reward
+                if (World.getWorld().rollDie(35, 1) && risk > 50_000_000) {
+                    killer.getRisk().reward();
+                }
+
                 //1 in 250 chance to receive a mystery box
                 if(World.getWorld().rollDie(250,1)) {
                     killer.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX));

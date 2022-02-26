@@ -1,5 +1,6 @@
 package com.valinor.game.world.position.areas.impl;
 
+import com.valinor.game.content.areas.riskzone.RiskFightArea;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunterWidget;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.Hotspot;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.HotspotTask;
@@ -61,6 +62,10 @@ public class WildernessArea extends Controller {
         CustomWildernessRegions customWildernessRegions = CustomWildernessRegions.byRegion(tile.region());
         if(customWildernessRegions != null && customWildernessRegions.region == tile.region()) {
             return customWildernessRegions.level;
+        }
+
+        if(tile.inArea(RiskFightArea.NH_AREA) || tile.inArea(RiskFightArea.ONE_V_ONE_1) || tile.inArea(RiskFightArea.ONE_V_ONE_2) || tile.inArea(RiskFightArea.ONE_V_ONE_3)) {
+            return 1;
         }
 
         if (!(tile.x > 2941 && tile.x < 3392 && tile.y > 3524 && tile.y < 3968) && !inUndergroundWilderness(tile))
@@ -127,6 +132,9 @@ public class WildernessArea extends Controller {
             if (!player.hotspotActive()) {
                 TaskManager.submit(new HotspotTask(player));
             }
+
+            //Update risk
+            player.getRisk().update();
 
             //Clear the damage map when entering wilderness
             player.getCombat().getDamageMap().clear();
@@ -280,6 +288,9 @@ public class WildernessArea extends Controller {
 
     @Override
     public void defeated(Player killer, Mob mob) {
+        if (mob.isPlayer()) {
+            killer.getRisk().update(); // Make sure wealth attribs are up-to-date!
+        }
     }
 
     @Override

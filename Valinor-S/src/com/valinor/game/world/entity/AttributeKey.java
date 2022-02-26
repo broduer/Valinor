@@ -5,6 +5,9 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    // The total amount of blood money (w2) risked including our +1 when entering the wilderness. Anti-rag mechanic.
+    RISKED_WEALTH("risked_wealth", AttribType.LONG),
+
     WEAPON_UPGRADES("weapon_upgrades", AttribType.INTEGER),
     DDS_KILLS("dds_kills", AttribType.INTEGER),
     GMAUL_KILLS("gmaul_kills", AttribType.INTEGER),

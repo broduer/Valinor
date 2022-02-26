@@ -10,6 +10,7 @@ import com.valinor.game.content.areas.wilderness.content.wilderness_activity.Wil
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.collection_logs.LogType;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
 import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
 import com.valinor.game.world.entity.AttributeKey;
@@ -289,6 +290,13 @@ public final class QuestTab {
             }
         },
 
+        RISKED_WEALTH(53448) {
+            @Override
+            public String fetchLineData(Player player) {
+                long risked = ItemsKeptOnDeath.getLostItemsValue();
+                return "Risked wealth: <col=ffffff>" + Utils.formatRunescapeStyle(risked) + " Coins";
+            }
+        },
         ;
 
         public final int childId;

@@ -6,6 +6,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.EffectTimer;
 import com.valinor.game.content.achievements.Achievements;
+import com.valinor.game.content.areas.wilderness.content.RiskManagement;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.areas.wilderness.content.upgrade_station.WeaponUpgrade;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
@@ -147,6 +148,12 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
+
+    private final RiskManagement riskManagement = new RiskManagement(this);
+
+    public RiskManagement getRisk() {
+        return riskManagement;
+    }
 
     private final WeaponUpgrade weaponUpgrade = new WeaponUpgrade(this);
 

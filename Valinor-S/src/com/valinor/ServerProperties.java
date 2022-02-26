@@ -131,6 +131,9 @@ public final class ServerProperties {
         displayCycleLag = false;
         refreshQuestTabCycles = 100;
         hitPredictorEnabled = true;
+        riskManagementVeryRareRollRange = "100-90";
+        riskManagementRareRollRange = "90-75";
+        riskManagementUncommonRollRange = "75-45";
         tournamentsEnabled = true;
         wildernessActivityEnabled = true;
         enableSql = sqlOn;
@@ -410,6 +413,21 @@ public final class ServerProperties {
      * If we want to enable the hit predictor for all players, set this to true. Make sure to match the client constant for this to not confuse players.
      */
     public final boolean hitPredictorEnabled;
+
+    /**
+     * This is the range that the risk management very rare items will roll. It must be expressed as two numbers with a hyphen.
+     */
+    public final String riskManagementVeryRareRollRange;
+
+    /**
+     * This is the range that the risk management rare items will roll. It must be expressed as two numbers with a hyphen.
+     */
+    public final String riskManagementRareRollRange;
+
+    /**
+     * This is the range that the risk management uncommon items will roll. It must be expressed as two numbers with a hyphen.
+     */
+    public final String riskManagementUncommonRollRange;
 
     /**
      * If we want to disable PvP tournaments, set this to false.

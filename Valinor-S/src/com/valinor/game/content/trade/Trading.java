@@ -391,6 +391,8 @@ public class Trading {
                 //Send successful trade message!
                 player.message("Trade accepted!");
                 partner.getPacketSender().sendMessage("Trade accepted!");
+                player.getRisk().update();
+                partner.getRisk().update();
             }
         }
         button_delay.start(1);

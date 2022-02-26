@@ -382,6 +382,7 @@ public final class GroundItemHandler {
                                         player.inventory().add(item2);
                                         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " picked up item " + item2.getAmount() + "x " + item2.unnote().name() + " (id " + item2.getId() + ")", "player_pickup");
                                         player.inventory().refresh();
+                                        player.getRisk().update();
                                     });
                                 }
                                 stop();
@@ -399,6 +400,7 @@ public final class GroundItemHandler {
                         // If we've made it here then it added to the inventory.
                         sendRemoveGroundItem(groundItem);
                         player.getInventory().refresh();
+                        player.getRisk().update();
                         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" picked up item " + item.getAmount() + "x " + item.unnote().name() + " at: "+groundItem.getTile().toString(), "player_pickup");
                         stop();
 

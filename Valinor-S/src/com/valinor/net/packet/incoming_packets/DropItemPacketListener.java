@@ -177,6 +177,7 @@ public class DropItemPacketListener implements PacketListener {
 
         //Drop the item on the floor
         GroundItemHandler.createGroundItem(groundItem);
+        player.getRisk().update();
         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " with IP "+player.getHostAddress()+" dropped item " + item.getAmount() + "x " + item.unnote().name() + " at " + player.tile().toString(), "item_dropped");
     }
 
