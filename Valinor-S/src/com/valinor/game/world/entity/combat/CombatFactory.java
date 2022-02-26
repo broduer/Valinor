@@ -73,6 +73,7 @@ import javax.annotation.Nullable;
 import java.lang.ref.WeakReference;
 import java.util.*;
 
+import static com.valinor.game.content.areas.wilderness.content.PlayerKillingRewards.*;
 import static com.valinor.game.world.InterfaceConstants.BARROWS_REWARD_WIDGET;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.KRAKEN_WHIRLPOOL;
@@ -1314,6 +1315,24 @@ public class CombatFactory {
                 }
 
                 handlePrayerEffects(attacker, target, damage, hit.getCombatType());
+            }
+        }
+
+        if (attacker.isPlayer() && target.isPlayer()) {
+            Player a = (Player) attacker;
+            Player t = (Player) target;
+
+            //Only increase in wilderness
+            if (WildernessArea.inWilderness(a.tile())) {
+                //Did the hit exceed the players hitpoints, increase the kills.
+                if (damage > t.hp()) {
+                    //Only increase when target has been flagged as death.
+                    switch (combatType) {
+                        case MELEE -> increaseMeleeWeaponKills(a, t);
+                        case RANGED -> increaseRangedWeaponKills(a, t);
+                        case MAGIC -> increaseMagicWeaponKills(a, t);
+                    }
+                }
             }
         }
 

@@ -255,26 +255,6 @@ public class Hit {
 
         //Update total damage
         this.damage = damage;
-
-        if (attacker.isPlayer() && target.isPlayer()) {
-            Player a = (Player) attacker;
-            Player t = (Player) target;
-
-            //Only increase in wilderness
-            if (WildernessArea.inWilderness(a.tile())) {
-                //Did the hit exceed the players hitpoints, increase the kills.
-                if (damage > t.hp()) {
-                    //Only increase when target has been flagged as death.
-                    if (t.dead()) {
-                        switch (combatType) {
-                            case MELEE -> increaseMeleeWeaponKills(a, t);
-                            case RANGED -> increaseRangedWeaponKills(a, t);
-                            case MAGIC -> increaseMagicWeaponKills(a, t);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     public CombatType getCombatType() {
