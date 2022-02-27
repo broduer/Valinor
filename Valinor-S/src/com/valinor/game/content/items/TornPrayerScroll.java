@@ -45,7 +45,7 @@ public class TornPrayerScroll extends Interaction {
                     }
                     player.inventory().remove(new Item(TORN_PRAYER_SCROLL),true);
                     player.putAttrib(PRESERVE,true);
-                    player.getPacketSender().sendConfig(708, 1);
+                    player.getPacketSender().sendConfig(709, 1);
                     send(DialogueType.ITEM_STATEMENT,new Item(TORN_PRAYER_SCROLL), "", "You study the scroll and learn a new prayer: "+ Color.DARK_RED.wrap("Preserve"));
                     setPhase(2);
                 }

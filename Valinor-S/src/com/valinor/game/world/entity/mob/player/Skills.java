@@ -780,9 +780,9 @@ public class Skills {
         player.skills().recalculateCombat();
 
         if (skill == PRAYER) {
-            player.getPacketSender().sendConfig(708, Prayers.canUse(player, DefaultPrayerData.PRESERVE, false) ? 1 : 0);
-            player.getPacketSender().sendConfig(710, Prayers.canUse(player, DefaultPrayerData.RIGOUR, false) ? 1 : 0);
-            player.getPacketSender().sendConfig(712, Prayers.canUse(player, DefaultPrayerData.AUGURY, false) ? 1 : 0);
+            player.getPacketSender().sendConfig(709, Prayers.canUse(player, DefaultPrayerData.PRESERVE, false) ? 1 : 0);
+            player.getPacketSender().sendConfig(711, Prayers.canUse(player, DefaultPrayerData.RIGOUR, false) ? 1 : 0);
+            player.getPacketSender().sendConfig(713, Prayers.canUse(player, DefaultPrayerData.AUGURY, false) ? 1 : 0);
         }
 
         //Update weapon tab to send combat level etc.

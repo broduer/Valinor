@@ -19,9 +19,9 @@ public class UnlockPrayersCommands implements Command {
         boolean preserve_unlocked = player.getAttribOr(AttributeKey.PRESERVE, false);
         boolean rigour_unlocked = player.getAttribOr(AttributeKey.RIGOUR, false);
         boolean augury_unlocked = player.getAttribOr(AttributeKey.AUGURY, false);
-        player.getPacketSender().sendConfig(708, preserve_unlocked ? 1 : 0);
-        player.getPacketSender().sendConfig(710, rigour_unlocked ? 1 : 0);
-        player.getPacketSender().sendConfig(712, augury_unlocked ? 1 : 0);
+        player.getPacketSender().sendConfig(709, preserve_unlocked ? 1 : 0);
+        player.getPacketSender().sendConfig(711, rigour_unlocked ? 1 : 0);
+        player.getPacketSender().sendConfig(713, augury_unlocked ? 1 : 0);
     }
 
     @Override

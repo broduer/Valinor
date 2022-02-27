@@ -1472,7 +1472,7 @@ public class Player extends Mob {
         // Sync varps
         varps.syncNonzero();
         double energy = this.getAttribOr(RUN_ENERGY, 0.0);
-        packetSender.sendConfig(708, Prayers.canUse(this, DefaultPrayerData.PRESERVE, false) ? 1 : 0).sendConfig(710, Prayers.canUse(this, DefaultPrayerData.RIGOUR, false) ? 1 : 0).sendConfig(712, Prayers.canUse(this, DefaultPrayerData.AUGURY, false) ? 1 : 0).sendConfig(172, this.getCombat().autoRetaliate() ? 1 : 0).updateSpecialAttackOrb().sendRunStatus().sendRunEnergy((int) energy);
+        packetSender.sendConfig(709, Prayers.canUse(this, DefaultPrayerData.PRESERVE, false) ? 1 : 0).sendConfig(711, Prayers.canUse(this, DefaultPrayerData.RIGOUR, false) ? 1 : 0).sendConfig(713, Prayers.canUse(this, DefaultPrayerData.AUGURY, false) ? 1 : 0).sendConfig(172, this.getCombat().autoRetaliate() ? 1 : 0).updateSpecialAttackOrb().sendRunStatus().sendRunEnergy((int) energy);
         Prayers.closeAllPrayers(this);
 
         // Send simple player options
