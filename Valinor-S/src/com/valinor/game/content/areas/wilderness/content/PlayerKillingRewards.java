@@ -150,21 +150,24 @@ public class PlayerKillingRewards {
     }
 
     private static int shutdownValueOf(int streak) {
-        return (10 * streak + 50 * (streak / 10));
+        int bonus = 10 * streak;
+        if(bonus > 1_000)
+            bonus = 1_000;
+        return bonus;
     }
 
     private static int killstreakValueOf(int streak) {
-        int points = 5 * streak;
-        if(points > 100)
-            points = 100;
-        return points;
+        int bonus = 5 * streak;
+        if(bonus > 500)
+            bonus = 500;
+        return bonus;
     }
 
     private static int firstKillOfTheDay(Player killer) {
         if (System.currentTimeMillis() >= (long) killer.getAttribOr(AttributeKey.FIRST_KILL_OF_THE_DAY, 0L)) {
-            killer.message("You've earned 2,500 additional pkp for your first kill of the day!");
+            killer.message("You've earned 1,500 additional pkp for your first kill of the day!");
             killer.putAttrib(AttributeKey.FIRST_KILL_OF_THE_DAY, System.currentTimeMillis() + TimeUnit.HOURS.toMillis(24));
-            return 2500;
+            return 1500;
         }
         return 0;
     }
@@ -259,7 +262,7 @@ public class PlayerKillingRewards {
                     }
                 }
 
-                var pkpReward = 500;//Base value
+                var pkpReward = 100;//Base value
 
                 // Apply donation boost, if any
                 pkpReward = (int) ((double )pkpReward * killer.getMemberRights().pkpMultiplier());
