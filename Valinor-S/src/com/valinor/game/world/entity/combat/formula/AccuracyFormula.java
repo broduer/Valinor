@@ -667,7 +667,9 @@ public class AccuracyFormula {
         //determine augmented levels
         double aug_atk_mod = 64.;
         if(entity.isPlayer() && enemy.isPlayer()) {
-            aug_atk_mod = ATTACK_MOD_BASE;
+            if(!entity.getAsPlayer().getEquipment().containsAny(TOXIC_BLOWPIPE, MAGMA_BLOWPIPE)) {
+                aug_atk_mod = ATTACK_MOD_BASE;
+            }
         }
 
         augmented_attack = Math.floor(((effective_attack + 8) * (1 + off_equipment_bonus / aug_atk_mod)));

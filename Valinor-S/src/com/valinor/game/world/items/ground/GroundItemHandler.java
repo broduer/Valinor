@@ -224,7 +224,6 @@ public final class GroundItemHandler {
 
         if(item.getItem().definition(World.getWorld()).pvpSpawnable
             && player != null && player.gameMode() == GameMode.INSTANT_PKER) {
-            player.message("The "+item.getItem().unnote().name()+" vanishes as it touches the ground.");
             return false;
         }
 
