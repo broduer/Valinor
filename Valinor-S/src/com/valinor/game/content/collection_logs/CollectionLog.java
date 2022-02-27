@@ -94,7 +94,7 @@ public class CollectionLog {
                 item.setAmount(amount);
             }
         }
-        player.getPacketSender().sendScrollbarHeight(54150, (int) (Collection.getAsList(collection.getLogType()).size() * 15.1));
+        player.getPacketSender().sendScrollbarHeight(61050, (int) (Collection.getAsList(collection.getLogType()).size() * 15.1));
         player.getPacketSender().sendScrollbarHeight(SCROLL_BAR, items.length * 7 + 2);
         player.getPacketSender().sendString(NAME_STRING, "<col=" + Color.LIGHTORANGE.getColorValue() + ">" + collection.getName());
         player.getPacketSender().sendString(OBTAINED_STRING, "<col=" + Color.LIGHTORANGE.getColorValue() + ">Obtained: " + getColor(obtained, obtainables) + obtained + "/" + obtainables);

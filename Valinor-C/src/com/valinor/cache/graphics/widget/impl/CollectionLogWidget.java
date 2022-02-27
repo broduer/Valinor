@@ -60,13 +60,12 @@ public class CollectionLogWidget extends Widget {
         items.scrollMax = 800;
 
         Widget scroll = addInterface(61050);
-        scroll.totalChildren(150);
-        for (int i = 0; i < 50; ++i) {
+        scroll.totalChildren(120);
+        for (int i = 0; i < 60; ++i) {
             hoverButton(61051 + i, "View", i % 2 == 0 ? 1841 : 1843, 1842);
             addText(61151 + i, "Abyssal sire", advancedFonts, 1, 0xff981f, false, true);
             scroll.child(i, 61051 + i, 0, i * 15);
-            scroll.child(i + 50, 61101 + i, 0, i * 25);
-            scroll.child(i + 100, 61151 + i, 2, y-10);
+            scroll.child(i + 60, 61151 + i, 2, y-10);
             y+= 15;
         }
         scroll.width = 186;
