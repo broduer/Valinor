@@ -349,6 +349,10 @@ public class Buttons {
                     return;
                 }
 
+                if(player.getWeaponUpgrade().upgrade(button)) {
+                    return;
+                }
+
                 if (player.getQuickPrayers().handleButton(button)) {
                     return;
                 }

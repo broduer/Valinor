@@ -330,6 +330,7 @@ public class ItemsOnDeath {
 
             // IKODTest.debug("dc2: "+item.toShortString());
             boolean[] converted = new boolean[1];
+            boolean doNotConvert = true;
 
             if (item.getId() == SARADOMINS_BLESSED_SWORD) { //Saradomin's blessed sword
                 converted[0] = true;
@@ -337,7 +338,7 @@ public class ItemsOnDeath {
                 toDropConverted.add(new Item(SARADOMINS_TEAR));
             }
 
-            if (!npcFlag) { // Don't bother converting for suicide
+            if (!npcFlag && !doNotConvert) { // Don't bother converting for suicide
                 for (Conversions con : Conversions.values()) {
                     //These don't convert
                     if (!converted[0] && con.src.getId() == item.getId()) {
@@ -360,7 +361,7 @@ public class ItemsOnDeath {
                     item = new Item(1201); // Rune kiteshield
                 } else if (item.getId() >= 8682 && item.getId() <= 8712) {
                     item = new Item(1157); // Steel fullhelm
-                } else if (item.getId() == 12006) {
+                } else if (item.getId() == 12006 && !doNotConvert) {
                     item = new Item(12004); //Abyssal tent -> Kraken tent
                 } else if (Item.isCrystal(item.getId())) {
                     item = new Item(4207);

@@ -286,6 +286,8 @@ public class ServerAnnouncements {
         CORRUPTING_STONE,
         BLADE_OF_SAELDOR,
         BOW_OF_FAERDHINEN,
+        BLADE_OF_SAELDOR_C,
+        BOW_OF_FAERDHINEN_C,
 
         //Nex
         ANCIENT_HILT,
@@ -298,7 +300,21 @@ public class ServerAnnouncements {
 
         //Ancient revenants
         ANCIENT_VESTAS_LONGSWORD,
-        ANCIENT_STATIUSS_WARHAMMER
+        ANCIENT_STATIUSS_WARHAMMER,
+
+        //Bloodfury hespori
+        KEY_OF_DROPS,
+        LEGENDARY_MYSTERY_BOX,
+        RING_OF_PRECISION,
+        RANGING_SCROLL,
+
+        //Infernal spider
+        RING_OF_SORCERY,
+        INFERNAL_TRIDENT,
+
+        //Fragment of Seren
+        RING_OF_MANHUNTING,
+        MELEE_SCROLL
     );
 
     public static void tryBroadcastDrop(Player player, Npc npc, Item item) {

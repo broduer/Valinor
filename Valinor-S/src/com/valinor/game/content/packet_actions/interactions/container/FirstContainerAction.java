@@ -35,6 +35,10 @@ public class FirstContainerAction {
             return;
         }
 
+        if(player.getWeaponUpgrade().reclaim(interfaceId, slot, id)) {
+            return;
+        }
+
         if (TradingPost.handleSellingItem(player, interfaceId, id, 1))
             return;
 

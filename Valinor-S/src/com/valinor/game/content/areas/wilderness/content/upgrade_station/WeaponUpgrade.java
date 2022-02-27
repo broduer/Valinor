@@ -30,7 +30,7 @@ public class WeaponUpgrade {
     }
 
     public void open() {
-        player.getInterfaceManager().open(71000);
+        player.getInterfaceManager().open(73000);
 
         for (Upgrades upgrade : Upgrades.values()) {
 
@@ -72,9 +72,9 @@ public class WeaponUpgrade {
                 if (item.morebonuses()[stat_index] != 0)
                     sb2.append(item.morebonuses()[stat_index] < 0 ? "" : "+").append(item.morebonuses()[stat_index]).append(" ").append(item.morebonusesStr()[stat_index]).append(", ");
             }
-            int baseId = 72116;
+            int baseId = 74116;
             if (upgrade.name().startsWith("ABYSSAL_WHIP")) {
-                baseId = 72116;
+                baseId = 74116;
             } else if (upgrade.name().startsWith("DARK_BOW")) {
                 baseId += 4;
             } else if (upgrade.name().startsWith("GRANITE_MAUL")) {
@@ -184,7 +184,7 @@ public class WeaponUpgrade {
 
     public boolean reclaim(int interfaceId, int slot, int id) {
         //Make sure the player isn't trying to claim from somewhere else
-        if(interfaceId != 71030 && interfaceId != 72030) {
+        if(interfaceId != 73030 && interfaceId != 74030) {
             return false;
         }
 

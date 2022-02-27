@@ -9,10 +9,13 @@ public class PrayerSidebarWidget extends Widget {
     public static void unpack(AdvancedFont[] font) {
         quickPrayers(font);
 
+        //addPrayer(28001, 0, 708, 54, 151, 152, "Activate <col=ffb000>Preserve", 28003, 1, -1);
         addPrayer(28001, "Activate <col=ffb000>Preserve", 31, 32, 150, 1, -1, 151, 152, 1, 708, 28003);
 
+        //addPrayer(28004, 0, 710, 73, 153, 154, "Activate <col=ffb000>Rigour", 28006, 1, -5);
         addPrayer(28004, "Activate <col=ffb000>Rigour", 31, 32, 150, 1, -5, 153, 154, 1, 710, 28006);
 
+        //addPrayer(28007, 0, 712, 76, 155, 156, "Activate <col=ffb000>Augury", 28009, 1, -3);
         addPrayer(28007, "Activate <col=ffb000>Augury", 31, 32, 150, 1, -3, 155, 156, 1, 712, 28009);
 
         addPrayerHover(28003, "Level 55<br>Preserve<br>Boosted stats last 20% longer.", -135, -60);

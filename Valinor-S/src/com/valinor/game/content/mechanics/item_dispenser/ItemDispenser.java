@@ -127,6 +127,11 @@ public class ItemDispenser extends Interaction {
 
         final Item item = src.copy();
 
+        if(player.gameMode().instantPker() && item.definition(World.getWorld()).pvpSpawnable) {
+            player.message("As a PvP mode you can't dispense your "+src.unnote().name()+".");
+            return;
+        }
+
         if(!player.inventory().contains(item)) {
             return;
         }

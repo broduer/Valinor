@@ -958,7 +958,7 @@ public class Widget {
 
         widget.parent = 5608;
         widget.type = TYPE_SPRITE;
-        widget.optionType = 1;
+        widget.optionType = 4;
         widget.width = width;
         widget.height = height;
         widget.requiredValues = new int[1];
@@ -995,6 +995,50 @@ public class Widget {
         widget.disabledSprite = Client.spriteCache.get(disabledSprite);
         widget.enabledSprite = Client.spriteCache.get(enabledSprite);
         widget.hoverType = hover;
+    }
+
+    public static void addPrayer(int id, int configState, int configFrame, int requiredValues, int disabledSprite, int enabledSprite, String prayerName, int hover, int glowX, int glowY) {
+        Widget widget = addTabInterface(id);
+        widget.id = id;
+        widget.parent = 22500;
+        widget.type = 5;
+        widget.optionType = 4;
+        widget.contentType = 0;
+        widget.opacity = 0;
+        widget.hoverType = hover;
+        widget.enabledSprite = Client.spriteCache.get(150);
+        widget.width = 34;
+        widget.height = 34;
+        widget.spriteXOffset = glowX;
+        widget.spriteYOffset = glowY;
+        widget.valueCompareType = new int[1];
+        widget.requiredValues = new int[1];
+        widget.valueCompareType[0] = 1;
+        widget.requiredValues[0] = configState;
+        widget.valueIndexArray = new int[1][3];
+        widget.valueIndexArray[0][0] = 5;
+        widget.valueIndexArray[0][1] = configFrame;
+        widget.valueIndexArray[0][2] = 0;
+        widget.tooltip = "Activate <col=ffb000>" + prayerName;
+        widget = addTabInterface(id + 1);
+        widget.id = id + 1;
+        widget.parent = 22500;
+        widget.type = 5;
+        widget.optionType = 0;
+        widget.contentType = 0;
+        widget.opacity = 0;
+        widget.disabledSprite = Client.spriteCache.get(disabledSprite);
+        widget.enabledSprite = Client.spriteCache.get(enabledSprite);
+        widget.width = 34;
+        widget.height = 34;
+        widget.valueCompareType = new int[1];
+        widget.requiredValues = new int[1];
+        widget.valueCompareType[0] = 2;
+        widget.requiredValues[0] = requiredValues + 1;
+        widget.valueIndexArray = new int[1][3];
+        widget.valueIndexArray[0][0] = 2;
+        widget.valueIndexArray[0][1] = 5;
+        widget.valueIndexArray[0][2] = 0;
     }
 
     public static void addPrayer(int id, int configState, int configFrame, int requiredValues, int disabledSprite, int enabledSprite, String prayerName, int hover) {
