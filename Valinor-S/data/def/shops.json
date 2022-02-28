@@ -2038,7 +2038,7 @@
     "currency": "PK_POINTS",
     "restock": true,
     "sellType": "NONE",
-    "scroll": 1000,
+    "scroll": 800,
     "items": [
       {
         "id": 11802,
