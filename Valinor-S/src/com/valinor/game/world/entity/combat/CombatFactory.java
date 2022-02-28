@@ -1769,11 +1769,12 @@ public class CombatFactory {
     public static void handleVengeance(Mob mob, Mob attacker, int damage) {
         if (mob == attacker) // dont recoil self-caused damage (rockcake)
             return;
-        if (damage == 0)
+        int returnDmg = (int) (damage * 0.75);
+        if (returnDmg <= 0) {
             return;
-
+        }
         mob.clearAttrib(AttributeKey.VENGEANCE_ACTIVE);
-        attacker.hit(mob, (int) (damage * 0.75), 0, null).setIsReflected().submit();
+        attacker.hit(mob, returnDmg, 0, null).setIsReflected().submit();
         mob.forceChat("Taste Vengeance!");
     }
 

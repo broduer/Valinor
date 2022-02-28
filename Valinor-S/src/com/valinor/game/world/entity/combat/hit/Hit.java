@@ -190,7 +190,7 @@ public class Hit {
     }
 
     /**
-     * checks alwaysHit attrib and accuracy (depending on combat method+style). sets damage to 0 or maxhp or does no change at all, retaining existing {@link #damage} value set by {@link CombatFactory#calcDamageFromType(Mob, Mob, CombatType)}
+     * checks alwaysHit attrib and accuracy (depending on combat method+style). sets damage to 0 or maxhp or does not change at all, retaining existing {@link #damage} value set by {@link CombatFactory#calcDamageFromType(Mob, Mob, CombatType)}
      */
     private void applyAccuracyToMiss() {
         if (attacker == null || target == null) {
@@ -362,10 +362,9 @@ public class Hit {
         }
 
         //we adjust pid to ranged and magic methods so there's no over delay
-        if(combatType != CombatType.MELEE && delay < 2) {
+        if(combatType != CombatType.MELEE && !reflected && delay < 2) {
             delay = 2;
         }
-
         return this;
     }
 
