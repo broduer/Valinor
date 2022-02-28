@@ -207,7 +207,8 @@ public class Death {
             // If we died in an instance, clean it up.
             player.clearInstance();
 
-            player.putAttrib(AttributeKey.DEATH_TELEPORT_TIMER, String.valueOf(System.currentTimeMillis()));
+            if (killHit.getAttacker().isPlayer())
+                player.putAttrib(AttributeKey.DEATH_TELEPORT_TIMER, String.valueOf(System.currentTimeMillis()));
 
             //If the player is transmog'd then we reset the render.
             if (Transmogrify.isTransmogrified(player) && !in_tournament) {
