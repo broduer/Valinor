@@ -222,6 +222,11 @@ public class RangedCombatMethod extends CommonCombatMethod {
                 // dark bow 2nd arrow
                 new Projectile(attacker, target, graphic, 10 + baseDelay, 10 + speed, startHeight, endHeight, 0, curve, 105).sendProjectile();
             }
+
+            if (weaponId == SANGUINE_TWISTED_BOW && swiftEffect) {
+                // Sanguine twisted bow with the swift perk
+                new Projectile(attacker, target, graphic, 20 + baseDelay, 20 + speed, startHeight, endHeight, 0, curve, 105).sendProjectile();
+            }
         }
 
         // Darkbow is double hits.
@@ -241,6 +246,8 @@ public class RangedCombatMethod extends CommonCombatMethod {
             var secondArrowDelay = calcHitDelaySecondArrow(tileDist);
             //System.out.println("secondArrowDelay: "+secondArrowDelay);
 
+            var thirdArrowDelay = calcHitDelaySecondArrow(tileDist) + 1;
+
             // primary range hit
             target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
 
@@ -250,6 +257,11 @@ public class RangedCombatMethod extends CommonCombatMethod {
             } else if (weaponId == SANGUINE_TWISTED_BOW) {
                 target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED) / 2, secondArrowDelay, CombatType.RANGED).checkAccuracy().submit();
             }
+
+            if (weaponId == SANGUINE_TWISTED_BOW && swiftEffect) {
+                target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED) / 4, thirdArrowDelay, CombatType.RANGED).checkAccuracy().submit();
+            }
+
         }
     }
 

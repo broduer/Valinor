@@ -137,8 +137,8 @@ public class DropItemPacketListener implements PacketListener {
                         }
 
                         int totalValueStack = item.getValue() * item.getAmount();
-                        boolean stackableValuedItem = item.stackable() && totalValueStack > 10_000;
-                        if ((stackableValuedItem || item.getValue() > 10_000) && WildernessArea.inWilderness(player.tile())) {
+                        boolean stackableValuedItem = item.stackable() && totalValueStack > 10_000_000;
+                        if ((stackableValuedItem || item.getValue() > 10_000_000) && WildernessArea.inWilderness(player.tile())) {
                             if(!player.inventory().contains(item)) {
                                 return;
                             }
@@ -154,10 +154,11 @@ public class DropItemPacketListener implements PacketListener {
 
                         player.inventory().remove(item, true);
 
-                        if (item.getValue() == 0 && WildernessArea.inWilderness(player.tile())) {
-                            player.message(Color.RED.wrap("You dropped a spawnable item in the wilderness, it disappears as it touches the ground."));
+                        /*if (item.getValue() == 0 && WildernessArea.inWilderness(player.tile())) {
+                            player.message(Color.RED.wrap("You dropped a spawnable item in the wilderness, it disappears as it touches"));
+                            player.message(Color.RED.wrap("the ground."));
                             return;
-                        }
+                        }*/
 
                         //Remove from inventory
                         dropItem(player, item);
