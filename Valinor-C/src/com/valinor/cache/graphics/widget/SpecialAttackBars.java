@@ -226,7 +226,7 @@ public enum SpecialAttackBars {
     DRAGON_SCIMITAR_t5_2(16242,"Sever: Deal a slash with increased accuracy that prevents your target from using protection prayers for 5 seconds if it successfully hits.",55.0, 31449, 7599, 7611),
     DRAGON_SCIMITAR_t5_3(16243,"Sever: Deal a slash with increased accuracy that prevents your target from using protection prayers for 5 seconds if it successfully hits.",55.0, 31449, 7599, 7611),
     DRAGON_SCIMITAR_t5_4(16244,"Sever: Deal a slash with increased accuracy that prevents your target from using protection prayers for 5 seconds if it successfully hits.",55.0, 31449, 7599, 7611),
-    KORASI_SWORD(19780,"Disrupt: A powerful melee attack dealing magic damage.",60.0, 31449, 7599, 7611),
+    KORASI_SWORD(19780,"Disrupt: A powerful melee attack dealing magic damage.",65.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C(ItemIdentifiers.BLADE_OF_SAELDOR_C,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C_1(BLADE_OF_SAELDOR_C_25870,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),
     BLADE_OF_SAELDOR_C_2(BLADE_OF_SAELDOR_C_25872,"Smack: Deal a strong smack with increased accuracy and a damage boost of 20%.",50.0, 31449, 7599, 7611),

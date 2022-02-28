@@ -124,6 +124,12 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == ARMOUR_MYSTERY_BOX) {
+            name = "Armour mystery box";
+            grandexchange = true;
+        } else if (id == WEAPON_MYSTERY_BOX) {
+            name = "Weapon mystery box";
+            grandexchange = true;
         } else if (id == 15441) {
             stackable = false;
             name = "Abyssal whip tier 1";
