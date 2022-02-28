@@ -208,6 +208,8 @@ public final class ItemDefinition {
         itemDef.inventoryActions = copy.inventoryActions;
         itemDef.cost = copy.cost;
         itemDef.stackable = copy.stackable;
+        itemDef.countobj = copy.countobj;
+        itemDef.countco = copy.countco;
     }
 
     public static void copyEquipment(ItemDefinition itemDef, int id) {
