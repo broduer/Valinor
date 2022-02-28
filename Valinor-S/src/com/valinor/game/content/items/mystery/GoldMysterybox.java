@@ -69,7 +69,8 @@ public class GoldMysterybox extends Interaction {
         new Item(WARRIOR_RING_I, 1),
         new Item(ARCHERS_RING_I, 1),
         new Item(DRAGON_JAVELIN, World.getWorld().random(25,100)),
-        new Item(DIVINE_SUPER_COMBAT_POTION4+1, World.getWorld().random(10,50))
+        new Item(DIVINE_SUPER_COMBAT_POTION4+1, World.getWorld().random(10,50)),
+        new Item(COINS_995, 50_000_000)
     );
 
     private static final List<Item> RARE_REWARDS = Arrays.asList(

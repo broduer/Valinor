@@ -50,7 +50,8 @@ public class BronzeMysteryBox extends Interaction {
         new Item(CRYSTAL_KEY, 1),
         new Item(DRAGON_CHAINBODY_3140, 1),
         new Item(DRAGON_PLATELEGS, 1),
-        new Item(DRAGON_PLATESKIRT, 1)
+        new Item(DRAGON_PLATESKIRT, 1),
+        new Item(COINS_995, 10_000_000)
     );
 
     public static void rollForBronzeMysteryBox(Player killer, Player target) {

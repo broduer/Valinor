@@ -58,7 +58,8 @@ public class SilverMysteryBox extends Interaction {
         new Item(WARRIOR_RING, 1),
         new Item(ARCHERS_RING, 1),
         new Item(DRAGON_JAVELIN, World.getWorld().random(10,50)),
-        new Item(DIVINE_SUPER_COMBAT_POTION4+1, World.getWorld().random(10,50))
+        new Item(DIVINE_SUPER_COMBAT_POTION4+1, World.getWorld().random(10,50)),
+        new Item(COINS_995, 25_000_000)
     );
 
     public static void rollForSilverMysteryBox(Player killer, Player target) {

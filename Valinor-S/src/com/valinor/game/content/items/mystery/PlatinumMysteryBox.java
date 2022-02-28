@@ -80,7 +80,8 @@ public class PlatinumMysteryBox extends Interaction {
         new Item(AHRIMS_ARMOUR_SET, 1),
         new Item(KARILS_ARMOUR_SET, 1),
         new Item(GUTHANS_ARMOUR_SET, 1),
-        new Item(DHAROKS_ARMOUR_SET, 1)
+        new Item(DHAROKS_ARMOUR_SET, 1),
+        new Item(COINS_995, 100_000_000)
     );
 
     private static final List<Item> RARE_REWARDS = Arrays.asList(

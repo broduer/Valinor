@@ -294,6 +294,9 @@ public class PlayerKillingRewards {
                 killer.putAttrib(AttributeKey.PK_POINTS, updatePkp);
                 killer.getPacketSender().sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(killer));
 
+                //Drop cash for every kill you make
+                killer.inventory().addOrDrop(new Item(COINS_995, 10_000_000));
+
                 var risk = killer.<Long>getAttribOr(AttributeKey.RISKED_WEALTH, 0L);
 
                 //If a player is risking over 50M coins roll for an extra reward
