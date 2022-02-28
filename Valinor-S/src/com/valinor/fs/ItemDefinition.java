@@ -1,6 +1,7 @@
 package com.valinor.fs;
 
 import com.valinor.game.GameConstants;
+import com.valinor.game.world.definition.loader.PatrickTheMerchantValue;
 import com.valinor.game.world.definition.loader.ProtectionValue;
 import com.valinor.game.world.items.Item;
 import com.valinor.io.RSBuffer;
@@ -79,6 +80,7 @@ public class ItemDefinition implements Definition {
     public ProtectionValue protectionValue;
     public boolean pvpSpawnable;
     public boolean isUpgradedWeapon;
+    public PatrickTheMerchantValue patrickTheMerchantValue;
 
     public ItemDefinition(int id, byte[] data) {
         this.id = id;
@@ -1229,6 +1231,7 @@ public class ItemDefinition implements Definition {
             name = "Scroll of Imbuement";
         }
         protectionValue = new ProtectionValue();
+        patrickTheMerchantValue = new PatrickTheMerchantValue();
     }
 
     public int highAlchValue() {

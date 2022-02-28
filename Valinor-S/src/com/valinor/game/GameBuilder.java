@@ -77,6 +77,7 @@ public class GameBuilder {
         }
 
         //Load definitions..
+        tasks.add(new PatrickTheMerchantLoader());
         tasks.add(new ProtectionValueLoader());
         tasks.add(TradingPost::init);
         tasks.add(new Slayer()::loadMasters);

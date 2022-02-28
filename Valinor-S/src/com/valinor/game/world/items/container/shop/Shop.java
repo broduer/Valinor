@@ -342,6 +342,10 @@ public abstract class Shop {
             sellValue = item.getId() == 619 ? 1 : item.unnote().getSellValue();
         }
 
+        if(shopId == 27) {
+            sellValue = item.unnote().getMerchantValue();
+        }
+
         final int amount = player.inventory().count(item.getId());
 
         if (item.getAmount() > amount && !item.stackable()) {
@@ -436,6 +440,10 @@ public abstract class Shop {
             value = storeItem.getShopValue();
         } else {
             value = item.getId() == 619 ? 1 : item.unnote().getSellValue();
+        }
+
+        if(shopId == 27) {
+            value = item.unnote().getMerchantValue();
         }
 
         if (value <= 0) {

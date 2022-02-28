@@ -2626,6 +2626,11 @@
         "value": 5000
       },
       {
+        "id": 30092,
+        "amount": 10000000,
+        "value": 1
+      },
+      {
         "id": 23246,
         "amount": 100,
         "value": 5000
@@ -3545,7 +3550,7 @@
   },
   {
     "shopId": 27,
-    "name": "Sigmund The Merchant",
+    "name": "Patrick The Merchant",
     "currency": "COINS",
     "restock": true,
     "noiron": false,

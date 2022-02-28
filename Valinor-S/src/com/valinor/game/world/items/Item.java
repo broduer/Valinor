@@ -446,6 +446,14 @@ public class Item implements Cloneable {
         return this.unnote().definition(World.getWorld()).protectionValue.price;
     }
 
+    public int getMerchantValue() {
+        //Can't find value, return general shop value
+        if(this.unnote().definition(World.getWorld()).patrickTheMerchantValue == null) {
+            return getValue();
+        }
+        return this.unnote().definition(World.getWorld()).patrickTheMerchantValue.price;
+    }
+
     /**
      * Checks if this item is valid or not.
      *

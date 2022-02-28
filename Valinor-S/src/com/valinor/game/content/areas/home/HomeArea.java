@@ -247,6 +247,10 @@ public class HomeArea extends Interaction {
     @Override
     public boolean handleNpcInteraction(Player p, Npc npc, int option) {
         if (option == 1) {
+            if (npc.id() == SIGMUND_THE_MERCHANT) {
+                World.getWorld().shop(27).open(p);
+                return true;
+            }
             if (npc.id() == TELEKINETIC_GUARDIAN) {
                 p.getDialogueManager().start(new WeaponUpgraderD());
                 return true;

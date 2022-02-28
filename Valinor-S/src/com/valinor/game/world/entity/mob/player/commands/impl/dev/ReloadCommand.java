@@ -4,6 +4,7 @@ import com.valinor.game.content.skill.impl.fishing.Fishing;
 import com.valinor.game.content.skill.impl.hunter.Impling;
 import com.valinor.game.world.World;
 import com.valinor.game.world.definition.loader.impl.ObjectSpawnDefinitionLoader;
+import com.valinor.game.world.definition.loader.impl.PatrickTheMerchantLoader;
 import com.valinor.game.world.definition.loader.impl.ProtectionValueLoader;
 import com.valinor.game.world.definition.loader.impl.ShopLoader;
 import com.valinor.game.world.entity.mob.npc.Npc;
@@ -23,8 +24,11 @@ public class ReloadCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        String reload = parts[1];
-        if (reload.equalsIgnoreCase("protv")) {
+        String reload = parts[1];if (reload.equalsIgnoreCase("merchantv")) {
+            player.message("Reloading patrick the merchant values...");
+            new PatrickTheMerchantLoader().run();
+            player.message("Finished.");
+        } else if (reload.equalsIgnoreCase("protv")) {
             player.message("Reloading protection values...");
             new ProtectionValueLoader().run();
             player.message("Finished.");

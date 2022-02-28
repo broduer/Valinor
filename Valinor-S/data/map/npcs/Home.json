@@ -1,5 +1,13 @@
 [
   {
+    "id": 3894,
+    "x": 3079,
+    "y": 3501,
+    "radius": 0,
+    "direction": "S",
+    "desc": "Patrick the merchant"
+  },
+  {
     "id": 5979,
     "x": 3083,
     "y": 3506,

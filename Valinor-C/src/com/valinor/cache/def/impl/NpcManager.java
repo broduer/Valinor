@@ -176,9 +176,10 @@ public class NpcManager {
                 break;
 
             case SIGMUND_THE_MERCHANT:
-                definition.actions[0] = "Buy-items";
-                definition.actions[2] = "Sell-items";
-                definition.actions[3] = "Sets";
+                definition.name = "Patrick the merchant";
+                definition.actions[0] = "Sell-items";
+                definition.actions[2] = null;
+                definition.actions[3] = null;
                 definition.actions[4] = null;
                 break;
 
