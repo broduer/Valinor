@@ -214,17 +214,14 @@ public class ItemDrops {
 
         var task_id = player.<Integer>getAttribOr(SLAYER_TASK_ID, 0);
         var task = SlayerCreature.lookup(task_id);
-        var roll = player.getPlayerRights().isDeveloperOrGreater(player) && !GameServer.properties().production ? 1 : 10;
         boolean hasTask = player.slayerTaskAmount() > 0;
         if (task != null && Slayer.creatureMatches(player, npc.id()) && hasTask) {
-            if (World.getWorld().rollDie(roll, 1)) {
-                if (npc.combatInfo() != null && npc.combatInfo().boss) {
-                    Item coins = new Item(COINS_995, World.getWorld().random(100_000, 500_000));
-                    GroundItem groundItem = new GroundItem(coins, player.tile(), player);
-                    GroundItemHandler.createGroundItem(groundItem);
-                    notification(player, coins);
-                    player.message("<col=0B610B>You have received a " + Utils.formatRunescapeStyle(coins.getAmount()) + " coins drop!");
-                }
+            if (npc.combatInfo() != null && npc.combatInfo().boss) {
+                Item coins = new Item(COINS_995, World.getWorld().random(100_000, 500_000));
+                GroundItem groundItem = new GroundItem(coins, player.tile(), player);
+                GroundItemHandler.createGroundItem(groundItem);
+                notification(player, coins);
+                player.message("<col=0B610B>You have received a " + Utils.formatRunescapeStyle(coins.getAmount()) + " coins drop!");
             }
         }
     }
