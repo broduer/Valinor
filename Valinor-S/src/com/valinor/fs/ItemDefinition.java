@@ -109,6 +109,10 @@ public class ItemDefinition implements Definition {
             ioptions = new String[]{null, "Wear", "Check", "Disassemble", "Drop"};
         }
 
+        if(id == ItemIdentifiers.ARMADYL_GODSWORD_OR || id == ItemIdentifiers.BANDOS_GODSWORD_OR || id == ItemIdentifiers.SARADOMIN_GODSWORD_OR || id == ItemIdentifiers.ZAMORAK_GODSWORD_OR || id == ItemIdentifiers.GRANITE_MAUL_12848 || id == ItemIdentifiers.DIANGOS_CLAWS || id == ItemIdentifiers.AMULET_OF_FURY_OR || id == ItemIdentifiers.OCCULT_NECKLACE_OR || id == ItemIdentifiers.NECKLACE_OF_ANGUISH_OR || id == ItemIdentifiers.AMULET_OF_TORTURE_OR || id == ItemIdentifiers.BERSERKER_NECKLACE_OR || id == ItemIdentifiers.TORMENTED_BRACELET_OR) {
+            ioptions = new String[]{null, "Wield", null, null, "Drop"};
+        }
+
         var bowOfFaerdhinen = id == BOW_OF_FAERDHINEN || id == BOW_OF_FAERDHINEN_C || (id >= BOW_OF_FAERDHINEN_C_25884 && id <= BOW_OF_FAERDHINEN_C_25896);
         var bladeOfSaeldor = id == BLADE_OF_SAELDOR || id == BLADE_OF_SAELDOR_C || (id >= BLADE_OF_SAELDOR_C_25870 && id <= BLADE_OF_SAELDOR_C_25882);
         List<Integer> customTradeable = Arrays.asList(KQ_HEAD, ABYSSAL_HEAD, DARK_CLAW, TWISTED_HORNS, KBD_HEADS, ALCHEMICAL_HYDRA_HEAD, ELDRITCH_NIGHTMARE_STAFF, VOLATILE_NIGHTMARE_STAFF, HARMONISED_NIGHTMARE_STAFF, HOLY_ORNAMENT_KIT, SANGUINE_ORNAMENT_KIT, INFERNAL_AXE, INFERNAL_PICKAXE, INFERNAL_AXE_OR, INFERNAL_HARPOON, INFERNAL_HARPOON_OR, INFERNAL_PICKAXE_OR, RING_OF_CHAROSA, COAL_BAG, GOLDSMITH_GAUNTLETS, COOKING_GAUNTLETS, MAGIC_SECATEURS, EXPLORERS_RING_4, ARDOUGNE_CLOAK_4, BONECRUSHER, CRYSTAL_HELM, CRYSTAL_BODY, CRYSTAL_LEGS, BLADE_OF_SAELDOR, BOW_OF_FAERDHINEN, NEITIZNOT_FACEGUARD, GRANITE_MAUL_24225, BERSERKER_RING_I, WARRIOR_RING_I, SEERS_RING_I, ARCHERS_RING_I, BLACK_PARTYHAT, RAINBOW_PARTYHAT, BLACK_SANTA_HAT, INVERTED_SANTA_HAT, ItemIdentifiers.BLACK_HWEEN_MASK, ItemIdentifiers.TOXIC_BLOWPIPE, ItemIdentifiers.SERPENTINE_HELM, ItemIdentifiers.TRIDENT_OF_THE_SWAMP, ItemIdentifiers.TOXIC_STAFF_OF_THE_DEAD, ItemIdentifiers.TOME_OF_FIRE, ItemIdentifiers.SCYTHE_OF_VITUR, ItemIdentifiers.SANGUINESTI_STAFF, ItemIdentifiers.CRAWS_BOW, ItemIdentifiers.VIGGORAS_CHAINMACE, ItemIdentifiers.THAMMARONS_SCEPTRE, ItemIdentifiers.TRIDENT_OF_THE_SEAS, ItemIdentifiers.MAGMA_HELM, ItemIdentifiers.TANZANITE_HELM, ItemIdentifiers.DRAGONFIRE_SHIELD, ItemIdentifiers.DRAGONFIRE_WARD, ItemIdentifiers.ANCIENT_WYVERN_SHIELD, ItemIdentifiers.ABYSSAL_TENTACLE, BARRELCHEST_ANCHOR,
@@ -1077,7 +1081,7 @@ public class ItemDefinition implements Definition {
             grandexchange = false;
             name = "Magma blowpipe";
             ioptions = new String[]{null, "Wield", null, null, "Drop"};
-        } else if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON) {
+        } else if (id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON || id == ItemIdentifiers.DRAGON_DEFENDER_T || id == ItemIdentifiers.DRAGON_BOOTS_G) {
             ioptions = new String[]{null, "Wear", null, null, "Destroy"};
             stackable = false;
         }

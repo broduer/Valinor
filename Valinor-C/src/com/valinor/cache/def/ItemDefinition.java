@@ -11,6 +11,7 @@ import com.valinor.collection.TempCache;
 import com.valinor.entity.model.Model;
 import com.valinor.io.Buffer;
 import com.valinor.util.FileUtils;
+import com.valinor.util.ItemIdentifiers;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -420,6 +421,14 @@ public final class ItemDefinition {
         def.id = id;
         def.set_defaults();
         def.decode(data_buffer);
+
+        if(id == ItemIdentifiers.ARMADYL_GODSWORD_OR || id == ItemIdentifiers.BANDOS_GODSWORD_OR || id == ItemIdentifiers.SARADOMIN_GODSWORD_OR || id == ItemIdentifiers.ZAMORAK_GODSWORD_OR || id == ItemIdentifiers.GRANITE_MAUL_12848 || id == ItemIdentifiers.DIANGOS_CLAWS || id == ItemIdentifiers.AMULET_OF_FURY_OR || id == ItemIdentifiers.OCCULT_NECKLACE_OR || id == ItemIdentifiers.NECKLACE_OF_ANGUISH_OR || id == ItemIdentifiers.AMULET_OF_TORTURE_OR || id == ItemIdentifiers.BERSERKER_NECKLACE_OR || id == ItemIdentifiers.TORMENTED_BRACELET_OR) {
+            def.inventoryActions = new String[]{null, "Wield", null, null, "Drop"};
+        }
+
+        if(id == ItemIdentifiers.ATTACKER_ICON || id == ItemIdentifiers.COLLECTOR_ICON || id == ItemIdentifiers.DEFENDER_ICON || id == ItemIdentifiers.HEALER_ICON || id == ItemIdentifiers.DRAGON_DEFENDER_T || id == ItemIdentifiers.DRAGON_BOOTS_G) {
+            def.inventoryActions = new String[]{null, "Wear", null, null, "Destroy"};
+        }
 
         if (def.name != null && (def.name.toLowerCase().contains("ardougne cloak"))) {
             def.inventoryActions = new String[]{null, "Wear", "Teleport", null, "Drop"};
