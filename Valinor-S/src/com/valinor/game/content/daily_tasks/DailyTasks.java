@@ -111,21 +111,21 @@ public enum DailyTasks {
         }
     },
 
-    VALINOR_COINS("Valinor coins", "Exchange items for 1.000 Valinor coins", "Any!", "Safe", new Tile(3109, 3500), 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 2500), new Item(DONATOR_MYSTERY_BOX,1)) {
+    VALINOR_COINS("Valinor coins", "Exchange items for 1.000 Valinor coins", "Any!", "Safe", new Tile(3109, 3500), 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 2500)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    TOURNY("PvP Tournament", "Participate in 1 pvp tournament", "Any!", "Safe", new Tile(3081, 3505), 1, TOURNY_DAILY_TASK_COMPLETION_AMOUNT, TOURNY_DAILY_TASK_COMPLETED, TOURNY_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DONATOR_MYSTERY_BOX,1), new Item(DOUBLE_DROPS_SCROLL,15), new Item(POINTS_MYSTERY_BOX,2)) {
+    TOURNY("PvP Tournament", "Participate in 1 pvp tournament", "Any!", "Safe", new Tile(3081, 3505), 1, TOURNY_DAILY_TASK_COMPLETION_AMOUNT, TOURNY_DAILY_TASK_COMPLETED, TOURNY_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DOUBLE_DROPS_SCROLL,15), new Item(POINTS_MYSTERY_BOX,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    STARDUST("Stardust", "Mine 1.000 stardust", "Any!", "Safe", null, 1000, STARDUST_DAILY_TASK_COMPLETION_AMOUNT, STARDUST_DAILY_TASK_COMPLETED, STARDUST_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DONATOR_MYSTERY_BOX,1), new Item(DOUBLE_DROPS_SCROLL,5), new Item(COINS_995,1_000_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
+    STARDUST("Stardust", "Mine 1.000 stardust", "Any!", "Safe", null, 1000, STARDUST_DAILY_TASK_COMPLETION_AMOUNT, STARDUST_DAILY_TASK_COMPLETED, STARDUST_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DOUBLE_DROPS_SCROLL,5), new Item(COINS_995,1_000_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
