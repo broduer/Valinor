@@ -65,7 +65,7 @@ public enum Collection {
 
     CHAOS_ELEMENTAL(AttributeKey.CHAOS_ELEMENTALS_KILLED, LogType.BOSSES, "Chaos Elemental", new int[]{NpcIdentifiers.CHAOS_ELEMENTAL}, AttributeKey.CHAOS_ELEMENTAL_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(PET_CHAOS_ELEMENTAL), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD)),
+        new Item(PET_CHAOS_ELEMENTAL), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD), new Item(ELEMENTAL_BOW), new Item(KORASI_SWORD)),
 
     CHAOS_FANATIC(AttributeKey.CHAOS_FANATICS_KILLED, LogType.BOSSES, "Chaos Fanatic", new int[]{NpcIdentifiers.CHAOS_FANATIC}, AttributeKey.CHAOS_FANATIC_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS)},
         //Drops
