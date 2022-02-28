@@ -20,21 +20,21 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public enum DailyTasks {
 
-    ROCK_CRABS("Rock crabs", "Kill 20 rock crabs", "Any!", "Safe", new Tile(2706, 3713), 20, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, ROCK_CRABS_DAILY_TASK_COMPLETED, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
+    ROCK_CRABS("Rock crabs", "Kill 20 rock crabs", "Any!", "Safe", new Tile(2706, 3713), 20, ROCK_CRABS_DAILY_TASK_COMPLETION_AMOUNT, ROCK_CRABS_DAILY_TASK_COMPLETED, ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    EXPERIMENTS("Experiments", "Kill 20 experiments", "25+", "Safe", new Tile(3556, 9944), 20, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, EXPERIMENTS_DAILY_TASK_COMPLETED, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(CRYSTAL_KEY, 1)) {
+    EXPERIMENTS("Experiments", "Kill 20 experiments", "25+", "Safe", new Tile(3556, 9944), 20, EXPERIMENTS_DAILY_TASK_COMPLETION_AMOUNT, EXPERIMENTS_DAILY_TASK_COMPLETED, EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000), new Item(CRYSTAL_KEY, 1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    THIEVING("Thieving", "Steal from 100 stalls or pick-pockets", "Any!", "Safe", new Tile(3084,3475), 100, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, THIEVING_DAILY_TASK_COMPLETED, THIEVING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15)) {
+    THIEVING("Thieving", "Steal from 100 stalls or pick-pockets", "Any!", "Safe", new Tile(3084,3475), 100, THIEVING_DAILY_TASK_COMPLETION_AMOUNT, THIEVING_DAILY_TASK_COMPLETED, THIEVING_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995, 1_000_000)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -55,7 +55,7 @@ public enum DailyTasks {
         }
     },
 
-    SLAYER("Slayer", "Complete 5 slayer tasks","25+", "Safe", null, 5, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 400), new Item(COINS_995, 1_000_000), new Item(DOUBLE_DROPS_SCROLL, 15), new Item(POINTS_MYSTERY_CHEST, 1), new Item(SLAYER_TELEPORT_SCROLL, 5)) {
+    SLAYER("Slayer", "Complete 5 slayer tasks","25+", "Safe", null, 5, SLAYER_DAILY_TASK_COMPLETION_AMOUNT, SLAYER_DAILY_TASK_COMPLETED, SLAYER_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 400), new Item(COINS_995, 1_000_000), new Item(POINTS_MYSTERY_CHEST, 1), new Item(SLAYER_TELEPORT_SCROLL, 5)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -118,63 +118,63 @@ public enum DailyTasks {
         }
     },
 
-    TOURNY("PvP Tournament", "Participate in 1 pvp tournament", "Any!", "Safe", new Tile(3081, 3505), 1, TOURNY_DAILY_TASK_COMPLETION_AMOUNT, TOURNY_DAILY_TASK_COMPLETED, TOURNY_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DOUBLE_DROPS_SCROLL,15), new Item(POINTS_MYSTERY_BOX,2)) {
+    TOURNY("PvP Tournament", "Participate in 1 pvp tournament", "Any!", "Safe", new Tile(3081, 3505), 1, TOURNY_DAILY_TASK_COMPLETION_AMOUNT, TOURNY_DAILY_TASK_COMPLETED, TOURNY_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(POINTS_MYSTERY_BOX,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    STARDUST("Stardust", "Mine 1.000 stardust", "Any!", "Safe", null, 1000, STARDUST_DAILY_TASK_COMPLETION_AMOUNT, STARDUST_DAILY_TASK_COMPLETED, STARDUST_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(DOUBLE_DROPS_SCROLL,5), new Item(COINS_995,1_000_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
+    STARDUST("Stardust", "Mine 1.000 stardust", "Any!", "Safe", null, 1000, STARDUST_DAILY_TASK_COMPLETION_AMOUNT, STARDUST_DAILY_TASK_COMPLETED, STARDUST_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 200), new Item(COINS_995,1_000_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    WORLD_BOSS("World boss", "Kill 5 world boss of any kind", "80+", "Safe", null, 5, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WORLD_BOSS_DAILY_TASK_COMPLETED, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 250), new Item(DOUBLE_DROPS_SCROLL,10), new Item(COINS_995,2_500_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
+    WORLD_BOSS("World boss", "Kill 5 world boss of any kind", "80+", "Safe", null, 5, WORLD_BOSS_DAILY_TASK_COMPLETION_AMOUNT, WORLD_BOSS_DAILY_TASK_COMPLETED, WORLD_BOSS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.EASY, new Item(WINTER_TOKENS, 250), new Item(COINS_995,2_500_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    REVENANTS("Revenants", "Kill 150 revenants", "100+", "Dangerous!", new Tile(3127, 3832), 150, REVENANTS_DAILY_TASK_COMPLETION_AMOUNT, REVENANTS_DAILY_TASK_COMPLETED, REVENANTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 650), new Item(DOUBLE_DROPS_SCROLL,15), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,1)) {
+    REVENANTS("Revenants", "Kill 150 revenants", "100+", "Dangerous!", new Tile(3127, 3832), 150, REVENANTS_DAILY_TASK_COMPLETION_AMOUNT, REVENANTS_DAILY_TASK_COMPLETED, REVENANTS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 650), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    KRAKENS("Krakens", "Kill 30 Krakens", "80+", "Safe", new Tile(2280, 10016), 30, KRAKEN_DAILY_TASK_COMPLETION_AMOUNT, KRAKEN_DAILY_TASK_COMPLETED, KRAKEN_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 450), new Item(DOUBLE_DROPS_SCROLL,5), new Item(COINS_995,1_500_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
+    KRAKENS("Krakens", "Kill 30 Krakens", "80+", "Safe", new Tile(2280, 10016), 30, KRAKEN_DAILY_TASK_COMPLETION_AMOUNT, KRAKEN_DAILY_TASK_COMPLETED, KRAKEN_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 450), new Item(COINS_995,1_500_000), new Item(POINTS_MYSTERY_BOX,1), new Item(CRYSTAL_KEY,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    BATTLE_MAGES("Battle Mages", "Kill 100 battle mages", "100+", "Dangerous", new Tile(2539, 4716), 100, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, BATTLE_MAGE_DAILY_TASK_COMPLETED, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 450), new Item(DOUBLE_DROPS_SCROLL,40), new Item(COINS_995,4_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
+    BATTLE_MAGES("Battle Mages", "Kill 100 battle mages", "100+", "Dangerous", new Tile(2539, 4716), 100, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, BATTLE_MAGE_DAILY_TASK_COMPLETED, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 450), new Item(COINS_995,4_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    NEX("Nex", "Kill Nex 30 times", "115+", "Safe", new Tile(2904, 5203), 30, NEX_DAILY_TASK_COMPLETION_AMOUNT, NEX_DAILY_TASK_COMPLETED, NEX_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 1000), new Item(DOUBLE_DROPS_SCROLL,30), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,3), new Item(CRYSTAL_KEY,3)) {
+    NEX("Nex", "Kill Nex 30 times", "115+", "Safe", new Tile(2904, 5203), 30, NEX_DAILY_TASK_COMPLETION_AMOUNT, NEX_DAILY_TASK_COMPLETED, NEX_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 1000), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,3), new Item(CRYSTAL_KEY,3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    DEMONIC_GORILLAS("Demonic gorilla", "Kill 100 Demonic Gorillas", "100+", "Safe", new Tile(2128, 5647), 100, DEMONIC_GORILLA_DAILY_TASK_COMPLETION_AMOUNT, DEMONIC_GORILLA_DAILY_TASK_COMPLETED, DEMONIC_GORILLA_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 750), new Item(DOUBLE_DROPS_SCROLL,15), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
+    DEMONIC_GORILLAS("Demonic gorilla", "Kill 100 Demonic Gorillas", "100+", "Safe", new Tile(2128, 5647), 100, DEMONIC_GORILLA_DAILY_TASK_COMPLETION_AMOUNT, DEMONIC_GORILLA_DAILY_TASK_COMPLETED, DEMONIC_GORILLA_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, new Item(WINTER_TOKENS, 750), new Item(COINS_995,3_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
         }
     },
 
-    WIN_PVP_TOURNY("Win Tourny", "Win 1 PvP tournament", "Any!", "Safe", new Tile(3081, 3505), 1, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETION_AMOUNT, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETED, WIN_PVP_TOURNAMENT_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 650), new Item(DOUBLE_DROPS_SCROLL,50), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2), new Item(COINS_995,5_000_000)) {
+    WIN_PVP_TOURNY("Win Tourny", "Win 1 PvP tournament", "Any!", "Safe", new Tile(3081, 3505), 1, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETION_AMOUNT, WIN_PVP_TOURNAMENT_DAILY_TASK_COMPLETED, WIN_PVP_TOURNAMENT_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(WINTER_TOKENS, 650), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2), new Item(COINS_995,5_000_000)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -195,7 +195,7 @@ public enum DailyTasks {
         }
     },
 
-    DEEP_WILD("Deep wild", "Kill 10 players above level 30 wilderness", "100+", "Dangerous", null, 10, DEEP_WILD_DAILY_TASK_COMPLETION_AMOUNT, DEEP_WILD_DAILY_TASK_COMPLETED, DEEP_WILD_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 1000), new Item(COINS_995,2_000_000), new Item(DOUBLE_DROPS_SCROLL,20), new Item(DONATOR_MYSTERY_BOX,1)) {
+    DEEP_WILD("Deep wild", "Kill 10 players above level 30 wilderness", "100+", "Dangerous", null, 10, DEEP_WILD_DAILY_TASK_COMPLETION_AMOUNT, DEEP_WILD_DAILY_TASK_COMPLETED, DEEP_WILD_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 1000), new Item(COINS_995,2_000_000), new Item(DONATOR_MYSTERY_BOX,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -209,7 +209,7 @@ public enum DailyTasks {
         }
     },
 
-    EDGEVILE_KILLS("Edgevile", "Kill 10 players at edgeville", "70+", "Dangerous", new Tile(3095, 3516), 10, EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, EDGEVILE_KILLS_DAILY_TASK_COMPLETED, EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,3_500_000), new Item(DOUBLE_DROPS_SCROLL,30), new Item(POINTS_MYSTERY_CHEST,2), new Item(VOTE_TICKET,2)) {
+    EDGEVILE_KILLS("Edgevile", "Kill 10 players at edgeville", "70+", "Dangerous", new Tile(3095, 3516), 10, EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, EDGEVILE_KILLS_DAILY_TASK_COMPLETED, EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,3_500_000), new Item(POINTS_MYSTERY_CHEST,2), new Item(VOTE_TICKET,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -223,7 +223,7 @@ public enum DailyTasks {
         }
     },
 
-    MEMBER_CAVE_KILLS("Member cave", "Kill 5 players inside member cave", "100+", "Dangerous", null, 5, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,2_000_000), new Item(DOUBLE_DROPS_SCROLL,10)) {
+    MEMBER_CAVE_KILLS("Member cave", "Kill 5 players inside member cave", "100+", "Dangerous", null, 5, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,2_000_000)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

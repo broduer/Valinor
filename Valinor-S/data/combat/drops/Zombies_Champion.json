@@ -28,6 +28,7 @@
         { "id": 19490, "min": 10, "max": 30, "points": 95 }, //Dragon javelin p++
         { "id": 22634, "min": 100, "max": 500, "points": 65 }, //Morrigan's thrownaxe
         { "id": 22636, "min": 100, "max": 500, "points": 65 }, //Morrigan's javelin
+        { "id": 30190, "min": 5, "max": 20, "points": 22 }, //Double drop scrolls
         { "id": 11785, "min": 1, "max": 1, "points": 20 }, //Armadyl crossbow
         { "id": 11802, "min": 1, "max": 1, "points": 17 }, //Armadyl godsword
         { "id": 13652, "min": 1, "max": 1, "points": 12 }, //Dragon claws
