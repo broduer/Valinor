@@ -596,14 +596,14 @@ public class CustomItems {
         if (id == SANGUINE_TWISTED_BOW) {
             ItemDefinition.copyInventory(def, TWISTED_BOW);
             ItemDefinition.copyEquipment(def, TWISTED_BOW);
-            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, null};
             def.name = "<col=65280>Sanguine twisted bow";
             def.modelCustomColor4 = 235;
             def.stackable = 0;
         }
 
         if (id == SANGUINE_SCYTHE_OF_VITUR) {
-            def.inventoryActions = new String[]{null, "Wield", null, null, "Dismantle"};
+            def.inventoryActions = new String[]{null, "Wield", null, null, null};
         }
 
         if (id == HOLY_SANGUINESTI_STAFF) {

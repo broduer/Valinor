@@ -63,8 +63,6 @@ public enum Conversions {
     HOLY_GHRAZI_RAPIER(new Item(ItemIdentifiers.HOLY_GHRAZI_RAPIER), new Item[] { new Item(GHRAZI_RAPIER), new Item(HOLY_ORNAMENT_KIT)}),
     HOLY_SANGUINESTI_STAFF(new Item(ItemIdentifiers.HOLY_SANGUINESTI_STAFF), new Item[] { new Item(SANGUINESTI_STAFF), new Item(HOLY_ORNAMENT_KIT)}),
     HOLY_SCYTHE_OF_VITUR(new Item(ItemIdentifiers.HOLY_SCYTHE_OF_VITUR), new Item[] { new Item(SCYTHE_OF_VITUR), new Item(HOLY_ORNAMENT_KIT)}),
-    SANGUINE_SCYTHE_OF_VITUR(new Item(ItemIdentifiers.SANGUINE_SCYTHE_OF_VITUR), new Item[] { new Item(SCYTHE_OF_VITUR), new Item(SANGUINE_ORNAMENT_KIT)}),
-    SANGUINE_TWISTED_BOW(new Item(CustomItemIdentifiers.SANGUINE_TWISTED_BOW), new Item[] {new Item(TWISTED_BOW), new Item(SANGUINE_ORNAMENT_KIT)}),
     GRACEFUL_HOOD(new Item(GRACEFUL_HOOD_24743), new Item[] { new Item(ItemIdentifiers.GRACEFUL_HOOD), new Item(DARK_DYE)}),
     GRACEFUL_TOP(new Item(GRACEFUL_TOP_24749), new Item[] { new Item(ItemIdentifiers.GRACEFUL_TOP), new Item(DARK_DYE)}),
     GRACEFUL_LEGS(new Item(GRACEFUL_LEGS_24752), new Item[] { new Item(ItemIdentifiers.GRACEFUL_LEGS), new Item(DARK_DYE)}),
