@@ -209,7 +209,7 @@ object KtCommands {
             query<Unit> {
                 prepareStatement(
                     connection,
-                    "UPDATE DoAIIDlB_rs_orders SET claimed='unclaimed', claim_ip='unclaimed', claim_date='unclaimed' WHERE lower(claimed)='claimed'"
+                    "UPDATE DoAIIDlB_legacy_rs_orders SET claimed='unclaimed', claim_ip='unclaimed', claim_date='unclaimed' WHERE lower(claimed)='claimed'"
                 ).apply {
                     execute()
                 }

@@ -252,7 +252,6 @@ object CollectPayments {
                         Utils.sendDiscordInfoLog("$username used command: ::redeem and claimed their payment of X${row.itemAmt} ${Item(row.itemId).name()}.", "donations_claimed")
                     }
                 }
-
             }
             if (sendNonIronmanMsg) { // there
                 message("You are unable to claim your order as a ironman. Contact a staff member to sort this")
