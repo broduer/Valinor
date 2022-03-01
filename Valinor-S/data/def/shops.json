@@ -2037,7 +2037,7 @@
     "noiron": false,
     "currency": "PK_POINTS",
     "restock": true,
-    "sellType": "NONE",
+    "sellType": "CONTAINS",
     "scroll": 800,
     "items": [
       {

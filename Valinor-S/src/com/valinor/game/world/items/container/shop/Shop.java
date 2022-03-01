@@ -446,6 +446,10 @@ public abstract class Shop {
             value = item.unnote().getMerchantValue();
         }
 
+        if(shopId == 18) {
+            name = "Pk Point Shop - (PKP : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0)))+")";
+        }
+
         if (value <= 0) {
             if (this.sellType() != SellType.NONE) {
                 player.message(String.format("%s will buy %s for free!", name, item.unnote().name()));
