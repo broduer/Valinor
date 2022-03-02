@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.game.content.collection_logs.LogType.KEYS;
+import static com.valinor.util.CustomItemIdentifiers.PKP_TICKET;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -50,36 +51,53 @@ public class LarransChest extends Interaction {
     }
 
     private static final List<Item> OTHER = Arrays.asList(
-        new Item(UNCUT_DIAMOND + 1, 35 + World.getWorld().random(10)),
-        new Item(UNCUT_RUBY + 1, 35 + World.getWorld().random(10)),
-        new Item(COAL + 1, 450 + World.getWorld().random(650)),
-        new Item(GOLD_ORE + 1, 150 + World.getWorld().random(250)),
-        new Item(DRAGON_ARROWTIPS, 100 + World.getWorld().random(250)),
-        new Item(COINS_995, 5_000_000 + World.getWorld().random(5_000_000)),
-        new Item(IRON_ORE + 1, 500 + World.getWorld().random(250)),
-        new Item(RUNE_FULL_HELM + 1, 3 + World.getWorld().random(5)),
-        new Item(RUNE_PLATEBODY + 1, 3 + World.getWorld().random(5)),
-        new Item(RUNE_PLATELEGS + 1, 3 + World.getWorld().random(5)),
-        new Item(PURE_ESSENCE + 1, 4500 + World.getWorld().random(3000)),
-        new Item(RAW_TUNA + 1, 150 + World.getWorld().random(525)),
-        new Item(RAW_LOBSTER + 1, 150 + World.getWorld().random(525)),
-        new Item(RAW_SWORDFISH + 1, 150 + World.getWorld().random(450)),
-        new Item(RAW_MONKFISH + 1, 150 + World.getWorld().random(450)),
-        new Item(RAW_SEA_TURTLE+1, 120 + World.getWorld().random(300)),
-        new Item(RAW_MANTA_RAY+1, 120 + World.getWorld().random(240)),
-        new Item(RUNITE_ORE+1, 20 + World.getWorld().random(35)),
-        new Item(STEEL_BAR+1, 350 + World.getWorld().random(550)),
-        new Item(MAGIC_LOGS+1, 180 + World.getWorld().random(220)),
-        new Item(DRAGON_DART_TIP, 80 + World.getWorld().random(200)),
-        new Item(TORSTOL_SEED, World.getWorld().random(1, 5)),
-        new Item(SNAPDRAGON_SEED, World.getWorld().random(1, 5)),
-        new Item(RANARR_SEED, World.getWorld().random(1, 5))
+        new Item(PKP_TICKET, 500),
+        new Item(SUPER_COMBAT_POTION4+1, 5),
+        new Item(DRAGON_DART, 25),
+        new Item(DRAGON_KNIFE, 15),
+        new Item(DRAGON_JAVELIN, 25),
+        new Item(DRAGON_THROWNAXE, 25),
+        new Item(ANTIVENOM4+1, 5),
+        new Item(GUTHIX_REST4+1, 5),
+        new Item(OBSIDIAN_HELMET, 1),
+        new Item(OBSIDIAN_PLATEBODY, 1),
+        new Item(OBSIDIAN_PLATELEGS, 1),
+        new Item(RANGERS_TUNIC, 1),
+        new Item(REGEN_BRACELET, 1),
+        new Item(GRANITE_MAUL_24225, 1),
+        new Item(BERSERKER_RING_I, 1),
+        new Item(ARCHERS_RING_I, 1),
+        new Item(SEERS_RING_I, 1),
+        new Item(WARRIOR_RING_I, 1)
     );
 
     private static final List<Item> RARE = Arrays.asList(
         new Item(DAGONHAI_HAT, 1),
         new Item(DAGONHAI_ROBE_TOP, 1),
-        new Item(DAGONHAI_ROBE_BOTTOM, 1)
+        new Item(DAGONHAI_ROBE_BOTTOM, 1),
+        new Item(PRIMORDIAL_BOOTS),
+        new Item(PEGASIAN_BOOTS),
+        new Item(ETERNAL_BOOTS),
+        new Item(ABYSSAL_TENTACLE),
+        new Item(BANDOS_CHESTPLATE),
+        new Item(BANDOS_TASSETS),
+        new Item(BLADE_OF_SAELDOR),
+        new Item(BANDOS_GODSWORD),
+        new Item(SARADOMIN_GODSWORD),
+        new Item(ZAMORAK_GODSWORD),
+        new Item(ARMADYL_CHAINSKIRT),
+        new Item(ARMADYL_CHESTPLATE),
+        new Item(ARMADYL_HELMET),
+        new Item(PKP_TICKET, 3500),
+        new Item(SERPENTINE_HELM),
+        new Item(ZAMORAKIAN_HASTA),
+        new Item(FREMENNIK_KILT),
+        new Item(DRAGON_CROSSBOW),
+        new Item(OPAL_DRAGON_BOLTS_E, 25),
+        new Item(DIAMOND_DRAGON_BOLTS_E, 25),
+        new Item(DRAGONSTONE_DRAGON_BOLTS_E, 25),
+        new Item(ONYX_DRAGON_BOLTS_E, 25),
+        new Item(DRAGON_SCIMITAR_OR)
     );
 
     private static final List<Item> EXTREME_RARE = Arrays.asList(
@@ -99,7 +117,22 @@ public class LarransChest extends Interaction {
         new Item(MORRIGANS_THROWING_AXE, 100),
         new Item(MORRIGANS_COIF, 1),
         new Item(MORRIGANS_LEATHER_BODY, 1),
-        new Item(MORRIGANS_LEATHER_CHAPS, 1)
+        new Item(MORRIGANS_LEATHER_CHAPS, 1),
+        new Item(ARMADYL_GODSWORD),
+        new Item(AMULET_OF_TORTURE),
+        new Item(NECKLACE_OF_ANGUISH),
+        new Item(TORMENTED_BRACELET),
+        new Item(ABYSSAL_DAGGER),
+        new Item(DRAGON_CLAWS),
+        new Item(TOXIC_BLOWPIPE),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(TRIDENT_OF_THE_SWAMP),
+        new Item(ABYSSAL_BLUDGEON),
+        new Item(VESTAS_LONGSWORD),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(DRAGON_WARHAMMER),
+        new Item(ELDER_MAUL),
+        new Item(DINHS_BULWARK)
     );
 
     private void open(Player player) {
