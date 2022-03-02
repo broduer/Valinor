@@ -348,6 +348,8 @@ public abstract class Shop {
 
         if(shopId == 18) {
             sellValue = (int) (sellValue * 0.65);
+            if(sellValue < 1)
+                sellValue = 1;
         }
 
         final int amount = player.inventory().count(item.getId());
@@ -452,6 +454,8 @@ public abstract class Shop {
 
         if(shopId == 18) {
             value = (int) (value * 0.65);
+            if(value < 1)
+                value = 1;
             name = "Pk Point Shop - (PKP : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0)))+")";
         }
 
