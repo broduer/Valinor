@@ -33,7 +33,6 @@ public class DragonThrownaxe extends CommonCombatMethod {
         hit.submit();
         CombatSpecial.drain(mob, CombatSpecial.DRAGON_THROWNAXE.getDrainAmount());
 
-        player.getTimers().register(TimerKey.THROWING_AXE_DELAY,1);
         player.getTimers().register(TimerKey.COMBAT_ATTACK,1); // 1 tick delay before another normal melee
     }
 

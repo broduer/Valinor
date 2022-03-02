@@ -45,7 +45,7 @@ public enum CombatSpecial {
     ZARYTE_CROSSBOW(new int[]{ItemIdentifiers.ZARYTE_CROSSBOW}, 75, 1.0, 2.0, new ZaryteCrossbow(), WeaponType.CROSSBOW),
     DRAGON_CROSSBOW(new int[]{ItemIdentifiers.DRAGON_CROSSBOW}, 60, 1.30, 2.0, new DragonCrossbow(), WeaponType.CROSSBOW),
     BALLISTA(new int[]{ItemIdentifiers.LIGHT_BALLISTA, ItemIdentifiers.HEAVY_BALLISTA, ItemIdentifiers.HEAVY_BALLISTA_23630}, 65, 1.25, 1.25, new Ballista(), WeaponType.THROWN),
-    DRAGON_THROWNAXE(new int[]{ItemIdentifiers.DRAGON_THROWNAXE, ItemIdentifiers.DRAGON_THROWNAXE_21207}, 25, 1.0, 1.0, new DragonThrownaxe(), WeaponType.THROWN),
+    DRAGON_THROWNAXE(new int[]{ItemIdentifiers.DRAGON_THROWNAXE, ItemIdentifiers.DRAGON_THROWNAXE_21207}, 25, 1.0, 1.25, new DragonThrownaxe(), WeaponType.THROWN),
     DRAGON_KNIFE(new int[]{ItemIdentifiers.DRAGON_KNIFE, ItemIdentifiers.DRAGON_KNIFEP, ItemIdentifiers.DRAGON_KNIFEP_22808, ItemIdentifiers.DRAGON_KNIFEP_22810}, 25, 1.0, 1.0, new DragonKnife(), WeaponType.THROWN),
     TOXIC_BLOWPIPE(new int[]{ItemIdentifiers.TOXIC_BLOWPIPE, MAGMA_BLOWPIPE}, 50, 1.50, 1.50, new ToxicBlowpipeSpecialAttack(), WeaponType.THROWN),
     MORRIGANS_THROWING_AXE(new int[]{ItemIdentifiers.MORRIGANS_THROWING_AXE}, 50, 1.20, 1.0, new MorrigansThrowingAxe(), WeaponType.THROWN),
@@ -414,10 +414,6 @@ public enum CombatSpecial {
                     player.message("You do not have enough special attack energy left!");
                     player.setSpecialActivated(false);
                     CombatSpecial.updateBar(player);
-                    return;
-                }
-
-                if (player.getTimers().has(TimerKey.THROWING_AXE_DELAY)) {
                     return;
                 }
 

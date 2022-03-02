@@ -16,11 +16,6 @@ public enum TimerKey {
     VASA_TELEPORT_ATTACK,
 
     /**
-     * Since we don't use an attack timer for their special
-     */
-    THROWING_AXE_DELAY,
-
-    /**
      * Player counting 3,2,1,go for a stake.
      */
     STAKE_COUNTDOWN,
