@@ -14,9 +14,8 @@ import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import static com.valinor.game.content.collection_logs.LogType.KEYS;
-import static com.valinor.util.CustomItemIdentifiers.RUNE_POUCH_I;
-import static com.valinor.util.CustomItemIdentifiers.WILDERNESS_KEY;
 
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ObjectIdentifiers.DEADMAN_CHEST;
 import static com.valinor.util.ObjectIdentifiers.DEADMAN_CHEST_27290;
@@ -28,21 +27,83 @@ import static com.valinor.util.ObjectIdentifiers.DEADMAN_CHEST_27290;
 public class WildernessKeyChest extends Interaction {
 
     private static final Item[] EXTREMELY_RARE = new Item[]{
-        new Item(VESTAS_LONGSWORD), new Item(VESTAS_SPEAR), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(STATIUSS_FULL_HELM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM)
+        new Item(KORASI_SWORD),
+        new Item(TWISTED_BOW),
+        new Item(SCYTHE_OF_VITUR),
+        new Item(ELYSIAN_SPIRIT_SHIELD),
+        new Item(SANGUINESTI_STAFF),
+        new Item(BLACK_SANTA_HAT),
+        new Item(TORVA_FULL_HELM),
+        new Item(TORVA_PLATEBODY),
+        new Item(TORVA_PLATELEGS),
+        new Item(ANCESTRAL_HAT),
+        new Item(ANCESTRAL_ROBE_TOP),
+        new Item(ANCESTRAL_ROBE_BOTTOM),
+        new Item(JUSTICIAR_FACEGUARD),
+        new Item(JUSTICIAR_CHESTGUARD),
+        new Item(JUSTICIAR_LEGGUARDS)
     };
 
     private static final Item[] RARE = new Item[]{
-        new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(HEAVY_BALLISTA), new Item(LIGHT_BALLISTA), new Item(NEITIZNOT_FACEGUARD), new Item(PRIMORDIAL_BOOTS), new Item(PEGASIAN_BOOTS), new Item(ETERNAL_BOOTS), new Item(IMBUED_HEART), new Item(DRAGON_CLAWS), new Item(ARMADYL_GODSWORD),
-        new Item(STAFF_OF_THE_DEAD), new Item(STAFF_OF_LIGHT), new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(VESTAS_LONGSWORD),
+        new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT),
+        new Item(STATIUSS_FULL_HELM),
+        new Item(STATIUSS_PLATEBODY),
+        new Item(STATIUSS_PLATELEGS),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(GHRAZI_RAPIER),
+        new Item(ELDER_MAUL),
+        new Item(NIGHTMARE_STAFF),
+        new Item(ANCESTRAL_HAT),
+        new Item(ANCESTRAL_ROBE_TOP),
+        new Item(ANCESTRAL_ROBE_BOTTOM),
+        new Item(JUSTICIAR_FACEGUARD),
+        new Item(JUSTICIAR_CHESTGUARD),
+        new Item(JUSTICIAR_LEGGUARDS),
+        new Item(KODAI_WAND),
+        new Item(BLADE_OF_SAELDOR),
+        new Item(INVERTED_SANTA_HAT),
+        new Item(ANKOU_TOP),
+        new Item(ANKOUS_LEGGINGS),
+        new Item(DRAGON_CLAWS)
     };
 
     private static final Item[] UNCOMMON = new Item[]{
-        new Item(MORRIGANS_JAVELIN, 25), new Item(MORRIGANS_THROWING_AXE,25), new Item(ABYSSAL_TENTACLE), new Item(TARGET_TELEPORT_SCROLL), new Item(AMULET_OF_FURY), new Item(OCCULT_NECKLACE), new Item(TOME_OF_FIRE), new Item(DRAGON_BOOTS), new Item(BERSERKER_RING_I), new Item(SEERS_RING_I), new Item(ARCHERS_RING_I), new Item(WARRIOR_RING_I), new Item(WARD_UPGRADE_KIT), new Item(RUNE_POUCH_I)
+        new Item(ARMADYL_GODSWORD),
+        new Item(DRAGON_CLAWS),
+        new Item(BLADE_OF_SAELDOR),
+        new Item(TOXIC_BLOWPIPE),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY),
+        new Item(MORRIGANS_LEATHER_CHAPS),
+        new Item(ZURIELS_HOOD),
+        new Item(ZURIELS_ROBE_TOP),
+        new Item(ZURIELS_ROBE_BOTTOM),
+        new Item(VOLATILE_ORB),
+        new Item(HARMONISED_ORB),
+        new Item(ELDRITCH_ORB),
+        new Item(SANTA_HAT),
+        new Item(ANKOU_MASK),
+        new Item(DINHS_BULWARK)
     };
 
     private static final Item[] COMMON = new Item[]{
-        new Item(DARK_BOW), new Item(ABYSSAL_WHIP), new Item(DHAROKS_ARMOUR_SET), new Item(KARILS_ARMOUR_SET), new Item(AHRIMS_ARMOUR_SET), new Item(INFINITY_BOOTS), new Item(MAGES_BOOK), new Item(DIVINE_SUPER_COMBAT_POTION4+1, 25), new Item(DIVINE_BASTION_POTION4+1, 25), new Item(DIVINE_BATTLEMAGE_POTION4+1, 25), new Item(DRAGONSTONE_DRAGON_BOLTS_E, 100), new Item(RUBY_DRAGON_BOLTS_E, 100), new Item(DIAMOND_DRAGON_BOLTS_E, 100), new Item(PEARL_DRAGON_BOLTS_E, 100), new Item(ONYX_DRAGON_BOLTS_E, 100), new Item(ANGLERFISH+1, 100), new Item(COOKED_KARAMBWAN+1, 100),
-        new Item(STAMINA_POTION4+1, 35), new Item(WRATH_RUNE, 100)
+        new Item(SERPENTINE_HELM),
+        new Item(MAGMA_HELM),
+        new Item(TANZANITE_HELM),
+        new Item(NEITIZNOT_FACEGUARD),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(DINHS_BULWARK),
+        new Item(DRAGONFIRE_SHIELD),
+        new Item(ANCIENT_WYVERN_SHIELD),
+        new Item(DRAGONFIRE_WARD),
+        new Item(ANKOU_GLOVES),
+        new Item(ANKOU_SOCKS),
+        new Item(TWISTED_ANCESTRAL_COLOUR_KIT),
+        new Item(ARMADYL_GODSWORD),
+        new Item(STATIUSS_WARHAMMER)
     };
 
     public Item rollReward() {
