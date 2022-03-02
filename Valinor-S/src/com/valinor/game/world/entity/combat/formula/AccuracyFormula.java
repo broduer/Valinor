@@ -533,7 +533,7 @@ public class AccuracyFormula {
         boolean def_protect_from_ranged = false;
         boolean def_protect_from_magic = false;
 
-        if (entity.isNpc() && enemy.isPlayer()) {
+        if (enemy.isPlayer()) {
             assert enemy instanceof Player;
             Player player = ((Player) enemy);
             def_protect_from_melee = Prayers.usingPrayer(player, PROTECT_FROM_MELEE);
