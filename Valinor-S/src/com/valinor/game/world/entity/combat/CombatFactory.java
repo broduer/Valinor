@@ -1352,6 +1352,29 @@ public class CombatFactory {
                 WeaponInterfaces.updateWeaponInterface(attackerAsPlayer); //Update the weapon interface
             }
 
+            if (attackerAsPlayer.getEquipment().wearingBeginnerWeapon()) {
+                var hitsLeft = attackerAsPlayer.<Integer>getAttribOr(STARTER_WEAPON_DAMAGE, 500) - 1;
+                attackerAsPlayer.putAttrib(STARTER_WEAPON_DAMAGE, hitsLeft);
+
+                Item weapon = attackerAsPlayer.getEquipment().getWeapon();
+                if (weapon != null && hitsLeft == 100)
+                    attackerAsPlayer.message(Color.RED.wrap("You have 100 hits left on your " + weapon.name() + "."));
+                if (weapon != null && hitsLeft == 50)
+                    attackerAsPlayer.message(Color.RED.wrap("You have 50 hits left on your " + weapon.name() + "."));
+                if (weapon != null && hitsLeft == 25)
+                    attackerAsPlayer.message(Color.RED.wrap("You have 25 hits left on your " + weapon.name() + "."));
+
+                if (weapon != null && hitsLeft <= 0) {
+                    attackerAsPlayer.message(Color.RED.wrap("Your " + weapon.name() + " crumbles to dust."));
+                    attackerAsPlayer.getEquipment().remove(weapon, EquipSlot.WEAPON, true);
+
+                    //Always reset ranged weapon when unequipping weapon
+                    if (attackerAsPlayer.getCombat().getRangedWeapon() != null) {
+                        attackerAsPlayer.getCombat().setRangedWeapon(null);
+                    }
+                }
+            }
+
             if (target.isNpc()) {
                 Npc npc = target.getAsNpc();
 

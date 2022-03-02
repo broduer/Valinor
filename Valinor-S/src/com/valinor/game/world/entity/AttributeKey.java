@@ -697,6 +697,12 @@ public enum AttributeKey {
      */
     NEW_ACCOUNT,
 
+    PICKING_PVM_STARTER_WEAPON,
+
+    PICKING_PVP_STARTER_WEAPON,
+
+    STARTER_WEAPON_DAMAGE("starter_weapon_damage", AttribType.INTEGER),
+
     CONTINUE_STARTER_TUTORIAL,
 
     /**

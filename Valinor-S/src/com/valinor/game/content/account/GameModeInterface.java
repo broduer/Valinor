@@ -13,6 +13,7 @@ import static com.valinor.game.GameConstants.BANK_ITEMS;
 import static com.valinor.game.GameConstants.TAB_AMOUNT;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.EXP_MODE;
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.GAME_MODE;
+import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**

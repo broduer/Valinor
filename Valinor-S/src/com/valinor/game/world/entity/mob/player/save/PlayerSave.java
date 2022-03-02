@@ -694,6 +694,7 @@ public class PlayerSave {
                 player.putAttrib(MYSTERY_TICKETS_OPENED, details.mysteryTicketsOpened);
                 player.putAttrib(PETS_MYSTERY_BOXES_OPENED, details.petsMysteryBoxesOpened);
                 player.putAttrib(WEAPON_MYSTERY_BOXES_OPENED, details.weaponMysteryBoxesOpened);
+                player.putAttrib(STARTER_WEAPON_DAMAGE, details.starterWeaponDamage);
                 return true;
             }
         }
@@ -1241,6 +1242,7 @@ public class PlayerSave {
         private final int mysteryTicketsOpened;
         private final int petsMysteryBoxesOpened;
         private final int weaponMysteryBoxesOpened;
+        private final int starterWeaponDamage;
 
         public String password() {
             return password;
@@ -1735,6 +1737,7 @@ public class PlayerSave {
             mysteryTicketsOpened = Player.getAttribIntOr(player, MYSTERY_TICKETS_OPENED, 0);
             petsMysteryBoxesOpened = Player.getAttribIntOr(player, PETS_MYSTERY_BOXES_OPENED, 0);
             weaponMysteryBoxesOpened = Player.getAttribIntOr(player, WEAPON_MYSTERY_BOXES_OPENED, 0);
+            starterWeaponDamage = Player.getAttribIntOr(player, STARTER_WEAPON_DAMAGE,0);
         }
 
         public void parseDetails() throws Exception {

@@ -7,8 +7,11 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.dialogue.Expression;
+import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.NpcIdentifiers;
+
+import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -45,7 +48,7 @@ public class Tutorial extends Dialogue {
             send(DialogueType.NPC_STATEMENT, NpcIdentifiers.GIELINOR_GUIDE, Expression.CALM_TALK, "You can also save up your vote points and spend them here.");
             setPhase(5);
         } else if (isPhase(5)) {
-            player.teleport(new Tile(3104, 3506));
+            player.teleport(new Tile(3080, 3504));
             send(DialogueType.NPC_STATEMENT, NpcIdentifiers.GIELINOR_GUIDE, Expression.CALM_TALK, "You can find the slayer masters here.", "If you would like a full guide for slayer ::slayerguide.", "We offer various perks to make your game experience better.");
             setPhase(6);
         } else if (isPhase(6)) {
@@ -66,6 +69,7 @@ public class Tutorial extends Dialogue {
             player.unlock();
             player.looks().hide(false);
             player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+            player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
             player.inventory().refresh();//Force an inventory refresh
             player.message("You have been given some training equipment.");
         }
@@ -82,6 +86,7 @@ public class Tutorial extends Dialogue {
                 player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
                 player.looks().hide(false);
                 player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+                player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
                 player.inventory().refresh();//Force an inventory refresh
                 player.message("You have been given some training equipment.");
                 stop();

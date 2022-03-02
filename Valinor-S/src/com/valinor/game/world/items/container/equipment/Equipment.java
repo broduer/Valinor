@@ -415,15 +415,22 @@ public final class Equipment extends ItemContainer {
         }
 
         if (equip.getId() == HARDCORE_IRONMAN_HELM || equip.getId() == HARDCORE_IRONMAN_PLATEBODY || equip.getId() == HARDCORE_IRONMAN_PLATELEGS) {
-            if (player.gameMode() != GameMode.HARDCORE) {
+            if (player.gameMode().isHardcoreIronman()) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a hardcore ironman.");
                 return false;
             }
         }
 
         if (equip.getId() == IRONMAN_HELM || equip.getId() == IRONMAN_PLATEBODY || equip.getId() == IRONMAN_PLATELEGS) {
-            if (player.gameMode() != GameMode.REGULAR) {
+            if (player.gameMode().isIronman() || player.gameMode().isCollectionIron()) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a ironman.");
+                return false;
+            }
+        }
+
+        if (equip.getId() == ULTIMATE_IRONMAN_HELM || equip.getId() == ULTIMATE_IRONMAN_PLATEBODY || equip.getId() == ULTIMATE_IRONMAN_PLATELEGS) {
+            if (player.gameMode().isUltimateIronman()) {
+                player.message("<col=FF0000>You cannot wear this equipment as you are no longer a ultimate ironman.");
                 return false;
             }
         }
@@ -839,6 +846,16 @@ public final class Equipment extends ItemContainer {
         Item helm = player.getEquipment().get(EquipSlot.HEAD);
         if (helm == null) return false;
         return helm.getId() == 12931 || helm.getId() == 13197 || helm.getId() == 13199;
+    }
+
+    public boolean wearingBeginnerWeapon() {
+        List<Integer> beginner_weapons = Arrays.asList(BEGINNER_DRAGON_CLAWS, BEGINNER_AGS, BEGINNER_CHAINMACE, BEGINNER_CRAWS_BOW);
+        for (int weapon : beginner_weapons) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, weapon)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
