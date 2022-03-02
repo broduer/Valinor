@@ -15,14 +15,14 @@ public class TestRaidsLootCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        player.putAttrib(AttributeKey.PERSONAL_POINTS, 900_000);
-        /*for (int i = 0; i < 125; i++) {
+        player.putAttrib(AttributeKey.PERSONAL_POINTS, 115_000);
+        for (int i = 0; i < 125; i++) {
             ChamberOfXericReward.giveRewards(player);
             ChamberOfXericReward.displayRewards(player);
             ChamberOfXericReward.withdrawReward(player);
-        }*/
-        TheatreOfBloodRewards.giveRewards(player);
-        TheatreOfBlood.spawnLootChests(player);
+        }
+        //TheatreOfBloodRewards.giveRewards(player);
+        //TheatreOfBlood.spawnLootChests(player);
         //TheatreOfBloodRewards.displayRewards(player);
         //TheatreOfBloodRewards.withdrawReward(player);
     }
