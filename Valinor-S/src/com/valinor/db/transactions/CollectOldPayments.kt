@@ -10,7 +10,6 @@ import com.valinor.game.world.entity.dialogue.Expression
 import com.valinor.game.world.entity.mob.player.Player
 import com.valinor.game.world.entity.mob.player.QuestTab
 import com.valinor.game.world.items.Item
-import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers
 import com.valinor.util.NpcIdentifiers
 import com.valinor.util.Utils
@@ -22,7 +21,7 @@ import java.time.LocalDateTime
  */
 object CollectOldPayments {
 
-    private fun purchaseItem(itemNum: Int): Item? {
+    private fun purchaseItem(itemNum: Int): Item {
         when (itemNum) {
             13190 -> {
                 return Item(CustomItemIdentifiers.DONATOR_TICKET, 125)
@@ -191,11 +190,9 @@ object CollectOldPayments {
                     memberRights.update(this, false)
 
                     val bonus = row.itemAmt / 2
-                    val purchaseItem = purchaseItem(row.itemId)
+                    val r = purchaseItem(row.itemId)
+                    inventory.addOrBank(Item(r.id, (r.amount * row.itemAmt) + bonus))
 
-                    var ticketsAmt = purchaseItem?.amount
-
-                    inventory().addOrBank(Item(purchaseItem))
                     Utils.sendDiscordInfoLog("$username used command: ::redeemold and claimed their payment of X${row.itemAmt} bonus amt + $bonus ${Item(row.itemId).name()}.", "donations_claimed")
                 }
             }
