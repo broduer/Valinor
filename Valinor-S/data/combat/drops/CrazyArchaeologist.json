@@ -1,190 +1,197 @@
 {
   "points": 0,
   "npcs": [
-	6618
+    6618
   ],
   "guaranteed": [
-	{
-	  "id": 526,
-	  "amount": 1
-	}
+    {
+      "id": 526,
+      "amount": 1
+    },
+    {
+      "id": 30092,
+      "min": 50,
+      "max": 150,
+      "points": 1
+    }
+    //PKP
   ],
   "items": [],
   "tables": [
-	{
-	  "name": "Weapons",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 1731,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 2501,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 868,
-		  "min": 1,
-		  "max": 10,
-		  "points": 1
-		},
-		{
-		  "id": 9185,
-		  "min": 1,
-		  "max": 2,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Ammo",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 4698,
-		  "min": 1,
-		  "max": 30,
-		  "points": 6
-		},
-		{
-		  "id": 11212,
-		  "min": 1,
-		  "max": 75,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Herbs",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 218,
-		  "min": 1,
-		  "max": 4,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Food",
-	  "points": 1,
-	  "items": [
-		{
-		  "id": 385,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 2298,
-		  "min": 1,
-		  "max": 8,
-		  "points": 1
-		},
-		{
-		  "id": 6705,
-		  "min": 1,
-		  "max": 3,
-		  "points": 1
-		},
-		{
-		  "id": 2434,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Other",
-	  "points": 3,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 529,
-		  "max": 4000,
-		  "points": 1
-		},
-		{
-		  "id": 443,
-		  "min": 1,
-		  "max": 40,
-		  "points": 1
-		},
-		{
-		  "id": 686,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1624,
-		  "min": 1,
-		  "max": 4,
-		  "points": 24
-		},
-		{
-		  "id": 1622,
-		  "min": 1,
-		  "max": 6,
-		  "points": 1
-		},
-		{
-		  "id": 2,
-		  "min": 1,
-		  "max": 150,
-		  "points": 1
-		},
-		{
-		  "id": 991,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 1749,
-		  "min": 1,
-		  "max": 10,
-		  "points": 1
-		},
-		{
-		  "id": 239,
-		  "min": 1,
-		  "max": 10,
-		  "points": 1
-		},
-		{
-		  "id": 9194,
-		  "min": 1,
-		  "max": 12,
-		  "points": 1
-		},
-		{
-		  "id": 10976,
-		  "amount": 1,
-		  "points": 12
-		},
-		{
-		  "id": 11990,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 11932,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 11929,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
+    {
+      "name": "Weapons",
+      "points": 1,
+      "items": [
+        {
+          "id": 1731,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 2501,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 868,
+          "min": 1,
+          "max": 10,
+          "points": 1
+        },
+        {
+          "id": 9185,
+          "min": 1,
+          "max": 2,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Ammo",
+      "points": 1,
+      "items": [
+        {
+          "id": 4698,
+          "min": 1,
+          "max": 30,
+          "points": 6
+        },
+        {
+          "id": 11212,
+          "min": 1,
+          "max": 75,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Herbs",
+      "points": 1,
+      "items": [
+        {
+          "id": 218,
+          "min": 1,
+          "max": 4,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Food",
+      "points": 1,
+      "items": [
+        {
+          "id": 385,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 2298,
+          "min": 1,
+          "max": 8,
+          "points": 1
+        },
+        {
+          "id": 6705,
+          "min": 1,
+          "max": 3,
+          "points": 1
+        },
+        {
+          "id": 2434,
+          "amount": 1,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Other",
+      "points": 3,
+      "items": [
+        {
+          "id": 995,
+          "min": 529,
+          "max": 4000,
+          "points": 1
+        },
+        {
+          "id": 443,
+          "min": 1,
+          "max": 40,
+          "points": 1
+        },
+        {
+          "id": 686,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 1624,
+          "min": 1,
+          "max": 4,
+          "points": 24
+        },
+        {
+          "id": 1622,
+          "min": 1,
+          "max": 6,
+          "points": 1
+        },
+        {
+          "id": 2,
+          "min": 1,
+          "max": 150,
+          "points": 1
+        },
+        {
+          "id": 991,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 1749,
+          "min": 1,
+          "max": 10,
+          "points": 1
+        },
+        {
+          "id": 239,
+          "min": 1,
+          "max": 10,
+          "points": 1
+        },
+        {
+          "id": 9194,
+          "min": 1,
+          "max": 12,
+          "points": 1
+        },
+        {
+          "id": 10976,
+          "amount": 1,
+          "points": 12
+        },
+        {
+          "id": 11990,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 11932,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 11929,
+          "amount": 1,
+          "points": 1
+        }
+      ],
+      "tables": []
+    }
   ]
 }

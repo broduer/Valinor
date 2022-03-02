@@ -57,7 +57,7 @@ public enum Collection {
 
     CALLISTO(AttributeKey.CALLISTOS_KILLED, LogType.BOSSES, "Callisto", new int[]{NpcIdentifiers.CALLISTO, NpcIdentifiers.CALLISTO_6609}, AttributeKey.CALLISTO_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2)},
         //Drops
-        new Item(CALLISTO_CUB), new Item(TYRANNICAL_RING), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD)),
+        new Item(CALLISTO_CUB), new Item(TYRANNICAL_RING), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD), new Item(DINHS_BULWARK), new Item(ELDER_MAUL)),
 
     CERBERUS(AttributeKey.CERBERUS_KILLED, LogType.BOSSES, "Cerberus", new int[]{NpcIdentifiers.CERBERUS}, AttributeKey.CERBERUS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(PRIMORDIAL_BOOTS_OR), new Item(PEGASIAN_BOOTS_OR), new Item(ETERNAL_BOOTS_OR)},
         //Drops
@@ -135,7 +135,7 @@ public enum Collection {
 
     SCORPIA(AttributeKey.SCORPIAS_KILLED, LogType.BOSSES, "Scorpia", new int[]{NpcIdentifiers.SCORPIA}, AttributeKey.SCORPIA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(SCORPIAS_OFFSPRING), new Item(ODIUM_SHARD_3), new Item(MALEDICTION_SHARD_3)),
+        new Item(SCORPIAS_OFFSPRING), new Item(ODIUM_SHARD_3), new Item(MALEDICTION_SHARD_3), new Item(DRAGON_CLAWS), new Item(DRAGON_HUNTER_LANCE)),
 
     SKOTIZO(AttributeKey.SKOTIZOS_KILLED, LogType.BOSSES, "Skotizo", new int[]{NpcIdentifiers.SKOTIZO}, AttributeKey.SKOTIZO_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
@@ -151,11 +151,11 @@ public enum Collection {
 
     VENENATIS(AttributeKey.VENENATIS_KILLED, LogType.BOSSES, "Venenatis", new int[]{NpcIdentifiers.VENENATIS, NpcIdentifiers.VENENATIS_6610}, AttributeKey.VENENATIS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(VENENATIS_SPIDERLING), new Item(TREASONOUS_RING), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD)),
+        new Item(VENENATIS_SPIDERLING), new Item(TREASONOUS_RING), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD), new Item(NEITIZNOT_FACEGUARD), new Item(NIGHTMARE_STAFF)),
 
     VETION(AttributeKey.VETIONS_KILLED, LogType.BOSSES, "Vet'ion", new int[]{NpcIdentifiers.VETION_REBORN}, AttributeKey.VETION_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(VETION_JR), new Item(RING_OF_THE_GODS), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD)),
+        new Item(VETION_JR), new Item(RING_OF_THE_GODS), new Item(DRAGON_PICKAXE), new Item(DRAGON_2H_SWORD), new Item(STAFF_OF_LIGHT), new Item(ABYSSAL_BLUDGEON)),
 
     VORKATH(AttributeKey.VORKATHS_KILLED, LogType.BOSSES, "Vorkath", new int[]{NpcIdentifiers.VORKATH}, AttributeKey.VORKATH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(DIAMOND_DRAGON_BOLTS_E, 5000)},
         //Drops
@@ -184,7 +184,7 @@ public enum Collection {
     // Custom bosses
     BARRELCHEST(AttributeKey.BARRELCHESTS_KILLED, LogType.BOSSES, "Barrelchests", new int[]{NpcIdentifiers.BARRELCHEST_6342}, AttributeKey.BARRELCHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 1), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(CustomItemIdentifiers.BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL)),
+        new Item(CustomItemIdentifiers.BARRELCHEST_PET), new Item(ANCIENT_WARRIOR_SWORD), new Item(ANCIENT_WARRIOR_AXE), new Item(ANCIENT_WARRIOR_MAUL), new Item(KEY_OF_DROPS)),
 
     ZOMBIES_CHAMPION(AttributeKey.ZOMBIES_CHAMPIONS_KILLED, LogType.BOSSES, "Zombies Champion", new int[]{NpcIdentifiers.ZOMBIES_CHAMPION}, AttributeKey.ZOMBIES_CHAMPION_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2), new Item(KEY_OF_DROPS,3)},
         //Drops

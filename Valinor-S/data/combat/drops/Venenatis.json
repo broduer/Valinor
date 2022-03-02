@@ -2,194 +2,211 @@
   "points": 0,
   "items": [],
   "npcs": [
-	6610
+    6610
   ],
   "petItem": 13177,
   "petRarity": 1500,
+  "guaranteed": [
+    { "id": 30092, "min": 50, "max": 150, "points": 1 } //PKP
+  ],
   "tables": [
-	{
-	  "name": "Common",
-	  "points": 185,
-	  "items": [
-		{
-		  "id": 995,
-		  "min": 15000,
-		  "max": 20000,
-		  "points": 1
-		},
-		{
-		  "id": 11936,
-		  "amount": 8,
-		  "points": 1
-		},
-		{
-		  "id": 3024,
-		  "amount": 3,
-		  "points": 1
-		},
-		{
-		  "id": 562,
-		  "amount": 400,
-		  "points": 1
-		},
-		{
-		  "id": 560,
-		  "amount": 300,
-		  "points": 1
-		},
-		{
-		  "id": 565,
-		  "amount": 200,
-		  "points": 1
-		},
-		{
-		  "id": 1620,
-		  "amount": 20,
-		  "points": 1
-		},
-		{
-		  "id": 1618,
-		  "amount": 10,
-		  "points": 1
-		},
-		{
-		  "id": 1275,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Uncomm",
-	  "points": 49,
-	  "items": [
-		{
-		  "id": 9243,
-		  "amount": 100,
-		  "points": 1
-		},
-		{
-		  "id": 1319,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 868,
-		  "amount": 60,
-		  "points": 1
-		},
-		{
-		  "id": 6035,
-		  "amount": 100,
-		  "points": 1
-		},
-		{
-		  "id": 238,
-		  "amount": 100,
-		  "points": 1
-		},
-		{
-		  "id": 224,
-		  "amount": 500,
-		  "points": 1
-		},
-		{
-		  "id": 445,
-		  "amount": 300,
-		  "points": 1
-		},
-		{
-		  "id": 2,
-		  "amount": 250,
-		  "points": 1
-		},
-		{
-		  "id": 5953,
-		  "amount": 10,
-		  "points": 1
-		},
-		{
-		  "id": 9194,
-		  "amount": 60,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Rare",
-	  "points": 12,
-	  "items": [
-		{
-		  "id": 1631,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 226,
-		  "amount": 50,
-		  "points": 1
-		},
-		{
-		  "id": 1514,
-		  "amount": 100,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	},
-	{
-	  "name": "Unique",
-	  "points": 13,
-	  "items": [
-		{
-		  "id": 11940,
-		  "amount": 375,
-		  "points": 4
-		},
-		{
-		  "id": 3052,
-		  "amount": 100,
-		  "points": 4
-		},
-		{
-		  "id": 5289,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 5316,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 5315,
-		  "amount": 1,
-		  "points": 4
-		},
-		{
-		  "id": 11920,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 7158,
-		  "amount": 1,
-		  "points": 2
-		},
-		{
-		  "id": 12605,
-		  "amount": 1,
-		  "points": 1
-		},
-		{
-		  "id": 12692,
-		  "amount": 1,
-		  "points": 1
-		}
-	  ],
-	  "tables": []
-	}
+    {
+      "name": "Common",
+      "points": 185,
+      "items": [
+        {
+          "id": 995,
+          "min": 15000,
+          "max": 20000,
+          "points": 1
+        },
+        {
+          "id": 11936,
+          "amount": 8,
+          "points": 1
+        },
+        {
+          "id": 3024,
+          "amount": 3,
+          "points": 1
+        },
+        {
+          "id": 562,
+          "amount": 400,
+          "points": 1
+        },
+        {
+          "id": 560,
+          "amount": 300,
+          "points": 1
+        },
+        {
+          "id": 565,
+          "amount": 200,
+          "points": 1
+        },
+        {
+          "id": 1620,
+          "amount": 20,
+          "points": 1
+        },
+        {
+          "id": 1618,
+          "amount": 10,
+          "points": 1
+        },
+        {
+          "id": 1275,
+          "amount": 1,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Uncomm",
+      "points": 49,
+      "items": [
+        {
+          "id": 9243,
+          "amount": 100,
+          "points": 1
+        },
+        {
+          "id": 1319,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 868,
+          "amount": 60,
+          "points": 1
+        },
+        {
+          "id": 6035,
+          "amount": 100,
+          "points": 1
+        },
+        {
+          "id": 238,
+          "amount": 100,
+          "points": 1
+        },
+        {
+          "id": 224,
+          "amount": 500,
+          "points": 1
+        },
+        {
+          "id": 445,
+          "amount": 300,
+          "points": 1
+        },
+        {
+          "id": 2,
+          "amount": 250,
+          "points": 1
+        },
+        {
+          "id": 5953,
+          "amount": 10,
+          "points": 1
+        },
+        {
+          "id": 9194,
+          "amount": 60,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Rare",
+      "points": 12,
+      "items": [
+        {
+          "id": 1631,
+          "amount": 1,
+          "points": 1
+        },
+        {
+          "id": 226,
+          "amount": 50,
+          "points": 1
+        },
+        {
+          "id": 1514,
+          "amount": 100,
+          "points": 1
+        }
+      ],
+      "tables": []
+    },
+    {
+      "name": "Unique",
+      "points": 13,
+      "items": [
+        {
+          "id": 11940,
+          "amount": 375,
+          "points": 4
+        },
+        {
+          "id": 3052,
+          "amount": 100,
+          "points": 4
+        },
+        {
+          "id": 5289,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 5316,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 5315,
+          "amount": 1,
+          "points": 4
+        },
+        {
+          "id": 11920,
+          "amount": 1,
+          "points": 8
+        },
+        {
+          "id": 7158,
+          "amount": 1,
+          "points": 7
+        },
+        {
+          "id": 12605,
+          "amount": 1,
+          "points": 6
+        },
+        {
+          "id": 12692,
+          "amount": 1,
+          "points": 5
+        },
+        {
+          "id": 24271,
+          "min": 1,
+          "max": 1,
+          "points": 3
+        },
+        //Neitiznot Faceguard
+        {
+          "id": 24422,
+          "min": 1,
+          "max": 1,
+          "points": 2
+        }
+        //Nightmare Staff
+      ],
+      "tables": []
+    }
   ]
 }

@@ -3,7 +3,8 @@
   "petItem": 13179,
   "petRarity": 1000,
   "guaranteed": [
-    { "id": 532, "min": 1, "max": 1 } //Big bones
+    { "id": 532, "min": 1, "max": 1 }, //Big bones
+    { "id": 30092, "min": 50, "max": 150, "points": 1 } //PKP
   ],
   "tables": [
     {
@@ -13,9 +14,11 @@
         { "id": 1275, "min": 1, "max": 1, "points": 50 }, //Rune pickaxe
         { "id": 4675, "min": 1, "max": 1, "points": 50 }, //Ancient staff
         { "id": 1319, "min": 1, "max": 1, "points": 50 }, //Rune 2h sword
-        { "id": 11920, "min": 1, "max": 1, "points": 5 }, //Dragon pickaxe
-        { "id": 7158, "min": 1, "max": 1, "points": 10 }, //Dragon 2h sword
-        { "id": 12601, "min": 1, "max": 1, "points": 5 } //Ring of the gods
+        { "id": 11920, "min": 1, "max": 1, "points": 10 }, //Dragon pickaxe
+        { "id": 7158, "min": 1, "max": 1, "points": 8 }, //Dragon 2h sword
+        { "id": 12601, "min": 1, "max": 1, "points": 7 }, //Ring of the gods
+        { "id": 22296, "min": 1, "max": 1, "points": 6 }, //Staff of light
+        { "id": 13263, "min": 1, "max": 1, "points": 5 } //Abyssal bludgeon
       ]
     },
     {
