@@ -346,6 +346,10 @@ public abstract class Shop {
             sellValue = item.unnote().getMerchantValue();
         }
 
+        if(shopId == 18) {
+            sellValue = (int) (sellValue * 0.65);
+        }
+
         final int amount = player.inventory().count(item.getId());
 
         if (item.getAmount() > amount && !item.stackable()) {
@@ -447,6 +451,7 @@ public abstract class Shop {
         }
 
         if(shopId == 18) {
+            value = (int) (value * 0.65);
             name = "Pk Point Shop - (PKP : "+ Color.RED.wrap(Utils.formatNumber(player.<Integer>getAttribOr(AttributeKey.PK_POINTS,0)))+")";
         }
 
