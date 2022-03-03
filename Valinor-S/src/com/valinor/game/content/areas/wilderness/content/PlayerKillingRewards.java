@@ -262,7 +262,7 @@ public class PlayerKillingRewards {
                     }
                 }
 
-                var pkpReward = 100;//Base value
+                var pkpReward = 300;//Base value
 
                 // Apply donation boost, if any
                 pkpReward = (int) ((double )pkpReward * killer.getMemberRights().pkpMultiplier());
