@@ -617,9 +617,6 @@ public final class NpcDefinition {
 
                     params.put(key, value);
                 }
-            } else {
-                System.err.printf("Error unrecognised {NPC} opcode: %d%n%n", opcode);
-                continue;
             }
         }
     }

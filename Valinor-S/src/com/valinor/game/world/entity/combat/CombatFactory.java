@@ -1164,15 +1164,15 @@ public class CombatFactory {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.DEMONIC_GORILLA && hit.getCombatType() == CombatType.MELEE) {
+                if ((npc.id() == NpcIdentifiers.DEMONIC_GORILLA || npc.id() == CustomNpcIdentifiers.ENRAGED_GORILLA_MELEE) && hit.getCombatType() == CombatType.MELEE) {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.DEMONIC_GORILLA_7145 && hit.getCombatType() == CombatType.RANGED) {
+                if ((npc.id() == NpcIdentifiers.DEMONIC_GORILLA_7145 || npc.id() == CustomNpcIdentifiers.ENRAGED_GORILLA_RANGE) && hit.getCombatType() == CombatType.RANGED) {
                     hit.setDamage(0);
                 }
 
-                if (npc.id() == NpcIdentifiers.DEMONIC_GORILLA_7146 && hit.getCombatType() == CombatType.MAGIC) {
+                if ((npc.id() == NpcIdentifiers.DEMONIC_GORILLA_7146 || npc.id() == CustomNpcIdentifiers.ENRAGED_GORILLA_MAGIC) && hit.getCombatType() == CombatType.MAGIC) {
                     hit.setDamage(0);
                 }
 

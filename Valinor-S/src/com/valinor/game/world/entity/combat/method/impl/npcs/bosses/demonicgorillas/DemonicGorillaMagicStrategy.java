@@ -4,7 +4,11 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.enraged.EnragedDemonicGorilla;
 import com.valinor.game.world.entity.masks.Projectile;
+
+import static com.valinor.util.CustomNpcIdentifiers.ENRAGED_GORILLA_MAGIC;
+import static com.valinor.util.CustomNpcIdentifiers.ENRAGED_GORILLA_RANGE;
 
 /**
  * @author Patrick van Elderen | March, 13, 2021, 22:10
@@ -19,7 +23,12 @@ public class DemonicGorillaMagicStrategy extends CommonCombatMethod {
         var delay = Math.max(1, (50 + (tileDist * 12)) / 30);
         Projectile projectile = new Projectile(mob, target, 1304, 40,25 * tileDist, 10, 10, 0);
         projectile.sendProjectile();
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().postDamage(h -> ((DemonicGorilla)mob).getCombatAI().handleAfterHit(h)).submit();
+        if (mob.isNpc()) {
+            if (mob.getAsNpc().id() == 7146)
+                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().postDamage(h -> ((DemonicGorilla)mob).getCombatAI().handleAfterHit(h)).submit();
+            else if (mob.getAsNpc().id() == ENRAGED_GORILLA_MAGIC)
+                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MAGIC), delay, CombatType.MAGIC).checkAccuracy().postDamage(h -> ((EnragedDemonicGorilla)mob).getCombatAI().handleAfterHit(h)).submit();
+        }
     }
 
     @Override

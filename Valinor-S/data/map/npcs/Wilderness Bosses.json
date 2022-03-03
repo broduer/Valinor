@@ -1,5 +1,40 @@
 [
   {
+    "id": 16020,
+    "x": 3176,
+    "y": 3735,
+    "walkRange": 3,
+    "direction": "ne"
+  }, //enraged gorilla
+  {
+    "id": 16020,
+    "x": 3166,
+    "y": 3726,
+    "walkRange": 3,
+    "direction": "ne"
+  }, //enraged gorilla
+  {
+    "id": 16020,
+    "x": 3150,
+    "y": 3725,
+    "walkRange": 3,
+    "direction": "ne"
+  }, //enraged gorilla
+  {
+    "id": 16020,
+    "x": 3162,
+    "y": 3743,
+    "walkRange": 3,
+    "direction": "ne"
+  }, //enraged gorilla
+  {
+    "id": 16020,
+    "x": 3177,
+    "y": 3739,
+    "walkRange": 3,
+    "direction": "ne"
+  }, //enraged gorilla
+  {
     "id": 6611,
     "x": 3231,
     "y": 3807,

@@ -15,6 +15,24 @@ public class CustomBosses {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
+        if(id == ENRAGED_GORILLA_MAGIC) {
+            NpcDefinition.copy(definition, NpcIdentifiers.DEMONIC_GORILLA_7146);
+            definition.name = "Enraged gorilla";
+            definition.modelCustomColor4 = 100;
+        }
+
+        if(id == ENRAGED_GORILLA_RANGE) {
+            NpcDefinition.copy(definition, NpcIdentifiers.DEMONIC_GORILLA_7145);
+            definition.name = "Enraged gorilla";
+            definition.modelCustomColor4 = 100;
+        }
+
+        if(id == ENRAGED_GORILLA_MELEE) {
+            NpcDefinition.copy(definition, NpcIdentifiers.DEMONIC_GORILLA);
+            definition.name = "Enraged gorilla";
+            definition.modelCustomColor4 = 100;
+        }
+
         if(id == BLOOD_FURY_HESPORI || id == BLOOD_FURY_HESPORI_15022) {
             definition.name = "Bloodfury hespori";
             definition.actions = new String[]{null, "Attack", null, null, null};

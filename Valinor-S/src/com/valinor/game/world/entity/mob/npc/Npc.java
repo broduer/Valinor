@@ -16,6 +16,7 @@ import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.enraged.EnragedDemonicGorilla;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.CrystallineHunleff;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.hunleff.corrupt.CorruptedHunleff;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorilla;
@@ -58,6 +59,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.BRACELET_OF_ETHEREUM;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -280,6 +282,9 @@ public class Npc extends Mob {
             case DEMONIC_GORILLA,
                 DEMONIC_GORILLA_7145,
                 DEMONIC_GORILLA_7146 -> new DemonicGorilla(id, tile);
+            case ENRAGED_GORILLA_MELEE,
+                ENRAGED_GORILLA_RANGE,
+                ENRAGED_GORILLA_MAGIC -> new EnragedDemonicGorilla(id, tile);
             case GREAT_OLM_LEFT_CLAW_7555, GREAT_OLM_7554, GREAT_OLM_RIGHT_CLAW_7553 -> new GreatOlm(id, tile);
             case CORRUPTED_HUNLLEF,
                 CORRUPTED_HUNLLEF_9036,

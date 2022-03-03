@@ -4,6 +4,9 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.enraged.EnragedDemonicGorilla;
+
+import static com.valinor.util.CustomNpcIdentifiers.ENRAGED_GORILLA_MELEE;
 
 /**
  * @author Patrick van Elderen | March, 13, 2021, 22:10
@@ -15,7 +18,12 @@ public class DemonicGorillaMeleeStrategy extends CommonCombatMethod {
     public void prepareAttack(Mob mob, Mob target) {
         //mob.forceChat("MELEE!");
         mob.animate(mob.attackAnimation());
-        target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().postDamage(h -> ((DemonicGorilla)mob).getCombatAI().handleAfterHit(h)).submit();
+        if (mob.isNpc()) {
+            if (mob.getAsNpc().id() == 7144)
+                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().postDamage(h -> ((DemonicGorilla) mob).getCombatAI().handleAfterHit(h)).submit();
+            else if (mob.getAsNpc().id() == ENRAGED_GORILLA_MELEE)
+                target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE), 1, CombatType.MELEE).checkAccuracy().postDamage(h -> ((EnragedDemonicGorilla) mob).getCombatAI().handleAfterHit(h)).submit();
+        }
     }
 
     @Override

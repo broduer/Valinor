@@ -9,12 +9,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.util.*;
 
 import static com.valinor.util.CustomNpcIdentifiers.*;
-import static com.valinor.util.CustomNpcIdentifiers.ARAGOG;
-import static com.valinor.util.CustomNpcIdentifiers.DEMENTOR;
-import static com.valinor.util.CustomNpcIdentifiers.FENRIR_GREYBACK;
-import static com.valinor.util.CustomNpcIdentifiers.FLUFFY;
-import static com.valinor.util.CustomNpcIdentifiers.HUNGARIAN_HORNTAIL;
-import static com.valinor.util.CustomNpcIdentifiers.ZOMBIES_CHAMPION_PET;
+import static com.valinor.util.CustomNpcIdentifiers.ENRAGED_GORILLA_MELEE;
 import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.ICELORD;
 
@@ -308,6 +303,9 @@ public class NpcDefinition implements Definition {
         } else if (id == BLOOD_FURY_HESPORI_PET) {
             name = "Blood fury hespori";
             size = 1;
+        } else if (id == ENRAGED_GORILLA_MAGIC || id == ENRAGED_GORILLA_RANGE || id == ENRAGED_GORILLA_MELEE) {
+            name = "Enraged gorilla";
+            size = 2;
         } else if (id == INFERNAL_SPIDER_PET) {
             name = "Infernal spider";
             size = 1;

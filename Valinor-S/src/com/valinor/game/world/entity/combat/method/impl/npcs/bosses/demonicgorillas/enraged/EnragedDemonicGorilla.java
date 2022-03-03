@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas;
+package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.enraged;
 
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
@@ -8,6 +8,9 @@ import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorillaMagicStrategy;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorillaMeleeStrategy;
+import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.demonicgorillas.DemonicGorillaRangedStrategy;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.Tile;
@@ -16,10 +19,10 @@ import com.valinor.util.Utils;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 
 /**
- * @author Patrick van Elderen | March, 13, 2021, 22:08
- * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
+ * @author Patrick van Elderen <https://github.com/PVE95>
+ * @Since March 03, 2022
  */
-public class DemonicGorilla extends Npc {
+public class EnragedDemonicGorilla extends Npc {
 
     public CombatAI getCombatAI() {
         return combatAI;
@@ -28,7 +31,7 @@ public class DemonicGorilla extends Npc {
     private final CombatAI combatAI;
     private Phase phase;
 
-    public DemonicGorilla(int id, Tile tile) {
+    public EnragedDemonicGorilla(int id, Tile tile) {
         super(id, tile);
         this.phase = Phase.forId(id);
         this.combatAI = new CombatAI(this);
@@ -43,9 +46,6 @@ public class DemonicGorilla extends Npc {
     }
 
     enum Phase {
-        MELEE(7144, CombatType.MELEE, new DemonicGorillaMeleeStrategy()),
-        RANGED(7145, CombatType.RANGED, new DemonicGorillaRangedStrategy()),
-        MAGIC(7146, CombatType.MAGIC, new DemonicGorillaMagicStrategy()),
         ENRAGED_MELEE(ENRAGED_GORILLA_MELEE, CombatType.MELEE, new DemonicGorillaMeleeStrategy()),
         ENRAGED_RANGED(ENRAGED_GORILLA_RANGE, CombatType.RANGED, new DemonicGorillaRangedStrategy()),
         ENRAGED_MAGIC(ENRAGED_GORILLA_MAGIC, CombatType.MAGIC, new DemonicGorillaMagicStrategy());
@@ -65,7 +65,7 @@ public class DemonicGorilla extends Npc {
                 if (phase.type == type)
                     return phase;
             }
-            return MELEE;
+            return ENRAGED_MELEE;
         }
 
         public static Phase nextPhase(Phase old) {
@@ -83,12 +83,12 @@ public class DemonicGorilla extends Npc {
 
     public static class CombatAI extends CommonCombatMethod {
 
-        private final DemonicGorilla demonic;
+        private final EnragedDemonicGorilla demonic;
         private CombatMethod currentMethod;
         private int missCounter;
         private int damageCounter;
 
-        public CombatAI(DemonicGorilla demonic) {
+        public CombatAI(EnragedDemonicGorilla demonic) {
             this.demonic = demonic;
             currentMethod = demonic.phase.method;
         }
@@ -110,7 +110,7 @@ public class DemonicGorilla extends Npc {
 
         @Override
         public void prepareAttack(Mob mob, Mob target) {
-            if (demonic.phase == Phase.MAGIC || demonic.phase == Phase.ENRAGED_MAGIC || demonic.phase == Phase.ENRAGED_RANGED || demonic.phase == Phase.RANGED) {
+            if (demonic.phase == Phase.ENRAGED_MAGIC || demonic.phase == Phase.ENRAGED_RANGED) {
                 if (Utils.random(4) == 1) {
                     boulderToss(mob, target);
                     mob.getCombat().delayAttack(4);
