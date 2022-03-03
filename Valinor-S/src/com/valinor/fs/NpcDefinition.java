@@ -306,6 +306,9 @@ public class NpcDefinition implements Definition {
         } else if (id == ENRAGED_GORILLA_MAGIC || id == ENRAGED_GORILLA_RANGE || id == ENRAGED_GORILLA_MELEE) {
             name = "Enraged gorilla";
             size = 2;
+        } else if(id == CHAOTIC_NIGHTMARE) {
+            name = "Chaotic nightmare";
+            size = 5;
         } else if (id == INFERNAL_SPIDER_PET) {
             name = "Infernal spider";
             size = 1;

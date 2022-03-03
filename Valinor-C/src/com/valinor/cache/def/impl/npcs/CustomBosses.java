@@ -15,6 +15,12 @@ public class CustomBosses {
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
 
+        if(id == CHAOTIC_NIGHTMARE) {
+            NpcDefinition.copy(definition, NpcIdentifiers.THE_NIGHTMARE_9425);
+            //definition.modelId = new int[] {55625};
+            definition.modelCustomColor4 = 100;
+        }
+
         if(id == ENRAGED_GORILLA_MAGIC) {
             NpcDefinition.copy(definition, NpcIdentifiers.DEMONIC_GORILLA_7146);
             definition.name = "Enraged gorilla";

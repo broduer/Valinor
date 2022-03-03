@@ -6,6 +6,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.areas.burthope.warriors_guild.MagicalAnimator;
+import com.valinor.game.content.boss_event.ChaoticNightmare;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
@@ -22,7 +23,6 @@ import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.KalphiteQueenFirstForm;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.kalphite.KalphiteQueenSecondForm;
-import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.wilderness.vetion.VetionMinion;
 import com.valinor.game.world.entity.combat.method.impl.npcs.bosses.zulrah.Zulrah;
 import com.valinor.game.world.entity.combat.method.impl.npcs.godwars.GwdLogic;
 import com.valinor.game.world.entity.combat.method.impl.npcs.hydra.AlchemicalHydra;
@@ -638,10 +638,14 @@ public class NpcDeath {
                         npc.walkRadius(0);
                     }
 
-                    // so in java .. we dont have functions so we need to hardcode the id check
                     if (WorldBossEvent.getINSTANCE().getActiveNpc().isPresent() &&
                         npc == WorldBossEvent.getINSTANCE().getActiveNpc().get()) {
                         WorldBossEvent.getINSTANCE().bossDeath(npc);
+                    }
+
+                    if (ChaoticNightmare.getInstance().getChaoticNightmare().isPresent() &&
+                        npc == ChaoticNightmare.getInstance().getChaoticNightmare().get()) {
+                        ChaoticNightmare.getInstance().drop(npc);
                     }
 
                     if(isNightmare) {
@@ -649,7 +653,7 @@ public class NpcDeath {
                     }
 
                     killer.getBossTimers().submit(npc.def().name, (int) killer.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), killer);
-                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare);
+                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare && npc.id() != CHAOTIC_NIGHTMARE);
 
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //System.out.println(ignoreDrops+ " " +isNightmare);

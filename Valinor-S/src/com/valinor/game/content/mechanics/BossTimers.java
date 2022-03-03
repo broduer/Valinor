@@ -50,7 +50,9 @@ public class BossTimers {
         "Corrupted Nechryarch",
         "TzTok-Jad",
         "Nex",
-        "The Nightmare"
+        "The Nightmare",
+        "Chaotic nightmare",
+        "Enraged gorilla"
     );
 
     private Map<String, Integer> times = new HashMap<>();

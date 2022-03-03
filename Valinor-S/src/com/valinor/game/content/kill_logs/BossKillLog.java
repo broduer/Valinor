@@ -133,6 +133,8 @@ public class BossKillLog {
         INFERNAL_SPIDER("Infernal spider", 10, AttributeKey.INFERNAL_SPIDER_KC,0, STARTING_NAME_LINE + (6 * 64), CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031),
         CHAMBERS_OF_XERIC("Chambers of Xerics",50, AttributeKey.CHAMBER_OF_XERIC_RUNS_COMPLETED, 0, STARTING_NAME_LINE + (6 * 65)),
         THEATRE_OF_BLOOD("Theatre of blood runs",50, AttributeKey.THEATRE_OF_BLOOD_RUNS_COMPLETED, 0, STARTING_NAME_LINE + (6 * 66)),
+        CHAOTIC_NIGHTMARE("Chaotic nightmare",25, AttributeKey.CHAOTIC_NIGHTMARE_KILLS, 0, STARTING_NAME_LINE + (6 * 67)),
+        ENRAGED_GORILLA("Enraged gorilla",2, AttributeKey.ENRAGED_GORILLA_KILLS, 0, STARTING_NAME_LINE + (6 * 68)),
 
         ;
 

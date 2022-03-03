@@ -4,6 +4,7 @@ import com.valinor.game.GameBuilder;
 import com.valinor.game.content.announcements.DidYouKnowTask;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.boss_event.ChaoticNightmare;
 import com.valinor.game.content.boss_event.WorldBossEvent;
 import com.valinor.game.content.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.hunter.Hunter;
@@ -63,6 +64,7 @@ public final class Bootstrap {
             Impling.onServerStartup();
         }
         WorldBossEvent.onServerStart();
+        ChaoticNightmare.onServerStart();
         if(!ShootingStars.DISABLED) {
             ShootingStars.onServerStart();
         }

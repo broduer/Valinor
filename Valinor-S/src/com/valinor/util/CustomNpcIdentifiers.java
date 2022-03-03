@@ -6,6 +6,7 @@ package com.valinor.util;
  */
 public class CustomNpcIdentifiers {
 
+    public final static int CHAOTIC_NIGHTMARE = 16023;
     public final static int ENRAGED_GORILLA_MAGIC = 16022;
     public final static int ENRAGED_GORILLA_RANGE = 16021;
     public final static int ENRAGED_GORILLA_MELEE = 16020;

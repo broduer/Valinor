@@ -276,7 +276,17 @@ public enum Collection {
         new Item(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_MANHUNTING), new Item(RANGING_SCROLL)
     ),
 
-    INFERNAL_SPIDER(AttributeKey.INFERNAL_SPIDER_KC, LogType.BOSSES, "Infernal spider", new int[]{CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031}, AttributeKey.TINFERNAL_SPIDER_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+    INFERNAL_SPIDER(AttributeKey.INFERNAL_SPIDER_KC, LogType.BOSSES, "Infernal spider", new int[]{CustomNpcIdentifiers.INFERNAL_SPIDER, INFERNAL_SPIDER_15031}, AttributeKey.INFERNAL_SPIDER_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+    ),
+
+    ENRAGED_GORILLA(AttributeKey.ENRAGED_GORILLA_KILLS, LogType.BOSSES, "Enraged gorilla", new int[]{ENRAGED_GORILLA_MELEE, ENRAGED_GORILLA_RANGE, ENRAGED_GORILLA_MAGIC}, AttributeKey.ENRAGED_GORILLA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
+        //Drops
+        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+    ),
+
+    CHAOTIC_NIGHTMARE(AttributeKey.CHAOTIC_NIGHTMARE_KILLS, LogType.BOSSES, "Chaotic nightmare", new int[]{CustomNpcIdentifiers.CHAOTIC_NIGHTMARE}, AttributeKey.CHAOTIC_NIGHTMARE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
         new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
     ),

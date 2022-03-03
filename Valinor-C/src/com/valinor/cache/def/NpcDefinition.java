@@ -127,7 +127,7 @@ public final class NpcDefinition {
             MemberNpcs.unpack(id);
         }
 
-        /*if(id == FRAGMENT_OF_SEREN) {
+        /*if(id == THE_NIGHTMARE_9425) {
             System.out.println("models: " + Arrays.toString(npcDefinition.modelId).replace("[", "{").replace("]", "}"));
             System.out.println("additionalModels: " + Arrays.toString(npcDefinition.additionalModels).replace("[", "{").replace("]", "}"));
             System.out.println("standingAnimation: " + npcDefinition.standingAnimation);

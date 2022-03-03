@@ -80,8 +80,7 @@ import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.krake
 import static com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.KrakenBoss.TENTACLE_WHIRLPOOL;
 import static com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
-import static com.valinor.util.CustomNpcIdentifiers.FENRIR_GREYBACK;
-import static com.valinor.util.CustomNpcIdentifiers.LORD_VOLDEMORT;
+import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -753,6 +752,14 @@ public class CombatFactory {
                     attacker.message(Color.RED.wrap("You can only use magic inside the arena!"));
                     Debugs.CMB.debug(attacker, "You can only use magic inside the arena!", target, true);
                     return false;
+                }
+
+                if(npc.id() == CHAOTIC_NIGHTMARE) {
+                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 150) {
+                        attacker.message(Color.RED.wrap("You need atleast 150 nightmare kills before you can kill the Chaotic nightmare."));
+                        Debugs.CMB.debug(attacker, "You need atleast 150 nightmare kills before you can kill the Chaotic nightmare.", target, true);
+                        return false;
+                    }
                 }
             }
 

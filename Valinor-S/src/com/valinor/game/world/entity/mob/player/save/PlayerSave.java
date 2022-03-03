@@ -384,6 +384,8 @@ public class PlayerSave {
                 player.putAttrib(FRAGMENT_OF_SEREN_KC, details.fragmentOfSerenKilled);
                 player.putAttrib(BLOOD_FURY_HESPORI_KC, details.bloodFuryHesporiKilled);
                 player.putAttrib(INFERNAL_SPIDER_KC, details.infernalSpiderKilled);
+                player.putAttrib(ENRAGED_GORILLA_KILLS, details.enragedGorillasKilled);
+                player.putAttrib(CHAOTIC_NIGHTMARE_KILLS, details.chaoticNightmaresKilled);
                 player.putAttrib(KC_REX, details.rexKilled);
                 player.putAttrib(KC_PRIME, details.primeKilled);
                 player.putAttrib(KC_SUPREME, details.supremeKilled);
@@ -641,7 +643,7 @@ public class PlayerSave {
                 player.putAttrib(CRYSTALLINE_HUNLLEF_LOG_CLAIMED, details.crystallineHunleffLogClaimed);
                 player.putAttrib(FRAGMENT_OF_SEREN_LOG_CLAIMED, details.fragmentOfSerenLogClaimed);
                 player.putAttrib(BLOOD_FURY_HESPORI_LOG_CLAIMED, details.bloodFurHesporiLogClaimed);
-                player.putAttrib(TINFERNAL_SPIDER_LOG_CLAIMED, details.infernalSpiderLogClaimed);
+                player.putAttrib(INFERNAL_SPIDER_LOG_CLAIMED, details.infernalSpiderLogClaimed);
                 player.putAttrib(DONATOR_MYSTERY_BOX_LOG_CLAIMED, details.donatorMysteryBoxLogClaimed);
                 player.putAttrib(ARMOUR_MYSTERY_BOX_LOG_CLAIMED, details.armourMysteryBoxLogClaimed);
                 player.putAttrib(WEAPON_MYSTERY_BOX_LOG_CLAIMED, details.weaponMysteryBoxLogClaimed);
@@ -652,6 +654,8 @@ public class PlayerSave {
                 player.putAttrib(SARACHNIS_LOG_CLAIMED, details.sarachnisLogClaimed);
                 player.putAttrib(BRYOPHYTA_LOG_CLAIMED, details.bryophytaLogClaimed);
                 player.putAttrib(SLAYER_LOG_CLAIMED, details.slayerLogClaimed);
+                player.putAttrib(ENRAGED_GORILLA_LOG_CLAIMED, details.enragedGorillaLogClaimed);
+                player.putAttrib(CHAOTIC_NIGHTMARE_LOG_CLAIMED, details.chaoticNightmareLogClaimed);
                 player.putAttrib(LAST_DAILY_RESET, details.lastDailyReset);
                 player.putAttrib(FINISHED_HALLOWEEN_TEACHER_DIALOGUE, details.finishedHalloweenDialogue);
                 player.putAttrib(CANDIES_TRADED, details.candiesTraded);
@@ -906,6 +910,8 @@ public class PlayerSave {
         private final int fragmentOfSerenKilled;
         private final int bloodFuryHesporiKilled;
         private final int infernalSpiderKilled;
+        private final int enragedGorillasKilled;
+        private final int chaoticNightmaresKilled;
         private final int rexKilled;
         private final int primeKilled;
         private final int supremeKilled;
@@ -1200,6 +1206,8 @@ public class PlayerSave {
         private final boolean bryophytaLogClaimed;
         private final boolean revenantsLogClaimed;
         private final boolean slayerLogClaimed;
+        private final boolean enragedGorillaLogClaimed;
+        private final boolean chaoticNightmareLogClaimed;
         private final int lastDailyReset;
         private final boolean finishedHalloweenDialogue;
         private final int candiesTraded;
@@ -1439,6 +1447,8 @@ public class PlayerSave {
             fragmentOfSerenKilled = Player.getAttribIntOr(player, FRAGMENT_OF_SEREN_KC, 0);
             bloodFuryHesporiKilled = Player.getAttribIntOr(player, BLOOD_FURY_HESPORI_KC, 0);
             infernalSpiderKilled = Player.getAttribIntOr(player, INFERNAL_SPIDER_KC, 0);
+            enragedGorillasKilled = Player.getAttribIntOr(player, ENRAGED_GORILLA_KILLS, 0);
+            chaoticNightmaresKilled = Player.getAttribIntOr(player, CHAOTIC_NIGHTMARE_KILLS, 0);
             rexKilled = Player.getAttribIntOr(player, KC_REX, 0);
             primeKilled = Player.getAttribIntOr(player, KC_PRIME, 0);
             supremeKilled = Player.getAttribIntOr(player, KC_SUPREME, 0);
@@ -1684,7 +1694,7 @@ public class PlayerSave {
             crystallineHunleffLogClaimed = Player.getAttribBooleanOr(player, CRYSTALLINE_HUNLLEF_LOG_CLAIMED, false);
             fragmentOfSerenLogClaimed = Player.getAttribBooleanOr(player, FRAGMENT_OF_SEREN_LOG_CLAIMED, false);
             bloodFurHesporiLogClaimed = Player.getAttribBooleanOr(player, BLOOD_FURY_HESPORI_LOG_CLAIMED, false);
-            infernalSpiderLogClaimed = Player.getAttribBooleanOr(player, TINFERNAL_SPIDER_LOG_CLAIMED, false);
+            infernalSpiderLogClaimed = Player.getAttribBooleanOr(player, INFERNAL_SPIDER_LOG_CLAIMED, false);
             donatorMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, DONATOR_MYSTERY_BOX_LOG_CLAIMED, false);
             armourMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, ARMOUR_MYSTERY_BOX_LOG_CLAIMED, false);
             weaponMysteryBoxLogClaimed = Player.getAttribBooleanOr(player, WEAPON_MYSTERY_BOX_LOG_CLAIMED, false);
@@ -1695,6 +1705,8 @@ public class PlayerSave {
             sarachnisLogClaimed = Player.getAttribBooleanOr(player, SARACHNIS_LOG_CLAIMED, false);
             bryophytaLogClaimed = Player.getAttribBooleanOr(player, BRYOPHYTA_LOG_CLAIMED, false);
             slayerLogClaimed = Player.getAttribBooleanOr(player, SLAYER_LOG_CLAIMED, false);
+            enragedGorillaLogClaimed = Player.getAttribBooleanOr(player, ENRAGED_GORILLA_LOG_CLAIMED, false);
+            chaoticNightmareLogClaimed = Player.getAttribBooleanOr(player, CHAOTIC_NIGHTMARE_LOG_CLAIMED, false);
             lastDailyReset = Player.getAttribIntOr(player, LAST_DAILY_RESET, -1);
             finishedHalloweenDialogue = Player.getAttribBooleanOr(player, FINISHED_HALLOWEEN_TEACHER_DIALOGUE, false);
             candiesTraded = Player.getAttribIntOr(player, CANDIES_TRADED, -1);

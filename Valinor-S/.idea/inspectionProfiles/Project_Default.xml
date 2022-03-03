@@ -47,5 +47,6 @@
         <value />
       </option>
     </inspection_tool>
+    <inspection_tool class="OptionalUsedAsFieldOrParameterType" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>
