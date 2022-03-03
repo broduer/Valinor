@@ -26,6 +26,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.valinor.util.CustomItemIdentifiers.SANGUINE_TWISTED_BOW;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -106,7 +107,8 @@ public class DropItemPacketListener implements PacketListener {
                     player.stopActions(false);
 
                     List<Integer> charged_item_ids = Arrays.asList(TOXIC_BLOWPIPE, SERPENTINE_HELM, TRIDENT_OF_THE_SWAMP, TOXIC_STAFF_OF_THE_DEAD, TOME_OF_FIRE, SCYTHE_OF_VITUR, SANGUINESTI_STAFF, CRAWS_BOW, VIGGORAS_CHAINMACE, THAMMARONS_SCEPTRE, TRIDENT_OF_THE_SEAS, MAGMA_HELM, TANZANITE_HELM, ABYSSAL_TENTACLE,
-                        ARMADYL_GODSWORD_OR,BANDOS_GODSWORD_OR,SARADOMIN_GODSWORD_OR,ZAMORAK_GODSWORD_OR,GRANITE_MAUL_12848,DIANGOS_CLAWS,AMULET_OF_FURY_OR,OCCULT_NECKLACE_OR,NECKLACE_OF_ANGUISH_OR,AMULET_OF_TORTURE_OR,BERSERKER_NECKLACE_OR,TORMENTED_BRACELET_OR, DRAGON_BOOTS_G, DRAGON_DEFENDER_T
+                        ARMADYL_GODSWORD_OR,BANDOS_GODSWORD_OR,SARADOMIN_GODSWORD_OR,ZAMORAK_GODSWORD_OR,GRANITE_MAUL_12848,DIANGOS_CLAWS,AMULET_OF_FURY_OR,OCCULT_NECKLACE_OR,NECKLACE_OF_ANGUISH_OR,AMULET_OF_TORTURE_OR,BERSERKER_NECKLACE_OR,TORMENTED_BRACELET_OR, DRAGON_BOOTS_G, DRAGON_DEFENDER_T, SANGUINE_SCYTHE_OF_VITUR,
+                        SANGUINE_TWISTED_BOW
                     );
 
                     boolean ignore_charged_actions = charged_item_ids.stream().anyMatch(charged_item_id -> charged_item_id == item.getId());
