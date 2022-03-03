@@ -346,12 +346,18 @@ public class AccuracyFormula {
                     off_additional_bonus += 0.10;
                 }
 
-                if (player.pet() != null && player.hasPetOut("Olmlet") && player.getRaids() != null && player.getRaids().raiding(player)) {
+                boolean inRaids = player.getRaids() != null && player.getRaids().raiding(player);
+                if (player.pet() != null && player.hasPetOut("Olmlet") && inRaids) {
                     off_additional_bonus += 0.10;
                 }
 
                 if (player.hasPetOut("Nagini pet")) {
                     off_additional_bonus += 0.10;
+                }
+
+                boolean cloakOfInvisibility = player.getEquipment().hasAt(EquipSlot.CAPE, CLOAK_OF_INVISIBILITY);
+                if (cloakOfInvisibility && inRaids) {
+                    off_additional_bonus += 0.15;
                 }
 
                 if (player.tile().memberCave()) {

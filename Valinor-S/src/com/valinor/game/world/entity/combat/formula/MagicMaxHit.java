@@ -131,6 +131,11 @@ public class MagicMaxHit {
                 multiplier += 0.10;
             }
 
+            boolean inRaids = player.getRaids() != null && player.getRaids().raiding(player);
+            if (target != null && cloakOfInvisibility && target.isNpc() && inRaids) {
+                multiplier += 0.15;
+            }
+
             // #Custom slayer effects
             var weakSpot = player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.WEAK_SPOT);
             if (weakSpot && target != null && target.isNpc()) {

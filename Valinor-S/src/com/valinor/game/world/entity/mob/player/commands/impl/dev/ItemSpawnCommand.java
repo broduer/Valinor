@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
+import com.valinor.GameServer;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -42,6 +43,9 @@ public class ItemSpawnCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
+        if(GameServer.properties().test) {
+            return true;
+        }
         return (player.getPlayerRights().isDeveloperOrGreater(player));
     }
 }
