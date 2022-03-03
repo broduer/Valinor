@@ -269,7 +269,7 @@ public class AccuracyFormula {
                 } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SCYTHE_OF_VITUR)) {
                     off_additional_bonus += 0.50;
                 } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINE_SCYTHE_OF_VITUR)) {
-                    off_additional_bonus += 0.75;
+                    off_additional_bonus += 2.00;
                 }
 
                 //Arclight
