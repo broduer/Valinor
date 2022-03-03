@@ -28,15 +28,19 @@ import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.NpcIdentifiers.*;
 
 /**
+ * An utility class for the Zaros part of GWD
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since January 13, 2022
  */
 public class ZarosGodwars {
 
-    private static final List<Player> playersOn = Collections.synchronizedList(new ArrayList<>());
+    /**
+     * A list of players inside the nex area
+     */
+    private static final List<Player> players = Collections.synchronizedList(new ArrayList<>());
 
-    public static Nex nex;
-    public static NexMinion fumus;
+    private static Nex nex;
+    private static NexMinion fumus;
     public static NexMinion umbra;
     public static NexMinion cruor;
     public static NexMinion glacies;
@@ -47,7 +51,7 @@ public class ZarosGodwars {
     public static boolean NEX_EVENT_ACTIVE = false;
 
     public static int getPlayersCount() {
-        return playersOn.size();
+        return players.size();
     }
 
     public static void breakFumusBarrier() {
@@ -71,18 +75,18 @@ public class ZarosGodwars {
     }
 
     public static void addPlayer(Player player) {
-        if (playersOn.contains(player)) {
+        if (players.contains(player)) {
             return;
         }
-        playersOn.add(player);
+        players.add(player);
 
         if (!NEX_EVENT_ACTIVE) {
             startEvent();
         }
     }
 
-    public static void removePlayer(Player player) {
-        playersOn.remove(player);
+    public static void removeFromList(Player player) {
+        players.remove(player);
         cancel();
     }
 
@@ -122,8 +126,8 @@ public class ZarosGodwars {
     }
 
     public static ArrayList<Mob> getPossibleTargets() {
-        ArrayList<Mob> possibleTarget = new ArrayList<>(playersOn.size());
-        for (Player player : playersOn) {
+        ArrayList<Mob> possibleTarget = new ArrayList<>(players.size());
+        for (Player player : players) {
             if (player == null || player.dead() || !player.isRegistered())
                 continue;
             possibleTarget.add(player);

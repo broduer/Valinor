@@ -1371,7 +1371,7 @@ public class Player extends Mob {
          */
         runExceptionally(() -> {
             clearInstance();
-            ZarosGodwars.removePlayer(this);
+            ZarosGodwars.removeFromList(this);
             var raids = getRaids();
             if(raids != null) {
                 raids.exit(this,true);

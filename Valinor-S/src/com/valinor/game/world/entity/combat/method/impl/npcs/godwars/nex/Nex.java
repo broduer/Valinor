@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import static com.valinor.util.NpcIdentifiers.NEX_11280;
 
 /**
+ * The nex
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since January 13, 2022
  */

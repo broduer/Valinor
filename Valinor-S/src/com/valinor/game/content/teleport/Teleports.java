@@ -204,7 +204,7 @@ public class Teleports {
         if (instancedArea != null)
             instancedArea.onTeleport(player, tile);
 
-        ZarosGodwars.removePlayer(player);
+        ZarosGodwars.removeFromList(player);
 
         //remove from tourny
         TournamentManager.leaveTourny(player, false, true);
