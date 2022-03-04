@@ -28,20 +28,8 @@ public class WildernessKeyChest extends Interaction {
 
     private static final Item[] EXTREMELY_RARE = new Item[]{
         new Item(KORASI_SWORD),
-        new Item(TWISTED_BOW),
-        new Item(SCYTHE_OF_VITUR),
-        new Item(ELYSIAN_SPIRIT_SHIELD),
         new Item(SANGUINESTI_STAFF),
         new Item(BLACK_SANTA_HAT),
-        new Item(TORVA_FULL_HELM),
-        new Item(TORVA_PLATEBODY),
-        new Item(TORVA_PLATELEGS),
-        new Item(ANCESTRAL_HAT),
-        new Item(ANCESTRAL_ROBE_TOP),
-        new Item(ANCESTRAL_ROBE_BOTTOM),
-        new Item(JUSTICIAR_FACEGUARD),
-        new Item(JUSTICIAR_CHESTGUARD),
-        new Item(JUSTICIAR_LEGGUARDS)
     };
 
     private static final Item[] RARE = new Item[]{
@@ -54,10 +42,6 @@ public class WildernessKeyChest extends Interaction {
         new Item(STATIUSS_WARHAMMER),
         new Item(GHRAZI_RAPIER),
         new Item(ELDER_MAUL),
-        new Item(NIGHTMARE_STAFF),
-        new Item(ANCESTRAL_HAT),
-        new Item(ANCESTRAL_ROBE_TOP),
-        new Item(ANCESTRAL_ROBE_BOTTOM),
         new Item(JUSTICIAR_FACEGUARD),
         new Item(JUSTICIAR_CHESTGUARD),
         new Item(JUSTICIAR_LEGGUARDS),
@@ -81,9 +65,6 @@ public class WildernessKeyChest extends Interaction {
         new Item(ZURIELS_HOOD),
         new Item(ZURIELS_ROBE_TOP),
         new Item(ZURIELS_ROBE_BOTTOM),
-        new Item(VOLATILE_ORB),
-        new Item(HARMONISED_ORB),
-        new Item(ELDRITCH_ORB),
         new Item(SANTA_HAT),
         new Item(ANKOU_MASK),
         new Item(DINHS_BULWARK)
@@ -101,7 +82,6 @@ public class WildernessKeyChest extends Interaction {
         new Item(DRAGONFIRE_WARD),
         new Item(ANKOU_GLOVES),
         new Item(ANKOU_SOCKS),
-        new Item(TWISTED_ANCESTRAL_COLOUR_KIT),
         new Item(ARMADYL_GODSWORD),
         new Item(STATIUSS_WARHAMMER)
     };

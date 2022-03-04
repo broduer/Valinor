@@ -2,6 +2,7 @@ package com.valinor.game.world.items.container.equipment;
 
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.areas.edgevile.Mac;
+import com.valinor.game.content.areas.riskzone.RiskFightArea;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.items.equipment.max_cape.MaxCape;
 import com.valinor.game.content.items.skillcape.MasterCape;
@@ -131,7 +132,7 @@ public final class Equipment extends ItemContainer {
     }
 
     public static boolean darkbow(int itemId) {
-        return itemId == DARK_BOW || (itemId >= 12765 && itemId <= 12768);
+        return itemId == 11235 || itemId == 15706 || itemId == 15707 || itemId == 15708 || itemId == 15709 || (itemId >= 12765 && itemId <= 12768);
     }
 
     public static boolean notAvas(Player player) {
@@ -341,13 +342,12 @@ public final class Equipment extends ItemContainer {
             return false;
         }
 
-        //TODO
-        /*if(player.getController() instanceof RiskFightArea || player.getController() instanceof RiskFightSafeArea) {
+        if(player.tile().inArea(RiskFightArea.NH_AREA) || player.tile().inArea(RiskFightArea.ONE_V_ONE_1) || player.tile().inArea(RiskFightArea.ONE_V_ONE_2) || player.tile().inArea(RiskFightArea.ONE_V_ONE_3)) {
             if (equip.definition(World.getWorld()).isUpgradedWeapon) {
                 player.message("You can't equip this weapon here.");
                 return false;
             }
-        }*/
+        }
 
         //Handle duel arena settings..
         if (player.getDueling().inDuel()) {
@@ -567,10 +567,9 @@ public final class Equipment extends ItemContainer {
      *
      * @param equipmentIndex The {@code Equipment} index to unequip the {@code
      *                       Item} from.
-     * @return {@code true} if the item was unequipped, {@code false} otherwise.
      */
-    public boolean unequip(int equipmentIndex) {
-        return unequip(equipmentIndex, -1, player.inventory());
+    public void unequip(int equipmentIndex) {
+        unequip(equipmentIndex, player.inventory());
     }
 
     /**
@@ -578,24 +577,22 @@ public final class Equipment extends ItemContainer {
      *
      * @param equipmentIndex The {@code Equipment} index to unequip the {@code
      *                       Item} from.
-     * @param preferredIndex The preferred inventory slot.
      * @param container      The container to which we are putting the items on.
-     * @return {@code true} if the item was unequipped, {@code false} otherwise.
      */
-    private boolean unequip(int equipmentIndex, int preferredIndex, ItemContainer container) {
+    private void unequip(int equipmentIndex, ItemContainer container) {
         if (player.locked())
-            return false;
+            return;
 
         if (equipmentIndex == -1)
-            return false;
+            return;
         Item unequip = get(equipmentIndex);
         if (unequip == null)
-            return false;
+            return;
 
         if (equipmentIndex == EquipSlot.WEAPON || unequip.isTwoHanded()) {
             if (player.getDueling().getRules()[DuelRule.LOCK_WEAPON.ordinal()]) {
                 DialogueManager.sendStatement(player, "Weapons have been locked in this duel!");
-                return false;
+                return;
             }
         }
 
@@ -606,8 +603,8 @@ public final class Equipment extends ItemContainer {
 
         int newid = unequip.getId() == 13342 ? 13280 : unequip.getId();
         Item toInv = new Item(newid, unequip.getAmount());
-        if (!container.add(toInv, preferredIndex, true)) {
-            return false;
+        if (!container.add(toInv, -1, true)) {
+            return;
         }
 
         player.getEquipment().remove(new Item(unequip.getId(), unequip.getAmount()), true);
@@ -646,7 +643,6 @@ public final class Equipment extends ItemContainer {
             CombatSpecial.updateBar(player);
             player.setSpecialActivated(false);
         }
-        return true;
     }
 
     public void resetWeapon() {
@@ -670,6 +666,8 @@ public final class Equipment extends ItemContainer {
             Autocasting.setAutocast(player, CombatSpells.DAWNBRINGER.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, INFERNAL_TRIDENT)) {
             Autocasting.setAutocast(player, CombatSpells.INFERNAL_TRIDENT.getSpell());
+        } if(player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS)) {
+            Autocasting.setAutocast(player, CombatSpells.CRUCIATUS_CURSE.getSpell());
         } else {
             //Otherwise always reset autocast when switching weapon
             Autocasting.setAutocast(player, null);

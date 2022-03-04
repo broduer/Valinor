@@ -109,11 +109,13 @@ public class Autocasting {
 
     public static void setAutocast(Player player, CombatSpell spell) {
         if (spell == null) {
-            player.putAttrib(AttributeKey.AUTOCAST_SELECTED,false);
-            player.getPacketSender().sendAutocastId(-1).sendConfig(108, 0).setDefensiveAutocastState(0);
+            //Elder wand always has a default auto cast
             if(player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || player.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND_RAIDS)) {
                 player.getCombat().setCastSpell(CombatSpells.CRUCIATUS_CURSE.getSpell());
+                return;
             }
+            player.putAttrib(AttributeKey.AUTOCAST_SELECTED,false);
+            player.getPacketSender().sendAutocastId(-1).sendConfig(108, 0).setDefensiveAutocastState(0);
             //System.out.println("no spell");
             //Use this code for testing when we don't know where the autocast spell is being set to null from -Ken
             //throw new RuntimeException("no spell");
