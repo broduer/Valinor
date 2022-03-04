@@ -22,12 +22,12 @@ public class Settings {
     //Custom user settings
     public boolean tile_markers;
     public boolean enableTweening;
-    public boolean status_bars;
+    public boolean status_bars = true;
     public boolean draw_fps;
-    public boolean draw_special_orb;
-    public boolean draw_orb_arc;
-    public boolean draw_health_overlay;
-    public boolean draw_timers;
+    public boolean draw_special_orb = true;
+    public boolean draw_orb_arc = true;
+    public boolean draw_health_overlay = true;
+    public boolean draw_timers = true;
     public boolean toggle_overhead_names;
     public boolean toggle_overhead_hp;
     public boolean toggle_npc_overhead_names;
@@ -58,7 +58,7 @@ public class Settings {
     public boolean profanityFilter;
     public boolean cameraMovement;
     public boolean shiftClick;
-    public boolean esc_close;
+    public boolean esc_close = true;
     public boolean mouseButtons;
     public boolean acceptAid;
     public int brightness = 3;
@@ -68,8 +68,8 @@ public class Settings {
     public boolean transparentSidePanel;
     public boolean transparentChatbox;
     public boolean sideStonesArrangement;
-    public boolean roofs;
-    public boolean orbs;
+    public boolean roofs = true;
+    public boolean orbs = true;
     public boolean sounds;
     public int sound_state = 0;
     public boolean music;
@@ -193,21 +193,38 @@ public class Settings {
 
             // Write new contents.
             bw = new BufferedWriter(new FileWriter(location, true));
-            writeLine("cameraSpeed", Client.cameraSpeed, bw);
-            writeLine("zoom_distance", Client.zoom_distance, bw);
+            writeLine("tile_markers", tile_markers, bw);
+            writeLine("enableTweening", enableTweening, bw);
+            writeLine("status_bars", status_bars, bw);
+            writeLine("draw_fps", draw_fps, bw);
+            writeLine("draw_special_orb", draw_special_orb, bw);
+            writeLine("draw_orb_arc", draw_orb_arc, bw);
+            writeLine("draw_health_overlay", draw_health_overlay, bw);
+            writeLine("draw_timers", draw_timers, bw);
+            writeLine("toggle_overhead_names", toggle_overhead_names, bw);
+            writeLine("toggle_overhead_hp", toggle_overhead_hp, bw);
+            writeLine("toggle_npc_overhead_names", toggle_npc_overhead_names, bw);
+            writeLine("toggle_npc_overhead_hp", toggle_npc_overhead_hp, bw);
+            writeLine("toggle_item_pile_names", toggle_item_pile_names, bw);
+            writeLine("filter_item_pile_names", filter_item_pile_names, bw);
+            writeLine("moving_prayers", moving_prayers, bw);
+            writeLine("ground_snow", ground_snow, bw);
+            writeLine("shift_pet_options", shift_pet_options, bw);
+            writeLine("sky_snow", sky_snow, bw);
             writeLine("drag_item_value", drag_item_value, bw);
+            writeLine("incinerator", incinerator, bw);
+            writeLine("hide_equipment_button", hide_equipment_button, bw);
+            writeLine("hide_inventory_button", hide_inventory_button, bw);
             writeLine("player_attack_priority", player_attack_priority, bw);
             writeLine("npc_attack_priority", npc_attack_priority, bw);
-            writeLine("keybinds", Arrays.toString(Keybinding.KEYBINDINGS), bw);
+            writeLine("show_hit_predictor", show_hit_predictor, bw);
             writeLine("show_exp_counter", show_exp_counter, bw);
             writeLine("counter_size", counter_size, bw);
             writeLine("counter_color", counter_color, bw);
-            writeLine((double) counter_speed, bw);
+            writeLine("counter_speed", (int) counter_speed, bw);
             writeLine("counter_position", counter_position, bw);
             writeLine("counter_group", counter_group, bw);
-            writeLine("sound_state", sound_state, bw);
-            writeLine("music_state", music_state, bw);
-            writeLine("show_hit_predictor", show_hit_predictor, bw);
+            writeLine("showHitPredictor", showHitPredictor, bw);
             writeLine("hidePrivateChat", hidePrivateChat, bw);
             writeLine("loginLogoutNotification", loginLogoutNotification, bw);
             writeLine("profanityFilter", profanityFilter, bw);
@@ -225,22 +242,13 @@ public class Settings {
             writeLine("sideStonesArrangement", sideStonesArrangement, bw);
             writeLine("roofs", roofs, bw);
             writeLine("orbs", orbs, bw);
-            writeLine("music", music, bw);
             writeLine("sounds", sounds, bw);
-            writeLine("draw_orb_arc", draw_orb_arc, bw);
-            writeLine("draw_special_orb", draw_special_orb, bw);
-            writeLine("draw_health_overlay", draw_health_overlay, bw);
-            writeLine("draw_ground_item_overlay", toggle_item_pile_names, bw);
-            writeLine("draw_timers", draw_timers, bw);
-            writeLine("display_names", toggle_overhead_names, bw);
-            writeLine("toggle_overhead_hp", toggle_overhead_hp, bw);
-            writeLine("toggle_npc_overhead_names", toggle_npc_overhead_names, bw);
-            writeLine("toggle_npc_overhead_hp", toggle_npc_overhead_hp, bw);
-            writeLine("ground_snow", ground_snow, bw);
-            writeLine("show_pet_options", shift_pet_options, bw);
-            writeLine("draw_fps", draw_fps, bw);
-            writeLine("moving_prayers", moving_prayers, bw);
-            writeLine("sky_snow", sky_snow, bw);
+            writeLine("sound_state", sound_state, bw);
+            writeLine("music", music, bw);
+            writeLine("music_state", music_state, bw);
+            writeLine("cameraSpeed", Client.cameraSpeed, bw);
+            writeLine("keybinds", Arrays.toString(Keybinding.KEYBINDINGS), bw);
+            writeLine("zoom_distance", Client.zoom_distance, bw);
             bw.flush();
             bw.close();
         } catch (IOException ioe) {
@@ -257,28 +265,56 @@ public class Settings {
             String line;
             while ((line = file.readLine()) != null) {
                 fileLine = line;
-                if (contains("cameraSpeed")) {
-                    Client.cameraSpeed = readString();
-                } else if (contains("zoom_distance")) {
-                    Client.zoom_distance = readInt();
+                if (contains("tile_markers")) {
+                    tile_markers = readBoolean();
+                } else if (contains("enableTweening")) {
+                    enableTweening = readBoolean();
+                } else if (contains("status_bars")) {
+                    status_bars  = readBoolean();
+                } else if (contains("draw_fps")) {
+                    draw_fps = readBoolean();
+                } else if (contains("draw_special_orb")) {
+                    draw_special_orb = readBoolean();
+                } else if (contains("draw_orb_arc")) {
+                    draw_orb_arc = readBoolean();
+                } else if (contains("draw_health_overlay")) {
+                    draw_health_overlay  = readBoolean();
+                } else if (contains("draw_timers")) {
+                    draw_timers = readBoolean();
+                } else if (contains("toggle_overhead_names")) {
+                    toggle_overhead_names = readBoolean();
+                } else if (contains("toggle_overhead_hp")) {
+                    toggle_overhead_hp = readBoolean();
+                } else if (contains("toggle_npc_overhead_names")) {
+                    toggle_npc_overhead_names = readBoolean();
+                } else if (contains("toggle_npc_overhead_hp")) {
+                    toggle_npc_overhead_hp = readBoolean();
+                } else if (contains("toggle_item_pile_names")) {
+                    toggle_item_pile_names = readBoolean();
+                } else if (contains("filter_item_pile_names")) {
+                    filter_item_pile_names = readBoolean();
+                } else if (contains("moving_prayers")) {
+                    moving_prayers = readBoolean();
+                } else if (contains("ground_snow")) {
+                    ground_snow = readBoolean();
+                } else if (contains("shift_pet_options")) {
+                    shift_pet_options = readBoolean();
+                } else if (contains("sky_snow")) {
+                    sky_snow = readBoolean();
                 } else if (contains("drag_item_value")) {
                     drag_item_value = readInt();
+                } else if (contains("incinerator")) {
+                    incinerator = readBoolean();
+                } else if (contains("hide_equipment_button")) {
+                    hide_equipment_button = readBoolean();
+                } else if (contains("hide_inventory_button")) {
+                    hide_inventory_button = readBoolean();
                 } else if (contains("player_attack_priority")) {
                     player_attack_priority = readInt();
                 } else if (contains("npc_attack_priority")) {
                     npc_attack_priority = readInt();
-                } else if (contains("keybinds")) {
-                    String array = readString(); // it will look like [1, 2, 3, 4]
-                    //System.out.println("we loaded "+array);
-                    array = array.substring(1, array.length() - 1); // strip the [ and ]
-                    String[] entries = array.split(","); // split up via delimiter
-                    //System.out.println("entries are "+Arrays.toString(entries));
-                    for (int index = 0; index < Keybinding.KEYBINDINGS.length; index++) {
-                        // set the keybinds as each entry, casting Str to Int
-                        Keybinding.KEYBINDINGS[index] = Integer.parseInt(entries[index].trim());
-                        // strip whitespace on " -1"
-                        //System.out.println("Key: "+Keybinding.KEYBINDINGS[index]);
-                    }
+                } else if (contains("show_hit_predictor")) {
+                    show_hit_predictor = readBoolean();
                 } else if (contains("show_exp_counter")) {
                     show_exp_counter = readBoolean();
                 } else if (contains("counter_size")) {
@@ -291,12 +327,6 @@ public class Settings {
                     counter_position = readInt();
                 } else if (contains("counter_group")) {
                     counter_group = readBoolean();
-                } else if (contains("sound_state")) {
-                    sound_state = readInt();
-                } else if (contains("music_state")) {
-                    music_state = readInt();
-                } else if (contains("show_hit_predictor")) {
-                    show_hit_predictor = readBoolean();
                 } else if (contains("hidePrivateChat")) {
                     hidePrivateChat = readBoolean();
                 } else if (contains("loginLogoutNotification")) {
@@ -315,6 +345,8 @@ public class Settings {
                     acceptAid = readBoolean();
                 } else if (contains("brightness")) {
                     brightness = readInt();
+                } else if (contains("zoomToggle")) {
+                    zoomToggle = readBoolean();
                 } else if (contains("chatEffects")) {
                     chatEffects = readBoolean();
                 } else if (contains("privateChat")) {
@@ -329,40 +361,30 @@ public class Settings {
                     roofs = readBoolean();
                 } else if (contains("orbs")) {
                     orbs = readBoolean();
-                } else if (contains("music")) {
-                    music = readBoolean();
                 } else if (contains("sounds")) {
                     sounds = readBoolean();
-                } else if (contains("draw_orb_arc")) {
-                    draw_orb_arc = readBoolean();
-                } else if (contains("draw_orb_arc")) {
-                    draw_orb_arc = readBoolean();
-                } else if (contains("draw_special_orb")) {
-                    draw_special_orb = readBoolean();
-                } else if (contains("draw_health_overlay")) {
-                    draw_health_overlay = readBoolean();
-                } else if (contains("draw_ground_item_overlay")) {
-                    toggle_item_pile_names = readBoolean();
-                } else if (contains("draw_timers")) {
-                    draw_timers = readBoolean();
-                } else if (contains("display_names")) {
-                    toggle_overhead_names = readBoolean();
-                } else if (contains("toggle_overhead_hp")) {
-                    toggle_overhead_hp = readBoolean();
-                } else if (contains("toggle_npc_overhead_names")) {
-                    toggle_npc_overhead_names = readBoolean();
-                } else if (contains("toggle_npc_overhead_hp")) {
-                    toggle_npc_overhead_hp = readBoolean();
-                } else if (contains("ground_snow")) {
-                    ground_snow = readBoolean();
-                } else if (contains("show_pet_options")) {
-                    shift_pet_options = readBoolean();
-                } else if (contains("draw_fps")) {
-                    draw_fps = readBoolean();
-                } else if (contains("moving_prayers")) {
-                    moving_prayers = readBoolean();
-                } else if (contains("sky_snow")) {
-                    sky_snow = readBoolean();
+                } else if (contains("sound_state")) {
+                    sound_state = readInt();
+                } else if (contains("music")) {
+                    music = readBoolean();
+                } else if (contains("music_state")) {
+                    music_state = readInt();
+                } else if (contains("cameraSpeed")) {
+                    Client.cameraSpeed = readString();
+                } else if (contains("keybinds")) {
+                    String array = readString(); // it will look like [1, 2, 3, 4]
+                    //System.out.println("we loaded "+array);
+                    array = array.substring(1, array.length() - 1); // strip the [ and ]
+                    String[] entries = array.split(","); // split up via delimiter
+                    //System.out.println("entries are "+Arrays.toString(entries));
+                    for (int index = 0; index < Keybinding.KEYBINDINGS.length; index++) {
+                        // set the keybinds as each entry, casting Str to Int
+                        Keybinding.KEYBINDINGS[index] = Integer.parseInt(entries[index].trim());
+                        // strip whitespace on " -1"
+                        //System.out.println("Key: "+Keybinding.KEYBINDINGS[index]);
+                    }
+                } else if (contains("zoom_distance")) {
+                    Client.zoom_distance = readInt();
                 }
             }
             file.close();
