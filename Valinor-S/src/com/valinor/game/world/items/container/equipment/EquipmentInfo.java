@@ -622,6 +622,15 @@ public class EquipmentInfo {
                 case STEEL_CROSSBOW:
                 case ADAMANT_CROSSBOW:
                 case RUNE_CROSSBOW:
+                case RUNE_CROSSBOW_TIER_1:
+                case RUNE_CROSSBOW_TIER_2:
+                case RUNE_CROSSBOW_TIER_3:
+                case RUNE_CROSSBOW_TIER_4:
+                case RUNE_CROSSBOW_TIER_5_1:
+                case RUNE_CROSSBOW_TIER_5_2:
+                case RUNE_CROSSBOW_TIER_5_3:
+                case RUNE_CROSSBOW_TIER_5_4:
+                case RUNE_CROSSBOW_TIER_5_5:
                 case DRAGON_CROSSBOW:
                 case ARMADYL_CROSSBOW:
                 case DRAGON_HUNTER_CROSSBOW:
@@ -804,6 +813,15 @@ public class EquipmentInfo {
             case STEEL_CROSSBOW:
             case ADAMANT_CROSSBOW:
             case RUNE_CROSSBOW:
+            case RUNE_CROSSBOW_TIER_1:
+            case RUNE_CROSSBOW_TIER_2:
+            case RUNE_CROSSBOW_TIER_3:
+            case RUNE_CROSSBOW_TIER_4:
+            case RUNE_CROSSBOW_TIER_5_1:
+            case RUNE_CROSSBOW_TIER_5_2:
+            case RUNE_CROSSBOW_TIER_5_3:
+            case RUNE_CROSSBOW_TIER_5_4:
+            case RUNE_CROSSBOW_TIER_5_5:
             case DRAGON_CROSSBOW:
             case ARMADYL_CROSSBOW:
             case DRAGON_HUNTER_CROSSBOW:
