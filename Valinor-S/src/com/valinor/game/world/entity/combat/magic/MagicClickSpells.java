@@ -1485,7 +1485,7 @@ public class MagicClickSpells {
             }
         }),
 
-        LUMBRIDGE_TELEPORT(new Spell() {
+        /*LUMBRIDGE_TELEPORT(new Spell() {
             @Override
             public String name() {
                 return "Lumbridge teleport";
@@ -1541,9 +1541,9 @@ public class MagicClickSpells {
             public boolean canCast(Player player, Mob target, boolean delete) {
                 return super.canCast(player, target, delete);
             }
-        }),
+        }),*/
 
-        FALADOR_TELEPORT(new Spell() {
+        /*FALADOR_TELEPORT(new Spell() {
             @Override
             public String name() {
                 return "Falador teleport";
@@ -1599,7 +1599,7 @@ public class MagicClickSpells {
             public boolean canCast(Player player, Mob target, boolean delete) {
                 return super.canCast(player, target, delete);
             }
-        }),
+        }),*/
 
         TELEPORT_TO_HOUSE(new Spell() {
             @Override
@@ -1660,7 +1660,7 @@ public class MagicClickSpells {
             }
         }),
 
-        CAMELOT_TELEPORT(new Spell() {
+        /*CAMELOT_TELEPORT(new Spell() {
             @Override
             public String name() {
                 return "Camelot teleport";
@@ -1715,7 +1715,7 @@ public class MagicClickSpells {
             public boolean canCast(Player player, Mob target, boolean delete) {
                 return super.canCast(player, target, delete);
             }
-        }),
+        }),*/
 
         ARDOUGNE_TELEPORT(new Spell() {
             @Override
@@ -2857,7 +2857,7 @@ public class MagicClickSpells {
             }
         }),
 
-        WATERBIRTH_TELEPORT(new Spell() {
+        /*WATERBIRTH_TELEPORT(new Spell() {
             @Override
             public String name() {
                 return "Waterbirth Teleport";
@@ -2913,7 +2913,7 @@ public class MagicClickSpells {
             public boolean canCast(Player player, Mob target, boolean delete) {
                 return super.canCast(player, target, delete);
             }
-        }),
+        }),*/
 
         BARBARIAN_TELEPORT(new Spell() {
             @Override

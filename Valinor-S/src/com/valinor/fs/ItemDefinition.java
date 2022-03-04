@@ -439,6 +439,10 @@ public class ItemDefinition implements Definition {
         } else if(id == WILDY_ACTIVITY_CASKET) {
             name = "Wildy activity casket";
             grandexchange = false;
+        } else if (id == PVP_SCROLL) {
+            name = "PvP scroll";
+            grandexchange = false;
+            ioptions = new String[]{"Read", null, null, null, "Destroy"};
         } else if (id == SKILLING_SCROLL) {
             name = "Skilling scroll";
             grandexchange = false;
@@ -452,6 +456,9 @@ public class ItemDefinition implements Definition {
             grandexchange = true;
         } else if (id == TASK_BOTTLE_PVMING) {
             name = "Task bottle (pvming)";
+            grandexchange = true;
+        } else if (id == TASK_BOTTLE_PVP) {
+            name = "Task bottle (pvp)";
             grandexchange = true;
         } else if (id == POINTS_MYSTERY_BOX) {
             name = "Points mystery box";

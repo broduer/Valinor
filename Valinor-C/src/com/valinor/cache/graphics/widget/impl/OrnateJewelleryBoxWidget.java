@@ -9,7 +9,7 @@ import com.valinor.cache.graphics.widget.Widget;
  */
 public class OrnateJewelleryBoxWidget extends Widget {
 
-    public static final int ORNATE_JEWELLERY_BOX = 65000;
+    public static final int ORNATE_JEWELLERY_BOX = 65500;
 
     public static void unpack(AdvancedFont[] font) {
         widget(font);

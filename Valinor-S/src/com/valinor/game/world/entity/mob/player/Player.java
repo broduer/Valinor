@@ -50,6 +50,7 @@ import com.valinor.game.content.sound.CombatSounds;
 import com.valinor.game.content.syntax.EnterSyntax;
 import com.valinor.game.content.tasks.TaskBottleManager;
 import com.valinor.game.content.teleport.Teleports;
+import com.valinor.game.content.teleport.world_teleport_manager.WorldTeleportNetwork;
 import com.valinor.game.content.title.AvailableTitle;
 import com.valinor.game.content.title.TitleCategory;
 import com.valinor.game.content.title.TitleColour;
@@ -149,6 +150,12 @@ import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 public class Player extends Mob {
+
+    private final WorldTeleportNetwork worldTeleportNetwork = new WorldTeleportNetwork(this);
+
+    public WorldTeleportNetwork getWorldTeleportNetwork() {
+        return worldTeleportNetwork;
+    }
 
     private final RiskManagement riskManagement = new RiskManagement(this);
 

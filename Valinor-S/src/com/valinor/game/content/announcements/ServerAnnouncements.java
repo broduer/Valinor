@@ -151,8 +151,8 @@ public class ServerAnnouncements {
 
         //Chaos elemental
         ELEMENTAL_BOW,
+        KORASI_SWORD,
         DRAGON_2H_SWORD,
-
 
         // Vorkath
         DRAGONBONE_NECKLACE,

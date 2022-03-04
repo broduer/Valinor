@@ -23,6 +23,8 @@ public class TaskCommand implements Command {
             player.getTaskBottleManager().giveTask(TaskCategory.SKILLING_TASK);
         } else if(cmd.equalsIgnoreCase("pvmtask")) {
             player.getTaskBottleManager().giveTask(TaskCategory.PVMING_TASK);
+        } else if(cmd.equalsIgnoreCase("pvptask")) {
+            player.getTaskBottleManager().giveTask(TaskCategory.PVP_TASK);
         } else if(cmd.equalsIgnoreCase("reset")) {
             player.getTaskBottleManager().resetTask();
         } else if(cmd.equalsIgnoreCase("finishtask")) {

@@ -64,6 +64,17 @@ public final class PacketSender {
         return this;
     }
 
+    public PacketSender sendNpcModel(int id, int npc, int zoom) {
+        PacketBuilder out = new PacketBuilder(231);
+        //Safety otherwise the client might crash.
+        if(npc < 1) {
+            throw new IllegalArgumentException("The npc id cannot be less than one.");
+        }
+        out.putInt(id).putShort(npc).putShort(zoom);
+        player.getSession().write(out);
+        return this;
+    }
+
     public PacketSender sendProgressBar(int child, int progress) {
         PacketBuilder out = new PacketBuilder(237);
         out.putInt(child);

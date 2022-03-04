@@ -260,7 +260,7 @@ public final class ServerToClientPackets {
         PACKET_SIZES[228] = -3;
         PACKET_SIZES[229] = -3;
         PACKET_SIZES[230] = 8;
-        PACKET_SIZES[231] = -3;
+        PACKET_SIZES[231] = 8;
         PACKET_SIZES[232] = -3;
         PACKET_SIZES[233] = -3;
         PACKET_SIZES[234] = -3;
@@ -392,6 +392,7 @@ public final class ServerToClientPackets {
     public static final int RECEIVE_BROADCAST = 222;
     public static final int SET_OPTION_MENU = 223;
     public static final int SET_MODEL_INTERFACE_ZOOM = 230;
+    public static final int SEND_NPC_MODEL_TO_INTERFACE = 231;
     public static final int PROGRESS_BAR = 237;
     public static final int SET_CLICKED_TEXT = 239;
     public static final int SEND_PLAYER_WEIGHT = 240;

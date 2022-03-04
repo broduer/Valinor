@@ -19,52 +19,63 @@ import static com.valinor.util.ItemIdentifiers.*;
 public class TaskReward {
 
     private static final List<Item> COMMON = Arrays.asList(
-        new Item(SARADOMIN_BREW4+1,25),
-        new Item(SUPER_RESTORE4+1,25),
-        new Item(ANGLERFISH+1, 50),
-        new Item(SUPER_COMBAT_POTION4+1, 10),
-        new Item(DIVINE_SUPER_COMBAT_POTION4+1, 5),
-        new Item(SNAPDRAGON_SEED, 3),
-        new Item(RANARR_SEED, 5),
-        new Item(ANTIQUE_LAMP_11137),
-        new Item(MAGIC_LOGS+1, 200),
-        new Item(YEW_LOGS+1, 300)
-    );
-
-    private static final List<Item> UNCOMMON = Arrays.asList(
-        new Item(RUNE_POUCH),
-        new Item(LOOTING_BAG),
-        new Item(OBSIDIAN_HELMET),
-        new Item(OBSIDIAN_PLATEBODY),
-        new Item(OBSIDIAN_PLATELEGS),
-        new Item(GRANITE_MAUL_24225),
-        new Item(INFINITY_BOOTS),
-        new Item(INFINITY_BOTTOMS),
-        new Item(INFINITY_GLOVES),
-        new Item(INFINITY_HAT),
-        new Item(INFINITY_TOP),
-        new Item(MASTER_WAND),
-        new Item(DARK_BOW),
-        new Item(ABYSSAL_WHIP),
-        new Item(BERSERKER_NECKLACE)
-    );
-
-    private static final List<Item> RARE = Arrays.asList(
-        new Item(RANGER_BOOTS),
-        new Item(TOME_OF_FIRE),
+        new Item(DRAGON_PLATEBODY),
+        new Item(DRAGONFIRE_SHIELD),
+        new Item(ARMADYL_HELMET),
+        new Item(ARMADYL_CHESTPLATE),
+        new Item(ARMADYL_CHAINSKIRT),
+        new Item(BANDOS_CHESTPLATE),
+        new Item(BANDOS_TASSETS),
         new Item(ZAMORAKIAN_SPEAR),
         new Item(ZAMORAKIAN_HASTA),
         new Item(ABYSSAL_TENTACLE),
-        new Item(BRIMSTONE_RING),
-        new Item(DRACONIC_VISAGE),
-        new Item(DRAGON_BOOTS),
-        new Item(AMULET_OF_FURY),
-        new Item(BERSERKER_RING_I),
-        new Item(ARCHERS_RING_I),
-        new Item(SEERS_RING_I),
-        new Item(GODSWORD_BLADE),
-        new Item(LAVA_DRAGON_BONES+1,125),
-        new Item(SUPERIOR_DRAGON_BONES+1,100)
+        new Item(GRANITE_MAUL_24225,2),
+        new Item(ANTIQUE_LAMP_11137)
+    );
+
+    private static final List<Item> UNCOMMON = Arrays.asList(
+        new Item(ABYSSAL_DAGGER),
+        new Item(STAFF_OF_THE_DEAD),
+        new Item(TOXIC_BLOWPIPE),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(ABYSSAL_DAGGER_P_13271),
+        new Item(ARMADYL_CROSSBOW),
+        new Item(SERPENTINE_HELM),
+        new Item(DINHS_BULWARK),
+        new Item(NEITIZNOT_FACEGUARD),
+        new Item(DRAGONFIRE_WARD),
+        new Item(SARADOMIN_GODSWORD),
+        new Item(ZAMORAK_GODSWORD),
+        new Item(BANDOS_GODSWORD)
+    );
+
+    private static final List<Item> RARE = Arrays.asList(
+        new Item(HARMONISED_ORB),
+        new Item(ELDRITCH_ORB),
+        new Item(VOLATILE_ORB),
+        new Item(NIGHTMARE_STAFF),
+        new Item(ELDER_MAUL),
+        new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY),
+        new Item(MORRIGANS_LEATHER_CHAPS),
+        new Item(ZURIELS_HOOD),
+        new Item(ZURIELS_ROBE_TOP),
+        new Item(ZURIELS_ROBE_BOTTOM),
+        new Item(STATIUSS_FULL_HELM),
+        new Item(STATIUSS_PLATEBODY),
+        new Item(STATIUSS_PLATELEGS),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT),
+        new Item(VESTAS_SPEAR),
+        new Item(VESTAS_LONGSWORD),
+        new Item(DRAGON_CLAWS),
+        new Item(ARMADYL_GODSWORD),
+        new Item(HEAVY_BALLISTA),
+        new Item(AMULET_OF_TORTURE),
+        new Item(NECKLACE_OF_ANGUISH),
+        new Item(RING_OF_SUFFERING),
+        new Item(TORMENTED_BRACELET)
     );
 
     public static List<Item> getPossibleRewards() {

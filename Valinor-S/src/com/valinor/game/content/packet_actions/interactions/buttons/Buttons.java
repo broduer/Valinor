@@ -306,6 +306,15 @@ public class Buttons {
                         player.getTaskBottleManager().resetTask();
                     });
                     return;
+                } else if(id == PVP_SCROLL) {
+                    player.optionsTitled("Are you sure you wish to destroy this task?", "Yes.", "No.", () -> {
+                        if(!player.inventory().contains(PVP_SCROLL))
+                            return;
+
+                        player.inventory().remove(PVP_SCROLL);
+                        player.getTaskBottleManager().resetTask();
+                    });
+                    return;
                 }
 
                 player.inventory().remove(itemToDestroy, true);
@@ -356,7 +365,9 @@ public class Buttons {
                 if (player.getQuickPrayers().handleButton(button)) {
                     return;
                 }
-
+                if(player.getWorldTeleportNetwork().onButton(button)) {
+                    return;
+                }
                 if (TradingPost.handleButtons(player, button))
                     return;
 

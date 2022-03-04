@@ -4930,6 +4930,13 @@ public class Client extends GameApplet {
             readpkts++;
         }
 
+        if (tabInterfaceIDs[sidebarId] == 65000) {
+            if (!PetSystem.isPetAnimationRunning) {
+                PetSystem.updateAnimations();
+            }
+            update_tab_producer = true;
+        }
+
         currentPacketTime = System.currentTimeMillis();
 
         lastPackets = System.currentTimeMillis();
@@ -8379,6 +8386,35 @@ public class Client extends GameApplet {
             }
         }
 
+        if (support_opcode == 3292) {
+            PetSystem petDef = new PetSystem(NpcDefinition.get(PetSystem.petSelected));
+            child.modelRotation1 = 150;
+            child.modelRotation2 = (int) (game_tick / 100D * 1024D) & 2047;
+            Model model;
+            final Model[] parts = new Model[petDef.getModelArrayLength()];
+            for (int i = 0; i < petDef.getModelArrayLength(); i++) {
+                parts[i] = Model.get(petDef.getModelArray()[i]);
+            }
+            if (parts.length == 1) {
+                model = parts[0];
+            } else {
+                model = new Model(parts.length, parts,false);
+            }
+
+            if (model == null) {
+                return;
+            }
+
+            model.skin();
+            model.scale2((int) 1.5);
+            model.interpolate(Sequence.cache[petDef.getAnimation()].frameIDs[PetSystem.animationFrame]);
+            model.light(64, 850, -30, -50, -30, true);
+            child.model_type = 5;
+            child.model_id = 0;
+            child.set_model(aBoolean994, model);
+            return;
+        }
+
         if (support_opcode == 1430 && child.scrollMax > 5) {
             if (child.pauseTicks > 0) {
                 child.pauseTicks--;
@@ -8407,11 +8443,10 @@ public class Client extends GameApplet {
             }
             if (characterGender) {
                 child.enabledSprite = aClass30_Sub2_Sub1_Sub1_932;
-                return;
             } else {
                 child.enabledSprite = aClass30_Sub2_Sub1_Sub1_931;
-                return;
             }
+            return;
         }
         if (support_opcode == 325) {
             if (aClass30_Sub2_Sub1_Sub1_931 == null) {
@@ -12112,6 +12147,24 @@ public class Client extends GameApplet {
                         sprite.drawSpriteWithOutline(child_x_in_bounds, child_y_in_bounds, 0xffffff, true);
                     } else {
                         if (sprite != null) {
+
+                            switch (child.id) {
+                                case 1167:
+                                case 13045:
+                                case 30075:
+                                    sprite = spriteCache.get(713);
+                                    break;
+                                case 1170:
+                                case 13053:
+                                case 30083:
+                                    sprite = spriteCache.get(710);
+                                    break;
+                                case 1174:
+                                case 13061:
+                                case 30106:
+                                    sprite = spriteCache.get(712);
+                                    break;
+                            }
 
                             boolean drawTransparent = child.drawsTransparent;
                             boolean highDetail = child.hightDetail;
@@ -17234,6 +17287,19 @@ public class Client extends GameApplet {
                 return true;
             }
 
+            if (opcode == ServerToClientPackets.SEND_NPC_MODEL_TO_INTERFACE) {
+                int id = incoming.readInt();
+                int npc = incoming.readShort();
+                int zoom = incoming.readShort();
+                Widget widget = Widget.cache[id];
+                PetSystem.petSelected = npc;
+                if (widget != null) {
+                    widget.modelZoom = zoom;
+                }
+                opcode = -1;
+                return true;
+            }
+
             /**
              * Packet 223:
              *
@@ -17846,6 +17912,7 @@ public class Client extends GameApplet {
         }
         widget_overlay_id = -1;
         fullscreenInterfaceID = -1;
+        PetSystem.petSelected = -1;//Clear the npc selected
     }
 
     public void addObject(int x, int y, int objectId, int face, int type, int height) {

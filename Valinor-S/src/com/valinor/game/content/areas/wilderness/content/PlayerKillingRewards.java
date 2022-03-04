@@ -13,18 +13,24 @@ import com.valinor.game.content.items.mystery.BronzeMysteryBox;
 import com.valinor.game.content.items.mystery.GoldMysterybox;
 import com.valinor.game.content.items.mystery.PlatinumMysteryBox;
 import com.valinor.game.content.items.mystery.SilverMysteryBox;
+import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.combat.CombatConstants;
+import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
+import com.valinor.game.world.entity.mob.player.EquipSlot;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
+import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
@@ -149,6 +155,44 @@ public class PlayerKillingRewards {
         increaseSOLKills(player, target);
     }
 
+    private static void checkForTask(Player player) {
+        if (CombatConstants.wearingTorags(player)) {
+            player.getTaskBottleManager().increase(BottleTasks.WEAR_TORAGS_TASK);
+        }
+
+        if (CombatConstants.wearingFullDharoks(player)) {
+            player.getTaskBottleManager().increase(BottleTasks.WEAR_FULL_DH_TASK);
+        }
+
+        if (player.<Double>getAttribOr(AttributeKey.RISKED_WEALTH, 0L) > 20_000 && !Prayers.usingPrayer(player, Prayers.PROTECT_ITEM)) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITH_20K_BM_RISK);
+        }
+
+        if (player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.DRAGON_SCIMITAR_OR)) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITH_DRAGON_SCIMITAR_OR);
+        }
+
+        if (player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.INQUISITORS_MACE)) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITH_INQUISITORS_MACE);
+        }
+
+        if (!player.getEquipment().hasHead() || !player.getEquipment().hasChest() || !player.getEquipment().hasLegs()) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITHOUT_HEAD_BODY_AND_LEGS);
+        }
+
+        if (!player.getEquipment().hasRing() || !player.getEquipment().hasAmulet() || !player.getEquipment().hasHands()) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITHOUT_RING_AMULET_AND_GLOVES);
+        }
+
+        if (player.getEquipment().hasAt(EquipSlot.HEAD, OBSIDIAN_HELMET) || player.getEquipment().hasAt(EquipSlot.BODY, OBSIDIAN_PLATEBODY) || player.getEquipment().hasAt(EquipSlot.LEGS, OBSIDIAN_PLATELEGS)) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WEARING_FULL_OBSIDIAN);
+        }
+
+        if (!player.skills().combatStatsBoosted()) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITHOUT_BOOSTED_STATS);
+        }
+    }
+   
     private static int shutdownValueOf(int streak) {
         int bonus = 10 * streak;
         if(bonus > 1_000)
@@ -181,6 +225,9 @@ public class PlayerKillingRewards {
 
             // Add a kill when the kill is valid (not farming) and it's not in duel arena/FFA
             if (valid) {
+                //check for tasks
+                checkForTask(killer);
+
                 //Update achievements
                 updateAchievement(killer, target);
 

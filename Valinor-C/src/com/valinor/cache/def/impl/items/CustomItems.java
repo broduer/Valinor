@@ -70,6 +70,19 @@ public class CustomItems {
             def.modelCustomColor4 = 22222;
         }
 
+        if (id == PVP_SCROLL) {
+            def.name = "<col=65280>PvP scroll";
+            def.inventoryActions = new String[]{"Read", null, null, null, "Destroy"};
+            def.inventoryModel = 3374;
+            def.xan2d = 360;
+            def.yan2d = 672;
+            def.xOffset2d = 1;
+            def.yOffset2d = 0;
+            def.zoom2d = 1010;
+            def.recolorFrom = new int[]{6464, 6608, 22305, 22034, 6740, 22422, 6583, 6587, 6604};
+            def.recolorTo = new int[]{933, 926, 926, 926, 933, 926, 926, 926, 933};
+        }
+
         if (id == PVMING_SCROLL) {
             def.name = "<col=65280>Pvming scroll";
             def.recolorFrom = new int[]{6583, 6604, 6608, 6587, 6464, 6740};
@@ -108,6 +121,20 @@ public class CustomItems {
             def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
             def.inventoryModel = 31044;
             def.modelCustomColor4 = 12222;
+        }
+
+        if (id == TASK_BOTTLE_PVP) {
+            def.name = "<col=65280>Task bottle (pvp)";
+            def.zoom2d = 1114;
+            def.xan2d = 0;
+            def.yan2d = 1093;
+            def.xOffset2d = 0;
+            def.yOffset2d = 0;
+            def.groundActions = new String[]{null, null, "Take", null, null};
+            def.inventoryActions = new String[]{"Open", null, null, null, "Drop"};
+            def.inventoryModel = 31044;
+            def.recolorFrom = new int[]{22422};
+            def.recolorTo = new int[]{933};
         }
 
         if (id == CLOAK_OF_INVISIBILITY) {

@@ -111,9 +111,9 @@ public class TaskBottleManager {
             player.putAttrib(BOTTLE_TASK_AMOUNT, 0);
             player.putAttrib(TASK_COMPLETE_AMOUNT, randomTask.getTaskAmount());
 
-            String plural = taskCategory == TaskCategory.SKILLING_TASK ? "(skilling)" : "(pvming)";
+            String plural = taskCategory == TaskCategory.SKILLING_TASK ? "(skilling)" : taskCategory == TaskCategory.PVMING_TASK ? "(pvming)" : "(pvP)";
             player.message("You've opened the task bottle "+plural+" and got yourself a task...");
-            player.message(randomTask.task());
+            player.message(randomTask.task().replaceAll("<br>"," "));
         }
     }
 
@@ -164,7 +164,7 @@ public class TaskBottleManager {
         BottleTasks bottleTask = player.getAttribOr(AttributeKey.BOTTLE_TASK, null);
 
         player.putAttrib(CAN_CLAIM_TASK_REWARD,false);
-        player.removeAll(bottleTask.getTaskCategory() == TaskCategory.SKILLING_TASK ? new Item(SKILLING_SCROLL) : new Item(PVMING_SCROLL));
+        player.removeAll(bottleTask.getTaskCategory() == TaskCategory.SKILLING_TASK ? new Item(SKILLING_SCROLL) : bottleTask.getTaskCategory() == TaskCategory.PVMING_TASK ? new Item(PVMING_SCROLL) : new Item(PVP_SCROLL));
         player.inventory().addOrDrop(new Item(TASK_BOTTLE_CASKET));
         AchievementsManager.activate(player, Achievements.TASK_MASTER_I, 1);
         AchievementsManager.activate(player, Achievements.TASK_MASTER_II, 1);
