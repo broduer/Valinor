@@ -1102,7 +1102,6 @@
       "death": 9184
     },
     "scripts": {
-      "droptable": "com.valinor.game.world.entity.mob.npc.droptables.impl.GWDNex",
       "aggression": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexAgro",
       "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.godwars.nex.NexCombat"
     }

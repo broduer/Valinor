@@ -77,7 +77,7 @@ public enum Collection {
 
     CORPOREAL_BEAST(AttributeKey.CORPOREAL_BEASTS_KILLED, LogType.BOSSES, "Corporeal Beast", new int[]{NpcIdentifiers.CORPOREAL_BEAST}, AttributeKey.CORPOREAL_BEAST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS, 3), new Item(RING_OF_ELYSIAN, 1)},
         //Drops
-        new Item(PET_DARK_CORE), new Item(ELYSIAN_SIGIL), new Item(SPECTRAL_SIGIL), new Item(ARCANE_SIGIL), new Item(HOLY_ELIXIR), new Item(SPIRIT_SHIELD)),
+        new Item(PET_DARK_CORE), new Item(ELYSIAN_SPIRIT_SHIELD), new Item(SPECTRAL_SPIRIT_SHIELD), new Item(ARCANE_SPIRIT_SHIELD), new Item(HOLY_ELIXIR), new Item(SPIRIT_SHIELD)),
 
     CRAZY_ARCHAEOLOGIST(AttributeKey.CRAZY_ARCHAEOLOGISTS_KILLED, LogType.BOSSES, "Crazy Archaeologist", new int[]{NpcIdentifiers.CRAZY_ARCHAEOLOGIST}, AttributeKey.CRAZY_ARCHAEOLOGIST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2)},
         //Drops
@@ -89,7 +89,7 @@ public enum Collection {
 
     DEMONIC_GORILLA(AttributeKey.DEMONIC_GORILLAS_KILLED, LogType.BOSSES, "Demonic Gorilla", new int[]{NpcIdentifiers.DEMONIC_GORILLA, NpcIdentifiers.DEMONIC_GORILLA_7145, NpcIdentifiers.DEMONIC_GORILLA_7146, NpcIdentifiers.DEMONIC_GORILLA_7147, NpcIdentifiers.DEMONIC_GORILLA_7148, NpcIdentifiers.DEMONIC_GORILLA_7149}, AttributeKey.DEMONIC_GORILLA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3), new Item(KEY_OF_DROPS)},
         //Drops
-        new Item(ZENYTE_SHARD), new Item(BALLISTA_LIMBS), new Item(BALLISTA_SPRING), new Item(LIGHT_FRAME), new Item(HEAVY_FRAME), new Item(MONKEY_TAIL)),
+        new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(LIGHT_BALLISTA), new Item(HEAVY_BALLISTA), new Item(TORMENTED_BRACELET), new Item(RING_OF_SUFFERING)),
 
     GENERAL_GRAARDOR(AttributeKey.GENERAL_GRAARDOR_KILLED, LogType.BOSSES, "General Graardor", new int[]{NpcIdentifiers.GENERAL_GRAARDOR}, AttributeKey.GENERAL_GRAARDOR_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS,2), new Item(BANDOS_GODSWORD_ORNAMENT_KIT, 1)},
         //Drops
@@ -163,7 +163,7 @@ public enum Collection {
 
     ZULRAH(AttributeKey.ZULRAHS_KILLED, LogType.BOSSES, "Zulrah", new int[]{NpcIdentifiers.ZULRAH, NpcIdentifiers.ZULRAH_2044, NpcIdentifiers.ZULRAH_2043}, AttributeKey.ZULRAH_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_TICKET,2), new Item(MAGMA_BLOWPIPE, 1)},
         //Drops
-        new Item(PET_SNAKELING), new Item(TANZANITE_MUTAGEN), new Item(MAGMA_MUTAGEN), new Item(JAR_OF_SWAMP), new Item(MAGIC_FANG), new Item(SERPENTINE_VISAGE), new Item(TANZANITE_FANG), new Item(UNCUT_ONYX), new Item(ZULRAHS_SCALES)),
+        new Item(PET_SNAKELING), new Item(TANZANITE_MUTAGEN), new Item(SERPENTINE_HELM), new Item(TANZANITE_HELM), new Item(MAGMA_HELM), new Item(TRIDENT_OF_THE_SWAMP), new Item(TOXIC_STAFF_OF_THE_DEAD), new Item(TOXIC_BLOWPIPE), new Item(JAR_OF_SWAMP), new Item(UNCUT_ONYX), new Item(ZULRAHS_SCALES)),
 
     ALCHEMICAL_HYDRA(AttributeKey.ALCHY_KILLED, LogType.BOSSES, "Alchemical Hydra", new int[]{NpcIdentifiers.ALCHEMICAL_HYDRA, NpcIdentifiers.ALCHEMICAL_HYDRA_8616, NpcIdentifiers.ALCHEMICAL_HYDRA_8617, NpcIdentifiers.ALCHEMICAL_HYDRA_8618, NpcIdentifiers.ALCHEMICAL_HYDRA_8619, NpcIdentifiers.ALCHEMICAL_HYDRA_8620, NpcIdentifiers.ALCHEMICAL_HYDRA_8621, NpcIdentifiers.ALCHEMICAL_HYDRA_8622}, AttributeKey.ALCHEMICAL_HYDRA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
@@ -283,12 +283,12 @@ public enum Collection {
 
     ENRAGED_GORILLA(AttributeKey.ENRAGED_GORILLA_KILLS, LogType.BOSSES, "Enraged gorilla", new int[]{ENRAGED_GORILLA_MELEE, ENRAGED_GORILLA_RANGE, ENRAGED_GORILLA_MAGIC}, AttributeKey.ENRAGED_GORILLA_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+        new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(LIGHT_BALLISTA), new Item(HEAVY_BALLISTA), new Item(TORMENTED_BRACELET), new Item(RING_OF_SUFFERING), new Item(TORMENTED_ORNAMENT_KIT), new Item(ANGUISH_ORNAMENT_KIT), new Item(TORTURE_ORNAMENT_KIT)
     ),
 
     CHAOTIC_NIGHTMARE(AttributeKey.CHAOTIC_NIGHTMARE_KILLS, LogType.BOSSES, "Chaotic nightmare", new int[]{CustomNpcIdentifiers.CHAOTIC_NIGHTMARE}, AttributeKey.CHAOTIC_NIGHTMARE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(CustomItemIdentifiers.INFERNAL_SPIDER_PET), new Item(KEY_OF_DROPS), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(RING_OF_SORCERY), new Item(INFERNAL_TRIDENT)
+        new Item(LITTLE_CHAOTIC_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(JAR_OF_DREAMS)
     ),
 
     //Mystery box

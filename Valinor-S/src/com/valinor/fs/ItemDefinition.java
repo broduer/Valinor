@@ -126,6 +126,9 @@ public class ItemDefinition implements Definition {
         //Bounty hunter emblem hardcoding.
         if (id == 12746 || (id >= 12748 && id <= 12756)) {
             unprotectable = true;
+        } else if (id == LITTLE_CHAOTIC_NIGHTMARE) {
+            name = "Little chaotic nightmare";
+            grandexchange = true;
         } else if (id == ARMOUR_MYSTERY_BOX) {
             name = "Armour mystery box";
             grandexchange = true;

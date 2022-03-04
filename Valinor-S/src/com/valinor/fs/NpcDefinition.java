@@ -321,6 +321,9 @@ public class NpcDefinition implements Definition {
         } else if (id == ANCIENT_BARRELCHEST_PET) {
             name = "Ancient barrelchest";
             size = 1;
+        } else if (id == CHAOTIC_NIGHTMARE_PET) {
+            name = "Little chaotic nightmare";
+            size = 1;
         } else if (id == BLOOD_FIREBIRD) {
             name = "Blood firebird";
             size = 1;

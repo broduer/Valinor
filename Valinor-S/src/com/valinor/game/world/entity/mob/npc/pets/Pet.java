@@ -17,6 +17,7 @@ import static com.valinor.util.NpcIdentifiers.LITTLE_NIGHTMARE_9399;
 public enum Pet {
 
     //Custom
+    LITTLE_CHAOTIC_NIGHTMARE(CustomItemIdentifiers.LITTLE_CHAOTIC_NIGHTMARE, CustomNpcIdentifiers.CHAOTIC_NIGHTMARE_PET, -1),
     BLOOD_FURY_HESPORI(CustomItemIdentifiers.BLOOD_FURY_HESPORI_PET, CustomNpcIdentifiers.BLOOD_FURY_HESPORI_PET, -1),
     FRAGMENT_OF_SEREN(CustomItemIdentifiers.FRAGMENT_OF_SEREN_PET, CustomNpcIdentifiers.FRAGMENT_OF_SEREN_PET, -1),
     INFERNAL_SPIDER(CustomItemIdentifiers.INFERNAL_SPIDER_PET, CustomNpcIdentifiers.INFERNAL_SPIDER_PET, -1),

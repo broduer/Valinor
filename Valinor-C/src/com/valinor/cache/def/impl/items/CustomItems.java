@@ -16,6 +16,12 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
+        if(id == LITTLE_CHAOTIC_NIGHTMARE) {
+            ItemDefinition.copyInventory(def, LITTLE_NIGHTMARE);
+            def.name = "<col=65280>Little chaotic nightmare";
+            def.modelCustomColor4 = 100;
+        }
+
         if(id == PKP_TICKET) {
             ItemDefinition.copyInventory(def, CASTLE_WARS_TICKET);
             def.name = "<col=65280>PkP ticket";

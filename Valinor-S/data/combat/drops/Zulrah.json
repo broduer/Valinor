@@ -77,13 +77,16 @@
 				{ "id": 1939, "min": 1000, "max": 1000, "points": 15 }, //Swamp tar
 				{ "id": 6694, "min": 10, "max": 10, "points": 15 }, //Crushed nest (noted)
 				{ "id": 2362, "min": 20, "max": 20, "points": 15 }, //Adamantite bar (noted)
-				{ "id": 12922, "min": 1, "max": 1, "points": 3 }, //Tanzanite fang
-				{ "id": 12932, "min": 1, "max": 1, "points": 3 }, //Magic fang
-				{ "id": 12927, "min": 1, "max": 1, "points": 3 }, //Serpentine visage
-				{ "id": 6571, "min": 1, "max": 1, "points": 4 }, //Uncut onyx
-				{ "id": 12936, "min": 1, "max": 1, "points": 2 }, //Jar of swamp
-				{ "id": 13200, "min": 1, "max": 1, "points": 1 }, //Tanzanite mutagen
-				{ "id": 13201, "min": 1, "max": 1, "points": 1 } //Magma mutagen
+				{ "id": 4067, "min": 5, "max": 10, "points": 25 }, //Donator tickets
+				{ "id": 989, "min": 1, "max": 1, "points": 25 }, //Crystal key
+				{ "id": 12926, "min": 1, "max": 1, "points": 7 }, //Toxic blowpipe
+				{ "id": 12899, "min": 1, "max": 1, "points": 8 }, //Trident of the swamp
+				{ "id": 12904, "min": 1, "max": 1, "points": 7 }, //Toxic staff of the dead
+				{ "id": 12931, "min": 1, "max": 1, "points": 8 }, //Serpentine helm
+				{ "id": 6571, "min": 1, "max": 1, "points": 50 }, //Uncut onyx
+				{ "id": 12936, "min": 1, "max": 1, "points": 10 }, //Jar of swamp
+				{ "id": 13197, "min": 1, "max": 1, "points": 3 }, //Tanzanite helm
+				{ "id": 13199, "min": 1, "max": 1, "points": 3 } //Magma helm
 			]
 		}
 	]

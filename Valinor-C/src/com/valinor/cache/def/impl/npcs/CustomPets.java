@@ -1,6 +1,7 @@
 package com.valinor.cache.def.impl.npcs;
 
 import com.valinor.cache.def.NpcDefinition;
+import com.valinor.util.NpcIdentifiers;
 
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.ZOMBIES_CHAMPION;
@@ -10,6 +11,12 @@ public class CustomPets {
 
     public static void unpack(int id) {
         NpcDefinition definition = NpcDefinition.get(id);
+
+        if(id == CHAOTIC_NIGHTMARE_PET) {
+            NpcDefinition.copy(definition, LITTLE_NIGHTMARE);
+            definition.modelCustomColor4 = 100;
+            definition.description = "Tiny but deadly!";
+        }
 
         if(id == BLOOD_FURY_HESPORI_PET) {
             definition.name = "Bloodfury hespori pet";
