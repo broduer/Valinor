@@ -5,6 +5,7 @@ import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.ItemIdentifiers;
 
+import static com.valinor.util.CustomItemIdentifiers.BEGINNER_WEAPON_PACK;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -37,7 +38,9 @@ public class GameConstants {
         //Standard runes
         new Item(FIRE_RUNE, 1000), new Item(WATER_RUNE, 1000), new Item(AIR_RUNE, 1000), new Item(EARTH_RUNE, 1000), new Item(MIND_RUNE, 1000),
         //Food (Lobsters, noted)
-        new Item(LOBSTER + 1, 50)
+        new Item(LOBSTER + 1, 50),
+        //Beginner weapon
+        new Item(BEGINNER_WEAPON_PACK)
     };
 
     public final static int[] TAB_AMOUNT = {48, 60, 0, 0, 0, 0, 0, 0, 0, 0};

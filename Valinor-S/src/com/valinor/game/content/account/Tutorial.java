@@ -64,14 +64,13 @@ public class Tutorial extends Dialogue {
             send(DialogueType.NPC_STATEMENT, NpcIdentifiers.GIELINOR_GUIDE, Expression.CALM_TALK, "Enjoy your stay here at " + GameConstants.SERVER_NAME + "!");
             setPhase(9);
         } else if (isPhase(9)) {
-            stop();
             player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
             player.unlock();
             player.looks().hide(false);
             player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
-            player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
             player.inventory().refresh();//Force an inventory refresh
             player.message("You have been given some training equipment.");
+            stop();
         }
     }
 
@@ -86,7 +85,6 @@ public class Tutorial extends Dialogue {
                 player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
                 player.looks().hide(false);
                 player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
-                player.inventory().addOrBank(new Item(BEGINNER_WEAPON_PACK));
                 player.inventory().refresh();//Force an inventory refresh
                 player.message("You have been given some training equipment.");
                 stop();
