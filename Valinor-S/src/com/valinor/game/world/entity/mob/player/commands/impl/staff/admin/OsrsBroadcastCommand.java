@@ -25,7 +25,7 @@ private static final Logger logger = LogManager.getLogger(OsrsBroadcastCommand.c
 
     @Override
     public boolean canUse(Player player) {
-        return (player.getPlayerRights().isAdminOrGreater(player) || player.getPlayerRights().isEventManagerOrGreater(player));
+        return (player.getPlayerRights().isAdminOrGreater(player) && player.getPlayerRights().isEventManagerOrGreater(player));
     }
 
     public static final class MessageDialogue extends Dialogue {

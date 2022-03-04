@@ -30,7 +30,7 @@ public class HPEventCommand implements Command {
 
     @Override
     public boolean canUse(Player player) {
-        return (player.getPlayerRights().isEventManagerOrGreater(player) || player.getPlayerRights().isYoutuber(player));
+        return (player.getPlayerRights().isEventManagerOrGreater(player) && player.getPlayerRights().isYoutuber(player));
     }
 
 }
