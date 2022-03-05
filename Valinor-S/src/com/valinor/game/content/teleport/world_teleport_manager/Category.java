@@ -6,5 +6,5 @@ package com.valinor.game.content.teleport.world_teleport_manager;
  */
 public enum Category {
 
-    PVM, TRAINING, PKING
+    BOSSES, PVM, PKING
 }

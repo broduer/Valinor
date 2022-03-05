@@ -97,12 +97,12 @@ public class TeleportWidget extends Widget {
         widget.child(26, 65031, x, 53 + y);
 
         Widget teleportScroll = addInterface(65031);
-        teleportScroll.scrollMax = 550;
+        teleportScroll.scrollMax = 650;
         teleportScroll.width = 110;
         teleportScroll.height = 239;
         teleportScroll.hoverType = 87;
         int scrollY = 0;
-        final int CHILD_LENGTH = 30 * 2;
+        final int CHILD_LENGTH = 45 * 2;
         int child = 0;
         teleportScroll.totalChildren(CHILD_LENGTH);
         for (int index = 65035; index < 65035 + CHILD_LENGTH; index+= 2) {

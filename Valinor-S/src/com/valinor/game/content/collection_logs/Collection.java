@@ -61,7 +61,7 @@ public enum Collection {
 
     CERBERUS(AttributeKey.CERBERUS_KILLED, LogType.BOSSES, "Cerberus", new int[]{NpcIdentifiers.CERBERUS}, AttributeKey.CERBERUS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(PRIMORDIAL_BOOTS_OR), new Item(PEGASIAN_BOOTS_OR), new Item(ETERNAL_BOOTS_OR)},
         //Drops
-        new Item(HELLPUPPY), new Item(ETERNAL_CRYSTAL), new Item(PEGASIAN_CRYSTAL), new Item(PRIMORDIAL_CRYSTAL), new Item(JAR_OF_SOULS), new Item(SMOULDERING_STONE), new Item(KEY_MASTER_TELEPORT)),
+        new Item(HELLPUPPY), new Item(ETERNAL_BOOTS), new Item(PEGASIAN_BOOTS), new Item(PRIMORDIAL_BOOTS), new Item(JAR_OF_SOULS), new Item(SMOULDERING_STONE), new Item(KEY_MASTER_TELEPORT)),
 
     CHAOS_ELEMENTAL(AttributeKey.CHAOS_ELEMENTALS_KILLED, LogType.BOSSES, "Chaos Elemental", new int[]{NpcIdentifiers.CHAOS_ELEMENTAL}, AttributeKey.CHAOS_ELEMENTAL_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 2), new Item(KEY_OF_DROPS)},
         //Drops

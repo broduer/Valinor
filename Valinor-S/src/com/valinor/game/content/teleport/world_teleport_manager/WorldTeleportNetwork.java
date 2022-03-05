@@ -39,14 +39,14 @@ public class WorldTeleportNetwork {
     private static final int KILLCOUNT_ID = 65030;
     private static final int SCROLLBAR_ID = 65031;
     private static final int TELEPORT_NAME_START_ID = 65036;
-    private static final int MAX_TELEPORT_LOCATIONS = 30;
+    private static final int MAX_TELEPORT_LOCATIONS = 45;
 
     public void open(Category category) {
         player.getInterfaceManager().open(INTERFACE_ID);
 
         final List<TeleportLocations> list = TeleportLocations.filterByCategory(category);
 
-        //Set a scrollbar if we have more then 12 teleport locations.
+        //Set a scrollbar if we have more than 12 teleport locations.
         player.getPacketSender().sendScrollbarHeight(SCROLLBAR_ID, list.size() > 12 ? list.size() * 18 + 5 : 0);
 
         //Clear old strings first
@@ -97,9 +97,9 @@ public class WorldTeleportNetwork {
         player.getPacketSender().sendNpcModel(MODEL_VIEWER_ID, npc, teleport.zoom());
 
         switch(teleport.category()) {
-            case PVM -> player.getPacketSender().sendString(65007, "PvM");
+            case BOSSES -> player.getPacketSender().sendString(65007, "Bosses");
 
-            case TRAINING -> player.getPacketSender().sendString(65007, "Training");
+            case PVM -> player.getPacketSender().sendString(65007, "PvM");
 
             case PKING -> player.getPacketSender().sendString(65007, "Pking");
         }
@@ -155,12 +155,12 @@ public class WorldTeleportNetwork {
         button = 65034;//Start index
 
         //Populate the boss buttons map
-        for (final TeleportLocations teleport : TeleportLocations.filterByCategory(Category.PVM)) {
+        for (final TeleportLocations teleport : TeleportLocations.filterByCategory(Category.BOSSES)) {
             BOSSES.put(button+=2, teleport);
         }
         button = 65034;
         //Populate the pvm and training buttons map
-        for (final TeleportLocations teleport : TeleportLocations.filterByCategory(Category.TRAINING)) {
+        for (final TeleportLocations teleport : TeleportLocations.filterByCategory(Category.PVM)) {
             PVM_AND_TRAINING.put(button+=2, teleport);
         }
         button = 65034;
@@ -194,18 +194,18 @@ public class WorldTeleportNetwork {
         }
 
         if (buttonId == 30083 || buttonId == 1170 || buttonId == 13053) {
-            open(Category.PVM);
+            open(Category.BOSSES);
             player.putAttrib(AttributeKey.CATEGORY_OPEN, 0);
             //Opens the first teleport in the list
-            sendTeleport(TeleportLocations.ADAMANT_DRAGON);
+            sendTeleport(TeleportLocations.ABYSSAL_SIRE);
             return true;
         }
 
         if (buttonId == 30075 || buttonId == 1167 || buttonId == 13045) {
-            open(Category.TRAINING);
+            open(Category.PVM);
             player.putAttrib(AttributeKey.CATEGORY_OPEN, 1);
             //Opens the first teleport in the list
-            sendTeleport(TeleportLocations.AREA_FOR_SKILLING);
+            sendTeleport(TeleportLocations.ANCIENT_CAVERN);
             return true;
         }
 
@@ -290,7 +290,7 @@ public class WorldTeleportNetwork {
                     }
                 }
 
-                if(teleport == TeleportLocations.REVENANT_CAVES) {
+                if(teleport == TeleportLocations.REVENANTS) {
                     if(player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.REVENANT_TELEPORT)) {
                         tile = new Tile(3244,10145,0);
                     }
