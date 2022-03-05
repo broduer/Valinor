@@ -87,7 +87,7 @@ public final class QuestTab {
         CHAOTIC_NIGHTMARE(53423) {
             @Override
             public String fetchLineData(Player player) {
-                return "Next chaotic nightmare: <col=ffffff>" + ChaoticNightmare.getInstance().timeTill(false);
+                return "Chaotic nightmare: <col=ffffff>" + ChaoticNightmare.getInstance().timeTill(false);
             }
         },
 

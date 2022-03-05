@@ -39,15 +39,17 @@ public class LarransChest extends Interaction {
     private boolean rareDrop = false;
 
     private Item reward() {
+        List<Item> items = null;
         if (World.getWorld().rollDie(100, 1)) {
             rareDrop = true;
-            return Utils.randomElement(EXTREME_RARE);
+            items = EXTREME_RARE;
         } else if (World.getWorld().rollDie(50, 1)) {
             rareDrop = true;
-            return Utils.randomElement(RARE);
+            items = RARE;
         } else {
-            return Utils.randomElement(OTHER);
+            items = OTHER;
         }
+        return Utils.randomElement(items);
     }
 
     private static final List<Item> OTHER = Arrays.asList(
@@ -144,24 +146,24 @@ public class LarransChest extends Interaction {
         player.lock();
         Chain.bound(player).runFn(1, () -> {
             player.inventory().remove(new Item(LARRANS_KEY, 1), true);
-            int roll = Utils.percentageChance(player.extraItemRollChance()) ? 2 : 1;
-            for (int i = 0; i < roll; i++) {
-                Item reward = reward();
+            Item reward = reward();
 
-                if (reward == null)
-                    return;
+            if (reward == null)
+                return;
 
-                //Collection logs
-                KEYS.log(player, LARRANS_KEY, reward);
+            //Collection logs
+            KEYS.log(player, LARRANS_KEY, reward);
 
-                //When we receive a rare loot send a world message
-                if (rareDrop) {
-                    String msg = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Larran's chest</col>]: " + "<col=1e44b3>" + player.getUsername() + " has received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + "!";
-                    World.getWorld().sendWorldMessage(msg);
-                    rareDrop = false;
-                }
-                player.inventory().addOrDrop(reward);
+            //When we receive a rare loot send a world message
+            if (rareDrop) {
+                String msg = "<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Larran's chest</col>]: " + "<col=1e44b3>" + player.getUsername() + " has received " + Utils.getAOrAn(reward.unnote().name()) + " " + reward.unnote().name() + "!";
+                World.getWorld().sendWorldMessage(msg);
+                rareDrop = false;
             }
+            player.inventory().addOrDrop(reward);
+
+            //Give half a teleblock
+            player.teleblock(250, true);
 
             int keysUsed = (Integer) player.getAttribOr(AttributeKey.LARRANS_KEYS_OPENED, 0) + 1;
             player.putAttrib(AttributeKey.LARRANS_KEYS_OPENED, keysUsed);

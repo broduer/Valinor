@@ -28,8 +28,8 @@ public class BrimstoneKey extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if (object.getId() == BRIMSTONE_CHEST && option == 1) {
-            player.lock();
             if (player.inventory().contains(BRIMSTONE_KEY)) {
+                player.lock();
                 player.inventory().remove(new Item(BRIMSTONE_KEY));
                 player.message("You unlock the chest with your key.");
                 player.sound(51);
