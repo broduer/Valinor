@@ -157,7 +157,7 @@ public class GameConstants {
         new Item(11978, 20000), // glory (6)
     };
 
-    public static final String SERVER_NAME = "Valinor";
+    public static final String SERVER_NAME = "ValinorPK";
 
     /**
      * Holds the array of all the side-bar identification and their

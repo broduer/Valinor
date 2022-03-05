@@ -134,8 +134,8 @@ public final class ClientConstants {
     public final static int PALE_GREEN = 0x46b556;
 
     //We could always add the version here for the production cache folder if we wanted to.
-    public static final String CACHE_NAME = ".Valinor/";
-    public static final String DATA_NAME = ".Valinor-data/";
+    public static final String CACHE_NAME = ".ValinorPK/";
+    public static final String DATA_NAME = ".ValinorPK-data/";
 
     public static boolean JAGCACHED_ENABLED = false;
 
@@ -147,7 +147,7 @@ public final class ClientConstants {
     /**
      * A string which indicates the Client's name.
      */
-    public static final String CLIENT_NAME = "Valinor";
+    public static final String CLIENT_NAME = "ValinorPK";
 
     /**
      * Dumps map region images when new regions are loaded.
