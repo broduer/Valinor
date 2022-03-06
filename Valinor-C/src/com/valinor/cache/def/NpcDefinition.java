@@ -120,6 +120,19 @@ public final class NpcDefinition {
             npcDefinition.walkingAnimation = 189;
         }
 
+        //Replace all pet options
+        if(npcDefinition.isFollower) {
+            if (npcDefinition.actions != null) {
+                for (int index = 4; index >= 0; index--) {
+                    if (npcDefinition.actions[index] != null) {
+                        if (npcDefinition.actions[index].equalsIgnoreCase("Talk-to") || npcDefinition.actions[index].equalsIgnoreCase("Metamorphosis")) {
+                            npcDefinition.actions = new String[] {null, null, "Pick-up", null, null};
+                        }
+                    }
+                }
+            }
+        }
+
         if(!dump) {
             NpcManager.unpack(id);
             CustomPets.unpack(id);

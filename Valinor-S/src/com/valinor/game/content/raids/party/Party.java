@@ -1,6 +1,5 @@
 package com.valinor.game.content.raids.party;
 
-import com.google.common.collect.Maps;
 import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.chamber_of_xeric.ChamberOfXerics;
 import com.valinor.game.world.World;
@@ -13,7 +12,10 @@ import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.COXArea;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static com.valinor.game.world.entity.AttributeKey.PERSONAL_POINTS;
@@ -171,7 +173,19 @@ public class Party {
     public void addPersonalPoints(Player player, int points) {
         boolean centaurPet = player.hasPetOut("Centaur");
         boolean olmletPet = player.hasPetOut("Olmlet");
+        boolean tektinyPet = player.hasPetOut("Tektiny") || player.hasPetOut("Enraged Tektiny");
+        boolean vespinaPet = player.hasPetOut("Vespina") || player.hasPetOut("Flying Vespina");
+        boolean vanguardPet = player.hasPetOut("Vanguard");
+        boolean puppadilePet = player.hasPetOut("Puppadile ");
+        boolean vasaMinirioPet = player.hasPetOut("Vasa Minirio");
         boolean lilZikPet = player.hasPetOut("Lil' Zik");
+        boolean lilMaidenPet = player.hasPetOut("Lil' Maiden");
+        boolean lilBloatPet = player.hasPetOut("Lil' Bloat");
+        boolean lilNyloPet = player.hasPetOut("Lil' Nylo");
+        boolean lilSotPet = player.hasPetOut("Lil' Sot");
+        boolean lilXarpPet = player.hasPetOut("Lil' Xarp");
+        boolean raidsPet = centaurPet || olmletPet || tektinyPet || vespinaPet || vanguardPet || puppadilePet || vasaMinirioPet || lilZikPet
+            || lilMaidenPet || lilBloatPet || lilNyloPet || lilSotPet || lilXarpPet;
         boolean rubyMember = player.getMemberRights().isRubyMemberOrGreater(player);
         boolean diamondMember = player.getMemberRights().isDiamondMemberOrGreater(player);
         boolean dragonstoneMember = player.getMemberRights().isDragonstoneMemberOrGreater(player);
@@ -179,7 +193,7 @@ public class Party {
         boolean zenyteMember = player.getMemberRights().isZenyteMemberOrGreater(player);
 
         var percentageBoost = 0;
-        if(centaurPet || olmletPet || lilZikPet) {
+        if(raidsPet) {
             percentageBoost += 10;
         }
 

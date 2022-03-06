@@ -5,6 +5,9 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    METAMORPHIC_DUST_USED_ON,
+    SANGUINE_DUST_USED_ON,
+
     // The total amount of blood money (w2) risked including our +1 when entering the wilderness. Anti-rag mechanic.
     RISKED_WEALTH("risked_wealth", AttribType.LONG),
 
