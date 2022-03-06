@@ -288,7 +288,7 @@ public enum Collection {
 
     CHAOTIC_NIGHTMARE(AttributeKey.CHAOTIC_NIGHTMARE_KILLS, LogType.BOSSES, "Chaotic nightmare", new int[]{CustomNpcIdentifiers.CHAOTIC_NIGHTMARE}, AttributeKey.CHAOTIC_NIGHTMARE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX,1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3)},
         //Drops
-        new Item(LITTLE_CHAOTIC_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(JAR_OF_DREAMS)
+        new Item(LITTLE_CHAOTIC_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(CURSED_ORB), new Item(JAR_OF_DREAMS)
     ),
 
     //Mystery box

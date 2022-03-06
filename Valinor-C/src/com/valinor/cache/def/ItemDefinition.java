@@ -48,7 +48,7 @@ public final class ItemDefinition {
             cache[index] = new ItemDefinition();
         }
 
-        //dump();
+        dump();
     }
 
     private void decode(Buffer buffer) {

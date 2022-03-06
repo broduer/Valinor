@@ -129,6 +129,12 @@ public class ItemDefinition implements Definition {
         } else if (id == LITTLE_CHAOTIC_NIGHTMARE) {
             name = "Little chaotic nightmare";
             grandexchange = true;
+        } else if (id == CURSED_ORB) {
+            name = "Cursed orb";
+            grandexchange = true;
+        } else if (id == CURSED_NIGHTMARE_STAFF) {
+            name = "Cursed nightmare staff";
+            grandexchange = true;
         } else if (id == ARMOUR_MYSTERY_BOX) {
             name = "Armour mystery box";
             grandexchange = true;

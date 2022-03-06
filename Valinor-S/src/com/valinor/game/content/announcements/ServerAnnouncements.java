@@ -272,6 +272,7 @@ public class ServerAnnouncements {
         NIGHTMARE_STAFF,
         VOLATILE_ORB,
         HARMONISED_ORB,
+        CURSED_ORB,
         ELDRITCH_ORB,
         JAR_OF_DREAMS,
 

@@ -57,7 +57,7 @@ public class OSRSGraphics {
             cache[graphic].model_id = 58930;
         }
 
-        if (graphic == 10006) {
+        if (graphic == 5006) {
             cache[graphic] = new SpotAnimation();
             cache[graphic].id = graphic;
             cache[graphic].model_id = 3479;
@@ -68,27 +68,27 @@ public class OSRSGraphics {
             cache[graphic].src_color = new int[]{960};
             cache[graphic].dst_color = new int[]{-12535};
         }
-
-        if (graphic == 10004) {
+        if (graphic == 5007) {
             cache[graphic] = new SpotAnimation();
             cache[graphic].id = graphic;
-            cache[graphic].model_id = 42604;
-            cache[graphic].ambient = 40;
-            cache[graphic].contrast = 120;
-            cache[graphic].src_color = new int[]{-32539, 127};
-            cache[graphic].dst_color = new int[]{-32535, -32541};
+            cache[graphic].ambient = 100;
+            cache[graphic].animation_id = 8545;
+            cache[graphic].seq = Sequence.cache[8545];
+            cache[graphic].contrast = 100;
+            cache[graphic].model_id = 39171;
+            cache[graphic].src_color = new int[]{7101, 0};
+            cache[graphic].dst_color = new int[]{-12535, 0};
         }
-
-        if (graphic == 10005) {
+        if (graphic == 5008) {
             cache[graphic] = new SpotAnimation();
             cache[graphic].id = graphic;
-            cache[graphic].model_id = 42603;
-            cache[graphic].animation_id = 366;
-            cache[graphic].seq = Sequence.cache[366];
-            cache[graphic].ambient = 40;
-            cache[graphic].contrast = 120;
-            cache[graphic].src_color = new int[]{-32539, 127};
-            cache[graphic].dst_color = new int[]{-32535, -32541};
+            cache[graphic].ambient = 100;
+            cache[graphic].animation_id = 8546;
+            cache[graphic].seq = Sequence.cache[8546];
+            cache[graphic].contrast = 100;
+            cache[graphic].model_id = 39168;
+            cache[graphic].src_color = new int[]{7101, 0, 8146, 7104, 5056};
+            cache[graphic].dst_color = new int[]{-12535, 0, -12535, -12535, -12535};
         }
     }
 }

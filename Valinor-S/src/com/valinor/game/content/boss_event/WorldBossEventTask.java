@@ -11,7 +11,7 @@ import static com.valinor.game.content.boss_event.WorldBossEvent.BOSS_EVENT_INTE
 public class WorldBossEventTask extends Task {
 
     public WorldBossEventTask() {
-        super("WorldBossEventTask", BOSS_EVENT_INTERVAL,true);
+        super("WorldBossEventTask", BOSS_EVENT_INTERVAL,false);
     }
 
     @Override

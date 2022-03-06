@@ -20,7 +20,7 @@ public class VolatileNightmareStaff extends Dialogue {
     @Override
     protected void start(Object... parameters) {
         if(player.inventory().containsAll(NIGHTMARE_STAFF, VOLATILE_ORB)) {
-            boolean dontAskAgain = player.getAttribOr(AttributeKey.VOLATILE_NIGHTMARE_STAFF_QUESTION, false);
+            boolean dontAskAgain = player.getAttribOr(AttributeKey.NIGHTMARE_STAFF_QUESTION, false);
             if(dontAskAgain) {
                 player.inventory().remove(new Item(NIGHTMARE_STAFF, 1));
                 player.inventory().remove(new Item(VOLATILE_ORB, 1));
@@ -62,7 +62,7 @@ public class VolatileNightmareStaff extends Dialogue {
                 player.inventory().remove(new Item(NIGHTMARE_STAFF, 1));
                 player.inventory().remove(new Item(VOLATILE_ORB, 1));
                 player.inventory().add(new Item(VOLATILE_NIGHTMARE_STAFF, 1));
-                player.putAttrib(AttributeKey.VOLATILE_NIGHTMARE_STAFF_QUESTION, true);
+                player.putAttrib(AttributeKey.NIGHTMARE_STAFF_QUESTION, true);
                 send(DialogueType.ITEM_STATEMENT, new Item(VOLATILE_NIGHTMARE_STAFF), "", "You add the orb to the staff.");
                 setPhase(1);
             } else if(option == 3) {

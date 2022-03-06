@@ -13,6 +13,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.InteractionManager;
 
+import static com.valinor.util.CustomItemIdentifiers.CURSED_ORB;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -75,6 +76,11 @@ public class ItemOnItem {
 
         if ((use.getId() == VOLATILE_ORB || with.getId() == VOLATILE_ORB) && (use.getId() == NIGHTMARE_STAFF || with.getId() == NIGHTMARE_STAFF)) {
             player.getDialogueManager().start(new VolatileNightmareStaff());
+            return;
+        }
+
+        if ((use.getId() == CURSED_ORB || with.getId() == CURSED_ORB) && (use.getId() == NIGHTMARE_STAFF || with.getId() == NIGHTMARE_STAFF)) {
+            player.getDialogueManager().start(new CursedNightmareStaff());
             return;
         }
 

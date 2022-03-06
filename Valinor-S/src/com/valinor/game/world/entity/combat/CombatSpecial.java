@@ -7,6 +7,7 @@ import com.valinor.game.task.impl.RestoreSpecialAttackTask;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.method.CombatMethod;
+import com.valinor.game.world.entity.combat.method.impl.specials.magic.CursedNMS;
 import com.valinor.game.world.entity.combat.method.impl.specials.magic.DawnbringerStaff;
 import com.valinor.game.world.entity.combat.method.impl.specials.magic.EldritchNMS;
 import com.valinor.game.world.entity.combat.method.impl.specials.magic.VolatileNMS;
@@ -59,6 +60,7 @@ public enum CombatSpecial {
     STAFF_OF_LIGHT(new int[]{ItemIdentifiers.STAFF_OF_LIGHT, STAFF_OF_LIGHT_TIER_1, STAFF_OF_LIGHT_TIER_2, STAFF_OF_LIGHT_TIER_3, STAFF_OF_LIGHT_TIER_4, STAFF_OF_LIGHT_TIER_5_1, STAFF_OF_LIGHT_TIER_5_2, STAFF_OF_LIGHT_TIER_5_3, STAFF_OF_LIGHT_TIER_5_4, STAFF_OF_LIGHT_TIER_5_5}, 100, 1.0, 1.0, null, WeaponType.MAGIC_STAFF),
     VOLATILE_NIGHTMARE_STAFF(new int[]{ItemIdentifiers.VOLATILE_NIGHTMARE_STAFF}, 55, 1.0, 1.50, new VolatileNMS(), WeaponType.MAGIC_STAFF),
     ELDRITCH_NIGHTMARE_STAFF(new int[]{ItemIdentifiers.ELDRITCH_NIGHTMARE_STAFF}, 75, 1.0, 1.0, new EldritchNMS(), WeaponType.MAGIC_STAFF),
+    CURSED_NIGHTMARE_STAFF(new int[]{CustomItemIdentifiers.CURSED_NIGHTMARE_STAFF}, 55, 1.0, 2.50, new CursedNMS(), WeaponType.MAGIC_STAFF),
 
     //Melee
     ANCIENT_WARRIOR_SWORD(new int[]{CustomItemIdentifiers.ANCIENT_WARRIOR_SWORD, ANCIENT_WARRIOR_SWORD_C}, 100, 1.75, 2.0, new AncientWarriorSword(), WeaponType.LONGSWORD),

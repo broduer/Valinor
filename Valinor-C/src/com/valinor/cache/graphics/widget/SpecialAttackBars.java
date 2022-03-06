@@ -71,6 +71,7 @@ public enum SpecialAttackBars {
     T1_STAFF_OF_LIGHT(16277, "Power of Death: Reduce all melee damage you receive by 50% for the next minute while the staff remains equipped. Stacks with Protect from Melee.", 100.0, 31349, 7474, 7486),
     VOLATILE_NIGHTMARE_STAFF(24424, "Immolate: Fire a powerful spell with 50% improved accuracy. Damage scales based upon magic level and can be increased with magic damage boosting equipment. Costs no runes to use.", 55.0, 31460, 7474, 7486),
     ELDRITCH_NIGHTMARE_STAFF(24425, "Invocate: Fire a powerful spell that restores your prayer points by 50% of the damage dealt. Damage scales based upon magic level and can be increased with magic damage boosting equipment. Your prayer points can go above your level, to a maximum of 120. Costs no runes to use.", 75.0, 31460, 7474, 7486),
+    CURSED_NIGHTMARE_STAFF(30095, "Curse: Fire a powerful spell with 150% improved accuracy. Damage scales based upon magic level and can be increased with magic damage boosting equipment. Costs no runes to use.", 55.0, 31460, 7474, 7486),
     ELEMENTAL_STAFF(12082, "Elementals: Fires incredibly powerful elemental spells.", 50.0, 31462, 7474, 7486),
     STAFF_OF_BALANCE(24144, "Power of Death: Reduce all melee damage you receive by 50% for the next minute while the staff remains equipped. Stacks with Protect from Melee.", 100.0, 31463, 7474, 7486),
 

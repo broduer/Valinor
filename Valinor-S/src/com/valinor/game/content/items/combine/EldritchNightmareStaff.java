@@ -19,7 +19,7 @@ public class EldritchNightmareStaff extends Dialogue {
     @Override
     protected void start(Object... parameters) {
         if(player.inventory().containsAll(NIGHTMARE_STAFF, ELDRITCH_ORB)) {
-            boolean dontAskAgain = player.getAttribOr(AttributeKey.ELDRITCH_NIGHTMARE_STAFF_QUESTION, false);
+            boolean dontAskAgain = player.getAttribOr(AttributeKey.NIGHTMARE_STAFF_QUESTION, false);
             if(dontAskAgain) {
                 player.inventory().remove(new Item(NIGHTMARE_STAFF, 1));
                 player.inventory().remove(new Item(ELDRITCH_ORB, 1));
@@ -61,7 +61,7 @@ public class EldritchNightmareStaff extends Dialogue {
                 player.inventory().remove(new Item(NIGHTMARE_STAFF, 1));
                 player.inventory().remove(new Item(ELDRITCH_ORB, 1));
                 player.inventory().add(new Item(ELDRITCH_NIGHTMARE_STAFF, 1));
-                player.putAttrib(AttributeKey.ELDRITCH_NIGHTMARE_STAFF_QUESTION, true);
+                player.putAttrib(AttributeKey.NIGHTMARE_STAFF_QUESTION, true);
                 send(DialogueType.ITEM_STATEMENT, new Item(ELDRITCH_NIGHTMARE_STAFF), "", "You add the orb to the staff.");
                 setPhase(1);
             } else if(option == 3) {

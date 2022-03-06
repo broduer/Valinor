@@ -68,7 +68,8 @@ public abstract class Spell {
 
             CombatSpell combatSpell = player.getCombat().getCastSpell() != null ? player.getCombat().getCastSpell() : player.getCombat().getAutoCastSpell();
             boolean ignoreBookCheck = combatSpell == CombatSpells.ELDRITCH_NIGHTMARE_STAFF.getSpell() ||
-                combatSpell == CombatSpells.VOLATILE_NIGHTMARE_STAFF.getSpell();
+                combatSpell == CombatSpells.VOLATILE_NIGHTMARE_STAFF.getSpell() ||
+                combatSpell == CombatSpells.CURSED_NIGHTMARE_STAFF.getSpell();
 
             // Secondly we check if they have proper magic spellbook
             // If not, reset all magic attributes such as current spell

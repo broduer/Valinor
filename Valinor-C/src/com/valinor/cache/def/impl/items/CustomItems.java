@@ -16,6 +16,34 @@ public class CustomItems {
     public static void unpack(int id) {
         ItemDefinition def = ItemDefinition.get(id);
 
+        if(id == CURSED_ORB) {
+            def.name = "<col=65280>Cursed orb";
+            def.groundActions = new String[]{null, null, "Take", null, null};
+            def.inventoryActions = new String[]{null, null, null, null, "Drop"};
+            def.animateInventory = true;
+            def.ambient = -50;
+            def.inventoryModel = 55626;
+            def.zoom2d = 1614;
+            def.yan2d = 225;
+            def.xan2d = 114;
+        }
+
+        if(id == CURSED_NIGHTMARE_STAFF) {
+            def.name = "<col=65280>Cursed nightmare staff";
+            def.femaleModel = 55628;
+            def.inventoryActions = new String[] {null, "Wear", null, "Dismantle", "Drop"};
+            def.groundActions = new String[]{null, null, "Take", null, null};
+            def.animateInventory = true;
+            def.inventoryModel = 55627;
+            def.maleModel = 55629;
+            def.xOffset2d = -5;
+            def.yOffset2d = 13;
+            def.yan2d = 1050;
+            def.xan2d = 404;
+            def.zoom2d = 2064;
+            def.modelCustomColor4 = 100;
+        }
+
         if(id == LITTLE_CHAOTIC_NIGHTMARE) {
             ItemDefinition.copyInventory(def, LITTLE_NIGHTMARE);
             def.name = "<col=65280>Little chaotic nightmare";

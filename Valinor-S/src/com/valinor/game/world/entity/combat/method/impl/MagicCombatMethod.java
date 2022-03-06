@@ -119,7 +119,7 @@ public class MagicCombatMethod extends CommonCombatMethod {
 
     @Override
     public void postAttack() {
-        boolean spellWeapon = mob.getCombat().getCastSpell() == CombatSpells.ELDRITCH_NIGHTMARE_STAFF.getSpell() || mob.getCombat().getCastSpell() == CombatSpells.VOLATILE_NIGHTMARE_STAFF.getSpell();
+        boolean spellWeapon = mob.getCombat().getCastSpell() == CombatSpells.ELDRITCH_NIGHTMARE_STAFF.getSpell() || mob.getCombat().getCastSpell() == CombatSpells.VOLATILE_NIGHTMARE_STAFF.getSpell() || mob.getCombat().getCastSpell() == CombatSpells.CURSED_NIGHTMARE_STAFF.getSpell();
 
         if (mob.getCombat().getAutoCastSpell() == null && !spellWeapon) {
             mob.getCombat().reset();// combat is stopped for magic when not autocasting. spell on entity is a 1-time attack.

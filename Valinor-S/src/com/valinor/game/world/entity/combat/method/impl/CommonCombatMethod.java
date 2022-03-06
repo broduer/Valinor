@@ -29,6 +29,7 @@ import static com.valinor.game.world.entity.AttributeKey.VENOMED_BY;
 import static com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorporealBeast.CORPOREAL_BEAST_AREA;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND;
 import static com.valinor.util.CustomItemIdentifiers.ELDER_WAND_RAIDS;
+import static com.valinor.util.CustomNpcIdentifiers.CHAOTIC_NIGHTMARE;
 import static com.valinor.util.NpcIdentifiers.CORPOREAL_BEAST;
 import static com.valinor.util.NpcIdentifiers.VESPULA;
 
@@ -63,7 +64,8 @@ public abstract class CommonCombatMethod implements CombatMethod {
         ArrayList<Mob> possibleTargets = new ArrayList<>();
         if (players) {
             for (Player player : World.getWorld().getPlayers()) {
-                if (player == null || player.dead() || player.tile().distance(mob.getCentrePosition()) > ratio || player.tile().level != mob.tile().level) {
+                boolean chaoticNightmareCannotAttackPlayer = mob.isNpc() && mob.getAsNpc().id() == CHAOTIC_NIGHTMARE && player != null && player.<Integer>getAttribOr(AttributeKey.THE_NIGHTMARE_KC, 0) < 250;
+                if (player == null || player.dead() || player.tile().distance(mob.getCentrePosition()) > ratio || player.tile().level != mob.tile().level || chaoticNightmareCannotAttackPlayer) {
                     continue;
                 }
                 possibleTargets.add(player);

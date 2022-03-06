@@ -296,9 +296,7 @@ public class PlayerSave {
                         player.putAttrib(YELL_COLOUR, details.yellColour);
                     }
                 }
-                player.putAttrib(ELDRITCH_NIGHTMARE_STAFF_QUESTION, details.dontAskAgainEldritch);
-                player.putAttrib(VOLATILE_NIGHTMARE_STAFF_QUESTION, details.dontAskAgainVolatile);
-                player.putAttrib(HARMONISED_NIGHTMARE_STAFF_QUESTION, details.dontAskAgainHarmonised);
+                player.putAttrib(NIGHTMARE_STAFF_QUESTION, details.dontAskAgainNightmareStaff);
                 player.putAttrib(CURRENCY_COLLECTION, details.currencyCollection);
                 player.putAttrib(GIVE_EMPTY_POTION_VIALS, details.emptyPotionVials);
                 player.putAttrib(AGS_GFX_GOLD, details.gold_ags_spec);
@@ -854,9 +852,7 @@ public class PlayerSave {
         //Settings
         private final boolean acceptAid;
         private final String yellColour;
-        private final boolean dontAskAgainEldritch;
-        private final boolean dontAskAgainVolatile;
-        private final boolean dontAskAgainHarmonised;
+        private final boolean dontAskAgainNightmareStaff;
         private final boolean currencyCollection;
         private final boolean emptyPotionVials;
         private final boolean gold_ags_spec;
@@ -1432,9 +1428,7 @@ public class PlayerSave {
             clan = player.getClanChat();
             acceptAid = Player.getAttribBooleanOr(player, ACCEPT_AID, false);
             yellColour = Player.getAttribStringOr(player, YELL_COLOUR, "000000");
-            dontAskAgainEldritch = Player.getAttribBooleanOr(player, ELDRITCH_NIGHTMARE_STAFF_QUESTION, false);
-            dontAskAgainVolatile = Player.getAttribBooleanOr(player, VOLATILE_NIGHTMARE_STAFF_QUESTION, false);
-            dontAskAgainHarmonised = Player.getAttribBooleanOr(player, HARMONISED_NIGHTMARE_STAFF_QUESTION, false);
+            dontAskAgainNightmareStaff = Player.getAttribBooleanOr(player, NIGHTMARE_STAFF_QUESTION, false);
             currencyCollection = Player.getAttribBooleanOr(player, CURRENCY_COLLECTION, false);
             emptyPotionVials = Player.getAttribBooleanOr(player, GIVE_EMPTY_POTION_VIALS, false);
             gold_ags_spec = Player.getAttribBooleanOr(player, AGS_GFX_GOLD, false);

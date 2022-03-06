@@ -506,6 +506,7 @@ public class EquipmentInfo {
                 case HARMONISED_NIGHTMARE_STAFF:
                 case VOLATILE_NIGHTMARE_STAFF:
                 case ELDRITCH_NIGHTMARE_STAFF:
+                case CURSED_NIGHTMARE_STAFF:
                     return 4505;
                 case 4747: // Torag's hamers
                 case 4958: // Torag's hamers
@@ -747,6 +748,7 @@ public class EquipmentInfo {
             case ELDRITCH_NIGHTMARE_STAFF:
             case SANGUINESTI_STAFF:
             case HOLY_SANGUINESTI_STAFF:
+            case CURSED_NIGHTMARE_STAFF:
                 return 420;
             case ABYSSAL_DAGGER:
             case ABYSSAL_DAGGER_P:

@@ -159,13 +159,15 @@ public class MagicMaxHit {
             }
 
             int weapon = player.getEquipment().get(3) == null ? -1 : player.getEquipment().get(3).getId();
-            if (spell_name.equals("Volatile spell")) {
+            if (spell_name.equals("Volatile spell") || spell_name.equals("Cursed spell")) {
                 int baseLevel = level;
                 if (baseLevel > 99)
                     baseLevel = 99;
                 double levelTimes = 0.67;
                 multiplier -= 0.15;
                 spell_maxhit = (int) (baseLevel * levelTimes);
+                if(spell_name.equals("Cursed spell"))
+                    spell_maxhit += 2;
             }
 
             //System.out.println("spell_maxhit wonka "+spell_maxhit);

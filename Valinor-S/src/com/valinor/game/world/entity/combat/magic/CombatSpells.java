@@ -4451,14 +4451,76 @@ public enum CombatSpells {
 
         @Override
         public int spellId() {
-            return 3;
+            return 12;
         }
 
         @Override
         public MagicSpellbook spellbook() {
             return MagicSpellbook.NORMAL;
         }
-    });
+    }),
+    CURSED_NIGHTMARE_STAFF(new CombatSpell() {
+        @Override
+        public String name() {
+            return "Cursed spell";
+        }
+
+        @Override
+        public Optional<Animation> castAnimation() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<Projectile> castProjectile(Mob cast, Mob castOn) {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<Graphic> endGraphic() {
+            return Optional.empty();
+        }
+
+        @Override
+        public int baseMaxHit() {
+            return 0;
+        }
+
+        @Override
+        public Optional<Graphic> startGraphic() {
+            return Optional.empty();
+        }
+
+        @Override
+        public int baseExperience() {
+            return 2;
+        }
+
+        @Override
+        public List<Item> equipmentRequired(Player player) {
+            return List.of();
+        }
+
+        @Override
+        public List<Item> itemsRequired(Player player) {
+            return List.of();
+        }
+
+        @Override
+        public int levelRequired() {
+            return 75;
+        }
+
+        @Override
+        public int spellId() {
+            return 13;
+        }
+
+        @Override
+        public MagicSpellbook spellbook() {
+            return MagicSpellbook.NORMAL;
+        }
+    }),
+    ;
 
     /**
      * The spell attached to this element.

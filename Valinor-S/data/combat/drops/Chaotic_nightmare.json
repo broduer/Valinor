@@ -2,70 +2,37 @@
   "npcs": [ 16024 ],
   "petItem": 30093,
   "petRarity": 650,
-  "guaranteed": [
-    { "id": 592, "min": 1, "max": 1 } //Ashes
-  ],
   "tables": [
     {
-      "name": "Always Drop",
-      "points": 1,
+      "name": "Unique",
+      "points": 3,
       "items": [
-        { "id": 532, "min": 1, "max": 1, "points": 1 } //Big bones
-      ]
-    },
-    {
-      "name": "Weapons",
-      "points": 20,
-      "items": [
-        { "id": 1319, "min": 1, "max": 1, "points": 3 }, //Rune 2h sword
-        { "id": 1275, "min": 1, "max": 1, "points": 3 }, //Rune pickaxe
-        { "id": 1303, "min": 1, "max": 1, "points": 2 }, //Rune longsword
-        { "id": 1289, "min": 1, "max": 1, "points": 2 } //Rune sword
-      ]
-    },
-    {
-      "name": "Armour",
-      "points": 20,
-      "items": [
-        { "id": 1127, "min": 1, "max": 1, "points": 3 } //Rune platebody
-      ]
-    },
-    {
-      "name": "Runes",
-      "points": 20,
-      "items": [
-        { "id": 561, "min": 60, "max": 70, "points": 5 } //Nature rune
-      ]
-    },
-    {
-      "name": "Gems and ores",
-      "points": 20,
-      "items": [
-        { "id": 450, "min": 15, "max": 20, "points": 4 }, //Adamantite ore (noted)
-        { "id": 454, "min": 115, "max": 120, "points": 3 } //Coal (noted)
-      ]
-    },
-    {
-      "name": "Other",
-      "points": 20,
-      "items": [
-        { "id": 995, "min": 19581, "max": 25000, "points": 3 }, //Coins
-        { "id": 5300, "min": 1, "max": 1, "points": 3 }, //Snapdragon seed
-        { "id": 1514, "min": 15, "max": 20, "points": 3 }, //Magic logs (noted)
-        { "id": 3024, "min": 3, "max": 3, "points": 1 }, //Super restore(4)
-        { "id": 3052, "min": 3, "max": 3, "points": 2 } //Grimy snapdragon (noted)
-      ]
-    },
-    {
-      "name": "Empty",
-      "points": 45,
-      "items": [
-      ]
-    },
-    {
-      "name": "Staff",
-      "points": 1,
-      "items": [
+        { "id": 985, "min": 1, "max": 1, "points": 100 }, //Tooth half of a key
+        { "id": 987, "min": 1, "max": 1, "points": 100 }, //Loop half of a key
+        { "id": 989, "min": 1, "max": 1, "points": 95 }, //Crystal key
+        { "id": 11133, "min": 1, "max": 1, "points": 95 }, //Regen bracelet
+        { "id": 6731, "min": 1, "max": 1, "points": 95 }, //Seers ring
+        { "id": 6733, "min": 1, "max": 1, "points": 95 }, //Archers ring
+        { "id": 6735, "min": 1, "max": 1, "points": 95 }, //Warriors ring
+        { "id": 6737, "min": 1, "max": 1, "points": 90 }, //Berserker ring
+        { "id": 12601, "min": 1, "max": 1, "points": 90 }, //Ring of the gods
+        { "id": 12603, "min": 1, "max": 1, "points": 90 }, //Tyrannical ring
+        { "id": 12605, "min": 1, "max": 1, "points": 90 }, //Treasonous ring
+        { "id": 21880, "min": 10, "max": 30, "points": 100 }, //Wrath rune
+        { "id": 20849, "min": 10, "max": 30, "points": 95 }, //Dragon thrownaxe
+        { "id": 22804, "min": 10, "max": 30, "points": 95 }, //Dragon knife
+        { "id": 22806, "min": 10, "max": 30, "points": 95 }, //Dragon knife p
+        { "id": 22808, "min": 10, "max": 30, "points": 95 }, //Dragon knife p+
+        { "id": 22810, "min": 10, "max": 30, "points": 95 }, //Dragon knife p++
+        { "id": 19484, "min": 10, "max": 30, "points": 95 }, //Dragon javelin
+        { "id": 19490, "min": 10, "max": 30, "points": 95 }, //Dragon javelin p++
+        { "id": 22634, "min": 10, "max": 30, "points": 65 }, //Morrigan's thrownaxe
+        { "id": 22636, "min": 10, "max": 30, "points": 65 }, //Morrigan's javelin
+        { "id": 30190, "min": 5, "max": 20, "points": 22 }, //Double drop scrolls
+        { "id": 11785, "min": 1, "max": 1, "points": 20 }, //Armadyl crossbow
+        { "id": 11802, "min": 1, "max": 1, "points": 17 }, //Armadyl godsword
+        { "id": 13652, "min": 1, "max": 1, "points": 12 }, //Dragon claws
+        { "id": 30377, "min": 1, "max": 1, "points": 10 }, //Legendary mystery box
         { "id": 24420, "min": 1, "max": 1, "points": 7 }, //Inquisitor hauberk
         { "id": 24421, "min": 1, "max": 1, "points": 7 }, //Inquisitor plateskirt
         { "id": 24419, "min": 1, "max": 1, "points": 7 }, //Inquisitor helmet
@@ -73,8 +40,14 @@
         { "id": 24422, "min": 1, "max": 1, "points": 5 }, //Nightmare Staff
         { "id": 24514, "min": 1, "max": 1, "points": 4 }, //Volatile Orb
         { "id": 24517, "min": 1, "max": 1, "points": 4 }, //Eldritch Orb
-        { "id": 24511, "min": 1, "max": 1, "points": 4 } //Harmonised Orb
+        { "id": 24511, "min": 1, "max": 1, "points": 4 }, //Harmonised Orb
+        { "id": 30094, "min": 1, "max": 1, "points": 2 } //Cursed Orb
       ]
+    },
+    {
+      "name": "Empty",
+      "points": 0,
+      "items": []
     }
   ]
 }
