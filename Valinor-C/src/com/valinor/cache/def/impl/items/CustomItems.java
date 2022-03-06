@@ -44,6 +44,18 @@ public class CustomItems {
             def.modelCustomColor4 = 100;
         }
 
+        if(id == YELL_TAG_SCROLL) {
+            def.name = "<col=65280>Yell tag scroll";
+            def.inventoryActions = new String[]{"Read", null, null, null, "Destroy"};
+            def.inventoryModel = 3374;
+            def.xan2d = 360;
+            def.yan2d = 672;
+            def.xOffset2d = 1;
+            def.yOffset2d = 0;
+            def.zoom2d = 1010;
+            def.modelCustomColor4 = 175;
+        }
+
         if(id == LITTLE_CHAOTIC_NIGHTMARE) {
             ItemDefinition.copyInventory(def, LITTLE_NIGHTMARE);
             def.name = "<col=65280>Little chaotic nightmare";

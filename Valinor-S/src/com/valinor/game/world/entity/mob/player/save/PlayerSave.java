@@ -296,6 +296,14 @@ public class PlayerSave {
                         player.putAttrib(YELL_COLOUR, details.yellColour);
                     }
                 }
+                player.putAttrib(YELL_TAG, details.yellTag);
+                if (details.yellTagColour != null) {
+                    if (details.yellTagColour.equals("0")) {
+                        player.putAttrib(YELL_TAG_COLOUR, "006601");
+                    } else {
+                        player.putAttrib(YELL_TAG_COLOUR, details.yellTagColour);
+                    }
+                }
                 player.putAttrib(NIGHTMARE_STAFF_QUESTION, details.dontAskAgainNightmareStaff);
                 player.putAttrib(CURRENCY_COLLECTION, details.currencyCollection);
                 player.putAttrib(GIVE_EMPTY_POTION_VIALS, details.emptyPotionVials);
@@ -852,6 +860,8 @@ public class PlayerSave {
         //Settings
         private final boolean acceptAid;
         private final String yellColour;
+        private final String yellTag;
+        private final String yellTagColour;
         private final boolean dontAskAgainNightmareStaff;
         private final boolean currencyCollection;
         private final boolean emptyPotionVials;
@@ -1428,6 +1438,8 @@ public class PlayerSave {
             clan = player.getClanChat();
             acceptAid = Player.getAttribBooleanOr(player, ACCEPT_AID, false);
             yellColour = Player.getAttribStringOr(player, YELL_COLOUR, "000000");
+            yellTag = Player.getAttribStringOr(player, YELL_TAG, "");
+            yellTagColour = Player.getAttribStringOr(player, YELL_TAG_COLOUR, "000000");
             dontAskAgainNightmareStaff = Player.getAttribBooleanOr(player, NIGHTMARE_STAFF_QUESTION, false);
             currencyCollection = Player.getAttribBooleanOr(player, CURRENCY_COLLECTION, false);
             emptyPotionVials = Player.getAttribBooleanOr(player, GIVE_EMPTY_POTION_VIALS, false);

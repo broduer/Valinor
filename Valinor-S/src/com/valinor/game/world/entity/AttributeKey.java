@@ -5,6 +5,8 @@ package com.valinor.game.world.entity;
  */
 public enum AttributeKey {
 
+    YELL_TAG("yell_tag", AttribType.STRING),
+    YELL_TAG_COLOUR("yell_tag_colour", AttribType.STRING),
     METAMORPHIC_DUST_USED_ON,
     SANGUINE_DUST_USED_ON,
 

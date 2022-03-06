@@ -28,7 +28,7 @@ public class YellCommand implements Command {
 
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if(!GameServer.yellEnabled) {
+        if (!GameServer.yellEnabled) {
             player.message("The yell channel is currently disabled. Please try again later.");
             return;
         }
@@ -36,7 +36,7 @@ public class YellCommand implements Command {
             player.message("You are muted and cannot yell. Please try again later.");
             return;
         }
-        if(player.jailed()) {
+        if (player.jailed()) {
             player.message("You are jailed and cannot yell. Please try again later.");
             return;
         }
@@ -92,24 +92,30 @@ public class YellCommand implements Command {
         String formatYellMessage = Utils.ucFirst(yellMessage);
 
         boolean yellColourShad = false;
-        if(player.getUsername().equalsIgnoreCase("LOOTATIONS")) {
+        if (player.getUsername().equalsIgnoreCase("LOOTATIONS")) {
             yellColour = "01c9f1";
             yellColourShad = true;
-        } else if(player.getUsername().equalsIgnoreCase("Bear")) {
+        } else if (player.getUsername().equalsIgnoreCase("Bear")) {
             yellColour = "AA336A";
             yellColourShad = true;
-        } else if(player.getUsername().equalsIgnoreCase("Skii")) {
+        } else if (player.getUsername().equalsIgnoreCase("Skii")) {
             yellColour = "8b0000";
             yellColourShad = true;
-        } else if(player.getUsername().equalsIgnoreCase("Dehzyne")) {
+        } else if (player.getUsername().equalsIgnoreCase("Dehzyne")) {
             yellColour = "000000";
             yellColourShad = true;
-        } else if(player.getUsername().equalsIgnoreCase("Ehwaz")) {
+        } else if (player.getUsername().equalsIgnoreCase("Ehwaz")) {
             yellColour = "00ff00";
             yellColourShad = true;
         }
 
-        String msg = yellColourShad ? "<shad=1>"+nameColour+"["+playerIcon+"</img>"+memberIcon+"</img>"+username+"]</col></shad>: <shad=0><col="+yellColour+">"+formatYellMessage+"</shad>" : "<shad=1>"+nameColour+"["+playerIcon+"</img>"+memberIcon+"</img>"+username+"]</col></shad>: <col="+yellColour+">"+formatYellMessage;
+        String tag = player.getAttribOr(AttributeKey.YELL_TAG, "");
+        String yellTag = "";
+        String yellTagColour = player.getAttribOr(AttributeKey.YELL_TAG_COLOUR, "006601");
+        if (!tag.isEmpty()) {
+            yellTag = "[<col=" + yellTagColour + "></col>" + tag + "]";
+        }
+        String msg = yellColourShad ? yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <shad=0><col=" + yellColour + ">" + formatYellMessage + "</shad>" : yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <col=" + yellColour + ">" + formatYellMessage;
         //System.out.println(yellColour);
         World.getWorld().sendWorldMessage(msg);
         int yellDelay = getYellDelay(player);

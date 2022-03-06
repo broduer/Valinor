@@ -132,6 +132,9 @@ public class ItemDefinition implements Definition {
         } else if (id == CURSED_ORB) {
             name = "Cursed orb";
             grandexchange = true;
+        } else if (id == YELL_TAG_SCROLL) {
+            name = "Yell tag scroll";
+            grandexchange = true;
         } else if (id == CURSED_NIGHTMARE_STAFF) {
             name = "Cursed nightmare staff";
             grandexchange = true;

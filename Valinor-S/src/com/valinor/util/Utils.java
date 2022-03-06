@@ -1728,6 +1728,9 @@ public class Utils {
     public static final char[] VALID_PLAYER_CHARACTERS = {'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
         'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '[', ']', '/', '-', ' '};
 
+    public static final char[] VALID_HEX_CHARACTERS = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+        'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '#'};
+
     /**
      * An array containing valid characters that may be used on the server.
      */
@@ -1754,6 +1757,15 @@ public class Utils {
     public static boolean containsMessageFormattingTag(String s) {
         for (String tag : MESSAGE_FORMATTING_TAGS) {
             if (s.contains(tag)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasInvalidHexChars(String title) {
+        for (char c : VALID_HEX_CHARACTERS) {
+            if (title.indexOf(c) != -1) {
                 return true;
             }
         }

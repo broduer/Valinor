@@ -102,6 +102,7 @@ public class CustomItemIdentifiers {
     public static final int LITTLE_CHAOTIC_NIGHTMARE = 30093;
     public static final int CURSED_ORB = 30094;
     public static final int CURSED_NIGHTMARE_STAFF = 30095;
+    public static final int YELL_TAG_SCROLL = 30096;
     public static final int INFERNAL_TRIDENT = 30343;
     public static final int FRAGMENT_OF_SEREN_PET = 30344;
     public static final int BLOOD_FURY_HESPORI_PET = 30345;
