@@ -16,8 +16,8 @@ public class YellTagColourSyntax implements EnterSyntax {
 
     @Override
     public void handleSyntax(Player player, @NotNull String input) {
-        boolean illegal = Utils.hasInvalidHexChars(input);
-        if (input.length() >= 2 && input.length() <= 12/* && !illegal*/) {
+        boolean illegal = Utils.hasInvalidChars(input);
+        if (input.length() >= 2 && input.length() <= 12 && !illegal) {
             player.putAttrib(AttributeKey.YELL_TAG_COLOUR, input.replaceAll("#",""));
             String tag = player.getAttribOr(AttributeKey.YELL_TAG, "");
             player.message("Your yell tag is now: [<col="+input.replaceAll("#","")+">"+tag+"</col>].");
