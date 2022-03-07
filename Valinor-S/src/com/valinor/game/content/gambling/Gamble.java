@@ -10,13 +10,13 @@ public abstract class Gamble {
     /**
      * Players inside the 'gamble'
      */
-    public Player host, opponent;
+    public Player playerOne, playerTwo;
 
     public int gameId;
 
-    public Gamble(Player host, Player opponent) {
-        this.host = host;
-        this.opponent = opponent;
+    public Gamble(Player playerOne, Player playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
     public abstract void gamble();

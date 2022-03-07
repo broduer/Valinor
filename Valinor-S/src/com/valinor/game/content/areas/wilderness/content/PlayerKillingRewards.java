@@ -194,16 +194,16 @@ public class PlayerKillingRewards {
     }
    
     private static int shutdownValueOf(int streak) {
-        int bonus = 10 * streak;
-        if(bonus > 1_000)
-            bonus = 1_000;
+        int bonus = 100 * streak;
+        if(bonus > 2_500)
+            bonus = 2_500;
         return bonus;
     }
 
     private static int killstreakValueOf(int streak) {
-        int bonus = 5 * streak;
-        if(bonus > 500)
-            bonus = 500;
+        int bonus = 25 * streak;
+        if(bonus > 375)
+            bonus = 375;
         return bonus;
     }
 

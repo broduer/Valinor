@@ -2,7 +2,7 @@ package com.valinor.game.content.gambling;
 
 public enum GameType {
     NONE("None", 0, ""),
-    FLOWER_POKER("Flower Poker", 330, "After putting up the items you wish to<br>gamble, both players plant 5 flowers.<br>The player with the best hand wins the pot.<br>Tie, white/black flowers will result in a <br>re-plant.")
+    FLOWER_POKER("Flower Poker", 330, "After putting up the items you wish to<br>gamble, both players plant 5 flowers.<br>The player with the best hand wins the pot.<br>Tie, white/black flowers will result in a <br>draw.")
     ; // End of enum
 
     public final String formalName;

@@ -35,14 +35,14 @@ public class FlowerPoker extends Gamble {
 
     @Override
     public void gamble() {
-        host.lock();
-        opponent.lock();
+        playerOne.lock();
+        playerTwo.lock();
         //host.forceChat("LOCKED: "+host.locked());
         //opponent.forceChat("LOCKED: "+host.locked());
-        host.getGamblingSession().flowers.clear();
-        opponent.getGamblingSession().flowers.clear();
-        host.getGamblingSession().gameFlowers.clear();
-        opponent.getGamblingSession().gameFlowers.clear();
+        playerOne.getGamblingSession().flowers.clear();
+        playerTwo.getGamblingSession().flowers.clear();
+        playerOne.getGamblingSession().gameFlowers.clear();
+        playerTwo.getGamblingSession().gameFlowers.clear();
 
         for (int index = 0; index < 5; index++) {
             Flower hostFlower = Flower.flower();
@@ -53,12 +53,12 @@ public class FlowerPoker extends Gamble {
             while (opponentFlower == Flower.BLACK || opponentFlower == Flower.WHITE) {
                 opponentFlower = Flower.flower();
             }
-            host.getGamblingSession().flowers.add(hostFlower);
-            opponent.getGamblingSession().flowers.add(opponentFlower);
+            playerOne.getGamblingSession().flowers.add(hostFlower);
+            playerTwo.getGamblingSession().flowers.add(opponentFlower);
         }
 
-        Ranking hostResult = getRank(host);
-        Ranking opponentResult = getRank(opponent);
+        Ranking hostResult = getRank(playerOne);
+        Ranking opponentResult = getRank(playerTwo);
 
         TaskManager.submit(new Task("FlowerPokerTask",1, false) {
             int time = 0;
@@ -66,29 +66,29 @@ public class FlowerPoker extends Gamble {
             public void execute() {
                 //host.forceChat("LOCKED: "+host.locked());
                 //opponent.forceChat("LOCKED: "+host.locked());
-                if(host.getGamblingSession().state() != GambleState.IN_PROGRESS) {
+                if(playerOne.getGamblingSession().state() != GambleState.IN_PROGRESS) {
                     this.stop();
                     return;
                 }
 
                 switch (time) {
                     case 0 -> {
-                        Player player = host;
-                        Player op = opponent;
+                        Player player = playerOne;
+                        Player op = playerTwo;
                         Tile spawn = Utils.randomElement(spawnTiles);
                         player.teleport(spawn);
                         op.teleport(spawn.copy().add(-1, 0));
                     }
                     case 1 -> {
-                        plant(host, opponent);
-                        plant(opponent, host);
+                        plant(playerOne, playerTwo);
+                        plant(playerTwo, playerOne);
                     }
                     case 25 -> {
-                        host.forceChat(Utils.formatEnum(hostResult.name()));
-                        opponent.forceChat(Utils.formatEnum(opponentResult.name()));
+                        playerOne.forceChat(Utils.formatEnum(hostResult.name()));
+                        playerTwo.forceChat(Utils.formatEnum(opponentResult.name()));
                     }
                     case 26 -> {
-                        host.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, host, opponent, hostResult.ordinal(), opponentResult.ordinal());
+                        playerOne.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, playerOne, playerTwo, hostResult.ordinal(), opponentResult.ordinal());
                         this.stop();
                     }
                 }
@@ -198,7 +198,7 @@ public class FlowerPoker extends Gamble {
             Flower flower = player.getGamblingSession().flowers.get(type);
             @Override
             public void execute() {
-                if(host.getGamblingSession().state() != GambleState.IN_PROGRESS) {
+                if(playerOne.getGamblingSession().state() != GambleState.IN_PROGRESS) {
                     this.stop();
                     return;
                 }
@@ -224,7 +224,7 @@ public class FlowerPoker extends Gamble {
                     }
                     case 4 -> {
                         if (flower.name().equalsIgnoreCase("WHITE") || flower.name().equalsIgnoreCase("BLACK")) {
-                            host.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, player, opponent, 0, 0);
+                            playerOne.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, player, opponent, 0, 0);
                             stop();
                             break;
                         }
@@ -248,7 +248,7 @@ public class FlowerPoker extends Gamble {
         if (player.getGamblingSession().game == null) {
             return null;
         }
-        return player.getGamblingSession().game.host == player ? player.getGamblingSession().game.opponent : player.getGamblingSession().game.host;
+        return player.getGamblingSession().game.playerOne == player ? player.getGamblingSession().game.playerTwo : player.getGamblingSession().game.playerOne;
     }
 
 }

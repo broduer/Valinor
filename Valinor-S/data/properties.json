@@ -56,7 +56,7 @@
   "logAccuracyChances": false,
   "soundsEnabled": false,
   "enableDueling": false,
-  "enableGambling": false,
+  "enableGambling": true,
   "maintenanceMode": false,
   "enableLoadLastDuelPreset": true,
   "fileStore": "data/filestore",

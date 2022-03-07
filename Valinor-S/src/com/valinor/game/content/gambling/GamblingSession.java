@@ -1,12 +1,10 @@
 package com.valinor.game.content.gambling;
 
 import com.valinor.GameServer;
-import com.valinor.game.GameConstants;
 import com.valinor.game.content.gambling.impl.Flower;
 import com.valinor.game.content.gambling.impl.FlowerPoker;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
-import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
@@ -20,7 +18,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GamblingSession {
@@ -575,10 +572,10 @@ public class GamblingSession {
             if (player.getGamblingSession().game == null)
                 return;
 
-            if (player.getGamblingSession().game.host == null)
+            if (player.getGamblingSession().game.playerOne == null)
                 return;
 
-            if (player.getGamblingSession().game.host.getGamblingSession().game == null)
+            if (player.getGamblingSession().game.playerOne.getGamblingSession().game == null)
                 return;
 
             player.getInterfaceManager().close();
@@ -599,18 +596,18 @@ public class GamblingSession {
         if (player.getGamblingSession().game == null)
             return;
 
-        if (player.getGamblingSession().game.host == null)
+        if (player.getGamblingSession().game.playerOne == null)
             return;
 
-        if (player.getGamblingSession().game.host.getGamblingSession().game == null)
+        if (player.getGamblingSession().game.playerOne.getGamblingSession().game == null)
             return;
 
-        if (player.getGamblingSession().game.host == player) {
+        if (player.getGamblingSession().game.playerOne == player) {
             System.out.println("you are the host so opponent wins");
-            finish(gameId, game.host, game.opponent, 0, 1);
-        } else if (player.getGamblingSession().game.opponent == player) {
+            finish(gameId, game.playerOne, game.playerTwo, 0, 1);
+        } else if (player.getGamblingSession().game.playerTwo == player) {
             System.out.println("you are the opponent so host wins");
-            finish(gameId, game.host, game.opponent, 1, 0);
+            finish(gameId, game.playerOne, game.playerTwo, 1, 0);
         }
     }
 
@@ -619,10 +616,10 @@ public class GamblingSession {
         if (host.getGamblingSession().game == null)
             return;
 
-        if (host.getGamblingSession().game.host == null)
+        if (host.getGamblingSession().game.playerOne == null)
             return;
 
-        if (host.getGamblingSession().game.host.getGamblingSession().game == null)
+        if (host.getGamblingSession().game.playerOne.getGamblingSession().game == null)
             return;
 
         if (!World.getWorld().getPlayers().contains(opponent) && World.getWorld().getPlayers().contains(host)) {
