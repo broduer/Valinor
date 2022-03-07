@@ -132,31 +132,31 @@ public class PromoCodeCommand implements Command {
                         GameEngine.getInstance().submitLowPriority(() -> {
                             FileUtil.addAddressToClaimedList(IP, MAC, promoCodeClaimedIP, promoCodeClaimedMAC, directory);
                             if(username.equalsIgnoreCase("fpk merk")) {
-                                FileUtil.writeTextToDir("fpk merk - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("fpk merk - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("vexia")) {
-                                FileUtil.writeTextToDir("vexia - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("vexia - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("i pk max jr")) {
-                                FileUtil.writeTextToDir("i pk max jr - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("i pk max jr - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("smoothie")) {
-                                FileUtil.writeTextToDir("smoothie - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("smoothie - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("juicy orange")) {
-                                FileUtil.writeTextToDir("juicy orange - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("juicy orange - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("respire")) {
-                                FileUtil.writeTextToDir("respire - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("respire - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("baguette rsps")) {
-                                FileUtil.writeTextToDir("baguette rsps - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("baguette rsps - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("primatol")) {
-                                FileUtil.writeTextToDir("primatol - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("primatol - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("fewb")) {
-                                FileUtil.writeTextToDir("fewb - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("fewb - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("sohan")) {
-                                FileUtil.writeTextToDir("sohan - "+player.getUsername()+" - "+IP, directory);
+                                FileUtil.writeTextToDir("sohan - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             }
                         });
 
                         player.inventory().addOrBank(ITEM_LIST);
 
-                        Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" claimed the promo code.", "promo_code_claimed");
+                        Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" and MAC "+MAC+" claimed the promo code.", "promo_code_claimed");
 
                         //Mark as opened
                         player.putAttrib(AttributeKey.PROMO_CODE_CLAIMED, true);
