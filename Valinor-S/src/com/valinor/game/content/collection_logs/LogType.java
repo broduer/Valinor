@@ -22,7 +22,7 @@ public enum LogType {
 
     public void log(Player killer, int keyId, Item reward) {
         if (reward == null) {
-            System.out.println("Reward was null.");
+            //System.out.println("Reward was null.");
             return;
         }
         reward = reward.copy(); // make sure not to handle the same instance as other game code uses

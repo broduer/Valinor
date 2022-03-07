@@ -471,7 +471,7 @@ public class PresetManager {
                     item.setAmount(bankItem.getAmount());
                 }
 
-                System.out.println(item.copy());
+                //System.out.println("preset rune pouch: "+item.copy());
                 player.getRunePouch().deposit(item.copy(),true);
             }
         }

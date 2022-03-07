@@ -603,10 +603,10 @@ public class GamblingSession {
             return;
 
         if (player.getGamblingSession().game.playerOne == player) {
-            System.out.println("you are the host so opponent wins");
+            //System.out.println("you are the host so opponent wins");
             finish(gameId, game.playerOne, game.playerTwo, 0, 1);
         } else if (player.getGamblingSession().game.playerTwo == player) {
-            System.out.println("you are the opponent so host wins");
+            //System.out.println("you are the opponent so host wins");
             finish(gameId, game.playerOne, game.playerTwo, 1, 0);
         }
     }

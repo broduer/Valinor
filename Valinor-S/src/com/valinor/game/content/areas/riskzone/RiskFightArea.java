@@ -38,10 +38,8 @@ public class RiskFightArea extends Interaction {
                 case 1:
                 case 3:
                     if(y < obj.tile().y) {
-                        System.out.println("we here 3");
                         y += 1;
                     } else {
-                        System.out.println("we here 4");
                         y -= 1;
                     }
                 default: break;

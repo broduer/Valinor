@@ -67,7 +67,7 @@ public class Crafting extends Interaction {
 
     public static void addCraftable(Craftable craftable) {
         if (CRAFTABLES.put(craftable.getWith().getId(), craftable) != null) {
-            System.out.println("[Crafting] Conflicting item values: " + craftable.getWith().getId() + " Type: " + craftable.getName());
+            //System.out.println("[Crafting] Conflicting item values: " + craftable.getWith().getId() + " Type: " + craftable.getName());
         }
     }
 

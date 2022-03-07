@@ -67,13 +67,13 @@ public class Duradel extends Interaction {
     private static void assignTask(Player player) {
         SlayerMaster master = Slayer.lookup(Slayer.DURADEL_ID);
         if(master == null) {
-            System.out.println("no such slayer master available.");
+            //System.out.println("no such slayer master available.");
             return;
         }
 
         SlayerTaskDef def = master.randomTask(player);
         if(def == null) {
-            System.out.println("no task available.");
+            //System.out.println("no task available.");
             return;
         }
 

@@ -112,7 +112,7 @@ public class YellCommand implements Command {
         String tag = player.getAttribOr(AttributeKey.YELL_TAG, "");
         String yellTag = "";
         String yellTagColour = player.getAttribOr(AttributeKey.YELL_TAG_COLOUR, "006601");
-        if (!tag.isEmpty()) {
+        if (tag != null && !tag.isEmpty()) {
             yellTag = "[<col=" + yellTagColour + "></col>" + tag + "]";
         }
         String msg = yellColourShad ? yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <shad=0><col=" + yellColour + ">" + formatYellMessage + "</shad>" : yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <col=" + yellColour + ">" + formatYellMessage;
