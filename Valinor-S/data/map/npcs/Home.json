@@ -35,7 +35,7 @@
   {
     "name": "PVP Combat dummy",
     "id": 2668,
-    "x": 3091,
+    "x": 3085,
     "y": 3514,
     "z": 0,
     "direction": "N",
@@ -44,7 +44,7 @@
   {
     "name": "PVM Combat dummy",
     "id": 7413,
-    "x": 3093,
+    "x": 3084,
     "y": 3514,
     "z": 0,
     "direction": "N",
