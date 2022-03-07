@@ -29,8 +29,6 @@ import com.valinor.util.ItemIdentifiers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.*;
@@ -164,8 +162,9 @@ public class PlayerKillingRewards {
             player.getTaskBottleManager().increase(BottleTasks.WEAR_FULL_DH_TASK);
         }
 
-        if (player.<Double>getAttribOr(AttributeKey.RISKED_WEALTH, 0L) > 20_000 && !Prayers.usingPrayer(player, Prayers.PROTECT_ITEM)) {
-            player.getTaskBottleManager().increase(BottleTasks.KILL_WITH_20K_BM_RISK);
+        var risk = player.<Long>getAttribOr(AttributeKey.RISKED_WEALTH, 0L);
+        if (risk > 30_000_000L && !Prayers.usingPrayer(player, Prayers.PROTECT_ITEM)) {
+            player.getTaskBottleManager().increase(BottleTasks.KILL_WITH_30M_RISK);
         }
 
         if (player.getEquipment().hasAt(EquipSlot.WEAPON, ItemIdentifiers.DRAGON_SCIMITAR_OR)) {

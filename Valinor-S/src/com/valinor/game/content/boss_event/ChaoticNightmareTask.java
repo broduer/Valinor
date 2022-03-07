@@ -9,7 +9,7 @@ import com.valinor.game.task.Task;
  */
 public class ChaoticNightmareTask extends Task {
 
-    private static final boolean TESTING = true;
+    private static final boolean TESTING = false;
     public static final int TICKS_TILL_SPAWN = TESTING ? 100 : 12000;
 
     public ChaoticNightmareTask() {

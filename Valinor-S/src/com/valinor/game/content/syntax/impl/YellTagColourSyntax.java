@@ -20,7 +20,7 @@ public class YellTagColourSyntax implements EnterSyntax {
         if (input.length() >= 2 && input.length() <= 12 && !illegal) {
             player.putAttrib(AttributeKey.YELL_TAG_COLOUR, input.replaceAll("#",""));
             String tag = player.getAttribOr(AttributeKey.YELL_TAG, "");
-            player.message("Your yell tag is now: [<col="+input.replaceAll("#","")+">"+tag+"</col>].");
+            player.message("Your yell tag is now: [<shad=0><col="+input.replaceAll("#","")+">"+tag+"</shad></col>].");
             player.inventory().remove(YELL_TAG_SCROLL);
         } else {
             player.message("We were unable to set a yell tag. Something went wrong setting the colour.");

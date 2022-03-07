@@ -60,7 +60,7 @@ public enum BottleTasks {
     //#PVP tasks
     WEAR_TORAGS_TASK(15,"Kill your opponent while wearing<br>Torag's armour.", TaskCategory.PVP_TASK),
     WEAR_FULL_DH_TASK(25,"Kill your opponent while wearing<br>Dharok's armour.", TaskCategory.PVP_TASK),
-    KILL_WITH_20K_BM_RISK(10,"Kill your opponent while risking<br>30M+.", TaskCategory.PVP_TASK),
+    KILL_WITH_30M_RISK(10,"Kill your opponent while risking<br>30M+.", TaskCategory.PVP_TASK),
     KILL_WITH_DRAGON_SCIMITAR_OR(15,"Kill your opponent while Dragon<br>Scimitar(or) as your main weapon.", TaskCategory.PVP_TASK),
     KILL_WITH_INQUISITORS_MACE(20,"Kill your opponent with an...<br>Inquisitor's mace.", TaskCategory.PVP_TASK),
     KILL_WITHOUT_HEAD_BODY_AND_LEGS(10,"Kill your opponent without...<br>wearing any head, body and...<br>legs protection.", TaskCategory.PVP_TASK),
