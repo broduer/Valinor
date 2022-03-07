@@ -135,6 +135,10 @@ public class ItemDefinition implements Definition {
         } else if (id == YELL_TAG_SCROLL) {
             name = "Yell tag scroll";
             grandexchange = true;
+        } else if (id == STARTER_BOX) {
+            name = "Starter box";
+        } else if (id == CLAN_BOX) {
+            name = "Clan box";
         } else if (id == CURSED_NIGHTMARE_STAFF) {
             name = "Cursed nightmare staff";
             grandexchange = true;

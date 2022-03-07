@@ -282,6 +282,8 @@ public enum AttributeKey {
 
     WHIP_AND_DDS,
 
+    CLAN_BOX_OPENED("clan_box_opened", AttribType.BOOLEAN),
+
     STARTER_BOX_CLAIMED("starter_box_claimed", AttribType.BOOLEAN),
 
     PROMO_CODE_CLAIMED("promo_code_claimed", AttribType.BOOLEAN),

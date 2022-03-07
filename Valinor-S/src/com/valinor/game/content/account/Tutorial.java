@@ -3,6 +3,7 @@ package com.valinor.game.content.account;
 import com.valinor.GameServer;
 import com.valinor.game.GameConstants;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
+import com.valinor.game.content.items.StarterBox;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
@@ -68,6 +69,7 @@ public class Tutorial extends Dialogue {
             player.unlock();
             player.looks().hide(false);
             player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+            StarterBox.claimStarterBox(player);
             player.inventory().refresh();//Force an inventory refresh
             player.message("You have been given some training equipment.");
             stop();
@@ -85,6 +87,7 @@ public class Tutorial extends Dialogue {
                 player.putAttrib(AttributeKey.NEW_ACCOUNT, false);
                 player.looks().hide(false);
                 player.inventory().addAll(GameConstants.STARTER_ITEMS.clone());
+                StarterBox.claimStarterBox(player);
                 player.inventory().refresh();//Force an inventory refresh
                 player.message("You have been given some training equipment.");
                 stop();

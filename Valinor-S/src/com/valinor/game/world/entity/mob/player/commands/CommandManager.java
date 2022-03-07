@@ -157,6 +157,8 @@ public class CommandManager {
         commands.put("unmacban", new UnMacBanCommand());
         commands.put("killscorpia", new KillScorpiaCommand());
         commands.put("setlevelo", new SetLevelOther());
+        commands.put("disablepromocode", new DisablePromoCodeCommand());
+        commands.put("disablesbox", new DisableStarterBox());
         commands.put("checkmulti", new CheckMultiLoggers());
         commands.put("disabledailyrewards", new DisableDailyRewards());
         commands.put("disableredeem", new DisableRedeem());

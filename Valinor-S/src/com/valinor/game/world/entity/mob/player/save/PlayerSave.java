@@ -155,6 +155,7 @@ public class PlayerSave {
                 player.putAttrib(VETERAN, details.veteran);
                 player.putAttrib(GAMBLER, details.gambler);
                 player.putAttrib(STARTER_BOX_CLAIMED, details.starterboxClaimed);
+                player.putAttrib(CLAN_BOX_OPENED, details.clanBoxOpened);
                 player.putAttrib(PROMO_CODE_CLAIMED, details.promoCodeClaimed);
                 player.putAttrib(RECEIVED_MONTHLY_SPONSOR_REWARDS, details.receivedMonthlySponsorRewards);
                 player.looks().female(details.female);
@@ -773,6 +774,7 @@ public class PlayerSave {
         private final boolean veteran;
         private final boolean gambler;
         private final boolean starterboxClaimed;
+        private final boolean clanBoxOpened;
         private final boolean promoCodeClaimed;
         private final boolean receivedMonthlySponsorRewards;
         private final boolean female;
@@ -1368,6 +1370,7 @@ public class PlayerSave {
             veteran = Player.getAttribBooleanOr(player, VETERAN, false);
             gambler = Player.getAttribBooleanOr(player, GAMBLER, false);
             starterboxClaimed = Player.getAttribBooleanOr(player, STARTER_BOX_CLAIMED, false);
+            clanBoxOpened = Player.getAttribBooleanOr(player, CLAN_BOX_OPENED, false);
             promoCodeClaimed = Player.getAttribBooleanOr(player, PROMO_CODE_CLAIMED, false);
             receivedMonthlySponsorRewards = Player.getAttribBooleanOr(player, RECEIVED_MONTHLY_SPONSOR_REWARDS, false);
             female = player.looks().female();

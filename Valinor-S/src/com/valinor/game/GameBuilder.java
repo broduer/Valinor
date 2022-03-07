@@ -4,6 +4,8 @@ import com.valinor.GameServer;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.clan.ClanRepository;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
+import com.valinor.game.content.items.ClanBox;
+import com.valinor.game.content.items.StarterBox;
 import com.valinor.game.content.skill.impl.crafting.Crafting;
 import com.valinor.game.content.skill.impl.fletching.Fletching;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -11,6 +13,7 @@ import com.valinor.game.content.tournaments.TournamentManager;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.World;
 import com.valinor.game.world.definition.loader.impl.*;
+import com.valinor.game.world.entity.mob.player.commands.impl.players.PromoCodeCommand;
 import com.valinor.game.world.region.RegionManager;
 import com.valinor.net.packet.interaction.InteractionManager;
 import com.valinor.util.BackgroundLoader;
@@ -70,6 +73,9 @@ public class GameBuilder {
         Queue<Runnable> tasks = new ArrayDeque<>();
         tasks.add(IronmanGroupHandler::loadIronmanGroups);
         tasks.add(ClanRepository::load);
+        tasks.add(StarterBox::init);
+        tasks.add(ClanBox::init);
+        tasks.add(PromoCodeCommand::init);
         tasks.add(PlayerPunishment::init);
         tasks.add(InteractionManager::init);
         if (GameServer.properties().wildernessActivityEnabled) {
