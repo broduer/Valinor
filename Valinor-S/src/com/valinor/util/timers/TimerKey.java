@@ -9,6 +9,8 @@ import java.util.Set;
 
 public enum TimerKey {
 
+    HELP_COMMAND_USED,
+
     ELEMENTAL_BOW_SPECIAL_COOLDOWN,
 
     WAIT_FOR_DB,
