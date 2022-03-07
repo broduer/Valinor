@@ -60,7 +60,7 @@ public class ClanBox extends Interaction {
         return false;
     }
 
-    private final List<Item> ITEMS = Arrays.asList(new Item(DRAGON_CROSSBOW), new Item(ARMADYL_GODSWORD), new Item(STAFF_OF_LIGHT, 2), new Item(AHRIMS_ARMOUR_SET,2), new Item(KARILS_LEATHERTOP,2), new Item(VERACS_PLATESKIRT,2), new Item(DRAGONSTONE_DRAGON_BOLTS_E,2000), new Item(BERSERKER_RING,2), new Item(INFINITY_BOOTS,2), new Item(AMULET_OF_FURY,2), new Item(PKP_TICKET, 50_000));
+    private final List<Item> ITEMS = Arrays.asList(new Item(DRAGON_CROSSBOW), new Item(ARMADYL_GODSWORD), new Item(STAFF_OF_LIGHT, 2), new Item(AHRIMS_ARMOUR_SET,2), new Item(KARILS_LEATHERTOP,2), new Item(VERACS_PLATESKIRT,2), new Item(DRAGONSTONE_DRAGON_BOLTS_E,2000), new Item(BERSERKER_RING,2), new Item(INFINITY_BOOTS,2), new Item(AMULET_OF_FURY,2), new Item(PKP_TICKET, 25_000));
 
     private void open(Player player) {
         if(player.inventory().contains(CLAN_BOX)) {

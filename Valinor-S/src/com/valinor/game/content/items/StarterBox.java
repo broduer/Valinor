@@ -6,9 +6,6 @@ import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.FileUtil;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -37,12 +34,12 @@ public class StarterBox extends Interaction {
     private static final String directory = "./data/saves/starterBoxClaimed.txt";
 
     public static void init() {
-        starterMysteryBoxClaimed(directory);
+        starterMysteryBoxClaimed();
     }
 
-    private static void starterMysteryBoxClaimed(String directory) {
+    private static void starterMysteryBoxClaimed() {
         try {
-            try (BufferedReader in = new BufferedReader(new FileReader(directory))) {
+            try (BufferedReader in = new BufferedReader(new FileReader(StarterBox.directory))) {
                 String data;
                 while ((data = in.readLine()) != null) {
                     starterBoxClaimedIP.add(data);
@@ -90,9 +87,19 @@ public class StarterBox extends Interaction {
                 if(!player.inventory().contains(STARTER_BOX)) {
                     return true;
                 }
+                var IP = player.getHostAddress();
+                var MAC = player.<String>getAttribOr(AttributeKey.MAC_ADDRESS,"invalid");
+                var starterBoxClaimed = player.<Boolean>getAttribOr(AttributeKey.STARTER_BOX_CLAIMED,false);
+                var fileAlreadyContainsAddress = FileUtil.claimed(IP, MAC, directory);
+
+                //Check if the player has already claimed the box
+                if(starterBoxClaimed || fileAlreadyContainsAddress) {
+                    return true; // Already claimed
+                }
 
                 player.inventory().remove(STARTER_BOX);
                 player.inventory().addOrBank(STARTER_SETUP);
+                Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" opened a starter box.", "boxes_opened");
                 return true;
             }
         }
