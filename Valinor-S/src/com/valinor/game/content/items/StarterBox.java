@@ -26,7 +26,7 @@ public class StarterBox extends Interaction {
 
     public static boolean STARTER_BOX_ENABLED = true;
 
-    private static final List<Item> STARTER_SETUP = Arrays.asList(new Item(DHAROKS_ARMOUR_SET), new Item(ABYSSAL_TENTACLE), new Item(GRANITE_MAUL_24225), new Item(DRAGON_BOOTS), new Item(AMULET_OF_FURY));
+    private static final List<Item> STARTER_SETUP = Arrays.asList(new Item(DHAROKS_ARMOUR_SET), new Item(ABYSSAL_TENTACLE), new Item(GRANITE_MAUL_24225), new Item(DRAGON_BOOTS), new Item(AMULET_OF_FURY), new Item(COINS_995, 5_000_000));
 
     private static final Set<String> starterBoxClaimedIP = new HashSet<>();
     private static final Set<String> starterBoxClaimedMAC = new HashSet<>();
