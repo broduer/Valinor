@@ -64,6 +64,8 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::graves</col> - Teleports you to the graves in wilderness.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::wests</col> - Teleports you to wests in wilderness.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::easts</col> - Teleports you to easts in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::chaos</col> - Teleports you to the chaos altar in wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::bc</col> - Teleports you to the barrelchest in wilderness.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::exitraid</col> - Closes your current raid instance.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::toggledyk</col> - Toggle did you know messages.");
 

@@ -161,7 +161,7 @@ public class ChaoticNightmare {
         // Only if it's an actual boss we spawn an NPC.
         last = LocalDateTime.now();
         next = LocalDateTime.now().plus((long) (TICKS_TILL_SPAWN * 0.6d), ChronoUnit.SECONDS);
-        spawnTile = new Tile(3198, 3628);
+        spawnTile = new Tile(3236, 3641);
         ANNOUNCE_5_MIN_TIMER = false;
 
         Npc boss = new Npc(CHAOTIC_NIGHTMARE, spawnTile).spawn(false);
@@ -171,9 +171,9 @@ public class ChaoticNightmare {
         //Assign the npc reference.
         chaoticNightmare = Optional.of(boss);
 
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the altar at the Ferox Enclave!");
+        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
 
         // Broadcast it
-        World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the altar at the Ferox Enclave!");
+        World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
     }
 }

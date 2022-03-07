@@ -59,11 +59,10 @@ public class WorldBossEvent {
      * An array of possible boss spawns. Chosen at random when a boss spawns.
      */
     private static final Tile[] POSSIBLE_SPAWNS = {
-        new Tile(2968, 3404),//Falador outside gate
         new Tile(3167, 3757),//level 30 wild
         new Tile(3166, 3832),//level 40 wild
-        new Tile(3073, 3687),//level 21 wild
-        new Tile(3194,3951),//level 54 wild
+        new Tile(3306, 3936),//Spawn north of ::50s
+        new Tile(3248, 3892),//Spawn west of barrelchest / Gdz
         new Tile(2963,3819)//level 38 wild
     };
 
@@ -282,16 +281,14 @@ public class WorldBossEvent {
         }
 
         public String spawnLocation(Tile tile) {
-            if (tile.equals(new Tile(2968, 3404))) {
-                return "north outside of the Falador gate";
-            } else if (tile.equals(new Tile(3167, 3757))) {
+            if (tile.equals(new Tile(3167, 3757))) {
                 return "south east of the black chins hills";
             } else if (tile.equals(new Tile(3166, 3832))) {
                 return "near the Lava dragons";
-            } else if (tile.equals(new Tile(3073, 3687))) {
-                return "outside of the bandit camp";
+            } else if (tile.equals(new Tile(3306, 3936))) {
+                return "spawns north of ::50s";
             } else if (tile.equals(new Tile(3194,3951))) {
-                return "next to resource area";
+                return "spawns west of barrelchest / Gdz ::bc";
             } else if (tile.equals(new Tile(2963,3819))) {
                 return "near lvl 40 wild altar";
             }
