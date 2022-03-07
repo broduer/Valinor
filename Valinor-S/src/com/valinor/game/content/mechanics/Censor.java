@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class Censor {
 
-    private static final List<String> baddies = List.of("nigger", "nigga", "jew", "kanker", "cancer", "kys", "k y s", "k ys", "ky s", "k.y.s", "kill urself", "kill ys", "kill yourself");
+    private static final List<String> baddies = List.of("nigger", "paki", "pakki", "paaki", "nigga", "jew", "kanker", "cancer", "kys", "k y s", "k ys", "ky s", "k.y.s", "kill urself", "kill ys", "kill yourself");
 
     public static boolean containsBadWords(String chatMessage) {
         for(String text : baddies) {
