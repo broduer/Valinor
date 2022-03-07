@@ -1,0 +1,52 @@
+{
+  "npcs": [ 15048 ],
+  "petItem": 16172,
+  "petRarity": 1000,
+  "guaranteed": [
+    { "id": 30092, "min": 50, "max": 150, "points": 1 } //PKP
+  ],
+  "tables": [
+    {
+      "name": "Uniques",
+      "points": 1,
+      "items": [
+        {"id": 989, "min": 1, "max": 1, "points": 20 }, //crystal key
+        {"id": 3140, "min": 1, "max": 1, "points": 18 }, //dragon chainbody
+        {"id": 21902, "min": 1, "max": 1, "points": 14 }, //dragon crossbow
+        {"id": 11804, "min": 1, "max": 1, "points": 10 }, //Bandos godsword
+        {"id": 11806, "min": 1, "max": 1, "points": 10 }, //Saradomin godsword
+        {"id": 11808, "min": 1, "max": 1, "points": 10 }, //Zamorak godsword
+        {"id": 12605, "min": 1, "max": 1, "points": 9 }, //treasonous ring
+        {"id": 12603, "min": 1, "max": 1, "points": 9 }, //tyrannical ring
+        {"id": 12601, "min": 1, "max": 1, "points": 9 }, //ring of the gods
+        {"id": 12381, "min": 1, "max": 1, "points": 9 }, //black dhide body (g)
+        {"id": 12385, "min": 1, "max": 1, "points": 9 }, //black dhide body (t)
+        {"id": 12383, "min": 1, "max": 1, "points": 9 }, //black d'hide chaps (g)
+        {"id": 12387, "min": 1, "max": 1, "points": 9 }, //black d'hide chaps (t)
+        {"id": 19550, "min": 1, "max": 1, "points": 5 }, //ring of suffering
+        {"id": 11802, "min": 1, "max": 1, "points": 4 }, //Armadyl godsword
+        {"id": 13652, "min": 1, "max": 1, "points": 3 }, //Dragon claws
+        {"id": 30185, "min": 1, "max": 1, "points": 2 }, //Donator mystery box
+        {"id": 31201, "min": 1, "max": 1, "points": 2 } //Pets mystery box
+      ]
+    },
+    {
+      "name": "Clean1",
+      "points": 1,
+      "items": [
+      ]
+    },
+    {
+      "name": "Clean2",
+      "points": 1,
+      "items": [
+      ]
+    },
+    {
+      "name": "Clean3",
+      "points": 1,
+      "items": [
+      ]
+    }
+  ]
+}

@@ -155,7 +155,7 @@ public class CustomBosses {
             definition.walkingAnimation = 819;
         }
 
-        if (id == ARAGOG) {
+        if (id == ARAGOG || id == ARAGOG_15048) {
             definition.name = "Aragog";
             definition.actions = new String[]{null, "Attack", null, null, null};
             definition.recolorFrom = new int[]{138, 908, 794, 912, 916, 0, 103, 107};

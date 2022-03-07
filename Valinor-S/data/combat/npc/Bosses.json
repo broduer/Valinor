@@ -1,5 +1,44 @@
 [
   {
+    // Aragog
+    "ids": [
+      15048
+    ],
+    "boss": true,
+    "maxhit": 45,
+    "slayerxp": 2000,
+    "slayerlvl": 1,
+    "attackspeed": 4,
+    "aggroradius": 7,
+    "respawntime": 35,
+    "aggressive": true,
+    "stats": {
+      "attack": 450,
+      "strength": 450,
+      "magic": 450,
+      "ranged": 450,
+      "defence": 125,
+      "hitpoints": 1200
+    },
+    "bonuses": {
+      "attack": 350,
+      "strength": 350,
+      "stabdefence": 255,
+      "slashdefence": 255,
+      "crushdefence": 255,
+      "rangeddefence": 175,
+      "magicdefence": 255
+    },
+    "animations": {
+      "attack": 5319,
+      "block": 5320,
+      "death": 5321
+    },
+    "scripts": {
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom.AragogWilderness"
+    }
+  },
+  {
     // Chaotic nightmare
     "ids": [
       16024
@@ -33,7 +72,7 @@
       "death": 8612
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.ChaoticNightmare"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom.ChaoticNightmare"
     }
   },
   {
@@ -1344,7 +1383,7 @@
       "death": 6369
     },
     "scripts": {
-      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.CorruptedNechryarch"
+      "combat": "com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom.CorruptedNechryarch"
     }
   },
   {

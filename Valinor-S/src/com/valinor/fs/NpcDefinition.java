@@ -193,9 +193,10 @@ public class NpcDefinition implements Definition {
         } else if (id == DEMENTOR) {
             name = "Dementor";
             size = 1;
-        } else if (id == ARAGOG) {
+        } else if (id == ARAGOG || id == ARAGOG_15048) {
             name = "Aragog";
             size = 4;
+            combatlevel = 1123;
         } else if (id == FLUFFY) {
             name = "Fluffy";
             size = 5;

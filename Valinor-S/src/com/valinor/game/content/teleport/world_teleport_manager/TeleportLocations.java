@@ -58,6 +58,7 @@ public enum TeleportLocations {
     ENRAGED_GORILLA(CustomNpcIdentifiers.ENRAGED_GORILLA_MELEE, 2800, AttributeKey.ENRAGED_GORILLA_KILLS, new Tile(3168, 3720, 0), Category.BOSSES, false, true, true, new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(LIGHT_BALLISTA), new Item(HEAVY_BALLISTA), new Item(TORMENTED_BRACELET), new Item(RING_OF_SUFFERING), new Item(TORMENTED_ORNAMENT_KIT), new Item(ANGUISH_ORNAMENT_KIT), new Item(TORTURE_ORNAMENT_KIT)),
     LAVA_DRAGON(NpcIdentifiers.LAVA_DRAGON, 2800, AttributeKey.LAVA_DRAGONS_KILLED, new Tile(3202, 3842, 0), Category.BOSSES, true, true, true, new Item(DRAGONFIRE_SHIELD)),
     TZTOK_JAD(NpcIdentifiers.TZTOKJAD, 5500, AttributeKey.JADS_KILLED, new Tile(2440, 5172), Category.BOSSES, false, false, true, new Item(FIRE_CAPE)),
+    ARAGOG(CustomNpcIdentifiers.ARAGOG_15048, 2800, AttributeKey.KC_ARAGOG, new Tile(3283, 3823), Category.BOSSES, true, true, true, new Item(ARMADYL_GODSWORD), new Item(DRAGON_CLAWS), new Item(DONATOR_MYSTERY_BOX), new Item(PETS_MYSTERY_BOX)),
 
     /* PVM && Training places */
     ROCK_CRABS(NpcIdentifiers.ROCK_CRAB, 1000, new Tile(2706, 3713, 0), Category.PVM, false, false, true),

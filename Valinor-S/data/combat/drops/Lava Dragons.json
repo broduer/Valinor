@@ -63,7 +63,14 @@
 				{ "id": 570, "min": 15, "max": 15, "points": 12 }, //Fire orb (noted)
 				{ "id": 1897, "min": 3, "max": 3, "points": 12 }, //Chocolate cake
 				{ "id": 2361, "min": 2, "max": 2, "points": 6 }, //Adamantite bar
-				{ "id": 11286, "min": 1, "max": 1, "points": 1 } //Draconic visage
+				{ "id": 11840, "min": 1, "max": 1, "points": 35 }, //Dragon boots
+				{ "id": 4151, "min": 1, "max": 1, "points": 35 }, //Abyssal whip
+				{ "id": 6585, "min": 1, "max": 1, "points": 35 }, //Amulet of fury
+				{ "id": 11283, "min": 1, "max": 1, "points": 15 }, //DFS
+				{ "id": 16452, "min": 1, "max": 1, "points": 2 }, //Armour box
+				{ "id": 16451, "min": 1, "max": 1, "points": 2 }, //Weapon box
+				{ "id": 30185, "min": 1, "max": 1, "points": 2 }, //Donator box
+				{ "id": 2944, "min": 1, "max": 1, "points": 1 } //Key of drops
 			]
 		}
 	]

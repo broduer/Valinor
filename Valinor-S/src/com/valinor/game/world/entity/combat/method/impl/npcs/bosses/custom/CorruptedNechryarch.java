@@ -1,4 +1,4 @@
-package com.valinor.game.world.entity.combat.method.impl.npcs.bosses;
+package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom;
 
 import com.google.common.collect.Lists;
 import com.valinor.game.world.World;

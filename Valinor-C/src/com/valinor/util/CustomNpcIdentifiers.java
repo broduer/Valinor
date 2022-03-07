@@ -89,6 +89,7 @@ public class CustomNpcIdentifiers {
     public static final int PET_ZILYANA_WHITE = 15221;
 
     public static final int ARAGOG = 15020;
+    public static final int ARAGOG_15048 = 15048;
 
     public static final int KERBEROS = 16008;
     public static final int SKORPIOS = 16009;
