@@ -331,7 +331,7 @@ public class PlayerKillingRewards {
 
                 var blood_reaper = killer.hasPetOut("Blood Reaper pet");
                 if(blood_reaper) {
-                    int extraPkp = pkpReward * 10 / 100;
+                    int extraPkp = (int) (pkpReward * 0.10);
                     pkpReward += extraPkp;
                 }
 

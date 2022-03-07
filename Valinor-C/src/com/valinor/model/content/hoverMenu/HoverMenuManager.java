@@ -120,7 +120,7 @@ public class HoverMenuManager {
         menus.put(NAGINI, new HoverMenu("+@red@10%@whi@ magic accuracy, +@red@10@whi@ damage vs npcs and +@red@1@whi@ damage vs players."));
         menus.put(SKELETON_HELLHOUND_PET, new HoverMenu("+@red@5%@whi@ damage and +@red@5%@whi@ accuracy vs H'ween npcs."));
         menus.put(JALNIBREK, new HoverMenu("Acts as a ring of recoil and +@red@10%@whi@ special attack accuracy."));
-        menus.put(BLOOD_REAPER, new HoverMenu("Keep one extra item on death. This doesn't work while @red@ smited or red skulled@whi@. And @red@+10@whi@ extra PKP."));
+        menus.put(BLOOD_REAPER, new HoverMenu("Keep one extra item on death. This doesn't work while @red@ smited or red skulled@whi@. And @red@+10%@whi@ extra PKP."));
         menus.put(YOUNGLLEF, new HoverMenu("@red@+1@whi@ max hit and @red@7.5%@whi@ accuracy for all attack styles."));
         menus.put(CORRUPTED_YOUNGLLEF, new HoverMenu("@red@+2@whi@ max hit and @red@12.5%@whi@ accuracy for all attack styles."));
         menus.put(JALTOK_JAD, new HoverMenu("Extra @red@25%@whi@ drop rate when fighting Jad."));
