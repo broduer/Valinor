@@ -392,9 +392,9 @@ public class Utils {
                             GameServer.ticketsOpenedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
                             GameServer.ticketsOpenedWebHookUrl.execute();
                         }
-                        case "fpk_merk_promo_code_claimed" -> {
-                            GameServer.fpkMerkPromoCodeClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
-                            GameServer.fpkMerkPromoCodeClaimedWebHookUrl.execute();
+                        case "promo_code_claimed" -> {
+                            GameServer.promoCodeClaimedWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));
+                            GameServer.promoCodeClaimedWebHookUrl.execute();
                         }
                         case "added_to_cart_dispenser" -> {
                             GameServer.itemsAddedToCartDispenserWebHookUrl.setContent(getDiscordWebhookHeader() + text.replaceAll("\"", ""));

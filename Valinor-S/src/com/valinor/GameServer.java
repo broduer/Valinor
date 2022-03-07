@@ -129,7 +129,7 @@ public class GameServer {
             cosRewardsClaimedWebHookUrl = new DiscordWebhook(properties().cosRewardsClaimedWebHookUrl);
             boxesOpenedWebHookUrl = new DiscordWebhook(properties().boxesOpenedWebHookUrl);
             ticketsOpenedWebHookUrl = new DiscordWebhook(properties().ticketsOpenedWebHookUrl);
-            fpkMerkPromoCodeClaimedWebHookUrl = new DiscordWebhook(properties().fpkMerkPromoCodeClaimedWebHookUrl);
+            promoCodeClaimedWebHookUrl = new DiscordWebhook(properties().promoCodeClaimedWebHookUrl);
             itemsAddedToCartDispenserWebHookUrl = new DiscordWebhook(properties().itemsAddedToCartDispenserWebHookUrl);
             itemsDispensedWebHookUrl = new DiscordWebhook(properties().itemsDispensedWebHookUrl);
             presetsLoadedWebHookUrl = new DiscordWebhook(properties().presetsLoadedWebHookUrl);
@@ -216,7 +216,7 @@ public class GameServer {
     public static DiscordWebhook cosRewardsClaimedWebHookUrl;
     public static DiscordWebhook boxesOpenedWebHookUrl;
     public static DiscordWebhook ticketsOpenedWebHookUrl;
-    public static DiscordWebhook fpkMerkPromoCodeClaimedWebHookUrl;
+    public static DiscordWebhook promoCodeClaimedWebHookUrl;
     public static DiscordWebhook itemsAddedToCartDispenserWebHookUrl;
     public static DiscordWebhook itemsDispensedWebHookUrl;
     public static DiscordWebhook presetsLoadedWebHookUrl;

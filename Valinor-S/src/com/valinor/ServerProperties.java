@@ -221,7 +221,7 @@ public final class ServerProperties {
         cosRewardsClaimedWebHookUrl = "";
         boxesOpenedWebHookUrl = "";
         ticketsOpenedWebHookUrl = "";
-        fpkMerkPromoCodeClaimedWebHookUrl = "";
+        promoCodeClaimedWebHookUrl = "";
         itemsAddedToCartDispenserWebHookUrl = "";
         itemsDispensedWebHookUrl = "";
         presetsLoadedWebHookUrl = "";
@@ -643,7 +643,7 @@ public final class ServerProperties {
     public final String cosRewardsClaimedWebHookUrl;
     public final String boxesOpenedWebHookUrl;
     public final String ticketsOpenedWebHookUrl;
-    public final String fpkMerkPromoCodeClaimedWebHookUrl;
+    public final String promoCodeClaimedWebHookUrl;
     public final String itemsAddedToCartDispenserWebHookUrl;
     public final String itemsDispensedWebHookUrl;
     public final String presetsLoadedWebHookUrl;

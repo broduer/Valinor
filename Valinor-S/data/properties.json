@@ -118,7 +118,7 @@
   "cosRewardsClaimedWebHookUrl": "https://discordapp.com/api/webhooks/920375907338825778/Ui32ExvDFRUjHFjvX0t9mqbS6I6EKt2ZjNLNUIiRQLKEr4snRbI1_vppry7_H-AvxEda",
   "boxesOpenedWebHookUrl": "https://discordapp.com/api/webhooks/920376004680220673/vOUawVQQwRat0To4HXUdTiGBNaq1k5Bfi7nDlWgIiQHqM_vc4h996VM3SXUIt6Rpg3xz",
   "ticketsOpenedWebHookUrl": "https://discordapp.com/api/webhooks/920376063878656071/H7ht3EhmRNP97Udgfj1Wh6I1EpiF-yxpulclzGNIqC0PFOGIUzjEoZ7jE5rya5ibn1t4",
-  "fpkMerkPromoCodeClaimedWebHookUrl": "https://discordapp.com/api/webhooks/920376149366931486/LM4mdvnM8WLFYet0V84NQf4p-lNMD_iyvsHYKlwuTp-y1S7-uHZjrtaXBHMBMODu03Hn",
+  "promoCodeClaimedWebHookUrl": "https://discordapp.com/api/webhooks/920376149366931486/LM4mdvnM8WLFYet0V84NQf4p-lNMD_iyvsHYKlwuTp-y1S7-uHZjrtaXBHMBMODu03Hn",
   "itemsAddedToCartDispenserWebHookUrl": "https://discordapp.com/api/webhooks/921052448754389002/GEjo7Zvq-Blk5SrPd2OqNssjuGo4Qy12QEXf12mG0w3n2dgr3sdSqd9gMpzlAeihYnKx",
   "itemsDispensedWebHookUrl": "https://discordapp.com/api/webhooks/921052576517083156/rKCijtRwJiQa1o-TcHe_uiZ7wlFA9EdxFOzyIK3_MHBTV2QJv-15SnkjhOWpEP5PgPp8",
   "presetsLoadedWebHookUrl": "https://discordapp.com/api/webhooks/921052385110028368/A__y3isXye97itt4dycDtgHPpoUIWLRUG8atgdSU3tl8FSApsiHxFvA9KTGlYJy-G9gu",

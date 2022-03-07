@@ -116,6 +116,7 @@ public class CommandManager {
         commands.put("easts", new EastsTeleportCommand());
         commands.put("chaos", new ChaosAltarTeleportCommand());
         commands.put("bc", new BarrelchestTeleportCommand());
+        commands.put("promocode", new PromoCodeCommand());
         //commands.put("resettask", new RessetSlayerTask());
 
         /*

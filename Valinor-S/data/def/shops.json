@@ -1487,7 +1487,7 @@
     "currency": "COINS",
     "restock": true,
     "sellType": "NONE",
-    "scroll": 350,
+    "scroll": 400,
     "items": [
       {
         "id": 4587,
