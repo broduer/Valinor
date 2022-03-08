@@ -54,8 +54,8 @@ public class Combat {
         var set = targ.<HashSet<Mob>>getAttribOr(AttributeKey.ATTACKED_BY_LIST, new HashSet<>(List.of(mob)));
         set.add(mob);
         Mob mob1 = null;
-        // remove no longer valid entries so the set doesnt get 1000 big and use up memory
-        for (Iterator<Mob> it$ = set.iterator(); it$.hasNext(); mob1 = it$.next()) { // hold on this loop idr
+        // remove no longer valid entries so the set doesn't get 1000 big and use up memory
+        for (Iterator<Mob> it$ = set.iterator(); it$.hasNext(); mob1 = it$.next()) {
             if (mob1 != null && mob1.getAttribOr(AttributeKey.LAST_TARGET, null) != targ) {
                 it$.remove();
             }
@@ -68,10 +68,10 @@ public class Combat {
         if (set == null)
             return false;
         Mob mob1 = null;
-        // remove no longer valid entries so the set doesnt get 1000 big and use up memory
+        // remove no longer valid entries so the set doesn't get 1000 big and use up memory
         for (Iterator<Mob> it$ = set.iterator(); it$.hasNext(); mob1 = it$.next()) { // hold on this loop idr
             if (mob1 != null && mob1 != self && mob1.getAttribOr(AttributeKey.LAST_TARGET, null) == targ) {
-                System.out.println(mob1.getMobName()+" target is "+targ.getMobName());
+                //System.out.println(mob1.getMobName()+" target is "+targ.getMobName());
                 // a mob attacking the target is a player, and we're checking for a npc, or vice versa
                 return (mob1.isNpc() && self.isNpc()) || (mob1.isPlayer() && self.isPlayer());
             }
@@ -411,8 +411,6 @@ public class Combat {
                     Skulling.skull(player, targ, SkullType.WHITE_SKULL);
                 }
             }
-
-            // cant remember how to create a arraylist with entitiy already in, do you remember?
 
             // Flag the targ as under attack at this moment to factor in delayed combat styles.
             targ.putAttrib(AttributeKey.LAST_DAMAGER, mob);
