@@ -10,23 +10,23 @@ import java.util.concurrent.TimeUnit;
  * @author Patrick van Elderen <https://github.com/PVE95>
  * @Since January 30, 2022
  */
-public class EdgevileActivity extends WildernessActivity {
+public class EdgevilleActivity extends WildernessActivity {
 
     private WildernessLocations wildernessLocation;
 
     @Override
     public String description() {
-        return "Edgevile Pking";
+        return "Edgeville Pking";
     }
 
     @Override
     public String location() {
-        return "Edgevile";
+        return "Edgeville";
     }
 
     @Override
     public String announcement() {
-        return "Edgevile Pking is the new wilderness activity for one hour!";
+        return "Edgeville Pking is the new wilderness activity for one hour!";
     }
 
     @Override

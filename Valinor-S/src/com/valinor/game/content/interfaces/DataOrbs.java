@@ -1,6 +1,6 @@
 package com.valinor.game.content.interfaces;
 
-import com.valinor.game.content.areas.edgevile.BobBarter;
+import com.valinor.game.content.areas.edgeville.BobBarter;
 import com.valinor.game.world.entity.mob.player.GameMode;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.areas.impl.WildernessArea;

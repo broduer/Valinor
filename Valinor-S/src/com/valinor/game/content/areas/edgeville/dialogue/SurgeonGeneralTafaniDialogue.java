@@ -1,4 +1,4 @@
-package com.valinor.game.content.areas.edgevile.dialogue;
+package com.valinor.game.content.areas.edgeville.dialogue;
 
 import com.valinor.game.content.mechanics.Poison;
 import com.valinor.game.world.entity.combat.CombatSpecial;

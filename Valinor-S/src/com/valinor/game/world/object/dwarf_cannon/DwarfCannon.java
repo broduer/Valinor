@@ -83,7 +83,7 @@ public class DwarfCannon extends OwnedObject {
     }
 
     public static final Area[] AREA_RESTRICTIONS = {
-        new Area(3036, 3478, 3144, 3524, -1), //edgevile
+        new Area(3036, 3478, 3144, 3524, -1), //edgeville
         new Area(1600, 9984, 1727, 10111, -1), //catacomes of kourend
         new Area(1728, 5312, 1791, 5375, -1), //ancient cavern
         new Area(3281, 3158, 3304, 3178, -1), //alkarid palace

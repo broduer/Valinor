@@ -4,7 +4,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
-import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevileActivity;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevilleActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.PureActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.WildernessHotspot;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.ZerkerActivity;
@@ -299,7 +299,7 @@ public class PlayerKillingRewards {
                 killer.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(killer));
                 target.getPacketSender().sendString(WILDERNESS_KILLSTREAK.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KILLSTREAK.childId).fetchLineData(target));
 
-                boolean edgeActivity = WildernessActivityManager.getSingleton().isActivityCurrent(EdgevileActivity.class) && WildernessActivityManager.getSingleton().getActivity(EdgevileActivity.class).canReward(killer);
+                boolean edgeActivity = WildernessActivityManager.getSingleton().isActivityCurrent(EdgevilleActivity.class) && WildernessActivityManager.getSingleton().getActivity(EdgevilleActivity.class).canReward(killer);
                 boolean pureActivity = WildernessActivityManager.getSingleton().isActivityCurrent(PureActivity.class) && WildernessActivityManager.getSingleton().getActivity(PureActivity.class).canReward(killer);
                 boolean zerkerActivity = WildernessActivityManager.getSingleton().isActivityCurrent(ZerkerActivity.class) && WildernessActivityManager.getSingleton().getActivity(ZerkerActivity.class).canReward(killer);
                 boolean hotspotActivity = WildernessActivityManager.getSingleton().isActivityCurrent(WildernessHotspot.class) && WildernessActivityManager.getSingleton().getActivity(WildernessHotspot.class).canReward(killer);
@@ -456,13 +456,13 @@ public class PlayerKillingRewards {
             }
         }
 
-        boolean edgevile = killer.tile().region() == 12343 || killer.tile().region() == 12087;
+        boolean edgeville = killer.tile().region() == 12343 || killer.tile().region() == 12087;
         boolean mageBank = killer.tile().region() == 12605 || killer.tile().region() == 12349 || killer.tile().region() == 12093;
         boolean revCave = killer.tile().region() == 12701 || killer.tile().region() == 12702 || killer.tile().region() == 12703 || killer.tile().region() == 12957 || killer.tile().region() == 12958 || killer.tile().region() == 12959;
         boolean memberCave = killer.tile().memberCave();
 
-        if(edgevile) {
-            DailyTaskManager.increase(DailyTasks.EDGEVILE_KILLS, killer);
+        if(edgeville) {
+            DailyTaskManager.increase(DailyTasks.EDGEVILLE_KILLS, killer);
         }
 
         if(mageBank) {

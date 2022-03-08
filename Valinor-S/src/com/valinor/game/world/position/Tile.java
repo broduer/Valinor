@@ -27,16 +27,16 @@ public class Tile implements Cloneable {
     public static final Area GAMBLING_ZONE = new Area(2338, 4934, 2381, 4993);
 
     public boolean homeRegion() {
-        return inArea(EDGEVILE_HOME_AREA) || region() == 7991 || region() == 7992 || region() == 8247;
+        return inArea(EDGEVILLE_HOME_AREA) || region() == 7991 || region() == 7992 || region() == 8247;
     }
 
     public boolean raidsPartyArea() {
         return region() == 4919;
     }
 
-    public static final Area EDGEVILE_WILDY = new Area(2993, 3523, 3100, 3563, 0);
+    public static final Area EDGEVILLE_WILDY = new Area(2993, 3523, 3100, 3563, 0);
 
-    public static final Area EDGEVILE_HOME_AREA = new Area(3069, 3464, 3129, 3524);
+    public static final Area EDGEVILLE_HOME_AREA = new Area(3069, 3464, 3129, 3524);
 
     public static Tile of(int x, int y) {
         return new Tile(x, y, 0);

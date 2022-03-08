@@ -1,7 +1,7 @@
 package com.valinor.game.world.items.container.equipment;
 
 import com.valinor.fs.ItemDefinition;
-import com.valinor.game.content.areas.edgevile.Mac;
+import com.valinor.game.content.areas.edgeville.Mac;
 import com.valinor.game.content.areas.riskzone.RiskFightArea;
 import com.valinor.game.content.duel.DuelRule;
 import com.valinor.game.content.items.equipment.max_cape.MaxCape;

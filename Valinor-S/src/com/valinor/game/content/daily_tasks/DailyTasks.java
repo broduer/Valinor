@@ -209,7 +209,7 @@ public enum DailyTasks {
         }
     },
 
-    EDGEVILE_KILLS("Edgevile", "Kill 10 players at edgeville", "70+", "Dangerous", new Tile(3095, 3516), 10, EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, EDGEVILE_KILLS_DAILY_TASK_COMPLETED, EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,3_500_000), new Item(POINTS_MYSTERY_CHEST,2), new Item(VOTE_TICKET,2)) {
+    EDGEVILLE_KILLS("Edgeville", "Kill 10 players at edgeville", "70+", "Dangerous", new Tile(3095, 3516), 10, EDGEVILLE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, EDGEVILLE_KILLS_DAILY_TASK_COMPLETED, EDGEVILLE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, new Item(WINTER_TOKENS, 650), new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,3_500_000), new Item(POINTS_MYSTERY_CHEST,2), new Item(VOTE_TICKET,2)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

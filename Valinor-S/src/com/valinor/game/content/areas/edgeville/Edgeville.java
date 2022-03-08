@@ -1,4 +1,4 @@
-package com.valinor.game.content.areas.edgevile;
+package com.valinor.game.content.areas.edgeville;
 
 import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
@@ -29,7 +29,7 @@ import static com.valinor.util.ObjectIdentifiers.*;
  * @author Patrick van Elderen | Zerikoth | PVE
  * @date februari 21, 2020 17:06
  */
-public class Edgevile extends Interaction {
+public class Edgeville extends Interaction {
 
     @Override
     public boolean handleNpcInteraction(Player player, Npc npc, int option) {

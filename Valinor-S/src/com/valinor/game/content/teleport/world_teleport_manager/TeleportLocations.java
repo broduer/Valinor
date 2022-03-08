@@ -81,7 +81,7 @@ public enum TeleportLocations {
     LUMBRIDGE_SWAMP(NpcIdentifiers.CAVE_CRAWLER, 1500, new Tile(3168, 9572, 0), Category.PVM, false, false, true),
     ASGARNIAN_ICE_DUNG(NpcIdentifiers.SKELETAL_WYVERN_466, 3500, new Tile(3007, 9550, 0), Category.PVM, false, false, true),
     MOURNER_TUNNELS(NpcIdentifiers.DARK_BEAST, 2500, new Tile(2029, 4636, 0), Category.PVM, false, false, true),
-    EDGEVILE_DUNGEON(NpcIdentifiers.BLACK_DEMON_1432, 3000, new Tile(3097, 9868, 0), Category.PVM, false, false, true),
+    EDGEVILLE_DUNGEON(NpcIdentifiers.BLACK_DEMON_1432, 3000, new Tile(3097, 9868, 0), Category.PVM, false, false, true),
     SLAYER_TOWER(NpcIdentifiers.ABYSSAL_DEMON_415, 2150, new Tile(3420, 3535, 0), Category.PVM, false, false, true),
     BRIMHAVEN_DUNGEON(NpcIdentifiers.FIRE_GIANT, 2150, new Tile(2709, 9564, 0), Category.PVM, false, false, true),
     TAVERLEY_DUNGEON(NpcIdentifiers.BLUE_DRAGON, 2150, new Tile(2884, 9799, 0), Category.PVM, false, false, true),

@@ -35,9 +35,9 @@ public class WildernessHotspot extends WildernessActivity {
 
     /**
      * This method saves all the {@link WildernessLocations} in a list.
-     * After that it filters the list, so we can't get "Edgevile" as location.
+     * After that it filters the list, so we can't get "Edgeville" as location.
      *
-     * returns a location that isn't Edgevile.
+     * returns a location that isn't Edgeville.
      */
     @Override
     public void onCreate() {

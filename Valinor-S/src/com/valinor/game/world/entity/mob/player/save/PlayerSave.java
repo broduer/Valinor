@@ -582,9 +582,9 @@ public class PlayerSave {
                 player.putAttrib(KILLSTREAK_DAILY_TASK_COMPLETION_AMOUNT, details.dailyKillstreakAmount);
                 player.putAttrib(KILLSTREAK_DAILY_TASK_COMPLETED, details.dailyKillstreakCompleted);
                 player.putAttrib(KILLSTREAK_DAILY_TASK_REWARD_CLAIMED, details.dailyKillstreakRewardClaimed);
-                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyEdgevileKillsAmount);
-                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_COMPLETED, details.dailyEdgevileKillsCompleted);
-                player.putAttrib(EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyEdgevileKillsRewardClaimed);
+                player.putAttrib(EDGEVILLE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyEdgevilleKillsAmount);
+                player.putAttrib(EDGEVILLE_KILLS_DAILY_TASK_COMPLETED, details.dailyEdgevilleKillsCompleted);
+                player.putAttrib(EDGEVILLE_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyEdgevilleKillsRewardClaimed);
                 player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyMageBankKillsAmount);
                 player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_COMPLETED, details.dailyMageBankKillsCompleted);
                 player.putAttrib(MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyMageBankKillsRewardClaimed);
@@ -1166,9 +1166,9 @@ public class PlayerSave {
         private final boolean dailyKillstreakCompleted;
         private final boolean dailyKillstreakRewardClaimed;
 
-        private final int dailyEdgevileKillsAmount;
-        private final boolean dailyEdgevileKillsCompleted;
-        private final boolean dailyEdgevileKillsRewardClaimed;
+        private final int dailyEdgevilleKillsAmount;
+        private final boolean dailyEdgevilleKillsCompleted;
+        private final boolean dailyEdgevilleKillsRewardClaimed;
 
         private final int dailyMageBankKillsAmount;
         private final boolean dailyMageBankKillsCompleted;
@@ -1703,9 +1703,9 @@ public class PlayerSave {
             dailyKillstreakAmount = Player.getAttribIntOr(player, KILLSTREAK_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyKillstreakCompleted = Player.getAttribBooleanOr(player, KILLSTREAK_DAILY_TASK_COMPLETED, false);
             dailyKillstreakRewardClaimed = Player.getAttribBooleanOr(player, KILLSTREAK_DAILY_TASK_REWARD_CLAIMED, false);
-            dailyEdgevileKillsAmount = Player.getAttribIntOr(player, EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
-            dailyEdgevileKillsCompleted = Player.getAttribBooleanOr(player, EDGEVILE_KILLS_DAILY_TASK_COMPLETED, false);
-            dailyEdgevileKillsRewardClaimed = Player.getAttribBooleanOr(player, EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyEdgevilleKillsAmount = Player.getAttribIntOr(player, EDGEVILLE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyEdgevilleKillsCompleted = Player.getAttribBooleanOr(player, EDGEVILLE_KILLS_DAILY_TASK_COMPLETED, false);
+            dailyEdgevilleKillsRewardClaimed = Player.getAttribBooleanOr(player, EDGEVILLE_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
             dailyMageBankKillsAmount = Player.getAttribIntOr(player, MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyMageBankKillsCompleted = Player.getAttribBooleanOr(player, MAGE_BANK_KILLS_DAILY_TASK_COMPLETED, false);
             dailyMageBankKillsRewardClaimed = Player.getAttribBooleanOr(player, MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED, false);

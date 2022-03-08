@@ -1,6 +1,6 @@
 package com.valinor.game.content.items.equipment.max_cape;
 
-import com.valinor.game.content.areas.edgevile.Mac;
+import com.valinor.game.content.areas.edgeville.Mac;
 import com.valinor.game.content.items.equipment.max_cape.dialogue.CombineDialogue;
 import com.valinor.game.content.skill.impl.slayer.slayer_task.SlayerCreature;
 import com.valinor.game.world.entity.dialogue.Dialogue;

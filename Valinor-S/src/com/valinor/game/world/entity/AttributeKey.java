@@ -361,7 +361,7 @@ public enum AttributeKey {
     KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETION_AMOUNT("daily_kill_players_task_completion_amount", AttribType.INTEGER),
     DEEP_WILD_DAILY_TASK_COMPLETION_AMOUNT("daily_deep_wild_task_completion_amount", AttribType.INTEGER),
     KILLSTREAK_DAILY_TASK_COMPLETION_AMOUNT("daily_killstreak_task_completion_amount", AttribType.INTEGER),
-    EDGEVILE_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_edgevile_kills_task_completion_amount", AttribType.INTEGER),
+    EDGEVILLE_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_edgeville_kills_task_completion_amount", AttribType.INTEGER),
     MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_mage_bank_kills_task_completion_amount", AttribType.INTEGER),
     MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_member_cave_kills_task_completion_amount", AttribType.INTEGER),
 
@@ -392,7 +392,7 @@ public enum AttributeKey {
     KILL_PLAYERS_REV_CAVE_DAILY_TASK_COMPLETED("daily_kill_players_task_completed", AttribType.BOOLEAN),
     DEEP_WILD_DAILY_TASK_COMPLETED("daily_deep_wild_task_completed", AttribType.BOOLEAN),
     KILLSTREAK_DAILY_TASK_COMPLETED("daily_killstreak_task_completed", AttribType.BOOLEAN),
-    EDGEVILE_KILLS_DAILY_TASK_COMPLETED("daily_edgevile_kills_task_completed", AttribType.BOOLEAN),
+    EDGEVILLE_KILLS_DAILY_TASK_COMPLETED("daily_edgeville_kills_task_completed", AttribType.BOOLEAN),
     MAGE_BANK_KILLS_DAILY_TASK_COMPLETED("daily_mage_bank_kills_task_completed", AttribType.BOOLEAN),
     MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED("daily_member_cave_kills_task_completed", AttribType.BOOLEAN),
 
@@ -423,7 +423,7 @@ public enum AttributeKey {
     KILL_PLAYERS_REV_CAVE_DAILY_TASK_REWARD_CLAIMED("daily_kill_players_task_reward_claimed", AttribType.BOOLEAN),
     DEEP_WILD_DAILY_TASK_REWARD_CLAIMED("daily_deep_wild_task_reward_claimed", AttribType.BOOLEAN),
     KILLSTREAK_DAILY_TASK_REWARD_CLAIMED("daily_killstreak_task_reward_claimed", AttribType.BOOLEAN),
-    EDGEVILE_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_edgevile_kills_task_reward_claimed", AttribType.BOOLEAN),
+    EDGEVILLE_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_edgeville_kills_task_reward_claimed", AttribType.BOOLEAN),
     MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_mage_bank_kills_task_reward_claimed", AttribType.BOOLEAN),
     MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_member_cave_kills_task_reward_claimed", AttribType.BOOLEAN),
 

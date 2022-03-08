@@ -225,7 +225,7 @@ public class ItemsOnDeath {
             // Handle item breaking..
             BrokenItem brokenItem = BrokenItem.get(item.getId());
             if (brokenItem != null) {
-                player.getPacketSender().sendMessage("Your " + item.unnote().name() + " has been broken. You can fix it by talking to").sendMessage("Perdu who is located in Edgevile at the furnace.");
+                player.getPacketSender().sendMessage("Your " + item.unnote().name() + " has been broken. You can fix it by talking to").sendMessage("Perdu who is located in Edgeville at the furnace.");
                 item.setId(brokenItem.brokenItem);
 
                 //Drop coins for the killer

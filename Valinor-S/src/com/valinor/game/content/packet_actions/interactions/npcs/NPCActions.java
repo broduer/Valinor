@@ -2,9 +2,9 @@ package com.valinor.game.content.packet_actions.interactions.npcs;
 
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.achievements.Achievements;
-import com.valinor.game.content.areas.edgevile.BobBarter;
-import com.valinor.game.content.areas.edgevile.dialogue.GeneralStoreDialogue;
-import com.valinor.game.content.areas.edgevile.dialogue.SurgeonGeneralTafaniDialogue;
+import com.valinor.game.content.areas.edgeville.BobBarter;
+import com.valinor.game.content.areas.edgeville.dialogue.GeneralStoreDialogue;
+import com.valinor.game.content.areas.edgeville.dialogue.SurgeonGeneralTafaniDialogue;
 import com.valinor.game.content.areas.home.TwiggyOKorn;
 import com.valinor.game.content.areas.wilderness.dialogue.MandrithDialogue;
 import com.valinor.game.content.areas.wilderness.dialogue.PilesDialogue;

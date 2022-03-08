@@ -62,7 +62,7 @@ public class OrnateJewelleryBoxWidget extends Widget {
         addClickableText(ORNATE_JEWELLERY_BOX + 35,"<col=a7a7d0>G:</col> Cooking Guild","Cooking Guild", font, 0, 0xff981f, false, true, 82);
         addClickableText(ORNATE_JEWELLERY_BOX + 36,"<col=a7a7d0>H:</col> Woodcutting Guild","Woodcutting Guild", font, 0, 0xff981f, false, true, 104);
 
-        addClickableText(ORNATE_JEWELLERY_BOX + 37,"<col=a7a7d0>M:</col> Edgevile","Edgevile", font, 0, 0xff981f, false, true, 57);
+        addClickableText(ORNATE_JEWELLERY_BOX + 37,"<col=a7a7d0>M:</col> Edgeville","Edgeville", font, 0, 0xff981f, false, true, 57);
         addClickableText(ORNATE_JEWELLERY_BOX + 38,"<col=a7a7d0>N:</col> Karamja","Karamja", font, 0, 0xff981f, false, true, 55);
         addClickableText(ORNATE_JEWELLERY_BOX + 39,"<col=a7a7d0>O:</col> Draynor Village","Draynor Village", font, 0, 0xff981f, false, true, 93);
         addClickableText(ORNATE_JEWELLERY_BOX + 40,"<col=a7a7d0>P:</col> Al Kharid","Al Kharid", font, 0, 0xff981f, false, true, 59);

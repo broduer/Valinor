@@ -1,4 +1,4 @@
-package com.valinor.game.content.areas.edgevile.dialogue;
+package com.valinor.game.content.areas.edgeville.dialogue;
 
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;

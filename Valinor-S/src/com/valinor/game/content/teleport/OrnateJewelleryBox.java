@@ -38,7 +38,7 @@ public class OrnateJewelleryBox {
         COOKING_GUILD(65035, new Tile(3143, 3440)),
         WOODCUTTING_GUILD(65036, new Tile(1663, 3506)),
         //FARMING 1251, 3716
-        EDGEVILE(65037, new Tile(3087, 3496)),
+        EDGEVILLE(65037, new Tile(3087, 3496)),
         KARAMJA(65038, new Tile(2918, 3176)),
         DRAYNOR_VILLAGE(65039, new Tile(3105, 3251)),
         AL_KHARID(65040, new Tile(3293, 3168));

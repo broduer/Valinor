@@ -2120,7 +2120,7 @@ public class MagicClickSpells {
         HOME_ANCIENT(new Spell() {
             @Override
             public String name() {
-                return "Edgevile Home Teleport";
+                return "Edgeville Home Teleport";
             }
 
             @Override

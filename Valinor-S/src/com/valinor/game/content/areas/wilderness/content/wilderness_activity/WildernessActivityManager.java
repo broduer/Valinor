@@ -2,7 +2,7 @@ package com.valinor.game.content.areas.wilderness.content.wilderness_activity;
 
 import com.valinor.GameServer;
 import com.valinor.game.GameEngine;
-import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevileActivity;
+import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevilleActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.PureActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.WildernessHotspot;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.ZerkerActivity;
@@ -47,7 +47,7 @@ public class WildernessActivityManager {
     public void init() {
         logger.info("Loading Wilderness Activity Manager");
 
-        activities.add(new EdgevileActivity());
+        activities.add(new EdgevilleActivity());
         activities.add(new PureActivity());
         activities.add(new ZerkerActivity());
         activities.add(new WildernessHotspot());

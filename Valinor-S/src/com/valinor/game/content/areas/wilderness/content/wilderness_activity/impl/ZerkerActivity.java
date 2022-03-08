@@ -22,7 +22,7 @@ public class ZerkerActivity extends WildernessActivity {
 
     @Override
     public String location() {
-        return "Edgevile";
+        return "Edgeville";
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
-import com.valinor.game.content.areas.edgevile.Mac;
+import com.valinor.game.content.areas.edgeville.Mac;
 import com.valinor.game.content.skill.Skillable;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.syntax.impl.SetLevel;
@@ -745,7 +745,7 @@ public class Skills {
      */
     public void clickSkillToChangeLevel(int skill, int level) {
         //Make sure they are in a safe area
-        if ((!player.tile().inArea(Tile.EDGEVILE_HOME_AREA) || WildernessArea.inWilderness(player.tile())) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+        if ((!player.tile().inArea(Tile.EDGEVILLE_HOME_AREA) || WildernessArea.inWilderness(player.tile())) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("You can only set levels at home.");
             return;
         }

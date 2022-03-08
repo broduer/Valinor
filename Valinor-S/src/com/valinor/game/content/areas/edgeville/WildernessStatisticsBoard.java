@@ -1,6 +1,6 @@
-package com.valinor.game.content.areas.edgevile;
+package com.valinor.game.content.areas.edgeville;
 
-import com.valinor.game.content.areas.edgevile.dialogue.WildernessStatBoardDialogue;
+import com.valinor.game.content.areas.edgeville.dialogue.WildernessStatBoardDialogue;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
