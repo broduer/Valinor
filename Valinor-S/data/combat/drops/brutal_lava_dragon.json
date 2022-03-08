@@ -41,7 +41,8 @@
         { "id": 21295, "min": 1, "max": 1, "points": 5 }, //Infernal cape
         { "id": 30074, "min": 1, "max": 1, "points": 4 }, //Lava dhide coif
         { "id": 30077, "min": 1, "max": 1, "points": 3 }, //Lava dhide body
-        { "id": 30080, "min": 1, "max": 1, "points": 3 } //Lava dhide chaps
+        { "id": 30080, "min": 1, "max": 1, "points": 3 }, //Lava dhide chaps
+        { "id": 16464, "min": 1, "max": 1, "points": 2 } //Dark shard
       ]
     },
     {

@@ -214,6 +214,7 @@ public class CustomItemIdentifiers {
     public static final int STARTER_BOX = 16461;
     public static final int CLAN_BOX = 16462;
     public static final int VOTE_BOX = 16463;
+    public static final int DARK_SHARD = 16464;
     public static final int SHADOW_MACE = 32701;
     public static final int SHADOW_GREAT_HELM = 32702;
     public static final int SHADOW_HAUBERK = 32703;

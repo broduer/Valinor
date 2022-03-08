@@ -1713,6 +1713,12 @@ public class CustomItems {
             }
         }
 
+        if(id == DARK_SHARD) {
+            ItemDefinition.copyInventory(def, ZALCANO_SHARD);
+            def.name = "<col=65280>Dark shard";
+            def.modelCustomColor4 = 235;
+        }
+
         if (id == SWORD_OF_GRYFFINDOR) {
             def.name = "<col=65280>Sword of gryffindor";
             def.recolorFrom = new int[]{10258, 10291, 10275, 10262, 10266, 10283};
