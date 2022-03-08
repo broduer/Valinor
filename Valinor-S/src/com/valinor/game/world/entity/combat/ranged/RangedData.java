@@ -54,6 +54,8 @@ public class RangedData {
     private static final Map<Integer, RangedWeapon> rangedWeapons = new HashMap<>();
 
     public static int getBoltSpecialAttack(Player p, Mob target, int damage) {
+        if (damage == 0)
+            return 0;
         boolean zaryteCrossbow = p.getEquipment().hasAt(EquipSlot.WEAPON, 26374);
         double boltSpecialMultiplier;
         boolean always_fire_special = false;

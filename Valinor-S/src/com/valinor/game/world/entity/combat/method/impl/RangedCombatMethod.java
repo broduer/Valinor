@@ -3,6 +3,7 @@ package com.valinor.game.world.entity.combat.method.impl;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.Combat;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
@@ -17,6 +18,8 @@ import com.valinor.game.world.items.container.equipment.Equipment;
 import com.valinor.util.Utils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 import static com.valinor.game.world.entity.combat.weapon.WeaponType.BOW;
 import static com.valinor.game.world.entity.combat.weapon.WeaponType.THROWN;
@@ -248,8 +251,25 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
             var thirdArrowDelay = calcHitDelaySecondArrow(tileDist) + 1;
 
+            //The reason that doesnt work is cuz it modifies the damage its not where the dmg is calculated
+            // yeah not possible with this system lemmi look how oss did it
+
             // primary range hit
-            target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit).submit();
+            final Hit hit = target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit);
+
+            if(attacker.isPlayer()) {
+                Player player = attacker.getAsPlayer();
+                // Handle bolt special effects for a player whose using crossbow
+                if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
+                    if (hit.isAccurate()) {
+                        hit.setDamage(RangedData.getBoltSpecialAttack(player, target, hit.getDamage()));
+                        if (player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, false)) {
+                            player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
+                        }
+                    }
+                }
+            }
+            hit.submit();
 
             // secondary hits
             if (attacker.getCombat().getRangedWeapon() == RangedWeapon.DARK_BOW || swiftEffect) {
@@ -302,7 +322,9 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
             targ.delayedGraphics(new Graphic(157,100,0), 1);
 
+            Combat.computeLastDamager(mob, targ);
             targ.putAttrib(AttributeKey.LAST_DAMAGER, mob);
+            Combat.computeLastDamager(mob, target);
             targ.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
             mob.putAttrib(AttributeKey.LAST_TARGET, targ);
             targ.graphic(-1);

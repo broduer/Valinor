@@ -4,6 +4,7 @@ import com.valinor.game.content.mechanics.MultiwayCombat;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.Combat;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.hit.Hit;
@@ -40,6 +41,7 @@ public abstract class CombatEffectSpell extends CombatSpell {
 
         // Flag the target as under attack at this moment to factor in delayed combat styles.
         castOn.putAttrib(AttributeKey.LAST_DAMAGER, cast);
+        Combat.computeLastDamager(cast, castOn);
         castOn.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
         castOn.getTimers().register(TimerKey.COMBAT_LOGOUT, 16);
         cast.putAttrib(AttributeKey.LAST_ATTACK_TIME, System.currentTimeMillis());

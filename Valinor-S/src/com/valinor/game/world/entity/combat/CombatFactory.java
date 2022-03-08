@@ -310,15 +310,6 @@ public class CombatFactory {
         } else if (type == CombatType.RANGED) {
             if (attacker.isPlayer()) {
                 Player player = attacker.getAsPlayer();
-                // Handle bolt special effects for a player whose using crossbow
-                if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
-                    if (damage > 0) {
-                        damage = RangedData.getBoltSpecialAttack(player, target, damage);
-                        if (player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, false)) {
-                            player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
-                        }
-                    }
-                }
 
                 //Hard cap ranged special attacks
                 if (player.isSpecialActivated()) {
@@ -962,7 +953,16 @@ public class CombatFactory {
             return true;
         }
 
-        if (myLastAttackedTime < myTimeToPj && myLastAttacker != null && myLastAttacker != target && !isOpponentDead) {
+
+        // single plus areas
+        boolean isSinglePlusArea = CombatFactory.singlePlusArea(target);
+
+        // flag: target's last opponent is NPC, target in singleplus, and we're a player
+        boolean isSingleplusScenario = targetLastAttacker != null && !MultiwayCombat.includes(target) && isSinglePlusArea && !Combat.isAttackedByMobType(target, attacker);
+
+        //Asked budyd real quick from osrs npcs can still interupt players but player should be able to hit the other player off
+        // yeah so 1 npc and 1 player can attack a target yes
+        if (myLastAttackedTime < myTimeToPj && myLastAttacker != null && myLastAttacker != target && !isOpponentDead && !isSingleplusScenario) {
             // Multiway check bro!
             if (attacker.isPlayer()) {
                 if (attacker.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(target)) {
@@ -976,12 +976,7 @@ public class CombatFactory {
                 }
             }
         }
-
-        // single plus areas
-        boolean isSinglePlusArea = CombatFactory.singlePlusArea(target);
-        // target's last opponent is NPC
-        boolean interruptCombatWithNpc = targetLastAttacker != null && targetLastAttacker.isNpc() && !MultiwayCombat.includes(target) && isSinglePlusArea && attacker.isPlayer();
-        if (targetLastAttackedTime < targTimeToPj && targetLastAttacker != null && targetLastAttacker != attacker && !interruptCombatWithNpc) {
+        if (targetLastAttackedTime < targTimeToPj && targetLastAttacker != null && targetLastAttacker != attacker && !isSingleplusScenario) {
             // Multiway check bro!
             if (target.isPlayer()) {
                 if (target.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) != 1 && !MultiwayCombat.includes(target)) {

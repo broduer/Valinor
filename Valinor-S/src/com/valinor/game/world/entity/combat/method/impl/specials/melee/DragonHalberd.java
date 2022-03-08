@@ -17,6 +17,8 @@ public class DragonHalberd extends CommonCombatMethod {
         int h1 = CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE);
         int h2 = CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE);
 
+        // the way i did checkAccuracy i guess was so it was semi compatible with this base correct
+        //I really dont mind adding a extra attrib to just
         if(target.getSize() == 1) {
             Hit hit = target.hit(mob, h1,1, CombatType.MELEE).checkAccuracy();
             hit.submit();

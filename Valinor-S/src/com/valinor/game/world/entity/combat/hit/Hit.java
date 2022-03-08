@@ -191,6 +191,7 @@ public class Hit {
 
     /**
      * checks alwaysHit attrib and accuracy (depending on combat method+style). sets damage to 0 or maxhp or does not change at all, retaining existing {@link #damage} value set by {@link CombatFactory#calcDamageFromType(Mob, Mob, CombatType)}
+     * <br> fortunately damage is not a required field for this method to work
      */
     private void applyAccuracyToMiss() {
         if (attacker == null || target == null) {
@@ -238,6 +239,8 @@ public class Hit {
         if (!accurate) {
             //The hit wasn't accurate. Blocked by defence. Don't do any damage.
             damage = 0;
+            //Set atrib
+            //miss
         } else {
             //The hit was accurate. Getting random damage..
             if (oneHitActive) {
@@ -329,6 +332,10 @@ public class Hit {
         return this;
     }
 
+    /**
+     * runs the checkAccuracy code and sets IS_ACCURATE true/false depending on success or miss
+     * @return
+     */
     public Hit checkAccuracy() {
         checkAccuracy = true;
         applyAccuracyToMiss();

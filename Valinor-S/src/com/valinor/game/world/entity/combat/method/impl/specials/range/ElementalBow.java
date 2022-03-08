@@ -3,6 +3,7 @@ package com.valinor.game.world.entity.combat.method.impl.specials.range;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.Mob;
+import com.valinor.game.world.entity.combat.Combat;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.CombatType;
@@ -56,6 +57,7 @@ public class ElementalBow extends CommonCombatMethod {
                         freezeHit.submit();
                         // Flag the targ as under attack at this moment to factor in delayed combat styles.
                         target.putAttrib(AttributeKey.LAST_DAMAGER, player);
+                        Combat.computeLastDamager(player, target);
                         target.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
                         target.getTimers().register(TimerKey.COMBAT_LOGOUT, 16);
                     });
@@ -73,6 +75,7 @@ public class ElementalBow extends CommonCombatMethod {
                         fireHit.submit();
                         // Flag the targ as under attack at this moment to factor in delayed combat styles.
                         target.putAttrib(AttributeKey.LAST_DAMAGER, player);
+                        Combat.computeLastDamager(player, target);
                         target.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
                         target.getTimers().register(TimerKey.COMBAT_LOGOUT, 16);
                     });

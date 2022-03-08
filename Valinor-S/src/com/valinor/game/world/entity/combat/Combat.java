@@ -50,6 +50,35 @@ public class Combat {
 
     private static final Logger logger = LogManager.getLogger(Combat.class);
 
+    public static void computeLastDamager(Mob mob, Mob targ) {
+        var set = targ.<HashSet<Mob>>getAttribOr(AttributeKey.ATTACKED_BY_LIST, new HashSet<>(List.of(mob)));
+        set.add(mob);
+        Mob mob1 = null;
+        // remove no longer valid entries so the set doesnt get 1000 big and use up memory
+        for (Iterator<Mob> it$ = set.iterator(); it$.hasNext(); mob1 = it$.next()) { // hold on this loop idr
+            if (mob1 != null && mob1.getAttribOr(AttributeKey.LAST_TARGET, null) != targ) {
+                it$.remove();
+            }
+        }
+        targ.putAttrib(AttributeKey.ATTACKED_BY_LIST, set);
+    }
+
+    public static boolean isAttackedByMobType(Mob targ, Mob self) {
+        var set = targ.<HashSet<Mob>>getAttribOr(AttributeKey.ATTACKED_BY_LIST, null);
+        if (set == null)
+            return false;
+        Mob mob1 = null;
+        // remove no longer valid entries so the set doesnt get 1000 big and use up memory
+        for (Iterator<Mob> it$ = set.iterator(); it$.hasNext(); mob1 = it$.next()) { // hold on this loop idr
+            if (mob1 != null && mob1 != self && mob1.getAttribOr(AttributeKey.LAST_TARGET, null) == targ) {
+                System.out.println(mob1.getMobName()+" target is "+targ.getMobName());
+                // a mob attacking the target is a player, and we're checking for a npc, or vice versa
+                return (mob1.isNpc() && self.isNpc()) || (mob1.isPlayer() && self.isPlayer());
+            }
+        }
+        return false;
+    }
+
     public boolean attemptHit(Mob me, Mob target, CombatType style) {
         return AccuracyFormula.doesHit(me, target, style);
     }
@@ -383,10 +412,13 @@ public class Combat {
                 }
             }
 
+            // cant remember how to create a arraylist with entitiy already in, do you remember?
+
             // Flag the targ as under attack at this moment to factor in delayed combat styles.
             targ.putAttrib(AttributeKey.LAST_DAMAGER, mob);
+            Combat.computeLastDamager(mob, target);
             targ.putAttrib(AttributeKey.LAST_WAS_ATTACKED_TIME, System.currentTimeMillis());
-            targ.getTimers().register(TimerKey.COMBAT_LOGOUT, 16);
+            targ.getTimers().register(TimerKey.COMBAT_LOGOUT, 16); // is there a sort of timer for combat finished or out of combat i gues cb logout will do
             mob.putAttrib(AttributeKey.LAST_ATTACK_TIME, System.currentTimeMillis());
             mob.putAttrib(AttributeKey.LAST_TARGET, targ);
             mob.getTimers().register(TimerKey.COMBAT_LOGOUT, 16);

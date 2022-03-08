@@ -86,6 +86,8 @@ public class LoginWorker implements Runnable {
     }
 
     private void initForGame(LoginDetailsMessage message, Channel channel) {
+        if (channel == null)
+            return;
         if (!(channel instanceof EmbeddedChannel)) {
             while (channel.pipeline().last() != null) {
                 channel.pipeline().removeLast();

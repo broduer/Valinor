@@ -548,6 +548,10 @@ public enum AttributeKey {
      * The entity which last attacked us. Set at time of attack. Not delayed/set when a hit finally appears
      */
     LAST_DAMAGER,
+    /**
+     * same as {@link #LAST_DAMAGER} but can support more than 1 entity, and entries are unique as its a Set
+     */
+    ATTACKED_BY_LIST,
 
     /**
      * The last person we attacked. Required for the PvP world PJ mechanic.
