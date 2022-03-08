@@ -5,6 +5,7 @@ import com.valinor.game.content.gambling.impl.Flower;
 import com.valinor.game.content.gambling.impl.FlowerPoker;
 import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.PlayerStatus;
 import com.valinor.game.world.items.Item;
@@ -212,6 +213,14 @@ public class GamblingSession {
             case 16205 -> {
                 if(DISABLE_FLOWER_POKER) {
                     player.message("Flower poker is disabled at this time.");
+                    return true;
+                }
+                if(!player.<Boolean>getAttribOr(AttributeKey.GAMBLER,false)) {
+                    player.message("You cannot gamble without being a gambler.");
+                    return true;
+                }
+                if(!opponent.<Boolean>getAttribOr(AttributeKey.GAMBLER,false)) {
+                    player.message("You cannot gamble "+opponent.getUsername()+" they are not a gambler.");
                     return true;
                 }
                 handleModeSelection(GameType.FLOWER_POKER);

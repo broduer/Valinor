@@ -19,6 +19,7 @@ import com.valinor.game.world.items.Item
 import com.valinor.util.Color
 import com.valinor.util.CustomItemIdentifiers
 import com.valinor.util.CustomItemIdentifiers.DOUBLE_DROPS_LAMP
+import com.valinor.util.CustomItemIdentifiers.VOTE_BOX
 import com.valinor.util.ItemIdentifiers
 import com.valinor.util.ItemIdentifiers.COINS_995
 import com.valinor.util.Utils
@@ -146,6 +147,9 @@ object CollectVotes {
 
                             inventory().addOrBank(Item(ItemIdentifiers.ANTIQUE_LAMP_11137, 1))
                             message("You have received x1 experience lamp for voting.")
+
+                            inventory().addOrBank(Item(VOTE_BOX, 1))
+                            message("You have received x1 vote mystery box for voting.")
 
                             //Increase achievements
                             AchievementsManager.activate(this, Achievements.VOTE_FOR_US_I, votes.toInt())

@@ -39,11 +39,11 @@ public class PlatinumMysteryBox extends Interaction {
                 player.inventory().addOrBank(reward);
 
                 var amt = reward.getAmount();
-                player.message("You open the gold mystery box and found...");
+                player.message("You open the platinum mystery box and found...");
                 player.message("x"+amt+" "+reward.unnote().name()+".");
 
                 if(rare) {
-                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a gold mystery box!");
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=0052cc>" + player.getUsername() + " just received " + Utils.getVowelFormat(reward.unnote().name()) + " from a platinum mystery box!");
                 }
                 Utils.sendDiscordInfoLog(player.getUsername() + " with IP "+player.getHostAddress()+" just opened a gold mystery box and received x"+amt+" "+reward.unnote().name()+".", "boxes_opened");
                 return true;
@@ -71,7 +71,7 @@ public class PlatinumMysteryBox extends Interaction {
         new Item(DRAGON_JAVELIN, World.getWorld().random(100,500)),
         new Item(DIVINE_SUPER_COMBAT_POTION4+1, World.getWorld().random(50,100)),
         new Item(BRIMSTONE_RING, 1),
-        new Item(KRAKEN_TENTACLE, 1),
+        new Item(ABYSSAL_TENTACLE, 1),
         new Item(AMULET_OF_FURY, 1),
         new Item(MAGES_BOOK, 1),
         new Item(TOME_OF_FIRE, 1),
@@ -88,7 +88,6 @@ public class PlatinumMysteryBox extends Interaction {
         new Item(ARMADYL_GODSWORD, 1),
         new Item(DRAGON_CLAWS, 1),
         new Item(SPECTRAL_SPIRIT_SHIELD, 1),
-        new Item(DRAGON_CLAWS, 1),
         new Item(VESTAS_LONGSWORD, 1),
         new Item(VESTAS_SPEAR, 1),
         new Item(STATIUSS_WARHAMMER, 1),

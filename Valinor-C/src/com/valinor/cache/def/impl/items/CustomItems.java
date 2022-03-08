@@ -1570,7 +1570,7 @@ public class CustomItems {
 
         if (id == DONATOR_MYSTERY_BOX || id == POINTS_MYSTERY_BOX || id == POINTS_MYSTERY_BOX +1 || id == BARROWS_MYSTERY_BOX || id == RAIDS_MYSTERY_BOX || id == SUPER_MYSTERY_BOX || id == PETS_MYSTERY_BOX
             || id == BRONZE_MYSTERY_BOX || id == SILVER_MYSTERY_BOX || id == GOLD_MYSTERY_BOX || id == PLATINUM_MYSTERY_BOX || id == YOUTUBE_MYSTERY_BOX || id == LEGENDARY_MYSTERY_BOX || id == PROMO_MYSTERY_BOX
-            || id == PVP_MYSTERY_BOX || id == WEAPON_MYSTERY_BOX || id == ARMOUR_MYSTERY_BOX || id == GRAND_MYSTERY_BOX || id == STARTER_BOX || id == CLAN_BOX) {
+            || id == PVP_MYSTERY_BOX || id == WEAPON_MYSTERY_BOX || id == ARMOUR_MYSTERY_BOX || id == GRAND_MYSTERY_BOX || id == STARTER_BOX || id == CLAN_BOX || id == VOTE_BOX) {
             ItemDefinition.copyInventory(def, 6199);
             switch (id) {
                 case DONATOR_MYSTERY_BOX:
@@ -1703,6 +1703,12 @@ public class CustomItems {
                     def.name = "<col=65280>Clan box";
                     def.recolorFrom = new int[]{2999, 22410};
                     def.recolorTo = new int[]{524, 13};
+                    break;
+
+                case VOTE_BOX:
+                    def.name = "<col=65280>Vote box";
+                    def.recolorFrom = new int[]{2999, 22410};
+                    def.recolorTo = new int[]{1324, 1113};
                     break;
             }
         }
