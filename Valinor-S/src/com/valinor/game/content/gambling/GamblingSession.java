@@ -21,6 +21,9 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.valinor.util.ItemIdentifiers.COINS_995;
+import static com.valinor.util.ItemIdentifiers.PLATINUM_TOKEN;
+
 public class GamblingSession {
 
     public static boolean ENABLED = true;
@@ -452,7 +455,7 @@ public class GamblingSession {
             boolean illegalItem = false;
             Item gambleItem = new Item(id, amount);
 
-            if (!gambleItem.rawtradable()) {
+            /*if (!gambleItem.rawtradable()) {
                 illegalItem = true;
             }
 
@@ -462,6 +465,12 @@ public class GamblingSession {
 
             if(illegalItem) {
                 player.message("You cannot gamble that item.");
+                return;
+            }*/
+
+            boolean coins = gambleItem.getId() == COINS_995 || gambleItem.getId() == PLATINUM_TOKEN;
+            if(!coins) {
+                player.message("You can only gamble coins.");
                 return;
             }
 
@@ -621,7 +630,6 @@ public class GamblingSession {
     }
 
     public void finish(int gameId, Player host, Player opponent, int hostScore, int opponentScore) {
-
         if (host.getGamblingSession().game == null)
             return;
 
@@ -719,9 +727,12 @@ public class GamblingSession {
         loser.getInterfaceManager().closeDialogue();
         if (gameId == -1) {
             winner.forceChat("I have won!");
+            winner.message("I have won!");
         } else {
             winner.forceChat("I have won!");
+            winner.message("I have won!");
             loser.forceChat("I have lost!");
+            loser.message("I have lost!");
         }
     }
 
