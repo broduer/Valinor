@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBlood;
@@ -56,7 +57,7 @@ public class TestCommand implements Command {
         //Hunter.exec(1000 * 5); //5s
         //player.getPacketSender().sendScreenFade("", 1, 3);
 
-        player.teleport(3166, 4323, player.tile().level);
+        //player.teleport(3166, 4323, player.tile().level);
 
         /*//Make a party
         Party.createParty(player);
@@ -81,6 +82,9 @@ public class TestCommand implements Command {
 
         //Spawn chest
         TheatreOfBlood.spawnLootChests(player);*/
+
+        Hitman.requestBounty(player);
+
         player.message("Test command has been activated.");
         //PlayerSession.main(new String[0]);
     }

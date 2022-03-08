@@ -1,6 +1,7 @@
 package com.valinor.game;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.clan.ClanRepository;
 import com.valinor.game.content.group_ironman.IronmanGroupHandler;
@@ -76,6 +77,7 @@ public class GameBuilder {
         tasks.add(StarterBox::init);
         tasks.add(ClanBox::init);
         tasks.add(PromoCodeCommand::init);
+        tasks.add(Hitman::init);
         tasks.add(PlayerPunishment::init);
         tasks.add(InteractionManager::init);
         if (GameServer.properties().wildernessActivityEnabled) {

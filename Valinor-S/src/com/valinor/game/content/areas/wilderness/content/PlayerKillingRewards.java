@@ -2,6 +2,7 @@ package com.valinor.game.content.areas.wilderness.content;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevileActivity;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.PureActivity;
@@ -224,6 +225,9 @@ public class PlayerKillingRewards {
 
             // Add a kill when the kill is valid (not farming) and it's not in duel arena/FFA
             if (valid) {
+                //check for active bountys
+                Hitman.checkOnKill(killer, target);
+
                 //check for tasks
                 checkForTask(killer);
 

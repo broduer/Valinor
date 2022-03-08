@@ -2757,6 +2757,22 @@ public class Player extends Mob {
         return this.<Integer>getAttrib(AttributeKey.ITEM_SLOT);
     }
 
+    public void takePKP(int amount) {
+        //PKP as item goes over points
+        int pkpInInventory = inventory.count(CustomItemIdentifiers.PKP_TICKET);
+        if (pkpInInventory > 0) {
+            if(pkpInInventory >= amount) {
+                inventory.remove(CustomItemIdentifiers.PKP_TICKET, amount);
+                return;
+            }
+        }
+        var pkPoints = this.<Integer>getAttribOr(AttributeKey.PK_POINTS, 0);
+        if (pkPoints >= amount) {
+            putAttrib(AttributeKey.PK_POINTS, pkPoints - amount);
+            packetSender.sendString(QuestTab.InfoTab.PK_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.PK_POINTS.childId).fetchLineData(this));
+        }
+    }
+
     public void itemDialogue(String message, int item) {
         this.getDialogueManager().start(new Dialogue() {
             @Override
