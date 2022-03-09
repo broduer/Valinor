@@ -44,7 +44,7 @@ object CollectVotes {
             val list = mutableListOf<Triple<Int, Int, String>>()
             prepareStatement(
                 connection,
-                "SELECT * FROM DoAIIDlB_rs_votes WHERE lower(username) = :user AND claimed=0 AND voted_on != -1"
+                "SELECT * FROM DoAIIDlB_rs_votes WHERE lower(username) = :user AND claimed=0 AND voted_on != 0"
             ).apply {
                 setString("user", username.toLowerCase())
                 execute()
