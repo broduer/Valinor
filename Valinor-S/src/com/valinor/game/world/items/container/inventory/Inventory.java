@@ -61,7 +61,7 @@ public final class Inventory extends ItemContainer {
             }
         }
         if (overflow) {
-            message.ifPresent(m -> player.message(m));
+            message.ifPresent(player::message);
         }
     }
 

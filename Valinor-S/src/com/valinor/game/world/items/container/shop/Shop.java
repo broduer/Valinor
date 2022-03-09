@@ -213,6 +213,7 @@ public abstract class Shop {
         }
         onPurchase(player, item);
         player.inventory().addOrBank(item);
+        player.inventory().refresh();
         if (player.getInterfaceManager().isInterfaceOpen(ShopUtility.SLAYER_SHOP_INTERFACE)) {
             int slayerRewardPoints = player.getAttribOr(AttributeKey.SLAYER_REWARD_POINTS, 0);
             player.getPacketSender().sendString(64014, "Reward Points: " + Utils.formatNumber(slayerRewardPoints));
