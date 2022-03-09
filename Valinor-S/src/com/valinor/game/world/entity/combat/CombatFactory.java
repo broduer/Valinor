@@ -337,6 +337,11 @@ public class CombatFactory {
                         damage = 87;
                     }
                 }
+                if (player.getCombatSpecial() == CombatSpecial.CURSED_NIGHTMARE_STAFF) {
+                    if (damage > 89) {
+                        damage = 89;
+                    }
+                }
             }
         }
 
