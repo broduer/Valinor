@@ -1332,7 +1332,7 @@ public class CombatFactory {
             //Only increase in wilderness
             if (WildernessArea.inWilderness(a.tile())) {
                 //Did the hit exceed the players hitpoints, increase the kills.
-                if (damage > t.hp()) {
+                if (damage > t.hp() && combatType != null) {
                     //Only increase when target has been flagged as death.
                     switch (combatType) {
                         case MELEE -> increaseMeleeWeaponKills(a, t);

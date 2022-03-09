@@ -255,33 +255,41 @@ public class RangedCombatMethod extends CommonCombatMethod {
             // yeah not possible with this system lemmi look how oss did it
 
             // primary range hit
-            final Hit hit = target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit);
+            final Hit firstHit = target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), delay, CombatType.RANGED).checkAccuracy().postDamage(this::handleAfterHit);
 
             if(attacker.isPlayer()) {
                 Player player = attacker.getAsPlayer();
                 // Handle bolt special effects for a player whose using crossbow
                 if (player.getCombat().getWeaponType() == WeaponType.CROSSBOW) {
-                    if (hit.isAccurate()) {
-                        hit.setDamage(RangedData.getBoltSpecialAttack(player, target, hit.getDamage()));
+                    if (firstHit.isAccurate()) {
+                        firstHit.setDamage(RangedData.getBoltSpecialAttack(player, target, firstHit.getDamage()));
                         if (player.<Boolean>getAttribOr(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE, false)) {
                             player.clearAttrib(AttributeKey.ZARYTE_CROSSBOW_SPEC_ACTIVE);
                         }
                     }
                 }
             }
-            hit.submit();
+            firstHit.submit();
 
             // secondary hits
             if (attacker.getCombat().getRangedWeapon() == RangedWeapon.DARK_BOW || swiftEffect) {
-                target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), secondArrowDelay, CombatType.RANGED).checkAccuracy().submit();
+                Hit secondHit = target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), secondArrowDelay, CombatType.RANGED).checkAccuracy();
+                if (secondHit.isAccurate() && secondHit.getDamage() > 25 && swiftEffect) {
+                    firstHit.setDamage(25);
+                }
+                secondHit.submit();
             } else if (weaponId == SANGUINE_TWISTED_BOW) {
                 target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED) / 2, secondArrowDelay, CombatType.RANGED).checkAccuracy().submit();
-            }
 
-            if (weaponId == SANGUINE_TWISTED_BOW && swiftEffect) {
-                target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED) / 4, thirdArrowDelay, CombatType.RANGED).checkAccuracy().submit();
+                //Sang tbow has a third hit capped at 25 with swift proc
+                if(swiftEffect) {
+                    Hit thirdHit = target.hit(attacker, CombatFactory.calcDamageFromType(attacker, target, CombatType.RANGED), thirdArrowDelay, CombatType.RANGED).checkAccuracy();
+                    if (thirdHit.isAccurate() && thirdHit.getDamage() > 25 && swiftEffect) {
+                        firstHit.setDamage(25);
+                    }
+                    thirdHit.submit();
+                }
             }
-
         }
     }
 
