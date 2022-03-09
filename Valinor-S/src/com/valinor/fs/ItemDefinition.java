@@ -151,6 +151,9 @@ public class ItemDefinition implements Definition {
         } else if (id == WEAPON_MYSTERY_BOX) {
             name = "Weapon mystery box";
             grandexchange = true;
+        } else if (id == GRAND_MYSTERY_BOX) {
+            name = "Grand mystery box";
+            grandexchange = true;
         } else if (id == 15441) {
             stackable = false;
             name = "Abyssal whip tier 1";

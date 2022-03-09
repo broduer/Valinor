@@ -33,7 +33,7 @@ public class GrandMysterybox extends Interaction {
      * This option doubles your grand mystery box
      * There is a slim chance that you get this option.
      */
-    private static final Item[] OPTION_THREE = {new Item(GRAND_MYSTERY_BOX), new Item(GRAND_MYSTERY_BOX)};
+    private static final Item[] OPTION_THREE = {new Item(GRAND_MYSTERY_BOX,2)};
 
     /**
      * The grand mystery box opens three mystery boxes
@@ -84,6 +84,8 @@ public class GrandMysterybox extends Interaction {
                 player.inventory().addAll(OPTION_THREE);
                 String worldMessage = "<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Grand Mystery Box</col>]:<col=1e44b3> " + player.getUsername() + ""+Color.HOTPINK.tag()+" just doubled his Grand Mystery Box" + Color.BLACK.tag() + "!";
                 World.getWorld().sendWorldMessage(worldMessage);
+            } else {
+                player.inventory().addAll(OPTION_ONE);
             }
         } else {
             player.message("You need at least 2 free inventory slots.");
