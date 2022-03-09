@@ -27,6 +27,7 @@ import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.game.world.route.RouteMisc;
 import com.valinor.game.world.route.routes.DumbRoute;
 import com.valinor.game.world.route.routes.TargetRoute;
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.Debugs;
 import com.valinor.util.ItemIdentifiers;
 import com.valinor.util.timers.TimerKey;
@@ -440,7 +441,7 @@ public class Combat {
         }
     }
 
-    public static final List<Integer> gmauls = new ArrayList<>(List.of(ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225));
+    public static final List<Integer> gmauls = new ArrayList<>(List.of(ItemIdentifiers.GRANITE_MAUL, ItemIdentifiers.GRANITE_MAUL_12848, ItemIdentifiers.GRANITE_MAUL_24225, CustomItemIdentifiers.GRANITE_MAUL_TIER_1, CustomItemIdentifiers.GRANITE_MAUL_TIER_2, CustomItemIdentifiers.GRANITE_MAUL_TIER_3, CustomItemIdentifiers.GRANITE_MAUL_TIER_4, CustomItemIdentifiers.GRANITE_MAUL_TIER_5_1, CustomItemIdentifiers.GRANITE_MAUL_TIER_5_2, CustomItemIdentifiers.GRANITE_MAUL_TIER_5_3, CustomItemIdentifiers.GRANITE_MAUL_TIER_5_4, CustomItemIdentifiers.GRANITE_MAUL_TIER_5_5));
 
     private boolean specialGraniteMaul() {
         var graniteMaulSpecials = mob.<Integer>getAttribOr(AttributeKey.GRANITE_MAUL_SPECIALS, 0);
