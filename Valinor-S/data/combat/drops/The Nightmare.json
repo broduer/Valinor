@@ -57,23 +57,17 @@
       ]
     },
     {
-      "name": "Empty",
-      "points": 45,
-      "items": [
-      ]
-    },
-    {
       "name": "Staff",
       "points": 1,
       "items": [
-        { "id": 24420, "min": 1, "max": 1, "points": 1 }, //Inquisitor hauberk
-        { "id": 24421, "min": 1, "max": 1, "points": 1 }, //Inquisitor plateskirt
-        { "id": 24419, "min": 1, "max": 1, "points": 1 }, //Inquisitor helmet
-        { "id": 24417, "min": 1, "max": 1, "points": 1 }, //Inquisitor mace
-        { "id": 24514, "min": 1, "max": 1, "points": 1 }, //Volatile Orb
-        { "id": 24517, "min": 1, "max": 1, "points": 1 }, //Eldritch Orb
-        { "id": 24511, "min": 1, "max": 1, "points": 1 }, //Harmonised Orb
-        { "id": 24422, "min": 1, "max": 1, "points": 1 } //Nightmare Staff
+        { "id": 24422, "min": 1, "max": 1, "points": 11 }, //Nightmare Staff
+        { "id": 24419, "min": 1, "max": 1, "points": 10 }, //Inquisitor helmet
+        { "id": 24420, "min": 1, "max": 1, "points": 9 }, //Inquisitor hauberk
+        { "id": 24421, "min": 1, "max": 1, "points": 9 }, //Inquisitor plateskirt
+        { "id": 24417, "min": 1, "max": 1, "points": 8 }, //Inquisitor mace
+        { "id": 24514, "min": 1, "max": 1, "points": 7 }, //Volatile Orb
+        { "id": 24517, "min": 1, "max": 1, "points": 7 }, //Eldritch Orb
+        { "id": 24511, "min": 1, "max": 1, "points": 7 } //Harmonised Orb
       ]
     }
   ]

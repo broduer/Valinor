@@ -1011,9 +1011,9 @@ public class CombatFactory {
     }
 
     public static boolean singlePlusArea(Mob target) {
-        if (target.tile().insideRevCave()) {
+        /*if (target.tile().insideRevCave()) {
             return true;
-        }
+        }*/
 
         if (target.tile().memberCave() && target.tile().region() != 12077) {
             return true;

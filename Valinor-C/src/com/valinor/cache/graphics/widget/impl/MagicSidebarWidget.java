@@ -227,16 +227,16 @@ public class MagicSidebarWidget extends Widget {
             "Fills certain vessels with water", tda, 5, 0, 5);
         addLunar3RunesSmallBox(30064, 9075, 563, 557, 1, 0, 1, 30012, 30006, 68, "Moonclan Teleport",
             "Teleport to Moonclan", tda, 6, 0, 5);
-        addLunar3RunesBigBox(30075, 9075, 563, 557, 1, 0, 3, 30012, 30006, 69, "Tele Group Moonclan",
-            "Teleports players to Moonclan", tda, 7, 0, 5);
-        addLunar3RunesSmallBox(30083, 9075, 563, 557, 1, 0, 5, 30012, 30006, 70, "Ourania Teleport",
-            "Teleport to Ourania", tda, 8, 0, 5);
+        addLunar3RunesBigBox(30075, 9075, 563, 557, 1, 0, 3, 30012, 30006, 69, "Pvming Teleport",
+            "Teleports you to PvMing areas", tda, 7, 0, 5);
+        addLunar3RunesSmallBox(30083, 9075, 563, 557, 1, 0, 5, 30012, 30006, 70, "Bosses Teleport",
+            "Teleport to Bosses", tda, 8, 0, 5);
         addLunar3RunesSmallBox(30091, 9075, 564, 563, 1, 1, 0, 30013, 30012, 70, "Cure Me", "Cures Poison", tda, 9, 0,
             5);
         addLunar2RunesSmallBox(30099, 9075, 557, 1, 1, 30006, 70, "Hunter Kit", "Get a kit of hunting gear", tda, 10, 0,
             5);
-        addLunar3RunesSmallBox(30106, 9075, 563, 555, 1, 0, 0, 30012, 30004, 71, "Waterbirth Teleport",
-            "Teleport to Waterbirth", tda, 11, 0, 5);
+        addLunar3RunesSmallBox(30106, 9075, 563, 555, 1, 0, 0, 30012, 30004, 71, "Pking Teleport",
+            "Teleport to Pking areas", tda, 11, 0, 5);
         addLunar3RunesBigBox(30114, 9075, 563, 555, 1, 0, 4, 30012, 30004, 72, "Tele Group Waterbirth",
             "Teleports players to Waterbirth<br>island", tda, 12, 0, 5);
         addLunar3RunesSmallBox(30122, 9075, 564, 563, 1, 1, 1, 30013, 30012, 73, "Cure Group",

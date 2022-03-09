@@ -183,7 +183,7 @@ public class MultiwayCombat {
         9033, // KBD zone
         12363, 12362, 12106, 11851, 11850, // Abyssal Sire
         14938, 14939, // Smokedevil room in Nieve's cave + kalphite hive room
-        //12701, 12702, 12703, 12957, 12958, 12959, // Revenants! Not 100% accurate but.. Yeah
+        12701, 12702, 12703, 12957, 12958, 12959, // Revenants! Not 100% accurate but.. Yeah
         9886, 10142, // waterbirth dungeon / dagannoth cave
         9007, 9008, // zulrah
         9023, // vorkath

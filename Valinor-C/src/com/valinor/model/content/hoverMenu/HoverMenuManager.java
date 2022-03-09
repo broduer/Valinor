@@ -75,7 +75,7 @@ public class HoverMenuManager {
         menus.put(VIGGORAS_CHAINMACE_C, new HoverMenu("Gives the same boosts as a regular Viggora's chainmace. This boost also works outside of the wilderness."));
         menus.put(CRAWS_BOW_C, new HoverMenu("Gives the same boosts as a regular Craw's bow. This boost also works outside of the wilderness."));
         menus.put(THAMMARONS_STAFF_C, new HoverMenu("Gives the same boosts as a regular Thammaron's sceptre. This boost also works outside of the wilderness."));
-        menus.put(HOLY_SANGUINESTI_STAFF, new HoverMenu("@red@+10@whi@ extra damage, no accuracy boost."));
+        menus.put(HOLY_SANGUINESTI_STAFF, new HoverMenu("@red@+1@whi@ extra damage, no accuracy boost."));
         menus.put(HOLY_GHRAZI_RAPIER, new HoverMenu("A much more powerful version of the ghrazi rapier."));
         menus.put(HOLY_SCYTHE_OF_VITUR, new HoverMenu("A stronger version than the scythe of vitur."));
         menus.put(SANGUINE_SCYTHE_OF_VITUR, new HoverMenu("A stronger version than the holy scythe of vitur."));

@@ -8,8 +8,8 @@ package com.valinor.game.world.position.areas.impl;
  */
 public enum CustomWildernessRegions {
 
-    MEMBER_CAVE_1(9369, 20),
-    MEMBER_CAVE_2(9370, 20);
+    MEMBER_CAVE_1(9369, 40),
+    MEMBER_CAVE_2(9370, 40);
 
     public final int region;
     public final int level;
