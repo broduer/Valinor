@@ -18,6 +18,7 @@ public class HelpCommand implements Command {
             player.message(Color.RED.wrap("You can use this command again in: "+player.getTimers().asMinutesAndSecondsLeft(TimerKey.HELP_COMMAND_USED))+".");
             return;
         }
+        player.message("We have requested help.");
         player.getTimers().addOrSet(TimerKey.HELP_COMMAND_USED,500);
         World.getWorld().sendStaffMessage("Player: "+Color.BLUE.wrap(player.getUsername())+" has requested ::help.");
     }
