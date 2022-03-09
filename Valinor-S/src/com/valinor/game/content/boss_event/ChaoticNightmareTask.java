@@ -13,7 +13,7 @@ public class ChaoticNightmareTask extends Task {
     public static final int TICKS_TILL_SPAWN = TESTING ? 100 : 12000;
 
     public ChaoticNightmareTask() {
-        super("ChaoticNightmareTask", TICKS_TILL_SPAWN,false);
+        super("ChaoticNightmareTask", TICKS_TILL_SPAWN,true);
     }
 
     @Override
