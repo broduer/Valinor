@@ -107,10 +107,10 @@ public class WorldTeleportNetwork {
         if(teleport.loadConfigs()) {
             fillDescription(player);
 
-            final int maxHit = World.getWorld().combatInfo(npc).maxhit;
-            final int respawnTime = World.getWorld().combatInfo(npc).respawntime;
+            final int maxHit = World.getWorld().combatInfo(npc) == null ? 0 : World.getWorld().combatInfo(npc).maxhit;
+            final int respawnTime = World.getWorld().combatInfo(npc) == null ? 0 : World.getWorld().combatInfo(npc).respawntime;
             final boolean inMultiArea = teleport.multiArea();
-            final int slayerRequirement = World.getWorld().combatInfo(npc).slayerlvl;
+            final int slayerRequirement = World.getWorld().combatInfo(npc) == null ? 1 : World.getWorld().combatInfo(npc).slayerlvl;
 
             int skotizo = player.getAttribOr(AttributeKey.SKOTIZOS_KILLED, 0);
             int tekton = player.getAttribOr(AttributeKey.SKOTIZOS_KILLED, 0);
