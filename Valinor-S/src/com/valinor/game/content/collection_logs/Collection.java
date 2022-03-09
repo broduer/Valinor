@@ -409,9 +409,10 @@ public enum Collection {
     //Mystery ticket
     MYSTERY_TICKET(AttributeKey.MYSTERY_TICKETS_OPENED, LogType.MYSTERY_BOX, "Mystery Ticket", new int[]{CustomItemIdentifiers.MYSTERY_TICKET}, AttributeKey.MYSTERY_TICKET_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_TICKET, 5), new Item(KEY_OF_DROPS,5)},
         //Drops
-        new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_CHEST), new Item(BANDOS_TASSETS), new Item(BANDOS_CHESTPLATE),
-        new Item(ARMADYL_CHESTPLATE), new Item(ARMADYL_CHAINSKIRT), new Item(SARADOMIN_GODSWORD), new Item(ARMADYL_GODSWORD), new Item(DRAGON_WARHAMMER),
-        new Item(DRAGON_HUNTER_LANCE), new Item(SPECTRAL_SPIRIT_SHIELD)),
+        new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_CHEST),
+        new Item(DRAGON_WARHAMMER), new Item(DRAGON_HUNTER_LANCE), new Item(SPECTRAL_SPIRIT_SHIELD), new Item(ARCANE_SPIRIT_SHIELD), new Item(ARMADYL_CROSSBOW),
+        new Item(ARMADYL_GODSWORD), new Item(PKP_TICKET, 25_000), new Item(RING_OF_PRECISION), new Item(RING_OF_SORCERY),
+        new Item(RING_OF_MANHUNTING), new Item(ANCIENT_FACEGAURD), new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(DRAGON_CLAWS)),
 
     //Mystery chest
     MYSTERY_CHEST(AttributeKey.MYSTERY_CHESTS_OPENED, LogType.MYSTERY_BOX, "Mystery Chest", new int[]{CustomItemIdentifiers.MYSTERY_CHEST}, AttributeKey.MYSTERY_CHEST_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.MYSTERY_CHEST, 1), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},

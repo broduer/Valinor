@@ -36,7 +36,6 @@ public class MysteryChest extends Interaction {
         new Item(BOW_OF_FAERDHINEN), new Item(DARK_ARMADYL_HELMET), new Item(ELDER_WAND_HANDLE), new Item(ELDER_WAND_STICK), new Item(SWORD_OF_GRYFFINDOR), new Item(TALONHAWK_CROSSBOW), new Item(ANCESTRAL_HAT_I), new Item(LAVA_DHIDE_BODY),
         new Item(LAVA_DHIDE_CHAPS), new Item(LAVA_DHIDE_COIF));
 
-
     private void rollForReward(Player player) {
         Item reward;
         //Roll for a random item
