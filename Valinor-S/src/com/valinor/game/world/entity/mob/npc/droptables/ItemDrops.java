@@ -208,6 +208,14 @@ public class ItemDrops {
     }
 
     public static void dropCoins(Player player, Npc npc) {
+        if (npc.combatInfo() != null && npc.combatInfo().boss && WildernessArea.inWilderness(player.tile())) {
+            Item coins = new Item(COINS_995, World.getWorld().random(250_000, 1_000_000));
+            GroundItem groundItem = new GroundItem(coins, player.tile(), player);
+            GroundItemHandler.createGroundItem(groundItem);
+            notification(player, coins);
+            player.message("<col=0B610B>You have received a " + Utils.formatRunescapeStyle(coins.getAmount()) + " coins drop!");
+        }
+
         if (!player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.MONEY_FROM_KILLING_BOSSES)) {
             return;
         }
