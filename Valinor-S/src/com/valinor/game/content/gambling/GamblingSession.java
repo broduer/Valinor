@@ -275,16 +275,10 @@ public class GamblingSession {
         player.getPacketSender().sendConfig(type.configId, 1);
     }
 
-    public void onLogout() {
-        if (gambleState != GambleState.IN_PROGRESS) {
-            abortGambling();
-        }
-    }
-
     /**
      * Sends the other player a gamble request
      */
-    public void requestGamble(Player requestee, boolean acceptRequest) {
+    public void requestGamble(Player requestee) {
         if (!GameServer.properties().enableGambling) {
             player.message("Gambling is currently disabled.");
             return;
@@ -609,7 +603,7 @@ public class GamblingSession {
         }
     }
 
-    public void end(int gameId) {
+    public void end() {
 
         if (player.getGamblingSession().game == null)
             return;
@@ -622,14 +616,14 @@ public class GamblingSession {
 
         if (player.getGamblingSession().game.playerOne == player) {
             //System.out.println("you are the host so opponent wins");
-            finish(gameId, game.playerOne, game.playerTwo, 0, 1);
+            finish(game.playerOne, game.playerTwo, 0, 1);
         } else if (player.getGamblingSession().game.playerTwo == player) {
             //System.out.println("you are the opponent so host wins");
-            finish(gameId, game.playerOne, game.playerTwo, 1, 0);
+            finish(game.playerOne, game.playerTwo, 1, 0);
         }
     }
 
-    public void finish(int gameId, Player host, Player opponent, int hostScore, int opponentScore) {
+    public void finish(Player host, Player opponent, int hostScore, int opponentScore) {
         if (host.getGamblingSession().game == null)
             return;
 
@@ -641,10 +635,10 @@ public class GamblingSession {
 
         if (!World.getWorld().getPlayers().contains(opponent) && World.getWorld().getPlayers().contains(host)) {
             //System.out.println("1");
-            give(gameId, host, opponent, false);
+            give(host, opponent, false);
         } else if (World.getWorld().getPlayers().contains(opponent) && !World.getWorld().getPlayers().contains(host)) {
             //System.out.println("2");
-            give(gameId, opponent, host, false);
+            give(opponent, host, false);
         } else {
             //System.out.println("hostScore: " + hostScore);
             //System.out.println("opponentScore: " + opponentScore);
@@ -652,10 +646,10 @@ public class GamblingSession {
             boolean hostWon = hostScore > opponentScore;
             if (draw) {
                 //System.out.println("draw");
-                give(gameId, host, opponent, true);
+                give(host, opponent, true);
             } else {
                 //System.out.println("someone won");
-                give(gameId, hostWon ? host : opponent, hostWon ? opponent : host, false);
+                give(hostWon ? host : opponent, hostWon ? opponent : host, false);
             }
         }
 
@@ -665,7 +659,7 @@ public class GamblingSession {
             opponent.getGamblingSession().resetAttributes();
     }
 
-    public void give(int gameId, Player winner, Player loser, boolean draw) {
+    public void give(Player winner, Player loser, boolean draw) {
         StringBuilder itemsWon = new StringBuilder();
         StringBuilder lostItems = new StringBuilder();
         if (draw) {
@@ -673,16 +667,16 @@ public class GamblingSession {
                 for (Item item : winner.getGamblingSession().getContainer().toNonNullArray()) {
                     winner.inventory().addOrBank(item);
                 }
-                winner.message("It's a draw!");
-                winner.forceChat("It's a draw!");
+                winner.message("DRAW!");
+                winner.forceChat("DRAW!");
             }
 
             if (loser != null) {
                 for (Item item : loser.getGamblingSession().getContainer().toNonNullArray()) {
                     loser.inventory().addOrBank(item);
                 }
-                loser.message("It's a draw!");
-                loser.forceChat("It's a draw!");
+                loser.message("DRAW!");
+                loser.forceChat("DRAW!");
             }
         } else {
             if (winner != null) {
@@ -717,23 +711,14 @@ public class GamblingSession {
                     logger.catching(e);
                     logger.error("Somehow there was an exception from logging gambling between player " + player.getUsername() + " and " + opponent.getUsername());
                 }
-                send(gameId, winner, loser);
+                send(winner, loser);
             }
         }
     }
 
-    private void send(int gameId, Player winner, Player loser) {
+    private void send(Player winner, Player loser) {
         winner.getInterfaceManager().closeDialogue();
         loser.getInterfaceManager().closeDialogue();
-        if (gameId == -1) {
-            winner.forceChat("I have won!");
-            winner.message("I have won!");
-        } else {
-            winner.forceChat("I have won!");
-            winner.message("I have won!");
-            loser.forceChat("I have lost!");
-            loser.message("I have lost!");
-        }
     }
 
     public boolean currentState(GambleState check) {

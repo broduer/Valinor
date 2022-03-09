@@ -1220,6 +1220,10 @@ public class Player extends Mob {
     public boolean canLogout() {
         boolean logCooldown = this.getAttribOr(AttributeKey.ALLOWED_TO_LOGOUT, true);
 
+        // wait for the gambling session is finished
+        if(gamblingSession.gambleState == GambleState.IN_PROGRESS)
+            return false;
+
         // wait for forcemovement to finish, dont save players half on an agility obstacle they cant get out of
         if (getForceMovement() != null && getMovementQueue().forcedStep())
             return false;
@@ -1358,7 +1362,7 @@ public class Player extends Mob {
 
             // If we're in a gamble, make sure to give us a loss for logging out.
             if (gamblingSession.matchActive()) {
-                gamblingSession.end(gamblingSession.game.gameId);
+                gamblingSession.end();
             }
         });
 

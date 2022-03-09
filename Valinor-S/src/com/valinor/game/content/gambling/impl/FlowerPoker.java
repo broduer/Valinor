@@ -2,7 +2,6 @@ package com.valinor.game.content.gambling.impl;
 
 import com.valinor.game.content.gambling.Gamble;
 import com.valinor.game.content.gambling.GambleState;
-import com.valinor.game.content.gambling.GamblingSession;
 import com.valinor.game.task.Task;
 import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.entity.mob.movement.MovementQueue;
@@ -29,8 +28,8 @@ public class FlowerPoker extends Gamble {
         return "Flower Poker";
     }
 
-    public FlowerPoker(Player host, Player opponent) {
-        super(host, opponent);
+    public FlowerPoker(Player playerOne, Player playerTwo) {
+        super(playerOne, playerTwo);
     }
 
     @Override
@@ -84,11 +83,11 @@ public class FlowerPoker extends Gamble {
                         plant(playerTwo, playerOne);
                     }
                     case 25 -> {
-                        playerOne.forceChat(Utils.formatEnum(hostResult.name()));
-                        playerTwo.forceChat(Utils.formatEnum(opponentResult.name()));
+                        playerOne.forceChat(hostResult.name().replaceAll("_", " "));
+                        playerTwo.forceChat(opponentResult.name().replaceAll("_", " "));
                     }
                     case 26 -> {
-                        playerOne.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, playerOne, playerTwo, hostResult.ordinal(), opponentResult.ordinal());
+                        playerOne.getGamblingSession().finish(playerOne, playerTwo, hostResult.ordinal(), opponentResult.ordinal());
                         this.stop();
                     }
                 }
@@ -224,7 +223,7 @@ public class FlowerPoker extends Gamble {
                     }
                     case 4 -> {
                         if (flower.name().equalsIgnoreCase("WHITE") || flower.name().equalsIgnoreCase("BLACK")) {
-                            playerOne.getGamblingSession().finish(GamblingSession.FLOWER_POKER_ID, player, opponent, 0, 0);
+                            playerOne.getGamblingSession().finish(player, opponent, 0, 0);
                             stop();
                             break;
                         }

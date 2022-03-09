@@ -85,7 +85,7 @@ public class GambleRequestAccept implements PacketListener {
 
                 if (player.getLocalPlayers().contains(other)) {
                     if (player.tile().distance(other.tile()) < 3) {
-                        player.getGamblingSession().requestGamble(other,true);
+                        player.getGamblingSession().requestGamble(other);
                     }
                 }
             });

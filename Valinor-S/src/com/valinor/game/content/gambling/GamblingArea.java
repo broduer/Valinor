@@ -93,7 +93,7 @@ public class GamblingArea extends Controller {
                 player.message("Gambling is currently disabled.");
                 return;
             }
-            player.getGamblingSession().requestGamble(rightClicked,false);
+            player.getGamblingSession().requestGamble(rightClicked);
         }
     }
 
