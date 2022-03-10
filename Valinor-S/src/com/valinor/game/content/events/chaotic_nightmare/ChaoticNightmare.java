@@ -42,7 +42,7 @@ public class ChaoticNightmare {
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
-    private static Tile spawnTile = new Tile(3236, 3641);
+    private static Tile spawnTile;
 
     private Optional<Npc> chaoticNightmare = Optional.empty();
 
@@ -50,10 +50,7 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    /**
-     * The interval at which server-wide chaotic nightmare events occur. Event runs every hour
-     */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 700;
+    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 600;
 
     public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
     public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
@@ -156,6 +153,7 @@ public class ChaoticNightmare {
         next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
         ANNOUNCE_5_MIN_TIMER = false;
 
+        spawnTile = new Tile(3236, 3641);
         Npc boss = new Npc(CHAOTIC_NIGHTMARE, spawnTile).spawn(false);
         boss.walkRadius(1);
         boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 1);
