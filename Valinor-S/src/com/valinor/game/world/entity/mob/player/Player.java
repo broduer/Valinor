@@ -9,6 +9,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.areas.wilderness.content.RiskManagement;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.areas.wilderness.content.upgrade_station.WeaponUpgrade;
+import com.valinor.game.content.events.haunted_chest.HauntedChest;
 import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
@@ -3046,6 +3047,7 @@ public class Player extends Mob {
                 long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
                 long minutesTillChaoticNightmare = now.until(ChaoticNightmare.getInstance().next, ChronoUnit.MINUTES);
                 long minutesTillHPEvent = now.until(HpEvent.getInstance().next, ChronoUnit.MINUTES);
+                long minutesTillHauntedChestEvent = now.until(HauntedChest.getInstance().next, ChronoUnit.MINUTES);
 
                 if (minutesTillWildyBoss == 5) {
                     if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
@@ -3075,12 +3077,20 @@ public class Player extends Mob {
                     }
                 }
 
+                if (minutesTillHauntedChestEvent == 5) {
+                    if (!HauntedChest.ANNOUNCE_5_MIN_TIMER) {
+                        HauntedChest.ANNOUNCE_5_MIN_TIMER = true;
+                        World.getWorld().sendWorldMessage("<col=800000><img=936>The Haunted chest will spawn in 5 minutes!");
+                    }
+                }
+
                 //Update this timer frames every minute.
                 this.getPacketSender().sendString(WORLD_BOSS_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(WORLD_BOSS_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(WILDERNESS_KEY.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KEY.childId).fetchLineData(this));
                 this.getPacketSender().sendString(CHAOTIC_NIGHTMARE.childId, QuestTab.InfoTab.INFO_TAB.get(CHAOTIC_NIGHTMARE.childId).fetchLineData(this));
                 this.getPacketSender().sendString(HP_EVENT.childId, QuestTab.InfoTab.INFO_TAB.get(HP_EVENT.childId).fetchLineData(this));
+                this.getPacketSender().sendString(HAUNTED_CHEST.childId, QuestTab.InfoTab.INFO_TAB.get(HAUNTED_CHEST.childId).fetchLineData(this));
             }
         }, timers = () -> {
         getTimers().cycle(this);
