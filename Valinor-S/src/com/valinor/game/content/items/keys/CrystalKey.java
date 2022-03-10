@@ -123,36 +123,38 @@ public class CrystalKey extends Interaction {
     }
 
     private final List<Item> COMMON = Arrays.asList(
-        new Item(UNCUT_DIAMOND + 1, 25),
-        new Item(DRAGON_ARROWTIPS, 50 + World.getWorld().random(150)),
-        new Item(RAW_SEA_TURTLE + 1, 50),
-        new Item(SHARK + 1, 50),
-        new Item(COINS_995, 2_500_000),
-        new Item(RAW_DARK_CRAB + 1, 30),
-        new Item(GRIMY_RANARR_WEED + 1, 25),
-        new Item(RANARR_SEED, World.getWorld().random(1, 5)),
-        new Item(GRIMY_SNAPDRAGON + 1, 25),
-        new Item(GRIMY_TOADFLAX + 1, 25),
-        new Item(SNAPDRAGON_SEED, World.getWorld().random(1, 3)));
+        new Item(COINS_995, 500_000),
+        new Item(UNCUT_DIAMOND + 1, 100 + World.getWorld().random(150)),
+        new Item(UNCUT_SAPPHIRE + 1, 150 + World.getWorld().random(150)),
+        new Item(UNCUT_RUBY + 1, 150 + World.getWorld().random(150)),
+        new Item(UNCUT_EMERALD + 1, 150 + World.getWorld().random(150)),
+        new Item(RAW_MONKFISH + 1, 250 + World.getWorld().random(150)),
+        new Item(RAW_SHARK + 1, 200 + World.getWorld().random(150)),
+        new Item(WILLOW_LOGS + 1, 200 + World.getWorld().random(150)),
+        new Item(YEW_LOGS + 1, 150 + World.getWorld().random(150)),
+        new Item(MAPLE_LOGS + 1, 250 + World.getWorld().random(150)),
+        new Item(STEEL_BAR + 1, 250 + World.getWorld().random(150)),
+        new Item(MITHRIL_BAR + 1, 100 + World.getWorld().random(150)),
+        new Item(ADAMANTITE_BAR + 1, 50 + World.getWorld().random(150)),
+        new Item(DRAGON_BONES + 1, 50 + World.getWorld().random(150)),
+        new Item(DAGANNOTH_BONES + 1, 100 + World.getWorld().random(150))
+        );
+
 
     private final List<Item> UNCOMMON = Arrays.asList(
         new Item(COINS_995, 5_000_000),
-        new Item(DRAGON_LONGSWORD, 1),
-        new Item(MAGIC_LOGS + 1, 100),
-        new Item(DRAGON_BATTLEAXE, 1),
-        new Item(SHIELD_LEFT_HALF, 1),
-        new Item(SHIELD_RIGHT_HALF, 1),
-        new Item(COOKED_KARAMBWAN + 1, 15),
-        new Item(DRAGON_SCIMITAR, 1),
+        new Item(MAGIC_LOGS + 1, 100 + World.getWorld().random(150)),
+        new Item(RUNITE_BAR + 1, 100 + World.getWorld().random(150)),
         new Item(DRAGON_BOOTS, 1),
-        new Item(RUNITE_BAR + 1, 25),
-        new Item(DRAGON_BONES + 1, 35),
-        new Item(RUNITE_ORE + 2, 25),
-        new Item(DRAGONSTONE_BOLTS_E, 100),
-        new Item(RUBY_BOLTS_E, 75),
-        new Item(SUPERIOR_DRAGON_BONES + 1, 5 + World.getWorld().random(10)),
-        new Item(DAGANNOTH_BONES + 1, 20 + World.getWorld().random(20)),
-        new Item(SUPER_COMBAT_POTION4 + 1, 10));
+        new Item(SUPERIOR_DRAGON_BONES + 1, 35 + World.getWorld().random(35)),
+        new Item(DRAGONSTONE_DRAGON_BOLTS_E, 150 + World.getWorld().random(150)),
+        new Item(RUBY_DRAGON_BOLTS_E, 150 + World.getWorld().random(150)),
+        new Item(OPAL_DRAGON_BOLTS_E, 150 + World.getWorld().random(150)),
+        new Item(COOKED_KARAMBWAN, 250 + World.getWorld().random(150)),
+        new Item(ABYSSAL_WHIP, 1),
+        new Item(AMULET_OF_FURY, 1)
+        );
+
 
     private final List<Item> RARE = Arrays.asList(
         new Item(NEW_CRYSTAL_BOW, 1),

@@ -301,7 +301,7 @@ public class ServerAnnouncements {
 
         //Ancient revenants
         ANCIENT_VESTAS_LONGSWORD,
-        ANCIENT_STATIUSS_WARHAMMER,
+            ANCIENT_STATIUS_WARHAMMER,
 
         //Bloodfury hespori
         KEY_OF_DROPS,

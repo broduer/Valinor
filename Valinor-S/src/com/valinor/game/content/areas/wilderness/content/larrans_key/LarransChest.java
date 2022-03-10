@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.valinor.game.content.collection_logs.LogType.KEYS;
-import static com.valinor.util.CustomItemIdentifiers.PKP_TICKET;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 
 /**
@@ -53,88 +53,70 @@ public class LarransChest extends Interaction {
     }
 
     private static final List<Item> OTHER = Arrays.asList(
-        new Item(PKP_TICKET, 500),
-        new Item(SUPER_COMBAT_POTION4+1, 5),
-        new Item(DRAGON_DART, 25),
-        new Item(DRAGON_KNIFE, 15),
-        new Item(DRAGON_JAVELIN, 25),
-        new Item(DRAGON_THROWNAXE, 25),
-        new Item(ANTIVENOM4+1, 5),
-        new Item(GUTHIX_REST4+1, 5),
-        new Item(OBSIDIAN_HELMET, 1),
-        new Item(OBSIDIAN_PLATEBODY, 1),
-        new Item(OBSIDIAN_PLATELEGS, 1),
-        new Item(RANGERS_TUNIC, 1),
-        new Item(REGEN_BRACELET, 1),
-        new Item(GRANITE_MAUL_24225, 1),
-        new Item(BERSERKER_RING_I, 1),
-        new Item(ARCHERS_RING_I, 1),
-        new Item(SEERS_RING_I, 1),
-        new Item(WARRIOR_RING_I, 1)
+        new Item(PKP_TICKET, 500 + World.getWorld().random(500)),
+        new Item(SUPER_COMBAT_POTION4 + 1, 50),
+        new Item(ANTIVENOM4 + 1, 50),
+        new Item(OBSIDIAN_HELMET),
+        new Item(OBSIDIAN_PLATEBODY),
+        new Item(OBSIDIAN_PLATELEGS),
+        new Item(RANGERS_TUNIC),
+        new Item(GRANITE_MAUL_24225 + 1, 3),
+        new Item(BERSERKER_RING_I),
+        new Item(ARCHERS_RING_I),
+        new Item(SEERS_RING_I),
+        new Item(WARRIOR_RING_I),
+        new Item(BANDOS_GODSWORD),
+        new Item(SARADOMIN_GODSWORD),
+        new Item(ZAMORAK_GODSWORD)
     );
 
     private static final List<Item> RARE = Arrays.asList(
-        new Item(DAGONHAI_HAT, 1),
-        new Item(DAGONHAI_ROBE_TOP, 1),
-        new Item(DAGONHAI_ROBE_BOTTOM, 1),
+
         new Item(PRIMORDIAL_BOOTS),
         new Item(PEGASIAN_BOOTS),
         new Item(ETERNAL_BOOTS),
-        new Item(ABYSSAL_TENTACLE),
+        new Item(ARMADYL_GODSWORD),
         new Item(BANDOS_CHESTPLATE),
         new Item(BANDOS_TASSETS),
-        new Item(BLADE_OF_SAELDOR),
-        new Item(BANDOS_GODSWORD),
-        new Item(SARADOMIN_GODSWORD),
-        new Item(ZAMORAK_GODSWORD),
+        new Item(ARMADYL_CROSSBOW),
+        new Item(STAFF_OF_THE_DEAD),
         new Item(ARMADYL_CHAINSKIRT),
         new Item(ARMADYL_CHESTPLATE),
         new Item(ARMADYL_HELMET),
-        new Item(PKP_TICKET, 3500),
+        new Item(PKP_TICKET, 5000),
         new Item(SERPENTINE_HELM),
         new Item(ZAMORAKIAN_HASTA),
         new Item(FREMENNIK_KILT),
         new Item(DRAGON_CROSSBOW),
-        new Item(OPAL_DRAGON_BOLTS_E, 25),
-        new Item(DIAMOND_DRAGON_BOLTS_E, 25),
-        new Item(DRAGONSTONE_DRAGON_BOLTS_E, 25),
-        new Item(ONYX_DRAGON_BOLTS_E, 25),
-        new Item(DRAGON_SCIMITAR_OR)
+        new Item(AMULET_OF_TORTURE),
+        new Item(NECKLACE_OF_ANGUISH),
+        new Item(TORMENTED_BRACELET)
     );
 
     private static final List<Item> EXTREME_RARE = Arrays.asList(
-        new Item(VESTAS_LONGSWORD, 1),
-        new Item(VESTAS_SPEAR, 1),
-        new Item(VESTAS_CHAINBODY, 1),
-        new Item(VESTAS_PLATESKIRT, 1),
-        new Item(STATIUSS_WARHAMMER, 1),
-        new Item(STATIUSS_FULL_HELM, 1),
-        new Item(STATIUSS_PLATEBODY, 1),
-        new Item(STATIUSS_PLATELEGS, 1),
-        new Item(ZURIELS_STAFF, 1),
-        new Item(ZURIELS_HOOD, 1),
-        new Item(ZURIELS_ROBE_TOP, 1),
-        new Item(ZURIELS_ROBE_BOTTOM, 1),
-        new Item(MORRIGANS_JAVELIN, 100),
-        new Item(MORRIGANS_THROWING_AXE, 100),
-        new Item(MORRIGANS_COIF, 1),
-        new Item(MORRIGANS_LEATHER_BODY, 1),
-        new Item(MORRIGANS_LEATHER_CHAPS, 1),
-        new Item(ARMADYL_GODSWORD),
-        new Item(AMULET_OF_TORTURE),
-        new Item(NECKLACE_OF_ANGUISH),
-        new Item(TORMENTED_BRACELET),
-        new Item(ABYSSAL_DAGGER),
+        new Item(VESTAS_LONGSWORD),
+        new Item(VESTAS_SPEAR),
+        new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(STATIUSS_FULL_HELM),
+        new Item(STATIUSS_PLATEBODY),
+        new Item(STATIUSS_PLATELEGS),
+        new Item(ZURIELS_STAFF),
+        new Item(ZURIELS_HOOD),
+        new Item(ZURIELS_ROBE_TOP),
+        new Item(ZURIELS_ROBE_BOTTOM),
+        new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY),
+        new Item(MORRIGANS_LEATHER_CHAPS),
         new Item(DRAGON_CLAWS),
         new Item(TOXIC_BLOWPIPE),
         new Item(TOXIC_STAFF_OF_THE_DEAD),
-        new Item(TRIDENT_OF_THE_SWAMP),
-        new Item(ABYSSAL_BLUDGEON),
-        new Item(VESTAS_LONGSWORD),
-        new Item(STATIUSS_WARHAMMER),
         new Item(DRAGON_WARHAMMER),
         new Item(ELDER_MAUL),
-        new Item(DINHS_BULWARK)
+        new Item(DINHS_BULWARK),
+        new Item(ANCIENT_STATIUS_WARHAMMER),
+        new Item(ANCIENT_VESTAS_LONGSWORD)
     );
 
     private void open(Player player) {

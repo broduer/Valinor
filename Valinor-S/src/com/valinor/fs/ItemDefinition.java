@@ -3,7 +3,6 @@ package com.valinor.fs;
 import com.valinor.game.GameConstants;
 import com.valinor.game.world.definition.loader.PatrickTheMerchantValue;
 import com.valinor.game.world.definition.loader.ProtectionValue;
-import com.valinor.game.world.items.Item;
 import com.valinor.io.RSBuffer;
 import com.valinor.util.ItemIdentifiers;
 import io.netty.buffer.Unpooled;
@@ -728,7 +727,7 @@ public class ItemDefinition implements Definition {
         } else if (id == ANCIENT_VESTAS_LONGSWORD) {
             name = "Ancient vesta's longsword";
             grandexchange = true;
-        } else if (id == ANCIENT_STATIUSS_WARHAMMER) {
+        } else if (id == ANCIENT_STATIUS_WARHAMMER) {
             name = "Ancient statius's warhammer";
             grandexchange = true;
         } else if (id == TASK_BOTTLE_CASKET) {

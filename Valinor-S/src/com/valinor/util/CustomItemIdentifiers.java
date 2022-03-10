@@ -250,7 +250,7 @@ public class CustomItemIdentifiers {
     public static final int DARK_ANCIENT_EFFIGY = 31993;
     public static final int DARK_ANCIENT_RELIC = 31994;
     public static final int ANCIENT_VESTAS_LONGSWORD = 31995;
-    public static final int ANCIENT_STATIUSS_WARHAMMER = 31996;
+    public static final int ANCIENT_STATIUS_WARHAMMER = 31996;
     public static final int TASK_BOTTLE_CASKET = 31999;
     public static final int BLOOD_FIREBIRD = 32700;
     public static final int VIGGORAS_CHAINMACE_C = 32705;

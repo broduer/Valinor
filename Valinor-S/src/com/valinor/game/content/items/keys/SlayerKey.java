@@ -106,29 +106,39 @@ public class SlayerKey {
         new Item(STAMINA_POTION4 + 1, 10),
         new Item(ANTIVENOM4 + 1, 10),
         new Item(SUPER_ANTIFIRE_POTION4 + 1, 10),
-        new Item(GRIMY_DWARF_WEED + 1, 25),
-        new Item(GRIMY_TORSTOL + 1, 25),
-        new Item(GRIMY_RANARR_WEED + 1, 25),
-        new Item(GRIMY_SNAPDRAGON + 1, 25),
-        new Item(GREEN_DRAGONHIDE + 1, 25),
-        new Item(BLUE_DRAGONHIDE + 1, 25),
-        new Item(RED_DRAGONHIDE + 1, 25),
-        new Item(BLACK_DRAGONHIDE + 1, 25),
-        new Item(DRAGON_BONES + 1, 25),
-        new Item(BABYDRAGON_BONES + 1, 25),
-        new Item(UNCUT_DRAGONSTONE + 1, 25),
-        new Item(ADAMANT_ARROW, 200 + World.getWorld().random(400)),
-        new Item(RUNE_ARROW, 200 + World.getWorld().random(300))
-    );
+        new Item(DHAROKS_HELM, 1),
+        new Item(DHAROKS_PLATEBODY, 1),
+        new Item(DHAROKS_PLATELEGS, 1),
+        new Item(DHAROKS_GREATAXE, 1),
+        new Item(AHRIMS_HOOD, 1),
+        new Item(AHRIMS_ROBETOP, 1),
+        new Item(AHRIMS_ROBESKIRT, 1),
+        new Item(AHRIMS_STAFF, 1),
+        new Item(VERACS_HELM, 1),
+        new Item(VERACS_BRASSARD, 1),
+        new Item(VERACS_PLATESKIRT, 1),
+        new Item(VERACS_FLAIL, 1),
+        new Item(KARILS_COIF, 1),
+        new Item(KARILS_LEATHERTOP, 1),
+        new Item(KARILS_LEATHERSKIRT, 1),
+        new Item(KARILS_CROSSBOW, 1),
+        new Item(TORAGS_HELM, 1),
+        new Item(TORAGS_PLATEBODY, 1),
+        new Item(TORAGS_PLATELEGS, 1),
+        new Item(TORAGS_HAMMERS, 1),
+        new Item(GUTHANS_HELM, 1),
+        new Item(GUTHANS_PLATEBODY, 1),
+        new Item(GUTHANS_CHAINSKIRT, 1),
+        new Item(GUTHANS_WARSPEAR, 1)
+        );
 
     private static final List<Item> UNCOMMON = Arrays.asList(
-        new Item(DRAGON_DART, 100 + World.getWorld().random(400)),
-        new Item(DRAGON_ARROW, 100 + World.getWorld().random(400)),
-        new Item(DRAGON_PLATELEGS, 1),
-        new Item(DRAGON_PLATESKIRT, 1),
+        new Item(DRAGON_DART, 250 + World.getWorld().random(500)),
+        new Item(DRAGON_ARROW, 250 + World.getWorld().random(500)),
+        new Item(UNCUT_ONYX, 1),
         new Item(DRAGON_BOOTS, 1),
         new Item(DRAGON_AXE, 1),
-        new Item(DRAGON_CHAINBODY_3140, 1)
+        new Item(DRAGON_PICKAXE, 1)
     );
 
     private static final List<Item> RARE = Arrays.asList(
@@ -137,6 +147,7 @@ public class SlayerKey {
         new Item(DRAGONSTONE_PLATELEGS, 1),
         new Item(DRAGONSTONE_GAUNTLETS, 1),
         new Item(DRAGONSTONE_BOOTS, 1),
-        new Item(UNCUT_ONYX, 1)
+        new Item(AMULET_OF_BLOOD_FURY, 1),
+	new Item(HAM_JOINT, 1)
     );
 }

@@ -345,7 +345,7 @@ public class CheckServerWealthCommand implements Command {
                                     if(item.getId() == ANCIENT_VESTAS_LONGSWORD) {
                                         storage.sumAncientVLS.addAndGet(1L * item.getAmount());
                                     }
-                                    if(item.getId() == ANCIENT_STATIUSS_WARHAMMER) {
+                                    if(item.getId() == ANCIENT_STATIUS_WARHAMMER) {
                                         storage.sumAncientSWH.addAndGet(1L * item.getAmount());
                                     }
                                     if(item.getId() == NEITIZNOT_FACEGUARD) {

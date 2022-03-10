@@ -162,7 +162,7 @@ public class WildernessKeyChest extends Interaction {
             String openedAt = wilderness ? "inside the member zone" : "at home";
 
             if(!player.getUsername().equalsIgnoreCase("Box test")) {
-                String msg = "<img=506><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wildy key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " received " + amtString + " " + rewardOne.name() + " " + openedAt + "! Keys opened ("+keysUsed+")";
+                String msg = "<img=1083><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wildy key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " received " + amtString + " " + rewardOne.name() + " " + openedAt + "! Keys opened ("+keysUsed+")";
                 World.getWorld().sendWorldMessage(msg);
             }
 
@@ -183,7 +183,7 @@ public class WildernessKeyChest extends Interaction {
 
             //The user box test doesn't yell.
             if(!player.getUsername().equalsIgnoreCase("Box test")) {
-                String msg = "<img=506><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wildy key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " has received " + amtString + " " + rewardTwo.name() + " " + openedAt + "!";
+                String msg = "<img=1083><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Wildy key</col>]</shad>: " + "<col=AD800F>" + player.getUsername() + " has received " + amtString + " " + rewardTwo.name() + " " + openedAt + "!";
                 World.getWorld().sendWorldMessage(msg);
             }
 
