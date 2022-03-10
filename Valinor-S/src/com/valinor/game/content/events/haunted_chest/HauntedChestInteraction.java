@@ -23,6 +23,24 @@ import static com.valinor.util.ObjectIdentifiers.CHEST_25685;
  */
 public class HauntedChestInteraction extends Interaction {
 
+    private static final List<Item> RANDOM_ITEMS = Arrays.asList(
+        new Item(ABYSSAL_DAGGER),
+        new Item(STAFF_OF_THE_DEAD),
+        new Item(DRAGONFIRE_WARD),
+        new Item(SARADOMIN_GODSWORD),
+        new Item(ZAMORAK_GODSWORD),
+        new Item(BANDOS_GODSWORD),
+        new Item(ARMADYL_HELMET),
+        new Item(ARMADYL_CHESTPLATE),
+        new Item(ARMADYL_CHAINSKIRT),
+        new Item(BANDOS_CHESTPLATE),
+        new Item(BANDOS_TASSETS),
+        new Item(ZAMORAKIAN_SPEAR),
+        new Item(ZAMORAKIAN_HASTA),
+        new Item(DRAGON_CLAWS),
+        new Item(ARMADYL_GODSWORD),
+        new Item(HEAVY_BALLISTA));
+
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if(option == 1) {
@@ -52,25 +70,7 @@ public class HauntedChestInteraction extends Interaction {
                         player.message("You hurt yourself whilst searching through the haunted chest.");
                     }
 
-                    if(World.getWorld().rollDie(100,1)) {
-                        List<Item> RANDOM_ITEMS = Arrays.asList(
-                            new Item(ABYSSAL_DAGGER),
-                            new Item(STAFF_OF_THE_DEAD),
-                            new Item(DRAGONFIRE_WARD),
-                            new Item(SARADOMIN_GODSWORD),
-                            new Item(ZAMORAK_GODSWORD),
-                            new Item(BANDOS_GODSWORD),
-                            new Item(ARMADYL_HELMET),
-                            new Item(ARMADYL_CHESTPLATE),
-                            new Item(ARMADYL_CHAINSKIRT),
-                            new Item(BANDOS_CHESTPLATE),
-                            new Item(BANDOS_TASSETS),
-                            new Item(ZAMORAKIAN_SPEAR),
-                            new Item(ZAMORAKIAN_HASTA),
-                            new Item(DRAGON_CLAWS),
-                            new Item(ARMADYL_GODSWORD),
-                            new Item(HEAVY_BALLISTA));
-
+                    if(World.getWorld().rollDie(350,1)) {
                         Item item = Utils.randomElement(RANDOM_ITEMS);
                         player.inventory().add(item);
                         var plural = amount > 1 ? "x" + amount : "x1";
