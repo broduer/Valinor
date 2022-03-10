@@ -651,7 +651,7 @@ public class NpcDeath {
 
                     if (HpEvent.getInstance().getHpEventNpc().isPresent() &&
                         npc == HpEvent.getInstance().getHpEventNpc().get()) {
-                        ChaoticNightmare.getInstance().drop(npc);
+                        HpEvent.getInstance().drop(npc);
                     }
 
                     if(isNightmare) {

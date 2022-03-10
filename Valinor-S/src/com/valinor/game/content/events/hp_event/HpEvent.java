@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 import static com.valinor.util.CustomItemIdentifiers.DONATOR_MYSTERY_BOX;
 import static com.valinor.util.CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX;
 import static com.valinor.util.CustomNpcIdentifiers.HP_EVENT;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -62,6 +63,9 @@ public class HpEvent {
             if (mob.tile().isWithinDistance(player.tile(), 12)) {
                 if (mob instanceof Npc) {
                     Npc npc = mob.getAsNpc();
+
+                    //Always drop random coins
+                    GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(10_000_000, 25_000_000)), npc.tile(), player));
 
                     //Random drop from the table
                     Item randomDonatorMbox = new Item(DONATOR_MYSTERY_BOX, World.getWorld().random(2, 6));
