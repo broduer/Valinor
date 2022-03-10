@@ -1,16 +1,13 @@
 package com.valinor.game.world.entity.combat.method.impl.npcs.bosses.custom;
 
-import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.combat.CombatFactory;
 import com.valinor.game.world.entity.combat.CombatType;
 import com.valinor.game.world.entity.combat.method.impl.CommonCombatMethod;
-import com.valinor.game.world.entity.combat.skull.SkullType;
-import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.masks.Projectile;
 import com.valinor.game.world.entity.mob.npc.Npc;
-import com.valinor.game.world.entity.mob.player.Player;
 
 /**
  * Npc id = 3359

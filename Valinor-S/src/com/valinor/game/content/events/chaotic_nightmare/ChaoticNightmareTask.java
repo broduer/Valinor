@@ -1,6 +1,8 @@
-package com.valinor.game.content.boss_event;
+package com.valinor.game.content.events.chaotic_nightmare;
 
 import com.valinor.game.task.Task;
+
+import static com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare.EVENT_INTERVAL;
 
 
 /**
@@ -9,11 +11,8 @@ import com.valinor.game.task.Task;
  */
 public class ChaoticNightmareTask extends Task {
 
-    private static final boolean TESTING = false;
-    public static final int TICKS_TILL_SPAWN = TESTING ? 100 : 12000;
-
     public ChaoticNightmareTask() {
-        super("ChaoticNightmareTask", TICKS_TILL_SPAWN,true);
+        super("ChaoticNightmareTask", EVENT_INTERVAL,true);
     }
 
     @Override

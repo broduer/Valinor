@@ -262,9 +262,6 @@ public class NpcManager {
 
             // emblem trader
             case 308:
-                definition.actions = new String[]{"Talk-to", null, "Trade", null, null, null, null};
-                break;
-
             // Sigbert the Adventurer
             case 3254:
                 definition.actions = new String[]{"Talk-to", null, "Trade", null, null};
@@ -284,6 +281,28 @@ public class NpcManager {
             case 319:
             case 8061:
                 definition.largeHpBar = true;
+                break;
+
+            case 13004:
+                definition.name = "<col=ffb000>HP Event";
+                definition.combatLevel = 126;
+                definition.actions = new String[]{null, "Attack", null, null, null};
+                definition.standingAnimation = 808;
+                definition.walkingAnimation = 819;
+                definition.rotate180Animation = 820;
+                definition.rotate90LeftAnimation = 821;
+                definition.rotate90RightAnimation = 821;
+                definition.modelId = new int[]{214, 250, 3379, 164, 179, 268, 185, 550, 521, 3189};
+                definition.modelId[5] = 268; //platelegs rune
+                definition.modelId[0] = 18954; //Str cape
+                definition.modelId[1] = 21873; //Head - neitznot
+                definition.modelId[8] = 35376; //Shield avernic defender (or 31904 for dragon defender t the gold dragon defender)
+                definition.modelId[7] = 5409; // weapon whip
+                definition.modelId[4] = 13307; //Gloves barrows
+                definition.modelId[6] = 3704; // boots climbing
+                definition.modelId[9] = 290; //amulet glory
+                definition.recolorFrom = new int[]{-8256 + 65536, -11353 + 65536, -11033 + 65536, 960, 22464, -21568 + 65536, 24, 61, 41, 61, 41, 57, 61, 926};
+                definition.recolorTo = new int[]{935, 931, 924, 27544, 27544, 26516, 61, -29403 + 65536, -28266 + 65536, -29403 + 65536, -28266 + 65536, -29403 + 65536, -29403 + 65536, -17506 + 65536};
                 break;
         }
 

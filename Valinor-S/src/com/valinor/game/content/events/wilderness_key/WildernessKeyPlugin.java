@@ -1,4 +1,4 @@
-package com.valinor.game.content.areas.wilderness.content.wilderness_key;
+package com.valinor.game.content.events.wilderness_key;
 
 import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
@@ -121,7 +121,7 @@ public class WildernessKeyPlugin {
         DailyTaskManager.increase(DailyTasks.WILDY_KEY_ESCAPE, player);
     }
 
-    public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(2);
+    public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(6);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(SPAWN_DURATION.toSeconds(), ChronoUnit.SECONDS);

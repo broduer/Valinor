@@ -1,8 +1,8 @@
-package com.valinor.game.content.boss_event;
+package com.valinor.game.content.events.boss_event;
 
 import com.valinor.game.task.Task;
 
-import static com.valinor.game.content.boss_event.WorldBossEvent.BOSS_EVENT_INTERVAL;
+import static com.valinor.game.content.events.boss_event.WorldBossEvent.EVENT_INTERVAL;
 
 /**
  * @author Patrick van Elderen | February, 13, 2021, 09:11
@@ -11,7 +11,7 @@ import static com.valinor.game.content.boss_event.WorldBossEvent.BOSS_EVENT_INTE
 public class WorldBossEventTask extends Task {
 
     public WorldBossEventTask() {
-        super("WorldBossEventTask", BOSS_EVENT_INTERVAL,false);
+        super("WorldBossEventTask", EVENT_INTERVAL,true);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class QuestTabSidebarWidget extends Widget {
         addSprite(53408, 1879);
 
         Widget scrollTab1 = Widget.addInterface(53415);
-        int scrollChildren = 35;
+        int scrollChildren = 50;
         scrollTab1.totalChildren(scrollChildren);
         int y = 5;
         int interfaceId = 53416;
@@ -40,7 +40,7 @@ public class QuestTabSidebarWidget extends Widget {
         }
         scrollTab1.width = 148;
         scrollTab1.height = 170;
-        scrollTab1.scrollMax = 480;
+        scrollTab1.scrollMax = 500;
 
         widget.totalChildren(9);
         widget.child(0, 53401, 4, 40);

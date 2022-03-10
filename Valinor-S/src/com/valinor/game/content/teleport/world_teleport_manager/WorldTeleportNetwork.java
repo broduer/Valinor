@@ -1,6 +1,6 @@
 package com.valinor.game.content.teleport.world_teleport_manager;
 
-import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;

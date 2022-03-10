@@ -1,12 +1,11 @@
 package com.valinor.game.content.packet_actions.interactions.objects;
 
-import com.valinor.game.content.shootingStars.ShootingStars;
+import com.valinor.game.content.events.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.smithing.Bar;
 import com.valinor.game.content.skill.impl.smithing.EquipmentMaking;
 import com.valinor.game.content.tradingpost.TradingPost;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
-import com.valinor.game.world.position.Tile;
 import com.valinor.net.packet.interaction.InteractionManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

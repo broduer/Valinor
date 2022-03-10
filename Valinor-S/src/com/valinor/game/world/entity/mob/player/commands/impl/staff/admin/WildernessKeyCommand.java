@@ -1,7 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
 
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyLocation;
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyLocation;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import org.slf4j.Logger;

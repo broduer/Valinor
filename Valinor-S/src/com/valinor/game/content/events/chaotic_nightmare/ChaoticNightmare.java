@@ -1,5 +1,6 @@
-package com.valinor.game.content.boss_event;
+package com.valinor.game.content.events.chaotic_nightmare;
 
+import com.valinor.GameServer;
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
@@ -23,7 +24,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
-import static com.valinor.game.content.boss_event.ChaoticNightmareTask.TICKS_TILL_SPAWN;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.util.CustomNpcIdentifiers.CHAOTIC_NIGHTMARE;
 import static com.valinor.util.ItemIdentifiers.COINS_995;
@@ -40,21 +40,9 @@ public class ChaoticNightmare {
         return INSTANCE;
     }
 
-    private static boolean ANNOUNCE_5_MIN_TIMER = false;
+    public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
-    public static boolean announce5MinTimer() {
-        return ANNOUNCE_5_MIN_TIMER;
-    }
-
-    public static void setAnnounce5MinTimer(boolean announce5MinTimer) {
-        ANNOUNCE_5_MIN_TIMER = announce5MinTimer;
-    }
-
-    private static Tile spawnTile;
-
-    public static Tile getSpawnTile() {
-        return spawnTile;
-    }
+    private static Tile spawnTile = new Tile(3236, 3641);
 
     private Optional<Npc> chaoticNightmare = Optional.empty();
 
@@ -62,8 +50,13 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (TICKS_TILL_SPAWN * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (TICKS_TILL_SPAWN * 0.6d), ChronoUnit.SECONDS);
+    /**
+     * The interval at which server-wide chaotic nightmare events occur. Event runs every hour
+     */
+    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 700;
+
+    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
 
     public void drop(Mob mob) {
         mob.getCombat().getDamageMap().forEach((key, hits) -> {
@@ -160,8 +153,7 @@ public class ChaoticNightmare {
 
         // Only if it's an actual boss we spawn an NPC.
         last = LocalDateTime.now();
-        next = LocalDateTime.now().plus((long) (TICKS_TILL_SPAWN * 0.6d), ChronoUnit.SECONDS);
-        spawnTile = new Tile(3236, 3641);
+        next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
         ANNOUNCE_5_MIN_TIMER = false;
 
         Npc boss = new Npc(CHAOTIC_NIGHTMARE, spawnTile).spawn(false);
@@ -171,9 +163,8 @@ public class ChaoticNightmare {
         //Assign the npc reference.
         chaoticNightmare = Optional.of(boss);
 
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
-
         // Broadcast it
+        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
         World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
     }
 }

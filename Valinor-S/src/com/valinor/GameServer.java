@@ -274,7 +274,7 @@ public class GameServer {
                         // DIRECT SAVE, assuming the lowPrio executor has stopped/wont run any more save reqs
                         try {
                             new PlayerSave.SaveDetails(player).parseDetails();
-                            System.out.printf("jesus rescured %s%n", player);
+                            System.out.printf("jesus rescued %s%n", player);
                         } catch (Exception e) {
                             System.out.println("EMERGENCY SAVE FAIL Player "+player+" ex: "+e);
                             e.printStackTrace();

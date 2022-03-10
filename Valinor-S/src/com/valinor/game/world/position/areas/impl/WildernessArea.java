@@ -4,7 +4,7 @@ import com.valinor.game.content.areas.riskzone.RiskFightArea;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.BountyHunterWidget;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.Hotspot;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.HotspotTask;
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.mechanics.Transmogrify;
 import com.valinor.game.task.TaskManager;

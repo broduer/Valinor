@@ -1,6 +1,6 @@
 package com.valinor.game.content.areas.wilderness;
 
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;

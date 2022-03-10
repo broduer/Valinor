@@ -1,7 +1,7 @@
 package com.valinor.game.content.teleport;
 
 import com.valinor.GameServer;
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.duel.Dueling;
 import com.valinor.game.content.instance.InstancedAreaManager;
 import com.valinor.game.content.tournaments.TournamentManager;

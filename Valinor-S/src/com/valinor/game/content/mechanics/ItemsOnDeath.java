@@ -1,8 +1,7 @@
 package com.valinor.game.content.mechanics;
 
 import com.valinor.fs.ItemDefinition;
-import com.valinor.game.GameConstants;
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.content.revenant_caves.AncientArtifacts;
 import com.valinor.game.content.items_kept_on_death.Conversions;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;

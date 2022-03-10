@@ -9,9 +9,9 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.areas.wilderness.content.RiskManagement;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.areas.wilderness.content.upgrade_station.WeaponUpgrade;
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
-import com.valinor.game.content.boss_event.ChaoticNightmare;
-import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.bank_pin.BankPin;
 import com.valinor.game.content.bank_pin.BankPinSettings;
 import com.valinor.game.content.clan.Clan;
@@ -3060,8 +3060,8 @@ public class Player extends Mob {
                 }
 
                 if (minutesTillChaoticNightmare == 5) {
-                    if (!ChaoticNightmare.getInstance().announce5MinTimer()) {
-                        ChaoticNightmare.getInstance().setAnnounce5MinTimer(true);
+                    if (!ChaoticNightmare.ANNOUNCE_5_MIN_TIMER) {
+                        ChaoticNightmare.ANNOUNCE_5_MIN_TIMER = true;
                         World.getWorld().sendWorldMessage("<col=800000><img=936>The chaotic nightmare will spawn in 5 minutes, gear up!");
                     }
                 }

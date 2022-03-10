@@ -3,7 +3,7 @@ package com.valinor.game.world.entity.mob.npc;
 import com.google.common.base.Stopwatch;
 import com.valinor.GameServer;
 import com.valinor.fs.NpcDefinition;
-import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.GreatOlm;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.hunter.trap.impl.Chinchompas;

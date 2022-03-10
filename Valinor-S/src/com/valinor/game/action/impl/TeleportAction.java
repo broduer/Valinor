@@ -2,18 +2,16 @@ package com.valinor.game.action.impl;
 
 import com.valinor.game.action.Action;
 import com.valinor.game.action.policy.WalkablePolicy;
-import com.valinor.game.content.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.teleport.TeleportType;
 import com.valinor.game.content.teleport.Teleports;
 import com.valinor.game.world.entity.Mob;
 import com.valinor.game.world.entity.dialogue.Dialogue;
 import com.valinor.game.world.entity.dialogue.DialogueType;
-import com.valinor.game.world.entity.masks.graphics.Graphic;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.util.ItemIdentifiers;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>

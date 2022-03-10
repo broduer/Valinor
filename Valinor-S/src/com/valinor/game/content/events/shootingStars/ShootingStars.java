@@ -1,4 +1,4 @@
-package com.valinor.game.content.shootingStars;
+package com.valinor.game.content.events.shootingStars;
 
 import com.valinor.GameServer;
 import com.valinor.fs.ItemDefinition;
@@ -15,7 +15,6 @@ import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
-import com.valinor.net.packet.interaction.Interaction;
 import com.valinor.util.chainedwork.Chain;
 
 import java.time.LocalDateTime;
@@ -118,9 +117,9 @@ public class ShootingStars {
     }
 
     /**
-     * The interval at which server-wide shooting star events occur. Event runs every 45 minutes
+     * The interval at which server-wide shooting star events occur. Event runs every hour
      */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 4500 : 500;
+    public static final int EVENT_INTERVAL = GameServer.properties().production ? 6000 : 700;
 
     public void startEvent() {
         if (!DISABLED) {
@@ -144,7 +143,6 @@ public class ShootingStars {
     public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
-        // every 45 mins
         TaskManager.submit(new ShootingStarEventTask());
     }
 

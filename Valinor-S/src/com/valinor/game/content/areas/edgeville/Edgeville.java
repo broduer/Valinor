@@ -1,6 +1,6 @@
 package com.valinor.game.content.areas.edgeville;
 
-import com.valinor.game.content.areas.wilderness.content.wilderness_key.WildernessKeyPlugin;
+import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
 import com.valinor.game.content.teleport.OrnateJewelleryBox;
 import com.valinor.game.task.TaskManager;

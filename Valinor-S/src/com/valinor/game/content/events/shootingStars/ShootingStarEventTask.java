@@ -1,8 +1,8 @@
-package com.valinor.game.content.shootingStars;
+package com.valinor.game.content.events.shootingStars;
 
 import com.valinor.game.task.Task;
 
-import static com.valinor.game.content.shootingStars.ShootingStars.EVENT_INTERVAL;
+import static com.valinor.game.content.events.shootingStars.ShootingStars.EVENT_INTERVAL;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
