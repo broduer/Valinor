@@ -333,13 +333,13 @@ public class CombatFactory {
 
                 //Hard cap magic special attacks
                 if (player.getCombatSpecial() == CombatSpecial.VOLATILE_NIGHTMARE_STAFF) {
-                    if (damage > 87) {
-                        damage = 87;
+                    if (damage > 80) {
+                        damage = 80;
                     }
                 }
                 if (player.getCombatSpecial() == CombatSpecial.CURSED_NIGHTMARE_STAFF) {
-                    if (damage > 89) {
-                        damage = 89;
+                    if (damage > 82) {
+                        damage = 82;
                     }
                 }
             }

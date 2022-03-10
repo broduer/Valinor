@@ -55,7 +55,7 @@ public class HauntedChestInteraction extends Interaction {
                     return true;
                 }
 
-                if (player.getClickDelay().elapsed(1000)) {
+                if (player.getClickDelay().elapsed(2000)) {
                     player.getClickDelay().reset();
                     player.animate(881);
 
