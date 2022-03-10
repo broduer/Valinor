@@ -1,0 +1,33 @@
+[
+  {
+    "ids": [
+      13004
+    ],
+    "maxhit": 45,
+    "attackspeed": 4,
+    "aggroradius": 5,
+    "aggressive": false,
+    "respawntime": 0,
+    "stats": {
+      "attack": 99,
+      "strength": 99,
+      "magic": 99,
+      "ranged": 99,
+      "defence": 99,
+      "hitpoints": 10000
+    },
+    "bonuses": {
+      "ranged": 92,
+      "stabdefence": 92,
+      "slashdefence": 92,
+      "crushdefence": 92,
+      "rangeddefence": 92,
+      "magicdefence": 92
+    },
+    "animations": {
+      "attack": 1658,
+      "block": 4177,
+      "death": 836
+    }
+  }
+]

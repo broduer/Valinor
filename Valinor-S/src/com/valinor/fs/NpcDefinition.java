@@ -336,8 +336,8 @@ public class NpcDefinition implements Definition {
             name = "F2p bot";
             size = 1;
             combatlevel = 68;
-        } else if (id == 13004) {
-            name = "Maxed bot";
+        } else if (id == HP_EVENT) {
+            name = "HP event";
             size = 1;
             combatlevel = 126;
         } else if (id == 13005) {

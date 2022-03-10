@@ -5,6 +5,7 @@ import com.valinor.game.GameConstants;
 import com.valinor.game.content.DropsDisplay;
 import com.valinor.game.content.achievements.AchievementWidget;
 import com.valinor.game.content.areas.wilderness.content.EloRating;
+import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
@@ -80,7 +81,7 @@ public final class QuestTab {
         HP_EVENT(53422) {
             @Override
             public String fetchLineData(Player player) {
-                return "Next HP Event: <col=ffffff>" + "?";
+                return "Next HP Event: <col=ffffff>" + HpEvent.getInstance().timeTill(false);
             }
         },
 

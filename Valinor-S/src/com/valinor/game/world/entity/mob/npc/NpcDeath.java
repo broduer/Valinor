@@ -11,6 +11,7 @@ import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.Phases;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
@@ -648,12 +649,17 @@ public class NpcDeath {
                         ChaoticNightmare.getInstance().drop(npc);
                     }
 
+                    if (HpEvent.getInstance().getHpEventNpc().isPresent() &&
+                        npc == HpEvent.getInstance().getHpEventNpc().get()) {
+                        ChaoticNightmare.getInstance().drop(npc);
+                    }
+
                     if(isNightmare) {
                         nightmareDrops(npc);
                     }
 
                     killer.getBossTimers().submit(npc.def().name, (int) killer.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), killer);
-                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare && npc.id() != CHAOTIC_NIGHTMARE);
+                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare && npc.id() != CHAOTIC_NIGHTMARE && npc.id() != HP_EVENT);
 
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //System.out.println(ignoreDrops+ " " +isNightmare);

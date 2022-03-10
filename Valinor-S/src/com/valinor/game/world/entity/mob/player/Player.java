@@ -9,6 +9,7 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.areas.wilderness.content.RiskManagement;
 import com.valinor.game.content.areas.wilderness.content.bounty_hunter.bounty_tasks.BountyHunterTask;
 import com.valinor.game.content.areas.wilderness.content.upgrade_station.WeaponUpgrade;
+import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
 import com.valinor.game.content.events.boss_event.WorldBossEvent;
@@ -3044,6 +3045,7 @@ public class Player extends Mob {
                 long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
                 long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
                 long minutesTillChaoticNightmare = now.until(ChaoticNightmare.getInstance().next, ChronoUnit.MINUTES);
+                long minutesTillHPEvent = now.until(HpEvent.getInstance().next, ChronoUnit.MINUTES);
 
                 if (minutesTillWildyBoss == 5) {
                     if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
@@ -3062,7 +3064,14 @@ public class Player extends Mob {
                 if (minutesTillChaoticNightmare == 5) {
                     if (!ChaoticNightmare.ANNOUNCE_5_MIN_TIMER) {
                         ChaoticNightmare.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The chaotic nightmare will spawn in 5 minutes, gear up!");
+                        World.getWorld().sendWorldMessage("<col=800000><img=936>The Chaotic nightmare will spawn in 5 minutes, gear up!");
+                    }
+                }
+
+                if (minutesTillHPEvent == 5) {
+                    if (!HpEvent.ANNOUNCE_5_MIN_TIMER) {
+                        HpEvent.ANNOUNCE_5_MIN_TIMER = true;
+                        World.getWorld().sendWorldMessage("<col=800000><img=936>The HP Event will spawn in 5 minutes, gear up!");
                     }
                 }
 
@@ -3071,6 +3080,7 @@ public class Player extends Mob {
                 this.getPacketSender().sendString(SHOOTING_STAR_SPAWN.childId, QuestTab.InfoTab.INFO_TAB.get(SHOOTING_STAR_SPAWN.childId).fetchLineData(this));
                 this.getPacketSender().sendString(WILDERNESS_KEY.childId, QuestTab.InfoTab.INFO_TAB.get(WILDERNESS_KEY.childId).fetchLineData(this));
                 this.getPacketSender().sendString(CHAOTIC_NIGHTMARE.childId, QuestTab.InfoTab.INFO_TAB.get(CHAOTIC_NIGHTMARE.childId).fetchLineData(this));
+                this.getPacketSender().sendString(HP_EVENT.childId, QuestTab.InfoTab.INFO_TAB.get(HP_EVENT.childId).fetchLineData(this));
             }
         }, timers = () -> {
         getTimers().cycle(this);

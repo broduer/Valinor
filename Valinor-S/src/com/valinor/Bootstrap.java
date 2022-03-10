@@ -3,6 +3,7 @@ package com.valinor;
 import com.valinor.game.GameBuilder;
 import com.valinor.game.content.announcements.DidYouKnowTask;
 import com.valinor.game.content.areas.wilderness.content.TopPkers;
+import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
 import com.valinor.game.content.events.boss_event.WorldBossEvent;
@@ -65,6 +66,7 @@ public final class Bootstrap {
         }
         WorldBossEvent.onServerStart();
         ChaoticNightmare.onServerStart();
+        HpEvent.onServerStart();
         if(!ShootingStars.DISABLED) {
             ShootingStars.onServerStart();
         }

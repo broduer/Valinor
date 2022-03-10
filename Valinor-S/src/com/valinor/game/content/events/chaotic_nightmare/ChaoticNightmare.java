@@ -50,7 +50,7 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 600;
+    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 700;
 
     public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
     public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
@@ -107,7 +107,6 @@ public class ChaoticNightmare {
     }
 
     public static void onServerStart() {
-        // every 60 mins
         TaskManager.submit(new ChaoticNightmareTask());
     }
 
@@ -140,7 +139,6 @@ public class ChaoticNightmare {
 
         if (despawned) {
             spawnTile = null; // reset current pos
-            World.getWorld().sendBroadcast("The Chaotic nightmare has despawned.");
         }
     }
 

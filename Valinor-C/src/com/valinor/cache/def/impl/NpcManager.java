@@ -3,6 +3,7 @@ package com.valinor.cache.def.impl;
 import com.valinor.ClientConstants;
 import com.valinor.cache.def.NpcDefinition;
 
+import static com.valinor.util.CustomNpcIdentifiers.HP_EVENT;
 import static com.valinor.util.CustomNpcIdentifiers.WAMPA;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -283,7 +284,7 @@ public class NpcManager {
                 definition.largeHpBar = true;
                 break;
 
-            case 13004:
+            case HP_EVENT:
                 definition.name = "<col=ffb000>HP Event";
                 definition.combatLevel = 126;
                 definition.actions = new String[]{null, "Attack", null, null, null};
