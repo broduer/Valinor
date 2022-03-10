@@ -6,8 +6,7 @@
   "guaranteed": [
     {
       "id": 30092,
-      "min": 50,
-      "max": 150,
+      "min": 20, "max": 50,
       "points": 1
     }
     //PKP

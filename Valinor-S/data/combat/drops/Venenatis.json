@@ -7,7 +7,7 @@
   "petItem": 13177,
   "petRarity": 1500,
   "guaranteed": [
-    { "id": 30092, "min": 50, "max": 150, "points": 1 } //PKP
+    { "id": 30092, "min": 20, "max": 50, "points": 1 } //PKP
   ],
   "tables": [
     {
