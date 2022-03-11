@@ -433,6 +433,8 @@ public enum AttributeKey {
 
     PK_POINTS("pk_points", AttribType.INTEGER),
 
+    HOTSPOT_POINTS("hotspot_points", AttribType.INTEGER),
+
     // The original amount being listed for this specific listing. (Before any edits were done)
     TRADING_POST_ORIGINAL_AMOUNT,
 

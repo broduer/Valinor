@@ -56,8 +56,9 @@ public class TournamentWidget extends Widget {
         }
         addCustomClickableText(20047, "Enter Tournament", "Enter Tournament", font, 0, 16750623, true, true, 100, 10);
         addCustomClickableText(20052, "Spectate Tournament", "Spectate Tournament", font, 0, 16750623, true, true, 100, 10);
+        addCustomClickableText(20053, "Tournament Shop", "Tournament Shop", font, 0, 16750623, true, true, 100, 10);
         closeButton(20058, 142, 143, false);
-        widget.totalChildren(10);
+        widget.totalChildren(11);
         widget.child(0, 20000, 7, 15);
         widget.child(1, 20002, 259, 25);
         widget.child(2, 20003, 135, 75);
@@ -68,5 +69,6 @@ public class TournamentWidget extends Widget {
         widget.child(7, 20058, 450, 22);
         widget.child(8, 20047, 355, 73);
         widget.child(9, 20052, 353, 117);
+        widget.child(10, 20053, 353, 161);
     }
 }

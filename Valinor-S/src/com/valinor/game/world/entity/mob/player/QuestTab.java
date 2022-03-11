@@ -321,6 +321,22 @@ public final class QuestTab {
                 return "Risked wealth: <col=ffffff>" + Utils.formatRunescapeStyle(risked) + " Coins";
             }
         },
+
+        HOTSPOT_POINTS(53453) {
+            @Override
+            public String fetchLineData(Player player) {
+                int hotspotPoints = player.getAttribOr(AttributeKey.HOTSPOT_POINTS, 0);
+                return "Hotspot points: <col=ffffff>" + Utils.formatNumber(hotspotPoints);
+            }
+        },
+
+        TOURNAMENT_POINTS(53454) {
+            @Override
+            public String fetchLineData(Player player) {
+                int tournamentPoints = player.getAttribOr(AttributeKey.TOURNAMENT_POINTS, 0);
+                return "Tournament points: <col=ffffff>" + Utils.formatNumber(tournamentPoints);
+            }
+        },
         ;
 
         public final int childId;

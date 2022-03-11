@@ -993,6 +993,8 @@ public class TournamentManager extends Interaction {
                 player.message("Nothing interesting happens");
                 return true;
             }
+        } else if (btnId == 20053) {
+            World.getWorld().shop(56).open(player);
         }
         return false;
     }

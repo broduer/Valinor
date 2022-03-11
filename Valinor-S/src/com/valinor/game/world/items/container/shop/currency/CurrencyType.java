@@ -22,12 +22,13 @@ public enum CurrencyType {
     HWEEN_TOKEN(new ItemCurrency(CustomItemIdentifiers.HWEEN_TOKENS)),
     STARDUST(new ItemCurrency(ItemIdentifiers.STARDUST)),
     SLAYER_REWARD_POINTS(new SlayerPointsCurrency()),
+    HOTSPOT_POINS(new HotspotPointsCurrency()),
     VOTE_POINTS(new VotePointsCurrency()),
     BOSS_POINTS(new BossPointsCurrency()),
     ACHIEVEMENT_POINTS(new AchievementPointsCurrency()),
     PK_POINTS(new PkPointsCurrency()),
     BOUNTY_HUNTER_POINTS(new BountyHunterPointsCurrency()),
-
+    TOURNAMENT_POINTS(new TournamentPointsCurrency()),
     ;
 
     private static final ImmutableSet<CurrencyType> VALUES = ImmutableSet.copyOf(values());
@@ -71,6 +72,14 @@ public enum CurrencyType {
             case BOUNTY_HUNTER_POINTS -> {
                 int bounties = player.getAttribOr(AttributeKey.BOUNTY_HUNTER_POINTS, 0);
                 value = Utils.format(bounties);
+            }
+            case HOTSPOT_POINS -> {
+                int hotspotPoints = player.getAttribOr(AttributeKey.HOTSPOT_POINTS, 0);
+                value = Utils.format(hotspotPoints);
+            }
+            case TOURNAMENT_POINTS -> {
+                int tournamentPoints = player.getAttribOr(AttributeKey.TOURNAMENT_POINTS, 0);
+                value = Utils.format(tournamentPoints);
             }
             default -> {
             }

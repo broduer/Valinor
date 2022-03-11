@@ -327,6 +327,7 @@ public class PlayerSave {
                 player.putAttrib(PK_POINTS, details.pkPoints);
                 player.putAttrib(ACHIEVEMENT_POINTS, details.achievementPoints);
                 player.putAttrib(BOUNTY_HUNTER_POINTS, details.bountyHunterPoints);
+                player.putAttrib(HOTSPOT_POINTS, details.hotspotPoints);
                 player.putAttrib(BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, details.teleportToTargetUnlocked);
                 player.putAttrib(PRESERVE, details.preserve);
                 player.putAttrib(RIGOUR, details.rigour);
@@ -886,6 +887,7 @@ public class PlayerSave {
         private final int pkPoints;
         private final int achievementPoints;
         private final int bountyHunterPoints;
+        private final int hotspotPoints;
 
         //Unlocks
         private final boolean teleportToTargetUnlocked;
@@ -1463,6 +1465,7 @@ public class PlayerSave {
             pkPoints = Player.getAttribIntOr(player, PK_POINTS, 0);
             achievementPoints = Player.getAttribIntOr(player, ACHIEVEMENT_POINTS, 0);
             bountyHunterPoints = Player.getAttribIntOr(player, BOUNTY_HUNTER_POINTS, 0);
+            hotspotPoints = Player.getAttribIntOr(player, HOTSPOT_POINTS, 0);
 
             teleportToTargetUnlocked = Player.getAttribBooleanOr(player, BOUNTY_HUNTER_TARGET_TELEPORT_UNLOCKED, false);
             preserve = Player.getAttribBooleanOr(player, PRESERVE, false);

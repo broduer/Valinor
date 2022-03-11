@@ -2,6 +2,7 @@ package com.valinor.game.content.areas.wilderness.content;
 
 import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
+import com.valinor.game.content.areas.wilderness.content.bounty_hunter.hotspot.Hotspot;
 import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.WildernessActivityManager;
 import com.valinor.game.content.areas.wilderness.content.wilderness_activity.impl.EdgevilleActivity;
@@ -27,6 +28,7 @@ import com.valinor.game.world.items.Item;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
 import com.valinor.util.Color;
 import com.valinor.util.ItemIdentifiers;
+import com.valinor.util.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -327,9 +329,12 @@ public class PlayerKillingRewards {
 
                 pkpReward += firstKillOfTheDay(killer); //2000pkp for first kill of the day
 
-                if(hotspotActivity) {
+                if(hotspotActivity || killer.tile().inArea(Hotspot.ACTIVE.area)) {
                     pkpReward *= 2.0;
-                    killer.message("<col=6a1a18><img=15> You get double pkp for killing a player in a hotspot!");
+                    killer.message("<col=6a1a18><img=453> You get double pkp for killing a player in a hotspot!");
+                    var hotspotPoints = killer.<Integer>getAttribOr(AttributeKey.HOTSPOT_POINTS, 0) + 1;
+                    killer.putAttrib(AttributeKey.HOTSPOT_POINTS, hotspotPoints);
+                    killer.message("<col=6a1a18><img=453> You received one hotspot point, you now have "+ Utils.formatNumber(hotspotPoints)+" hotspot points.");
                 }
 
                 var blood_reaper = killer.hasPetOut("Blood Reaper pet");
