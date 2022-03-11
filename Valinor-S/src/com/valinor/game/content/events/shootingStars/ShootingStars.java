@@ -118,9 +118,9 @@ public class ShootingStars {
     }
 
     /**
-     * The interval at which server-wide shooting star events occur. Event runs every hour
+     * The interval at which server-wide shooting star events occur. Event runs every 45 minutes
      */
-    public static final Duration SHOOTING_STARS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
+    public static final Duration SHOOTING_STARS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofMinutes(45) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(SHOOTING_STARS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
