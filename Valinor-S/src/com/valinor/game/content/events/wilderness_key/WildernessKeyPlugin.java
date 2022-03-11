@@ -121,7 +121,7 @@ public class WildernessKeyPlugin {
         DailyTaskManager.increase(DailyTasks.WILDY_KEY_ESCAPE, player);
     }
 
-    public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
+    public static final Duration SPAWN_DURATION = GameServer.properties().production ? Duration.ofMinutes(105) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(SPAWN_DURATION.toSeconds(), ChronoUnit.SECONDS);
