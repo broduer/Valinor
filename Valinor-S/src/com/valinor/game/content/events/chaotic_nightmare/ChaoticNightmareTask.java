@@ -2,8 +2,6 @@ package com.valinor.game.content.events.chaotic_nightmare;
 
 import com.valinor.game.task.Task;
 
-import static com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare.EVENT_INTERVAL;
-
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>

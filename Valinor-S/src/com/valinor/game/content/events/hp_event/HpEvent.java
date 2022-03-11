@@ -51,10 +51,10 @@ public class HpEvent {
     /**
      * The interval at which server-wide hp events occur. Event runs every three hours
      */
-    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(3) : Duration.ofMinutes(7);
+    public static final Duration HP_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(3) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+    public static LocalDateTime next = LocalDateTime.now().plus(HP_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public void drop(Mob mob) {
         var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
@@ -127,13 +127,13 @@ public class HpEvent {
     public void startEvent() {
         LocalDateTime now = LocalDateTime.now();
         long difference = last.until(now, ChronoUnit.MINUTES);
-        if (difference >= EVENT_INTERVAL.toMinutes()) {
+        if (difference >= HP_EVENT_INTERVAL.toMinutes()) {
             // First despawn the npc if existing
             terminateActiveEvent(true);
 
             // Only if it's an actual boss we spawn an NPC.
             last = now;
-            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            next = LocalDateTime.now().plus(HP_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
             ANNOUNCE_5_MIN_TIMER = false;
 
             spawnTile = new Tile(3269, 3867);

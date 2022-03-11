@@ -72,7 +72,7 @@ public class WorldBossEvent {
     /**
      * The interval at which server-wide wilderness boss events occur. Event runs every hour
      */
-    public static Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
+    public static Duration BOSS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
     /**
      * The active event being run.
@@ -163,7 +163,7 @@ public class WorldBossEvent {
     }
 
     public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+    public static LocalDateTime next = LocalDateTime.now().plus(BOSS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         // every 60 mins
@@ -192,7 +192,7 @@ public class WorldBossEvent {
     public void startBossEvent() {
         LocalDateTime now = LocalDateTime.now();
         long difference = last.until(now, ChronoUnit.MINUTES);
-        if (difference >= EVENT_INTERVAL.toMinutes()) {
+        if (difference >= BOSS_EVENT_INTERVAL.toMinutes()) {
             // First despawn the npc if existing
             terminateActiveEvent(true);
 
@@ -216,7 +216,7 @@ public class WorldBossEvent {
             // Only if it's an actual boss we spawn an NPC.
             if (activeEvent != WorldBosses.NOTHING) {
                 last = now;
-                next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+                next = LocalDateTime.now().plus(BOSS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
                 // see you can see constructors with ctrl+shift+space
                 Tile tile = POSSIBLE_SPAWNS[new SecureRandom().nextInt(POSSIBLE_SPAWNS.length)];
                 currentSpawnPos = tile;

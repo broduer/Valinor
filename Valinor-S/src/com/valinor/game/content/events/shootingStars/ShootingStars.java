@@ -120,13 +120,13 @@ public class ShootingStars {
     /**
      * The interval at which server-wide shooting star events occur. Event runs every hour
      */
-    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
+    public static final Duration SHOOTING_STARS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
     public void startEvent() {
         if (!DISABLED) {
             LocalDateTime now = LocalDateTime.now();
             long difference = last.until(now, ChronoUnit.MINUTES);
-            if (difference >= EVENT_INTERVAL.toMinutes()) {
+            if (difference >= SHOOTING_STARS_EVENT_INTERVAL.toMinutes()) {
                 ShootingStars star = World.getWorld().get(SPAWNS);
                 if (star != ACTIVE) {
                     // Despawn the star if existing
@@ -138,14 +138,14 @@ public class ShootingStars {
                     addStar();
 
                     last = now;
-                    next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+                    next = LocalDateTime.now().plus(SHOOTING_STARS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
                 }
             }
         }
     }
 
     public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+    public static LocalDateTime next = LocalDateTime.now().plus(SHOOTING_STARS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         TaskManager.submit(new ShootingStarEventTask());

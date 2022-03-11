@@ -51,10 +51,10 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    public static Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
+    public static Duration NIGHTMARE_EVENT_TIMER = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+    public static LocalDateTime next = LocalDateTime.now().plus(NIGHTMARE_EVENT_TIMER.toSeconds(), ChronoUnit.SECONDS);
 
     public void drop(Mob mob) {
         mob.getCombat().getDamageMap().forEach((key, hits) -> {
@@ -146,13 +146,13 @@ public class ChaoticNightmare {
     public void startBossEvent() {
         LocalDateTime now = LocalDateTime.now();
         long difference = last.until(now, ChronoUnit.MINUTES);
-        if (difference >= EVENT_INTERVAL.toMinutes()) {
+        if (difference >= NIGHTMARE_EVENT_TIMER.toMinutes()) {
             // First despawn the npc if existing
             terminateActiveEvent(true);
 
             // Only if it's an actual boss we spawn an NPC.
             last = now;
-            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            next = LocalDateTime.now().plus(NIGHTMARE_EVENT_TIMER.toSeconds(), ChronoUnit.SECONDS);
             ANNOUNCE_5_MIN_TIMER = false;
 
             spawnTile = new Tile(3236, 3641);

@@ -31,10 +31,10 @@ public class HauntedChest {
     /**
      * The interval at which server-wide haunted chests occur. Event runs every two hours
      */
-    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
+    public static final Duration CHEST_SPAWN_TIMER = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+    public static LocalDateTime next = LocalDateTime.now().plus(CHEST_SPAWN_TIMER.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         TaskManager.submit(new HauntedChestTask());
@@ -66,13 +66,13 @@ public class HauntedChest {
     public void startEvent() {
         LocalDateTime now = LocalDateTime.now();
         long difference = last.until(now, ChronoUnit.MINUTES);
-        if (difference >= EVENT_INTERVAL.toMinutes()) {
+        if (difference >= CHEST_SPAWN_TIMER.toMinutes()) {
             // First despawn the object if existing
             despawnChest();
 
             // Only if it's an actual boss we spawn an NPC.
             last = now;
-            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            next = LocalDateTime.now().plus(CHEST_SPAWN_TIMER.toSeconds(), ChronoUnit.SECONDS);
             ANNOUNCE_5_MIN_TIMER = false;
             hauntedChest.spawn();
 
