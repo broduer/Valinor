@@ -28,8 +28,16 @@ public class WildernessKeyChest extends Interaction {
 
     private static final Item[] EXTREMELY_RARE = new Item[]{
         new Item(KORASI_SWORD),
-        new Item(SANGUINESTI_STAFF),
         new Item(BLACK_SANTA_HAT),
+        new Item(GHRAZI_RAPIER),
+        new Item(ELDER_MAUL),
+        new Item(JUSTICIAR_FACEGUARD),
+        new Item(JUSTICIAR_CHESTGUARD),
+        new Item(JUSTICIAR_LEGGUARDS),
+        new Item(KODAI_WAND),
+        new Item(BLADE_OF_SAELDOR),
+        new Item(LEGENDARY_MYSTERY_BOX),
+        new Item(AVERNIC_DEFENDER),
     };
 
     private static final Item[] RARE = new Item[]{
@@ -40,23 +48,17 @@ public class WildernessKeyChest extends Interaction {
         new Item(STATIUSS_PLATEBODY),
         new Item(STATIUSS_PLATELEGS),
         new Item(STATIUSS_WARHAMMER),
-        new Item(GHRAZI_RAPIER),
-        new Item(ELDER_MAUL),
-        new Item(JUSTICIAR_FACEGUARD),
-        new Item(JUSTICIAR_CHESTGUARD),
-        new Item(JUSTICIAR_LEGGUARDS),
-        new Item(KODAI_WAND),
-        new Item(BLADE_OF_SAELDOR),
         new Item(INVERTED_SANTA_HAT),
-        new Item(ANKOU_TOP),
-        new Item(ANKOUS_LEGGINGS),
-        new Item(DRAGON_CLAWS)
+        new Item(DRAGON_CLAWS),
+        new Item(DINHS_BULWARK),
+        new Item(NEITIZNOT_FACEGUARD),
+        new Item(TARGET_TELEPORT_SCROLL),
+        new Item(AMULET_OF_TORTURE),
     };
 
     private static final Item[] UNCOMMON = new Item[]{
         new Item(ARMADYL_GODSWORD),
         new Item(DRAGON_CLAWS),
-        new Item(BLADE_OF_SAELDOR),
         new Item(TOXIC_BLOWPIPE),
         new Item(TOXIC_STAFF_OF_THE_DEAD),
         new Item(MORRIGANS_COIF),
@@ -66,24 +68,31 @@ public class WildernessKeyChest extends Interaction {
         new Item(ZURIELS_ROBE_TOP),
         new Item(ZURIELS_ROBE_BOTTOM),
         new Item(SANTA_HAT),
-        new Item(ANKOU_MASK),
-        new Item(DINHS_BULWARK)
+        new Item(NECKLACE_OF_ANGUISH),
+        new Item(BANDOS_CHESTPLATE),
+        new Item(BANDOS_TASSETS),
+        new Item(ANCIENT_WYVERN_SHIELD),
+        new Item(DRAGONFIRE_WARD),
     };
 
     private static final Item[] COMMON = new Item[]{
         new Item(SERPENTINE_HELM),
         new Item(MAGMA_HELM),
         new Item(TANZANITE_HELM),
-        new Item(NEITIZNOT_FACEGUARD),
-        new Item(TOXIC_STAFF_OF_THE_DEAD),
-        new Item(DINHS_BULWARK),
+        new Item(STAFF_OF_THE_DEAD),
         new Item(DRAGONFIRE_SHIELD),
-        new Item(ANCIENT_WYVERN_SHIELD),
-        new Item(DRAGONFIRE_WARD),
-        new Item(ANKOU_GLOVES),
-        new Item(ANKOU_SOCKS),
         new Item(ARMADYL_GODSWORD),
-        new Item(STATIUSS_WARHAMMER)
+        new Item(OCCULT_NECKLACE),
+        new Item(BANDOS_GODSWORD),
+        new Item(SARADOMIN_GODSWORD),
+        new Item(ZAMORAK_GODSWORD),
+        new Item(DRAGON_DEFENDER),
+        new Item(DHAROKS_ARMOUR_SET),
+        new Item(AHRIMS_ARMOUR_SET),
+        new Item(WEAPON_MYSTERY_BOX),
+        new Item(ARMOUR_MYSTERY_BOX),
+        new Item(DONATOR_MYSTERY_BOX),
+        new Item(AMULET_OF_FURY),
     };
 
     public Item rollReward() {

@@ -109,6 +109,10 @@ public final class NpcDefinition {
         npcDefinition.interfaceType = id;
         npcDefinition.decode(buffer);
 
+        if(npcDefinition.name.toLowerCase().contains("banker")) {
+            npcDefinition.actions = new String[]{"Bank", null, "Talk-to", null, null};
+        }
+
         if(id == 1612) {
             npcDefinition.name = "Battle mage";
             npcDefinition.actions = new String[]{null, "Attack", null, null, null};

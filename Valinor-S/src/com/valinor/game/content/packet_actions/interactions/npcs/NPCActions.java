@@ -86,7 +86,7 @@ public class NPCActions extends NpcIdentifiers {
             }
 
             if(npc.def().name != null && (npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis"))) {
-                player.getDialogueManager().start(new BankTellerDialogue(), npc);
+                player.getBank().open();
                 return;
             }
 
@@ -186,7 +186,7 @@ public class NPCActions extends NpcIdentifiers {
             }
 
             if(npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis")) {
-                player.getBank().open();
+                player.getDialogueManager().start(new BankTellerDialogue(), npc);
                 return;
             }
 

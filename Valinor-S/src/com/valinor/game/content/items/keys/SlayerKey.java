@@ -148,6 +148,6 @@ public class SlayerKey {
         new Item(DRAGONSTONE_GAUNTLETS, 1),
         new Item(DRAGONSTONE_BOOTS, 1),
         new Item(AMULET_OF_BLOOD_FURY, 1),
-	new Item(HAM_JOINT, 1)
+        new Item(HAM_JOINT, 1)
     );
 }

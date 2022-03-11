@@ -151,7 +151,6 @@ public class BrimstoneKey extends Interaction {
         );
 
     private final List<Item> RARE = Arrays.asList(
-
         new Item(BOOTS_OF_BRIMSTONE, 1),
         new Item(DWARF_CANNON_SET, 1),
         new Item(IMBUED_HEART, 1),

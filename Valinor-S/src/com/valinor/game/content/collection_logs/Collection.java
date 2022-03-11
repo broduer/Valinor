@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 import static com.valinor.game.content.collection_logs.CollectionLog.*;
 import static com.valinor.util.CustomItemIdentifiers.*;
+import static com.valinor.util.CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.ABYSSAL_ORPHAN;
@@ -411,7 +412,7 @@ public enum Collection {
         //Drops
         new Item(CustomItemIdentifiers.DONATOR_MYSTERY_BOX), new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX), new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX), new Item(CustomItemIdentifiers.MYSTERY_CHEST),
         new Item(DRAGON_WARHAMMER), new Item(DRAGON_HUNTER_LANCE), new Item(SPECTRAL_SPIRIT_SHIELD), new Item(ARCANE_SPIRIT_SHIELD), new Item(ARMADYL_CROSSBOW),
-        new Item(ARMADYL_GODSWORD), new Item(PKP_TICKET, 25_000), new Item(RING_OF_PRECISION), new Item(RING_OF_SORCERY),
+        new Item(ARMADYL_GODSWORD), new Item(PKP_TICKET), new Item(RING_OF_PRECISION), new Item(RING_OF_SORCERY),
         new Item(RING_OF_MANHUNTING), new Item(ANCIENT_FACEGAURD), new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(DRAGON_CLAWS)),
 
     //Mystery chest
@@ -476,10 +477,29 @@ public enum Collection {
     //Keys
     LARRANS_KEY(AttributeKey.LARRANS_KEYS_OPENED, LogType.KEYS, "Larrans key", new int[]{ItemIdentifiers.LARRANS_KEY}, AttributeKey.LARRANS_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.LARRANS_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
-        new Item(DAGONHAI_HAT), new Item(DAGONHAI_ROBE_TOP), new Item(DAGONHAI_ROBE_BOTTOM), new Item(VESTAS_LONGSWORD), new Item(VESTAS_SPEAR), new Item(VESTAS_CHAINBODY),
-        new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_FULL_HELM), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(ZURIELS_STAFF),
-        new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM), new Item(MORRIGANS_JAVELIN), new Item(MORRIGANS_THROWING_AXE), new Item(MORRIGANS_COIF),
-        new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS)),
+        new Item(VESTAS_LONGSWORD),
+        new Item(VESTAS_SPEAR),
+        new Item(VESTAS_CHAINBODY),
+        new Item(VESTAS_PLATESKIRT),
+        new Item(STATIUSS_WARHAMMER),
+        new Item(STATIUSS_FULL_HELM),
+        new Item(STATIUSS_PLATEBODY),
+        new Item(STATIUSS_PLATELEGS),
+        new Item(ZURIELS_STAFF),
+        new Item(ZURIELS_HOOD),
+        new Item(ZURIELS_ROBE_TOP),
+        new Item(ZURIELS_ROBE_BOTTOM),
+        new Item(MORRIGANS_COIF),
+        new Item(MORRIGANS_LEATHER_BODY),
+        new Item(MORRIGANS_LEATHER_CHAPS),
+        new Item(DRAGON_CLAWS),
+        new Item(TOXIC_BLOWPIPE),
+        new Item(TOXIC_STAFF_OF_THE_DEAD),
+        new Item(DRAGON_WARHAMMER),
+        new Item(ELDER_MAUL),
+        new Item(DINHS_BULWARK),
+        new Item(ANCIENT_STATIUS_WARHAMMER),
+        new Item(ANCIENT_VESTAS_LONGSWORD)),
 
     CRYSTAL_KEY(AttributeKey.CRYSTAL_KEYS_OPENED, LogType.KEYS, "Crystal key", new int[]{ItemIdentifiers.CRYSTAL_KEY}, AttributeKey.CRYSTAL_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.CRYSTAL_KEY, 5), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
@@ -487,11 +507,23 @@ public enum Collection {
 
     SLAYER_KEY(AttributeKey.SLAYER_KEYS_OPENED, LogType.KEYS, "Slayer key", new int[]{CustomItemIdentifiers.SLAYER_KEY}, AttributeKey.SLAYER_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SLAYER_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
-        new Item(DRAGONSTONE_FULL_HELM), new Item(DRAGONSTONE_PLATEBODY), new Item(DRAGONSTONE_PLATELEGS), new Item(DRAGONSTONE_GAUNTLETS), new Item(DRAGONSTONE_BOOTS), new Item(UNCUT_ONYX)),
+        new Item(DRAGONSTONE_FULL_HELM, 1),
+        new Item(DRAGONSTONE_PLATEBODY, 1),
+        new Item(DRAGONSTONE_PLATELEGS, 1),
+        new Item(DRAGONSTONE_GAUNTLETS, 1),
+        new Item(DRAGONSTONE_BOOTS, 1),
+        new Item(AMULET_OF_BLOOD_FURY, 1),
+        new Item(HAM_JOINT, 1)),
 
     BRIMSTONE_KEY(AttributeKey.BRIMSTONE_KEYS_OPENED, LogType.KEYS, "Brimstone key", new int[]{ItemIdentifiers.BRIMSTONE_KEY}, AttributeKey.BRIMSTONE_KEY_LOG_CLAIMED, new Item[]{new Item(ItemIdentifiers.BRIMSTONE_KEY, 10), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
-        new Item(MYSTIC_HAT_DUSK), new Item(MYSTIC_ROBE_TOP_DUSK), new Item(MYSTIC_ROBE_BOTTOM_DUSK), new Item(MYSTIC_BOOTS_DUSK), new Item(MYSTIC_GLOVES_DUSK), new Item(DRAGON_HASTA), new Item(HYDRAS_HEART), new Item(HYDRAS_FANG), new Item(HYDRAS_EYE), new Item(BOOTS_OF_BRIMSTONE)),
+        new Item(BOOTS_OF_BRIMSTONE, 1),
+        new Item(DWARF_CANNON_SET, 1),
+        new Item(IMBUED_HEART, 1),
+        new Item(BRIMSTONE_RING, 1),
+        new Item(KEY_OF_DROPS, 1),
+        new Item(DRAGON_SWORD, 1),
+        new Item(DRAGON_HARPOON, 1)),
 
     COLLECTION_KEY(AttributeKey.COLLECTION_LOG_KEYS_OPENED, LogType.KEYS, "Collection key", new int[]{CustomItemIdentifiers.COLLECTION_KEY}, AttributeKey.COLLECTION_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.COLLECTION_KEY, 1), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
@@ -499,9 +531,17 @@ public enum Collection {
 
     WILDERNESS_KEY(AttributeKey.WILDY_KEYS_OPENED, LogType.KEYS, "Wilderness key", new int[]{CustomItemIdentifiers.WILDERNESS_KEY}, AttributeKey.WILDERNESS_KEY_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.WILDERNESS_KEY, 5), new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX)},
         //Drops
-        new Item(VESTAS_LONGSWORD), new Item(VESTAS_SPEAR), new Item(VESTAS_CHAINBODY), new Item(VESTAS_PLATESKIRT), new Item(STATIUSS_WARHAMMER), new Item(STATIUSS_PLATEBODY), new Item(STATIUSS_PLATELEGS), new Item(STATIUSS_FULL_HELM), new Item(MORRIGANS_COIF), new Item(MORRIGANS_LEATHER_BODY), new Item(MORRIGANS_LEATHER_CHAPS), new Item(ZURIELS_STAFF), new Item(ZURIELS_HOOD), new Item(ZURIELS_ROBE_TOP), new Item(ZURIELS_ROBE_BOTTOM),
-        new Item(AMULET_OF_TORTURE), new Item(NECKLACE_OF_ANGUISH), new Item(HEAVY_BALLISTA), new Item(LIGHT_BALLISTA), new Item(NEITIZNOT_FACEGUARD), new Item(PRIMORDIAL_BOOTS), new Item(PEGASIAN_BOOTS), new Item(ETERNAL_BOOTS), new Item(IMBUED_HEART), new Item(DRAGON_CLAWS), new Item(ARMADYL_GODSWORD),
-        new Item(STAFF_OF_THE_DEAD), new Item(STAFF_OF_LIGHT), new Item(TOXIC_STAFF_OF_THE_DEAD)),
+        new Item(KORASI_SWORD),
+        new Item(BLACK_SANTA_HAT),
+        new Item(GHRAZI_RAPIER),
+        new Item(ELDER_MAUL),
+        new Item(JUSTICIAR_FACEGUARD),
+        new Item(JUSTICIAR_CHESTGUARD),
+        new Item(JUSTICIAR_LEGGUARDS),
+        new Item(KODAI_WAND),
+        new Item(BLADE_OF_SAELDOR),
+        new Item(CustomItemIdentifiers.LEGENDARY_MYSTERY_BOX),
+        new Item(AVERNIC_DEFENDER)),
 
     ;
 

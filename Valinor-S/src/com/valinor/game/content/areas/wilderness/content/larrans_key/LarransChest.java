@@ -71,7 +71,6 @@ public class LarransChest extends Interaction {
     );
 
     private static final List<Item> RARE = Arrays.asList(
-
         new Item(PRIMORDIAL_BOOTS),
         new Item(PEGASIAN_BOOTS),
         new Item(ETERNAL_BOOTS),
