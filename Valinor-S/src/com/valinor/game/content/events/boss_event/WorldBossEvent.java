@@ -24,6 +24,7 @@ import com.valinor.util.NpcIdentifiers;
 import com.valinor.util.Utils;
 
 import java.security.SecureRandom;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
@@ -71,7 +72,7 @@ public class WorldBossEvent {
     /**
      * The interval at which server-wide wilderness boss events occur. Event runs every hour
      */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 6000 : 700;
+    public static Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
     /**
      * The active event being run.
@@ -161,8 +162,8 @@ public class WorldBossEvent {
         World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + activeEvent.description + " has been killed. It will respawn shortly.");
     }
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         // every 60 mins
@@ -189,50 +190,54 @@ public class WorldBossEvent {
     int lastEvent = 0;
 
     public void startBossEvent() {
-        // First despawn the npc if existing
-        terminateActiveEvent(true);
+        LocalDateTime now = LocalDateTime.now();
+        long difference = last.until(now, ChronoUnit.MINUTES);
+        if (difference >= EVENT_INTERVAL.toMinutes()) {
+            // First despawn the npc if existing
+            terminateActiveEvent(true);
 
-        if(GameServer.properties().winter) {
-            if (nextIsPeriodicEventBoss) {
-                nextIsPeriodicEventBoss = false;
-                activeEvent = WorldBosses.SNOWFLAKE;
+            if (GameServer.properties().winter) {
+                if (nextIsPeriodicEventBoss) {
+                    nextIsPeriodicEventBoss = false;
+                    activeEvent = WorldBosses.SNOWFLAKE;
+                } else {
+                    if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
+                        lastEvent = 0;
+                    activeEvent = EVENT_ROTATION[lastEvent];
+                    nextIsPeriodicEventBoss = true;
+                }
             } else {
                 if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
                     lastEvent = 0;
                 activeEvent = EVENT_ROTATION[lastEvent];
                 nextIsPeriodicEventBoss = true;
             }
-        } else {
-            if (++lastEvent > EVENT_ROTATION.length - 1) // reset when its at the end
-                lastEvent = 0;
-            activeEvent = EVENT_ROTATION[lastEvent];
-            nextIsPeriodicEventBoss = true;
-        }
 
-        // Only if it's an actual boss we spawn an NPC.
-        if (activeEvent != WorldBosses.NOTHING) {
-            last = LocalDateTime.now();
-            next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-            // see you can see constructors with ctrl+shift+space
-            Tile tile = POSSIBLE_SPAWNS[new SecureRandom().nextInt(POSSIBLE_SPAWNS.length)];
-            currentSpawnPos = tile;
-            ANNOUNCE_5_MIN_TIMER = false;
+            // Only if it's an actual boss we spawn an NPC.
+            if (activeEvent != WorldBosses.NOTHING) {
+                last = now;
+                next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+                // see you can see constructors with ctrl+shift+space
+                Tile tile = POSSIBLE_SPAWNS[new SecureRandom().nextInt(POSSIBLE_SPAWNS.length)];
+                currentSpawnPos = tile;
+                ANNOUNCE_5_MIN_TIMER = false;
 
-            Npc boss = new Npc(activeEvent.npc, tile).spawn(false);
-            boss.walkRadius(1);
-            boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN,1);
-            if(activeEvent == WorldBosses.CORRUPTED_HUNLLEF) {
-                boss.setCombatMethod(new CorruptedHunleffCombatStrategy());
+                Npc boss = new Npc(activeEvent.npc, tile).spawn(false);
+                boss.walkRadius(1);
+                boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 1);
+                if (activeEvent == WorldBosses.CORRUPTED_HUNLLEF) {
+                    boss.setCombatMethod(new CorruptedHunleffCombatStrategy());
+                }
+
+                //Assign the npc reference.
+                this.activeNpc = Optional.of(boss);
+
+                World.getWorld().sendWorldMessage("<col=6a1a18><img=1100> " + activeEvent.description + " has been spotted " + activeEvent.spawnLocation(boss.tile()));
+                World.getWorld().sendWorldMessage("<col=6a1a18>It despawns in 60 minutes. Hurry!");
+
+                // Broadcast it
+                World.getWorld().sendBroadcast("<img=1100>" + activeEvent.description + " has been spotted " + activeEvent.spawnLocation(boss.tile()));
             }
-
-            //Assign the npc reference.
-            this.activeNpc = Optional.of(boss);
-
-            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100> " + activeEvent.description + " has been spotted " + activeEvent.spawnLocation(boss.tile()));
-            World.getWorld().sendWorldMessage("<col=6a1a18>It despawns in 60 minutes. Hurry!");
-
-            // Broadcast it
-            World.getWorld().sendBroadcast("<img=1100>" + activeEvent.description + " has been spotted " + activeEvent.spawnLocation(boss.tile()));
         }
     }
 

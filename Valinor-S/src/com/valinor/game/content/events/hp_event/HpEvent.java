@@ -14,6 +14,7 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
@@ -50,10 +51,10 @@ public class HpEvent {
     /**
      * The interval at which server-wide hp events occur. Event runs every three hours
      */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 18000 : 700;
+    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(3) : Duration.ofMinutes(7);
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public void drop(Mob mob) {
         var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
@@ -124,24 +125,28 @@ public class HpEvent {
     }
 
     public void startEvent() {
-        // First despawn the npc if existing
-        terminateActiveEvent(true);
+        LocalDateTime now = LocalDateTime.now();
+        long difference = last.until(now, ChronoUnit.MINUTES);
+        if (difference >= EVENT_INTERVAL.toMinutes()) {
+            // First despawn the npc if existing
+            terminateActiveEvent(true);
 
-        // Only if it's an actual boss we spawn an NPC.
-        last = LocalDateTime.now();
-        next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-        ANNOUNCE_5_MIN_TIMER = false;
+            // Only if it's an actual boss we spawn an NPC.
+            last = now;
+            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            ANNOUNCE_5_MIN_TIMER = false;
 
-        spawnTile = new Tile(3269, 3867);
-        Npc hpEventNpc = new Npc(HP_EVENT, spawnTile).spawn(false);
-        hpEventNpc.walkRadius(5);
-        hpEventNpc.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 5);
+            spawnTile = new Tile(3269, 3867);
+            Npc hpEventNpc = new Npc(HP_EVENT, spawnTile).spawn(false);
+            hpEventNpc.walkRadius(5);
+            hpEventNpc.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 5);
 
-        //Assign the npc reference.
-        this.hpEventNpc = Optional.of(hpEventNpc);
+            //Assign the npc reference.
+            this.hpEventNpc = Optional.of(hpEventNpc);
 
-        // Broadcast it
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The HP event has spawned north east of ::bc!");
-        World.getWorld().sendBroadcast("<img=1100>The HP event has spawned north east of ::bc!");
+            // Broadcast it
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The HP event has spawned north east of ::bc!");
+            World.getWorld().sendBroadcast("<img=1100>The HP event has spawned north east of ::bc!");
+        }
     }
 }

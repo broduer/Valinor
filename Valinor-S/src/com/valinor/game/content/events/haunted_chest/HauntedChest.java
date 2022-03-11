@@ -6,6 +6,7 @@ import com.valinor.game.world.World;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -30,10 +31,10 @@ public class HauntedChest {
     /**
      * The interval at which server-wide haunted chests occur. Event runs every two hours
      */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 700;
+    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         TaskManager.submit(new HauntedChestTask());
@@ -63,17 +64,21 @@ public class HauntedChest {
     }
 
     public void startEvent() {
-        // First despawn the object if existing
-        despawnChest();
+        LocalDateTime now = LocalDateTime.now();
+        long difference = last.until(now, ChronoUnit.MINUTES);
+        if (difference >= EVENT_INTERVAL.toMinutes()) {
+            // First despawn the object if existing
+            despawnChest();
 
-        // Only if it's an actual boss we spawn an NPC.
-        last = LocalDateTime.now();
-        next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-        ANNOUNCE_5_MIN_TIMER = false;
-        hauntedChest.spawn();
+            // Only if it's an actual boss we spawn an NPC.
+            last = now;
+            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            ANNOUNCE_5_MIN_TIMER = false;
+            hauntedChest.spawn();
 
-        // Broadcast it
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
-        World.getWorld().sendBroadcast("<img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+            // Broadcast it
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+            World.getWorld().sendBroadcast("<img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+        }
     }
 }

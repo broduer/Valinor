@@ -11,7 +11,7 @@ import static com.valinor.game.content.events.shootingStars.ShootingStars.EVENT_
 public class ShootingStarEventTask extends Task {
 
     public ShootingStarEventTask() {
-        super("ShootingStarEventTask", EVENT_INTERVAL,true);
+        super("ShootingStarEventTask", 100);
     }
 
     @Override

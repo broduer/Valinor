@@ -11,7 +11,7 @@ import static com.valinor.game.content.events.hp_event.HpEvent.EVENT_INTERVAL;
 public class HpEventTask extends Task {
 
     public HpEventTask() {
-        super("HpEventTask", EVENT_INTERVAL,true);
+        super("HpEventTask", 100);
     }
 
     @Override

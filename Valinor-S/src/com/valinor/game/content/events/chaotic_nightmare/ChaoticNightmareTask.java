@@ -12,7 +12,7 @@ import static com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare
 public class ChaoticNightmareTask extends Task {
 
     public ChaoticNightmareTask() {
-        super("ChaoticNightmareTask", EVENT_INTERVAL,true);
+        super("ChaoticNightmareTask", 100);
     }
 
     @Override

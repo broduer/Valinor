@@ -17,6 +17,7 @@ import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.chainedwork.Chain;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -119,28 +120,32 @@ public class ShootingStars {
     /**
      * The interval at which server-wide shooting star events occur. Event runs every hour
      */
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 6000 : 700;
+    public static final Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
     public void startEvent() {
         if (!DISABLED) {
-            ShootingStars star = World.getWorld().get(SPAWNS);
-            if (star != ACTIVE) {
-                // Despawn the star if existing
-                removeStar(false);
-                ACTIVE = star;
-                SHOOTING_STAR_REMOVED = false;
-                String eventMessage = "There's been a sighting of a star around " + getLocation() + "!";
-                World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + eventMessage);
-                addStar();
+            LocalDateTime now = LocalDateTime.now();
+            long difference = last.until(now, ChronoUnit.MINUTES);
+            if (difference >= EVENT_INTERVAL.toMinutes()) {
+                ShootingStars star = World.getWorld().get(SPAWNS);
+                if (star != ACTIVE) {
+                    // Despawn the star if existing
+                    removeStar(false);
+                    ACTIVE = star;
+                    SHOOTING_STAR_REMOVED = false;
+                    String eventMessage = "There's been a sighting of a star around " + getLocation() + "!";
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + eventMessage);
+                    addStar();
 
-                last = LocalDateTime.now();
-                next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+                    last = now;
+                    next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+                }
             }
         }
     }
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         TaskManager.submit(new ShootingStarEventTask());

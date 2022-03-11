@@ -19,6 +19,7 @@ import com.valinor.game.world.items.ground.GroundItemHandler;
 import com.valinor.game.world.position.Tile;
 import com.valinor.util.Utils;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
@@ -50,10 +51,10 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    public static final int EVENT_INTERVAL = GameServer.properties().production ? 12000 : 700;
+    public static Duration EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(2) : Duration.ofMinutes(7);
 
-    public LocalDateTime last = LocalDateTime.now().minus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-    public LocalDateTime next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public void drop(Mob mob) {
         mob.getCombat().getDamageMap().forEach((key, hits) -> {
@@ -143,24 +144,28 @@ public class ChaoticNightmare {
     }
 
     public void startBossEvent() {
-        // First despawn the npc if existing
-        terminateActiveEvent(true);
+        LocalDateTime now = LocalDateTime.now();
+        long difference = last.until(now, ChronoUnit.MINUTES);
+        if (difference >= EVENT_INTERVAL.toMinutes()) {
+            // First despawn the npc if existing
+            terminateActiveEvent(true);
 
-        // Only if it's an actual boss we spawn an NPC.
-        last = LocalDateTime.now();
-        next = LocalDateTime.now().plus((long) (EVENT_INTERVAL * 0.6d), ChronoUnit.SECONDS);
-        ANNOUNCE_5_MIN_TIMER = false;
+            // Only if it's an actual boss we spawn an NPC.
+            last = now;
+            next = LocalDateTime.now().plus(EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+            ANNOUNCE_5_MIN_TIMER = false;
 
-        spawnTile = new Tile(3236, 3641);
-        Npc boss = new Npc(CHAOTIC_NIGHTMARE, spawnTile).spawn(false);
-        boss.walkRadius(1);
-        boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 1);
+            spawnTile = new Tile(3236, 3641);
+            Npc boss = new Npc(CHAOTIC_NIGHTMARE, spawnTile).spawn(false);
+            boss.walkRadius(1);
+            boss.putAttrib(AttributeKey.MAX_DISTANCE_FROM_SPAWN, 1);
 
-        //Assign the npc reference.
-        chaoticNightmare = Optional.of(boss);
+            //Assign the npc reference.
+            chaoticNightmare = Optional.of(boss);
 
-        // Broadcast it
-        World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
-        World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+            // Broadcast it
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+            World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+        }
     }
 }
