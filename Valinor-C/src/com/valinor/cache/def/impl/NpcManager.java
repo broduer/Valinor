@@ -263,6 +263,8 @@ public class NpcManager {
 
             // emblem trader
             case 308:
+                definition.actions = new String[]{"Talk-to", null, "Trade", "Set-bounty", "Active-bounties"};
+                break;
             // Sigbert the Adventurer
             case 3254:
                 definition.actions = new String[]{"Talk-to", null, "Trade", null, null};

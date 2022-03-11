@@ -3,12 +3,15 @@ package com.valinor.game.content.areas.wilderness.content.hitman_services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.valinor.game.GameConstants;
 import com.valinor.game.GameEngine;
 import com.valinor.game.content.group_ironman.IronmanGroup;
+import com.valinor.game.content.mechanics.item_dispenser.Cart;
 import com.valinor.game.content.syntax.impl.SetPersonOfInterest;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
 import com.valinor.util.Utils;
 import org.slf4j.Logger;
@@ -17,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * This class handles all the hitman activity.
@@ -166,6 +170,22 @@ public class Hitman {
             //#update file
             saveBounties();
         }
+    }
+
+    public static void listOfBounties(Player player) {
+        List<String> bounties = new ArrayList<>();
+
+        bounties.add("<br><col=" + Color.MITHRIL.getColorValue() + "> Player - Bounty</col><br><br>");
+        for (PersonOfInterest personOfInterest : bountiesList) {
+            bounties.add(personOfInterest.username+" - "+ Utils.formatRunescapeStyle(personOfInterest.bounty)+" PKP<br>");
+        }
+
+        if(bounties.size() <= 1) {
+            bounties.add("There are no active bounties.");
+        }
+
+        player.sendScroll("Active bounties", Collections.singletonList(bounties).toString().replaceAll(Pattern.quote("["), "").replaceAll(Pattern.quote("]"), "").replaceAll(",", ""));
+
     }
 
 }

@@ -119,7 +119,6 @@ public class CommandManager {
         commands.put("promocode", new PromoCodeCommand());
         commands.put("gamble", new GambleCommand());
         commands.put("help", new HelpCommand());
-        commands.put("bounty", new BountyCommand());
         //commands.put("resettask", new RessetSlayerTask());
 
         /*

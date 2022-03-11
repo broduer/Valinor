@@ -1,5 +1,6 @@
 package com.valinor.game.content.areas.edgeville;
 
+import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.events.wilderness_key.WildernessKeyPlugin;
 import com.valinor.game.content.areas.wilderness.dialogue.ArtifactTraderDialogue;
 import com.valinor.game.content.teleport.OrnateJewelleryBox;
@@ -75,8 +76,15 @@ public class Edgeville extends Interaction {
                 return true;
             }
         } else if (option == 3) {
-
+            if (npc.id() == EMBLEM_TRADER) {
+                Hitman.requestBounty(player);
+                return true;
+            }
         } else if (option == 4) {
+            if (npc.id() == EMBLEM_TRADER) {
+                Hitman.listOfBounties(player);
+                return true;
+            }
         }
         return false;
     }

@@ -83,7 +83,8 @@ public class TestCommand implements Command {
         //Spawn chest
         TheatreOfBlood.spawnLootChests(player);*/
 
-        Hitman.requestBounty(player);
+        //Hitman.requestBounty(player);
+        //Hitman.listOfBounties(player);
 
         player.message("Test command has been activated.");
         //PlayerSession.main(new String[0]);
