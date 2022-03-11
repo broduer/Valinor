@@ -122,6 +122,9 @@ public class ShootingStars {
      */
     public static final Duration SHOOTING_STARS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(SHOOTING_STARS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+
     public void startEvent() {
         if (!DISABLED) {
             LocalDateTime now = LocalDateTime.now();
@@ -143,9 +146,6 @@ public class ShootingStars {
             }
         }
     }
-
-    public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(SHOOTING_STARS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         TaskManager.submit(new ShootingStarEventTask());

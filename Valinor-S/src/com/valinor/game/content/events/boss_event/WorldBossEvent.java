@@ -74,6 +74,9 @@ public class WorldBossEvent {
      */
     public static Duration BOSS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
 
+    public static LocalDateTime last = LocalDateTime.now();
+    public static LocalDateTime next = LocalDateTime.now().plus(BOSS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
+
     /**
      * The active event being run.
      */
@@ -161,9 +164,6 @@ public class WorldBossEvent {
         World.getWorld().clearBroadcast();
         World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18> " + activeEvent.description + " has been killed. It will respawn shortly.");
     }
-
-    public static LocalDateTime last = LocalDateTime.now();
-    public static LocalDateTime next = LocalDateTime.now().plus(BOSS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
     public static void onServerStart() {
         // every 60 mins
