@@ -17,8 +17,6 @@ public class UpgradeWeapons {
                 definition.name = "Abyssal whip tier 1";
                 ItemDefinition.copyInventory(definition, ABYSSAL_WHIP);
                 ItemDefinition.copyEquipment(definition, ABYSSAL_WHIP);
-                definition.recolorTo = new int[]{127};
-                definition.recolorFrom = new int[]{944};
                 definition.modelCustomColor = 127;
                 definition.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
                 break;
@@ -27,8 +25,6 @@ public class UpgradeWeapons {
                 definition.name = "Abyssal whip tier 2";
                 ItemDefinition.copyInventory(definition, ABYSSAL_WHIP);
                 ItemDefinition.copyEquipment(definition, ABYSSAL_WHIP);
-                definition.recolorFrom = new int[]{34770};
-                definition.recolorFrom = new int[]{944};
                 definition.modelCustomColor2 = 34770;
                 definition.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
                 break;
@@ -37,8 +33,6 @@ public class UpgradeWeapons {
                 definition.name = "Abyssal whip tier 3";
                 ItemDefinition.copyInventory(definition, ABYSSAL_WHIP);
                 ItemDefinition.copyEquipment(definition, ABYSSAL_WHIP);
-                definition.recolorTo = new int[]{76770};
-                definition.recolorFrom = new int[]{944};
                 definition.modelCustomColor2 = 76770;
                 definition.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
                 break;
@@ -47,8 +41,6 @@ public class UpgradeWeapons {
                 definition.name = "Abyssal whip tier 4";
                 ItemDefinition.copyInventory(definition, ABYSSAL_WHIP);
                 ItemDefinition.copyEquipment(definition, ABYSSAL_WHIP);
-                definition.recolorTo = new int[]{87770};
-                definition.recolorFrom = new int[]{944};
                 definition.modelCustomColor2 = 87770;
                 definition.inventoryActions = new String[]{null, "Wield", null, null, "Destroy"};
                 break;
@@ -66,28 +58,18 @@ public class UpgradeWeapons {
                         if (id != 15447) {
                             if (id != 15448) {
                                 if (id == 15449) {
-                                    definition.recolorTo = new int[]{87770};
-                                    definition.recolorFrom = new int[]{944};
                                     definition.modelCustomColor2 = 87770;
                                 }
                             } else {
-                                definition.recolorTo = new int[]{76770};
-                                definition.recolorFrom = new int[]{944};
                                 definition.modelCustomColor2 = 76770;
                             }
                         } else {
-                            definition.recolorTo = new int[]{34770};
-                            definition.recolorFrom = new int[]{944};
                             definition.modelCustomColor2 = 34770;
                         }
                     } else {
-                        definition.recolorTo = new int[]{127};
-                        definition.recolorFrom = new int[]{944};
                         definition.modelCustomColor = 127;
                     }
                 } else {
-                    definition.recolorTo = new int[]{374770};
-                    definition.recolorFrom = new int[]{944};
                     definition.modelCustomColor2 = 374770;
                 }
                 definition.inventoryActions = new String[]{null, "Wield", null, "Change-Color", "Destroy"};

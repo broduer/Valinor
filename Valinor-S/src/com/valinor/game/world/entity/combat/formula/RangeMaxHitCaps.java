@@ -1,5 +1,6 @@
 package com.valinor.game.world.entity.combat.formula;
 
+import com.valinor.util.CustomItemIdentifiers;
 import com.valinor.util.ItemIdentifiers;
 
 /**
@@ -9,14 +10,41 @@ import com.valinor.util.ItemIdentifiers;
 public enum RangeMaxHitCaps {
 
     RUNE_CROSSBOW(ItemIdentifiers.RUNE_CROSSBOW,51, 73),
+    RUNE_CROSSBOW_TIER_1(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_1,51, 73),
+    RUNE_CROSSBOW_TIER_2(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_2,51, 73),
+    RUNE_CROSSBOW_TIER_3(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_3,51, 73),
+    RUNE_CROSSBOW_TIER_4(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_4,51, 73),
+    RUNE_CROSSBOW_TIER_5_1(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_5_1,51, 73),
+    RUNE_CROSSBOW_TIER_5_2(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_5_2,51, 73),
+    RUNE_CROSSBOW_TIER_5_3(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_5_3,51, 73),
+    RUNE_CROSSBOW_TIER_5_4(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_5_4,51, 73),
+    RUNE_CROSSBOW_TIER_5_5(CustomItemIdentifiers.RUNE_CROSSBOW_TIER_5_5,51, 73),
     ARMADYL_CROSSBOW(ItemIdentifiers.ARMADYL_CROSSBOW,53, 75),
     ZARYTE_CROSSBOW(ItemIdentifiers.ZARYTE_CROSSBOW,53, 75),
     DRAGON_CROSSBOW(ItemIdentifiers.DRAGON_CROSSBOW,53, 75),
     DRAGON_HUNTER_CROSSBOW(ItemIdentifiers.DRAGON_HUNTER_CROSSBOW,53, 75),
     DARK_BOW(ItemIdentifiers.DARK_BOW,37, 48),
+    DARK_BOW_TIER_1(CustomItemIdentifiers.DARK_BOW_TIER_1,37, 48),
+    DARK_BOW_TIER_2(CustomItemIdentifiers.DARK_BOW_TIER_2,37, 48),
+    DARK_BOW_TIER_3(CustomItemIdentifiers.DARK_BOW_TIER_3,37, 48),
+    DARK_BOW_TIER_4(CustomItemIdentifiers.DARK_BOW_TIER_4,37, 48),
+    DARK_BOW_TIER_5_1(CustomItemIdentifiers.DARK_BOW_TIER_5_1,37, 48),
+    DARK_BOW_TIER_5_2(CustomItemIdentifiers.DARK_BOW_TIER_5_2,37, 48),
+    DARK_BOW_TIER_5_3(CustomItemIdentifiers.DARK_BOW_TIER_5_3,37, 48),
+    DARK_BOW_TIER_5_4(CustomItemIdentifiers.DARK_BOW_TIER_5_4,37, 48),
+    DARK_BOW_TIER_5_5(CustomItemIdentifiers.DARK_BOW_TIER_5_5,37, 48),
     TOXIC_BLOWPIPE(ItemIdentifiers.TOXIC_BLOWPIPE,35, 52),
     MAGIC_SHORTBOW(ItemIdentifiers.MAGIC_SHORTBOW,35, 27),
     MAGIC_SHORTBOW_I(ItemIdentifiers.MAGIC_SHORTBOW_I,35, 27),
+    MAGIC_SHORTBOW_TIER_1(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_1,35, 27),
+    MAGIC_SHORTBOW_TIER_2(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_2,35, 27),
+    MAGIC_SHORTBOW_TIER_3(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_3,35, 27),
+    MAGIC_SHORTBOW_TIER_4(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_4,35, 27),
+    MAGIC_SHORTBOW_TIER_5_1(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_5_1,35, 27),
+    MAGIC_SHORTBOW_TIER_5_2(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_5_2,35, 27),
+    MAGIC_SHORTBOW_TIER_5_3(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_5_3,35, 27),
+    MAGIC_SHORTBOW_TIER_5_4(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_5_4,35, 27),
+    MAGIC_SHORTBOW_TIER_5_5(CustomItemIdentifiers.MAGIC_SHORTBOW_TIER_5_5,35, 27),
     BOW_OF_FAERDHINEN_C(ItemIdentifiers.BOW_OF_FAERDHINEN_C,49, 49),
     BOW_OF_FAERDHINEN_C_25884(ItemIdentifiers.BOW_OF_FAERDHINEN_C_25884,49, 49),
     BOW_OF_FAERDHINEN_C_25886(ItemIdentifiers.BOW_OF_FAERDHINEN_C_25886,49, 49),
