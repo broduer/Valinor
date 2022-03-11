@@ -272,53 +272,10 @@ public class CombatFactory {
         if (type == CombatType.MELEE) {
             // Do melee effects with the calculated damage..
             if (attacker.isPlayer() && target != null) {
-                boolean pvpDummy = target.isNpc() && target.getAsNpc().isPvPCombatDummy();
-                if (target.isPlayer() || pvpDummy) {
-
-                    Player player = attacker.getAsPlayer();
-
-                    //Hard cap melee special attacks
-                    if (player.isSpecialActivated()) {
-                        if (player.getCombatSpecial() == CombatSpecial.DRAGON_DAGGER) {
-                            if (damage > 48) {
-                                damage = 48;
-                            }
-                        }
-                        if (player.getCombatSpecial() == CombatSpecial.ARMADYL_GODSWORD) {
-                            if (damage > 87) {
-                                damage = 87;
-                            }
-                        }
-                        if (player.getCombatSpecial() == CombatSpecial.KORASI_SWORD) {
-                            if (damage > 80) {
-                                damage = 80;
-                            }
-                        }
-                        if (player.getCombatSpecial() == CombatSpecial.ANCIENT_WARRIOR_MAUL) {
-                            if (damage > 86) {
-                                damage = player.getEquipment().hasAt(EquipSlot.WEAPON, ANCIENT_WARRIOR_MAUL_C) ? 89 : 86;
-                            }
-                        }
-                        if (player.getCombatSpecial() == CombatSpecial.ANCIENT_WARRIOR_AXE) {
-                            if (damage > 86) {
-                                damage = player.getEquipment().hasAt(EquipSlot.WEAPON, ANCIENT_WARRIOR_AXE_C) ? 89 : 86;
-                            }
-                        }
-                    }
-                }
             }
         } else if (type == CombatType.RANGED) {
             if (attacker.isPlayer()) {
                 Player player = attacker.getAsPlayer();
-
-                //Hard cap ranged special attacks
-                if (player.isSpecialActivated()) {
-                    if (player.getCombatSpecial() == CombatSpecial.DARK_BOW) {
-                        if (damage > 48) {
-                            damage = 48;
-                        }
-                    }
-                }
 
                 if (Equipment.hasAmmyOfDamned(player) && Equipment.fullKaril(player) && Utils.rollDie(100, 25)) {
                     // Second hit deals 50% of first hit. First hit will have protection prayers accounted for.
@@ -330,18 +287,6 @@ public class CombatFactory {
 
             if (attacker.isPlayer()) {
                 Player player = attacker.getAsPlayer();
-
-                //Hard cap magic special attacks
-                if (player.getCombatSpecial() == CombatSpecial.VOLATILE_NIGHTMARE_STAFF) {
-                    if (damage > 80) {
-                        damage = 80;
-                    }
-                }
-                if (player.getCombatSpecial() == CombatSpecial.CURSED_NIGHTMARE_STAFF) {
-                    if (damage > 82) {
-                        damage = 82;
-                    }
-                }
             }
         }
 

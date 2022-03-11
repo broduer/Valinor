@@ -41,6 +41,8 @@ public class MeleeMaxHit {
         //Start by calculating OSRS max hit
         EquipmentInfo.Bonuses bonuses = EquipmentInfo.totalBonuses(player, World.getWorld().equipmentInfo());
 
+        int weapon = player.getEquipment().get(3) == null ? -1 : player.getEquipment().get(3).getId();
+
         //Prayer goes first
         double prayerBonus = 1;
         if (Prayers.usingPrayer(player, Prayers.BURST_OF_STRENGTH)) {
@@ -355,6 +357,26 @@ public class MeleeMaxHit {
 
         if(player.hasPetOut("Corrupted Youngllef pet")) {
             maxHit += 2;
+        }
+
+        //Check spec first
+        boolean isPvPDummy = target.isNpc() && !includeNpcMax;
+        if(isPvPDummy || target.isPlayer()) {
+            MeleeMaxHitCaps cap = MeleeMaxHitCaps.forWeapon(weapon);
+            if(player.isSpecialActivated()) {
+                if (cap != null) {
+                    if (maxHit > cap.maxHitSpec) {
+                        maxHit = cap.maxHitSpec;
+                    }
+                }
+            } else {
+                //Otherwise, attack wasn't a spec
+                if(cap != null) {
+                    if(maxHit > cap.maxHit) {
+                        maxHit = cap.maxHit;
+                    }
+                }
+            }
         }
 
         //System.out.println("Final max hit = "+maxHit);

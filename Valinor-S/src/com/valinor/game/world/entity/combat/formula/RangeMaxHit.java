@@ -317,6 +317,26 @@ public class RangeMaxHit {
             maxHit += 2;
         }
 
+        //Check spec first
+        boolean isPvPDummy = target.isNpc() && !includeNpcMax;
+        if(isPvPDummy || target.isPlayer()) {
+            RangeMaxHitCaps cap = RangeMaxHitCaps.forWeapon(weapon);
+            if(player.isSpecialActivated()) {
+                if (cap != null) {
+                    if (maxHit > cap.maxHitSpec) {
+                        maxHit = cap.maxHitSpec;
+                    }
+                }
+            } else {
+                //Otherwise, attack wasn't a spec
+                if(cap != null) {
+                    if(maxHit > cap.maxHit) {
+                        maxHit = cap.maxHit;
+                    }
+                }
+            }
+        }
+
         //System.out.println("final max hit "+maxHit);
 
         return maxHit;

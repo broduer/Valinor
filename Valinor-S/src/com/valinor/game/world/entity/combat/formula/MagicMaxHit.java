@@ -274,6 +274,25 @@ public class MagicMaxHit {
                 maxHit += 2;
             }
 
+            //Ice barrage in PvP is capped at 41
+            if (spell_name.equals("Ice barrage") && target.isPlayer()) {
+                maxHit = 41;
+            }
+
+            //Fire surge in PvP is capped at 49
+            if (spell_name.equals("Fire surge") && target.isPlayer()) {
+                maxHit = 49;
+            }
+
+            if(player.isSpecialActivated() && target.isPlayer()) {
+                MagicMaxitCaps cap = MagicMaxitCaps.forWeapon(weapon);
+                if(cap != null) {
+                    if(maxHit > cap.maxHitSpec) {
+                        maxHit = cap.maxHitSpec;
+                    }
+                }
+            }
+
             //Tier 4 melee weapons
             List<Integer> tier_four = new ArrayList<>(List.of(STAFF_OF_LIGHT_TIER_4));
             if (tier_four.stream().anyMatch(w -> player.getEquipment().hasAt(EquipSlot.WEAPON, w))) {
