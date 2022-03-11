@@ -40,7 +40,7 @@ public class QuestTabSidebarWidget extends Widget {
         }
         scrollTab1.width = 148;
         scrollTab1.height = 170;
-        scrollTab1.scrollMax = 500;
+        scrollTab1.scrollMax = 550;
 
         widget.totalChildren(9);
         widget.child(0, 53401, 4, 40);
