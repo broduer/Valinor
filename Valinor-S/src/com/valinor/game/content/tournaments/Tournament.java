@@ -163,7 +163,7 @@ public class Tournament {
             DailyTaskManager.increase(DailyTasks.WIN_PVP_TOURNY, winner);
             winner.message("You have won the " + fullName() + " Tournament! You now have won "+Color.BLUE.wrap(""+wins)+" tournaments.");
             winner.message("You've received 1 tournament point! You now have won "+Color.BLUE.wrap(""+points)+" tournament points.");
-            World.getWorld().sendWorldMessage(format("<img=452><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
+            World.getWorld().sendWorldMessage(format("<img=1082><shad=0>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info(format("<img=505>[<col=" + Color.MEDRED.getColorValue() + ">Tournament</col>]: %s has won the %s tournament!", winner.getUsername(), fullName()));
             //logger.info("PvP tournament rewards: " + reward.toString());
             Utils.sendDiscordInfoLog(winner.getUsername()+" has won the "+fullName()+" tournament! Reward: "+ reward.toString(), "tourny_winner");

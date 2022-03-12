@@ -3043,11 +3043,11 @@ public class Player extends Mob {
                 this.getPacketSender().sendString(WILDERNESS_ACTIVITY_LOCATION.childId, QuestTab.InfoTab.INFO_TAB.get(QuestTab.InfoTab.WILDERNESS_ACTIVITY_LOCATION.childId).fetchLineData(this));
 
                 LocalDateTime now = LocalDateTime.now();
-                long minutesTillWildyBoss = now.until(WorldBossEvent.getINSTANCE().next, ChronoUnit.MINUTES);
+                long minutesTillWildyBoss = now.until(WorldBossEvent.next, ChronoUnit.MINUTES);
                 long minutesTillWildyKey = now.until(WildernessKeyPlugin.next, ChronoUnit.MINUTES);
-                long minutesTillChaoticNightmare = now.until(ChaoticNightmare.getInstance().next, ChronoUnit.MINUTES);
-                long minutesTillHPEvent = now.until(HpEvent.getInstance().next, ChronoUnit.MINUTES);
-                long minutesTillHauntedChestEvent = now.until(HauntedChest.getInstance().next, ChronoUnit.MINUTES);
+                long minutesTillChaoticNightmare = now.until(ChaoticNightmare.next, ChronoUnit.MINUTES);
+                long minutesTillHPEvent = now.until(HpEvent.next, ChronoUnit.MINUTES);
+                long minutesTillHauntedChestEvent = now.until(HauntedChest.next, ChronoUnit.MINUTES);
 
                 if (minutesTillWildyBoss == 5) {
                     if (!WorldBossEvent.ANNOUNCE_5_MIN_TIMER) {
@@ -3059,28 +3059,28 @@ public class Player extends Mob {
                 if (minutesTillWildyKey == 5) {
                     if (!WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER) {
                         WildernessKeyPlugin.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The wilderness key will spawn in 5 minutes, gear up!");
+                        World.getWorld().sendWorldMessage("<col=800000><img=1939>The wilderness key will spawn in 5 minutes, gear up!");
                     }
                 }
 
                 if (minutesTillChaoticNightmare == 5) {
                     if (!ChaoticNightmare.ANNOUNCE_5_MIN_TIMER) {
                         ChaoticNightmare.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The Chaotic nightmare will spawn in 5 minutes, gear up!");
+                        World.getWorld().sendWorldMessage("<col=800000><img=1405>The Chaotic nightmare will spawn in 5 minutes, gear up!");
                     }
                 }
 
                 if (minutesTillHPEvent == 5) {
                     if (!HpEvent.ANNOUNCE_5_MIN_TIMER) {
                         HpEvent.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The HP Event will spawn in 5 minutes, gear up!");
+                        World.getWorld().sendWorldMessage("<col=800000><img=1396>The HP Event will spawn in 5 minutes, gear up!");
                     }
                 }
 
                 if (minutesTillHauntedChestEvent == 5) {
                     if (!HauntedChest.ANNOUNCE_5_MIN_TIMER) {
                         HauntedChest.ANNOUNCE_5_MIN_TIMER = true;
-                        World.getWorld().sendWorldMessage("<col=800000><img=936>The Haunted chest will spawn in 5 minutes!");
+                        World.getWorld().sendWorldMessage("<col=800000><img=1394>The Haunted chest will spawn in 5 minutes!");
                     }
                 }
 
