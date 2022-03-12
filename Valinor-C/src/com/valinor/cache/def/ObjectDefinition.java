@@ -12,6 +12,7 @@ import com.valinor.io.Buffer;
 import com.valinor.net.requester.ResourceProvider;
 import com.valinor.util.FileUtils;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -297,6 +298,11 @@ public final class ObjectDefinition {
                 def.solid = false;
                 return def;
             }
+        }
+
+        if(id == 31484) {
+            def.name = "Haunted chest";
+            def.modelIds = new int[] {55630};
         }
 
         /*if(def.id > 16500) {

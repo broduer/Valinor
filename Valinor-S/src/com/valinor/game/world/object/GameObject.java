@@ -10,6 +10,7 @@ import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.route.ClipUtils;
 import com.valinor.util.SecondsTimer;
+import com.valinor.util.chainedwork.Chain;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -496,6 +497,15 @@ public class GameObject extends Entity implements Cloneable {
 
     public GameObject spawn() {
         ObjectManager.addObj(this);
+        return this;
+    }
+
+    public GameObject spawnForSetTime(int ticks, String worldMessage) {
+        ObjectManager.addObj(this);
+        Chain.bound(null).name("GameObject:spawnForSetTime").runFn(ticks, () -> {
+            ObjectManager.removeObj(this);
+            World.getWorld().sendWorldMessage(worldMessage);
+        });
         return this;
     }
 }
