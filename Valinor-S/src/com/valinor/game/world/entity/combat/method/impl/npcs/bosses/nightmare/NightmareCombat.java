@@ -123,9 +123,11 @@ public class NightmareCombat extends CommonCombatMethod {
 
         World.getWorld().getNpcs().forEachInArea(THE_NIGHTMARE_AREA, n -> {
             if(n.def().name.toLowerCase().contains("nightmare")) {
-                Nightmare nightmare = (Nightmare) n;
-                if(nightmare != null) {
-                    nightmare.husksSpawned.clear();
+                if(n instanceof Nightmare) {
+                    Nightmare nightmare = (Nightmare) n;
+                    if (nightmare != null) {
+                        nightmare.husksSpawned.clear();
+                    }
                 }
             }
             n.remove(player);

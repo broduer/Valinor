@@ -615,7 +615,7 @@ public class NpcDeath {
             }
 
             int finalRespawnTimer = respawnTimer;
-            Chain.bound(null).runFn(npc.combatInfo() != null ? npc.combatInfo().deathlen : 5, () -> {
+            Chain.bound(null).name("NpcDeathTask").runFn(npc.combatInfo() != null ? npc.combatInfo().deathlen : 5, () -> {
                 if (killer != null) {
                     //Do inferno minigame death here and fight caves
 
@@ -786,7 +786,7 @@ public class NpcDeath {
                         npc.setController(null);
                     }
 
-                    Chain.bound(null).runFn(finalRespawnTimer, () -> {
+                    Chain.bound(null).name("NpcDeathTaskRespawn").runFn(finalRespawnTimer, () -> {
                         GwdLogic.onRespawn(npc);
                         respawn(npc);
                     });
