@@ -248,9 +248,7 @@
     "id": 402,
     "x": 3511,
     "y": 3508,
-    "walkRange": 3,
-    "realismExclusive": true,
-    "economyExclusive": true
+    "walkRange": 3
   },
   // Mazchna
   {

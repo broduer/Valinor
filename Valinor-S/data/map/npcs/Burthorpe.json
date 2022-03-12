@@ -276,9 +276,7 @@
     "id": 401,
     "x": 2931,
     "y": 3536,
-    "walkRange": 1,
-    "realismExclusive": true,
-    "economyExclusive": true
+    "walkRange": 1
   },
   // Turael
   {

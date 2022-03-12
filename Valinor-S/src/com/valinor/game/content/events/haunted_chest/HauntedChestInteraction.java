@@ -14,8 +14,7 @@ import java.util.List;
 
 import static com.valinor.util.CustomItemIdentifiers.PKP_TICKET;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.ItemIdentifiers.BANDOS_GODSWORD;
-import static com.valinor.util.ObjectIdentifiers.CHEST_25685;
+import static com.valinor.util.ObjectIdentifiers.DEADMAN_CHEST_31484;
 
 /**
  * @author Patrick van Elderen <https://github.com/PVE95>
@@ -44,7 +43,7 @@ public class HauntedChestInteraction extends Interaction {
     @Override
     public boolean handleObjectInteraction(Player player, GameObject object, int option) {
         if(option == 1) {
-            if(object.getId() == CHEST_25685) {
+            if(object.getId() == DEADMAN_CHEST_31484) {
                 if (player.skills().level(Skills.THIEVING) < 99) {
                     player.message("You need a thieving level of 99 to search the Haunted chest.");
                     return true;
