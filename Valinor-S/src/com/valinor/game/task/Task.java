@@ -27,7 +27,7 @@ public abstract class Task {
      * We don't want MobFollowTask to run indefinitely except for pets,
      * but we handle that elsewhere.
      */
-    private static final String[] IGNORED_TASKS = {"IceImpTask", "farming_task", "DidYouKnowTask", "HotspotTask", "ClearTrapsTask", "WildernessActivityManagerTask", "WildernessKeyPluginTask", "TopPkersAnnouncementTask", "ShootingStarEventTask", "WorldBossEventTask", "ChristmasIceImpTask", "PuroPuroImplingTask", "DropRateLampTask", "PoisonTask", "VenomTask", "FarmingTask", "shanomi_shout_task", "TournamentCycleTask", "TournamentLobbyTask", "AutoSaveTask", "MobFollowTask", "RegionalPetTask", "WildernessBossEventTask", "BossEventCancelTask", "AddShopStockTask", "ImplingTask"};
+    private static final String[] IGNORED_TASKS = {"IceImpTask", "farming_task", "DidYouKnowTask", "HotspotTask", "ClearTrapsTask", "WildernessActivityManagerTask", "WildernessKeyPluginTask", "TopPkersAnnouncementTask", "ShootingStarEventTask", "WorldBossEventTask", "ChaoticNightmareTask", "HpEventTask", "HauntedChestTask", "ChristmasIceImpTask", "PuroPuroImplingTask", "DropRateLampTask", "PoisonTask", "VenomTask", "FarmingTask", "shanomi_shout_task", "TournamentCycleTask", "TournamentLobbyTask", "AutoSaveTask", "MobFollowTask", "RegionalPetTask", "WildernessBossEventTask", "BossEventCancelTask", "AddShopStockTask", "ImplingTask"};
 
     /** The default key for every task. */
     public static final Object DEFAULT_KEY = new Object();

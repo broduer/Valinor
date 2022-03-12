@@ -16,10 +16,10 @@ import static com.valinor.util.ItemIdentifiers.*;
  */
 public class GameConstants {
 
-    public static final String VOTE_URL = "https://valinor-os.com/voting/";
-    public static final String STORE_URL = "https://valinor-os.com/store/";
-    public static final String DONATOR_FEATURES_URL = "https://valinor-os.com/features/";
-    public static final String WEBSITE_URL = "https://valinor-os.com/";
+    public static final String VOTE_URL = "https://valinorpk.com/voting/";
+    public static final String STORE_URL = "https://valinorpk.com/store/";
+    public static final String DONATOR_FEATURES_URL = "https://valinorpk.com/features/";
+    public static final String WEBSITE_URL = "https://valinorpk.com/";
     public static final String RULES_URL = "";
     public static final String DISCORD_URL = "https://discord.gg/hESDzJVkz4";
 
