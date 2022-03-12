@@ -138,5 +138,5 @@
   "doubleVotePointsEvent": false,
   "halloween": false,
   "christmas": false,
-  "winter": true
+  "winter": false
 }

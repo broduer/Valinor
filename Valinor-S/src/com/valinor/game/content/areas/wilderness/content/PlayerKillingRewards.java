@@ -359,6 +359,12 @@ public class PlayerKillingRewards {
                     killer.getRisk().reward();
                 }
 
+                //1 in 25 chance to receive a pvp task bottle
+                if(World.getWorld().rollDie(25,1)) {
+                    killer.inventory().addOrBank(new Item(TASK_BOTTLE_PVP));
+                    killer.message(Color.PURPLE.wrap("You've found a task bottle (pvp) searching the corpse of "+target.getUsername()+"."));
+                }
+
                 //1 in 250 chance to receive a mystery box
                 if(World.getWorld().rollDie(250,1)) {
                     killer.inventory().addOrBank(new Item(DONATOR_MYSTERY_BOX));
