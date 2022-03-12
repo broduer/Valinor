@@ -56,8 +56,7 @@ public enum PlayerRights {
 
     HEAD_ADMIN("Head Admin", 1940, 24, 4),
 
-
-    COLLECTION_IRONMAN("Collection ironman", 470, 25, 0),
+    COLLECTION_IRONMAN("Collection ironman", 1398, 25, 0),
 
     ;
 

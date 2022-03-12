@@ -422,7 +422,7 @@ public final class Equipment extends ItemContainer {
         }
 
         if (equip.getId() == IRONMAN_HELM || equip.getId() == IRONMAN_PLATEBODY || equip.getId() == IRONMAN_PLATELEGS) {
-            if (player.gameMode().isIronman() || player.gameMode().isCollectionIron()) {
+            if (player.gameMode().isIronman() && player.gameMode().isCollectionIron()) {
                 player.message("<col=FF0000>You cannot wear this equipment as you are no longer a ironman.");
                 return false;
             }

@@ -51,6 +51,14 @@ object CollectOldPayments {
                 return Item(CustomItemIdentifiers.DONATOR_TICKET, 100)
             }
 
+            16451 -> {
+                return Item(CustomItemIdentifiers.DONATOR_TICKET, 125)
+            }
+
+            16452 -> {
+                return Item(CustomItemIdentifiers.DONATOR_TICKET, 35)
+            }
+
             16453 -> {
                 return Item(CustomItemIdentifiers.DONATOR_TICKET, 250)
             }
@@ -69,7 +77,7 @@ object CollectOldPayments {
         }
 
         //Invalid item
-        return Item(CustomItemIdentifiers.DONATOR_TICKET, 250)
+        return Item(CustomItemIdentifiers.DONATOR_TICKET, 1)
     }
 
     fun Player.collectPayments() {
@@ -166,6 +174,14 @@ object CollectOldPayments {
                             paymentAmount = 2.50
                         }
 
+                        16451 -> {
+                            paymentAmount = 5.0
+                        }
+
+                        16452 -> {
+                            paymentAmount = 1.0
+                        }
+
                         16453 -> {
                             paymentAmount = 10.0
                         }
@@ -189,11 +205,14 @@ object CollectOldPayments {
                     //Check if we can update the rank
                     memberRights.update(this, false)
 
-                    val bonus = row.itemAmt / 2
                     val r = purchaseItem(row.itemId)
-                    inventory.addOrBank(Item(r.id, (r.amount * row.itemAmt) + bonus))
+                    val bonus = row.itemAmt / 2
+                    val amt = (r.amount * row.itemAmt) + bonus * r.amount
+                    //println(r)
+                    //println(amt)
+                    inventory.addOrBank(Item(r.id, amt))
 
-                    Utils.sendDiscordInfoLog("$username used command: ::redeemold and claimed their payment of X${row.itemAmt} bonus amt + $bonus ${Item(row.itemId).name()}.", "donations_claimed")
+                    Utils.sendDiscordInfoLog("$username used command: ::redeemold and claimed their payment of X${row.itemAmt} ${Item(row.itemId).name()}.", "donations_claimed")
                 }
             }
         }

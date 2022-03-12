@@ -28,7 +28,7 @@ public class GameModeInterface extends Interaction {
         IRONMAN(22813, 502, GameMode.REGULAR, new String[]{}, new String[]{"An Iron Man can't receive items or assistance" + "<br> from other players. They cannot trade," + "<br>stake, receive PVP loot or pickup dropped items."}),
         HARDCORE_IRONMAN(22814, 504, GameMode.HARDCORE, new String[]{"Rookie: X50/X150 combat experience no drop rate bonus.", "<br>Challenger: X30 experience, 5% drop rate bonus.", "<br>Gladiator: X7.5 experience, 10% drop rate bonus."}, new String[]{"A hardcore ironman account loses its status" + "<br>upon death."}),
         ULTIMATE_IRONMAN(22815, 503, GameMode.ULTIMATE, new String[]{"Rookie: X50/X150 combat experience no drop rate bonus.", "<br>Challenger: X30 experience, 5% drop rate bonus.", "<br>Gladiator: X7.5 experience, 10% drop rate bonus."}, new String[]{"In addition, an Ultimate Iron Man cannot use" + "<br>banks."}),
-        COLLECTION_IRONMAN(22816, 470, GameMode.COLLECTION_IRON, new String[]{"Rookie: X50/X150 combat experience no drop rate bonus.", "<br>Challenger: X30 experience, 5% drop rate bonus.", "<br>Gladiator: X7.5 experience, 10% drop rate bonus."}, new String[]{"A Collection ironman account cannot use items"+"<br>they have not unlocked. In the collection log." + "<br>They are allowed to trade, other Collection" + "<br>ironman."});
+        COLLECTION_IRONMAN(22816, 1398, GameMode.COLLECTION_IRON, new String[]{"Rookie: X50/X150 combat experience no drop rate bonus.", "<br>Challenger: X30 experience, 5% drop rate bonus.", "<br>Gladiator: X7.5 experience, 10% drop rate bonus."}, new String[]{"A Collection ironman account cannot use items"+"<br>they have not unlocked. In the collection log." + "<br>They are allowed to trade, other Collection" + "<br>ironman."});
 
         public final int button, spriteId;
         public final GameMode gameMode;
@@ -155,7 +155,7 @@ public class GameModeInterface extends Interaction {
         player.getTimers().register(TimerKey.CLICK_DELAY,2);
 
         switch (player.<GameMode>getAttribOr(AttributeKey.CURRENT_GAME_MODE_SELECTED, GameMode.NONE)) {
-            case REGULAR, COLLECTION_IRON -> {
+            case REGULAR -> {
                 if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
                     player.setPlayerRights(PlayerRights.IRON_MAN);
                 }
@@ -178,6 +178,12 @@ public class GameModeInterface extends Interaction {
                     player.setPlayerRights(PlayerRights.INSTANT_PKER);
                 }
                 gearUp(player, GameMode.INSTANT_PKER);
+            }
+            case COLLECTION_IRON -> {
+                if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
+                    player.setPlayerRights(PlayerRights.COLLECTION_IRONMAN);
+                }
+                gearUp(player, GameMode.REGULAR);
             }
         }
         if (!player.getPlayerRights().isStaffMemberOrYoutuber(player)) {
