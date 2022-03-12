@@ -77,8 +77,8 @@ public class HauntedChest {
             hauntedChest.spawn();
 
             // Broadcast it
-            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
-            World.getWorld().sendBroadcast("<img=1100>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1394>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+            World.getWorld().sendBroadcast("<img=1394>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
         }
     }
 }

@@ -8,7 +8,6 @@ import com.valinor.game.world.entity.mob.player.commands.impl.owner.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.players.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.admin.*;
-import com.valinor.game.world.entity.mob.player.commands.impl.staff.event_manager.HPEventCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.moderator.*;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.JailCommand;
 import com.valinor.game.world.entity.mob.player.commands.impl.staff.server_support.KickPlayerCommand;
@@ -120,6 +119,7 @@ public class CommandManager {
         commands.put("gamble", new GambleCommand());
         commands.put("help", new HelpCommand());
         //commands.put("resettask", new RessetSlayerTask());
+        commands.put("hpevent", new HpEventTeleportCommand());
 
         /*
          * Member commands
@@ -204,11 +204,6 @@ public class CommandManager {
         commands.put("findalt", new CheckIpCommand());
         commands.put("up", new UpCommand());
         commands.put("down", new DownCommand());
-
-        /*
-         * Community manager
-         */
-        commands.put("hpevent", new HPEventCommand());
 
         /*
          * Dev commands

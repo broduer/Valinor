@@ -145,8 +145,8 @@ public class HpEvent {
             this.hpEventNpc = Optional.of(hpEventNpc);
 
             // Broadcast it
-            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>The HP event has spawned north east of ::bc!");
-            World.getWorld().sendBroadcast("<img=1100>The HP event has spawned north east of ::bc!");
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1396>The HP event has spawned type ::hpevent to get there!");
+            World.getWorld().sendBroadcast("<img=1396>The HP event has spawned type ::hpevent to get there!");
         }
     }
 }

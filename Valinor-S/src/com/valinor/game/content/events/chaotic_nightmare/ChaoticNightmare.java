@@ -164,8 +164,8 @@ public class ChaoticNightmare {
             chaoticNightmare = Optional.of(boss);
 
             // Broadcast it
-            World.getWorld().sendWorldMessage("<col=6a1a18><img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
-            World.getWorld().sendBroadcast("<img=1100>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1405>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+            World.getWorld().sendBroadcast("<img=1405>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
         }
     }
 }

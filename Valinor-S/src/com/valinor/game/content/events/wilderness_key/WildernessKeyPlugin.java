@@ -37,7 +37,7 @@ public class WildernessKeyPlugin {
 
     private static final String KEY_ESCAPE_MESSAGE = "<col=800000>%s</col> has escaped with the Wilderness key!";
 
-    private static final String SPRITE = "<img=936> ";
+    private static final String SPRITE = "<img=1939> ";
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
