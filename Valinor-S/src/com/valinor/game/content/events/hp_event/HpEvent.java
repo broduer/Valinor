@@ -58,7 +58,7 @@ public class HpEvent {
 
     public void drop(Mob mob) {
         var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
-        list.stream().limit(1).forEach(e -> {
+        list.stream().limit(2).forEach(e -> {
             var key = e.getKey();
             Player player = (Player) key;
             if (mob.tile().isWithinDistance(player.tile(), 12)) {

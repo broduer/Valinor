@@ -141,6 +141,7 @@ public class ItemDefinition implements Definition {
             name = "Starter box";
         } else if (id == CLAN_BOX) {
             name = "Clan box";
+            grandexchange = true;
         } else if (id == CURSED_NIGHTMARE_STAFF) {
             name = "Cursed nightmare staff";
             grandexchange = true;
