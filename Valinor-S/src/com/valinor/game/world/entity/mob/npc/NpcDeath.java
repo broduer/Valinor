@@ -6,16 +6,15 @@ import com.valinor.game.content.achievements.Achievements;
 import com.valinor.game.content.achievements.AchievementsManager;
 import com.valinor.game.content.announcements.ServerAnnouncements;
 import com.valinor.game.content.areas.burthope.warriors_guild.MagicalAnimator;
-import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
-import com.valinor.game.content.events.boss_event.WorldBossEvent;
 import com.valinor.game.content.areas.zeah.catacombs.KourendCatacombs;
 import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.daily_tasks.DailyTasks;
+import com.valinor.game.content.events.boss_event.WorldBossEvent;
+import com.valinor.game.content.events.chaotic_nightmare.ChaoticNightmare;
 import com.valinor.game.content.events.hp_event.HpEvent;
 import com.valinor.game.content.raids.chamber_of_xeric.great_olm.Phases;
 import com.valinor.game.content.raids.party.Party;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
-import com.valinor.game.content.skill.impl.slayer.SlayerConstants;
 import com.valinor.game.content.skill.impl.slayer.slayer_partner.SlayerPartner;
 import com.valinor.game.content.tasks.BottleTasks;
 import com.valinor.game.world.World;
@@ -44,7 +43,9 @@ import com.valinor.game.world.object.ObjectManager;
 import com.valinor.game.world.position.Area;
 import com.valinor.game.world.position.Tile;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
-import com.valinor.util.*;
+import com.valinor.util.Color;
+import com.valinor.util.NpcIdentifiers;
+import com.valinor.util.Utils;
 import com.valinor.util.chainedwork.Chain;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -59,8 +60,8 @@ import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.world.entity.AttributeKey.*;
 import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
 import static com.valinor.util.CustomNpcIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.*;
 import static com.valinor.util.NpcIdentifiers.ICELORD;
+import static com.valinor.util.NpcIdentifiers.*;
 
 /**
  * Represents a npc death task, which handles everything
@@ -116,13 +117,6 @@ public class NpcDeath {
                     case DIAMOND_MEMBER -> Utils.secondsToTicks(8);
                     case DRAGONSTONE_MEMBER, ONYX_MEMBER, ZENYTE_MEMBER -> Utils.secondsToTicks(10);
                 };
-
-                var biggest_and_baddest_perk = killer.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.BIGGEST_AND_BADDEST) && Slayer.creatureMatches(killer, npc.id());
-                var ancientRevSpawnRoll = 25;
-                var superiorSpawnRoll = biggest_and_baddest_perk ? 4 : 6;
-
-                var reduction = ancientRevSpawnRoll * killer.memberAncientRevBonus() / 100;
-                ancientRevSpawnRoll -= reduction;
 
                 var legendaryInsideCave = killer.tile().memberCave() && killer.getMemberRights().isDragonstoneMemberOrGreater(killer);
                 var VIPInsideCave = killer.tile().memberCave() && killer.getMemberRights().isDragonstoneMemberOrGreater(killer);
@@ -256,12 +250,6 @@ public class NpcDeath {
                 if (npc.id() == ANCIENT_KING_BLACK_DRAGON) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
-                    if(!npc.ancientSpawn()) {
-                        Chain.runGlobal(30, () -> {
-                            var kingBlackDragon = new Npc(KING_BLACK_DRAGON, npc.spawnTile());
-                            World.getWorld().getNpcs().add(kingBlackDragon);
-                        });
-                    }
                 }
 
                 if (npc.def().name.equalsIgnoreCase("Lizardman shaman")) {
@@ -290,13 +278,6 @@ public class NpcDeath {
                 if (npc.id() == ANCIENT_CHAOS_ELEMENTAL) {
                     killer.getTaskBottleManager().increase(BottleTasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
-
-                    if(!npc.ancientSpawn()) {
-                        Chain.runGlobal(30, () -> {
-                            var chaosElemental = new Npc(CHAOS_ELEMENTAL, npc.spawnTile());
-                            World.getWorld().getNpcs().add(chaosElemental);
-                        });
-                    }
                 }
 
                 if (npc.def().name.contains("Zulrah")) {
@@ -335,21 +316,6 @@ public class NpcDeath {
 
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
                     AchievementsManager.activate(killer, Achievements.ANCHOR_HUNTER, 1);
-                    if (World.getWorld().rollDie(10, 1)) {
-                        npc.respawns(false);//Barrelchest can no longer spawn his ancient version spawns.
-                        var ancientBarrelchest = new Npc(ANCIENT_BARRELCHEST, npc.spawnTile()).respawns(false);
-                        World.getWorld().getNpcs().add(ancientBarrelchest);
-                    }
-                }
-
-                if (npc.id() == ANCIENT_BARRELCHEST) {
-
-                    if(!npc.ancientSpawn()) {
-                        Chain.runGlobal(30, () -> {
-                            var barrelchest = new Npc(BARRELCHEST_6342, npc.spawnTile());
-                            World.getWorld().getNpcs().add(barrelchest);
-                        });
-                    }
                 }
 
                 if (npc.id() == AWAKENED_ALTAR) {
@@ -451,18 +417,7 @@ public class NpcDeath {
                     case CERBERUS, CERBERUS_5863, CERBERUS_5866 -> {
                         killer.getTaskBottleManager().increase(BottleTasks.CERBERUS);
                         AchievementsManager.activate(killer, Achievements.FLUFFY, 1);
-
-                        if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
-                            npc.respawns(false);//Cerberus can no longer spawn his superior spawns in 1 minute.
-                            var kerberos = new Npc(KERBEROS, npc.spawnTile()).respawns(false);
-                            World.getWorld().getNpcs().add(kerberos);
-                        }
                     }
-
-                    case KERBEROS -> Chain.runGlobal(30, () -> {
-                        var cerberus = new Npc(CERBERUS, npc.spawnTile());
-                        World.getWorld().getNpcs().add(cerberus);
-                    });
 
                     case LIZARDMAN_SHAMAN_6767 -> {
                         AchievementsManager.activate(killer, Achievements.DR_CURT_CONNORS, 1);
@@ -479,34 +434,12 @@ public class NpcDeath {
                     case VENENATIS_6610 -> {
                         killer.getTaskBottleManager().increase(BottleTasks.VENENATIS);
                         AchievementsManager.activate(killer, Achievements.VENENATIS, 1);
-
-                        if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
-                            npc.respawns(false);//Venenatis can no longer spawn his superior spawns in 1 minute.
-                            var arachne = new Npc(CustomNpcIdentifiers.ARACHNE, npc.spawnTile()).respawns(false);
-                            World.getWorld().getNpcs().add(arachne);
-                        }
                     }
-
-                    case ARACHNE -> Chain.runGlobal(30, () -> {
-                        var venenatis = new Npc(VENENATIS_6610, npc.spawnTile());
-                        World.getWorld().getNpcs().add(venenatis);
-                    });
 
                     case CALLISTO_6609 -> {
                         killer.getTaskBottleManager().increase(BottleTasks.CALLISTO);
                         AchievementsManager.activate(killer, Achievements.BEAR_GRYLLS, 1);
-
-                        if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
-                            npc.respawns(false);//Callisto can no longer spawn his superior spawns in 1 minute.
-                            var artio = new Npc(ARTIO, npc.spawnTile()).respawns(false);
-                            World.getWorld().getNpcs().add(artio);
-                        }
                     }
-
-                    case ARTIO -> Chain.runGlobal(30, () -> {
-                        var callisto = new Npc(CALLISTO_6609, npc.spawnTile());
-                        World.getWorld().getNpcs().add(callisto);
-                    });
 
                     case ZULRAH, ZULRAH_2043, ZULRAH_2044 -> {
                         AchievementsManager.activate(killer, Achievements.SNAKE_CHARMER, 1);
@@ -543,12 +476,6 @@ public class NpcDeath {
                 if (npc.id() == SCORPIA) {
                     killer.getTaskBottleManager().increase(BottleTasks.SCORPIA);
                     AchievementsManager.activate(killer, Achievements.BARK_SCORPION, 1);
-
-                    if (World.getWorld().rollDie(superiorSpawnRoll, 1)) {
-                        npc.respawns(false);//Cerberus can no longer spawn his superior spawns in 1 minute.
-                        var skorpios = new Npc(SKORPIOS, npc.spawnTile()).respawns(false);
-                        World.getWorld().getNpcs().add(skorpios);
-                    }
                 }
 
                 if (npc.id() == SKORPIOS) {
@@ -556,11 +483,6 @@ public class NpcDeath {
                         if (n.id() == SCORPIAS_GUARDIAN) {
                             World.getWorld().unregisterNpc(n);
                         }
-                    });
-
-                    Chain.runGlobal(30, () -> {
-                        var scorpia = new Npc(SCORPIA, npc.spawnTile());
-                        World.getWorld().getNpcs().add(scorpia);
                     });
                 }
 
