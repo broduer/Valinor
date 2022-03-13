@@ -792,7 +792,7 @@ public final class Equipment extends ItemContainer {
         player.getCombat().setRangedWeapon(null);
 
         //Update autocast
-        if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS)) {
+        if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL)) {
             player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SEAS.getSpell());
         } else if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP)) {
             player.getCombat().setAutoCastSpell(CombatSpells.TRIDENT_OF_THE_SWAMP.getSpell());

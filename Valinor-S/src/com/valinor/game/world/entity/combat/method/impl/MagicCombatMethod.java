@@ -57,7 +57,7 @@ public class MagicCombatMethod extends CommonCombatMethod {
         if (mob.isPlayer()) {
             Player player = (Player) mob;
             //Trident of the seas and Trident of the swamp have a default range of 8, but also allow longrange attack style.
-            if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, INFERNAL_TRIDENT)) {
+            if (player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL) || player.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || player.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || player.getEquipment().hasAt(EquipSlot.WEAPON, INFERNAL_TRIDENT)) {
                 return 8;
             }
         }
