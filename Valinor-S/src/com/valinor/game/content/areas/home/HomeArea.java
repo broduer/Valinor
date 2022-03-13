@@ -92,26 +92,21 @@ public class HomeArea extends Interaction {
                     Poison.cure(player);
                     Venom.cure(2, player);
 
-                    if (!player.getMemberRights().isSapphireMemberOrGreater(player))
-                        player.message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-
-                    if (player.getMemberRights().isSapphireMemberOrGreater(player)) {
-                        if (player.getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
-                            player.message("Special attack energy can be restored in " + player.getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
-                        } else {
-                            player.restoreSpecialAttack(100);
-                            player.setSpecialActivated(false);
-                            CombatSpecial.updateBar(player);
-                            int time = 0;
-                            if (player.getMemberRights().isSapphireMemberOrGreater(player))
-                                time = 300;//3 minutes
-                            if (player.getMemberRights().isEmeraldMemberOrGreater(player))
-                                time = 100;//1 minute
-                            if (player.getMemberRights().isRubyMemberOrGreater(player))
-                                time = 0;//always
-                            player.getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
-                            player.message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");
-                        }
+                    if (player.getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
+                        player.message("Special attack energy can be restored in " + player.getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
+                    } else {
+                        player.restoreSpecialAttack(100);
+                        player.setSpecialActivated(false);
+                        CombatSpecial.updateBar(player);
+                        int time = 100;
+                        if (player.getMemberRights().isSapphireMemberOrGreater(player))
+                            time = 75;//45 seconds
+                        if (player.getMemberRights().isEmeraldMemberOrGreater(player))
+                            time = 50;//30 seconds
+                        if (player.getMemberRights().isRubyMemberOrGreater(player))
+                            time = 0;//always
+                        player.getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
+                        player.message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");
                     }
                     player.unlock();
                 });
