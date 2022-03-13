@@ -28,7 +28,7 @@ public class HauntedChest {
 
     private static final String DESPAWN_MESSAGE = "<col=6a1a18><img=1394>The Haunted chest has despawned!";
 
-    private static final GameObject hauntedChest = new GameObject(DEADMAN_CHEST_31484, new Tile(3183,3668,0), 10, 3);
+    public final GameObject hauntedChest = new GameObject(DEADMAN_CHEST_31484, new Tile(3183,3668,0), 10, 3);
 
     /**
      * The interval at which server-wide haunted chests occur. Event runs every two hours
@@ -79,7 +79,7 @@ public class HauntedChest {
             hauntedChest.spawnForSetTime(GameServer.properties().production ? 1800 : 300, DESPAWN_MESSAGE);
 
             // Broadcast it
-            World.getWorld().sendWorldMessage("<col=6a1a18><img=1394>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
+            World.getWorld().sendWorldMessage("<col=6a1a18><img=1394>The Haunted chest has spawned east of the graveyard lvl 19 wilderness!");
             World.getWorld().sendBroadcast("<img=1394>The Haunted chest has spawned north east of the graveyard lvl 19 wilderness!");
         }
     }

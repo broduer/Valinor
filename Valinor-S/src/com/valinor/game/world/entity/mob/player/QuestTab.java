@@ -16,8 +16,11 @@ import com.valinor.game.content.daily_tasks.DailyTaskManager;
 import com.valinor.game.content.items_kept_on_death.ItemsKeptOnDeath;
 import com.valinor.game.content.events.shootingStars.ShootingStars;
 import com.valinor.game.content.skill.impl.slayer.Slayer;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.position.areas.impl.WildernessArea;
+import com.valinor.util.Color;
 import com.valinor.util.Utils;
 
 import java.text.SimpleDateFormat;
@@ -25,6 +28,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -405,6 +409,60 @@ public final class QuestTab {
                 player.message("We are a brand new server and do not have guides yet.");
                 return true;
             }
+
+            case 53418 -> {
+                Optional<Npc> worldBoss = WorldBossEvent.getINSTANCE().getActiveNpc();
+                WorldBossEvent.WorldBosses event = WorldBossEvent.getINSTANCE().getActiveEvent();
+                if(worldBoss.isPresent() && event != null) {
+                    player.message("<col=6a1a18><img=1100> " + event.description + " has been spotted " + event.spawnLocation(worldBoss.get().tile()));
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a world boss."));
+                }
+            }
+
+            case 53419 -> {
+                if(ShootingStars.ACTIVE != null) {
+                    player.message("<img=452><shad=0><col=6a1a18> There's been a sighting of a star around " + ShootingStars.getLocation() + "!");
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a star."));
+                }
+            }
+
+            case 53420 -> {
+                if (WildernessKeyPlugin.wildernessKeyLocation != null) {
+                    String message = "A Wilderness key has spawned somewhere in level <col=800000>" + WildernessKeyPlugin.wildernessLevel + "</col> Wilderness!";
+                    World.getWorld().sendWorldMessage("<img=1939> " + message);
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a wilderness key."));
+                }
+            }
+
+            case 53421 -> {
+                Optional<Npc> chaoticNightmare = ChaoticNightmare.getInstance().getChaoticNightmare();
+                if(chaoticNightmare.isPresent()) {
+                   player.message("<col=6a1a18><img=1405>Chaotic nightmare has been spotted near the chaos altar type ::chaos to get there!");
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a chaotic nightmare."));
+                }
+            }
+
+            case 53422 -> {
+                Optional<Npc> hpEvent = HpEvent.getInstance().getHpEventNpc();
+                if(hpEvent.isPresent()) {
+                    player.message("<col=6a1a18><img=1396>The HP event has spawned type ::hpevent to get there!");
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a HP event."));
+                }
+            }
+
+            case 53423 -> {
+                if (HauntedChest.getInstance().hauntedChest != null) {
+                   player.message("<col=6a1a18><img=1394>The Haunted chest has spawned east of the graveyard lvl 19 wilderness!");
+                } else {
+                    player.message(Color.RED.wrap("There is no sighting of a haunted chest."));
+                }
+            }
+
         }
         return false;
     }

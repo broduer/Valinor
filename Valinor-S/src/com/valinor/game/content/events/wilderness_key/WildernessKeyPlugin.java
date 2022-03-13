@@ -43,6 +43,10 @@ public class WildernessKeyPlugin {
 
     public static boolean ESCAPED = false;
 
+    public static WildernessKeyLocation wildernessKeyLocation;
+
+    public static int wildernessLevel;
+
     /**
      * Announces when the player has picked up the key.
      */
@@ -81,6 +85,9 @@ public class WildernessKeyPlugin {
             World.getWorld().sendWorldMessage(SPRITE + message);
             return;
         }
+
+        wildernessKeyLocation = currentPos;
+        WildernessKeyPlugin.wildernessLevel = wildernessLevel;
 
         String message = String.format(KEY_SPAWN_MESSAGE, currentPos.getDescription(), wildernessLevel);
         World.getWorld().sendWorldMessage(SPRITE + message);

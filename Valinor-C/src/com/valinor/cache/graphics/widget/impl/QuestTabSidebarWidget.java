@@ -33,7 +33,11 @@ public class QuestTabSidebarWidget extends Widget {
         int y = 5;
         int interfaceId = 53416;
         for (int index = 0; index < scrollChildren; index++) {
-            addText(interfaceId, "", font, 0, 0xffb000, false, true);
+            if(index >= 2 && index <= 7) {
+                addCustomClickableText(interfaceId, "Click", "Click", font, 0, 0xffb000,false, true,200,12);
+            } else {
+                addText(interfaceId, "", font, 0, 0xffb000, false, true);
+            }
             scrollTab1.child(index, interfaceId, 0, y);
             interfaceId++;
             y += 13;

@@ -41,7 +41,7 @@ public class ShootingStars {
 
     public static final boolean DISABLED = false;
     private static int METEORITE_REMAINING = 1000;
-    private static ShootingStars ACTIVE;
+    public static ShootingStars ACTIVE;
     private static GameObject rock;
     public static ArrayList<Player> players = new ArrayList<>(500);
     public static int STAR_CURRENCY = 25527;
@@ -57,7 +57,7 @@ public class ShootingStars {
         new ShootingStars(new Tile(3175, 3378, 0)), //Varrock 2
     };
 
-    private static String getLocation() {
+    public static String getLocation() {
         if(ACTIVE.starSpawn.equals(3299, 3303)) {
             return "Alkharid mine";
         }
