@@ -97,6 +97,7 @@ public class CommandManager {
         commands.put("vexia", new VexiaCommand());
         commands.put("vihtic", new VihticCommand());
         commands.put("smoothie", new SmoothieCommand());
+        commands.put("uncle", new UncleNapsCommand());
         commands.put("ipkmaxjr", new IPKMaxJrCommand());
         commands.put("skii", new SkiiCommand());
         commands.put("sipsick", new SipSickCommand());

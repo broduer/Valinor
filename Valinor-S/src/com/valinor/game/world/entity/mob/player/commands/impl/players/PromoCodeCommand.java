@@ -82,7 +82,7 @@ public class PromoCodeCommand implements Command {
 
             List<String> youtubers = Arrays.asList("fpk merk", "vexia", "i pk max jr",
                 "lanors", "smoothie", "juicy orange", "respire", "baguette rsps", "primatol",
-                "fewb", "sohan");
+                "fewb", "sohan", "unclenaps");
 
             if (youtubers.stream().anyMatch(name -> name.toLowerCase().equalsIgnoreCase(username))) {
                 var IP = player.getHostAddress();
@@ -151,6 +151,8 @@ public class PromoCodeCommand implements Command {
                                 FileUtil.writeTextToDir("fewb - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("sohan")) {
                                 FileUtil.writeTextToDir("sohan - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
+                            } else if(username.equalsIgnoreCase("unclenaps")) {
+                                FileUtil.writeTextToDir("unclenaps - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             }
                         });
 

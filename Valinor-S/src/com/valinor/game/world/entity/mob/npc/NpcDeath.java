@@ -239,12 +239,6 @@ public class NpcDeath {
                 if (npc.def().name.equalsIgnoreCase("King Black Dragon")) {
                     AchievementsManager.activate(killer, Achievements.DRAGON_SLAYER_II, 1);
                     killer.getTaskBottleManager().increase(BottleTasks.KING_BLACK_DRAGON);
-
-                    if (World.getWorld().rollDie(10, 1)) {
-                        npc.respawns(false);//King black dragon can no longer spawn his ancient version spawns.
-                        var ancientKingBlackDragon = new Npc(ANCIENT_KING_BLACK_DRAGON, npc.spawnTile()).respawns(false);
-                        World.getWorld().getNpcs().add(ancientKingBlackDragon);
-                    }
                 }
 
                 if (npc.id() == ANCIENT_KING_BLACK_DRAGON) {
@@ -267,12 +261,6 @@ public class NpcDeath {
                 if (npc.def().name.equalsIgnoreCase("Chaos Elemental")) {
                     killer.getTaskBottleManager().increase(BottleTasks.CHAOS_ELEMENTAL);
                     AchievementsManager.activate(killer, Achievements.ULTIMATE_CHAOS, 1);
-
-                    if (World.getWorld().rollDie(10, 1)) {
-                        npc.respawns(false);//Chaos elemental can no longer spawn his ancient version spawns.
-                        var ancientChaosEle = new Npc(ANCIENT_CHAOS_ELEMENTAL, npc.spawnTile()).respawns(false);
-                        World.getWorld().getNpcs().add(ancientChaosEle);
-                    }
                 }
 
                 if (npc.id() == ANCIENT_CHAOS_ELEMENTAL) {
