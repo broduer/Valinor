@@ -64,6 +64,7 @@ public class CustomItems {
 
         if(id == PKP_TICKET) {
             ItemDefinition.copyInventory(def, CASTLE_WARS_TICKET);
+            def.inventoryActions = new String[]{"Claim", null, null, null, "Drop"};
             def.name = "<col=65280>PkP ticket";
             def.modelCustomColor4 = 22222;
         }

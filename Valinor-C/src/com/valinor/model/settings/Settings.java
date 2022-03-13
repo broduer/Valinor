@@ -56,7 +56,7 @@ public class Settings {
     public boolean hidePrivateChat;
     public boolean loginLogoutNotification;
     public boolean profanityFilter;
-    public boolean cameraMovement;
+    public boolean cameraMovement = true;
     public boolean shiftClick;
     public boolean esc_close = true;
     public boolean mouseButtons;

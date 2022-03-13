@@ -39,7 +39,7 @@ public class LarransChest extends Interaction {
     private boolean rareDrop = false;
 
     private Item reward() {
-        List<Item> items = null;
+        List<Item> items;
         if (World.getWorld().rollDie(100, 1)) {
             rareDrop = true;
             items = EXTREME_RARE;
@@ -60,7 +60,7 @@ public class LarransChest extends Interaction {
         new Item(OBSIDIAN_PLATEBODY),
         new Item(OBSIDIAN_PLATELEGS),
         new Item(RANGERS_TUNIC),
-        new Item(GRANITE_MAUL_24225 + 1, 3),
+        new Item(GRANITE_MAUL_24225),
         new Item(BERSERKER_RING_I),
         new Item(ARCHERS_RING_I),
         new Item(SEERS_RING_I),
