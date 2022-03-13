@@ -709,13 +709,14 @@ public class AccuracyFormula {
                 }
                 break;
             case MAGIC:
-                if (def_protect_from_magic) {
-                    off_hit_chance = Math.floor(((hit_chance * off_void_bonus) * .6) * 100.);
-                    def_block_chance = Math.floor(101 - (((hit_chance * off_void_bonus) * .6) * 100.));
-                } else {
+                //It should be noted that Protect from Magic does NOT affect splash chance in PvP situations
+//                if (def_protect_from_magic) {
+//                    off_hit_chance = Math.floor(((hit_chance * off_void_bonus) * .6) * 100.);
+//                    def_block_chance = Math.floor(101 - (((hit_chance * off_void_bonus) * .6) * 100.));
+//                } else {
                     off_hit_chance = Math.floor((hit_chance * off_void_bonus) * 100.);
                     def_block_chance = Math.floor(101 - ((hit_chance * off_void_bonus) * 100.));
-                }
+//                }
                 break;
         }
 
