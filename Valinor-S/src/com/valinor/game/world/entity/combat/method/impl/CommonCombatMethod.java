@@ -64,7 +64,7 @@ public abstract class CommonCombatMethod implements CombatMethod {
         ArrayList<Mob> possibleTargets = new ArrayList<>();
         if (players) {
             for (Player player : World.getWorld().getPlayers()) {
-                boolean chaoticNightmareCannotAttackPlayer = mob.isNpc() && mob.getAsNpc().id() == CHAOTIC_NIGHTMARE && player != null && player.<Integer>getAttribOr(AttributeKey.THE_NIGHTMARE_KC, 0) < 250;
+                boolean chaoticNightmareCannotAttackPlayer = mob.isNpc() && mob.getAsNpc().id() == CHAOTIC_NIGHTMARE && player != null && player.<Integer>getAttribOr(AttributeKey.THE_NIGHTMARE_KC, 0) < 50;
                 if (player == null || player.dead() || player.tile().distance(mob.getCentrePosition()) > ratio || player.tile().level != mob.tile().level || chaoticNightmareCannotAttackPlayer) {
                     continue;
                 }

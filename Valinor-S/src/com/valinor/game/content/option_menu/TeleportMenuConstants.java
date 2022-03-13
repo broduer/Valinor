@@ -302,7 +302,7 @@ public class TeleportMenuConstants {
             new TeleportAction(player, new Tile(2325, 3800, 0))));
 
         teleportOptions.put(76, new OptionMenu("<img=1049>Enraged gorilla", new String[] { "Enraged gorilla", "Enraged", "gorilla", "boss" },
-            new TeleportAction(player, new Tile(3168, 3720, 0))));
+            new TeleportAction(player, new Tile(3247, 3777, 0))));
 
         teleportOptions.put(77, new OptionMenu("<img=1049>Aragog", new String[] { "Aragog", "Forbidden forrest" },
             new TeleportAction(player, new Tile(3283, 3823, 0))));

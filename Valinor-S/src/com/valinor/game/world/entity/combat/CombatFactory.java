@@ -696,9 +696,9 @@ public class CombatFactory {
                 }
 
                 if(npc.id() == CHAOTIC_NIGHTMARE) {
-                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 150) {
-                        attacker.message(Color.RED.wrap("You need atleast 150 nightmare kills before you can kill the Chaotic nightmare."));
-                        Debugs.CMB.debug(attacker, "You need atleast 150 nightmare kills before you can kill the Chaotic nightmare.", target, true);
+                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 50) {
+                        attacker.message(Color.RED.wrap("You need atleast 50 nightmare kills before you can kill the Chaotic nightmare."));
+                        Debugs.CMB.debug(attacker, "You need atleast 50 nightmare kills before you can kill the Chaotic nightmare.", target, true);
                         return false;
                     }
                 }

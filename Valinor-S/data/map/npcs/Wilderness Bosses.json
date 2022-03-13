@@ -10,36 +10,29 @@
   },
   {
     "id": 16020,
-    "x": 3176,
-    "y": 3735,
+    "x": 3243,
+    "y": 3791,
     "walkRange": 3,
     "direction": "ne"
   }, //enraged gorilla
   {
     "id": 16020,
-    "x": 3166,
-    "y": 3726,
+    "x": 3251,
+    "y": 3797,
     "walkRange": 3,
     "direction": "ne"
   }, //enraged gorilla
   {
     "id": 16020,
-    "x": 3150,
-    "y": 3725,
+    "x": 3249,
+    "y": 3784,
     "walkRange": 3,
     "direction": "ne"
   }, //enraged gorilla
   {
     "id": 16020,
-    "x": 3162,
-    "y": 3743,
-    "walkRange": 3,
-    "direction": "ne"
-  }, //enraged gorilla
-  {
-    "id": 16020,
-    "x": 3177,
-    "y": 3739,
+    "x": 3238,
+    "y": 3784,
     "walkRange": 3,
     "direction": "ne"
   }, //enraged gorilla
