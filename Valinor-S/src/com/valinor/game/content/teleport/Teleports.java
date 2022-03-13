@@ -101,7 +101,7 @@ public class Teleports {
             return false;
         }
 
-        if (player.getTimers().has(TimerKey.BLOCK_SPEC_AND_TELE) && player.<Integer>getAttribOr(AttributeKey.MULTIWAY_AREA, -1) == 0) {
+        if (player.getTimers().has(TimerKey.BLOCK_SPEC_AND_TELE)) {
             player.message("<col=804080>Teleport blocked for " + player.getTimers().asSeconds(TimerKey.BLOCK_SPEC_AND_TELE) + " more secs after using spec at the start of a battle.");
             return false;
         }
