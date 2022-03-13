@@ -95,6 +95,11 @@ public abstract class CombatEffectSpell extends CombatSpell {
                     continue;
                 }
 
+                //Combat dummys
+                if(n.isCombatDummy() || n.isPvPCombatDummy()) {
+                    continue;
+                }
+
                 if (!CombatFactory.canAttack(cast, n)) {
                     cast.getCombat().reset();//Can't attack, reset combat
                     continue;
@@ -118,30 +123,30 @@ public abstract class CombatEffectSpell extends CombatSpell {
             }
         }
 
-        for (Mob target : targets) {
+        for (Mob t : targets) {
 
             // dmg is calcd inside hit
-            Hit hit = target.hit(cast, CombatFactory.calcDamageFromType(cast, target, CombatType.MAGIC), cast.getCombat().magicSpellDelay(target), CombatType.MAGIC);
-            if (cast.isPlayer() && target.isPlayer()) { // Check if the player should be skulled for making this attack..
+            Hit hit = t.hit(cast, CombatFactory.calcDamageFromType(cast, t, CombatType.MAGIC), cast.getCombat().magicSpellDelay(t), CombatType.MAGIC);
+            if (cast.isPlayer() && t.isPlayer()) { // Check if the player should be skulled for making this attack..
                 Player attacker = cast.getAsPlayer();
-                Player playerTarget = target.getAsPlayer();
+                Player playerTarget = t.getAsPlayer();
                 if (WildernessArea.inWilderness(playerTarget.tile())) {
                     Skulling.skull(attacker, playerTarget, SkullType.WHITE_SKULL);
                 }
             }
 
-            var hitDelay = cast.getCombat().magicSpellDelay(target);
+            var hitDelay = cast.getCombat().magicSpellDelay(t);
             if (hit.isAccurate()) {
                 //Successful hit, send graphics and do spell effects.
                 if(endGraphic().isPresent()) {
-                    target.delayedGraphics(endGraphic().get(), hitDelay);
+                    t.delayedGraphics(endGraphic().get(), hitDelay);
                 }
             } else {
                 //Unsuccessful hit. Send splash graphics for the spell because it wasn't accurate
-                target.delayedGraphics(new Graphic(85, 90, 30),hitDelay - 1);
+                t.delayedGraphics(new Graphic(85, 90, 30),hitDelay - 1);
             }
 
-            spellEffect(cast, target, hit);
+            spellEffect(cast, t, hit);
 
             hit.submit();
         }

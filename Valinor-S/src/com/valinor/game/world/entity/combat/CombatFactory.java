@@ -38,7 +38,6 @@ import com.valinor.game.world.entity.combat.method.impl.npcs.slayer.kraken.Krake
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.ranged.BowReqs;
 import com.valinor.game.world.entity.combat.ranged.CbowReqs;
-import com.valinor.game.world.entity.combat.ranged.RangedData;
 import com.valinor.game.world.entity.combat.ranged.RangedData.RangedWeapon;
 import com.valinor.game.world.entity.combat.ranged.RangedData.RangedWeaponType;
 import com.valinor.game.world.entity.combat.weapon.AttackType;
@@ -713,7 +712,7 @@ public class CombatFactory {
         if (attacker.isPlayer()) {
             Player player = attacker.getAsPlayer();
             if (target.isPlayer()) {
-                if (WildernessArea.isAtWildernessLimitForMac(attacker.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
+                if (WildernessArea.isAtWildernessLimitForIP(attacker.getAsPlayer()) && !player.getPlayerRights().isDeveloperOrGreater(player)) {
                     player.message("You are double logging and cannot attack other players.");
                     return false;
                 }
