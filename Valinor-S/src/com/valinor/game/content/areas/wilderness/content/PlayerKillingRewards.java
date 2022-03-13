@@ -161,7 +161,7 @@ public class PlayerKillingRewards {
             player.getTaskBottleManager().increase(BottleTasks.WEAR_TORAGS_TASK);
         }
 
-        if (CombatConstants.wearingFullDharoks(player)) {
+        if (CombatConstants.wearingDharoksArmour(player)) {
             player.getTaskBottleManager().increase(BottleTasks.WEAR_FULL_DH_TASK);
         }
 
