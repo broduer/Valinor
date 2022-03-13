@@ -27,7 +27,7 @@ public class HauntedChest {
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
-    private static final String DESPAWN_MESSAGE = "<col=6a1a18><img=1394>The Haunted chest has despawned!";
+    private static final String DESPAWN_MESSAGE = "<img=1394>The Haunted chest has despawned!";
 
     public GameObject hauntedChest;
 
