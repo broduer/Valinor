@@ -32,11 +32,11 @@ public class Settings {
     public boolean toggle_overhead_hp;
     public boolean toggle_npc_overhead_names;
     public boolean toggle_npc_overhead_hp;
-    public boolean toggle_item_pile_names;
-    public boolean filter_item_pile_names;
-    public boolean moving_prayers;
+    public boolean toggle_item_pile_names = true;
+    public boolean filter_item_pile_names = false;
+    public boolean moving_prayers = true;
     public boolean ground_snow;
-    public boolean shift_pet_options;
+    public boolean shift_pet_options = true;
     public boolean sky_snow;
 
     public int drag_item_value = 10;
@@ -57,18 +57,18 @@ public class Settings {
     public boolean loginLogoutNotification;
     public boolean profanityFilter;
     public boolean cameraMovement = true;
-    public boolean shiftClick;
+    public boolean shiftClick = true;
     public boolean esc_close = true;
     public boolean mouseButtons;
     public boolean acceptAid;
     public int brightness = 3;
     public boolean zoomToggle;
     public boolean chatEffects;
-    public boolean privateChat;
+    public boolean privateChat = true;
     public boolean transparentSidePanel;
     public boolean transparentChatbox;
     public boolean sideStonesArrangement;
-    public boolean roofs = true;
+    public boolean roofs = false;
     public boolean orbs = true;
     public boolean sounds;
     public int sound_state = 0;
