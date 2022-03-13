@@ -4,6 +4,7 @@ import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.items.Item;
 import com.valinor.net.packet.interaction.Interaction;
+import com.valinor.util.Color;
 import com.valinor.util.FileUtil;
 import com.valinor.util.Utils;
 
@@ -53,21 +54,30 @@ public class StarterBox extends Interaction {
 
     public static void claimStarterBox(Player player) {
         var IP = player.getHostAddress();
-        var MAC = player.<String>getAttribOr(AttributeKey.MAC_ADDRESS,"invalid");
+        var creationIP = player.getCreationIp();
+        var MAC = player.<String>getAttribOr(AttributeKey.MAC_ADDRESS, "invalid");
         var starterBoxClaimed = player.<Boolean>getAttribOr(AttributeKey.STARTER_BOX_CLAIMED,false);
         var fileAlreadyContainsAddress = FileUtil.claimed(IP, MAC, directory);
 
+        if (!creationIP.equalsIgnoreCase(IP)) {
+            player.message(Color.RED.wrap("Your IP doesn't match your creation IP, you cannot open this starter box."));
+            return; // IP changer
+        }
+
         //Check if the player doesn't have a spoofed mac address
-        if(IP.isEmpty() || MAC.isEmpty() || MAC.equalsIgnoreCase("invalid")) {
+        if (IP.isEmpty() || MAC.isEmpty() || MAC.equalsIgnoreCase("invalid")) {
+            player.message(Color.RED.wrap("You are not on a valid IP or MAC address."));
             return; // No valid mac address
         }
 
-        //Check if the player has already claimed the box
-        if(starterBoxClaimed || fileAlreadyContainsAddress) {
-            return; // Already claimed
+        //Check if the player has already claimed the promo code
+        if (starterBoxClaimed || fileAlreadyContainsAddress) {
+            player.message(Color.RED.wrap("You've already opened a starter box and cannot open another."));
+            return; // Already claimed one
         }
 
         if(!STARTER_BOX_ENABLED) {
+            player.message(Color.RED.wrap("The starter box cannot be opened currently and is disabled."));
             return; // System disabled
         }
 

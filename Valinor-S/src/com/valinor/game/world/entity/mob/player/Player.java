@@ -83,6 +83,7 @@ import com.valinor.game.world.entity.combat.prayer.QuickPrayers;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.DefaultPrayerData;
 import com.valinor.game.world.entity.combat.prayer.default_prayer.Prayers;
 import com.valinor.game.world.entity.combat.skull.SkullType;
+import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.combat.weapon.WeaponInterfaces;
 import com.valinor.game.world.entity.dialogue.ChatBoxItemDialogue;
 import com.valinor.game.world.entity.dialogue.Dialogue;
@@ -143,6 +144,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
+import static com.valinor.game.content.areas.wilderness.content.EloRating.DEFAULT_ELO_RATING;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.DAILY_TASK_MANAGER_INTERFACE;
 import static com.valinor.game.content.daily_tasks.DailyTaskUtility.TIME_FRAME_TEXT_ID;
 import static com.valinor.game.world.entity.AttributeKey.*;
@@ -3158,4 +3160,109 @@ public class Player extends Mob {
             }
         }
     };
+
+    public void resetDefault() {
+        //place player at edge
+        setTile(GameServer.properties().defaultTile.copy());
+
+        //Save player save to re-index
+        PlayerSave.save(this);
+    }
+
+    /**
+     * Resets the player's entire account to default.
+     */
+    public void completelyResetAccount() {
+        //Clear all attributes
+        clearAttribs();
+
+        //Reset the account status to brand new
+        putAttrib(AttributeKey.NEW_ACCOUNT, true);
+        setRunningEnergy(100.0, true);//Set energy to 100%
+        putAttrib(IS_RUNNING, false);
+        getHostAddressMap().clear();
+        putAttrib(COMBAT_MAXED, false);
+        Skulling.unskull(this);
+        getUnlockedPets().clear();
+        getInsuredPets().clear();
+        getUnlockedTitles().clear();
+        getRelations().getFriendList().clear();
+        getRelations().getIgnoreList().clear();
+        putAttrib(AttributeKey.ELO_RATING, DEFAULT_ELO_RATING);
+        getRecentKills().clear();
+
+        setTile(GameServer.properties().defaultTile.copy());
+
+        //Reset skills
+        for (int skill = 0; skill < Skills.SKILL_COUNT; skill++) {
+            skills().setLevel(skill, 1, true);
+            skills.setXp(skill, Skills.levelToXp(1), true);
+            if (skill == Skills.HITPOINTS) {
+                skills().setLevel(Skills.HITPOINTS, 10, true);
+                skills.setXp(Skills.HITPOINTS, Skills.levelToXp(10), true);
+            }
+            skills.update(true);
+        }
+
+        //Clear slayer blocks
+        getSlayerRewards().getBlocked().clear();
+
+        //Clear slayer unlocks
+        getSlayerRewards().getUnlocks().clear();
+
+        //Clear slayer extends
+        getSlayerRewards().getExtendable().clear();
+
+        //Clear the collection log
+        getCollectionLog().collectionLog.clear();
+
+        //Clear boss timers
+        getBossTimers().getTimes().clear();
+
+        //Clear bank
+        getBank().clear(false);
+        getBank().tabAmounts = new int[10];
+        getBank().placeHolderAmount = 0;
+
+        //Clear inventory
+        inventory().clear(false);
+
+        //Clear equipment
+        getEquipment().clear(false);
+
+        //Clear rune pouch
+        getRunePouch().clear(false);
+
+        //Clear looting bag
+        getLootingBag().clear(false);
+
+        //Clear the niffler
+        putAttrib(NIFFLER_ITEMS_STORED, new ArrayList<Item>());
+
+        //Clear all achievements
+        achievements().clear();
+
+        //Clear presets
+        Arrays.fill(getPresets(), null);
+
+        //Reset spellbook and prayer book
+        setSpellbook(MagicSpellbook.NORMAL);
+
+        //Reset member ranks
+        setMemberRights(MemberRights.NONE);
+
+        //Make sure these points have been reset
+        putAttrib(AttributeKey.VOTE_POINTS, 0);
+        putAttrib(SLAYER_REWARD_POINTS, 0);
+        putAttrib(REFERRER_USERNAME, "");
+
+        //Put back special attack
+        setSpecialAttackPercentage(100);
+        setSpecialActivated(false);//Disable special attack
+
+        //No idea why this is here
+        getMovementQueue().setBlockMovement(false).clear();
+
+        PlayerSave.save(this);
+    }
 }

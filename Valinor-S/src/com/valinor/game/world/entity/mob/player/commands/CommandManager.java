@@ -293,6 +293,7 @@ public class CommandManager {
         commands.put("csw", new CheckServerWealthCommand());
         commands.put("kickall", new KickAllCommand());
         commands.put("tradepost", new TradingPostCommand());
+        commands.put("ecoreset", new EcoResetCommand());
         LazyCommands.init();
         KtCommands.INSTANCE.init();
     }

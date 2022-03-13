@@ -9,6 +9,7 @@ public enum Bone {
     BURNT_BONES(528, 4.5),
     BAT_BONES(530, 4.5),
     WOLF_BONES(2859, 4.5),
+    MONKEY_BONES(3183, 5.0),
     BIG_BONES(532, 15.0),
     LONG_BONE(10976, 15.0),
     CURVED_BONE(10977, 15.0),

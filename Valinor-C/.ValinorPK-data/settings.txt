@@ -53,4 +53,4 @@ music = false
 music_state = 0
 cameraSpeed = SLOW
 keybinds = [112, -1, -1, 116, 113, 114, 115, 117, 118, 119, 120, 121, 122, -1, 123]
-zoom_distance = 560
+zoom_distance = 770

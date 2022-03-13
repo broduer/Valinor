@@ -696,7 +696,7 @@ public class CombatFactory {
                 }
 
                 if(npc.id() == CHAOTIC_NIGHTMARE) {
-                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 250) {
+                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 150) {
                         attacker.message(Color.RED.wrap("You need atleast 150 nightmare kills before you can kill the Chaotic nightmare."));
                         Debugs.CMB.debug(attacker, "You need atleast 150 nightmare kills before you can kill the Chaotic nightmare.", target, true);
                         return false;
@@ -1083,7 +1083,7 @@ public class CombatFactory {
                 }
 
                 //One in 300 chance of dealing the finishing blow. This does not count towards world bosses
-                boolean ignore = npc.isWorldBoss() || npc.id() == NpcIdentifiers.TZTOKJAD || npc.id() == NpcIdentifiers.CORPOREAL_BEAST || nex || npc.isCombatDummy() || (player.getRaids() != null && player.getRaids().raiding(player)) || npc.id() == THE_NIGHTMARE_9430;
+                boolean ignore = npc.isWorldBoss() || npc.id() == NpcIdentifiers.TZTOKJAD || npc.id() == NpcIdentifiers.CORPOREAL_BEAST || nex || npc.isCombatDummy() || (player.getRaids() != null && player.getRaids().raiding(player)) || npc.id() == THE_NIGHTMARE_9430 || npc.id() == HP_EVENT;
                 if (player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KILL_BLOW) && World.getWorld().rollDie(300, 1) && !ignore && !npc.locked()) {
                     player.animate(4067);
                     hit.setDamage(npc.hp());

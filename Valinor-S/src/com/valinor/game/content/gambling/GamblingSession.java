@@ -372,8 +372,8 @@ public class GamblingSession {
         dataList.add(new Player.TextData("Select game mode...", 16222));
         dataList.add(new Player.TextData("", 16223));
         dataList.add(new Player.TextData("Gambling with " + player.getGamblingSession().opponent.getUsername(), 16203));
-        dataList.add(new Player.TextData("You (0 BM)", 16229));
-        dataList.add(new Player.TextData(player.getGamblingSession().opponent.getUsername() + " (0 BM))", 16232));
+        dataList.add(new Player.TextData("You (0 Coins)", 16229));
+        dataList.add(new Player.TextData(player.getGamblingSession().opponent.getUsername() + " (0 Coins))", 16232));
         player.getPacketSender().sendMultipleStrings(dataList);
         //Update configs
         resetConfigs();

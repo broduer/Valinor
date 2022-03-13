@@ -1,8 +1,8 @@
  {
     "npcs": [ 7939, 7940, 7938 ],
       "guaranteed": [
-      { "id": 995, "min": 1, "max": 100 },   //Coins
-      { "id": 21820, "min": 20, "max": 50 }   //Revenant ether
+        { "id": 995, "amount": 150000 },   //Coins
+        { "id": 21820, "min": 20, "max": 50 }   //Revenant ether
     ],
     "tables": [
       {

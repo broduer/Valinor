@@ -42,7 +42,7 @@ public class PvPMysteryBox extends Interaction {
     private static final List<Item> ITEMS = Arrays.asList(
         new Item(ABYSSAL_WHIP),
         new Item(DHAROKS_ARMOUR_SET),
-        new Item(GRANITE_MAUL),
+        new Item(GRANITE_MAUL_24225),
         new Item(SUPER_COMBAT_POTION4+1, 15),
         new Item(ANGLERFISH+1, 150)
     );

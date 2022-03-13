@@ -2175,7 +2175,7 @@
     "noiron": false,
     "currency": "PK_POINTS",
     "restock": true,
-    "sellType": "CONTAINS",
+    "sellType": "NONE",
     "scroll": 800,
     "items": [
       {
@@ -2211,7 +2211,7 @@
       {
         "id": 22296,
         "amount": 100,
-        "value": 15000
+        "value": 7500
       },
       {
         "id": 6889,
@@ -2261,7 +2261,7 @@
       {
         "id": 11924,
         "amount": 100,
-        "value": 10000
+        "value": 5000
       },
       {
         "id": 13235,
@@ -2271,17 +2271,17 @@
       {
         "id": 11791,
         "amount": 100,
-        "value": 15000
+        "value": 5000
       },
       {
         "id": 10551,
         "amount": 100,
-        "value": 10000
+        "value": 5000
       },
       {
         "id": 6570,
         "amount": 100,
-        "value": 10000
+        "value": 5000
       },
       {
         "id": 24225,
@@ -2301,12 +2301,12 @@
       {
         "id": 12791,
         "amount": 100,
-        "value": 10000
+        "value": 5000
       },
       {
         "id": 11926,
         "amount": 100,
-        "value": 10000
+        "value": 5000
       },
       {
         "id": 13237,
@@ -2316,7 +2316,7 @@
       {
         "id": 21902,
         "amount": 100,
-        "value": 15000
+        "value": 5000
       },
       {
         "id": 13263,
@@ -2341,7 +2341,7 @@
       {
         "id": 6914,
         "amount": 100,
-        "value": 5000
+        "value": 2000
       },
       {
         "id": 11824,
@@ -2561,7 +2561,7 @@
       {
         "id": 1249,
         "amount": 100,
-        "value": 10000
+        "value": 500
       },
       {
         "id": 6585,
@@ -2591,7 +2591,7 @@
       {
         "id": 22975,
         "amount": 100,
-        "value": 15000
+        "value": 8000
       },
       {
         "id": 12853,

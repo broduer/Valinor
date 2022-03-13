@@ -170,7 +170,7 @@ public enum Collection {
         //Drops
         new Item(IKKLE_HYDRA), new Item(HYDRAS_CLAW), new Item(HYDRA_TAIL), new Item(HYDRA_LEATHER), new Item(HYDRAS_FANG), new Item(HYDRAS_EYE), new Item(HYDRAS_HEART), new Item(DRAGON_KNIFE), new Item(DRAGON_THROWNAXE), new Item(JAR_OF_CHEMICALS), new Item(ALCHEMICAL_HYDRA_HEADS)),
 
-    THE_NIGHTMARE(AttributeKey.THE_NIGHTMARE_KC, LogType.BOSSES, "The nightmare", new int[]{THE_NIGHTMARE_9430}, AttributeKey.THE_NIGTHMARE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 3), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3), new Item(COINS_995, 500_000_000), new Item(WRATH_RUNE,10_000)},
+    THE_NIGHTMARE(AttributeKey.THE_NIGHTMARE_KC, LogType.BOSSES, "The nightmare", new int[]{THE_NIGHTMARE_9425, THE_NIGHTMARE_9426, THE_NIGHTMARE_9427, THE_NIGHTMARE_9428, THE_NIGHTMARE_9429, THE_NIGHTMARE_9430, THE_NIGHTMARE_9431, THE_NIGHTMARE_9432, THE_NIGHTMARE_9433}, AttributeKey.THE_NIGTHMARE_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 3), new Item(CustomItemIdentifiers.MYSTERY_TICKET,3), new Item(COINS_995, 500_000_000), new Item(WRATH_RUNE,10_000)},
         //Drops
         new Item(LITTLE_NIGHTMARE), new Item(INQUISITORS_MACE), new Item(INQUISITORS_GREAT_HELM), new Item(INQUISITORS_HAUBERK), new Item(INQUISITORS_PLATESKIRT), new Item(NIGHTMARE_STAFF), new Item(VOLATILE_ORB), new Item(HARMONISED_ORB), new Item(ELDRITCH_ORB), new Item(JAR_OF_DREAMS)),
 

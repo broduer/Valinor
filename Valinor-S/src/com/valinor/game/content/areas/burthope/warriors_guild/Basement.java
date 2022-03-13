@@ -1,7 +1,9 @@
 package com.valinor.game.content.areas.burthope.warriors_guild;
 
+import com.valinor.fs.ItemDefinition;
 import com.valinor.game.content.items.skillcape.CapeOfCompletion;
 import com.valinor.game.content.packet_actions.interactions.objects.Ladders;
+import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.EquipSlot;
@@ -47,7 +49,12 @@ public class Basement extends Interaction {
                 return true;
             }
 
-            player.putAttrib(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, DRAGON_DEFENDER);
+            set_item(player, DRAGON_DEFENDER);
+
+            int defid = player.getAttribOr(AttributeKey.WARRIORS_GUILD_CYCLOPS_ROOM_DEFENDER, BRONZE_DEFENDER);
+            ItemDefinition def = World.getWorld().definitions().get(ItemDefinition.class, defid);
+
+            player.message("<col=804080>Cyclops' are currently dropping " + def.name.toLowerCase() + "s.");
 
             player.teleport(player.getX() < 2912 ? 2912 : 2911, 9968);
             if (!CapeOfCompletion.ATTACK.operating(player)) {
