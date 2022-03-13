@@ -276,12 +276,16 @@ public class MagicMaxHit {
 
             //Ice barrage in PvP is capped at 41
             if (spell_name.equals("Ice barrage") && target.isPlayer()) {
-                maxHit = 41;
+                if (maxHit > 41) {
+                    maxHit = 41;
+                }
             }
 
             //Fire surge in PvP is capped at 49
             if (spell_name.equals("Fire surge") && target.isPlayer()) {
-                maxHit = 49;
+                if (maxHit > 49) {
+                    maxHit = 49;
+                }
             }
 
             boolean isPvPDummy = target.isNpc() && !includeNpcMax;
@@ -295,8 +299,12 @@ public class MagicMaxHit {
                     }
                 }
             }
+
+            //System.out.println("final max hit "+maxHit);
+
             return maxHit;
         }
+
         return baseMaxHit;
     }
 }
