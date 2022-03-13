@@ -499,13 +499,4 @@ public class GameObject extends Entity implements Cloneable {
         ObjectManager.addObj(this);
         return this;
     }
-
-    public GameObject spawnForSetTime(int ticks, String worldMessage) {
-        ObjectManager.addObj(this);
-        Chain.bound(null).name("GameObject:spawnForSetTime").runFn(ticks, () -> {
-            ObjectManager.removeObj(this);
-            World.getWorld().sendWorldMessage(worldMessage);
-        });
-        return this;
-    }
 }

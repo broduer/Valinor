@@ -4101,6 +4101,8 @@ public class Client extends GameApplet {
         frameMode(ScreenMode.FIXED);
         resetInputFieldFocus();
         setting.save();
+        broadcast = null;
+        broadcastText = "";
         //Clear private messages
         resetSplitPrivateChatMessages();
         System.gc();

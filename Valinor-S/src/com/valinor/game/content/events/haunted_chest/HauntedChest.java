@@ -5,6 +5,7 @@ import com.valinor.game.task.TaskManager;
 import com.valinor.game.world.World;
 import com.valinor.game.world.object.GameObject;
 import com.valinor.game.world.position.Tile;
+import com.valinor.util.chainedwork.Chain;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -28,7 +29,7 @@ public class HauntedChest {
 
     private static final String DESPAWN_MESSAGE = "<col=6a1a18><img=1394>The Haunted chest has despawned!";
 
-    public final GameObject hauntedChest = new GameObject(DEADMAN_CHEST_31484, new Tile(3183,3668,0), 10, 3);
+    public GameObject hauntedChest;
 
     /**
      * The interval at which server-wide haunted chests occur. Event runs every two hours
@@ -76,7 +77,12 @@ public class HauntedChest {
             last = now;
             next = LocalDateTime.now().plus(CHEST_SPAWN_TIMER.toSeconds(), ChronoUnit.SECONDS);
             ANNOUNCE_5_MIN_TIMER = false;
-            hauntedChest.spawnForSetTime(GameServer.properties().production ? 1800 : 300, DESPAWN_MESSAGE);
+            hauntedChest = new GameObject(DEADMAN_CHEST_31484, new Tile(3183,3668,0), 10, 3).spawn();
+            Chain.runGlobal(GameServer.properties().production ? 1800 : 300, () -> {
+                despawnChest();
+                World.getWorld().sendWorldMessage(DESPAWN_MESSAGE);
+                World.getWorld().sendBroadcast(DESPAWN_MESSAGE);
+            });
 
             // Broadcast it
             World.getWorld().sendWorldMessage("<col=6a1a18><img=1394>The Haunted chest has spawned east of the graveyard lvl 19 wilderness!");
