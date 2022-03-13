@@ -66,7 +66,7 @@ public class RedeemableBonds extends Interaction {
         if(BONDS_GIVE_REWARDS) {
             //Add the tickets
             player.inventory().addOrBank(new Item(DONATOR_TICKET, bond.donatorTicketReward));
-            player.inventory().addOrDrop(new Item(WINTER_TOKENS, bond.donatorTicketReward));
+            //player.inventory().addOrDrop(new Item(WINTER_TOKENS, bond.donatorTicketReward));
 
             if (bond.extra != null) {
                 player.inventory().addOrBank(bond.extra.clone());

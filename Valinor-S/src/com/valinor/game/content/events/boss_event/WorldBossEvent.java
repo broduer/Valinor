@@ -31,10 +31,9 @@ import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
-import static com.valinor.util.CustomItemIdentifiers.WINTER_TOKENS;
 import static com.valinor.util.CustomNpcIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
-import static com.valinor.util.NpcIdentifiers.*;
+import static com.valinor.util.NpcIdentifiers.ZOMBIES_CHAMPION;
 
 /**
  * @author Patrick van Elderen <patrick.vanelderen@live.nl>
@@ -85,7 +84,7 @@ public class WorldBossEvent {
     /**
      * The rotation of events, executed in sequence.
      */
-    private static final WorldBosses[] EVENT_ROTATION = {/*WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF, */WorldBosses.BLOOD_FURY_HESPORI, WorldBosses.INFERNAL_SPIDER};
+    private static final WorldBosses[] EVENT_ROTATION = {WorldBosses.BRUTAL_LAVA_DRAGON, WorldBosses.ZOMBIES_CHAMPION, WorldBosses.CORRUPTED_HUNLLEF, WorldBosses.BLOOD_FURY_HESPORI, WorldBosses.INFERNAL_SPIDER};
 
     public static boolean ANNOUNCE_5_MIN_TIMER = false;
 
@@ -118,9 +117,9 @@ public class WorldBossEvent {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(LAVA_DRAGON_BONES), npc.tile(), player));
                 }
 
-                if(npc.id() == SNOWFLAKE_BOSS) {
+                /*if(npc.id() == SNOWFLAKE_BOSS) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(WINTER_TOKENS, World.getWorld().random(2000,3500)), npc.tile(), player));
-                }
+                }*/
 
                 if(npc.id() == BLOOD_FURY_HESPORI_15022 || npc.id() == INFERNAL_SPIDER_15031) {
                     GroundItemHandler.createGroundItem(new GroundItem(new Item(CRYSTAL_KEY, 1), npc.tile(), player));
