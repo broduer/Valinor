@@ -429,9 +429,9 @@ public final class QuestTab {
             }
 
             case 53420 -> {
-                if (WildernessKeyPlugin.wildernessKeyLocation != null) {
-                    String message = "A Wilderness key has spawned somewhere in level <col=800000>" + WildernessKeyPlugin.wildernessLevel + "</col> Wilderness!";
-                    World.getWorld().sendWorldMessage("<img=1939> " + message);
+                String message = WildernessKeyPlugin.wildernessKeyLocation;
+                if (message != null && !message.isEmpty()) {
+                    player.message(message);
                 } else {
                     player.message(Color.RED.wrap("There is no sighting of a wilderness key."));
                 }

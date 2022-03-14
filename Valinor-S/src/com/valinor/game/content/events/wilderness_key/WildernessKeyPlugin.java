@@ -43,9 +43,7 @@ public class WildernessKeyPlugin {
 
     public static boolean ESCAPED = false;
 
-    public static WildernessKeyLocation wildernessKeyLocation;
-
-    public static int wildernessLevel;
+    public static String wildernessKeyLocation;
 
     /**
      * Announces when the player has picked up the key.
@@ -67,6 +65,7 @@ public class WildernessKeyPlugin {
 
         String message = String.format(PICKUP_KEY_MESSAGE, player.getUsername(), currentDescription);
         World.getWorld().sendWorldMessage(SPRITE + message);
+        wildernessKeyLocation = message;
     }
 
     public static void announceKeySpawn(Tile tile) {
@@ -83,14 +82,13 @@ public class WildernessKeyPlugin {
         if (currentPos == null) {
             String message = "A Wilderness key has spawned somewhere in level <col=800000>" + wildernessLevel + "</col> Wilderness!";
             World.getWorld().sendWorldMessage(SPRITE + message);
+            wildernessKeyLocation = message;
             return;
         }
 
-        wildernessKeyLocation = currentPos;
-        WildernessKeyPlugin.wildernessLevel = wildernessLevel;
-
         String message = String.format(KEY_SPAWN_MESSAGE, currentPos.getDescription(), wildernessLevel);
         World.getWorld().sendWorldMessage(SPRITE + message);
+        wildernessKeyLocation = message;
     }
 
     public static void announceKeyDrop(Player killed, Tile tile) {
@@ -107,11 +105,13 @@ public class WildernessKeyPlugin {
         if (currentPos == null) {
             String message = killed.getUsername() + " has died and dropped the Wilderness key at <col=800000>" + wildernessLevel + "</col> Wilderness!";
             World.getWorld().sendWorldMessage(SPRITE + message);
+            wildernessKeyLocation = message;
             return;
         }
 
         String message = String.format(KEY_DROP_MESSAGE, killed.getUsername(), currentPos.getDescription(), wildernessLevel);
         World.getWorld().sendWorldMessage(SPRITE + message);
+        wildernessKeyLocation = message;
     }
 
     public static void announceKeyEscape(Player player) {
@@ -122,6 +122,7 @@ public class WildernessKeyPlugin {
         World.getWorld().sendWorldMessage(SPRITE + message);
         World.getWorld().clearBroadcast();
         ESCAPED = true;
+        wildernessKeyLocation = "";
         AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_I, 1);
         AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_II, 1);
         AchievementsManager.activate(player, Achievements.WILDY_KEY_HUNTER_III, 1);

@@ -80,12 +80,13 @@ public class HpEvent {
                         ServerAnnouncements.tryBroadcastDrop(player, npc, legendaryMbox);
                         Utils.sendDiscordInfoLog("Player " + player.getUsername() + " got drop item " + legendaryMbox + " from a HP event.", "npcdrops");
                     }
+
+                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18>The HP event has ended! "+player.getUsername()+" did the most damage.");
                 }
             }
         });
         //Dismiss broadcast when event has ended.
         World.getWorld().clearBroadcast();
-        World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18>The HP event has ended!");
     }
 
     public static void onServerStart() {
