@@ -256,9 +256,9 @@ public class Combat {
             mob.setEntityInteraction(target);
         }
 
-        CombatFactory.unfreezeWhenOutOfRange(target);
+        CombatFactory.unfreezeWhenOutOfRange(mob);
         // maybe that should be for players only then
-        // in 317s the Movement packet is sent when you click a entity, we discard the walk data
+        // in 317s the Movement packet is sent when you click an entity, we discard the walk data
         // because we use serverside pf instead
         // a path is calculated later
         if (mob.isPlayer())

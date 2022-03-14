@@ -109,7 +109,7 @@ public class PickupItemPacketListener implements PacketListener {
 
             //Do actions...
 
-            // If whoever froze you is out of viewport, you get unfrozen when interacting with items.
+            // If whoever froze you are out of viewport, you get unfrozen when interacting with items.
             CombatFactory.unfreezeWhenOutOfRange(player);
 
             if (onSpot(player, tile)) {

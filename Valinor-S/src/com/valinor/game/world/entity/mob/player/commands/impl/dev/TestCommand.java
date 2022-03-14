@@ -17,6 +17,7 @@ import com.valinor.util.Utils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static com.valinor.util.ItemIdentifiers.*;
 
@@ -85,6 +86,13 @@ public class TestCommand implements Command {
 
         //Hitman.requestBounty(player);
         //Hitman.listOfBounties(player);
+
+        Optional<Player> patrick = World.getWorld().getPlayerByName("Patrick");
+        Optional<Player> test = World.getWorld().getPlayerByName("Test");
+
+        if(patrick.isPresent() && test.isPresent()) {
+            System.out.println("Distance between: "+patrick.get().tile().distance(test.get().tile()));
+        }
 
         player.message("Test command has been activated.");
         //PlayerSession.main(new String[0]);

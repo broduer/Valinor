@@ -1774,10 +1774,11 @@ public class CombatFactory {
             return;
         }
 
-        boolean offScreen = freezer.tile().distance(mob.tile()) > 16;
+        boolean offScreen = freezer.tile().distance(mob.tile()) > 13;
         if (offScreen || !freezer.isRegistered()) {//freezer offline
             mob.getTimers().cancel(TimerKey.FROZEN); //Remove frozen timer key
             mob.getTimers().cancel(TimerKey.REFREEZE); //Remove frozen timer key
+
             if (mob.isPlayer()) {
                 Player player = mob.getAsPlayer();
                 player.getPacketSender().sendEffectTimer(0, EffectTimer.FREEZE);

@@ -117,6 +117,11 @@ public class MagicClickSpells {
 
                 Optional<Player> targetFor = BountyHunter.getTargetfor(player);
                 if (targetFor.isPresent()) {
+                    if(targetFor.get().tile().insideRiskArea()) {
+                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
+                        return false;
+                    }
+
                     if (!WildernessArea.inWilderness(targetFor.get().tile())) {
                         player.message("Your target is currently not in the Wilderness.");
                         return false;
@@ -2090,6 +2095,11 @@ public class MagicClickSpells {
 
                 Optional<Player> targetFor = BountyHunter.getTargetfor(player);
                 if (targetFor.isPresent()) {
+                    if(targetFor.get().tile().insideRiskArea()) {
+                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
+                        return false;
+                    }
+
                     if (!WildernessArea.inWilderness(targetFor.get().tile())) {
                         player.message("Your target is currently not in the Wilderness.");
                         return false;
@@ -2601,6 +2611,11 @@ public class MagicClickSpells {
 
                 Optional<Player> targetFor = BountyHunter.getTargetfor(player);
                 if (targetFor.isPresent()) {
+                    if(targetFor.get().tile().insideRiskArea()) {
+                        player.message("Your target is currently in the riskzone area, you cannot teleport there.");
+                        return false;
+                    }
+
                     if (!WildernessArea.inWilderness(targetFor.get().tile())) {
                         player.message("Your target is currently not in the Wilderness.");
                         return false;

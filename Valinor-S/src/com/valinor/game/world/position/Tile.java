@@ -1,5 +1,6 @@
 package com.valinor.game.world.position;
 
+import com.valinor.game.content.areas.riskzone.RiskFightArea;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.Entity;
 import com.valinor.game.world.entity.Mob;
@@ -28,6 +29,10 @@ public class Tile implements Cloneable {
 
     public boolean homeRegion() {
         return inArea(EDGEVILLE_HOME_AREA) || region() == 7991 || region() == 7992 || region() == 8247;
+    }
+
+    public boolean insideRiskArea() {
+        return inArea(RiskFightArea.NH_AREA) || inArea(RiskFightArea.ONE_V_ONE_1) || inArea(RiskFightArea.ONE_V_ONE_2) || inArea(RiskFightArea.ONE_V_ONE_3);
     }
 
     public boolean raidsPartyArea() {

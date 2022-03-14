@@ -41,7 +41,7 @@ public abstract class CombatSpell extends Spell {
     @Override
     public void startCast(Mob cast, Mob castOn) {
         // On 07, the player gets unfrozen when the freezer is at least X tiles away
-        CombatFactory.unfreezeWhenOutOfRange(castOn);
+        CombatFactory.unfreezeWhenOutOfRange(cast);
 
         int castAnimation = -1;
 
