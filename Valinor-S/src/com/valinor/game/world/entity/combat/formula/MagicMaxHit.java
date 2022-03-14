@@ -275,14 +275,14 @@ public class MagicMaxHit {
             }
 
             //Ice barrage in PvP is capped at 41
-            if (spell_name.equals("Ice barrage") && target.isPlayer()) {
+            if (spell_name.equals("Ice barrage") && target != null && target.isPlayer()) {
                 if (maxHit > 41) {
                     maxHit = 41;
                 }
             }
 
             //Fire surge in PvP is capped at 49
-            if (spell_name.equals("Fire surge") && target.isPlayer()) {
+            if (spell_name.equals("Fire surge") && target != null && target.isPlayer()) {
                 if (maxHit > 49) {
                     maxHit = 49;
                 }

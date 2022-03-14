@@ -73,7 +73,7 @@ public enum MeleeMaxHitCaps {
     DRAGON_SCIMITAR_TIER_5_5(CustomItemIdentifiers.DRAGON_SCIMITAR_TIER_5_5,49, 62),
     DRAGON_2H_SWORD(ItemIdentifiers.DRAGON_2H_SWORD,53, 53),
     GHRAZI_RAPIER(ItemIdentifiers.GHRAZI_RAPIER,54, 54),
-    ELDER_MAUL(ItemIdentifiers.ELDER_MAUL,66, 66),
+    ELDER_MAUL(ItemIdentifiers.ELDER_MAUL,67, 67),
     DARK_ELDER_MAUL(CustomItemIdentifiers.DARK_ELDER_MAUL,67, 67),
     GRANITE_MAUL_24225(ItemIdentifiers.GRANITE_MAUL_24225,50, 50),
     GRANITE_MAUL_TIER_1(CustomItemIdentifiers.GRANITE_MAUL_TIER_1,50, 50),
@@ -95,10 +95,13 @@ public enum MeleeMaxHitCaps {
     DRAGON_HALBERD(ItemIdentifiers.DRAGON_HALBERD,52, 57),
     DRAGON_HASTA(ItemIdentifiers.DRAGON_HASTA,47, 70),
     KORASI_SWORD(CustomItemIdentifiers.KORASI_SWORD,49, 80),
-    ANCIENT_WARRIOR_MAUL(CustomItemIdentifiers.ANCIENT_WARRIOR_MAUL,47, 86),
-    ANCIENT_WARRIOR_AXE(CustomItemIdentifiers.ANCIENT_WARRIOR_AXE,60, 86),
-    ANCIENT_WARRIOR_MAUL_C(CustomItemIdentifiers.ANCIENT_WARRIOR_MAUL_C,67, 87),
-    ANCIENT_WARRIOR_AXE_C(CustomItemIdentifiers.ANCIENT_WARRIOR_AXE_C,60, 87),
+    ANCIENT_WARRIOR_MAUL(CustomItemIdentifiers.ANCIENT_WARRIOR_MAUL,68, 86),
+    ANCIENT_WARRIOR_AXE(CustomItemIdentifiers.ANCIENT_WARRIOR_AXE,58, 86),
+    ANCIENT_WARRIOR_SWORD(CustomItemIdentifiers.ANCIENT_WARRIOR_SWORD,58, 86),
+    ANCIENT_WARRIOR_MAUL_C(CustomItemIdentifiers.ANCIENT_WARRIOR_MAUL_C,69, 87),
+    ANCIENT_WARRIOR_AXE_C(CustomItemIdentifiers.ANCIENT_WARRIOR_AXE_C,59, 87),
+    ANCIENT_WARRIOR_SWORD_C(CustomItemIdentifiers.ANCIENT_WARRIOR_SWORD_C,59, 87),
+    SWORD_OF_GRYFFINDOR(CustomItemIdentifiers.SWORD_OF_GRYFFINDOR,67, 82),
     ;
 
     public final int itemId, maxHit, maxHitSpec;

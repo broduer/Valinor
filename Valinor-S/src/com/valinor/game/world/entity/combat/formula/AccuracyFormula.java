@@ -238,6 +238,7 @@ public class AccuracyFormula {
             final Item helm = player.getEquipment().get(EquipSlot.HEAD);
             final Item weapon = player.getEquipment().get(EquipSlot.WEAPON);
 
+            //PVM accuracy boost
             if (enemy.isNpc()) {
                 final Npc npc = (Npc) enemy;
 
@@ -318,6 +319,7 @@ public class AccuracyFormula {
                 //The sword of gryffindor gives a 65% accuracy boost vs monsters.
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, CustomItemIdentifiers.SWORD_OF_GRYFFINDOR)) {
                     off_additional_bonus += 0.65;
+                    System.out.println("huh");
                 }
 
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, CustomItemIdentifiers.MAGMA_BLOWPIPE)) {
@@ -376,6 +378,8 @@ public class AccuracyFormula {
                     off_additional_bonus += 0.10;//10.0% damage boost
                 }
             }
+
+            //PvP accuracy boost
 
             if (FormulaUtils.obbyArmour(player) && FormulaUtils.hasObbyWeapon(player)) {
                 off_additional_bonus += 0.1;
