@@ -362,6 +362,7 @@ public class Widget {
             }
         }
         interfaceLoader = interfaces;
+        LeaderboardWidget.unpack(font);
         AccountSelectionWidget.unpack(font);
         ForgeWidget.unpack(font);
         SkotizoWidget.unpack();

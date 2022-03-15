@@ -54,4 +54,11 @@ public class ConfigUtility {
     public static final int SHOP_BUTTON_ONE = 1125;
     public static final int SHOP_BUTTON_TWO = 1126;
     public static final int SHOP_BUTTON_THREE = 1127;
+
+    public static final int PLAYER_HISCORES = 1128;
+    public static final int CLAN_HISCORES = 1129;
+    public static final int TODAY_HISCORES = 1130;
+    public static final int THIS_WEEK_HISCORES = 1131;
+    public static final int ALL_TIME_HISCORES = 1132;
+    public static final int LEADERBOARD_SIDEBAR = 1133;
 }
