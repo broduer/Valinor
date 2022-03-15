@@ -81,8 +81,8 @@ public class PromoCodeCommand implements Command {
             String username = Utils.formatText(command.substring(10)); // after "promocode "
 
             List<String> youtubers = Arrays.asList("fpk merk", "vexia", "i pk max jr",
-                "lanors", "smoothie", "juicy orange", "respire", "baguette rsps", "primatol",
-                "fewb", "sohan", "unclenaps");
+                "smoothie", "juicy orange", "baguette rsps", "sohan", "unclenaps",
+                "slapped");
 
             if (youtubers.stream().anyMatch(name -> name.toLowerCase().equalsIgnoreCase(username))) {
                 var IP = player.getHostAddress();
@@ -141,14 +141,10 @@ public class PromoCodeCommand implements Command {
                                 FileUtil.writeTextToDir("smoothie - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("juicy orange")) {
                                 FileUtil.writeTextToDir("juicy orange - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
-                            } else if(username.equalsIgnoreCase("respire")) {
-                                FileUtil.writeTextToDir("respire - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
+                            } else if(username.equalsIgnoreCase("slapped")) {
+                                FileUtil.writeTextToDir("slapped - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("baguette rsps")) {
                                 FileUtil.writeTextToDir("baguette rsps - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
-                            } else if(username.equalsIgnoreCase("primatol")) {
-                                FileUtil.writeTextToDir("primatol - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
-                            } else if(username.equalsIgnoreCase("fewb")) {
-                                FileUtil.writeTextToDir("fewb - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("sohan")) {
                                 FileUtil.writeTextToDir("sohan - "+player.getUsername()+" - "+IP+" - "+MAC, directory);
                             } else if(username.equalsIgnoreCase("unclenaps")) {
