@@ -58,8 +58,9 @@ import java.util.concurrent.TimeUnit;
 import static com.valinor.game.content.collection_logs.CollectionLog.COS_RAIDS_KEY;
 import static com.valinor.game.content.collection_logs.LogType.BOSSES;
 import static com.valinor.game.world.entity.AttributeKey.*;
-import static com.valinor.util.CustomItemIdentifiers.TASK_BOTTLE_SKILLING;
+import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.CustomNpcIdentifiers.*;
+import static com.valinor.util.ItemIdentifiers.COINS_995;
 import static com.valinor.util.NpcIdentifiers.ICELORD;
 import static com.valinor.util.NpcIdentifiers.*;
 
@@ -450,6 +451,28 @@ public class NpcDeath {
                         DailyTaskManager.increase(DailyTasks.CORRUPTED_NECHRYARCH, killer);
                         AchievementsManager.activate(killer, Achievements.CORRUPTED_NECHRYARCH, 1);
                     }
+
+                    case HP_EVENT -> {
+                        //Always drop random coins
+                        GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(10_000_000, 25_000_000)), npc.tile(), killer));
+
+                        //Random drop from the table
+                        Item randomDonatorMbox = new Item(DONATOR_MYSTERY_BOX, World.getWorld().random(2, 6));
+                        Item legendaryMbox = new Item(LEGENDARY_MYSTERY_BOX, 1);
+                        if (randomDonatorMbox != null && legendaryMbox != null) {
+                            GroundItemHandler.createGroundItem(new GroundItem(randomDonatorMbox, npc.tile(), killer));
+                            ServerAnnouncements.tryBroadcastDrop(killer, npc, randomDonatorMbox);
+                            Utils.sendDiscordInfoLog("Player " + killer.getUsername() + " got drop item " + randomDonatorMbox + " from a HP event.", "npcdrops");
+
+                            GroundItemHandler.createGroundItem(new GroundItem(legendaryMbox, npc.tile(), killer));
+                            ServerAnnouncements.tryBroadcastDrop(killer, npc, legendaryMbox);
+                            Utils.sendDiscordInfoLog("Player " + killer.getUsername() + " got drop item " + legendaryMbox + " from a HP event.", "npcdrops");
+                        }
+
+                        //Dismiss broadcast when event has ended.
+                        World.getWorld().clearBroadcast();
+                        World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18>The HP event has ended! "+killer.getUsername()+" did the most damage.");
+                    }
                 }
 
                 if (isBarrowsBro) {
@@ -559,17 +582,12 @@ public class NpcDeath {
                         ChaoticNightmare.getInstance().drop(npc);
                     }
 
-                    if (HpEvent.getInstance().getHpEventNpc().isPresent() &&
-                        npc == HpEvent.getInstance().getHpEventNpc().get()) {
-                        HpEvent.getInstance().drop(npc);
-                    }
-
                     if(isNightmare) {
                         nightmareDrops(npc);
                     }
 
                     killer.getBossTimers().submit(npc.def().name, (int) killer.getCombat().getFightTimer().elapsed(TimeUnit.SECONDS), killer);
-                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare && npc.id() != CHAOTIC_NIGHTMARE && npc.id() != HP_EVENT);
+                    boolean ignoreDrops = (npc.id() != KALPHITE_QUEEN_6500 && npc.id() != RUNITE_GOLEM && !npc.isWorldBoss() && !isNightmare && npc.id() != CHAOTIC_NIGHTMARE);
 
                     ScalarLootTable table = ScalarLootTable.forNPC(npc.id());
                     //System.out.println(ignoreDrops+ " " +isNightmare);

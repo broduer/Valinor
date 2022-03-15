@@ -56,39 +56,6 @@ public class HpEvent {
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(HP_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);
 
-    public void drop(Mob mob) {
-        var list = mob.getCombat().getDamageMap().entrySet().stream().sorted(Comparator.comparingInt(e -> e.getValue().getDamage())).collect(Collectors.toList());
-        list.stream().limit(2).forEach(e -> {
-            var key = e.getKey();
-            Player player = (Player) key;
-            if (mob.tile().isWithinDistance(player.tile(), 12)) {
-                if (mob instanceof Npc) {
-                    Npc npc = mob.getAsNpc();
-
-                    //Always drop random coins
-                    GroundItemHandler.createGroundItem(new GroundItem(new Item(COINS_995, World.getWorld().random(10_000_000, 25_000_000)), npc.tile(), player));
-
-                    //Random drop from the table
-                    Item randomDonatorMbox = new Item(DONATOR_MYSTERY_BOX, World.getWorld().random(2, 6));
-                    Item legendaryMbox = new Item(LEGENDARY_MYSTERY_BOX, 1);
-                    if (randomDonatorMbox != null && legendaryMbox != null) {
-                        GroundItemHandler.createGroundItem(new GroundItem(randomDonatorMbox, npc.tile(), player));
-                        ServerAnnouncements.tryBroadcastDrop(player, npc, randomDonatorMbox);
-                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " got drop item " + randomDonatorMbox + " from a HP event.", "npcdrops");
-
-                        GroundItemHandler.createGroundItem(new GroundItem(legendaryMbox, npc.tile(), player));
-                        ServerAnnouncements.tryBroadcastDrop(player, npc, legendaryMbox);
-                        Utils.sendDiscordInfoLog("Player " + player.getUsername() + " got drop item " + legendaryMbox + " from a HP event.", "npcdrops");
-                    }
-
-                    World.getWorld().sendWorldMessage("<img=452><shad=0><col=6a1a18>The HP event has ended! "+player.getUsername()+" did the most damage.");
-                }
-            }
-        });
-        //Dismiss broadcast when event has ended.
-        World.getWorld().clearBroadcast();
-    }
-
     public static void onServerStart() {
         TaskManager.submit(new HpEventTask());
     }
