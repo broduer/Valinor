@@ -209,6 +209,7 @@ public enum SpecialAttacks {
                         Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MAGIC);
                         Prayers.deactivatePrayer(p, Prayers.PROTECT_FROM_MISSILES);
                     }
+                    p.getPacketSender().sendQuickPrayersState(false);
                     p.putAttrib(AttributeKey.NIGHTMARE_CURSE, System.currentTimeMillis() + 30000);
                     p.message("<col=ff0000>The Nightmare has cursed you, shuffling your prayers!");
                 });

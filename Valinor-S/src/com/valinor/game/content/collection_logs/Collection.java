@@ -176,7 +176,7 @@ public enum Collection {
 
     NEX(AttributeKey.NEX_KC, LogType.BOSSES, "Nex", new int[]{NpcIdentifiers.NEX, NpcIdentifiers.NEX_11279, NpcIdentifiers.NEX_11280, NpcIdentifiers.NEX_11281, NpcIdentifiers.NEX_11282}, AttributeKey.NEX_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.PETS_MYSTERY_BOX, 1), new Item(CustomItemIdentifiers.MYSTERY_TICKET,5)},
         //Drops
-        new Item(NEXLING), new Item(ANCIENT_HILT), new Item(NIHIL_HORN), new Item(ZARYTE_VAMBRACES), new Item(TORVA_FULL_HELM), new Item(TORVA_PLATEBODY), new Item(TORVA_PLATELEGS), new Item(NIHIL_SHARD)),
+        new Item(NEXLING), new Item(ANCIENT_GODSWORD), new Item(ZARYTE_CROSSBOW), new Item(ZARYTE_VAMBRACES), new Item(TORVA_FULL_HELM), new Item(TORVA_PLATEBODY), new Item(TORVA_PLATELEGS), new Item(NIHIL_SHARD)),
 
     SARACHNIS(AttributeKey.SARACHNIS, LogType.BOSSES, "Sarachnis", new int[]{NpcIdentifiers.SARACHNIS}, AttributeKey.SARACHNIS_LOG_CLAIMED, new Item[]{new Item(CustomItemIdentifiers.SUPER_MYSTERY_BOX, 3)},
         //Drops
