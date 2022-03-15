@@ -223,7 +223,7 @@ object CollectPayments {
                     val total = (totalPaymentAmount * row.itemAmt).toInt()
 
                     if(GameServer.properties().promoMysteryBox) {
-                        val promoMysteryBoxes = total / 100
+                        val promoMysteryBoxes = total / 25
                         if (promoMysteryBoxes > 0) {
                             inventory.addOrBank(Item(PROMO_MYSTERY_BOX, promoMysteryBoxes))
                             World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " promo mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")

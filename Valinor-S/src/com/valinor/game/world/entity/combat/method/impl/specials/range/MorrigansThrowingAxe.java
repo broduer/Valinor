@@ -21,7 +21,7 @@ public class MorrigansThrowingAxe extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        mob.animate(929);
+        mob.animate(806);
         mob.graphic(1626, 100, 0);
 
         //Fire projectile

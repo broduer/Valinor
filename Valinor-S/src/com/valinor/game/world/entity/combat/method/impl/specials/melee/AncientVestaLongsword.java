@@ -15,7 +15,7 @@ public class AncientVestaLongsword extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        mob.animate(8145);
+        mob.animate(7515);
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE),1, CombatType.MELEE).checkAccuracy();
         hit.submit();
         CombatSpecial.drain(mob, CombatSpecial.ANCIENT_VESTA_LONGSWORD.getDrainAmount());

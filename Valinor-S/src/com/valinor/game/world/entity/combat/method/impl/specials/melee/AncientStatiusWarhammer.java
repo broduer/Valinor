@@ -19,7 +19,7 @@ public class AncientStatiusWarhammer extends CommonCombatMethod {
     @Override
     public void prepareAttack(Mob mob, Mob target) {
         mob.animate(1378);
-        mob.graphic(844);
+        mob.graphic(1450);
 
         Hit hit = target.hit(mob, CombatFactory.calcDamageFromType(mob, target, CombatType.MELEE),1, CombatType.MELEE).checkAccuracy();
         hit.submit();
