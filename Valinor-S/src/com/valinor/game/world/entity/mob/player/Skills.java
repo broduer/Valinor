@@ -687,7 +687,7 @@ public class Skills {
                                     if(skill.getDialogue() == null) {
                                         if(skill == Skill.SLAYER) {
                                             if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                                                Teleports.basicTeleport(player, new Tile(3107,3506));
+                                                Teleports.basicTeleport(player, new Tile(3081,3503));
                                             }
                                             return;
                                         }
@@ -708,7 +708,7 @@ public class Skills {
                     if(skill.getDialogue() == null) {
                         if(skill == Skill.SLAYER) {
                             if (Teleports.canTeleport(player, true, TeleportType.GENERIC)) {
-                                Teleports.basicTeleport(player, new Tile(3107,3506));
+                                Teleports.basicTeleport(player, new Tile(3081,3503));
                             }
                             return true;
                         }

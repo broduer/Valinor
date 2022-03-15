@@ -3279,14 +3279,6 @@
         "id": 554,
         "amount": 5000
       },
-      {
-        "id": 554,
-        "amount": 5000
-      },
-      {
-        "id": 554,
-        "amount": 5000
-      },
       //  Fire Rune
       {
         "id": 555,
@@ -3330,32 +3322,38 @@
       // Nature Rune
       {
         "id": 12734,
-        "amount": 80
+        "amount": 80,
+        "value": 100000
       },
       // Fire Rune Pack
       {
         "id": 12730,
-        "amount": 80
+        "amount": 80,
+        "value": 100000
       },
       // Water Rune Pack
       {
         "id": 12728,
-        "amount": 80
+        "amount": 80,
+        "value": 100000
       },
       // Air Rune Pack
       {
         "id": 12732,
-        "amount": 80
+        "amount": 80,
+        "value": 100000
       },
       // Earth Rune Pack
       {
         "id": 12736,
-        "amount": 40
+        "amount": 40,
+        "value": 100000
       },
       // Mind Rune Pack
       {
         "id": 12738,
-        "amount": 35
+        "amount": 35,
+        "value": 100000
       },
       // Chaos Rune Pack
       {
