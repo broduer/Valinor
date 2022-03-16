@@ -132,6 +132,7 @@
   "buyTwoGetOneFree": false,
   "mysteryTicketPromo": false,
   "promoMysteryBox": false,
+  "raidsMysteryBox": false,
   "doubleExperienceEvent": true,
   "doubleSlayerRewardPointsEvent": false,
   "doublePKPEvent": false,

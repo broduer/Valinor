@@ -239,6 +239,7 @@ public final class ServerProperties {
         buyTwoGetOneFree = false;
         mysteryTicketPromo = false;
         promoMysteryBox = false;
+        raidsMysteryBox = false;
         doubleExperienceEvent = false;
         doubleSlayerRewardPointsEvent = false;
         doublePKPEvent = false;
@@ -684,6 +685,8 @@ public final class ServerProperties {
     public final boolean mysteryTicketPromo;
 
     public final boolean promoMysteryBox;
+
+    public final boolean raidsMysteryBox;
 
     public final boolean doubleExperienceEvent;
     public final boolean doubleSlayerRewardPointsEvent;

@@ -1,54 +1,64 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.staff.admin;
 
-import com.valinor.game.GameEngine;
+import com.valinor.game.world.InterfaceConstants;
 import com.valinor.game.world.World;
+import com.valinor.game.world.entity.dialogue.Dialogue;
+import com.valinor.game.world.entity.dialogue.DialogueType;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
-import com.valinor.game.world.entity.mob.player.save.PlayerSave;
+import com.valinor.game.world.items.Item;
 import com.valinor.util.Utils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Optional;
 
+/**
+ * @author Patrick van Elderen <https://github.com/PVE95>
+ * @Since March 16, 2022
+ */
 public class CheckInventoryCommand implements Command {
 
-    private static final Logger logger = LogManager.getLogger(CheckInventoryCommand.class);
     @Override
     public void execute(Player player, String command, String[] parts) {
-        if (parts.length < 2) {
-            player.message("Invalid use of command.");
-            player.message("Use: ::checkinv username");
+        if (command.length() <= 9)
             return;
-        }
-        final String player2 = Utils.formatText(command.substring(parts[0].length() + 1));
-        Optional<Player> plr = World.getWorld().getPlayerByName(player2);
-        if (plr.isPresent()) {
-            player.message("The inventory for " + player2 + " is send to the discord command logs.");
-            Utils.sendDiscordInfoLog("```"+plr.get().inventory().toString()+"```", "command");
-        } else {
-            Player plr2 = new Player();
-            plr2.setUsername(Utils.formatText(player2.substring(0, 1).toUpperCase() + player2.substring(1)));
-            GameEngine.getInstance().submitLowPriority(() -> {
-                try {
-                    if (PlayerSave.loadOfflineWithoutPassword(plr2)) {
-                        GameEngine.getInstance().addSyncTask(() -> {
-                            player.message("The inventory for " + plr2.getUsername() + " is send to the discord command logs.");
-                            Utils.sendDiscordInfoLog("```"+plr2.inventory().toString()+"```", "command");
-                        });
-                    } else {
-                        player.message("The Player " + plr2.getUsername() + " does not exist.");
+        String username = Utils.formatText(command.substring(9)); // after "checkinv "
+
+        Optional<Player> other = World.getWorld().getPlayerByName(username);
+
+        if(other.isPresent()) {
+            player.lock();
+            otherInventory(player, other.get());
+            player.getDialogueManager().start(new Dialogue() {
+                @Override
+                protected void start(Object... parameters) {
+                    send(DialogueType.OPTION, DEFAULT_OPTION_TITLE, "Quit viewing", "");
+                    setPhase(0);
+                }
+
+                @Override
+                protected void select(int option) {
+                    if(isPhase(0)) {
+                        player.unlock();
+                        player.inventory().refresh();
+                        stop();
                     }
-                } catch (Exception e) {
-                    logger.catching(e);
                 }
             });
+        } else {
+            player.message(username+" does not exist or is offline.");
         }
+    }
+
+    private void otherInventory(Player player, Player other) {
+        //Safety
+        if(other == player || other == null || player == null)
+            return;
+        Item[] inventory = other.inventory().toArray();
+        player.getPacketSender().sendItemOnInterface(InterfaceConstants.INVENTORY_INTERFACE, inventory);
     }
 
     @Override
     public boolean canUse(Player player) {
         return (player.getPlayerRights().isAdminOrGreater(player));
     }
-
 }

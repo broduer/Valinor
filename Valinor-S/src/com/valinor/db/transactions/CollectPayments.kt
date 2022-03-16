@@ -223,15 +223,23 @@ object CollectPayments {
                     val total = (totalPaymentAmount * row.itemAmt).toInt()
 
                     if(GameServer.properties().promoMysteryBox) {
-                        val promoMysteryBoxes = total / 25
+                        val promoMysteryBoxes = total / 45
                         if (promoMysteryBoxes > 0) {
                             inventory.addOrBank(Item(PROMO_MYSTERY_BOX, promoMysteryBoxes))
                             World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " promo mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
                         }
                     }
 
+                    if(GameServer.properties().raidsMysteryBox) {
+                        val promoMysteryBoxes = total / 68
+                        if (promoMysteryBoxes > 0) {
+                            inventory.addOrBank(Item(RAIDS_MYSTERY_BOX, promoMysteryBoxes))
+                            World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + promoMysteryBoxes + " raids mystery boxes</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
+                        }
+                    }
+
                     if(GameServer.properties().mysteryTicketPromo) {
-                        val mysteryTickets = total / 10
+                        val mysteryTickets = total / 9
                         if (mysteryTickets > 0) {
                             inventory.addOrBank(Item(MYSTERY_TICKET, mysteryTickets))
                             World.getWorld().sendWorldMessage("<img=452><shad=0>" + username.toString() + " just received <col=" + Color.BLUE.colorValue.toString() + ">x" + mysteryTickets + " mystery tickets</col> for donating! Support us at <col=" + Color.BLUE.colorValue.toString() + ">::donate</col>!")
