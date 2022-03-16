@@ -179,8 +179,8 @@ public enum Achievements {
     BLOODTHIRSTY_II("Bloodthirsty II", "Get a killstreak of 50.", 1, Difficulty.HARD, new Item(DRAGON_CLAWS)),
     BLOODTHIRSTY_III("Bloodthirsty III", "Kill someone that is on a killstreak of +50.", 1, Difficulty.HARD, new Item(DONATOR_MYSTERY_BOX)),
 
-    SURVIVOR_I("Survivor I", "Get a wilderness killstreak of 5.", 5, Difficulty.MED, new Item(LARRANS_KEY, 5)),
-    SURVIVOR_II("Survivor II", "Get a wilderness killstreak of above 10.", 10, Difficulty.HARD, new Item(DONATOR_MYSTERY_BOX)),
+    SURVIVOR_I("Survivor I", "Get a wilderness killstreak of 5.", 1, Difficulty.MED, new Item(LARRANS_KEY, 5)),
+    SURVIVOR_II("Survivor II", "Get a wilderness killstreak of above 10.", 1, Difficulty.HARD, new Item(DONATOR_MYSTERY_BOX)),
 
     PURE_I("Pure I", "Get 25 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 25, Difficulty.EASY, new Item(ELDER_CHAOS_HOOD), new Item(ELDER_CHAOS_TOP), new Item(ELDER_CHAOS_ROBE)),
     PURE_II("Pure II", "Get 50 player kills with a defence level of 1.<br>You must have a CB level of at least 80!", 50, Difficulty.MED, new Item(DONATOR_MYSTERY_BOX)),

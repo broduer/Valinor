@@ -22,17 +22,17 @@ import static java.lang.String.format;
  * @Since juli 08, 2020
  */
 public class AchievementsManager {
-    
+
     private static final Logger logger = LogManager.getLogger(AchievementsManager.class);
 
     public static void activate(Player player, Achievements achievement, int increaseBy) {
         //Can't increase during tourneys
-        if(player.inActiveTournament() || player.isInTournamentLobby()) {
+        if (player.inActiveTournament() || player.isInTournamentLobby()) {
             return;
         }
 
         //The user box test can't complete achievements.
-        if(player.getUsername().equalsIgnoreCase("Box test")) {
+        if (player.getUsername().equalsIgnoreCase("Box test")) {
             return;
         }
 
@@ -48,19 +48,19 @@ public class AchievementsManager {
             player.putAttrib(AttributeKey.ACHIEVEMENTS_COMPLETED, achievementsCompleted);
 
             //When achievements complete, check if we can complete the COMPLETIONIST achievement.
-            if(player.completedAllAchievements()) {
+            if (player.completedAllAchievements()) {
                 activate(player, Achievements.COMPLETIONIST, 1);
             }
 
             //Complete all cooking achievements to become a chef
-            if(isCompleted(player, Achievements.BAKER) && isCompleted(player, Achievements.COOK)) {
+            if (isCompleted(player, Achievements.BAKER) && isCompleted(player, Achievements.COOK)) {
                 activate(player, Achievements.CHEF, 1);
             }
 
-            player.message("<col=297A29>Congratulations! You have completed the "+achievement.getName()+" achievement.");
-            World.getWorld().sendWorldMessage(format("<img=1051>[<col="+ Color.MEDRED.getColorValue()+">Achievement</col>]: %s just completed the %s achievement.", (PlayerRights.getCrown(player) + player.getUsername()), achievement.getName()));
+            player.message("<col=297A29>Congratulations! You have completed the " + achievement.getName() + " achievement.");
+            World.getWorld().sendWorldMessage(format("<img=1051>[<col=" + Color.MEDRED.getColorValue() + ">Achievement</col>]: %s just completed the %s achievement.", (PlayerRights.getCrown(player) + player.getUsername()), achievement.getName()));
 
-            if(achievement.otherRewardString() != null) {
+            if (achievement.otherRewardString() != null) {
                 checkForOtherReward(player, achievement);
                 var points = player.<Integer>getAttribOr(ACHIEVEMENT_POINTS, 0) + achievement.points();
                 player.putAttrib(ACHIEVEMENT_POINTS, points);
@@ -69,18 +69,20 @@ public class AchievementsManager {
 
             Item[] reward = achievement.getReward();
             if (reward != null) {
-                if(player.gameMode().isUltimateIronman()) {
+                if (player.gameMode().isUltimateIronman()) {
                     player.inventory().addOrDrop(reward.clone());
                 } else {
-                    player.inventory().addOrBank(reward.clone());
+                    for (Item item : reward.clone()) {
+                        player.getBank().depositFromNothing(item);
+                    }
                 }
-                Utils.sendDiscordInfoLog(player.getUsername()+" has completed " + achievement.getName() + " and got " + Arrays.toString(reward.clone()), "achievements");
+                Utils.sendDiscordInfoLog(player.getUsername() + " has completed " + achievement.getName() + " and got " + Arrays.toString(reward.clone()), "achievements");
             }
         }
     }
 
     private static void checkForOtherReward(Player player, Achievements achievement) {
-        switch(achievement) {
+        switch (achievement) {
 
         }
     }
