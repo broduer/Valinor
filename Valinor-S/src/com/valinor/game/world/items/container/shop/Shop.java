@@ -333,6 +333,11 @@ public abstract class Shop {
             return;
         }
 
+        if(shopId == 18 && item.noted()) {
+            player.message("You can't sell " + item.unnote().name() + " to this shop.");
+            return;
+        }
+
         Optional<Item> find = container.search(item.getId());
         int sellValue;
 

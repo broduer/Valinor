@@ -76,7 +76,7 @@ public enum DailyTasks {
         }
     },
 
-    GREEN_DRAGONS("Green dragons", "Kill 30 green dragons", "70+", "Dangerous", new Tile(3343, 3664), 30, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, GREEN_DRAGONS_DAILY_TASK_COMPLETED, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, /*new Item(WINTER_TOKENS, 200),*/ new Item(COINS_995, 1_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
+    GREEN_DRAGONS("Green dragons", "Kill 30 green dragons", "70+", "Dangerous", new Tile(3343, 3664), 30, GREEN_DRAGONS_DAILY_TASK_COMPLETION_AMOUNT, GREEN_DRAGONS_DAILY_TASK_COMPLETED, GREEN_DRAGONS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, /*new Item(WINTER_TOKENS, 200),*/ new Item(COINS_995, 16_000_000), new Item(DRAGON_BONES+1,150), new Item(POINTS_MYSTERY_BOX+1, 3)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -111,7 +111,7 @@ public enum DailyTasks {
         }
     },
 
-    VALINOR_COINS("Valinor coins", "Exchange items for 1.000 Valinor coins", "Any!", "Safe", new Tile(3109, 3500), 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD  /*new Item(WINTER_TOKENS, 2500)*/) {
+    VALINOR_COINS("Valinor coins", "Exchange items for 1.000 Valinor coins", "Any!", "Safe", new Tile(3109, 3500), 1, VALINOR_COINS_DAILY_TASK_COMPLETION_AMOUNT, VALINOR_COINS_DAILY_TASK_COMPLETED, VALINOR_COINS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.HARD, new Item(DONATOR_MYSTERY_BOX) /*new Item(WINTER_TOKENS, 2500)*/) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -153,7 +153,7 @@ public enum DailyTasks {
         }
     },
 
-    BATTLE_MAGES("Battle Mages", "Kill 100 battle mages", "100+", "Dangerous", new Tile(2539, 4716), 100, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, BATTLE_MAGE_DAILY_TASK_COMPLETED, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, /*new Item(WINTER_TOKENS, 450),*/ new Item(COINS_995,4_000_000), new Item(POINTS_MYSTERY_BOX,2), new Item(CRYSTAL_KEY,2)) {
+    BATTLE_MAGES("Battle Mages", "Kill 100 battle mages", "100+", "Dangerous", new Tile(2539, 4716), 100, BATTLE_MAGE_DAILY_TASK_COMPLETION_AMOUNT, BATTLE_MAGE_DAILY_TASK_COMPLETED, BATTLE_MAGE_DAILY_TASK_REWARD_CLAIMED, TaskCategory.MED, /*new Item(WINTER_TOKENS, 450),*/ new Item(COINS_995,15_000_000), new Item(POINTS_MYSTERY_BOX,5), new Item(CRYSTAL_KEY,2), new Item(DONATOR_MYSTERY_BOX,1)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);
@@ -224,6 +224,13 @@ public enum DailyTasks {
     },
 
     MEMBER_CAVE_KILLS("Member cave", "Kill 5 players inside member cave", "100+", "Dangerous", null, 5, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, /*new Item(WINTER_TOKENS, 650),*/ new Item(DONATOR_MYSTERY_BOX,1), new Item(COINS_995,2_000_000)) {
+        @Override
+        public boolean canIncrease(Player player) {
+            return !player.<Boolean>getAttribOr(completed, false);
+        }
+    },
+
+    ELDER_CHAOS_DRUID("Elder druids", "Kill 100 Elder chaos druids", "75+", "Dangerous", new Tile(3235, 3618), 100, ELDER_CHAOS_DRUID_KILLS_DAILY_TASK_COMPLETION_AMOUNT, ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_COMPLETED, ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_REWARD_CLAIMED, TaskCategory.PVP, /*new Item(WINTER_TOKENS, 650),*/ new Item(COINS_995,15_000_000), new Item(DONATOR_MYSTERY_BOX,1), new Item(POINTS_MYSTERY_BOX,5), new Item(DOUBLE_DROPS_SCROLL,5)) {
         @Override
         public boolean canIncrease(Player player) {
             return !player.<Boolean>getAttribOr(completed, false);

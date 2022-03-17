@@ -122,7 +122,7 @@ public class NightmareInstance {
             if (nightmare != null) {
                 nightmare.husksSpawned.clear();
             }
-            if(!n.dead()) {
+            if(!n.dead() && n.tile().level == instanceLevel) {
                 n.remove();
             }
         });

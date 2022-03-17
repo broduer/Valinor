@@ -693,14 +693,6 @@ public class CombatFactory {
                     Debugs.CMB.debug(attacker, "You can only use magic inside the arena!", target, true);
                     return false;
                 }
-
-                if(npc.id() == CHAOTIC_NIGHTMARE) {
-                    if(attacker.isPlayer() && attacker.getAsPlayer().<Integer>getAttribOr(THE_NIGHTMARE_KC,0) < 50) {
-                        attacker.message(Color.RED.wrap("You need atleast 50 nightmare kills before you can kill the Chaotic nightmare."));
-                        Debugs.CMB.debug(attacker, "You need atleast 50 nightmare kills before you can kill the Chaotic nightmare.", target, true);
-                        return false;
-                    }
-                }
             }
 
             if (npc.id() == 2668) // you can always attack combat dummies
@@ -839,7 +831,7 @@ public class CombatFactory {
             Player playerAttacker = attacker.getAsPlayer();
 
             //As of 06/07/2021 you can no longer use tridents and elder wand on players
-            if (playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, ELDER_WAND) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SWAMP) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS_FULL) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, TRIDENT_OF_THE_SEAS) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, SANGUINESTI_STAFF) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, HOLY_SANGUINESTI_STAFF) || playerAttacker.getEquipment().hasAt(EquipSlot.WEAPON, INFERNAL_TRIDENT)) {
+            if (playerAttacker.getEquipment().isWearingAutocastStaff()) {
                 attacker.message(Color.RED.wrap("You cannot use a this magic weapon against a player."));
                 return false;
             }
@@ -1083,7 +1075,7 @@ public class CombatFactory {
 
                 //One in 300 chance of dealing the finishing blow. This does not count towards world bosses
                 boolean isNightmare = npc.def() != null && npc.def().name.equalsIgnoreCase("The Nightmare");
-                boolean ignore = npc.isWorldBoss() || isNightmare || npc.id() == NpcIdentifiers.TZTOKJAD || npc.id() == NpcIdentifiers.CORPOREAL_BEAST || nex || npc.isCombatDummy() || (player.getRaids() != null && player.getRaids().raiding(player)) || npc.id() == THE_NIGHTMARE_9430 || npc.id() == HP_EVENT;
+                boolean ignore = npc.isWorldBoss() || isNightmare || npc.id() == NpcIdentifiers.TZTOKJAD || npc.id() == NpcIdentifiers.CORPOREAL_BEAST || nex || npc.isCombatDummy() || (player.getRaids() != null && player.getRaids().raiding(player)) || npc.id() == THE_NIGHTMARE_9430 || npc.id() == HP_EVENT || npc.id() == CHAOTIC_NIGHTMARE;
                 if (player.getSlayerRewards().getUnlocks().containsKey(SlayerConstants.KILL_BLOW) && World.getWorld().rollDie(300, 1) && !ignore && !npc.locked()) {
                     player.animate(4067);
                     hit.setDamage(npc.hp());
@@ -1744,10 +1736,9 @@ public class CombatFactory {
     public static void handleVengeance(Mob mob, Mob attacker, int damage) {
         if (mob == attacker) // dont recoil self-caused damage (rockcake)
             return;
-        int returnDmg = (int) (damage * 0.75);
-        if (returnDmg <= 0) {
+        if(damage == 0) // dont recoil 0 hits
             return;
-        }
+        int returnDmg = (int) (damage * 0.75);
         mob.clearAttrib(AttributeKey.VENGEANCE_ACTIVE);
         attacker.hit(mob, returnDmg, 0, null).setIsReflected().submit();
         mob.forceChat("Taste Vengeance!");

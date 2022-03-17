@@ -1897,7 +1897,7 @@
   {
     // Flesh crawler
     "ids": [
-      2498
+      2498, 2499, 2500
     ],
     "maxhit": 1,
     "slayerxp": 25,

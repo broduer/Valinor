@@ -207,7 +207,7 @@ public class Death {
             // If we died in an instance, clean it up.
             player.clearInstance();
 
-            if (killHit.getAttacker().isPlayer())
+            if (killHit != null && killHit.getAttacker().isPlayer())
                 player.putAttrib(AttributeKey.DEATH_TELEPORT_TIMER, String.valueOf(System.currentTimeMillis()));
 
             //If the player is transmog'd then we reset the render.
@@ -216,7 +216,9 @@ public class Death {
             }
 
             //Remove auto-select
-            Autocasting.setAutocast(player, null); // Set auto-cast to default; 0
+            if(!player.getEquipment().isWearingAutocastStaff()) {
+                Autocasting.setAutocast(player, null); // Set auto-cast to default; 0
+            }
             WeaponInterfaces.updateWeaponInterface(player); //Update the weapon interface
             player.getCombat().setRangedWeapon(null);
 

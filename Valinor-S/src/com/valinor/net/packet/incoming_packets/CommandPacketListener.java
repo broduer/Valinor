@@ -76,8 +76,8 @@ public class CommandPacketListener implements PacketListener {
         }
 
         var in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
-        if(in_tournament && !player.getPlayerRights().isDeveloperOrGreater(player)) {
-            if((!command.startsWith("yell") || !command.startsWith("/")) && !command.startsWith("exit")) {
+        if(in_tournament) {
+            if((!command.startsWith("yell") && !command.startsWith("/")) && !command.startsWith("exit")) {
                 player.message("You cannot do this right now.");
                 return;
             }

@@ -71,6 +71,9 @@ public class ShowCommandsListCommand implements Command {
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::gamble</col> - Teleports you to the gambling area.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::help</col> - Request help from a staff member.");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::hpevent</col> - Teleports you to the HP event in deep wilderness.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::restore</col> - Heals your health and restores your special attack.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::rz</col> - Teleports you to the riskzone.");
+        commands.add("<br><col=" + Color.RED.getColorValue() + ">::edge</col> - Teleports you to the Edgeville ditch.");
 
         commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Member Commands:</col>");
         commands.add("<br><col=" + Color.RED.getColorValue() + ">::dzone</col> - Teleports you to the member zone.");
@@ -80,7 +83,6 @@ public class ShowCommandsListCommand implements Command {
 
         if (player.getPlayerRights().isEventManagerOrGreater(player)) {
             commands.add("<br><br><col=" + Color.GREEN.getColorValue() + ">Event Manager Commands:</col>");
-            commands.add("<br><col=" + Color.RED.getColorValue() + ">::hpevent [location]</col> - Sets a hp event.");
             commands.add("<br><col=" + Color.RED.getColorValue() + ">::osrsbroadcast</col> - Sets a broadcast message.");
         }
 

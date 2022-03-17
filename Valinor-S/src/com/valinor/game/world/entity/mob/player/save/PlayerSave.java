@@ -592,6 +592,9 @@ public class PlayerSave {
                 player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyMemberCaveKillsAmount);
                 player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, details.dailyMemberCaveKillsCompleted);
                 player.putAttrib(MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyMemberCaveKillsRewardClaimed);
+                player.putAttrib(ELDER_CHAOS_DRUID_KILLS_DAILY_TASK_COMPLETION_AMOUNT, details.dailyElderChaosDruidKillsAmount);
+                player.putAttrib(ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_COMPLETED, details.dailyElderChaosDruidKillsCompleted);
+                player.putAttrib(ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_REWARD_CLAIMED, details.dailyElderChaosDruidKillsRewardClaimed);
                 player.putAttrib(ALCHEMICAL_HYDRA_LOG_CLAIMED, details.alchemicalHydraLogClaimed);
                 player.putAttrib(ANCIENT_BARRELCHEST_LOG_CLAIMED, details.ancientBarrelchestLogClaimed);
                 player.putAttrib(ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, details.ancientChaosElementalLogClaimed);
@@ -741,6 +744,7 @@ public class PlayerSave {
                 player.putAttrib(CORRUPTED_BOOTS_ATTEMTPS, details.corruptedBootsAttempts);
                 player.putAttrib(ANCIENT_FACEGUARD_ATTEMPTS, details.ancientFaceguardAttempts);
                 player.putAttrib(TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, details.toxicStaffOfTheDeadAttempts);
+                player.putAttrib(DEATH_TELEPORT_TIMER, details.deathTeleportTimer);
                 return true;
             }
         }
@@ -1180,6 +1184,10 @@ public class PlayerSave {
         private final boolean dailyMemberCaveKillsCompleted;
         private final boolean dailyMemberCaveKillsRewardClaimed;
 
+        private final int dailyElderChaosDruidKillsAmount;
+        private final boolean dailyElderChaosDruidKillsCompleted;
+        private final boolean dailyElderChaosDruidKillsRewardClaimed;
+
         private final boolean alchemicalHydraLogClaimed;
         private final boolean ancientBarrelchestLogClaimed;
         private final boolean ancientChaosElementalLogClaimed;
@@ -1329,6 +1337,7 @@ public class PlayerSave {
         private final int corruptedBootsAttempts;
         private final int ancientFaceguardAttempts;
         private final int toxicStaffOfTheDeadAttempts;
+        private final long deathTeleportTimer;
 
         public String password() {
             return password;
@@ -1715,6 +1724,9 @@ public class PlayerSave {
             dailyMemberCaveKillsAmount = Player.getAttribIntOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
             dailyMemberCaveKillsCompleted = Player.getAttribBooleanOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED, false);
             dailyMemberCaveKillsRewardClaimed = Player.getAttribBooleanOr(player, MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
+            dailyElderChaosDruidKillsAmount = Player.getAttribIntOr(player, ELDER_CHAOS_DRUID_KILLS_DAILY_TASK_COMPLETION_AMOUNT, 0);
+            dailyElderChaosDruidKillsCompleted = Player.getAttribBooleanOr(player, ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_COMPLETED, false);
+            dailyElderChaosDruidKillsRewardClaimed = Player.getAttribBooleanOr(player, ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_REWARD_CLAIMED, false);
             alchemicalHydraLogClaimed = Player.getAttribBooleanOr(player, ALCHEMICAL_HYDRA_LOG_CLAIMED, false);
             ancientBarrelchestLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_BARRELCHEST_LOG_CLAIMED, false);
             ancientChaosElementalLogClaimed = Player.getAttribBooleanOr(player, ANCIENT_CHAOS_ELEMENTAL_LOG_CLAIMED, false);
@@ -1864,6 +1876,7 @@ public class PlayerSave {
             corruptedBootsAttempts = Player.getAttribIntOr(player, CORRUPTED_BOOTS_ATTEMTPS, 0);
             ancientFaceguardAttempts = Player.getAttribIntOr(player, ANCIENT_FACEGUARD_ATTEMPTS, 0);
             toxicStaffOfTheDeadAttempts = Player.getAttribIntOr(player, TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, 0);
+            deathTeleportTimer = Player.getAttribLongOr(player, DEATH_TELEPORT_TIMER, 0L);
         }
 
         public void parseDetails() throws Exception {

@@ -279,7 +279,7 @@ public final class LoginResponses {
 
     /**
      * This login opcode is used when a player has
-     * attempted to login with a old client.
+     * attempted to log in with an old client.
      */
     public static final int OLD_CLIENT_VERSION = 30;
 

@@ -51,7 +51,7 @@ public class ChaoticNightmare {
         return chaoticNightmare;
     }
 
-    public static Duration NIGHTMARE_EVENT_TIMER = GameServer.properties().production ? Duration.ofMinutes(90) : Duration.ofMinutes(7);
+    public static Duration NIGHTMARE_EVENT_TIMER = GameServer.properties().production ? Duration.ofMinutes(60) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(NIGHTMARE_EVENT_TIMER.toSeconds(), ChronoUnit.SECONDS);

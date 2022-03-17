@@ -131,6 +131,16 @@ public final class Equipment extends ItemContainer {
         return false;
     }
 
+    public boolean isWearingAutocastStaff() {
+        Item staff = player.getEquipment().get(EquipSlot.WEAPON);
+        if (staff != null) {
+            return staff.getId() == ELDER_WAND || staff.getId() == TRIDENT_OF_THE_SWAMP || staff.getId() == TRIDENT_OF_THE_SEAS_FULL
+                || staff.getId() == TRIDENT_OF_THE_SEAS || staff.getId() == SANGUINESTI_STAFF || staff.getId() == HOLY_SANGUINESTI_STAFF
+                || staff.getId() == INFERNAL_TRIDENT;
+        }
+        return false;
+    }
+
     public static boolean darkbow(int itemId) {
         return itemId == 11235 || itemId == 15706 || itemId == 15707 || itemId == 15708 || itemId == 15709 || (itemId >= 12765 && itemId <= 12768);
     }

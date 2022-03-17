@@ -303,6 +303,10 @@ public class NpcDeath {
                     DailyTaskManager.increase(DailyTasks.BATTLE_MAGES, killer);
                 }
 
+                if(npc.def().name.equalsIgnoreCase("Elder chaos druid")) {
+                    DailyTaskManager.increase(DailyTasks.ELDER_CHAOS_DRUID, killer);
+                }
+
                 if (npc.def().name.equalsIgnoreCase("Barrelchest")) {
                     AchievementsManager.activate(killer, Achievements.ANCHOR_HUNTER, 1);
                 }

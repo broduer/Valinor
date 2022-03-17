@@ -69,9 +69,9 @@ public class WorldBossEvent {
     public static Tile currentSpawnPos;
 
     /**
-     * The interval at which server-wide wilderness boss events occur. Event runs every hour
+     * The interval at which server-wide wilderness boss events occur. Event runs every 30 minutes.
      */
-    public static Duration BOSS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofHours(1) : Duration.ofMinutes(7);
+    public static Duration BOSS_EVENT_INTERVAL = GameServer.properties().production ? Duration.ofMinutes(30) : Duration.ofMinutes(7);
 
     public static LocalDateTime last = LocalDateTime.now();
     public static LocalDateTime next = LocalDateTime.now().plus(BOSS_EVENT_INTERVAL.toSeconds(), ChronoUnit.SECONDS);

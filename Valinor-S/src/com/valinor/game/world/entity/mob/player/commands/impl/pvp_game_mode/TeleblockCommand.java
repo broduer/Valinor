@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode;
 
 import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -33,6 +34,7 @@ public class TeleblockCommand implements Command {
 
         player.inventory().addAll(new Item(LAW_RUNE, 100), new Item(CHAOS_RUNE, 100), new Item(DEATH_RUNE, 100));
         player.message("You have spawned some teleblock runes.");
+        MagicSpellbook.changeSpellbook(player, MagicSpellbook.NORMAL,false);
     }
 
     @Override

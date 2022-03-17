@@ -3711,7 +3711,7 @@
       "defence": 258,
       "magic": 250,
       "ranged": 0,
-      "hitpoints": 2500
+      "hitpoints": 7500
     },
     "bonuses": {
       "attack": 0,
@@ -3747,7 +3747,7 @@
       "defence": 258,
       "magic": 250,
       "ranged": 0,
-      "hitpoints": 2500
+      "hitpoints": 5000
     },
     "bonuses": {
       "attack": 0,

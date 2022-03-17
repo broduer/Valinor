@@ -53,6 +53,9 @@ public class ServerAnnouncements {
         PEGASIAN_CRYSTAL,
         ETERNAL_CRYSTAL,
         SMOULDERING_STONE,
+        PRIMORDIAL_BOOTS,
+        PEGASIAN_BOOTS,
+        ETERNAL_BOOTS,
 
         //Slayer (other) & splitted drops
         IMBUED_HEART,
@@ -93,6 +96,15 @@ public class ServerAnnouncements {
         LIGHT_FRAME,
         HEAVY_FRAME,
         MONKEY_TAIL,
+        LIGHT_BALLISTA,
+        HEAVY_BALLISTA,
+        RING_OF_SUFFERING,
+        TORMENTED_BRACELET,
+        NECKLACE_OF_ANGUISH,
+        AMULET_OF_TORTURE,
+        TORTURE_ORNAMENT_KIT,
+        ANGUISH_ORNAMENT_KIT,
+        TORMENTED_ORNAMENT_KIT,
 
         //General graardor
         BANDOS_CHESTPLATE,
@@ -167,6 +179,12 @@ public class ServerAnnouncements {
         TANZANITE_MUTAGEN,
         MAGMA_MUTAGEN,
         JAR_OF_SWAMP,
+        TOXIC_BLOWPIPE,
+        SERPENTINE_HELM,
+        TRIDENT_OF_THE_SWAMP,
+        TOXIC_STAFF_OF_THE_DEAD,
+        MAGMA_HELM,
+        TANZANITE_HELM,
 
         //Revenants
         CRAWS_BOW,
@@ -298,6 +316,8 @@ public class ServerAnnouncements {
         TORVA_PLATEBODY,
         TORVA_PLATELEGS,
         NIHIL_SHARD,
+        ANCIENT_GODSWORD,
+        ZARYTE_CROSSBOW,
 
         //Ancient revenants
         ANCIENT_VESTAS_LONGSWORD,

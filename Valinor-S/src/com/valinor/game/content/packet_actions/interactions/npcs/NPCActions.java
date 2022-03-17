@@ -48,6 +48,8 @@ public class NPCActions extends NpcIdentifiers {
      */
     public static void handleAction(Player player, Npc npc, int clickAction) {
         boolean handled = false;
+        String name = npc.def().name;
+        final boolean banker = name != null && (name.equalsIgnoreCase("banker") || name.equalsIgnoreCase("Ashuelot Reis"));
         if (clickAction == 1) {
             if (InteractionManager.checkNpcInteraction(player, npc, 1)) {
                 return;
@@ -85,7 +87,7 @@ public class NPCActions extends NpcIdentifiers {
                 handled = true;
             }
 
-            if(npc.def().name != null && (npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis"))) {
+            if(banker) {
                 player.getBank().open();
                 return;
             }
@@ -185,7 +187,7 @@ public class NPCActions extends NpcIdentifiers {
                 return;
             }
 
-            if(npc.def().name.equalsIgnoreCase("banker") || npc.def().name.equalsIgnoreCase("Ashuelot Reis")) {
+            if(banker) {
                 player.getDialogueManager().start(new BankTellerDialogue(), npc);
                 return;
             }

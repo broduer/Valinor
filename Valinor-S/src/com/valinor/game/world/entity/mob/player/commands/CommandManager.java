@@ -121,6 +121,9 @@ public class CommandManager {
         commands.put("help", new HelpCommand());
         //commands.put("resettask", new RessetSlayerTask());
         commands.put("hpevent", new HpEventTeleportCommand());
+        commands.put("restore", new RestoreHealthCommand());
+        commands.put("rz", new RiskzoneCommand());
+        commands.put("edge", new EdgeCommand());
 
         /*
          * Member commands

@@ -1556,7 +1556,9 @@ public class Utils {
         "soulspawn", "atiloc", "@cr", "@red", "@whi", "@bla", "@blu",
         "@or1", "@yel", "@gre", "@dre", "@pur", "@cya","i k o v", "ik0v", "<img=", "@cr", ":tradereq:", ":duelreq:",
         "<trans", "<str", "<shad=", "hostilityps", "hostilityp", "hostility ps"
-        , "0s-base", "os -base", "os - base", "o s b a s e", "o s - b a s e", "spawnpk", "runex"};
+        , "0s-base", "os -base", "os - base", "o s b a s e", "o s - b a s e", "spawnpk", "runex",
+        "nigger", "paki", "pakki", "paaki", "nigga", "jew", "kanker", "cancer", "kys", "k y s", "k ys", "ky s", "k.y.s",
+        "kill urself", "kill ys", "kill yourself"};
 
 
     public static boolean blockedWord(String string) {
@@ -1572,8 +1574,7 @@ public class Utils {
         for (String auto : BLOCKED_WORDS) {
             if (message.toLowerCase().contains(auto)) {
                 StringBuilder replace = new StringBuilder();
-                for (int i = 0; i < auto.length(); i++)
-                    replace.append("*");
+                replace.append("*".repeat(auto.length()));
                 message = message.replaceAll(auto, replace.toString());
             }
         }

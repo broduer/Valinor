@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.pvp_game_mode;
 
 import com.valinor.game.world.entity.mob.player.GameMode;
+import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -33,6 +34,7 @@ public class BarrageCommand implements Command {
 
         player.inventory().addAll(new Item(WATER_RUNE, 600), new Item(BLOOD_RUNE, 200), new Item(DEATH_RUNE, 400));
         player.message("You have spawned some barrage runes.");
+        MagicSpellbook.changeSpellbook(player, MagicSpellbook.ANCIENT,false);
     }
 
     @Override

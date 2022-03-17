@@ -83,11 +83,6 @@ public class DropItemPacketListener implements PacketListener {
             return;
         }
 
-        if (player.inActiveTournament()) {
-            player.message("You can't drop items inside the tournament.");
-            return;
-        }
-
         if (player.jailed()) {
             player.message("Items cannot be destroyed when jailed.");
             return;

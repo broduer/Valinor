@@ -22,7 +22,12 @@ public class MeleeCombatMethod extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob mob, Mob target) {
-        var goliathEffect = mob.<Boolean>getAttribOr(AttributeKey.GOLIATH_ABILITY,false) && Utils.percentageChance(5);
+        var in_tournament = false;
+        if(mob.isPlayer() && target.isPlayer()) {
+            Player player = mob.getAsPlayer();
+            in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
+        }
+        var goliathEffect = mob.<Boolean>getAttribOr(AttributeKey.GOLIATH_ABILITY,false) && Utils.percentageChance(5) && !in_tournament;
         var boostDamageBy25Percent = false;
         var bind = false;
         if(goliathEffect) {

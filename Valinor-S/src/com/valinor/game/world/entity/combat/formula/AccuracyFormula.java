@@ -284,7 +284,7 @@ public class AccuracyFormula {
                 //Dragon hunter crossbow and lance
                 if (player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW_T) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_CROSSBOW_B) || player.getEquipment().hasAt(EquipSlot.WEAPON, DRAGON_HUNTER_LANCE)) {
                     if (npc.def() != null && npc.def().name != null && FormulaUtils.isDragon(npc)) {
-                        off_additional_bonus += 0.60;
+                        off_additional_bonus += 1.60;
                     }
                 }
 

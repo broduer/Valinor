@@ -364,6 +364,7 @@ public enum AttributeKey {
     EDGEVILLE_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_edgeville_kills_task_completion_amount", AttribType.INTEGER),
     MAGE_BANK_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_mage_bank_kills_task_completion_amount", AttribType.INTEGER),
     MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_member_cave_kills_task_completion_amount", AttribType.INTEGER),
+    ELDER_CHAOS_DRUID_KILLS_DAILY_TASK_COMPLETION_AMOUNT("daily_elder_chaos_druids_kills_task_completion_amount", AttribType.INTEGER),
 
     ROCK_CRABS_DAILY_TASK_COMPLETED("daily_rock_crabs_task_completed", AttribType.BOOLEAN),
     EXPERIMENTS_DAILY_TASK_COMPLETED("daily_experiments_task_completed", AttribType.BOOLEAN),
@@ -395,6 +396,7 @@ public enum AttributeKey {
     EDGEVILLE_KILLS_DAILY_TASK_COMPLETED("daily_edgeville_kills_task_completed", AttribType.BOOLEAN),
     MAGE_BANK_KILLS_DAILY_TASK_COMPLETED("daily_mage_bank_kills_task_completed", AttribType.BOOLEAN),
     MEMBER_CAVE_KILLS_DAILY_TASK_COMPLETED("daily_member_cave_kills_task_completed", AttribType.BOOLEAN),
+    ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_COMPLETED("daily_elder_chaos_druids_kills_task_completed", AttribType.BOOLEAN),
 
     ROCK_CRABS_DAILY_TASK_REWARD_CLAIMED("daily_rock_crabs_task_reward_claimed", AttribType.BOOLEAN),
     EXPERIMENTS_DAILY_TASK_REWARD_CLAIMED("daily_experiments_task_reward_claimed", AttribType.BOOLEAN),
@@ -426,6 +428,7 @@ public enum AttributeKey {
     EDGEVILLE_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_edgeville_kills_task_reward_claimed", AttribType.BOOLEAN),
     MAGE_BANK_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_mage_bank_kills_task_reward_claimed", AttribType.BOOLEAN),
     MEMBER_CAVE_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_member_cave_kills_task_reward_claimed", AttribType.BOOLEAN),
+    ELDER_CHAOS_DRUIDS_KILLS_DAILY_TASK_REWARD_CLAIMED("daily_elder_chaos_druids_kills_task_reward_claimed", AttribType.BOOLEAN),
 
     RESET_LAST_VOTE_TIMESTAMP("reset_last_vote_timestamp", AttribType.BOOLEAN),
 

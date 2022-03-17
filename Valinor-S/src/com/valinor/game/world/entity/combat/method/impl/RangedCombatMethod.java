@@ -49,7 +49,13 @@ public class RangedCombatMethod extends CommonCombatMethod {
 
     @Override
     public void prepareAttack(Mob attacker, Mob target) {
-        var swiftEffect = attacker.<Boolean>getAttribOr(AttributeKey.SWIFT_ABILITY,false) && Utils.percentageChance(5);
+        var in_tournament = false;
+        if(attacker.isPlayer() && target.isPlayer()) {
+            Player player = attacker.getAsPlayer();
+            in_tournament = player.inActiveTournament() || player.isInTournamentLobby();
+        }
+        var swiftEffect = attacker.<Boolean>getAttribOr(AttributeKey.SWIFT_ABILITY,false) && Utils.percentageChance(5) && !in_tournament;
+
         if(swiftEffect && attacker.isPlayer()) {
             attacker.getAsPlayer().message("You fired an extra shot.");
         }

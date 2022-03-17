@@ -1,8 +1,10 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.players;
 
 import com.valinor.GameServer;
+import com.valinor.game.content.mechanics.Censor;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
+import com.valinor.game.world.entity.dialogue.DialogueManager;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.entity.mob.player.rights.MemberRights;
@@ -57,12 +59,8 @@ public class YellCommand implements Command {
         if (yellMessage.length() > 80) {
             yellMessage = yellMessage.substring(0, 79);
         }
-        if (Utils.blockedWord(yellMessage)) {
-            player.message("<col=ca0d0d>Please refrain from using foul language in the yell chat! Thanks.");
-            return;
-        }
 
-        sendYell(player, yellMessage);
+        sendYell(player, Utils.filterMessage(yellMessage));
     }
 
     public static void sendYell(Player player, String yellMessage) {
@@ -116,6 +114,7 @@ public class YellCommand implements Command {
             yellTag = "[<shad=0><col=" + yellTagColour + ">" + tag + "</shad></col>]";
         }
         String msg = yellColourShad ? yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <shad=0><col=" + yellColour + ">" + formatYellMessage + "</shad>" : yellTag + "<shad=1>" + nameColour + "[" + playerIcon + "</img>" + memberIcon + "</img>" + username + "]</col></shad>: <col=" + yellColour + ">" + formatYellMessage;
+
         //System.out.println(yellColour);
         World.getWorld().sendWorldMessage(msg);
         int yellDelay = getYellDelay(player);

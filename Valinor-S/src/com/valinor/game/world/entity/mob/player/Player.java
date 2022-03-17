@@ -276,24 +276,21 @@ public class Player extends Mob {
         Poison.cure(this);
         Venom.cure(2, this);
 
-        message(Color.RED.tag() + "When being a member your special attack will also regenerate.");
-        if (memberRights.isSapphireMemberOrGreater(this)) {
-            if (getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
-                message("Special attack energy can be restored in " + getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
-            } else {
-                restoreSpecialAttack(100);
-                setSpecialActivated(false);
-                CombatSpecial.updateBar(this);
-                int time = 0;
-                if (memberRights.isSapphireMemberOrGreater(this))
-                    time = 300;//3 minutes
-                if (memberRights.isEmeraldMemberOrGreater(this))
-                    time = 100;//1 minute
-                if (memberRights.isRubyMemberOrGreater(this))
-                    time = 0;//always
-                getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
-                message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");
-            }
+        if (getTimers().has(TimerKey.RECHARGE_SPECIAL_ATTACK)) {
+            message("Special attack energy can be restored in " + getTimers().asMinutesAndSecondsLeft(TimerKey.RECHARGE_SPECIAL_ATTACK) + ".");
+        } else {
+            restoreSpecialAttack(100);
+            setSpecialActivated(false);
+            CombatSpecial.updateBar(this);
+            int time = 100;
+            if (getMemberRights().isSapphireMemberOrGreater(this))
+                time = 75;//45 seconds
+            if (getMemberRights().isEmeraldMemberOrGreater(this))
+                time = 50;//30 seconds
+            if (getMemberRights().isRubyMemberOrGreater(this))
+                time = 0;//always
+            getTimers().register(TimerKey.RECHARGE_SPECIAL_ATTACK, time); //Set the value of the timer.
+            message("<col=" + Color.HOTPINK.getColorValue() + ">You have restored your special attack.");
         }
     }
 
@@ -416,6 +413,9 @@ public class Player extends Mob {
         if (equipment.hasAt(EquipSlot.RING, RING_OF_WEALTH_I) || equipment.hasAt(EquipSlot.RING, RING_OF_TRINITY))
             percent += 7.5;
 
+        if(equipment.wearingMaxCape())
+            percent += 5.0;
+
         var dropRateBoostUnlock = slayerRewards.getUnlocks().containsKey(SlayerConstants.DROP_RATE_BOOST);
         if (dropRateBoostUnlock)
             percent += 3;
@@ -432,6 +432,10 @@ public class Player extends Mob {
         }
 
         //Drop rate percentage boost can't go over cap%
+        if(percent > 40) {
+            percent = 40;
+        }
+
         return percent;
     }
 
