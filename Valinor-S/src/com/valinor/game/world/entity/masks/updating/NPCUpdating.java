@@ -15,6 +15,7 @@ import com.valinor.net.packet.PacketType;
 import com.valinor.net.packet.ValueType;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Represents a player's npc updating task, which loops through all local
@@ -24,6 +25,17 @@ import java.util.Iterator;
  */
 
 public class NPCUpdating {
+
+    /**
+     * The maximum amount of local npcs.
+     */
+    private static final int MAXIMUM_LOCAL_NPCS = 255;
+
+    /**
+     * The maximum number of npcs to load per cycle. This prevents the update packet from becoming too large (the
+     * client uses a 5000 byte buffer) and also stops old spec PCs from crashing when they login or teleport.
+     */
+    private static final int NEW_NPCS_PER_CYCLE = 20;
 
     /**
      * Handles the actual npc updating for the associated player.
@@ -49,13 +61,24 @@ public class NPCUpdating {
                 packet.putBits(2, 3);
             }
         }
+
+        List<Npc> locals = player.getLocalNpcs();
+        int added = 0, count = locals.size();
         for (Npc npc : World.getWorld().getNpcs()) {
-            if (player.getLocalNpcs().size() >= 79) //Originally 255
+            if (count >= MAXIMUM_LOCAL_NPCS) {
                 break;
+            } else if (added >= NEW_NPCS_PER_CYCLE) {
+                break;
+            }
+
             if (npc == null || player.getLocalNpcs().contains(npc) || npc.hidden() || npc.isNeedsPlacement())
                 continue;
-            if (npc.tile().isWithinDistance(player.tile())) {
-                player.getLocalNpcs().add(npc);
+
+            if (npc.tile().isWithinDistance(player.tile()) && !locals.contains(npc)) {
+                locals.add(npc);
+                count++;
+                added++;
+
                 addNPC(player, npc, packet);
                 npc.inViewport(true); // Mark as in viewport
                 //System.out.println(npc.getName()+" in viewport: "+npc.inViewport());
@@ -64,6 +87,7 @@ public class NPCUpdating {
                 }
             }
         }
+
         if (update.buffer().writerIndex() > 0) {
             packet.putBits(14, 16383);
             packet.initializeAccess(AccessType.BYTE);
@@ -71,6 +95,7 @@ public class NPCUpdating {
         } else {
             packet.initializeAccess(AccessType.BYTE);
         }
+
         player.getSession().write(packet);
     }
 
