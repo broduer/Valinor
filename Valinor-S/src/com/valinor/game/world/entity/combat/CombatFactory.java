@@ -659,10 +659,14 @@ public class CombatFactory {
                     if (party.getLeftHandNpc() != null && target.getAsNpc().id() == party.getLeftHandNpc().id() && !melee) {
                         attacker.message(Color.RED.wrap("You can only fight this claw with melee."));
                         return false;
-                    } else if (party.getRightHandNpc() != null && target.getAsNpc().id() == party.getRightHandNpc().id() && !magic) {
+                    }
+
+                    if (party.getRightHandNpc() != null && target.getAsNpc().id() == party.getRightHandNpc().id() && !magic) {
                         attacker.message(Color.RED.wrap("You can only fight this claw with magic."));
                         return false;
-                    } else if (party.getGreatOlmNpc() != null && target.getAsNpc().id() == party.getGreatOlmNpc().id() && !range) {
+                    }
+
+                    if (party.getGreatOlmNpc() != null && target.getAsNpc().id() == party.getGreatOlmNpc().id() && !range) {
                         attacker.message(Color.RED.wrap("You can only fight the Olm with range."));
                         return false;
                     }
