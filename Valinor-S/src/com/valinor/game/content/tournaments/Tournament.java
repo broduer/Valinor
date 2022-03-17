@@ -14,6 +14,7 @@ import com.valinor.game.world.entity.combat.CombatSpecial;
 import com.valinor.game.world.entity.combat.skull.Skulling;
 import com.valinor.game.world.entity.mob.player.MagicSpellbook;
 import com.valinor.game.world.entity.mob.player.Player;
+import com.valinor.game.world.entity.mob.player.QuestTab;
 import com.valinor.game.world.entity.mob.player.Skills;
 import com.valinor.game.world.items.Item;
 import com.valinor.util.Color;
@@ -26,6 +27,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.*;
 
 import static com.valinor.game.content.tournaments.TournamentUtils.TORN_START_TILE;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.TOURNAMENT_POINTS;
+import static com.valinor.game.world.entity.mob.player.QuestTab.InfoTab.TOURNAMENT_WINS;
 import static com.valinor.util.CustomItemIdentifiers.*;
 import static com.valinor.util.ItemIdentifiers.*;
 import static java.lang.String.format;
@@ -160,6 +163,8 @@ public class Tournament {
             winner.putAttrib(AttributeKey.TOURNAMENT_WINS, wins);
             var points = winner.<Integer>getAttribOr(AttributeKey.TOURNAMENT_POINTS, 0) + 1;
             winner.putAttrib(AttributeKey.TOURNAMENT_POINTS, points);
+            winner.getPacketSender().sendString(TOURNAMENT_POINTS.childId, QuestTab.InfoTab.INFO_TAB.get(TOURNAMENT_POINTS.childId).fetchLineData(winner));
+            winner.getPacketSender().sendString(TOURNAMENT_WINS.childId, QuestTab.InfoTab.INFO_TAB.get(TOURNAMENT_WINS.childId).fetchLineData(winner));
             DailyTaskManager.increase(DailyTasks.WIN_PVP_TOURNY, winner);
             winner.message("You have won the " + fullName() + " Tournament! You now have won "+Color.BLUE.wrap(""+wins)+" tournaments.");
             winner.message("You've received 1 tournament point! You now have won "+Color.BLUE.wrap(""+points)+" tournament points.");

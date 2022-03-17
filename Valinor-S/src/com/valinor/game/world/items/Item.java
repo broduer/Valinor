@@ -443,6 +443,12 @@ public class Item implements Cloneable {
         if(this.unnote().definition(World.getWorld()).protectionValue == null) {
             return 150;
         }
+        if(id == COINS_995) {
+            return 1;
+        }
+        if(id == PLATINUM_TOKEN) {
+            return 1000;
+        }
         return this.unnote().definition(World.getWorld()).protectionValue.price;
     }
 

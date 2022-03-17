@@ -341,6 +341,14 @@ public final class QuestTab {
                 return "Tournament points: <col=ffffff>" + Utils.formatNumber(tournamentPoints);
             }
         },
+
+        TOURNAMENT_WINS(53455) {
+            @Override
+            public String fetchLineData(Player player) {
+                int tournamentWins = player.getAttribOr(AttributeKey.TOURNAMENT_WINS, 0);
+                return "Tournament wins: <col=ffffff>" + Utils.formatNumber(tournamentWins);
+            }
+        },
         ;
 
         public final int childId;
