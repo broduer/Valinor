@@ -301,6 +301,10 @@ public class Tournament {
             // only give loadout on rounds after 1. they get the loadout in lobby for round 1, allowing them to move inv about.
             setLoadoutOnPlayer(player);
         }
+
+        AchievementsManager.activate(player, Achievements.TOURNY, 1);
+        DailyTaskManager.increase(DailyTasks.TOURNY, player);
+
         //Reset spectating state, we could of been spectating when we had a free tournament by
         player.setTournamentSpectating(false);
 
@@ -335,8 +339,6 @@ public class Tournament {
                     player.forceChat("Fight!");
                     player.getPacketSender().sendString(TournamentUtils.TOURNAMENT_WALK_TIMER, "Fight!");
                     player.clearAttrib(AttributeKey.TOURNAMENT_COUNTDOWN);
-                    AchievementsManager.activate(player, Achievements.TOURNY, 1);
-                    DailyTaskManager.increase(DailyTasks.TOURNY, player);
                     stop();
                 } else {
                     if (secs != (int) player.getAttribOr(AttributeKey.TOURNAMENT_COUNTDOWN, -1)) {
