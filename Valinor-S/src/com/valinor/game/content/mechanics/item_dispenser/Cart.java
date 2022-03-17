@@ -305,7 +305,6 @@ public enum Cart {
     ROBE_TOP_OF_DARKNESS(ItemIdentifiers.ROBE_TOP_OF_DARKNESS,500),
     MONKS_ROBE_G(ItemIdentifiers.MONKS_ROBE_G,50),
     MONKS_ROBE_TOP_G(ItemIdentifiers.MONKS_ROBE_TOP_G,50),
-    DRAGON_BOOTS(ItemIdentifiers.DRAGON_BOOTS,50),
     WIZARD_BOOTS(ItemIdentifiers.WIZARD_BOOTS,10),
     TEAM_CAPE_X(ItemIdentifiers.TEAM_CAPE_X,450),
     RUNE_POUCH_I(CustomItemIdentifiers.RUNE_POUCH_I,500),
