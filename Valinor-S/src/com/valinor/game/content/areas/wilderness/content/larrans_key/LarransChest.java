@@ -49,11 +49,12 @@ public class LarransChest extends Interaction {
         } else {
             items = OTHER;
         }
-        return Utils.randomElement(items);
+        Item reward = Utils.randomElement(items).copy();
+        return reward;
     }
 
     private static final List<Item> OTHER = Arrays.asList(
-        new Item(PKP_TICKET, 500 + World.getWorld().random(500)),
+        new Item(PKP_TICKET, 500),
         new Item(SUPER_COMBAT_POTION4 + 1, 50),
         new Item(ANTIVENOM4 + 1, 50),
         new Item(OBSIDIAN_HELMET),
@@ -128,6 +129,11 @@ public class LarransChest extends Interaction {
         Chain.bound(player).runFn(1, () -> {
             player.inventory().remove(new Item(LARRANS_KEY, 1), true);
             Item reward = reward();
+
+            //Make sure PKP can't ever go above 5K.
+            if(reward.getId() == PKP_TICKET && reward.getAmount() > 5000) {
+                reward.setAmount(5000);
+            }
 
             if (reward == null)
                 return;

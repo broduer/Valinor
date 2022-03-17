@@ -432,8 +432,8 @@ public class Player extends Mob {
         }
 
         //Drop rate percentage boost can't go over cap%
-        if(percent > 40 && !memberRights.isOnyxMemberOrGreater(this)) {
-            percent = 40;
+        if(percent > 50 && !memberRights.isOnyxMemberOrGreater(this)) {
+            percent = 50;
         }
 
         return percent;
