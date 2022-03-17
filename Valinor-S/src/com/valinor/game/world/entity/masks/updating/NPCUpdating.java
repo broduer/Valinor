@@ -23,7 +23,6 @@ import java.util.List;
  * 
  * @author Relex lawl
  */
-
 public class NPCUpdating {
 
     /**
@@ -71,10 +70,11 @@ public class NPCUpdating {
                 break;
             }
 
-            if (npc == null || player.getLocalNpcs().contains(npc) || npc.hidden() || npc.isNeedsPlacement())
+            if (npc == null || locals.contains(npc) || npc.hidden() || npc.isNeedsPlacement())
                 continue;
 
-            if (npc.tile().isWithinDistance(player.tile()) && !locals.contains(npc)) {
+            Tile tile = npc.tile();
+            if (tile.isWithinDistance(player.tile())) {
                 locals.add(npc);
                 count++;
                 added++;
