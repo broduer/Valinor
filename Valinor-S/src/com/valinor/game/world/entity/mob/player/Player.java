@@ -432,7 +432,7 @@ public class Player extends Mob {
         }
 
         //Drop rate percentage boost can't go over cap%
-        if(percent > 40) {
+        if(percent > 40 && !memberRights.isOnyxMemberOrGreater(this)) {
             percent = 40;
         }
 
@@ -1648,6 +1648,11 @@ public class Player extends Mob {
         int specialTeleblockTicks = this.getTimers().left(TimerKey.SPECIAL_TELEBLOCK);
         if (specialTeleblockTicks > 0) {
             teleblock(specialTeleblockTicks, true);
+        }
+
+        int deathTeleportTimer = this.getTimers().left(TimerKey.DEATH_TELEPORT_TIMER);
+        if (deathTeleportTimer > 0) {
+            getTimers().extendOrRegister(TimerKey.DEATH_TELEPORT_TIMER, deathTeleportTimer);
         }
 
         int dropRateLampTicks = this.getAttribOr(AttributeKey.DOUBLE_DROP_LAMP_TICKS, 0);

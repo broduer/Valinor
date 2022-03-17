@@ -94,9 +94,6 @@ public class StarterBox extends Interaction {
     public boolean handleItemInteraction(Player player, Item item, int option) {
         if(option == 1) {
             if(item.getId() == STARTER_BOX) {
-                if(!player.inventory().contains(STARTER_BOX)) {
-                    return true;
-                }
                 var IP = player.getHostAddress();
                 var MAC = player.<String>getAttribOr(AttributeKey.MAC_ADDRESS,"invalid");
                 var starterBoxClaimed = player.<Boolean>getAttribOr(AttributeKey.STARTER_BOX_CLAIMED,false);
@@ -104,6 +101,7 @@ public class StarterBox extends Interaction {
 
                 //Check if the player has already claimed the box
                 if(starterBoxClaimed || fileAlreadyContainsAddress) {
+                    player.message("You have already claimed the starter box.");
                     return true; // Already claimed
                 }
 

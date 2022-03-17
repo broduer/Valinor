@@ -22,8 +22,6 @@ import com.valinor.util.timers.TimerKey;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.valinor.game.content.presets.PresetManager.lastTimeDied;
-
 /**
  * @author Patrick van Elderen | January, 10, 2021, 11:08
  * @see <a href="https://www.rune-server.ee/members/Zerikoth/">Rune-Server profile</a>
@@ -177,7 +175,7 @@ public class Teleports {
                 return;
             }
             if (WildernessArea.inWilderness(tile)) {
-                if (lastTimeDied(player, GameServer.properties().pkTelesAfterSetupSet)) {
+                if (player.getTimers().has(TimerKey.DEATH_TELEPORT_TIMER)) {
                     player.message("Quick wilderness teleports are off limits %ds <col=FF0000>after death.</col>", (int) Utils.ticksToSeconds(GameServer.properties().pkTelesAfterSetupSet));
                     return;
                 }

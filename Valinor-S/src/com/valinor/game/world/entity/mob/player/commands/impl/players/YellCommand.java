@@ -25,7 +25,9 @@ public class YellCommand implements Command {
             case DIAMOND_MEMBER -> yellTimer = 15;
             case DRAGONSTONE_MEMBER, ONYX_MEMBER, ZENYTE_MEMBER -> yellTimer = 0;
         }
-        return player.getPlayerRights().isStaffMember(player) ? 0 : yellTimer;
+
+        boolean noYellTimer = player.getPlayerRights().isStaffMember(player) || player.getPlayerRights().isYoutuber(player);
+        return noYellTimer ? 0 : yellTimer;
     }
 
     @Override

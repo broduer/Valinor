@@ -576,11 +576,6 @@ public enum AttributeKey {
     LAST_ATTACK_TIME,
 
     /**
-     * When we last used a quick setup. Anti-rag feature
-     */
-    DEATH_TELEPORT_TIMER("lastSpawnSetupTime", AttribType.STRING),
-
-    /**
      * Save's the NPC's spawned in the for the Abyssal Sire
      */
     ABYSSAL_SIRE_TENTACLES,

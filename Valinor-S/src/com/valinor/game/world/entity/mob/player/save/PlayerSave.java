@@ -744,7 +744,7 @@ public class PlayerSave {
                 player.putAttrib(CORRUPTED_BOOTS_ATTEMTPS, details.corruptedBootsAttempts);
                 player.putAttrib(ANCIENT_FACEGUARD_ATTEMPTS, details.ancientFaceguardAttempts);
                 player.putAttrib(TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, details.toxicStaffOfTheDeadAttempts);
-                player.putAttrib(DEATH_TELEPORT_TIMER, details.deathTeleportTimer);
+                player.getTimers().register(TimerKey.DEATH_TELEPORT_TIMER, details.deathTeleportTimer);
                 return true;
             }
         }
@@ -1337,7 +1337,7 @@ public class PlayerSave {
         private final int corruptedBootsAttempts;
         private final int ancientFaceguardAttempts;
         private final int toxicStaffOfTheDeadAttempts;
-        private final long deathTeleportTimer;
+        private final int deathTeleportTimer;
 
         public String password() {
             return password;
@@ -1876,7 +1876,7 @@ public class PlayerSave {
             corruptedBootsAttempts = Player.getAttribIntOr(player, CORRUPTED_BOOTS_ATTEMTPS, 0);
             ancientFaceguardAttempts = Player.getAttribIntOr(player, ANCIENT_FACEGUARD_ATTEMPTS, 0);
             toxicStaffOfTheDeadAttempts = Player.getAttribIntOr(player, TOXIC_STAFF_OF_THE_DEAD_C_ATTEMPTS, 0);
-            deathTeleportTimer = Player.getAttribLongOr(player, DEATH_TELEPORT_TIMER, 0L);
+            deathTeleportTimer = player.getTimers().left(TimerKey.DEATH_TELEPORT_TIMER);
         }
 
         public void parseDetails() throws Exception {

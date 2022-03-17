@@ -208,7 +208,7 @@ public class Death {
             player.clearInstance();
 
             if (killHit != null && killHit.getAttacker().isPlayer())
-                player.putAttrib(AttributeKey.DEATH_TELEPORT_TIMER, String.valueOf(System.currentTimeMillis()));
+                player.getTimers().extendOrRegister(TimerKey.DEATH_TELEPORT_TIMER, GameServer.properties().pkTelesAfterSetupSet);
 
             //If the player is transmog'd then we reset the render.
             if (Transmogrify.isTransmogrified(player) && !in_tournament) {

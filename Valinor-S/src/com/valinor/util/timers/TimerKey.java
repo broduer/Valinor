@@ -201,7 +201,9 @@ public enum TimerKey {
     /**
      * Key used to manage the teleblock immunity timer
      */
-    TELEBLOCK_IMMUNITY(50, false);
+    TELEBLOCK_IMMUNITY(50, false),
+
+    DEATH_TELEPORT_TIMER(52, false);
 
     public static final TimerKey[] cachedValues = values();
     private static final Logger logger = LogManager.getLogger(TimerKey.class);

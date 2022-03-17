@@ -499,15 +499,6 @@ public class PresetManager {
         player.getDialogueManager().start(new PresetEditDialogue());
     }
 
-    // If a player used a spawn setup in the last X (given) seconds.
-    public static boolean lastTimeDied(Player player, int secs) {
-        long time = Long.parseLong(player.getAttribOr(AttributeKey.DEATH_TELEPORT_TIMER, "0"));
-        if (time != 0L) {
-            return System.currentTimeMillis() - time < secs * 1000L;
-        }
-        return false;
-    }
-
     public static boolean inPresetBypassable(Player player, String msg, boolean send) {
         if (player.getPlayerRights().isDeveloperOrGreater(player)) {
             player.message("As an admin, you bypass wilderness restrictions.");
