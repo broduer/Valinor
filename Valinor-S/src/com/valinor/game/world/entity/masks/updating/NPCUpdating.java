@@ -89,7 +89,7 @@ public class NPCUpdating {
         }
 
         if (update.buffer().writerIndex() > 0) {
-            packet.putBits(14, 16383);
+            packet.putBits(15, 32767);
             packet.initializeAccess(AccessType.BYTE);
             packet.writeBuffer(update.buffer());
         } else {
@@ -106,7 +106,7 @@ public class NPCUpdating {
      * @return            The NPCUpdating instance.
      */
     private static void addNPC(Player player, Npc npc, PacketBuilder builder) {
-        builder.putBits(14, npc.getIndex());
+        builder.putBits(15, npc.getIndex());
         builder.putBits(5, npc.tile().getY()-player.tile().getY());
         builder.putBits(5, npc.tile().getX()-player.tile().getX());
         builder.putBits(1, 0);

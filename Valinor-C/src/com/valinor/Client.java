@@ -4123,8 +4123,8 @@ public class Client extends GameApplet {
 
     private void updateNPCMovement(int i, Buffer stream) {
         while (stream.bitPosition + 21 < i * 8) {
-            int k = stream.readBits(14);
-            if (k == 16383)
+            int k = stream.readBits(15);
+            if (k == 32767)
                 break;
             if (npcs[k] == null)
                 npcs[k] = new Npc();
@@ -15276,7 +15276,6 @@ public class Client extends GameApplet {
         if (k < npcs_in_region) {
             for (int l = k; l < npcs_in_region; l++)
                 removedMobs[removedMobCount++] = local_npcs[l];
-
         }
         if (k > npcs_in_region) {
             SignLink.reporterror(myUsername + " Too many npcs");
