@@ -1,6 +1,7 @@
 package com.valinor.game.world.entity.mob.player.commands.impl.dev;
 
 import com.valinor.GameServer;
+import com.valinor.game.GameConstants;
 import com.valinor.game.content.areas.wilderness.content.hitman_services.Hitman;
 import com.valinor.game.content.raids.RaidsType;
 import com.valinor.game.content.raids.party.Party;
@@ -9,6 +10,7 @@ import com.valinor.game.content.raids.theatre_of_blood.TheatreOfBloodRewards;
 import com.valinor.game.world.World;
 import com.valinor.game.world.entity.AttributeKey;
 import com.valinor.game.world.entity.masks.Projectile;
+import com.valinor.game.world.entity.mob.npc.Npc;
 import com.valinor.game.world.entity.mob.player.Player;
 import com.valinor.game.world.entity.mob.player.commands.Command;
 import com.valinor.game.world.items.Item;
@@ -87,11 +89,8 @@ public class TestCommand implements Command {
         //Hitman.requestBounty(player);
         //Hitman.listOfBounties(player);
 
-        Optional<Player> patrick = World.getWorld().getPlayerByName("Patrick");
-        Optional<Player> test = World.getWorld().getPlayerByName("Test");
-
-        if(patrick.isPresent() && test.isPresent()) {
-            System.out.println("Distance between: "+patrick.get().tile().distance(test.get().tile()));
+        for (int i = 0; i < GameConstants.NPCS_LIMIT; i++) {
+            Npc npc = new Npc(10, player.tile()).spawn();
         }
 
         player.message("Test command has been activated.");

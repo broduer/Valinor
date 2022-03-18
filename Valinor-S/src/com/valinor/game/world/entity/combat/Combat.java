@@ -52,6 +52,9 @@ public class Combat {
     private static final Logger logger = LogManager.getLogger(Combat.class);
 
     public static void computeLastDamager(Mob mob, Mob targ) {
+        if(mob == null || targ == null) {
+            return;
+        }
         var set = targ.<HashSet<Mob>>getAttribOr(AttributeKey.ATTACKED_BY_LIST, new HashSet<>(List.of(mob)));
         set.add(mob);
         Mob mob1 = null;

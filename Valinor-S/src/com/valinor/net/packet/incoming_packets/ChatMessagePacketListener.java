@@ -25,7 +25,8 @@ public class ChatMessagePacketListener implements PacketListener {
         String raw = Utils.textUnpack(text, size);
         String chatMessage = Utils.ucFirst(raw.toLowerCase());
 
-        if (chatMessage.length() <= 0) {
+        //Should never happen
+        if (chatMessage.isEmpty()) {
             return;
         }
 
